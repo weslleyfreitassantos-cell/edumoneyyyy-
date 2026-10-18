@@ -5,6 +5,7 @@ import { buildEf01Ci04Pack, validateEf01Ci04Pack } from './build-ef01ci04-author
 import { buildEf01Ci05Pack, validateEf01Ci05Pack } from './build-ef01ci05-authoring-pack.mjs';
 import { buildPack as buildEf01LpPack, validatePack as validateEf01LpPack, listDefinitions } from './build-ef01lp-real-authoring-packs.mjs';
 import { getAuthoringProducer, listAuthoringProducers } from './bncc-authoring-producers.mjs';
+import { buildAuthoredCurriculumPack, discoverAuthoredCurriculumSpecs, validateAuthoredCurriculumPack } from './curriculum-authoring-registry-v1.mjs';
 import { createInitialState, determineRunStatus, parseOptions, selectNextTask, validateExistingPackage } from './bncc-autopilot.mjs';
 
 describe('BNCC autopilot', () => {
@@ -43,9 +44,26 @@ describe('BNCC autopilot', () => {
       expect(pack.active).toBe(false);
       expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
     }
-    expect(getAuthoringProducer({ officialCode: 'EF01CI04' })?.id).toBe('science-human-diversity-v1');
+    expect(getAuthoringProducer({ officialCode: 'EF01CI04' })?.id).toBe('staged-curriculum-ef01ci04');
     expect(getAuthoringProducer({ officialCode: 'EI01CG01' })).toBeNull();
-    expect(listAuthoringProducers().map((producer) => producer.officialCode)).toEqual(['EF01CI02', 'EF01CI04', 'EF01CI05', 'EF01LP03', 'EF01LP04', 'EF01LP05', 'EF01LP06']);
+    expect(listAuthoringProducers().map((producer) => producer.officialCode)).toEqual(expect.arrayContaining(['EF01CI02', 'EF01CI04', 'EF01CI05', 'EF01LP03', 'EF01LP04', 'EF01LP05', 'EF01LP06']));
+    expect(getAuthoringProducer({ officialCode: 'EF01LP01' })?.sourceFile).toBe('content/bncc/authoring/packages/EF01LP01-v1.json');
+  });
+
+  it('discovers source-verified declarative authoring packages and validates their complete paths', () => {
+    const specs = discoverAuthoredCurriculumSpecs();
+    expect([...specs.keys()]).toEqual(['EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01', 'EF01LP01', 'EF01LP02']);
+    for (const officialCode of specs.keys()) {
+      const pack = buildAuthoredCurriculumPack(officialCode);
+      const validation = validateAuthoredCurriculumPack(pack);
+      expect(validation.valid, `${officialCode}: ${validation.errors.join(',')}`).toBe(true);
+      expect(pack.questions).toHaveLength(40);
+      expect(pack.lesson.authenticActivities).toHaveLength(2);
+      expect(pack.active).toBe(false);
+      expect(pack.publicationStatus).toBe('STAGING_INACTIVE');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+      expect(validation.rubric.humanReview.status).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    }
   });
 
   it('builds the first real Portuguese authoring set without opening publication gates', () => {
@@ -68,7 +86,7 @@ describe('BNCC autopilot', () => {
       tasks: [
         { taskId: 'BNCC_EF01CI01', officialCode: 'EF01CI01', state: 'CONTENT_TECHNICALLY_COMPLETE', evidence: { source: 'VERIFIED' } },
         { taskId: 'BNCC_EF01CI02', officialCode: 'EF01CI02', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
-        { taskId: 'BNCC_EF01CI03', officialCode: 'EF01CI03', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
+        { taskId: 'BNCC_EF01ZZ01', officialCode: 'EF01ZZ01', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
         { taskId: 'BNCC_EF01CI04', officialCode: 'EF01CI04', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
       ],
     };
@@ -76,7 +94,7 @@ describe('BNCC autopilot', () => {
     expect(state.metrics.completedTasks).toBe(1);
     state.taskRecords.BNCC_EF01CI02 = { taskId: 'BNCC_EF01CI02', status: 'CONTENT_PARTIAL' };
     expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01CI02');
-    state.taskRecords.BNCC_EF01CI03 = { taskId: 'BNCC_EF01CI03', status: 'CONTENT_PARTIAL' };
+    state.taskRecords.BNCC_EF01ZZ01 = { taskId: 'BNCC_EF01ZZ01', status: 'CONTENT_PARTIAL' };
     state.blockedTasks = [{ taskId: 'BNCC_EF01CI02', reason: 'TEST', attempts: 1 }];
     expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01CI04');
   });
@@ -84,12 +102,12 @@ describe('BNCC autopilot', () => {
   it('does not select a verified task that only has a context brief', () => {
     const queue = {
       tasks: [
-        { taskId: 'BNCC_EF01CI03', officialCode: 'EF01CI03', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
-        { taskId: 'BNCC_EF01LP03', officialCode: 'EF01LP03', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
+        { taskId: 'BNCC_EF01ZZ01', officialCode: 'EF01ZZ01', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
+        { taskId: 'BNCC_EF01CI04', officialCode: 'EF01CI04', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
       ],
     };
-    const state = { taskRecords: { BNCC_EF01CI03: { taskId: 'BNCC_EF01CI03', status: 'AWAITING_CONTENT_AUTHORING' } }, blockedTasks: [] };
-    expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01LP03');
+    const state = { taskRecords: { BNCC_EF01ZZ01: { taskId: 'BNCC_EF01ZZ01', status: 'AWAITING_CONTENT_AUTHORING' } }, blockedTasks: [] };
+    expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01CI04');
   });
 
   it('reports resumable budget exhaustion separately from terminal campaign states', () => {
@@ -102,6 +120,6 @@ describe('BNCC autopilot', () => {
     expect(determineRunStatus({ queue: { tasks: [{ ...task, state: 'CONTENT_TECHNICALLY_COMPLETE' }] }, state, options })).toBe('CAMPAIGN_COMPLETE');
     expect(determineRunStatus({ queue, state: { ...state, blockedTasks: [{ taskId: task.taskId }] }, options })).toBe('HUMAN_REVIEW_BLOCKED');
     expect(determineRunStatus({ queue, state: { ...state, metrics: { failedTasks: 1 } }, options })).toBe('VALIDATION_FAILED');
-    expect(determineRunStatus({ queue: { tasks: [{ ...task, evidence: { source: 'UNVERIFIED' } }] }, state, options })).toBe('NO_EXECUTABLE_TASKS');
+    expect(determineRunStatus({ queue: { tasks: [{ ...task, evidence: { source: 'UNVERIFIED' } }] }, state, options })).toBe('SOURCE_VERIFICATION_REQUIRED');
   });
 });

@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-science-day-night-rhythms-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CI06_DAY_NIGHT_ACTIVITY_RHYTHMS",
+  "subject": "SCIENCE",
+  "domain": "TERRA_E_UNIVERSO",
+  "topic": "exemplos de como dias e noites orientam atividades de seres humanos e outros seres vivos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CI06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 335
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Dias e noites organizam atividades",
+    "objective": "Selecionar e explicar exemplos de como a alternância entre dia e noite pode orientar atividades diárias de pessoas e de outros seres vivos, reconhecendo que rotinas variam.",
+    "summary": "A sucessão de dias e noites ajuda a organizar muitas atividades cotidianas. Pessoas e outros seres vivos podem ter ritmos diferentes; exemplos devem ser observados sem transformar uma rotina em regra para todos.",
+    "explanation": "## 1. Observe a alternância\nA Terra passa por períodos claros e escuros que chamamos dia e noite. A sucessão desses períodos oferece referências para organizar atividades diárias.\n\n## 2. Selecione exemplos\nUma escola pode funcionar durante o dia; algumas pessoas trabalham à noite. Certos animais, como corujas de algumas espécies, costumam estar ativos à noite, enquanto muitos outros são ativos durante o dia. Observe o exemplo específico e evite dizer que todos os seres de um grupo têm a mesma rotina.\n\n## 3. Compare sem impor uma regra\nO dia e a noite orientam ritmos, mas não definem uma única rotina humana. Turnos de trabalho, cuidados, saúde, ambiente e características dos seres vivos podem variar. Use registros seguros e não exponha horários privados de colegas.",
+    "workedExample": "Em um exemplo de rotina, uma turma tem aulas durante o dia e uma equipe de cuidado do prédio trabalha à noite. A alternância entre claro e escuro ajuda a organizar esses horários; isso não significa que todas as pessoas durmam ou trabalhem no mesmo período.",
+    "commonMistake": "Afirmar que todos os animais dormem à noite, que todas as pessoas têm a mesma rotina ou que a alternância de dia e noite determina sozinha cada atividade.",
+    "tips": [
+      "Use expressões como “alguns exemplos”, “pode orientar” e “nesta situação”.",
+      "Distinga observação do ambiente de regras universais sobre pessoas ou espécies.",
+      "Não peça que estudantes revelem horários familiares, de trabalho ou de sono.",
+      "Observe animais e plantas sem capturá-los, perturbá-los ou entrar em locais inseguros."
+    ],
+    "priorKnowledge": [
+      "Reconhecer dia e noite em experiências cotidianas e imagens do céu ou do ambiente.",
+      "Organizar acontecimentos simples usando palavras como manhã, tarde e noite."
+    ],
+    "keyConcepts": [
+      "sucessão de dias e noites",
+      "ritmo de atividades diárias",
+      "observação de exemplos",
+      "atividade humana",
+      "atividade de outros seres vivos",
+      "variação de rotina",
+      "ambiente claro e escuro",
+      "limite de generalização"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "DAY_NIGHT_SUCCESSION",
+        "text": "Dia e noite se sucedem e oferecem referências temporais para atividades cotidianas."
+      },
+      {
+        "trigger": "SELECT_EXAMPLE",
+        "text": "Escolha uma atividade observada e explique como seu horário se relaciona ao dia ou à noite."
+      },
+      {
+        "trigger": "AVOID_ALL_OR_NONE",
+        "text": "Um exemplo de rotina não permite dizer que todas as pessoas ou todos os animais fazem o mesmo."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GENERALIZES_ALL_LIVING_BEINGS",
+        "action": "Compare exemplos de seres específicos e substitua “todos” por uma descrição do organismo observado."
+      },
+      {
+        "errorFocus": "ASSUMES_UNIVERSAL_HUMAN_SCHEDULE",
+        "action": "Use rotinas fictícias variadas, incluindo atividades diurnas e noturnas, sem perguntar horários privados da turma."
+      },
+      {
+        "errorFocus": "CAUSES_ACTIVITY_ONLY_BY_LIGHT",
+        "action": "Retome a ideia de que dia e noite orientam ritmos, mas ambiente, necessidades e contextos também influenciam atividades."
+      }
+    ],
+    "accessibilitySupports": [
+      "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+      "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+      "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+      "Observação segura sem perturbar animais, plantas ou habitats."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-science-day-night-rhythms-fi-activity-1",
+        "title": "Calendário de atividades da escola",
+        "instructions": "A turma organiza atividades públicas da escola em períodos de dia ou noite, sem registrar a rotina privada de estudantes.\n1. Escolher atividades escolares ou fictícias.\n2. Associar cada uma a um período observado.\n3. Montar uma sequência de dia e noite.\n4. Explicar como essa alternância ajuda a organizar horários.",
+        "steps": [
+          "Escolher atividades escolares ou fictícias.",
+          "Associar cada uma a um período observado.",
+          "Montar uma sequência de dia e noite.",
+          "Explicar como essa alternância ajuda a organizar horários."
+        ],
+        "evidence": "Calendário com atividade, período e justificativa em linguagem oral, visual ou escrita.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "associa uma atividade a um período com apoio.",
+            "developing": "organiza exemplos em dia e noite.",
+            "proficient": "explica a relação e reconhece que rotinas humanas variam."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-science-day-night-rhythms-fi-activity-2",
+        "title": "Diário de observação sem perturbar",
+        "instructions": "Usar imagens, registros autorizados ou observações feitas em segurança para comparar atividades de seres vivos em diferentes períodos.\n1. Selecionar dois exemplos de seres vivos.\n2. Identificar o período indicado pela fonte ou observação.\n3. Registrar a atividade sem perturbar o ser vivo.\n4. Comparar os exemplos e limitar a conclusão aos casos observados.",
+        "steps": [
+          "Selecionar dois exemplos de seres vivos.",
+          "Identificar o período indicado pela fonte ou observação.",
+          "Registrar a atividade sem perturbar o ser vivo.",
+          "Comparar os exemplos e limitar a conclusão aos casos observados."
+        ],
+        "evidence": "Dois registros de atividade com período, fonte da observação e conclusão sem generalização.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um exemplo com mediação.",
+            "developing": "relaciona atividade e período em dois casos.",
+            "proficient": "compara exemplos e explicita que não representam necessariamente todos os seres do grupo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-science-day-night-rhythms-fi-01",
+          "v1-science-day-night-rhythms-fi-02",
+          "v1-science-day-night-rhythms-fi-03",
+          "v1-science-day-night-rhythms-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-science-day-night-rhythms-fi-05",
+          "v1-science-day-night-rhythms-fi-06",
+          "v1-science-day-night-rhythms-fi-07",
+          "v1-science-day-night-rhythms-fi-08",
+          "v1-science-day-night-rhythms-fi-09",
+          "v1-science-day-night-rhythms-fi-10",
+          "v1-science-day-night-rhythms-fi-11",
+          "v1-science-day-night-rhythms-fi-12",
+          "v1-science-day-night-rhythms-fi-13",
+          "v1-science-day-night-rhythms-fi-14",
+          "v1-science-day-night-rhythms-fi-15",
+          "v1-science-day-night-rhythms-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-science-day-night-rhythms-fi-17",
+          "v1-science-day-night-rhythms-fi-18",
+          "v1-science-day-night-rhythms-fi-19",
+          "v1-science-day-night-rhythms-fi-20",
+          "v1-science-day-night-rhythms-fi-21",
+          "v1-science-day-night-rhythms-fi-22",
+          "v1-science-day-night-rhythms-fi-23",
+          "v1-science-day-night-rhythms-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-science-day-night-rhythms-fi-25",
+          "v1-science-day-night-rhythms-fi-26",
+          "v1-science-day-night-rhythms-fi-27",
+          "v1-science-day-night-rhythms-fi-28",
+          "v1-science-day-night-rhythms-fi-29",
+          "v1-science-day-night-rhythms-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-science-day-night-rhythms-fi-31",
+          "v1-science-day-night-rhythms-fi-32",
+          "v1-science-day-night-rhythms-fi-33",
+          "v1-science-day-night-rhythms-fi-34",
+          "v1-science-day-night-rhythms-fi-35",
+          "v1-science-day-night-rhythms-fi-36",
+          "v1-science-day-night-rhythms-fi-37",
+          "v1-science-day-night-rhythms-fi-38",
+          "v1-science-day-night-rhythms-fi-39",
+          "v1-science-day-night-rhythms-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CI06",
+        "descriptor": "Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 335
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-science-day-night-rhythms-fi-01",
+      "statement": "Uma escola tem aulas durante o dia. Como a alternância entre dia e noite pode se relacionar a esse exemplo?",
+      "prompt": "Uma escola tem aulas durante o dia. Como a alternância entre dia e noite pode se relacionar a esse exemplo?",
+      "options": [
+        "O período claro ajuda a organizar o horário das aulas nessa escola.",
+        "Todas as escolas do mundo funcionam no mesmo horário.",
+        "A noite nunca tem atividades.",
+        "A luz determina todas as atividades humanas."
+      ],
+      "correctAnswer": "O período claro ajuda a organizar o horário das aulas nessa escola.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as escolas do mundo funcionam no mesmo horário.": [
+          "RELATE_PERIOD_TO_EXAMPLE"
+        ],
+        "A noite nunca tem atividades.": [
+          "RELATE_PERIOD_TO_EXAMPLE"
+        ],
+        "A luz determina todas as atividades humanas.": [
+          "RELATE_PERIOD_TO_EXAMPLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "SCHOOL_DAY",
+      "explanation": "A resposta descreve uma rotina específica sem torná-la universal.",
+      "hint": "Fale da escola do exemplo, não de todas as escolas.",
+      "errorFocus": "RELATE_PERIOD_TO_EXAMPLE",
+      "feedback": {
+        "correct": "Boa observação: A resposta descreve uma rotina específica sem torná-la universal.",
+        "incorrect": "A resposta descreve uma rotina específica sem torná-la universal.",
+        "hint": "Fale da escola do exemplo, não de todas as escolas.",
+        "errorFocus": "RELATE_PERIOD_TO_EXAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-02",
+      "statement": "Uma fonte confiável descreve uma espécie de coruja ativa à noite. O que esse exemplo mostra?",
+      "prompt": "Uma fonte confiável descreve uma espécie de coruja ativa à noite. O que esse exemplo mostra?",
+      "options": [
+        "Todos os animais são ativos à noite.",
+        "Alguns animais podem realizar atividades durante a noite.",
+        "Nenhum animal fica ativo durante o dia.",
+        "Todas as corujas têm exatamente a mesma rotina."
+      ],
+      "correctAnswer": "Alguns animais podem realizar atividades durante a noite.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os animais são ativos à noite.": [
+          "LIMIT_ANIMAL_GENERALIZATION"
+        ],
+        "Nenhum animal fica ativo durante o dia.": [
+          "LIMIT_ANIMAL_GENERALIZATION"
+        ],
+        "Todas as corujas têm exatamente a mesma rotina.": [
+          "LIMIT_ANIMAL_GENERALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NIGHT_ANIMAL_EXAMPLE",
+      "explanation": "O exemplo permite falar daquela espécie ou caso, não de todos os animais.",
+      "hint": "Use a palavra “alguns” ao explicar o exemplo.",
+      "errorFocus": "LIMIT_ANIMAL_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: O exemplo permite falar daquela espécie ou caso, não de todos os animais.",
+        "incorrect": "O exemplo permite falar daquela espécie ou caso, não de todos os animais.",
+        "hint": "Use a palavra “alguns” ao explicar o exemplo.",
+        "errorFocus": "LIMIT_ANIMAL_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-03",
+      "statement": "O que vem depois do dia na sucessão cotidiana de períodos?",
+      "prompt": "O que vem depois do dia na sucessão cotidiana de períodos?",
+      "options": [
+        "Outro dia sem noite.",
+        "Uma estação do ano.",
+        "A noite.",
+        "Um mês inteiro."
+      ],
+      "correctAnswer": "A noite.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Outro dia sem noite.": [
+          "SEQUENCE_DAY_NIGHT"
+        ],
+        "Uma estação do ano.": [
+          "SEQUENCE_DAY_NIGHT"
+        ],
+        "Um mês inteiro.": [
+          "SEQUENCE_DAY_NIGHT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DAY_NIGHT_CYCLE",
+      "explanation": "Dia e noite se alternam como períodos cotidianos.",
+      "hint": "Pense na alternância de claro e escuro.",
+      "errorFocus": "SEQUENCE_DAY_NIGHT",
+      "feedback": {
+        "correct": "Boa observação: Dia e noite se alternam como períodos cotidianos.",
+        "incorrect": "Dia e noite se alternam como períodos cotidianos.",
+        "hint": "Pense na alternância de claro e escuro.",
+        "errorFocus": "SEQUENCE_DAY_NIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-04",
+      "statement": "Uma pessoa trabalha à noite. O que esse exemplo ajuda a perceber?",
+      "prompt": "Uma pessoa trabalha à noite. O que esse exemplo ajuda a perceber?",
+      "options": [
+        "Todas as pessoas trabalham à noite.",
+        "Ninguém trabalha durante o dia.",
+        "O dia e a noite não se sucedem.",
+        "As rotinas humanas podem acontecer em períodos diferentes."
+      ],
+      "correctAnswer": "As rotinas humanas podem acontecer em períodos diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as pessoas trabalham à noite.": [
+          "HUMAN_ROUTINES_VARY"
+        ],
+        "Ninguém trabalha durante o dia.": [
+          "HUMAN_ROUTINES_VARY"
+        ],
+        "O dia e a noite não se sucedem.": [
+          "HUMAN_ROUTINES_VARY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "VARIED_HUMAN_ROUTINE",
+      "explanation": "Um exemplo mostra variação, não uma regra para todas as pessoas.",
+      "hint": "Compare essa rotina a outras sem eleger uma como única.",
+      "errorFocus": "HUMAN_ROUTINES_VARY",
+      "feedback": {
+        "correct": "Boa observação: Um exemplo mostra variação, não uma regra para todas as pessoas.",
+        "incorrect": "Um exemplo mostra variação, não uma regra para todas as pessoas.",
+        "hint": "Compare essa rotina a outras sem eleger uma como única.",
+        "errorFocus": "HUMAN_ROUTINES_VARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-05",
+      "statement": "Uma pessoa rega plantas pela manhã. Como o período do dia orienta essa atividade no exemplo?",
+      "prompt": "Uma pessoa rega plantas pela manhã. Como o período do dia orienta essa atividade no exemplo?",
+      "options": [
+        "A atividade foi organizada para acontecer durante o dia.",
+        "Todas as plantas só podem receber água pela manhã.",
+        "A noite não existe para as plantas.",
+        "Toda pessoa deve regar plantas nesse horário."
+      ],
+      "correctAnswer": "A atividade foi organizada para acontecer durante o dia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as plantas só podem receber água pela manhã.": [
+          "DESCRIBE_ONE_ROUTINE"
+        ],
+        "A noite não existe para as plantas.": [
+          "DESCRIBE_ONE_ROUTINE"
+        ],
+        "Toda pessoa deve regar plantas nesse horário.": [
+          "DESCRIBE_ONE_ROUTINE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "MORNING_GARDEN",
+      "explanation": "A resposta descreve o horário do exemplo, sem criar regra universal.",
+      "hint": "Limite sua explicação à pessoa e às plantas citadas.",
+      "errorFocus": "DESCRIBE_ONE_ROUTINE",
+      "feedback": {
+        "correct": "Boa observação: A resposta descreve o horário do exemplo, sem criar regra universal.",
+        "incorrect": "A resposta descreve o horário do exemplo, sem criar regra universal.",
+        "hint": "Limite sua explicação à pessoa e às plantas citadas.",
+        "errorFocus": "DESCRIBE_ONE_ROUTINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-06",
+      "statement": "Uma equipe fictícia trabalha à noite cuidando de um hospital. O que a sucessão de dia e noite ajuda a organizar?",
+      "prompt": "Uma equipe fictícia trabalha à noite cuidando de um hospital. O que a sucessão de dia e noite ajuda a organizar?",
+      "options": [
+        "A mesma rotina de todas as pessoas.",
+        "O horário de trabalho dessa equipe no exemplo.",
+        "A impossibilidade de atividades diurnas.",
+        "A duração de cada vida."
+      ],
+      "correctAnswer": "O horário de trabalho dessa equipe no exemplo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A mesma rotina de todas as pessoas.": [
+          "NIGHT_ACTIVITY_SCHEDULE"
+        ],
+        "A impossibilidade de atividades diurnas.": [
+          "NIGHT_ACTIVITY_SCHEDULE"
+        ],
+        "A duração de cada vida.": [
+          "NIGHT_ACTIVITY_SCHEDULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NIGHT_SHIFT",
+      "explanation": "Dia e noite servem como referências para organizar horários de atividades.",
+      "hint": "Pense no período em que a equipe atua.",
+      "errorFocus": "NIGHT_ACTIVITY_SCHEDULE",
+      "feedback": {
+        "correct": "Boa observação: Dia e noite servem como referências para organizar horários de atividades.",
+        "incorrect": "Dia e noite servem como referências para organizar horários de atividades.",
+        "hint": "Pense no período em que a equipe atua.",
+        "errorFocus": "NIGHT_ACTIVITY_SCHEDULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-07",
+      "statement": "Uma observação registra um pássaro cantando durante a manhã. Qual frase é apoiada pelo registro?",
+      "prompt": "Uma observação registra um pássaro cantando durante a manhã. Qual frase é apoiada pelo registro?",
+      "options": [
+        "Todos os pássaros cantam apenas de manhã.",
+        "Nenhum pássaro canta à noite.",
+        "Esse pássaro foi observado cantando pela manhã naquele registro.",
+        "Todos os seres vivos seguem essa rotina."
+      ],
+      "correctAnswer": "Esse pássaro foi observado cantando pela manhã naquele registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os pássaros cantam apenas de manhã.": [
+          "OBSERVATION_SCOPE"
+        ],
+        "Nenhum pássaro canta à noite.": [
+          "OBSERVATION_SCOPE"
+        ],
+        "Todos os seres vivos seguem essa rotina.": [
+          "OBSERVATION_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BIRD_OBSERVATION",
+      "explanation": "O registro se refere ao pássaro e ao momento observados.",
+      "hint": "Inclua “neste registro” ao explicar.",
+      "errorFocus": "OBSERVATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O registro se refere ao pássaro e ao momento observados.",
+        "incorrect": "O registro se refere ao pássaro e ao momento observados.",
+        "hint": "Inclua “neste registro” ao explicar.",
+        "errorFocus": "OBSERVATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-08",
+      "statement": "Uma história mostra uma pessoa dormindo à noite. Qual é uma conclusão adequada?",
+      "prompt": "Uma história mostra uma pessoa dormindo à noite. Qual é uma conclusão adequada?",
+      "options": [
+        "Todas as pessoas dormem à noite.",
+        "Quem trabalha à noite não precisa descansar.",
+        "A noite serve apenas para dormir.",
+        "A pessoa da história descansou à noite nessa situação."
+      ],
+      "correctAnswer": "A pessoa da história descansou à noite nessa situação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as pessoas dormem à noite.": [
+          "NO_UNIVERSAL_SLEEP_CLAIM"
+        ],
+        "Quem trabalha à noite não precisa descansar.": [
+          "NO_UNIVERSAL_SLEEP_CLAIM"
+        ],
+        "A noite serve apenas para dormir.": [
+          "NO_UNIVERSAL_SLEEP_CLAIM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "HUMAN_SLEEP_EXAMPLE",
+      "explanation": "O exemplo não representa a rotina de todas as pessoas.",
+      "hint": "Fale somente sobre a personagem.",
+      "errorFocus": "NO_UNIVERSAL_SLEEP_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: O exemplo não representa a rotina de todas as pessoas.",
+        "incorrect": "O exemplo não representa a rotina de todas as pessoas.",
+        "hint": "Fale somente sobre a personagem.",
+        "errorFocus": "NO_UNIVERSAL_SLEEP_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-09",
+      "statement": "Um registro confiável mostra uma flor aberta durante o dia. O que pode ser dito?",
+      "prompt": "Um registro confiável mostra uma flor aberta durante o dia. O que pode ser dito?",
+      "options": [
+        "A flor do registro estava aberta durante o dia.",
+        "Todas as flores abrem só durante o dia.",
+        "A planta escolheu um horário como uma pessoa.",
+        "Nenhuma flor abre à noite."
+      ],
+      "correctAnswer": "A flor do registro estava aberta durante o dia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as flores abrem só durante o dia.": [
+          "PLANT_EXAMPLE_SCOPE"
+        ],
+        "A planta escolheu um horário como uma pessoa.": [
+          "PLANT_EXAMPLE_SCOPE"
+        ],
+        "Nenhuma flor abre à noite.": [
+          "PLANT_EXAMPLE_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "FLOWER_OPENING_SOURCE",
+      "explanation": "A afirmação fica no caso observado e não generaliza para todas as plantas.",
+      "hint": "Descreva o que a fonte mostra.",
+      "errorFocus": "PLANT_EXAMPLE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A afirmação fica no caso observado e não generaliza para todas as plantas.",
+        "incorrect": "A afirmação fica no caso observado e não generaliza para todas as plantas.",
+        "hint": "Descreva o que a fonte mostra.",
+        "errorFocus": "PLANT_EXAMPLE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-10",
+      "statement": "Uma escola funciona de dia e uma equipe do hospital trabalha à noite. Qual comparação é adequada?",
+      "prompt": "Uma escola funciona de dia e uma equipe do hospital trabalha à noite. Qual comparação é adequada?",
+      "options": [
+        "A escola é mais importante que o hospital.",
+        "As atividades desses exemplos acontecem em períodos diferentes.",
+        "Toda equipe hospitalar trabalha à noite.",
+        "Durante a noite não há atividades humanas."
+      ],
+      "correctAnswer": "As atividades desses exemplos acontecem em períodos diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A escola é mais importante que o hospital.": [
+          "COMPARE_PERIODS_NOT_VALUE"
+        ],
+        "Toda equipe hospitalar trabalha à noite.": [
+          "COMPARE_PERIODS_NOT_VALUE"
+        ],
+        "Durante a noite não há atividades humanas.": [
+          "COMPARE_PERIODS_NOT_VALUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCHOOL_AND_HOSPITAL",
+      "explanation": "A comparação considera os períodos sem classificar as atividades ou generalizar equipes.",
+      "hint": "Compare apenas os horários descritos.",
+      "errorFocus": "COMPARE_PERIODS_NOT_VALUE",
+      "feedback": {
+        "correct": "Boa observação: A comparação considera os períodos sem classificar as atividades ou generalizar equipes.",
+        "incorrect": "A comparação considera os períodos sem classificar as atividades ou generalizar equipes.",
+        "hint": "Compare apenas os horários descritos.",
+        "errorFocus": "COMPARE_PERIODS_NOT_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-11",
+      "statement": "Uma fonte registra morcegos ativos à noite em determinado local. O que a criança pode concluir?",
+      "prompt": "Uma fonte registra morcegos ativos à noite em determinado local. O que a criança pode concluir?",
+      "options": [
+        "Todos os morcegos são ativos sempre à noite.",
+        "Todos os mamíferos têm o mesmo ritmo.",
+        "A fonte apresenta um exemplo de atividade noturna de morcegos naquele contexto.",
+        "Morcegos não descansam."
+      ],
+      "correctAnswer": "A fonte apresenta um exemplo de atividade noturna de morcegos naquele contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os morcegos são ativos sempre à noite.": [
+          "SPECIES_AND_CONTEXT"
+        ],
+        "Todos os mamíferos têm o mesmo ritmo.": [
+          "SPECIES_AND_CONTEXT"
+        ],
+        "Morcegos não descansam.": [
+          "SPECIES_AND_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REASON",
+      "contextFamily": "BAT_OBSERVATION",
+      "explanation": "A fonte apoia um exemplo delimitado; diferentes espécies e contextos podem variar.",
+      "hint": "Não amplie a observação para todo o grupo.",
+      "errorFocus": "SPECIES_AND_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A fonte apoia um exemplo delimitado; diferentes espécies e contextos podem variar.",
+        "incorrect": "A fonte apoia um exemplo delimitado; diferentes espécies e contextos podem variar.",
+        "hint": "Não amplie a observação para todo o grupo.",
+        "errorFocus": "SPECIES_AND_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-12",
+      "statement": "Cartões mostram uma feira escolar durante o dia e um turno de cuidado à noite. O que esses cartões ilustram?",
+      "prompt": "Cartões mostram uma feira escolar durante o dia e um turno de cuidado à noite. O que esses cartões ilustram?",
+      "options": [
+        "Toda atividade deve ocorrer durante a noite.",
+        "Só existem atividades quando há luz do Sol.",
+        "As pessoas têm horários iguais.",
+        "A alternância de períodos pode orientar atividades diferentes."
+      ],
+      "correctAnswer": "A alternância de períodos pode orientar atividades diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda atividade deve ocorrer durante a noite.": [
+          "DAY_NIGHT_ORGANIZES_ACTIVITIES"
+        ],
+        "Só existem atividades quando há luz do Sol.": [
+          "DAY_NIGHT_ORGANIZES_ACTIVITIES"
+        ],
+        "As pessoas têm horários iguais.": [
+          "DAY_NIGHT_ORGANIZES_ACTIVITIES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "ROUTINE_CARDS",
+      "explanation": "Os exemplos mostram atividades organizadas em períodos diferentes.",
+      "hint": "Procure o que os dois horários têm em comum como referência.",
+      "errorFocus": "DAY_NIGHT_ORGANIZES_ACTIVITIES",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos mostram atividades organizadas em períodos diferentes.",
+        "incorrect": "Os exemplos mostram atividades organizadas em períodos diferentes.",
+        "hint": "Procure o que os dois horários têm em comum como referência.",
+        "errorFocus": "DAY_NIGHT_ORGANIZES_ACTIVITIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-13",
+      "statement": "Qual afirmação evita generalizar uma rotina?",
+      "prompt": "Qual afirmação evita generalizar uma rotina?",
+      "options": [
+        "“Algumas atividades humanas são organizadas durante o dia e outras podem ocorrer à noite.”",
+        "“Todas as pessoas fazem as mesmas coisas à noite.”",
+        "“Nenhum ser vivo fica ativo durante o dia.”",
+        "“O dia determina sozinho toda atividade.”"
+      ],
+      "correctAnswer": "“Algumas atividades humanas são organizadas durante o dia e outras podem ocorrer à noite.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Todas as pessoas fazem as mesmas coisas à noite.”": [
+          "AVOID_ALL_OR_NONE"
+        ],
+        "“Nenhum ser vivo fica ativo durante o dia.”": [
+          "AVOID_ALL_OR_NONE"
+        ],
+        "“O dia determina sozinho toda atividade.”": [
+          "AVOID_ALL_OR_NONE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "UNIVERSAL_CLAIM",
+      "explanation": "A frase reconhece variedade sem transformar exemplos em regras universais.",
+      "hint": "Escolha uma afirmação que use “algumas” ou “podem”.",
+      "errorFocus": "AVOID_ALL_OR_NONE",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece variedade sem transformar exemplos em regras universais.",
+        "incorrect": "A frase reconhece variedade sem transformar exemplos em regras universais.",
+        "hint": "Escolha uma afirmação que use “algumas” ou “podem”.",
+        "errorFocus": "AVOID_ALL_OR_NONE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-14",
+      "statement": "A turma quer observar animais à noite. Qual plano é mais seguro e respeitoso?",
+      "prompt": "A turma quer observar animais à noite. Qual plano é mais seguro e respeitoso?",
+      "options": [
+        "Entrar sozinha em um local escuro.",
+        "Usar uma fonte ou registro autorizado sem capturar nem perturbar animais.",
+        "Acordar animais para vê-los agir.",
+        "Usar luz forte diretamente nos olhos deles."
+      ],
+      "correctAnswer": "Usar uma fonte ou registro autorizado sem capturar nem perturbar animais.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Entrar sozinha em um local escuro.": [
+          "OBSERVE_WITHOUT_DISTURBANCE"
+        ],
+        "Acordar animais para vê-los agir.": [
+          "OBSERVE_WITHOUT_DISTURBANCE"
+        ],
+        "Usar luz forte diretamente nos olhos deles.": [
+          "OBSERVE_WITHOUT_DISTURBANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SAFE_OBSERVATION",
+      "explanation": "O estudo pode usar fontes seguras e evitar perturbar seres vivos ou colocar estudantes em risco.",
+      "hint": "Escolha uma observação que não incomode o animal.",
+      "errorFocus": "OBSERVE_WITHOUT_DISTURBANCE",
+      "feedback": {
+        "correct": "Boa observação: O estudo pode usar fontes seguras e evitar perturbar seres vivos ou colocar estudantes em risco.",
+        "incorrect": "O estudo pode usar fontes seguras e evitar perturbar seres vivos ou colocar estudantes em risco.",
+        "hint": "Escolha uma observação que não incomode o animal.",
+        "errorFocus": "OBSERVE_WITHOUT_DISTURBANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-15",
+      "statement": "Uma família fictícia prepara o jantar no começo da noite. O que o exemplo ilustra?",
+      "prompt": "Uma família fictícia prepara o jantar no começo da noite. O que o exemplo ilustra?",
+      "options": [
+        "Todas as famílias jantam no mesmo horário.",
+        "O jantar só existe à noite.",
+        "Uma atividade humana pode ser organizada para acontecer à noite.",
+        "As rotinas são determinadas apenas pela luz."
+      ],
+      "correctAnswer": "Uma atividade humana pode ser organizada para acontecer à noite.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as famílias jantam no mesmo horário.": [
+          "HUMAN_ACTIVITY_VARIATION"
+        ],
+        "O jantar só existe à noite.": [
+          "HUMAN_ACTIVITY_VARIATION"
+        ],
+        "As rotinas são determinadas apenas pela luz.": [
+          "HUMAN_ACTIVITY_VARIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DAYLIGHT_ACTIVITY",
+      "explanation": "O exemplo ilustra uma possibilidade, não uma regra para todas as famílias.",
+      "hint": "Fale “nesta história” ao descrever o horário.",
+      "errorFocus": "HUMAN_ACTIVITY_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: O exemplo ilustra uma possibilidade, não uma regra para todas as famílias.",
+        "incorrect": "O exemplo ilustra uma possibilidade, não uma regra para todas as famílias.",
+        "hint": "Fale “nesta história” ao descrever o horário.",
+        "errorFocus": "HUMAN_ACTIVITY_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-16",
+      "statement": "Uma pessoa escolhe trabalhar à noite. Qual frase evita dizer que a noite é a única causa da escolha?",
+      "prompt": "Uma pessoa escolhe trabalhar à noite. Qual frase evita dizer que a noite é a única causa da escolha?",
+      "options": [
+        "A noite obriga todas as pessoas a trabalhar.",
+        "Só a luz decide a profissão.",
+        "Nenhuma outra condição importa.",
+        "O horário noturno organiza o turno descrito; outros fatores também podem influenciar a rotina."
+      ],
+      "correctAnswer": "O horário noturno organiza o turno descrito; outros fatores também podem influenciar a rotina.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A noite obriga todas as pessoas a trabalhar.": [
+          "MULTIPLE_FACTORS"
+        ],
+        "Só a luz decide a profissão.": [
+          "MULTIPLE_FACTORS"
+        ],
+        "Nenhuma outra condição importa.": [
+          "MULTIPLE_FACTORS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PERIOD_VS_CAUSE",
+      "explanation": "O período é uma referência temporal, mas rotinas também dependem de outros contextos.",
+      "hint": "Não reduza uma escolha a uma única causa.",
+      "errorFocus": "MULTIPLE_FACTORS",
+      "feedback": {
+        "correct": "Boa observação: O período é uma referência temporal, mas rotinas também dependem de outros contextos.",
+        "incorrect": "O período é uma referência temporal, mas rotinas também dependem de outros contextos.",
+        "hint": "Não reduza uma escolha a uma única causa.",
+        "errorFocus": "MULTIPLE_FACTORS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-17",
+      "statement": "Uma biblioteca fictícia abre pela manhã e outra equipe organiza livros à noite. Como a sucessão de períodos aparece?",
+      "prompt": "Uma biblioteca fictícia abre pela manhã e outra equipe organiza livros à noite. Como a sucessão de períodos aparece?",
+      "options": [
+        "Os períodos claro e escuro ajudam a organizar turnos diferentes.",
+        "Todas as bibliotecas funcionam igual.",
+        "A noite impede qualquer trabalho.",
+        "A manhã e a noite não têm relação com horários."
+      ],
+      "correctAnswer": "Os períodos claro e escuro ajudam a organizar turnos diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as bibliotecas funcionam igual.": [
+          "TRANSFER_SCHEDULE_EXAMPLE"
+        ],
+        "A noite impede qualquer trabalho.": [
+          "TRANSFER_SCHEDULE_EXAMPLE"
+        ],
+        "A manhã e a noite não têm relação com horários.": [
+          "TRANSFER_SCHEDULE_EXAMPLE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_LIBRARY_SHIFT",
+      "explanation": "A alternância de dia e noite pode ser referência para organizar atividades.",
+      "hint": "Identifique o período de cada equipe.",
+      "errorFocus": "TRANSFER_SCHEDULE_EXAMPLE",
+      "feedback": {
+        "correct": "Boa observação: A alternância de dia e noite pode ser referência para organizar atividades.",
+        "incorrect": "A alternância de dia e noite pode ser referência para organizar atividades.",
+        "hint": "Identifique o período de cada equipe.",
+        "errorFocus": "TRANSFER_SCHEDULE_EXAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-18",
+      "statement": "Um documentário mostra um animal procurando alimento à noite. O que é apropriado registrar?",
+      "prompt": "Um documentário mostra um animal procurando alimento à noite. O que é apropriado registrar?",
+      "options": [
+        "Todos os animais procuram alimento à noite.",
+        "Na cena, aquele animal procura alimento durante a noite.",
+        "O animal nunca descansa.",
+        "A cena representa todos os habitats."
+      ],
+      "correctAnswer": "Na cena, aquele animal procura alimento durante a noite.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os animais procuram alimento à noite.": [
+          "TRANSFER_RECORD_SCENE"
+        ],
+        "O animal nunca descansa.": [
+          "TRANSFER_RECORD_SCENE"
+        ],
+        "A cena representa todos os habitats.": [
+          "TRANSFER_RECORD_SCENE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NEW_ANIMAL_SOURCE",
+      "explanation": "O registro descreve uma cena delimitada, sem generalizar espécie ou habitat.",
+      "hint": "Use “na cena” para indicar a evidência.",
+      "errorFocus": "TRANSFER_RECORD_SCENE",
+      "feedback": {
+        "correct": "Boa observação: O registro descreve uma cena delimitada, sem generalizar espécie ou habitat.",
+        "incorrect": "O registro descreve uma cena delimitada, sem generalizar espécie ou habitat.",
+        "hint": "Use “na cena” para indicar a evidência.",
+        "errorFocus": "TRANSFER_RECORD_SCENE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-19",
+      "statement": "Dois personagens têm rotinas diferentes: um estuda de manhã e outro trabalha à noite. O que a comparação mostra?",
+      "prompt": "Dois personagens têm rotinas diferentes: um estuda de manhã e outro trabalha à noite. O que a comparação mostra?",
+      "options": [
+        "Um personagem tem uma rotina melhor.",
+        "Todos deveriam copiar um deles.",
+        "Atividades humanas podem ser organizadas em períodos diferentes.",
+        "Ninguém pode descansar em outro horário."
+      ],
+      "correctAnswer": "Atividades humanas podem ser organizadas em períodos diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um personagem tem uma rotina melhor.": [
+          "TRANSFER_HUMAN_VARIATION"
+        ],
+        "Todos deveriam copiar um deles.": [
+          "TRANSFER_HUMAN_VARIATION"
+        ],
+        "Ninguém pode descansar em outro horário.": [
+          "TRANSFER_HUMAN_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_TWO_ROUTINES",
+      "explanation": "A comparação evidencia variação de rotina sem hierarquia.",
+      "hint": "Nomeie a diferença de períodos sem julgar as pessoas.",
+      "errorFocus": "TRANSFER_HUMAN_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A comparação evidencia variação de rotina sem hierarquia.",
+        "incorrect": "A comparação evidencia variação de rotina sem hierarquia.",
+        "hint": "Nomeie a diferença de períodos sem julgar as pessoas.",
+        "errorFocus": "TRANSFER_HUMAN_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-20",
+      "statement": "Uma observação feita em dois dias registra uma planta fechada à noite e aberta de manhã. Como relatar?",
+      "prompt": "Uma observação feita em dois dias registra uma planta fechada à noite e aberta de manhã. Como relatar?",
+      "options": [
+        "Todas as plantas fazem sempre o mesmo.",
+        "A planta decidiu imitar as pessoas.",
+        "A observação prova o que ocorre em todos os lugares.",
+        "A planta foi observada fechada à noite e aberta pela manhã nesses registros."
+      ],
+      "correctAnswer": "A planta foi observada fechada à noite e aberta pela manhã nesses registros.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as plantas fazem sempre o mesmo.": [
+          "TRANSFER_PLANT_RECORD_LIMIT"
+        ],
+        "A planta decidiu imitar as pessoas.": [
+          "TRANSFER_PLANT_RECORD_LIMIT"
+        ],
+        "A observação prova o que ocorre em todos os lugares.": [
+          "TRANSFER_PLANT_RECORD_LIMIT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "NEW_PLANT_RECORD",
+      "explanation": "O relato mantém-se nos períodos e registros observados.",
+      "hint": "Mencione a fonte e os dois momentos.",
+      "errorFocus": "TRANSFER_PLANT_RECORD_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O relato mantém-se nos períodos e registros observados.",
+        "incorrect": "O relato mantém-se nos períodos e registros observados.",
+        "hint": "Mencione a fonte e os dois momentos.",
+        "errorFocus": "TRANSFER_PLANT_RECORD_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-21",
+      "statement": "Por que não devemos pedir que cada estudante revele o horário em que sua família trabalha?",
+      "prompt": "Por que não devemos pedir que cada estudante revele o horário em que sua família trabalha?",
+      "options": [
+        "Porque rotinas são privadas e exemplos fictícios ou públicos permitem estudar o conceito.",
+        "Porque horários nunca mudam.",
+        "Porque só há uma rotina correta.",
+        "Porque atividades noturnas não existem."
+      ],
+      "correctAnswer": "Porque rotinas são privadas e exemplos fictícios ou públicos permitem estudar o conceito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque horários nunca mudam.": [
+          "TRANSFER_PROTECT_SCHEDULE_PRIVACY"
+        ],
+        "Porque só há uma rotina correta.": [
+          "TRANSFER_PROTECT_SCHEDULE_PRIVACY"
+        ],
+        "Porque atividades noturnas não existem.": [
+          "TRANSFER_PROTECT_SCHEDULE_PRIVACY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_PRIVATE_SCHEDULE",
+      "explanation": "A aula pode discutir variação de rotinas sem expor informações familiares.",
+      "hint": "Pense em um exemplo público ou inventado.",
+      "errorFocus": "TRANSFER_PROTECT_SCHEDULE_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: A aula pode discutir variação de rotinas sem expor informações familiares.",
+        "incorrect": "A aula pode discutir variação de rotinas sem expor informações familiares.",
+        "hint": "Pense em um exemplo público ou inventado.",
+        "errorFocus": "TRANSFER_PROTECT_SCHEDULE_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-22",
+      "statement": "Uma criança diz “todos os animais dormem à noite”. Qual resposta ajuda a investigar a ideia?",
+      "prompt": "Uma criança diz “todos os animais dormem à noite”. Qual resposta ajuda a investigar a ideia?",
+      "options": [
+        "Confirmar sem consultar exemplos.",
+        "Comparar fontes sobre animais diferentes e registrar os exemplos observados.",
+        "Dizer que nenhum animal descansa.",
+        "Acordar animais para testar."
+      ],
+      "correctAnswer": "Comparar fontes sobre animais diferentes e registrar os exemplos observados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Confirmar sem consultar exemplos.": [
+          "TRANSFER_CHECK_MULTIPLE_EXAMPLES"
+        ],
+        "Dizer que nenhum animal descansa.": [
+          "TRANSFER_CHECK_MULTIPLE_EXAMPLES"
+        ],
+        "Acordar animais para testar.": [
+          "TRANSFER_CHECK_MULTIPLE_EXAMPLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_GENERALIZATION",
+      "explanation": "Fontes e exemplos distintos ajudam a revisar uma generalização com segurança.",
+      "hint": "Investigue sem perturbar animais.",
+      "errorFocus": "TRANSFER_CHECK_MULTIPLE_EXAMPLES",
+      "feedback": {
+        "correct": "Boa observação: Fontes e exemplos distintos ajudam a revisar uma generalização com segurança.",
+        "incorrect": "Fontes e exemplos distintos ajudam a revisar uma generalização com segurança.",
+        "hint": "Investigue sem perturbar animais.",
+        "errorFocus": "TRANSFER_CHECK_MULTIPLE_EXAMPLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-23",
+      "statement": "Qual afirmação explica melhor como dias e noites orientam ritmos?",
+      "prompt": "Qual afirmação explica melhor como dias e noites orientam ritmos?",
+      "options": [
+        "A alternância determina sozinha todas as atividades.",
+        "Todos os seres têm o mesmo ritmo.",
+        "A alternância oferece referências para atividades, enquanto rotinas e seres vivos variam.",
+        "Dia e noite não influenciam nenhum horário."
+      ],
+      "correctAnswer": "A alternância oferece referências para atividades, enquanto rotinas e seres vivos variam.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A alternância determina sozinha todas as atividades.": [
+          "TRANSFER_BALANCED_EXPLANATION"
+        ],
+        "Todos os seres têm o mesmo ritmo.": [
+          "TRANSFER_BALANCED_EXPLANATION"
+        ],
+        "Dia e noite não influenciam nenhum horário.": [
+          "TRANSFER_BALANCED_EXPLANATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEW_DAY_NIGHT_CLAIM",
+      "explanation": "A resposta reconhece a referência temporal e preserva a diversidade de ritmos.",
+      "hint": "Inclua influência e variação na mesma explicação.",
+      "errorFocus": "TRANSFER_BALANCED_EXPLANATION",
+      "feedback": {
+        "correct": "Boa observação: A resposta reconhece a referência temporal e preserva a diversidade de ritmos.",
+        "incorrect": "A resposta reconhece a referência temporal e preserva a diversidade de ritmos.",
+        "hint": "Inclua influência e variação na mesma explicação.",
+        "errorFocus": "TRANSFER_BALANCED_EXPLANATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-24",
+      "statement": "Uma turma cria um calendário fictício com atividades em períodos diferentes. O que precisa acompanhar cada cartão?",
+      "prompt": "Uma turma cria um calendário fictício com atividades em períodos diferentes. O que precisa acompanhar cada cartão?",
+      "options": [
+        "O horário privado de um colega.",
+        "Uma regra para todas as pessoas.",
+        "Uma afirmação sobre todos os animais.",
+        "O período do exemplo e a explicação de como ele organiza a atividade."
+      ],
+      "correctAnswer": "O período do exemplo e a explicação de como ele organiza a atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O horário privado de um colega.": [
+          "TRANSFER_EVIDENCE_AND_SCOPE"
+        ],
+        "Uma regra para todas as pessoas.": [
+          "TRANSFER_EVIDENCE_AND_SCOPE"
+        ],
+        "Uma afirmação sobre todos os animais.": [
+          "TRANSFER_EVIDENCE_AND_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_ACTIVITY_PLANNER",
+      "explanation": "O registro deve conectar atividade, período e escopo do exemplo.",
+      "hint": "Anote período, atividade e contexto.",
+      "errorFocus": "TRANSFER_EVIDENCE_AND_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O registro deve conectar atividade, período e escopo do exemplo.",
+        "incorrect": "O registro deve conectar atividade, período e escopo do exemplo.",
+        "hint": "Anote período, atividade e contexto.",
+        "errorFocus": "TRANSFER_EVIDENCE_AND_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-25",
+      "statement": "O que a sucessão de dias e noites oferece para organizar atividades?",
+      "prompt": "O que a sucessão de dias e noites oferece para organizar atividades?",
+      "options": [
+        "Referências de períodos claros e escuros ao longo do cotidiano.",
+        "Um horário igual para todas as pessoas.",
+        "Uma regra universal para animais.",
+        "A garantia de que toda atividade aconteça com luz."
+      ],
+      "correctAnswer": "Referências de períodos claros e escuros ao longo do cotidiano.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um horário igual para todas as pessoas.": [
+          "LOCK_IN_TIME_REFERENCE"
+        ],
+        "Uma regra universal para animais.": [
+          "LOCK_IN_TIME_REFERENCE"
+        ],
+        "A garantia de que toda atividade aconteça com luz.": [
+          "LOCK_IN_TIME_REFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_SUCCESSION",
+      "explanation": "A alternância oferece referências temporais, não uma rotina única.",
+      "hint": "Pense em dia e noite como períodos que se sucedem.",
+      "errorFocus": "LOCK_IN_TIME_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A alternância oferece referências temporais, não uma rotina única.",
+        "incorrect": "A alternância oferece referências temporais, não uma rotina única.",
+        "hint": "Pense em dia e noite como períodos que se sucedem.",
+        "errorFocus": "LOCK_IN_TIME_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-26",
+      "statement": "Qual é um exemplo delimitado de atividade orientada pelo período?",
+      "prompt": "Qual é um exemplo delimitado de atividade orientada pelo período?",
+      "options": [
+        "“Todas as pessoas fazem tudo durante o dia.”",
+        "“Nesta escola, as aulas acontecem durante o dia.”",
+        "“Nenhum animal fica ativo à noite.”",
+        "“A noite impede qualquer atividade.”"
+      ],
+      "correctAnswer": "“Nesta escola, as aulas acontecem durante o dia.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Todas as pessoas fazem tudo durante o dia.”": [
+          "LOCK_IN_LIMITED_EXAMPLE"
+        ],
+        "“Nenhum animal fica ativo à noite.”": [
+          "LOCK_IN_LIMITED_EXAMPLE"
+        ],
+        "“A noite impede qualquer atividade.”": [
+          "LOCK_IN_LIMITED_EXAMPLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "LOCK_IN_EXAMPLE",
+      "explanation": "A frase descreve uma escola específica e evita generalizar.",
+      "hint": "Escolha um caso situado, não uma regra para todos.",
+      "errorFocus": "LOCK_IN_LIMITED_EXAMPLE",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve uma escola específica e evita generalizar.",
+        "incorrect": "A frase descreve uma escola específica e evita generalizar.",
+        "hint": "Escolha um caso situado, não uma regra para todos.",
+        "errorFocus": "LOCK_IN_LIMITED_EXAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-27",
+      "statement": "Um animal foi visto ativo à noite. O que não se pode concluir só com essa observação?",
+      "prompt": "Um animal foi visto ativo à noite. O que não se pode concluir só com essa observação?",
+      "options": [
+        "Que aquele animal estava ativo naquela noite.",
+        "Que a observação ocorreu no período escuro.",
+        "Que todos os animais da mesma classe têm exatamente o mesmo ritmo.",
+        "Que o registro contém um exemplo."
+      ],
+      "correctAnswer": "Que todos os animais da mesma classe têm exatamente o mesmo ritmo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que aquele animal estava ativo naquela noite.": [
+          "LOCK_IN_NOT_ALL_ANIMALS"
+        ],
+        "Que a observação ocorreu no período escuro.": [
+          "LOCK_IN_NOT_ALL_ANIMALS"
+        ],
+        "Que o registro contém um exemplo.": [
+          "LOCK_IN_NOT_ALL_ANIMALS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_ANIMALS",
+      "explanation": "Uma observação individual não representa automaticamente todos os animais.",
+      "hint": "Separe o caso observado da generalização.",
+      "errorFocus": "LOCK_IN_NOT_ALL_ANIMALS",
+      "feedback": {
+        "correct": "Boa observação: Uma observação individual não representa automaticamente todos os animais.",
+        "incorrect": "Uma observação individual não representa automaticamente todos os animais.",
+        "hint": "Separe o caso observado da generalização.",
+        "errorFocus": "LOCK_IN_NOT_ALL_ANIMALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-28",
+      "statement": "Qual frase respeita diferenças de rotina entre pessoas?",
+      "prompt": "Qual frase respeita diferenças de rotina entre pessoas?",
+      "options": [
+        "“Todas devem dormir na mesma hora.”",
+        "“Quem trabalha à noite não descansa.”",
+        "“Só existe uma rotina saudável para todos.”",
+        "“Pessoas podem estudar, trabalhar e descansar em horários diferentes.”"
+      ],
+      "correctAnswer": "“Pessoas podem estudar, trabalhar e descansar em horários diferentes.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Todas devem dormir na mesma hora.”": [
+          "LOCK_IN_NO_UNIVERSAL_SCHEDULE"
+        ],
+        "“Quem trabalha à noite não descansa.”": [
+          "LOCK_IN_NO_UNIVERSAL_SCHEDULE"
+        ],
+        "“Só existe uma rotina saudável para todos.”": [
+          "LOCK_IN_NO_UNIVERSAL_SCHEDULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_HUMAN_ROUTINES",
+      "explanation": "A frase reconhece variação e não impõe um único horário humano.",
+      "hint": "Escolha a frase que permite rotinas diferentes.",
+      "errorFocus": "LOCK_IN_NO_UNIVERSAL_SCHEDULE",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece variação e não impõe um único horário humano.",
+        "incorrect": "A frase reconhece variação e não impõe um único horário humano.",
+        "hint": "Escolha a frase que permite rotinas diferentes.",
+        "errorFocus": "LOCK_IN_NO_UNIVERSAL_SCHEDULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-29",
+      "statement": "Qual método é adequado para estudar atividade de seres vivos durante a noite?",
+      "prompt": "Qual método é adequado para estudar atividade de seres vivos durante a noite?",
+      "options": [
+        "Consultar registros confiáveis ou observar com segurança sem perturbar os seres vivos.",
+        "Capturar animais para mantê-los acordados.",
+        "Entrar sem adulto em áreas escuras.",
+        "Apontar luz intensa para os olhos de um animal."
+      ],
+      "correctAnswer": "Consultar registros confiáveis ou observar com segurança sem perturbar os seres vivos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Capturar animais para mantê-los acordados.": [
+          "LOCK_IN_SAFE_OBSERVATION"
+        ],
+        "Entrar sem adulto em áreas escuras.": [
+          "LOCK_IN_SAFE_OBSERVATION"
+        ],
+        "Apontar luz intensa para os olhos de um animal.": [
+          "LOCK_IN_SAFE_OBSERVATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_SAFE_METHOD",
+      "explanation": "A aprendizagem não requer risco nem perturbação dos seres vivos.",
+      "hint": "Escolha uma fonte segura e respeitosa.",
+      "errorFocus": "LOCK_IN_SAFE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem não requer risco nem perturbação dos seres vivos.",
+        "incorrect": "A aprendizagem não requer risco nem perturbação dos seres vivos.",
+        "hint": "Escolha uma fonte segura e respeitosa.",
+        "errorFocus": "LOCK_IN_SAFE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-30",
+      "statement": "Qual anotação combina atividade, período e limite da fonte?",
+      "prompt": "Qual anotação combina atividade, período e limite da fonte?",
+      "options": [
+        "“Todos os animais ficam acordados à noite.”",
+        "“Na imagem, uma coruja está ativa à noite; esse exemplo não descreve todos os animais.”",
+        "“A imagem prova como cada coruja vive.”",
+        "“Nenhuma atividade ocorre durante o dia.”"
+      ],
+      "correctAnswer": "“Na imagem, uma coruja está ativa à noite; esse exemplo não descreve todos os animais.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Todos os animais ficam acordados à noite.”": [
+          "LOCK_IN_EVIDENCE_SCOPE"
+        ],
+        "“A imagem prova como cada coruja vive.”": [
+          "LOCK_IN_EVIDENCE_SCOPE"
+        ],
+        "“Nenhuma atividade ocorre durante o dia.”": [
+          "LOCK_IN_EVIDENCE_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LOCK_IN_EVIDENCE",
+      "explanation": "A anotação descreve a imagem e indica o limite da generalização.",
+      "hint": "Registre o caso e diga o que ele não representa.",
+      "errorFocus": "LOCK_IN_EVIDENCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A anotação descreve a imagem e indica o limite da generalização.",
+        "incorrect": "A anotação descreve a imagem e indica o limite da generalização.",
+        "hint": "Registre o caso e diga o que ele não representa.",
+        "errorFocus": "LOCK_IN_EVIDENCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-31",
+      "statement": "Quais períodos se alternam na sucessão cotidiana estudada?",
+      "prompt": "Quais períodos se alternam na sucessão cotidiana estudada?",
+      "options": [
+        "Duas estações seguidas.",
+        "Dois meses sem mudança.",
+        "Dia e noite.",
+        "Somente manhã e tarde."
+      ],
+      "correctAnswer": "Dia e noite.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Duas estações seguidas.": [
+          "REVIEW_DAY_NIGHT"
+        ],
+        "Dois meses sem mudança.": [
+          "REVIEW_DAY_NIGHT"
+        ],
+        "Somente manhã e tarde.": [
+          "REVIEW_DAY_NIGHT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_SEQUENCE",
+      "explanation": "O dia e a noite se sucedem ao longo do cotidiano.",
+      "hint": "Pense em períodos claro e escuro.",
+      "errorFocus": "REVIEW_DAY_NIGHT",
+      "feedback": {
+        "correct": "Boa observação: O dia e a noite se sucedem ao longo do cotidiano.",
+        "incorrect": "O dia e a noite se sucedem ao longo do cotidiano.",
+        "hint": "Pense em períodos claro e escuro.",
+        "errorFocus": "REVIEW_DAY_NIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-32",
+      "statement": "Qual frase apresenta um exemplo de atividade humana ligada a um período?",
+      "prompt": "Qual frase apresenta um exemplo de atividade humana ligada a um período?",
+      "options": [
+        "“Todas as pessoas têm a mesma rotina.”",
+        "“Ninguém trabalha à noite.”",
+        "“Os animais seguem um horário igual.”",
+        "“Nesta escola, as aulas ocorrem durante o dia.”"
+      ],
+      "correctAnswer": "“Nesta escola, as aulas ocorrem durante o dia.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Todas as pessoas têm a mesma rotina.”": [
+          "REVIEW_EXAMPLE"
+        ],
+        "“Ninguém trabalha à noite.”": [
+          "REVIEW_EXAMPLE"
+        ],
+        "“Os animais seguem um horário igual.”": [
+          "REVIEW_EXAMPLE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_ACTIVITY",
+      "explanation": "A frase associa uma atividade a um período em um contexto específico.",
+      "hint": "Procure uma atividade e um período.",
+      "errorFocus": "REVIEW_EXAMPLE",
+      "feedback": {
+        "correct": "Boa observação: A frase associa uma atividade a um período em um contexto específico.",
+        "incorrect": "A frase associa uma atividade a um período em um contexto específico.",
+        "hint": "Procure uma atividade e um período.",
+        "errorFocus": "REVIEW_EXAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-33",
+      "statement": "Uma pessoa trabalha à noite. O que podemos dizer?",
+      "prompt": "Uma pessoa trabalha à noite. O que podemos dizer?",
+      "options": [
+        "É um exemplo de rotina humana que acontece à noite.",
+        "Todas as pessoas trabalham à noite.",
+        "A pessoa nunca descansa.",
+        "Nenhuma atividade ocorre de dia."
+      ],
+      "correctAnswer": "É um exemplo de rotina humana que acontece à noite.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as pessoas trabalham à noite.": [
+          "REVIEW_NOT_UNIVERSAL"
+        ],
+        "A pessoa nunca descansa.": [
+          "REVIEW_NOT_UNIVERSAL"
+        ],
+        "Nenhuma atividade ocorre de dia.": [
+          "REVIEW_NOT_UNIVERSAL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_VARIATION",
+      "explanation": "Um caso ilustra uma possibilidade sem representar todas as rotinas.",
+      "hint": "Fale apenas da pessoa do exemplo.",
+      "errorFocus": "REVIEW_NOT_UNIVERSAL",
+      "feedback": {
+        "correct": "Boa observação: Um caso ilustra uma possibilidade sem representar todas as rotinas.",
+        "incorrect": "Um caso ilustra uma possibilidade sem representar todas as rotinas.",
+        "hint": "Fale apenas da pessoa do exemplo.",
+        "errorFocus": "REVIEW_NOT_UNIVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-34",
+      "statement": "Uma fonte mostra uma espécie ativa durante certo período. Qual cuidado devemos ter?",
+      "prompt": "Uma fonte mostra uma espécie ativa durante certo período. Qual cuidado devemos ter?",
+      "options": [
+        "Generalizar para todos os seres vivos.",
+        "Não afirmar que todos os animais têm o mesmo ritmo com base em um exemplo.",
+        "Perturbar animais para conferir.",
+        "Ignorar o contexto da fonte."
+      ],
+      "correctAnswer": "Não afirmar que todos os animais têm o mesmo ritmo com base em um exemplo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Generalizar para todos os seres vivos.": [
+          "REVIEW_SCOPE"
+        ],
+        "Perturbar animais para conferir.": [
+          "REVIEW_SCOPE"
+        ],
+        "Ignorar o contexto da fonte.": [
+          "REVIEW_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_ANIMAL",
+      "explanation": "A conclusão precisa respeitar o organismo e o contexto observados.",
+      "hint": "Lembre-se de que um exemplo não é todos.",
+      "errorFocus": "REVIEW_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão precisa respeitar o organismo e o contexto observados.",
+        "incorrect": "A conclusão precisa respeitar o organismo e o contexto observados.",
+        "hint": "Lembre-se de que um exemplo não é todos.",
+        "errorFocus": "REVIEW_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-35",
+      "statement": "Como dia e noite podem orientar uma rotina?",
+      "prompt": "Como dia e noite podem orientar uma rotina?",
+      "options": [
+        "Determinam sozinhos toda escolha humana.",
+        "Impedem atividades noturnas.",
+        "Servem como referências para planejar quando algumas atividades acontecem.",
+        "Tornam todas as rotinas iguais."
+      ],
+      "correctAnswer": "Servem como referências para planejar quando algumas atividades acontecem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Determinam sozinhos toda escolha humana.": [
+          "REVIEW_INFLUENCE"
+        ],
+        "Impedem atividades noturnas.": [
+          "REVIEW_INFLUENCE"
+        ],
+        "Tornam todas as rotinas iguais.": [
+          "REVIEW_INFLUENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_ORGANIZE",
+      "explanation": "A alternância orienta períodos, sem determinar toda rotina.",
+      "hint": "Use “referência” em vez de “regra para todos”.",
+      "errorFocus": "REVIEW_INFLUENCE",
+      "feedback": {
+        "correct": "Boa observação: A alternância orienta períodos, sem determinar toda rotina.",
+        "incorrect": "A alternância orienta períodos, sem determinar toda rotina.",
+        "hint": "Use “referência” em vez de “regra para todos”.",
+        "errorFocus": "REVIEW_INFLUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-36",
+      "statement": "Qual informação não é necessária para discutir ritmos diários em sala?",
+      "prompt": "Qual informação não é necessária para discutir ritmos diários em sala?",
+      "options": [
+        "Um exemplo fictício de atividade noturna.",
+        "Uma imagem autorizada de dia e noite.",
+        "Um calendário público da escola.",
+        "O horário privado de trabalho da família de cada estudante."
+      ],
+      "correctAnswer": "O horário privado de trabalho da família de cada estudante.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um exemplo fictício de atividade noturna.": [
+          "REVIEW_PRIVACY"
+        ],
+        "Uma imagem autorizada de dia e noite.": [
+          "REVIEW_PRIVACY"
+        ],
+        "Um calendário público da escola.": [
+          "REVIEW_PRIVACY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_PRIVACY",
+      "explanation": "Exemplos não privados permitem estudar o tema sem expor famílias.",
+      "hint": "Escolha o dado pessoal que pode ser evitado.",
+      "errorFocus": "REVIEW_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Exemplos não privados permitem estudar o tema sem expor famílias.",
+        "incorrect": "Exemplos não privados permitem estudar o tema sem expor famílias.",
+        "hint": "Escolha o dado pessoal que pode ser evitado.",
+        "errorFocus": "REVIEW_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-37",
+      "statement": "Qual plano de observação é seguro?",
+      "prompt": "Qual plano de observação é seguro?",
+      "options": [
+        "Usar um vídeo confiável de animal noturno sem perturbá-lo.",
+        "Acordar o animal para observá-lo.",
+        "Entrar sozinho em um habitat à noite.",
+        "Capturar o animal para a sala."
+      ],
+      "correctAnswer": "Usar um vídeo confiável de animal noturno sem perturbá-lo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Acordar o animal para observá-lo.": [
+          "REVIEW_SAFETY"
+        ],
+        "Entrar sozinho em um habitat à noite.": [
+          "REVIEW_SAFETY"
+        ],
+        "Capturar o animal para a sala.": [
+          "REVIEW_SAFETY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_SAFE",
+      "explanation": "Registros seguros permitem aprender sem colocar pessoas ou animais em risco.",
+      "hint": "Escolha uma fonte que não perturbe o ser vivo.",
+      "errorFocus": "REVIEW_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Registros seguros permitem aprender sem colocar pessoas ou animais em risco.",
+        "incorrect": "Registros seguros permitem aprender sem colocar pessoas ou animais em risco.",
+        "hint": "Escolha uma fonte que não perturbe o ser vivo.",
+        "errorFocus": "REVIEW_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-38",
+      "statement": "Qual frase combina a influência dos períodos com a diversidade de ritmos?",
+      "prompt": "Qual frase combina a influência dos períodos com a diversidade de ritmos?",
+      "options": [
+        "“Todos seguem a mesma rotina.”",
+        "“Dia e noite ajudam a organizar atividades, e as rotinas variam entre pessoas e seres vivos.”",
+        "“A noite impede qualquer atividade.”",
+        "“O período não serve como referência.”"
+      ],
+      "correctAnswer": "“Dia e noite ajudam a organizar atividades, e as rotinas variam entre pessoas e seres vivos.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Todos seguem a mesma rotina.”": [
+          "REVIEW_BALANCED_CLAIM"
+        ],
+        "“A noite impede qualquer atividade.”": [
+          "REVIEW_BALANCED_CLAIM"
+        ],
+        "“O período não serve como referência.”": [
+          "REVIEW_BALANCED_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_BALANCE",
+      "explanation": "A frase reconhece a referência temporal e a diversidade de atividades.",
+      "hint": "Inclua a sucessão e a variação.",
+      "errorFocus": "REVIEW_BALANCED_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece a referência temporal e a diversidade de atividades.",
+        "incorrect": "A frase reconhece a referência temporal e a diversidade de atividades.",
+        "hint": "Inclua a sucessão e a variação.",
+        "errorFocus": "REVIEW_BALANCED_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-39",
+      "statement": "Qual registro está apoiado em uma observação específica?",
+      "prompt": "Qual registro está apoiado em uma observação específica?",
+      "options": [
+        "“Todos os animais procuram alimento à noite.”",
+        "“Esse animal nunca descansa.”",
+        "“No vídeo, o animal aparece procurando alimento durante a noite.”",
+        "“Toda espécie vive do mesmo modo.”"
+      ],
+      "correctAnswer": "“No vídeo, o animal aparece procurando alimento durante a noite.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Todos os animais procuram alimento à noite.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ],
+        "“Esse animal nunca descansa.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ],
+        "“Toda espécie vive do mesmo modo.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_EVIDENCE",
+      "explanation": "O registro descreve o que aparece na fonte, sem extrapolar.",
+      "hint": "Use “no vídeo” para delimitar a evidência.",
+      "errorFocus": "REVIEW_OBSERVABLE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: O registro descreve o que aparece na fonte, sem extrapolar.",
+        "incorrect": "O registro descreve o que aparece na fonte, sem extrapolar.",
+        "hint": "Use “no vídeo” para delimitar a evidência.",
+        "errorFocus": "REVIEW_OBSERVABLE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-day-night-rhythms-fi-40",
+      "statement": "Uma criança diz que todos os animais dormem à noite. Qual próximo passo ajuda a investigar?",
+      "prompt": "Uma criança diz que todos os animais dormem à noite. Qual próximo passo ajuda a investigar?",
+      "options": [
+        "Confirmar a afirmação sem evidências.",
+        "Acordar animais para testar.",
+        "Dizer que nenhum animal dorme.",
+        "Comparar fontes de animais diferentes e revisar a conclusão com base nos exemplos."
+      ],
+      "correctAnswer": "Comparar fontes de animais diferentes e revisar a conclusão com base nos exemplos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Confirmar a afirmação sem evidências.": [
+          "REVIEW_INVESTIGATE_GENERALIZATION"
+        ],
+        "Acordar animais para testar.": [
+          "REVIEW_INVESTIGATE_GENERALIZATION"
+        ],
+        "Dizer que nenhum animal dorme.": [
+          "REVIEW_INVESTIGATE_GENERALIZATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEXT_STEP",
+      "explanation": "Comparar fontes seguras ajuda a refinar a afirmação sem perturbar seres vivos.",
+      "hint": "Busque exemplos variados e limite a conclusão.",
+      "errorFocus": "REVIEW_INVESTIGATE_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Comparar fontes seguras ajuda a refinar a afirmação sem perturbar seres vivos.",
+        "incorrect": "Comparar fontes seguras ajuda a refinar a afirmação sem perturbar seres vivos.",
+        "hint": "Busque exemplos variados e limite a conclusão.",
+        "errorFocus": "REVIEW_INVESTIGATE_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+          "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+          "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+          "Observação segura sem perturbar animais, plantas ou habitats."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-organize-objects-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO01_ORGANIZE_OBJECTS_BY_ATTRIBUTES",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO_COMPUTACIONAL",
+  "topic": "organização de objetos por atributos, padrões e diferenças",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Organizar objetos por características",
+    "objective": "Agrupar ou ordenar objetos físicos e digitais por características escolhidas, explicando semelhanças, diferenças e a regra usada para organizar.",
+    "summary": "Organizar objetos requer observar atributos, escolher um critério e aplicá-lo com consistência. O mesmo conjunto pode ser organizado de modos diferentes quando a regra muda.",
+    "explanation": "## Observe atributos\nObjetos podem ter cor, forma, tamanho, textura ou função. Ícones e figuras digitais também apresentam atributos que podemos observar.\n\n## Escolha e aplique uma regra\nPodemos agrupar cartões pela forma ou ordenar caixas por tamanho. A regra precisa ser clara e aplicada do mesmo jeito a cada objeto.\n\n## Explique padrões e diferenças\nDepois de organizar, diga o que os objetos do grupo têm em comum e como diferem de outros. Um objeto pode pertencer a grupos diferentes sob critérios diferentes; isso não significa que a organização anterior estava errada.",
+    "workedExample": "Há quatro cartões: círculo azul, círculo amarelo, quadrado azul e quadrado amarelo. Pela forma, os círculos ficam juntos e os quadrados juntos; pela cor, os azuis ficam juntos e os amarelos juntos. Explique o critério escolhido em cada organização.",
+    "commonMistake": "Misturar critérios sem avisar, como agrupar ora pela cor, ora pela função, ou afirmar que só existe uma organização correta.",
+    "tips": [
+      "Nomeie o critério antes de começar a agrupar ou ordenar.",
+      "Observe um atributo por vez e confira se a regra foi aplicada a todos os objetos.",
+      "Compare duas organizações possíveis e explique o que mudou no critério.",
+      "Use objetos seguros e figuras genéricas; não organize pessoas por características pessoais."
+    ],
+    "priorKnowledge": [
+      "Reconhecer atributos simples como cor, forma e tamanho.",
+      "Participar de brincadeiras de agrupar, ordenar ou comparar objetos e figuras."
+    ],
+    "keyConcepts": [
+      "objeto físico ou digital",
+      "atributo",
+      "critério de organização",
+      "agrupamento",
+      "ordenação",
+      "semelhança",
+      "diferença",
+      "padrão"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "NAME_CRITERION",
+        "text": "Diga qual característica está usando antes de decidir onde cada objeto ficará."
+      },
+      {
+        "trigger": "APPLY_RULE",
+        "text": "Use o mesmo critério para todos os objetos daquele agrupamento."
+      },
+      {
+        "trigger": "CHANGE_CRITERION",
+        "text": "O mesmo conjunto pode formar grupos diferentes quando a regra de organização muda."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MIXED_CRITERIA",
+        "action": "Separe os objetos, escolha uma única característica visível e refaça o agrupamento nomeando a regra."
+      },
+      {
+        "errorFocus": "INCONSISTENT_RULE",
+        "action": "Confira cada objeto com a regra anunciada e revise os itens que não atendem ao critério."
+      },
+      {
+        "errorFocus": "ONLY_ONE_VALID_GROUPING",
+        "action": "Mantenha o conjunto e demonstre uma segunda organização usando outro critério."
+      }
+    ],
+    "accessibilitySupports": [
+      "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+      "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+      "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+      "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-organize-objects-fi-activity-1",
+        "title": "Mesa de classificação",
+        "instructions": "Organizar objetos escolares seguros ou cartões que os representem, usando um critério combinado.\n1. Escolher objetos ou cartões.\n2. Nomear um critério, como forma ou função.\n3. Agrupar todos os itens aplicando a regra.\n4. Explicar uma semelhança e uma diferença.",
+        "steps": [
+          "Escolher objetos ou cartões.",
+          "Nomear um critério, como forma ou função.",
+          "Agrupar todos os itens aplicando a regra.",
+          "Explicar uma semelhança e uma diferença."
+        ],
+        "evidence": "Organização produzida, critério declarado e explicação dos padrões e diferenças.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "agrupa com modelo e apoio.",
+            "developing": "usa um critério com lembrete.",
+            "proficient": "aplica a regra com consistência e explica semelhanças e diferenças."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-organize-objects-fi-activity-2",
+        "title": "Ícones em duas organizações",
+        "instructions": "Reorganizar cartões impressos ou ícones genéricos primeiro por forma e depois por cor.\n1. Observar os atributos dos ícones.\n2. Organizar pela forma e nomear os grupos.\n3. Reorganizar pela cor.\n4. Comparar o que mudou entre os critérios.",
+        "steps": [
+          "Observar os atributos dos ícones.",
+          "Organizar pela forma e nomear os grupos.",
+          "Reorganizar pela cor.",
+          "Comparar o que mudou entre os critérios."
+        ],
+        "evidence": "Dois agrupamentos do mesmo conjunto e uma explicação da mudança de critério.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um atributo com ajuda.",
+            "developing": "organiza por um critério.",
+            "proficient": "produz duas organizações e explica por que diferem."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-organize-objects-fi-01",
+          "v1-computing-organize-objects-fi-02",
+          "v1-computing-organize-objects-fi-03",
+          "v1-computing-organize-objects-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-organize-objects-fi-05",
+          "v1-computing-organize-objects-fi-06",
+          "v1-computing-organize-objects-fi-07",
+          "v1-computing-organize-objects-fi-08",
+          "v1-computing-organize-objects-fi-09",
+          "v1-computing-organize-objects-fi-10",
+          "v1-computing-organize-objects-fi-11",
+          "v1-computing-organize-objects-fi-12",
+          "v1-computing-organize-objects-fi-13",
+          "v1-computing-organize-objects-fi-14",
+          "v1-computing-organize-objects-fi-15",
+          "v1-computing-organize-objects-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-organize-objects-fi-17",
+          "v1-computing-organize-objects-fi-18",
+          "v1-computing-organize-objects-fi-19",
+          "v1-computing-organize-objects-fi-20",
+          "v1-computing-organize-objects-fi-21",
+          "v1-computing-organize-objects-fi-22",
+          "v1-computing-organize-objects-fi-23",
+          "v1-computing-organize-objects-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-organize-objects-fi-25",
+          "v1-computing-organize-objects-fi-26",
+          "v1-computing-organize-objects-fi-27",
+          "v1-computing-organize-objects-fi-28",
+          "v1-computing-organize-objects-fi-29",
+          "v1-computing-organize-objects-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-organize-objects-fi-31",
+          "v1-computing-organize-objects-fi-32",
+          "v1-computing-organize-objects-fi-33",
+          "v1-computing-organize-objects-fi-34",
+          "v1-computing-organize-objects-fi-35",
+          "v1-computing-organize-objects-fi-36",
+          "v1-computing-organize-objects-fi-37",
+          "v1-computing-organize-objects-fi-38",
+          "v1-computing-organize-objects-fi-39",
+          "v1-computing-organize-objects-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO01",
+        "descriptor": "Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 16
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-organize-objects-fi-01",
+      "statement": "Cartões mostram círculos e quadrados em cores diferentes. Qual critério reúne os círculos?",
+      "prompt": "Cartões mostram círculos e quadrados em cores diferentes. Qual critério reúne os círculos?",
+      "options": [
+        "A forma.",
+        "A cor azul apenas.",
+        "O tamanho da mesa.",
+        "A ordem em que foram entregues."
+      ],
+      "correctAnswer": "A forma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor azul apenas.": [
+          "NAME_ATTRIBUTE"
+        ],
+        "O tamanho da mesa.": [
+          "NAME_ATTRIBUTE"
+        ],
+        "A ordem em que foram entregues.": [
+          "NAME_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARDS_SHAPE",
+      "explanation": "Os círculos compartilham a mesma forma.",
+      "hint": "Observe o contorno dos cartões.",
+      "errorFocus": "NAME_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Os círculos compartilham a mesma forma.",
+        "incorrect": "Os círculos compartilham a mesma forma.",
+        "hint": "Observe o contorno dos cartões.",
+        "errorFocus": "NAME_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-02",
+      "statement": "Dois blocos têm a mesma cor e formas diferentes. Qual semelhança compartilham?",
+      "prompt": "Dois blocos têm a mesma cor e formas diferentes. Qual semelhança compartilham?",
+      "options": [
+        "A forma.",
+        "A cor.",
+        "O tamanho, sem observar.",
+        "A função, sem observar."
+      ],
+      "correctAnswer": "A cor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A forma.": [
+          "IDENTIFY_SHARED_ATTRIBUTE"
+        ],
+        "O tamanho, sem observar.": [
+          "IDENTIFY_SHARED_ATTRIBUTE"
+        ],
+        "A função, sem observar.": [
+          "IDENTIFY_SHARED_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BLOCKS_COLOR",
+      "explanation": "A semelhança indicada é a cor, não os demais atributos.",
+      "hint": "Escolha uma característica que os dois têm.",
+      "errorFocus": "IDENTIFY_SHARED_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A semelhança indicada é a cor, não os demais atributos.",
+        "incorrect": "A semelhança indicada é a cor, não os demais atributos.",
+        "hint": "Escolha uma característica que os dois têm.",
+        "errorFocus": "IDENTIFY_SHARED_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-03",
+      "statement": "Ícones de estrela, círculo e quadrado serão organizados por forma. O que observar?",
+      "prompt": "Ícones de estrela, círculo e quadrado serão organizados por forma. O que observar?",
+      "options": [
+        "A senha do aparelho.",
+        "O nome de quem desenhou.",
+        "O formato de cada ícone.",
+        "A hora em que foram impressos."
+      ],
+      "correctAnswer": "O formato de cada ícone.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A senha do aparelho.": [
+          "SELECT_CRITERION"
+        ],
+        "O nome de quem desenhou.": [
+          "SELECT_CRITERION"
+        ],
+        "A hora em que foram impressos.": [
+          "SELECT_CRITERION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "DIGITAL_SHAPES",
+      "explanation": "A forma é o atributo anunciado para organizar.",
+      "hint": "Pense no critério combinado.",
+      "errorFocus": "SELECT_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: A forma é o atributo anunciado para organizar.",
+        "incorrect": "A forma é o atributo anunciado para organizar.",
+        "hint": "Pense no critério combinado.",
+        "errorFocus": "SELECT_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-04",
+      "statement": "Caixas serão colocadas da menor para a maior. Que atributo orienta a ordem?",
+      "prompt": "Caixas serão colocadas da menor para a maior. Que atributo orienta a ordem?",
+      "options": [
+        "A cor do chão.",
+        "A quantidade de desenhos.",
+        "A forma da etiqueta.",
+        "O tamanho."
+      ],
+      "correctAnswer": "O tamanho.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do chão.": [
+          "ORDER_BY_ATTRIBUTE"
+        ],
+        "A quantidade de desenhos.": [
+          "ORDER_BY_ATTRIBUTE"
+        ],
+        "A forma da etiqueta.": [
+          "ORDER_BY_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "BOX_SIZE",
+      "explanation": "A sequência crescente depende do tamanho.",
+      "hint": "Compare caixas pequenas e grandes.",
+      "errorFocus": "ORDER_BY_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A sequência crescente depende do tamanho.",
+        "incorrect": "A sequência crescente depende do tamanho.",
+        "hint": "Compare caixas pequenas e grandes.",
+        "errorFocus": "ORDER_BY_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-05",
+      "statement": "Lápis de comprimentos diferentes serão ordenados do menor ao maior. O que comparar?",
+      "prompt": "Lápis de comprimentos diferentes serão ordenados do menor ao maior. O que comparar?",
+      "options": [
+        "O comprimento.",
+        "A cor da mochila.",
+        "O material da mesa.",
+        "O nome de quem usa."
+      ],
+      "correctAnswer": "O comprimento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor da mochila.": [
+          "ORDER_BY_LENGTH"
+        ],
+        "O material da mesa.": [
+          "ORDER_BY_LENGTH"
+        ],
+        "O nome de quem usa.": [
+          "ORDER_BY_LENGTH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "PENCILS_LENGTH",
+      "explanation": "A regra é ordenar pelo comprimento dos lápis.",
+      "hint": "Observe qual é mais curto.",
+      "errorFocus": "ORDER_BY_LENGTH",
+      "feedback": {
+        "correct": "Boa observação: A regra é ordenar pelo comprimento dos lápis.",
+        "incorrect": "A regra é ordenar pelo comprimento dos lápis.",
+        "hint": "Observe qual é mais curto.",
+        "errorFocus": "ORDER_BY_LENGTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-06",
+      "statement": "Cartões mostram botões redondos e quadrados. Como agrupá-los por forma?",
+      "prompt": "Cartões mostram botões redondos e quadrados. Como agrupá-los por forma?",
+      "options": [
+        "Juntar pela cor sem anunciar.",
+        "Redondos com redondos e quadrados com quadrados.",
+        "Misturar sem critério.",
+        "Separar pelo nome de quem desenhou."
+      ],
+      "correctAnswer": "Redondos com redondos e quadrados com quadrados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Juntar pela cor sem anunciar.": [
+          "ONE_CRITERION"
+        ],
+        "Misturar sem critério.": [
+          "ONE_CRITERION"
+        ],
+        "Separar pelo nome de quem desenhou.": [
+          "ONE_CRITERION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BUTTONS_SHAPE",
+      "explanation": "A forma é aplicada como regra a todos os cartões.",
+      "hint": "Diga a regra e confira cada item.",
+      "errorFocus": "ONE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: A forma é aplicada como regra a todos os cartões.",
+        "incorrect": "A forma é aplicada como regra a todos os cartões.",
+        "hint": "Diga a regra e confira cada item.",
+        "errorFocus": "ONE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-07",
+      "statement": "Dois ícones de frutas são verdes. Que padrão de cor pode ser descrito?",
+      "prompt": "Dois ícones de frutas são verdes. Que padrão de cor pode ser descrito?",
+      "options": [
+        "Todas as frutas são verdes.",
+        "Os dois têm a mesma forma.",
+        "Os dois ícones observados são verdes.",
+        "A cor revela quem os desenhou."
+      ],
+      "correctAnswer": "Os dois ícones observados são verdes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as frutas são verdes.": [
+          "LIMIT_PATTERN"
+        ],
+        "Os dois têm a mesma forma.": [
+          "LIMIT_PATTERN"
+        ],
+        "A cor revela quem os desenhou.": [
+          "LIMIT_PATTERN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FRUIT_ICONS",
+      "explanation": "O padrão refere-se aos ícones apresentados, não a todas as frutas.",
+      "hint": "Descreva o conjunto que está vendo.",
+      "errorFocus": "LIMIT_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: O padrão refere-se aos ícones apresentados, não a todas as frutas.",
+        "incorrect": "O padrão refere-se aos ícones apresentados, não a todas as frutas.",
+        "hint": "Descreva o conjunto que está vendo.",
+        "errorFocus": "LIMIT_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-08",
+      "statement": "Tesoura e apontador serão agrupados pela função em atividades escolares. O que orienta o grupo?",
+      "prompt": "Tesoura e apontador serão agrupados pela função em atividades escolares. O que orienta o grupo?",
+      "options": [
+        "A cor da parede.",
+        "A forma do estojo.",
+        "O tamanho do nome da turma.",
+        "O uso ou função dos objetos."
+      ],
+      "correctAnswer": "O uso ou função dos objetos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor da parede.": [
+          "CLASSIFY_BY_FUNCTION"
+        ],
+        "A forma do estojo.": [
+          "CLASSIFY_BY_FUNCTION"
+        ],
+        "O tamanho do nome da turma.": [
+          "CLASSIFY_BY_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_TOOLS",
+      "explanation": "A função dos objetos é o critério anunciado.",
+      "hint": "Pergunte para que cada objeto serve.",
+      "errorFocus": "CLASSIFY_BY_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A função dos objetos é o critério anunciado.",
+        "incorrect": "A função dos objetos é o critério anunciado.",
+        "hint": "Pergunte para que cada objeto serve.",
+        "errorFocus": "CLASSIFY_BY_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-09",
+      "statement": "Um círculo vermelho e um quadrado vermelho serão agrupados por cor. Qual padrão compartilham?",
+      "prompt": "Um círculo vermelho e um quadrado vermelho serão agrupados por cor. Qual padrão compartilham?",
+      "options": [
+        "Ambos são vermelhos.",
+        "Ambos são círculos.",
+        "Têm forma igual.",
+        "Têm tamanho igual sem observar."
+      ],
+      "correctAnswer": "Ambos são vermelhos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ambos são círculos.": [
+          "COLOR_PATTERN"
+        ],
+        "Têm forma igual.": [
+          "COLOR_PATTERN"
+        ],
+        "Têm tamanho igual sem observar.": [
+          "COLOR_PATTERN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RED_SHAPES",
+      "explanation": "A cor é o atributo comum sob o critério escolhido.",
+      "hint": "Observe a cor, não a forma.",
+      "errorFocus": "COLOR_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A cor é o atributo comum sob o critério escolhido.",
+        "incorrect": "A cor é o atributo comum sob o critério escolhido.",
+        "hint": "Observe a cor, não a forma.",
+        "errorFocus": "COLOR_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-10",
+      "statement": "Cartões ásperos e lisos serão organizados por textura. Que atributo orientar?",
+      "prompt": "Cartões ásperos e lisos serão organizados por textura. Que atributo orientar?",
+      "options": [
+        "O nome de quem tocou.",
+        "A textura de cada cartão.",
+        "A ordem da pilha.",
+        "O número de cadeiras."
+      ],
+      "correctAnswer": "A textura de cada cartão.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome de quem tocou.": [
+          "CLASSIFY_TEXTURE"
+        ],
+        "A ordem da pilha.": [
+          "CLASSIFY_TEXTURE"
+        ],
+        "O número de cadeiras.": [
+          "CLASSIFY_TEXTURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TEXTURE_CARDS",
+      "explanation": "A textura é a regra escolhida para agrupar.",
+      "hint": "Use o atributo combinado e um modo acessível de percebê-lo.",
+      "errorFocus": "CLASSIFY_TEXTURE",
+      "feedback": {
+        "correct": "Boa observação: A textura é a regra escolhida para agrupar.",
+        "incorrect": "A textura é a regra escolhida para agrupar.",
+        "hint": "Use o atributo combinado e um modo acessível de percebê-lo.",
+        "errorFocus": "CLASSIFY_TEXTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-11",
+      "statement": "Cartões foram organizados por forma e agora serão organizados por cor. O que fazer primeiro?",
+      "prompt": "Cartões foram organizados por forma e agora serão organizados por cor. O que fazer primeiro?",
+      "options": [
+        "Manter os grupos antigos sem conferir.",
+        "Misturar sem critério.",
+        "Anunciar a nova regra e observar as cores.",
+        "Dizer que a primeira organização estava errada."
+      ],
+      "correctAnswer": "Anunciar a nova regra e observar as cores.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Manter os grupos antigos sem conferir.": [
+          "CHANGE_RULE"
+        ],
+        "Misturar sem critério.": [
+          "CHANGE_RULE"
+        ],
+        "Dizer que a primeira organização estava errada.": [
+          "CHANGE_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SAME_SET_NEW_RULE",
+      "explanation": "O mesmo conjunto pode ser reorganizado quando o critério muda.",
+      "hint": "Nomeie a nova regra antes de mover os cartões.",
+      "errorFocus": "CHANGE_RULE",
+      "feedback": {
+        "correct": "Boa observação: O mesmo conjunto pode ser reorganizado quando o critério muda.",
+        "incorrect": "O mesmo conjunto pode ser reorganizado quando o critério muda.",
+        "hint": "Nomeie a nova regra antes de mover os cartões.",
+        "errorFocus": "CHANGE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-12",
+      "statement": "Qual frase declara um critério claro para agrupar objetos?",
+      "prompt": "Qual frase declara um critério claro para agrupar objetos?",
+      "options": [
+        "“Vou colocar juntos os que gosto.”",
+        "“Vou mudar a regra em cada objeto.”",
+        "“Vou juntar sem observar.”",
+        "“Vou agrupar pela cor.”"
+      ],
+      "correctAnswer": "“Vou agrupar pela cor.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Vou colocar juntos os que gosto.”": [
+          "STATE_CRITERION"
+        ],
+        "“Vou mudar a regra em cada objeto.”": [
+          "STATE_CRITERION"
+        ],
+        "“Vou juntar sem observar.”": [
+          "STATE_CRITERION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "STATE",
+      "contextFamily": "SORTING_RULE",
+      "explanation": "Uma regra clara indica o atributo usado para organizar.",
+      "hint": "Escolha uma característica que possa ser conferida.",
+      "errorFocus": "STATE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Uma regra clara indica o atributo usado para organizar.",
+        "incorrect": "Uma regra clara indica o atributo usado para organizar.",
+        "hint": "Escolha uma característica que possa ser conferida.",
+        "errorFocus": "STATE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-13",
+      "statement": "Há três círculos e um triângulo. Se o critério é forma, o que se pode dizer?",
+      "prompt": "Há três círculos e um triângulo. Se o critério é forma, o que se pode dizer?",
+      "options": [
+        "Três cartões são círculos e um é triângulo.",
+        "Todos têm a mesma forma.",
+        "O triângulo não pode ser organizado.",
+        "A forma não pode ser observada."
+      ],
+      "correctAnswer": "Três cartões são círculos e um é triângulo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos têm a mesma forma.": [
+          "PATTERN_AND_DIFFERENCE"
+        ],
+        "O triângulo não pode ser organizado.": [
+          "PATTERN_AND_DIFFERENCE"
+        ],
+        "A forma não pode ser observada.": [
+          "PATTERN_AND_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "PATTERN_OUTLIER",
+      "explanation": "O conjunto apresenta um padrão e uma diferença.",
+      "hint": "Conte os itens de cada forma.",
+      "errorFocus": "PATTERN_AND_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O conjunto apresenta um padrão e uma diferença.",
+        "incorrect": "O conjunto apresenta um padrão e uma diferença.",
+        "hint": "Conte os itens de cada forma.",
+        "errorFocus": "PATTERN_AND_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-14",
+      "statement": "Ícones genéricos representam imagem, áudio e texto. Como organizá-los por tipo?",
+      "prompt": "Ícones genéricos representam imagem, áudio e texto. Como organizá-los por tipo?",
+      "options": [
+        "Agrupar pelo nome de uma pessoa.",
+        "Agrupar os que representam o mesmo tipo de arquivo.",
+        "Escolher sem observar o ícone.",
+        "Misturar os tipos e chamar de iguais."
+      ],
+      "correctAnswer": "Agrupar os que representam o mesmo tipo de arquivo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Agrupar pelo nome de uma pessoa.": [
+          "DIGITAL_CLASSIFICATION"
+        ],
+        "Escolher sem observar o ícone.": [
+          "DIGITAL_CLASSIFICATION"
+        ],
+        "Misturar os tipos e chamar de iguais.": [
+          "DIGITAL_CLASSIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FILE_ICONS",
+      "explanation": "Ícones podem representar atributos usados para organizar itens digitais.",
+      "hint": "Observe o tipo indicado por cada ícone.",
+      "errorFocus": "DIGITAL_CLASSIFICATION",
+      "feedback": {
+        "correct": "Boa observação: Ícones podem representar atributos usados para organizar itens digitais.",
+        "incorrect": "Ícones podem representar atributos usados para organizar itens digitais.",
+        "hint": "Observe o tipo indicado por cada ícone.",
+        "errorFocus": "DIGITAL_CLASSIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-15",
+      "statement": "Uma pessoa junta cartões ora pela cor, ora pelo tamanho sem avisar. O que falta?",
+      "prompt": "Uma pessoa junta cartões ora pela cor, ora pelo tamanho sem avisar. O que falta?",
+      "options": [
+        "Mais cores para misturar.",
+        "Um nome de estudante em cada cartão.",
+        "Um critério declarado e aplicado com consistência.",
+        "Uma regra que muda sem explicação."
+      ],
+      "correctAnswer": "Um critério declarado e aplicado com consistência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Mais cores para misturar.": [
+          "CONSISTENT_RULE"
+        ],
+        "Um nome de estudante em cada cartão.": [
+          "CONSISTENT_RULE"
+        ],
+        "Uma regra que muda sem explicação.": [
+          "CONSISTENT_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MIXED_RULE_ERROR",
+      "explanation": "Mudar o critério sem avisar impede compreender o agrupamento.",
+      "hint": "Pergunte qual característica orientou cada decisão.",
+      "errorFocus": "CONSISTENT_RULE",
+      "feedback": {
+        "correct": "Boa observação: Mudar o critério sem avisar impede compreender o agrupamento.",
+        "incorrect": "Mudar o critério sem avisar impede compreender o agrupamento.",
+        "hint": "Pergunte qual característica orientou cada decisão.",
+        "errorFocus": "CONSISTENT_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-16",
+      "statement": "Formas serão ordenadas da menor para a maior. O que comparar?",
+      "prompt": "Formas serão ordenadas da menor para a maior. O que comparar?",
+      "options": [
+        "A cor do título.",
+        "A quantidade de pessoas.",
+        "O lugar onde foram desenhadas.",
+        "O tamanho das formas."
+      ],
+      "correctAnswer": "O tamanho das formas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do título.": [
+          "ORDER_BY_SIZE"
+        ],
+        "A quantidade de pessoas.": [
+          "ORDER_BY_SIZE"
+        ],
+        "O lugar onde foram desenhadas.": [
+          "ORDER_BY_SIZE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ORDER_SHAPES",
+      "explanation": "A ordem depende de uma característica comparável entre os itens.",
+      "hint": "Confira o tamanho de cada forma.",
+      "errorFocus": "ORDER_BY_SIZE",
+      "feedback": {
+        "correct": "Boa observação: A ordem depende de uma característica comparável entre os itens.",
+        "incorrect": "A ordem depende de uma característica comparável entre os itens.",
+        "hint": "Confira o tamanho de cada forma.",
+        "errorFocus": "ORDER_BY_SIZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-17",
+      "statement": "Uma caixa tem carrinhos e blocos de vários tamanhos e cores. Para agrupá-los pela função, qual pergunta ajuda?",
+      "prompt": "Uma caixa tem carrinhos e blocos de vários tamanhos e cores. Para agrupá-los pela função, qual pergunta ajuda?",
+      "options": [
+        "Para que cada objeto pode ser usado?",
+        "Qual é o endereço de quem trouxe?",
+        "Qual cor alguém prefere?",
+        "Quem é dono de cada objeto?"
+      ],
+      "correctAnswer": "Para que cada objeto pode ser usado?",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual é o endereço de quem trouxe?": [
+          "TRANSFER_FUNCTION"
+        ],
+        "Qual cor alguém prefere?": [
+          "TRANSFER_FUNCTION"
+        ],
+        "Quem é dono de cada objeto?": [
+          "TRANSFER_FUNCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_PLAY_SET",
+      "explanation": "A função é o critério; dados pessoais não são necessários.",
+      "hint": "Pergunte sobre o uso dos objetos.",
+      "errorFocus": "TRANSFER_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A função é o critério; dados pessoais não são necessários.",
+        "incorrect": "A função é o critério; dados pessoais não são necessários.",
+        "hint": "Pergunte sobre o uso dos objetos.",
+        "errorFocus": "TRANSFER_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-18",
+      "statement": "Um conjunto tem círculos azuis, quadrados azuis e círculos amarelos. Quantas organizações por critério são possíveis?",
+      "prompt": "Um conjunto tem círculos azuis, quadrados azuis e círculos amarelos. Quantas organizações por critério são possíveis?",
+      "options": [
+        "Somente uma organização.",
+        "Pelo menos duas: uma por forma e outra por cor.",
+        "Nenhuma organização por atributo.",
+        "Todos os critérios precisam ser usados juntos."
+      ],
+      "correctAnswer": "Pelo menos duas: uma por forma e outra por cor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente uma organização.": [
+          "MULTIPLE_VALID_CRITERIA"
+        ],
+        "Nenhuma organização por atributo.": [
+          "MULTIPLE_VALID_CRITERIA"
+        ],
+        "Todos os critérios precisam ser usados juntos.": [
+          "MULTIPLE_VALID_CRITERIA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "NEW_ICON_SET",
+      "explanation": "Uma coleção admite organizações distintas quando o critério muda.",
+      "hint": "Teste forma e depois cor.",
+      "errorFocus": "MULTIPLE_VALID_CRITERIA",
+      "feedback": {
+        "correct": "Boa observação: Uma coleção admite organizações distintas quando o critério muda.",
+        "incorrect": "Uma coleção admite organizações distintas quando o critério muda.",
+        "hint": "Teste forma e depois cor.",
+        "errorFocus": "MULTIPLE_VALID_CRITERIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-19",
+      "statement": "Livros fictícios foram organizados do mais fino ao mais grosso. Qual atributo descreve a regra?",
+      "prompt": "Livros fictícios foram organizados do mais fino ao mais grosso. Qual atributo descreve a regra?",
+      "options": [
+        "Cor do armário.",
+        "Nome de quem lê.",
+        "Espessura.",
+        "Tema da conversa."
+      ],
+      "correctAnswer": "Espessura.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cor do armário.": [
+          "ORDERING_ATTRIBUTE"
+        ],
+        "Nome de quem lê.": [
+          "ORDERING_ATTRIBUTE"
+        ],
+        "Tema da conversa.": [
+          "ORDERING_ATTRIBUTE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "NEW_BOOKS",
+      "explanation": "A sequência compara a espessura dos livros.",
+      "hint": "Observe o que aumenta de um livro ao próximo.",
+      "errorFocus": "ORDERING_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A sequência compara a espessura dos livros.",
+        "incorrect": "A sequência compara a espessura dos livros.",
+        "hint": "Observe o que aumenta de um livro ao próximo.",
+        "errorFocus": "ORDERING_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-20",
+      "statement": "Cartões impressos e ícones digitais representam figuras de animais. Qual critério pode servir aos dois conjuntos?",
+      "prompt": "Cartões impressos e ícones digitais representam figuras de animais. Qual critério pode servir aos dois conjuntos?",
+      "options": [
+        "A senha do dispositivo.",
+        "O material do cartão aplicado à tela.",
+        "O nome de quem imprimiu.",
+        "Uma característica representada, como forma ou tipo de figura."
+      ],
+      "correctAnswer": "Uma característica representada, como forma ou tipo de figura.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A senha do dispositivo.": [
+          "ACROSS_MEDIA"
+        ],
+        "O material do cartão aplicado à tela.": [
+          "ACROSS_MEDIA"
+        ],
+        "O nome de quem imprimiu.": [
+          "ACROSS_MEDIA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PHYSICAL_DIGITAL",
+      "explanation": "Objetos físicos e digitais podem ser organizados por atributos representados.",
+      "hint": "Escolha um atributo disponível nos dois conjuntos.",
+      "errorFocus": "ACROSS_MEDIA",
+      "feedback": {
+        "correct": "Boa observação: Objetos físicos e digitais podem ser organizados por atributos representados.",
+        "incorrect": "Objetos físicos e digitais podem ser organizados por atributos representados.",
+        "hint": "Escolha um atributo disponível nos dois conjuntos.",
+        "errorFocus": "ACROSS_MEDIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-21",
+      "statement": "Um grupo por tamanho já foi feito. Agora a turma quer agrupar pelos materiais. O que muda?",
+      "prompt": "Um grupo por tamanho já foi feito. Agora a turma quer agrupar pelos materiais. O que muda?",
+      "options": [
+        "Aplicar a nova regra de material aos mesmos objetos.",
+        "Manter tamanho sem avisar.",
+        "Descartar os itens diferentes.",
+        "Concluir que a primeira regra era inválida."
+      ],
+      "correctAnswer": "Aplicar a nova regra de material aos mesmos objetos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Manter tamanho sem avisar.": [
+          "REORGANIZE_BY_NEW_RULE"
+        ],
+        "Descartar os itens diferentes.": [
+          "REORGANIZE_BY_NEW_RULE"
+        ],
+        "Concluir que a primeira regra era inválida.": [
+          "REORGANIZE_BY_NEW_RULE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_REORGANIZATION",
+      "explanation": "Uma nova característica permite reorganizar a mesma coleção.",
+      "hint": "Anuncie o novo critério.",
+      "errorFocus": "REORGANIZE_BY_NEW_RULE",
+      "feedback": {
+        "correct": "Boa observação: Uma nova característica permite reorganizar a mesma coleção.",
+        "incorrect": "Uma nova característica permite reorganizar a mesma coleção.",
+        "hint": "Anuncie o novo critério.",
+        "errorFocus": "REORGANIZE_BY_NEW_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-22",
+      "statement": "Um objeto é azul e grande. Se o grupo é “azuis”, onde ele entra?",
+      "prompt": "Um objeto é azul e grande. Se o grupo é “azuis”, onde ele entra?",
+      "options": [
+        "Em todos os grupos sem regra.",
+        "No grupo dos azuis, mesmo que também seja grande.",
+        "Em nenhum grupo por ter dois atributos.",
+        "No grupo dos pequenos."
+      ],
+      "correctAnswer": "No grupo dos azuis, mesmo que também seja grande.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Em todos os grupos sem regra.": [
+          "CRITERION_PRIORITY"
+        ],
+        "Em nenhum grupo por ter dois atributos.": [
+          "CRITERION_PRIORITY"
+        ],
+        "No grupo dos pequenos.": [
+          "CRITERION_PRIORITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MULTIPLE_ATTRIBUTES",
+      "explanation": "O critério anunciado decide o agrupamento, ainda que haja outros atributos.",
+      "hint": "Use a regra combinada.",
+      "errorFocus": "CRITERION_PRIORITY",
+      "feedback": {
+        "correct": "Boa observação: O critério anunciado decide o agrupamento, ainda que haja outros atributos.",
+        "incorrect": "O critério anunciado decide o agrupamento, ainda que haja outros atributos.",
+        "hint": "Use a regra combinada.",
+        "errorFocus": "CRITERION_PRIORITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-23",
+      "statement": "Qual explicação comunica um padrão em um conjunto organizado por forma?",
+      "prompt": "Qual explicação comunica um padrão em um conjunto organizado por forma?",
+      "options": [
+        "“Juntei porque sim.”",
+        "“Todos são iguais em tudo.”",
+        "“Os círculos ficaram juntos; os quadrados formam outro grupo.”",
+        "“Escolhi pelo nome de quem trouxe.”"
+      ],
+      "correctAnswer": "“Os círculos ficaram juntos; os quadrados formam outro grupo.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Juntei porque sim.”": [
+          "EXPLAIN_PATTERN"
+        ],
+        "“Todos são iguais em tudo.”": [
+          "EXPLAIN_PATTERN"
+        ],
+        "“Escolhi pelo nome de quem trouxe.”": [
+          "EXPLAIN_PATTERN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PATTERN_EXPLANATION",
+      "explanation": "A explicação nomeia o atributo comum e a diferença entre grupos.",
+      "hint": "Mencione critério, semelhança e contraste.",
+      "errorFocus": "EXPLAIN_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A explicação nomeia o atributo comum e a diferença entre grupos.",
+        "incorrect": "A explicação nomeia o atributo comum e a diferença entre grupos.",
+        "hint": "Mencione critério, semelhança e contraste.",
+        "errorFocus": "EXPLAIN_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-24",
+      "statement": "Como verificar se a regra de organização foi consistente?",
+      "prompt": "Como verificar se a regra de organização foi consistente?",
+      "options": [
+        "Mudar a regra em cada item.",
+        "Olhar somente o primeiro objeto.",
+        "Pedir que alguém adivinhe.",
+        "Conferir cada item usando a regra declarada e revisar exceções."
+      ],
+      "correctAnswer": "Conferir cada item usando a regra declarada e revisar exceções.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mudar a regra em cada item.": [
+          "AUDIT_CONSISTENCY"
+        ],
+        "Olhar somente o primeiro objeto.": [
+          "AUDIT_CONSISTENCY"
+        ],
+        "Pedir que alguém adivinhe.": [
+          "AUDIT_CONSISTENCY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RULE_AUDIT",
+      "explanation": "A verificação aplica a mesma regra a todos os itens.",
+      "hint": "Teste a regra em cada objeto.",
+      "errorFocus": "AUDIT_CONSISTENCY",
+      "feedback": {
+        "correct": "Boa observação: A verificação aplica a mesma regra a todos os itens.",
+        "incorrect": "A verificação aplica a mesma regra a todos os itens.",
+        "hint": "Teste a regra em cada objeto.",
+        "errorFocus": "AUDIT_CONSISTENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-25",
+      "statement": "Por que dizer o critério antes de organizar os objetos?",
+      "prompt": "Por que dizer o critério antes de organizar os objetos?",
+      "options": [
+        "Para que outras pessoas entendam e possam conferir a regra aplicada.",
+        "Para esconder diferenças.",
+        "Para mudar a regra sem explicar.",
+        "Para escolher um vencedor."
+      ],
+      "correctAnswer": "Para que outras pessoas entendam e possam conferir a regra aplicada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para esconder diferenças.": [
+          "DECLARE_RULE"
+        ],
+        "Para mudar a regra sem explicar.": [
+          "DECLARE_RULE"
+        ],
+        "Para escolher um vencedor.": [
+          "DECLARE_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_CRITERION",
+      "explanation": "Uma regra explícita torna o agrupamento compreensível e verificável.",
+      "hint": "Pense como alguém saberia por que os itens ficaram juntos.",
+      "errorFocus": "DECLARE_RULE",
+      "feedback": {
+        "correct": "Boa observação: Uma regra explícita torna o agrupamento compreensível e verificável.",
+        "incorrect": "Uma regra explícita torna o agrupamento compreensível e verificável.",
+        "hint": "Pense como alguém saberia por que os itens ficaram juntos.",
+        "errorFocus": "DECLARE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-26",
+      "statement": "Um conjunto foi organizado por cor e depois por forma. O que pode mudar?",
+      "prompt": "Um conjunto foi organizado por cor e depois por forma. O que pode mudar?",
+      "options": [
+        "As características reais dos objetos.",
+        "Quais objetos ficam em cada grupo, pois o critério mudou.",
+        "A quantidade de objetos.",
+        "A necessidade de explicar a regra."
+      ],
+      "correctAnswer": "Quais objetos ficam em cada grupo, pois o critério mudou.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As características reais dos objetos.": [
+          "RESULT_CHANGES"
+        ],
+        "A quantidade de objetos.": [
+          "RESULT_CHANGES"
+        ],
+        "A necessidade de explicar a regra.": [
+          "RESULT_CHANGES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCK_IN_TWO_RULES",
+      "explanation": "Critérios diferentes podem produzir grupos diferentes sem mudar os objetos.",
+      "hint": "Compare os resultados.",
+      "errorFocus": "RESULT_CHANGES",
+      "feedback": {
+        "correct": "Boa observação: Critérios diferentes podem produzir grupos diferentes sem mudar os objetos.",
+        "incorrect": "Critérios diferentes podem produzir grupos diferentes sem mudar os objetos.",
+        "hint": "Compare os resultados.",
+        "errorFocus": "RESULT_CHANGES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-27",
+      "statement": "Em um grupo de objetos azuis, qual é a semelhança segundo a regra?",
+      "prompt": "Em um grupo de objetos azuis, qual é a semelhança segundo a regra?",
+      "options": [
+        "Todos têm a mesma forma necessariamente.",
+        "Todos têm a mesma função necessariamente.",
+        "Todos compartilham a cor azul.",
+        "Todos foram feitos pela mesma pessoa."
+      ],
+      "correctAnswer": "Todos compartilham a cor azul.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos têm a mesma forma necessariamente.": [
+          "SHARED_ATTRIBUTE"
+        ],
+        "Todos têm a mesma função necessariamente.": [
+          "SHARED_ATTRIBUTE"
+        ],
+        "Todos foram feitos pela mesma pessoa.": [
+          "SHARED_ATTRIBUTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_PATTERN",
+      "explanation": "A semelhança é o atributo que definiu o grupo.",
+      "hint": "Volte ao critério escolhido.",
+      "errorFocus": "SHARED_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A semelhança é o atributo que definiu o grupo.",
+        "incorrect": "A semelhança é o atributo que definiu o grupo.",
+        "hint": "Volte ao critério escolhido.",
+        "errorFocus": "SHARED_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-28",
+      "statement": "Uma classificação começa por forma, mas depois separa um objeto pela cor. Como melhorar?",
+      "prompt": "Uma classificação começa por forma, mas depois separa um objeto pela cor. Como melhorar?",
+      "options": [
+        "Esconder a regra.",
+        "Dizer que todos os critérios são iguais.",
+        "Eliminar o objeto diferente.",
+        "Explicar a mudança ou refazer o grupo com um critério consistente."
+      ],
+      "correctAnswer": "Explicar a mudança ou refazer o grupo com um critério consistente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder a regra.": [
+          "REPAIR_RULE"
+        ],
+        "Dizer que todos os critérios são iguais.": [
+          "REPAIR_RULE"
+        ],
+        "Eliminar o objeto diferente.": [
+          "REPAIR_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_MIXED_RULE",
+      "explanation": "Declarar a regra ou reiniciar torna o resultado verificável.",
+      "hint": "Mantenha uma regra ou anuncie outra etapa.",
+      "errorFocus": "REPAIR_RULE",
+      "feedback": {
+        "correct": "Boa observação: Declarar a regra ou reiniciar torna o resultado verificável.",
+        "incorrect": "Declarar a regra ou reiniciar torna o resultado verificável.",
+        "hint": "Mantenha uma regra ou anuncie outra etapa.",
+        "errorFocus": "REPAIR_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-29",
+      "statement": "Qual princípio organiza botões físicos ou ícones digitais?",
+      "prompt": "Qual princípio organiza botões físicos ou ícones digitais?",
+      "options": [
+        "Escolher um atributo e aplicá-lo de modo consistente.",
+        "Usar senhas pessoais como critério.",
+        "Mudar a regra em cada item.",
+        "Organizar sem observar atributos."
+      ],
+      "correctAnswer": "Escolher um atributo e aplicá-lo de modo consistente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usar senhas pessoais como critério.": [
+          "CROSS_MODAL_RULE"
+        ],
+        "Mudar a regra em cada item.": [
+          "CROSS_MODAL_RULE"
+        ],
+        "Organizar sem observar atributos.": [
+          "CROSS_MODAL_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_MEDIA",
+      "explanation": "A organização por atributo pode ser usada em suportes físicos ou digitais.",
+      "hint": "Nomeie o critério antes de começar.",
+      "errorFocus": "CROSS_MODAL_RULE",
+      "feedback": {
+        "correct": "Boa observação: A organização por atributo pode ser usada em suportes físicos ou digitais.",
+        "incorrect": "A organização por atributo pode ser usada em suportes físicos ou digitais.",
+        "hint": "Nomeie o critério antes de começar.",
+        "errorFocus": "CROSS_MODAL_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-30",
+      "statement": "Que recurso pode tornar a classificação por forma acessível?",
+      "prompt": "Que recurso pode tornar a classificação por forma acessível?",
+      "options": [
+        "Usar somente cores sem rótulos.",
+        "Cartões ampliados ou táteis com descrição verbal das formas.",
+        "Esconder os atributos.",
+        "Impedir respostas por apontar."
+      ],
+      "correctAnswer": "Cartões ampliados ou táteis com descrição verbal das formas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usar somente cores sem rótulos.": [
+          "ACCESS_SUPPORT"
+        ],
+        "Esconder os atributos.": [
+          "ACCESS_SUPPORT"
+        ],
+        "Impedir respostas por apontar.": [
+          "ACCESS_SUPPORT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "LOCK_IN_ACCESS",
+      "explanation": "Recursos multimodais ampliam acesso sem alterar o critério.",
+      "hint": "Escolha apoio que torne a forma identificável.",
+      "errorFocus": "ACCESS_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Recursos multimodais ampliam acesso sem alterar o critério.",
+        "incorrect": "Recursos multimodais ampliam acesso sem alterar o critério.",
+        "hint": "Escolha apoio que torne a forma identificável.",
+        "errorFocus": "ACCESS_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-31",
+      "statement": "O que é um atributo que ajuda a organizar objetos?",
+      "prompt": "O que é um atributo que ajuda a organizar objetos?",
+      "options": [
+        "O nome de quem observa.",
+        "A senha de um aplicativo.",
+        "Uma característica como cor, forma ou tamanho.",
+        "A ordem de chegada."
+      ],
+      "correctAnswer": "Uma característica como cor, forma ou tamanho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O nome de quem observa.": [
+          "ATTRIBUTE"
+        ],
+        "A senha de um aplicativo.": [
+          "ATTRIBUTE"
+        ],
+        "A ordem de chegada.": [
+          "ATTRIBUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_ATTRIBUTE",
+      "explanation": "Atributos são características observáveis ou representadas.",
+      "hint": "Pense em uma característica do objeto.",
+      "errorFocus": "ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Atributos são características observáveis ou representadas.",
+        "incorrect": "Atributos são características observáveis ou representadas.",
+        "hint": "Pense em uma característica do objeto.",
+        "errorFocus": "ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-32",
+      "statement": "O que significa organizar objetos por um critério?",
+      "prompt": "O que significa organizar objetos por um critério?",
+      "options": [
+        "Mudar de regra em cada objeto.",
+        "Misturar sem observar.",
+        "Escolher um objeto favorito.",
+        "Usar uma característica escolhida como regra para agrupar ou ordenar."
+      ],
+      "correctAnswer": "Usar uma característica escolhida como regra para agrupar ou ordenar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mudar de regra em cada objeto.": [
+          "RULE"
+        ],
+        "Misturar sem observar.": [
+          "RULE"
+        ],
+        "Escolher um objeto favorito.": [
+          "RULE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_CRITERION",
+      "explanation": "O critério orienta a organização.",
+      "hint": "Complete: vou organizar pela…",
+      "errorFocus": "RULE",
+      "feedback": {
+        "correct": "Boa observação: O critério orienta a organização.",
+        "incorrect": "O critério orienta a organização.",
+        "hint": "Complete: vou organizar pela…",
+        "errorFocus": "RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-33",
+      "statement": "Dois objetos têm a mesma forma, mas cores diferentes. Qual semelhança existe?",
+      "prompt": "Dois objetos têm a mesma forma, mas cores diferentes. Qual semelhança existe?",
+      "options": [
+        "A forma.",
+        "A cor.",
+        "O tamanho sem observar.",
+        "Quem os trouxe."
+      ],
+      "correctAnswer": "A forma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor.": [
+          "SIMILARITY"
+        ],
+        "O tamanho sem observar.": [
+          "SIMILARITY"
+        ],
+        "Quem os trouxe.": [
+          "SIMILARITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_SHARED",
+      "explanation": "A forma é o atributo compartilhado.",
+      "hint": "Procure a característica que coincide.",
+      "errorFocus": "SIMILARITY",
+      "feedback": {
+        "correct": "Boa observação: A forma é o atributo compartilhado.",
+        "incorrect": "A forma é o atributo compartilhado.",
+        "hint": "Procure a característica que coincide.",
+        "errorFocus": "SIMILARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-34",
+      "statement": "Para ordenar cartões do menor para o maior, qual atributo comparar?",
+      "prompt": "Para ordenar cartões do menor para o maior, qual atributo comparar?",
+      "options": [
+        "A cor da mesa.",
+        "O tamanho.",
+        "O assunto da aula.",
+        "O nome de quem desenhou."
+      ],
+      "correctAnswer": "O tamanho.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A cor da mesa.": [
+          "ORDER_ATTRIBUTE"
+        ],
+        "O assunto da aula.": [
+          "ORDER_ATTRIBUTE"
+        ],
+        "O nome de quem desenhou.": [
+          "ORDER_ATTRIBUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_ORDER",
+      "explanation": "A sequência depende do tamanho.",
+      "hint": "Compare o que fica menor ou maior.",
+      "errorFocus": "ORDER_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A sequência depende do tamanho.",
+        "incorrect": "A sequência depende do tamanho.",
+        "hint": "Compare o que fica menor ou maior.",
+        "errorFocus": "ORDER_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-35",
+      "statement": "Dois cartões têm a mesma cor e formas diferentes. Qual atributo difere?",
+      "prompt": "Dois cartões têm a mesma cor e formas diferentes. Qual atributo difere?",
+      "options": [
+        "A cor comum.",
+        "O critério de cor.",
+        "A forma.",
+        "A existência de semelhança."
+      ],
+      "correctAnswer": "A forma.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor comum.": [
+          "DIFFERENCE"
+        ],
+        "O critério de cor.": [
+          "DIFFERENCE"
+        ],
+        "A existência de semelhança.": [
+          "DIFFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_DIFFERENCE",
+      "explanation": "A forma varia mesmo quando a cor é compartilhada.",
+      "hint": "Observe outro atributo.",
+      "errorFocus": "DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A forma varia mesmo quando a cor é compartilhada.",
+        "incorrect": "A forma varia mesmo quando a cor é compartilhada.",
+        "hint": "Observe outro atributo.",
+        "errorFocus": "DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-36",
+      "statement": "O que pode acontecer se a regra mudar de cor para forma?",
+      "prompt": "O que pode acontecer se a regra mudar de cor para forma?",
+      "options": [
+        "Os objetos mudam de cor sozinhos.",
+        "A primeira organização era errada.",
+        "Nenhum objeto pode ser agrupado.",
+        "Os grupos podem mudar, embora os objetos sejam os mesmos."
+      ],
+      "correctAnswer": "Os grupos podem mudar, embora os objetos sejam os mesmos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os objetos mudam de cor sozinhos.": [
+          "RULE_CHANGE"
+        ],
+        "A primeira organização era errada.": [
+          "RULE_CHANGE"
+        ],
+        "Nenhum objeto pode ser agrupado.": [
+          "RULE_CHANGE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_NEW_RULE",
+      "explanation": "A mesma coleção pode ser organizada por critérios diferentes.",
+      "hint": "O que muda: regra ou objetos?",
+      "errorFocus": "RULE_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A mesma coleção pode ser organizada por critérios diferentes.",
+        "incorrect": "A mesma coleção pode ser organizada por critérios diferentes.",
+        "hint": "O que muda: regra ou objetos?",
+        "errorFocus": "RULE_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-37",
+      "statement": "Qual organização aplica a regra de forma com consistência?",
+      "prompt": "Qual organização aplica a regra de forma com consistência?",
+      "options": [
+        "Círculos em um grupo e quadrados em outro.",
+        "Misturar sem critério.",
+        "Mudar de cor para tamanho sem avisar.",
+        "Agrupar pelo nome de quem trouxe."
+      ],
+      "correctAnswer": "Círculos em um grupo e quadrados em outro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Misturar sem critério.": [
+          "CONSISTENT_RULE"
+        ],
+        "Mudar de cor para tamanho sem avisar.": [
+          "CONSISTENT_RULE"
+        ],
+        "Agrupar pelo nome de quem trouxe.": [
+          "CONSISTENT_RULE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_CONSISTENCY",
+      "explanation": "A mesma regra de forma é aplicada a todos os cartões.",
+      "hint": "Confira cada objeto.",
+      "errorFocus": "CONSISTENT_RULE",
+      "feedback": {
+        "correct": "Boa observação: A mesma regra de forma é aplicada a todos os cartões.",
+        "incorrect": "A mesma regra de forma é aplicada a todos os cartões.",
+        "hint": "Confira cada objeto.",
+        "errorFocus": "CONSISTENT_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-38",
+      "statement": "Qual frase explica padrão e diferença em um conjunto?",
+      "prompt": "Qual frase explica padrão e diferença em um conjunto?",
+      "options": [
+        "“Estão juntos porque sim.”",
+        "“Este grupo tem formas redondas; o outro tem formas quadradas.”",
+        "“Todos são iguais em tudo.”",
+        "“Este grupo vale mais.”"
+      ],
+      "correctAnswer": "“Este grupo tem formas redondas; o outro tem formas quadradas.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Estão juntos porque sim.”": [
+          "EXPLAIN_PATTERN"
+        ],
+        "“Todos são iguais em tudo.”": [
+          "EXPLAIN_PATTERN"
+        ],
+        "“Este grupo vale mais.”": [
+          "EXPLAIN_PATTERN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_EXPLANATION",
+      "explanation": "A frase declara o atributo comum e o contraste.",
+      "hint": "Diga o que é comum e o que muda.",
+      "errorFocus": "EXPLAIN_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A frase declara o atributo comum e o contraste.",
+        "incorrect": "A frase declara o atributo comum e o contraste.",
+        "hint": "Diga o que é comum e o que muda.",
+        "errorFocus": "EXPLAIN_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-39",
+      "statement": "Uma pasta digital tem ícones de imagem e de áudio. Qual regra pode organizá-los?",
+      "prompt": "Uma pasta digital tem ícones de imagem e de áudio. Qual regra pode organizá-los?",
+      "options": [
+        "Usar a senha de quem abriu.",
+        "Misturar sem observar.",
+        "Agrupar pelo tipo indicado por cada ícone.",
+        "Escolher pelo nome de um colega."
+      ],
+      "correctAnswer": "Agrupar pelo tipo indicado por cada ícone.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Usar a senha de quem abriu.": [
+          "DIGITAL_OBJECTS"
+        ],
+        "Misturar sem observar.": [
+          "DIGITAL_OBJECTS"
+        ],
+        "Escolher pelo nome de um colega.": [
+          "DIGITAL_OBJECTS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_DIGITAL",
+      "explanation": "Objetos digitais também podem ser organizados por características.",
+      "hint": "Observe o que cada ícone indica.",
+      "errorFocus": "DIGITAL_OBJECTS",
+      "feedback": {
+        "correct": "Boa observação: Objetos digitais também podem ser organizados por características.",
+        "incorrect": "Objetos digitais também podem ser organizados por características.",
+        "hint": "Observe o que cada ícone indica.",
+        "errorFocus": "DIGITAL_OBJECTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-organize-objects-fi-40",
+      "statement": "Qual registro informa a regra e o padrão observado?",
+      "prompt": "Qual registro informa a regra e o padrão observado?",
+      "options": [
+        "“Separei porque achei melhor.”",
+        "“Todos são iguais em tudo.”",
+        "“Organizei pelo nome de quem trouxe.”",
+        "“Agrupei pela forma: círculos juntos e quadrados em outro grupo.”"
+      ],
+      "correctAnswer": "“Agrupei pela forma: círculos juntos e quadrados em outro grupo.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Separei porque achei melhor.”": [
+          "RULE_EVIDENCE"
+        ],
+        "“Todos são iguais em tudo.”": [
+          "RULE_EVIDENCE"
+        ],
+        "“Organizei pelo nome de quem trouxe.”": [
+          "RULE_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_EVIDENCE",
+      "explanation": "O registro informa o critério e o padrão resultante.",
+      "hint": "Procure a regra e a característica comum.",
+      "errorFocus": "RULE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O registro informa o critério e o padrão resultante.",
+        "incorrect": "O registro informa o critério e o padrão resultante.",
+        "hint": "Procure a regra e a característica comum.",
+        "errorFocus": "RULE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+          "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+          "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+          "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

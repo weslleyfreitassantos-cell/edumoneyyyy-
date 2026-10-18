@@ -213,6 +213,11 @@ const internalCandidateMigrations = [
 ];
 
 describe('question-first V5 staging content', () => {
+  it('accepts explicit inactive staging without opening publication', () => {
+    const inactivePack = { ...pack, publicationStatus: 'STAGING_INACTIVE', active: false };
+    expect(validateQuestionFirstPack(inactivePack, []).valid).toBe(true);
+  });
+
   it('closes successive-percent source feedback and transfer/review coverage in a new inactive version', () => {
     const result = validateQuestionFirstPack(mathSuccessiveV6Pack);
     expect(result.valid).toBe(true);

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-science-day-night-rhythms-fi",
+  "officialCode": "EF01CI06",
+  "outputPath": "content/adaptive/tec-escola-core-v5/v1-science-day-night-rhythms-fi.json",
+  "canonicalSkillCode": "AUTHORING_EF01CI06_DAY_NIGHT_ACTIVITY_RHYTHMS",
+  "subject": "SCIENCE",
+  "domain": "TERRA_E_UNIVERSO",
+  "topic": "exemplos de como dias e noites orientam atividades de seres humanos e outros seres vivos",
+  "officialDescriptor": "Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos.",
+  "officialSource": {
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 335
+  },
+  "lesson": {
+    "title": "Dias e noites organizam atividades",
+    "objective": "Selecionar e explicar exemplos de como a alternância entre dia e noite pode orientar atividades diárias de pessoas e de outros seres vivos, reconhecendo que rotinas variam.",
+    "summary": "A sucessão de dias e noites ajuda a organizar muitas atividades cotidianas. Pessoas e outros seres vivos podem ter ritmos diferentes; exemplos devem ser observados sem transformar uma rotina em regra para todos.",
+    "explanation": "## 1. Observe a alternância\nA Terra passa por períodos claros e escuros que chamamos dia e noite. A sucessão desses períodos oferece referências para organizar atividades diárias.\n\n## 2. Selecione exemplos\nUma escola pode funcionar durante o dia; algumas pessoas trabalham à noite. Certos animais, como corujas de algumas espécies, costumam estar ativos à noite, enquanto muitos outros são ativos durante o dia. Observe o exemplo específico e evite dizer que todos os seres de um grupo têm a mesma rotina.\n\n## 3. Compare sem impor uma regra\nO dia e a noite orientam ritmos, mas não definem uma única rotina humana. Turnos de trabalho, cuidados, saúde, ambiente e características dos seres vivos podem variar. Use registros seguros e não exponha horários privados de colegas.",
+    "workedExample": "Em um exemplo de rotina, uma turma tem aulas durante o dia e uma equipe de cuidado do prédio trabalha à noite. A alternância entre claro e escuro ajuda a organizar esses horários; isso não significa que todas as pessoas durmam ou trabalhem no mesmo período.",
+    "commonMistake": "Afirmar que todos os animais dormem à noite, que todas as pessoas têm a mesma rotina ou que a alternância de dia e noite determina sozinha cada atividade.",
+    "tips": [
+      "Use expressões como “alguns exemplos”, “pode orientar” e “nesta situação”.",
+      "Distinga observação do ambiente de regras universais sobre pessoas ou espécies.",
+      "Não peça que estudantes revelem horários familiares, de trabalho ou de sono.",
+      "Observe animais e plantas sem capturá-los, perturbá-los ou entrar em locais inseguros."
+    ],
+    "priorKnowledge": [
+      "Reconhecer dia e noite em experiências cotidianas e imagens do céu ou do ambiente.",
+      "Organizar acontecimentos simples usando palavras como manhã, tarde e noite."
+    ],
+    "keyConcepts": [
+      "sucessão de dias e noites",
+      "ritmo de atividades diárias",
+      "observação de exemplos",
+      "atividade humana",
+      "atividade de outros seres vivos",
+      "variação de rotina",
+      "ambiente claro e escuro",
+      "limite de generalização"
+    ],
+    "microExplanations": [
+      { "trigger": "DAY_NIGHT_SUCCESSION", "text": "Dia e noite se sucedem e oferecem referências temporais para atividades cotidianas." },
+      { "trigger": "SELECT_EXAMPLE", "text": "Escolha uma atividade observada e explique como seu horário se relaciona ao dia ou à noite." },
+      { "trigger": "AVOID_ALL_OR_NONE", "text": "Um exemplo de rotina não permite dizer que todas as pessoas ou todos os animais fazem o mesmo." }
+    ],
+    "remediations": [
+      { "errorFocus": "GENERALIZES_ALL_LIVING_BEINGS", "action": "Compare exemplos de seres específicos e substitua “todos” por uma descrição do organismo observado." },
+      { "errorFocus": "ASSUMES_UNIVERSAL_HUMAN_SCHEDULE", "action": "Use rotinas fictícias variadas, incluindo atividades diurnas e noturnas, sem perguntar horários privados da turma." },
+      { "errorFocus": "CAUSES_ACTIVITY_ONLY_BY_LIGHT", "action": "Retome a ideia de que dia e noite orientam ritmos, mas ambiente, necessidades e contextos também influenciam atividades." }
+    ],
+    "accessibilitySupports": [
+      "Calendário visual com símbolos de claro/escuro, imagens descritas e cartões de rotina em alto contraste.",
+      "Resposta por fala, apontar, ordenação de cartões, desenho ou comunicação alternativa.",
+      "Exemplos fictícios para não expor horários de sono, trabalho ou cuidado das famílias.",
+      "Observação segura sem perturbar animais, plantas ou habitats."
+    ],
+    "authenticActivities": [
+      {
+        "title": "Calendário de atividades da escola",
+        "context": "A turma organiza atividades públicas da escola em períodos de dia ou noite, sem registrar a rotina privada de estudantes.",
+        "steps": ["Escolher atividades escolares ou fictícias.", "Associar cada uma a um período observado.", "Montar uma sequência de dia e noite.", "Explicar como essa alternância ajuda a organizar horários."],
+        "evidence": "Calendário com atividade, período e justificativa em linguagem oral, visual ou escrita.",
+        "rubric": ["Inicial: associa uma atividade a um período com apoio.", "Em desenvolvimento: organiza exemplos em dia e noite.", "Consolidado: explica a relação e reconhece que rotinas humanas variam."]
+      },
+      {
+        "title": "Diário de observação sem perturbar",
+        "context": "Usar imagens, registros autorizados ou observações feitas em segurança para comparar atividades de seres vivos em diferentes períodos.",
+        "steps": ["Selecionar dois exemplos de seres vivos.", "Identificar o período indicado pela fonte ou observação.", "Registrar a atividade sem perturbar o ser vivo.", "Comparar os exemplos e limitar a conclusão aos casos observados."],
+        "evidence": "Dois registros de atividade com período, fonte da observação e conclusão sem generalização.",
+        "rubric": ["Inicial: identifica um exemplo com mediação.", "Em desenvolvimento: relaciona atividade e período em dois casos.", "Consolidado: compara exemplos e explicita que não representam necessariamente todos os seres do grupo."]
+      }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY", "SELECT", "SCHOOL_DAY", "Uma escola tem aulas durante o dia. Como a alternância entre dia e noite pode se relacionar a esse exemplo?", "O período claro ajuda a organizar o horário das aulas nessa escola.", ["Todas as escolas do mundo funcionam no mesmo horário.", "A noite nunca tem atividades.", "A luz determina todas as atividades humanas."], "RELATE_PERIOD_TO_EXAMPLE", "A resposta descreve uma rotina específica sem torná-la universal.", "Fale da escola do exemplo, não de todas as escolas."],
+      ["EASY", "SELECT", "NIGHT_ANIMAL_EXAMPLE", "Uma fonte confiável descreve uma espécie de coruja ativa à noite. O que esse exemplo mostra?", "Alguns animais podem realizar atividades durante a noite.", ["Todos os animais são ativos à noite.", "Nenhum animal fica ativo durante o dia.", "Todas as corujas têm exatamente a mesma rotina."], "LIMIT_ANIMAL_GENERALIZATION", "O exemplo permite falar daquela espécie ou caso, não de todos os animais.", "Use a palavra “alguns” ao explicar o exemplo."],
+      ["EASY", "COMPARE", "DAY_NIGHT_CYCLE", "O que vem depois do dia na sucessão cotidiana de períodos?", "A noite.", ["Outro dia sem noite.", "Uma estação do ano.", "Um mês inteiro."], "SEQUENCE_DAY_NIGHT", "Dia e noite se alternam como períodos cotidianos.", "Pense na alternância de claro e escuro."],
+      ["EASY", "EXPLAIN", "VARIED_HUMAN_ROUTINE", "Uma pessoa trabalha à noite. O que esse exemplo ajuda a perceber?", "As rotinas humanas podem acontecer em períodos diferentes.", ["Todas as pessoas trabalham à noite.", "Ninguém trabalha durante o dia.", "O dia e a noite não se sucedem."], "HUMAN_ROUTINES_VARY", "Um exemplo mostra variação, não uma regra para todas as pessoas.", "Compare essa rotina a outras sem eleger uma como única." ]
+    ],
+    "PRACTICE": [
+      ["EASY", "RELATE", "MORNING_GARDEN", "Uma pessoa rega plantas pela manhã. Como o período do dia orienta essa atividade no exemplo?", "A atividade foi organizada para acontecer durante o dia.", ["Todas as plantas só podem receber água pela manhã.", "A noite não existe para as plantas.", "Toda pessoa deve regar plantas nesse horário."], "DESCRIBE_ONE_ROUTINE", "A resposta descreve o horário do exemplo, sem criar regra universal.", "Limite sua explicação à pessoa e às plantas citadas."],
+      ["EASY", "SELECT", "NIGHT_SHIFT", "Uma equipe fictícia trabalha à noite cuidando de um hospital. O que a sucessão de dia e noite ajuda a organizar?", "O horário de trabalho dessa equipe no exemplo.", ["A mesma rotina de todas as pessoas.", "A impossibilidade de atividades diurnas.", "A duração de cada vida."], "NIGHT_ACTIVITY_SCHEDULE", "Dia e noite servem como referências para organizar horários de atividades.", "Pense no período em que a equipe atua."],
+      ["EASY", "COMPARE", "BIRD_OBSERVATION", "Uma observação registra um pássaro cantando durante a manhã. Qual frase é apoiada pelo registro?", "Esse pássaro foi observado cantando pela manhã naquele registro.", ["Todos os pássaros cantam apenas de manhã.", "Nenhum pássaro canta à noite.", "Todos os seres vivos seguem essa rotina."], "OBSERVATION_SCOPE", "O registro se refere ao pássaro e ao momento observados.", "Inclua “neste registro” ao explicar."],
+      ["EASY", "SELECT", "HUMAN_SLEEP_EXAMPLE", "Uma história mostra uma pessoa dormindo à noite. Qual é uma conclusão adequada?", "A pessoa da história descansou à noite nessa situação.", ["Todas as pessoas dormem à noite.", "Quem trabalha à noite não precisa descansar.", "A noite serve apenas para dormir."], "NO_UNIVERSAL_SLEEP_CLAIM", "O exemplo não representa a rotina de todas as pessoas.", "Fale somente sobre a personagem."],
+      ["EASY", "RELATE", "FLOWER_OPENING_SOURCE", "Um registro confiável mostra uma flor aberta durante o dia. O que pode ser dito?", "A flor do registro estava aberta durante o dia.", ["Todas as flores abrem só durante o dia.", "A planta escolheu um horário como uma pessoa.", "Nenhuma flor abre à noite."], "PLANT_EXAMPLE_SCOPE", "A afirmação fica no caso observado e não generaliza para todas as plantas.", "Descreva o que a fonte mostra."],
+      ["MEDIUM", "COMPARE", "SCHOOL_AND_HOSPITAL", "Uma escola funciona de dia e uma equipe do hospital trabalha à noite. Qual comparação é adequada?", "As atividades desses exemplos acontecem em períodos diferentes.", ["A escola é mais importante que o hospital.", "Toda equipe hospitalar trabalha à noite.", "Durante a noite não há atividades humanas."], "COMPARE_PERIODS_NOT_VALUE", "A comparação considera os períodos sem classificar as atividades ou generalizar equipes.", "Compare apenas os horários descritos."],
+      ["MEDIUM", "REASON", "BAT_OBSERVATION", "Uma fonte registra morcegos ativos à noite em determinado local. O que a criança pode concluir?", "A fonte apresenta um exemplo de atividade noturna de morcegos naquele contexto.", ["Todos os morcegos são ativos sempre à noite.", "Todos os mamíferos têm o mesmo ritmo.", "Morcegos não descansam."], "SPECIES_AND_CONTEXT", "A fonte apoia um exemplo delimitado; diferentes espécies e contextos podem variar.", "Não amplie a observação para todo o grupo."],
+      ["MEDIUM", "SELECT", "ROUTINE_CARDS", "Cartões mostram uma feira escolar durante o dia e um turno de cuidado à noite. O que esses cartões ilustram?", "A alternância de períodos pode orientar atividades diferentes.", ["Toda atividade deve ocorrer durante a noite.", "Só existem atividades quando há luz do Sol.", "As pessoas têm horários iguais."], "DAY_NIGHT_ORGANIZES_ACTIVITIES", "Os exemplos mostram atividades organizadas em períodos diferentes.", "Procure o que os dois horários têm em comum como referência."],
+      ["MEDIUM", "EVALUATE", "UNIVERSAL_CLAIM", "Qual afirmação evita generalizar uma rotina?", "“Algumas atividades humanas são organizadas durante o dia e outras podem ocorrer à noite.”", ["“Todas as pessoas fazem as mesmas coisas à noite.”", "“Nenhum ser vivo fica ativo durante o dia.”", "“O dia determina sozinho toda atividade.”"], "AVOID_ALL_OR_NONE", "A frase reconhece variedade sem transformar exemplos em regras universais.", "Escolha uma afirmação que use “algumas” ou “podem”."],
+      ["MEDIUM", "APPLY", "SAFE_OBSERVATION", "A turma quer observar animais à noite. Qual plano é mais seguro e respeitoso?", "Usar uma fonte ou registro autorizado sem capturar nem perturbar animais.", ["Entrar sozinha em um local escuro.", "Acordar animais para vê-los agir.", "Usar luz forte diretamente nos olhos deles."], "OBSERVE_WITHOUT_DISTURBANCE", "O estudo pode usar fontes seguras e evitar perturbar seres vivos ou colocar estudantes em risco.", "Escolha uma observação que não incomode o animal."],
+      ["MEDIUM", "EXPLAIN", "DAYLIGHT_ACTIVITY", "Uma família fictícia prepara o jantar no começo da noite. O que o exemplo ilustra?", "Uma atividade humana pode ser organizada para acontecer à noite.", ["Todas as famílias jantam no mesmo horário.", "O jantar só existe à noite.", "As rotinas são determinadas apenas pela luz."], "HUMAN_ACTIVITY_VARIATION", "O exemplo ilustra uma possibilidade, não uma regra para todas as famílias.", "Fale “nesta história” ao descrever o horário."],
+      ["MEDIUM", "DISTINGUISH", "PERIOD_VS_CAUSE", "Uma pessoa escolhe trabalhar à noite. Qual frase evita dizer que a noite é a única causa da escolha?", "O horário noturno organiza o turno descrito; outros fatores também podem influenciar a rotina.", ["A noite obriga todas as pessoas a trabalhar.", "Só a luz decide a profissão.", "Nenhuma outra condição importa."], "MULTIPLE_FACTORS", "O período é uma referência temporal, mas rotinas também dependem de outros contextos.", "Não reduza uma escolha a uma única causa." ]
+    ],
+    "TRANSFER": [
+      ["MEDIUM", "APPLY", "NEW_LIBRARY_SHIFT", "Uma biblioteca fictícia abre pela manhã e outra equipe organiza livros à noite. Como a sucessão de períodos aparece?", "Os períodos claro e escuro ajudam a organizar turnos diferentes.", ["Todas as bibliotecas funcionam igual.", "A noite impede qualquer trabalho.", "A manhã e a noite não têm relação com horários."], "TRANSFER_SCHEDULE_EXAMPLE", "A alternância de dia e noite pode ser referência para organizar atividades.", "Identifique o período de cada equipe."],
+      ["MEDIUM", "SELECT", "NEW_ANIMAL_SOURCE", "Um documentário mostra um animal procurando alimento à noite. O que é apropriado registrar?", "Na cena, aquele animal procura alimento durante a noite.", ["Todos os animais procuram alimento à noite.", "O animal nunca descansa.", "A cena representa todos os habitats."], "TRANSFER_RECORD_SCENE", "O registro descreve uma cena delimitada, sem generalizar espécie ou habitat.", "Use “na cena” para indicar a evidência."],
+      ["MEDIUM", "COMPARE", "NEW_TWO_ROUTINES", "Dois personagens têm rotinas diferentes: um estuda de manhã e outro trabalha à noite. O que a comparação mostra?", "Atividades humanas podem ser organizadas em períodos diferentes.", ["Um personagem tem uma rotina melhor.", "Todos deveriam copiar um deles.", "Ninguém pode descansar em outro horário."], "TRANSFER_HUMAN_VARIATION", "A comparação evidencia variação de rotina sem hierarquia.", "Nomeie a diferença de períodos sem julgar as pessoas."],
+      ["MEDIUM", "EXPLAIN", "NEW_PLANT_RECORD", "Uma observação feita em dois dias registra uma planta fechada à noite e aberta de manhã. Como relatar?", "A planta foi observada fechada à noite e aberta pela manhã nesses registros.", ["Todas as plantas fazem sempre o mesmo.", "A planta decidiu imitar as pessoas.", "A observação prova o que ocorre em todos os lugares."], "TRANSFER_PLANT_RECORD_LIMIT", "O relato mantém-se nos períodos e registros observados.", "Mencione a fonte e os dois momentos."],
+      ["MEDIUM", "DISTINGUISH", "NEW_PRIVATE_SCHEDULE", "Por que não devemos pedir que cada estudante revele o horário em que sua família trabalha?", "Porque rotinas são privadas e exemplos fictícios ou públicos permitem estudar o conceito.", ["Porque horários nunca mudam.", "Porque só há uma rotina correta.", "Porque atividades noturnas não existem."], "TRANSFER_PROTECT_SCHEDULE_PRIVACY", "A aula pode discutir variação de rotinas sem expor informações familiares.", "Pense em um exemplo público ou inventado."],
+      ["MEDIUM", "EVALUATE", "NEW_GENERALIZATION", "Uma criança diz “todos os animais dormem à noite”. Qual resposta ajuda a investigar a ideia?", "Comparar fontes sobre animais diferentes e registrar os exemplos observados.", ["Confirmar sem consultar exemplos.", "Dizer que nenhum animal descansa.", "Acordar animais para testar."], "TRANSFER_CHECK_MULTIPLE_EXAMPLES", "Fontes e exemplos distintos ajudam a revisar uma generalização com segurança.", "Investigue sem perturbar animais."],
+      ["HARD", "JUSTIFY", "NEW_DAY_NIGHT_CLAIM", "Qual afirmação explica melhor como dias e noites orientam ritmos?", "A alternância oferece referências para atividades, enquanto rotinas e seres vivos variam.", ["A alternância determina sozinha todas as atividades.", "Todos os seres têm o mesmo ritmo.", "Dia e noite não influenciam nenhum horário."], "TRANSFER_BALANCED_EXPLANATION", "A resposta reconhece a referência temporal e preserva a diversidade de ritmos.", "Inclua influência e variação na mesma explicação."],
+      ["HARD", "APPLY", "NEW_ACTIVITY_PLANNER", "Uma turma cria um calendário fictício com atividades em períodos diferentes. O que precisa acompanhar cada cartão?", "O período do exemplo e a explicação de como ele organiza a atividade.", ["O horário privado de um colega.", "Uma regra para todas as pessoas.", "Uma afirmação sobre todos os animais."], "TRANSFER_EVIDENCE_AND_SCOPE", "O registro deve conectar atividade, período e escopo do exemplo.", "Anote período, atividade e contexto." ]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM", "EXPLAIN", "LOCK_IN_SUCCESSION", "O que a sucessão de dias e noites oferece para organizar atividades?", "Referências de períodos claros e escuros ao longo do cotidiano.", ["Um horário igual para todas as pessoas.", "Uma regra universal para animais.", "A garantia de que toda atividade aconteça com luz."], "LOCK_IN_TIME_REFERENCE", "A alternância oferece referências temporais, não uma rotina única.", "Pense em dia e noite como períodos que se sucedem."],
+      ["MEDIUM", "SELECT", "LOCK_IN_EXAMPLE", "Qual é um exemplo delimitado de atividade orientada pelo período?", "“Nesta escola, as aulas acontecem durante o dia.”", ["“Todas as pessoas fazem tudo durante o dia.”", "“Nenhum animal fica ativo à noite.”", "“A noite impede qualquer atividade.”"], "LOCK_IN_LIMITED_EXAMPLE", "A frase descreve uma escola específica e evita generalizar.", "Escolha um caso situado, não uma regra para todos."],
+      ["HARD", "DISTINGUISH", "LOCK_IN_ANIMALS", "Um animal foi visto ativo à noite. O que não se pode concluir só com essa observação?", "Que todos os animais da mesma classe têm exatamente o mesmo ritmo.", ["Que aquele animal estava ativo naquela noite.", "Que a observação ocorreu no período escuro.", "Que o registro contém um exemplo."], "LOCK_IN_NOT_ALL_ANIMALS", "Uma observação individual não representa automaticamente todos os animais.", "Separe o caso observado da generalização."],
+      ["HARD", "EVALUATE", "LOCK_IN_HUMAN_ROUTINES", "Qual frase respeita diferenças de rotina entre pessoas?", "“Pessoas podem estudar, trabalhar e descansar em horários diferentes.”", ["“Todas devem dormir na mesma hora.”", "“Quem trabalha à noite não descansa.”", "“Só existe uma rotina saudável para todos.”"], "LOCK_IN_NO_UNIVERSAL_SCHEDULE", "A frase reconhece variação e não impõe um único horário humano.", "Escolha a frase que permite rotinas diferentes."],
+      ["HARD", "JUSTIFY", "LOCK_IN_SAFE_METHOD", "Qual método é adequado para estudar atividade de seres vivos durante a noite?", "Consultar registros confiáveis ou observar com segurança sem perturbar os seres vivos.", ["Capturar animais para mantê-los acordados.", "Entrar sem adulto em áreas escuras.", "Apontar luz intensa para os olhos de um animal."], "LOCK_IN_SAFE_OBSERVATION", "A aprendizagem não requer risco nem perturbação dos seres vivos.", "Escolha uma fonte segura e respeitosa."],
+      ["HARD", "OBSERVE", "LOCK_IN_EVIDENCE", "Qual anotação combina atividade, período e limite da fonte?", "“Na imagem, uma coruja está ativa à noite; esse exemplo não descreve todos os animais.”", ["“Todos os animais ficam acordados à noite.”", "“A imagem prova como cada coruja vive.”", "“Nenhuma atividade ocorre durante o dia.”"], "LOCK_IN_EVIDENCE_SCOPE", "A anotação descreve a imagem e indica o limite da generalização.", "Registre o caso e diga o que ele não representa." ]
+    ],
+    "REVIEW": [
+      ["EASY", "RECALL", "REVIEW_SEQUENCE", "Quais períodos se alternam na sucessão cotidiana estudada?", "Dia e noite.", ["Duas estações seguidas.", "Dois meses sem mudança.", "Somente manhã e tarde."], "REVIEW_DAY_NIGHT", "O dia e a noite se sucedem ao longo do cotidiano.", "Pense em períodos claro e escuro."],
+      ["EASY", "SELECT", "REVIEW_ACTIVITY", "Qual frase apresenta um exemplo de atividade humana ligada a um período?", "“Nesta escola, as aulas ocorrem durante o dia.”", ["“Todas as pessoas têm a mesma rotina.”", "“Ninguém trabalha à noite.”", "“Os animais seguem um horário igual.”"], "REVIEW_EXAMPLE", "A frase associa uma atividade a um período em um contexto específico.", "Procure uma atividade e um período."],
+      ["EASY", "DISTINGUISH", "REVIEW_VARIATION", "Uma pessoa trabalha à noite. O que podemos dizer?", "É um exemplo de rotina humana que acontece à noite.", ["Todas as pessoas trabalham à noite.", "A pessoa nunca descansa.", "Nenhuma atividade ocorre de dia."], "REVIEW_NOT_UNIVERSAL", "Um caso ilustra uma possibilidade sem representar todas as rotinas.", "Fale apenas da pessoa do exemplo."],
+      ["MEDIUM", "RECALL", "REVIEW_ANIMAL", "Uma fonte mostra uma espécie ativa durante certo período. Qual cuidado devemos ter?", "Não afirmar que todos os animais têm o mesmo ritmo com base em um exemplo.", ["Generalizar para todos os seres vivos.", "Perturbar animais para conferir.", "Ignorar o contexto da fonte."], "REVIEW_SCOPE", "A conclusão precisa respeitar o organismo e o contexto observados.", "Lembre-se de que um exemplo não é todos."],
+      ["MEDIUM", "EXPLAIN", "REVIEW_ORGANIZE", "Como dia e noite podem orientar uma rotina?", "Servem como referências para planejar quando algumas atividades acontecem.", ["Determinam sozinhos toda escolha humana.", "Impedem atividades noturnas.", "Tornam todas as rotinas iguais."], "REVIEW_INFLUENCE", "A alternância orienta períodos, sem determinar toda rotina.", "Use “referência” em vez de “regra para todos”."],
+      ["MEDIUM", "SELECT", "REVIEW_PRIVACY", "Qual informação não é necessária para discutir ritmos diários em sala?", "O horário privado de trabalho da família de cada estudante.", ["Um exemplo fictício de atividade noturna.", "Uma imagem autorizada de dia e noite.", "Um calendário público da escola."], "REVIEW_PRIVACY", "Exemplos não privados permitem estudar o tema sem expor famílias.", "Escolha o dado pessoal que pode ser evitado."],
+      ["MEDIUM", "EVALUATE", "REVIEW_SAFE", "Qual plano de observação é seguro?", "Usar um vídeo confiável de animal noturno sem perturbá-lo.", ["Acordar o animal para observá-lo.", "Entrar sozinho em um habitat à noite.", "Capturar o animal para a sala."], "REVIEW_SAFETY", "Registros seguros permitem aprender sem colocar pessoas ou animais em risco.", "Escolha uma fonte que não perturbe o ser vivo."],
+      ["HARD", "JUSTIFY", "REVIEW_BALANCE", "Qual frase combina a influência dos períodos com a diversidade de ritmos?", "“Dia e noite ajudam a organizar atividades, e as rotinas variam entre pessoas e seres vivos.”", ["“Todos seguem a mesma rotina.”", "“A noite impede qualquer atividade.”", "“O período não serve como referência.”"], "REVIEW_BALANCED_CLAIM", "A frase reconhece a referência temporal e a diversidade de atividades.", "Inclua a sucessão e a variação."],
+      ["HARD", "OBSERVE", "REVIEW_EVIDENCE", "Qual registro está apoiado em uma observação específica?", "“No vídeo, o animal aparece procurando alimento durante a noite.”", ["“Todos os animais procuram alimento à noite.”", "“Esse animal nunca descansa.”", "“Toda espécie vive do mesmo modo.”"], "REVIEW_OBSERVABLE_RECORD", "O registro descreve o que aparece na fonte, sem extrapolar.", "Use “no vídeo” para delimitar a evidência."],
+      ["HARD", "APPLY", "REVIEW_NEXT_STEP", "Uma criança diz que todos os animais dormem à noite. Qual próximo passo ajuda a investigar?", "Comparar fontes de animais diferentes e revisar a conclusão com base nos exemplos.", ["Confirmar a afirmação sem evidências.", "Acordar animais para testar.", "Dizer que nenhum animal dorme."], "REVIEW_INVESTIGATE_GENERALIZATION", "Comparar fontes seguras ajuda a refinar a afirmação sem perturbar seres vivos.", "Busque exemplos variados e limite a conclusão." ]
+    ]
+  }
+}

@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-history-growth-memories-fi",
+  "canonicalSkillCode": "AUTHORING_EF01HI01_GROWTH_THROUGH_MEMORIES",
+  "subject": "HISTORY",
+  "domain": "MUNDO_PESSOAL_MEU_LUGAR_NO_MUNDO",
+  "topic": "aspectos do crescimento registrados por lembranças pessoais, familiares ou comunitárias",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Crescimento visto pelas lembranças",
+    "objective": "Identificar aspectos do próprio crescimento por meio de registros e lembranças pessoais ou de pessoas da família e/ou comunidade, respeitando a diversidade de histórias e a privacidade.",
+    "summary": "Lembranças, relatos e registros podem ajudar a perceber mudanças e continuidades ao longo do tempo. Cada criança escolhe o que deseja compartilhar e pode usar exemplos fictícios ou comunitários.",
+    "explanation": "## 1. O que uma lembrança pode mostrar?\nUma lembrança pessoal, um relato de alguém próximo ou um registro autorizado pode ajudar a identificar aspectos do crescimento, como uma habilidade que a criança passou a realizar ou um objeto que já não usa.\n\n## 2. Registre com cuidado\nDesenhos, palavras, objetos ou relatos podem organizar lembranças. Compare “antes” e “agora” usando somente o que a fonte permite afirmar. Uma lembrança pode ter detalhes diferentes para pessoas diferentes.\n\n## 3. Respeite histórias diversas\nFamílias e comunidades têm muitas formas. Ninguém precisa trazer fotos, informar nomes, contar experiências difíceis ou falar sobre sua família. A criança pode escolher uma lembrança leve, uma história comunitária autorizada ou um personagem fictício para praticar a observação histórica.",
+    "workedExample": "Em uma história fictícia, Ana lembra que antes precisava de ajuda para guardar os livros e agora consegue organizá-los. O registro mostra uma mudança em uma habilidade; não permite concluir tudo sobre o crescimento de Ana nem comparar seu ritmo ao de outra criança.",
+    "commonMistake": "Exigir fotos ou relatos familiares, presumir que todas as crianças vivem com os mesmos parentes, ou comparar quem cresceu mais rápido usando uma única lembrança.",
+    "tips": [
+      "Use convites opcionais e deixe a criança escolher o que quer compartilhar.",
+      "Aceite memórias pessoais, relatos comunitários autorizados ou personagens fictícios.",
+      "Pergunte o que o registro mostra e o que ainda não permite afirmar.",
+      "Não solicite nomes completos, datas sensíveis, endereços ou histórias potencialmente dolorosas."
+    ],
+    "priorKnowledge": [
+      "Reconhecer palavras de tempo como antes e agora em situações cotidianas.",
+      "Participar de narrativas, conversas ou registros por fala, imagem, desenho ou símbolos."
+    ],
+    "keyConcepts": [
+      "crescimento",
+      "lembrança pessoal",
+      "relato familiar ou comunitário",
+      "registro",
+      "antes e agora",
+      "mudança",
+      "continuidade",
+      "limite da evidência e privacidade"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "MEMORY_AS_SOURCE",
+        "text": "Uma lembrança ou relato pode ser uma fonte para identificar um aspecto do crescimento."
+      },
+      {
+        "trigger": "COMPARE_BEFORE_NOW",
+        "text": "Compare o mesmo aspecto em dois momentos e diga o que mudou ou permaneceu."
+      },
+      {
+        "trigger": "SOURCE_LIMIT",
+        "text": "Um registro mostra alguns aspectos; ele não conta sozinho toda a história de uma pessoa."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GENERALIZES_FROM_ONE_MEMORY",
+        "action": "Retome o registro e formule uma frase limitada ao aspecto que aparece, como uma habilidade ou uso de objeto."
+      },
+      {
+        "errorFocus": "ASSUMES_FAMILY_STRUCTURE",
+        "action": "Ofereça fontes pessoais opcionais, relatos comunitários autorizados ou uma narrativa fictícia, sem exigir parentesco específico."
+      },
+      {
+        "errorFocus": "COMPARES_CHILDREN",
+        "action": "Troque a comparação entre crianças por uma comparação do mesmo aspecto em dois momentos de uma história escolhida."
+      }
+    ],
+    "accessibilitySupports": [
+      "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+      "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+      "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+      "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-history-growth-memories-fi-activity-1",
+        "title": "Uma habilidade em dois momentos",
+        "instructions": "A criança escolhe uma habilidade cotidiana que deseja registrar ou usa a história fictícia de uma personagem.\n1. Escolher um aspecto não sensível do crescimento.\n2. Representar como era antes por desenho, fala ou símbolo.\n3. Registrar como aparece agora.\n4. Apontar a mudança ou continuidade observada e o limite do registro.",
+        "steps": [
+          "Escolher um aspecto não sensível do crescimento.",
+          "Representar como era antes por desenho, fala ou símbolo.",
+          "Registrar como aparece agora.",
+          "Apontar a mudança ou continuidade observada e o limite do registro."
+        ],
+        "evidence": "Dois registros temporais comparáveis e uma explicação limitada ao aspecto escolhido.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um dos momentos com apoio.",
+            "developing": "compara antes e agora com mediação.",
+            "proficient": "registra os dois momentos e nomeia mudança ou continuidade sem generalizar."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-history-growth-memories-fi-activity-2",
+        "title": "Memória contada pela comunidade",
+        "instructions": "Usar um relato voluntário e autorizado de um membro da comunidade escolar ou uma narrativa fictícia sobre crescimento.\n1. Ouvir ou ler a narrativa escolhida.\n2. Selecionar um aspecto de crescimento que apareça nela.\n3. Registrar uma evidência do relato ou da lembrança.\n4. Explicar o que ela permite identificar e o que não permite concluir.",
+        "steps": [
+          "Ouvir ou ler a narrativa escolhida.",
+          "Selecionar um aspecto de crescimento que apareça nela.",
+          "Registrar uma evidência do relato ou da lembrança.",
+          "Explicar o que ela permite identificar e o que não permite concluir."
+        ],
+        "evidence": "Registro do aspecto escolhido, fonte da lembrança e explicação sobre os limites da conclusão.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma lembrança com apoio.",
+            "developing": "associa a lembrança a um aspecto de crescimento.",
+            "proficient": "identifica o aspecto, registra a fonte e limita a conclusão às evidências."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-history-growth-memories-fi-01",
+          "v1-history-growth-memories-fi-02",
+          "v1-history-growth-memories-fi-03",
+          "v1-history-growth-memories-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-history-growth-memories-fi-05",
+          "v1-history-growth-memories-fi-06",
+          "v1-history-growth-memories-fi-07",
+          "v1-history-growth-memories-fi-08",
+          "v1-history-growth-memories-fi-09",
+          "v1-history-growth-memories-fi-10",
+          "v1-history-growth-memories-fi-11",
+          "v1-history-growth-memories-fi-12",
+          "v1-history-growth-memories-fi-13",
+          "v1-history-growth-memories-fi-14",
+          "v1-history-growth-memories-fi-15",
+          "v1-history-growth-memories-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-history-growth-memories-fi-17",
+          "v1-history-growth-memories-fi-18",
+          "v1-history-growth-memories-fi-19",
+          "v1-history-growth-memories-fi-20",
+          "v1-history-growth-memories-fi-21",
+          "v1-history-growth-memories-fi-22",
+          "v1-history-growth-memories-fi-23",
+          "v1-history-growth-memories-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-history-growth-memories-fi-25",
+          "v1-history-growth-memories-fi-26",
+          "v1-history-growth-memories-fi-27",
+          "v1-history-growth-memories-fi-28",
+          "v1-history-growth-memories-fi-29",
+          "v1-history-growth-memories-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-history-growth-memories-fi-31",
+          "v1-history-growth-memories-fi-32",
+          "v1-history-growth-memories-fi-33",
+          "v1-history-growth-memories-fi-34",
+          "v1-history-growth-memories-fi-35",
+          "v1-history-growth-memories-fi-36",
+          "v1-history-growth-memories-fi-37",
+          "v1-history-growth-memories-fi-38",
+          "v1-history-growth-memories-fi-39",
+          "v1-history-growth-memories-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI01",
+        "descriptor": "Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-history-growth-memories-fi-01",
+      "statement": "Na história fictícia, Ana antes precisava de ajuda para guardar livros e agora consegue organizá-los. O que a lembrança permite identificar?",
+      "prompt": "Na história fictícia, Ana antes precisava de ajuda para guardar livros e agora consegue organizá-los. O que a lembrança permite identificar?",
+      "options": [
+        "Uma mudança em uma habilidade de Ana.",
+        "Tudo sobre a vida de Ana.",
+        "Que Ana cresceu mais que todas as crianças.",
+        "O que acontece em todas as famílias."
+      ],
+      "correctAnswer": "Uma mudança em uma habilidade de Ana.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Tudo sobre a vida de Ana.": [
+          "LIMIT_CONCLUSION_TO_MEMORY"
+        ],
+        "Que Ana cresceu mais que todas as crianças.": [
+          "LIMIT_CONCLUSION_TO_MEMORY"
+        ],
+        "O que acontece em todas as famílias.": [
+          "LIMIT_CONCLUSION_TO_MEMORY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FICTIONAL_ANA_BOOKS",
+      "explanation": "O relato mostra uma habilidade em dois momentos, mas não toda a vida nem comparação com outras crianças.",
+      "hint": "Escolha o aspecto específico que mudou.",
+      "errorFocus": "LIMIT_CONCLUSION_TO_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: O relato mostra uma habilidade em dois momentos, mas não toda a vida nem comparação com outras crianças.",
+        "incorrect": "O relato mostra uma habilidade em dois momentos, mas não toda a vida nem comparação com outras crianças.",
+        "hint": "Escolha o aspecto específico que mudou.",
+        "errorFocus": "LIMIT_CONCLUSION_TO_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-02",
+      "statement": "Uma criança não quer compartilhar uma lembrança pessoal. Qual alternativa mantém o estudo?",
+      "prompt": "Uma criança não quer compartilhar uma lembrança pessoal. Qual alternativa mantém o estudo?",
+      "options": [
+        "Obrigá-la a contar um segredo.",
+        "Usar um relato autorizado da comunidade ou uma personagem fictícia.",
+        "Exigir uma fotografia de casa.",
+        "Retirá-la da atividade."
+      ],
+      "correctAnswer": "Usar um relato autorizado da comunidade ou uma personagem fictícia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Obrigá-la a contar um segredo.": [
+          "RESPECT_CHOICE"
+        ],
+        "Exigir uma fotografia de casa.": [
+          "RESPECT_CHOICE"
+        ],
+        "Retirá-la da atividade.": [
+          "RESPECT_CHOICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "OPTIONAL_PERSONAL_MEMORY",
+      "explanation": "A habilidade pode ser trabalhada por fontes diversas sem obrigar exposição pessoal.",
+      "hint": "Procure uma fonte que preserve privacidade e participação.",
+      "errorFocus": "RESPECT_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: A habilidade pode ser trabalhada por fontes diversas sem obrigar exposição pessoal.",
+        "incorrect": "A habilidade pode ser trabalhada por fontes diversas sem obrigar exposição pessoal.",
+        "hint": "Procure uma fonte que preserve privacidade e participação.",
+        "errorFocus": "RESPECT_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-03",
+      "statement": "Um desenho mostra que, antes, uma personagem usava apoio para subir um degrau e agora escolhe outra forma de subir. O que pode ser registrado?",
+      "prompt": "Um desenho mostra que, antes, uma personagem usava apoio para subir um degrau e agora escolhe outra forma de subir. O que pode ser registrado?",
+      "options": [
+        "A personagem ficou melhor que outras pessoas.",
+        "O desenho mostra toda a sua história.",
+        "O relato indica uma mudança no modo como a personagem realiza a ação.",
+        "Todas as crianças fazem a mesma mudança."
+      ],
+      "correctAnswer": "O relato indica uma mudança no modo como a personagem realiza a ação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A personagem ficou melhor que outras pessoas.": [
+          "OBSERVE_SPECIFIC_CHANGE"
+        ],
+        "O desenho mostra toda a sua história.": [
+          "OBSERVE_SPECIFIC_CHANGE"
+        ],
+        "Todas as crianças fazem a mesma mudança.": [
+          "OBSERVE_SPECIFIC_CHANGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BEFORE_NOW_RECORD",
+      "explanation": "O registro permite identificar uma mudança na ação descrita, sem hierarquizar pessoas.",
+      "hint": "Fale apenas do que o desenho e a narrativa mostram.",
+      "errorFocus": "OBSERVE_SPECIFIC_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: O registro permite identificar uma mudança na ação descrita, sem hierarquizar pessoas.",
+        "incorrect": "O registro permite identificar uma mudança na ação descrita, sem hierarquizar pessoas.",
+        "hint": "Fale apenas do que o desenho e a narrativa mostram.",
+        "errorFocus": "OBSERVE_SPECIFIC_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-04",
+      "statement": "Qual item pode servir como registro de uma lembrança de crescimento?",
+      "prompt": "Qual item pode servir como registro de uma lembrança de crescimento?",
+      "options": [
+        "Uma suposição sem relato ou registro.",
+        "Uma comparação de altura entre colegas sem contexto.",
+        "Um endereço completo da criança.",
+        "Um relato voluntário ou desenho que compare um aspecto em dois momentos."
+      ],
+      "correctAnswer": "Um relato voluntário ou desenho que compare um aspecto em dois momentos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma suposição sem relato ou registro.": [
+          "IDENTIFY_USEFUL_RECORD"
+        ],
+        "Uma comparação de altura entre colegas sem contexto.": [
+          "IDENTIFY_USEFUL_RECORD"
+        ],
+        "Um endereço completo da criança.": [
+          "IDENTIFY_USEFUL_RECORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MEMORY_SOURCE",
+      "explanation": "Relatos e registros podem apoiar a identificação de aspectos do crescimento.",
+      "hint": "Escolha algo que registre uma lembrança ou mudança.",
+      "errorFocus": "IDENTIFY_USEFUL_RECORD",
+      "feedback": {
+        "correct": "Boa observação: Relatos e registros podem apoiar a identificação de aspectos do crescimento.",
+        "incorrect": "Relatos e registros podem apoiar a identificação de aspectos do crescimento.",
+        "hint": "Escolha algo que registre uma lembrança ou mudança.",
+        "errorFocus": "IDENTIFY_USEFUL_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-05",
+      "statement": "Em uma narrativa, Rui antes precisava de ajuda para regar uma planta e agora segue uma sequência combinada. Qual relação temporal aparece?",
+      "prompt": "Em uma narrativa, Rui antes precisava de ajuda para regar uma planta e agora segue uma sequência combinada. Qual relação temporal aparece?",
+      "options": [
+        "Antes e agora mostram uma mudança de participação em uma tarefa.",
+        "O relato prova que Rui sempre gostou de plantas.",
+        "A tarefa mostra que Rui é melhor que os colegas.",
+        "Não há nenhum aspecto de crescimento."
+      ],
+      "correctAnswer": "Antes e agora mostram uma mudança de participação em uma tarefa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O relato prova que Rui sempre gostou de plantas.": [
+          "IDENTIFY_TEMPORAL_CHANGE"
+        ],
+        "A tarefa mostra que Rui é melhor que os colegas.": [
+          "IDENTIFY_TEMPORAL_CHANGE"
+        ],
+        "Não há nenhum aspecto de crescimento.": [
+          "IDENTIFY_TEMPORAL_CHANGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "FICTIONAL_GARDENING",
+      "explanation": "O exemplo compara a participação na mesma tarefa em dois momentos.",
+      "hint": "Compare a ação de Rui antes e agora.",
+      "errorFocus": "IDENTIFY_TEMPORAL_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: O exemplo compara a participação na mesma tarefa em dois momentos.",
+        "incorrect": "O exemplo compara a participação na mesma tarefa em dois momentos.",
+        "hint": "Compare a ação de Rui antes e agora.",
+        "errorFocus": "IDENTIFY_TEMPORAL_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-06",
+      "statement": "Uma pessoa da comunidade conta uma lembrança voluntária sobre aprender a andar de bicicleta. O que a criança pode investigar?",
+      "prompt": "Uma pessoa da comunidade conta uma lembrança voluntária sobre aprender a andar de bicicleta. O que a criança pode investigar?",
+      "options": [
+        "Todos os detalhes privados da vida da pessoa.",
+        "Um aspecto do crescimento mencionado no relato.",
+        "Quem aprendeu mais rápido na comunidade.",
+        "O endereço da pessoa que contou a história."
+      ],
+      "correctAnswer": "Um aspecto do crescimento mencionado no relato.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os detalhes privados da vida da pessoa.": [
+          "USE_COMMUNITY_MEMORY_RESPECTFULLY"
+        ],
+        "Quem aprendeu mais rápido na comunidade.": [
+          "USE_COMMUNITY_MEMORY_RESPECTFULLY"
+        ],
+        "O endereço da pessoa que contou a história.": [
+          "USE_COMMUNITY_MEMORY_RESPECTFULLY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "COMMUNITY_STORY",
+      "explanation": "O relato comunitário pode apoiar a identificação de um aspecto sem coletar dados pessoais.",
+      "hint": "Escolha uma mudança que o relato realmente mencione.",
+      "errorFocus": "USE_COMMUNITY_MEMORY_RESPECTFULLY",
+      "feedback": {
+        "correct": "Boa observação: O relato comunitário pode apoiar a identificação de um aspecto sem coletar dados pessoais.",
+        "incorrect": "O relato comunitário pode apoiar a identificação de um aspecto sem coletar dados pessoais.",
+        "hint": "Escolha uma mudança que o relato realmente mencione.",
+        "errorFocus": "USE_COMMUNITY_MEMORY_RESPECTFULLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-07",
+      "statement": "Uma personagem compara um sapato que usava antes com outro que usa agora. O que pode observar?",
+      "prompt": "Uma personagem compara um sapato que usava antes com outro que usa agora. O que pode observar?",
+      "options": [
+        "A personagem é melhor porque usa outro sapato.",
+        "O objeto prova tudo sobre a saúde dela.",
+        "O registro sugere uma mudança relacionada ao crescimento e ao uso do objeto.",
+        "Todas as crianças usam o mesmo tamanho."
+      ],
+      "correctAnswer": "O registro sugere uma mudança relacionada ao crescimento e ao uso do objeto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A personagem é melhor porque usa outro sapato.": [
+          "OBJECT_AS_LIMITED_EVIDENCE"
+        ],
+        "O objeto prova tudo sobre a saúde dela.": [
+          "OBJECT_AS_LIMITED_EVIDENCE"
+        ],
+        "Todas as crianças usam o mesmo tamanho.": [
+          "OBJECT_AS_LIMITED_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBJECT_SIZE_MEMORY",
+      "explanation": "O objeto é uma pista de uma mudança, mas não permite conclusões amplas sobre a pessoa.",
+      "hint": "Diga o que o par de objetos permite observar.",
+      "errorFocus": "OBJECT_AS_LIMITED_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O objeto é uma pista de uma mudança, mas não permite conclusões amplas sobre a pessoa.",
+        "incorrect": "O objeto é uma pista de uma mudança, mas não permite conclusões amplas sobre a pessoa.",
+        "hint": "Diga o que o par de objetos permite observar.",
+        "errorFocus": "OBJECT_AS_LIMITED_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-08",
+      "statement": "Por que uma fotografia pessoal não deve ser obrigatória para esta atividade?",
+      "prompt": "Por que uma fotografia pessoal não deve ser obrigatória para esta atividade?",
+      "options": [
+        "Somente fotos contam como lembranças.",
+        "A fotografia sempre mostra toda a história.",
+        "É necessário publicar a imagem para aprender.",
+        "Nem toda criança pode ou quer compartilhar imagens pessoais; outros registros também podem servir."
+      ],
+      "correctAnswer": "Nem toda criança pode ou quer compartilhar imagens pessoais; outros registros também podem servir.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente fotos contam como lembranças.": [
+          "NO_REQUIRED_PERSONAL_IMAGES"
+        ],
+        "A fotografia sempre mostra toda a história.": [
+          "NO_REQUIRED_PERSONAL_IMAGES"
+        ],
+        "É necessário publicar a imagem para aprender.": [
+          "NO_REQUIRED_PERSONAL_IMAGES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PHOTO_OPTIONAL",
+      "explanation": "A atividade deve permitir diferentes fontes e preservar privacidade e escolha.",
+      "hint": "Pense em desenhos, relatos ou histórias fictícias.",
+      "errorFocus": "NO_REQUIRED_PERSONAL_IMAGES",
+      "feedback": {
+        "correct": "Boa observação: A atividade deve permitir diferentes fontes e preservar privacidade e escolha.",
+        "incorrect": "A atividade deve permitir diferentes fontes e preservar privacidade e escolha.",
+        "hint": "Pense em desenhos, relatos ou histórias fictícias.",
+        "errorFocus": "NO_REQUIRED_PERSONAL_IMAGES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-09",
+      "statement": "Em uma história, Lia antes apontava para pedir um livro e agora escolhe o livro por uma prancha de símbolos. O que mudou?",
+      "prompt": "Em uma história, Lia antes apontava para pedir um livro e agora escolhe o livro por uma prancha de símbolos. O que mudou?",
+      "options": [
+        "A forma de Lia comunicar sua escolha na situação descrita.",
+        "O valor de Lia como pessoa.",
+        "A habilidade de todas as crianças.",
+        "Toda a história da comunidade."
+      ],
+      "correctAnswer": "A forma de Lia comunicar sua escolha na situação descrita.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O valor de Lia como pessoa.": [
+          "DESCRIBE_COMMUNICATION_CHANGE"
+        ],
+        "A habilidade de todas as crianças.": [
+          "DESCRIBE_COMMUNICATION_CHANGE"
+        ],
+        "Toda a história da comunidade.": [
+          "DESCRIBE_COMMUNICATION_CHANGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FICTIONAL_SPEECH",
+      "explanation": "A narrativa permite identificar uma mudança na comunicação sem hierarquizar modos de expressão.",
+      "hint": "Descreva a ação nos dois momentos.",
+      "errorFocus": "DESCRIBE_COMMUNICATION_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa permite identificar uma mudança na comunicação sem hierarquizar modos de expressão.",
+        "incorrect": "A narrativa permite identificar uma mudança na comunicação sem hierarquizar modos de expressão.",
+        "hint": "Descreva a ação nos dois momentos.",
+        "errorFocus": "DESCRIBE_COMMUNICATION_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-10",
+      "statement": "Dois desenhos voluntários mostram uma personagem usando primeiro blocos grandes e depois peças menores. Qual conclusão é mais cuidadosa?",
+      "prompt": "Dois desenhos voluntários mostram uma personagem usando primeiro blocos grandes e depois peças menores. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "A personagem ficou mais inteligente.",
+        "Os desenhos registram uma mudança nas peças que a personagem usa.",
+        "Todas as crianças passam pela mesma sequência.",
+        "O desenho prova a história completa da personagem."
+      ],
+      "correctAnswer": "Os desenhos registram uma mudança nas peças que a personagem usa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A personagem ficou mais inteligente.": [
+          "LIMIT_DRAWING_INFERENCE"
+        ],
+        "Todas as crianças passam pela mesma sequência.": [
+          "LIMIT_DRAWING_INFERENCE"
+        ],
+        "O desenho prova a história completa da personagem.": [
+          "LIMIT_DRAWING_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DRAWINGS_OVER_TIME",
+      "explanation": "A comparação se limita ao uso das peças representado nos desenhos.",
+      "hint": "Evite concluir algo que os registros não mostram.",
+      "errorFocus": "LIMIT_DRAWING_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação se limita ao uso das peças representado nos desenhos.",
+        "incorrect": "A comparação se limita ao uso das peças representado nos desenhos.",
+        "hint": "Evite concluir algo que os registros não mostram.",
+        "errorFocus": "LIMIT_DRAWING_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-11",
+      "statement": "Um relato diz que uma criança aprendeu a amarrar o próprio tênis. Que aspecto do crescimento pode aparecer?",
+      "prompt": "Um relato diz que uma criança aprendeu a amarrar o próprio tênis. Que aspecto do crescimento pode aparecer?",
+      "options": [
+        "Que todas as crianças aprendem no mesmo momento.",
+        "Que o relato informa a saúde inteira da criança.",
+        "Uma habilidade que passou a realizar com maior autonomia.",
+        "Que a criança deve ser comparada aos colegas."
+      ],
+      "correctAnswer": "Uma habilidade que passou a realizar com maior autonomia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todas as crianças aprendem no mesmo momento.": [
+          "IDENTIFY_SKILL_GROWTH"
+        ],
+        "Que o relato informa a saúde inteira da criança.": [
+          "IDENTIFY_SKILL_GROWTH"
+        ],
+        "Que a criança deve ser comparada aos colegas.": [
+          "IDENTIFY_SKILL_GROWTH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "COMMUNITY_ORAL_MEMORY",
+      "explanation": "A lembrança permite identificar uma habilidade mencionada, sem estabelecer ritmo universal.",
+      "hint": "Encontre a habilidade contada no relato.",
+      "errorFocus": "IDENTIFY_SKILL_GROWTH",
+      "feedback": {
+        "correct": "Boa observação: A lembrança permite identificar uma habilidade mencionada, sem estabelecer ritmo universal.",
+        "incorrect": "A lembrança permite identificar uma habilidade mencionada, sem estabelecer ritmo universal.",
+        "hint": "Encontre a habilidade contada no relato.",
+        "errorFocus": "IDENTIFY_SKILL_GROWTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-12",
+      "statement": "A atividade pede um registro, mas a criança não tem uma foto antiga. O que pode usar?",
+      "prompt": "A atividade pede um registro, mas a criança não tem uma foto antiga. O que pode usar?",
+      "options": [
+        "Uma foto de outra criança sem permissão.",
+        "Um dado pessoal publicado na internet.",
+        "Nenhum recurso; deve parar de participar.",
+        "Desenho, lembrança narrada, objeto seguro ou história fictícia escolhida."
+      ],
+      "correctAnswer": "Desenho, lembrança narrada, objeto seguro ou história fictícia escolhida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma foto de outra criança sem permissão.": [
+          "ALTERNATIVE_RECORDS"
+        ],
+        "Um dado pessoal publicado na internet.": [
+          "ALTERNATIVE_RECORDS"
+        ],
+        "Nenhum recurso; deve parar de participar.": [
+          "ALTERNATIVE_RECORDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NO_FAMILY_PHOTO",
+      "explanation": "Há diversos meios de registrar lembranças, e uma foto não é necessária.",
+      "hint": "Escolha outra fonte segura e voluntária.",
+      "errorFocus": "ALTERNATIVE_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: Há diversos meios de registrar lembranças, e uma foto não é necessária.",
+        "incorrect": "Há diversos meios de registrar lembranças, e uma foto não é necessária.",
+        "hint": "Escolha outra fonte segura e voluntária.",
+        "errorFocus": "ALTERNATIVE_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-13",
+      "statement": "Duas pessoas lembram detalhes diferentes de um mesmo passeio. O que isso mostra?",
+      "prompt": "Duas pessoas lembram detalhes diferentes de um mesmo passeio. O que isso mostra?",
+      "options": [
+        "Lembranças podem variar; é importante registrar quem contou e o que cada relato diz.",
+        "Uma pessoa precisa estar mentindo.",
+        "Uma lembrança mostra todos os fatos com certeza.",
+        "As duas histórias devem ser apagadas."
+      ],
+      "correctAnswer": "Lembranças podem variar; é importante registrar quem contou e o que cada relato diz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma pessoa precisa estar mentindo.": [
+          "MEMORY_PERSPECTIVE"
+        ],
+        "Uma lembrança mostra todos os fatos com certeza.": [
+          "MEMORY_PERSPECTIVE"
+        ],
+        "As duas histórias devem ser apagadas.": [
+          "MEMORY_PERSPECTIVE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MEMORY_DIFFERENCE",
+      "explanation": "Relatos podem trazer perspectivas diferentes; registrar a fonte ajuda a interpretar.",
+      "hint": "Considere que cada pessoa fala a partir de sua lembrança.",
+      "errorFocus": "MEMORY_PERSPECTIVE",
+      "feedback": {
+        "correct": "Boa observação: Relatos podem trazer perspectivas diferentes; registrar a fonte ajuda a interpretar.",
+        "incorrect": "Relatos podem trazer perspectivas diferentes; registrar a fonte ajuda a interpretar.",
+        "hint": "Considere que cada pessoa fala a partir de sua lembrança.",
+        "errorFocus": "MEMORY_PERSPECTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-14",
+      "statement": "Por que comparar o crescimento de uma personagem consigo mesma em dois momentos é mais adequado que ranquear colegas?",
+      "prompt": "Por que comparar o crescimento de uma personagem consigo mesma em dois momentos é mais adequado que ranquear colegas?",
+      "options": [
+        "Porque todos crescem exatamente igual.",
+        "Mostra uma mudança específica sem transformar ritmos diferentes em competição.",
+        "Porque só uma criança pode mudar.",
+        "Porque o ranking conta toda a história."
+      ],
+      "correctAnswer": "Mostra uma mudança específica sem transformar ritmos diferentes em competição.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque todos crescem exatamente igual.": [
+          "NO_RANKING"
+        ],
+        "Porque só uma criança pode mudar.": [
+          "NO_RANKING"
+        ],
+        "Porque o ranking conta toda a história.": [
+          "NO_RANKING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "GROWTH_NOT_RANK",
+      "explanation": "A comparação temporal identifica mudança sem classificar crianças.",
+      "hint": "Mantenha o foco na mesma pessoa em dois momentos.",
+      "errorFocus": "NO_RANKING",
+      "feedback": {
+        "correct": "Boa observação: A comparação temporal identifica mudança sem classificar crianças.",
+        "incorrect": "A comparação temporal identifica mudança sem classificar crianças.",
+        "hint": "Mantenha o foco na mesma pessoa em dois momentos.",
+        "errorFocus": "NO_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-15",
+      "statement": "Uma biblioteca local tem um registro autorizado de uma atividade infantil antiga. Como pode ser usado?",
+      "prompt": "Uma biblioteca local tem um registro autorizado de uma atividade infantil antiga. Como pode ser usado?",
+      "options": [
+        "Como prova do que toda criança fazia.",
+        "Para pedir nomes completos de todas as pessoas.",
+        "Como fonte para identificar aspectos do que crianças faziam naquela atividade, respeitando o contexto do registro.",
+        "Para comparar quem era mais desenvolvido."
+      ],
+      "correctAnswer": "Como fonte para identificar aspectos do que crianças faziam naquela atividade, respeitando o contexto do registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como prova do que toda criança fazia.": [
+          "USE_RECORD_WITH_CONTEXT"
+        ],
+        "Para pedir nomes completos de todas as pessoas.": [
+          "USE_RECORD_WITH_CONTEXT"
+        ],
+        "Para comparar quem era mais desenvolvido.": [
+          "USE_RECORD_WITH_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "COMMUNITY_ARCHIVE",
+      "explanation": "O registro documenta uma situação e não representa automaticamente todas as crianças.",
+      "hint": "Pergunte o que esse registro específico mostra.",
+      "errorFocus": "USE_RECORD_WITH_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O registro documenta uma situação e não representa automaticamente todas as crianças.",
+        "incorrect": "O registro documenta uma situação e não representa automaticamente todas as crianças.",
+        "hint": "Pergunte o que esse registro específico mostra.",
+        "errorFocus": "USE_RECORD_WITH_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-16",
+      "statement": "Uma linha do tempo fictícia traz “antes: precisava de ajuda para abrir a mochila” e “agora: abre com um fecho adaptado”. O que ela mostra?",
+      "prompt": "Uma linha do tempo fictícia traz “antes: precisava de ajuda para abrir a mochila” e “agora: abre com um fecho adaptado”. O que ela mostra?",
+      "options": [
+        "Que usar apoio impede crescimento.",
+        "Que todas as pessoas devem fazer a tarefa sem adaptação.",
+        "Que o personagem nunca precisará de ajuda.",
+        "Uma mudança no modo de realizar uma tarefa com um apoio diferente."
+      ],
+      "correctAnswer": "Uma mudança no modo de realizar uma tarefa com um apoio diferente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que usar apoio impede crescimento.": [
+          "GROWTH_WITH_SUPPORT"
+        ],
+        "Que todas as pessoas devem fazer a tarefa sem adaptação.": [
+          "GROWTH_WITH_SUPPORT"
+        ],
+        "Que o personagem nunca precisará de ajuda.": [
+          "GROWTH_WITH_SUPPORT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "FICTITIOUS_TIMELINE",
+      "explanation": "Crescimento pode ocorrer com apoios; autonomia não significa ausência de recursos.",
+      "hint": "Observe a tarefa e o apoio em cada momento.",
+      "errorFocus": "GROWTH_WITH_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Crescimento pode ocorrer com apoios; autonomia não significa ausência de recursos.",
+        "incorrect": "Crescimento pode ocorrer com apoios; autonomia não significa ausência de recursos.",
+        "hint": "Observe a tarefa e o apoio em cada momento.",
+        "errorFocus": "GROWTH_WITH_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-17",
+      "statement": "Uma história nova mostra uma personagem que antes não alcançava uma prateleira e agora usa um banquinho seguro para pegar um livro. O que pode registrar?",
+      "prompt": "Uma história nova mostra uma personagem que antes não alcançava uma prateleira e agora usa um banquinho seguro para pegar um livro. O que pode registrar?",
+      "options": [
+        "A personagem passou a acessar o livro usando um apoio seguro.",
+        "A personagem não precisa de apoio em nenhuma situação.",
+        "A história prova que todas as pessoas devem alcançar prateleiras do mesmo modo.",
+        "A personagem cresceu mais que todos os colegas."
+      ],
+      "correctAnswer": "A personagem passou a acessar o livro usando um apoio seguro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A personagem não precisa de apoio em nenhuma situação.": [
+          "TRANSFER_GROWTH_WITH_ACCESS"
+        ],
+        "A história prova que todas as pessoas devem alcançar prateleiras do mesmo modo.": [
+          "TRANSFER_GROWTH_WITH_ACCESS"
+        ],
+        "A personagem cresceu mais que todos os colegas.": [
+          "TRANSFER_GROWTH_WITH_ACCESS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_CHARACTER_RECORD",
+      "explanation": "O registro mostra uma mudança no acesso com apoio, sem criar norma sobre todos.",
+      "hint": "Diga o que mudou e que apoio aparece.",
+      "errorFocus": "TRANSFER_GROWTH_WITH_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: O registro mostra uma mudança no acesso com apoio, sem criar norma sobre todos.",
+        "incorrect": "O registro mostra uma mudança no acesso com apoio, sem criar norma sobre todos.",
+        "hint": "Diga o que mudou e que apoio aparece.",
+        "errorFocus": "TRANSFER_GROWTH_WITH_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-18",
+      "statement": "Uma moradora conta que, quando criança, participava de uma feira da comunidade e agora ajuda a organizá-la. Que aspecto do relato pode ser identificado?",
+      "prompt": "Uma moradora conta que, quando criança, participava de uma feira da comunidade e agora ajuda a organizá-la. Que aspecto do relato pode ser identificado?",
+      "options": [
+        "A história de todas as feiras da cidade.",
+        "Uma mudança de participação ao longo do tempo.",
+        "Que todas as crianças seguirão o mesmo caminho.",
+        "O endereço privado da moradora."
+      ],
+      "correctAnswer": "Uma mudança de participação ao longo do tempo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A história de todas as feiras da cidade.": [
+          "TRANSFER_COMMUNITY_MEMORY"
+        ],
+        "Que todas as crianças seguirão o mesmo caminho.": [
+          "TRANSFER_COMMUNITY_MEMORY"
+        ],
+        "O endereço privado da moradora.": [
+          "TRANSFER_COMMUNITY_MEMORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "NEW_ORAL_HISTORY",
+      "explanation": "O relato permite identificar uma mudança na participação de uma pessoa em uma prática comunitária.",
+      "hint": "Compare o papel mencionado antes e agora.",
+      "errorFocus": "TRANSFER_COMMUNITY_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: O relato permite identificar uma mudança na participação de uma pessoa em uma prática comunitária.",
+        "incorrect": "O relato permite identificar uma mudança na participação de uma pessoa em uma prática comunitária.",
+        "hint": "Compare o papel mencionado antes e agora.",
+        "errorFocus": "TRANSFER_COMMUNITY_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-19",
+      "statement": "Um objeto antigo foi compartilhado voluntariamente com a turma e seu uso foi explicado. Qual pergunta histórica é adequada?",
+      "prompt": "Um objeto antigo foi compartilhado voluntariamente com a turma e seu uso foi explicado. Qual pergunta histórica é adequada?",
+      "options": [
+        "Qual é o valor da família que o trouxe?",
+        "Quem tem o objeto mais importante?",
+        "O que o relato conta sobre o uso desse objeto em outro momento?",
+        "Que segredo a família esconde?"
+      ],
+      "correctAnswer": "O que o relato conta sobre o uso desse objeto em outro momento?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual é o valor da família que o trouxe?": [
+          "TRANSFER_ASK_SOURCE_BASED_QUESTION"
+        ],
+        "Quem tem o objeto mais importante?": [
+          "TRANSFER_ASK_SOURCE_BASED_QUESTION"
+        ],
+        "Que segredo a família esconde?": [
+          "TRANSFER_ASK_SOURCE_BASED_QUESTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NEW_OBJECT_RECORD",
+      "explanation": "A pergunta usa o contexto informado sobre o objeto sem invadir a privacidade.",
+      "hint": "Pergunte sobre a informação que foi oferecida.",
+      "errorFocus": "TRANSFER_ASK_SOURCE_BASED_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta usa o contexto informado sobre o objeto sem invadir a privacidade.",
+        "incorrect": "A pergunta usa o contexto informado sobre o objeto sem invadir a privacidade.",
+        "hint": "Pergunte sobre a informação que foi oferecida.",
+        "errorFocus": "TRANSFER_ASK_SOURCE_BASED_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-20",
+      "statement": "Dois desenhos feitos em tempos diferentes mostram uma personagem aprendendo uma tarefa. Qual comparação é adequada?",
+      "prompt": "Dois desenhos feitos em tempos diferentes mostram uma personagem aprendendo uma tarefa. Qual comparação é adequada?",
+      "options": [
+        "Decidir qual desenho prova maior valor pessoal.",
+        "Comparar a personagem com estudantes reais.",
+        "Afirmar tudo sobre a vida familiar da personagem.",
+        "Descrever o que a personagem fazia em cada momento e o que mudou."
+      ],
+      "correctAnswer": "Descrever o que a personagem fazia em cada momento e o que mudou.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Decidir qual desenho prova maior valor pessoal.": [
+          "TRANSFER_COMPARE_SAME_PERSON"
+        ],
+        "Comparar a personagem com estudantes reais.": [
+          "TRANSFER_COMPARE_SAME_PERSON"
+        ],
+        "Afirmar tudo sobre a vida familiar da personagem.": [
+          "TRANSFER_COMPARE_SAME_PERSON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_DRAWING_SEQUENCE",
+      "explanation": "A comparação acompanha a mesma personagem em dois momentos.",
+      "hint": "Mantenha a comparação na história e na tarefa.",
+      "errorFocus": "TRANSFER_COMPARE_SAME_PERSON",
+      "feedback": {
+        "correct": "Boa observação: A comparação acompanha a mesma personagem em dois momentos.",
+        "incorrect": "A comparação acompanha a mesma personagem em dois momentos.",
+        "hint": "Mantenha a comparação na história e na tarefa.",
+        "errorFocus": "TRANSFER_COMPARE_SAME_PERSON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-21",
+      "statement": "Uma lembrança pode ser compartilhada em áudio em vez de fotografia?",
+      "prompt": "Uma lembrança pode ser compartilhada em áudio em vez de fotografia?",
+      "options": [
+        "Sim; um relato oral voluntário também pode registrar uma lembrança.",
+        "Não; somente fotos contam.",
+        "Sim, mas o áudio deve ser publicado com nome completo.",
+        "Não; uma lembrança só existe em documentos oficiais."
+      ],
+      "correctAnswer": "Sim; um relato oral voluntário também pode registrar uma lembrança.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não; somente fotos contam.": [
+          "TRANSFER_MULTIPLE_RECORDS"
+        ],
+        "Sim, mas o áudio deve ser publicado com nome completo.": [
+          "TRANSFER_MULTIPLE_RECORDS"
+        ],
+        "Não; uma lembrança só existe em documentos oficiais.": [
+          "TRANSFER_MULTIPLE_RECORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VOLUNTARY_MEMORY",
+      "explanation": "A habilidade admite registros e lembranças de diferentes formas, com cuidado de privacidade.",
+      "hint": "Considere formas de registro que a pessoa escolhe.",
+      "errorFocus": "TRANSFER_MULTIPLE_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: A habilidade admite registros e lembranças de diferentes formas, com cuidado de privacidade.",
+        "incorrect": "A habilidade admite registros e lembranças de diferentes formas, com cuidado de privacidade.",
+        "hint": "Considere formas de registro que a pessoa escolhe.",
+        "errorFocus": "TRANSFER_MULTIPLE_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-22",
+      "statement": "Um relato menciona que alguém aprendeu a nadar. Qual conclusão ultrapassa a evidência?",
+      "prompt": "Um relato menciona que alguém aprendeu a nadar. Qual conclusão ultrapassa a evidência?",
+      "options": [
+        "“O relato cita a aprendizagem de nadar.”",
+        "“Essa pessoa nunca precisou de apoio em nenhuma outra área.”",
+        "“Podemos registrar a habilidade mencionada.”",
+        "“O relato é uma lembrança de alguém.”"
+      ],
+      "correctAnswer": "“Essa pessoa nunca precisou de apoio em nenhuma outra área.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“O relato cita a aprendizagem de nadar.”": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ],
+        "“Podemos registrar a habilidade mencionada.”": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ],
+        "“O relato é uma lembrança de alguém.”": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_CONCLUSION",
+      "explanation": "Uma lembrança sobre uma habilidade não informa todas as necessidades ou capacidades da pessoa.",
+      "hint": "Escolha a frase que afirma mais do que o relato contém.",
+      "errorFocus": "TRANSFER_AVOID_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: Uma lembrança sobre uma habilidade não informa todas as necessidades ou capacidades da pessoa.",
+        "incorrect": "Uma lembrança sobre uma habilidade não informa todas as necessidades ou capacidades da pessoa.",
+        "hint": "Escolha a frase que afirma mais do que o relato contém.",
+        "errorFocus": "TRANSFER_AVOID_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-23",
+      "statement": "Uma criança escolhe um relato pessoal e um registro de uma atividade comunitária. Como comparar as fontes?",
+      "prompt": "Uma criança escolhe um relato pessoal e um registro de uma atividade comunitária. Como comparar as fontes?",
+      "options": [
+        "Misturar os relatos e atribuir tudo a uma pessoa.",
+        "Escolher qual fonte é mais importante sem critério.",
+        "Identificar o que cada uma conta e manter separadas suas perspectivas e evidências.",
+        "Divulgar dados pessoais para confirmar as histórias."
+      ],
+      "correctAnswer": "Identificar o que cada uma conta e manter separadas suas perspectivas e evidências.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Misturar os relatos e atribuir tudo a uma pessoa.": [
+          "TRANSFER_SOURCE_COMPARISON"
+        ],
+        "Escolher qual fonte é mais importante sem critério.": [
+          "TRANSFER_SOURCE_COMPARISON"
+        ],
+        "Divulgar dados pessoais para confirmar as histórias.": [
+          "TRANSFER_SOURCE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEW_TWO_SOURCES",
+      "explanation": "Registrar as fontes separadamente ajuda a preservar contexto e perspectiva.",
+      "hint": "Pergunte quem ou o que cada fonte descreve.",
+      "errorFocus": "TRANSFER_SOURCE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Registrar as fontes separadamente ajuda a preservar contexto e perspectiva.",
+        "incorrect": "Registrar as fontes separadamente ajuda a preservar contexto e perspectiva.",
+        "hint": "Pergunte quem ou o que cada fonte descreve.",
+        "errorFocus": "TRANSFER_SOURCE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-24",
+      "statement": "Uma atividade de História pede um registro de crescimento, mas a criança prefere não falar de si. Como seguir?",
+      "prompt": "Uma atividade de História pede um registro de crescimento, mas a criança prefere não falar de si. Como seguir?",
+      "options": [
+        "Insistir até obter uma história pessoal.",
+        "Pedir à turma que adivinhe o motivo.",
+        "Excluir a criança da aula.",
+        "Oferecer uma personagem fictícia ou uma lembrança comunitária autorizada para praticar o método."
+      ],
+      "correctAnswer": "Oferecer uma personagem fictícia ou uma lembrança comunitária autorizada para praticar o método.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Insistir até obter uma história pessoal.": [
+          "TRANSFER_CHOICE_AND_PARTICIPATION"
+        ],
+        "Pedir à turma que adivinhe o motivo.": [
+          "TRANSFER_CHOICE_AND_PARTICIPATION"
+        ],
+        "Excluir a criança da aula.": [
+          "TRANSFER_CHOICE_AND_PARTICIPATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_PRIVACY_CHOICE",
+      "explanation": "A escolha de fonte alternativa mantém a participação sem exigir exposição pessoal.",
+      "hint": "Preserve a aprendizagem e a decisão da criança.",
+      "errorFocus": "TRANSFER_CHOICE_AND_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: A escolha de fonte alternativa mantém a participação sem exigir exposição pessoal.",
+        "incorrect": "A escolha de fonte alternativa mantém a participação sem exigir exposição pessoal.",
+        "hint": "Preserve a aprendizagem e a decisão da criança.",
+        "errorFocus": "TRANSFER_CHOICE_AND_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-25",
+      "statement": "O que significa identificar um aspecto do crescimento por uma lembrança?",
+      "prompt": "O que significa identificar um aspecto do crescimento por uma lembrança?",
+      "options": [
+        "Reconhecer uma mudança ou habilidade específica que o relato ou registro mostra.",
+        "Descobrir tudo sobre uma pessoa.",
+        "Medir quem cresceu mais que os colegas.",
+        "Afirmar que todos mudam igual."
+      ],
+      "correctAnswer": "Reconhecer uma mudança ou habilidade específica que o relato ou registro mostra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Descobrir tudo sobre uma pessoa.": [
+          "LOCK_IN_SPECIFIC_ASPECT"
+        ],
+        "Medir quem cresceu mais que os colegas.": [
+          "LOCK_IN_SPECIFIC_ASPECT"
+        ],
+        "Afirmar que todos mudam igual.": [
+          "LOCK_IN_SPECIFIC_ASPECT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_GROWTH_ASPECT",
+      "explanation": "O foco é um aspecto evidenciado, não uma descrição completa da pessoa.",
+      "hint": "Escolha uma mudança que apareça no registro.",
+      "errorFocus": "LOCK_IN_SPECIFIC_ASPECT",
+      "feedback": {
+        "correct": "Boa observação: O foco é um aspecto evidenciado, não uma descrição completa da pessoa.",
+        "incorrect": "O foco é um aspecto evidenciado, não uma descrição completa da pessoa.",
+        "hint": "Escolha uma mudança que apareça no registro.",
+        "errorFocus": "LOCK_IN_SPECIFIC_ASPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-26",
+      "statement": "Qual fonte pode apoiar a identificação de um aspecto do crescimento?",
+      "prompt": "Qual fonte pode apoiar a identificação de um aspecto do crescimento?",
+      "options": [
+        "Uma suposição sobre a criança.",
+        "Uma lembrança pessoal ou relato voluntário de alguém da família ou comunidade.",
+        "Um endereço compartilhado sem consentimento.",
+        "Uma comparação pública entre colegas."
+      ],
+      "correctAnswer": "Uma lembrança pessoal ou relato voluntário de alguém da família ou comunidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma suposição sobre a criança.": [
+          "LOCK_IN_SOURCE"
+        ],
+        "Um endereço compartilhado sem consentimento.": [
+          "LOCK_IN_SOURCE"
+        ],
+        "Uma comparação pública entre colegas.": [
+          "LOCK_IN_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "LOCK_IN_SOURCE",
+      "explanation": "Lembranças e relatos podem servir de fonte quando usados com respeito.",
+      "hint": "Procure uma lembrança ou registro voluntário.",
+      "errorFocus": "LOCK_IN_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Lembranças e relatos podem servir de fonte quando usados com respeito.",
+        "incorrect": "Lembranças e relatos podem servir de fonte quando usados com respeito.",
+        "hint": "Procure uma lembrança ou registro voluntário.",
+        "errorFocus": "LOCK_IN_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-27",
+      "statement": "Uma personagem antes precisava de ajuda para escolher livros e agora escolhe usando símbolos. O que permanece igual?",
+      "prompt": "Uma personagem antes precisava de ajuda para escolher livros e agora escolhe usando símbolos. O que permanece igual?",
+      "options": [
+        "A personagem nunca mudou.",
+        "A personagem deixou de poder escolher.",
+        "A personagem continua escolhendo livros; o modo de expressar a escolha mudou.",
+        "Todas as crianças usam símbolos."
+      ],
+      "correctAnswer": "A personagem continua escolhendo livros; o modo de expressar a escolha mudou.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A personagem nunca mudou.": [
+          "LOCK_IN_CHANGE_AND_CONTINUITY"
+        ],
+        "A personagem deixou de poder escolher.": [
+          "LOCK_IN_CHANGE_AND_CONTINUITY"
+        ],
+        "Todas as crianças usam símbolos.": [
+          "LOCK_IN_CHANGE_AND_CONTINUITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_BEFORE_NOW",
+      "explanation": "A situação mostra mudança no modo de escolha e continuidade do interesse em escolher livros.",
+      "hint": "Separe o que mudou do que permaneceu.",
+      "errorFocus": "LOCK_IN_CHANGE_AND_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: A situação mostra mudança no modo de escolha e continuidade do interesse em escolher livros.",
+        "incorrect": "A situação mostra mudança no modo de escolha e continuidade do interesse em escolher livros.",
+        "hint": "Separe o que mudou do que permaneceu.",
+        "errorFocus": "LOCK_IN_CHANGE_AND_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-28",
+      "statement": "Qual proposta respeita a privacidade em uma atividade sobre lembranças?",
+      "prompt": "Qual proposta respeita a privacidade em uma atividade sobre lembranças?",
+      "options": [
+        "Exigir relatos sobre momentos difíceis.",
+        "Publicar fotografias e nomes completos.",
+        "Pedir que colegas investiguem a vida familiar.",
+        "Permitir que cada criança escolha uma memória leve ou use uma narrativa alternativa."
+      ],
+      "correctAnswer": "Permitir que cada criança escolha uma memória leve ou use uma narrativa alternativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir relatos sobre momentos difíceis.": [
+          "LOCK_IN_PRIVACY"
+        ],
+        "Publicar fotografias e nomes completos.": [
+          "LOCK_IN_PRIVACY"
+        ],
+        "Pedir que colegas investiguem a vida familiar.": [
+          "LOCK_IN_PRIVACY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_PRIVACY",
+      "explanation": "A escolha de fonte e tema evita exposição e mantém o objetivo de aprendizagem.",
+      "hint": "Escolha uma opção voluntária e segura.",
+      "errorFocus": "LOCK_IN_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: A escolha de fonte e tema evita exposição e mantém o objetivo de aprendizagem.",
+        "incorrect": "A escolha de fonte e tema evita exposição e mantém o objetivo de aprendizagem.",
+        "hint": "Escolha uma opção voluntária e segura.",
+        "errorFocus": "LOCK_IN_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-29",
+      "statement": "Por que um registro de uma habilidade não revela toda a história de uma criança?",
+      "prompt": "Por que um registro de uma habilidade não revela toda a história de uma criança?",
+      "options": [
+        "Porque ele documenta apenas um aspecto e um momento específico.",
+        "Porque registros nunca podem ser usados.",
+        "Porque uma lembrança sempre é falsa.",
+        "Porque todas as pessoas têm histórias iguais."
+      ],
+      "correctAnswer": "Porque ele documenta apenas um aspecto e um momento específico.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque registros nunca podem ser usados.": [
+          "LOCK_IN_EVIDENCE_LIMIT"
+        ],
+        "Porque uma lembrança sempre é falsa.": [
+          "LOCK_IN_EVIDENCE_LIMIT"
+        ],
+        "Porque todas as pessoas têm histórias iguais.": [
+          "LOCK_IN_EVIDENCE_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_LIMIT",
+      "explanation": "Uma fonte é parcial e deve ser interpretada dentro de seu contexto.",
+      "hint": "Pense no que foi registrado e no que ficou de fora.",
+      "errorFocus": "LOCK_IN_EVIDENCE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte é parcial e deve ser interpretada dentro de seu contexto.",
+        "incorrect": "Uma fonte é parcial e deve ser interpretada dentro de seu contexto.",
+        "hint": "Pense no que foi registrado e no que ficou de fora.",
+        "errorFocus": "LOCK_IN_EVIDENCE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-30",
+      "statement": "Qual anotação mostra uma conclusão apoiada na fonte?",
+      "prompt": "Qual anotação mostra uma conclusão apoiada na fonte?",
+      "options": [
+        "“A personagem é melhor que os colegas.”",
+        "“No relato, a personagem passou a guardar os materiais com menos ajuda.”",
+        "“Sua família sempre foi organizada.”",
+        "“O relato conta tudo sobre sua vida.”"
+      ],
+      "correctAnswer": "“No relato, a personagem passou a guardar os materiais com menos ajuda.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“A personagem é melhor que os colegas.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ],
+        "“Sua família sempre foi organizada.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ],
+        "“O relato conta tudo sobre sua vida.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LOCK_IN_EVIDENCE",
+      "explanation": "A anotação descreve a mudança citada sem extrapolar para outros aspectos.",
+      "hint": "Use apenas a informação presente no relato.",
+      "errorFocus": "LOCK_IN_RECORD_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A anotação descreve a mudança citada sem extrapolar para outros aspectos.",
+        "incorrect": "A anotação descreve a mudança citada sem extrapolar para outros aspectos.",
+        "hint": "Use apenas a informação presente no relato.",
+        "errorFocus": "LOCK_IN_RECORD_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-31",
+      "statement": "Uma lembrança pode ajudar a identificar o quê?",
+      "prompt": "Uma lembrança pode ajudar a identificar o quê?",
+      "options": [
+        "Toda a história da pessoa.",
+        "Quem é melhor que outra criança.",
+        "Um aspecto do crescimento mostrado no relato ou registro.",
+        "Um dado privado que não foi compartilhado."
+      ],
+      "correctAnswer": "Um aspecto do crescimento mostrado no relato ou registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda a história da pessoa.": [
+          "REVIEW_MEMORY_USE"
+        ],
+        "Quem é melhor que outra criança.": [
+          "REVIEW_MEMORY_USE"
+        ],
+        "Um dado privado que não foi compartilhado.": [
+          "REVIEW_MEMORY_USE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_MEMORY",
+      "explanation": "A fonte ajuda a identificar aspectos específicos, não tudo sobre a pessoa.",
+      "hint": "Pense no que a lembrança mostra.",
+      "errorFocus": "REVIEW_MEMORY_USE",
+      "feedback": {
+        "correct": "Boa observação: A fonte ajuda a identificar aspectos específicos, não tudo sobre a pessoa.",
+        "incorrect": "A fonte ajuda a identificar aspectos específicos, não tudo sobre a pessoa.",
+        "hint": "Pense no que a lembrança mostra.",
+        "errorFocus": "REVIEW_MEMORY_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-32",
+      "statement": "Além de lembranças pessoais, que relatos podem ser usados?",
+      "prompt": "Além de lembranças pessoais, que relatos podem ser usados?",
+      "options": [
+        "Somente relatos publicados com dados pessoais.",
+        "Suposições sobre famílias.",
+        "Comparações feitas sem fonte.",
+        "Relatos voluntários de pessoas da família e/ou comunidade."
+      ],
+      "correctAnswer": "Relatos voluntários de pessoas da família e/ou comunidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente relatos publicados com dados pessoais.": [
+          "REVIEW_SOURCE_OPTIONS"
+        ],
+        "Suposições sobre famílias.": [
+          "REVIEW_SOURCE_OPTIONS"
+        ],
+        "Comparações feitas sem fonte.": [
+          "REVIEW_SOURCE_OPTIONS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_COMMUNITY",
+      "explanation": "A habilidade inclui lembranças de pessoas da família ou comunidade.",
+      "hint": "Escolha uma fonte mencionada na habilidade.",
+      "errorFocus": "REVIEW_SOURCE_OPTIONS",
+      "feedback": {
+        "correct": "Boa observação: A habilidade inclui lembranças de pessoas da família ou comunidade.",
+        "incorrect": "A habilidade inclui lembranças de pessoas da família ou comunidade.",
+        "hint": "Escolha uma fonte mencionada na habilidade.",
+        "errorFocus": "REVIEW_SOURCE_OPTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-33",
+      "statement": "Quais palavras ajudam a comparar um aspecto em dois momentos?",
+      "prompt": "Quais palavras ajudam a comparar um aspecto em dois momentos?",
+      "options": [
+        "Antes e agora.",
+        "Melhor e pior.",
+        "Maior e menor valor.",
+        "Certo e errado para pessoas."
+      ],
+      "correctAnswer": "Antes e agora.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Melhor e pior.": [
+          "REVIEW_TEMPORAL_LANGUAGE"
+        ],
+        "Maior e menor valor.": [
+          "REVIEW_TEMPORAL_LANGUAGE"
+        ],
+        "Certo e errado para pessoas.": [
+          "REVIEW_TEMPORAL_LANGUAGE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_TIME",
+      "explanation": "Antes e agora organizam dois momentos sem hierarquizar pessoas.",
+      "hint": "Pense em palavras que mostram tempo.",
+      "errorFocus": "REVIEW_TEMPORAL_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: Antes e agora organizam dois momentos sem hierarquizar pessoas.",
+        "incorrect": "Antes e agora organizam dois momentos sem hierarquizar pessoas.",
+        "hint": "Pense em palavras que mostram tempo.",
+        "errorFocus": "REVIEW_TEMPORAL_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-34",
+      "statement": "Quando pode ser útil usar uma história fictícia?",
+      "prompt": "Quando pode ser útil usar uma história fictícia?",
+      "options": [
+        "Para afirmar que a ficção é a memória real de alguém.",
+        "Quando a criança prefere não compartilhar uma lembrança pessoal.",
+        "Para obrigar a contar um segredo.",
+        "Para comparar estudantes reais."
+      ],
+      "correctAnswer": "Quando a criança prefere não compartilhar uma lembrança pessoal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para afirmar que a ficção é a memória real de alguém.": [
+          "REVIEW_ALTERNATIVE_SOURCE"
+        ],
+        "Para obrigar a contar um segredo.": [
+          "REVIEW_ALTERNATIVE_SOURCE"
+        ],
+        "Para comparar estudantes reais.": [
+          "REVIEW_ALTERNATIVE_SOURCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_FICTION",
+      "explanation": "A ficção permite praticar a análise preservando privacidade e escolha.",
+      "hint": "Considere uma alternativa que mantenha a participação.",
+      "errorFocus": "REVIEW_ALTERNATIVE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A ficção permite praticar a análise preservando privacidade e escolha.",
+        "incorrect": "A ficção permite praticar a análise preservando privacidade e escolha.",
+        "hint": "Considere uma alternativa que mantenha a participação.",
+        "errorFocus": "REVIEW_ALTERNATIVE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-35",
+      "statement": "Se um relato diz que alguém agora consegue realizar uma tarefa que antes fazia com ajuda, o que ele indica?",
+      "prompt": "Se um relato diz que alguém agora consegue realizar uma tarefa que antes fazia com ajuda, o que ele indica?",
+      "options": [
+        "Que todas as pessoas mudam do mesmo modo.",
+        "Que a pessoa nunca precisa de ajuda.",
+        "Uma mudança de habilidade ou participação na situação descrita.",
+        "Que o relato prova sua história inteira."
+      ],
+      "correctAnswer": "Uma mudança de habilidade ou participação na situação descrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todas as pessoas mudam do mesmo modo.": [
+          "REVIEW_GROWTH_EVIDENCE"
+        ],
+        "Que a pessoa nunca precisa de ajuda.": [
+          "REVIEW_GROWTH_EVIDENCE"
+        ],
+        "Que o relato prova sua história inteira.": [
+          "REVIEW_GROWTH_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_CHANGE",
+      "explanation": "A fonte indica uma mudança específica, sem universalizar nem apagar apoios.",
+      "hint": "Descreva a tarefa e a mudança registrada.",
+      "errorFocus": "REVIEW_GROWTH_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte indica uma mudança específica, sem universalizar nem apagar apoios.",
+        "incorrect": "A fonte indica uma mudança específica, sem universalizar nem apagar apoios.",
+        "hint": "Descreva a tarefa e a mudança registrada.",
+        "errorFocus": "REVIEW_GROWTH_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-36",
+      "statement": "Qual material não deve ser exigido como condição de participação?",
+      "prompt": "Qual material não deve ser exigido como condição de participação?",
+      "options": [
+        "Um desenho fictício escolhido.",
+        "Um relato comunitário autorizado.",
+        "Uma resposta por símbolos.",
+        "Fotografias ou detalhes pessoais da família."
+      ],
+      "correctAnswer": "Fotografias ou detalhes pessoais da família.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um desenho fictício escolhido.": [
+          "REVIEW_NO_REQUIRED_PRIVATE_DATA"
+        ],
+        "Um relato comunitário autorizado.": [
+          "REVIEW_NO_REQUIRED_PRIVATE_DATA"
+        ],
+        "Uma resposta por símbolos.": [
+          "REVIEW_NO_REQUIRED_PRIVATE_DATA"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_PRIVACY",
+      "explanation": "A participação pode ocorrer por fontes alternativas sem exposição familiar.",
+      "hint": "Escolha o material pessoal que não é obrigatório.",
+      "errorFocus": "REVIEW_NO_REQUIRED_PRIVATE_DATA",
+      "feedback": {
+        "correct": "Boa observação: A participação pode ocorrer por fontes alternativas sem exposição familiar.",
+        "incorrect": "A participação pode ocorrer por fontes alternativas sem exposição familiar.",
+        "hint": "Escolha o material pessoal que não é obrigatório.",
+        "errorFocus": "REVIEW_NO_REQUIRED_PRIVATE_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-37",
+      "statement": "Por que não devemos comparar o ritmo de crescimento de colegas para formar um ranking?",
+      "prompt": "Por que não devemos comparar o ritmo de crescimento de colegas para formar um ranking?",
+      "options": [
+        "Porque histórias e ritmos variam, e o objetivo é identificar evidências em uma lembrança.",
+        "Porque ninguém cresce.",
+        "Porque toda lembrança é igual.",
+        "Porque só há uma forma de aprender."
+      ],
+      "correctAnswer": "Porque histórias e ritmos variam, e o objetivo é identificar evidências em uma lembrança.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque ninguém cresce.": [
+          "REVIEW_NO_RANKING"
+        ],
+        "Porque toda lembrança é igual.": [
+          "REVIEW_NO_RANKING"
+        ],
+        "Porque só há uma forma de aprender.": [
+          "REVIEW_NO_RANKING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_NO_RANK",
+      "explanation": "A comparação histórica não precisa classificar pessoas nem ritmos.",
+      "hint": "Volte ao foco: aspecto registrado, não competição.",
+      "errorFocus": "REVIEW_NO_RANKING",
+      "feedback": {
+        "correct": "Boa observação: A comparação histórica não precisa classificar pessoas nem ritmos.",
+        "incorrect": "A comparação histórica não precisa classificar pessoas nem ritmos.",
+        "hint": "Volte ao foco: aspecto registrado, não competição.",
+        "errorFocus": "REVIEW_NO_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-38",
+      "statement": "Qual registro respeita os limites da evidência?",
+      "prompt": "Qual registro respeita os limites da evidência?",
+      "options": [
+        "“A personagem nunca teve dificuldade.”",
+        "“O relato menciona que a personagem aprendeu a fechar o casaco.”",
+        "“Sua família sempre fez tudo por ela.”",
+        "“Todas as crianças já sabem fazer isso.”"
+      ],
+      "correctAnswer": "“O relato menciona que a personagem aprendeu a fechar o casaco.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“A personagem nunca teve dificuldade.”": [
+          "REVIEW_LIMITED_CLAIM"
+        ],
+        "“Sua família sempre fez tudo por ela.”": [
+          "REVIEW_LIMITED_CLAIM"
+        ],
+        "“Todas as crianças já sabem fazer isso.”": [
+          "REVIEW_LIMITED_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_SOURCE_LIMIT",
+      "explanation": "A frase registra a informação presente sem ampliar a conclusão.",
+      "hint": "Use um detalhe que a fonte realmente menciona.",
+      "errorFocus": "REVIEW_LIMITED_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A frase registra a informação presente sem ampliar a conclusão.",
+        "incorrect": "A frase registra a informação presente sem ampliar a conclusão.",
+        "hint": "Use um detalhe que a fonte realmente menciona.",
+        "errorFocus": "REVIEW_LIMITED_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-39",
+      "statement": "Uma pessoa conta voluntariamente uma lembrança de uma brincadeira que aprendeu. Qual pergunta ajuda a identificar crescimento?",
+      "prompt": "Uma pessoa conta voluntariamente uma lembrança de uma brincadeira que aprendeu. Qual pergunta ajuda a identificar crescimento?",
+      "options": [
+        "Quem da turma é melhor na brincadeira?",
+        "Qual é o endereço da pessoa?",
+        "O que ela passou a conseguir fazer ou participar, segundo o relato?",
+        "Que segredo ela não contou?"
+      ],
+      "correctAnswer": "O que ela passou a conseguir fazer ou participar, segundo o relato?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quem da turma é melhor na brincadeira?": [
+          "REVIEW_ASK_RELEVANT_QUESTION"
+        ],
+        "Qual é o endereço da pessoa?": [
+          "REVIEW_ASK_RELEVANT_QUESTION"
+        ],
+        "Que segredo ela não contou?": [
+          "REVIEW_ASK_RELEVANT_QUESTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEW_MEMORY",
+      "explanation": "A pergunta procura um aspecto de crescimento evidenciado na memória.",
+      "hint": "Pergunte sobre a mudança relatada, não sobre dados pessoais.",
+      "errorFocus": "REVIEW_ASK_RELEVANT_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta procura um aspecto de crescimento evidenciado na memória.",
+        "incorrect": "A pergunta procura um aspecto de crescimento evidenciado na memória.",
+        "hint": "Pergunte sobre a mudança relatada, não sobre dados pessoais.",
+        "errorFocus": "REVIEW_ASK_RELEVANT_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-history-growth-memories-fi-40",
+      "statement": "Depois de registrar uma lembrança, qual próximo passo ajuda a pensar historicamente?",
+      "prompt": "Depois de registrar uma lembrança, qual próximo passo ajuda a pensar historicamente?",
+      "options": [
+        "Transformar a memória em ranking.",
+        "Publicar todos os detalhes pessoais.",
+        "Afirmar que uma lembrança representa toda a comunidade.",
+        "Dizer o que o registro permite identificar e o que ainda não permite concluir."
+      ],
+      "correctAnswer": "Dizer o que o registro permite identificar e o que ainda não permite concluir.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Transformar a memória em ranking.": [
+          "REVIEW_INTERPRET_SOURCE"
+        ],
+        "Publicar todos os detalhes pessoais.": [
+          "REVIEW_INTERPRET_SOURCE"
+        ],
+        "Afirmar que uma lembrança representa toda a comunidade.": [
+          "REVIEW_INTERPRET_SOURCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_NEXT_STEP",
+      "explanation": "Interpretar inclui reconhecer a informação e os limites da fonte.",
+      "hint": "Complete: “o registro mostra…, mas não mostra…”",
+      "errorFocus": "REVIEW_INTERPRET_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Interpretar inclui reconhecer a informação e os limites da fonte.",
+        "incorrect": "Interpretar inclui reconhecer a informação e os limites da fonte.",
+        "hint": "Complete: “o registro mostra…, mas não mostra…”",
+        "errorFocus": "REVIEW_INTERPRET_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Linha do tempo visual simples, objetos seguros, desenhos, áudio, cartões de antes/agora ou narrativa oral.",
+          "Resposta por fala, apontar, comunicação alternativa, desenho, seleção de imagens ou escriba escolhido.",
+          "Alternativa fictícia ou comunitária, sem exigência de fotografias ou relatos de familiares.",
+          "Tempo flexível e possibilidade de não compartilhar experiências pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

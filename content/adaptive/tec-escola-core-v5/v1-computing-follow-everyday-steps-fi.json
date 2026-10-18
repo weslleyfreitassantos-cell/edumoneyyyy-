@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-follow-everyday-steps-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO02_FOLLOW_SEQUENCES_TO_SOLVE_PROBLEMS",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO_COMPUTACIONAL",
+  "topic": "identificar e seguir passos ordenados em tarefas cotidianas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Seguir passos para realizar uma tarefa",
+    "objective": "Reconhecer ações que compõem uma tarefa cotidiana, identificar a ordem adequada em uma sequência apresentada e seguir os passos para alcançar um resultado seguro.",
+    "summary": "Algumas tarefas ficam mais fáceis quando observamos cada ação e seguimos uma ordem. Nesta trilha, o estudante interpreta sequências já apresentadas e acompanha seus passos para resolver situações simples.",
+    "explanation": "## Uma tarefa pode ter várias ações\nPara guardar um livro, por exemplo, primeiro fechamos o livro, depois o colocamos na mochila e, por fim, fechamos a mochila. Cada ação contribui para concluir a tarefa.\n\n## A ordem pode fazer diferença\nEm uma sequência apresentada, procure o que precisa acontecer antes para que o passo seguinte possa funcionar. Ao montar uma figura com peças, encaixar a base antes do telhado ajuda a manter a construção estável.\n\n## Seguir e conferir\nLeia, escute ou observe um passo por vez; realize-o e então passe ao próximo. Ao final, confira se o resultado esperado apareceu. Se a sequência não funcionou, retorne às instruções com um adulto e identifique em qual etapa a dificuldade ocorreu. Aqui o foco é compreender e seguir passos apresentados; criar ou reorganizar instruções é uma aprendizagem relacionada, mas diferente.",
+    "workedExample": "Uma sequência ilustrada para plantar uma semente mostra: colocar um pouco de terra no recipiente, acomodar a semente, cobri-la levemente com terra e regar com pequena quantidade de água. Seguir as imagens nessa ordem permite realizar a tarefa; depois, o estudante observa se todos os passos foram feitos.",
+    "commonMistake": "Pular uma etapa ou começar pela ação que parece mais interessante sem verificar o que a sequência apresentada pede primeiro.",
+    "tips": [
+      "Observe todas as instruções antes de iniciar e localize a primeira ação.",
+      "Faça um passo por vez e sinalize quando ele terminar.",
+      "Pergunte o que precisa estar pronto para a próxima ação acontecer.",
+      "Confira o resultado usando o objetivo da tarefa, não a velocidade de execução."
+    ],
+    "priorKnowledge": [
+      "Compreender instruções simples como antes, depois e por último.",
+      "Reconhecer ações familiares em imagens, demonstrações ou fala."
+    ],
+    "keyConcepts": [
+      "tarefa e resultado esperado",
+      "passo ou ação",
+      "ordem temporal",
+      "seguir instruções apresentadas",
+      "conferir a realização"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "IDENTIFY_FIRST",
+        "text": "Localize a ação indicada para começar antes de executar as etapas seguintes."
+      },
+      {
+        "trigger": "DEPENDENCY",
+        "text": "Veja o que precisa estar pronto para uma ação posterior fazer sentido."
+      },
+      {
+        "trigger": "FOLLOW_AND_CHECK",
+        "text": "Realize uma etapa, confira-a e então acompanhe a próxima instrução."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "STARTED_OUT_OF_ORDER",
+        "action": "Volte às imagens ou instruções, compare a primeira ação com o objetivo e retome uma etapa por vez com apoio."
+      },
+      {
+        "errorFocus": "STEP_SKIPPED",
+        "action": "Use cartões ou marcações para identificar o passo já realizado e localizar qual instrução ainda falta."
+      },
+      {
+        "errorFocus": "RESULT_NOT_CHECKED",
+        "action": "Compare o resultado obtido com o objetivo mostrado e releia ou reveja a sequência sem atribuir culpa ao estudante."
+      }
+    ],
+    "accessibilitySupports": [
+      "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+      "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+      "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+      "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-follow-everyday-steps-fi-activity-1",
+        "title": "Percurso de instruções visíveis",
+        "instructions": "Seguir uma sequência curta de setas no chão para chegar a um alvo amplo em espaço livre e supervisionado.\n1. Observar o alvo e a sequência apresentada pelo adulto.\n2. Identificar a primeira seta e indicar sua direção.\n3. Percorrer uma instrução de cada vez, caminhando ou movendo um marcador.\n4. Conferir se chegou ao alvo e localizar a etapa em que precisou de apoio, se necessário.",
+        "steps": [
+          "Observar o alvo e a sequência apresentada pelo adulto.",
+          "Identificar a primeira seta e indicar sua direção.",
+          "Percorrer uma instrução de cada vez, caminhando ou movendo um marcador.",
+          "Conferir se chegou ao alvo e localizar a etapa em que precisou de apoio, se necessário."
+        ],
+        "evidence": "Registro de quais passos foram seguidos, indicação da ordem e comparação entre o destino esperado e o alcançado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "acompanha parte da sequência com demonstração e apoio.",
+            "developing": "segue a maioria dos passos usando pistas visuais ou verbais.",
+            "proficient": "acompanha a sequência apresentada e confere o resultado com autonomia compatível com a idade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-follow-everyday-steps-fi-activity-2",
+        "title": "Cartões de uma tarefa conhecida",
+        "instructions": "Acompanhar cartões ilustrados de uma rotina segura, como fechar um livro, guardá-lo e fechar a mochila.\n1. Observar os cartões e escutar a tarefa proposta.\n2. Localizar qual ação a sequência apresenta primeiro.\n3. Executar ou representar as ações seguindo os cartões, sem acrescentar etapas perigosas.\n4. Rever o resultado e apontar quais instruções foram concluídas.",
+        "steps": [
+          "Observar os cartões e escutar a tarefa proposta.",
+          "Localizar qual ação a sequência apresenta primeiro.",
+          "Executar ou representar as ações seguindo os cartões, sem acrescentar etapas perigosas.",
+          "Rever o resultado e apontar quais instruções foram concluídas."
+        ],
+        "evidence": "Sequência percorrida, ações realizadas ou representadas e conferência do objetivo final.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma ação da tarefa com ajuda.",
+            "developing": "acompanha a ordem com lembrete entre passos.",
+            "proficient": "segue e confere as ações apresentadas, usando o modo de resposta acessível escolhido."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-follow-everyday-steps-fi-01",
+          "v1-computing-follow-everyday-steps-fi-02",
+          "v1-computing-follow-everyday-steps-fi-03",
+          "v1-computing-follow-everyday-steps-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-follow-everyday-steps-fi-05",
+          "v1-computing-follow-everyday-steps-fi-06",
+          "v1-computing-follow-everyday-steps-fi-07",
+          "v1-computing-follow-everyday-steps-fi-08",
+          "v1-computing-follow-everyday-steps-fi-09",
+          "v1-computing-follow-everyday-steps-fi-10",
+          "v1-computing-follow-everyday-steps-fi-11",
+          "v1-computing-follow-everyday-steps-fi-12",
+          "v1-computing-follow-everyday-steps-fi-13",
+          "v1-computing-follow-everyday-steps-fi-14",
+          "v1-computing-follow-everyday-steps-fi-15",
+          "v1-computing-follow-everyday-steps-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-follow-everyday-steps-fi-17",
+          "v1-computing-follow-everyday-steps-fi-18",
+          "v1-computing-follow-everyday-steps-fi-19",
+          "v1-computing-follow-everyday-steps-fi-20",
+          "v1-computing-follow-everyday-steps-fi-21",
+          "v1-computing-follow-everyday-steps-fi-22",
+          "v1-computing-follow-everyday-steps-fi-23",
+          "v1-computing-follow-everyday-steps-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-follow-everyday-steps-fi-25",
+          "v1-computing-follow-everyday-steps-fi-26",
+          "v1-computing-follow-everyday-steps-fi-27",
+          "v1-computing-follow-everyday-steps-fi-28",
+          "v1-computing-follow-everyday-steps-fi-29",
+          "v1-computing-follow-everyday-steps-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-follow-everyday-steps-fi-31",
+          "v1-computing-follow-everyday-steps-fi-32",
+          "v1-computing-follow-everyday-steps-fi-33",
+          "v1-computing-follow-everyday-steps-fi-34",
+          "v1-computing-follow-everyday-steps-fi-35",
+          "v1-computing-follow-everyday-steps-fi-36",
+          "v1-computing-follow-everyday-steps-fi-37",
+          "v1-computing-follow-everyday-steps-fi-38",
+          "v1-computing-follow-everyday-steps-fi-39",
+          "v1-computing-follow-everyday-steps-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO02",
+        "descriptor": "Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 16
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-01",
+      "statement": "Uma figura mostra: fechar o livro, colocá-lo na mochila e fechar a mochila. Qual é a primeira ação indicada?",
+      "prompt": "Uma figura mostra: fechar o livro, colocá-lo na mochila e fechar a mochila. Qual é a primeira ação indicada?",
+      "options": [
+        "Fechar o livro.",
+        "Fechar a mochila.",
+        "Colocar a mochila na estante.",
+        "Abrir outro livro."
+      ],
+      "correctAnswer": "Fechar o livro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fechar a mochila.": [
+          "FIRST_STEP"
+        ],
+        "Colocar a mochila na estante.": [
+          "FIRST_STEP"
+        ],
+        "Abrir outro livro.": [
+          "FIRST_STEP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "BOOK_BAG",
+      "explanation": "A sequência apresentada começa pelo fechamento do livro; acompanhe as instruções na ordem mostrada.",
+      "hint": "Observe qual ação aparece antes das outras.",
+      "errorFocus": "FIRST_STEP",
+      "feedback": {
+        "correct": "Boa observação: A sequência apresentada começa pelo fechamento do livro; acompanhe as instruções na ordem mostrada.",
+        "incorrect": "A sequência apresentada começa pelo fechamento do livro; acompanhe as instruções na ordem mostrada.",
+        "hint": "Observe qual ação aparece antes das outras.",
+        "errorFocus": "FIRST_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-02",
+      "statement": "Os cartões de lavar as mãos começam com molhar as mãos e terminam com secá-las. O que vem antes de secar?",
+      "prompt": "Os cartões de lavar as mãos começam com molhar as mãos e terminam com secá-las. O que vem antes de secar?",
+      "options": [
+        "Guardar os sapatos.",
+        "Enxaguar as mãos.",
+        "Secar antes de usar água.",
+        "Apagar a luz da sala."
+      ],
+      "correctAnswer": "Enxaguar as mãos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Guardar os sapatos.": [
+          "NEXT_STEP"
+        ],
+        "Secar antes de usar água.": [
+          "NEXT_STEP"
+        ],
+        "Apagar a luz da sala.": [
+          "NEXT_STEP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "HANDWASH_CARD",
+      "explanation": "A última ação indicada é secar; a sequência ainda mostra enxaguar antes dela.",
+      "hint": "Procure o cartão imediatamente anterior.",
+      "errorFocus": "NEXT_STEP",
+      "feedback": {
+        "correct": "Boa observação: A última ação indicada é secar; a sequência ainda mostra enxaguar antes dela.",
+        "incorrect": "A última ação indicada é secar; a sequência ainda mostra enxaguar antes dela.",
+        "hint": "Procure o cartão imediatamente anterior.",
+        "errorFocus": "NEXT_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-03",
+      "statement": "Uma demonstração pede dobrar a folha ao meio e depois alisar a dobra. O que fazer após dobrar?",
+      "prompt": "Uma demonstração pede dobrar a folha ao meio e depois alisar a dobra. O que fazer após dobrar?",
+      "options": [
+        "Amassar a folha sem olhar.",
+        "Guardar a folha antes de dobrar.",
+        "Alisar a dobra.",
+        "Pular a etapa mostrada."
+      ],
+      "correctAnswer": "Alisar a dobra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Amassar a folha sem olhar.": [
+          "FOLLOW_PRESENTED_STEP"
+        ],
+        "Guardar a folha antes de dobrar.": [
+          "FOLLOW_PRESENTED_STEP"
+        ],
+        "Pular a etapa mostrada.": [
+          "FOLLOW_PRESENTED_STEP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "PAPER_FOLD",
+      "explanation": "Seguir a demonstração significa realizar a ação seguinte que foi apresentada.",
+      "hint": "Acompanhe o segundo passo.",
+      "errorFocus": "FOLLOW_PRESENTED_STEP",
+      "feedback": {
+        "correct": "Boa observação: Seguir a demonstração significa realizar a ação seguinte que foi apresentada.",
+        "incorrect": "Seguir a demonstração significa realizar a ação seguinte que foi apresentada.",
+        "hint": "Acompanhe o segundo passo.",
+        "errorFocus": "FOLLOW_PRESENTED_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-04",
+      "statement": "Na sequência de plantio, a terra vai ao recipiente antes da semente. O que precisa acontecer primeiro?",
+      "prompt": "Na sequência de plantio, a terra vai ao recipiente antes da semente. O que precisa acontecer primeiro?",
+      "options": [
+        "Regar a mesa.",
+        "Retirar a semente depois de plantá-la.",
+        "Fechar uma mochila.",
+        "Colocar a terra no recipiente."
+      ],
+      "correctAnswer": "Colocar a terra no recipiente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Regar a mesa.": [
+          "PREREQUISITE_STEP"
+        ],
+        "Retirar a semente depois de plantá-la.": [
+          "PREREQUISITE_STEP"
+        ],
+        "Fechar uma mochila.": [
+          "PREREQUISITE_STEP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PLANT_POT",
+      "explanation": "A sequência indica preparar o recipiente com terra antes de acomodar a semente.",
+      "hint": "Veja qual passo prepara o lugar para a semente.",
+      "errorFocus": "PREREQUISITE_STEP",
+      "feedback": {
+        "correct": "Boa observação: A sequência indica preparar o recipiente com terra antes de acomodar a semente.",
+        "incorrect": "A sequência indica preparar o recipiente com terra antes de acomodar a semente.",
+        "hint": "Veja qual passo prepara o lugar para a semente.",
+        "errorFocus": "PREREQUISITE_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-05",
+      "statement": "A instrução para um quebra-cabeça é olhar a imagem da caixa e então procurar peças de borda. O que vem primeiro?",
+      "prompt": "A instrução para um quebra-cabeça é olhar a imagem da caixa e então procurar peças de borda. O que vem primeiro?",
+      "options": [
+        "Olhar a imagem da caixa.",
+        "Guardar as peças sem olhar.",
+        "Procurar uma peça que nem está no jogo.",
+        "Virar a mesa."
+      ],
+      "correctAnswer": "Olhar a imagem da caixa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Guardar as peças sem olhar.": [
+          "FOLLOW_ORDER"
+        ],
+        "Procurar uma peça que nem está no jogo.": [
+          "FOLLOW_ORDER"
+        ],
+        "Virar a mesa.": [
+          "FOLLOW_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "PUZZLE_START",
+      "explanation": "A imagem de referência é observada antes de procurar as peças indicadas.",
+      "hint": "Siga o primeiro passo da instrução.",
+      "errorFocus": "FOLLOW_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A imagem de referência é observada antes de procurar as peças indicadas.",
+        "incorrect": "A imagem de referência é observada antes de procurar as peças indicadas.",
+        "hint": "Siga o primeiro passo da instrução.",
+        "errorFocus": "FOLLOW_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-06",
+      "statement": "Para pendurar um casaco, a sequência ilustrada mostra aproximar-se do gancho e depois colocar o casaco nele. O que fazer antes de pendurá-lo?",
+      "prompt": "Para pendurar um casaco, a sequência ilustrada mostra aproximar-se do gancho e depois colocar o casaco nele. O que fazer antes de pendurá-lo?",
+      "options": [
+        "Sair da sala.",
+        "Aproximar-se do gancho.",
+        "Puxar o gancho da parede.",
+        "Colocar o casaco no chão e ir embora."
+      ],
+      "correctAnswer": "Aproximar-se do gancho.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sair da sala.": [
+          "ACTION_BEFORE_RESULT"
+        ],
+        "Puxar o gancho da parede.": [
+          "ACTION_BEFORE_RESULT"
+        ],
+        "Colocar o casaco no chão e ir embora.": [
+          "ACTION_BEFORE_RESULT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "COAT_HOOK",
+      "explanation": "A ação de aproximar-se aparece antes de colocar o casaco no gancho.",
+      "hint": "Localize o passo que prepara o seguinte.",
+      "errorFocus": "ACTION_BEFORE_RESULT",
+      "feedback": {
+        "correct": "Boa observação: A ação de aproximar-se aparece antes de colocar o casaco no gancho.",
+        "incorrect": "A ação de aproximar-se aparece antes de colocar o casaco no gancho.",
+        "hint": "Localize o passo que prepara o seguinte.",
+        "errorFocus": "ACTION_BEFORE_RESULT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-07",
+      "statement": "O cartão pede escolher um giz de cera e depois colorir a figura. Qual passo deve ser seguido primeiro?",
+      "prompt": "O cartão pede escolher um giz de cera e depois colorir a figura. Qual passo deve ser seguido primeiro?",
+      "options": [
+        "Guardar todos sem colorir.",
+        "Colorir antes de escolher material.",
+        "Escolher um giz de cera.",
+        "Rasgar a figura."
+      ],
+      "correctAnswer": "Escolher um giz de cera.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Guardar todos sem colorir.": [
+          "PREPARE_MATERIAL"
+        ],
+        "Colorir antes de escolher material.": [
+          "PREPARE_MATERIAL"
+        ],
+        "Rasgar a figura.": [
+          "PREPARE_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "DRAWING_CRAYONS",
+      "explanation": "A instrução apresenta a escolha do material antes de colorir.",
+      "hint": "Veja o que a criança precisa ter em mãos.",
+      "errorFocus": "PREPARE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A instrução apresenta a escolha do material antes de colorir.",
+        "incorrect": "A instrução apresenta a escolha do material antes de colorir.",
+        "hint": "Veja o que a criança precisa ter em mãos.",
+        "errorFocus": "PREPARE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-08",
+      "statement": "Em uma atividade simulada, o cartão mostra colocar o guardanapo na mesa e depois pôr a fruta lavada no prato. Qual é a primeira ação?",
+      "prompt": "Em uma atividade simulada, o cartão mostra colocar o guardanapo na mesa e depois pôr a fruta lavada no prato. Qual é a primeira ação?",
+      "options": [
+        "Jogar a fruta no chão.",
+        "Guardar o prato antes de usá-lo.",
+        "Comer sem seguir o cartão.",
+        "Colocar o guardanapo na mesa."
+      ],
+      "correctAnswer": "Colocar o guardanapo na mesa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Jogar a fruta no chão.": [
+          "TASK_SEQUENCE"
+        ],
+        "Guardar o prato antes de usá-lo.": [
+          "TASK_SEQUENCE"
+        ],
+        "Comer sem seguir o cartão.": [
+          "TASK_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "SNACK_NAPKIN",
+      "explanation": "A sequência fornecida começa preparando o lugar com o guardanapo.",
+      "hint": "Leia a primeira imagem.",
+      "errorFocus": "TASK_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência fornecida começa preparando o lugar com o guardanapo.",
+        "incorrect": "A sequência fornecida começa preparando o lugar com o guardanapo.",
+        "hint": "Leia a primeira imagem.",
+        "errorFocus": "TASK_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-09",
+      "statement": "A montagem mostra encaixar a base larga e depois colocar um bloco sobre ela. O que seguir antes?",
+      "prompt": "A montagem mostra encaixar a base larga e depois colocar um bloco sobre ela. O que seguir antes?",
+      "options": [
+        "Encaixar a base larga.",
+        "Retirar todos os blocos da sala.",
+        "Colocar o bloco superior antes da base.",
+        "Empurrar a torre pronta."
+      ],
+      "correctAnswer": "Encaixar a base larga.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar todos os blocos da sala.": [
+          "STABLE_BASE"
+        ],
+        "Colocar o bloco superior antes da base.": [
+          "STABLE_BASE"
+        ],
+        "Empurrar a torre pronta.": [
+          "STABLE_BASE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "BLOCK_TOWER",
+      "explanation": "A base é apresentada primeiro e sustenta o passo seguinte.",
+      "hint": "Observe o que mantém a construção apoiada.",
+      "errorFocus": "STABLE_BASE",
+      "feedback": {
+        "correct": "Boa observação: A base é apresentada primeiro e sustenta o passo seguinte.",
+        "incorrect": "A base é apresentada primeiro e sustenta o passo seguinte.",
+        "hint": "Observe o que mantém a construção apoiada.",
+        "errorFocus": "STABLE_BASE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-10",
+      "statement": "Um marcador de leitura deve ficar no livro antes de fechá-lo. Qual ação vem antes de fechar o livro?",
+      "prompt": "Um marcador de leitura deve ficar no livro antes de fechá-lo. Qual ação vem antes de fechar o livro?",
+      "options": [
+        "Molhar o livro.",
+        "Colocar o marcador na página.",
+        "Colocar o marcador depois de guardar o livro fechado.",
+        "Dobrar todas as páginas."
+      ],
+      "correctAnswer": "Colocar o marcador na página.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Molhar o livro.": [
+          "STEP_DEPENDENCY"
+        ],
+        "Colocar o marcador depois de guardar o livro fechado.": [
+          "STEP_DEPENDENCY"
+        ],
+        "Dobrar todas as páginas.": [
+          "STEP_DEPENDENCY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_RETURN",
+      "explanation": "A sequência apresentada posiciona o marcador antes de fechar o livro.",
+      "hint": "O que precisa ocorrer enquanto o livro está aberto?",
+      "errorFocus": "STEP_DEPENDENCY",
+      "feedback": {
+        "correct": "Boa observação: A sequência apresentada posiciona o marcador antes de fechar o livro.",
+        "incorrect": "A sequência apresentada posiciona o marcador antes de fechar o livro.",
+        "hint": "O que precisa ocorrer enquanto o livro está aberto?",
+        "errorFocus": "STEP_DEPENDENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-11",
+      "statement": "As setas indicam avançar até a marca azul e depois virar para a mesa. Ao chegar à marca, qual instrução vem a seguir?",
+      "prompt": "As setas indicam avançar até a marca azul e depois virar para a mesa. Ao chegar à marca, qual instrução vem a seguir?",
+      "options": [
+        "Voltar ao início sem conferir.",
+        "Apagar a marca azul.",
+        "Virar para a mesa.",
+        "Virar antes de avançar até a marca."
+      ],
+      "correctAnswer": "Virar para a mesa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Voltar ao início sem conferir.": [
+          "NEXT_INSTRUCTION"
+        ],
+        "Apagar a marca azul.": [
+          "NEXT_INSTRUCTION"
+        ],
+        "Virar antes de avançar até a marca.": [
+          "NEXT_INSTRUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "CLASSROOM_ROUTE",
+      "explanation": "Após alcançar a marca azul, a próxima instrução apresentada é virar para a mesa.",
+      "hint": "Continue a partir do lugar onde parou.",
+      "errorFocus": "NEXT_INSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: Após alcançar a marca azul, a próxima instrução apresentada é virar para a mesa.",
+        "incorrect": "Após alcançar a marca azul, a próxima instrução apresentada é virar para a mesa.",
+        "hint": "Continue a partir do lugar onde parou.",
+        "errorFocus": "NEXT_INSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-12",
+      "statement": "Para copiar uma figura de tangram, a sequência pede escolher as peças indicadas e depois posicioná-las como no modelo. O que acontece após escolher?",
+      "prompt": "Para copiar uma figura de tangram, a sequência pede escolher as peças indicadas e depois posicioná-las como no modelo. O que acontece após escolher?",
+      "options": [
+        "Guardar o modelo sem comparar.",
+        "Trocar as peças por objetos da sala.",
+        "Colocar as peças sem observar a figura.",
+        "Posicionar as peças conforme o modelo."
+      ],
+      "correctAnswer": "Posicionar as peças conforme o modelo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Guardar o modelo sem comparar.": [
+          "MODEL_GUIDED_STEP"
+        ],
+        "Trocar as peças por objetos da sala.": [
+          "MODEL_GUIDED_STEP"
+        ],
+        "Colocar as peças sem observar a figura.": [
+          "MODEL_GUIDED_STEP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "TANGRAM_MODEL",
+      "explanation": "A etapa seguinte à seleção é posicionar as peças olhando o modelo.",
+      "hint": "Qual ação vem depois de separar as peças?",
+      "errorFocus": "MODEL_GUIDED_STEP",
+      "feedback": {
+        "correct": "Boa observação: A etapa seguinte à seleção é posicionar as peças olhando o modelo.",
+        "incorrect": "A etapa seguinte à seleção é posicionar as peças olhando o modelo.",
+        "hint": "Qual ação vem depois de separar as peças?",
+        "errorFocus": "MODEL_GUIDED_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-13",
+      "statement": "Uma tarefa de cuidado, supervisionada por adulto, mostra verificar o solo e regar pouco apenas se estiver seco. Que passo antecede a rega?",
+      "prompt": "Uma tarefa de cuidado, supervisionada por adulto, mostra verificar o solo e regar pouco apenas se estiver seco. Que passo antecede a rega?",
+      "options": [
+        "Verificar se o solo está seco.",
+        "Regar sem observar todos os dias.",
+        "Retirar a planta do recipiente.",
+        "Guardar a água antes de olhar o solo."
+      ],
+      "correctAnswer": "Verificar se o solo está seco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Regar sem observar todos os dias.": [
+          "CHECK_BEFORE_ACTION"
+        ],
+        "Retirar a planta do recipiente.": [
+          "CHECK_BEFORE_ACTION"
+        ],
+        "Guardar a água antes de olhar o solo.": [
+          "CHECK_BEFORE_ACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "CLASS_PLANT_WATER",
+      "explanation": "A instrução condiciona a rega à observação prévia do solo.",
+      "hint": "Encontre a ação de verificação na sequência.",
+      "errorFocus": "CHECK_BEFORE_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A instrução condiciona a rega à observação prévia do solo.",
+        "incorrect": "A instrução condiciona a rega à observação prévia do solo.",
+        "hint": "Encontre a ação de verificação na sequência.",
+        "errorFocus": "CHECK_BEFORE_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-14",
+      "statement": "O cartaz orienta tampar a cola e depois colocar o material na bandeja. Qual passo vem antes de guardar?",
+      "prompt": "O cartaz orienta tampar a cola e depois colocar o material na bandeja. Qual passo vem antes de guardar?",
+      "options": [
+        "Deixar a cola aberta.",
+        "Tampar a cola.",
+        "Levar a bandeja para fora sem autorização.",
+        "Guardar antes de tampar."
+      ],
+      "correctAnswer": "Tampar a cola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Deixar a cola aberta.": [
+          "SAFE_COMPLETION"
+        ],
+        "Levar a bandeja para fora sem autorização.": [
+          "SAFE_COMPLETION"
+        ],
+        "Guardar antes de tampar.": [
+          "SAFE_COMPLETION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ART_CLEANUP",
+      "explanation": "Tampar a cola é o passo anterior indicado para guardar o material com segurança.",
+      "hint": "Observe a etapa de preparação para guardar.",
+      "errorFocus": "SAFE_COMPLETION",
+      "feedback": {
+        "correct": "Boa observação: Tampar a cola é o passo anterior indicado para guardar o material com segurança.",
+        "incorrect": "Tampar a cola é o passo anterior indicado para guardar o material com segurança.",
+        "hint": "Observe a etapa de preparação para guardar.",
+        "errorFocus": "SAFE_COMPLETION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-15",
+      "statement": "A atividade pede escutar uma instrução, pausar o áudio e apontar a imagem correspondente. O que fazer depois de escutar a instrução?",
+      "prompt": "A atividade pede escutar uma instrução, pausar o áudio e apontar a imagem correspondente. O que fazer depois de escutar a instrução?",
+      "options": [
+        "Desligar o aparelho da tomada sem adulto.",
+        "Apontar antes de ouvir.",
+        "Pausar o áudio.",
+        "Reiniciar a atividade sem necessidade."
+      ],
+      "correctAnswer": "Pausar o áudio.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Desligar o aparelho da tomada sem adulto.": [
+          "MEDIA_STEP_ORDER"
+        ],
+        "Apontar antes de ouvir.": [
+          "MEDIA_STEP_ORDER"
+        ],
+        "Reiniciar a atividade sem necessidade.": [
+          "MEDIA_STEP_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "AUDIO_STORY",
+      "explanation": "A pausa vem depois de escutar e antes de apontar a imagem.",
+      "hint": "Siga a ordem das ações mostradas.",
+      "errorFocus": "MEDIA_STEP_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A pausa vem depois de escutar e antes de apontar a imagem.",
+        "incorrect": "A pausa vem depois de escutar e antes de apontar a imagem.",
+        "hint": "Siga a ordem das ações mostradas.",
+        "errorFocus": "MEDIA_STEP_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-16",
+      "statement": "Uma sequência em papel mostra colocar a folha na pasta e fechar a pasta. Como saber se terminou?",
+      "prompt": "Uma sequência em papel mostra colocar a folha na pasta e fechar a pasta. Como saber se terminou?",
+      "options": [
+        "Deixar a folha no chão.",
+        "Fechar a pasta vazia e não verificar.",
+        "Começar outra tarefa sem olhar o resultado.",
+        "Conferir se a folha está guardada e a pasta fechada."
+      ],
+      "correctAnswer": "Conferir se a folha está guardada e a pasta fechada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Deixar a folha no chão.": [
+          "VERIFY_RESULT"
+        ],
+        "Fechar a pasta vazia e não verificar.": [
+          "VERIFY_RESULT"
+        ],
+        "Começar outra tarefa sem olhar o resultado.": [
+          "VERIFY_RESULT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "FOLDER_SAVE",
+      "explanation": "A conferência compara o resultado com os dois passos da sequência.",
+      "hint": "Confira o objetivo depois da última ação.",
+      "errorFocus": "VERIFY_RESULT",
+      "feedback": {
+        "correct": "Boa observação: A conferência compara o resultado com os dois passos da sequência.",
+        "incorrect": "A conferência compara o resultado com os dois passos da sequência.",
+        "hint": "Confira o objetivo depois da última ação.",
+        "errorFocus": "VERIFY_RESULT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-17",
+      "statement": "Uma sequência ilustrada de dobradura começa com alinhar as pontas e depois fazer a dobra. O que verificar antes de dobrar?",
+      "prompt": "Uma sequência ilustrada de dobradura começa com alinhar as pontas e depois fazer a dobra. O que verificar antes de dobrar?",
+      "options": [
+        "Se as pontas estão alinhadas como mostra a figura.",
+        "Se a folha foi escondida.",
+        "Se a próxima atividade já começou.",
+        "Se todas as figuras da sala têm a mesma cor."
+      ],
+      "correctAnswer": "Se as pontas estão alinhadas como mostra a figura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Se a folha foi escondida.": [
+          "TRANSFER_VISUAL_SEQUENCE"
+        ],
+        "Se a próxima atividade já começou.": [
+          "TRANSFER_VISUAL_SEQUENCE"
+        ],
+        "Se todas as figuras da sala têm a mesma cor.": [
+          "TRANSFER_VISUAL_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_ORIGAMI",
+      "explanation": "A primeira instrução prepara a dobra; comparar com a imagem ajuda a segui-la.",
+      "hint": "Use o modelo para conferir a etapa inicial.",
+      "errorFocus": "TRANSFER_VISUAL_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A primeira instrução prepara a dobra; comparar com a imagem ajuda a segui-la.",
+        "incorrect": "A primeira instrução prepara a dobra; comparar com a imagem ajuda a segui-la.",
+        "hint": "Use o modelo para conferir a etapa inicial.",
+        "errorFocus": "TRANSFER_VISUAL_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-18",
+      "statement": "No jogo, a sequência é lançar o dado e mover o marcador a quantidade indicada. O que precisa acontecer antes de mover?",
+      "prompt": "No jogo, a sequência é lançar o dado e mover o marcador a quantidade indicada. O que precisa acontecer antes de mover?",
+      "options": [
+        "Mover o marcador para qualquer casa.",
+        "Lançar o dado e observar o resultado.",
+        "Guardar o tabuleiro sem jogar.",
+        "Pedir que outra pessoa escolha o número sem lançar."
+      ],
+      "correctAnswer": "Lançar o dado e observar o resultado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mover o marcador para qualquer casa.": [
+          "GAME_PROCEDURE"
+        ],
+        "Guardar o tabuleiro sem jogar.": [
+          "GAME_PROCEDURE"
+        ],
+        "Pedir que outra pessoa escolha o número sem lançar.": [
+          "GAME_PROCEDURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "BOARD_GAME_TURN",
+      "explanation": "O movimento depende do resultado obtido ao lançar o dado.",
+      "hint": "Que informação orienta o movimento?",
+      "errorFocus": "GAME_PROCEDURE",
+      "feedback": {
+        "correct": "Boa observação: O movimento depende do resultado obtido ao lançar o dado.",
+        "incorrect": "O movimento depende do resultado obtido ao lançar o dado.",
+        "hint": "Que informação orienta o movimento?",
+        "errorFocus": "GAME_PROCEDURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-19",
+      "statement": "Uma atividade no tablet mostra escolher a ferramenta de linha e então desenhar no quadro vazio. Qual ação vem antes de desenhar?",
+      "prompt": "Uma atividade no tablet mostra escolher a ferramenta de linha e então desenhar no quadro vazio. Qual ação vem antes de desenhar?",
+      "options": [
+        "Fechar o aplicativo antes de abrir.",
+        "Apagar o trabalho de outra pessoa.",
+        "Escolher a ferramenta de linha.",
+        "Tocar em todos os ícones ao mesmo tempo."
+      ],
+      "correctAnswer": "Escolher a ferramenta de linha.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fechar o aplicativo antes de abrir.": [
+          "INTERFACE_SEQUENCE"
+        ],
+        "Apagar o trabalho de outra pessoa.": [
+          "INTERFACE_SEQUENCE"
+        ],
+        "Tocar em todos os ícones ao mesmo tempo.": [
+          "INTERFACE_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIGITAL_DRAWING",
+      "explanation": "A ferramenta é escolhida antes de ser usada no desenho.",
+      "hint": "Qual passo prepara a ação digital?",
+      "errorFocus": "INTERFACE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A ferramenta é escolhida antes de ser usada no desenho.",
+        "incorrect": "A ferramenta é escolhida antes de ser usada no desenho.",
+        "hint": "Qual passo prepara a ação digital?",
+        "errorFocus": "INTERFACE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-20",
+      "statement": "Para devolver um livro, a orientação é olhar a etiqueta da estante e colocá-lo no espaço indicado. O que fazer antes de guardar?",
+      "prompt": "Para devolver um livro, a orientação é olhar a etiqueta da estante e colocá-lo no espaço indicado. O que fazer antes de guardar?",
+      "options": [
+        "Colocar em qualquer lugar sem conferir.",
+        "Levar o livro para casa sem autorização.",
+        "Virar a estante.",
+        "Olhar a etiqueta da estante."
+      ],
+      "correctAnswer": "Olhar a etiqueta da estante.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Colocar em qualquer lugar sem conferir.": [
+          "FOLLOW_REFERENCE"
+        ],
+        "Levar o livro para casa sem autorização.": [
+          "FOLLOW_REFERENCE"
+        ],
+        "Virar a estante.": [
+          "FOLLOW_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "CLASSROOM_LIBRARY",
+      "explanation": "A etiqueta ajuda a identificar o local antes da devolução.",
+      "hint": "A instrução manda consultar qual referência?",
+      "errorFocus": "FOLLOW_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta ajuda a identificar o local antes da devolução.",
+        "incorrect": "A etiqueta ajuda a identificar o local antes da devolução.",
+        "hint": "A instrução manda consultar qual referência?",
+        "errorFocus": "FOLLOW_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-21",
+      "statement": "Uma história ilustrada mostra fechar o guarda-chuva do lado de fora com ajuda adulta e depois entrar no espaço indicado. Qual passo acontece antes de entrar?",
+      "prompt": "Uma história ilustrada mostra fechar o guarda-chuva do lado de fora com ajuda adulta e depois entrar no espaço indicado. Qual passo acontece antes de entrar?",
+      "options": [
+        "Fechar o guarda-chuva com ajuda adulta.",
+        "Correr com o guarda-chuva aberto pelo corredor.",
+        "Guardar os sapatos em outra turma.",
+        "Entrar antes de seguir a orientação."
+      ],
+      "correctAnswer": "Fechar o guarda-chuva com ajuda adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Correr com o guarda-chuva aberto pelo corredor.": [
+          "CONTEXTUAL_ORDER"
+        ],
+        "Guardar os sapatos em outra turma.": [
+          "CONTEXTUAL_ORDER"
+        ],
+        "Entrar antes de seguir a orientação.": [
+          "CONTEXTUAL_ORDER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "RAINY_DAY_ENTRY",
+      "explanation": "A sequência coloca o fechamento seguro antes da entrada.",
+      "hint": "Procure a ação que prepara a próxima.",
+      "errorFocus": "CONTEXTUAL_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A sequência coloca o fechamento seguro antes da entrada.",
+        "incorrect": "A sequência coloca o fechamento seguro antes da entrada.",
+        "hint": "Procure a ação que prepara a próxima.",
+        "errorFocus": "CONTEXTUAL_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-22",
+      "statement": "Uma sequência para montar um cartão mostra escolher a folha e decorá-la, mas a cola não foi aberta. Qual dificuldade impede seguir o passo de colar?",
+      "prompt": "Uma sequência para montar um cartão mostra escolher a folha e decorá-la, mas a cola não foi aberta. Qual dificuldade impede seguir o passo de colar?",
+      "options": [
+        "A folha precisa ser descartada.",
+        "Falta preparar o material necessário, com ajuda segura.",
+        "A decoração deve ser feita por outra turma.",
+        "É preciso pular todas as instruções."
+      ],
+      "correctAnswer": "Falta preparar o material necessário, com ajuda segura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A folha precisa ser descartada.": [
+          "REQUIRED_PREPARATION"
+        ],
+        "A decoração deve ser feita por outra turma.": [
+          "REQUIRED_PREPARATION"
+        ],
+        "É preciso pular todas as instruções.": [
+          "REQUIRED_PREPARATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DIAGNOSE",
+      "contextFamily": "MISSING_STEP_CRAFT",
+      "explanation": "O material necessário precisa estar disponível antes do passo correspondente; um adulto pode ajudar.",
+      "hint": "Qual recurso a etapa seguinte exige?",
+      "errorFocus": "REQUIRED_PREPARATION",
+      "feedback": {
+        "correct": "Boa observação: O material necessário precisa estar disponível antes do passo correspondente; um adulto pode ajudar.",
+        "incorrect": "O material necessário precisa estar disponível antes do passo correspondente; um adulto pode ajudar.",
+        "hint": "Qual recurso a etapa seguinte exige?",
+        "errorFocus": "REQUIRED_PREPARATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-23",
+      "statement": "A rota mostrada é avançar uma casa, virar à direita e parar no círculo. A criança virou antes de avançar. Como retomar?",
+      "prompt": "A rota mostrada é avançar uma casa, virar à direita e parar no círculo. A criança virou antes de avançar. Como retomar?",
+      "options": [
+        "Continuar sem consultar a sequência.",
+        "Mudar o destino por conta própria.",
+        "Voltar ao ponto de partida combinado e seguir cada instrução na ordem.",
+        "Apagar o círculo de chegada."
+      ],
+      "correctAnswer": "Voltar ao ponto de partida combinado e seguir cada instrução na ordem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Continuar sem consultar a sequência.": [
+          "RECOVER_SEQUENCE"
+        ],
+        "Mudar o destino por conta própria.": [
+          "RECOVER_SEQUENCE"
+        ],
+        "Apagar o círculo de chegada.": [
+          "RECOVER_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FOLLOW_ROUTE_MISSTEP",
+      "explanation": "Retomar do início acordado permite comparar e seguir a sequência apresentada sem culpar a criança.",
+      "hint": "Recomece do ponto combinado, uma instrução por vez.",
+      "errorFocus": "RECOVER_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: Retomar do início acordado permite comparar e seguir a sequência apresentada sem culpar a criança.",
+        "incorrect": "Retomar do início acordado permite comparar e seguir a sequência apresentada sem culpar a criança.",
+        "hint": "Recomece do ponto combinado, uma instrução por vez.",
+        "errorFocus": "RECOVER_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-24",
+      "statement": "Uma receita ilustrada segura pede colocar uma fruta já lavada no prato e depois chamar um adulto para cortar. Qual ação confirma que a sequência foi seguida com segurança?",
+      "prompt": "Uma receita ilustrada segura pede colocar uma fruta já lavada no prato e depois chamar um adulto para cortar. Qual ação confirma que a sequência foi seguida com segurança?",
+      "options": [
+        "A criança usa faca sozinha.",
+        "A fruta é cortada antes de chamar o adulto.",
+        "A sequência é ignorada.",
+        "A fruta foi colocada no prato e o adulto foi chamado antes de cortar."
+      ],
+      "correctAnswer": "A fruta foi colocada no prato e o adulto foi chamado antes de cortar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A criança usa faca sozinha.": [
+          "SAFE_SEQUENCE_CHECK"
+        ],
+        "A fruta é cortada antes de chamar o adulto.": [
+          "SAFE_SEQUENCE_CHECK"
+        ],
+        "A sequência é ignorada.": [
+          "SAFE_SEQUENCE_CHECK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "RECIPE_PICTURE",
+      "explanation": "A conferência considera a ordem e a presença do adulto para a etapa de corte.",
+      "hint": "Observe a etapa que exige supervisão.",
+      "errorFocus": "SAFE_SEQUENCE_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A conferência considera a ordem e a presença do adulto para a etapa de corte.",
+        "incorrect": "A conferência considera a ordem e a presença do adulto para a etapa de corte.",
+        "hint": "Observe a etapa que exige supervisão.",
+        "errorFocus": "SAFE_SEQUENCE_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-25",
+      "statement": "Por que observar a ordem de uma sequência de montagem antes de executá-la?",
+      "prompt": "Por que observar a ordem de uma sequência de montagem antes de executá-la?",
+      "options": [
+        "Porque uma etapa pode preparar o material ou apoiar a etapa seguinte.",
+        "Porque as imagens servem apenas para decorar.",
+        "Porque a ordem nunca tem relação com o resultado.",
+        "Porque é melhor pular a primeira instrução."
+      ],
+      "correctAnswer": "Porque uma etapa pode preparar o material ou apoiar a etapa seguinte.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque as imagens servem apenas para decorar.": [
+          "ORDER_SUPPORTS_TASK"
+        ],
+        "Porque a ordem nunca tem relação com o resultado.": [
+          "ORDER_SUPPORTS_TASK"
+        ],
+        "Porque é melhor pular a primeira instrução.": [
+          "ORDER_SUPPORTS_TASK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_ORDER_MATTERS",
+      "explanation": "A ordem pode indicar dependências entre as ações e ajudar a alcançar o resultado pretendido.",
+      "hint": "Pense no que uma etapa prepara para a próxima.",
+      "errorFocus": "ORDER_SUPPORTS_TASK",
+      "feedback": {
+        "correct": "Boa observação: A ordem pode indicar dependências entre as ações e ajudar a alcançar o resultado pretendido.",
+        "incorrect": "A ordem pode indicar dependências entre as ações e ajudar a alcançar o resultado pretendido.",
+        "hint": "Pense no que uma etapa prepara para a próxima.",
+        "errorFocus": "ORDER_SUPPORTS_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-26",
+      "statement": "O cartão atual diz “coloque a peça no contorno”. Depois de fazê-lo, o que ajuda a continuar corretamente?",
+      "prompt": "O cartão atual diz “coloque a peça no contorno”. Depois de fazê-lo, o que ajuda a continuar corretamente?",
+      "options": [
+        "Fazer todos os passos de uma vez sem olhar.",
+        "Conferir o cartão seguinte antes de realizar a próxima ação.",
+        "Mudar a figura sem consultar a atividade.",
+        "Guardar as peças antes de terminar."
+      ],
+      "correctAnswer": "Conferir o cartão seguinte antes de realizar a próxima ação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fazer todos os passos de uma vez sem olhar.": [
+          "ONE_STEP_AT_A_TIME"
+        ],
+        "Mudar a figura sem consultar a atividade.": [
+          "ONE_STEP_AT_A_TIME"
+        ],
+        "Guardar as peças antes de terminar.": [
+          "ONE_STEP_AT_A_TIME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "LOCKIN_ONE_STEP",
+      "explanation": "Acompanhar a próxima instrução preserva a sequência apresentada.",
+      "hint": "Veja o próximo passo depois de concluir o atual.",
+      "errorFocus": "ONE_STEP_AT_A_TIME",
+      "feedback": {
+        "correct": "Boa observação: Acompanhar a próxima instrução preserva a sequência apresentada.",
+        "incorrect": "Acompanhar a próxima instrução preserva a sequência apresentada.",
+        "hint": "Veja o próximo passo depois de concluir o atual.",
+        "errorFocus": "ONE_STEP_AT_A_TIME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-27",
+      "statement": "A sequência tem quatro cartões e o terceiro não foi realizado. O que fazer para encontrar o passo que falta?",
+      "prompt": "A sequência tem quatro cartões e o terceiro não foi realizado. O que fazer para encontrar o passo que falta?",
+      "options": [
+        "Repetir o último passo várias vezes.",
+        "Ignorar o cartão que falta.",
+        "Comparar os cartões com as ações já feitas e identificar o terceiro.",
+        "Mudar o objetivo da tarefa."
+      ],
+      "correctAnswer": "Comparar os cartões com as ações já feitas e identificar o terceiro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir o último passo várias vezes.": [
+          "IDENTIFY_OMISSION"
+        ],
+        "Ignorar o cartão que falta.": [
+          "IDENTIFY_OMISSION"
+        ],
+        "Mudar o objetivo da tarefa.": [
+          "IDENTIFY_OMISSION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DIAGNOSE",
+      "contextFamily": "LOCKIN_SKIPPED",
+      "explanation": "Conferir cada instrução com a ação realizada ajuda a encontrar a etapa omitida.",
+      "hint": "Conte os passos concluídos e compare com os cartões.",
+      "errorFocus": "IDENTIFY_OMISSION",
+      "feedback": {
+        "correct": "Boa observação: Conferir cada instrução com a ação realizada ajuda a encontrar a etapa omitida.",
+        "incorrect": "Conferir cada instrução com a ação realizada ajuda a encontrar a etapa omitida.",
+        "hint": "Conte os passos concluídos e compare com os cartões.",
+        "errorFocus": "IDENTIFY_OMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-28",
+      "statement": "Uma instrução apresentada em áudio também aparece em pictogramas. O que permanece igual ao segui-la?",
+      "prompt": "Uma instrução apresentada em áudio também aparece em pictogramas. O que permanece igual ao segui-la?",
+      "options": [
+        "A necessidade de fazer tudo depressa.",
+        "O direito de ignorar a etapa difícil.",
+        "O material usado para apresentar a instrução.",
+        "A ordem das ações indicada nos dois formatos."
+      ],
+      "correctAnswer": "A ordem das ações indicada nos dois formatos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A necessidade de fazer tudo depressa.": [
+          "MODALITY_INVARIANT"
+        ],
+        "O direito de ignorar a etapa difícil.": [
+          "MODALITY_INVARIANT"
+        ],
+        "O material usado para apresentar a instrução.": [
+          "MODALITY_INVARIANT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "LOCKIN_DIFFERENT_MODALITY",
+      "explanation": "O formato pode mudar, mas a ordem da sequência apresentada continua orientando a tarefa.",
+      "hint": "Compare a ordem, não o formato.",
+      "errorFocus": "MODALITY_INVARIANT",
+      "feedback": {
+        "correct": "Boa observação: O formato pode mudar, mas a ordem da sequência apresentada continua orientando a tarefa.",
+        "incorrect": "O formato pode mudar, mas a ordem da sequência apresentada continua orientando a tarefa.",
+        "hint": "Compare a ordem, não o formato.",
+        "errorFocus": "MODALITY_INVARIANT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-29",
+      "statement": "Depois de completar os passos mostrados para guardar um jogo, que ação encerra a tarefa?",
+      "prompt": "Depois de completar os passos mostrados para guardar um jogo, que ação encerra a tarefa?",
+      "options": [
+        "Conferir se as peças e a caixa ficaram como o objetivo indicava.",
+        "Deixar peças espalhadas.",
+        "Abrir outra caixa antes de conferir.",
+        "Apagar as instruções sem olhar o resultado."
+      ],
+      "correctAnswer": "Conferir se as peças e a caixa ficaram como o objetivo indicava.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Deixar peças espalhadas.": [
+          "TASK_COMPLETION"
+        ],
+        "Abrir outra caixa antes de conferir.": [
+          "TASK_COMPLETION"
+        ],
+        "Apagar as instruções sem olhar o resultado.": [
+          "TASK_COMPLETION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "LOCKIN_FINISH",
+      "explanation": "Verificar o resultado permite perceber se a tarefa apresentada foi concluída.",
+      "hint": "Compare o que foi feito com o objetivo inicial.",
+      "errorFocus": "TASK_COMPLETION",
+      "feedback": {
+        "correct": "Boa observação: Verificar o resultado permite perceber se a tarefa apresentada foi concluída.",
+        "incorrect": "Verificar o resultado permite perceber se a tarefa apresentada foi concluída.",
+        "hint": "Compare o que foi feito com o objetivo inicial.",
+        "errorFocus": "TASK_COMPLETION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-30",
+      "statement": "Uma pessoa recebe cartões já ordenados e os executa. Nesta atividade, qual é a ação principal?",
+      "prompt": "Uma pessoa recebe cartões já ordenados e os executa. Nesta atividade, qual é a ação principal?",
+      "options": [
+        "Criar uma sequência nova do zero.",
+        "Seguir a sequência apresentada.",
+        "Trocar a ordem sem consultar a tarefa.",
+        "Inventar um destino diferente."
+      ],
+      "correctAnswer": "Seguir a sequência apresentada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Criar uma sequência nova do zero.": [
+          "FOLLOW_NOT_AUTHOR"
+        ],
+        "Trocar a ordem sem consultar a tarefa.": [
+          "FOLLOW_NOT_AUTHOR"
+        ],
+        "Inventar um destino diferente.": [
+          "FOLLOW_NOT_AUTHOR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_FOLLOW_VS_CREATE",
+      "explanation": "A atividade propõe acompanhar uma sequência fornecida, não criar outra.",
+      "hint": "Os passos já foram apresentados?",
+      "errorFocus": "FOLLOW_NOT_AUTHOR",
+      "feedback": {
+        "correct": "Boa observação: A atividade propõe acompanhar uma sequência fornecida, não criar outra.",
+        "incorrect": "A atividade propõe acompanhar uma sequência fornecida, não criar outra.",
+        "hint": "Os passos já foram apresentados?",
+        "errorFocus": "FOLLOW_NOT_AUTHOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-31",
+      "statement": "Em uma tarefa, o que chamamos de passo?",
+      "prompt": "Em uma tarefa, o que chamamos de passo?",
+      "options": [
+        "Uma decoração sem relação com a tarefa.",
+        "O nome de quem observa.",
+        "Uma ação que faz parte da realização da tarefa.",
+        "Um objeto que sempre precisa ser comprado."
+      ],
+      "correctAnswer": "Uma ação que faz parte da realização da tarefa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma decoração sem relação com a tarefa.": [
+          "STEP_MEANING"
+        ],
+        "O nome de quem observa.": [
+          "STEP_MEANING"
+        ],
+        "Um objeto que sempre precisa ser comprado.": [
+          "STEP_MEANING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_STEP",
+      "explanation": "Cada passo é uma ação que contribui para realizar a tarefa proposta.",
+      "hint": "Pense em algo que a pessoa faz.",
+      "errorFocus": "STEP_MEANING",
+      "feedback": {
+        "correct": "Boa observação: Cada passo é uma ação que contribui para realizar a tarefa proposta.",
+        "incorrect": "Cada passo é uma ação que contribui para realizar a tarefa proposta.",
+        "hint": "Pense em algo que a pessoa faz.",
+        "errorFocus": "STEP_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-32",
+      "statement": "Uma sequência começa com abrir o estojo e depois escolher um lápis. Qual ação vem primeiro?",
+      "prompt": "Uma sequência começa com abrir o estojo e depois escolher um lápis. Qual ação vem primeiro?",
+      "options": [
+        "Escolher o lápis antes de abrir.",
+        "Fechar a mochila.",
+        "Guardar o estojo sem usar.",
+        "Abrir o estojo."
+      ],
+      "correctAnswer": "Abrir o estojo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher o lápis antes de abrir.": [
+          "FIRST_ACTION"
+        ],
+        "Fechar a mochila.": [
+          "FIRST_ACTION"
+        ],
+        "Guardar o estojo sem usar.": [
+          "FIRST_ACTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_FIRST",
+      "explanation": "A primeira ação apresentada é abrir o estojo.",
+      "hint": "Leia a sequência do começo.",
+      "errorFocus": "FIRST_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A primeira ação apresentada é abrir o estojo.",
+        "incorrect": "A primeira ação apresentada é abrir o estojo.",
+        "hint": "Leia a sequência do começo.",
+        "errorFocus": "FIRST_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-33",
+      "statement": "A instrução diz colocar uma peça no tabuleiro e depois passar o tabuleiro ao colega. O que vem depois de colocar a peça?",
+      "prompt": "A instrução diz colocar uma peça no tabuleiro e depois passar o tabuleiro ao colega. O que vem depois de colocar a peça?",
+      "options": [
+        "Passar o tabuleiro ao colega.",
+        "Jogar o tabuleiro no chão.",
+        "Retirar todas as peças.",
+        "Começar de novo sem necessidade."
+      ],
+      "correctAnswer": "Passar o tabuleiro ao colega.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Jogar o tabuleiro no chão.": [
+          "NEXT_ACTION"
+        ],
+        "Retirar todas as peças.": [
+          "NEXT_ACTION"
+        ],
+        "Começar de novo sem necessidade.": [
+          "NEXT_ACTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "REVIEW_NEXT",
+      "explanation": "A sequência apresenta passar o tabuleiro após colocar a peça.",
+      "hint": "Localize a ação seguinte.",
+      "errorFocus": "NEXT_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A sequência apresenta passar o tabuleiro após colocar a peça.",
+        "incorrect": "A sequência apresenta passar o tabuleiro após colocar a peça.",
+        "hint": "Localize a ação seguinte.",
+        "errorFocus": "NEXT_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-34",
+      "statement": "O quadro mostra pegar a escova, colocar uma pequena quantidade de pasta com ajuda adulta e escovar. Qual ação vem antes de escovar?",
+      "prompt": "O quadro mostra pegar a escova, colocar uma pequena quantidade de pasta com ajuda adulta e escovar. Qual ação vem antes de escovar?",
+      "options": [
+        "Guardar a escova antes de usá-la.",
+        "Colocar a pasta na escova com ajuda adulta.",
+        "Escovar antes de pegar a escova.",
+        "Colocar pasta no chão."
+      ],
+      "correctAnswer": "Colocar a pasta na escova com ajuda adulta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Guardar a escova antes de usá-la.": [
+          "PREPARATORY_ACTION"
+        ],
+        "Escovar antes de pegar a escova.": [
+          "PREPARATORY_ACTION"
+        ],
+        "Colocar pasta no chão.": [
+          "PREPARATORY_ACTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REVIEW_BRUSH_MODEL",
+      "explanation": "A sequência apresenta a preparação da escova antes de escovar.",
+      "hint": "Observe o passo imediatamente anterior.",
+      "errorFocus": "PREPARATORY_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A sequência apresenta a preparação da escova antes de escovar.",
+        "incorrect": "A sequência apresenta a preparação da escova antes de escovar.",
+        "hint": "Observe o passo imediatamente anterior.",
+        "errorFocus": "PREPARATORY_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-35",
+      "statement": "Como conferir se uma sequência apresentada foi seguida?",
+      "prompt": "Como conferir se uma sequência apresentada foi seguida?",
+      "options": [
+        "Contar apenas quantos minutos passaram.",
+        "Perguntar quem terminou primeiro.",
+        "Comparar cada passo indicado com as ações realizadas.",
+        "Ignorar o objetivo mostrado."
+      ],
+      "correctAnswer": "Comparar cada passo indicado com as ações realizadas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Contar apenas quantos minutos passaram.": [
+          "SEQUENCE_EVIDENCE"
+        ],
+        "Perguntar quem terminou primeiro.": [
+          "SEQUENCE_EVIDENCE"
+        ],
+        "Ignorar o objetivo mostrado.": [
+          "SEQUENCE_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "REVIEW_COMPARE",
+      "explanation": "A conferência verifica correspondência entre instruções e ações realizadas.",
+      "hint": "Use os próprios passos como referência.",
+      "errorFocus": "SEQUENCE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A conferência verifica correspondência entre instruções e ações realizadas.",
+        "incorrect": "A conferência verifica correspondência entre instruções e ações realizadas.",
+        "hint": "Use os próprios passos como referência.",
+        "errorFocus": "SEQUENCE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-36",
+      "statement": "O cartaz da sala mostra levar o papel à bandeja azul e, depois, voltar ao lugar. O que fazer após colocar o papel?",
+      "prompt": "O cartaz da sala mostra levar o papel à bandeja azul e, depois, voltar ao lugar. O que fazer após colocar o papel?",
+      "options": [
+        "Levar a bandeja para casa.",
+        "Colocar papel em outra sala.",
+        "Começar outra tarefa sem seguir o cartaz.",
+        "Voltar ao lugar indicado."
+      ],
+      "correctAnswer": "Voltar ao lugar indicado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Levar a bandeja para casa.": [
+          "FOLLOW_FINAL_STEP"
+        ],
+        "Colocar papel em outra sala.": [
+          "FOLLOW_FINAL_STEP"
+        ],
+        "Começar outra tarefa sem seguir o cartaz.": [
+          "FOLLOW_FINAL_STEP"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "REVIEW_CLASS_JOB",
+      "explanation": "A ação seguinte indicada é voltar ao lugar.",
+      "hint": "Veja o que o cartaz pede após a bandeja.",
+      "errorFocus": "FOLLOW_FINAL_STEP",
+      "feedback": {
+        "correct": "Boa observação: A ação seguinte indicada é voltar ao lugar.",
+        "incorrect": "A ação seguinte indicada é voltar ao lugar.",
+        "hint": "Veja o que o cartaz pede após a bandeja.",
+        "errorFocus": "FOLLOW_FINAL_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-37",
+      "statement": "Uma figura foi montada começando pelo telhado, mas o modelo mostra a base primeiro. O que conferir?",
+      "prompt": "Uma figura foi montada começando pelo telhado, mas o modelo mostra a base primeiro. O que conferir?",
+      "options": [
+        "A ordem mostrada no modelo e o passo de base que precisa ser feito antes.",
+        "A cor da parede da sala.",
+        "Quem montou mais rápido.",
+        "Se o modelo deve ser escondido."
+      ],
+      "correctAnswer": "A ordem mostrada no modelo e o passo de base que precisa ser feito antes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor da parede da sala.": [
+          "ORDER_ERROR_REPAIR"
+        ],
+        "Quem montou mais rápido.": [
+          "ORDER_ERROR_REPAIR"
+        ],
+        "Se o modelo deve ser escondido.": [
+          "ORDER_ERROR_REPAIR"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DIAGNOSE",
+      "contextFamily": "REVIEW_OUT_OF_ORDER",
+      "explanation": "Comparar com o modelo ajuda a localizar a ordem indicada e retomar a tarefa.",
+      "hint": "Volte ao primeiro passo do modelo.",
+      "errorFocus": "ORDER_ERROR_REPAIR",
+      "feedback": {
+        "correct": "Boa observação: Comparar com o modelo ajuda a localizar a ordem indicada e retomar a tarefa.",
+        "incorrect": "Comparar com o modelo ajuda a localizar a ordem indicada e retomar a tarefa.",
+        "hint": "Volte ao primeiro passo do modelo.",
+        "errorFocus": "ORDER_ERROR_REPAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-38",
+      "statement": "Um cartão diz primeiro colocar o marcador na página e depois fechar o livro. Para fechar corretamente, o que deve acontecer antes?",
+      "prompt": "Um cartão diz primeiro colocar o marcador na página e depois fechar o livro. Para fechar corretamente, o que deve acontecer antes?",
+      "options": [
+        "Fechar o livro e procurar o marcador depois.",
+        "Colocar o marcador na página.",
+        "Dobrar a página marcada.",
+        "Guardar o marcador sem colocá-lo."
+      ],
+      "correctAnswer": "Colocar o marcador na página.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fechar o livro e procurar o marcador depois.": [
+          "DEPENDENCY_REVIEW"
+        ],
+        "Dobrar a página marcada.": [
+          "DEPENDENCY_REVIEW"
+        ],
+        "Guardar o marcador sem colocá-lo.": [
+          "DEPENDENCY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEW_SEQUENCE",
+      "explanation": "A instrução posiciona o marcador enquanto o livro ainda está aberto.",
+      "hint": "Qual passo precisa ocorrer com o livro aberto?",
+      "errorFocus": "DEPENDENCY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A instrução posiciona o marcador enquanto o livro ainda está aberto.",
+        "incorrect": "A instrução posiciona o marcador enquanto o livro ainda está aberto.",
+        "hint": "Qual passo precisa ocorrer com o livro aberto?",
+        "errorFocus": "DEPENDENCY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-39",
+      "statement": "Qual estudante está seguindo a sequência apresentada de três passos?",
+      "prompt": "Qual estudante está seguindo a sequência apresentada de três passos?",
+      "options": [
+        "A pessoa que escolhe somente o último cartão.",
+        "A pessoa que muda os passos sem olhar.",
+        "A pessoa que confere e realiza cada cartão na ordem indicada.",
+        "A pessoa que começa uma tarefa diferente."
+      ],
+      "correctAnswer": "A pessoa que confere e realiza cada cartão na ordem indicada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A pessoa que escolhe somente o último cartão.": [
+          "FOLLOW_SEQUENCE_CRITERIA"
+        ],
+        "A pessoa que muda os passos sem olhar.": [
+          "FOLLOW_SEQUENCE_CRITERIA"
+        ],
+        "A pessoa que começa uma tarefa diferente.": [
+          "FOLLOW_SEQUENCE_CRITERIA"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_FOLLOW_ALL",
+      "explanation": "Seguir significa acompanhar as ações apresentadas em sua ordem, verificando cada uma.",
+      "hint": "Procure quem usou todos os passos na ordem.",
+      "errorFocus": "FOLLOW_SEQUENCE_CRITERIA",
+      "feedback": {
+        "correct": "Boa observação: Seguir significa acompanhar as ações apresentadas em sua ordem, verificando cada uma.",
+        "incorrect": "Seguir significa acompanhar as ações apresentadas em sua ordem, verificando cada uma.",
+        "hint": "Procure quem usou todos os passos na ordem.",
+        "errorFocus": "FOLLOW_SEQUENCE_CRITERIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-follow-everyday-steps-fi-40",
+      "statement": "Se a sequência escrita está difícil de acompanhar, qual apoio pode ajudar sem mudar os passos?",
+      "prompt": "Se a sequência escrita está difícil de acompanhar, qual apoio pode ajudar sem mudar os passos?",
+      "options": [
+        "Retirar todas as etapas.",
+        "Fazer a tarefa sem instruções.",
+        "Impedir que a pessoa escolha como responder.",
+        "Ouvir a instrução ou usar cartões visuais e ampliar o tempo entre ações."
+      ],
+      "correctAnswer": "Ouvir a instrução ou usar cartões visuais e ampliar o tempo entre ações.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar todas as etapas.": [
+          "ACCESS_TO_SEQUENCE"
+        ],
+        "Fazer a tarefa sem instruções.": [
+          "ACCESS_TO_SEQUENCE"
+        ],
+        "Impedir que a pessoa escolha como responder.": [
+          "ACCESS_TO_SEQUENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "REVIEW_ACCESS",
+      "explanation": "Mudar o formato e oferecer tempo pode ampliar o acesso mantendo a sequência de aprendizagem.",
+      "hint": "Pense em outro modo de apresentar os mesmos passos.",
+      "errorFocus": "ACCESS_TO_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: Mudar o formato e oferecer tempo pode ampliar o acesso mantendo a sequência de aprendizagem.",
+        "incorrect": "Mudar o formato e oferecer tempo pode ampliar o acesso mantendo a sequência de aprendizagem.",
+        "hint": "Pense em outro modo de apresentar os mesmos passos.",
+        "errorFocus": "ACCESS_TO_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+          "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+          "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+          "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

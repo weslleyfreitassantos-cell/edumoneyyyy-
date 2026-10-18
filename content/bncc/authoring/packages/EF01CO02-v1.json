@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-computing-follow-everyday-steps-fi",
+  "officialCode": "EF01CO02",
+  "outputPath": "content/adaptive/tec-escola-core-v5/v1-computing-follow-everyday-steps-fi.json",
+  "canonicalSkillCode": "AUTHORING_EF01CO02_FOLLOW_SEQUENCES_TO_SOLVE_PROBLEMS",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO_COMPUTACIONAL",
+  "topic": "identificar e seguir passos ordenados em tarefas cotidianas",
+  "officialDescriptor": "Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.",
+  "officialSource": {
+    "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+    "page": 16
+  },
+  "lesson": {
+    "title": "Seguir passos para realizar uma tarefa",
+    "objective": "Reconhecer ações que compõem uma tarefa cotidiana, identificar a ordem adequada em uma sequência apresentada e seguir os passos para alcançar um resultado seguro.",
+    "summary": "Algumas tarefas ficam mais fáceis quando observamos cada ação e seguimos uma ordem. Nesta trilha, o estudante interpreta sequências já apresentadas e acompanha seus passos para resolver situações simples.",
+    "explanation": "## Uma tarefa pode ter várias ações\nPara guardar um livro, por exemplo, primeiro fechamos o livro, depois o colocamos na mochila e, por fim, fechamos a mochila. Cada ação contribui para concluir a tarefa.\n\n## A ordem pode fazer diferença\nEm uma sequência apresentada, procure o que precisa acontecer antes para que o passo seguinte possa funcionar. Ao montar uma figura com peças, encaixar a base antes do telhado ajuda a manter a construção estável.\n\n## Seguir e conferir\nLeia, escute ou observe um passo por vez; realize-o e então passe ao próximo. Ao final, confira se o resultado esperado apareceu. Se a sequência não funcionou, retorne às instruções com um adulto e identifique em qual etapa a dificuldade ocorreu. Aqui o foco é compreender e seguir passos apresentados; criar ou reorganizar instruções é uma aprendizagem relacionada, mas diferente.",
+    "workedExample": "Uma sequência ilustrada para plantar uma semente mostra: colocar um pouco de terra no recipiente, acomodar a semente, cobri-la levemente com terra e regar com pequena quantidade de água. Seguir as imagens nessa ordem permite realizar a tarefa; depois, o estudante observa se todos os passos foram feitos.",
+    "commonMistake": "Pular uma etapa ou começar pela ação que parece mais interessante sem verificar o que a sequência apresentada pede primeiro.",
+    "tips": [
+      "Observe todas as instruções antes de iniciar e localize a primeira ação.",
+      "Faça um passo por vez e sinalize quando ele terminar.",
+      "Pergunte o que precisa estar pronto para a próxima ação acontecer.",
+      "Confira o resultado usando o objetivo da tarefa, não a velocidade de execução."
+    ],
+    "priorKnowledge": [
+      "Compreender instruções simples como antes, depois e por último.",
+      "Reconhecer ações familiares em imagens, demonstrações ou fala."
+    ],
+    "keyConcepts": [
+      "tarefa e resultado esperado",
+      "passo ou ação",
+      "ordem temporal",
+      "seguir instruções apresentadas",
+      "conferir a realização"
+    ],
+    "microExplanations": [
+      { "trigger": "IDENTIFY_FIRST", "text": "Localize a ação indicada para começar antes de executar as etapas seguintes." },
+      { "trigger": "DEPENDENCY", "text": "Veja o que precisa estar pronto para uma ação posterior fazer sentido." },
+      { "trigger": "FOLLOW_AND_CHECK", "text": "Realize uma etapa, confira-a e então acompanhe a próxima instrução." }
+    ],
+    "remediations": [
+      { "errorFocus": "STARTED_OUT_OF_ORDER", "action": "Volte às imagens ou instruções, compare a primeira ação com o objetivo e retome uma etapa por vez com apoio." },
+      { "errorFocus": "STEP_SKIPPED", "action": "Use cartões ou marcações para identificar o passo já realizado e localizar qual instrução ainda falta." },
+      { "errorFocus": "RESULT_NOT_CHECKED", "action": "Compare o resultado obtido com o objetivo mostrado e releia ou reveja a sequência sem atribuir culpa ao estudante." }
+    ],
+    "accessibilitySupports": [
+      "Instruções disponíveis em fala, texto curto, pictogramas ou demonstração, conforme a necessidade.",
+      "Cartões grandes, bom contraste, símbolos táteis e descrição verbal da posição dos passos.",
+      "Permitir apontar, ordenar, usar comunicação alternativa ou executar com parceiro escolhido.",
+      "Oferecer tempo adicional, pausa entre etapas e materiais seguros já preparados por adulto."
+    ],
+    "authenticActivities": [
+      {
+        "title": "Percurso de instruções visíveis",
+        "context": "Seguir uma sequência curta de setas no chão para chegar a um alvo amplo em espaço livre e supervisionado.",
+        "steps": ["Observar o alvo e a sequência apresentada pelo adulto.", "Identificar a primeira seta e indicar sua direção.", "Percorrer uma instrução de cada vez, caminhando ou movendo um marcador.", "Conferir se chegou ao alvo e localizar a etapa em que precisou de apoio, se necessário."],
+        "evidence": "Registro de quais passos foram seguidos, indicação da ordem e comparação entre o destino esperado e o alcançado.",
+        "rubric": ["Inicial: acompanha parte da sequência com demonstração e apoio.", "Em desenvolvimento: segue a maioria dos passos usando pistas visuais ou verbais.", "Consolidado: acompanha a sequência apresentada e confere o resultado com autonomia compatível com a idade."]
+      },
+      {
+        "title": "Cartões de uma tarefa conhecida",
+        "context": "Acompanhar cartões ilustrados de uma rotina segura, como fechar um livro, guardá-lo e fechar a mochila.",
+        "steps": ["Observar os cartões e escutar a tarefa proposta.", "Localizar qual ação a sequência apresenta primeiro.", "Executar ou representar as ações seguindo os cartões, sem acrescentar etapas perigosas.", "Rever o resultado e apontar quais instruções foram concluídas."],
+        "evidence": "Sequência percorrida, ações realizadas ou representadas e conferência do objetivo final.",
+        "rubric": ["Inicial: reconhece uma ação da tarefa com ajuda.", "Em desenvolvimento: acompanha a ordem com lembrete entre passos.", "Consolidado: segue e confere as ações apresentadas, usando o modo de resposta acessível escolhido."]
+      }
+    ],
+    "estimatedMinutes": 40
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY", "SEQUENCE", "BOOK_BAG", "Uma figura mostra: fechar o livro, colocá-lo na mochila e fechar a mochila. Qual é a primeira ação indicada?", "Fechar o livro.", ["Fechar a mochila.", "Colocar a mochila na estante.", "Abrir outro livro."], "FIRST_STEP", "A sequência apresentada começa pelo fechamento do livro; acompanhe as instruções na ordem mostrada.", "Observe qual ação aparece antes das outras."],
+      ["EASY", "ORDER", "HANDWASH_CARD", "Os cartões de lavar as mãos começam com molhar as mãos e terminam com secá-las. O que vem antes de secar?", "Enxaguar as mãos.", ["Guardar os sapatos.", "Secar antes de usar água.", "Apagar a luz da sala."], "NEXT_STEP", "A última ação indicada é secar; a sequência ainda mostra enxaguar antes dela.", "Procure o cartão imediatamente anterior."],
+      ["EASY", "FOLLOW", "PAPER_FOLD", "Uma demonstração pede dobrar a folha ao meio e depois alisar a dobra. O que fazer após dobrar?", "Alisar a dobra.", ["Amassar a folha sem olhar.", "Guardar a folha antes de dobrar.", "Pular a etapa mostrada."], "FOLLOW_PRESENTED_STEP", "Seguir a demonstração significa realizar a ação seguinte que foi apresentada.", "Acompanhe o segundo passo."],
+      ["EASY", "IDENTIFY", "PLANT_POT", "Na sequência de plantio, a terra vai ao recipiente antes da semente. O que precisa acontecer primeiro?", "Colocar a terra no recipiente.", ["Regar a mesa.", "Retirar a semente depois de plantá-la.", "Fechar uma mochila."], "PREREQUISITE_STEP", "A sequência indica preparar o recipiente com terra antes de acomodar a semente.", "Veja qual passo prepara o lugar para a semente."]
+    ],
+    "PRACTICE": [
+      ["EASY", "FOLLOW", "PUZZLE_START", "A instrução para um quebra-cabeça é olhar a imagem da caixa e então procurar peças de borda. O que vem primeiro?", "Olhar a imagem da caixa.", ["Guardar as peças sem olhar.", "Procurar uma peça que nem está no jogo.", "Virar a mesa."], "FOLLOW_ORDER", "A imagem de referência é observada antes de procurar as peças indicadas.", "Siga o primeiro passo da instrução."],
+      ["EASY", "SEQUENCE", "COAT_HOOK", "Para pendurar um casaco, a sequência ilustrada mostra aproximar-se do gancho e depois colocar o casaco nele. O que fazer antes de pendurá-lo?", "Aproximar-se do gancho.", ["Sair da sala.", "Puxar o gancho da parede.", "Colocar o casaco no chão e ir embora."], "ACTION_BEFORE_RESULT", "A ação de aproximar-se aparece antes de colocar o casaco no gancho.", "Localize o passo que prepara o seguinte."],
+      ["EASY", "FOLLOW", "DRAWING_CRAYONS", "O cartão pede escolher um giz de cera e depois colorir a figura. Qual passo deve ser seguido primeiro?", "Escolher um giz de cera.", ["Guardar todos sem colorir.", "Colorir antes de escolher material.", "Rasgar a figura."], "PREPARE_MATERIAL", "A instrução apresenta a escolha do material antes de colorir.", "Veja o que a criança precisa ter em mãos."],
+      ["EASY", "ORDER", "SNACK_NAPKIN", "Em uma atividade simulada, o cartão mostra colocar o guardanapo na mesa e depois pôr a fruta lavada no prato. Qual é a primeira ação?", "Colocar o guardanapo na mesa.", ["Jogar a fruta no chão.", "Guardar o prato antes de usá-lo.", "Comer sem seguir o cartão."], "TASK_SEQUENCE", "A sequência fornecida começa preparando o lugar com o guardanapo.", "Leia a primeira imagem."],
+      ["EASY", "FOLLOW", "BLOCK_TOWER", "A montagem mostra encaixar a base larga e depois colocar um bloco sobre ela. O que seguir antes?", "Encaixar a base larga.", ["Retirar todos os blocos da sala.", "Colocar o bloco superior antes da base.", "Empurrar a torre pronta."], "STABLE_BASE", "A base é apresentada primeiro e sustenta o passo seguinte.", "Observe o que mantém a construção apoiada."],
+      ["EASY", "IDENTIFY", "LIBRARY_RETURN", "Um marcador de leitura deve ficar no livro antes de fechá-lo. Qual ação vem antes de fechar o livro?", "Colocar o marcador na página.", ["Molhar o livro.", "Colocar o marcador depois de guardar o livro fechado.", "Dobrar todas as páginas."], "STEP_DEPENDENCY", "A sequência apresentada posiciona o marcador antes de fechar o livro.", "O que precisa ocorrer enquanto o livro está aberto?"],
+      ["MEDIUM", "FOLLOW", "CLASSROOM_ROUTE", "As setas indicam avançar até a marca azul e depois virar para a mesa. Ao chegar à marca, qual instrução vem a seguir?", "Virar para a mesa.", ["Voltar ao início sem conferir.", "Apagar a marca azul.", "Virar antes de avançar até a marca."], "NEXT_INSTRUCTION", "Após alcançar a marca azul, a próxima instrução apresentada é virar para a mesa.", "Continue a partir do lugar onde parou."],
+      ["MEDIUM", "SEQUENCE", "TANGRAM_MODEL", "Para copiar uma figura de tangram, a sequência pede escolher as peças indicadas e depois posicioná-las como no modelo. O que acontece após escolher?", "Posicionar as peças conforme o modelo.", ["Guardar o modelo sem comparar.", "Trocar as peças por objetos da sala.", "Colocar as peças sem observar a figura."], "MODEL_GUIDED_STEP", "A etapa seguinte à seleção é posicionar as peças olhando o modelo.", "Qual ação vem depois de separar as peças?"],
+      ["MEDIUM", "FOLLOW", "CLASS_PLANT_WATER", "Uma tarefa de cuidado, supervisionada por adulto, mostra verificar o solo e regar pouco apenas se estiver seco. Que passo antecede a rega?", "Verificar se o solo está seco.", ["Regar sem observar todos os dias.", "Retirar a planta do recipiente.", "Guardar a água antes de olhar o solo."], "CHECK_BEFORE_ACTION", "A instrução condiciona a rega à observação prévia do solo.", "Encontre a ação de verificação na sequência."],
+      ["MEDIUM", "ORDER", "ART_CLEANUP", "O cartaz orienta tampar a cola e depois colocar o material na bandeja. Qual passo vem antes de guardar?", "Tampar a cola.", ["Deixar a cola aberta.", "Levar a bandeja para fora sem autorização.", "Guardar antes de tampar."], "SAFE_COMPLETION", "Tampar a cola é o passo anterior indicado para guardar o material com segurança.", "Observe a etapa de preparação para guardar."],
+      ["MEDIUM", "FOLLOW", "AUDIO_STORY", "A atividade pede escutar uma instrução, pausar o áudio e apontar a imagem correspondente. O que fazer depois de escutar a instrução?", "Pausar o áudio.", ["Desligar o aparelho da tomada sem adulto.", "Apontar antes de ouvir.", "Reiniciar a atividade sem necessidade."], "MEDIA_STEP_ORDER", "A pausa vem depois de escutar e antes de apontar a imagem.", "Siga a ordem das ações mostradas."],
+      ["MEDIUM", "CHECK", "FOLDER_SAVE", "Uma sequência em papel mostra colocar a folha na pasta e fechar a pasta. Como saber se terminou?", "Conferir se a folha está guardada e a pasta fechada.", ["Deixar a folha no chão.", "Fechar a pasta vazia e não verificar.", "Começar outra tarefa sem olhar o resultado."], "VERIFY_RESULT", "A conferência compara o resultado com os dois passos da sequência.", "Confira o objetivo depois da última ação."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM", "APPLY", "NEW_ORIGAMI", "Uma sequência ilustrada de dobradura começa com alinhar as pontas e depois fazer a dobra. O que verificar antes de dobrar?", "Se as pontas estão alinhadas como mostra a figura.", ["Se a folha foi escondida.", "Se a próxima atividade já começou.", "Se todas as figuras da sala têm a mesma cor."], "TRANSFER_VISUAL_SEQUENCE", "A primeira instrução prepara a dobra; comparar com a imagem ajuda a segui-la.", "Use o modelo para conferir a etapa inicial."],
+      ["MEDIUM", "FOLLOW", "BOARD_GAME_TURN", "No jogo, a sequência é lançar o dado e mover o marcador a quantidade indicada. O que precisa acontecer antes de mover?", "Lançar o dado e observar o resultado.", ["Mover o marcador para qualquer casa.", "Guardar o tabuleiro sem jogar.", "Pedir que outra pessoa escolha o número sem lançar."], "GAME_PROCEDURE", "O movimento depende do resultado obtido ao lançar o dado.", "Que informação orienta o movimento?"],
+      ["MEDIUM", "IDENTIFY", "DIGITAL_DRAWING", "Uma atividade no tablet mostra escolher a ferramenta de linha e então desenhar no quadro vazio. Qual ação vem antes de desenhar?", "Escolher a ferramenta de linha.", ["Fechar o aplicativo antes de abrir.", "Apagar o trabalho de outra pessoa.", "Tocar em todos os ícones ao mesmo tempo."], "INTERFACE_SEQUENCE", "A ferramenta é escolhida antes de ser usada no desenho.", "Qual passo prepara a ação digital?"],
+      ["MEDIUM", "FOLLOW", "CLASSROOM_LIBRARY", "Para devolver um livro, a orientação é olhar a etiqueta da estante e colocá-lo no espaço indicado. O que fazer antes de guardar?", "Olhar a etiqueta da estante.", ["Colocar em qualquer lugar sem conferir.", "Levar o livro para casa sem autorização.", "Virar a estante."], "FOLLOW_REFERENCE", "A etiqueta ajuda a identificar o local antes da devolução.", "A instrução manda consultar qual referência?"],
+      ["MEDIUM", "SEQUENCE", "RAINY_DAY_ENTRY", "Uma história ilustrada mostra fechar o guarda-chuva do lado de fora com ajuda adulta e depois entrar no espaço indicado. Qual passo acontece antes de entrar?", "Fechar o guarda-chuva com ajuda adulta.", ["Correr com o guarda-chuva aberto pelo corredor.", "Guardar os sapatos em outra turma.", "Entrar antes de seguir a orientação."], "CONTEXTUAL_ORDER", "A sequência coloca o fechamento seguro antes da entrada.", "Procure a ação que prepara a próxima."],
+      ["HARD", "DIAGNOSE", "MISSING_STEP_CRAFT", "Uma sequência para montar um cartão mostra escolher a folha e decorá-la, mas a cola não foi aberta. Qual dificuldade impede seguir o passo de colar?", "Falta preparar o material necessário, com ajuda segura.", ["A folha precisa ser descartada.", "A decoração deve ser feita por outra turma.", "É preciso pular todas as instruções."], "REQUIRED_PREPARATION", "O material necessário precisa estar disponível antes do passo correspondente; um adulto pode ajudar.", "Qual recurso a etapa seguinte exige?"],
+      ["HARD", "EVALUATE", "FOLLOW_ROUTE_MISSTEP", "A rota mostrada é avançar uma casa, virar à direita e parar no círculo. A criança virou antes de avançar. Como retomar?", "Voltar ao ponto de partida combinado e seguir cada instrução na ordem.", ["Continuar sem consultar a sequência.", "Mudar o destino por conta própria.", "Apagar o círculo de chegada."], "RECOVER_SEQUENCE", "Retomar do início acordado permite comparar e seguir a sequência apresentada sem culpar a criança.", "Recomece do ponto combinado, uma instrução por vez."],
+      ["HARD", "CHECK", "RECIPE_PICTURE", "Uma receita ilustrada segura pede colocar uma fruta já lavada no prato e depois chamar um adulto para cortar. Qual ação confirma que a sequência foi seguida com segurança?", "A fruta foi colocada no prato e o adulto foi chamado antes de cortar.", ["A criança usa faca sozinha.", "A fruta é cortada antes de chamar o adulto.", "A sequência é ignorada."], "SAFE_SEQUENCE_CHECK", "A conferência considera a ordem e a presença do adulto para a etapa de corte.", "Observe a etapa que exige supervisão."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM", "EXPLAIN", "LOCKIN_ORDER_MATTERS", "Por que observar a ordem de uma sequência de montagem antes de executá-la?", "Porque uma etapa pode preparar o material ou apoiar a etapa seguinte.", ["Porque as imagens servem apenas para decorar.", "Porque a ordem nunca tem relação com o resultado.", "Porque é melhor pular a primeira instrução."], "ORDER_SUPPORTS_TASK", "A ordem pode indicar dependências entre as ações e ajudar a alcançar o resultado pretendido.", "Pense no que uma etapa prepara para a próxima."],
+      ["MEDIUM", "FOLLOW", "LOCKIN_ONE_STEP", "O cartão atual diz “coloque a peça no contorno”. Depois de fazê-lo, o que ajuda a continuar corretamente?", "Conferir o cartão seguinte antes de realizar a próxima ação.", ["Fazer todos os passos de uma vez sem olhar.", "Mudar a figura sem consultar a atividade.", "Guardar as peças antes de terminar."], "ONE_STEP_AT_A_TIME", "Acompanhar a próxima instrução preserva a sequência apresentada.", "Veja o próximo passo depois de concluir o atual."],
+      ["HARD", "DIAGNOSE", "LOCKIN_SKIPPED", "A sequência tem quatro cartões e o terceiro não foi realizado. O que fazer para encontrar o passo que falta?", "Comparar os cartões com as ações já feitas e identificar o terceiro.", ["Repetir o último passo várias vezes.", "Ignorar o cartão que falta.", "Mudar o objetivo da tarefa."], "IDENTIFY_OMISSION", "Conferir cada instrução com a ação realizada ajuda a encontrar a etapa omitida.", "Conte os passos concluídos e compare com os cartões."],
+      ["HARD", "TRANSFER", "LOCKIN_DIFFERENT_MODALITY", "Uma instrução apresentada em áudio também aparece em pictogramas. O que permanece igual ao segui-la?", "A ordem das ações indicada nos dois formatos.", ["A necessidade de fazer tudo depressa.", "O direito de ignorar a etapa difícil.", "O material usado para apresentar a instrução."], "MODALITY_INVARIANT", "O formato pode mudar, mas a ordem da sequência apresentada continua orientando a tarefa.", "Compare a ordem, não o formato."],
+      ["HARD", "CHECK", "LOCKIN_FINISH", "Depois de completar os passos mostrados para guardar um jogo, que ação encerra a tarefa?", "Conferir se as peças e a caixa ficaram como o objetivo indicava.", ["Deixar peças espalhadas.", "Abrir outra caixa antes de conferir.", "Apagar as instruções sem olhar o resultado."], "TASK_COMPLETION", "Verificar o resultado permite perceber se a tarefa apresentada foi concluída.", "Compare o que foi feito com o objetivo inicial."],
+      ["HARD", "DISTINGUISH", "LOCKIN_FOLLOW_VS_CREATE", "Uma pessoa recebe cartões já ordenados e os executa. Nesta atividade, qual é a ação principal?", "Seguir a sequência apresentada.", ["Criar uma sequência nova do zero.", "Trocar a ordem sem consultar a tarefa.", "Inventar um destino diferente."], "FOLLOW_NOT_AUTHOR", "A atividade propõe acompanhar uma sequência fornecida, não criar outra.", "Os passos já foram apresentados?" ]
+    ],
+    "REVIEW": [
+      ["EASY", "RECALL", "REVIEW_STEP", "Em uma tarefa, o que chamamos de passo?", "Uma ação que faz parte da realização da tarefa.", ["Uma decoração sem relação com a tarefa.", "O nome de quem observa.", "Um objeto que sempre precisa ser comprado."], "STEP_MEANING", "Cada passo é uma ação que contribui para realizar a tarefa proposta.", "Pense em algo que a pessoa faz."],
+      ["EASY", "IDENTIFY", "REVIEW_FIRST", "Uma sequência começa com abrir o estojo e depois escolher um lápis. Qual ação vem primeiro?", "Abrir o estojo.", ["Escolher o lápis antes de abrir.", "Fechar a mochila.", "Guardar o estojo sem usar."], "FIRST_ACTION", "A primeira ação apresentada é abrir o estojo.", "Leia a sequência do começo."],
+      ["EASY", "FOLLOW", "REVIEW_NEXT", "A instrução diz colocar uma peça no tabuleiro e depois passar o tabuleiro ao colega. O que vem depois de colocar a peça?", "Passar o tabuleiro ao colega.", ["Jogar o tabuleiro no chão.", "Retirar todas as peças.", "Começar de novo sem necessidade."], "NEXT_ACTION", "A sequência apresenta passar o tabuleiro após colocar a peça.", "Localize a ação seguinte."],
+      ["MEDIUM", "SEQUENCE", "REVIEW_BRUSH_MODEL", "O quadro mostra pegar a escova, colocar uma pequena quantidade de pasta com ajuda adulta e escovar. Qual ação vem antes de escovar?", "Colocar a pasta na escova com ajuda adulta.", ["Guardar a escova antes de usá-la.", "Escovar antes de pegar a escova.", "Colocar pasta no chão."], "PREPARATORY_ACTION", "A sequência apresenta a preparação da escova antes de escovar.", "Observe o passo imediatamente anterior."],
+      ["MEDIUM", "CHECK", "REVIEW_COMPARE", "Como conferir se uma sequência apresentada foi seguida?", "Comparar cada passo indicado com as ações realizadas.", ["Contar apenas quantos minutos passaram.", "Perguntar quem terminou primeiro.", "Ignorar o objetivo mostrado."], "SEQUENCE_EVIDENCE", "A conferência verifica correspondência entre instruções e ações realizadas.", "Use os próprios passos como referência."],
+      ["MEDIUM", "FOLLOW", "REVIEW_CLASS_JOB", "O cartaz da sala mostra levar o papel à bandeja azul e, depois, voltar ao lugar. O que fazer após colocar o papel?", "Voltar ao lugar indicado.", ["Levar a bandeja para casa.", "Colocar papel em outra sala.", "Começar outra tarefa sem seguir o cartaz."], "FOLLOW_FINAL_STEP", "A ação seguinte indicada é voltar ao lugar.", "Veja o que o cartaz pede após a bandeja."],
+      ["MEDIUM", "DIAGNOSE", "REVIEW_OUT_OF_ORDER", "Uma figura foi montada começando pelo telhado, mas o modelo mostra a base primeiro. O que conferir?", "A ordem mostrada no modelo e o passo de base que precisa ser feito antes.", ["A cor da parede da sala.", "Quem montou mais rápido.", "Se o modelo deve ser escondido."], "ORDER_ERROR_REPAIR", "Comparar com o modelo ajuda a localizar a ordem indicada e retomar a tarefa.", "Volte ao primeiro passo do modelo."],
+      ["HARD", "APPLY", "REVIEW_NEW_SEQUENCE", "Um cartão diz primeiro colocar o marcador na página e depois fechar o livro. Para fechar corretamente, o que deve acontecer antes?", "Colocar o marcador na página.", ["Fechar o livro e procurar o marcador depois.", "Dobrar a página marcada.", "Guardar o marcador sem colocá-lo."], "DEPENDENCY_REVIEW", "A instrução posiciona o marcador enquanto o livro ainda está aberto.", "Qual passo precisa ocorrer com o livro aberto?"],
+      ["HARD", "EVALUATE", "REVIEW_FOLLOW_ALL", "Qual estudante está seguindo a sequência apresentada de três passos?", "A pessoa que confere e realiza cada cartão na ordem indicada.", ["A pessoa que escolhe somente o último cartão.", "A pessoa que muda os passos sem olhar.", "A pessoa que começa uma tarefa diferente."], "FOLLOW_SEQUENCE_CRITERIA", "Seguir significa acompanhar as ações apresentadas em sua ordem, verificando cada uma.", "Procure quem usou todos os passos na ordem."],
+      ["HARD", "REFLECT", "REVIEW_ACCESS", "Se a sequência escrita está difícil de acompanhar, qual apoio pode ajudar sem mudar os passos?", "Ouvir a instrução ou usar cartões visuais e ampliar o tempo entre ações.", ["Retirar todas as etapas.", "Fazer a tarefa sem instruções.", "Impedir que a pessoa escolha como responder."], "ACCESS_TO_SEQUENCE", "Mudar o formato e oferecer tempo pode ampliar o acesso mantendo a sequência de aprendizagem.", "Pense em outro modo de apresentar os mesmos passos."]
+    ]
+  }
+}

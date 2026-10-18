@@ -21,6 +21,20 @@ describe('BNCC V14 completion queue', () => {
     expect(artifact.tasks.map((task) => task.officialCode)).toEqual([...artifact.tasks].sort((left, right) => right.priorityScore - left.priorityScore || left.officialCode.localeCompare(right.officialCode)).map((task) => task.officialCode));
   });
 
+  it('uses the completeness rubric without silently promoting legacy count-only candidates', () => {
+    const artifact = buildCompletionQueue();
+    const byCode = new Map(artifact.tasks.map((task) => [task.officialCode, task]));
+    for (const code of ['EF01LP01', 'EF01LP02', 'EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01']) {
+      expect(byCode.get(code)?.state).toBe('CONTENT_TECHNICALLY_COMPLETE');
+      expect(byCode.get(code)?.technicalCompleteness.qualityRubric.status).toBe('AUTOMATED_SCREEN_PASS');
+      expect(byCode.get(code)?.technicalCompleteness.humanPedagogicalApproved).toBe(false);
+      expect(byCode.get(code)?.gates.active).toBe(false);
+    }
+    expect(artifact.summary.legacyCountBasedTechnicalComplete).toBeGreaterThan(artifact.summary.contentTechnicallyComplete);
+    expect(artifact.summary.automatedScreenIncomplete).toBeGreaterThan(0);
+    expect(byCode.get('EF01CO07')?.executionClassification).toBe('COMPLETE_OR_REPAIR_STAGED_PACKAGE');
+  });
+
   it('does not modify production artifacts or require a remote connection', () => {
     const source = fs.readFileSync(path.resolve('content/bncc/authoring/completion-queue-v14.json'), 'utf8');
     expect(source).toContain('"productionWrites": "NONE"');

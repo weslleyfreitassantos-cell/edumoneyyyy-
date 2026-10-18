@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 import { buildCompletionQueue } from './build-completion-queue-v14.mjs';
 import { getAuthoringProducer } from './bncc-authoring-producers.mjs';
+import { evaluateCurriculumPackageRubric } from './curriculum-package-rubric.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PATHS = {
@@ -27,6 +28,9 @@ const RUN_STATUS = Object.freeze({
   VALIDATION_FAILED: 'VALIDATION_FAILED',
   USER_STOPPED: 'USER_STOPPED',
   NO_EXECUTABLE_TASKS: 'NO_EXECUTABLE_TASKS',
+  NO_REGISTERED_PRODUCER: 'NO_REGISTERED_PRODUCER',
+  SOURCE_VERIFICATION_REQUIRED: 'SOURCE_VERIFICATION_REQUIRED',
+  HUMAN_REVIEW_REQUIRED: 'HUMAN_REVIEW_REQUIRED',
   SYSTEM_UNRECOVERABLE: 'SYSTEM_UNRECOVERABLE',
 });
 const LEGACY_RUN_STATUS = {
@@ -313,8 +317,15 @@ function determineRunStatus({ queue, state, stopRequested = false, cycles = 0, t
     return RUN_STATUS.EXECUTION_BUDGET_REACHED;
   }
   if ((state.metrics.failedTasks ?? 0) > 0) return RUN_STATUS.VALIDATION_FAILED;
+  if ((state.blockedTasks ?? []).some((item) => item.reason === 'QUALITY_RUBRIC_REVIEW_REQUIRED')) return RUN_STATUS.HUMAN_REVIEW_REQUIRED;
   if ((state.blockedTasks?.length ?? 0) > 0) return RUN_STATUS.HUMAN_REVIEW_BLOCKED;
-  if (!selectNextTask(queue, state)) return RUN_STATUS.NO_EXECUTABLE_TASKS;
+  if (!selectNextTask(queue, state)) {
+    const unresolved = queue.tasks.filter((task) => task.state !== 'CONTENT_TECHNICALLY_COMPLETE');
+    if (unresolved.some((task) => task.evidence?.source !== 'VERIFIED')) return RUN_STATUS.SOURCE_VERIFICATION_REQUIRED;
+    if (unresolved.some((task) => !getAuthoringProducer(task) && !task.evidence?.stagedPackages?.length)) return RUN_STATUS.NO_REGISTERED_PRODUCER;
+    if (unresolved.some((task) => task.queueState === 'BLOCKED_HUMAN_PEDAGOGICAL_REVIEW')) return RUN_STATUS.HUMAN_REVIEW_REQUIRED;
+    return RUN_STATUS.NO_EXECUTABLE_TASKS;
+  }
   return RUN_STATUS.SYSTEM_UNRECOVERABLE;
 }
 
@@ -342,8 +353,7 @@ function hasSafeAuthoringCandidate(task) {
   return task.evidence?.source === 'VERIFIED'
     && task.state !== 'CONTENT_TECHNICALLY_COMPLETE'
     && (
-      task.officialCode === 'EF01CI01'
-      || Boolean(getAuthoringProducer(task))
+      Boolean(getAuthoringProducer(task))
       || Boolean(task.evidence?.stagedPackages?.length)
     );
 }
@@ -387,7 +397,9 @@ function validateExistingPackage(task, stagedPackage) {
     if (!Array.isArray(question.options) || question.options.length !== 4 || !question.options.includes(question.correctAnswer)) errors.push(`QUESTION_OPTIONS_INVALID:${question.id ?? 'MISSING'}`);
     if (!question.statement || !question.explanation || !question.hint || !question.errorFocus) errors.push(`QUESTION_FEEDBACK_MISSING:${question.id ?? 'MISSING'}`);
   }
-  return { valid: errors.length === 0, errors, questionCount: stagedPackage.questions?.length ?? 0, contextCount: contexts.size };
+  const officialSourceRecord = readJson('content/bncc/authoring/source-verification-v2.json').records?.find((record) => record.officialCode === task.officialCode);
+  const qualityRubric = evaluateCurriculumPackageRubric(stagedPackage, { requirements: task.requirements, officialSourceRecord });
+  return { valid: errors.length === 0, errors, questionCount: stagedPackage.questions?.length ?? 0, contextCount: contexts.size, qualityRubric };
 }
 
 function writeProducerPackage(task, producer) {
@@ -400,74 +412,6 @@ function writeProducerPackage(task, producer) {
   return { kind: 'CONTENT_PACKAGE_CREATED', path: producer.path, validation: { ...validation, producer: producerValidation } };
 }
 
-function writeEf01Ci01Activity() {
-  const relativePath = 'content/adaptive/tec-escola-core-v5/science-materials-conscious-use-fi-v8.json';
-  const pack = readJson(relativePath);
-  pack.lesson = pack.lesson ?? {};
-  pack.lesson.authenticActivities = [
-    {
-      id: 'materials-origin-use-destination-map',
-      title: 'Mapa de material, uso e destino',
-      instructions: 'Em pequenos grupos, escolha dois objetos seguros do cotidiano escolar. Observe de que material parecem ser feitos, compare uma propriedade ligada ao uso e consulte um adulto sobre a orientação local para reutilização ou descarte. Registre a comparação por desenho, tabela, fala gravada sem dados pessoais ou texto curto.',
-      evidence: 'Registro multimodal com dois objetos, uma propriedade observada, uma hipótese sobre a origem, uma decisão de redução, reutilização, reparo ou encaminhamento e uma conclusão limitada ao contexto.',
-      privacyGuard: 'Não fotografar pessoas, documentos ou resíduos perigosos; não registrar nomes, endereços ou informações de coleta individual.',
-      rubric: [
-        { criterion: 'Comparação com critério', emerging: 'Lista objetos sem indicar uma propriedade.', developing: 'Relaciona uma propriedade ao uso com apoio.', proficient: 'Compara propriedades relevantes e explica o vínculo com a função.' },
-        { criterion: 'Origem e destino', emerging: 'Trata o objeto pronto como se fosse retirado diretamente da natureza.', developing: 'Distingue origem e destino com orientação.', proficient: 'Registra origem como hipótese contextual e consulta regras locais antes de decidir.' },
-        { criterion: 'Consumo consciente e segurança', emerging: 'Propõe descarte ou reutilização sem verificar segurança.', developing: 'Escolhe uma alternativa segura após mediação.', proficient: 'Considera reduzir, reutilizar, reparar e encaminhar conforme condição do objeto e orientação local.' },
-      ],
-    },
-  ];
-  writeJsonAtomic(relativePath, pack);
-  const validation = validateExistingPackage({
-    officialCode: 'EF01CI01',
-    requirements: { activities: 1, questions: 40 },
-  }, pack);
-  if (!validation.valid) throw new Error(`EF01CI01_ACTIVITY_PACK_INVALID:${validation.errors.join(',')}`);
-  return { kind: 'AUTHENTIC_ACTIVITY_CREATED', path: relativePath, validation };
-}
-
-function writeAuthoringBrief(task) {
-  const source = readJson('content/bncc/authoring/source-verification-v2.json').records.find((record) => record.officialCode === task.officialCode);
-  const brief = {
-    schemaVersion: 'tec-escola.bncc.authoring-context-brief.v1',
-    taskId: task.taskId,
-    officialCode: task.officialCode,
-    stage: task.stage,
-    componentCode: task.componentCode,
-    relation: 'AUTHORING_CONTEXT_ONLY',
-    sourceStatus: task.evidence.source,
-    officialMappingStatus: 'NOT_CLAIMED',
-    publicationStatus: 'STAGING_INACTIVE',
-    pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
-    sourceEvidence: source ? {
-      verificationId: source.verificationId,
-      descriptor: source.descriptor,
-      officialSource: source.officialSource,
-      technicalVerificationStatus: source.technicalVerificationStatus,
-      evidenceCheckedAt: source.evidenceCheckedAt,
-    } : null,
-    requirements: task.requirements,
-    missingRequirements: ['AUTHORING_PACKAGE', 'LESSON', 'WORKED_EXAMPLES', 'GUIDED_ACTIVITIES', 'ASSESSMENTS', 'REMEDIATION', 'PEDAGOGICAL_REVIEW'],
-    nextAction: task.nextAction,
-    checkpointHash: taskHash(task),
-  };
-  const relativePath = `content/bncc/authoring/tasks/${task.taskId}.json`;
-  if (fs.existsSync(absolute(relativePath))) {
-    try {
-      const existing = readJson(relativePath);
-      if (existing.taskId === task.taskId && existing.officialCode === task.officialCode && existing.relation === 'AUTHORING_CONTEXT_ONLY') {
-        return { kind: 'AUTHORING_CONTEXT_BRIEF_ALREADY_PRESENT', path: relativePath, created: false, validation: { valid: true, errors: [] } };
-      }
-    } catch {
-      // An invalid historical brief is replaced below with the canonical context-only record.
-    }
-  }
-  fs.mkdirSync(path.dirname(absolute(relativePath)), { recursive: true });
-  writeJsonAtomic(relativePath, brief);
-  return { kind: 'AUTHORING_CONTEXT_BRIEF_CREATED', path: relativePath, created: true, validation: { valid: true, errors: [] } };
-}
-
 function processTask(task, state, options) {
   const record = state.taskRecords[task.taskId] ?? { taskId: task.taskId, attempts: 0 };
   record.attempts = (record.attempts ?? 0) + 1;
@@ -478,9 +422,7 @@ function processTask(task, state, options) {
 
   let outcome;
   try {
-    if (task.officialCode === 'EF01CI01') {
-      outcome = writeEf01Ci01Activity();
-    } else if (getAuthoringProducer(task)) {
+    if (getAuthoringProducer(task)) {
       outcome = writeProducerPackage(task, getAuthoringProducer(task));
     } else if (task.evidence.stagedPackages?.length) {
       const packagePath = task.evidence.stagedPackages[0].file;
@@ -489,7 +431,7 @@ function processTask(task, state, options) {
       outcome = { kind: validation.valid ? 'EXISTING_PACKAGE_VALIDATED' : 'EXISTING_PACKAGE_REVIEW_BLOCKED', path: packagePath, validation };
       if (!validation.valid) throw new Error(`EXISTING_PACKAGE_REVIEW_BLOCKED:${validation.errors.join(',')}`);
     } else {
-      outcome = writeAuthoringBrief(task);
+      throw new Error(`NO_REGISTERED_PRODUCER:${task.officialCode}`);
     }
   } catch (error) {
     record.status = 'FAILED_RECOVERABLE';
@@ -512,9 +454,8 @@ function processTask(task, state, options) {
   const technicallyComplete = refreshedTask?.state === 'CONTENT_TECHNICALLY_COMPLETE';
   record.status = technicallyComplete
     ? 'CONTENT_TECHNICALLY_COMPLETE'
-    : (['AUTHORING_CONTEXT_BRIEF_CREATED', 'AUTHORING_CONTEXT_BRIEF_ALREADY_PRESENT'].includes(outcome.kind)
-      ? 'AWAITING_CONTENT_AUTHORING'
-      : (outcome.kind === 'EXISTING_PACKAGE_REVIEW_BLOCKED' ? 'BLOCKED_REVIEW' : 'CONTENT_PARTIAL'));
+    : (outcome.kind === 'EXISTING_PACKAGE_REVIEW_BLOCKED' ? 'BLOCKED_REVIEW'
+      : (outcome.kind === 'EXISTING_PACKAGE_VALIDATED' ? 'HUMAN_REVIEW_REQUIRED' : 'CONTENT_PARTIAL'));
   record.lastAction = outcome.kind;
   record.lastPath = outcome.path ?? null;
   record.lastValidation = outcome.validation ?? null;
@@ -522,6 +463,7 @@ function processTask(task, state, options) {
   record.updatedAt = now();
   record.checkpointHash = hash({ taskId: task.taskId, status: record.status, queueHash: refreshedQueue.queueHash, outcome });
   if (record.status === 'BLOCKED_REVIEW') state.blockedTasks.push({ taskId: task.taskId, reason: 'REVIEW_REQUIRED', attempts: record.attempts, at: now() });
+  if (record.status === 'HUMAN_REVIEW_REQUIRED') state.blockedTasks.push({ taskId: task.taskId, reason: 'QUALITY_RUBRIC_REVIEW_REQUIRED', attempts: record.attempts, at: now() });
   state.queueHash = refreshedQueue.queueHash;
   state.lastCompletedTask = record.status === 'CONTENT_TECHNICALLY_COMPLETE' ? task.taskId : state.lastCompletedTask;
   state.nextTask = selectNextTask(refreshedQueue, state)?.taskId ?? null;

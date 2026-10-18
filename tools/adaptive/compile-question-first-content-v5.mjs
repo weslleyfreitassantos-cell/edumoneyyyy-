@@ -86,7 +86,7 @@ export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQu
   if (!pack.canonicalSkillCode || !(pack.subject ?? 'MATHEMATICS') || !(pack.domain ?? 'PORCENTAGEM')) errors.push('SKILL_SCOPE_INVALID');
   if (pack.officialMappingStatus !== 'NOT_CLAIMED') errors.push('OFFICIAL_MAPPING_MUST_NOT_BE_CLAIMED');
   if (pack.pedagogicalReviewStatus !== 'PEDAGOGICAL_REVIEW_PENDING') errors.push('PEDAGOGICAL_REVIEW_MUST_REMAIN_PENDING');
-  if (pack.publicationStatus !== 'STAGING') errors.push('CONTENT_MUST_REMAIN_STAGING');
+  if (!['STAGING', 'STAGING_INACTIVE'].includes(pack.publicationStatus)) errors.push('CONTENT_MUST_REMAIN_STAGING');
   if (pack.contentAuthoringStatus !== 'AUTHORED') errors.push('CONTENT_AUTHORING_STATUS_INVALID');
 
   const lesson = pack.lesson;

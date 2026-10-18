@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-computing-organize-objects-fi",
+  "officialCode": "EF01CO01",
+  "outputPath": "content/adaptive/tec-escola-core-v5/v1-computing-organize-objects-fi.json",
+  "canonicalSkillCode": "AUTHORING_EF01CO01_ORGANIZE_OBJECTS_BY_ATTRIBUTES",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO_COMPUTACIONAL",
+  "topic": "organização de objetos por atributos, padrões e diferenças",
+  "officialDescriptor": "Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.",
+  "officialSource": {
+    "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+    "page": 16
+  },
+  "lesson": {
+    "title": "Organizar objetos por características",
+    "objective": "Agrupar ou ordenar objetos físicos e digitais por características escolhidas, explicando semelhanças, diferenças e a regra usada para organizar.",
+    "summary": "Organizar objetos requer observar atributos, escolher um critério e aplicá-lo com consistência. O mesmo conjunto pode ser organizado de modos diferentes quando a regra muda.",
+    "explanation": "## Observe atributos\nObjetos podem ter cor, forma, tamanho, textura ou função. Ícones e figuras digitais também apresentam atributos que podemos observar.\n\n## Escolha e aplique uma regra\nPodemos agrupar cartões pela forma ou ordenar caixas por tamanho. A regra precisa ser clara e aplicada do mesmo jeito a cada objeto.\n\n## Explique padrões e diferenças\nDepois de organizar, diga o que os objetos do grupo têm em comum e como diferem de outros. Um objeto pode pertencer a grupos diferentes sob critérios diferentes; isso não significa que a organização anterior estava errada.",
+    "workedExample": "Há quatro cartões: círculo azul, círculo amarelo, quadrado azul e quadrado amarelo. Pela forma, os círculos ficam juntos e os quadrados juntos; pela cor, os azuis ficam juntos e os amarelos juntos. Explique o critério escolhido em cada organização.",
+    "commonMistake": "Misturar critérios sem avisar, como agrupar ora pela cor, ora pela função, ou afirmar que só existe uma organização correta.",
+    "tips": [
+      "Nomeie o critério antes de começar a agrupar ou ordenar.",
+      "Observe um atributo por vez e confira se a regra foi aplicada a todos os objetos.",
+      "Compare duas organizações possíveis e explique o que mudou no critério.",
+      "Use objetos seguros e figuras genéricas; não organize pessoas por características pessoais."
+    ],
+    "priorKnowledge": [
+      "Reconhecer atributos simples como cor, forma e tamanho.",
+      "Participar de brincadeiras de agrupar, ordenar ou comparar objetos e figuras."
+    ],
+    "keyConcepts": [
+      "objeto físico ou digital",
+      "atributo",
+      "critério de organização",
+      "agrupamento",
+      "ordenação",
+      "semelhança",
+      "diferença",
+      "padrão"
+    ],
+    "microExplanations": [
+      { "trigger": "NAME_CRITERION", "text": "Diga qual característica está usando antes de decidir onde cada objeto ficará." },
+      { "trigger": "APPLY_RULE", "text": "Use o mesmo critério para todos os objetos daquele agrupamento." },
+      { "trigger": "CHANGE_CRITERION", "text": "O mesmo conjunto pode formar grupos diferentes quando a regra de organização muda." }
+    ],
+    "remediations": [
+      { "errorFocus": "MIXED_CRITERIA", "action": "Separe os objetos, escolha uma única característica visível e refaça o agrupamento nomeando a regra." },
+      { "errorFocus": "INCONSISTENT_RULE", "action": "Confira cada objeto com a regra anunciada e revise os itens que não atendem ao critério." },
+      { "errorFocus": "ONLY_ONE_VALID_GROUPING", "action": "Mantenha o conjunto e demonstre uma segunda organização usando outro critério." }
+    ],
+    "accessibilitySupports": [
+      "Cartões ampliados ou táteis; cores acompanhadas por forma, textura ou rótulo.",
+      "Resposta por apontar, ordenar, fala, gesto, comunicação alternativa ou seleção digital.",
+      "Critérios apresentados um de cada vez, com demonstração e tempo para conferir a regra.",
+      "Agrupar objetos e símbolos, nunca classificar colegas por atributos pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "title": "Mesa de classificação",
+        "context": "Organizar objetos escolares seguros ou cartões que os representem, usando um critério combinado.",
+        "steps": ["Escolher objetos ou cartões.", "Nomear um critério, como forma ou função.", "Agrupar todos os itens aplicando a regra.", "Explicar uma semelhança e uma diferença."],
+        "evidence": "Organização produzida, critério declarado e explicação dos padrões e diferenças.",
+        "rubric": ["Inicial: agrupa com modelo e apoio.", "Em desenvolvimento: usa um critério com lembrete.", "Consolidado: aplica a regra com consistência e explica semelhanças e diferenças."]
+      },
+      {
+        "title": "Ícones em duas organizações",
+        "context": "Reorganizar cartões impressos ou ícones genéricos primeiro por forma e depois por cor.",
+        "steps": ["Observar os atributos dos ícones.", "Organizar pela forma e nomear os grupos.", "Reorganizar pela cor.", "Comparar o que mudou entre os critérios."],
+        "evidence": "Dois agrupamentos do mesmo conjunto e uma explicação da mudança de critério.",
+        "rubric": ["Inicial: reconhece um atributo com ajuda.", "Em desenvolvimento: organiza por um critério.", "Consolidado: produz duas organizações e explica por que diferem."]
+      }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY", "CLASSIFY", "CARDS_SHAPE", "Cartões mostram círculos e quadrados em cores diferentes. Qual critério reúne os círculos?", "A forma.", ["A cor azul apenas.", "O tamanho da mesa.", "A ordem em que foram entregues."], "NAME_ATTRIBUTE", "Os círculos compartilham a mesma forma.", "Observe o contorno dos cartões."],
+      ["EASY", "COMPARE", "BLOCKS_COLOR", "Dois blocos têm a mesma cor e formas diferentes. Qual semelhança compartilham?", "A cor.", ["A forma.", "O tamanho, sem observar.", "A função, sem observar."], "IDENTIFY_SHARED_ATTRIBUTE", "A semelhança indicada é a cor, não os demais atributos.", "Escolha uma característica que os dois têm."],
+      ["EASY", "SELECT", "DIGITAL_SHAPES", "Ícones de estrela, círculo e quadrado serão organizados por forma. O que observar?", "O formato de cada ícone.", ["A senha do aparelho.", "O nome de quem desenhou.", "A hora em que foram impressos."], "SELECT_CRITERION", "A forma é o atributo anunciado para organizar.", "Pense no critério combinado."],
+      ["EASY", "ORDER", "BOX_SIZE", "Caixas serão colocadas da menor para a maior. Que atributo orienta a ordem?", "O tamanho.", ["A cor do chão.", "A quantidade de desenhos.", "A forma da etiqueta."], "ORDER_BY_ATTRIBUTE", "A sequência crescente depende do tamanho.", "Compare caixas pequenas e grandes."]
+    ],
+    "PRACTICE": [
+      ["EASY", "ORDER", "PENCILS_LENGTH", "Lápis de comprimentos diferentes serão ordenados do menor ao maior. O que comparar?", "O comprimento.", ["A cor da mochila.", "O material da mesa.", "O nome de quem usa."], "ORDER_BY_LENGTH", "A regra é ordenar pelo comprimento dos lápis.", "Observe qual é mais curto."],
+      ["EASY", "CLASSIFY", "BUTTONS_SHAPE", "Cartões mostram botões redondos e quadrados. Como agrupá-los por forma?", "Redondos com redondos e quadrados com quadrados.", ["Juntar pela cor sem anunciar.", "Misturar sem critério.", "Separar pelo nome de quem desenhou."], "ONE_CRITERION", "A forma é aplicada como regra a todos os cartões.", "Diga a regra e confira cada item."],
+      ["EASY", "COMPARE", "FRUIT_ICONS", "Dois ícones de frutas são verdes. Que padrão de cor pode ser descrito?", "Os dois ícones observados são verdes.", ["Todas as frutas são verdes.", "Os dois têm a mesma forma.", "A cor revela quem os desenhou."], "LIMIT_PATTERN", "O padrão refere-se aos ícones apresentados, não a todas as frutas.", "Descreva o conjunto que está vendo."],
+      ["EASY", "CLASSIFY", "SCHOOL_TOOLS", "Tesoura e apontador serão agrupados pela função em atividades escolares. O que orienta o grupo?", "O uso ou função dos objetos.", ["A cor da parede.", "A forma do estojo.", "O tamanho do nome da turma."], "CLASSIFY_BY_FUNCTION", "A função dos objetos é o critério anunciado.", "Pergunte para que cada objeto serve."],
+      ["EASY", "COMPARE", "RED_SHAPES", "Um círculo vermelho e um quadrado vermelho serão agrupados por cor. Qual padrão compartilham?", "Ambos são vermelhos.", ["Ambos são círculos.", "Têm forma igual.", "Têm tamanho igual sem observar."], "COLOR_PATTERN", "A cor é o atributo comum sob o critério escolhido.", "Observe a cor, não a forma."],
+      ["EASY", "CLASSIFY", "TEXTURE_CARDS", "Cartões ásperos e lisos serão organizados por textura. Que atributo orientar?", "A textura de cada cartão.", ["O nome de quem tocou.", "A ordem da pilha.", "O número de cadeiras."], "CLASSIFY_TEXTURE", "A textura é a regra escolhida para agrupar.", "Use o atributo combinado e um modo acessível de percebê-lo."],
+      ["MEDIUM", "APPLY", "SAME_SET_NEW_RULE", "Cartões foram organizados por forma e agora serão organizados por cor. O que fazer primeiro?", "Anunciar a nova regra e observar as cores.", ["Manter os grupos antigos sem conferir.", "Misturar sem critério.", "Dizer que a primeira organização estava errada."], "CHANGE_RULE", "O mesmo conjunto pode ser reorganizado quando o critério muda.", "Nomeie a nova regra antes de mover os cartões."],
+      ["MEDIUM", "STATE", "SORTING_RULE", "Qual frase declara um critério claro para agrupar objetos?", "“Vou agrupar pela cor.”", ["“Vou colocar juntos os que gosto.”", "“Vou mudar a regra em cada objeto.”", "“Vou juntar sem observar.”"], "STATE_CRITERION", "Uma regra clara indica o atributo usado para organizar.", "Escolha uma característica que possa ser conferida."],
+      ["MEDIUM", "DESCRIBE", "PATTERN_OUTLIER", "Há três círculos e um triângulo. Se o critério é forma, o que se pode dizer?", "Três cartões são círculos e um é triângulo.", ["Todos têm a mesma forma.", "O triângulo não pode ser organizado.", "A forma não pode ser observada."], "PATTERN_AND_DIFFERENCE", "O conjunto apresenta um padrão e uma diferença.", "Conte os itens de cada forma."],
+      ["MEDIUM", "CLASSIFY", "FILE_ICONS", "Ícones genéricos representam imagem, áudio e texto. Como organizá-los por tipo?", "Agrupar os que representam o mesmo tipo de arquivo.", ["Agrupar pelo nome de uma pessoa.", "Escolher sem observar o ícone.", "Misturar os tipos e chamar de iguais."], "DIGITAL_CLASSIFICATION", "Ícones podem representar atributos usados para organizar itens digitais.", "Observe o tipo indicado por cada ícone."],
+      ["MEDIUM", "EVALUATE", "MIXED_RULE_ERROR", "Uma pessoa junta cartões ora pela cor, ora pelo tamanho sem avisar. O que falta?", "Um critério declarado e aplicado com consistência.", ["Mais cores para misturar.", "Um nome de estudante em cada cartão.", "Uma regra que muda sem explicação."], "CONSISTENT_RULE", "Mudar o critério sem avisar impede compreender o agrupamento.", "Pergunte qual característica orientou cada decisão."],
+      ["MEDIUM", "EXPLAIN", "ORDER_SHAPES", "Formas serão ordenadas da menor para a maior. O que comparar?", "O tamanho das formas.", ["A cor do título.", "A quantidade de pessoas.", "O lugar onde foram desenhadas."], "ORDER_BY_SIZE", "A ordem depende de uma característica comparável entre os itens.", "Confira o tamanho de cada forma."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM", "APPLY", "NEW_PLAY_SET", "Uma caixa tem carrinhos e blocos de vários tamanhos e cores. Para agrupá-los pela função, qual pergunta ajuda?", "Para que cada objeto pode ser usado?", ["Qual é o endereço de quem trouxe?", "Qual cor alguém prefere?", "Quem é dono de cada objeto?"], "TRANSFER_FUNCTION", "A função é o critério; dados pessoais não são necessários.", "Pergunte sobre o uso dos objetos."],
+      ["MEDIUM", "CLASSIFY", "NEW_ICON_SET", "Um conjunto tem círculos azuis, quadrados azuis e círculos amarelos. Quantas organizações por critério são possíveis?", "Pelo menos duas: uma por forma e outra por cor.", ["Somente uma organização.", "Nenhuma organização por atributo.", "Todos os critérios precisam ser usados juntos."], "MULTIPLE_VALID_CRITERIA", "Uma coleção admite organizações distintas quando o critério muda.", "Teste forma e depois cor."],
+      ["MEDIUM", "ORDER", "NEW_BOOKS", "Livros fictícios foram organizados do mais fino ao mais grosso. Qual atributo descreve a regra?", "Espessura.", ["Cor do armário.", "Nome de quem lê.", "Tema da conversa."], "ORDERING_ATTRIBUTE", "A sequência compara a espessura dos livros.", "Observe o que aumenta de um livro ao próximo."],
+      ["MEDIUM", "COMPARE", "PHYSICAL_DIGITAL", "Cartões impressos e ícones digitais representam figuras de animais. Qual critério pode servir aos dois conjuntos?", "Uma característica representada, como forma ou tipo de figura.", ["A senha do dispositivo.", "O material do cartão aplicado à tela.", "O nome de quem imprimiu."], "ACROSS_MEDIA", "Objetos físicos e digitais podem ser organizados por atributos representados.", "Escolha um atributo disponível nos dois conjuntos."],
+      ["MEDIUM", "APPLY", "NEW_REORGANIZATION", "Um grupo por tamanho já foi feito. Agora a turma quer agrupar pelos materiais. O que muda?", "Aplicar a nova regra de material aos mesmos objetos.", ["Manter tamanho sem avisar.", "Descartar os itens diferentes.", "Concluir que a primeira regra era inválida."], "REORGANIZE_BY_NEW_RULE", "Uma nova característica permite reorganizar a mesma coleção.", "Anuncie o novo critério."],
+      ["MEDIUM", "DISTINGUISH", "MULTIPLE_ATTRIBUTES", "Um objeto é azul e grande. Se o grupo é “azuis”, onde ele entra?", "No grupo dos azuis, mesmo que também seja grande.", ["Em todos os grupos sem regra.", "Em nenhum grupo por ter dois atributos.", "No grupo dos pequenos."], "CRITERION_PRIORITY", "O critério anunciado decide o agrupamento, ainda que haja outros atributos.", "Use a regra combinada."],
+      ["HARD", "EXPLAIN", "PATTERN_EXPLANATION", "Qual explicação comunica um padrão em um conjunto organizado por forma?", "“Os círculos ficaram juntos; os quadrados formam outro grupo.”", ["“Juntei porque sim.”", "“Todos são iguais em tudo.”", "“Escolhi pelo nome de quem trouxe.”"], "EXPLAIN_PATTERN", "A explicação nomeia o atributo comum e a diferença entre grupos.", "Mencione critério, semelhança e contraste."],
+      ["HARD", "EVALUATE", "RULE_AUDIT", "Como verificar se a regra de organização foi consistente?", "Conferir cada item usando a regra declarada e revisar exceções.", ["Mudar a regra em cada item.", "Olhar somente o primeiro objeto.", "Pedir que alguém adivinhe."], "AUDIT_CONSISTENCY", "A verificação aplica a mesma regra a todos os itens.", "Teste a regra em cada objeto."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM", "EXPLAIN", "LOCK_IN_CRITERION", "Por que dizer o critério antes de organizar os objetos?", "Para que outras pessoas entendam e possam conferir a regra aplicada.", ["Para esconder diferenças.", "Para mudar a regra sem explicar.", "Para escolher um vencedor."], "DECLARE_RULE", "Uma regra explícita torna o agrupamento compreensível e verificável.", "Pense como alguém saberia por que os itens ficaram juntos."],
+      ["MEDIUM", "COMPARE", "LOCK_IN_TWO_RULES", "Um conjunto foi organizado por cor e depois por forma. O que pode mudar?", "Quais objetos ficam em cada grupo, pois o critério mudou.", ["As características reais dos objetos.", "A quantidade de objetos.", "A necessidade de explicar a regra."], "RESULT_CHANGES", "Critérios diferentes podem produzir grupos diferentes sem mudar os objetos.", "Compare os resultados."],
+      ["HARD", "DISTINGUISH", "LOCK_IN_PATTERN", "Em um grupo de objetos azuis, qual é a semelhança segundo a regra?", "Todos compartilham a cor azul.", ["Todos têm a mesma forma necessariamente.", "Todos têm a mesma função necessariamente.", "Todos foram feitos pela mesma pessoa."], "SHARED_ATTRIBUTE", "A semelhança é o atributo que definiu o grupo.", "Volte ao critério escolhido."],
+      ["HARD", "EVALUATE", "LOCK_IN_MIXED_RULE", "Uma classificação começa por forma, mas depois separa um objeto pela cor. Como melhorar?", "Explicar a mudança ou refazer o grupo com um critério consistente.", ["Esconder a regra.", "Dizer que todos os critérios são iguais.", "Eliminar o objeto diferente."], "REPAIR_RULE", "Declarar a regra ou reiniciar torna o resultado verificável.", "Mantenha uma regra ou anuncie outra etapa."],
+      ["HARD", "APPLY", "LOCK_IN_MEDIA", "Qual princípio organiza botões físicos ou ícones digitais?", "Escolher um atributo e aplicá-lo de modo consistente.", ["Usar senhas pessoais como critério.", "Mudar a regra em cada item.", "Organizar sem observar atributos."], "CROSS_MODAL_RULE", "A organização por atributo pode ser usada em suportes físicos ou digitais.", "Nomeie o critério antes de começar."],
+      ["HARD", "SELECT", "LOCK_IN_ACCESS", "Que recurso pode tornar a classificação por forma acessível?", "Cartões ampliados ou táteis com descrição verbal das formas.", ["Usar somente cores sem rótulos.", "Esconder os atributos.", "Impedir respostas por apontar."], "ACCESS_SUPPORT", "Recursos multimodais ampliam acesso sem alterar o critério.", "Escolha apoio que torne a forma identificável."]
+    ],
+    "REVIEW": [
+      ["EASY", "RECALL", "REVIEW_ATTRIBUTE", "O que é um atributo que ajuda a organizar objetos?", "Uma característica como cor, forma ou tamanho.", ["O nome de quem observa.", "A senha de um aplicativo.", "A ordem de chegada."], "ATTRIBUTE", "Atributos são características observáveis ou representadas.", "Pense em uma característica do objeto."],
+      ["EASY", "RECALL", "REVIEW_CRITERION", "O que significa organizar objetos por um critério?", "Usar uma característica escolhida como regra para agrupar ou ordenar.", ["Mudar de regra em cada objeto.", "Misturar sem observar.", "Escolher um objeto favorito."], "RULE", "O critério orienta a organização.", "Complete: vou organizar pela…"],
+      ["EASY", "COMPARE", "REVIEW_SHARED", "Dois objetos têm a mesma forma, mas cores diferentes. Qual semelhança existe?", "A forma.", ["A cor.", "O tamanho sem observar.", "Quem os trouxe."], "SIMILARITY", "A forma é o atributo compartilhado.", "Procure a característica que coincide."],
+      ["MEDIUM", "SELECT", "REVIEW_ORDER", "Para ordenar cartões do menor para o maior, qual atributo comparar?", "O tamanho.", ["A cor da mesa.", "O assunto da aula.", "O nome de quem desenhou."], "ORDER_ATTRIBUTE", "A sequência depende do tamanho.", "Compare o que fica menor ou maior."],
+      ["MEDIUM", "DISTINGUISH", "REVIEW_DIFFERENCE", "Dois cartões têm a mesma cor e formas diferentes. Qual atributo difere?", "A forma.", ["A cor comum.", "O critério de cor.", "A existência de semelhança."], "DIFFERENCE", "A forma varia mesmo quando a cor é compartilhada.", "Observe outro atributo."],
+      ["MEDIUM", "EXPLAIN", "REVIEW_NEW_RULE", "O que pode acontecer se a regra mudar de cor para forma?", "Os grupos podem mudar, embora os objetos sejam os mesmos.", ["Os objetos mudam de cor sozinhos.", "A primeira organização era errada.", "Nenhum objeto pode ser agrupado."], "RULE_CHANGE", "A mesma coleção pode ser organizada por critérios diferentes.", "O que muda: regra ou objetos?"],
+      ["MEDIUM", "EVALUATE", "REVIEW_CONSISTENCY", "Qual organização aplica a regra de forma com consistência?", "Círculos em um grupo e quadrados em outro.", ["Misturar sem critério.", "Mudar de cor para tamanho sem avisar.", "Agrupar pelo nome de quem trouxe."], "CONSISTENT_RULE", "A mesma regra de forma é aplicada a todos os cartões.", "Confira cada objeto."],
+      ["HARD", "EXPLAIN", "REVIEW_EXPLANATION", "Qual frase explica padrão e diferença em um conjunto?", "“Este grupo tem formas redondas; o outro tem formas quadradas.”", ["“Estão juntos porque sim.”", "“Todos são iguais em tudo.”", "“Este grupo vale mais.”"], "EXPLAIN_PATTERN", "A frase declara o atributo comum e o contraste.", "Diga o que é comum e o que muda."],
+      ["HARD", "APPLY", "REVIEW_DIGITAL", "Uma pasta digital tem ícones de imagem e de áudio. Qual regra pode organizá-los?", "Agrupar pelo tipo indicado por cada ícone.", ["Usar a senha de quem abriu.", "Misturar sem observar.", "Escolher pelo nome de um colega."], "DIGITAL_OBJECTS", "Objetos digitais também podem ser organizados por características.", "Observe o que cada ícone indica."],
+      ["HARD", "OBSERVE", "REVIEW_EVIDENCE", "Qual registro informa a regra e o padrão observado?", "“Agrupei pela forma: círculos juntos e quadrados em outro grupo.”", ["“Separei porque achei melhor.”", "“Todos são iguais em tudo.”", "“Organizei pelo nome de quem trouxe.”"], "RULE_EVIDENCE", "O registro informa o critério e o padrão resultante.", "Procure a regra e a característica comum."]
+    ]
+  }
+}

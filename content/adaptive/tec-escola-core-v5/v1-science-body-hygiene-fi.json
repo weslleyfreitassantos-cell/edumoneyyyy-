@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-science-body-hygiene-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CI03_BODY_HYGIENE_AND_HEALTH",
+  "subject": "SCIENCE",
+  "domain": "VIDA_E_EVOLUÇÃO",
+  "topic": "razões para hábitos de higiene do corpo e manutenção da saúde",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CI03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 335
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Hábitos de higiene e cuidado com a saúde",
+    "objective": "Discutir, com exemplos do cotidiano, como hábitos de higiene do corpo contribuem para o cuidado e a manutenção da saúde, considerando segurança, acesso e diferentes rotinas.",
+    "summary": "Hábitos de higiene ajudam a remover sujeira e podem reduzir a circulação de microrganismos. Conversar sobre razões, momentos e modos seguros de cuidado contribui para a saúde sem culpar pessoas.",
+    "explanation": "## 1. O que é um hábito de higiene?\nSão ações de cuidado com o corpo, como lavar as mãos antes de comer e escovar os dentes. Elas ajudam a retirar sujeira e, em algumas situações, reduzem a transmissão de microrganismos.\n\n## 2. Relacione o hábito ao motivo\nDepois de brincar, as mãos podem estar sujas. Lavá-las antes de comer ajuda a limpar as mãos e a evitar levar sujeira à boca. Escovar os dentes remove restos de alimentos e ajuda no cuidado da boca. Cada hábito tem um motivo, e a rotina pode variar conforme orientação familiar, escolar e de profissionais de saúde.\n\n## 3. Cuidado também é segurança e respeito\nA higiene não deve ser usada para envergonhar alguém. Condições de acesso, deficiência, sensibilidade sensorial e costumes familiares variam. Para olhos, nariz e orelhas, use apenas cuidados externos e orientações de adultos responsáveis; não introduza objetos ou produtos no corpo.",
+    "workedExample": "Depois de uma atividade com tinta lavável, as mãos podem ficar sujas. Antes do lanche, lavar as mãos com água e sabonete, quando disponíveis, remove sujeira e contribui para o cuidado com a saúde. A necessidade de apoio ou de um recurso alternativo deve ser tratada com respeito.",
+    "commonMistake": "Dizer que alguém adoeceu porque “não se cuidou”, prometer que higiene impede toda doença ou recomendar limpeza interna de olhos, nariz ou ouvidos.",
+    "tips": [
+      "Explique motivos com linguagem simples e sem prometer proteção absoluta.",
+      "Discuta práticas como cuidado, não como motivo de vergonha ou punição.",
+      "Considere acesso a água, sabonete, escova e adaptações sem expor situações pessoais.",
+      "Em situações de dúvida sobre saúde, siga orientações de responsáveis e profissionais; não introduza objetos no corpo."
+    ],
+    "priorKnowledge": [
+      "Reconhecer partes do corpo e conversar sobre rotinas de cuidado com apoio de adultos.",
+      "Observar ações cotidianas antes e depois de brincar, comer ou realizar atividades."
+    ],
+    "keyConcepts": [
+      "higiene corporal",
+      "sujeira",
+      "microrganismos",
+      "prevenção e redução de riscos",
+      "cuidado com as mãos",
+      "cuidado com a boca",
+      "rotina e contexto",
+      "saúde com dignidade"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "HANDS_BEFORE_EATING",
+        "text": "Lavar as mãos antes de comer ajuda a remover sujeira e a reduzir a chance de levá-la à boca."
+      },
+      {
+        "trigger": "TEETH_AFTER_FOOD",
+        "text": "Escovar os dentes ajuda a remover restos de alimentos e integra o cuidado com a boca."
+      },
+      {
+        "trigger": "HYGIENE_WITHOUT_SHAME",
+        "text": "Conversamos sobre hábitos e condições de cuidado sem culpar ou expor uma pessoa."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "HYGIENE_GUARANTEES_NO_ILLNESS",
+        "action": "Compare redução de riscos com garantia absoluta: hábitos ajudam, mas não impedem toda doença."
+      },
+      {
+        "errorFocus": "BLAMES_PERSON",
+        "action": "Reescreva a explicação como relação entre ação, contexto e cuidado, sem atribuir culpa ou rótulos."
+      },
+      {
+        "errorFocus": "UNSAFE_INTERNAL_CLEANING",
+        "action": "Retome o limite de cuidado externo e peça orientação a um adulto responsável, sem introduzir objetos ou produtos."
+      }
+    ],
+    "accessibilitySupports": [
+      "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+      "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+      "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+      "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-science-body-hygiene-fi-activity-1",
+        "title": "Rotina antes do lanche",
+        "instructions": "A turma discute o cuidado das mãos antes de uma refeição ou lanche, sem observar nem avaliar a higiene individual de colegas.\n1. Organizar cartões com ações antes do lanche.\n2. Conversar sobre o que lavar as mãos ajuda a remover.\n3. Ordenar uma rotina acessível de cuidado.\n4. Explicar por fala, imagem ou gesto por que essa ação é útil.",
+        "steps": [
+          "Organizar cartões com ações antes do lanche.",
+          "Conversar sobre o que lavar as mãos ajuda a remover.",
+          "Ordenar uma rotina acessível de cuidado.",
+          "Explicar por fala, imagem ou gesto por que essa ação é útil."
+        ],
+        "evidence": "Sequência de ações e justificativa que relaciona lavagem das mãos, sujeira e cuidado com a saúde.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma ação de cuidado com apoio.",
+            "developing": "relaciona a lavagem à remoção de sujeira.",
+            "proficient": "explica a razão e identifica uma adaptação respeitosa quando necessária."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-science-body-hygiene-fi-activity-2",
+        "title": "Mapa de hábitos e motivos",
+        "instructions": "Pequenos grupos associam hábitos gerais de higiene a motivos de cuidado, sem compartilhar informações pessoais de saúde.\n1. Escolher cartões de hábitos do cotidiano.\n2. Associar cada hábito a um motivo plausível.\n3. Separar cuidado seguro de ação que precisa de orientação adulta.\n4. Apresentar uma conclusão que não culpe nem prometa proteção total.",
+        "steps": [
+          "Escolher cartões de hábitos do cotidiano.",
+          "Associar cada hábito a um motivo plausível.",
+          "Separar cuidado seguro de ação que precisa de orientação adulta.",
+          "Apresentar uma conclusão que não culpe nem prometa proteção total."
+        ],
+        "evidence": "Mapa hábito-motivo e explicação oral, visual ou escrita sobre os limites do cuidado discutido.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um hábito com apoio.",
+            "developing": "associa hábitos a razões de cuidado.",
+            "proficient": "explica a relação, reconhece limites e usa linguagem respeitosa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-science-body-hygiene-fi-01",
+          "v1-science-body-hygiene-fi-02",
+          "v1-science-body-hygiene-fi-03",
+          "v1-science-body-hygiene-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-science-body-hygiene-fi-05",
+          "v1-science-body-hygiene-fi-06",
+          "v1-science-body-hygiene-fi-07",
+          "v1-science-body-hygiene-fi-08",
+          "v1-science-body-hygiene-fi-09",
+          "v1-science-body-hygiene-fi-10",
+          "v1-science-body-hygiene-fi-11",
+          "v1-science-body-hygiene-fi-12",
+          "v1-science-body-hygiene-fi-13",
+          "v1-science-body-hygiene-fi-14",
+          "v1-science-body-hygiene-fi-15",
+          "v1-science-body-hygiene-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-science-body-hygiene-fi-17",
+          "v1-science-body-hygiene-fi-18",
+          "v1-science-body-hygiene-fi-19",
+          "v1-science-body-hygiene-fi-20",
+          "v1-science-body-hygiene-fi-21",
+          "v1-science-body-hygiene-fi-22",
+          "v1-science-body-hygiene-fi-23",
+          "v1-science-body-hygiene-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-science-body-hygiene-fi-25",
+          "v1-science-body-hygiene-fi-26",
+          "v1-science-body-hygiene-fi-27",
+          "v1-science-body-hygiene-fi-28",
+          "v1-science-body-hygiene-fi-29",
+          "v1-science-body-hygiene-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-science-body-hygiene-fi-31",
+          "v1-science-body-hygiene-fi-32",
+          "v1-science-body-hygiene-fi-33",
+          "v1-science-body-hygiene-fi-34",
+          "v1-science-body-hygiene-fi-35",
+          "v1-science-body-hygiene-fi-36",
+          "v1-science-body-hygiene-fi-37",
+          "v1-science-body-hygiene-fi-38",
+          "v1-science-body-hygiene-fi-39",
+          "v1-science-body-hygiene-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CI03",
+        "descriptor": "Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 335
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-science-body-hygiene-fi-01",
+      "statement": "Por que lavar as mãos antes de comer pode ser um hábito de cuidado?",
+      "prompt": "Por que lavar as mãos antes de comer pode ser um hábito de cuidado?",
+      "options": [
+        "Ajuda a remover sujeira das mãos antes que elas toquem a comida.",
+        "Faz a comida mudar de cor.",
+        "Garante que ninguém ficará doente.",
+        "Serve para comparar as mãos dos colegas."
+      ],
+      "correctAnswer": "Ajuda a remover sujeira das mãos antes que elas toquem a comida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Faz a comida mudar de cor.": [
+          "HANDS_CLEANING_REASON"
+        ],
+        "Garante que ninguém ficará doente.": [
+          "HANDS_CLEANING_REASON"
+        ],
+        "Serve para comparar as mãos dos colegas.": [
+          "HANDS_CLEANING_REASON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "HANDS_BEFORE_SNACK",
+      "explanation": "A lavagem ajuda a remover sujeira; não é uma garantia de que nenhuma doença ocorrerá.",
+      "hint": "Relacione as mãos ao que será tocado durante a refeição.",
+      "errorFocus": "HANDS_CLEANING_REASON",
+      "feedback": {
+        "correct": "Boa observação: A lavagem ajuda a remover sujeira; não é uma garantia de que nenhuma doença ocorrerá.",
+        "incorrect": "A lavagem ajuda a remover sujeira; não é uma garantia de que nenhuma doença ocorrerá.",
+        "hint": "Relacione as mãos ao que será tocado durante a refeição.",
+        "errorFocus": "HANDS_CLEANING_REASON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-02",
+      "statement": "Qual é uma razão para escovar os dentes como parte do cuidado com a boca?",
+      "prompt": "Qual é uma razão para escovar os dentes como parte do cuidado com a boca?",
+      "options": [
+        "Muda a cor dos alimentos que comemos.",
+        "A escovação ajuda a remover restos de alimentos dos dentes.",
+        "Substitui qualquer orientação de saúde.",
+        "Serve para limpar o interior dos ouvidos."
+      ],
+      "correctAnswer": "A escovação ajuda a remover restos de alimentos dos dentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Muda a cor dos alimentos que comemos.": [
+          "TEETH_CARE_REASON"
+        ],
+        "Substitui qualquer orientação de saúde.": [
+          "TEETH_CARE_REASON"
+        ],
+        "Serve para limpar o interior dos ouvidos.": [
+          "TEETH_CARE_REASON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TEETH_AFTER_MEAL",
+      "explanation": "A escovação contribui para remover restos de alimentos e cuidar da boca.",
+      "hint": "Pense no que pode ficar nos dentes depois de comer.",
+      "errorFocus": "TEETH_CARE_REASON",
+      "feedback": {
+        "correct": "Boa observação: A escovação contribui para remover restos de alimentos e cuidar da boca.",
+        "incorrect": "A escovação contribui para remover restos de alimentos e cuidar da boca.",
+        "hint": "Pense no que pode ficar nos dentes depois de comer.",
+        "errorFocus": "TEETH_CARE_REASON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-03",
+      "statement": "Uma criança esqueceu um material de higiene. Qual conversa respeita a dignidade dela?",
+      "prompt": "Uma criança esqueceu um material de higiene. Qual conversa respeita a dignidade dela?",
+      "options": [
+        "Anunciar a situação diante da turma.",
+        "Dizer que ela é suja.",
+        "Conversar em particular com um adulto responsável sobre o apoio necessário.",
+        "Comparar seus pertences com os dos colegas."
+      ],
+      "correctAnswer": "Conversar em particular com um adulto responsável sobre o apoio necessário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Anunciar a situação diante da turma.": [
+          "NO_SHAMING"
+        ],
+        "Dizer que ela é suja.": [
+          "NO_SHAMING"
+        ],
+        "Comparar seus pertences com os dos colegas.": [
+          "NO_SHAMING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARE_WITHOUT_SHAME",
+      "explanation": "Cuidado deve ser tratado com respeito e sem exposição ou rótulos.",
+      "hint": "Escolha a ação que protege a privacidade da criança.",
+      "errorFocus": "NO_SHAMING",
+      "feedback": {
+        "correct": "Boa observação: Cuidado deve ser tratado com respeito e sem exposição ou rótulos.",
+        "incorrect": "Cuidado deve ser tratado com respeito e sem exposição ou rótulos.",
+        "hint": "Escolha a ação que protege a privacidade da criança.",
+        "errorFocus": "NO_SHAMING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-04",
+      "statement": "Uma criança pergunta se deve colocar um objeto dentro do ouvido para limpá-lo. Qual resposta é segura?",
+      "prompt": "Uma criança pergunta se deve colocar um objeto dentro do ouvido para limpá-lo. Qual resposta é segura?",
+      "options": [
+        "Usar qualquer objeto pequeno.",
+        "Pedir a um colega que tente.",
+        "Colocar um produto sem orientação.",
+        "Não introduzir objetos; conversar com um adulto responsável sobre o cuidado adequado."
+      ],
+      "correctAnswer": "Não introduzir objetos; conversar com um adulto responsável sobre o cuidado adequado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar qualquer objeto pequeno.": [
+          "NO_INTERNAL_OBJECTS"
+        ],
+        "Pedir a um colega que tente.": [
+          "NO_INTERNAL_OBJECTS"
+        ],
+        "Colocar um produto sem orientação.": [
+          "NO_INTERNAL_OBJECTS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "SAFE_EAR_CARE",
+      "explanation": "A atividade não ensina limpeza interna; dúvidas devem ser encaminhadas a adultos responsáveis.",
+      "hint": "Pense no que pode machucar uma parte delicada do corpo.",
+      "errorFocus": "NO_INTERNAL_OBJECTS",
+      "feedback": {
+        "correct": "Boa observação: A atividade não ensina limpeza interna; dúvidas devem ser encaminhadas a adultos responsáveis.",
+        "incorrect": "A atividade não ensina limpeza interna; dúvidas devem ser encaminhadas a adultos responsáveis.",
+        "hint": "Pense no que pode machucar uma parte delicada do corpo.",
+        "errorFocus": "NO_INTERNAL_OBJECTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-05",
+      "statement": "Depois de brincar com areia, qual motivo torna útil lavar as mãos antes de comer?",
+      "prompt": "Depois de brincar com areia, qual motivo torna útil lavar as mãos antes de comer?",
+      "options": [
+        "A lavagem ajuda a retirar sujeira que pode estar nas mãos.",
+        "A areia vira alimento saudável.",
+        "A lavagem garante que nunca haverá microrganismos.",
+        "As mãos precisam ter a mesma aparência."
+      ],
+      "correctAnswer": "A lavagem ajuda a retirar sujeira que pode estar nas mãos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A areia vira alimento saudável.": [
+          "RELATE_ACTION_TO_DIRT"
+        ],
+        "A lavagem garante que nunca haverá microrganismos.": [
+          "RELATE_ACTION_TO_DIRT"
+        ],
+        "As mãos precisam ter a mesma aparência.": [
+          "RELATE_ACTION_TO_DIRT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "HANDS_AFTER_PLAY",
+      "explanation": "A ação remove sujeira e contribui para o cuidado antes de tocar a comida.",
+      "hint": "Lembre-se do que pode permanecer nas mãos depois da brincadeira.",
+      "errorFocus": "RELATE_ACTION_TO_DIRT",
+      "feedback": {
+        "correct": "Boa observação: A ação remove sujeira e contribui para o cuidado antes de tocar a comida.",
+        "incorrect": "A ação remove sujeira e contribui para o cuidado antes de tocar a comida.",
+        "hint": "Lembre-se do que pode permanecer nas mãos depois da brincadeira.",
+        "errorFocus": "RELATE_ACTION_TO_DIRT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-06",
+      "statement": "Qual sequência representa uma rotina de lavagem das mãos antes do lanche, com recursos disponíveis?",
+      "prompt": "Qual sequência representa uma rotina de lavagem das mãos antes do lanche, com recursos disponíveis?",
+      "options": [
+        "Comer primeiro e lavar depois.",
+        "Molhar, usar sabonete, esfregar as mãos, enxaguar e secar.",
+        "Passar tinta nas mãos e esperar secar.",
+        "Usar um objeto pontudo entre os dedos."
+      ],
+      "correctAnswer": "Molhar, usar sabonete, esfregar as mãos, enxaguar e secar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Comer primeiro e lavar depois.": [
+          "SAFE_HANDWASH_SEQUENCE"
+        ],
+        "Passar tinta nas mãos e esperar secar.": [
+          "SAFE_HANDWASH_SEQUENCE"
+        ],
+        "Usar um objeto pontudo entre os dedos.": [
+          "SAFE_HANDWASH_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "HANDWASH_ROUTINE",
+      "explanation": "Uma sequência organizada ajuda a limpar as mãos; os recursos podem exigir adaptação contextual.",
+      "hint": "Escolha etapas de cuidado com água e sabonete quando disponíveis.",
+      "errorFocus": "SAFE_HANDWASH_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência organizada ajuda a limpar as mãos; os recursos podem exigir adaptação contextual.",
+        "incorrect": "Uma sequência organizada ajuda a limpar as mãos; os recursos podem exigir adaptação contextual.",
+        "hint": "Escolha etapas de cuidado com água e sabonete quando disponíveis.",
+        "errorFocus": "SAFE_HANDWASH_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-07",
+      "statement": "Depois de comer, escovar os dentes ajuda principalmente a…",
+      "prompt": "Depois de comer, escovar os dentes ajuda principalmente a…",
+      "options": [
+        "apagar a memória do que foi comido.",
+        "limpar a parte interna do nariz.",
+        "remover restos de alimentos e cuidar da boca.",
+        "garantir que nenhum problema de saúde aconteça."
+      ],
+      "correctAnswer": "remover restos de alimentos e cuidar da boca.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "apagar a memória do que foi comido.": [
+          "BRUSHING_PURPOSE"
+        ],
+        "limpar a parte interna do nariz.": [
+          "BRUSHING_PURPOSE"
+        ],
+        "garantir que nenhum problema de saúde aconteça.": [
+          "BRUSHING_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "BRUSHING_REMNANTS",
+      "explanation": "A razão está relacionada ao cuidado da boca, sem prometer resultado absoluto.",
+      "hint": "Pense onde a escova é usada e o que ela ajuda a retirar.",
+      "errorFocus": "BRUSHING_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A razão está relacionada ao cuidado da boca, sem prometer resultado absoluto.",
+        "incorrect": "A razão está relacionada ao cuidado da boca, sem prometer resultado absoluto.",
+        "hint": "Pense onde a escova é usada e o que ela ajuda a retirar.",
+        "errorFocus": "BRUSHING_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-08",
+      "statement": "Ao limpar o nariz, qual cuidado geral é mais seguro para uma conversa em sala?",
+      "prompt": "Ao limpar o nariz, qual cuidado geral é mais seguro para uma conversa em sala?",
+      "options": [
+        "Introduzir um objeto fundo no nariz.",
+        "Compartilhar o mesmo lenço usado.",
+        "Aplicar qualquer produto sem orientação.",
+        "Usar lenço ou recurso adequado externamente e pedir ajuda a um adulto quando necessário."
+      ],
+      "correctAnswer": "Usar lenço ou recurso adequado externamente e pedir ajuda a um adulto quando necessário.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Introduzir um objeto fundo no nariz.": [
+          "SAFE_EXTERNAL_CARE"
+        ],
+        "Compartilhar o mesmo lenço usado.": [
+          "SAFE_EXTERNAL_CARE"
+        ],
+        "Aplicar qualquer produto sem orientação.": [
+          "SAFE_EXTERNAL_CARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOSE_EXTERNAL_CARE",
+      "explanation": "A conversa limita-se ao cuidado externo e ao apoio de adultos responsáveis.",
+      "hint": "Evite colocar objetos ou produtos dentro do corpo.",
+      "errorFocus": "SAFE_EXTERNAL_CARE",
+      "feedback": {
+        "correct": "Boa observação: A conversa limita-se ao cuidado externo e ao apoio de adultos responsáveis.",
+        "incorrect": "A conversa limita-se ao cuidado externo e ao apoio de adultos responsáveis.",
+        "hint": "Evite colocar objetos ou produtos dentro do corpo.",
+        "errorFocus": "SAFE_EXTERNAL_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-09",
+      "statement": "Se houver sujeira ao redor dos olhos, qual orientação geral é mais segura?",
+      "prompt": "Se houver sujeira ao redor dos olhos, qual orientação geral é mais segura?",
+      "options": [
+        "Pedir ajuda a um adulto e usar cuidado externo adequado, sem esfregar com força.",
+        "Esfregar com qualquer material áspero.",
+        "Colocar objeto dentro do olho.",
+        "Compartilhar um pano sujo com a turma."
+      ],
+      "correctAnswer": "Pedir ajuda a um adulto e usar cuidado externo adequado, sem esfregar com força.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Esfregar com qualquer material áspero.": [
+          "SAFE_EYE_CARE"
+        ],
+        "Colocar objeto dentro do olho.": [
+          "SAFE_EYE_CARE"
+        ],
+        "Compartilhar um pano sujo com a turma.": [
+          "SAFE_EYE_CARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "EYES_EXTERNAL_CARE",
+      "explanation": "Olhos são delicados; a atividade não recomenda introduzir objetos nem usar produtos sem orientação.",
+      "hint": "Escolha cuidado externo e apoio adulto.",
+      "errorFocus": "SAFE_EYE_CARE",
+      "feedback": {
+        "correct": "Boa observação: Olhos são delicados; a atividade não recomenda introduzir objetos nem usar produtos sem orientação.",
+        "incorrect": "Olhos são delicados; a atividade não recomenda introduzir objetos nem usar produtos sem orientação.",
+        "hint": "Escolha cuidado externo e apoio adulto.",
+        "errorFocus": "SAFE_EYE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-10",
+      "statement": "Por que lavar as mãos pode reduzir alguns riscos relacionados a microrganismos?",
+      "prompt": "Por que lavar as mãos pode reduzir alguns riscos relacionados a microrganismos?",
+      "options": [
+        "Porque transforma todos os microrganismos em alimento.",
+        "Porque a lavagem ajuda a remover sujeira e parte dos microrganismos das mãos.",
+        "Porque impede todas as doenças em qualquer situação.",
+        "Porque os microrganismos só existem fora do corpo."
+      ],
+      "correctAnswer": "Porque a lavagem ajuda a remover sujeira e parte dos microrganismos das mãos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque transforma todos os microrganismos em alimento.": [
+          "REDUCE_NOT_ELIMINATE_RISK"
+        ],
+        "Porque impede todas as doenças em qualquer situação.": [
+          "REDUCE_NOT_ELIMINATE_RISK"
+        ],
+        "Porque os microrganismos só existem fora do corpo.": [
+          "REDUCE_NOT_ELIMINATE_RISK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REASON",
+      "contextFamily": "MICROORGANISMS_HANDS",
+      "explanation": "A higiene pode reduzir riscos, mas não elimina todos os microrganismos nem garante ausência de doença.",
+      "hint": "Prefira “ajuda a reduzir” a “impede sempre”.",
+      "errorFocus": "REDUCE_NOT_ELIMINATE_RISK",
+      "feedback": {
+        "correct": "Boa observação: A higiene pode reduzir riscos, mas não elimina todos os microrganismos nem garante ausência de doença.",
+        "incorrect": "A higiene pode reduzir riscos, mas não elimina todos os microrganismos nem garante ausência de doença.",
+        "hint": "Prefira “ajuda a reduzir” a “impede sempre”.",
+        "errorFocus": "REDUCE_NOT_ELIMINATE_RISK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-11",
+      "statement": "Antes de uma atividade de culinária escolar, qual hábito pode ajudar a manter o cuidado das mãos?",
+      "prompt": "Antes de uma atividade de culinária escolar, qual hábito pode ajudar a manter o cuidado das mãos?",
+      "options": [
+        "Tocar todos os alimentos e lavar apenas no fim.",
+        "Comparar publicamente quem tem as mãos mais limpas.",
+        "Lavar as mãos antes de manipular alimentos, seguindo a rotina combinada com adultos.",
+        "Usar produtos sem orientação adulta."
+      ],
+      "correctAnswer": "Lavar as mãos antes de manipular alimentos, seguindo a rotina combinada com adultos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tocar todos os alimentos e lavar apenas no fim.": [
+          "APPLY_HANDS_BEFORE_FOOD"
+        ],
+        "Comparar publicamente quem tem as mãos mais limpas.": [
+          "APPLY_HANDS_BEFORE_FOOD"
+        ],
+        "Usar produtos sem orientação adulta.": [
+          "APPLY_HANDS_BEFORE_FOOD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SHARED_TABLE",
+      "explanation": "A rotina de lavagem antes de tocar alimentos relaciona o hábito ao cuidado e à segurança.",
+      "hint": "Pense no momento anterior a tocar na comida.",
+      "errorFocus": "APPLY_HANDS_BEFORE_FOOD",
+      "feedback": {
+        "correct": "Boa observação: A rotina de lavagem antes de tocar alimentos relaciona o hábito ao cuidado e à segurança.",
+        "incorrect": "A rotina de lavagem antes de tocar alimentos relaciona o hábito ao cuidado e à segurança.",
+        "hint": "Pense no momento anterior a tocar na comida.",
+        "errorFocus": "APPLY_HANDS_BEFORE_FOOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-12",
+      "statement": "Uma escola percebe que nem todos têm o mesmo material de higiene. Qual resposta é mais respeitosa?",
+      "prompt": "Uma escola percebe que nem todos têm o mesmo material de higiene. Qual resposta é mais respeitosa?",
+      "options": [
+        "Pedir que cada criança explique sua renda.",
+        "Retirar da atividade quem não trouxe material.",
+        "Fazer uma lista pública de quem esqueceu.",
+        "Organizar apoio sem expor nem culpar estudantes e famílias."
+      ],
+      "correctAnswer": "Organizar apoio sem expor nem culpar estudantes e famílias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir que cada criança explique sua renda.": [
+          "ACCESS_WITH_DIGNITY"
+        ],
+        "Retirar da atividade quem não trouxe material.": [
+          "ACCESS_WITH_DIGNITY"
+        ],
+        "Fazer uma lista pública de quem esqueceu.": [
+          "ACCESS_WITH_DIGNITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ACCESS_TO_SUPPLIES",
+      "explanation": "Condições de acesso variam; a resposta deve proteger privacidade e participação.",
+      "hint": "Escolha uma solução coletiva e discreta.",
+      "errorFocus": "ACCESS_WITH_DIGNITY",
+      "feedback": {
+        "correct": "Boa observação: Condições de acesso variam; a resposta deve proteger privacidade e participação.",
+        "incorrect": "Condições de acesso variam; a resposta deve proteger privacidade e participação.",
+        "hint": "Escolha uma solução coletiva e discreta.",
+        "errorFocus": "ACCESS_WITH_DIGNITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-13",
+      "statement": "Por que a rotina de higiene pode variar entre famílias?",
+      "prompt": "Por que a rotina de higiene pode variar entre famílias?",
+      "options": [
+        "As pessoas podem ter diferentes costumes, recursos e orientações de cuidado.",
+        "Porque saúde não depende de nenhum cuidado.",
+        "Porque todas as famílias devem fazer exatamente a mesma coisa.",
+        "Porque uma rotina permite julgar outras pessoas."
+      ],
+      "correctAnswer": "As pessoas podem ter diferentes costumes, recursos e orientações de cuidado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque saúde não depende de nenhum cuidado.": [
+          "RESPECT_ROUTINE_DIFFERENCES"
+        ],
+        "Porque todas as famílias devem fazer exatamente a mesma coisa.": [
+          "RESPECT_ROUTINE_DIFFERENCES"
+        ],
+        "Porque uma rotina permite julgar outras pessoas.": [
+          "RESPECT_ROUTINE_DIFFERENCES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ROUTINE_CONTEXT",
+      "explanation": "Reconhecer diferenças não elimina a conversa sobre hábitos que apoiam a saúde.",
+      "hint": "Considere contexto e acesso sem avaliar famílias.",
+      "errorFocus": "RESPECT_ROUTINE_DIFFERENCES",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer diferenças não elimina a conversa sobre hábitos que apoiam a saúde.",
+        "incorrect": "Reconhecer diferenças não elimina a conversa sobre hábitos que apoiam a saúde.",
+        "hint": "Considere contexto e acesso sem avaliar famílias.",
+        "errorFocus": "RESPECT_ROUTINE_DIFFERENCES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-14",
+      "statement": "Qual afirmação descreve de modo cuidadoso o efeito da higiene?",
+      "prompt": "Qual afirmação descreve de modo cuidadoso o efeito da higiene?",
+      "options": [
+        "Higiene impede qualquer doença.",
+        "Hábitos de higiene ajudam no cuidado e podem reduzir alguns riscos.",
+        "Uma pessoa adoece sempre porque não se cuidou.",
+        "Higiene não tem relação com saúde."
+      ],
+      "correctAnswer": "Hábitos de higiene ajudam no cuidado e podem reduzir alguns riscos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Higiene impede qualquer doença.": [
+          "AVOID_ABSOLUTE_CLAIMS"
+        ],
+        "Uma pessoa adoece sempre porque não se cuidou.": [
+          "AVOID_ABSOLUTE_CLAIMS"
+        ],
+        "Higiene não tem relação com saúde.": [
+          "AVOID_ABSOLUTE_CLAIMS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLEANING_CLAIM",
+      "explanation": "A afirmação evita garantias absolutas e culpabilização.",
+      "hint": "Procure uma frase que reconheça benefício sem prometer tudo.",
+      "errorFocus": "AVOID_ABSOLUTE_CLAIMS",
+      "feedback": {
+        "correct": "Boa observação: A afirmação evita garantias absolutas e culpabilização.",
+        "incorrect": "A afirmação evita garantias absolutas e culpabilização.",
+        "hint": "Procure uma frase que reconheça benefício sem prometer tudo.",
+        "errorFocus": "AVOID_ABSOLUTE_CLAIMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-15",
+      "statement": "Depois de espirrar nas mãos, qual atitude de cuidado é adequada antes de voltar a tocar objetos compartilhados?",
+      "prompt": "Depois de espirrar nas mãos, qual atitude de cuidado é adequada antes de voltar a tocar objetos compartilhados?",
+      "options": [
+        "Limpar as mãos na roupa de um colega.",
+        "Tocar alimentos imediatamente.",
+        "Lavar as mãos ou seguir a rotina de higiene combinada com um adulto.",
+        "Esconder o que aconteceu e culpar outra pessoa."
+      ],
+      "correctAnswer": "Lavar as mãos ou seguir a rotina de higiene combinada com um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Limpar as mãos na roupa de um colega.": [
+          "AFTER_SNEEZE_HANDS"
+        ],
+        "Tocar alimentos imediatamente.": [
+          "AFTER_SNEEZE_HANDS"
+        ],
+        "Esconder o que aconteceu e culpar outra pessoa.": [
+          "AFTER_SNEEZE_HANDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "AFTER_SNEEZE",
+      "explanation": "A higiene das mãos após contato com secreções contribui para o cuidado coletivo.",
+      "hint": "Pense em limpar as mãos antes de tocar superfícies compartilhadas.",
+      "errorFocus": "AFTER_SNEEZE_HANDS",
+      "feedback": {
+        "correct": "Boa observação: A higiene das mãos após contato com secreções contribui para o cuidado coletivo.",
+        "incorrect": "A higiene das mãos após contato com secreções contribui para o cuidado coletivo.",
+        "hint": "Pense em limpar as mãos antes de tocar superfícies compartilhadas.",
+        "errorFocus": "AFTER_SNEEZE_HANDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-16",
+      "statement": "Qual proposta respeita o limite de cuidado seguro com as orelhas?",
+      "prompt": "Qual proposta respeita o limite de cuidado seguro com as orelhas?",
+      "options": [
+        "Colocar uma haste profundamente no ouvido.",
+        "Usar um objeto emprestado.",
+        "Aplicar substância sem orientação.",
+        "Limpar apenas a parte externa conforme orientação de um adulto, sem introduzir objetos."
+      ],
+      "correctAnswer": "Limpar apenas a parte externa conforme orientação de um adulto, sem introduzir objetos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Colocar uma haste profundamente no ouvido.": [
+          "EAR_EXTERNAL_ONLY"
+        ],
+        "Usar um objeto emprestado.": [
+          "EAR_EXTERNAL_ONLY"
+        ],
+        "Aplicar substância sem orientação.": [
+          "EAR_EXTERNAL_ONLY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EAR_EXTERNAL_ONLY",
+      "explanation": "A atividade aborda cuidado externo e encaminha dúvidas a adultos responsáveis.",
+      "hint": "Escolha a opção que não introduz nada no ouvido.",
+      "errorFocus": "EAR_EXTERNAL_ONLY",
+      "feedback": {
+        "correct": "Boa observação: A atividade aborda cuidado externo e encaminha dúvidas a adultos responsáveis.",
+        "incorrect": "A atividade aborda cuidado externo e encaminha dúvidas a adultos responsáveis.",
+        "hint": "Escolha a opção que não introduz nada no ouvido.",
+        "errorFocus": "EAR_EXTERNAL_ONLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-17",
+      "statement": "A turma vai fazer um lanche depois de uma atividade ao ar livre. Que conversa relaciona a rotina ao motivo do cuidado?",
+      "prompt": "A turma vai fazer um lanche depois de uma atividade ao ar livre. Que conversa relaciona a rotina ao motivo do cuidado?",
+      "options": [
+        "Lavar as mãos antes de comer ajuda a remover sujeira acumulada durante a atividade.",
+        "O passeio garante que não haverá sujeira.",
+        "A higiene serve para comparar as crianças.",
+        "A comida deve ser tocada antes de lavar as mãos."
+      ],
+      "correctAnswer": "Lavar as mãos antes de comer ajuda a remover sujeira acumulada durante a atividade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O passeio garante que não haverá sujeira.": [
+          "TRANSFER_ROUTINE_TO_NEW_CONTEXT"
+        ],
+        "A higiene serve para comparar as crianças.": [
+          "TRANSFER_ROUTINE_TO_NEW_CONTEXT"
+        ],
+        "A comida deve ser tocada antes de lavar as mãos.": [
+          "TRANSFER_ROUTINE_TO_NEW_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FIELD_TRIP_SNACK",
+      "explanation": "O hábito pode ser aplicado a outra situação em que as mãos entram em contato com sujeira.",
+      "hint": "Ligue a atividade anterior ao que pode estar nas mãos.",
+      "errorFocus": "TRANSFER_ROUTINE_TO_NEW_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O hábito pode ser aplicado a outra situação em que as mãos entram em contato com sujeira.",
+        "incorrect": "O hábito pode ser aplicado a outra situação em que as mãos entram em contato com sujeira.",
+        "hint": "Ligue a atividade anterior ao que pode estar nas mãos.",
+        "errorFocus": "TRANSFER_ROUTINE_TO_NEW_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-18",
+      "statement": "Depois de compartilhar materiais, por que limpar as mãos pode ser uma opção de cuidado?",
+      "prompt": "Depois de compartilhar materiais, por que limpar as mãos pode ser uma opção de cuidado?",
+      "options": [
+        "Faz com que todas as pessoas adoeçam.",
+        "Ajuda a remover sujeira e pode reduzir a passagem de alguns microrganismos.",
+        "Garante que nunca haverá transmissão.",
+        "Serve para descobrir quem tocou em cada objeto."
+      ],
+      "correctAnswer": "Ajuda a remover sujeira e pode reduzir a passagem de alguns microrganismos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Faz com que todas as pessoas adoeçam.": [
+          "TRANSFER_SHARED_MATERIALS"
+        ],
+        "Garante que nunca haverá transmissão.": [
+          "TRANSFER_SHARED_MATERIALS"
+        ],
+        "Serve para descobrir quem tocou em cada objeto.": [
+          "TRANSFER_SHARED_MATERIALS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REASON",
+      "contextFamily": "CLASSROOM_MATERIALS",
+      "explanation": "A higiene contribui para reduzir riscos sem oferecer garantia absoluta nem vigiar colegas.",
+      "hint": "Use uma explicação que diga “pode ajudar”.",
+      "errorFocus": "TRANSFER_SHARED_MATERIALS",
+      "feedback": {
+        "correct": "Boa observação: A higiene contribui para reduzir riscos sem oferecer garantia absoluta nem vigiar colegas.",
+        "incorrect": "A higiene contribui para reduzir riscos sem oferecer garantia absoluta nem vigiar colegas.",
+        "hint": "Use uma explicação que diga “pode ajudar”.",
+        "errorFocus": "TRANSFER_SHARED_MATERIALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-19",
+      "statement": "Uma criança conversa sobre escovar os dentes depois das refeições. Qual justificativa está relacionada ao cuidado com a saúde?",
+      "prompt": "Uma criança conversa sobre escovar os dentes depois das refeições. Qual justificativa está relacionada ao cuidado com a saúde?",
+      "options": [
+        "A escovação substitui toda alimentação.",
+        "A escova deve ser compartilhada por todos.",
+        "A escovação ajuda a remover restos de alimentos dos dentes.",
+        "A escovação garante que nunca será preciso consultar um profissional."
+      ],
+      "correctAnswer": "A escovação ajuda a remover restos de alimentos dos dentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A escovação substitui toda alimentação.": [
+          "TRANSFER_ORAL_CARE"
+        ],
+        "A escova deve ser compartilhada por todos.": [
+          "TRANSFER_ORAL_CARE"
+        ],
+        "A escovação garante que nunca será preciso consultar um profissional.": [
+          "TRANSFER_ORAL_CARE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BRUSHING_HOME_SCHOOL",
+      "explanation": "A ação integra o cuidado da boca, sem substituir outras orientações ou recursos de saúde.",
+      "hint": "Pense no que a escovação ajuda a remover.",
+      "errorFocus": "TRANSFER_ORAL_CARE",
+      "feedback": {
+        "correct": "Boa observação: A ação integra o cuidado da boca, sem substituir outras orientações ou recursos de saúde.",
+        "incorrect": "A ação integra o cuidado da boca, sem substituir outras orientações ou recursos de saúde.",
+        "hint": "Pense no que a escovação ajuda a remover.",
+        "errorFocus": "TRANSFER_ORAL_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-20",
+      "statement": "Um cartaz diz: “Lave as mãos e você nunca ficará doente”. Como torná-lo mais preciso?",
+      "prompt": "Um cartaz diz: “Lave as mãos e você nunca ficará doente”. Como torná-lo mais preciso?",
+      "options": [
+        "“A higiene não serve para nada.”",
+        "“Quem adoece não lavou as mãos.”",
+        "“Lavar as mãos elimina todos os microrganismos do mundo.”",
+        "“Lavar as mãos ajuda a remover sujeira e pode reduzir alguns riscos.”"
+      ],
+      "correctAnswer": "“Lavar as mãos ajuda a remover sujeira e pode reduzir alguns riscos.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“A higiene não serve para nada.”": [
+          "TRANSFER_REVISE_ABSOLUTE"
+        ],
+        "“Quem adoece não lavou as mãos.”": [
+          "TRANSFER_REVISE_ABSOLUTE"
+        ],
+        "“Lavar as mãos elimina todos os microrganismos do mundo.”": [
+          "TRANSFER_REVISE_ABSOLUTE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ABSOLUTE_PROMISE",
+      "explanation": "A revisão mantém a utilidade do hábito e retira uma promessa impossível de garantir.",
+      "hint": "Troque a garantia total por uma explicação proporcional.",
+      "errorFocus": "TRANSFER_REVISE_ABSOLUTE",
+      "feedback": {
+        "correct": "Boa observação: A revisão mantém a utilidade do hábito e retira uma promessa impossível de garantir.",
+        "incorrect": "A revisão mantém a utilidade do hábito e retira uma promessa impossível de garantir.",
+        "hint": "Troque a garantia total por uma explicação proporcional.",
+        "errorFocus": "TRANSFER_REVISE_ABSOLUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-21",
+      "statement": "Uma criança sente desconforto com a textura do sabonete. Qual resposta pode apoiar sua participação?",
+      "prompt": "Uma criança sente desconforto com a textura do sabonete. Qual resposta pode apoiar sua participação?",
+      "options": [
+        "Conversar discretamente com responsáveis e equipe para buscar uma adaptação segura.",
+        "Obrigá-la e expô-la diante da turma.",
+        "Dizer que não quer cuidar da saúde.",
+        "Pedir que colegas decidam por ela."
+      ],
+      "correctAnswer": "Conversar discretamente com responsáveis e equipe para buscar uma adaptação segura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Obrigá-la e expô-la diante da turma.": [
+          "TRANSFER_SENSORY_RESPECT"
+        ],
+        "Dizer que não quer cuidar da saúde.": [
+          "TRANSFER_SENSORY_RESPECT"
+        ],
+        "Pedir que colegas decidam por ela.": [
+          "TRANSFER_SENSORY_RESPECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SENSORY_ADAPTATION",
+      "explanation": "Apoios devem considerar necessidades individuais sem rotular nem constranger.",
+      "hint": "Procure apoio combinado e respeito à experiência da criança.",
+      "errorFocus": "TRANSFER_SENSORY_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Apoios devem considerar necessidades individuais sem rotular nem constranger.",
+        "incorrect": "Apoios devem considerar necessidades individuais sem rotular nem constranger.",
+        "hint": "Procure apoio combinado e respeito à experiência da criança.",
+        "errorFocus": "TRANSFER_SENSORY_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-22",
+      "statement": "Uma pessoa ficou resfriada apesar de manter hábitos de higiene. Qual conclusão é justa?",
+      "prompt": "Uma pessoa ficou resfriada apesar de manter hábitos de higiene. Qual conclusão é justa?",
+      "options": [
+        "A pessoa certamente fez algo errado.",
+        "Hábitos podem ajudar, mas não impedem toda doença e não justificam culpar alguém.",
+        "Higiene garante que ninguém adoeça.",
+        "Não existe relação entre cuidado e saúde."
+      ],
+      "correctAnswer": "Hábitos podem ajudar, mas não impedem toda doença e não justificam culpar alguém.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A pessoa certamente fez algo errado.": [
+          "TRANSFER_AVOID_BLAME"
+        ],
+        "Higiene garante que ninguém adoeça.": [
+          "TRANSFER_AVOID_BLAME"
+        ],
+        "Não existe relação entre cuidado e saúde.": [
+          "TRANSFER_AVOID_BLAME"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "HEALTH_BLAME",
+      "explanation": "A higiene pode reduzir alguns riscos, mas doenças têm diferentes causas.",
+      "hint": "Evite transformar uma doença em julgamento de caráter.",
+      "errorFocus": "TRANSFER_AVOID_BLAME",
+      "feedback": {
+        "correct": "Boa observação: A higiene pode reduzir alguns riscos, mas doenças têm diferentes causas.",
+        "incorrect": "A higiene pode reduzir alguns riscos, mas doenças têm diferentes causas.",
+        "hint": "Evite transformar uma doença em julgamento de caráter.",
+        "errorFocus": "TRANSFER_AVOID_BLAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-23",
+      "statement": "A turma precisa organizar uma rotina de cuidado antes de uma refeição. Qual plano é mais adequado?",
+      "prompt": "A turma precisa organizar uma rotina de cuidado antes de uma refeição. Qual plano é mais adequado?",
+      "options": [
+        "Exigir a mesma execução sem considerar adaptações.",
+        "Comparar quem terminou primeiro.",
+        "Combinar etapas acessíveis de lavagem das mãos e apoio adulto quando necessário.",
+        "Usar produtos sem verificar orientação e segurança."
+      ],
+      "correctAnswer": "Combinar etapas acessíveis de lavagem das mãos e apoio adulto quando necessário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Exigir a mesma execução sem considerar adaptações.": [
+          "TRANSFER_PLAN_ACCESSIBLE_ROUTINE"
+        ],
+        "Comparar quem terminou primeiro.": [
+          "TRANSFER_PLAN_ACCESSIBLE_ROUTINE"
+        ],
+        "Usar produtos sem verificar orientação e segurança.": [
+          "TRANSFER_PLAN_ACCESSIBLE_ROUTINE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_CARE_ROUTINE",
+      "explanation": "Uma rotina pode orientar o grupo e incluir os apoios e recursos disponíveis.",
+      "hint": "Inclua etapas, acesso e participação segura.",
+      "errorFocus": "TRANSFER_PLAN_ACCESSIBLE_ROUTINE",
+      "feedback": {
+        "correct": "Boa observação: Uma rotina pode orientar o grupo e incluir os apoios e recursos disponíveis.",
+        "incorrect": "Uma rotina pode orientar o grupo e incluir os apoios e recursos disponíveis.",
+        "hint": "Inclua etapas, acesso e participação segura.",
+        "errorFocus": "TRANSFER_PLAN_ACCESSIBLE_ROUTINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-24",
+      "statement": "Uma colega não tem um item pessoal de higiene naquele dia. O que ajuda a manter aprendizagem e respeito?",
+      "prompt": "Uma colega não tem um item pessoal de higiene naquele dia. O que ajuda a manter aprendizagem e respeito?",
+      "options": [
+        "Interromper a aula para apontá-la.",
+        "Concluir que sua família não se importa.",
+        "Retirá-la da conversa sobre saúde.",
+        "Discutir a razão geral do hábito e buscar apoio privado, sem expor a colega."
+      ],
+      "correctAnswer": "Discutir a razão geral do hábito e buscar apoio privado, sem expor a colega.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Interromper a aula para apontá-la.": [
+          "TRANSFER_PRIVACY_AND_ACCESS"
+        ],
+        "Concluir que sua família não se importa.": [
+          "TRANSFER_PRIVACY_AND_ACCESS"
+        ],
+        "Retirá-la da conversa sobre saúde.": [
+          "TRANSFER_PRIVACY_AND_ACCESS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "HYGIENE_AND_CONTEXT",
+      "explanation": "O conteúdo pode ser estudado sem transformar condições pessoais em exemplo público.",
+      "hint": "Separe o aprendizado sobre hábitos da exposição individual.",
+      "errorFocus": "TRANSFER_PRIVACY_AND_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo pode ser estudado sem transformar condições pessoais em exemplo público.",
+        "incorrect": "O conteúdo pode ser estudado sem transformar condições pessoais em exemplo público.",
+        "hint": "Separe o aprendizado sobre hábitos da exposição individual.",
+        "errorFocus": "TRANSFER_PRIVACY_AND_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-25",
+      "statement": "Qual explicação conecta lavar as mãos antes de comer à manutenção da saúde?",
+      "prompt": "Qual explicação conecta lavar as mãos antes de comer à manutenção da saúde?",
+      "options": [
+        "Ajuda a remover sujeira e pode reduzir alguns riscos antes de tocar na comida.",
+        "Garante que nenhuma doença aconteça.",
+        "Serve para identificar quem é cuidadoso.",
+        "Faz os alimentos deixarem de precisar de preparo."
+      ],
+      "correctAnswer": "Ajuda a remover sujeira e pode reduzir alguns riscos antes de tocar na comida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Garante que nenhuma doença aconteça.": [
+          "LOCK_IN_REASONING"
+        ],
+        "Serve para identificar quem é cuidadoso.": [
+          "LOCK_IN_REASONING"
+        ],
+        "Faz os alimentos deixarem de precisar de preparo.": [
+          "LOCK_IN_REASONING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_HANDS",
+      "explanation": "A resposta relaciona ação, contexto e benefício sem promessa absoluta.",
+      "hint": "Inclua o que a lavagem remove e quando acontece.",
+      "errorFocus": "LOCK_IN_REASONING",
+      "feedback": {
+        "correct": "Boa observação: A resposta relaciona ação, contexto e benefício sem promessa absoluta.",
+        "incorrect": "A resposta relaciona ação, contexto e benefício sem promessa absoluta.",
+        "hint": "Inclua o que a lavagem remove e quando acontece.",
+        "errorFocus": "LOCK_IN_REASONING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-26",
+      "statement": "O que escovar os dentes ajuda a fazer?",
+      "prompt": "O que escovar os dentes ajuda a fazer?",
+      "options": [
+        "Limpar o interior do ouvido.",
+        "Remover restos de alimentos e cuidar da boca.",
+        "Substituir todas as refeições.",
+        "Garantir que nunca exista problema de saúde."
+      ],
+      "correctAnswer": "Remover restos de alimentos e cuidar da boca.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Limpar o interior do ouvido.": [
+          "LOCK_IN_ORAL_CARE"
+        ],
+        "Substituir todas as refeições.": [
+          "LOCK_IN_ORAL_CARE"
+        ],
+        "Garantir que nunca exista problema de saúde.": [
+          "LOCK_IN_ORAL_CARE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_TEETH",
+      "explanation": "A razão se refere ao cuidado com a boca.",
+      "hint": "Pense na parte do corpo e no que fica após comer.",
+      "errorFocus": "LOCK_IN_ORAL_CARE",
+      "feedback": {
+        "correct": "Boa observação: A razão se refere ao cuidado com a boca.",
+        "incorrect": "A razão se refere ao cuidado com a boca.",
+        "hint": "Pense na parte do corpo e no que fica após comer.",
+        "errorFocus": "LOCK_IN_ORAL_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-27",
+      "statement": "Qual frase conversa sobre higiene sem culpar uma pessoa?",
+      "prompt": "Qual frase conversa sobre higiene sem culpar uma pessoa?",
+      "options": [
+        "“Quem não faz isso não merece participar.”",
+        "“A pessoa adoeceu por ser descuidada.”",
+        "“Vamos conversar sobre como esse hábito ajuda e sobre o apoio que pode estar disponível.”",
+        "“Vamos publicar quem não trouxe material.”"
+      ],
+      "correctAnswer": "“Vamos conversar sobre como esse hábito ajuda e sobre o apoio que pode estar disponível.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Quem não faz isso não merece participar.”": [
+          "LOCK_IN_DIGNITY"
+        ],
+        "“A pessoa adoeceu por ser descuidada.”": [
+          "LOCK_IN_DIGNITY"
+        ],
+        "“Vamos publicar quem não trouxe material.”": [
+          "LOCK_IN_DIGNITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_NO_SHAME",
+      "explanation": "A fala mantém foco no hábito e no apoio, sem vergonha ou exclusão.",
+      "hint": "Escolha a frase que fala do cuidado, não do valor de alguém.",
+      "errorFocus": "LOCK_IN_DIGNITY",
+      "feedback": {
+        "correct": "Boa observação: A fala mantém foco no hábito e no apoio, sem vergonha ou exclusão.",
+        "incorrect": "A fala mantém foco no hábito e no apoio, sem vergonha ou exclusão.",
+        "hint": "Escolha a frase que fala do cuidado, não do valor de alguém.",
+        "errorFocus": "LOCK_IN_DIGNITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-28",
+      "statement": "Qual orientação respeita segurança ao conversar sobre olhos, nariz e orelhas?",
+      "prompt": "Qual orientação respeita segurança ao conversar sobre olhos, nariz e orelhas?",
+      "options": [
+        "Introduzir objetos para limpar por dentro.",
+        "Usar qualquer produto sem orientação.",
+        "Pedir a uma criança que faça procedimento em outra.",
+        "Tratar apenas cuidados externos e pedir orientação a um adulto responsável."
+      ],
+      "correctAnswer": "Tratar apenas cuidados externos e pedir orientação a um adulto responsável.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Introduzir objetos para limpar por dentro.": [
+          "LOCK_IN_SAFETY_BOUNDARY"
+        ],
+        "Usar qualquer produto sem orientação.": [
+          "LOCK_IN_SAFETY_BOUNDARY"
+        ],
+        "Pedir a uma criança que faça procedimento em outra.": [
+          "LOCK_IN_SAFETY_BOUNDARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_SAFE_BOUNDARY",
+      "explanation": "A atividade não ensina procedimentos internos nem substitui orientação responsável.",
+      "hint": "Escolha a alternativa que evita objetos e produtos sem orientação.",
+      "errorFocus": "LOCK_IN_SAFETY_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: A atividade não ensina procedimentos internos nem substitui orientação responsável.",
+        "incorrect": "A atividade não ensina procedimentos internos nem substitui orientação responsável.",
+        "hint": "Escolha a alternativa que evita objetos e produtos sem orientação.",
+        "errorFocus": "LOCK_IN_SAFETY_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-29",
+      "statement": "Qual afirmação explica melhor os limites dos hábitos de higiene?",
+      "prompt": "Qual afirmação explica melhor os limites dos hábitos de higiene?",
+      "options": [
+        "Eles contribuem para o cuidado e podem reduzir alguns riscos, mas não garantem que ninguém adoeça.",
+        "Eles não têm nenhum benefício.",
+        "Eles impedem toda doença sempre.",
+        "Eles permitem saber quem causou uma doença."
+      ],
+      "correctAnswer": "Eles contribuem para o cuidado e podem reduzir alguns riscos, mas não garantem que ninguém adoeça.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Eles não têm nenhum benefício.": [
+          "LOCK_IN_NO_ABSOLUTES"
+        ],
+        "Eles impedem toda doença sempre.": [
+          "LOCK_IN_NO_ABSOLUTES"
+        ],
+        "Eles permitem saber quem causou uma doença.": [
+          "LOCK_IN_NO_ABSOLUTES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_LIMITS",
+      "explanation": "A explicação reconhece benefícios e limites.",
+      "hint": "Evite as palavras “sempre” e “nunca” como garantia.",
+      "errorFocus": "LOCK_IN_NO_ABSOLUTES",
+      "feedback": {
+        "correct": "Boa observação: A explicação reconhece benefícios e limites.",
+        "incorrect": "A explicação reconhece benefícios e limites.",
+        "hint": "Evite as palavras “sempre” e “nunca” como garantia.",
+        "errorFocus": "LOCK_IN_NO_ABSOLUTES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-30",
+      "statement": "Uma rotina escolar precisa incluir crianças com diferentes necessidades de apoio. Qual escolha é mais coerente?",
+      "prompt": "Uma rotina escolar precisa incluir crianças com diferentes necessidades de apoio. Qual escolha é mais coerente?",
+      "options": [
+        "Excluir quem precisa de adaptação.",
+        "Planejar recursos e modos de participação acessíveis, preservando privacidade e dignidade.",
+        "Usar a mesma ferramenta sem perguntar.",
+        "Avaliar a saúde pessoal de cada criança."
+      ],
+      "correctAnswer": "Planejar recursos e modos de participação acessíveis, preservando privacidade e dignidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Excluir quem precisa de adaptação.": [
+          "LOCK_IN_ACCESSIBLE_CARE"
+        ],
+        "Usar a mesma ferramenta sem perguntar.": [
+          "LOCK_IN_ACCESSIBLE_CARE"
+        ],
+        "Avaliar a saúde pessoal de cada criança.": [
+          "LOCK_IN_ACCESSIBLE_CARE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_ACCESS",
+      "explanation": "A inclusão requer apoios ajustados sem exposição da vida pessoal.",
+      "hint": "Pense em participação, escolha e privacidade.",
+      "errorFocus": "LOCK_IN_ACCESSIBLE_CARE",
+      "feedback": {
+        "correct": "Boa observação: A inclusão requer apoios ajustados sem exposição da vida pessoal.",
+        "incorrect": "A inclusão requer apoios ajustados sem exposição da vida pessoal.",
+        "hint": "Pense em participação, escolha e privacidade.",
+        "errorFocus": "LOCK_IN_ACCESSIBLE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-31",
+      "statement": "Qual hábito ajuda a remover sujeira das mãos antes de comer?",
+      "prompt": "Qual hábito ajuda a remover sujeira das mãos antes de comer?",
+      "options": [
+        "Compartilhar um lenço usado.",
+        "Tocar em todos os objetos primeiro.",
+        "Lavar as mãos.",
+        "Esconder as mãos."
+      ],
+      "correctAnswer": "Lavar as mãos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Compartilhar um lenço usado.": [
+          "REVIEW_HAND_HYGIENE"
+        ],
+        "Tocar em todos os objetos primeiro.": [
+          "REVIEW_HAND_HYGIENE"
+        ],
+        "Esconder as mãos.": [
+          "REVIEW_HAND_HYGIENE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_HANDS",
+      "explanation": "Lavar as mãos ajuda a remover sujeira antes da refeição.",
+      "hint": "Lembre-se da rotina antes de tocar na comida.",
+      "errorFocus": "REVIEW_HAND_HYGIENE",
+      "feedback": {
+        "correct": "Boa observação: Lavar as mãos ajuda a remover sujeira antes da refeição.",
+        "incorrect": "Lavar as mãos ajuda a remover sujeira antes da refeição.",
+        "hint": "Lembre-se da rotina antes de tocar na comida.",
+        "errorFocus": "REVIEW_HAND_HYGIENE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-32",
+      "statement": "Escovar os dentes ajuda a cuidar de qual parte do corpo?",
+      "prompt": "Escovar os dentes ajuda a cuidar de qual parte do corpo?",
+      "options": [
+        "Dos ouvidos.",
+        "Dos cotovelos.",
+        "Da sola dos sapatos.",
+        "Da boca e dos dentes."
+      ],
+      "correctAnswer": "Da boca e dos dentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dos ouvidos.": [
+          "REVIEW_ORAL_CARE"
+        ],
+        "Dos cotovelos.": [
+          "REVIEW_ORAL_CARE"
+        ],
+        "Da sola dos sapatos.": [
+          "REVIEW_ORAL_CARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_TEETH",
+      "explanation": "A escovação é um hábito de cuidado com a boca.",
+      "hint": "Pense onde a escova de dentes é usada.",
+      "errorFocus": "REVIEW_ORAL_CARE",
+      "feedback": {
+        "correct": "Boa observação: A escovação é um hábito de cuidado com a boca.",
+        "incorrect": "A escovação é um hábito de cuidado com a boca.",
+        "hint": "Pense onde a escova de dentes é usada.",
+        "errorFocus": "REVIEW_ORAL_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-33",
+      "statement": "Por que hábitos de higiene são discutidos em Ciências?",
+      "prompt": "Por que hábitos de higiene são discutidos em Ciências?",
+      "options": [
+        "Porque ajudam a pensar em cuidados do corpo e manutenção da saúde.",
+        "Para julgar famílias.",
+        "Para comparar aparência de colegas.",
+        "Para garantir que ninguém adoeça."
+      ],
+      "correctAnswer": "Porque ajudam a pensar em cuidados do corpo e manutenção da saúde.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para julgar famílias.": [
+          "REVIEW_PURPOSE"
+        ],
+        "Para comparar aparência de colegas.": [
+          "REVIEW_PURPOSE"
+        ],
+        "Para garantir que ninguém adoeça.": [
+          "REVIEW_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_REASON",
+      "explanation": "A conversa relaciona hábitos a saúde, não a julgamentos pessoais.",
+      "hint": "Escolha a resposta que explica o propósito de cuidado.",
+      "errorFocus": "REVIEW_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A conversa relaciona hábitos a saúde, não a julgamentos pessoais.",
+        "incorrect": "A conversa relaciona hábitos a saúde, não a julgamentos pessoais.",
+        "hint": "Escolha a resposta que explica o propósito de cuidado.",
+        "errorFocus": "REVIEW_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-34",
+      "statement": "Qual frase descreve um benefício sem exagerar?",
+      "prompt": "Qual frase descreve um benefício sem exagerar?",
+      "options": [
+        "“Lavar as mãos impede todas as doenças.”",
+        "“Lavar as mãos ajuda a remover sujeira e pode reduzir alguns riscos.”",
+        "“Quem adoece não se cuidou.”",
+        "“A higiene nunca tem utilidade.”"
+      ],
+      "correctAnswer": "“Lavar as mãos ajuda a remover sujeira e pode reduzir alguns riscos.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Lavar as mãos impede todas as doenças.”": [
+          "REVIEW_PROPORTIONATE_CLAIM"
+        ],
+        "“Quem adoece não se cuidou.”": [
+          "REVIEW_PROPORTIONATE_CLAIM"
+        ],
+        "“A higiene nunca tem utilidade.”": [
+          "REVIEW_PROPORTIONATE_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_REDUCTION",
+      "explanation": "A frase é cuidadosa e não faz promessa absoluta.",
+      "hint": "Procure uma explicação com limite realista.",
+      "errorFocus": "REVIEW_PROPORTIONATE_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A frase é cuidadosa e não faz promessa absoluta.",
+        "incorrect": "A frase é cuidadosa e não faz promessa absoluta.",
+        "hint": "Procure uma explicação com limite realista.",
+        "errorFocus": "REVIEW_PROPORTIONATE_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-35",
+      "statement": "Depois de brincar no pátio, qual hábito pode ser feito antes de um lanche?",
+      "prompt": "Depois de brincar no pátio, qual hábito pode ser feito antes de um lanche?",
+      "options": [
+        "Tocar na comida sem olhar as mãos.",
+        "Usar um objeto para limpar o ouvido.",
+        "Lavar as mãos, com o apoio necessário.",
+        "Comparar as mãos com as de outra criança."
+      ],
+      "correctAnswer": "Lavar as mãos, com o apoio necessário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tocar na comida sem olhar as mãos.": [
+          "REVIEW_TRANSFER"
+        ],
+        "Usar um objeto para limpar o ouvido.": [
+          "REVIEW_TRANSFER"
+        ],
+        "Comparar as mãos com as de outra criança.": [
+          "REVIEW_TRANSFER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_BEFORE_EATING",
+      "explanation": "A rotina aplica o hábito ao contexto de mãos que podem estar sujas.",
+      "hint": "Considere o que aconteceu antes do lanche.",
+      "errorFocus": "REVIEW_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: A rotina aplica o hábito ao contexto de mãos que podem estar sujas.",
+        "incorrect": "A rotina aplica o hábito ao contexto de mãos que podem estar sujas.",
+        "hint": "Considere o que aconteceu antes do lanche.",
+        "errorFocus": "REVIEW_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-36",
+      "statement": "Ao conversar sobre limpar nariz ou orelhas, qual limite de segurança devemos lembrar?",
+      "prompt": "Ao conversar sobre limpar nariz ou orelhas, qual limite de segurança devemos lembrar?",
+      "options": [
+        "Usar objetos pequenos para alcançar o interior.",
+        "Compartilhar qualquer ferramenta.",
+        "Pedir que colegas façam a limpeza.",
+        "Não introduzir objetos nem produtos sem orientação de um adulto responsável."
+      ],
+      "correctAnswer": "Não introduzir objetos nem produtos sem orientação de um adulto responsável.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar objetos pequenos para alcançar o interior.": [
+          "REVIEW_SAFETY"
+        ],
+        "Compartilhar qualquer ferramenta.": [
+          "REVIEW_SAFETY"
+        ],
+        "Pedir que colegas façam a limpeza.": [
+          "REVIEW_SAFETY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_EXTERNAL",
+      "explanation": "A orientação evita práticas internas e encaminha dúvidas a adultos responsáveis.",
+      "hint": "Lembre-se do cuidado externo e seguro.",
+      "errorFocus": "REVIEW_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: A orientação evita práticas internas e encaminha dúvidas a adultos responsáveis.",
+        "incorrect": "A orientação evita práticas internas e encaminha dúvidas a adultos responsáveis.",
+        "hint": "Lembre-se do cuidado externo e seguro.",
+        "errorFocus": "REVIEW_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-37",
+      "statement": "Como falar sobre uma rotina de higiene quando os recursos disponíveis variam?",
+      "prompt": "Como falar sobre uma rotina de higiene quando os recursos disponíveis variam?",
+      "options": [
+        "Conversar sem expor nem culpar e buscar apoio respeitosamente.",
+        "Publicar quem não tem um material.",
+        "Concluir que alguém não quer se cuidar.",
+        "Excluir a criança da atividade."
+      ],
+      "correctAnswer": "Conversar sem expor nem culpar e buscar apoio respeitosamente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar quem não tem um material.": [
+          "REVIEW_ACCESS_RESPECT"
+        ],
+        "Concluir que alguém não quer se cuidar.": [
+          "REVIEW_ACCESS_RESPECT"
+        ],
+        "Excluir a criança da atividade.": [
+          "REVIEW_ACCESS_RESPECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPECT",
+      "contextFamily": "REVIEW_ACCESS",
+      "explanation": "Acesso desigual deve ser tratado com privacidade e apoio.",
+      "hint": "Escolha a ação que preserva a dignidade.",
+      "errorFocus": "REVIEW_ACCESS_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Acesso desigual deve ser tratado com privacidade e apoio.",
+        "incorrect": "Acesso desigual deve ser tratado com privacidade e apoio.",
+        "hint": "Escolha a ação que preserva a dignidade.",
+        "errorFocus": "REVIEW_ACCESS_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-38",
+      "statement": "Qual explicação relaciona de forma razoável uma ação de higiene a um motivo?",
+      "prompt": "Qual explicação relaciona de forma razoável uma ação de higiene a um motivo?",
+      "options": [
+        "Escovar os dentes faz a comida mudar de cor.",
+        "Lavar as mãos antes de comer ajuda a remover sujeira das mãos.",
+        "Lavar as mãos garante ausência total de doenças.",
+        "Limpar as orelhas muda a cor dos olhos."
+      ],
+      "correctAnswer": "Lavar as mãos antes de comer ajuda a remover sujeira das mãos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escovar os dentes faz a comida mudar de cor.": [
+          "REVIEW_CAUSE_AND_EFFECT"
+        ],
+        "Lavar as mãos garante ausência total de doenças.": [
+          "REVIEW_CAUSE_AND_EFFECT"
+        ],
+        "Limpar as orelhas muda a cor dos olhos.": [
+          "REVIEW_CAUSE_AND_EFFECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_CAUSE",
+      "explanation": "A relação entre ação e motivo é observável e não exagera seus efeitos.",
+      "hint": "Escolha a explicação que conecta hábito e cuidado.",
+      "errorFocus": "REVIEW_CAUSE_AND_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: A relação entre ação e motivo é observável e não exagera seus efeitos.",
+        "incorrect": "A relação entre ação e motivo é observável e não exagera seus efeitos.",
+        "hint": "Escolha a explicação que conecta hábito e cuidado.",
+        "errorFocus": "REVIEW_CAUSE_AND_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-39",
+      "statement": "Qual registro mostra compreensão do motivo de um hábito?",
+      "prompt": "Qual registro mostra compreensão do motivo de um hábito?",
+      "options": [
+        "“É a criança mais limpa.”",
+        "“Nunca fica doente.”",
+        "“Explicou que lavar as mãos antes do lanche ajuda a retirar sujeira.”",
+        "“Sua família faz tudo certo.”"
+      ],
+      "correctAnswer": "“Explicou que lavar as mãos antes do lanche ajuda a retirar sujeira.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“É a criança mais limpa.”": [
+          "REVIEW_OBSERVABLE_EVIDENCE"
+        ],
+        "“Nunca fica doente.”": [
+          "REVIEW_OBSERVABLE_EVIDENCE"
+        ],
+        "“Sua família faz tudo certo.”": [
+          "REVIEW_OBSERVABLE_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_EVIDENCE",
+      "explanation": "O registro descreve uma explicação observável, não características pessoais.",
+      "hint": "Anote o que a criança disse sobre o hábito.",
+      "errorFocus": "REVIEW_OBSERVABLE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O registro descreve uma explicação observável, não características pessoais.",
+        "incorrect": "O registro descreve uma explicação observável, não características pessoais.",
+        "hint": "Anote o que a criança disse sobre o hábito.",
+        "errorFocus": "REVIEW_OBSERVABLE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-body-hygiene-fi-40",
+      "statement": "Se uma criança acredita que higiene impede toda doença, qual retomada ajuda?",
+      "prompt": "Se uma criança acredita que higiene impede toda doença, qual retomada ajuda?",
+      "options": [
+        "Dizer que ela está errada e encerrar.",
+        "Culpar alguém que adoeceu.",
+        "Abandonar qualquer conversa sobre higiene.",
+        "Comparar “reduzir alguns riscos” com “garantir que nunca aconteça” usando um exemplo simples."
+      ],
+      "correctAnswer": "Comparar “reduzir alguns riscos” com “garantir que nunca aconteça” usando um exemplo simples.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que ela está errada e encerrar.": [
+          "REVIEW_CORRECT_OVERCLAIM"
+        ],
+        "Culpar alguém que adoeceu.": [
+          "REVIEW_CORRECT_OVERCLAIM"
+        ],
+        "Abandonar qualquer conversa sobre higiene.": [
+          "REVIEW_CORRECT_OVERCLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEXT_STEP",
+      "explanation": "A comparação esclarece benefício e limite sem culpar a criança.",
+      "hint": "Retome a diferença entre ajudar e garantir.",
+      "errorFocus": "REVIEW_CORRECT_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: A comparação esclarece benefício e limite sem culpar a criança.",
+        "incorrect": "A comparação esclarece benefício e limite sem culpar a criança.",
+        "hint": "Retome a diferença entre ajudar e garantir.",
+        "errorFocus": "REVIEW_CORRECT_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Rotina visual ou sequência de imagens, objetos de demonstração seguros e instruções em etapas curtas.",
+          "Possibilidade de responder por fala, apontar, comunicação alternativa, desenho ou seleção de cartões.",
+          "Adaptação de materiais e apoio motor/sensorial sem presumir que todas as crianças usam os mesmos recursos.",
+          "Exemplos que não exponham condições de higiene, renda, deficiência ou saúde de uma criança."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

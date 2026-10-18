@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "tec-escola.bncc.mass-authoring-checkpoint.v1",
+  "campaign": "TECESCOLA_BNCC_AUTOPILOT_MASS_AUTHORING",
+  "snapshotDate": "2026-10-18",
+  "branch": "codex/bncc-question-first-adaptive-tutor-v5",
+  "baseHead": "530c01ef10cdde65f12b828f12d14071528f4098",
+  "state": "PR_UPDATE_PENDING_WITH_FULL_SUITE_TIMEOUTS",
+  "authoringInfrastructure": {
+    "declarativeRegistry": true,
+    "sourceExactMatchRequired": true,
+    "sharedQualityRubric": true,
+    "producerDiscoveryIsDynamic": true,
+    "sourceVerificationAndHumanReviewAreSeparate": true
+  },
+  "newRealContentPackages": {
+    "count": 13,
+    "briefsConverted": 13,
+    "officialCodes": [
+      "EF01CI03",
+      "EF01CI06",
+      "EF01CO01",
+      "EF01CO02",
+      "EF01CO03",
+      "EF01CO04",
+      "EF01CO05",
+      "EF01CO06",
+      "EF01CO07",
+      "EF01GE01",
+      "EF01HI01",
+      "EF01LP01",
+      "EF01LP02"
+    ],
+    "questionCountPerPackage": 40,
+    "allPackagesRemainInactive": true,
+    "allMappingsRemainUnclaimed": true,
+    "pedagogicalReviewPending": true
+  },
+  "completenessReevaluation": {
+    "beforeLegacyCountScreenComplete": 20,
+    "beforePackagesPassingStrictRubric": 4,
+    "legacyPackagesFailingStrictRubric": 16,
+    "afterStrictTechnicalComplete": 17,
+    "afterLegacyCountScreenComplete": 33,
+    "contentMissingAgainst1721Nodes": 1704,
+    "verifiedSourceTasks": 561,
+    "verifiedTasksWithoutRegisteredProducer": 528,
+    "queueNodes": 1721,
+    "queueHash": "91976273f5e305753ae8fb5492fb37fb76393bb734a1e69af58e3be3cc23637a"
+  },
+  "validationSnapshot": {
+    "officialSourceAndCatalogIntegrity": "PASS",
+    "authoringPackageRubric": "PASS",
+    "adaptiveQuestionFirstPackValidation": "PASS",
+    "knowledgeFactoryV4": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "fullTestSuite": "FAIL_22_OF_2585",
+    "fullTestSuitePassed": 2507,
+    "fullTestSuiteFailed": 22,
+    "fullTestSuiteSkipped": 56,
+    "fullTestSuiteFilesPassed": 468,
+    "fullTestSuiteFilesFailed": 6,
+    "fullTestSuiteFilesSkipped": 11,
+    "fullTestSuiteTimedOut": 21,
+    "fullTestSuiteStaleExpectationFixedAfterRun": 1,
+    "focusedCampaignTests": "PASS_120_OF_120"
+  },
+  "nextAuthorableBatch": [
+    "EF01CI01",
+    "EF01CI02",
+    "EF01CI04",
+    "EF01CI05"
+  ],
+  "executorActive": false,
+  "supervisorActive": false,
+  "productionWrites": "NONE",
+  "publicationAuthorized": false,
+  "mergeAuthorized": false
+}

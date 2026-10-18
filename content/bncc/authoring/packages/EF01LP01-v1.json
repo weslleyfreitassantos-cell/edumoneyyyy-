@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-portuguese-reading-direction-fi",
+  "officialCode": "EF01LP01",
+  "outputPath": "content/adaptive/tec-escola-core-v5/v1-portuguese-reading-direction-fi.json",
+  "canonicalSkillCode": "AUTHORING_EF01LP01_TEXT_DIRECTION",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "direção e percurso de leitura e escrita na página",
+  "officialDescriptor": "Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+  "officialSource": {
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 101
+  },
+  "lesson": {
+    "title": "Seguir o caminho do texto",
+    "objective": "Reconhecer e demonstrar que, em textos em português, acompanhamos as linhas da esquerda para a direita e avançamos de cima para baixo na página.",
+    "summary": "A posição das linhas organiza o percurso do olhar. Acompanhá-las ajuda a localizar onde começar, continuar e passar para a linha seguinte.",
+    "explanation": "## 1. Encontre o começo\nEm uma linha de texto em português, começamos no lado esquerdo e acompanhamos as palavras em direção ao lado direito. Aponte a linha inteira antes de tentar ler cada palavra.\n\n## 2. Continue na página\nQuando a linha termina, procure a próxima linha abaixo. O percurso segue de cima para baixo. Em uma lista, por exemplo, primeiro acompanhamos o item de cima e depois o item logo abaixo.\n\n## 3. Observe a organização, não só as letras\nUma criança pode demonstrar o percurso apontando, movendo um marcador, usando o olhar ou explicando a sequência. Figuras podem ajudar a localizar um texto, mas não substituem a observação de onde a linha começa e para onde continua.",
+    "workedExample": "Mostre um convite com duas linhas: “FESTA NA ESCOLA” acima e “SEXTA-FEIRA” abaixo. Acompanhe a primeira linha da esquerda para a direita; ao chegar ao fim, volte ao lado esquerdo e desça para a segunda linha.",
+    "commonMistake": "Continuar para a linha de baixo antes de percorrer a linha atual, ou seguir uma ilustração em vez da organização do texto.",
+    "tips": [
+      "Use um cartão-marcador para acompanhar uma linha de cada vez.",
+      "Convide a criança a apontar o começo e a continuação, sem exigir leitura fluente.",
+      "Diferencie a localização do texto da interpretação do que ele diz.",
+      "Respeite pausas, retomadas e diferentes formas de apontar ou responder."
+    ],
+    "priorKnowledge": [
+      "Perceber textos em materiais do cotidiano, como livros, listas e placas.",
+      "Participar de situações de leitura compartilhada com um adulto ou colega."
+    ],
+    "keyConcepts": [
+      "linha de texto",
+      "ponto de início",
+      "esquerda para direita",
+      "continuação da linha",
+      "linha seguinte",
+      "cima para baixo",
+      "marcador de leitura",
+      "texto e ilustração"
+    ],
+    "microExplanations": [
+      { "trigger": "START_AT_LEFT", "text": "Localize o começo da linha no lado esquerdo e acompanhe até o lado direito." },
+      { "trigger": "MOVE_TO_NEXT_LINE", "text": "Depois de percorrer a linha atual, procure a próxima logo abaixo e retome do lado esquerdo." },
+      { "trigger": "TRACK_TEXT_NOT_IMAGE", "text": "A figura pode orientar a localização, mas o percurso observado é o das linhas de texto." }
+    ],
+    "remediations": [
+      { "errorFocus": "STARTS_AT_WRONG_SIDE", "action": "Use uma linha curta em cartão ampliado; peça que a criança localize o início e acompanhe com régua ou dedo." },
+      { "errorFocus": "SKIPS_CURRENT_LINE", "action": "Cubra as demais linhas e revele a linha seguinte somente depois de percorrer a atual." },
+      { "errorFocus": "FOLLOWS_ILLUSTRATION", "action": "Apresente texto e imagem em cartões separados e compare qual deles contém a linha que será acompanhada." }
+    ],
+    "accessibilitySupports": [
+      "Texto ampliado, alto contraste e espaçamento confortável entre linhas.",
+      "Régua de leitura, cartão de foco ou recurso equivalente escolhido pela criança.",
+      "Resposta por apontar, olhar, gesto, fala, comunicação alternativa ou movimento assistido.",
+      "Leitura em voz alta e tempo flexível sem substituir a observação do percurso na página."
+    ],
+    "authenticActivities": [
+      {
+        "title": "Trilha de um aviso da turma",
+        "context": "A turma acompanha um aviso curto com duas ou três linhas e uma ilustração opcional.",
+        "steps": ["Localizar o bloco de texto.", "Apontar o começo da primeira linha.", "Acompanhar até o fim e descer para a linha seguinte.", "Demonstrar o percurso por fala, gesto ou marcador."],
+        "evidence": "Registro do ponto inicial, do percurso em cada linha e da passagem para a linha abaixo.",
+        "rubric": ["Inicial: localiza o texto com mediação.", "Em desenvolvimento: acompanha uma linha com marcador.", "Consolidado: percorre as linhas em ordem, com apoio reduzido."]
+      },
+      {
+        "title": "Lista que a sala usa",
+        "context": "Uma lista real de materiais ou combinados, impressa em letras legíveis e organizada verticalmente.",
+        "steps": ["Escolher um item da lista.", "Acompanhar a linha da esquerda para a direita.", "Localizar o item abaixo quando solicitado.", "Explicar ou mostrar como encontrou cada posição."],
+        "evidence": "Item apontado e demonstração do percurso entre a primeira e a próxima linha.",
+        "rubric": ["Inicial: precisa que a linha seja isolada.", "Em desenvolvimento: acompanha a linha e precisa de lembrete para descer.", "Consolidado: usa o percurso para localizar itens em uma lista nova."]
+      }
+    ],
+    "estimatedMinutes": 40
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY", "LOCATE", "NAME_CARD_LINE", "Um cartão mostra “LIA” em uma linha. Para acompanhar essa linha de texto em português, por onde o olhar começa?", "No lado esquerdo da linha.", ["No lado direito da linha.", "Abaixo do cartão.", "Na figura imaginada ao lado."], "STARTS_AT_WRONG_SIDE", "O percurso começa no lado esquerdo e segue pela linha em direção ao lado direito.", "Aponte o começo da própria linha, não a borda do cartão."],
+      ["EASY", "SEQUENCE", "TWO_LINE_INVITATION", "Em um convite, “VAMOS BRINCAR” está na linha de cima e “NO PÁTIO” está logo abaixo. Depois de percorrer a primeira linha, o que fazemos?", "Voltamos ao lado esquerdo e acompanhamos a linha de baixo.", ["Pulamos direto para o canto inferior direito.", "Lemos a imagem antes de continuar o texto.", "Começamos a linha de baixo pelo lado direito."], "MOVE_TO_NEXT_LINE", "A próxima linha fica abaixo e é acompanhada novamente da esquerda para a direita.", "A primeira linha já foi percorrida; procure o texto logo abaixo."],
+      ["EASY", "DEMONSTRATE", "FINGER_TRACKING", "A professora pede para mostrar como acompanha uma frase impressa. Qual ação demonstra o percurso esperado?", "Deslizar o dedo sob a frase da esquerda para a direita.", ["Pular entre letras escolhidas ao acaso.", "Mover o dedo só sobre a ilustração.", "Começar pelo fim da frase e voltar."], "TRACK_TEXT_NOT_IMAGE", "A demonstração acompanha a linha escrita, não os elementos decorativos.", "Siga a frase inteira com um movimento contínuo."],
+      ["EASY", "LOCATE", "LARGE_PRINT_CARD", "Um texto ampliado tem duas linhas bem separadas. Qual posição vem primeiro no percurso da página?", "A linha que está mais acima.", ["A linha mais abaixo.", "A linha mais próxima da borda direita.", "A linha que tem a figura maior."], "TOP_TO_BOTTOM", "O percurso passa da linha superior para a linha seguinte abaixo.", "Observe a posição vertical das duas linhas."]
+    ],
+    "PRACTICE": [
+      ["EASY", "TRACK", "RECIPE_TITLE", "Em uma receita da turma, o título aparece em uma única linha. Como acompanhá-lo?", "Do início à esquerda até o final à direita.", ["Da última palavra para a primeira.", "Da margem inferior para a superior.", "Somente seguindo o desenho do prato."], "LEFT_TO_RIGHT", "A linha de texto é percorrida na direção habitual da escrita em português.", "Imagine uma seta sob a linha, apontando para a direita."],
+      ["EASY", "LOCATE", "BOOK_SENTENCE", "Ao abrir um livro, você vê uma frase na parte superior da página. Onde começa o acompanhamento da frase?", "No início da linha, do lado esquerdo.", ["No centro da ilustração.", "No final da linha, à direita.", "No canto de baixo da página."], "STARTS_AT_WRONG_SIDE", "O ponto inicial é definido pela linha do texto, não pelo centro da página.", "Encontre a primeira posição da linha impressa."],
+      ["EASY", "SEQUENCE", "CLASSROOM_LIST", "Uma lista tem “LÁPIS” em cima e “PAPEL” logo abaixo. Para encontrar “PAPEL”, qual percurso ajuda?", "Percorrer a linha de cima e depois descer para a linha abaixo.", ["Começar no fim da linha de baixo.", "Ir da ilustração ao lado para a margem.", "Ler as duas linhas de baixo para cima."], "MOVE_TO_NEXT_LINE", "A organização vertical indica qual linha vem depois.", "Use a posição dos itens: primeiro acima, depois abaixo."],
+      ["EASY", "TRACK", "POEM_LINE", "Em uma parlenda impressa, você quer acompanhar apenas a primeira linha. O que deve fazer?", "Seguir essa linha da esquerda para a direita até o fim.", ["Descer de linha antes de chegar ao final.", "Acompanhar apenas as letras maiores.", "Seguir cada desenho da margem."], "SKIPS_CURRENT_LINE", "Percorrer a linha atual por inteiro evita saltar trechos do texto.", "Mantenha o marcador na mesma linha até o fim."],
+      ["EASY", "LOCATE", "NOTICE_BOARD", "Num aviso com três linhas, qual linha está mais perto do começo da leitura vertical?", "A linha de cima.", ["A linha do meio sempre vem primeiro.", "A linha de baixo.", "A linha mais curta, onde quer que esteja."], "TOP_TO_BOTTOM", "A sequência vertical inicia na parte superior do bloco de texto.", "Compare a altura das linhas na página."],
+      ["EASY", "TRACK", "LABEL_SHELF", "Uma etiqueta de prateleira mostra “JOGOS” em uma linha. Como se acompanha o texto?", "Da esquerda para a direita.", ["De baixo para cima.", "Da direita para a esquerda.", "Em círculo ao redor da etiqueta."], "LEFT_TO_RIGHT", "A palavra ocupa uma linha e seu percurso segue da esquerda para a direita.", "Siga a linha, não o formato da prateleira."],
+      ["MEDIUM", "SEQUENCE", "TWO_LINE_NOTE", "Um bilhete tem “OBRIGADO” na linha superior e “PELA AJUDA” abaixo. Quando a primeira linha termina, onde retomar?", "No lado esquerdo da linha inferior.", ["No lado direito da linha superior.", "No meio da página, entre os textos.", "Na última palavra do bilhete."], "LINE_RETURN_POSITION", "Ao mudar de linha, o percurso desce e recomeça à esquerda.", "Desça uma linha e volte ao começo dela."],
+      ["MEDIUM", "COMPARE", "CAPTION_AND_IMAGE", "Uma foto está acima de uma legenda. O que permite demonstrar a direção de leitura da legenda?", "Acompanhar a linha da legenda da esquerda para a direita.", ["Contornar a foto com o dedo.", "Apontar a pessoa retratada sem olhar a legenda.", "Começar pela palavra mais escura, onde estiver."], "TRACK_TEXT_NOT_IMAGE", "A posição da imagem não muda o percurso da linha escrita.", "Observe somente a linha que forma a legenda."],
+      ["MEDIUM", "SEQUENCE", "BUS_SCHEDULE", "Uma tabela simples tem duas linhas de palavras. Para passar do primeiro registro ao seguinte, qual ação combina com a organização da página?", "Depois da linha atual, olhar para a linha abaixo.", ["Subir para a linha anterior.", "Saltar para a última coluna da direita.", "Seguir a borda da folha em círculo."], "MOVE_TO_NEXT_LINE", "A próxima linha está abaixo; cada linha ainda é acompanhada da esquerda para a direita.", "Distingua a passagem vertical da leitura dentro da linha."],
+      ["MEDIUM", "DEMONSTRATE", "READING_RULER", "Uma criança usa uma régua de leitura para não perder a linha. Como deve mover a régua?", "Acompanhar a linha atual e depois descer para a próxima.", ["Pular para a última linha antes de começar.", "Mover de baixo para cima.", "Cobrir todas as linhas e adivinhar."], "SKIPS_CURRENT_LINE", "O marcador ajuda a manter o percurso sequencial, sem antecipar linhas.", "A régua apoia uma linha por vez."],
+      ["MEDIUM", "LOCATE", "DIGITAL_MESSAGE", "Uma mensagem curta aparece em duas linhas na tela. Qual critério ajuda a achar a continuação?", "A linha que está logo abaixo da primeira.", ["A parte mais colorida da tela.", "O canto direito da tela, sem olhar o texto.", "A imagem que aparece antes da mensagem."], "TOP_TO_BOTTOM", "A ordem das linhas na página ou tela continua de cima para baixo.", "Procure a posição vertical do texto seguinte."],
+      ["MEDIUM", "DISTINGUISH", "TEXT_BLOCK", "Um cartaz tem desenho no centro e duas linhas de texto à esquerda. O que deve acompanhar quem demonstra a direção do texto?", "As duas linhas, uma por vez, da esquerda para a direita.", ["O contorno do desenho.", "A cor do fundo do cartaz.", "Somente a palavra mais longa."], "TRACK_TEXT_NOT_IMAGE", "O objetivo é acompanhar as linhas escritas, independentemente da ilustração.", "Escolha uma linha escrita e siga seu percurso completo."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM", "APPLY", "PHONE_REMINDER", "Um lembrete aparece em duas linhas em um celular. Qual sequência mostra como acompanhar o texto?", "Linha superior da esquerda para a direita; depois linha inferior da esquerda para a direita.", ["Linha inferior da direita para a esquerda; depois a superior.", "Começar no meio e alternar palavras.", "Seguir primeiro o ícone e ignorar as linhas."], "TRANSFER_LINE_SEQUENCE", "A mudança de suporte não altera o percurso das linhas em português.", "Combine o percurso horizontal e a ordem vertical."],
+      ["MEDIUM", "APPLY", "MUSEUM_LABEL", "Uma etiqueta de exposição tem uma frase e, abaixo, uma segunda frase. Como indicar a ordem de leitura?", "Percorrer a frase de cima e depois a que está abaixo.", ["Começar pela frase mais próxima do objeto.", "Ler primeiro a última palavra de cada linha.", "Escolher a frase com letras maiores."], "TRANSFER_VERTICAL_ORDER", "A posição das linhas organiza a sequência, mesmo em uma exposição.", "Use a posição das frases na página."],
+      ["MEDIUM", "REASON", "FOLDED_FLYER", "Um folheto tem três linhas curtas no mesmo bloco. Por que é útil acompanhar uma linha inteira antes de descer?", "Para manter a sequência do texto e não deixar trechos para trás.", ["Para contar as cores da folha.", "Para mudar a ordem das frases.", "Para ler somente as palavras do meio."], "TRANSFER_COMPLETE_LINE", "Percorrer cada linha na sequência preserva a organização visual do texto.", "Pense no que pode acontecer se pular para baixo cedo demais."],
+      ["MEDIUM", "APPLY", "SUBTITLE_CARD", "Um cartão de apresentação tem o nome em cima e uma frase abaixo. Como localizar primeiro a frase?", "Depois de acompanhar a linha do nome, descer até a linha seguinte.", ["Ir direto ao final da frase.", "Procurar a frase acima do nome.", "Seguir o desenho do cartão."], "TRANSFER_NEXT_LINE", "A posição abaixo indica a continuação do bloco.", "Observe qual texto está na linha inferior."],
+      ["MEDIUM", "COMPARE", "POSTER_COLUMNS", "Um cartaz tem duas colunas separadas, cada uma com várias linhas. Para acompanhar um parágrafo de uma coluna, o que fazer?", "Percorrer suas linhas da esquerda para a direita e de cima para baixo dentro da coluna.", ["Alternar a cada linha entre as duas colunas.", "Ler sempre toda a coluna da direita primeiro.", "Seguir as bordas externas do cartaz."], "TRANSFER_COLUMN_TRACKING", "O percurso da linha e a sequência de cima para baixo são mantidos dentro do bloco escolhido.", "Escolha um bloco de texto e siga suas linhas em ordem."],
+      ["MEDIUM", "APPLY", "MENU_BOARD", "Em um menu impresso, os itens estão um abaixo do outro. Como comparar o primeiro item com o próximo?", "Acompanhar a linha do item e depois olhar para a linha de baixo.", ["Começar no final do próximo item.", "Ler o menu de baixo para cima.", "Escolher pelo tamanho da palavra."], "TRANSFER_LIST_SEQUENCE", "A sequência vertical do menu pode ser lida por linhas consecutivas.", "Localize o item seguinte logo abaixo."],
+      ["HARD", "JUSTIFY", "TWO_PARAGRAPH_NOTE", "Uma nota tem duas linhas no primeiro parágrafo e uma no segundo. Qual demonstração respeita a sequência?", "Percorrer as duas primeiras linhas e então a linha do parágrafo abaixo.", ["Ler a última linha primeiro por ser mais curta.", "Alternar entre o início e o fim de cada linha.", "Pular o primeiro parágrafo e seguir o espaço em branco."], "TRANSFER_SEQUENCE_WITH_BREAK", "A quebra de parágrafo cria novo bloco, mas as linhas continuam em ordem de cima para baixo.", "Não confunda o espaço entre parágrafos com uma mudança de direção."],
+      ["HARD", "EXPLAIN", "NEW_TEXT_LAYOUT", "Um colega aponta a linha de baixo antes de terminar a linha de cima. Que dica ajuda a manter o percurso?", "Percorra a linha atual até o fim e depois desça para a próxima.", ["Comece cada linha pelo lado direito.", "Siga apenas as palavras conhecidas.", "Vá para a imagem e volte quando quiser."], "TRANSFER_REPAIR_SEQUENCE", "Concluir a linha atual e só então descer mantém a ordem visual do texto.", "Use um marcador para terminar uma linha antes de mudar."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM", "DEMONSTRATE", "THREE_LINE_POEM", "Um poema curto tem três linhas empilhadas. Qual demonstração mostra o percurso completo?", "Cada linha da esquerda para a direita, começando pela de cima e descendo.", ["Cada linha da direita para a esquerda, começando embaixo.", "Ler apenas a linha central.", "Alternar entre começo e fim sem descer."], "LOCK_IN_COMPLETE_PATH", "O percurso combina direção horizontal e ordem vertical.", "Diga em voz alta as duas partes do percurso."],
+      ["MEDIUM", "LOCATE", "NUMBERED_STEPS", "Uma instrução tem três linhas numeradas de cima para baixo. Qual linha costuma ser acompanhada primeiro?", "A linha superior, que contém o primeiro passo.", ["A última linha, porque termina a instrução.", "A linha com o maior número de letras.", "Qualquer linha, sem considerar a posição."], "LOCK_IN_TOP_FIRST", "A organização vertical da lista indica por onde começar.", "Encontre a posição do primeiro passo."],
+      ["HARD", "REASON", "WRAPPED_SENTENCE", "Uma frase continua em uma segunda linha. Por que o início da segunda linha pode ficar mais à esquerda que o final da primeira?", "Porque a frase continuou na linha abaixo e o percurso recomeça à esquerda.", ["Porque a leitura mudou para a direita para a esquerda.", "Porque a segunda linha deve ser lida de baixo para cima.", "Porque a primeira linha não fazia parte do texto."], "LOCK_IN_RETURN_SWEEP", "A continuação visual desce à linha seguinte e retoma no lado esquerdo.", "Observe a mudança de linha, não a continuação horizontal imaginada."],
+      ["HARD", "DISTINGUISH", "CAPTION_AND_PARAGRAPH", "Uma imagem tem uma legenda abaixo e um parágrafo ao lado. Para acompanhar o parágrafo, o que é essencial?", "Seguir as linhas do parágrafo em sua ordem, sem trocar pelo percurso da imagem.", ["Contornar a imagem antes de cada linha.", "Ler somente a legenda por estar mais perto.", "Começar pela palavra mais escura."], "LOCK_IN_TEXT_BLOCK", "Cada bloco de texto deve ser acompanhado por suas próprias linhas.", "Identifique o bloco que está sendo observado."],
+      ["HARD", "APPLY", "CLASSROOM_AGENDA", "Uma agenda tem duas linhas de manhã e duas linhas de tarde. Como acompanhar o primeiro bloco?", "Ler as linhas da manhã em ordem, de cima para baixo.", ["Começar pela última linha da tarde.", "Alternar uma linha de cada período.", "Ler da direita para a esquerda."], "LOCK_IN_BLOCK_SEQUENCE", "Dentro do bloco, a ordem visual permanece de cima para baixo.", "Fique no bloco da manhã e siga a posição das linhas."],
+      ["HARD", "JUSTIFY", "PEER_EXPLANATION", "Qual explicação descreve corretamente o percurso em um texto de várias linhas?", "Acompanhar cada linha da esquerda para a direita e passar de cima para baixo.", ["Começar de baixo e subir conforme aparecem palavras novas.", "Ler primeiro o lado direito de cada linha.", "Seguir a ilustração para descobrir a ordem das linhas."], "LOCK_IN_STATE_RULE", "A explicação inclui as duas direções observáveis na página.", "Lembre-se da direção dentro da linha e entre as linhas."]
+    ],
+    "REVIEW": [
+      ["EASY", "RECALL", "REVIEW_SINGLE_LINE", "Em uma linha de texto em português, qual direção acompanha as palavras?", "Da esquerda para a direita.", ["Da direita para a esquerda.", "De baixo para cima.", "Em círculos."], "REVIEW_HORIZONTAL", "O percurso na linha segue da esquerda para a direita.", "Pense onde a linha começa."],
+      ["EASY", "RECALL", "REVIEW_TWO_LINES", "Depois da linha de cima, para onde vai a leitura?", "Para a linha seguinte, abaixo.", ["Para a linha de cima novamente.", "Para fora da página.", "Para o lado direito da ilustração."], "REVIEW_VERTICAL", "A sequência entre linhas segue de cima para baixo.", "Procure a linha que está abaixo."],
+      ["EASY", "DEMONSTRATE", "REVIEW_MARKER", "Qual recurso pode ajudar a não perder a linha durante a leitura compartilhada?", "Um marcador ou régua que acompanha a linha atual.", ["Cobrir o texto inteiro.", "Virar a folha a cada palavra.", "Apontar somente a imagem."], "REVIEW_FOCUS", "O marcador apoia o acompanhamento sequencial.", "Escolha um recurso que mantenha visível a linha atual."],
+      ["MEDIUM", "SEQUENCE", "REVIEW_TWO_LINE_LABEL", "Uma etiqueta tem o nome em cima e a função abaixo. Qual aparece primeiro no percurso?", "O nome que está na linha superior.", ["A função de baixo.", "A palavra mais comprida.", "A parte mais colorida."], "REVIEW_TOP_FIRST", "A linha superior vem antes da linha abaixo.", "Observe a posição vertical."],
+      ["MEDIUM", "DISTINGUISH", "REVIEW_PICTURE", "Uma figura está à esquerda de uma legenda. Para mostrar a direção da legenda, o que fazer?", "Acompanhar a própria linha da legenda da esquerda para a direita.", ["Atravessar a figura em diagonal.", "Começar pela borda direita da folha.", "Descer para o fim da página."], "REVIEW_TEXT_NOT_PICTURE", "A legenda também é texto e tem seu próprio percurso.", "Mantenha o foco na linha escrita."],
+      ["MEDIUM", "REPAIR", "REVIEW_SKIPPED_LINE", "Uma criança desceu para a próxima linha antes de chegar ao final da atual. Qual apoio pode ajudar?", "Usar um cartão para acompanhar a linha atual até o final.", ["Pedir para começar pelo fim.", "Retirar o texto e avaliar a memória.", "Mandar ignorar a linha incompleta."], "REVIEW_SKIPPED_LINE", "Isolar a linha atual ajuda a perceber o percurso sem constrangimento.", "Ofereça um marcador e tente novamente com uma linha curta."],
+      ["MEDIUM", "RECALL", "REVIEW_PAGE_ORDER", "O que significa seguir o texto de cima para baixo?", "Depois da linha superior, acompanhar a linha que está abaixo.", ["Ler cada palavra de baixo para cima.", "Começar no canto inferior direito.", "Procurar primeiro a figura mais baixa."], "REVIEW_PAGE_ORDER", "A direção vertical organiza a ordem das linhas.", "Pense em qual linha vem depois da superior."],
+      ["HARD", "APPLY", "REVIEW_NEW_CARD", "Um cartão novo tem três linhas. Como começar a acompanhar o texto?", "Começar pela linha superior e seguir até o fim dela.", ["Escolher a linha do meio.", "Começar pela última palavra do cartão.", "Ler a terceira linha da direita para a esquerda."], "REVIEW_NEW_LAYOUT", "A posição superior indica a primeira linha do bloco.", "Localize o bloco e encontre a linha mais alta."],
+      ["HARD", "EXPLAIN", "REVIEW_RULE", "Qual regra reúne as duas direções observadas em um texto de várias linhas?", "Da esquerda para a direita dentro da linha e de cima para baixo entre as linhas.", ["Da direita para a esquerda e de baixo para cima.", "Da esquerda para a direita e de baixo para cima.", "A direção depende da figura, não das linhas."], "REVIEW_COMBINED_RULE", "A regra combina o movimento horizontal da linha e a ordem vertical da página.", "Complete a frase: dentro da linha…, entre linhas…"],
+      ["HARD", "OBSERVE", "REVIEW_EVIDENCE", "Qual registro mostra evidência de que a criança acompanhou o percurso do texto?", "Apontou cada linha da esquerda para a direita e desceu para a seguinte.", ["Nomeou a cor da página.", "Descreveu a figura sem apontar o texto.", "Escolheu uma palavra sem localizar sua linha."], "REVIEW_OBSERVABLE_EVIDENCE", "O registro descreve ações diretamente observáveis relacionadas ao objetivo.", "Anote o que a criança apontou e em que ordem."]
+    ]
+  }
+}

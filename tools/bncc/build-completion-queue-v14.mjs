@@ -3,6 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { evaluateCurriculumPackageRubric } from './curriculum-package-rubric.mjs';
+import { getAuthoringProducer } from './bncc-authoring-producers.mjs';
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const INPUTS = {
   audit: 'content/bncc/authoring/pending-coverage-audit-v3.json',
@@ -52,7 +55,7 @@ function priorityScore(record) {
   return stage + kind + source + mapping;
 }
 
-function listStagedEvidence() {
+function listStagedEvidence({ sourceByCode, sizingByCode, auditByCode }) {
   const dir = path.join(ROOT, INPUTS.packages);
   const evidence = new Map();
   for (const entry of fs.readdirSync(dir).filter((name) => name.endsWith('.json')).sort()) {
@@ -60,6 +63,10 @@ function listStagedEvidence() {
     try { pack = JSON.parse(fs.readFileSync(path.join(dir, entry), 'utf8')); } catch { continue; }
     const code = pack.sourceContext?.officialCode;
     if (!code) continue;
+    const auditRecord = auditByCode.get(code);
+    const requirements = auditRecord ? requirementsFor(auditRecord, sizingByCode) : {};
+    const sourceRecord = sourceByCode.get(code);
+    const rubric = evaluateCurriculumPackageRubric(pack, { requirements, officialSourceRecord: sourceRecord });
     const item = {
       file: path.relative(ROOT, path.join(dir, entry)).replaceAll(path.sep, '/'),
       contentId: pack.contentId,
@@ -71,6 +78,17 @@ function listStagedEvidence() {
       publicationStatus: pack.publicationStatus,
       pedagogicalReviewStatus: pack.pedagogicalReviewStatus,
       officialMappingStatus: pack.officialMappingStatus,
+      legacyCountBasedComplete: Boolean(auditRecord
+        && !pack.active
+        && ['STAGING', 'STAGING_INACTIVE'].includes(pack.publicationStatus)
+        && pack.pedagogicalReviewStatus === 'PEDAGOGICAL_REVIEW_PENDING'
+        && pack.officialMappingStatus === 'NOT_CLAIMED'
+        && (pack.lesson ? 1 : 0) >= (requirements.lessons ?? 1)
+        && (pack.questions?.length ?? 0) >= (requirements.questions ?? 0)
+        && (pack.lesson?.authenticActivities?.length ?? 0) >= (requirements.activities ?? 1)
+        && (pack.lesson?.progression?.length ?? 0) >= 1
+        && auditRecord.exactSourceVerified),
+      qualityRubric: rubric,
     };
     evidence.set(code, [...(evidence.get(code) ?? []), item]);
   }
@@ -105,24 +123,26 @@ function buildCompletionQueue() {
   const catalog = readJson(INPUTS.catalog);
   const sourceVerification = readJson(INPUTS.sourceVerification);
   const sizingByCode = new Map((sizing.nodeSizing ?? []).map((item) => [item.officialCode, item]));
-  const stagedEvidence = listStagedEvidence();
   const sourceByCode = new Map((sourceVerification.records ?? []).map((item) => [item.officialCode, item]));
+  const auditByCode = new Map((audit.records ?? []).map((item) => [item.officialCode, item]));
+  const stagedEvidence = listStagedEvidence({ sourceByCode, sizingByCode, auditByCode });
   const catalogByCode = new Map((catalog.nodes ?? catalog.records ?? []).map((item) => [item.code, item]));
   const tasks = (audit.records ?? []).map((record) => {
     const evidence = stagedEvidence.get(record.officialCode) ?? [];
     const verifiedSource = sourceByCode.get(record.officialCode);
     const requirements = requirementsFor(record, sizingByCode);
+    const legacyTechnicalCandidate = evidence.find((item) => item.legacyCountBasedComplete);
     const technicalCandidate = evidence.find((item) => !item.active
       && ['STAGING', 'STAGING_INACTIVE'].includes(item.publicationStatus)
       && item.pedagogicalReviewStatus === 'PEDAGOGICAL_REVIEW_PENDING'
-      && item.officialMappingStatus === 'NOT_CLAIMED');
+      && item.officialMappingStatus === 'NOT_CLAIMED'
+      && item.qualityRubric.status === 'AUTOMATED_SCREEN_PASS');
     const technicalComplete = Boolean(technicalCandidate
-      && technicalCandidate.lessonCount >= requirements.lessons
-      && technicalCandidate.questionCount >= requirements.questions
-      && technicalCandidate.activityCount >= requirements.activities
-      && technicalCandidate.assessmentCount >= 1
-      && record.exactSourceVerified);
-    const state = technicalComplete ? 'CONTENT_TECHNICALLY_COMPLETE' : queueState(record);
+      && record.exactSourceVerified
+      && verifiedSource?.technicalVerificationStatus === 'OFFICIAL_SOURCE_VERIFIED_EXACT');
+    const state = technicalComplete
+      ? 'CONTENT_TECHNICALLY_COMPLETE'
+      : evidence.length > 0 ? 'CONTENT_REVIEW_REQUIRED' : queueState(record);
     return {
       taskId: `BNCC_${record.officialCode}`,
       officialCode: record.officialCode,
@@ -133,6 +153,15 @@ function buildCompletionQueue() {
       state,
       queueState: queueState(record),
       nextAction: record.nextAction,
+      executionClassification: !record.exactSourceVerified
+        ? 'SOURCE_VERIFICATION_REQUIRED'
+        : queueState(record) === 'BLOCKED_HUMAN_PEDAGOGICAL_REVIEW'
+          ? 'HUMAN_REVIEW_REQUIRED'
+          : evidence.length > 0
+            ? 'COMPLETE_OR_REPAIR_STAGED_PACKAGE'
+            : getAuthoringProducer({ officialCode: record.officialCode })
+              ? 'AUTHORING_READY'
+              : 'NO_REGISTERED_PRODUCER',
       blockers: queueState(record) === 'READY' ? [] : [queueState(record)],
       requirements,
       evidence: {
@@ -144,6 +173,8 @@ function buildCompletionQueue() {
       technicalCompleteness: {
         status: technicalComplete ? 'CONTENT_TECHNICALLY_COMPLETE' : 'CONTENT_INCOMPLETE_OR_NOT_STARTED',
         readyForPedagogicalReview: technicalComplete,
+        legacyCountBasedStatus: legacyTechnicalCandidate ? 'LEGACY_COUNT_SCREEN_PASS' : 'LEGACY_COUNT_SCREEN_INCOMPLETE',
+        qualityRubric: technicalCandidate?.qualityRubric ?? evidence[0]?.qualityRubric ?? null,
         canonicalMappingVerified: false,
         humanPedagogicalApproved: false,
         publicationAuthorized: false,
@@ -160,7 +191,10 @@ function buildCompletionQueue() {
     totalTasks: tasks.length,
     byState: Object.fromEntries([...new Set(tasks.map((task) => task.state))].sort().map((state) => [state, tasks.filter((task) => task.state === state).length])),
     byQueueState: Object.fromEntries([...new Set(tasks.map((task) => task.queueState))].sort().map((state) => [state, tasks.filter((task) => task.queueState === state).length])),
+    byExecutionClassification: Object.fromEntries([...new Set(tasks.map((task) => task.executionClassification))].sort().map((state) => [state, tasks.filter((task) => task.executionClassification === state).length])),
     contentTechnicallyComplete: tasks.filter((task) => task.technicalCompleteness.status === 'CONTENT_TECHNICALLY_COMPLETE').length,
+    legacyCountBasedTechnicalComplete: tasks.filter((task) => task.technicalCompleteness.legacyCountBasedStatus === 'LEGACY_COUNT_SCREEN_PASS').length,
+    automatedScreenIncomplete: tasks.filter((task) => task.evidence.stagedPackages.length > 0 && task.technicalCompleteness.status !== 'CONTENT_TECHNICALLY_COMPLETE').length,
     canonicalMappingVerified: tasks.filter((task) => task.technicalCompleteness.canonicalMappingVerified).length,
     readyForPedagogicalReview: tasks.filter((task) => task.technicalCompleteness.readyForPedagogicalReview).length,
     humanPedagogicalApproved: 0,
@@ -195,6 +229,14 @@ function buildCompletionQueue() {
 function main() {
   const artifact = buildCompletionQueue();
   fs.writeFileSync(path.join(ROOT, OUTPUT_QUEUE), `${JSON.stringify(artifact, null, 2)}\n`);
+  if (process.argv.includes('--queue-only')) {
+    console.log(`BNCC_COMPLETION_QUEUE_V14=${artifact.summary.totalTasks}`);
+    console.log(`BNCC_CONTENT_TECHNICALLY_COMPLETE=${artifact.summary.contentTechnicallyComplete}`);
+    console.log(`BNCC_LEGACY_COUNT_SCREEN_COMPLETE=${artifact.summary.legacyCountBasedTechnicalComplete}`);
+    console.log(`BNCC_AUTOMATED_SCREEN_INCOMPLETE=${artifact.summary.automatedScreenIncomplete}`);
+    console.log(`BNCC_COMPLETION_QUEUE_HASH=${artifact.queueHash}`);
+    return;
+  }
   const checkpoint = {
     schemaVersion: 'tec-escola.bncc.campaign-checkpoint.v14',
     campaignId: artifact.campaignId,
