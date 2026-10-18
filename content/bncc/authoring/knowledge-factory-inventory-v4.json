@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "e429607c466405ce628d0d02e9ded85b9034510026b6a3cfa944adbdbad6a468",
+    "v5QuestionFirstPacks": "4bc706392841f89415baa99454db85f25a7416b3c5569257ae290ded082db1bb",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 7211,
+    "v5QuestionTotal": 7571,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -181,14 +181,32 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01er01-identities-and-welcoming-differences.json",
+        "skillCode": "AUTHORING_EF01ER01_IDENTITIES_AND_WELCOMING_DIFFERENCES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-geography-lived-places-fi.json",
         "skillCode": "AUTHORING_EF01GE01_OBSERVE_AND_COMPARE_LIVED_PLACES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01ge02-games-across-places-and-times.json",
+        "skillCode": "AUTHORING_EF01GE02_COMPARE_GAMES_ACROSS_PLACES_AND_TIMES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-history-growth-memories-fi.json",
         "skillCode": "AUTHORING_EF01HI01_GROWTH_THROUGH_MEMORIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01hi02-stories-family-and-community.json",
+        "skillCode": "AUTHORING_EF01HI02_CONNECT_PERSONAL_FAMILY_COMMUNITY_STORIES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -229,8 +247,20 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01lp07-phonemes-and-letter-representations.json",
+        "skillCode": "AUTHORING_EF01LP07_IDENTIFY_PHONEMES_AND_LETTERS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "mathematics-number-uses-ef01.json",
         "skillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma02-exact-and-approximate-counting.json",
+        "skillCode": "AUTHORING_EF01MA02_COUNT_USING_PAIRING_AND_GROUPING",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -243,6 +273,18 @@
       {
         "file": "science-material-properties-design-ef02.json",
         "skillCode": "AUTHORING_EF02CI02_SELECT_MATERIALS_BY_PROPERTIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02ci03-recognize-household-hazards-and-seek-adult-help.json",
+        "skillCode": "AUTHORING_EF02CI03_PREVENT_DOMESTIC_ACCIDENTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02ge01-community-migration-stories.json",
+        "skillCode": "AUTHORING_EF02GE01_COMMUNITY_MIGRATION_HISTORY",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -321,6 +363,18 @@
       {
         "file": "science-heat-transfer-materials-ef07.json",
         "skillCode": "AUTHORING_EF07CI03_HEAT_TRANSFER_MATERIALS_AND_SOLUTIONS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef09ci03-models-of-matter-and-atom-history.json",
+        "skillCode": "AUTHORING_EF09CI03_MODELS_OF_MATTER_AND_ATOM_HISTORY",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "em13lgg101-production-circulation-and-discourse-choices.json",
+        "skillCode": "AUTHORING_EM13LGG101_DISCOURSE_PRODUCTION_AND_CIRCULATION",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -18979,5 +19033,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "ecce2e8e13e8e40d08a5a6f5389fa98d9596b8672de7906a62059dc75cef38fa"
+  "inventoryHash": "442a2b1fa755196ebcfc41975d990a8cdbe88ad5a8ef20954ca48ae09a33e372"
 }

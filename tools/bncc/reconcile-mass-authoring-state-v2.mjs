@@ -120,7 +120,7 @@ export function reconcileMassAuthoringState({ fullTestStatus, focusedTestStatus 
     rubricVersion: queueSnapshot.rubricVersion,
   };
   mass.earlyChildhoodObservationRecovery = {
-    target: 6,
+    target: observationReport.packages.length,
     reviewed: observationReport.packages.length,
     technicallyPrepared: observationReport.packages.filter((item) => item.status === 'AUTOMATED_SCREEN_PASS').length,
     stillIncomplete: observationReport.packages.filter((item) => item.status !== 'AUTOMATED_SCREEN_PASS').length,

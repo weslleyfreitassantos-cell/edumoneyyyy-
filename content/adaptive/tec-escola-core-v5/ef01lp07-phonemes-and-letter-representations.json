@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp07-phonemes-and-letter-representations",
+  "canonicalSkillCode": "AUTHORING_EF01LP07_IDENTIFY_PHONEMES_AND_LETTERS",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA — ALFABETIZAÇÃO",
+  "topic": "identificação de fonemas e sua representação por letras",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar fonemas e sua representação por letras.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "O som que ouvimos e a letra que escrevemos",
+    "objective": "Identificar sons da fala em palavras familiares e relacioná-los a letras em correspondências diretas trabalhadas, distinguindo o som (fonema) do sinal escrito (letra) sem afirmar que toda letra sempre representa um único som.",
+    "summary": "Quando falamos, produzimos sons; quando escrevemos, usamos letras para representar sons e palavras. Em “foca”, o som inicial /f/ é representado pela letra F. O som é ouvido ou percebido na fala; a letra pode ser vista e escrita. A relação entre som e letra depende da palavra e do contexto, então usamos exemplos familiares e verificamos a palavra inteira em vez de supor uma regra única para todas as letras.",
+    "explanation": "Diga uma palavra devagar e observe o som que aparece no início ou no final. Em “pato”, o primeiro som /p/ pode ser relacionado à letra P na escrita. Em “bola”, o som inicial /b/ aparece com a letra B. O fonema é uma unidade sonora da fala; a letra é um sinal do sistema de escrita. Para responder, escute ou leia a palavra, localize o som solicitado e procure a letra que o representa naquele exemplo. Algumas letras podem representar sons diferentes em palavras distintas, e um som pode ter representações diferentes; esta sequência trabalha casos diretos e familiares, sem generalizar para todas as palavras.",
+    "workedExample": "Na palavra “fita”, falada em voz clara, o primeiro som é /f/. Ao olhar a palavra escrita F-I-T-A, vemos a letra F no início. Portanto, /f/ é o som e F é a letra usada para representá-lo nessa palavra. Não dizemos que o som e a letra são a mesma coisa.",
+    "commonMistake": "Chamar o som de letra ou supor que o nome de uma letra é sempre o som que ela representa numa palavra.",
+    "priorKnowledge": [
+      "Reconhecer algumas letras familiares em palavras conhecidas.",
+      "Escutar palavras curtas e localizar se um som aparece no começo, sem exigir leitura independente."
+    ],
+    "keyConcepts": [
+      "fala",
+      "som",
+      "fonema",
+      "letra",
+      "representação",
+      "som inicial",
+      "palavra",
+      "correspondência direta",
+      "contexto"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SOUND_LETTER_CONFUSION",
+        "action": "Use dois cartões separados: um com a palavra falada ou símbolo do som e outro com a letra escrita; nomeie primeiro o que se ouve e depois o que se vê."
+      },
+      {
+        "errorFocus": "INITIAL_SOUND_POSITION",
+        "action": "Alongue oralmente o primeiro som de uma palavra familiar e compare com o início escrito, apoiando-se em imagem e leitura do adulto."
+      },
+      {
+        "errorFocus": "OVERGENERALIZING_LETTER_SOUND",
+        "action": "Compare somente exemplos regulares já estudados e acrescente a frase “nesta palavra”; consulte a escrita inteira antes de generalizar."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+      "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+      "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp07-sound-letter-sort",
+        "title": "Estação de som e letra",
+        "instructions": "Cartões ilustrados trazem palavras familiares com correspondências diretas estudadas, como foca/F, pato/P e bola/B.\n1. Escute ou leia com apoio a palavra de cada cartão.\n2. Aponte o som inicial e procure a letra que aparece no começo da palavra escrita.\n3. Agrupe cartões pelo som ou pela letra e explique a diferença entre o som percebido e o sinal escrito.",
+        "steps": [
+          "Escute ou leia com apoio a palavra de cada cartão.",
+          "Aponte o som inicial e procure a letra que aparece no começo da palavra escrita.",
+          "Agrupe cartões pelo som ou pela letra e explique a diferença entre o som percebido e o sinal escrito."
+        ],
+        "evidence": "Classificação de palavras em que o estudante localiza um som e aponta a letra que o representa nos exemplos trabalhados.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "associa alguns cartões com modelagem e confunde som e letra.",
+            "developing": "localiza o som inicial em palavras familiares com apoio visual.",
+            "proficient": "identifica o som e sua letra na palavra escrita e explica que som e letra são conceitos diferentes."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp07-build-a-word-path",
+        "title": "Caminho de palavras ilustradas",
+        "instructions": "Uma sequência de figuras e letras móveis permite construir palavras curtas sem competição e com opção de resposta apontada ou oral.\n1. Escolha uma figura e diga ou escute o nome da palavra com apoio.\n2. Selecione a letra inicial entre cartões e compare com a palavra-modelo.\n3. Registre ou mostre qual som foi percebido e qual letra aparece na escrita.",
+        "steps": [
+          "Escolha uma figura e diga ou escute o nome da palavra com apoio.",
+          "Selecione a letra inicial entre cartões e compare com a palavra-modelo.",
+          "Registre ou mostre qual som foi percebido e qual letra aparece na escrita."
+        ],
+        "evidence": "Palavra-modelo associada à letra inicial correta e registro acessível do som identificado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma letra com ajuda direta.",
+            "developing": "relaciona som inicial e letra em parte das palavras familiares.",
+            "proficient": "relaciona corretamente o som à letra nos exemplos e distingue resposta oral da representação escrita."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp07-phonemes-and-letter-representations-01",
+          "v1-ef01lp07-phonemes-and-letter-representations-02",
+          "v1-ef01lp07-phonemes-and-letter-representations-03",
+          "v1-ef01lp07-phonemes-and-letter-representations-04",
+          "v1-ef01lp07-phonemes-and-letter-representations-05",
+          "v1-ef01lp07-phonemes-and-letter-representations-06",
+          "v1-ef01lp07-phonemes-and-letter-representations-07",
+          "v1-ef01lp07-phonemes-and-letter-representations-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp07-phonemes-and-letter-representations-09",
+          "v1-ef01lp07-phonemes-and-letter-representations-10",
+          "v1-ef01lp07-phonemes-and-letter-representations-11",
+          "v1-ef01lp07-phonemes-and-letter-representations-12",
+          "v1-ef01lp07-phonemes-and-letter-representations-13",
+          "v1-ef01lp07-phonemes-and-letter-representations-14",
+          "v1-ef01lp07-phonemes-and-letter-representations-15",
+          "v1-ef01lp07-phonemes-and-letter-representations-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp07-phonemes-and-letter-representations-17",
+          "v1-ef01lp07-phonemes-and-letter-representations-18",
+          "v1-ef01lp07-phonemes-and-letter-representations-19",
+          "v1-ef01lp07-phonemes-and-letter-representations-20",
+          "v1-ef01lp07-phonemes-and-letter-representations-21",
+          "v1-ef01lp07-phonemes-and-letter-representations-22",
+          "v1-ef01lp07-phonemes-and-letter-representations-23",
+          "v1-ef01lp07-phonemes-and-letter-representations-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp07-phonemes-and-letter-representations-25",
+          "v1-ef01lp07-phonemes-and-letter-representations-26",
+          "v1-ef01lp07-phonemes-and-letter-representations-27",
+          "v1-ef01lp07-phonemes-and-letter-representations-28",
+          "v1-ef01lp07-phonemes-and-letter-representations-29",
+          "v1-ef01lp07-phonemes-and-letter-representations-30",
+          "v1-ef01lp07-phonemes-and-letter-representations-31",
+          "v1-ef01lp07-phonemes-and-letter-representations-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp07-phonemes-and-letter-representations-33",
+          "v1-ef01lp07-phonemes-and-letter-representations-34",
+          "v1-ef01lp07-phonemes-and-letter-representations-35",
+          "v1-ef01lp07-phonemes-and-letter-representations-36",
+          "v1-ef01lp07-phonemes-and-letter-representations-37",
+          "v1-ef01lp07-phonemes-and-letter-representations-38",
+          "v1-ef01lp07-phonemes-and-letter-representations-39",
+          "v1-ef01lp07-phonemes-and-letter-representations-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP07",
+        "descriptor": "Identificar fonemas e sua representação por letras.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-01",
+      "statement": "Na palavra escrita “foca”, qual letra aparece no início e representa o som inicial /f/?",
+      "prompt": "Na palavra escrita “foca”, qual letra aparece no início e representa o som inicial /f/?",
+      "options": [
+        "F",
+        "V",
+        "P",
+        "B"
+      ],
+      "correctAnswer": "F",
+      "answerPosition": "A",
+      "misconceptions": {
+        "V": [
+          "INITIAL_F_SOUND"
+        ],
+        "P": [
+          "INITIAL_F_SOUND"
+        ],
+        "B": [
+          "INITIAL_F_SOUND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FIGURA_DA_FOCA",
+      "explanation": "Nesta palavra, o som inicial /f/ é representado pela letra F.",
+      "hint": "Observe a primeira letra de foca.",
+      "errorFocus": "INITIAL_F_SOUND",
+      "feedback": {
+        "correct": "Boa observação: Nesta palavra, o som inicial /f/ é representado pela letra F.",
+        "incorrect": "Nesta palavra, o som inicial /f/ é representado pela letra F.",
+        "hint": "Observe a primeira letra de foca.",
+        "errorFocus": "INITIAL_F_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-02",
+      "statement": "Ao falar “vela”, qual letra inicial representa o som /v/?",
+      "prompt": "Ao falar “vela”, qual letra inicial representa o som /v/?",
+      "options": [
+        "F",
+        "V",
+        "B",
+        "M"
+      ],
+      "correctAnswer": "V",
+      "answerPosition": "B",
+      "misconceptions": {
+        "F": [
+          "V_SOUND_LETTER"
+        ],
+        "B": [
+          "V_SOUND_LETTER"
+        ],
+        "M": [
+          "V_SOUND_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DA_VELA",
+      "explanation": "O som inicial /v/ de vela aparece escrito com V.",
+      "hint": "Compare o som inicial com a palavra escrita.",
+      "errorFocus": "V_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa observação: O som inicial /v/ de vela aparece escrito com V.",
+        "incorrect": "O som inicial /v/ de vela aparece escrito com V.",
+        "hint": "Compare o som inicial com a palavra escrita.",
+        "errorFocus": "V_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-03",
+      "statement": "Qual letra representa o primeiro som de “pato”, /p/?",
+      "prompt": "Qual letra representa o primeiro som de “pato”, /p/?",
+      "options": [
+        "B",
+        "T",
+        "P",
+        "D"
+      ],
+      "correctAnswer": "P",
+      "answerPosition": "C",
+      "misconceptions": {
+        "B": [
+          "P_SOUND_LETTER"
+        ],
+        "T": [
+          "P_SOUND_LETTER"
+        ],
+        "D": [
+          "P_SOUND_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PATO_NO_LAGO",
+      "explanation": "Em pato, o fonema inicial /p/ é representado por P.",
+      "hint": "Procure a letra inicial.",
+      "errorFocus": "P_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa observação: Em pato, o fonema inicial /p/ é representado por P.",
+        "incorrect": "Em pato, o fonema inicial /p/ é representado por P.",
+        "hint": "Procure a letra inicial.",
+        "errorFocus": "P_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-04",
+      "statement": "Na palavra “bola”, que letra representa o som inicial /b/?",
+      "prompt": "Na palavra “bola”, que letra representa o som inicial /b/?",
+      "options": [
+        "P",
+        "D",
+        "V",
+        "B"
+      ],
+      "correctAnswer": "B",
+      "answerPosition": "D",
+      "misconceptions": {
+        "P": [
+          "B_SOUND_LETTER"
+        ],
+        "D": [
+          "B_SOUND_LETTER"
+        ],
+        "V": [
+          "B_SOUND_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOLA_NO_CESTO",
+      "explanation": "A palavra bola começa com a letra B, que representa /b/ neste exemplo.",
+      "hint": "Escute o primeiro som de bola.",
+      "errorFocus": "B_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A palavra bola começa com a letra B, que representa /b/ neste exemplo.",
+        "incorrect": "A palavra bola começa com a letra B, que representa /b/ neste exemplo.",
+        "hint": "Escute o primeiro som de bola.",
+        "errorFocus": "B_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-05",
+      "statement": "Em “mala”, /m/ é o som inicial. Qual opção é o sinal escrito que o representa?",
+      "prompt": "Em “mala”, /m/ é o som inicial. Qual opção é o sinal escrito que o representa?",
+      "options": [
+        "A letra M.",
+        "O som /m/",
+        "A palavra inteira “mala”",
+        "A sílaba “ma”"
+      ],
+      "correctAnswer": "A letra M.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O som /m/": [
+          "PHONEME_VS_LETTER"
+        ],
+        "A palavra inteira “mala”": [
+          "PHONEME_VS_LETTER"
+        ],
+        "A sílaba “ma”": [
+          "PHONEME_VS_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MALA_DE_PANO",
+      "explanation": "/m/ nomeia o som; M é a letra vista na escrita da palavra.",
+      "hint": "Separe o que se ouve do que se vê.",
+      "errorFocus": "PHONEME_VS_LETTER",
+      "feedback": {
+        "correct": "Boa observação: /m/ nomeia o som; M é a letra vista na escrita da palavra.",
+        "incorrect": "/m/ nomeia o som; M é a letra vista na escrita da palavra.",
+        "hint": "Separe o que se ouve do que se vê.",
+        "errorFocus": "PHONEME_VS_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-06",
+      "statement": "Qual letra aparece no começo de “tatu” para representar o som /t/?",
+      "prompt": "Qual letra aparece no começo de “tatu” para representar o som /t/?",
+      "options": [
+        "D",
+        "T",
+        "P",
+        "B"
+      ],
+      "correctAnswer": "T",
+      "answerPosition": "B",
+      "misconceptions": {
+        "D": [
+          "T_SOUND_LETTER"
+        ],
+        "P": [
+          "T_SOUND_LETTER"
+        ],
+        "B": [
+          "T_SOUND_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TATU_DE_BRINQUEDO",
+      "explanation": "A palavra tatu começa com T, que representa /t/ nesse exemplo.",
+      "hint": "Observe a primeira letra escrita.",
+      "errorFocus": "T_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A palavra tatu começa com T, que representa /t/ nesse exemplo.",
+        "incorrect": "A palavra tatu começa com T, que representa /t/ nesse exemplo.",
+        "hint": "Observe a primeira letra escrita.",
+        "errorFocus": "T_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-07",
+      "statement": "Na palavra “dado”, qual letra representa o som inicial /d/?",
+      "prompt": "Na palavra “dado”, qual letra representa o som inicial /d/?",
+      "options": [
+        "T",
+        "B",
+        "D",
+        "N"
+      ],
+      "correctAnswer": "D",
+      "answerPosition": "C",
+      "misconceptions": {
+        "T": [
+          "D_SOUND_LETTER"
+        ],
+        "B": [
+          "D_SOUND_LETTER"
+        ],
+        "N": [
+          "D_SOUND_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DADO_DE_MESA",
+      "explanation": "A escrita de dado começa com D para representar /d/.",
+      "hint": "Diga dado devagar e olhe seu início.",
+      "errorFocus": "D_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A escrita de dado começa com D para representar /d/.",
+        "incorrect": "A escrita de dado começa com D para representar /d/.",
+        "hint": "Diga dado devagar e olhe seu início.",
+        "errorFocus": "D_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-08",
+      "statement": "“Navio” e “ninho” começam com o mesmo fonema. Qual letra inicia as duas palavras escritas?",
+      "prompt": "“Navio” e “ninho” começam com o mesmo fonema. Qual letra inicia as duas palavras escritas?",
+      "options": [
+        "M",
+        "V",
+        "D",
+        "N"
+      ],
+      "correctAnswer": "N",
+      "answerPosition": "D",
+      "misconceptions": {
+        "M": [
+          "SHARED_INITIAL_PHONEME"
+        ],
+        "V": [
+          "SHARED_INITIAL_PHONEME"
+        ],
+        "D": [
+          "SHARED_INITIAL_PHONEME"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NAVIO_DE_PAPEL",
+      "explanation": "As duas palavras apresentam o som inicial /n/ e começam com N.",
+      "hint": "Compare o primeiro som das duas palavras.",
+      "errorFocus": "SHARED_INITIAL_PHONEME",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras apresentam o som inicial /n/ e começam com N.",
+        "incorrect": "As duas palavras apresentam o som inicial /n/ e começam com N.",
+        "hint": "Compare o primeiro som das duas palavras.",
+        "errorFocus": "SHARED_INITIAL_PHONEME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-09",
+      "statement": "Qual letra representa o som inicial /f/ na palavra “fita”?",
+      "prompt": "Qual letra representa o som inicial /f/ na palavra “fita”?",
+      "options": [
+        "F",
+        "V",
+        "T",
+        "P"
+      ],
+      "correctAnswer": "F",
+      "answerPosition": "A",
+      "misconceptions": {
+        "V": [
+          "F_SOUND_IN_FITA"
+        ],
+        "T": [
+          "F_SOUND_IN_FITA"
+        ],
+        "P": [
+          "F_SOUND_IN_FITA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FITA_COLORIDA",
+      "explanation": "O F aparece no início da palavra fita e representa /f/.",
+      "hint": "Encontre o F escrito.",
+      "errorFocus": "F_SOUND_IN_FITA",
+      "feedback": {
+        "correct": "Boa observação: O F aparece no início da palavra fita e representa /f/.",
+        "incorrect": "O F aparece no início da palavra fita e representa /f/.",
+        "hint": "Encontre o F escrito.",
+        "errorFocus": "F_SOUND_IN_FITA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-10",
+      "statement": "Na palavra “vaca”, /v/ é um som. Qual opção nomeia a letra escrita que o representa?",
+      "prompt": "Na palavra “vaca”, /v/ é um som. Qual opção nomeia a letra escrita que o representa?",
+      "options": [
+        "/v/",
+        "V",
+        "“va”",
+        "A palavra toda"
+      ],
+      "correctAnswer": "V",
+      "answerPosition": "B",
+      "misconceptions": {
+        "/v/": [
+          "LETTER_NAME_VS_SOUND"
+        ],
+        "“va”": [
+          "LETTER_NAME_VS_SOUND"
+        ],
+        "A palavra toda": [
+          "LETTER_NAME_VS_SOUND"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VACA_DE_FIGURA",
+      "explanation": "V é a letra; /v/ é o som inicial identificado na fala.",
+      "hint": "Escolha o sinal escrito, não o som.",
+      "errorFocus": "LETTER_NAME_VS_SOUND",
+      "feedback": {
+        "correct": "Boa observação: V é a letra; /v/ é o som inicial identificado na fala.",
+        "incorrect": "V é a letra; /v/ é o som inicial identificado na fala.",
+        "hint": "Escolha o sinal escrito, não o som.",
+        "errorFocus": "LETTER_NAME_VS_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-11",
+      "statement": "A palavra “pipa” começa com qual letra, correspondente ao som /p/?",
+      "prompt": "A palavra “pipa” começa com qual letra, correspondente ao som /p/?",
+      "options": [
+        "B",
+        "F",
+        "P",
+        "M"
+      ],
+      "correctAnswer": "P",
+      "answerPosition": "C",
+      "misconceptions": {
+        "B": [
+          "P_INITIAL_MATCH"
+        ],
+        "F": [
+          "P_INITIAL_MATCH"
+        ],
+        "M": [
+          "P_INITIAL_MATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PIPA_NO_CEU",
+      "explanation": "O som inicial /p/ da palavra é representado pela letra P.",
+      "hint": "Pense no início escrito de pipa.",
+      "errorFocus": "P_INITIAL_MATCH",
+      "feedback": {
+        "correct": "Boa observação: O som inicial /p/ da palavra é representado pela letra P.",
+        "incorrect": "O som inicial /p/ da palavra é representado pela letra P.",
+        "hint": "Pense no início escrito de pipa.",
+        "errorFocus": "P_INITIAL_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-12",
+      "statement": "Que letra aparece no início de “bota” e representa /b/?",
+      "prompt": "Que letra aparece no início de “bota” e representa /b/?",
+      "options": [
+        "P",
+        "V",
+        "D",
+        "B"
+      ],
+      "correctAnswer": "B",
+      "answerPosition": "D",
+      "misconceptions": {
+        "P": [
+          "B_INITIAL_MATCH"
+        ],
+        "V": [
+          "B_INITIAL_MATCH"
+        ],
+        "D": [
+          "B_INITIAL_MATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOTA_NO_ARMARIO",
+      "explanation": "A escrita bota começa com B.",
+      "hint": "Olhe a primeira letra da palavra.",
+      "errorFocus": "B_INITIAL_MATCH",
+      "feedback": {
+        "correct": "Boa observação: A escrita bota começa com B.",
+        "incorrect": "A escrita bota começa com B.",
+        "hint": "Olhe a primeira letra da palavra.",
+        "errorFocus": "B_INITIAL_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-13",
+      "statement": "“Mala” e “mapa” começam com o mesmo som. Qual letra representa esse som nas duas palavras?",
+      "prompt": "“Mala” e “mapa” começam com o mesmo som. Qual letra representa esse som nas duas palavras?",
+      "options": [
+        "M",
+        "N",
+        "B",
+        "P"
+      ],
+      "correctAnswer": "M",
+      "answerPosition": "A",
+      "misconceptions": {
+        "N": [
+          "M_SHARED_INITIAL"
+        ],
+        "B": [
+          "M_SHARED_INITIAL"
+        ],
+        "P": [
+          "M_SHARED_INITIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MAPA_DA_SALA_FICTICIA",
+      "explanation": "As duas palavras começam pelo fonema /m/, representado pela letra M.",
+      "hint": "Compare a letra inicial.",
+      "errorFocus": "M_SHARED_INITIAL",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras começam pelo fonema /m/, representado pela letra M.",
+        "incorrect": "As duas palavras começam pelo fonema /m/, representado pela letra M.",
+        "hint": "Compare a letra inicial.",
+        "errorFocus": "M_SHARED_INITIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-14",
+      "statement": "Em “tomate”, qual letra representa o primeiro som /t/?",
+      "prompt": "Em “tomate”, qual letra representa o primeiro som /t/?",
+      "options": [
+        "D",
+        "T",
+        "F",
+        "V"
+      ],
+      "correctAnswer": "T",
+      "answerPosition": "B",
+      "misconceptions": {
+        "D": [
+          "T_INITIAL_MATCH"
+        ],
+        "F": [
+          "T_INITIAL_MATCH"
+        ],
+        "V": [
+          "T_INITIAL_MATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TOMATE_DE_BRINQUEDO",
+      "explanation": "O T inicia a escrita de tomate e representa /t/ neste contexto.",
+      "hint": "Escute o primeiro som e confira a escrita.",
+      "errorFocus": "T_INITIAL_MATCH",
+      "feedback": {
+        "correct": "Boa observação: O T inicia a escrita de tomate e representa /t/ neste contexto.",
+        "incorrect": "O T inicia a escrita de tomate e representa /t/ neste contexto.",
+        "hint": "Escute o primeiro som e confira a escrita.",
+        "errorFocus": "T_INITIAL_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-15",
+      "statement": "Qual é o fonema inicial de “dedo” e qual letra o representa?",
+      "prompt": "Qual é o fonema inicial de “dedo” e qual letra o representa?",
+      "options": [
+        "D é o som e /d/ é a letra",
+        "A sílaba “de” é a letra",
+        "/d/ é o som e D é a letra.",
+        "/d/ e D significam exatamente a mesma coisa"
+      ],
+      "correctAnswer": "/d/ é o som e D é a letra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "D é o som e /d/ é a letra": [
+          "SOUND_SYMBOL_DISTINCTION"
+        ],
+        "A sílaba “de” é a letra": [
+          "SOUND_SYMBOL_DISTINCTION"
+        ],
+        "/d/ e D significam exatamente a mesma coisa": [
+          "SOUND_SYMBOL_DISTINCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DEDO_DE_MASSINHA",
+      "explanation": "O fonema /d/ é percebido na fala; a letra D é o sinal escrito.",
+      "hint": "Uma opção deve nomear o som e a outra, a letra.",
+      "errorFocus": "SOUND_SYMBOL_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: O fonema /d/ é percebido na fala; a letra D é o sinal escrito.",
+        "incorrect": "O fonema /d/ é percebido na fala; a letra D é o sinal escrito.",
+        "hint": "Uma opção deve nomear o som e a outra, a letra.",
+        "errorFocus": "SOUND_SYMBOL_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-16",
+      "statement": "Um personagem fictício chama-se Nino. Qual letra representa o som inicial /n/ em seu nome?",
+      "prompt": "Um personagem fictício chama-se Nino. Qual letra representa o som inicial /n/ em seu nome?",
+      "options": [
+        "M",
+        "V",
+        "D",
+        "N"
+      ],
+      "correctAnswer": "N",
+      "answerPosition": "D",
+      "misconceptions": {
+        "M": [
+          "N_INITIAL_MATCH"
+        ],
+        "V": [
+          "N_INITIAL_MATCH"
+        ],
+        "D": [
+          "N_INITIAL_MATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOME_DE_ANIMAL_NINO",
+      "explanation": "Na escrita Nino, a letra N representa o som inicial /n/.",
+      "hint": "Use o nome escrito como pista.",
+      "errorFocus": "N_INITIAL_MATCH",
+      "feedback": {
+        "correct": "Boa observação: Na escrita Nino, a letra N representa o som inicial /n/.",
+        "incorrect": "Na escrita Nino, a letra N representa o som inicial /n/.",
+        "hint": "Use o nome escrito como pista.",
+        "errorFocus": "N_INITIAL_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-17",
+      "statement": "Uma figura chama-se “fada”. Qual evidência relaciona o som inicial /f/ à letra F?",
+      "prompt": "Uma figura chama-se “fada”. Qual evidência relaciona o som inicial /f/ à letra F?",
+      "options": [
+        "A palavra escrita começa com F e, ao ser dita, inicia com /f/.",
+        "A palavra tem quatro letras",
+        "A figura é imaginária",
+        "A última letra é A"
+      ],
+      "correctAnswer": "A palavra escrita começa com F e, ao ser dita, inicia com /f/.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A palavra tem quatro letras": [
+          "EVIDENCE_FOR_CORRESPONDENCE"
+        ],
+        "A figura é imaginária": [
+          "EVIDENCE_FOR_CORRESPONDENCE"
+        ],
+        "A última letra é A": [
+          "EVIDENCE_FOR_CORRESPONDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FOTO_DE_FADA",
+      "explanation": "A comparação da fala com a escrita mostra a relação no exemplo.",
+      "hint": "Compare a palavra falada e a letra inicial.",
+      "errorFocus": "EVIDENCE_FOR_CORRESPONDENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação da fala com a escrita mostra a relação no exemplo.",
+        "incorrect": "A comparação da fala com a escrita mostra a relação no exemplo.",
+        "hint": "Compare a palavra falada e a letra inicial.",
+        "errorFocus": "EVIDENCE_FOR_CORRESPONDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-18",
+      "statement": "“Vela” começa com /v/ e “foca” com /f/. Quais letras iniciais mostram essa diferença?",
+      "prompt": "“Vela” começa com /v/ e “foca” com /f/. Quais letras iniciais mostram essa diferença?",
+      "options": [
+        "F e V, porque os sons são iguais",
+        "V e F.",
+        "B e P",
+        "M e N"
+      ],
+      "correctAnswer": "V e F.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "F e V, porque os sons são iguais": [
+          "CONTRAST_F_V"
+        ],
+        "B e P": [
+          "CONTRAST_F_V"
+        ],
+        "M e N": [
+          "CONTRAST_F_V"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "VESTIDO_DE_BONECA",
+      "explanation": "As palavras-modelo apresentam sons iniciais diferentes, escritos com V e F.",
+      "hint": "Confira qual letra inicia cada palavra.",
+      "errorFocus": "CONTRAST_F_V",
+      "feedback": {
+        "correct": "Boa observação: As palavras-modelo apresentam sons iniciais diferentes, escritos com V e F.",
+        "incorrect": "As palavras-modelo apresentam sons iniciais diferentes, escritos com V e F.",
+        "hint": "Confira qual letra inicia cada palavra.",
+        "errorFocus": "CONTRAST_F_V"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-19",
+      "statement": "Uma criança escreveu “bato” para representar a palavra “pato”. Qual pista ajuda a revisar o início?",
+      "prompt": "Uma criança escreveu “bato” para representar a palavra “pato”. Qual pista ajuda a revisar o início?",
+      "options": [
+        "Trocar todas as letras",
+        "Contar as sílabas sem olhar o início",
+        "Ouvir se a palavra começa com /p/ e comparar a letra P no modelo.",
+        "Escolher a letra mais bonita"
+      ],
+      "correctAnswer": "Ouvir se a palavra começa com /p/ e comparar a letra P no modelo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Trocar todas as letras": [
+          "P_B_CONTRAST"
+        ],
+        "Contar as sílabas sem olhar o início": [
+          "P_B_CONTRAST"
+        ],
+        "Escolher a letra mais bonita": [
+          "P_B_CONTRAST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CARTAO_DE_CORRECAO_PATO",
+      "explanation": "Pato começa com /p/; comparar o som com a escrita-modelo orienta a revisão.",
+      "hint": "Concentre-se no primeiro som e na primeira letra.",
+      "errorFocus": "P_B_CONTRAST",
+      "feedback": {
+        "correct": "Boa observação: Pato começa com /p/; comparar o som com a escrita-modelo orienta a revisão.",
+        "incorrect": "Pato começa com /p/; comparar o som com a escrita-modelo orienta a revisão.",
+        "hint": "Concentre-se no primeiro som e na primeira letra.",
+        "errorFocus": "P_B_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-20",
+      "statement": "Uma nova figura representa “bola”. Qual cartão deve acompanhar o som inicial /b/?",
+      "prompt": "Uma nova figura representa “bola”. Qual cartão deve acompanhar o som inicial /b/?",
+      "options": [
+        "A letra P",
+        "O som /d/",
+        "A sílaba final “la”",
+        "A letra B."
+      ],
+      "correctAnswer": "A letra B.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A letra P": [
+          "TRANSFER_B_SOUND"
+        ],
+        "O som /d/": [
+          "TRANSFER_B_SOUND"
+        ],
+        "A sílaba final “la”": [
+          "TRANSFER_B_SOUND"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOVA_FIGURA_DE_BOLA",
+      "explanation": "A palavra bola começa com B, que representa /b/ no exemplo.",
+      "hint": "Use a palavra conhecida para orientar a nova figura.",
+      "errorFocus": "TRANSFER_B_SOUND",
+      "feedback": {
+        "correct": "Boa observação: A palavra bola começa com B, que representa /b/ no exemplo.",
+        "incorrect": "A palavra bola começa com B, que representa /b/ no exemplo.",
+        "hint": "Use a palavra conhecida para orientar a nova figura.",
+        "errorFocus": "TRANSFER_B_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-21",
+      "statement": "Na palavra “mapa”, o primeiro som é /m/. Por que M é a resposta e não /m/?",
+      "prompt": "Na palavra “mapa”, o primeiro som é /m/. Por que M é a resposta e não /m/?",
+      "options": [
+        "Porque M é o sinal escrito que representa o som na palavra.",
+        "Porque a letra e o som são a mesma coisa",
+        "Porque /m/ é uma palavra inteira",
+        "Porque a palavra não tem som"
+      ],
+      "correctAnswer": "Porque M é o sinal escrito que representa o som na palavra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque a letra e o som são a mesma coisa": [
+          "LETTER_AS_REPRESENTATION"
+        ],
+        "Porque /m/ é uma palavra inteira": [
+          "LETTER_AS_REPRESENTATION"
+        ],
+        "Porque a palavra não tem som": [
+          "LETTER_AS_REPRESENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FICHA_DE_MAPA",
+      "explanation": "A pergunta pede a letra escrita; /m/ é a forma de indicar o fonema.",
+      "hint": "Leia se a pergunta pede som ou letra.",
+      "errorFocus": "LETTER_AS_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta pede a letra escrita; /m/ é a forma de indicar o fonema.",
+        "incorrect": "A pergunta pede a letra escrita; /m/ é a forma de indicar o fonema.",
+        "hint": "Leia se a pergunta pede som ou letra.",
+        "errorFocus": "LETTER_AS_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-22",
+      "statement": "Uma lista traz tatu, tomate e teto. Qual conclusão é adequada para os exemplos trabalhados?",
+      "prompt": "Uma lista traz tatu, tomate e teto. Qual conclusão é adequada para os exemplos trabalhados?",
+      "options": [
+        "T sempre tem o mesmo som em toda palavra do português",
+        "Todas começam com a letra T, que representa o som inicial /t/ nessas palavras.",
+        "Todas as letras são fonemas",
+        "As três palavras significam a mesma coisa"
+      ],
+      "correctAnswer": "Todas começam com a letra T, que representa o som inicial /t/ nessas palavras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "T sempre tem o mesmo som em toda palavra do português": [
+          "BOUNDED_PATTERN"
+        ],
+        "Todas as letras são fonemas": [
+          "BOUNDED_PATTERN"
+        ],
+        "As três palavras significam a mesma coisa": [
+          "BOUNDED_PATTERN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LISTA_DE_PALAVRAS_COM_T",
+      "explanation": "A conclusão fica limitada às palavras listadas e não vira regra universal sobre toda letra.",
+      "hint": "Use a frase “nessas palavras”.",
+      "errorFocus": "BOUNDED_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A conclusão fica limitada às palavras listadas e não vira regra universal sobre toda letra.",
+        "incorrect": "A conclusão fica limitada às palavras listadas e não vira regra universal sobre toda letra.",
+        "hint": "Use a frase “nessas palavras”.",
+        "errorFocus": "BOUNDED_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-23",
+      "statement": "Qual par compartilha o fonema inicial /d/?",
+      "prompt": "Qual par compartilha o fonema inicial /d/?",
+      "options": [
+        "Tatu e tomate",
+        "Foca e fita",
+        "Dado e desenho de uma dona fictícia.",
+        "Pato e bola"
+      ],
+      "correctAnswer": "Dado e desenho de uma dona fictícia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tatu e tomate": [
+          "D_SHARED_INITIAL"
+        ],
+        "Foca e fita": [
+          "D_SHARED_INITIAL"
+        ],
+        "Pato e bola": [
+          "D_SHARED_INITIAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_DADO_E_TATU",
+      "explanation": "Dado e dona começam com /d/ representado pela letra D.",
+      "hint": "Diga os nomes devagar e compare o início.",
+      "errorFocus": "D_SHARED_INITIAL",
+      "feedback": {
+        "correct": "Boa observação: Dado e dona começam com /d/ representado pela letra D.",
+        "incorrect": "Dado e dona começam com /d/ representado pela letra D.",
+        "hint": "Diga os nomes devagar e compare o início.",
+        "errorFocus": "D_SHARED_INITIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-24",
+      "statement": "Uma criança que não ouve o áudio pode observar a palavra escrita e a leitura em Libras com apoio. Como pode participar?",
+      "prompt": "Uma criança que não ouve o áudio pode observar a palavra escrita e a leitura em Libras com apoio. Como pode participar?",
+      "options": [
+        "Ser excluída porque a atividade só aceita áudio",
+        "Ser obrigada a repetir um som",
+        "Receber a resposta sem participar",
+        "Apontar a letra inicial e comparar com o modelo visual da palavra."
+      ],
+      "correctAnswer": "Apontar a letra inicial e comparar com o modelo visual da palavra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ser excluída porque a atividade só aceita áudio": [
+          "ACCESSIBLE_PHONOLOGY"
+        ],
+        "Ser obrigada a repetir um som": [
+          "ACCESSIBLE_PHONOLOGY"
+        ],
+        "Receber a resposta sem participar": [
+          "ACCESSIBLE_PHONOLOGY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LEITURA_COM_DUAS_MODALIDADES",
+      "explanation": "A tarefa admite comparação visual e resposta apontada sem depender exclusivamente de audição ou fala.",
+      "hint": "Procure uma forma de mostrar a relação por escrito.",
+      "errorFocus": "ACCESSIBLE_PHONOLOGY",
+      "feedback": {
+        "correct": "Boa observação: A tarefa admite comparação visual e resposta apontada sem depender exclusivamente de audição ou fala.",
+        "incorrect": "A tarefa admite comparação visual e resposta apontada sem depender exclusivamente de audição ou fala.",
+        "hint": "Procure uma forma de mostrar a relação por escrito.",
+        "errorFocus": "ACCESSIBLE_PHONOLOGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-25",
+      "statement": "Foca, fita e faca começam com o mesmo fonema. Qual letra aparece no início dessas escritas?",
+      "prompt": "Foca, fita e faca começam com o mesmo fonema. Qual letra aparece no início dessas escritas?",
+      "options": [
+        "F",
+        "V",
+        "B",
+        "P"
+      ],
+      "correctAnswer": "F",
+      "answerPosition": "A",
+      "misconceptions": {
+        "V": [
+          "FAMILY_OF_INITIAL_F"
+        ],
+        "B": [
+          "FAMILY_OF_INITIAL_F"
+        ],
+        "P": [
+          "FAMILY_OF_INITIAL_F"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GRUPO_DE_PALAVRAS_F",
+      "explanation": "Os três exemplos apresentam F inicial e o som /f/.",
+      "hint": "Observe a primeira letra das três.",
+      "errorFocus": "FAMILY_OF_INITIAL_F",
+      "feedback": {
+        "correct": "Boa observação: Os três exemplos apresentam F inicial e o som /f/.",
+        "incorrect": "Os três exemplos apresentam F inicial e o som /f/.",
+        "hint": "Observe a primeira letra das três.",
+        "errorFocus": "FAMILY_OF_INITIAL_F"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-26",
+      "statement": "Em “pato”, qual é a letra inicial e qual é a sílaba inicial?",
+      "prompt": "Em “pato”, qual é a letra inicial e qual é a sílaba inicial?",
+      "options": [
+        "A letra é “pa”; a sílaba é P",
+        "A letra é P; a sílaba inicial é “pa”.",
+        "As duas são fonemas iguais",
+        "A letra inicial é T"
+      ],
+      "correctAnswer": "A letra é P; a sílaba inicial é “pa”.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A letra é “pa”; a sílaba é P": [
+          "LETTER_SYLLABLE_PHONEME"
+        ],
+        "As duas são fonemas iguais": [
+          "LETTER_SYLLABLE_PHONEME"
+        ],
+        "A letra inicial é T": [
+          "LETTER_SYLLABLE_PHONEME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_DA_SILABA_PA",
+      "explanation": "P é uma letra; “pa” é uma sílaba; o som /p/ é um fonema.",
+      "hint": "Compare o tamanho das unidades.",
+      "errorFocus": "LETTER_SYLLABLE_PHONEME",
+      "feedback": {
+        "correct": "Boa observação: P é uma letra; “pa” é uma sílaba; o som /p/ é um fonema.",
+        "incorrect": "P é uma letra; “pa” é uma sílaba; o som /p/ é um fonema.",
+        "hint": "Compare o tamanho das unidades.",
+        "errorFocus": "LETTER_SYLLABLE_PHONEME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-27",
+      "statement": "“Bola” e “pola” diferem na letra inicial. Que mudança sonora a leitura-modelo destaca?",
+      "prompt": "“Bola” e “pola” diferem na letra inicial. Que mudança sonora a leitura-modelo destaca?",
+      "options": [
+        "Muda apenas o espaço entre palavras",
+        "O som final muda de /a/ para /o/",
+        "O som inicial muda de /b/ para /p/.",
+        "As duas começam com /m/"
+      ],
+      "correctAnswer": "O som inicial muda de /b/ para /p/.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Muda apenas o espaço entre palavras": [
+          "INITIAL_SOUND_CONTRAST"
+        ],
+        "O som final muda de /a/ para /o/": [
+          "INITIAL_SOUND_CONTRAST"
+        ],
+        "As duas começam com /m/": [
+          "INITIAL_SOUND_CONTRAST"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_DUAS_ESCRITAS",
+      "explanation": "A troca de B por P altera o fonema inicial no par apresentado.",
+      "hint": "Leia as duas palavras e compare o início.",
+      "errorFocus": "INITIAL_SOUND_CONTRAST",
+      "feedback": {
+        "correct": "Boa observação: A troca de B por P altera o fonema inicial no par apresentado.",
+        "incorrect": "A troca de B por P altera o fonema inicial no par apresentado.",
+        "hint": "Leia as duas palavras e compare o início.",
+        "errorFocus": "INITIAL_SOUND_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-28",
+      "statement": "Uma criança monta N-A-V-I-O. Qual cartão representa o primeiro som da palavra?",
+      "prompt": "Uma criança monta N-A-V-I-O. Qual cartão representa o primeiro som da palavra?",
+      "options": [
+        "A",
+        "V",
+        "O",
+        "N"
+      ],
+      "correctAnswer": "N",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A": [
+          "INITIAL_POSITION_IN_WORD"
+        ],
+        "V": [
+          "INITIAL_POSITION_IN_WORD"
+        ],
+        "O": [
+          "INITIAL_POSITION_IN_WORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LETRA_MOVEL_DE_NAVIO",
+      "explanation": "N aparece no começo da escrita e representa /n/ no exemplo.",
+      "hint": "Siga a palavra da esquerda para a direita.",
+      "errorFocus": "INITIAL_POSITION_IN_WORD",
+      "feedback": {
+        "correct": "Boa observação: N aparece no começo da escrita e representa /n/ no exemplo.",
+        "incorrect": "N aparece no começo da escrita e representa /n/ no exemplo.",
+        "hint": "Siga a palavra da esquerda para a direita.",
+        "errorFocus": "INITIAL_POSITION_IN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-29",
+      "statement": "Por que V não é a resposta para o som inicial de “foca”?",
+      "prompt": "Por que V não é a resposta para o som inicial de “foca”?",
+      "options": [
+        "Porque a palavra-modelo começa com F e o som indicado é /f/.",
+        "Porque V nunca aparece em palavras",
+        "Porque a palavra não tem letra inicial",
+        "Porque letras não representam sons"
+      ],
+      "correctAnswer": "Porque a palavra-modelo começa com F e o som indicado é /f/.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque V nunca aparece em palavras": [
+          "CHECK_WORD_EVIDENCE"
+        ],
+        "Porque a palavra não tem letra inicial": [
+          "CHECK_WORD_EVIDENCE"
+        ],
+        "Porque letras não representam sons": [
+          "CHECK_WORD_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SONS_DE_VELA_E_FOCA",
+      "explanation": "A palavra-modelo fornece a pista F para /f/.",
+      "hint": "Retorne à primeira letra escrita.",
+      "errorFocus": "CHECK_WORD_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A palavra-modelo fornece a pista F para /f/.",
+        "incorrect": "A palavra-modelo fornece a pista F para /f/.",
+        "hint": "Retorne à primeira letra escrita.",
+        "errorFocus": "CHECK_WORD_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-30",
+      "statement": "Alguém concluiu: “Toda letra sempre representa o mesmo som”. Qual comentário é mais preciso?",
+      "prompt": "Alguém concluiu: “Toda letra sempre representa o mesmo som”. Qual comentário é mais preciso?",
+      "options": [
+        "A frase é sempre correta",
+        "A relação pode variar; devemos observar cada palavra e a correspondência estudada.",
+        "Letras não representam sons",
+        "Cada palavra tem apenas uma letra"
+      ],
+      "correctAnswer": "A relação pode variar; devemos observar cada palavra e a correspondência estudada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A frase é sempre correta": [
+          "AVOID_ABSOLUTE_GRAPHEME_RULE"
+        ],
+        "Letras não representam sons": [
+          "AVOID_ABSOLUTE_GRAPHEME_RULE"
+        ],
+        "Cada palavra tem apenas uma letra": [
+          "AVOID_ABSOLUTE_GRAPHEME_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_ABSOLUTA_DA_LETRA",
+      "explanation": "A correspondência entre letras e sons depende da palavra; uma regra absoluta é inadequada.",
+      "hint": "Desconfie de “sempre” e “toda”.",
+      "errorFocus": "AVOID_ABSOLUTE_GRAPHEME_RULE",
+      "feedback": {
+        "correct": "Boa observação: A correspondência entre letras e sons depende da palavra; uma regra absoluta é inadequada.",
+        "incorrect": "A correspondência entre letras e sons depende da palavra; uma regra absoluta é inadequada.",
+        "hint": "Desconfie de “sempre” e “toda”.",
+        "errorFocus": "AVOID_ABSOLUTE_GRAPHEME_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-31",
+      "statement": "A palavra “dente” começa com /d/. Qual letra escrita inicia a palavra?",
+      "prompt": "A palavra “dente” começa com /d/. Qual letra escrita inicia a palavra?",
+      "options": [
+        "T",
+        "B",
+        "D",
+        "N"
+      ],
+      "correctAnswer": "D",
+      "answerPosition": "C",
+      "misconceptions": {
+        "T": [
+          "D_INITIAL_REVIEW"
+        ],
+        "B": [
+          "D_INITIAL_REVIEW"
+        ],
+        "N": [
+          "D_INITIAL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DESENHO_DE_DENTE",
+      "explanation": "D representa o som inicial em dente.",
+      "hint": "Olhe a primeira letra de dente.",
+      "errorFocus": "D_INITIAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: D representa o som inicial em dente.",
+        "incorrect": "D representa o som inicial em dente.",
+        "hint": "Olhe a primeira letra de dente.",
+        "errorFocus": "D_INITIAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-32",
+      "statement": "Um cartão mostra “mimo”. Qual relação aparece no começo da palavra?",
+      "prompt": "Um cartão mostra “mimo”. Qual relação aparece no começo da palavra?",
+      "options": [
+        "O fonema /n/ é representado por V",
+        "A letra M representa uma sílaba inteira",
+        "O som inicial é /p/",
+        "O fonema /m/ é representado por M."
+      ],
+      "correctAnswer": "O fonema /m/ é representado por M.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O fonema /n/ é representado por V": [
+          "TRANSFER_M_MATCH"
+        ],
+        "A letra M representa uma sílaba inteira": [
+          "TRANSFER_M_MATCH"
+        ],
+        "O som inicial é /p/": [
+          "TRANSFER_M_MATCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PALAVRA_NOVA_COM_M",
+      "explanation": "A comparação da fala com a escrita identifica /m/ e M no exemplo.",
+      "hint": "Compare o som inicial ouvido com a letra escrita.",
+      "errorFocus": "TRANSFER_M_MATCH",
+      "feedback": {
+        "correct": "Boa observação: A comparação da fala com a escrita identifica /m/ e M no exemplo.",
+        "incorrect": "A comparação da fala com a escrita identifica /m/ e M no exemplo.",
+        "hint": "Compare o som inicial ouvido com a letra escrita.",
+        "errorFocus": "TRANSFER_M_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-33",
+      "statement": "Em “foca”, qual letra representa o som inicial /f/?",
+      "prompt": "Em “foca”, qual letra representa o som inicial /f/?",
+      "options": [
+        "F",
+        "V",
+        "M",
+        "B"
+      ],
+      "correctAnswer": "F",
+      "answerPosition": "A",
+      "misconceptions": {
+        "V": [
+          "RECALL_F"
+        ],
+        "M": [
+          "RECALL_F"
+        ],
+        "B": [
+          "RECALL_F"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_FOCA",
+      "explanation": "A escrita da palavra começa com F para representar /f/.",
+      "hint": "Lembre da letra no início.",
+      "errorFocus": "RECALL_F",
+      "feedback": {
+        "correct": "Boa observação: A escrita da palavra começa com F para representar /f/.",
+        "incorrect": "A escrita da palavra começa com F para representar /f/.",
+        "hint": "Lembre da letra no início.",
+        "errorFocus": "RECALL_F"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-34",
+      "statement": "Qual alternativa descreve a diferença entre fonema e letra?",
+      "prompt": "Qual alternativa descreve a diferença entre fonema e letra?",
+      "options": [
+        "Fonema é sempre uma palavra; letra é frase",
+        "Fonema é som da fala; letra é sinal escrito.",
+        "Fonema é desenho; letra é som",
+        "São nomes diferentes para a mesma coisa"
+      ],
+      "correctAnswer": "Fonema é som da fala; letra é sinal escrito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fonema é sempre uma palavra; letra é frase": [
+          "RECALL_CONCEPTS"
+        ],
+        "Fonema é desenho; letra é som": [
+          "RECALL_CONCEPTS"
+        ],
+        "São nomes diferentes para a mesma coisa": [
+          "RECALL_CONCEPTS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_SOM_E_SINAL",
+      "explanation": "O fonema pertence à fala e a letra pertence à escrita.",
+      "hint": "Pense em ouvir versus ver.",
+      "errorFocus": "RECALL_CONCEPTS",
+      "feedback": {
+        "correct": "Boa observação: O fonema pertence à fala e a letra pertence à escrita.",
+        "incorrect": "O fonema pertence à fala e a letra pertence à escrita.",
+        "hint": "Pense em ouvir versus ver.",
+        "errorFocus": "RECALL_CONCEPTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-35",
+      "statement": "Pato começa com /p/ e bola começa com /b/. Quais letras representam os sons iniciais?",
+      "prompt": "Pato começa com /p/ e bola começa com /b/. Quais letras representam os sons iniciais?",
+      "options": [
+        "B em pato e P em bola",
+        "T nas duas palavras",
+        "P em pato e B em bola.",
+        "M nas duas palavras"
+      ],
+      "correctAnswer": "P em pato e B em bola.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "B em pato e P em bola": [
+          "RECALL_P_B"
+        ],
+        "T nas duas palavras": [
+          "RECALL_P_B"
+        ],
+        "M nas duas palavras": [
+          "RECALL_P_B"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_P_B",
+      "explanation": "As escritas-modelo começam com P e B, respectivamente.",
+      "hint": "Confira a primeira letra de cada palavra.",
+      "errorFocus": "RECALL_P_B",
+      "feedback": {
+        "correct": "Boa observação: As escritas-modelo começam com P e B, respectivamente.",
+        "incorrect": "As escritas-modelo começam com P e B, respectivamente.",
+        "hint": "Confira a primeira letra de cada palavra.",
+        "errorFocus": "RECALL_P_B"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-36",
+      "statement": "Qual conclusão sobre T em tatu e tomate é cuidadosa?",
+      "prompt": "Qual conclusão sobre T em tatu e tomate é cuidadosa?",
+      "options": [
+        "T sempre representa /t/ em qualquer palavra",
+        "T é um fonema e não uma letra",
+        "As palavras são iguais",
+        "Nesses exemplos, T representa o som inicial /t/."
+      ],
+      "correctAnswer": "Nesses exemplos, T representa o som inicial /t/.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "T sempre representa /t/ em qualquer palavra": [
+          "RECALL_BOUNDED_CLAIM"
+        ],
+        "T é um fonema e não uma letra": [
+          "RECALL_BOUNDED_CLAIM"
+        ],
+        "As palavras são iguais": [
+          "RECALL_BOUNDED_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_GENERALIZACAO",
+      "explanation": "A conclusão correta descreve os exemplos sem generalizar para todo uso da letra.",
+      "hint": "Inclua “nesses exemplos”.",
+      "errorFocus": "RECALL_BOUNDED_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A conclusão correta descreve os exemplos sem generalizar para todo uso da letra.",
+        "incorrect": "A conclusão correta descreve os exemplos sem generalizar para todo uso da letra.",
+        "hint": "Inclua “nesses exemplos”.",
+        "errorFocus": "RECALL_BOUNDED_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-37",
+      "statement": "Na palavra “ninho”, qual letra inicial corresponde ao som /n/?",
+      "prompt": "Na palavra “ninho”, qual letra inicial corresponde ao som /n/?",
+      "options": [
+        "N",
+        "M",
+        "D",
+        "V"
+      ],
+      "correctAnswer": "N",
+      "answerPosition": "A",
+      "misconceptions": {
+        "M": [
+          "RECALL_N"
+        ],
+        "D": [
+          "RECALL_N"
+        ],
+        "V": [
+          "RECALL_N"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_NINHO",
+      "explanation": "A palavra começa com N, que representa /n/.",
+      "hint": "Localize o início escrito.",
+      "errorFocus": "RECALL_N",
+      "feedback": {
+        "correct": "Boa observação: A palavra começa com N, que representa /n/.",
+        "incorrect": "A palavra começa com N, que representa /n/.",
+        "hint": "Localize o início escrito.",
+        "errorFocus": "RECALL_N"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-38",
+      "statement": "Em “mapa”, /m/ e M são…",
+      "prompt": "Em “mapa”, /m/ e M são…",
+      "options": [
+        "duas letras iguais",
+        "o som inicial e a letra que o representa.",
+        "uma sílaba e uma palavra",
+        "dois sons finais"
+      ],
+      "correctAnswer": "o som inicial e a letra que o representa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "duas letras iguais": [
+          "SOUND_LETTER_PAIR_REVIEW"
+        ],
+        "uma sílaba e uma palavra": [
+          "SOUND_LETTER_PAIR_REVIEW"
+        ],
+        "dois sons finais": [
+          "SOUND_LETTER_PAIR_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_MAPA",
+      "explanation": "/m/ indica o som e M é a letra inicial da palavra.",
+      "hint": "Associe ouvir ao fonema e ver à letra.",
+      "errorFocus": "SOUND_LETTER_PAIR_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: /m/ indica o som e M é a letra inicial da palavra.",
+        "incorrect": "/m/ indica o som e M é a letra inicial da palavra.",
+        "hint": "Associe ouvir ao fonema e ver à letra.",
+        "errorFocus": "SOUND_LETTER_PAIR_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-39",
+      "statement": "Uma figura de “vaca” é apresentada sem áudio, mas a palavra escrita está visível. Como identificar a letra do som inicial com apoio?",
+      "prompt": "Uma figura de “vaca” é apresentada sem áudio, mas a palavra escrita está visível. Como identificar a letra do som inicial com apoio?",
+      "options": [
+        "Adivinhar pela cor da figura",
+        "Escolher uma letra aleatória",
+        "Usar a leitura-modelo da palavra e apontar V no começo.",
+        "Excluir quem não ouviu o áudio"
+      ],
+      "correctAnswer": "Usar a leitura-modelo da palavra e apontar V no começo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Adivinhar pela cor da figura": [
+          "MULTIMODAL_REVIEW"
+        ],
+        "Escolher uma letra aleatória": [
+          "MULTIMODAL_REVIEW"
+        ],
+        "Excluir quem não ouviu o áudio": [
+          "MULTIMODAL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "REVISAO_DE_NOVA_FIGURA",
+      "explanation": "A leitura-modelo e a escrita permitem analisar a correspondência sem depender apenas do áudio.",
+      "hint": "Use a palavra escrita como evidência.",
+      "errorFocus": "MULTIMODAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A leitura-modelo e a escrita permitem analisar a correspondência sem depender apenas do áudio.",
+        "incorrect": "A leitura-modelo e a escrita permitem analisar a correspondência sem depender apenas do áudio.",
+        "hint": "Use a palavra escrita como evidência.",
+        "errorFocus": "MULTIMODAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp07-phonemes-and-letter-representations-40",
+      "statement": "O que significa identificar um fonema e sua representação por letra?",
+      "prompt": "O que significa identificar um fonema e sua representação por letra?",
+      "options": [
+        "Confundir som, letra e palavra",
+        "Afirmar uma regra sem observar exemplos",
+        "Contar letras sem ler a palavra",
+        "Perceber um som da palavra e relacioná-lo à letra escrita naquele exemplo."
+      ],
+      "correctAnswer": "Perceber um som da palavra e relacioná-lo à letra escrita naquele exemplo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Confundir som, letra e palavra": [
+          "SKILL_SUMMARY"
+        ],
+        "Afirmar uma regra sem observar exemplos": [
+          "SKILL_SUMMARY"
+        ],
+        "Contar letras sem ler a palavra": [
+          "SKILL_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DO_OBJETIVO",
+      "explanation": "A tarefa combina observação de som e escrita em contexto.",
+      "hint": "Lembre do exemplo foca/F.",
+      "errorFocus": "SKILL_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A tarefa combina observação de som e escrita em contexto.",
+        "incorrect": "A tarefa combina observação de som e escrita em contexto.",
+        "hint": "Lembre do exemplo foca/F.",
+        "errorFocus": "SKILL_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em impressão ampliada, alto contraste, leitura oral, sinais visuais de início e cartões táteis quando disponíveis.",
+          "Não depender apenas da audição: permitir leitura compartilhada, observação da escrita, apontamento, Libras ou comunicação alternativa conforme a necessidade.",
+          "Aceitar pronúncias regionais; evitar exemplos cujo som varie significativamente entre dialetos nesta etapa e não avaliar sotaque."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

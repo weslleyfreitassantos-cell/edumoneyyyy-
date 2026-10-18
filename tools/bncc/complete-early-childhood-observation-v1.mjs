@@ -58,6 +58,14 @@ const RECIPES = {
     ],
     additionalCriterion: 'A recusa, a pausa ou a participação parcial são respeitadas sem forçar autonomia nem comprometer a segurança do cuidado.',
   },
+  EI01EF01: {
+    file: 'early-childhood-experiential-v7.json',
+    experiences: [
+      { title: 'Chamada breve em uma rotina acolhedora', steps: ['Use o nome pelo qual a família autorizou chamar o bebê, em uma interação cotidiana calma e sem exposição pública.', 'Chame uma vez em voz natural e aguarde; observe orientação do olhar, movimento, vocalização, pausa ou outra resposta sem exigir fala.', 'Interrompa se houver desconforto e registre somente a resposta observável, sem repetir chamadas para testar a criança.'], observableEvidence: 'Descrição mínima do contexto, do chamado uma vez, da resposta observável e do apoio oferecido, sem afirmar reconhecimento além das evidências.' },
+      { title: 'Livro de convivência com nomes familiares autorizados', steps: ['Leia um livro curto com personagens e, somente se autorizado, use nomes familiares fornecidos por responsáveis em contexto privado.', 'Ao mencionar um nome, faça uma pausa natural para permitir olhar, gesto, vocalização, comunicação alternativa ou ausência de resposta.', 'Não peça que o bebê repita, aponte ou demonstre desempenho; acolha qualquer forma de participação e encerre conforme seus sinais.'], observableEvidence: 'Registro sem nomes: indica que houve leitura compartilhada, quais respostas observáveis ocorreram e como a privacidade e o ritmo foram preservados.' },
+    ],
+    additionalCriterion: 'O adulto usa nomes autorizados em contexto privado, não exige resposta verbal nem repete chamadas para testar reconhecimento.',
+  },
 };
 
 function readJson(relativePath) {

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef02ge01-community-migration-stories",
+  "officialCode": "EF02GE01",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef02ge01-community-migration-stories.json",
+  "canonicalSkillCode": "AUTHORING_EF02GE01_COMMUNITY_MIGRATION_HISTORY",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "histórias de migrações em bairros e comunidades",
+  "officialDescriptor": "Descrever a história das migrações no bairro ou comunidade em que vive.",
+  "officialSource": {
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 375
+  },
+  "lesson": {
+    "title": "Histórias de chegada e mudança",
+    "objective": "Descrever mudanças de pessoas entre lugares ao longo do tempo usando fontes públicas, mapas simples e narrativas fictícias, sem exigir relatos sobre a vida familiar dos estudantes.",
+    "summary": "Migração acontece quando pessoas mudam de lugar para viver por um período ou por mais tempo. As histórias de um bairro podem incluir chegadas, partidas e deslocamentos dentro da mesma cidade ou entre regiões. Uma fotografia, um mapa, uma notícia local ou uma entrevista autorizada mostra apenas parte da história; é importante dizer de onde veio a informação e não supor por que alguém se mudou. As atividades usam exemplos públicos ou inventados. Ninguém precisa contar de onde veio sua família.",
+    "explanation": "Para descrever uma migração, primeiro identifique quem ou qual grupo a fonte apresenta, de que lugar saiu, para qual lugar foi e quando isso ocorreu, se a informação estiver disponível. Depois compare o que mudou no bairro e o que permaneceu. Uma linha do tempo organiza antes e depois; um mapa ajuda a localizar, mas não explica sozinho as razões da mudança. As causas podem ser diferentes e combinadas. Não se deve atribuir uma razão a todas as pessoas de um grupo, nem tratar uma origem como melhor que outra. Quando a fonte não informa um detalhe, a resposta correta é reconhecer que não sabemos.",
+    "workedExample": "Uma história fictícia conta que, em 2018, uma família saiu de uma cidade do interior e passou a morar em outro bairro da mesma capital. Um mapa mostra os dois pontos e uma entrevista pública diz que a família procurava ficar mais perto do trabalho. Podemos descrever a mudança de lugar e a razão atribuída a essa família pela entrevista; não podemos afirmar que todas as famílias migram pelo mesmo motivo.",
+    "commonMistake": "Supor que todas as pessoas que chegam a um bairro vieram do mesmo lugar ou se mudaram pelo mesmo motivo; ou pedir que colegas revelem histórias familiares para provar a aprendizagem.",
+    "priorKnowledge": [
+      "Ler uma sequência simples de antes e depois.",
+      "Localizar lugares conhecidos em um mapa ou desenho com legenda.",
+      "Distinguir uma informação contada pela fonte de uma suposição pessoal."
+    ],
+    "keyConcepts": [
+      "migração",
+      "lugar de origem",
+      "lugar de chegada",
+      "comunidade",
+      "linha do tempo",
+      "fonte de informação",
+      "mudança e permanência",
+      "respeito à diversidade"
+    ],
+    "remediations": [
+      { "errorFocus": "ORIGIN_DESTINATION_CONFUSION", "action": "Volte ao mapa e marque separadamente o lugar de saída e o lugar de chegada; conte o percurso na ordem indicada pela fonte." },
+      { "errorFocus": "UNSUPPORTED_MIGRATION_REASON", "action": "Sublinhe somente a frase que informa a razão. Se a fonte não apresentar uma razão, registre que ela não foi informada." },
+      { "errorFocus": "GROUP_GENERALIZATION", "action": "Troque uma afirmação sobre um grupo inteiro por uma descrição limitada à pessoa, período ou fonte apresentada." }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+      "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+      "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+      "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge01-public-neighborhood-timeline",
+        "title": "Linha do tempo de uma comunidade fictícia",
+        "context": "Um conjunto de cartões inventados descreve três mudanças de moradores em uma comunidade, com datas e locais indicados; nenhum cartão representa a família de um estudante.",
+        "steps": [
+          "Separe os cartões pelo ano indicado e organize-os do mais antigo ao mais recente.",
+          "Marque no mapa ilustrado o lugar de saída e o de chegada quando a história informar esses locais.",
+          "Escreva ou dite uma frase que descreva uma mudança e outra informação que a fonte não permite concluir."
+        ],
+        "evidence": "Linha do tempo e descrição curta que preservam a ordem, distinguem origem de chegada e identificam limites da fonte.",
+        "privacyGuard": "Não solicitar relatos familiares, locais de moradia reais ou motivos pessoais de mudança.",
+        "rubric": [
+          "Inicial: ordena um evento com apoio, mas ainda mistura os locais.",
+          "Em desenvolvimento: organiza a sequência e identifica origem ou chegada com lembrete.",
+          "Consolidado: descreve a mudança na ordem correta e separa fato da fonte de informação ausente."
+        ]
+      },
+      {
+        "id": "ge01-source-comparison-gallery",
+        "title": "Galeria de fontes e perguntas",
+        "context": "A turma observa imagens públicas previamente autorizadas, pequenos mapas e relatos fictícios sobre mudanças em diferentes bairros.",
+        "steps": [
+          "Escolha uma fonte e identifique se é mapa, imagem, notícia ou narrativa.",
+          "Registre uma informação que ela mostra sobre chegada, partida ou transformação do lugar.",
+          "Crie uma pergunta respeitosa para investigar o que a fonte ainda não explica, sem perguntar a colegas sobre sua origem familiar."
+        ],
+        "evidence": "Legenda que descreve uma informação sustentada pela fonte e uma pergunta de investigação não invasiva.",
+        "privacyGuard": "Utilizar apenas fontes públicas ou fictícias; não fotografar moradores nem coletar histórias sem consentimento institucional.",
+        "rubric": [
+          "Inicial: reconhece a fonte com apoio, mas faz uma afirmação não sustentada.",
+          "Em desenvolvimento: relata um dado apresentado e formula pergunta com orientação.",
+          "Consolidado: explica o que a fonte permite descrever e o que precisa de outra evidência."
+        ]
+      }
+    ],
+    "estimatedMinutes": 35
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","IDENTIFY","MAPA_DE_DOIS_BAIRROS","Um mapa fictício mostra uma pessoa mudando do Bairro Azul para o Bairro Novo. Qual é o lugar de chegada?","Bairro Novo",["Bairro Azul","A escola do mapa","O lugar não indicado"],"ORIGIN_DESTINATION_CONFUSION","O trajeto começa no Bairro Azul e termina no Bairro Novo.","Siga a seta até o ponto final."],
+      ["EASY","RECALL","CARTAO_DE_CONCEITO","Qual situação descreve uma migração?","Uma pessoa muda de lugar para morar por um período ou mais tempo",["Uma pessoa visita a praça por uma tarde","Uma pessoa troca de sala na escola","Uma pessoa caminha até a padaria e volta"],"VISIT_AS_MIGRATION","Visita curta não é o mesmo que mudar de lugar para viver.","Procure a mudança de lugar para morar."],
+      ["EASY","IDENTIFY","CALENDARIO_DE_CHEGADAS","No calendário da Vila do Sol, a família de Ravi chegou em 2021. O que sabemos?","A chegada ocorreu em 2021",["A família nasceu na Vila do Sol","Todas as famílias chegaram em 2021","A mudança aconteceu por causa do trabalho"],"INFERRED_DATE_REASON","O calendário informa o ano de chegada, mas não origem ou motivo.","Use apenas o dado anotado."],
+      ["EASY","DISTINGUISH","FOTO_COM_LEGENDA","Uma legenda pública diz que uma ponte foi construída antes de novas casas. O que ela mostra sobre a comunidade?","Uma mudança na paisagem ao longo do tempo",["O motivo de cada pessoa ter se mudado","A origem de todos os moradores","Que toda casa foi construída pela mesma família"],"LANDSCAPE_AS_MIGRATION_CAUSE","A imagem registra mudança no lugar, não as histórias individuais dos moradores.","Separe transformação do espaço e trajetória pessoal."],
+      ["EASY","IDENTIFY","ROTA_EM_MAPA_ESCOLAR","Um desenho mostra setas da Comunidade A para a Comunidade B. O que a seta representa?","Um deslocamento entre os lugares indicados",["Uma estrada usada por todas as pessoas","O motivo da mudança","A data exata da chegada"],"MAP_OVERINTERPRETATION","A seta mostra percurso, mas não explica motivo nem data.","Leia somente o símbolo e a legenda."],
+      ["EASY","RECALL","RELATO_FICTICIO_DE_CHEGADA","Em uma história inventada, Joana mudou para o bairro em 2020. Que informação está explícita?","O ano em que Joana chegou ao bairro",["O país onde Joana nasceu","O motivo de todas as mudanças","Quanto tempo cada morador ficará"],"UNSUPPORTED_DETAIL","A história dá o ano, não os demais detalhes.","Aponte a informação escrita."],
+      ["EASY","CLASSIFY","VIZINHOS_EM_TRES_TEMPOS","Três imagens mostram a mesma rua em épocas diferentes. O que pode ser comparado?","O que mudou e o que permaneceu na rua",["A história completa de cada morador","A razão de cada família ter chegado","A origem de todas as pessoas"],"IMAGE_AS_PERSONAL_HISTORY","Imagens do espaço permitem comparar a rua, não revelar toda a história das pessoas.","Compare os elementos visíveis da paisagem."],
+      ["EASY","IDENTIFY","LEGENDA_DE_ROTA","Uma legenda informa “mudança dentro da mesma cidade”. Qual descrição combina com ela?","O deslocamento ocorreu entre lugares da mesma cidade",["A pessoa apenas fez uma visita","A mudança atravessou necessariamente um país","A fonte informa por que a pessoa mudou"],"LOCAL_MIGRATION_SCOPE","Mudanças também podem ocorrer entre bairros ou cidades da mesma região.","Observe a escala geográfica indicada."]
+    ],
+    "PRACTICE": [
+      ["EASY","SEQUENCE","CARTOES_DE_ANTES_E_DEPOIS","Uma narrativa diz: em 2019 a família morava na Serra Clara; em 2022 passou a morar no Vale Verde. Qual ordem está correta?","Serra Clara primeiro; Vale Verde depois",["Vale Verde primeiro; Serra Clara depois","Os dois lugares ao mesmo tempo","A ordem não pode ser conhecida"],"TIMELINE_REVERSED","As datas mostram a saída em 2019 e a chegada ao novo lugar em 2022.","Ordene pelos anos."],
+      ["EASY","APPLY","MAPA_DE_LINHA_DE_ONIBUS","Um mapa mostra que o bairro ganhou uma linha de ônibus em 2017. O que esse mapa pode ajudar a descrever?","Uma mudança na conexão entre bairros",["O nome de todas as pessoas que migraram","A razão pessoal de cada mudança","Que todos passaram a usar o ônibus"],"INFRASTRUCTURE_UNIVERSAL_CLAIM","O mapa informa uma ligação de transporte, não as escolhas de todos os moradores.","Fique na informação de conexão."],
+      ["MEDIUM","DISTINGUISH","ENTREVISTA_PUBLICA_RESUMIDA","Uma entrevista autorizada conta que uma comerciante mudou de cidade para abrir uma loja perto de clientes. O que podemos afirmar?","A entrevistada relacionou sua mudança à abertura da loja",["Todas as pessoas migraram para trabalhar","A mudança melhorou a vida de todos","O bairro recebeu somente comerciantes"],"SINGLE_STORY_GENERALIZATION","A entrevista explica a história de uma pessoa, não a de todos.","Mantenha a afirmação no singular."],
+      ["EASY","IDENTIFY","PLACA_DE_NOVA_COMUNIDADE","Uma placa de 2005 registra a abertura de um conjunto habitacional. Qual é uma pergunta adequada para investigar mudanças no lugar?","Que fontes mostram quem passou a viver ali e em que período?",["Qual família foi mais importante?","Como descobrir a origem de cada criança da turma?","Por que todos os moradores saíram de outro país?"],"INVASIVE_OR_LEADING_QUESTION","A pergunta aberta busca fontes e não presume a origem de ninguém.","Evite presumir o motivo ou pedir dados pessoais."],
+      ["MEDIUM","CLASSIFY","MAPA_E_NOTICIA_LOCAL","Um mapa mostra um novo mercado; uma notícia informa que pessoas passaram a morar perto dele. Qual fonte sustenta a informação sobre chegada de moradores?","A notícia, se ela relata essas chegadas",["O mapa sozinho, pois todo mercado atrai moradores","As duas fontes sempre dizem a mesma coisa","Nenhuma fonte pode informar mudanças"],"SOURCE_ROLE_CONFUSION","O mapa localiza o mercado; a notícia pode documentar chegadas se realmente as relatar.","Veja qual fonte menciona pessoas mudando."],
+      ["EASY","SEQUENCE","LINHA_DO_TEMPO_DA_PONTE","A ponte foi inaugurada em 2010 e uma família fictícia chegou em 2013. O que aconteceu antes?","A inauguração da ponte",["A chegada da família","Os dois eventos no mesmo ano","A mudança da família, sem data"],"EVENT_ORDER","2010 vem antes de 2013.","Compare os números dos anos."],
+      ["MEDIUM","APPLY","RELATO_DE_MUDANCA_DE_BAIRRO","Uma personagem mudou para outro bairro da mesma cidade. Como descrever corretamente?","Como uma mudança entre bairros da mesma cidade",["Como uma viagem internacional","Como uma visita que terminou no mesmo dia","Como uma mudança de país"],"SCALE_MISMATCH","A história aponta dois bairros da mesma cidade.","Use a escala indicada na narrativa."],
+      ["MEDIUM","DISTINGUISH","ARQUIVO_DE_FOTOGRAFIAS","Fotos datadas mostram casas, uma escola e uma praça em 1990 e 2020. Que conclusão é sustentada?","Parte da paisagem e dos serviços mudou entre as datas",["Toda pessoa que chegou veio do mesmo estado","A escola causou todas as migrações","Cada família permaneceu no local"],"LANDSCAPE_CAUSALITY","A comparação mostra mudanças visíveis, não causa ou trajetória de cada família.","Descreva o que aparece nas imagens."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","ANALYZE","PAINEL_DE_ROTAS_FICTICIAS","Um painel mostra três famílias inventadas que chegaram à cidade em anos diferentes e por rotas diferentes. Qual descrição respeita as evidências?","As histórias apresentam percursos e datas variados",["Todas chegaram pelo mesmo motivo","Uma rota prova que todas vieram do mesmo país","A família que chegou antes pertence mais ao lugar"],"ROUTE_TO_IDENTITY_INFERENCE","O painel sustenta diferenças de rota e período, não hierarquia ou motivo comum.","Compare somente dados indicados."],
+      ["MEDIUM","JUSTIFY","DADOS_DE_MATRICULA_AGREGADOS","Uma tabela pública mostra aumento de matrículas em uma escola ao longo de cinco anos. O que ela não permite concluir sozinha?","A origem e o motivo da mudança de cada estudante",["Que o número registrado aumentou","Que a escola recebeu mais matrículas","Que os anos podem ser comparados"],"AGGREGATE_TO_PERSONAL_INFERENCE","Dados agregados não contam trajetórias individuais nem causas.","Separe contagem do dado pessoal ausente."],
+      ["MEDIUM","ANALYZE","MAPA_DE_CHEGADAS_E_PARTIDAS","Um mapa tem setas de entrada e saída em dois períodos. O que é possível comparar?","A direção e a quantidade indicada de movimentos nos períodos",["A intenção de cada pessoa","A felicidade de todos os moradores","O motivo único das partidas"],"MAP_AS_MOTIVE","O mapa mostra padrões de movimento, não sentimentos ou causas individuais.","Compare símbolos, legendas e datas."],
+      ["MEDIUM","EVALUATE","NOTICIA_COM_FONTE_IDENTIFICADA","Uma notícia afirma que moradores chegaram após a abertura de uma fábrica e cita entrevistas. Que cuidado ajuda a avaliar a informação?","Verificar a data, a fonte e quais pessoas foram ouvidas",["Aceitar que a fábrica explica toda migração","Supor que entrevistados representam todos","Compartilhar nomes sem autorização"],"SOURCE_SCOPE","A fonte e a seleção de entrevistados limitam o alcance da conclusão.","Pergunte quem falou e quando."],
+      ["MEDIUM","APPLY","HISTORIA_DE_MUDANCA_CLIMATICA","Uma narrativa fictícia relata que uma família mudou após enchentes repetidas. Qual formulação é cuidadosa?","Na narrativa, as enchentes aparecem como uma razão daquela mudança",["Toda migração ocorre por enchente","A família nunca teve outras razões","As enchentes explicam toda mudança na região"],"SINGLE_CAUSE_UNIVERSAL","A narrativa oferece uma razão específica e situada.","Mantenha a causa ligada à fonte."],
+      ["MEDIUM","COMPARE","DOIS_BAIRROS_EM_EPOCAS","Dois bairros receberam novos moradores em décadas diferentes, segundo arquivos locais. O que pode ser comparado?","Os períodos e as informações registradas sobre cada bairro",["Qual grupo merece mais respeito","Quem tem direito de viver no bairro","Que todos os novos moradores têm a mesma história"],"COMPARISON_AS_RANK","Comparar períodos não significa classificar pessoas ou grupos.","Compare registros, não o valor das pessoas."],
+      ["MEDIUM","ANALYZE","MURAL_DE_MEMORIAS_PUBLICAS","Um mural comunitário autorizado reúne relatos curtos de antigos e novos moradores. O que ele oferece?","Perspectivas pessoais que podem compor parte da história local",["Uma lista completa de todos os moradores","Uma explicação universal para migrações","Prova de que as memórias nunca diferem"],"ORAL_HISTORY_AS_COMPLETE","Memórias são fontes valiosas, mas representam perspectivas situadas.","Use a palavra “parte” da história."],
+      ["MEDIUM","JUSTIFY","PERGUNTA_DE_EXPOSICAO_ESCOLAR","A turma quer estudar mudanças do bairro sem expor famílias. Qual plano é adequado?","Usar fontes públicas, mapas e exemplos fictícios",["Pedir que cada estudante revele a origem dos responsáveis","Publicar endereços de quem mudou","Comparar colegas por lugar de nascimento"],"PERSONAL_DISCLOSURE_AS_EVIDENCE","A aprendizagem pode ocorrer com fontes públicas e ficcionais sem expor a vida familiar.","Escolha fontes que protejam a privacidade."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","CLASSIFY","TABELA_DE_EVENTOS_LOCAIS","Uma tabela lista chegada em 2001, abertura de uma escola em 2006 e chegada de novos moradores em 2011. Qual síntese preserva a ordem?","A escola abriu entre dois registros de chegada",["A escola causou as duas chegadas","Todos chegaram depois da escola","A tabela mostra o motivo das mudanças"],"CHRONOLOGY_AS_CAUSALITY","A ordem temporal não prova que um evento causou outro.","Observe a ordem sem inventar causa."],
+      ["MEDIUM","APPLY","MAPA_COM_LEGENDA_INCOMPLETA","Um mapa tem setas, mas não indica datas. O que o estudante deve fazer?","Descrever os deslocamentos mostrados e dizer que o período não foi informado",["Inventar o ano mais provável","Tratar as setas como viagens de um dia","Afirmar que todos mudaram juntos"],"MISSING_DATE_GUESS","Quando a data falta, a descrição deve indicar essa lacuna.","Não complete uma informação ausente."],
+      ["MEDIUM","EVALUATE","FRASE_SOBRE_NOVOS_MORADORES","Qual frase evita generalizar a história de um grupo?","A entrevista descreve a chegada de duas pessoas em 2015",["Todos os recém-chegados vieram pelo mesmo motivo","Nenhum morador antigo aceita mudanças","Toda pessoa migrante trabalha no comércio"],"GROUP_STEREOTYPE","A frase escolhida delimita o dado à fonte e às pessoas mencionadas.","Prefira uma afirmação com alcance específico."],
+      ["MEDIUM","ANALYZE","MAPA_ANTES_DA_PRACA","Uma praça aparece em um mapa de 1980 e não aparece no de 1960. O que a comparação sugere?","A praça foi registrada em um período posterior",["A praça fez pessoas migrarem","Todos os moradores chegaram em 1980","O mapa informa a origem de cada pessoa"],"SPATIAL_CHANGE_AS_MIGRATION_PROOF","A comparação registra uma mudança no mapa, não as causas de migração.","Diferencie mudança do lugar e movimento de pessoas."],
+      ["MEDIUM","JUSTIFY","DEPOIMENTO_COM_DUAS_RAZOES","Uma personagem fictícia cita estudo e proximidade de parentes como razões de sua mudança. Qual resumo é fiel?","A personagem mencionou estudo e proximidade de parentes",["Apenas estudo faz pessoas migrarem","Toda pessoa que muda busca parentes","A história vale para todas as famílias"],"REASON_OVERGENERALIZATION","O resumo conserva as razões atribuídas àquela personagem.","Mantenha a autoria da explicação."],
+      ["MEDIUM","DISTINGUISH","REGISTRO_DE_FEIRA_LOCAL","Um registro mostra que uma feira passou a ocorrer aos sábados após novos comerciantes chegarem. Qual conclusão é mais segura?","A feira mudou de dia no período descrito; a relação precisa de outra fonte",["A chegada causou com certeza a mudança","Todos os comerciantes chegaram juntos","A feira representa todos os moradores"],"CORRELATION_CAUSATION","A proximidade temporal sugere uma pergunta, mas não prova causa.","Use uma conclusão proporcional ao registro."],
+      ["MEDIUM","APPLY","LEGENDA_DE_DUAS_ROTAS","Uma legenda identifica rota curta dentro do município e rota longa entre estados. O que distingue as histórias?","A escala dos deslocamentos informada",["O valor das pessoas que chegaram","A razão de cada mudança","A vontade de permanecer"],"ROUTE_VALUE_JUDGMENT","A legenda compara escala, não valor ou intenção.","Descreva o aspecto geográfico indicado."],
+      ["MEDIUM","SYNTHESIZE","RESUMO_DE_ARQUIVO_COMUNITARIO","Um arquivo combina fotografias datadas, mapas e dois relatos autorizados. Qual resumo é mais responsável?","As fontes mostram algumas mudanças do lugar e diferentes relatos sobre chegadas",["O arquivo explica todas as migrações","Os dois relatos representam cada morador","As fotos provam os motivos de todas as mudanças"],"SOURCE_COMPLETENESS_OVERCLAIM","Várias fontes ampliam a compreensão, mas não tornam o arquivo completo.","Use “algumas” e “diferentes relatos”."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","CARTAO_DE_REVISAO_ORIGEM","Em um mapa, qual ponto é a origem de uma rota?","O ponto de onde a rota parte",["O ponto onde termina","Um lugar sem legenda","O motivo da mudança"],"ROUTE_START_END","A origem é o ponto de partida.","Siga a seta ao contrário do destino."],
+      ["EASY","IDENTIFY","AGENDA_DE_MEMORIAS","Uma narrativa registra uma chegada em 2016. O que ela informa diretamente?","O ano registrado para aquela chegada",["A história de todos os moradores","O motivo de cada deslocamento","O lugar de nascimento de quem chegou"],"SOURCE_OVERREACH","Uma data não responde perguntas que a narrativa não apresenta.","Escolha o dado escrito."],
+      ["MEDIUM","DISTINGUISH","VISITA_E_MUDANCA","Uma pessoa visita parentes por uma semana e depois volta para casa. Isso basta para afirmar que ela migrou?","Não; a história descreve uma visita temporária",["Sim; qualquer passeio é migração","Sim; a pessoa mudou definitivamente","Não; migração só ocorre entre países"],"VISIT_AS_MIGRATION","Uma visita com retorno não corresponde necessariamente a mudar de lugar para viver.","Observe o objetivo e a duração da situação."],
+      ["MEDIUM","APPLY","FONTE_SEM_MOTIVO","Uma fonte informa de onde uma pessoa veio, mas não por que mudou. Como completar a descrição?","Dizer que o motivo não foi informado",["Adivinhar uma razão comum","Atribuir a razão a todas as pessoas","Omitir a origem também"],"UNSUPPORTED_REASON","Reconhecer o limite da fonte mantém a descrição precisa.","Não invente o dado que falta."],
+      ["MEDIUM","JUSTIFY","PAINEL_DE_RESPEITO","Por que uma atividade pode usar histórias fictícias de migração?","Para estudar trajetórias sem exigir que colegas revelem dados familiares",["Para provar que nenhuma história real importa","Para decidir quem pertence ao bairro","Para substituir todas as fontes públicas"],"FICTION_AS_ERASURE","Ficção protege privacidade e pode apoiar aprendizagem sem negar histórias reais.","Pense no objetivo de proteger estudantes."],
+      ["MEDIUM","ANALYZE","DUAS_FONTES_COM_DATAS","Um mapa e uma notícia têm datas diferentes sobre uma mudança no bairro. Qual é o próximo passo?","Comparar o que cada fonte registra e conferir seus períodos",["Escolher a data mais conveniente","Misturar as datas em uma só","Descartar toda fonte que diverge"],"SOURCE_DATE_COLLAPSE","Fontes podem tratar de períodos ou aspectos diferentes; compare antes de concluir.","Confira legenda, autoria e data."],
+      ["MEDIUM","EVALUATE","FALA_RESPEITOSA_SOBRE_ORIGEM","Qual frase descreve sem classificar pessoas por origem?","A fonte relata trajetórias diferentes de chegada",["Um grupo é mais do bairro que outro","Só quem nasceu aqui pertence","A origem decide como alguém vive"],"BELONGING_HIERARCHY","A frase reconhece diversidade sem hierarquizar pertencimento.","Evite transformar origem em medida de valor."],
+      ["MEDIUM","SYNTHESIZE","MAPA_FINAL_DE_REVISAO","Uma linha do tempo e um mapa mostram mudanças em dois períodos, mas não explicam todos os motivos. Qual síntese é adequada?","As fontes registram deslocamentos em períodos diferentes e deixam algumas razões sem resposta",["Todas as pessoas migraram pelo mesmo motivo","O mapa prova sentimentos e intenções","Não é possível aprender nada com essas fontes"],"LIMITS_AS_NO_EVIDENCE","É possível aprender sobre movimentos e períodos, reconhecendo o que as fontes não mostram.","Junte uma informação e um limite."]
+    ]
+  }
+}

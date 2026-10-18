@@ -10,7 +10,7 @@ const officialSourceRecord = {
   officialSource: { url: 'https://example.test/bncc.pdf', page: 335 },
 };
 
-function objectivePack({ repeatedStatement = false, allAnswersAtFirstPosition = false } = {}) {
+function objectivePack({ repeatedStatement = false, repeatedContext = false, allAnswersAtFirstPosition = false } = {}) {
   const phases = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
   const questions = Array.from({ length: 8 }, (_, index) => {
     const options = ['A', 'B', 'C', 'D'];
@@ -19,6 +19,7 @@ function objectivePack({ repeatedStatement = false, allAnswersAtFirstPosition = 
       id: `q-${index}`,
       purpose: phases[index % phases.length],
       statement: repeatedStatement ? 'Repeated prompt for this test.' : `Distinct supported prompt ${index}.`,
+      contextFamily: repeatedContext ? 'MATERIALS_COMPARISON' : `CONTEXT_${index}`,
       options,
       correctAnswer: options[answerPosition],
       explanation: 'A concise explanation tied to the evidence in the prompt.',
@@ -85,6 +86,23 @@ it('question variety rejects duplicate stems and answer-position collapse', () =
     officialSourceRecord,
   });
   assert.ok(collapsed.incomplete.includes('answer-position-diversity'));
+});
+
+it('objective-learning mode requires context variety without imposing that contract on other modalities', () => {
+  const repeatedContexts = evaluateCurriculumPackageRubric(objectivePack({ repeatedContext: true }), {
+    requirements: { mode: 'OBJECTIVE_LEARNING_PATH', questions: 8, activities: 1 },
+    officialSourceRecord,
+  });
+  assert.ok(repeatedContexts.incomplete.includes('question-context-diversity'));
+
+  const performancePack = objectivePack();
+  performancePack.questions = [];
+  performancePack.lesson.progression = [];
+  const performance = evaluateCurriculumPackageRubric(performancePack, {
+    requirements: { mode: 'PRACTICAL_PERFORMANCE', questions: 0, concepts: 2, activities: 1, phases: [] },
+    officialSourceRecord,
+  });
+  assert.equal(performance.incomplete.includes('question-context-diversity'), false);
 });
 
 it('practical performance mode can pass with no multiple-choice questions', () => {

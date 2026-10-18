@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help",
+  "canonicalSkillCode": "AUTHORING_EF02CI03_PREVENT_DOMESTIC_ACCIDENTS",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "reconhecimento de riscos domésticos e busca de ajuda adulta",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Discutir os cuidados necessários à prevenção de acidentes domésticos (objetos cortantes e inflamáveis, eletricidade, produtos de limpeza, medicamentos etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Perceber o risco e pedir ajuda",
+    "objective": "Reconhecer situações domésticas potencialmente perigosas em imagens e histórias fictícias e escolher uma resposta preventiva segura: não tocar nem experimentar, afastar-se e avisar imediatamente uma pessoa adulta de confiança.",
+    "summary": "Objetos cortantes, fogo e materiais inflamáveis, tomadas e fios, produtos de limpeza e medicamentos podem causar acidentes quando usados sem cuidado. Crianças não devem testar, abrir, misturar, cheirar, provar ou mover esses itens. Se perceberem uma situação de risco, devem manter distância e avisar uma pessoa adulta de confiança. As atividades desta sequência usam apenas desenhos, cartões ou objetos escolares seguros; não é necessário procurar perigos em casa.",
+    "explanation": "Observe a situação sem tocar no objeto. Se uma imagem ou história mostrar uma faca ao alcance, um frasco de produto aberto, um medicamento fora do lugar, um fio danificado, uma tomada ou uma chama sem supervisão, a resposta da criança é parar, afastar-se e chamar uma pessoa adulta de confiança. Não tente guardar, limpar, consertar, acender, apagar ou experimentar o item. A pessoa adulta decidirá como agir. Situações com fumaça ou perigo imediato pedem afastar-se para um lugar seguro e chamar um adulto imediatamente. Aprender prevenção significa reconhecer sinais e pedir ajuda, não praticar o manuseio de materiais perigosos.",
+    "workedExample": "Em um cartão ilustrado, um frasco de limpeza aparece aberto no chão. A criança personagem não pega nem cheira o frasco: afasta-se e avisa uma pessoa adulta de confiança. O cartão não pede que estudantes procurem produtos reais nem reproduzam a situação.",
+    "commonMistake": "Achar que basta ter cuidado para manusear um objeto perigoso, tentar resolver sozinho ou aproximar-se para investigar melhor.",
+    "priorKnowledge": [
+      "Reconhecer combinados simples de segurança e a diferença entre situação segura e situação que requer ajuda.",
+      "Identificar uma pessoa adulta de confiança no contexto apresentado, sem precisar nomear alguém da própria família."
+    ],
+    "keyConcepts": [
+      "prevenção",
+      "risco doméstico",
+      "objeto cortante",
+      "inflamável",
+      "eletricidade",
+      "produto de limpeza",
+      "medicamento",
+      "afastar-se",
+      "adulto de confiança"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CHILD_HANDLES_HAZARD",
+        "action": "Retome o cartão e ensaie apenas com palavras ou figuras: não tocar, manter distância e avisar um adulto; remova qualquer objeto real da atividade."
+      },
+      {
+        "errorFocus": "INVESTIGATE_BY_SMELL_OR_TOUCH",
+        "action": "Compare a opção de observar à distância com aproximar-se; reforce que cheiro, sabor e toque não são formas seguras de identificação."
+      },
+      {
+        "errorFocus": "UNSAFE_CLEANUP_OR_REPAIR",
+        "action": "Releia a sequência “parar, afastar-se, avisar adulto” e deixe claro que crianças não limpam derramamentos, consertam fios nem guardam medicamentos."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+      "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+      "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci03-safe-choice-cards",
+        "title": "Sequência de escolhas seguras",
+        "instructions": "Cartões ilustrados e fictícios mostram situações domésticas; nenhum produto, ferramenta, chama, fio ou medicamento real é usado.\n1. Observe uma ilustração sem tocar em materiais reais.\n2. Escolha entre cartões de ação: tocar, experimentar, afastar-se ou avisar um adulto.\n3. Organize e explique a sequência preventiva de manter distância e avisar uma pessoa adulta de confiança.",
+        "steps": [
+          "Observe uma ilustração sem tocar em materiais reais.",
+          "Escolha entre cartões de ação: tocar, experimentar, afastar-se ou avisar um adulto.",
+          "Organize e explique a sequência preventiva de manter distância e avisar uma pessoa adulta de confiança."
+        ],
+        "evidence": "Sequência de resposta que identifica a situação ilustrada e prioriza não tocar, afastar-se e avisar adulto.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um cartão de risco com apoio.",
+            "developing": "escolhe afastar-se ou avisar adulto com lembrete.",
+            "proficient": "seleciona uma sequência segura sem propor manuseio ou investigação do item."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci03-safety-storyboard",
+        "title": "Roteiro ilustrado de prevenção",
+        "instructions": "Estudantes criam um pequeno roteiro com personagens inventados e símbolos, sem encenar acidentes nem usar objetos ou produtos domésticos.\n1. Escolha uma cena fictícia de risco entre cartões preparados pelo educador.\n2. Desenhe ou organize três quadros: percebe, afasta-se e avisa um adulto.\n3. Revise se o roteiro evita tocar, cheirar, provar, limpar ou consertar o item.",
+        "steps": [
+          "Escolha uma cena fictícia de risco entre cartões preparados pelo educador.",
+          "Desenhe ou organize três quadros: percebe, afasta-se e avisa um adulto.",
+          "Revise se o roteiro evita tocar, cheirar, provar, limpar ou consertar o item."
+        ],
+        "evidence": "Roteiro em imagens ou palavras que comunica uma prevenção coerente e não ensina a manipular o perigo.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece a cena com apoio.",
+            "developing": "registra parte da sequência e corrige com orientação.",
+            "proficient": "comunica claramente a sequência segura e exclui ações de manuseio infantil."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-01",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-02",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-03",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-04",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-05",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-06",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-07",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-09",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-10",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-11",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-12",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-13",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-14",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-15",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-17",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-18",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-19",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-20",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-21",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-22",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-23",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-25",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-26",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-27",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-28",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-29",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-30",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-31",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-33",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-34",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-35",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-36",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-37",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-38",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-39",
+          "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI03",
+        "descriptor": "Discutir os cuidados necessários à prevenção de acidentes domésticos (objetos cortantes e inflamáveis, eletricidade, produtos de limpeza, medicamentos etc.).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-01",
+      "statement": "Um desenho mostra uma faca deixada na beirada de uma mesa. O que a criança personagem deve fazer?",
+      "prompt": "Um desenho mostra uma faca deixada na beirada de uma mesa. O que a criança personagem deve fazer?",
+      "options": [
+        "Manter distância e avisar uma pessoa adulta.",
+        "Pegar a faca para guardá-la",
+        "Testar se está afiada",
+        "Brincar perto dela"
+      ],
+      "correctAnswer": "Manter distância e avisar uma pessoa adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Pegar a faca para guardá-la": [
+          "SHARP_OBJECT_DISTANCE"
+        ],
+        "Testar se está afiada": [
+          "SHARP_OBJECT_DISTANCE"
+        ],
+        "Brincar perto dela": [
+          "SHARP_OBJECT_DISTANCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FACA_NO_DESENHO",
+      "explanation": "Objetos cortantes não devem ser tocados por crianças; afastar-se e chamar adulto é preventivo.",
+      "hint": "Escolha a opção sem tocar no objeto.",
+      "errorFocus": "SHARP_OBJECT_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: Objetos cortantes não devem ser tocados por crianças; afastar-se e chamar adulto é preventivo.",
+        "incorrect": "Objetos cortantes não devem ser tocados por crianças; afastar-se e chamar adulto é preventivo.",
+        "hint": "Escolha a opção sem tocar no objeto.",
+        "errorFocus": "SHARP_OBJECT_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-02",
+      "statement": "Um cartão mostra um frasco de limpeza aberto. Qual atitude é segura?",
+      "prompt": "Um cartão mostra um frasco de limpeza aberto. Qual atitude é segura?",
+      "options": [
+        "Cheirar para descobrir o produto",
+        "Não tocar nem cheirar; afastar-se e avisar um adulto.",
+        "Misturar com água",
+        "Fechar o frasco sozinho"
+      ],
+      "correctAnswer": "Não tocar nem cheirar; afastar-se e avisar um adulto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cheirar para descobrir o produto": [
+          "CLEANER_NO_CONTACT"
+        ],
+        "Misturar com água": [
+          "CLEANER_NO_CONTACT"
+        ],
+        "Fechar o frasco sozinho": [
+          "CLEANER_NO_CONTACT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASCO_DE_LIMPEZA_ILUSTRADO",
+      "explanation": "Produtos de limpeza podem ser perigosos; não se deve tocar, cheirar ou misturar.",
+      "hint": "Lembre: afastar-se e avisar adulto.",
+      "errorFocus": "CLEANER_NO_CONTACT",
+      "feedback": {
+        "correct": "Boa observação: Produtos de limpeza podem ser perigosos; não se deve tocar, cheirar ou misturar.",
+        "incorrect": "Produtos de limpeza podem ser perigosos; não se deve tocar, cheirar ou misturar.",
+        "hint": "Lembre: afastar-se e avisar adulto.",
+        "errorFocus": "CLEANER_NO_CONTACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-03",
+      "statement": "Uma história mostra comprimidos fora de seu lugar. O que a criança deve fazer?",
+      "prompt": "Uma história mostra comprimidos fora de seu lugar. O que a criança deve fazer?",
+      "options": [
+        "Tomar para descobrir para que servem",
+        "Guardar no bolso",
+        "Não pegar nem tomar; avisar uma pessoa adulta.",
+        "Oferecer a um colega"
+      ],
+      "correctAnswer": "Não pegar nem tomar; avisar uma pessoa adulta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tomar para descobrir para que servem": [
+          "MEDICINE_NOT_FOR_CHILD_HANDLING"
+        ],
+        "Guardar no bolso": [
+          "MEDICINE_NOT_FOR_CHILD_HANDLING"
+        ],
+        "Oferecer a um colega": [
+          "MEDICINE_NOT_FOR_CHILD_HANDLING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MEDICAMENTO_FORA_DO_ARMARIO",
+      "explanation": "Medicamentos só devem ser usados sob orientação adulta apropriada.",
+      "hint": "Não toque nem experimente.",
+      "errorFocus": "MEDICINE_NOT_FOR_CHILD_HANDLING",
+      "feedback": {
+        "correct": "Boa observação: Medicamentos só devem ser usados sob orientação adulta apropriada.",
+        "incorrect": "Medicamentos só devem ser usados sob orientação adulta apropriada.",
+        "hint": "Não toque nem experimente.",
+        "errorFocus": "MEDICINE_NOT_FOR_CHILD_HANDLING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-04",
+      "statement": "Um cartaz mostra uma criança perto de uma tomada. Qual cuidado é adequado?",
+      "prompt": "Um cartaz mostra uma criança perto de uma tomada. Qual cuidado é adequado?",
+      "options": [
+        "Colocar um objeto para testar",
+        "Tocar com a mão molhada",
+        "Puxar a tomada da parede",
+        "Manter as mãos afastadas e avisar um adulto se notar algo danificado."
+      ],
+      "correctAnswer": "Manter as mãos afastadas e avisar um adulto se notar algo danificado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Colocar um objeto para testar": [
+          "ELECTRICITY_DISTANCE"
+        ],
+        "Tocar com a mão molhada": [
+          "ELECTRICITY_DISTANCE"
+        ],
+        "Puxar a tomada da parede": [
+          "ELECTRICITY_DISTANCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TOMADA_EM_CARTAZ",
+      "explanation": "Tomadas e eletricidade não devem ser testadas ou manipuladas por crianças.",
+      "hint": "Escolha a ação que mantém distância.",
+      "errorFocus": "ELECTRICITY_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: Tomadas e eletricidade não devem ser testadas ou manipuladas por crianças.",
+        "incorrect": "Tomadas e eletricidade não devem ser testadas ou manipuladas por crianças.",
+        "hint": "Escolha a ação que mantém distância.",
+        "errorFocus": "ELECTRICITY_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-05",
+      "statement": "Uma imagem fictícia mostra um fio com parte externa danificada. Como a personagem deve agir?",
+      "prompt": "Uma imagem fictícia mostra um fio com parte externa danificada. Como a personagem deve agir?",
+      "options": [
+        "Afastar-se e chamar uma pessoa adulta.",
+        "Consertar com fita",
+        "Tocar para verificar",
+        "Usar o aparelho mesmo assim"
+      ],
+      "correctAnswer": "Afastar-se e chamar uma pessoa adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Consertar com fita": [
+          "DAMAGED_WIRE_REPORT"
+        ],
+        "Tocar para verificar": [
+          "DAMAGED_WIRE_REPORT"
+        ],
+        "Usar o aparelho mesmo assim": [
+          "DAMAGED_WIRE_REPORT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FIO_DANIFICADO_EM_HISTORIA",
+      "explanation": "Um fio danificado requer avaliação adulta; a criança não deve tocar nem consertar.",
+      "hint": "Quem deve avaliar o fio?",
+      "errorFocus": "DAMAGED_WIRE_REPORT",
+      "feedback": {
+        "correct": "Boa observação: Um fio danificado requer avaliação adulta; a criança não deve tocar nem consertar.",
+        "incorrect": "Um fio danificado requer avaliação adulta; a criança não deve tocar nem consertar.",
+        "hint": "Quem deve avaliar o fio?",
+        "errorFocus": "DAMAGED_WIRE_REPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-06",
+      "statement": "Em um desenho, uma panela está no fogão e um adulto não aparece. Qual é a resposta preventiva?",
+      "prompt": "Em um desenho, uma panela está no fogão e um adulto não aparece. Qual é a resposta preventiva?",
+      "options": [
+        "Tocar para saber se está quente",
+        "Ficar longe e chamar um adulto.",
+        "Mover a panela",
+        "Brincar ao redor do fogão"
+      ],
+      "correctAnswer": "Ficar longe e chamar um adulto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Tocar para saber se está quente": [
+          "HOT_SURFACE_DISTANCE"
+        ],
+        "Mover a panela": [
+          "HOT_SURFACE_DISTANCE"
+        ],
+        "Brincar ao redor do fogão": [
+          "HOT_SURFACE_DISTANCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PANELA_QUENTE_EM_DESENHO",
+      "explanation": "Superfícies quentes podem causar queimaduras; manter distância e avisar adulto.",
+      "hint": "Não confirme o calor pelo toque.",
+      "errorFocus": "HOT_SURFACE_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: Superfícies quentes podem causar queimaduras; manter distância e avisar adulto.",
+        "incorrect": "Superfícies quentes podem causar queimaduras; manter distância e avisar adulto.",
+        "hint": "Não confirme o calor pelo toque.",
+        "errorFocus": "HOT_SURFACE_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-07",
+      "statement": "Um cartão mostra um líquido desconhecido derramado. O que a criança deve fazer?",
+      "prompt": "Um cartão mostra um líquido desconhecido derramado. O que a criança deve fazer?",
+      "options": [
+        "Passar a mão para identificar",
+        "Misturar com outro produto",
+        "Não tocar nem limpar; afastar-se e avisar um adulto.",
+        "Usar um pano sem avisar"
+      ],
+      "correctAnswer": "Não tocar nem limpar; afastar-se e avisar um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Passar a mão para identificar": [
+          "UNKNOWN_SPILL_NO_CLEANUP"
+        ],
+        "Misturar com outro produto": [
+          "UNKNOWN_SPILL_NO_CLEANUP"
+        ],
+        "Usar um pano sem avisar": [
+          "UNKNOWN_SPILL_NO_CLEANUP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CHAO_COM_LIQUIDO_DESCONHECIDO",
+      "explanation": "Não se deve tocar ou limpar uma substância desconhecida; um adulto deve ser avisado.",
+      "hint": "Evite contato e chame alguém adulto.",
+      "errorFocus": "UNKNOWN_SPILL_NO_CLEANUP",
+      "feedback": {
+        "correct": "Boa observação: Não se deve tocar ou limpar uma substância desconhecida; um adulto deve ser avisado.",
+        "incorrect": "Não se deve tocar ou limpar uma substância desconhecida; um adulto deve ser avisado.",
+        "hint": "Evite contato e chame alguém adulto.",
+        "errorFocus": "UNKNOWN_SPILL_NO_CLEANUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-08",
+      "statement": "Uma história ilustrada mostra fumaça em um cômodo. Qual é a prioridade da criança?",
+      "prompt": "Uma história ilustrada mostra fumaça em um cômodo. Qual é a prioridade da criança?",
+      "options": [
+        "Voltar para procurar a origem",
+        "Esconder a situação",
+        "Tentar resolver sozinha",
+        "Afastar-se para um lugar seguro e avisar um adulto imediatamente."
+      ],
+      "correctAnswer": "Afastar-se para um lugar seguro e avisar um adulto imediatamente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Voltar para procurar a origem": [
+          "SMOKE_SAFE_DISTANCE"
+        ],
+        "Esconder a situação": [
+          "SMOKE_SAFE_DISTANCE"
+        ],
+        "Tentar resolver sozinha": [
+          "SMOKE_SAFE_DISTANCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FUMACA_EM_CENA_FICTICIA",
+      "explanation": "Diante de perigo imediato, a criança deve se afastar e buscar ajuda adulta, não investigar.",
+      "hint": "Pense primeiro em sair da área de risco.",
+      "errorFocus": "SMOKE_SAFE_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: Diante de perigo imediato, a criança deve se afastar e buscar ajuda adulta, não investigar.",
+        "incorrect": "Diante de perigo imediato, a criança deve se afastar e buscar ajuda adulta, não investigar.",
+        "hint": "Pense primeiro em sair da área de risco.",
+        "errorFocus": "SMOKE_SAFE_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-09",
+      "statement": "Um frasco fechado aparece guardado em uma ilustração, longe da criança. Qual regra continua importante?",
+      "prompt": "Um frasco fechado aparece guardado em uma ilustração, longe da criança. Qual regra continua importante?",
+      "options": [
+        "Não usar nem abrir produtos sem orientação adulta.",
+        "Experimentar um pouco",
+        "Misturar produtos para testar",
+        "Levar o frasco para brincar"
+      ],
+      "correctAnswer": "Não usar nem abrir produtos sem orientação adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Experimentar um pouco": [
+          "CLEANER_SUPERVISION"
+        ],
+        "Misturar produtos para testar": [
+          "CLEANER_SUPERVISION"
+        ],
+        "Levar o frasco para brincar": [
+          "CLEANER_SUPERVISION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PRODUTO_DE_LIMPEZA_NO_ARMARIO",
+      "explanation": "Produtos de limpeza não são brinquedos e não devem ser abertos por crianças.",
+      "hint": "O frasco continua sendo um produto de limpeza.",
+      "errorFocus": "CLEANER_SUPERVISION",
+      "feedback": {
+        "correct": "Boa observação: Produtos de limpeza não são brinquedos e não devem ser abertos por crianças.",
+        "incorrect": "Produtos de limpeza não são brinquedos e não devem ser abertos por crianças.",
+        "hint": "O frasco continua sendo um produto de limpeza.",
+        "errorFocus": "CLEANER_SUPERVISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-10",
+      "statement": "Uma história mostra uma pilha pequena no chão. O que a personagem deve fazer?",
+      "prompt": "Uma história mostra uma pilha pequena no chão. O que a personagem deve fazer?",
+      "options": [
+        "Experimentar com a língua",
+        "Não colocar na boca nem tocar; avisar um adulto.",
+        "Guardar no bolso",
+        "Abrir a pilha para olhar dentro"
+      ],
+      "correctAnswer": "Não colocar na boca nem tocar; avisar um adulto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Experimentar com a língua": [
+          "SMALL_BATTERY_NO_MOUTH"
+        ],
+        "Guardar no bolso": [
+          "SMALL_BATTERY_NO_MOUTH"
+        ],
+        "Abrir a pilha para olhar dentro": [
+          "SMALL_BATTERY_NO_MOUTH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PILHA_SOLTA_NO_CHAO",
+      "explanation": "Objetos pequenos e baterias não devem ser colocados na boca ou abertos.",
+      "hint": "Escolha a opção que chama um adulto.",
+      "errorFocus": "SMALL_BATTERY_NO_MOUTH",
+      "feedback": {
+        "correct": "Boa observação: Objetos pequenos e baterias não devem ser colocados na boca ou abertos.",
+        "incorrect": "Objetos pequenos e baterias não devem ser colocados na boca ou abertos.",
+        "hint": "Escolha a opção que chama um adulto.",
+        "errorFocus": "SMALL_BATTERY_NO_MOUTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-11",
+      "statement": "Um cartão mostra uma ferramenta cortante fora de uso e ao alcance. Qual escolha previne acidente?",
+      "prompt": "Um cartão mostra uma ferramenta cortante fora de uso e ao alcance. Qual escolha previne acidente?",
+      "options": [
+        "Usar para cortar papel sem pedir",
+        "Passar a ponta na mão",
+        "Afastar-se e avisar um adulto.",
+        "Levar para outro cômodo"
+      ],
+      "correctAnswer": "Afastar-se e avisar um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Usar para cortar papel sem pedir": [
+          "CUTTING_TOOL_ADULT"
+        ],
+        "Passar a ponta na mão": [
+          "CUTTING_TOOL_ADULT"
+        ],
+        "Levar para outro cômodo": [
+          "CUTTING_TOOL_ADULT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TESOURA_PONTIAGUDA_DE_CARTAO",
+      "explanation": "Ferramentas cortantes devem ser avaliadas e guardadas por uma pessoa adulta.",
+      "hint": "Não transporte o objeto.",
+      "errorFocus": "CUTTING_TOOL_ADULT",
+      "feedback": {
+        "correct": "Boa observação: Ferramentas cortantes devem ser avaliadas e guardadas por uma pessoa adulta.",
+        "incorrect": "Ferramentas cortantes devem ser avaliadas e guardadas por uma pessoa adulta.",
+        "hint": "Não transporte o objeto.",
+        "errorFocus": "CUTTING_TOOL_ADULT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-12",
+      "statement": "Uma personagem encontra um frasco sem rótulo. Como deve reagir?",
+      "prompt": "Uma personagem encontra um frasco sem rótulo. Como deve reagir?",
+      "options": [
+        "Cheirar para adivinhar",
+        "Misturar com água",
+        "Experimentar uma gota",
+        "Não abrir, provar ou cheirar; afastar-se e avisar adulto."
+      ],
+      "correctAnswer": "Não abrir, provar ou cheirar; afastar-se e avisar adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cheirar para adivinhar": [
+          "UNKNOWN_SUBSTANCE_NO_TEST"
+        ],
+        "Misturar com água": [
+          "UNKNOWN_SUBSTANCE_NO_TEST"
+        ],
+        "Experimentar uma gota": [
+          "UNKNOWN_SUBSTANCE_NO_TEST"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FRASCO_SEM_ROTULO",
+      "explanation": "A aparência não torna seguro testar uma substância desconhecida.",
+      "hint": "Não tente descobrir o conteúdo.",
+      "errorFocus": "UNKNOWN_SUBSTANCE_NO_TEST",
+      "feedback": {
+        "correct": "Boa observação: A aparência não torna seguro testar uma substância desconhecida.",
+        "incorrect": "A aparência não torna seguro testar uma substância desconhecida.",
+        "hint": "Não tente descobrir o conteúdo.",
+        "errorFocus": "UNKNOWN_SUBSTANCE_NO_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-13",
+      "statement": "Um desenho mostra um aparelho elétrico perto de água. O que a criança deve fazer?",
+      "prompt": "Um desenho mostra um aparelho elétrico perto de água. O que a criança deve fazer?",
+      "options": [
+        "Não tocar no aparelho nem na água perto dele e chamar adulto.",
+        "Mover o aparelho",
+        "Secar com as mãos",
+        "Ligar para testar"
+      ],
+      "correctAnswer": "Não tocar no aparelho nem na água perto dele e chamar adulto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Mover o aparelho": [
+          "ELECTRICITY_AND_WATER"
+        ],
+        "Secar com as mãos": [
+          "ELECTRICITY_AND_WATER"
+        ],
+        "Ligar para testar": [
+          "ELECTRICITY_AND_WATER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FIO_PERTO_DA_AGUA",
+      "explanation": "Água perto de eletricidade pode ser perigosa; a criança deve ficar distante e avisar.",
+      "hint": "Mantenha distância de ambos.",
+      "errorFocus": "ELECTRICITY_AND_WATER",
+      "feedback": {
+        "correct": "Boa observação: Água perto de eletricidade pode ser perigosa; a criança deve ficar distante e avisar.",
+        "incorrect": "Água perto de eletricidade pode ser perigosa; a criança deve ficar distante e avisar.",
+        "hint": "Mantenha distância de ambos.",
+        "errorFocus": "ELECTRICITY_AND_WATER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-14",
+      "statement": "Um cartão mostra uma caixa de fósforos guardada. Qual é a regra para a criança?",
+      "prompt": "Um cartão mostra uma caixa de fósforos guardada. Qual é a regra para a criança?",
+      "options": [
+        "Acender um para aprender",
+        "Não acender nem brincar com fósforos e avisar um adulto se encontrá-los acessíveis.",
+        "Esconder no quarto",
+        "Testar perto de papel"
+      ],
+      "correctAnswer": "Não acender nem brincar com fósforos e avisar um adulto se encontrá-los acessíveis.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Acender um para aprender": [
+          "INFLAMMABLE_NO_IGNITION"
+        ],
+        "Esconder no quarto": [
+          "INFLAMMABLE_NO_IGNITION"
+        ],
+        "Testar perto de papel": [
+          "INFLAMMABLE_NO_IGNITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAIXA_DE_FOSFOROS_FICTICIA",
+      "explanation": "Fósforos podem iniciar fogo e não devem ser manuseados por crianças.",
+      "hint": "Não faça teste com chama.",
+      "errorFocus": "INFLAMMABLE_NO_IGNITION",
+      "feedback": {
+        "correct": "Boa observação: Fósforos podem iniciar fogo e não devem ser manuseados por crianças.",
+        "incorrect": "Fósforos podem iniciar fogo e não devem ser manuseados por crianças.",
+        "hint": "Não faça teste com chama.",
+        "errorFocus": "INFLAMMABLE_NO_IGNITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-15",
+      "statement": "Uma personagem não reconhece um frasco de medicamento. Qual conclusão é segura?",
+      "prompt": "Uma personagem não reconhece um frasco de medicamento. Qual conclusão é segura?",
+      "options": [
+        "A cor indica a dose",
+        "O cheiro revela para quem é",
+        "Só uma pessoa adulta deve identificar e cuidar do medicamento.",
+        "A criança pode tomar uma unidade"
+      ],
+      "correctAnswer": "Só uma pessoa adulta deve identificar e cuidar do medicamento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor indica a dose": [
+          "MEDICINE_IDENTIFICATION"
+        ],
+        "O cheiro revela para quem é": [
+          "MEDICINE_IDENTIFICATION"
+        ],
+        "A criança pode tomar uma unidade": [
+          "MEDICINE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROTULO_DE_MEDICAMENTO",
+      "explanation": "A criança não deve identificar ou usar medicamento por conta própria.",
+      "hint": "Não use aparência como orientação.",
+      "errorFocus": "MEDICINE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A criança não deve identificar ou usar medicamento por conta própria.",
+        "incorrect": "A criança não deve identificar ou usar medicamento por conta própria.",
+        "hint": "Não use aparência como orientação.",
+        "errorFocus": "MEDICINE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-16",
+      "statement": "Em uma cena, o forno está ligado. Qual cuidado é adequado?",
+      "prompt": "Em uma cena, o forno está ligado. Qual cuidado é adequado?",
+      "options": [
+        "Abrir para olhar dentro",
+        "Tocar a porta para testar",
+        "Aproximar objetos de papel",
+        "Ficar afastado e pedir ajuda a um adulto."
+      ],
+      "correctAnswer": "Ficar afastado e pedir ajuda a um adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Abrir para olhar dentro": [
+          "OVEN_HEAT_DISTANCE"
+        ],
+        "Tocar a porta para testar": [
+          "OVEN_HEAT_DISTANCE"
+        ],
+        "Aproximar objetos de papel": [
+          "OVEN_HEAT_DISTANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTA_DE_FORNO_ILUSTRADA",
+      "explanation": "Forno quente oferece risco; manter distância e avisar adulto é seguro.",
+      "hint": "Não verifique a temperatura pelo toque.",
+      "errorFocus": "OVEN_HEAT_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: Forno quente oferece risco; manter distância e avisar adulto é seguro.",
+        "incorrect": "Forno quente oferece risco; manter distância e avisar adulto é seguro.",
+        "hint": "Não verifique a temperatura pelo toque.",
+        "errorFocus": "OVEN_HEAT_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-17",
+      "statement": "Uma cena mostra um frasco de limpeza aberto; outra, um fio danificado. Qual resposta serve para ambas?",
+      "prompt": "Uma cena mostra um frasco de limpeza aberto; outra, um fio danificado. Qual resposta serve para ambas?",
+      "options": [
+        "Não tocar, afastar-se e avisar uma pessoa adulta.",
+        "Cheirar o frasco e testar o fio",
+        "Guardar cada item sozinho",
+        "Tentar consertar o que parecer simples"
+      ],
+      "correctAnswer": "Não tocar, afastar-se e avisar uma pessoa adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cheirar o frasco e testar o fio": [
+          "COMMON_SAFE_RESPONSE"
+        ],
+        "Guardar cada item sozinho": [
+          "COMMON_SAFE_RESPONSE"
+        ],
+        "Tentar consertar o que parecer simples": [
+          "COMMON_SAFE_RESPONSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_SITUACOES_DE_RISCO",
+      "explanation": "Em ambas, evitar contato e chamar adulto reduz risco de exposição ou acidente.",
+      "hint": "Procure a ação segura comum.",
+      "errorFocus": "COMMON_SAFE_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Em ambas, evitar contato e chamar adulto reduz risco de exposição ou acidente.",
+        "incorrect": "Em ambas, evitar contato e chamar adulto reduz risco de exposição ou acidente.",
+        "hint": "Procure a ação segura comum.",
+        "errorFocus": "COMMON_SAFE_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-18",
+      "statement": "Em uma narrativa, um colega pensa em tomar um comprimido encontrado. O que a personagem deve dizer?",
+      "prompt": "Em uma narrativa, um colega pensa em tomar um comprimido encontrado. O que a personagem deve dizer?",
+      "options": [
+        "“Experimente metade.”",
+        "“Não tome; vamos nos afastar e chamar um adulto agora.”",
+        "“Cheire primeiro.”",
+        "“Guarde para depois.”"
+      ],
+      "correctAnswer": "“Não tome; vamos nos afastar e chamar um adulto agora.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Experimente metade.”": [
+          "MEDICINE_PEER_SAFETY"
+        ],
+        "“Cheire primeiro.”": [
+          "MEDICINE_PEER_SAFETY"
+        ],
+        "“Guarde para depois.”": [
+          "MEDICINE_PEER_SAFETY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMIGO_QUER_TOMAR_COMPRIMIDO",
+      "explanation": "Não se deve usar medicamento encontrado; avisar adulto é a resposta adequada.",
+      "hint": "A resposta precisa impedir o uso e buscar ajuda.",
+      "errorFocus": "MEDICINE_PEER_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Não se deve usar medicamento encontrado; avisar adulto é a resposta adequada.",
+        "incorrect": "Não se deve usar medicamento encontrado; avisar adulto é a resposta adequada.",
+        "hint": "A resposta precisa impedir o uso e buscar ajuda.",
+        "errorFocus": "MEDICINE_PEER_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-19",
+      "statement": "Por que não é seguro tocar ou cheirar um líquido desconhecido para identificá-lo?",
+      "prompt": "Por que não é seguro tocar ou cheirar um líquido desconhecido para identificá-lo?",
+      "options": [
+        "Porque todo líquido é água",
+        "Porque cheirar sempre revela a composição",
+        "Porque o contato ou a inalação podem ser perigosos e a criança não deve investigar.",
+        "Porque limpar sozinho é mais rápido"
+      ],
+      "correctAnswer": "Porque o contato ou a inalação podem ser perigosos e a criança não deve investigar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque todo líquido é água": [
+          "NO_SENSORY_TESTING"
+        ],
+        "Porque cheirar sempre revela a composição": [
+          "NO_SENSORY_TESTING"
+        ],
+        "Porque limpar sozinho é mais rápido": [
+          "NO_SENSORY_TESTING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DESCONHECIDO_DERRAMADO",
+      "explanation": "Não se deve testar uma substância desconhecida com sentidos ou contato.",
+      "hint": "Pense no risco de exposição.",
+      "errorFocus": "NO_SENSORY_TESTING",
+      "feedback": {
+        "correct": "Boa observação: Não se deve testar uma substância desconhecida com sentidos ou contato.",
+        "incorrect": "Não se deve testar uma substância desconhecida com sentidos ou contato.",
+        "hint": "Pense no risco de exposição.",
+        "errorFocus": "NO_SENSORY_TESTING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-20",
+      "statement": "Uma cena mostra um objeto metálico perto de uma tomada. Qual atitude é segura?",
+      "prompt": "Uma cena mostra um objeto metálico perto de uma tomada. Qual atitude é segura?",
+      "options": [
+        "Usar o objeto para testar",
+        "Puxar a tomada",
+        "Molhar o objeto",
+        "Não aproximar nem inserir nada; avisar um adulto."
+      ],
+      "correctAnswer": "Não aproximar nem inserir nada; avisar um adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar o objeto para testar": [
+          "NO_OBJECT_IN_OUTLET"
+        ],
+        "Puxar a tomada": [
+          "NO_OBJECT_IN_OUTLET"
+        ],
+        "Molhar o objeto": [
+          "NO_OBJECT_IN_OUTLET"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TOMADA_COM_OBJETO_PROXIMO",
+      "explanation": "Objetos não devem ser inseridos em tomadas; a criança deve chamar um adulto.",
+      "hint": "Não coloque nada na tomada.",
+      "errorFocus": "NO_OBJECT_IN_OUTLET",
+      "feedback": {
+        "correct": "Boa observação: Objetos não devem ser inseridos em tomadas; a criança deve chamar um adulto.",
+        "incorrect": "Objetos não devem ser inseridos em tomadas; a criança deve chamar um adulto.",
+        "hint": "Não coloque nada na tomada.",
+        "errorFocus": "NO_OBJECT_IN_OUTLET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-21",
+      "statement": "Uma personagem vê fumaça e lembra que deixou um brinquedo no cômodo. O que deve fazer?",
+      "prompt": "Uma personagem vê fumaça e lembra que deixou um brinquedo no cômodo. O que deve fazer?",
+      "options": [
+        "Afastar-se e procurar um adulto, sem voltar para buscar o brinquedo.",
+        "Voltar rapidamente pelo brinquedo",
+        "Investigar a fumaça sozinha",
+        "Esconder o que aconteceu"
+      ],
+      "correctAnswer": "Afastar-se e procurar um adulto, sem voltar para buscar o brinquedo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Voltar rapidamente pelo brinquedo": [
+          "IMMEDIATE_DANGER_NO_RETURN"
+        ],
+        "Investigar a fumaça sozinha": [
+          "IMMEDIATE_DANGER_NO_RETURN"
+        ],
+        "Esconder o que aconteceu": [
+          "IMMEDIATE_DANGER_NO_RETURN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FUMACA_E_OBJETO_ESQUECIDO",
+      "explanation": "Em perigo imediato, afastar-se e buscar adulto é prioritário; não retornar para pegar objetos.",
+      "hint": "Priorize pessoas e segurança, não pertences.",
+      "errorFocus": "IMMEDIATE_DANGER_NO_RETURN",
+      "feedback": {
+        "correct": "Boa observação: Em perigo imediato, afastar-se e buscar adulto é prioritário; não retornar para pegar objetos.",
+        "incorrect": "Em perigo imediato, afastar-se e buscar adulto é prioritário; não retornar para pegar objetos.",
+        "hint": "Priorize pessoas e segurança, não pertences.",
+        "errorFocus": "IMMEDIATE_DANGER_NO_RETURN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-22",
+      "statement": "Uma imagem mostra uma faca e um brinquedo de espuma. Qual diferença relevante para a segurança?",
+      "prompt": "Uma imagem mostra uma faca e um brinquedo de espuma. Qual diferença relevante para a segurança?",
+      "options": [
+        "Os dois são igualmente seguros para qualquer uso",
+        "A faca pode cortar; ambos não devem ser usados fora da atividade autorizada, mas o risco é diferente.",
+        "O brinquedo de espuma deve ser provado",
+        "A faca só é perigosa se estiver suja"
+      ],
+      "correctAnswer": "A faca pode cortar; ambos não devem ser usados fora da atividade autorizada, mas o risco é diferente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os dois são igualmente seguros para qualquer uso": [
+          "HAZARD_RECOGNITION_WITHOUT_PANIC"
+        ],
+        "O brinquedo de espuma deve ser provado": [
+          "HAZARD_RECOGNITION_WITHOUT_PANIC"
+        ],
+        "A faca só é perigosa se estiver suja": [
+          "HAZARD_RECOGNITION_WITHOUT_PANIC"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBJETO_CORTANTE_E_BRINQUEDO",
+      "explanation": "Reconhecer o risco do objeto cortante não exige medo generalizado de todos os objetos.",
+      "hint": "Compare o perigo específico e mantenha os combinados.",
+      "errorFocus": "HAZARD_RECOGNITION_WITHOUT_PANIC",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer o risco do objeto cortante não exige medo generalizado de todos os objetos.",
+        "incorrect": "Reconhecer o risco do objeto cortante não exige medo generalizado de todos os objetos.",
+        "hint": "Compare o perigo específico e mantenha os combinados.",
+        "errorFocus": "HAZARD_RECOGNITION_WITHOUT_PANIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-23",
+      "statement": "Um cartão de situação pergunta a quem avisar quando há um risco em casa. Qual resposta é adequada?",
+      "prompt": "Um cartão de situação pergunta a quem avisar quando há um risco em casa. Qual resposta é adequada?",
+      "options": [
+        "Uma criança pequena sozinha",
+        "Um desconhecido que passa na rua",
+        "Uma pessoa adulta de confiança que possa ajudar.",
+        "Ninguém, para não interromper"
+      ],
+      "correctAnswer": "Uma pessoa adulta de confiança que possa ajudar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma criança pequena sozinha": [
+          "SEEK_TRUSTED_ADULT"
+        ],
+        "Um desconhecido que passa na rua": [
+          "SEEK_TRUSTED_ADULT"
+        ],
+        "Ninguém, para não interromper": [
+          "SEEK_TRUSTED_ADULT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ADULTO_DE_CONFIANCA_NO_CENARIO",
+      "explanation": "A criança deve comunicar a situação a uma pessoa adulta de confiança.",
+      "hint": "Escolha alguém adulto que possa agir.",
+      "errorFocus": "SEEK_TRUSTED_ADULT",
+      "feedback": {
+        "correct": "Boa observação: A criança deve comunicar a situação a uma pessoa adulta de confiança.",
+        "incorrect": "A criança deve comunicar a situação a uma pessoa adulta de confiança.",
+        "hint": "Escolha alguém adulto que possa agir.",
+        "errorFocus": "SEEK_TRUSTED_ADULT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-24",
+      "statement": "Qual sequência organiza uma resposta preventiva para um perigo ilustrado?",
+      "prompt": "Qual sequência organiza uma resposta preventiva para um perigo ilustrado?",
+      "options": [
+        "Tocar, experimentar e decidir",
+        "Cheirar, guardar e esconder",
+        "Investigar, limpar e voltar",
+        "Perceber, manter distância e avisar um adulto."
+      ],
+      "correctAnswer": "Perceber, manter distância e avisar um adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tocar, experimentar e decidir": [
+          "PREVENTION_SEQUENCE"
+        ],
+        "Cheirar, guardar e esconder": [
+          "PREVENTION_SEQUENCE"
+        ],
+        "Investigar, limpar e voltar": [
+          "PREVENTION_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SEQUENCIA_DE_PREVENCAO",
+      "explanation": "A sequência evita exposição e transfere a avaliação ao adulto.",
+      "hint": "Coloque afastar-se antes de avisar.",
+      "errorFocus": "PREVENTION_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência evita exposição e transfere a avaliação ao adulto.",
+        "incorrect": "A sequência evita exposição e transfere a avaliação ao adulto.",
+        "hint": "Coloque afastar-se antes de avisar.",
+        "errorFocus": "PREVENTION_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-25",
+      "statement": "Uma tabela apresenta tomada, medicamento e produto de limpeza. O que as três situações exigem da criança?",
+      "prompt": "Uma tabela apresenta tomada, medicamento e produto de limpeza. O que as três situações exigem da criança?",
+      "options": [
+        "Não manipular e procurar ajuda adulta.",
+        "Tocar cada item para reconhecer",
+        "Testar uma pequena quantidade",
+        "Guardar tudo no mesmo lugar"
+      ],
+      "correctAnswer": "Não manipular e procurar ajuda adulta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Tocar cada item para reconhecer": [
+          "SHARED_ADULT_HELP"
+        ],
+        "Testar uma pequena quantidade": [
+          "SHARED_ADULT_HELP"
+        ],
+        "Guardar tudo no mesmo lugar": [
+          "SHARED_ADULT_HELP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_CATEGORIAS_DOMESTICAS",
+      "explanation": "Os itens têm riscos diferentes, mas nenhum deve ser testado ou manipulado pela criança.",
+      "hint": "Pense na resposta comum.",
+      "errorFocus": "SHARED_ADULT_HELP",
+      "feedback": {
+        "correct": "Boa observação: Os itens têm riscos diferentes, mas nenhum deve ser testado ou manipulado pela criança.",
+        "incorrect": "Os itens têm riscos diferentes, mas nenhum deve ser testado ou manipulado pela criança.",
+        "hint": "Pense na resposta comum.",
+        "errorFocus": "SHARED_ADULT_HELP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-26",
+      "statement": "Um personagem vê uma assadeira quente após uma atividade. Qual escolha evita queimadura?",
+      "prompt": "Um personagem vê uma assadeira quente após uma atividade. Qual escolha evita queimadura?",
+      "options": [
+        "Pegar com um pano sem orientação",
+        "Manter distância e chamar um adulto para cuidar dela.",
+        "Tocar rapidamente",
+        "Empurrar para outro lugar"
+      ],
+      "correctAnswer": "Manter distância e chamar um adulto para cuidar dela.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pegar com um pano sem orientação": [
+          "HOT_OBJECT_NO_MOVE"
+        ],
+        "Tocar rapidamente": [
+          "HOT_OBJECT_NO_MOVE"
+        ],
+        "Empurrar para outro lugar": [
+          "HOT_OBJECT_NO_MOVE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBJETO_QUENTE_FICTICIO",
+      "explanation": "A criança não deve mover nem tocar uma superfície quente.",
+      "hint": "Não tente transportar o objeto.",
+      "errorFocus": "HOT_OBJECT_NO_MOVE",
+      "feedback": {
+        "correct": "Boa observação: A criança não deve mover nem tocar uma superfície quente.",
+        "incorrect": "A criança não deve mover nem tocar uma superfície quente.",
+        "hint": "Não tente transportar o objeto.",
+        "errorFocus": "HOT_OBJECT_NO_MOVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-27",
+      "statement": "Uma dica diz “cheire o produto para saber se é perigoso”. Como corrigi-la?",
+      "prompt": "Uma dica diz “cheire o produto para saber se é perigoso”. Como corrigi-la?",
+      "options": [
+        "Cheire de longe",
+        "Misture com água",
+        "Não cheire nem toque; afaste-se e avise um adulto.",
+        "Prove uma gota"
+      ],
+      "correctAnswer": "Não cheire nem toque; afaste-se e avise um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cheire de longe": [
+          "REJECT_UNSAFE_TEST"
+        ],
+        "Misture com água": [
+          "REJECT_UNSAFE_TEST"
+        ],
+        "Prove uma gota": [
+          "REJECT_UNSAFE_TEST"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DICA_DE_SEGURANCA_ERRADA",
+      "explanation": "Cheirar, provar ou misturar produto desconhecido não é uma forma segura de avaliação.",
+      "hint": "Substitua o teste por afastamento e aviso.",
+      "errorFocus": "REJECT_UNSAFE_TEST",
+      "feedback": {
+        "correct": "Boa observação: Cheirar, provar ou misturar produto desconhecido não é uma forma segura de avaliação.",
+        "incorrect": "Cheirar, provar ou misturar produto desconhecido não é uma forma segura de avaliação.",
+        "hint": "Substitua o teste por afastamento e aviso.",
+        "errorFocus": "REJECT_UNSAFE_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-28",
+      "statement": "Uma ilustração mostra um fio rompido, e outra mostra um cabo intacto guardado. Qual precisa de aviso imediato ao adulto?",
+      "prompt": "Uma ilustração mostra um fio rompido, e outra mostra um cabo intacto guardado. Qual precisa de aviso imediato ao adulto?",
+      "options": [
+        "O cabo guardado sem dano",
+        "Ambos precisam ser puxados",
+        "Nenhum pode ser mostrado em desenho",
+        "A situação do fio rompido."
+      ],
+      "correctAnswer": "A situação do fio rompido.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O cabo guardado sem dano": [
+          "RECOGNIZE_DAMAGE"
+        ],
+        "Ambos precisam ser puxados": [
+          "RECOGNIZE_DAMAGE"
+        ],
+        "Nenhum pode ser mostrado em desenho": [
+          "RECOGNIZE_DAMAGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PERIGO_E_CUIDADO",
+      "explanation": "A imagem de dano visível indica uma condição que deve ser avaliada por adulto.",
+      "hint": "Observe o que está danificado.",
+      "errorFocus": "RECOGNIZE_DAMAGE",
+      "feedback": {
+        "correct": "Boa observação: A imagem de dano visível indica uma condição que deve ser avaliada por adulto.",
+        "incorrect": "A imagem de dano visível indica uma condição que deve ser avaliada por adulto.",
+        "hint": "Observe o que está danificado.",
+        "errorFocus": "RECOGNIZE_DAMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-29",
+      "statement": "Por que uma criança não deve limpar sozinha um produto derramado?",
+      "prompt": "Por que uma criança não deve limpar sozinha um produto derramado?",
+      "options": [
+        "Porque pode entrar em contato com uma substância perigosa; um adulto deve cuidar.",
+        "Porque toda limpeza é proibida",
+        "Porque o produto sempre é inofensivo",
+        "Porque deve misturar outros produtos"
+      ],
+      "correctAnswer": "Porque pode entrar em contato com uma substância perigosa; um adulto deve cuidar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque toda limpeza é proibida": [
+          "ADULT_CLEANUP"
+        ],
+        "Porque o produto sempre é inofensivo": [
+          "ADULT_CLEANUP"
+        ],
+        "Porque deve misturar outros produtos": [
+          "ADULT_CLEANUP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NAO_TENTAR_RESOLVER_SOZINHO",
+      "explanation": "Uma substância desconhecida pode causar exposição; avisar adulto evita manuseio infantil.",
+      "hint": "Considere o contato com o produto.",
+      "errorFocus": "ADULT_CLEANUP",
+      "feedback": {
+        "correct": "Boa observação: Uma substância desconhecida pode causar exposição; avisar adulto evita manuseio infantil.",
+        "incorrect": "Uma substância desconhecida pode causar exposição; avisar adulto evita manuseio infantil.",
+        "hint": "Considere o contato com o produto.",
+        "errorFocus": "ADULT_CLEANUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-30",
+      "statement": "Uma história inclui uma gaveta com medicamentos ao alcance e uma criança personagem. Qual ação preventiva é apropriada no cenário?",
+      "prompt": "Uma história inclui uma gaveta com medicamentos ao alcance e uma criança personagem. Qual ação preventiva é apropriada no cenário?",
+      "options": [
+        "Organizar os comprimidos por cor",
+        "Não abrir a gaveta e avisar um adulto sobre o acesso aos medicamentos.",
+        "Escolher qual medicamento guardar",
+        "Tomar um para verificar"
+      ],
+      "correctAnswer": "Não abrir a gaveta e avisar um adulto sobre o acesso aos medicamentos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Organizar os comprimidos por cor": [
+          "PREVENT_ACCESS_NOT_HANDLE"
+        ],
+        "Escolher qual medicamento guardar": [
+          "PREVENT_ACCESS_NOT_HANDLE"
+        ],
+        "Tomar um para verificar": [
+          "PREVENT_ACCESS_NOT_HANDLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PLANO_DE_PREVENCAO",
+      "explanation": "A criança não deve abrir nem reorganizar medicamentos; pode comunicar o risco ao adulto.",
+      "hint": "A ação segura evita abrir e manipular.",
+      "errorFocus": "PREVENT_ACCESS_NOT_HANDLE",
+      "feedback": {
+        "correct": "Boa observação: A criança não deve abrir nem reorganizar medicamentos; pode comunicar o risco ao adulto.",
+        "incorrect": "A criança não deve abrir nem reorganizar medicamentos; pode comunicar o risco ao adulto.",
+        "hint": "A ação segura evita abrir e manipular.",
+        "errorFocus": "PREVENT_ACCESS_NOT_HANDLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-31",
+      "statement": "Uma imagem mostra papel perto de uma chama. O que a criança personagem deve fazer?",
+      "prompt": "Uma imagem mostra papel perto de uma chama. O que a criança personagem deve fazer?",
+      "options": [
+        "Mover o papel para longe da chama",
+        "Apagar a chama sozinha",
+        "Afastar-se e chamar imediatamente uma pessoa adulta.",
+        "Observar de perto"
+      ],
+      "correctAnswer": "Afastar-se e chamar imediatamente uma pessoa adulta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Mover o papel para longe da chama": [
+          "FLAME_ADULT_RESPONSE"
+        ],
+        "Apagar a chama sozinha": [
+          "FLAME_ADULT_RESPONSE"
+        ],
+        "Observar de perto": [
+          "FLAME_ADULT_RESPONSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBJETO_INFLAMAVEL_NA_CENA",
+      "explanation": "Fogo pode se espalhar; a criança deve priorizar afastamento e ajuda adulta.",
+      "hint": "Não se aproxime para mover nada.",
+      "errorFocus": "FLAME_ADULT_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Fogo pode se espalhar; a criança deve priorizar afastamento e ajuda adulta.",
+        "incorrect": "Fogo pode se espalhar; a criança deve priorizar afastamento e ajuda adulta.",
+        "hint": "Não se aproxime para mover nada.",
+        "errorFocus": "FLAME_ADULT_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-32",
+      "statement": "Qual regra resume melhor a prevenção estudada?",
+      "prompt": "Qual regra resume melhor a prevenção estudada?",
+      "options": [
+        "Tocar com cuidado e guardar",
+        "Experimentar primeiro e contar depois",
+        "Resolver sozinho se o objeto for pequeno",
+        "Não tocar nem testar o perigo; afastar-se e avisar um adulto."
+      ],
+      "correctAnswer": "Não tocar nem testar o perigo; afastar-se e avisar um adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tocar com cuidado e guardar": [
+          "SAFETY_RULE_SYNTHESIS"
+        ],
+        "Experimentar primeiro e contar depois": [
+          "SAFETY_RULE_SYNTHESIS"
+        ],
+        "Resolver sozinho se o objeto for pequeno": [
+          "SAFETY_RULE_SYNTHESIS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DE_SEGURANCA_COMPLETA",
+      "explanation": "A regra evita contato, teste e tentativa de solução infantil.",
+      "hint": "Escolha a resposta que inclui afastamento e aviso.",
+      "errorFocus": "SAFETY_RULE_SYNTHESIS",
+      "feedback": {
+        "correct": "Boa observação: A regra evita contato, teste e tentativa de solução infantil.",
+        "incorrect": "A regra evita contato, teste e tentativa de solução infantil.",
+        "hint": "Escolha a resposta que inclui afastamento e aviso.",
+        "errorFocus": "SAFETY_RULE_SYNTHESIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-33",
+      "statement": "Se uma imagem mostra um objeto cortante ao alcance, qual resposta é segura?",
+      "prompt": "Se uma imagem mostra um objeto cortante ao alcance, qual resposta é segura?",
+      "options": [
+        "Afastar-se e avisar um adulto.",
+        "Pegar para guardar",
+        "Testar a ponta",
+        "Brincar perto"
+      ],
+      "correctAnswer": "Afastar-se e avisar um adulto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Pegar para guardar": [
+          "RECALL_SHARP_OBJECT"
+        ],
+        "Testar a ponta": [
+          "RECALL_SHARP_OBJECT"
+        ],
+        "Brincar perto": [
+          "RECALL_SHARP_OBJECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_FACAS",
+      "explanation": "Manter distância e chamar adulto evita contato com o objeto.",
+      "hint": "Lembre de não tocar.",
+      "errorFocus": "RECALL_SHARP_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: Manter distância e chamar adulto evita contato com o objeto.",
+        "incorrect": "Manter distância e chamar adulto evita contato com o objeto.",
+        "hint": "Lembre de não tocar.",
+        "errorFocus": "RECALL_SHARP_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-34",
+      "statement": "Qual ação não deve ser usada para identificar um produto desconhecido?",
+      "prompt": "Qual ação não deve ser usada para identificar um produto desconhecido?",
+      "options": [
+        "Afastar-se",
+        "Cheirar ou provar.",
+        "Avisar adulto",
+        "Observar a imagem didática"
+      ],
+      "correctAnswer": "Cheirar ou provar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Afastar-se": [
+          "RECALL_NO_SENSORY_TEST"
+        ],
+        "Avisar adulto": [
+          "RECALL_NO_SENSORY_TEST"
+        ],
+        "Observar a imagem didática": [
+          "RECALL_NO_SENSORY_TEST"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_PRODUTOS",
+      "explanation": "Cheirar e provar podem expor a criança a substâncias perigosas.",
+      "hint": "Escolha uma ação de contato.",
+      "errorFocus": "RECALL_NO_SENSORY_TEST",
+      "feedback": {
+        "correct": "Boa observação: Cheirar e provar podem expor a criança a substâncias perigosas.",
+        "incorrect": "Cheirar e provar podem expor a criança a substâncias perigosas.",
+        "hint": "Escolha uma ação de contato.",
+        "errorFocus": "RECALL_NO_SENSORY_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-35",
+      "statement": "Um medicamento aparece fora do lugar em uma história. O que fazer?",
+      "prompt": "Um medicamento aparece fora do lugar em uma história. O que fazer?",
+      "options": [
+        "Tomar uma dose pequena",
+        "Guardar no bolso",
+        "Não pegar nem tomar e avisar uma pessoa adulta.",
+        "Oferecer a outra criança"
+      ],
+      "correctAnswer": "Não pegar nem tomar e avisar uma pessoa adulta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tomar uma dose pequena": [
+          "RECALL_MEDICINE"
+        ],
+        "Guardar no bolso": [
+          "RECALL_MEDICINE"
+        ],
+        "Oferecer a outra criança": [
+          "RECALL_MEDICINE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_MEDICAMENTO",
+      "explanation": "Crianças não devem usar medicamentos encontrados.",
+      "hint": "Não use nem mova o medicamento.",
+      "errorFocus": "RECALL_MEDICINE",
+      "feedback": {
+        "correct": "Boa observação: Crianças não devem usar medicamentos encontrados.",
+        "incorrect": "Crianças não devem usar medicamentos encontrados.",
+        "hint": "Não use nem mova o medicamento.",
+        "errorFocus": "RECALL_MEDICINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-36",
+      "statement": "Ao perceber fumaça em uma cena, qual resposta é melhor?",
+      "prompt": "Ao perceber fumaça em uma cena, qual resposta é melhor?",
+      "options": [
+        "Voltar para investigar",
+        "Esconder a situação",
+        "Buscar objetos pessoais",
+        "Afastar-se para um local seguro e chamar um adulto imediatamente."
+      ],
+      "correctAnswer": "Afastar-se para um local seguro e chamar um adulto imediatamente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Voltar para investigar": [
+          "RECALL_IMMEDIATE_DANGER"
+        ],
+        "Esconder a situação": [
+          "RECALL_IMMEDIATE_DANGER"
+        ],
+        "Buscar objetos pessoais": [
+          "RECALL_IMMEDIATE_DANGER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_FUMACA",
+      "explanation": "Afastamento e ajuda adulta são prioritários diante de perigo imediato.",
+      "hint": "Não investigue nem retorne.",
+      "errorFocus": "RECALL_IMMEDIATE_DANGER",
+      "feedback": {
+        "correct": "Boa observação: Afastamento e ajuda adulta são prioritários diante de perigo imediato.",
+        "incorrect": "Afastamento e ajuda adulta são prioritários diante de perigo imediato.",
+        "hint": "Não investigue nem retorne.",
+        "errorFocus": "RECALL_IMMEDIATE_DANGER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-37",
+      "statement": "Tomada, produto químico e objeto cortante têm riscos diferentes. Que cuidado vale para todos?",
+      "prompt": "Tomada, produto químico e objeto cortante têm riscos diferentes. Que cuidado vale para todos?",
+      "options": [
+        "A criança não deve manipulá-los e deve pedir ajuda adulta se houver risco.",
+        "Cheirar cada um",
+        "Testar qual é mais perigoso",
+        "Guardar todos sozinha"
+      ],
+      "correctAnswer": "A criança não deve manipulá-los e deve pedir ajuda adulta se houver risco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cheirar cada um": [
+          "RECALL_COMMON_PREVENTION"
+        ],
+        "Testar qual é mais perigoso": [
+          "RECALL_COMMON_PREVENTION"
+        ],
+        "Guardar todos sozinha": [
+          "RECALL_COMMON_PREVENTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_RISCOS",
+      "explanation": "Riscos diferentes compartilham a regra de evitar manuseio infantil e avisar adulto.",
+      "hint": "Procure a regra comum, não um teste.",
+      "errorFocus": "RECALL_COMMON_PREVENTION",
+      "feedback": {
+        "correct": "Boa observação: Riscos diferentes compartilham a regra de evitar manuseio infantil e avisar adulto.",
+        "incorrect": "Riscos diferentes compartilham a regra de evitar manuseio infantil e avisar adulto.",
+        "hint": "Procure a regra comum, não um teste.",
+        "errorFocus": "RECALL_COMMON_PREVENTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-38",
+      "statement": "Um fio aparece danificado numa ilustração. Quem deve verificar e cuidar da situação?",
+      "prompt": "Um fio aparece danificado numa ilustração. Quem deve verificar e cuidar da situação?",
+      "options": [
+        "A criança que o encontrou",
+        "Uma pessoa adulta.",
+        "Um colega da mesma idade",
+        "Qualquer pessoa sem avisar"
+      ],
+      "correctAnswer": "Uma pessoa adulta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A criança que o encontrou": [
+          "RECALL_ADULT_ASSESSMENT"
+        ],
+        "Um colega da mesma idade": [
+          "RECALL_ADULT_ASSESSMENT"
+        ],
+        "Qualquer pessoa sem avisar": [
+          "RECALL_ADULT_ASSESSMENT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_FIO",
+      "explanation": "A avaliação e o reparo de fios não cabem à criança.",
+      "hint": "Pense em quem pode agir com segurança.",
+      "errorFocus": "RECALL_ADULT_ASSESSMENT",
+      "feedback": {
+        "correct": "Boa observação: A avaliação e o reparo de fios não cabem à criança.",
+        "incorrect": "A avaliação e o reparo de fios não cabem à criança.",
+        "hint": "Pense em quem pode agir com segurança.",
+        "errorFocus": "RECALL_ADULT_ASSESSMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-39",
+      "statement": "Em uma nova história, há um recipiente desconhecido no chão. Qual é a sequência adequada?",
+      "prompt": "Em uma nova história, há um recipiente desconhecido no chão. Qual é a sequência adequada?",
+      "options": [
+        "Abrir, provar e guardar",
+        "Mover, limpar e voltar",
+        "Não tocar nem cheirar, afastar-se e avisar um adulto.",
+        "Misturar, observar e esconder"
+      ],
+      "correctAnswer": "Não tocar nem cheirar, afastar-se e avisar um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Abrir, provar e guardar": [
+          "TRANSFER_SAFE_SEQUENCE"
+        ],
+        "Mover, limpar e voltar": [
+          "TRANSFER_SAFE_SEQUENCE"
+        ],
+        "Misturar, observar e esconder": [
+          "TRANSFER_SAFE_SEQUENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "NOVA_CENA_DOMESTICA",
+      "explanation": "A sequência mantém distância e busca apoio adulto sem investigar a substância.",
+      "hint": "Use a sequência aprendida.",
+      "errorFocus": "TRANSFER_SAFE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência mantém distância e busca apoio adulto sem investigar a substância.",
+        "incorrect": "A sequência mantém distância e busca apoio adulto sem investigar a substância.",
+        "hint": "Use a sequência aprendida.",
+        "errorFocus": "TRANSFER_SAFE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci03-recognize-household-hazards-and-seek-adult-help-40",
+      "statement": "O objetivo da prevenção doméstica nesta atividade é…",
+      "prompt": "O objetivo da prevenção doméstica nesta atividade é…",
+      "options": [
+        "ensinar crianças a consertar objetos",
+        "experimentar produtos para reconhecê-los",
+        "inspecionar todas as casas",
+        "reconhecer situações de risco e buscar ajuda adulta sem manusear o perigo."
+      ],
+      "correctAnswer": "reconhecer situações de risco e buscar ajuda adulta sem manusear o perigo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ensinar crianças a consertar objetos": [
+          "SKILL_SUMMARY"
+        ],
+        "experimentar produtos para reconhecê-los": [
+          "SKILL_SUMMARY"
+        ],
+        "inspecionar todas as casas": [
+          "SKILL_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "RESUMO_DE_PREVENCAO",
+      "explanation": "A aprendizagem enfatiza reconhecimento, distância e ajuda adulta, sem exposição ou inspeção doméstica.",
+      "hint": "Lembre o que as atividades não pediam fazer.",
+      "errorFocus": "SKILL_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem enfatiza reconhecimento, distância e ajuda adulta, sem exposição ou inspeção doméstica.",
+        "incorrect": "A aprendizagem enfatiza reconhecimento, distância e ajuda adulta, sem exposição ou inspeção doméstica.",
+        "hint": "Lembre o que as atividades não pediam fazer.",
+        "errorFocus": "SKILL_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar somente desenhos, fotografias didáticas apropriadas, símbolos de distância e cartões; não trazer objetos perigosos reais para a sala.",
+          "Apresentar uma situação por vez e permitir resposta por apontamento, fala, cartões de sequência, desenho ou comunicação alternativa.",
+          "Não pedir inspeção da casa, relato de acidente ou identificação pública de endereço/familiar; aceitar exemplos fictícios e evitar imagens alarmistas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

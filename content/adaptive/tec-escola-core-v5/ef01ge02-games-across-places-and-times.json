@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge02-games-across-places-and-times",
+  "canonicalSkillCode": "AUTHORING_EF01GE02_COMPARE_GAMES_ACROSS_PLACES_AND_TIMES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Brincadeiras: o que muda e o que permanece?",
+    "objective": "Comparar jogos e brincadeiras apresentados em fontes curtas sobre lugares e épocas diferentes, identificando semelhanças e diferenças sem generalizar culturas ou classificar uma prática como superior.",
+    "summary": "Jogos e brincadeiras podem ter regras, materiais, nomes e espaços diferentes. Algumas práticas compartilham ações, como lançar, cantar, correr ou esperar a vez. Uma ficha, imagem descrita ou relato informa apenas o que apresenta; não representa todas as pessoas de um lugar ou de uma época. Comparar é encontrar pontos em comum e diferenças usando evidências, sem dizer que uma cultura brinca de um único jeito.",
+    "explanation": "Leia cada fonte e procure pistas: onde e quando a brincadeira foi registrada, quais materiais aparecem, quais ações e regras são descritas. Depois registre uma semelhança e uma diferença que possam ser verificadas. Uma prática pode mudar de nome, regra ou material quando chega a outro espaço ou é recriada por um grupo. Não conclua que uma brincadeira pertence exclusivamente a um lugar, que todas as pessoas de uma região a praticam ou que uma forma é melhor. Se a fonte não informa origem, participantes ou regra, mantenha essa informação em aberto.",
+    "workedExample": "Duas fichas didáticas fictícias descrevem jogos: em uma, crianças lançam saquinhos de tecido em alvos desenhados; na outra, lançam argolas em pinos. A ação de lançar é semelhante e os objetos-alvo são diferentes. As fichas não dizem que esses jogos são praticados por todas as crianças de algum lugar.",
+    "commonMistake": "Atribuir uma brincadeira a todas as pessoas de um lugar ou de uma cultura a partir de um único exemplo, ou tratar uma diferença como sinal de superioridade.",
+    "priorKnowledge": [
+      "Descrever ações, objetos e regras simples apresentados em uma imagem ou texto.",
+      "Reconhecer palavras de tempo e lugar, como antes, hoje, pátio e praça."
+    ],
+    "keyConcepts": [
+      "jogo",
+      "brincadeira",
+      "regra",
+      "material",
+      "lugar",
+      "época",
+      "semelhança",
+      "diferença",
+      "fonte"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GENERALIZING_FROM_ONE_SOURCE",
+        "action": "Retorne à ficha e troque frases como “todos fazem” por “esta fonte descreve”; procure o limite do exemplo."
+      },
+      {
+        "errorFocus": "DIFFERENCE_AS_SUPERIORITY",
+        "action": "Compare regra, material ou espaço sem usar melhor ou pior; explique que a fonte só permite descrever diferenças."
+      },
+      {
+        "errorFocus": "UNSUPPORTED_ORIGIN_CLAIM",
+        "action": "Marque o que a fonte informa e o que não informa; deixe a origem em aberto quando ela não foi documentada."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+      "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+      "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge02-compare-source-cards",
+        "title": "Mesa de comparação de brincadeiras",
+        "instructions": "Cartões didáticos descrevem práticas de épocas e lugares indicados, sem afirmar que um exemplo representa todas as pessoas de uma região.\n1. Escolha duas fichas e destaque as pistas de lugar, época, materiais e regras que realmente aparecem.\n2. Organize uma semelhança e uma diferença em uma tabela ou desenho.\n3. Escreva uma legenda cuidadosa usando “nestas fichas” e indique uma informação que as fontes não permitem concluir.",
+        "steps": [
+          "Escolha duas fichas e destaque as pistas de lugar, época, materiais e regras que realmente aparecem.",
+          "Organize uma semelhança e uma diferença em uma tabela ou desenho.",
+          "Escreva uma legenda cuidadosa usando “nestas fichas” e indique uma informação que as fontes não permitem concluir."
+        ],
+        "evidence": "Tabela ou explicação que compara ao menos um aspecto comum e um diferente com apoio em pistas das fontes e sem generalização cultural.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um objeto ou ação com apoio, mas confunde exemplo e generalização.",
+            "developing": "compara um aspecto usando as fichas e limita parcialmente a conclusão.",
+            "proficient": "registra semelhança e diferença verificáveis e explicita o limite do que as fontes mostram."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge02-invent-a-fair-variation",
+        "title": "Criar uma variação com regras claras",
+        "instructions": "Em grupos ou individualmente, estudantes adaptam um jogo de alvo usando materiais escolares seguros e inventados; nenhuma versão é atribuída a uma cultura real.\n1. Escolha uma regra e um material de uma brincadeira descrita no cartão.\n2. Crie uma variação segura e indique o que permaneceu e o que mudou.\n3. Troque a descrição com outra pessoa e verifique se as instruções permitem compreender como jogar.",
+        "steps": [
+          "Escolha uma regra e um material de uma brincadeira descrita no cartão.",
+          "Crie uma variação segura e indique o que permaneceu e o que mudou.",
+          "Troque a descrição com outra pessoa e verifique se as instruções permitem compreender como jogar."
+        ],
+        "evidence": "Descrição, desenho ou demonstração de uma variação com uma regra clara, uma semelhança e uma mudança identificadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "propõe uma mudança com apoio, mas não descreve a regra.",
+            "developing": "descreve a regra e identifica o que mudou.",
+            "proficient": "comunica a regra com clareza, compara a versão e evita atribuir sua invenção a grupos reais."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge02-games-across-places-and-times-01",
+          "v1-ef01ge02-games-across-places-and-times-02",
+          "v1-ef01ge02-games-across-places-and-times-03",
+          "v1-ef01ge02-games-across-places-and-times-04",
+          "v1-ef01ge02-games-across-places-and-times-05",
+          "v1-ef01ge02-games-across-places-and-times-06",
+          "v1-ef01ge02-games-across-places-and-times-07",
+          "v1-ef01ge02-games-across-places-and-times-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge02-games-across-places-and-times-09",
+          "v1-ef01ge02-games-across-places-and-times-10",
+          "v1-ef01ge02-games-across-places-and-times-11",
+          "v1-ef01ge02-games-across-places-and-times-12",
+          "v1-ef01ge02-games-across-places-and-times-13",
+          "v1-ef01ge02-games-across-places-and-times-14",
+          "v1-ef01ge02-games-across-places-and-times-15",
+          "v1-ef01ge02-games-across-places-and-times-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge02-games-across-places-and-times-17",
+          "v1-ef01ge02-games-across-places-and-times-18",
+          "v1-ef01ge02-games-across-places-and-times-19",
+          "v1-ef01ge02-games-across-places-and-times-20",
+          "v1-ef01ge02-games-across-places-and-times-21",
+          "v1-ef01ge02-games-across-places-and-times-22",
+          "v1-ef01ge02-games-across-places-and-times-23",
+          "v1-ef01ge02-games-across-places-and-times-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge02-games-across-places-and-times-25",
+          "v1-ef01ge02-games-across-places-and-times-26",
+          "v1-ef01ge02-games-across-places-and-times-27",
+          "v1-ef01ge02-games-across-places-and-times-28",
+          "v1-ef01ge02-games-across-places-and-times-29",
+          "v1-ef01ge02-games-across-places-and-times-30",
+          "v1-ef01ge02-games-across-places-and-times-31",
+          "v1-ef01ge02-games-across-places-and-times-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge02-games-across-places-and-times-33",
+          "v1-ef01ge02-games-across-places-and-times-34",
+          "v1-ef01ge02-games-across-places-and-times-35",
+          "v1-ef01ge02-games-across-places-and-times-36",
+          "v1-ef01ge02-games-across-places-and-times-37",
+          "v1-ef01ge02-games-across-places-and-times-38",
+          "v1-ef01ge02-games-across-places-and-times-39",
+          "v1-ef01ge02-games-across-places-and-times-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE02",
+        "descriptor": "Identificar semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-01",
+      "statement": "Uma ficha descreve saquinhos lançados em círculos no chão; outra descreve argolas lançadas em pinos. Qual ação aparece nas duas?",
+      "prompt": "Uma ficha descreve saquinhos lançados em círculos no chão; outra descreve argolas lançadas em pinos. Qual ação aparece nas duas?",
+      "options": [
+        "Lançar um objeto em direção a um alvo.",
+        "Usar exatamente o mesmo material",
+        "Jogar no mesmo lugar",
+        "Seguir a mesma pontuação"
+      ],
+      "correctAnswer": "Lançar um objeto em direção a um alvo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usar exatamente o mesmo material": [
+          "SHARED_ACTION"
+        ],
+        "Jogar no mesmo lugar": [
+          "SHARED_ACTION"
+        ],
+        "Seguir a mesma pontuação": [
+          "SHARED_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FICHAS_DE_ALVO",
+      "explanation": "As fichas mostram lançamentos, mas alvos e materiais diferentes.",
+      "hint": "Compare a ação, não o objeto.",
+      "errorFocus": "SHARED_ACTION",
+      "feedback": {
+        "correct": "Boa observação: As fichas mostram lançamentos, mas alvos e materiais diferentes.",
+        "incorrect": "As fichas mostram lançamentos, mas alvos e materiais diferentes.",
+        "hint": "Compare a ação, não o objeto.",
+        "errorFocus": "SHARED_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-02",
+      "statement": "Uma brincadeira antiga descrita em um cartão usa uma cantiga; uma versão atual descrita usa palmas sem canto. O que mudou?",
+      "prompt": "Uma brincadeira antiga descrita em um cartão usa uma cantiga; uma versão atual descrita usa palmas sem canto. O que mudou?",
+      "options": [
+        "A existência de participantes",
+        "A presença da cantiga na regra apresentada.",
+        "A possibilidade de brincar",
+        "O fato de serem descrições"
+      ],
+      "correctAnswer": "A presença da cantiga na regra apresentada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A existência de participantes": [
+          "RULE_VARIATION"
+        ],
+        "A possibilidade de brincar": [
+          "RULE_VARIATION"
+        ],
+        "O fato de serem descrições": [
+          "RULE_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_DE_CANTIGA",
+      "explanation": "O cartão informa mudança na forma de acompanhar a brincadeira.",
+      "hint": "Procure o detalhe explícito da regra.",
+      "errorFocus": "RULE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: O cartão informa mudança na forma de acompanhar a brincadeira.",
+        "incorrect": "O cartão informa mudança na forma de acompanhar a brincadeira.",
+        "hint": "Procure o detalhe explícito da regra.",
+        "errorFocus": "RULE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-03",
+      "statement": "Uma ficha diz que um jogo ocorreu em um pátio; outra, em uma praça. Qual diferença está registrada?",
+      "prompt": "Uma ficha diz que um jogo ocorreu em um pátio; outra, em uma praça. Qual diferença está registrada?",
+      "options": [
+        "A habilidade de quem participou",
+        "A idade de todas as crianças",
+        "O espaço indicado pelas fichas.",
+        "A origem exclusiva do jogo"
+      ],
+      "correctAnswer": "O espaço indicado pelas fichas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A habilidade de quem participou": [
+          "PLACE_EVIDENCE"
+        ],
+        "A idade de todas as crianças": [
+          "PLACE_EVIDENCE"
+        ],
+        "A origem exclusiva do jogo": [
+          "PLACE_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PATIO_E_PRACA",
+      "explanation": "Os registros nomeiam espaços diferentes, sem informar origem ou participantes em geral.",
+      "hint": "Leia a pista de lugar.",
+      "errorFocus": "PLACE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os registros nomeiam espaços diferentes, sem informar origem ou participantes em geral.",
+        "incorrect": "Os registros nomeiam espaços diferentes, sem informar origem ou participantes em geral.",
+        "hint": "Leia a pista de lugar.",
+        "errorFocus": "PLACE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-04",
+      "statement": "Um cartão descreve fazer uma bola de papel e tentar acertar uma caixa; outro descreve lançar uma bola de pano em um cesto. Qual semelhança é sustentada?",
+      "prompt": "Um cartão descreve fazer uma bola de papel e tentar acertar uma caixa; outro descreve lançar uma bola de pano em um cesto. Qual semelhança é sustentada?",
+      "options": [
+        "Os materiais são idênticos",
+        "As regras são iguais",
+        "As brincadeiras pertencem ao mesmo lugar",
+        "As duas descrições têm um lançamento em direção a um recipiente-alvo."
+      ],
+      "correctAnswer": "As duas descrições têm um lançamento em direção a um recipiente-alvo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os materiais são idênticos": [
+          "COMMON_GOAL_NOT_IDENTITY"
+        ],
+        "As regras são iguais": [
+          "COMMON_GOAL_NOT_IDENTITY"
+        ],
+        "As brincadeiras pertencem ao mesmo lugar": [
+          "COMMON_GOAL_NOT_IDENTITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BOLINHAS_DE_PAPEL",
+      "explanation": "O alvo é um recipiente em ambas; materiais e regras podem diferir.",
+      "hint": "Observe o objetivo descrito.",
+      "errorFocus": "COMMON_GOAL_NOT_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: O alvo é um recipiente em ambas; materiais e regras podem diferir.",
+        "incorrect": "O alvo é um recipiente em ambas; materiais e regras podem diferir.",
+        "hint": "Observe o objetivo descrito.",
+        "errorFocus": "COMMON_GOAL_NOT_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-05",
+      "statement": "Um relato fictício, datado de muitos anos atrás, diz que o jogo era feito no quintal. O que a data ajuda a identificar?",
+      "prompt": "Um relato fictício, datado de muitos anos atrás, diz que o jogo era feito no quintal. O que a data ajuda a identificar?",
+      "options": [
+        "A época a que aquele relato se refere.",
+        "Como todas as famílias brincavam",
+        "Que o jogo deixou de existir",
+        "A origem única do jogo"
+      ],
+      "correctAnswer": "A época a que aquele relato se refere.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como todas as famílias brincavam": [
+          "TIME_SCOPE"
+        ],
+        "Que o jogo deixou de existir": [
+          "TIME_SCOPE"
+        ],
+        "A origem única do jogo": [
+          "TIME_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELATO_FICTICIO_DE_OUTRA_EPOCA",
+      "explanation": "A data situa a fonte, mas não descreve todas as famílias nem a continuidade da prática.",
+      "hint": "Pense no alcance de um relato datado.",
+      "errorFocus": "TIME_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A data situa a fonte, mas não descreve todas as famílias nem a continuidade da prática.",
+        "incorrect": "A data situa a fonte, mas não descreve todas as famílias nem a continuidade da prática.",
+        "hint": "Pense no alcance de um relato datado.",
+        "errorFocus": "TIME_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-06",
+      "statement": "Uma descrição registra que participantes esperam sua vez; outra diz que todos começam ao sinal. O que é diferente?",
+      "prompt": "Uma descrição registra que participantes esperam sua vez; outra diz que todos começam ao sinal. O que é diferente?",
+      "options": [
+        "O objetivo de brincar",
+        "A regra de entrada na rodada descrita.",
+        "A existência de uma regra",
+        "O direito de participar"
+      ],
+      "correctAnswer": "A regra de entrada na rodada descrita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O objetivo de brincar": [
+          "TURN_RULE"
+        ],
+        "A existência de uma regra": [
+          "TURN_RULE"
+        ],
+        "O direito de participar": [
+          "TURN_RULE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JOGO_DE_SEQUENCIA",
+      "explanation": "As instruções de início diferem conforme os cartões.",
+      "hint": "Compare quando cada pessoa começa.",
+      "errorFocus": "TURN_RULE",
+      "feedback": {
+        "correct": "Boa observação: As instruções de início diferem conforme os cartões.",
+        "incorrect": "As instruções de início diferem conforme os cartões.",
+        "hint": "Compare quando cada pessoa começa.",
+        "errorFocus": "TURN_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-07",
+      "statement": "Uma ficha lista pedrinhas lisas; outra lista tampas grandes de papelão. O que os cartões permitem dizer?",
+      "prompt": "Uma ficha lista pedrinhas lisas; outra lista tampas grandes de papelão. O que os cartões permitem dizer?",
+      "options": [
+        "Um material é melhor para toda brincadeira",
+        "As pessoas de cada lugar usam sempre esses objetos",
+        "Os materiais registrados são diferentes.",
+        "Os jogos têm a mesma regra"
+      ],
+      "correctAnswer": "Os materiais registrados são diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um material é melhor para toda brincadeira": [
+          "MATERIAL_DESCRIPTION"
+        ],
+        "As pessoas de cada lugar usam sempre esses objetos": [
+          "MATERIAL_DESCRIPTION"
+        ],
+        "Os jogos têm a mesma regra": [
+          "MATERIAL_DESCRIPTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_MATERIAIS",
+      "explanation": "A fonte descreve materiais, não preferências universais nem qualidade.",
+      "hint": "Fique na lista de cada ficha.",
+      "errorFocus": "MATERIAL_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A fonte descreve materiais, não preferências universais nem qualidade.",
+        "incorrect": "A fonte descreve materiais, não preferências universais nem qualidade.",
+        "hint": "Fique na lista de cada ficha.",
+        "errorFocus": "MATERIAL_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-08",
+      "statement": "Uma ficha descreve uma amarelinha, mas não informa onde surgiu. O que é correto registrar?",
+      "prompt": "Uma ficha descreve uma amarelinha, mas não informa onde surgiu. O que é correto registrar?",
+      "options": [
+        "Surgiu certamente no bairro da turma",
+        "Pertence a um único país",
+        "Ninguém sabe brincar desse jogo",
+        "A origem não foi informada por essa ficha."
+      ],
+      "correctAnswer": "A origem não foi informada por essa ficha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Surgiu certamente no bairro da turma": [
+          "SOURCE_LIMIT"
+        ],
+        "Pertence a um único país": [
+          "SOURCE_LIMIT"
+        ],
+        "Ninguém sabe brincar desse jogo": [
+          "SOURCE_LIMIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FONTE_SEM_ORIGEM",
+      "explanation": "Ausência de informação numa ficha não autoriza inventar a origem.",
+      "hint": "Registre o limite da fonte.",
+      "errorFocus": "SOURCE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Ausência de informação numa ficha não autoriza inventar a origem.",
+        "incorrect": "Ausência de informação numa ficha não autoriza inventar a origem.",
+        "hint": "Registre o limite da fonte.",
+        "errorFocus": "SOURCE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-09",
+      "statement": "Uma descrição usa marcas de giz para indicar um percurso; outra usa cartões no chão. O que pode ser comparado?",
+      "prompt": "Uma descrição usa marcas de giz para indicar um percurso; outra usa cartões no chão. O que pode ser comparado?",
+      "options": [
+        "Os dois materiais marcam um caminho, mas são diferentes.",
+        "As duas regras são idênticas",
+        "Todos os percursos têm o mesmo tamanho",
+        "Um material é mais importante"
+      ],
+      "correctAnswer": "Os dois materiais marcam um caminho, mas são diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As duas regras são idênticas": [
+          "MATERIAL_FUNCTION"
+        ],
+        "Todos os percursos têm o mesmo tamanho": [
+          "MATERIAL_FUNCTION"
+        ],
+        "Um material é mais importante": [
+          "MATERIAL_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CORRIDA_COM_MARCADORES",
+      "explanation": "As fichas indicam uma função semelhante com materiais distintos.",
+      "hint": "Compare o que os materiais fazem.",
+      "errorFocus": "MATERIAL_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: As fichas indicam uma função semelhante com materiais distintos.",
+        "incorrect": "As fichas indicam uma função semelhante com materiais distintos.",
+        "hint": "Compare o que os materiais fazem.",
+        "errorFocus": "MATERIAL_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-10",
+      "statement": "Em um registro antigo, participantes repetem uma rima; em uma descrição atual, repetem uma sequência de palmas. Qual semelhança aparece?",
+      "prompt": "Em um registro antigo, participantes repetem uma rima; em uma descrição atual, repetem uma sequência de palmas. Qual semelhança aparece?",
+      "options": [
+        "As palavras são iguais",
+        "Há uma sequência repetida para acompanhar a brincadeira.",
+        "O tempo e o lugar são os mesmos",
+        "As regras não mudaram"
+      ],
+      "correctAnswer": "Há uma sequência repetida para acompanhar a brincadeira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As palavras são iguais": [
+          "REPEATED_PATTERN"
+        ],
+        "O tempo e o lugar são os mesmos": [
+          "REPEATED_PATTERN"
+        ],
+        "As regras não mudaram": [
+          "REPEATED_PATTERN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BRINCADEIRA_COM_RIMA",
+      "explanation": "Ambos os registros descrevem repetição, mas não a mesma sequência.",
+      "hint": "Procure uma característica geral comum.",
+      "errorFocus": "REPEATED_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: Ambos os registros descrevem repetição, mas não a mesma sequência.",
+        "incorrect": "Ambos os registros descrevem repetição, mas não a mesma sequência.",
+        "hint": "Procure uma característica geral comum.",
+        "errorFocus": "REPEATED_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-11",
+      "statement": "Uma ficha de jogo diz que vence quem completa uma sequência; outra diz que a atividade termina quando todos cooperam para montar uma figura. O que difere?",
+      "prompt": "Uma ficha de jogo diz que vence quem completa uma sequência; outra diz que a atividade termina quando todos cooperam para montar uma figura. O que difere?",
+      "options": [
+        "A existência de participantes",
+        "A possibilidade de aprender regras",
+        "O critério de encerramento descrito.",
+        "A presença de uma atividade"
+      ],
+      "correctAnswer": "O critério de encerramento descrito.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A existência de participantes": [
+          "END_CONDITION"
+        ],
+        "A possibilidade de aprender regras": [
+          "END_CONDITION"
+        ],
+        "A presença de uma atividade": [
+          "END_CONDITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "JOGO_DE_CARTOES_DA_BIBLIOTECA",
+      "explanation": "As descrições apresentam condições de fim diferentes.",
+      "hint": "Compare quando cada atividade termina.",
+      "errorFocus": "END_CONDITION",
+      "feedback": {
+        "correct": "Boa observação: As descrições apresentam condições de fim diferentes.",
+        "incorrect": "As descrições apresentam condições de fim diferentes.",
+        "hint": "Compare quando cada atividade termina.",
+        "errorFocus": "END_CONDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-12",
+      "statement": "Uma brincadeira descrita ocorre em roda; outra segue um caminho marcado. Qual diferença é observável?",
+      "prompt": "Uma brincadeira descrita ocorre em roda; outra segue um caminho marcado. Qual diferença é observável?",
+      "options": [
+        "A importância de quem participa",
+        "A origem exata das duas brincadeiras",
+        "O valor das pessoas",
+        "A organização do espaço na descrição."
+      ],
+      "correctAnswer": "A organização do espaço na descrição.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A importância de quem participa": [
+          "SPATIAL_ARRANGEMENT"
+        ],
+        "A origem exata das duas brincadeiras": [
+          "SPATIAL_ARRANGEMENT"
+        ],
+        "O valor das pessoas": [
+          "SPATIAL_ARRANGEMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "RODA_E_CAMINHO",
+      "explanation": "As formas de organizar o espaço são distintas nas fichas.",
+      "hint": "Observe como o espaço está descrito.",
+      "errorFocus": "SPATIAL_ARRANGEMENT",
+      "feedback": {
+        "correct": "Boa observação: As formas de organizar o espaço são distintas nas fichas.",
+        "incorrect": "As formas de organizar o espaço são distintas nas fichas.",
+        "hint": "Observe como o espaço está descrito.",
+        "errorFocus": "SPATIAL_ARRANGEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-13",
+      "statement": "Uma ficha didática inventada lista sementes grandes como peças e não informa de onde veio a brincadeira. Qual conclusão é segura?",
+      "prompt": "Uma ficha didática inventada lista sementes grandes como peças e não informa de onde veio a brincadeira. Qual conclusão é segura?",
+      "options": [
+        "A ficha descreve esse material, mas não sua origem.",
+        "Todas as pessoas usam sementes",
+        "A brincadeira pertence a uma cultura específica",
+        "O material deve ser coletado na natureza"
+      ],
+      "correctAnswer": "A ficha descreve esse material, mas não sua origem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as pessoas usam sementes": [
+          "MATERIAL_WITHOUT_ORIGIN"
+        ],
+        "A brincadeira pertence a uma cultura específica": [
+          "MATERIAL_WITHOUT_ORIGIN"
+        ],
+        "O material deve ser coletado na natureza": [
+          "MATERIAL_WITHOUT_ORIGIN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FICHA_DE_JOGO_COM_SEMENTES",
+      "explanation": "O cartão informa peças, não origem nem autorização para coletá-las.",
+      "hint": "Use apenas o que está no cartão.",
+      "errorFocus": "MATERIAL_WITHOUT_ORIGIN",
+      "feedback": {
+        "correct": "Boa observação: O cartão informa peças, não origem nem autorização para coletá-las.",
+        "incorrect": "O cartão informa peças, não origem nem autorização para coletá-las.",
+        "hint": "Use apenas o que está no cartão.",
+        "errorFocus": "MATERIAL_WITHOUT_ORIGIN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-14",
+      "statement": "Uma descrição usa música para marcar rodadas; outra usa um sinal visual combinado. Qual contraste aparece?",
+      "prompt": "Uma descrição usa música para marcar rodadas; outra usa um sinal visual combinado. Qual contraste aparece?",
+      "options": [
+        "Uma não tem nenhuma regra",
+        "O sinal para marcar as rodadas é diferente.",
+        "A música sempre é obrigatória",
+        "O jogo visual é mais difícil"
+      ],
+      "correctAnswer": "O sinal para marcar as rodadas é diferente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma não tem nenhuma regra": [
+          "SIGNAL_COMPARISON"
+        ],
+        "A música sempre é obrigatória": [
+          "SIGNAL_COMPARISON"
+        ],
+        "O jogo visual é mais difícil": [
+          "SIGNAL_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JOGO_COM_MUSICA_E_SILENCIO",
+      "explanation": "As fontes mostram sinais diferentes e não avaliam qual é melhor.",
+      "hint": "Compare como a rodada é sinalizada.",
+      "errorFocus": "SIGNAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As fontes mostram sinais diferentes e não avaliam qual é melhor.",
+        "incorrect": "As fontes mostram sinais diferentes e não avaliam qual é melhor.",
+        "hint": "Compare como a rodada é sinalizada.",
+        "errorFocus": "SIGNAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-15",
+      "statement": "Um relato diz que a brincadeira usa peças feitas de caixas limpas; outro usa peças de madeira. O que é semelhante?",
+      "prompt": "Um relato diz que a brincadeira usa peças feitas de caixas limpas; outro usa peças de madeira. O que é semelhante?",
+      "options": [
+        "A matéria-prima é a mesma",
+        "As peças têm o mesmo tamanho",
+        "Ambos usam peças para brincar.",
+        "Os relatos são da mesma época"
+      ],
+      "correctAnswer": "Ambos usam peças para brincar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A matéria-prima é a mesma": [
+          "SHARED_OBJECT_ROLE"
+        ],
+        "As peças têm o mesmo tamanho": [
+          "SHARED_OBJECT_ROLE"
+        ],
+        "Os relatos são da mesma época": [
+          "SHARED_OBJECT_ROLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRO_DE_BRINQUEDO_RECICLADO",
+      "explanation": "Os materiais são diferentes, mas exercem o papel de peças de jogo.",
+      "hint": "Compare a função das peças.",
+      "errorFocus": "SHARED_OBJECT_ROLE",
+      "feedback": {
+        "correct": "Boa observação: Os materiais são diferentes, mas exercem o papel de peças de jogo.",
+        "incorrect": "Os materiais são diferentes, mas exercem o papel de peças de jogo.",
+        "hint": "Compare a função das peças.",
+        "errorFocus": "SHARED_OBJECT_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-16",
+      "statement": "Uma ficha apresenta uma brincadeira registrada em uma cidade. Por que não devemos dizer que todas as pessoas dali brincam assim?",
+      "prompt": "Uma ficha apresenta uma brincadeira registrada em uma cidade. Por que não devemos dizer que todas as pessoas dali brincam assim?",
+      "options": [
+        "Porque cidades não têm brincadeiras",
+        "Porque a ficha está sempre errada",
+        "Porque só crianças podem brincar",
+        "Uma ficha mostra um exemplo, não todas as experiências da cidade."
+      ],
+      "correctAnswer": "Uma ficha mostra um exemplo, não todas as experiências da cidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque cidades não têm brincadeiras": [
+          "ONE_SOURCE_IS_NOT_EVERYONE"
+        ],
+        "Porque a ficha está sempre errada": [
+          "ONE_SOURCE_IS_NOT_EVERYONE"
+        ],
+        "Porque só crianças podem brincar": [
+          "ONE_SOURCE_IS_NOT_EVERYONE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PERGUNTA_SOBRE_UMA_REGIAO",
+      "explanation": "Um registro localizado não representa automaticamente todas as pessoas.",
+      "hint": "Pense em quantas experiências cabem em uma cidade.",
+      "errorFocus": "ONE_SOURCE_IS_NOT_EVERYONE",
+      "feedback": {
+        "correct": "Boa observação: Um registro localizado não representa automaticamente todas as pessoas.",
+        "incorrect": "Um registro localizado não representa automaticamente todas as pessoas.",
+        "hint": "Pense em quantas experiências cabem em uma cidade.",
+        "errorFocus": "ONE_SOURCE_IS_NOT_EVERYONE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-17",
+      "statement": "Dois cartões ficam em lugares diferentes no mapa e descrevem jogos com turnos. Qual semelhança pode ser registrada?",
+      "prompt": "Dois cartões ficam em lugares diferentes no mapa e descrevem jogos com turnos. Qual semelhança pode ser registrada?",
+      "options": [
+        "Ambos mencionam esperar ou organizar a vez.",
+        "Os jogos têm a mesma origem",
+        "Todas as regras são iguais",
+        "As pessoas dos lugares são iguais"
+      ],
+      "correctAnswer": "Ambos mencionam esperar ou organizar a vez.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os jogos têm a mesma origem": [
+          "PLACE_AND_RULE_EVIDENCE"
+        ],
+        "Todas as regras são iguais": [
+          "PLACE_AND_RULE_EVIDENCE"
+        ],
+        "As pessoas dos lugares são iguais": [
+          "PLACE_AND_RULE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_DE_REGISTROS_DIDATICOS",
+      "explanation": "Os lugares diferem e as duas descrições mencionam turnos.",
+      "hint": "Use uma pista de cada cartão.",
+      "errorFocus": "PLACE_AND_RULE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os lugares diferem e as duas descrições mencionam turnos.",
+        "incorrect": "Os lugares diferem e as duas descrições mencionam turnos.",
+        "hint": "Use uma pista de cada cartão.",
+        "errorFocus": "PLACE_AND_RULE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-18",
+      "statement": "Uma legenda de museu informa material e data de uma brincadeira, mas não explica sua regra. O que falta para comparar como se joga?",
+      "prompt": "Uma legenda de museu informa material e data de uma brincadeira, mas não explica sua regra. O que falta para comparar como se joga?",
+      "options": [
+        "Uma opinião sobre qual jogo é melhor",
+        "Uma descrição de ações ou regras.",
+        "Uma lista de todas as pessoas que brincaram",
+        "Uma suposição sobre a origem"
+      ],
+      "correctAnswer": "Uma descrição de ações ou regras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma opinião sobre qual jogo é melhor": [
+          "MISSING_RULE_EVIDENCE"
+        ],
+        "Uma lista de todas as pessoas que brincaram": [
+          "MISSING_RULE_EVIDENCE"
+        ],
+        "Uma suposição sobre a origem": [
+          "MISSING_RULE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MUSEU_DE_BRINCADEIRA_FICTICIO",
+      "explanation": "Para comparar o modo de jogar, precisamos de informação sobre as ações ou regras.",
+      "hint": "Identifique que dado a legenda não traz.",
+      "errorFocus": "MISSING_RULE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Para comparar o modo de jogar, precisamos de informação sobre as ações ou regras.",
+        "incorrect": "Para comparar o modo de jogar, precisamos de informação sobre as ações ou regras.",
+        "hint": "Identifique que dado a legenda não traz.",
+        "errorFocus": "MISSING_RULE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-19",
+      "statement": "Duas fontes usam nomes diferentes, mas descrevem lançar saquinhos em alvos. Qual análise é cuidadosa?",
+      "prompt": "Duas fontes usam nomes diferentes, mas descrevem lançar saquinhos em alvos. Qual análise é cuidadosa?",
+      "options": [
+        "Dizer que é exatamente o mesmo jogo",
+        "Afirmar que um nome é incorreto",
+        "Registrar a semelhança da ação e a diferença dos nomes, sem supor que são idênticas.",
+        "Concluir que os nomes indicam países diferentes"
+      ],
+      "correctAnswer": "Registrar a semelhança da ação e a diferença dos nomes, sem supor que são idênticas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer que é exatamente o mesmo jogo": [
+          "COMPARE_WITHOUT_COLLAPSING"
+        ],
+        "Afirmar que um nome é incorreto": [
+          "COMPARE_WITHOUT_COLLAPSING"
+        ],
+        "Concluir que os nomes indicam países diferentes": [
+          "COMPARE_WITHOUT_COLLAPSING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DUAS_FONTES_COM_NOMES_DIFERENTES",
+      "explanation": "A ação é semelhante, mas nomes diferentes não provam que todas as regras coincidam.",
+      "hint": "Separe semelhança de identidade completa.",
+      "errorFocus": "COMPARE_WITHOUT_COLLAPSING",
+      "feedback": {
+        "correct": "Boa observação: A ação é semelhante, mas nomes diferentes não provam que todas as regras coincidam.",
+        "incorrect": "A ação é semelhante, mas nomes diferentes não provam que todas as regras coincidam.",
+        "hint": "Separe semelhança de identidade completa.",
+        "errorFocus": "COMPARE_WITHOUT_COLLAPSING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-20",
+      "statement": "Um cartaz compara um registro datado e uma prática de hoje. Qual frase evita afirmar que a brincadeira desapareceu?",
+      "prompt": "Um cartaz compara um registro datado e uma prática de hoje. Qual frase evita afirmar que a brincadeira desapareceu?",
+      "options": [
+        "“Ninguém mais brinca disso.”",
+        "“Todas as pessoas brincavam do mesmo jeito.”",
+        "“A versão antiga era superior.”",
+        "“Este registro mostra uma forma usada naquela época; outras formas podem existir.”"
+      ],
+      "correctAnswer": "“Este registro mostra uma forma usada naquela época; outras formas podem existir.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Ninguém mais brinca disso.”": [
+          "TIME_CHANGE_NOT_EXTINCTION"
+        ],
+        "“Todas as pessoas brincavam do mesmo jeito.”": [
+          "TIME_CHANGE_NOT_EXTINCTION"
+        ],
+        "“A versão antiga era superior.”": [
+          "TIME_CHANGE_NOT_EXTINCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CARTAZ_DE_EPOCAS",
+      "explanation": "Um registro antigo não prova que uma prática deixou de existir.",
+      "hint": "Não conclua além das datas mostradas.",
+      "errorFocus": "TIME_CHANGE_NOT_EXTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Um registro antigo não prova que uma prática deixou de existir.",
+        "incorrect": "Um registro antigo não prova que uma prática deixou de existir.",
+        "hint": "Não conclua além das datas mostradas.",
+        "errorFocus": "TIME_CHANGE_NOT_EXTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-21",
+      "statement": "Uma turma muda a regra de um jogo descrito em uma ficha e cria outra versão. Como registrar a mudança?",
+      "prompt": "Uma turma muda a regra de um jogo descrito em uma ficha e cria outra versão. Como registrar a mudança?",
+      "options": [
+        "Indicar a regra original da ficha e a alteração feita pelo grupo.",
+        "Dizer que a nova regra sempre existiu",
+        "Atribuir a versão inventada a um lugar real",
+        "Apagar a descrição original"
+      ],
+      "correctAnswer": "Indicar a regra original da ficha e a alteração feita pelo grupo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dizer que a nova regra sempre existiu": [
+          "DOCUMENTING_VARIATION"
+        ],
+        "Atribuir a versão inventada a um lugar real": [
+          "DOCUMENTING_VARIATION"
+        ],
+        "Apagar a descrição original": [
+          "DOCUMENTING_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "BRINCADEIRA_REINVENTADA",
+      "explanation": "Separar fonte e adaptação mantém a comparação clara.",
+      "hint": "Diferencie o que veio da ficha e o que o grupo inventou.",
+      "errorFocus": "DOCUMENTING_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Separar fonte e adaptação mantém a comparação clara.",
+        "incorrect": "Separar fonte e adaptação mantém a comparação clara.",
+        "hint": "Diferencie o que veio da ficha e o que o grupo inventou.",
+        "errorFocus": "DOCUMENTING_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-22",
+      "statement": "Uma legenda diz “as pessoas deste lugar só brincam desse jeito”. Qual revisão é melhor?",
+      "prompt": "Uma legenda diz “as pessoas deste lugar só brincam desse jeito”. Qual revisão é melhor?",
+      "options": [
+        "“Todas as pessoas preferem esta brincadeira.”",
+        "“Esta fonte apresenta uma brincadeira registrada neste lugar.”",
+        "“Esse lugar não tem outras atividades.”",
+        "“Essa brincadeira é a melhor de todas.”"
+      ],
+      "correctAnswer": "“Esta fonte apresenta uma brincadeira registrada neste lugar.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Todas as pessoas preferem esta brincadeira.”": [
+          "REMOVE_UNSUPPORTED_GENERALIZATION"
+        ],
+        "“Esse lugar não tem outras atividades.”": [
+          "REMOVE_UNSUPPORTED_GENERALIZATION"
+        ],
+        "“Essa brincadeira é a melhor de todas.”": [
+          "REMOVE_UNSUPPORTED_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEGENDA_COM_ESTEREOTIPO",
+      "explanation": "A revisão delimita a afirmação à fonte em vez de generalizar para todos.",
+      "hint": "Troque uma afirmação universal por uma descrição da fonte.",
+      "errorFocus": "REMOVE_UNSUPPORTED_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A revisão delimita a afirmação à fonte em vez de generalizar para todos.",
+        "incorrect": "A revisão delimita a afirmação à fonte em vez de generalizar para todos.",
+        "hint": "Troque uma afirmação universal por uma descrição da fonte.",
+        "errorFocus": "REMOVE_UNSUPPORTED_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-23",
+      "statement": "Uma fonte organiza participantes em duplas; outra propõe que cada pessoa jogue individualmente. O que muda?",
+      "prompt": "Uma fonte organiza participantes em duplas; outra propõe que cada pessoa jogue individualmente. O que muda?",
+      "options": [
+        "A dignidade de quem joga",
+        "A possibilidade de aprender",
+        "A forma de organização dos participantes.",
+        "A necessidade de respeitar regras"
+      ],
+      "correctAnswer": "A forma de organização dos participantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A dignidade de quem joga": [
+          "GROUPING_COMPARISON"
+        ],
+        "A possibilidade de aprender": [
+          "GROUPING_COMPARISON"
+        ],
+        "A necessidade de respeitar regras": [
+          "GROUPING_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REGRAS_DE_EQUIPE",
+      "explanation": "A organização é diferente, mas nenhuma forma vale mais por isso.",
+      "hint": "Compare como as pessoas são organizadas.",
+      "errorFocus": "GROUPING_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A organização é diferente, mas nenhuma forma vale mais por isso.",
+        "incorrect": "A organização é diferente, mas nenhuma forma vale mais por isso.",
+        "hint": "Compare como as pessoas são organizadas.",
+        "errorFocus": "GROUPING_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-24",
+      "statement": "Por que anotar data e lugar ao comparar dois registros?",
+      "prompt": "Por que anotar data e lugar ao comparar dois registros?",
+      "options": [
+        "Para provar que só aquele lugar tem o jogo",
+        "Para decidir qual população é melhor",
+        "Para concluir que as regras nunca mudam",
+        "Para entender a que contexto cada descrição se refere."
+      ],
+      "correctAnswer": "Para entender a que contexto cada descrição se refere.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para provar que só aquele lugar tem o jogo": [
+          "CONTEXTUALIZE_SOURCES"
+        ],
+        "Para decidir qual população é melhor": [
+          "CONTEXTUALIZE_SOURCES"
+        ],
+        "Para concluir que as regras nunca mudam": [
+          "CONTEXTUALIZE_SOURCES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "FONTE_COM_DATA_E_LUGAR",
+      "explanation": "Data e lugar situam a fonte, sem transformá-la em regra universal.",
+      "hint": "Pense no contexto que acompanha cada descrição.",
+      "errorFocus": "CONTEXTUALIZE_SOURCES",
+      "feedback": {
+        "correct": "Boa observação: Data e lugar situam a fonte, sem transformá-la em regra universal.",
+        "incorrect": "Data e lugar situam a fonte, sem transformá-la em regra universal.",
+        "hint": "Pense no contexto que acompanha cada descrição.",
+        "errorFocus": "CONTEXTUALIZE_SOURCES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-25",
+      "statement": "Um cartão usa argolas e outro usa saquinhos; ambos têm alvo. Qual registro é adequado?",
+      "prompt": "Um cartão usa argolas e outro usa saquinhos; ambos têm alvo. Qual registro é adequado?",
+      "options": [
+        "Materiais diferentes e objetivo de acertar um alvo em comum.",
+        "Materiais e regras totalmente iguais",
+        "Um jogo correto e outro errado",
+        "Origem comprovada para os dois"
+      ],
+      "correctAnswer": "Materiais diferentes e objetivo de acertar um alvo em comum.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Materiais e regras totalmente iguais": [
+          "TWO_DIMENSIONAL_COMPARISON"
+        ],
+        "Um jogo correto e outro errado": [
+          "TWO_DIMENSIONAL_COMPARISON"
+        ],
+        "Origem comprovada para os dois": [
+          "TWO_DIMENSIONAL_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TABELA_DE_MATERIAIS_E_ACOES",
+      "explanation": "A tabela preserva tanto a diferença de material quanto a semelhança de objetivo.",
+      "hint": "Registre uma diferença e um ponto em comum.",
+      "errorFocus": "TWO_DIMENSIONAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A tabela preserva tanto a diferença de material quanto a semelhança de objetivo.",
+        "incorrect": "A tabela preserva tanto a diferença de material quanto a semelhança de objetivo.",
+        "hint": "Registre uma diferença e um ponto em comum.",
+        "errorFocus": "TWO_DIMENSIONAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-26",
+      "statement": "Uma nova ficha descreve regras, mas não traz data. Como comparar a época?",
+      "prompt": "Uma nova ficha descreve regras, mas não traz data. Como comparar a época?",
+      "options": [
+        "Adivinhar que é antiga",
+        "Dizer que a ficha não informa quando foi registrada.",
+        "Usar o material para inventar uma data",
+        "Afirmar que é de hoje"
+      ],
+      "correctAnswer": "Dizer que a ficha não informa quando foi registrada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Adivinhar que é antiga": [
+          "DO_NOT_INVENT_TIME"
+        ],
+        "Usar o material para inventar uma data": [
+          "DO_NOT_INVENT_TIME"
+        ],
+        "Afirmar que é de hoje": [
+          "DO_NOT_INVENT_TIME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOVA_FICHA_SEM_DATA",
+      "explanation": "A data ausente deve permanecer como informação não disponível.",
+      "hint": "Observe se há uma pista temporal escrita.",
+      "errorFocus": "DO_NOT_INVENT_TIME",
+      "feedback": {
+        "correct": "Boa observação: A data ausente deve permanecer como informação não disponível.",
+        "incorrect": "A data ausente deve permanecer como informação não disponível.",
+        "hint": "Observe se há uma pista temporal escrita.",
+        "errorFocus": "DO_NOT_INVENT_TIME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-27",
+      "statement": "Dois relatos do mesmo lugar descrevem materiais distintos para uma brincadeira. O que isso pode mostrar?",
+      "prompt": "Dois relatos do mesmo lugar descrevem materiais distintos para uma brincadeira. O que isso pode mostrar?",
+      "options": [
+        "Um dos relatos deve ser falso",
+        "Todas as pessoas daquele lugar usam os dois materiais",
+        "Pode haver variações entre relatos; é preciso comparar cada fonte.",
+        "A brincadeira tem uma única versão"
+      ],
+      "correctAnswer": "Pode haver variações entre relatos; é preciso comparar cada fonte.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um dos relatos deve ser falso": [
+          "VARIATION_WITHIN_PLACE"
+        ],
+        "Todas as pessoas daquele lugar usam os dois materiais": [
+          "VARIATION_WITHIN_PLACE"
+        ],
+        "A brincadeira tem uma única versão": [
+          "VARIATION_WITHIN_PLACE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DOIS_RELATOS_DIFERENTES",
+      "explanation": "Relatos distintos podem registrar variações sem representar a totalidade de um lugar.",
+      "hint": "Considere mais de uma versão possível.",
+      "errorFocus": "VARIATION_WITHIN_PLACE",
+      "feedback": {
+        "correct": "Boa observação: Relatos distintos podem registrar variações sem representar a totalidade de um lugar.",
+        "incorrect": "Relatos distintos podem registrar variações sem representar a totalidade de um lugar.",
+        "hint": "Considere mais de uma versão possível.",
+        "errorFocus": "VARIATION_WITHIN_PLACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-28",
+      "statement": "Uma fonte permite jogar em equipe e outra descreve turnos individuais. Qual conclusão é sustentada?",
+      "prompt": "Uma fonte permite jogar em equipe e outra descreve turnos individuais. Qual conclusão é sustentada?",
+      "options": [
+        "Uma forma não é brincadeira",
+        "Uma regra é universal",
+        "Os jogadores têm capacidades diferentes",
+        "A organização das regras é diferente nas fontes."
+      ],
+      "correctAnswer": "A organização das regras é diferente nas fontes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma forma não é brincadeira": [
+          "RULES_NOT_ABILITY"
+        ],
+        "Uma regra é universal": [
+          "RULES_NOT_ABILITY"
+        ],
+        "Os jogadores têm capacidades diferentes": [
+          "RULES_NOT_ABILITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARACAO_DE_REGRAS",
+      "explanation": "As fontes comparam organização, não capacidade das pessoas.",
+      "hint": "Fique na regra descrita.",
+      "errorFocus": "RULES_NOT_ABILITY",
+      "feedback": {
+        "correct": "Boa observação: As fontes comparam organização, não capacidade das pessoas.",
+        "incorrect": "As fontes comparam organização, não capacidade das pessoas.",
+        "hint": "Fique na regra descrita.",
+        "errorFocus": "RULES_NOT_ABILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-29",
+      "statement": "Um cartão inventado situa um jogo em um parque, mas não nomeia uma cidade. O que sabemos?",
+      "prompt": "Um cartão inventado situa um jogo em um parque, mas não nomeia uma cidade. O que sabemos?",
+      "options": [
+        "A ficha menciona um parque, sem especificar a cidade.",
+        "O parque é o único lugar do jogo",
+        "O jogo surgiu ali",
+        "Todas as pessoas do parque participam"
+      ],
+      "correctAnswer": "A ficha menciona um parque, sem especificar a cidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O parque é o único lugar do jogo": [
+          "PLACE_DETAIL_LIMIT"
+        ],
+        "O jogo surgiu ali": [
+          "PLACE_DETAIL_LIMIT"
+        ],
+        "Todas as pessoas do parque participam": [
+          "PLACE_DETAIL_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_DE_LUGAR_FICTICIO",
+      "explanation": "O lugar registrado é genérico e não informa origem ou abrangência.",
+      "hint": "Diga o nível de detalhe que a fonte oferece.",
+      "errorFocus": "PLACE_DETAIL_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O lugar registrado é genérico e não informa origem ou abrangência.",
+        "incorrect": "O lugar registrado é genérico e não informa origem ou abrangência.",
+        "hint": "Diga o nível de detalhe que a fonte oferece.",
+        "errorFocus": "PLACE_DETAIL_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-30",
+      "statement": "Qual legenda compara com cuidado dois registros de épocas diferentes?",
+      "prompt": "Qual legenda compara com cuidado dois registros de épocas diferentes?",
+      "options": [
+        "“Antigamente todos brincavam assim.”",
+        "“Os registros têm regras descritas de modo diferente; cada fonte mostra seu próprio contexto.”",
+        "“A versão atual é sempre melhor.”",
+        "“A regra antiga nunca mudou.”"
+      ],
+      "correctAnswer": "“Os registros têm regras descritas de modo diferente; cada fonte mostra seu próprio contexto.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Antigamente todos brincavam assim.”": [
+          "EVIDENCE_BASED_CAPTION"
+        ],
+        "“A versão atual é sempre melhor.”": [
+          "EVIDENCE_BASED_CAPTION"
+        ],
+        "“A regra antiga nunca mudou.”": [
+          "EVIDENCE_BASED_CAPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHA_DE_LEGENDA",
+      "explanation": "A legenda respeita as fontes e evita generalizações temporais.",
+      "hint": "Escolha a frase limitada ao que foi registrado.",
+      "errorFocus": "EVIDENCE_BASED_CAPTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda respeita as fontes e evita generalizações temporais.",
+        "incorrect": "A legenda respeita as fontes e evita generalizações temporais.",
+        "hint": "Escolha a frase limitada ao que foi registrado.",
+        "errorFocus": "EVIDENCE_BASED_CAPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-31",
+      "statement": "Um desenho mostra uma brincadeira em espaço aberto; outro, em espaço coberto. O que pode mudar?",
+      "prompt": "Um desenho mostra uma brincadeira em espaço aberto; outro, em espaço coberto. O que pode mudar?",
+      "options": [
+        "O valor das pessoas que brincam",
+        "A origem de toda brincadeira",
+        "O espaço indicado para cada situação.",
+        "O direito de participar"
+      ],
+      "correctAnswer": "O espaço indicado para cada situação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O valor das pessoas que brincam": [
+          "SPACE_AS_FEATURE"
+        ],
+        "A origem de toda brincadeira": [
+          "SPACE_AS_FEATURE"
+        ],
+        "O direito de participar": [
+          "SPACE_AS_FEATURE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DESENHO_DE_ESPACO_DE_JOGO",
+      "explanation": "O espaço é uma característica comparável, não uma medida de valor.",
+      "hint": "Compare o ambiente representado.",
+      "errorFocus": "SPACE_AS_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: O espaço é uma característica comparável, não uma medida de valor.",
+        "incorrect": "O espaço é uma característica comparável, não uma medida de valor.",
+        "hint": "Compare o ambiente representado.",
+        "errorFocus": "SPACE_AS_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-32",
+      "statement": "Ao receber duas novas descrições, qual procedimento ajuda a comparar?",
+      "prompt": "Ao receber duas novas descrições, qual procedimento ajuda a comparar?",
+      "options": [
+        "Escolher primeiro a que parece melhor",
+        "Supor que uma fonte representa todos",
+        "Comparar apenas o nome",
+        "Ler as pistas de época, lugar, regras e materiais e anotar semelhanças e diferenças."
+      ],
+      "correctAnswer": "Ler as pistas de época, lugar, regras e materiais e anotar semelhanças e diferenças.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher primeiro a que parece melhor": [
+          "COMPARISON_METHOD"
+        ],
+        "Supor que uma fonte representa todos": [
+          "COMPARISON_METHOD"
+        ],
+        "Comparar apenas o nome": [
+          "COMPARISON_METHOD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "GUIA_DE_COMPARACAO",
+      "explanation": "Uma comparação equilibrada usa várias pistas e mantém as conclusões apoiadas.",
+      "hint": "Pense em quais aspectos podem ser observados.",
+      "errorFocus": "COMPARISON_METHOD",
+      "feedback": {
+        "correct": "Boa observação: Uma comparação equilibrada usa várias pistas e mantém as conclusões apoiadas.",
+        "incorrect": "Uma comparação equilibrada usa várias pistas e mantém as conclusões apoiadas.",
+        "hint": "Pense em quais aspectos podem ser observados.",
+        "errorFocus": "COMPARISON_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-33",
+      "statement": "Uma fonte tem uma data e outra não. O que fazemos com a época da segunda?",
+      "prompt": "Uma fonte tem uma data e outra não. O que fazemos com a época da segunda?",
+      "options": [
+        "Registramos que a fonte não informa a data.",
+        "Inventamos uma data provável",
+        "Usamos o nome do jogo para datá-la",
+        "Dizemos que é de agora"
+      ],
+      "correctAnswer": "Registramos que a fonte não informa a data.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Inventamos uma data provável": [
+          "SOURCE_DATE_LIMIT"
+        ],
+        "Usamos o nome do jogo para datá-la": [
+          "SOURCE_DATE_LIMIT"
+        ],
+        "Dizemos que é de agora": [
+          "SOURCE_DATE_LIMIT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_REVISAO_DE_EPOCA",
+      "explanation": "A informação ausente deve ser explicitada, não inventada.",
+      "hint": "Volte ao que está escrito.",
+      "errorFocus": "SOURCE_DATE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A informação ausente deve ser explicitada, não inventada.",
+        "incorrect": "A informação ausente deve ser explicitada, não inventada.",
+        "hint": "Volte ao que está escrito.",
+        "errorFocus": "SOURCE_DATE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-34",
+      "statement": "Dois jogos usam materiais diferentes para lançar em alvos. Qual frase combina?",
+      "prompt": "Dois jogos usam materiais diferentes para lançar em alvos. Qual frase combina?",
+      "options": [
+        "Os jogos são idênticos em tudo",
+        "A ação de lançar é semelhante, e os materiais descritos diferem.",
+        "Um material prova a origem",
+        "Uma brincadeira vale mais"
+      ],
+      "correctAnswer": "A ação de lançar é semelhante, e os materiais descritos diferem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os jogos são idênticos em tudo": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ],
+        "Um material prova a origem": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ],
+        "Uma brincadeira vale mais": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_LANCAMENTOS",
+      "explanation": "A frase registra os dois aspectos sustentados pelas descrições.",
+      "hint": "Use um “em comum” e um “diferente”.",
+      "errorFocus": "SIMILARITY_AND_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase registra os dois aspectos sustentados pelas descrições.",
+        "incorrect": "A frase registra os dois aspectos sustentados pelas descrições.",
+        "hint": "Use um “em comum” e um “diferente”.",
+        "errorFocus": "SIMILARITY_AND_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-35",
+      "statement": "Um registro fala de uma praça específica. O que não se pode concluir?",
+      "prompt": "Um registro fala de uma praça específica. O que não se pode concluir?",
+      "options": [
+        "Que o registro menciona uma praça",
+        "Que existe uma descrição de jogo",
+        "Que todas as pessoas daquele lugar praticam a brincadeira.",
+        "Que o lugar é parte da fonte"
+      ],
+      "correctAnswer": "Que todas as pessoas daquele lugar praticam a brincadeira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que o registro menciona uma praça": [
+          "NO_UNIVERSAL_CLAIM"
+        ],
+        "Que existe uma descrição de jogo": [
+          "NO_UNIVERSAL_CLAIM"
+        ],
+        "Que o lugar é parte da fonte": [
+          "NO_UNIVERSAL_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_LUGAR",
+      "explanation": "Um registro localizado não representa cada pessoa do lugar.",
+      "hint": "Cuidado com palavras como todos e sempre.",
+      "errorFocus": "NO_UNIVERSAL_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: Um registro localizado não representa cada pessoa do lugar.",
+        "incorrect": "Um registro localizado não representa cada pessoa do lugar.",
+        "hint": "Cuidado com palavras como todos e sempre.",
+        "errorFocus": "NO_UNIVERSAL_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-36",
+      "statement": "Uma fonte não informa origem. Qual anotação é responsável?",
+      "prompt": "Uma fonte não informa origem. Qual anotação é responsável?",
+      "options": [
+        "“Origem comprovada neste bairro.”",
+        "“Pertence exclusivamente a um povo.”",
+        "“Foi inventada por quem aparece na imagem.”",
+        "“Origem não indicada nesta fonte.”"
+      ],
+      "correctAnswer": "“Origem não indicada nesta fonte.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Origem comprovada neste bairro.”": [
+          "ORIGIN_REQUIRES_SOURCE"
+        ],
+        "“Pertence exclusivamente a um povo.”": [
+          "ORIGIN_REQUIRES_SOURCE"
+        ],
+        "“Foi inventada por quem aparece na imagem.”": [
+          "ORIGIN_REQUIRES_SOURCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ORIGEM",
+      "explanation": "A anotação registra o limite documental sem criar uma origem.",
+      "hint": "Não complete a lacuna com um palpite.",
+      "errorFocus": "ORIGIN_REQUIRES_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A anotação registra o limite documental sem criar uma origem.",
+        "incorrect": "A anotação registra o limite documental sem criar uma origem.",
+        "hint": "Não complete a lacuna com um palpite.",
+        "errorFocus": "ORIGIN_REQUIRES_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-37",
+      "statement": "Uma ficha descreve uma regra e a turma cria outra para sua própria versão. Como manter as duas claras?",
+      "prompt": "Uma ficha descreve uma regra e a turma cria outra para sua própria versão. Como manter as duas claras?",
+      "options": [
+        "Separar a regra da fonte da regra inventada pela turma.",
+        "Dizer que a regra inventada veio da fonte",
+        "Apagar uma das regras",
+        "Afirmar que ambas valem para todos os lugares"
+      ],
+      "correctAnswer": "Separar a regra da fonte da regra inventada pela turma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dizer que a regra inventada veio da fonte": [
+          "SOURCE_VS_ADAPTATION"
+        ],
+        "Apagar uma das regras": [
+          "SOURCE_VS_ADAPTATION"
+        ],
+        "Afirmar que ambas valem para todos os lugares": [
+          "SOURCE_VS_ADAPTATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_REGRA",
+      "explanation": "Distinguir a descrição original de uma adaptação evita atribuições falsas.",
+      "hint": "Identifique quem descreveu cada regra.",
+      "errorFocus": "SOURCE_VS_ADAPTATION",
+      "feedback": {
+        "correct": "Boa observação: Distinguir a descrição original de uma adaptação evita atribuições falsas.",
+        "incorrect": "Distinguir a descrição original de uma adaptação evita atribuições falsas.",
+        "hint": "Identifique quem descreveu cada regra.",
+        "errorFocus": "SOURCE_VS_ADAPTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-38",
+      "statement": "Por que não devemos chamar uma brincadeira de “atrasada” por usar outro material?",
+      "prompt": "Por que não devemos chamar uma brincadeira de “atrasada” por usar outro material?",
+      "options": [
+        "Só materiais novos permitem brincar",
+        "Materiais diferentes não tornam uma prática inferior.",
+        "Toda diferença indica erro",
+        "Uma brincadeira precisa de tecnologia"
+      ],
+      "correctAnswer": "Materiais diferentes não tornam uma prática inferior.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Só materiais novos permitem brincar": [
+          "NO_CULTURAL_HIERARCHY"
+        ],
+        "Toda diferença indica erro": [
+          "NO_CULTURAL_HIERARCHY"
+        ],
+        "Uma brincadeira precisa de tecnologia": [
+          "NO_CULTURAL_HIERARCHY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_RESPEITO",
+      "explanation": "A diferença de material é descritiva e não estabelece superioridade.",
+      "hint": "Compare a característica sem julgá-la.",
+      "errorFocus": "NO_CULTURAL_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A diferença de material é descritiva e não estabelece superioridade.",
+        "incorrect": "A diferença de material é descritiva e não estabelece superioridade.",
+        "hint": "Compare a característica sem julgá-la.",
+        "errorFocus": "NO_CULTURAL_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-39",
+      "statement": "Em uma atividade nova, dois cartões usam nomes diferentes para jogos com uma ação comum. O que registrar primeiro?",
+      "prompt": "Em uma atividade nova, dois cartões usam nomes diferentes para jogos com uma ação comum. O que registrar primeiro?",
+      "options": [
+        "Que os nomes são intercambiáveis em todos os casos",
+        "Que os jogos têm a mesma origem",
+        "A ação que ambos descrevem, mantendo abertas outras diferenças.",
+        "Que uma fonte está errada"
+      ],
+      "correctAnswer": "A ação que ambos descrevem, mantendo abertas outras diferenças.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que os nomes são intercambiáveis em todos os casos": [
+          "CAREFUL_TRANSFER"
+        ],
+        "Que os jogos têm a mesma origem": [
+          "CAREFUL_TRANSFER"
+        ],
+        "Que uma fonte está errada": [
+          "CAREFUL_TRANSFER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "NOVA_COMPARACAO",
+      "explanation": "A ação comum é uma evidência, enquanto outras relações precisam de mais informação.",
+      "hint": "Comece pela pista compartilhada.",
+      "errorFocus": "CAREFUL_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: A ação comum é uma evidência, enquanto outras relações precisam de mais informação.",
+        "incorrect": "A ação comum é uma evidência, enquanto outras relações precisam de mais informação.",
+        "hint": "Comece pela pista compartilhada.",
+        "errorFocus": "CAREFUL_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge02-games-across-places-and-times-40",
+      "statement": "O que uma boa comparação de brincadeiras identifica?",
+      "prompt": "O que uma boa comparação de brincadeiras identifica?",
+      "options": [
+        "Qual lugar tem a melhor brincadeira",
+        "O que todas as pessoas fazem",
+        "Uma origem mesmo sem registro",
+        "Semelhanças e diferenças sustentadas por fontes de tempo e lugar."
+      ],
+      "correctAnswer": "Semelhanças e diferenças sustentadas por fontes de tempo e lugar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual lugar tem a melhor brincadeira": [
+          "LEARNING_GOAL_RECALL"
+        ],
+        "O que todas as pessoas fazem": [
+          "LEARNING_GOAL_RECALL"
+        ],
+        "Uma origem mesmo sem registro": [
+          "LEARNING_GOAL_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "IDEIA_CENTRAL_GE02",
+      "explanation": "Comparar significa usar evidências sem generalizar nem hierarquizar.",
+      "hint": "Lembre dos aspectos observáveis e do contexto.",
+      "errorFocus": "LEARNING_GOAL_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Comparar significa usar evidências sem generalizar nem hierarquizar.",
+        "incorrect": "Comparar significa usar evidências sem generalizar nem hierarquizar.",
+        "hint": "Lembre dos aspectos observáveis e do contexto.",
+        "errorFocus": "LEARNING_GOAL_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer descrições em texto simples, áudio, objetos seguros de demonstração e imagens com descrição verbal.",
+          "Permitir comparar apontando, organizando cartões, desenhando ou respondendo oralmente; ensinar termos de tempo e lugar antes da tarefa.",
+          "Usar exemplos fictícios ou fontes contextualizadas e não pedir que estudantes representem ou expliquem uma cultura à qual supostamente pertencem."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -146,6 +146,11 @@ export function evaluateCurriculumPackageRubric(pack, { requirements = {}, offic
   const normalizedStatements = questions.map((question) => normalizeText(question?.statement)).filter(Boolean);
   const statementDiversityComplete = !hasObjectiveQuestionContract
     || (normalizedStatements.length === questions.length && new Set(normalizedStatements).size === normalizedStatements.length);
+  const normalizedContexts = questions.map((question) => normalizeText(question?.contextFamily)).filter(Boolean);
+  const minimumContextFamilies = requirements.contextFamilies ?? Math.ceil(questionCount * 0.9);
+  const contextDiversityComplete = !hasObjectiveQuestionContract
+    || (normalizedContexts.length === questions.length
+      && new Set(normalizedContexts).size >= minimumContextFamilies);
   const purposesComplete = !hasObjectiveQuestionContract || requiredPhases.every((phase) => purposes.has(phase));
   const answerPositions = questions.map((question) => question.options?.indexOf(question.correctAnswer)).filter((position) => position >= 0);
   const positionCounts = [0, 0, 0, 0].map((position) => answerPositions.filter((item) => item === position).length);
@@ -195,6 +200,10 @@ export function evaluateCurriculumPackageRubric(pack, { requirements = {}, offic
     {
       id: 'question-statement-diversity',
       pass: statementDiversityComplete,
+    },
+    {
+      id: 'question-context-diversity',
+      pass: contextDiversityComplete,
     },
     {
       id: 'answer-position-diversity',

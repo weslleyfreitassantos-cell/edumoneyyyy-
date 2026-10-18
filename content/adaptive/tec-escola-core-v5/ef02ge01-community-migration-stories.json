@@ -1,0 +1,2120 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ge01-community-migration-stories",
+  "canonicalSkillCode": "AUTHORING_EF02GE01_COMMUNITY_MIGRATION_HISTORY",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "histórias de migrações em bairros e comunidades",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02GE01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever a história das migrações no bairro ou comunidade em que vive.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 375
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Histórias de chegada e mudança",
+    "objective": "Descrever mudanças de pessoas entre lugares ao longo do tempo usando fontes públicas, mapas simples e narrativas fictícias, sem exigir relatos sobre a vida familiar dos estudantes.",
+    "summary": "Migração acontece quando pessoas mudam de lugar para viver por um período ou por mais tempo. As histórias de um bairro podem incluir chegadas, partidas e deslocamentos dentro da mesma cidade ou entre regiões. Uma fotografia, um mapa, uma notícia local ou uma entrevista autorizada mostra apenas parte da história; é importante dizer de onde veio a informação e não supor por que alguém se mudou. As atividades usam exemplos públicos ou inventados. Ninguém precisa contar de onde veio sua família.",
+    "explanation": "Para descrever uma migração, primeiro identifique quem ou qual grupo a fonte apresenta, de que lugar saiu, para qual lugar foi e quando isso ocorreu, se a informação estiver disponível. Depois compare o que mudou no bairro e o que permaneceu. Uma linha do tempo organiza antes e depois; um mapa ajuda a localizar, mas não explica sozinho as razões da mudança. As causas podem ser diferentes e combinadas. Não se deve atribuir uma razão a todas as pessoas de um grupo, nem tratar uma origem como melhor que outra. Quando a fonte não informa um detalhe, a resposta correta é reconhecer que não sabemos.",
+    "workedExample": "Uma história fictícia conta que, em 2018, uma família saiu de uma cidade do interior e passou a morar em outro bairro da mesma capital. Um mapa mostra os dois pontos e uma entrevista pública diz que a família procurava ficar mais perto do trabalho. Podemos descrever a mudança de lugar e a razão atribuída a essa família pela entrevista; não podemos afirmar que todas as famílias migram pelo mesmo motivo.",
+    "commonMistake": "Supor que todas as pessoas que chegam a um bairro vieram do mesmo lugar ou se mudaram pelo mesmo motivo; ou pedir que colegas revelem histórias familiares para provar a aprendizagem.",
+    "priorKnowledge": [
+      "Ler uma sequência simples de antes e depois.",
+      "Localizar lugares conhecidos em um mapa ou desenho com legenda.",
+      "Distinguir uma informação contada pela fonte de uma suposição pessoal."
+    ],
+    "keyConcepts": [
+      "migração",
+      "lugar de origem",
+      "lugar de chegada",
+      "comunidade",
+      "linha do tempo",
+      "fonte de informação",
+      "mudança e permanência",
+      "respeito à diversidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ORIGIN_DESTINATION_CONFUSION",
+        "action": "Volte ao mapa e marque separadamente o lugar de saída e o lugar de chegada; conte o percurso na ordem indicada pela fonte."
+      },
+      {
+        "errorFocus": "UNSUPPORTED_MIGRATION_REASON",
+        "action": "Sublinhe somente a frase que informa a razão. Se a fonte não apresentar uma razão, registre que ela não foi informada."
+      },
+      {
+        "errorFocus": "GROUP_GENERALIZATION",
+        "action": "Troque uma afirmação sobre um grupo inteiro por uma descrição limitada à pessoa, período ou fonte apresentada."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+      "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+      "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+      "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge01-public-neighborhood-timeline",
+        "title": "Linha do tempo de uma comunidade fictícia",
+        "instructions": "Um conjunto de cartões inventados descreve três mudanças de moradores em uma comunidade, com datas e locais indicados; nenhum cartão representa a família de um estudante.\n1. Separe os cartões pelo ano indicado e organize-os do mais antigo ao mais recente.\n2. Marque no mapa ilustrado o lugar de saída e o de chegada quando a história informar esses locais.\n3. Escreva ou dite uma frase que descreva uma mudança e outra informação que a fonte não permite concluir.",
+        "steps": [
+          "Separe os cartões pelo ano indicado e organize-os do mais antigo ao mais recente.",
+          "Marque no mapa ilustrado o lugar de saída e o de chegada quando a história informar esses locais.",
+          "Escreva ou dite uma frase que descreva uma mudança e outra informação que a fonte não permite concluir."
+        ],
+        "evidence": "Linha do tempo e descrição curta que preservam a ordem, distinguem origem de chegada e identificam limites da fonte.",
+        "privacyGuard": "Não solicitar relatos familiares, locais de moradia reais ou motivos pessoais de mudança.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "ordena um evento com apoio, mas ainda mistura os locais.",
+            "developing": "organiza a sequência e identifica origem ou chegada com lembrete.",
+            "proficient": "descreve a mudança na ordem correta e separa fato da fonte de informação ausente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge01-source-comparison-gallery",
+        "title": "Galeria de fontes e perguntas",
+        "instructions": "A turma observa imagens públicas previamente autorizadas, pequenos mapas e relatos fictícios sobre mudanças em diferentes bairros.\n1. Escolha uma fonte e identifique se é mapa, imagem, notícia ou narrativa.\n2. Registre uma informação que ela mostra sobre chegada, partida ou transformação do lugar.\n3. Crie uma pergunta respeitosa para investigar o que a fonte ainda não explica, sem perguntar a colegas sobre sua origem familiar.",
+        "steps": [
+          "Escolha uma fonte e identifique se é mapa, imagem, notícia ou narrativa.",
+          "Registre uma informação que ela mostra sobre chegada, partida ou transformação do lugar.",
+          "Crie uma pergunta respeitosa para investigar o que a fonte ainda não explica, sem perguntar a colegas sobre sua origem familiar."
+        ],
+        "evidence": "Legenda que descreve uma informação sustentada pela fonte e uma pergunta de investigação não invasiva.",
+        "privacyGuard": "Utilizar apenas fontes públicas ou fictícias; não fotografar moradores nem coletar histórias sem consentimento institucional.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece a fonte com apoio, mas faz uma afirmação não sustentada.",
+            "developing": "relata um dado apresentado e formula pergunta com orientação.",
+            "proficient": "explica o que a fonte permite descrever e o que precisa de outra evidência."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 35,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ge01-community-migration-stories-01",
+          "v1-ef02ge01-community-migration-stories-02",
+          "v1-ef02ge01-community-migration-stories-03",
+          "v1-ef02ge01-community-migration-stories-04",
+          "v1-ef02ge01-community-migration-stories-05",
+          "v1-ef02ge01-community-migration-stories-06",
+          "v1-ef02ge01-community-migration-stories-07",
+          "v1-ef02ge01-community-migration-stories-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ge01-community-migration-stories-09",
+          "v1-ef02ge01-community-migration-stories-10",
+          "v1-ef02ge01-community-migration-stories-11",
+          "v1-ef02ge01-community-migration-stories-12",
+          "v1-ef02ge01-community-migration-stories-13",
+          "v1-ef02ge01-community-migration-stories-14",
+          "v1-ef02ge01-community-migration-stories-15",
+          "v1-ef02ge01-community-migration-stories-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ge01-community-migration-stories-17",
+          "v1-ef02ge01-community-migration-stories-18",
+          "v1-ef02ge01-community-migration-stories-19",
+          "v1-ef02ge01-community-migration-stories-20",
+          "v1-ef02ge01-community-migration-stories-21",
+          "v1-ef02ge01-community-migration-stories-22",
+          "v1-ef02ge01-community-migration-stories-23",
+          "v1-ef02ge01-community-migration-stories-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ge01-community-migration-stories-25",
+          "v1-ef02ge01-community-migration-stories-26",
+          "v1-ef02ge01-community-migration-stories-27",
+          "v1-ef02ge01-community-migration-stories-28",
+          "v1-ef02ge01-community-migration-stories-29",
+          "v1-ef02ge01-community-migration-stories-30",
+          "v1-ef02ge01-community-migration-stories-31",
+          "v1-ef02ge01-community-migration-stories-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ge01-community-migration-stories-33",
+          "v1-ef02ge01-community-migration-stories-34",
+          "v1-ef02ge01-community-migration-stories-35",
+          "v1-ef02ge01-community-migration-stories-36",
+          "v1-ef02ge01-community-migration-stories-37",
+          "v1-ef02ge01-community-migration-stories-38",
+          "v1-ef02ge01-community-migration-stories-39",
+          "v1-ef02ge01-community-migration-stories-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02GE01",
+        "descriptor": "Descrever a história das migrações no bairro ou comunidade em que vive.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 375
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ge01-community-migration-stories-01",
+      "statement": "Um mapa fictício mostra uma pessoa mudando do Bairro Azul para o Bairro Novo. Qual é o lugar de chegada?",
+      "prompt": "Um mapa fictício mostra uma pessoa mudando do Bairro Azul para o Bairro Novo. Qual é o lugar de chegada?",
+      "options": [
+        "Bairro Novo",
+        "Bairro Azul",
+        "A escola do mapa",
+        "O lugar não indicado"
+      ],
+      "correctAnswer": "Bairro Novo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Bairro Azul": [
+          "ORIGIN_DESTINATION_CONFUSION"
+        ],
+        "A escola do mapa": [
+          "ORIGIN_DESTINATION_CONFUSION"
+        ],
+        "O lugar não indicado": [
+          "ORIGIN_DESTINATION_CONFUSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAPA_DE_DOIS_BAIRROS",
+      "explanation": "O trajeto começa no Bairro Azul e termina no Bairro Novo.",
+      "hint": "Siga a seta até o ponto final.",
+      "errorFocus": "ORIGIN_DESTINATION_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: O trajeto começa no Bairro Azul e termina no Bairro Novo.",
+        "incorrect": "O trajeto começa no Bairro Azul e termina no Bairro Novo.",
+        "hint": "Siga a seta até o ponto final.",
+        "errorFocus": "ORIGIN_DESTINATION_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-02",
+      "statement": "Qual situação descreve uma migração?",
+      "prompt": "Qual situação descreve uma migração?",
+      "options": [
+        "Uma pessoa visita a praça por uma tarde",
+        "Uma pessoa muda de lugar para morar por um período ou mais tempo",
+        "Uma pessoa troca de sala na escola",
+        "Uma pessoa caminha até a padaria e volta"
+      ],
+      "correctAnswer": "Uma pessoa muda de lugar para morar por um período ou mais tempo",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma pessoa visita a praça por uma tarde": [
+          "VISIT_AS_MIGRATION"
+        ],
+        "Uma pessoa troca de sala na escola": [
+          "VISIT_AS_MIGRATION"
+        ],
+        "Uma pessoa caminha até a padaria e volta": [
+          "VISIT_AS_MIGRATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_CONCEITO",
+      "explanation": "Visita curta não é o mesmo que mudar de lugar para viver.",
+      "hint": "Procure a mudança de lugar para morar.",
+      "errorFocus": "VISIT_AS_MIGRATION",
+      "feedback": {
+        "correct": "Boa observação: Visita curta não é o mesmo que mudar de lugar para viver.",
+        "incorrect": "Visita curta não é o mesmo que mudar de lugar para viver.",
+        "hint": "Procure a mudança de lugar para morar.",
+        "errorFocus": "VISIT_AS_MIGRATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-03",
+      "statement": "No calendário da Vila do Sol, a família de Ravi chegou em 2021. O que sabemos?",
+      "prompt": "No calendário da Vila do Sol, a família de Ravi chegou em 2021. O que sabemos?",
+      "options": [
+        "A família nasceu na Vila do Sol",
+        "Todas as famílias chegaram em 2021",
+        "A chegada ocorreu em 2021",
+        "A mudança aconteceu por causa do trabalho"
+      ],
+      "correctAnswer": "A chegada ocorreu em 2021",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A família nasceu na Vila do Sol": [
+          "INFERRED_DATE_REASON"
+        ],
+        "Todas as famílias chegaram em 2021": [
+          "INFERRED_DATE_REASON"
+        ],
+        "A mudança aconteceu por causa do trabalho": [
+          "INFERRED_DATE_REASON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CALENDARIO_DE_CHEGADAS",
+      "explanation": "O calendário informa o ano de chegada, mas não origem ou motivo.",
+      "hint": "Use apenas o dado anotado.",
+      "errorFocus": "INFERRED_DATE_REASON",
+      "feedback": {
+        "correct": "Boa observação: O calendário informa o ano de chegada, mas não origem ou motivo.",
+        "incorrect": "O calendário informa o ano de chegada, mas não origem ou motivo.",
+        "hint": "Use apenas o dado anotado.",
+        "errorFocus": "INFERRED_DATE_REASON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-04",
+      "statement": "Uma legenda pública diz que uma ponte foi construída antes de novas casas. O que ela mostra sobre a comunidade?",
+      "prompt": "Uma legenda pública diz que uma ponte foi construída antes de novas casas. O que ela mostra sobre a comunidade?",
+      "options": [
+        "O motivo de cada pessoa ter se mudado",
+        "A origem de todos os moradores",
+        "Que toda casa foi construída pela mesma família",
+        "Uma mudança na paisagem ao longo do tempo"
+      ],
+      "correctAnswer": "Uma mudança na paisagem ao longo do tempo",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O motivo de cada pessoa ter se mudado": [
+          "LANDSCAPE_AS_MIGRATION_CAUSE"
+        ],
+        "A origem de todos os moradores": [
+          "LANDSCAPE_AS_MIGRATION_CAUSE"
+        ],
+        "Que toda casa foi construída pela mesma família": [
+          "LANDSCAPE_AS_MIGRATION_CAUSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOTO_COM_LEGENDA",
+      "explanation": "A imagem registra mudança no lugar, não as histórias individuais dos moradores.",
+      "hint": "Separe transformação do espaço e trajetória pessoal.",
+      "errorFocus": "LANDSCAPE_AS_MIGRATION_CAUSE",
+      "feedback": {
+        "correct": "Boa observação: A imagem registra mudança no lugar, não as histórias individuais dos moradores.",
+        "incorrect": "A imagem registra mudança no lugar, não as histórias individuais dos moradores.",
+        "hint": "Separe transformação do espaço e trajetória pessoal.",
+        "errorFocus": "LANDSCAPE_AS_MIGRATION_CAUSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-05",
+      "statement": "Um desenho mostra setas da Comunidade A para a Comunidade B. O que a seta representa?",
+      "prompt": "Um desenho mostra setas da Comunidade A para a Comunidade B. O que a seta representa?",
+      "options": [
+        "Um deslocamento entre os lugares indicados",
+        "Uma estrada usada por todas as pessoas",
+        "O motivo da mudança",
+        "A data exata da chegada"
+      ],
+      "correctAnswer": "Um deslocamento entre os lugares indicados",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma estrada usada por todas as pessoas": [
+          "MAP_OVERINTERPRETATION"
+        ],
+        "O motivo da mudança": [
+          "MAP_OVERINTERPRETATION"
+        ],
+        "A data exata da chegada": [
+          "MAP_OVERINTERPRETATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROTA_EM_MAPA_ESCOLAR",
+      "explanation": "A seta mostra percurso, mas não explica motivo nem data.",
+      "hint": "Leia somente o símbolo e a legenda.",
+      "errorFocus": "MAP_OVERINTERPRETATION",
+      "feedback": {
+        "correct": "Boa observação: A seta mostra percurso, mas não explica motivo nem data.",
+        "incorrect": "A seta mostra percurso, mas não explica motivo nem data.",
+        "hint": "Leia somente o símbolo e a legenda.",
+        "errorFocus": "MAP_OVERINTERPRETATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-06",
+      "statement": "Em uma história inventada, Joana mudou para o bairro em 2020. Que informação está explícita?",
+      "prompt": "Em uma história inventada, Joana mudou para o bairro em 2020. Que informação está explícita?",
+      "options": [
+        "O país onde Joana nasceu",
+        "O ano em que Joana chegou ao bairro",
+        "O motivo de todas as mudanças",
+        "Quanto tempo cada morador ficará"
+      ],
+      "correctAnswer": "O ano em que Joana chegou ao bairro",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O país onde Joana nasceu": [
+          "UNSUPPORTED_DETAIL"
+        ],
+        "O motivo de todas as mudanças": [
+          "UNSUPPORTED_DETAIL"
+        ],
+        "Quanto tempo cada morador ficará": [
+          "UNSUPPORTED_DETAIL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "RELATO_FICTICIO_DE_CHEGADA",
+      "explanation": "A história dá o ano, não os demais detalhes.",
+      "hint": "Aponte a informação escrita.",
+      "errorFocus": "UNSUPPORTED_DETAIL",
+      "feedback": {
+        "correct": "Boa observação: A história dá o ano, não os demais detalhes.",
+        "incorrect": "A história dá o ano, não os demais detalhes.",
+        "hint": "Aponte a informação escrita.",
+        "errorFocus": "UNSUPPORTED_DETAIL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-07",
+      "statement": "Três imagens mostram a mesma rua em épocas diferentes. O que pode ser comparado?",
+      "prompt": "Três imagens mostram a mesma rua em épocas diferentes. O que pode ser comparado?",
+      "options": [
+        "A história completa de cada morador",
+        "A razão de cada família ter chegado",
+        "O que mudou e o que permaneceu na rua",
+        "A origem de todas as pessoas"
+      ],
+      "correctAnswer": "O que mudou e o que permaneceu na rua",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A história completa de cada morador": [
+          "IMAGE_AS_PERSONAL_HISTORY"
+        ],
+        "A razão de cada família ter chegado": [
+          "IMAGE_AS_PERSONAL_HISTORY"
+        ],
+        "A origem de todas as pessoas": [
+          "IMAGE_AS_PERSONAL_HISTORY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "VIZINHOS_EM_TRES_TEMPOS",
+      "explanation": "Imagens do espaço permitem comparar a rua, não revelar toda a história das pessoas.",
+      "hint": "Compare os elementos visíveis da paisagem.",
+      "errorFocus": "IMAGE_AS_PERSONAL_HISTORY",
+      "feedback": {
+        "correct": "Boa observação: Imagens do espaço permitem comparar a rua, não revelar toda a história das pessoas.",
+        "incorrect": "Imagens do espaço permitem comparar a rua, não revelar toda a história das pessoas.",
+        "hint": "Compare os elementos visíveis da paisagem.",
+        "errorFocus": "IMAGE_AS_PERSONAL_HISTORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-08",
+      "statement": "Uma legenda informa “mudança dentro da mesma cidade”. Qual descrição combina com ela?",
+      "prompt": "Uma legenda informa “mudança dentro da mesma cidade”. Qual descrição combina com ela?",
+      "options": [
+        "A pessoa apenas fez uma visita",
+        "A mudança atravessou necessariamente um país",
+        "A fonte informa por que a pessoa mudou",
+        "O deslocamento ocorreu entre lugares da mesma cidade"
+      ],
+      "correctAnswer": "O deslocamento ocorreu entre lugares da mesma cidade",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A pessoa apenas fez uma visita": [
+          "LOCAL_MIGRATION_SCOPE"
+        ],
+        "A mudança atravessou necessariamente um país": [
+          "LOCAL_MIGRATION_SCOPE"
+        ],
+        "A fonte informa por que a pessoa mudou": [
+          "LOCAL_MIGRATION_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEGENDA_DE_ROTA",
+      "explanation": "Mudanças também podem ocorrer entre bairros ou cidades da mesma região.",
+      "hint": "Observe a escala geográfica indicada.",
+      "errorFocus": "LOCAL_MIGRATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Mudanças também podem ocorrer entre bairros ou cidades da mesma região.",
+        "incorrect": "Mudanças também podem ocorrer entre bairros ou cidades da mesma região.",
+        "hint": "Observe a escala geográfica indicada.",
+        "errorFocus": "LOCAL_MIGRATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-09",
+      "statement": "Uma narrativa diz: em 2019 a família morava na Serra Clara; em 2022 passou a morar no Vale Verde. Qual ordem está correta?",
+      "prompt": "Uma narrativa diz: em 2019 a família morava na Serra Clara; em 2022 passou a morar no Vale Verde. Qual ordem está correta?",
+      "options": [
+        "Serra Clara primeiro; Vale Verde depois",
+        "Vale Verde primeiro; Serra Clara depois",
+        "Os dois lugares ao mesmo tempo",
+        "A ordem não pode ser conhecida"
+      ],
+      "correctAnswer": "Serra Clara primeiro; Vale Verde depois",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vale Verde primeiro; Serra Clara depois": [
+          "TIMELINE_REVERSED"
+        ],
+        "Os dois lugares ao mesmo tempo": [
+          "TIMELINE_REVERSED"
+        ],
+        "A ordem não pode ser conhecida": [
+          "TIMELINE_REVERSED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "CARTOES_DE_ANTES_E_DEPOIS",
+      "explanation": "As datas mostram a saída em 2019 e a chegada ao novo lugar em 2022.",
+      "hint": "Ordene pelos anos.",
+      "errorFocus": "TIMELINE_REVERSED",
+      "feedback": {
+        "correct": "Boa observação: As datas mostram a saída em 2019 e a chegada ao novo lugar em 2022.",
+        "incorrect": "As datas mostram a saída em 2019 e a chegada ao novo lugar em 2022.",
+        "hint": "Ordene pelos anos.",
+        "errorFocus": "TIMELINE_REVERSED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-10",
+      "statement": "Um mapa mostra que o bairro ganhou uma linha de ônibus em 2017. O que esse mapa pode ajudar a descrever?",
+      "prompt": "Um mapa mostra que o bairro ganhou uma linha de ônibus em 2017. O que esse mapa pode ajudar a descrever?",
+      "options": [
+        "O nome de todas as pessoas que migraram",
+        "Uma mudança na conexão entre bairros",
+        "A razão pessoal de cada mudança",
+        "Que todos passaram a usar o ônibus"
+      ],
+      "correctAnswer": "Uma mudança na conexão entre bairros",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome de todas as pessoas que migraram": [
+          "INFRASTRUCTURE_UNIVERSAL_CLAIM"
+        ],
+        "A razão pessoal de cada mudança": [
+          "INFRASTRUCTURE_UNIVERSAL_CLAIM"
+        ],
+        "Que todos passaram a usar o ônibus": [
+          "INFRASTRUCTURE_UNIVERSAL_CLAIM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_DE_LINHA_DE_ONIBUS",
+      "explanation": "O mapa informa uma ligação de transporte, não as escolhas de todos os moradores.",
+      "hint": "Fique na informação de conexão.",
+      "errorFocus": "INFRASTRUCTURE_UNIVERSAL_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: O mapa informa uma ligação de transporte, não as escolhas de todos os moradores.",
+        "incorrect": "O mapa informa uma ligação de transporte, não as escolhas de todos os moradores.",
+        "hint": "Fique na informação de conexão.",
+        "errorFocus": "INFRASTRUCTURE_UNIVERSAL_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-11",
+      "statement": "Uma entrevista autorizada conta que uma comerciante mudou de cidade para abrir uma loja perto de clientes. O que podemos afirmar?",
+      "prompt": "Uma entrevista autorizada conta que uma comerciante mudou de cidade para abrir uma loja perto de clientes. O que podemos afirmar?",
+      "options": [
+        "Todas as pessoas migraram para trabalhar",
+        "A mudança melhorou a vida de todos",
+        "A entrevistada relacionou sua mudança à abertura da loja",
+        "O bairro recebeu somente comerciantes"
+      ],
+      "correctAnswer": "A entrevistada relacionou sua mudança à abertura da loja",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as pessoas migraram para trabalhar": [
+          "SINGLE_STORY_GENERALIZATION"
+        ],
+        "A mudança melhorou a vida de todos": [
+          "SINGLE_STORY_GENERALIZATION"
+        ],
+        "O bairro recebeu somente comerciantes": [
+          "SINGLE_STORY_GENERALIZATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ENTREVISTA_PUBLICA_RESUMIDA",
+      "explanation": "A entrevista explica a história de uma pessoa, não a de todos.",
+      "hint": "Mantenha a afirmação no singular.",
+      "errorFocus": "SINGLE_STORY_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A entrevista explica a história de uma pessoa, não a de todos.",
+        "incorrect": "A entrevista explica a história de uma pessoa, não a de todos.",
+        "hint": "Mantenha a afirmação no singular.",
+        "errorFocus": "SINGLE_STORY_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-12",
+      "statement": "Uma placa de 2005 registra a abertura de um conjunto habitacional. Qual é uma pergunta adequada para investigar mudanças no lugar?",
+      "prompt": "Uma placa de 2005 registra a abertura de um conjunto habitacional. Qual é uma pergunta adequada para investigar mudanças no lugar?",
+      "options": [
+        "Qual família foi mais importante?",
+        "Como descobrir a origem de cada criança da turma?",
+        "Por que todos os moradores saíram de outro país?",
+        "Que fontes mostram quem passou a viver ali e em que período?"
+      ],
+      "correctAnswer": "Que fontes mostram quem passou a viver ali e em que período?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual família foi mais importante?": [
+          "INVASIVE_OR_LEADING_QUESTION"
+        ],
+        "Como descobrir a origem de cada criança da turma?": [
+          "INVASIVE_OR_LEADING_QUESTION"
+        ],
+        "Por que todos os moradores saíram de outro país?": [
+          "INVASIVE_OR_LEADING_QUESTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PLACA_DE_NOVA_COMUNIDADE",
+      "explanation": "A pergunta aberta busca fontes e não presume a origem de ninguém.",
+      "hint": "Evite presumir o motivo ou pedir dados pessoais.",
+      "errorFocus": "INVASIVE_OR_LEADING_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta aberta busca fontes e não presume a origem de ninguém.",
+        "incorrect": "A pergunta aberta busca fontes e não presume a origem de ninguém.",
+        "hint": "Evite presumir o motivo ou pedir dados pessoais.",
+        "errorFocus": "INVASIVE_OR_LEADING_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-13",
+      "statement": "Um mapa mostra um novo mercado; uma notícia informa que pessoas passaram a morar perto dele. Qual fonte sustenta a informação sobre chegada de moradores?",
+      "prompt": "Um mapa mostra um novo mercado; uma notícia informa que pessoas passaram a morar perto dele. Qual fonte sustenta a informação sobre chegada de moradores?",
+      "options": [
+        "A notícia, se ela relata essas chegadas",
+        "O mapa sozinho, pois todo mercado atrai moradores",
+        "As duas fontes sempre dizem a mesma coisa",
+        "Nenhuma fonte pode informar mudanças"
+      ],
+      "correctAnswer": "A notícia, se ela relata essas chegadas",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O mapa sozinho, pois todo mercado atrai moradores": [
+          "SOURCE_ROLE_CONFUSION"
+        ],
+        "As duas fontes sempre dizem a mesma coisa": [
+          "SOURCE_ROLE_CONFUSION"
+        ],
+        "Nenhuma fonte pode informar mudanças": [
+          "SOURCE_ROLE_CONFUSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MAPA_E_NOTICIA_LOCAL",
+      "explanation": "O mapa localiza o mercado; a notícia pode documentar chegadas se realmente as relatar.",
+      "hint": "Veja qual fonte menciona pessoas mudando.",
+      "errorFocus": "SOURCE_ROLE_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: O mapa localiza o mercado; a notícia pode documentar chegadas se realmente as relatar.",
+        "incorrect": "O mapa localiza o mercado; a notícia pode documentar chegadas se realmente as relatar.",
+        "hint": "Veja qual fonte menciona pessoas mudando.",
+        "errorFocus": "SOURCE_ROLE_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-14",
+      "statement": "A ponte foi inaugurada em 2010 e uma família fictícia chegou em 2013. O que aconteceu antes?",
+      "prompt": "A ponte foi inaugurada em 2010 e uma família fictícia chegou em 2013. O que aconteceu antes?",
+      "options": [
+        "A chegada da família",
+        "A inauguração da ponte",
+        "Os dois eventos no mesmo ano",
+        "A mudança da família, sem data"
+      ],
+      "correctAnswer": "A inauguração da ponte",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A chegada da família": [
+          "EVENT_ORDER"
+        ],
+        "Os dois eventos no mesmo ano": [
+          "EVENT_ORDER"
+        ],
+        "A mudança da família, sem data": [
+          "EVENT_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "LINHA_DO_TEMPO_DA_PONTE",
+      "explanation": "2010 vem antes de 2013.",
+      "hint": "Compare os números dos anos.",
+      "errorFocus": "EVENT_ORDER",
+      "feedback": {
+        "correct": "Boa observação: 2010 vem antes de 2013.",
+        "incorrect": "2010 vem antes de 2013.",
+        "hint": "Compare os números dos anos.",
+        "errorFocus": "EVENT_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-15",
+      "statement": "Uma personagem mudou para outro bairro da mesma cidade. Como descrever corretamente?",
+      "prompt": "Uma personagem mudou para outro bairro da mesma cidade. Como descrever corretamente?",
+      "options": [
+        "Como uma viagem internacional",
+        "Como uma visita que terminou no mesmo dia",
+        "Como uma mudança entre bairros da mesma cidade",
+        "Como uma mudança de país"
+      ],
+      "correctAnswer": "Como uma mudança entre bairros da mesma cidade",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como uma viagem internacional": [
+          "SCALE_MISMATCH"
+        ],
+        "Como uma visita que terminou no mesmo dia": [
+          "SCALE_MISMATCH"
+        ],
+        "Como uma mudança de país": [
+          "SCALE_MISMATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELATO_DE_MUDANCA_DE_BAIRRO",
+      "explanation": "A história aponta dois bairros da mesma cidade.",
+      "hint": "Use a escala indicada na narrativa.",
+      "errorFocus": "SCALE_MISMATCH",
+      "feedback": {
+        "correct": "Boa observação: A história aponta dois bairros da mesma cidade.",
+        "incorrect": "A história aponta dois bairros da mesma cidade.",
+        "hint": "Use a escala indicada na narrativa.",
+        "errorFocus": "SCALE_MISMATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-16",
+      "statement": "Fotos datadas mostram casas, uma escola e uma praça em 1990 e 2020. Que conclusão é sustentada?",
+      "prompt": "Fotos datadas mostram casas, uma escola e uma praça em 1990 e 2020. Que conclusão é sustentada?",
+      "options": [
+        "Toda pessoa que chegou veio do mesmo estado",
+        "A escola causou todas as migrações",
+        "Cada família permaneceu no local",
+        "Parte da paisagem e dos serviços mudou entre as datas"
+      ],
+      "correctAnswer": "Parte da paisagem e dos serviços mudou entre as datas",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda pessoa que chegou veio do mesmo estado": [
+          "LANDSCAPE_CAUSALITY"
+        ],
+        "A escola causou todas as migrações": [
+          "LANDSCAPE_CAUSALITY"
+        ],
+        "Cada família permaneceu no local": [
+          "LANDSCAPE_CAUSALITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ARQUIVO_DE_FOTOGRAFIAS",
+      "explanation": "A comparação mostra mudanças visíveis, não causa ou trajetória de cada família.",
+      "hint": "Descreva o que aparece nas imagens.",
+      "errorFocus": "LANDSCAPE_CAUSALITY",
+      "feedback": {
+        "correct": "Boa observação: A comparação mostra mudanças visíveis, não causa ou trajetória de cada família.",
+        "incorrect": "A comparação mostra mudanças visíveis, não causa ou trajetória de cada família.",
+        "hint": "Descreva o que aparece nas imagens.",
+        "errorFocus": "LANDSCAPE_CAUSALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-17",
+      "statement": "Um painel mostra três famílias inventadas que chegaram à cidade em anos diferentes e por rotas diferentes. Qual descrição respeita as evidências?",
+      "prompt": "Um painel mostra três famílias inventadas que chegaram à cidade em anos diferentes e por rotas diferentes. Qual descrição respeita as evidências?",
+      "options": [
+        "As histórias apresentam percursos e datas variados",
+        "Todas chegaram pelo mesmo motivo",
+        "Uma rota prova que todas vieram do mesmo país",
+        "A família que chegou antes pertence mais ao lugar"
+      ],
+      "correctAnswer": "As histórias apresentam percursos e datas variados",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas chegaram pelo mesmo motivo": [
+          "ROUTE_TO_IDENTITY_INFERENCE"
+        ],
+        "Uma rota prova que todas vieram do mesmo país": [
+          "ROUTE_TO_IDENTITY_INFERENCE"
+        ],
+        "A família que chegou antes pertence mais ao lugar": [
+          "ROUTE_TO_IDENTITY_INFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PAINEL_DE_ROTAS_FICTICIAS",
+      "explanation": "O painel sustenta diferenças de rota e período, não hierarquia ou motivo comum.",
+      "hint": "Compare somente dados indicados.",
+      "errorFocus": "ROUTE_TO_IDENTITY_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O painel sustenta diferenças de rota e período, não hierarquia ou motivo comum.",
+        "incorrect": "O painel sustenta diferenças de rota e período, não hierarquia ou motivo comum.",
+        "hint": "Compare somente dados indicados.",
+        "errorFocus": "ROUTE_TO_IDENTITY_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-18",
+      "statement": "Uma tabela pública mostra aumento de matrículas em uma escola ao longo de cinco anos. O que ela não permite concluir sozinha?",
+      "prompt": "Uma tabela pública mostra aumento de matrículas em uma escola ao longo de cinco anos. O que ela não permite concluir sozinha?",
+      "options": [
+        "Que o número registrado aumentou",
+        "A origem e o motivo da mudança de cada estudante",
+        "Que a escola recebeu mais matrículas",
+        "Que os anos podem ser comparados"
+      ],
+      "correctAnswer": "A origem e o motivo da mudança de cada estudante",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que o número registrado aumentou": [
+          "AGGREGATE_TO_PERSONAL_INFERENCE"
+        ],
+        "Que a escola recebeu mais matrículas": [
+          "AGGREGATE_TO_PERSONAL_INFERENCE"
+        ],
+        "Que os anos podem ser comparados": [
+          "AGGREGATE_TO_PERSONAL_INFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DADOS_DE_MATRICULA_AGREGADOS",
+      "explanation": "Dados agregados não contam trajetórias individuais nem causas.",
+      "hint": "Separe contagem do dado pessoal ausente.",
+      "errorFocus": "AGGREGATE_TO_PERSONAL_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Dados agregados não contam trajetórias individuais nem causas.",
+        "incorrect": "Dados agregados não contam trajetórias individuais nem causas.",
+        "hint": "Separe contagem do dado pessoal ausente.",
+        "errorFocus": "AGGREGATE_TO_PERSONAL_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-19",
+      "statement": "Um mapa tem setas de entrada e saída em dois períodos. O que é possível comparar?",
+      "prompt": "Um mapa tem setas de entrada e saída em dois períodos. O que é possível comparar?",
+      "options": [
+        "A intenção de cada pessoa",
+        "A felicidade de todos os moradores",
+        "A direção e a quantidade indicada de movimentos nos períodos",
+        "O motivo único das partidas"
+      ],
+      "correctAnswer": "A direção e a quantidade indicada de movimentos nos períodos",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A intenção de cada pessoa": [
+          "MAP_AS_MOTIVE"
+        ],
+        "A felicidade de todos os moradores": [
+          "MAP_AS_MOTIVE"
+        ],
+        "O motivo único das partidas": [
+          "MAP_AS_MOTIVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_DE_CHEGADAS_E_PARTIDAS",
+      "explanation": "O mapa mostra padrões de movimento, não sentimentos ou causas individuais.",
+      "hint": "Compare símbolos, legendas e datas.",
+      "errorFocus": "MAP_AS_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: O mapa mostra padrões de movimento, não sentimentos ou causas individuais.",
+        "incorrect": "O mapa mostra padrões de movimento, não sentimentos ou causas individuais.",
+        "hint": "Compare símbolos, legendas e datas.",
+        "errorFocus": "MAP_AS_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-20",
+      "statement": "Uma notícia afirma que moradores chegaram após a abertura de uma fábrica e cita entrevistas. Que cuidado ajuda a avaliar a informação?",
+      "prompt": "Uma notícia afirma que moradores chegaram após a abertura de uma fábrica e cita entrevistas. Que cuidado ajuda a avaliar a informação?",
+      "options": [
+        "Aceitar que a fábrica explica toda migração",
+        "Supor que entrevistados representam todos",
+        "Compartilhar nomes sem autorização",
+        "Verificar a data, a fonte e quais pessoas foram ouvidas"
+      ],
+      "correctAnswer": "Verificar a data, a fonte e quais pessoas foram ouvidas",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Aceitar que a fábrica explica toda migração": [
+          "SOURCE_SCOPE"
+        ],
+        "Supor que entrevistados representam todos": [
+          "SOURCE_SCOPE"
+        ],
+        "Compartilhar nomes sem autorização": [
+          "SOURCE_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NOTICIA_COM_FONTE_IDENTIFICADA",
+      "explanation": "A fonte e a seleção de entrevistados limitam o alcance da conclusão.",
+      "hint": "Pergunte quem falou e quando.",
+      "errorFocus": "SOURCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A fonte e a seleção de entrevistados limitam o alcance da conclusão.",
+        "incorrect": "A fonte e a seleção de entrevistados limitam o alcance da conclusão.",
+        "hint": "Pergunte quem falou e quando.",
+        "errorFocus": "SOURCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-21",
+      "statement": "Uma narrativa fictícia relata que uma família mudou após enchentes repetidas. Qual formulação é cuidadosa?",
+      "prompt": "Uma narrativa fictícia relata que uma família mudou após enchentes repetidas. Qual formulação é cuidadosa?",
+      "options": [
+        "Na narrativa, as enchentes aparecem como uma razão daquela mudança",
+        "Toda migração ocorre por enchente",
+        "A família nunca teve outras razões",
+        "As enchentes explicam toda mudança na região"
+      ],
+      "correctAnswer": "Na narrativa, as enchentes aparecem como uma razão daquela mudança",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda migração ocorre por enchente": [
+          "SINGLE_CAUSE_UNIVERSAL"
+        ],
+        "A família nunca teve outras razões": [
+          "SINGLE_CAUSE_UNIVERSAL"
+        ],
+        "As enchentes explicam toda mudança na região": [
+          "SINGLE_CAUSE_UNIVERSAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "HISTORIA_DE_MUDANCA_CLIMATICA",
+      "explanation": "A narrativa oferece uma razão específica e situada.",
+      "hint": "Mantenha a causa ligada à fonte.",
+      "errorFocus": "SINGLE_CAUSE_UNIVERSAL",
+      "feedback": {
+        "correct": "Boa observação: A narrativa oferece uma razão específica e situada.",
+        "incorrect": "A narrativa oferece uma razão específica e situada.",
+        "hint": "Mantenha a causa ligada à fonte.",
+        "errorFocus": "SINGLE_CAUSE_UNIVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-22",
+      "statement": "Dois bairros receberam novos moradores em décadas diferentes, segundo arquivos locais. O que pode ser comparado?",
+      "prompt": "Dois bairros receberam novos moradores em décadas diferentes, segundo arquivos locais. O que pode ser comparado?",
+      "options": [
+        "Qual grupo merece mais respeito",
+        "Os períodos e as informações registradas sobre cada bairro",
+        "Quem tem direito de viver no bairro",
+        "Que todos os novos moradores têm a mesma história"
+      ],
+      "correctAnswer": "Os períodos e as informações registradas sobre cada bairro",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual grupo merece mais respeito": [
+          "COMPARISON_AS_RANK"
+        ],
+        "Quem tem direito de viver no bairro": [
+          "COMPARISON_AS_RANK"
+        ],
+        "Que todos os novos moradores têm a mesma história": [
+          "COMPARISON_AS_RANK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_BAIRROS_EM_EPOCAS",
+      "explanation": "Comparar períodos não significa classificar pessoas ou grupos.",
+      "hint": "Compare registros, não o valor das pessoas.",
+      "errorFocus": "COMPARISON_AS_RANK",
+      "feedback": {
+        "correct": "Boa observação: Comparar períodos não significa classificar pessoas ou grupos.",
+        "incorrect": "Comparar períodos não significa classificar pessoas ou grupos.",
+        "hint": "Compare registros, não o valor das pessoas.",
+        "errorFocus": "COMPARISON_AS_RANK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-23",
+      "statement": "Um mural comunitário autorizado reúne relatos curtos de antigos e novos moradores. O que ele oferece?",
+      "prompt": "Um mural comunitário autorizado reúne relatos curtos de antigos e novos moradores. O que ele oferece?",
+      "options": [
+        "Uma lista completa de todos os moradores",
+        "Uma explicação universal para migrações",
+        "Perspectivas pessoais que podem compor parte da história local",
+        "Prova de que as memórias nunca diferem"
+      ],
+      "correctAnswer": "Perspectivas pessoais que podem compor parte da história local",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista completa de todos os moradores": [
+          "ORAL_HISTORY_AS_COMPLETE"
+        ],
+        "Uma explicação universal para migrações": [
+          "ORAL_HISTORY_AS_COMPLETE"
+        ],
+        "Prova de que as memórias nunca diferem": [
+          "ORAL_HISTORY_AS_COMPLETE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MURAL_DE_MEMORIAS_PUBLICAS",
+      "explanation": "Memórias são fontes valiosas, mas representam perspectivas situadas.",
+      "hint": "Use a palavra “parte” da história.",
+      "errorFocus": "ORAL_HISTORY_AS_COMPLETE",
+      "feedback": {
+        "correct": "Boa observação: Memórias são fontes valiosas, mas representam perspectivas situadas.",
+        "incorrect": "Memórias são fontes valiosas, mas representam perspectivas situadas.",
+        "hint": "Use a palavra “parte” da história.",
+        "errorFocus": "ORAL_HISTORY_AS_COMPLETE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-24",
+      "statement": "A turma quer estudar mudanças do bairro sem expor famílias. Qual plano é adequado?",
+      "prompt": "A turma quer estudar mudanças do bairro sem expor famílias. Qual plano é adequado?",
+      "options": [
+        "Pedir que cada estudante revele a origem dos responsáveis",
+        "Publicar endereços de quem mudou",
+        "Comparar colegas por lugar de nascimento",
+        "Usar fontes públicas, mapas e exemplos fictícios"
+      ],
+      "correctAnswer": "Usar fontes públicas, mapas e exemplos fictícios",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir que cada estudante revele a origem dos responsáveis": [
+          "PERSONAL_DISCLOSURE_AS_EVIDENCE"
+        ],
+        "Publicar endereços de quem mudou": [
+          "PERSONAL_DISCLOSURE_AS_EVIDENCE"
+        ],
+        "Comparar colegas por lugar de nascimento": [
+          "PERSONAL_DISCLOSURE_AS_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PERGUNTA_DE_EXPOSICAO_ESCOLAR",
+      "explanation": "A aprendizagem pode ocorrer com fontes públicas e ficcionais sem expor a vida familiar.",
+      "hint": "Escolha fontes que protejam a privacidade.",
+      "errorFocus": "PERSONAL_DISCLOSURE_AS_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem pode ocorrer com fontes públicas e ficcionais sem expor a vida familiar.",
+        "incorrect": "A aprendizagem pode ocorrer com fontes públicas e ficcionais sem expor a vida familiar.",
+        "hint": "Escolha fontes que protejam a privacidade.",
+        "errorFocus": "PERSONAL_DISCLOSURE_AS_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-25",
+      "statement": "Uma tabela lista chegada em 2001, abertura de uma escola em 2006 e chegada de novos moradores em 2011. Qual síntese preserva a ordem?",
+      "prompt": "Uma tabela lista chegada em 2001, abertura de uma escola em 2006 e chegada de novos moradores em 2011. Qual síntese preserva a ordem?",
+      "options": [
+        "A escola abriu entre dois registros de chegada",
+        "A escola causou as duas chegadas",
+        "Todos chegaram depois da escola",
+        "A tabela mostra o motivo das mudanças"
+      ],
+      "correctAnswer": "A escola abriu entre dois registros de chegada",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A escola causou as duas chegadas": [
+          "CHRONOLOGY_AS_CAUSALITY"
+        ],
+        "Todos chegaram depois da escola": [
+          "CHRONOLOGY_AS_CAUSALITY"
+        ],
+        "A tabela mostra o motivo das mudanças": [
+          "CHRONOLOGY_AS_CAUSALITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TABELA_DE_EVENTOS_LOCAIS",
+      "explanation": "A ordem temporal não prova que um evento causou outro.",
+      "hint": "Observe a ordem sem inventar causa.",
+      "errorFocus": "CHRONOLOGY_AS_CAUSALITY",
+      "feedback": {
+        "correct": "Boa observação: A ordem temporal não prova que um evento causou outro.",
+        "incorrect": "A ordem temporal não prova que um evento causou outro.",
+        "hint": "Observe a ordem sem inventar causa.",
+        "errorFocus": "CHRONOLOGY_AS_CAUSALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-26",
+      "statement": "Um mapa tem setas, mas não indica datas. O que o estudante deve fazer?",
+      "prompt": "Um mapa tem setas, mas não indica datas. O que o estudante deve fazer?",
+      "options": [
+        "Inventar o ano mais provável",
+        "Descrever os deslocamentos mostrados e dizer que o período não foi informado",
+        "Tratar as setas como viagens de um dia",
+        "Afirmar que todos mudaram juntos"
+      ],
+      "correctAnswer": "Descrever os deslocamentos mostrados e dizer que o período não foi informado",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Inventar o ano mais provável": [
+          "MISSING_DATE_GUESS"
+        ],
+        "Tratar as setas como viagens de um dia": [
+          "MISSING_DATE_GUESS"
+        ],
+        "Afirmar que todos mudaram juntos": [
+          "MISSING_DATE_GUESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_COM_LEGENDA_INCOMPLETA",
+      "explanation": "Quando a data falta, a descrição deve indicar essa lacuna.",
+      "hint": "Não complete uma informação ausente.",
+      "errorFocus": "MISSING_DATE_GUESS",
+      "feedback": {
+        "correct": "Boa observação: Quando a data falta, a descrição deve indicar essa lacuna.",
+        "incorrect": "Quando a data falta, a descrição deve indicar essa lacuna.",
+        "hint": "Não complete uma informação ausente.",
+        "errorFocus": "MISSING_DATE_GUESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-27",
+      "statement": "Qual frase evita generalizar a história de um grupo?",
+      "prompt": "Qual frase evita generalizar a história de um grupo?",
+      "options": [
+        "Todos os recém-chegados vieram pelo mesmo motivo",
+        "Nenhum morador antigo aceita mudanças",
+        "A entrevista descreve a chegada de duas pessoas em 2015",
+        "Toda pessoa migrante trabalha no comércio"
+      ],
+      "correctAnswer": "A entrevista descreve a chegada de duas pessoas em 2015",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os recém-chegados vieram pelo mesmo motivo": [
+          "GROUP_STEREOTYPE"
+        ],
+        "Nenhum morador antigo aceita mudanças": [
+          "GROUP_STEREOTYPE"
+        ],
+        "Toda pessoa migrante trabalha no comércio": [
+          "GROUP_STEREOTYPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRASE_SOBRE_NOVOS_MORADORES",
+      "explanation": "A frase escolhida delimita o dado à fonte e às pessoas mencionadas.",
+      "hint": "Prefira uma afirmação com alcance específico.",
+      "errorFocus": "GROUP_STEREOTYPE",
+      "feedback": {
+        "correct": "Boa observação: A frase escolhida delimita o dado à fonte e às pessoas mencionadas.",
+        "incorrect": "A frase escolhida delimita o dado à fonte e às pessoas mencionadas.",
+        "hint": "Prefira uma afirmação com alcance específico.",
+        "errorFocus": "GROUP_STEREOTYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-28",
+      "statement": "Uma praça aparece em um mapa de 1980 e não aparece no de 1960. O que a comparação sugere?",
+      "prompt": "Uma praça aparece em um mapa de 1980 e não aparece no de 1960. O que a comparação sugere?",
+      "options": [
+        "A praça fez pessoas migrarem",
+        "Todos os moradores chegaram em 1980",
+        "O mapa informa a origem de cada pessoa",
+        "A praça foi registrada em um período posterior"
+      ],
+      "correctAnswer": "A praça foi registrada em um período posterior",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A praça fez pessoas migrarem": [
+          "SPATIAL_CHANGE_AS_MIGRATION_PROOF"
+        ],
+        "Todos os moradores chegaram em 1980": [
+          "SPATIAL_CHANGE_AS_MIGRATION_PROOF"
+        ],
+        "O mapa informa a origem de cada pessoa": [
+          "SPATIAL_CHANGE_AS_MIGRATION_PROOF"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_ANTES_DA_PRACA",
+      "explanation": "A comparação registra uma mudança no mapa, não as causas de migração.",
+      "hint": "Diferencie mudança do lugar e movimento de pessoas.",
+      "errorFocus": "SPATIAL_CHANGE_AS_MIGRATION_PROOF",
+      "feedback": {
+        "correct": "Boa observação: A comparação registra uma mudança no mapa, não as causas de migração.",
+        "incorrect": "A comparação registra uma mudança no mapa, não as causas de migração.",
+        "hint": "Diferencie mudança do lugar e movimento de pessoas.",
+        "errorFocus": "SPATIAL_CHANGE_AS_MIGRATION_PROOF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-29",
+      "statement": "Uma personagem fictícia cita estudo e proximidade de parentes como razões de sua mudança. Qual resumo é fiel?",
+      "prompt": "Uma personagem fictícia cita estudo e proximidade de parentes como razões de sua mudança. Qual resumo é fiel?",
+      "options": [
+        "A personagem mencionou estudo e proximidade de parentes",
+        "Apenas estudo faz pessoas migrarem",
+        "Toda pessoa que muda busca parentes",
+        "A história vale para todas as famílias"
+      ],
+      "correctAnswer": "A personagem mencionou estudo e proximidade de parentes",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apenas estudo faz pessoas migrarem": [
+          "REASON_OVERGENERALIZATION"
+        ],
+        "Toda pessoa que muda busca parentes": [
+          "REASON_OVERGENERALIZATION"
+        ],
+        "A história vale para todas as famílias": [
+          "REASON_OVERGENERALIZATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DEPOIMENTO_COM_DUAS_RAZOES",
+      "explanation": "O resumo conserva as razões atribuídas àquela personagem.",
+      "hint": "Mantenha a autoria da explicação.",
+      "errorFocus": "REASON_OVERGENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: O resumo conserva as razões atribuídas àquela personagem.",
+        "incorrect": "O resumo conserva as razões atribuídas àquela personagem.",
+        "hint": "Mantenha a autoria da explicação.",
+        "errorFocus": "REASON_OVERGENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-30",
+      "statement": "Um registro mostra que uma feira passou a ocorrer aos sábados após novos comerciantes chegarem. Qual conclusão é mais segura?",
+      "prompt": "Um registro mostra que uma feira passou a ocorrer aos sábados após novos comerciantes chegarem. Qual conclusão é mais segura?",
+      "options": [
+        "A chegada causou com certeza a mudança",
+        "A feira mudou de dia no período descrito; a relação precisa de outra fonte",
+        "Todos os comerciantes chegaram juntos",
+        "A feira representa todos os moradores"
+      ],
+      "correctAnswer": "A feira mudou de dia no período descrito; a relação precisa de outra fonte",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A chegada causou com certeza a mudança": [
+          "CORRELATION_CAUSATION"
+        ],
+        "Todos os comerciantes chegaram juntos": [
+          "CORRELATION_CAUSATION"
+        ],
+        "A feira representa todos os moradores": [
+          "CORRELATION_CAUSATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REGISTRO_DE_FEIRA_LOCAL",
+      "explanation": "A proximidade temporal sugere uma pergunta, mas não prova causa.",
+      "hint": "Use uma conclusão proporcional ao registro.",
+      "errorFocus": "CORRELATION_CAUSATION",
+      "feedback": {
+        "correct": "Boa observação: A proximidade temporal sugere uma pergunta, mas não prova causa.",
+        "incorrect": "A proximidade temporal sugere uma pergunta, mas não prova causa.",
+        "hint": "Use uma conclusão proporcional ao registro.",
+        "errorFocus": "CORRELATION_CAUSATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-31",
+      "statement": "Uma legenda identifica rota curta dentro do município e rota longa entre estados. O que distingue as histórias?",
+      "prompt": "Uma legenda identifica rota curta dentro do município e rota longa entre estados. O que distingue as histórias?",
+      "options": [
+        "O valor das pessoas que chegaram",
+        "A razão de cada mudança",
+        "A escala dos deslocamentos informada",
+        "A vontade de permanecer"
+      ],
+      "correctAnswer": "A escala dos deslocamentos informada",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O valor das pessoas que chegaram": [
+          "ROUTE_VALUE_JUDGMENT"
+        ],
+        "A razão de cada mudança": [
+          "ROUTE_VALUE_JUDGMENT"
+        ],
+        "A vontade de permanecer": [
+          "ROUTE_VALUE_JUDGMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEGENDA_DE_DUAS_ROTAS",
+      "explanation": "A legenda compara escala, não valor ou intenção.",
+      "hint": "Descreva o aspecto geográfico indicado.",
+      "errorFocus": "ROUTE_VALUE_JUDGMENT",
+      "feedback": {
+        "correct": "Boa observação: A legenda compara escala, não valor ou intenção.",
+        "incorrect": "A legenda compara escala, não valor ou intenção.",
+        "hint": "Descreva o aspecto geográfico indicado.",
+        "errorFocus": "ROUTE_VALUE_JUDGMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-32",
+      "statement": "Um arquivo combina fotografias datadas, mapas e dois relatos autorizados. Qual resumo é mais responsável?",
+      "prompt": "Um arquivo combina fotografias datadas, mapas e dois relatos autorizados. Qual resumo é mais responsável?",
+      "options": [
+        "O arquivo explica todas as migrações",
+        "Os dois relatos representam cada morador",
+        "As fotos provam os motivos de todas as mudanças",
+        "As fontes mostram algumas mudanças do lugar e diferentes relatos sobre chegadas"
+      ],
+      "correctAnswer": "As fontes mostram algumas mudanças do lugar e diferentes relatos sobre chegadas",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O arquivo explica todas as migrações": [
+          "SOURCE_COMPLETENESS_OVERCLAIM"
+        ],
+        "Os dois relatos representam cada morador": [
+          "SOURCE_COMPLETENESS_OVERCLAIM"
+        ],
+        "As fotos provam os motivos de todas as mudanças": [
+          "SOURCE_COMPLETENESS_OVERCLAIM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RESUMO_DE_ARQUIVO_COMUNITARIO",
+      "explanation": "Várias fontes ampliam a compreensão, mas não tornam o arquivo completo.",
+      "hint": "Use “algumas” e “diferentes relatos”.",
+      "errorFocus": "SOURCE_COMPLETENESS_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: Várias fontes ampliam a compreensão, mas não tornam o arquivo completo.",
+        "incorrect": "Várias fontes ampliam a compreensão, mas não tornam o arquivo completo.",
+        "hint": "Use “algumas” e “diferentes relatos”.",
+        "errorFocus": "SOURCE_COMPLETENESS_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-33",
+      "statement": "Em um mapa, qual ponto é a origem de uma rota?",
+      "prompt": "Em um mapa, qual ponto é a origem de uma rota?",
+      "options": [
+        "O ponto de onde a rota parte",
+        "O ponto onde termina",
+        "Um lugar sem legenda",
+        "O motivo da mudança"
+      ],
+      "correctAnswer": "O ponto de onde a rota parte",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O ponto onde termina": [
+          "ROUTE_START_END"
+        ],
+        "Um lugar sem legenda": [
+          "ROUTE_START_END"
+        ],
+        "O motivo da mudança": [
+          "ROUTE_START_END"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_REVISAO_ORIGEM",
+      "explanation": "A origem é o ponto de partida.",
+      "hint": "Siga a seta ao contrário do destino.",
+      "errorFocus": "ROUTE_START_END",
+      "feedback": {
+        "correct": "Boa observação: A origem é o ponto de partida.",
+        "incorrect": "A origem é o ponto de partida.",
+        "hint": "Siga a seta ao contrário do destino.",
+        "errorFocus": "ROUTE_START_END"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-34",
+      "statement": "Uma narrativa registra uma chegada em 2016. O que ela informa diretamente?",
+      "prompt": "Uma narrativa registra uma chegada em 2016. O que ela informa diretamente?",
+      "options": [
+        "A história de todos os moradores",
+        "O ano registrado para aquela chegada",
+        "O motivo de cada deslocamento",
+        "O lugar de nascimento de quem chegou"
+      ],
+      "correctAnswer": "O ano registrado para aquela chegada",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A história de todos os moradores": [
+          "SOURCE_OVERREACH"
+        ],
+        "O motivo de cada deslocamento": [
+          "SOURCE_OVERREACH"
+        ],
+        "O lugar de nascimento de quem chegou": [
+          "SOURCE_OVERREACH"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "AGENDA_DE_MEMORIAS",
+      "explanation": "Uma data não responde perguntas que a narrativa não apresenta.",
+      "hint": "Escolha o dado escrito.",
+      "errorFocus": "SOURCE_OVERREACH",
+      "feedback": {
+        "correct": "Boa observação: Uma data não responde perguntas que a narrativa não apresenta.",
+        "incorrect": "Uma data não responde perguntas que a narrativa não apresenta.",
+        "hint": "Escolha o dado escrito.",
+        "errorFocus": "SOURCE_OVERREACH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-35",
+      "statement": "Uma pessoa visita parentes por uma semana e depois volta para casa. Isso basta para afirmar que ela migrou?",
+      "prompt": "Uma pessoa visita parentes por uma semana e depois volta para casa. Isso basta para afirmar que ela migrou?",
+      "options": [
+        "Sim; qualquer passeio é migração",
+        "Sim; a pessoa mudou definitivamente",
+        "Não; a história descreve uma visita temporária",
+        "Não; migração só ocorre entre países"
+      ],
+      "correctAnswer": "Não; a história descreve uma visita temporária",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim; qualquer passeio é migração": [
+          "VISIT_AS_MIGRATION"
+        ],
+        "Sim; a pessoa mudou definitivamente": [
+          "VISIT_AS_MIGRATION"
+        ],
+        "Não; migração só ocorre entre países": [
+          "VISIT_AS_MIGRATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VISITA_E_MUDANCA",
+      "explanation": "Uma visita com retorno não corresponde necessariamente a mudar de lugar para viver.",
+      "hint": "Observe o objetivo e a duração da situação.",
+      "errorFocus": "VISIT_AS_MIGRATION",
+      "feedback": {
+        "correct": "Boa observação: Uma visita com retorno não corresponde necessariamente a mudar de lugar para viver.",
+        "incorrect": "Uma visita com retorno não corresponde necessariamente a mudar de lugar para viver.",
+        "hint": "Observe o objetivo e a duração da situação.",
+        "errorFocus": "VISIT_AS_MIGRATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-36",
+      "statement": "Uma fonte informa de onde uma pessoa veio, mas não por que mudou. Como completar a descrição?",
+      "prompt": "Uma fonte informa de onde uma pessoa veio, mas não por que mudou. Como completar a descrição?",
+      "options": [
+        "Adivinhar uma razão comum",
+        "Atribuir a razão a todas as pessoas",
+        "Omitir a origem também",
+        "Dizer que o motivo não foi informado"
+      ],
+      "correctAnswer": "Dizer que o motivo não foi informado",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Adivinhar uma razão comum": [
+          "UNSUPPORTED_REASON"
+        ],
+        "Atribuir a razão a todas as pessoas": [
+          "UNSUPPORTED_REASON"
+        ],
+        "Omitir a origem também": [
+          "UNSUPPORTED_REASON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_SEM_MOTIVO",
+      "explanation": "Reconhecer o limite da fonte mantém a descrição precisa.",
+      "hint": "Não invente o dado que falta.",
+      "errorFocus": "UNSUPPORTED_REASON",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer o limite da fonte mantém a descrição precisa.",
+        "incorrect": "Reconhecer o limite da fonte mantém a descrição precisa.",
+        "hint": "Não invente o dado que falta.",
+        "errorFocus": "UNSUPPORTED_REASON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-37",
+      "statement": "Por que uma atividade pode usar histórias fictícias de migração?",
+      "prompt": "Por que uma atividade pode usar histórias fictícias de migração?",
+      "options": [
+        "Para estudar trajetórias sem exigir que colegas revelem dados familiares",
+        "Para provar que nenhuma história real importa",
+        "Para decidir quem pertence ao bairro",
+        "Para substituir todas as fontes públicas"
+      ],
+      "correctAnswer": "Para estudar trajetórias sem exigir que colegas revelem dados familiares",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para provar que nenhuma história real importa": [
+          "FICTION_AS_ERASURE"
+        ],
+        "Para decidir quem pertence ao bairro": [
+          "FICTION_AS_ERASURE"
+        ],
+        "Para substituir todas as fontes públicas": [
+          "FICTION_AS_ERASURE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PAINEL_DE_RESPEITO",
+      "explanation": "Ficção protege privacidade e pode apoiar aprendizagem sem negar histórias reais.",
+      "hint": "Pense no objetivo de proteger estudantes.",
+      "errorFocus": "FICTION_AS_ERASURE",
+      "feedback": {
+        "correct": "Boa observação: Ficção protege privacidade e pode apoiar aprendizagem sem negar histórias reais.",
+        "incorrect": "Ficção protege privacidade e pode apoiar aprendizagem sem negar histórias reais.",
+        "hint": "Pense no objetivo de proteger estudantes.",
+        "errorFocus": "FICTION_AS_ERASURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-38",
+      "statement": "Um mapa e uma notícia têm datas diferentes sobre uma mudança no bairro. Qual é o próximo passo?",
+      "prompt": "Um mapa e uma notícia têm datas diferentes sobre uma mudança no bairro. Qual é o próximo passo?",
+      "options": [
+        "Escolher a data mais conveniente",
+        "Comparar o que cada fonte registra e conferir seus períodos",
+        "Misturar as datas em uma só",
+        "Descartar toda fonte que diverge"
+      ],
+      "correctAnswer": "Comparar o que cada fonte registra e conferir seus períodos",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher a data mais conveniente": [
+          "SOURCE_DATE_COLLAPSE"
+        ],
+        "Misturar as datas em uma só": [
+          "SOURCE_DATE_COLLAPSE"
+        ],
+        "Descartar toda fonte que diverge": [
+          "SOURCE_DATE_COLLAPSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_FONTES_COM_DATAS",
+      "explanation": "Fontes podem tratar de períodos ou aspectos diferentes; compare antes de concluir.",
+      "hint": "Confira legenda, autoria e data.",
+      "errorFocus": "SOURCE_DATE_COLLAPSE",
+      "feedback": {
+        "correct": "Boa observação: Fontes podem tratar de períodos ou aspectos diferentes; compare antes de concluir.",
+        "incorrect": "Fontes podem tratar de períodos ou aspectos diferentes; compare antes de concluir.",
+        "hint": "Confira legenda, autoria e data.",
+        "errorFocus": "SOURCE_DATE_COLLAPSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-39",
+      "statement": "Qual frase descreve sem classificar pessoas por origem?",
+      "prompt": "Qual frase descreve sem classificar pessoas por origem?",
+      "options": [
+        "Um grupo é mais do bairro que outro",
+        "Só quem nasceu aqui pertence",
+        "A fonte relata trajetórias diferentes de chegada",
+        "A origem decide como alguém vive"
+      ],
+      "correctAnswer": "A fonte relata trajetórias diferentes de chegada",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um grupo é mais do bairro que outro": [
+          "BELONGING_HIERARCHY"
+        ],
+        "Só quem nasceu aqui pertence": [
+          "BELONGING_HIERARCHY"
+        ],
+        "A origem decide como alguém vive": [
+          "BELONGING_HIERARCHY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FALA_RESPEITOSA_SOBRE_ORIGEM",
+      "explanation": "A frase reconhece diversidade sem hierarquizar pertencimento.",
+      "hint": "Evite transformar origem em medida de valor.",
+      "errorFocus": "BELONGING_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece diversidade sem hierarquizar pertencimento.",
+        "incorrect": "A frase reconhece diversidade sem hierarquizar pertencimento.",
+        "hint": "Evite transformar origem em medida de valor.",
+        "errorFocus": "BELONGING_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ge01-community-migration-stories-40",
+      "statement": "Uma linha do tempo e um mapa mostram mudanças em dois períodos, mas não explicam todos os motivos. Qual síntese é adequada?",
+      "prompt": "Uma linha do tempo e um mapa mostram mudanças em dois períodos, mas não explicam todos os motivos. Qual síntese é adequada?",
+      "options": [
+        "Todas as pessoas migraram pelo mesmo motivo",
+        "O mapa prova sentimentos e intenções",
+        "Não é possível aprender nada com essas fontes",
+        "As fontes registram deslocamentos em períodos diferentes e deixam algumas razões sem resposta"
+      ],
+      "correctAnswer": "As fontes registram deslocamentos em períodos diferentes e deixam algumas razões sem resposta",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as pessoas migraram pelo mesmo motivo": [
+          "LIMITS_AS_NO_EVIDENCE"
+        ],
+        "O mapa prova sentimentos e intenções": [
+          "LIMITS_AS_NO_EVIDENCE"
+        ],
+        "Não é possível aprender nada com essas fontes": [
+          "LIMITS_AS_NO_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MAPA_FINAL_DE_REVISAO",
+      "explanation": "É possível aprender sobre movimentos e períodos, reconhecendo o que as fontes não mostram.",
+      "hint": "Junte uma informação e um limite.",
+      "errorFocus": "LIMITS_AS_NO_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: É possível aprender sobre movimentos e períodos, reconhecendo o que as fontes não mostram.",
+        "incorrect": "É possível aprender sobre movimentos e períodos, reconhecendo o que as fontes não mostram.",
+        "hint": "Junte uma informação e um limite.",
+        "errorFocus": "LIMITS_AS_NO_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar mapas com alto contraste, símbolos acompanhados de legenda textual e rotas que também possam ser descritas oralmente.",
+          "Permitir respostas por fala, escrita breve, cartões de sequência, desenho legendado ou comunicação alternativa.",
+          "Oferecer texto em blocos curtos, leitura compartilhada e tempo adicional para organizar os eventos.",
+          "Usar histórias fictícias ou fontes públicas autorizadas e permitir que o estudante passe qualquer convite de compartilhar experiência pessoal."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

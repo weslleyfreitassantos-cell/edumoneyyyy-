@@ -73,6 +73,21 @@
       "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
     },
     {
+      "officialCode": "EI01EF01",
+      "file": "content/bncc/authoring/early-childhood-experiential-v7.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 7,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
       "officialCode": "EI02CG01",
       "file": "content/bncc/authoring/early-childhood-experiential-v2.json",
       "status": "AUTOMATED_SCREEN_PASS",

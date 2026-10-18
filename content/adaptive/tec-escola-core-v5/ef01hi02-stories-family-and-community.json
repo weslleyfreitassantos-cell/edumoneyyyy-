@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi02-stories-family-and-community",
+  "canonicalSkillCode": "AUTHORING_EF01HI02_CONNECT_PERSONAL_FAMILY_COMMUNITY_STORIES",
+  "subject": "HISTORY",
+  "domain": "A COMUNIDADE E SEUS REGISTROS",
+  "topic": "relações entre histórias pessoais, familiares e da comunidade",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Histórias que se encontram",
+    "objective": "Reconhecer, em narrativas fictícias e registros comunitários acessíveis, que histórias de pessoas, famílias e comunidades podem se relacionar, sem impor uma configuração familiar nem solicitar dados privados de estudantes.",
+    "summary": "Cada pessoa participa de várias histórias: pode viver experiências próprias, compartilhar lembranças com pessoas que cuidam dela e fazer parte de espaços comunitários como escola, biblioteca ou bairro. Famílias têm diferentes composições e modos de cuidar. Uma fonte mostra apenas o que foi registrado; ninguém precisa expor fotos, nomes, endereços, parentesco ou acontecimentos pessoais para aprender história.",
+    "explanation": "Observe quem produziu um relato, quando ele foi registrado e sobre qual experiência fala. Uma história fictícia pode mostrar uma criança que aprende uma receita com uma avó, um tio, uma mãe, um pai, uma pessoa responsável ou outra pessoa de confiança; nenhuma forma é a única. Um registro da comunidade pode contar a criação de uma praça, biblioteca ou festa escolar e incluir muitas histórias individuais. Relacione as narrativas usando as pistas disponíveis e diga quando uma informação não aparece. Compare fontes com respeito e nunca conclua que todas as famílias vivem os mesmos acontecimentos.",
+    "workedExample": "Em um livro fictício, Ravi aprende a cuidar de uma horta comunitária com uma pessoa responsável por ele. Um cartaz da escola conta que a horta foi criada por várias turmas. A história de Ravi se relaciona à história da comunidade escolar porque ele participa de uma atividade coletiva; o livro não informa nem precisa informar detalhes privados de sua família.",
+    "commonMistake": "Achar que toda família tem a mesma composição ou exigir uma lembrança, fotografia, nome ou experiência privada para comprovar uma relação histórica.",
+    "priorKnowledge": [
+      "Reconhecer personagens, ações e sequência simples em uma narrativa.",
+      "Identificar registros como desenho, legenda, cartaz ou relato e perceber que cada fonte apresenta informações específicas."
+    ],
+    "keyConcepts": [
+      "história pessoal",
+      "família",
+      "pessoas de cuidado",
+      "comunidade",
+      "narrativa",
+      "registro",
+      "fonte",
+      "relação",
+      "privacidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ONE_FAMILY_MODEL",
+        "action": "Retome cartões com diferentes configurações fictícias de cuidado e substitua “toda família” por “nesta narrativa”; compare as relações sem hierarquia."
+      },
+      {
+        "errorFocus": "SOURCE_AND_INFERENCE",
+        "action": "Marque em duas cores as informações explicitamente escritas e as ideias que a fonte não permite confirmar; mantenha as últimas em aberto."
+      },
+      {
+        "errorFocus": "PERSONAL_DISCLOSURE_REQUIRED",
+        "action": "Ofereça uma narrativa fictícia equivalente e aceite que o estudante passe a vez, sem solicitar explicação ou registro pessoal."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+      "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+      "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi02-story-links-fictional",
+        "title": "Fios entre histórias inventadas",
+        "instructions": "Um conjunto de narrativas fictícias apresenta crianças, diferentes pessoas de cuidado e projetos coletivos da escola ou do bairro.\n1. Escolha uma narrativa e marque uma experiência da personagem.\n2. Leia um cartão comunitário e encontre uma atividade ou espaço que se relacione com aquela experiência.\n3. Desenhe ou explique a relação usando uma pista de cada fonte e indique algo que não é possível saber.",
+        "steps": [
+          "Escolha uma narrativa e marque uma experiência da personagem.",
+          "Leia um cartão comunitário e encontre uma atividade ou espaço que se relacione com aquela experiência.",
+          "Desenhe ou explique a relação usando uma pista de cada fonte e indique algo que não é possível saber."
+        ],
+        "evidence": "Mapa, sequência ou explicação que conecta uma experiência fictícia a uma história comunitária, citando pistas e respeitando limites da fonte.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma personagem ou atividade com apoio.",
+            "developing": "relaciona uma experiência a um evento coletivo com uma pista.",
+            "proficient": "explica a relação com evidências das duas fontes e evita inferências privadas ou generalizações familiares."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi02-community-memory-display",
+        "title": "Mostra de memórias públicas e fictícias",
+        "instructions": "A turma organiza uma pequena mostra com um cartaz público da escola e cartões de memórias inventadas, sem recolher lembranças nem fotografias pessoais.\n1. Observe data, autoria e assunto indicados no cartaz público preparado para a aula.\n2. Escolha um cartão fictício que se conecte a uma atividade comunitária do cartaz.\n3. Monte uma legenda acessível que explique a conexão e deixe claro que o cartão é inventado.",
+        "steps": [
+          "Observe data, autoria e assunto indicados no cartaz público preparado para a aula.",
+          "Escolha um cartão fictício que se conecte a uma atividade comunitária do cartaz.",
+          "Monte uma legenda acessível que explique a conexão e deixe claro que o cartão é inventado."
+        ],
+        "evidence": "Legenda que identifica uma relação entre personagem e comunidade, diferencia fonte pública de narrativa fictícia e protege dados pessoais.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "seleciona um cartão com ajuda.",
+            "developing": "identifica a conexão, mas precisa de apoio para indicar a fonte.",
+            "proficient": "explica a relação, identifica cada tipo de registro e não apresenta dados pessoais."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi02-stories-family-and-community-01",
+          "v1-ef01hi02-stories-family-and-community-02",
+          "v1-ef01hi02-stories-family-and-community-03",
+          "v1-ef01hi02-stories-family-and-community-04",
+          "v1-ef01hi02-stories-family-and-community-05",
+          "v1-ef01hi02-stories-family-and-community-06",
+          "v1-ef01hi02-stories-family-and-community-07",
+          "v1-ef01hi02-stories-family-and-community-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi02-stories-family-and-community-09",
+          "v1-ef01hi02-stories-family-and-community-10",
+          "v1-ef01hi02-stories-family-and-community-11",
+          "v1-ef01hi02-stories-family-and-community-12",
+          "v1-ef01hi02-stories-family-and-community-13",
+          "v1-ef01hi02-stories-family-and-community-14",
+          "v1-ef01hi02-stories-family-and-community-15",
+          "v1-ef01hi02-stories-family-and-community-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi02-stories-family-and-community-17",
+          "v1-ef01hi02-stories-family-and-community-18",
+          "v1-ef01hi02-stories-family-and-community-19",
+          "v1-ef01hi02-stories-family-and-community-20",
+          "v1-ef01hi02-stories-family-and-community-21",
+          "v1-ef01hi02-stories-family-and-community-22",
+          "v1-ef01hi02-stories-family-and-community-23",
+          "v1-ef01hi02-stories-family-and-community-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi02-stories-family-and-community-25",
+          "v1-ef01hi02-stories-family-and-community-26",
+          "v1-ef01hi02-stories-family-and-community-27",
+          "v1-ef01hi02-stories-family-and-community-28",
+          "v1-ef01hi02-stories-family-and-community-29",
+          "v1-ef01hi02-stories-family-and-community-30",
+          "v1-ef01hi02-stories-family-and-community-31",
+          "v1-ef01hi02-stories-family-and-community-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi02-stories-family-and-community-33",
+          "v1-ef01hi02-stories-family-and-community-34",
+          "v1-ef01hi02-stories-family-and-community-35",
+          "v1-ef01hi02-stories-family-and-community-36",
+          "v1-ef01hi02-stories-family-and-community-37",
+          "v1-ef01hi02-stories-family-and-community-38",
+          "v1-ef01hi02-stories-family-and-community-39",
+          "v1-ef01hi02-stories-family-and-community-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI02",
+        "descriptor": "Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-01",
+      "statement": "Na história inventada, Sam participa da horta da escola com sua turma. A qual história coletiva a experiência se relaciona?",
+      "prompt": "Na história inventada, Sam participa da horta da escola com sua turma. A qual história coletiva a experiência se relaciona?",
+      "options": [
+        "À história da comunidade escolar que cuida da horta.",
+        "A todas as histórias de todas as famílias",
+        "A uma lembrança privada que não foi contada",
+        "A uma regra igual para todas as escolas"
+      ],
+      "correctAnswer": "À história da comunidade escolar que cuida da horta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A todas as histórias de todas as famílias": [
+          "PERSONAL_AND_COMMUNITY_LINK"
+        ],
+        "A uma lembrança privada que não foi contada": [
+          "PERSONAL_AND_COMMUNITY_LINK"
+        ],
+        "A uma regra igual para todas as escolas": [
+          "PERSONAL_AND_COMMUNITY_LINK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HORTA_DA_ESCOLA",
+      "explanation": "A atividade da personagem acontece na escola e envolve a comunidade escolar.",
+      "hint": "Localize onde a experiência ocorre.",
+      "errorFocus": "PERSONAL_AND_COMMUNITY_LINK",
+      "feedback": {
+        "correct": "Boa observação: A atividade da personagem acontece na escola e envolve a comunidade escolar.",
+        "incorrect": "A atividade da personagem acontece na escola e envolve a comunidade escolar.",
+        "hint": "Localize onde a experiência ocorre.",
+        "errorFocus": "PERSONAL_AND_COMMUNITY_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-02",
+      "statement": "Um conto diz que Nina mora com duas pessoas responsáveis por ela. O que podemos afirmar?",
+      "prompt": "Um conto diz que Nina mora com duas pessoas responsáveis por ela. O que podemos afirmar?",
+      "options": [
+        "Toda família tem duas pessoas responsáveis",
+        "O conto apresenta duas pessoas responsáveis por Nina.",
+        "Sabemos os nomes e as profissões delas",
+        "A família de Nina é igual a todas"
+      ],
+      "correctAnswer": "O conto apresenta duas pessoas responsáveis por Nina.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda família tem duas pessoas responsáveis": [
+          "FAMILY_SOURCE_LIMIT"
+        ],
+        "Sabemos os nomes e as profissões delas": [
+          "FAMILY_SOURCE_LIMIT"
+        ],
+        "A família de Nina é igual a todas": [
+          "FAMILY_SOURCE_LIMIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_PESSOAS_CUIDADORAS",
+      "explanation": "A fonte apresenta essa configuração para uma personagem, não uma regra universal.",
+      "hint": "Fale somente desta história.",
+      "errorFocus": "FAMILY_SOURCE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta essa configuração para uma personagem, não uma regra universal.",
+        "incorrect": "A fonte apresenta essa configuração para uma personagem, não uma regra universal.",
+        "hint": "Fale somente desta história.",
+        "errorFocus": "FAMILY_SOURCE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-03",
+      "statement": "Um cartaz público registra a inauguração de uma biblioteca do bairro. Que história ele documenta?",
+      "prompt": "Um cartaz público registra a inauguração de uma biblioteca do bairro. Que história ele documenta?",
+      "options": [
+        "A história privada de cada morador",
+        "Todas as lembranças das famílias",
+        "Uma história da comunidade relacionada à biblioteca.",
+        "Um acontecimento que nunca mudou"
+      ],
+      "correctAnswer": "Uma história da comunidade relacionada à biblioteca.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A história privada de cada morador": [
+          "PUBLIC_RECORD_SCOPE"
+        ],
+        "Todas as lembranças das famílias": [
+          "PUBLIC_RECORD_SCOPE"
+        ],
+        "Um acontecimento que nunca mudou": [
+          "PUBLIC_RECORD_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAZ_DE_BIBLIOTECA",
+      "explanation": "O cartaz registra um evento comunitário, não todas as histórias particulares.",
+      "hint": "Observe o assunto indicado no cartaz.",
+      "errorFocus": "PUBLIC_RECORD_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O cartaz registra um evento comunitário, não todas as histórias particulares.",
+        "incorrect": "O cartaz registra um evento comunitário, não todas as histórias particulares.",
+        "hint": "Observe o assunto indicado no cartaz.",
+        "errorFocus": "PUBLIC_RECORD_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-04",
+      "statement": "Em uma narrativa, uma criança aprende uma receita com seu avô. O que a história informa?",
+      "prompt": "Em uma narrativa, uma criança aprende uma receita com seu avô. O que a história informa?",
+      "options": [
+        "Que todas as crianças aprendem receitas com avôs",
+        "Que o avô mora na mesma casa",
+        "Que a receita pertence a toda a comunidade",
+        "Uma experiência compartilhada pela personagem e pelo avô."
+      ],
+      "correctAnswer": "Uma experiência compartilhada pela personagem e pelo avô.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que todas as crianças aprendem receitas com avôs": [
+          "NARRATIVE_NOT_GENERALIZATION"
+        ],
+        "Que o avô mora na mesma casa": [
+          "NARRATIVE_NOT_GENERALIZATION"
+        ],
+        "Que a receita pertence a toda a comunidade": [
+          "NARRATIVE_NOT_GENERALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NARRATIVA_DE_RECEITA_FICTICIA",
+      "explanation": "A narrativa descreve uma relação específica, sem tornar a experiência universal.",
+      "hint": "Use o que a narrativa conta.",
+      "errorFocus": "NARRATIVE_NOT_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A narrativa descreve uma relação específica, sem tornar a experiência universal.",
+        "incorrect": "A narrativa descreve uma relação específica, sem tornar a experiência universal.",
+        "hint": "Use o que a narrativa conta.",
+        "errorFocus": "NARRATIVE_NOT_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-05",
+      "statement": "Um conto mostra uma família ajudando a preparar uma festa comunitária. Como as histórias se relacionam?",
+      "prompt": "Um conto mostra uma família ajudando a preparar uma festa comunitária. Como as histórias se relacionam?",
+      "options": [
+        "A experiência familiar da narrativa participa de um evento coletivo.",
+        "A família organizou todas as festas da cidade",
+        "A festa representa todas as famílias",
+        "A personagem conhece todos os moradores"
+      ],
+      "correctAnswer": "A experiência familiar da narrativa participa de um evento coletivo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A família organizou todas as festas da cidade": [
+          "FAMILY_COMMUNITY_RELATION"
+        ],
+        "A festa representa todas as famílias": [
+          "FAMILY_COMMUNITY_RELATION"
+        ],
+        "A personagem conhece todos os moradores": [
+          "FAMILY_COMMUNITY_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FESTA_DA_RUA_FICTICIA",
+      "explanation": "A personagem e sua família são apresentadas participando de uma atividade da comunidade.",
+      "hint": "Conecte a ação ao evento descrito.",
+      "errorFocus": "FAMILY_COMMUNITY_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A personagem e sua família são apresentadas participando de uma atividade da comunidade.",
+        "incorrect": "A personagem e sua família são apresentadas participando de uma atividade da comunidade.",
+        "hint": "Conecte a ação ao evento descrito.",
+        "errorFocus": "FAMILY_COMMUNITY_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-06",
+      "statement": "Uma imagem pública mostra uma praça e tem uma legenda sobre sua reforma. O que ela não prova sozinha?",
+      "prompt": "Uma imagem pública mostra uma praça e tem uma legenda sobre sua reforma. O que ela não prova sozinha?",
+      "options": [
+        "Que a legenda menciona uma praça",
+        "Como cada família se sentiu durante a reforma.",
+        "Que a imagem registra um espaço",
+        "Que existe uma informação pública"
+      ],
+      "correctAnswer": "Como cada família se sentiu durante a reforma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que a legenda menciona uma praça": [
+          "SOURCE_DOES_NOT_REVEAL_PRIVATE_FEELING"
+        ],
+        "Que a imagem registra um espaço": [
+          "SOURCE_DOES_NOT_REVEAL_PRIVATE_FEELING"
+        ],
+        "Que existe uma informação pública": [
+          "SOURCE_DOES_NOT_REVEAL_PRIVATE_FEELING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOTO_PUBLICA_DE_PRACA",
+      "explanation": "Uma imagem e uma legenda documentam o espaço e a reforma, não sentimentos privados.",
+      "hint": "Pense no que a imagem mostra diretamente.",
+      "errorFocus": "SOURCE_DOES_NOT_REVEAL_PRIVATE_FEELING",
+      "feedback": {
+        "correct": "Boa observação: Uma imagem e uma legenda documentam o espaço e a reforma, não sentimentos privados.",
+        "incorrect": "Uma imagem e uma legenda documentam o espaço e a reforma, não sentimentos privados.",
+        "hint": "Pense no que a imagem mostra diretamente.",
+        "errorFocus": "SOURCE_DOES_NOT_REVEAL_PRIVATE_FEELING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-07",
+      "statement": "Um conjunto tem um relato de personagem e um cartaz da escola. Qual é a diferença entre os registros?",
+      "prompt": "Um conjunto tem um relato de personagem e um cartaz da escola. Qual é a diferença entre os registros?",
+      "options": [
+        "Um é sempre verdadeiro e o outro sempre falso",
+        "Os dois contam todos os detalhes de cada família",
+        "Um é uma narrativa sobre a personagem e outro informa um evento escolar.",
+        "O cartaz é uma lembrança privada"
+      ],
+      "correctAnswer": "Um é uma narrativa sobre a personagem e outro informa um evento escolar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um é sempre verdadeiro e o outro sempre falso": [
+          "RECORD_TYPE"
+        ],
+        "Os dois contam todos os detalhes de cada família": [
+          "RECORD_TYPE"
+        ],
+        "O cartaz é uma lembrança privada": [
+          "RECORD_TYPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_HISTORIAS",
+      "explanation": "Os registros têm assuntos e formas diferentes; isso não define automaticamente toda a verdade.",
+      "hint": "Compare o assunto de cada registro.",
+      "errorFocus": "RECORD_TYPE",
+      "feedback": {
+        "correct": "Boa observação: Os registros têm assuntos e formas diferentes; isso não define automaticamente toda a verdade.",
+        "incorrect": "Os registros têm assuntos e formas diferentes; isso não define automaticamente toda a verdade.",
+        "hint": "Compare o assunto de cada registro.",
+        "errorFocus": "RECORD_TYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-08",
+      "statement": "A atividade pede uma conexão com uma experiência. Um estudante prefere não contar algo próprio. O que fazer?",
+      "prompt": "A atividade pede uma conexão com uma experiência. Um estudante prefere não contar algo próprio. O que fazer?",
+      "options": [
+        "Exigir que conte um segredo",
+        "Pedir uma foto de casa",
+        "Concluir que não pode participar",
+        "Oferecer uma personagem fictícia para realizar a mesma tarefa."
+      ],
+      "correctAnswer": "Oferecer uma personagem fictícia para realizar a mesma tarefa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que conte um segredo": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Pedir uma foto de casa": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Concluir que não pode participar": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OPCAO_DE_HISTORIA_FICTICIA",
+      "explanation": "A narrativa fictícia permite demonstrar a aprendizagem sem exposição pessoal.",
+      "hint": "Escolha uma alternativa que preserve a tarefa e a privacidade.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa fictícia permite demonstrar a aprendizagem sem exposição pessoal.",
+        "incorrect": "A narrativa fictícia permite demonstrar a aprendizagem sem exposição pessoal.",
+        "hint": "Escolha uma alternativa que preserve a tarefa e a privacidade.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-09",
+      "statement": "Um mural fictício registra que diferentes turmas organizaram uma feira de livros. O que é uma história da comunidade escolar?",
+      "prompt": "Um mural fictício registra que diferentes turmas organizaram uma feira de livros. O que é uma história da comunidade escolar?",
+      "options": [
+        "A organização coletiva da feira.",
+        "A lembrança privada de cada leitor",
+        "O gosto literário de todas as famílias",
+        "O número de livros que cada pessoa tem em casa"
+      ],
+      "correctAnswer": "A organização coletiva da feira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A lembrança privada de cada leitor": [
+          "SCHOOL_COMMUNITY_EVENT"
+        ],
+        "O gosto literário de todas as famílias": [
+          "SCHOOL_COMMUNITY_EVENT"
+        ],
+        "O número de livros que cada pessoa tem em casa": [
+          "SCHOOL_COMMUNITY_EVENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MURAL_DE_LEITURA",
+      "explanation": "O mural registra uma ação coletiva da escola.",
+      "hint": "Procure a atividade feita por mais de uma turma.",
+      "errorFocus": "SCHOOL_COMMUNITY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: O mural registra uma ação coletiva da escola.",
+        "incorrect": "O mural registra uma ação coletiva da escola.",
+        "hint": "Procure a atividade feita por mais de uma turma.",
+        "errorFocus": "SCHOOL_COMMUNITY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-10",
+      "statement": "Uma personagem costuma visitar uma praça com uma pessoa de confiança. O que relaciona sua experiência à comunidade?",
+      "prompt": "Uma personagem costuma visitar uma praça com uma pessoa de confiança. O que relaciona sua experiência à comunidade?",
+      "options": [
+        "A personagem conhece todos que vivem perto",
+        "A praça é um espaço comunitário usado na narrativa.",
+        "Toda família visita a praça",
+        "A praça pertence à personagem"
+      ],
+      "correctAnswer": "A praça é um espaço comunitário usado na narrativa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A personagem conhece todos que vivem perto": [
+          "SHARED_COMMUNITY_SPACE"
+        ],
+        "Toda família visita a praça": [
+          "SHARED_COMMUNITY_SPACE"
+        ],
+        "A praça pertence à personagem": [
+          "SHARED_COMMUNITY_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CONTO_DA_PRACA",
+      "explanation": "A narrativa relaciona uma experiência a um espaço da comunidade sem afirmar quem mais o usa.",
+      "hint": "Observe o lugar compartilhado.",
+      "errorFocus": "SHARED_COMMUNITY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa relaciona uma experiência a um espaço da comunidade sem afirmar quem mais o usa.",
+        "incorrect": "A narrativa relaciona uma experiência a um espaço da comunidade sem afirmar quem mais o usa.",
+        "hint": "Observe o lugar compartilhado.",
+        "errorFocus": "SHARED_COMMUNITY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-11",
+      "statement": "Um conto mostra uma criança cuidada por uma tia; outro, por dois responsáveis sem parentesco informado. Qual comparação é respeitosa?",
+      "prompt": "Um conto mostra uma criança cuidada por uma tia; outro, por dois responsáveis sem parentesco informado. Qual comparação é respeitosa?",
+      "options": [
+        "Uma configuração é mais verdadeira",
+        "Toda criança vive uma dessas duas formas",
+        "As histórias apresentam pessoas de cuidado diferentes.",
+        "O parentesco define o carinho"
+      ],
+      "correctAnswer": "As histórias apresentam pessoas de cuidado diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma configuração é mais verdadeira": [
+          "DIVERSE_CARE_RELATIONSHIPS"
+        ],
+        "Toda criança vive uma dessas duas formas": [
+          "DIVERSE_CARE_RELATIONSHIPS"
+        ],
+        "O parentesco define o carinho": [
+          "DIVERSE_CARE_RELATIONSHIPS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_CARTOES_DE_CUIDADO",
+      "explanation": "Os cartões mostram formas específicas e não autorizam hierarquias ou generalizações.",
+      "hint": "Descreva os cartões sem classificar.",
+      "errorFocus": "DIVERSE_CARE_RELATIONSHIPS",
+      "feedback": {
+        "correct": "Boa observação: Os cartões mostram formas específicas e não autorizam hierarquias ou generalizações.",
+        "incorrect": "Os cartões mostram formas específicas e não autorizam hierarquias ou generalizações.",
+        "hint": "Descreva os cartões sem classificar.",
+        "errorFocus": "DIVERSE_CARE_RELATIONSHIPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-12",
+      "statement": "Uma agenda pública informa que a biblioteca recebeu uma roda de leitura. O que essa fonte permite identificar?",
+      "prompt": "Uma agenda pública informa que a biblioteca recebeu uma roda de leitura. O que essa fonte permite identificar?",
+      "options": [
+        "O que cada família leu em casa",
+        "Quem gostou mais do evento",
+        "Todas as atividades já realizadas",
+        "Uma atividade realizada naquele espaço comunitário."
+      ],
+      "correctAnswer": "Uma atividade realizada naquele espaço comunitário.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O que cada família leu em casa": [
+          "PUBLIC_ACTIVITY_RECORD"
+        ],
+        "Quem gostou mais do evento": [
+          "PUBLIC_ACTIVITY_RECORD"
+        ],
+        "Todas as atividades já realizadas": [
+          "PUBLIC_ACTIVITY_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AGENDA_DA_BIBLIOTECA",
+      "explanation": "A agenda registra uma atividade, não experiências individuais ou a história completa.",
+      "hint": "Fique no evento listado.",
+      "errorFocus": "PUBLIC_ACTIVITY_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A agenda registra uma atividade, não experiências individuais ou a história completa.",
+        "incorrect": "A agenda registra uma atividade, não experiências individuais ou a história completa.",
+        "hint": "Fique no evento listado.",
+        "errorFocus": "PUBLIC_ACTIVITY_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-13",
+      "statement": "Um desenho inventado mostra uma personagem visitando uma feira do bairro. Qual legenda conecta as histórias?",
+      "prompt": "Um desenho inventado mostra uma personagem visitando uma feira do bairro. Qual legenda conecta as histórias?",
+      "options": [
+        "“A visita da personagem faz parte da história da feira em sua comunidade.”",
+        "“Toda criança visita a feira.”",
+        "“A família da personagem criou a feira.”",
+        "“A imagem mostra o que todos sentiram.”"
+      ],
+      "correctAnswer": "“A visita da personagem faz parte da história da feira em sua comunidade.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Toda criança visita a feira.”": [
+          "CAREFUL_CONNECTION"
+        ],
+        "“A família da personagem criou a feira.”": [
+          "CAREFUL_CONNECTION"
+        ],
+        "“A imagem mostra o que todos sentiram.”": [
+          "CAREFUL_CONNECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEGENDA_DA_MEMORIA_FICTICIA",
+      "explanation": "A legenda relaciona uma experiência da personagem ao evento comunitário sem extrapolar.",
+      "hint": "Use uma relação possível, não universal.",
+      "errorFocus": "CAREFUL_CONNECTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda relaciona uma experiência da personagem ao evento comunitário sem extrapolar.",
+        "incorrect": "A legenda relaciona uma experiência da personagem ao evento comunitário sem extrapolar.",
+        "hint": "Use uma relação possível, não universal.",
+        "errorFocus": "CAREFUL_CONNECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-14",
+      "statement": "Um mapa marca a sala onde ocorreu uma exposição coletiva. Como uma história individual pode se relacionar?",
+      "prompt": "Um mapa marca a sala onde ocorreu uma exposição coletiva. Como uma história individual pode se relacionar?",
+      "options": [
+        "O mapa conta todos os detalhes da personagem",
+        "Uma personagem pode ter participado da exposição registrada no mapa.",
+        "Toda pessoa da escola participou",
+        "A exposição representa cada família"
+      ],
+      "correctAnswer": "Uma personagem pode ter participado da exposição registrada no mapa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O mapa conta todos os detalhes da personagem": [
+          "INDIVIDUAL_IN_COLLECTIVE_EVENT"
+        ],
+        "Toda pessoa da escola participou": [
+          "INDIVIDUAL_IN_COLLECTIVE_EVENT"
+        ],
+        "A exposição representa cada família": [
+          "INDIVIDUAL_IN_COLLECTIVE_EVENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAPA_DE_EVENTOS_DA_ESCOLA",
+      "explanation": "Uma participação pode conectar experiências individuais a um evento coletivo.",
+      "hint": "Procure uma ligação sem dizer que todos participaram.",
+      "errorFocus": "INDIVIDUAL_IN_COLLECTIVE_EVENT",
+      "feedback": {
+        "correct": "Boa observação: Uma participação pode conectar experiências individuais a um evento coletivo.",
+        "incorrect": "Uma participação pode conectar experiências individuais a um evento coletivo.",
+        "hint": "Procure uma ligação sem dizer que todos participaram.",
+        "errorFocus": "INDIVIDUAL_IN_COLLECTIVE_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-15",
+      "statement": "Um relato fictício não tem data. Qual informação deve ficar em aberto?",
+      "prompt": "Um relato fictício não tem data. Qual informação deve ficar em aberto?",
+      "options": [
+        "Que o relato não tem data",
+        "Que o texto conta uma experiência",
+        "Quando o acontecimento descrito ocorreu.",
+        "Que há uma personagem"
+      ],
+      "correctAnswer": "Quando o acontecimento descrito ocorreu.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que o relato não tem data": [
+          "MISSING_DATE"
+        ],
+        "Que o texto conta uma experiência": [
+          "MISSING_DATE"
+        ],
+        "Que há uma personagem": [
+          "MISSING_DATE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELATO_SEM_DATA",
+      "explanation": "Sem data, não podemos situar com precisão a época do relato.",
+      "hint": "Não adivinhe o que falta.",
+      "errorFocus": "MISSING_DATE",
+      "feedback": {
+        "correct": "Boa observação: Sem data, não podemos situar com precisão a época do relato.",
+        "incorrect": "Sem data, não podemos situar com precisão a época do relato.",
+        "hint": "Não adivinhe o que falta.",
+        "errorFocus": "MISSING_DATE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-16",
+      "statement": "Por que comparar um cartaz público com uma narrativa inventada pode ser útil?",
+      "prompt": "Por que comparar um cartaz público com uma narrativa inventada pode ser útil?",
+      "options": [
+        "Para provar que a personagem existiu",
+        "Para descobrir dados privados de moradores",
+        "Para afirmar que o cartaz conta todas as experiências",
+        "Para relacionar um evento comunitário a uma personagem, mantendo claros os tipos de fonte."
+      ],
+      "correctAnswer": "Para relacionar um evento comunitário a uma personagem, mantendo claros os tipos de fonte.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para provar que a personagem existiu": [
+          "DISTINCT_SOURCE_PURPOSES"
+        ],
+        "Para descobrir dados privados de moradores": [
+          "DISTINCT_SOURCE_PURPOSES"
+        ],
+        "Para afirmar que o cartaz conta todas as experiências": [
+          "DISTINCT_SOURCE_PURPOSES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_FONTES",
+      "explanation": "Cada fonte oferece pistas diferentes e deve ser identificada como tal.",
+      "hint": "Pense na contribuição de cada registro.",
+      "errorFocus": "DISTINCT_SOURCE_PURPOSES",
+      "feedback": {
+        "correct": "Boa observação: Cada fonte oferece pistas diferentes e deve ser identificada como tal.",
+        "incorrect": "Cada fonte oferece pistas diferentes e deve ser identificada como tal.",
+        "hint": "Pense na contribuição de cada registro.",
+        "errorFocus": "DISTINCT_SOURCE_PURPOSES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-17",
+      "statement": "Um conto descreve uma personagem lendo em um festival organizado pela escola. Qual relação é apoiada?",
+      "prompt": "Um conto descreve uma personagem lendo em um festival organizado pela escola. Qual relação é apoiada?",
+      "options": [
+        "A experiência da personagem acontece em um evento da comunidade escolar.",
+        "A personagem representa todas as famílias",
+        "A escola organiza todos os festivais do bairro",
+        "Todos os estudantes gostaram do evento"
+      ],
+      "correctAnswer": "A experiência da personagem acontece em um evento da comunidade escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A personagem representa todas as famílias": [
+          "EVENT_AND_PERSONAL_STORY"
+        ],
+        "A escola organiza todos os festivais do bairro": [
+          "EVENT_AND_PERSONAL_STORY"
+        ],
+        "Todos os estudantes gostaram do evento": [
+          "EVENT_AND_PERSONAL_STORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FESTIVAL_DE_LEITURA",
+      "explanation": "A história vincula a personagem a um evento escolar específico.",
+      "hint": "Conecte a ação e o evento sem generalizar.",
+      "errorFocus": "EVENT_AND_PERSONAL_STORY",
+      "feedback": {
+        "correct": "Boa observação: A história vincula a personagem a um evento escolar específico.",
+        "incorrect": "A história vincula a personagem a um evento escolar específico.",
+        "hint": "Conecte a ação e o evento sem generalizar.",
+        "errorFocus": "EVENT_AND_PERSONAL_STORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-18",
+      "statement": "Um cartaz comunitário informa um mutirão de cuidado do parque. Uma narrativa mostra Rui ajudando a recolher folhas secas. O que conecta os registros?",
+      "prompt": "Um cartaz comunitário informa um mutirão de cuidado do parque. Uma narrativa mostra Rui ajudando a recolher folhas secas. O que conecta os registros?",
+      "options": [
+        "Rui organizou todos os mutirões",
+        "A ação fictícia de Rui participa de um tema de cuidado comunitário do parque.",
+        "Todas as famílias recolhem folhas juntas",
+        "O cartaz informa o que Rui pensou"
+      ],
+      "correctAnswer": "A ação fictícia de Rui participa de um tema de cuidado comunitário do parque.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Rui organizou todos os mutirões": [
+          "LINK_ACROSS_RECORDS"
+        ],
+        "Todas as famílias recolhem folhas juntas": [
+          "LINK_ACROSS_RECORDS"
+        ],
+        "O cartaz informa o que Rui pensou": [
+          "LINK_ACROSS_RECORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTAZ_DE_PRESERVACAO_DO_PARQUE",
+      "explanation": "A narrativa e o cartaz se relacionam pelo parque e pelo cuidado, sem afirmar autoria ou sentimentos.",
+      "hint": "Use o tema comum às duas fontes.",
+      "errorFocus": "LINK_ACROSS_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: A narrativa e o cartaz se relacionam pelo parque e pelo cuidado, sem afirmar autoria ou sentimentos.",
+        "incorrect": "A narrativa e o cartaz se relacionam pelo parque e pelo cuidado, sem afirmar autoria ou sentimentos.",
+        "hint": "Use o tema comum às duas fontes.",
+        "errorFocus": "LINK_ACROSS_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-19",
+      "statement": "Uma tarefa propõe desenhar parentes. Qual alternativa é mais inclusiva e segura?",
+      "prompt": "Uma tarefa propõe desenhar parentes. Qual alternativa é mais inclusiva e segura?",
+      "options": [
+        "Exigir uma árvore com nomes completos",
+        "Pedir endereços de familiares",
+        "Permitir escolher personagens fictícios ou um mapa de pessoas de cuidado, sem exigir nomes reais.",
+        "Avaliar quem tem mais parentes"
+      ],
+      "correctAnswer": "Permitir escolher personagens fictícios ou um mapa de pessoas de cuidado, sem exigir nomes reais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Exigir uma árvore com nomes completos": [
+          "PRIVACY_AND_FAMILY_DIVERSITY"
+        ],
+        "Pedir endereços de familiares": [
+          "PRIVACY_AND_FAMILY_DIVERSITY"
+        ],
+        "Avaliar quem tem mais parentes": [
+          "PRIVACY_AND_FAMILY_DIVERSITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ARVORE_GENEALOGICA_OPCIONAL",
+      "explanation": "Alternativas fictícias preservam o objetivo de relacionar histórias e respeitam diferentes famílias.",
+      "hint": "Escolha uma tarefa que não exija dados reais.",
+      "errorFocus": "PRIVACY_AND_FAMILY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Alternativas fictícias preservam o objetivo de relacionar histórias e respeitam diferentes famílias.",
+        "incorrect": "Alternativas fictícias preservam o objetivo de relacionar histórias e respeitam diferentes famílias.",
+        "hint": "Escolha uma tarefa que não exija dados reais.",
+        "errorFocus": "PRIVACY_AND_FAMILY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-20",
+      "statement": "Uma história inventada diz que uma família passou a frequentar uma biblioteca nova. O que a narrativa pode mostrar?",
+      "prompt": "Uma história inventada diz que uma família passou a frequentar uma biblioteca nova. O que a narrativa pode mostrar?",
+      "options": [
+        "Que todas as famílias mudaram de bairro",
+        "Que a biblioteca mudou todos os costumes",
+        "Que a história pessoal explica toda a história do bairro",
+        "Uma experiência daquela personagem ligada a um espaço da comunidade."
+      ],
+      "correctAnswer": "Uma experiência daquela personagem ligada a um espaço da comunidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que todas as famílias mudaram de bairro": [
+          "BOUNDED_PERSONAL_HISTORY"
+        ],
+        "Que a biblioteca mudou todos os costumes": [
+          "BOUNDED_PERSONAL_HISTORY"
+        ],
+        "Que a história pessoal explica toda a história do bairro": [
+          "BOUNDED_PERSONAL_HISTORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NARRATIVA_DE_MUDANCA_DE_BAIRRO",
+      "explanation": "Uma narrativa individual é uma fonte parcial para relacionar a pessoa ao espaço comunitário.",
+      "hint": "Mantenha a conclusão no alcance da narrativa.",
+      "errorFocus": "BOUNDED_PERSONAL_HISTORY",
+      "feedback": {
+        "correct": "Boa observação: Uma narrativa individual é uma fonte parcial para relacionar a pessoa ao espaço comunitário.",
+        "incorrect": "Uma narrativa individual é uma fonte parcial para relacionar a pessoa ao espaço comunitário.",
+        "hint": "Mantenha a conclusão no alcance da narrativa.",
+        "errorFocus": "BOUNDED_PERSONAL_HISTORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-21",
+      "statement": "Um cartaz lista a data de uma festa; uma entrevista fictícia conta que a personagem participou. Como relacionar?",
+      "prompt": "Um cartaz lista a data de uma festa; uma entrevista fictícia conta que a personagem participou. Como relacionar?",
+      "options": [
+        "A data situa o evento e a entrevista descreve uma experiência de participação.",
+        "A entrevista prova o que todos sentiram",
+        "O cartaz conta cada lembrança individual",
+        "As fontes têm a mesma finalidade"
+      ],
+      "correctAnswer": "A data situa o evento e a entrevista descreve uma experiência de participação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A entrevista prova o que todos sentiram": [
+          "COMPLEMENTARY_EVIDENCE"
+        ],
+        "O cartaz conta cada lembrança individual": [
+          "COMPLEMENTARY_EVIDENCE"
+        ],
+        "As fontes têm a mesma finalidade": [
+          "COMPLEMENTARY_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTAZ_E_ENTREVISTA_FICTICIA",
+      "explanation": "As fontes fornecem pistas diferentes que se complementam sem representar todos.",
+      "hint": "Diga o que cada fonte acrescenta.",
+      "errorFocus": "COMPLEMENTARY_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: As fontes fornecem pistas diferentes que se complementam sem representar todos.",
+        "incorrect": "As fontes fornecem pistas diferentes que se complementam sem representar todos.",
+        "hint": "Diga o que cada fonte acrescenta.",
+        "errorFocus": "COMPLEMENTARY_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-22",
+      "statement": "Um livro público lista apresentações de uma feira cultural. O que ele não revela automaticamente?",
+      "prompt": "Um livro público lista apresentações de uma feira cultural. O que ele não revela automaticamente?",
+      "options": [
+        "Que a feira teve apresentações listadas",
+        "As histórias e opiniões pessoais de cada participante.",
+        "Que existe um registro escolar",
+        "Que o livro tem informações sobre o evento"
+      ],
+      "correctAnswer": "As histórias e opiniões pessoais de cada participante.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que a feira teve apresentações listadas": [
+          "PUBLIC_EVENT_VS_PRIVATE_EXPERIENCE"
+        ],
+        "Que existe um registro escolar": [
+          "PUBLIC_EVENT_VS_PRIVATE_EXPERIENCE"
+        ],
+        "Que o livro tem informações sobre o evento": [
+          "PUBLIC_EVENT_VS_PRIVATE_EXPERIENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIVRO_DE_REGISTROS_DA_ESCOLA",
+      "explanation": "Um registro de atividades não fornece por si só relatos pessoais.",
+      "hint": "Separe evento registrado de experiência vivida.",
+      "errorFocus": "PUBLIC_EVENT_VS_PRIVATE_EXPERIENCE",
+      "feedback": {
+        "correct": "Boa observação: Um registro de atividades não fornece por si só relatos pessoais.",
+        "incorrect": "Um registro de atividades não fornece por si só relatos pessoais.",
+        "hint": "Separe evento registrado de experiência vivida.",
+        "errorFocus": "PUBLIC_EVENT_VS_PRIVATE_EXPERIENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-23",
+      "statement": "Uma fonte nova apresenta a história de uma praça, sem falar de estudantes. Como conectá-la a uma história pessoal fictícia?",
+      "prompt": "Uma fonte nova apresenta a história de uma praça, sem falar de estudantes. Como conectá-la a uma história pessoal fictícia?",
+      "options": [
+        "Apresentar a personagem como moradora real",
+        "Afirmar que todos usam a praça",
+        "Criar uma personagem que use a praça e explicar que essa conexão é inventada.",
+        "Adicionar um endereço verdadeiro"
+      ],
+      "correctAnswer": "Criar uma personagem que use a praça e explicar que essa conexão é inventada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apresentar a personagem como moradora real": [
+          "LABEL_FICTIONAL_LINK"
+        ],
+        "Afirmar que todos usam a praça": [
+          "LABEL_FICTIONAL_LINK"
+        ],
+        "Adicionar um endereço verdadeiro": [
+          "LABEL_FICTIONAL_LINK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOVA_FONTE_COMUNITARIA",
+      "explanation": "A conexão pode ser didática e inventada, desde que seja identificada como tal.",
+      "hint": "Deixe explícito quando a personagem é fictícia.",
+      "errorFocus": "LABEL_FICTIONAL_LINK",
+      "feedback": {
+        "correct": "Boa observação: A conexão pode ser didática e inventada, desde que seja identificada como tal.",
+        "incorrect": "A conexão pode ser didática e inventada, desde que seja identificada como tal.",
+        "hint": "Deixe explícito quando a personagem é fictícia.",
+        "errorFocus": "LABEL_FICTIONAL_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-24",
+      "statement": "Um colega conta uma lembrança e depois pede que ela não seja exposta no mural. O que fazer?",
+      "prompt": "Um colega conta uma lembrança e depois pede que ela não seja exposta no mural. O que fazer?",
+      "options": [
+        "Publicar porque a lembrança foi contada",
+        "Compartilhar sem citar o nome",
+        "Exigir que a pessoa mude de ideia",
+        "Respeitar o pedido e usar outra fonte autorizada ou fictícia."
+      ],
+      "correctAnswer": "Respeitar o pedido e usar outra fonte autorizada ou fictícia.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Publicar porque a lembrança foi contada": [
+          "CONSENT_AND_PRIVACY"
+        ],
+        "Compartilhar sem citar o nome": [
+          "CONSENT_AND_PRIVACY"
+        ],
+        "Exigir que a pessoa mude de ideia": [
+          "CONSENT_AND_PRIVACY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MEMORIA_SEM_AUTORIZACAO",
+      "explanation": "Compartilhar uma memória requer cuidado e autorização; uma alternativa didática mantém a participação.",
+      "hint": "Considere consentimento e privacidade.",
+      "errorFocus": "CONSENT_AND_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Compartilhar uma memória requer cuidado e autorização; uma alternativa didática mantém a participação.",
+        "incorrect": "Compartilhar uma memória requer cuidado e autorização; uma alternativa didática mantém a participação.",
+        "hint": "Considere consentimento e privacidade.",
+        "errorFocus": "CONSENT_AND_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-25",
+      "statement": "Uma linha mostra personagem, feira da escola e criação da biblioteca do bairro. Qual é um evento comunitário?",
+      "prompt": "Uma linha mostra personagem, feira da escola e criação da biblioteca do bairro. Qual é um evento comunitário?",
+      "options": [
+        "A criação da biblioteca do bairro.",
+        "A preferência privada de uma personagem",
+        "Uma lembrança sem fonte",
+        "O nome inventado da personagem"
+      ],
+      "correctAnswer": "A criação da biblioteca do bairro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A preferência privada de uma personagem": [
+          "PERSONAL_VS_COMMUNITY_EVENT"
+        ],
+        "Uma lembrança sem fonte": [
+          "PERSONAL_VS_COMMUNITY_EVENT"
+        ],
+        "O nome inventado da personagem": [
+          "PERSONAL_VS_COMMUNITY_EVENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LINHA_DE_EVENTOS_FICTICIA",
+      "explanation": "A linha distingue experiência de personagem de evento comunitário registrado.",
+      "hint": "Identifique o acontecimento compartilhado.",
+      "errorFocus": "PERSONAL_VS_COMMUNITY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A linha distingue experiência de personagem de evento comunitário registrado.",
+        "incorrect": "A linha distingue experiência de personagem de evento comunitário registrado.",
+        "hint": "Identifique o acontecimento compartilhado.",
+        "errorFocus": "PERSONAL_VS_COMMUNITY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-26",
+      "statement": "Uma narrativa não explica o parentesco entre uma criança e quem cuida dela. Como descrevê-la?",
+      "prompt": "Uma narrativa não explica o parentesco entre uma criança e quem cuida dela. Como descrevê-la?",
+      "options": [
+        "Como seus pais com certeza",
+        "Como pessoas de cuidado da personagem, sem inventar parentesco.",
+        "Como pessoas que moram em outra cidade",
+        "Como responsáveis por toda a comunidade"
+      ],
+      "correctAnswer": "Como pessoas de cuidado da personagem, sem inventar parentesco.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como seus pais com certeza": [
+          "DO_NOT_INVENT_RELATIONSHIP"
+        ],
+        "Como pessoas que moram em outra cidade": [
+          "DO_NOT_INVENT_RELATIONSHIP"
+        ],
+        "Como responsáveis por toda a comunidade": [
+          "DO_NOT_INVENT_RELATIONSHIP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "HISTORIA_DE_PESSOAS_DE_CUIDADO",
+      "explanation": "A fonte não nomeia parentesco, portanto devemos manter descrição aberta.",
+      "hint": "Use as palavras da fonte.",
+      "errorFocus": "DO_NOT_INVENT_RELATIONSHIP",
+      "feedback": {
+        "correct": "Boa observação: A fonte não nomeia parentesco, portanto devemos manter descrição aberta.",
+        "incorrect": "A fonte não nomeia parentesco, portanto devemos manter descrição aberta.",
+        "hint": "Use as palavras da fonte.",
+        "errorFocus": "DO_NOT_INVENT_RELATIONSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-27",
+      "statement": "Um cartaz registra a abertura de uma praça; um conto mostra uma personagem brincando nela. O que se pode relacionar?",
+      "prompt": "Um cartaz registra a abertura de uma praça; um conto mostra uma personagem brincando nela. O que se pode relacionar?",
+      "options": [
+        "A personagem abriu a praça",
+        "O cartaz registra a brincadeira",
+        "A história fictícia de brincar acontece no espaço comunitário citado pelo cartaz.",
+        "Todas as pessoas brincam nesse local"
+      ],
+      "correctAnswer": "A história fictícia de brincar acontece no espaço comunitário citado pelo cartaz.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A personagem abriu a praça": [
+          "SOURCE_LINK_NOT_CAUSATION"
+        ],
+        "O cartaz registra a brincadeira": [
+          "SOURCE_LINK_NOT_CAUSATION"
+        ],
+        "Todas as pessoas brincam nesse local": [
+          "SOURCE_LINK_NOT_CAUSATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_FONTES_SOBRE_A_PRAÇA",
+      "explanation": "As fontes compartilham o espaço, mas não estabelecem autoria nem participação universal.",
+      "hint": "Relacione o lugar sem inventar causa.",
+      "errorFocus": "SOURCE_LINK_NOT_CAUSATION",
+      "feedback": {
+        "correct": "Boa observação: As fontes compartilham o espaço, mas não estabelecem autoria nem participação universal.",
+        "incorrect": "As fontes compartilham o espaço, mas não estabelecem autoria nem participação universal.",
+        "hint": "Relacione o lugar sem inventar causa.",
+        "errorFocus": "SOURCE_LINK_NOT_CAUSATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-28",
+      "statement": "Um registro informa a data de uma festa, mas não a lembrança de cada pessoa. O que falta?",
+      "prompt": "Um registro informa a data de uma festa, mas não a lembrança de cada pessoa. O que falta?",
+      "options": [
+        "A data indicada",
+        "A existência do evento registrado",
+        "O assunto do cartaz",
+        "Relatos individuais sobre como cada pessoa viveu a festa."
+      ],
+      "correctAnswer": "Relatos individuais sobre como cada pessoa viveu a festa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A data indicada": [
+          "EVENT_DATE_VS_MEMORY"
+        ],
+        "A existência do evento registrado": [
+          "EVENT_DATE_VS_MEMORY"
+        ],
+        "O assunto do cartaz": [
+          "EVENT_DATE_VS_MEMORY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REGISTRO_DE_DATA_E_LEMBRANCA",
+      "explanation": "A data do evento não substitui experiências individuais.",
+      "hint": "Diferencie quando ocorreu e como alguém viveu.",
+      "errorFocus": "EVENT_DATE_VS_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: A data do evento não substitui experiências individuais.",
+        "incorrect": "A data do evento não substitui experiências individuais.",
+        "hint": "Diferencie quando ocorreu e como alguém viveu.",
+        "errorFocus": "EVENT_DATE_VS_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-29",
+      "statement": "Por que um estudante pode usar uma personagem inventada em vez de desenhar sua família?",
+      "prompt": "Por que um estudante pode usar uma personagem inventada em vez de desenhar sua família?",
+      "options": [
+        "Porque a aprendizagem não depende de expor informações privadas.",
+        "Porque histórias fictícias são sempre iguais",
+        "Porque famílias não fazem parte da história",
+        "Porque desenhar pessoas é proibido"
+      ],
+      "correctAnswer": "Porque a aprendizagem não depende de expor informações privadas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque histórias fictícias são sempre iguais": [
+          "SAFE_EQUIVALENT_TASK"
+        ],
+        "Porque famílias não fazem parte da história": [
+          "SAFE_EQUIVALENT_TASK"
+        ],
+        "Porque desenhar pessoas é proibido": [
+          "SAFE_EQUIVALENT_TASK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "TAREFA_DE_DESENHO_SEGURO",
+      "explanation": "A alternativa fictícia permite trabalhar relações históricas sem exigir divulgação pessoal.",
+      "hint": "Pense no objetivo da atividade e na privacidade.",
+      "errorFocus": "SAFE_EQUIVALENT_TASK",
+      "feedback": {
+        "correct": "Boa observação: A alternativa fictícia permite trabalhar relações históricas sem exigir divulgação pessoal.",
+        "incorrect": "A alternativa fictícia permite trabalhar relações históricas sem exigir divulgação pessoal.",
+        "hint": "Pense no objetivo da atividade e na privacidade.",
+        "errorFocus": "SAFE_EQUIVALENT_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-30",
+      "statement": "Qual frase evita dizer que todas as famílias são iguais?",
+      "prompt": "Qual frase evita dizer que todas as famílias são iguais?",
+      "options": [
+        "“Toda família tem a mesma composição.”",
+        "“As narrativas apresentam diferentes pessoas e modos de cuidado.”",
+        "“Todas as pessoas vivem as mesmas histórias.”",
+        "“Uma forma de família é a única correta.”"
+      ],
+      "correctAnswer": "“As narrativas apresentam diferentes pessoas e modos de cuidado.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Toda família tem a mesma composição.”": [
+          "FAMILY_DIVERSITY_LANGUAGE"
+        ],
+        "“Todas as pessoas vivem as mesmas histórias.”": [
+          "FAMILY_DIVERSITY_LANGUAGE"
+        ],
+        "“Uma forma de família é a única correta.”": [
+          "FAMILY_DIVERSITY_LANGUAGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRASE_UNIVERSAL_SOBRE_FAMILIAS",
+      "explanation": "A frase descreve variedade em vez de impor um modelo universal.",
+      "hint": "Evite toda e única.",
+      "errorFocus": "FAMILY_DIVERSITY_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve variedade em vez de impor um modelo universal.",
+        "incorrect": "A frase descreve variedade em vez de impor um modelo universal.",
+        "hint": "Evite toda e única.",
+        "errorFocus": "FAMILY_DIVERSITY_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-31",
+      "statement": "Um mapa escolar marca biblioteca e praça, e uma narrativa menciona uma visita à biblioteca. O que se relaciona?",
+      "prompt": "Um mapa escolar marca biblioteca e praça, e uma narrativa menciona uma visita à biblioteca. O que se relaciona?",
+      "options": [
+        "A experiência de todas as pessoas do bairro",
+        "A história completa da biblioteca",
+        "A experiência da personagem a um lugar da comunidade.",
+        "A opinião dos moradores sobre a praça"
+      ],
+      "correctAnswer": "A experiência da personagem a um lugar da comunidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A experiência de todas as pessoas do bairro": [
+          "PLACE_CONNECTS_STORIES"
+        ],
+        "A história completa da biblioteca": [
+          "PLACE_CONNECTS_STORIES"
+        ],
+        "A opinião dos moradores sobre a praça": [
+          "PLACE_CONNECTS_STORIES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MAPA_DE_LUGARES_COMUNITARIOS",
+      "explanation": "O lugar comum ajuda a relacionar a narrativa e o mapa, mas não revela experiências de todos.",
+      "hint": "Use o local que aparece nas duas fontes.",
+      "errorFocus": "PLACE_CONNECTS_STORIES",
+      "feedback": {
+        "correct": "Boa observação: O lugar comum ajuda a relacionar a narrativa e o mapa, mas não revela experiências de todos.",
+        "incorrect": "O lugar comum ajuda a relacionar a narrativa e o mapa, mas não revela experiências de todos.",
+        "hint": "Use o local que aparece nas duas fontes.",
+        "errorFocus": "PLACE_CONNECTS_STORIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-32",
+      "statement": "Qual legenda identifica corretamente uma fonte fictícia?",
+      "prompt": "Qual legenda identifica corretamente uma fonte fictícia?",
+      "options": [
+        "“Documento verdadeiro de uma família real.”",
+        "“História de todas as crianças da escola.”",
+        "“Registro oficial de um evento que não foi citado.”",
+        "“Personagem e lembrança inventadas para mostrar uma participação possível na vida comunitária.”"
+      ],
+      "correctAnswer": "“Personagem e lembrança inventadas para mostrar uma participação possível na vida comunitária.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Documento verdadeiro de uma família real.”": [
+          "TRANSPARENT_FICTION"
+        ],
+        "“História de todas as crianças da escola.”": [
+          "TRANSPARENT_FICTION"
+        ],
+        "“Registro oficial de um evento que não foi citado.”": [
+          "TRANSPARENT_FICTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LEGENDA_DE_MOSTRA_FINAL",
+      "explanation": "A legenda torna clara a natureza inventada e o propósito da narrativa.",
+      "hint": "Identifique o que é ficção.",
+      "errorFocus": "TRANSPARENT_FICTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda torna clara a natureza inventada e o propósito da narrativa.",
+        "incorrect": "A legenda torna clara a natureza inventada e o propósito da narrativa.",
+        "hint": "Identifique o que é ficção.",
+        "errorFocus": "TRANSPARENT_FICTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-33",
+      "statement": "A história de uma personagem pode se relacionar à comunidade quando…",
+      "prompt": "A história de uma personagem pode se relacionar à comunidade quando…",
+      "options": [
+        "sua experiência se conecta a um espaço ou acontecimento coletivo descrito.",
+        "representa toda família do bairro",
+        "conta dados privados de todos",
+        "prova que todos viveram igual"
+      ],
+      "correctAnswer": "sua experiência se conecta a um espaço ou acontecimento coletivo descrito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "representa toda família do bairro": [
+          "CONNECTION_RECALL"
+        ],
+        "conta dados privados de todos": [
+          "CONNECTION_RECALL"
+        ],
+        "prova que todos viveram igual": [
+          "CONNECTION_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_COMUNIDADE",
+      "explanation": "A relação pode aparecer em espaços e eventos compartilhados sem representar todos.",
+      "hint": "Lembre do exemplo da horta ou da biblioteca.",
+      "errorFocus": "CONNECTION_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A relação pode aparecer em espaços e eventos compartilhados sem representar todos.",
+        "incorrect": "A relação pode aparecer em espaços e eventos compartilhados sem representar todos.",
+        "hint": "Lembre do exemplo da horta ou da biblioteca.",
+        "errorFocus": "CONNECTION_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-34",
+      "statement": "Um cartaz público registra um evento. O que ele informa com mais segurança?",
+      "prompt": "Um cartaz público registra um evento. O que ele informa com mais segurança?",
+      "options": [
+        "Toda lembrança particular",
+        "O acontecimento e os detalhes que estão escritos.",
+        "O sentimento de cada participante",
+        "Tudo o que ocorreu na comunidade"
+      ],
+      "correctAnswer": "O acontecimento e os detalhes que estão escritos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda lembrança particular": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "O sentimento de cada participante": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "Tudo o que ocorreu na comunidade": [
+          "SOURCE_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_FONTE_PUBLICA",
+      "explanation": "Uma fonte deve ser interpretada pelo que apresenta, não como registro total.",
+      "hint": "Leia a legenda e o conteúdo disponível.",
+      "errorFocus": "SOURCE_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte deve ser interpretada pelo que apresenta, não como registro total.",
+        "incorrect": "Uma fonte deve ser interpretada pelo que apresenta, não como registro total.",
+        "hint": "Leia a legenda e o conteúdo disponível.",
+        "errorFocus": "SOURCE_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-35",
+      "statement": "A atividade pede uma lembrança pessoal e o estudante não quer compartilhar. Qual opção mantém a aprendizagem?",
+      "prompt": "A atividade pede uma lembrança pessoal e o estudante não quer compartilhar. Qual opção mantém a aprendizagem?",
+      "options": [
+        "Obrigá-lo a contar",
+        "Perguntar a outros sobre sua família",
+        "Analisar uma lembrança fictícia ou um registro público adequado.",
+        "Retirar sua nota"
+      ],
+      "correctAnswer": "Analisar uma lembrança fictícia ou um registro público adequado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Obrigá-lo a contar": [
+          "PRIVACY_SAFE_REVIEW"
+        ],
+        "Perguntar a outros sobre sua família": [
+          "PRIVACY_SAFE_REVIEW"
+        ],
+        "Retirar sua nota": [
+          "PRIVACY_SAFE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Uma alternativa equivalente preserva privacidade e acesso à tarefa.",
+      "hint": "Escolha uma fonte sem exigir exposição.",
+      "errorFocus": "PRIVACY_SAFE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa equivalente preserva privacidade e acesso à tarefa.",
+        "incorrect": "Uma alternativa equivalente preserva privacidade e acesso à tarefa.",
+        "hint": "Escolha uma fonte sem exigir exposição.",
+        "errorFocus": "PRIVACY_SAFE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-36",
+      "statement": "Qual afirmação reconhece diferentes famílias sem criar uma hierarquia?",
+      "prompt": "Qual afirmação reconhece diferentes famílias sem criar uma hierarquia?",
+      "options": [
+        "“Só uma composição é correta.”",
+        "“Todas vivem a mesma história.”",
+        "“O parentesco define o valor de uma família.”",
+        "“Há diferentes formas de cuidado e convivência.”"
+      ],
+      "correctAnswer": "“Há diferentes formas de cuidado e convivência.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Só uma composição é correta.”": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "“Todas vivem a mesma história.”": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "“O parentesco define o valor de uma família.”": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_FAMILIAS",
+      "explanation": "A frase respeita variedade e evita hierarquizar configurações familiares.",
+      "hint": "Procure uma descrição sem “só” ou “todas”.",
+      "errorFocus": "FAMILY_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase respeita variedade e evita hierarquizar configurações familiares.",
+        "incorrect": "A frase respeita variedade e evita hierarquizar configurações familiares.",
+        "hint": "Procure uma descrição sem “só” ou “todas”.",
+        "errorFocus": "FAMILY_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-37",
+      "statement": "Uma personagem participa de uma feira; outra visita uma biblioteca comunitária. Qual ponto pode ser comum?",
+      "prompt": "Uma personagem participa de uma feira; outra visita uma biblioteca comunitária. Qual ponto pode ser comum?",
+      "options": [
+        "As duas histórias se relacionam a espaços ou eventos coletivos.",
+        "As personagens têm as mesmas famílias",
+        "As atividades aconteceram na mesma data",
+        "Os registros contam tudo sobre cada pessoa"
+      ],
+      "correctAnswer": "As duas histórias se relacionam a espaços ou eventos coletivos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As personagens têm as mesmas famílias": [
+          "COMMON_COMMUNITY_RELATION"
+        ],
+        "As atividades aconteceram na mesma data": [
+          "COMMON_COMMUNITY_RELATION"
+        ],
+        "Os registros contam tudo sobre cada pessoa": [
+          "COMMON_COMMUNITY_RELATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_DUAS_HISTORIAS",
+      "explanation": "As narrativas se conectam a espaços coletivos, embora suas experiências sejam distintas.",
+      "hint": "Compare a relação com a comunidade.",
+      "errorFocus": "COMMON_COMMUNITY_RELATION",
+      "feedback": {
+        "correct": "Boa observação: As narrativas se conectam a espaços coletivos, embora suas experiências sejam distintas.",
+        "incorrect": "As narrativas se conectam a espaços coletivos, embora suas experiências sejam distintas.",
+        "hint": "Compare a relação com a comunidade.",
+        "errorFocus": "COMMON_COMMUNITY_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-38",
+      "statement": "Um texto não indica quem o produziu. O que podemos dizer?",
+      "prompt": "Um texto não indica quem o produziu. O que podemos dizer?",
+      "options": [
+        "Foi escrito por uma pessoa específica que imaginamos",
+        "A autoria não aparece nesse texto.",
+        "É uma lembrança de um estudante da sala",
+        "É um documento oficial"
+      ],
+      "correctAnswer": "A autoria não aparece nesse texto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Foi escrito por uma pessoa específica que imaginamos": [
+          "AUTHORSHIP_NOT_GIVEN"
+        ],
+        "É uma lembrança de um estudante da sala": [
+          "AUTHORSHIP_NOT_GIVEN"
+        ],
+        "É um documento oficial": [
+          "AUTHORSHIP_NOT_GIVEN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_RELATO_SEM_AUTORIA",
+      "explanation": "A autoria ausente deve permanecer desconhecida até haver evidência.",
+      "hint": "Registre a informação que falta.",
+      "errorFocus": "AUTHORSHIP_NOT_GIVEN",
+      "feedback": {
+        "correct": "Boa observação: A autoria ausente deve permanecer desconhecida até haver evidência.",
+        "incorrect": "A autoria ausente deve permanecer desconhecida até haver evidência.",
+        "hint": "Registre a informação que falta.",
+        "errorFocus": "AUTHORSHIP_NOT_GIVEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-39",
+      "statement": "Uma narrativa nova menciona uma festa do bairro. Qual análise é cuidadosa?",
+      "prompt": "Uma narrativa nova menciona uma festa do bairro. Qual análise é cuidadosa?",
+      "options": [
+        "Afirmar que a festa representa toda família",
+        "Inventar quem organizou a festa",
+        "Relacionar a experiência descrita à festa e evitar dizer que todos participaram.",
+        "Concluir que todos gostaram"
+      ],
+      "correctAnswer": "Relacionar a experiência descrita à festa e evitar dizer que todos participaram.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Afirmar que a festa representa toda família": [
+          "BOUNDED_COMMUNITY_CLAIM"
+        ],
+        "Inventar quem organizou a festa": [
+          "BOUNDED_COMMUNITY_CLAIM"
+        ],
+        "Concluir que todos gostaram": [
+          "BOUNDED_COMMUNITY_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "NOVA_NARRATIVA_COMUNITARIA",
+      "explanation": "A experiência descrita pode se conectar ao evento sem universalizar participantes ou opiniões.",
+      "hint": "Limite a conclusão à narrativa.",
+      "errorFocus": "BOUNDED_COMMUNITY_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A experiência descrita pode se conectar ao evento sem universalizar participantes ou opiniões.",
+        "incorrect": "A experiência descrita pode se conectar ao evento sem universalizar participantes ou opiniões.",
+        "hint": "Limite a conclusão à narrativa.",
+        "errorFocus": "BOUNDED_COMMUNITY_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi02-stories-family-and-community-40",
+      "statement": "O que ajuda a relacionar histórias pessoais, familiares e comunitárias?",
+      "prompt": "O que ajuda a relacionar histórias pessoais, familiares e comunitárias?",
+      "options": [
+        "Supor que todas as famílias são iguais",
+        "Exigir memórias íntimas",
+        "Preencher informações ausentes com palpites",
+        "Usar pistas de fontes diferentes e respeitar o que cada uma não conta."
+      ],
+      "correctAnswer": "Usar pistas de fontes diferentes e respeitar o que cada uma não conta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Supor que todas as famílias são iguais": [
+          "SYNTHESIS_SOURCE_AWARE"
+        ],
+        "Exigir memórias íntimas": [
+          "SYNTHESIS_SOURCE_AWARE"
+        ],
+        "Preencher informações ausentes com palpites": [
+          "SYNTHESIS_SOURCE_AWARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SINTese_HISTORICA",
+      "explanation": "Relacionar fontes exige evidências e respeito aos limites e à privacidade.",
+      "hint": "Lembre de fonte, evidência e privacidade.",
+      "errorFocus": "SYNTHESIS_SOURCE_AWARE",
+      "feedback": {
+        "correct": "Boa observação: Relacionar fontes exige evidências e respeito aos limites e à privacidade.",
+        "incorrect": "Relacionar fontes exige evidências e respeito aos limites e à privacidade.",
+        "hint": "Lembre de fonte, evidência e privacidade.",
+        "errorFocus": "SYNTHESIS_SOURCE_AWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar narrativas curtas em leitura compartilhada, áudio, pictogramas ou sequências de imagens descritas.",
+          "Permitir relacionar eventos com cartões, desenho, fala, escrita emergente ou comunicação alternativa; aceitar resposta individual sem exposição ao grupo.",
+          "Usar apenas personagens e documentos fictícios ou públicos apropriados; nunca exigir nomes de parentes, fotos, endereços, árvores genealógicas ou lembranças pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

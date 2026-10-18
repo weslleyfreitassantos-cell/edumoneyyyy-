@@ -3,7 +3,7 @@
   "campaignId": "TECESCOLA_BNCC_AUTOPILOT",
   "executionId": "0bcba5ce-1652-4e0d-9488-a30b659a5bee",
   "createdAt": "2026-10-18T01:41:02.951Z",
-  "updatedAt": "2026-10-18T14:52:53.035Z",
+  "updatedAt": "2026-10-18T16:59:22.834Z",
   "runStatus": "NO_EXECUTABLE_TASKS",
   "currentTask": null,
   "lastCompletedTask": "BNCC_EF01LP06",
@@ -12375,26 +12375,26 @@
     "tasksWithoutAuthoringProvider": 541,
     "currentTechnicalCompletenessSnapshot": {
       "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
-      "queueHash": "c9636e2740a36026ad51e4c7b912d2be31f8be039b04473480c908559e2ddeab",
+      "queueHash": "3bf997ae146c9d5bbd049214d81d781f0afd7f4fa99acc9311bac44b0e5d26e7",
       "totalTasks": 1721,
-      "contentTechnicallyPrepared": 45,
-      "contentMissing": 1676,
-      "legacyCountScreenComplete": 45,
+      "contentTechnicallyPrepared": 55,
+      "contentMissing": 1666,
+      "legacyCountScreenComplete": 55,
       "automatedQualityScreenIncomplete": 0,
-      "stagedPackageFiles": 45,
-      "sourceVerifiedTasks": 568,
-      "verifiedTasksWithoutRegisteredProducer": 476,
+      "stagedPackageFiles": 55,
+      "sourceVerifiedTasks": 570,
+      "verifiedTasksWithoutRegisteredProducer": 468,
       "humanPedagogicalApproved": 0,
       "canonicalMappingVerified": 0,
       "publicationAuthorized": 0,
       "preparedByStage": {
-        "EDUCACAO_INFANTIL": 6,
-        "ENSINO_FUNDAMENTAL": 38,
-        "ENSINO_MEDIO": 1
+        "EDUCACAO_INFANTIL": 7,
+        "ENSINO_FUNDAMENTAL": 46,
+        "ENSINO_MEDIO": 2
       },
       "preparedByMode": {
-        "EDUCATOR_MEDIATED_OBSERVATION": 6,
-        "OBJECTIVE_LEARNING_PATH": 39
+        "EDUCATOR_MEDIATED_OBSERVATION": 7,
+        "OBJECTIVE_LEARNING_PATH": 48
       },
       "sourceFile": "content/bncc/authoring/completion-queue-v14.json"
     }
@@ -12786,6 +12786,30 @@
       "queueHash": "c9636e2740a36026ad51e4c7b912d2be31f8be039b04473480c908559e2ddeab",
       "at": "2026-10-18T14:52:53.035Z",
       "taskRecordsPreserved": true
+    },
+    {
+      "taskId": "BNCC_COMPLETION_QUEUE_RECONCILIATION",
+      "status": "CURRENT_RUBRIC_SNAPSHOT_RECONCILED",
+      "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+      "queueHash": "2866b6b5f2bf68b36f517fff94e2293c5fdbe4a60d33f022f4f76e58fbea02e7",
+      "at": "2026-10-18T15:05:10.587Z",
+      "taskRecordsPreserved": true
+    },
+    {
+      "taskId": "BNCC_COMPLETION_QUEUE_RECONCILIATION",
+      "status": "CURRENT_RUBRIC_SNAPSHOT_RECONCILED",
+      "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+      "queueHash": "8a2f73a598c1213567727c3bb9c2dbbb8c0aeb9ffb7ef773169463e815ce8dba",
+      "at": "2026-10-18T15:17:12.524Z",
+      "taskRecordsPreserved": true
+    },
+    {
+      "taskId": "BNCC_COMPLETION_QUEUE_RECONCILIATION",
+      "status": "CURRENT_RUBRIC_SNAPSHOT_RECONCILED",
+      "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+      "queueHash": "3bf997ae146c9d5bbd049214d81d781f0afd7f4fa99acc9311bac44b0e5d26e7",
+      "at": "2026-10-18T16:59:22.834Z",
+      "taskRecordsPreserved": true
     }
   ],
   "policy": {
@@ -12799,7 +12823,7 @@
     "historicalAutopilotCountersAreExecutionHistory": true,
     "historicalCountScreenRubricVersion": "tec-escola.bncc.technical-completeness.v1",
     "currentTechnicalCompletenessSource": "content/bncc/authoring/completion-queue-v14.json",
-    "currentTechnicalCompletenessQueueHash": "c9636e2740a36026ad51e4c7b912d2be31f8be039b04473480c908559e2ddeab",
+    "currentTechnicalCompletenessQueueHash": "3bf997ae146c9d5bbd049214d81d781f0afd7f4fa99acc9311bac44b0e5d26e7",
     "currentTechnicalCompletenessRubricVersion": "tec-escola.bncc.technical-completeness.v2",
     "taskRecordsPreserved": true
   }

@@ -1,0 +1,2120 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-em13lgg101-production-circulation-and-discourse-choices",
+  "canonicalSkillCode": "AUTHORING_EM13LGG101_DISCOURSE_PRODUCTION_AND_CIRCULATION",
+  "subject": "LANGUAGES_AND_THEIR_TECHNOLOGIES",
+  "domain": "LINGUAGENS E SUAS TECNOLOGIAS",
+  "topic": "produção e circulação de discursos em diferentes linguagens",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EM13LGG101",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Compreender e analisar processos de produção e circulação de discursos, nas diferentes linguagens, para fazer escolhas fundamentadas em função de interesses pessoais e coletivos.",
+    "officialSource": {
+      "id": "BNCC_EM_2018",
+      "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+      "page": 59
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Quem produz, por onde circula e a quem interessa?",
+    "objective": "Analisar como autoria, finalidade, linguagem, suporte, circulação e público se relacionam e justificar escolhas de leitura, produção ou compartilhamento considerando interesses próprios e coletivos.",
+    "summary": "Um discurso é produzido por alguém, em uma situação e com uma finalidade. Palavras, imagens, sons, gestos e sua combinação são linguagens que organizam sentidos. Um cartaz, podcast, vídeo curto, reportagem ou comunicado pode circular por canais e alcançar públicos diferentes. Para analisar uma mensagem, investigue quem a produziu, a quem se dirige, como foi construída, por onde circula e quais interesses aparecem ou ficam de fora. Essas perguntas não provam automaticamente a intenção de uma pessoa; elas ajudam a justificar escolhas. Antes de compartilhar, considere contexto, fonte, acessibilidade e possíveis efeitos coletivos.",
+    "explanation": "Comece identificando elementos observáveis: autoria ou instituição, data, gênero, suporte, público indicado e marcas de linguagem. Depois relacione essas pistas à finalidade provável e ao percurso de circulação. Uma campanha pode informar, mobilizar, vender ou combinar objetivos; a análise deve citar sinais do texto, não adivinhar intenções privadas. A circulação muda o alcance: um comunicado numa página institucional, uma conversa de rádio e um vídeo compartilhado têm públicos e contextos distintos. Por fim, formule uma escolha fundamentada: ler mais, comparar fontes, adaptar a linguagem, creditar a autoria ou não compartilhar. Interesses pessoais podem coexistir com efeitos para outras pessoas; escolhas coletivas consideram acesso, diversidade de vozes, privacidade e consequências.",
+    "workedExample": "Um grêmio fictício publica um cartaz com data, local, audiodescrição do evento e um link para inscrição. A autoria, as informações práticas e o público estudantil sugerem uma finalidade de mobilização. Se o cartaz circular apenas como imagem sem texto alternativo, algumas pessoas podem ter dificuldade de acesso. Uma escolha fundamentada é verificar a página oficial e solicitar ou produzir uma versão acessível antes de compartilhar.",
+    "commonMistake": "Afirmar a intenção de quem produziu sem evidências, confundir popularidade com confiabilidade, ou compartilhar uma mensagem fora de contexto sem considerar a fonte, o público e as consequências.",
+    "priorKnowledge": [
+      "Reconhecer informações explícitas, autoria indicada e finalidade provável de um texto.",
+      "Comparar elementos verbais, visuais, sonoros e gestuais em mensagens multimodais.",
+      "Justificar uma escolha citando evidências observáveis."
+    ],
+    "keyConcepts": [
+      "produção de discurso",
+      "circulação",
+      "linguagem verbal e não verbal",
+      "gênero e suporte",
+      "público",
+      "finalidade",
+      "interesses",
+      "escolha fundamentada"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "INTENT_WITHOUT_EVIDENCE",
+        "action": "Sublinhe uma marca observável da mensagem e reescreva a interpretação com “as pistas sugerem”, sem afirmar uma intenção privada como fato."
+      },
+      {
+        "errorFocus": "POPULARITY_AS_CREDIBILITY",
+        "action": "Separe alcance de confiabilidade: confira autoria, data, contexto e fontes antes de decidir compartilhar."
+      },
+      {
+        "errorFocus": "CIRCULATION_CONTEXT_OMISSION",
+        "action": "Anote onde a mensagem apareceu e para qual público foi preparada; compare o sentido antes e depois de circular em outro canal."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+      "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+      "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+      "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lgg101-school-campaign-comparison",
+        "title": "Duas campanhas, públicos e escolhas",
+        "instructions": "Dois cartazes fictícios anunciam uma feira escolar. Um informa data, local, acessibilidade e autoria; o outro usa imagem sem legenda e não indica fonte.\n1. Identifique autoria, finalidade provável, público indicado e canal de circulação de cada cartaz.\n2. Marque evidências verbais e visuais que apoiam sua interpretação, sem atribuir intenções não demonstradas.\n3. Recomende como verificar ou adaptar uma mensagem antes de compartilhá-la com a comunidade escolar.",
+        "steps": [
+          "Identifique autoria, finalidade provável, público indicado e canal de circulação de cada cartaz.",
+          "Marque evidências verbais e visuais que apoiam sua interpretação, sem atribuir intenções não demonstradas.",
+          "Recomende como verificar ou adaptar uma mensagem antes de compartilhá-la com a comunidade escolar."
+        ],
+        "evidence": "Quadro comparativo com pistas observáveis, público, circulação, limite da interpretação e recomendação fundamentada.",
+        "privacyGuard": "Usar materiais fictícios; não publicar conteúdo de colegas nem exigir divulgação de opinião pessoal.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica o tema, mas confunde alcance com confiabilidade.",
+            "developing": "aponta autoria ou público e recomenda verificação com apoio.",
+            "proficient": "relaciona pistas, circulação e acesso e justifica a escolha sem presumir intenções."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lgg101-message-route-map",
+        "title": "Mapa do percurso de uma mensagem",
+        "instructions": "Uma notícia escolar fictícia aparece primeiro num mural, depois numa página institucional e finalmente num áudio resumido por uma rádio comunitária simulada.\n1. Desenhe ou descreva os canais pelos quais a mensagem circulou e indique quem poderia acessá-la em cada etapa.\n2. Compare o que foi mantido, resumido ou omitido em cada versão, citando trechos ou recursos observáveis.\n3. Proponha uma escolha de circulação que preserve contexto, autoria e acesso para diferentes públicos.",
+        "steps": [
+          "Desenhe ou descreva os canais pelos quais a mensagem circulou e indique quem poderia acessá-la em cada etapa.",
+          "Compare o que foi mantido, resumido ou omitido em cada versão, citando trechos ou recursos observáveis.",
+          "Proponha uma escolha de circulação que preserve contexto, autoria e acesso para diferentes públicos."
+        ],
+        "evidence": "Mapa acompanhado de análise das mudanças entre versões e justificativa de circulação responsável.",
+        "privacyGuard": "A notícia é fictícia e não usa nomes, imagens ou contas de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "enumera canais, mas não observa mudanças de linguagem.",
+            "developing": "identifica uma mudança e relaciona-a ao público com lembrete.",
+            "proficient": "explica como circulação altera alcance e apresenta escolha com evidência e cuidado coletivo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-em13lgg101-production-circulation-and-discourse-choices-01",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-02",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-03",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-04",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-05",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-06",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-07",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-em13lgg101-production-circulation-and-discourse-choices-09",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-10",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-11",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-12",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-13",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-14",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-15",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-em13lgg101-production-circulation-and-discourse-choices-17",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-18",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-19",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-20",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-21",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-22",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-23",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-em13lgg101-production-circulation-and-discourse-choices-25",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-26",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-27",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-28",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-29",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-30",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-31",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-em13lgg101-production-circulation-and-discourse-choices-33",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-34",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-35",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-36",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-37",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-38",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-39",
+          "v1-em13lgg101-production-circulation-and-discourse-choices-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EM13LGG101",
+        "descriptor": "Compreender e analisar processos de produção e circulação de discursos, nas diferentes linguagens, para fazer escolhas fundamentadas em função de interesses pessoais e coletivos.",
+        "officialSource": {
+          "id": "BNCC_EM_2018",
+          "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+          "page": 59
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-01",
+      "statement": "Um cartaz informa que foi produzido pelo grêmio estudantil e anuncia uma assembleia. Qual pista identifica a autoria?",
+      "prompt": "Um cartaz informa que foi produzido pelo grêmio estudantil e anuncia uma assembleia. Qual pista identifica a autoria?",
+      "options": [
+        "A indicação de que o grêmio produziu o cartaz",
+        "A cor mais chamativa",
+        "O número de visualizações",
+        "A opinião de quem leu"
+      ],
+      "correctAnswer": "A indicação de que o grêmio produziu o cartaz",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor mais chamativa": [
+          "AUTHORSHIP_FROM_DESIGN"
+        ],
+        "O número de visualizações": [
+          "AUTHORSHIP_FROM_DESIGN"
+        ],
+        "A opinião de quem leu": [
+          "AUTHORSHIP_FROM_DESIGN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAZ_DE_EVENTO_FICTICIO",
+      "explanation": "A autoria está indicada no cartaz; aparência e alcance não a substituem.",
+      "hint": "Procure a assinatura ou identificação.",
+      "errorFocus": "AUTHORSHIP_FROM_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: A autoria está indicada no cartaz; aparência e alcance não a substituem.",
+        "incorrect": "A autoria está indicada no cartaz; aparência e alcance não a substituem.",
+        "hint": "Procure a assinatura ou identificação.",
+        "errorFocus": "AUTHORSHIP_FROM_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-02",
+      "statement": "Um podcast combina fala, trilha sonora e efeitos. Que linguagens aparecem?",
+      "prompt": "Um podcast combina fala, trilha sonora e efeitos. Que linguagens aparecem?",
+      "options": [
+        "Somente linguagem escrita",
+        "Linguagem oral e recursos sonoros",
+        "Apenas gestos visíveis",
+        "Nenhuma linguagem"
+      ],
+      "correctAnswer": "Linguagem oral e recursos sonoros",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente linguagem escrita": [
+          "MODALITY_OMISSION"
+        ],
+        "Apenas gestos visíveis": [
+          "MODALITY_OMISSION"
+        ],
+        "Nenhuma linguagem": [
+          "MODALITY_OMISSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PODCAST_DE_CIENCIA",
+      "explanation": "A fala e a trilha são elementos sonoros que constroem sentido.",
+      "hint": "Observe o que se ouve.",
+      "errorFocus": "MODALITY_OMISSION",
+      "feedback": {
+        "correct": "Boa observação: A fala e a trilha são elementos sonoros que constroem sentido.",
+        "incorrect": "A fala e a trilha são elementos sonoros que constroem sentido.",
+        "hint": "Observe o que se ouve.",
+        "errorFocus": "MODALITY_OMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-03",
+      "statement": "Um comunicado no mural da escola informa mudança de horário. Qual é uma finalidade provável?",
+      "prompt": "Um comunicado no mural da escola informa mudança de horário. Qual é uma finalidade provável?",
+      "options": [
+        "Vender um produto necessariamente",
+        "Provar a intenção privada de cada leitor",
+        "Informar a comunidade sobre a alteração",
+        "Garantir que todos já leram"
+      ],
+      "correctAnswer": "Informar a comunidade sobre a alteração",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Vender um produto necessariamente": [
+          "PURPOSE_OVERCLAIM"
+        ],
+        "Provar a intenção privada de cada leitor": [
+          "PURPOSE_OVERCLAIM"
+        ],
+        "Garantir que todos já leram": [
+          "PURPOSE_OVERCLAIM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "COMUNICADO_NO_MURAL",
+      "explanation": "O conteúdo e o contexto sugerem informar; não provam que todos receberam a mensagem.",
+      "hint": "Considere o assunto e o formato.",
+      "errorFocus": "PURPOSE_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo e o contexto sugerem informar; não provam que todos receberam a mensagem.",
+        "incorrect": "O conteúdo e o contexto sugerem informar; não provam que todos receberam a mensagem.",
+        "hint": "Considere o assunto e o formato.",
+        "errorFocus": "PURPOSE_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-04",
+      "statement": "Antes de compartilhar uma notícia, qual dado ajuda a verificar sua procedência?",
+      "prompt": "Antes de compartilhar uma notícia, qual dado ajuda a verificar sua procedência?",
+      "options": [
+        "A quantidade de emojis",
+        "A cor de fundo",
+        "O número de comentários apenas",
+        "A fonte ou autoria indicada"
+      ],
+      "correctAnswer": "A fonte ou autoria indicada",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A quantidade de emojis": [
+          "POPULARITY_AS_SOURCE"
+        ],
+        "A cor de fundo": [
+          "POPULARITY_AS_SOURCE"
+        ],
+        "O número de comentários apenas": [
+          "POPULARITY_AS_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "LINK_DE_ORIGEM",
+      "explanation": "Autoria e fonte ajudam a rastrear a mensagem; popularidade não basta.",
+      "hint": "Procure quem publicou originalmente.",
+      "errorFocus": "POPULARITY_AS_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Autoria e fonte ajudam a rastrear a mensagem; popularidade não basta.",
+        "incorrect": "Autoria e fonte ajudam a rastrear a mensagem; popularidade não basta.",
+        "hint": "Procure quem publicou originalmente.",
+        "errorFocus": "POPULARITY_AS_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-05",
+      "statement": "Uma postagem traz fotografia e legenda. Como analisar a relação entre elas?",
+      "prompt": "Uma postagem traz fotografia e legenda. Como analisar a relação entre elas?",
+      "options": [
+        "Comparar o que a legenda afirma com o que a imagem mostra",
+        "Supor que a foto prova qualquer legenda",
+        "Ignorar a legenda",
+        "Concluir a intenção do autor só pela cor"
+      ],
+      "correctAnswer": "Comparar o que a legenda afirma com o que a imagem mostra",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Supor que a foto prova qualquer legenda": [
+          "IMAGE_AS_PROOF"
+        ],
+        "Ignorar a legenda": [
+          "IMAGE_AS_PROOF"
+        ],
+        "Concluir a intenção do autor só pela cor": [
+          "IMAGE_AS_PROOF"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TEXTO_E_FOTOGRAFIA",
+      "explanation": "Imagem e legenda devem ser lidas em conjunto e com contexto.",
+      "hint": "Compare as informações de cada parte.",
+      "errorFocus": "IMAGE_AS_PROOF",
+      "feedback": {
+        "correct": "Boa observação: Imagem e legenda devem ser lidas em conjunto e com contexto.",
+        "incorrect": "Imagem e legenda devem ser lidas em conjunto e com contexto.",
+        "hint": "Compare as informações de cada parte.",
+        "errorFocus": "IMAGE_AS_PROOF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-06",
+      "statement": "Uma rádio lê um aviso sobre vacinação e informa o órgão responsável. O que essa indicação oferece?",
+      "prompt": "Uma rádio lê um aviso sobre vacinação e informa o órgão responsável. O que essa indicação oferece?",
+      "options": [
+        "Prova automática de que todo detalhe está correto",
+        "Uma pista para verificar a fonte do aviso",
+        "Garantia de que todos os ouvintes concordam",
+        "A intenção pessoal de cada locutor"
+      ],
+      "correctAnswer": "Uma pista para verificar a fonte do aviso",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Prova automática de que todo detalhe está correto": [
+          "SOURCE_AS_GUARANTEE"
+        ],
+        "Garantia de que todos os ouvintes concordam": [
+          "SOURCE_AS_GUARANTEE"
+        ],
+        "A intenção pessoal de cada locutor": [
+          "SOURCE_AS_GUARANTEE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RADIO_COMUNITARIA",
+      "explanation": "A identificação permite checagem, mas não substitui a avaliação do conteúdo.",
+      "hint": "Uma fonte é um ponto de partida.",
+      "errorFocus": "SOURCE_AS_GUARANTEE",
+      "feedback": {
+        "correct": "Boa observação: A identificação permite checagem, mas não substitui a avaliação do conteúdo.",
+        "incorrect": "A identificação permite checagem, mas não substitui a avaliação do conteúdo.",
+        "hint": "Uma fonte é um ponto de partida.",
+        "errorFocus": "SOURCE_AS_GUARANTEE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-07",
+      "statement": "Um vídeo curto remove a data e o local de uma fala. Qual risco isso cria?",
+      "prompt": "Um vídeo curto remove a data e o local de uma fala. Qual risco isso cria?",
+      "options": [
+        "A mensagem torna-se automaticamente falsa",
+        "A autoria fica sempre mais clara",
+        "A fala pode circular sem contexto importante",
+        "Todos os espectadores recebem a versão completa"
+      ],
+      "correctAnswer": "A fala pode circular sem contexto importante",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A mensagem torna-se automaticamente falsa": [
+          "CONTEXT_REMOVAL_CERTAINTY"
+        ],
+        "A autoria fica sempre mais clara": [
+          "CONTEXT_REMOVAL_CERTAINTY"
+        ],
+        "Todos os espectadores recebem a versão completa": [
+          "CONTEXT_REMOVAL_CERTAINTY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VIDEO_COM_LEGENDA",
+      "explanation": "Remover contexto pode mudar interpretações; é preciso verificar antes de concluir.",
+      "hint": "Pense nas informações que ficaram de fora.",
+      "errorFocus": "CONTEXT_REMOVAL_CERTAINTY",
+      "feedback": {
+        "correct": "Boa observação: Remover contexto pode mudar interpretações; é preciso verificar antes de concluir.",
+        "incorrect": "Remover contexto pode mudar interpretações; é preciso verificar antes de concluir.",
+        "hint": "Pense nas informações que ficaram de fora.",
+        "errorFocus": "CONTEXT_REMOVAL_CERTAINTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-08",
+      "statement": "Um folheto tem texto legível, contraste e QR code para versão em áudio. O que essas escolhas favorecem?",
+      "prompt": "Um folheto tem texto legível, contraste e QR code para versão em áudio. O que essas escolhas favorecem?",
+      "options": [
+        "Apenas a divulgação comercial",
+        "A exclusão de quem prefere áudio",
+        "A prova de que a mensagem é verdadeira",
+        "Acesso por diferentes formas de leitura"
+      ],
+      "correctAnswer": "Acesso por diferentes formas de leitura",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas a divulgação comercial": [
+          "ACCESS_AS_TRUTH"
+        ],
+        "A exclusão de quem prefere áudio": [
+          "ACCESS_AS_TRUTH"
+        ],
+        "A prova de que a mensagem é verdadeira": [
+          "ACCESS_AS_TRUTH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOLHETO_ACESSIVEL",
+      "explanation": "Acessibilidade amplia formas de acesso, mas não confirma a veracidade do conteúdo.",
+      "hint": "Separe acesso e confiabilidade.",
+      "errorFocus": "ACCESS_AS_TRUTH",
+      "feedback": {
+        "correct": "Boa observação: Acessibilidade amplia formas de acesso, mas não confirma a veracidade do conteúdo.",
+        "incorrect": "Acessibilidade amplia formas de acesso, mas não confirma a veracidade do conteúdo.",
+        "hint": "Separe acesso e confiabilidade.",
+        "errorFocus": "ACCESS_AS_TRUTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-09",
+      "statement": "Um vídeo da biblioteca convida jovens a doar livros e informa como participar. Qual público parece ser considerado?",
+      "prompt": "Um vídeo da biblioteca convida jovens a doar livros e informa como participar. Qual público parece ser considerado?",
+      "options": [
+        "Pessoas que podem se interessar pela campanha e participar da doação",
+        "Somente quem produziu o vídeo",
+        "Todas as pessoas do país com certeza",
+        "Um público que o vídeo não menciona nem sugere"
+      ],
+      "correctAnswer": "Pessoas que podem se interessar pela campanha e participar da doação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente quem produziu o vídeo": [
+          "AUDIENCE_OVERGENERALIZATION"
+        ],
+        "Todas as pessoas do país com certeza": [
+          "AUDIENCE_OVERGENERALIZATION"
+        ],
+        "Um público que o vídeo não menciona nem sugere": [
+          "AUDIENCE_OVERGENERALIZATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CAMPANHA_DE_BIBLIOTECA",
+      "explanation": "A finalidade e o conteúdo sugerem um público interessado; não garantem quem viu o vídeo.",
+      "hint": "Relacione convite e público provável.",
+      "errorFocus": "AUDIENCE_OVERGENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A finalidade e o conteúdo sugerem um público interessado; não garantem quem viu o vídeo.",
+        "incorrect": "A finalidade e o conteúdo sugerem um público interessado; não garantem quem viu o vídeo.",
+        "hint": "Relacione convite e público provável.",
+        "errorFocus": "AUDIENCE_OVERGENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-10",
+      "statement": "Uma postagem apresenta um número sobre transporte sem indicar período ou fonte. Qual escolha é mais fundamentada?",
+      "prompt": "Uma postagem apresenta um número sobre transporte sem indicar período ou fonte. Qual escolha é mais fundamentada?",
+      "options": [
+        "Repostar porque o número parece exato",
+        "Procurar a fonte e o período antes de compartilhar como fato",
+        "Afirmar que a postagem é falsa sem verificar",
+        "Trocar o número por outro"
+      ],
+      "correctAnswer": "Procurar a fonte e o período antes de compartilhar como fato",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Repostar porque o número parece exato": [
+          "UNVERIFIED_NUMBER"
+        ],
+        "Afirmar que a postagem é falsa sem verificar": [
+          "UNVERIFIED_NUMBER"
+        ],
+        "Trocar o número por outro": [
+          "UNVERIFIED_NUMBER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "POST_COM_DADO_SEM_FONTE",
+      "explanation": "Um número precisa de contexto, período e fonte para sustentar uma afirmação.",
+      "hint": "Procure de onde veio o dado.",
+      "errorFocus": "UNVERIFIED_NUMBER",
+      "feedback": {
+        "correct": "Boa observação: Um número precisa de contexto, período e fonte para sustentar uma afirmação.",
+        "incorrect": "Um número precisa de contexto, período e fonte para sustentar uma afirmação.",
+        "hint": "Procure de onde veio o dado.",
+        "errorFocus": "UNVERIFIED_NUMBER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-11",
+      "statement": "Um anúncio usa depoimento e imagem para apresentar um produto. O que a análise deve considerar?",
+      "prompt": "Um anúncio usa depoimento e imagem para apresentar um produto. O que a análise deve considerar?",
+      "options": [
+        "Que toda pessoa retratada concorda com qualquer uso",
+        "Que o depoimento prova todos os resultados",
+        "A finalidade persuasiva e as evidências apresentadas",
+        "Que anúncios não usam linguagem"
+      ],
+      "correctAnswer": "A finalidade persuasiva e as evidências apresentadas",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que toda pessoa retratada concorda com qualquer uso": [
+          "TESTIMONIAL_AS_PROOF"
+        ],
+        "Que o depoimento prova todos os resultados": [
+          "TESTIMONIAL_AS_PROOF"
+        ],
+        "Que anúncios não usam linguagem": [
+          "TESTIMONIAL_AS_PROOF"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ANUNCIO_DE_PRODUTO",
+      "explanation": "Depoimentos são recursos persuasivos e não comprovam sozinhos uma afirmação geral.",
+      "hint": "Identifique o gênero e avalie a evidência.",
+      "errorFocus": "TESTIMONIAL_AS_PROOF",
+      "feedback": {
+        "correct": "Boa observação: Depoimentos são recursos persuasivos e não comprovam sozinhos uma afirmação geral.",
+        "incorrect": "Depoimentos são recursos persuasivos e não comprovam sozinhos uma afirmação geral.",
+        "hint": "Identifique o gênero e avalie a evidência.",
+        "errorFocus": "TESTIMONIAL_AS_PROOF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-12",
+      "statement": "Uma mensagem recebe um resumo e depois é encaminhada sem link. Qual passo ajuda a restaurar rastreabilidade?",
+      "prompt": "Uma mensagem recebe um resumo e depois é encaminhada sem link. Qual passo ajuda a restaurar rastreabilidade?",
+      "options": [
+        "Apagar a autoria para simplificar",
+        "Adicionar mais encaminhamentos",
+        "Manter apenas o trecho mais chamativo",
+        "Buscar a publicação original e citar a fonte"
+      ],
+      "correctAnswer": "Buscar a publicação original e citar a fonte",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar a autoria para simplificar": [
+          "CIRCULATION_WITHOUT_SOURCE"
+        ],
+        "Adicionar mais encaminhamentos": [
+          "CIRCULATION_WITHOUT_SOURCE"
+        ],
+        "Manter apenas o trecho mais chamativo": [
+          "CIRCULATION_WITHOUT_SOURCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REPOST_DE_AVISO",
+      "explanation": "Encontrar e creditar a publicação original ajuda a verificar o percurso.",
+      "hint": "Volte ao primeiro registro disponível.",
+      "errorFocus": "CIRCULATION_WITHOUT_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Encontrar e creditar a publicação original ajuda a verificar o percurso.",
+        "incorrect": "Encontrar e creditar a publicação original ajuda a verificar o percurso.",
+        "hint": "Volte ao primeiro registro disponível.",
+        "errorFocus": "CIRCULATION_WITHOUT_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-13",
+      "statement": "Um cartaz usa ícones sem legenda para explicar o acesso ao evento. Qual questão importa para circulação coletiva?",
+      "prompt": "Um cartaz usa ícones sem legenda para explicar o acesso ao evento. Qual questão importa para circulação coletiva?",
+      "options": [
+        "Se públicos diferentes conseguem interpretar as instruções",
+        "Se os ícones combinam com as cores da sala",
+        "Se todos têm o mesmo gosto visual",
+        "Se a mensagem terá muitos comentários"
+      ],
+      "correctAnswer": "Se públicos diferentes conseguem interpretar as instruções",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Se os ícones combinam com as cores da sala": [
+          "DESIGN_WITHOUT_ACCESS"
+        ],
+        "Se todos têm o mesmo gosto visual": [
+          "DESIGN_WITHOUT_ACCESS"
+        ],
+        "Se a mensagem terá muitos comentários": [
+          "DESIGN_WITHOUT_ACCESS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CARTAZ_COM_ICONES",
+      "explanation": "A acessibilidade depende de compreensão e alternativas, não só da estética.",
+      "hint": "Considere quem pode ficar sem informação.",
+      "errorFocus": "DESIGN_WITHOUT_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: A acessibilidade depende de compreensão e alternativas, não só da estética.",
+        "incorrect": "A acessibilidade depende de compreensão e alternativas, não só da estética.",
+        "hint": "Considere quem pode ficar sem informação.",
+        "errorFocus": "DESIGN_WITHOUT_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-14",
+      "statement": "Um boletim impresso não chega a parte dos moradores. Que mudança pode ampliar a circulação?",
+      "prompt": "Um boletim impresso não chega a parte dos moradores. Que mudança pode ampliar a circulação?",
+      "options": [
+        "Retirar a data e o contato",
+        "Disponibilizar também uma versão digital acessível ou áudio",
+        "Usar apenas letras menores",
+        "Supor que quem não recebeu não se interessa"
+      ],
+      "correctAnswer": "Disponibilizar também uma versão digital acessível ou áudio",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Retirar a data e o contato": [
+          "SINGLE_CHANNEL_ASSUMPTION"
+        ],
+        "Usar apenas letras menores": [
+          "SINGLE_CHANNEL_ASSUMPTION"
+        ],
+        "Supor que quem não recebeu não se interessa": [
+          "SINGLE_CHANNEL_ASSUMPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BOLETIM_DE_BAIRRO",
+      "explanation": "Canais complementares podem ampliar o acesso a públicos distintos.",
+      "hint": "Pense em mais de uma forma de acesso.",
+      "errorFocus": "SINGLE_CHANNEL_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: Canais complementares podem ampliar o acesso a públicos distintos.",
+        "incorrect": "Canais complementares podem ampliar o acesso a públicos distintos.",
+        "hint": "Pense em mais de uma forma de acesso.",
+        "errorFocus": "SINGLE_CHANNEL_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-15",
+      "statement": "Duas versões da mesma notícia têm títulos diferentes. O que comparar primeiro?",
+      "prompt": "Duas versões da mesma notícia têm títulos diferentes. O que comparar primeiro?",
+      "options": [
+        "Qual título tem mais exclamações",
+        "Qual versão circulou mais vezes",
+        "Autoria, data, conteúdo e evidências em cada versão",
+        "Qual cor parece mais confiável"
+      ],
+      "correctAnswer": "Autoria, data, conteúdo e evidências em cada versão",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual título tem mais exclamações": [
+          "HEADLINE_ONLY_JUDGMENT"
+        ],
+        "Qual versão circulou mais vezes": [
+          "HEADLINE_ONLY_JUDGMENT"
+        ],
+        "Qual cor parece mais confiável": [
+          "HEADLINE_ONLY_JUDGMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_VERSOES_DE_NOTICIA",
+      "explanation": "A comparação deve considerar fonte e conteúdo, não somente impacto do título.",
+      "hint": "Verifique quem publicou e o que cada texto sustenta.",
+      "errorFocus": "HEADLINE_ONLY_JUDGMENT",
+      "feedback": {
+        "correct": "Boa observação: A comparação deve considerar fonte e conteúdo, não somente impacto do título.",
+        "incorrect": "A comparação deve considerar fonte e conteúdo, não somente impacto do título.",
+        "hint": "Verifique quem publicou e o que cada texto sustenta.",
+        "errorFocus": "HEADLINE_ONLY_JUDGMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-16",
+      "statement": "Uma conversa privada foi publicada sem autorização. Qual aspecto coletivo deve ser considerado?",
+      "prompt": "Uma conversa privada foi publicada sem autorização. Qual aspecto coletivo deve ser considerado?",
+      "options": [
+        "A chance de ganhar curtidas",
+        "Apenas a qualidade da imagem",
+        "Se a conversa pode virar anúncio",
+        "Privacidade e consentimento de quem participou"
+      ],
+      "correctAnswer": "Privacidade e consentimento de quem participou",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A chance de ganhar curtidas": [
+          "PRIVATE_CONTENT_AS_PUBLIC"
+        ],
+        "Apenas a qualidade da imagem": [
+          "PRIVATE_CONTENT_AS_PUBLIC"
+        ],
+        "Se a conversa pode virar anúncio": [
+          "PRIVATE_CONTENT_AS_PUBLIC"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MENSAGEM_PRIVADA_REPUBLICADA",
+      "explanation": "Circular conteúdo privado sem autorização pode expor pessoas e afetar direitos.",
+      "hint": "Considere quem pode ser prejudicado.",
+      "errorFocus": "PRIVATE_CONTENT_AS_PUBLIC",
+      "feedback": {
+        "correct": "Boa observação: Circular conteúdo privado sem autorização pode expor pessoas e afetar direitos.",
+        "incorrect": "Circular conteúdo privado sem autorização pode expor pessoas e afetar direitos.",
+        "hint": "Considere quem pode ser prejudicado.",
+        "errorFocus": "PRIVATE_CONTENT_AS_PUBLIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-17",
+      "statement": "Um infográfico apresenta dados sobre consumo de água, autoria institucional, período e método. Qual escolha é melhor antes de reutilizá-lo?",
+      "prompt": "Um infográfico apresenta dados sobre consumo de água, autoria institucional, período e método. Qual escolha é melhor antes de reutilizá-lo?",
+      "options": [
+        "Conferir se o dado e o período servem ao novo público e citar a fonte",
+        "Recortar o número sem contexto",
+        "Afirmar que o gráfico vale para qualquer cidade",
+        "Apagar a autoria para caber no slide"
+      ],
+      "correctAnswer": "Conferir se o dado e o período servem ao novo público e citar a fonte",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Recortar o número sem contexto": [
+          "DATA_CONTEXT_REMOVAL"
+        ],
+        "Afirmar que o gráfico vale para qualquer cidade": [
+          "DATA_CONTEXT_REMOVAL"
+        ],
+        "Apagar a autoria para caber no slide": [
+          "DATA_CONTEXT_REMOVAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "INFOGRAFICO_DE_AGUA",
+      "explanation": "Período, método e lugar delimitam o dado; citação preserva rastreabilidade.",
+      "hint": "Veja se contexto original combina com a nova situação.",
+      "errorFocus": "DATA_CONTEXT_REMOVAL",
+      "feedback": {
+        "correct": "Boa observação: Período, método e lugar delimitam o dado; citação preserva rastreabilidade.",
+        "incorrect": "Período, método e lugar delimitam o dado; citação preserva rastreabilidade.",
+        "hint": "Veja se contexto original combina com a nova situação.",
+        "errorFocus": "DATA_CONTEXT_REMOVAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-18",
+      "statement": "Um trecho de entrevista circula sem a pergunta que o antecedia. Qual é uma ação responsável?",
+      "prompt": "Um trecho de entrevista circula sem a pergunta que o antecedia. Qual é uma ação responsável?",
+      "options": [
+        "Concluir a intenção pelo recorte",
+        "Localizar a entrevista completa antes de atribuir sentido ao trecho",
+        "Compartilhar para perguntar depois",
+        "Editar a fala para parecer mais clara"
+      ],
+      "correctAnswer": "Localizar a entrevista completa antes de atribuir sentido ao trecho",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Concluir a intenção pelo recorte": [
+          "QUOTE_WITHOUT_CONTEXT"
+        ],
+        "Compartilhar para perguntar depois": [
+          "QUOTE_WITHOUT_CONTEXT"
+        ],
+        "Editar a fala para parecer mais clara": [
+          "QUOTE_WITHOUT_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TRECHO_DE_ENTREVISTA",
+      "explanation": "A pergunta e o contexto podem alterar a interpretação do trecho.",
+      "hint": "Procure a versão integral.",
+      "errorFocus": "QUOTE_WITHOUT_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A pergunta e o contexto podem alterar a interpretação do trecho.",
+        "incorrect": "A pergunta e o contexto podem alterar a interpretação do trecho.",
+        "hint": "Procure a versão integral.",
+        "errorFocus": "QUOTE_WITHOUT_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-19",
+      "statement": "Uma escola quer convidar famílias que usam diferentes línguas. Qual escolha considera interesse coletivo?",
+      "prompt": "Uma escola quer convidar famílias que usam diferentes línguas. Qual escolha considera interesse coletivo?",
+      "options": [
+        "Enviar apenas um áudio sem identificação",
+        "Supor que todas leem a mesma língua",
+        "Produzir versões revisadas em línguas pertinentes e formatos acessíveis",
+        "Retirar informações de data e local"
+      ],
+      "correctAnswer": "Produzir versões revisadas em línguas pertinentes e formatos acessíveis",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Enviar apenas um áudio sem identificação": [
+          "AUDIENCE_LANGUAGE_ASSUMPTION"
+        ],
+        "Supor que todas leem a mesma língua": [
+          "AUDIENCE_LANGUAGE_ASSUMPTION"
+        ],
+        "Retirar informações de data e local": [
+          "AUDIENCE_LANGUAGE_ASSUMPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONVITE_MULTILINGUE",
+      "explanation": "Versões adequadas ampliam acesso sem presumir uma única língua para todos.",
+      "hint": "Pense em quem pode não compreender a primeira versão.",
+      "errorFocus": "AUDIENCE_LANGUAGE_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: Versões adequadas ampliam acesso sem presumir uma única língua para todos.",
+        "incorrect": "Versões adequadas ampliam acesso sem presumir uma única língua para todos.",
+        "hint": "Pense em quem pode não compreender a primeira versão.",
+        "errorFocus": "AUDIENCE_LANGUAGE_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-20",
+      "statement": "Um vídeo alterna depoimentos e gráficos para defender uma proposta. O que sustenta uma análise?",
+      "prompt": "Um vídeo alterna depoimentos e gráficos para defender uma proposta. O que sustenta uma análise?",
+      "options": [
+        "Afirmar que a edição revela a intenção privada de cada pessoa",
+        "Contar visualizações como prova da proposta",
+        "Ignorar os dados porque há música",
+        "Relacionar recursos de linguagem e dados citados à finalidade e ao público"
+      ],
+      "correctAnswer": "Relacionar recursos de linguagem e dados citados à finalidade e ao público",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Afirmar que a edição revela a intenção privada de cada pessoa": [
+          "STYLE_AS_INTENT_PROOF"
+        ],
+        "Contar visualizações como prova da proposta": [
+          "STYLE_AS_INTENT_PROOF"
+        ],
+        "Ignorar os dados porque há música": [
+          "STYLE_AS_INTENT_PROOF"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VIDEO_DE_CAMPANHA_PUBLICA",
+      "explanation": "Recursos e evidências ajudam a interpretar a mensagem, sem provar intenção privada.",
+      "hint": "Cite elementos observáveis do vídeo.",
+      "errorFocus": "STYLE_AS_INTENT_PROOF",
+      "feedback": {
+        "correct": "Boa observação: Recursos e evidências ajudam a interpretar a mensagem, sem provar intenção privada.",
+        "incorrect": "Recursos e evidências ajudam a interpretar a mensagem, sem provar intenção privada.",
+        "hint": "Cite elementos observáveis do vídeo.",
+        "errorFocus": "STYLE_AS_INTENT_PROOF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-21",
+      "statement": "Um podcast sai em áudio e transcrição. Qual análise de circulação é válida?",
+      "prompt": "Um podcast sai em áudio e transcrição. Qual análise de circulação é válida?",
+      "options": [
+        "Os formatos podem alcançar pessoas com preferências e necessidades diferentes",
+        "A transcrição torna o áudio desnecessário para todos",
+        "Os formatos garantem consenso",
+        "A circulação depende apenas do número de episódios"
+      ],
+      "correctAnswer": "Os formatos podem alcançar pessoas com preferências e necessidades diferentes",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A transcrição torna o áudio desnecessário para todos": [
+          "FORMAT_UNIVERSALITY"
+        ],
+        "Os formatos garantem consenso": [
+          "FORMAT_UNIVERSALITY"
+        ],
+        "A circulação depende apenas do número de episódios": [
+          "FORMAT_UNIVERSALITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PODCAST_EM_DOIS_CANAIS",
+      "explanation": "Formatos alternativos podem ampliar o acesso, mas públicos não são idênticos.",
+      "hint": "Considere diferentes formas de acesso.",
+      "errorFocus": "FORMAT_UNIVERSALITY",
+      "feedback": {
+        "correct": "Boa observação: Formatos alternativos podem ampliar o acesso, mas públicos não são idênticos.",
+        "incorrect": "Formatos alternativos podem ampliar o acesso, mas públicos não são idênticos.",
+        "hint": "Considere diferentes formas de acesso.",
+        "errorFocus": "FORMAT_UNIVERSALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-22",
+      "statement": "Uma campanha informa que foi patrocinada por uma empresa. Como esse dado pode ser usado?",
+      "prompt": "Uma campanha informa que foi patrocinada por uma empresa. Como esse dado pode ser usado?",
+      "options": [
+        "Como prova automática de falsidade",
+        "Como contexto para analisar interesses e escolhas de linguagem, sem concluir sozinho que tudo é falso",
+        "Como prova de neutralidade total",
+        "Como motivo para ignorar qualquer evidência"
+      ],
+      "correctAnswer": "Como contexto para analisar interesses e escolhas de linguagem, sem concluir sozinho que tudo é falso",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como prova automática de falsidade": [
+          "SPONSORSHIP_AS_VERDICT"
+        ],
+        "Como prova de neutralidade total": [
+          "SPONSORSHIP_AS_VERDICT"
+        ],
+        "Como motivo para ignorar qualquer evidência": [
+          "SPONSORSHIP_AS_VERDICT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CAMPANHA_COM_PATROCINIO",
+      "explanation": "Patrocínio é informação relevante sobre contexto e interesses, mas não decide sozinho a validade de cada afirmação.",
+      "hint": "Use o dado como pista, não como sentença.",
+      "errorFocus": "SPONSORSHIP_AS_VERDICT",
+      "feedback": {
+        "correct": "Boa observação: Patrocínio é informação relevante sobre contexto e interesses, mas não decide sozinho a validade de cada afirmação.",
+        "incorrect": "Patrocínio é informação relevante sobre contexto e interesses, mas não decide sozinho a validade de cada afirmação.",
+        "hint": "Use o dado como pista, não como sentença.",
+        "errorFocus": "SPONSORSHIP_AS_VERDICT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-23",
+      "statement": "Um aviso de serviço público circula por cartaz, site e rádio. O que um mapa de circulação deve registrar?",
+      "prompt": "Um aviso de serviço público circula por cartaz, site e rádio. O que um mapa de circulação deve registrar?",
+      "options": [
+        "Somente o canal com maior audiência",
+        "A intenção íntima de cada leitor",
+        "Canais, públicos possíveis, autoria e mudanças entre versões",
+        "A opinião de quem desenhou o mapa"
+      ],
+      "correctAnswer": "Canais, públicos possíveis, autoria e mudanças entre versões",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente o canal com maior audiência": [
+          "CIRCULATION_AS_SINGLE_METRIC"
+        ],
+        "A intenção íntima de cada leitor": [
+          "CIRCULATION_AS_SINGLE_METRIC"
+        ],
+        "A opinião de quem desenhou o mapa": [
+          "CIRCULATION_AS_SINGLE_METRIC"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MAPA_DE_CIRCULACAO_DE_SERVICO",
+      "explanation": "Circulação envolve percurso, público e transformação, não apenas alcance numérico.",
+      "hint": "Inclua caminho e contexto.",
+      "errorFocus": "CIRCULATION_AS_SINGLE_METRIC",
+      "feedback": {
+        "correct": "Boa observação: Circulação envolve percurso, público e transformação, não apenas alcance numérico.",
+        "incorrect": "Circulação envolve percurso, público e transformação, não apenas alcance numérico.",
+        "hint": "Inclua caminho e contexto.",
+        "errorFocus": "CIRCULATION_AS_SINGLE_METRIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-24",
+      "statement": "Uma mensagem urgente não indica data nem fonte. Qual decisão considera interesses pessoais e coletivos?",
+      "prompt": "Uma mensagem urgente não indica data nem fonte. Qual decisão considera interesses pessoais e coletivos?",
+      "options": [
+        "Encaminhar para todos por precaução",
+        "Adicionar uma legenda que inventa a data",
+        "Repostar sem link porque outras pessoas fizeram",
+        "Pausar o compartilhamento e verificar a informação por fonte confiável"
+      ],
+      "correctAnswer": "Pausar o compartilhamento e verificar a informação por fonte confiável",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Encaminhar para todos por precaução": [
+          "URGENCY_BYPASSES_CHECK"
+        ],
+        "Adicionar uma legenda que inventa a data": [
+          "URGENCY_BYPASSES_CHECK"
+        ],
+        "Repostar sem link porque outras pessoas fizeram": [
+          "URGENCY_BYPASSES_CHECK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_COMPARTILHAMENTO",
+      "explanation": "A urgência aumenta a importância de checar antes de ampliar uma mensagem incerta.",
+      "hint": "Pense no efeito de espalhar um dado sem contexto.",
+      "errorFocus": "URGENCY_BYPASSES_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A urgência aumenta a importância de checar antes de ampliar uma mensagem incerta.",
+        "incorrect": "A urgência aumenta a importância de checar antes de ampliar uma mensagem incerta.",
+        "hint": "Pense no efeito de espalhar um dado sem contexto.",
+        "errorFocus": "URGENCY_BYPASSES_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-25",
+      "statement": "Um edital informa critérios, prazo e órgão responsável. Que combinação é mais provável?",
+      "prompt": "Um edital informa critérios, prazo e órgão responsável. Que combinação é mais provável?",
+      "options": [
+        "Gênero institucional, finalidade informativa e público interessado no processo",
+        "Mensagem privada, finalidade de entretenimento e público desconhecido",
+        "Anúncio comercial sem autoria",
+        "Relato pessoal sem data"
+      ],
+      "correctAnswer": "Gênero institucional, finalidade informativa e público interessado no processo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Mensagem privada, finalidade de entretenimento e público desconhecido": [
+          "GENRE_PURPOSE_MISMATCH"
+        ],
+        "Anúncio comercial sem autoria": [
+          "GENRE_PURPOSE_MISMATCH"
+        ],
+        "Relato pessoal sem data": [
+          "GENRE_PURPOSE_MISMATCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "QUADRO_DE_GENERO_E_FINALIDADE",
+      "explanation": "Critérios, prazo e órgão indicado são marcas de um edital institucional.",
+      "hint": "Observe estrutura e informações presentes.",
+      "errorFocus": "GENRE_PURPOSE_MISMATCH",
+      "feedback": {
+        "correct": "Boa observação: Critérios, prazo e órgão indicado são marcas de um edital institucional.",
+        "incorrect": "Critérios, prazo e órgão indicado são marcas de um edital institucional.",
+        "hint": "Observe estrutura e informações presentes.",
+        "errorFocus": "GENRE_PURPOSE_MISMATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-26",
+      "statement": "Uma imagem de arquivo é reutilizada com nova legenda. Qual prática preserva contexto?",
+      "prompt": "Uma imagem de arquivo é reutilizada com nova legenda. Qual prática preserva contexto?",
+      "options": [
+        "Apagar a fonte para deixar a imagem limpa",
+        "Informar autoria, data e origem da imagem e explicar a nova relação",
+        "Tratar a legenda nova como prova de origem",
+        "Supor que a imagem fala por si"
+      ],
+      "correctAnswer": "Informar autoria, data e origem da imagem e explicar a nova relação",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar a fonte para deixar a imagem limpa": [
+          "IMAGE_PROVENANCE_LOSS"
+        ],
+        "Tratar a legenda nova como prova de origem": [
+          "IMAGE_PROVENANCE_LOSS"
+        ],
+        "Supor que a imagem fala por si": [
+          "IMAGE_PROVENANCE_LOSS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "LEGENDA_DE_IMAGEM_PUBLICA",
+      "explanation": "Crédito e contexto ajudam o público a avaliar o uso da imagem.",
+      "hint": "Rastreie a origem e o novo enquadramento.",
+      "errorFocus": "IMAGE_PROVENANCE_LOSS",
+      "feedback": {
+        "correct": "Boa observação: Crédito e contexto ajudam o público a avaliar o uso da imagem.",
+        "incorrect": "Crédito e contexto ajudam o público a avaliar o uso da imagem.",
+        "hint": "Rastreie a origem e o novo enquadramento.",
+        "errorFocus": "IMAGE_PROVENANCE_LOSS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-27",
+      "statement": "Uma postagem tem muitos comentários favoráveis. O que isso permite concluir com segurança?",
+      "prompt": "Uma postagem tem muitos comentários favoráveis. O que isso permite concluir com segurança?",
+      "options": [
+        "Que todos concordam",
+        "Que a fonte foi verificada",
+        "Que houve interação registrada, não que a afirmação seja verdadeira ou represente todos",
+        "Que a mensagem serve a qualquer público"
+      ],
+      "correctAnswer": "Que houve interação registrada, não que a afirmação seja verdadeira ou represente todos",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todos concordam": [
+          "ENGAGEMENT_AS_TRUTH"
+        ],
+        "Que a fonte foi verificada": [
+          "ENGAGEMENT_AS_TRUTH"
+        ],
+        "Que a mensagem serve a qualquer público": [
+          "ENGAGEMENT_AS_TRUTH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMENTARIOS_DE_PUBLICO",
+      "explanation": "Interação mede atividade observada, não verdade nem representatividade.",
+      "hint": "Separe reação e evidência.",
+      "errorFocus": "ENGAGEMENT_AS_TRUTH",
+      "feedback": {
+        "correct": "Boa observação: Interação mede atividade observada, não verdade nem representatividade.",
+        "incorrect": "Interação mede atividade observada, não verdade nem representatividade.",
+        "hint": "Separe reação e evidência.",
+        "errorFocus": "ENGAGEMENT_AS_TRUTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-28",
+      "statement": "Um áudio tem informação útil, mas não está transcrito. Que adaptação favorece participação?",
+      "prompt": "Um áudio tem informação útil, mas não está transcrito. Que adaptação favorece participação?",
+      "options": [
+        "Aumentar o volume sem outra opção",
+        "Retirar o conteúdo principal",
+        "Exigir que todos usem fones",
+        "Adicionar transcrição revisada e identificação da fonte"
+      ],
+      "correctAnswer": "Adicionar transcrição revisada e identificação da fonte",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Aumentar o volume sem outra opção": [
+          "AUDIO_ONLY_ACCESS"
+        ],
+        "Retirar o conteúdo principal": [
+          "AUDIO_ONLY_ACCESS"
+        ],
+        "Exigir que todos usem fones": [
+          "AUDIO_ONLY_ACCESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMUNICADO_EM_AUDIO",
+      "explanation": "Transcrição e fonte identificada ampliam acesso e verificabilidade.",
+      "hint": "Ofereça uma alternativa textual.",
+      "errorFocus": "AUDIO_ONLY_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Transcrição e fonte identificada ampliam acesso e verificabilidade.",
+        "incorrect": "Transcrição e fonte identificada ampliam acesso e verificabilidade.",
+        "hint": "Ofereça uma alternativa textual.",
+        "errorFocus": "AUDIO_ONLY_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-29",
+      "statement": "Um slogan repete uma frase curta para mobilizar o público. O que a repetição faz?",
+      "prompt": "Um slogan repete uma frase curta para mobilizar o público. O que a repetição faz?",
+      "options": [
+        "Pode destacar uma ideia e persuadir, mas não substitui evidências",
+        "Prova automaticamente a proposta",
+        "Garante que todo público concorde",
+        "Remove a finalidade do texto"
+      ],
+      "correctAnswer": "Pode destacar uma ideia e persuadir, mas não substitui evidências",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Prova automaticamente a proposta": [
+          "PERSUASION_AS_EVIDENCE"
+        ],
+        "Garante que todo público concorde": [
+          "PERSUASION_AS_EVIDENCE"
+        ],
+        "Remove a finalidade do texto": [
+          "PERSUASION_AS_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ANALISE_DE_SLOGAN",
+      "explanation": "Repetição é recurso retórico; afirmações ainda precisam de sustentação.",
+      "hint": "Diferencie efeito de prova.",
+      "errorFocus": "PERSUASION_AS_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Repetição é recurso retórico; afirmações ainda precisam de sustentação.",
+        "incorrect": "Repetição é recurso retórico; afirmações ainda precisam de sustentação.",
+        "hint": "Diferencie efeito de prova.",
+        "errorFocus": "PERSUASION_AS_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-30",
+      "statement": "Um resumo omite a principal ressalva de uma reportagem. Qual é o risco?",
+      "prompt": "Um resumo omite a principal ressalva de uma reportagem. Qual é o risco?",
+      "options": [
+        "A autoria se torna mais visível",
+        "A circulação pode alterar o sentido e exagerar a conclusão",
+        "O resumo sempre fica mais fiel",
+        "A ressalva não importa para ninguém"
+      ],
+      "correctAnswer": "A circulação pode alterar o sentido e exagerar a conclusão",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A autoria se torna mais visível": [
+          "SUMMARY_OMISSION"
+        ],
+        "O resumo sempre fica mais fiel": [
+          "SUMMARY_OMISSION"
+        ],
+        "A ressalva não importa para ninguém": [
+          "SUMMARY_OMISSION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RESUMO_DE_REPORTAGEM",
+      "explanation": "Ressalvas delimitam afirmações; omiti-las pode distorcer a mensagem.",
+      "hint": "Compare o resumo com a fonte original.",
+      "errorFocus": "SUMMARY_OMISSION",
+      "feedback": {
+        "correct": "Boa observação: Ressalvas delimitam afirmações; omiti-las pode distorcer a mensagem.",
+        "incorrect": "Ressalvas delimitam afirmações; omiti-las pode distorcer a mensagem.",
+        "hint": "Compare o resumo com a fonte original.",
+        "errorFocus": "SUMMARY_OMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-31",
+      "statement": "Um aviso precisa chegar a pessoas sem internet e a quem usa leitor de tela. Qual plano é mais inclusivo?",
+      "prompt": "Um aviso precisa chegar a pessoas sem internet e a quem usa leitor de tela. Qual plano é mais inclusivo?",
+      "options": [
+        "Publicar somente imagem em rede social",
+        "Usar apenas um cartaz com letras pequenas",
+        "Combinar mural legível com página acessível e áudio ou leitura comunitária",
+        "Pedir que cada pessoa encontre o aviso sozinha"
+      ],
+      "correctAnswer": "Combinar mural legível com página acessível e áudio ou leitura comunitária",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Publicar somente imagem em rede social": [
+          "CHANNEL_EXCLUSION"
+        ],
+        "Usar apenas um cartaz com letras pequenas": [
+          "CHANNEL_EXCLUSION"
+        ],
+        "Pedir que cada pessoa encontre o aviso sozinha": [
+          "CHANNEL_EXCLUSION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_CANAL_COMUNITARIO",
+      "explanation": "Canais complementares consideram diferentes condições de acesso.",
+      "hint": "Pense nos dois públicos indicados.",
+      "errorFocus": "CHANNEL_EXCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Canais complementares consideram diferentes condições de acesso.",
+        "incorrect": "Canais complementares consideram diferentes condições de acesso.",
+        "hint": "Pense nos dois públicos indicados.",
+        "errorFocus": "CHANNEL_EXCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-32",
+      "statement": "Qual conjunto reúne perguntas essenciais para analisar circulação?",
+      "prompt": "Qual conjunto reúne perguntas essenciais para analisar circulação?",
+      "options": [
+        "Qual cor aparece, quantos emojis há e quem gostou mais?",
+        "Quem compartilhou primeiro e quantas curtidas recebeu?",
+        "Qual pessoa tem a intenção mais secreta?",
+        "Quem produziu, para quem, em qual linguagem, por quais canais e com quais efeitos possíveis?"
+      ],
+      "correctAnswer": "Quem produziu, para quem, em qual linguagem, por quais canais e com quais efeitos possíveis?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual cor aparece, quantos emojis há e quem gostou mais?": [
+          "ANALYSIS_DIMENSIONS_INCOMPLETE"
+        ],
+        "Quem compartilhou primeiro e quantas curtidas recebeu?": [
+          "ANALYSIS_DIMENSIONS_INCOMPLETE"
+        ],
+        "Qual pessoa tem a intenção mais secreta?": [
+          "ANALYSIS_DIMENSIONS_INCOMPLETE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "FICHA_DE_ANALISE",
+      "explanation": "Autoria, público, linguagem, canais e efeitos sustentam análise contextualizada.",
+      "hint": "Inclua produção e percurso da mensagem.",
+      "errorFocus": "ANALYSIS_DIMENSIONS_INCOMPLETE",
+      "feedback": {
+        "correct": "Boa observação: Autoria, público, linguagem, canais e efeitos sustentam análise contextualizada.",
+        "incorrect": "Autoria, público, linguagem, canais e efeitos sustentam análise contextualizada.",
+        "hint": "Inclua produção e percurso da mensagem.",
+        "errorFocus": "ANALYSIS_DIMENSIONS_INCOMPLETE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-33",
+      "statement": "O que significa identificar a autoria de uma mensagem?",
+      "prompt": "O que significa identificar a autoria de uma mensagem?",
+      "options": [
+        "Verificar quem a produziu ou publicou, quando essa informação está disponível",
+        "Contar as cores usadas",
+        "Descobrir a opinião privada de todos os leitores",
+        "Medir o tamanho do arquivo"
+      ],
+      "correctAnswer": "Verificar quem a produziu ou publicou, quando essa informação está disponível",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Contar as cores usadas": [
+          "AUTHORSHIP_RECALL"
+        ],
+        "Descobrir a opinião privada de todos os leitores": [
+          "AUTHORSHIP_RECALL"
+        ],
+        "Medir o tamanho do arquivo": [
+          "AUTHORSHIP_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_AUTORIA",
+      "explanation": "Autoria indica quem produziu ou publicou a mensagem.",
+      "hint": "Procure o nome ou instituição indicada.",
+      "errorFocus": "AUTHORSHIP_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Autoria indica quem produziu ou publicou a mensagem.",
+        "incorrect": "Autoria indica quem produziu ou publicou a mensagem.",
+        "hint": "Procure o nome ou instituição indicada.",
+        "errorFocus": "AUTHORSHIP_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-34",
+      "statement": "Circulação de um discurso diz respeito a quê?",
+      "prompt": "Circulação de um discurso diz respeito a quê?",
+      "options": [
+        "Somente à intenção do autor",
+        "Aos canais, percursos e públicos pelos quais ele se torna acessível",
+        "À cor de cada palavra",
+        "A uma garantia de veracidade"
+      ],
+      "correctAnswer": "Aos canais, percursos e públicos pelos quais ele se torna acessível",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente à intenção do autor": [
+          "CIRCULATION_DEFINITION"
+        ],
+        "À cor de cada palavra": [
+          "CIRCULATION_DEFINITION"
+        ],
+        "A uma garantia de veracidade": [
+          "CIRCULATION_DEFINITION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_CIRCULACAO",
+      "explanation": "Circulação descreve como a mensagem chega a públicos e espaços.",
+      "hint": "Pense no caminho da mensagem.",
+      "errorFocus": "CIRCULATION_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: Circulação descreve como a mensagem chega a públicos e espaços.",
+        "incorrect": "Circulação descreve como a mensagem chega a públicos e espaços.",
+        "hint": "Pense no caminho da mensagem.",
+        "errorFocus": "CIRCULATION_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-35",
+      "statement": "Uma publicação não apresenta data. Qual ação ajuda a avaliar seu contexto?",
+      "prompt": "Uma publicação não apresenta data. Qual ação ajuda a avaliar seu contexto?",
+      "options": [
+        "Inventar a data provável",
+        "Compartilhar primeiro e checar depois",
+        "Procurar a origem e comparar com outras fontes pertinentes",
+        "Concluir que toda mensagem sem data é falsa"
+      ],
+      "correctAnswer": "Procurar a origem e comparar com outras fontes pertinentes",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Inventar a data provável": [
+          "CONTEXT_WITHOUT_DATE"
+        ],
+        "Compartilhar primeiro e checar depois": [
+          "CONTEXT_WITHOUT_DATE"
+        ],
+        "Concluir que toda mensagem sem data é falsa": [
+          "CONTEXT_WITHOUT_DATE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_FONTE",
+      "explanation": "A origem e a comparação ajudam a avaliar; a falta de data não decide sozinha.",
+      "hint": "Busque rastreabilidade antes de concluir.",
+      "errorFocus": "CONTEXT_WITHOUT_DATE",
+      "feedback": {
+        "correct": "Boa observação: A origem e a comparação ajudam a avaliar; a falta de data não decide sozinha.",
+        "incorrect": "A origem e a comparação ajudam a avaliar; a falta de data não decide sozinha.",
+        "hint": "Busque rastreabilidade antes de concluir.",
+        "errorFocus": "CONTEXT_WITHOUT_DATE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-36",
+      "statement": "Uma organização divulga um material sobre um tema ligado à sua atuação. Como considerar esse interesse?",
+      "prompt": "Uma organização divulga um material sobre um tema ligado à sua atuação. Como considerar esse interesse?",
+      "options": [
+        "Como prova automática de falsidade",
+        "Como prova de neutralidade completa",
+        "Como motivo para deixar de ler",
+        "Como contexto para analisar a mensagem e suas evidências"
+      ],
+      "correctAnswer": "Como contexto para analisar a mensagem e suas evidências",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como prova automática de falsidade": [
+          "INTEREST_AS_VERDICT"
+        ],
+        "Como prova de neutralidade completa": [
+          "INTEREST_AS_VERDICT"
+        ],
+        "Como motivo para deixar de ler": [
+          "INTEREST_AS_VERDICT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_INTERESSES",
+      "explanation": "Interesses situam a produção e devem ser analisados junto às evidências.",
+      "hint": "Use o interesse como pergunta de análise.",
+      "errorFocus": "INTEREST_AS_VERDICT",
+      "feedback": {
+        "correct": "Boa observação: Interesses situam a produção e devem ser analisados junto às evidências.",
+        "incorrect": "Interesses situam a produção e devem ser analisados junto às evidências.",
+        "hint": "Use o interesse como pergunta de análise.",
+        "errorFocus": "INTEREST_AS_VERDICT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-37",
+      "statement": "Uma gravação mostra estudantes identificáveis. Antes de compartilhá-la, o que importa?",
+      "prompt": "Uma gravação mostra estudantes identificáveis. Antes de compartilhá-la, o que importa?",
+      "options": [
+        "Consentimento, finalidade, público e proteção da privacidade",
+        "Apenas o número de visualizações",
+        "A cor da capa",
+        "Se a música está popular"
+      ],
+      "correctAnswer": "Consentimento, finalidade, público e proteção da privacidade",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apenas o número de visualizações": [
+          "PRIVACY_OMISSION"
+        ],
+        "A cor da capa": [
+          "PRIVACY_OMISSION"
+        ],
+        "Se a música está popular": [
+          "PRIVACY_OMISSION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Pessoas identificáveis têm interesses de privacidade que devem ser considerados.",
+      "hint": "Considere quem aparece e onde circulará.",
+      "errorFocus": "PRIVACY_OMISSION",
+      "feedback": {
+        "correct": "Boa observação: Pessoas identificáveis têm interesses de privacidade que devem ser considerados.",
+        "incorrect": "Pessoas identificáveis têm interesses de privacidade que devem ser considerados.",
+        "hint": "Considere quem aparece e onde circulará.",
+        "errorFocus": "PRIVACY_OMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-38",
+      "statement": "Um meme combina texto e imagem. Por que analisar os dois juntos?",
+      "prompt": "Um meme combina texto e imagem. Por que analisar os dois juntos?",
+      "options": [
+        "Porque a imagem sempre confirma o texto",
+        "Porque a imagem pode reforçar, alterar ou ironizar o sentido do texto",
+        "Porque palavras não têm sentido",
+        "Porque o formato prova a autoria"
+      ],
+      "correctAnswer": "Porque a imagem pode reforçar, alterar ou ironizar o sentido do texto",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque a imagem sempre confirma o texto": [
+          "IMAGE_TEXT_SEPARATION"
+        ],
+        "Porque palavras não têm sentido": [
+          "IMAGE_TEXT_SEPARATION"
+        ],
+        "Porque o formato prova a autoria": [
+          "IMAGE_TEXT_SEPARATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_MULTIMODALIDADE",
+      "explanation": "Os modos podem trabalhar juntos ou criar tensão de sentido.",
+      "hint": "Observe a relação entre as partes.",
+      "errorFocus": "IMAGE_TEXT_SEPARATION",
+      "feedback": {
+        "correct": "Boa observação: Os modos podem trabalhar juntos ou criar tensão de sentido.",
+        "incorrect": "Os modos podem trabalhar juntos ou criar tensão de sentido.",
+        "hint": "Observe a relação entre as partes.",
+        "errorFocus": "IMAGE_TEXT_SEPARATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-39",
+      "statement": "Qual escolha reúne verificação, contexto e cuidado coletivo?",
+      "prompt": "Qual escolha reúne verificação, contexto e cuidado coletivo?",
+      "options": [
+        "Encaminhar por urgência sem abrir a mensagem",
+        "Apagar créditos e recortar ressalvas",
+        "Conferir fonte e data, preservar contexto e avaliar efeitos antes de compartilhar",
+        "Usar curtidas como confirmação"
+      ],
+      "correctAnswer": "Conferir fonte e data, preservar contexto e avaliar efeitos antes de compartilhar",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Encaminhar por urgência sem abrir a mensagem": [
+          "SHARING_WITHOUT_REVIEW"
+        ],
+        "Apagar créditos e recortar ressalvas": [
+          "SHARING_WITHOUT_REVIEW"
+        ],
+        "Usar curtidas como confirmação": [
+          "SHARING_WITHOUT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVISAO_DE_COMPARTILHAMENTO",
+      "explanation": "A escolha responsável combina rastreabilidade, contexto e consideração de consequências.",
+      "hint": "Reúna as três etapas.",
+      "errorFocus": "SHARING_WITHOUT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A escolha responsável combina rastreabilidade, contexto e consideração de consequências.",
+        "incorrect": "A escolha responsável combina rastreabilidade, contexto e consideração de consequências.",
+        "hint": "Reúna as três etapas.",
+        "errorFocus": "SHARING_WITHOUT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-em13lgg101-production-circulation-and-discourse-choices-40",
+      "statement": "Um texto técnico é destinado a especialistas, mas será usado numa reunião aberta. Qual adaptação é adequada?",
+      "prompt": "Um texto técnico é destinado a especialistas, mas será usado numa reunião aberta. Qual adaptação é adequada?",
+      "options": [
+        "Retirar dados e fontes",
+        "Simplificar até mudar a conclusão",
+        "Impedir perguntas do novo público",
+        "Preparar versão clara e acessível sem alterar as evidências"
+      ],
+      "correctAnswer": "Preparar versão clara e acessível sem alterar as evidências",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar dados e fontes": [
+          "AUDIENCE_ADAPTATION_DISTORTION"
+        ],
+        "Simplificar até mudar a conclusão": [
+          "AUDIENCE_ADAPTATION_DISTORTION"
+        ],
+        "Impedir perguntas do novo público": [
+          "AUDIENCE_ADAPTATION_DISTORTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PUBLICO",
+      "explanation": "Adaptar a linguagem amplia acesso sem distorcer evidências.",
+      "hint": "Mantenha o sentido e ajuste a forma.",
+      "errorFocus": "AUDIENCE_ADAPTATION_DISTORTION",
+      "feedback": {
+        "correct": "Boa observação: Adaptar a linguagem amplia acesso sem distorcer evidências.",
+        "incorrect": "Adaptar a linguagem amplia acesso sem distorcer evidências.",
+        "hint": "Mantenha o sentido e ajuste a forma.",
+        "errorFocus": "AUDIENCE_ADAPTATION_DISTORTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+          "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+          "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+          "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

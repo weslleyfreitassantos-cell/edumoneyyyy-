@@ -12,8 +12,9 @@ const expectedDescriptors = {
   EI01CG04: 'Participar do cuidado do seu corpo e da promoção do seu bem-estar.',
   EI02CG01: 'Apropriar-se de gestos e movimentos de sua cultura no cuidado de si e nos jogos e brincadeiras.',
   EI03CG01: 'Criar com o corpo formas diversificadas de expressão de sentimentos, sensações e emoções, tanto nas situações do cotidiano quanto em brincadeiras, dança, teatro, música.',
+  EI01EF01: 'Reconhecer quando é chamado por seu nome e reconhecer os nomes de pessoas com quem convive.',
 };
-const versionByCode = { EI01CG01: 1, EI02CG01: 2, EI03CG01: 3, EI01CG02: 4, EI01CG03: 5, EI01CG04: 6 };
+const versionByCode = { EI01CG01: 1, EI02CG01: 2, EI03CG01: 3, EI01CG02: 4, EI01CG03: 5, EI01CG04: 6, EI01EF01: 7 };
 
 describe('early-childhood observation packages', () => {
   it('keeps the verified official descriptors while leaving curricular mapping unclaimed', () => {
@@ -25,17 +26,19 @@ describe('early-childhood observation packages', () => {
         technicalVerificationStatus: 'OFFICIAL_SOURCE_VERIFIED_EXACT',
         officialSource: {
           url: 'https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf',
-          page: 49,
+          page: code === 'EI01EF01' ? 51 : 49,
         },
       });
       expect(mapping?.status).toBe('HIERARCHY_ONLY');
       const packagePath = path.resolve(`content/bncc/authoring/early-childhood-experiential-v${versionByCode[code]}.json`);
       expect(fs.existsSync(packagePath)).toBe(true);
+      const packageData = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+      expect(packageData).toMatchObject({ officialCode: code, active: false, sourceStatus: 'OFFICIAL_SOURCE_VERIFIED_EXACT' });
     }
   });
 
   it('keeps observation evidence staged, private, and quiz-free', () => {
-    for (const version of [1, 2, 3, 4, 5, 6]) {
+    for (const version of [1, 2, 3, 4, 5, 6, 7]) {
       const pack = JSON.parse(fs.readFileSync(`content/bncc/authoring/early-childhood-experiential-v${version}.json`, 'utf8'));
       expect(pack).toMatchObject({ active: false, evidenceMode: 'EDUCATOR_MEDIATED_OBSERVATION' });
       expect(pack.contentStatus).toMatchObject({
@@ -50,5 +53,9 @@ describe('early-childhood observation packages', () => {
       expect(pack.learningDesign.evidenceRecord.privacy).toMatch(/não|nao|privacidade|imagem|diagnóstico|diagnostico/i);
       expect(pack.questions ?? []).toHaveLength(0);
     }
+    const nameRecognition = JSON.parse(fs.readFileSync('content/bncc/authoring/early-childhood-experiential-v7.json', 'utf8'));
+    expect(nameRecognition.learningDesign.observationExperiences).toHaveLength(2);
+    expect(nameRecognition.learningDesign.observationCriteria.join(' ')).toMatch(/não exige fala|não exige resposta verbal|resposta verbal/i);
+    expect(nameRecognition.learningDesign.evidenceRecord.privacy).toMatch(/Não registrar nomes de familiares/i);
   });
 });

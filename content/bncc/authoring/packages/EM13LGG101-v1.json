@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-em13lgg101-production-circulation-and-discourse-choices",
+  "officialCode": "EM13LGG101",
+  "outputPath": "content/adaptive/tec-escola-core-v5/em13lgg101-production-circulation-and-discourse-choices.json",
+  "canonicalSkillCode": "AUTHORING_EM13LGG101_DISCOURSE_PRODUCTION_AND_CIRCULATION",
+  "subject": "LANGUAGES_AND_THEIR_TECHNOLOGIES",
+  "domain": "LINGUAGENS E SUAS TECNOLOGIAS",
+  "topic": "produção e circulação de discursos em diferentes linguagens",
+  "officialDescriptor": "Compreender e analisar processos de produção e circulação de discursos, nas diferentes linguagens, para fazer escolhas fundamentadas em função de interesses pessoais e coletivos.",
+  "officialSource": {
+    "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+    "page": 59
+  },
+  "lesson": {
+    "title": "Quem produz, por onde circula e a quem interessa?",
+    "objective": "Analisar como autoria, finalidade, linguagem, suporte, circulação e público se relacionam e justificar escolhas de leitura, produção ou compartilhamento considerando interesses próprios e coletivos.",
+    "summary": "Um discurso é produzido por alguém, em uma situação e com uma finalidade. Palavras, imagens, sons, gestos e sua combinação são linguagens que organizam sentidos. Um cartaz, podcast, vídeo curto, reportagem ou comunicado pode circular por canais e alcançar públicos diferentes. Para analisar uma mensagem, investigue quem a produziu, a quem se dirige, como foi construída, por onde circula e quais interesses aparecem ou ficam de fora. Essas perguntas não provam automaticamente a intenção de uma pessoa; elas ajudam a justificar escolhas. Antes de compartilhar, considere contexto, fonte, acessibilidade e possíveis efeitos coletivos.",
+    "explanation": "Comece identificando elementos observáveis: autoria ou instituição, data, gênero, suporte, público indicado e marcas de linguagem. Depois relacione essas pistas à finalidade provável e ao percurso de circulação. Uma campanha pode informar, mobilizar, vender ou combinar objetivos; a análise deve citar sinais do texto, não adivinhar intenções privadas. A circulação muda o alcance: um comunicado numa página institucional, uma conversa de rádio e um vídeo compartilhado têm públicos e contextos distintos. Por fim, formule uma escolha fundamentada: ler mais, comparar fontes, adaptar a linguagem, creditar a autoria ou não compartilhar. Interesses pessoais podem coexistir com efeitos para outras pessoas; escolhas coletivas consideram acesso, diversidade de vozes, privacidade e consequências.",
+    "workedExample": "Um grêmio fictício publica um cartaz com data, local, audiodescrição do evento e um link para inscrição. A autoria, as informações práticas e o público estudantil sugerem uma finalidade de mobilização. Se o cartaz circular apenas como imagem sem texto alternativo, algumas pessoas podem ter dificuldade de acesso. Uma escolha fundamentada é verificar a página oficial e solicitar ou produzir uma versão acessível antes de compartilhar.",
+    "commonMistake": "Afirmar a intenção de quem produziu sem evidências, confundir popularidade com confiabilidade, ou compartilhar uma mensagem fora de contexto sem considerar a fonte, o público e as consequências.",
+    "priorKnowledge": [
+      "Reconhecer informações explícitas, autoria indicada e finalidade provável de um texto.",
+      "Comparar elementos verbais, visuais, sonoros e gestuais em mensagens multimodais.",
+      "Justificar uma escolha citando evidências observáveis."
+    ],
+    "keyConcepts": [
+      "produção de discurso",
+      "circulação",
+      "linguagem verbal e não verbal",
+      "gênero e suporte",
+      "público",
+      "finalidade",
+      "interesses",
+      "escolha fundamentada"
+    ],
+    "remediations": [
+      { "errorFocus": "INTENT_WITHOUT_EVIDENCE", "action": "Sublinhe uma marca observável da mensagem e reescreva a interpretação com “as pistas sugerem”, sem afirmar uma intenção privada como fato." },
+      { "errorFocus": "POPULARITY_AS_CREDIBILITY", "action": "Separe alcance de confiabilidade: confira autoria, data, contexto e fontes antes de decidir compartilhar." },
+      { "errorFocus": "CIRCULATION_CONTEXT_OMISSION", "action": "Anote onde a mensagem apareceu e para qual público foi preparada; compare o sentido antes e depois de circular em outro canal." }
+    ],
+    "accessibilitySupports": [
+      "Apresentar versões textuais de imagens, transcrição de áudio e descrição de elementos visuais relevantes.",
+      "Permitir análise e resposta por texto, fala, mapa de circulação, apresentação multimodal ou comunicação alternativa.",
+      "Fornecer mensagens curtas com autoria, data, canal e público destacados e glossário para termos técnicos.",
+      "Não exigir que estudantes publiquem conteúdo em contas pessoais, revelem opiniões privadas ou apareçam em gravações."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lgg101-school-campaign-comparison",
+        "title": "Duas campanhas, públicos e escolhas",
+        "context": "Dois cartazes fictícios anunciam uma feira escolar. Um informa data, local, acessibilidade e autoria; o outro usa imagem sem legenda e não indica fonte.",
+        "steps": [
+          "Identifique autoria, finalidade provável, público indicado e canal de circulação de cada cartaz.",
+          "Marque evidências verbais e visuais que apoiam sua interpretação, sem atribuir intenções não demonstradas.",
+          "Recomende como verificar ou adaptar uma mensagem antes de compartilhá-la com a comunidade escolar."
+        ],
+        "evidence": "Quadro comparativo com pistas observáveis, público, circulação, limite da interpretação e recomendação fundamentada.",
+        "privacyGuard": "Usar materiais fictícios; não publicar conteúdo de colegas nem exigir divulgação de opinião pessoal.",
+        "rubric": [
+          "Inicial: identifica o tema, mas confunde alcance com confiabilidade.",
+          "Em desenvolvimento: aponta autoria ou público e recomenda verificação com apoio.",
+          "Consolidado: relaciona pistas, circulação e acesso e justifica a escolha sem presumir intenções."
+        ]
+      },
+      {
+        "id": "lgg101-message-route-map",
+        "title": "Mapa do percurso de uma mensagem",
+        "context": "Uma notícia escolar fictícia aparece primeiro num mural, depois numa página institucional e finalmente num áudio resumido por uma rádio comunitária simulada.",
+        "steps": [
+          "Desenhe ou descreva os canais pelos quais a mensagem circulou e indique quem poderia acessá-la em cada etapa.",
+          "Compare o que foi mantido, resumido ou omitido em cada versão, citando trechos ou recursos observáveis.",
+          "Proponha uma escolha de circulação que preserve contexto, autoria e acesso para diferentes públicos."
+        ],
+        "evidence": "Mapa acompanhado de análise das mudanças entre versões e justificativa de circulação responsável.",
+        "privacyGuard": "A notícia é fictícia e não usa nomes, imagens ou contas de estudantes.",
+        "rubric": [
+          "Inicial: enumera canais, mas não observa mudanças de linguagem.",
+          "Em desenvolvimento: identifica uma mudança e relaciona-a ao público com lembrete.",
+          "Consolidado: explica como circulação altera alcance e apresenta escolha com evidência e cuidado coletivo."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","IDENTIFY","CARTAZ_DE_EVENTO_FICTICIO","Um cartaz informa que foi produzido pelo grêmio estudantil e anuncia uma assembleia. Qual pista identifica a autoria?","A indicação de que o grêmio produziu o cartaz",["A cor mais chamativa","O número de visualizações","A opinião de quem leu"],"AUTHORSHIP_FROM_DESIGN","A autoria está indicada no cartaz; aparência e alcance não a substituem.","Procure a assinatura ou identificação."],
+      ["EASY","DISTINGUISH","PODCAST_DE_CIENCIA","Um podcast combina fala, trilha sonora e efeitos. Que linguagens aparecem?","Linguagem oral e recursos sonoros",["Somente linguagem escrita","Apenas gestos visíveis","Nenhuma linguagem"],"MODALITY_OMISSION","A fala e a trilha são elementos sonoros que constroem sentido.","Observe o que se ouve."],
+      ["EASY","IDENTIFY","COMUNICADO_NO_MURAL","Um comunicado no mural da escola informa mudança de horário. Qual é uma finalidade provável?","Informar a comunidade sobre a alteração",["Vender um produto necessariamente","Provar a intenção privada de cada leitor","Garantir que todos já leram"],"PURPOSE_OVERCLAIM","O conteúdo e o contexto sugerem informar; não provam que todos receberam a mensagem.","Considere o assunto e o formato."],
+      ["EASY","RECALL","LINK_DE_ORIGEM","Antes de compartilhar uma notícia, qual dado ajuda a verificar sua procedência?","A fonte ou autoria indicada",["A quantidade de emojis","A cor de fundo","O número de comentários apenas"],"POPULARITY_AS_SOURCE","Autoria e fonte ajudam a rastrear a mensagem; popularidade não basta.","Procure quem publicou originalmente."],
+      ["EASY","DISTINGUISH","TEXTO_E_FOTOGRAFIA","Uma postagem traz fotografia e legenda. Como analisar a relação entre elas?","Comparar o que a legenda afirma com o que a imagem mostra",["Supor que a foto prova qualquer legenda","Ignorar a legenda","Concluir a intenção do autor só pela cor"],"IMAGE_AS_PROOF","Imagem e legenda devem ser lidas em conjunto e com contexto.","Compare as informações de cada parte."],
+      ["EASY","IDENTIFY","RADIO_COMUNITARIA","Uma rádio lê um aviso sobre vacinação e informa o órgão responsável. O que essa indicação oferece?","Uma pista para verificar a fonte do aviso",["Prova automática de que todo detalhe está correto","Garantia de que todos os ouvintes concordam","A intenção pessoal de cada locutor"],"SOURCE_AS_GUARANTEE","A identificação permite checagem, mas não substitui a avaliação do conteúdo.","Uma fonte é um ponto de partida."],
+      ["MEDIUM","ANALYZE","VIDEO_COM_LEGENDA","Um vídeo curto remove a data e o local de uma fala. Qual risco isso cria?","A fala pode circular sem contexto importante",["A mensagem torna-se automaticamente falsa","A autoria fica sempre mais clara","Todos os espectadores recebem a versão completa"],"CONTEXT_REMOVAL_CERTAINTY","Remover contexto pode mudar interpretações; é preciso verificar antes de concluir.","Pense nas informações que ficaram de fora."],
+      ["EASY","IDENTIFY","FOLHETO_ACESSIVEL","Um folheto tem texto legível, contraste e QR code para versão em áudio. O que essas escolhas favorecem?","Acesso por diferentes formas de leitura",["Apenas a divulgação comercial","A exclusão de quem prefere áudio","A prova de que a mensagem é verdadeira"],"ACCESS_AS_TRUTH","Acessibilidade amplia formas de acesso, mas não confirma a veracidade do conteúdo.","Separe acesso e confiabilidade."]
+    ],
+    "PRACTICE": [
+      ["EASY","CLASSIFY","CAMPANHA_DE_BIBLIOTECA","Um vídeo da biblioteca convida jovens a doar livros e informa como participar. Qual público parece ser considerado?","Pessoas que podem se interessar pela campanha e participar da doação",["Somente quem produziu o vídeo","Todas as pessoas do país com certeza","Um público que o vídeo não menciona nem sugere"],"AUDIENCE_OVERGENERALIZATION","A finalidade e o conteúdo sugerem um público interessado; não garantem quem viu o vídeo.","Relacione convite e público provável."],
+      ["MEDIUM","APPLY","POST_COM_DADO_SEM_FONTE","Uma postagem apresenta um número sobre transporte sem indicar período ou fonte. Qual escolha é mais fundamentada?","Procurar a fonte e o período antes de compartilhar como fato",["Repostar porque o número parece exato","Afirmar que a postagem é falsa sem verificar","Trocar o número por outro"],"UNVERIFIED_NUMBER","Um número precisa de contexto, período e fonte para sustentar uma afirmação.","Procure de onde veio o dado."],
+      ["MEDIUM","DISTINGUISH","ANUNCIO_DE_PRODUTO","Um anúncio usa depoimento e imagem para apresentar um produto. O que a análise deve considerar?","A finalidade persuasiva e as evidências apresentadas",["Que toda pessoa retratada concorda com qualquer uso","Que o depoimento prova todos os resultados","Que anúncios não usam linguagem"],"TESTIMONIAL_AS_PROOF","Depoimentos são recursos persuasivos e não comprovam sozinhos uma afirmação geral.","Identifique o gênero e avalie a evidência."],
+      ["EASY","SEQUENCE","REPOST_DE_AVISO","Uma mensagem recebe um resumo e depois é encaminhada sem link. Qual passo ajuda a restaurar rastreabilidade?","Buscar a publicação original e citar a fonte",["Apagar a autoria para simplificar","Adicionar mais encaminhamentos","Manter apenas o trecho mais chamativo"],"CIRCULATION_WITHOUT_SOURCE","Encontrar e creditar a publicação original ajuda a verificar o percurso.","Volte ao primeiro registro disponível."],
+      ["MEDIUM","ANALYZE","CARTAZ_COM_ICONES","Um cartaz usa ícones sem legenda para explicar o acesso ao evento. Qual questão importa para circulação coletiva?","Se públicos diferentes conseguem interpretar as instruções",["Se os ícones combinam com as cores da sala","Se todos têm o mesmo gosto visual","Se a mensagem terá muitos comentários"],"DESIGN_WITHOUT_ACCESS","A acessibilidade depende de compreensão e alternativas, não só da estética.","Considere quem pode ficar sem informação."],
+      ["MEDIUM","APPLY","BOLETIM_DE_BAIRRO","Um boletim impresso não chega a parte dos moradores. Que mudança pode ampliar a circulação?","Disponibilizar também uma versão digital acessível ou áudio",["Retirar a data e o contato","Usar apenas letras menores","Supor que quem não recebeu não se interessa"],"SINGLE_CHANNEL_ASSUMPTION","Canais complementares podem ampliar o acesso a públicos distintos.","Pense em mais de uma forma de acesso."],
+      ["MEDIUM","COMPARE","DUAS_VERSOES_DE_NOTICIA","Duas versões da mesma notícia têm títulos diferentes. O que comparar primeiro?","Autoria, data, conteúdo e evidências em cada versão",["Qual título tem mais exclamações","Qual versão circulou mais vezes","Qual cor parece mais confiável"],"HEADLINE_ONLY_JUDGMENT","A comparação deve considerar fonte e conteúdo, não somente impacto do título.","Verifique quem publicou e o que cada texto sustenta."],
+      ["MEDIUM","DISTINGUISH","MENSAGEM_PRIVADA_REPUBLICADA","Uma conversa privada foi publicada sem autorização. Qual aspecto coletivo deve ser considerado?","Privacidade e consentimento de quem participou",["A chance de ganhar curtidas","Apenas a qualidade da imagem","Se a conversa pode virar anúncio"],"PRIVATE_CONTENT_AS_PUBLIC","Circular conteúdo privado sem autorização pode expor pessoas e afetar direitos.","Considere quem pode ser prejudicado."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","ANALYZE","INFOGRAFICO_DE_AGUA","Um infográfico apresenta dados sobre consumo de água, autoria institucional, período e método. Qual escolha é melhor antes de reutilizá-lo?","Conferir se o dado e o período servem ao novo público e citar a fonte",["Recortar o número sem contexto","Afirmar que o gráfico vale para qualquer cidade","Apagar a autoria para caber no slide"],"DATA_CONTEXT_REMOVAL","Período, método e lugar delimitam o dado; citação preserva rastreabilidade.","Veja se contexto original combina com a nova situação."],
+      ["MEDIUM","EVALUATE","TRECHO_DE_ENTREVISTA","Um trecho de entrevista circula sem a pergunta que o antecedia. Qual é uma ação responsável?","Localizar a entrevista completa antes de atribuir sentido ao trecho",["Concluir a intenção pelo recorte","Compartilhar para perguntar depois","Editar a fala para parecer mais clara"],"QUOTE_WITHOUT_CONTEXT","A pergunta e o contexto podem alterar a interpretação do trecho.","Procure a versão integral."],
+      ["MEDIUM","JUSTIFY","CONVITE_MULTILINGUE","Uma escola quer convidar famílias que usam diferentes línguas. Qual escolha considera interesse coletivo?","Produzir versões revisadas em línguas pertinentes e formatos acessíveis",["Enviar apenas um áudio sem identificação","Supor que todas leem a mesma língua","Retirar informações de data e local"],"AUDIENCE_LANGUAGE_ASSUMPTION","Versões adequadas ampliam acesso sem presumir uma única língua para todos.","Pense em quem pode não compreender a primeira versão."],
+      ["MEDIUM","ANALYZE","VIDEO_DE_CAMPANHA_PUBLICA","Um vídeo alterna depoimentos e gráficos para defender uma proposta. O que sustenta uma análise?","Relacionar recursos de linguagem e dados citados à finalidade e ao público",["Afirmar que a edição revela a intenção privada de cada pessoa","Contar visualizações como prova da proposta","Ignorar os dados porque há música"],"STYLE_AS_INTENT_PROOF","Recursos e evidências ajudam a interpretar a mensagem, sem provar intenção privada.","Cite elementos observáveis do vídeo."],
+      ["MEDIUM","APPLY","PODCAST_EM_DOIS_CANAIS","Um podcast sai em áudio e transcrição. Qual análise de circulação é válida?","Os formatos podem alcançar pessoas com preferências e necessidades diferentes",["A transcrição torna o áudio desnecessário para todos","Os formatos garantem consenso","A circulação depende apenas do número de episódios"],"FORMAT_UNIVERSALITY","Formatos alternativos podem ampliar o acesso, mas públicos não são idênticos.","Considere diferentes formas de acesso."],
+      ["MEDIUM","EVALUATE","CAMPANHA_COM_PATROCINIO","Uma campanha informa que foi patrocinada por uma empresa. Como esse dado pode ser usado?","Como contexto para analisar interesses e escolhas de linguagem, sem concluir sozinho que tudo é falso",["Como prova automática de falsidade","Como prova de neutralidade total","Como motivo para ignorar qualquer evidência"],"SPONSORSHIP_AS_VERDICT","Patrocínio é informação relevante sobre contexto e interesses, mas não decide sozinho a validade de cada afirmação.","Use o dado como pista, não como sentença."],
+      ["MEDIUM","SYNTHESIZE","MAPA_DE_CIRCULACAO_DE_SERVICO","Um aviso de serviço público circula por cartaz, site e rádio. O que um mapa de circulação deve registrar?","Canais, públicos possíveis, autoria e mudanças entre versões",["Somente o canal com maior audiência","A intenção íntima de cada leitor","A opinião de quem desenhou o mapa"],"CIRCULATION_AS_SINGLE_METRIC","Circulação envolve percurso, público e transformação, não apenas alcance numérico.","Inclua caminho e contexto."],
+      ["MEDIUM","JUSTIFY","ESCOLHA_DE_COMPARTILHAMENTO","Uma mensagem urgente não indica data nem fonte. Qual decisão considera interesses pessoais e coletivos?","Pausar o compartilhamento e verificar a informação por fonte confiável",["Encaminhar para todos por precaução","Adicionar uma legenda que inventa a data","Repostar sem link porque outras pessoas fizeram"],"URGENCY_BYPASSES_CHECK","A urgência aumenta a importância de checar antes de ampliar uma mensagem incerta.","Pense no efeito de espalhar um dado sem contexto."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","CLASSIFY","QUADRO_DE_GENERO_E_FINALIDADE","Um edital informa critérios, prazo e órgão responsável. Que combinação é mais provável?","Gênero institucional, finalidade informativa e público interessado no processo",["Mensagem privada, finalidade de entretenimento e público desconhecido","Anúncio comercial sem autoria","Relato pessoal sem data"],"GENRE_PURPOSE_MISMATCH","Critérios, prazo e órgão indicado são marcas de um edital institucional.","Observe estrutura e informações presentes."],
+      ["MEDIUM","ANALYZE","LEGENDA_DE_IMAGEM_PUBLICA","Uma imagem de arquivo é reutilizada com nova legenda. Qual prática preserva contexto?","Informar autoria, data e origem da imagem e explicar a nova relação",["Apagar a fonte para deixar a imagem limpa","Tratar a legenda nova como prova de origem","Supor que a imagem fala por si"],"IMAGE_PROVENANCE_LOSS","Crédito e contexto ajudam o público a avaliar o uso da imagem.","Rastreie a origem e o novo enquadramento."],
+      ["MEDIUM","EVALUATE","COMENTARIOS_DE_PUBLICO","Uma postagem tem muitos comentários favoráveis. O que isso permite concluir com segurança?","Que houve interação registrada, não que a afirmação seja verdadeira ou represente todos",["Que todos concordam","Que a fonte foi verificada","Que a mensagem serve a qualquer público"],"ENGAGEMENT_AS_TRUTH","Interação mede atividade observada, não verdade nem representatividade.","Separe reação e evidência."],
+      ["MEDIUM","APPLY","COMUNICADO_EM_AUDIO","Um áudio tem informação útil, mas não está transcrito. Que adaptação favorece participação?","Adicionar transcrição revisada e identificação da fonte",["Aumentar o volume sem outra opção","Retirar o conteúdo principal","Exigir que todos usem fones"],"AUDIO_ONLY_ACCESS","Transcrição e fonte identificada ampliam acesso e verificabilidade.","Ofereça uma alternativa textual."],
+      ["MEDIUM","DISTINGUISH","ANALISE_DE_SLOGAN","Um slogan repete uma frase curta para mobilizar o público. O que a repetição faz?","Pode destacar uma ideia e persuadir, mas não substitui evidências",["Prova automaticamente a proposta","Garante que todo público concorde","Remove a finalidade do texto"],"PERSUASION_AS_EVIDENCE","Repetição é recurso retórico; afirmações ainda precisam de sustentação.","Diferencie efeito de prova."],
+      ["MEDIUM","ANALYZE","RESUMO_DE_REPORTAGEM","Um resumo omite a principal ressalva de uma reportagem. Qual é o risco?","A circulação pode alterar o sentido e exagerar a conclusão",["A autoria se torna mais visível","O resumo sempre fica mais fiel","A ressalva não importa para ninguém"],"SUMMARY_OMISSION","Ressalvas delimitam afirmações; omiti-las pode distorcer a mensagem.","Compare o resumo com a fonte original."],
+      ["MEDIUM","JUSTIFY","ESCOLHA_DE_CANAL_COMUNITARIO","Um aviso precisa chegar a pessoas sem internet e a quem usa leitor de tela. Qual plano é mais inclusivo?","Combinar mural legível com página acessível e áudio ou leitura comunitária",["Publicar somente imagem em rede social","Usar apenas um cartaz com letras pequenas","Pedir que cada pessoa encontre o aviso sozinha"],"CHANNEL_EXCLUSION","Canais complementares consideram diferentes condições de acesso.","Pense nos dois públicos indicados."],
+      ["MEDIUM","SYNTHESIZE","FICHA_DE_ANALISE","Qual conjunto reúne perguntas essenciais para analisar circulação?","Quem produziu, para quem, em qual linguagem, por quais canais e com quais efeitos possíveis?",["Qual cor aparece, quantos emojis há e quem gostou mais?","Quem compartilhou primeiro e quantas curtidas recebeu?","Qual pessoa tem a intenção mais secreta?"],"ANALYSIS_DIMENSIONS_INCOMPLETE","Autoria, público, linguagem, canais e efeitos sustentam análise contextualizada.","Inclua produção e percurso da mensagem."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","CARTAO_DE_AUTORIA","O que significa identificar a autoria de uma mensagem?","Verificar quem a produziu ou publicou, quando essa informação está disponível",["Contar as cores usadas","Descobrir a opinião privada de todos os leitores","Medir o tamanho do arquivo"],"AUTHORSHIP_RECALL","Autoria indica quem produziu ou publicou a mensagem.","Procure o nome ou instituição indicada."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_CIRCULACAO","Circulação de um discurso diz respeito a quê?","Aos canais, percursos e públicos pelos quais ele se torna acessível",["Somente à intenção do autor","À cor de cada palavra","A uma garantia de veracidade"],"CIRCULATION_DEFINITION","Circulação descreve como a mensagem chega a públicos e espaços.","Pense no caminho da mensagem."],
+      ["MEDIUM","APPLY","REVISAO_DE_FONTE","Uma publicação não apresenta data. Qual ação ajuda a avaliar seu contexto?","Procurar a origem e comparar com outras fontes pertinentes",["Inventar a data provável","Compartilhar primeiro e checar depois","Concluir que toda mensagem sem data é falsa"],"CONTEXT_WITHOUT_DATE","A origem e a comparação ajudam a avaliar; a falta de data não decide sozinha.","Busque rastreabilidade antes de concluir."],
+      ["MEDIUM","EVALUATE","REVISAO_DE_INTERESSES","Uma organização divulga um material sobre um tema ligado à sua atuação. Como considerar esse interesse?","Como contexto para analisar a mensagem e suas evidências",["Como prova automática de falsidade","Como prova de neutralidade completa","Como motivo para deixar de ler"],"INTEREST_AS_VERDICT","Interesses situam a produção e devem ser analisados junto às evidências.","Use o interesse como pergunta de análise."],
+      ["MEDIUM","JUSTIFY","REVISAO_DE_PRIVACIDADE","Uma gravação mostra estudantes identificáveis. Antes de compartilhá-la, o que importa?","Consentimento, finalidade, público e proteção da privacidade",["Apenas o número de visualizações","A cor da capa","Se a música está popular"],"PRIVACY_OMISSION","Pessoas identificáveis têm interesses de privacidade que devem ser considerados.","Considere quem aparece e onde circulará."],
+      ["MEDIUM","ANALYZE","REVISAO_DE_MULTIMODALIDADE","Um meme combina texto e imagem. Por que analisar os dois juntos?","Porque a imagem pode reforçar, alterar ou ironizar o sentido do texto",["Porque a imagem sempre confirma o texto","Porque palavras não têm sentido","Porque o formato prova a autoria"],"IMAGE_TEXT_SEPARATION","Os modos podem trabalhar juntos ou criar tensão de sentido.","Observe a relação entre as partes."],
+      ["MEDIUM","SYNTHESIZE","REVISAO_DE_COMPARTILHAMENTO","Qual escolha reúne verificação, contexto e cuidado coletivo?","Conferir fonte e data, preservar contexto e avaliar efeitos antes de compartilhar",["Encaminhar por urgência sem abrir a mensagem","Apagar créditos e recortar ressalvas","Usar curtidas como confirmação"],"SHARING_WITHOUT_REVIEW","A escolha responsável combina rastreabilidade, contexto e consideração de consequências.","Reúna as três etapas."],
+      ["MEDIUM","EVALUATE","REVISAO_DE_PUBLICO","Um texto técnico é destinado a especialistas, mas será usado numa reunião aberta. Qual adaptação é adequada?","Preparar versão clara e acessível sem alterar as evidências",["Retirar dados e fontes","Simplificar até mudar a conclusão","Impedir perguntas do novo público"],"AUDIENCE_ADAPTATION_DISTORTION","Adaptar a linguagem amplia acesso sem distorcer evidências.","Mantenha o sentido e ajuste a forma." ]
+    ]
+  }
+}

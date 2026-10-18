@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_AUTOPILOT_RECOVERY_AND_SCALE",
+  "officialCode": "EI01EF01",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "EF",
+  "ageRange": "Bebês, zero a 1 ano e 6 meses",
+  "fieldOfExperience": "Escuta, fala, pensamento e imaginação",
+  "descriptor": "Reconhecer quando é chamado por seu nome e reconhecer os nomes de pessoas com quem convive.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 51
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Nomes familiares em interações acolhedoras",
+    "objective": "Oferecer interações cotidianas nas quais o bebê possa perceber seu nome e nomes de pessoas com quem convive, aceitando respostas corporais, visuais, vocais ou ausência de resposta sem transformar a experiência em teste.",
+    "experience": "Em momentos tranquilos de chegada, brincadeira ou leitura, um adulto de referência usa uma vez o nome pelo qual o bebê é chamado e, quando autorizado, menciona nomes familiares em conversa ou livro compartilhado. O adulto aguarda, observa sinais possíveis e responde com sensibilidade; não exige que o bebê fale, aponte, olhe ou demonstre reconhecimento.",
+    "possibleInvitations": [
+      "Usar o nome autorizado do bebê em uma saudação cotidiana, com voz natural e tempo para uma resposta espontânea.",
+      "Compartilhar um livro ilustrado e mencionar, em contexto privado, nomes familiares que os responsáveis autorizaram; permitir observar, vocalizar, movimentar-se ou apenas escutar.",
+      "Acolher gestos, olhares, vocalizações, comunicação alternativa, pausa ou ausência de resposta sem repetir chamadas para testar a criança.",
+      "Combinar com responsáveis qual nome o bebê reconhece no cotidiano e quais nomes podem ser usados na instituição, sem registrar a lista no material de avaliação."
+    ],
+    "educatorPrompts": [
+      "Oi, [nome autorizado], estou aqui com você.",
+      "Vou esperar um pouco para ver se você quer continuar a história.",
+      "Percebi seu movimento; vou acompanhar sem apressar.",
+      "Podemos pausar agora e retomar quando você demonstrar interesse."
+    ],
+    "observationCriteria": [
+      "O nome do bebê é usado de forma acolhedora e conforme a forma de tratamento acordada com responsáveis.",
+      "A interação oferece tempo e observa respostas possíveis, como olhar, orientação corporal, movimento, vocalização ou comunicação alternativa, sem exigir uma forma única.",
+      "Nomes de pessoas com quem o bebê convive só são usados quando autorizados e em contexto institucional privado.",
+      "A ausência de resposta imediata não é tratada como falha, diagnóstico ou prova de que o bebê não reconhece o nome.",
+      "O adulto evita repetir o chamado, aumentar o volume ou criar uma situação de teste e interrompe diante de sinais de desconforto.",
+      "O registro descreve o que foi observado sem concluir intenção ou capacidade além das evidências.",
+      "O adulto usa nomes autorizados em contexto privado, não exige resposta verbal nem repete chamadas para testar reconhecimento."
+    ],
+    "evidenceRecord": {
+      "requiredFields": [
+        "date",
+        "routineContext",
+        "nameUseAuthorized",
+        "observedResponse",
+        "educatorResponse",
+        "nextSupport"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "secure_voice_note_reference"
+      ],
+      "privacy": "Não registrar nomes de familiares no campo de evidência; usar apenas a indicação de que o uso foi autorizado. Registrar o mínimo necessário em sistema institucional protegido, sem imagens, compartilhamento público, diagnóstico ou inferência além do observado."
+    },
+    "adaptations": [
+      "Usar o nome e a forma de comunicação acordados com responsáveis, respeitando pronúncia, nome social ou outras orientações familiares aplicáveis.",
+      "Reduzir ruído e estímulos concorrentes e oferecer tempo adicional para qualquer resposta espontânea.",
+      "Aceitar orientação do olhar, gesto, movimento, vocalização, comunicação alternativa, escuta ou pausa como formas possíveis de participação.",
+      "Não insistir em contato visual, fala, apontar ou resposta imediata e permitir que o bebê observe sem participar ativamente."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Chamada breve em uma rotina acolhedora",
+        "steps": [
+          "Use o nome pelo qual a família autorizou chamar o bebê, em uma interação cotidiana calma e sem exposição pública.",
+          "Chame uma vez em voz natural e aguarde; observe orientação do olhar, movimento, vocalização, pausa ou outra resposta sem exigir fala.",
+          "Interrompa se houver desconforto e registre somente a resposta observável, sem repetir chamadas para testar a criança."
+        ],
+        "observableEvidence": "Descrição mínima do contexto, do chamado uma vez, da resposta observável e do apoio oferecido, sem afirmar reconhecimento além das evidências."
+      },
+      {
+        "title": "Livro de convivência com nomes familiares autorizados",
+        "steps": [
+          "Leia um livro curto com personagens e, somente se autorizado, use nomes familiares fornecidos por responsáveis em contexto privado.",
+          "Ao mencionar um nome, faça uma pausa natural para permitir olhar, gesto, vocalização, comunicação alternativa ou ausência de resposta.",
+          "Não peça que o bebê repita, aponte ou demonstre desempenho; acolha qualquer forma de participação e encerre conforme seus sinais."
+        ],
+        "observableEvidence": "Registro sem nomes: indica que houve leitura compartilhada, quais respostas observáveis ocorreram e como a privacidade e o ritmo foram preservados."
+      }
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  },
+  "active": false
+}
