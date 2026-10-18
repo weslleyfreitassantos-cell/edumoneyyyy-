@@ -4662,7 +4662,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -7274,7 +7274,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -7435,7 +7435,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -7688,7 +7688,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -7987,7 +7987,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -11023,7 +11023,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
     },
     {

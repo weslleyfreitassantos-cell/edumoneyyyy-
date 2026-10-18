@@ -1,0 +1,2080 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci06-plant-parts-functions-and-relations",
+  "canonicalSkillCode": "AUTHORING_EF02CI06_PLANT_PARTS_AND_RELATIONS",
+  "subject": "SCIENCE",
+  "domain": "VIDA E EVOLUÇÃO",
+  "topic": "partes das plantas, funções e relações com ambiente e seres vivos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar as principais partes de uma planta (raiz, caule, folhas, flores e frutos) e a função desempenhada por cada uma delas, e analisar as relações entre as plantas, o ambiente e os demais seres vivos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Partes das plantas e suas relações",
+    "objective": "Identificar partes comuns de plantas e relacioná-las a funções e interações descritas em exemplos, reconhecendo que nem toda planta apresenta flores ou frutos visíveis em qualquer momento.",
+    "summary": "Raízes podem fixar a planta e absorver água e sais minerais; caules sustentam partes e transportam substâncias; folhas participam da produção de alimento usando luz, água e ar; flores estão relacionadas à reprodução de muitas plantas; frutos podem proteger e ajudar a dispersar sementes. As estruturas variam entre espécies e fases de vida. Plantas também interagem com o ambiente e outros seres vivos. A observação deve ser segura: não provar, arrancar ou manusear plantas desconhecidas.",
+    "explanation": "Observe uma planta representada em imagem ou diagrama e localize as partes nomeadas. Relacione cada parte à função indicada para aquele exemplo, sem supor que toda planta tenha todas as estruturas visíveis. Raízes costumam ficar sob o solo e absorvem água e sais minerais; o caule dá sustentação e conduz substâncias; folhas participam da fotossíntese. Flores podem formar estruturas que originam frutos e sementes em muitas plantas. Considere relações como abrigo, alimento e condições do ambiente apenas quando descritas na fonte. Nunca prove partes de plantas.",
+    "workedExample": "Num desenho de feijoeiro, a raiz aparece no solo, o caule sustenta folhas e a flor aparece numa fase reprodutiva. Podemos identificar as estruturas indicadas sem arrancar uma planta nem afirmar que todas florescem ao mesmo tempo.",
+    "commonMistake": "Afirmar que toda planta tem frutos visíveis, confundir raiz com caule ou supor que uma única função explica todas as relações de uma espécie com o ambiente.",
+    "priorKnowledge": [
+      "Reconhecer plantas em imagens e ambientes próximos.",
+      "Ler legendas simples e relacionar uma parte a uma função descrita."
+    ],
+    "keyConcepts": [
+      "raiz",
+      "caule",
+      "folha",
+      "flor",
+      "fruto",
+      "semente",
+      "função",
+      "ambiente",
+      "seres vivos",
+      "fotossíntese"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "PLANT_PART_IDENTIFICATION",
+        "action": "Use um diagrama legendado e acompanhe cada estrutura visualmente, sem exigir que a criança toque na planta."
+      },
+      {
+        "errorFocus": "FUNCTION_WITH_VARIATION",
+        "action": "Relacione a função ao exemplo apresentado e lembre que estruturas podem variar entre espécies e fases."
+      },
+      {
+        "errorFocus": "SAFE_PLANT_STUDY",
+        "action": "Use fotografias ou modelos e reforce que plantas desconhecidas não devem ser provadas ou arrancadas."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+      "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+      "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci06-plant-diagram-label",
+        "title": "Mapa de uma planta",
+        "instructions": "Um diagrama autorizado mostra partes vegetais e legendas com nomes e funções.\n1. Localize as partes indicadas no diagrama.\n2. Associe uma descrição de função a cada estrutura.\n3. Registre uma relação com ambiente ou outro ser vivo citada na fonte.",
+        "steps": [
+          "Localize as partes indicadas no diagrama.",
+          "Associe uma descrição de função a cada estrutura.",
+          "Registre uma relação com ambiente ou outro ser vivo citada na fonte."
+        ],
+        "evidence": "Diagrama identificado com associações justificadas pelo material consultado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma parte com apoio.",
+            "developing": "relaciona partes e funções principais.",
+            "proficient": "explica relações e reconhece limites do exemplo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci06-plant-life-cycle-cards",
+        "title": "Cartões de etapas e relações",
+        "instructions": "Cartões descrevem plantas em fases diferentes e interações documentadas.\n1. Ordene ou agrupe cartões de acordo com as informações apresentadas.\n2. Identifique estruturas visíveis em cada fase.\n3. Explique como o ambiente ou outro ser vivo aparece no registro.",
+        "steps": [
+          "Ordene ou agrupe cartões de acordo com as informações apresentadas.",
+          "Identifique estruturas visíveis em cada fase.",
+          "Explique como o ambiente ou outro ser vivo aparece no registro."
+        ],
+        "evidence": "Classificação fundamentada nas legendas, sem afirmar estruturas ausentes.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma estrutura visível.",
+            "developing": "compara fases com apoio.",
+            "proficient": "relaciona estruturas, funções e contexto sem generalizar."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci06-plant-parts-functions-and-relations-01",
+          "v1-ef02ci06-plant-parts-functions-and-relations-02",
+          "v1-ef02ci06-plant-parts-functions-and-relations-03",
+          "v1-ef02ci06-plant-parts-functions-and-relations-04",
+          "v1-ef02ci06-plant-parts-functions-and-relations-05",
+          "v1-ef02ci06-plant-parts-functions-and-relations-06",
+          "v1-ef02ci06-plant-parts-functions-and-relations-07",
+          "v1-ef02ci06-plant-parts-functions-and-relations-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci06-plant-parts-functions-and-relations-09",
+          "v1-ef02ci06-plant-parts-functions-and-relations-10",
+          "v1-ef02ci06-plant-parts-functions-and-relations-11",
+          "v1-ef02ci06-plant-parts-functions-and-relations-12",
+          "v1-ef02ci06-plant-parts-functions-and-relations-13",
+          "v1-ef02ci06-plant-parts-functions-and-relations-14",
+          "v1-ef02ci06-plant-parts-functions-and-relations-15",
+          "v1-ef02ci06-plant-parts-functions-and-relations-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci06-plant-parts-functions-and-relations-17",
+          "v1-ef02ci06-plant-parts-functions-and-relations-18",
+          "v1-ef02ci06-plant-parts-functions-and-relations-19",
+          "v1-ef02ci06-plant-parts-functions-and-relations-20",
+          "v1-ef02ci06-plant-parts-functions-and-relations-21",
+          "v1-ef02ci06-plant-parts-functions-and-relations-22",
+          "v1-ef02ci06-plant-parts-functions-and-relations-23",
+          "v1-ef02ci06-plant-parts-functions-and-relations-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci06-plant-parts-functions-and-relations-25",
+          "v1-ef02ci06-plant-parts-functions-and-relations-26",
+          "v1-ef02ci06-plant-parts-functions-and-relations-27",
+          "v1-ef02ci06-plant-parts-functions-and-relations-28",
+          "v1-ef02ci06-plant-parts-functions-and-relations-29",
+          "v1-ef02ci06-plant-parts-functions-and-relations-30",
+          "v1-ef02ci06-plant-parts-functions-and-relations-31",
+          "v1-ef02ci06-plant-parts-functions-and-relations-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci06-plant-parts-functions-and-relations-33",
+          "v1-ef02ci06-plant-parts-functions-and-relations-34",
+          "v1-ef02ci06-plant-parts-functions-and-relations-35",
+          "v1-ef02ci06-plant-parts-functions-and-relations-36",
+          "v1-ef02ci06-plant-parts-functions-and-relations-37",
+          "v1-ef02ci06-plant-parts-functions-and-relations-38",
+          "v1-ef02ci06-plant-parts-functions-and-relations-39",
+          "v1-ef02ci06-plant-parts-functions-and-relations-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI06",
+        "descriptor": "Identificar as principais partes de uma planta (raiz, caule, folhas, flores e frutos) e a função desempenhada por cada uma delas, e analisar as relações entre as plantas, o ambiente e os demais seres vivos.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-01",
+      "statement": "Num diagrama, qual parte costuma fixar a planta e absorver água do solo?",
+      "prompt": "Num diagrama, qual parte costuma fixar a planta e absorver água do solo?",
+      "options": [
+        "Raiz.",
+        "Flor",
+        "Fruto",
+        "Folha"
+      ],
+      "correctAnswer": "Raiz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Flor": [
+          "ROOT_FUNCTION"
+        ],
+        "Fruto": [
+          "ROOT_FUNCTION"
+        ],
+        "Folha": [
+          "ROOT_FUNCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIAGRAMA_DA_RAIZ",
+      "explanation": "Raízes podem fixar a planta e absorver água e sais minerais.",
+      "hint": "Observe a parte indicada sob o solo.",
+      "errorFocus": "ROOT_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Raízes podem fixar a planta e absorver água e sais minerais.",
+        "incorrect": "Raízes podem fixar a planta e absorver água e sais minerais.",
+        "hint": "Observe a parte indicada sob o solo.",
+        "errorFocus": "ROOT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-02",
+      "statement": "Qual parte sustenta folhas e pode conduzir substâncias pela planta?",
+      "prompt": "Qual parte sustenta folhas e pode conduzir substâncias pela planta?",
+      "options": [
+        "Fruto",
+        "Caule.",
+        "Semente",
+        "Pétala"
+      ],
+      "correctAnswer": "Caule.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fruto": [
+          "STEM_FUNCTION"
+        ],
+        "Semente": [
+          "STEM_FUNCTION"
+        ],
+        "Pétala": [
+          "STEM_FUNCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAULE_DO_FEIJOEIRO",
+      "explanation": "O caule dá sustentação e participa do transporte de substâncias.",
+      "hint": "Procure a estrutura que sustenta as folhas.",
+      "errorFocus": "STEM_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: O caule dá sustentação e participa do transporte de substâncias.",
+        "incorrect": "O caule dá sustentação e participa do transporte de substâncias.",
+        "hint": "Procure a estrutura que sustenta as folhas.",
+        "errorFocus": "STEM_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-03",
+      "statement": "Em muitas plantas, que parte participa da fotossíntese usando luz?",
+      "prompt": "Em muitas plantas, que parte participa da fotossíntese usando luz?",
+      "options": [
+        "Raízes apenas",
+        "Frutos apenas",
+        "Folhas.",
+        "Sementes apenas"
+      ],
+      "correctAnswer": "Folhas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Raízes apenas": [
+          "LEAF_FUNCTION"
+        ],
+        "Frutos apenas": [
+          "LEAF_FUNCTION"
+        ],
+        "Sementes apenas": [
+          "LEAF_FUNCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOLHAS_COM_LUZ",
+      "explanation": "Folhas participam da produção de alimento pela fotossíntese.",
+      "hint": "Pense na parte que recebe luz.",
+      "errorFocus": "LEAF_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Folhas participam da produção de alimento pela fotossíntese.",
+        "incorrect": "Folhas participam da produção de alimento pela fotossíntese.",
+        "hint": "Pense na parte que recebe luz.",
+        "errorFocus": "LEAF_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-04",
+      "statement": "Qual estrutura de muitas plantas está relacionada à reprodução?",
+      "prompt": "Qual estrutura de muitas plantas está relacionada à reprodução?",
+      "options": [
+        "Raiz",
+        "Caule subterrâneo",
+        "Espinho",
+        "Flor."
+      ],
+      "correctAnswer": "Flor.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Raiz": [
+          "FLOWER_ROLE"
+        ],
+        "Caule subterrâneo": [
+          "FLOWER_ROLE"
+        ],
+        "Espinho": [
+          "FLOWER_ROLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FLOR_EM_DIAGRAMA",
+      "explanation": "Flores participam da reprodução de muitas plantas.",
+      "hint": "Procure a estrutura colorida indicada.",
+      "errorFocus": "FLOWER_ROLE",
+      "feedback": {
+        "correct": "Boa observação: Flores participam da reprodução de muitas plantas.",
+        "incorrect": "Flores participam da reprodução de muitas plantas.",
+        "hint": "Procure a estrutura colorida indicada.",
+        "errorFocus": "FLOWER_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-05",
+      "statement": "Em muitas plantas, o fruto pode proteger o quê?",
+      "prompt": "Em muitas plantas, o fruto pode proteger o quê?",
+      "options": [
+        "Sementes.",
+        "As raízes do solo",
+        "A luz do Sol",
+        "O caule de outra planta"
+      ],
+      "correctAnswer": "Sementes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As raízes do solo": [
+          "FRUIT_SEED_RELATION"
+        ],
+        "A luz do Sol": [
+          "FRUIT_SEED_RELATION"
+        ],
+        "O caule de outra planta": [
+          "FRUIT_SEED_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FRUTO_E_SEMENTE",
+      "explanation": "Frutos podem envolver e proteger sementes.",
+      "hint": "Observe o que fica dentro do fruto.",
+      "errorFocus": "FRUIT_SEED_RELATION",
+      "feedback": {
+        "correct": "Boa observação: Frutos podem envolver e proteger sementes.",
+        "incorrect": "Frutos podem envolver e proteger sementes.",
+        "hint": "Observe o que fica dentro do fruto.",
+        "errorFocus": "FRUIT_SEED_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-06",
+      "statement": "Uma planta está sem flores nesta fotografia. Podemos concluir que ela não é uma planta?",
+      "prompt": "Uma planta está sem flores nesta fotografia. Podemos concluir que ela não é uma planta?",
+      "options": [
+        "Sim, toda planta precisa ter flor visível",
+        "Não; a flor pode não estar visível nessa fase ou nesse momento.",
+        "Sim, porque folhas não são partes de plantas",
+        "Não, porque todas as plantas são frutos"
+      ],
+      "correctAnswer": "Não; a flor pode não estar visível nessa fase ou nesse momento.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, toda planta precisa ter flor visível": [
+          "STRUCTURE_VARIATION"
+        ],
+        "Sim, porque folhas não são partes de plantas": [
+          "STRUCTURE_VARIATION"
+        ],
+        "Não, porque todas as plantas são frutos": [
+          "STRUCTURE_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLANTA_SEM_FLOR_VISIVEL",
+      "explanation": "Estruturas visíveis podem variar conforme espécie e fase.",
+      "hint": "Considere o que a foto permite afirmar.",
+      "errorFocus": "STRUCTURE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Estruturas visíveis podem variar conforme espécie e fase.",
+        "incorrect": "Estruturas visíveis podem variar conforme espécie e fase.",
+        "hint": "Considere o que a foto permite afirmar.",
+        "errorFocus": "STRUCTURE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-07",
+      "statement": "Uma criança vê uma planta desconhecida. Qual atitude é segura?",
+      "prompt": "Uma criança vê uma planta desconhecida. Qual atitude é segura?",
+      "options": [
+        "Comer uma folha",
+        "Arrancar a raiz",
+        "Observar sem provar nem arrancar e seguir orientação adulta.",
+        "Passar a planta no rosto"
+      ],
+      "correctAnswer": "Observar sem provar nem arrancar e seguir orientação adulta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Comer uma folha": [
+          "SAFE_PLANT_OBSERVATION"
+        ],
+        "Arrancar a raiz": [
+          "SAFE_PLANT_OBSERVATION"
+        ],
+        "Passar a planta no rosto": [
+          "SAFE_PLANT_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANTA_DESCONHECIDA",
+      "explanation": "Não se deve provar ou manusear planta desconhecida.",
+      "hint": "Escolha a opção sem contato arriscado.",
+      "errorFocus": "SAFE_PLANT_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Não se deve provar ou manusear planta desconhecida.",
+        "incorrect": "Não se deve provar ou manusear planta desconhecida.",
+        "hint": "Escolha a opção sem contato arriscado.",
+        "errorFocus": "SAFE_PLANT_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-08",
+      "statement": "Uma imagem mostra abelha visitando uma flor. O que ela exemplifica?",
+      "prompt": "Uma imagem mostra abelha visitando uma flor. O que ela exemplifica?",
+      "options": [
+        "Uma raiz absorvendo água",
+        "Um fruto protegendo semente",
+        "Uma rocha produzindo alimento",
+        "Uma interação entre seres vivos."
+      ],
+      "correctAnswer": "Uma interação entre seres vivos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma raiz absorvendo água": [
+          "PLANT_ANIMAL_RELATION"
+        ],
+        "Um fruto protegendo semente": [
+          "PLANT_ANIMAL_RELATION"
+        ],
+        "Uma rocha produzindo alimento": [
+          "PLANT_ANIMAL_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ABELHA_E_FLOR",
+      "explanation": "A cena apresenta relação entre um animal e uma planta.",
+      "hint": "Observe os dois seres na imagem.",
+      "errorFocus": "PLANT_ANIMAL_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta relação entre um animal e uma planta.",
+        "incorrect": "A cena apresenta relação entre um animal e uma planta.",
+        "hint": "Observe os dois seres na imagem.",
+        "errorFocus": "PLANT_ANIMAL_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-09",
+      "statement": "Num desenho, a legenda aponta para folhas verdes. Qual nome corresponde?",
+      "prompt": "Num desenho, a legenda aponta para folhas verdes. Qual nome corresponde?",
+      "options": [
+        "Folha.",
+        "Raiz",
+        "Fruto",
+        "Semente"
+      ],
+      "correctAnswer": "Folha.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Raiz": [
+          "LABEL_LEAF"
+        ],
+        "Fruto": [
+          "LABEL_LEAF"
+        ],
+        "Semente": [
+          "LABEL_LEAF"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEGENDAS_DA_FOLHA",
+      "explanation": "A legenda identifica a estrutura como folha.",
+      "hint": "Siga a seta do desenho.",
+      "errorFocus": "LABEL_LEAF",
+      "feedback": {
+        "correct": "Boa observação: A legenda identifica a estrutura como folha.",
+        "incorrect": "A legenda identifica a estrutura como folha.",
+        "hint": "Siga a seta do desenho.",
+        "errorFocus": "LABEL_LEAF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-10",
+      "statement": "Qual diferença entre raiz e caule está de acordo com o diagrama?",
+      "prompt": "Qual diferença entre raiz e caule está de acordo com o diagrama?",
+      "options": [
+        "A raiz é uma flor e o caule é um fruto",
+        "A raiz aparece ligada ao solo e o caule sustenta partes acima dele.",
+        "Ambos são sementes",
+        "O caule fica sempre dentro de um fruto"
+      ],
+      "correctAnswer": "A raiz aparece ligada ao solo e o caule sustenta partes acima dele.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A raiz é uma flor e o caule é um fruto": [
+          "ROOT_STEM_DISTINCTION"
+        ],
+        "Ambos são sementes": [
+          "ROOT_STEM_DISTINCTION"
+        ],
+        "O caule fica sempre dentro de um fruto": [
+          "ROOT_STEM_DISTINCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RAIZ_E_CAUle",
+      "explanation": "O diagrama mostra posições e funções diferentes.",
+      "hint": "Compare posição e função indicadas.",
+      "errorFocus": "ROOT_STEM_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: O diagrama mostra posições e funções diferentes.",
+        "incorrect": "O diagrama mostra posições e funções diferentes.",
+        "hint": "Compare posição e função indicadas.",
+        "errorFocus": "ROOT_STEM_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-11",
+      "statement": "Uma semente aparece dentro de um fruto cortado em ilustração. O que o fruto pode ajudar a proteger?",
+      "prompt": "Uma semente aparece dentro de um fruto cortado em ilustração. O que o fruto pode ajudar a proteger?",
+      "options": [
+        "A luz do dia",
+        "A água do ar",
+        "A semente.",
+        "As folhas de outra planta"
+      ],
+      "correctAnswer": "A semente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A luz do dia": [
+          "SEED_PROTECTION"
+        ],
+        "A água do ar": [
+          "SEED_PROTECTION"
+        ],
+        "As folhas de outra planta": [
+          "SEED_PROTECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEMENTE_NO_FRUTO",
+      "explanation": "Em muitas plantas, o fruto envolve sementes.",
+      "hint": "Veja o interior ilustrado.",
+      "errorFocus": "SEED_PROTECTION",
+      "feedback": {
+        "correct": "Boa observação: Em muitas plantas, o fruto envolve sementes.",
+        "incorrect": "Em muitas plantas, o fruto envolve sementes.",
+        "hint": "Veja o interior ilustrado.",
+        "errorFocus": "SEED_PROTECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-12",
+      "statement": "Qual estrutura participa diretamente da fotossíntese na maioria dos exemplos escolares?",
+      "prompt": "Qual estrutura participa diretamente da fotossíntese na maioria dos exemplos escolares?",
+      "options": [
+        "Fruto maduro apenas",
+        "Semente seca apenas",
+        "Raiz sem folhas",
+        "Folha."
+      ],
+      "correctAnswer": "Folha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fruto maduro apenas": [
+          "PHOTOSYNTHESIS_PART"
+        ],
+        "Semente seca apenas": [
+          "PHOTOSYNTHESIS_PART"
+        ],
+        "Raiz sem folhas": [
+          "PHOTOSYNTHESIS_PART"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOTOSSINTESE_E_RAIZ",
+      "explanation": "Folhas são locais importantes da fotossíntese.",
+      "hint": "Pense na estrutura exposta à luz.",
+      "errorFocus": "PHOTOSYNTHESIS_PART",
+      "feedback": {
+        "correct": "Boa observação: Folhas são locais importantes da fotossíntese.",
+        "incorrect": "Folhas são locais importantes da fotossíntese.",
+        "hint": "Pense na estrutura exposta à luz.",
+        "errorFocus": "PHOTOSYNTHESIS_PART"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-13",
+      "statement": "Uma planta jovem tem caule apoiando folhas. Que função está ilustrada?",
+      "prompt": "Uma planta jovem tem caule apoiando folhas. Que função está ilustrada?",
+      "options": [
+        "Sustentação de partes da planta.",
+        "Proteção de sementes por fruto",
+        "Absorção de luz pelo solo",
+        "Produção de flores por animais"
+      ],
+      "correctAnswer": "Sustentação de partes da planta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Proteção de sementes por fruto": [
+          "STEM_SUPPORT"
+        ],
+        "Absorção de luz pelo solo": [
+          "STEM_SUPPORT"
+        ],
+        "Produção de flores por animais": [
+          "STEM_SUPPORT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CAULE_SUSTENTA_FOLHAS",
+      "explanation": "O caule pode sustentar folhas e outras partes.",
+      "hint": "Observe o papel estrutural.",
+      "errorFocus": "STEM_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: O caule pode sustentar folhas e outras partes.",
+        "incorrect": "O caule pode sustentar folhas e outras partes.",
+        "hint": "Observe o papel estrutural.",
+        "errorFocus": "STEM_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-14",
+      "statement": "Um conjunto de imagens mostra uma flor e depois um fruto com sementes. Qual relação é possível estudar?",
+      "prompt": "Um conjunto de imagens mostra uma flor e depois um fruto com sementes. Qual relação é possível estudar?",
+      "options": [
+        "Toda flor vira fruto imediatamente",
+        "A formação de fruto e sementes em muitas plantas após a reprodução.",
+        "O fruto nasce da raiz em qualquer planta",
+        "As imagens provam que todas as espécies são iguais"
+      ],
+      "correctAnswer": "A formação de fruto e sementes em muitas plantas após a reprodução.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda flor vira fruto imediatamente": [
+          "REPRODUCTION_SEQUENCE"
+        ],
+        "O fruto nasce da raiz em qualquer planta": [
+          "REPRODUCTION_SEQUENCE"
+        ],
+        "As imagens provam que todas as espécies são iguais": [
+          "REPRODUCTION_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FLORES_E_FRUTOS_EM_ETAPAS",
+      "explanation": "As imagens mostram etapas de um exemplo vegetal, não regra idêntica para todas as espécies.",
+      "hint": "Use o contexto do exemplo.",
+      "errorFocus": "REPRODUCTION_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: As imagens mostram etapas de um exemplo vegetal, não regra idêntica para todas as espécies.",
+        "incorrect": "As imagens mostram etapas de um exemplo vegetal, não regra idêntica para todas as espécies.",
+        "hint": "Use o contexto do exemplo.",
+        "errorFocus": "REPRODUCTION_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-15",
+      "statement": "Por que as raízes aparecem abaixo do solo em muitos diagramas?",
+      "prompt": "Por que as raízes aparecem abaixo do solo em muitos diagramas?",
+      "options": [
+        "Porque produzem todas as flores",
+        "Porque protegem frutos no alto",
+        "Porque podem fixar a planta e absorver água e sais minerais.",
+        "Porque substituem a luz"
+      ],
+      "correctAnswer": "Porque podem fixar a planta e absorver água e sais minerais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque produzem todas as flores": [
+          "ROOT_ROLE"
+        ],
+        "Porque protegem frutos no alto": [
+          "ROOT_ROLE"
+        ],
+        "Porque substituem a luz": [
+          "ROOT_ROLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RAIZES_NO_SOLO",
+      "explanation": "Raízes participam da fixação e absorção.",
+      "hint": "Considere a função indicada.",
+      "errorFocus": "ROOT_ROLE",
+      "feedback": {
+        "correct": "Boa observação: Raízes participam da fixação e absorção.",
+        "incorrect": "Raízes participam da fixação e absorção.",
+        "hint": "Considere a função indicada.",
+        "errorFocus": "ROOT_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-16",
+      "statement": "Uma foto mostra folhas comidas em parte por insetos. Qual observação é cuidadosa?",
+      "prompt": "Uma foto mostra folhas comidas em parte por insetos. Qual observação é cuidadosa?",
+      "options": [
+        "O inseto sempre destrói toda planta",
+        "A planta é inútil",
+        "Toda folha será comida",
+        "A imagem registra uma interação entre planta e animal."
+      ],
+      "correctAnswer": "A imagem registra uma interação entre planta e animal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O inseto sempre destrói toda planta": [
+          "EVIDENCE_BOUNDED_INTERACTION"
+        ],
+        "A planta é inútil": [
+          "EVIDENCE_BOUNDED_INTERACTION"
+        ],
+        "Toda folha será comida": [
+          "EVIDENCE_BOUNDED_INTERACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGISTRO_FOTOGRAFICO",
+      "explanation": "A conclusão se limita à interação mostrada na foto.",
+      "hint": "Descreva a evidência visível.",
+      "errorFocus": "EVIDENCE_BOUNDED_INTERACTION",
+      "feedback": {
+        "correct": "Boa observação: A conclusão se limita à interação mostrada na foto.",
+        "incorrect": "A conclusão se limita à interação mostrada na foto.",
+        "hint": "Descreva a evidência visível.",
+        "errorFocus": "EVIDENCE_BOUNDED_INTERACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-17",
+      "statement": "Uma árvore e uma horta mostram raízes, caules e folhas em diagramas. O que pode ser comparado?",
+      "prompt": "Uma árvore e uma horta mostram raízes, caules e folhas em diagramas. O que pode ser comparado?",
+      "options": [
+        "Partes comuns e diferenças de forma entre os exemplos.",
+        "Que todas as espécies têm frutos idênticos",
+        "Que uma planta é superior",
+        "Que as estruturas nunca mudam"
+      ],
+      "correctAnswer": "Partes comuns e diferenças de forma entre os exemplos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que todas as espécies têm frutos idênticos": [
+          "PLANT_STRUCTURE_COMPARISON"
+        ],
+        "Que uma planta é superior": [
+          "PLANT_STRUCTURE_COMPARISON"
+        ],
+        "Que as estruturas nunca mudam": [
+          "PLANT_STRUCTURE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ARVORE_E_HORTALICA",
+      "explanation": "Exemplos podem compartilhar partes e variar em forma.",
+      "hint": "Compare os diagramas sem generalizar.",
+      "errorFocus": "PLANT_STRUCTURE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Exemplos podem compartilhar partes e variar em forma.",
+        "incorrect": "Exemplos podem compartilhar partes e variar em forma.",
+        "hint": "Compare os diagramas sem generalizar.",
+        "errorFocus": "PLANT_STRUCTURE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-18",
+      "statement": "Uma planta cresce perto de um local sombreado. O que é importante considerar ao estudar essa situação?",
+      "prompt": "Uma planta cresce perto de um local sombreado. O que é importante considerar ao estudar essa situação?",
+      "options": [
+        "Que toda planta precisa da mesma quantidade de luz",
+        "A espécie, as condições e os dados apresentados sobre luz.",
+        "Que sombra sempre mata plantas",
+        "Que a posição não importa"
+      ],
+      "correctAnswer": "A espécie, as condições e os dados apresentados sobre luz.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que toda planta precisa da mesma quantidade de luz": [
+          "ENVIRONMENT_CONTEXT"
+        ],
+        "Que sombra sempre mata plantas": [
+          "ENVIRONMENT_CONTEXT"
+        ],
+        "Que a posição não importa": [
+          "ENVIRONMENT_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PLANTA_E_SOMBRA",
+      "explanation": "A relação com luz depende do contexto e da espécie.",
+      "hint": "Use os dados da fonte.",
+      "errorFocus": "ENVIRONMENT_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A relação com luz depende do contexto e da espécie.",
+        "incorrect": "A relação com luz depende do contexto e da espécie.",
+        "hint": "Use os dados da fonte.",
+        "errorFocus": "ENVIRONMENT_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-19",
+      "statement": "Uma legenda informa que o caule conduz substâncias entre partes da planta. Qual estrutura está descrita?",
+      "prompt": "Uma legenda informa que o caule conduz substâncias entre partes da planta. Qual estrutura está descrita?",
+      "options": [
+        "Flor",
+        "Fruto",
+        "Caule.",
+        "Semente"
+      ],
+      "correctAnswer": "Caule.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Flor": [
+          "TRANSPORT_STRUCTURE"
+        ],
+        "Fruto": [
+          "TRANSPORT_STRUCTURE"
+        ],
+        "Semente": [
+          "TRANSPORT_STRUCTURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAULE_TRANSPORTE",
+      "explanation": "A legenda associa transporte ao caule.",
+      "hint": "Leia a descrição da estrutura.",
+      "errorFocus": "TRANSPORT_STRUCTURE",
+      "feedback": {
+        "correct": "Boa observação: A legenda associa transporte ao caule.",
+        "incorrect": "A legenda associa transporte ao caule.",
+        "hint": "Leia a descrição da estrutura.",
+        "errorFocus": "TRANSPORT_STRUCTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-20",
+      "statement": "Uma planta sem fruto na imagem pode ainda ser reconhecida como planta?",
+      "prompt": "Uma planta sem fruto na imagem pode ainda ser reconhecida como planta?",
+      "options": [
+        "Não, toda planta precisa exibir fruto",
+        "Não, só frutos são plantas",
+        "Sim, porque a imagem é sempre completa",
+        "Sim; frutos podem não estar presentes ou visíveis na imagem."
+      ],
+      "correctAnswer": "Sim; frutos podem não estar presentes ou visíveis na imagem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, toda planta precisa exibir fruto": [
+          "FRUIT_STAGE_VARIATION"
+        ],
+        "Não, só frutos são plantas": [
+          "FRUIT_STAGE_VARIATION"
+        ],
+        "Sim, porque a imagem é sempre completa": [
+          "FRUIT_STAGE_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRUTO_NAO_VISIVEL",
+      "explanation": "A ausência de fruto visível numa imagem não descaracteriza a planta.",
+      "hint": "Considere fase e enquadramento.",
+      "errorFocus": "FRUIT_STAGE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A ausência de fruto visível numa imagem não descaracteriza a planta.",
+        "incorrect": "A ausência de fruto visível numa imagem não descaracteriza a planta.",
+        "hint": "Considere fase e enquadramento.",
+        "errorFocus": "FRUIT_STAGE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-21",
+      "statement": "Dois relatos descrevem um inseto visitando flores. Qual pergunta investiga relação entre seres vivos?",
+      "prompt": "Dois relatos descrevem um inseto visitando flores. Qual pergunta investiga relação entre seres vivos?",
+      "options": [
+        "Como a visita do inseto se relaciona à planta no contexto descrito?",
+        "Qual inseto é mais bonito",
+        "Quantas letras tem o nome da flor",
+        "Que cor é a capa do livro"
+      ],
+      "correctAnswer": "Como a visita do inseto se relaciona à planta no contexto descrito?",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual inseto é mais bonito": [
+          "INTERACTION_QUESTION"
+        ],
+        "Quantas letras tem o nome da flor": [
+          "INTERACTION_QUESTION"
+        ],
+        "Que cor é a capa do livro": [
+          "INTERACTION_QUESTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "POLINIZADOR_E_PLANTA",
+      "explanation": "A pergunta busca relação descrita entre planta e animal.",
+      "hint": "Foque no vínculo entre os seres.",
+      "errorFocus": "INTERACTION_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta busca relação descrita entre planta e animal.",
+        "incorrect": "A pergunta busca relação descrita entre planta e animal.",
+        "hint": "Foque no vínculo entre os seres.",
+        "errorFocus": "INTERACTION_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-22",
+      "statement": "Uma placa identifica uma planta do canteiro. Como registrar sua parte sem danificar?",
+      "prompt": "Uma placa identifica uma planta do canteiro. Como registrar sua parte sem danificar?",
+      "options": [
+        "Arrancar a raiz",
+        "Usar o desenho ou a fotografia autorizada e a legenda.",
+        "Cortar o caule sem autorização",
+        "Provar uma folha"
+      ],
+      "correctAnswer": "Usar o desenho ou a fotografia autorizada e a legenda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Arrancar a raiz": [
+          "NONDESTRUCTIVE_DOCUMENTATION"
+        ],
+        "Cortar o caule sem autorização": [
+          "NONDESTRUCTIVE_DOCUMENTATION"
+        ],
+        "Provar uma folha": [
+          "NONDESTRUCTIVE_DOCUMENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CANTEIRO_COM_PLACAS",
+      "explanation": "Imagem e legenda permitem observar sem danificar.",
+      "hint": "Escolha um registro seguro.",
+      "errorFocus": "NONDESTRUCTIVE_DOCUMENTATION",
+      "feedback": {
+        "correct": "Boa observação: Imagem e legenda permitem observar sem danificar.",
+        "incorrect": "Imagem e legenda permitem observar sem danificar.",
+        "hint": "Escolha um registro seguro.",
+        "errorFocus": "NONDESTRUCTIVE_DOCUMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-23",
+      "statement": "Qual frase diferencia corretamente folha e fruto num esquema?",
+      "prompt": "Qual frase diferencia corretamente folha e fruto num esquema?",
+      "options": [
+        "Folha e fruto têm sempre a mesma função",
+        "O fruto absorve água do solo",
+        "A folha pode realizar fotossíntese; o fruto pode proteger sementes em muitas plantas.",
+        "A folha protege sementes em todas as plantas"
+      ],
+      "correctAnswer": "A folha pode realizar fotossíntese; o fruto pode proteger sementes em muitas plantas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Folha e fruto têm sempre a mesma função": [
+          "PART_FUNCTION_DISTINCTION"
+        ],
+        "O fruto absorve água do solo": [
+          "PART_FUNCTION_DISTINCTION"
+        ],
+        "A folha protege sementes em todas as plantas": [
+          "PART_FUNCTION_DISTINCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOLHA_E_FRUTO",
+      "explanation": "A frase apresenta funções comuns sem dizer que são universais.",
+      "hint": "Associe cada estrutura à função.",
+      "errorFocus": "PART_FUNCTION_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: A frase apresenta funções comuns sem dizer que são universais.",
+        "incorrect": "A frase apresenta funções comuns sem dizer que são universais.",
+        "hint": "Associe cada estrutura à função.",
+        "errorFocus": "PART_FUNCTION_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-24",
+      "statement": "Por que registrar o ambiente junto da planta pode ser útil?",
+      "prompt": "Por que registrar o ambiente junto da planta pode ser útil?",
+      "options": [
+        "Prova que todas as plantas vivem no mesmo lugar",
+        "Substitui a identificação das partes",
+        "Mostra que o ambiente não importa",
+        "Ajuda a compreender as condições e relações apresentadas naquele local."
+      ],
+      "correctAnswer": "Ajuda a compreender as condições e relações apresentadas naquele local.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Prova que todas as plantas vivem no mesmo lugar": [
+          "ENVIRONMENT_RELATIONSHIP"
+        ],
+        "Substitui a identificação das partes": [
+          "ENVIRONMENT_RELATIONSHIP"
+        ],
+        "Mostra que o ambiente não importa": [
+          "ENVIRONMENT_RELATIONSHIP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PLANTA_COM_ANIMAL_NO_AMBIENTE",
+      "explanation": "O contexto ajuda a interpretar relações e condições.",
+      "hint": "Pense no lugar da observação.",
+      "errorFocus": "ENVIRONMENT_RELATIONSHIP",
+      "feedback": {
+        "correct": "Boa observação: O contexto ajuda a interpretar relações e condições.",
+        "incorrect": "O contexto ajuda a interpretar relações e condições.",
+        "hint": "Pense no lugar da observação.",
+        "errorFocus": "ENVIRONMENT_RELATIONSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-25",
+      "statement": "Qual parte pode absorver água do solo?",
+      "prompt": "Qual parte pode absorver água do solo?",
+      "options": [
+        "Raiz.",
+        "Flor",
+        "Fruto",
+        "Pétala"
+      ],
+      "correctAnswer": "Raiz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Flor": [
+          "ROOT_FUNCTION_REVIEW"
+        ],
+        "Fruto": [
+          "ROOT_FUNCTION_REVIEW"
+        ],
+        "Pétala": [
+          "ROOT_FUNCTION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARTE_QUE_ABSORVE",
+      "explanation": "Raízes podem absorver água e sais minerais.",
+      "hint": "Procure a parte ligada ao solo.",
+      "errorFocus": "ROOT_FUNCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Raízes podem absorver água e sais minerais.",
+        "incorrect": "Raízes podem absorver água e sais minerais.",
+        "hint": "Procure a parte ligada ao solo.",
+        "errorFocus": "ROOT_FUNCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-26",
+      "statement": "O que o caule pode fazer?",
+      "prompt": "O que o caule pode fazer?",
+      "options": [
+        "Proteger sementes em todos os casos",
+        "Sustentar partes e conduzir substâncias.",
+        "Substituir todas as folhas",
+        "Produzir água do solo"
+      ],
+      "correctAnswer": "Sustentar partes e conduzir substâncias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Proteger sementes em todos os casos": [
+          "STEM_FUNCTION_REVIEW"
+        ],
+        "Substituir todas as folhas": [
+          "STEM_FUNCTION_REVIEW"
+        ],
+        "Produzir água do solo": [
+          "STEM_FUNCTION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FUNCAO_DO_CAUle",
+      "explanation": "Sustentação e condução são funções do caule.",
+      "hint": "Consulte o diagrama.",
+      "errorFocus": "STEM_FUNCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Sustentação e condução são funções do caule.",
+        "incorrect": "Sustentação e condução são funções do caule.",
+        "hint": "Consulte o diagrama.",
+        "errorFocus": "STEM_FUNCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-27",
+      "statement": "Qual estrutura participa da fotossíntese usando luz?",
+      "prompt": "Qual estrutura participa da fotossíntese usando luz?",
+      "options": [
+        "Frutos apenas",
+        "Raízes apenas",
+        "Folhas.",
+        "Sementes apenas"
+      ],
+      "correctAnswer": "Folhas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Frutos apenas": [
+          "LEAF_PHOTOSYNTHESIS_REVIEW"
+        ],
+        "Raízes apenas": [
+          "LEAF_PHOTOSYNTHESIS_REVIEW"
+        ],
+        "Sementes apenas": [
+          "LEAF_PHOTOSYNTHESIS_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FOLHA_E_LUZ_REVISADO",
+      "explanation": "Folhas participam desse processo em muitas plantas.",
+      "hint": "Relacione a estrutura à luz.",
+      "errorFocus": "LEAF_PHOTOSYNTHESIS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Folhas participam desse processo em muitas plantas.",
+        "incorrect": "Folhas participam desse processo em muitas plantas.",
+        "hint": "Relacione a estrutura à luz.",
+        "errorFocus": "LEAF_PHOTOSYNTHESIS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-28",
+      "statement": "A flor está relacionada a qual processo em muitas plantas?",
+      "prompt": "A flor está relacionada a qual processo em muitas plantas?",
+      "options": [
+        "Absorção de água do solo",
+        "Fixação da raiz",
+        "Produção de sombra",
+        "Reprodução."
+      ],
+      "correctAnswer": "Reprodução.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Absorção de água do solo": [
+          "FLOWER_ROLE_REVIEW"
+        ],
+        "Fixação da raiz": [
+          "FLOWER_ROLE_REVIEW"
+        ],
+        "Produção de sombra": [
+          "FLOWER_ROLE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FLOR_RELACIONADA_A_REPRODUCAO",
+      "explanation": "Flores participam da reprodução de muitas plantas.",
+      "hint": "Lembre-se do papel reprodutivo.",
+      "errorFocus": "FLOWER_ROLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Flores participam da reprodução de muitas plantas.",
+        "incorrect": "Flores participam da reprodução de muitas plantas.",
+        "hint": "Lembre-se do papel reprodutivo.",
+        "errorFocus": "FLOWER_ROLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-29",
+      "statement": "Todas as plantas exibem frutos o tempo todo?",
+      "prompt": "Todas as plantas exibem frutos o tempo todo?",
+      "options": [
+        "Não; estruturas visíveis variam entre espécies e fases.",
+        "Sim, sem exceção",
+        "Sim, toda folha vira fruto",
+        "Não, plantas nunca produzem frutos"
+      ],
+      "correctAnswer": "Não; estruturas visíveis variam entre espécies e fases.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, sem exceção": [
+          "VARIATION_REVIEW"
+        ],
+        "Sim, toda folha vira fruto": [
+          "VARIATION_REVIEW"
+        ],
+        "Não, plantas nunca produzem frutos": [
+          "VARIATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLANTAS_SEM_FRUTO",
+      "explanation": "Nem todas as plantas têm frutos visíveis em todos os momentos.",
+      "hint": "Considere espécie e fase.",
+      "errorFocus": "VARIATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Nem todas as plantas têm frutos visíveis em todos os momentos.",
+        "incorrect": "Nem todas as plantas têm frutos visíveis em todos os momentos.",
+        "hint": "Considere espécie e fase.",
+        "errorFocus": "VARIATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-30",
+      "statement": "Uma ave usa galho como abrigo. O que a cena exemplifica?",
+      "prompt": "Uma ave usa galho como abrigo. O que a cena exemplifica?",
+      "options": [
+        "Uma semente absorvendo água",
+        "Uma relação entre animal, planta e ambiente.",
+        "Uma flor mudando de cor",
+        "Uma raiz produzindo abrigo sozinha"
+      ],
+      "correctAnswer": "Uma relação entre animal, planta e ambiente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma semente absorvendo água": [
+          "HABITAT_RELATION_REVIEW"
+        ],
+        "Uma flor mudando de cor": [
+          "HABITAT_RELATION_REVIEW"
+        ],
+        "Uma raiz produzindo abrigo sozinha": [
+          "HABITAT_RELATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REDE_DE_VIDA",
+      "explanation": "A cena mostra interação no ambiente.",
+      "hint": "Observe a relação descrita.",
+      "errorFocus": "HABITAT_RELATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra interação no ambiente.",
+        "incorrect": "A cena mostra interação no ambiente.",
+        "hint": "Observe a relação descrita.",
+        "errorFocus": "HABITAT_RELATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-31",
+      "statement": "Qual regra de segurança vale ao observar uma planta desconhecida?",
+      "prompt": "Qual regra de segurança vale ao observar uma planta desconhecida?",
+      "options": [
+        "Comer para identificar",
+        "Tocar olhos após manusear",
+        "Não provar nem arrancar; pedir orientação responsável.",
+        "Levar para casa"
+      ],
+      "correctAnswer": "Não provar nem arrancar; pedir orientação responsável.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Comer para identificar": [
+          "PLANT_SAFETY_REVIEW"
+        ],
+        "Tocar olhos após manusear": [
+          "PLANT_SAFETY_REVIEW"
+        ],
+        "Levar para casa": [
+          "PLANT_SAFETY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANTA_DESCONHECIDA_REVISAO",
+      "explanation": "Plantas desconhecidas podem oferecer risco e não devem ser provadas.",
+      "hint": "Escolha uma ação segura.",
+      "errorFocus": "PLANT_SAFETY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Plantas desconhecidas podem oferecer risco e não devem ser provadas.",
+        "incorrect": "Plantas desconhecidas podem oferecer risco e não devem ser provadas.",
+        "hint": "Escolha uma ação segura.",
+        "errorFocus": "PLANT_SAFETY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-32",
+      "statement": "Por que associar uma parte à sua função usando um diagrama?",
+      "prompt": "Por que associar uma parte à sua função usando um diagrama?",
+      "options": [
+        "Porque toda planta é igual",
+        "Porque o desenho substitui todas as observações",
+        "Porque funções não mudam entre espécies",
+        "Porque a legenda e a imagem fornecem evidências para a associação."
+      ],
+      "correctAnswer": "Porque a legenda e a imagem fornecem evidências para a associação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque toda planta é igual": [
+          "EVIDENCE_BASED_ASSOCIATION"
+        ],
+        "Porque o desenho substitui todas as observações": [
+          "EVIDENCE_BASED_ASSOCIATION"
+        ],
+        "Porque funções não mudam entre espécies": [
+          "EVIDENCE_BASED_ASSOCIATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PARTES_E_FUNCOES",
+      "explanation": "A associação deve se apoiar no exemplo e na legenda.",
+      "hint": "Use a evidência do material.",
+      "errorFocus": "EVIDENCE_BASED_ASSOCIATION",
+      "feedback": {
+        "correct": "Boa observação: A associação deve se apoiar no exemplo e na legenda.",
+        "incorrect": "A associação deve se apoiar no exemplo e na legenda.",
+        "hint": "Use a evidência do material.",
+        "errorFocus": "EVIDENCE_BASED_ASSOCIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-33",
+      "statement": "Qual estrutura pode fixar a planta e absorver água?",
+      "prompt": "Qual estrutura pode fixar a planta e absorver água?",
+      "options": [
+        "Raiz.",
+        "Flor",
+        "Fruto",
+        "Folha"
+      ],
+      "correctAnswer": "Raiz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Flor": [
+          "ROOT_REVIEW"
+        ],
+        "Fruto": [
+          "ROOT_REVIEW"
+        ],
+        "Folha": [
+          "ROOT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DA_RAIZ",
+      "explanation": "Raízes podem fixar e absorver.",
+      "hint": "Lembre-se da parte subterrânea.",
+      "errorFocus": "ROOT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Raízes podem fixar e absorver.",
+        "incorrect": "Raízes podem fixar e absorver.",
+        "hint": "Lembre-se da parte subterrânea.",
+        "errorFocus": "ROOT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-34",
+      "statement": "Que parte participa da fotossíntese em muitos exemplos?",
+      "prompt": "Que parte participa da fotossíntese em muitos exemplos?",
+      "options": [
+        "Semente",
+        "Folha.",
+        "Fruto",
+        "Raiz somente"
+      ],
+      "correctAnswer": "Folha.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Semente": [
+          "LEAF_REVIEW"
+        ],
+        "Fruto": [
+          "LEAF_REVIEW"
+        ],
+        "Raiz somente": [
+          "LEAF_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DA_FOLHA",
+      "explanation": "Folhas participam da fotossíntese.",
+      "hint": "Pense na parte que recebe luz.",
+      "errorFocus": "LEAF_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Folhas participam da fotossíntese.",
+        "incorrect": "Folhas participam da fotossíntese.",
+        "hint": "Pense na parte que recebe luz.",
+        "errorFocus": "LEAF_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-35",
+      "statement": "Uma função comum do caule é...",
+      "prompt": "Uma função comum do caule é...",
+      "options": [
+        "proteger todas as sementes",
+        "absorver luz do solo",
+        "sustentar partes e conduzir substâncias.",
+        "substituir raízes em todas as plantas"
+      ],
+      "correctAnswer": "sustentar partes e conduzir substâncias.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "proteger todas as sementes": [
+          "STEM_REVIEW"
+        ],
+        "absorver luz do solo": [
+          "STEM_REVIEW"
+        ],
+        "substituir raízes em todas as plantas": [
+          "STEM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_CAUle",
+      "explanation": "O caule pode sustentar e conduzir.",
+      "hint": "Associe estrutura e função.",
+      "errorFocus": "STEM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O caule pode sustentar e conduzir.",
+        "incorrect": "O caule pode sustentar e conduzir.",
+        "hint": "Associe estrutura e função.",
+        "errorFocus": "STEM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-36",
+      "statement": "Em muitas plantas, o fruto pode envolver...",
+      "prompt": "Em muitas plantas, o fruto pode envolver...",
+      "options": [
+        "raízes no solo",
+        "folhas de outra espécie",
+        "a luz do Sol",
+        "sementes."
+      ],
+      "correctAnswer": "sementes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "raízes no solo": [
+          "FRUIT_REVIEW"
+        ],
+        "folhas de outra espécie": [
+          "FRUIT_REVIEW"
+        ],
+        "a luz do Sol": [
+          "FRUIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DO_FRUTO",
+      "explanation": "Frutos podem proteger sementes.",
+      "hint": "Veja o que pode estar dentro.",
+      "errorFocus": "FRUIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Frutos podem proteger sementes.",
+        "incorrect": "Frutos podem proteger sementes.",
+        "hint": "Veja o que pode estar dentro.",
+        "errorFocus": "FRUIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-37",
+      "statement": "Uma estrutura não aparece na fotografia. O que concluir?",
+      "prompt": "Uma estrutura não aparece na fotografia. O que concluir?",
+      "options": [
+        "Que ela não está visível nessa imagem; outras evidências podem ser necessárias.",
+        "Que a espécie não é planta",
+        "Que todas as plantas são iguais",
+        "Que a foto mostra toda a vida da espécie"
+      ],
+      "correctAnswer": "Que ela não está visível nessa imagem; outras evidências podem ser necessárias.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que a espécie não é planta": [
+          "IMAGE_LIMIT_REVIEW"
+        ],
+        "Que todas as plantas são iguais": [
+          "IMAGE_LIMIT_REVIEW"
+        ],
+        "Que a foto mostra toda a vida da espécie": [
+          "IMAGE_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DA_VARIACAO",
+      "explanation": "O enquadramento e a fase limitam o que a imagem mostra.",
+      "hint": "Não conclua além da evidência.",
+      "errorFocus": "IMAGE_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O enquadramento e a fase limitam o que a imagem mostra.",
+        "incorrect": "O enquadramento e a fase limitam o que a imagem mostra.",
+        "hint": "Não conclua além da evidência.",
+        "errorFocus": "IMAGE_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-38",
+      "statement": "Uma imagem mostra inseto numa flor. Qual relação pode ser descrita?",
+      "prompt": "Uma imagem mostra inseto numa flor. Qual relação pode ser descrita?",
+      "options": [
+        "Toda planta depende do mesmo inseto",
+        "Interação entre o inseto e a planta naquela cena.",
+        "O inseto é uma raiz",
+        "A cena prova todas as relações possíveis"
+      ],
+      "correctAnswer": "Interação entre o inseto e a planta naquela cena.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda planta depende do mesmo inseto": [
+          "INTERACTION_SCOPE_REVIEW"
+        ],
+        "O inseto é uma raiz": [
+          "INTERACTION_SCOPE_REVIEW"
+        ],
+        "A cena prova todas as relações possíveis": [
+          "INTERACTION_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_INTERACAO",
+      "explanation": "A descrição deve permanecer no contexto mostrado.",
+      "hint": "Limite a conclusão à imagem.",
+      "errorFocus": "INTERACTION_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A descrição deve permanecer no contexto mostrado.",
+        "incorrect": "A descrição deve permanecer no contexto mostrado.",
+        "hint": "Limite a conclusão à imagem.",
+        "errorFocus": "INTERACTION_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-39",
+      "statement": "Como estudar partes vegetais sem danificar uma planta?",
+      "prompt": "Como estudar partes vegetais sem danificar uma planta?",
+      "options": [
+        "Arrancar a planta",
+        "Provar partes desconhecidas",
+        "Usar diagramas, fotos ou modelos seguros.",
+        "Cortar o caule"
+      ],
+      "correctAnswer": "Usar diagramas, fotos ou modelos seguros.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Arrancar a planta": [
+          "SAFE_STUDY_REVIEW"
+        ],
+        "Provar partes desconhecidas": [
+          "SAFE_STUDY_REVIEW"
+        ],
+        "Cortar o caule": [
+          "SAFE_STUDY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ESTUDO_SEGURO",
+      "explanation": "Recursos visuais permitem estudo não destrutivo.",
+      "hint": "Escolha uma opção sem dano.",
+      "errorFocus": "SAFE_STUDY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Recursos visuais permitem estudo não destrutivo.",
+        "incorrect": "Recursos visuais permitem estudo não destrutivo.",
+        "hint": "Escolha uma opção sem dano.",
+        "errorFocus": "SAFE_STUDY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci06-plant-parts-functions-and-relations-40",
+      "statement": "Estudar plantas envolve reconhecer partes e funções e também...",
+      "prompt": "Estudar plantas envolve reconhecer partes e funções e também...",
+      "options": [
+        "afirmar que todas são idênticas",
+        "provar espécies desconhecidas",
+        "ignorar os outros seres vivos",
+        "considerar variações, ambiente e relações descritas."
+      ],
+      "correctAnswer": "considerar variações, ambiente e relações descritas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "afirmar que todas são idênticas": [
+          "PLANT_RELATIONSHIP_SUMMARY"
+        ],
+        "provar espécies desconhecidas": [
+          "PLANT_RELATIONSHIP_SUMMARY"
+        ],
+        "ignorar os outros seres vivos": [
+          "PLANT_RELATIONSHIP_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_PLANTAS",
+      "explanation": "Estruturas e relações devem ser interpretadas com contexto e segurança.",
+      "hint": "Reúna partes, ambiente e cuidado.",
+      "errorFocus": "PLANT_RELATIONSHIP_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Estruturas e relações devem ser interpretadas com contexto e segurança.",
+        "incorrect": "Estruturas e relações devem ser interpretadas com contexto e segurança.",
+        "hint": "Reúna partes, ambiente e cuidado.",
+        "errorFocus": "PLANT_RELATIONSHIP_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar diagramas ampliados, descrições verbais, modelos táteis seguros e legendas em alto contraste.",
+          "Permitir identificar partes por apontamento, cartões, fala, desenho ou comunicação alternativa.",
+          "Realizar observação sem coleta, degustação ou contato obrigatório com plantas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
