@@ -20,6 +20,13 @@ const PATHS = {
 };
 const PURPOSES = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
 const MINIMUMS = { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 };
+const JOURNEY_EXPANSION_PURPOSES = [
+  'PROBE', 'PROBE',
+  ...Array(8).fill('PRACTICE'),
+  ...Array(4).fill('TRANSFER'),
+  ...Array(3).fill('LOCK_IN'),
+  ...Array(3).fill('REVIEW'),
+];
 const OUTPUTS = ['report', 'checkpoint', 'docket', 'stagingSql'];
 
 function readJson(root, relativePath) {
@@ -116,53 +123,387 @@ function buildOfficialMatrix(catalog, inventory, skillIndex) {
 function countPurposes(group) {
   return Object.fromEntries(PURPOSES.map((purpose) => [
     purpose,
-    group.questions.filter(({ question }) => question.purpose === purpose).length,
+    group.questions.filter((item) => (item.question ?? item).purpose === purpose).length,
   ]));
 }
 
-function lessonReadiness(lesson) {
-  if (!lesson) return 'NO_LESSON';
-  const complete = typeof lesson.objective === 'string' && lesson.objective.trim()
-    && Array.isArray(lesson.keyConcepts) && lesson.keyConcepts.length >= 2
-    && Array.isArray(lesson.progressiveExplanation) && lesson.progressiveExplanation.length >= 2
-    && typeof lesson.workedExample === 'string' && lesson.workedExample.trim()
-    && Array.isArray(lesson.commonErrors) && lesson.commonErrors.length > 0;
-  return complete ? 'STRUCTURED_LESSON_CANDIDATE' : 'LESSON_DEPTH_REVIEW_REQUIRED';
+const normalizeContentText = (value) => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g, ' ').trim();
+function normalizeAnswerOption(value) {
+  const alleleTokens = [];
+  const text = String(value ?? '').replace(/\b[A-Za-z]{2,8}\b/g, (token) => {
+    if (token.length % 2 !== 0) return token;
+    const pairs = token.match(/.{2}/g);
+    const canonicalPairs = [];
+    for (const pair of pairs) {
+      if (pair[0].toLowerCase() !== pair[1].toLowerCase()) return token;
+      canonicalPairs.push(pair[0] === pair[1] ? pair : `${pair[0].toUpperCase()}${pair[0].toLowerCase()}`);
+    }
+    const index = alleleTokens.push(canonicalPairs.join('')) - 1;
+    return `alleletoken${index}`;
+  });
+  const operatorsPreserved = text.normalize('NFKC')
+    .replace(/[+]/g, ' plusoperator ')
+    .replace(/[−-]/g, ' minusoperator ')
+    .replace(/[×]/g, ' multiplicationoperator ')
+    .replace(/[÷]/g, ' divisionoperator ')
+    .replace(/[=]/g, ' equalityoperator ')
+    .replace(/[<>]/g, (operator) => operator === '<' ? ' lessoperator ' : ' greateroperator ');
+  return `${normalizeContentText(operatorsPreserved)}|${alleleTokens.join('|')}`;
+}
+const getQuestion = (item) => item.question ?? item;
+const getStatement = (question) => question.statement ?? question.prompt ?? question.stem ?? '';
+const getQuestionId = (item, question) => question.id ?? item.sourceId ?? null;
+
+function loadQuestionFirstV5Packs(root = ROOT) {
+  const directory = path.join(root, 'content/adaptive/tec-escola-core-v5');
+  const packs = fs.readdirSync(directory).filter((file) => file.endsWith('.json') && file !== 'checkpoint.json').sort()
+    .map((file) => ({ file, pack: readJson(root, `content/adaptive/tec-escola-core-v5/${file}`) }))
+    .filter(({ pack }) => pack.packVersion === 'tec-escola-core-v5-question-first');
+  const latestBySkill = new Map();
+  for (const item of packs) {
+    const code = item.pack.canonicalSkillCode;
+    const current = latestBySkill.get(code);
+    if (!current || (item.pack.contentVersion ?? 5) > (current.pack.contentVersion ?? 5)) latestBySkill.set(code, item);
+  }
+  return [...latestBySkill.values()].sort((a, b) => a.pack.canonicalSkillCode.localeCompare(b.pack.canonicalSkillCode));
 }
 
-function groupDepthAudit(groups) {
-  return groups.map((group) => {
-    const purposeCounts = countPurposes(group);
-    const missingMinimums = Object.fromEntries(PURPOSES
-      .filter((purpose) => purposeCounts[purpose] < MINIMUMS[purpose])
-      .map((purpose) => [purpose, { current: purposeCounts[purpose], target: MINIMUMS[purpose] }]));
-    const modalities = [...new Set(group.questions.map(({ question }) => question.type ?? question.responseType ?? (Array.isArray(question.options) ? 'MULTIPLE_CHOICE' : 'UNSPECIFIED')))].sort();
-    const isPracticalSubject = ['ART', 'PHYSICAL_EDUCATION'].includes(group.subjectCode);
-    const status = PURPOSES.every((purpose) => purposeCounts[purpose] > 0) && group.lesson
-      ? 'STRUCTURAL_READY'
-      : group.lesson || group.questions.length
-        ? 'PARTIAL_CONTENT_READY'
-        : 'GRAPH_ONLY';
+function normalizeJourneyQuestions(journey) {
+  if (Array.isArray(journey.questions)) return journey.questions;
+  if (!Array.isArray(journey.questionRows)) return [];
+  if (!journey.questionIdPrefix || journey.questionRows.length !== JOURNEY_EXPANSION_PURPOSES.length) {
+    throw new Error(`INVALID_COMPACT_JOURNEY_QUESTIONS:${journey.skill}`);
+  }
+  return journey.questionRows.map((row, index) => {
+    if (!Array.isArray(row) || row.length !== 7) throw new Error(`INVALID_COMPACT_JOURNEY_QUESTION_ROW:${journey.skill}:${index + 1}`);
+    const [contextFamily, difficulty, cognitiveProcess, statement, options, correctIndex, explanation] = row;
+    if (!Array.isArray(options) || !Number.isInteger(correctIndex) || correctIndex < 0 || correctIndex >= options.length) {
+      throw new Error(`INVALID_COMPACT_JOURNEY_ANSWER:${journey.skill}:${index + 1}`);
+    }
     return {
-      targetId: group.skillCode,
-      unitId: group.unitId,
-      subject: group.subjectCode,
-      stage: group.stage,
-      currentDepthStatus: status,
-      lessonStatus: lessonReadiness(group.lesson),
-      lessonTitle: group.lesson?.title ?? null,
-      currentQuestionCount: group.questions.length,
-      purposeCounts,
-      minimumTargets: isPracticalSubject ? 'AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED' : MINIMUMS,
-      missingMinimums: isPracticalSubject ? {} : missingMinimums,
-      distinctQuestionModalities: modalities,
-      misconceptionRecoveryStatus: (group.lesson?.remediations?.length ?? 0) > 0 ? 'REMEDIATION_CANDIDATE_PRESENT' : 'REMEDIATION_GAP',
-      spacedReviewStatus: purposeCounts.REVIEW > 0 ? 'REVIEW_ITEMS_PRESENT_NOT_SPACING_PROVEN' : 'REVIEW_GAP',
-      readinessClaim: 'NOT_DEEP_CONTENT_READY',
-      nextAction: isPracticalSubject ? 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE' : 'DEEPEN_DISTINCT_ASSESSMENT_POOL',
-      reviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      id: `${journey.questionIdPrefix}-${String(index + 1).padStart(2, '0')}`,
+      purpose: JOURNEY_EXPANSION_PURPOSES[index],
+      difficulty,
+      cognitiveProcess,
+      contextFamily,
+      statement,
+      options,
+      correctAnswer: options[correctIndex],
+      explanation,
     };
-  }).sort((a, b) => a.targetId.localeCompare(b.targetId));
+  });
+}
+
+function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
+  const v3Codes = new Set(v3Groups.map((group) => group.skillCode));
+  const candidateByCode = new Map(candidates.filter((skill) => !v3Codes.has(skill.skillCode)).map((skill) => [skill.skillCode, skill]));
+  const packCodes = new Set(packs.map(({ pack }) => pack.canonicalSkillCode).filter((code) => candidateByCode.has(code)));
+  const sourceByCode = new Map();
+  const semanticReassignments = readJson(root, 'content/adaptive/tec-escola-core-v5/philosophy-semantic-reconciliation.json').reassignments ?? [];
+  const reassignmentsByJourneyCode = new Map(semanticReassignments.map((item) => [item.journeyCode, item]));
+  const addSource = (code, kind, item, file) => {
+    if (!packCodes.has(code)) return;
+    const source = sourceByCode.get(code) ?? { questions: [], lessons: [] };
+    if (kind === 'question') source.questions.push({ question: item, kind, sourceId: item.id, sourceFile: file });
+    else source.lessons.push(item);
+    sourceByCode.set(code, source);
+  };
+
+  const subjectsRoot = path.join(root, 'content/adaptive/tec-escola-core-v4/subjects');
+  for (const subject of fs.readdirSync(subjectsRoot).sort()) {
+    for (const [fileName, kind, codeFor] of [
+      ['questions.json', 'question', (item) => item.primarySkill],
+      ['lessons.json', 'lesson', (item) => item.skill],
+    ]) {
+      const filePath = path.join(subjectsRoot, subject, fileName);
+      if (!fs.existsSync(filePath)) continue;
+      for (const item of readJson(root, path.relative(root, filePath))) addSource(codeFor(item), kind, item, `tec-escola-core-v4/subjects/${subject}/${fileName}`);
+    }
+  }
+
+  const v9Directory = path.join(root, 'content/adaptive/tec-escola-core-v9');
+  for (const [fileName, kind, codeFor] of [
+    ['question-expansion-v1.json', 'question', (item) => item.skill],
+    ['question-expansion-v2.json', 'question', (item) => item.skill],
+    ['question-expansion-v3.json', 'question', (item) => item.skill],
+    ['lesson-expansion-v1.json', 'lesson', (item) => item.skill],
+    ['lesson-expansion-v2.json', 'lesson', (item) => item.skill],
+  ]) {
+    const filePath = path.join(v9Directory, fileName);
+    if (!fs.existsSync(filePath)) continue;
+    const items = readJson(root, path.relative(root, filePath))[kind === 'question' ? 'questions' : 'lessons'] ?? [];
+    for (const item of items) addSource(codeFor(item), kind, item, `tec-escola-core-v9/${fileName}`);
+  }
+
+  for (const fileName of ['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']) {
+    const journeyExpansionPath = path.join(v9Directory, fileName);
+    if (fs.existsSync(journeyExpansionPath)) {
+      const journeys = readJson(root, path.relative(root, journeyExpansionPath)).journeys ?? [];
+      for (const journey of journeys) {
+        const reassignment = reassignmentsByJourneyCode.get(journey.journeyCode);
+        const questions = normalizeJourneyQuestions(journey);
+        let targetSkillCode = journey.skill;
+        if (reassignment) {
+          if (reassignment.sourceFile !== fileName || reassignment.sourceSkillCode !== journey.skill
+            || questions.length !== reassignment.questionCount
+            || questions.some((question) => !question.id.startsWith(reassignment.sourceQuestionIdPrefix))) {
+            throw new Error(`V9_SEMANTIC_REASSIGNMENT_SOURCE_MISMATCH:${journey.journeyCode}`);
+          }
+          targetSkillCode = reassignment.targetSkillCode;
+        }
+        for (const question of questions) addSource(targetSkillCode, 'question', question, `tec-escola-core-v9/${fileName}`);
+        if (journey.lesson) addSource(targetSkillCode, 'lesson', { ...journey.lesson, skill: targetSkillCode }, `tec-escola-core-v9/${fileName}`);
+      }
+    }
+  }
+
+  return [...packCodes].sort().flatMap((skillCode) => {
+    const definition = candidateByCode.get(skillCode);
+    const source = sourceByCode.get(skillCode) ?? { questions: [], lessons: [] };
+    const semanticReassignment = semanticReassignments.find((item) => item.sourceSkillCode === skillCode);
+    const incomingReassignments = semanticReassignments.filter((item) => item.targetSkillCode === skillCode);
+    const incomingReassignedQuestionCount = incomingReassignments.reduce((total, item) => total + item.questionCount, 0);
+    const expectedSourceQuestionCount = definition.questionCount
+      - (semanticReassignment?.questionCount ?? 0)
+      + incomingReassignedQuestionCount;
+    if (source.questions.length !== expectedSourceQuestionCount) return [];
+    const pack = packs.find(({ pack: candidatePack }) => candidatePack.canonicalSkillCode === skillCode)?.pack;
+    const feedbackRows = pack?.sourceQuestionFeedback ?? [];
+    const feedbackById = new Map(feedbackRows.map((item) => [item.questionId, item]));
+    if (feedbackById.size !== feedbackRows.length) throw new Error(`DUPLICATE_SOURCE_QUESTION_FEEDBACK:${skillCode}`);
+    const appliedFeedbackIds = new Set();
+    const questions = source.questions.map((entry) => {
+      const question = getQuestion(entry);
+      const questionId = getQuestionId(entry, question);
+      const feedback = feedbackById.get(questionId);
+      if (!feedback) return entry;
+      appliedFeedbackIds.add(questionId);
+      return { ...entry, question: { ...question, hint: feedback.hint, errorFocus: feedback.errorFocus } };
+    });
+    if (appliedFeedbackIds.size !== feedbackById.size) throw new Error(`SOURCE_QUESTION_FEEDBACK_NOT_RECONCILED:${skillCode}`);
+    return [{
+      skillCode,
+      subjectCode: definition.subjectCode,
+      stage: definition.stage,
+      unitId: null,
+      skillDefinition: { mappingStatus: 'NOT_CLAIMED' },
+      prerequisites: definition.prerequisites ?? [],
+      lesson: null,
+      existingLessons: source.lessons,
+      questions,
+      originalQuestionCount: source.questions.length,
+      sourceReconciliation: {
+        expectedQuestionCount: semanticReassignment ? definition.questionCount : expectedSourceQuestionCount,
+        actualQuestionCount: source.questions.length,
+        status: semanticReassignment?.status ?? (incomingReassignments.length ? 'EXACT_WITH_SEMANTICALLY_REASSIGNED_ITEMS' : 'EXACT'),
+        ...(semanticReassignment ? {
+          reassignedQuestionCount: semanticReassignment.questionCount,
+          reassignedToSkillCode: semanticReassignment.targetSkillCode,
+          historicalRowsPreserved: semanticReassignment.historicalRowsPreserved,
+        } : {}),
+        ...(incomingReassignments.length ? {
+          reassignedQuestionCount: incomingReassignedQuestionCount,
+          reassignedFromSkillCodes: incomingReassignments.map((item) => item.sourceSkillCode),
+          historicalRowsPreserved: incomingReassignments.every((item) => item.historicalRowsPreserved),
+        } : {}),
+        questionFeedbackCount: appliedFeedbackIds.size,
+      },
+    }];
+  });
+}
+
+function mergeQuestionFirstContent(groups, packs) {
+  const byCode = new Map(groups.map((group) => [group.skillCode, {
+    ...group,
+    questions: [...group.questions],
+    v5Lessons: [],
+    authenticActivities: [],
+    sourcePackIds: [],
+    originalQuestionCount: group.questions.length,
+  }]));
+  for (const { file, pack } of packs) {
+    const group = byCode.get(pack.canonicalSkillCode);
+    if (!group) continue;
+    group.v5Lessons.push(pack.lesson);
+    group.authenticActivities.push(...(pack.lesson?.authenticActivities ?? []));
+    group.sourcePackIds.push(file);
+    group.v5OfficialMappingStatuses ??= [];
+    group.v5OfficialMappingStatuses.push(pack.officialMappingStatus ?? 'NOT_CLAIMED');
+    group.questions.push(...(pack.questions ?? []).map((question) => ({ question, kind: 'V5_AUTHORED', sourceId: question.id, sourceFile: file })));
+  }
+  return [...byCode.values()];
+}
+
+function consolidateQuestions(items) {
+  const unique = [];
+  const byId = new Map();
+  const byStem = new Map();
+  const conflicts = [];
+  let duplicatesCollapsed = 0;
+  for (const item of items) {
+    const question = getQuestion(item);
+    const id = getQuestionId(item, question);
+    const stemKey = normalizeContentText(getStatement(question));
+    const previousById = id ? byId.get(id) : null;
+    if (previousById) {
+      if (normalizeContentText(getStatement(previousById.question)) !== stemKey) conflicts.push(`QUESTION_ID_COLLISION:${id}`);
+      else duplicatesCollapsed += 1;
+      continue;
+    }
+    if (stemKey && byStem.has(stemKey)) {
+      duplicatesCollapsed += 1;
+      if (id) byId.set(id, { item, question });
+      continue;
+    }
+    const record = { item, question };
+    unique.push(record);
+    if (id) byId.set(id, record);
+    if (stemKey) byStem.set(stemKey, record);
+  }
+  return { unique, duplicatesCollapsed, conflicts };
+}
+
+function explanationSteps(lesson) {
+  if (Array.isArray(lesson?.progressiveExplanation)) return lesson.progressiveExplanation.filter((step) => String(step).trim());
+  const explanation = String(lesson?.explanation ?? lesson?.contentMarkdown ?? '').trim();
+  return explanation.split(/\n\s*\n|(?=^#{1,3}\s)/m).map((step) => step.replace(/^#{1,3}\s*/, '').trim()).filter(Boolean);
+}
+
+function lessonDepth(lessons) {
+  const checks = lessons.map((lesson) => {
+    const errors = lesson?.commonErrors ?? (lesson?.commonMistake ? [lesson.commonMistake] : []);
+    return {
+      lesson,
+      valid: typeof lesson?.objective === 'string' && Boolean(lesson.objective.trim())
+        && (lesson?.keyConcepts?.length ?? 0) >= 2
+        && explanationSteps(lesson).length >= 3
+        && typeof lesson?.workedExample === 'string' && Boolean(lesson.workedExample.trim())
+        && errors.length > 0,
+      explanationStepCount: explanationSteps(lesson).length,
+    };
+  });
+  const ready = checks.some((item) => item.valid);
+  const best = checks.sort((a, b) => Number(b.valid) - Number(a.valid) || b.explanationStepCount - a.explanationStepCount)[0];
+  return { ready, status: ready ? 'LESSON_DEPTH_READY' : lessons.length ? 'LESSON_DEPTH_GAP' : 'NO_LESSON', bestLesson: best?.lesson ?? null, explanationStepCount: best?.explanationStepCount ?? 0 };
+}
+
+function questionFeedbackComplete(question) {
+  return Boolean(getStatement(question).trim())
+    && Array.isArray(question.options) && question.options.length >= 2
+    && question.options.includes(question.correctAnswer)
+    && Boolean(question.explanation?.trim())
+    && Boolean((question.hint ?? question.remediationHint)?.trim())
+    && Boolean((question.errorFocus ?? question.misconception)?.trim());
+}
+
+function answerKeyIsValid(question) {
+  return Boolean(getStatement(question).trim())
+    && Array.isArray(question.options) && question.options.length >= 2
+    && new Set(question.options.map(normalizeAnswerOption)).size === question.options.length
+    && question.options.includes(question.correctAnswer);
+}
+
+export function assessDepthGroup(group) {
+  const { unique: uniqueQuestions, duplicatesCollapsed, conflicts } = consolidateQuestions(group.questions ?? []);
+  const questions = uniqueQuestions.map(({ question }) => question);
+  const purposeCounts = Object.fromEntries(PURPOSES.map((purpose) => [purpose, questions.filter((question) => question.purpose === purpose).length]));
+  const missingMinimums = Object.fromEntries(PURPOSES
+    .filter((purpose) => purposeCounts[purpose] < MINIMUMS[purpose])
+    .map((purpose) => [purpose, { current: purposeCounts[purpose], target: MINIMUMS[purpose] }]));
+  const lessons = [...(group.existingLessons ?? []), ...(group.lesson ? [group.lesson] : []), ...(group.v5Lessons ?? [])];
+  const bestLesson = lessonDepth(lessons);
+  const contexts = new Set(questions.map((question) => question.contextFamily ?? question.context_family).filter(Boolean));
+  const modalities = [...new Set(questions.map((question) => question.type ?? question.responseType ?? (Array.isArray(question.options) ? 'MULTIPLE_CHOICE' : 'UNSPECIFIED')))].sort();
+  const difficulties = ['EASY', 'MEDIUM', 'HARD'].filter((level) => questions.some((question) => question.difficulty === level));
+  const rank = { EASY: 1, MEDIUM: 2, HARD: 3 };
+  const medianRank = (purpose) => {
+    const values = questions.filter((question) => question.purpose === purpose).map((question) => rank[question.difficulty]).filter(Boolean).sort((a, b) => a - b);
+    return values.length ? values[Math.floor(values.length / 2)] : null;
+  };
+  const difficultyProgressionReady = difficulties.length === 3
+    && medianRank('PROBE') !== null && medianRank('PRACTICE') !== null && medianRank('TRANSFER') !== null
+    && medianRank('PROBE') <= medianRank('PRACTICE') && medianRank('PRACTICE') <= medianRank('TRANSFER');
+  const contextDiversityReady = contexts.size >= 8 && questions.length >= 40 && contexts.size / Math.max(1, questions.length) >= 0.2;
+  const transferQuestions = questions.filter((question) => question.purpose === 'TRANSFER');
+  const transferContexts = new Set(transferQuestions.map((question) => question.contextFamily ?? question.context_family).filter(Boolean));
+  const transferProcesses = new Set(transferQuestions.map((question) => question.cognitiveProcess ?? question.cognitive_process).filter(Boolean));
+  const transferReady = transferQuestions.length >= MINIMUMS.TRANSFER && transferContexts.size >= 4 && transferProcesses.size >= 3;
+  const remediationCandidates = lessons.flatMap((lesson) => lesson?.remediations ?? []);
+  const uniqueRemediations = new Set(remediationCandidates.map((item) => item.id ?? item.trigger ?? item.misconceptionCode).filter(Boolean));
+  const targetedFeedbackCount = questions.filter(questionFeedbackComplete).length;
+  const misconceptionRecoveryReady = uniqueRemediations.size >= 2 && targetedFeedbackCount >= Math.ceil(questions.length * 0.8);
+  const reviewQuestions = questions.filter((question) => question.purpose === 'REVIEW');
+  const reviewContexts = new Set(reviewQuestions.map((question) => question.contextFamily ?? question.context_family).filter(Boolean));
+  const reviewContentReady = reviewQuestions.length >= MINIMUMS.REVIEW && reviewContexts.size >= 5;
+  const practical = ['ART', 'PHYSICAL_EDUCATION'].includes(group.subjectCode);
+  const authenticActivities = group.authenticActivities ?? [];
+  const authenticActivityReady = authenticActivities.some((activity) => activity.title && activity.objective && activity.instructions
+    && activity.evidence && activity.privacyGuard && Array.isArray(activity.rubric) && activity.rubric.length >= 2
+    && activity.rubric.every((criterion) => criterion.criterion && criterion.emerging && criterion.developing && criterion.proficient));
+  const authenticEvidenceReady = practical ? authenticActivityReady : transferReady;
+  const questionPoolReady = Object.keys(missingMinimums).length === 0 && questions.length >= 40
+    && conflicts.length === 0 && questions.every(answerKeyIsValid);
+  const answerKeysValid = questions.every(answerKeyIsValid) && conflicts.length === 0;
+  const progressionIds = lessons.flatMap((lesson) => lesson?.progression ?? []).flatMap((stage) => stage.questionIds ?? []);
+  const knownQuestionIds = new Set((group.questions ?? []).map((item) => getQuestionId(item, getQuestion(item))).filter(Boolean));
+  const progressionReferencesValid = progressionIds.every((id) => knownQuestionIds.has(id));
+  const priorKnowledgePresent = lessons.some((lesson) => (lesson?.priorKnowledge?.length ?? 0) > 0);
+  const dimensions = {
+    LESSON_DEPTH_READY: bestLesson.ready,
+    QUESTION_POOL_DEPTH_READY: practical ? null : questionPoolReady,
+    DIFFICULTY_PROGRESSION_READY: practical ? null : difficultyProgressionReady,
+    CONTEXT_DIVERSITY_READY: practical ? null : contextDiversityReady,
+    TRANSFER_READY: practical ? null : transferReady,
+    MISCONCEPTION_RECOVERY_READY: misconceptionRecoveryReady,
+    REVIEW_CONTENT_READY: practical ? null : reviewContentReady,
+    AUTHENTIC_EVIDENCE_READY: authenticEvidenceReady,
+  };
+  const missingDepthDimensions = Object.entries(dimensions).filter(([, ready]) => ready === false).map(([name]) => name);
+  if (!answerKeysValid) missingDepthDimensions.push('QUESTION_ANSWER_KEYS_VALID');
+  if (!priorKnowledgePresent) missingDepthDimensions.push('PREREQUISITE_CONTEXT_READY');
+  if (!progressionReferencesValid) missingDepthDimensions.push('PROGRESSION_REFERENCES_VALID');
+  const technicalDeepReady = missingDepthDimensions.length === 0;
+  const status = PURPOSES.every((purpose) => purposeCounts[purpose] > 0) && lessons.length
+    ? 'STRUCTURAL_READY'
+    : lessons.length || questions.length ? 'PARTIAL_CONTENT_READY' : 'GRAPH_ONLY';
+  return {
+    targetId: group.skillCode,
+    unitId: group.unitId ?? null,
+    subject: group.subjectCode,
+    stage: group.stage,
+    currentDepthStatus: status,
+    lessonStatus: bestLesson.ready ? 'STRUCTURED_LESSON_CANDIDATE' : 'LESSON_DEPTH_REVIEW_REQUIRED',
+    lessonTitle: bestLesson.bestLesson?.title ?? null,
+    originalQuestionCount: group.originalQuestionCount ?? group.questions?.length ?? 0,
+    v5QuestionCount: Math.max(0, (group.questions?.length ?? 0) - (group.originalQuestionCount ?? group.questions?.length ?? 0)),
+    duplicateQuestionsCollapsed: duplicatesCollapsed,
+    currentQuestionCount: questions.length,
+    purposeCounts,
+    minimumTargets: practical ? 'AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED' : MINIMUMS,
+    missingMinimums: practical ? {} : missingMinimums,
+    distinctQuestionModalities: modalities,
+    dimensions,
+    missingDepthDimensions,
+    contextFamilyCount: contexts.size,
+    difficultyLevels: difficulties,
+    answerKeyValid: answerKeysValid,
+    lessonExplanationStepCount: bestLesson.explanationStepCount,
+    misconceptionRecoveryStatus: misconceptionRecoveryReady ? 'TARGETED_REMEDIATION_PRESENT' : 'REMEDIATION_GAP',
+    spacedReviewStatus: practical ? 'NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE' : reviewContentReady ? 'REVIEW_POOL_DIVERSE' : 'REVIEW_GAP',
+    technicalDeepReady,
+    readinessClaim: technicalDeepReady ? 'DEEP_CONTENT_READY' : 'NOT_DEEP_CONTENT_READY',
+    pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+    officialMappingStatus: group.v5OfficialMappingStatuses?.includes('NOT_CLAIMED') ? 'NOT_CLAIMED' : (group.skillDefinition?.mappingStatus ?? 'MAPPING_PENDING'),
+    studentPublicationStatus: 'STAGING_INACTIVE',
+    sourceReconciliation: group.sourceReconciliation ?? null,
+    nextAction: practical
+      ? authenticActivityReady ? 'PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED' : 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE'
+      : 'DEEPEN_DISTINCT_ASSESSMENT_POOL',
+  };
+}
+
+function groupDepthAudit(groups, packs = []) {
+  return mergeQuestionFirstContent(groups, packs).map(assessDepthGroup).sort((a, b) => a.targetId.localeCompare(b.targetId));
 }
 
 function buildUnitStagingSql(units) {
@@ -223,10 +564,14 @@ function buildKnowledgeFactoryV4(root = ROOT) {
   const unitCatalog = readJson(root, PATHS.units);
   const v3Result = buildKnowledgeFactoryV3(loadKnowledgeFactoryV3Inputs(root));
   if (v3Result.errors?.length) throw new Error(`V3_FOUNDATION_INVALID:${v3Result.errors.join(',')}`);
+  const v5Packs = loadQuestionFirstV5Packs(root);
+  const v1WaveTwoCandidates = v1.internalSkillGaps.filter((skill) => !v3Result.groups.some((group) => group.skillCode === skill.skillCode));
+  const waveTwoCandidateGroups = loadWaveTwoCandidateGroups(root, v1WaveTwoCandidates, v3Result.groups, v5Packs);
   const skillIndex = exactSkillIndex();
   for (const skill of v3Result.compiledBatch.newSkills) skillIndex.set(skill.skillCode, skill);
   const matrix = buildOfficialMatrix(official, v1, skillIndex);
-  const depth = groupDepthAudit(v3Result.groups);
+  const depth = groupDepthAudit([...v3Result.groups, ...waveTwoCandidateGroups], v5Packs);
+  const depthBySkill = new Map(depth.map((item) => [item.targetId, item]));
   const v3GroupsBySkill = new Map(v3Result.groups.map((group) => [group.skillCode, group]));
   const units = unitCatalog.units.map((unit) => ({ ...unit, canonicalSkills: [...unit.canonicalSkills], sequence: [...unit.sequence] }));
   const unitsById = new Map(units.map((unit) => [unit.unitId, unit]));
@@ -264,6 +609,18 @@ function buildKnowledgeFactoryV4(root = ROOT) {
     ['v3Content', v3.hashes.contentHash],
     ['v3Graph', v3.hashes.graphExpansionHash],
     ['v3Units', v3.hashes.unitExpansionHash],
+    ['v5QuestionFirstPacks', hash(stableJson(Object.fromEntries(v5Packs.map(({ file, pack }) => [file, hash(stableJson(pack))]))))],
+    ['waveTwoCandidateSources', hash(stableJson(Object.fromEntries([
+      ...fs.readdirSync(path.join(root, 'content/adaptive/tec-escola-core-v4/subjects')).flatMap((subject) => ['questions.json', 'lessons.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v4/subjects', subject, file)))
+        .map((file) => [`tec-escola-core-v4/subjects/${subject}/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v4/subjects/${subject}/${file}`)])),
+      ...['question-expansion-v1.json', 'question-expansion-v2.json', 'question-expansion-v3.json', 'lesson-expansion-v1.json', 'lesson-expansion-v2.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9', file)))
+        .map((file) => [`tec-escola-core-v9/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v9/${file}`)]),
+      ...['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9', file)))
+        .map((file) => [`tec-escola-core-v9/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v9/${file}`)]),
+    ])))],
   ]);
   const byStage = groupBy(matrix, (node) => node.stage);
   const byComponent = groupBy(matrix, (node) => node.componentCode);
@@ -272,10 +629,24 @@ function buildKnowledgeFactoryV4(root = ROOT) {
   const neighboringCodesForReview = matrix.filter((node) => node.sourceTextStatus === 'NEIGHBORING_OFFICIAL_CODE_PRESENT_REQUIRES_SOURCE_REVIEW').length;
   const v3Targets = v3.targets.targetManifest;
   const deepCoverage = depth.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length;
+  const v3TargetCodes = new Set(v3Result.groups.map((group) => group.skillCode));
   const waveQueue = [
-    ...depth.filter((item) => item.nextAction !== 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE' && Object.keys(item.missingMinimums).length).map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'DEPTH_GAP', reason: 'One or more purpose-specific pools are below the V4 deep-assessment minimum.', missingMinimums: item.missingMinimums })),
-    ...depth.filter((item) => item.nextAction === 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'AUTHENTIC_EVIDENCE_GAP', reason: 'Objective questions alone cannot substantiate performance or observation evidence.' })),
-    ...v1.internalSkillGaps.filter((skill) => !depth.some((item) => item.targetId === skill.skillCode)).map((skill) => ({ wave: 2, id: skill.skillCode, stage: skill.stage, subject: skill.subjectCode, status: skill.gaps?.length ? 'CONTENT_GAP' : 'DEPTH_AUDIT_REQUIRED', reason: skill.gaps?.join(', ') || 'Current source inventory lacks a V4 depth audit.' })),
+    ...depth.filter((item) => v3TargetCodes.has(item.targetId) && item.readinessClaim !== 'DEEP_CONTENT_READY' && item.nextAction !== 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'DEPTH_GAP', reason: 'One or more content-depth dimensions remain below the evidence gates.', missingMinimums: item.missingMinimums, missingDepthDimensions: item.missingDepthDimensions })),
+    ...depth.filter((item) => v3TargetCodes.has(item.targetId) && item.nextAction === 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'AUTHENTIC_EVIDENCE_GAP', reason: 'Objective questions alone cannot substantiate performance or observation evidence.' })),
+    ...v1WaveTwoCandidates.filter((skill) => !depthBySkill.get(skill.skillCode)?.technicalDeepReady).map((skill) => {
+      const audit = depthBySkill.get(skill.skillCode);
+      return {
+        wave: 2,
+        id: skill.skillCode,
+        stage: skill.stage,
+        subject: skill.subjectCode,
+        status: audit ? 'CONTENT_GAP' : skill.gaps?.length ? 'CONTENT_GAP' : 'DEPTH_AUDIT_REQUIRED',
+        reason: audit
+          ? [...Object.keys(audit.missingMinimums ?? {}), ...(audit.missingDepthDimensions ?? [])].join(', ') || 'CONTENT_DEPTH_REVIEW_REQUIRED'
+          : skill.gaps?.join(', ') || 'Current source inventory lacks a V4 depth audit.',
+        ...(audit ? { currentQuestionCount: audit.currentQuestionCount, purposeCounts: audit.purposeCounts, sourceReconciliation: audit.sourceReconciliation } : {}),
+      };
+    }),
     ...matrix.filter((node) => node.mappingStatus !== 'MAPPED').map((node) => ({ wave: 3, id: node.officialCode, stage: node.stage, subject: node.componentCode, status: node.sourceTextStatus === 'NEIGHBORING_OFFICIAL_CODE_PRESENT_REQUIRES_SOURCE_REVIEW' ? 'SOURCE_TEXT_REVIEW_REQUIRED' : 'MAPPING_REVIEW_REQUIRED', reason: node.nextAction })),
   ].sort((a, b) => a.wave - b.wave || a.stage.localeCompare(b.stage) || a.subject.localeCompare(b.subject) || a.id.localeCompare(b.id));
   const sourceDossierByCode = new Map(v3Result.compiledBatch.sourceDossiers.filter((item) => item.officialCode).map((item) => [item.officialCode, item]));
@@ -346,13 +717,25 @@ function buildKnowledgeFactoryV4(root = ROOT) {
     existingContent: {
       v3Targets: v3Targets.length,
       auditedSequences: depth.length,
+      waveTwoCandidateTargets: v1WaveTwoCandidates.length,
+      waveTwoCandidateTargetsAudited: waveTwoCandidateGroups.length,
+      waveTwoCandidateTargetsDeepReady: waveTwoCandidateGroups.filter((group) => depthBySkill.get(group.skillCode)?.technicalDeepReady).length,
       deepContentReady: deepCoverage,
+      technicalDeepReady: deepCoverage,
+      pedagogicalReviewPending: depth.length,
       depthStatusCounts: groupBy(depth, (item) => item.currentDepthStatus),
+      dimensionReadyCounts: Object.fromEntries(Object.keys(depth[0]?.dimensions ?? {}).map((dimension) => [dimension, depth.filter((item) => item.dimensions[dimension]).length])),
       purposeMinimums: MINIMUMS,
       questionsBelowAnyMinimum: depth.filter((item) => Object.keys(item.missingMinimums).length).length,
-      v3QuestionTotal: depth.reduce((sum, item) => sum + item.currentQuestionCount, 0),
+      v3QuestionTotal: v3Result.groups.reduce((sum, group) => sum + group.questions.length, 0),
+      v5QuestionTotal: v5Packs.reduce((sum, { pack }) => sum + (pack.questions?.length ?? 0), 0),
+      consolidatedQuestionTotal: depth.reduce((sum, item) => sum + item.currentQuestionCount, 0),
+      duplicateQuestionsCollapsed: depth.reduce((sum, item) => sum + item.duplicateQuestionsCollapsed, 0),
+      v5PacksOutsideV3AuditedTargets: v5Packs.filter(({ pack }) => !depthBySkill.has(pack.canonicalSkillCode)).map(({ file, pack }) => ({ file, skillCode: pack.canonicalSkillCode, questionCount: pack.questions?.length ?? 0, sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' })),
       lessonsNeedingDepthReview: depth.filter((item) => item.lessonStatus !== 'STRUCTURED_LESSON_CANDIDATE').length,
       reviewPending: depth.length,
+      contentSources: ['V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY', 'V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS', 'V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS', 'V9_JOURNEY_EXPANSIONS_A_B_C_FOR_EXACT_WAVE_2_TARGETS', 'V5_QUESTION_FIRST_PACKS'],
+      depthAudit: depth,
     },
     curriculumUnits: {
       sourceUnitCount: unitCatalog.units.length,

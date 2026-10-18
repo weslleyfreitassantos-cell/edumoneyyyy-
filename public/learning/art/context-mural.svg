@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Mural comunitário fictício</title>
+  <desc id="desc">Casas, uma ponte, plantas e formas coloridas compõem um mural; uma placa informa que foi feito em oficina aberta do bairro.</desc>
+  <rect width="600" height="360" fill="#eee8d8"/>
+  <rect x="30" y="28" width="540" height="300" fill="#d6e1d8" stroke="#344e53" stroke-width="8"/>
+  <path d="M50 230h128v70H50z M182 205h110v95H182z M300 220h114v80H300z" fill="#d98a58"/>
+  <path d="M50 230v-60l64-48 64 48v60 M182 205v-48l55-41 55 41v48 M300 220v-52l57-43 57 43v52" fill="#f0c267" stroke="#45656a" stroke-width="6"/>
+  <path d="M70 300 Q170 250 270 300 Q370 350 470 300" fill="none" stroke="#3d7881" stroke-width="13"/>
+  <path d="M75 290v30 M470 290v30" stroke="#354d56" stroke-width="8"/>
+  <circle cx="105" cy="260" r="18" fill="#56815e"/><circle cx="140" cy="256" r="14" fill="#79a16b"/>
+  <circle cx="445" cy="252" r="19" fill="#598663"/><path d="M446 274v26" stroke="#596a49" stroke-width="6"/>
+  <rect x="385" y="42" width="163" height="42" rx="5" fill="#fffdf5" stroke="#586a65" stroke-width="3"/>
+  <text x="466" y="69" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#263f46">oficina aberta do bairro</text>
+</svg>

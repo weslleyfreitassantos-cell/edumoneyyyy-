@@ -1,0 +1,2080 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci04-observe-living-things-and-environments",
+  "canonicalSkillCode": "AUTHORING_EF02CI04_DESCRIBE_TRAITS_AND_ENVIRONMENTS",
+  "subject": "SCIENCE",
+  "domain": "VIDA E EVOLUÇÃO",
+  "topic": "características observáveis de plantas e animais do cotidiano e relação com ambientes",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever características de plantas e animais (tamanho, forma, cor, fase da vida, local onde se desenvolvem etc.) que fazem parte de seu cotidiano e relacioná-las ao ambiente em que eles vivem.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Observar seres vivos e seus ambientes",
+    "objective": "Descrever características observáveis de plantas e animais familiares e relacioná-las, com cuidado, às condições do ambiente apresentado.",
+    "summary": "Plantas e animais têm características que podemos observar, como tamanho, forma, cor, partes do corpo, fase de vida e local onde se desenvolvem. O ambiente oferece condições e recursos importantes, como água, luz, abrigo ou alimento. Uma observação mostra um organismo e um momento; não significa que todos os indivíduos da espécie sejam idênticos nem que só possam viver em um único lugar. Aprendemos observando imagens, registros ou seres vivos sem machucar, coletar ou perturbar animais e plantas.",
+    "explanation": "Comece descrevendo o que está visível: uma planta pode ter folhas largas, caule fino ou flores; um animal pode ter asas, nadadeiras, penas, pelos ou uma fase jovem diferente da adulta. Depois observe o ambiente descrito: há água, solo, abrigo, luz, plantas ou outros recursos? Relacione uma característica a uma condição que ajuda aquele ser vivo no exemplo. Use expressões como “nesta observação” e “pode viver” quando a fonte for limitada. Não toque em animais desconhecidos, não retire plantas e não ofereça alimentos a animais silvestres. Registros feitos pelo educador, fotos autorizadas e materiais ilustrados permitem estudar com segurança.",
+    "workedExample": "Uma ficha mostra uma vitória-régia com folhas grandes flutuando na água. Podemos descrever a forma e o tamanho das folhas observadas e relacioná-las ao ambiente aquático da cena. A ficha não permite afirmar que todas as plantas com folhas grandes vivem somente nesse local.",
+    "commonMistake": "Afirmar que todos os indivíduos de uma espécie têm exatamente a mesma aparência ou que uma única característica determina o único ambiente possível.",
+    "priorKnowledge": [
+      "Observar imagens e descrever características visíveis com palavras simples.",
+      "Reconhecer ambientes com água, solo, luz e abrigo em exemplos cotidianos."
+    ],
+    "keyConcepts": [
+      "ser vivo",
+      "característica",
+      "planta",
+      "animal",
+      "fase da vida",
+      "ambiente",
+      "água",
+      "solo",
+      "abrigo",
+      "observação segura"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "OBSERVATION_VS_INFERENCE",
+        "action": "Separe numa tabela o que a imagem mostra diretamente e o que é uma hipótese, mantendo as conclusões ligadas à fonte."
+      },
+      {
+        "errorFocus": "ENVIRONMENT_RELATION",
+        "action": "Use cartões de organismo e ambiente para relacionar uma característica visível a água, luz, alimento ou abrigo sem afirmar exclusividade."
+      },
+      {
+        "errorFocus": "SAFE_WILDLIFE_OBSERVATION",
+        "action": "Troque a manipulação de seres vivos por imagens, desenhos ou observação distante mediada por adulto; nunca orientar coleta ou alimentação de animais."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+      "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+      "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci04-observation-cards",
+        "title": "Fichas de observação da vida",
+        "instructions": "Fichas ilustradas apresentam plantas e animais conhecidos em ambientes descritos, sem interação direta com seres vivos.\n1. Escolha uma ficha e registre duas características visíveis.\n2. Observe quais elementos do ambiente aparecem, como água, solo, luz ou abrigo.\n3. Relacione uma característica ao ambiente usando uma frase limitada ao exemplo.",
+        "steps": [
+          "Escolha uma ficha e registre duas características visíveis.",
+          "Observe quais elementos do ambiente aparecem, como água, solo, luz ou abrigo.",
+          "Relacione uma característica ao ambiente usando uma frase limitada ao exemplo."
+        ],
+        "evidence": "Registro que descreve características observáveis e estabelece uma relação sustentada com o ambiente da ficha.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma característica com apoio.",
+            "developing": "descreve uma característica e nomeia um elemento do ambiente.",
+            "proficient": "relaciona característica e ambiente sem generalizar além da evidência."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci04-life-stage-sequence",
+        "title": "Sequência ilustrada de fases",
+        "instructions": "Imagens didáticas autorizadas mostram fases de vida de um animal e de uma planta, sem manuseio de organismos.\n1. Organize as imagens na sequência indicada pelo material.\n2. Descreva uma mudança de forma, tamanho ou parte observável.\n3. Relacione a fase e o local apresentados, registrando o que a fonte não informa.",
+        "steps": [
+          "Organize as imagens na sequência indicada pelo material.",
+          "Descreva uma mudança de forma, tamanho ou parte observável.",
+          "Relacione a fase e o local apresentados, registrando o que a fonte não informa."
+        ],
+        "evidence": "Sequência com descrição de uma mudança e referência ao ambiente mostrado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma imagem com ajuda.",
+            "developing": "percebe uma mudança entre duas fases.",
+            "proficient": "descreve uma característica e a relaciona ao ambiente apresentado com cuidado nas conclusões."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci04-observe-living-things-and-environments-01",
+          "v1-ef02ci04-observe-living-things-and-environments-02",
+          "v1-ef02ci04-observe-living-things-and-environments-03",
+          "v1-ef02ci04-observe-living-things-and-environments-04",
+          "v1-ef02ci04-observe-living-things-and-environments-05",
+          "v1-ef02ci04-observe-living-things-and-environments-06",
+          "v1-ef02ci04-observe-living-things-and-environments-07",
+          "v1-ef02ci04-observe-living-things-and-environments-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci04-observe-living-things-and-environments-09",
+          "v1-ef02ci04-observe-living-things-and-environments-10",
+          "v1-ef02ci04-observe-living-things-and-environments-11",
+          "v1-ef02ci04-observe-living-things-and-environments-12",
+          "v1-ef02ci04-observe-living-things-and-environments-13",
+          "v1-ef02ci04-observe-living-things-and-environments-14",
+          "v1-ef02ci04-observe-living-things-and-environments-15",
+          "v1-ef02ci04-observe-living-things-and-environments-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci04-observe-living-things-and-environments-17",
+          "v1-ef02ci04-observe-living-things-and-environments-18",
+          "v1-ef02ci04-observe-living-things-and-environments-19",
+          "v1-ef02ci04-observe-living-things-and-environments-20",
+          "v1-ef02ci04-observe-living-things-and-environments-21",
+          "v1-ef02ci04-observe-living-things-and-environments-22",
+          "v1-ef02ci04-observe-living-things-and-environments-23",
+          "v1-ef02ci04-observe-living-things-and-environments-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci04-observe-living-things-and-environments-25",
+          "v1-ef02ci04-observe-living-things-and-environments-26",
+          "v1-ef02ci04-observe-living-things-and-environments-27",
+          "v1-ef02ci04-observe-living-things-and-environments-28",
+          "v1-ef02ci04-observe-living-things-and-environments-29",
+          "v1-ef02ci04-observe-living-things-and-environments-30",
+          "v1-ef02ci04-observe-living-things-and-environments-31",
+          "v1-ef02ci04-observe-living-things-and-environments-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci04-observe-living-things-and-environments-33",
+          "v1-ef02ci04-observe-living-things-and-environments-34",
+          "v1-ef02ci04-observe-living-things-and-environments-35",
+          "v1-ef02ci04-observe-living-things-and-environments-36",
+          "v1-ef02ci04-observe-living-things-and-environments-37",
+          "v1-ef02ci04-observe-living-things-and-environments-38",
+          "v1-ef02ci04-observe-living-things-and-environments-39",
+          "v1-ef02ci04-observe-living-things-and-environments-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI04",
+        "descriptor": "Descrever características de plantas e animais (tamanho, forma, cor, fase da vida, local onde se desenvolvem etc.) que fazem parte de seu cotidiano e relacioná-las ao ambiente em que eles vivem.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-01",
+      "statement": "Uma imagem mostra um peixe com nadadeiras na água. Que característica aparece?",
+      "prompt": "Uma imagem mostra um peixe com nadadeiras na água. Que característica aparece?",
+      "options": [
+        "Ele tem nadadeiras.",
+        "Ele tem penas",
+        "Ele tem raízes",
+        "Ele tem folhas"
+      ],
+      "correctAnswer": "Ele tem nadadeiras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ele tem penas": [
+          "ANIMAL_VISIBLE_TRAIT"
+        ],
+        "Ele tem raízes": [
+          "ANIMAL_VISIBLE_TRAIT"
+        ],
+        "Ele tem folhas": [
+          "ANIMAL_VISIBLE_TRAIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FICHA_DO_PEIXE",
+      "explanation": "As nadadeiras são uma característica visível do peixe na imagem.",
+      "hint": "Observe as partes do corpo mostradas.",
+      "errorFocus": "ANIMAL_VISIBLE_TRAIT",
+      "feedback": {
+        "correct": "Boa observação: As nadadeiras são uma característica visível do peixe na imagem.",
+        "incorrect": "As nadadeiras são uma característica visível do peixe na imagem.",
+        "hint": "Observe as partes do corpo mostradas.",
+        "errorFocus": "ANIMAL_VISIBLE_TRAIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-02",
+      "statement": "Uma planta num vaso tem folhas verdes e caule fino. O que podemos descrever?",
+      "prompt": "Uma planta num vaso tem folhas verdes e caule fino. O que podemos descrever?",
+      "options": [
+        "A idade exata da planta",
+        "A cor das folhas e a forma do caule observados.",
+        "O que todas as plantas sentem",
+        "O nome de quem plantou"
+      ],
+      "correctAnswer": "A cor das folhas e a forma do caule observados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A idade exata da planta": [
+          "PLANT_OBSERVABLE_TRAIT"
+        ],
+        "O que todas as plantas sentem": [
+          "PLANT_OBSERVABLE_TRAIT"
+        ],
+        "O nome de quem plantou": [
+          "PLANT_OBSERVABLE_TRAIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VASO_COM_FOLHAS",
+      "explanation": "Cor e forma são características que a imagem permite observar.",
+      "hint": "Use apenas o que está visível.",
+      "errorFocus": "PLANT_OBSERVABLE_TRAIT",
+      "feedback": {
+        "correct": "Boa observação: Cor e forma são características que a imagem permite observar.",
+        "incorrect": "Cor e forma são características que a imagem permite observar.",
+        "hint": "Use apenas o que está visível.",
+        "errorFocus": "PLANT_OBSERVABLE_TRAIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-03",
+      "statement": "Uma ficha mostra um sapo perto de um lago. Que elemento do ambiente aparece?",
+      "prompt": "Uma ficha mostra um sapo perto de um lago. Que elemento do ambiente aparece?",
+      "options": [
+        "Areia dentro de uma casa",
+        "Neve no deserto",
+        "Água.",
+        "Uma árvore de metal"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Areia dentro de uma casa": [
+          "ENVIRONMENT_ELEMENT_WATER"
+        ],
+        "Neve no deserto": [
+          "ENVIRONMENT_ELEMENT_WATER"
+        ],
+        "Uma árvore de metal": [
+          "ENVIRONMENT_ELEMENT_WATER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "FROG_NEAR_POND",
+      "explanation": "O lago é uma fonte de água no ambiente descrito.",
+      "hint": "Procure o elemento que forma o lago.",
+      "errorFocus": "ENVIRONMENT_ELEMENT_WATER",
+      "feedback": {
+        "correct": "Boa observação: O lago é uma fonte de água no ambiente descrito.",
+        "incorrect": "O lago é uma fonte de água no ambiente descrito.",
+        "hint": "Procure o elemento que forma o lago.",
+        "errorFocus": "ENVIRONMENT_ELEMENT_WATER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-04",
+      "statement": "Um pássaro da ilustração tem penas e está num galho. Qual característica podemos registrar?",
+      "prompt": "Um pássaro da ilustração tem penas e está num galho. Qual característica podemos registrar?",
+      "options": [
+        "A presença de escamas",
+        "A presença de nadadeiras",
+        "A presença de pétalas",
+        "A presença de penas."
+      ],
+      "correctAnswer": "A presença de penas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A presença de escamas": [
+          "ANIMAL_VISIBLE_TRAIT_FEATHERS"
+        ],
+        "A presença de nadadeiras": [
+          "ANIMAL_VISIBLE_TRAIT_FEATHERS"
+        ],
+        "A presença de pétalas": [
+          "ANIMAL_VISIBLE_TRAIT_FEATHERS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BIRD_WITH_FEATHERS",
+      "explanation": "A imagem apresenta penas no corpo do pássaro.",
+      "hint": "Observe a cobertura do corpo.",
+      "errorFocus": "ANIMAL_VISIBLE_TRAIT_FEATHERS",
+      "feedback": {
+        "correct": "Boa observação: A imagem apresenta penas no corpo do pássaro.",
+        "incorrect": "A imagem apresenta penas no corpo do pássaro.",
+        "hint": "Observe a cobertura do corpo.",
+        "errorFocus": "ANIMAL_VISIBLE_TRAIT_FEATHERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-05",
+      "statement": "Uma ficha mostra um cacto num local seco. Qual relação é cuidadosa?",
+      "prompt": "Uma ficha mostra um cacto num local seco. Qual relação é cuidadosa?",
+      "options": [
+        "A ficha relaciona o cacto ao ambiente seco apresentado.",
+        "Todo cacto só pode viver naquele ponto",
+        "A imagem prova que não existe água em qualquer parte",
+        "Todos os cactos têm o mesmo tamanho"
+      ],
+      "correctAnswer": "A ficha relaciona o cacto ao ambiente seco apresentado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todo cacto só pode viver naquele ponto": [
+          "LIMITED_HABITAT_CLAIM"
+        ],
+        "A imagem prova que não existe água em qualquer parte": [
+          "LIMITED_HABITAT_CLAIM"
+        ],
+        "Todos os cactos têm o mesmo tamanho": [
+          "LIMITED_HABITAT_CLAIM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CACTUS_IN_DRY_PLACE",
+      "explanation": "A ficha apoia uma relação com aquele ambiente, não uma afirmação exclusiva sobre todos os cactos.",
+      "hint": "Limite a resposta ao exemplo.",
+      "errorFocus": "LIMITED_HABITAT_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A ficha apoia uma relação com aquele ambiente, não uma afirmação exclusiva sobre todos os cactos.",
+        "incorrect": "A ficha apoia uma relação com aquele ambiente, não uma afirmação exclusiva sobre todos os cactos.",
+        "hint": "Limite a resposta ao exemplo.",
+        "errorFocus": "LIMITED_HABITAT_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-06",
+      "statement": "Uma sequência mostra uma semente e depois uma planta pequena. O que mudou?",
+      "prompt": "Uma sequência mostra uma semente e depois uma planta pequena. O que mudou?",
+      "options": [
+        "A semente virou um animal",
+        "A fase de vida e a forma observada.",
+        "O ambiente deixou de existir",
+        "A planta ficou sem partes"
+      ],
+      "correctAnswer": "A fase de vida e a forma observada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A semente virou um animal": [
+          "PLANT_LIFE_STAGE"
+        ],
+        "O ambiente deixou de existir": [
+          "PLANT_LIFE_STAGE"
+        ],
+        "A planta ficou sem partes": [
+          "PLANT_LIFE_STAGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEMENTE_E_PLANTA_JOVEM",
+      "explanation": "As imagens mostram fases diferentes do desenvolvimento da planta.",
+      "hint": "Compare as duas imagens.",
+      "errorFocus": "PLANT_LIFE_STAGE",
+      "feedback": {
+        "correct": "Boa observação: As imagens mostram fases diferentes do desenvolvimento da planta.",
+        "incorrect": "As imagens mostram fases diferentes do desenvolvimento da planta.",
+        "hint": "Compare as duas imagens.",
+        "errorFocus": "PLANT_LIFE_STAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-07",
+      "statement": "Uma imagem mostra um ninho protegido entre galhos. Qual relação com o ambiente é possível?",
+      "prompt": "Uma imagem mostra um ninho protegido entre galhos. Qual relação com o ambiente é possível?",
+      "options": [
+        "Todos os pássaros fazem ninho igual",
+        "O ninho é uma planta",
+        "Os galhos aparecem como parte do local de abrigo mostrado.",
+        "A imagem revela todas as fases da ave"
+      ],
+      "correctAnswer": "Os galhos aparecem como parte do local de abrigo mostrado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os pássaros fazem ninho igual": [
+          "SHELTER_RELATION"
+        ],
+        "O ninho é uma planta": [
+          "SHELTER_RELATION"
+        ],
+        "A imagem revela todas as fases da ave": [
+          "SHELTER_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "NINHO_EM_ARVORE",
+      "explanation": "A cena mostra galhos oferecendo um local de abrigo naquele exemplo.",
+      "hint": "Observe onde o ninho está apoiado.",
+      "errorFocus": "SHELTER_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra galhos oferecendo um local de abrigo naquele exemplo.",
+        "incorrect": "A cena mostra galhos oferecendo um local de abrigo naquele exemplo.",
+        "hint": "Observe onde o ninho está apoiado.",
+        "errorFocus": "SHELTER_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-08",
+      "statement": "A turma quer estudar uma borboleta no jardim. Qual atitude é segura?",
+      "prompt": "A turma quer estudar uma borboleta no jardim. Qual atitude é segura?",
+      "options": [
+        "Capturá-la para olhar de perto",
+        "Retirar suas asas para identificar a cor",
+        "Levá-la para dentro da sala",
+        "Observá-la à distância ou usar um registro feito pelo educador."
+      ],
+      "correctAnswer": "Observá-la à distância ou usar um registro feito pelo educador.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Capturá-la para olhar de perto": [
+          "SAFE_ANIMAL_OBSERVATION"
+        ],
+        "Retirar suas asas para identificar a cor": [
+          "SAFE_ANIMAL_OBSERVATION"
+        ],
+        "Levá-la para dentro da sala": [
+          "SAFE_ANIMAL_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OBSERVACAO_SEM_TOQUE",
+      "explanation": "Observação distante e registros evitam machucar ou perturbar o animal.",
+      "hint": "Escolha a opção que não toca nem captura a borboleta.",
+      "errorFocus": "SAFE_ANIMAL_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Observação distante e registros evitam machucar ou perturbar o animal.",
+        "incorrect": "Observação distante e registros evitam machucar ou perturbar o animal.",
+        "hint": "Escolha a opção que não toca nem captura a borboleta.",
+        "errorFocus": "SAFE_ANIMAL_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-09",
+      "statement": "Uma ficha mostra uma folha larga de girassol. Que característica pode ser registrada?",
+      "prompt": "Uma ficha mostra uma folha larga de girassol. Que característica pode ser registrada?",
+      "options": [
+        "A forma larga da folha mostrada.",
+        "O som que a planta faz",
+        "A idade da pessoa que a regou",
+        "O sabor da terra"
+      ],
+      "correctAnswer": "A forma larga da folha mostrada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O som que a planta faz": [
+          "PLANT_SHAPE_OBSERVATION"
+        ],
+        "A idade da pessoa que a regou": [
+          "PLANT_SHAPE_OBSERVATION"
+        ],
+        "O sabor da terra": [
+          "PLANT_SHAPE_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOLHA_DE_GIRASSOL",
+      "explanation": "A forma da folha é visível na ficha.",
+      "hint": "Descreva o contorno da folha.",
+      "errorFocus": "PLANT_SHAPE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A forma da folha é visível na ficha.",
+        "incorrect": "A forma da folha é visível na ficha.",
+        "hint": "Descreva o contorno da folha.",
+        "errorFocus": "PLANT_SHAPE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-10",
+      "statement": "Uma planta ilustrada tem folhas flutuando na água. Qual elemento do ambiente está relacionado à cena?",
+      "prompt": "Uma planta ilustrada tem folhas flutuando na água. Qual elemento do ambiente está relacionado à cena?",
+      "options": [
+        "Uma parede seca",
+        "Água.",
+        "Um telhado de vidro",
+        "Um caminho de asfalto"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma parede seca": [
+          "PLANT_WATER_ENVIRONMENT"
+        ],
+        "Um telhado de vidro": [
+          "PLANT_WATER_ENVIRONMENT"
+        ],
+        "Um caminho de asfalto": [
+          "PLANT_WATER_ENVIRONMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "PLANTA_AQUATICA_ILUSTRADA",
+      "explanation": "A ilustração mostra a planta no ambiente aquático.",
+      "hint": "Observe onde as folhas estão.",
+      "errorFocus": "PLANT_WATER_ENVIRONMENT",
+      "feedback": {
+        "correct": "Boa observação: A ilustração mostra a planta no ambiente aquático.",
+        "incorrect": "A ilustração mostra a planta no ambiente aquático.",
+        "hint": "Observe onde as folhas estão.",
+        "errorFocus": "PLANT_WATER_ENVIRONMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-11",
+      "statement": "Uma sequência apresenta lagarta e borboleta. O que podemos dizer sobre as imagens?",
+      "prompt": "Uma sequência apresenta lagarta e borboleta. O que podemos dizer sobre as imagens?",
+      "options": [
+        "São dois tipos de planta",
+        "A lagarta nunca muda",
+        "Elas mostram fases diferentes do ciclo de vida do animal.",
+        "As imagens provam que toda borboleta tem as mesmas cores"
+      ],
+      "correctAnswer": "Elas mostram fases diferentes do ciclo de vida do animal.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "São dois tipos de planta": [
+          "ANIMAL_LIFE_STAGE"
+        ],
+        "A lagarta nunca muda": [
+          "ANIMAL_LIFE_STAGE"
+        ],
+        "As imagens provam que toda borboleta tem as mesmas cores": [
+          "ANIMAL_LIFE_STAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LAGARTA_E_BORBOLETA",
+      "explanation": "Lagarta e borboleta são fases diferentes do ciclo de vida apresentado.",
+      "hint": "Compare a forma do corpo nas duas fases.",
+      "errorFocus": "ANIMAL_LIFE_STAGE",
+      "feedback": {
+        "correct": "Boa observação: Lagarta e borboleta são fases diferentes do ciclo de vida apresentado.",
+        "incorrect": "Lagarta e borboleta são fases diferentes do ciclo de vida apresentado.",
+        "hint": "Compare a forma do corpo nas duas fases.",
+        "errorFocus": "ANIMAL_LIFE_STAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-12",
+      "statement": "Uma foto autorizada mostra formigas caminhando sobre o solo. O que ela registra diretamente?",
+      "prompt": "Uma foto autorizada mostra formigas caminhando sobre o solo. O que ela registra diretamente?",
+      "options": [
+        "Todas as formigas vivem só no mesmo solo",
+        "A foto mostra a alimentação de todas as formigas",
+        "O solo tem a mesma composição em todo lugar",
+        "Formigas e solo aparecem juntos naquela cena."
+      ],
+      "correctAnswer": "Formigas e solo aparecem juntos naquela cena.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as formigas vivem só no mesmo solo": [
+          "OBSERVATION_SCOPE"
+        ],
+        "A foto mostra a alimentação de todas as formigas": [
+          "OBSERVATION_SCOPE"
+        ],
+        "O solo tem a mesma composição em todo lugar": [
+          "OBSERVATION_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FORMIGA_NO_SOLO",
+      "explanation": "A imagem registra uma cena específica e não todas as condições da espécie.",
+      "hint": "Diga o que aparece na foto, sem generalizar.",
+      "errorFocus": "OBSERVATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A imagem registra uma cena específica e não todas as condições da espécie.",
+        "incorrect": "A imagem registra uma cena específica e não todas as condições da espécie.",
+        "hint": "Diga o que aparece na foto, sem generalizar.",
+        "errorFocus": "OBSERVATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-13",
+      "statement": "Uma ficha escolar mostra um peixe num aquário mantido por adultos. Que elemento do ambiente é essencialmente visível?",
+      "prompt": "Uma ficha escolar mostra um peixe num aquário mantido por adultos. Que elemento do ambiente é essencialmente visível?",
+      "options": [
+        "Água.",
+        "Folhas secas cobrindo o peixe",
+        "Areia dentro de uma nuvem",
+        "Um ninho no galho"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Folhas secas cobrindo o peixe": [
+          "AQUATIC_ENVIRONMENT"
+        ],
+        "Areia dentro de uma nuvem": [
+          "AQUATIC_ENVIRONMENT"
+        ],
+        "Um ninho no galho": [
+          "AQUATIC_ENVIRONMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "PEIXE_EM_AQUARIO_CUIDADO",
+      "explanation": "O peixe aparece dentro da água do aquário.",
+      "hint": "Observe o meio em que o peixe está.",
+      "errorFocus": "AQUATIC_ENVIRONMENT",
+      "feedback": {
+        "correct": "Boa observação: O peixe aparece dentro da água do aquário.",
+        "incorrect": "O peixe aparece dentro da água do aquário.",
+        "hint": "Observe o meio em que o peixe está.",
+        "errorFocus": "AQUATIC_ENVIRONMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-14",
+      "statement": "Uma imagem mostra um cachorro com pelos e quatro patas. Qual é uma característica observável?",
+      "prompt": "Uma imagem mostra um cachorro com pelos e quatro patas. Qual é uma característica observável?",
+      "options": [
+        "A presença de escamas",
+        "A presença de pelos.",
+        "A presença de raízes",
+        "A presença de pétalas"
+      ],
+      "correctAnswer": "A presença de pelos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A presença de escamas": [
+          "ANIMAL_BODY_COVERING"
+        ],
+        "A presença de raízes": [
+          "ANIMAL_BODY_COVERING"
+        ],
+        "A presença de pétalas": [
+          "ANIMAL_BODY_COVERING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CACHORRO_COM_PELOS",
+      "explanation": "Os pelos aparecem na imagem do cachorro.",
+      "hint": "Olhe a cobertura do corpo.",
+      "errorFocus": "ANIMAL_BODY_COVERING",
+      "feedback": {
+        "correct": "Boa observação: Os pelos aparecem na imagem do cachorro.",
+        "incorrect": "Os pelos aparecem na imagem do cachorro.",
+        "hint": "Olhe a cobertura do corpo.",
+        "errorFocus": "ANIMAL_BODY_COVERING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-15",
+      "statement": "Uma criança encontra um animal silvestre no parque. O que deve fazer?",
+      "prompt": "Uma criança encontra um animal silvestre no parque. O que deve fazer?",
+      "options": [
+        "Dar comida sem saber se é adequada",
+        "Levá-lo para casa",
+        "Observar sem alimentar ou tocar e avisar um adulto responsável se necessário.",
+        "Persegui-lo para tirar uma foto"
+      ],
+      "correctAnswer": "Observar sem alimentar ou tocar e avisar um adulto responsável se necessário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dar comida sem saber se é adequada": [
+          "WILDLIFE_SAFETY"
+        ],
+        "Levá-lo para casa": [
+          "WILDLIFE_SAFETY"
+        ],
+        "Persegui-lo para tirar uma foto": [
+          "WILDLIFE_SAFETY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ALIMENTAR_ANIMAL_SILVESTRE",
+      "explanation": "Não devemos perturbar animais silvestres; um adulto pode orientar a situação.",
+      "hint": "Escolha uma ação que mantenha distância segura.",
+      "errorFocus": "WILDLIFE_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Não devemos perturbar animais silvestres; um adulto pode orientar a situação.",
+        "incorrect": "Não devemos perturbar animais silvestres; um adulto pode orientar a situação.",
+        "hint": "Escolha uma ação que mantenha distância segura.",
+        "errorFocus": "WILDLIFE_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-16",
+      "statement": "Uma ficha diz que a flor é amarela e tem cinco pétalas visíveis. Qual afirmação é observável?",
+      "prompt": "Uma ficha diz que a flor é amarela e tem cinco pétalas visíveis. Qual afirmação é observável?",
+      "options": [
+        "A flor prefere uma pessoa",
+        "Todas as flores da espécie são idênticas",
+        "A planta tem exatamente um ano",
+        "A flor é amarela e cinco pétalas aparecem na ficha."
+      ],
+      "correctAnswer": "A flor é amarela e cinco pétalas aparecem na ficha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A flor prefere uma pessoa": [
+          "OBSERVATION_VS_INFERENCE"
+        ],
+        "Todas as flores da espécie são idênticas": [
+          "OBSERVATION_VS_INFERENCE"
+        ],
+        "A planta tem exatamente um ano": [
+          "OBSERVATION_VS_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESCRICAO_E_SUPOSICAO",
+      "explanation": "Cor e pétalas são descritas diretamente; preferências e idade não aparecem.",
+      "hint": "Separe o que se vê do que se imagina.",
+      "errorFocus": "OBSERVATION_VS_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Cor e pétalas são descritas diretamente; preferências e idade não aparecem.",
+        "incorrect": "Cor e pétalas são descritas diretamente; preferências e idade não aparecem.",
+        "hint": "Separe o que se vê do que se imagina.",
+        "errorFocus": "OBSERVATION_VS_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-17",
+      "statement": "Uma ficha mostra uma planta junto à água e outra num vaso com solo úmido. Qual comparação é sustentada?",
+      "prompt": "Uma ficha mostra uma planta junto à água e outra num vaso com solo úmido. Qual comparação é sustentada?",
+      "options": [
+        "As duas cenas apresentam água ou umidade no ambiente mostrado.",
+        "As plantas são da mesma espécie",
+        "Toda planta precisa da mesma quantidade de água",
+        "Uma delas não pode viver em outro local"
+      ],
+      "correctAnswer": "As duas cenas apresentam água ou umidade no ambiente mostrado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As plantas são da mesma espécie": [
+          "COMPARE_ENVIRONMENT_EVIDENCE"
+        ],
+        "Toda planta precisa da mesma quantidade de água": [
+          "COMPARE_ENVIRONMENT_EVIDENCE"
+        ],
+        "Uma delas não pode viver em outro local": [
+          "COMPARE_ENVIRONMENT_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_PLANTAS_DE_AMBIENTES",
+      "explanation": "As pistas mostram água ou umidade nas cenas, sem provar outras características.",
+      "hint": "Use as pistas presentes em ambas as fichas.",
+      "errorFocus": "COMPARE_ENVIRONMENT_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: As pistas mostram água ou umidade nas cenas, sem provar outras características.",
+        "incorrect": "As pistas mostram água ou umidade nas cenas, sem provar outras características.",
+        "hint": "Use as pistas presentes em ambas as fichas.",
+        "errorFocus": "COMPARE_ENVIRONMENT_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-18",
+      "statement": "Uma ilustração de ave mostra penas; outra de peixe mostra escamas. O que é diferente?",
+      "prompt": "Uma ilustração de ave mostra penas; outra de peixe mostra escamas. O que é diferente?",
+      "options": [
+        "O fato de ambos serem seres vivos",
+        "A cobertura do corpo observada nas duas imagens.",
+        "A existência de ambientes",
+        "A possibilidade de observar imagens"
+      ],
+      "correctAnswer": "A cobertura do corpo observada nas duas imagens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O fato de ambos serem seres vivos": [
+          "BODY_COVERING_COMPARISON"
+        ],
+        "A existência de ambientes": [
+          "BODY_COVERING_COMPARISON"
+        ],
+        "A possibilidade de observar imagens": [
+          "BODY_COVERING_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PENA_E_ESCAMA",
+      "explanation": "As fichas apresentam coberturas diferentes: penas e escamas.",
+      "hint": "Compare o que cobre cada corpo.",
+      "errorFocus": "BODY_COVERING_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As fichas apresentam coberturas diferentes: penas e escamas.",
+        "incorrect": "As fichas apresentam coberturas diferentes: penas e escamas.",
+        "hint": "Compare o que cobre cada corpo.",
+        "errorFocus": "BODY_COVERING_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-19",
+      "statement": "Uma ficha mostra um sapo perto de água. Alguém conclui que todo sapo vive apenas naquele lago. O que falta?",
+      "prompt": "Uma ficha mostra um sapo perto de água. Alguém conclui que todo sapo vive apenas naquele lago. O que falta?",
+      "options": [
+        "Uma cor diferente para o lago",
+        "Um nome para a pessoa que desenhou",
+        "Mais evidências; uma imagem não prova um único ambiente possível para todos.",
+        "A retirada do sapo da água"
+      ],
+      "correctAnswer": "Mais evidências; uma imagem não prova um único ambiente possível para todos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma cor diferente para o lago": [
+          "NO_SINGLE_HABITAT_OVERCLAIM"
+        ],
+        "Um nome para a pessoa que desenhou": [
+          "NO_SINGLE_HABITAT_OVERCLAIM"
+        ],
+        "A retirada do sapo da água": [
+          "NO_SINGLE_HABITAT_OVERCLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AFIRMACAO_DE_AMBIENTE_UNICO",
+      "explanation": "A cena permite relacionar aquele sapo e aquele ambiente, não afirmar exclusividade para todos.",
+      "hint": "Pense no limite de uma única imagem.",
+      "errorFocus": "NO_SINGLE_HABITAT_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: A cena permite relacionar aquele sapo e aquele ambiente, não afirmar exclusividade para todos.",
+        "incorrect": "A cena permite relacionar aquele sapo e aquele ambiente, não afirmar exclusividade para todos.",
+        "hint": "Pense no limite de uma única imagem.",
+        "errorFocus": "NO_SINGLE_HABITAT_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-20",
+      "statement": "Um cartaz mostra uma árvore com galhos e um ninho. Que legenda relaciona característica e ambiente?",
+      "prompt": "Um cartaz mostra uma árvore com galhos e um ninho. Que legenda relaciona característica e ambiente?",
+      "options": [
+        "“Todo pássaro mora sempre na mesma árvore.”",
+        "“O ninho é uma folha.”",
+        "“A imagem mostra todas as aves do lugar.”",
+        "“Os galhos aparecem como apoio do ninho nesta cena.”"
+      ],
+      "correctAnswer": "“Os galhos aparecem como apoio do ninho nesta cena.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Todo pássaro mora sempre na mesma árvore.”": [
+          "EVIDENCE_BOUNDED_CAPTION"
+        ],
+        "“O ninho é uma folha.”": [
+          "EVIDENCE_BOUNDED_CAPTION"
+        ],
+        "“A imagem mostra todas as aves do lugar.”": [
+          "EVIDENCE_BOUNDED_CAPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_DE_HABITAT_FICTICIO",
+      "explanation": "A legenda descreve a relação mostrada sem generalizar sobre todos os pássaros.",
+      "hint": "Use “nesta cena” para delimitar a observação.",
+      "errorFocus": "EVIDENCE_BOUNDED_CAPTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda descreve a relação mostrada sem generalizar sobre todos os pássaros.",
+        "incorrect": "A legenda descreve a relação mostrada sem generalizar sobre todos os pássaros.",
+        "hint": "Use “nesta cena” para delimitar a observação.",
+        "errorFocus": "EVIDENCE_BOUNDED_CAPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-21",
+      "statement": "Uma sequência mostra girino na água e depois uma rã. O que a sequência destaca?",
+      "prompt": "Uma sequência mostra girino na água e depois uma rã. O que a sequência destaca?",
+      "options": [
+        "Mudanças entre fases de vida do animal.",
+        "A transformação de uma planta em animal",
+        "Que todos os girinos têm a mesma cor",
+        "Que o ambiente não importa"
+      ],
+      "correctAnswer": "Mudanças entre fases de vida do animal.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A transformação de uma planta em animal": [
+          "LIFE_STAGE_SEQUENCE"
+        ],
+        "Que todos os girinos têm a mesma cor": [
+          "LIFE_STAGE_SEQUENCE"
+        ],
+        "Que o ambiente não importa": [
+          "LIFE_STAGE_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "GIRINO_E_RAN",
+      "explanation": "A sequência ilustra fases diferentes do ciclo de vida da rã.",
+      "hint": "Compare a forma nas duas etapas.",
+      "errorFocus": "LIFE_STAGE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência ilustra fases diferentes do ciclo de vida da rã.",
+        "incorrect": "A sequência ilustra fases diferentes do ciclo de vida da rã.",
+        "hint": "Compare a forma nas duas etapas.",
+        "errorFocus": "LIFE_STAGE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-22",
+      "statement": "Por que usar fotos autorizadas em vez de recolher plantas para a sala?",
+      "prompt": "Por que usar fotos autorizadas em vez de recolher plantas para a sala?",
+      "options": [
+        "Porque plantas não podem ser observadas",
+        "Porque os registros permitem observar características sem danificar plantas nem alterar seu ambiente.",
+        "Porque fotos mostram todos os detalhes sempre",
+        "Porque coletar é necessário para comparar"
+      ],
+      "correctAnswer": "Porque os registros permitem observar características sem danificar plantas nem alterar seu ambiente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque plantas não podem ser observadas": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ],
+        "Porque fotos mostram todos os detalhes sempre": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ],
+        "Porque coletar é necessário para comparar": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGISTRO_SEM_COLETA",
+      "explanation": "Registros adequados apoiam a observação sem retirar ou prejudicar seres vivos.",
+      "hint": "Considere cuidado com a planta e seu local.",
+      "errorFocus": "NON_DESTRUCTIVE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Registros adequados apoiam a observação sem retirar ou prejudicar seres vivos.",
+        "incorrect": "Registros adequados apoiam a observação sem retirar ou prejudicar seres vivos.",
+        "hint": "Considere cuidado com a planta e seu local.",
+        "errorFocus": "NON_DESTRUCTIVE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-23",
+      "statement": "Uma imagem mostra uma abelha visitando flores. O que podemos registrar sem extrapolar?",
+      "prompt": "Uma imagem mostra uma abelha visitando flores. O que podemos registrar sem extrapolar?",
+      "options": [
+        "A abelha visita todas as flores existentes",
+        "A imagem mostra a alimentação de cada abelha",
+        "A abelha e as flores aparecem juntas naquela observação.",
+        "Todas as abelhas têm o mesmo tamanho"
+      ],
+      "correctAnswer": "A abelha e as flores aparecem juntas naquela observação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A abelha visita todas as flores existentes": [
+          "POLLINATOR_OBSERVATION_SCOPE"
+        ],
+        "A imagem mostra a alimentação de cada abelha": [
+          "POLLINATOR_OBSERVATION_SCOPE"
+        ],
+        "Todas as abelhas têm o mesmo tamanho": [
+          "POLLINATOR_OBSERVATION_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ABELHA_EM_FLORES",
+      "explanation": "A cena mostra uma visita específica; outras afirmações exigem mais evidência.",
+      "hint": "Descreva a relação visível na imagem.",
+      "errorFocus": "POLLINATOR_OBSERVATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra uma visita específica; outras afirmações exigem mais evidência.",
+        "incorrect": "A cena mostra uma visita específica; outras afirmações exigem mais evidência.",
+        "hint": "Descreva a relação visível na imagem.",
+        "errorFocus": "POLLINATOR_OBSERVATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-24",
+      "statement": "Duas fichas mostram a mesma espécie de planta em condições de luz diferentes. O que é uma pergunta de observação adequada?",
+      "prompt": "Duas fichas mostram a mesma espécie de planta em condições de luz diferentes. O que é uma pergunta de observação adequada?",
+      "options": [
+        "Qual planta é mais importante",
+        "Por que toda planta deve viver no sol forte",
+        "Qual imagem deve ser apagada",
+        "Que diferenças visíveis aparecem nas plantas e na luz registrada em cada ficha?"
+      ],
+      "correctAnswer": "Que diferenças visíveis aparecem nas plantas e na luz registrada em cada ficha?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual planta é mais importante": [
+          "OBSERVABLE_COMPARISON_QUESTION"
+        ],
+        "Por que toda planta deve viver no sol forte": [
+          "OBSERVABLE_COMPARISON_QUESTION"
+        ],
+        "Qual imagem deve ser apagada": [
+          "OBSERVABLE_COMPARISON_QUESTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PLANTA_NO_SOL_E_NA_SOMBRA",
+      "explanation": "A pergunta compara características visíveis e condições registradas.",
+      "hint": "Faça uma pergunta que possa ser respondida pelas fichas.",
+      "errorFocus": "OBSERVABLE_COMPARISON_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta compara características visíveis e condições registradas.",
+        "incorrect": "A pergunta compara características visíveis e condições registradas.",
+        "hint": "Faça uma pergunta que possa ser respondida pelas fichas.",
+        "errorFocus": "OBSERVABLE_COMPARISON_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-25",
+      "statement": "Uma planta tem folhas pequenas e cresce num vaso com solo. Qual descrição está apoiada?",
+      "prompt": "Uma planta tem folhas pequenas e cresce num vaso com solo. Qual descrição está apoiada?",
+      "options": [
+        "A ficha mostra folhas pequenas e solo no vaso.",
+        "A planta sempre terá folhas pequenas",
+        "O vaso é o único ambiente possível",
+        "A planta tem a mesma idade de todas"
+      ],
+      "correctAnswer": "A ficha mostra folhas pequenas e solo no vaso.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A planta sempre terá folhas pequenas": [
+          "PLANT_TRAIT_AND_LIMIT"
+        ],
+        "O vaso é o único ambiente possível": [
+          "PLANT_TRAIT_AND_LIMIT"
+        ],
+        "A planta tem a mesma idade de todas": [
+          "PLANT_TRAIT_AND_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FICHA_DE_FOLHAS",
+      "explanation": "A descrição registra características e ambiente mostrados, sem generalizar.",
+      "hint": "Diga o que a ficha apresenta.",
+      "errorFocus": "PLANT_TRAIT_AND_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A descrição registra características e ambiente mostrados, sem generalizar.",
+        "incorrect": "A descrição registra características e ambiente mostrados, sem generalizar.",
+        "hint": "Diga o que a ficha apresenta.",
+        "errorFocus": "PLANT_TRAIT_AND_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-26",
+      "statement": "Um pato ilustrado tem pés adaptados para nadar e aparece na água. Que relação a ficha sugere?",
+      "prompt": "Um pato ilustrado tem pés adaptados para nadar e aparece na água. Que relação a ficha sugere?",
+      "options": [
+        "O pato só pode viver dentro da água",
+        "A característica dos pés pode ajudar no deslocamento na água.",
+        "Todos os pés de animais são iguais",
+        "A imagem prova que o pato nunca caminha"
+      ],
+      "correctAnswer": "A característica dos pés pode ajudar no deslocamento na água.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O pato só pode viver dentro da água": [
+          "TRAIT_ENVIRONMENT_RELATION"
+        ],
+        "Todos os pés de animais são iguais": [
+          "TRAIT_ENVIRONMENT_RELATION"
+        ],
+        "A imagem prova que o pato nunca caminha": [
+          "TRAIT_ENVIRONMENT_RELATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PATA_E_NADADOR",
+      "explanation": "A relação é possível no exemplo sem afirmar que o animal só se desloca de um modo.",
+      "hint": "Relacione a característica à atividade mostrada.",
+      "errorFocus": "TRAIT_ENVIRONMENT_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A relação é possível no exemplo sem afirmar que o animal só se desloca de um modo.",
+        "incorrect": "A relação é possível no exemplo sem afirmar que o animal só se desloca de um modo.",
+        "hint": "Relacione a característica à atividade mostrada.",
+        "errorFocus": "TRAIT_ENVIRONMENT_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-27",
+      "statement": "Um painel mostra ovo, lagarta, casulo e mariposa. O que as imagens representam?",
+      "prompt": "Um painel mostra ovo, lagarta, casulo e mariposa. O que as imagens representam?",
+      "options": [
+        "Quatro espécies de plantas",
+        "Quatro ambientes sem relação",
+        "Fases diferentes do desenvolvimento do animal.",
+        "Uma sequência de cores apenas"
+      ],
+      "correctAnswer": "Fases diferentes do desenvolvimento do animal.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quatro espécies de plantas": [
+          "LIFE_CYCLE_IDENTIFICATION"
+        ],
+        "Quatro ambientes sem relação": [
+          "LIFE_CYCLE_IDENTIFICATION"
+        ],
+        "Uma sequência de cores apenas": [
+          "LIFE_CYCLE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CICLO_DA_MARIPOSA",
+      "explanation": "As etapas ilustradas apresentam mudanças durante o ciclo de vida.",
+      "hint": "Observe a sequência das formas.",
+      "errorFocus": "LIFE_CYCLE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: As etapas ilustradas apresentam mudanças durante o ciclo de vida.",
+        "incorrect": "As etapas ilustradas apresentam mudanças durante o ciclo de vida.",
+        "hint": "Observe a sequência das formas.",
+        "errorFocus": "LIFE_CYCLE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-28",
+      "statement": "A turma observa uma planta do pátio. Qual registro é apropriado?",
+      "prompt": "A turma observa uma planta do pátio. Qual registro é apropriado?",
+      "options": [
+        "Retirar a planta inteira",
+        "Quebrar o caule para ver dentro",
+        "Cavar até expor todas as raízes",
+        "Desenhar ou descrever folhas e local sem arrancar partes."
+      ],
+      "correctAnswer": "Desenhar ou descrever folhas e local sem arrancar partes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar a planta inteira": [
+          "PLANT_NON_HARMFUL_OBSERVATION"
+        ],
+        "Quebrar o caule para ver dentro": [
+          "PLANT_NON_HARMFUL_OBSERVATION"
+        ],
+        "Cavar até expor todas as raízes": [
+          "PLANT_NON_HARMFUL_OBSERVATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBSERVACAO_DE_JARDIM",
+      "explanation": "Características podem ser registradas sem danificar o ser vivo.",
+      "hint": "Escolha uma ação sem machucar a planta.",
+      "errorFocus": "PLANT_NON_HARMFUL_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Características podem ser registradas sem danificar o ser vivo.",
+        "incorrect": "Características podem ser registradas sem danificar o ser vivo.",
+        "hint": "Escolha uma ação sem machucar a planta.",
+        "errorFocus": "PLANT_NON_HARMFUL_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-29",
+      "statement": "Uma ficha mostra um ninho em árvore. Por que a árvore pode ser descrita como parte do ambiente do ninho?",
+      "prompt": "Uma ficha mostra um ninho em árvore. Por que a árvore pode ser descrita como parte do ambiente do ninho?",
+      "options": [
+        "Porque os galhos aparecem oferecendo apoio ou abrigo naquela cena.",
+        "Porque todo ninho é uma árvore",
+        "Porque a árvore é um animal",
+        "Porque todos os pássaros usam o mesmo galho"
+      ],
+      "correctAnswer": "Porque os galhos aparecem oferecendo apoio ou abrigo naquela cena.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque todo ninho é uma árvore": [
+          "SHELTER_EVIDENCE"
+        ],
+        "Porque a árvore é um animal": [
+          "SHELTER_EVIDENCE"
+        ],
+        "Porque todos os pássaros usam o mesmo galho": [
+          "SHELTER_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "AMBIENTE_E_RECURSOS",
+      "explanation": "Os galhos aparecem como apoio no exemplo observado.",
+      "hint": "Use a relação mostrada, sem generalizar.",
+      "errorFocus": "SHELTER_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os galhos aparecem como apoio no exemplo observado.",
+        "incorrect": "Os galhos aparecem como apoio no exemplo observado.",
+        "hint": "Use a relação mostrada, sem generalizar.",
+        "errorFocus": "SHELTER_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-30",
+      "statement": "Uma foto mostra uma joaninha vermelha com pontos escuros. Qual conclusão é melhor?",
+      "prompt": "Uma foto mostra uma joaninha vermelha com pontos escuros. Qual conclusão é melhor?",
+      "options": [
+        "Todas as joaninhas têm exatamente o mesmo padrão",
+        "Essa joaninha da foto apresenta essas cores e marcas.",
+        "A cor informa a idade exata",
+        "O animal pode ser tocado por qualquer pessoa"
+      ],
+      "correctAnswer": "Essa joaninha da foto apresenta essas cores e marcas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as joaninhas têm exatamente o mesmo padrão": [
+          "INDIVIDUAL_VARIATION"
+        ],
+        "A cor informa a idade exata": [
+          "INDIVIDUAL_VARIATION"
+        ],
+        "O animal pode ser tocado por qualquer pessoa": [
+          "INDIVIDUAL_VARIATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COR_DE_ANIMAL",
+      "explanation": "A foto descreve um indivíduo observado, não todos os indivíduos.",
+      "hint": "Use “essa joaninha” em vez de “todas”.",
+      "errorFocus": "INDIVIDUAL_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A foto descreve um indivíduo observado, não todos os indivíduos.",
+        "incorrect": "A foto descreve um indivíduo observado, não todos os indivíduos.",
+        "hint": "Use “essa joaninha” em vez de “todas”.",
+        "errorFocus": "INDIVIDUAL_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-31",
+      "statement": "Um desenho mostra minhocas no solo úmido. Que condição ambiental está apresentada?",
+      "prompt": "Um desenho mostra minhocas no solo úmido. Que condição ambiental está apresentada?",
+      "options": [
+        "Ar seco dentro de uma sala",
+        "Água salgada no céu",
+        "Solo úmido.",
+        "Gelo sobre uma folha"
+      ],
+      "correctAnswer": "Solo úmido.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ar seco dentro de uma sala": [
+          "SOIL_MOISTURE"
+        ],
+        "Água salgada no céu": [
+          "SOIL_MOISTURE"
+        ],
+        "Gelo sobre uma folha": [
+          "SOIL_MOISTURE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CENARIO_DE_MINHOCA",
+      "explanation": "A ilustração identifica solo úmido como parte do ambiente.",
+      "hint": "Observe o solo desenhado.",
+      "errorFocus": "SOIL_MOISTURE",
+      "feedback": {
+        "correct": "Boa observação: A ilustração identifica solo úmido como parte do ambiente.",
+        "incorrect": "A ilustração identifica solo úmido como parte do ambiente.",
+        "hint": "Observe o solo desenhado.",
+        "errorFocus": "SOIL_MOISTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-32",
+      "statement": "Uma ave silvestre está num galho perto da escola. Qual atitude respeita o animal?",
+      "prompt": "Uma ave silvestre está num galho perto da escola. Qual atitude respeita o animal?",
+      "options": [
+        "Segurar a ave para medir as penas",
+        "Assustá-la para fazê-la voar",
+        "Levar o ninho para a sala",
+        "Observar de longe e não tentar capturá-la ou alimentá-la."
+      ],
+      "correctAnswer": "Observar de longe e não tentar capturá-la ou alimentá-la.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Segurar a ave para medir as penas": [
+          "WILDLIFE_DISTURBANCE_PREVENTION"
+        ],
+        "Assustá-la para fazê-la voar": [
+          "WILDLIFE_DISTURBANCE_PREVENTION"
+        ],
+        "Levar o ninho para a sala": [
+          "WILDLIFE_DISTURBANCE_PREVENTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DISTANCIA_DE_ANIMAL",
+      "explanation": "A observação distante evita perturbar ou ferir a ave.",
+      "hint": "Mantenha o animal no ambiente dele.",
+      "errorFocus": "WILDLIFE_DISTURBANCE_PREVENTION",
+      "feedback": {
+        "correct": "Boa observação: A observação distante evita perturbar ou ferir a ave.",
+        "incorrect": "A observação distante evita perturbar ou ferir a ave.",
+        "hint": "Mantenha o animal no ambiente dele.",
+        "errorFocus": "WILDLIFE_DISTURBANCE_PREVENTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-33",
+      "statement": "Qual é uma característica observável de um animal?",
+      "prompt": "Qual é uma característica observável de um animal?",
+      "options": [
+        "Cor, forma, tamanho ou partes do corpo que aparecem na fonte.",
+        "Uma ideia sobre o que ele pensa",
+        "O endereço da pessoa que observa",
+        "Uma conclusão sobre todos os animais"
+      ],
+      "correctAnswer": "Cor, forma, tamanho ou partes do corpo que aparecem na fonte.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma ideia sobre o que ele pensa": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ],
+        "O endereço da pessoa que observa": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ],
+        "Uma conclusão sobre todos os animais": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_CARACTERISTICAS",
+      "explanation": "Características visíveis podem ser descritas a partir da imagem ou registro.",
+      "hint": "Escolha uma pista que possa ser vista.",
+      "errorFocus": "OBSERVABLE_TRAIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Características visíveis podem ser descritas a partir da imagem ou registro.",
+        "incorrect": "Características visíveis podem ser descritas a partir da imagem ou registro.",
+        "hint": "Escolha uma pista que possa ser vista.",
+        "errorFocus": "OBSERVABLE_TRAIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-34",
+      "statement": "Um peixe aparece nadando num aquário com água. Que elemento do ambiente vemos?",
+      "prompt": "Um peixe aparece nadando num aquário com água. Que elemento do ambiente vemos?",
+      "options": [
+        "Penas",
+        "Água.",
+        "Solo seco",
+        "Folhas de papel"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Penas": [
+          "ENVIRONMENT_ELEMENT_REVIEW"
+        ],
+        "Solo seco": [
+          "ENVIRONMENT_ELEMENT_REVIEW"
+        ],
+        "Folhas de papel": [
+          "ENVIRONMENT_ELEMENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_AMBIENTE",
+      "explanation": "A água aparece no ambiente da cena.",
+      "hint": "Observe onde o peixe nada.",
+      "errorFocus": "ENVIRONMENT_ELEMENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A água aparece no ambiente da cena.",
+        "incorrect": "A água aparece no ambiente da cena.",
+        "hint": "Observe onde o peixe nada.",
+        "errorFocus": "ENVIRONMENT_ELEMENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-35",
+      "statement": "Uma sequência mostra semente e planta jovem. Que mudança está representada?",
+      "prompt": "Uma sequência mostra semente e planta jovem. Que mudança está representada?",
+      "options": [
+        "A passagem de planta para animal",
+        "A troca de ambiente por uma sala",
+        "Uma mudança de fase no desenvolvimento da planta.",
+        "Uma mudança de nome apenas"
+      ],
+      "correctAnswer": "Uma mudança de fase no desenvolvimento da planta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A passagem de planta para animal": [
+          "LIFE_STAGE_REVIEW"
+        ],
+        "A troca de ambiente por uma sala": [
+          "LIFE_STAGE_REVIEW"
+        ],
+        "Uma mudança de nome apenas": [
+          "LIFE_STAGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_FASES",
+      "explanation": "As imagens mostram etapas diferentes do crescimento da planta.",
+      "hint": "Compare as formas nas imagens.",
+      "errorFocus": "LIFE_STAGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As imagens mostram etapas diferentes do crescimento da planta.",
+        "incorrect": "As imagens mostram etapas diferentes do crescimento da planta.",
+        "hint": "Compare as formas nas imagens.",
+        "errorFocus": "LIFE_STAGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-36",
+      "statement": "Uma ficha de ave mostra penas e uma de cachorro mostra pelos. O que se compara?",
+      "prompt": "Uma ficha de ave mostra penas e uma de cachorro mostra pelos. O que se compara?",
+      "options": [
+        "A idade exata deles",
+        "O endereço de quem os desenhou",
+        "Uma regra sobre todos os animais",
+        "Características de cobertura corporal de dois animais."
+      ],
+      "correctAnswer": "Características de cobertura corporal de dois animais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A idade exata deles": [
+          "BODY_COVERING_REVIEW"
+        ],
+        "O endereço de quem os desenhou": [
+          "BODY_COVERING_REVIEW"
+        ],
+        "Uma regra sobre todos os animais": [
+          "BODY_COVERING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_PENAS_E_PELOS",
+      "explanation": "As fontes mostram características diferentes de cobertura do corpo.",
+      "hint": "Observe o que cobre cada animal.",
+      "errorFocus": "BODY_COVERING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As fontes mostram características diferentes de cobertura do corpo.",
+        "incorrect": "As fontes mostram características diferentes de cobertura do corpo.",
+        "hint": "Observe o que cobre cada animal.",
+        "errorFocus": "BODY_COVERING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-37",
+      "statement": "Uma foto mostra uma planta com flores roxas. Qual frase é mais cuidadosa?",
+      "prompt": "Uma foto mostra uma planta com flores roxas. Qual frase é mais cuidadosa?",
+      "options": [
+        "“Esta planta da foto apresenta flores roxas.”",
+        "“Todas as plantas têm flores roxas.”",
+        "“A planta só vive neste lugar.”",
+        "“A foto revela a idade exata.”"
+      ],
+      "correctAnswer": "“Esta planta da foto apresenta flores roxas.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Todas as plantas têm flores roxas.”": [
+          "LIMITED_EVIDENCE_REVIEW"
+        ],
+        "“A planta só vive neste lugar.”": [
+          "LIMITED_EVIDENCE_REVIEW"
+        ],
+        "“A foto revela a idade exata.”": [
+          "LIMITED_EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_GENERALIZACAO",
+      "explanation": "A frase descreve o exemplar mostrado sem extrapolar para todos.",
+      "hint": "Use uma afirmação limitada à imagem.",
+      "errorFocus": "LIMITED_EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve o exemplar mostrado sem extrapolar para todos.",
+        "incorrect": "A frase descreve o exemplar mostrado sem extrapolar para todos.",
+        "hint": "Use uma afirmação limitada à imagem.",
+        "errorFocus": "LIMITED_EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-38",
+      "statement": "Uma ficha mostra folhas flutuantes e água. Como relacionar característica e ambiente?",
+      "prompt": "Uma ficha mostra folhas flutuantes e água. Como relacionar característica e ambiente?",
+      "options": [
+        "Dizer que nenhuma planta vive em solo",
+        "Descrever as folhas e relacioná-las à água mostrada na ficha.",
+        "Afirmar que todas as folhas flutuam",
+        "Ignorar o que a imagem apresenta"
+      ],
+      "correctAnswer": "Descrever as folhas e relacioná-las à água mostrada na ficha.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer que nenhuma planta vive em solo": [
+          "TRAIT_ENVIRONMENT_REVIEW"
+        ],
+        "Afirmar que todas as folhas flutuam": [
+          "TRAIT_ENVIRONMENT_REVIEW"
+        ],
+        "Ignorar o que a imagem apresenta": [
+          "TRAIT_ENVIRONMENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_RELACAO",
+      "explanation": "A resposta usa as duas pistas presentes na fonte.",
+      "hint": "Cite uma característica e um elemento do ambiente.",
+      "errorFocus": "TRAIT_ENVIRONMENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A resposta usa as duas pistas presentes na fonte.",
+        "incorrect": "A resposta usa as duas pistas presentes na fonte.",
+        "hint": "Cite uma característica e um elemento do ambiente.",
+        "errorFocus": "TRAIT_ENVIRONMENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-39",
+      "statement": "Qual forma de estudar uma planta evita danificá-la?",
+      "prompt": "Qual forma de estudar uma planta evita danificá-la?",
+      "options": [
+        "Retirar raízes para medir",
+        "Quebrar folhas para comparar",
+        "Usar imagem autorizada ou observá-la sem arrancar partes.",
+        "Levar a planta inteira"
+      ],
+      "correctAnswer": "Usar imagem autorizada ou observá-la sem arrancar partes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Retirar raízes para medir": [
+          "SAFE_PLANT_STUDY_REVIEW"
+        ],
+        "Quebrar folhas para comparar": [
+          "SAFE_PLANT_STUDY_REVIEW"
+        ],
+        "Levar a planta inteira": [
+          "SAFE_PLANT_STUDY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_CUIDADO",
+      "explanation": "Registros e observação cuidadosa preservam a planta e o ambiente.",
+      "hint": "Escolha uma opção sem dano.",
+      "errorFocus": "SAFE_PLANT_STUDY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Registros e observação cuidadosa preservam a planta e o ambiente.",
+        "incorrect": "Registros e observação cuidadosa preservam a planta e o ambiente.",
+        "hint": "Escolha uma opção sem dano.",
+        "errorFocus": "SAFE_PLANT_STUDY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci04-observe-living-things-and-environments-40",
+      "statement": "Como fazer uma relação cuidadosa entre uma característica e um ambiente?",
+      "prompt": "Como fazer uma relação cuidadosa entre uma característica e um ambiente?",
+      "options": [
+        "Inventar detalhes ausentes",
+        "Dizer que todos os seres são iguais",
+        "Tocar ou coletar para confirmar",
+        "Descrever o que a fonte mostra e explicar uma relação possível, sem afirmar que vale para todos os casos."
+      ],
+      "correctAnswer": "Descrever o que a fonte mostra e explicar uma relação possível, sem afirmar que vale para todos os casos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Inventar detalhes ausentes": [
+          "EVIDENCE_BOUNDED_SUMMARY"
+        ],
+        "Dizer que todos os seres são iguais": [
+          "EVIDENCE_BOUNDED_SUMMARY"
+        ],
+        "Tocar ou coletar para confirmar": [
+          "EVIDENCE_BOUNDED_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_OBSERVACAO",
+      "explanation": "Uma conclusão responsável usa evidências e reconhece seus limites.",
+      "hint": "Combine observação, ambiente e cuidado com a conclusão.",
+      "errorFocus": "EVIDENCE_BOUNDED_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Uma conclusão responsável usa evidências e reconhece seus limites.",
+        "incorrect": "Uma conclusão responsável usa evidências e reconhece seus limites.",
+        "hint": "Combine observação, ambiente e cuidado com a conclusão.",
+        "errorFocus": "EVIDENCE_BOUNDED_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, modelos táteis seguros, fonte ampliada e vocabulário visual para características e ambientes.",
+          "Permitir descrever por fala, desenho, apontamento, cartões ou comunicação alternativa.",
+          "Usar apenas registros autorizados ou materiais didáticos; observar sem tocar, coletar, danificar ou alimentar animais e plantas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

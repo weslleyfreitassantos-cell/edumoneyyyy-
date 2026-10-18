@@ -1,0 +1,1673 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-portuguese-conventional-writing-fi",
+  "canonicalSkillCode": "AUTHORING_EF01LP03_CONVENTIONAL_WRITING_COMPARISON",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "comparação entre escritas convencionais e produções infantis",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Descritor oficial usado como contexto de autoria; vínculo canônico, revisão pedagógica e publicação permanecem pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Observar e comparar escritas",
+    "objective": "Observar escritas convencionais e compará-las às próprias produções, identificando semelhanças e diferenças visíveis sem transformar uma amostra em rótulo.",
+    "summary": "Comparar uma escrita-modelo com uma produção infantil ajuda a perceber letras, ordem, partes que coincidem e partes que ainda diferem.",
+    "explanation": "## Comparar com evidências\nColoque a escrita convencional e a produção lado a lado. Observe letras, ordem, espaços e marcas que realmente aparecem. Uma comparação pode encontrar semelhanças e diferenças ao mesmo tempo.\n\n## Conversar sem rotular\nDescreva a amostra em vez de concluir tudo sobre a criança. Pergunte o que ela percebe, convide-a a apontar no modelo e registre como ela revisa.\n\n## Apoiar diferentes formas de participação\nUse cartões ampliados, leitura em voz alta, régua de acompanhamento, alto contraste e tempo adicional. A criança pode apontar, falar, usar símbolos ou escrever para mostrar sua análise.",
+    "workedExample": "Mostre o modelo “BOLA” e uma produção “BLA”. Peça que a criança aponte letras presentes nas duas escritas e observe o que falta no modelo, registrando a resposta sem dizer que a criança “é” alguma coisa.",
+    "commonMistake": "Dizer apenas “certo” ou “errado”, comparar pelo desenho ou usar uma única tentativa para fazer um diagnóstico amplo.",
+    "tips": [
+      "Mantenha o modelo visível e compare uma posição de cada vez.",
+      "Nomeie semelhanças e diferenças com linguagem descritiva.",
+      "Separe a observação da amostra de conclusões sobre a criança.",
+      "Ofereça letras ampliadas, apoio visual e comunicação alternativa quando necessário."
+    ],
+    "priorKnowledge": [
+      "Reconhecer que textos e nomes podem ser representados por sinais gráficos.",
+      "Participar de conversas sobre palavras, nomes e listas do cotidiano."
+    ],
+    "keyConcepts": [
+      "escrita convencional",
+      "produção infantil",
+      "semelhança",
+      "diferença",
+      "ordem das letras",
+      "modelo",
+      "revisão",
+      "acessibilidade"
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-portuguese-conventional-writing-fi-01",
+          "v1-portuguese-conventional-writing-fi-02",
+          "v1-portuguese-conventional-writing-fi-03",
+          "v1-portuguese-conventional-writing-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-portuguese-conventional-writing-fi-05",
+          "v1-portuguese-conventional-writing-fi-06",
+          "v1-portuguese-conventional-writing-fi-07",
+          "v1-portuguese-conventional-writing-fi-08",
+          "v1-portuguese-conventional-writing-fi-09",
+          "v1-portuguese-conventional-writing-fi-10",
+          "v1-portuguese-conventional-writing-fi-11",
+          "v1-portuguese-conventional-writing-fi-12",
+          "v1-portuguese-conventional-writing-fi-13",
+          "v1-portuguese-conventional-writing-fi-14",
+          "v1-portuguese-conventional-writing-fi-15",
+          "v1-portuguese-conventional-writing-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-portuguese-conventional-writing-fi-17",
+          "v1-portuguese-conventional-writing-fi-18",
+          "v1-portuguese-conventional-writing-fi-19",
+          "v1-portuguese-conventional-writing-fi-20",
+          "v1-portuguese-conventional-writing-fi-21",
+          "v1-portuguese-conventional-writing-fi-22",
+          "v1-portuguese-conventional-writing-fi-23",
+          "v1-portuguese-conventional-writing-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-portuguese-conventional-writing-fi-25",
+          "v1-portuguese-conventional-writing-fi-26",
+          "v1-portuguese-conventional-writing-fi-27",
+          "v1-portuguese-conventional-writing-fi-28",
+          "v1-portuguese-conventional-writing-fi-29",
+          "v1-portuguese-conventional-writing-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-portuguese-conventional-writing-fi-31",
+          "v1-portuguese-conventional-writing-fi-32",
+          "v1-portuguese-conventional-writing-fi-33",
+          "v1-portuguese-conventional-writing-fi-34",
+          "v1-portuguese-conventional-writing-fi-35",
+          "v1-portuguese-conventional-writing-fi-36",
+          "v1-portuguese-conventional-writing-fi-37",
+          "v1-portuguese-conventional-writing-fi-38",
+          "v1-portuguese-conventional-writing-fi-39",
+          "v1-portuguese-conventional-writing-fi-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "COMPARE_ORDER",
+        "text": "Compare identidade e posição das letras, passando o dedo no modelo e na produção na mesma direção."
+      },
+      {
+        "trigger": "NOTICE_MISSING_LETTER",
+        "text": "Aponte o que aparece na referência e não aparece na produção, sem transformar a diferença em julgamento."
+      },
+      {
+        "trigger": "NOTICE_WORD_BOUNDARY",
+        "text": "O espaço entre palavras também é uma marca visível; observe-o sem atribuir mais do que a amostra permite."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COMPARE_PARTS",
+        "action": "Use cartões móveis para separar começo, meio e fim da escrita e compare cada trecho."
+      },
+      {
+        "errorFocus": "FEEDBACK_AS_OBSERVATION",
+        "action": "Modele frases como “aqui coincide” e “aqui ainda está diferente” antes de pedir nova tentativa."
+      },
+      {
+        "errorFocus": "LIMIT_SINGLE_ATTEMPT",
+        "action": "Colete outra situação de escrita antes de generalizar qualquer hipótese."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "title": "Crachás que contam histórias",
+        "context": "Comparar nomes em crachás, lista de presença e etiquetas da sala.",
+        "steps": [
+          "Escolher um modelo convencional.",
+          "Colocar a própria produção ao lado.",
+          "Marcar duas semelhanças e uma diferença.",
+          "Relatar a observação por fala, apontar ou cartões."
+        ],
+        "evidence": "Registro descritivo das letras e posições comparadas.",
+        "rubric": [
+          "Inicial: precisa localizar o modelo.",
+          "Em desenvolvimento: aponta uma semelhança ou diferença.",
+          "Consolidado: descreve mais de uma relação com apoio reduzido."
+        ]
+      },
+      {
+        "title": "Revisão de listas reais",
+        "context": "Revisar uma lista de materiais, frutas ou personagens usada pela turma.",
+        "steps": [
+          "Ler o item-modelo.",
+          "Comparar com a tentativa.",
+          "Escolher uma parte para revisar.",
+          "Explicar o que mudou."
+        ],
+        "evidence": "Antes e depois da produção com comentário da criança.",
+        "rubric": [
+          "Inicial: observa com mediação.",
+          "Em desenvolvimento: localiza a parte revisada.",
+          "Consolidado: justifica a revisão usando o modelo."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP03",
+        "descriptor": "Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral criado para demonstração; o descritor oficial é referenciado como fonte de contexto e não é reproduzido como conteúdo de exercício."
+  },
+  "questions": [
+    {
+      "id": "v1-portuguese-conventional-writing-fi-01",
+      "statement": "A professora mostra o cartão-modelo “LIA” e uma tentativa escrita “LIA”. O que podemos observar?",
+      "prompt": "A professora mostra o cartão-modelo “LIA” e uma tentativa escrita “LIA”. O que podemos observar?",
+      "options": [
+        "As duas escritas têm as mesmas letras e na mesma ordem.",
+        "Uma escrita é um desenho.",
+        "As letras devem ser trocadas por números.",
+        "Não há nada para comparar."
+      ],
+      "correctAnswer": "As duas escritas têm as mesmas letras e na mesma ordem.",
+      "answerPosition": "A",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NOME_NO_CARTAO",
+      "explanation": "A comparação considera as letras e a ordem visível no modelo e na produção.",
+      "hint": "Olhe para cada letra do modelo e confira sua posição na tentativa.",
+      "errorFocus": "COMPARE_ORDER",
+      "feedback": {
+        "correct": "Boa análise: A comparação considera as letras e a ordem visível no modelo e na produção.",
+        "incorrect": "A comparação considera as letras e a ordem visível no modelo e na produção.",
+        "hint": "Olhe para cada letra do modelo e confira sua posição na tentativa.",
+        "errorFocus": "COMPARE_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-02",
+      "statement": "O modelo diz “BOLA” e a criança escreveu “BLA”. Qual observação é possível?",
+      "prompt": "O modelo diz “BOLA” e a criança escreveu “BLA”. Qual observação é possível?",
+      "options": [
+        "A produção não tem nenhuma relação.",
+        "A produção tem algumas letras do modelo, mas falta uma letra.",
+        "A palavra deve ser lida como “BICICLETA”.",
+        "O modelo é apenas um desenho."
+      ],
+      "correctAnswer": "A produção tem algumas letras do modelo, mas falta uma letra.",
+      "answerPosition": "B",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOLA_E_BLA",
+      "explanation": "Comparar não é apenas dizer certo ou errado: é perceber quais partes se aproximam e quais ainda diferem.",
+      "hint": "Compare as letras presentes e procure o que aparece no modelo e não aparece na tentativa.",
+      "errorFocus": "NOTICE_MISSING_LETTER",
+      "feedback": {
+        "correct": "Boa análise: Comparar não é apenas dizer certo ou errado: é perceber quais partes se aproximam e quais ainda diferem.",
+        "incorrect": "Comparar não é apenas dizer certo ou errado: é perceber quais partes se aproximam e quais ainda diferem.",
+        "hint": "Compare as letras presentes e procure o que aparece no modelo e não aparece na tentativa.",
+        "errorFocus": "NOTICE_MISSING_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-03",
+      "statement": "Para comparar “GATO” com “GAO”, qual pergunta ajuda?",
+      "prompt": "Para comparar “GATO” com “GAO”, qual pergunta ajuda?",
+      "options": [
+        "Qual desenho é mais bonito?",
+        "Qual número vem depois do 4?",
+        "Qual letra aparece no modelo entre o A e o O?",
+        "Qual cor deve ter o papel?"
+      ],
+      "correctAnswer": "Qual letra aparece no modelo entre o A e o O?",
+      "answerPosition": "C",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "GATO_E_GAO",
+      "explanation": "A pergunta mantém o foco na escrita convencional e na posição das letras.",
+      "hint": "Atenção à sequência de letras, não à aparência do papel.",
+      "errorFocus": "COMPARE_RELEVANT_FEATURE",
+      "feedback": {
+        "correct": "Boa análise: A pergunta mantém o foco na escrita convencional e na posição das letras.",
+        "incorrect": "A pergunta mantém o foco na escrita convencional e na posição das letras.",
+        "hint": "Atenção à sequência de letras, não à aparência do papel.",
+        "errorFocus": "COMPARE_RELEVANT_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-04",
+      "statement": "Na lista convencional está “SUCO”. A criança escreveu “SCO”. O que deve ser registrado?",
+      "prompt": "Na lista convencional está “SUCO”. A criança escreveu “SCO”. O que deve ser registrado?",
+      "options": [
+        "A criança desenhou um copo.",
+        "A produção é idêntica ao modelo.",
+        "A lista não pode ser observada.",
+        "A produção começa com S e termina com O, mas não apresenta todas as letras do modelo."
+      ],
+      "correctAnswer": "A produção começa com S e termina com O, mas não apresenta todas as letras do modelo.",
+      "answerPosition": "D",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LISTA_LANCHE",
+      "explanation": "Uma descrição útil registra semelhanças e diferença observáveis, sem atribuir uma causa à criança.",
+      "hint": "Diga o que coincide e o que falta, usando as letras da lista como evidência.",
+      "errorFocus": "DESCRIBE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa análise: Uma descrição útil registra semelhanças e diferença observáveis, sem atribuir uma causa à criança.",
+        "incorrect": "Uma descrição útil registra semelhanças e diferença observáveis, sem atribuir uma causa à criança.",
+        "hint": "Diga o que coincide e o que falta, usando as letras da lista como evidência.",
+        "errorFocus": "DESCRIBE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-05",
+      "statement": "A etiqueta convencional traz “MALA” e a tentativa traz “MALA”. Qual comparação é adequada?",
+      "prompt": "A etiqueta convencional traz “MALA” e a tentativa traz “MALA”. Qual comparação é adequada?",
+      "options": [
+        "As quatro letras e a ordem coincidem.",
+        "Só o tamanho do desenho coincide.",
+        "A tentativa usa apenas sinais.",
+        "As palavras não podem ser comparadas."
+      ],
+      "correctAnswer": "As quatro letras e a ordem coincidem.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ETIQUETA_MALA",
+      "explanation": "A correspondência entre letras e ordem mostra uma semelhança completa nesta amostra.",
+      "hint": "Confira a quantidade, a identidade e a ordem das letras.",
+      "errorFocus": "COMPARE_EXACT_MATCH",
+      "feedback": {
+        "correct": "Boa análise: A correspondência entre letras e ordem mostra uma semelhança completa nesta amostra.",
+        "incorrect": "A correspondência entre letras e ordem mostra uma semelhança completa nesta amostra.",
+        "hint": "Confira a quantidade, a identidade e a ordem das letras.",
+        "errorFocus": "COMPARE_EXACT_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-06",
+      "statement": "No crachá está “MARINA” e a criança escreveu “MARIA”. Qual diferença aparece?",
+      "prompt": "No crachá está “MARINA” e a criança escreveu “MARIA”. Qual diferença aparece?",
+      "options": [
+        "O modelo não tem letras.",
+        "O modelo tem N antes do último A; a tentativa não tem essa letra.",
+        "A tentativa tem apenas números.",
+        "A primeira letra é diferente."
+      ],
+      "correctAnswer": "O modelo tem N antes do último A; a tentativa não tem essa letra.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NOME_MARINA",
+      "explanation": "A diferença está no interior da palavra e pode ser apontada sem julgar a intenção da criança.",
+      "hint": "Leia as duas escritas da esquerda para a direita e compare a parte final.",
+      "errorFocus": "NOTICE_INTERNAL_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa análise: A diferença está no interior da palavra e pode ser apontada sem julgar a intenção da criança.",
+        "incorrect": "A diferença está no interior da palavra e pode ser apontada sem julgar a intenção da criança.",
+        "hint": "Leia as duas escritas da esquerda para a direita e compare a parte final.",
+        "errorFocus": "NOTICE_INTERNAL_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-07",
+      "statement": "A placa convencional diz “SAÍDA” e a tentativa diz “SAIDA”. Qual observação é mais precisa para esta comparação inicial?",
+      "prompt": "A placa convencional diz “SAÍDA” e a tentativa diz “SAIDA”. Qual observação é mais precisa para esta comparação inicial?",
+      "options": [
+        "Todas as letras são diferentes.",
+        "A tentativa virou um desenho.",
+        "As letras principais coincidem; o sinal sobre a letra pode ser observado separadamente.",
+        "A palavra não tem nenhuma escrita convencional."
+      ],
+      "correctAnswer": "As letras principais coincidem; o sinal sobre a letra pode ser observado separadamente.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PLACA_SAIDA",
+      "explanation": "O foco desta habilidade é comparar produções com modelos; uma marca gráfica pode ser registrada sem transformar a observação em diagnóstico.",
+      "hint": "Primeiro compare as letras; depois note a marca gráfica que aparece no modelo.",
+      "errorFocus": "NOTICE_DIACRITIC_WITHOUT_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa análise: O foco desta habilidade é comparar produções com modelos; uma marca gráfica pode ser registrada sem transformar a observação em diagnóstico.",
+        "incorrect": "O foco desta habilidade é comparar produções com modelos; uma marca gráfica pode ser registrada sem transformar a observação em diagnóstico.",
+        "hint": "Primeiro compare as letras; depois note a marca gráfica que aparece no modelo.",
+        "errorFocus": "NOTICE_DIACRITIC_WITHOUT_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-08",
+      "statement": "Na capa convencional está “LIVRO” e a criança escreveu “LIVO”. Que apoio favorece a comparação?",
+      "prompt": "Na capa convencional está “LIVRO” e a criança escreveu “LIVO”. Que apoio favorece a comparação?",
+      "options": [
+        "Cobrir o modelo e pedir para adivinhar.",
+        "Trocar letras por desenhos.",
+        "Dizer somente “está errado”.",
+        "Colocar as duas escritas lado a lado e apontar cada letra."
+      ],
+      "correctAnswer": "Colocar as duas escritas lado a lado e apontar cada letra.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LIVRO_CAPA",
+      "explanation": "O modelo visível e a comparação letra a letra tornam a observação acessível e produtiva.",
+      "hint": "Mantenha o modelo disponível e aponte uma letra de cada vez.",
+      "errorFocus": "USE_SIDE_BY_SIDE_MODEL",
+      "feedback": {
+        "correct": "Boa análise: O modelo visível e a comparação letra a letra tornam a observação acessível e produtiva.",
+        "incorrect": "O modelo visível e a comparação letra a letra tornam a observação acessível e produtiva.",
+        "hint": "Mantenha o modelo disponível e aponte uma letra de cada vez.",
+        "errorFocus": "USE_SIDE_BY_SIDE_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-09",
+      "statement": "O nome-modelo “PEDRO” e a produção “PERO” começam e terminam com as mesmas letras. O que isso mostra?",
+      "prompt": "O nome-modelo “PEDRO” e a produção “PERO” começam e terminam com as mesmas letras. O que isso mostra?",
+      "options": [
+        "Há semelhanças nas extremidades e uma diferença no meio.",
+        "As duas escritas são desenhos.",
+        "Não existe nenhuma semelhança.",
+        "A ordem das letras não importa."
+      ],
+      "correctAnswer": "Há semelhanças nas extremidades e uma diferença no meio.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NOME_PEDRO",
+      "explanation": "Uma palavra pode apresentar semelhanças e diferenças ao mesmo tempo; ambas devem ser registradas.",
+      "hint": "Observe começo, meio e fim da escrita.",
+      "errorFocus": "COMPARE_PARTS",
+      "feedback": {
+        "correct": "Boa análise: Uma palavra pode apresentar semelhanças e diferenças ao mesmo tempo; ambas devem ser registradas.",
+        "incorrect": "Uma palavra pode apresentar semelhanças e diferenças ao mesmo tempo; ambas devem ser registradas.",
+        "hint": "Observe começo, meio e fim da escrita.",
+        "errorFocus": "COMPARE_PARTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-10",
+      "statement": "O modelo da etiqueta é “BLOCOS” e a tentativa é “BOCOS”. Qual registro é baseado em evidência?",
+      "prompt": "O modelo da etiqueta é “BLOCOS” e a tentativa é “BOCOS”. Qual registro é baseado em evidência?",
+      "options": [
+        "A criança não sabe escrever nada.",
+        "B, O e C aparecem nas duas; o modelo apresenta também L e S.",
+        "As duas são exatamente iguais.",
+        "A etiqueta não é uma escrita."
+      ],
+      "correctAnswer": "B, O e C aparecem nas duas; o modelo apresenta também L e S.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "ARMARIO_BRINQUEDOS",
+      "explanation": "O registro nomeia letras que se repetem e letras que diferem, sem fazer afirmações além da amostra.",
+      "hint": "Escolha letras que você realmente consegue localizar nas duas escritas.",
+      "errorFocus": "DESCRIBE_SHARED_AND_DIFFERENT",
+      "feedback": {
+        "correct": "Boa análise: O registro nomeia letras que se repetem e letras que diferem, sem fazer afirmações além da amostra.",
+        "incorrect": "O registro nomeia letras que se repetem e letras que diferem, sem fazer afirmações além da amostra.",
+        "hint": "Escolha letras que você realmente consegue localizar nas duas escritas.",
+        "errorFocus": "DESCRIBE_SHARED_AND_DIFFERENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-11",
+      "statement": "No calendário aparece “SEGUNDA”. A criança escreveu “SEGUNDA”. Qual é uma boa pergunta de conferência?",
+      "prompt": "No calendário aparece “SEGUNDA”. A criança escreveu “SEGUNDA”. Qual é uma boa pergunta de conferência?",
+      "options": [
+        "Qual é a cor favorita da criança?",
+        "Quantos lápis há na mesa?",
+        "As letras aparecem na mesma sequência do calendário?",
+        "Qual desenho combina com o dia?"
+      ],
+      "correctAnswer": "As letras aparecem na mesma sequência do calendário?",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CALENDARIO_DIA",
+      "explanation": "A pergunta verifica a ordem, aspecto essencial da comparação entre uma produção e o modelo.",
+      "hint": "Passe o dedo pelo modelo e depois pela tentativa na mesma direção.",
+      "errorFocus": "CHECK_SEQUENCE",
+      "feedback": {
+        "correct": "Boa análise: A pergunta verifica a ordem, aspecto essencial da comparação entre uma produção e o modelo.",
+        "incorrect": "A pergunta verifica a ordem, aspecto essencial da comparação entre uma produção e o modelo.",
+        "hint": "Passe o dedo pelo modelo e depois pela tentativa na mesma direção.",
+        "errorFocus": "CHECK_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-12",
+      "statement": "O aviso-modelo diz “BEBER ÁGUA” e a tentativa diz “BEBE AGUA”. Qual diferença é observável?",
+      "prompt": "O aviso-modelo diz “BEBER ÁGUA” e a tentativa diz “BEBE AGUA”. Qual diferença é observável?",
+      "options": [
+        "As duas escritas são feitas só de desenhos.",
+        "O modelo não pode ser consultado.",
+        "A tentativa não contém nenhuma letra.",
+        "A tentativa apresenta palavras com letras diferentes em alguns pontos e não mantém todas as marcas do modelo."
+      ],
+      "correctAnswer": "A tentativa apresenta palavras com letras diferentes em alguns pontos e não mantém todas as marcas do modelo.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AVISO_AGUA",
+      "explanation": "A comparação pode considerar letras e marcas gráficas presentes, sempre descrevendo o que está visível.",
+      "hint": "Compare primeiro as palavras e depois as marcas gráficas.",
+      "errorFocus": "COMPARE_WORDS_AND_MARKS",
+      "feedback": {
+        "correct": "Boa análise: A comparação pode considerar letras e marcas gráficas presentes, sempre descrevendo o que está visível.",
+        "incorrect": "A comparação pode considerar letras e marcas gráficas presentes, sempre descrevendo o que está visível.",
+        "hint": "Compare primeiro as palavras e depois as marcas gráficas.",
+        "errorFocus": "COMPARE_WORDS_AND_MARKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-13",
+      "statement": "Ao comparar “GABRIELA” com “GABRIEA”, qual parte merece atenção?",
+      "prompt": "Ao comparar “GABRIELA” com “GABRIEA”, qual parte merece atenção?",
+      "options": [
+        "Depois do E, o modelo apresenta L antes do A.",
+        "A cor do cartão.",
+        "O número de sílabas faladas.",
+        "O tamanho da mesa."
+      ],
+      "correctAnswer": "Depois do E, o modelo apresenta L antes do A.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NOME_GABRIELA",
+      "explanation": "Localizar a diferença ajuda a criança a usar o modelo para revisar sua própria produção.",
+      "hint": "Procure o trecho em que as duas sequências deixam de coincidir.",
+      "errorFocus": "LOCATE_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa análise: Localizar a diferença ajuda a criança a usar o modelo para revisar sua própria produção.",
+        "incorrect": "Localizar a diferença ajuda a criança a usar o modelo para revisar sua própria produção.",
+        "hint": "Procure o trecho em que as duas sequências deixam de coincidir.",
+        "errorFocus": "LOCATE_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-14",
+      "statement": "O cardápio traz “SOPA” e a tentativa traz “XOPA”. Qual semelhança permanece?",
+      "prompt": "O cardápio traz “SOPA” e a tentativa traz “XOPA”. Qual semelhança permanece?",
+      "options": [
+        "As duas começam com S.",
+        "As duas escritas têm três letras depois da primeira e terminam em OPA.",
+        "Nenhuma letra coincide.",
+        "A tentativa é um desenho de prato."
+      ],
+      "correctAnswer": "As duas escritas têm três letras depois da primeira e terminam em OPA.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARDAPIO_SOPA",
+      "explanation": "Mesmo com uma diferença inicial, o restante da sequência é uma semelhança observável.",
+      "hint": "Compare o final das duas escritas.",
+      "errorFocus": "DISTINGUISH_SIMILARITY",
+      "feedback": {
+        "correct": "Boa análise: Mesmo com uma diferença inicial, o restante da sequência é uma semelhança observável.",
+        "incorrect": "Mesmo com uma diferença inicial, o restante da sequência é uma semelhança observável.",
+        "hint": "Compare o final das duas escritas.",
+        "errorFocus": "DISTINGUISH_SIMILARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-15",
+      "statement": "A legenda convencional é “DUAS CRIANÇAS”. A produção é “DUA CRIANCAS”. Qual fala do professor apoia a observação?",
+      "prompt": "A legenda convencional é “DUAS CRIANÇAS”. A produção é “DUA CRIANCAS”. Qual fala do professor apoia a observação?",
+      "options": [
+        "“Você nunca vai conseguir.”",
+        "“Não precisa olhar o modelo.”",
+        "“Vamos localizar no modelo as partes que aparecem e as que ainda não aparecem na sua produção.”",
+        "“Apague tudo sem conversar.”"
+      ],
+      "correctAnswer": "“Vamos localizar no modelo as partes que aparecem e as que ainda não aparecem na sua produção.”",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LEGENDA_FOTO",
+      "explanation": "O feedback convida à comparação com evidências e preserva a participação da criança na revisão.",
+      "hint": "Use uma frase que aponte o modelo e convide a localizar semelhanças.",
+      "errorFocus": "FEEDBACK_AS_OBSERVATION",
+      "feedback": {
+        "correct": "Boa análise: O feedback convida à comparação com evidências e preserva a participação da criança na revisão.",
+        "incorrect": "O feedback convida à comparação com evidências e preserva a participação da criança na revisão.",
+        "hint": "Use uma frase que aponte o modelo e convide a localizar semelhanças.",
+        "errorFocus": "FEEDBACK_AS_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-16",
+      "statement": "O título-modelo é “O SAPO” e a criança escreveu “OSAPO”. Que diferença deve ser percebida?",
+      "prompt": "O título-modelo é “O SAPO” e a criança escreveu “OSAPO”. Que diferença deve ser percebida?",
+      "options": [
+        "O modelo não tem letras.",
+        "A tentativa tem letras a mais em todas as posições.",
+        "A imagem substitui o título.",
+        "O modelo apresenta duas palavras separadas; a tentativa juntou as letras."
+      ],
+      "correctAnswer": "O modelo apresenta duas palavras separadas; a tentativa juntou as letras.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TITULO_HISTORIA",
+      "explanation": "A separação entre palavras é uma diferença gráfica visível no modelo, embora possa exigir uma habilidade específica posterior para aprofundamento.",
+      "hint": "Olhe para o espaço entre as duas palavras do modelo.",
+      "errorFocus": "NOTICE_WORD_BOUNDARY",
+      "feedback": {
+        "correct": "Boa análise: A separação entre palavras é uma diferença gráfica visível no modelo, embora possa exigir uma habilidade específica posterior para aprofundamento.",
+        "incorrect": "A separação entre palavras é uma diferença gráfica visível no modelo, embora possa exigir uma habilidade específica posterior para aprofundamento.",
+        "hint": "Olhe para o espaço entre as duas palavras do modelo.",
+        "errorFocus": "NOTICE_WORD_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-17",
+      "statement": "Uma criança quer conferir como escreveu seu nome na lista de presença. Qual ação é adequada?",
+      "prompt": "Uma criança quer conferir como escreveu seu nome na lista de presença. Qual ação é adequada?",
+      "options": [
+        "Comparar sua escrita com o crachá ou a lista-modelo, apontando semelhanças e diferenças.",
+        "Esconder o modelo.",
+        "Pedir que outra criança apague sua escrita.",
+        "Trocar todas as letras por números."
+      ],
+      "correctAnswer": "Comparar sua escrita com o crachá ou a lista-modelo, apontando semelhanças e diferenças.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_NOME_PROPRIO",
+      "explanation": "A escrita convencional funciona como referência para a própria produção, sem retirar a autoria da criança.",
+      "hint": "Procure um modelo do mesmo nome e compare com calma.",
+      "errorFocus": "USE_CONVENTIONAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa análise: A escrita convencional funciona como referência para a própria produção, sem retirar a autoria da criança.",
+        "incorrect": "A escrita convencional funciona como referência para a própria produção, sem retirar a autoria da criança.",
+        "hint": "Procure um modelo do mesmo nome e compare com calma.",
+        "errorFocus": "USE_CONVENTIONAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-18",
+      "statement": "Ao revisar um bilhete curto, qual procedimento ajuda a observar a escrita?",
+      "prompt": "Ao revisar um bilhete curto, qual procedimento ajuda a observar a escrita?",
+      "options": [
+        "Revisar apenas o desenho.",
+        "Ler o modelo, localizar palavras e comparar a sequência de letras da própria produção.",
+        "Comparar o papel pela cor.",
+        "Apagar sem olhar o modelo."
+      ],
+      "correctAnswer": "Ler o modelo, localizar palavras e comparar a sequência de letras da própria produção.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_BILHETE",
+      "explanation": "Revisar envolve voltar ao texto de referência e observar aspectos concretos da produção.",
+      "hint": "Use o bilhete-modelo como guia visual durante a leitura.",
+      "errorFocus": "REVIEW_WITH_MODEL",
+      "feedback": {
+        "correct": "Boa análise: Revisar envolve voltar ao texto de referência e observar aspectos concretos da produção.",
+        "incorrect": "Revisar envolve voltar ao texto de referência e observar aspectos concretos da produção.",
+        "hint": "Use o bilhete-modelo como guia visual durante a leitura.",
+        "errorFocus": "REVIEW_WITH_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-19",
+      "statement": "Duas etiquetas mostram “PATO” e “PATA”. O que pode ser comparado?",
+      "prompt": "Duas etiquetas mostram “PATO” e “PATA”. O que pode ser comparado?",
+      "options": [
+        "Todas as letras são iguais.",
+        "Nenhuma letra pode ser vista.",
+        "As três primeiras letras coincidem e a última letra muda.",
+        "A diferença está somente na cor."
+      ],
+      "correctAnswer": "As três primeiras letras coincidem e a última letra muda.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_ETIQUETAS",
+      "explanation": "Palavras próximas podem compartilhar parte da escrita e diferir em uma posição.",
+      "hint": "Compare as letras uma a uma, começando pela esquerda.",
+      "errorFocus": "COMPARE_NEAR_WORDS",
+      "feedback": {
+        "correct": "Boa análise: Palavras próximas podem compartilhar parte da escrita e diferir em uma posição.",
+        "incorrect": "Palavras próximas podem compartilhar parte da escrita e diferir em uma posição.",
+        "hint": "Compare as letras uma a uma, começando pela esquerda.",
+        "errorFocus": "COMPARE_NEAR_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-20",
+      "statement": "Na receita-modelo aparece “MEXER” e a tentativa “MEZER”. Como registrar a observação?",
+      "prompt": "Na receita-modelo aparece “MEXER” e a tentativa “MEZER”. Como registrar a observação?",
+      "options": [
+        "A criança escreveu uma imagem.",
+        "As duas são idênticas.",
+        "O modelo não tem relação com a tentativa.",
+        "As duas produções começam com ME e terminam com ER; uma letra no meio é diferente."
+      ],
+      "correctAnswer": "As duas produções começam com ME e terminam com ER; uma letra no meio é diferente.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "RECEITA_SIMPLES",
+      "explanation": "A observação informa posições que coincidem e a posição que difere, possibilitando uma conversa sobre a escrita.",
+      "hint": "Localize o começo, o meio e o fim de cada palavra.",
+      "errorFocus": "DESCRIBE_INTERNAL_SUBSTITUTION",
+      "feedback": {
+        "correct": "Boa análise: A observação informa posições que coincidem e a posição que difere, possibilitando uma conversa sobre a escrita.",
+        "incorrect": "A observação informa posições que coincidem e a posição que difere, possibilitando uma conversa sobre a escrita.",
+        "hint": "Localize o começo, o meio e o fim de cada palavra.",
+        "errorFocus": "DESCRIBE_INTERNAL_SUBSTITUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-21",
+      "statement": "Em um jogo de pares, o professor mostra “FACA” e “FACA”. Que justificativa demonstra comparação?",
+      "prompt": "Em um jogo de pares, o professor mostra “FACA” e “FACA”. Que justificativa demonstra comparação?",
+      "options": [
+        "“Encontrei as mesmas quatro letras na mesma ordem.”",
+        "“Os cartões têm a mesma cor.”",
+        "“As palavras são desenhos.”",
+        "“Não olhei para os cartões.”"
+      ],
+      "correctAnswer": "“Encontrei as mesmas quatro letras na mesma ordem.”",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "JOGO_DE_PARES",
+      "explanation": "A justificativa usa evidências da escrita, não características externas do cartão.",
+      "hint": "Explique quais letras e qual ordem você conferiu.",
+      "errorFocus": "JUSTIFY_WITH_LETTERS",
+      "feedback": {
+        "correct": "Boa análise: A justificativa usa evidências da escrita, não características externas do cartão.",
+        "incorrect": "A justificativa usa evidências da escrita, não características externas do cartão.",
+        "hint": "Explique quais letras e qual ordem você conferiu.",
+        "errorFocus": "JUSTIFY_WITH_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-22",
+      "statement": "No mapa há a palavra “PORTA”; a criança escreveu “POTA”. Que apoio é produtivo?",
+      "prompt": "No mapa há a palavra “PORTA”; a criança escreveu “POTA”. Que apoio é produtivo?",
+      "options": [
+        "Mandar copiar dez vezes sem observar.",
+        "Pedir que compare as duas escritas e marque o lugar em que o modelo tem uma letra a mais.",
+        "Retirar o mapa.",
+        "Dizer que a palavra não pode ser lida."
+      ],
+      "correctAnswer": "Pedir que compare as duas escritas e marque o lugar em que o modelo tem uma letra a mais.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MAPA_DA_ESCOLA",
+      "explanation": "O apoio orienta uma comparação localizada e evita uma cópia mecânica sem reflexão.",
+      "hint": "Ajude a procurar o ponto em que as sequências deixam de coincidir.",
+      "errorFocus": "GUIDED_COMPARISON",
+      "feedback": {
+        "correct": "Boa análise: O apoio orienta uma comparação localizada e evita uma cópia mecânica sem reflexão.",
+        "incorrect": "O apoio orienta uma comparação localizada e evita uma cópia mecânica sem reflexão.",
+        "hint": "Ajude a procurar o ponto em que as sequências deixam de coincidir.",
+        "errorFocus": "GUIDED_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-23",
+      "statement": "Para revisar “COLA” numa lista de materiais, qual recurso pode ser usado?",
+      "prompt": "Para revisar “COLA” numa lista de materiais, qual recurso pode ser usado?",
+      "options": [
+        "Um dado sem letras.",
+        "Uma figura sem legenda.",
+        "Uma etiqueta ou lista convencional colocada ao lado da produção.",
+        "Um papel em branco escondido."
+      ],
+      "correctAnswer": "Uma etiqueta ou lista convencional colocada ao lado da produção.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LISTA_DE_MATERIAIS",
+      "explanation": "Uma referência convencional permite que a criança compare sua produção com uma escrita socialmente usada.",
+      "hint": "Escolha um modelo que contenha a mesma palavra.",
+      "errorFocus": "SELECT_REFERENCE",
+      "feedback": {
+        "correct": "Boa análise: Uma referência convencional permite que a criança compare sua produção com uma escrita socialmente usada.",
+        "incorrect": "Uma referência convencional permite que a criança compare sua produção com uma escrita socialmente usada.",
+        "hint": "Escolha um modelo que contenha a mesma palavra.",
+        "errorFocus": "SELECT_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-24",
+      "statement": "Duas crianças escreveram a mesma palavra de modos diferentes. Qual atitude do professor é adequada?",
+      "prompt": "Duas crianças escreveram a mesma palavra de modos diferentes. Qual atitude do professor é adequada?",
+      "options": [
+        "Escolher uma criança como melhor escritor.",
+        "Proibir que comparem.",
+        "Dizer que uma produção não tem valor.",
+        "Colocar as produções e o modelo lado a lado para investigar semelhanças e diferenças."
+      ],
+      "correctAnswer": "Colocar as produções e o modelo lado a lado para investigar semelhanças e diferenças.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PRODUCOES_DIFERENTES",
+      "explanation": "A comparação é uma investigação sobre a escrita, não uma classificação do valor das crianças.",
+      "hint": "Use o modelo e faça perguntas sobre o que cada produção mostra.",
+      "errorFocus": "RESPECTFUL_COMPARISON",
+      "feedback": {
+        "correct": "Boa análise: A comparação é uma investigação sobre a escrita, não uma classificação do valor das crianças.",
+        "incorrect": "A comparação é uma investigação sobre a escrita, não uma classificação do valor das crianças.",
+        "hint": "Use o modelo e faça perguntas sobre o que cada produção mostra.",
+        "errorFocus": "RESPECTFUL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-25",
+      "statement": "Qual frase descreve corretamente uma comparação entre “CASA” e “CASSA”?",
+      "prompt": "Qual frase descreve corretamente uma comparação entre “CASA” e “CASSA”?",
+      "options": [
+        "As duas têm C, A, S e A em posições relacionadas, mas uma apresenta um S a mais.",
+        "As duas são totalmente diferentes.",
+        "Nenhuma letra pode ser comparada.",
+        "A cor da folha decide a escrita."
+      ],
+      "correctAnswer": "As duas têm C, A, S e A em posições relacionadas, mas uma apresenta um S a mais.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SIMILARIDADE_E_DIFERENCA",
+      "explanation": "Uma boa comparação registra simultaneamente o que coincide e o que difere.",
+      "hint": "Procure letras compartilhadas e depois observe a letra adicional.",
+      "errorFocus": "BALANCE_SIMILARITY_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa análise: Uma boa comparação registra simultaneamente o que coincide e o que difere.",
+        "incorrect": "Uma boa comparação registra simultaneamente o que coincide e o que difere.",
+        "hint": "Procure letras compartilhadas e depois observe a letra adicional.",
+        "errorFocus": "BALANCE_SIMILARITY_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-26",
+      "statement": "Por que o modelo convencional pode ajudar a revisar uma produção?",
+      "prompt": "Por que o modelo convencional pode ajudar a revisar uma produção?",
+      "options": [
+        "Porque substitui a criança como autora.",
+        "Porque permite observar quais letras e marcas aparecem ou faltam na comparação.",
+        "Porque serve apenas para decorar desenhos.",
+        "Porque impede qualquer tentativa própria."
+      ],
+      "correctAnswer": "Porque permite observar quais letras e marcas aparecem ou faltam na comparação.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MODELO_E_PRODUCAO",
+      "explanation": "O modelo é uma fonte de observação e reflexão, não uma substituição da autoria.",
+      "hint": "Pense no que a criança consegue descobrir ao colocar os textos lado a lado.",
+      "errorFocus": "PURPOSE_OF_MODEL",
+      "feedback": {
+        "correct": "Boa análise: O modelo é uma fonte de observação e reflexão, não uma substituição da autoria.",
+        "incorrect": "O modelo é uma fonte de observação e reflexão, não uma substituição da autoria.",
+        "hint": "Pense no que a criança consegue descobrir ao colocar os textos lado a lado.",
+        "errorFocus": "PURPOSE_OF_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-27",
+      "statement": "Qual registro evita transformar uma observação em julgamento?",
+      "prompt": "Qual registro evita transformar uma observação em julgamento?",
+      "options": [
+        "“A criança é desatenta.”",
+        "“A escrita é feia.”",
+        "“Na produção aparece PATO; no modelo aparece PATO; as letras coincidem.”",
+        "“Ela não aprende.”"
+      ],
+      "correctAnswer": "“Na produção aparece PATO; no modelo aparece PATO; as letras coincidem.”",
+      "answerPosition": "C",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESCRICAO_SEM_JULGAMENTO",
+      "explanation": "O registro descreve evidências da produção e não atribui características pessoais à criança.",
+      "hint": "Escolha uma frase que fale das letras, não da pessoa.",
+      "errorFocus": "EVIDENCE_NOT_LABEL",
+      "feedback": {
+        "correct": "Boa análise: O registro descreve evidências da produção e não atribui características pessoais à criança.",
+        "incorrect": "O registro descreve evidências da produção e não atribui características pessoais à criança.",
+        "hint": "Escolha uma frase que fale das letras, não da pessoa.",
+        "errorFocus": "EVIDENCE_NOT_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-28",
+      "statement": "Depois de comparar “SAPO” com “SPO”, qual próximo passo favorece a aprendizagem?",
+      "prompt": "Depois de comparar “SAPO” com “SPO”, qual próximo passo favorece a aprendizagem?",
+      "options": [
+        "Apagar a palavra definitivamente.",
+        "Copiar sem saber o que mudou.",
+        "Ignorar a diferença.",
+        "Voltar ao modelo, localizar a letra ausente e decidir como registrar uma nova tentativa."
+      ],
+      "correctAnswer": "Voltar ao modelo, localizar a letra ausente e decidir como registrar uma nova tentativa.",
+      "answerPosition": "D",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AUTO_REVISAO",
+      "explanation": "A comparação deve orientar uma nova hipótese de escrita e uma revisão consciente.",
+      "hint": "Use a diferença localizada para planejar uma nova tentativa.",
+      "errorFocus": "USE_COMPARISON_TO_REVISE",
+      "feedback": {
+        "correct": "Boa análise: A comparação deve orientar uma nova hipótese de escrita e uma revisão consciente.",
+        "incorrect": "A comparação deve orientar uma nova hipótese de escrita e uma revisão consciente.",
+        "hint": "Use a diferença localizada para planejar uma nova tentativa.",
+        "errorFocus": "USE_COMPARISON_TO_REVISE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-29",
+      "statement": "O que não é possível concluir apenas comparando uma palavra escrita uma vez?",
+      "prompt": "O que não é possível concluir apenas comparando uma palavra escrita uma vez?",
+      "options": [
+        "Não é possível diagnosticar sozinho a aprendizagem ou a causa da diferença.",
+        "É possível ver quais letras aparecem.",
+        "É possível registrar diferenças visíveis.",
+        "É possível comparar a ordem."
+      ],
+      "correctAnswer": "Não é possível diagnosticar sozinho a aprendizagem ou a causa da diferença.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LIMITES_DA_AMOSTRA",
+      "explanation": "Uma amostra permite observações locais, mas não autoriza conclusões amplas sobre a criança.",
+      "hint": "Separe o que está visível do que exigiria outras evidências e mediação.",
+      "errorFocus": "LIMIT_INFERENCE",
+      "feedback": {
+        "correct": "Boa análise: Uma amostra permite observações locais, mas não autoriza conclusões amplas sobre a criança.",
+        "incorrect": "Uma amostra permite observações locais, mas não autoriza conclusões amplas sobre a criança.",
+        "hint": "Separe o que está visível do que exigiria outras evidências e mediação.",
+        "errorFocus": "LIMIT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-30",
+      "statement": "Qual plano usa a comparação para apoiar uma nova produção?",
+      "prompt": "Qual plano usa a comparação para apoiar uma nova produção?",
+      "options": [
+        "Copiar sem olhar.",
+        "Observar o modelo, escolher uma diferença para investigar e tentar novamente explicando a mudança.",
+        "Apagar sem conversar.",
+        "Escolher letras pelo tamanho do papel."
+      ],
+      "correctAnswer": "Observar o modelo, escolher uma diferença para investigar e tentar novamente explicando a mudança.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANO_DE_REVISAO",
+      "explanation": "A comparação é produtiva quando orienta uma hipótese e uma nova tentativa baseada em evidências.",
+      "hint": "Escolha uma diferença visível e transforme-a em uma pergunta.",
+      "errorFocus": "PLAN_REVISION_FROM_EVIDENCE",
+      "feedback": {
+        "correct": "Boa análise: A comparação é produtiva quando orienta uma hipótese e uma nova tentativa baseada em evidências.",
+        "incorrect": "A comparação é produtiva quando orienta uma hipótese e uma nova tentativa baseada em evidências.",
+        "hint": "Escolha uma diferença visível e transforme-a em uma pergunta.",
+        "errorFocus": "PLAN_REVISION_FROM_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-31",
+      "statement": "O modelo “LUCA” e a produção “LUCA” têm o que em comum?",
+      "prompt": "O modelo “LUCA” e a produção “LUCA” têm o que em comum?",
+      "options": [
+        "Somente os desenhos coincidem.",
+        "Nenhuma letra coincide.",
+        "As letras e a ordem coincidem.",
+        "A produção tem apenas sinais não alfabéticos."
+      ],
+      "correctAnswer": "As letras e a ordem coincidem.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_NOME_LUCA",
+      "explanation": "A coincidência pode ser verificada diretamente no modelo e na produção.",
+      "hint": "Leia as duas escritas da esquerda para a direita.",
+      "errorFocus": "REVIEW_EXACT_MATCH",
+      "feedback": {
+        "correct": "Boa análise: A coincidência pode ser verificada diretamente no modelo e na produção.",
+        "incorrect": "A coincidência pode ser verificada diretamente no modelo e na produção.",
+        "hint": "Leia as duas escritas da esquerda para a direita.",
+        "errorFocus": "REVIEW_EXACT_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-32",
+      "statement": "O modelo “PEIXE” e a tentativa “PEXE” mostram qual diferença?",
+      "prompt": "O modelo “PEIXE” e a tentativa “PEXE” mostram qual diferença?",
+      "options": [
+        "A tentativa tem números.",
+        "O modelo não tem letras.",
+        "Todas as letras são diferentes.",
+        "A tentativa não apresenta a letra I que aparece no modelo."
+      ],
+      "correctAnswer": "A tentativa não apresenta a letra I que aparece no modelo.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVISAO_PEIXE",
+      "explanation": "A comparação localiza uma letra presente no modelo e ausente na tentativa.",
+      "hint": "Compare a sequência e encontre a letra que não aparece.",
+      "errorFocus": "REVIEW_MISSING_LETTER",
+      "feedback": {
+        "correct": "Boa análise: A comparação localiza uma letra presente no modelo e ausente na tentativa.",
+        "incorrect": "A comparação localiza uma letra presente no modelo e ausente na tentativa.",
+        "hint": "Compare a sequência e encontre a letra que não aparece.",
+        "errorFocus": "REVIEW_MISSING_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-33",
+      "statement": "Para comparar “CADERNO” e “CADENO”, qual parte deve ser conferida?",
+      "prompt": "Para comparar “CADERNO” e “CADENO”, qual parte deve ser conferida?",
+      "options": [
+        "O trecho depois de CA, onde o modelo apresenta R antes do N.",
+        "A cor do caderno.",
+        "O tamanho da carteira.",
+        "O número de páginas."
+      ],
+      "correctAnswer": "O trecho depois de CA, onde o modelo apresenta R antes do N.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_CADERNO",
+      "explanation": "A diferença está na sequência interna e pode ser apontada com o modelo visível.",
+      "hint": "Passe o dedo pelas letras até encontrar o primeiro ponto diferente.",
+      "errorFocus": "REVIEW_INTERNAL_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa análise: A diferença está na sequência interna e pode ser apontada com o modelo visível.",
+        "incorrect": "A diferença está na sequência interna e pode ser apontada com o modelo visível.",
+        "hint": "Passe o dedo pelas letras até encontrar o primeiro ponto diferente.",
+        "errorFocus": "REVIEW_INTERNAL_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-34",
+      "statement": "Na placa “PARE”, a criança escreveu “PARE”. Qual evidência apoia a comparação?",
+      "prompt": "Na placa “PARE”, a criança escreveu “PARE”. Qual evidência apoia a comparação?",
+      "options": [
+        "Os papéis têm o mesmo formato.",
+        "As quatro letras aparecem na mesma ordem.",
+        "A palavra é uma figura.",
+        "A produção não tem letras."
+      ],
+      "correctAnswer": "As quatro letras aparecem na mesma ordem.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVISAO_PLACA",
+      "explanation": "A evidência é formada pela identidade e pela ordem das letras.",
+      "hint": "Conte e compare as letras, não o papel.",
+      "errorFocus": "REVIEW_EVIDENCE",
+      "feedback": {
+        "correct": "Boa análise: A evidência é formada pela identidade e pela ordem das letras.",
+        "incorrect": "A evidência é formada pela identidade e pela ordem das letras.",
+        "hint": "Conte e compare as letras, não o papel.",
+        "errorFocus": "REVIEW_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-35",
+      "statement": "O modelo “MESA” e a produção “MEZA” têm quais semelhanças?",
+      "prompt": "O modelo “MESA” e a produção “MEZA” têm quais semelhanças?",
+      "options": [
+        "Começam com ZA.",
+        "Não compartilham letras.",
+        "Começam com ME e terminam com A.",
+        "São formadas apenas por números."
+      ],
+      "correctAnswer": "Começam com ME e terminam com A.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_MESA",
+      "explanation": "Uma comparação pode identificar trechos comuns mesmo quando uma letra difere.",
+      "hint": "Observe o começo e o fim antes de olhar a diferença central.",
+      "errorFocus": "REVIEW_SHARED_PARTS",
+      "feedback": {
+        "correct": "Boa análise: Uma comparação pode identificar trechos comuns mesmo quando uma letra difere.",
+        "incorrect": "Uma comparação pode identificar trechos comuns mesmo quando uma letra difere.",
+        "hint": "Observe o começo e o fim antes de olhar a diferença central.",
+        "errorFocus": "REVIEW_SHARED_PARTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-36",
+      "statement": "Qual ação ajuda a revisar a palavra “BONECA” numa lista convencional?",
+      "prompt": "Qual ação ajuda a revisar a palavra “BONECA” numa lista convencional?",
+      "options": [
+        "Copiar sem consultar.",
+        "Cobrir o modelo.",
+        "Mudar o assunto para um desenho.",
+        "Colocar a lista ao lado, localizar cada parte e fazer nova tentativa se necessário."
+      ],
+      "correctAnswer": "Colocar a lista ao lado, localizar cada parte e fazer nova tentativa se necessário.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_LISTA",
+      "explanation": "O procedimento usa o modelo para observar, refletir e revisar.",
+      "hint": "Mantenha a lista acessível durante a comparação.",
+      "errorFocus": "REVIEW_PROCESS",
+      "feedback": {
+        "correct": "Boa análise: O procedimento usa o modelo para observar, refletir e revisar.",
+        "incorrect": "O procedimento usa o modelo para observar, refletir e revisar.",
+        "hint": "Mantenha a lista acessível durante a comparação.",
+        "errorFocus": "REVIEW_PROCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-37",
+      "statement": "O modelo “MEU GATO” e a produção “MEUGATO” diferem em quê?",
+      "prompt": "O modelo “MEU GATO” e a produção “MEUGATO” diferem em quê?",
+      "options": [
+        "O modelo tem um espaço entre as duas palavras.",
+        "O modelo não possui letras.",
+        "A produção tem duas imagens.",
+        "Todas as letras mudaram."
+      ],
+      "correctAnswer": "O modelo tem um espaço entre as duas palavras.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_ESPACOS",
+      "explanation": "O espaço é uma marca visível que diferencia a organização das duas escritas.",
+      "hint": "Compare o lugar entre MEU e GATO.",
+      "errorFocus": "REVIEW_WORD_BOUNDARY",
+      "feedback": {
+        "correct": "Boa análise: O espaço é uma marca visível que diferencia a organização das duas escritas.",
+        "incorrect": "O espaço é uma marca visível que diferencia a organização das duas escritas.",
+        "hint": "Compare o lugar entre MEU e GATO.",
+        "errorFocus": "REVIEW_WORD_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-38",
+      "statement": "Qual comentário ajuda a criança a continuar a comparação?",
+      "prompt": "Qual comentário ajuda a criança a continuar a comparação?",
+      "options": [
+        "“Está tudo errado.”",
+        "“Você encontrou as letras iguais; agora vamos procurar onde a sequência muda.”",
+        "“Não olhe o modelo.”",
+        "“Deixe outra pessoa fazer.”"
+      ],
+      "correctAnswer": "“Você encontrou as letras iguais; agora vamos procurar onde a sequência muda.”",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_FEEDBACK",
+      "explanation": "O comentário valoriza a evidência encontrada e orienta uma próxima observação.",
+      "hint": "Escolha um comentário que indique o próximo ponto de comparação.",
+      "errorFocus": "REVIEW_FEEDBACK",
+      "feedback": {
+        "correct": "Boa análise: O comentário valoriza a evidência encontrada e orienta uma próxima observação.",
+        "incorrect": "O comentário valoriza a evidência encontrada e orienta uma próxima observação.",
+        "hint": "Escolha um comentário que indique o próximo ponto de comparação.",
+        "errorFocus": "REVIEW_FEEDBACK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-39",
+      "statement": "Como uma criança que prefere responder oralmente pode mostrar a comparação?",
+      "prompt": "Como uma criança que prefere responder oralmente pode mostrar a comparação?",
+      "options": [
+        "Ficar sem participar.",
+        "Ser avaliada apenas pela cópia rápida.",
+        "Apontar ou dizer quais partes coincidem e quais diferem, com o modelo acessível.",
+        "Trocar a atividade por um desenho sem escrita."
+      ],
+      "correctAnswer": "Apontar ou dizer quais partes coincidem e quais diferem, com o modelo acessível.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_ACESSIVEL",
+      "explanation": "A resposta oral ou apontada mantém o objetivo de observar escritas e amplia o acesso.",
+      "hint": "O importante é demonstrar a comparação, não usar uma única forma de resposta.",
+      "errorFocus": "REVIEW_ACCESS",
+      "feedback": {
+        "correct": "Boa análise: A resposta oral ou apontada mantém o objetivo de observar escritas e amplia o acesso.",
+        "incorrect": "A resposta oral ou apontada mantém o objetivo de observar escritas e amplia o acesso.",
+        "hint": "O importante é demonstrar a comparação, não usar uma única forma de resposta.",
+        "errorFocus": "REVIEW_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-conventional-writing-fi-40",
+      "statement": "Qual conclusão é adequada após comparar uma produção com um único modelo?",
+      "prompt": "Qual conclusão é adequada após comparar uma produção com um único modelo?",
+      "options": [
+        "“A criança sempre escreverá assim.”",
+        "“A criança não aprende.”",
+        "“Uma palavra prova tudo.”",
+        "“Nesta produção, observamos estas semelhanças e estas diferenças.”"
+      ],
+      "correctAnswer": "“Nesta produção, observamos estas semelhanças e estas diferenças.”",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_CONCLUSAO",
+      "explanation": "A conclusão deve ficar limitada à evidência da produção observada.",
+      "hint": "Use palavras que descrevam esta amostra, sem generalizar.",
+      "errorFocus": "REVIEW_LIMITS",
+      "feedback": {
+        "correct": "Boa análise: A conclusão deve ficar limitada à evidência da produção observada.",
+        "incorrect": "A conclusão deve ficar limitada à evidência da produção observada.",
+        "hint": "Use palavras que descrevam esta amostra, sem generalizar.",
+        "errorFocus": "REVIEW_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Comparação de cartazes</title>
+  <desc id="desc">O cartaz A apresenta FEIRA em letras grandes azul-escuras sobre amarelo. O cartaz B apresenta FEIRA em letras menores cinza-claras sobre branco.</desc>
+  <rect width="600" height="360" fill="#f2f0e8"/>
+  <rect x="38" y="30" width="250" height="300" rx="9" fill="#f3c65f" stroke="#253e4e" stroke-width="5"/>
+  <text x="163" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#18384e">FEIRA</text>
+  <text x="163" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#18384e">livros e trocas</text>
+  <rect x="312" y="30" width="250" height="300" rx="9" fill="#fff" stroke="#aeb7b5" stroke-width="5"/>
+  <text x="437" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="500" fill="#c8cbca">FEIRA</text>
+  <text x="437" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c8cbca">livros e trocas</text>
+  <text x="163" y="57" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#18384e">A</text>
+  <text x="437" y="57" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#596a6a">B</text>
+</svg>

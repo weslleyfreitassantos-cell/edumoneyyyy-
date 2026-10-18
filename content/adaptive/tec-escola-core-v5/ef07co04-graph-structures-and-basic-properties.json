@@ -1,0 +1,2121 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef07co04-graph-structures-and-basic-properties",
+  "canonicalSkillCode": "AUTHORING_EF07CO04_GRAPH_STRUCTURES_AND_BASIC_PROPERTIES",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO COMPUTACIONAL",
+  "topic": "representação e propriedades básicas de grafos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF07CO04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Explorar propriedades básicas de grafos.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 46
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Nós, conexões e caminhos",
+    "objective": "Representar situações simples como grafos e interpretar vértices, arestas, grau, caminhos, ciclos e conectividade usando a legenda do modelo.",
+    "summary": "Um grafo é formado por vértices (pontos que representam elementos) e arestas (ligações entre eles). Um mapa de trilhas, uma rede de computadores ou uma sequência de relações pode ser representado dessa maneira, se a legenda disser o que os pontos e ligações significam. Em um grafo não direcionado, a ligação pode ser percorrida nos dois sentidos; em um direcionado, as setas registram orientação. O grau de um vértice não direcionado é o número de arestas ligadas a ele. Um caminho segue arestas existentes; um ciclo retorna ao vértice inicial. Um grafo é conexo quando existe caminho entre cada par de vértices.",
+    "explanation": "Comece com um conjunto pequeno de elementos e escreva o que cada vértice representa. Desenhe apenas as relações que existem e indique com legenda se as arestas são direcionadas, não direcionadas ou têm peso. Leia as propriedades a partir do desenho: conte as arestas que incidem num vértice para encontrar seu grau; trace uma sequência de arestas para verificar um caminho; confira se o percurso fecha para identificar um ciclo. Não invente uma ligação só porque dois pontos aparecem perto no papel. Em um grafo com pesos, como distância ou tempo, use o significado e a unidade definidos na legenda.",
+    "workedExample": "Uma rede fictícia tem quatro salas A, B, C e D e trilhas A–B, B–C e C–A. Cada letra é um vértice e cada trilha é uma aresta não direcionada. O grau de B é 2. A sequência A–B–C é um caminho; A–B–C–A é um ciclo. D não tem ligação, então o grafo inteiro não é conexo.",
+    "commonMistake": "Confundir pontos desenhados próximos com vértices conectados, contar vértices em vez de arestas ao calcular grau, ou ignorar setas e pesos indicados pela legenda.",
+    "priorKnowledge": [
+      "Interpretar pontos e linhas em um desenho simples.",
+      "Contar elementos e seguir uma sequência de instruções.",
+      "Usar uma legenda para entender o significado de símbolos."
+    ],
+    "keyConcepts": [
+      "grafo",
+      "vértice",
+      "aresta",
+      "grau",
+      "caminho",
+      "ciclo",
+      "conectividade",
+      "direção",
+      "peso"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "VERTEX_EDGE_SWAP",
+        "action": "Aponte primeiro para os objetos representados e chame-os de vértices; depois aponte para as relações e chame-as de arestas."
+      },
+      {
+        "errorFocus": "DEGREE_MISCOUNT",
+        "action": "Escolha um vértice e marque cada aresta que chega nele uma única vez; some as marcas, não os vizinhos no desenho."
+      },
+      {
+        "errorFocus": "PATH_WITHOUT_EDGE",
+        "action": "Trace o percurso aresta por aresta e confira a legenda; se dois vértices não têm aresta, não há passo direto entre eles."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+      "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+      "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+      "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co04-campus-route-graph",
+        "title": "Mapa fictício de caminhos escolares",
+        "instructions": "Um mapa inventado mostra seis espaços públicos da escola e caminhos permitidos entre eles.\n1. Defina em uma legenda o que representam vértices e arestas.\n2. Desenhe as ligações fornecidas sem acrescentar conexões por proximidade visual.\n3. Calcule o grau de dois vértices e encontre um caminho; verifique se há um ciclo.",
+        "steps": [
+          "Defina em uma legenda o que representam vértices e arestas.",
+          "Desenhe as ligações fornecidas sem acrescentar conexões por proximidade visual.",
+          "Calcule o grau de dois vértices e encontre um caminho; verifique se há um ciclo."
+        ],
+        "evidence": "Grafo rotulado com legenda, grau calculado e caminho/ciclo justificados por arestas.",
+        "privacyGuard": "Usar mapa fictício e não marcar salas reais, rotas individuais ou horários de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece pontos, mas mistura vértices e ligações.",
+            "developing": "monta o grafo com legenda e encontra um caminho com apoio.",
+            "proficient": "interpreta grau e ciclo e justifica a conectividade usando as arestas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co04-community-network-model",
+        "title": "Rede de troca de livros fictícia",
+        "instructions": "Cartões representam quatro bibliotecas imaginárias; linhas indicam parcerias de troca, sem dados de usuários.\n1. Represente bibliotecas como vértices e parcerias existentes como arestas.\n2. Compare o grau de duas bibliotecas e identifique uma que esteja isolada, se houver.\n3. Proponha uma ligação hipotética e explique qual propriedade mudaria.",
+        "steps": [
+          "Represente bibliotecas como vértices e parcerias existentes como arestas.",
+          "Compare o grau de duas bibliotecas e identifique uma que esteja isolada, se houver.",
+          "Proponha uma ligação hipotética e explique qual propriedade mudaria."
+        ],
+        "evidence": "Modelo antes/depois com uma proposta claramente identificada como hipotética e explicação da propriedade alterada.",
+        "privacyGuard": "Não usar nomes de pessoas, empréstimos reais nem localizações particulares.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "desenha ligações sem explicar o significado.",
+            "developing": "usa a legenda e compara graus com suporte.",
+            "proficient": "relaciona a ligação proposta à conectividade ou ao grau, distinguindo dados de hipótese."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef07co04-graph-structures-and-basic-properties-01",
+          "v1-ef07co04-graph-structures-and-basic-properties-02",
+          "v1-ef07co04-graph-structures-and-basic-properties-03",
+          "v1-ef07co04-graph-structures-and-basic-properties-04",
+          "v1-ef07co04-graph-structures-and-basic-properties-05",
+          "v1-ef07co04-graph-structures-and-basic-properties-06",
+          "v1-ef07co04-graph-structures-and-basic-properties-07",
+          "v1-ef07co04-graph-structures-and-basic-properties-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef07co04-graph-structures-and-basic-properties-09",
+          "v1-ef07co04-graph-structures-and-basic-properties-10",
+          "v1-ef07co04-graph-structures-and-basic-properties-11",
+          "v1-ef07co04-graph-structures-and-basic-properties-12",
+          "v1-ef07co04-graph-structures-and-basic-properties-13",
+          "v1-ef07co04-graph-structures-and-basic-properties-14",
+          "v1-ef07co04-graph-structures-and-basic-properties-15",
+          "v1-ef07co04-graph-structures-and-basic-properties-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef07co04-graph-structures-and-basic-properties-17",
+          "v1-ef07co04-graph-structures-and-basic-properties-18",
+          "v1-ef07co04-graph-structures-and-basic-properties-19",
+          "v1-ef07co04-graph-structures-and-basic-properties-20",
+          "v1-ef07co04-graph-structures-and-basic-properties-21",
+          "v1-ef07co04-graph-structures-and-basic-properties-22",
+          "v1-ef07co04-graph-structures-and-basic-properties-23",
+          "v1-ef07co04-graph-structures-and-basic-properties-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef07co04-graph-structures-and-basic-properties-25",
+          "v1-ef07co04-graph-structures-and-basic-properties-26",
+          "v1-ef07co04-graph-structures-and-basic-properties-27",
+          "v1-ef07co04-graph-structures-and-basic-properties-28",
+          "v1-ef07co04-graph-structures-and-basic-properties-29",
+          "v1-ef07co04-graph-structures-and-basic-properties-30",
+          "v1-ef07co04-graph-structures-and-basic-properties-31",
+          "v1-ef07co04-graph-structures-and-basic-properties-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef07co04-graph-structures-and-basic-properties-33",
+          "v1-ef07co04-graph-structures-and-basic-properties-34",
+          "v1-ef07co04-graph-structures-and-basic-properties-35",
+          "v1-ef07co04-graph-structures-and-basic-properties-36",
+          "v1-ef07co04-graph-structures-and-basic-properties-37",
+          "v1-ef07co04-graph-structures-and-basic-properties-38",
+          "v1-ef07co04-graph-structures-and-basic-properties-39",
+          "v1-ef07co04-graph-structures-and-basic-properties-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF07CO04",
+        "descriptor": "Explorar propriedades básicas de grafos.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 46
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-01",
+      "statement": "Num grafo de bibliotecas, o que pode ser representado por cada vértice?",
+      "prompt": "Num grafo de bibliotecas, o que pode ser representado por cada vértice?",
+      "options": [
+        "Uma biblioteca",
+        "Uma ligação entre duas bibliotecas",
+        "A distância da folha ao quadro",
+        "A legenda inteira"
+      ],
+      "correctAnswer": "Uma biblioteca",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma ligação entre duas bibliotecas": [
+          "VERTEX_AS_EDGE"
+        ],
+        "A distância da folha ao quadro": [
+          "VERTEX_AS_EDGE"
+        ],
+        "A legenda inteira": [
+          "VERTEX_AS_EDGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_GRAPH_VERTICES",
+      "explanation": "Vértices representam elementos, como bibliotecas.",
+      "hint": "Pense nos pontos do desenho.",
+      "errorFocus": "VERTEX_AS_EDGE",
+      "feedback": {
+        "correct": "Boa observação: Vértices representam elementos, como bibliotecas.",
+        "incorrect": "Vértices representam elementos, como bibliotecas.",
+        "hint": "Pense nos pontos do desenho.",
+        "errorFocus": "VERTEX_AS_EDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-02",
+      "statement": "No mapa em grafo, o que representa uma aresta?",
+      "prompt": "No mapa em grafo, o que representa uma aresta?",
+      "options": [
+        "O nome de um vértice",
+        "Uma conexão ou relação entre dois vértices",
+        "Uma coleção de horários",
+        "O tamanho do papel"
+      ],
+      "correctAnswer": "Uma conexão ou relação entre dois vértices",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome de um vértice": [
+          "EDGE_AS_VERTEX"
+        ],
+        "Uma coleção de horários": [
+          "EDGE_AS_VERTEX"
+        ],
+        "O tamanho do papel": [
+          "EDGE_AS_VERTEX"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROUTE_GRAPH_EDGES",
+      "explanation": "A aresta representa uma ligação definida entre elementos.",
+      "hint": "Observe as linhas que unem os pontos.",
+      "errorFocus": "EDGE_AS_VERTEX",
+      "feedback": {
+        "correct": "Boa observação: A aresta representa uma ligação definida entre elementos.",
+        "incorrect": "A aresta representa uma ligação definida entre elementos.",
+        "hint": "Observe as linhas que unem os pontos.",
+        "errorFocus": "EDGE_AS_VERTEX"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-03",
+      "statement": "Se existe uma aresta direta entre P e Q, o que o desenho permite afirmar?",
+      "prompt": "Se existe uma aresta direta entre P e Q, o que o desenho permite afirmar?",
+      "options": [
+        "Todos os vértices estão conectados",
+        "Existe necessariamente um ciclo",
+        "Há uma ligação direta entre P e Q segundo a legenda",
+        "P e Q têm o mesmo significado"
+      ],
+      "correctAnswer": "Há uma ligação direta entre P e Q segundo a legenda",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os vértices estão conectados": [
+          "EDGE_OVERGENERALIZATION"
+        ],
+        "Existe necessariamente um ciclo": [
+          "EDGE_OVERGENERALIZATION"
+        ],
+        "P e Q têm o mesmo significado": [
+          "EDGE_OVERGENERALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "TWO_PATHS",
+      "explanation": "Uma aresta informa uma conexão específica, não propriedades de todo o grafo.",
+      "hint": "Limite a conclusão à linha observada.",
+      "errorFocus": "EDGE_OVERGENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Uma aresta informa uma conexão específica, não propriedades de todo o grafo.",
+        "incorrect": "Uma aresta informa uma conexão específica, não propriedades de todo o grafo.",
+        "hint": "Limite a conclusão à linha observada.",
+        "errorFocus": "EDGE_OVERGENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-04",
+      "statement": "Uma aresta sem seta liga A a B e a legenda diz que a relação é de mão dupla. Como interpretar?",
+      "prompt": "Uma aresta sem seta liga A a B e a legenda diz que a relação é de mão dupla. Como interpretar?",
+      "options": [
+        "Só existe um sentido secreto",
+        "Não há conexão",
+        "O desenho é uma lista de valores",
+        "A ligação pode ser percorrida de A para B e de B para A"
+      ],
+      "correctAnswer": "A ligação pode ser percorrida de A para B e de B para A",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só existe um sentido secreto": [
+          "IGNORE_UNDIRECTED_LEGEND"
+        ],
+        "Não há conexão": [
+          "IGNORE_UNDIRECTED_LEGEND"
+        ],
+        "O desenho é uma lista de valores": [
+          "IGNORE_UNDIRECTED_LEGEND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "UNDIRECTED_BRIDGE",
+      "explanation": "Sem direção e com legenda de mão dupla, a relação vale nos dois sentidos.",
+      "hint": "Leia a explicação da aresta.",
+      "errorFocus": "IGNORE_UNDIRECTED_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: Sem direção e com legenda de mão dupla, a relação vale nos dois sentidos.",
+        "incorrect": "Sem direção e com legenda de mão dupla, a relação vale nos dois sentidos.",
+        "hint": "Leia a explicação da aresta.",
+        "errorFocus": "IGNORE_UNDIRECTED_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-05",
+      "statement": "No desenho, três arestas chegam ao vértice X. Qual é o grau de X num grafo não direcionado?",
+      "prompt": "No desenho, três arestas chegam ao vértice X. Qual é o grau de X num grafo não direcionado?",
+      "options": [
+        "3",
+        "1",
+        "4",
+        "O número de vértices no papel"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "A",
+      "misconceptions": {
+        "1": [
+          "DEGREE_COUNT"
+        ],
+        "4": [
+          "DEGREE_COUNT"
+        ],
+        "O número de vértices no papel": [
+          "DEGREE_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "NODE_DEGREE_STAR",
+      "explanation": "O grau conta arestas incidentes ao vértice.",
+      "hint": "Conte as linhas ligadas a X.",
+      "errorFocus": "DEGREE_COUNT",
+      "feedback": {
+        "correct": "Boa observação: O grau conta arestas incidentes ao vértice.",
+        "incorrect": "O grau conta arestas incidentes ao vértice.",
+        "hint": "Conte as linhas ligadas a X.",
+        "errorFocus": "DEGREE_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-06",
+      "statement": "O que é um caminho no grafo?",
+      "prompt": "O que é um caminho no grafo?",
+      "options": [
+        "Uma lista de pontos sem ligações",
+        "Uma sequência de vértices conectados por arestas",
+        "Uma seta que termina antes de começar",
+        "Uma coleção sem relação"
+      ],
+      "correctAnswer": "Uma sequência de vértices conectados por arestas",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista de pontos sem ligações": [
+          "PATH_WITHOUT_EDGE"
+        ],
+        "Uma seta que termina antes de começar": [
+          "PATH_WITHOUT_EDGE"
+        ],
+        "Uma coleção sem relação": [
+          "PATH_WITHOUT_EDGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PATH_SEQUENCE",
+      "explanation": "Um caminho precisa seguir ligações existentes.",
+      "hint": "Verifique cada passo entre os vértices.",
+      "errorFocus": "PATH_WITHOUT_EDGE",
+      "feedback": {
+        "correct": "Boa observação: Um caminho precisa seguir ligações existentes.",
+        "incorrect": "Um caminho precisa seguir ligações existentes.",
+        "hint": "Verifique cada passo entre os vértices.",
+        "errorFocus": "PATH_WITHOUT_EDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-07",
+      "statement": "Qual característica define um ciclo simples?",
+      "prompt": "Qual característica define um ciclo simples?",
+      "options": [
+        "Um ponto sem ligação",
+        "Uma aresta que não tem vértices",
+        "Um percurso por arestas que retorna ao vértice inicial",
+        "Um caminho que não começa em lugar algum"
+      ],
+      "correctAnswer": "Um percurso por arestas que retorna ao vértice inicial",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um ponto sem ligação": [
+          "CYCLE_NO_RETURN"
+        ],
+        "Uma aresta que não tem vértices": [
+          "CYCLE_NO_RETURN"
+        ],
+        "Um caminho que não começa em lugar algum": [
+          "CYCLE_NO_RETURN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CYCLE_RETURN",
+      "explanation": "Um ciclo fecha o percurso no vértice de partida.",
+      "hint": "Veja onde o percurso termina.",
+      "errorFocus": "CYCLE_NO_RETURN",
+      "feedback": {
+        "correct": "Boa observação: Um ciclo fecha o percurso no vértice de partida.",
+        "incorrect": "Um ciclo fecha o percurso no vértice de partida.",
+        "hint": "Veja onde o percurso termina.",
+        "errorFocus": "CYCLE_NO_RETURN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-08",
+      "statement": "Um vértice não tem caminho até os demais. O que isso indica?",
+      "prompt": "Um vértice não tem caminho até os demais. O que isso indica?",
+      "options": [
+        "O vértice tem grau infinito",
+        "Todo par possui caminho",
+        "O vértice vira uma aresta",
+        "O grafo não é conexo"
+      ],
+      "correctAnswer": "O grafo não é conexo",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O vértice tem grau infinito": [
+          "ISOLATED_GRAPH"
+        ],
+        "Todo par possui caminho": [
+          "ISOLATED_GRAPH"
+        ],
+        "O vértice vira uma aresta": [
+          "ISOLATED_GRAPH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DISCONNECTED_ISLAND",
+      "explanation": "A falta de caminho entre alguns pares torna o grafo desconexo.",
+      "hint": "Conectividade considera pares de vértices.",
+      "errorFocus": "ISOLATED_GRAPH",
+      "feedback": {
+        "correct": "Boa observação: A falta de caminho entre alguns pares torna o grafo desconexo.",
+        "incorrect": "A falta de caminho entre alguns pares torna o grafo desconexo.",
+        "hint": "Conectividade considera pares de vértices.",
+        "errorFocus": "ISOLATED_GRAPH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-09",
+      "statement": "No mapa fictício, a parada M se liga a N, O e P. Qual é o grau de M?",
+      "prompt": "No mapa fictício, a parada M se liga a N, O e P. Qual é o grau de M?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "A",
+      "misconceptions": {
+        "2": [
+          "COUNT_NEIGHBORS_NOT_EDGES"
+        ],
+        "4": [
+          "COUNT_NEIGHBORS_NOT_EDGES"
+        ],
+        "6": [
+          "COUNT_NEIGHBORS_NOT_EDGES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BUS_STOPS_DEGREE",
+      "explanation": "Há três arestas incidentes em M.",
+      "hint": "Conte as ligações que tocam M.",
+      "errorFocus": "COUNT_NEIGHBORS_NOT_EDGES",
+      "feedback": {
+        "correct": "Boa observação: Há três arestas incidentes em M.",
+        "incorrect": "Há três arestas incidentes em M.",
+        "hint": "Conte as ligações que tocam M.",
+        "errorFocus": "COUNT_NEIGHBORS_NOT_EDGES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-10",
+      "statement": "As arestas do mapa são A–B, B–C e C–D. Qual sequência forma um caminho de A a D?",
+      "prompt": "As arestas do mapa são A–B, B–C e C–D. Qual sequência forma um caminho de A a D?",
+      "options": [
+        "A–C–D sem ligação A–C",
+        "A–B–C–D",
+        "D–A sem ligação D–A",
+        "A–B–D sem ligação B–D"
+      ],
+      "correctAnswer": "A–B–C–D",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A–C–D sem ligação A–C": [
+          "INVENTED_EDGE"
+        ],
+        "D–A sem ligação D–A": [
+          "INVENTED_EDGE"
+        ],
+        "A–B–D sem ligação B–D": [
+          "INVENTED_EDGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ROOM_PATH_CHECK",
+      "explanation": "Cada passo do caminho precisa ter uma aresta correspondente.",
+      "hint": "Confira cada par consecutivo na lista de arestas.",
+      "errorFocus": "INVENTED_EDGE",
+      "feedback": {
+        "correct": "Boa observação: Cada passo do caminho precisa ter uma aresta correspondente.",
+        "incorrect": "Cada passo do caminho precisa ter uma aresta correspondente.",
+        "hint": "Confira cada par consecutivo na lista de arestas.",
+        "errorFocus": "INVENTED_EDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-11",
+      "statement": "Um grafo contém as arestas L–M, M–N e N–L. Que propriedade aparece?",
+      "prompt": "Um grafo contém as arestas L–M, M–N e N–L. Que propriedade aparece?",
+      "options": [
+        "O vértice L está isolado",
+        "Não existe caminho entre M e N",
+        "Há um ciclo L–M–N–L",
+        "As três linhas são vértices"
+      ],
+      "correctAnswer": "Há um ciclo L–M–N–L",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O vértice L está isolado": [
+          "CYCLE_MISREAD"
+        ],
+        "Não existe caminho entre M e N": [
+          "CYCLE_MISREAD"
+        ],
+        "As três linhas são vértices": [
+          "CYCLE_MISREAD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CYCLE_TRIANGLE",
+      "explanation": "As três arestas fecham um percurso que retorna ao começo.",
+      "hint": "Siga as três ligações até voltar ao início.",
+      "errorFocus": "CYCLE_MISREAD",
+      "feedback": {
+        "correct": "Boa observação: As três arestas fecham um percurso que retorna ao começo.",
+        "incorrect": "As três arestas fecham um percurso que retorna ao começo.",
+        "hint": "Siga as três ligações até voltar ao início.",
+        "errorFocus": "CYCLE_MISREAD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-12",
+      "statement": "Setas A→B e B→C mostram o que?",
+      "prompt": "Setas A→B e B→C mostram o que?",
+      "options": [
+        "As ligações são automaticamente bidirecionais",
+        "A e C são o mesmo vértice",
+        "Não há arestas",
+        "As relações seguem os sentidos indicados"
+      ],
+      "correctAnswer": "As relações seguem os sentidos indicados",
+      "answerPosition": "D",
+      "misconceptions": {
+        "As ligações são automaticamente bidirecionais": [
+          "IGNORE_DIRECTION"
+        ],
+        "A e C são o mesmo vértice": [
+          "IGNORE_DIRECTION"
+        ],
+        "Não há arestas": [
+          "IGNORE_DIRECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "DIRECTED_DELIVERY",
+      "explanation": "Setas indicam direção da relação representada.",
+      "hint": "Siga a ponta de cada seta.",
+      "errorFocus": "IGNORE_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: Setas indicam direção da relação representada.",
+        "incorrect": "Setas indicam direção da relação representada.",
+        "hint": "Siga a ponta de cada seta.",
+        "errorFocus": "IGNORE_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-13",
+      "statement": "Uma aresta marcada 2 km representa o quê quando a legenda define peso como distância?",
+      "prompt": "Uma aresta marcada 2 km representa o quê quando a legenda define peso como distância?",
+      "options": [
+        "A distância daquela ligação é 2 km",
+        "O grau do vértice é 2 km",
+        "Existem dois quilômetros de vértices",
+        "A aresta tem direção obrigatória"
+      ],
+      "correctAnswer": "A distância daquela ligação é 2 km",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O grau do vértice é 2 km": [
+          "WEIGHT_AS_DEGREE"
+        ],
+        "Existem dois quilômetros de vértices": [
+          "WEIGHT_AS_DEGREE"
+        ],
+        "A aresta tem direção obrigatória": [
+          "WEIGHT_AS_DEGREE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "WEIGHT_DISTANCE",
+      "explanation": "O peso tem o significado e a unidade definidos na legenda.",
+      "hint": "Veja o que a legenda diz que o número mede.",
+      "errorFocus": "WEIGHT_AS_DEGREE",
+      "feedback": {
+        "correct": "Boa observação: O peso tem o significado e a unidade definidos na legenda.",
+        "incorrect": "O peso tem o significado e a unidade definidos na legenda.",
+        "hint": "Veja o que a legenda diz que o número mede.",
+        "errorFocus": "WEIGHT_AS_DEGREE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-14",
+      "statement": "Um vértice C é a única ligação entre dois grupos de vértices. Se suas duas arestas forem removidas, o que pode ocorrer?",
+      "prompt": "Um vértice C é a única ligação entre dois grupos de vértices. Se suas duas arestas forem removidas, o que pode ocorrer?",
+      "options": [
+        "Todos os vértices viram um só",
+        "Os grupos podem ficar sem caminho entre si",
+        "O grafo passa a ser uma coleção de pesos",
+        "O número de vértices necessariamente aumenta"
+      ],
+      "correctAnswer": "Os grupos podem ficar sem caminho entre si",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os vértices viram um só": [
+          "CONNECTIVITY_IGNORE_BRIDGE"
+        ],
+        "O grafo passa a ser uma coleção de pesos": [
+          "CONNECTIVITY_IGNORE_BRIDGE"
+        ],
+        "O número de vértices necessariamente aumenta": [
+          "CONNECTIVITY_IGNORE_BRIDGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONNECTIVITY_BRIDGE",
+      "explanation": "Remover as ligações de ponte pode separar componentes do grafo.",
+      "hint": "Procure se sobra algum caminho entre os grupos.",
+      "errorFocus": "CONNECTIVITY_IGNORE_BRIDGE",
+      "feedback": {
+        "correct": "Boa observação: Remover as ligações de ponte pode separar componentes do grafo.",
+        "incorrect": "Remover as ligações de ponte pode separar componentes do grafo.",
+        "hint": "Procure se sobra algum caminho entre os grupos.",
+        "errorFocus": "CONNECTIVITY_IGNORE_BRIDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-15",
+      "statement": "Dois pontos aparecem muito próximos, mas não há linha nem regra que os conecte. O que se deve concluir?",
+      "prompt": "Dois pontos aparecem muito próximos, mas não há linha nem regra que os conecte. O que se deve concluir?",
+      "options": [
+        "A proximidade cria uma ligação automaticamente",
+        "Há sempre um ciclo entre pontos próximos",
+        "Não há aresta registrada entre eles",
+        "A legenda pode ser ignorada"
+      ],
+      "correctAnswer": "Não há aresta registrada entre eles",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A proximidade cria uma ligação automaticamente": [
+          "VISUAL_PROXIMITY_AS_EDGE"
+        ],
+        "Há sempre um ciclo entre pontos próximos": [
+          "VISUAL_PROXIMITY_AS_EDGE"
+        ],
+        "A legenda pode ser ignorada": [
+          "VISUAL_PROXIMITY_AS_EDGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CLOSE_DRAWING_NO_EDGE",
+      "explanation": "Uma conexão deve estar representada ou definida, não presumida pela posição.",
+      "hint": "A legenda ou a lista de arestas confirma a ligação?",
+      "errorFocus": "VISUAL_PROXIMITY_AS_EDGE",
+      "feedback": {
+        "correct": "Boa observação: Uma conexão deve estar representada ou definida, não presumida pela posição.",
+        "incorrect": "Uma conexão deve estar representada ou definida, não presumida pela posição.",
+        "hint": "A legenda ou a lista de arestas confirma a ligação?",
+        "errorFocus": "VISUAL_PROXIMITY_AS_EDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-16",
+      "statement": "Uma tabela lista as conexões X–Y e Y–Z. O que ela pode descrever?",
+      "prompt": "Uma tabela lista as conexões X–Y e Y–Z. O que ela pode descrever?",
+      "options": [
+        "Somente as coordenadas da página",
+        "O tipo de dado de cada palavra",
+        "Uma prova de que X e Z têm aresta direta",
+        "As arestas de um grafo"
+      ],
+      "correctAnswer": "As arestas de um grafo",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente as coordenadas da página": [
+          "ADJACENCY_TRANSITIVE"
+        ],
+        "O tipo de dado de cada palavra": [
+          "ADJACENCY_TRANSITIVE"
+        ],
+        "Uma prova de que X e Z têm aresta direta": [
+          "ADJACENCY_TRANSITIVE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GRAPH_VS_LIST",
+      "explanation": "A tabela informa as conexões listadas, sem criar ligações indiretas.",
+      "hint": "Quais pares aparecem explicitamente?",
+      "errorFocus": "ADJACENCY_TRANSITIVE",
+      "feedback": {
+        "correct": "Boa observação: A tabela informa as conexões listadas, sem criar ligações indiretas.",
+        "incorrect": "A tabela informa as conexões listadas, sem criar ligações indiretas.",
+        "hint": "Quais pares aparecem explicitamente?",
+        "errorFocus": "ADJACENCY_TRANSITIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-17",
+      "statement": "Um parque imaginário tem entradas A, B, C e D; trilhas A–B, B–C, C–D e D–A. Qual propriedade é verdadeira?",
+      "prompt": "Um parque imaginário tem entradas A, B, C e D; trilhas A–B, B–C, C–D e D–A. Qual propriedade é verdadeira?",
+      "options": [
+        "O grafo contém o ciclo A–B–C–D–A",
+        "A e C têm necessariamente uma trilha direta",
+        "B é isolado",
+        "Não há caminho entre A e D"
+      ],
+      "correctAnswer": "O grafo contém o ciclo A–B–C–D–A",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A e C têm necessariamente uma trilha direta": [
+          "CYCLE_AND_CHORD"
+        ],
+        "B é isolado": [
+          "CYCLE_AND_CHORD"
+        ],
+        "Não há caminho entre A e D": [
+          "CYCLE_AND_CHORD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MODEL",
+      "contextFamily": "PARK_PATHS",
+      "explanation": "O percurso fecha pelas quatro arestas; isso não cria diagonal A–C.",
+      "hint": "Trace as trilhas sem desenhar atalhos novos.",
+      "errorFocus": "CYCLE_AND_CHORD",
+      "feedback": {
+        "correct": "Boa observação: O percurso fecha pelas quatro arestas; isso não cria diagonal A–C.",
+        "incorrect": "O percurso fecha pelas quatro arestas; isso não cria diagonal A–C.",
+        "hint": "Trace as trilhas sem desenhar atalhos novos.",
+        "errorFocus": "CYCLE_AND_CHORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-18",
+      "statement": "Uma rede fictícia precisa permitir caminho entre todos os espaços. Qual teste ajuda?",
+      "prompt": "Uma rede fictícia precisa permitir caminho entre todos os espaços. Qual teste ajuda?",
+      "options": [
+        "Contar apenas o título do mapa",
+        "Verificar se cada par de vértices pode ser conectado seguindo arestas",
+        "Confirmar que todos os pontos têm a mesma cor",
+        "Verificar se há exatamente um vértice"
+      ],
+      "correctAnswer": "Verificar se cada par de vértices pode ser conectado seguindo arestas",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Contar apenas o título do mapa": [
+          "CONNECTIVITY_BY_APPEARANCE"
+        ],
+        "Confirmar que todos os pontos têm a mesma cor": [
+          "CONNECTIVITY_BY_APPEARANCE"
+        ],
+        "Verificar se há exatamente um vértice": [
+          "CONNECTIVITY_BY_APPEARANCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NETWORK_CONNECTIVITY_PLAN",
+      "explanation": "Conectividade é sobre existência de caminhos entre pares.",
+      "hint": "A cor informa relações ou apenas identifica grupos?",
+      "errorFocus": "CONNECTIVITY_BY_APPEARANCE",
+      "feedback": {
+        "correct": "Boa observação: Conectividade é sobre existência de caminhos entre pares.",
+        "incorrect": "Conectividade é sobre existência de caminhos entre pares.",
+        "hint": "A cor informa relações ou apenas identifica grupos?",
+        "errorFocus": "CONNECTIVITY_BY_APPEARANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-19",
+      "statement": "Num grafo direcionado, A→B e B→C existem, mas C→A não. Qual afirmação é segura?",
+      "prompt": "Num grafo direcionado, A→B e B→C existem, mas C→A não. Qual afirmação é segura?",
+      "options": [
+        "Toda aresta pode ser percorrida nos dois sentidos",
+        "A e C são diretamente adjacentes",
+        "Existe caminho dirigido de A a C, mas não se pode inferir C→A",
+        "Existe um ciclo dirigido A–B–C–A"
+      ],
+      "correctAnswer": "Existe caminho dirigido de A a C, mas não se pode inferir C→A",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda aresta pode ser percorrida nos dois sentidos": [
+          "DIRECTED_PATH_REVERSAL"
+        ],
+        "A e C são diretamente adjacentes": [
+          "DIRECTED_PATH_REVERSAL"
+        ],
+        "Existe um ciclo dirigido A–B–C–A": [
+          "DIRECTED_PATH_REVERSAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "GRAPH_DIRECTIONAL_TRANSFER",
+      "explanation": "Direção limita os percursos; caminhos não podem inverter setas sem regra.",
+      "hint": "Siga as setas na ordem indicada.",
+      "errorFocus": "DIRECTED_PATH_REVERSAL",
+      "feedback": {
+        "correct": "Boa observação: Direção limita os percursos; caminhos não podem inverter setas sem regra.",
+        "incorrect": "Direção limita os percursos; caminhos não podem inverter setas sem regra.",
+        "hint": "Siga as setas na ordem indicada.",
+        "errorFocus": "DIRECTED_PATH_REVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-20",
+      "statement": "Dois grafos têm os mesmos vértices, mas um tem ligação adicional A–D. O que pode mudar?",
+      "prompt": "Dois grafos têm os mesmos vértices, mas um tem ligação adicional A–D. O que pode mudar?",
+      "options": [
+        "Os rótulos dos vértices mudam obrigatoriamente",
+        "Toda aresta antiga desaparece",
+        "Os vértices deixam de ser elementos",
+        "Graus e caminhos podem mudar por causa da nova aresta"
+      ],
+      "correctAnswer": "Graus e caminhos podem mudar por causa da nova aresta",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os rótulos dos vértices mudam obrigatoriamente": [
+          "EDGE_ADDITION_NO_EFFECT"
+        ],
+        "Toda aresta antiga desaparece": [
+          "EDGE_ADDITION_NO_EFFECT"
+        ],
+        "Os vértices deixam de ser elementos": [
+          "EDGE_ADDITION_NO_EFFECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_MAPS_EDGE_COUNT",
+      "explanation": "Uma nova aresta pode alterar propriedades e conectar partes antes separadas.",
+      "hint": "Considere quais vértices recebem a nova ligação.",
+      "errorFocus": "EDGE_ADDITION_NO_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: Uma nova aresta pode alterar propriedades e conectar partes antes separadas.",
+        "incorrect": "Uma nova aresta pode alterar propriedades e conectar partes antes separadas.",
+        "hint": "Considere quais vértices recebem a nova ligação.",
+        "errorFocus": "EDGE_ADDITION_NO_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-21",
+      "statement": "Duas rotas ligam o mesmo ponto: pesos 5 min + 4 min numa rota e 6 min numa outra. Se o peso significa tempo, qual tem menor tempo total?",
+      "prompt": "Duas rotas ligam o mesmo ponto: pesos 5 min + 4 min numa rota e 6 min numa outra. Se o peso significa tempo, qual tem menor tempo total?",
+      "options": [
+        "A rota de 6 minutos",
+        "A rota de 9 minutos",
+        "As duas têm 15 minutos",
+        "Não é possível somar pesos de tempo"
+      ],
+      "correctAnswer": "A rota de 6 minutos",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A rota de 9 minutos": [
+          "WEIGHT_SUM"
+        ],
+        "As duas têm 15 minutos": [
+          "WEIGHT_SUM"
+        ],
+        "Não é possível somar pesos de tempo": [
+          "WEIGHT_SUM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "WEIGHTED_ROUTE_CHOICE",
+      "explanation": "Com pesos de tempo comparáveis, somamos as arestas de cada rota.",
+      "hint": "Some os pesos de cada percurso.",
+      "errorFocus": "WEIGHT_SUM",
+      "feedback": {
+        "correct": "Boa observação: Com pesos de tempo comparáveis, somamos as arestas de cada rota.",
+        "incorrect": "Com pesos de tempo comparáveis, somamos as arestas de cada rota.",
+        "hint": "Some os pesos de cada percurso.",
+        "errorFocus": "WEIGHT_SUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-22",
+      "statement": "Uma turma quer mostrar quais conjuntos fictícios compartilham material. Que escolha torna o modelo interpretável?",
+      "prompt": "Uma turma quer mostrar quais conjuntos fictícios compartilham material. Que escolha torna o modelo interpretável?",
+      "options": [
+        "Usar linhas sem dizer o que significam",
+        "Definir conjuntos como vértices e compartilhamentos como arestas na legenda",
+        "Criar conexões para todos os pares mesmo sem evidência",
+        "Esconder os vértices da atividade"
+      ],
+      "correctAnswer": "Definir conjuntos como vértices e compartilhamentos como arestas na legenda",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usar linhas sem dizer o que significam": [
+          "UNDEFINED_GRAPH_SEMANTICS"
+        ],
+        "Criar conexões para todos os pares mesmo sem evidência": [
+          "UNDEFINED_GRAPH_SEMANTICS"
+        ],
+        "Esconder os vértices da atividade": [
+          "UNDEFINED_GRAPH_SEMANTICS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "CLASS_NETWORK_GRAPH",
+      "explanation": "A legenda define a semântica dos vértices e arestas.",
+      "hint": "O que representa cada símbolo?",
+      "errorFocus": "UNDEFINED_GRAPH_SEMANTICS",
+      "feedback": {
+        "correct": "Boa observação: A legenda define a semântica dos vértices e arestas.",
+        "incorrect": "A legenda define a semântica dos vértices e arestas.",
+        "hint": "O que representa cada símbolo?",
+        "errorFocus": "UNDEFINED_GRAPH_SEMANTICS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-23",
+      "statement": "Antes, havia caminho entre P e R por Q. Ao remover as únicas arestas P–Q e Q–R, que conclusão segue se não há outra ligação?",
+      "prompt": "Antes, havia caminho entre P e R por Q. Ao remover as únicas arestas P–Q e Q–R, que conclusão segue se não há outra ligação?",
+      "options": [
+        "P e R continuam ligados pela proximidade no desenho",
+        "Q se transforma em aresta",
+        "P e R ficam em componentes sem caminho entre si",
+        "O grafo fica necessariamente completo"
+      ],
+      "correctAnswer": "P e R ficam em componentes sem caminho entre si",
+      "answerPosition": "C",
+      "misconceptions": {
+        "P e R continuam ligados pela proximidade no desenho": [
+          "COMPONENT_AFTER_REMOVAL"
+        ],
+        "Q se transforma em aresta": [
+          "COMPONENT_AFTER_REMOVAL"
+        ],
+        "O grafo fica necessariamente completo": [
+          "COMPONENT_AFTER_REMOVAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COMPONENTS_AFTER_CUT",
+      "explanation": "Sem ligação alternativa, a remoção interrompe o caminho entre os lados.",
+      "hint": "Procure outra sequência de arestas possível.",
+      "errorFocus": "COMPONENT_AFTER_REMOVAL",
+      "feedback": {
+        "correct": "Boa observação: Sem ligação alternativa, a remoção interrompe o caminho entre os lados.",
+        "incorrect": "Sem ligação alternativa, a remoção interrompe o caminho entre os lados.",
+        "hint": "Procure outra sequência de arestas possível.",
+        "errorFocus": "COMPONENT_AFTER_REMOVAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-24",
+      "statement": "Um mapa de pontos e linhas não mostra o tempo real de deslocamento. O que falta para comparar tempos?",
+      "prompt": "Um mapa de pontos e linhas não mostra o tempo real de deslocamento. O que falta para comparar tempos?",
+      "options": [
+        "Mais cores sem legenda",
+        "Apenas renomear os vértices",
+        "Remover todas as relações",
+        "Arestas com pesos definidos como tempo, com unidade e contexto"
+      ],
+      "correctAnswer": "Arestas com pesos definidos como tempo, com unidade e contexto",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mais cores sem legenda": [
+          "WEIGHT_UNDEFINED"
+        ],
+        "Apenas renomear os vértices": [
+          "WEIGHT_UNDEFINED"
+        ],
+        "Remover todas as relações": [
+          "WEIGHT_UNDEFINED"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "GRAPH_MODEL_LIMIT",
+      "explanation": "Para comparar uma propriedade, o modelo precisa registrar pesos com significado claro.",
+      "hint": "Que informação deve ser atribuída a cada ligação?",
+      "errorFocus": "WEIGHT_UNDEFINED",
+      "feedback": {
+        "correct": "Boa observação: Para comparar uma propriedade, o modelo precisa registrar pesos com significado claro.",
+        "incorrect": "Para comparar uma propriedade, o modelo precisa registrar pesos com significado claro.",
+        "hint": "Que informação deve ser atribuída a cada ligação?",
+        "errorFocus": "WEIGHT_UNDEFINED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-25",
+      "statement": "Quatro arestas não direcionadas tocam o vértice K. Qual é seu grau?",
+      "prompt": "Quatro arestas não direcionadas tocam o vértice K. Qual é seu grau?",
+      "options": [
+        "4",
+        "1",
+        "3",
+        "8"
+      ],
+      "correctAnswer": "4",
+      "answerPosition": "A",
+      "misconceptions": {
+        "1": [
+          "DEGREE_RECOUNT"
+        ],
+        "3": [
+          "DEGREE_RECOUNT"
+        ],
+        "8": [
+          "DEGREE_RECOUNT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "DEGREE_FOUR",
+      "explanation": "O grau conta arestas incidentes uma vez.",
+      "hint": "Conte as arestas que chegam a K.",
+      "errorFocus": "DEGREE_RECOUNT",
+      "feedback": {
+        "correct": "Boa observação: O grau conta arestas incidentes uma vez.",
+        "incorrect": "O grau conta arestas incidentes uma vez.",
+        "hint": "Conte as arestas que chegam a K.",
+        "errorFocus": "DEGREE_RECOUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-26",
+      "statement": "A lista de arestas contém R–S, S–T e T–U. Qual percurso de R a U está confirmado?",
+      "prompt": "A lista de arestas contém R–S, S–T e T–U. Qual percurso de R a U está confirmado?",
+      "options": [
+        "R–T–U sem aresta R–T",
+        "R–S–T–U",
+        "R–U direto sem aresta R–U",
+        "U–S–R sem seguir a ordem pedida"
+      ],
+      "correctAnswer": "R–S–T–U",
+      "answerPosition": "B",
+      "misconceptions": {
+        "R–T–U sem aresta R–T": [
+          "PATH_SHORTCUT"
+        ],
+        "R–U direto sem aresta R–U": [
+          "PATH_SHORTCUT"
+        ],
+        "U–S–R sem seguir a ordem pedida": [
+          "PATH_SHORTCUT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PATH_NO_SHORTCUT",
+      "explanation": "O caminho válido segue somente as arestas informadas.",
+      "hint": "Confira cada ligação consecutiva.",
+      "errorFocus": "PATH_SHORTCUT",
+      "feedback": {
+        "correct": "Boa observação: O caminho válido segue somente as arestas informadas.",
+        "incorrect": "O caminho válido segue somente as arestas informadas.",
+        "hint": "Confira cada ligação consecutiva.",
+        "errorFocus": "PATH_SHORTCUT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-27",
+      "statement": "O percurso A–B–C não retorna ao ponto inicial. Como classificá-lo?",
+      "prompt": "O percurso A–B–C não retorna ao ponto inicial. Como classificá-lo?",
+      "options": [
+        "Ciclo completo",
+        "Vértice isolado",
+        "Caminho, mas não ciclo fechado",
+        "Aresta direcionada obrigatória"
+      ],
+      "correctAnswer": "Caminho, mas não ciclo fechado",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ciclo completo": [
+          "PATH_AS_CYCLE"
+        ],
+        "Vértice isolado": [
+          "PATH_AS_CYCLE"
+        ],
+        "Aresta direcionada obrigatória": [
+          "PATH_AS_CYCLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CYCLE_OR_PATH",
+      "explanation": "Um caminho não é ciclo se não fecha no início.",
+      "hint": "O último vértice é o primeiro?",
+      "errorFocus": "PATH_AS_CYCLE",
+      "feedback": {
+        "correct": "Boa observação: Um caminho não é ciclo se não fecha no início.",
+        "incorrect": "Um caminho não é ciclo se não fecha no início.",
+        "hint": "O último vértice é o primeiro?",
+        "errorFocus": "PATH_AS_CYCLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-28",
+      "statement": "Um vértice sem arestas tem que grau em um grafo não direcionado?",
+      "prompt": "Um vértice sem arestas tem que grau em um grafo não direcionado?",
+      "options": [
+        "1",
+        "O número total de arestas",
+        "Infinito",
+        "0"
+      ],
+      "correctAnswer": "0",
+      "answerPosition": "D",
+      "misconceptions": {
+        "1": [
+          "ISOLATED_DEGREE"
+        ],
+        "O número total de arestas": [
+          "ISOLATED_DEGREE"
+        ],
+        "Infinito": [
+          "ISOLATED_DEGREE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ISOLATED_NODE",
+      "explanation": "Sem arestas incidentes, o grau é zero.",
+      "hint": "Quantas ligações tocam o vértice?",
+      "errorFocus": "ISOLATED_DEGREE",
+      "feedback": {
+        "correct": "Boa observação: Sem arestas incidentes, o grau é zero.",
+        "incorrect": "Sem arestas incidentes, o grau é zero.",
+        "hint": "Quantas ligações tocam o vértice?",
+        "errorFocus": "ISOLATED_DEGREE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-29",
+      "statement": "Uma aresta traz peso “8” mas nenhuma unidade ou significado. Qual cuidado é necessário?",
+      "prompt": "Uma aresta traz peso “8” mas nenhuma unidade ou significado. Qual cuidado é necessário?",
+      "options": [
+        "Não interpretar o peso até consultar a legenda",
+        "Supor que significa oito quilômetros sempre",
+        "Tratá-lo como grau de qualquer vértice",
+        "Usá-lo como identificador de pessoa"
+      ],
+      "correctAnswer": "Não interpretar o peso até consultar a legenda",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Supor que significa oito quilômetros sempre": [
+          "WEIGHT_NO_SEMANTICS"
+        ],
+        "Tratá-lo como grau de qualquer vértice": [
+          "WEIGHT_NO_SEMANTICS"
+        ],
+        "Usá-lo como identificador de pessoa": [
+          "WEIGHT_NO_SEMANTICS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LABEL_WEIGHT_UNITS",
+      "explanation": "Um número sem legenda não informa o que mede.",
+      "hint": "O grafo explica a unidade e o significado?",
+      "errorFocus": "WEIGHT_NO_SEMANTICS",
+      "feedback": {
+        "correct": "Boa observação: Um número sem legenda não informa o que mede.",
+        "incorrect": "Um número sem legenda não informa o que mede.",
+        "hint": "O grafo explica a unidade e o significado?",
+        "errorFocus": "WEIGHT_NO_SEMANTICS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-30",
+      "statement": "Há ao menos uma sequência de arestas entre A e Z. O que é possível afirmar?",
+      "prompt": "Há ao menos uma sequência de arestas entre A e Z. O que é possível afirmar?",
+      "options": [
+        "Há necessariamente uma aresta direta A–Z",
+        "Existe um caminho entre A e Z",
+        "Todos os vértices do grafo são conexos",
+        "O caminho é único"
+      ],
+      "correctAnswer": "Existe um caminho entre A e Z",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Há necessariamente uma aresta direta A–Z": [
+          "PATH_UNIQUENESS_OVERCLAIM"
+        ],
+        "Todos os vértices do grafo são conexos": [
+          "PATH_UNIQUENESS_OVERCLAIM"
+        ],
+        "O caminho é único": [
+          "PATH_UNIQUENESS_OVERCLAIM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONNECTED_PAIR",
+      "explanation": "Uma sequência estabelece caminho, mas não prova conexão direta ou unicidade.",
+      "hint": "A sequência contém quantos passos?",
+      "errorFocus": "PATH_UNIQUENESS_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência estabelece caminho, mas não prova conexão direta ou unicidade.",
+        "incorrect": "Uma sequência estabelece caminho, mas não prova conexão direta ou unicidade.",
+        "hint": "A sequência contém quantos passos?",
+        "errorFocus": "PATH_UNIQUENESS_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-31",
+      "statement": "Uma aresta representa uma trilha de 5 minutos segundo a legenda. Qual significado tem o peso?",
+      "prompt": "Uma aresta representa uma trilha de 5 minutos segundo a legenda. Qual significado tem o peso?",
+      "options": [
+        "Grau do vértice inicial",
+        "Número de vértices do grafo",
+        "Tempo estimado daquela conexão",
+        "Direção de percurso"
+      ],
+      "correctAnswer": "Tempo estimado daquela conexão",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Grau do vértice inicial": [
+          "WEIGHT_AS_DEGREE"
+        ],
+        "Número de vértices do grafo": [
+          "WEIGHT_AS_DEGREE"
+        ],
+        "Direção de percurso": [
+          "WEIGHT_AS_DEGREE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "WEIGHTED_EDGE_MEANING",
+      "explanation": "O peso representa a medida definida pela legenda.",
+      "hint": "Qual grandeza a legenda associa ao valor?",
+      "errorFocus": "WEIGHT_AS_DEGREE",
+      "feedback": {
+        "correct": "Boa observação: O peso representa a medida definida pela legenda.",
+        "incorrect": "O peso representa a medida definida pela legenda.",
+        "hint": "Qual grandeza a legenda associa ao valor?",
+        "errorFocus": "WEIGHT_AS_DEGREE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-32",
+      "statement": "Existe uma seta A→B, mas nenhuma regra de retorno. Qual conclusão é correta?",
+      "prompt": "Existe uma seta A→B, mas nenhuma regra de retorno. Qual conclusão é correta?",
+      "options": [
+        "A seta sempre funciona nos dois sentidos",
+        "A e B são o mesmo vértice",
+        "Há necessariamente um ciclo",
+        "O grafo registra A para B; não se deve inferir B para A"
+      ],
+      "correctAnswer": "O grafo registra A para B; não se deve inferir B para A",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A seta sempre funciona nos dois sentidos": [
+          "DIRECTION_RETURN_ASSUMPTION"
+        ],
+        "A e B são o mesmo vértice": [
+          "DIRECTION_RETURN_ASSUMPTION"
+        ],
+        "Há necessariamente um ciclo": [
+          "DIRECTION_RETURN_ASSUMPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DIRECTED_EDGE_RETURN",
+      "explanation": "Em grafo direcionado, o sentido inverso exige outra aresta ou regra explícita.",
+      "hint": "Aponte a direção efetivamente registrada.",
+      "errorFocus": "DIRECTION_RETURN_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: Em grafo direcionado, o sentido inverso exige outra aresta ou regra explícita.",
+        "incorrect": "Em grafo direcionado, o sentido inverso exige outra aresta ou regra explícita.",
+        "hint": "Aponte a direção efetivamente registrada.",
+        "errorFocus": "DIRECTION_RETURN_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-33",
+      "statement": "Em um grafo, vértices representam o quê?",
+      "prompt": "Em um grafo, vértices representam o quê?",
+      "options": [
+        "Elementos do modelo",
+        "Somente pesos",
+        "Apenas títulos de páginas",
+        "A ausência de conexões"
+      ],
+      "correctAnswer": "Elementos do modelo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente pesos": [
+          "VERTEX_RECALL"
+        ],
+        "Apenas títulos de páginas": [
+          "VERTEX_RECALL"
+        ],
+        "A ausência de conexões": [
+          "VERTEX_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "VERTEX_REVIEW",
+      "explanation": "Vértices são os elementos representados.",
+      "hint": "Pense nos pontos do grafo.",
+      "errorFocus": "VERTEX_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Vértices são os elementos representados.",
+        "incorrect": "Vértices são os elementos representados.",
+        "hint": "Pense nos pontos do grafo.",
+        "errorFocus": "VERTEX_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-34",
+      "statement": "Arestas representam o quê?",
+      "prompt": "Arestas representam o quê?",
+      "options": [
+        "Quantidade de vértices em uma tela",
+        "Ligações ou relações definidas entre vértices",
+        "O tipo de letra da legenda",
+        "O grau de todos os pontos"
+      ],
+      "correctAnswer": "Ligações ou relações definidas entre vértices",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quantidade de vértices em uma tela": [
+          "EDGE_RECALL"
+        ],
+        "O tipo de letra da legenda": [
+          "EDGE_RECALL"
+        ],
+        "O grau de todos os pontos": [
+          "EDGE_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "EDGE_REVIEW",
+      "explanation": "Arestas registram relações entre elementos.",
+      "hint": "O que conecta os pontos?",
+      "errorFocus": "EDGE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Arestas registram relações entre elementos.",
+        "incorrect": "Arestas registram relações entre elementos.",
+        "hint": "O que conecta os pontos?",
+        "errorFocus": "EDGE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-35",
+      "statement": "Como se calcula o grau de um vértice não direcionado?",
+      "prompt": "Como se calcula o grau de um vértice não direcionado?",
+      "options": [
+        "Contando todos os rótulos da página",
+        "Somando os nomes dos vizinhos",
+        "Contando as arestas incidentes a ele",
+        "Contando ciclos do grafo sem verificar ligações"
+      ],
+      "correctAnswer": "Contando as arestas incidentes a ele",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Contando todos os rótulos da página": [
+          "DEGREE_RECALL"
+        ],
+        "Somando os nomes dos vizinhos": [
+          "DEGREE_RECALL"
+        ],
+        "Contando ciclos do grafo sem verificar ligações": [
+          "DEGREE_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DEGREE_REVIEW",
+      "explanation": "Grau é a quantidade de arestas que tocam o vértice.",
+      "hint": "Marque cada aresta conectada ao ponto.",
+      "errorFocus": "DEGREE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Grau é a quantidade de arestas que tocam o vértice.",
+        "incorrect": "Grau é a quantidade de arestas que tocam o vértice.",
+        "hint": "Marque cada aresta conectada ao ponto.",
+        "errorFocus": "DEGREE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-36",
+      "statement": "O que diferencia ciclo de caminho aberto?",
+      "prompt": "O que diferencia ciclo de caminho aberto?",
+      "options": [
+        "O ciclo não usa arestas",
+        "O caminho aberto sempre tem peso",
+        "Um ciclo não contém vértices",
+        "O ciclo retorna ao vértice inicial"
+      ],
+      "correctAnswer": "O ciclo retorna ao vértice inicial",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O ciclo não usa arestas": [
+          "CYCLE_RECALL"
+        ],
+        "O caminho aberto sempre tem peso": [
+          "CYCLE_RECALL"
+        ],
+        "Um ciclo não contém vértices": [
+          "CYCLE_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CYCLE_REVIEW",
+      "explanation": "Ciclo fecha no ponto de partida.",
+      "hint": "Compare começo e fim do percurso.",
+      "errorFocus": "CYCLE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Ciclo fecha no ponto de partida.",
+        "incorrect": "Ciclo fecha no ponto de partida.",
+        "hint": "Compare começo e fim do percurso.",
+        "errorFocus": "CYCLE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-37",
+      "statement": "O que a seta em uma aresta comunica?",
+      "prompt": "O que a seta em uma aresta comunica?",
+      "options": [
+        "A orientação da relação",
+        "O tamanho real do vértice",
+        "A cor do papel",
+        "Que toda ligação é bidirecional"
+      ],
+      "correctAnswer": "A orientação da relação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O tamanho real do vértice": [
+          "DIRECTION_RECALL"
+        ],
+        "A cor do papel": [
+          "DIRECTION_RECALL"
+        ],
+        "Que toda ligação é bidirecional": [
+          "DIRECTION_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DIRECTION_REVIEW",
+      "explanation": "Setas registram direção quando a relação é orientada.",
+      "hint": "Siga a ponta da seta.",
+      "errorFocus": "DIRECTION_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Setas registram direção quando a relação é orientada.",
+        "incorrect": "Setas registram direção quando a relação é orientada.",
+        "hint": "Siga a ponta da seta.",
+        "errorFocus": "DIRECTION_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-38",
+      "statement": "Quando um grafo é conexo?",
+      "prompt": "Quando um grafo é conexo?",
+      "options": [
+        "Quando todos os vértices têm a mesma cor",
+        "Quando há caminho entre cada par de vértices",
+        "Quando existe apenas uma aresta",
+        "Quando há um ciclo obrigatório"
+      ],
+      "correctAnswer": "Quando há caminho entre cada par de vértices",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quando todos os vértices têm a mesma cor": [
+          "CONNECTIVITY_RECALL"
+        ],
+        "Quando existe apenas uma aresta": [
+          "CONNECTIVITY_RECALL"
+        ],
+        "Quando há um ciclo obrigatório": [
+          "CONNECTIVITY_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CONNECTED_REVIEW",
+      "explanation": "Conectividade considera caminhos entre todos os pares.",
+      "hint": "Avalie os pares do conjunto de vértices.",
+      "errorFocus": "CONNECTIVITY_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Conectividade considera caminhos entre todos os pares.",
+        "incorrect": "Conectividade considera caminhos entre todos os pares.",
+        "hint": "Avalie os pares do conjunto de vértices.",
+        "errorFocus": "CONNECTIVITY_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-39",
+      "statement": "Por que a legenda é essencial para interpretar um grafo?",
+      "prompt": "Por que a legenda é essencial para interpretar um grafo?",
+      "options": [
+        "Ela substitui todas as conexões",
+        "Ela garante que o grafo seja conexo",
+        "Ela define o significado dos vértices, arestas, direções e pesos",
+        "Ela serve apenas para decorar"
+      ],
+      "correctAnswer": "Ela define o significado dos vértices, arestas, direções e pesos",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela substitui todas as conexões": [
+          "LEGEND_PURPOSE"
+        ],
+        "Ela garante que o grafo seja conexo": [
+          "LEGEND_PURPOSE"
+        ],
+        "Ela serve apenas para decorar": [
+          "LEGEND_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "GRAPH_LEGEND_REVIEW",
+      "explanation": "Sem a semântica dos símbolos, não sabemos o que as relações representam.",
+      "hint": "O que cada símbolo quer dizer no contexto?",
+      "errorFocus": "LEGEND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Sem a semântica dos símbolos, não sabemos o que as relações representam.",
+        "incorrect": "Sem a semântica dos símbolos, não sabemos o que as relações representam.",
+        "hint": "O que cada símbolo quer dizer no contexto?",
+        "errorFocus": "LEGEND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef07co04-graph-structures-and-basic-properties-40",
+      "statement": "Uma pessoa afirma que A está conectado a D. Que evidência do grafo deve apresentar?",
+      "prompt": "Uma pessoa afirma que A está conectado a D. Que evidência do grafo deve apresentar?",
+      "options": [
+        "A proximidade gráfica dos nomes",
+        "O fato de existir algum vértice azul",
+        "A quantidade de páginas do mapa",
+        "Uma sequência contínua de arestas de A até D"
+      ],
+      "correctAnswer": "Uma sequência contínua de arestas de A até D",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A proximidade gráfica dos nomes": [
+          "CONNECTIVITY_ASSERTION"
+        ],
+        "O fato de existir algum vértice azul": [
+          "CONNECTIVITY_ASSERTION"
+        ],
+        "A quantidade de páginas do mapa": [
+          "CONNECTIVITY_ASSERTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "GRAPH_EVIDENCE_REVIEW",
+      "explanation": "Um caminho explícito sustenta a afirmação de conexão.",
+      "hint": "Trace cada aresta do percurso proposto.",
+      "errorFocus": "CONNECTIVITY_ASSERTION",
+      "feedback": {
+        "correct": "Boa observação: Um caminho explícito sustenta a afirmação de conexão.",
+        "incorrect": "Um caminho explícito sustenta a afirmação de conexão.",
+        "hint": "Trace cada aresta do percurso proposto.",
+        "errorFocus": "CONNECTIVITY_ASSERTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer grafos em alto contraste com rótulos textuais, versão linear das arestas e descrição oral; não depender só de cor.",
+          "Permitir montar grafos com cartões, peças táteis, editor digital ou resposta oral/escrita.",
+          "Usar grafos pequenos antes de ampliar o número de vértices e destacar a legenda em separado.",
+          "Usar lugares e pessoas fictícios; não mapear rotas residenciais ou dados pessoais de estudantes."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,2081 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v2-science-daily-materials-and-history",
+  "canonicalSkillCode": "AUTHORING_EF02CI01_DAILY_OBJECTS_MATERIALS_AND_HISTORY",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "materiais de objetos cotidianos, usos e mudanças de materiais ao longo do tempo",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 6
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Objetos, materiais e mudanças no tempo",
+    "objective": "Identificar materiais em objetos cotidianos, relacionar propriedades observáveis a usos e comparar, com apoio de fontes, materiais usados em objetos de outros tempos sem generalizar uma única história.",
+    "summary": "Um objeto pode combinar materiais diferentes. Observar uma imagem, uma amostra segura ou uma etiqueta ajuda a identificar do que ele é feito; comparar objetos exige considerar a função, a fonte e o período. Mudanças de material podem refletir propriedades, técnicas e contextos, mas não significam que um material substituiu todos os outros em todos os lugares.",
+    "explanation": "Investigue primeiro o objeto e a evidência disponível: uma descrição, uma etiqueta, uma amostra preparada ou uma fonte histórica identificada. Nomeie o material somente quando a informação o sustentar; a aparência pode sugerir, mas não prova sozinha a composição. Em seguida, relacione uma propriedade observável — como flexibilidade, dureza ou transparência — a um uso possível, sem dizer que ela é a única razão. Para comparar passado e presente, confira a data e o contexto da fonte, observe o que se manteve e o que mudou e evite tratar uma fotografia ou um exemplo como representante de todos os lugares. Objetos podem combinar materiais, e escolhas dependem de função, conhecimentos, disponibilidade e contexto.",
+    "workedExample": "Uma ficha didática identifica a moldura de uma janela escolar como madeira e o painel como vidro. A transparência do vidro permite a passagem de luz; a moldura sustenta o painel. Uma fotografia histórica identificada mostra outra janela com painel de madeira. Podemos comparar os materiais registrados nessas duas fontes e as funções observáveis, mas não concluir que todas as janelas antigas eram iguais ou que um material foi usado em todos os lugares.",
+    "commonMistake": "Adivinhar a composição apenas pela aparência ou transformar uma comparação entre dois registros em regra sobre todos os objetos do passado e do presente.",
+    "priorKnowledge": [
+      "Observar características de objetos e nomear alguns materiais conhecidos com apoio de imagens ou amostras seguras.",
+      "Comparar dois objetos por uma característica observável e localizar palavras como antes, depois, passado e presente em uma sequência simples."
+    ],
+    "keyConcepts": [
+      "objeto",
+      "material",
+      "propriedade observável",
+      "uso",
+      "fonte",
+      "passado e presente",
+      "combinação de materiais"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MATERIAL_INFERRED_FROM_APPEARANCE",
+        "action": "Separe o que a imagem permite observar do que a legenda, etiqueta ou fonte informa; registre como hipótese qualquer composição não confirmada."
+      },
+      {
+        "errorFocus": "PROPERTY_TO_USE_AS_SINGLE_CAUSE",
+        "action": "Nomeie a propriedade observável e explique como ela pode contribuir para o uso, acrescentando que outras propriedades ou condições também podem importar."
+      },
+      {
+        "errorFocus": "HISTORICAL_GENERALIZATION",
+        "action": "Volte à data, ao lugar e ao tipo de fonte; reescreva a conclusão limitada ao exemplo documentado e indique o que ainda não se sabe."
+      },
+      {
+        "errorFocus": "OBJECT_TREATED_AS_ONE_MATERIAL",
+        "action": "Divida o objeto em partes, identifique a evidência de cada uma e permita registrar mais de um material ou uma composição não confirmada."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+      "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+      "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ef02ci01-material-observation",
+        "title": "Mapa de partes, materiais e usos",
+        "instructions": "Conjunto preparado pelo professor com imagens, etiquetas ou amostras seguras e não cortantes de objetos escolares e domésticos.\n1. Escolha dois objetos do conjunto e identifique suas partes sem desmontá-los.\n2. Registre o material indicado pela fonte ou amostra e separe essa evidência de qualquer suposição pela aparência.\n3. Relacione uma propriedade observável de cada material a um uso possível e marque uma pergunta ainda sem resposta.",
+        "steps": [
+          "Escolha dois objetos do conjunto e identifique suas partes sem desmontá-los.",
+          "Registre o material indicado pela fonte ou amostra e separe essa evidência de qualquer suposição pela aparência.",
+          "Relacione uma propriedade observável de cada material a um uso possível e marque uma pergunta ainda sem resposta."
+        ],
+        "evidence": "Mapa multimodal de dois objetos que identifica fonte ou observação, distingue material confirmado de hipótese e relaciona uma propriedade a um uso sem generalizar.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "nomeia objetos, mas ainda não aponta evidência do material.",
+            "developing": "identifica materiais com apoio e relaciona uma propriedade ao uso.",
+            "proficient": "atribui cada identificação à fonte ou observação, justifica um uso e registra uma incerteza sem adivinhar."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ef02ci01-then-now-source-comparison",
+        "title": "Comparação de objetos em fontes de tempos distintos",
+        "instructions": "Duas imagens ou fichas didáticas com fonte, data e contexto indicados, mostrando objetos de função comparável sem pressupor que representem todos os lugares.\n1. Leia a data e o contexto de cada fonte e descreva o objeto mostrado.\n2. Compare os materiais explicitamente identificados e uma função observável, marcando semelhanças e diferenças.\n3. Escreva ou apresente uma conclusão limitada às fontes e uma pergunta sobre informação que elas não mostram.",
+        "steps": [
+          "Leia a data e o contexto de cada fonte e descreva o objeto mostrado.",
+          "Compare os materiais explicitamente identificados e uma função observável, marcando semelhanças e diferenças.",
+          "Escreva ou apresente uma conclusão limitada às fontes e uma pergunta sobre informação que elas não mostram."
+        ],
+        "evidence": "Quadro comparativo que atribui cada observação à fonte, identifica uma mudança ou permanência sustentada e declara um limite da comparação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "compara os objetos sem usar a data ou a fonte.",
+            "developing": "registra uma semelhança ou diferença com apoio e identifica uma fonte.",
+            "proficient": "compara materiais e uso, atribui as evidências às fontes e evita transformar exemplos em regra universal."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v2-science-daily-materials-and-history-01",
+          "v2-science-daily-materials-and-history-02",
+          "v2-science-daily-materials-and-history-03",
+          "v2-science-daily-materials-and-history-04",
+          "v2-science-daily-materials-and-history-05",
+          "v2-science-daily-materials-and-history-06",
+          "v2-science-daily-materials-and-history-07",
+          "v2-science-daily-materials-and-history-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v2-science-daily-materials-and-history-09",
+          "v2-science-daily-materials-and-history-10",
+          "v2-science-daily-materials-and-history-11",
+          "v2-science-daily-materials-and-history-12",
+          "v2-science-daily-materials-and-history-13",
+          "v2-science-daily-materials-and-history-14",
+          "v2-science-daily-materials-and-history-15",
+          "v2-science-daily-materials-and-history-16",
+          "v2-science-daily-materials-and-history-17",
+          "v2-science-daily-materials-and-history-18",
+          "v2-science-daily-materials-and-history-19",
+          "v2-science-daily-materials-and-history-20"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v2-science-daily-materials-and-history-21",
+          "v2-science-daily-materials-and-history-22",
+          "v2-science-daily-materials-and-history-23",
+          "v2-science-daily-materials-and-history-24",
+          "v2-science-daily-materials-and-history-25",
+          "v2-science-daily-materials-and-history-26",
+          "v2-science-daily-materials-and-history-27",
+          "v2-science-daily-materials-and-history-28"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v2-science-daily-materials-and-history-29",
+          "v2-science-daily-materials-and-history-30",
+          "v2-science-daily-materials-and-history-31",
+          "v2-science-daily-materials-and-history-32",
+          "v2-science-daily-materials-and-history-33",
+          "v2-science-daily-materials-and-history-34"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v2-science-daily-materials-and-history-35",
+          "v2-science-daily-materials-and-history-36",
+          "v2-science-daily-materials-and-history-37",
+          "v2-science-daily-materials-and-history-38",
+          "v2-science-daily-materials-and-history-39",
+          "v2-science-daily-materials-and-history-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI01",
+        "descriptor": "Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v2-science-daily-materials-and-history-01",
+      "statement": "Uma ficha de Ciências identifica o cabo de uma colher escolar como madeira. Qual material a fonte registra para o cabo?",
+      "prompt": "Uma ficha de Ciências identifica o cabo de uma colher escolar como madeira. Qual material a fonte registra para o cabo?",
+      "options": [
+        "Madeira",
+        "Vidro",
+        "Papel",
+        "Tecido"
+      ],
+      "correctAnswer": "Madeira",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vidro": [
+          "SOURCE_BEFORE_GUESS"
+        ],
+        "Papel": [
+          "SOURCE_BEFORE_GUESS"
+        ],
+        "Tecido": [
+          "SOURCE_BEFORE_GUESS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SCHOOL_SPOON_PHOTO",
+      "explanation": "A resposta recupera o material indicado na ficha, não uma adivinhação pela aparência.",
+      "hint": "Localize o nome do material escrito na ficha.",
+      "errorFocus": "SOURCE_BEFORE_GUESS",
+      "feedback": {
+        "correct": "Boa observação: A resposta recupera o material indicado na ficha, não uma adivinhação pela aparência.",
+        "incorrect": "A resposta recupera o material indicado na ficha, não uma adivinhação pela aparência.",
+        "hint": "Localize o nome do material escrito na ficha.",
+        "errorFocus": "SOURCE_BEFORE_GUESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-02",
+      "statement": "Em uma imagem identificada, o painel de uma janela é de vidro e deixa a luz passar. Qual propriedade observável aparece no exemplo?",
+      "prompt": "Em uma imagem identificada, o painel de uma janela é de vidro e deixa a luz passar. Qual propriedade observável aparece no exemplo?",
+      "options": [
+        "Elasticidade",
+        "Transparência",
+        "Opacidade",
+        "Magnetismo"
+      ],
+      "correctAnswer": "Transparência",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Elasticidade": [
+          "PROPERTY_FROM_EVIDENCE"
+        ],
+        "Opacidade": [
+          "PROPERTY_FROM_EVIDENCE"
+        ],
+        "Magnetismo": [
+          "PROPERTY_FROM_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "WINDOW_PANEL_CARD",
+      "explanation": "O painel permite ver a luz através dele, uma evidência de transparência.",
+      "hint": "Observe o que acontece com a luz no painel.",
+      "errorFocus": "PROPERTY_FROM_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O painel permite ver a luz através dele, uma evidência de transparência.",
+        "incorrect": "O painel permite ver a luz através dele, uma evidência de transparência.",
+        "hint": "Observe o que acontece com a luz no painel.",
+        "errorFocus": "PROPERTY_FROM_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-03",
+      "statement": "A etiqueta de uma amostra didática informa que o tecido é de algodão. A qual grupo de materiais essa fonte associa o tecido?",
+      "prompt": "A etiqueta de uma amostra didática informa que o tecido é de algodão. A qual grupo de materiais essa fonte associa o tecido?",
+      "options": [
+        "Metal",
+        "Vidro",
+        "Tecido de algodão",
+        "Cerâmica"
+      ],
+      "correctAnswer": "Tecido de algodão",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Metal": [
+          "READ_LABEL"
+        ],
+        "Vidro": [
+          "READ_LABEL"
+        ],
+        "Cerâmica": [
+          "READ_LABEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "COTTON_FABRIC_LABEL",
+      "explanation": "A etiqueta fornece a identificação do material têxtil da amostra.",
+      "hint": "Use o que a etiqueta informa, não a cor da amostra.",
+      "errorFocus": "READ_LABEL",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta fornece a identificação do material têxtil da amostra.",
+        "incorrect": "A etiqueta fornece a identificação do material têxtil da amostra.",
+        "hint": "Use o que a etiqueta informa, não a cor da amostra.",
+        "errorFocus": "READ_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-04",
+      "statement": "Uma ficha descreve a estrutura de uma bicicleta como feita de metal. Qual conclusão é sustentada pela ficha?",
+      "prompt": "Uma ficha descreve a estrutura de uma bicicleta como feita de metal. Qual conclusão é sustentada pela ficha?",
+      "options": [
+        "Todas as peças da bicicleta são de um único material.",
+        "A bicicleta é feita de madeira.",
+        "A cor prova que a estrutura é de plástico.",
+        "A estrutura indicada é de metal."
+      ],
+      "correctAnswer": "A estrutura indicada é de metal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as peças da bicicleta são de um único material.": [
+          "PARTS_AND_MATERIALS"
+        ],
+        "A bicicleta é feita de madeira.": [
+          "PARTS_AND_MATERIALS"
+        ],
+        "A cor prova que a estrutura é de plástico.": [
+          "PARTS_AND_MATERIALS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "METAL_BICYCLE_FRAME",
+      "explanation": "A ficha identifica a estrutura; ela não afirma que cada peça tenha a mesma composição.",
+      "hint": "Limite a resposta à parte descrita.",
+      "errorFocus": "PARTS_AND_MATERIALS",
+      "feedback": {
+        "correct": "Boa observação: A ficha identifica a estrutura; ela não afirma que cada peça tenha a mesma composição.",
+        "incorrect": "A ficha identifica a estrutura; ela não afirma que cada peça tenha a mesma composição.",
+        "hint": "Limite a resposta à parte descrita.",
+        "errorFocus": "PARTS_AND_MATERIALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-05",
+      "statement": "Na amostra de uma caixa de papelão, qual material está explicitamente identificado?",
+      "prompt": "Na amostra de uma caixa de papelão, qual material está explicitamente identificado?",
+      "options": [
+        "Papel e papelão",
+        "Vidro e metal",
+        "Madeira e tecido",
+        "Cerâmica e plástico"
+      ],
+      "correctAnswer": "Papel e papelão",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vidro e metal": [
+          "MATERIAL_NAMING"
+        ],
+        "Madeira e tecido": [
+          "MATERIAL_NAMING"
+        ],
+        "Cerâmica e plástico": [
+          "MATERIAL_NAMING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PAPER_BOX_SAMPLE",
+      "explanation": "A identificação da amostra nomeia papel e papelão.",
+      "hint": "Leia o rótulo da amostra.",
+      "errorFocus": "MATERIAL_NAMING",
+      "feedback": {
+        "correct": "Boa observação: A identificação da amostra nomeia papel e papelão.",
+        "incorrect": "A identificação da amostra nomeia papel e papelão.",
+        "hint": "Leia o rótulo da amostra.",
+        "errorFocus": "MATERIAL_NAMING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-06",
+      "statement": "Uma capa de chuva de demonstração é feita de material flexível e ajuda a cobrir o corpo. Qual relação é razoável?",
+      "prompt": "Uma capa de chuva de demonstração é feita de material flexível e ajuda a cobrir o corpo. Qual relação é razoável?",
+      "options": [
+        "Flexibilidade prova que a capa é de metal.",
+        "A flexibilidade pode ajudar a capa a acompanhar movimentos.",
+        "A capa impede qualquer contato com água em todas as condições.",
+        "A cor da capa explica sozinha sua função."
+      ],
+      "correctAnswer": "A flexibilidade pode ajudar a capa a acompanhar movimentos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Flexibilidade prova que a capa é de metal.": [
+          "PROPERTY_NOT_ABSOLUTE"
+        ],
+        "A capa impede qualquer contato com água em todas as condições.": [
+          "PROPERTY_NOT_ABSOLUTE"
+        ],
+        "A cor da capa explica sozinha sua função.": [
+          "PROPERTY_NOT_ABSOLUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "RAINCOAT_DEMONSTRATION",
+      "explanation": "A propriedade pode contribuir para o uso, mas não garante desempenho absoluto nem identifica sozinha a composição.",
+      "hint": "Relacione uma propriedade ao uso sem fazer promessa total.",
+      "errorFocus": "PROPERTY_NOT_ABSOLUTE",
+      "feedback": {
+        "correct": "Boa observação: A propriedade pode contribuir para o uso, mas não garante desempenho absoluto nem identifica sozinha a composição.",
+        "incorrect": "A propriedade pode contribuir para o uso, mas não garante desempenho absoluto nem identifica sozinha a composição.",
+        "hint": "Relacione uma propriedade ao uso sem fazer promessa total.",
+        "errorFocus": "PROPERTY_NOT_ABSOLUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-07",
+      "statement": "Uma ficha atual identifica um pote como vidro; uma fonte antiga identificada mostra um recipiente de cerâmica. O que a comparação permite dizer?",
+      "prompt": "Uma ficha atual identifica um pote como vidro; uma fonte antiga identificada mostra um recipiente de cerâmica. O que a comparação permite dizer?",
+      "options": [
+        "Todos os potes antigos eram de cerâmica.",
+        "O vidro nunca era usado no passado.",
+        "As fontes mostram recipientes de materiais diferentes em seus contextos.",
+        "Uma fonte prova que um material é sempre melhor."
+      ],
+      "correctAnswer": "As fontes mostram recipientes de materiais diferentes em seus contextos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os potes antigos eram de cerâmica.": [
+          "LIMITED_COMPARISON"
+        ],
+        "O vidro nunca era usado no passado.": [
+          "LIMITED_COMPARISON"
+        ],
+        "Uma fonte prova que um material é sempre melhor.": [
+          "LIMITED_COMPARISON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "HISTORICAL_STORAGE_JAR",
+      "explanation": "A comparação sustenta uma diferença entre os exemplos registrados, não uma regra universal.",
+      "hint": "Responda sobre os dois registros, não sobre todos os potes.",
+      "errorFocus": "LIMITED_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação sustenta uma diferença entre os exemplos registrados, não uma regra universal.",
+        "incorrect": "A comparação sustenta uma diferença entre os exemplos registrados, não uma regra universal.",
+        "hint": "Responda sobre os dois registros, não sobre todos os potes.",
+        "errorFocus": "LIMITED_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-08",
+      "statement": "Uma ficha técnica da escola identifica o cabo de uma ferramenta de demonstração como plástico. Qual evidência deve orientar a identificação?",
+      "prompt": "Uma ficha técnica da escola identifica o cabo de uma ferramenta de demonstração como plástico. Qual evidência deve orientar a identificação?",
+      "options": [
+        "A cor do cabo isoladamente.",
+        "Uma suposição sobre o local onde foi comprado.",
+        "A opinião de quem não consultou a ficha.",
+        "A informação da ficha técnica."
+      ],
+      "correctAnswer": "A informação da ficha técnica.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do cabo isoladamente.": [
+          "SOURCE_CONTEXT"
+        ],
+        "Uma suposição sobre o local onde foi comprado.": [
+          "SOURCE_CONTEXT"
+        ],
+        "A opinião de quem não consultou a ficha.": [
+          "SOURCE_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY_SOURCE",
+      "contextFamily": "TOOL_HANDLE_LABEL",
+      "explanation": "A ficha é a evidência explícita disponível no cenário.",
+      "hint": "Procure a fonte que identifica o material.",
+      "errorFocus": "SOURCE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A ficha é a evidência explícita disponível no cenário.",
+        "incorrect": "A ficha é a evidência explícita disponível no cenário.",
+        "hint": "Procure a fonte que identifica o material.",
+        "errorFocus": "SOURCE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-09",
+      "statement": "A ficha de inventário identifica o tampo de uma mesa como madeira e os pés como metal. Como registrar a mesa?",
+      "prompt": "A ficha de inventário identifica o tampo de uma mesa como madeira e os pés como metal. Como registrar a mesa?",
+      "options": [
+        "Como um objeto com partes de materiais diferentes.",
+        "Como feita apenas de madeira.",
+        "Como feita apenas de metal.",
+        "Como impossível de descrever sem desmontar."
+      ],
+      "correctAnswer": "Como um objeto com partes de materiais diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como feita apenas de madeira.": [
+          "COMPOSITE_OBJECT"
+        ],
+        "Como feita apenas de metal.": [
+          "COMPOSITE_OBJECT"
+        ],
+        "Como impossível de descrever sem desmontar.": [
+          "COMPOSITE_OBJECT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "DESK_TOP_DESCRIPTION",
+      "explanation": "A fonte distingue materiais em partes diferentes do mesmo objeto.",
+      "hint": "Considere separadamente tampo e pés.",
+      "errorFocus": "COMPOSITE_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: A fonte distingue materiais em partes diferentes do mesmo objeto.",
+        "incorrect": "A fonte distingue materiais em partes diferentes do mesmo objeto.",
+        "hint": "Considere separadamente tampo e pés.",
+        "errorFocus": "COMPOSITE_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-10",
+      "statement": "Um recipiente transparente permite observar seu conteúdo sem abri-lo. Qual propriedade contribui para esse uso?",
+      "prompt": "Um recipiente transparente permite observar seu conteúdo sem abri-lo. Qual propriedade contribui para esse uso?",
+      "options": [
+        "Dureza sozinha",
+        "Transparência",
+        "Opacidade",
+        "Flexibilidade do conteúdo"
+      ],
+      "correctAnswer": "Transparência",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dureza sozinha": [
+          "PROPERTY_USE_LINK"
+        ],
+        "Opacidade": [
+          "PROPERTY_USE_LINK"
+        ],
+        "Flexibilidade do conteúdo": [
+          "PROPERTY_USE_LINK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CLEAR_CONTAINER_USE",
+      "explanation": "A transparência permite ver o interior, conforme a situação descrita.",
+      "hint": "Pense no que a pessoa consegue observar sem abrir.",
+      "errorFocus": "PROPERTY_USE_LINK",
+      "feedback": {
+        "correct": "Boa observação: A transparência permite ver o interior, conforme a situação descrita.",
+        "incorrect": "A transparência permite ver o interior, conforme a situação descrita.",
+        "hint": "Pense no que a pessoa consegue observar sem abrir.",
+        "errorFocus": "PROPERTY_USE_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-11",
+      "statement": "Duas réguas didáticas, uma de madeira e outra de metal, têm o mesmo comprimento. O que pode ser comparado com segurança?",
+      "prompt": "Duas réguas didáticas, uma de madeira e outra de metal, têm o mesmo comprimento. O que pode ser comparado com segurança?",
+      "options": [
+        "Que todas as réguas de metal medem melhor.",
+        "Que a madeira é sempre mais leve.",
+        "Os materiais registrados e as características observadas nas duas réguas.",
+        "Que uma delas foi usada por todas as turmas."
+      ],
+      "correctAnswer": "Os materiais registrados e as características observadas nas duas réguas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todas as réguas de metal medem melhor.": [
+          "OBSERVED_NOT_ASSUMED"
+        ],
+        "Que a madeira é sempre mais leve.": [
+          "OBSERVED_NOT_ASSUMED"
+        ],
+        "Que uma delas foi usada por todas as turmas.": [
+          "OBSERVED_NOT_ASSUMED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WOODEN_AND_METAL_RULERS",
+      "explanation": "Pode-se comparar os exemplares observados; generalizações exigiriam evidências adicionais.",
+      "hint": "Fale dos dois exemplares disponíveis.",
+      "errorFocus": "OBSERVED_NOT_ASSUMED",
+      "feedback": {
+        "correct": "Boa observação: Pode-se comparar os exemplares observados; generalizações exigiriam evidências adicionais.",
+        "incorrect": "Pode-se comparar os exemplares observados; generalizações exigiriam evidências adicionais.",
+        "hint": "Fale dos dois exemplares disponíveis.",
+        "errorFocus": "OBSERVED_NOT_ASSUMED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-12",
+      "statement": "Uma ficha de museu identifica um recipiente de uma coleção como cerâmica e informa sua data. Que informação deve acompanhar a comparação?",
+      "prompt": "Uma ficha de museu identifica um recipiente de uma coleção como cerâmica e informa sua data. Que informação deve acompanhar a comparação?",
+      "options": [
+        "Uma história inventada sobre quem o usou.",
+        "A conclusão de que todos os recipientes eram iguais.",
+        "Somente a cor atual da fotografia.",
+        "A identificação e a data fornecidas pela ficha."
+      ],
+      "correctAnswer": "A identificação e a data fornecidas pela ficha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma história inventada sobre quem o usou.": [
+          "SOURCE_DATE"
+        ],
+        "A conclusão de que todos os recipientes eram iguais.": [
+          "SOURCE_DATE"
+        ],
+        "Somente a cor atual da fotografia.": [
+          "SOURCE_DATE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CLAY_POT_SOURCE",
+      "explanation": "A data e a identificação situam o objeto documentado sem inventar seu uso específico.",
+      "hint": "Use os dados que a ficha efetivamente oferece.",
+      "errorFocus": "SOURCE_DATE",
+      "feedback": {
+        "correct": "Boa observação: A data e a identificação situam o objeto documentado sem inventar seu uso específico.",
+        "incorrect": "A data e a identificação situam o objeto documentado sem inventar seu uso específico.",
+        "hint": "Use os dados que a ficha efetivamente oferece.",
+        "errorFocus": "SOURCE_DATE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-13",
+      "statement": "A embalagem didática está identificada como papelão. Qual frase registra o material sem acrescentar hipótese?",
+      "prompt": "A embalagem didática está identificada como papelão. Qual frase registra o material sem acrescentar hipótese?",
+      "options": [
+        "A ficha identifica a embalagem como papelão.",
+        "A embalagem é de madeira porque veio de uma árvore.",
+        "Toda embalagem é de plástico.",
+        "A aparência prova que ela nunca foi reutilizada."
+      ],
+      "correctAnswer": "A ficha identifica a embalagem como papelão.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A embalagem é de madeira porque veio de uma árvore.": [
+          "DISTINGUISH_SOURCE_FROM_INFERENCE"
+        ],
+        "Toda embalagem é de plástico.": [
+          "DISTINGUISH_SOURCE_FROM_INFERENCE"
+        ],
+        "A aparência prova que ela nunca foi reutilizada.": [
+          "DISTINGUISH_SOURCE_FROM_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARDBOARD_PACKAGE",
+      "explanation": "A frase atribui a informação à ficha e não extrapola a história do objeto.",
+      "hint": "Prefira uma afirmação que a fonte apoia diretamente.",
+      "errorFocus": "DISTINGUISH_SOURCE_FROM_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase atribui a informação à ficha e não extrapola a história do objeto.",
+        "incorrect": "A frase atribui a informação à ficha e não extrapola a história do objeto.",
+        "hint": "Prefira uma afirmação que a fonte apoia diretamente.",
+        "errorFocus": "DISTINGUISH_SOURCE_FROM_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-14",
+      "statement": "Uma faixa elástica de demonstração pode ser esticada e depois volta ao formato aproximado. Qual propriedade observada ajuda a descrever essa ação?",
+      "prompt": "Uma faixa elástica de demonstração pode ser esticada e depois volta ao formato aproximado. Qual propriedade observada ajuda a descrever essa ação?",
+      "options": [
+        "Transparência",
+        "Flexibilidade",
+        "Fragilidade do vidro",
+        "Magnetismo"
+      ],
+      "correctAnswer": "Flexibilidade",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Transparência": [
+          "OBSERVABLE_PROPERTY"
+        ],
+        "Fragilidade do vidro": [
+          "OBSERVABLE_PROPERTY"
+        ],
+        "Magnetismo": [
+          "OBSERVABLE_PROPERTY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "RUBBER_BAND_FLEXIBILITY",
+      "explanation": "A mudança de forma durante o uso ilustra flexibilidade no exemplo.",
+      "hint": "Observe qual característica aparece quando a faixa é esticada.",
+      "errorFocus": "OBSERVABLE_PROPERTY",
+      "feedback": {
+        "correct": "Boa observação: A mudança de forma durante o uso ilustra flexibilidade no exemplo.",
+        "incorrect": "A mudança de forma durante o uso ilustra flexibilidade no exemplo.",
+        "hint": "Observe qual característica aparece quando a faixa é esticada.",
+        "errorFocus": "OBSERVABLE_PROPERTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-15",
+      "statement": "Uma caneca possui corpo de cerâmica e alça também identificada como cerâmica. Como descrever sua composição?",
+      "prompt": "Uma caneca possui corpo de cerâmica e alça também identificada como cerâmica. Como descrever sua composição?",
+      "options": [
+        "Uma caneca necessariamente feita de quatro materiais.",
+        "A cor da caneca como material.",
+        "Duas partes identificadas com o mesmo material.",
+        "Um material não informado pela ficha."
+      ],
+      "correctAnswer": "Duas partes identificadas com o mesmo material.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma caneca necessariamente feita de quatro materiais.": [
+          "PARTS_RECORD"
+        ],
+        "A cor da caneca como material.": [
+          "PARTS_RECORD"
+        ],
+        "Um material não informado pela ficha.": [
+          "PARTS_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CUP_HANDLE_MATERIALS",
+      "explanation": "A resposta usa as duas partes registradas e não inventa outro material.",
+      "hint": "Compare o que a ficha diz sobre corpo e alça.",
+      "errorFocus": "PARTS_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A resposta usa as duas partes registradas e não inventa outro material.",
+        "incorrect": "A resposta usa as duas partes registradas e não inventa outro material.",
+        "hint": "Compare o que a ficha diz sobre corpo e alça.",
+        "errorFocus": "PARTS_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-16",
+      "statement": "Uma fonte datada mostra uma luminária com base de madeira; uma ficha atual descreve base de metal. Qual conclusão fica limitada às fontes?",
+      "prompt": "Uma fonte datada mostra uma luminária com base de madeira; uma ficha atual descreve base de metal. Qual conclusão fica limitada às fontes?",
+      "options": [
+        "Toda luminária antiga tinha base de madeira.",
+        "A madeira deixou de ser usada em qualquer luminária.",
+        "O metal surgiu apenas depois da fotografia.",
+        "Os exemplos documentam bases diferentes nos contextos apresentados."
+      ],
+      "correctAnswer": "Os exemplos documentam bases diferentes nos contextos apresentados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda luminária antiga tinha base de madeira.": [
+          "TIME_CONTEXT_NOT_UNIVERSAL"
+        ],
+        "A madeira deixou de ser usada em qualquer luminária.": [
+          "TIME_CONTEXT_NOT_UNIVERSAL"
+        ],
+        "O metal surgiu apenas depois da fotografia.": [
+          "TIME_CONTEXT_NOT_UNIVERSAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OLD_AND_NEW_LAMP_CARDS",
+      "explanation": "As duas fontes permitem comparar os exemplos, não afirmar uma substituição total.",
+      "hint": "Inclua a expressão “nos exemplos registrados”.",
+      "errorFocus": "TIME_CONTEXT_NOT_UNIVERSAL",
+      "feedback": {
+        "correct": "Boa observação: As duas fontes permitem comparar os exemplos, não afirmar uma substituição total.",
+        "incorrect": "As duas fontes permitem comparar os exemplos, não afirmar uma substituição total.",
+        "hint": "Inclua a expressão “nos exemplos registrados”.",
+        "errorFocus": "TIME_CONTEXT_NOT_UNIVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-17",
+      "statement": "A etiqueta de uma sacola reutilizável indica tecido. Qual é a fonte direta para essa identificação?",
+      "prompt": "A etiqueta de uma sacola reutilizável indica tecido. Qual é a fonte direta para essa identificação?",
+      "options": [
+        "A etiqueta da sacola",
+        "O tamanho da sacola",
+        "O desenho impresso",
+        "Uma lembrança não verificada"
+      ],
+      "correctAnswer": "A etiqueta da sacola",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O tamanho da sacola": [
+          "SOURCE_FOR_MATERIAL"
+        ],
+        "O desenho impresso": [
+          "SOURCE_FOR_MATERIAL"
+        ],
+        "Uma lembrança não verificada": [
+          "SOURCE_FOR_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FABRIC_BAG_TAG",
+      "explanation": "A etiqueta nomeia o material informado no cenário.",
+      "hint": "Encontre a parte que informa a composição.",
+      "errorFocus": "SOURCE_FOR_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta nomeia o material informado no cenário.",
+        "incorrect": "A etiqueta nomeia o material informado no cenário.",
+        "hint": "Encontre a parte que informa a composição.",
+        "errorFocus": "SOURCE_FOR_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-18",
+      "statement": "Blocos de madeira são usados em uma atividade de montar formas. Qual explicação relaciona material e uso sem exagerar?",
+      "prompt": "Blocos de madeira são usados em uma atividade de montar formas. Qual explicação relaciona material e uso sem exagerar?",
+      "options": [
+        "A madeira sempre permite construir qualquer forma.",
+        "A forma e a resistência observadas podem contribuir para empilhar os blocos.",
+        "A cor dos blocos é o único motivo para empilhar.",
+        "Todo brinquedo de montar precisa ser de madeira."
+      ],
+      "correctAnswer": "A forma e a resistência observadas podem contribuir para empilhar os blocos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A madeira sempre permite construir qualquer forma.": [
+          "FUNCTION_NOT_UNIVERSAL"
+        ],
+        "A cor dos blocos é o único motivo para empilhar.": [
+          "FUNCTION_NOT_UNIVERSAL"
+        ],
+        "Todo brinquedo de montar precisa ser de madeira.": [
+          "FUNCTION_NOT_UNIVERSAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "WOODEN_BLOCKS_ACTIVITY",
+      "explanation": "A resposta relaciona características ao uso observado sem afirmar que sejam universais.",
+      "hint": "Descreva o que os blocos permitem fazer no exemplo.",
+      "errorFocus": "FUNCTION_NOT_UNIVERSAL",
+      "feedback": {
+        "correct": "Boa observação: A resposta relaciona características ao uso observado sem afirmar que sejam universais.",
+        "incorrect": "A resposta relaciona características ao uso observado sem afirmar que sejam universais.",
+        "hint": "Descreva o que os blocos permitem fazer no exemplo.",
+        "errorFocus": "FUNCTION_NOT_UNIVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-19",
+      "statement": "Uma janela tem moldura de madeira e painel de vidro, segundo a ficha. Qual material é associado à transparência do painel?",
+      "prompt": "Uma janela tem moldura de madeira e painel de vidro, segundo a ficha. Qual material é associado à transparência do painel?",
+      "options": [
+        "Madeira",
+        "Tecido",
+        "Vidro",
+        "Papelão"
+      ],
+      "correctAnswer": "Vidro",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Madeira": [
+          "MATCH_PART_TO_PROPERTY"
+        ],
+        "Tecido": [
+          "MATCH_PART_TO_PROPERTY"
+        ],
+        "Papelão": [
+          "MATCH_PART_TO_PROPERTY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "WINDOW_FRAME_AND_PANE",
+      "explanation": "A ficha identifica o painel como vidro e o exemplo observa sua transparência.",
+      "hint": "Associe a propriedade à parte correta da janela.",
+      "errorFocus": "MATCH_PART_TO_PROPERTY",
+      "feedback": {
+        "correct": "Boa observação: A ficha identifica o painel como vidro e o exemplo observa sua transparência.",
+        "incorrect": "A ficha identifica o painel como vidro e o exemplo observa sua transparência.",
+        "hint": "Associe a propriedade à parte correta da janela.",
+        "errorFocus": "MATCH_PART_TO_PROPERTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-20",
+      "statement": "Uma imagem mostra um objeto brilhante, mas a legenda não informa seu material. Qual registro é mais cuidadoso?",
+      "prompt": "Uma imagem mostra um objeto brilhante, mas a legenda não informa seu material. Qual registro é mais cuidadoso?",
+      "options": [
+        "É certamente metal.",
+        "É certamente vidro.",
+        "É sempre feito do material mais resistente.",
+        "A aparência é brilhante; o material ainda não foi confirmado."
+      ],
+      "correctAnswer": "A aparência é brilhante; o material ainda não foi confirmado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "É certamente metal.": [
+          "AMBIGUITY_ACKNOWLEDGED"
+        ],
+        "É certamente vidro.": [
+          "AMBIGUITY_ACKNOWLEDGED"
+        ],
+        "É sempre feito do material mais resistente.": [
+          "AMBIGUITY_ACKNOWLEDGED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMBIGUOUS_SHINY_OBJECT",
+      "explanation": "Brilho é uma característica visível, mas não basta para confirmar a composição.",
+      "hint": "Separe aparência observada de material confirmado.",
+      "errorFocus": "AMBIGUITY_ACKNOWLEDGED",
+      "feedback": {
+        "correct": "Boa observação: Brilho é uma característica visível, mas não basta para confirmar a composição.",
+        "incorrect": "Brilho é uma característica visível, mas não basta para confirmar a composição.",
+        "hint": "Separe aparência observada de material confirmado.",
+        "errorFocus": "AMBIGUITY_ACKNOWLEDGED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-21",
+      "statement": "Uma turma quer guardar cartões leves em uma caixa que possa ser identificada por etiquetas. Uma caixa de papelão disponível atende ao uso do exemplo. Qual justificativa é baseada na situação?",
+      "prompt": "Uma turma quer guardar cartões leves em uma caixa que possa ser identificada por etiquetas. Uma caixa de papelão disponível atende ao uso do exemplo. Qual justificativa é baseada na situação?",
+      "options": [
+        "O papelão da caixa disponível permite guardar os cartões leves neste contexto.",
+        "Papelão serve para qualquer objeto em qualquer condição.",
+        "Toda caixa deve ser de metal.",
+        "A etiqueta muda o material da caixa."
+      ],
+      "correctAnswer": "O papelão da caixa disponível permite guardar os cartões leves neste contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Papelão serve para qualquer objeto em qualquer condição.": [
+          "CONTEXTUAL_MATERIAL_CHOICE"
+        ],
+        "Toda caixa deve ser de metal.": [
+          "CONTEXTUAL_MATERIAL_CHOICE"
+        ],
+        "A etiqueta muda o material da caixa.": [
+          "CONTEXTUAL_MATERIAL_CHOICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSROOM_STORAGE_BOX",
+      "explanation": "A escolha é justificada para os cartões e a condição descrita, sem generalização.",
+      "hint": "Use o objeto, o conteúdo e o contexto apresentados.",
+      "errorFocus": "CONTEXTUAL_MATERIAL_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: A escolha é justificada para os cartões e a condição descrita, sem generalização.",
+        "incorrect": "A escolha é justificada para os cartões e a condição descrita, sem generalização.",
+        "hint": "Use o objeto, o conteúdo e o contexto apresentados.",
+        "errorFocus": "CONTEXTUAL_MATERIAL_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-22",
+      "statement": "Uma fotografia de museu, com data e local, mostra um recipiente de cerâmica; um recipiente escolar atual é identificado como vidro. O que se pode investigar?",
+      "prompt": "Uma fotografia de museu, com data e local, mostra um recipiente de cerâmica; um recipiente escolar atual é identificado como vidro. O que se pode investigar?",
+      "options": [
+        "Qual recipiente foi usado por todas as pessoas daquele período.",
+        "Semelhanças de função e diferenças de material entre as fontes.",
+        "Que o vidro não existia quando a cerâmica era usada.",
+        "Que a foto revela sozinha a composição de qualquer recipiente."
+      ],
+      "correctAnswer": "Semelhanças de função e diferenças de material entre as fontes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual recipiente foi usado por todas as pessoas daquele período.": [
+          "COMPARE_FUNCTION_AND_SOURCE"
+        ],
+        "Que o vidro não existia quando a cerâmica era usada.": [
+          "COMPARE_FUNCTION_AND_SOURCE"
+        ],
+        "Que a foto revela sozinha a composição de qualquer recipiente.": [
+          "COMPARE_FUNCTION_AND_SOURCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MUSEUM_AND_CLASSROOM_VESSELS",
+      "explanation": "A atividade compara evidências situadas e não presume que representem todos os objetos.",
+      "hint": "Compare apenas as fontes disponíveis.",
+      "errorFocus": "COMPARE_FUNCTION_AND_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A atividade compara evidências situadas e não presume que representem todos os objetos.",
+        "incorrect": "A atividade compara evidências situadas e não presume que representem todos os objetos.",
+        "hint": "Compare apenas as fontes disponíveis.",
+        "errorFocus": "COMPARE_FUNCTION_AND_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-23",
+      "statement": "Um projeto didático compara uma janela antiga de madeira documentada com uma atual de vidro. Que evidência seria útil antes de explicar por que os materiais diferem?",
+      "prompt": "Um projeto didático compara uma janela antiga de madeira documentada com uma atual de vidro. Que evidência seria útil antes de explicar por que os materiais diferem?",
+      "options": [
+        "Uma opinião sobre qual época era melhor.",
+        "A cor da moldura sem consultar as fontes.",
+        "Fontes sobre data, contexto, função e materiais de cada janela.",
+        "A afirmação de que toda cidade mudou as janelas ao mesmo tempo."
+      ],
+      "correctAnswer": "Fontes sobre data, contexto, função e materiais de cada janela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma opinião sobre qual época era melhor.": [
+          "SEEK_ADDITIONAL_EVIDENCE"
+        ],
+        "A cor da moldura sem consultar as fontes.": [
+          "SEEK_ADDITIONAL_EVIDENCE"
+        ],
+        "A afirmação de que toda cidade mudou as janelas ao mesmo tempo.": [
+          "SEEK_ADDITIONAL_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RAIN_WINDOW_PROJECT",
+      "explanation": "Para explicar uma mudança, é necessário ampliar evidências além dos dois materiais observados.",
+      "hint": "Pergunte o que fontes adicionais poderiam confirmar.",
+      "errorFocus": "SEEK_ADDITIONAL_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Para explicar uma mudança, é necessário ampliar evidências além dos dois materiais observados.",
+        "incorrect": "Para explicar uma mudança, é necessário ampliar evidências além dos dois materiais observados.",
+        "hint": "Pergunte o que fontes adicionais poderiam confirmar.",
+        "errorFocus": "SEEK_ADDITIONAL_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-24",
+      "statement": "Uma ficha informa que uma mochila tem tecido flexível e fechos de metal. Que descrição respeita as partes identificadas?",
+      "prompt": "Uma ficha informa que uma mochila tem tecido flexível e fechos de metal. Que descrição respeita as partes identificadas?",
+      "options": [
+        "A mochila inteira é necessariamente de metal.",
+        "A mochila inteira é feita de papel.",
+        "O tecido e o metal são a mesma parte.",
+        "A mochila combina tecido e metal em partes diferentes."
+      ],
+      "correctAnswer": "A mochila combina tecido e metal em partes diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A mochila inteira é necessariamente de metal.": [
+          "MULTIPLE_MATERIALS"
+        ],
+        "A mochila inteira é feita de papel.": [
+          "MULTIPLE_MATERIALS"
+        ],
+        "O tecido e o metal são a mesma parte.": [
+          "MULTIPLE_MATERIALS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BACKPACK_MATERIAL_CARD",
+      "explanation": "A ficha associa materiais a partes distintas do objeto.",
+      "hint": "Considere os fechos e o corpo da mochila separadamente.",
+      "errorFocus": "MULTIPLE_MATERIALS",
+      "feedback": {
+        "correct": "Boa observação: A ficha associa materiais a partes distintas do objeto.",
+        "incorrect": "A ficha associa materiais a partes distintas do objeto.",
+        "hint": "Considere os fechos e o corpo da mochila separadamente.",
+        "errorFocus": "MULTIPLE_MATERIALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-25",
+      "statement": "Uma exposição apresenta uma ferramenta antiga com material identificado em uma ficha e uma ferramenta atual sem ficha. Qual comparação é mais responsável?",
+      "prompt": "Uma exposição apresenta uma ferramenta antiga com material identificado em uma ficha e uma ferramenta atual sem ficha. Qual comparação é mais responsável?",
+      "options": [
+        "Comparar o material documentado da antiga e buscar evidência antes de identificar o da atual.",
+        "Adivinhar o material atual pela cor.",
+        "Dizer que todas as ferramentas atuais têm o mesmo material.",
+        "Inventar uma data para a ferramenta sem ficha."
+      ],
+      "correctAnswer": "Comparar o material documentado da antiga e buscar evidência antes de identificar o da atual.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adivinhar o material atual pela cor.": [
+          "UNEQUAL_SOURCE_EVIDENCE"
+        ],
+        "Dizer que todas as ferramentas atuais têm o mesmo material.": [
+          "UNEQUAL_SOURCE_EVIDENCE"
+        ],
+        "Inventar uma data para a ferramenta sem ficha.": [
+          "UNEQUAL_SOURCE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HISTORICAL_TOOL_DISPLAY",
+      "explanation": "As fontes oferecem níveis diferentes de informação; a lacuna da ferramenta atual deve permanecer explícita.",
+      "hint": "Não preencha a ausência de uma fonte com um palpite.",
+      "errorFocus": "UNEQUAL_SOURCE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: As fontes oferecem níveis diferentes de informação; a lacuna da ferramenta atual deve permanecer explícita.",
+        "incorrect": "As fontes oferecem níveis diferentes de informação; a lacuna da ferramenta atual deve permanecer explícita.",
+        "hint": "Não preencha a ausência de uma fonte com um palpite.",
+        "errorFocus": "UNEQUAL_SOURCE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-26",
+      "statement": "Uma equipe escolhe um pote transparente para acompanhar visualmente o nível de sementes de demonstração. Qual característica contribui para essa observação?",
+      "prompt": "Uma equipe escolhe um pote transparente para acompanhar visualmente o nível de sementes de demonstração. Qual característica contribui para essa observação?",
+      "options": [
+        "A dureza prova que o pote é de madeira.",
+        "A transparência permite observar o conteúdo sem abrir o pote.",
+        "A opacidade permite enxergar o nível.",
+        "O rótulo altera a quantidade de sementes."
+      ],
+      "correctAnswer": "A transparência permite observar o conteúdo sem abrir o pote.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A dureza prova que o pote é de madeira.": [
+          "PROPERTY_SUPPORTS_TASK"
+        ],
+        "A opacidade permite enxergar o nível.": [
+          "PROPERTY_SUPPORTS_TASK"
+        ],
+        "O rótulo altera a quantidade de sementes.": [
+          "PROPERTY_SUPPORTS_TASK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TRANSPARENT_STORAGE_JAR",
+      "explanation": "A transparência contribui para observar o conteúdo, como definido no contexto.",
+      "hint": "Relacione a característica à ação de observar.",
+      "errorFocus": "PROPERTY_SUPPORTS_TASK",
+      "feedback": {
+        "correct": "Boa observação: A transparência contribui para observar o conteúdo, como definido no contexto.",
+        "incorrect": "A transparência contribui para observar o conteúdo, como definido no contexto.",
+        "hint": "Relacione a característica à ação de observar.",
+        "errorFocus": "PROPERTY_SUPPORTS_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-27",
+      "statement": "Duas escovas de limpeza de demonstração têm cerdas de materiais distintos e são usadas na mesma tarefa. O que essa comparação mostra?",
+      "prompt": "Duas escovas de limpeza de demonstração têm cerdas de materiais distintos e são usadas na mesma tarefa. O que essa comparação mostra?",
+      "options": [
+        "Uma função sempre exige um único material.",
+        "A função torna os materiais idênticos.",
+        "Mais de um material pode servir a uma função, conforme as propriedades e o contexto.",
+        "Um exemplo prova que todos os materiais funcionam igual."
+      ],
+      "correctAnswer": "Mais de um material pode servir a uma função, conforme as propriedades e o contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma função sempre exige um único material.": [
+          "FUNCTION_MATERIAL_VARIATION"
+        ],
+        "A função torna os materiais idênticos.": [
+          "FUNCTION_MATERIAL_VARIATION"
+        ],
+        "Um exemplo prova que todos os materiais funcionam igual.": [
+          "FUNCTION_MATERIAL_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "TWO_MATERIALS_SAME_FUNCTION",
+      "explanation": "A comparação de dois exemplos mostra possibilidade, não equivalência universal.",
+      "hint": "Diferencie “pode servir” de “sempre serve”.",
+      "errorFocus": "FUNCTION_MATERIAL_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A comparação de dois exemplos mostra possibilidade, não equivalência universal.",
+        "incorrect": "A comparação de dois exemplos mostra possibilidade, não equivalência universal.",
+        "hint": "Diferencie “pode servir” de “sempre serve”.",
+        "errorFocus": "FUNCTION_MATERIAL_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-28",
+      "statement": "Uma atividade compara recipientes históricos. Uma estudante não conhece objetos antigos de sua família. Como a investigação pode continuar?",
+      "prompt": "Uma atividade compara recipientes históricos. Uma estudante não conhece objetos antigos de sua família. Como a investigação pode continuar?",
+      "options": [
+        "Excluindo a estudante da atividade.",
+        "Pedindo que invente uma história familiar.",
+        "Afirmando que todos precisam trazer um objeto antigo.",
+        "Usando fontes didáticas identificadas, sem exigir relatos ou objetos familiares."
+      ],
+      "correctAnswer": "Usando fontes didáticas identificadas, sem exigir relatos ou objetos familiares.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Excluindo a estudante da atividade.": [
+          "ACCESS_WITHOUT_PERSONAL_ARTIFACT"
+        ],
+        "Pedindo que invente uma história familiar.": [
+          "ACCESS_WITHOUT_PERSONAL_ARTIFACT"
+        ],
+        "Afirmando que todos precisam trazer um objeto antigo.": [
+          "ACCESS_WITHOUT_PERSONAL_ARTIFACT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "FAMILY_HISTORY_NOT_REQUIRED",
+      "explanation": "O conteúdo pode ser investigado com fontes fornecidas e sem solicitar dados pessoais.",
+      "hint": "Procure uma alternativa comum e acessível à turma.",
+      "errorFocus": "ACCESS_WITHOUT_PERSONAL_ARTIFACT",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo pode ser investigado com fontes fornecidas e sem solicitar dados pessoais.",
+        "incorrect": "O conteúdo pode ser investigado com fontes fornecidas e sem solicitar dados pessoais.",
+        "hint": "Procure uma alternativa comum e acessível à turma.",
+        "errorFocus": "ACCESS_WITHOUT_PERSONAL_ARTIFACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-29",
+      "statement": "Qual procedimento ajuda a identificar o material de um objeto quando sua aparência é ambígua?",
+      "prompt": "Qual procedimento ajuda a identificar o material de um objeto quando sua aparência é ambígua?",
+      "options": [
+        "Consultar uma etiqueta, ficha ou fonte confiável e registrar a incerteza se ela não existir.",
+        "Escolher o material pela cor.",
+        "Supor que objetos parecidos sempre tenham a mesma composição.",
+        "Desmontar o objeto sem autorização."
+      ],
+      "correctAnswer": "Consultar uma etiqueta, ficha ou fonte confiável e registrar a incerteza se ela não existir.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher o material pela cor.": [
+          "CONFIRM_MATERIAL"
+        ],
+        "Supor que objetos parecidos sempre tenham a mesma composição.": [
+          "CONFIRM_MATERIAL"
+        ],
+        "Desmontar o objeto sem autorização.": [
+          "CONFIRM_MATERIAL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_MATERIAL_SOURCE",
+      "explanation": "A consulta à fonte confirma melhor a identificação e preserva dúvidas não resolvidas.",
+      "hint": "Procure uma evidência de composição, não apenas visual.",
+      "errorFocus": "CONFIRM_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A consulta à fonte confirma melhor a identificação e preserva dúvidas não resolvidas.",
+        "incorrect": "A consulta à fonte confirma melhor a identificação e preserva dúvidas não resolvidas.",
+        "hint": "Procure uma evidência de composição, não apenas visual.",
+        "errorFocus": "CONFIRM_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-30",
+      "statement": "Uma fonte mostra um brinquedo de madeira de um período e lugar específicos. Qual afirmação evita generalização?",
+      "prompt": "Uma fonte mostra um brinquedo de madeira de um período e lugar específicos. Qual afirmação evita generalização?",
+      "options": [
+        "Todos os brinquedos antigos eram de madeira.",
+        "A fonte documenta esse brinquedo naquele contexto.",
+        "Nenhum brinquedo atual usa madeira.",
+        "O material era igual em todos os lugares."
+      ],
+      "correctAnswer": "A fonte documenta esse brinquedo naquele contexto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os brinquedos antigos eram de madeira.": [
+          "HISTORICAL_SCOPE"
+        ],
+        "Nenhum brinquedo atual usa madeira.": [
+          "HISTORICAL_SCOPE"
+        ],
+        "O material era igual em todos os lugares.": [
+          "HISTORICAL_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_HISTORICAL_SCOPE",
+      "explanation": "A conclusão mantém o escopo indicado pela fonte.",
+      "hint": "Inclua período, lugar ou exemplo na conclusão.",
+      "errorFocus": "HISTORICAL_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão mantém o escopo indicado pela fonte.",
+        "incorrect": "A conclusão mantém o escopo indicado pela fonte.",
+        "hint": "Inclua período, lugar ou exemplo na conclusão.",
+        "errorFocus": "HISTORICAL_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-31",
+      "statement": "Uma ficha identifica uma garrafa reutilizável como plástico rígido. Qual frase relaciona material e uso sem afirmar que isso seja a única opção?",
+      "prompt": "Uma ficha identifica uma garrafa reutilizável como plástico rígido. Qual frase relaciona material e uso sem afirmar que isso seja a única opção?",
+      "options": [
+        "Toda garrafa precisa ser de plástico.",
+        "A rigidez prova que nunca haverá vazamento.",
+        "A rigidez pode ajudar a garrafa a manter sua forma durante o uso descrito.",
+        "O plástico e o vidro são o mesmo material."
+      ],
+      "correctAnswer": "A rigidez pode ajudar a garrafa a manter sua forma durante o uso descrito.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda garrafa precisa ser de plástico.": [
+          "PROPORTIONATE_PROPERTY_EXPLANATION"
+        ],
+        "A rigidez prova que nunca haverá vazamento.": [
+          "PROPORTIONATE_PROPERTY_EXPLANATION"
+        ],
+        "O plástico e o vidro são o mesmo material.": [
+          "PROPORTIONATE_PROPERTY_EXPLANATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "LOCK_IN_PROPERTY_AND_USE",
+      "explanation": "A frase apresenta uma contribuição possível, não uma regra universal nem garantia.",
+      "hint": "Use “pode contribuir” em vez de “sempre”.",
+      "errorFocus": "PROPORTIONATE_PROPERTY_EXPLANATION",
+      "feedback": {
+        "correct": "Boa observação: A frase apresenta uma contribuição possível, não uma regra universal nem garantia.",
+        "incorrect": "A frase apresenta uma contribuição possível, não uma regra universal nem garantia.",
+        "hint": "Use “pode contribuir” em vez de “sempre”.",
+        "errorFocus": "PROPORTIONATE_PROPERTY_EXPLANATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-32",
+      "statement": "Uma fotografia antiga e uma ficha atual mostram partes de uma cadeira, mas apenas uma fonte nomeia o material. O que falta para comparar materiais?",
+      "prompt": "Uma fotografia antiga e uma ficha atual mostram partes de uma cadeira, mas apenas uma fonte nomeia o material. O que falta para comparar materiais?",
+      "options": [
+        "Uma suposição baseada na cor.",
+        "Uma conclusão sobre todas as cadeiras.",
+        "Uma medida do tamanho do papel da fotografia.",
+        "Uma fonte confiável que identifique o material da cadeira sem essa informação."
+      ],
+      "correctAnswer": "Uma fonte confiável que identifique o material da cadeira sem essa informação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma suposição baseada na cor.": [
+          "EVIDENCE_GAP"
+        ],
+        "Uma conclusão sobre todas as cadeiras.": [
+          "EVIDENCE_GAP"
+        ],
+        "Uma medida do tamanho do papel da fotografia.": [
+          "EVIDENCE_GAP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCK_IN_TWO_SOURCES",
+      "explanation": "A comparação de composição exige evidência para os dois exemplos.",
+      "hint": "Identifique qual informação está ausente.",
+      "errorFocus": "EVIDENCE_GAP",
+      "feedback": {
+        "correct": "Boa observação: A comparação de composição exige evidência para os dois exemplos.",
+        "incorrect": "A comparação de composição exige evidência para os dois exemplos.",
+        "hint": "Identifique qual informação está ausente.",
+        "errorFocus": "EVIDENCE_GAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-33",
+      "statement": "Uma lanterna é descrita com corpo de plástico e partes metálicas. Qual afirmação reconhece essa combinação?",
+      "prompt": "Uma lanterna é descrita com corpo de plástico e partes metálicas. Qual afirmação reconhece essa combinação?",
+      "options": [
+        "O objeto reúne materiais diferentes em partes distintas.",
+        "A lanterna inteira é apenas de plástico.",
+        "A lanterna inteira é apenas de metal.",
+        "Um objeto não pode combinar materiais."
+      ],
+      "correctAnswer": "O objeto reúne materiais diferentes em partes distintas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A lanterna inteira é apenas de plástico.": [
+          "COMPOSITE_MATERIALS"
+        ],
+        "A lanterna inteira é apenas de metal.": [
+          "COMPOSITE_MATERIALS"
+        ],
+        "Um objeto não pode combinar materiais.": [
+          "COMPOSITE_MATERIALS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_COMPOSITE_OBJECT",
+      "explanation": "Objetos podem ter partes de composições distintas.",
+      "hint": "Use a descrição de cada parte.",
+      "errorFocus": "COMPOSITE_MATERIALS",
+      "feedback": {
+        "correct": "Boa observação: Objetos podem ter partes de composições distintas.",
+        "incorrect": "Objetos podem ter partes de composições distintas.",
+        "hint": "Use a descrição de cada parte.",
+        "errorFocus": "COMPOSITE_MATERIALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-34",
+      "statement": "Depois de comparar duas fontes sobre objetos de épocas diferentes, qual conclusão é mais adequada?",
+      "prompt": "Depois de comparar duas fontes sobre objetos de épocas diferentes, qual conclusão é mais adequada?",
+      "options": [
+        "O material antigo foi substituído em todos os lugares.",
+        "Os exemplos mostram materiais distintos; outras fontes seriam necessárias para avaliar a extensão da mudança.",
+        "Uma imagem prova todos os usos de um período.",
+        "Não é possível aprender nada com fontes identificadas."
+      ],
+      "correctAnswer": "Os exemplos mostram materiais distintos; outras fontes seriam necessárias para avaliar a extensão da mudança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O material antigo foi substituído em todos os lugares.": [
+          "CHANGE_WITHOUT_UNIVERSAL_CLAIM"
+        ],
+        "Uma imagem prova todos os usos de um período.": [
+          "CHANGE_WITHOUT_UNIVERSAL_CLAIM"
+        ],
+        "Não é possível aprender nada com fontes identificadas.": [
+          "CHANGE_WITHOUT_UNIVERSAL_CLAIM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_LIMIT",
+      "explanation": "A conclusão reconhece o achado e seu limite.",
+      "hint": "Combine o que a comparação mostra com o que não mostra.",
+      "errorFocus": "CHANGE_WITHOUT_UNIVERSAL_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A conclusão reconhece o achado e seu limite.",
+        "incorrect": "A conclusão reconhece o achado e seu limite.",
+        "hint": "Combine o que a comparação mostra com o que não mostra.",
+        "errorFocus": "CHANGE_WITHOUT_UNIVERSAL_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-35",
+      "statement": "Onde procurar uma identificação direta do material de um objeto escolar?",
+      "prompt": "Onde procurar uma identificação direta do material de um objeto escolar?",
+      "options": [
+        "Somente na cor.",
+        "Em uma história não verificada.",
+        "Em uma etiqueta, ficha ou fonte que descreva o objeto.",
+        "Na opinião sobre objetos parecidos."
+      ],
+      "correctAnswer": "Em uma etiqueta, ficha ou fonte que descreva o objeto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente na cor.": [
+          "REVIEW_SOURCE"
+        ],
+        "Em uma história não verificada.": [
+          "REVIEW_SOURCE"
+        ],
+        "Na opinião sobre objetos parecidos.": [
+          "REVIEW_SOURCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_MATERIAL_LABEL",
+      "explanation": "A identificação deve vir de uma evidência que informe a composição.",
+      "hint": "Lembre-se de fontes que nomeiam o material.",
+      "errorFocus": "REVIEW_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A identificação deve vir de uma evidência que informe a composição.",
+        "incorrect": "A identificação deve vir de uma evidência que informe a composição.",
+        "hint": "Lembre-se de fontes que nomeiam o material.",
+        "errorFocus": "REVIEW_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-36",
+      "statement": "Uma janela transparente permite que a luz passe. Qual propriedade está em foco?",
+      "prompt": "Uma janela transparente permite que a luz passe. Qual propriedade está em foco?",
+      "options": [
+        "Opacidade",
+        "Fragilidade obrigatória",
+        "Elasticidade",
+        "Transparência"
+      ],
+      "correctAnswer": "Transparência",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Opacidade": [
+          "REVIEW_PROPERTY"
+        ],
+        "Fragilidade obrigatória": [
+          "REVIEW_PROPERTY"
+        ],
+        "Elasticidade": [
+          "REVIEW_PROPERTY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVIEW_TRANSPARENCY",
+      "explanation": "A passagem de luz é a característica observada no exemplo.",
+      "hint": "Pense em ver através do painel.",
+      "errorFocus": "REVIEW_PROPERTY",
+      "feedback": {
+        "correct": "Boa observação: A passagem de luz é a característica observada no exemplo.",
+        "incorrect": "A passagem de luz é a característica observada no exemplo.",
+        "hint": "Pense em ver através do painel.",
+        "errorFocus": "REVIEW_PROPERTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-37",
+      "statement": "Um objeto tem corpo de tecido e fechos de metal. Como descrever seus materiais?",
+      "prompt": "Um objeto tem corpo de tecido e fechos de metal. Como descrever seus materiais?",
+      "options": [
+        "Como uma combinação de materiais em partes diferentes.",
+        "Como um objeto de um único material.",
+        "Como feito apenas de metal.",
+        "Como feito apenas de tecido."
+      ],
+      "correctAnswer": "Como uma combinação de materiais em partes diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como um objeto de um único material.": [
+          "REVIEW_COMPOSITION"
+        ],
+        "Como feito apenas de metal.": [
+          "REVIEW_COMPOSITION"
+        ],
+        "Como feito apenas de tecido.": [
+          "REVIEW_COMPOSITION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_MULTIPLE_PARTS",
+      "explanation": "A descrição associa um material a cada parte indicada.",
+      "hint": "Observe corpo e fechos separadamente.",
+      "errorFocus": "REVIEW_COMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: A descrição associa um material a cada parte indicada.",
+        "incorrect": "A descrição associa um material a cada parte indicada.",
+        "hint": "Observe corpo e fechos separadamente.",
+        "errorFocus": "REVIEW_COMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-38",
+      "statement": "Uma ficha datada mostra um objeto de madeira e outra fonte descreve um objeto atual de metal. O que os registros sustentam?",
+      "prompt": "Uma ficha datada mostra um objeto de madeira e outra fonte descreve um objeto atual de metal. O que os registros sustentam?",
+      "options": [
+        "Todos os objetos antigos eram de madeira.",
+        "Esses dois exemplos têm materiais registrados diferentes.",
+        "O metal só passou a existir no presente.",
+        "Todos os objetos atuais são de metal."
+      ],
+      "correctAnswer": "Esses dois exemplos têm materiais registrados diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os objetos antigos eram de madeira.": [
+          "REVIEW_SCOPE"
+        ],
+        "O metal só passou a existir no presente.": [
+          "REVIEW_SCOPE"
+        ],
+        "Todos os objetos atuais são de metal.": [
+          "REVIEW_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_PAST_PRESENT",
+      "explanation": "A conclusão fica restrita aos exemplos documentados.",
+      "hint": "Evite afirmar algo sobre todos os objetos.",
+      "errorFocus": "REVIEW_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão fica restrita aos exemplos documentados.",
+        "incorrect": "A conclusão fica restrita aos exemplos documentados.",
+        "hint": "Evite afirmar algo sobre todos os objetos.",
+        "errorFocus": "REVIEW_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-39",
+      "statement": "Uma fotografia não informa de que material é feito um objeto. Qual anotação é melhor?",
+      "prompt": "Uma fotografia não informa de que material é feito um objeto. Qual anotação é melhor?",
+      "options": [
+        "Metal, porque a imagem tem brilho.",
+        "Madeira, porque o objeto parece antigo.",
+        "Material não confirmado pela fonte disponível.",
+        "Vidro, porque aparece em uma fotografia."
+      ],
+      "correctAnswer": "Material não confirmado pela fonte disponível.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Metal, porque a imagem tem brilho.": [
+          "REVIEW_UNCERTAINTY"
+        ],
+        "Madeira, porque o objeto parece antigo.": [
+          "REVIEW_UNCERTAINTY"
+        ],
+        "Vidro, porque aparece em uma fotografia.": [
+          "REVIEW_UNCERTAINTY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_UNCONFIRMED_MATERIAL",
+      "explanation": "Registrar a incerteza é mais rigoroso do que transformar aparência em confirmação.",
+      "hint": "Escreva o que a fonte ainda não informa.",
+      "errorFocus": "REVIEW_UNCERTAINTY",
+      "feedback": {
+        "correct": "Boa observação: Registrar a incerteza é mais rigoroso do que transformar aparência em confirmação.",
+        "incorrect": "Registrar a incerteza é mais rigoroso do que transformar aparência em confirmação.",
+        "hint": "Escreva o que a fonte ainda não informa.",
+        "errorFocus": "REVIEW_UNCERTAINTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v2-science-daily-materials-and-history-40",
+      "statement": "Que elementos tornam uma comparação entre materiais de épocas diferentes mais confiável?",
+      "prompt": "Que elementos tornam uma comparação entre materiais de épocas diferentes mais confiável?",
+      "options": [
+        "Uma lembrança sem data e uma generalização.",
+        "Somente a cor de duas fotografias.",
+        "A escolha de um material como sempre melhor.",
+        "Fontes com data e contexto, materiais identificados e conclusões limitadas às evidências."
+      ],
+      "correctAnswer": "Fontes com data e contexto, materiais identificados e conclusões limitadas às evidências.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma lembrança sem data e uma generalização.": [
+          "REVIEW_EVIDENCE_AND_CONTEXT"
+        ],
+        "Somente a cor de duas fotografias.": [
+          "REVIEW_EVIDENCE_AND_CONTEXT"
+        ],
+        "A escolha de um material como sempre melhor.": [
+          "REVIEW_EVIDENCE_AND_CONTEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_FINAL_COMPARISON",
+      "explanation": "A comparação precisa de contexto, identificação e limites explícitos.",
+      "hint": "Reúna fonte, data, material e escopo da conclusão.",
+      "errorFocus": "REVIEW_EVIDENCE_AND_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A comparação precisa de contexto, identificação e limites explícitos.",
+        "incorrect": "A comparação precisa de contexto, identificação e limites explícitos.",
+        "hint": "Reúna fonte, data, material e escopo da conclusão.",
+        "errorFocus": "REVIEW_EVIDENCE_AND_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar objetos por fotografias com descrição textual, amostras táteis seguras, rótulos ampliados e vocabulário visual; não usar vidro quebrado, ferramentas ou materiais cortantes.",
+          "Permitir respostas por fala, apontar, desenho, cartões, escrita ou tecnologia assistiva; oferecer instruções curtas, tempo flexível e materiais em alto contraste.",
+          "Fornecer fontes históricas já identificadas com data e contexto, sem pedir que crianças tragam objetos de valor ou relatos familiares."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

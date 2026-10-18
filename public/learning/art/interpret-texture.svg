@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Impressão com marcas repetidas</title>
+  <desc id="desc">Marcas pretas curtas se repetem em faixas sobre papel claro, com uma faixa central mais densa.</desc>
+  <rect width="600" height="360" fill="#f1e9d9"/>
+  <g stroke="#1f292a" stroke-width="9" stroke-linecap="round">
+    <path d="M55 72h55 M140 72h42 M215 72h65 M330 72h48 M410 72h70 M520 72h34"/>
+    <path d="M65 145h58 M150 145h70 M245 145h46 M315 145h70 M405 145h40 M472 145h64"/>
+    <path d="M40 210h36 M92 210h31 M140 210h40 M195 210h28 M235 210h44 M292 210h32 M338 210h46 M400 210h27 M440 210h49 M505 210h41"/>
+    <path d="M65 285h52 M150 285h42 M225 285h62 M330 285h45 M415 285h65 M510 285h35"/>
+  </g>
+  <path d="M35 183h530" stroke="#bb6847" stroke-width="4" opacity=".8"/>
+</svg>

@@ -1,0 +1,2033 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01ma10-missing-sequence-elements-v1",
+  "canonicalSkillCode": "MATHEMATICS_DESCRIBE_MISSING_RECURSIVE_SEQUENCE_ELEMENTS",
+  "subject": "MATHEMATICS",
+  "domain": "ÁLGEBRA",
+  "topic": "reconhecimento de regularidades e descrição de elementos ausentes",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA10",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever, após o reconhecimento e a explicitação de um padrão (ou regularidade), os elementos ausentes em sequências recursivas de números naturais, objetos ou figuras.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Descobrir e explicar o que falta na sequência",
+    "objective": "Reconhecer uma regularidade em sequências curtas de números naturais, objetos ou figuras e descrever o elemento ausente junto com a regra observada.",
+    "summary": "Uma sequência organiza elementos em uma ordem. Para encontrar um espaço vazio, observe como um elemento se relaciona com o anterior: pode aumentar de um em um, avançar dois passos ou repetir uma ordem de figuras. Dizer a regra ajuda a explicar por que a resposta combina.",
+    "explanation": "Leia ou observe a sequência da esquerda para a direita. Compare elementos vizinhos e procure uma ação que se repete. Em 2, 4, 6, cada número aumenta dois; por isso, o próximo é 8. Em círculo, quadrado, círculo, quadrado, a ordem de figuras alterna. Antes de responder, diga a regra com palavras e confira se ela funciona em mais de um passo.",
+    "workedExample": "Na sequência 3, 5, 7, __, cada número aumenta dois em relação ao anterior. Depois de 7 vêm 9. A explicação “somar 2 a cada passo” confirma a resposta usando a regularidade observada.",
+    "commonMistake": "Escolher um número que parece familiar sem conferir a relação entre elementos vizinhos ou explicar a regra.",
+    "priorKnowledge": [
+      "Contar números naturais em uma faixa adequada ao primeiro ano.",
+      "Observar semelhanças e diferenças entre objetos, cores e formas."
+    ],
+    "keyConcepts": [
+      "sequência",
+      "ordem",
+      "regularidade",
+      "elemento ausente",
+      "regra entre termos"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GUESS_WITHOUT_RULE",
+        "action": "Cubra o espaço vazio, compare cada par vizinho e diga em voz alta o que acontece de um elemento para o próximo."
+      },
+      {
+        "errorFocus": "NUMERIC_STEP_CONFUSION",
+        "action": "Use tampinhas ou uma reta numérica para representar cada avanço antes de nomear o próximo número."
+      },
+      {
+        "errorFocus": "REPEATING_OBJECT_PATTERN",
+        "action": "Agrupe as figuras em blocos iguais e observe qual figura ocupa o lugar correspondente no bloco seguinte."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+      "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma10-sequence-train",
+        "title": "Trem das regularidades",
+        "instructions": "Vagões coloridos mostram sequências numéricas e de formas com um lugar vazio.\n1. Compare os vagões vizinhos.\n2. Diga a regra que se repete.\n3. Escolha ou construa o vagão que falta e confira a regra.",
+        "steps": [
+          "Compare os vagões vizinhos.",
+          "Diga a regra que se repete.",
+          "Escolha ou construa o vagão que falta e confira a regra."
+        ],
+        "evidence": "Elemento escolhido acompanhado de uma explicação coerente com mais de um passo da sequência.",
+        "privacyGuard": "Usar materiais escolares ou cenários fictícios; não registrar informações pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um elemento parecido com ajuda.",
+            "developing": "completa uma sequência após modelagem da regra.",
+            "proficient": "descreve a regularidade e usa-a para justificar o elemento ausente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma10-pattern-table",
+        "title": "Cartões que crescem",
+        "instructions": "Cartões ilustram coleções que aumentam sempre pela mesma quantidade.\n1. Conte os elementos de dois cartões consecutivos.\n2. Compare quantos foram acrescentados.\n3. Desenhe o próximo cartão e conte novamente para verificar.",
+        "steps": [
+          "Conte os elementos de dois cartões consecutivos.",
+          "Compare quantos foram acrescentados.",
+          "Desenhe o próximo cartão e conte novamente para verificar."
+        ],
+        "evidence": "Representação do próximo grupo e descrição da quantidade acrescentada a cada passo.",
+        "privacyGuard": "A tarefa usa coleções ilustradas e não requer dados ou materiais pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "conta elementos com apoio.",
+            "developing": "percebe uma mudança entre dois cartões.",
+            "proficient": "mantém a regularidade e explica a relação entre cartões consecutivos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01ma10-missing-sequence-elements-v1-01",
+          "bncc-ef01ma10-missing-sequence-elements-v1-02",
+          "bncc-ef01ma10-missing-sequence-elements-v1-03",
+          "bncc-ef01ma10-missing-sequence-elements-v1-04",
+          "bncc-ef01ma10-missing-sequence-elements-v1-05",
+          "bncc-ef01ma10-missing-sequence-elements-v1-06",
+          "bncc-ef01ma10-missing-sequence-elements-v1-07",
+          "bncc-ef01ma10-missing-sequence-elements-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01ma10-missing-sequence-elements-v1-09",
+          "bncc-ef01ma10-missing-sequence-elements-v1-10",
+          "bncc-ef01ma10-missing-sequence-elements-v1-11",
+          "bncc-ef01ma10-missing-sequence-elements-v1-12",
+          "bncc-ef01ma10-missing-sequence-elements-v1-13",
+          "bncc-ef01ma10-missing-sequence-elements-v1-14",
+          "bncc-ef01ma10-missing-sequence-elements-v1-15",
+          "bncc-ef01ma10-missing-sequence-elements-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01ma10-missing-sequence-elements-v1-17",
+          "bncc-ef01ma10-missing-sequence-elements-v1-18",
+          "bncc-ef01ma10-missing-sequence-elements-v1-19",
+          "bncc-ef01ma10-missing-sequence-elements-v1-20",
+          "bncc-ef01ma10-missing-sequence-elements-v1-21",
+          "bncc-ef01ma10-missing-sequence-elements-v1-22",
+          "bncc-ef01ma10-missing-sequence-elements-v1-23",
+          "bncc-ef01ma10-missing-sequence-elements-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01ma10-missing-sequence-elements-v1-25",
+          "bncc-ef01ma10-missing-sequence-elements-v1-26",
+          "bncc-ef01ma10-missing-sequence-elements-v1-27",
+          "bncc-ef01ma10-missing-sequence-elements-v1-28",
+          "bncc-ef01ma10-missing-sequence-elements-v1-29",
+          "bncc-ef01ma10-missing-sequence-elements-v1-30",
+          "bncc-ef01ma10-missing-sequence-elements-v1-31",
+          "bncc-ef01ma10-missing-sequence-elements-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01ma10-missing-sequence-elements-v1-33",
+          "bncc-ef01ma10-missing-sequence-elements-v1-34",
+          "bncc-ef01ma10-missing-sequence-elements-v1-35",
+          "bncc-ef01ma10-missing-sequence-elements-v1-36",
+          "bncc-ef01ma10-missing-sequence-elements-v1-37",
+          "bncc-ef01ma10-missing-sequence-elements-v1-38",
+          "bncc-ef01ma10-missing-sequence-elements-v1-39",
+          "bncc-ef01ma10-missing-sequence-elements-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA10",
+        "descriptor": "Descrever, após o reconhecimento e a explicitação de um padrão (ou regularidade), os elementos ausentes em sequências recursivas de números naturais, objetos ou figuras.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-01",
+      "statement": "No trem, os vagões mostram 2, 4, 6, __. Qual número falta e qual regra combina?",
+      "prompt": "No trem, os vagões mostram 2, 4, 6, __. Qual número falta e qual regra combina?",
+      "options": [
+        "8; aumentar 2 a cada vagão.",
+        "7; aumentar 1",
+        "9; aumentar 3",
+        "6; repetir o número"
+      ],
+      "correctAnswer": "8; aumentar 2 a cada vagão.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7; aumentar 1": [
+          "NUMERIC_INCREMENT_TWO"
+        ],
+        "9; aumentar 3": [
+          "NUMERIC_INCREMENT_TWO"
+        ],
+        "6; repetir o número": [
+          "NUMERIC_INCREMENT_TWO"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TREM_NUMERICO_DE_DOIS_EM_DOIS",
+      "explanation": "De 2 para 4 e de 4 para 6 foram acrescentados dois.",
+      "hint": "Compare números vizinhos.",
+      "errorFocus": "NUMERIC_INCREMENT_TWO",
+      "feedback": {
+        "correct": "Boa observação: De 2 para 4 e de 4 para 6 foram acrescentados dois.",
+        "incorrect": "De 2 para 4 e de 4 para 6 foram acrescentados dois.",
+        "hint": "Compare números vizinhos.",
+        "errorFocus": "NUMERIC_INCREMENT_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-02",
+      "statement": "Uma sequência tem 1, 3, 5, __ tampinhas em cada desenho. O que vem depois?",
+      "prompt": "Uma sequência tem 1, 3, 5, __ tampinhas em cada desenho. O que vem depois?",
+      "options": [
+        "6; acrescentar 1",
+        "7; acrescentar 2 tampinhas.",
+        "8; acrescentar 3",
+        "5; não acrescentar"
+      ],
+      "correctAnswer": "7; acrescentar 2 tampinhas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "6; acrescentar 1": [
+          "ODD_COUNTING_PATTERN"
+        ],
+        "8; acrescentar 3": [
+          "ODD_COUNTING_PATTERN"
+        ],
+        "5; não acrescentar": [
+          "ODD_COUNTING_PATTERN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARES_DE_TAMPINHAS",
+      "explanation": "Cada grupo ganha duas tampinhas em relação ao anterior.",
+      "hint": "Conte o que foi acrescentado.",
+      "errorFocus": "ODD_COUNTING_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: Cada grupo ganha duas tampinhas em relação ao anterior.",
+        "incorrect": "Cada grupo ganha duas tampinhas em relação ao anterior.",
+        "hint": "Conte o que foi acrescentado.",
+        "errorFocus": "ODD_COUNTING_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-03",
+      "statement": "A fila de formas é círculo, quadrado, círculo, __. Qual forma falta?",
+      "prompt": "A fila de formas é círculo, quadrado, círculo, __. Qual forma falta?",
+      "options": [
+        "Triângulo; três formas se repetem",
+        "Círculo; repetir a primeira",
+        "Quadrado; as formas alternam.",
+        "Retângulo; escolher qualquer forma"
+      ],
+      "correctAnswer": "Quadrado; as formas alternam.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Triângulo; três formas se repetem": [
+          "ALTERNATING_SHAPE_PATTERN"
+        ],
+        "Círculo; repetir a primeira": [
+          "ALTERNATING_SHAPE_PATTERN"
+        ],
+        "Retângulo; escolher qualquer forma": [
+          "ALTERNATING_SHAPE_PATTERN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FORMAS_ALTERNADAS",
+      "explanation": "A ordem alterna círculo e quadrado.",
+      "hint": "Observe as duas formas anteriores.",
+      "errorFocus": "ALTERNATING_SHAPE_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A ordem alterna círculo e quadrado.",
+        "incorrect": "A ordem alterna círculo e quadrado.",
+        "hint": "Observe as duas formas anteriores.",
+        "errorFocus": "ALTERNATING_SHAPE_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-04",
+      "statement": "Os cartões mostram 3, 6, 9, __ estrelas. Qual é o próximo grupo?",
+      "prompt": "Os cartões mostram 3, 6, 9, __ estrelas. Qual é o próximo grupo?",
+      "options": [
+        "10 estrelas; acrescentar 1",
+        "11 estrelas; acrescentar 2",
+        "9 estrelas; repetir",
+        "12 estrelas; acrescentar 3."
+      ],
+      "correctAnswer": "12 estrelas; acrescentar 3.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "10 estrelas; acrescentar 1": [
+          "THREE_MORE_EACH_STEP"
+        ],
+        "11 estrelas; acrescentar 2": [
+          "THREE_MORE_EACH_STEP"
+        ],
+        "9 estrelas; repetir": [
+          "THREE_MORE_EACH_STEP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BLOCOS_DE_TRES_ESTRELAS",
+      "explanation": "A quantidade aumenta três em cada cartão.",
+      "hint": "Conte o aumento de um cartão para o seguinte.",
+      "errorFocus": "THREE_MORE_EACH_STEP",
+      "feedback": {
+        "correct": "Boa observação: A quantidade aumenta três em cada cartão.",
+        "incorrect": "A quantidade aumenta três em cada cartão.",
+        "hint": "Conte o aumento de um cartão para o seguinte.",
+        "errorFocus": "THREE_MORE_EACH_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-05",
+      "statement": "A sequência é triângulo, círculo, triângulo, círculo, __. O que falta?",
+      "prompt": "A sequência é triângulo, círculo, triângulo, círculo, __. O que falta?",
+      "options": [
+        "Triângulo; a dupla se repete.",
+        "Quadrado; iniciar outra figura",
+        "Círculo; duplicar o último",
+        "Retângulo; trocar sem regra"
+      ],
+      "correctAnswer": "Triângulo; a dupla se repete.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Quadrado; iniciar outra figura": [
+          "REPEATED_PAIR_OF_SHAPES"
+        ],
+        "Círculo; duplicar o último": [
+          "REPEATED_PAIR_OF_SHAPES"
+        ],
+        "Retângulo; trocar sem regra": [
+          "REPEATED_PAIR_OF_SHAPES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SEQUENCIA_DE_TRIANGULO_E_CIRCULO",
+      "explanation": "O bloco triângulo-círculo se repete na mesma ordem.",
+      "hint": "Encontre a primeira dupla.",
+      "errorFocus": "REPEATED_PAIR_OF_SHAPES",
+      "feedback": {
+        "correct": "Boa observação: O bloco triângulo-círculo se repete na mesma ordem.",
+        "incorrect": "O bloco triângulo-círculo se repete na mesma ordem.",
+        "hint": "Encontre a primeira dupla.",
+        "errorFocus": "REPEATED_PAIR_OF_SHAPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-06",
+      "statement": "Em quatro desenhos, a pilha tem 4, 5, 6, __ livros. Qual quantidade segue a regra?",
+      "prompt": "Em quatro desenhos, a pilha tem 4, 5, 6, __ livros. Qual quantidade segue a regra?",
+      "options": [
+        "8 livros; aumentar 2",
+        "7 livros; aumentar 1.",
+        "6 livros; voltar 1",
+        "9 livros; aumentar 3"
+      ],
+      "correctAnswer": "7 livros; aumentar 1.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "8 livros; aumentar 2": [
+          "ONE_MORE_NUMERIC_SEQUENCE"
+        ],
+        "6 livros; voltar 1": [
+          "ONE_MORE_NUMERIC_SEQUENCE"
+        ],
+        "9 livros; aumentar 3": [
+          "ONE_MORE_NUMERIC_SEQUENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CONTAGEM_DE_LIVROS_FICTICIOS",
+      "explanation": "Cada desenho acrescenta um livro à pilha anterior.",
+      "hint": "Conte de um em um.",
+      "errorFocus": "ONE_MORE_NUMERIC_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: Cada desenho acrescenta um livro à pilha anterior.",
+        "incorrect": "Cada desenho acrescenta um livro à pilha anterior.",
+        "hint": "Conte de um em um.",
+        "errorFocus": "ONE_MORE_NUMERIC_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-07",
+      "statement": "As barras têm 2, 4, 6, __ quadrados. Qual barra completa a sequência?",
+      "prompt": "As barras têm 2, 4, 6, __ quadrados. Qual barra completa a sequência?",
+      "options": [
+        "7 quadrados; acrescentar 1",
+        "9 quadrados; acrescentar 3",
+        "8 quadrados; acrescentar 2.",
+        "6 quadrados; repetir"
+      ],
+      "correctAnswer": "8 quadrados; acrescentar 2.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "7 quadrados; acrescentar 1": [
+          "EVEN_INCREMENT_TWO"
+        ],
+        "9 quadrados; acrescentar 3": [
+          "EVEN_INCREMENT_TWO"
+        ],
+        "6 quadrados; repetir": [
+          "EVEN_INCREMENT_TWO"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BARRAS_DE_QUATRO_QUADRADOS",
+      "explanation": "A quantidade aumenta dois quadrados a cada barra.",
+      "hint": "Compare o comprimento das barras.",
+      "errorFocus": "EVEN_INCREMENT_TWO",
+      "feedback": {
+        "correct": "Boa observação: A quantidade aumenta dois quadrados a cada barra.",
+        "incorrect": "A quantidade aumenta dois quadrados a cada barra.",
+        "hint": "Compare o comprimento das barras.",
+        "errorFocus": "EVEN_INCREMENT_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-08",
+      "statement": "Na sequência 5, 6, 7, __, qual explicação mostra como encontrar o próximo número?",
+      "prompt": "Na sequência 5, 6, 7, __, qual explicação mostra como encontrar o próximo número?",
+      "options": [
+        "Somar 2; vem 9",
+        "Subtrair 1; vem 6",
+        "Repetir 7; não há regra",
+        "Somar 1 ao número anterior; vem 8."
+      ],
+      "correctAnswer": "Somar 1 ao número anterior; vem 8.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somar 2; vem 9": [
+          "STATE_THE_NUMERIC_RULE"
+        ],
+        "Subtrair 1; vem 6": [
+          "STATE_THE_NUMERIC_RULE"
+        ],
+        "Repetir 7; não há regra": [
+          "STATE_THE_NUMERIC_RULE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REGRA_DOS_NUMEROS_CRESCENTES",
+      "explanation": "A sequência avança um número natural a cada passo.",
+      "hint": "Diga o que muda entre vizinhos.",
+      "errorFocus": "STATE_THE_NUMERIC_RULE",
+      "feedback": {
+        "correct": "Boa observação: A sequência avança um número natural a cada passo.",
+        "incorrect": "A sequência avança um número natural a cada passo.",
+        "hint": "Diga o que muda entre vizinhos.",
+        "errorFocus": "STATE_THE_NUMERIC_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-09",
+      "statement": "Uma coleção cresce assim: 4, 8, 12, __ fichas. O que falta?",
+      "prompt": "Uma coleção cresce assim: 4, 8, 12, __ fichas. O que falta?",
+      "options": [
+        "16 fichas; acrescentar 4 a cada grupo.",
+        "14 fichas; acrescentar 2",
+        "15 fichas; acrescentar 3",
+        "13 fichas; acrescentar 1"
+      ],
+      "correctAnswer": "16 fichas; acrescentar 4 a cada grupo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "14 fichas; acrescentar 2": [
+          "FOUR_MORE_EACH_STEP"
+        ],
+        "15 fichas; acrescentar 3": [
+          "FOUR_MORE_EACH_STEP"
+        ],
+        "13 fichas; acrescentar 1": [
+          "FOUR_MORE_EACH_STEP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FICHAS_DE_QUATRO_EM_QUATRO",
+      "explanation": "Os grupos aumentam quatro fichas entre cartões consecutivos.",
+      "hint": "Conte a diferença entre dois grupos.",
+      "errorFocus": "FOUR_MORE_EACH_STEP",
+      "feedback": {
+        "correct": "Boa observação: Os grupos aumentam quatro fichas entre cartões consecutivos.",
+        "incorrect": "Os grupos aumentam quatro fichas entre cartões consecutivos.",
+        "hint": "Conte a diferença entre dois grupos.",
+        "errorFocus": "FOUR_MORE_EACH_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-10",
+      "statement": "Os cartões mostram sol, lua, lua, sol, lua, __. Qual desenho completa a ordem?",
+      "prompt": "Os cartões mostram sol, lua, lua, sol, lua, __. Qual desenho completa a ordem?",
+      "options": [
+        "Sol; repetir sol, lua",
+        "Lua; repete-se sol, lua, lua.",
+        "Estrela; começar outra ordem",
+        "Nuvem; escolher ao acaso"
+      ],
+      "correctAnswer": "Lua; repete-se sol, lua, lua.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sol; repetir sol, lua": [
+          "REPEATED_THREE_SYMBOL_PATTERN"
+        ],
+        "Estrela; começar outra ordem": [
+          "REPEATED_THREE_SYMBOL_PATTERN"
+        ],
+        "Nuvem; escolher ao acaso": [
+          "REPEATED_THREE_SYMBOL_PATTERN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEQUENCIA_DE_LUA_E_SOL",
+      "explanation": "O bloco sol-lua-lua aparece novamente.",
+      "hint": "Compare com o primeiro bloco.",
+      "errorFocus": "REPEATED_THREE_SYMBOL_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: O bloco sol-lua-lua aparece novamente.",
+        "incorrect": "O bloco sol-lua-lua aparece novamente.",
+        "hint": "Compare com o primeiro bloco.",
+        "errorFocus": "REPEATED_THREE_SYMBOL_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-11",
+      "statement": "Um marcador passa por 3, 6, 9, __ na reta numérica. Onde chega?",
+      "prompt": "Um marcador passa por 3, 6, 9, __ na reta numérica. Onde chega?",
+      "options": [
+        "11; avançar duas casas",
+        "10; avançar uma casa",
+        "12; avançar três casas em cada pulo.",
+        "15; avançar seis casas"
+      ],
+      "correctAnswer": "12; avançar três casas em cada pulo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "11; avançar duas casas": [
+          "THREE_STEP_NUMBER_LINE"
+        ],
+        "10; avançar uma casa": [
+          "THREE_STEP_NUMBER_LINE"
+        ],
+        "15; avançar seis casas": [
+          "THREE_STEP_NUMBER_LINE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PULOS_DE_TRES_NA_RETA",
+      "explanation": "Cada posição está três unidades depois da anterior.",
+      "hint": "Veja o tamanho de cada pulo.",
+      "errorFocus": "THREE_STEP_NUMBER_LINE",
+      "feedback": {
+        "correct": "Boa observação: Cada posição está três unidades depois da anterior.",
+        "incorrect": "Cada posição está três unidades depois da anterior.",
+        "hint": "Veja o tamanho de cada pulo.",
+        "errorFocus": "THREE_STEP_NUMBER_LINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-12",
+      "statement": "A fila repete retângulo, círculo, retângulo, círculo, __. Qual figura vem?",
+      "prompt": "A fila repete retângulo, círculo, retângulo, círculo, __. Qual figura vem?",
+      "options": [
+        "Círculo; repetir a última",
+        "Triângulo; trocar o bloco",
+        "Quadrado; iniciar outra regra",
+        "Retângulo; o par alterna."
+      ],
+      "correctAnswer": "Retângulo; o par alterna.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Círculo; repetir a última": [
+          "ALTERNATE_TWO_SHAPES"
+        ],
+        "Triângulo; trocar o bloco": [
+          "ALTERNATE_TWO_SHAPES"
+        ],
+        "Quadrado; iniciar outra regra": [
+          "ALTERNATE_TWO_SHAPES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FILA_DE_RETANGULO_E_CIRCULO",
+      "explanation": "A alternância começa pelo retângulo novamente.",
+      "hint": "Retome a primeira figura do par.",
+      "errorFocus": "ALTERNATE_TWO_SHAPES",
+      "feedback": {
+        "correct": "Boa observação: A alternância começa pelo retângulo novamente.",
+        "incorrect": "A alternância começa pelo retângulo novamente.",
+        "hint": "Retome a primeira figura do par.",
+        "errorFocus": "ALTERNATE_TWO_SHAPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-13",
+      "statement": "Um cartão tem 2 pontos, o próximo 4 e o seguinte 6. Qual explicação justifica o cartão que falta?",
+      "prompt": "Um cartão tem 2 pontos, o próximo 4 e o seguinte 6. Qual explicação justifica o cartão que falta?",
+      "options": [
+        "Acrescentam-se 2 pontos; o próximo tem 8.",
+        "Acrescenta-se 1; o próximo tem 7",
+        "Retira-se 2; o próximo tem 4",
+        "Acrescentam-se 3; o próximo tem 9"
+      ],
+      "correctAnswer": "Acrescentam-se 2 pontos; o próximo tem 8.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Acrescenta-se 1; o próximo tem 7": [
+          "EXPLAIN_RECURSIVE_GROWTH"
+        ],
+        "Retira-se 2; o próximo tem 4": [
+          "EXPLAIN_RECURSIVE_GROWTH"
+        ],
+        "Acrescentam-se 3; o próximo tem 9": [
+          "EXPLAIN_RECURSIVE_GROWTH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CARTOES_COM_MAIS_DOIS_PONTOS",
+      "explanation": "O cartão seguinte mantém a diferença de dois pontos.",
+      "hint": "Explique a mudança entre cartões.",
+      "errorFocus": "EXPLAIN_RECURSIVE_GROWTH",
+      "feedback": {
+        "correct": "Boa observação: O cartão seguinte mantém a diferença de dois pontos.",
+        "incorrect": "O cartão seguinte mantém a diferença de dois pontos.",
+        "hint": "Explique a mudança entre cartões.",
+        "errorFocus": "EXPLAIN_RECURSIVE_GROWTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-14",
+      "statement": "Uma sequência de figuras usa 1, 2, 3, __ palitos desenhados. Qual quantidade continua a ordem?",
+      "prompt": "Uma sequência de figuras usa 1, 2, 3, __ palitos desenhados. Qual quantidade continua a ordem?",
+      "options": [
+        "5 palitos; acrescentar 2",
+        "4 palitos; acrescentar 1 a cada figura.",
+        "3 palitos; repetir",
+        "6 palitos; acrescentar 3"
+      ],
+      "correctAnswer": "4 palitos; acrescentar 1 a cada figura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "5 palitos; acrescentar 2": [
+          "ONE_MORE_OBJECT_COUNT"
+        ],
+        "3 palitos; repetir": [
+          "ONE_MORE_OBJECT_COUNT"
+        ],
+        "6 palitos; acrescentar 3": [
+          "ONE_MORE_OBJECT_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SEQUENCIA_DE_PALITOS",
+      "explanation": "Cada figura tem um palito a mais do que a anterior.",
+      "hint": "Compare as quantidades.",
+      "errorFocus": "ONE_MORE_OBJECT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Cada figura tem um palito a mais do que a anterior.",
+        "incorrect": "Cada figura tem um palito a mais do que a anterior.",
+        "hint": "Compare as quantidades.",
+        "errorFocus": "ONE_MORE_OBJECT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-15",
+      "statement": "A ordem é círculo grande, círculo pequeno, círculo grande, __. O que falta?",
+      "prompt": "A ordem é círculo grande, círculo pequeno, círculo grande, __. O que falta?",
+      "options": [
+        "Círculo grande; repetir o último",
+        "Quadrado pequeno; mudar a forma",
+        "Círculo pequeno; alterna o tamanho.",
+        "Triângulo grande; trocar sem regra"
+      ],
+      "correctAnswer": "Círculo pequeno; alterna o tamanho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Círculo grande; repetir o último": [
+          "ALTERNATING_SIZE_PATTERN"
+        ],
+        "Quadrado pequeno; mudar a forma": [
+          "ALTERNATING_SIZE_PATTERN"
+        ],
+        "Triângulo grande; trocar sem regra": [
+          "ALTERNATING_SIZE_PATTERN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FIGURAS_GRANDES_E_PEQUENAS",
+      "explanation": "A figura mantém a forma e alterna grande e pequeno.",
+      "hint": "Observe o tamanho das figuras.",
+      "errorFocus": "ALTERNATING_SIZE_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A figura mantém a forma e alterna grande e pequeno.",
+        "incorrect": "A figura mantém a forma e alterna grande e pequeno.",
+        "hint": "Observe o tamanho das figuras.",
+        "errorFocus": "ALTERNATING_SIZE_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-16",
+      "statement": "Os potes desenhados contêm 6, 12, 18, __ sementes. Qual é o próximo total?",
+      "prompt": "Os potes desenhados contêm 6, 12, 18, __ sementes. Qual é o próximo total?",
+      "options": [
+        "20; somar 2",
+        "22; somar 4",
+        "19; somar 1",
+        "24; somar 6 sementes."
+      ],
+      "correctAnswer": "24; somar 6 sementes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "20; somar 2": [
+          "SIX_MORE_EACH_STEP"
+        ],
+        "22; somar 4": [
+          "SIX_MORE_EACH_STEP"
+        ],
+        "19; somar 1": [
+          "SIX_MORE_EACH_STEP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COLECAO_DE_SEIS_EM_SEIS",
+      "explanation": "Cada pote ilustrado acrescenta seis sementes ao total anterior.",
+      "hint": "Compare os totais consecutivos.",
+      "errorFocus": "SIX_MORE_EACH_STEP",
+      "feedback": {
+        "correct": "Boa observação: Cada pote ilustrado acrescenta seis sementes ao total anterior.",
+        "incorrect": "Cada pote ilustrado acrescenta seis sementes ao total anterior.",
+        "hint": "Compare os totais consecutivos.",
+        "errorFocus": "SIX_MORE_EACH_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-17",
+      "statement": "Uma personagem salta pelos números 1, 4, 7, __. Qual número alcança no próximo salto?",
+      "prompt": "Uma personagem salta pelos números 1, 4, 7, __. Qual número alcança no próximo salto?",
+      "options": [
+        "10; avançar 3 em 3.",
+        "9; avançar 2",
+        "8; avançar 1",
+        "13; avançar 6"
+      ],
+      "correctAnswer": "10; avançar 3 em 3.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "9; avançar 2": [
+          "THREE_STEP_FORWARD_SEQUENCE"
+        ],
+        "8; avançar 1": [
+          "THREE_STEP_FORWARD_SEQUENCE"
+        ],
+        "13; avançar 6": [
+          "THREE_STEP_FORWARD_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CALENDARIO_DE_PULOS",
+      "explanation": "A diferença entre 1 e 4 e entre 4 e 7 é três.",
+      "hint": "Repita o tamanho do salto.",
+      "errorFocus": "THREE_STEP_FORWARD_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A diferença entre 1 e 4 e entre 4 e 7 é três.",
+        "incorrect": "A diferença entre 1 e 4 e entre 4 e 7 é três.",
+        "hint": "Repita o tamanho do salto.",
+        "errorFocus": "THREE_STEP_FORWARD_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-18",
+      "statement": "No mosaico, o bloco quadrado, triângulo, triângulo se repete. Após quadrado, triângulo, __, qual figura completa?",
+      "prompt": "No mosaico, o bloco quadrado, triângulo, triângulo se repete. Após quadrado, triângulo, __, qual figura completa?",
+      "options": [
+        "Quadrado; repetir a primeira figura",
+        "Triângulo; o bloco tem dois triângulos.",
+        "Círculo; trocar sem regra",
+        "Retângulo; iniciar novo bloco"
+      ],
+      "correctAnswer": "Triângulo; o bloco tem dois triângulos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quadrado; repetir a primeira figura": [
+          "REPEATING_THREE_SHAPE_BLOCK"
+        ],
+        "Círculo; trocar sem regra": [
+          "REPEATING_THREE_SHAPE_BLOCK"
+        ],
+        "Retângulo; iniciar novo bloco": [
+          "REPEATING_THREE_SHAPE_BLOCK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MOSAICO_DE_QUADRADOS_E_TRIANGULOS",
+      "explanation": "O bloco começa com quadrado e segue com dois triângulos.",
+      "hint": "Agrupe as figuras em blocos.",
+      "errorFocus": "REPEATING_THREE_SHAPE_BLOCK",
+      "feedback": {
+        "correct": "Boa observação: O bloco começa com quadrado e segue com dois triângulos.",
+        "incorrect": "O bloco começa com quadrado e segue com dois triângulos.",
+        "hint": "Agrupe as figuras em blocos.",
+        "errorFocus": "REPEATING_THREE_SHAPE_BLOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-19",
+      "statement": "Marcas na trilha aparecem em 2, 5, 8, __. Qual posição vem e por quê?",
+      "prompt": "Marcas na trilha aparecem em 2, 5, 8, __. Qual posição vem e por quê?",
+      "options": [
+        "10; acrescentar 2",
+        "9; acrescentar 1",
+        "11; acrescentar 3 a cada marca.",
+        "14; acrescentar 6"
+      ],
+      "correctAnswer": "11; acrescentar 3 a cada marca.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "10; acrescentar 2": [
+          "TRAIL_MARKS_PLUS_THREE"
+        ],
+        "9; acrescentar 1": [
+          "TRAIL_MARKS_PLUS_THREE"
+        ],
+        "14; acrescentar 6": [
+          "TRAIL_MARKS_PLUS_THREE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PONTOS_NA_TRILHA",
+      "explanation": "A distância numérica entre marcas consecutivas é três.",
+      "hint": "Compare as marcas anteriores.",
+      "errorFocus": "TRAIL_MARKS_PLUS_THREE",
+      "feedback": {
+        "correct": "Boa observação: A distância numérica entre marcas consecutivas é três.",
+        "incorrect": "A distância numérica entre marcas consecutivas é três.",
+        "hint": "Compare as marcas anteriores.",
+        "errorFocus": "TRAIL_MARKS_PLUS_THREE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-20",
+      "statement": "Torres têm 1, 3, 5, __ blocos em desenhos separados. Qual explicação e próximo total estão corretos?",
+      "prompt": "Torres têm 1, 3, 5, __ blocos em desenhos separados. Qual explicação e próximo total estão corretos?",
+      "options": [
+        "Acrescentar 1; tem 6",
+        "Retirar 2; tem 3",
+        "Acrescentar 3; tem 8",
+        "Acrescentar 2 blocos; a próxima torre tem 7."
+      ],
+      "correctAnswer": "Acrescentar 2 blocos; a próxima torre tem 7.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Acrescentar 1; tem 6": [
+          "ODD_TOWER_COUNTS"
+        ],
+        "Retirar 2; tem 3": [
+          "ODD_TOWER_COUNTS"
+        ],
+        "Acrescentar 3; tem 8": [
+          "ODD_TOWER_COUNTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TORRES_DE_BLOCOS",
+      "explanation": "A cada torre foram acrescentados dois blocos.",
+      "hint": "Observe quanto a torre cresce.",
+      "errorFocus": "ODD_TOWER_COUNTS",
+      "feedback": {
+        "correct": "Boa observação: A cada torre foram acrescentados dois blocos.",
+        "incorrect": "A cada torre foram acrescentados dois blocos.",
+        "hint": "Observe quanto a torre cresce.",
+        "errorFocus": "ODD_TOWER_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-21",
+      "statement": "A sequência de cartões é seta para cima, seta para a direita, seta para cima, __. Qual vem?",
+      "prompt": "A sequência de cartões é seta para cima, seta para a direita, seta para cima, __. Qual vem?",
+      "options": [
+        "Seta para a direita; a dupla alterna.",
+        "Seta para cima; repetir o último",
+        "Seta para baixo; trocar sem regra",
+        "Círculo; mudar o tipo de figura"
+      ],
+      "correctAnswer": "Seta para a direita; a dupla alterna.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Seta para cima; repetir o último": [
+          "ALTERNATING_DIRECTION_SYMBOLS"
+        ],
+        "Seta para baixo; trocar sem regra": [
+          "ALTERNATING_DIRECTION_SYMBOLS"
+        ],
+        "Círculo; mudar o tipo de figura": [
+          "ALTERNATING_DIRECTION_SYMBOLS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEQUENCIA_DE_SETAS",
+      "explanation": "Os dois símbolos alternam na mesma ordem.",
+      "hint": "Volte ao primeiro par.",
+      "errorFocus": "ALTERNATING_DIRECTION_SYMBOLS",
+      "feedback": {
+        "correct": "Boa observação: Os dois símbolos alternam na mesma ordem.",
+        "incorrect": "Os dois símbolos alternam na mesma ordem.",
+        "hint": "Volte ao primeiro par.",
+        "errorFocus": "ALTERNATING_DIRECTION_SYMBOLS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-22",
+      "statement": "Uma história ilustrada tem 10, 9, 8, __ estrelas em quatro cenas. Qual quantidade segue a regra?",
+      "prompt": "Uma história ilustrada tem 10, 9, 8, __ estrelas em quatro cenas. Qual quantidade segue a regra?",
+      "options": [
+        "6 estrelas; retirar 2",
+        "7 estrelas; retirar 1 a cada cena.",
+        "9 estrelas; repetir",
+        "5 estrelas; retirar 3"
+      ],
+      "correctAnswer": "7 estrelas; retirar 1 a cada cena.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "6 estrelas; retirar 2": [
+          "ONE_LESS_DESCENDING_SEQUENCE"
+        ],
+        "9 estrelas; repetir": [
+          "ONE_LESS_DESCENDING_SEQUENCE"
+        ],
+        "5 estrelas; retirar 3": [
+          "ONE_LESS_DESCENDING_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PAGINAS_DE_HISTORIA_FICTICIA",
+      "explanation": "Cada cena mostra uma estrela a menos que a anterior.",
+      "hint": "A quantidade diminui de um em um.",
+      "errorFocus": "ONE_LESS_DESCENDING_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: Cada cena mostra uma estrela a menos que a anterior.",
+        "incorrect": "Cada cena mostra uma estrela a menos que a anterior.",
+        "hint": "A quantidade diminui de um em um.",
+        "errorFocus": "ONE_LESS_DESCENDING_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-23",
+      "statement": "Uma fila repete azul, amarelo, azul, amarelo. Depois de dois blocos completos, qual cor ocupa o próximo lugar?",
+      "prompt": "Uma fila repete azul, amarelo, azul, amarelo. Depois de dois blocos completos, qual cor ocupa o próximo lugar?",
+      "options": [
+        "Amarelo; repetir a última cor",
+        "Verde; trocar a regra",
+        "Azul; o bloco reinicia na mesma ordem.",
+        "Vermelho; escolher ao acaso"
+      ],
+      "correctAnswer": "Azul; o bloco reinicia na mesma ordem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Amarelo; repetir a última cor": [
+          "COLOR_PAIR_RESTART"
+        ],
+        "Verde; trocar a regra": [
+          "COLOR_PAIR_RESTART"
+        ],
+        "Vermelho; escolher ao acaso": [
+          "COLOR_PAIR_RESTART"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FILA_DE_CUBOS_COLORIDOS",
+      "explanation": "O padrão alternado volta ao azul após amarelo.",
+      "hint": "Observe a primeira cor do bloco.",
+      "errorFocus": "COLOR_PAIR_RESTART",
+      "feedback": {
+        "correct": "Boa observação: O padrão alternado volta ao azul após amarelo.",
+        "incorrect": "O padrão alternado volta ao azul após amarelo.",
+        "hint": "Observe a primeira cor do bloco.",
+        "errorFocus": "COLOR_PAIR_RESTART"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-24",
+      "statement": "A sequência 8, 10, 12, __ tem qual elemento e qual regularidade?",
+      "prompt": "A sequência 8, 10, 12, __ tem qual elemento e qual regularidade?",
+      "options": [
+        "13; somar 1",
+        "16; somar 4",
+        "10; voltar ao número anterior",
+        "14; somar 2 ao número anterior."
+      ],
+      "correctAnswer": "14; somar 2 ao número anterior.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "13; somar 1": [
+          "EVEN_NUMBERS_PLUS_TWO"
+        ],
+        "16; somar 4": [
+          "EVEN_NUMBERS_PLUS_TWO"
+        ],
+        "10; voltar ao número anterior": [
+          "EVEN_NUMBERS_PLUS_TWO"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SEQUENCIA_DE_NUMEROS_PARES",
+      "explanation": "A regularidade é avançar dois números naturais a cada passo.",
+      "hint": "Compare 8 com 10 e 10 com 12.",
+      "errorFocus": "EVEN_NUMBERS_PLUS_TWO",
+      "feedback": {
+        "correct": "Boa observação: A regularidade é avançar dois números naturais a cada passo.",
+        "incorrect": "A regularidade é avançar dois números naturais a cada passo.",
+        "hint": "Compare 8 com 10 e 10 com 12.",
+        "errorFocus": "EVEN_NUMBERS_PLUS_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-25",
+      "statement": "Na sequência 6, 7, 8, __, qual é o próximo número?",
+      "prompt": "Na sequência 6, 7, 8, __, qual é o próximo número?",
+      "options": [
+        "9; acrescentar 1.",
+        "10; acrescentar 2",
+        "7; diminuir 1",
+        "12; acrescentar 4"
+      ],
+      "correctAnswer": "9; acrescentar 1.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10; acrescentar 2": [
+          "ONE_MORE_REVIEW"
+        ],
+        "7; diminuir 1": [
+          "ONE_MORE_REVIEW"
+        ],
+        "12; acrescentar 4": [
+          "ONE_MORE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REGRA_UM_A_MAIS",
+      "explanation": "A sequência aumenta um número em cada passo.",
+      "hint": "Continue a contagem.",
+      "errorFocus": "ONE_MORE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A sequência aumenta um número em cada passo.",
+        "incorrect": "A sequência aumenta um número em cada passo.",
+        "hint": "Continue a contagem.",
+        "errorFocus": "ONE_MORE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-26",
+      "statement": "Quadrado, estrela, quadrado, estrela, __. O que falta?",
+      "prompt": "Quadrado, estrela, quadrado, estrela, __. O que falta?",
+      "options": [
+        "Estrela; repetir a última",
+        "Quadrado; as duas formas alternam.",
+        "Círculo; trocar a regra",
+        "Triângulo; iniciar outra"
+      ],
+      "correctAnswer": "Quadrado; as duas formas alternam.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Estrela; repetir a última": [
+          "ALTERNATING_SHAPE_REVIEW"
+        ],
+        "Círculo; trocar a regra": [
+          "ALTERNATING_SHAPE_REVIEW"
+        ],
+        "Triângulo; iniciar outra": [
+          "ALTERNATING_SHAPE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARES_DE_FORMAS_REVISAO",
+      "explanation": "Depois da estrela, a sequência volta ao quadrado.",
+      "hint": "Retome a ordem inicial.",
+      "errorFocus": "ALTERNATING_SHAPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Depois da estrela, a sequência volta ao quadrado.",
+        "incorrect": "Depois da estrela, a sequência volta ao quadrado.",
+        "hint": "Retome a ordem inicial.",
+        "errorFocus": "ALTERNATING_SHAPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-27",
+      "statement": "Em 1, 3, 5, __, qual frase descreve a regularidade?",
+      "prompt": "Em 1, 3, 5, __, qual frase descreve a regularidade?",
+      "options": [
+        "Aumentar 1; o próximo é 6",
+        "Diminuir 2; o próximo é 3",
+        "Aumentar 2 a cada passo; o próximo é 7.",
+        "Repetir 5; não há mudança"
+      ],
+      "correctAnswer": "Aumentar 2 a cada passo; o próximo é 7.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Aumentar 1; o próximo é 6": [
+          "STATE_RULE_TWO_MORE"
+        ],
+        "Diminuir 2; o próximo é 3": [
+          "STATE_RULE_TWO_MORE"
+        ],
+        "Repetir 5; não há mudança": [
+          "STATE_RULE_TWO_MORE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REGRA_DE_DOIS_A_MAIS",
+      "explanation": "A diferença de dois se repete entre termos vizinhos.",
+      "hint": "Diga quanto foi acrescentado.",
+      "errorFocus": "STATE_RULE_TWO_MORE",
+      "feedback": {
+        "correct": "Boa observação: A diferença de dois se repete entre termos vizinhos.",
+        "incorrect": "A diferença de dois se repete entre termos vizinhos.",
+        "hint": "Diga quanto foi acrescentado.",
+        "errorFocus": "STATE_RULE_TWO_MORE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-28",
+      "statement": "Lua, estrela, lua, estrela, __. Qual símbolo vem depois?",
+      "prompt": "Lua, estrela, lua, estrela, __. Qual símbolo vem depois?",
+      "options": [
+        "Estrela; repetir o último",
+        "Sol; trocar o padrão",
+        "Nuvem; escolher qualquer",
+        "Lua; a ordem se repete alternadamente."
+      ],
+      "correctAnswer": "Lua; a ordem se repete alternadamente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Estrela; repetir o último": [
+          "ALTERNATE_SYMBOL_REVIEW"
+        ],
+        "Sol; trocar o padrão": [
+          "ALTERNATE_SYMBOL_REVIEW"
+        ],
+        "Nuvem; escolher qualquer": [
+          "ALTERNATE_SYMBOL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEQUENCIA_DE_LUA_E_ESTRELA",
+      "explanation": "O próximo símbolo reinicia a ordem com lua.",
+      "hint": "Observe o primeiro símbolo.",
+      "errorFocus": "ALTERNATE_SYMBOL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O próximo símbolo reinicia a ordem com lua.",
+        "incorrect": "O próximo símbolo reinicia a ordem com lua.",
+        "hint": "Observe o primeiro símbolo.",
+        "errorFocus": "ALTERNATE_SYMBOL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-29",
+      "statement": "Uma sequência mostra 3, 6, 9, __ objetos. Qual quantidade completa?",
+      "prompt": "Uma sequência mostra 3, 6, 9, __ objetos. Qual quantidade completa?",
+      "options": [
+        "12; acrescentar 3.",
+        "10; acrescentar 1",
+        "11; acrescentar 2",
+        "15; acrescentar 6"
+      ],
+      "correctAnswer": "12; acrescentar 3.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10; acrescentar 1": [
+          "THREE_MORE_REVIEW"
+        ],
+        "11; acrescentar 2": [
+          "THREE_MORE_REVIEW"
+        ],
+        "15; acrescentar 6": [
+          "THREE_MORE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "GRUPOS_DE_TRES_OBJETOS",
+      "explanation": "A cada grupo há três objetos a mais.",
+      "hint": "Conte de três em três.",
+      "errorFocus": "THREE_MORE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A cada grupo há três objetos a mais.",
+        "incorrect": "A cada grupo há três objetos a mais.",
+        "hint": "Conte de três em três.",
+        "errorFocus": "THREE_MORE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-30",
+      "statement": "Uma sequência tem círculo, círculo, triângulo, círculo, círculo, __. Qual regra e figura faltante?",
+      "prompt": "Uma sequência tem círculo, círculo, triângulo, círculo, círculo, __. Qual regra e figura faltante?",
+      "options": [
+        "Um círculo e dois triângulos; falta círculo",
+        "Dois círculos e um triângulo; falta triângulo.",
+        "Só círculos; falta círculo",
+        "Formas ao acaso; falta quadrado"
+      ],
+      "correctAnswer": "Dois círculos e um triângulo; falta triângulo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um círculo e dois triângulos; falta círculo": [
+          "REPEATING_THREE_ITEM_PATTERN"
+        ],
+        "Só círculos; falta círculo": [
+          "REPEATING_THREE_ITEM_PATTERN"
+        ],
+        "Formas ao acaso; falta quadrado": [
+          "REPEATING_THREE_ITEM_PATTERN"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REGRA_NO_MOSAICO",
+      "explanation": "O bloco de três figuras repete dois círculos e um triângulo.",
+      "hint": "Separe a sequência em grupos de três.",
+      "errorFocus": "REPEATING_THREE_ITEM_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: O bloco de três figuras repete dois círculos e um triângulo.",
+        "incorrect": "O bloco de três figuras repete dois círculos e um triângulo.",
+        "hint": "Separe a sequência em grupos de três.",
+        "errorFocus": "REPEATING_THREE_ITEM_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-31",
+      "statement": "Ao completar uma sequência, o que deve acompanhar a resposta?",
+      "prompt": "Ao completar uma sequência, o que deve acompanhar a resposta?",
+      "options": [
+        "Um palpite sem comparação",
+        "Uma cor escolhida ao acaso",
+        "Uma explicação da regra observada.",
+        "Um número maior sempre"
+      ],
+      "correctAnswer": "Uma explicação da regra observada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um palpite sem comparação": [
+          "EXPLAIN_THE_REGULARITY"
+        ],
+        "Uma cor escolhida ao acaso": [
+          "EXPLAIN_THE_REGULARITY"
+        ],
+        "Um número maior sempre": [
+          "EXPLAIN_THE_REGULARITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ELEMENTO_QUE_FALTA",
+      "explanation": "Explicar a regra mostra como o elemento foi encontrado.",
+      "hint": "Diga o que se repete.",
+      "errorFocus": "EXPLAIN_THE_REGULARITY",
+      "feedback": {
+        "correct": "Boa observação: Explicar a regra mostra como o elemento foi encontrado.",
+        "incorrect": "Explicar a regra mostra como o elemento foi encontrado.",
+        "hint": "Diga o que se repete.",
+        "errorFocus": "EXPLAIN_THE_REGULARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-32",
+      "statement": "A contagem especial é 14, 12, 10, __. Qual número vem em seguida?",
+      "prompt": "A contagem especial é 14, 12, 10, __. Qual número vem em seguida?",
+      "options": [
+        "9; diminuir 1",
+        "7; diminuir 3",
+        "12; repetir",
+        "8; diminuir 2 a cada passo."
+      ],
+      "correctAnswer": "8; diminuir 2 a cada passo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "9; diminuir 1": [
+          "DESCENDING_BY_TWO"
+        ],
+        "7; diminuir 3": [
+          "DESCENDING_BY_TWO"
+        ],
+        "12; repetir": [
+          "DESCENDING_BY_TWO"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NUMEROS_DESCENDO_DE_DOIS",
+      "explanation": "A sequência recua dois números a cada termo.",
+      "hint": "Conte para trás de dois em dois.",
+      "errorFocus": "DESCENDING_BY_TWO",
+      "feedback": {
+        "correct": "Boa observação: A sequência recua dois números a cada termo.",
+        "incorrect": "A sequência recua dois números a cada termo.",
+        "hint": "Conte para trás de dois em dois.",
+        "errorFocus": "DESCENDING_BY_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-33",
+      "statement": "Uma sequência tem 4, 8, 12, __. Qual número completa?",
+      "prompt": "Uma sequência tem 4, 8, 12, __. Qual número completa?",
+      "options": [
+        "16; acrescentar 4.",
+        "14; acrescentar 2",
+        "15; acrescentar 3",
+        "13; acrescentar 1"
+      ],
+      "correctAnswer": "16; acrescentar 4.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "14; acrescentar 2": [
+          "FOUR_STEP_REVIEW"
+        ],
+        "15; acrescentar 3": [
+          "FOUR_STEP_REVIEW"
+        ],
+        "13; acrescentar 1": [
+          "FOUR_STEP_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_QUATRO_EM_QUATRO",
+      "explanation": "A regularidade acrescenta quatro ao termo anterior.",
+      "hint": "Observe a diferença entre termos.",
+      "errorFocus": "FOUR_STEP_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A regularidade acrescenta quatro ao termo anterior.",
+        "incorrect": "A regularidade acrescenta quatro ao termo anterior.",
+        "hint": "Observe a diferença entre termos.",
+        "errorFocus": "FOUR_STEP_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-34",
+      "statement": "Pequeno, grande, pequeno, grande, __. Qual cartão vem?",
+      "prompt": "Pequeno, grande, pequeno, grande, __. Qual cartão vem?",
+      "options": [
+        "Grande; repetir o último",
+        "Pequeno; os tamanhos alternam.",
+        "Médio; mudar a regra",
+        "Enorme; escolher ao acaso"
+      ],
+      "correctAnswer": "Pequeno; os tamanhos alternam.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Grande; repetir o último": [
+          "ALTERNATING_SIZE_REVIEW"
+        ],
+        "Médio; mudar a regra": [
+          "ALTERNATING_SIZE_REVIEW"
+        ],
+        "Enorme; escolher ao acaso": [
+          "ALTERNATING_SIZE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_TAMANHOS",
+      "explanation": "A sequência recomeça com pequeno depois de grande.",
+      "hint": "Volte ao começo do padrão.",
+      "errorFocus": "ALTERNATING_SIZE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A sequência recomeça com pequeno depois de grande.",
+        "incorrect": "A sequência recomeça com pequeno depois de grande.",
+        "hint": "Volte ao começo do padrão.",
+        "errorFocus": "ALTERNATING_SIZE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-35",
+      "statement": "Os números são 9, 11, 13, __. Qual resposta explica a regularidade?",
+      "prompt": "Os números são 9, 11, 13, __. Qual resposta explica a regularidade?",
+      "options": [
+        "14; somar 1",
+        "16; somar 3",
+        "15; somar 2 a cada passo.",
+        "12; subtrair 1"
+      ],
+      "correctAnswer": "15; somar 2 a cada passo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "14; somar 1": [
+          "TWO_STEP_REVIEW"
+        ],
+        "16; somar 3": [
+          "TWO_STEP_REVIEW"
+        ],
+        "12; subtrair 1": [
+          "TWO_STEP_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_SEQUENCIA_CURTA",
+      "explanation": "Cada termo avança dois números naturais.",
+      "hint": "Confira as duas diferenças.",
+      "errorFocus": "TWO_STEP_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Cada termo avança dois números naturais.",
+        "incorrect": "Cada termo avança dois números naturais.",
+        "hint": "Confira as duas diferenças.",
+        "errorFocus": "TWO_STEP_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-36",
+      "statement": "O bloco estrela, círculo, quadrado se repete. Após estrela e círculo, qual figura falta?",
+      "prompt": "O bloco estrela, círculo, quadrado se repete. Após estrela e círculo, qual figura falta?",
+      "options": [
+        "Estrela; reiniciar antes de terminar",
+        "Triângulo; trocar o bloco",
+        "Círculo; repetir a figura anterior",
+        "Quadrado; completar o bloco na mesma ordem."
+      ],
+      "correctAnswer": "Quadrado; completar o bloco na mesma ordem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Estrela; reiniciar antes de terminar": [
+          "THREE_SHAPE_BLOCK_REVIEW"
+        ],
+        "Triângulo; trocar o bloco": [
+          "THREE_SHAPE_BLOCK_REVIEW"
+        ],
+        "Círculo; repetir a figura anterior": [
+          "THREE_SHAPE_BLOCK_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_BLOCO_REPETIDO",
+      "explanation": "O terceiro lugar do bloco é ocupado pelo quadrado.",
+      "hint": "Localize a posição no bloco.",
+      "errorFocus": "THREE_SHAPE_BLOCK_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O terceiro lugar do bloco é ocupado pelo quadrado.",
+        "incorrect": "O terceiro lugar do bloco é ocupado pelo quadrado.",
+        "hint": "Localize a posição no bloco.",
+        "errorFocus": "THREE_SHAPE_BLOCK_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-37",
+      "statement": "Um desenho tem 5 pontos, o próximo 7 e o seguinte 9. Quantos pontos terá o próximo?",
+      "prompt": "Um desenho tem 5 pontos, o próximo 7 e o seguinte 9. Quantos pontos terá o próximo?",
+      "options": [
+        "11; acrescentar 2 pontos.",
+        "10; acrescentar 1",
+        "12; acrescentar 3",
+        "9; repetir"
+      ],
+      "correctAnswer": "11; acrescentar 2 pontos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10; acrescentar 1": [
+          "TWO_MORE_OBJECT_COUNT"
+        ],
+        "12; acrescentar 3": [
+          "TWO_MORE_OBJECT_COUNT"
+        ],
+        "9; repetir": [
+          "TWO_MORE_OBJECT_COUNT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PONTOS_CRESCENTES",
+      "explanation": "A quantidade aumenta dois entre desenhos consecutivos.",
+      "hint": "Repita o aumento observado.",
+      "errorFocus": "TWO_MORE_OBJECT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: A quantidade aumenta dois entre desenhos consecutivos.",
+        "incorrect": "A quantidade aumenta dois entre desenhos consecutivos.",
+        "hint": "Repita o aumento observado.",
+        "errorFocus": "TWO_MORE_OBJECT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-38",
+      "statement": "Como conferir se a regra escolhida funciona?",
+      "prompt": "Como conferir se a regra escolhida funciona?",
+      "options": [
+        "Olhar somente o último número",
+        "Aplicá-la a mais de um par de elementos.",
+        "Escolher a resposta mais comprida",
+        "Ignorar a ordem"
+      ],
+      "correctAnswer": "Aplicá-la a mais de um par de elementos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Olhar somente o último número": [
+          "CHECK_RULE_ACROSS_STEPS"
+        ],
+        "Escolher a resposta mais comprida": [
+          "CHECK_RULE_ACROSS_STEPS"
+        ],
+        "Ignorar a ordem": [
+          "CHECK_RULE_ACROSS_STEPS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_REGRA",
+      "explanation": "Uma regra deve explicar mais de uma relação da sequência.",
+      "hint": "Confira dois passos seguidos.",
+      "errorFocus": "CHECK_RULE_ACROSS_STEPS",
+      "feedback": {
+        "correct": "Boa observação: Uma regra deve explicar mais de uma relação da sequência.",
+        "incorrect": "Uma regra deve explicar mais de uma relação da sequência.",
+        "hint": "Confira dois passos seguidos.",
+        "errorFocus": "CHECK_RULE_ACROSS_STEPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-39",
+      "statement": "Em 8, 7, 6, __, o que falta e qual mudança se repete?",
+      "prompt": "Em 8, 7, 6, __, o que falta e qual mudança se repete?",
+      "options": [
+        "4; diminuir 2",
+        "7; aumentar 1",
+        "5; diminuir 1 a cada passo.",
+        "9; aumentar 3"
+      ],
+      "correctAnswer": "5; diminuir 1 a cada passo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "4; diminuir 2": [
+          "ONE_LESS_REVIEW"
+        ],
+        "7; aumentar 1": [
+          "ONE_LESS_REVIEW"
+        ],
+        "9; aumentar 3": [
+          "ONE_LESS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_SEQUENCIA_DECRESCENTE",
+      "explanation": "Cada termo fica uma unidade abaixo do anterior.",
+      "hint": "Conte para trás de um em um.",
+      "errorFocus": "ONE_LESS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Cada termo fica uma unidade abaixo do anterior.",
+        "incorrect": "Cada termo fica uma unidade abaixo do anterior.",
+        "hint": "Conte para trás de um em um.",
+        "errorFocus": "ONE_LESS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma10-missing-sequence-elements-v1-40",
+      "statement": "Uma criança encontrou 10 depois de 2, 4, 6, 8. O que explica a escolha?",
+      "prompt": "Uma criança encontrou 10 depois de 2, 4, 6, 8. O que explica a escolha?",
+      "options": [
+        "Repetir o último termo",
+        "Somar 5 a cada passo",
+        "Escolher um número sem regra",
+        "Somar 2 a cada passo chega a 10."
+      ],
+      "correctAnswer": "Somar 2 a cada passo chega a 10.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Repetir o último termo": [
+          "JUSTIFY_MISSING_TERM"
+        ],
+        "Somar 5 a cada passo": [
+          "JUSTIFY_MISSING_TERM"
+        ],
+        "Escolher um número sem regra": [
+          "JUSTIFY_MISSING_TERM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_ELEMENTO_AUSENTE",
+      "explanation": "A mesma adição de dois conecta cada número ao seguinte.",
+      "hint": "Veja se a regra funciona em todos os passos.",
+      "errorFocus": "JUSTIFY_MISSING_TERM",
+      "feedback": {
+        "correct": "Boa observação: A mesma adição de dois conecta cada número ao seguinte.",
+        "incorrect": "A mesma adição de dois conecta cada número ao seguinte.",
+        "hint": "Veja se a regra funciona em todos os passos.",
+        "errorFocus": "JUSTIFY_MISSING_TERM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar peças concretas, sequências ampliadas, contraste alto e leitura oral dos números e símbolos.",
+          "Permitir responder movendo uma peça, apontando, falando, desenhando ou usando comunicação alternativa."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

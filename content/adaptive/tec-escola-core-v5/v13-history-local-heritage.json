@@ -1,0 +1,1419 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-local-heritage",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "patrimonios_historicos_e_culturais_locais",
+  "canonicalSkillCode": "AUTHORING_EF03HI04_HISTORY_HERITAGE",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI04",
+    "sourceVerificationRecord": "BNCC_EF03HI04_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_HISTORY_TIME_SOURCES",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre patrimônios históricos e culturais do lugar para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "lesson": {
+    "title": "Patrimônios históricos e culturais do lugar",
+    "objective": "Identificar patrimônios históricos e culturais e discutir, com fontes e vozes da comunidade, razões culturais, sociais e políticas para seu reconhecimento.",
+    "summary": "Patrimônio não é apenas um prédio antigo. É uma referência reconhecida por pessoas e grupos, material ou imaterial, cujo significado e preservação envolvem memória, cultura, escolhas políticas e participação.",
+    "explanation": "## O que investigar\nIdentificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: um antigo mercado conserva a fachada e também aparece em relatos de trabalhadores e moradores. A investigação pode comparar valor arquitetônico, usos e memórias, sem presumir que apenas um bem oficialmente protegido seja patrimônio para todos.",
+    "commonMistake": "Considerar patrimônio apenas o que é antigo ou oficialmente tombado, ignorando práticas culturais, grupos responsáveis e disputas de significado.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Descrever elementos de um lugar.",
+      "Comparar usos do mesmo espaço em épocas diferentes."
+    ],
+    "keyConcepts": [
+      "patrimônio material",
+      "patrimônio imaterial",
+      "memória",
+      "reconhecimento",
+      "preservação",
+      "participação",
+      "política cultural"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-local-heritage-001",
+          "v13-history-local-heritage-002",
+          "v13-history-local-heritage-003",
+          "v13-history-local-heritage-004",
+          "v13-history-local-heritage-005"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-local-heritage-006",
+          "v13-history-local-heritage-007",
+          "v13-history-local-heritage-008",
+          "v13-history-local-heritage-009",
+          "v13-history-local-heritage-010",
+          "v13-history-local-heritage-011",
+          "v13-history-local-heritage-012",
+          "v13-history-local-heritage-013",
+          "v13-history-local-heritage-014",
+          "v13-history-local-heritage-015",
+          "v13-history-local-heritage-016",
+          "v13-history-local-heritage-017",
+          "v13-history-local-heritage-018",
+          "v13-history-local-heritage-019",
+          "v13-history-local-heritage-020"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-local-heritage-021",
+          "v13-history-local-heritage-022",
+          "v13-history-local-heritage-023",
+          "v13-history-local-heritage-024",
+          "v13-history-local-heritage-025",
+          "v13-history-local-heritage-026",
+          "v13-history-local-heritage-027",
+          "v13-history-local-heritage-028",
+          "v13-history-local-heritage-029",
+          "v13-history-local-heritage-030",
+          "v13-history-local-heritage-031",
+          "v13-history-local-heritage-032"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-local-heritage-033",
+          "v13-history-local-heritage-034",
+          "v13-history-local-heritage-035",
+          "v13-history-local-heritage-036",
+          "v13-history-local-heritage-037",
+          "v13-history-local-heritage-038",
+          "v13-history-local-heritage-039",
+          "v13-history-local-heritage-040"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-local-heritage-041",
+          "v13-history-local-heritage-042",
+          "v13-history-local-heritage-043",
+          "v13-history-local-heritage-044",
+          "v13-history-local-heritage-045",
+          "v13-history-local-heritage-046",
+          "v13-history-local-heritage-047",
+          "v13-history-local-heritage-048",
+          "v13-history-local-heritage-049",
+          "v13-history-local-heritage-050"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Considerar patrimônio apenas o que é antigo ou tombado.",
+        "action": "Compare registros oficiais com relatos de usos e memórias, distinguindo critérios em vez de escolher uma única definição."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Supor que uma fonte representa todas as pessoas da comunidade.",
+        "action": "Liste quem produziu cada fonte e formule uma pergunta de consulta para uma voz ainda ausente."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Propor preservação sem considerar usos e cuidado das pessoas envolvidas.",
+        "action": "Relacione a proposta a uma evidência e indique quem deve participar da decisão."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-local-heritage-local-inquiry",
+        "title": "Investigar reconhecimento e sentidos do patrimônio",
+        "objective": "Identificar patrimônios históricos e culturais e discutir, com fontes e vozes da comunidade, razões culturais, sociais e políticas para seu reconhecimento.",
+        "context": "Caso didático ou fonte pública sobre um bem, espaço ou prática cultural local.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um caso documentado e identifique que fonte registra sua história, uso ou reconhecimento. Compare duas razões para sua importância e registre quais pessoas ou grupos aparecem nas fontes. Proponha uma forma de cuidado ou documentação e indique que vozes ainda precisam ser consultadas.",
+        "evidence": "Dossiê breve com fontes, razões de reconhecimento, diversidade de vozes e uma lacuna de consulta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes e razões",
+            "emerging": "Chama algo de patrimônio sem justificar.",
+            "developing": "Aponta uma razão com apoio.",
+            "proficient": "Relaciona razões culturais, sociais ou históricas a fontes específicas."
+          },
+          {
+            "criterion": "Vozes e reconhecimento",
+            "emerging": "Supõe consenso ou representação completa.",
+            "developing": "Identifica algumas vozes após orientação.",
+            "proficient": "Indica quem aparece, quem falta e que limites existem."
+          },
+          {
+            "criterion": "Cuidado e documentação",
+            "emerging": "Propõe ação sem considerar contexto.",
+            "developing": "Propõe cuidado com apoio.",
+            "proficient": "Propõe ação respeitosa e proporcional às evidências e às pessoas envolvidas."
+          }
+        ],
+        "steps": [
+          "Escolha um caso documentado e identifique que fonte registra sua história, uso ou reconhecimento.",
+          "Compare duas razões para sua importância e registre quais pessoas ou grupos aparecem nas fontes.",
+          "Proponha uma forma de cuidado ou documentação e indique que vozes ainda precisam ser consultadas."
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI04",
+        "descriptor": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ],
+    "accessibilitySupports": [
+      "Fornecer imagens descritas, relatos transcritos e fontes curtas em formatos legíveis, sem exigir visita a locais.",
+      "Aceitar mapa de ideias, fala, desenho ou texto e permitir análise de caso fictício quando acesso físico não for possível."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-local-heritage-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_MATERIAL_01",
+      "statement": "Uma estação ferroviária antiga conserva a fachada e possui relatos sobre sua importância para o município. Por que ela pode ser investigada como patrimônio?",
+      "options": [
+        "Porque reúne características materiais e memórias sobre sua importância histórica para grupos do município.",
+        "Porque qualquer prédio antigo tem o mesmo valor.",
+        "Porque a idade elimina a necessidade de participação da comunidade.",
+        "Porque apenas a aparência define o patrimônio."
+      ],
+      "correctAnswer": "Porque reúne características materiais e memórias sobre sua importância histórica para grupos do município.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer prédio antigo tem o mesmo valor.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_MATERIAL_02",
+      "statement": "Uma estação ferroviária antiga conserva a fachada e possui relatos sobre sua importância para o município. Que critério deve orientar a análise?",
+      "options": [
+        "Porque qualquer prédio antigo tem o mesmo valor.",
+        "Considere Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+        "Porque a idade elimina a necessidade de participação da comunidade.",
+        "Porque apenas a aparência define o patrimônio."
+      ],
+      "correctAnswer": "Considere Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer prédio antigo tem o mesmo valor.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_MATERIAL_03",
+      "statement": "Uma estação ferroviária antiga conserva a fachada e possui relatos sobre sua importância para o município. Como transferir esse raciocínio?",
+      "options": [
+        "Porque qualquer prédio antigo tem o mesmo valor.",
+        "Porque a idade elimina a necessidade de participação da comunidade.",
+        "Aplique o critério a um mercado ou ponte antiga.",
+        "Porque apenas a aparência define o patrimônio."
+      ],
+      "correctAnswer": "Aplique o critério a um mercado ou ponte antiga.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer prédio antigo tem o mesmo valor.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_MATERIAL_04",
+      "statement": "Uma estação ferroviária antiga conserva a fachada e possui relatos sobre sua importância para o município. Qual conclusão deve ser evitada?",
+      "options": [
+        "Porque qualquer prédio antigo tem o mesmo valor.",
+        "Porque a idade elimina a necessidade de participação da comunidade.",
+        "Porque apenas a aparência define o patrimônio.",
+        "Evite dizer que todo prédio antigo é patrimônio automaticamente."
+      ],
+      "correctAnswer": "Evite dizer que todo prédio antigo é patrimônio automaticamente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer prédio antigo tem o mesmo valor.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_MATERIAL_05",
+      "statement": "Uma estação ferroviária antiga conserva a fachada e possui relatos sobre sua importância para o município. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira fachada, registros históricos, usos e memórias identificadas.",
+        "Porque qualquer prédio antigo tem o mesmo valor.",
+        "Porque a idade elimina a necessidade de participação da comunidade.",
+        "Porque apenas a aparência define o patrimônio."
+      ],
+      "correctAnswer": "Confira fachada, registros históricos, usos e memórias identificadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio exige relacionar o bem, sua história, os grupos que o valorizam e as evidências disponíveis.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer prédio antigo tem o mesmo valor.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_INTANGIBLE_01",
+      "statement": "Uma comunidade realiza todos os anos uma celebração com música, comida e histórias ensinadas entre gerações. Que dimensão do patrimônio aparece?",
+      "options": [
+        "Um patrimônio material porque toda celebração precisa de um prédio.",
+        "Uma prática cultural imaterial, mantida por pessoas que compartilham conhecimentos e significados.",
+        "Uma tradição sem relação com a história do lugar.",
+        "Uma atividade igual em todas as comunidades."
+      ],
+      "correctAnswer": "Uma prática cultural imaterial, mantida por pessoas que compartilham conhecimentos e significados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um patrimônio material porque toda celebração precisa de um prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_INTANGIBLE_02",
+      "statement": "Uma comunidade realiza todos os anos uma celebração com música, comida e histórias ensinadas entre gerações. Que critério deve orientar a análise?",
+      "options": [
+        "Um patrimônio material porque toda celebração precisa de um prédio.",
+        "Uma tradição sem relação com a história do lugar.",
+        "Considere Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+        "Uma atividade igual em todas as comunidades."
+      ],
+      "correctAnswer": "Considere Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um patrimônio material porque toda celebração precisa de um prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_INTANGIBLE_03",
+      "statement": "Uma comunidade realiza todos os anos uma celebração com música, comida e histórias ensinadas entre gerações. Como transferir esse raciocínio?",
+      "options": [
+        "Um patrimônio material porque toda celebração precisa de um prédio.",
+        "Uma tradição sem relação com a história do lugar.",
+        "Uma atividade igual em todas as comunidades.",
+        "Investigue uma prática cultural sem expor dados pessoais de participantes."
+      ],
+      "correctAnswer": "Investigue uma prática cultural sem expor dados pessoais de participantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um patrimônio material porque toda celebração precisa de um prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_INTANGIBLE_04",
+      "statement": "Uma comunidade realiza todos os anos uma celebração com música, comida e histórias ensinadas entre gerações. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite reduzir a celebração a uma atração para visitantes.",
+        "Um patrimônio material porque toda celebração precisa de um prédio.",
+        "Uma tradição sem relação com a história do lugar.",
+        "Uma atividade igual em todas as comunidades."
+      ],
+      "correctAnswer": "Evite reduzir a celebração a uma atração para visitantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um patrimônio material porque toda celebração precisa de um prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_INTANGIBLE_05",
+      "statement": "Uma comunidade realiza todos os anos uma celebração com música, comida e histórias ensinadas entre gerações. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Um patrimônio material porque toda celebração precisa de um prédio.",
+        "Confira prática, transmissão de saberes, participantes e significado atribuído.",
+        "Uma tradição sem relação com a história do lugar.",
+        "Uma atividade igual em todas as comunidades."
+      ],
+      "correctAnswer": "Confira prática, transmissão de saberes, participantes e significado atribuído.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônios culturais podem ser práticas, saberes, celebrações e formas de expressão, não apenas objetos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um patrimônio material porque toda celebração precisa de um prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_REASONS_01",
+      "statement": "Um monumento lembra uma luta por moradia, mas algumas pessoas discutem se sua placa conta a história de modo completo. Que discussão o caso permite fazer?",
+      "options": [
+        "Concluir que toda placa é neutra.",
+        "Dizer que apenas a idade do monumento importa.",
+        "Discutir razões sociais e políticas do reconhecimento e quais memórias aparecem ou ficam ausentes.",
+        "Apagar a discussão porque o monumento já existe."
+      ],
+      "correctAnswer": "Discutir razões sociais e políticas do reconhecimento e quais memórias aparecem ou ficam ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que toda placa é neutra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_REASONS_02",
+      "statement": "Um monumento lembra uma luta por moradia, mas algumas pessoas discutem se sua placa conta a história de modo completo. Que critério deve orientar a análise?",
+      "options": [
+        "Concluir que toda placa é neutra.",
+        "Dizer que apenas a idade do monumento importa.",
+        "Apagar a discussão porque o monumento já existe.",
+        "Considere Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada."
+      ],
+      "correctAnswer": "Considere Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que toda placa é neutra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_REASONS_03",
+      "statement": "Um monumento lembra uma luta por moradia, mas algumas pessoas discutem se sua placa conta a história de modo completo. Como transferir esse raciocínio?",
+      "options": [
+        "Aplique perguntas semelhantes a uma praça com monumento.",
+        "Concluir que toda placa é neutra.",
+        "Dizer que apenas a idade do monumento importa.",
+        "Apagar a discussão porque o monumento já existe."
+      ],
+      "correctAnswer": "Aplique perguntas semelhantes a uma praça com monumento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que toda placa é neutra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_REASONS_04",
+      "statement": "Um monumento lembra uma luta por moradia, mas algumas pessoas discutem se sua placa conta a história de modo completo. Qual conclusão deve ser evitada?",
+      "options": [
+        "Concluir que toda placa é neutra.",
+        "Evite dizer que o monumento representa igualmente todas as experiências.",
+        "Dizer que apenas a idade do monumento importa.",
+        "Apagar a discussão porque o monumento já existe."
+      ],
+      "correctAnswer": "Evite dizer que o monumento representa igualmente todas as experiências.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que toda placa é neutra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_REASONS_05",
+      "statement": "Um monumento lembra uma luta por moradia, mas algumas pessoas discutem se sua placa conta a história de modo completo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Concluir que toda placa é neutra.",
+        "Dizer que apenas a idade do monumento importa.",
+        "Confira monumento, placa, grupos envolvidos e memórias ausentes.",
+        "Apagar a discussão porque o monumento já existe."
+      ],
+      "correctAnswer": "Confira monumento, placa, grupos envolvidos e memórias ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Patrimônio envolve escolhas: é importante perguntar quem reconhece, que memória é preservada e como ela é apresentada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que toda placa é neutra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_OFFICIAL_01",
+      "statement": "Uma prefeitura reconhece uma casa como patrimônio, enquanto moradores usam o quintal para uma prática comunitária não citada no documento. Como analisar os reconhecimentos?",
+      "options": [
+        "Descartar o uso comunitário porque não está no decreto.",
+        "Dizer que qualquer uso transforma automaticamente o local em patrimônio.",
+        "Tratar documentos oficiais e relatos como fontes idênticas.",
+        "Comparar o reconhecimento oficial com o uso comunitário e registrar que cada fonte destaca uma dimensão."
+      ],
+      "correctAnswer": "Comparar o reconhecimento oficial com o uso comunitário e registrar que cada fonte destaca uma dimensão.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o uso comunitário porque não está no decreto.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_OFFICIAL_02",
+      "statement": "Uma prefeitura reconhece uma casa como patrimônio, enquanto moradores usam o quintal para uma prática comunitária não citada no documento. Que critério deve orientar a análise?",
+      "options": [
+        "Considere O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+        "Descartar o uso comunitário porque não está no decreto.",
+        "Dizer que qualquer uso transforma automaticamente o local em patrimônio.",
+        "Tratar documentos oficiais e relatos como fontes idênticas."
+      ],
+      "correctAnswer": "Considere O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o uso comunitário porque não está no decreto.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_OFFICIAL_03",
+      "statement": "Uma prefeitura reconhece uma casa como patrimônio, enquanto moradores usam o quintal para uma prática comunitária não citada no documento. Como transferir esse raciocínio?",
+      "options": [
+        "Descartar o uso comunitário porque não está no decreto.",
+        "Compare um inventário público com relatos sobre um espaço cultural.",
+        "Dizer que qualquer uso transforma automaticamente o local em patrimônio.",
+        "Tratar documentos oficiais e relatos como fontes idênticas."
+      ],
+      "correctAnswer": "Compare um inventário público com relatos sobre um espaço cultural.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o uso comunitário porque não está no decreto.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_OFFICIAL_04",
+      "statement": "Uma prefeitura reconhece uma casa como patrimônio, enquanto moradores usam o quintal para uma prática comunitária não citada no documento. Qual conclusão deve ser evitada?",
+      "options": [
+        "Descartar o uso comunitário porque não está no decreto.",
+        "Dizer que qualquer uso transforma automaticamente o local em patrimônio.",
+        "Evite assumir que o documento oficial esgota o significado do lugar.",
+        "Tratar documentos oficiais e relatos como fontes idênticas."
+      ],
+      "correctAnswer": "Evite assumir que o documento oficial esgota o significado do lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o uso comunitário porque não está no decreto.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_OFFICIAL_05",
+      "statement": "Uma prefeitura reconhece uma casa como patrimônio, enquanto moradores usam o quintal para uma prática comunitária não citada no documento. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Descartar o uso comunitário porque não está no decreto.",
+        "Dizer que qualquer uso transforma automaticamente o local em patrimônio.",
+        "Tratar documentos oficiais e relatos como fontes idênticas.",
+        "Confira decreto, inventário, prática comunitária e autoria dos relatos."
+      ],
+      "correctAnswer": "Confira decreto, inventário, prática comunitária e autoria dos relatos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O reconhecimento oficial é uma fonte importante, mas não substitui as experiências e significados da comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o uso comunitário porque não está no decreto.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_AGE_01",
+      "statement": "Uma ponte foi construída há poucos anos e se tornou referência para encontros e festas de um bairro. O que o caso ensina sobre patrimônio?",
+      "options": [
+        "Que o significado cultural e social não depende apenas de grande antiguidade; é preciso investigar reconhecimento e usos.",
+        "Que toda construção recente já é patrimônio.",
+        "Que apenas especialistas podem atribuir valor.",
+        "Que festas não têm relação com história cultural."
+      ],
+      "correctAnswer": "Que o significado cultural e social não depende apenas de grande antiguidade; é preciso investigar reconhecimento e usos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que toda construção recente já é patrimônio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_AGE_02",
+      "statement": "Uma ponte foi construída há poucos anos e se tornou referência para encontros e festas de um bairro. Que critério deve orientar a análise?",
+      "options": [
+        "Que toda construção recente já é patrimônio.",
+        "Considere Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+        "Que apenas especialistas podem atribuir valor.",
+        "Que festas não têm relação com história cultural."
+      ],
+      "correctAnswer": "Considere Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que toda construção recente já é patrimônio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_AGE_03",
+      "statement": "Uma ponte foi construída há poucos anos e se tornou referência para encontros e festas de um bairro. Como transferir esse raciocínio?",
+      "options": [
+        "Que toda construção recente já é patrimônio.",
+        "Que apenas especialistas podem atribuir valor.",
+        "Aplique o raciocínio a um mural recente.",
+        "Que festas não têm relação com história cultural."
+      ],
+      "correctAnswer": "Aplique o raciocínio a um mural recente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que toda construção recente já é patrimônio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_AGE_04",
+      "statement": "Uma ponte foi construída há poucos anos e se tornou referência para encontros e festas de um bairro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que toda construção recente já é patrimônio.",
+        "Que apenas especialistas podem atribuir valor.",
+        "Que festas não têm relação com história cultural.",
+        "Evite dizer que algo recente nunca pode ter valor cultural."
+      ],
+      "correctAnswer": "Evite dizer que algo recente nunca pode ter valor cultural.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que toda construção recente já é patrimônio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_AGE_05",
+      "statement": "Uma ponte foi construída há poucos anos e se tornou referência para encontros e festas de um bairro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira data, usos, grupos envolvidos e razões apresentadas.",
+        "Que toda construção recente já é patrimônio.",
+        "Que apenas especialistas podem atribuir valor.",
+        "Que festas não têm relação com história cultural."
+      ],
+      "correctAnswer": "Confira data, usos, grupos envolvidos e razões apresentadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Idade pode ser uma informação, mas não é o único critério para compreender patrimônio.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que toda construção recente já é patrimônio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_PRESERVE_01",
+      "statement": "Uma biblioteca histórica precisa de reparos, mas a obra deve manter elementos que ajudam a reconhecer sua história. Que decisão é coerente com a preservação?",
+      "options": [
+        "Remover tudo que é antigo para facilitar a obra.",
+        "Planejar os reparos com participação e cuidado para manter elementos significativos, garantindo acesso e segurança.",
+        "Manter o prédio fechado indefinidamente.",
+        "Escolher a reforma mais barata sem avaliar a memória do lugar."
+      ],
+      "correctAnswer": "Planejar os reparos com participação e cuidado para manter elementos significativos, garantindo acesso e segurança.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Remover tudo que é antigo para facilitar a obra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_PRESERVE_02",
+      "statement": "Uma biblioteca histórica precisa de reparos, mas a obra deve manter elementos que ajudam a reconhecer sua história. Que critério deve orientar a análise?",
+      "options": [
+        "Remover tudo que é antigo para facilitar a obra.",
+        "Manter o prédio fechado indefinidamente.",
+        "Considere Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+        "Escolher a reforma mais barata sem avaliar a memória do lugar."
+      ],
+      "correctAnswer": "Considere Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Remover tudo que é antigo para facilitar a obra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_PRESERVE_03",
+      "statement": "Uma biblioteca histórica precisa de reparos, mas a obra deve manter elementos que ajudam a reconhecer sua história. Como transferir esse raciocínio?",
+      "options": [
+        "Remover tudo que é antigo para facilitar a obra.",
+        "Manter o prédio fechado indefinidamente.",
+        "Escolher a reforma mais barata sem avaliar a memória do lugar.",
+        "Planeje cuidados para uma praça ou centro cultural."
+      ],
+      "correctAnswer": "Planeje cuidados para uma praça ou centro cultural.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Remover tudo que é antigo para facilitar a obra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_PRESERVE_04",
+      "statement": "Uma biblioteca histórica precisa de reparos, mas a obra deve manter elementos que ajudam a reconhecer sua história. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite preservar significa proibir qualquer uso do espaço.",
+        "Remover tudo que é antigo para facilitar a obra.",
+        "Manter o prédio fechado indefinidamente.",
+        "Escolher a reforma mais barata sem avaliar a memória do lugar."
+      ],
+      "correctAnswer": "Evite preservar significa proibir qualquer uso do espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Remover tudo que é antigo para facilitar a obra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_PRESERVE_05",
+      "statement": "Uma biblioteca histórica precisa de reparos, mas a obra deve manter elementos que ajudam a reconhecer sua história. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Remover tudo que é antigo para facilitar a obra.",
+        "Confira elementos significativos, necessidades de segurança e usos da comunidade.",
+        "Manter o prédio fechado indefinidamente.",
+        "Escolher a reforma mais barata sem avaliar a memória do lugar."
+      ],
+      "correctAnswer": "Confira elementos significativos, necessidades de segurança e usos da comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Preservar não é congelar um lugar nem impedir seu uso; envolve escolhas, manutenção e participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Remover tudo que é antigo para facilitar a obra.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_ACCESS_01",
+      "statement": "Um centro cultural reconhecido como patrimônio tem escadas e não oferece descrição de suas exposições. Que aspecto deve entrar na discussão?",
+      "options": [
+        "Impedir visitas para proteger o prédio.",
+        "Oferecer apenas uma fotografia e encerrar o acesso.",
+        "A preservação deve ser articulada à acessibilidade para que diferentes pessoas possam conhecer e participar do patrimônio.",
+        "Dizer que patrimônio pertence somente a quem já consegue entrar."
+      ],
+      "correctAnswer": "A preservação deve ser articulada à acessibilidade para que diferentes pessoas possam conhecer e participar do patrimônio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Impedir visitas para proteger o prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_ACCESS_02",
+      "statement": "Um centro cultural reconhecido como patrimônio tem escadas e não oferece descrição de suas exposições. Que critério deve orientar a análise?",
+      "options": [
+        "Impedir visitas para proteger o prédio.",
+        "Oferecer apenas uma fotografia e encerrar o acesso.",
+        "Dizer que patrimônio pertence somente a quem já consegue entrar.",
+        "Considere Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior."
+      ],
+      "correctAnswer": "Considere Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Impedir visitas para proteger o prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_ACCESS_03",
+      "statement": "Um centro cultural reconhecido como patrimônio tem escadas e não oferece descrição de suas exposições. Como transferir esse raciocínio?",
+      "options": [
+        "Proponha uma solução acessível para uma exposição local.",
+        "Impedir visitas para proteger o prédio.",
+        "Oferecer apenas uma fotografia e encerrar o acesso.",
+        "Dizer que patrimônio pertence somente a quem já consegue entrar."
+      ],
+      "correctAnswer": "Proponha uma solução acessível para uma exposição local.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Impedir visitas para proteger o prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_ACCESS_04",
+      "statement": "Um centro cultural reconhecido como patrimônio tem escadas e não oferece descrição de suas exposições. Qual conclusão deve ser evitada?",
+      "options": [
+        "Impedir visitas para proteger o prédio.",
+        "Evite dizer que acessibilidade ameaça a preservação automaticamente.",
+        "Oferecer apenas uma fotografia e encerrar o acesso.",
+        "Dizer que patrimônio pertence somente a quem já consegue entrar."
+      ],
+      "correctAnswer": "Evite dizer que acessibilidade ameaça a preservação automaticamente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Impedir visitas para proteger o prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_ACCESS_05",
+      "statement": "Um centro cultural reconhecido como patrimônio tem escadas e não oferece descrição de suas exposições. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Impedir visitas para proteger o prédio.",
+        "Oferecer apenas uma fotografia e encerrar o acesso.",
+        "Confira barreira física, recursos de comunicação e formas de uso.",
+        "Dizer que patrimônio pertence somente a quem já consegue entrar."
+      ],
+      "correctAnswer": "Confira barreira física, recursos de comunicação e formas de uso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acesso cultural é parte da participação social e não deve ser tratado como detalhe posterior.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Impedir visitas para proteger o prédio.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_DIVERSITY_01",
+      "statement": "Um roteiro turístico destaca um edifício colonial, mas não menciona o trabalho de pessoas negras e indígenas ligado à história do local. Que revisão é necessária?",
+      "options": [
+        "Excluir o edifício por ter uma história complexa.",
+        "Dizer que apenas a arquitetura importa.",
+        "Inventar uma versão para preencher qualquer ausência.",
+        "Ampliar as fontes e as vozes para discutir como diferentes grupos participaram e foram afetados pela história do edifício."
+      ],
+      "correctAnswer": "Ampliar as fontes e as vozes para discutir como diferentes grupos participaram e foram afetados pela história do edifício.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir o edifício por ter uma história complexa.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_DIVERSITY_02",
+      "statement": "Um roteiro turístico destaca um edifício colonial, mas não menciona o trabalho de pessoas negras e indígenas ligado à história do local. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+        "Excluir o edifício por ter uma história complexa.",
+        "Dizer que apenas a arquitetura importa.",
+        "Inventar uma versão para preencher qualquer ausência."
+      ],
+      "correctAnswer": "Considere Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir o edifício por ter uma história complexa.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_DIVERSITY_03",
+      "statement": "Um roteiro turístico destaca um edifício colonial, mas não menciona o trabalho de pessoas negras e indígenas ligado à história do local. Como transferir esse raciocínio?",
+      "options": [
+        "Excluir o edifício por ter uma história complexa.",
+        "Revise outro roteiro local procurando ausências e fontes responsáveis.",
+        "Dizer que apenas a arquitetura importa.",
+        "Inventar uma versão para preencher qualquer ausência."
+      ],
+      "correctAnswer": "Revise outro roteiro local procurando ausências e fontes responsáveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir o edifício por ter uma história complexa.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_DIVERSITY_04",
+      "statement": "Um roteiro turístico destaca um edifício colonial, mas não menciona o trabalho de pessoas negras e indígenas ligado à história do local. Qual conclusão deve ser evitada?",
+      "options": [
+        "Excluir o edifício por ter uma história complexa.",
+        "Dizer que apenas a arquitetura importa.",
+        "Evite tratar o edifício como história de um único grupo.",
+        "Inventar uma versão para preencher qualquer ausência."
+      ],
+      "correctAnswer": "Evite tratar o edifício como história de um único grupo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir o edifício por ter uma história complexa.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_DIVERSITY_05",
+      "statement": "Um roteiro turístico destaca um edifício colonial, mas não menciona o trabalho de pessoas negras e indígenas ligado à história do local. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Excluir o edifício por ter uma história complexa.",
+        "Dizer que apenas a arquitetura importa.",
+        "Inventar uma versão para preencher qualquer ausência.",
+        "Confira roteiro, registros de trabalho, memórias e fontes de grupos envolvidos."
+      ],
+      "correctAnswer": "Confira roteiro, registros de trabalho, memórias e fontes de grupos envolvidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Reconhecer patrimônio requer examinar relações sociais e evitar narrativas que apaguem grupos fundamentais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir o edifício por ter uma história complexa.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_CONFLICT_01",
+      "statement": "Uma praça é valorizada por uma comunidade e também é usada para uma atividade que ameaça uma árvore protegida no local. Como tratar a situação?",
+      "options": [
+        "Reconhecer os valores culturais e discutir alternativas de uso e cuidado com evidências e participação.",
+        "Proibir toda atividade sem ouvir a comunidade.",
+        "Dizer que a árvore não faz parte da história do lugar.",
+        "Manter a atividade exatamente igual porque é tradicional."
+      ],
+      "correctAnswer": "Reconhecer os valores culturais e discutir alternativas de uso e cuidado com evidências e participação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Proibir toda atividade sem ouvir a comunidade.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_CONFLICT_02",
+      "statement": "Uma praça é valorizada por uma comunidade e também é usada para uma atividade que ameaça uma árvore protegida no local. Que critério deve orientar a análise?",
+      "options": [
+        "Proibir toda atividade sem ouvir a comunidade.",
+        "Considere Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+        "Dizer que a árvore não faz parte da história do lugar.",
+        "Manter a atividade exatamente igual porque é tradicional."
+      ],
+      "correctAnswer": "Considere Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Proibir toda atividade sem ouvir a comunidade.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_CONFLICT_03",
+      "statement": "Uma praça é valorizada por uma comunidade e também é usada para uma atividade que ameaça uma árvore protegida no local. Como transferir esse raciocínio?",
+      "options": [
+        "Proibir toda atividade sem ouvir a comunidade.",
+        "Dizer que a árvore não faz parte da história do lugar.",
+        "Aplique o método a um campo, rio ou feira tradicional.",
+        "Manter a atividade exatamente igual porque é tradicional."
+      ],
+      "correctAnswer": "Aplique o método a um campo, rio ou feira tradicional.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Proibir toda atividade sem ouvir a comunidade.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_CONFLICT_04",
+      "statement": "Uma praça é valorizada por uma comunidade e também é usada para uma atividade que ameaça uma árvore protegida no local. Qual conclusão deve ser evitada?",
+      "options": [
+        "Proibir toda atividade sem ouvir a comunidade.",
+        "Dizer que a árvore não faz parte da história do lugar.",
+        "Manter a atividade exatamente igual porque é tradicional.",
+        "Evite escolher um grupo e ignorar todos os demais efeitos."
+      ],
+      "correctAnswer": "Evite escolher um grupo e ignorar todos os demais efeitos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Proibir toda atividade sem ouvir a comunidade.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_CONFLICT_05",
+      "statement": "Uma praça é valorizada por uma comunidade e também é usada para uma atividade que ameaça uma árvore protegida no local. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira uso cultural, risco à árvore, regras de proteção e propostas da comunidade.",
+        "Proibir toda atividade sem ouvir a comunidade.",
+        "Dizer que a árvore não faz parte da história do lugar.",
+        "Manter a atividade exatamente igual porque é tradicional."
+      ],
+      "correctAnswer": "Confira uso cultural, risco à árvore, regras de proteção e propostas da comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Conflitos de uso não anulam o patrimônio; exigem negociação, proteção e consideração das diferentes razões envolvidas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Proibir toda atividade sem ouvir a comunidade.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_SYNTHESIS_01",
+      "statement": "Uma pesquisa reúne decreto, entrevistas, fotografias e registros de uma festa para estudar um antigo mercado e a prática cultural ao redor dele. Que conclusão é mais adequada?",
+      "options": [
+        "Dizer que só o decreto vale como história.",
+        "O mercado e a festa podem ter dimensões patrimoniais diferentes, reconhecidas por fontes e grupos que devem ser identificados.",
+        "Concluir que uma prática é patrimônio para todas as cidades.",
+        "Escolher o mercado ou a festa sem explicar as razões."
+      ],
+      "correctAnswer": "O mercado e a festa podem ter dimensões patrimoniais diferentes, reconhecidas por fontes e grupos que devem ser identificados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que só o decreto vale como história.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_SYNTHESIS_02",
+      "statement": "Uma pesquisa reúne decreto, entrevistas, fotografias e registros de uma festa para estudar um antigo mercado e a prática cultural ao redor dele. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que só o decreto vale como história.",
+        "Concluir que uma prática é patrimônio para todas as cidades.",
+        "Considere A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+        "Escolher o mercado ou a festa sem explicar as razões."
+      ],
+      "correctAnswer": "Considere A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que só o decreto vale como história.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_SYNTHESIS_03",
+      "statement": "Uma pesquisa reúne decreto, entrevistas, fotografias e registros de uma festa para estudar um antigo mercado e a prática cultural ao redor dele. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que só o decreto vale como história.",
+        "Concluir que uma prática é patrimônio para todas as cidades.",
+        "Escolher o mercado ou a festa sem explicar as razões.",
+        "Elabore uma ficha de patrimônio para outro lugar com fontes identificadas."
+      ],
+      "correctAnswer": "Elabore uma ficha de patrimônio para outro lugar com fontes identificadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que só o decreto vale como história.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_SYNTHESIS_04",
+      "statement": "Uma pesquisa reúne decreto, entrevistas, fotografias e registros de uma festa para estudar um antigo mercado e a prática cultural ao redor dele. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite declarar patrimônio oficial apenas com base em uma entrevista.",
+        "Dizer que só o decreto vale como história.",
+        "Concluir que uma prática é patrimônio para todas as cidades.",
+        "Escolher o mercado ou a festa sem explicar as razões."
+      ],
+      "correctAnswer": "Evite declarar patrimônio oficial apenas com base em uma entrevista.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que só o decreto vale como história.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-heritage-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-HERITAGE_SYNTHESIS_05",
+      "statement": "Uma pesquisa reúne decreto, entrevistas, fotografias e registros de uma festa para estudar um antigo mercado e a prática cultural ao redor dele. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que só o decreto vale como história.",
+        "Confira decreto, entrevistas, fotografias, festa e procedência de cada registro.",
+        "Concluir que uma prática é patrimônio para todas as cidades.",
+        "Escolher o mercado ou a festa sem explicar as razões."
+      ],
+      "correctAnswer": "Confira decreto, entrevistas, fotografias, festa e procedência de cada registro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve discutir razões culturais, sociais e políticas sem reduzir o patrimônio a uma etiqueta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que só o decreto vale como história.": [
+          "HISTORY_EF03HI04_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-portuguese-alphabetic-writing-fi",
+  "canonicalSkillCode": "AUTHORING_EF01LP02_ALPHABETIC_WRITING",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "escrita espontânea e ditada com relações entre grafemas e fonemas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 39,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Escrever palavras com letras que representam sons",
+    "objective": "Produzir palavras e frases espontâneas ou ditadas usando letras e grafemas para representar aspectos sonoros da fala, revisando hipóteses com apoio sem exigir domínio ortográfico além do objetivo.",
+    "summary": "Na escrita alfabética, a criança mobiliza letras e combinações de letras para representar sons percebidos nas palavras. Falar, escutar, escrever e revisar ajudam a tornar essa relação visível.",
+    "explanation": "## 1. Escute a palavra\nAntes de escrever, diga a palavra devagar e observe os sons que consegue perceber. A escrita não é um desenho do objeto: usamos letras e combinações de letras para representar a fala.\n\n## 2. Registre uma hipótese\nA criança pode escrever espontaneamente ou a partir de um ditado. O importante nesta habilidade é observar se suas letras/grafemas procuram representar os fonemas da palavra. Uma tentativa pode ser alfabética mesmo quando ainda não coincide com a ortografia convencional.\n\n## 3. Compare e revise com cuidado\nLeia a produção, compare com a palavra falada e convide a criança a explicar suas escolhas. A revisão acrescenta informação; não apaga a autoria. Variações de pronúncia e diferentes modos de participação devem ser acolhidos.",
+    "workedExample": "Ao ouvir “foca”, uma criança escreve “FOKA”. Ela usou letras para registrar os sons que percebeu, embora a grafia convencional seja “FOCA”. O adulto pode perguntar quais sons cada letra representa e, em outra etapa, comparar a hipótese com a escrita convencional.",
+    "commonMistake": "Tratar toda tentativa não convencional como ausência de conhecimento, ou exigir uma única grafia antes de observar se letras representam sons percebidos.",
+    "tips": [
+      "Dite uma palavra de cada vez e permita que a criança repita antes de escrever.",
+      "Pergunte o que a criança quis registrar e quais sons percebeu.",
+      "Separe evidência de escrita alfabética de convenções ortográficas ainda em aprendizagem.",
+      "Não penalize sotaques, falares regionais ou dificuldades motoras; ofereça meios alternativos de registrar a hipótese."
+    ],
+    "priorKnowledge": [
+      "Participar de conversas, brincadeiras sonoras e situações de registro de palavras conhecidas.",
+      "Reconhecer que a escrita utiliza sinais gráficos e que palavras podem ser faladas e registradas."
+    ],
+    "keyConcepts": [
+      "fala e escrita",
+      "fonema percebido",
+      "letra e grafema",
+      "representação sonora",
+      "escrita espontânea",
+      "ditado",
+      "hipótese de escrita",
+      "revisão respeitosa"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "LISTEN_BEFORE_WRITING",
+        "text": "Diga a palavra e escute seus sons antes de escolher letras para registrá-la."
+      },
+      {
+        "trigger": "ALPHABETIC_HYPOTHESIS",
+        "text": "Uma escrita pode representar sons percebidos mesmo antes de seguir todas as convenções ortográficas."
+      },
+      {
+        "trigger": "AUTHORSHIP_AND_REVISION",
+        "text": "Perguntar sobre a escolha da criança preserva sua autoria e abre espaço para comparar e revisar."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "WRITES_FROM_DRAWING_ONLY",
+        "action": "Diga a palavra em voz alta, compare dois sons iniciais e ofereça letras móveis para representar o que foi escutado."
+      },
+      {
+        "errorFocus": "OMITS_SOUND_WITHOUT_NOTICING",
+        "action": "Alongue a fala, marque os sons percebidos com fichas e convide a criança a conferir sua sequência de letras."
+      },
+      {
+        "errorFocus": "ORTHOGRAPHY_SHAMING",
+        "action": "Leia a produção como hipótese, reconheça a relação som-letra observada e apresente a convenção em momento separado."
+      }
+    ],
+    "accessibilitySupports": [
+      "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+      "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+      "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+      "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-portuguese-alphabetic-writing-fi-activity-1",
+        "title": "Palavras que a turma quer guardar",
+        "instructions": "Produção espontânea ou ditada de palavras escolhidas pela turma para uma lista de brincadeiras, animais ou objetos conhecidos.\n1. Escolher ou ouvir uma palavra.\n2. Repeti-la e registrar uma hipótese por escrita, letras móveis ou teclado.\n3. Explicar quais sons procurou representar.\n4. Comparar a hipótese com uma referência convencional sem apagar o registro inicial.",
+        "steps": [
+          "Escolher ou ouvir uma palavra.",
+          "Repeti-la e registrar uma hipótese por escrita, letras móveis ou teclado.",
+          "Explicar quais sons procurou representar.",
+          "Comparar a hipótese com uma referência convencional sem apagar o registro inicial."
+        ],
+        "evidence": "Produção original, forma de resposta utilizada e comentário da criança sobre a relação entre sons e letras.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "precisa de apoio para relacionar fala e registro.",
+            "developing": "usa algumas letras para representar sons percebidos.",
+            "proficient": "registra sequência alfabética e explica escolhas, ainda que convenções ortográficas precisem de revisão."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-portuguese-alphabetic-writing-fi-activity-2",
+        "title": "Bilhete com uma ideia própria",
+        "instructions": "A criança cria uma frase curta para comunicar uma ideia real da sala, como convidar alguém para uma brincadeira.\n1. Combinar oralmente a mensagem.\n2. Escrever espontaneamente ou ditar a frase.\n3. Reler e apontar letras que representam sons percebidos.\n4. Escolher uma revisão possível sem substituir a autoria pelo modelo adulto.",
+        "steps": [
+          "Combinar oralmente a mensagem.",
+          "Escrever espontaneamente ou ditar a frase.",
+          "Reler e apontar letras que representam sons percebidos.",
+          "Escolher uma revisão possível sem substituir a autoria pelo modelo adulto."
+        ],
+        "evidence": "Frase produzida, registro da mediação oferecida e justificativa oral ou multimodal de uma escolha de grafema.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "comunica a ideia com apoio para registrar.",
+            "developing": "representa sons em partes da frase.",
+            "proficient": "usa escrita alfabética para registrar a frase e participa da revisão da própria produção."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-portuguese-alphabetic-writing-fi-01",
+          "v1-portuguese-alphabetic-writing-fi-02",
+          "v1-portuguese-alphabetic-writing-fi-03",
+          "v1-portuguese-alphabetic-writing-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-portuguese-alphabetic-writing-fi-05",
+          "v1-portuguese-alphabetic-writing-fi-06",
+          "v1-portuguese-alphabetic-writing-fi-07",
+          "v1-portuguese-alphabetic-writing-fi-08",
+          "v1-portuguese-alphabetic-writing-fi-09",
+          "v1-portuguese-alphabetic-writing-fi-10",
+          "v1-portuguese-alphabetic-writing-fi-11",
+          "v1-portuguese-alphabetic-writing-fi-12",
+          "v1-portuguese-alphabetic-writing-fi-13",
+          "v1-portuguese-alphabetic-writing-fi-14",
+          "v1-portuguese-alphabetic-writing-fi-15",
+          "v1-portuguese-alphabetic-writing-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-portuguese-alphabetic-writing-fi-17",
+          "v1-portuguese-alphabetic-writing-fi-18",
+          "v1-portuguese-alphabetic-writing-fi-19",
+          "v1-portuguese-alphabetic-writing-fi-20",
+          "v1-portuguese-alphabetic-writing-fi-21",
+          "v1-portuguese-alphabetic-writing-fi-22",
+          "v1-portuguese-alphabetic-writing-fi-23",
+          "v1-portuguese-alphabetic-writing-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-portuguese-alphabetic-writing-fi-25",
+          "v1-portuguese-alphabetic-writing-fi-26",
+          "v1-portuguese-alphabetic-writing-fi-27",
+          "v1-portuguese-alphabetic-writing-fi-28",
+          "v1-portuguese-alphabetic-writing-fi-29",
+          "v1-portuguese-alphabetic-writing-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-portuguese-alphabetic-writing-fi-31",
+          "v1-portuguese-alphabetic-writing-fi-32",
+          "v1-portuguese-alphabetic-writing-fi-33",
+          "v1-portuguese-alphabetic-writing-fi-34",
+          "v1-portuguese-alphabetic-writing-fi-35",
+          "v1-portuguese-alphabetic-writing-fi-36",
+          "v1-portuguese-alphabetic-writing-fi-37",
+          "v1-portuguese-alphabetic-writing-fi-38",
+          "v1-portuguese-alphabetic-writing-fi-39",
+          "v1-portuguese-alphabetic-writing-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP02",
+        "descriptor": "Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-01",
+      "statement": "A professora dita “FOCA”. Uma criança escreve “FOKA”. O que essa produção mostra sobre a hipótese?",
+      "prompt": "A professora dita “FOCA”. Uma criança escreve “FOKA”. O que essa produção mostra sobre a hipótese?",
+      "options": [
+        "Usa letras para representar os sons percebidos, embora a grafia convencional seja diferente.",
+        "É apenas um desenho do animal.",
+        "Não há nenhuma letra na produção.",
+        "A criança copiou a palavra de um modelo."
+      ],
+      "correctAnswer": "Usa letras para representar os sons percebidos, embora a grafia convencional seja diferente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "É apenas um desenho do animal.": [
+          "DISTINGUISH_SOUND_REPRESENTATION_FROM_CONVENTION"
+        ],
+        "Não há nenhuma letra na produção.": [
+          "DISTINGUISH_SOUND_REPRESENTATION_FROM_CONVENTION"
+        ],
+        "A criança copiou a palavra de um modelo.": [
+          "DISTINGUISH_SOUND_REPRESENTATION_FROM_CONVENTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DICTATED_FOCA",
+      "explanation": "A hipótese “FOKA” relaciona letras aos sons percebidos; a convenção “FOCA” pode ser discutida sem apagar essa evidência.",
+      "hint": "Observe se as letras tentam registrar a palavra falada.",
+      "errorFocus": "DISTINGUISH_SOUND_REPRESENTATION_FROM_CONVENTION",
+      "feedback": {
+        "correct": "Boa observação: A hipótese “FOKA” relaciona letras aos sons percebidos; a convenção “FOCA” pode ser discutida sem apagar essa evidência.",
+        "incorrect": "A hipótese “FOKA” relaciona letras aos sons percebidos; a convenção “FOCA” pode ser discutida sem apagar essa evidência.",
+        "hint": "Observe se as letras tentam registrar a palavra falada.",
+        "errorFocus": "DISTINGUISH_SOUND_REPRESENTATION_FROM_CONVENTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-02",
+      "statement": "Uma criança quer escrever “BOLA” espontaneamente. Qual ação apoia a escrita alfabética?",
+      "prompt": "Uma criança quer escrever “BOLA” espontaneamente. Qual ação apoia a escrita alfabética?",
+      "options": [
+        "Desenhar uma bola no lugar de registrar a palavra.",
+        "Falar a palavra, escutar os sons percebidos e escolher letras para registrá-los.",
+        "Escolher letras sem olhar ou falar a palavra.",
+        "Esperar o adulto escrever tudo por ela."
+      ],
+      "correctAnswer": "Falar a palavra, escutar os sons percebidos e escolher letras para registrá-los.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Desenhar uma bola no lugar de registrar a palavra.": [
+          "LISTEN_BEFORE_WRITING"
+        ],
+        "Escolher letras sem olhar ou falar a palavra.": [
+          "LISTEN_BEFORE_WRITING"
+        ],
+        "Esperar o adulto escrever tudo por ela.": [
+          "LISTEN_BEFORE_WRITING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "SPONTANEOUS_BOLA",
+      "explanation": "A criança pode mobilizar sua própria hipótese ao relacionar fala e grafemas.",
+      "hint": "Convide a dizer a palavra e decidir como registrá-la.",
+      "errorFocus": "LISTEN_BEFORE_WRITING",
+      "feedback": {
+        "correct": "Boa observação: A criança pode mobilizar sua própria hipótese ao relacionar fala e grafemas.",
+        "incorrect": "A criança pode mobilizar sua própria hipótese ao relacionar fala e grafemas.",
+        "hint": "Convide a dizer a palavra e decidir como registrá-la.",
+        "errorFocus": "LISTEN_BEFORE_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-03",
+      "statement": "Uma criança organiza letras móveis para registrar “SAPO”. Qual evidência é mais relevante para esta habilidade?",
+      "prompt": "Uma criança organiza letras móveis para registrar “SAPO”. Qual evidência é mais relevante para esta habilidade?",
+      "options": [
+        "A rapidez com que terminou.",
+        "A cor das letras móveis.",
+        "A sequência de letras que ela escolheu para representar a palavra falada.",
+        "O tamanho do desenho do sapo."
+      ],
+      "correctAnswer": "A sequência de letras que ela escolheu para representar a palavra falada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A rapidez com que terminou.": [
+          "ASSESS_REPRESENTATION_NOT_SPEED"
+        ],
+        "A cor das letras móveis.": [
+          "ASSESS_REPRESENTATION_NOT_SPEED"
+        ],
+        "O tamanho do desenho do sapo.": [
+          "ASSESS_REPRESENTATION_NOT_SPEED"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LETTER_TILES",
+      "explanation": "O foco é a representação escrita, não velocidade, cor do material ou desenho.",
+      "hint": "Olhe para as letras selecionadas e pergunte sobre os sons.",
+      "errorFocus": "ASSESS_REPRESENTATION_NOT_SPEED",
+      "feedback": {
+        "correct": "Boa observação: O foco é a representação escrita, não velocidade, cor do material ou desenho.",
+        "incorrect": "O foco é a representação escrita, não velocidade, cor do material ou desenho.",
+        "hint": "Olhe para as letras selecionadas e pergunte sobre os sons.",
+        "errorFocus": "ASSESS_REPRESENTATION_NOT_SPEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-04",
+      "statement": "Uma criança escreve “KASA” para “casa”. Qual resposta do professor é mais adequada?",
+      "prompt": "Uma criança escreve “KASA” para “casa”. Qual resposta do professor é mais adequada?",
+      "options": [
+        "Dizer que a criança não sabe escrever.",
+        "Apagar o registro sem conversar.",
+        "Afirmar que desenho e escrita são a mesma coisa.",
+        "Perguntar quais sons cada letra representa e depois comparar com a grafia convencional."
+      ],
+      "correctAnswer": "Perguntar quais sons cada letra representa e depois comparar com a grafia convencional.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que a criança não sabe escrever.": [
+          "FEEDBACK_AS_INQUIRY"
+        ],
+        "Apagar o registro sem conversar.": [
+          "FEEDBACK_AS_INQUIRY"
+        ],
+        "Afirmar que desenho e escrita são a mesma coisa.": [
+          "FEEDBACK_AS_INQUIRY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "NONSTANDARD_ATTEMPT",
+      "explanation": "A pergunta reconhece a hipótese e permite tratar convenções em seguida, sem desvalorizar a produção.",
+      "hint": "Comece perguntando o que a criança quis registrar.",
+      "errorFocus": "FEEDBACK_AS_INQUIRY",
+      "feedback": {
+        "correct": "Boa observação: A pergunta reconhece a hipótese e permite tratar convenções em seguida, sem desvalorizar a produção.",
+        "incorrect": "A pergunta reconhece a hipótese e permite tratar convenções em seguida, sem desvalorizar a produção.",
+        "hint": "Comece perguntando o que a criança quis registrar.",
+        "errorFocus": "FEEDBACK_AS_INQUIRY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-05",
+      "statement": "Ao ouvir “PATO”, uma criança escreve “PATO”. Qual aspecto pode ser observado?",
+      "prompt": "Ao ouvir “PATO”, uma criança escreve “PATO”. Qual aspecto pode ser observado?",
+      "options": [
+        "As letras registram a sequência da palavra ditada.",
+        "A criança copiou uma ilustração.",
+        "A escrita não tem relação com fala.",
+        "Apenas o desenho pode representar a palavra."
+      ],
+      "correctAnswer": "As letras registram a sequência da palavra ditada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A criança copiou uma ilustração.": [
+          "RELATE_SEQUENCE_TO_SPEECH"
+        ],
+        "A escrita não tem relação com fala.": [
+          "RELATE_SEQUENCE_TO_SPEECH"
+        ],
+        "Apenas o desenho pode representar a palavra.": [
+          "RELATE_SEQUENCE_TO_SPEECH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DICTATED_PATO",
+      "explanation": "A produção usa uma sequência de letras para registrar a palavra que foi ouvida.",
+      "hint": "Compare a palavra ditada e o registro escrito.",
+      "errorFocus": "RELATE_SEQUENCE_TO_SPEECH",
+      "feedback": {
+        "correct": "Boa observação: A produção usa uma sequência de letras para registrar a palavra que foi ouvida.",
+        "incorrect": "A produção usa uma sequência de letras para registrar a palavra que foi ouvida.",
+        "hint": "Compare a palavra ditada e o registro escrito.",
+        "errorFocus": "RELATE_SEQUENCE_TO_SPEECH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-06",
+      "statement": "Uma criança ouve “VELA” e precisa decidir a primeira letra. Qual pergunta ajuda a usar a fala como pista?",
+      "prompt": "Uma criança ouve “VELA” e precisa decidir a primeira letra. Qual pergunta ajuda a usar a fala como pista?",
+      "options": [
+        "Qual letra tem a mesma cor do barco?",
+        "Que som você percebe no começo de “VELA” e que letra pode registrá-lo?",
+        "Quantas janelas há na sala?",
+        "Que desenho parece mais bonito?"
+      ],
+      "correctAnswer": "Que som você percebe no começo de “VELA” e que letra pode registrá-lo?",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual letra tem a mesma cor do barco?": [
+          "INITIAL_SOUND_AS_EVIDENCE"
+        ],
+        "Quantas janelas há na sala?": [
+          "INITIAL_SOUND_AS_EVIDENCE"
+        ],
+        "Que desenho parece mais bonito?": [
+          "INITIAL_SOUND_AS_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "DICTATED_VELA",
+      "explanation": "A pergunta dirige a atenção para a relação entre o som inicial e a letra escolhida.",
+      "hint": "Repita a palavra e escute seu começo.",
+      "errorFocus": "INITIAL_SOUND_AS_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A pergunta dirige a atenção para a relação entre o som inicial e a letra escolhida.",
+        "incorrect": "A pergunta dirige a atenção para a relação entre o som inicial e a letra escolhida.",
+        "hint": "Repita a palavra e escute seu começo.",
+        "errorFocus": "INITIAL_SOUND_AS_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-07",
+      "statement": "Uma criança escreve “UA” ao falar sobre a lua. Qual registro do professor é mais cuidadoso?",
+      "prompt": "Uma criança escreve “UA” ao falar sobre a lua. Qual registro do professor é mais cuidadoso?",
+      "options": [
+        "A criança não consegue escrever nenhuma palavra.",
+        "A palavra está convencionalmente completa.",
+        "A criança registrou sons percebidos e ainda pode revisar a sequência com apoio.",
+        "O registro prova que ela não ouviu a palavra."
+      ],
+      "correctAnswer": "A criança registrou sons percebidos e ainda pode revisar a sequência com apoio.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A criança não consegue escrever nenhuma palavra.": [
+          "OBSERVE_WITHOUT_LABEL"
+        ],
+        "A palavra está convencionalmente completa.": [
+          "OBSERVE_WITHOUT_LABEL"
+        ],
+        "O registro prova que ela não ouviu a palavra.": [
+          "OBSERVE_WITHOUT_LABEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SPONTANEOUS_LUA",
+      "explanation": "A anotação descreve evidência e necessidade de apoio sem generalizar uma tentativa isolada.",
+      "hint": "Registre o que aparece e o que será retomado.",
+      "errorFocus": "OBSERVE_WITHOUT_LABEL",
+      "feedback": {
+        "correct": "Boa observação: A anotação descreve evidência e necessidade de apoio sem generalizar uma tentativa isolada.",
+        "incorrect": "A anotação descreve evidência e necessidade de apoio sem generalizar uma tentativa isolada.",
+        "hint": "Registre o que aparece e o que será retomado.",
+        "errorFocus": "OBSERVE_WITHOUT_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-08",
+      "statement": "Qual situação envolve escrita a partir de ditado, em vez de cópia?",
+      "prompt": "Qual situação envolve escrita a partir de ditado, em vez de cópia?",
+      "options": [
+        "Traçar letras já impressas.",
+        "Colorir uma palavra pronta.",
+        "Copiar uma legenda olhando para ela.",
+        "Ouvir “MALA” e registrar a palavra sem ter um modelo escrito à vista."
+      ],
+      "correctAnswer": "Ouvir “MALA” e registrar a palavra sem ter um modelo escrito à vista.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Traçar letras já impressas.": [
+          "DISTINGUISH_DICTATION_FROM_COPY"
+        ],
+        "Colorir uma palavra pronta.": [
+          "DISTINGUISH_DICTATION_FROM_COPY"
+        ],
+        "Copiar uma legenda olhando para ela.": [
+          "DISTINGUISH_DICTATION_FROM_COPY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COPY_OR_DICTATION",
+      "explanation": "No ditado, a palavra é ouvida e precisa ser registrada; a cópia oferece um modelo visual.",
+      "hint": "Pergunte se havia uma palavra escrita para olhar.",
+      "errorFocus": "DISTINGUISH_DICTATION_FROM_COPY",
+      "feedback": {
+        "correct": "Boa observação: No ditado, a palavra é ouvida e precisa ser registrada; a cópia oferece um modelo visual.",
+        "incorrect": "No ditado, a palavra é ouvida e precisa ser registrada; a cópia oferece um modelo visual.",
+        "hint": "Pergunte se havia uma palavra escrita para olhar.",
+        "errorFocus": "DISTINGUISH_DICTATION_FROM_COPY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-09",
+      "statement": "A criança escolhe escrever “GATO” para contar o que desenhou. O que mantém a atividade focada na escrita alfabética?",
+      "prompt": "A criança escolhe escrever “GATO” para contar o que desenhou. O que mantém a atividade focada na escrita alfabética?",
+      "options": [
+        "Registrar a palavra com letras escolhidas para representar os sons de “gato”.",
+        "Fazer mais detalhes no desenho sem escrever.",
+        "Substituir todas as letras por marcas aleatórias.",
+        "Esperar que outra pessoa registre a palavra inteira."
+      ],
+      "correctAnswer": "Registrar a palavra com letras escolhidas para representar os sons de “gato”.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fazer mais detalhes no desenho sem escrever.": [
+          "WRITES_FROM_SPEECH"
+        ],
+        "Substituir todas as letras por marcas aleatórias.": [
+          "WRITES_FROM_SPEECH"
+        ],
+        "Esperar que outra pessoa registre a palavra inteira.": [
+          "WRITES_FROM_SPEECH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "WORD_WITH_IMAGE",
+      "explanation": "O desenho pode apoiar o contexto, mas a evidência da habilidade está na produção escrita.",
+      "hint": "Use a palavra que a criança quer registrar como ponto de partida.",
+      "errorFocus": "WRITES_FROM_SPEECH",
+      "feedback": {
+        "correct": "Boa observação: O desenho pode apoiar o contexto, mas a evidência da habilidade está na produção escrita.",
+        "incorrect": "O desenho pode apoiar o contexto, mas a evidência da habilidade está na produção escrita.",
+        "hint": "Use a palavra que a criança quer registrar como ponto de partida.",
+        "errorFocus": "WRITES_FROM_SPEECH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-10",
+      "statement": "Após ouvir “FITA”, uma criança escreve “FITA”. Qual conclusão é compatível com a evidência desta amostra?",
+      "prompt": "Após ouvir “FITA”, uma criança escreve “FITA”. Qual conclusão é compatível com a evidência desta amostra?",
+      "options": [
+        "Ela domina toda a ortografia do português.",
+        "Ela usou letras para registrar a palavra ditada nesta situação.",
+        "Ela nunca precisa de apoio para escrever.",
+        "A produção não foi escrita porque não tem desenho."
+      ],
+      "correctAnswer": "Ela usou letras para registrar a palavra ditada nesta situação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ela domina toda a ortografia do português.": [
+          "LIMIT_SCOPE_OF_CONCLUSION"
+        ],
+        "Ela nunca precisa de apoio para escrever.": [
+          "LIMIT_SCOPE_OF_CONCLUSION"
+        ],
+        "A produção não foi escrita porque não tem desenho.": [
+          "LIMIT_SCOPE_OF_CONCLUSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DICTATED_FITA",
+      "explanation": "Uma amostra permite observar esta tarefa, não afirmar domínio total nem ausência de necessidade de apoio.",
+      "hint": "Conclua apenas sobre o que a produção mostra.",
+      "errorFocus": "LIMIT_SCOPE_OF_CONCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Uma amostra permite observar esta tarefa, não afirmar domínio total nem ausência de necessidade de apoio.",
+        "incorrect": "Uma amostra permite observar esta tarefa, não afirmar domínio total nem ausência de necessidade de apoio.",
+        "hint": "Conclua apenas sobre o que a produção mostra.",
+        "errorFocus": "LIMIT_SCOPE_OF_CONCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-11",
+      "statement": "A criança diz que escreveu “BOLA” usando B para o som inicial. Qual próximo passo promove reflexão?",
+      "prompt": "A criança diz que escreveu “BOLA” usando B para o som inicial. Qual próximo passo promove reflexão?",
+      "options": [
+        "Trocar a palavra por um desenho sem perguntar.",
+        "Ignorar a explicação e avaliar a caligrafia.",
+        "Convidá-la a reler a palavra e explicar também as outras escolhas.",
+        "Dizer que uma letra basta para qualquer palavra."
+      ],
+      "correctAnswer": "Convidá-la a reler a palavra e explicar também as outras escolhas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Trocar a palavra por um desenho sem perguntar.": [
+          "INVITE_EXPLANATION"
+        ],
+        "Ignorar a explicação e avaliar a caligrafia.": [
+          "INVITE_EXPLANATION"
+        ],
+        "Dizer que uma letra basta para qualquer palavra.": [
+          "INVITE_EXPLANATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "CHILD_EXPLAINS",
+      "explanation": "A releitura ajuda a criança a pensar na sequência sonora e gráfica completa.",
+      "hint": "Parta da explicação da criança e prossiga pela palavra.",
+      "errorFocus": "INVITE_EXPLANATION",
+      "feedback": {
+        "correct": "Boa observação: A releitura ajuda a criança a pensar na sequência sonora e gráfica completa.",
+        "incorrect": "A releitura ajuda a criança a pensar na sequência sonora e gráfica completa.",
+        "hint": "Parta da explicação da criança e prossiga pela palavra.",
+        "errorFocus": "INVITE_EXPLANATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-12",
+      "statement": "Uma criança registra “CAVALU” ao ouvir “CAVALO”. Qual comparação respeita o objetivo da atividade?",
+      "prompt": "Uma criança registra “CAVALU” ao ouvir “CAVALO”. Qual comparação respeita o objetivo da atividade?",
+      "options": [
+        "Concluir que nenhuma letra representa som.",
+        "Apagar a tentativa sem conservar evidência.",
+        "Avaliar apenas se as letras têm o mesmo tamanho.",
+        "Reconhecer que as letras registram sons percebidos e observar a convenção final em outra etapa."
+      ],
+      "correctAnswer": "Reconhecer que as letras registram sons percebidos e observar a convenção final em outra etapa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Concluir que nenhuma letra representa som.": [
+          "SEPARATE_ALPHABETIC_HYPOTHESIS_AND_ORTHOGRAPHY"
+        ],
+        "Apagar a tentativa sem conservar evidência.": [
+          "SEPARATE_ALPHABETIC_HYPOTHESIS_AND_ORTHOGRAPHY"
+        ],
+        "Avaliar apenas se as letras têm o mesmo tamanho.": [
+          "SEPARATE_ALPHABETIC_HYPOTHESIS_AND_ORTHOGRAPHY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "HYPOTHESIS_AND_MODEL",
+      "explanation": "A tentativa pode evidenciar relação som-letra mesmo quando uma convenção ortográfica precisa ser estudada.",
+      "hint": "Separe o que a criança já representou da convenção a investigar.",
+      "errorFocus": "SEPARATE_ALPHABETIC_HYPOTHESIS_AND_ORTHOGRAPHY",
+      "feedback": {
+        "correct": "Boa observação: A tentativa pode evidenciar relação som-letra mesmo quando uma convenção ortográfica precisa ser estudada.",
+        "incorrect": "A tentativa pode evidenciar relação som-letra mesmo quando uma convenção ortográfica precisa ser estudada.",
+        "hint": "Separe o que a criança já representou da convenção a investigar.",
+        "errorFocus": "SEPARATE_ALPHABETIC_HYPOTHESIS_AND_ORTHOGRAPHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-13",
+      "statement": "A palavra ditada é “MESA”. Qual organização das letras mostra uma tentativa de registrar a palavra?",
+      "prompt": "A palavra ditada é “MESA”. Qual organização das letras mostra uma tentativa de registrar a palavra?",
+      "options": [
+        "M-E-S-A em sequência, com as letras associadas aos sons ouvidos.",
+        "S-M-A-E, sem relação com o que foi ouvido.",
+        "Quatro desenhos de mesas.",
+        "Somente a letra M para qualquer palavra."
+      ],
+      "correctAnswer": "M-E-S-A em sequência, com as letras associadas aos sons ouvidos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "S-M-A-E, sem relação com o que foi ouvido.": [
+          "REPRESENT_SEQUENCE"
+        ],
+        "Quatro desenhos de mesas.": [
+          "REPRESENT_SEQUENCE"
+        ],
+        "Somente a letra M para qualquer palavra.": [
+          "REPRESENT_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LETTER_TILES_MESA",
+      "explanation": "A sequência escrita registra a palavra inteira em vez de apenas seu tema ou uma letra isolada.",
+      "hint": "Pense em como registrar a palavra do começo ao fim.",
+      "errorFocus": "REPRESENT_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência escrita registra a palavra inteira em vez de apenas seu tema ou uma letra isolada.",
+        "incorrect": "A sequência escrita registra a palavra inteira em vez de apenas seu tema ou uma letra isolada.",
+        "hint": "Pense em como registrar a palavra do começo ao fim.",
+        "errorFocus": "REPRESENT_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-14",
+      "statement": "Ao ouvir “FITA”, qual produção mostra letras usadas para representar a palavra falada?",
+      "prompt": "Ao ouvir “FITA”, qual produção mostra letras usadas para representar a palavra falada?",
+      "options": [
+        "Um desenho de fita sem letras.",
+        "F-I-T-A, registrada em sequência após ouvir a palavra.",
+        "A sequência A-T-I-F sem considerar o que foi dito.",
+        "Uma letra escolhida pela cor do lápis."
+      ],
+      "correctAnswer": "F-I-T-A, registrada em sequência após ouvir a palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um desenho de fita sem letras.": [
+          "REPRESENT_WORD_SEQUENCE"
+        ],
+        "A sequência A-T-I-F sem considerar o que foi dito.": [
+          "REPRESENT_WORD_SEQUENCE"
+        ],
+        "Uma letra escolhida pela cor do lápis.": [
+          "REPRESENT_WORD_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DICTATED_FITA",
+      "explanation": "A criança registra a sequência da palavra ouvida com grafemas em ordem.",
+      "hint": "Relacione o que foi ouvido à ordem das letras.",
+      "errorFocus": "REPRESENT_WORD_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A criança registra a sequência da palavra ouvida com grafemas em ordem.",
+        "incorrect": "A criança registra a sequência da palavra ouvida com grafemas em ordem.",
+        "hint": "Relacione o que foi ouvido à ordem das letras.",
+        "errorFocus": "REPRESENT_WORD_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-15",
+      "statement": "Uma criança explica oralmente “SAPO”, mas tem dificuldade motora para escrever. Qual adaptação permite observar a mesma habilidade?",
+      "prompt": "Uma criança explica oralmente “SAPO”, mas tem dificuldade motora para escrever. Qual adaptação permite observar a mesma habilidade?",
+      "options": [
+        "Retirá-la da atividade.",
+        "Avaliar apenas o traçado manual.",
+        "Oferecer letras móveis, teclado, seleção por olhar ou escriba que registre exatamente sua hipótese.",
+        "Dar a resposta pronta e pedir para repetir."
+      ],
+      "correctAnswer": "Oferecer letras móveis, teclado, seleção por olhar ou escriba que registre exatamente sua hipótese.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Retirá-la da atividade.": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ],
+        "Avaliar apenas o traçado manual.": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ],
+        "Dar a resposta pronta e pedir para repetir.": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "MOTOR_ACCESS",
+      "explanation": "O canal de resposta pode variar sem substituir a decisão da criança sobre letras e sons.",
+      "hint": "Mantenha a autoria e adapte o modo de registrar.",
+      "errorFocus": "ACCESSIBLE_RESPONSE_MODE",
+      "feedback": {
+        "correct": "Boa observação: O canal de resposta pode variar sem substituir a decisão da criança sobre letras e sons.",
+        "incorrect": "O canal de resposta pode variar sem substituir a decisão da criança sobre letras e sons.",
+        "hint": "Mantenha a autoria e adapte o modo de registrar.",
+        "errorFocus": "ACCESSIBLE_RESPONSE_MODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-16",
+      "statement": "A professora dita “LATA” e a criança registra “LATA”. Qual evidência deve ser anotada?",
+      "prompt": "A professora dita “LATA” e a criança registra “LATA”. Qual evidência deve ser anotada?",
+      "options": [
+        "A criança conhece todas as regras ortográficas.",
+        "A escrita foi feita espontaneamente sem instrução.",
+        "A criança reconheceu a lata pelo desenho apenas.",
+        "A palavra foi registrada com letras em sequência após o ditado."
+      ],
+      "correctAnswer": "A palavra foi registrada com letras em sequência após o ditado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A criança conhece todas as regras ortográficas.": [
+          "RECORD_TASK_CONDITIONS"
+        ],
+        "A escrita foi feita espontaneamente sem instrução.": [
+          "RECORD_TASK_CONDITIONS"
+        ],
+        "A criança reconheceu a lata pelo desenho apenas.": [
+          "RECORD_TASK_CONDITIONS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DICTATED_LATA",
+      "explanation": "Indicar que houve ditado descreve corretamente as condições da produção.",
+      "hint": "Registre como a palavra foi apresentada.",
+      "errorFocus": "RECORD_TASK_CONDITIONS",
+      "feedback": {
+        "correct": "Boa observação: Indicar que houve ditado descreve corretamente as condições da produção.",
+        "incorrect": "Indicar que houve ditado descreve corretamente as condições da produção.",
+        "hint": "Registre como a palavra foi apresentada.",
+        "errorFocus": "RECORD_TASK_CONDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-17",
+      "statement": "Uma criança quer escrever “BONECA” para uma lista de brinquedos. Qual procedimento transfere o que aprendeu?",
+      "prompt": "Uma criança quer escrever “BONECA” para uma lista de brinquedos. Qual procedimento transfere o que aprendeu?",
+      "options": [
+        "Falar a palavra, escolher letras para os sons e reler a própria sequência.",
+        "Copiar qualquer palavra da lista sem relação.",
+        "Usar somente o desenho da boneca.",
+        "Pedir ao adulto para decidir cada letra."
+      ],
+      "correctAnswer": "Falar a palavra, escolher letras para os sons e reler a própria sequência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Copiar qualquer palavra da lista sem relação.": [
+          "TRANSFER_INDEPENDENT_WORD"
+        ],
+        "Usar somente o desenho da boneca.": [
+          "TRANSFER_INDEPENDENT_WORD"
+        ],
+        "Pedir ao adulto para decidir cada letra.": [
+          "TRANSFER_INDEPENDENT_WORD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_WORD_BONECA",
+      "explanation": "A sequência de escuta, registro e releitura pode ser usada em uma palavra nova.",
+      "hint": "Use a mesma estratégia com a palavra escolhida.",
+      "errorFocus": "TRANSFER_INDEPENDENT_WORD",
+      "feedback": {
+        "correct": "Boa observação: A sequência de escuta, registro e releitura pode ser usada em uma palavra nova.",
+        "incorrect": "A sequência de escuta, registro e releitura pode ser usada em uma palavra nova.",
+        "hint": "Use a mesma estratégia com a palavra escolhida.",
+        "errorFocus": "TRANSFER_INDEPENDENT_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-18",
+      "statement": "Em uma atividade nova, o ditado é “FARINHA”. O que o professor pode observar sem exigir mais do que a habilidade?",
+      "prompt": "Em uma atividade nova, o ditado é “FARINHA”. O que o professor pode observar sem exigir mais do que a habilidade?",
+      "options": [
+        "Se escreve rapidamente sem apoio.",
+        "Se a criança usa letras/grafemas para representar sons que percebe na palavra.",
+        "Se desenha o ingrediente com detalhes.",
+        "Se conhece todas as regras de acentuação."
+      ],
+      "correctAnswer": "Se a criança usa letras/grafemas para representar sons que percebe na palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Se escreve rapidamente sem apoio.": [
+          "TRANSFER_SCOPE"
+        ],
+        "Se desenha o ingrediente com detalhes.": [
+          "TRANSFER_SCOPE"
+        ],
+        "Se conhece todas as regras de acentuação.": [
+          "TRANSFER_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_DICTATION_FARINHA",
+      "explanation": "A observação se concentra na escrita alfabética e nas relações sonoras, sem ampliar o critério indevidamente.",
+      "hint": "Mantenha o foco em letras e sons da palavra ouvida.",
+      "errorFocus": "TRANSFER_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A observação se concentra na escrita alfabética e nas relações sonoras, sem ampliar o critério indevidamente.",
+        "incorrect": "A observação se concentra na escrita alfabética e nas relações sonoras, sem ampliar o critério indevidamente.",
+        "hint": "Mantenha o foco em letras e sons da palavra ouvida.",
+        "errorFocus": "TRANSFER_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-19",
+      "statement": "A criança quer escrever um recado curto para compartilhar uma ideia. Como manter a autoria?",
+      "prompt": "A criança quer escrever um recado curto para compartilhar uma ideia. Como manter a autoria?",
+      "options": [
+        "O adulto escreve tudo e pede que copie sem conversar.",
+        "Trocar a mensagem por um desenho obrigatório.",
+        "Deixar que formule a mensagem e registre sua hipótese com apoio combinado.",
+        "Escolher uma frase pronta sem consultar a criança."
+      ],
+      "correctAnswer": "Deixar que formule a mensagem e registre sua hipótese com apoio combinado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O adulto escreve tudo e pede que copie sem conversar.": [
+          "TRANSFER_AUTHENTIC_AUTHORSHIP"
+        ],
+        "Trocar a mensagem por um desenho obrigatório.": [
+          "TRANSFER_AUTHENTIC_AUTHORSHIP"
+        ],
+        "Escolher uma frase pronta sem consultar a criança.": [
+          "TRANSFER_AUTHENTIC_AUTHORSHIP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "MESSAGE_TO_FAMILY",
+      "explanation": "A escrita espontânea permite que a criança escolha e registre a própria mensagem.",
+      "hint": "Pergunte o que ela deseja comunicar antes de escrever.",
+      "errorFocus": "TRANSFER_AUTHENTIC_AUTHORSHIP",
+      "feedback": {
+        "correct": "Boa observação: A escrita espontânea permite que a criança escolha e registre a própria mensagem.",
+        "incorrect": "A escrita espontânea permite que a criança escolha e registre a própria mensagem.",
+        "hint": "Pergunte o que ela deseja comunicar antes de escrever.",
+        "errorFocus": "TRANSFER_AUTHENTIC_AUTHORSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-20",
+      "statement": "Uma criança registra uma palavra longa com algumas letras que representam sons percebidos. Qual devolutiva apoia a próxima tentativa?",
+      "prompt": "Uma criança registra uma palavra longa com algumas letras que representam sons percebidos. Qual devolutiva apoia a próxima tentativa?",
+      "options": [
+        "Dizer que a palavra toda não vale.",
+        "Comparar sua produção com a de um colega para ranquear.",
+        "Apagar tudo antes de saber o que ela pensou.",
+        "Perguntar como ela pensou a sequência e escolher um trecho para reler junto."
+      ],
+      "correctAnswer": "Perguntar como ela pensou a sequência e escolher um trecho para reler junto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que a palavra toda não vale.": [
+          "TRANSFER_FEEDBACK"
+        ],
+        "Comparar sua produção com a de um colega para ranquear.": [
+          "TRANSFER_FEEDBACK"
+        ],
+        "Apagar tudo antes de saber o que ela pensou.": [
+          "TRANSFER_FEEDBACK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_WORD_BICICLETA",
+      "explanation": "A devolutiva parte da hipótese, usa evidência e oferece um próximo passo específico.",
+      "hint": "Convide a explicar um trecho, sem comparar crianças.",
+      "errorFocus": "TRANSFER_FEEDBACK",
+      "feedback": {
+        "correct": "Boa observação: A devolutiva parte da hipótese, usa evidência e oferece um próximo passo específico.",
+        "incorrect": "A devolutiva parte da hipótese, usa evidência e oferece um próximo passo específico.",
+        "hint": "Convide a explicar um trecho, sem comparar crianças.",
+        "errorFocus": "TRANSFER_FEEDBACK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-21",
+      "statement": "A turma prepara uma lista de nomes de animais. Que contribuição mostra escrita espontânea?",
+      "prompt": "A turma prepara uma lista de nomes de animais. Que contribuição mostra escrita espontânea?",
+      "options": [
+        "A criança escolhe um animal e registra sua palavra do modo que consegue, explicando uma escolha.",
+        "A criança só cola uma imagem sem registrar palavra.",
+        "O adulto determina todas as letras sem participação.",
+        "Todos copiam a mesma palavra sem escolher."
+      ],
+      "correctAnswer": "A criança escolhe um animal e registra sua palavra do modo que consegue, explicando uma escolha.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A criança só cola uma imagem sem registrar palavra.": [
+          "TRANSFER_SPONTANEOUS_PRODUCTION"
+        ],
+        "O adulto determina todas as letras sem participação.": [
+          "TRANSFER_SPONTANEOUS_PRODUCTION"
+        ],
+        "Todos copiam a mesma palavra sem escolher.": [
+          "TRANSFER_SPONTANEOUS_PRODUCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "GROUP_WORD_WALL",
+      "explanation": "A escolha própria e o registro com reflexão preservam a escrita espontânea.",
+      "hint": "Observe quem escolhe e registra a palavra.",
+      "errorFocus": "TRANSFER_SPONTANEOUS_PRODUCTION",
+      "feedback": {
+        "correct": "Boa observação: A escolha própria e o registro com reflexão preservam a escrita espontânea.",
+        "incorrect": "A escolha própria e o registro com reflexão preservam a escrita espontânea.",
+        "hint": "Observe quem escolhe e registra a palavra.",
+        "errorFocus": "TRANSFER_SPONTANEOUS_PRODUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-22",
+      "statement": "Como diferenciar uma tarefa de ditado de uma atividade de cópia ao avaliar a produção?",
+      "prompt": "Como diferenciar uma tarefa de ditado de uma atividade de cópia ao avaliar a produção?",
+      "options": [
+        "No ditado, a criança apenas colore letras.",
+        "No ditado, a palavra é ouvida sem modelo escrito disponível.",
+        "Na cópia, a palavra é sempre inventada.",
+        "As duas tarefas mostram exatamente as mesmas condições."
+      ],
+      "correctAnswer": "No ditado, a palavra é ouvida sem modelo escrito disponível.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "No ditado, a criança apenas colore letras.": [
+          "TRANSFER_TASK_CONDITIONS"
+        ],
+        "Na cópia, a palavra é sempre inventada.": [
+          "TRANSFER_TASK_CONDITIONS"
+        ],
+        "As duas tarefas mostram exatamente as mesmas condições.": [
+          "TRANSFER_TASK_CONDITIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DICTATION_WITHOUT_MODEL",
+      "explanation": "As condições de produção influenciam o que a atividade permite observar.",
+      "hint": "Verifique se havia um modelo visual da palavra.",
+      "errorFocus": "TRANSFER_TASK_CONDITIONS",
+      "feedback": {
+        "correct": "Boa observação: As condições de produção influenciam o que a atividade permite observar.",
+        "incorrect": "As condições de produção influenciam o que a atividade permite observar.",
+        "hint": "Verifique se havia um modelo visual da palavra.",
+        "errorFocus": "TRANSFER_TASK_CONDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-23",
+      "statement": "Uma criança fala uma palavra com pronúncia regional e registra letras coerentes com o que percebe. Qual avaliação é justa?",
+      "prompt": "Uma criança fala uma palavra com pronúncia regional e registra letras coerentes com o que percebe. Qual avaliação é justa?",
+      "options": [
+        "Desqualificar a produção por causa do sotaque.",
+        "Concluir que ela não conhece letras.",
+        "Investigar a relação entre fala e escrita sem tratar o falar regional como erro moral.",
+        "Impedir que explique sua hipótese."
+      ],
+      "correctAnswer": "Investigar a relação entre fala e escrita sem tratar o falar regional como erro moral.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Desqualificar a produção por causa do sotaque.": [
+          "TRANSFER_RESPECT_VARIATION"
+        ],
+        "Concluir que ela não conhece letras.": [
+          "TRANSFER_RESPECT_VARIATION"
+        ],
+        "Impedir que explique sua hipótese.": [
+          "TRANSFER_RESPECT_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGIONAL_PRONUNCIATION",
+      "explanation": "A avaliação deve observar o objetivo e acolher variações linguísticas.",
+      "hint": "Separe variação de fala do critério de representação escrita.",
+      "errorFocus": "TRANSFER_RESPECT_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A avaliação deve observar o objetivo e acolher variações linguísticas.",
+        "incorrect": "A avaliação deve observar o objetivo e acolher variações linguísticas.",
+        "hint": "Separe variação de fala do critério de representação escrita.",
+        "errorFocus": "TRANSFER_RESPECT_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-24",
+      "statement": "Depois de escrever uma frase, a criança percebe uma parte que quer revisar. O que demonstra revisão com autoria?",
+      "prompt": "Depois de escrever uma frase, a criança percebe uma parte que quer revisar. O que demonstra revisão com autoria?",
+      "options": [
+        "Apagar toda a frase por ordem do adulto.",
+        "Copiar o texto de outra criança.",
+        "Ignorar a mensagem que quis escrever.",
+        "Reler, explicar a mudança desejada e ajustar letras com apoio quando necessário."
+      ],
+      "correctAnswer": "Reler, explicar a mudança desejada e ajustar letras com apoio quando necessário.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar toda a frase por ordem do adulto.": [
+          "TRANSFER_REVISION_WITH_AGENCY"
+        ],
+        "Copiar o texto de outra criança.": [
+          "TRANSFER_REVISION_WITH_AGENCY"
+        ],
+        "Ignorar a mensagem que quis escrever.": [
+          "TRANSFER_REVISION_WITH_AGENCY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISE_OWN_TEXT",
+      "explanation": "A revisão retoma a intenção de escrita e envolve a criança nas decisões.",
+      "hint": "Pergunte o que ela gostaria de mudar e por quê.",
+      "errorFocus": "TRANSFER_REVISION_WITH_AGENCY",
+      "feedback": {
+        "correct": "Boa observação: A revisão retoma a intenção de escrita e envolve a criança nas decisões.",
+        "incorrect": "A revisão retoma a intenção de escrita e envolve a criança nas decisões.",
+        "hint": "Pergunte o que ela gostaria de mudar e por quê.",
+        "errorFocus": "TRANSFER_REVISION_WITH_AGENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-25",
+      "statement": "Ao ouvir “TATU”, a criança registra “TATU”. Qual descrição fica próxima da evidência?",
+      "prompt": "Ao ouvir “TATU”, a criança registra “TATU”. Qual descrição fica próxima da evidência?",
+      "options": [
+        "Usou letras em sequência para representar a palavra ditada nesta situação.",
+        "Provou que domina toda a escrita convencional.",
+        "Não produziu escrita porque não desenhou.",
+        "Escreveu sem ouvir a palavra."
+      ],
+      "correctAnswer": "Usou letras em sequência para representar a palavra ditada nesta situação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Provou que domina toda a escrita convencional.": [
+          "LOCK_IN_EVIDENCE"
+        ],
+        "Não produziu escrita porque não desenhou.": [
+          "LOCK_IN_EVIDENCE"
+        ],
+        "Escreveu sem ouvir a palavra.": [
+          "LOCK_IN_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LOCK_IN_TATU",
+      "explanation": "A descrição registra o que foi observado, sem generalizar além da tarefa.",
+      "hint": "Conte apenas o que esta produção mostra.",
+      "errorFocus": "LOCK_IN_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A descrição registra o que foi observado, sem generalizar além da tarefa.",
+        "incorrect": "A descrição registra o que foi observado, sem generalizar além da tarefa.",
+        "hint": "Conte apenas o que esta produção mostra.",
+        "errorFocus": "LOCK_IN_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-26",
+      "statement": "Qual pergunta destaca a relação entre grafema e som em uma palavra escrita?",
+      "prompt": "Qual pergunta destaca a relação entre grafema e som em uma palavra escrita?",
+      "options": [
+        "Qual letra é a mais bonita?",
+        "Que som você quis representar com esta letra ou combinação de letras?",
+        "Quem escreveu mais rápido?",
+        "Qual desenho combina com a palavra?"
+      ],
+      "correctAnswer": "Que som você quis representar com esta letra ou combinação de letras?",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual letra é a mais bonita?": [
+          "LOCK_IN_SOUND_LETTER_QUESTION"
+        ],
+        "Quem escreveu mais rápido?": [
+          "LOCK_IN_SOUND_LETTER_QUESTION"
+        ],
+        "Qual desenho combina com a palavra?": [
+          "LOCK_IN_SOUND_LETTER_QUESTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "LOCK_IN_SOUND_LETTER",
+      "explanation": "A pergunta convida a explicar a escolha de grafema em relação ao som percebido.",
+      "hint": "Pergunte sobre a relação, não sobre aparência ou velocidade.",
+      "errorFocus": "LOCK_IN_SOUND_LETTER_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta convida a explicar a escolha de grafema em relação ao som percebido.",
+        "incorrect": "A pergunta convida a explicar a escolha de grafema em relação ao som percebido.",
+        "hint": "Pergunte sobre a relação, não sobre aparência ou velocidade.",
+        "errorFocus": "LOCK_IN_SOUND_LETTER_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-27",
+      "statement": "Uma produção usa letras para os sons, mas não segue uma convenção ortográfica. O que o professor deve separar?",
+      "prompt": "Uma produção usa letras para os sons, mas não segue uma convenção ortográfica. O que o professor deve separar?",
+      "options": [
+        "A ideia da criança e a possibilidade de escrever.",
+        "A fala e qualquer forma de comunicação.",
+        "A evidência de escrita alfabética e o ensino posterior da grafia convencional.",
+        "A letra e o desenho como se fossem iguais."
+      ],
+      "correctAnswer": "A evidência de escrita alfabética e o ensino posterior da grafia convencional.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A ideia da criança e a possibilidade de escrever.": [
+          "LOCK_IN_SEPARATE_CRITERIA"
+        ],
+        "A fala e qualquer forma de comunicação.": [
+          "LOCK_IN_SEPARATE_CRITERIA"
+        ],
+        "A letra e o desenho como se fossem iguais.": [
+          "LOCK_IN_SEPARATE_CRITERIA"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_CONVENTION",
+      "explanation": "Distinguir os critérios permite reconhecer o que já foi aprendido e planejar o próximo ensino.",
+      "hint": "Pergunte o que está sendo avaliado agora.",
+      "errorFocus": "LOCK_IN_SEPARATE_CRITERIA",
+      "feedback": {
+        "correct": "Boa observação: Distinguir os critérios permite reconhecer o que já foi aprendido e planejar o próximo ensino.",
+        "incorrect": "Distinguir os critérios permite reconhecer o que já foi aprendido e planejar o próximo ensino.",
+        "hint": "Pergunte o que está sendo avaliado agora.",
+        "errorFocus": "LOCK_IN_SEPARATE_CRITERIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-28",
+      "statement": "Uma criança dita e escreve uma frase curta usando letras para registrar as palavras. Qual ação ajuda a verificar sua hipótese?",
+      "prompt": "Uma criança dita e escreve uma frase curta usando letras para registrar as palavras. Qual ação ajuda a verificar sua hipótese?",
+      "options": [
+        "Avaliar somente o espaçamento perfeito.",
+        "Substituir a frase por uma resposta adulta.",
+        "Ignorar a leitura da própria produção.",
+        "Reler a frase com ela e convidá-la a apontar letras que representam sons percebidos."
+      ],
+      "correctAnswer": "Reler a frase com ela e convidá-la a apontar letras que representam sons percebidos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Avaliar somente o espaçamento perfeito.": [
+          "LOCK_IN_REVISIT_OWN_TEXT"
+        ],
+        "Substituir a frase por uma resposta adulta.": [
+          "LOCK_IN_REVISIT_OWN_TEXT"
+        ],
+        "Ignorar a leitura da própria produção.": [
+          "LOCK_IN_REVISIT_OWN_TEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_SENTENCE",
+      "explanation": "A releitura permite observar a relação entre a mensagem e o registro da criança.",
+      "hint": "Volte à frase que ela mesma produziu.",
+      "errorFocus": "LOCK_IN_REVISIT_OWN_TEXT",
+      "feedback": {
+        "correct": "Boa observação: A releitura permite observar a relação entre a mensagem e o registro da criança.",
+        "incorrect": "A releitura permite observar a relação entre a mensagem e o registro da criança.",
+        "hint": "Volte à frase que ela mesma produziu.",
+        "errorFocus": "LOCK_IN_REVISIT_OWN_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-29",
+      "statement": "Qual feedback combina reconhecimento e próximo passo?",
+      "prompt": "Qual feedback combina reconhecimento e próximo passo?",
+      "options": [
+        "“Você registrou estes sons; vamos reler e pensar se quer acrescentar outra letra aqui.”",
+        "“Está tudo errado e acabou.”",
+        "“Não pense sobre as letras.”",
+        "“Seu colega escreveu melhor.”"
+      ],
+      "correctAnswer": "“Você registrou estes sons; vamos reler e pensar se quer acrescentar outra letra aqui.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Está tudo errado e acabou.”": [
+          "LOCK_IN_SPECIFIC_FEEDBACK"
+        ],
+        "“Não pense sobre as letras.”": [
+          "LOCK_IN_SPECIFIC_FEEDBACK"
+        ],
+        "“Seu colega escreveu melhor.”": [
+          "LOCK_IN_SPECIFIC_FEEDBACK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_FEEDBACK",
+      "explanation": "O feedback identifica evidência e oferece uma ação próxima sem humilhar nem comparar.",
+      "hint": "Reconheça um aspecto observado e convide a revisar.",
+      "errorFocus": "LOCK_IN_SPECIFIC_FEEDBACK",
+      "feedback": {
+        "correct": "Boa observação: O feedback identifica evidência e oferece uma ação próxima sem humilhar nem comparar.",
+        "incorrect": "O feedback identifica evidência e oferece uma ação próxima sem humilhar nem comparar.",
+        "hint": "Reconheça um aspecto observado e convide a revisar.",
+        "errorFocus": "LOCK_IN_SPECIFIC_FEEDBACK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-30",
+      "statement": "Qual registro permite avaliar uma criança que seleciona letras por olhar?",
+      "prompt": "Qual registro permite avaliar uma criança que seleciona letras por olhar?",
+      "options": [
+        "Somente o traçado manual.",
+        "A sequência que ela escolheu e a explicação ou confirmação por seu canal de comunicação.",
+        "A rapidez do movimento dos olhos.",
+        "A quantidade de desenhos coloridos."
+      ],
+      "correctAnswer": "A sequência que ela escolheu e a explicação ou confirmação por seu canal de comunicação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente o traçado manual.": [
+          "LOCK_IN_ACCESSIBLE_EVIDENCE"
+        ],
+        "A rapidez do movimento dos olhos.": [
+          "LOCK_IN_ACCESSIBLE_EVIDENCE"
+        ],
+        "A quantidade de desenhos coloridos.": [
+          "LOCK_IN_ACCESSIBLE_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LOCK_IN_MULTIMODAL",
+      "explanation": "O canal de resposta não muda o objetivo de escolher grafemas para representar sons.",
+      "hint": "Registre as escolhas e a forma de confirmação da criança.",
+      "errorFocus": "LOCK_IN_ACCESSIBLE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O canal de resposta não muda o objetivo de escolher grafemas para representar sons.",
+        "incorrect": "O canal de resposta não muda o objetivo de escolher grafemas para representar sons.",
+        "hint": "Registre as escolhas e a forma de confirmação da criança.",
+        "errorFocus": "LOCK_IN_ACCESSIBLE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-31",
+      "statement": "Na escrita alfabética, o que as letras e grafemas procuram representar?",
+      "prompt": "Na escrita alfabética, o que as letras e grafemas procuram representar?",
+      "options": [
+        "A cor do objeto.",
+        "Somente o formato do desenho.",
+        "Aspectos sonoros das palavras faladas.",
+        "A posição da cadeira."
+      ],
+      "correctAnswer": "Aspectos sonoros das palavras faladas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do objeto.": [
+          "REVIEW_SOUND_RELATION"
+        ],
+        "Somente o formato do desenho.": [
+          "REVIEW_SOUND_RELATION"
+        ],
+        "A posição da cadeira.": [
+          "REVIEW_SOUND_RELATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_SOM",
+      "explanation": "A habilidade relaciona escrita e sons percebidos na fala.",
+      "hint": "Pense no que ouvimos quando dizemos a palavra.",
+      "errorFocus": "REVIEW_SOUND_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A habilidade relaciona escrita e sons percebidos na fala.",
+        "incorrect": "A habilidade relaciona escrita e sons percebidos na fala.",
+        "hint": "Pense no que ouvimos quando dizemos a palavra.",
+        "errorFocus": "REVIEW_SOUND_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-32",
+      "statement": "Qual situação mostra escrita espontânea?",
+      "prompt": "Qual situação mostra escrita espontânea?",
+      "options": [
+        "A criança apenas traça uma palavra impressa.",
+        "O adulto escreve sem consultar a criança.",
+        "A criança colore uma figura sem produzir escrita.",
+        "A criança escolhe uma palavra que quer registrar e tenta escrevê-la."
+      ],
+      "correctAnswer": "A criança escolhe uma palavra que quer registrar e tenta escrevê-la.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A criança apenas traça uma palavra impressa.": [
+          "REVIEW_SPONTANEOUS_WRITING"
+        ],
+        "O adulto escreve sem consultar a criança.": [
+          "REVIEW_SPONTANEOUS_WRITING"
+        ],
+        "A criança colore uma figura sem produzir escrita.": [
+          "REVIEW_SPONTANEOUS_WRITING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_SPONTANEOUS",
+      "explanation": "Na escrita espontânea, a criança inicia a produção a partir de sua intenção.",
+      "hint": "Observe quem escolheu a palavra e iniciou o registro.",
+      "errorFocus": "REVIEW_SPONTANEOUS_WRITING",
+      "feedback": {
+        "correct": "Boa observação: Na escrita espontânea, a criança inicia a produção a partir de sua intenção.",
+        "incorrect": "Na escrita espontânea, a criança inicia a produção a partir de sua intenção.",
+        "hint": "Observe quem escolheu a palavra e iniciou o registro.",
+        "errorFocus": "REVIEW_SPONTANEOUS_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-33",
+      "statement": "Qual situação mostra escrita por ditado?",
+      "prompt": "Qual situação mostra escrita por ditado?",
+      "options": [
+        "A criança ouve uma palavra falada e a registra sem um modelo escrito à vista.",
+        "Copia uma palavra olhando o quadro.",
+        "Desenha o objeto depois de ouvi-lo.",
+        "Escolhe uma imagem entre várias."
+      ],
+      "correctAnswer": "A criança ouve uma palavra falada e a registra sem um modelo escrito à vista.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Copia uma palavra olhando o quadro.": [
+          "REVIEW_DICTATION"
+        ],
+        "Desenha o objeto depois de ouvi-lo.": [
+          "REVIEW_DICTATION"
+        ],
+        "Escolhe uma imagem entre várias.": [
+          "REVIEW_DICTATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_DICTATION",
+      "explanation": "O ditado apresenta a palavra oralmente para que a criança a registre.",
+      "hint": "Confira se ela ouviu a palavra ou olhou um modelo escrito.",
+      "errorFocus": "REVIEW_DICTATION",
+      "feedback": {
+        "correct": "Boa observação: O ditado apresenta a palavra oralmente para que a criança a registre.",
+        "incorrect": "O ditado apresenta a palavra oralmente para que a criança a registre.",
+        "hint": "Confira se ela ouviu a palavra ou olhou um modelo escrito.",
+        "errorFocus": "REVIEW_DICTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-34",
+      "statement": "Uma criança escreve “BOLA” para a palavra “bola”. O que a produção permite afirmar?",
+      "prompt": "Uma criança escreve “BOLA” para a palavra “bola”. O que a produção permite afirmar?",
+      "options": [
+        "Ela domina todas as regras do português.",
+        "Nesta situação, ela registrou a palavra com letras em sequência.",
+        "Ela nunca precisará de revisão.",
+        "Ela copiou necessariamente de um cartaz."
+      ],
+      "correctAnswer": "Nesta situação, ela registrou a palavra com letras em sequência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ela domina todas as regras do português.": [
+          "REVIEW_LIMIT_CLAIM"
+        ],
+        "Ela nunca precisará de revisão.": [
+          "REVIEW_LIMIT_CLAIM"
+        ],
+        "Ela copiou necessariamente de um cartaz.": [
+          "REVIEW_LIMIT_CLAIM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVIEW_HIPOTESE",
+      "explanation": "A conclusão deve permanecer próxima da tarefa e da evidência observada.",
+      "hint": "Evite transformar uma amostra em afirmação geral.",
+      "errorFocus": "REVIEW_LIMIT_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A conclusão deve permanecer próxima da tarefa e da evidência observada.",
+        "incorrect": "A conclusão deve permanecer próxima da tarefa e da evidência observada.",
+        "hint": "Evite transformar uma amostra em afirmação geral.",
+        "errorFocus": "REVIEW_LIMIT_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-35",
+      "statement": "Uma tentativa ainda não segue a grafia convencional. Qual resposta é mais produtiva?",
+      "prompt": "Uma tentativa ainda não segue a grafia convencional. Qual resposta é mais produtiva?",
+      "options": [
+        "Apagar sem conversar.",
+        "Rir da grafia.",
+        "Perguntar o que a criança quis escrever e quais sons procurou representar.",
+        "Dizer que letras não servem para sons."
+      ],
+      "correctAnswer": "Perguntar o que a criança quis escrever e quais sons procurou representar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apagar sem conversar.": [
+          "REVIEW_NONSHAMING_FEEDBACK"
+        ],
+        "Rir da grafia.": [
+          "REVIEW_NONSHAMING_FEEDBACK"
+        ],
+        "Dizer que letras não servem para sons.": [
+          "REVIEW_NONSHAMING_FEEDBACK"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "REVIEW_NONSTANDARD",
+      "explanation": "A pergunta revela a hipótese e orienta o próximo passo pedagógico.",
+      "hint": "Comece pela intenção e pela explicação da criança.",
+      "errorFocus": "REVIEW_NONSHAMING_FEEDBACK",
+      "feedback": {
+        "correct": "Boa observação: A pergunta revela a hipótese e orienta o próximo passo pedagógico.",
+        "incorrect": "A pergunta revela a hipótese e orienta o próximo passo pedagógico.",
+        "hint": "Comece pela intenção e pela explicação da criança.",
+        "errorFocus": "REVIEW_NONSHAMING_FEEDBACK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-36",
+      "statement": "Qual recurso mantém a decisão de escrita com uma criança que não escreve à mão?",
+      "prompt": "Qual recurso mantém a decisão de escrita com uma criança que não escreve à mão?",
+      "options": [
+        "Dar a palavra pronta sem escolha.",
+        "Excluir a criança da produção.",
+        "Avaliar somente a força da mão.",
+        "Letras móveis ou teclado escolhidos pela própria criança."
+      ],
+      "correctAnswer": "Letras móveis ou teclado escolhidos pela própria criança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dar a palavra pronta sem escolha.": [
+          "REVIEW_ACCESS"
+        ],
+        "Excluir a criança da produção.": [
+          "REVIEW_ACCESS"
+        ],
+        "Avaliar somente a força da mão.": [
+          "REVIEW_ACCESS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_ACCESS",
+      "explanation": "A adaptação muda o canal de registro, não a autoria nem o objetivo.",
+      "hint": "Procure um meio em que a criança selecione os grafemas.",
+      "errorFocus": "REVIEW_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: A adaptação muda o canal de registro, não a autoria nem o objetivo.",
+        "incorrect": "A adaptação muda o canal de registro, não a autoria nem o objetivo.",
+        "hint": "Procure um meio em que a criança selecione os grafemas.",
+        "errorFocus": "REVIEW_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-37",
+      "statement": "Se a criança quer escrever “PATO”, o que pode fazer antes de escolher letras?",
+      "prompt": "Se a criança quer escrever “PATO”, o que pode fazer antes de escolher letras?",
+      "options": [
+        "Dizer a palavra e escutar os sons que percebe.",
+        "Escolher letras pela cor.",
+        "Ignorar a palavra falada.",
+        "Contar objetos da sala sem relação."
+      ],
+      "correctAnswer": "Dizer a palavra e escutar os sons que percebe.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher letras pela cor.": [
+          "REVIEW_LISTEN"
+        ],
+        "Ignorar a palavra falada.": [
+          "REVIEW_LISTEN"
+        ],
+        "Contar objetos da sala sem relação.": [
+          "REVIEW_LISTEN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_LETRAS",
+      "explanation": "Escutar a palavra oferece pistas para a escolha das letras.",
+      "hint": "Fale devagar e escute o começo e o restante.",
+      "errorFocus": "REVIEW_LISTEN",
+      "feedback": {
+        "correct": "Boa observação: Escutar a palavra oferece pistas para a escolha das letras.",
+        "incorrect": "Escutar a palavra oferece pistas para a escolha das letras.",
+        "hint": "Fale devagar e escute o começo e o restante.",
+        "errorFocus": "REVIEW_LISTEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-38",
+      "statement": "Qual critério é mais coerente com a habilidade ao observar um ditado?",
+      "prompt": "Qual critério é mais coerente com a habilidade ao observar um ditado?",
+      "options": [
+        "Exigir caligrafia uniforme como único critério.",
+        "Verificar se letras/grafemas são usados para representar fonemas percebidos.",
+        "Avaliar o desenho do objeto.",
+        "Medir somente a velocidade de escrita."
+      ],
+      "correctAnswer": "Verificar se letras/grafemas são usados para representar fonemas percebidos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigir caligrafia uniforme como único critério.": [
+          "REVIEW_CRITERION"
+        ],
+        "Avaliar o desenho do objeto.": [
+          "REVIEW_CRITERION"
+        ],
+        "Medir somente a velocidade de escrita.": [
+          "REVIEW_CRITERION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_CRITERION",
+      "explanation": "O critério se concentra na escrita alfabética, não em desempenho motor ou velocidade.",
+      "hint": "Volte à relação entre sons e grafemas.",
+      "errorFocus": "REVIEW_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: O critério se concentra na escrita alfabética, não em desempenho motor ou velocidade.",
+        "incorrect": "O critério se concentra na escrita alfabética, não em desempenho motor ou velocidade.",
+        "hint": "Volte à relação entre sons e grafemas.",
+        "errorFocus": "REVIEW_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-39",
+      "statement": "Qual anotação é baseada em evidência?",
+      "prompt": "Qual anotação é baseada em evidência?",
+      "options": [
+        "“Não gosta de escrever.”",
+        "“Nunca vai aprender.”",
+        "“Após ouvir ‘mala’, selecionou M-A-L-A e releu a sequência com apoio.”",
+        "“É preguiçosa porque demorou.”"
+      ],
+      "correctAnswer": "“Após ouvir ‘mala’, selecionou M-A-L-A e releu a sequência com apoio.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Não gosta de escrever.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ],
+        "“Nunca vai aprender.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ],
+        "“É preguiçosa porque demorou.”": [
+          "REVIEW_OBSERVABLE_RECORD"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_RECORD",
+      "explanation": "A anotação descreve a tarefa, a produção e o apoio usado sem rotular a criança.",
+      "hint": "Registre o que aconteceu, não uma característica pessoal.",
+      "errorFocus": "REVIEW_OBSERVABLE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A anotação descreve a tarefa, a produção e o apoio usado sem rotular a criança.",
+        "incorrect": "A anotação descreve a tarefa, a produção e o apoio usado sem rotular a criança.",
+        "hint": "Registre o que aconteceu, não uma característica pessoal.",
+        "errorFocus": "REVIEW_OBSERVABLE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-alphabetic-writing-fi-40",
+      "statement": "Depois de observar uma tentativa de escrita, qual próximo passo respeita a aprendizagem?",
+      "prompt": "Depois de observar uma tentativa de escrita, qual próximo passo respeita a aprendizagem?",
+      "options": [
+        "Descartar o registro e encerrar a atividade.",
+        "Comparar publicamente as crianças.",
+        "Trocar toda a escrita por cópia sem explicação.",
+        "Retomar um trecho específico, conversar sobre sons e propor nova escrita com apoio adequado."
+      ],
+      "correctAnswer": "Retomar um trecho específico, conversar sobre sons e propor nova escrita com apoio adequado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Descartar o registro e encerrar a atividade.": [
+          "REVIEW_NEXT_STEP"
+        ],
+        "Comparar publicamente as crianças.": [
+          "REVIEW_NEXT_STEP"
+        ],
+        "Trocar toda a escrita por cópia sem explicação.": [
+          "REVIEW_NEXT_STEP"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEXT_STEP",
+      "explanation": "Uma intervenção próxima da evidência ajuda a criança a testar e revisar sua hipótese.",
+      "hint": "Escolha uma parte que possa ser explorada sem apagar a autoria.",
+      "errorFocus": "REVIEW_NEXT_STEP",
+      "feedback": {
+        "correct": "Boa observação: Uma intervenção próxima da evidência ajuda a criança a testar e revisar sua hipótese.",
+        "incorrect": "Uma intervenção próxima da evidência ajuda a criança a testar e revisar sua hipótese.",
+        "hint": "Escolha uma parte que possa ser explorada sem apagar a autoria.",
+        "errorFocus": "REVIEW_NEXT_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Letras móveis, teclado, seleção por olhar, comunicação alternativa ou escriba que registre exatamente a hipótese ditada.",
+          "Áudio repetível, imagem do referente quando útil, alto contraste e letras em tamanho ajustável.",
+          "Tempo flexível e possibilidade de responder por fala, apontar, selecionar grafemas ou escrita manual.",
+          "Avaliar a representação sonora sem confundir dificuldade motora ou fala não oral com falta de conhecimento."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

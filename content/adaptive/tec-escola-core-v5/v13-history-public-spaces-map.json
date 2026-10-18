@@ -1,0 +1,1419 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-public-spaces-map",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "espacos_publicos_funcoes_e_uso",
+  "canonicalSkillCode": "AUTHORING_EF03HI09_HISTORY_PUBLIC_SPACES",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI09",
+    "sourceVerificationRecord": "BNCC_EF03HI09_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_MAPEAR_ESPACOS",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre mapeamento dos espaços públicos para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "lesson": {
+    "title": "Mapeamento dos espaços públicos",
+    "objective": "Mapear espaços públicos da região, identificar suas funções e registrar acessibilidade, uso e limites do mapa com fontes públicas.",
+    "summary": "Mapas ajudam a localizar ruas, praças, escolas, hospitais e prédios públicos. Para interpretar um mapa, é preciso observar legenda, escala, função e acesso sem expor rotinas pessoais.",
+    "explanation": "## O que investigar\nMapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: um mapa escolar usa símbolos distintos para praça, escola e unidade de saúde. A legenda ajuda a interpretar funções, mas o mapa não informa sozinho horários, acessibilidade de todas as entradas ou a experiência de quem usa cada lugar.",
+    "commonMistake": "Confundir localização com função, usar um mapa sem legenda ou transformar o mapeamento escolar em coleta de endereços pessoais.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Ler símbolos simples e localizar pontos em um desenho.",
+      "Distinguir lugar, função e atividade."
+    ],
+    "keyConcepts": [
+      "espaço público",
+      "mapa",
+      "legenda",
+      "função",
+      "localização",
+      "acessibilidade",
+      "uso coletivo"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-public-spaces-map-001",
+          "v13-history-public-spaces-map-002",
+          "v13-history-public-spaces-map-003",
+          "v13-history-public-spaces-map-004",
+          "v13-history-public-spaces-map-005"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-public-spaces-map-006",
+          "v13-history-public-spaces-map-007",
+          "v13-history-public-spaces-map-008",
+          "v13-history-public-spaces-map-009",
+          "v13-history-public-spaces-map-010",
+          "v13-history-public-spaces-map-011",
+          "v13-history-public-spaces-map-012",
+          "v13-history-public-spaces-map-013",
+          "v13-history-public-spaces-map-014",
+          "v13-history-public-spaces-map-015",
+          "v13-history-public-spaces-map-016",
+          "v13-history-public-spaces-map-017",
+          "v13-history-public-spaces-map-018",
+          "v13-history-public-spaces-map-019",
+          "v13-history-public-spaces-map-020"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-public-spaces-map-021",
+          "v13-history-public-spaces-map-022",
+          "v13-history-public-spaces-map-023",
+          "v13-history-public-spaces-map-024",
+          "v13-history-public-spaces-map-025",
+          "v13-history-public-spaces-map-026",
+          "v13-history-public-spaces-map-027",
+          "v13-history-public-spaces-map-028",
+          "v13-history-public-spaces-map-029",
+          "v13-history-public-spaces-map-030",
+          "v13-history-public-spaces-map-031",
+          "v13-history-public-spaces-map-032"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-public-spaces-map-033",
+          "v13-history-public-spaces-map-034",
+          "v13-history-public-spaces-map-035",
+          "v13-history-public-spaces-map-036",
+          "v13-history-public-spaces-map-037",
+          "v13-history-public-spaces-map-038",
+          "v13-history-public-spaces-map-039",
+          "v13-history-public-spaces-map-040"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-public-spaces-map-041",
+          "v13-history-public-spaces-map-042",
+          "v13-history-public-spaces-map-043",
+          "v13-history-public-spaces-map-044",
+          "v13-history-public-spaces-map-045",
+          "v13-history-public-spaces-map-046",
+          "v13-history-public-spaces-map-047",
+          "v13-history-public-spaces-map-048",
+          "v13-history-public-spaces-map-049",
+          "v13-history-public-spaces-map-050"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Ler símbolos sem consultar a legenda.",
+        "action": "Compare cada símbolo à legenda e confirme uma função na fonte antes de classificar o espaço."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Confundir localização com função do espaço.",
+        "action": "Registre separadamente onde o espaço aparece e qual função a fonte ou sinalização informa."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Inferir acessibilidade completa a partir de um mapa simples.",
+        "action": "Marque o que está representado, o que foi observado e o que precisaria de verificação adicional."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-public-spaces-map-local-inquiry",
+        "title": "Mapear espaços públicos e suas funções",
+        "objective": "Mapear espaços públicos da região, identificar suas funções e registrar acessibilidade, uso e limites do mapa com fontes públicas.",
+        "context": "Mapa público simplificado ou planta didática autorizada, sem endereços residenciais nem trajetos pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um mapa autorizado e identifique escala, legenda, fonte e data quando disponíveis. Marque espaços públicos e descreva suas funções usando os símbolos de forma consistente. Registre uma informação de acessibilidade observável e um limite do mapa, sem inferir dados não representados.",
+        "evidence": "Mapa com legenda e fonte, espaços públicos classificados por função, nota de acessibilidade e limite explícito.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Leitura cartográfica",
+            "emerging": "Marca pontos sem usar legenda.",
+            "developing": "Usa alguns símbolos com apoio.",
+            "proficient": "Aplica legenda e referência espacial de modo consistente."
+          },
+          {
+            "criterion": "Funções públicas",
+            "emerging": "Confunde local e função.",
+            "developing": "Nomeia funções com apoio.",
+            "proficient": "Relaciona espaços a funções documentadas."
+          },
+          {
+            "criterion": "Acessibilidade e limites",
+            "emerging": "Afirma acesso sem evidência.",
+            "developing": "Registra uma condição observada.",
+            "proficient": "Distingue observação, fonte e dado ausente, protegendo informações pessoais."
+          }
+        ],
+        "steps": [
+          "Escolha um mapa autorizado e identifique escala, legenda, fonte e data quando disponíveis.",
+          "Marque espaços públicos e descreva suas funções usando os símbolos de forma consistente.",
+          "Registre uma informação de acessibilidade observável e um limite do mapa, sem inferir dados não representados."
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI09",
+        "descriptor": "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ],
+    "accessibilitySupports": [
+      "Fornecer mapa de alto contraste, símbolos táteis ou ampliados e descrição verbal das relações espaciais.",
+      "Permitir uso de mapa digital acessível, modelo físico ou resposta oral; não solicitar endereço de casa ou rota individual."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-public-spaces-map-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_LEGEND_01",
+      "statement": "Um mapa usa um símbolo azul para escolas e um símbolo verde para praças. Para que serve a legenda?",
+      "options": [
+        "Para explicar o significado dos símbolos usados no mapa.",
+        "A legenda mostra apenas o tamanho real.",
+        "Símbolos não precisam de explicação.",
+        "A cor prova quem usa o lugar."
+      ],
+      "correctAnswer": "Para explicar o significado dos símbolos usados no mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A legenda conecta representação e elemento localizado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A legenda mostra apenas o tamanho real.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_LEGEND_02",
+      "statement": "Um mapa usa um símbolo azul para escolas e um símbolo verde para praças. Que critério deve orientar a análise?",
+      "options": [
+        "A legenda mostra apenas o tamanho real.",
+        "Considere A legenda conecta representação e elemento localizado.",
+        "Símbolos não precisam de explicação.",
+        "A cor prova quem usa o lugar."
+      ],
+      "correctAnswer": "Considere A legenda conecta representação e elemento localizado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A legenda conecta representação e elemento localizado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A legenda mostra apenas o tamanho real.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_LEGEND_03",
+      "statement": "Um mapa usa um símbolo azul para escolas e um símbolo verde para praças. Como transferir esse raciocínio?",
+      "options": [
+        "A legenda mostra apenas o tamanho real.",
+        "Símbolos não precisam de explicação.",
+        "Crie uma legenda para um mapa de serviços públicos.",
+        "A cor prova quem usa o lugar."
+      ],
+      "correctAnswer": "Crie uma legenda para um mapa de serviços públicos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A legenda conecta representação e elemento localizado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A legenda mostra apenas o tamanho real.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_LEGEND_04",
+      "statement": "Um mapa usa um símbolo azul para escolas e um símbolo verde para praças. Qual conclusão deve ser evitada?",
+      "options": [
+        "A legenda mostra apenas o tamanho real.",
+        "Símbolos não precisam de explicação.",
+        "A cor prova quem usa o lugar.",
+        "Evite dizer que a cor informa a qualidade do lugar."
+      ],
+      "correctAnswer": "Evite dizer que a cor informa a qualidade do lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A legenda conecta representação e elemento localizado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A legenda mostra apenas o tamanho real.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_LEGEND_05",
+      "statement": "Um mapa usa um símbolo azul para escolas e um símbolo verde para praças. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira símbolos e legenda do mapa.",
+        "A legenda mostra apenas o tamanho real.",
+        "Símbolos não precisam de explicação.",
+        "A cor prova quem usa o lugar."
+      ],
+      "correctAnswer": "Confira símbolos e legenda do mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A legenda conecta representação e elemento localizado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A legenda mostra apenas o tamanho real.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_FUNCTION_01",
+      "statement": "Uma praça aparece no mapa ao lado de uma escola e tem área de brinquedos e bancos. Que função pode ser identificada?",
+      "options": [
+        "A praça tem função de escola.",
+        "A praça oferece convivência e lazer, conforme os elementos e a fonte observada.",
+        "Brinquedos provam que todos usam a praça.",
+        "O mapa não pode mostrar funções."
+      ],
+      "correctAnswer": "A praça oferece convivência e lazer, conforme os elementos e a fonte observada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Função é inferida com base em estrutura, registros e uso documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A praça tem função de escola.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_FUNCTION_02",
+      "statement": "Uma praça aparece no mapa ao lado de uma escola e tem área de brinquedos e bancos. Que critério deve orientar a análise?",
+      "options": [
+        "A praça tem função de escola.",
+        "Brinquedos provam que todos usam a praça.",
+        "Considere Função é inferida com base em estrutura, registros e uso documentado.",
+        "O mapa não pode mostrar funções."
+      ],
+      "correctAnswer": "Considere Função é inferida com base em estrutura, registros e uso documentado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Função é inferida com base em estrutura, registros e uso documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A praça tem função de escola.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_FUNCTION_03",
+      "statement": "Uma praça aparece no mapa ao lado de uma escola e tem área de brinquedos e bancos. Como transferir esse raciocínio?",
+      "options": [
+        "A praça tem função de escola.",
+        "Brinquedos provam que todos usam a praça.",
+        "O mapa não pode mostrar funções.",
+        "Identifique a função de outro espaço sem observar pessoas identificáveis."
+      ],
+      "correctAnswer": "Identifique a função de outro espaço sem observar pessoas identificáveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Função é inferida com base em estrutura, registros e uso documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A praça tem função de escola.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_FUNCTION_04",
+      "statement": "Uma praça aparece no mapa ao lado de uma escola e tem área de brinquedos e bancos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que a praça atende a toda necessidade do bairro.",
+        "A praça tem função de escola.",
+        "Brinquedos provam que todos usam a praça.",
+        "O mapa não pode mostrar funções."
+      ],
+      "correctAnswer": "Evite dizer que a praça atende a toda necessidade do bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Função é inferida com base em estrutura, registros e uso documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A praça tem função de escola.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_FUNCTION_05",
+      "statement": "Uma praça aparece no mapa ao lado de uma escola e tem área de brinquedos e bancos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A praça tem função de escola.",
+        "Confira mapa, equipamentos e descrição pública.",
+        "Brinquedos provam que todos usam a praça.",
+        "O mapa não pode mostrar funções."
+      ],
+      "correctAnswer": "Confira mapa, equipamentos e descrição pública.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Função é inferida com base em estrutura, registros e uso documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A praça tem função de escola.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ROUTE_01",
+      "statement": "Uma rota liga a escola à biblioteca, mas cruza uma avenida sem faixa de pedestres. O que o mapa permite discutir?",
+      "options": [
+        "A distância curta resolve qualquer barreira.",
+        "A escola não é espaço público.",
+        "A conexão entre espaços e uma possível barreira de travessia, que deve ser conferida no local ou em fonte pública.",
+        "Mapas nunca mostram acesso."
+      ],
+      "correctAnswer": "A conexão entre espaços e uma possível barreira de travessia, que deve ser conferida no local ou em fonte pública.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A distância curta resolve qualquer barreira.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ROUTE_02",
+      "statement": "Uma rota liga a escola à biblioteca, mas cruza uma avenida sem faixa de pedestres. Que critério deve orientar a análise?",
+      "options": [
+        "A distância curta resolve qualquer barreira.",
+        "A escola não é espaço público.",
+        "Mapas nunca mostram acesso.",
+        "Considere Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho."
+      ],
+      "correctAnswer": "Considere Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A distância curta resolve qualquer barreira.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ROUTE_03",
+      "statement": "Uma rota liga a escola à biblioteca, mas cruza uma avenida sem faixa de pedestres. Como transferir esse raciocínio?",
+      "options": [
+        "Mapeie rotas acessíveis com mediação adulta.",
+        "A distância curta resolve qualquer barreira.",
+        "A escola não é espaço público.",
+        "Mapas nunca mostram acesso."
+      ],
+      "correctAnswer": "Mapeie rotas acessíveis com mediação adulta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A distância curta resolve qualquer barreira.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ROUTE_04",
+      "statement": "Uma rota liga a escola à biblioteca, mas cruza uma avenida sem faixa de pedestres. Qual conclusão deve ser evitada?",
+      "options": [
+        "A distância curta resolve qualquer barreira.",
+        "Evite afirmar que a rota é segura só porque é curta.",
+        "A escola não é espaço público.",
+        "Mapas nunca mostram acesso."
+      ],
+      "correctAnswer": "Evite afirmar que a rota é segura só porque é curta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A distância curta resolve qualquer barreira.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ROUTE_05",
+      "statement": "Uma rota liga a escola à biblioteca, mas cruza uma avenida sem faixa de pedestres. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A distância curta resolve qualquer barreira.",
+        "A escola não é espaço público.",
+        "Confira ruas, travessias, sinalização e fonte de mobilidade.",
+        "Mapas nunca mostram acesso."
+      ],
+      "correctAnswer": "Confira ruas, travessias, sinalização e fonte de mobilidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear relações também revela acesso e limites, sem garantir segurança apenas pelo desenho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A distância curta resolve qualquer barreira.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_PUBLIC-BUILDING_01",
+      "statement": "O mapa marca a Prefeitura e a Câmara de Vereadores como prédios diferentes. Por que localizar os dois?",
+      "options": [
+        "Prédios públicos não têm função específica.",
+        "A distância entre eles define suas funções.",
+        "A Prefeitura representa todas as instituições.",
+        "Porque suas funções institucionais são diferentes e podem ser investigadas em fontes públicas."
+      ],
+      "correctAnswer": "Porque suas funções institucionais são diferentes e podem ser investigadas em fontes públicas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localização deve ser acompanhada da função do espaço.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Prédios públicos não têm função específica.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_PUBLIC-BUILDING_02",
+      "statement": "O mapa marca a Prefeitura e a Câmara de Vereadores como prédios diferentes. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Localização deve ser acompanhada da função do espaço.",
+        "Prédios públicos não têm função específica.",
+        "A distância entre eles define suas funções.",
+        "A Prefeitura representa todas as instituições."
+      ],
+      "correctAnswer": "Considere Localização deve ser acompanhada da função do espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localização deve ser acompanhada da função do espaço.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Prédios públicos não têm função específica.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_PUBLIC-BUILDING_03",
+      "statement": "O mapa marca a Prefeitura e a Câmara de Vereadores como prédios diferentes. Como transferir esse raciocínio?",
+      "options": [
+        "Prédios públicos não têm função específica.",
+        "Compare dois prédios públicos com informação oficial.",
+        "A distância entre eles define suas funções.",
+        "A Prefeitura representa todas as instituições."
+      ],
+      "correctAnswer": "Compare dois prédios públicos com informação oficial.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localização deve ser acompanhada da função do espaço.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Prédios públicos não têm função específica.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_PUBLIC-BUILDING_04",
+      "statement": "O mapa marca a Prefeitura e a Câmara de Vereadores como prédios diferentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "Prédios públicos não têm função específica.",
+        "A distância entre eles define suas funções.",
+        "Evite dizer que os prédios têm a mesma função.",
+        "A Prefeitura representa todas as instituições."
+      ],
+      "correctAnswer": "Evite dizer que os prédios têm a mesma função.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localização deve ser acompanhada da função do espaço.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Prédios públicos não têm função específica.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_PUBLIC-BUILDING_05",
+      "statement": "O mapa marca a Prefeitura e a Câmara de Vereadores como prédios diferentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Prédios públicos não têm função específica.",
+        "A distância entre eles define suas funções.",
+        "A Prefeitura representa todas as instituições.",
+        "Confira legenda, identificação do prédio e descrição institucional."
+      ],
+      "correctAnswer": "Confira legenda, identificação do prédio e descrição institucional.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localização deve ser acompanhada da função do espaço.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Prédios públicos não têm função específica.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_HOSPITAL_01",
+      "statement": "Um hospital aparece no mapa, mas o mapa não informa horários nem serviços disponíveis. Qual limite deve ser registrado?",
+      "options": [
+        "O mapa localiza o hospital, mas não basta para afirmar horários ou serviços.",
+        "O hospital não presta serviço.",
+        "Todo hospital tem os mesmos horários.",
+        "O mapa confirma a qualidade do atendimento."
+      ],
+      "correctAnswer": "O mapa localiza o hospital, mas não basta para afirmar horários ou serviços.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O hospital não presta serviço.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_HOSPITAL_02",
+      "statement": "Um hospital aparece no mapa, mas o mapa não informa horários nem serviços disponíveis. Que critério deve orientar a análise?",
+      "options": [
+        "O hospital não presta serviço.",
+        "Considere Cada fonte tem escopo; localização não substitui informação de atendimento.",
+        "Todo hospital tem os mesmos horários.",
+        "O mapa confirma a qualidade do atendimento."
+      ],
+      "correctAnswer": "Considere Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O hospital não presta serviço.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_HOSPITAL_03",
+      "statement": "Um hospital aparece no mapa, mas o mapa não informa horários nem serviços disponíveis. Como transferir esse raciocínio?",
+      "options": [
+        "O hospital não presta serviço.",
+        "Todo hospital tem os mesmos horários.",
+        "Aplique o limite a uma biblioteca ou posto de saúde.",
+        "O mapa confirma a qualidade do atendimento."
+      ],
+      "correctAnswer": "Aplique o limite a uma biblioteca ou posto de saúde.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O hospital não presta serviço.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_HOSPITAL_04",
+      "statement": "Um hospital aparece no mapa, mas o mapa não informa horários nem serviços disponíveis. Qual conclusão deve ser evitada?",
+      "options": [
+        "O hospital não presta serviço.",
+        "Todo hospital tem os mesmos horários.",
+        "O mapa confirma a qualidade do atendimento.",
+        "Evite inventar horário com base no símbolo."
+      ],
+      "correctAnswer": "Evite inventar horário com base no símbolo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O hospital não presta serviço.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_HOSPITAL_05",
+      "statement": "Um hospital aparece no mapa, mas o mapa não informa horários nem serviços disponíveis. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira mapa, site institucional e data da consulta.",
+        "O hospital não presta serviço.",
+        "Todo hospital tem os mesmos horários.",
+        "O mapa confirma a qualidade do atendimento."
+      ],
+      "correctAnswer": "Confira mapa, site institucional e data da consulta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cada fonte tem escopo; localização não substitui informação de atendimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O hospital não presta serviço.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SCALE_01",
+      "statement": "Em um desenho escolar, a praça parece maior que o hospital, mas o desenho não informa escala. Como interpretar?",
+      "options": [
+        "Todo desenho é proporcional.",
+        "Comparar a localização relativa, não o tamanho real dos espaços.",
+        "A posição não pode ser usada.",
+        "O símbolo maior prova maior área."
+      ],
+      "correctAnswer": "Comparar a localização relativa, não o tamanho real dos espaços.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Sem escala, o desenho representa posição e não medida precisa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Todo desenho é proporcional.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SCALE_02",
+      "statement": "Em um desenho escolar, a praça parece maior que o hospital, mas o desenho não informa escala. Que critério deve orientar a análise?",
+      "options": [
+        "Todo desenho é proporcional.",
+        "A posição não pode ser usada.",
+        "Considere Sem escala, o desenho representa posição e não medida precisa.",
+        "O símbolo maior prova maior área."
+      ],
+      "correctAnswer": "Considere Sem escala, o desenho representa posição e não medida precisa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Sem escala, o desenho representa posição e não medida precisa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Todo desenho é proporcional.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SCALE_03",
+      "statement": "Em um desenho escolar, a praça parece maior que o hospital, mas o desenho não informa escala. Como transferir esse raciocínio?",
+      "options": [
+        "Todo desenho é proporcional.",
+        "A posição não pode ser usada.",
+        "O símbolo maior prova maior área.",
+        "Use legenda e escala em outro mapa."
+      ],
+      "correctAnswer": "Use legenda e escala em outro mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Sem escala, o desenho representa posição e não medida precisa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Todo desenho é proporcional.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SCALE_04",
+      "statement": "Em um desenho escolar, a praça parece maior que o hospital, mas o desenho não informa escala. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite concluir que a praça é maior no mundo real.",
+        "Todo desenho é proporcional.",
+        "A posição não pode ser usada.",
+        "O símbolo maior prova maior área."
+      ],
+      "correctAnswer": "Evite concluir que a praça é maior no mundo real.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Sem escala, o desenho representa posição e não medida precisa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Todo desenho é proporcional.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SCALE_05",
+      "statement": "Em um desenho escolar, a praça parece maior que o hospital, mas o desenho não informa escala. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Todo desenho é proporcional.",
+        "Confira indicação de escala, símbolos e limites do desenho.",
+        "A posição não pode ser usada.",
+        "O símbolo maior prova maior área."
+      ],
+      "correctAnswer": "Confira indicação de escala, símbolos e limites do desenho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Sem escala, o desenho representa posição e não medida precisa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Todo desenho é proporcional.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ACCESS_01",
+      "statement": "Um mapa acessível oferece contraste, descrição dos símbolos e versão tátil para os principais pontos. O que esses recursos garantem?",
+      "options": [
+        "Apenas a versão visual é válida.",
+        "Descrição pode inventar pontos.",
+        "Ampliam o acesso à informação do mapa, mantendo os mesmos pontos e funções representados.",
+        "Acessibilidade dispensa legenda."
+      ],
+      "correctAnswer": "Ampliam o acesso à informação do mapa, mantendo os mesmos pontos e funções representados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas a versão visual é válida.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ACCESS_02",
+      "statement": "Um mapa acessível oferece contraste, descrição dos símbolos e versão tátil para os principais pontos. Que critério deve orientar a análise?",
+      "options": [
+        "Apenas a versão visual é válida.",
+        "Descrição pode inventar pontos.",
+        "Acessibilidade dispensa legenda.",
+        "Considere Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta."
+      ],
+      "correctAnswer": "Considere Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas a versão visual é válida.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ACCESS_03",
+      "statement": "Um mapa acessível oferece contraste, descrição dos símbolos e versão tátil para os principais pontos. Como transferir esse raciocínio?",
+      "options": [
+        "Adapte um mapa de espaços públicos.",
+        "Apenas a versão visual é válida.",
+        "Descrição pode inventar pontos.",
+        "Acessibilidade dispensa legenda."
+      ],
+      "correctAnswer": "Adapte um mapa de espaços públicos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas a versão visual é válida.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ACCESS_04",
+      "statement": "Um mapa acessível oferece contraste, descrição dos símbolos e versão tátil para os principais pontos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Apenas a versão visual é válida.",
+        "Evite dizer que o recurso acessível muda a localização.",
+        "Descrição pode inventar pontos.",
+        "Acessibilidade dispensa legenda."
+      ],
+      "correctAnswer": "Evite dizer que o recurso acessível muda a localização.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas a versão visual é válida.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_ACCESS_05",
+      "statement": "Um mapa acessível oferece contraste, descrição dos símbolos e versão tátil para os principais pontos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Apenas a versão visual é válida.",
+        "Descrição pode inventar pontos.",
+        "Confira contraste, descrição, legenda e correspondência entre versões.",
+        "Acessibilidade dispensa legenda."
+      ],
+      "correctAnswer": "Confira contraste, descrição, legenda e correspondência entre versões.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve preservar a informação e oferecer meios diferentes de consulta.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas a versão visual é válida.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_USE_01",
+      "statement": "Uma praça pública tem quadra, mas um aviso informa horários reservados para atividades comunitárias. O que deve ser registrado?",
+      "options": [
+        "O aviso elimina o caráter público.",
+        "Quadra significa acesso irrestrito.",
+        "Toda reserva é permanente.",
+        "A função esportiva e as regras públicas de uso, sem concluir que o espaço está sempre disponível."
+      ],
+      "correctAnswer": "A função esportiva e as regras públicas de uso, sem concluir que o espaço está sempre disponível.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O aviso elimina o caráter público.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_USE_02",
+      "statement": "Uma praça pública tem quadra, mas um aviso informa horários reservados para atividades comunitárias. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Mapear inclui função e condições de uso comunicadas oficialmente.",
+        "O aviso elimina o caráter público.",
+        "Quadra significa acesso irrestrito.",
+        "Toda reserva é permanente."
+      ],
+      "correctAnswer": "Considere Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O aviso elimina o caráter público.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_USE_03",
+      "statement": "Uma praça pública tem quadra, mas um aviso informa horários reservados para atividades comunitárias. Como transferir esse raciocínio?",
+      "options": [
+        "O aviso elimina o caráter público.",
+        "Registre regras de uma biblioteca ou centro cultural.",
+        "Quadra significa acesso irrestrito.",
+        "Toda reserva é permanente."
+      ],
+      "correctAnswer": "Registre regras de uma biblioteca ou centro cultural.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O aviso elimina o caráter público.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_USE_04",
+      "statement": "Uma praça pública tem quadra, mas um aviso informa horários reservados para atividades comunitárias. Qual conclusão deve ser evitada?",
+      "options": [
+        "O aviso elimina o caráter público.",
+        "Quadra significa acesso irrestrito.",
+        "Evite dizer que o espaço pertence ao grupo que o reserva.",
+        "Toda reserva é permanente."
+      ],
+      "correctAnswer": "Evite dizer que o espaço pertence ao grupo que o reserva.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O aviso elimina o caráter público.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_USE_05",
+      "statement": "Uma praça pública tem quadra, mas um aviso informa horários reservados para atividades comunitárias. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O aviso elimina o caráter público.",
+        "Quadra significa acesso irrestrito.",
+        "Toda reserva é permanente.",
+        "Confira equipamento, aviso, horários e órgão responsável."
+      ],
+      "correctAnswer": "Confira equipamento, aviso, horários e órgão responsável.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapear inclui função e condições de uso comunicadas oficialmente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O aviso elimina o caráter público.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_COMPARE_01",
+      "statement": "Dois mapas mostram a mesma região antes e depois da abertura de uma unidade de saúde. Que comparação é possível?",
+      "options": [
+        "Identificar a mudança na localização de um serviço e as vias de acesso representadas.",
+        "Os mapas mostram exatamente a mesma situação.",
+        "A unidade mudou todas as ruas.",
+        "Localização prova o resultado do serviço."
+      ],
+      "correctAnswer": "Identificar a mudança na localização de um serviço e as vias de acesso representadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Os mapas mostram exatamente a mesma situação.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_COMPARE_02",
+      "statement": "Dois mapas mostram a mesma região antes e depois da abertura de uma unidade de saúde. Que critério deve orientar a análise?",
+      "options": [
+        "Os mapas mostram exatamente a mesma situação.",
+        "Considere Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+        "A unidade mudou todas as ruas.",
+        "Localização prova o resultado do serviço."
+      ],
+      "correctAnswer": "Considere Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Os mapas mostram exatamente a mesma situação.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_COMPARE_03",
+      "statement": "Dois mapas mostram a mesma região antes e depois da abertura de uma unidade de saúde. Como transferir esse raciocínio?",
+      "options": [
+        "Os mapas mostram exatamente a mesma situação.",
+        "A unidade mudou todas as ruas.",
+        "Compare mapas de uma escola ou praça.",
+        "Localização prova o resultado do serviço."
+      ],
+      "correctAnswer": "Compare mapas de uma escola ou praça.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Os mapas mostram exatamente a mesma situação.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_COMPARE_04",
+      "statement": "Dois mapas mostram a mesma região antes e depois da abertura de uma unidade de saúde. Qual conclusão deve ser evitada?",
+      "options": [
+        "Os mapas mostram exatamente a mesma situação.",
+        "A unidade mudou todas as ruas.",
+        "Localização prova o resultado do serviço.",
+        "Evite afirmar que a unidade resolveu todos os problemas de saúde."
+      ],
+      "correctAnswer": "Evite afirmar que a unidade resolveu todos os problemas de saúde.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Os mapas mostram exatamente a mesma situação.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_COMPARE_05",
+      "statement": "Dois mapas mostram a mesma região antes e depois da abertura de uma unidade de saúde. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira datas, símbolos, vias e fonte de cada mapa.",
+        "Os mapas mostram exatamente a mesma situação.",
+        "A unidade mudou todas as ruas.",
+        "Localização prova o resultado do serviço."
+      ],
+      "correctAnswer": "Confira datas, símbolos, vias e fonte de cada mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas de períodos diferentes ajudam a observar mudanças espaciais quando datas e legendas são claras.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Os mapas mostram exatamente a mesma situação.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SYNTHESIS_01",
+      "statement": "Uma turma produz um mapa acessível com ruas, praças, escola, hospital e prédio público. Como avaliar o mapa?",
+      "options": [
+        "Adicionar nomes completos dos moradores.",
+        "Conferir legenda, localização, funções, fontes, acessibilidade e proteção de dados pessoais.",
+        "O mapa não precisa de fonte.",
+        "Função pode ser deduzida apenas do tamanho."
+      ],
+      "correctAnswer": "Conferir legenda, localização, funções, fontes, acessibilidade e proteção de dados pessoais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Adicionar nomes completos dos moradores.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SYNTHESIS_02",
+      "statement": "Uma turma produz um mapa acessível com ruas, praças, escola, hospital e prédio público. Que critério deve orientar a análise?",
+      "options": [
+        "Adicionar nomes completos dos moradores.",
+        "O mapa não precisa de fonte.",
+        "Considere Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+        "Função pode ser deduzida apenas do tamanho."
+      ],
+      "correctAnswer": "Considere Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Adicionar nomes completos dos moradores.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SYNTHESIS_03",
+      "statement": "Uma turma produz um mapa acessível com ruas, praças, escola, hospital e prédio público. Como transferir esse raciocínio?",
+      "options": [
+        "Adicionar nomes completos dos moradores.",
+        "O mapa não precisa de fonte.",
+        "Função pode ser deduzida apenas do tamanho.",
+        "Revise um mapa coletivo antes de apresentá-lo."
+      ],
+      "correctAnswer": "Revise um mapa coletivo antes de apresentá-lo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Adicionar nomes completos dos moradores.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SYNTHESIS_04",
+      "statement": "Uma turma produz um mapa acessível com ruas, praças, escola, hospital e prédio público. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite publicar endereços e rotinas pessoais para completar o mapa.",
+        "Adicionar nomes completos dos moradores.",
+        "O mapa não precisa de fonte.",
+        "Função pode ser deduzida apenas do tamanho."
+      ],
+      "correctAnswer": "Evite publicar endereços e rotinas pessoais para completar o mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Adicionar nomes completos dos moradores.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-public-spaces-map-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-PUBLIC-SPACES-MAP_SYNTHESIS_05",
+      "statement": "Uma turma produz um mapa acessível com ruas, praças, escola, hospital e prédio público. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Adicionar nomes completos dos moradores.",
+        "Confira legenda, escala, fontes, descrições e dados removidos.",
+        "O mapa não precisa de fonte.",
+        "Função pode ser deduzida apenas do tamanho."
+      ],
+      "correctAnswer": "Confira legenda, escala, fontes, descrições e dados removidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mapa escolar é evidência quando seus critérios, fontes e limites ficam claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Adicionar nomes completos dos moradores.": [
+          "HISTORY_EF03HI09_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

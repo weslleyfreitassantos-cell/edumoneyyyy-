@@ -1,0 +1,2036 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01ma12-location-from-named-reference-v1",
+  "canonicalSkillCode": "MATHEMATICS_DESCRIBE_LOCATION_FROM_GIVEN_REFERENCE",
+  "subject": "MATHEMATICS",
+  "domain": "GEOMETRIA · LOCALIZAÇÃO E DESCRIÇÃO DE CAMINHOS",
+  "topic": "localização e trajetos usando um ponto de referência explicitamente nomeado",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA12",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Descrever posições a partir de um ponto de referência",
+    "objective": "Localizar pessoas e objetos a partir de um referencial nomeado e descrever caminhos simples entre dois pontos usando vocabulário espacial.",
+    "summary": "Palavras como direita, esquerda, em cima e embaixo dependem do ponto de referência combinado. Uma descrição fica mais clara quando informa de que objeto, pessoa ou posição estamos falando. Em mapas simples e desenhos, também podemos indicar como ir de um ponto a outro, observando o trajeto e usando as referências disponíveis.",
+    "explanation": "Antes de usar direita ou esquerda, diga qual é o referencial: por exemplo, ‘olhando para o quadro, a caixa está à direita da porta’. Se o referencial mudar, a descrição pode mudar. ‘Em cima’ e ‘embaixo’ também devem ser ligados ao objeto de referência, como ‘o livro está em cima da mesa’. Para descrever um caminho num desenho, nomeie o ponto de partida, siga as relações espaciais apresentadas e indique onde termina. O exercício pode ser feito com mapas fictícios e cartões, sem revelar trajetos reais de casa ou locais privados.",
+    "workedExample": "Num desenho, a mesa está no centro e a janela fica à esquerda da mesa. A descrição fica clara porque dizemos que usamos a mesa como referência. Em outro desenho, para ir do círculo ao quadrado, seguimos para a direita e depois para cima, conforme as setas do mapa.",
+    "commonMistake": "Usar direita ou esquerda sem dizer em relação a qual objeto ou orientação a posição está sendo descrita.",
+    "priorKnowledge": [
+      "Usar palavras espaciais em brincadeiras e observar posições em desenhos.",
+      "Reconhecer que um mapa ou esquema pode representar lugares de forma simplificada."
+    ],
+    "keyConcepts": [
+      "ponto de referência",
+      "direita",
+      "esquerda",
+      "em cima",
+      "embaixo",
+      "trajeto",
+      "ponto de partida",
+      "destino"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "UNNAMED_REFERENCE_POINT",
+        "action": "Mostre um desenho com três objetos e peça que a criança complete oralmente ‘em relação à ___’; mantenha o mesmo desenho para comparar descrições."
+      },
+      {
+        "errorFocus": "REFERENCE_SHIFT_IGNORED",
+        "action": "Use duas setas de observação em um mapa de papel e compare como a posição de um objeto é descrita a partir de cada referência."
+      },
+      {
+        "errorFocus": "PATH_WITHOUT_ENDPOINTS",
+        "action": "Marque com fichas coloridas a origem e o destino antes de narrar as etapas intermediárias."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+      "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma12-describe-paper-map",
+        "title": "Mapa inventado da sala de jogos",
+        "instructions": "Uma dupla observa um mapa fictício com figuras e pontos de referência claramente nomeados.\n1. Escolham uma figura como ponto de referência.\n2. Descrevam a posição de outra figura com direita, esquerda, em cima ou embaixo.\n3. Troquem o ponto de referência e expliquem por que a frase pode mudar.",
+        "steps": [
+          "Escolham uma figura como ponto de referência.",
+          "Descrevam a posição de outra figura com direita, esquerda, em cima ou embaixo.",
+          "Troquem o ponto de referência e expliquem por que a frase pode mudar."
+        ],
+        "evidence": "Descrição que nomeia o referencial e usa uma relação espacial consistente com o mapa.",
+        "privacyGuard": "Usar cenário inventado; não pedir que estudantes desenhem ou compartilhem endereço, casa ou rota real.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma figura com apoio visual.",
+            "developing": "usa uma palavra espacial relativa a uma referência.",
+            "proficient": "nomeia o ponto de referência e descreve a posição com clareza."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma12-card-path",
+        "title": "Caminho entre dois cartões",
+        "instructions": "O grupo cria um pequeno tabuleiro de papel com partida, destino e marcos fictícios.\n1. Marquem dois pontos com símbolos diferentes.\n2. Planejem um caminho com setas e pelo menos um ponto de referência.\n3. Descrevam o percurso oralmente, por desenho ou com cartões de direção.",
+        "steps": [
+          "Marquem dois pontos com símbolos diferentes.",
+          "Planejem um caminho com setas e pelo menos um ponto de referência.",
+          "Descrevam o percurso oralmente, por desenho ou com cartões de direção."
+        ],
+        "evidence": "Trajeto que explicita início e destino e comunica uma ou mais relações espaciais.",
+        "privacyGuard": "O tabuleiro é fictício e não representa caminhos de estudantes ou pessoas identificáveis.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica partida ou destino com apoio.",
+            "developing": "organiza algumas etapas em sequência.",
+            "proficient": "descreve o caminho usando referências claras."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01ma12-location-from-named-reference-v1-01",
+          "bncc-ef01ma12-location-from-named-reference-v1-02",
+          "bncc-ef01ma12-location-from-named-reference-v1-03",
+          "bncc-ef01ma12-location-from-named-reference-v1-04",
+          "bncc-ef01ma12-location-from-named-reference-v1-05",
+          "bncc-ef01ma12-location-from-named-reference-v1-06",
+          "bncc-ef01ma12-location-from-named-reference-v1-07",
+          "bncc-ef01ma12-location-from-named-reference-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01ma12-location-from-named-reference-v1-09",
+          "bncc-ef01ma12-location-from-named-reference-v1-10",
+          "bncc-ef01ma12-location-from-named-reference-v1-11",
+          "bncc-ef01ma12-location-from-named-reference-v1-12",
+          "bncc-ef01ma12-location-from-named-reference-v1-13",
+          "bncc-ef01ma12-location-from-named-reference-v1-14",
+          "bncc-ef01ma12-location-from-named-reference-v1-15",
+          "bncc-ef01ma12-location-from-named-reference-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01ma12-location-from-named-reference-v1-17",
+          "bncc-ef01ma12-location-from-named-reference-v1-18",
+          "bncc-ef01ma12-location-from-named-reference-v1-19",
+          "bncc-ef01ma12-location-from-named-reference-v1-20",
+          "bncc-ef01ma12-location-from-named-reference-v1-21",
+          "bncc-ef01ma12-location-from-named-reference-v1-22",
+          "bncc-ef01ma12-location-from-named-reference-v1-23",
+          "bncc-ef01ma12-location-from-named-reference-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01ma12-location-from-named-reference-v1-25",
+          "bncc-ef01ma12-location-from-named-reference-v1-26",
+          "bncc-ef01ma12-location-from-named-reference-v1-27",
+          "bncc-ef01ma12-location-from-named-reference-v1-28",
+          "bncc-ef01ma12-location-from-named-reference-v1-29",
+          "bncc-ef01ma12-location-from-named-reference-v1-30",
+          "bncc-ef01ma12-location-from-named-reference-v1-31",
+          "bncc-ef01ma12-location-from-named-reference-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01ma12-location-from-named-reference-v1-33",
+          "bncc-ef01ma12-location-from-named-reference-v1-34",
+          "bncc-ef01ma12-location-from-named-reference-v1-35",
+          "bncc-ef01ma12-location-from-named-reference-v1-36",
+          "bncc-ef01ma12-location-from-named-reference-v1-37",
+          "bncc-ef01ma12-location-from-named-reference-v1-38",
+          "bncc-ef01ma12-location-from-named-reference-v1-39",
+          "bncc-ef01ma12-location-from-named-reference-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA12",
+        "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-01",
+      "statement": "No desenho, o livro está em cima da mesa. Qual é o ponto de referência da frase?",
+      "prompt": "No desenho, o livro está em cima da mesa. Qual é o ponto de referência da frase?",
+      "options": [
+        "A mesa.",
+        "A janela",
+        "A cadeira",
+        "O tapete"
+      ],
+      "correctAnswer": "A mesa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A janela": [
+          "NAME_VERTICAL_REFERENCE"
+        ],
+        "A cadeira": [
+          "NAME_VERTICAL_REFERENCE"
+        ],
+        "O tapete": [
+          "NAME_VERTICAL_REFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVRO_EM_CIMA_MESA",
+      "explanation": "A frase compara a posição do livro com a mesa.",
+      "hint": "Pergunte: em cima de quê?",
+      "errorFocus": "NAME_VERTICAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase compara a posição do livro com a mesa.",
+        "incorrect": "A frase compara a posição do livro com a mesa.",
+        "hint": "Pergunte: em cima de quê?",
+        "errorFocus": "NAME_VERTICAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-02",
+      "statement": "A bola aparece à direita da caixa no mapa. Qual objeto foi nomeado como referência?",
+      "prompt": "A bola aparece à direita da caixa no mapa. Qual objeto foi nomeado como referência?",
+      "options": [
+        "A bola",
+        "A caixa.",
+        "A porta",
+        "O caderno"
+      ],
+      "correctAnswer": "A caixa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A bola": [
+          "NAME_LATERAL_REFERENCE"
+        ],
+        "A porta": [
+          "NAME_LATERAL_REFERENCE"
+        ],
+        "O caderno": [
+          "NAME_LATERAL_REFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOLA_A_DIREITA_CAIXA",
+      "explanation": "A expressão ‘à direita da caixa’ explicita o referencial.",
+      "hint": "Encontre o objeto que vem depois de ‘da’.",
+      "errorFocus": "NAME_LATERAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A expressão ‘à direita da caixa’ explicita o referencial.",
+        "incorrect": "A expressão ‘à direita da caixa’ explicita o referencial.",
+        "hint": "Encontre o objeto que vem depois de ‘da’.",
+        "errorFocus": "NAME_LATERAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-03",
+      "statement": "Qual frase deixa claro o referencial?",
+      "prompt": "Qual frase deixa claro o referencial?",
+      "options": [
+        "A estrela está à esquerda.",
+        "A estrela está perto.",
+        "A estrela está à esquerda da lua.",
+        "A estrela é bonita."
+      ],
+      "correctAnswer": "A estrela está à esquerda da lua.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A estrela está à esquerda.": [
+          "EXPLICIT_REFERENCE_REQUIRED"
+        ],
+        "A estrela está perto.": [
+          "EXPLICIT_REFERENCE_REQUIRED"
+        ],
+        "A estrela é bonita.": [
+          "EXPLICIT_REFERENCE_REQUIRED"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SEM_REFERENCIAL",
+      "explanation": "A lua aparece como referência para a posição da estrela.",
+      "hint": "Procure o nome do objeto usado para comparar.",
+      "errorFocus": "EXPLICIT_REFERENCE_REQUIRED",
+      "feedback": {
+        "correct": "Boa observação: A lua aparece como referência para a posição da estrela.",
+        "incorrect": "A lua aparece como referência para a posição da estrela.",
+        "hint": "Procure o nome do objeto usado para comparar.",
+        "errorFocus": "EXPLICIT_REFERENCE_REQUIRED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-04",
+      "statement": "No desenho, a caixa está embaixo da prateleira. O que precisa ficar claro?",
+      "prompt": "No desenho, a caixa está embaixo da prateleira. O que precisa ficar claro?",
+      "options": [
+        "Que a caixa tem uma cor específica",
+        "Que o desenho mostra uma casa real",
+        "Que não há objetos no desenho",
+        "Que a prateleira é a referência para dizer ‘embaixo’."
+      ],
+      "correctAnswer": "Que a prateleira é a referência para dizer ‘embaixo’.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que a caixa tem uma cor específica": [
+          "VERTICAL_POSITION_REFERENCE"
+        ],
+        "Que o desenho mostra uma casa real": [
+          "VERTICAL_POSITION_REFERENCE"
+        ],
+        "Que não há objetos no desenho": [
+          "VERTICAL_POSITION_REFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CAIXA_EMBAIXO_PRATELEIRA",
+      "explanation": "A posição vertical é descrita em relação à prateleira.",
+      "hint": "Complete: embaixo de qual objeto?",
+      "errorFocus": "VERTICAL_POSITION_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A posição vertical é descrita em relação à prateleira.",
+        "incorrect": "A posição vertical é descrita em relação à prateleira.",
+        "hint": "Complete: embaixo de qual objeto?",
+        "errorFocus": "VERTICAL_POSITION_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-05",
+      "statement": "Ao descrever um caminho entre dois pontos, o que devemos dizer primeiro?",
+      "prompt": "Ao descrever um caminho entre dois pontos, o que devemos dizer primeiro?",
+      "options": [
+        "Qual é o ponto de partida.",
+        "A cor preferida do leitor",
+        "Uma posição sem relação",
+        "O nome de uma pessoa real"
+      ],
+      "correctAnswer": "Qual é o ponto de partida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor preferida do leitor": [
+          "PATH_START_POINT"
+        ],
+        "Uma posição sem relação": [
+          "PATH_START_POINT"
+        ],
+        "O nome de uma pessoa real": [
+          "PATH_START_POINT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "COMECO_TRAJETO",
+      "explanation": "Nomear a origem ajuda a compreender o trajeto.",
+      "hint": "Pense no lugar de onde o caminho começa.",
+      "errorFocus": "PATH_START_POINT",
+      "feedback": {
+        "correct": "Boa observação: Nomear a origem ajuda a compreender o trajeto.",
+        "incorrect": "Nomear a origem ajuda a compreender o trajeto.",
+        "hint": "Pense no lugar de onde o caminho começa.",
+        "errorFocus": "PATH_START_POINT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-06",
+      "statement": "Por que a frase ‘o triângulo está à direita’ pode não ser suficiente?",
+      "prompt": "Por que a frase ‘o triângulo está à direita’ pode não ser suficiente?",
+      "options": [
+        "Porque triângulos não podem ser localizados",
+        "Porque não informa em relação a qual referência está à direita.",
+        "Porque direita é uma cor",
+        "Porque o desenho não pode ter objetos"
+      ],
+      "correctAnswer": "Porque não informa em relação a qual referência está à direita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque triângulos não podem ser localizados": [
+          "UNNAMED_REFERENCE_AMBIGUITY"
+        ],
+        "Porque direita é uma cor": [
+          "UNNAMED_REFERENCE_AMBIGUITY"
+        ],
+        "Porque o desenho não pode ter objetos": [
+          "UNNAMED_REFERENCE_AMBIGUITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIREITA_DE_QUEM",
+      "explanation": "O ponto de referência ajuda a interpretar a direção.",
+      "hint": "Pergunte: à direita de quê?",
+      "errorFocus": "UNNAMED_REFERENCE_AMBIGUITY",
+      "feedback": {
+        "correct": "Boa observação: O ponto de referência ajuda a interpretar a direção.",
+        "incorrect": "O ponto de referência ajuda a interpretar a direção.",
+        "hint": "Pergunte: à direita de quê?",
+        "errorFocus": "UNNAMED_REFERENCE_AMBIGUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-07",
+      "statement": "Num mapa fictício, um símbolo pode servir como referência para",
+      "prompt": "Num mapa fictício, um símbolo pode servir como referência para",
+      "options": [
+        "apagar o caminho",
+        "mudar o tamanho do papel",
+        "descrever a posição de outros símbolos.",
+        "esconder o destino"
+      ],
+      "correctAnswer": "descrever a posição de outros símbolos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "apagar o caminho": [
+          "REFERENCE_FUNCTION"
+        ],
+        "mudar o tamanho do papel": [
+          "REFERENCE_FUNCTION"
+        ],
+        "esconder o destino": [
+          "REFERENCE_FUNCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REFERENCIA_MAPA",
+      "explanation": "Um objeto nomeado pode apoiar comparações de localização.",
+      "hint": "Pense em como comparar duas posições.",
+      "errorFocus": "REFERENCE_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Um objeto nomeado pode apoiar comparações de localização.",
+        "incorrect": "Um objeto nomeado pode apoiar comparações de localização.",
+        "hint": "Pense em como comparar duas posições.",
+        "errorFocus": "REFERENCE_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-08",
+      "statement": "Em um trajeto entre dois pontos, o destino é",
+      "prompt": "Em um trajeto entre dois pontos, o destino é",
+      "options": [
+        "sempre o ponto de partida",
+        "qualquer objeto fora do mapa",
+        "a cor da seta",
+        "o ponto onde o caminho termina."
+      ],
+      "correctAnswer": "o ponto onde o caminho termina.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "sempre o ponto de partida": [
+          "PATH_DESTINATION"
+        ],
+        "qualquer objeto fora do mapa": [
+          "PATH_DESTINATION"
+        ],
+        "a cor da seta": [
+          "PATH_DESTINATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DESTINO",
+      "explanation": "O destino indica onde o percurso deve chegar.",
+      "hint": "Pense em onde a pessoa termina o trajeto.",
+      "errorFocus": "PATH_DESTINATION",
+      "feedback": {
+        "correct": "Boa observação: O destino indica onde o percurso deve chegar.",
+        "incorrect": "O destino indica onde o percurso deve chegar.",
+        "hint": "Pense em onde a pessoa termina o trajeto.",
+        "errorFocus": "PATH_DESTINATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-09",
+      "statement": "No esquema, o círculo é a referência e a estrela está acima dele. Qual descrição combina?",
+      "prompt": "No esquema, o círculo é a referência e a estrela está acima dele. Qual descrição combina?",
+      "options": [
+        "A estrela está em cima do círculo.",
+        "O círculo está acima da estrela",
+        "A estrela está dentro do círculo",
+        "O círculo está à direita de tudo"
+      ],
+      "correctAnswer": "A estrela está em cima do círculo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O círculo está acima da estrela": [
+          "VERTICAL_RELATION_FROM_REFERENCE"
+        ],
+        "A estrela está dentro do círculo": [
+          "VERTICAL_RELATION_FROM_REFERENCE"
+        ],
+        "O círculo está à direita de tudo": [
+          "VERTICAL_RELATION_FROM_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESTRELA_ACIMA_CIRCULO",
+      "explanation": "A frase mantém o círculo como ponto de comparação.",
+      "hint": "Use o círculo como referência.",
+      "errorFocus": "VERTICAL_RELATION_FROM_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase mantém o círculo como ponto de comparação.",
+        "incorrect": "A frase mantém o círculo como ponto de comparação.",
+        "hint": "Use o círculo como referência.",
+        "errorFocus": "VERTICAL_RELATION_FROM_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-10",
+      "statement": "Uma peça fica à direita do livro. Se o livro for substituído por uma cadeira como referência, o que precisamos fazer?",
+      "prompt": "Uma peça fica à direita do livro. Se o livro for substituído por uma cadeira como referência, o que precisamos fazer?",
+      "options": [
+        "Manter a frase sem olhar o novo referencial",
+        "Descrever novamente a posição em relação à cadeira.",
+        "Mudar a peça de lugar obrigatoriamente",
+        "Apagar o mapa"
+      ],
+      "correctAnswer": "Descrever novamente a posição em relação à cadeira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter a frase sem olhar o novo referencial": [
+          "RECALCULATE_RELATION_FOR_NEW_REFERENCE"
+        ],
+        "Mudar a peça de lugar obrigatoriamente": [
+          "RECALCULATE_RELATION_FOR_NEW_REFERENCE"
+        ],
+        "Apagar o mapa": [
+          "RECALCULATE_RELATION_FOR_NEW_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TROCA_REFERENCIAL",
+      "explanation": "A descrição depende do referencial usado.",
+      "hint": "O objeto de comparação mudou.",
+      "errorFocus": "RECALCULATE_RELATION_FOR_NEW_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A descrição depende do referencial usado.",
+        "incorrect": "A descrição depende do referencial usado.",
+        "hint": "O objeto de comparação mudou.",
+        "errorFocus": "RECALCULATE_RELATION_FOR_NEW_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-11",
+      "statement": "Num mapa, setas em sequência podem ajudar a",
+      "prompt": "Num mapa, setas em sequência podem ajudar a",
+      "options": [
+        "indicar a cor de cada objeto",
+        "substituir o ponto de partida",
+        "mostrar as etapas de um caminho.",
+        "esconder a direção"
+      ],
+      "correctAnswer": "mostrar as etapas de um caminho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "indicar a cor de cada objeto": [
+          "ARROWS_SEQUENCE_PATH"
+        ],
+        "substituir o ponto de partida": [
+          "ARROWS_SEQUENCE_PATH"
+        ],
+        "esconder a direção": [
+          "ARROWS_SEQUENCE_PATH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SETAS_CAMINHO",
+      "explanation": "Setas podem representar movimentos ou etapas do trajeto.",
+      "hint": "Observe o que a ordem das setas mostra.",
+      "errorFocus": "ARROWS_SEQUENCE_PATH",
+      "feedback": {
+        "correct": "Boa observação: Setas podem representar movimentos ou etapas do trajeto.",
+        "incorrect": "Setas podem representar movimentos ou etapas do trajeto.",
+        "hint": "Observe o que a ordem das setas mostra.",
+        "errorFocus": "ARROWS_SEQUENCE_PATH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-12",
+      "statement": "Qual frase nomeia claramente o referencial?",
+      "prompt": "Qual frase nomeia claramente o referencial?",
+      "options": [
+        "A caneta está à esquerda.",
+        "A caneta está perto.",
+        "A caneta está no desenho.",
+        "A caneta está à esquerda do livro."
+      ],
+      "correctAnswer": "A caneta está à esquerda do livro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A caneta está à esquerda.": [
+          "EXPLICIT_LEFT_REFERENCE"
+        ],
+        "A caneta está perto.": [
+          "EXPLICIT_LEFT_REFERENCE"
+        ],
+        "A caneta está no desenho.": [
+          "EXPLICIT_LEFT_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CANETA_A_ESQUERDA_LIVRO",
+      "explanation": "O livro é indicado como objeto de comparação.",
+      "hint": "Encontre a expressão ‘do livro’.",
+      "errorFocus": "EXPLICIT_LEFT_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O livro é indicado como objeto de comparação.",
+        "incorrect": "O livro é indicado como objeto de comparação.",
+        "hint": "Encontre a expressão ‘do livro’.",
+        "errorFocus": "EXPLICIT_LEFT_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-13",
+      "statement": "Para explicar como ir do quadrado ao círculo, qual informação é necessária?",
+      "prompt": "Para explicar como ir do quadrado ao círculo, qual informação é necessária?",
+      "options": [
+        "Nomear o quadrado como início, o círculo como destino e descrever o percurso.",
+        "Dizer apenas que há formas no papel",
+        "Trocar o ponto final por um objeto não desenhado",
+        "Falar de uma rota real sem mapa"
+      ],
+      "correctAnswer": "Nomear o quadrado como início, o círculo como destino e descrever o percurso.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dizer apenas que há formas no papel": [
+          "PATH_REQUIRES_ENDPOINTS"
+        ],
+        "Trocar o ponto final por um objeto não desenhado": [
+          "PATH_REQUIRES_ENDPOINTS"
+        ],
+        "Falar de uma rota real sem mapa": [
+          "PATH_REQUIRES_ENDPOINTS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PONTO_PARTIDA_E_DESTINO",
+      "explanation": "Origem e destino ajudam quem acompanha a descrição.",
+      "hint": "Comece nomeando de onde sai e onde chega.",
+      "errorFocus": "PATH_REQUIRES_ENDPOINTS",
+      "feedback": {
+        "correct": "Boa observação: Origem e destino ajudam quem acompanha a descrição.",
+        "incorrect": "Origem e destino ajudam quem acompanha a descrição.",
+        "hint": "Comece nomeando de onde sai e onde chega.",
+        "errorFocus": "PATH_REQUIRES_ENDPOINTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-14",
+      "statement": "A xícara está em cima da mesa. Se a mesa for retirada do desenho, o que ocorre com essa referência?",
+      "prompt": "A xícara está em cima da mesa. Se a mesa for retirada do desenho, o que ocorre com essa referência?",
+      "options": [
+        "A xícara desaparece necessariamente",
+        "A frase precisa de outra referência ou de uma nova descrição.",
+        "A posição continua explicada do mesmo modo",
+        "O desenho deixa de poder ser lido"
+      ],
+      "correctAnswer": "A frase precisa de outra referência ou de uma nova descrição.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A xícara desaparece necessariamente": [
+          "REFERENCE_OBJECT_MATTERS"
+        ],
+        "A posição continua explicada do mesmo modo": [
+          "REFERENCE_OBJECT_MATTERS"
+        ],
+        "O desenho deixa de poder ser lido": [
+          "REFERENCE_OBJECT_MATTERS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ACIMA_DA_MESA",
+      "explanation": "A posição foi descrita em relação à mesa.",
+      "hint": "Sem a mesa, pergunte ‘em cima de quê?’",
+      "errorFocus": "REFERENCE_OBJECT_MATTERS",
+      "feedback": {
+        "correct": "Boa observação: A posição foi descrita em relação à mesa.",
+        "incorrect": "A posição foi descrita em relação à mesa.",
+        "hint": "Sem a mesa, pergunte ‘em cima de quê?’",
+        "errorFocus": "REFERENCE_OBJECT_MATTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-15",
+      "statement": "Por que nomear símbolos num mapa pode ajudar a descrever um caminho?",
+      "prompt": "Por que nomear símbolos num mapa pode ajudar a descrever um caminho?",
+      "options": [
+        "Porque os nomes substituem todas as direções",
+        "Porque o mapa passa a mostrar um endereço real",
+        "Porque quem ouve pode identificar os pontos e seguir as etapas.",
+        "Porque os símbolos deixam de ter posição"
+      ],
+      "correctAnswer": "Porque quem ouve pode identificar os pontos e seguir as etapas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque os nomes substituem todas as direções": [
+          "MAP_SYMBOLS_SUPPORT_SHARED_REFERENCE"
+        ],
+        "Porque o mapa passa a mostrar um endereço real": [
+          "MAP_SYMBOLS_SUPPORT_SHARED_REFERENCE"
+        ],
+        "Porque os símbolos deixam de ter posição": [
+          "MAP_SYMBOLS_SUPPORT_SHARED_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MAPA_COM_LEGENDA",
+      "explanation": "Nomes compartilhados reduzem dúvidas sobre os pontos do trajeto.",
+      "hint": "Pense em como duas pessoas entendem o mesmo símbolo.",
+      "errorFocus": "MAP_SYMBOLS_SUPPORT_SHARED_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Nomes compartilhados reduzem dúvidas sobre os pontos do trajeto.",
+        "incorrect": "Nomes compartilhados reduzem dúvidas sobre os pontos do trajeto.",
+        "hint": "Pense em como duas pessoas entendem o mesmo símbolo.",
+        "errorFocus": "MAP_SYMBOLS_SUPPORT_SHARED_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-16",
+      "statement": "Um colega não sabe qual objeto você usa como referência. Como melhorar a frase?",
+      "prompt": "Um colega não sabe qual objeto você usa como referência. Como melhorar a frase?",
+      "options": [
+        "Falar mais alto sem mudar a frase",
+        "Adicionar um detalhe pessoal",
+        "Retirar a palavra de posição",
+        "Nomear explicitamente o objeto de referência."
+      ],
+      "correctAnswer": "Nomear explicitamente o objeto de referência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Falar mais alto sem mudar a frase": [
+          "CLARIFY_REFERENCE"
+        ],
+        "Adicionar um detalhe pessoal": [
+          "CLARIFY_REFERENCE"
+        ],
+        "Retirar a palavra de posição": [
+          "CLARIFY_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESCRICAO_PARA_COLEGA",
+      "explanation": "A informação do referencial torna a descrição mais precisa.",
+      "hint": "Acrescente ‘em relação a...’.",
+      "errorFocus": "CLARIFY_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A informação do referencial torna a descrição mais precisa.",
+        "incorrect": "A informação do referencial torna a descrição mais precisa.",
+        "hint": "Acrescente ‘em relação a...’.",
+        "errorFocus": "CLARIFY_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-17",
+      "statement": "No tabuleiro de papel, para ir da lua ao foguete, há uma estrela entre eles. Qual descrição é mais útil?",
+      "prompt": "No tabuleiro de papel, para ir da lua ao foguete, há uma estrela entre eles. Qual descrição é mais útil?",
+      "options": [
+        "Comece na lua, passe pela estrela e termine no foguete.",
+        "Há três figuras no tabuleiro",
+        "O foguete é azul",
+        "A estrela fica bonita"
+      ],
+      "correctAnswer": "Comece na lua, passe pela estrela e termine no foguete.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Há três figuras no tabuleiro": [
+          "ORDERED_PATH_DESCRIPTION"
+        ],
+        "O foguete é azul": [
+          "ORDERED_PATH_DESCRIPTION"
+        ],
+        "A estrela fica bonita": [
+          "ORDERED_PATH_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PERCURSO_FICTICIO",
+      "explanation": "Origem, marco intermediário e destino organizam o percurso.",
+      "hint": "Conte os pontos na ordem do caminho.",
+      "errorFocus": "ORDERED_PATH_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: Origem, marco intermediário e destino organizam o percurso.",
+        "incorrect": "Origem, marco intermediário e destino organizam o percurso.",
+        "hint": "Conte os pontos na ordem do caminho.",
+        "errorFocus": "ORDERED_PATH_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-18",
+      "statement": "Uma frase diz ‘a bola está à esquerda da caixa’; outra diz ‘a caixa está à direita da bola’. O que elas podem descrever?",
+      "prompt": "Uma frase diz ‘a bola está à esquerda da caixa’; outra diz ‘a caixa está à direita da bola’. O que elas podem descrever?",
+      "options": [
+        "Dois objetos necessariamente distantes",
+        "A mesma relação entre os dois objetos, vista por posições recíprocas.",
+        "Duas rotas sem pontos em comum",
+        "Uma mudança obrigatória de lugar"
+      ],
+      "correctAnswer": "A mesma relação entre os dois objetos, vista por posições recíprocas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dois objetos necessariamente distantes": [
+          "RECIPROCAL_POSITION_RELATION"
+        ],
+        "Duas rotas sem pontos em comum": [
+          "RECIPROCAL_POSITION_RELATION"
+        ],
+        "Uma mudança obrigatória de lugar": [
+          "RECIPROCAL_POSITION_RELATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REFERENCIA_DUAS_FRASES",
+      "explanation": "As posições relativas podem ser descritas de modos correspondentes.",
+      "hint": "Compare qual objeto está sendo localizado em cada frase.",
+      "errorFocus": "RECIPROCAL_POSITION_RELATION",
+      "feedback": {
+        "correct": "Boa observação: As posições relativas podem ser descritas de modos correspondentes.",
+        "incorrect": "As posições relativas podem ser descritas de modos correspondentes.",
+        "hint": "Compare qual objeto está sendo localizado em cada frase.",
+        "errorFocus": "RECIPROCAL_POSITION_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-19",
+      "statement": "Um mapa mostra um banco à direita da árvore e uma fonte acima da árvore. Qual objeto é a referência comum?",
+      "prompt": "Um mapa mostra um banco à direita da árvore e uma fonte acima da árvore. Qual objeto é a referência comum?",
+      "options": [
+        "O banco",
+        "A fonte",
+        "A árvore.",
+        "O papel"
+      ],
+      "correctAnswer": "A árvore.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O banco": [
+          "SHARED_REFERENCE_IN_MAP"
+        ],
+        "A fonte": [
+          "SHARED_REFERENCE_IN_MAP"
+        ],
+        "O papel": [
+          "SHARED_REFERENCE_IN_MAP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_PONTO_DE_REFERENCIA",
+      "explanation": "As duas descrições usam a árvore para localizar outros objetos.",
+      "hint": "Procure o elemento que aparece nas duas frases.",
+      "errorFocus": "SHARED_REFERENCE_IN_MAP",
+      "feedback": {
+        "correct": "Boa observação: As duas descrições usam a árvore para localizar outros objetos.",
+        "incorrect": "As duas descrições usam a árvore para localizar outros objetos.",
+        "hint": "Procure o elemento que aparece nas duas frases.",
+        "errorFocus": "SHARED_REFERENCE_IN_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-20",
+      "statement": "As setas mostram: do círculo, suba até o quadrado e depois siga à direita até o triângulo. Onde termina o caminho?",
+      "prompt": "As setas mostram: do círculo, suba até o quadrado e depois siga à direita até o triângulo. Onde termina o caminho?",
+      "options": [
+        "No círculo",
+        "No quadrado",
+        "Fora do mapa",
+        "No triângulo."
+      ],
+      "correctAnswer": "No triângulo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "No círculo": [
+          "FOLLOW_ORDERED_DIRECTIONS"
+        ],
+        "No quadrado": [
+          "FOLLOW_ORDERED_DIRECTIONS"
+        ],
+        "Fora do mapa": [
+          "FOLLOW_ORDERED_DIRECTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CAMINHO_COM_TURNOS",
+      "explanation": "A última etapa aponta para o destino.",
+      "hint": "Siga as instruções na ordem dada.",
+      "errorFocus": "FOLLOW_ORDERED_DIRECTIONS",
+      "feedback": {
+        "correct": "Boa observação: A última etapa aponta para o destino.",
+        "incorrect": "A última etapa aponta para o destino.",
+        "hint": "Siga as instruções na ordem dada.",
+        "errorFocus": "FOLLOW_ORDERED_DIRECTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-21",
+      "statement": "Como tornar mais clara a frase ‘o lápis está embaixo’?",
+      "prompt": "Como tornar mais clara a frase ‘o lápis está embaixo’?",
+      "options": [
+        "Dizer, por exemplo, ‘o lápis está embaixo do caderno’.",
+        "Retirar a posição e não nomear nada",
+        "Trocar lápis por uma pessoa real",
+        "Acrescentar um número sem relação"
+      ],
+      "correctAnswer": "Dizer, por exemplo, ‘o lápis está embaixo do caderno’.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar a posição e não nomear nada": [
+          "NAME_VERTICAL_REFERENCE"
+        ],
+        "Trocar lápis por uma pessoa real": [
+          "NAME_VERTICAL_REFERENCE"
+        ],
+        "Acrescentar um número sem relação": [
+          "NAME_VERTICAL_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REFERENCIAL_NOMEADO",
+      "explanation": "A frase revisada explicita o objeto de comparação.",
+      "hint": "Pergunte ‘embaixo de quê?’",
+      "errorFocus": "NAME_VERTICAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase revisada explicita o objeto de comparação.",
+        "incorrect": "A frase revisada explicita o objeto de comparação.",
+        "hint": "Pergunte ‘embaixo de quê?’",
+        "errorFocus": "NAME_VERTICAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-22",
+      "statement": "Um desenho foi girado na folha, mas os nomes dos pontos continuam. O que ajuda a descrever posições sem adivinhar?",
+      "prompt": "Um desenho foi girado na folha, mas os nomes dos pontos continuam. O que ajuda a descrever posições sem adivinhar?",
+      "options": [
+        "Assumir que a direita da folha é sempre a direita do mapa",
+        "Usar o ponto de referência indicado e as relações mostradas no mapa.",
+        "Ignorar os nomes dos pontos",
+        "Inventar um caminho"
+      ],
+      "correctAnswer": "Usar o ponto de referência indicado e as relações mostradas no mapa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Assumir que a direita da folha é sempre a direita do mapa": [
+          "USE_STATED_REFERENCE_NOT_PAGE_ORIENTATION"
+        ],
+        "Ignorar os nomes dos pontos": [
+          "USE_STATED_REFERENCE_NOT_PAGE_ORIENTATION"
+        ],
+        "Inventar um caminho": [
+          "USE_STATED_REFERENCE_NOT_PAGE_ORIENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MAPA_GIRADO",
+      "explanation": "A orientação deve seguir o referencial combinado, não uma suposição.",
+      "hint": "Leia a referência explicitamente indicada.",
+      "errorFocus": "USE_STATED_REFERENCE_NOT_PAGE_ORIENTATION",
+      "feedback": {
+        "correct": "Boa observação: A orientação deve seguir o referencial combinado, não uma suposição.",
+        "incorrect": "A orientação deve seguir o referencial combinado, não uma suposição.",
+        "hint": "Leia a referência explicitamente indicada.",
+        "errorFocus": "USE_STATED_REFERENCE_NOT_PAGE_ORIENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-23",
+      "statement": "Uma bola está à esquerda da cadeira e à direita da porta no desenho. Isso é possível?",
+      "prompt": "Uma bola está à esquerda da cadeira e à direita da porta no desenho. Isso é possível?",
+      "options": [
+        "Não, um objeto só pode ter uma posição descrita",
+        "Sim, mas apenas se mover a bola",
+        "Sim, cada frase usa um objeto diferente como referência.",
+        "Não, esquerda e direita são cores"
+      ],
+      "correctAnswer": "Sim, cada frase usa um objeto diferente como referência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, um objeto só pode ter uma posição descrita": [
+          "POSITION_DEPENDS_ON_SELECTED_REFERENCE"
+        ],
+        "Sim, mas apenas se mover a bola": [
+          "POSITION_DEPENDS_ON_SELECTED_REFERENCE"
+        ],
+        "Não, esquerda e direita são cores": [
+          "POSITION_DEPENDS_ON_SELECTED_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_REFERENCIAS",
+      "explanation": "A localização relativa muda conforme o objeto de comparação.",
+      "hint": "Compare a bola primeiro com a cadeira e depois com a porta.",
+      "errorFocus": "POSITION_DEPENDS_ON_SELECTED_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A localização relativa muda conforme o objeto de comparação.",
+        "incorrect": "A localização relativa muda conforme o objeto de comparação.",
+        "hint": "Compare a bola primeiro com a cadeira e depois com a porta.",
+        "errorFocus": "POSITION_DEPENDS_ON_SELECTED_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-24",
+      "statement": "Uma pessoa recebe ‘vá para a direita’ sem ponto de partida nem referência. Qual é o principal problema?",
+      "prompt": "Uma pessoa recebe ‘vá para a direita’ sem ponto de partida nem referência. Qual é o principal problema?",
+      "options": [
+        "A instrução contém muitas etapas",
+        "O destino foi nomeado com precisão",
+        "A frase explica todos os objetos",
+        "Não sabe de qual posição ou referencial deve começar."
+      ],
+      "correctAnswer": "Não sabe de qual posição ou referencial deve começar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A instrução contém muitas etapas": [
+          "PATH_NEEDS_REFERENCE_AND_ORIGIN"
+        ],
+        "O destino foi nomeado com precisão": [
+          "PATH_NEEDS_REFERENCE_AND_ORIGIN"
+        ],
+        "A frase explica todos os objetos": [
+          "PATH_NEEDS_REFERENCE_AND_ORIGIN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTRUCAO_INCOMPLETA",
+      "explanation": "Uma direção isolada pode ser ambígua sem contexto.",
+      "hint": "Pergunte: direita de onde e começando em qual ponto?",
+      "errorFocus": "PATH_NEEDS_REFERENCE_AND_ORIGIN",
+      "feedback": {
+        "correct": "Boa observação: Uma direção isolada pode ser ambígua sem contexto.",
+        "incorrect": "Uma direção isolada pode ser ambígua sem contexto.",
+        "hint": "Pergunte: direita de onde e começando em qual ponto?",
+        "errorFocus": "PATH_NEEDS_REFERENCE_AND_ORIGIN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-25",
+      "statement": "A bola está à direita da porta. Qual é o referencial?",
+      "prompt": "A bola está à direita da porta. Qual é o referencial?",
+      "options": [
+        "A porta.",
+        "A bola",
+        "A janela",
+        "O chão"
+      ],
+      "correctAnswer": "A porta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A bola": [
+          "NAME_REFERENCE_OBJECT"
+        ],
+        "A janela": [
+          "NAME_REFERENCE_OBJECT"
+        ],
+        "O chão": [
+          "NAME_REFERENCE_OBJECT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIREITA_DA_PORTA",
+      "explanation": "A porta é o objeto usado para comparar a posição da bola.",
+      "hint": "Encontre o complemento de ‘à direita de’.",
+      "errorFocus": "NAME_REFERENCE_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: A porta é o objeto usado para comparar a posição da bola.",
+        "incorrect": "A porta é o objeto usado para comparar a posição da bola.",
+        "hint": "Encontre o complemento de ‘à direita de’.",
+        "errorFocus": "NAME_REFERENCE_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-26",
+      "statement": "O gato desenhado está embaixo da prateleira. Qual frase mantém a referência explícita?",
+      "prompt": "O gato desenhado está embaixo da prateleira. Qual frase mantém a referência explícita?",
+      "options": [
+        "O gato está embaixo.",
+        "O gato está embaixo da prateleira.",
+        "A prateleira é colorida.",
+        "O gato está longe."
+      ],
+      "correctAnswer": "O gato está embaixo da prateleira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O gato está embaixo.": [
+          "EXPLICIT_VERTICAL_RELATION"
+        ],
+        "A prateleira é colorida.": [
+          "EXPLICIT_VERTICAL_RELATION"
+        ],
+        "O gato está longe.": [
+          "EXPLICIT_VERTICAL_RELATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EMBAIXO_DA_PRATELEIRA",
+      "explanation": "A frase nomeia o objeto usado como referência.",
+      "hint": "Inclua o nome da prateleira.",
+      "errorFocus": "EXPLICIT_VERTICAL_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A frase nomeia o objeto usado como referência.",
+        "incorrect": "A frase nomeia o objeto usado como referência.",
+        "hint": "Inclua o nome da prateleira.",
+        "errorFocus": "EXPLICIT_VERTICAL_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-27",
+      "statement": "Por que é importante explicitar o referencial ao falar de direita e esquerda?",
+      "prompt": "Por que é importante explicitar o referencial ao falar de direita e esquerda?",
+      "options": [
+        "Para que os objetos mudem de lugar",
+        "Para que o caminho fique escondido",
+        "Para que quem escuta saiba a partir de que ponto comparar.",
+        "Para trocar os nomes dos objetos"
+      ],
+      "correctAnswer": "Para que quem escuta saiba a partir de que ponto comparar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para que os objetos mudem de lugar": [
+          "REFERENCE_MAKES_DIRECTION_INTERPRETABLE"
+        ],
+        "Para que o caminho fique escondido": [
+          "REFERENCE_MAKES_DIRECTION_INTERPRETABLE"
+        ],
+        "Para trocar os nomes dos objetos": [
+          "REFERENCE_MAKES_DIRECTION_INTERPRETABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "POR_QUE_REFERENCIA",
+      "explanation": "O ponto de referência permite interpretar a posição descrita.",
+      "hint": "Pense no que uma pessoa precisa saber para entender a direção.",
+      "errorFocus": "REFERENCE_MAKES_DIRECTION_INTERPRETABLE",
+      "feedback": {
+        "correct": "Boa observação: O ponto de referência permite interpretar a posição descrita.",
+        "incorrect": "O ponto de referência permite interpretar a posição descrita.",
+        "hint": "Pense no que uma pessoa precisa saber para entender a direção.",
+        "errorFocus": "REFERENCE_MAKES_DIRECTION_INTERPRETABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-28",
+      "statement": "Qual descrição apresenta etapas em ordem?",
+      "prompt": "Qual descrição apresenta etapas em ordem?",
+      "options": [
+        "O triângulo existe no papel",
+        "Há um círculo e um quadrado",
+        "O mapa tem três cores",
+        "Saia do círculo, passe pelo quadrado e chegue ao triângulo."
+      ],
+      "correctAnswer": "Saia do círculo, passe pelo quadrado e chegue ao triângulo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O triângulo existe no papel": [
+          "ORDERED_ROUTE"
+        ],
+        "Há um círculo e um quadrado": [
+          "ORDERED_ROUTE"
+        ],
+        "O mapa tem três cores": [
+          "ORDERED_ROUTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CAMINHO_ORDEM",
+      "explanation": "A frase informa início, marco e destino em sequência.",
+      "hint": "Procure palavras que mostram começo e depois.",
+      "errorFocus": "ORDERED_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: A frase informa início, marco e destino em sequência.",
+        "incorrect": "A frase informa início, marco e destino em sequência.",
+        "hint": "Procure palavras que mostram começo e depois.",
+        "errorFocus": "ORDERED_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-29",
+      "statement": "Se a referência muda, a descrição da posição pode",
+      "prompt": "Se a referência muda, a descrição da posição pode",
+      "options": [
+        "precisar ser refeita usando o novo ponto de referência.",
+        "continuar sempre igual sem conferir",
+        "deixar de usar qualquer palavra espacial",
+        "transformar o desenho em um trajeto real"
+      ],
+      "correctAnswer": "precisar ser refeita usando o novo ponto de referência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "continuar sempre igual sem conferir": [
+          "REASSESS_RELATION_AFTER_REFERENCE_CHANGE"
+        ],
+        "deixar de usar qualquer palavra espacial": [
+          "REASSESS_RELATION_AFTER_REFERENCE_CHANGE"
+        ],
+        "transformar o desenho em um trajeto real": [
+          "REASSESS_RELATION_AFTER_REFERENCE_CHANGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PONTO_MUDOU",
+      "explanation": "A relação é definida em função do referencial escolhido.",
+      "hint": "Observe o que mudou na comparação.",
+      "errorFocus": "REASSESS_RELATION_AFTER_REFERENCE_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A relação é definida em função do referencial escolhido.",
+        "incorrect": "A relação é definida em função do referencial escolhido.",
+        "hint": "Observe o que mudou na comparação.",
+        "errorFocus": "REASSESS_RELATION_AFTER_REFERENCE_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-30",
+      "statement": "Num percurso, qual dupla ajuda a organizar a explicação?",
+      "prompt": "Num percurso, qual dupla ajuda a organizar a explicação?",
+      "options": [
+        "Cor do papel e tamanho da folha",
+        "Ponto de partida e ponto de chegada.",
+        "Nome do autor e data de nascimento",
+        "Duas cores sem localização"
+      ],
+      "correctAnswer": "Ponto de partida e ponto de chegada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cor do papel e tamanho da folha": [
+          "PATH_ENDPOINTS"
+        ],
+        "Nome do autor e data de nascimento": [
+          "PATH_ENDPOINTS"
+        ],
+        "Duas cores sem localização": [
+          "PATH_ENDPOINTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORIGEM_DESTINO",
+      "explanation": "Origem e destino delimitam o caminho.",
+      "hint": "Pense de onde sai e onde chega.",
+      "errorFocus": "PATH_ENDPOINTS",
+      "feedback": {
+        "correct": "Boa observação: Origem e destino delimitam o caminho.",
+        "incorrect": "Origem e destino delimitam o caminho.",
+        "hint": "Pense de onde sai e onde chega.",
+        "errorFocus": "PATH_ENDPOINTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-31",
+      "statement": "‘O quadrado fica à esquerda’ é ambígua principalmente porque",
+      "prompt": "‘O quadrado fica à esquerda’ é ambígua principalmente porque",
+      "options": [
+        "não menciona uma cor",
+        "usa uma forma geométrica",
+        "não informa à esquerda de qual referência.",
+        "tem poucas palavras"
+      ],
+      "correctAnswer": "não informa à esquerda de qual referência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "não menciona uma cor": [
+          "IDENTIFY_AMBIGUITY_SOURCE"
+        ],
+        "usa uma forma geométrica": [
+          "IDENTIFY_AMBIGUITY_SOURCE"
+        ],
+        "tem poucas palavras": [
+          "IDENTIFY_AMBIGUITY_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FRASE_AMBIGUA",
+      "explanation": "Falta indicar o objeto ou orientação de comparação.",
+      "hint": "Pergunte ‘à esquerda de quê?’",
+      "errorFocus": "IDENTIFY_AMBIGUITY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Falta indicar o objeto ou orientação de comparação.",
+        "incorrect": "Falta indicar o objeto ou orientação de comparação.",
+        "hint": "Pergunte ‘à esquerda de quê?’",
+        "errorFocus": "IDENTIFY_AMBIGUITY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-32",
+      "statement": "Qual material é mais adequado para praticar descrição de caminhos sem expor informações pessoais?",
+      "prompt": "Qual material é mais adequado para praticar descrição de caminhos sem expor informações pessoais?",
+      "options": [
+        "Um endereço residencial de um colega",
+        "Uma rota diária real com nomes completos",
+        "Uma lista pública de locais privados",
+        "Um mapa fictício desenhado para a atividade."
+      ],
+      "correctAnswer": "Um mapa fictício desenhado para a atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um endereço residencial de um colega": [
+          "PRIVACY_SAFE_SPATIAL_TASK"
+        ],
+        "Uma rota diária real com nomes completos": [
+          "PRIVACY_SAFE_SPATIAL_TASK"
+        ],
+        "Uma lista pública de locais privados": [
+          "PRIVACY_SAFE_SPATIAL_TASK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "MAPA_SEGURO",
+      "explanation": "Mapas inventados permitem praticar relações sem divulgar trajetos reais.",
+      "hint": "Escolha o cenário criado para aprender.",
+      "errorFocus": "PRIVACY_SAFE_SPATIAL_TASK",
+      "feedback": {
+        "correct": "Boa observação: Mapas inventados permitem praticar relações sem divulgar trajetos reais.",
+        "incorrect": "Mapas inventados permitem praticar relações sem divulgar trajetos reais.",
+        "hint": "Escolha o cenário criado para aprender.",
+        "errorFocus": "PRIVACY_SAFE_SPATIAL_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-33",
+      "statement": "O que completa ‘a estrela está acima ___ círculo’ para nomear a referência?",
+      "prompt": "O que completa ‘a estrela está acima ___ círculo’ para nomear a referência?",
+      "options": [
+        "do círculo.",
+        "sem referência",
+        "amanhã",
+        "porque sim"
+      ],
+      "correctAnswer": "do círculo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sem referência": [
+          "COMPLETE_REFERENCE_PHRASE"
+        ],
+        "amanhã": [
+          "COMPLETE_REFERENCE_PHRASE"
+        ],
+        "porque sim": [
+          "COMPLETE_REFERENCE_PHRASE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REFERENCIA_E_POSICAO",
+      "explanation": "O círculo é o elemento usado para descrever a posição vertical.",
+      "hint": "Diga acima de qual objeto.",
+      "errorFocus": "COMPLETE_REFERENCE_PHRASE",
+      "feedback": {
+        "correct": "Boa observação: O círculo é o elemento usado para descrever a posição vertical.",
+        "incorrect": "O círculo é o elemento usado para descrever a posição vertical.",
+        "hint": "Diga acima de qual objeto.",
+        "errorFocus": "COMPLETE_REFERENCE_PHRASE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-34",
+      "statement": "Num desenho, o livro está à esquerda da mochila. Qual descrição está explícita?",
+      "prompt": "Num desenho, o livro está à esquerda da mochila. Qual descrição está explícita?",
+      "options": [
+        "O livro está à esquerda.",
+        "O livro está à esquerda da mochila.",
+        "A mochila é grande.",
+        "Há um livro no desenho."
+      ],
+      "correctAnswer": "O livro está à esquerda da mochila.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O livro está à esquerda.": [
+          "EXPLICIT_POSITION_STATEMENT"
+        ],
+        "A mochila é grande.": [
+          "EXPLICIT_POSITION_STATEMENT"
+        ],
+        "Há um livro no desenho.": [
+          "EXPLICIT_POSITION_STATEMENT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESCREVER_OBJETO",
+      "explanation": "A frase diz qual objeto está sendo localizado e a referência.",
+      "hint": "Inclua os dois objetos.",
+      "errorFocus": "EXPLICIT_POSITION_STATEMENT",
+      "feedback": {
+        "correct": "Boa observação: A frase diz qual objeto está sendo localizado e a referência.",
+        "incorrect": "A frase diz qual objeto está sendo localizado e a referência.",
+        "hint": "Inclua os dois objetos.",
+        "errorFocus": "EXPLICIT_POSITION_STATEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-35",
+      "statement": "Do ponto A, siga para cima até B e depois à direita até C. Qual é a sequência?",
+      "prompt": "Do ponto A, siga para cima até B e depois à direita até C. Qual é a sequência?",
+      "options": [
+        "C até B, depois A",
+        "A direto para fora do mapa",
+        "A até B, depois B até C.",
+        "B até A e parar"
+      ],
+      "correctAnswer": "A até B, depois B até C.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "C até B, depois A": [
+          "FOLLOW_ORDERED_ROUTE"
+        ],
+        "A direto para fora do mapa": [
+          "FOLLOW_ORDERED_ROUTE"
+        ],
+        "B até A e parar": [
+          "FOLLOW_ORDERED_ROUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CAMINHO_DUAS_ETAPAS",
+      "explanation": "A instrução descreve duas etapas em sequência.",
+      "hint": "Acompanhe cada ‘até’ na ordem.",
+      "errorFocus": "FOLLOW_ORDERED_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: A instrução descreve duas etapas em sequência.",
+        "incorrect": "A instrução descreve duas etapas em sequência.",
+        "hint": "Acompanhe cada ‘até’ na ordem.",
+        "errorFocus": "FOLLOW_ORDERED_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-36",
+      "statement": "Como o mesmo objeto pode estar à direita de um e à esquerda de outro?",
+      "prompt": "Como o mesmo objeto pode estar à direita de um e à esquerda de outro?",
+      "options": [
+        "O objeto ocupa dois lugares ao mesmo tempo",
+        "As palavras deixam de ter significado",
+        "O mapa sempre está errado",
+        "As duas pessoas ou objetos podem ser referenciais diferentes."
+      ],
+      "correctAnswer": "As duas pessoas ou objetos podem ser referenciais diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O objeto ocupa dois lugares ao mesmo tempo": [
+          "MULTIPLE_RELATIVE_DESCRIPTIONS"
+        ],
+        "As palavras deixam de ter significado": [
+          "MULTIPLE_RELATIVE_DESCRIPTIONS"
+        ],
+        "O mapa sempre está errado": [
+          "MULTIPLE_RELATIVE_DESCRIPTIONS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MAIS_DE_UMA_REFERENCIA",
+      "explanation": "Relações espaciais dependem do referencial escolhido.",
+      "hint": "Compare as duas referências, não mude o objeto.",
+      "errorFocus": "MULTIPLE_RELATIVE_DESCRIPTIONS",
+      "feedback": {
+        "correct": "Boa observação: Relações espaciais dependem do referencial escolhido.",
+        "incorrect": "Relações espaciais dependem do referencial escolhido.",
+        "hint": "Compare as duas referências, não mude o objeto.",
+        "errorFocus": "MULTIPLE_RELATIVE_DESCRIPTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-37",
+      "statement": "A bola está em cima da caixa. O que a frase informa?",
+      "prompt": "A bola está em cima da caixa. O que a frase informa?",
+      "options": [
+        "A posição da bola em relação à caixa.",
+        "A cor da bola",
+        "O tamanho real da sala",
+        "O nome de quem desenhou"
+      ],
+      "correctAnswer": "A posição da bola em relação à caixa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor da bola": [
+          "POSITIONAL_RELATION"
+        ],
+        "O tamanho real da sala": [
+          "POSITIONAL_RELATION"
+        ],
+        "O nome de quem desenhou": [
+          "POSITIONAL_RELATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "EM_CIMA_EM_RELACAO",
+      "explanation": "A caixa é o ponto de comparação para ‘em cima’.",
+      "hint": "Observe o objeto que segue a palavra ‘da’.",
+      "errorFocus": "POSITIONAL_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A caixa é o ponto de comparação para ‘em cima’.",
+        "incorrect": "A caixa é o ponto de comparação para ‘em cima’.",
+        "hint": "Observe o objeto que segue a palavra ‘da’.",
+        "errorFocus": "POSITIONAL_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-38",
+      "statement": "Qual mudança corrige ‘a caneta está à direita’ para uma descrição mais precisa?",
+      "prompt": "Qual mudança corrige ‘a caneta está à direita’ para uma descrição mais precisa?",
+      "options": [
+        "Apagar a palavra caneta",
+        "Acrescentar ‘da régua’ ou outro referencial claro.",
+        "Trocar por um endereço",
+        "Remover direita e não dar outra pista"
+      ],
+      "correctAnswer": "Acrescentar ‘da régua’ ou outro referencial claro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar a palavra caneta": [
+          "REPAIR_MISSING_REFERENCE"
+        ],
+        "Trocar por um endereço": [
+          "REPAIR_MISSING_REFERENCE"
+        ],
+        "Remover direita e não dar outra pista": [
+          "REPAIR_MISSING_REFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CORRIGIR_FRASE",
+      "explanation": "Um objeto de referência completa a relação.",
+      "hint": "Adicione a comparação que falta.",
+      "errorFocus": "REPAIR_MISSING_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Um objeto de referência completa a relação.",
+        "incorrect": "Um objeto de referência completa a relação.",
+        "hint": "Adicione a comparação que falta.",
+        "errorFocus": "REPAIR_MISSING_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-39",
+      "statement": "Qual instrução é mais fácil de seguir no mapa?",
+      "prompt": "Qual instrução é mais fácil de seguir no mapa?",
+      "options": [
+        "Vá para algum lugar à direita",
+        "Continue sem saber de onde começou",
+        "Comece no quadrado, siga para baixo até o círculo e pare.",
+        "Mude a direção quando quiser"
+      ],
+      "correctAnswer": "Comece no quadrado, siga para baixo até o círculo e pare.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Vá para algum lugar à direita": [
+          "ROUTE_CLARITY"
+        ],
+        "Continue sem saber de onde começou": [
+          "ROUTE_CLARITY"
+        ],
+        "Mude a direção quando quiser": [
+          "ROUTE_CLARITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTRUCAO_CLARA",
+      "explanation": "Início, direção, referência intermediária e destino tornam o caminho claro.",
+      "hint": "Escolha a instrução com começo e chegada.",
+      "errorFocus": "ROUTE_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: Início, direção, referência intermediária e destino tornam o caminho claro.",
+        "incorrect": "Início, direção, referência intermediária e destino tornam o caminho claro.",
+        "hint": "Escolha a instrução com começo e chegada.",
+        "errorFocus": "ROUTE_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma12-location-from-named-reference-v1-40",
+      "statement": "Como alguém pode descrever uma posição sem percorrer fisicamente o espaço?",
+      "prompt": "Como alguém pode descrever uma posição sem percorrer fisicamente o espaço?",
+      "options": [
+        "Precisa sempre caminhar até o objeto",
+        "Não pode participar sem correr",
+        "Deve compartilhar a rota de casa",
+        "Pode apontar, usar cartões, falar, desenhar ou usar comunicação alternativa."
+      ],
+      "correctAnswer": "Pode apontar, usar cartões, falar, desenhar ou usar comunicação alternativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Precisa sempre caminhar até o objeto": [
+          "ACCESSIBLE_NONMOTOR_RESPONSE"
+        ],
+        "Não pode participar sem correr": [
+          "ACCESSIBLE_NONMOTOR_RESPONSE"
+        ],
+        "Deve compartilhar a rota de casa": [
+          "ACCESSIBLE_NONMOTOR_RESPONSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "DESENHO_COM_ACESSIBILIDADE",
+      "explanation": "A tarefa pode ser resolvida por diferentes formas de representação.",
+      "hint": "Pense em respostas com desenho ou cartões.",
+      "errorFocus": "ACCESSIBLE_NONMOTOR_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: A tarefa pode ser resolvida por diferentes formas de representação.",
+        "incorrect": "A tarefa pode ser resolvida por diferentes formas de representação.",
+        "hint": "Pense em respostas com desenho ou cartões.",
+        "errorFocus": "ACCESSIBLE_NONMOTOR_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar mapas de alto contraste, formas táteis, peças grandes, setas visuais e descrições orais pausadas.",
+          "Permitir resposta com cartões, gestos, comunicação alternativa ou manipulação de objetos; não exigir deslocamento físico nem registro de trajetos pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

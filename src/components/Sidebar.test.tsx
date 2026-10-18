@@ -56,6 +56,7 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
+  currentInstitutionId = 'institution-1',
   currentInstitutionPlan,
   isDesktopHidden = false,
   isMobileOpen = false,
@@ -64,6 +65,7 @@ function renderSidebar({
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
+  currentInstitutionId?: string | null;
   currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
@@ -80,6 +82,7 @@ function renderSidebar({
         currentInstitutionRole={
           currentInstitutionRole
         }
+        currentInstitutionId={currentInstitutionId}
         currentInstitutionPlan={
           currentInstitutionPlan
         }
@@ -118,6 +121,104 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
+  it('mostra o painel inclusivo recolhível com ícones individuais para os perfis autorizados', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.getByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeTruthy();
+    const inclusiveGroup = screen.getByRole('button', {
+      name: 'Educação Inclusiva',
+    });
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.getByRole('link', { name: 'Painel Inclusivo' }).getAttribute('href'),
+    ).toBe('/inclusive-education');
+    const inclusiveLinks = [
+      'Painel Inclusivo',
+      'PEI dos Alunos',
+      'AEE / PAEE',
+      'Biblioteca de Atividades',
+      'Exercícios Interativos',
+      'Materiais para Download',
+      'Evolução Pedagógica',
+      'Vídeos didáticos',
+    ].map((label) => screen.getByRole('link', { name: label }));
+    expect(
+      new Set(
+        inclusiveLinks.map((link) => link.querySelector('svg')?.outerHTML),
+      ).size,
+    ).toBe(inclusiveLinks.length);
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
+
+    for (const [profileRole, userRole] of [
+      ['SECRETARY', 'secretary'],
+      ['TEACHER', 'teacher'],
+    ] as const) {
+      cleanup();
+      renderSidebar({
+        profile: {
+          ...baseProfile,
+          role: profileRole,
+        },
+        currentUser: {
+          ...baseUser,
+          role: userRole,
+        },
+        currentInstitutionRole: profileRole,
+      });
+
+      expect(
+        screen
+          .getByRole('button', { name: 'Educação Inclusiva' })
+          .getAttribute('aria-expanded'),
+      ).toBe('false');
+    }
+
+    cleanup();
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionId: null,
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      currentUser: { ...baseUser, role: 'student' },
+      currentInstitutionRole: 'STUDENT',
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar();
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+  });
+
   it('renderiza rotas reais do ADMIN sem expor a visao geral escolar', () => {
     renderSidebar();
 
@@ -574,6 +675,33 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'TEACHER',
     });
 
+    const accessGroup = screen.getByRole('button', {
+      name: 'Acesso',
+    });
+    const teacherGroup = screen.getByRole('button', {
+      name: 'Operação docente',
+    });
+
+    expect(accessGroup.getAttribute('aria-expanded')).toBe(
+      'false',
+    );
+    expect(teacherGroup.getAttribute('aria-expanded')).toBe(
+      'false',
+    );
+    expect(
+      screen.queryByRole('link', { name: 'Grade de horário' }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: 'Diário de Classe' }),
+    ).toBeNull();
+
+    fireEvent.click(accessGroup);
+    expect(accessGroup.getAttribute('aria-expanded')).toBe(
+      'true',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Grade de horário' }),
+    ).toBeTruthy();
     expect(
       screen.getByRole('link', {
         name: /dashboard/i,
@@ -584,6 +712,20 @@ describe('Sidebar', () => {
         name: /administra..o/i,
       }),
     ).toBeNull();
+    expect(teacherGroup.getAttribute('aria-expanded')).toBe(
+      'false',
+    );
+
+    fireEvent.click(teacherGroup);
+    expect(teacherGroup.getAttribute('aria-expanded')).toBe(
+      'true',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Diário de Classe' }),
+    ).toBeTruthy();
+    expect(accessGroup.getAttribute('aria-expanded')).toBe(
+      'false',
+    );
   });
 
   it('mantem navegacao completa e nao exibe toggle redundante no rodape', () => {
@@ -600,6 +742,10 @@ describe('Sidebar', () => {
       },
       currentInstitutionRole: 'STUDENT',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Acesso' }),
+    );
 
     expect(
       screen.getByRole('link', {

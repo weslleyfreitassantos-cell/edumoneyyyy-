@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma04-count-collections-up-to-one-hundred",
+  "canonicalSkillCode": "AUTHORING_EF01MA04_COUNT_AND_RECORD_COLLECTIONS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "contagem de coleções até 100 e registros verbais e simbólicos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Contar a quantidade de objetos de coleções até 100 unidades e apresentar o resultado por registros verbais e simbólicos, em situações de seu interesse, como jogos, brincadeiras, materiais da sala de aula, entre outros.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Contar coleções e registrar o total",
+    "objective": "Contar coleções de até 100 objetos organizando grupos quando útil e registrar o total com palavras, numerais ou representações adequadas.",
+    "summary": "Contar permite descobrir quantos objetos há numa coleção. Podemos apontar um a um, organizar os objetos em fileiras ou grupos de dez e conferir se nenhum foi contado duas vezes. Depois registramos o total falando, escrevendo o numeral ou usando uma representação compreensível. Uma coleção pode ter até 100 unidades. A organização ajuda a acompanhar a contagem; rapidez e competição não são necessárias para mostrar o que se sabe.",
+    "explanation": "Escolha uma coleção segura e observe como está organizada. Para uma coleção pequena, conte cada item uma vez. Para coleções maiores, organize grupos de dez e conte dez, vinte, trinta... Depois conte os itens restantes e registre o total. Por exemplo, três grupos de dez e quatro unidades correspondem a 34 objetos. Confira se todos os itens foram incluídos e se nenhum foi repetido. Você pode dizer “trinta e quatro”, escrever 34 ou desenhar grupos e unidades. Diferentes registros podem comunicar a mesma quantidade.",
+    "workedExample": "Uma coleção de fichas é organizada em quatro grupos de dez e mais seis fichas soltas. Contamos 10, 20, 30, 40 e depois 41, 42, 43, 44, 45, 46. O total pode ser dito como “quarenta e seis” e registrado com o numeral 46.",
+    "commonMistake": "Pular ou contar duas vezes objetos desorganizados, ou registrar apenas os grupos de dez e esquecer as unidades que sobraram.",
+    "priorKnowledge": [
+      "Contar conjuntos pequenos em ordem com apoio.",
+      "Reconhecer numerais até pelo menos 20 e acompanhar uma correspondência entre palavra e quantidade."
+    ],
+    "keyConcepts": [
+      "coleção",
+      "contagem",
+      "unidade",
+      "grupo de dez",
+      "total",
+      "numeral",
+      "registro verbal",
+      "registro simbólico",
+      "conferência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COUNT_EACH_OBJECT_ONCE",
+        "action": "Organize os objetos em uma fileira e mova cada um para uma área já contada, verificando que nenhum foi pulado ou contado de novo."
+      },
+      {
+        "errorFocus": "TENS_AND_ONES_TOTAL",
+        "action": "Monte grupos completos de dez e conte as unidades soltas em voz, apontamento ou cartões numéricos antes de juntar os totais."
+      },
+      {
+        "errorFocus": "VERBAL_SYMBOLIC_RECORD",
+        "action": "Associe o numeral ao nome falado e a uma representação em grupos, aceitando diferentes formas acessíveis de registrar o mesmo total."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+      "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+      "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma04-classroom-collection-count",
+        "title": "Inventário de materiais de brincadeira",
+        "instructions": "Coleções fictícias ou materiais preparados pelo educador contêm até 100 itens seguros e podem ser agrupados em dezenas.\n1. Escolha uma coleção e estime sua quantidade.\n2. Organize os itens em grupos, conte cada unidade uma vez e confira o total.\n3. Registre o resultado em palavras, numeral ou desenho de grupos e unidades.",
+        "steps": [
+          "Escolha uma coleção e estime sua quantidade.",
+          "Organize os itens em grupos, conte cada unidade uma vez e confira o total.",
+          "Registre o resultado em palavras, numeral ou desenho de grupos e unidades."
+        ],
+        "evidence": "Contagem conferida de até 100 itens acompanhada por pelo menos um registro verbal ou simbólico.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "conta parte da coleção com modelagem.",
+            "developing": "conta uma coleção usando organização ou apontamento.",
+            "proficient": "conta e confere até 100 itens e comunica o total num registro compreensível."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma04-board-game-score",
+        "title": "Placar de uma brincadeira fictícia",
+        "instructions": "Uma brincadeira de mesa usa até 100 marcadores e um placar em branco, sem competição de velocidade.\n1. Conte os marcadores de uma rodada ou equipe fictícia.\n2. Agrupe em dezenas quando isso ajudar a conferir.\n3. Registre e leia o total usando numerais e palavras.",
+        "steps": [
+          "Conte os marcadores de uma rodada ou equipe fictícia.",
+          "Agrupe em dezenas quando isso ajudar a conferir.",
+          "Registre e leia o total usando numerais e palavras."
+        ],
+        "evidence": "Placar que relaciona quantidade contada, numeral e leitura verbal do resultado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece alguns itens e numerais com apoio.",
+            "developing": "registra o total com ajuda de grupos ou contagem individual.",
+            "proficient": "confere a coleção e representa o total verbal ou simbolicamente sem omitir unidades."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma04-count-collections-up-to-one-hundred-01",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-02",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-03",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-04",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-05",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-06",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-07",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma04-count-collections-up-to-one-hundred-09",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-10",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-11",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-12",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-13",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-14",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-15",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma04-count-collections-up-to-one-hundred-17",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-18",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-19",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-20",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-21",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-22",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-23",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma04-count-collections-up-to-one-hundred-25",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-26",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-27",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-28",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-29",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-30",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-31",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma04-count-collections-up-to-one-hundred-33",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-34",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-35",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-36",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-37",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-38",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-39",
+          "v1-ef01ma04-count-collections-up-to-one-hundred-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA04",
+        "descriptor": "Contar a quantidade de objetos de coleções até 100 unidades e apresentar o resultado por registros verbais e simbólicos, em situações de seu interesse, como jogos, brincadeiras, materiais da sala de aula, entre outros.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-01",
+      "statement": "Uma coleção organizada tem 10 fichas. Qual numeral registra o total?",
+      "prompt": "Uma coleção organizada tem 10 fichas. Qual numeral registra o total?",
+      "options": [
+        "10.",
+        "1",
+        "9",
+        "20"
+      ],
+      "correctAnswer": "10.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "1": [
+          "NUMERAL_FOR_TEN"
+        ],
+        "9": [
+          "NUMERAL_FOR_TEN"
+        ],
+        "20": [
+          "NUMERAL_FOR_TEN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "DEZ_FICHAS_COLORIDAS",
+      "explanation": "Dez fichas correspondem ao numeral 10.",
+      "hint": "Leia o total indicado.",
+      "errorFocus": "NUMERAL_FOR_TEN",
+      "feedback": {
+        "correct": "Boa observação: Dez fichas correspondem ao numeral 10.",
+        "incorrect": "Dez fichas correspondem ao numeral 10.",
+        "hint": "Leia o total indicado.",
+        "errorFocus": "NUMERAL_FOR_TEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-02",
+      "statement": "Um cartão registra 12 estrelas desenhadas. Como dizer esse total?",
+      "prompt": "Um cartão registra 12 estrelas desenhadas. Como dizer esse total?",
+      "options": [
+        "Dez",
+        "Doze.",
+        "Vinte e dois",
+        "Dois"
+      ],
+      "correctAnswer": "Doze.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dez": [
+          "VERBAL_NUMBER_TWELVE"
+        ],
+        "Vinte e dois": [
+          "VERBAL_NUMBER_TWELVE"
+        ],
+        "Dois": [
+          "VERBAL_NUMBER_TWELVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_COM_DOZE_ESTRELAS",
+      "explanation": "O numeral 12 é lido como doze.",
+      "hint": "Associe 12 ao nome do número.",
+      "errorFocus": "VERBAL_NUMBER_TWELVE",
+      "feedback": {
+        "correct": "Boa observação: O numeral 12 é lido como doze.",
+        "incorrect": "O numeral 12 é lido como doze.",
+        "hint": "Associe 12 ao nome do número.",
+        "errorFocus": "VERBAL_NUMBER_TWELVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-03",
+      "statement": "Há 3 grupos de dez fichas e mais 4 fichas. Quantas há ao todo?",
+      "prompt": "Há 3 grupos de dez fichas e mais 4 fichas. Quantas há ao todo?",
+      "options": [
+        "30",
+        "7",
+        "34.",
+        "43"
+      ],
+      "correctAnswer": "34.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "7": [
+          "TENS_AND_ONES_34"
+        ],
+        "30": [
+          "TENS_AND_ONES_34"
+        ],
+        "43": [
+          "TENS_AND_ONES_34"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "TRES_GRUPOS_E_QUATRO",
+      "explanation": "Três dezenas são 30; com quatro unidades, totalizam 34.",
+      "hint": "Conte 10, 20, 30 e depois mais quatro.",
+      "errorFocus": "TENS_AND_ONES_34",
+      "feedback": {
+        "correct": "Boa observação: Três dezenas são 30; com quatro unidades, totalizam 34.",
+        "incorrect": "Três dezenas são 30; com quatro unidades, totalizam 34.",
+        "hint": "Conte 10, 20, 30 e depois mais quatro.",
+        "errorFocus": "TENS_AND_ONES_34"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-04",
+      "statement": "Uma coleção tem 5 objetos. Qual registro verbal corresponde a 5?",
+      "prompt": "Uma coleção tem 5 objetos. Qual registro verbal corresponde a 5?",
+      "options": [
+        "Quinze",
+        "Cinquenta",
+        "Quatro",
+        "Cinco."
+      ],
+      "correctAnswer": "Cinco.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Quinze": [
+          "VERBAL_NUMBER_FIVE"
+        ],
+        "Cinquenta": [
+          "VERBAL_NUMBER_FIVE"
+        ],
+        "Quatro": [
+          "VERBAL_NUMBER_FIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECORD",
+      "contextFamily": "CINCO_E_UNIDADES",
+      "explanation": "O numeral 5 corresponde à palavra cinco.",
+      "hint": "Leia o numeral em voz ou mentalmente.",
+      "errorFocus": "VERBAL_NUMBER_FIVE",
+      "feedback": {
+        "correct": "Boa observação: O numeral 5 corresponde à palavra cinco.",
+        "incorrect": "O numeral 5 corresponde à palavra cinco.",
+        "hint": "Leia o numeral em voz ou mentalmente.",
+        "errorFocus": "VERBAL_NUMBER_FIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-05",
+      "statement": "Há 2 grupos de dez e 7 objetos soltos. Qual é o total?",
+      "prompt": "Há 2 grupos de dez e 7 objetos soltos. Qual é o total?",
+      "options": [
+        "27.",
+        "20",
+        "9",
+        "72"
+      ],
+      "correctAnswer": "27.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "9": [
+          "TENS_AND_ONES_27"
+        ],
+        "20": [
+          "TENS_AND_ONES_27"
+        ],
+        "72": [
+          "TENS_AND_ONES_27"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "DOIS_GRUPOS_DE_DEZ_E_SETE",
+      "explanation": "Vinte mais sete unidades formam 27.",
+      "hint": "Conte duas dezenas e depois sete.",
+      "errorFocus": "TENS_AND_ONES_27",
+      "feedback": {
+        "correct": "Boa observação: Vinte mais sete unidades formam 27.",
+        "incorrect": "Vinte mais sete unidades formam 27.",
+        "hint": "Conte duas dezenas e depois sete.",
+        "errorFocus": "TENS_AND_ONES_27"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-06",
+      "statement": "Uma pessoa conta 18 peças organizando-as numa fileira e movendo cada peça uma vez. O que essa estratégia ajuda a evitar?",
+      "prompt": "Uma pessoa conta 18 peças organizando-as numa fileira e movendo cada peça uma vez. O que essa estratégia ajuda a evitar?",
+      "options": [
+        "Registrar o numeral",
+        "Pular ou contar uma peça duas vezes.",
+        "Dizer o nome do total",
+        "Organizar a coleção"
+      ],
+      "correctAnswer": "Pular ou contar uma peça duas vezes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Registrar o numeral": [
+          "COUNTING_TRACKING"
+        ],
+        "Dizer o nome do total": [
+          "COUNTING_TRACKING"
+        ],
+        "Organizar a coleção": [
+          "COUNTING_TRACKING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORGANIZACAO_EM_FILEIRA",
+      "explanation": "Mover cada objeto para uma área contada ajuda a acompanhar a contagem.",
+      "hint": "Pense no que pode acontecer com peças espalhadas.",
+      "errorFocus": "COUNTING_TRACKING",
+      "feedback": {
+        "correct": "Boa observação: Mover cada objeto para uma área contada ajuda a acompanhar a contagem.",
+        "incorrect": "Mover cada objeto para uma área contada ajuda a acompanhar a contagem.",
+        "hint": "Pense no que pode acontecer com peças espalhadas.",
+        "errorFocus": "COUNTING_TRACKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-07",
+      "statement": "Quatro grupos de dez e 6 fichas soltas correspondem a qual numeral?",
+      "prompt": "Quatro grupos de dez e 6 fichas soltas correspondem a qual numeral?",
+      "options": [
+        "40",
+        "64",
+        "46.",
+        "10"
+      ],
+      "correctAnswer": "46.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "10": [
+          "TENS_AND_ONES_46"
+        ],
+        "40": [
+          "TENS_AND_ONES_46"
+        ],
+        "64": [
+          "TENS_AND_ONES_46"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECORD",
+      "contextFamily": "QUARENTA_E_SEIS_FICHAS",
+      "explanation": "Quarenta mais seis corresponde a 46.",
+      "hint": "Conte quatro dezenas e mais seis unidades.",
+      "errorFocus": "TENS_AND_ONES_46",
+      "feedback": {
+        "correct": "Boa observação: Quarenta mais seis corresponde a 46.",
+        "incorrect": "Quarenta mais seis corresponde a 46.",
+        "hint": "Conte quatro dezenas e mais seis unidades.",
+        "errorFocus": "TENS_AND_ONES_46"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-08",
+      "statement": "Uma atividade avalia quem conta mais rápido. Isso é necessário para mostrar que alguém sabe contar?",
+      "prompt": "Uma atividade avalia quem conta mais rápido. Isso é necessário para mostrar que alguém sabe contar?",
+      "options": [
+        "Sim, velocidade é a única evidência",
+        "Sim, porque contagem lenta não vale",
+        "Não, mas apenas o numeral importa",
+        "Não; pode contar, conferir e registrar sem competir por velocidade."
+      ],
+      "correctAnswer": "Não; pode contar, conferir e registrar sem competir por velocidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, velocidade é a única evidência": [
+          "NO_SPEED_REQUIREMENT"
+        ],
+        "Sim, porque contagem lenta não vale": [
+          "NO_SPEED_REQUIREMENT"
+        ],
+        "Não, mas apenas o numeral importa": [
+          "NO_SPEED_REQUIREMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONTAGEM_COM_COMPETICAO",
+      "explanation": "A estratégia e o registro mostram a contagem; rapidez não é necessária.",
+      "hint": "Escolha uma avaliação que valorize a evidência.",
+      "errorFocus": "NO_SPEED_REQUIREMENT",
+      "feedback": {
+        "correct": "Boa observação: A estratégia e o registro mostram a contagem; rapidez não é necessária.",
+        "incorrect": "A estratégia e o registro mostram a contagem; rapidez não é necessária.",
+        "hint": "Escolha uma avaliação que valorize a evidência.",
+        "errorFocus": "NO_SPEED_REQUIREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-09",
+      "statement": "Uma caixa tem 18 blocos contados. Qual palavra representa o total?",
+      "prompt": "Uma caixa tem 18 blocos contados. Qual palavra representa o total?",
+      "options": [
+        "Dezoito.",
+        "Oito",
+        "Vinte e oito",
+        "Oitenta"
+      ],
+      "correctAnswer": "Dezoito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Oito": [
+          "VERBAL_NUMBER_EIGHTEEN"
+        ],
+        "Vinte e oito": [
+          "VERBAL_NUMBER_EIGHTEEN"
+        ],
+        "Oitenta": [
+          "VERBAL_NUMBER_EIGHTEEN"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "DEZOITO_BLOCOS",
+      "explanation": "O número 18 é lido como dezoito.",
+      "hint": "Leia 18 como um número de duas ordens.",
+      "errorFocus": "VERBAL_NUMBER_EIGHTEEN",
+      "feedback": {
+        "correct": "Boa observação: O número 18 é lido como dezoito.",
+        "incorrect": "O número 18 é lido como dezoito.",
+        "hint": "Leia 18 como um número de duas ordens.",
+        "errorFocus": "VERBAL_NUMBER_EIGHTEEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-10",
+      "statement": "Quatro grupos de dez e duas unidades formam quantos objetos?",
+      "prompt": "Quatro grupos de dez e duas unidades formam quantos objetos?",
+      "options": [
+        "24",
+        "42.",
+        "40",
+        "6"
+      ],
+      "correctAnswer": "42.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "6": [
+          "TENS_AND_ONES_42"
+        ],
+        "24": [
+          "TENS_AND_ONES_42"
+        ],
+        "40": [
+          "TENS_AND_ONES_42"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "QUATRO_DEZENAS_E_DOIS",
+      "explanation": "Quatro dezenas são 40; com duas unidades, são 42.",
+      "hint": "Conte quatro dezenas e acrescente dois.",
+      "errorFocus": "TENS_AND_ONES_42",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas são 40; com duas unidades, são 42.",
+        "incorrect": "Quatro dezenas são 40; com duas unidades, são 42.",
+        "hint": "Conte quatro dezenas e acrescente dois.",
+        "errorFocus": "TENS_AND_ONES_42"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-11",
+      "statement": "Qual numeral registra “trinta”?",
+      "prompt": "Qual numeral registra “trinta”?",
+      "options": [
+        "3",
+        "13",
+        "30.",
+        "300"
+      ],
+      "correctAnswer": "30.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "3": [
+          "SYMBOLIC_NUMBER_THIRTY"
+        ],
+        "13": [
+          "SYMBOLIC_NUMBER_THIRTY"
+        ],
+        "300": [
+          "SYMBOLIC_NUMBER_THIRTY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECORD",
+      "contextFamily": "NUMERAL_DE_TRINTA",
+      "explanation": "Trinta é representado pelo numeral 30.",
+      "hint": "Associe a palavra ao símbolo numérico.",
+      "errorFocus": "SYMBOLIC_NUMBER_THIRTY",
+      "feedback": {
+        "correct": "Boa observação: Trinta é representado pelo numeral 30.",
+        "incorrect": "Trinta é representado pelo numeral 30.",
+        "hint": "Associe a palavra ao símbolo numérico.",
+        "errorFocus": "SYMBOLIC_NUMBER_THIRTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-12",
+      "statement": "Sete grupos de dez e 3 unidades soltas correspondem a qual total?",
+      "prompt": "Sete grupos de dez e 3 unidades soltas correspondem a qual total?",
+      "options": [
+        "37",
+        "70",
+        "10",
+        "73."
+      ],
+      "correctAnswer": "73.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "10": [
+          "TENS_AND_ONES_73"
+        ],
+        "37": [
+          "TENS_AND_ONES_73"
+        ],
+        "70": [
+          "TENS_AND_ONES_73"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "SETE_DEZENAS_E_TRES",
+      "explanation": "Setenta mais três unidades totalizam 73.",
+      "hint": "Conte de dez em dez até 70 e acrescente três.",
+      "errorFocus": "TENS_AND_ONES_73",
+      "feedback": {
+        "correct": "Boa observação: Setenta mais três unidades totalizam 73.",
+        "incorrect": "Setenta mais três unidades totalizam 73.",
+        "hint": "Conte de dez em dez até 70 e acrescente três.",
+        "errorFocus": "TENS_AND_ONES_73"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-13",
+      "statement": "Uma coleção tem 25 botões. Quantos grupos completos de dez e unidades soltas há?",
+      "prompt": "Uma coleção tem 25 botões. Quantos grupos completos de dez e unidades soltas há?",
+      "options": [
+        "2 grupos de dez e 5 unidades.",
+        "5 grupos de dez e 2 unidades",
+        "2 grupos e nenhuma unidade",
+        "25 grupos de dez"
+      ],
+      "correctAnswer": "2 grupos de dez e 5 unidades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "5 grupos de dez e 2 unidades": [
+          "TENS_AND_ONES_DECOMPOSITION_25"
+        ],
+        "2 grupos e nenhuma unidade": [
+          "TENS_AND_ONES_DECOMPOSITION_25"
+        ],
+        "25 grupos de dez": [
+          "TENS_AND_ONES_DECOMPOSITION_25"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AGRUPAR_VINTE_E_CINCO",
+      "explanation": "Vinte e cinco pode ser organizado em duas dezenas e cinco unidades.",
+      "hint": "Separe 20 e conte o que resta.",
+      "errorFocus": "TENS_AND_ONES_DECOMPOSITION_25",
+      "feedback": {
+        "correct": "Boa observação: Vinte e cinco pode ser organizado em duas dezenas e cinco unidades.",
+        "incorrect": "Vinte e cinco pode ser organizado em duas dezenas e cinco unidades.",
+        "hint": "Separe 20 e conte o que resta.",
+        "errorFocus": "TENS_AND_ONES_DECOMPOSITION_25"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-14",
+      "statement": "Qual numeral corresponde ao registro verbal “cinquenta e nove”?",
+      "prompt": "Qual numeral corresponde ao registro verbal “cinquenta e nove”?",
+      "options": [
+        "95",
+        "59.",
+        "50",
+        "9"
+      ],
+      "correctAnswer": "59.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "9": [
+          "VERBAL_TO_SYMBOLIC_59"
+        ],
+        "50": [
+          "VERBAL_TO_SYMBOLIC_59"
+        ],
+        "95": [
+          "VERBAL_TO_SYMBOLIC_59"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECORD",
+      "contextFamily": "FALA_E_NUMERAL_CINQUENTA_E_NOVE",
+      "explanation": "Cinquenta e nove é representado por 59.",
+      "hint": "Separe cinquenta e nove unidades em dezenas e unidades.",
+      "errorFocus": "VERBAL_TO_SYMBOLIC_59",
+      "feedback": {
+        "correct": "Boa observação: Cinquenta e nove é representado por 59.",
+        "incorrect": "Cinquenta e nove é representado por 59.",
+        "hint": "Separe cinquenta e nove unidades em dezenas e unidades.",
+        "errorFocus": "VERBAL_TO_SYMBOLIC_59"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-15",
+      "statement": "Duas fileiras têm 10 objetos cada e há mais 6 fora delas. Como conferir o total?",
+      "prompt": "Duas fileiras têm 10 objetos cada e há mais 6 fora delas. Como conferir o total?",
+      "options": [
+        "Contar só as duas fileiras e registrar 20",
+        "Contar os objetos fora e registrar 6",
+        "Contar 10, 20 e depois mais 6, chegando a 26.",
+        "Dizer 16 sem conferir"
+      ],
+      "correctAnswer": "Contar 10, 20 e depois mais 6, chegando a 26.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Contar só as duas fileiras e registrar 20": [
+          "INCLUDE_REMAINING_UNITS_26"
+        ],
+        "Contar os objetos fora e registrar 6": [
+          "INCLUDE_REMAINING_UNITS_26"
+        ],
+        "Dizer 16 sem conferir": [
+          "INCLUDE_REMAINING_UNITS_26"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONTAGEM_DE_FILEIRAS",
+      "explanation": "As duas fileiras totalizam 20 e seis objetos extras elevam a coleção a 26.",
+      "hint": "Não esqueça os objetos que ficaram fora das fileiras.",
+      "errorFocus": "INCLUDE_REMAINING_UNITS_26",
+      "feedback": {
+        "correct": "Boa observação: As duas fileiras totalizam 20 e seis objetos extras elevam a coleção a 26.",
+        "incorrect": "As duas fileiras totalizam 20 e seis objetos extras elevam a coleção a 26.",
+        "hint": "Não esqueça os objetos que ficaram fora das fileiras.",
+        "errorFocus": "INCLUDE_REMAINING_UNITS_26"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-16",
+      "statement": "Uma coleção de 32 peças foi organizada em três dezenas e duas unidades. O registro está correto?",
+      "prompt": "Uma coleção de 32 peças foi organizada em três dezenas e duas unidades. O registro está correto?",
+      "options": [
+        "Não, 3 mais 2 forma 5",
+        "Não, são 23",
+        "Sim, mas precisa haver 32 grupos",
+        "Sim, 30 mais 2 forma 32."
+      ],
+      "correctAnswer": "Sim, 30 mais 2 forma 32.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, 3 mais 2 forma 5": [
+          "CHECK_GROUPED_COUNT_32"
+        ],
+        "Não, são 23": [
+          "CHECK_GROUPED_COUNT_32"
+        ],
+        "Sim, mas precisa haver 32 grupos": [
+          "CHECK_GROUPED_COUNT_32"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AGRUPAMENTO_VISUAL",
+      "explanation": "Três grupos de dez e duas unidades correspondem a 32.",
+      "hint": "Confira as dezenas e as unidades.",
+      "errorFocus": "CHECK_GROUPED_COUNT_32",
+      "feedback": {
+        "correct": "Boa observação: Três grupos de dez e duas unidades correspondem a 32.",
+        "incorrect": "Três grupos de dez e duas unidades correspondem a 32.",
+        "hint": "Confira as dezenas e as unidades.",
+        "errorFocus": "CHECK_GROUPED_COUNT_32"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-17",
+      "statement": "Um conjunto preparado tem 75 cartões. Qual registro verbal combina com o numeral?",
+      "prompt": "Um conjunto preparado tem 75 cartões. Qual registro verbal combina com o numeral?",
+      "options": [
+        "Setenta e cinco.",
+        "Cinquenta e sete",
+        "Sete e cinco",
+        "Setenta e quinze"
+      ],
+      "correctAnswer": "Setenta e cinco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cinquenta e sete": [
+          "VERBAL_NUMBER_75"
+        ],
+        "Sete e cinco": [
+          "VERBAL_NUMBER_75"
+        ],
+        "Setenta e quinze": [
+          "VERBAL_NUMBER_75"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "SETENTA_E_CINCO_CARTOES",
+      "explanation": "O numeral 75 é lido como setenta e cinco.",
+      "hint": "Leia primeiro as dezenas e depois as unidades.",
+      "errorFocus": "VERBAL_NUMBER_75",
+      "feedback": {
+        "correct": "Boa observação: O numeral 75 é lido como setenta e cinco.",
+        "incorrect": "O numeral 75 é lido como setenta e cinco.",
+        "hint": "Leia primeiro as dezenas e depois as unidades.",
+        "errorFocus": "VERBAL_NUMBER_75"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-18",
+      "statement": "Uma coleção tem quatro dezenas e uma unidade. Qual numeral registrar?",
+      "prompt": "Uma coleção tem quatro dezenas e uma unidade. Qual numeral registrar?",
+      "options": [
+        "14",
+        "41.",
+        "40",
+        "5"
+      ],
+      "correctAnswer": "41.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "5": [
+          "TENS_AND_ONES_41"
+        ],
+        "14": [
+          "TENS_AND_ONES_41"
+        ],
+        "40": [
+          "TENS_AND_ONES_41"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECORD",
+      "contextFamily": "QUARENTA_E_UM_MARCADORES",
+      "explanation": "Quatro dezenas e uma unidade formam 41.",
+      "hint": "Conte 40 e acrescente 1.",
+      "errorFocus": "TENS_AND_ONES_41",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas e uma unidade formam 41.",
+        "incorrect": "Quatro dezenas e uma unidade formam 41.",
+        "hint": "Conte 40 e acrescente 1.",
+        "errorFocus": "TENS_AND_ONES_41"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-19",
+      "statement": "Uma coleção tem 9 grupos de dez e 9 fichas soltas. Qual é o total?",
+      "prompt": "Uma coleção tem 9 grupos de dez e 9 fichas soltas. Qual é o total?",
+      "options": [
+        "90",
+        "18",
+        "99.",
+        "9"
+      ],
+      "correctAnswer": "99.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "9": [
+          "TENS_AND_ONES_99"
+        ],
+        "18": [
+          "TENS_AND_ONES_99"
+        ],
+        "90": [
+          "TENS_AND_ONES_99"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NOVENTA_E_NOVE_FICHAS",
+      "explanation": "Nove dezenas são 90; mais nove unidades resulta em 99.",
+      "hint": "Conte as dezenas e depois as fichas restantes.",
+      "errorFocus": "TENS_AND_ONES_99",
+      "feedback": {
+        "correct": "Boa observação: Nove dezenas são 90; mais nove unidades resulta em 99.",
+        "incorrect": "Nove dezenas são 90; mais nove unidades resulta em 99.",
+        "hint": "Conte as dezenas e depois as fichas restantes.",
+        "errorFocus": "TENS_AND_ONES_99"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-20",
+      "statement": "Um placar verbal informa “trinta e seis”. Qual registro simbólico é correto?",
+      "prompt": "Um placar verbal informa “trinta e seis”. Qual registro simbólico é correto?",
+      "options": [
+        "63",
+        "30",
+        "6",
+        "36."
+      ],
+      "correctAnswer": "36.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "6": [
+          "VERBAL_TO_SYMBOLIC_36"
+        ],
+        "30": [
+          "VERBAL_TO_SYMBOLIC_36"
+        ],
+        "63": [
+          "VERBAL_TO_SYMBOLIC_36"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_DE_TRINTA_E_SEIS",
+      "explanation": "Trinta e seis corresponde ao numeral 36.",
+      "hint": "Separe três dezenas e seis unidades.",
+      "errorFocus": "VERBAL_TO_SYMBOLIC_36",
+      "feedback": {
+        "correct": "Boa observação: Trinta e seis corresponde ao numeral 36.",
+        "incorrect": "Trinta e seis corresponde ao numeral 36.",
+        "hint": "Separe três dezenas e seis unidades.",
+        "errorFocus": "VERBAL_TO_SYMBOLIC_36"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-21",
+      "statement": "Há 8 grupos de dez e 2 unidades. Como registrar a quantidade?",
+      "prompt": "Há 8 grupos de dez e 2 unidades. Como registrar a quantidade?",
+      "options": [
+        "82.",
+        "28",
+        "80",
+        "10"
+      ],
+      "correctAnswer": "82.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10": [
+          "TENS_AND_ONES_82"
+        ],
+        "28": [
+          "TENS_AND_ONES_82"
+        ],
+        "80": [
+          "TENS_AND_ONES_82"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "COLECAO_DE_OITENTA_E_DOIS",
+      "explanation": "Oito dezenas mais duas unidades formam 82.",
+      "hint": "Conte de dez em dez até 80 e acrescente dois.",
+      "errorFocus": "TENS_AND_ONES_82",
+      "feedback": {
+        "correct": "Boa observação: Oito dezenas mais duas unidades formam 82.",
+        "incorrect": "Oito dezenas mais duas unidades formam 82.",
+        "hint": "Conte de dez em dez até 80 e acrescente dois.",
+        "errorFocus": "TENS_AND_ONES_82"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-22",
+      "statement": "Por que grupos de dez podem ajudar a contar uma coleção grande?",
+      "prompt": "Por que grupos de dez podem ajudar a contar uma coleção grande?",
+      "options": [
+        "Porque mudam a quantidade",
+        "Eles organizam os objetos e permitem acompanhar dezenas e unidades sem contar um item repetidamente.",
+        "Porque toda coleção deve ter exatamente dez",
+        "Porque dispensam conferir o total"
+      ],
+      "correctAnswer": "Eles organizam os objetos e permitem acompanhar dezenas e unidades sem contar um item repetidamente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque mudam a quantidade": [
+          "GROUPING_JUSTIFICATION"
+        ],
+        "Porque toda coleção deve ter exatamente dez": [
+          "GROUPING_JUSTIFICATION"
+        ],
+        "Porque dispensam conferir o total": [
+          "GROUPING_JUSTIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "POR_QUE_ORGANIZAR_EM_DEZENAS",
+      "explanation": "Agrupar facilita acompanhar a contagem, mas ainda é importante conferir.",
+      "hint": "Pense em organização e prevenção de erros.",
+      "errorFocus": "GROUPING_JUSTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: Agrupar facilita acompanhar a contagem, mas ainda é importante conferir.",
+        "incorrect": "Agrupar facilita acompanhar a contagem, mas ainda é importante conferir.",
+        "hint": "Pense em organização e prevenção de erros.",
+        "errorFocus": "GROUPING_JUSTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-23",
+      "statement": "Uma criança diz “quarenta e dois” e desenha quatro grupos de dez e duas unidades. Os registros combinam?",
+      "prompt": "Uma criança diz “quarenta e dois” e desenha quatro grupos de dez e duas unidades. Os registros combinam?",
+      "options": [
+        "Não, o desenho representa 24",
+        "Não, quarenta e dois não pode ser desenhado",
+        "Sim, ambos representam 42.",
+        "Sim, mas representam 40"
+      ],
+      "correctAnswer": "Sim, ambos representam 42.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, o desenho representa 24": [
+          "MULTIPLE_REPRESENTATIONS_42"
+        ],
+        "Não, quarenta e dois não pode ser desenhado": [
+          "MULTIPLE_REPRESENTATIONS_42"
+        ],
+        "Sim, mas representam 40": [
+          "MULTIPLE_REPRESENTATIONS_42"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGISTRO_VERBAL_E_DESENHO",
+      "explanation": "Quatro dezenas e duas unidades correspondem a quarenta e dois.",
+      "hint": "Conte os grupos e unidades desenhados.",
+      "errorFocus": "MULTIPLE_REPRESENTATIONS_42",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas e duas unidades correspondem a quarenta e dois.",
+        "incorrect": "Quatro dezenas e duas unidades correspondem a quarenta e dois.",
+        "hint": "Conte os grupos e unidades desenhados.",
+        "errorFocus": "MULTIPLE_REPRESENTATIONS_42"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-24",
+      "statement": "Uma caixa preparada tem 100 objetos, organizados em dez grupos de dez. Qual registro simbólico mostra o total?",
+      "prompt": "Uma caixa preparada tem 100 objetos, organizados em dez grupos de dez. Qual registro simbólico mostra o total?",
+      "options": [
+        "10",
+        "110",
+        "1",
+        "100."
+      ],
+      "correctAnswer": "100.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "1": [
+          "BOUNDARY_COUNT_100"
+        ],
+        "10": [
+          "BOUNDARY_COUNT_100"
+        ],
+        "110": [
+          "BOUNDARY_COUNT_100"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONTAGEM_DE_100",
+      "explanation": "Dez grupos de dez totalizam 100.",
+      "hint": "Conte dez, vinte, até cem.",
+      "errorFocus": "BOUNDARY_COUNT_100",
+      "feedback": {
+        "correct": "Boa observação: Dez grupos de dez totalizam 100.",
+        "incorrect": "Dez grupos de dez totalizam 100.",
+        "hint": "Conte dez, vinte, até cem.",
+        "errorFocus": "BOUNDARY_COUNT_100"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-25",
+      "statement": "Seis grupos de dez e quatro peças soltas formam qual numeral?",
+      "prompt": "Seis grupos de dez e quatro peças soltas formam qual numeral?",
+      "options": [
+        "64.",
+        "46",
+        "60",
+        "10"
+      ],
+      "correctAnswer": "64.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10": [
+          "TENS_AND_ONES_64"
+        ],
+        "46": [
+          "TENS_AND_ONES_64"
+        ],
+        "60": [
+          "TENS_AND_ONES_64"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SESSENTA_E_QUATRO_PEÇAS",
+      "explanation": "Sessenta mais quatro é 64.",
+      "hint": "Conte as dezenas e acrescente as unidades.",
+      "errorFocus": "TENS_AND_ONES_64",
+      "feedback": {
+        "correct": "Boa observação: Sessenta mais quatro é 64.",
+        "incorrect": "Sessenta mais quatro é 64.",
+        "hint": "Conte as dezenas e acrescente as unidades.",
+        "errorFocus": "TENS_AND_ONES_64"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-26",
+      "statement": "Qual numeral corresponde a “vinte e oito”, e não “oitenta e dois”?",
+      "prompt": "Qual numeral corresponde a “vinte e oito”, e não “oitenta e dois”?",
+      "options": [
+        "82",
+        "28.",
+        "20",
+        "8"
+      ],
+      "correctAnswer": "28.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "8": [
+          "VERBAL_SYMBOLIC_ORDER"
+        ],
+        "20": [
+          "VERBAL_SYMBOLIC_ORDER"
+        ],
+        "82": [
+          "VERBAL_SYMBOLIC_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VINTE_E_OITO_E_OITENTA_E_DOIS",
+      "explanation": "Vinte e oito é 28; oitenta e dois é 82.",
+      "hint": "Compare o nome das dezenas.",
+      "errorFocus": "VERBAL_SYMBOLIC_ORDER",
+      "feedback": {
+        "correct": "Boa observação: Vinte e oito é 28; oitenta e dois é 82.",
+        "incorrect": "Vinte e oito é 28; oitenta e dois é 82.",
+        "hint": "Compare o nome das dezenas.",
+        "errorFocus": "VERBAL_SYMBOLIC_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-27",
+      "statement": "O total 86 tem quantos grupos completos de dez e quantas unidades?",
+      "prompt": "O total 86 tem quantos grupos completos de dez e quantas unidades?",
+      "options": [
+        "6 dezenas e 8 unidades",
+        "8 dezenas e nenhuma unidade",
+        "8 dezenas e 6 unidades.",
+        "86 dezenas"
+      ],
+      "correctAnswer": "8 dezenas e 6 unidades.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "6 dezenas e 8 unidades": [
+          "PLACE_VALUE_DECOMPOSITION_86"
+        ],
+        "8 dezenas e nenhuma unidade": [
+          "PLACE_VALUE_DECOMPOSITION_86"
+        ],
+        "86 dezenas": [
+          "PLACE_VALUE_DECOMPOSITION_86"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OITENTA_E_SEIS_EM_DEZENAS",
+      "explanation": "O numeral 86 representa oito dezenas e seis unidades.",
+      "hint": "Separe a casa das dezenas da casa das unidades.",
+      "errorFocus": "PLACE_VALUE_DECOMPOSITION_86",
+      "feedback": {
+        "correct": "Boa observação: O numeral 86 representa oito dezenas e seis unidades.",
+        "incorrect": "O numeral 86 representa oito dezenas e seis unidades.",
+        "hint": "Separe a casa das dezenas da casa das unidades.",
+        "errorFocus": "PLACE_VALUE_DECOMPOSITION_86"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-28",
+      "statement": "Uma coleção contada tem cinquenta e duas peças. Qual numeral escrever no placar?",
+      "prompt": "Uma coleção contada tem cinquenta e duas peças. Qual numeral escrever no placar?",
+      "options": [
+        "25",
+        "50",
+        "2",
+        "52."
+      ],
+      "correctAnswer": "52.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "2": [
+          "VERBAL_TO_SYMBOLIC_52"
+        ],
+        "25": [
+          "VERBAL_TO_SYMBOLIC_52"
+        ],
+        "50": [
+          "VERBAL_TO_SYMBOLIC_52"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_DE_CINQUENTA_E_DOIS",
+      "explanation": "Cinquenta e duas unidades é registrado como 52.",
+      "hint": "Escreva as dezenas primeiro e as unidades depois.",
+      "errorFocus": "VERBAL_TO_SYMBOLIC_52",
+      "feedback": {
+        "correct": "Boa observação: Cinquenta e duas unidades é registrado como 52.",
+        "incorrect": "Cinquenta e duas unidades é registrado como 52.",
+        "hint": "Escreva as dezenas primeiro e as unidades depois.",
+        "errorFocus": "VERBAL_TO_SYMBOLIC_52"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-29",
+      "statement": "Depois de contar 38 objetos em grupos, por que conferir a coleção?",
+      "prompt": "Depois de contar 38 objetos em grupos, por que conferir a coleção?",
+      "options": [
+        "Para verificar se todos foram contados uma vez e se o registro corresponde ao total.",
+        "Para mudar o número sem contar",
+        "Para competir com outra pessoa",
+        "Para esconder os grupos"
+      ],
+      "correctAnswer": "Para verificar se todos foram contados uma vez e se o registro corresponde ao total.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para mudar o número sem contar": [
+          "COUNTING_VERIFICATION"
+        ],
+        "Para competir com outra pessoa": [
+          "COUNTING_VERIFICATION"
+        ],
+        "Para esconder os grupos": [
+          "COUNTING_VERIFICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONFERENCIA_DE_COLECAO",
+      "explanation": "Conferir ajuda a encontrar objetos omitidos ou contados em duplicidade.",
+      "hint": "Pense em como garantir que o registro está correto.",
+      "errorFocus": "COUNTING_VERIFICATION",
+      "feedback": {
+        "correct": "Boa observação: Conferir ajuda a encontrar objetos omitidos ou contados em duplicidade.",
+        "incorrect": "Conferir ajuda a encontrar objetos omitidos ou contados em duplicidade.",
+        "hint": "Pense em como garantir que o registro está correto.",
+        "errorFocus": "COUNTING_VERIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-30",
+      "statement": "Uma pessoa registra 49 como quatro dezenas e nove unidades. Está correto?",
+      "prompt": "Uma pessoa registra 49 como quatro dezenas e nove unidades. Está correto?",
+      "options": [
+        "Não, 4 mais 9 forma 13",
+        "Sim, 40 mais 9 forma 49.",
+        "Não, 49 tem nove dezenas",
+        "Sim, mas o total é 94"
+      ],
+      "correctAnswer": "Sim, 40 mais 9 forma 49.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Não, 4 mais 9 forma 13": [
+          "CHECK_DECOMPOSITION_49"
+        ],
+        "Não, 49 tem nove dezenas": [
+          "CHECK_DECOMPOSITION_49"
+        ],
+        "Sim, mas o total é 94": [
+          "CHECK_DECOMPOSITION_49"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGISTRO_DE_QUARENTA_E_NOVE",
+      "explanation": "Quatro dezenas e nove unidades formam 49.",
+      "hint": "Confira o valor de cada algarismo.",
+      "errorFocus": "CHECK_DECOMPOSITION_49",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas e nove unidades formam 49.",
+        "incorrect": "Quatro dezenas e nove unidades formam 49.",
+        "hint": "Confira o valor de cada algarismo.",
+        "errorFocus": "CHECK_DECOMPOSITION_49"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-31",
+      "statement": "Um cartaz mostra dez grupos com dez marcadores em cada. Qual total representa?",
+      "prompt": "Um cartaz mostra dez grupos com dez marcadores em cada. Qual total representa?",
+      "options": [
+        "10 marcadores",
+        "20 marcadores",
+        "100 marcadores.",
+        "110 marcadores"
+      ],
+      "correctAnswer": "100 marcadores.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "10 marcadores": [
+          "TEN_GROUPS_OF_TEN"
+        ],
+        "20 marcadores": [
+          "TEN_GROUPS_OF_TEN"
+        ],
+        "110 marcadores": [
+          "TEN_GROUPS_OF_TEN"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTAZ_DE_100_MARCADORES",
+      "explanation": "Dez grupos de dez somam cem.",
+      "hint": "Conte as dezenas: 10, 20, ...",
+      "errorFocus": "TEN_GROUPS_OF_TEN",
+      "feedback": {
+        "correct": "Boa observação: Dez grupos de dez somam cem.",
+        "incorrect": "Dez grupos de dez somam cem.",
+        "hint": "Conte as dezenas: 10, 20, ...",
+        "errorFocus": "TEN_GROUPS_OF_TEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-32",
+      "statement": "Qual é uma forma válida de comunicar o total contado por uma pessoa?",
+      "prompt": "Qual é uma forma válida de comunicar o total contado por uma pessoa?",
+      "options": [
+        "Somente falar rapidamente",
+        "Somente competir por pontos",
+        "Não registrar a quantidade",
+        "Dizer o número, escrever o numeral ou mostrar uma representação clara."
+      ],
+      "correctAnswer": "Dizer o número, escrever o numeral ou mostrar uma representação clara.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente falar rapidamente": [
+          "ACCESSIBLE_NUMBER_RECORD"
+        ],
+        "Somente competir por pontos": [
+          "ACCESSIBLE_NUMBER_RECORD"
+        ],
+        "Não registrar a quantidade": [
+          "ACCESSIBLE_NUMBER_RECORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_ACESSIVEL",
+      "explanation": "A quantidade pode ser comunicada por registros verbais ou simbólicos.",
+      "hint": "Escolha uma forma que represente o total.",
+      "errorFocus": "ACCESSIBLE_NUMBER_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A quantidade pode ser comunicada por registros verbais ou simbólicos.",
+        "incorrect": "A quantidade pode ser comunicada por registros verbais ou simbólicos.",
+        "hint": "Escolha uma forma que represente o total.",
+        "errorFocus": "ACCESSIBLE_NUMBER_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-33",
+      "statement": "Qual numeral representa quarenta?",
+      "prompt": "Qual numeral representa quarenta?",
+      "options": [
+        "40.",
+        "4",
+        "14",
+        "400"
+      ],
+      "correctAnswer": "40.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "4": [
+          "SYMBOLIC_NUMBER_40_REVIEW"
+        ],
+        "14": [
+          "SYMBOLIC_NUMBER_40_REVIEW"
+        ],
+        "400": [
+          "SYMBOLIC_NUMBER_40_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_QUARENTA",
+      "explanation": "Quarenta é registrado como 40.",
+      "hint": "Associe a palavra ao numeral.",
+      "errorFocus": "SYMBOLIC_NUMBER_40_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Quarenta é registrado como 40.",
+        "incorrect": "Quarenta é registrado como 40.",
+        "hint": "Associe a palavra ao numeral.",
+        "errorFocus": "SYMBOLIC_NUMBER_40_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-34",
+      "statement": "Como ler o numeral 63?",
+      "prompt": "Como ler o numeral 63?",
+      "options": [
+        "Trinta e seis",
+        "Sessenta e três.",
+        "Seis e três",
+        "Sessenta e trinta"
+      ],
+      "correctAnswer": "Sessenta e três.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Trinta e seis": [
+          "VERBAL_NUMBER_63_REVIEW"
+        ],
+        "Seis e três": [
+          "VERBAL_NUMBER_63_REVIEW"
+        ],
+        "Sessenta e trinta": [
+          "VERBAL_NUMBER_63_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_SESSENTA_E_TRES",
+      "explanation": "63 é lido como sessenta e três.",
+      "hint": "Leia a dezena e depois a unidade.",
+      "errorFocus": "VERBAL_NUMBER_63_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 63 é lido como sessenta e três.",
+        "incorrect": "63 é lido como sessenta e três.",
+        "hint": "Leia a dezena e depois a unidade.",
+        "errorFocus": "VERBAL_NUMBER_63_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-35",
+      "statement": "Em 57, quantas dezenas completas há?",
+      "prompt": "Em 57, quantas dezenas completas há?",
+      "options": [
+        "Sete dezenas",
+        "Duas dezenas",
+        "Cinco dezenas.",
+        "Cinquenta e sete dezenas"
+      ],
+      "correctAnswer": "Cinco dezenas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sete dezenas": [
+          "TENS_DIGIT_REVIEW_57"
+        ],
+        "Duas dezenas": [
+          "TENS_DIGIT_REVIEW_57"
+        ],
+        "Cinquenta e sete dezenas": [
+          "TENS_DIGIT_REVIEW_57"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_DEZENAS",
+      "explanation": "O algarismo das dezenas é 5, que representa cinquenta.",
+      "hint": "Observe o primeiro algarismo.",
+      "errorFocus": "TENS_DIGIT_REVIEW_57",
+      "feedback": {
+        "correct": "Boa observação: O algarismo das dezenas é 5, que representa cinquenta.",
+        "incorrect": "O algarismo das dezenas é 5, que representa cinquenta.",
+        "hint": "Observe o primeiro algarismo.",
+        "errorFocus": "TENS_DIGIT_REVIEW_57"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-36",
+      "statement": "Dois grupos de dez e 3 unidades representam qual quantidade?",
+      "prompt": "Dois grupos de dez e 3 unidades representam qual quantidade?",
+      "options": [
+        "32",
+        "20",
+        "5",
+        "23."
+      ],
+      "correctAnswer": "23.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "5": [
+          "TENS_UNITS_REVIEW_23"
+        ],
+        "20": [
+          "TENS_UNITS_REVIEW_23"
+        ],
+        "32": [
+          "TENS_UNITS_REVIEW_23"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_2_GRUPOS",
+      "explanation": "Duas dezenas e três unidades formam 23.",
+      "hint": "Conte 20 e acrescente três.",
+      "errorFocus": "TENS_UNITS_REVIEW_23",
+      "feedback": {
+        "correct": "Boa observação: Duas dezenas e três unidades formam 23.",
+        "incorrect": "Duas dezenas e três unidades formam 23.",
+        "hint": "Conte 20 e acrescente três.",
+        "errorFocus": "TENS_UNITS_REVIEW_23"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-37",
+      "statement": "O que ajuda a evitar contar um objeto duas vezes?",
+      "prompt": "O que ajuda a evitar contar um objeto duas vezes?",
+      "options": [
+        "Organizar os objetos e mover cada um para a área já contada.",
+        "Contar sem olhar",
+        "Aumentar a velocidade",
+        "Mudar a cor dos objetos"
+      ],
+      "correctAnswer": "Organizar os objetos e mover cada um para a área já contada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Contar sem olhar": [
+          "TRACKING_REVIEW"
+        ],
+        "Aumentar a velocidade": [
+          "TRACKING_REVIEW"
+        ],
+        "Mudar a cor dos objetos": [
+          "TRACKING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_CONTAGEM_UMA_VEZ",
+      "explanation": "Uma organização visível ajuda a acompanhar os objetos contados.",
+      "hint": "Escolha uma estratégia de acompanhamento.",
+      "errorFocus": "TRACKING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma organização visível ajuda a acompanhar os objetos contados.",
+        "incorrect": "Uma organização visível ajuda a acompanhar os objetos contados.",
+        "hint": "Escolha uma estratégia de acompanhamento.",
+        "errorFocus": "TRACKING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-38",
+      "statement": "Nove dezenas e duas unidades correspondem a qual número?",
+      "prompt": "Nove dezenas e duas unidades correspondem a qual número?",
+      "options": [
+        "29",
+        "92.",
+        "90",
+        "11"
+      ],
+      "correctAnswer": "92.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "11": [
+          "TENS_AND_ONES_REVIEW_92"
+        ],
+        "29": [
+          "TENS_AND_ONES_REVIEW_92"
+        ],
+        "90": [
+          "TENS_AND_ONES_REVIEW_92"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_NOVENTA_E_DOIS",
+      "explanation": "Noventa mais dois é 92.",
+      "hint": "Conte as dezenas e some as duas unidades.",
+      "errorFocus": "TENS_AND_ONES_REVIEW_92",
+      "feedback": {
+        "correct": "Boa observação: Noventa mais dois é 92.",
+        "incorrect": "Noventa mais dois é 92.",
+        "hint": "Conte as dezenas e some as duas unidades.",
+        "errorFocus": "TENS_AND_ONES_REVIEW_92"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-39",
+      "statement": "Uma coleção foi contada como 31. Qual representação também pode comunicar o total?",
+      "prompt": "Uma coleção foi contada como 31. Qual representação também pode comunicar o total?",
+      "options": [
+        "Treze",
+        "Trinta e dez",
+        "Trinta e um ou três grupos de dez e uma unidade.",
+        "Um grupo de três"
+      ],
+      "correctAnswer": "Trinta e um ou três grupos de dez e uma unidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Treze": [
+          "MULTIPLE_RECORDS_REVIEW_31"
+        ],
+        "Trinta e dez": [
+          "MULTIPLE_RECORDS_REVIEW_31"
+        ],
+        "Um grupo de três": [
+          "MULTIPLE_RECORDS_REVIEW_31"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_REGISTRO",
+      "explanation": "31 pode ser dito como trinta e um e decomposto em 30 mais 1.",
+      "hint": "Escolha uma representação equivalente.",
+      "errorFocus": "MULTIPLE_RECORDS_REVIEW_31",
+      "feedback": {
+        "correct": "Boa observação: 31 pode ser dito como trinta e um e decomposto em 30 mais 1.",
+        "incorrect": "31 pode ser dito como trinta e um e decomposto em 30 mais 1.",
+        "hint": "Escolha uma representação equivalente.",
+        "errorFocus": "MULTIPLE_RECORDS_REVIEW_31"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma04-count-collections-up-to-one-hundred-40",
+      "statement": "Como comunicar com clareza o total de uma coleção até 100?",
+      "prompt": "Como comunicar com clareza o total de uma coleção até 100?",
+      "options": [
+        "Adivinhar pelo tamanho da pilha",
+        "Contar apenas os grupos e ignorar sobras",
+        "Dizer o número mais rápido que os colegas",
+        "Contar cada objeto uma vez, conferir o resultado e registrar em palavras, numeral ou representação."
+      ],
+      "correctAnswer": "Contar cada objeto uma vez, conferir o resultado e registrar em palavras, numeral ou representação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Adivinhar pelo tamanho da pilha": [
+          "COUNT_AND_RECORD_SUMMARY"
+        ],
+        "Contar apenas os grupos e ignorar sobras": [
+          "COUNT_AND_RECORD_SUMMARY"
+        ],
+        "Dizer o número mais rápido que os colegas": [
+          "COUNT_AND_RECORD_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DA_CONTAGEM",
+      "explanation": "Contagem conferida e um registro claro comunicam a quantidade.",
+      "hint": "Combine contagem, conferência e registro.",
+      "errorFocus": "COUNT_AND_RECORD_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Contagem conferida e um registro claro comunicam a quantidade.",
+        "incorrect": "Contagem conferida e um registro claro comunicam a quantidade.",
+        "hint": "Combine contagem, conferência e registro.",
+        "errorFocus": "COUNT_AND_RECORD_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos fáceis de manipular, bandejas, agrupadores visuais de dez, numerais ampliados e contraste alto.",
+          "Permitir contar por apontamento, movimento de olhar, comunicação alternativa ou apoio de parceiro, sem impor velocidade.",
+          "Aceitar registros falados, escritos, desenhados ou com cartões numéricos e oferecer modelos táteis quando necessário."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

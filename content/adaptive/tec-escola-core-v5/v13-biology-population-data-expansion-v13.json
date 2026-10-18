@@ -1,0 +1,2948 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-biology-population-data",
+  "subject": "BIOLOGY",
+  "domain": "ECOLOGIA",
+  "topic": "dinamica e interpretacao de dados populacionais",
+  "canonicalSkillCode": "BIOLOGY_INTERPRET_POPULATION_DATA",
+  "contentVersion": 13,
+  "expectedQuestionCount": 117,
+  "expectedContextCount": 117,
+  "expectedAnswerPositionCounts": {
+    "A": 30,
+    "B": 29,
+    "C": 29,
+    "D": 29
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 12,
+    "PRACTICE": 43,
+    "TRANSFER": 28,
+    "LOCK_IN": 13,
+    "REVIEW": 21
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "lesson": {
+    "title": "Populações: medir, comparar e explicar tendências",
+    "objective": "Interpretar abundância, densidade e tendências populacionais, verificando amostragem, detecção e premissas antes de explicar causas.",
+    "summary": "Uma contagem é uma observação, não uma explicação completa. Unidades, esforço, detectabilidade, entradas e saídas ajudam a interpretar como uma população muda no espaço e no tempo.",
+    "explanation": "## Primeiro, saiba o que foi medido\nAbundância é o número de indivíduos estimado numa população; densidade relaciona esse número a uma área ou volume. Uma contagem maior pode ocorrer apenas porque a área ou o esforço de observação foi maior. Registre unidade, período, método e local antes de comparar.\n\n## Amostrar sem confundir observação com realidade\nQuadrantes e outras amostras devem representar os ambientes que compõem a área. Estratificar por habitat e sortear locais reduz o risco de observar somente pontos acessíveis ou densos. Para animais móveis, captura-recaptura pode estimar abundância: N≈M×C/R, onde M é o número marcado e solto, C o total da segunda amostra e R as recapturas reconhecidas. A estimativa simples pressupõe população aproximadamente fechada no intervalo, mistura, marcas persistentes e chance semelhante de captura.\n\n## Leia a dinâmica antes de propor uma causa\nO tamanho muda com nascimentos, mortes, imigração e emigração. Recursos limitados podem desacelerar o crescimento à medida que a população se aproxima de um patamar; esse patamar varia com estação, clima e habitat. Fatores dependentes da densidade tendem a exercer efeitos diferentes conforme a concentração; eventos como geadas podem afetar populações em densidades distintas.\n\n## Compare hipóteses\nUma queda observada pode significar mortalidade, emigração, menor detecção ou mudança no método. Uma associação com seca, restauração ou vegetação é uma hipótese, não uma causa provada por um gráfico isolado. Use locais de comparação, medidas repetidas, protocolo consistente e dados complementares para testar explicações.\n\n## Exemplo resolvido\nNo primeiro esforço, 120 lontras são marcadas e soltas. Na segunda amostra, 60 são observadas, incluindo 10 marcas reconhecidas. O estimador simples dá N≈120×60/10=720. Esse valor é uma estimativa, não uma contagem exata. Se marcas se soltarem, R pode cair e a estimativa subir artificialmente; se os indivíduos marcados ainda não se misturaram, R pode ficar alto e a estimativa baixa.",
+    "workedExample": "Quatro quadrantes sorteados de 5 m² registram 18, 22, 15 e 25 plantas: a densidade média amostral é (18+22+15+25)/(4×5)=4 plantas/m². Essa estimativa representa o estrato amostrado; se áreas abertas e úmidas forem diferentes, sorteie em ambos e pondere pelo tamanho de cada estrato. Uma diferença entre anos só indica tendência se método, período e detectabilidade forem comparáveis.",
+    "commonMistake": "Tratar contagem como densidade, ignorar esforço ou detectabilidade, e atribuir uma tendência a uma única causa sem comparação ou premissas verificadas.",
+    "commonErrors": [
+      "Comparar abundâncias de áreas diferentes sem padronizar denominador.",
+      "Supor que muitos quadrantes escolhidos por conveniência formam amostra aleatória.",
+      "Usar captura-recaptura sem conferir mistura, fechamento e persistência das marcas.",
+      "Interpretar queda observada como mortalidade, sem avaliar emigração e detectabilidade."
+    ],
+    "tips": [
+      "Anote a unidade, área, tempo e esforço junto de cada medida.",
+      "Separe resultado observado de hipótese causal.",
+      "Verifique se o protocolo e a probabilidade de detecção são comparáveis.",
+      "Diga quais premissas sustentam uma estimativa e o que poderia enviesá-la."
+    ],
+    "priorKnowledge": [
+      "Calcular razões, médias e variações percentuais.",
+      "Distinguir uma observação de uma explicação causal."
+    ],
+    "keyConcepts": [
+      "abundância, densidade e estrutura etária",
+      "amostragem aleatória e estratificada",
+      "captura-recaptura e suas premissas",
+      "natalidade, mortalidade, imigração e emigração",
+      "crescimento exponencial e logístico",
+      "fatores dependentes e independentes da densidade",
+      "detectabilidade, viés e inferência causal"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Comparar medidas e reconhecer viés de seleção.",
+        "questionIds": [
+          "v5-bio-population-probe-01",
+          "v5-bio-population-probe-02"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Calcular estimativas e interpretar patamares com premissas.",
+        "questionIds": [
+          "v5-bio-population-practice-01",
+          "v5-bio-population-practice-02",
+          "v5-bio-population-practice-03"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar estimadores, desenho comparativo e estrutura etária.",
+        "questionIds": [
+          "v5-bio-population-transfer-01",
+          "v5-bio-population-transfer-02",
+          "v5-bio-population-transfer-03",
+          "v13-biology-population-data-051",
+          "v13-biology-population-data-052",
+          "v13-biology-population-data-053",
+          "v13-biology-population-data-054",
+          "v13-biology-population-data-055",
+          "v13-biology-population-data-056",
+          "v13-biology-population-data-057",
+          "v13-biology-population-data-058",
+          "v13-biology-population-data-059",
+          "v13-biology-population-data-060",
+          "v13-biology-population-data-061",
+          "v13-biology-population-data-062",
+          "v13-biology-population-data-063",
+          "v13-biology-population-data-064",
+          "v13-biology-population-data-065",
+          "v13-biology-population-data-066",
+          "v13-biology-population-data-067",
+          "v13-biology-population-data-068",
+          "v13-biology-population-data-069",
+          "v13-biology-population-data-070",
+          "v13-biology-population-data-071",
+          "v13-biology-population-data-072",
+          "v13-biology-population-data-073",
+          "v13-biology-population-data-074",
+          "v13-biology-population-data-075"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Integrar fatores ambientais, entradas e saídas populacionais.",
+        "questionIds": [
+          "v5-bio-population-lock-01",
+          "v5-bio-population-lock-02",
+          "v5-bio-population-lock-03"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Revisar amostragem, modelos e limites de observação; o agendamento depende do produto.",
+        "questionIds": [
+          "v5-bio-population-review-01",
+          "v5-bio-population-review-02",
+          "v5-bio-population-review-03",
+          "v5-bio-population-review-04",
+          "v5-bio-population-review-05",
+          "v5-bio-population-review-06"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "ABUNDANCE_DENSITY",
+        "text": "Abundância é o total; densidade divide esse total por área ou volume."
+      },
+      {
+        "trigger": "SAMPLE_BIAS",
+        "text": "Muitas observações em locais acessíveis ainda podem deixar habitats inteiros sem representação."
+      },
+      {
+        "trigger": "MARK_RECAPTURE",
+        "text": "Na estimativa simples, aumente M ou C para elevar N; aumente R para reduzi-lo."
+      },
+      {
+        "trigger": "POPULATION_BALANCE",
+        "text": "Nascimentos e imigração adicionam indivíduos; mortes e emigração reduzem o tamanho local."
+      },
+      {
+        "trigger": "DETECTION",
+        "text": "Menos registros podem refletir menor abundância ou menor chance de observar cada indivíduo."
+      },
+      {
+        "trigger": "MODEL_LIMIT",
+        "text": "Uma curva compatível com um modelo não prova sozinha qual mecanismo causou a tendência."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "STANDARDIZE_DENSITY",
+        "misconception": "CONFUNDIR_ABUNDANCIA_E_DENSIDADE",
+        "prompt": "Escreva lado a lado o total e a área. Divida o primeiro pelo segundo e só então compare os locais."
+      },
+      {
+        "id": "CHECK_SAMPLING",
+        "misconception": "AMOSTRA_CONVENIENTE_REPRESENTATIVA",
+        "prompt": "Desenhe os tipos de habitat e marque onde houve amostra. Identifique estratos vazios e escolha sorteios adicionais."
+      },
+      {
+        "id": "TRACE_RECAPTURE",
+        "misconception": "IGNORAR_VIES_DE_MARCACAO",
+        "prompt": "Substitua M, C e R no estimador. Depois aumente ou diminua R para prever a direção do viés."
+      },
+      {
+        "id": "SEPARATE_CAUSE",
+        "misconception": "GRAFICO_PROVA_CAUSA",
+        "prompt": "Escreva a tendência observada. Liste duas causas alternativas e proponha um controle ou medida adicional."
+      },
+      {
+        "id": "DETECTION_VS_ABUNDANCE",
+        "misconception": "CONTAGEM_IGUAL_ABUNDANCIA",
+        "prompt": "Pergunte se o ambiente alterou a chance de detectar indivíduos e escolha um método complementar para estimá-la."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 24,
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Ciências da Natureza e suas Tecnologias",
+        "publisher": "Ministério da Educação",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Contexto geral de investigação e modelagem em Ciências da Natureza no Ensino Médio."
+        ],
+        "use": "Referência curricular de contexto; não afirma código ou mapeamento oficial para BIOLOGY_INTERPRET_POPULATION_DATA."
+      },
+      {
+        "title": "Biology 2e, 45.1 Population Demography",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/biology-2e/pages/45-1-population-demography",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Densidade, estrutura etária e estimativa por captura-recaptura."
+        ],
+        "use": "Conferência conceitual; explicações, dados e questões deste pacote são autorais."
+      },
+      {
+        "title": "Biology 2e, 45.3 Environmental Limits to Population Growth",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Crescimento logístico e capacidade de suporte como modelo."
+        ],
+        "use": "Conferência conceitual; explicações, dados e questões deste pacote são autorais."
+      },
+      {
+        "title": "Biology 2e, 45.4 Population Dynamics and Regulation",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/biology-2e/pages/45-4-population-dynamics-and-regulation",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Fatores dependentes/independentes da densidade e limites dos modelos de população."
+        ],
+        "use": "Conferência conceitual; explicações, dados e questões deste pacote são autorais."
+      },
+      {
+        "title": "Validation of abundance estimates from mark-recapture and removal techniques for rainbow trout",
+        "publisher": "U.S. Geological Survey",
+        "url": "https://www.usgs.gov/publications/validation-abundance-estimates-mark-recapture-and-removal-techniques-rainbow-trout",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Estimativas por captura-recaptura dependem das premissas do modelo."
+        ],
+        "use": "Fonte institucional para reconhecer limitações dos estimadores; o pacote usa dados fictícios autorais."
+      }
+    ],
+    "copyrightNote": "Questões, cenários, dados e explicações foram escritos para este pacote. As fontes são usadas para conferir conceitos e limites metodológicos, não para reproduzir texto; mapeamento oficial e revisão pedagógica humana permanecem pendentes. Lote V13 autoral com 100 questões e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-bio-population-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "POPULATION_DENSITY_TWO_RESERVES",
+      "statement": "Duas reservas têm área de habitat comparável. Na reserva A foram estimados 240 roedores em 12 km²; na B, 180 em 6 km². Qual afirmação compara corretamente as densidades médias?",
+      "options": [
+        "A reserva B tem maior densidade: 30 indivíduos/km², contra 20 na A.",
+        "A reserva A tem maior densidade porque o total de indivíduos é maior.",
+        "As densidades são iguais, pois as áreas têm relação 2 para 1.",
+        "Não é possível calcular densidade sem conhecer a idade de cada indivíduo."
+      ],
+      "correctAnswer": "A reserva B tem maior densidade: 30 indivíduos/km², contra 20 na A.",
+      "explanation": "Densidade relaciona quantidade e área. A tem 240/12 = 20 indivíduos/km²; B tem 180/6 = 30 indivíduos/km². O total sozinho não basta para comparar ocupação por área.",
+      "errorFocus": "Comparar abundâncias totais sem usar o denominador da área.",
+      "hint": "Divida cada estimativa pela área correspondente antes de comparar.",
+      "misconceptions": {
+        "A reserva A tem maior densidade porque o total de indivíduos é maior.": [
+          "COMPARAR_ABUND_NCIAS_TOTAIS_SEM_USAR_O_DENOMINADOR_DA_REA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TRAIL_ACCESS_SAMPLING_BIAS",
+      "statement": "Para estimar uma população de plantas em uma serra, uma equipe instala quadrantes apenas perto da trilha, onde o terreno é plano. Qual é o principal risco?",
+      "options": [
+        "O método transforma cada planta em uma unidade de área.",
+        "A amostra pode representar mal a serra, pois os locais acessíveis podem diferir do restante do habitat.",
+        "A amostra fica automaticamente aleatória por ter vários quadrantes.",
+        "O risco é apenas contar a mesma espécie com nomes diferentes."
+      ],
+      "correctAnswer": "A amostra pode representar mal a serra, pois os locais acessíveis podem diferir do restante do habitat.",
+      "explanation": "Vários quadrantes não eliminam viés se a seleção dos locais favorece áreas acessíveis. Uma amostragem aleatória ou estratificada em habitats distintos melhora a representatividade.",
+      "errorFocus": "Confundir muitas observações com seleção representativa.",
+      "hint": "Pergunte se a chance de incluir cada parte do habitat foi semelhante.",
+      "misconceptions": {
+        "O método transforma cada planta em uma unidade de área.": [
+          "CONFUNDIR_MUITAS_OBSERVA_ES_COM_SELE_O_REPRESENTATIVA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "MARK_RECAPTURE_RIVER_OTTERS",
+      "statement": "Em um estudo de lontras, 120 indivíduos foram marcados e soltos. Depois, uma amostra de 60 foi observada; 10 tinham marca. Pelo estimador simples de captura-recaptura, qual tamanho populacional aproximado é esperado?",
+      "options": [
+        "72 indivíduos, pois 120 x 10 / 60 = 20.",
+        "180 indivíduos, pois 120 + 60 = 180.",
+        "720 indivíduos, pois 120 x 60 / 10 = 720.",
+        "1 200 indivíduos, pois 120 x 10 = 1 200."
+      ],
+      "correctAnswer": "720 indivíduos, pois 120 x 60 / 10 = 720.",
+      "explanation": "O estimador simples usa M x C / R: indivíduos marcados inicialmente vezes o tamanho da segunda amostra, dividido pelos marcados recapturados. A estimativa depende de mistura e outras premissas.",
+      "errorFocus": "Inverter o número de recapturas ou tratar o resultado como contagem exata.",
+      "hint": "Substitua M=120, C=60 e R=10 em N≈M×C/R.",
+      "misconceptions": {
+        "72 indivíduos, pois 120 x 10 / 60 = 20.": [
+          "INVERTER_O_N_MERO_DE_RECAPTURAS_OU_TRATAR_O_RESULTADO_COMO_CONTAGEM_EXATA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PLATEAU_AFTER_RESOURCE_LIMIT",
+      "statement": "Em um vale protegido, estimativas feitas com o mesmo protocolo foram 110, 178, 226, 241 e 238 indivíduos em cinco anos. Qual interpretação é mais compatível com a sequência?",
+      "options": [
+        "A população deixou de nascer e morrer no quarto ano.",
+        "O valor 241 é necessariamente a capacidade de suporte fixa do vale.",
+        "A sequência prova que uma única espécie de predador controlou o crescimento.",
+        "O crescimento desacelerou e a série se aproximou de um patamar, compatível com limites ambientais no período."
+      ],
+      "correctAnswer": "O crescimento desacelerou e a série se aproximou de um patamar, compatível com limites ambientais no período.",
+      "explanation": "O aumento inicial seguido de valores próximos sugere desaceleração e possível patamar. A sequência, isoladamente, não determina a causa nem demonstra que a capacidade de suporte seja constante.",
+      "errorFocus": "Tratar uma sequência compatível com um modelo como prova de mecanismo ou de valor fixo.",
+      "hint": "Descreva a forma da tendência e diferencie modelo compatível de causa comprovada.",
+      "misconceptions": {
+        "A população deixou de nascer e morrer no quarto ano.": [
+          "TRATAR_UMA_SEQU_NCIA_COMPAT_VEL_COM_UM_MODELO_COMO_PROVA_DE_MECANISMO_OU_DE_VALOR_FIXO"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "NET_POPULATION_BALANCE_WETLAND",
+      "statement": "Em uma área úmida, no intervalo de um ano foram registrados 84 nascimentos, 31 mortes, 12 imigrações e 20 emigrações. Mantidas as definições do levantamento, qual foi a variação líquida estimada?",
+      "options": [
+        "A população local aumentou em 45 indivíduos.",
+        "Aumentou em 115 indivíduos.",
+        "Diminuiu em 45 indivíduos.",
+        "Aumentou em 23 indivíduos."
+      ],
+      "correctAnswer": "A população local aumentou em 45 indivíduos.",
+      "explanation": "A variação é nascimentos + imigrações - mortes - emigrações: 84 + 12 - 31 - 20 = 45. É uma estimativa para a área e o intervalo observados.",
+      "errorFocus": "Esquecer migração ou subtrair nascimentos e mortes na direção errada.",
+      "hint": "Some entradas e subtraia saídas: nascimentos e imigrações entram; mortes e emigrações saem.",
+      "misconceptions": {
+        "Aumentou em 115 indivíduos.": [
+          "ESQUECER_MIGRA_O_OU_SUBTRAIR_NASCIMENTOS_E_MORTES_NA_DIRE_O_ERRADA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TAG_LOSS_CAPTURE_RECAPTURE_BIAS",
+      "statement": "Uma equipe estima a abundância por captura-recaptura, mas parte das marcas se solta antes da segunda amostragem. Se os animais sem marca forem registrados como não marcados, qual viés tende a ocorrer no estimador M x C / R?",
+      "options": [
+        "R tende a aumentar e a abundância estimada diminui.",
+        "R tende a ficar menor e a abundância estimada, maior, pois o denominador diminui.",
+        "A estimativa não muda porque M já foi registrado.",
+        "A abundância estimada passa a ser sempre igual ao tamanho da segunda amostra."
+      ],
+      "correctAnswer": "R tende a ficar menor e a abundância estimada, maior, pois o denominador diminui.",
+      "explanation": "Marcas perdidas fazem alguns animais previamente marcados parecerem novos. Isso reduz as recapturas reconhecidas (R); mantendo M e C, M x C / R aumenta. O método exige marcas persistentes e detectáveis.",
+      "errorFocus": "Ignorar como um erro de identificação altera a proporção de recaptura e a estimativa.",
+      "hint": "Siga o erro até R e observe o efeito de diminuir o denominador da razão.",
+      "misconceptions": {
+        "R tende a aumentar e a abundância estimada diminui.": [
+          "IGNORAR_COMO_UM_ERRO_DE_IDENTIFICA_O_ALTERA_A_PROPOR_O_DE_RECAPTURA_E_A_ESTIMATIVA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RESTORATION_CONTROL_REACHES",
+      "statement": "Após restaurar vegetação ciliar em um trecho de rio, uma equipe registra aumento de peixes no trecho restaurado, enquanto um trecho comparável sem intervenção permanece estável. O protocolo e o esforço foram iguais por três anos. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "A restauração é a única causa possível do aumento.",
+        "A comparação prova que todos os peixes migraram do trecho controle.",
+        "O padrão é compatível com efeito da restauração, mas fatores não medidos ainda podem explicar parte da diferença.",
+        "A estabilidade do controle invalida qualquer comparação entre os trechos."
+      ],
+      "correctAnswer": "O padrão é compatível com efeito da restauração, mas fatores não medidos ainda podem explicar parte da diferença.",
+      "explanation": "Um local de comparação e protocolos consistentes fortalecem a inferência, mas diferenças prévias, eventos locais e outras variáveis podem permanecer. Mais réplicas e medidas ajudam a testar a hipótese causal.",
+      "errorFocus": "Confundir um desenho comparativo informativo com prova de causa exclusiva.",
+      "hint": "Use a comparação como evidência, depois liste uma alternativa ainda não controlada.",
+      "misconceptions": {
+        "A restauração é a única causa possível do aumento.": [
+          "CONFUNDIR_UM_DESENHO_COMPARATIVO_INFORMATIVO_COM_PROVA_DE_CAUSA_EXCLUSIVA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "JUVENILE_ADULT_AGE_STRUCTURE",
+      "statement": "Duas populações de tartarugas têm 1 000 indivíduos estimados. Na população X, 65% são juvenis; na Y, 20%. O que essa diferença permite dizer sem dados adicionais de sobrevivência e reprodução?",
+      "options": [
+        "X certamente terá mais adultos reprodutivos no próximo ano.",
+        "Y está necessariamente em declínio, pois tem menos juvenis.",
+        "As duas populações têm a mesma estrutura etária porque o total é igual.",
+        "X tem maior proporção de juvenis, mas isso não determina sozinho qual população crescerá mais."
+      ],
+      "correctAnswer": "X tem maior proporção de juvenis, mas isso não determina sozinho qual população crescerá mais.",
+      "explanation": "A estrutura etária descreve a composição observada. O recrutamento futuro depende também de sobrevivência, maturação, reprodução e migração; percentuais não garantem uma trajetória.",
+      "errorFocus": "Transformar proporção de uma faixa etária em previsão certa de crescimento.",
+      "hint": "Separe o que a distribuição etária mostra do que exigiria dados de sobrevivência e fecundidade.",
+      "misconceptions": {
+        "X certamente terá mais adultos reprodutivos no próximo ano.": [
+          "TRANSFORMAR_PROPOR_O_DE_UMA_FAIXA_ET_RIA_EM_PREVIS_O_CERTA_DE_CRESCIMENTO"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FROST_DENSITY_INDEPENDENT_EVENT",
+      "statement": "Uma geada intensa ocorre em duas populações de insetos, uma pouco densa e outra muito densa. Ambas sofrem queda semelhante no mesmo intervalo. Qual fator é mais compatível com o padrão observado?",
+      "options": [
+        "Um fator independente da densidade, como a geada, pode afetar as populações em ambas as densidades.",
+        "Um fator necessariamente dependente da densidade, como competição por alimento.",
+        "A capacidade de suporte, que sempre diminui cada população pela mesma quantidade.",
+        "A imigração, que só ocorre quando a densidade é baixa."
+      ],
+      "correctAnswer": "Um fator independente da densidade, como a geada, pode afetar as populações em ambas as densidades.",
+      "explanation": "Um evento climático pode afetar indivíduos sem depender diretamente de quantos há por área. O padrão é compatível com fator independente da densidade, embora outros dados sejam úteis para identificar mecanismos.",
+      "errorFocus": "Classificar todo fator ambiental como dependente da densidade.",
+      "hint": "Pergunte se a intensidade do efeito descrito exige que a população esteja densa.",
+      "misconceptions": {
+        "Um fator necessariamente dependente da densidade, como competição por alimento.": [
+          "CLASSIFICAR_TODO_FATOR_AMBIENTAL_COMO_DEPENDENTE_DA_DENSIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SEASONAL_CARRYING_CAPACITY",
+      "statement": "Uma lagoa tem mais alimento e abrigo no verão; no inverno, a vegetação aquática diminui. As estimativas populacionais variam em torno de um patamar diferente em cada estação. Qual inferência é adequada?",
+      "options": [
+        "A capacidade de suporte é uma constante universal para cada espécie.",
+        "A capacidade de suporte pode variar com as condições sazonais, em vez de ser um número imutável.",
+        "Qualquer variação sazonal prova que a estimativa está errada.",
+        "A população não pode ultrapassar temporariamente o patamar estimado."
+      ],
+      "correctAnswer": "A capacidade de suporte pode variar com as condições sazonais, em vez de ser um número imutável.",
+      "explanation": "A capacidade de suporte depende dos recursos e condições do ambiente, que podem mudar no tempo. Um patamar estimado é contextual, não uma constante universal.",
+      "errorFocus": "Tratar K como propriedade fixa da espécie, independente do ambiente.",
+      "hint": "Relacione o patamar às condições e ao período em que a população foi medida.",
+      "misconceptions": {
+        "A capacidade de suporte é uma constante universal para cada espécie.": [
+          "TRATAR_K_COMO_PROPRIEDADE_FIXA_DA_ESP_CIE_INDEPENDENTE_DO_AMBIENTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RECAPTURE_SAMPLE_MIXING",
+      "statement": "Na captura-recaptura, a segunda coleta é feita logo após a soltura, antes que os indivíduos marcados se misturem ao restante da população. Qual problema isso cria?",
+      "options": [
+        "A estimativa necessariamente fica alta porque M aumenta.",
+        "A estimativa permanece imparcial, pois o número marcado é conhecido.",
+        "A amostra pode conter proporção excessiva de marcados e levar a uma estimativa populacional baixa.",
+        "A população fica maior por causa da marcação."
+      ],
+      "correctAnswer": "A amostra pode conter proporção excessiva de marcados e levar a uma estimativa populacional baixa.",
+      "explanation": "Sem tempo para mistura, os marcados podem ser recapturados com frequência acima do esperado. Como R fica alto, M x C / R tende a produzir uma estimativa baixa.",
+      "errorFocus": "Desconsiderar a premissa de mistura aleatória entre as capturas.",
+      "hint": "Considere como R muda quando a segunda coleta ocorre perto demais da soltura.",
+      "misconceptions": {
+        "A estimativa necessariamente fica alta porque M aumenta.": [
+          "DESCONSIDERAR_A_PREMISSA_DE_MISTURA_ALEAT_RIA_ENTRE_AS_CAPTURAS"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "QUADRAT_STRATIFIED_MARSH",
+      "statement": "Uma várzea tem áreas abertas, margens e ilhas vegetadas. Para estimar a densidade de uma planta em toda a várzea, qual plano reduz melhor o risco de a amostra ignorar um dos ambientes?",
+      "options": [
+        "Contar somente quadrantes da margem por serem mais acessíveis.",
+        "Escolher os pontos com maior quantidade visível de plantas.",
+        "Usar um quadrante em cada ambiente e tratá-los como se tivessem a mesma área total.",
+        "Sortear quadrantes dentro de cada tipo de ambiente e depois combinar as estimativas considerando a área de cada estrato."
+      ],
+      "correctAnswer": "Sortear quadrantes dentro de cada tipo de ambiente e depois combinar as estimativas considerando a área de cada estrato.",
+      "explanation": "A amostragem estratificada representa cada ambiente e permite ponderar as estimativas pela área ocupada. Selecionar apenas locais acessíveis ou mais densos introduz viés.",
+      "errorFocus": "Confundir uma amostra conveniente com uma amostra que representa toda a área.",
+      "hint": "Divida o habitat em estratos e pense em como ponderar áreas de tamanhos diferentes.",
+      "misconceptions": {
+        "Contar somente quadrantes da margem por serem mais acessíveis.": [
+          "CONFUNDIR_UMA_AMOSTRA_CONVENIENTE_COM_UMA_AMOSTRA_QUE_REPRESENTA_TODA_A_REA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "PER_CAPITA_CHANGE_COLONY",
+      "statement": "Uma colônia passa de 500 para 550 indivíduos estimados em um ano, com o mesmo método de contagem. Qual é a variação percentual em relação ao valor inicial?",
+      "options": [
+        "10%.",
+        "50%, pois o aumento foi de 50 indivíduos.",
+        "9,1%, pois 50 deve ser dividido pelo valor final.",
+        "110%, pois 550 representa 110 indivíduos a mais."
+      ],
+      "correctAnswer": "10%.",
+      "explanation": "O aumento absoluto é 550 - 500 = 50. Em relação ao valor inicial, 50/500 x 100 = 10%. A porcentagem descreve a estimativa, não identifica sua causa.",
+      "errorFocus": "Dividir a diferença pelo valor final ou confundir número absoluto e percentual.",
+      "hint": "Use o valor inicial como denominador da variação percentual.",
+      "misconceptions": {
+        "50%, pois o aumento foi de 50 indivíduos.": [
+          "DIVIDIR_A_DIFEREN_A_PELO_VALOR_FINAL_OU_CONFUNDIR_N_MERO_ABSOLUTO_E_PERCENTUAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "EXPONENTIAL_VS_LOGISTIC_CURVE",
+      "statement": "Em um modelo, a população cresce cada vez mais rápido enquanto recursos são abundantes; depois, o crescimento desacelera perto de um patamar. Qual modelo representa melhor essa curva em S?",
+      "options": [
+        "O modelo exponencial, que mantém aceleração ilimitada para sempre.",
+        "O modelo logístico, que incorpora a desaceleração associada a limites ambientais.",
+        "Um modelo de tamanho fixo, que não permite variação entre períodos.",
+        "Um modelo de migração, mesmo sem dados de entrada ou saída."
+      ],
+      "correctAnswer": "O modelo logístico, que incorpora a desaceleração associada a limites ambientais.",
+      "explanation": "O crescimento logístico representa aceleração inicial e desaceleração à medida que a população se aproxima de um patamar de suporte. É uma simplificação e o patamar pode mudar.",
+      "errorFocus": "Confundir crescimento inicialmente rápido com crescimento exponencial ilimitado em todas as fases.",
+      "hint": "Observe se a taxa desacelera quando a população se aproxima do patamar.",
+      "misconceptions": {
+        "O modelo exponencial, que mantém aceleração ilimitada para sempre.": [
+          "CONFUNDIR_CRESCIMENTO_INICIALMENTE_R_PIDO_COM_CRESCIMENTO_EXPONENCIAL_ILIMITADO_EM_TODAS_AS_FASES"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CAPTURE_RECAPTURE_CLOSED_POPULATION",
+      "statement": "Uma estimativa por captura-recaptura é feita durante um período em que muitos animais entram e saem da área entre as duas coletas. Por que o resultado deve ser interpretado com cautela?",
+      "options": [
+        "A imigração faz com que nenhuma recaptura possa ocorrer.",
+        "O estimador sempre corrige automaticamente qualquer movimento.",
+        "A população pode não ser fechada entre amostras, violando uma premissa do estimador simples.",
+        "A abundância não pode ser estimada para animais móveis."
+      ],
+      "correctAnswer": "A população pode não ser fechada entre amostras, violando uma premissa do estimador simples.",
+      "explanation": "O estimador simples pressupõe pouca mudança na população entre capturas, além de mistura e marcas reconhecíveis. Movimento intenso pode alterar as proporções e enviesar a estimativa.",
+      "errorFocus": "Aplicar o estimador sem avaliar mudanças entre as ocasiões de captura.",
+      "hint": "Compare o intervalo entre amostras com a entrada e saída de indivíduos.",
+      "misconceptions": {
+        "A imigração faz com que nenhuma recaptura possa ocorrer.": [
+          "APLICAR_O_ESTIMADOR_SEM_AVALIAR_MUDAN_AS_ENTRE_AS_OCASI_ES_DE_CAPTURA"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "EMIGRATION_VS_MORTALITY_TRACKING",
+      "statement": "Uma contagem local cai 30% após uma obra na região. Qual dado ajuda mais a distinguir mortalidade de emigração?",
+      "options": [
+        "Repetir apenas a contagem no mesmo ponto e horário.",
+        "Medir a área total do município sem registrar os animais.",
+        "Comparar a contagem com a quantidade de chuva de um único dia.",
+        "Acompanhar indivíduos identificáveis em áreas vizinhas e obter dados de sobrevivência ao longo do mesmo período."
+      ],
+      "correctAnswer": "Acompanhar indivíduos identificáveis em áreas vizinhas e obter dados de sobrevivência ao longo do mesmo período.",
+      "explanation": "Uma queda local pode resultar de morte, saída ou menor detecção. Rastreamento espacial e sobrevivência ajudam a separar essas explicações; a contagem isolada não o faz.",
+      "errorFocus": "Interpretar redução local como morte sem medir movimento ou detecção.",
+      "hint": "Busque dados que acompanhem os destinos dos indivíduos e sua sobrevivência.",
+      "misconceptions": {
+        "Repetir apenas a contagem no mesmo ponto e horário.": [
+          "INTERPRETAR_REDU_O_LOCAL_COMO_MORTE_SEM_MEDIR_MOVIMENTO_OU_DETEC_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-population-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DETECTION_CHANGE_DENSE_VEGETATION",
+      "statement": "Uma série de aves mostra queda de observações após o crescimento da vegetação, mas o equipamento e o esforço permaneceram iguais. Qual dado adicional é mais útil antes de afirmar que a população diminuiu?",
+      "options": [
+        "Uma estimativa independente da probabilidade de detecção, ou método complementar que funcione sob a vegetação mais densa.",
+        "Uma nova contagem feita apenas no ponto mais aberto.",
+        "O número de espécies de plantas, sem medir observabilidade.",
+        "A soma das observações antigas e novas como se a detecção fosse constante."
+      ],
+      "correctAnswer": "Uma estimativa independente da probabilidade de detecção, ou método complementar que funcione sob a vegetação mais densa.",
+      "explanation": "A vegetação pode reduzir a detectabilidade sem alterar a abundância real. Estimar a detecção ou usar método complementar ajuda a distinguir mudança populacional de mudança na observação.",
+      "errorFocus": "Supor que esforço igual garante detectabilidade igual em condições diferentes.",
+      "hint": "Pergunte se o ambiente mudou a chance de observar cada indivíduo.",
+      "misconceptions": {
+        "Uma nova contagem feita apenas no ponto mais aberto.": [
+          "SUPOR_QUE_ESFOR_O_IGUAL_GARANTE_DETECTABILIDADE_IGUAL_EM_CONDI_ES_DIFERENTES"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_01",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Que unidade ecológica e comparação estão descritas?",
+      "options": [
+        "Uma população observada em dois momentos, porque os indivíduos pertencem à mesma espécie e área definida.",
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Uma população observada em dois momentos, porque os indivíduos pertencem à mesma espécie e área definida.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_02",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Qual critério deve orientar a análise?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "Use Use espécie, espaço e tempo para interpretar uma população.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Use Use espécie, espaço e tempo para interpretar uma população.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_03",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Classifique outra contagem ecológica indicando espécie, área e período.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Classifique outra contagem ecológica indicando espécie, área e período.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_04",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Qual conclusão deve ser evitada?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área.",
+        "Evite chamar qualquer conjunto de seres vivos de comunidade."
+      ],
+      "correctAnswer": "Evite chamar qualquer conjunto de seres vivos de comunidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_05",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira mesma espécie, área delimitada e duas datas.",
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Confira mesma espécie, área delimitada e duas datas.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_06",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "registrar método, área e período de cada contagem",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "registrar método, área e período de cada contagem",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_07",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Mantenha a conclusão ligada a a população e os momentos observados.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a população e os momentos observados.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_08",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Que comparação é mais justa?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área.",
+        "Compare número de indivíduos e condições de cada ano."
+      ],
+      "correctAnswer": "Compare número de indivíduos e condições de cada ano.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_09",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero chamar qualquer conjunto de seres vivos de comunidade.",
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "Seria exagero chamar qualquer conjunto de seres vivos de comunidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_POPULATION_10",
+      "statement": "Uma equipe conta indivíduos da mesma espécie em uma área delimitada e repete a contagem no ano seguinte. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.",
+        "o conjunto reúne uma espécie ou várias?",
+        "A biosfera, pois a contagem ocorreu em ambiente natural.",
+        "Um ecossistema completo, sem considerar a área."
+      ],
+      "correctAnswer": "o conjunto reúne uma espécie ou várias?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use espécie, espaço e tempo para interpretar uma população.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma comunidade inteira, porque toda contagem local inclui espécies diferentes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_01",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual medida permite comparar ocupação do espaço?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "A densidade, calculada relacionando número de indivíduos e área de cada ilha.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "A densidade, calculada relacionando número de indivíduos e área de cada ilha.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_02",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual critério deve orientar a análise?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade.",
+        "Use Relacione tamanho da população e área, não apenas o total bruto."
+      ],
+      "correctAnswer": "Use Relacione tamanho da população e área, não apenas o total bruto.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_03",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Compare densidades em outro par de áreas com tamanhos diferentes.",
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Compare densidades em outro par de áreas com tamanhos diferentes.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_04",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual conclusão deve ser evitada?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Evite dizer que populações iguais sempre ocupam o espaço com a mesma intensidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Evite dizer que populações iguais sempre ocupam o espaço com a mesma intensidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_05",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "Confira 100 indivíduos e áreas de 1 km² e 4 km².",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Confira 100 indivíduos e áreas de 1 km² e 4 km².",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_06",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade.",
+        "calcular indivíduos por unidade de área"
+      ],
+      "correctAnswer": "calcular indivíduos por unidade de área",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_07",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a as duas ilhas e suas áreas medidas.",
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as duas ilhas e suas áreas medidas.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_08",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Que comparação é mais justa?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Compare número total e número por área.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Compare número total e número por área.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_09",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Qual seria um exagero interpretativo?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "Seria exagero dizer que populações iguais sempre ocupam o espaço com a mesma intensidade.",
+        "O total de indivíduos já é uma densidade."
+      ],
+      "correctAnswer": "Seria exagero dizer que populações iguais sempre ocupam o espaço com a mesma intensidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_DENSITY_10",
+      "statement": "Duas ilhas têm 100 lagartos cada; uma mede 1 km² e a outra mede 4 km². Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A ilha maior sempre tem maior densidade.",
+        "Densidade depende apenas da cor dos lagartos.",
+        "O total de indivíduos já é uma densidade.",
+        "qual ilha possui mais indivíduos por quilômetro quadrado?"
+      ],
+      "correctAnswer": "qual ilha possui mais indivíduos por quilômetro quadrado?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho da população e área, não apenas o total bruto.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A ilha maior sempre tem maior densidade.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_01",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Por que usar parcelas variadas?",
+      "options": [
+        "Para obter uma amostra que represente diferentes partes do ambiente e reduzir o risco de um único local distorcer a estimativa.",
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Para obter uma amostra que represente diferentes partes do ambiente e reduzir o risco de um único local distorcer a estimativa.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_02",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Qual critério deve orientar a análise?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "Use Avalie amostragem considerando representatividade e padronização.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Use Avalie amostragem considerando representatividade e padronização.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_03",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "Planeje amostragem em outro ambiente heterogêneo.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Planeje amostragem em outro ambiente heterogêneo.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_04",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Qual conclusão deve ser evitada?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método.",
+        "Evite afirmar que uma parcela prova o número total da floresta."
+      ],
+      "correctAnswer": "Evite afirmar que uma parcela prova o número total da floresta.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_05",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira floresta grande, parcelas diferentes e mesma medida.",
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Confira floresta grande, parcelas diferentes e mesma medida.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_06",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "definir seleção, tamanho e distribuição das parcelas",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "definir seleção, tamanho e distribuição das parcelas",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_07",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "Mantenha a conclusão ligada a a estimativa produzida pela amostra.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a estimativa produzida pela amostra.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_08",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Que comparação é mais justa?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método.",
+        "Compare locais amostrados e população total estimada."
+      ],
+      "correctAnswer": "Compare locais amostrados e população total estimada.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_09",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero afirmar que uma parcela prova o número total da floresta.",
+        "Uma única árvore representa toda a floresta.",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "Seria exagero afirmar que uma parcela prova o número total da floresta.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SAMPLING_10",
+      "statement": "Uma floresta é grande demais para contar todas as árvores. Pesquisadores selecionam parcelas em locais diferentes e registram a mesma medida em cada parcela. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Uma única árvore representa toda a floresta.",
+        "as parcelas cobrem condições distintas da floresta?",
+        "Parcelas variadas impedem qualquer comparação.",
+        "A amostra dispensa registrar o método."
+      ],
+      "correctAnswer": "as parcelas cobrem condições distintas da floresta?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Avalie amostragem considerando representatividade e padronização.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única árvore representa toda a floresta.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_01",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Que cuidado acompanha uma estimativa por marcação e recaptura?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Verificar se as marcas permanecem, se os peixes se misturaram e se a captura foi comparável antes de estimar a população.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Verificar se as marcas permanecem, se os peixes se misturaram e se a captura foi comparável antes de estimar a população.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_02",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Qual critério deve orientar a análise?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou.",
+        "Use Considere pressupostos do método antes de tratar a conta como exata."
+      ],
+      "correctAnswer": "Use Considere pressupostos do método antes de tratar a conta como exata.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_03",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise outra estimativa com amostras e indivíduos marcados.",
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Analise outra estimativa com amostras e indivíduos marcados.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_04",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Qual conclusão deve ser evitada?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "Evite dizer que a primeira amostra é sempre o tamanho total da lagoa.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Evite dizer que a primeira amostra é sempre o tamanho total da lagoa.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_05",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Confira marcados, recapturados e condições de mistura.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Confira marcados, recapturados e condições de mistura.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_06",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou.",
+        "avaliar pressupostos e calcular uma estimativa com incerteza"
+      ],
+      "correctAnswer": "avaliar pressupostos e calcular uma estimativa com incerteza",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_07",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o método e suas condições.",
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o método e suas condições.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_08",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Que comparação é mais justa?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "Compare marcação inicial e proporção de recaptura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Compare marcação inicial e proporção de recaptura.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_09",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Qual seria um exagero interpretativo?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Seria exagero dizer que a primeira amostra é sempre o tamanho total da lagoa.",
+        "Qualquer peixe sem marca prova que a população dobrou."
+      ],
+      "correctAnswer": "Seria exagero dizer que a primeira amostra é sempre o tamanho total da lagoa.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_MARK_10",
+      "statement": "Em uma lagoa, 40 peixes são marcados e soltos. Na segunda amostragem, 50 peixes são capturados, dos quais 10 têm marca. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A população é exatamente 40 porque essa foi a primeira captura.",
+        "As marcas tornam a estimativa desnecessária.",
+        "Qualquer peixe sem marca prova que a população dobrou.",
+        "as marcas alteraram a chance de captura?"
+      ],
+      "correctAnswer": "as marcas alteraram a chance de captura?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Considere pressupostos do método antes de tratar a conta como exata.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A população é exatamente 40 porque essa foi a primeira captura.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_01",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual conclusão é mais responsável?",
+      "options": [
+        "Há uma tendência de menor detecção, mas é preciso avaliar vegetação, horário e outros fatores antes de concluir queda populacional.",
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Há uma tendência de menor detecção, mas é preciso avaliar vegetação, horário e outros fatores antes de concluir queda populacional.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_02",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual critério deve orientar a análise?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "Use Diferencie abundância real de chance de detecção.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Use Diferencie abundância real de chance de detecção.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_03",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Interprete outra série temporal com mudanças no método de observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Interprete outra série temporal com mudanças no método de observação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_04",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual conclusão deve ser evitada?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade.",
+        "Evite tratar uma queda de observações como prova imediata de extinção."
+      ],
+      "correctAnswer": "Evite tratar uma queda de observações como prova imediata de extinção.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_05",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira contagem, vegetação e mudança de horário.",
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Confira contagem, vegetação e mudança de horário.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_06",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "padronizar horários e usar métodos complementares",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "padronizar horários e usar métodos complementares",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_07",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Mantenha a conclusão ligada a os dados observacionais disponíveis.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a os dados observacionais disponíveis.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_08",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Que comparação é mais justa?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade.",
+        "Compare número observado e condições de detecção."
+      ],
+      "correctAnswer": "Compare número observado e condições de detecção.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_09",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar uma queda de observações como prova imediata de extinção.",
+        "A espécie foi extinta no primeiro mês de queda.",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "Seria exagero tratar uma queda de observações como prova imediata de extinção.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_TREND_10",
+      "statement": "Um gráfico mostra que o número observado de aves diminuiu em três meses, enquanto a vegetação alta aumentou e o horário das observações mudou. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A espécie foi extinta no primeiro mês de queda.",
+        "a população mudou ou ficou mais difícil de observar?",
+        "A vegetação não pode afetar a observação.",
+        "Qualquer gráfico de contagem prova causalidade."
+      ],
+      "correctAnswer": "a população mudou ou ficou mais difícil de observar?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Diferencie abundância real de chance de detecção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A espécie foi extinta no primeiro mês de queda.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_01",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. O que os dados sustentam?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Uma associação temporal, não uma causa exclusiva; o uso do solo e outras variáveis também precisam ser investigados.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Uma associação temporal, não uma causa exclusiva; o uso do solo e outras variáveis também precisam ser investigados.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_02",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Qual critério deve orientar a análise?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza.",
+        "Use Separe correlação de causalidade e procure variáveis alternativas."
+      ],
+      "correctAnswer": "Use Separe correlação de causalidade e procure variáveis alternativas.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_03",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Avalie outra associação populacional sem transformar coincidência em causa.",
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Avalie outra associação populacional sem transformar coincidência em causa.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_04",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Qual conclusão deve ser evitada?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Evite afirmar que a temperatura causou toda a mudança apenas pela simultaneidade.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Evite afirmar que a temperatura causou toda a mudança apenas pela simultaneidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_05",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Confira duas séries que aumentam e mudança no uso do solo.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Confira duas séries que aumentam e mudança no uso do solo.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_06",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza.",
+        "comparar áreas, períodos e variáveis de controle"
+      ],
+      "correctAnswer": "comparar áreas, períodos e variáveis de controle",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_07",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a associação observada nos dois anos.",
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a associação observada nos dois anos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_08",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Que comparação é mais justa?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Compare tendência conjunta e explicações alternativas.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Compare tendência conjunta e explicações alternativas.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_09",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Qual seria um exagero interpretativo?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Seria exagero afirmar que a temperatura causou toda a mudança apenas pela simultaneidade.",
+        "Duas medições bastam para eliminar incerteza."
+      ],
+      "correctAnswer": "Seria exagero afirmar que a temperatura causou toda a mudança apenas pela simultaneidade.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CORRELATION_10",
+      "statement": "Em dois anos, uma população de insetos e a temperatura média aumentaram juntas, mas também houve mudança no uso do solo. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A simultaneidade prova causa única.",
+        "Uso do solo não participa de populações.",
+        "Duas medições bastam para eliminar incerteza.",
+        "que comparação ajudaria a separar os efeitos?"
+      ],
+      "correctAnswer": "que comparação ajudaria a separar os efeitos?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Separe correlação de causalidade e procure variáveis alternativas.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A simultaneidade prova causa única.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_01",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Que pergunta ajuda a interpretar a estrutura?",
+      "options": [
+        "Investigar recrutamento, sobrevivência e esforço de amostragem antes de concluir que a população está crescendo.",
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Investigar recrutamento, sobrevivência e esforço de amostragem antes de concluir que a população está crescendo.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_02",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Qual critério deve orientar a análise?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "Use Use classes etárias e qualidade da amostra para formular hipóteses.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Use Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_03",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "Analise outra estrutura etária separando composição observada e dinâmica futura.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Analise outra estrutura etária separando composição observada e dinâmica futura.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_04",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe.",
+        "Evite inferir crescimento automático somente pela presença de juvenis."
+      ],
+      "correctAnswer": "Evite inferir crescimento automático somente pela presença de juvenis.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_05",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira classes etárias e ausência de registro confiável de adultos velhos.",
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Confira classes etárias e ausência de registro confiável de adultos velhos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_06",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "acompanhar coortes e padronizar a detecção por idade",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "acompanhar coortes e padronizar a detecção por idade",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_07",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "Mantenha a conclusão ligada a a estrutura etária observada.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a estrutura etária observada.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_08",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Que comparação é mais justa?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe.",
+        "Compare proporções de juvenis, adultos e velhos."
+      ],
+      "correctAnswer": "Compare proporções de juvenis, adultos e velhos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_09",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero inferir crescimento automático somente pela presença de juvenis.",
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "Seria exagero inferir crescimento automático somente pela presença de juvenis.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_AGE_10",
+      "statement": "Uma população de tartarugas apresenta muitos juvenis, poucos adultos e nenhum registro confiável de indivíduos muito velhos. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Muitos juvenis sempre significam crescimento garantido.",
+        "a ausência de velhos indica mortalidade ou falha de detecção?",
+        "A idade não interfere em uma população.",
+        "A ausência de registro prova que nenhum adulto velho existe."
+      ],
+      "correctAnswer": "a ausência de velhos indica mortalidade ou falha de detecção?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use classes etárias e qualidade da amostra para formular hipóteses.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Muitos juvenis sempre significam crescimento garantido.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_01",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual procedimento melhora a comparação?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Padronizar pontos, esforço e horário ou modelar a detecção antes de comparar os números entre estações.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Padronizar pontos, esforço e horário ou modelar a detecção antes de comparar os números entre estações.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_02",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual critério deve orientar a análise?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado.",
+        "Use Controle o método ao interpretar variação sazonal."
+      ],
+      "correctAnswer": "Use Controle o método ao interpretar variação sazonal.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_03",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Compare outra população em estações diferentes usando esforço equivalente.",
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Compare outra população em estações diferentes usando esforço equivalente.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_04",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Evite dizer que mais registros significam automaticamente mais indivíduos.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Evite dizer que mais registros significam automaticamente mais indivíduos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_05",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Confira estação, esforço, pontos e contagens.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Confira estação, esforço, pontos e contagens.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_06",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado.",
+        "registrar esforço e repetir pontos comparáveis"
+      ],
+      "correctAnswer": "registrar esforço e repetir pontos comparáveis",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_07",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a comparação sazonal com método disponível.",
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a comparação sazonal com método disponível.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_08",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Que comparação é mais justa?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Compare número registrado e esforço de observação.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Compare número registrado e esforço de observação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_09",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Qual seria um exagero interpretativo?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Seria exagero dizer que mais registros significam automaticamente mais indivíduos.",
+        "Esforço de observação não precisa ser registrado."
+      ],
+      "correctAnswer": "Seria exagero dizer que mais registros significam automaticamente mais indivíduos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_SEASON_10",
+      "statement": "Uma área recebe mais aves migratórias no inverno, mas o esforço de observação é maior nessa estação e os observadores usam pontos diferentes. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "O inverno explica qualquer diferença sem medição.",
+        "Pontos diferentes tornam toda comparação mais certa.",
+        "Esforço de observação não precisa ser registrado.",
+        "o aumento veio da população ou da busca mais intensa?"
+      ],
+      "correctAnswer": "o aumento veio da população ou da busca mais intensa?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Controle o método ao interpretar variação sazonal.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O inverno explica qualquer diferença sem medição.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_01",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual interpretação é compatível?",
+      "options": [
+        "O ambiente pode estar impondo uma capacidade de suporte variável, e o valor depende das condições e recursos.",
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "O ambiente pode estar impondo uma capacidade de suporte variável, e o valor depende das condições e recursos.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_02",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual critério deve orientar a análise?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "Use Relacione tamanho populacional, recursos e condições ambientais.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "Use Relacione tamanho populacional, recursos e condições ambientais.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_03",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Analise outra oscilação populacional verificando recursos e perturbações.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "Analise outra oscilação populacional verificando recursos e perturbações.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_04",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual conclusão deve ser evitada?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição.",
+        "Evite tratar capacidade de suporte como número fixo independente do ambiente."
+      ],
+      "correctAnswer": "Evite tratar capacidade de suporte como número fixo independente do ambiente.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_05",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira crescimento, alimento, espaço e oscilação.",
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "Confira crescimento, alimento, espaço e oscilação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_06",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "medir recursos e mudanças ambientais ao longo do tempo",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "medir recursos e mudanças ambientais ao longo do tempo",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_07",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual limite deve aparecer na resposta?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Mantenha a conclusão ligada a as condições observadas no ambiente.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as condições observadas no ambiente.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_08",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Que comparação é mais justa?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição.",
+        "Compare tamanho populacional e recursos disponíveis."
+      ],
+      "correctAnswer": "Compare tamanho populacional e recursos disponíveis.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_09",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar capacidade de suporte como número fixo independente do ambiente.",
+        "O limite é fixo para sempre.",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "Seria exagero tratar capacidade de suporte como número fixo independente do ambiente.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CAPACITY_10",
+      "statement": "Uma população cresce em um ambiente até que alimento e espaço se tornam limitantes; depois o número oscila ao redor de um valor. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "O limite é fixo para sempre.",
+        "que mudança ambiental alteraria o valor de equilíbrio?",
+        "Recursos deixam de importar quando a população cresce.",
+        "Oscilação prova ausência de competição."
+      ],
+      "correctAnswer": "que mudança ambiental alteraria o valor de equilíbrio?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Relacione tamanho populacional, recursos e condições ambientais.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O limite é fixo para sempre.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_01",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Por que manter um local de comparação?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Para comparar a mudança com uma condição sem a intervenção e avaliar explicações alternativas.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Para comparar a mudança com uma condição sem a intervenção e avaliar explicações alternativas.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_02",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Qual critério deve orientar a análise?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos.",
+        "Use Use controle e medidas antes/depois para interpretar intervenção."
+      ],
+      "correctAnswer": "Use Use controle e medidas antes/depois para interpretar intervenção.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_03",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Planeje outra investigação de população com local ou período de referência.",
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Planeje outra investigação de população com local ou período de referência.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_04",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Qual conclusão deve ser evitada?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Evite atribuir qualquer mudança à retirada sem observar o local de comparação.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Evite atribuir qualquer mudança à retirada sem observar o local de comparação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_05",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Confira intervenção, local semelhante e medida de abundância.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Confira intervenção, local semelhante e medida de abundância.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_06",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos.",
+        "medir ambos os locais antes e depois com método igual"
+      ],
+      "correctAnswer": "medir ambos os locais antes e depois com método igual",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_07",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a inferência permitida pelo desenho do estudo.",
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a inferência permitida pelo desenho do estudo.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_08",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Que comparação é mais justa?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Compare local com intervenção e local de comparação.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Compare local com intervenção e local de comparação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_09",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Qual seria um exagero interpretativo?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Seria exagero atribuir qualquer mudança à retirada sem observar o local de comparação.",
+        "Controle significa eliminar todos os organismos."
+      ],
+      "correctAnswer": "Seria exagero atribuir qualquer mudança à retirada sem observar o local de comparação.",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v13-biology-population-data-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13_BIOLOGY_POPULATION_CONTROL_10",
+      "statement": "Uma equipe quer testar se a retirada de uma planta invasora altera a abundância de uma espécie nativa. Ela escolhe um local para retirar e outro semelhante sem retirar. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "O segundo local torna desnecessário medir antes.",
+        "Qualquer diferença prova a causa sem considerar o ambiente.",
+        "Controle significa eliminar todos os organismos.",
+        "o que aconteceria sem retirar a planta?"
+      ],
+      "correctAnswer": "o que aconteceria sem retirar a planta?",
+      "explanation": "A resposta distingue observação, estimativa e inferência causal, preservando o limite dos dados. Use controle e medidas antes/depois para interpretar intervenção.",
+      "hint": "Separe o dado observado da hipótese e verifique o método de amostragem.",
+      "errorFocus": "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O segundo local torna desnecessário medir antes.": [
+          "BIOLOGY_POPULATION_DATA_EVIDENCE_SCOPE"
+        ]
+      }
+    }
+  ],
+  "lessonVersion": 13,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 17,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13"
+  }
+}

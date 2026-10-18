@@ -1,0 +1,1673 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-portuguese-sound-writing-fi",
+  "canonicalSkillCode": "AUTHORING_EF01LP05_SOUND_WRITING",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "sistema de escrita alfabética como representação dos sons da fala",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Descritor oficial usado como contexto de autoria; vínculo canônico, revisão pedagógica e publicação permanecem pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Sons que ganham forma escrita",
+    "objective": "Reconhecer que o sistema de escrita alfabética relaciona letras e combinações de letras a aspectos sonoros da fala em palavras conhecidas.",
+    "summary": "Falar, escutar, comparar sons e observar letras ajuda a construir relações entre a linguagem oral e a escrita alfabética.",
+    "explanation": "## Fala e escrita em relação\nAo escrever uma palavra, buscamos letras que representem sua sequência sonora convencional. A relação não é um desenho do objeto nem uma cópia de sua aparência.\n\n## Investigar hipóteses\nCompare palavras que começam ou terminam de modo parecido, peça que a criança justifique escolhas e use modelos. Pronúncias podem variar; o objetivo é observar relações sonoras e gráficas em contexto.\n\n## Feedback e inclusão\nValorize hipóteses, ofereça repetição, letras móveis, áudio, imagens e comunicação alternativa. Não transforme uma tentativa em avaliação global nem penalize variações linguísticas.",
+    "workedExample": "Para escrever “PATO”, diga a palavra devagar, compare P com B em “BATO” e observe que a troca inicial registra uma diferença sonora. Convide a criança a testar a escolha em vez de entregar a resposta.",
+    "commonMistake": "Escolher letras pela aparência do objeto, confundir quantidade de letras com quantidade de sons ou tratar uma pronúncia regional como erro moral.",
+    "tips": [
+      "Fale e escute a palavra antes de escolher letras.",
+      "Compare pares com uma diferença sonora observável.",
+      "Use modelos e letras móveis sem retirar a autoria.",
+      "Registre a hipótese da criança e o apoio usado."
+    ],
+    "priorKnowledge": [
+      "Participar de jogos de escuta e comparação de palavras.",
+      "Reconhecer algumas letras e palavras significativas do cotidiano."
+    ],
+    "keyConcepts": [
+      "fala",
+      "som",
+      "letra",
+      "sequência sonora",
+      "escrita alfabética",
+      "hipótese",
+      "revisão",
+      "variação linguística"
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-portuguese-sound-writing-fi-01",
+          "v1-portuguese-sound-writing-fi-02",
+          "v1-portuguese-sound-writing-fi-03",
+          "v1-portuguese-sound-writing-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-portuguese-sound-writing-fi-05",
+          "v1-portuguese-sound-writing-fi-06",
+          "v1-portuguese-sound-writing-fi-07",
+          "v1-portuguese-sound-writing-fi-08",
+          "v1-portuguese-sound-writing-fi-09",
+          "v1-portuguese-sound-writing-fi-10",
+          "v1-portuguese-sound-writing-fi-11",
+          "v1-portuguese-sound-writing-fi-12",
+          "v1-portuguese-sound-writing-fi-13",
+          "v1-portuguese-sound-writing-fi-14",
+          "v1-portuguese-sound-writing-fi-15",
+          "v1-portuguese-sound-writing-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-portuguese-sound-writing-fi-17",
+          "v1-portuguese-sound-writing-fi-18",
+          "v1-portuguese-sound-writing-fi-19",
+          "v1-portuguese-sound-writing-fi-20",
+          "v1-portuguese-sound-writing-fi-21",
+          "v1-portuguese-sound-writing-fi-22",
+          "v1-portuguese-sound-writing-fi-23",
+          "v1-portuguese-sound-writing-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-portuguese-sound-writing-fi-25",
+          "v1-portuguese-sound-writing-fi-26",
+          "v1-portuguese-sound-writing-fi-27",
+          "v1-portuguese-sound-writing-fi-28",
+          "v1-portuguese-sound-writing-fi-29",
+          "v1-portuguese-sound-writing-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-portuguese-sound-writing-fi-31",
+          "v1-portuguese-sound-writing-fi-32",
+          "v1-portuguese-sound-writing-fi-33",
+          "v1-portuguese-sound-writing-fi-34",
+          "v1-portuguese-sound-writing-fi-35",
+          "v1-portuguese-sound-writing-fi-36",
+          "v1-portuguese-sound-writing-fi-37",
+          "v1-portuguese-sound-writing-fi-38",
+          "v1-portuguese-sound-writing-fi-39",
+          "v1-portuguese-sound-writing-fi-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "INITIAL_SOUND_RELATION",
+        "text": "Compare o primeiro som de palavras e observe se a escrita compartilha a letra inicial."
+      },
+      {
+        "trigger": "SOUND_SEQUENCE",
+        "text": "A escrita convencional registra uma sequência; não basta escolher uma letra que lembre o desenho."
+      },
+      {
+        "trigger": "LIMIT_SINGLE_ATTEMPT",
+        "text": "Uma produção é uma evidência localizada. Colete outras situações antes de concluir sobre o percurso da criança."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "DISTINGUISH_F_V",
+        "action": "Use pares de palavras, espelho, escuta e letras móveis para comparar apenas o som inicial."
+      },
+      {
+        "errorFocus": "VOWEL_CONTRAST",
+        "action": "Alongue a pronúncia de palavras contrastantes e destaque a posição da vogal na sequência."
+      },
+      {
+        "errorFocus": "SOUND_BASED_REVISION",
+        "action": "Peça nova leitura da própria escrita e uma tentativa revisada com modelo disponível."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "title": "Correio dos nomes",
+        "context": "Escrever nomes e palavras em envelopes reais da turma.",
+        "steps": [
+          "Escolher a palavra.",
+          "Falar devagar e destacar sons.",
+          "Montar uma hipótese com letras.",
+          "Conferir com modelo e revisar."
+        ],
+        "evidence": "Produção inicial, revisão e explicação oral ou multimodal.",
+        "rubric": [
+          "Inicial: participa com apoio de modelo.",
+          "Em desenvolvimento: relaciona alguns sons e letras.",
+          "Consolidado: justifica escolhas e revisa com autonomia crescente."
+        ]
+      },
+      {
+        "title": "Bingo de sons",
+        "context": "Ouvir palavras e localizar cartões escritos com a mesma sequência.",
+        "steps": [
+          "Ouvir a palavra.",
+          "Repetir ou acessar o áudio.",
+          "Comparar cartões.",
+          "Explicar o início ou outra parte que coincidiu."
+        ],
+        "evidence": "Cartões selecionados e justificativa.",
+        "rubric": [
+          "Inicial: precisa de repetição.",
+          "Em desenvolvimento: percebe relações em palavras conhecidas.",
+          "Consolidado: compara palavras novas usando pistas sonoras."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP05",
+        "descriptor": "Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral criado para demonstração; o descritor oficial é referenciado como fonte de contexto e não é reproduzido como conteúdo de exercício."
+  },
+  "questions": [
+    {
+      "id": "v1-portuguese-sound-writing-fi-01",
+      "statement": "Ao falar “LIA” e olhar para a escrita “LIA”, o que as letras ajudam a registrar?",
+      "prompt": "Ao falar “LIA” e olhar para a escrita “LIA”, o que as letras ajudam a registrar?",
+      "options": [
+        "Partes dos sons que ouvimos na palavra.",
+        "A cor do crachá.",
+        "O tamanho da criança.",
+        "Um desenho sem relação com a fala."
+      ],
+      "correctAnswer": "Partes dos sons que ouvimos na palavra.",
+      "answerPosition": "A",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "NOME_LIA",
+      "explanation": "A escrita alfabética usa letras para representar aspectos sonoros da fala.",
+      "hint": "Fale devagar e observe quais letras aparecem para registrar os sons.",
+      "errorFocus": "SPEECH_TO_LETTERS",
+      "feedback": {
+        "correct": "Boa análise: A escrita alfabética usa letras para representar aspectos sonoros da fala.",
+        "incorrect": "A escrita alfabética usa letras para representar aspectos sonoros da fala.",
+        "hint": "Fale devagar e observe quais letras aparecem para registrar os sons.",
+        "errorFocus": "SPEECH_TO_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-02",
+      "statement": "Qual escrita combina com a palavra falada “BOLA”?",
+      "prompt": "Qual escrita combina com a palavra falada “BOLA”?",
+      "options": [
+        "MESA",
+        "BOLA",
+        "PATO",
+        "LUA"
+      ],
+      "correctAnswer": "BOLA",
+      "answerPosition": "B",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "BOLA_FALA",
+      "explanation": "BOLA é a sequência de letras que representa os sons percebidos nessa palavra.",
+      "hint": "Pronuncie a palavra e compare o começo e o final das opções.",
+      "errorFocus": "MATCH_WORD_AND_SOUNDS",
+      "feedback": {
+        "correct": "Boa análise: BOLA é a sequência de letras que representa os sons percebidos nessa palavra.",
+        "incorrect": "BOLA é a sequência de letras que representa os sons percebidos nessa palavra.",
+        "hint": "Pronuncie a palavra e compare o começo e o final das opções.",
+        "errorFocus": "MATCH_WORD_AND_SOUNDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-03",
+      "statement": "Quando falamos “PATO”, por que usamos letras para escrever?",
+      "prompt": "Quando falamos “PATO”, por que usamos letras para escrever?",
+      "options": [
+        "Para desenhar o animal.",
+        "Para indicar a quantidade de letras sem ouvir.",
+        "Para registrar por escrito os sons da palavra.",
+        "Para trocar a fala por números."
+      ],
+      "correctAnswer": "Para registrar por escrito os sons da palavra.",
+      "answerPosition": "C",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "PATO_FALA",
+      "explanation": "A escrita alfabética relaciona fala e escrita por meio de letras e suas combinações.",
+      "hint": "Pense no que a escrita conserva da palavra falada.",
+      "errorFocus": "ALPHABETIC_PRINCIPLE",
+      "feedback": {
+        "correct": "Boa análise: A escrita alfabética relaciona fala e escrita por meio de letras e suas combinações.",
+        "incorrect": "A escrita alfabética relaciona fala e escrita por meio de letras e suas combinações.",
+        "hint": "Pense no que a escrita conserva da palavra falada.",
+        "errorFocus": "ALPHABETIC_PRINCIPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-04",
+      "statement": "As palavras faladas “SAPO” e “SACO” começam de modo parecido e terminam diferente. O que a escrita pode mostrar?",
+      "prompt": "As palavras faladas “SAPO” e “SACO” começam de modo parecido e terminam diferente. O que a escrita pode mostrar?",
+      "options": [
+        "Nenhuma relação entre fala e escrita.",
+        "Somente desenhos dos animais.",
+        "A mesma escrita obrigatoriamente.",
+        "Letras iguais em algumas posições e uma letra diferente em outra."
+      ],
+      "correctAnswer": "Letras iguais em algumas posições e uma letra diferente em outra.",
+      "answerPosition": "D",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SAPO_SACO",
+      "explanation": "A escrita alfabética permite observar correspondências e diferenças sonoras em palavras próximas.",
+      "hint": "Compare os sons e veja quais letras mudam.",
+      "errorFocus": "COMPARE_SOUND_SEGMENTS",
+      "feedback": {
+        "correct": "Boa análise: A escrita alfabética permite observar correspondências e diferenças sonoras em palavras próximas.",
+        "incorrect": "A escrita alfabética permite observar correspondências e diferenças sonoras em palavras próximas.",
+        "hint": "Compare os sons e veja quais letras mudam.",
+        "errorFocus": "COMPARE_SOUND_SEGMENTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-05",
+      "statement": "Qual escrita representa a palavra falada “DADO”?",
+      "prompt": "Qual escrita representa a palavra falada “DADO”?",
+      "options": [
+        "DADO",
+        "BALO",
+        "DIDO",
+        "GATO"
+      ],
+      "correctAnswer": "DADO",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "DADO",
+      "explanation": "DADO registra a sequência sonora apresentada pela palavra.",
+      "hint": "Repita DADO lentamente e procure a escrita que acompanha os sons.",
+      "errorFocus": "DIRECT_SOUND_MATCH",
+      "feedback": {
+        "correct": "Boa análise: DADO registra a sequência sonora apresentada pela palavra.",
+        "incorrect": "DADO registra a sequência sonora apresentada pela palavra.",
+        "hint": "Repita DADO lentamente e procure a escrita que acompanha os sons.",
+        "errorFocus": "DIRECT_SOUND_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-06",
+      "statement": "Ao ouvir “MALA”, qual letra aparece no início da escrita?",
+      "prompt": "Ao ouvir “MALA”, qual letra aparece no início da escrita?",
+      "options": [
+        "P",
+        "M",
+        "T",
+        "L"
+      ],
+      "correctAnswer": "M",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "MALA",
+      "explanation": "O som inicial de MALA é representado pela letra M nesta escrita convencional.",
+      "hint": "Fale apenas o começo da palavra e observe a letra correspondente.",
+      "errorFocus": "INITIAL_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa análise: O som inicial de MALA é representado pela letra M nesta escrita convencional.",
+        "incorrect": "O som inicial de MALA é representado pela letra M nesta escrita convencional.",
+        "hint": "Fale apenas o começo da palavra e observe a letra correspondente.",
+        "errorFocus": "INITIAL_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-07",
+      "statement": "Qual opção começa com a mesma letra de “FACA”?",
+      "prompt": "Qual opção começa com a mesma letra de “FACA”?",
+      "options": [
+        "VITA",
+        "PATO",
+        "FITA",
+        "BOLA"
+      ],
+      "correctAnswer": "FITA",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "FACA",
+      "explanation": "FACA e FITA começam com a letra F e compartilham o som inicial representado por ela.",
+      "hint": "Compare o primeiro som das palavras.",
+      "errorFocus": "INITIAL_SOUND_COMPARISON",
+      "feedback": {
+        "correct": "Boa análise: FACA e FITA começam com a letra F e compartilham o som inicial representado por ela.",
+        "incorrect": "FACA e FITA começam com a letra F e compartilham o som inicial representado por ela.",
+        "hint": "Compare o primeiro som das palavras.",
+        "errorFocus": "INITIAL_SOUND_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-08",
+      "statement": "Qual escrita representa a palavra falada “VACA”?",
+      "prompt": "Qual escrita representa a palavra falada “VACA”?",
+      "options": [
+        "FACA",
+        "BOLA",
+        "VILA",
+        "VACA"
+      ],
+      "correctAnswer": "VACA",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "VACA",
+      "explanation": "VACA começa com o som representado por V na escrita convencional escolhida.",
+      "hint": "Ouça o primeiro som e compare V com F.",
+      "errorFocus": "DISTINGUISH_INITIAL_SOUND",
+      "feedback": {
+        "correct": "Boa análise: VACA começa com o som representado por V na escrita convencional escolhida.",
+        "incorrect": "VACA começa com o som representado por V na escrita convencional escolhida.",
+        "hint": "Ouça o primeiro som e compare V com F.",
+        "errorFocus": "DISTINGUISH_INITIAL_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-09",
+      "statement": "Na escrita “PIPA”, qual letra aparece duas vezes porque participa de dois pontos da palavra?",
+      "prompt": "Na escrita “PIPA”, qual letra aparece duas vezes porque participa de dois pontos da palavra?",
+      "options": [
+        "P",
+        "M",
+        "T",
+        "L"
+      ],
+      "correctAnswer": "P",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "PIPA",
+      "explanation": "A letra P aparece no início e no meio da escrita PIPA, acompanhando ocorrências sonoras correspondentes.",
+      "hint": "Observe a sequência inteira e conte onde P aparece.",
+      "errorFocus": "REPEATED_LETTER_SOUND",
+      "feedback": {
+        "correct": "Boa análise: A letra P aparece no início e no meio da escrita PIPA, acompanhando ocorrências sonoras correspondentes.",
+        "incorrect": "A letra P aparece no início e no meio da escrita PIPA, acompanhando ocorrências sonoras correspondentes.",
+        "hint": "Observe a sequência inteira e conte onde P aparece.",
+        "errorFocus": "REPEATED_LETTER_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-10",
+      "statement": "Qual escrita combina com a palavra falada “BEBÊ” sem exigir que o acento seja estudado agora?",
+      "prompt": "Qual escrita combina com a palavra falada “BEBÊ” sem exigir que o acento seja estudado agora?",
+      "options": [
+        "PAPE",
+        "BEBE",
+        "BIBE",
+        "BOLA"
+      ],
+      "correctAnswer": "BEBE",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "BEBE",
+      "explanation": "BEBE registra a sequência de letras ligada à fala; o acento é uma marca gráfica que pode ser estudada em outro momento.",
+      "hint": "Concentre-se nas letras que registram os sons principais.",
+      "errorFocus": "SOUND_SEQUENCE_NOT_DIACRITIC",
+      "feedback": {
+        "correct": "Boa análise: BEBE registra a sequência de letras ligada à fala; o acento é uma marca gráfica que pode ser estudada em outro momento.",
+        "incorrect": "BEBE registra a sequência de letras ligada à fala; o acento é uma marca gráfica que pode ser estudada em outro momento.",
+        "hint": "Concentre-se nas letras que registram os sons principais.",
+        "errorFocus": "SOUND_SEQUENCE_NOT_DIACRITIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-11",
+      "statement": "Ao falar “TATU”, qual letra representa o som inicial?",
+      "prompt": "Ao falar “TATU”, qual letra representa o som inicial?",
+      "options": [
+        "D",
+        "P",
+        "T",
+        "C"
+      ],
+      "correctAnswer": "T",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "TATU",
+      "explanation": "T é a letra usada para registrar o som inicial de TATU nesta palavra.",
+      "hint": "Compare T com D, P e C no começo da palavra.",
+      "errorFocus": "INITIAL_T_SOUND",
+      "feedback": {
+        "correct": "Boa análise: T é a letra usada para registrar o som inicial de TATU nesta palavra.",
+        "incorrect": "T é a letra usada para registrar o som inicial de TATU nesta palavra.",
+        "hint": "Compare T com D, P e C no começo da palavra.",
+        "errorFocus": "INITIAL_T_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-12",
+      "statement": "Qual palavra começa com o mesmo som representado por G em “GATO”?",
+      "prompt": "Qual palavra começa com o mesmo som representado por G em “GATO”?",
+      "options": [
+        "CALA",
+        "PATO",
+        "VACA",
+        "GOLA"
+      ],
+      "correctAnswer": "GOLA",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "GATO",
+      "explanation": "GATO e GOLA começam com G na escrita e com som inicial semelhante nesta atividade.",
+      "hint": "Ouça o primeiro som de cada opção.",
+      "errorFocus": "INITIAL_SOUND_G",
+      "feedback": {
+        "correct": "Boa análise: GATO e GOLA começam com G na escrita e com som inicial semelhante nesta atividade.",
+        "incorrect": "GATO e GOLA começam com G na escrita e com som inicial semelhante nesta atividade.",
+        "hint": "Ouça o primeiro som de cada opção.",
+        "errorFocus": "INITIAL_SOUND_G"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-13",
+      "statement": "Qual escrita representa “LATA”?",
+      "prompt": "Qual escrita representa “LATA”?",
+      "options": [
+        "LATA",
+        "RATA",
+        "LUTA",
+        "PATA"
+      ],
+      "correctAnswer": "LATA",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "LATA",
+      "explanation": "LATA mantém L no início e registra a sequência sonora da palavra apresentada.",
+      "hint": "Compare o começo e a vogal da primeira sílaba.",
+      "errorFocus": "VOWEL_CHANGE",
+      "feedback": {
+        "correct": "Boa análise: LATA mantém L no início e registra a sequência sonora da palavra apresentada.",
+        "incorrect": "LATA mantém L no início e registra a sequência sonora da palavra apresentada.",
+        "hint": "Compare o começo e a vogal da primeira sílaba.",
+        "errorFocus": "VOWEL_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-14",
+      "statement": "Em “MATO” e “MOTO”, qual parte da escrita ajuda a notar a diferença de som?",
+      "prompt": "Em “MATO” e “MOTO”, qual parte da escrita ajuda a notar a diferença de som?",
+      "options": [
+        "A letra inicial M, que muda.",
+        "A vogal da segunda posição: A ou O.",
+        "O desenho da planta.",
+        "Nenhuma, pois são iguais."
+      ],
+      "correctAnswer": "A vogal da segunda posição: A ou O.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "MATO",
+      "explanation": "A troca de vogal acompanha uma diferença sonora percebida entre as palavras.",
+      "hint": "Compare a letra que vem depois de M.",
+      "errorFocus": "VOWEL_CONTRAST",
+      "feedback": {
+        "correct": "Boa análise: A troca de vogal acompanha uma diferença sonora percebida entre as palavras.",
+        "incorrect": "A troca de vogal acompanha uma diferença sonora percebida entre as palavras.",
+        "hint": "Compare a letra que vem depois de M.",
+        "errorFocus": "VOWEL_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-15",
+      "statement": "“PINO” e “PANO” têm P e N em posições correspondentes. O que muda?",
+      "prompt": "“PINO” e “PANO” têm P e N em posições correspondentes. O que muda?",
+      "options": [
+        "A primeira letra.",
+        "Todas as letras.",
+        "A vogal da segunda posição da palavra.",
+        "Somente o tamanho do cartão."
+      ],
+      "correctAnswer": "A vogal da segunda posição da palavra.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PINO_PANO",
+      "explanation": "A escrita evidencia partes iguais e a vogal que acompanha sons diferentes.",
+      "hint": "Procure a letra que muda na mesma posição.",
+      "errorFocus": "COMPARE_VOWEL_POSITION",
+      "feedback": {
+        "correct": "Boa análise: A escrita evidencia partes iguais e a vogal que acompanha sons diferentes.",
+        "incorrect": "A escrita evidencia partes iguais e a vogal que acompanha sons diferentes.",
+        "hint": "Procure a letra que muda na mesma posição.",
+        "errorFocus": "COMPARE_VOWEL_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-16",
+      "statement": "Por que “FITA” não deve ser escrita “VITA” quando ouvimos o primeiro som de F?",
+      "prompt": "Por que “FITA” não deve ser escrita “VITA” quando ouvimos o primeiro som de F?",
+      "options": [
+        "Porque F é um número.",
+        "Porque todas as palavras começam com V.",
+        "Porque letras não representam fala.",
+        "Porque F e V representam sons iniciais diferentes nesta atividade."
+      ],
+      "correctAnswer": "Porque F e V representam sons iniciais diferentes nesta atividade.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "FITA",
+      "explanation": "A relação entre fala e escrita exige atenção ao som inicial e à letra escolhida.",
+      "hint": "Diga F e V lentamente e compare a sensação sonora.",
+      "errorFocus": "DISTINGUISH_F_V",
+      "feedback": {
+        "correct": "Boa análise: A relação entre fala e escrita exige atenção ao som inicial e à letra escolhida.",
+        "incorrect": "A relação entre fala e escrita exige atenção ao som inicial e à letra escolhida.",
+        "hint": "Diga F e V lentamente e compare a sensação sonora.",
+        "errorFocus": "DISTINGUISH_F_V"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-17",
+      "statement": "Em um bingo, a professora fala “PATO”. Qual cartão deve ser escolhido?",
+      "prompt": "Em um bingo, a professora fala “PATO”. Qual cartão deve ser escolhido?",
+      "options": [
+        "PATO",
+        "BATO",
+        "POTO",
+        "MATO"
+      ],
+      "correctAnswer": "PATO",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BINGO_SONORO",
+      "explanation": "O cartão escolhido precisa corresponder à sequência sonora da palavra dita.",
+      "hint": "Repita a palavra e compare começo e vogais.",
+      "errorFocus": "SELECT_SPOKEN_WORD",
+      "feedback": {
+        "correct": "Boa análise: O cartão escolhido precisa corresponder à sequência sonora da palavra dita.",
+        "incorrect": "O cartão escolhido precisa corresponder à sequência sonora da palavra dita.",
+        "hint": "Repita a palavra e compare começo e vogais.",
+        "errorFocus": "SELECT_SPOKEN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-18",
+      "statement": "Para registrar a fruta falada “UVA” em uma lista, qual escrita usar?",
+      "prompt": "Para registrar a fruta falada “UVA” em uma lista, qual escrita usar?",
+      "options": [
+        "AVA",
+        "UVA",
+        "UVO",
+        "VUA"
+      ],
+      "correctAnswer": "UVA",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LISTA_FRUTAS",
+      "explanation": "UVA registra a sequência sonora convencional da fruta nomeada.",
+      "hint": "Diga U-VA e observe a ordem das letras.",
+      "errorFocus": "WRITE_FROM_SPEECH",
+      "feedback": {
+        "correct": "Boa análise: UVA registra a sequência sonora convencional da fruta nomeada.",
+        "incorrect": "UVA registra a sequência sonora convencional da fruta nomeada.",
+        "hint": "Diga U-VA e observe a ordem das letras.",
+        "errorFocus": "WRITE_FROM_SPEECH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-19",
+      "statement": "No jogo, “PATO” combina com “PATO”, não com “PATO” escrito ao contrário. Por quê?",
+      "prompt": "No jogo, “PATO” combina com “PATO”, não com “PATO” escrito ao contrário. Por quê?",
+      "options": [
+        "Porque a cor decide.",
+        "Porque letras não têm ordem.",
+        "Porque a escrita alfabética também depende da ordem das letras.",
+        "Porque qualquer sequência serve."
+      ],
+      "correctAnswer": "Porque a escrita alfabética também depende da ordem das letras.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JOGO_PARES_SOM",
+      "explanation": "A ordem das letras participa da representação convencional da palavra falada.",
+      "hint": "Compare as letras da esquerda para a direita.",
+      "errorFocus": "LETTER_ORDER_AND_SOUND",
+      "feedback": {
+        "correct": "Boa análise: A ordem das letras participa da representação convencional da palavra falada.",
+        "incorrect": "A ordem das letras participa da representação convencional da palavra falada.",
+        "hint": "Compare as letras da esquerda para a direita.",
+        "errorFocus": "LETTER_ORDER_AND_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-20",
+      "statement": "Depois de desenhar um sol, a criança deve escrever o nome falado. Qual recurso ajuda?",
+      "prompt": "Depois de desenhar um sol, a criança deve escrever o nome falado. Qual recurso ajuda?",
+      "options": [
+        "Escolher letras pela cor do desenho.",
+        "Usar somente o desenho.",
+        "Escolher qualquer número.",
+        "Falar “SOL” devagar e procurar letras que registrem essa sequência sonora."
+      ],
+      "correctAnswer": "Falar “SOL” devagar e procurar letras que registrem essa sequência sonora.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DITADO_DESENHO",
+      "explanation": "A fala oferece pistas para selecionar letras; o desenho sozinho não define a escrita.",
+      "hint": "Use o nome falado do objeto como pista.",
+      "errorFocus": "USE_SPEECH_AS_CLUE",
+      "feedback": {
+        "correct": "Boa análise: A fala oferece pistas para selecionar letras; o desenho sozinho não define a escrita.",
+        "incorrect": "A fala oferece pistas para selecionar letras; o desenho sozinho não define a escrita.",
+        "hint": "Use o nome falado do objeto como pista.",
+        "errorFocus": "USE_SPEECH_AS_CLUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-21",
+      "statement": "Para escrever o nome “MATEUS” no envelope, qual estratégia é adequada?",
+      "prompt": "Para escrever o nome “MATEUS” no envelope, qual estratégia é adequada?",
+      "options": [
+        "Ouvir o próprio nome, dizer partes sonoras e consultar referências de letras quando necessário.",
+        "Copiar a cor do envelope.",
+        "Trocar o nome por um ícone.",
+        "Escolher letras sem falar a palavra."
+      ],
+      "correctAnswer": "Ouvir o próprio nome, dizer partes sonoras e consultar referências de letras quando necessário.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CORREIO_DA_TURMA",
+      "explanation": "A produção combina escuta da fala, análise sonora inicial e apoio visual sem retirar a autoria.",
+      "hint": "Pronuncie o nome e use um modelo de letras se precisar.",
+      "errorFocus": "SUPPORTED_WRITING",
+      "feedback": {
+        "correct": "Boa análise: A produção combina escuta da fala, análise sonora inicial e apoio visual sem retirar a autoria.",
+        "incorrect": "A produção combina escuta da fala, análise sonora inicial e apoio visual sem retirar a autoria.",
+        "hint": "Pronuncie o nome e use um modelo de letras se precisar.",
+        "errorFocus": "SUPPORTED_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-22",
+      "statement": "“FACA” e “VACA” são objetos diferentes e começam com sons diferentes. Como a escrita pode mostrar isso?",
+      "prompt": "“FACA” e “VACA” são objetos diferentes e começam com sons diferentes. Como a escrita pode mostrar isso?",
+      "options": [
+        "Usando a mesma palavra.",
+        "Usando letras iniciais diferentes: F e V.",
+        "Usando somente desenhos.",
+        "Trocando todas as letras sempre."
+      ],
+      "correctAnswer": "Usando letras iniciais diferentes: F e V.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_PALAVRAS",
+      "explanation": "A escrita pode representar uma diferença sonora com a troca de uma letra, mantendo outras partes.",
+      "hint": "Compare o primeiro som e a primeira letra.",
+      "errorFocus": "SOUND_DIFFERENCE_IN_WRITING",
+      "feedback": {
+        "correct": "Boa análise: A escrita pode representar uma diferença sonora com a troca de uma letra, mantendo outras partes.",
+        "incorrect": "A escrita pode representar uma diferença sonora com a troca de uma letra, mantendo outras partes.",
+        "hint": "Compare o primeiro som e a primeira letra.",
+        "errorFocus": "SOUND_DIFFERENCE_IN_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-23",
+      "statement": "Uma criança usa comunicação alternativa para indicar a palavra “BOLA”. Como manter o objetivo?",
+      "prompt": "Uma criança usa comunicação alternativa para indicar a palavra “BOLA”. Como manter o objetivo?",
+      "options": [
+        "Impedir a participação.",
+        "Avaliar apenas a fala oral.",
+        "Oferecer a palavra em cartões, símbolos e áudio para relacionar a expressão escolhida à escrita.",
+        "Trocar alfabetização por desenho livre."
+      ],
+      "correctAnswer": "Oferecer a palavra em cartões, símbolos e áudio para relacionar a expressão escolhida à escrita.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ACESSIBILIDADE_FALA",
+      "explanation": "A comunicação alternativa amplia a expressão e pode apoiar a relação entre fala, símbolo e escrita.",
+      "hint": "Use a forma de comunicação acessível e conecte-a ao cartão escrito.",
+      "errorFocus": "AAC_AND_ALPHABETIC_WRITING",
+      "feedback": {
+        "correct": "Boa análise: A comunicação alternativa amplia a expressão e pode apoiar a relação entre fala, símbolo e escrita.",
+        "incorrect": "A comunicação alternativa amplia a expressão e pode apoiar a relação entre fala, símbolo e escrita.",
+        "hint": "Use a forma de comunicação acessível e conecte-a ao cartão escrito.",
+        "errorFocus": "AAC_AND_ALPHABETIC_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-24",
+      "statement": "Por que uma mesma palavra pode soar um pouco diferente para pessoas de regiões distintas sem deixar de ser escrita com letras?",
+      "prompt": "Por que uma mesma palavra pode soar um pouco diferente para pessoas de regiões distintas sem deixar de ser escrita com letras?",
+      "options": [
+        "Porque a fala nunca tem som.",
+        "Porque letras representam desenhos apenas.",
+        "Porque toda pronúncia é idêntica.",
+        "Porque a escrita convencional registra uma forma compartilhada, enquanto a fala pode variar."
+      ],
+      "correctAnswer": "Porque a escrita convencional registra uma forma compartilhada, enquanto a fala pode variar.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "VARIACAO_DA_FALA",
+      "explanation": "A relação entre fala e escrita não exige que todas as pessoas pronunciem de modo idêntico.",
+      "hint": "Diferencie a variação da fala da função social da escrita.",
+      "errorFocus": "SPEECH_VARIATION",
+      "feedback": {
+        "correct": "Boa análise: A relação entre fala e escrita não exige que todas as pessoas pronunciem de modo idêntico.",
+        "incorrect": "A relação entre fala e escrita não exige que todas as pessoas pronunciem de modo idêntico.",
+        "hint": "Diferencie a variação da fala da função social da escrita.",
+        "errorFocus": "SPEECH_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-25",
+      "statement": "Qual frase explica o sistema de escrita alfabética?",
+      "prompt": "Qual frase explica o sistema de escrita alfabética?",
+      "options": [
+        "As letras e suas combinações representam aspectos sonoros da fala.",
+        "Cada letra representa um desenho fixo.",
+        "Números substituem todos os sons.",
+        "A escrita não tem relação com a fala."
+      ],
+      "correctAnswer": "As letras e suas combinações representam aspectos sonoros da fala.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PRINCIPIO_ALFABETICO",
+      "explanation": "O princípio alfabético relaciona unidades sonoras da fala às letras e combinações usadas na escrita.",
+      "hint": "Pense no que muda quando transformamos uma palavra falada em escrita.",
+      "errorFocus": "DEFINE_ALPHABETIC_SYSTEM",
+      "feedback": {
+        "correct": "Boa análise: O princípio alfabético relaciona unidades sonoras da fala às letras e combinações usadas na escrita.",
+        "incorrect": "O princípio alfabético relaciona unidades sonoras da fala às letras e combinações usadas na escrita.",
+        "hint": "Pense no que muda quando transformamos uma palavra falada em escrita.",
+        "errorFocus": "DEFINE_ALPHABETIC_SYSTEM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-26",
+      "statement": "Ao escrever “GATO”, qual informação é central para escolher as letras?",
+      "prompt": "Ao escrever “GATO”, qual informação é central para escolher as letras?",
+      "options": [
+        "A cor do gato.",
+        "A sequência de sons da palavra falada.",
+        "O tamanho do animal.",
+        "O desenho do cartão."
+      ],
+      "correctAnswer": "A sequência de sons da palavra falada.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SOM_LETRA_SIGNIFICADO",
+      "explanation": "A escrita alfabética usa a fala como referência, não a aparência do objeto.",
+      "hint": "Separe o que se ouve do que se vê no objeto.",
+      "errorFocus": "SOUND_NOT_APPEARANCE",
+      "feedback": {
+        "correct": "Boa análise: A escrita alfabética usa a fala como referência, não a aparência do objeto.",
+        "incorrect": "A escrita alfabética usa a fala como referência, não a aparência do objeto.",
+        "hint": "Separe o que se ouve do que se vê no objeto.",
+        "errorFocus": "SOUND_NOT_APPEARANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-27",
+      "statement": "“MALA” e “MATO” começam com M. O que isso permite observar?",
+      "prompt": "“MALA” e “MATO” começam com M. O que isso permite observar?",
+      "options": [
+        "As palavras têm o mesmo significado.",
+        "Todas as letras são iguais.",
+        "A mesma letra pode registrar o som inicial compartilhado em palavras diferentes.",
+        "A letra M é um desenho."
+      ],
+      "correctAnswer": "A mesma letra pode registrar o som inicial compartilhado em palavras diferentes.",
+      "answerPosition": "C",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MESMO_INICIO",
+      "explanation": "Palavras diferentes podem compartilhar uma correspondência sonora e gráfica no início.",
+      "hint": "Compare somente a primeira parte das palavras.",
+      "errorFocus": "SHARED_INITIAL_LETTER",
+      "feedback": {
+        "correct": "Boa análise: Palavras diferentes podem compartilhar uma correspondência sonora e gráfica no início.",
+        "incorrect": "Palavras diferentes podem compartilhar uma correspondência sonora e gráfica no início.",
+        "hint": "Compare somente a primeira parte das palavras.",
+        "errorFocus": "SHARED_INITIAL_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-28",
+      "statement": "Por que trocar a ordem das letras pode mudar a palavra escrita?",
+      "prompt": "Por que trocar a ordem das letras pode mudar a palavra escrita?",
+      "options": [
+        "Porque a cor das letras muda.",
+        "Porque toda ordem tem o mesmo resultado.",
+        "Porque letras não têm som.",
+        "Porque a sequência das letras acompanha a sequência dos sons e participa da forma convencional."
+      ],
+      "correctAnswer": "Porque a sequência das letras acompanha a sequência dos sons e participa da forma convencional.",
+      "answerPosition": "D",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ORDEM_SONORA",
+      "explanation": "A escrita alfabética não é um conjunto aleatório: a ordem é parte da representação.",
+      "hint": "Leia a palavra na mesma direção em que fala suas partes.",
+      "errorFocus": "SEQUENCE_MATTERS",
+      "feedback": {
+        "correct": "Boa análise: A escrita alfabética não é um conjunto aleatório: a ordem é parte da representação.",
+        "incorrect": "A escrita alfabética não é um conjunto aleatório: a ordem é parte da representação.",
+        "hint": "Leia a palavra na mesma direção em que fala suas partes.",
+        "errorFocus": "SEQUENCE_MATTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-29",
+      "statement": "O que não se deve concluir a partir de uma única tentativa de escrita?",
+      "prompt": "O que não se deve concluir a partir de uma única tentativa de escrita?",
+      "options": [
+        "Não se deve diagnosticar sozinho todo o conhecimento da criança sobre sons e letras.",
+        "É possível observar essa tentativa.",
+        "É possível conversar sobre as letras.",
+        "É possível planejar outra situação."
+      ],
+      "correctAnswer": "Não se deve diagnosticar sozinho todo o conhecimento da criança sobre sons e letras.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LIMITES_DIAGNOSTICO",
+      "explanation": "Uma tentativa oferece evidência localizada, não um diagnóstico completo.",
+      "hint": "Separe observação da amostra e conclusão ampla.",
+      "errorFocus": "LIMIT_SINGLE_ATTEMPT",
+      "feedback": {
+        "correct": "Boa análise: Uma tentativa oferece evidência localizada, não um diagnóstico completo.",
+        "incorrect": "Uma tentativa oferece evidência localizada, não um diagnóstico completo.",
+        "hint": "Separe observação da amostra e conclusão ampla.",
+        "errorFocus": "LIMIT_SINGLE_ATTEMPT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-30",
+      "statement": "Qual feedback ajuda a revisar “BATO” quando a palavra falada é “PATO”?",
+      "prompt": "Qual feedback ajuda a revisar “BATO” quando a palavra falada é “PATO”?",
+      "options": [
+        "“Você não sabe escrever.”",
+        "“Vamos repetir o primeiro som e comparar a letra inicial com o modelo.”",
+        "“Escolha qualquer letra.”",
+        "“Não fale a palavra.”"
+      ],
+      "correctAnswer": "“Vamos repetir o primeiro som e comparar a letra inicial com o modelo.”",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "FEEDBACK_EXPLICATIVO",
+      "explanation": "O feedback conecta a fala à letra e convida a uma nova análise sem rotular a criança.",
+      "hint": "Use o primeiro som como pista para revisar.",
+      "errorFocus": "FEEDBACK_SOUND_LETTER",
+      "feedback": {
+        "correct": "Boa análise: O feedback conecta a fala à letra e convida a uma nova análise sem rotular a criança.",
+        "incorrect": "O feedback conecta a fala à letra e convida a uma nova análise sem rotular a criança.",
+        "hint": "Use o primeiro som como pista para revisar.",
+        "errorFocus": "FEEDBACK_SOUND_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-31",
+      "statement": "Qual escrita representa “BOLA”?",
+      "prompt": "Qual escrita representa “BOLA”?",
+      "options": [
+        "BALA",
+        "DOLA",
+        "BOLA",
+        "BELA"
+      ],
+      "correctAnswer": "BOLA",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_BOLA",
+      "explanation": "BOLA acompanha a sequência sonora apresentada.",
+      "hint": "Fale BO-LA e compare as vogais.",
+      "errorFocus": "REVIEW_WORD_SOUNDS",
+      "feedback": {
+        "correct": "Boa análise: BOLA acompanha a sequência sonora apresentada.",
+        "incorrect": "BOLA acompanha a sequência sonora apresentada.",
+        "hint": "Fale BO-LA e compare as vogais.",
+        "errorFocus": "REVIEW_WORD_SOUNDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-32",
+      "statement": "Qual letra inicia “MALA”?",
+      "prompt": "Qual letra inicia “MALA”?",
+      "options": [
+        "P",
+        "T",
+        "L",
+        "M"
+      ],
+      "correctAnswer": "M",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_MALA",
+      "explanation": "M representa o som inicial de MALA.",
+      "hint": "Diga só o começo da palavra.",
+      "errorFocus": "REVIEW_INITIAL_SOUND",
+      "feedback": {
+        "correct": "Boa análise: M representa o som inicial de MALA.",
+        "incorrect": "M representa o som inicial de MALA.",
+        "hint": "Diga só o começo da palavra.",
+        "errorFocus": "REVIEW_INITIAL_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-33",
+      "statement": "O que muda entre “PATO” e “BATO”?",
+      "prompt": "O que muda entre “PATO” e “BATO”?",
+      "options": [
+        "A letra e o som inicial.",
+        "Todas as letras.",
+        "Somente a cor.",
+        "Nada."
+      ],
+      "correctAnswer": "A letra e o som inicial.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_PATO_BATO",
+      "explanation": "A troca inicial registra uma diferença sonora entre as palavras.",
+      "hint": "Compare a primeira letra e o primeiro som.",
+      "errorFocus": "REVIEW_INITIAL_CONTRAST",
+      "feedback": {
+        "correct": "Boa análise: A troca inicial registra uma diferença sonora entre as palavras.",
+        "incorrect": "A troca inicial registra uma diferença sonora entre as palavras.",
+        "hint": "Compare a primeira letra e o primeiro som.",
+        "errorFocus": "REVIEW_INITIAL_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-34",
+      "statement": "Qual escrita combina com “UVA”?",
+      "prompt": "Qual escrita combina com “UVA”?",
+      "options": [
+        "OVA",
+        "UVA",
+        "UVO",
+        "VAU"
+      ],
+      "correctAnswer": "UVA",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_UVA",
+      "explanation": "UVA registra a sequência sonora da palavra.",
+      "hint": "Diga U-VA e observe a ordem.",
+      "errorFocus": "REVIEW_VOWEL_SEQUENCE",
+      "feedback": {
+        "correct": "Boa análise: UVA registra a sequência sonora da palavra.",
+        "incorrect": "UVA registra a sequência sonora da palavra.",
+        "hint": "Diga U-VA e observe a ordem.",
+        "errorFocus": "REVIEW_VOWEL_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-35",
+      "statement": "O que as letras fazem na escrita alfabética?",
+      "prompt": "O que as letras fazem na escrita alfabética?",
+      "options": [
+        "Representam apenas cores.",
+        "Substituem todos os desenhos.",
+        "Ajudam a representar sons da fala em uma sequência convencional.",
+        "Não se relacionam com a fala."
+      ],
+      "correctAnswer": "Ajudam a representar sons da fala em uma sequência convencional.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_LETRAS_SONS",
+      "explanation": "A função central é relacionar letras e sons na escrita.",
+      "hint": "Pense na passagem da palavra falada para o papel.",
+      "errorFocus": "REVIEW_ALPHABETIC_PRINCIPLE",
+      "feedback": {
+        "correct": "Boa análise: A função central é relacionar letras e sons na escrita.",
+        "incorrect": "A função central é relacionar letras e sons na escrita.",
+        "hint": "Pense na passagem da palavra falada para o papel.",
+        "errorFocus": "REVIEW_ALPHABETIC_PRINCIPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-36",
+      "statement": "Em “SAPO” e “SACO”, qual parte inicial coincide?",
+      "prompt": "Em “SAPO” e “SACO”, qual parte inicial coincide?",
+      "options": [
+        "P O",
+        "C O",
+        "Nenhuma.",
+        "S A"
+      ],
+      "correctAnswer": "S A",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_SAPO_SACO",
+      "explanation": "As duas palavras compartilham a parte inicial SA na escrita apresentada.",
+      "hint": "Compare as letras antes da diferença.",
+      "errorFocus": "REVIEW_SHARED_PART",
+      "feedback": {
+        "correct": "Boa análise: As duas palavras compartilham a parte inicial SA na escrita apresentada.",
+        "incorrect": "As duas palavras compartilham a parte inicial SA na escrita apresentada.",
+        "hint": "Compare as letras antes da diferença.",
+        "errorFocus": "REVIEW_SHARED_PART"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-37",
+      "statement": "No ditado de “FITA”, qual pista deve ser usada primeiro?",
+      "prompt": "No ditado de “FITA”, qual pista deve ser usada primeiro?",
+      "options": [
+        "O som inicial da palavra.",
+        "A cor do lápis.",
+        "O desenho da fita.",
+        "O número da página."
+      ],
+      "correctAnswer": "O som inicial da palavra.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DITADO",
+      "explanation": "A fala oferece a pista principal para selecionar letras.",
+      "hint": "Repita o início da palavra.",
+      "errorFocus": "REVIEW_SOUND_CLUE",
+      "feedback": {
+        "correct": "Boa análise: A fala oferece a pista principal para selecionar letras.",
+        "incorrect": "A fala oferece a pista principal para selecionar letras.",
+        "hint": "Repita o início da palavra.",
+        "errorFocus": "REVIEW_SOUND_CLUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-38",
+      "statement": "Para escrever “BIA”, o que deve ser ouvido?",
+      "prompt": "Para escrever “BIA”, o que deve ser ouvido?",
+      "options": [
+        "A cor do crachá.",
+        "A sequência de sons do nome.",
+        "O tamanho da letra.",
+        "O desenho da pessoa."
+      ],
+      "correctAnswer": "A sequência de sons do nome.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_NOME",
+      "explanation": "O nome pode ser relacionado à escrita pela sequência sonora percebida.",
+      "hint": "Fale BIA devagar.",
+      "errorFocus": "REVIEW_NAME_SOUNDS",
+      "feedback": {
+        "correct": "Boa análise: O nome pode ser relacionado à escrita pela sequência sonora percebida.",
+        "incorrect": "O nome pode ser relacionado à escrita pela sequência sonora percebida.",
+        "hint": "Fale BIA devagar.",
+        "errorFocus": "REVIEW_NAME_SOUNDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-39",
+      "statement": "Qual afirmação é adequada sobre fala e escrita?",
+      "prompt": "Qual afirmação é adequada sobre fala e escrita?",
+      "options": [
+        "Toda fala é igual.",
+        "A escrita registra só desenhos.",
+        "A fala pode variar, e a escrita convencional oferece referências compartilhadas.",
+        "A fala não pode ser escrita."
+      ],
+      "correctAnswer": "A fala pode variar, e a escrita convencional oferece referências compartilhadas.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_VARIACAO",
+      "explanation": "A afirmação preserva a relação entre fala e escrita sem apagar a diversidade linguística.",
+      "hint": "Pense no que é compartilhado e no que pode variar.",
+      "errorFocus": "REVIEW_SPEECH_WRITING",
+      "feedback": {
+        "correct": "Boa análise: A afirmação preserva a relação entre fala e escrita sem apagar a diversidade linguística.",
+        "incorrect": "A afirmação preserva a relação entre fala e escrita sem apagar a diversidade linguística.",
+        "hint": "Pense no que é compartilhado e no que pode variar.",
+        "errorFocus": "REVIEW_SPEECH_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-sound-writing-fi-40",
+      "statement": "Depois de uma tentativa, qual conclusão é responsável?",
+      "prompt": "Depois de uma tentativa, qual conclusão é responsável?",
+      "options": [
+        "“Uma tentativa prova tudo.”",
+        "“A criança nunca aprenderá.”",
+        "“O desenho explica a escrita.”",
+        "“Nesta palavra, observamos estas relações entre sons e letras; vamos explorar outras situações.”"
+      ],
+      "correctAnswer": "“Nesta palavra, observamos estas relações entre sons e letras; vamos explorar outras situações.”",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_CONCLUSAO",
+      "explanation": "A conclusão se apoia na evidência disponível e indica continuidade da aprendizagem.",
+      "hint": "Fale da situação observada sem generalizar.",
+      "errorFocus": "REVIEW_LIMITS",
+      "feedback": {
+        "correct": "Boa análise: A conclusão se apoia na evidência disponível e indica continuidade da aprendizagem.",
+        "incorrect": "A conclusão se apoia na evidência disponível e indica continuidade da aprendizagem.",
+        "hint": "Fale da situação observada sem generalizar.",
+        "errorFocus": "REVIEW_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

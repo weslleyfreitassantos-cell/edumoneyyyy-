@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge03-public-spaces-and-uses",
+  "canonicalSkillCode": "AUTHORING_EF01GE03_COMPARE_PUBLIC_SPACE_USES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "semelhanças e diferenças nos usos de praças, parques e outros espaços públicos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e relatar semelhanças e diferenças de usos do espaço público (praças, parques) para o lazer e diferentes manifestações.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Espaços públicos, muitos jeitos de aproveitar",
+    "objective": "Identificar e relatar semelhanças e diferenças de usos de espaços públicos para lazer e manifestações, usando exemplos observados ou fictícios sem generalizar sobre grupos ou lugares.",
+    "summary": "Praças, parques e outros espaços públicos podem receber diferentes atividades: brincar, caminhar, descansar, conversar, fazer uma apresentação ou participar de um encontro. O uso depende das pessoas, do horário, das condições do espaço e das regras de convivência. Comparar significa dizer o que se parece e o que muda com base em pistas observáveis, sem concluir que todas as pessoas usam um lugar do mesmo jeito.",
+    "explanation": "Observe duas descrições, imagens acessíveis ou mapas simples de espaços públicos. Procure pistas como atividades, horários, equipamentos, caminhos e quem pode participar. Você pode encontrar algo em comum — por exemplo, pessoas usando o espaço para lazer — e também diferenças, como a presença de brinquedos ou de uma apresentação. Uma cena mostra um momento, não todas as formas de uso de uma praça. Considere acessibilidade, segurança, cuidado coletivo e diferentes preferências. A turma pode comparar materiais preparados pelo educador sem precisar visitar um local sem supervisão.",
+    "workedExample": "Uma ficha fictícia descreve uma praça pela manhã, usada por pessoas que caminham e descansam; outra mostra uma apresentação de música no fim da tarde. Nas duas, pessoas compartilham um espaço público. As atividades e os horários são diferentes, e as fichas não dizem que esses usos acontecem sempre.",
+    "commonMistake": "Afirmar que todas as pessoas usam um espaço da mesma maneira ou que uma única observação representa todos os horários e grupos.",
+    "priorKnowledge": [
+      "Reconhecer lugares conhecidos em imagens, descrições ou mapas simples.",
+      "Identificar ações de lazer e regras básicas de convivência."
+    ],
+    "keyConcepts": [
+      "espaço público",
+      "praça",
+      "parque",
+      "lazer",
+      "manifestação",
+      "uso",
+      "comparação",
+      "acessibilidade",
+      "convivência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ONE_SCENE_NOT_ALL_USES",
+        "action": "Compare duas fichas de horários diferentes e destaque que cada uma registra um momento, não todos os usos do espaço."
+      },
+      {
+        "errorFocus": "COMPARE_WITH_EVIDENCE",
+        "action": "Use uma tabela de duas colunas para registrar uma pista observável de cada lugar antes de relatar uma semelhança ou diferença."
+      },
+      {
+        "errorFocus": "ACCESSIBLE_SHARED_SPACE",
+        "action": "Inclua caminhos, assentos e diferentes modos de participação nas pistas, sem presumir que todas as pessoas têm as mesmas necessidades."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+      "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+      "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge03-space-use-cards",
+        "title": "Comparando fichas de espaços",
+        "instructions": "Fichas acessíveis descrevem dois espaços públicos fictícios em horários distintos.\n1. Leia ou observe as pistas de cada ficha.\n2. Registre uma atividade comum e uma diferença entre os usos descritos.\n3. Apresente a comparação explicando que ela vale para as cenas mostradas.",
+        "steps": [
+          "Leia ou observe as pistas de cada ficha.",
+          "Registre uma atividade comum e uma diferença entre os usos descritos.",
+          "Apresente a comparação explicando que ela vale para as cenas mostradas."
+        ],
+        "evidence": "Comparação oral, visual ou escrita que relaciona atividades a pistas observáveis e evita generalizações.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um espaço com apoio.",
+            "developing": "registra uma semelhança ou diferença usando uma pista.",
+            "proficient": "relata semelhanças e diferenças e delimita a conclusão às fontes observadas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge03-design-inclusive-public-place",
+        "title": "Mapa de convivência",
+        "instructions": "A turma planeja em papel um espaço público imaginário para diferentes atividades de lazer.\n1. Escolha dois usos possíveis, como brincar e descansar.\n2. Desenhe ou organize símbolos para caminhos, assentos e áreas compartilhadas.\n3. Explique como pessoas diferentes podem participar e combinar regras de convivência.",
+        "steps": [
+          "Escolha dois usos possíveis, como brincar e descansar.",
+          "Desenhe ou organize símbolos para caminhos, assentos e áreas compartilhadas.",
+          "Explique como pessoas diferentes podem participar e combinar regras de convivência."
+        ],
+        "evidence": "Mapa ou explicação que apresenta usos variados, acessibilidade e cuidado compartilhado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "sugere um uso com apoio.",
+            "developing": "inclui dois usos ou uma forma de acesso.",
+            "proficient": "explica usos distintos e uma escolha que facilita participação e convivência."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge03-public-spaces-and-uses-01",
+          "v1-ef01ge03-public-spaces-and-uses-02",
+          "v1-ef01ge03-public-spaces-and-uses-03",
+          "v1-ef01ge03-public-spaces-and-uses-04",
+          "v1-ef01ge03-public-spaces-and-uses-05",
+          "v1-ef01ge03-public-spaces-and-uses-06",
+          "v1-ef01ge03-public-spaces-and-uses-07",
+          "v1-ef01ge03-public-spaces-and-uses-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge03-public-spaces-and-uses-09",
+          "v1-ef01ge03-public-spaces-and-uses-10",
+          "v1-ef01ge03-public-spaces-and-uses-11",
+          "v1-ef01ge03-public-spaces-and-uses-12",
+          "v1-ef01ge03-public-spaces-and-uses-13",
+          "v1-ef01ge03-public-spaces-and-uses-14",
+          "v1-ef01ge03-public-spaces-and-uses-15",
+          "v1-ef01ge03-public-spaces-and-uses-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge03-public-spaces-and-uses-17",
+          "v1-ef01ge03-public-spaces-and-uses-18",
+          "v1-ef01ge03-public-spaces-and-uses-19",
+          "v1-ef01ge03-public-spaces-and-uses-20",
+          "v1-ef01ge03-public-spaces-and-uses-21",
+          "v1-ef01ge03-public-spaces-and-uses-22",
+          "v1-ef01ge03-public-spaces-and-uses-23",
+          "v1-ef01ge03-public-spaces-and-uses-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge03-public-spaces-and-uses-25",
+          "v1-ef01ge03-public-spaces-and-uses-26",
+          "v1-ef01ge03-public-spaces-and-uses-27",
+          "v1-ef01ge03-public-spaces-and-uses-28",
+          "v1-ef01ge03-public-spaces-and-uses-29",
+          "v1-ef01ge03-public-spaces-and-uses-30",
+          "v1-ef01ge03-public-spaces-and-uses-31",
+          "v1-ef01ge03-public-spaces-and-uses-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge03-public-spaces-and-uses-33",
+          "v1-ef01ge03-public-spaces-and-uses-34",
+          "v1-ef01ge03-public-spaces-and-uses-35",
+          "v1-ef01ge03-public-spaces-and-uses-36",
+          "v1-ef01ge03-public-spaces-and-uses-37",
+          "v1-ef01ge03-public-spaces-and-uses-38",
+          "v1-ef01ge03-public-spaces-and-uses-39",
+          "v1-ef01ge03-public-spaces-and-uses-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE03",
+        "descriptor": "Identificar e relatar semelhanças e diferenças de usos do espaço público (praças, parques) para o lazer e diferentes manifestações.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-01",
+      "statement": "Uma descrição mostra pessoas descansando em bancos de uma praça. Qual uso aparece?",
+      "prompt": "Uma descrição mostra pessoas descansando em bancos de uma praça. Qual uso aparece?",
+      "options": [
+        "Descansar em um espaço público.",
+        "Comprar uma casa",
+        "Fechar a praça para todos",
+        "Guardar objetos pessoais"
+      ],
+      "correctAnswer": "Descansar em um espaço público.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Comprar uma casa": [
+          "PUBLIC_SPACE_USE"
+        ],
+        "Fechar a praça para todos": [
+          "PUBLIC_SPACE_USE"
+        ],
+        "Guardar objetos pessoais": [
+          "PUBLIC_SPACE_USE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PRACA_COM_BANCOS",
+      "explanation": "A ficha descreve descanso em bancos da praça.",
+      "hint": "Procure a ação mostrada.",
+      "errorFocus": "PUBLIC_SPACE_USE",
+      "feedback": {
+        "correct": "Boa observação: A ficha descreve descanso em bancos da praça.",
+        "incorrect": "A ficha descreve descanso em bancos da praça.",
+        "hint": "Procure a ação mostrada.",
+        "errorFocus": "PUBLIC_SPACE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-02",
+      "statement": "Uma cena fictícia mostra crianças usando balanços em um parque. Para que usam o espaço nessa cena?",
+      "prompt": "Uma cena fictícia mostra crianças usando balanços em um parque. Para que usam o espaço nessa cena?",
+      "options": [
+        "Para registrar uma regra de trânsito",
+        "Para brincar e ter lazer.",
+        "Para morar permanentemente",
+        "Para impedir outras atividades"
+      ],
+      "correctAnswer": "Para brincar e ter lazer.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para registrar uma regra de trânsito": [
+          "LEISURE_USE"
+        ],
+        "Para morar permanentemente": [
+          "LEISURE_USE"
+        ],
+        "Para impedir outras atividades": [
+          "LEISURE_USE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARQUE_COM_BALANCO",
+      "explanation": "Brincar no balanço é uma atividade de lazer na cena.",
+      "hint": "Observe o que as crianças fazem.",
+      "errorFocus": "LEISURE_USE",
+      "feedback": {
+        "correct": "Boa observação: Brincar no balanço é uma atividade de lazer na cena.",
+        "incorrect": "Brincar no balanço é uma atividade de lazer na cena.",
+        "hint": "Observe o que as crianças fazem.",
+        "errorFocus": "LEISURE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-03",
+      "statement": "Uma ficha mostra caminhada e outra, uma roda de música numa praça. Que semelhança pode ser relatada?",
+      "prompt": "Uma ficha mostra caminhada e outra, uma roda de música numa praça. Que semelhança pode ser relatada?",
+      "options": [
+        "As atividades são exatamente iguais",
+        "As cenas acontecem no mesmo horário",
+        "As duas cenas mostram pessoas usando um espaço público.",
+        "Todas as pessoas preferem música"
+      ],
+      "correctAnswer": "As duas cenas mostram pessoas usando um espaço público.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As atividades são exatamente iguais": [
+          "COMPARE_COMMON_FEATURE"
+        ],
+        "As cenas acontecem no mesmo horário": [
+          "COMPARE_COMMON_FEATURE"
+        ],
+        "Todas as pessoas preferem música": [
+          "COMPARE_COMMON_FEATURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_PRACAS_FICHAS",
+      "explanation": "As fichas apresentam usos diferentes do mesmo tipo de espaço compartilhado.",
+      "hint": "Encontre uma característica presente nas duas cenas.",
+      "errorFocus": "COMPARE_COMMON_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: As fichas apresentam usos diferentes do mesmo tipo de espaço compartilhado.",
+        "incorrect": "As fichas apresentam usos diferentes do mesmo tipo de espaço compartilhado.",
+        "hint": "Encontre uma característica presente nas duas cenas.",
+        "errorFocus": "COMPARE_COMMON_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-04",
+      "statement": "Um mapa simples marca uma pista de caminhada e um parquinho. O que ele ajuda a reconhecer?",
+      "prompt": "Um mapa simples marca uma pista de caminhada e um parquinho. O que ele ajuda a reconhecer?",
+      "options": [
+        "O que cada visitante pensa",
+        "Quem visitará o parque amanhã",
+        "Todas as regras da cidade",
+        "Duas áreas com usos diferentes no parque."
+      ],
+      "correctAnswer": "Duas áreas com usos diferentes no parque.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O que cada visitante pensa": [
+          "MAP_SCOPE"
+        ],
+        "Quem visitará o parque amanhã": [
+          "MAP_SCOPE"
+        ],
+        "Todas as regras da cidade": [
+          "MAP_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAPA_DO_PARQUE",
+      "explanation": "O mapa indica áreas e usos, não pensamentos ou acontecimentos futuros.",
+      "hint": "Leia os símbolos da legenda.",
+      "errorFocus": "MAP_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O mapa indica áreas e usos, não pensamentos ou acontecimentos futuros.",
+        "incorrect": "O mapa indica áreas e usos, não pensamentos ou acontecimentos futuros.",
+        "hint": "Leia os símbolos da legenda.",
+        "errorFocus": "MAP_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-05",
+      "statement": "Uma descrição registra uma apresentação de dança na praça em um sábado. O que podemos afirmar?",
+      "prompt": "Uma descrição registra uma apresentação de dança na praça em um sábado. O que podemos afirmar?",
+      "options": [
+        "A praça recebeu essa manifestação naquele momento descrito.",
+        "A praça sempre recebe dança",
+        "Todas as pessoas da cidade dançam",
+        "A apresentação acontece todos os sábados"
+      ],
+      "correctAnswer": "A praça recebeu essa manifestação naquele momento descrito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A praça sempre recebe dança": [
+          "OBSERVATION_TIME_LIMIT"
+        ],
+        "Todas as pessoas da cidade dançam": [
+          "OBSERVATION_TIME_LIMIT"
+        ],
+        "A apresentação acontece todos os sábados": [
+          "OBSERVATION_TIME_LIMIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "APRESENTACAO_NA_PRACA",
+      "explanation": "A fonte informa uma apresentação em um momento específico.",
+      "hint": "Mantenha a afirmação dentro do que a ficha registra.",
+      "errorFocus": "OBSERVATION_TIME_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A fonte informa uma apresentação em um momento específico.",
+        "incorrect": "A fonte informa uma apresentação em um momento específico.",
+        "hint": "Mantenha a afirmação dentro do que a ficha registra.",
+        "errorFocus": "OBSERVATION_TIME_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-06",
+      "statement": "Ler um livro sentado em um banco do parque é um exemplo de qual uso?",
+      "prompt": "Ler um livro sentado em um banco do parque é um exemplo de qual uso?",
+      "options": [
+        "Construção de uma moradia",
+        "Lazer e descanso no espaço público.",
+        "Transporte de carga",
+        "Atividade exclusiva de uma pessoa"
+      ],
+      "correctAnswer": "Lazer e descanso no espaço público.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Construção de uma moradia": [
+          "LEISURE_AND_REST"
+        ],
+        "Transporte de carga": [
+          "LEISURE_AND_REST"
+        ],
+        "Atividade exclusiva de uma pessoa": [
+          "LEISURE_AND_REST"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DE_DESCANSO",
+      "explanation": "A cena mostra leitura e descanso em um espaço compartilhado.",
+      "hint": "Pense na atividade descrita.",
+      "errorFocus": "LEISURE_AND_REST",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra leitura e descanso em um espaço compartilhado.",
+        "incorrect": "A cena mostra leitura e descanso em um espaço compartilhado.",
+        "hint": "Pense na atividade descrita.",
+        "errorFocus": "LEISURE_AND_REST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-07",
+      "statement": "Num parque, pessoas brincam e outras descansam. Qual atitude favorece a convivência?",
+      "prompt": "Num parque, pessoas brincam e outras descansam. Qual atitude favorece a convivência?",
+      "options": [
+        "Impedir que alguém use os bancos",
+        "Afirmar que só um grupo pode ficar ali",
+        "Compartilhar o espaço respeitando combinados e outras pessoas.",
+        "Ignorar os caminhos de acesso"
+      ],
+      "correctAnswer": "Compartilhar o espaço respeitando combinados e outras pessoas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Impedir que alguém use os bancos": [
+          "SHARED_SPACE_CARE"
+        ],
+        "Afirmar que só um grupo pode ficar ali": [
+          "SHARED_SPACE_CARE"
+        ],
+        "Ignorar os caminhos de acesso": [
+          "SHARED_SPACE_CARE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DE_CONVIVENCIA",
+      "explanation": "Regras de respeito ajudam diferentes pessoas a compartilhar o espaço.",
+      "hint": "Escolha a ação que permite usos variados.",
+      "errorFocus": "SHARED_SPACE_CARE",
+      "feedback": {
+        "correct": "Boa observação: Regras de respeito ajudam diferentes pessoas a compartilhar o espaço.",
+        "incorrect": "Regras de respeito ajudam diferentes pessoas a compartilhar o espaço.",
+        "hint": "Escolha a ação que permite usos variados.",
+        "errorFocus": "SHARED_SPACE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-08",
+      "statement": "A turma quer comparar usos de praças sem sair da escola. Qual recurso serve?",
+      "prompt": "A turma quer comparar usos de praças sem sair da escola. Qual recurso serve?",
+      "options": [
+        "Uma visita sem supervisão",
+        "Fotos de desconhecidos sem autorização",
+        "Endereços das casas dos estudantes",
+        "Fichas ou imagens acessíveis preparadas pelo educador."
+      ],
+      "correctAnswer": "Fichas ou imagens acessíveis preparadas pelo educador.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma visita sem supervisão": [
+          "SAFE_OBSERVATION_METHOD"
+        ],
+        "Fotos de desconhecidos sem autorização": [
+          "SAFE_OBSERVATION_METHOD"
+        ],
+        "Endereços das casas dos estudantes": [
+          "SAFE_OBSERVATION_METHOD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMPARACAO_SEGURA",
+      "explanation": "Materiais preparados permitem observar sem deslocamento ou exposição.",
+      "hint": "Escolha uma forma segura de obter pistas.",
+      "errorFocus": "SAFE_OBSERVATION_METHOD",
+      "feedback": {
+        "correct": "Boa observação: Materiais preparados permitem observar sem deslocamento ou exposição.",
+        "incorrect": "Materiais preparados permitem observar sem deslocamento ou exposição.",
+        "hint": "Escolha uma forma segura de obter pistas.",
+        "errorFocus": "SAFE_OBSERVATION_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-09",
+      "statement": "Uma ficha mostra pessoas caminhando num caminho do parque. Qual atividade está registrada?",
+      "prompt": "Uma ficha mostra pessoas caminhando num caminho do parque. Qual atividade está registrada?",
+      "options": [
+        "Caminhar para lazer ou exercício.",
+        "Construir uma escola",
+        "Organizar uma aula dentro de casa",
+        "Fechar o caminho para o público"
+      ],
+      "correctAnswer": "Caminhar para lazer ou exercício.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Construir uma escola": [
+          "ACTIVITY_FROM_SCENE"
+        ],
+        "Organizar uma aula dentro de casa": [
+          "ACTIVITY_FROM_SCENE"
+        ],
+        "Fechar o caminho para o público": [
+          "ACTIVITY_FROM_SCENE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARQUE_COM_CAMINHO",
+      "explanation": "A ficha indica caminhada no parque.",
+      "hint": "Procure a ação das pessoas.",
+      "errorFocus": "ACTIVITY_FROM_SCENE",
+      "feedback": {
+        "correct": "Boa observação: A ficha indica caminhada no parque.",
+        "incorrect": "A ficha indica caminhada no parque.",
+        "hint": "Procure a ação das pessoas.",
+        "errorFocus": "ACTIVITY_FROM_SCENE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-10",
+      "statement": "Uma praça tem bancos; um parque tem brinquedos. Qual diferença observável aparece?",
+      "prompt": "Uma praça tem bancos; um parque tem brinquedos. Qual diferença observável aparece?",
+      "options": [
+        "Um lugar é público e o outro nunca é",
+        "Os equipamentos descritos são diferentes.",
+        "Todas as pessoas usam apenas um deles",
+        "Um tem mais valor que o outro"
+      ],
+      "correctAnswer": "Os equipamentos descritos são diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um lugar é público e o outro nunca é": [
+          "OBSERVABLE_DIFFERENCE"
+        ],
+        "Todas as pessoas usam apenas um deles": [
+          "OBSERVABLE_DIFFERENCE"
+        ],
+        "Um tem mais valor que o outro": [
+          "OBSERVABLE_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PRACA_E_PARQUINHO",
+      "explanation": "Bancos e brinquedos são pistas distintas sobre os espaços.",
+      "hint": "Compare o que cada ficha mostra.",
+      "errorFocus": "OBSERVABLE_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Bancos e brinquedos são pistas distintas sobre os espaços.",
+        "incorrect": "Bancos e brinquedos são pistas distintas sobre os espaços.",
+        "hint": "Compare o que cada ficha mostra.",
+        "errorFocus": "OBSERVABLE_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-11",
+      "statement": "Uma cena mostra uma feira cultural numa praça. Que tipo de uso aparece?",
+      "prompt": "Uma cena mostra uma feira cultural numa praça. Que tipo de uso aparece?",
+      "options": [
+        "Um uso exclusivamente residencial",
+        "Uma atividade que impede todo lazer",
+        "Uma manifestação e um encontro comunitário.",
+        "Uma cena que representa todas as praças"
+      ],
+      "correctAnswer": "Uma manifestação e um encontro comunitário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um uso exclusivamente residencial": [
+          "PUBLIC_MANIFESTATION"
+        ],
+        "Uma atividade que impede todo lazer": [
+          "PUBLIC_MANIFESTATION"
+        ],
+        "Uma cena que representa todas as praças": [
+          "PUBLIC_MANIFESTATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FEIRA_CULTURAL_FICTICIA",
+      "explanation": "A feira é uma atividade coletiva apresentada na praça.",
+      "hint": "Observe o evento descrito.",
+      "errorFocus": "PUBLIC_MANIFESTATION",
+      "feedback": {
+        "correct": "Boa observação: A feira é uma atividade coletiva apresentada na praça.",
+        "incorrect": "A feira é uma atividade coletiva apresentada na praça.",
+        "hint": "Observe o evento descrito.",
+        "errorFocus": "PUBLIC_MANIFESTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-12",
+      "statement": "Qual par traz dois usos de lazer possíveis em parque público?",
+      "prompt": "Qual par traz dois usos de lazer possíveis em parque público?",
+      "options": [
+        "Guardar documentos e dormir em sala de aula",
+        "Vender uma casa e trocar de endereço",
+        "Trancar caminhos e retirar bancos",
+        "Brincar no parquinho e caminhar."
+      ],
+      "correctAnswer": "Brincar no parquinho e caminhar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Guardar documentos e dormir em sala de aula": [
+          "PUBLIC_LEISURE_EXAMPLES"
+        ],
+        "Vender uma casa e trocar de endereço": [
+          "PUBLIC_LEISURE_EXAMPLES"
+        ],
+        "Trancar caminhos e retirar bancos": [
+          "PUBLIC_LEISURE_EXAMPLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_ATIVIDADES",
+      "explanation": "Brincar e caminhar são exemplos de lazer em espaços públicos.",
+      "hint": "Escolha duas atividades compatíveis com a cena.",
+      "errorFocus": "PUBLIC_LEISURE_EXAMPLES",
+      "feedback": {
+        "correct": "Boa observação: Brincar e caminhar são exemplos de lazer em espaços públicos.",
+        "incorrect": "Brincar e caminhar são exemplos de lazer em espaços públicos.",
+        "hint": "Escolha duas atividades compatíveis com a cena.",
+        "errorFocus": "PUBLIC_LEISURE_EXAMPLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-13",
+      "statement": "Uma ficha mostra uma apresentação à tarde e outra, caminhada pela manhã. Como resumir a diferença?",
+      "prompt": "Uma ficha mostra uma apresentação à tarde e outra, caminhada pela manhã. Como resumir a diferença?",
+      "options": [
+        "As cenas registram atividades diferentes em horários diferentes.",
+        "A praça só pode ser usada de manhã",
+        "A apresentação ocorre em todas as tardes",
+        "As pessoas da manhã não gostam de música"
+      ],
+      "correctAnswer": "As cenas registram atividades diferentes em horários diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A praça só pode ser usada de manhã": [
+          "TIME_AND_ACTIVITY_COMPARISON"
+        ],
+        "A apresentação ocorre em todas as tardes": [
+          "TIME_AND_ACTIVITY_COMPARISON"
+        ],
+        "As pessoas da manhã não gostam de música": [
+          "TIME_AND_ACTIVITY_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEGENDA_DE_HORARIOS",
+      "explanation": "A comparação se baseia nas atividades e horários escritos.",
+      "hint": "Use as duas pistas da ficha.",
+      "errorFocus": "TIME_AND_ACTIVITY_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação se baseia nas atividades e horários escritos.",
+        "incorrect": "A comparação se baseia nas atividades e horários escritos.",
+        "hint": "Use as duas pistas da ficha.",
+        "errorFocus": "TIME_AND_ACTIVITY_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-14",
+      "statement": "Um mapa indica caminho sem degraus e bancos próximos. O que essas pistas ajudam a considerar?",
+      "prompt": "Um mapa indica caminho sem degraus e bancos próximos. O que essas pistas ajudam a considerar?",
+      "options": [
+        "Quem será o próximo visitante",
+        "Como diferentes pessoas podem acessar e descansar no espaço.",
+        "O que cada pessoa prefere",
+        "Que todos precisam usar o mesmo caminho"
+      ],
+      "correctAnswer": "Como diferentes pessoas podem acessar e descansar no espaço.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quem será o próximo visitante": [
+          "ACCESS_FEATURES"
+        ],
+        "O que cada pessoa prefere": [
+          "ACCESS_FEATURES"
+        ],
+        "Que todos precisam usar o mesmo caminho": [
+          "ACCESS_FEATURES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CAMINHO_ACESSIVEL",
+      "explanation": "Caminhos e bancos são elementos que podem apoiar diferentes formas de uso.",
+      "hint": "Relacione os elementos às possibilidades de participação.",
+      "errorFocus": "ACCESS_FEATURES",
+      "feedback": {
+        "correct": "Boa observação: Caminhos e bancos são elementos que podem apoiar diferentes formas de uso.",
+        "incorrect": "Caminhos e bancos são elementos que podem apoiar diferentes formas de uso.",
+        "hint": "Relacione os elementos às possibilidades de participação.",
+        "errorFocus": "ACCESS_FEATURES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-15",
+      "statement": "Uma roda de música acontece enquanto outras pessoas conversam. Qual combinado é razoável?",
+      "prompt": "Uma roda de música acontece enquanto outras pessoas conversam. Qual combinado é razoável?",
+      "options": [
+        "Proibir para sempre toda música",
+        "Mandar todas as pessoas embora",
+        "Organizar o volume e o espaço para respeitar quem também usa a praça.",
+        "Dizer que só um grupo tem direito ao espaço"
+      ],
+      "correctAnswer": "Organizar o volume e o espaço para respeitar quem também usa a praça.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Proibir para sempre toda música": [
+          "COEXISTENCE_NEGOTIATION"
+        ],
+        "Mandar todas as pessoas embora": [
+          "COEXISTENCE_NEGOTIATION"
+        ],
+        "Dizer que só um grupo tem direito ao espaço": [
+          "COEXISTENCE_NEGOTIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VOLUME_DA_RODA_DE_MUSICA",
+      "explanation": "Ajustar o uso favorece a convivência entre atividades diferentes.",
+      "hint": "Procure uma solução compartilhada.",
+      "errorFocus": "COEXISTENCE_NEGOTIATION",
+      "feedback": {
+        "correct": "Boa observação: Ajustar o uso favorece a convivência entre atividades diferentes.",
+        "incorrect": "Ajustar o uso favorece a convivência entre atividades diferentes.",
+        "hint": "Procure uma solução compartilhada.",
+        "errorFocus": "COEXISTENCE_NEGOTIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-16",
+      "statement": "A legenda A mostra leitura sob uma árvore; B mostra uma brincadeira. O que diferencia as cenas?",
+      "prompt": "A legenda A mostra leitura sob uma árvore; B mostra uma brincadeira. O que diferencia as cenas?",
+      "options": [
+        "Ambas mostram a mesma ação",
+        "A primeira prova que todos leem",
+        "A segunda prova que ninguém descansa",
+        "Uma registra leitura e descanso; a outra, brincadeira."
+      ],
+      "correctAnswer": "Uma registra leitura e descanso; a outra, brincadeira.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ambas mostram a mesma ação": [
+          "SCENE_SPECIFIC_DIFFERENCE"
+        ],
+        "A primeira prova que todos leem": [
+          "SCENE_SPECIFIC_DIFFERENCE"
+        ],
+        "A segunda prova que ninguém descansa": [
+          "SCENE_SPECIFIC_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_LEGENDAS_DO_PARQUE",
+      "explanation": "As legendas registram atividades diferentes sem generalizar os usuários.",
+      "hint": "Compare as ações de cada legenda.",
+      "errorFocus": "SCENE_SPECIFIC_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: As legendas registram atividades diferentes sem generalizar os usuários.",
+        "incorrect": "As legendas registram atividades diferentes sem generalizar os usuários.",
+        "hint": "Compare as ações de cada legenda.",
+        "errorFocus": "SCENE_SPECIFIC_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-17",
+      "statement": "Uma ficha do parque pela manhã mostra caminhada; outra à tarde mostra uma apresentação. Qual síntese é sustentada?",
+      "prompt": "Uma ficha do parque pela manhã mostra caminhada; outra à tarde mostra uma apresentação. Qual síntese é sustentada?",
+      "options": [
+        "O espaço teve usos distintos nos dois momentos descritos.",
+        "O parque sempre muda de atividade nesses horários",
+        "Todos os visitantes participaram da apresentação",
+        "O parque nunca é usado para descansar"
+      ],
+      "correctAnswer": "O espaço teve usos distintos nos dois momentos descritos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O parque sempre muda de atividade nesses horários": [
+          "LIMITED_TIME_INFERENCE"
+        ],
+        "Todos os visitantes participaram da apresentação": [
+          "LIMITED_TIME_INFERENCE"
+        ],
+        "O parque nunca é usado para descansar": [
+          "LIMITED_TIME_INFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PARQUE_EM_DOIS_HORARIOS",
+      "explanation": "As fontes permitem comparar os momentos registrados, não criar uma regra permanente.",
+      "hint": "Diga o que ocorreu nas duas fichas, sem usar sempre.",
+      "errorFocus": "LIMITED_TIME_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: As fontes permitem comparar os momentos registrados, não criar uma regra permanente.",
+        "incorrect": "As fontes permitem comparar os momentos registrados, não criar uma regra permanente.",
+        "hint": "Diga o que ocorreu nas duas fichas, sem usar sempre.",
+        "errorFocus": "LIMITED_TIME_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-18",
+      "statement": "Uma praça tem bancos e uma quadra pública recebe jogos. Qual semelhança pode existir?",
+      "prompt": "Uma praça tem bancos e uma quadra pública recebe jogos. Qual semelhança pode existir?",
+      "options": [
+        "As atividades e equipamentos são iguais",
+        "Ambos podem ser espaços públicos usados para lazer.",
+        "Só a quadra pode ser compartilhada",
+        "Todos preferem os mesmos jogos"
+      ],
+      "correctAnswer": "Ambos podem ser espaços públicos usados para lazer.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As atividades e equipamentos são iguais": [
+          "PUBLIC_LEISURE_COMMONALITY"
+        ],
+        "Só a quadra pode ser compartilhada": [
+          "PUBLIC_LEISURE_COMMONALITY"
+        ],
+        "Todos preferem os mesmos jogos": [
+          "PUBLIC_LEISURE_COMMONALITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PRACA_E_QUADRA_PUBLICA",
+      "explanation": "Os espaços podem compartilhar a função de lazer mesmo com equipamentos diferentes.",
+      "hint": "Encontre a função comum possível.",
+      "errorFocus": "PUBLIC_LEISURE_COMMONALITY",
+      "feedback": {
+        "correct": "Boa observação: Os espaços podem compartilhar a função de lazer mesmo com equipamentos diferentes.",
+        "incorrect": "Os espaços podem compartilhar a função de lazer mesmo com equipamentos diferentes.",
+        "hint": "Encontre a função comum possível.",
+        "errorFocus": "PUBLIC_LEISURE_COMMONALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-19",
+      "statement": "Uma pessoa afirma que todas as famílias usam o parque do mesmo modo. Qual resposta é mais cuidadosa?",
+      "prompt": "Uma pessoa afirma que todas as famílias usam o parque do mesmo modo. Qual resposta é mais cuidadosa?",
+      "options": [
+        "A afirmação é sempre verdadeira",
+        "Só crianças podem usar parques",
+        "As pessoas podem usar o parque de formas diferentes; uma cena não representa todas.",
+        "Toda praça tem os mesmos equipamentos"
+      ],
+      "correctAnswer": "As pessoas podem usar o parque de formas diferentes; uma cena não representa todas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A afirmação é sempre verdadeira": [
+          "AVOID_UNIVERSAL_CLAIMS"
+        ],
+        "Só crianças podem usar parques": [
+          "AVOID_UNIVERSAL_CLAIMS"
+        ],
+        "Toda praça tem os mesmos equipamentos": [
+          "AVOID_UNIVERSAL_CLAIMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AFIRMACAO_TODOS_USAM_IGUAL",
+      "explanation": "Os usos variam e uma observação não descreve todas as pessoas.",
+      "hint": "Evite transformar uma cena em regra geral.",
+      "errorFocus": "AVOID_UNIVERSAL_CLAIMS",
+      "feedback": {
+        "correct": "Boa observação: Os usos variam e uma observação não descreve todas as pessoas.",
+        "incorrect": "Os usos variam e uma observação não descreve todas as pessoas.",
+        "hint": "Evite transformar uma cena em regra geral.",
+        "errorFocus": "AVOID_UNIVERSAL_CLAIMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-20",
+      "statement": "Um projeto de praça imaginária precisa apoiar brincadeira e descanso. Qual escolha ajuda?",
+      "prompt": "Um projeto de praça imaginária precisa apoiar brincadeira e descanso. Qual escolha ajuda?",
+      "options": [
+        "Retirar todos os caminhos",
+        "Deixar apenas uma atividade permitida",
+        "Colocar os bancos sem acesso",
+        "Combinar área de brincar, bancos e caminhos acessíveis."
+      ],
+      "correctAnswer": "Combinar área de brincar, bancos e caminhos acessíveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar todos os caminhos": [
+          "MULTIPLE_USE_DESIGN"
+        ],
+        "Deixar apenas uma atividade permitida": [
+          "MULTIPLE_USE_DESIGN"
+        ],
+        "Colocar os bancos sem acesso": [
+          "MULTIPLE_USE_DESIGN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANO_DE_ESPACO_COMPARTILHADO",
+      "explanation": "Elementos diferentes podem apoiar mais de um uso e a circulação.",
+      "hint": "Inclua opções para atividades distintas.",
+      "errorFocus": "MULTIPLE_USE_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: Elementos diferentes podem apoiar mais de um uso e a circulação.",
+        "incorrect": "Elementos diferentes podem apoiar mais de um uso e a circulação.",
+        "hint": "Inclua opções para atividades distintas.",
+        "errorFocus": "MULTIPLE_USE_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-21",
+      "statement": "Um cartaz anuncia uma roda de histórias no parque. O que ele indica sobre o uso do local?",
+      "prompt": "Um cartaz anuncia uma roda de histórias no parque. O que ele indica sobre o uso do local?",
+      "options": [
+        "O parque será usado para uma atividade cultural naquele encontro.",
+        "O parque só serve para histórias",
+        "A atividade ocorre diariamente",
+        "Todas as pessoas precisam participar"
+      ],
+      "correctAnswer": "O parque será usado para uma atividade cultural naquele encontro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O parque só serve para histórias": [
+          "EVENT_SCOPE"
+        ],
+        "A atividade ocorre diariamente": [
+          "EVENT_SCOPE"
+        ],
+        "Todas as pessoas precisam participar": [
+          "EVENT_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTAZ_DE_ENCONTRO",
+      "explanation": "O cartaz anuncia um uso específico em uma ocasião.",
+      "hint": "Leia o horário e a atividade anunciados.",
+      "errorFocus": "EVENT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O cartaz anuncia um uso específico em uma ocasião.",
+        "incorrect": "O cartaz anuncia um uso específico em uma ocasião.",
+        "hint": "Leia o horário e a atividade anunciados.",
+        "errorFocus": "EVENT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-22",
+      "statement": "Por que citar as pistas de cada ficha ao comparar dois espaços?",
+      "prompt": "Por que citar as pistas de cada ficha ao comparar dois espaços?",
+      "options": [
+        "Para provar que uma praça é melhor",
+        "Para mostrar que a semelhança ou diferença se apoia no que foi observado.",
+        "Para dizer como todos os visitantes se sentem",
+        "Para inventar usos ausentes"
+      ],
+      "correctAnswer": "Para mostrar que a semelhança ou diferença se apoia no que foi observado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para provar que uma praça é melhor": [
+          "EVIDENCE_BASED_REPORT"
+        ],
+        "Para dizer como todos os visitantes se sentem": [
+          "EVIDENCE_BASED_REPORT"
+        ],
+        "Para inventar usos ausentes": [
+          "EVIDENCE_BASED_REPORT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARACAO_COM_EVIDENCIAS",
+      "explanation": "Pistas observáveis tornam a comparação verificável.",
+      "hint": "Relacione a conclusão ao que cada fonte mostra.",
+      "errorFocus": "EVIDENCE_BASED_REPORT",
+      "feedback": {
+        "correct": "Boa observação: Pistas observáveis tornam a comparação verificável.",
+        "incorrect": "Pistas observáveis tornam a comparação verificável.",
+        "hint": "Relacione a conclusão ao que cada fonte mostra.",
+        "errorFocus": "EVIDENCE_BASED_REPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-23",
+      "statement": "Uma apresentação de teatro aberta acontece num espaço público. Como classificá-la?",
+      "prompt": "Uma apresentação de teatro aberta acontece num espaço público. Como classificá-la?",
+      "options": [
+        "Como residência de quem assiste",
+        "Como prova de que todas as praças têm teatro",
+        "Como manifestação cultural e uso coletivo do espaço.",
+        "Como atividade que elimina outros usos"
+      ],
+      "correctAnswer": "Como manifestação cultural e uso coletivo do espaço.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como residência de quem assiste": [
+          "CULTURAL_USE"
+        ],
+        "Como prova de que todas as praças têm teatro": [
+          "CULTURAL_USE"
+        ],
+        "Como atividade que elimina outros usos": [
+          "CULTURAL_USE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "USO_DE_MANIFESTACAO",
+      "explanation": "A apresentação é uma manifestação realizada no espaço compartilhado.",
+      "hint": "Considere o tipo de atividade.",
+      "errorFocus": "CULTURAL_USE",
+      "feedback": {
+        "correct": "Boa observação: A apresentação é uma manifestação realizada no espaço compartilhado.",
+        "incorrect": "A apresentação é uma manifestação realizada no espaço compartilhado.",
+        "hint": "Considere o tipo de atividade.",
+        "errorFocus": "CULTURAL_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-24",
+      "statement": "Uma imagem mostra uma praça vazia. O que não podemos concluir só com essa imagem?",
+      "prompt": "Uma imagem mostra uma praça vazia. O que não podemos concluir só com essa imagem?",
+      "options": [
+        "Que a imagem mostra a praça naquele instante",
+        "Que havia poucas pessoas na cena",
+        "Que o espaço aparece na fotografia",
+        "Que ninguém usa a praça em outros horários."
+      ],
+      "correctAnswer": "Que ninguém usa a praça em outros horários.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que a imagem mostra a praça naquele instante": [
+          "SINGLE_IMAGE_LIMIT"
+        ],
+        "Que havia poucas pessoas na cena": [
+          "SINGLE_IMAGE_LIMIT"
+        ],
+        "Que o espaço aparece na fotografia": [
+          "SINGLE_IMAGE_LIMIT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FOTO_SEM_CONTEXTO",
+      "explanation": "Uma foto registra um momento e não todos os horários.",
+      "hint": "Pense no limite temporal da imagem.",
+      "errorFocus": "SINGLE_IMAGE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Uma foto registra um momento e não todos os horários.",
+        "incorrect": "Uma foto registra um momento e não todos os horários.",
+        "hint": "Pense no limite temporal da imagem.",
+        "errorFocus": "SINGLE_IMAGE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-25",
+      "statement": "Uma cena mostra leitura e outra, jogo com bola. Que relação entre os usos pode ser relatada?",
+      "prompt": "Uma cena mostra leitura e outra, jogo com bola. Que relação entre os usos pode ser relatada?",
+      "options": [
+        "São atividades de lazer diferentes no espaço público.",
+        "São a mesma atividade",
+        "Uma delas não pode ocorrer em parque",
+        "Todas as pessoas preferem jogo"
+      ],
+      "correctAnswer": "São atividades de lazer diferentes no espaço público.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "São a mesma atividade": [
+          "VARIED_USE"
+        ],
+        "Uma delas não pode ocorrer em parque": [
+          "VARIED_USE"
+        ],
+        "Todas as pessoas preferem jogo": [
+          "VARIED_USE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PARQUE_COM_LIVRO_E_BOLA",
+      "explanation": "Leitura e jogo são usos diferentes que podem aparecer em espaços públicos.",
+      "hint": "Nomeie as atividades sem hierarquizá-las.",
+      "errorFocus": "VARIED_USE",
+      "feedback": {
+        "correct": "Boa observação: Leitura e jogo são usos diferentes que podem aparecer em espaços públicos.",
+        "incorrect": "Leitura e jogo são usos diferentes que podem aparecer em espaços públicos.",
+        "hint": "Nomeie as atividades sem hierarquizá-las.",
+        "errorFocus": "VARIED_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-26",
+      "statement": "A legenda de um mapa usa um símbolo para bancos e outro para brinquedos. O que a legenda faz?",
+      "prompt": "A legenda de um mapa usa um símbolo para bancos e outro para brinquedos. O que a legenda faz?",
+      "options": [
+        "Conta o que cada visitante sente",
+        "Explica como identificar elementos e usos no mapa.",
+        "Garante que todos usarão os elementos",
+        "Indica o endereço de cada estudante"
+      ],
+      "correctAnswer": "Explica como identificar elementos e usos no mapa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Conta o que cada visitante sente": [
+          "MAP_LEGEND_FUNCTION"
+        ],
+        "Garante que todos usarão os elementos": [
+          "MAP_LEGEND_FUNCTION"
+        ],
+        "Indica o endereço de cada estudante": [
+          "MAP_LEGEND_FUNCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAPA_COM_LEGENDA",
+      "explanation": "A legenda ajuda a interpretar os símbolos representados.",
+      "hint": "Veja como cada símbolo está explicado.",
+      "errorFocus": "MAP_LEGEND_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda ajuda a interpretar os símbolos representados.",
+        "incorrect": "A legenda ajuda a interpretar os símbolos representados.",
+        "hint": "Veja como cada símbolo está explicado.",
+        "errorFocus": "MAP_LEGEND_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-27",
+      "statement": "Duas cenas de praça mostram pessoas reunidas; uma tem música e outra conversa. Qual análise é equilibrada?",
+      "prompt": "Duas cenas de praça mostram pessoas reunidas; uma tem música e outra conversa. Qual análise é equilibrada?",
+      "options": [
+        "As cenas são idênticas em tudo",
+        "A música ocorre sempre",
+        "Há reunião nas duas, com atividades diferentes.",
+        "A conversa não é lazer"
+      ],
+      "correctAnswer": "Há reunião nas duas, com atividades diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As cenas são idênticas em tudo": [
+          "BALANCED_COMPARISON"
+        ],
+        "A música ocorre sempre": [
+          "BALANCED_COMPARISON"
+        ],
+        "A conversa não é lazer": [
+          "BALANCED_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "USO_COMUM_E_DIFERENTE",
+      "explanation": "A análise identifica um ponto comum e uma diferença observável.",
+      "hint": "Registre o que se repete e o que muda.",
+      "errorFocus": "BALANCED_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A análise identifica um ponto comum e uma diferença observável.",
+        "incorrect": "A análise identifica um ponto comum e uma diferença observável.",
+        "hint": "Registre o que se repete e o que muda.",
+        "errorFocus": "BALANCED_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-28",
+      "statement": "Em um espaço com caminhada e brincadeira, que cuidado favorece diferentes usos?",
+      "prompt": "Em um espaço com caminhada e brincadeira, que cuidado favorece diferentes usos?",
+      "options": [
+        "Bloquear o acesso aos bancos",
+        "Usar a pista para guardar objetos",
+        "Impedir toda brincadeira",
+        "Manter caminhos livres e combinar onde cada atividade acontece."
+      ],
+      "correctAnswer": "Manter caminhos livres e combinar onde cada atividade acontece.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Bloquear o acesso aos bancos": [
+          "SHARED_ACCESS"
+        ],
+        "Usar a pista para guardar objetos": [
+          "SHARED_ACCESS"
+        ],
+        "Impedir toda brincadeira": [
+          "SHARED_ACCESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGRAS_DE_CIRCULACAO",
+      "explanation": "Caminhos e combinados apoiam a circulação e a convivência.",
+      "hint": "Escolha uma regra que permita circular.",
+      "errorFocus": "SHARED_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Caminhos e combinados apoiam a circulação e a convivência.",
+        "incorrect": "Caminhos e combinados apoiam a circulação e a convivência.",
+        "hint": "Escolha uma regra que permita circular.",
+        "errorFocus": "SHARED_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-29",
+      "statement": "Por que um caminho acessível é uma pista importante ao planejar uma praça?",
+      "prompt": "Por que um caminho acessível é uma pista importante ao planejar uma praça?",
+      "options": [
+        "Pode facilitar a chegada e a circulação de pessoas com diferentes necessidades.",
+        "Porque todas as pessoas usam cadeira de rodas",
+        "Porque o caminho define quem pode entrar",
+        "Porque todos precisam fazer a mesma atividade"
+      ],
+      "correctAnswer": "Pode facilitar a chegada e a circulação de pessoas com diferentes necessidades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque todas as pessoas usam cadeira de rodas": [
+          "ACCESSIBILITY_AS_OPTION"
+        ],
+        "Porque o caminho define quem pode entrar": [
+          "ACCESSIBILITY_AS_OPTION"
+        ],
+        "Porque todos precisam fazer a mesma atividade": [
+          "ACCESSIBILITY_AS_OPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ACESSO_PARA_VARIAS_PESSOAS",
+      "explanation": "A acessibilidade amplia possibilidades sem presumir que todos têm a mesma necessidade.",
+      "hint": "Pense em ampliar participação, não uniformizar pessoas.",
+      "errorFocus": "ACCESSIBILITY_AS_OPTION",
+      "feedback": {
+        "correct": "Boa observação: A acessibilidade amplia possibilidades sem presumir que todos têm a mesma necessidade.",
+        "incorrect": "A acessibilidade amplia possibilidades sem presumir que todos têm a mesma necessidade.",
+        "hint": "Pense em ampliar participação, não uniformizar pessoas.",
+        "errorFocus": "ACCESSIBILITY_AS_OPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-30",
+      "statement": "Duas praças têm equipamentos diferentes. Qual relato evita julgar uma como melhor?",
+      "prompt": "Duas praças têm equipamentos diferentes. Qual relato evita julgar uma como melhor?",
+      "options": [
+        "A praça com brinquedos é sempre superior",
+        "Uma tem bancos e outra tem brinquedos, conforme as fichas observadas.",
+        "A praça com bancos não serve para lazer",
+        "A praça menor não deve receber pessoas"
+      ],
+      "correctAnswer": "Uma tem bancos e outra tem brinquedos, conforme as fichas observadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A praça com brinquedos é sempre superior": [
+          "DESCRIBE_NOT_RANK"
+        ],
+        "A praça com bancos não serve para lazer": [
+          "DESCRIBE_NOT_RANK"
+        ],
+        "A praça menor não deve receber pessoas": [
+          "DESCRIBE_NOT_RANK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIFERENCA_SEM_JULGAMENTO",
+      "explanation": "A comparação descreve características sem atribuir superioridade.",
+      "hint": "Relate o que muda, sem dar nota ao lugar.",
+      "errorFocus": "DESCRIBE_NOT_RANK",
+      "feedback": {
+        "correct": "Boa observação: A comparação descreve características sem atribuir superioridade.",
+        "incorrect": "A comparação descreve características sem atribuir superioridade.",
+        "hint": "Relate o que muda, sem dar nota ao lugar.",
+        "errorFocus": "DESCRIBE_NOT_RANK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-31",
+      "statement": "Uma agenda informa feira no domingo e caminhada coletiva na terça. O que ela sugere?",
+      "prompt": "Uma agenda informa feira no domingo e caminhada coletiva na terça. O que ela sugere?",
+      "options": [
+        "A feira acontece todos os dias",
+        "Só moradores podem caminhar",
+        "O espaço pode receber usos diferentes em dias diferentes.",
+        "A praça tem um único uso"
+      ],
+      "correctAnswer": "O espaço pode receber usos diferentes em dias diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A feira acontece todos os dias": [
+          "SCHEDULED_USE_VARIATION"
+        ],
+        "Só moradores podem caminhar": [
+          "SCHEDULED_USE_VARIATION"
+        ],
+        "A praça tem um único uso": [
+          "SCHEDULED_USE_VARIATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "AGENDA_DE_EVENTOS",
+      "explanation": "A agenda registra atividades diferentes em datas diferentes.",
+      "hint": "Compare as atividades e os dias.",
+      "errorFocus": "SCHEDULED_USE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A agenda registra atividades diferentes em datas diferentes.",
+        "incorrect": "A agenda registra atividades diferentes em datas diferentes.",
+        "hint": "Compare as atividades e os dias.",
+        "errorFocus": "SCHEDULED_USE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-32",
+      "statement": "Uma planta desenha bancos atrás de uma escada sem rota alternativa. Que aspecto do planejamento merece revisão?",
+      "prompt": "Uma planta desenha bancos atrás de uma escada sem rota alternativa. Que aspecto do planejamento merece revisão?",
+      "options": [
+        "A cor do nome da praça",
+        "A quantidade de histórias no cartaz",
+        "O horário de uma atividade não prevista",
+        "A possibilidade de acesso ao espaço por pessoas diferentes."
+      ],
+      "correctAnswer": "A possibilidade de acesso ao espaço por pessoas diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do nome da praça": [
+          "ACCESS_BARRIER_REVIEW"
+        ],
+        "A quantidade de histórias no cartaz": [
+          "ACCESS_BARRIER_REVIEW"
+        ],
+        "O horário de uma atividade não prevista": [
+          "ACCESS_BARRIER_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CENA_SEM_ACESSO",
+      "explanation": "A rota representada pode limitar a participação; é importante rever o acesso.",
+      "hint": "Observe como alguém chega aos bancos.",
+      "errorFocus": "ACCESS_BARRIER_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A rota representada pode limitar a participação; é importante rever o acesso.",
+        "incorrect": "A rota representada pode limitar a participação; é importante rever o acesso.",
+        "hint": "Observe como alguém chega aos bancos.",
+        "errorFocus": "ACCESS_BARRIER_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-33",
+      "statement": "O que é um exemplo de uso de praça para lazer?",
+      "prompt": "O que é um exemplo de uso de praça para lazer?",
+      "options": [
+        "Brincar, descansar, caminhar ou participar de uma atividade cultural.",
+        "Morar em uma sala de aula",
+        "Guardar documentos privados",
+        "Fechar o espaço para todos"
+      ],
+      "correctAnswer": "Brincar, descansar, caminhar ou participar de uma atividade cultural.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Morar em uma sala de aula": [
+          "PUBLIC_LEISURE_REVIEW"
+        ],
+        "Guardar documentos privados": [
+          "PUBLIC_LEISURE_REVIEW"
+        ],
+        "Fechar o espaço para todos": [
+          "PUBLIC_LEISURE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_ESPACO_PUBLICO",
+      "explanation": "Essas atividades são usos possíveis de lazer em praça.",
+      "hint": "Lembre-se de atividades compartilhadas.",
+      "errorFocus": "PUBLIC_LEISURE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Essas atividades são usos possíveis de lazer em praça.",
+        "incorrect": "Essas atividades são usos possíveis de lazer em praça.",
+        "hint": "Lembre-se de atividades compartilhadas.",
+        "errorFocus": "PUBLIC_LEISURE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-34",
+      "statement": "Uma roda de música acontece no parque. Que uso está descrito?",
+      "prompt": "Uma roda de música acontece no parque. Que uso está descrito?",
+      "options": [
+        "Uma residência permanente",
+        "Uma manifestação cultural no espaço público.",
+        "Uma regra de transporte",
+        "Uma atividade que ocorre em todos os parques"
+      ],
+      "correctAnswer": "Uma manifestação cultural no espaço público.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma residência permanente": [
+          "CULTURAL_MANIFESTATION_REVIEW"
+        ],
+        "Uma regra de transporte": [
+          "CULTURAL_MANIFESTATION_REVIEW"
+        ],
+        "Uma atividade que ocorre em todos os parques": [
+          "CULTURAL_MANIFESTATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_MANIFESTACAO",
+      "explanation": "A roda de música é um evento cultural descrito na cena.",
+      "hint": "Observe o que acontece no parque.",
+      "errorFocus": "CULTURAL_MANIFESTATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A roda de música é um evento cultural descrito na cena.",
+        "incorrect": "A roda de música é um evento cultural descrito na cena.",
+        "hint": "Observe o que acontece no parque.",
+        "errorFocus": "CULTURAL_MANIFESTATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-35",
+      "statement": "Uma ficha mostra descanso e outra mostra brincadeira. Que diferença está explícita?",
+      "prompt": "Uma ficha mostra descanso e outra mostra brincadeira. Que diferença está explícita?",
+      "options": [
+        "Uma das cenas é necessariamente melhor",
+        "Todas as pessoas descansam na primeira",
+        "As atividades registradas são diferentes.",
+        "O local deixa de ser público na segunda"
+      ],
+      "correctAnswer": "As atividades registradas são diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma das cenas é necessariamente melhor": [
+          "ACTIVITY_DIFFERENCE_REVIEW"
+        ],
+        "Todas as pessoas descansam na primeira": [
+          "ACTIVITY_DIFFERENCE_REVIEW"
+        ],
+        "O local deixa de ser público na segunda": [
+          "ACTIVITY_DIFFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_DUAS_CENAS",
+      "explanation": "Descansar e brincar são ações diferentes.",
+      "hint": "Compare os verbos das fichas.",
+      "errorFocus": "ACTIVITY_DIFFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Descansar e brincar são ações diferentes.",
+        "incorrect": "Descansar e brincar são ações diferentes.",
+        "hint": "Compare os verbos das fichas.",
+        "errorFocus": "ACTIVITY_DIFFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-36",
+      "statement": "Uma fotografia mostra uma praça vazia ao meio-dia. Qual conclusão é segura?",
+      "prompt": "Uma fotografia mostra uma praça vazia ao meio-dia. Qual conclusão é segura?",
+      "options": [
+        "A praça nunca é usada",
+        "Ninguém gosta do local",
+        "A cidade não tem eventos",
+        "A praça estava vazia no momento fotografado."
+      ],
+      "correctAnswer": "A praça estava vazia no momento fotografado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A praça nunca é usada": [
+          "TIME_BOUND_CONCLUSION_REVIEW"
+        ],
+        "Ninguém gosta do local": [
+          "TIME_BOUND_CONCLUSION_REVIEW"
+        ],
+        "A cidade não tem eventos": [
+          "TIME_BOUND_CONCLUSION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_GENERALIZACAO",
+      "explanation": "A imagem sustenta uma observação daquele momento, não uma regra geral.",
+      "hint": "Inclua o limite do horário mostrado.",
+      "errorFocus": "TIME_BOUND_CONCLUSION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A imagem sustenta uma observação daquele momento, não uma regra geral.",
+        "incorrect": "A imagem sustenta uma observação daquele momento, não uma regra geral.",
+        "hint": "Inclua o limite do horário mostrado.",
+        "errorFocus": "TIME_BOUND_CONCLUSION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-37",
+      "statement": "Pessoas fazem atividades diferentes numa praça. Qual ação ajuda a compartilhar o espaço?",
+      "prompt": "Pessoas fazem atividades diferentes numa praça. Qual ação ajuda a compartilhar o espaço?",
+      "options": [
+        "Respeitar combinados e manter acessos disponíveis.",
+        "Impedir todos os usos alternativos",
+        "Apropriar-se de todos os bancos",
+        "Bloquear os caminhos"
+      ],
+      "correctAnswer": "Respeitar combinados e manter acessos disponíveis.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Impedir todos os usos alternativos": [
+          "SHARED_SPACE_REVIEW"
+        ],
+        "Apropriar-se de todos os bancos": [
+          "SHARED_SPACE_REVIEW"
+        ],
+        "Bloquear os caminhos": [
+          "SHARED_SPACE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_CONVIVENCIA",
+      "explanation": "Combinados e acessos favorecem diferentes usuários.",
+      "hint": "Escolha uma ação inclusiva.",
+      "errorFocus": "SHARED_SPACE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Combinados e acessos favorecem diferentes usuários.",
+        "incorrect": "Combinados e acessos favorecem diferentes usuários.",
+        "hint": "Escolha uma ação inclusiva.",
+        "errorFocus": "SHARED_SPACE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-38",
+      "statement": "Ao comparar dois parques, que informação torna o relato mais confiável?",
+      "prompt": "Ao comparar dois parques, que informação torna o relato mais confiável?",
+      "options": [
+        "Uma opinião sem relação com as fontes",
+        "Uma pista observada em cada ficha ou mapa.",
+        "Uma suposição sobre todos os visitantes",
+        "Uma informação residencial dos estudantes"
+      ],
+      "correctAnswer": "Uma pista observada em cada ficha ou mapa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma opinião sem relação com as fontes": [
+          "EVIDENCE_REVIEW"
+        ],
+        "Uma suposição sobre todos os visitantes": [
+          "EVIDENCE_REVIEW"
+        ],
+        "Uma informação residencial dos estudantes": [
+          "EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_PISTAS",
+      "explanation": "Pistas observáveis apoiam a comparação.",
+      "hint": "Retorne às fontes usadas.",
+      "errorFocus": "EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Pistas observáveis apoiam a comparação.",
+        "incorrect": "Pistas observáveis apoiam a comparação.",
+        "hint": "Retorne às fontes usadas.",
+        "errorFocus": "EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-39",
+      "statement": "Um parque tem bancos e uma área de brincar. Qual frase distingue equipamento de uso?",
+      "prompt": "Um parque tem bancos e uma área de brincar. Qual frase distingue equipamento de uso?",
+      "options": [
+        "Descansar é um banco e brincar é uma praça",
+        "Equipamento e atividade significam sempre a mesma coisa",
+        "Bancos e brinquedos são elementos; descansar e brincar são usos possíveis.",
+        "O uso é determinado por quem desenhou o mapa"
+      ],
+      "correctAnswer": "Bancos e brinquedos são elementos; descansar e brincar são usos possíveis.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Descansar é um banco e brincar é uma praça": [
+          "FEATURE_VS_USE_REVIEW"
+        ],
+        "Equipamento e atividade significam sempre a mesma coisa": [
+          "FEATURE_VS_USE_REVIEW"
+        ],
+        "O uso é determinado por quem desenhou o mapa": [
+          "FEATURE_VS_USE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_USO_E_EQUIPAMENTO",
+      "explanation": "Elementos do espaço apoiam atividades, mas não são a atividade em si.",
+      "hint": "Separe objeto e ação.",
+      "errorFocus": "FEATURE_VS_USE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Elementos do espaço apoiam atividades, mas não são a atividade em si.",
+        "incorrect": "Elementos do espaço apoiam atividades, mas não são a atividade em si.",
+        "hint": "Separe objeto e ação.",
+        "errorFocus": "FEATURE_VS_USE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge03-public-spaces-and-uses-40",
+      "statement": "Como relatar uma semelhança e uma diferença entre duas cenas públicas?",
+      "prompt": "Como relatar uma semelhança e uma diferença entre duas cenas públicas?",
+      "options": [
+        "Dizer que todos usam os espaços igual",
+        "Escolher o lugar vencedor",
+        "Inventar uma atividade ausente",
+        "Citar o ponto comum e a atividade distinta usando as pistas observadas."
+      ],
+      "correctAnswer": "Citar o ponto comum e a atividade distinta usando as pistas observadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que todos usam os espaços igual": [
+          "COMPARE_WITH_EVIDENCE_REVIEW"
+        ],
+        "Escolher o lugar vencedor": [
+          "COMPARE_WITH_EVIDENCE_REVIEW"
+        ],
+        "Inventar uma atividade ausente": [
+          "COMPARE_WITH_EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMPARACAO",
+      "explanation": "Uma comparação clara usa evidências e evita generalizações.",
+      "hint": "Mencione uma pista de cada cena.",
+      "errorFocus": "COMPARE_WITH_EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma comparação clara usa evidências e evita generalizações.",
+        "incorrect": "Uma comparação clara usa evidências e evita generalizações.",
+        "hint": "Mencione uma pista de cada cena.",
+        "errorFocus": "COMPARE_WITH_EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens descritas, mapas táteis ou de alto contraste, vocabulário visual e leitura compartilhada.",
+          "Permitir comparar por fala, apontamento, desenho, cartões ou comunicação alternativa.",
+          "Usar exemplos seguros e supervisionados; não exigir visitas, fotografias de pessoas ou relatos de localização residencial."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

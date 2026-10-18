@@ -1,0 +1,1179 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-history-compare-perspectives-sources",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "comparar_perspectivas_de_fontes_historicas",
+  "canonicalSkillCode": "HISTORY_COMPARE_PERSPECTIVES",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-history-history_interpretation-5",
+      "hint": "Compare o foco, a posição, a finalidade e o recorte de cada fonte. Não descarte uma voz por sua posição nem transforme um relato situado em representação de todas as pessoas.",
+      "errorFocus": "PERSPECTIVE_SOURCE_SCOPE_AND_CORROBORATION"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 1,
+    "feedbackAdded": 1,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Comparar perspectivas em fontes históricas",
+    "objective": "Comparar o que fontes situadas afirmam e deixam de fora, relacionando autoria, posição, gênero, finalidade, tempo e lugar sem tratar uma narrativa como única.",
+    "summary": "Fontes são produzidas por pessoas e instituições em situações específicas. Perspectivas diferentes podem complementar-se, divergir em uma afirmação ou responder a perguntas distintas. A comparação exige contexto, evidência e conclusões proporcionais.",
+    "explanation": "## 1. Comece pela pergunta histórica\nDefina o acontecimento, processo, lugar e período que quer investigar. “O que aconteceu?” pode ser amplo demais; uma pergunta delimitada ajuda a escolher fontes pertinentes sem forçá-las a responder tudo.\n\n## 2. Identifique quem produziu cada fonte\nRegistre autoria, posição, público, finalidade, data e gênero. Uma ata, carta, mapa, notícia, fotografia e relato oral não são espelhos neutros nem provas intercambiáveis. A posição de quem produziu uma fonte não a torna automaticamente verdadeira ou falsa.\n\n## 3. Compare afirmações específicas\nSepare observação, interpretação e conclusão. Duas fontes podem tratar do mesmo tema e destacar aspectos diferentes; isso não é necessariamente contradição. Para haver contradição, as afirmações precisam referir-se ao mesmo aspecto, lugar e período e não poder ser verdadeiras ao mesmo tempo.\n\n## 4. Procure convergências e divergências\nUma fonte pode corroborar uma data e divergir sobre a causa. Avalie cada afirmação separadamente. Verifique o que foi observado, o que foi selecionado, quais critérios foram usados e se as fontes dependem uma da outra. Mais fontes não significam automaticamente mais independência.\n\n## 5. Reconheça ausências sem inventar vozes\nUma coleção pode privilegiar registros institucionais e não preservar experiências de outros grupos. Isso é uma lacuna do acervo consultado, não prova de que essas pessoas não agiram ou não existiram. Busque outros gêneros e coleções com procedência; nunca invente depoimentos para preencher silêncios.\n\n## Exemplo resolvido\nEm um cenário didático hipotético, uma ata registra que a reunião aprovou uma mudança de horário. Uma carta de participante informa que ela saiu antes da votação. Primeiro, delimitamos as afirmações: a ata trata da decisão coletiva; a carta, da experiência de uma participante. Não há contradição necessária. A ata não prova que todas as pessoas permaneceram, e a carta não determina o resultado da votação. Para entender participação, precisaríamos de lista de presença, regras de votação e outras evidências.\n\n## 6. Escreva uma síntese com limites\nUse uma estrutura: “A fonte A, produzida por ___ em ___, registra ___. A fonte B, de ___, registra ___. Elas convergem em ___ e diferem em ___. Como o conjunto não informa ___, não podemos concluir ___.” A síntese explica o que cada material sustenta e deixa as perguntas em aberto visíveis.",
+    "workedExample": "Leia uma ata que registra o encerramento de uma reunião às 18h e um bilhete que informa que uma participante saiu às 17h30. A ata registra o encerramento coletivo; o bilhete registra a saída de uma pessoa. As frases podem coexistir. Não conclua que todos ficaram até 18h nem que a reunião terminou antes. Para avaliar presença e votação, procure critérios e registros adicionais.",
+    "commonMistake": "Escolher uma fonte como verdadeira apenas por ser oficial, longa ou antiga; tratar toda diferença como contradição; generalizar uma experiência; confundir norma, decisão e prática; ou preencher ausências do acervo com suposições.",
+    "tips": [
+      "Defina lugar, período e pergunta.",
+      "Compare afirmações do mesmo tipo antes de concluir.",
+      "Trate autoria e posição como contexto para investigar, não como selo automático de verdade.",
+      "Diferencie convergência parcial de concordância total.",
+      "Indique lacunas e limite a conclusão às evidências consultadas."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Identificar data, autoria e gênero de um documento.",
+      "Distinguir observação e interpretação em um texto curto."
+    ],
+    "keyConcepts": [
+      "perspectiva",
+      "autoria",
+      "proveniência",
+      "gênero documental",
+      "corroboração",
+      "convergência",
+      "divergência",
+      "silêncio do acervo",
+      "limite da evidência"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar o foco e a posição de duas fontes curtas.",
+        "questionIds": [
+          "v5-history-compare-perspectives-01",
+          "v5-history-compare-perspectives-02",
+          "v5-history-compare-perspectives-03",
+          "v5-history-compare-perspectives-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Comparar fontes, gêneros, recortes, afirmações e alcance da evidência.",
+        "questionIds": [
+          "v5-history-compare-perspectives-05",
+          "v5-history-compare-perspectives-06",
+          "v5-history-compare-perspectives-07",
+          "v5-history-compare-perspectives-08",
+          "v5-history-compare-perspectives-09",
+          "v5-history-compare-perspectives-10",
+          "v5-history-compare-perspectives-11",
+          "v5-history-compare-perspectives-12",
+          "v5-history-compare-perspectives-13",
+          "v5-history-compare-perspectives-14",
+          "v5-history-compare-perspectives-15",
+          "v5-history-compare-perspectives-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar a comparação a conjuntos inéditos e evidências de escalas diferentes.",
+        "questionIds": [
+          "v5-history-compare-perspectives-17",
+          "v5-history-compare-perspectives-18",
+          "v5-history-compare-perspectives-19",
+          "v5-history-compare-perspectives-20",
+          "v5-history-compare-perspectives-21",
+          "v5-history-compare-perspectives-22",
+          "v5-history-compare-perspectives-23",
+          "v5-history-compare-perspectives-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Revisar generalizações, falsas contradições e autoridade presumida.",
+        "questionIds": [
+          "v5-history-compare-perspectives-25",
+          "v5-history-compare-perspectives-26",
+          "v5-history-compare-perspectives-27",
+          "v5-history-compare-perspectives-28",
+          "v5-history-compare-perspectives-29",
+          "v5-history-compare-perspectives-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Retomar corroboração, proveniência, lacunas e síntese proporcional.",
+        "questionIds": [
+          "v5-history-compare-perspectives-31",
+          "v5-history-compare-perspectives-32",
+          "v5-history-compare-perspectives-33",
+          "v5-history-compare-perspectives-34",
+          "v5-history-compare-perspectives-35",
+          "v5-history-compare-perspectives-36",
+          "v5-history-compare-perspectives-37",
+          "v5-history-compare-perspectives-38",
+          "v5-history-compare-perspectives-39",
+          "v5-history-compare-perspectives-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "FOCUS_AND_PERSPECTIVE",
+        "text": "Fontes sobre o mesmo tema podem selecionar aspectos diferentes. Identifique o foco antes de comparar."
+      },
+      {
+        "trigger": "POSITION_IS_NOT_VERDICT",
+        "text": "A posição de uma autoria é contexto para avaliar a fonte, não prova automática de verdade ou falsidade."
+      },
+      {
+        "trigger": "CONTRADICTION_TEST",
+        "text": "Só há contradição se as afirmações tratam do mesmo recorte e não podem coexistir."
+      },
+      {
+        "trigger": "GENRE_AND_PURPOSE",
+        "text": "O gênero e a finalidade ajudam a explicar o que foi registrado e o que não era objetivo registrar."
+      },
+      {
+        "trigger": "CORROBORATION",
+        "text": "Convergência reforça uma afirmação específica; não torna todos os detalhes das fontes verdadeiros."
+      },
+      {
+        "trigger": "ARCHIVE_SILENCE",
+        "text": "A ausência em uma coleção limita o que sabemos por ela; não prova ausência histórica."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_COMPARISON_MATRIX",
+        "misconception": "Comparar fontes sem delimitar o aspecto comum.",
+        "prompt": "Monte colunas para autoria, data, lugar, gênero, afirmação e limite. Compare apenas afirmações sobre o mesmo aspecto."
+      },
+      {
+        "id": "CHECK_REFERENT",
+        "misconception": "Tratar diferenças como contradição sem verificar o referente.",
+        "prompt": "Para cada frase, sublinhe o evento, o período, o lugar e a unidade observada. Depois verifique se as frases realmente se excluem."
+      },
+      {
+        "id": "SCOPE_A_CLAIM",
+        "misconception": "Generalizar a experiência de uma pessoa ou documento.",
+        "prompt": "Reescreva a conclusão começando por “nesta fonte” ou “neste caso”. Liste qual fonte adicional seria necessária para ampliar o alcance."
+      },
+      {
+        "id": "SEPARATE_GENRES",
+        "misconception": "Tratar regra, relato, tabela e decisão como evidências equivalentes.",
+        "prompt": "Nomeie o gênero, o que ele registra diretamente e uma pergunta que ele não responde sozinho."
+      },
+      {
+        "id": "EVALUATE_CORROBORATION",
+        "misconception": "Supor que uma fonte confirma todos os detalhes de outra.",
+        "prompt": "Divida a conclusão em afirmações menores e marque qual fonte sustenta cada uma; procure dependência entre os registros."
+      },
+      {
+        "id": "STATE_ARCHIVE_GAP",
+        "misconception": "Transformar silêncio documental em prova de inexistência.",
+        "prompt": "Descreva a ausência na coleção consultada, identifique outros acervos possíveis e não invente o conteúdo de documentos ausentes."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-history-compare-perspectives-source-matrix",
+        "title": "Matriz de comparação de fontes",
+        "objective": "Produzir uma síntese que compare duas fontes contextualizadas e delimite o que elas sustentam.",
+        "context": "Atividade mediada por docente usando fontes públicas ou materiais didáticos com procedência identificada. Os cenários hipotéticos do pacote são exercícios autorais, não documentos históricos reais.",
+        "materials": [
+          "Duas fontes sobre uma pergunta delimitada",
+          "Matriz de autoria, data, lugar, gênero, afirmação e limite",
+          "Marcadores de convergência e divergência"
+        ],
+        "instructions": "Leia as fontes individualmente; identifique autoria, data, lugar, público e propósito; selecione uma afirmação de cada; verifique se tratam do mesmo recorte; registre convergências, diferenças e lacunas. Não solicite histórias familiares, não encene grupos históricos e ofereça fontes acessíveis em formatos alternativos.",
+        "evidence": "Matriz preenchida e síntese escrita que atribui cada afirmação à fonte correspondente, indica um limite e não generaliza além do material consultado.",
+        "safety": "Selecionar fontes adequadas à faixa etária, contextualizar violências e relações de poder, não exigir exposição de identidade ou opinião familiar e oferecer alternativa equivalente de participação.",
+        "privacyGuard": "Não coletar dados pessoais, origem familiar ou relatos de estudantes. Avaliar a comparação entre fontes fornecidas pelo docente.",
+        "ageRange": "Ensino Fundamental II ou Ensino Médio, com fontes e mediação adequadas ao contexto da turma.",
+        "mediation": "O docente verifica procedência, ajuda a distinguir evidência de inferência e explicita que materiais autorais hipotéticos não são documentos de arquivo.",
+        "rubric": [
+          {
+            "criterion": "Contextualização",
+            "emerging": "Não identifica quem produziu as fontes ou seu recorte.",
+            "developing": "Identifica alguns elementos com apoio.",
+            "proficient": "Registra autoria, data, lugar e gênero relevantes para a pergunta."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Escolhe uma narrativa sem comparar afirmações.",
+            "developing": "Aponta uma semelhança ou diferença, mas mistura recortes.",
+            "proficient": "Compara afirmações compatíveis e distingue convergência de divergência."
+          },
+          {
+            "criterion": "Síntese e limites",
+            "emerging": "Generaliza ou inventa informação ausente.",
+            "developing": "Apresenta conclusão localizada após orientação.",
+            "proficient": "Atribui afirmações às fontes, explicita lacuna e limita a conclusão ao que foi consultado."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Cenários autorais hipotéticos para comparar fontes",
+        "license": "Excertos e situações didáticas autorais; não são documentos históricos nem reivindicam alinhamento oficial."
+      }
+    ],
+    "copyrightNote": "Questões, cenários, excertos, explicações e atividade são autorais. Fontes citadas nos itens são descritas como hipotéticas e não devem ser apresentadas como documentos reais. Revisão pedagógica pendente; alinhamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-history-compare-perspectives-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TWO_NOTICES",
+      "statement": "Cenário didático hipotético. Um aviso da biblioteca diz: “A sala fecha às 17h”. Um aviso da coordenação informa: “A sala será usada para reunião até 17h”. O que os dois textos permitem perceber?",
+      "options": [
+        "Os textos tratam do mesmo horário, mas apresentam o uso da sala por posições diferentes.",
+        "Os avisos provam que a sala ficou fechada todos os dias.",
+        "O texto mais longo é necessariamente mais confiável.",
+        "As duas mensagens têm autores e objetivos idênticos."
+      ],
+      "correctAnswer": "Os textos tratam do mesmo horário, mas apresentam o uso da sala por posições diferentes.",
+      "explanation": "Os avisos informam o mesmo limite de horário e destacam interesses institucionais diferentes. Não indicam o que ocorreu em outros dias.",
+      "hint": "Compare o assunto comum e quem emitiu cada aviso.",
+      "errorFocus": "SAME_TOPIC_ASSUMED_SAME_PERSPECTIVE",
+      "misconceptions": {
+        "Os avisos provam que a sala ficou fechada todos os dias.": [
+          "SAME_TOPIC_ASSUMED_SAME_PERSPECTIVE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MARKET_DAY",
+      "statement": "Cenário hipotético. Uma feirante descreve a feira como “lugar de encontro”; um relatório municipal a descreve como “ponto de circulação”. Qual diferença aparece?",
+      "options": [
+        "Uma fonte precisa estar errada porque usa outra expressão.",
+        "Cada fonte destaca uma dimensão da feira: convivência na fala da feirante e circulação no relatório.",
+        "As frases provam que todas as pessoas viviam a feira do mesmo modo.",
+        "O relatório representa diretamente a opinião da feirante."
+      ],
+      "correctAnswer": "Cada fonte destaca uma dimensão da feira: convivência na fala da feirante e circulação no relatório.",
+      "explanation": "As fontes podem observar o mesmo espaço por posições e finalidades diferentes. As frases não resumem todas as experiências.",
+      "hint": "Pergunte qual aspecto cada pessoa ou instituição escolheu destacar.",
+      "errorFocus": "DIFFERENT_WORDING_TREATED_AS_CONTRADICTION",
+      "misconceptions": {
+        "Uma fonte precisa estar errada porque usa outra expressão.": [
+          "DIFFERENT_WORDING_TREATED_AS_CONTRADICTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SCHOOL_GATE",
+      "statement": "Em dois relatos hipotéticos sobre a abertura de um portão escolar, uma estudante menciona a espera; o funcionário descreve o procedimento de segurança. Qual leitura é mais adequada?",
+      "options": [
+        "Somente o procedimento importa; a espera não é evidência.",
+        "A estudante descreve a regra oficial e o funcionário, uma experiência pessoal.",
+        "Os relatos focalizam experiências diferentes do mesmo procedimento.",
+        "Os relatos provam que a espera era igual para todos."
+      ],
+      "correctAnswer": "Os relatos focalizam experiências diferentes do mesmo procedimento.",
+      "explanation": "Uma pessoa relata a experiência de esperar e a outra explica a rotina sob sua responsabilidade. Nenhuma fala, sozinha, cobre todas as situações.",
+      "hint": "Associe cada descrição à posição de quem fala.",
+      "errorFocus": "ONE_ACCOUNT_USED_TO_REPRESENT_EVERYONE",
+      "misconceptions": {
+        "Somente o procedimento importa; a espera não é evidência.": [
+          "ONE_ACCOUNT_USED_TO_REPRESENT_EVERYONE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCAL_BRIDGE",
+      "statement": "Dois textos didáticos hipotéticos falam de uma ponte. Uma moradora destaca o caminho que encurtou; um técnico descreve a estrutura. O que varia diretamente?",
+      "options": [
+        "A existência da ponte, que um dos textos nega.",
+        "A data de construção, embora nenhuma data tenha sido informada.",
+        "A confiabilidade, definida apenas pelo cargo de quem escreveu.",
+        "O foco: deslocamento na fala da moradora e características construtivas no texto técnico."
+      ],
+      "correctAnswer": "O foco: deslocamento na fala da moradora e características construtivas no texto técnico.",
+      "explanation": "As fontes selecionam aspectos diferentes. Para comparar outras afirmações, seriam necessários dados adicionais.",
+      "hint": "Diga primeiro o que cada texto observa, sem acrescentar fatos.",
+      "errorFocus": "SOURCE_FOCUS_CONFUSED_WITH_FACT_CONFLICT",
+      "misconceptions": {
+        "A existência da ponte, que um dos textos nega.": [
+          "SOURCE_FOCUS_CONFUSED_WITH_FACT_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PUBLIC_CLOCK",
+      "statement": "Cenário hipotético: uma comerciante chama o relógio da praça de “referência para combinar encontros”; um técnico registra o mecanismo e os horários de manutenção. Qual síntese respeita os dois pontos de vista?",
+      "options": [
+        "O relógio funciona como referência social para a comerciante e como equipamento a manter para o técnico.",
+        "O técnico prova que ninguém usa o relógio para encontros.",
+        "A comerciante apresenta um diagnóstico mecânico.",
+        "As duas fontes demonstram que todos os moradores compartilham a mesma opinião."
+      ],
+      "correctAnswer": "O relógio funciona como referência social para a comerciante e como equipamento a manter para o técnico.",
+      "explanation": "As fontes descrevem dimensões compatíveis, mas não intercambiáveis: uso social e manutenção técnica.",
+      "hint": "Separe função social descrita de condição material observada.",
+      "errorFocus": "PERSPECTIVES_FORCED_INTO_COMPETITION",
+      "misconceptions": {
+        "O técnico prova que ninguém usa o relógio para encontros.": [
+          "PERSPECTIVES_FORCED_INTO_COMPETITION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BUS_ROUTE",
+      "statement": "Em cenário didático hipotético, uma passageira escreve “o ônibus demorou”; o registro de operação informa “saída às 8h05”. O que ainda falta para concluir a causa da espera?",
+      "options": [
+        "Assumir que o registro de saída explica toda a experiência da passageira.",
+        "Comparar o horário previsto e o realizado, além de outras informações sobre o trajeto.",
+        "Descartar o relato porque não contém minutos exatos.",
+        "Concluir que houve acidente, embora isso não apareça nas fontes."
+      ],
+      "correctAnswer": "Comparar o horário previsto e o realizado, além de outras informações sobre o trajeto.",
+      "explanation": "A saída às 8h05 não informa sozinha o horário previsto nem o tempo total de espera. As fontes respondem perguntas diferentes.",
+      "hint": "Identifique qual dado mede espera e qual registra a operação.",
+      "errorFocus": "ADMIN_RECORD_ASSUMED_TO_EXHAUST_EXPERIENCE",
+      "misconceptions": {
+        "Assumir que o registro de saída explica toda a experiência da passageira.": [
+          "ADMIN_RECORD_ASSUMED_TO_EXHAUST_EXPERIENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PARK_BENCH",
+      "statement": "Dois relatos hipotéticos tratam de bancos de uma praça. Uma pessoa idosa valoriza o descanso; uma equipe de manutenção registra uma tábua solta em um banco. Qual conclusão é sustentada?",
+      "options": [
+        "A praça inteira é inutilizável.",
+        "A tábua solta prova que ninguém consegue descansar ali.",
+        "A praça oferece descanso em uma experiência relatada, e há um problema específico de manutenção documentado.",
+        "A experiência individual prova que todos os bancos estão em boas condições."
+      ],
+      "correctAnswer": "A praça oferece descanso em uma experiência relatada, e há um problema específico de manutenção documentado.",
+      "explanation": "Uma experiência positiva e um defeito localizado podem coexistir. O alcance de cada fonte precisa ser preservado.",
+      "hint": "Não generalize um banco para toda a praça nem uma experiência para todos.",
+      "errorFocus": "SINGLE_EXAMPLE_GENERALIZED_TO_WHOLE",
+      "misconceptions": {
+        "A praça inteira é inutilizável.": [
+          "SINGLE_EXAMPLE_GENERALIZED_TO_WHOLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-08",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_GARDEN",
+      "statement": "Cenário hipotético: estudantes descrevem a horta como espaço de aprendizagem; o inventário da escola lista ferramentas e canteiros. Qual pergunta cada fonte responde melhor?",
+      "options": [
+        "O inventário explica o que cada estudante aprendeu.",
+        "O relato confirma a quantidade exata de ferramentas.",
+        "As fontes são equivalentes porque mencionam a mesma horta.",
+        "O relato informa sentidos atribuídos à horta; o inventário registra itens e estruturas listados."
+      ],
+      "correctAnswer": "O relato informa sentidos atribuídos à horta; o inventário registra itens e estruturas listados.",
+      "explanation": "Um relato de experiência e um inventário têm gêneros e finalidades diferentes. Um não substitui o outro.",
+      "hint": "Associe o tipo de fonte ao tipo de evidência que ela registra.",
+      "errorFocus": "GENRE_IGNORED",
+      "misconceptions": {
+        "O inventário explica o que cada estudante aprendeu.": [
+          "GENRE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FESTIVAL_SQUARE",
+      "statement": "Dois textos hipotéticos sobre uma festa na praça: uma organizadora destaca apresentações; um comerciante próximo menciona a mudança temporária do acesso à loja. Qual análise é mais cuidadosa?",
+      "options": [
+        "As fontes selecionam efeitos diferentes; é preciso verificar datas, localização e outros relatos para avaliar o alcance da mudança de acesso.",
+        "A festa beneficiou todos porque houve apresentações.",
+        "A loja ficou inacessível durante todo o ano.",
+        "Uma das pessoas necessariamente inventou o que observou."
+      ],
+      "correctAnswer": "As fontes selecionam efeitos diferentes; é preciso verificar datas, localização e outros relatos para avaliar o alcance da mudança de acesso.",
+      "explanation": "As afirmações podem ser compatíveis e delimitadas a posições e períodos diferentes. É preciso contexto para medir alcance.",
+      "hint": "Compare onde e quando cada pessoa observou a situação.",
+      "errorFocus": "TEMPORAL_AND_SPATIAL_SCOPE_OMITTED",
+      "misconceptions": {
+        "A festa beneficiou todos porque houve apresentações.": [
+          "TEMPORAL_AND_SPATIAL_SCOPE_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RENAMED_STREET",
+      "statement": "Cenário hipotético: um mapa escolar de 1980 registra “Rua do Mercado”; um guia de 2020 usa “Rua das Palmeiras” para o mesmo trecho. Que evidência ajudaria a explicar a diferença?",
+      "options": [
+        "O tamanho das letras nos mapas.",
+        "Registros de mudança oficial do nome e informações sobre o período de produção de cada mapa.",
+        "A opinião atual de uma pessoa, tomada como prova do passado.",
+        "A conclusão de que uma das ruas deixou de existir."
+      ],
+      "correctAnswer": "Registros de mudança oficial do nome e informações sobre o período de produção de cada mapa.",
+      "explanation": "Nomes distintos podem decorrer de renomeação, convenção cartográfica ou erro. A comparação exige identificar fonte, data e trecho.",
+      "hint": "Verifique se os mapas representam o mesmo lugar e como nomeiam o trecho.",
+      "errorFocus": "MAP_LABEL_DIFFERENCE_ASSUMED_TO_PROVE_DISAPPEARANCE",
+      "misconceptions": {
+        "O tamanho das letras nos mapas.": [
+          "MAP_LABEL_DIFFERENCE_ASSUMED_TO_PROVE_DISAPPEARANCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RIVER_FLOOD",
+      "statement": "Dois registros hipotéticos sobre uma cheia: uma moradora descreve água dentro da casa; o boletim municipal registra o nível do rio em uma estação. Como combinar as evidências?",
+      "options": [
+        "Substituir o relato pelo indicador, pois números sempre representam todo o território.",
+        "Usar uma casa para calcular o nível do rio em todas as áreas.",
+        "Relacionar a experiência localizada ao indicador medido, sem tratar a estação como medida de todas as casas.",
+        "Concluir que as fontes se contradizem porque usam unidades diferentes."
+      ],
+      "correctAnswer": "Relacionar a experiência localizada ao indicador medido, sem tratar a estação como medida de todas as casas.",
+      "explanation": "Um nível medido em uma estação e uma experiência em uma casa têm escalas e locais diferentes. Juntos podem orientar uma investigação, não uma generalização automática.",
+      "hint": "Anote local, escala e unidade de cada registro.",
+      "errorFocus": "MEASUREMENT_SCALE_CONFUSED_WITH_LOCAL_EXPERIENCE",
+      "misconceptions": {
+        "Substituir o relato pelo indicador, pois números sempre representam todo o território.": [
+          "MEASUREMENT_SCALE_CONFUSED_WITH_LOCAL_EXPERIENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WORKSHOP_RULE",
+      "statement": "Uma regra hipotética de uma oficina diz que ferramentas devem ser devolvidas ao fim do dia. Um relato de participante descreve que uma ferramenta ficou emprestada por uma semana. O que se pode afirmar?",
+      "options": [
+        "A regra prova que todos devolveram as ferramentas no mesmo dia.",
+        "O relato prova que a regra não existia.",
+        "Uma pessoa descumpriu a regra intencionalmente.",
+        "A regra prescrevia devolução diária; o relato registra uma experiência diferente, que precisa de contexto."
+      ],
+      "correctAnswer": "A regra prescrevia devolução diária; o relato registra uma experiência diferente, que precisa de contexto.",
+      "explanation": "Norma e experiência são tipos diferentes de evidência. O relato não explica por que ocorreu a diferença nem quantas vezes isso aconteceu.",
+      "hint": "Separe o que deveria ocorrer do que alguém relata ter ocorrido.",
+      "errorFocus": "NORM_TREATED_AS_UNIFORM_PRACTICE",
+      "misconceptions": {
+        "A regra prova que todos devolveram as ferramentas no mesmo dia.": [
+          "NORM_TREATED_AS_UNIFORM_PRACTICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NEWSPAPER_EDITORIAL",
+      "statement": "Em um jornal hipotético, uma notícia informa a data de uma reunião e um editorial defende uma proposta discutida nela. O que muda entre os textos?",
+      "options": [
+        "O gênero e a finalidade: a notícia relata informações; o editorial apresenta uma posição argumentada.",
+        "A data da reunião, embora os dois textos a mencionem.",
+        "A autoria institucional, que é necessariamente a mesma pessoa.",
+        "A possibilidade de usar qualquer texto como prova de que todos concordavam."
+      ],
+      "correctAnswer": "O gênero e a finalidade: a notícia relata informações; o editorial apresenta uma posição argumentada.",
+      "explanation": "Notícia e editorial obedecem a convenções diferentes. O editorial expressa uma posição do veículo, não consenso social.",
+      "hint": "Observe a seção, a autoria e o propósito do texto.",
+      "errorFocus": "EDITORIAL_POSITION_MISTAKEN_FOR_PUBLIC_CONSENSUS",
+      "misconceptions": {
+        "A data da reunião, embora os dois textos a mencionem.": [
+          "EDITORIAL_POSITION_MISTAKEN_FOR_PUBLIC_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WORKERS_MEETING",
+      "statement": "Cenário didático: uma ata registra que a reunião terminou às 18h; um bilhete de uma participante diz que ela saiu antes para buscar uma criança. Qual interpretação é possível?",
+      "options": [
+        "O bilhete prova que a reunião terminou antes das 18h.",
+        "A ata informa o horário de encerramento da reunião; o bilhete descreve a saída antecipada de uma participante.",
+        "A ata prova que todas as pessoas permaneceram até o fim.",
+        "Uma fonte deve ser descartada porque os horários parecem diferentes."
+      ],
+      "correctAnswer": "A ata informa o horário de encerramento da reunião; o bilhete descreve a saída antecipada de uma participante.",
+      "explanation": "Os horários referem-se a eventos distintos: encerramento coletivo e saída de uma pessoa. Não há contradição necessária.",
+      "hint": "Pergunte “horário de quê?” em cada fonte.",
+      "errorFocus": "EVENT_REFERENTS_CONFUSED",
+      "misconceptions": {
+        "O bilhete prova que a reunião terminou antes das 18h.": [
+          "EVENT_REFERENTS_CONFUSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PUBLIC_HEARING",
+      "statement": "Em uma consulta pública hipotética, a síntese oficial informa “18 manifestações recebidas”; uma participante relata que não conseguiu enviar sua contribuição. O que a síntese não permite concluir?",
+      "options": [
+        "Que houve exatamente 18 manifestações registradas.",
+        "Que a síntese conta os envios recebidos pelo canal descrito.",
+        "Que todas as pessoas interessadas conseguiram participar.",
+        "Que o relato descreve uma dificuldade vivida por uma participante."
+      ],
+      "correctAnswer": "Que todas as pessoas interessadas conseguiram participar.",
+      "explanation": "A contagem registra envios recebidos, não todas as tentativas nem todas as pessoas interessadas.",
+      "hint": "Diferencie manifestações recebidas de oportunidades efetivas de participação.",
+      "errorFocus": "COUNT_OF_RECEIVED_TREATED_AS_UNIVERSAL_ACCESS",
+      "misconceptions": {
+        "Que houve exatamente 18 manifestações registradas.": [
+          "COUNT_OF_RECEIVED_TREATED_AS_UNIVERSAL_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MUSEUM_LABEL",
+      "statement": "Uma legenda hipotética de museu atribui um objeto a uma oficina regional; uma ficha antiga registra apenas a cidade onde foi encontrado. Qual próximo passo é mais rigoroso?",
+      "options": [
+        "Escolher a ficha antiga por ter mais idade.",
+        "Concluir que a cidade de achado prova quem fabricou o objeto.",
+        "Somar as duas afirmações como se fossem a mesma informação.",
+        "Consultar a procedência e a justificativa da atribuição antes de tratar cidade de achado como local de fabricação."
+      ],
+      "correctAnswer": "Consultar a procedência e a justificativa da atribuição antes de tratar cidade de achado como local de fabricação.",
+      "explanation": "Local de achado e local de fabricação são categorias distintas. A atribuição deve ser sustentada por sua documentação.",
+      "hint": "Compare o significado de “encontrado” e “produzido”.",
+      "errorFocus": "FINDSPOT_CONFUSED_WITH_ORIGIN",
+      "misconceptions": {
+        "Escolher a ficha antiga por ter mais idade.": [
+          "FINDSPOT_CONFUSED_WITH_ORIGIN"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONFLICTING_COUNTS",
+      "statement": "Dois levantamentos hipotéticos contam participantes de uma assembleia: um inclui entradas até 10h; outro registra presentes no início. Por que os totais diferem?",
+      "options": [
+        "Os critérios e horários de contagem não são equivalentes; é preciso harmonizar definições antes de comparar.",
+        "Um dos números é falso porque não coincide.",
+        "O total maior representa necessariamente maior apoio.",
+        "A diferença prova que a assembleia foi interrompida."
+      ],
+      "correctAnswer": "Os critérios e horários de contagem não são equivalentes; é preciso harmonizar definições antes de comparar.",
+      "explanation": "O método altera o que cada total mede. Sem definições compatíveis, a diferença numérica não sustenta uma conclusão sobre apoio.",
+      "hint": "Compare momento e regra de inclusão de cada contagem.",
+      "errorFocus": "INCOMPATIBLE_COUNTING_RULES_IGNORED",
+      "misconceptions": {
+        "Um dos números é falso porque não coincide.": [
+          "INCOMPATIBLE_COUNTING_RULES_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "WATER_SOURCE_DEBATE",
+      "statement": "Cenário novo: uma carta de 1910 pede proteger uma nascente; um relatório de 1912 descreve obras para conduzir água. Qual questão permite comparar as fontes sem presumir uma oposição simples?",
+      "options": [
+        "Qual autor estava certo, sem examinar o conteúdo.",
+        "Quais interesses, usos e condições cada fonte apresenta, e se as obras alteraram o acesso ou a proteção descritos.",
+        "Se toda a população apoiava a obra, embora isso não seja registrado.",
+        "Se a carta prova que a obra nunca aconteceu."
+      ],
+      "correctAnswer": "Quais interesses, usos e condições cada fonte apresenta, e se as obras alteraram o acesso ou a proteção descritos.",
+      "explanation": "Pedido de proteção e registro de obra não são necessariamente incompatíveis. A análise precisa conhecer finalidade, projeto e efeitos.",
+      "hint": "Transforme “quem venceu?” em perguntas sobre uso, decisão e consequência documentada.",
+      "errorFocus": "BINARY_CONFLICT_ASSUMED",
+      "misconceptions": {
+        "Qual autor estava certo, sem examinar o conteúdo.": [
+          "BINARY_CONFLICT_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "MIGRANT_REGISTER",
+      "statement": "Um registro hipotético lista entradas de famílias em um bairro; cartas de duas famílias descrevem motivos diferentes para a mudança. O que as cartas acrescentam?",
+      "options": [
+        "A causa única de toda migração para o bairro.",
+        "Uma contagem completa de famílias que chegaram.",
+        "Experiências e motivos situados, sem representar automaticamente todas as famílias listadas.",
+        "Prova de que o registro administrativo é falso."
+      ],
+      "correctAnswer": "Experiências e motivos situados, sem representar automaticamente todas as famílias listadas.",
+      "explanation": "As cartas ampliam a compreensão de experiências individuais; o registro e as cartas têm coberturas e propósitos distintos.",
+      "hint": "Use as cartas para aprofundar casos, não para substituir a escala do registro.",
+      "errorFocus": "CASE_STUDY_GENERALIZED_TO_POPULATION",
+      "misconceptions": {
+        "A causa única de toda migração para o bairro.": [
+          "CASE_STUDY_GENERALIZED_TO_POPULATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-20",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WORKSHOP_MEMO",
+      "statement": "Uma anotação hipotética de oficina menciona produção menor em um mês; um relatório anual informa crescimento no ano. Que explicação é possível sem exagero?",
+      "options": [
+        "O relatório anual prova que a anotação mensal está errada.",
+        "A anotação mensal prova que a produção caiu durante todo o ano.",
+        "O crescimento anual foi causado por uma decisão não mencionada.",
+        "As escalas temporais podem mostrar variações diferentes; é necessário examinar os meses e os indicadores usados."
+      ],
+      "correctAnswer": "As escalas temporais podem mostrar variações diferentes; é necessário examinar os meses e os indicadores usados.",
+      "explanation": "Um mês e um ano podem apontar tendências distintas sem contradição. A série mensal e as definições ajudariam a explicar o quadro.",
+      "hint": "Compare períodos e medidas antes de conciliar os resultados.",
+      "errorFocus": "TIME_SCALE_MISMATCH",
+      "misconceptions": {
+        "O relatório anual prova que a anotação mensal está errada.": [
+          "TIME_SCALE_MISMATCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "MONUMENT_DESCRIPTION",
+      "statement": "Uma placa hipotética chama um monumento de “celebração da cidade”; um abaixo-assinado antigo pede incluir nomes de trabalhadoras na inscrição. O que analisar?",
+      "options": [
+        "Como a placa constrói uma narrativa e que reivindicação o abaixo-assinado registra, sem supor que um documento representa todos.",
+        "Afirmar que todas as pessoas celebravam a mesma memória.",
+        "Concluir que o abaixo-assinado alterou a placa, sem evidência posterior.",
+        "Escolher a placa como fonte completa por estar exposta publicamente."
+      ],
+      "correctAnswer": "Como a placa constrói uma narrativa e que reivindicação o abaixo-assinado registra, sem supor que um documento representa todos.",
+      "explanation": "Exposição e reivindicação são evidências de posições distintas. Para saber se a inscrição mudou, busque registros posteriores.",
+      "hint": "Diferencie narrativa apresentada, demanda e resultado documentado.",
+      "errorFocus": "PUBLIC_DISPLAY_TAKEN_AS_CONSENSUS",
+      "misconceptions": {
+        "Afirmar que todas as pessoas celebravam a mesma memória.": [
+          "PUBLIC_DISPLAY_TAKEN_AS_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COURT_TESTIMONIES",
+      "statement": "Em um processo hipotético, duas testemunhas descrevem uma mesma rua em horários diferentes. Que cuidado é indispensável antes de chamar os relatos de contraditórios?",
+      "options": [
+        "Assumir que duas testemunhas deveriam observar exatamente os mesmos elementos.",
+        "Verificar horário, localização, pergunta feita e o sentido de cada descrição.",
+        "Contar qual depoimento tem mais adjetivos.",
+        "Descartar o relato produzido primeiro sem considerar contexto."
+      ],
+      "correctAnswer": "Verificar horário, localização, pergunta feita e o sentido de cada descrição.",
+      "explanation": "Observações diferentes podem decorrer de tempo e posição distintos. Contradição exige afirmações incompatíveis sobre o mesmo recorte.",
+      "hint": "Compare referente, tempo e ponto de observação de cada frase.",
+      "errorFocus": "DIFFERENT_OBSERVATIONS_MISTAKEN_FOR_CONTRADICTION",
+      "misconceptions": {
+        "Assumir que duas testemunhas deveriam observar exatamente os mesmos elementos.": [
+          "DIFFERENT_OBSERVATIONS_MISTAKEN_FOR_CONTRADICTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "ARCHIVE_CATALOG",
+      "statement": "Um catálogo hipotético informa que uma caixa de documentos foi perdida; uma coleção particular conserva três cartas do período. Qual síntese é defensável?",
+      "options": [
+        "O período não pode ser estudado porque uma caixa sumiu.",
+        "As três cartas substituem integralmente a caixa perdida.",
+        "A perda limita o acervo institucional consultado; as cartas preservadas oferecem evidências parciais que precisam de proveniência.",
+        "A perda prova que alguém destruiu documentos para ocultar um fato."
+      ],
+      "correctAnswer": "A perda limita o acervo institucional consultado; as cartas preservadas oferecem evidências parciais que precisam de proveniência.",
+      "explanation": "A lacuna deve ser registrada sem preencher seu conteúdo por suposição. As cartas podem ajudar, mas não reconstituem automaticamente o conjunto perdido.",
+      "hint": "Indique a lacuna, a proveniência das cartas e o limite da conclusão.",
+      "errorFocus": "ARCHIVE_LOSS_FILLED_WITH_SPECULATION",
+      "misconceptions": {
+        "O período não pode ser estudado porque uma caixa sumiu.": [
+          "ARCHIVE_LOSS_FILLED_WITH_SPECULATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PETITION_SIGNATURES",
+      "statement": "Uma petição hipotética tem 80 assinaturas; a ata de uma reunião registra 35 presentes. O que não se pode inferir diretamente?",
+      "options": [
+        "Que a petição contém 80 assinaturas.",
+        "Que a ata registra 35 presentes conforme seu próprio critério.",
+        "Que os documentos têm formas de registro diferentes.",
+        "Que os 80 signatários participaram da reunião ou que a ata registra todos os apoiadores."
+      ],
+      "correctAnswer": "Que os 80 signatários participaram da reunião ou que a ata registra todos os apoiadores.",
+      "explanation": "Assinaturas e presenças medem coisas distintas. Para ligar os conjuntos seria necessário comparar nomes, datas e critérios.",
+      "hint": "Não transforme duas contagens diferentes em uma só população sem verificar os registros.",
+      "errorFocus": "DIFFERENT_POPULATIONS_ASSUMED_IDENTICAL",
+      "misconceptions": {
+        "Que a petição contém 80 assinaturas.": [
+          "DIFFERENT_POPULATIONS_ASSUMED_IDENTICAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "LOCKIN_SINGLE_VOICE",
+      "statement": "Uma exposição usa um diário pessoal para afirmar “todos os moradores apoiaram a obra”. Qual revisão é melhor?",
+      "options": [
+        "“O diário registra o apoio de seu autor; outras fontes são necessárias para avaliar opiniões mais amplas.”",
+        "“Todos apoiaram, pois o diário representa a cidade.”",
+        "“Ninguém apoiou, porque o diário é pessoal.”",
+        "“O diário prova que a obra foi concluída.”"
+      ],
+      "correctAnswer": "“O diário registra o apoio de seu autor; outras fontes são necessárias para avaliar opiniões mais amplas.”",
+      "explanation": "A revisão limita a afirmação ao sujeito efetivamente representado e identifica a necessidade de outras evidências.",
+      "hint": "Substitua “todos” pelo grupo que a fonte realmente permite observar.",
+      "errorFocus": "SINGLE_SOURCE_USED_FOR_UNIVERSAL_CLAIM",
+      "misconceptions": {
+        "“Todos apoiaram, pois o diário representa a cidade.”": [
+          "SINGLE_SOURCE_USED_FOR_UNIVERSAL_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_RULE_AND_REPORT",
+      "statement": "Uma norma hipotética prevê atendimento até 18h; um relato informa que uma pessoa encontrou o local fechado às 17h30. Qual conclusão evita confundir prescrição e prática?",
+      "options": [
+        "A norma prova que o local estava aberto às 17h30.",
+        "A norma prevê atendimento até 18h e o relato descreve uma ocorrência que demanda verificação adicional.",
+        "O relato prova que a norma nunca existiu.",
+        "A pessoa necessariamente interpretou o horário de forma errada."
+      ],
+      "correctAnswer": "A norma prevê atendimento até 18h e o relato descreve uma ocorrência que demanda verificação adicional.",
+      "explanation": "A regra e a experiência são evidências diferentes. Para explicar o caso, seria útil verificar dia, local e aplicação da norma.",
+      "hint": "Escreva uma frase sobre a regra e outra sobre a ocorrência.",
+      "errorFocus": "RULE_USED_TO_OVERRIDE_REPORTED_EXPERIENCE",
+      "misconceptions": {
+        "A norma prova que o local estava aberto às 17h30.": [
+          "RULE_USED_TO_OVERRIDE_REPORTED_EXPERIENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCKIN_AUTHOR_POSITION",
+      "statement": "Uma carta de uma autoridade elogia uma reforma; uma carta de uma moradora critica o barulho durante as obras. Como evitar classificar uma delas como “neutra” sem análise?",
+      "options": [
+        "Escolher a autoridade como neutra por ocupar um cargo.",
+        "Escolher a moradora como neutra porque viveu no local.",
+        "Examinar posição, propósito, data e experiência de cada autora, e comparar as afirmações com outras evidências.",
+        "Descartar as duas porque todo texto tem perspectiva."
+      ],
+      "correctAnswer": "Examinar posição, propósito, data e experiência de cada autora, e comparar as afirmações com outras evidências.",
+      "explanation": "Posição não torna automaticamente uma fonte falsa ou neutra. Contexto, propósito e corroboração ajudam a avaliar cada afirmação.",
+      "hint": "Evite tratar autoridade ou proximidade como garantia suficiente.",
+      "errorFocus": "POSITION_CONFUSED_WITH_RELIABILITY",
+      "misconceptions": {
+        "Escolher a autoridade como neutra por ocupar um cargo.": [
+          "POSITION_CONFUSED_WITH_RELIABILITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCKIN_SAME_EVENT",
+      "statement": "Duas fontes hipotéticas descrevem uma marcha: uma lista o trajeto; outra registra palavras de ordem ouvidas em um trecho. O que cada uma não prova sozinha?",
+      "options": [
+        "Que ambas tratam de aspectos diferentes.",
+        "Que uma fonte pode complementar a outra.",
+        "Que é importante saber quem produziu cada registro.",
+        "A lista não prova o que todas as pessoas disseram; o registro de palavras de ordem não define o trajeto completo."
+      ],
+      "correctAnswer": "A lista não prova o que todas as pessoas disseram; o registro de palavras de ordem não define o trajeto completo.",
+      "explanation": "Cada fonte sustenta afirmações sobre seu próprio recorte. Complementaridade não elimina a necessidade de autoria e contexto.",
+      "hint": "Associe cada afirmação à evidência que a sustenta.",
+      "errorFocus": "ONE_SOURCE_EXPANDED_BEYOND_SCOPE",
+      "misconceptions": {
+        "Que ambas tratam de aspectos diferentes.": [
+          "ONE_SOURCE_EXPANDED_BEYOND_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCKIN_PARTIAL_AGREEMENT",
+      "statement": "Dois relatos hipotéticos concordam que uma ponte foi aberta em junho, mas divergem sobre a duração da cerimônia. Qual síntese é proporcional?",
+      "options": [
+        "Há convergência sobre a abertura em junho e divergência sobre a duração, que exige comparar os critérios e observadores.",
+        "Ambos são inteiramente verdadeiros em cada detalhe.",
+        "Um é falso por divergir em um aspecto.",
+        "A ponte foi aberta em outro mês porque a duração diverge."
+      ],
+      "correctAnswer": "Há convergência sobre a abertura em junho e divergência sobre a duração, que exige comparar os critérios e observadores.",
+      "explanation": "Fontes podem concordar em uma afirmação e divergir em outra. Avalie cada proposição separadamente.",
+      "hint": "Separe os pontos de concordância e de divergência.",
+      "errorFocus": "PARTIAL_AGREEMENT_COLLAPSED_TO_TOTAL_TRUTH",
+      "misconceptions": {
+        "Ambos são inteiramente verdadeiros em cada detalhe.": [
+          "PARTIAL_AGREEMENT_COLLAPSED_TO_TOTAL_TRUTH"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCKIN_ABSENT_VOICE",
+      "statement": "Um relatório sobre a construção de um canal não inclui relatos de famílias removidas. O que a ausência permite dizer?",
+      "options": [
+        "Que nenhuma família foi removida.",
+        "Que o relatório consultado não traz essas vozes; é preciso buscar outras fontes para investigar suas experiências.",
+        "Que as famílias concordavam com o relatório.",
+        "Que as vozes ausentes podem ser inventadas para completar a narrativa."
+      ],
+      "correctAnswer": "Que o relatório consultado não traz essas vozes; é preciso buscar outras fontes para investigar suas experiências.",
+      "explanation": "O silêncio do relatório caracteriza seu recorte. Não prova inexistência de pessoas ou experiências.",
+      "hint": "Nomeie a ausência na fonte, não uma ausência no passado.",
+      "errorFocus": "SILENCE_AS_PROOF_OF_NONEXISTENCE",
+      "misconceptions": {
+        "Que nenhuma família foi removida.": [
+          "SILENCE_AS_PROOF_OF_NONEXISTENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_PERSPECTIVE",
+      "statement": "Um texto hipotético de uma associação descreve uma praça como “espaço de convivência”; um plano de obras a descreve como “área de intervenção”. Qual comparação é mais precisa?",
+      "options": [
+        "O plano prova que a convivência não ocorria.",
+        "A associação prova que obras não eram necessárias.",
+        "Os textos destacam usos e objetivos distintos; a diferença de vocabulário deve ser relacionada à autoria e finalidade.",
+        "As palavras demonstram uma disputa formal já concluída."
+      ],
+      "correctAnswer": "Os textos destacam usos e objetivos distintos; a diferença de vocabulário deve ser relacionada à autoria e finalidade.",
+      "explanation": "Os textos enquadram a praça de maneiras diferentes, mas não apresentam sozinhos todos os usos, decisões ou resultados.",
+      "hint": "Localize a palavra de cada fonte e pergunte quem a escolheu e para quê.",
+      "errorFocus": "WORD_CHOICE_OVERINTERPRETED",
+      "misconceptions": {
+        "O plano prova que a convivência não ocorria.": [
+          "WORD_CHOICE_OVERINTERPRETED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_TRANSLATION",
+      "statement": "Uma fonte foi traduzida por duas editoras e a palavra central aparece como “assembleia” em uma edição e “conselho” em outra. O que fazer?",
+      "options": [
+        "Escolher a tradução mais recente como significado original.",
+        "Concluir que a instituição mudou entre as edições.",
+        "Usar as palavras como sinônimos sem verificar contexto.",
+        "Consultar o original ou a nota de tradução e registrar a escolha editorial antes de interpretar a instituição."
+      ],
+      "correctAnswer": "Consultar o original ou a nota de tradução e registrar a escolha editorial antes de interpretar a instituição.",
+      "explanation": "Uma divergência de tradução pode alterar o sentido. A edição e as decisões editoriais integram a proveniência.",
+      "hint": "Procure nota, glossário ou termo original.",
+      "errorFocus": "TRANSLATION_VARIANT_MISTAKEN_FOR_HISTORICAL_CHANGE",
+      "misconceptions": {
+        "Escolher a tradução mais recente como significado original.": [
+          "TRANSLATION_VARIANT_MISTAKEN_FOR_HISTORICAL_CHANGE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_THREE_SOURCES",
+      "statement": "Três fontes hipotéticas tratam de uma obra: uma ata registra a decisão, um diário relata poeira no bairro e uma planta marca a área. Qual síntese é mais bem sustentada?",
+      "options": [
+        "A decisão foi registrada, uma pessoa relatou poeira e a planta delimita uma área; os materiais não medem sozinhos o impacto em todo o bairro.",
+        "A obra causou o mesmo impacto em todas as casas.",
+        "A planta prova que a obra foi aprovada por todos.",
+        "O diário determina a área exata da intervenção."
+      ],
+      "correctAnswer": "A decisão foi registrada, uma pessoa relatou poeira e a planta delimita uma área; os materiais não medem sozinhos o impacto em todo o bairro.",
+      "explanation": "Cada fonte oferece evidência sobre decisão, experiência situada ou representação espacial. A síntese preserva escopo e limites.",
+      "hint": "Associe cada afirmação à fonte correspondente e indique o que falta medir.",
+      "errorFocus": "EVIDENCE_TYPES_COLLAPSED",
+      "misconceptions": {
+        "A obra causou o mesmo impacto em todas as casas.": [
+          "EVIDENCE_TYPES_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVIEW_SOURCE_CONFLICT",
+      "statement": "Uma circular hipotética informa que o mercado abriria na segunda; um diário registra que a autora foi ao mercado na terça e o encontrou aberto. O que investigar primeiro?",
+      "options": [
+        "Declarar que o diário é falso porque a circular é oficial.",
+        "Se a circular indicava um horário previsto, se houve alteração e a que semana cada registro se refere.",
+        "Concluir que o mercado abria todos os dias.",
+        "Afirmar que a circular se referia à terça sem conferir a data."
+      ],
+      "correctAnswer": "Se a circular indicava um horário previsto, se houve alteração e a que semana cada registro se refere.",
+      "explanation": "Planejamento e ocorrência podem diferir; data e semana também podem não coincidir. Antes de chamar de contradição, identifique o referente.",
+      "hint": "Confira data, período e se a fonte registra previsão ou ocorrência.",
+      "errorFocus": "PLANNED_EVENT_CONFUSED_WITH_OCCURRED_EVENT",
+      "misconceptions": {
+        "Declarar que o diário é falso porque a circular é oficial.": [
+          "PLANNED_EVENT_CONFUSED_WITH_OCCURRED_EVENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_SOURCE_ABSENCE",
+      "statement": "Um acervo escolar preserva atas de reuniões, mas não listas de presença de um ano. Qual frase respeita a lacuna?",
+      "options": [
+        "“Ninguém participou das reuniões nesse ano.”",
+        "“Todas as pessoas participaram, mas as listas sumiram.”",
+        "“As atas consultadas não incluem listas de presença para esse ano; não é possível inferir a participação apenas por esse acervo.”",
+        "“As atas provam que as reuniões não aconteceram.”"
+      ],
+      "correctAnswer": "“As atas consultadas não incluem listas de presença para esse ano; não é possível inferir a participação apenas por esse acervo.”",
+      "explanation": "A formulação descreve exatamente o que falta e evita transformar ausência documental em fato sobre a participação.",
+      "hint": "Mantenha a lacuna no nível da coleção consultada.",
+      "errorFocus": "DOCUMENT_GAP_CONVERTED_TO_EVENT_CLAIM",
+      "misconceptions": {
+        "“Ninguém participou das reuniões nesse ano.”": [
+          "DOCUMENT_GAP_CONVERTED_TO_EVENT_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_PUBLIC_STATEMENT",
+      "statement": "Uma autoridade hipotética anuncia que “o projeto atendeu a região”; moradores de dois bairros relatam que o serviço não chegou às suas ruas. Como avaliar as afirmações?",
+      "options": [
+        "Tomar o anúncio como prova de atendimento universal.",
+        "Tomar dois relatos como prova de ausência em toda a região.",
+        "Escolher a afirmação que usa números, mesmo sem conhecer a definição.",
+        "Definir “região atendida”, mapear cobertura e período e comparar o anúncio com experiências localizadas e dados operacionais."
+      ],
+      "correctAnswer": "Definir “região atendida”, mapear cobertura e período e comparar o anúncio com experiências localizadas e dados operacionais.",
+      "explanation": "“Atender a região” pode ter um critério amplo. Dados de cobertura e período ajudam a relacionar afirmação institucional e experiências específicas.",
+      "hint": "Peça definição de cobertura antes de generalizar.",
+      "errorFocus": "REGIONAL_CLAIM_AND_LOCAL_CASE_CONFLATED",
+      "misconceptions": {
+        "Tomar o anúncio como prova de atendimento universal.": [
+          "REGIONAL_CLAIM_AND_LOCAL_CASE_CONFLATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_PROPORTIONAL_CONCLUSION",
+      "statement": "Duas fontes hipotéticas registram a mesma mudança de nome em uma rua; apenas uma delas atribui a decisão a uma campanha de moradores. Qual conclusão é proporcional?",
+      "options": [
+        "A mudança de nome aparece nas duas fontes; a participação da campanha é afirmada em uma e precisa de corroboração.",
+        "A campanha causou a mudança porque uma fonte afirma isso.",
+        "As duas fontes comprovam a causa da mesma forma.",
+        "A divergência sobre a causa torna a mudança de nome incerta."
+      ],
+      "correctAnswer": "A mudança de nome aparece nas duas fontes; a participação da campanha é afirmada em uma e precisa de corroboração.",
+      "explanation": "É possível ter confiança diferente para aspectos diferentes: ocorrência da mudança e sua explicação causal.",
+      "hint": "Separe fato corroborado de causa sustentada por uma só fonte.",
+      "errorFocus": "EVENT_AND_CAUSE_CONFIDENCE_COLLAPSED",
+      "misconceptions": {
+        "A campanha causou a mudança porque uma fonte afirma isso.": [
+          "EVENT_AND_CAUSE_CONFIDENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "REVIEW_NEW_ARCHIVE",
+      "statement": "Uma pesquisadora compara cartas preservadas por uma família com relatórios de uma repartição. Que decisão fortalece a comparação?",
+      "options": [
+        "Contar todos os documentos como amostra aleatória da população.",
+        "Registrar proveniência, critérios de preservação e público de cada coleção, e limitar a conclusão aos materiais consultados.",
+        "Supor que a coleção familiar representa uma região inteira.",
+        "Tratar relatórios da repartição como relatos pessoais."
+      ],
+      "correctAnswer": "Registrar proveniência, critérios de preservação e público de cada coleção, e limitar a conclusão aos materiais consultados.",
+      "explanation": "Proveniência e seleção influenciam o que sobrevive e aparece. A comparação não torna as coleções representativas automaticamente.",
+      "hint": "Pergunte quem preservou, com que finalidade e o que pode ter ficado de fora.",
+      "errorFocus": "COLLECTION_SELECTION_IGNORED",
+      "misconceptions": {
+        "Contar todos os documentos como amostra aleatória da população.": [
+          "COLLECTION_SELECTION_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_CONFIDENCE",
+      "statement": "Uma fonte atribui uma decisão a uma única pessoa, enquanto duas cartas registram debate coletivo anterior. Como revisar a afirmação?",
+      "options": [
+        "Manter o crédito exclusivo porque a decisão foi assinada por uma pessoa.",
+        "Afirmar que as cartas provam quem tomou a decisão final.",
+        "Distinguir quem formalizou a decisão das discussões e agentes documentados, sem atribuir exclusividade causal sem evidência.",
+        "Ignorar as cartas porque foram escritas antes."
+      ],
+      "correctAnswer": "Distinguir quem formalizou a decisão das discussões e agentes documentados, sem atribuir exclusividade causal sem evidência.",
+      "explanation": "Assinatura, debate e decisão formal são evidências diferentes sobre agência. A relação entre elas precisa ser demonstrada.",
+      "hint": "Separe autoria formal, debate e mecanismo da decisão.",
+      "errorFocus": "INDIVIDUAL_CAUSE_ASSUMED_FROM_SIGNATURE",
+      "misconceptions": {
+        "Manter o crédito exclusivo porque a decisão foi assinada por uma pessoa.": [
+          "INDIVIDUAL_CAUSE_ASSUMED_FROM_SIGNATURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-compare-perspectives-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_BOUNDED_CLAIM",
+      "statement": "Uma comparação de duas fontes sustenta que trabalhadores de uma oficina mudaram de turno, mas não informa outras oficinas. Qual frase final mantém o limite?",
+      "options": [
+        "“Todos os trabalhadores da cidade mudaram de turno.”",
+        "“O trabalho mudou em toda a região.”",
+        "“Não houve mudança, pois só existem duas fontes.”",
+        "“Nas fontes da oficina analisada, os turnos registrados diferem; não sabemos se a mudança ocorreu em outras oficinas.”"
+      ],
+      "correctAnswer": "“Nas fontes da oficina analisada, os turnos registrados diferem; não sabemos se a mudança ocorreu em outras oficinas.”",
+      "explanation": "A frase registra a diferença observada e delimita o caso. Uma amostra limitada permite uma conclusão localizada, não universal.",
+      "hint": "Inclua o lugar e as fontes na própria conclusão.",
+      "errorFocus": "LOCAL_EVIDENCE_GENERALIZED",
+      "misconceptions": {
+        "“Todos os trabalhadores da cidade mudaram de turno.”": [
+          "LOCAL_EVIDENCE_GENERALIZED"
+        ]
+      }
+    }
+  ]
+}

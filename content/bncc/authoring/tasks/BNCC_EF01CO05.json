@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "tec-escola.bncc.authoring-context-brief.v1",
+  "taskId": "BNCC_EF01CO05",
+  "officialCode": "EF01CO05",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "componentCode": "CO",
+  "relation": "AUTHORING_CONTEXT_ONLY",
+  "sourceStatus": "VERIFIED",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "publicationStatus": "STAGING_INACTIVE",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "sourceEvidence": {
+    "verificationId": "BNCC_EF01CO05_MEC_P016_V1",
+    "descriptor": "Representar informação usando diferentes codificações.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "evidenceCheckedAt": "2026-10-16"
+  },
+  "requirements": {
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "lessons": 1,
+    "workedExamples": 1,
+    "activities": 1,
+    "diagnosticAssessments": 1,
+    "masteryAssessments": 1,
+    "questions": 40
+  },
+  "missingRequirements": [
+    "AUTHORING_PACKAGE",
+    "LESSON",
+    "WORKED_EXAMPLES",
+    "GUIDED_ACTIVITIES",
+    "ASSESSMENTS",
+    "REMEDIATION",
+    "PEDAGOGICAL_REVIEW"
+  ],
+  "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
+  "checkpointHash": "3ae4c9e78e20d87e15df4120bbdd5a29c02d3392dd53d59be562ce21b9072430"
+}

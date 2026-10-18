@@ -1,0 +1,2077 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp11-relate-letter-forms",
+  "canonicalSkillCode": "AUTHORING_EF01LP11_RELATE_PRINT_CURSIVE_CASE",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA — ALFABETIZAÇÃO",
+  "topic": "letras de imprensa e cursivas, maiúsculas e minúsculas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP11",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Uma letra, diferentes formas de escrever",
+    "objective": "Reconhecer que uma mesma letra pode aparecer em formatos de imprensa ou cursiva e como maiúscula ou minúscula, relacionando formas equivalentes.",
+    "summary": "Letras podem aparecer em diferentes formatos gráficos. A letra A maiúscula de imprensa e a letra a minúscula de imprensa têm formas visuais distintas, mas correspondem à mesma letra; também existem formas cursivas. Maiúsculas e minúsculas podem cumprir usos diferentes na escrita, como início de frase e nomes próprios. A leitura não depende de dominar caligrafia cursiva: estudantes podem comparar cartões, fontes impressas e modelos legíveis sem pressão por velocidade ou perfeição motora.",
+    "explanation": "Observe a letra, diga seu nome e compare versões em maiúscula, minúscula, imprensa e cursiva. Agrupe formas que representam a mesma letra, usando modelos claros. Não confunda uma mudança de formato com uma letra nova. A forma cursiva varia um pouco entre estilos de escrita, então use a referência da atividade. Para leitura, reconhecer formas ajuda a encontrar a mesma letra em textos diferentes; a escrita pode ser praticada gradualmente com apoio motor adequado.",
+    "workedExample": "Os cartões A, a, A cursivo e a cursivo representam formas da letra A. As diferenças de traçado não mudam o nome da letra; a maiúscula e a minúscula podem ter usos diferentes na frase.",
+    "commonMistake": "Tratar a letra minúscula como outra letra, confundir estilo gráfico com som ou exigir uma única caligrafia como válida.",
+    "priorKnowledge": [
+      "Reconhecer letras familiares em palavras.",
+      "Diferenciar formas visuais parecidas com apoio de modelos."
+    ],
+    "keyConcepts": [
+      "letra",
+      "imprensa",
+      "cursiva",
+      "maiúscula",
+      "minúscula",
+      "forma gráfica",
+      "equivalência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SAME_LETTER_DIFFERENT_FORM",
+        "action": "Agrupe cartões com a mesma letra e destaque que o traçado muda sem alterar sua identidade."
+      },
+      {
+        "errorFocus": "CASE_AND_USE",
+        "action": "Compare maiúsculas e minúsculas em nomes e início de frases sem dizer que são letras diferentes."
+      },
+      {
+        "errorFocus": "ACCESSIBLE_LETTER_FORMS",
+        "action": "Ofereça fontes legíveis, letras móveis, ampliação e resposta por seleção, sem exigir caligrafia cursiva."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+      "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+      "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp11-letter-form-matching",
+        "title": "Jogo de pares de letras",
+        "instructions": "Cartões legíveis apresentam letras maiúsculas e minúsculas em formatos de imprensa e cursiva.\n1. Escolha um cartão e nomeie ou indique a letra.\n2. Encontre outra forma gráfica que corresponda à mesma letra.\n3. Explique qual aspecto mudou e qual permaneceu.",
+        "steps": [
+          "Escolha um cartão e nomeie ou indique a letra.",
+          "Encontre outra forma gráfica que corresponda à mesma letra.",
+          "Explique qual aspecto mudou e qual permaneceu."
+        ],
+        "evidence": "Pares agrupados por identidade da letra, apesar de variações no traçado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece formas familiares com apoio.",
+            "developing": "relaciona maiúscula e minúscula.",
+            "proficient": "identifica a mesma letra em formatos distintos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp11-letter-hunt",
+        "title": "Caça às formas no texto",
+        "instructions": "Um texto curto e acessível contém formas variadas de letras em nomes e frases.\n1. Escolha uma letra-alvo apresentada em cartão.\n2. Localize formas equivalentes no texto.\n3. Compare maiúscula, minúscula e estilo gráfico quando disponíveis.",
+        "steps": [
+          "Escolha uma letra-alvo apresentada em cartão.",
+          "Localize formas equivalentes no texto.",
+          "Compare maiúscula, minúscula e estilo gráfico quando disponíveis."
+        ],
+        "evidence": "Marcação de ocorrências da letra com identificação de suas formas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma forma igual ao modelo.",
+            "developing": "reconhece outra forma da mesma letra.",
+            "proficient": "relaciona formas e observa o uso de maiúscula/minúscula."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp11-relate-letter-forms-01",
+          "v1-ef01lp11-relate-letter-forms-02",
+          "v1-ef01lp11-relate-letter-forms-03",
+          "v1-ef01lp11-relate-letter-forms-04",
+          "v1-ef01lp11-relate-letter-forms-05",
+          "v1-ef01lp11-relate-letter-forms-06",
+          "v1-ef01lp11-relate-letter-forms-07",
+          "v1-ef01lp11-relate-letter-forms-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp11-relate-letter-forms-09",
+          "v1-ef01lp11-relate-letter-forms-10",
+          "v1-ef01lp11-relate-letter-forms-11",
+          "v1-ef01lp11-relate-letter-forms-12",
+          "v1-ef01lp11-relate-letter-forms-13",
+          "v1-ef01lp11-relate-letter-forms-14",
+          "v1-ef01lp11-relate-letter-forms-15",
+          "v1-ef01lp11-relate-letter-forms-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp11-relate-letter-forms-17",
+          "v1-ef01lp11-relate-letter-forms-18",
+          "v1-ef01lp11-relate-letter-forms-19",
+          "v1-ef01lp11-relate-letter-forms-20",
+          "v1-ef01lp11-relate-letter-forms-21",
+          "v1-ef01lp11-relate-letter-forms-22",
+          "v1-ef01lp11-relate-letter-forms-23",
+          "v1-ef01lp11-relate-letter-forms-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp11-relate-letter-forms-25",
+          "v1-ef01lp11-relate-letter-forms-26",
+          "v1-ef01lp11-relate-letter-forms-27",
+          "v1-ef01lp11-relate-letter-forms-28",
+          "v1-ef01lp11-relate-letter-forms-29",
+          "v1-ef01lp11-relate-letter-forms-30",
+          "v1-ef01lp11-relate-letter-forms-31",
+          "v1-ef01lp11-relate-letter-forms-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp11-relate-letter-forms-33",
+          "v1-ef01lp11-relate-letter-forms-34",
+          "v1-ef01lp11-relate-letter-forms-35",
+          "v1-ef01lp11-relate-letter-forms-36",
+          "v1-ef01lp11-relate-letter-forms-37",
+          "v1-ef01lp11-relate-letter-forms-38",
+          "v1-ef01lp11-relate-letter-forms-39",
+          "v1-ef01lp11-relate-letter-forms-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP11",
+        "descriptor": "Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-01",
+      "statement": "A e a representam nomes de letras diferentes ou formas da mesma letra?",
+      "prompt": "A e a representam nomes de letras diferentes ou formas da mesma letra?",
+      "options": [
+        "Formas da mesma letra.",
+        "Duas letras sem relação",
+        "Apenas números",
+        "Sinais de pontuação"
+      ],
+      "correctAnswer": "Formas da mesma letra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Duas letras sem relação": [
+          "SAME_LETTER_CASE"
+        ],
+        "Apenas números": [
+          "SAME_LETTER_CASE"
+        ],
+        "Sinais de pontuação": [
+          "SAME_LETTER_CASE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "A_MAIUSCULO_E_A_MINUSCULO",
+      "explanation": "A maiúscula e a minúscula correspondem à letra A.",
+      "hint": "Compare os dois cartões.",
+      "errorFocus": "SAME_LETTER_CASE",
+      "feedback": {
+        "correct": "Boa observação: A maiúscula e a minúscula correspondem à letra A.",
+        "incorrect": "A maiúscula e a minúscula correspondem à letra A.",
+        "hint": "Compare os dois cartões.",
+        "errorFocus": "SAME_LETTER_CASE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-02",
+      "statement": "Um cartão mostra B de imprensa e outro B cursivo. O que eles representam?",
+      "prompt": "Um cartão mostra B de imprensa e outro B cursivo. O que eles representam?",
+      "options": [
+        "Duas letras diferentes",
+        "A mesma letra em formatos diferentes.",
+        "Uma letra e um número",
+        "Dois sons obrigatoriamente distintos"
+      ],
+      "correctAnswer": "A mesma letra em formatos diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Duas letras diferentes": [
+          "LETTER_FORM_EQUIVALENCE"
+        ],
+        "Uma letra e um número": [
+          "LETTER_FORM_EQUIVALENCE"
+        ],
+        "Dois sons obrigatoriamente distintos": [
+          "LETTER_FORM_EQUIVALENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "B_IMPRENSA_E_B_CURSIVO",
+      "explanation": "O formato muda, mas ambos representam B.",
+      "hint": "Observe o nome indicado nos cartões.",
+      "errorFocus": "LETTER_FORM_EQUIVALENCE",
+      "feedback": {
+        "correct": "Boa observação: O formato muda, mas ambos representam B.",
+        "incorrect": "O formato muda, mas ambos representam B.",
+        "hint": "Observe o nome indicado nos cartões.",
+        "errorFocus": "LETTER_FORM_EQUIVALENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-03",
+      "statement": "Em “Lia”, por que a primeira letra aparece maiúscula?",
+      "prompt": "Em “Lia”, por que a primeira letra aparece maiúscula?",
+      "options": [
+        "Porque cursiva só usa maiúsculas",
+        "Porque L é outra letra",
+        "É a inicial de um nome próprio.",
+        "Porque nomes não têm letras minúsculas"
+      ],
+      "correctAnswer": "É a inicial de um nome próprio.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque cursiva só usa maiúsculas": [
+          "CASE_IN_PROPER_NAME"
+        ],
+        "Porque L é outra letra": [
+          "CASE_IN_PROPER_NAME"
+        ],
+        "Porque nomes não têm letras minúsculas": [
+          "CASE_IN_PROPER_NAME"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAIUSCULA_NO_NOME",
+      "explanation": "Nomes próprios costumam iniciar com letra maiúscula.",
+      "hint": "Observe a posição e o tipo de palavra.",
+      "errorFocus": "CASE_IN_PROPER_NAME",
+      "feedback": {
+        "correct": "Boa observação: Nomes próprios costumam iniciar com letra maiúscula.",
+        "incorrect": "Nomes próprios costumam iniciar com letra maiúscula.",
+        "hint": "Observe a posição e o tipo de palavra.",
+        "errorFocus": "CASE_IN_PROPER_NAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-04",
+      "statement": "Qual letra minúscula aparece no cartão: d?",
+      "prompt": "Qual letra minúscula aparece no cartão: d?",
+      "options": [
+        "b",
+        "p",
+        "q",
+        "d."
+      ],
+      "correctAnswer": "d.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "b": [
+          "LOWERCASE_IDENTIFICATION"
+        ],
+        "p": [
+          "LOWERCASE_IDENTIFICATION"
+        ],
+        "q": [
+          "LOWERCASE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_D_MINUSCULO",
+      "explanation": "O símbolo indicado é d minúsculo.",
+      "hint": "Compare a forma com os modelos.",
+      "errorFocus": "LOWERCASE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: O símbolo indicado é d minúsculo.",
+        "incorrect": "O símbolo indicado é d minúsculo.",
+        "hint": "Compare a forma com os modelos.",
+        "errorFocus": "LOWERCASE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-05",
+      "statement": "Qual aspecto pode mudar entre imprensa e cursiva?",
+      "prompt": "Qual aspecto pode mudar entre imprensa e cursiva?",
+      "options": [
+        "O desenho ou traçado da letra.",
+        "O nome da letra necessariamente",
+        "A ordem alfabética",
+        "A existência da letra"
+      ],
+      "correctAnswer": "O desenho ou traçado da letra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O nome da letra necessariamente": [
+          "GRAPHIC_STYLE"
+        ],
+        "A ordem alfabética": [
+          "GRAPHIC_STYLE"
+        ],
+        "A existência da letra": [
+          "GRAPHIC_STYLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "IMPRENSA_E_CURSIVA",
+      "explanation": "Os formatos gráficos podem ter traçados diferentes.",
+      "hint": "Compare a aparência, não a identidade.",
+      "errorFocus": "GRAPHIC_STYLE",
+      "feedback": {
+        "correct": "Boa observação: Os formatos gráficos podem ter traçados diferentes.",
+        "incorrect": "Os formatos gráficos podem ter traçados diferentes.",
+        "hint": "Compare a aparência, não a identidade.",
+        "errorFocus": "GRAPHIC_STYLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-06",
+      "statement": "M e m são formas de qual letra?",
+      "prompt": "M e m são formas de qual letra?",
+      "options": [
+        "N",
+        "M.",
+        "W",
+        "H"
+      ],
+      "correctAnswer": "M.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "N": [
+          "CASE_MATCH_M"
+        ],
+        "W": [
+          "CASE_MATCH_M"
+        ],
+        "H": [
+          "CASE_MATCH_M"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "M_MAIUSCULA_E_M_MINUSCULA",
+      "explanation": "M maiúsculo e m minúsculo correspondem à mesma letra.",
+      "hint": "Leia os nomes dos cartões.",
+      "errorFocus": "CASE_MATCH_M",
+      "feedback": {
+        "correct": "Boa observação: M maiúsculo e m minúsculo correspondem à mesma letra.",
+        "incorrect": "M maiúsculo e m minúsculo correspondem à mesma letra.",
+        "hint": "Leia os nomes dos cartões.",
+        "errorFocus": "CASE_MATCH_M"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-07",
+      "statement": "Duas pessoas escrevem a letra cursiva com traçados um pouco diferentes. Isso significa que são letras diferentes?",
+      "prompt": "Duas pessoas escrevem a letra cursiva com traçados um pouco diferentes. Isso significa que são letras diferentes?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se o tamanho mudar",
+        "Não; variações de traçado podem representar a mesma letra.",
+        "Não, porque cursiva não existe"
+      ],
+      "correctAnswer": "Não; variações de traçado podem representar a mesma letra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "CURSIVE_VARIATION"
+        ],
+        "Sim, se o tamanho mudar": [
+          "CURSIVE_VARIATION"
+        ],
+        "Não, porque cursiva não existe": [
+          "CURSIVE_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CALIGRAFIA_VARIADA",
+      "explanation": "Modelos cursivos podem variar sem mudar a letra representada.",
+      "hint": "Compare a forma com a referência.",
+      "errorFocus": "CURSIVE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Modelos cursivos podem variar sem mudar a letra representada.",
+        "incorrect": "Modelos cursivos podem variar sem mudar a letra representada.",
+        "hint": "Compare a forma com a referência.",
+        "errorFocus": "CURSIVE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-08",
+      "statement": "Para reconhecer uma letra cursiva, é obrigatório escrever cursiva perfeitamente?",
+      "prompt": "Para reconhecer uma letra cursiva, é obrigatório escrever cursiva perfeitamente?",
+      "options": [
+        "Sim, sempre",
+        "Sim, antes de aprender o nome",
+        "Não, porque a letra não pode ser lida",
+        "Não; é possível reconhecer e relacionar formas sem escrevê-las com perfeição."
+      ],
+      "correctAnswer": "Não; é possível reconhecer e relacionar formas sem escrevê-las com perfeição.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "READING_ACCESS"
+        ],
+        "Sim, antes de aprender o nome": [
+          "READING_ACCESS"
+        ],
+        "Não, porque a letra não pode ser lida": [
+          "READING_ACCESS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEITURA_SEM_ESCRITA_CURSIVA",
+      "explanation": "Reconhecer uma forma não exige domínio motor de sua escrita.",
+      "hint": "Separe leitura de caligrafia.",
+      "errorFocus": "READING_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer uma forma não exige domínio motor de sua escrita.",
+        "incorrect": "Reconhecer uma forma não exige domínio motor de sua escrita.",
+        "hint": "Separe leitura de caligrafia.",
+        "errorFocus": "READING_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-09",
+      "statement": "c minúsculo e C maiúsculo correspondem a qual letra?",
+      "prompt": "c minúsculo e C maiúsculo correspondem a qual letra?",
+      "options": [
+        "C.",
+        "G",
+        "O",
+        "E"
+      ],
+      "correctAnswer": "C.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "G": [
+          "CASE_MATCH_C"
+        ],
+        "O": [
+          "CASE_MATCH_C"
+        ],
+        "E": [
+          "CASE_MATCH_C"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "C_MINUSCULO_E_C_MAIUSCULO",
+      "explanation": "As duas formas representam a letra C.",
+      "hint": "Compare o nome da letra.",
+      "errorFocus": "CASE_MATCH_C",
+      "feedback": {
+        "correct": "Boa observação: As duas formas representam a letra C.",
+        "incorrect": "As duas formas representam a letra C.",
+        "hint": "Compare o nome da letra.",
+        "errorFocus": "CASE_MATCH_C"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-10",
+      "statement": "Um texto impresso mostra a letra F. Qual estilo gráfico está descrito?",
+      "prompt": "Um texto impresso mostra a letra F. Qual estilo gráfico está descrito?",
+      "options": [
+        "Cursiva",
+        "Imprensa.",
+        "Numeral",
+        "Pontuação"
+      ],
+      "correctAnswer": "Imprensa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cursiva": [
+          "PRINT_STYLE"
+        ],
+        "Numeral": [
+          "PRINT_STYLE"
+        ],
+        "Pontuação": [
+          "PRINT_STYLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "F_IMPRENSA",
+      "explanation": "A fonte do texto apresenta formato de imprensa.",
+      "hint": "Observe o tipo de traçado.",
+      "errorFocus": "PRINT_STYLE",
+      "feedback": {
+        "correct": "Boa observação: A fonte do texto apresenta formato de imprensa.",
+        "incorrect": "A fonte do texto apresenta formato de imprensa.",
+        "hint": "Observe o tipo de traçado.",
+        "errorFocus": "PRINT_STYLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-11",
+      "statement": "Qual par mostra maiúscula e minúscula da mesma letra?",
+      "prompt": "Qual par mostra maiúscula e minúscula da mesma letra?",
+      "options": [
+        "P e R",
+        "b e d",
+        "P e p.",
+        "M e N"
+      ],
+      "correctAnswer": "P e p.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "P e R": [
+          "CASE_PAIR"
+        ],
+        "b e d": [
+          "CASE_PAIR"
+        ],
+        "M e N": [
+          "CASE_PAIR"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAIUSCULA_E_MINUSCULA",
+      "explanation": "P e p têm o mesmo nome de letra e casos diferentes.",
+      "hint": "Compare o nome dos dois símbolos.",
+      "errorFocus": "CASE_PAIR",
+      "feedback": {
+        "correct": "Boa observação: P e p têm o mesmo nome de letra e casos diferentes.",
+        "incorrect": "P e p têm o mesmo nome de letra e casos diferentes.",
+        "hint": "Compare o nome dos dois símbolos.",
+        "errorFocus": "CASE_PAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-12",
+      "statement": "Um modelo cursivo mostra uma letra S. O que permanece igual ao S de imprensa?",
+      "prompt": "Um modelo cursivo mostra uma letra S. O que permanece igual ao S de imprensa?",
+      "options": [
+        "O traçado exato",
+        "A posição na palavra",
+        "A cor do papel",
+        "A identidade e o nome da letra."
+      ],
+      "correctAnswer": "A identidade e o nome da letra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O traçado exato": [
+          "IDENTITY_ACROSS_STYLES"
+        ],
+        "A posição na palavra": [
+          "IDENTITY_ACROSS_STYLES"
+        ],
+        "A cor do papel": [
+          "IDENTITY_ACROSS_STYLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FORMA_CURSIVA_DE_S",
+      "explanation": "A forma muda, mas a letra representada permanece.",
+      "hint": "Pense no que o cartão nomeia.",
+      "errorFocus": "IDENTITY_ACROSS_STYLES",
+      "feedback": {
+        "correct": "Boa observação: A forma muda, mas a letra representada permanece.",
+        "incorrect": "A forma muda, mas a letra representada permanece.",
+        "hint": "Pense no que o cartão nomeia.",
+        "errorFocus": "IDENTITY_ACROSS_STYLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-13",
+      "statement": "Uma frase começa com “Hoje”. Qual diferença gráfica se vê no H?",
+      "prompt": "Uma frase começa com “Hoje”. Qual diferença gráfica se vê no H?",
+      "options": [
+        "Ele aparece como maiúscula no início da frase.",
+        "É uma letra diferente de h",
+        "É um número",
+        "Está em cursiva obrigatoriamente"
+      ],
+      "correctAnswer": "Ele aparece como maiúscula no início da frase.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "É uma letra diferente de h": [
+          "CAPITALIZATION_IN_SENTENCE"
+        ],
+        "É um número": [
+          "CAPITALIZATION_IN_SENTENCE"
+        ],
+        "Está em cursiva obrigatoriamente": [
+          "CAPITALIZATION_IN_SENTENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "A_NO_INICIO_DE_FRASE",
+      "explanation": "A inicial da frase aparece em maiúscula.",
+      "hint": "Observe a posição no início.",
+      "errorFocus": "CAPITALIZATION_IN_SENTENCE",
+      "feedback": {
+        "correct": "Boa observação: A inicial da frase aparece em maiúscula.",
+        "incorrect": "A inicial da frase aparece em maiúscula.",
+        "hint": "Observe a posição no início.",
+        "errorFocus": "CAPITALIZATION_IN_SENTENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-14",
+      "statement": "Uma fonte cursiva estilizada pode aproximar visualmente b e d. O que ajuda a identificar?",
+      "prompt": "Uma fonte cursiva estilizada pode aproximar visualmente b e d. O que ajuda a identificar?",
+      "options": [
+        "Adivinhar sem olhar",
+        "Comparar com modelos legíveis e observar o contexto da palavra.",
+        "Supor que são sempre iguais",
+        "Usar apenas a cor"
+      ],
+      "correctAnswer": "Comparar com modelos legíveis e observar o contexto da palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Adivinhar sem olhar": [
+          "AMBIGUOUS_GLYPH_SUPPORT"
+        ],
+        "Supor que são sempre iguais": [
+          "AMBIGUOUS_GLYPH_SUPPORT"
+        ],
+        "Usar apenas a cor": [
+          "AMBIGUOUS_GLYPH_SUPPORT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "B_E_D_EM_FONTES",
+      "explanation": "Modelo e contexto ajudam a reconhecer formas semelhantes.",
+      "hint": "Consulte a referência da letra.",
+      "errorFocus": "AMBIGUOUS_GLYPH_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Modelo e contexto ajudam a reconhecer formas semelhantes.",
+        "incorrect": "Modelo e contexto ajudam a reconhecer formas semelhantes.",
+        "hint": "Consulte a referência da letra.",
+        "errorFocus": "AMBIGUOUS_GLYPH_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-15",
+      "statement": "Um nome aparece em imprensa e em cursiva. Como localizar a mesma inicial?",
+      "prompt": "Um nome aparece em imprensa e em cursiva. Como localizar a mesma inicial?",
+      "options": [
+        "Procurar somente o tamanho",
+        "Ignorar o nome",
+        "Comparar as duas formas com o modelo da letra.",
+        "Contar as linhas do papel"
+      ],
+      "correctAnswer": "Comparar as duas formas com o modelo da letra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Procurar somente o tamanho": [
+          "CROSS_STYLE_RECOGNITION"
+        ],
+        "Ignorar o nome": [
+          "CROSS_STYLE_RECOGNITION"
+        ],
+        "Contar as linhas do papel": [
+          "CROSS_STYLE_RECOGNITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TEXTO_COM_FONTES_VARIADAS",
+      "explanation": "A comparação com o modelo identifica a mesma letra.",
+      "hint": "Use o cartão de referência.",
+      "errorFocus": "CROSS_STYLE_RECOGNITION",
+      "feedback": {
+        "correct": "Boa observação: A comparação com o modelo identifica a mesma letra.",
+        "incorrect": "A comparação com o modelo identifica a mesma letra.",
+        "hint": "Use o cartão de referência.",
+        "errorFocus": "CROSS_STYLE_RECOGNITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-16",
+      "statement": "Uma criança aponta o par de letras correspondente em vez de escrevê-lo. A resposta pode demonstrar reconhecimento?",
+      "prompt": "Uma criança aponta o par de letras correspondente em vez de escrevê-lo. A resposta pode demonstrar reconhecimento?",
+      "options": [
+        "Não, somente cursiva vale",
+        "Não, cartões não mostram letras",
+        "Sim, apenas se falar rápido",
+        "Sim, apontar pode mostrar a relação entre as formas."
+      ],
+      "correctAnswer": "Sim, apontar pode mostrar a relação entre as formas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, somente cursiva vale": [
+          "ACCESSIBLE_RESPONSE"
+        ],
+        "Não, cartões não mostram letras": [
+          "ACCESSIBLE_RESPONSE"
+        ],
+        "Sim, apenas se falar rápido": [
+          "ACCESSIBLE_RESPONSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPOSTA_POR_CARTAO",
+      "explanation": "Apontar é uma forma válida de demonstrar associação.",
+      "hint": "Considere a evidência da escolha.",
+      "errorFocus": "ACCESSIBLE_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Apontar é uma forma válida de demonstrar associação.",
+        "incorrect": "Apontar é uma forma válida de demonstrar associação.",
+        "hint": "Considere a evidência da escolha.",
+        "errorFocus": "ACCESSIBLE_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-17",
+      "statement": "Uma lista tem “Rafa” em imprensa e “Rafa” em cursiva. O que pode ser reconhecido?",
+      "prompt": "Uma lista tem “Rafa” em imprensa e “Rafa” em cursiva. O que pode ser reconhecido?",
+      "options": [
+        "O mesmo nome escrito em formatos gráficos diferentes.",
+        "Nomes diferentes",
+        "Dois idiomas obrigatórios",
+        "Um número e uma letra"
+      ],
+      "correctAnswer": "O mesmo nome escrito em formatos gráficos diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Nomes diferentes": [
+          "SAME_WORD_STYLES"
+        ],
+        "Dois idiomas obrigatórios": [
+          "SAME_WORD_STYLES"
+        ],
+        "Um número e uma letra": [
+          "SAME_WORD_STYLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NOME_EM_LISTA",
+      "explanation": "O formato da escrita muda, mas a palavra pode ser a mesma.",
+      "hint": "Compare letra por letra.",
+      "errorFocus": "SAME_WORD_STYLES",
+      "feedback": {
+        "correct": "Boa observação: O formato da escrita muda, mas a palavra pode ser a mesma.",
+        "incorrect": "O formato da escrita muda, mas a palavra pode ser a mesma.",
+        "hint": "Compare letra por letra.",
+        "errorFocus": "SAME_WORD_STYLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-18",
+      "statement": "Uma letra muda de imprensa para cursiva. O que essa mudança indica?",
+      "prompt": "Uma letra muda de imprensa para cursiva. O que essa mudança indica?",
+      "options": [
+        "Uma nova palavra automaticamente",
+        "Mudança de formato gráfico, não necessariamente de som ou identidade.",
+        "Mudança de lugar",
+        "Que a letra deixou de existir"
+      ],
+      "correctAnswer": "Mudança de formato gráfico, não necessariamente de som ou identidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma nova palavra automaticamente": [
+          "STYLE_NOT_SOUND"
+        ],
+        "Mudança de lugar": [
+          "STYLE_NOT_SOUND"
+        ],
+        "Que a letra deixou de existir": [
+          "STYLE_NOT_SOUND"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FORMA_GRAFICA_E_SOM",
+      "explanation": "O estilo de escrita não cria uma letra diferente por si só.",
+      "hint": "Separe formato e som.",
+      "errorFocus": "STYLE_NOT_SOUND",
+      "feedback": {
+        "correct": "Boa observação: O estilo de escrita não cria uma letra diferente por si só.",
+        "incorrect": "O estilo de escrita não cria uma letra diferente por si só.",
+        "hint": "Separe formato e som.",
+        "errorFocus": "STYLE_NOT_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-19",
+      "statement": "G e g podem ser agrupados como...",
+      "prompt": "G e g podem ser agrupados como...",
+      "options": [
+        "letras sem relação",
+        "dois sinais matemáticos",
+        "maiúscula e minúscula da mesma letra.",
+        "uma letra e um número"
+      ],
+      "correctAnswer": "maiúscula e minúscula da mesma letra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "letras sem relação": [
+          "CASE_MATCH_G"
+        ],
+        "dois sinais matemáticos": [
+          "CASE_MATCH_G"
+        ],
+        "uma letra e um número": [
+          "CASE_MATCH_G"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PARES_DE_G_MAIUSCULO",
+      "explanation": "As formas correspondem à letra G.",
+      "hint": "Leia o nome do par.",
+      "errorFocus": "CASE_MATCH_G",
+      "feedback": {
+        "correct": "Boa observação: As formas correspondem à letra G.",
+        "incorrect": "As formas correspondem à letra G.",
+        "hint": "Leia o nome do par.",
+        "errorFocus": "CASE_MATCH_G"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-20",
+      "statement": "Qual meta é apropriada ao comparar formas de letra?",
+      "prompt": "Qual meta é apropriada ao comparar formas de letra?",
+      "options": [
+        "Copiar rapidamente sem apoio",
+        "Usar uma única caligrafia para todos",
+        "Evitar qualquer modelo visual",
+        "Reconhecer equivalências com apoio legível, sem exigir caligrafia perfeita."
+      ],
+      "correctAnswer": "Reconhecer equivalências com apoio legível, sem exigir caligrafia perfeita.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Copiar rapidamente sem apoio": [
+          "ACCESSIBLE_LETTER_GOAL"
+        ],
+        "Usar uma única caligrafia para todos": [
+          "ACCESSIBLE_LETTER_GOAL"
+        ],
+        "Evitar qualquer modelo visual": [
+          "ACCESSIBLE_LETTER_GOAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "APRENDIZAGEM_MOTORA",
+      "explanation": "Reconhecer formas pode ser trabalhado com recursos diversos.",
+      "hint": "Foque no objetivo de identificar.",
+      "errorFocus": "ACCESSIBLE_LETTER_GOAL",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer formas pode ser trabalhado com recursos diversos.",
+        "incorrect": "Reconhecer formas pode ser trabalhado com recursos diversos.",
+        "hint": "Foque no objetivo de identificar.",
+        "errorFocus": "ACCESSIBLE_LETTER_GOAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-21",
+      "statement": "Em uma palavra comum, letras minúsculas podem aparecer no meio. Isso as torna...",
+      "prompt": "Em uma palavra comum, letras minúsculas podem aparecer no meio. Isso as torna...",
+      "options": [
+        "as mesmas letras, em caso minúsculo.",
+        "letras novas",
+        "números",
+        "pontuação"
+      ],
+      "correctAnswer": "as mesmas letras, em caso minúsculo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "letras novas": [
+          "LOWERCASE_IN_WORD"
+        ],
+        "números": [
+          "LOWERCASE_IN_WORD"
+        ],
+        "pontuação": [
+          "LOWERCASE_IN_WORD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MINUSCULA_NO_MEIO_DA_PALAVRA",
+      "explanation": "A posição interna não altera a identidade da letra.",
+      "hint": "Observe o caso gráfico.",
+      "errorFocus": "LOWERCASE_IN_WORD",
+      "feedback": {
+        "correct": "Boa observação: A posição interna não altera a identidade da letra.",
+        "incorrect": "A posição interna não altera a identidade da letra.",
+        "hint": "Observe o caso gráfico.",
+        "errorFocus": "LOWERCASE_IN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-22",
+      "statement": "Para organizar cartões de a, A e A cursivo, qual critério é útil?",
+      "prompt": "Para organizar cartões de a, A e A cursivo, qual critério é útil?",
+      "options": [
+        "Agrupar pela cor apenas",
+        "Agrupar os que representam a mesma letra e nomear o formato.",
+        "Separar como três letras sem relação",
+        "Jogar fora as minúsculas"
+      ],
+      "correctAnswer": "Agrupar os que representam a mesma letra e nomear o formato.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Agrupar pela cor apenas": [
+          "FORM_AND_IDENTITY"
+        ],
+        "Separar como três letras sem relação": [
+          "FORM_AND_IDENTITY"
+        ],
+        "Jogar fora as minúsculas": [
+          "FORM_AND_IDENTITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORDENAR_CARTOES_DE_FORMAS",
+      "explanation": "Identidade e estilo podem ser registrados separadamente.",
+      "hint": "Compare nome e forma.",
+      "errorFocus": "FORM_AND_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: Identidade e estilo podem ser registrados separadamente.",
+        "incorrect": "Identidade e estilo podem ser registrados separadamente.",
+        "hint": "Compare nome e forma.",
+        "errorFocus": "FORM_AND_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-23",
+      "statement": "Um nome próprio aparece em cursiva com inicial maiúscula. O que pode ser identificado?",
+      "prompt": "Um nome próprio aparece em cursiva com inicial maiúscula. O que pode ser identificado?",
+      "options": [
+        "Que a cursiva muda o nome da pessoa",
+        "Que toda letra é maiúscula",
+        "A letra inicial maiúscula e as formas gráficas do nome.",
+        "Que o texto não pode ser lido"
+      ],
+      "correctAnswer": "A letra inicial maiúscula e as formas gráficas do nome.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que a cursiva muda o nome da pessoa": [
+          "CASE_AND_STYLE_TOGETHER"
+        ],
+        "Que toda letra é maiúscula": [
+          "CASE_AND_STYLE_TOGETHER"
+        ],
+        "Que o texto não pode ser lido": [
+          "CASE_AND_STYLE_TOGETHER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NOME_PROPRIO_EM_CURSIVA",
+      "explanation": "Caso e estilo são características diferentes da escrita.",
+      "hint": "Observe os dois aspectos.",
+      "errorFocus": "CASE_AND_STYLE_TOGETHER",
+      "feedback": {
+        "correct": "Boa observação: Caso e estilo são características diferentes da escrita.",
+        "incorrect": "Caso e estilo são características diferentes da escrita.",
+        "hint": "Observe os dois aspectos.",
+        "errorFocus": "CASE_AND_STYLE_TOGETHER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-24",
+      "statement": "Por que consultar um modelo ao comparar letras cursivas?",
+      "prompt": "Por que consultar um modelo ao comparar letras cursivas?",
+      "options": [
+        "Porque cada modelo cria um alfabeto",
+        "Porque a letra muda de nome",
+        "Porque cursiva não pode ser escrita",
+        "Porque o traçado pode variar e o modelo ajuda a reconhecer a letra."
+      ],
+      "correctAnswer": "Porque o traçado pode variar e o modelo ajuda a reconhecer a letra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque cada modelo cria um alfabeto": [
+          "MODEL_SUPPORT"
+        ],
+        "Porque a letra muda de nome": [
+          "MODEL_SUPPORT"
+        ],
+        "Porque cursiva não pode ser escrita": [
+          "MODEL_SUPPORT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "USO_DE_MODELO",
+      "explanation": "A referência reduz confusão entre formas parecidas.",
+      "hint": "Use a forma de referência.",
+      "errorFocus": "MODEL_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: A referência reduz confusão entre formas parecidas.",
+        "incorrect": "A referência reduz confusão entre formas parecidas.",
+        "hint": "Use a forma de referência.",
+        "errorFocus": "MODEL_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-25",
+      "statement": "Qual tipo de letra normalmente inicia um nome próprio?",
+      "prompt": "Qual tipo de letra normalmente inicia um nome próprio?",
+      "options": [
+        "Maiúscula.",
+        "Minúscula sempre",
+        "Pontuação",
+        "Número"
+      ],
+      "correctAnswer": "Maiúscula.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Minúscula sempre": [
+          "PROPER_NAME_CAPITAL_REVIEW"
+        ],
+        "Pontuação": [
+          "PROPER_NAME_CAPITAL_REVIEW"
+        ],
+        "Número": [
+          "PROPER_NAME_CAPITAL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAIUSCULA_DE_NOME",
+      "explanation": "Nomes próprios geralmente começam com maiúscula.",
+      "hint": "Observe a primeira letra do nome.",
+      "errorFocus": "PROPER_NAME_CAPITAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Nomes próprios geralmente começam com maiúscula.",
+        "incorrect": "Nomes próprios geralmente começam com maiúscula.",
+        "hint": "Observe a primeira letra do nome.",
+        "errorFocus": "PROPER_NAME_CAPITAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-26",
+      "statement": "T e t representam...",
+      "prompt": "T e t representam...",
+      "options": [
+        "duas letras diferentes",
+        "a mesma letra em casos diferentes.",
+        "um número e uma letra",
+        "sinais de pontuação"
+      ],
+      "correctAnswer": "a mesma letra em casos diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "duas letras diferentes": [
+          "CASE_MATCH_T_REVIEW"
+        ],
+        "um número e uma letra": [
+          "CASE_MATCH_T_REVIEW"
+        ],
+        "sinais de pontuação": [
+          "CASE_MATCH_T_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "T_E_T",
+      "explanation": "Maiúscula e minúscula correspondem a T.",
+      "hint": "Leia o nome dos cartões.",
+      "errorFocus": "CASE_MATCH_T_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Maiúscula e minúscula correspondem a T.",
+        "incorrect": "Maiúscula e minúscula correspondem a T.",
+        "hint": "Leia o nome dos cartões.",
+        "errorFocus": "CASE_MATCH_T_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-27",
+      "statement": "Qual diferença descreve imprensa e cursiva?",
+      "prompt": "Qual diferença descreve imprensa e cursiva?",
+      "options": [
+        "A letra cursiva não tem nome",
+        "A imprensa sempre é maiúscula",
+        "O traçado gráfico pode ser diferente.",
+        "A letra muda de posição alfabética"
+      ],
+      "correctAnswer": "O traçado gráfico pode ser diferente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A letra cursiva não tem nome": [
+          "STYLE_DISTINCTION_REVIEW"
+        ],
+        "A imprensa sempre é maiúscula": [
+          "STYLE_DISTINCTION_REVIEW"
+        ],
+        "A letra muda de posição alfabética": [
+          "STYLE_DISTINCTION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "IMPRENSA_VS_CURSIVA_REVISADO",
+      "explanation": "Os estilos variam no desenho da letra.",
+      "hint": "Foque no formato.",
+      "errorFocus": "STYLE_DISTINCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os estilos variam no desenho da letra.",
+        "incorrect": "Os estilos variam no desenho da letra.",
+        "hint": "Foque no formato.",
+        "errorFocus": "STYLE_DISTINCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-28",
+      "statement": "Uma letra está ampliada num cartaz e outra aparece pequena num texto. O que comparar?",
+      "prompt": "Uma letra está ampliada num cartaz e outra aparece pequena num texto. O que comparar?",
+      "options": [
+        "Somente o tamanho físico",
+        "A cor do cartaz",
+        "A distância da parede",
+        "O nome e as características da forma da letra."
+      ],
+      "correctAnswer": "O nome e as características da forma da letra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente o tamanho físico": [
+          "SIZE_NOT_IDENTITY"
+        ],
+        "A cor do cartaz": [
+          "SIZE_NOT_IDENTITY"
+        ],
+        "A distância da parede": [
+          "SIZE_NOT_IDENTITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "IDENTIFICAR_LETRA_EM_CARTAZ",
+      "explanation": "Tamanho não muda a identidade da letra.",
+      "hint": "Compare a forma, não a escala.",
+      "errorFocus": "SIZE_NOT_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: Tamanho não muda a identidade da letra.",
+        "incorrect": "Tamanho não muda a identidade da letra.",
+        "hint": "Compare a forma, não a escala.",
+        "errorFocus": "SIZE_NOT_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-29",
+      "statement": "Um modelo cursivo está difícil de ler. O que pode apoiar a identificação?",
+      "prompt": "Um modelo cursivo está difícil de ler. O que pode apoiar a identificação?",
+      "options": [
+        "Usar uma fonte legível ou comparar com letras móveis de referência.",
+        "Retirar todo apoio",
+        "Exigir que a criança adivinhe",
+        "Avaliar pela velocidade"
+      ],
+      "correctAnswer": "Usar uma fonte legível ou comparar com letras móveis de referência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar todo apoio": [
+          "LEGIBILITY_SUPPORT_REVIEW"
+        ],
+        "Exigir que a criança adivinhe": [
+          "LEGIBILITY_SUPPORT_REVIEW"
+        ],
+        "Avaliar pela velocidade": [
+          "LEGIBILITY_SUPPORT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CURSIVA_LEGIVEL",
+      "explanation": "Referências claras apoiam reconhecimento.",
+      "hint": "Escolha apoio visual.",
+      "errorFocus": "LEGIBILITY_SUPPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Referências claras apoiam reconhecimento.",
+        "incorrect": "Referências claras apoiam reconhecimento.",
+        "hint": "Escolha apoio visual.",
+        "errorFocus": "LEGIBILITY_SUPPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-30",
+      "statement": "Num texto, “Bia” começa com B e continua com minúsculas. O que permanece?",
+      "prompt": "Num texto, “Bia” começa com B e continua com minúsculas. O que permanece?",
+      "options": [
+        "B é outro nome",
+        "As letras formam o mesmo nome, com casos gráficos diferentes.",
+        "As minúsculas não são letras",
+        "A palavra vira dois nomes"
+      ],
+      "correctAnswer": "As letras formam o mesmo nome, com casos gráficos diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "B é outro nome": [
+          "MIXED_CASE_REVIEW"
+        ],
+        "As minúsculas não são letras": [
+          "MIXED_CASE_REVIEW"
+        ],
+        "A palavra vira dois nomes": [
+          "MIXED_CASE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAIUSCULA_MINUSCULA_NO_TEXTO",
+      "explanation": "Maiúscula e minúsculas podem aparecer numa mesma palavra.",
+      "hint": "Leia a palavra completa.",
+      "errorFocus": "MIXED_CASE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Maiúscula e minúsculas podem aparecer numa mesma palavra.",
+        "incorrect": "Maiúscula e minúsculas podem aparecer numa mesma palavra.",
+        "hint": "Leia a palavra completa.",
+        "errorFocus": "MIXED_CASE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-31",
+      "statement": "Uma maiúscula cursiva pode ter traçado diferente da de imprensa. O que é igual?",
+      "prompt": "Uma maiúscula cursiva pode ter traçado diferente da de imprensa. O que é igual?",
+      "options": [
+        "A aparência exata",
+        "O tamanho sempre",
+        "A letra que ela representa.",
+        "O material usado"
+      ],
+      "correctAnswer": "A letra que ela representa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A aparência exata": [
+          "IDENTITY_SAME_STYLE_REVIEW"
+        ],
+        "O tamanho sempre": [
+          "IDENTITY_SAME_STYLE_REVIEW"
+        ],
+        "O material usado": [
+          "IDENTITY_SAME_STYLE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FORMA_DE_MAIUSCULA_CURSIVA",
+      "explanation": "Estilos gráficos distintos podem representar a mesma letra.",
+      "hint": "Nomeie a letra.",
+      "errorFocus": "IDENTITY_SAME_STYLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Estilos gráficos distintos podem representar a mesma letra.",
+        "incorrect": "Estilos gráficos distintos podem representar a mesma letra.",
+        "hint": "Nomeie a letra.",
+        "errorFocus": "IDENTITY_SAME_STYLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-32",
+      "statement": "Relacionar formas de letra ajuda a...",
+      "prompt": "Relacionar formas de letra ajuda a...",
+      "options": [
+        "mudar a ordem alfabética",
+        "substituir todas as palavras",
+        "impedir leitura de imprensa",
+        "reconhecer a mesma letra em textos variados."
+      ],
+      "correctAnswer": "reconhecer a mesma letra em textos variados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "mudar a ordem alfabética": [
+          "LETTER_FORM_PURPOSE"
+        ],
+        "substituir todas as palavras": [
+          "LETTER_FORM_PURPOSE"
+        ],
+        "impedir leitura de imprensa": [
+          "LETTER_FORM_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RELACIONAR_FORMAS",
+      "explanation": "Reconhecer estilos diferentes amplia acesso à leitura.",
+      "hint": "Pense em textos com fontes distintas.",
+      "errorFocus": "LETTER_FORM_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer estilos diferentes amplia acesso à leitura.",
+        "incorrect": "Reconhecer estilos diferentes amplia acesso à leitura.",
+        "hint": "Pense em textos com fontes distintas.",
+        "errorFocus": "LETTER_FORM_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-33",
+      "statement": "A e a são...",
+      "prompt": "A e a são...",
+      "options": [
+        "formas maiúscula e minúscula da mesma letra.",
+        "letras sem relação",
+        "dois números",
+        "pontuação"
+      ],
+      "correctAnswer": "formas maiúscula e minúscula da mesma letra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "letras sem relação": [
+          "CASE_REVIEW"
+        ],
+        "dois números": [
+          "CASE_REVIEW"
+        ],
+        "pontuação": [
+          "CASE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_CASOS",
+      "explanation": "Ambas representam a letra A.",
+      "hint": "Compare o nome.",
+      "errorFocus": "CASE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Ambas representam a letra A.",
+        "incorrect": "Ambas representam a letra A.",
+        "hint": "Compare o nome.",
+        "errorFocus": "CASE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-34",
+      "statement": "Imprensa e cursiva são...",
+      "prompt": "Imprensa e cursiva são...",
+      "options": [
+        "nomes de pessoas",
+        "formatos gráficos de letras.",
+        "sinais matemáticos",
+        "tipos de papel"
+      ],
+      "correctAnswer": "formatos gráficos de letras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "nomes de pessoas": [
+          "STYLE_REVIEW"
+        ],
+        "sinais matemáticos": [
+          "STYLE_REVIEW"
+        ],
+        "tipos de papel": [
+          "STYLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_FORMATO",
+      "explanation": "Os termos descrevem estilos de escrita.",
+      "hint": "Observe o traçado.",
+      "errorFocus": "STYLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os termos descrevem estilos de escrita.",
+        "incorrect": "Os termos descrevem estilos de escrita.",
+        "hint": "Observe o traçado.",
+        "errorFocus": "STYLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-35",
+      "statement": "P e p correspondem a...",
+      "prompt": "P e p correspondem a...",
+      "options": [
+        "letras opostas",
+        "um som e um número",
+        "uma mesma letra em casos diferentes.",
+        "dois sinais"
+      ],
+      "correctAnswer": "uma mesma letra em casos diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "letras opostas": [
+          "CASE_MATCH_REVIEW"
+        ],
+        "um som e um número": [
+          "CASE_MATCH_REVIEW"
+        ],
+        "dois sinais": [
+          "CASE_MATCH_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVISAO_DE_P_P",
+      "explanation": "Maiúscula e minúscula mantêm a identidade da letra.",
+      "hint": "Nomeie o par.",
+      "errorFocus": "CASE_MATCH_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Maiúscula e minúscula mantêm a identidade da letra.",
+        "incorrect": "Maiúscula e minúscula mantêm a identidade da letra.",
+        "hint": "Nomeie o par.",
+        "errorFocus": "CASE_MATCH_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-36",
+      "statement": "Uma letra escrita maior deixa de ser a mesma letra?",
+      "prompt": "Uma letra escrita maior deixa de ser a mesma letra?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se estiver cursiva",
+        "Não, porque letra não tem forma",
+        "Não; o tamanho pode mudar sem mudar sua identidade."
+      ],
+      "correctAnswer": "Não; o tamanho pode mudar sem mudar sua identidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "SIZE_IDENTITY_REVIEW"
+        ],
+        "Sim, se estiver cursiva": [
+          "SIZE_IDENTITY_REVIEW"
+        ],
+        "Não, porque letra não tem forma": [
+          "SIZE_IDENTITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_IDENTIDADE",
+      "explanation": "Tamanho e estilo não necessariamente mudam a letra representada.",
+      "hint": "Separe escala e identidade.",
+      "errorFocus": "SIZE_IDENTITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Tamanho e estilo não necessariamente mudam a letra representada.",
+        "incorrect": "Tamanho e estilo não necessariamente mudam a letra representada.",
+        "hint": "Separe escala e identidade.",
+        "errorFocus": "SIZE_IDENTITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-37",
+      "statement": "Como comparar uma cursiva pouco familiar?",
+      "prompt": "Como comparar uma cursiva pouco familiar?",
+      "options": [
+        "Consultar um modelo legível e observar o contexto.",
+        "Adivinhar sem apoio",
+        "Ignorar o texto",
+        "Comparar somente a cor"
+      ],
+      "correctAnswer": "Consultar um modelo legível e observar o contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adivinhar sem apoio": [
+          "MODEL_REVIEW"
+        ],
+        "Ignorar o texto": [
+          "MODEL_REVIEW"
+        ],
+        "Comparar somente a cor": [
+          "MODEL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_APOIO",
+      "explanation": "Modelo e contexto apoiam o reconhecimento.",
+      "hint": "Use uma referência clara.",
+      "errorFocus": "MODEL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Modelo e contexto apoiam o reconhecimento.",
+        "incorrect": "Modelo e contexto apoiam o reconhecimento.",
+        "hint": "Use uma referência clara.",
+        "errorFocus": "MODEL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-38",
+      "statement": "Uma inicial maiúscula num nome indica...",
+      "prompt": "Uma inicial maiúscula num nome indica...",
+      "options": [
+        "um número novo",
+        "uma convenção de escrita, não uma letra totalmente diferente.",
+        "que minúsculas não pertencem ao alfabeto",
+        "uma mudança de idioma obrigatória"
+      ],
+      "correctAnswer": "uma convenção de escrita, não uma letra totalmente diferente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um número novo": [
+          "CASE_FUNCTION_REVIEW"
+        ],
+        "que minúsculas não pertencem ao alfabeto": [
+          "CASE_FUNCTION_REVIEW"
+        ],
+        "uma mudança de idioma obrigatória": [
+          "CASE_FUNCTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_USO_DE_MAIUSCULA",
+      "explanation": "O caso muda a forma e pode marcar convenções, mantendo a letra.",
+      "hint": "Compare nome e uso.",
+      "errorFocus": "CASE_FUNCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O caso muda a forma e pode marcar convenções, mantendo a letra.",
+        "incorrect": "O caso muda a forma e pode marcar convenções, mantendo a letra.",
+        "hint": "Compare nome e uso.",
+        "errorFocus": "CASE_FUNCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-39",
+      "statement": "Qual alternativa pode apoiar quem não consegue copiar cursiva com facilidade?",
+      "prompt": "Qual alternativa pode apoiar quem não consegue copiar cursiva com facilidade?",
+      "options": [
+        "Ser excluído",
+        "Copiar sem pausa",
+        "Apontar ou combinar cartões de letras.",
+        "Receber nota pela velocidade"
+      ],
+      "correctAnswer": "Apontar ou combinar cartões de letras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ser excluído": [
+          "ACCESSIBLE_RESPONSE_REVIEW"
+        ],
+        "Copiar sem pausa": [
+          "ACCESSIBLE_RESPONSE_REVIEW"
+        ],
+        "Receber nota pela velocidade": [
+          "ACCESSIBLE_RESPONSE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PARTICIPACAO",
+      "explanation": "A associação visual demonstra reconhecimento sem barreira motora.",
+      "hint": "Escolha uma opção acessível.",
+      "errorFocus": "ACCESSIBLE_RESPONSE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A associação visual demonstra reconhecimento sem barreira motora.",
+        "incorrect": "A associação visual demonstra reconhecimento sem barreira motora.",
+        "hint": "Escolha uma opção acessível.",
+        "errorFocus": "ACCESSIBLE_RESPONSE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp11-relate-letter-forms-40",
+      "statement": "Conhecer imprensa, cursiva, maiúsculas e minúsculas ajuda a...",
+      "prompt": "Conhecer imprensa, cursiva, maiúsculas e minúsculas ajuda a...",
+      "options": [
+        "inventar letras sem relação",
+        "avaliar a velocidade de escrita",
+        "impedir o uso de modelos",
+        "relacionar formas gráficas à mesma letra em diferentes textos."
+      ],
+      "correctAnswer": "relacionar formas gráficas à mesma letra em diferentes textos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "inventar letras sem relação": [
+          "LETTER_FORM_SUMMARY"
+        ],
+        "avaliar a velocidade de escrita": [
+          "LETTER_FORM_SUMMARY"
+        ],
+        "impedir o uso de modelos": [
+          "LETTER_FORM_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_FORMAS",
+      "explanation": "Relacionar formas ajuda a reconhecer letras em contextos variados.",
+      "hint": "Reúna os quatro formatos estudados.",
+      "errorFocus": "LETTER_FORM_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Relacionar formas ajuda a reconhecer letras em contextos variados.",
+        "incorrect": "Relacionar formas ajuda a reconhecer letras em contextos variados.",
+        "hint": "Reúna os quatro formatos estudados.",
+        "errorFocus": "LETTER_FORM_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas com alto contraste, tamanho ampliado e espaço entre os modelos.",
+          "Permitir associar cartões, apontar ou usar recursos táteis e comunicação alternativa.",
+          "Não avaliar velocidade, caligrafia única ou controle motor fino como condição de resposta."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

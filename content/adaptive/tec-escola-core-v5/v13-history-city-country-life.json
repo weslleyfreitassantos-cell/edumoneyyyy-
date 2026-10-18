@@ -1,0 +1,1419 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-city-country-life",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "modos_de_vida_cidade_campo_presente_passado",
+  "canonicalSkillCode": "AUTHORING_EF03HI08_HISTORY_CITY_COUNTRY_LIFE",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI08",
+    "sourceVerificationRecord": "BNCC_EF03HI08_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_HISTORY_TIME_SOURCES",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre modos de vida na cidade e no campo para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "lesson": {
+    "title": "Modos de vida na cidade e no campo",
+    "objective": "Comparar modos de vida na cidade e no campo no presente e no passado, reconhecendo mudanças, permanências e diversidade de experiências.",
+    "summary": "Cidade e campo não são espaços iguais nem isolados. Observar trabalho, moradia, circulação, lazer e tecnologia em diferentes tempos ajuda a identificar mudanças sem criar estereótipos.",
+    "explanation": "## O que investigar\nIdentificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma fonte descreve uma horta próxima à cidade e outra mostra o transporte de alimentos entre áreas rurais e urbanas. A comparação pode investigar relações e mudanças sem afirmar que todo trabalho rural ou urbano é igual.",
+    "commonMistake": "Tratar cidade e campo como realidades opostas e imutáveis, ou dizer que uma fotografia antiga representa todas as pessoas de um período.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Comparar duas fontes sobre um mesmo lugar.",
+      "Organizar acontecimentos em antes e depois."
+    ],
+    "keyConcepts": [
+      "modo de vida",
+      "cidade",
+      "campo",
+      "presente",
+      "passado",
+      "mudança",
+      "permanência"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-city-country-life-001",
+          "v13-history-city-country-life-002",
+          "v13-history-city-country-life-003",
+          "v13-history-city-country-life-004",
+          "v13-history-city-country-life-005"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-city-country-life-006",
+          "v13-history-city-country-life-007",
+          "v13-history-city-country-life-008",
+          "v13-history-city-country-life-009",
+          "v13-history-city-country-life-010",
+          "v13-history-city-country-life-011",
+          "v13-history-city-country-life-012",
+          "v13-history-city-country-life-013",
+          "v13-history-city-country-life-014",
+          "v13-history-city-country-life-015",
+          "v13-history-city-country-life-016",
+          "v13-history-city-country-life-017",
+          "v13-history-city-country-life-018",
+          "v13-history-city-country-life-019",
+          "v13-history-city-country-life-020"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-city-country-life-021",
+          "v13-history-city-country-life-022",
+          "v13-history-city-country-life-023",
+          "v13-history-city-country-life-024",
+          "v13-history-city-country-life-025",
+          "v13-history-city-country-life-026",
+          "v13-history-city-country-life-027",
+          "v13-history-city-country-life-028",
+          "v13-history-city-country-life-029",
+          "v13-history-city-country-life-030",
+          "v13-history-city-country-life-031",
+          "v13-history-city-country-life-032"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-city-country-life-033",
+          "v13-history-city-country-life-034",
+          "v13-history-city-country-life-035",
+          "v13-history-city-country-life-036",
+          "v13-history-city-country-life-037",
+          "v13-history-city-country-life-038",
+          "v13-history-city-country-life-039",
+          "v13-history-city-country-life-040"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-city-country-life-041",
+          "v13-history-city-country-life-042",
+          "v13-history-city-country-life-043",
+          "v13-history-city-country-life-044",
+          "v13-history-city-country-life-045",
+          "v13-history-city-country-life-046",
+          "v13-history-city-country-life-047",
+          "v13-history-city-country-life-048",
+          "v13-history-city-country-life-049",
+          "v13-history-city-country-life-050"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Tratar cidade e campo como realidades opostas e imutáveis.",
+        "action": "Procure uma conexão entre os contextos e compare a prática no período e lugar indicados pela fonte."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Usar uma imagem como retrato de todas as pessoas de um período.",
+        "action": "Identifique o recorte da imagem e liste uma informação que exigiria fonte adicional."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Hierarquizar modos de vida sem evidência.",
+        "action": "Reescreva a comparação em termos de práticas, recursos e condições observáveis, sem usar ranking."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-city-country-life-local-inquiry",
+        "title": "Comparar modos de vida em diferentes contextos",
+        "objective": "Comparar modos de vida na cidade e no campo no presente e no passado, reconhecendo mudanças, permanências e diversidade de experiências.",
+        "context": "Fontes históricas ou atuais sobre práticas urbanas e rurais em períodos identificados.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha uma prática documentada e identifique lugar, período, autoria e condições descritas. Compare fontes sobre cidade e campo no mesmo aspecto e registre relações, mudanças e permanências. Produza síntese que evite opor os contextos como se fossem uniformes e indique limites das fontes.",
+        "evidence": "Comparação contextualizada que descreve prática, relação entre espaços, mudança ou permanência e limite documental.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Contexto",
+            "emerging": "Apresenta cidade ou campo como cenário genérico.",
+            "developing": "Localiza uma prática com apoio.",
+            "proficient": "Identifica período, lugar e condições de vida relevantes."
+          },
+          {
+            "criterion": "Mudança e relação",
+            "emerging": "Trata os contextos como opostos fixos.",
+            "developing": "Aponta uma relação com apoio.",
+            "proficient": "Compara mudanças, permanências e conexões sustentadas."
+          },
+          {
+            "criterion": "Diversidade",
+            "emerging": "Generaliza uma fonte para todas as pessoas.",
+            "developing": "Limita a conclusão após orientação.",
+            "proficient": "Reconhece variação interna e limita afirmações ao recorte."
+          }
+        ],
+        "steps": [
+          "Escolha uma prática documentada e identifique lugar, período, autoria e condições descritas.",
+          "Compare fontes sobre cidade e campo no mesmo aspecto e registre relações, mudanças e permanências.",
+          "Produza síntese que evite opor os contextos como se fossem uniformes e indique limites das fontes."
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI08",
+        "descriptor": "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens descritas, mapas acessíveis e fontes em formatos equivalentes, com lugar e período visíveis.",
+      "Permitir quadro comparativo, fala, desenho ou texto e evitar pressupor experiência pessoal urbana ou rural."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-city-country-life-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_WORK_01",
+      "statement": "Uma fotografia antiga mostra pessoas trabalhando manualmente em uma plantação; hoje a propriedade usa máquinas em parte do cultivo. Que mudança pode ser identificada?",
+      "options": [
+        "A forma de realizar parte do trabalho mudou, sem concluir que todo trabalho manual desapareceu.",
+        "O campo não mudou.",
+        "A fotografia mostra todo o trabalho rural.",
+        "Máquinas tornam todas as atividades iguais."
+      ],
+      "correctAnswer": "A forma de realizar parte do trabalho mudou, sem concluir que todo trabalho manual desapareceu.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação precisa indicar período, atividade e alcance da mudança.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O campo não mudou.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_WORK_02",
+      "statement": "Uma fotografia antiga mostra pessoas trabalhando manualmente em uma plantação; hoje a propriedade usa máquinas em parte do cultivo. Que critério deve orientar a análise?",
+      "options": [
+        "O campo não mudou.",
+        "Considere A comparação precisa indicar período, atividade e alcance da mudança.",
+        "A fotografia mostra todo o trabalho rural.",
+        "Máquinas tornam todas as atividades iguais."
+      ],
+      "correctAnswer": "Considere A comparação precisa indicar período, atividade e alcance da mudança.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação precisa indicar período, atividade e alcance da mudança.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O campo não mudou.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_WORK_03",
+      "statement": "Uma fotografia antiga mostra pessoas trabalhando manualmente em uma plantação; hoje a propriedade usa máquinas em parte do cultivo. Como transferir esse raciocínio?",
+      "options": [
+        "O campo não mudou.",
+        "A fotografia mostra todo o trabalho rural.",
+        "Compare uma atividade de trabalho atual e antiga com fontes identificadas.",
+        "Máquinas tornam todas as atividades iguais."
+      ],
+      "correctAnswer": "Compare uma atividade de trabalho atual e antiga com fontes identificadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação precisa indicar período, atividade e alcance da mudança.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O campo não mudou.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_WORK_04",
+      "statement": "Uma fotografia antiga mostra pessoas trabalhando manualmente em uma plantação; hoje a propriedade usa máquinas em parte do cultivo. Qual conclusão deve ser evitada?",
+      "options": [
+        "O campo não mudou.",
+        "A fotografia mostra todo o trabalho rural.",
+        "Máquinas tornam todas as atividades iguais.",
+        "Evite afirmar que todas as propriedades usam máquinas."
+      ],
+      "correctAnswer": "Evite afirmar que todas as propriedades usam máquinas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação precisa indicar período, atividade e alcance da mudança.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O campo não mudou.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_WORK_05",
+      "statement": "Uma fotografia antiga mostra pessoas trabalhando manualmente em uma plantação; hoje a propriedade usa máquinas em parte do cultivo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira fotografia, data, legenda e relato sobre o trabalho atual.",
+        "O campo não mudou.",
+        "A fotografia mostra todo o trabalho rural.",
+        "Máquinas tornam todas as atividades iguais."
+      ],
+      "correctAnswer": "Confira fotografia, data, legenda e relato sobre o trabalho atual.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação precisa indicar período, atividade e alcance da mudança.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O campo não mudou.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TRANSPORT_01",
+      "statement": "No passado, uma comunidade rural dependia de estrada de terra e hoje usa uma linha de ônibus em determinados horários. Como registrar a permanência?",
+      "options": [
+        "A estrada antiga prova que não havia circulação.",
+        "A necessidade de circular permanece, enquanto os meios e horários de transporte mudaram.",
+        "Todo transporte atual é mais acessível.",
+        "Permanência significa que nada mudou."
+      ],
+      "correctAnswer": "A necessidade de circular permanece, enquanto os meios e horários de transporte mudaram.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A estrada antiga prova que não havia circulação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TRANSPORT_02",
+      "statement": "No passado, uma comunidade rural dependia de estrada de terra e hoje usa uma linha de ônibus em determinados horários. Que critério deve orientar a análise?",
+      "options": [
+        "A estrada antiga prova que não havia circulação.",
+        "Todo transporte atual é mais acessível.",
+        "Considere Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+        "Permanência significa que nada mudou."
+      ],
+      "correctAnswer": "Considere Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A estrada antiga prova que não havia circulação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TRANSPORT_03",
+      "statement": "No passado, uma comunidade rural dependia de estrada de terra e hoje usa uma linha de ônibus em determinados horários. Como transferir esse raciocínio?",
+      "options": [
+        "A estrada antiga prova que não havia circulação.",
+        "Todo transporte atual é mais acessível.",
+        "Permanência significa que nada mudou.",
+        "Compare formas de chegar a uma escola em épocas diferentes."
+      ],
+      "correctAnswer": "Compare formas de chegar a uma escola em épocas diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A estrada antiga prova que não havia circulação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TRANSPORT_04",
+      "statement": "No passado, uma comunidade rural dependia de estrada de terra e hoje usa uma linha de ônibus em determinados horários. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que o transporte atual atende todos igualmente.",
+        "A estrada antiga prova que não havia circulação.",
+        "Todo transporte atual é mais acessível.",
+        "Permanência significa que nada mudou."
+      ],
+      "correctAnswer": "Evite dizer que o transporte atual atende todos igualmente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A estrada antiga prova que não havia circulação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TRANSPORT_05",
+      "statement": "No passado, uma comunidade rural dependia de estrada de terra e hoje usa uma linha de ônibus em determinados horários. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A estrada antiga prova que não havia circulação.",
+        "Confira mapa, horários, relatos públicos e datas.",
+        "Todo transporte atual é mais acessível.",
+        "Permanência significa que nada mudou."
+      ],
+      "correctAnswer": "Confira mapa, horários, relatos públicos e datas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudança e permanência podem ocorrer juntas no mesmo aspecto da vida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A estrada antiga prova que não havia circulação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_LEISURE_01",
+      "statement": "Uma fonte registra festas de colheita no campo e outra mostra um festival urbano atual. Que cuidado é necessário?",
+      "options": [
+        "Dizer que lazer rural é sempre tradicional.",
+        "Dizer que a cidade não tem festas comunitárias.",
+        "Comparar as ocasiões e seus contextos, sem dizer que todas as pessoas da cidade ou do campo têm o mesmo lazer.",
+        "Usar apenas a aparência da atividade como explicação."
+      ],
+      "correctAnswer": "Comparar as ocasiões e seus contextos, sem dizer que todas as pessoas da cidade ou do campo têm o mesmo lazer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que lazer rural é sempre tradicional.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_LEISURE_02",
+      "statement": "Uma fonte registra festas de colheita no campo e outra mostra um festival urbano atual. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que lazer rural é sempre tradicional.",
+        "Dizer que a cidade não tem festas comunitárias.",
+        "Usar apenas a aparência da atividade como explicação.",
+        "Considere Práticas de lazer dependem de tempo, grupo, lugar e período."
+      ],
+      "correctAnswer": "Considere Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que lazer rural é sempre tradicional.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_LEISURE_03",
+      "statement": "Uma fonte registra festas de colheita no campo e outra mostra um festival urbano atual. Como transferir esse raciocínio?",
+      "options": [
+        "Compare duas atividades públicas de lazer.",
+        "Dizer que lazer rural é sempre tradicional.",
+        "Dizer que a cidade não tem festas comunitárias.",
+        "Usar apenas a aparência da atividade como explicação."
+      ],
+      "correctAnswer": "Compare duas atividades públicas de lazer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que lazer rural é sempre tradicional.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_LEISURE_04",
+      "statement": "Uma fonte registra festas de colheita no campo e outra mostra um festival urbano atual. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que lazer rural é sempre tradicional.",
+        "Evite generalizar uma festa para toda a população.",
+        "Dizer que a cidade não tem festas comunitárias.",
+        "Usar apenas a aparência da atividade como explicação."
+      ],
+      "correctAnswer": "Evite generalizar uma festa para toda a população.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que lazer rural é sempre tradicional.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_LEISURE_05",
+      "statement": "Uma fonte registra festas de colheita no campo e outra mostra um festival urbano atual. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que lazer rural é sempre tradicional.",
+        "Dizer que a cidade não tem festas comunitárias.",
+        "Confira data, local, organização e participantes indicados.",
+        "Usar apenas a aparência da atividade como explicação."
+      ],
+      "correctAnswer": "Confira data, local, organização e participantes indicados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Práticas de lazer dependem de tempo, grupo, lugar e período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que lazer rural é sempre tradicional.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TECHNOLOGY_01",
+      "statement": "Um diário menciona carta enviada pelo correio; uma mensagem atual registra contato por celular entre pessoas de lugares diferentes. O que a comparação mostra?",
+      "options": [
+        "Cartas não permitiam comunicação.",
+        "Celular elimina diferenças de distância.",
+        "A tecnologia define o sentimento das pessoas.",
+        "Que a comunicação e seus recursos mudaram, enquanto a necessidade de manter contato pode permanecer."
+      ],
+      "correctAnswer": "Que a comunicação e seus recursos mudaram, enquanto a necessidade de manter contato pode permanecer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Cartas não permitiam comunicação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TECHNOLOGY_02",
+      "statement": "Um diário menciona carta enviada pelo correio; uma mensagem atual registra contato por celular entre pessoas de lugares diferentes. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+        "Cartas não permitiam comunicação.",
+        "Celular elimina diferenças de distância.",
+        "A tecnologia define o sentimento das pessoas."
+      ],
+      "correctAnswer": "Considere Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Cartas não permitiam comunicação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TECHNOLOGY_03",
+      "statement": "Um diário menciona carta enviada pelo correio; uma mensagem atual registra contato por celular entre pessoas de lugares diferentes. Como transferir esse raciocínio?",
+      "options": [
+        "Cartas não permitiam comunicação.",
+        "Compare dois meios de comunicação em diferentes períodos.",
+        "Celular elimina diferenças de distância.",
+        "A tecnologia define o sentimento das pessoas."
+      ],
+      "correctAnswer": "Compare dois meios de comunicação em diferentes períodos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Cartas não permitiam comunicação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TECHNOLOGY_04",
+      "statement": "Um diário menciona carta enviada pelo correio; uma mensagem atual registra contato por celular entre pessoas de lugares diferentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "Cartas não permitiam comunicação.",
+        "Celular elimina diferenças de distância.",
+        "Evite afirmar que uma tecnologia substituiu todas as outras.",
+        "A tecnologia define o sentimento das pessoas."
+      ],
+      "correctAnswer": "Evite afirmar que uma tecnologia substituiu todas as outras.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Cartas não permitiam comunicação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TECHNOLOGY_05",
+      "statement": "Um diário menciona carta enviada pelo correio; uma mensagem atual registra contato por celular entre pessoas de lugares diferentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Cartas não permitiam comunicação.",
+        "Celular elimina diferenças de distância.",
+        "A tecnologia define o sentimento das pessoas.",
+        "Confira diário, data, meio usado e contexto da comunicação."
+      ],
+      "correctAnswer": "Confira diário, data, meio usado e contexto da comunicação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia altera meios e ritmos, mas não autoriza conclusões sobre todas as relações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Cartas não permitiam comunicação.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_FOOD_01",
+      "statement": "Uma feira atual vende produtos do campo na cidade, e uma memória antiga descreve trocas entre produtores e moradores. Que relação pode ser investigada?",
+      "options": [
+        "A circulação de produtos conecta modos de vida urbanos e rurais em tempos diferentes.",
+        "A feira prova que todos produzem alimentos.",
+        "Produtos rurais não circulam na cidade.",
+        "A memória antiga descreve o comércio atual."
+      ],
+      "correctAnswer": "A circulação de produtos conecta modos de vida urbanos e rurais em tempos diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo se relacionam por produção, consumo e circulação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A feira prova que todos produzem alimentos.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_FOOD_02",
+      "statement": "Uma feira atual vende produtos do campo na cidade, e uma memória antiga descreve trocas entre produtores e moradores. Que critério deve orientar a análise?",
+      "options": [
+        "A feira prova que todos produzem alimentos.",
+        "Considere Cidade e campo se relacionam por produção, consumo e circulação.",
+        "Produtos rurais não circulam na cidade.",
+        "A memória antiga descreve o comércio atual."
+      ],
+      "correctAnswer": "Considere Cidade e campo se relacionam por produção, consumo e circulação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo se relacionam por produção, consumo e circulação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A feira prova que todos produzem alimentos.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_FOOD_03",
+      "statement": "Uma feira atual vende produtos do campo na cidade, e uma memória antiga descreve trocas entre produtores e moradores. Como transferir esse raciocínio?",
+      "options": [
+        "A feira prova que todos produzem alimentos.",
+        "Produtos rurais não circulam na cidade.",
+        "Mapeie uma cadeia de produto sem coletar dados pessoais.",
+        "A memória antiga descreve o comércio atual."
+      ],
+      "correctAnswer": "Mapeie uma cadeia de produto sem coletar dados pessoais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo se relacionam por produção, consumo e circulação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A feira prova que todos produzem alimentos.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_FOOD_04",
+      "statement": "Uma feira atual vende produtos do campo na cidade, e uma memória antiga descreve trocas entre produtores e moradores. Qual conclusão deve ser evitada?",
+      "options": [
+        "A feira prova que todos produzem alimentos.",
+        "Produtos rurais não circulam na cidade.",
+        "A memória antiga descreve o comércio atual.",
+        "Evite dizer que a cidade e o campo são independentes."
+      ],
+      "correctAnswer": "Evite dizer que a cidade e o campo são independentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo se relacionam por produção, consumo e circulação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A feira prova que todos produzem alimentos.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_FOOD_05",
+      "statement": "Uma feira atual vende produtos do campo na cidade, e uma memória antiga descreve trocas entre produtores e moradores. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira feira, produto, origem, período e depoimento identificado.",
+        "A feira prova que todos produzem alimentos.",
+        "Produtos rurais não circulam na cidade.",
+        "A memória antiga descreve o comércio atual."
+      ],
+      "correctAnswer": "Confira feira, produto, origem, período e depoimento identificado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo se relacionam por produção, consumo e circulação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A feira prova que todos produzem alimentos.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_HOUSING_01",
+      "statement": "Uma planta antiga mostra casas próximas a um rio; hoje parte da área tem edifícios e outra continua com casas. Qual conclusão é proporcional?",
+      "options": [
+        "A imagem antiga representa todas as casas.",
+        "A ocupação e os tipos de moradia mudaram em parte da área, mas há permanências visíveis.",
+        "Edifícios e casas têm o mesmo uso em qualquer período.",
+        "Uma mudança local prova mudança em toda a cidade."
+      ],
+      "correctAnswer": "A ocupação e os tipos de moradia mudaram em parte da área, mas há permanências visíveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A imagem antiga representa todas as casas.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_HOUSING_02",
+      "statement": "Uma planta antiga mostra casas próximas a um rio; hoje parte da área tem edifícios e outra continua com casas. Que critério deve orientar a análise?",
+      "options": [
+        "A imagem antiga representa todas as casas.",
+        "Edifícios e casas têm o mesmo uso em qualquer período.",
+        "Considere A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+        "Uma mudança local prova mudança em toda a cidade."
+      ],
+      "correctAnswer": "Considere A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A imagem antiga representa todas as casas.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_HOUSING_03",
+      "statement": "Uma planta antiga mostra casas próximas a um rio; hoje parte da área tem edifícios e outra continua com casas. Como transferir esse raciocínio?",
+      "options": [
+        "A imagem antiga representa todas as casas.",
+        "Edifícios e casas têm o mesmo uso em qualquer período.",
+        "Uma mudança local prova mudança em toda a cidade.",
+        "Compare imagens de uma rua em dois períodos."
+      ],
+      "correctAnswer": "Compare imagens de uma rua em dois períodos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A imagem antiga representa todas as casas.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_HOUSING_04",
+      "statement": "Uma planta antiga mostra casas próximas a um rio; hoje parte da área tem edifícios e outra continua com casas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que toda a área foi transformada do mesmo modo.",
+        "A imagem antiga representa todas as casas.",
+        "Edifícios e casas têm o mesmo uso em qualquer período.",
+        "Uma mudança local prova mudança em toda a cidade."
+      ],
+      "correctAnswer": "Evite dizer que toda a área foi transformada do mesmo modo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A imagem antiga representa todas as casas.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_HOUSING_05",
+      "statement": "Uma planta antiga mostra casas próximas a um rio; hoje parte da área tem edifícios e outra continua com casas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A imagem antiga representa todas as casas.",
+        "Confira plantas, fotos, datas e localização.",
+        "Edifícios e casas têm o mesmo uso em qualquer período.",
+        "Uma mudança local prova mudança em toda a cidade."
+      ],
+      "correctAnswer": "Confira plantas, fotos, datas e localização.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação espacial deve considerar escala, data e partes diferentes do lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A imagem antiga representa todas as casas.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SCHOOL_01",
+      "statement": "Uma escola rural tinha poucos alunos em uma fotografia antiga e hoje oferece transporte para estudantes de várias comunidades. Que aspecto deve ser comparado?",
+      "options": [
+        "Poucos alunos significam pouca aprendizagem.",
+        "Transporte resolve todos os desafios.",
+        "A organização do acesso e da comunidade escolar mudou, respeitando o período de cada registro.",
+        "A escola atual é igual em todos os aspectos."
+      ],
+      "correctAnswer": "A organização do acesso e da comunidade escolar mudou, respeitando o período de cada registro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Poucos alunos significam pouca aprendizagem.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SCHOOL_02",
+      "statement": "Uma escola rural tinha poucos alunos em uma fotografia antiga e hoje oferece transporte para estudantes de várias comunidades. Que critério deve orientar a análise?",
+      "options": [
+        "Poucos alunos significam pouca aprendizagem.",
+        "Transporte resolve todos os desafios.",
+        "A escola atual é igual em todos os aspectos.",
+        "Considere A função escolar pode permanecer enquanto matrícula, transporte e organização mudam."
+      ],
+      "correctAnswer": "Considere A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Poucos alunos significam pouca aprendizagem.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SCHOOL_03",
+      "statement": "Uma escola rural tinha poucos alunos em uma fotografia antiga e hoje oferece transporte para estudantes de várias comunidades. Como transferir esse raciocínio?",
+      "options": [
+        "Compare registros de uma escola sem expor estudantes.",
+        "Poucos alunos significam pouca aprendizagem.",
+        "Transporte resolve todos os desafios.",
+        "A escola atual é igual em todos os aspectos."
+      ],
+      "correctAnswer": "Compare registros de uma escola sem expor estudantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Poucos alunos significam pouca aprendizagem.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SCHOOL_04",
+      "statement": "Uma escola rural tinha poucos alunos em uma fotografia antiga e hoje oferece transporte para estudantes de várias comunidades. Qual conclusão deve ser evitada?",
+      "options": [
+        "Poucos alunos significam pouca aprendizagem.",
+        "Evite afirmar que a escola antiga não era importante.",
+        "Transporte resolve todos os desafios.",
+        "A escola atual é igual em todos os aspectos."
+      ],
+      "correctAnswer": "Evite afirmar que a escola antiga não era importante.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Poucos alunos significam pouca aprendizagem.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SCHOOL_05",
+      "statement": "Uma escola rural tinha poucos alunos em uma fotografia antiga e hoje oferece transporte para estudantes de várias comunidades. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Poucos alunos significam pouca aprendizagem.",
+        "Transporte resolve todos os desafios.",
+        "Confira foto, matrícula agregada, transporte e datas.",
+        "A escola atual é igual em todos os aspectos."
+      ],
+      "correctAnswer": "Confira foto, matrícula agregada, transporte e datas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A função escolar pode permanecer enquanto matrícula, transporte e organização mudam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Poucos alunos significam pouca aprendizagem.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_VOICES_01",
+      "statement": "Uma reportagem descreve o campo como silencioso, mas relatos públicos mostram trabalhadores, festas e circulação de máquinas. Como revisar a descrição?",
+      "options": [
+        "Dizer que o campo nunca é silencioso.",
+        "Descartar a reportagem inteira.",
+        "Concluir que trabalhadores não vivem no campo.",
+        "Trocar a generalização por uma descrição situada e incluir as atividades documentadas."
+      ],
+      "correctAnswer": "Trocar a generalização por uma descrição situada e incluir as atividades documentadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o campo nunca é silencioso.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_VOICES_02",
+      "statement": "Uma reportagem descreve o campo como silencioso, mas relatos públicos mostram trabalhadores, festas e circulação de máquinas. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+        "Dizer que o campo nunca é silencioso.",
+        "Descartar a reportagem inteira.",
+        "Concluir que trabalhadores não vivem no campo."
+      ],
+      "correctAnswer": "Considere Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o campo nunca é silencioso.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_VOICES_03",
+      "statement": "Uma reportagem descreve o campo como silencioso, mas relatos públicos mostram trabalhadores, festas e circulação de máquinas. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que o campo nunca é silencioso.",
+        "Revise descrições genéricas de cidade ou campo.",
+        "Descartar a reportagem inteira.",
+        "Concluir que trabalhadores não vivem no campo."
+      ],
+      "correctAnswer": "Revise descrições genéricas de cidade ou campo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o campo nunca é silencioso.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_VOICES_04",
+      "statement": "Uma reportagem descreve o campo como silencioso, mas relatos públicos mostram trabalhadores, festas e circulação de máquinas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que o campo nunca é silencioso.",
+        "Descartar a reportagem inteira.",
+        "Evite aceitar o estereótipo porque aparece em reportagem.",
+        "Concluir que trabalhadores não vivem no campo."
+      ],
+      "correctAnswer": "Evite aceitar o estereótipo porque aparece em reportagem.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o campo nunca é silencioso.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_VOICES_05",
+      "statement": "Uma reportagem descreve o campo como silencioso, mas relatos públicos mostram trabalhadores, festas e circulação de máquinas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que o campo nunca é silencioso.",
+        "Descartar a reportagem inteira.",
+        "Concluir que trabalhadores não vivem no campo.",
+        "Confira linguagem da reportagem, relatos e contexto das atividades."
+      ],
+      "correctAnswer": "Confira linguagem da reportagem, relatos e contexto das atividades.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte pode usar imagem ou opinião que não representa toda a experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o campo nunca é silencioso.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TIMELINE_01",
+      "statement": "Uma linha do tempo apresenta mudanças no transporte, no trabalho e no lazer de uma comunidade. Como evitar erro de comparação?",
+      "options": [
+        "Manter as datas e comparar aspectos equivalentes, sem colocar passado e presente como blocos únicos.",
+        "Ordenar por opinião, não por data.",
+        "Misturar cidade atual com campo antigo sem avisar.",
+        "Apagar permanências para mostrar apenas novidades."
+      ],
+      "correctAnswer": "Manter as datas e comparar aspectos equivalentes, sem colocar passado e presente como blocos únicos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ordenar por opinião, não por data.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TIMELINE_02",
+      "statement": "Uma linha do tempo apresenta mudanças no transporte, no trabalho e no lazer de uma comunidade. Que critério deve orientar a análise?",
+      "options": [
+        "Ordenar por opinião, não por data.",
+        "Considere A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+        "Misturar cidade atual com campo antigo sem avisar.",
+        "Apagar permanências para mostrar apenas novidades."
+      ],
+      "correctAnswer": "Considere A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ordenar por opinião, não por data.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TIMELINE_03",
+      "statement": "Uma linha do tempo apresenta mudanças no transporte, no trabalho e no lazer de uma comunidade. Como transferir esse raciocínio?",
+      "options": [
+        "Ordenar por opinião, não por data.",
+        "Misturar cidade atual com campo antigo sem avisar.",
+        "Monte uma linha do tempo sobre comunicação e circulação.",
+        "Apagar permanências para mostrar apenas novidades."
+      ],
+      "correctAnswer": "Monte uma linha do tempo sobre comunicação e circulação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ordenar por opinião, não por data.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TIMELINE_04",
+      "statement": "Uma linha do tempo apresenta mudanças no transporte, no trabalho e no lazer de uma comunidade. Qual conclusão deve ser evitada?",
+      "options": [
+        "Ordenar por opinião, não por data.",
+        "Misturar cidade atual com campo antigo sem avisar.",
+        "Apagar permanências para mostrar apenas novidades.",
+        "Evite dizer que tudo no passado era igual."
+      ],
+      "correctAnswer": "Evite dizer que tudo no passado era igual.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ordenar por opinião, não por data.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_TIMELINE_05",
+      "statement": "Uma linha do tempo apresenta mudanças no transporte, no trabalho e no lazer de uma comunidade. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira datas, aspectos comparados e fontes de cada etapa.",
+        "Ordenar por opinião, não por data.",
+        "Misturar cidade atual com campo antigo sem avisar.",
+        "Apagar permanências para mostrar apenas novidades."
+      ],
+      "correctAnswer": "Confira datas, aspectos comparados e fontes de cada etapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A linha do tempo organiza recortes e evita misturar experiências de épocas diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ordenar por opinião, não por data.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SYNTHESIS_01",
+      "statement": "Uma pesquisa reúne mapas, fotos, entrevistas e dados públicos sobre uma comunidade urbana e outra rural. Como concluir?",
+      "options": [
+        "Escolher um modo de vida como padrão.",
+        "Explicar mudanças e permanências em aspectos definidos, reconhecendo relações entre cidade e campo e limites das fontes.",
+        "Listar diferenças sem indicar épocas.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Explicar mudanças e permanências em aspectos definidos, reconhecendo relações entre cidade e campo e limites das fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher um modo de vida como padrão.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SYNTHESIS_02",
+      "statement": "Uma pesquisa reúne mapas, fotos, entrevistas e dados públicos sobre uma comunidade urbana e outra rural. Que critério deve orientar a análise?",
+      "options": [
+        "Escolher um modo de vida como padrão.",
+        "Listar diferenças sem indicar épocas.",
+        "Considere A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Considere A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher um modo de vida como padrão.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SYNTHESIS_03",
+      "statement": "Uma pesquisa reúne mapas, fotos, entrevistas e dados públicos sobre uma comunidade urbana e outra rural. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher um modo de vida como padrão.",
+        "Listar diferenças sem indicar épocas.",
+        "Dizer que cidade e campo não se relacionam.",
+        "Apresente uma síntese acessível sobre modos de vida."
+      ],
+      "correctAnswer": "Apresente uma síntese acessível sobre modos de vida.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher um modo de vida como padrão.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SYNTHESIS_04",
+      "statement": "Uma pesquisa reúne mapas, fotos, entrevistas e dados públicos sobre uma comunidade urbana e outra rural. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar que uma comunidade é mais desenvolvida que a outra.",
+        "Escolher um modo de vida como padrão.",
+        "Listar diferenças sem indicar épocas.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Evite afirmar que uma comunidade é mais desenvolvida que a outra.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher um modo de vida como padrão.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-city-country-life-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-CITY-COUNTRY-LIFE_SYNTHESIS_05",
+      "statement": "Uma pesquisa reúne mapas, fotos, entrevistas e dados públicos sobre uma comunidade urbana e outra rural. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escolher um modo de vida como padrão.",
+        "Confira fontes, períodos, aspectos e relações observadas.",
+        "Listar diferenças sem indicar épocas.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Confira fontes, períodos, aspectos e relações observadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve ser comparativa, histórica e cuidadosa com a diversidade interna.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher um modo de vida como padrão.": [
+          "HISTORY_EF03HI08_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

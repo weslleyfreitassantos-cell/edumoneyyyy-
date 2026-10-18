@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma02-exact-and-approximate-counting",
+  "canonicalSkillCode": "AUTHORING_EF01MA02_COUNT_USING_PAIRING_AND_GROUPING",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "contagem exata ou aproximada por pareamento e agrupamentos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Contar de maneira exata ou aproximada, utilizando diferentes estratégias como o pareamento e outros agrupamentos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Contar de jeitos diferentes",
+    "objective": "Contar coleções pequenas de maneira exata ou estimar sua quantidade, utilizando correspondência um a um, pareamento e agrupamentos e explicando como a estratégia evita contar um item mais de uma vez ou deixar itens de fora.",
+    "summary": "Podemos contar um objeto por vez, parear objetos ou formar grupos iguais. O pareamento ajuda a conferir se cada elemento foi considerado; grupos de dois, cinco ou dez podem tornar uma coleção mais organizada. Uma estimativa é uma aproximação razoável, não um total exato. Para saber o total exato, conte os grupos e os elementos que sobraram ou confira por outra estratégia.",
+    "explanation": "Primeiro observe a coleção e escolha como organizá-la. Se houver 12 fichas, você pode aproximar o total, formar seis pares e contar os pares de dois em dois, ou formar grupos menores e contar os elementos restantes. Ao parear, associe cada elemento a exatamente um parceiro ou marca; um item sem par pode ser uma sobra, não um erro. Ao estimar, use pistas da coleção, como fileiras e densidade, e diga que é uma aproximação. A estimativa não deve ser apresentada como contagem exata. Quando o resultado importa, reorganize e confira para não repetir nem omitir elementos.",
+    "workedExample": "Há 14 tampinhas em uma mesa. Uma estimativa inicial pode ser “perto de 15”. Para encontrar o total exato, organize sete pares; cada par tem duas tampinhas, então conte 2, 4, 6, 8, 10, 12, 14. A estimativa orienta, e os pares permitem conferir o total.",
+    "commonMistake": "Confundir estimativa com total exato ou contar de novo um objeto já visto ao percorrer uma coleção desorganizada.",
+    "priorKnowledge": [
+      "Recitar parte da sequência numérica oral em ordem.",
+      "Associar um número dito a um elemento em uma coleção pequena com apoio."
+    ],
+    "keyConcepts": [
+      "coleção",
+      "contagem exata",
+      "estimativa",
+      "correspondência um a um",
+      "pareamento",
+      "agrupamento",
+      "sobra",
+      "conferência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "DOUBLE_COUNT_OR_OMISSION",
+        "action": "Mova cada objeto contado para uma área diferente ou marque-o visualmente; depois confira se todos os itens ficaram em exatamente um grupo."
+      },
+      {
+        "errorFocus": "PAIRING_MISCOUNT",
+        "action": "Forme pares visíveis e conte dois por vez; se sobrar um elemento, registre-o separadamente antes de somar."
+      },
+      {
+        "errorFocus": "ESTIMATE_AS_EXACT",
+        "action": "Use a expressão “aproximadamente” para a previsão e depois faça uma contagem organizada para encontrar e conferir o total exato."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+      "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+      "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma02-counting-stations",
+        "title": "Estações de pareamento e agrupamento",
+        "instructions": "Estações usam conjuntos preparados de até 20 peças escolares grandes e seguras; não há competição por velocidade.\n1. Escolha uma coleção e registre uma estimativa antes de contar.\n2. Organize os itens em pares ou grupos iguais e conte os grupos e as sobras.\n3. Confira o total por uma segunda organização ou correspondência um a um e compare com a estimativa.",
+        "steps": [
+          "Escolha uma coleção e registre uma estimativa antes de contar.",
+          "Organize os itens em pares ou grupos iguais e conte os grupos e as sobras.",
+          "Confira o total por uma segunda organização ou correspondência um a um e compare com a estimativa."
+        ],
+        "evidence": "Registro que diferencia previsão aproximada e total conferido e mostra uma estratégia de organização sem omissão ou repetição.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "conta alguns itens com apoio, mas perde o controle da coleção.",
+            "developing": "usa pares ou grupos e confere parte do total.",
+            "proficient": "escolhe uma estratégia adequada, registra estimativa e total exato e explica como conferiu."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma02-class-kit-inventory",
+        "title": "Inventário de materiais fictício",
+        "instructions": "Uma lista ilustrada apresenta materiais de sala preparados para a atividade; estudantes contam conjuntos de cartões, sem registrar bens ou pertences pessoais.\n1. Escolha um conjunto ilustrado e diga se fará primeiro uma estimativa ou uma contagem exata.\n2. Agrupe os elementos de uma forma que facilite conferir cada um.\n3. Anote ou represente o total e explique como tratou qualquer sobra.",
+        "steps": [
+          "Escolha um conjunto ilustrado e diga se fará primeiro uma estimativa ou uma contagem exata.",
+          "Agrupe os elementos de uma forma que facilite conferir cada um.",
+          "Anote ou represente o total e explique como tratou qualquer sobra."
+        ],
+        "evidence": "Inventário didático com total, estratégia visível e indicação de que a quantidade é estimada ou exata.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica o conjunto e tenta contar com modelagem.",
+            "developing": "registra o total com agrupamento e apoio para conferir.",
+            "proficient": "registra o tipo de resultado, usa agrupamento coerente e explica a conferência."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma02-exact-and-approximate-counting-01",
+          "v1-ef01ma02-exact-and-approximate-counting-02",
+          "v1-ef01ma02-exact-and-approximate-counting-03",
+          "v1-ef01ma02-exact-and-approximate-counting-04",
+          "v1-ef01ma02-exact-and-approximate-counting-05",
+          "v1-ef01ma02-exact-and-approximate-counting-06",
+          "v1-ef01ma02-exact-and-approximate-counting-07",
+          "v1-ef01ma02-exact-and-approximate-counting-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma02-exact-and-approximate-counting-09",
+          "v1-ef01ma02-exact-and-approximate-counting-10",
+          "v1-ef01ma02-exact-and-approximate-counting-11",
+          "v1-ef01ma02-exact-and-approximate-counting-12",
+          "v1-ef01ma02-exact-and-approximate-counting-13",
+          "v1-ef01ma02-exact-and-approximate-counting-14",
+          "v1-ef01ma02-exact-and-approximate-counting-15",
+          "v1-ef01ma02-exact-and-approximate-counting-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma02-exact-and-approximate-counting-17",
+          "v1-ef01ma02-exact-and-approximate-counting-18",
+          "v1-ef01ma02-exact-and-approximate-counting-19",
+          "v1-ef01ma02-exact-and-approximate-counting-20",
+          "v1-ef01ma02-exact-and-approximate-counting-21",
+          "v1-ef01ma02-exact-and-approximate-counting-22",
+          "v1-ef01ma02-exact-and-approximate-counting-23",
+          "v1-ef01ma02-exact-and-approximate-counting-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma02-exact-and-approximate-counting-25",
+          "v1-ef01ma02-exact-and-approximate-counting-26",
+          "v1-ef01ma02-exact-and-approximate-counting-27",
+          "v1-ef01ma02-exact-and-approximate-counting-28",
+          "v1-ef01ma02-exact-and-approximate-counting-29",
+          "v1-ef01ma02-exact-and-approximate-counting-30",
+          "v1-ef01ma02-exact-and-approximate-counting-31",
+          "v1-ef01ma02-exact-and-approximate-counting-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma02-exact-and-approximate-counting-33",
+          "v1-ef01ma02-exact-and-approximate-counting-34",
+          "v1-ef01ma02-exact-and-approximate-counting-35",
+          "v1-ef01ma02-exact-and-approximate-counting-36",
+          "v1-ef01ma02-exact-and-approximate-counting-37",
+          "v1-ef01ma02-exact-and-approximate-counting-38",
+          "v1-ef01ma02-exact-and-approximate-counting-39",
+          "v1-ef01ma02-exact-and-approximate-counting-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA02",
+        "descriptor": "Contar de maneira exata ou aproximada, utilizando diferentes estratégias como o pareamento e outros agrupamentos.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-01",
+      "statement": "Um cartão mostra oito estrelas bem separadas. Qual estimativa está mais próxima antes da contagem?",
+      "prompt": "Um cartão mostra oito estrelas bem separadas. Qual estimativa está mais próxima antes da contagem?",
+      "options": [
+        "Cerca de 8.",
+        "Cerca de 2",
+        "Cerca de 20",
+        "Cerca de 40"
+      ],
+      "correctAnswer": "Cerca de 8.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cerca de 2": [
+          "ESTIMATE_SMALL_SET"
+        ],
+        "Cerca de 20": [
+          "ESTIMATE_SMALL_SET"
+        ],
+        "Cerca de 40": [
+          "ESTIMATE_SMALL_SET"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ESTIMATE",
+      "contextFamily": "CARTAO_COM_OITO_ESTRELAS",
+      "explanation": "A coleção visível tem poucos elementos e oito é uma aproximação razoável.",
+      "hint": "Observe o tamanho do conjunto.",
+      "errorFocus": "ESTIMATE_SMALL_SET",
+      "feedback": {
+        "correct": "Boa observação: A coleção visível tem poucos elementos e oito é uma aproximação razoável.",
+        "incorrect": "A coleção visível tem poucos elementos e oito é uma aproximação razoável.",
+        "hint": "Observe o tamanho do conjunto.",
+        "errorFocus": "ESTIMATE_SMALL_SET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-02",
+      "statement": "Há 3 pares de lápis em uma caixa. Quantos lápis há ao todo?",
+      "prompt": "Há 3 pares de lápis em uma caixa. Quantos lápis há ao todo?",
+      "options": [
+        "3",
+        "6",
+        "5",
+        "9"
+      ],
+      "correctAnswer": "6",
+      "answerPosition": "B",
+      "misconceptions": {
+        "3": [
+          "COUNT_BY_PAIRS"
+        ],
+        "5": [
+          "COUNT_BY_PAIRS"
+        ],
+        "9": [
+          "COUNT_BY_PAIRS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "PARES_DE_LAPIS",
+      "explanation": "Cada par tem dois lápis: 2 + 2 + 2 = 6.",
+      "hint": "Conte dois lápis em cada par.",
+      "errorFocus": "COUNT_BY_PAIRS",
+      "feedback": {
+        "correct": "Boa observação: Cada par tem dois lápis: 2 + 2 + 2 = 6.",
+        "incorrect": "Cada par tem dois lápis: 2 + 2 + 2 = 6.",
+        "hint": "Conte dois lápis em cada par.",
+        "errorFocus": "COUNT_BY_PAIRS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-03",
+      "statement": "Uma fileira tem 7 fichas. Qual estratégia garante contar cada ficha uma vez?",
+      "prompt": "Uma fileira tem 7 fichas. Qual estratégia garante contar cada ficha uma vez?",
+      "options": [
+        "Dizer números rapidamente sem olhar",
+        "Contar apenas as fichas do começo",
+        "Apontar ou mover uma ficha a cada número dito.",
+        "Contar a mesma ficha em cada passagem"
+      ],
+      "correctAnswer": "Apontar ou mover uma ficha a cada número dito.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer números rapidamente sem olhar": [
+          "ONE_TO_ONE_CORRESPONDENCE"
+        ],
+        "Contar apenas as fichas do começo": [
+          "ONE_TO_ONE_CORRESPONDENCE"
+        ],
+        "Contar a mesma ficha em cada passagem": [
+          "ONE_TO_ONE_CORRESPONDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FICHAS_EM_FILEIRA",
+      "explanation": "Associar uma palavra numérica a cada ficha evita omissões e repetição.",
+      "hint": "Mantenha uma correspondência entre ficha e número.",
+      "errorFocus": "ONE_TO_ONE_CORRESPONDENCE",
+      "feedback": {
+        "correct": "Boa observação: Associar uma palavra numérica a cada ficha evita omissões e repetição.",
+        "incorrect": "Associar uma palavra numérica a cada ficha evita omissões e repetição.",
+        "hint": "Mantenha uma correspondência entre ficha e número.",
+        "errorFocus": "ONE_TO_ONE_CORRESPONDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-04",
+      "statement": "Uma bandeja tem 3 grupos com 3 botões em cada. Quantos botões há?",
+      "prompt": "Uma bandeja tem 3 grupos com 3 botões em cada. Quantos botões há?",
+      "options": [
+        "6",
+        "3",
+        "12",
+        "9"
+      ],
+      "correctAnswer": "9",
+      "answerPosition": "D",
+      "misconceptions": {
+        "3": [
+          "EQUAL_GROUPS_OF_THREE"
+        ],
+        "6": [
+          "EQUAL_GROUPS_OF_THREE"
+        ],
+        "12": [
+          "EQUAL_GROUPS_OF_THREE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "TRES_GRUPOS_DE_TRES",
+      "explanation": "Três grupos de três totalizam 3 + 3 + 3 = 9.",
+      "hint": "Conte três em cada grupo.",
+      "errorFocus": "EQUAL_GROUPS_OF_THREE",
+      "feedback": {
+        "correct": "Boa observação: Três grupos de três totalizam 3 + 3 + 3 = 9.",
+        "incorrect": "Três grupos de três totalizam 3 + 3 + 3 = 9.",
+        "hint": "Conte três em cada grupo.",
+        "errorFocus": "EQUAL_GROUPS_OF_THREE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-05",
+      "statement": "Uma criança olha um monte de 12 sementes de papel e diz “mais ou menos 10”. Isso é…",
+      "prompt": "Uma criança olha um monte de 12 sementes de papel e diz “mais ou menos 10”. Isso é…",
+      "options": [
+        "uma estimativa aproximada.",
+        "o total exato já conferido",
+        "um pareamento completo",
+        "uma prova de que há 10"
+      ],
+      "correctAnswer": "uma estimativa aproximada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "o total exato já conferido": [
+          "ESTIMATE_VS_EXACT"
+        ],
+        "um pareamento completo": [
+          "ESTIMATE_VS_EXACT"
+        ],
+        "uma prova de que há 10": [
+          "ESTIMATE_VS_EXACT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ESTIMATIVA_DE_SEMENTES_DE_PAPEL",
+      "explanation": "“Mais ou menos” indica aproximação; a contagem organizada pode conferir o total exato.",
+      "hint": "Observe as palavras usadas.",
+      "errorFocus": "ESTIMATE_VS_EXACT",
+      "feedback": {
+        "correct": "Boa observação: “Mais ou menos” indica aproximação; a contagem organizada pode conferir o total exato.",
+        "incorrect": "“Mais ou menos” indica aproximação; a contagem organizada pode conferir o total exato.",
+        "hint": "Observe as palavras usadas.",
+        "errorFocus": "ESTIMATE_VS_EXACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-06",
+      "statement": "Há 4 pares de cartões em uma mesa. Quantos cartões são?",
+      "prompt": "Há 4 pares de cartões em uma mesa. Quantos cartões são?",
+      "options": [
+        "4",
+        "8",
+        "6",
+        "12"
+      ],
+      "correctAnswer": "8",
+      "answerPosition": "B",
+      "misconceptions": {
+        "4": [
+          "FOUR_PAIRS"
+        ],
+        "6": [
+          "FOUR_PAIRS"
+        ],
+        "12": [
+          "FOUR_PAIRS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "PARES_DE_CARTOES",
+      "explanation": "Cada um dos quatro pares tem dois cartões, totalizando oito.",
+      "hint": "Conte de dois em dois.",
+      "errorFocus": "FOUR_PAIRS",
+      "feedback": {
+        "correct": "Boa observação: Cada um dos quatro pares tem dois cartões, totalizando oito.",
+        "incorrect": "Cada um dos quatro pares tem dois cartões, totalizando oito.",
+        "hint": "Conte de dois em dois.",
+        "errorFocus": "FOUR_PAIRS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-07",
+      "statement": "Uma coleção tem 5 pares e 1 peça sem par. O que essa organização mostra?",
+      "prompt": "Uma coleção tem 5 pares e 1 peça sem par. O que essa organização mostra?",
+      "options": [
+        "5 peças",
+        "10 peças exatas sem sobra",
+        "11 peças ao todo.",
+        "6 pares completos"
+      ],
+      "correctAnswer": "11 peças ao todo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "5 peças": [
+          "PAIR_WITH_ONE_REMAINDER"
+        ],
+        "10 peças exatas sem sobra": [
+          "PAIR_WITH_ONE_REMAINDER"
+        ],
+        "6 pares completos": [
+          "PAIR_WITH_ONE_REMAINDER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOBRA_NO_PAREAMENTO",
+      "explanation": "Cinco pares são dez peças; somando a peça que sobrou, são onze.",
+      "hint": "Conte os pares e depois a sobra.",
+      "errorFocus": "PAIR_WITH_ONE_REMAINDER",
+      "feedback": {
+        "correct": "Boa observação: Cinco pares são dez peças; somando a peça que sobrou, são onze.",
+        "incorrect": "Cinco pares são dez peças; somando a peça que sobrou, são onze.",
+        "hint": "Conte os pares e depois a sobra.",
+        "errorFocus": "PAIR_WITH_ONE_REMAINDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-08",
+      "statement": "Uma criança organiza 10 peças em cinco pares; outra conta cada peça uma a uma e também chega a 10. O que é comum?",
+      "prompt": "Uma criança organiza 10 peças em cinco pares; outra conta cada peça uma a uma e também chega a 10. O que é comum?",
+      "options": [
+        "Ambas fizeram estimativa sem contar",
+        "As peças mudaram de quantidade",
+        "Só uma forma pode ser usada",
+        "As duas estratégias representam a mesma quantidade total."
+      ],
+      "correctAnswer": "As duas estratégias representam a mesma quantidade total.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ambas fizeram estimativa sem contar": [
+          "EQUIVALENT_COUNTING_STRATEGIES"
+        ],
+        "As peças mudaram de quantidade": [
+          "EQUIVALENT_COUNTING_STRATEGIES"
+        ],
+        "Só uma forma pode ser usada": [
+          "EQUIVALENT_COUNTING_STRATEGIES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CONTAGEM_EM_DOIS_GRUPOS",
+      "explanation": "Agrupar e contar um a um podem produzir o mesmo total quando cada elemento é considerado.",
+      "hint": "Compare os totais, não a organização.",
+      "errorFocus": "EQUIVALENT_COUNTING_STRATEGIES",
+      "feedback": {
+        "correct": "Boa observação: Agrupar e contar um a um podem produzir o mesmo total quando cada elemento é considerado.",
+        "incorrect": "Agrupar e contar um a um podem produzir o mesmo total quando cada elemento é considerado.",
+        "hint": "Compare os totais, não a organização.",
+        "errorFocus": "EQUIVALENT_COUNTING_STRATEGIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-09",
+      "statement": "Um desenho organiza 12 pontos em 3 fileiras de 4. Quantos pontos há?",
+      "prompt": "Um desenho organiza 12 pontos em 3 fileiras de 4. Quantos pontos há?",
+      "options": [
+        "12",
+        "7",
+        "9",
+        "16"
+      ],
+      "correctAnswer": "12",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7": [
+          "ARRAY_GROUPING"
+        ],
+        "9": [
+          "ARRAY_GROUPING"
+        ],
+        "16": [
+          "ARRAY_GROUPING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "TRES_FILEIRAS_DE_QUATRO",
+      "explanation": "Três grupos de quatro somam doze pontos.",
+      "hint": "Conte quatro por fileira.",
+      "errorFocus": "ARRAY_GROUPING",
+      "feedback": {
+        "correct": "Boa observação: Três grupos de quatro somam doze pontos.",
+        "incorrect": "Três grupos de quatro somam doze pontos.",
+        "hint": "Conte quatro por fileira.",
+        "errorFocus": "ARRAY_GROUPING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-10",
+      "statement": "Uma caixa transparente tem aproximadamente 15 tampinhas visíveis. Qual frase deixa claro que ainda é uma previsão?",
+      "prompt": "Uma caixa transparente tem aproximadamente 15 tampinhas visíveis. Qual frase deixa claro que ainda é uma previsão?",
+      "options": [
+        "“Contei exatamente 15.”",
+        "“Parece haver cerca de 15 tampinhas.”",
+        "“Há 15 pares completos.”",
+        "“Tenho certeza sem conferir.”"
+      ],
+      "correctAnswer": "“Parece haver cerca de 15 tampinhas.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Contei exatamente 15.”": [
+          "ESTIMATE_LANGUAGE"
+        ],
+        "“Há 15 pares completos.”": [
+          "ESTIMATE_LANGUAGE"
+        ],
+        "“Tenho certeza sem conferir.”": [
+          "ESTIMATE_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ESTIMATE",
+      "contextFamily": "CAIXA_DE_TAMPINHAS",
+      "explanation": "“Parece” e “cerca de” indicam uma estimativa, não uma contagem verificada.",
+      "hint": "Escolha uma frase de aproximação.",
+      "errorFocus": "ESTIMATE_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: “Parece” e “cerca de” indicam uma estimativa, não uma contagem verificada.",
+        "incorrect": "“Parece” e “cerca de” indicam uma estimativa, não uma contagem verificada.",
+        "hint": "Escolha uma frase de aproximação.",
+        "errorFocus": "ESTIMATE_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-11",
+      "statement": "Um desenho mostra 5 pares de meias de papel. Quantas meias aparecem?",
+      "prompt": "Um desenho mostra 5 pares de meias de papel. Quantas meias aparecem?",
+      "options": [
+        "5",
+        "7",
+        "10",
+        "15"
+      ],
+      "correctAnswer": "10",
+      "answerPosition": "C",
+      "misconceptions": {
+        "5": [
+          "FIVE_PAIRS"
+        ],
+        "7": [
+          "FIVE_PAIRS"
+        ],
+        "15": [
+          "FIVE_PAIRS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "CINCO_PARES_DE_MEIAS_DE_PAPEL",
+      "explanation": "Cada par tem duas meias; cinco pares correspondem a dez.",
+      "hint": "Some dois para cada par.",
+      "errorFocus": "FIVE_PAIRS",
+      "feedback": {
+        "correct": "Boa observação: Cada par tem duas meias; cinco pares correspondem a dez.",
+        "incorrect": "Cada par tem duas meias; cinco pares correspondem a dez.",
+        "hint": "Some dois para cada par.",
+        "errorFocus": "FIVE_PAIRS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-12",
+      "statement": "Uma moldura tem duas fileiras com 5 fichas em cada. Como contar sem apontar cada ficha isoladamente?",
+      "prompt": "Uma moldura tem duas fileiras com 5 fichas em cada. Como contar sem apontar cada ficha isoladamente?",
+      "options": [
+        "Contar somente a primeira fileira",
+        "Dizer 1, 2, 3 sem acompanhar as fichas",
+        "Contar cada ficha duas vezes",
+        "Contar 5 e 10, avançando por fileiras."
+      ],
+      "correctAnswer": "Contar 5 e 10, avançando por fileiras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Contar somente a primeira fileira": [
+          "GROUPED_COUNTING"
+        ],
+        "Dizer 1, 2, 3 sem acompanhar as fichas": [
+          "GROUPED_COUNTING"
+        ],
+        "Contar cada ficha duas vezes": [
+          "GROUPED_COUNTING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DEZ_FICHAS_EM_MOLDURA",
+      "explanation": "As fileiras são grupos de cinco, permitindo contar todos os elementos uma vez.",
+      "hint": "Use cada fileira como um grupo.",
+      "errorFocus": "GROUPED_COUNTING",
+      "feedback": {
+        "correct": "Boa observação: As fileiras são grupos de cinco, permitindo contar todos os elementos uma vez.",
+        "incorrect": "As fileiras são grupos de cinco, permitindo contar todos os elementos uma vez.",
+        "hint": "Use cada fileira como um grupo.",
+        "errorFocus": "GROUPED_COUNTING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-13",
+      "statement": "Há 6 blocos organizados em 3 pares. Qual número completa: 2, 4, __?",
+      "prompt": "Há 6 blocos organizados em 3 pares. Qual número completa: 2, 4, __?",
+      "options": [
+        "6",
+        "5",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "6",
+      "answerPosition": "A",
+      "misconceptions": {
+        "5": [
+          "COUNTING_BY_TWOS"
+        ],
+        "7": [
+          "COUNTING_BY_TWOS"
+        ],
+        "8": [
+          "COUNTING_BY_TWOS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "PARES_DE_BLOCOS",
+      "explanation": "Cada novo par acrescenta dois; o terceiro par leva a seis.",
+      "hint": "Adicione mais um par.",
+      "errorFocus": "COUNTING_BY_TWOS",
+      "feedback": {
+        "correct": "Boa observação: Cada novo par acrescenta dois; o terceiro par leva a seis.",
+        "incorrect": "Cada novo par acrescenta dois; o terceiro par leva a seis.",
+        "hint": "Adicione mais um par.",
+        "errorFocus": "COUNTING_BY_TWOS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-14",
+      "statement": "Uma estimativa foi “perto de 12”; depois a contagem em pares confirmou 14. Qual resultado é exato?",
+      "prompt": "Uma estimativa foi “perto de 12”; depois a contagem em pares confirmou 14. Qual resultado é exato?",
+      "options": [
+        "12, porque foi dito primeiro",
+        "14, após a conferência.",
+        "13, como média das respostas",
+        "Nenhum resultado pode ser registrado"
+      ],
+      "correctAnswer": "14, após a conferência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "12, porque foi dito primeiro": [
+          "EXACT_AFTER_CHECK"
+        ],
+        "13, como média das respostas": [
+          "EXACT_AFTER_CHECK"
+        ],
+        "Nenhum resultado pode ser registrado": [
+          "EXACT_AFTER_CHECK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PREVISAO_E_CONFERENCIA",
+      "explanation": "A contagem organizada conferida determina o total exato de 14.",
+      "hint": "Veja qual número veio da conferência.",
+      "errorFocus": "EXACT_AFTER_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A contagem organizada conferida determina o total exato de 14.",
+        "incorrect": "A contagem organizada conferida determina o total exato de 14.",
+        "hint": "Veja qual número veio da conferência.",
+        "errorFocus": "EXACT_AFTER_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-15",
+      "statement": "Uma atividade tem 4 grupos com 2 cartões. Quantos cartões foram usados?",
+      "prompt": "Uma atividade tem 4 grupos com 2 cartões. Quantos cartões foram usados?",
+      "options": [
+        "6",
+        "4",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "answerPosition": "C",
+      "misconceptions": {
+        "4": [
+          "GROUPS_OF_TWO"
+        ],
+        "6": [
+          "GROUPS_OF_TWO"
+        ],
+        "10": [
+          "GROUPS_OF_TWO"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "QUATRO_GRUPOS_DE_DOIS",
+      "explanation": "Quatro grupos de dois somam oito cartões.",
+      "hint": "Conte de dois em dois.",
+      "errorFocus": "GROUPS_OF_TWO",
+      "feedback": {
+        "correct": "Boa observação: Quatro grupos de dois somam oito cartões.",
+        "incorrect": "Quatro grupos de dois somam oito cartões.",
+        "hint": "Conte de dois em dois.",
+        "errorFocus": "GROUPS_OF_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-16",
+      "statement": "Para uma coleção espalhada de 13 botões, qual plano ajuda a não contar nenhum duas vezes?",
+      "prompt": "Para uma coleção espalhada de 13 botões, qual plano ajuda a não contar nenhum duas vezes?",
+      "options": [
+        "Olhar a coleção e dizer um número rápido",
+        "Contar apenas os botões maiores",
+        "Recomeçar sempre sem mudar a organização",
+        "Separar cada botão contado em uma área e conferir os grupos e a sobra."
+      ],
+      "correctAnswer": "Separar cada botão contado em uma área e conferir os grupos e a sobra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Olhar a coleção e dizer um número rápido": [
+          "TRACKING_COUNTED_ITEMS"
+        ],
+        "Contar apenas os botões maiores": [
+          "TRACKING_COUNTED_ITEMS"
+        ],
+        "Recomeçar sempre sem mudar a organização": [
+          "TRACKING_COUNTED_ITEMS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE_STRATEGY",
+      "contextFamily": "COLECAO_MISTURADA_DE_BOTOES",
+      "explanation": "Mover itens contados torna visível o que já foi incluído.",
+      "hint": "Escolha uma estratégia que mostre o que já foi contado.",
+      "errorFocus": "TRACKING_COUNTED_ITEMS",
+      "feedback": {
+        "correct": "Boa observação: Mover itens contados torna visível o que já foi incluído.",
+        "incorrect": "Mover itens contados torna visível o que já foi incluído.",
+        "hint": "Escolha uma estratégia que mostre o que já foi contado.",
+        "errorFocus": "TRACKING_COUNTED_ITEMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-17",
+      "statement": "Uma imagem de assentos mostra 2 fileiras com 6 lugares em cada. Qual contagem em grupos encontra o total?",
+      "prompt": "Uma imagem de assentos mostra 2 fileiras com 6 lugares em cada. Qual contagem em grupos encontra o total?",
+      "options": [
+        "6 e 12, totalizando 12 lugares.",
+        "2 e 6, totalizando 8",
+        "6 e 10, totalizando 16",
+        "12 grupos de 6"
+      ],
+      "correctAnswer": "6 e 12, totalizando 12 lugares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "2 e 6, totalizando 8": [
+          "TWO_GROUPS_OF_SIX"
+        ],
+        "6 e 10, totalizando 16": [
+          "TWO_GROUPS_OF_SIX"
+        ],
+        "12 grupos de 6": [
+          "TWO_GROUPS_OF_SIX"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DOZE_LUGARES_EM_DUAS_FILEIRAS",
+      "explanation": "Duas fileiras de seis contêm doze lugares.",
+      "hint": "Some uma fileira de seis e depois outra.",
+      "errorFocus": "TWO_GROUPS_OF_SIX",
+      "feedback": {
+        "correct": "Boa observação: Duas fileiras de seis contêm doze lugares.",
+        "incorrect": "Duas fileiras de seis contêm doze lugares.",
+        "hint": "Some uma fileira de seis e depois outra.",
+        "errorFocus": "TWO_GROUPS_OF_SIX"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-18",
+      "statement": "Há 17 cartões para uma oficina. Um estudante forma 8 pares e deixa 1 cartão separado. Quantos cartões foram contados?",
+      "prompt": "Há 17 cartões para uma oficina. Um estudante forma 8 pares e deixa 1 cartão separado. Quantos cartões foram contados?",
+      "options": [
+        "8",
+        "17",
+        "16",
+        "18"
+      ],
+      "correctAnswer": "17",
+      "answerPosition": "B",
+      "misconceptions": {
+        "8": [
+          "PAIRS_AND_REMAINDER"
+        ],
+        "16": [
+          "PAIRS_AND_REMAINDER"
+        ],
+        "18": [
+          "PAIRS_AND_REMAINDER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATERIAL_PARA_OFICINA",
+      "explanation": "Oito pares são dezesseis cartões; com a sobra, são dezessete.",
+      "hint": "Conte os pares e acrescente o cartão separado.",
+      "errorFocus": "PAIRS_AND_REMAINDER",
+      "feedback": {
+        "correct": "Boa observação: Oito pares são dezesseis cartões; com a sobra, são dezessete.",
+        "incorrect": "Oito pares são dezesseis cartões; com a sobra, são dezessete.",
+        "hint": "Conte os pares e acrescente o cartão separado.",
+        "errorFocus": "PAIRS_AND_REMAINDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-19",
+      "statement": "Uma bandeja com cubos em duas fileiras parece ter entre 10 e 20. Qual ação transforma a estimativa em contagem exata?",
+      "prompt": "Uma bandeja com cubos em duas fileiras parece ter entre 10 e 20. Qual ação transforma a estimativa em contagem exata?",
+      "options": [
+        "Repetir a estimativa mais alto",
+        "Escolher 15 sem conferir",
+        "Formar grupos visíveis e contar cada cubo uma vez, incluindo eventuais sobras.",
+        "Contar só os cubos da borda"
+      ],
+      "correctAnswer": "Formar grupos visíveis e contar cada cubo uma vez, incluindo eventuais sobras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir a estimativa mais alto": [
+          "ESTIMATE_TO_EXACT"
+        ],
+        "Escolher 15 sem conferir": [
+          "ESTIMATE_TO_EXACT"
+        ],
+        "Contar só os cubos da borda": [
+          "ESTIMATE_TO_EXACT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESTIMATIVA_DE_CUBOS",
+      "explanation": "Agrupar e conferir todos os itens fornece um total exato.",
+      "hint": "Pense no que falta para confirmar.",
+      "errorFocus": "ESTIMATE_TO_EXACT",
+      "feedback": {
+        "correct": "Boa observação: Agrupar e conferir todos os itens fornece um total exato.",
+        "incorrect": "Agrupar e conferir todos os itens fornece um total exato.",
+        "hint": "Pense no que falta para confirmar.",
+        "errorFocus": "ESTIMATE_TO_EXACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-20",
+      "statement": "Uma pessoa conta 15 peças uma a uma; outra organiza 3 grupos de 5. Qual afirmação pode ser correta?",
+      "prompt": "Uma pessoa conta 15 peças uma a uma; outra organiza 3 grupos de 5. Qual afirmação pode ser correta?",
+      "options": [
+        "Agrupar sempre muda a quantidade",
+        "Contar um a um é proibido",
+        "Três grupos de cinco têm 8 peças",
+        "As estratégias podem chegar ao mesmo total se todas as peças forem incluídas."
+      ],
+      "correctAnswer": "As estratégias podem chegar ao mesmo total se todas as peças forem incluídas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Agrupar sempre muda a quantidade": [
+          "STRATEGIES_SAME_TOTAL"
+        ],
+        "Contar um a um é proibido": [
+          "STRATEGIES_SAME_TOTAL"
+        ],
+        "Três grupos de cinco têm 8 peças": [
+          "STRATEGIES_SAME_TOTAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FORMAS_DE_CONTAR_15",
+      "explanation": "Organizações diferentes podem contar a mesma coleção sem omissões.",
+      "hint": "Confira quantas peças há em cada grupo.",
+      "errorFocus": "STRATEGIES_SAME_TOTAL",
+      "feedback": {
+        "correct": "Boa observação: Organizações diferentes podem contar a mesma coleção sem omissões.",
+        "incorrect": "Organizações diferentes podem contar a mesma coleção sem omissões.",
+        "hint": "Confira quantas peças há em cada grupo.",
+        "errorFocus": "STRATEGIES_SAME_TOTAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-21",
+      "statement": "Uma coleção tem 4 grupos completos de 4 e mais 2 peças. Quantas peças há?",
+      "prompt": "Uma coleção tem 4 grupos completos de 4 e mais 2 peças. Quantas peças há?",
+      "options": [
+        "18",
+        "16",
+        "10",
+        "20"
+      ],
+      "correctAnswer": "18",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10": [
+          "FOUR_GROUPS_PLUS_TWO"
+        ],
+        "16": [
+          "FOUR_GROUPS_PLUS_TWO"
+        ],
+        "20": [
+          "FOUR_GROUPS_PLUS_TWO"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CAIXA_COM_GRUPOS_DE_QUATRO",
+      "explanation": "Quatro grupos de quatro são dezesseis; com duas peças, totalizam dezoito.",
+      "hint": "Conte os grupos e acrescente as duas peças.",
+      "errorFocus": "FOUR_GROUPS_PLUS_TWO",
+      "feedback": {
+        "correct": "Boa observação: Quatro grupos de quatro são dezesseis; com duas peças, totalizam dezoito.",
+        "incorrect": "Quatro grupos de quatro são dezesseis; com duas peças, totalizam dezoito.",
+        "hint": "Conte os grupos e acrescente as duas peças.",
+        "errorFocus": "FOUR_GROUPS_PLUS_TWO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-22",
+      "statement": "Uma criança registra 12, mas percebe que uma peça foi movida para o grupo contado e permaneceu também no grupo por contar. O que deve fazer?",
+      "prompt": "Uma criança registra 12, mas percebe que uma peça foi movida para o grupo contado e permaneceu também no grupo por contar. O que deve fazer?",
+      "options": [
+        "Somar a peça duas vezes",
+        "Retirar a duplicação e conferir cada peça em apenas um grupo.",
+        "Apagar toda a coleção",
+        "Manter 12 porque já escreveu"
+      ],
+      "correctAnswer": "Retirar a duplicação e conferir cada peça em apenas um grupo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somar a peça duas vezes": [
+          "DUPLICATE_ITEM_CORRECTION"
+        ],
+        "Apagar toda a coleção": [
+          "DUPLICATE_ITEM_CORRECTION"
+        ],
+        "Manter 12 porque já escreveu": [
+          "DUPLICATE_ITEM_CORRECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGISTRO_DE_CONTAGEM_DUPLA",
+      "explanation": "A mesma peça não pode contribuir duas vezes para o total.",
+      "hint": "Garanta que cada objeto pertença a um único grupo.",
+      "errorFocus": "DUPLICATE_ITEM_CORRECTION",
+      "feedback": {
+        "correct": "Boa observação: A mesma peça não pode contribuir duas vezes para o total.",
+        "incorrect": "A mesma peça não pode contribuir duas vezes para o total.",
+        "hint": "Garanta que cada objeto pertença a um único grupo.",
+        "errorFocus": "DUPLICATE_ITEM_CORRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-23",
+      "statement": "Há 18 moedas de brinquedo em um desenho organizado em grupos de seis. Qual estratégia encontra o total?",
+      "prompt": "Há 18 moedas de brinquedo em um desenho organizado em grupos de seis. Qual estratégia encontra o total?",
+      "options": [
+        "Contar apenas três moedas",
+        "Dizer cerca de 10 como total exato",
+        "Contar 6, 12 e 18, um grupo por vez.",
+        "Contar cada grupo duas vezes"
+      ],
+      "correctAnswer": "Contar 6, 12 e 18, um grupo por vez.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Contar apenas três moedas": [
+          "COUNT_BY_SIX_GROUPS"
+        ],
+        "Dizer cerca de 10 como total exato": [
+          "COUNT_BY_SIX_GROUPS"
+        ],
+        "Contar cada grupo duas vezes": [
+          "COUNT_BY_SIX_GROUPS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE_STRATEGY",
+      "contextFamily": "ESTIMAR_MOEDAS_DE_BRINQUEDO",
+      "explanation": "Três grupos de seis levam a 18.",
+      "hint": "Avance pelo tamanho de cada grupo.",
+      "errorFocus": "COUNT_BY_SIX_GROUPS",
+      "feedback": {
+        "correct": "Boa observação: Três grupos de seis levam a 18.",
+        "incorrect": "Três grupos de seis levam a 18.",
+        "hint": "Avance pelo tamanho de cada grupo.",
+        "errorFocus": "COUNT_BY_SIX_GROUPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-24",
+      "statement": "Um inventário informa “aproximadamente 20 peças”; outro registro mostra quatro grupos de cinco. O que se pode afirmar?",
+      "prompt": "Um inventário informa “aproximadamente 20 peças”; outro registro mostra quatro grupos de cinco. O que se pode afirmar?",
+      "options": [
+        "Ambos são aproximações obrigatoriamente",
+        "O primeiro prova que há 20 exatas",
+        "Quatro grupos de cinco são 9",
+        "O segundo registro representa 20 peças exatas, se todos os grupos foram contados."
+      ],
+      "correctAnswer": "O segundo registro representa 20 peças exatas, se todos os grupos foram contados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ambos são aproximações obrigatoriamente": [
+          "EXACTNESS_FROM_GROUPS"
+        ],
+        "O primeiro prova que há 20 exatas": [
+          "EXACTNESS_FROM_GROUPS"
+        ],
+        "Quatro grupos de cinco são 9": [
+          "EXACTNESS_FROM_GROUPS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RELATORIO_DE_INVENTARIO",
+      "explanation": "Quatro grupos completos de cinco totalizam vinte; a palavra aproximadamente ainda indica previsão no primeiro registro.",
+      "hint": "Diferencie linguagem de estimativa e grupos contados.",
+      "errorFocus": "EXACTNESS_FROM_GROUPS",
+      "feedback": {
+        "correct": "Boa observação: Quatro grupos completos de cinco totalizam vinte; a palavra aproximadamente ainda indica previsão no primeiro registro.",
+        "incorrect": "Quatro grupos completos de cinco totalizam vinte; a palavra aproximadamente ainda indica previsão no primeiro registro.",
+        "hint": "Diferencie linguagem de estimativa e grupos contados.",
+        "errorFocus": "EXACTNESS_FROM_GROUPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-25",
+      "statement": "Uma caixa tem 7 pares de cartões. Quantos cartões há?",
+      "prompt": "Uma caixa tem 7 pares de cartões. Quantos cartões há?",
+      "options": [
+        "14",
+        "7",
+        "12",
+        "21"
+      ],
+      "correctAnswer": "14",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7": [
+          "SEVEN_PAIRS"
+        ],
+        "12": [
+          "SEVEN_PAIRS"
+        ],
+        "21": [
+          "SEVEN_PAIRS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "SETE_PARES_DE_CARTOES",
+      "explanation": "Sete pares correspondem a sete grupos de dois, totalizando quatorze.",
+      "hint": "Conte dois por par.",
+      "errorFocus": "SEVEN_PAIRS",
+      "feedback": {
+        "correct": "Boa observação: Sete pares correspondem a sete grupos de dois, totalizando quatorze.",
+        "incorrect": "Sete pares correspondem a sete grupos de dois, totalizando quatorze.",
+        "hint": "Conte dois por par.",
+        "errorFocus": "SEVEN_PAIRS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-26",
+      "statement": "Uma coleção de 9 figuras recebe uma marca para cada figura contada. Quantas marcas devem existir quando a conferência termina?",
+      "prompt": "Uma coleção de 9 figuras recebe uma marca para cada figura contada. Quantas marcas devem existir quando a conferência termina?",
+      "options": [
+        "8",
+        "9",
+        "10",
+        "18"
+      ],
+      "correctAnswer": "9",
+      "answerPosition": "B",
+      "misconceptions": {
+        "8": [
+          "ONE_MARK_PER_ITEM"
+        ],
+        "10": [
+          "ONE_MARK_PER_ITEM"
+        ],
+        "18": [
+          "ONE_MARK_PER_ITEM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MARCAS_DE_CONTAGEM",
+      "explanation": "Uma correspondência um a um cria uma marca para cada um dos nove elementos.",
+      "hint": "Associe uma marca a cada figura.",
+      "errorFocus": "ONE_MARK_PER_ITEM",
+      "feedback": {
+        "correct": "Boa observação: Uma correspondência um a um cria uma marca para cada um dos nove elementos.",
+        "incorrect": "Uma correspondência um a um cria uma marca para cada um dos nove elementos.",
+        "hint": "Associe uma marca a cada figura.",
+        "errorFocus": "ONE_MARK_PER_ITEM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-27",
+      "statement": "Há 3 grupos de 5 e 4 peças separadas. Qual é o total?",
+      "prompt": "Há 3 grupos de 5 e 4 peças separadas. Qual é o total?",
+      "options": [
+        "15",
+        "16",
+        "19",
+        "20"
+      ],
+      "correctAnswer": "19",
+      "answerPosition": "C",
+      "misconceptions": {
+        "15": [
+          "THREE_FIVES_PLUS_FOUR"
+        ],
+        "16": [
+          "THREE_FIVES_PLUS_FOUR"
+        ],
+        "20": [
+          "THREE_FIVES_PLUS_FOUR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "GRUPOS_DE_CINCO_E_SOBRA",
+      "explanation": "Três grupos de cinco totalizam quinze; somando quatro, são dezenove.",
+      "hint": "Some primeiro os grupos e depois a sobra.",
+      "errorFocus": "THREE_FIVES_PLUS_FOUR",
+      "feedback": {
+        "correct": "Boa observação: Três grupos de cinco totalizam quinze; somando quatro, são dezenove.",
+        "incorrect": "Três grupos de cinco totalizam quinze; somando quatro, são dezenove.",
+        "hint": "Some primeiro os grupos e depois a sobra.",
+        "errorFocus": "THREE_FIVES_PLUS_FOUR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-28",
+      "statement": "Uma previsão diz “cerca de 16 objetos”. O que ainda falta para afirmar o total exato?",
+      "prompt": "Uma previsão diz “cerca de 16 objetos”. O que ainda falta para afirmar o total exato?",
+      "options": [
+        "Trocar a palavra cerca por exatamente sem contar",
+        "Contar só os maiores",
+        "Escolher outro número aproximado",
+        "Contar ou conferir todos os objetos organizadamente."
+      ],
+      "correctAnswer": "Contar ou conferir todos os objetos organizadamente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Trocar a palavra cerca por exatamente sem contar": [
+          "ESTIMATE_NEEDS_VERIFICATION"
+        ],
+        "Contar só os maiores": [
+          "ESTIMATE_NEEDS_VERIFICATION"
+        ],
+        "Escolher outro número aproximado": [
+          "ESTIMATE_NEEDS_VERIFICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FRASE_CERCA_DE_DEZESSEIS",
+      "explanation": "A aproximação não substitui a conferência de cada elemento.",
+      "hint": "Pergunte como confirmar a quantidade.",
+      "errorFocus": "ESTIMATE_NEEDS_VERIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A aproximação não substitui a conferência de cada elemento.",
+        "incorrect": "A aproximação não substitui a conferência de cada elemento.",
+        "hint": "Pergunte como confirmar a quantidade.",
+        "errorFocus": "ESTIMATE_NEEDS_VERIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-29",
+      "statement": "Vinte peças podem ser organizadas em grupos de cinco. Quantos grupos completos aparecem?",
+      "prompt": "Vinte peças podem ser organizadas em grupos de cinco. Quantos grupos completos aparecem?",
+      "options": [
+        "4",
+        "5",
+        "15",
+        "25"
+      ],
+      "correctAnswer": "4",
+      "answerPosition": "A",
+      "misconceptions": {
+        "5": [
+          "TWENTY_IN_FIVES"
+        ],
+        "15": [
+          "TWENTY_IN_FIVES"
+        ],
+        "25": [
+          "TWENTY_IN_FIVES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE_STRATEGY",
+      "contextFamily": "COLECAO_DE_20_PECAS",
+      "explanation": "Quatro grupos de cinco totalizam vinte.",
+      "hint": "Conte 5, 10, 15, 20.",
+      "errorFocus": "TWENTY_IN_FIVES",
+      "feedback": {
+        "correct": "Boa observação: Quatro grupos de cinco totalizam vinte.",
+        "incorrect": "Quatro grupos de cinco totalizam vinte.",
+        "hint": "Conte 5, 10, 15, 20.",
+        "errorFocus": "TWENTY_IN_FIVES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-30",
+      "statement": "Uma coleção foi contada uma vez em pares e outra em fileiras; ambos os métodos dão 16. O que isso sugere?",
+      "prompt": "Uma coleção foi contada uma vez em pares e outra em fileiras; ambos os métodos dão 16. O que isso sugere?",
+      "options": [
+        "A coleção tem 32 elementos",
+        "As duas organizações conferem o mesmo total.",
+        "Uma estratégia precisa ser descartada",
+        "Não é possível contar grupos"
+      ],
+      "correctAnswer": "As duas organizações conferem o mesmo total.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A coleção tem 32 elementos": [
+          "INDEPENDENT_CHECK"
+        ],
+        "Uma estratégia precisa ser descartada": [
+          "INDEPENDENT_CHECK"
+        ],
+        "Não é possível contar grupos": [
+          "INDEPENDENT_CHECK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONFERENCIA_POR_DUAS_ESTRATEGIAS",
+      "explanation": "Duas organizações que incluem cada elemento e chegam ao mesmo resultado reforçam a conferência.",
+      "hint": "Observe se os métodos consideraram a coleção inteira.",
+      "errorFocus": "INDEPENDENT_CHECK",
+      "feedback": {
+        "correct": "Boa observação: Duas organizações que incluem cada elemento e chegam ao mesmo resultado reforçam a conferência.",
+        "incorrect": "Duas organizações que incluem cada elemento e chegam ao mesmo resultado reforçam a conferência.",
+        "hint": "Observe se os métodos consideraram a coleção inteira.",
+        "errorFocus": "INDEPENDENT_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-31",
+      "statement": "Há 4 pares de peças e 1 peça isolada. Qual registro está correto?",
+      "prompt": "Há 4 pares de peças e 1 peça isolada. Qual registro está correto?",
+      "options": [
+        "8 peças, ignorando a sobra",
+        "5 peças, contando pares como objetos",
+        "9 peças: 8 nos pares e 1 sobrando.",
+        "10 peças, duplicando a sobra"
+      ],
+      "correctAnswer": "9 peças: 8 nos pares e 1 sobrando.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "8 peças, ignorando a sobra": [
+          "REMAINDER_INCLUDED"
+        ],
+        "5 peças, contando pares como objetos": [
+          "REMAINDER_INCLUDED"
+        ],
+        "10 peças, duplicando a sobra": [
+          "REMAINDER_INCLUDED"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PARES_COM_UMA_SOBRA",
+      "explanation": "Quatro pares contêm oito peças; somando uma sobra, são nove.",
+      "hint": "Inclua cada elemento uma única vez.",
+      "errorFocus": "REMAINDER_INCLUDED",
+      "feedback": {
+        "correct": "Boa observação: Quatro pares contêm oito peças; somando uma sobra, são nove.",
+        "incorrect": "Quatro pares contêm oito peças; somando uma sobra, são nove.",
+        "hint": "Inclua cada elemento uma única vez.",
+        "errorFocus": "REMAINDER_INCLUDED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-32",
+      "statement": "Por que formar grupos iguais pode facilitar a contagem de uma coleção?",
+      "prompt": "Por que formar grupos iguais pode facilitar a contagem de uma coleção?",
+      "options": [
+        "Porque elimina a necessidade de contar",
+        "Porque faz os itens desaparecerem",
+        "Porque sempre torna a estimativa exata",
+        "Porque permite contar um grupo de cada vez e acompanhar o que já foi considerado."
+      ],
+      "correctAnswer": "Porque permite contar um grupo de cada vez e acompanhar o que já foi considerado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque elimina a necessidade de contar": [
+          "GROUPING_PURPOSE"
+        ],
+        "Porque faz os itens desaparecerem": [
+          "GROUPING_PURPOSE"
+        ],
+        "Porque sempre torna a estimativa exata": [
+          "GROUPING_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_AGRUPAMENTO",
+      "explanation": "Agrupar organiza a coleção e apoia a conferência; não substitui a contagem cuidadosa.",
+      "hint": "Pense em como os grupos ajudam a acompanhar.",
+      "errorFocus": "GROUPING_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Agrupar organiza a coleção e apoia a conferência; não substitui a contagem cuidadosa.",
+        "incorrect": "Agrupar organiza a coleção e apoia a conferência; não substitui a contagem cuidadosa.",
+        "hint": "Pense em como os grupos ajudam a acompanhar.",
+        "errorFocus": "GROUPING_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-33",
+      "statement": "Três pares completos contêm quantos objetos?",
+      "prompt": "Três pares completos contêm quantos objetos?",
+      "options": [
+        "6",
+        "3",
+        "5",
+        "9"
+      ],
+      "correctAnswer": "6",
+      "answerPosition": "A",
+      "misconceptions": {
+        "3": [
+          "RECALL_PAIRS"
+        ],
+        "5": [
+          "RECALL_PAIRS"
+        ],
+        "9": [
+          "RECALL_PAIRS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_TRES_PARES",
+      "explanation": "Cada par tem dois elementos: três pares totalizam seis.",
+      "hint": "Some 2 + 2 + 2.",
+      "errorFocus": "RECALL_PAIRS",
+      "feedback": {
+        "correct": "Boa observação: Cada par tem dois elementos: três pares totalizam seis.",
+        "incorrect": "Cada par tem dois elementos: três pares totalizam seis.",
+        "hint": "Some 2 + 2 + 2.",
+        "errorFocus": "RECALL_PAIRS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-34",
+      "statement": "Qual frase apresenta uma estimativa, e não um total exato conferido?",
+      "prompt": "Qual frase apresenta uma estimativa, e não um total exato conferido?",
+      "options": [
+        "“Contei 12 um a um.”",
+        "“Há aproximadamente 12.”",
+        "“Formei seis pares: 12.”",
+        "“Conferi 12 marcas.”"
+      ],
+      "correctAnswer": "“Há aproximadamente 12.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Contei 12 um a um.”": [
+          "RECALL_ESTIMATE"
+        ],
+        "“Formei seis pares: 12.”": [
+          "RECALL_ESTIMATE"
+        ],
+        "“Conferi 12 marcas.”": [
+          "RECALL_ESTIMATE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_APROXIMACAO",
+      "explanation": "“Aproximadamente” indica uma previsão próxima.",
+      "hint": "Procure a palavra que mostra aproximação.",
+      "errorFocus": "RECALL_ESTIMATE",
+      "feedback": {
+        "correct": "Boa observação: “Aproximadamente” indica uma previsão próxima.",
+        "incorrect": "“Aproximadamente” indica uma previsão próxima.",
+        "hint": "Procure a palavra que mostra aproximação.",
+        "errorFocus": "RECALL_ESTIMATE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-35",
+      "statement": "Cinco grupos de dois e uma peça sobrando formam quantas peças?",
+      "prompt": "Cinco grupos de dois e uma peça sobrando formam quantas peças?",
+      "options": [
+        "10",
+        "6",
+        "11",
+        "12"
+      ],
+      "correctAnswer": "11",
+      "answerPosition": "C",
+      "misconceptions": {
+        "6": [
+          "RECALL_REMAINDER"
+        ],
+        "10": [
+          "RECALL_REMAINDER"
+        ],
+        "12": [
+          "RECALL_REMAINDER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_SOBRA",
+      "explanation": "Cinco pares são dez; acrescentando uma peça, são onze.",
+      "hint": "Conte os dez dos pares e a sobra.",
+      "errorFocus": "RECALL_REMAINDER",
+      "feedback": {
+        "correct": "Boa observação: Cinco pares são dez; acrescentando uma peça, são onze.",
+        "incorrect": "Cinco pares são dez; acrescentando uma peça, são onze.",
+        "hint": "Conte os dez dos pares e a sobra.",
+        "errorFocus": "RECALL_REMAINDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-36",
+      "statement": "Uma coleção foi contada duas vezes e os resultados diferem. Qual passo é melhor?",
+      "prompt": "Uma coleção foi contada duas vezes e os resultados diferem. Qual passo é melhor?",
+      "options": [
+        "Escolher o número maior",
+        "Somar os dois resultados",
+        "Registrar um palpite como exato",
+        "Organizar os itens em grupos visíveis e conferir cada um uma vez."
+      ],
+      "correctAnswer": "Organizar os itens em grupos visíveis e conferir cada um uma vez.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher o número maior": [
+          "RECOUNT_WITH_ORGANIZATION"
+        ],
+        "Somar os dois resultados": [
+          "RECOUNT_WITH_ORGANIZATION"
+        ],
+        "Registrar um palpite como exato": [
+          "RECOUNT_WITH_ORGANIZATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_CONFERENCIA",
+      "explanation": "Reorganizar e verificar todos os itens ajuda a localizar omissão ou duplicação.",
+      "hint": "Escolha um procedimento que mostre cada item.",
+      "errorFocus": "RECOUNT_WITH_ORGANIZATION",
+      "feedback": {
+        "correct": "Boa observação: Reorganizar e verificar todos os itens ajuda a localizar omissão ou duplicação.",
+        "incorrect": "Reorganizar e verificar todos os itens ajuda a localizar omissão ou duplicação.",
+        "hint": "Escolha um procedimento que mostre cada item.",
+        "errorFocus": "RECOUNT_WITH_ORGANIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-37",
+      "statement": "Duas fileiras têm 5 objetos cada. Como encontrar o total?",
+      "prompt": "Duas fileiras têm 5 objetos cada. Como encontrar o total?",
+      "options": [
+        "Contar 5 e depois 10, uma fileira por vez.",
+        "Contar só uma fileira",
+        "Somar 5 + 2",
+        "Multiplicar o número de fileiras por zero"
+      ],
+      "correctAnswer": "Contar 5 e depois 10, uma fileira por vez.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Contar só uma fileira": [
+          "RECALL_EQUAL_ROWS"
+        ],
+        "Somar 5 + 2": [
+          "RECALL_EQUAL_ROWS"
+        ],
+        "Multiplicar o número de fileiras por zero": [
+          "RECALL_EQUAL_ROWS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_FILEIRAS",
+      "explanation": "Cada fileira tem cinco; duas fileiras totalizam dez.",
+      "hint": "Use a quantidade de cada fileira.",
+      "errorFocus": "RECALL_EQUAL_ROWS",
+      "feedback": {
+        "correct": "Boa observação: Cada fileira tem cinco; duas fileiras totalizam dez.",
+        "incorrect": "Cada fileira tem cinco; duas fileiras totalizam dez.",
+        "hint": "Use a quantidade de cada fileira.",
+        "errorFocus": "RECALL_EQUAL_ROWS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-38",
+      "statement": "Um registro mostra grupos de cinco e dois itens fora dos grupos. Como contabilizar?",
+      "prompt": "Um registro mostra grupos de cinco e dois itens fora dos grupos. Como contabilizar?",
+      "options": [
+        "Ignorar os itens fora dos grupos",
+        "Contar os grupos completos e adicionar os dois itens.",
+        "Contar os itens fora duas vezes",
+        "Tratar cada grupo como um objeto"
+      ],
+      "correctAnswer": "Contar os grupos completos e adicionar os dois itens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ignorar os itens fora dos grupos": [
+          "RECALL_GROUPS_AND_REMAINDER"
+        ],
+        "Contar os itens fora duas vezes": [
+          "RECALL_GROUPS_AND_REMAINDER"
+        ],
+        "Tratar cada grupo como um objeto": [
+          "RECALL_GROUPS_AND_REMAINDER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_REGISTRO",
+      "explanation": "Grupos e sobras precisam entrar no total uma vez cada.",
+      "hint": "Conte grupos e elementos restantes.",
+      "errorFocus": "RECALL_GROUPS_AND_REMAINDER",
+      "feedback": {
+        "correct": "Boa observação: Grupos e sobras precisam entrar no total uma vez cada.",
+        "incorrect": "Grupos e sobras precisam entrar no total uma vez cada.",
+        "hint": "Conte grupos e elementos restantes.",
+        "errorFocus": "RECALL_GROUPS_AND_REMAINDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-39",
+      "statement": "Uma nova coleção tem 14 peças. Qual método pode verificar o total?",
+      "prompt": "Uma nova coleção tem 14 peças. Qual método pode verificar o total?",
+      "options": [
+        "Estimar e registrar como exato",
+        "Olhar apenas as peças de cima",
+        "Parear as peças ou organizá-las em grupos e conferir todas.",
+        "Contar algumas e multiplicar por um número escolhido"
+      ],
+      "correctAnswer": "Parear as peças ou organizá-las em grupos e conferir todas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Estimar e registrar como exato": [
+          "TRANSFER_COUNTING_STRATEGY"
+        ],
+        "Olhar apenas as peças de cima": [
+          "TRANSFER_COUNTING_STRATEGY"
+        ],
+        "Contar algumas e multiplicar por um número escolhido": [
+          "TRANSFER_COUNTING_STRATEGY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "NOVA_COLECAO_DE_14",
+      "explanation": "Estratégias organizadas podem apoiar a contagem exata se incluírem todos os itens.",
+      "hint": "Escolha uma forma de acompanhar cada peça.",
+      "errorFocus": "TRANSFER_COUNTING_STRATEGY",
+      "feedback": {
+        "correct": "Boa observação: Estratégias organizadas podem apoiar a contagem exata se incluírem todos os itens.",
+        "incorrect": "Estratégias organizadas podem apoiar a contagem exata se incluírem todos os itens.",
+        "hint": "Escolha uma forma de acompanhar cada peça.",
+        "errorFocus": "TRANSFER_COUNTING_STRATEGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma02-exact-and-approximate-counting-40",
+      "statement": "Qual frase diferencia corretamente estimar e contar exatamente?",
+      "prompt": "Qual frase diferencia corretamente estimar e contar exatamente?",
+      "options": [
+        "Estimar sempre é mais exato",
+        "Contagem não precisa considerar cada item",
+        "As duas palavras significam o mesmo",
+        "Estimar aproxima; contar e conferir determina o total da coleção."
+      ],
+      "correctAnswer": "Estimar aproxima; contar e conferir determina o total da coleção.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Estimar sempre é mais exato": [
+          "SKILL_SUMMARY"
+        ],
+        "Contagem não precisa considerar cada item": [
+          "SKILL_SUMMARY"
+        ],
+        "As duas palavras significam o mesmo": [
+          "SKILL_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "OBJETIVO_DA_CONTAGEM",
+      "explanation": "Estimativa é aproximação; contagem exata exige considerar os elementos da coleção.",
+      "hint": "Lembre de “perto de” e “total conferido”.",
+      "errorFocus": "SKILL_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Estimativa é aproximação; contagem exata exige considerar os elementos da coleção.",
+        "incorrect": "Estimativa é aproximação; contagem exata exige considerar os elementos da coleção.",
+        "hint": "Lembre de “perto de” e “total conferido”.",
+        "errorFocus": "SKILL_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, cartões com pontos, molduras de dez e contraste visual; reduzir ruído visual e apresentar uma coleção por vez.",
+          "Permitir tocar, apontar, mover cartões, usar contadores digitais ou explicar oralmente; não exigir rapidez nem coordenação motora fina.",
+          "Descrever coleções verbalmente e oferecer materiais táteis ou marcas de posição para estudantes que não usam a visão como principal acesso."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

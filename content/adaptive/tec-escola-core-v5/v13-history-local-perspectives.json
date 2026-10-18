@@ -1,0 +1,1419 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-local-perspectives",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "perspectivas_de_grupos_e_culturas_na_historia_local",
+  "canonicalSkillCode": "AUTHORING_EF03HI03_HISTORY_PERSPECTIVES",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI03",
+    "sourceVerificationRecord": "BNCC_EF03HI03_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_COMPARAR_SOCIETY_CULTURE",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre pontos de vista na história local para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "lesson": {
+    "title": "Pontos de vista na história local",
+    "objective": "Identificar e comparar pontos de vista sobre acontecimentos locais, relacionando cada perspectiva ao grupo, às condições sociais e à fonte que a sustenta.",
+    "summary": "Um mesmo acontecimento pode ser narrado de modos diferentes. Comparar perspectivas exige reconhecer quem fala, o que foi vivido, quais condições estão em jogo e quais vozes ainda faltam.",
+    "explanation": "## O que investigar\nIdentificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma associação chama a abertura de uma praça de conquista, enquanto uma comerciante relata dificuldade temporária de acesso. Compare o que cada fonte destaca, seu lugar de fala e o recorte; não transforme nenhuma experiência em opinião de todo um grupo.",
+    "commonMistake": "Confundir ponto de vista com verdade absoluta, tratar um grupo como homogêneo ou apagar culturas africanas, indígenas e de migrantes da história local.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Identificar autoria e tema em um relato.",
+      "Separar informação observável de opinião."
+    ],
+    "keyConcepts": [
+      "ponto de vista",
+      "perspectiva",
+      "grupo social",
+      "grupo cultural",
+      "condição social",
+      "experiência",
+      "generalização"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-local-perspectives-001",
+          "v13-history-local-perspectives-002",
+          "v13-history-local-perspectives-003",
+          "v13-history-local-perspectives-004",
+          "v13-history-local-perspectives-005"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-local-perspectives-006",
+          "v13-history-local-perspectives-007",
+          "v13-history-local-perspectives-008",
+          "v13-history-local-perspectives-009",
+          "v13-history-local-perspectives-010",
+          "v13-history-local-perspectives-011",
+          "v13-history-local-perspectives-012",
+          "v13-history-local-perspectives-013",
+          "v13-history-local-perspectives-014",
+          "v13-history-local-perspectives-015",
+          "v13-history-local-perspectives-016",
+          "v13-history-local-perspectives-017",
+          "v13-history-local-perspectives-018",
+          "v13-history-local-perspectives-019",
+          "v13-history-local-perspectives-020"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-local-perspectives-021",
+          "v13-history-local-perspectives-022",
+          "v13-history-local-perspectives-023",
+          "v13-history-local-perspectives-024",
+          "v13-history-local-perspectives-025",
+          "v13-history-local-perspectives-026",
+          "v13-history-local-perspectives-027",
+          "v13-history-local-perspectives-028",
+          "v13-history-local-perspectives-029",
+          "v13-history-local-perspectives-030",
+          "v13-history-local-perspectives-031",
+          "v13-history-local-perspectives-032"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-local-perspectives-033",
+          "v13-history-local-perspectives-034",
+          "v13-history-local-perspectives-035",
+          "v13-history-local-perspectives-036",
+          "v13-history-local-perspectives-037",
+          "v13-history-local-perspectives-038",
+          "v13-history-local-perspectives-039",
+          "v13-history-local-perspectives-040"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-local-perspectives-041",
+          "v13-history-local-perspectives-042",
+          "v13-history-local-perspectives-043",
+          "v13-history-local-perspectives-044",
+          "v13-history-local-perspectives-045",
+          "v13-history-local-perspectives-046",
+          "v13-history-local-perspectives-047",
+          "v13-history-local-perspectives-048",
+          "v13-history-local-perspectives-049",
+          "v13-history-local-perspectives-050"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Confundir perspectiva com verdade absoluta.",
+        "action": "Atribua cada afirmação à sua fonte e identifique qual evidência poderia confirmá-la ou limitá-la."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Tratar um grupo social como se todos compartilhassem a mesma experiência.",
+        "action": "Reescreva a síntese com referência às fontes específicas e registre quem não está representado."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Interpretar diferenças de relato como contradição automática.",
+        "action": "Compare data, lugar e aspecto descrito antes de decidir se os relatos divergem ou tratam de recortes diferentes."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-local-perspectives-local-inquiry",
+        "title": "Comparar perspectivas sobre um acontecimento",
+        "objective": "Identificar e comparar pontos de vista sobre acontecimentos locais, relacionando cada perspectiva ao grupo, às condições sociais e à fonte que a sustenta.",
+        "context": "Dois relatos didáticos ou públicos com perspectivas distintas sobre o mesmo acontecimento local.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Leia os relatos e identifique autoria, posição, público e informação que cada um destaca. Compare um aspecto comum e marque convergências, divergências e elementos ausentes. Escreva uma síntese que atribua cada ponto de vista à sua fonte e reconheça diferenças internas.",
+        "evidence": "Quadro de perspectivas com atribuição das afirmações, comparação do mesmo aspecto e síntese sem generalização.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Atribuição de perspectiva",
+            "emerging": "Apresenta opinião como fato sem indicar autoria.",
+            "developing": "Identifica uma perspectiva com apoio.",
+            "proficient": "Relaciona cada perspectiva à fonte e ao contexto disponível."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Declara uma fonte correta sem comparar.",
+            "developing": "Aponta semelhança ou diferença com apoio.",
+            "proficient": "Compara o mesmo aspecto e distingue divergência de contradição."
+          },
+          {
+            "criterion": "Pluralidade",
+            "emerging": "Trata um grupo como homogêneo.",
+            "developing": "Reconhece uma diferença após mediação.",
+            "proficient": "Limita a conclusão e reconhece que uma fonte não representa todas as pessoas."
+          }
+        ],
+        "steps": [
+          "Leia os relatos e identifique autoria, posição, público e informação que cada um destaca.",
+          "Compare um aspecto comum e marque convergências, divergências e elementos ausentes.",
+          "Escreva uma síntese que atribua cada ponto de vista à sua fonte e reconheça diferenças internas."
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI03",
+        "descriptor": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar relatos em formatos equivalentes, com autoria claramente identificada e linguagem acessível.",
+      "Permitir organizador gráfico, resposta oral ou escrita e tempo para releitura; não solicitar que estudantes revelem sua posição pessoal."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-local-perspectives-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SAME-EVENT_01",
+      "statement": "Uma associação de moradores chama a abertura de uma praça de conquista; uma comerciante relata que a obra dificultou as entregas. Como comparar os relatos?",
+      "options": [
+        "Relacionar cada avaliação à experiência e à posição de quem fala, reconhecendo que tratam de efeitos diferentes do mesmo evento.",
+        "Escolher o relato mais positivo como verdadeiro para todos.",
+        "Concluir que pessoas diferentes não podem falar do mesmo evento.",
+        "Somar as opiniões como se formassem uma única voz."
+      ],
+      "correctAnswer": "Relacionar cada avaliação à experiência e à posição de quem fala, reconhecendo que tratam de efeitos diferentes do mesmo evento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais positivo como verdadeiro para todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SAME-EVENT_02",
+      "statement": "Uma associação de moradores chama a abertura de uma praça de conquista; uma comerciante relata que a obra dificultou as entregas. Que critério deve orientar a análise?",
+      "options": [
+        "Escolher o relato mais positivo como verdadeiro para todos.",
+        "Considere Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+        "Concluir que pessoas diferentes não podem falar do mesmo evento.",
+        "Somar as opiniões como se formassem uma única voz."
+      ],
+      "correctAnswer": "Considere Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais positivo como verdadeiro para todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SAME-EVENT_03",
+      "statement": "Uma associação de moradores chama a abertura de uma praça de conquista; uma comerciante relata que a obra dificultou as entregas. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher o relato mais positivo como verdadeiro para todos.",
+        "Concluir que pessoas diferentes não podem falar do mesmo evento.",
+        "Compare opiniões sobre a reforma de uma rua.",
+        "Somar as opiniões como se formassem uma única voz."
+      ],
+      "correctAnswer": "Compare opiniões sobre a reforma de uma rua.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais positivo como verdadeiro para todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SAME-EVENT_04",
+      "statement": "Uma associação de moradores chama a abertura de uma praça de conquista; uma comerciante relata que a obra dificultou as entregas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Escolher o relato mais positivo como verdadeiro para todos.",
+        "Concluir que pessoas diferentes não podem falar do mesmo evento.",
+        "Somar as opiniões como se formassem uma única voz.",
+        "Evite dizer que um relato invalida automaticamente o outro."
+      ],
+      "correctAnswer": "Evite dizer que um relato invalida automaticamente o outro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais positivo como verdadeiro para todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SAME-EVENT_05",
+      "statement": "Uma associação de moradores chama a abertura de uma praça de conquista; uma comerciante relata que a obra dificultou as entregas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira autoridade de fala, finalidade da obra, efeitos descritos e período.",
+        "Escolher o relato mais positivo como verdadeiro para todos.",
+        "Concluir que pessoas diferentes não podem falar do mesmo evento.",
+        "Somar as opiniões como se formassem uma única voz."
+      ],
+      "correctAnswer": "Confira autoridade de fala, finalidade da obra, efeitos descritos e período.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista são situados: a comparação observa foco, experiência e evidência antes de julgar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais positivo como verdadeiro para todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_FACT-OPINION_01",
+      "statement": "Um texto registra que a escola foi construída em 1985 e afirma que ela é o melhor prédio do bairro. Que diferença deve ser identificada?",
+      "options": [
+        "Dizer que nenhum trecho pode ser conferido.",
+        "O ano da construção é uma informação verificável no registro; “melhor” expressa uma avaliação situada.",
+        "Transformar “melhor” em uma medida objetiva sem critério.",
+        "Concluir que a pessoa não conhece a escola."
+      ],
+      "correctAnswer": "O ano da construção é uma informação verificável no registro; “melhor” expressa uma avaliação situada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que nenhum trecho pode ser conferido.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_FACT-OPINION_02",
+      "statement": "Um texto registra que a escola foi construída em 1985 e afirma que ela é o melhor prédio do bairro. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que nenhum trecho pode ser conferido.",
+        "Transformar “melhor” em uma medida objetiva sem critério.",
+        "Considere Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+        "Concluir que a pessoa não conhece a escola."
+      ],
+      "correctAnswer": "Considere Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que nenhum trecho pode ser conferido.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_FACT-OPINION_03",
+      "statement": "Um texto registra que a escola foi construída em 1985 e afirma que ela é o melhor prédio do bairro. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que nenhum trecho pode ser conferido.",
+        "Transformar “melhor” em uma medida objetiva sem critério.",
+        "Concluir que a pessoa não conhece a escola.",
+        "Aplique a distinção a um relato sobre um parque."
+      ],
+      "correctAnswer": "Aplique a distinção a um relato sobre um parque.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que nenhum trecho pode ser conferido.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_FACT-OPINION_04",
+      "statement": "Um texto registra que a escola foi construída em 1985 e afirma que ela é o melhor prédio do bairro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite tratar toda avaliação como fato apenas porque aparece escrita.",
+        "Dizer que nenhum trecho pode ser conferido.",
+        "Transformar “melhor” em uma medida objetiva sem critério.",
+        "Concluir que a pessoa não conhece a escola."
+      ],
+      "correctAnswer": "Evite tratar toda avaliação como fato apenas porque aparece escrita.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que nenhum trecho pode ser conferido.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_FACT-OPINION_05",
+      "statement": "Um texto registra que a escola foi construída em 1985 e afirma que ela é o melhor prédio do bairro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que nenhum trecho pode ser conferido.",
+        "Confira data, verbo ou adjetivo avaliativo e autoria do texto.",
+        "Transformar “melhor” em uma medida objetiva sem critério.",
+        "Concluir que a pessoa não conhece a escola."
+      ],
+      "correctAnswer": "Confira data, verbo ou adjetivo avaliativo e autoria do texto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar perspectivas exige diferenciar dados, interpretações e avaliações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que nenhum trecho pode ser conferido.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MIGRANT_01",
+      "statement": "Uma família migrante descreve a festa que organiza no bairro, enquanto um calendário municipal apresenta outras celebrações. O que a comparação pode revelar?",
+      "options": [
+        "Que apenas a celebração do calendário é cultural.",
+        "Que famílias migrantes têm todas as mesmas práticas.",
+        "Que diferentes grupos participam da vida cultural do bairro e podem valorizar celebrações distintas.",
+        "Que duas celebrações diferentes não podem coexistir."
+      ],
+      "correctAnswer": "Que diferentes grupos participam da vida cultural do bairro e podem valorizar celebrações distintas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que apenas a celebração do calendário é cultural.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MIGRANT_02",
+      "statement": "Uma família migrante descreve a festa que organiza no bairro, enquanto um calendário municipal apresenta outras celebrações. Que critério deve orientar a análise?",
+      "options": [
+        "Que apenas a celebração do calendário é cultural.",
+        "Que famílias migrantes têm todas as mesmas práticas.",
+        "Que duas celebrações diferentes não podem coexistir.",
+        "Considere A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes."
+      ],
+      "correctAnswer": "Considere A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que apenas a celebração do calendário é cultural.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MIGRANT_03",
+      "statement": "Uma família migrante descreve a festa que organiza no bairro, enquanto um calendário municipal apresenta outras celebrações. Como transferir esse raciocínio?",
+      "options": [
+        "Compare práticas de diferentes famílias sem coletar dados pessoais desnecessários.",
+        "Que apenas a celebração do calendário é cultural.",
+        "Que famílias migrantes têm todas as mesmas práticas.",
+        "Que duas celebrações diferentes não podem coexistir."
+      ],
+      "correctAnswer": "Compare práticas de diferentes famílias sem coletar dados pessoais desnecessários.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que apenas a celebração do calendário é cultural.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MIGRANT_04",
+      "statement": "Uma família migrante descreve a festa que organiza no bairro, enquanto um calendário municipal apresenta outras celebrações. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que apenas a celebração do calendário é cultural.",
+        "Evite generalizar a prática da família para todas as pessoas migrantes.",
+        "Que famílias migrantes têm todas as mesmas práticas.",
+        "Que duas celebrações diferentes não podem coexistir."
+      ],
+      "correctAnswer": "Evite generalizar a prática da família para todas as pessoas migrantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que apenas a celebração do calendário é cultural.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MIGRANT_05",
+      "statement": "Uma família migrante descreve a festa que organiza no bairro, enquanto um calendário municipal apresenta outras celebrações. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Que apenas a celebração do calendário é cultural.",
+        "Que famílias migrantes têm todas as mesmas práticas.",
+        "Confira quem produziu o relato, prática descrita e alcance do calendário.",
+        "Que duas celebrações diferentes não podem coexistir."
+      ],
+      "correctAnswer": "Confira quem produziu o relato, prática descrita e alcance do calendário.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A presença de uma prática cultural deve ser reconhecida sem transformar uma família em representante de todos os migrantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que apenas a celebração do calendário é cultural.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INDIGENOUS_01",
+      "statement": "Um texto escolar apresenta um nome indígena do rio, e uma entrevista de uma liderança explica seu significado para a comunidade. Como tratar as fontes?",
+      "options": [
+        "Ignorar a entrevista porque ela não é um documento oficial.",
+        "Dizer que o nome tem apenas valor turístico.",
+        "Escolher uma tradução sem consultar o contexto cultural.",
+        "Relacionar o nome ao contexto e à explicação da liderança, reconhecendo a voz indígena como parte da história do lugar."
+      ],
+      "correctAnswer": "Relacionar o nome ao contexto e à explicação da liderança, reconhecendo a voz indígena como parte da história do lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ignorar a entrevista porque ela não é um documento oficial.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INDIGENOUS_02",
+      "statement": "Um texto escolar apresenta um nome indígena do rio, e uma entrevista de uma liderança explica seu significado para a comunidade. Que critério deve orientar a análise?",
+      "options": [
+        "Considere A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+        "Ignorar a entrevista porque ela não é um documento oficial.",
+        "Dizer que o nome tem apenas valor turístico.",
+        "Escolher uma tradução sem consultar o contexto cultural."
+      ],
+      "correctAnswer": "Considere A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ignorar a entrevista porque ela não é um documento oficial.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INDIGENOUS_03",
+      "statement": "Um texto escolar apresenta um nome indígena do rio, e uma entrevista de uma liderança explica seu significado para a comunidade. Como transferir esse raciocínio?",
+      "options": [
+        "Ignorar a entrevista porque ela não é um documento oficial.",
+        "Aplique o cuidado a um topônimo ou prática cultural de outra comunidade.",
+        "Dizer que o nome tem apenas valor turístico.",
+        "Escolher uma tradução sem consultar o contexto cultural."
+      ],
+      "correctAnswer": "Aplique o cuidado a um topônimo ou prática cultural de outra comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ignorar a entrevista porque ela não é um documento oficial.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INDIGENOUS_04",
+      "statement": "Um texto escolar apresenta um nome indígena do rio, e uma entrevista de uma liderança explica seu significado para a comunidade. Qual conclusão deve ser evitada?",
+      "options": [
+        "Ignorar a entrevista porque ela não é um documento oficial.",
+        "Dizer que o nome tem apenas valor turístico.",
+        "Evite usar uma fala isolada para descrever todos os povos indígenas.",
+        "Escolher uma tradução sem consultar o contexto cultural."
+      ],
+      "correctAnswer": "Evite usar uma fala isolada para descrever todos os povos indígenas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ignorar a entrevista porque ela não é um documento oficial.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INDIGENOUS_05",
+      "statement": "Um texto escolar apresenta um nome indígena do rio, e uma entrevista de uma liderança explica seu significado para a comunidade. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Ignorar a entrevista porque ela não é um documento oficial.",
+        "Dizer que o nome tem apenas valor turístico.",
+        "Escolher uma tradução sem consultar o contexto cultural.",
+        "Confira nome do rio, autoria, contexto da entrevista e significado explicado."
+      ],
+      "correctAnswer": "Confira nome do rio, autoria, contexto da entrevista e significado explicado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação deve preservar a autoria e o significado cultural, evitando substituir a explicação da comunidade por uma generalização externa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Ignorar a entrevista porque ela não é um documento oficial.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_AFRICAN_01",
+      "statement": "Um museu local apresenta uma exposição sobre a contribuição de pessoas negras para o trabalho e a cultura do município. Que comparação é adequada?",
+      "options": [
+        "Comparar o recorte do museu com outras fontes, mantendo visíveis as contribuições e as condições históricas mencionadas.",
+        "Excluir a exposição porque ela trata de um grupo específico.",
+        "Dizer que uma contribuição cultural prova igualdade em todas as épocas.",
+        "Tratar a exposição como descrição completa da cidade."
+      ],
+      "correctAnswer": "Comparar o recorte do museu com outras fontes, mantendo visíveis as contribuições e as condições históricas mencionadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir a exposição porque ela trata de um grupo específico.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_AFRICAN_02",
+      "statement": "Um museu local apresenta uma exposição sobre a contribuição de pessoas negras para o trabalho e a cultura do município. Que critério deve orientar a análise?",
+      "options": [
+        "Excluir a exposição porque ela trata de um grupo específico.",
+        "Considere A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+        "Dizer que uma contribuição cultural prova igualdade em todas as épocas.",
+        "Tratar a exposição como descrição completa da cidade."
+      ],
+      "correctAnswer": "Considere A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir a exposição porque ela trata de um grupo específico.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_AFRICAN_03",
+      "statement": "Um museu local apresenta uma exposição sobre a contribuição de pessoas negras para o trabalho e a cultura do município. Como transferir esse raciocínio?",
+      "options": [
+        "Excluir a exposição porque ela trata de um grupo específico.",
+        "Dizer que uma contribuição cultural prova igualdade em todas as épocas.",
+        "Investigue outra contribuição cultural sem usar estereótipos.",
+        "Tratar a exposição como descrição completa da cidade."
+      ],
+      "correctAnswer": "Investigue outra contribuição cultural sem usar estereótipos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir a exposição porque ela trata de um grupo específico.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_AFRICAN_04",
+      "statement": "Um museu local apresenta uma exposição sobre a contribuição de pessoas negras para o trabalho e a cultura do município. Qual conclusão deve ser evitada?",
+      "options": [
+        "Excluir a exposição porque ela trata de um grupo específico.",
+        "Dizer que uma contribuição cultural prova igualdade em todas as épocas.",
+        "Tratar a exposição como descrição completa da cidade.",
+        "Evite resumir toda a experiência negra do município à exposição."
+      ],
+      "correctAnswer": "Evite resumir toda a experiência negra do município à exposição.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir a exposição porque ela trata de um grupo específico.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_AFRICAN_05",
+      "statement": "Um museu local apresenta uma exposição sobre a contribuição de pessoas negras para o trabalho e a cultura do município. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira objetos, legendas, autoria, período e grupos representados.",
+        "Excluir a exposição porque ela trata de um grupo específico.",
+        "Dizer que uma contribuição cultural prova igualdade em todas as épocas.",
+        "Tratar a exposição como descrição completa da cidade."
+      ],
+      "correctAnswer": "Confira objetos, legendas, autoria, período e grupos representados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A história local deve incluir contribuições afro-brasileiras sem reduzir pessoas negras a um único papel ou período.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Excluir a exposição porque ela trata de um grupo específico.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_CONDITIONS_01",
+      "statement": "Moradores de uma região sem transporte regular relatam dificuldades diferentes das de moradores próximos ao centro. O que a comparação deve considerar?",
+      "options": [
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.",
+        "As condições sociais e espaciais que influenciam as experiências de cada grupo.",
+        "Tratar a dificuldade como escolha pessoal sem fonte.",
+        "Concluir que uma região não faz parte da história local."
+      ],
+      "correctAnswer": "As condições sociais e espaciais que influenciam as experiências de cada grupo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_CONDITIONS_02",
+      "statement": "Moradores de uma região sem transporte regular relatam dificuldades diferentes das de moradores próximos ao centro. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.",
+        "Tratar a dificuldade como escolha pessoal sem fonte.",
+        "Considere Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+        "Concluir que uma região não faz parte da história local."
+      ],
+      "correctAnswer": "Considere Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_CONDITIONS_03",
+      "statement": "Moradores de uma região sem transporte regular relatam dificuldades diferentes das de moradores próximos ao centro. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.",
+        "Tratar a dificuldade como escolha pessoal sem fonte.",
+        "Concluir que uma região não faz parte da história local.",
+        "Compare experiências de acesso a uma biblioteca ou posto de saúde."
+      ],
+      "correctAnswer": "Compare experiências de acesso a uma biblioteca ou posto de saúde.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_CONDITIONS_04",
+      "statement": "Moradores de uma região sem transporte regular relatam dificuldades diferentes das de moradores próximos ao centro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite culpar o grupo por uma dificuldade produzida por condições desiguais.",
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.",
+        "Tratar a dificuldade como escolha pessoal sem fonte.",
+        "Concluir que uma região não faz parte da história local."
+      ],
+      "correctAnswer": "Evite culpar o grupo por uma dificuldade produzida por condições desiguais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_CONDITIONS_05",
+      "statement": "Moradores de uma região sem transporte regular relatam dificuldades diferentes das de moradores próximos ao centro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.",
+        "Confira localização, transporte, horários e relatos de cada grupo.",
+        "Tratar a dificuldade como escolha pessoal sem fonte.",
+        "Concluir que uma região não faz parte da história local."
+      ],
+      "correctAnswer": "Confira localização, transporte, horários e relatos de cada grupo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Pontos de vista não se explicam apenas por opinião individual; condições de acesso, trabalho e moradia também importam.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que todos têm as mesmas condições porque moram no mesmo município.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MISSING_01",
+      "statement": "Duas reportagens citam autoridades sobre a construção de um terminal, mas não apresentam passageiros nem trabalhadores. Que limite deve ser apontado?",
+      "options": [
+        "Concluir que as autoridades representam todos.",
+        "Inventar depoimentos para preencher o silêncio.",
+        "As reportagens mostram a perspectiva das autoridades e deixam ausentes outras experiências que precisam ser investigadas.",
+        "Descartar as reportagens sem analisar o que elas registram."
+      ],
+      "correctAnswer": "As reportagens mostram a perspectiva das autoridades e deixam ausentes outras experiências que precisam ser investigadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que as autoridades representam todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MISSING_02",
+      "statement": "Duas reportagens citam autoridades sobre a construção de um terminal, mas não apresentam passageiros nem trabalhadores. Que critério deve orientar a análise?",
+      "options": [
+        "Concluir que as autoridades representam todos.",
+        "Inventar depoimentos para preencher o silêncio.",
+        "Descartar as reportagens sem analisar o que elas registram.",
+        "Considere Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou."
+      ],
+      "correctAnswer": "Considere Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que as autoridades representam todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MISSING_03",
+      "statement": "Duas reportagens citam autoridades sobre a construção de um terminal, mas não apresentam passageiros nem trabalhadores. Como transferir esse raciocínio?",
+      "options": [
+        "Procure vozes ausentes em um relato sobre uma obra pública.",
+        "Concluir que as autoridades representam todos.",
+        "Inventar depoimentos para preencher o silêncio.",
+        "Descartar as reportagens sem analisar o que elas registram."
+      ],
+      "correctAnswer": "Procure vozes ausentes em um relato sobre uma obra pública.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que as autoridades representam todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MISSING_04",
+      "statement": "Duas reportagens citam autoridades sobre a construção de um terminal, mas não apresentam passageiros nem trabalhadores. Qual conclusão deve ser evitada?",
+      "options": [
+        "Concluir que as autoridades representam todos.",
+        "Evite afirmar que passageiros e trabalhadores concordaram com a obra.",
+        "Inventar depoimentos para preencher o silêncio.",
+        "Descartar as reportagens sem analisar o que elas registram."
+      ],
+      "correctAnswer": "Evite afirmar que passageiros e trabalhadores concordaram com a obra.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que as autoridades representam todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_MISSING_05",
+      "statement": "Duas reportagens citam autoridades sobre a construção de um terminal, mas não apresentam passageiros nem trabalhadores. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Concluir que as autoridades representam todos.",
+        "Inventar depoimentos para preencher o silêncio.",
+        "Confira pessoas citadas, finalidade das reportagens e grupos não ouvidos.",
+        "Descartar as reportagens sem analisar o que elas registram."
+      ],
+      "correctAnswer": "Confira pessoas citadas, finalidade das reportagens e grupos não ouvidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência no conjunto de fontes é uma lacuna, não prova de que o grupo ausente não participou.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que as autoridades representam todos.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INTERNAL-DIVERSITY_01",
+      "statement": "Duas pessoas da mesma comunidade descrevem de forma diferente o uso de uma praça em dias de festa. Como interpretar a diferença?",
+      "options": [
+        "Escolher o relato mais detalhado como voz oficial do grupo.",
+        "Concluir que o grupo não existe porque há divergência.",
+        "Apagar a diferença para produzir uma narrativa uniforme.",
+        "Como experiências situadas dentro de um mesmo grupo, que podem ser comparadas sem presumir uma voz única."
+      ],
+      "correctAnswer": "Como experiências situadas dentro de um mesmo grupo, que podem ser comparadas sem presumir uma voz única.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais detalhado como voz oficial do grupo.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INTERNAL-DIVERSITY_02",
+      "statement": "Duas pessoas da mesma comunidade descrevem de forma diferente o uso de uma praça em dias de festa. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+        "Escolher o relato mais detalhado como voz oficial do grupo.",
+        "Concluir que o grupo não existe porque há divergência.",
+        "Apagar a diferença para produzir uma narrativa uniforme."
+      ],
+      "correctAnswer": "Considere Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais detalhado como voz oficial do grupo.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INTERNAL-DIVERSITY_03",
+      "statement": "Duas pessoas da mesma comunidade descrevem de forma diferente o uso de uma praça em dias de festa. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher o relato mais detalhado como voz oficial do grupo.",
+        "Aplique o cuidado a relatos de uma turma ou associação.",
+        "Concluir que o grupo não existe porque há divergência.",
+        "Apagar a diferença para produzir uma narrativa uniforme."
+      ],
+      "correctAnswer": "Aplique o cuidado a relatos de uma turma ou associação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais detalhado como voz oficial do grupo.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INTERNAL-DIVERSITY_04",
+      "statement": "Duas pessoas da mesma comunidade descrevem de forma diferente o uso de uma praça em dias de festa. Qual conclusão deve ser evitada?",
+      "options": [
+        "Escolher o relato mais detalhado como voz oficial do grupo.",
+        "Concluir que o grupo não existe porque há divergência.",
+        "Evite dizer que uma pessoa representa toda a comunidade.",
+        "Apagar a diferença para produzir uma narrativa uniforme."
+      ],
+      "correctAnswer": "Evite dizer que uma pessoa representa toda a comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais detalhado como voz oficial do grupo.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_INTERNAL-DIVERSITY_05",
+      "statement": "Duas pessoas da mesma comunidade descrevem de forma diferente o uso de uma praça em dias de festa. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escolher o relato mais detalhado como voz oficial do grupo.",
+        "Concluir que o grupo não existe porque há divergência.",
+        "Apagar a diferença para produzir uma narrativa uniforme.",
+        "Confira identidade e posição de cada pessoa, situação observada e período."
+      ],
+      "correctAnswer": "Confira identidade e posição de cada pessoa, situação observada e período.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nenhum grupo é totalmente homogêneo; diferenças internas também são parte da análise histórica.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher o relato mais detalhado como voz oficial do grupo.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_RESPECT_01",
+      "statement": "Uma entrevista usa uma palavra que a própria comunidade prefere para se identificar, enquanto um relatório antigo usa outro termo. Que decisão melhora a comparação?",
+      "options": [
+        "Preservar a autodenominação da comunidade, contextualizar o termo antigo e evitar linguagem desrespeitosa.",
+        "Repetir sempre o termo mais antigo como se fosse neutro.",
+        "Apagar a entrevista para evitar a diferença.",
+        "Escolher o termo mais curto sem considerar significado."
+      ],
+      "correctAnswer": "Preservar a autodenominação da comunidade, contextualizar o termo antigo e evitar linguagem desrespeitosa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Repetir sempre o termo mais antigo como se fosse neutro.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_RESPECT_02",
+      "statement": "Uma entrevista usa uma palavra que a própria comunidade prefere para se identificar, enquanto um relatório antigo usa outro termo. Que critério deve orientar a análise?",
+      "options": [
+        "Repetir sempre o termo mais antigo como se fosse neutro.",
+        "Considere Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+        "Apagar a entrevista para evitar a diferença.",
+        "Escolher o termo mais curto sem considerar significado."
+      ],
+      "correctAnswer": "Considere Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Repetir sempre o termo mais antigo como se fosse neutro.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_RESPECT_03",
+      "statement": "Uma entrevista usa uma palavra que a própria comunidade prefere para se identificar, enquanto um relatório antigo usa outro termo. Como transferir esse raciocínio?",
+      "options": [
+        "Repetir sempre o termo mais antigo como se fosse neutro.",
+        "Apagar a entrevista para evitar a diferença.",
+        "Revise um texto escolar para respeitar nomes e formas de identificação.",
+        "Escolher o termo mais curto sem considerar significado."
+      ],
+      "correctAnswer": "Revise um texto escolar para respeitar nomes e formas de identificação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Repetir sempre o termo mais antigo como se fosse neutro.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_RESPECT_04",
+      "statement": "Uma entrevista usa uma palavra que a própria comunidade prefere para se identificar, enquanto um relatório antigo usa outro termo. Qual conclusão deve ser evitada?",
+      "options": [
+        "Repetir sempre o termo mais antigo como se fosse neutro.",
+        "Apagar a entrevista para evitar a diferença.",
+        "Escolher o termo mais curto sem considerar significado.",
+        "Evite substituir a voz da comunidade por um rótulo externo sem contexto."
+      ],
+      "correctAnswer": "Evite substituir a voz da comunidade por um rótulo externo sem contexto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Repetir sempre o termo mais antigo como se fosse neutro.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_RESPECT_05",
+      "statement": "Uma entrevista usa uma palavra que a própria comunidade prefere para se identificar, enquanto um relatório antigo usa outro termo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira termos usados, autoria, época e preferência de autodenominação.",
+        "Repetir sempre o termo mais antigo como se fosse neutro.",
+        "Apagar a entrevista para evitar a diferença.",
+        "Escolher o termo mais curto sem considerar significado."
+      ],
+      "correctAnswer": "Confira termos usados, autoria, época e preferência de autodenominação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar fontes não significa repetir termos ofensivos sem explicação; a linguagem também comunica relações de poder.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Repetir sempre o termo mais antigo como se fosse neutro.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SYNTHESIS_01",
+      "statement": "Uma obra é celebrada por autoridades, questionada por comerciantes e avaliada por uma comunidade indígena afetada pelo local. Como elaborar uma comparação responsável?",
+      "options": [
+        "Dizer que a autoridade sempre tem a única versão válida.",
+        "Apresentar os três pontos de vista, relacioná-los às posições e condições de cada grupo e indicar as evidências usadas.",
+        "Apagar a perspectiva indígena por tratar de um local específico.",
+        "Concluir que conflito impede qualquer investigação histórica."
+      ],
+      "correctAnswer": "Apresentar os três pontos de vista, relacioná-los às posições e condições de cada grupo e indicar as evidências usadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a autoridade sempre tem a única versão válida.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SYNTHESIS_02",
+      "statement": "Uma obra é celebrada por autoridades, questionada por comerciantes e avaliada por uma comunidade indígena afetada pelo local. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que a autoridade sempre tem a única versão válida.",
+        "Apagar a perspectiva indígena por tratar de um local específico.",
+        "Considere A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+        "Concluir que conflito impede qualquer investigação histórica."
+      ],
+      "correctAnswer": "Considere A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a autoridade sempre tem a única versão válida.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SYNTHESIS_03",
+      "statement": "Uma obra é celebrada por autoridades, questionada por comerciantes e avaliada por uma comunidade indígena afetada pelo local. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que a autoridade sempre tem a única versão válida.",
+        "Apagar a perspectiva indígena por tratar de um local específico.",
+        "Concluir que conflito impede qualquer investigação histórica.",
+        "Elabore uma comparação semelhante sobre uma mudança no bairro."
+      ],
+      "correctAnswer": "Elabore uma comparação semelhante sobre uma mudança no bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a autoridade sempre tem a única versão válida.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SYNTHESIS_04",
+      "statement": "Uma obra é celebrada por autoridades, questionada por comerciantes e avaliada por uma comunidade indígena afetada pelo local. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite escolher uma única perspectiva como a história completa.",
+        "Dizer que a autoridade sempre tem a única versão válida.",
+        "Apagar a perspectiva indígena por tratar de um local específico.",
+        "Concluir que conflito impede qualquer investigação histórica."
+      ],
+      "correctAnswer": "Evite escolher uma única perspectiva como a história completa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a autoridade sempre tem a única versão válida.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-perspectives-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-PERSPECTIVES_SYNTHESIS_05",
+      "statement": "Uma obra é celebrada por autoridades, questionada por comerciantes e avaliada por uma comunidade indígena afetada pelo local. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que a autoridade sempre tem a única versão válida.",
+        "Confira autoria, posição, efeitos, condições sociais e documentos de apoio.",
+        "Apagar a perspectiva indígena por tratar de um local específico.",
+        "Concluir que conflito impede qualquer investigação histórica."
+      ],
+      "correctAnswer": "Confira autoria, posição, efeitos, condições sociais e documentos de apoio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese preserva diferenças, evita hierarquizar vozes automaticamente e não transforma opinião em fato universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a autoridade sempre tem a única versão válida.": [
+          "HISTORY_EF03HI03_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

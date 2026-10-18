@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Planta de uma instalação</title>
+  <desc id="desc">Uma sala retangular contém três estações em sequência; uma linha pontilhada representa um percurso possível entre a entrada e a saída.</desc>
+  <rect width="600" height="360" fill="#f5f1e8"/>
+  <rect x="62" y="48" width="476" height="264" rx="8" fill="#e5ede8" stroke="#35656b" stroke-width="8"/>
+  <path d="M270 48v40 M370 48v40 M62 186h55 M538 242h-55" stroke="#f5f1e8" stroke-width="12"/>
+  <circle cx="160" cy="160" r="34" fill="#d98856"/><circle cx="300" cy="160" r="34" fill="#54878b"/><circle cx="440" cy="160" r="34" fill="#d4aa58"/>
+  <path d="M90 270 C130 220 140 216 160 196 S245 200 260 174 S330 135 360 160 S420 212 450 194 S505 140 520 106" fill="none" stroke="#335d68" stroke-width="5" stroke-dasharray="9 10"/>
+  <path d="M508 105l14-8 1 17" fill="none" stroke="#335d68" stroke-width="5"/>
+</svg>

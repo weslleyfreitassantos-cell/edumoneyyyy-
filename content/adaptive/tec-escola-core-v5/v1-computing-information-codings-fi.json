@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-information-codings-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO05_REPRESENT_INFORMATION_WITH_CODINGS",
+  "subject": "COMPUTING",
+  "domain": "MUNDO_DIGITAL",
+  "topic": "representar mensagens por diferentes códigos combinados",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Representar informação usando diferentes codificações.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Representar informações com códigos",
+    "objective": "Representar uma informação por mais de uma codificação simples, usar uma legenda combinada para interpretar símbolos e conferir se a mensagem pretendida foi preservada.",
+    "summary": "Uma codificação usa sinais ou símbolos combinados para representar informação. A mesma ideia pode ser expressa por desenho, gesto, marca, sequência de cores ou outro código acessível, desde que as pessoas conheçam ou possam consultar a legenda.",
+    "explanation": "## O que é codificar\nCodificar é representar uma informação por sinais segundo uma regra combinada. Por exemplo, uma turma pode combinar que um círculo significa “dia de leitura” e um triângulo significa “dia de música”. O símbolo não tem esse significado sozinho: a legenda informa como interpretá-lo.\n\n## Uma informação, códigos diferentes\nA ideia de “chuva” pode ser mostrada por um desenho de nuvem com gotas, por uma palavra ou por um gesto combinado. Cada versão usa sinais diferentes para representar uma informação relacionada. Códigos precisam ser consistentes: se o mesmo sinal mudar de sentido sem aviso, a mensagem pode ser entendida de outro modo.\n\n## Codificar e decodificar\nPara codificar, use a regra e represente a mensagem. Para decodificar, consulte a mesma legenda e descubra qual informação os sinais representam. Compare a interpretação com a mensagem pretendida. Uma codificação pode usar fala, escrita, imagens, formas, cores acompanhadas por símbolos ou recursos de comunicação alternativa; escolha sinais acessíveis e não use códigos para esconder dados pessoais.",
+    "workedExample": "A turma combina uma legenda para o calendário: círculo com sol significa “atividade ao ar livre” e livro significa “roda de leitura”. Para registrar uma roda de leitura, a criança escolhe o símbolo do livro. Um colega consulta a legenda, interpreta o símbolo e confere se corresponde ao evento previsto. A mesma informação também pode ser escrita por palavras ou comunicada oralmente.",
+    "commonMistake": "Acreditar que um símbolo sempre tem o mesmo significado para todas as pessoas, sem consultar a regra combinada ou a legenda.",
+    "tips": [
+      "Defina a mensagem antes de escolher os sinais.",
+      "Combine e registre uma legenda simples para que outras pessoas possam decodificar.",
+      "Use cada sinal de forma consistente e teste a interpretação com alguém.",
+      "Não codifique senhas, endereços ou informações privadas para compartilhar."
+    ],
+    "priorKnowledge": [
+      "Reconhecer que imagens, palavras, gestos ou sons podem comunicar ideias.",
+      "Seguir uma regra simples quando símbolos e significados foram combinados."
+    ],
+    "keyConcepts": [
+      "informação a representar",
+      "código e regra de codificação",
+      "símbolo e legenda",
+      "codificar e decodificar",
+      "consistência e acessibilidade"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CODE_RULE",
+        "text": "Uma codificação usa uma regra para relacionar sinais a uma informação."
+      },
+      {
+        "trigger": "USE_LEGEND",
+        "text": "A legenda mostra como interpretar cada símbolo do código combinado."
+      },
+      {
+        "trigger": "CHECK_MEANING",
+        "text": "Depois de decodificar, compare a mensagem entendida com a informação pretendida."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SYMBOL_WITHOUT_KEY",
+        "action": "Criar uma legenda com um significado para cada símbolo e pedir que um colega a use para interpretar a mensagem."
+      },
+      {
+        "errorFocus": "INCONSISTENT_CODE",
+        "action": "Comparar os usos de cada símbolo, escolher um significado combinado e revisar os registros que não seguem a regra."
+      },
+      {
+        "errorFocus": "DECODE_MISMATCH",
+        "action": "Ler a legenda passo a passo, reconstruir a informação e conferir onde a interpretação divergiu do objetivo."
+      }
+    ],
+    "accessibilitySupports": [
+      "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+      "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+      "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+      "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-information-codings-fi-activity-1",
+        "title": "Legenda de atividades da turma",
+        "instructions": "Criar duas codificações acessíveis para mensagens fictícias do calendário de sala, como leitura e atividade ao ar livre.\n1. Escolher as informações que precisam ser representadas.\n2. Criar e registrar uma legenda com símbolos distintos e acessíveis.\n3. Representar cada atividade em um calendário de teste usando o código.\n4. Pedir que outra pessoa decodifique e revisar sinais ambíguos.",
+        "steps": [
+          "Escolher as informações que precisam ser representadas.",
+          "Criar e registrar uma legenda com símbolos distintos e acessíveis.",
+          "Representar cada atividade em um calendário de teste usando o código.",
+          "Pedir que outra pessoa decodifique e revisar sinais ambíguos."
+        ],
+        "evidence": "Legenda criada, mensagens codificadas, interpretação de colega e revisão baseada em divergências observadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "associa um símbolo a uma mensagem com ajuda.",
+            "developing": "usa legenda para codificar ou decodificar parte do calendário.",
+            "proficient": "aplica código consistente e verifica se outra pessoa recupera a informação pretendida."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-information-codings-fi-activity-2",
+        "title": "Mensagem por marcas e formas",
+        "instructions": "Representar uma mensagem curta e fictícia — por exemplo, escolher entre círculo e quadrado para duas atividades — com uma legenda compartilhada.\n1. Definir a mensagem e escolher sinais que possam ser diferenciados.\n2. Combinar uma legenda em formato visual e oral ou tátil.\n3. Codificar a mensagem usando os sinais da regra.\n4. Trocar registros com um colega, decodificar e comparar o resultado com a mensagem original.",
+        "steps": [
+          "Definir a mensagem e escolher sinais que possam ser diferenciados.",
+          "Combinar uma legenda em formato visual e oral ou tátil.",
+          "Codificar a mensagem usando os sinais da regra.",
+          "Trocar registros com um colega, decodificar e comparar o resultado com a mensagem original."
+        ],
+        "evidence": "Mensagem codificada, legenda utilizada e correspondência entre interpretação e informação original.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um sinal quando a legenda é apresentada.",
+            "developing": "codifica ou decodifica uma mensagem com apoio.",
+            "proficient": "usa a regra de modo consistente e explica se a mensagem foi interpretada corretamente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-information-codings-fi-01",
+          "v1-computing-information-codings-fi-02",
+          "v1-computing-information-codings-fi-03",
+          "v1-computing-information-codings-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-information-codings-fi-05",
+          "v1-computing-information-codings-fi-06",
+          "v1-computing-information-codings-fi-07",
+          "v1-computing-information-codings-fi-08",
+          "v1-computing-information-codings-fi-09",
+          "v1-computing-information-codings-fi-10",
+          "v1-computing-information-codings-fi-11",
+          "v1-computing-information-codings-fi-12",
+          "v1-computing-information-codings-fi-13",
+          "v1-computing-information-codings-fi-14",
+          "v1-computing-information-codings-fi-15",
+          "v1-computing-information-codings-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-information-codings-fi-17",
+          "v1-computing-information-codings-fi-18",
+          "v1-computing-information-codings-fi-19",
+          "v1-computing-information-codings-fi-20",
+          "v1-computing-information-codings-fi-21",
+          "v1-computing-information-codings-fi-22",
+          "v1-computing-information-codings-fi-23",
+          "v1-computing-information-codings-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-information-codings-fi-25",
+          "v1-computing-information-codings-fi-26",
+          "v1-computing-information-codings-fi-27",
+          "v1-computing-information-codings-fi-28",
+          "v1-computing-information-codings-fi-29",
+          "v1-computing-information-codings-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-information-codings-fi-31",
+          "v1-computing-information-codings-fi-32",
+          "v1-computing-information-codings-fi-33",
+          "v1-computing-information-codings-fi-34",
+          "v1-computing-information-codings-fi-35",
+          "v1-computing-information-codings-fi-36",
+          "v1-computing-information-codings-fi-37",
+          "v1-computing-information-codings-fi-38",
+          "v1-computing-information-codings-fi-39",
+          "v1-computing-information-codings-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO05",
+        "descriptor": "Representar informação usando diferentes codificações.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 16
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-information-codings-fi-01",
+      "statement": "A turma combina que um desenho de nuvem com gotas representa chuva. O que o desenho faz nessa regra?",
+      "prompt": "A turma combina que um desenho de nuvem com gotas representa chuva. O que o desenho faz nessa regra?",
+      "options": [
+        "Codifica a informação de chuva por um símbolo combinado.",
+        "Mostra uma senha universal.",
+        "É o próprio clima guardado no papel.",
+        "Não comunica nada mesmo com legenda."
+      ],
+      "correctAnswer": "Codifica a informação de chuva por um símbolo combinado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Mostra uma senha universal.": [
+          "CODE_REPRESENTATION"
+        ],
+        "É o próprio clima guardado no papel.": [
+          "CODE_REPRESENTATION"
+        ],
+        "Não comunica nada mesmo com legenda.": [
+          "CODE_REPRESENTATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DEFINE",
+      "contextFamily": "WEATHER_SYMBOL",
+      "explanation": "O símbolo representa a informação porque a turma combinou esse significado.",
+      "hint": "Consulte o significado que a turma combinou.",
+      "errorFocus": "CODE_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: O símbolo representa a informação porque a turma combinou esse significado.",
+        "incorrect": "O símbolo representa a informação porque a turma combinou esse significado.",
+        "hint": "Consulte o significado que a turma combinou.",
+        "errorFocus": "CODE_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-02",
+      "statement": "Na legenda, o símbolo de livro significa roda de leitura. O que quer dizer um livro no calendário?",
+      "prompt": "Na legenda, o símbolo de livro significa roda de leitura. O que quer dizer um livro no calendário?",
+      "options": [
+        "Que a turma vai à praia.",
+        "Que há uma roda de leitura.",
+        "Que a sala está vazia.",
+        "Que o símbolo não pode ser interpretado."
+      ],
+      "correctAnswer": "Que há uma roda de leitura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que a turma vai à praia.": [
+          "USE_LEGEND"
+        ],
+        "Que a sala está vazia.": [
+          "USE_LEGEND"
+        ],
+        "Que o símbolo não pode ser interpretado.": [
+          "USE_LEGEND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "CALENDAR_BOOK",
+      "explanation": "A legenda relaciona o símbolo do livro à roda de leitura.",
+      "hint": "Encontre o significado do livro na legenda.",
+      "errorFocus": "USE_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A legenda relaciona o símbolo do livro à roda de leitura.",
+        "incorrect": "A legenda relaciona o símbolo do livro à roda de leitura.",
+        "hint": "Encontre o significado do livro na legenda.",
+        "errorFocus": "USE_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-03",
+      "statement": "Para representar leitura e música com dois símbolos, o que precisa ser combinado?",
+      "prompt": "Para representar leitura e música com dois símbolos, o que precisa ser combinado?",
+      "options": [
+        "Que os símbolos mudem de significado a cada dia.",
+        "Que ninguém possa consultar a regra.",
+        "Qual símbolo corresponde a cada atividade.",
+        "Que os dois símbolos signifiquem qualquer coisa."
+      ],
+      "correctAnswer": "Qual símbolo corresponde a cada atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que os símbolos mudem de significado a cada dia.": [
+          "CODE_MAPPING"
+        ],
+        "Que ninguém possa consultar a regra.": [
+          "CODE_MAPPING"
+        ],
+        "Que os dois símbolos signifiquem qualquer coisa.": [
+          "CODE_MAPPING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "TWO_ACTIVITY_SIGNS",
+      "explanation": "Uma legenda associa cada sinal a uma informação definida.",
+      "hint": "Como outra pessoa saberá o que cada símbolo quer dizer?",
+      "errorFocus": "CODE_MAPPING",
+      "feedback": {
+        "correct": "Boa observação: Uma legenda associa cada sinal a uma informação definida.",
+        "incorrect": "Uma legenda associa cada sinal a uma informação definida.",
+        "hint": "Como outra pessoa saberá o que cada símbolo quer dizer?",
+        "errorFocus": "CODE_MAPPING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-04",
+      "statement": "A palavra “sol” e um desenho de sol podem representar a mesma ideia usando o quê?",
+      "prompt": "A palavra “sol” e um desenho de sol podem representar a mesma ideia usando o quê?",
+      "options": [
+        "O mesmo formato visual necessariamente.",
+        "Nenhum sinal ou convenção.",
+        "A mesma tinta e o mesmo som.",
+        "Codificações ou linguagens diferentes."
+      ],
+      "correctAnswer": "Codificações ou linguagens diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O mesmo formato visual necessariamente.": [
+          "MULTIPLE_CODINGS"
+        ],
+        "Nenhum sinal ou convenção.": [
+          "MULTIPLE_CODINGS"
+        ],
+        "A mesma tinta e o mesmo som.": [
+          "MULTIPLE_CODINGS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WORD_AND_ICON",
+      "explanation": "Palavra e imagem são sinais diferentes que podem comunicar a mesma informação.",
+      "hint": "Compare letras com desenho.",
+      "errorFocus": "MULTIPLE_CODINGS",
+      "feedback": {
+        "correct": "Boa observação: Palavra e imagem são sinais diferentes que podem comunicar a mesma informação.",
+        "incorrect": "Palavra e imagem são sinais diferentes que podem comunicar a mesma informação.",
+        "hint": "Compare letras com desenho.",
+        "errorFocus": "MULTIPLE_CODINGS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-05",
+      "statement": "A legenda diz: círculo = leitura; quadrado = música. Que atividade o quadrado representa?",
+      "prompt": "A legenda diz: círculo = leitura; quadrado = música. Que atividade o quadrado representa?",
+      "options": [
+        "Música.",
+        "Leitura.",
+        "Recreio sempre.",
+        "Nenhuma, apesar da legenda."
+      ],
+      "correctAnswer": "Música.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Leitura.": [
+          "DECODE_SHAPE"
+        ],
+        "Recreio sempre.": [
+          "DECODE_SHAPE"
+        ],
+        "Nenhuma, apesar da legenda.": [
+          "DECODE_SHAPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "SHAPE_KEY",
+      "explanation": "Segundo a chave, o quadrado corresponde à música.",
+      "hint": "Siga a associação indicada.",
+      "errorFocus": "DECODE_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: Segundo a chave, o quadrado corresponde à música.",
+        "incorrect": "Segundo a chave, o quadrado corresponde à música.",
+        "hint": "Siga a associação indicada.",
+        "errorFocus": "DECODE_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-06",
+      "statement": "Você quer registrar “chuva” usando uma legenda em que nuvem com gotas significa chuva. Qual sinal deve escolher?",
+      "prompt": "Você quer registrar “chuva” usando uma legenda em que nuvem com gotas significa chuva. Qual sinal deve escolher?",
+      "options": [
+        "O livro, se significa leitura.",
+        "A nuvem com gotas.",
+        "Um símbolo sem significado combinado.",
+        "Um espaço em branco sem código."
+      ],
+      "correctAnswer": "A nuvem com gotas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O livro, se significa leitura.": [
+          "ENCODE_BY_KEY"
+        ],
+        "Um símbolo sem significado combinado.": [
+          "ENCODE_BY_KEY"
+        ],
+        "Um espaço em branco sem código.": [
+          "ENCODE_BY_KEY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ENCODE",
+      "contextFamily": "PICTURE_RAIN",
+      "explanation": "Codificar é escolher o sinal que a regra associa à informação desejada.",
+      "hint": "Que sinal está associado a chuva?",
+      "errorFocus": "ENCODE_BY_KEY",
+      "feedback": {
+        "correct": "Boa observação: Codificar é escolher o sinal que a regra associa à informação desejada.",
+        "incorrect": "Codificar é escolher o sinal que a regra associa à informação desejada.",
+        "hint": "Que sinal está associado a chuva?",
+        "errorFocus": "ENCODE_BY_KEY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-07",
+      "statement": "Na legenda, estrela amarela significa atividade no pátio e círculo azul significa leitura. Como tornar os sinais distinguíveis sem depender apenas da cor?",
+      "prompt": "Na legenda, estrela amarela significa atividade no pátio e círculo azul significa leitura. Como tornar os sinais distinguíveis sem depender apenas da cor?",
+      "options": [
+        "Retirar as formas e usar tons quase iguais.",
+        "Apagar a legenda.",
+        "Manter também formas diferentes e os rótulos da legenda.",
+        "Usar uma senha de estudante."
+      ],
+      "correctAnswer": "Manter também formas diferentes e os rótulos da legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Retirar as formas e usar tons quase iguais.": [
+          "REDUNDANT_ACCESSIBLE_CUES"
+        ],
+        "Apagar a legenda.": [
+          "REDUNDANT_ACCESSIBLE_CUES"
+        ],
+        "Usar uma senha de estudante.": [
+          "REDUNDANT_ACCESSIBLE_CUES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "COLOR_SHAPE_KEY",
+      "explanation": "Forma e rótulo oferecem pistas além da cor para interpretar o código.",
+      "hint": "Que outro atributo diferencia os sinais?",
+      "errorFocus": "REDUNDANT_ACCESSIBLE_CUES",
+      "feedback": {
+        "correct": "Boa observação: Forma e rótulo oferecem pistas além da cor para interpretar o código.",
+        "incorrect": "Forma e rótulo oferecem pistas além da cor para interpretar o código.",
+        "hint": "Que outro atributo diferencia os sinais?",
+        "errorFocus": "REDUNDANT_ACCESSIBLE_CUES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-08",
+      "statement": "Um gesto combinado representa a palavra “pausa” durante uma brincadeira. O que torna o gesto um código útil?",
+      "prompt": "Um gesto combinado representa a palavra “pausa” durante uma brincadeira. O que torna o gesto um código útil?",
+      "options": [
+        "O gesto tem significado igual em qualquer lugar sem explicação.",
+        "Cada pessoa usa um sentido diferente sem avisar.",
+        "O gesto não pode ser observado.",
+        "A turma conhece e usa o significado combinado."
+      ],
+      "correctAnswer": "A turma conhece e usa o significado combinado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O gesto tem significado igual em qualquer lugar sem explicação.": [
+          "SHARED_CONVENTION"
+        ],
+        "Cada pessoa usa um sentido diferente sem avisar.": [
+          "SHARED_CONVENTION"
+        ],
+        "O gesto não pode ser observado.": [
+          "SHARED_CONVENTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "GESTURE_CLAP",
+      "explanation": "Um sinal funciona como código quando há regra compartilhada para interpretá-lo.",
+      "hint": "O que as pessoas combinaram sobre o gesto?",
+      "errorFocus": "SHARED_CONVENTION",
+      "feedback": {
+        "correct": "Boa observação: Um sinal funciona como código quando há regra compartilhada para interpretá-lo.",
+        "incorrect": "Um sinal funciona como código quando há regra compartilhada para interpretá-lo.",
+        "hint": "O que as pessoas combinaram sobre o gesto?",
+        "errorFocus": "SHARED_CONVENTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-09",
+      "statement": "Um cartão traz três listras e a legenda diz que três listras representam “organizar os livros”. O que a mensagem indica?",
+      "prompt": "Um cartão traz três listras e a legenda diz que três listras representam “organizar os livros”. O que a mensagem indica?",
+      "options": [
+        "Organizar os livros.",
+        "Contar três pessoas.",
+        "Desenhar uma nuvem.",
+        "Ignorar a legenda."
+      ],
+      "correctAnswer": "Organizar os livros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Contar três pessoas.": [
+          "PATTERN_LEGEND"
+        ],
+        "Desenhar uma nuvem.": [
+          "PATTERN_LEGEND"
+        ],
+        "Ignorar a legenda.": [
+          "PATTERN_LEGEND"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "PATTERN_CARD",
+      "explanation": "A quantidade e o padrão de listras são interpretados conforme a chave.",
+      "hint": "Use o significado combinado para três listras.",
+      "errorFocus": "PATTERN_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A quantidade e o padrão de listras são interpretados conforme a chave.",
+        "incorrect": "A quantidade e o padrão de listras são interpretados conforme a chave.",
+        "hint": "Use o significado combinado para três listras.",
+        "errorFocus": "PATTERN_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-10",
+      "statement": "A turma usa uma estrela para indicar “dia de apresentação”. Que sinal representa uma apresentação no calendário?",
+      "prompt": "A turma usa uma estrela para indicar “dia de apresentação”. Que sinal representa uma apresentação no calendário?",
+      "options": [
+        "Um círculo com significado de leitura.",
+        "A estrela.",
+        "Uma seta sem legenda.",
+        "O nome de um colega."
+      ],
+      "correctAnswer": "A estrela.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um círculo com significado de leitura.": [
+          "CALENDAR_ENCODING"
+        ],
+        "Uma seta sem legenda.": [
+          "CALENDAR_ENCODING"
+        ],
+        "O nome de um colega.": [
+          "CALENDAR_ENCODING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ENCODE",
+      "contextFamily": "SYMBOL_CALENDAR",
+      "explanation": "A estrela foi associada à apresentação na regra da turma.",
+      "hint": "Procure o símbolo já combinado.",
+      "errorFocus": "CALENDAR_ENCODING",
+      "feedback": {
+        "correct": "Boa observação: A estrela foi associada à apresentação na regra da turma.",
+        "incorrect": "A estrela foi associada à apresentação na regra da turma.",
+        "hint": "Procure o símbolo já combinado.",
+        "errorFocus": "CALENDAR_ENCODING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-11",
+      "statement": "Uma pessoa vê um símbolo novo sem legenda e não sabe o que significa. O que pode ajudá-la?",
+      "prompt": "Uma pessoa vê um símbolo novo sem legenda e não sabe o que significa. O que pode ajudá-la?",
+      "options": [
+        "Adivinhar e declarar que é universal.",
+        "Apagar todos os símbolos.",
+        "Consultar quem criou o código ou obter a legenda combinada.",
+        "Compartilhar dados pessoais para descobrir."
+      ],
+      "correctAnswer": "Consultar quem criou o código ou obter a legenda combinada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Adivinhar e declarar que é universal.": [
+          "NEED_FOR_KEY"
+        ],
+        "Apagar todos os símbolos.": [
+          "NEED_FOR_KEY"
+        ],
+        "Compartilhar dados pessoais para descobrir.": [
+          "NEED_FOR_KEY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "UNKNOWN_ICON",
+      "explanation": "Sem regra conhecida, a pessoa não tem base segura para decodificar o símbolo.",
+      "hint": "Onde está a associação entre sinal e significado?",
+      "errorFocus": "NEED_FOR_KEY",
+      "feedback": {
+        "correct": "Boa observação: Sem regra conhecida, a pessoa não tem base segura para decodificar o símbolo.",
+        "incorrect": "Sem regra conhecida, a pessoa não tem base segura para decodificar o símbolo.",
+        "hint": "Onde está a associação entre sinal e significado?",
+        "errorFocus": "NEED_FOR_KEY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-12",
+      "statement": "A turma combina: um ponto grande significa “sim” e dois pontos grandes significam “não”. Como codificar “não”?",
+      "prompt": "A turma combina: um ponto grande significa “sim” e dois pontos grandes significam “não”. Como codificar “não”?",
+      "options": [
+        "Usar um ponto grande.",
+        "Mudar a regra sem contar.",
+        "Desenhar qualquer número de pontos.",
+        "Usar dois pontos grandes."
+      ],
+      "correctAnswer": "Usar dois pontos grandes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar um ponto grande.": [
+          "CONSISTENT_ENCODING"
+        ],
+        "Mudar a regra sem contar.": [
+          "CONSISTENT_ENCODING"
+        ],
+        "Desenhar qualquer número de pontos.": [
+          "CONSISTENT_ENCODING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ENCODE",
+      "contextFamily": "BINARY_DOTS_CLASS",
+      "explanation": "A codificação aplica a associação exatamente como foi combinada.",
+      "hint": "Quantos pontos a legenda atribui a “não”?",
+      "errorFocus": "CONSISTENT_ENCODING",
+      "feedback": {
+        "correct": "Boa observação: A codificação aplica a associação exatamente como foi combinada.",
+        "incorrect": "A codificação aplica a associação exatamente como foi combinada.",
+        "hint": "Quantos pontos a legenda atribui a “não”?",
+        "errorFocus": "CONSISTENT_ENCODING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-13",
+      "statement": "“Livro” é representado por uma palavra numa folha e por um pictograma no mural. O que pode ser afirmado?",
+      "prompt": "“Livro” é representado por uma palavra numa folha e por um pictograma no mural. O que pode ser afirmado?",
+      "options": [
+        "A mesma informação foi representada por duas codificações.",
+        "Os dois suportes são idênticos.",
+        "O pictograma apaga o significado da palavra.",
+        "Só uma forma pode representar informação."
+      ],
+      "correctAnswer": "A mesma informação foi representada por duas codificações.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os dois suportes são idênticos.": [
+          "CODE_COMPARISON"
+        ],
+        "O pictograma apaga o significado da palavra.": [
+          "CODE_COMPARISON"
+        ],
+        "Só uma forma pode representar informação.": [
+          "CODE_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SAME_MESSAGE_TWO_CODES",
+      "explanation": "Palavra e pictograma são codificações distintas para a mesma informação.",
+      "hint": "Observe o significado, não o suporte.",
+      "errorFocus": "CODE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Palavra e pictograma são codificações distintas para a mesma informação.",
+        "incorrect": "Palavra e pictograma são codificações distintas para a mesma informação.",
+        "hint": "Observe o significado, não o suporte.",
+        "errorFocus": "CODE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-14",
+      "statement": "A legenda do tabuleiro diz que seta para cima significa avançar uma casa e seta para a direita significa virar à direita. O que indica uma seta para cima?",
+      "prompt": "A legenda do tabuleiro diz que seta para cima significa avançar uma casa e seta para a direita significa virar à direita. O que indica uma seta para cima?",
+      "options": [
+        "Virar à direita.",
+        "Avançar uma casa.",
+        "Parar o jogo.",
+        "Mudar o destino sem consultar."
+      ],
+      "correctAnswer": "Avançar uma casa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Virar à direita.": [
+          "ARROW_CODE"
+        ],
+        "Parar o jogo.": [
+          "ARROW_CODE"
+        ],
+        "Mudar o destino sem consultar.": [
+          "ARROW_CODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "ARROW_PATH_KEY",
+      "explanation": "A seta para cima corresponde ao comando definido na legenda.",
+      "hint": "Encontre a linha da seta para cima.",
+      "errorFocus": "ARROW_CODE",
+      "feedback": {
+        "correct": "Boa observação: A seta para cima corresponde ao comando definido na legenda.",
+        "incorrect": "A seta para cima corresponde ao comando definido na legenda.",
+        "hint": "Encontre a linha da seta para cima.",
+        "errorFocus": "ARROW_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-15",
+      "statement": "Dois símbolos diferentes foram usados para “leitura”, mas nenhum tem legenda. Como deixar o código claro?",
+      "prompt": "Dois símbolos diferentes foram usados para “leitura”, mas nenhum tem legenda. Como deixar o código claro?",
+      "options": [
+        "Deixar cada colega adivinhar.",
+        "Trocar os significados sem avisar.",
+        "Escolher um símbolo ou registrar ambos na legenda com o mesmo significado.",
+        "Remover toda a informação."
+      ],
+      "correctAnswer": "Escolher um símbolo ou registrar ambos na legenda com o mesmo significado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Deixar cada colega adivinhar.": [
+          "AMBIGUITY_REPAIR"
+        ],
+        "Trocar os significados sem avisar.": [
+          "AMBIGUITY_REPAIR"
+        ],
+        "Remover toda a informação.": [
+          "AMBIGUITY_REPAIR"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "AMBIGUOUS_SIGNS",
+      "explanation": "Uma regra explícita esclarece como interpretar os sinais usados.",
+      "hint": "Como o grupo pode registrar o significado combinado?",
+      "errorFocus": "AMBIGUITY_REPAIR",
+      "feedback": {
+        "correct": "Boa observação: Uma regra explícita esclarece como interpretar os sinais usados.",
+        "incorrect": "Uma regra explícita esclarece como interpretar os sinais usados.",
+        "hint": "Como o grupo pode registrar o significado combinado?",
+        "errorFocus": "AMBIGUITY_REPAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-16",
+      "statement": "Uma criança distingue melhor texturas que cores. Qual código pode facilitar o acesso?",
+      "prompt": "Uma criança distingue melhor texturas que cores. Qual código pode facilitar o acesso?",
+      "options": [
+        "Usar apenas tons de cor parecidos.",
+        "Esconder os sinais táteis.",
+        "Impedir a criança de decodificar.",
+        "Usar formas ou texturas diferentes junto a rótulos claros na legenda."
+      ],
+      "correctAnswer": "Usar formas ou texturas diferentes junto a rótulos claros na legenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar apenas tons de cor parecidos.": [
+          "ACCESSIBLE_CODE"
+        ],
+        "Esconder os sinais táteis.": [
+          "ACCESSIBLE_CODE"
+        ],
+        "Impedir a criança de decodificar.": [
+          "ACCESSIBLE_CODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "TACTILE_CODE",
+      "explanation": "Pistas táteis e rótulos oferecem alternativas de percepção sem mudar a informação.",
+      "hint": "Que sinal pode ser percebido pelo tato?",
+      "errorFocus": "ACCESSIBLE_CODE",
+      "feedback": {
+        "correct": "Boa observação: Pistas táteis e rótulos oferecem alternativas de percepção sem mudar a informação.",
+        "incorrect": "Pistas táteis e rótulos oferecem alternativas de percepção sem mudar a informação.",
+        "hint": "Que sinal pode ser percebido pelo tato?",
+        "errorFocus": "ACCESSIBLE_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-17",
+      "statement": "A turma quer representar três opções de atividade — leitura, desenho e música — com símbolos fáceis de distinguir. O que criar?",
+      "prompt": "A turma quer representar três opções de atividade — leitura, desenho e música — com símbolos fáceis de distinguir. O que criar?",
+      "options": [
+        "Uma legenda que associe um símbolo distinto a cada atividade.",
+        "Um único símbolo sem significados definidos.",
+        "Três símbolos que mudam de sentido todo dia.",
+        "Uma lista com dados pessoais dos alunos."
+      ],
+      "correctAnswer": "Uma legenda que associe um símbolo distinto a cada atividade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um único símbolo sem significados definidos.": [
+          "CREATE_CODEBOOK"
+        ],
+        "Três símbolos que mudam de sentido todo dia.": [
+          "CREATE_CODEBOOK"
+        ],
+        "Uma lista com dados pessoais dos alunos.": [
+          "CREATE_CODEBOOK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "NEW_CLASS_MOOD",
+      "explanation": "Uma chave distinta para cada opção permite codificar e decodificar sem ambiguidade.",
+      "hint": "Como a pessoa identificará cada atividade?",
+      "errorFocus": "CREATE_CODEBOOK",
+      "feedback": {
+        "correct": "Boa observação: Uma chave distinta para cada opção permite codificar e decodificar sem ambiguidade.",
+        "incorrect": "Uma chave distinta para cada opção permite codificar e decodificar sem ambiguidade.",
+        "hint": "Como a pessoa identificará cada atividade?",
+        "errorFocus": "CREATE_CODEBOOK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-18",
+      "statement": "Uma sequência de círculo, quadrado e círculo usa a legenda círculo = início e quadrado = pausa. Como interpretar?",
+      "prompt": "Uma sequência de círculo, quadrado e círculo usa a legenda círculo = início e quadrado = pausa. Como interpretar?",
+      "options": [
+        "Pausa, início, pausa.",
+        "Início, pausa, início.",
+        "Três inícios.",
+        "Não é possível usar a legenda."
+      ],
+      "correctAnswer": "Início, pausa, início.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pausa, início, pausa.": [
+          "SEQUENCE_DECODING"
+        ],
+        "Três inícios.": [
+          "SEQUENCE_DECODING"
+        ],
+        "Não é possível usar a legenda.": [
+          "SEQUENCE_DECODING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "NEW_SECRET_FREE_MESSAGE",
+      "explanation": "Decodifique cada símbolo pela mesma regra, preservando sua ordem.",
+      "hint": "Leia o código símbolo por símbolo.",
+      "errorFocus": "SEQUENCE_DECODING",
+      "feedback": {
+        "correct": "Boa observação: Decodifique cada símbolo pela mesma regra, preservando sua ordem.",
+        "incorrect": "Decodifique cada símbolo pela mesma regra, preservando sua ordem.",
+        "hint": "Leia o código símbolo por símbolo.",
+        "errorFocus": "SEQUENCE_DECODING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-19",
+      "statement": "Uma palavra de uma cantiga é representada por palmas combinadas e também por uma palavra escrita. O que mudou?",
+      "prompt": "Uma palavra de uma cantiga é representada por palmas combinadas e também por uma palavra escrita. O que mudou?",
+      "options": [
+        "Necessariamente a palavra pretendida.",
+        "A existência de informação.",
+        "A codificação usada para representar a palavra.",
+        "A necessidade de uma regra compartilhada para as palmas."
+      ],
+      "correctAnswer": "A codificação usada para representar a palavra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Necessariamente a palavra pretendida.": [
+          "GESTURE_AND_TEXT"
+        ],
+        "A existência de informação.": [
+          "GESTURE_AND_TEXT"
+        ],
+        "A necessidade de uma regra compartilhada para as palmas.": [
+          "GESTURE_AND_TEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_SONG_GESTURE",
+      "explanation": "Gestos e escrita são formas diferentes de representar uma informação.",
+      "hint": "Compare os sinais usados em cada forma.",
+      "errorFocus": "GESTURE_AND_TEXT",
+      "feedback": {
+        "correct": "Boa observação: Gestos e escrita são formas diferentes de representar uma informação.",
+        "incorrect": "Gestos e escrita são formas diferentes de representar uma informação.",
+        "hint": "Compare os sinais usados em cada forma.",
+        "errorFocus": "GESTURE_AND_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-20",
+      "statement": "Um calendário representa três atividades apenas com tons próximos de azul. Qual revisão aumenta a clareza?",
+      "prompt": "Um calendário representa três atividades apenas com tons próximos de azul. Qual revisão aumenta a clareza?",
+      "options": [
+        "Manter os tons e retirar a legenda.",
+        "Diminuir a impressão até ficar ilegível.",
+        "Trocar o significado de cada tom sem aviso.",
+        "Adicionar formas ou rótulos distintos e atualizar a legenda."
+      ],
+      "correctAnswer": "Adicionar formas ou rótulos distintos e atualizar a legenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Manter os tons e retirar a legenda.": [
+          "CODE_CLARITY"
+        ],
+        "Diminuir a impressão até ficar ilegível.": [
+          "CODE_CLARITY"
+        ],
+        "Trocar o significado de cada tom sem aviso.": [
+          "CODE_CLARITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_COLOR_ONLY",
+      "explanation": "Pistas além de cor e uma legenda acessível ajudam as pessoas a interpretar a codificação.",
+      "hint": "Que pista adicional pode distinguir as atividades?",
+      "errorFocus": "CODE_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: Pistas além de cor e uma legenda acessível ajudam as pessoas a interpretar a codificação.",
+        "incorrect": "Pistas além de cor e uma legenda acessível ajudam as pessoas a interpretar a codificação.",
+        "hint": "Que pista adicional pode distinguir as atividades?",
+        "errorFocus": "CODE_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-21",
+      "statement": "A turma combina uma bandeira para indicar a biblioteca no mapa. Como codificar sua localização?",
+      "prompt": "A turma combina uma bandeira para indicar a biblioteca no mapa. Como codificar sua localização?",
+      "options": [
+        "Colocar a bandeira no ponto da biblioteca e incluir a chave do símbolo.",
+        "Colocar a bandeira em qualquer lugar.",
+        "Esconder o significado do símbolo.",
+        "Usar o endereço residencial de um aluno."
+      ],
+      "correctAnswer": "Colocar a bandeira no ponto da biblioteca e incluir a chave do símbolo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Colocar a bandeira em qualquer lugar.": [
+          "MAP_SYMBOL_ENCODING"
+        ],
+        "Esconder o significado do símbolo.": [
+          "MAP_SYMBOL_ENCODING"
+        ],
+        "Usar o endereço residencial de um aluno.": [
+          "MAP_SYMBOL_ENCODING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ENCODE",
+      "contextFamily": "NEW_CLASSROOM_MAP",
+      "explanation": "A posição no mapa e a legenda relacionam a bandeira à localização representada.",
+      "hint": "Onde fica a biblioteca em relação ao mapa?",
+      "errorFocus": "MAP_SYMBOL_ENCODING",
+      "feedback": {
+        "correct": "Boa observação: A posição no mapa e a legenda relacionam a bandeira à localização representada.",
+        "incorrect": "A posição no mapa e a legenda relacionam a bandeira à localização representada.",
+        "hint": "Onde fica a biblioteca em relação ao mapa?",
+        "errorFocus": "MAP_SYMBOL_ENCODING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-22",
+      "statement": "Uma criança lê duas estrelas como “música”, mas a legenda diz que cada estrela representa uma atividade de leitura. O que corrigir?",
+      "prompt": "Uma criança lê duas estrelas como “música”, mas a legenda diz que cada estrela representa uma atividade de leitura. O que corrigir?",
+      "options": [
+        "A legenda, sem conversar com quem a combinou.",
+        "A interpretação para que cada estrela siga o significado da legenda.",
+        "A informação original para caber no erro.",
+        "Todos os símbolos da sala sem conferir."
+      ],
+      "correctAnswer": "A interpretação para que cada estrela siga o significado da legenda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A legenda, sem conversar com quem a combinou.": [
+          "DECODING_ERROR"
+        ],
+        "A informação original para caber no erro.": [
+          "DECODING_ERROR"
+        ],
+        "Todos os símbolos da sala sem conferir.": [
+          "DECODING_ERROR"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DEBUG",
+      "contextFamily": "NEW_DECODE_MISMATCH",
+      "explanation": "Decodificar exige aplicar o significado declarado para cada símbolo.",
+      "hint": "Compare a leitura com a chave escrita.",
+      "errorFocus": "DECODING_ERROR",
+      "feedback": {
+        "correct": "Boa observação: Decodificar exige aplicar o significado declarado para cada símbolo.",
+        "incorrect": "Decodificar exige aplicar o significado declarado para cada símbolo.",
+        "hint": "Compare a leitura com a chave escrita.",
+        "errorFocus": "DECODING_ERROR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-23",
+      "statement": "Você quer representar “a atividade mudou para a sala de leitura” para colegas que não usam o mesmo formato de comunicação. Qual plano ajuda?",
+      "prompt": "Você quer representar “a atividade mudou para a sala de leitura” para colegas que não usam o mesmo formato de comunicação. Qual plano ajuda?",
+      "options": [
+        "Usar um código secreto sem legenda.",
+        "Compartilhar apenas uma cor sem significado.",
+        "Criar uma mensagem por símbolos com legenda e também oferecer uma forma textual, oral ou assistiva equivalente.",
+        "Omitir a informação da sala."
+      ],
+      "correctAnswer": "Criar uma mensagem por símbolos com legenda e também oferecer uma forma textual, oral ou assistiva equivalente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Usar um código secreto sem legenda.": [
+          "MULTIFORMAT_CODE"
+        ],
+        "Compartilhar apenas uma cor sem significado.": [
+          "MULTIFORMAT_CODE"
+        ],
+        "Omitir a informação da sala.": [
+          "MULTIFORMAT_CODE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "NEW_TWO_MEDIUMS",
+      "explanation": "Representações acessíveis distintas podem preservar a mesma mensagem para diferentes colegas.",
+      "hint": "Como garantir que todos recebam a nova sala?",
+      "errorFocus": "MULTIFORMAT_CODE",
+      "feedback": {
+        "correct": "Boa observação: Representações acessíveis distintas podem preservar a mesma mensagem para diferentes colegas.",
+        "incorrect": "Representações acessíveis distintas podem preservar a mesma mensagem para diferentes colegas.",
+        "hint": "Como garantir que todos recebam a nova sala?",
+        "errorFocus": "MULTIFORMAT_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-24",
+      "statement": "Um código usa sempre o mesmo símbolo para duas mensagens diferentes. Qual problema pode ocorrer?",
+      "prompt": "Um código usa sempre o mesmo símbolo para duas mensagens diferentes. Qual problema pode ocorrer?",
+      "options": [
+        "A legenda fica automaticamente mais clara.",
+        "As duas mensagens serão sempre entendidas sem contexto.",
+        "O código passa a armazenar objetos físicos.",
+        "A pessoa pode não saber qual informação o símbolo representa."
+      ],
+      "correctAnswer": "A pessoa pode não saber qual informação o símbolo representa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A legenda fica automaticamente mais clara.": [
+          "CODE_COLLISION"
+        ],
+        "As duas mensagens serão sempre entendidas sem contexto.": [
+          "CODE_COLLISION"
+        ],
+        "O código passa a armazenar objetos físicos.": [
+          "CODE_COLLISION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_REPEATED_SIGNAL",
+      "explanation": "Um sinal ambíguo pode representar mensagens distintas e dificultar a decodificação.",
+      "hint": "Como o leitor distinguirá os dois significados?",
+      "errorFocus": "CODE_COLLISION",
+      "feedback": {
+        "correct": "Boa observação: Um sinal ambíguo pode representar mensagens distintas e dificultar a decodificação.",
+        "incorrect": "Um sinal ambíguo pode representar mensagens distintas e dificultar a decodificação.",
+        "hint": "Como o leitor distinguirá os dois significados?",
+        "errorFocus": "CODE_COLLISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-25",
+      "statement": "O que uma codificação combina?",
+      "prompt": "O que uma codificação combina?",
+      "options": [
+        "Sinais ou símbolos e uma regra que os relaciona a informações.",
+        "Apenas cores sem significado.",
+        "Uma mensagem e um segredo pessoal.",
+        "Objetos sem qualquer associação."
+      ],
+      "correctAnswer": "Sinais ou símbolos e uma regra que os relaciona a informações.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apenas cores sem significado.": [
+          "CODE_DEFINITION"
+        ],
+        "Uma mensagem e um segredo pessoal.": [
+          "CODE_DEFINITION"
+        ],
+        "Objetos sem qualquer associação.": [
+          "CODE_DEFINITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_CODE",
+      "explanation": "A regra liga os sinais ao significado representado.",
+      "hint": "Pense em sinais mais uma associação combinada.",
+      "errorFocus": "CODE_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: A regra liga os sinais ao significado representado.",
+        "incorrect": "A regra liga os sinais ao significado representado.",
+        "hint": "Pense em sinais mais uma associação combinada.",
+        "errorFocus": "CODE_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-26",
+      "statement": "Para que serve uma legenda em um código de sala?",
+      "prompt": "Para que serve uma legenda em um código de sala?",
+      "options": [
+        "Para esconder todos os significados.",
+        "Para informar o significado de cada símbolo usado.",
+        "Para alterar a mensagem sem explicar.",
+        "Para substituir a informação por decoração."
+      ],
+      "correctAnswer": "Para informar o significado de cada símbolo usado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para esconder todos os significados.": [
+          "LEGEND_PURPOSE"
+        ],
+        "Para alterar a mensagem sem explicar.": [
+          "LEGEND_PURPOSE"
+        ],
+        "Para substituir a informação por decoração.": [
+          "LEGEND_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "USE_KEY",
+      "contextFamily": "LOCKIN_LEGEND",
+      "explanation": "A legenda permite que as pessoas codifiquem ou decodifiquem de forma consistente.",
+      "hint": "Como outra pessoa descobre o significado dos sinais?",
+      "errorFocus": "LEGEND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A legenda permite que as pessoas codifiquem ou decodifiquem de forma consistente.",
+        "incorrect": "A legenda permite que as pessoas codifiquem ou decodifiquem de forma consistente.",
+        "hint": "Como outra pessoa descobre o significado dos sinais?",
+        "errorFocus": "LEGEND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-27",
+      "statement": "Depois de decodificar uma mensagem, como verificar se está correta?",
+      "prompt": "Depois de decodificar uma mensagem, como verificar se está correta?",
+      "options": [
+        "Ignorar a legenda.",
+        "Perguntar apenas a cor do papel.",
+        "Comparar o sentido recuperado com a informação que se pretendia representar.",
+        "Alterar o objetivo para combinar com qualquer resposta."
+      ],
+      "correctAnswer": "Comparar o sentido recuperado com a informação que se pretendia representar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ignorar a legenda.": [
+          "MEANING_CHECK"
+        ],
+        "Perguntar apenas a cor do papel.": [
+          "MEANING_CHECK"
+        ],
+        "Alterar o objetivo para combinar com qualquer resposta.": [
+          "MEANING_CHECK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHECK",
+      "contextFamily": "LOCKIN_DECODE",
+      "explanation": "A comparação entre intenção e interpretação identifica possíveis erros de codificação.",
+      "hint": "O que a mensagem deveria comunicar?",
+      "errorFocus": "MEANING_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A comparação entre intenção e interpretação identifica possíveis erros de codificação.",
+        "incorrect": "A comparação entre intenção e interpretação identifica possíveis erros de codificação.",
+        "hint": "O que a mensagem deveria comunicar?",
+        "errorFocus": "MEANING_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-28",
+      "statement": "Uma forma de estrela não tem significado combinado. Ela é automaticamente o código para atividade no pátio?",
+      "prompt": "Uma forma de estrela não tem significado combinado. Ela é automaticamente o código para atividade no pátio?",
+      "options": [
+        "Sim, toda estrela significa a mesma coisa em qualquer situação.",
+        "Sim, porque toda forma é uma mensagem completa.",
+        "Não, porque símbolos nunca podem representar informação.",
+        "Não; é preciso uma regra ou legenda que associe a estrela a essa informação."
+      ],
+      "correctAnswer": "Não; é preciso uma regra ou legenda que associe a estrela a essa informação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, toda estrela significa a mesma coisa em qualquer situação.": [
+          "CONVENTION_REQUIRED"
+        ],
+        "Sim, porque toda forma é uma mensagem completa.": [
+          "CONVENTION_REQUIRED"
+        ],
+        "Não, porque símbolos nunca podem representar informação.": [
+          "CONVENTION_REQUIRED"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_SYMBOL",
+      "explanation": "O significado depende de uma associação que as pessoas conhecem ou podem consultar.",
+      "hint": "Existe uma regra combinada para essa estrela?",
+      "errorFocus": "CONVENTION_REQUIRED",
+      "feedback": {
+        "correct": "Boa observação: O significado depende de uma associação que as pessoas conhecem ou podem consultar.",
+        "incorrect": "O significado depende de uma associação que as pessoas conhecem ou podem consultar.",
+        "hint": "Existe uma regra combinada para essa estrela?",
+        "errorFocus": "CONVENTION_REQUIRED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-29",
+      "statement": "Que código oferece alternativas para pessoas que não percebem determinada cor?",
+      "prompt": "Que código oferece alternativas para pessoas que não percebem determinada cor?",
+      "options": [
+        "Símbolos com formas e rótulos além da cor, explicados na legenda.",
+        "Somente tons de cor próximos.",
+        "Sinais sem legenda.",
+        "Uma imagem reduzida e sem contraste."
+      ],
+      "correctAnswer": "Símbolos com formas e rótulos além da cor, explicados na legenda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente tons de cor próximos.": [
+          "ACCESSIBLE_LEGEND"
+        ],
+        "Sinais sem legenda.": [
+          "ACCESSIBLE_LEGEND"
+        ],
+        "Uma imagem reduzida e sem contraste.": [
+          "ACCESSIBLE_LEGEND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "LOCKIN_MULTICUE",
+      "explanation": "Múltiplas pistas tornam o código mais acessível a diferentes formas de percepção.",
+      "hint": "Que informação redundante ajuda a distinguir os sinais?",
+      "errorFocus": "ACCESSIBLE_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: Múltiplas pistas tornam o código mais acessível a diferentes formas de percepção.",
+        "incorrect": "Múltiplas pistas tornam o código mais acessível a diferentes formas de percepção.",
+        "hint": "Que informação redundante ajuda a distinguir os sinais?",
+        "errorFocus": "ACCESSIBLE_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-30",
+      "statement": "Qual conteúdo é apropriado para praticar codificação em um mural da turma?",
+      "prompt": "Qual conteúdo é apropriado para praticar codificação em um mural da turma?",
+      "options": [
+        "Senhas de acesso dos estudantes.",
+        "Símbolos para atividades escolares fictícias ou autorizadas.",
+        "Endereços de casas.",
+        "Números pessoais de documentos."
+      ],
+      "correctAnswer": "Símbolos para atividades escolares fictícias ou autorizadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Senhas de acesso dos estudantes.": [
+          "SAFE_CODING"
+        ],
+        "Endereços de casas.": [
+          "SAFE_CODING"
+        ],
+        "Números pessoais de documentos.": [
+          "SAFE_CODING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PRIVACY",
+      "contextFamily": "LOCKIN_SAFE_CODE",
+      "explanation": "Mensagens públicas e fictícias permitem aprender códigos sem expor dados privados.",
+      "hint": "Escolha uma informação que possa ser compartilhada com segurança.",
+      "errorFocus": "SAFE_CODING",
+      "feedback": {
+        "correct": "Boa observação: Mensagens públicas e fictícias permitem aprender códigos sem expor dados privados.",
+        "incorrect": "Mensagens públicas e fictícias permitem aprender códigos sem expor dados privados.",
+        "hint": "Escolha uma informação que possa ser compartilhada com segurança.",
+        "errorFocus": "SAFE_CODING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-31",
+      "statement": "Como uma pessoa descobre o que um símbolo representa em um código combinado?",
+      "prompt": "Como uma pessoa descobre o que um símbolo representa em um código combinado?",
+      "options": [
+        "Adivinha sem informação.",
+        "Olha apenas o tamanho do papel.",
+        "Consulta a regra ou legenda.",
+        "Apaga o símbolo."
+      ],
+      "correctAnswer": "Consulta a regra ou legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Adivinha sem informação.": [
+          "KEY_REVIEW"
+        ],
+        "Olha apenas o tamanho do papel.": [
+          "KEY_REVIEW"
+        ],
+        "Apaga o símbolo.": [
+          "KEY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_CODE",
+      "explanation": "A legenda registra a relação entre sinal e significado.",
+      "hint": "Onde a turma anotou o significado?",
+      "errorFocus": "KEY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A legenda registra a relação entre sinal e significado.",
+        "incorrect": "A legenda registra a relação entre sinal e significado.",
+        "hint": "Onde a turma anotou o significado?",
+        "errorFocus": "KEY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-32",
+      "statement": "A chave diz que livro representa “leitura”. Qual sinal usar para codificar essa atividade?",
+      "prompt": "A chave diz que livro representa “leitura”. Qual sinal usar para codificar essa atividade?",
+      "options": [
+        "O símbolo de música.",
+        "Um sinal que a legenda não define.",
+        "Uma senha.",
+        "O símbolo de livro."
+      ],
+      "correctAnswer": "O símbolo de livro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O símbolo de música.": [
+          "ENCODING_REVIEW"
+        ],
+        "Um sinal que a legenda não define.": [
+          "ENCODING_REVIEW"
+        ],
+        "Uma senha.": [
+          "ENCODING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ENCODE",
+      "contextFamily": "REVIEW_BOOK",
+      "explanation": "O símbolo de livro foi associado à leitura pela chave.",
+      "hint": "Use o sinal correspondente na legenda.",
+      "errorFocus": "ENCODING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O símbolo de livro foi associado à leitura pela chave.",
+        "incorrect": "O símbolo de livro foi associado à leitura pela chave.",
+        "hint": "Use o sinal correspondente na legenda.",
+        "errorFocus": "ENCODING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-33",
+      "statement": "A regra diz que um ponto significa “início”. O que comunica um ponto?",
+      "prompt": "A regra diz que um ponto significa “início”. O que comunica um ponto?",
+      "options": [
+        "Início.",
+        "Fim.",
+        "Pausa.",
+        "Qualquer coisa escolhida sem regra."
+      ],
+      "correctAnswer": "Início.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fim.": [
+          "DECODING_REVIEW"
+        ],
+        "Pausa.": [
+          "DECODING_REVIEW"
+        ],
+        "Qualquer coisa escolhida sem regra.": [
+          "DECODING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECODE",
+      "contextFamily": "REVIEW_DOT",
+      "explanation": "A interpretação acompanha a associação declarada.",
+      "hint": "Siga o significado combinado.",
+      "errorFocus": "DECODING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A interpretação acompanha a associação declarada.",
+        "incorrect": "A interpretação acompanha a associação declarada.",
+        "hint": "Siga o significado combinado.",
+        "errorFocus": "DECODING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-34",
+      "statement": "A palavra “chuva” e um pictograma de nuvem com gotas indicam a mesma previsão. O que são?",
+      "prompt": "A palavra “chuva” e um pictograma de nuvem com gotas indicam a mesma previsão. O que são?",
+      "options": [
+        "Dois meios necessariamente idênticos.",
+        "Duas representações da mesma informação.",
+        "Uma informação e um objeto físico real.",
+        "Sinais sem nenhum significado possível."
+      ],
+      "correctAnswer": "Duas representações da mesma informação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dois meios necessariamente idênticos.": [
+          "MULTIPLE_REPRESENTATIONS_REVIEW"
+        ],
+        "Uma informação e um objeto físico real.": [
+          "MULTIPLE_REPRESENTATIONS_REVIEW"
+        ],
+        "Sinais sem nenhum significado possível.": [
+          "MULTIPLE_REPRESENTATIONS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_WORD_IMAGE",
+      "explanation": "Escrita e imagem podem codificar a mesma ideia.",
+      "hint": "O que as duas versões comunicam?",
+      "errorFocus": "MULTIPLE_REPRESENTATIONS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escrita e imagem podem codificar a mesma ideia.",
+        "incorrect": "Escrita e imagem podem codificar a mesma ideia.",
+        "hint": "O que as duas versões comunicam?",
+        "errorFocus": "MULTIPLE_REPRESENTATIONS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-35",
+      "statement": "Dois símbolos foram usados para a mesma atividade, mas a turma não combinou isso. O que ajuda a evitar confusão?",
+      "prompt": "Dois símbolos foram usados para a mesma atividade, mas a turma não combinou isso. O que ajuda a evitar confusão?",
+      "options": [
+        "Mudar a legenda toda vez que alguém pergunta.",
+        "Esconder os símbolos.",
+        "Atualizar a legenda para explicar os símbolos ou escolher um sinal consistente.",
+        "Dizer que não existe mensagem."
+      ],
+      "correctAnswer": "Atualizar a legenda para explicar os símbolos ou escolher um sinal consistente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Mudar a legenda toda vez que alguém pergunta.": [
+          "CONSISTENCY_REVIEW"
+        ],
+        "Esconder os símbolos.": [
+          "CONSISTENCY_REVIEW"
+        ],
+        "Dizer que não existe mensagem.": [
+          "CONSISTENCY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "REVIEW_AMBIGUOUS",
+      "explanation": "Uma regra estável permite que diferentes leitores interpretem o código de modo consistente.",
+      "hint": "O que precisa ficar combinado para todos?",
+      "errorFocus": "CONSISTENCY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma regra estável permite que diferentes leitores interpretem o código de modo consistente.",
+        "incorrect": "Uma regra estável permite que diferentes leitores interpretem o código de modo consistente.",
+        "hint": "O que precisa ficar combinado para todos?",
+        "errorFocus": "CONSISTENCY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-36",
+      "statement": "Uma palma combinada representa “minha vez” em um jogo. Qual elemento faz da palma um código?",
+      "prompt": "Uma palma combinada representa “minha vez” em um jogo. Qual elemento faz da palma um código?",
+      "options": [
+        "O volume da palma sem significado.",
+        "A cor do chão.",
+        "Uma regra que ninguém conhece.",
+        "A associação combinada entre o gesto e a informação."
+      ],
+      "correctAnswer": "A associação combinada entre o gesto e a informação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O volume da palma sem significado.": [
+          "GESTURE_CODE_REVIEW"
+        ],
+        "A cor do chão.": [
+          "GESTURE_CODE_REVIEW"
+        ],
+        "Uma regra que ninguém conhece.": [
+          "GESTURE_CODE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "REVIEW_GESTURE",
+      "explanation": "O gesto representa a mensagem quando seu significado é conhecido pelos participantes.",
+      "hint": "Qual significado foi associado ao gesto?",
+      "errorFocus": "GESTURE_CODE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O gesto representa a mensagem quando seu significado é conhecido pelos participantes.",
+        "incorrect": "O gesto representa a mensagem quando seu significado é conhecido pelos participantes.",
+        "hint": "Qual significado foi associado ao gesto?",
+        "errorFocus": "GESTURE_CODE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-37",
+      "statement": "Por que combinar cor e forma na legenda pode ajudar?",
+      "prompt": "Por que combinar cor e forma na legenda pode ajudar?",
+      "options": [
+        "Porque oferece mais de uma pista para reconhecer e interpretar o símbolo.",
+        "Porque elimina a necessidade de qualquer significado.",
+        "Porque todos percebem as cores do mesmo modo.",
+        "Porque a forma muda a mensagem sem aviso."
+      ],
+      "correctAnswer": "Porque oferece mais de uma pista para reconhecer e interpretar o símbolo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque elimina a necessidade de qualquer significado.": [
+          "ACCESS_CUE_REVIEW"
+        ],
+        "Porque todos percebem as cores do mesmo modo.": [
+          "ACCESS_CUE_REVIEW"
+        ],
+        "Porque a forma muda a mensagem sem aviso.": [
+          "ACCESS_CUE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "REVIEW_SHAPE_COLOR",
+      "explanation": "Pistas complementares apoiam diferentes formas de percepção.",
+      "hint": "Que pista continua disponível além da cor?",
+      "errorFocus": "ACCESS_CUE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Pistas complementares apoiam diferentes formas de percepção.",
+        "incorrect": "Pistas complementares apoiam diferentes formas de percepção.",
+        "hint": "Que pista continua disponível além da cor?",
+        "errorFocus": "ACCESS_CUE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-38",
+      "statement": "Uma mensagem codificada tem triângulo para “música”, mas a legenda diz triângulo = “leitura”. O que revisar?",
+      "prompt": "Uma mensagem codificada tem triângulo para “música”, mas a legenda diz triângulo = “leitura”. O que revisar?",
+      "options": [
+        "O nome da pessoa que leu.",
+        "A codificação ou a legenda, para que sinal e significado correspondam.",
+        "O papel em que a mensagem foi escrita, sem conferir a regra.",
+        "Uma informação pessoal sem relação."
+      ],
+      "correctAnswer": "A codificação ou a legenda, para que sinal e significado correspondam.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome da pessoa que leu.": [
+          "CODE_KEY_MISMATCH_REVIEW"
+        ],
+        "O papel em que a mensagem foi escrita, sem conferir a regra.": [
+          "CODE_KEY_MISMATCH_REVIEW"
+        ],
+        "Uma informação pessoal sem relação.": [
+          "CODE_KEY_MISMATCH_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_KEY_MATCH",
+      "explanation": "A divergência entre sinal e legenda precisa ser resolvida antes de interpretar a mensagem.",
+      "hint": "Compare símbolo e significado registrado.",
+      "errorFocus": "CODE_KEY_MISMATCH_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A divergência entre sinal e legenda precisa ser resolvida antes de interpretar a mensagem.",
+        "incorrect": "A divergência entre sinal e legenda precisa ser resolvida antes de interpretar a mensagem.",
+        "hint": "Compare símbolo e significado registrado.",
+        "errorFocus": "CODE_KEY_MISMATCH_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-39",
+      "statement": "Qual sequência mostra codificar e depois decodificar corretamente?",
+      "prompt": "Qual sequência mostra codificar e depois decodificar corretamente?",
+      "options": [
+        "Escolher sinais ao acaso e inventar uma legenda depois sem conferir.",
+        "Apagar a chave antes que alguém leia.",
+        "Escolher sinais segundo a legenda, compartilhar a mensagem e interpretar os sinais usando a mesma legenda.",
+        "Trocar significados durante a leitura sem avisar."
+      ],
+      "correctAnswer": "Escolher sinais segundo a legenda, compartilhar a mensagem e interpretar os sinais usando a mesma legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher sinais ao acaso e inventar uma legenda depois sem conferir.": [
+          "CODE_CYCLE_REVIEW"
+        ],
+        "Apagar a chave antes que alguém leia.": [
+          "CODE_CYCLE_REVIEW"
+        ],
+        "Trocar significados durante a leitura sem avisar.": [
+          "CODE_CYCLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_ENCODING_CYCLE",
+      "explanation": "A mesma regra orienta a produção e a leitura da mensagem.",
+      "hint": "A codificação e a decodificação usam qual referência comum?",
+      "errorFocus": "CODE_CYCLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A mesma regra orienta a produção e a leitura da mensagem.",
+        "incorrect": "A mesma regra orienta a produção e a leitura da mensagem.",
+        "hint": "A codificação e a decodificação usam qual referência comum?",
+        "errorFocus": "CODE_CYCLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-codings-fi-40",
+      "statement": "Qual é uma prática segura ao criar um código para uma atividade de aprendizagem?",
+      "prompt": "Qual é uma prática segura ao criar um código para uma atividade de aprendizagem?",
+      "options": [
+        "Escrever senhas reais e publicar a legenda.",
+        "Codificar endereços de casa para o mural.",
+        "Pedir dados privados para completar o jogo.",
+        "Usar mensagens fictícias ou autorizadas e não incluir senhas ou endereços pessoais."
+      ],
+      "correctAnswer": "Usar mensagens fictícias ou autorizadas e não incluir senhas ou endereços pessoais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escrever senhas reais e publicar a legenda.": [
+          "PRIVACY_REVIEW"
+        ],
+        "Codificar endereços de casa para o mural.": [
+          "PRIVACY_REVIEW"
+        ],
+        "Pedir dados privados para completar o jogo.": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PRIVACY",
+      "contextFamily": "REVIEW_SAFE",
+      "explanation": "A prática de codificação não exige coletar ou divulgar informações privadas.",
+      "hint": "O código pode ser praticado com uma mensagem pública fictícia?",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A prática de codificação não exige coletar ou divulgar informações privadas.",
+        "incorrect": "A prática de codificação não exige coletar ou divulgar informações privadas.",
+        "hint": "O código pode ser praticado com uma mensagem pública fictícia?",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Combinar cores com formas, padrões, palavras ou texturas; nunca depender só da cor para distinguir sinais.",
+          "Oferecer símbolos ampliados, táteis, com descrição oral e significado em comunicação alternativa.",
+          "Permitir que a criança escolha entre desenhar, apontar, gesticular, falar ou usar dispositivo assistivo.",
+          "Usar mensagens fictícias e códigos públicos de sala, sem ocultar ou compartilhar dados pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

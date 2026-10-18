@@ -1,0 +1,2034 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01lp15-meaning-groups-v1",
+  "canonicalSkillCode": "PORTUGUESE_GROUP_WORDS_BY_APPROXIMATE_AND_OPPOSITE_MEANING",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "aproximação e oposição de significados entre palavras",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP15",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Palavras de sentido parecido e de sentido oposto",
+    "objective": "Agrupar palavras que têm significados próximos e separar palavras que expressam ideias opostas, usando frases e situações simples para conferir o sentido.",
+    "summary": "Palavras sinônimas têm significados parecidos, embora nem sempre possam ser trocadas em qualquer frase. Palavras antônimas expressam sentidos opostos em uma situação, como aberto e fechado. Ler a frase inteira ajuda a escolher o grupo adequado.",
+    "explanation": "Leia a frase e pergunte o que a palavra quer dizer naquele contexto. Alegre e contente podem se aproximar quando descrevem como alguém se sente. Alto e baixo se opõem ao comparar a altura de dois objetos. Algumas palavras mudam de sentido conforme a frase; por isso, agrupe pelo significado em uso, não apenas pelo som ou pela aparência das letras.",
+    "workedExample": "Na frase “Bia ficou feliz ao receber o desenho”, contente pode ocupar um lugar de sentido próximo. Já na frase “A caixa está aberta”, fechada apresenta a ideia oposta à condição descrita. A comparação depende do sentido de cada palavra nessa situação.",
+    "commonMistake": "Escolher palavras apenas porque começam com as mesmas letras ou supor que todo sinônimo pode substituir outra palavra em qualquer frase.",
+    "priorKnowledge": [
+      "Ouvir e compreender palavras conhecidas em frases curtas.",
+      "Comparar duas situações ou características usando igual e diferente."
+    ],
+    "keyConcepts": [
+      "significado",
+      "palavras sinônimas",
+      "aproximação de sentido",
+      "palavras antônimas",
+      "oposição de sentido",
+      "contexto da frase"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "WORD_FORM_INSTEAD_OF_MEANING",
+        "action": "Leia as palavras em voz alta e pergunte se contam uma ideia parecida ou oposta na situação apresentada."
+      },
+      {
+        "errorFocus": "SYNONYM_AS_PERFECT_SUBSTITUTION",
+        "action": "Compare duas frases completas e converse sobre quando as palavras podem ou não ocupar o mesmo lugar."
+      },
+      {
+        "errorFocus": "CONTEXT_IGNORED",
+        "action": "Use uma imagem ou dramatização para mostrar o sentido antes de formar os grupos de palavras."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+      "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp15-word-family-cards",
+        "title": "Grupos de palavras",
+        "instructions": "Cartões trazem palavras e pequenas frases sobre objetos e sentimentos cotidianos.\n1. Leia ou ouça a frase de cada cartão.\n2. Agrupe palavras de sentido próximo ou separe as de sentido oposto.\n3. Explique uma escolha usando a pista da frase.",
+        "steps": [
+          "Leia ou ouça a frase de cada cartão.",
+          "Agrupe palavras de sentido próximo ou separe as de sentido oposto.",
+          "Explique uma escolha usando a pista da frase."
+        ],
+        "evidence": "Dois grupos explicados pela aproximação ou oposição do significado em contexto.",
+        "privacyGuard": "Usar nomes fictícios e exemplos neutros; não solicitar relatos pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma palavra com mediação.",
+            "developing": "agrupa palavras com uma pista contextual.",
+            "proficient": "explica por que os sentidos se aproximam ou se opõem na frase."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp15-opposite-pairs-story",
+        "title": "Uma história de contrastes",
+        "instructions": "Uma história curta descreve uma caixa, uma porta e dois personagens com sentimentos variados.\n1. Localize uma palavra que descreve cada cena.\n2. Escolha outra palavra de sentido próximo ou oposto.\n3. Reconte a cena e explique como o significado mudou.",
+        "steps": [
+          "Localize uma palavra que descreve cada cena.",
+          "Escolha outra palavra de sentido próximo ou oposto.",
+          "Reconte a cena e explique como o significado mudou."
+        ],
+        "evidence": "Par escolhido com justificativa apoiada no sentido da cena.",
+        "privacyGuard": "A história e os personagens são fictícios e não pedem exposição de experiências pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma palavra conhecida.",
+            "developing": "encontra um par possível com apoio.",
+            "proficient": "relaciona o par à situação sem tratar sinônimos como idênticos em todo contexto."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01lp15-meaning-groups-v1-01",
+          "bncc-ef01lp15-meaning-groups-v1-02",
+          "bncc-ef01lp15-meaning-groups-v1-03",
+          "bncc-ef01lp15-meaning-groups-v1-04",
+          "bncc-ef01lp15-meaning-groups-v1-05",
+          "bncc-ef01lp15-meaning-groups-v1-06",
+          "bncc-ef01lp15-meaning-groups-v1-07",
+          "bncc-ef01lp15-meaning-groups-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01lp15-meaning-groups-v1-09",
+          "bncc-ef01lp15-meaning-groups-v1-10",
+          "bncc-ef01lp15-meaning-groups-v1-11",
+          "bncc-ef01lp15-meaning-groups-v1-12",
+          "bncc-ef01lp15-meaning-groups-v1-13",
+          "bncc-ef01lp15-meaning-groups-v1-14",
+          "bncc-ef01lp15-meaning-groups-v1-15",
+          "bncc-ef01lp15-meaning-groups-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01lp15-meaning-groups-v1-17",
+          "bncc-ef01lp15-meaning-groups-v1-18",
+          "bncc-ef01lp15-meaning-groups-v1-19",
+          "bncc-ef01lp15-meaning-groups-v1-20",
+          "bncc-ef01lp15-meaning-groups-v1-21",
+          "bncc-ef01lp15-meaning-groups-v1-22",
+          "bncc-ef01lp15-meaning-groups-v1-23",
+          "bncc-ef01lp15-meaning-groups-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01lp15-meaning-groups-v1-25",
+          "bncc-ef01lp15-meaning-groups-v1-26",
+          "bncc-ef01lp15-meaning-groups-v1-27",
+          "bncc-ef01lp15-meaning-groups-v1-28",
+          "bncc-ef01lp15-meaning-groups-v1-29",
+          "bncc-ef01lp15-meaning-groups-v1-30",
+          "bncc-ef01lp15-meaning-groups-v1-31",
+          "bncc-ef01lp15-meaning-groups-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01lp15-meaning-groups-v1-33",
+          "bncc-ef01lp15-meaning-groups-v1-34",
+          "bncc-ef01lp15-meaning-groups-v1-35",
+          "bncc-ef01lp15-meaning-groups-v1-36",
+          "bncc-ef01lp15-meaning-groups-v1-37",
+          "bncc-ef01lp15-meaning-groups-v1-38",
+          "bncc-ef01lp15-meaning-groups-v1-39",
+          "bncc-ef01lp15-meaning-groups-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP15",
+        "descriptor": "Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-01",
+      "statement": "Na frase “Lia ficou feliz”, qual palavra pode ter sentido parecido nesse contexto?",
+      "prompt": "Na frase “Lia ficou feliz”, qual palavra pode ter sentido parecido nesse contexto?",
+      "options": [
+        "Contente.",
+        "Molhada",
+        "Vazia",
+        "Distante"
+      ],
+      "correctAnswer": "Contente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Molhada": [
+          "SYNONYM_MEANING_APPROXIMATION"
+        ],
+        "Vazia": [
+          "SYNONYM_MEANING_APPROXIMATION"
+        ],
+        "Distante": [
+          "SYNONYM_MEANING_APPROXIMATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FELIZ_E_CONTENTE",
+      "explanation": "Feliz e contente podem descrever uma alegria parecida.",
+      "hint": "Pense em como Lia se sente.",
+      "errorFocus": "SYNONYM_MEANING_APPROXIMATION",
+      "feedback": {
+        "correct": "Boa observação: Feliz e contente podem descrever uma alegria parecida.",
+        "incorrect": "Feliz e contente podem descrever uma alegria parecida.",
+        "hint": "Pense em como Lia se sente.",
+        "errorFocus": "SYNONYM_MEANING_APPROXIMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-02",
+      "statement": "A janela está aberta. Qual palavra apresenta a ideia oposta?",
+      "prompt": "A janela está aberta. Qual palavra apresenta a ideia oposta?",
+      "options": [
+        "Grande",
+        "Fechada.",
+        "Limpa",
+        "Rápida"
+      ],
+      "correctAnswer": "Fechada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Grande": [
+          "ANTONYM_CONTEXT_OPPOSITION"
+        ],
+        "Limpa": [
+          "ANTONYM_CONTEXT_OPPOSITION"
+        ],
+        "Rápida": [
+          "ANTONYM_CONTEXT_OPPOSITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ABERTO_E_FECHADO",
+      "explanation": "Aberta e fechada indicam condições opostas da janela.",
+      "hint": "Imagine a janela depois de fechar.",
+      "errorFocus": "ANTONYM_CONTEXT_OPPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Aberta e fechada indicam condições opostas da janela.",
+        "incorrect": "Aberta e fechada indicam condições opostas da janela.",
+        "hint": "Imagine a janela depois de fechar.",
+        "errorFocus": "ANTONYM_CONTEXT_OPPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-03",
+      "statement": "Qual par pode ser separado por expressar sentidos opostos ao comparar uma pilha?",
+      "prompt": "Qual par pode ser separado por expressar sentidos opostos ao comparar uma pilha?",
+      "options": [
+        "Feliz e contente",
+        "Perto e próximo",
+        "Alto e baixo.",
+        "Bonito e belo"
+      ],
+      "correctAnswer": "Alto e baixo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Feliz e contente": [
+          "ANTONYM_PAIR_RECOGNITION"
+        ],
+        "Perto e próximo": [
+          "ANTONYM_PAIR_RECOGNITION"
+        ],
+        "Bonito e belo": [
+          "ANTONYM_PAIR_RECOGNITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ALTO_E_BAIXO",
+      "explanation": "Alto e baixo se opõem quando descrevem a altura.",
+      "hint": "Procure o par de oposição.",
+      "errorFocus": "ANTONYM_PAIR_RECOGNITION",
+      "feedback": {
+        "correct": "Boa observação: Alto e baixo se opõem quando descrevem a altura.",
+        "incorrect": "Alto e baixo se opõem quando descrevem a altura.",
+        "hint": "Procure o par de oposição.",
+        "errorFocus": "ANTONYM_PAIR_RECOGNITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-04",
+      "statement": "Uma criança diz que o desenho ficou bonito. Qual palavra pode se aproximar desse sentido?",
+      "prompt": "Uma criança diz que o desenho ficou bonito. Qual palavra pode se aproximar desse sentido?",
+      "options": [
+        "Escuro",
+        "Curto",
+        "Lento",
+        "Belo."
+      ],
+      "correctAnswer": "Belo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escuro": [
+          "SYNONYM_CONTEXT_MATCH"
+        ],
+        "Curto": [
+          "SYNONYM_CONTEXT_MATCH"
+        ],
+        "Lento": [
+          "SYNONYM_CONTEXT_MATCH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BONITO_E_BELO",
+      "explanation": "Bonito e belo podem descrever algo agradável de ver.",
+      "hint": "Pense em uma descrição parecida.",
+      "errorFocus": "SYNONYM_CONTEXT_MATCH",
+      "feedback": {
+        "correct": "Boa observação: Bonito e belo podem descrever algo agradável de ver.",
+        "incorrect": "Bonito e belo podem descrever algo agradável de ver.",
+        "hint": "Pense em uma descrição parecida.",
+        "errorFocus": "SYNONYM_CONTEXT_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-05",
+      "statement": "Ao falar da temperatura de uma bebida, quais palavras expressam ideias opostas?",
+      "prompt": "Ao falar da temperatura de uma bebida, quais palavras expressam ideias opostas?",
+      "options": [
+        "Quente e frio.",
+        "Morno e aquecido",
+        "Doce e saboroso",
+        "Cheio e repleto"
+      ],
+      "correctAnswer": "Quente e frio.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Morno e aquecido": [
+          "TEMPERATURE_ANTONYMS"
+        ],
+        "Doce e saboroso": [
+          "TEMPERATURE_ANTONYMS"
+        ],
+        "Cheio e repleto": [
+          "TEMPERATURE_ANTONYMS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "QUENTE_E_FRIO",
+      "explanation": "Quente e frio se opõem na descrição da temperatura.",
+      "hint": "Compare as sensações.",
+      "errorFocus": "TEMPERATURE_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Quente e frio se opõem na descrição da temperatura.",
+        "incorrect": "Quente e frio se opõem na descrição da temperatura.",
+        "hint": "Compare as sensações.",
+        "errorFocus": "TEMPERATURE_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-06",
+      "statement": "O banco está perto da porta. Qual palavra pode ter sentido parecido?",
+      "prompt": "O banco está perto da porta. Qual palavra pode ter sentido parecido?",
+      "options": [
+        "Afastado",
+        "Próximo.",
+        "Pesado",
+        "Alegre"
+      ],
+      "correctAnswer": "Próximo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Afastado": [
+          "SPATIAL_SYNONYM"
+        ],
+        "Pesado": [
+          "SPATIAL_SYNONYM"
+        ],
+        "Alegre": [
+          "SPATIAL_SYNONYM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PERTO_E_PROXIMO",
+      "explanation": "Perto e próximo podem indicar pequena distância nesse contexto.",
+      "hint": "Pense na distância até a porta.",
+      "errorFocus": "SPATIAL_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Perto e próximo podem indicar pequena distância nesse contexto.",
+        "incorrect": "Perto e próximo podem indicar pequena distância nesse contexto.",
+        "hint": "Pense na distância até a porta.",
+        "errorFocus": "SPATIAL_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-07",
+      "statement": "Uma garrafa sem água está vazia. Qual palavra expressa a condição oposta?",
+      "prompt": "Uma garrafa sem água está vazia. Qual palavra expressa a condição oposta?",
+      "options": [
+        "Nova",
+        "Fria",
+        "Cheia.",
+        "Pequena"
+      ],
+      "correctAnswer": "Cheia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Nova": [
+          "CONTAINER_STATE_ANTONYMS"
+        ],
+        "Fria": [
+          "CONTAINER_STATE_ANTONYMS"
+        ],
+        "Pequena": [
+          "CONTAINER_STATE_ANTONYMS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CHEIO_E_VAZIO",
+      "explanation": "Cheia e vazia são condições opostas da garrafa.",
+      "hint": "Imagine a garrafa com água.",
+      "errorFocus": "CONTAINER_STATE_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Cheia e vazia são condições opostas da garrafa.",
+        "incorrect": "Cheia e vazia são condições opostas da garrafa.",
+        "hint": "Imagine a garrafa com água.",
+        "errorFocus": "CONTAINER_STATE_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-08",
+      "statement": "Para agrupar duas palavras corretamente, o que deve ser comparado?",
+      "prompt": "Para agrupar duas palavras corretamente, o que deve ser comparado?",
+      "options": [
+        "O número de letras",
+        "A primeira letra",
+        "O tamanho do cartão",
+        "O significado delas na situação."
+      ],
+      "correctAnswer": "O significado delas na situação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O número de letras": [
+          "MEANING_OVER_WORD_SHAPE"
+        ],
+        "A primeira letra": [
+          "MEANING_OVER_WORD_SHAPE"
+        ],
+        "O tamanho do cartão": [
+          "MEANING_OVER_WORD_SHAPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CRITERIO_DE_GRUPO",
+      "explanation": "O grupo depende do sentido, não da aparência escrita.",
+      "hint": "Leia a frase antes de agrupar.",
+      "errorFocus": "MEANING_OVER_WORD_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: O grupo depende do sentido, não da aparência escrita.",
+        "incorrect": "O grupo depende do sentido, não da aparência escrita.",
+        "hint": "Leia a frase antes de agrupar.",
+        "errorFocus": "MEANING_OVER_WORD_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-09",
+      "statement": "O caminho do desenho é longo. Qual palavra pode se aproximar desse sentido?",
+      "prompt": "O caminho do desenho é longo. Qual palavra pode se aproximar desse sentido?",
+      "options": [
+        "Extenso.",
+        "Curto",
+        "Vazio",
+        "Macio"
+      ],
+      "correctAnswer": "Extenso.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Curto": [
+          "LENGTH_SYNONYM_IN_CONTEXT"
+        ],
+        "Vazio": [
+          "LENGTH_SYNONYM_IN_CONTEXT"
+        ],
+        "Macio": [
+          "LENGTH_SYNONYM_IN_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CAMINHO_LONGO_E_EXTENSO",
+      "explanation": "Longo e extenso podem indicar grande comprimento do caminho.",
+      "hint": "Pense no comprimento.",
+      "errorFocus": "LENGTH_SYNONYM_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Longo e extenso podem indicar grande comprimento do caminho.",
+        "incorrect": "Longo e extenso podem indicar grande comprimento do caminho.",
+        "hint": "Pense no comprimento.",
+        "errorFocus": "LENGTH_SYNONYM_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-10",
+      "statement": "Um livro novo é comparado a um livro antigo. Qual par de palavras mostra oposição?",
+      "prompt": "Um livro novo é comparado a um livro antigo. Qual par de palavras mostra oposição?",
+      "options": [
+        "Pequeno e miúdo",
+        "Novo e antigo.",
+        "Alegre e contente",
+        "Feliz e contente"
+      ],
+      "correctAnswer": "Novo e antigo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pequeno e miúdo": [
+          "AGE_ANTONYMS"
+        ],
+        "Alegre e contente": [
+          "AGE_ANTONYMS"
+        ],
+        "Feliz e contente": [
+          "AGE_ANTONYMS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVRO_NOVO_E_ANTIGO",
+      "explanation": "Novo e antigo ocupam sentidos opostos na comparação apresentada.",
+      "hint": "Compare o tempo de uso.",
+      "errorFocus": "AGE_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Novo e antigo ocupam sentidos opostos na comparação apresentada.",
+        "incorrect": "Novo e antigo ocupam sentidos opostos na comparação apresentada.",
+        "hint": "Compare o tempo de uso.",
+        "errorFocus": "AGE_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-11",
+      "statement": "Na frase “A mesa ficou limpa depois de ser lavada”, qual palavra expressa sentido oposto a limpa?",
+      "prompt": "Na frase “A mesa ficou limpa depois de ser lavada”, qual palavra expressa sentido oposto a limpa?",
+      "options": [
+        "Clara",
+        "Leve",
+        "Suja.",
+        "Lisa"
+      ],
+      "correctAnswer": "Suja.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Clara": [
+          "CLEANNESS_ANTONYM"
+        ],
+        "Leve": [
+          "CLEANNESS_ANTONYM"
+        ],
+        "Lisa": [
+          "CLEANNESS_ANTONYM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MESA_LIMPA_E_SUJA",
+      "explanation": "Suja descreve a condição contrária à limpeza nessa frase.",
+      "hint": "Pense na mesa antes de lavar.",
+      "errorFocus": "CLEANNESS_ANTONYM",
+      "feedback": {
+        "correct": "Boa observação: Suja descreve a condição contrária à limpeza nessa frase.",
+        "incorrect": "Suja descreve a condição contrária à limpeza nessa frase.",
+        "hint": "Pense na mesa antes de lavar.",
+        "errorFocus": "CLEANNESS_ANTONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-12",
+      "statement": "A voz da personagem está baixa. Qual palavra não é antônimo direto dessa descrição?",
+      "prompt": "A voz da personagem está baixa. Qual palavra não é antônimo direto dessa descrição?",
+      "options": [
+        "Alta",
+        "Forte",
+        "Elevada",
+        "Suave."
+      ],
+      "correctAnswer": "Suave.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Alta": [
+          "DISTINGUISH_SYNONYM_FROM_ANTONYM"
+        ],
+        "Forte": [
+          "DISTINGUISH_SYNONYM_FROM_ANTONYM"
+        ],
+        "Elevada": [
+          "DISTINGUISH_SYNONYM_FROM_ANTONYM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "VOZ_BAIXA_E_SUAVE",
+      "explanation": "Suave pode descrever uma qualidade diferente, enquanto alta se opõe a baixa.",
+      "hint": "Compare o volume da voz.",
+      "errorFocus": "DISTINGUISH_SYNONYM_FROM_ANTONYM",
+      "feedback": {
+        "correct": "Boa observação: Suave pode descrever uma qualidade diferente, enquanto alta se opõe a baixa.",
+        "incorrect": "Suave pode descrever uma qualidade diferente, enquanto alta se opõe a baixa.",
+        "hint": "Compare o volume da voz.",
+        "errorFocus": "DISTINGUISH_SYNONYM_FROM_ANTONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-13",
+      "statement": "A rua está calma no conto. Qual palavra pode aproximar o sentido?",
+      "prompt": "A rua está calma no conto. Qual palavra pode aproximar o sentido?",
+      "options": [
+        "Tranquila.",
+        "Agitada",
+        "Distante",
+        "Íngreme"
+      ],
+      "correctAnswer": "Tranquila.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Agitada": [
+          "CALMNESS_SYNONYM"
+        ],
+        "Distante": [
+          "CALMNESS_SYNONYM"
+        ],
+        "Íngreme": [
+          "CALMNESS_SYNONYM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RUA_CALMA_E_TRANQUILA",
+      "explanation": "Calma e tranquila descrevem pouca agitação na cena.",
+      "hint": "Imagine o movimento da rua.",
+      "errorFocus": "CALMNESS_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Calma e tranquila descrevem pouca agitação na cena.",
+        "incorrect": "Calma e tranquila descrevem pouca agitação na cena.",
+        "hint": "Imagine o movimento da rua.",
+        "errorFocus": "CALMNESS_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-14",
+      "statement": "Na história, a porta fica aberta. Qual palavra completa a ideia oposta: aberta/___?",
+      "prompt": "Na história, a porta fica aberta. Qual palavra completa a ideia oposta: aberta/___?",
+      "options": [
+        "Colorida",
+        "Fechada.",
+        "Alta",
+        "Larga"
+      ],
+      "correctAnswer": "Fechada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Colorida": [
+          "OPEN_CLOSED_OPPOSITION"
+        ],
+        "Alta": [
+          "OPEN_CLOSED_OPPOSITION"
+        ],
+        "Larga": [
+          "OPEN_CLOSED_OPPOSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PORTA_ABERTA_NA_HISTORIA",
+      "explanation": "Fechada é a condição contrária à indicada no texto.",
+      "hint": "Pense na ação de encostar a porta.",
+      "errorFocus": "OPEN_CLOSED_OPPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Fechada é a condição contrária à indicada no texto.",
+        "incorrect": "Fechada é a condição contrária à indicada no texto.",
+        "hint": "Pense na ação de encostar a porta.",
+        "errorFocus": "OPEN_CLOSED_OPPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-15",
+      "statement": "A caixa é grande. Qual palavra pode se aproximar desse sentido, sem afirmar que é sempre igual?",
+      "prompt": "A caixa é grande. Qual palavra pode se aproximar desse sentido, sem afirmar que é sempre igual?",
+      "options": [
+        "Pequena",
+        "Vazia",
+        "Enorme.",
+        "Redonda"
+      ],
+      "correctAnswer": "Enorme.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pequena": [
+          "SIZE_SYNONYM_APPROXIMATION"
+        ],
+        "Vazia": [
+          "SIZE_SYNONYM_APPROXIMATION"
+        ],
+        "Redonda": [
+          "SIZE_SYNONYM_APPROXIMATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CAIXA_GRANDE_E_ENORME",
+      "explanation": "Grande e enorme indicam tamanho amplo, com intensidade diferente.",
+      "hint": "Compare o tamanho descrito.",
+      "errorFocus": "SIZE_SYNONYM_APPROXIMATION",
+      "feedback": {
+        "correct": "Boa observação: Grande e enorme indicam tamanho amplo, com intensidade diferente.",
+        "incorrect": "Grande e enorme indicam tamanho amplo, com intensidade diferente.",
+        "hint": "Compare o tamanho descrito.",
+        "errorFocus": "SIZE_SYNONYM_APPROXIMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-16",
+      "statement": "Na frase “O dia está claro”, a palavra claro descreve a iluminação. O que ajuda a escolher uma palavra próxima?",
+      "prompt": "Na frase “O dia está claro”, a palavra claro descreve a iluminação. O que ajuda a escolher uma palavra próxima?",
+      "options": [
+        "Contar as letras de claro",
+        "Escolher qualquer palavra curta",
+        "Ignorar o sentido da frase",
+        "Ler o restante da frase."
+      ],
+      "correctAnswer": "Ler o restante da frase.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Contar as letras de claro": [
+          "CONTEXT_GUIDES_WORD_MEANING"
+        ],
+        "Escolher qualquer palavra curta": [
+          "CONTEXT_GUIDES_WORD_MEANING"
+        ],
+        "Ignorar o sentido da frase": [
+          "CONTEXT_GUIDES_WORD_MEANING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "FRASE_COM_PALAVRA_POLISSEMICA",
+      "explanation": "O contexto mostra qual sentido da palavra está em uso.",
+      "hint": "Veja o que está sendo descrito.",
+      "errorFocus": "CONTEXT_GUIDES_WORD_MEANING",
+      "feedback": {
+        "correct": "Boa observação: O contexto mostra qual sentido da palavra está em uso.",
+        "incorrect": "O contexto mostra qual sentido da palavra está em uso.",
+        "hint": "Veja o que está sendo descrito.",
+        "errorFocus": "CONTEXT_GUIDES_WORD_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-17",
+      "statement": "Um bilhete diz que o brinquedo é pequeno. Qual palavra pode aproximar esse significado?",
+      "prompt": "Um bilhete diz que o brinquedo é pequeno. Qual palavra pode aproximar esse significado?",
+      "options": [
+        "Miúdo.",
+        "Enorme",
+        "Barulhento",
+        "Quente"
+      ],
+      "correctAnswer": "Miúdo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Enorme": [
+          "SMALLNESS_SYNONYM"
+        ],
+        "Barulhento": [
+          "SMALLNESS_SYNONYM"
+        ],
+        "Quente": [
+          "SMALLNESS_SYNONYM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BILHETE_DE_BRINQUEDO",
+      "explanation": "Pequeno e miúdo podem indicar pouco tamanho nesse contexto.",
+      "hint": "Pense no tamanho do brinquedo.",
+      "errorFocus": "SMALLNESS_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Pequeno e miúdo podem indicar pouco tamanho nesse contexto.",
+        "incorrect": "Pequeno e miúdo podem indicar pouco tamanho nesse contexto.",
+        "hint": "Pense no tamanho do brinquedo.",
+        "errorFocus": "SMALLNESS_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-18",
+      "statement": "Na história, a sala ficou escura quando a luz apagou. Qual palavra se opõe a escura?",
+      "prompt": "Na história, a sala ficou escura quando a luz apagou. Qual palavra se opõe a escura?",
+      "options": [
+        "Vazia",
+        "Clara.",
+        "Distante",
+        "Silenciosa"
+      ],
+      "correctAnswer": "Clara.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Vazia": [
+          "LIGHT_DARK_ANTONYMS"
+        ],
+        "Distante": [
+          "LIGHT_DARK_ANTONYMS"
+        ],
+        "Silenciosa": [
+          "LIGHT_DARK_ANTONYMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HISTORIA_DA_LUZ",
+      "explanation": "Clara e escura se opõem ao descrever a iluminação da sala.",
+      "hint": "Imagine a luz acesa.",
+      "errorFocus": "LIGHT_DARK_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Clara e escura se opõem ao descrever a iluminação da sala.",
+        "incorrect": "Clara e escura se opõem ao descrever a iluminação da sala.",
+        "hint": "Imagine a luz acesa.",
+        "errorFocus": "LIGHT_DARK_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-19",
+      "statement": "O convite pede uma chegada rápida. Qual palavra pode se aproximar desse sentido?",
+      "prompt": "O convite pede uma chegada rápida. Qual palavra pode se aproximar desse sentido?",
+      "options": [
+        "Demorada",
+        "Pesada",
+        "Veloz.",
+        "Fria"
+      ],
+      "correctAnswer": "Veloz.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Demorada": [
+          "SPEED_SYNONYM"
+        ],
+        "Pesada": [
+          "SPEED_SYNONYM"
+        ],
+        "Fria": [
+          "SPEED_SYNONYM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CONVITE_RAPIDO",
+      "explanation": "Rápida e veloz podem descrever pouco tempo para realizar o movimento.",
+      "hint": "Pense em algo que chega depressa.",
+      "errorFocus": "SPEED_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Rápida e veloz podem descrever pouco tempo para realizar o movimento.",
+        "incorrect": "Rápida e veloz podem descrever pouco tempo para realizar o movimento.",
+        "hint": "Pense em algo que chega depressa.",
+        "errorFocus": "SPEED_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-20",
+      "statement": "Uma personagem enfrenta uma tarefa difícil com coragem. Qual palavra pode se aproximar de corajosa?",
+      "prompt": "Uma personagem enfrenta uma tarefa difícil com coragem. Qual palavra pode se aproximar de corajosa?",
+      "options": [
+        "Assustada",
+        "Pequena",
+        "Quietinha",
+        "Valente."
+      ],
+      "correctAnswer": "Valente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Assustada": [
+          "COURAGE_SYNONYM"
+        ],
+        "Pequena": [
+          "COURAGE_SYNONYM"
+        ],
+        "Quietinha": [
+          "COURAGE_SYNONYM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PERSONAGEM_CORAJOSA",
+      "explanation": "Valente e corajosa podem descrever disposição para enfrentar uma dificuldade.",
+      "hint": "Procure uma palavra de sentido parecido.",
+      "errorFocus": "COURAGE_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Valente e corajosa podem descrever disposição para enfrentar uma dificuldade.",
+        "incorrect": "Valente e corajosa podem descrever disposição para enfrentar uma dificuldade.",
+        "hint": "Procure uma palavra de sentido parecido.",
+        "errorFocus": "COURAGE_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-21",
+      "statement": "Um papel molhado é colocado ao lado de outro seco. Qual par expressa oposição?",
+      "prompt": "Um papel molhado é colocado ao lado de outro seco. Qual par expressa oposição?",
+      "options": [
+        "Molhado e seco.",
+        "Úmido e molhado",
+        "Novo e recente",
+        "Claro e iluminado"
+      ],
+      "correctAnswer": "Molhado e seco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Úmido e molhado": [
+          "MOISTURE_ANTONYMS"
+        ],
+        "Novo e recente": [
+          "MOISTURE_ANTONYMS"
+        ],
+        "Claro e iluminado": [
+          "MOISTURE_ANTONYMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PAPEL_SECO_E_MOLHADO",
+      "explanation": "Molhado e seco descrevem condições opostas do papel.",
+      "hint": "Compare a presença de água.",
+      "errorFocus": "MOISTURE_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Molhado e seco descrevem condições opostas do papel.",
+        "incorrect": "Molhado e seco descrevem condições opostas do papel.",
+        "hint": "Compare a presença de água.",
+        "errorFocus": "MOISTURE_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-22",
+      "statement": "A fila no desenho é curta. Qual palavra expressa a ideia oposta?",
+      "prompt": "A fila no desenho é curta. Qual palavra expressa a ideia oposta?",
+      "options": [
+        "Pequena",
+        "Comprida.",
+        "Baixa",
+        "Vazia"
+      ],
+      "correctAnswer": "Comprida.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pequena": [
+          "LENGTH_ANTONYMS"
+        ],
+        "Baixa": [
+          "LENGTH_ANTONYMS"
+        ],
+        "Vazia": [
+          "LENGTH_ANTONYMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FILA_CURTA_E_COMPRIDA",
+      "explanation": "Curta e comprida se opõem quanto à extensão da fila.",
+      "hint": "Conte como a fila se estende.",
+      "errorFocus": "LENGTH_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Curta e comprida se opõem quanto à extensão da fila.",
+        "incorrect": "Curta e comprida se opõem quanto à extensão da fila.",
+        "hint": "Conte como a fila se estende.",
+        "errorFocus": "LENGTH_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-23",
+      "statement": "Na frase “O suco está doce”, qual pergunta ajuda a encontrar uma palavra de sentido oposto?",
+      "prompt": "Na frase “O suco está doce”, qual pergunta ajuda a encontrar uma palavra de sentido oposto?",
+      "options": [
+        "Quantas letras há em suco?",
+        "Qual é a cor do copo?",
+        "Que sabor contrasta com doce nesta situação?",
+        "Quem escreveu a frase?"
+      ],
+      "correctAnswer": "Que sabor contrasta com doce nesta situação?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quantas letras há em suco?": [
+          "SEMANTIC_CRITERION_IN_CONTEXT"
+        ],
+        "Qual é a cor do copo?": [
+          "SEMANTIC_CRITERION_IN_CONTEXT"
+        ],
+        "Quem escreveu a frase?": [
+          "SEMANTIC_CRITERION_IN_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LEGENDA_DE_SABOR",
+      "explanation": "A pergunta orienta a comparação pelo significado de sabor.",
+      "hint": "Pense no sentido usado na frase.",
+      "errorFocus": "SEMANTIC_CRITERION_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A pergunta orienta a comparação pelo significado de sabor.",
+        "incorrect": "A pergunta orienta a comparação pelo significado de sabor.",
+        "hint": "Pense no sentido usado na frase.",
+        "errorFocus": "SEMANTIC_CRITERION_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-24",
+      "statement": "Uma frase diz “chuva leve” e outra, “chuva fraca”. O que essas expressões podem ter em comum?",
+      "prompt": "Uma frase diz “chuva leve” e outra, “chuva fraca”. O que essas expressões podem ter em comum?",
+      "options": [
+        "São palavras de sentido oposto",
+        "Indicam que não houve chuva",
+        "Mostram a cor das nuvens",
+        "Podem descrever uma chuva de pouca intensidade."
+      ],
+      "correctAnswer": "Podem descrever uma chuva de pouca intensidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "São palavras de sentido oposto": [
+          "APPROXIMATE_SYNONYMS"
+        ],
+        "Indicam que não houve chuva": [
+          "APPROXIMATE_SYNONYMS"
+        ],
+        "Mostram a cor das nuvens": [
+          "APPROXIMATE_SYNONYMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_DESCRICOES_DE_CHUVA",
+      "explanation": "Leve e fraca podem se aproximar ao descrever a intensidade nesse contexto.",
+      "hint": "Compare a intensidade indicada.",
+      "errorFocus": "APPROXIMATE_SYNONYMS",
+      "feedback": {
+        "correct": "Boa observação: Leve e fraca podem se aproximar ao descrever a intensidade nesse contexto.",
+        "incorrect": "Leve e fraca podem se aproximar ao descrever a intensidade nesse contexto.",
+        "hint": "Compare a intensidade indicada.",
+        "errorFocus": "APPROXIMATE_SYNONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-25",
+      "statement": "Alta e baixa expressam sentidos opostos quando falamos da altura de uma parede. Esse par é de",
+      "prompt": "Alta e baixa expressam sentidos opostos quando falamos da altura de uma parede. Esse par é de",
+      "options": [
+        "antônimos.",
+        "sinônimos",
+        "nomes de pessoas",
+        "palavras iguais na escrita"
+      ],
+      "correctAnswer": "antônimos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sinônimos": [
+          "ANTONYM_DEFINITION"
+        ],
+        "nomes de pessoas": [
+          "ANTONYM_DEFINITION"
+        ],
+        "palavras iguais na escrita": [
+          "ANTONYM_DEFINITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PAREDE_ALTA_E_BAIXA",
+      "explanation": "Antônimos expressam sentidos opostos em determinado contexto.",
+      "hint": "Lembre a ideia de oposição.",
+      "errorFocus": "ANTONYM_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: Antônimos expressam sentidos opostos em determinado contexto.",
+        "incorrect": "Antônimos expressam sentidos opostos em determinado contexto.",
+        "hint": "Lembre a ideia de oposição.",
+        "errorFocus": "ANTONYM_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-26",
+      "statement": "Feliz e contente podem ser chamados de sinônimos quando descrevem",
+      "prompt": "Feliz e contente podem ser chamados de sinônimos quando descrevem",
+      "options": [
+        "tamanhos opostos",
+        "sentimentos parecidos.",
+        "lugares distantes",
+        "objetos sem relação"
+      ],
+      "correctAnswer": "sentimentos parecidos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "tamanhos opostos": [
+          "SYNONYM_DEFINITION"
+        ],
+        "lugares distantes": [
+          "SYNONYM_DEFINITION"
+        ],
+        "objetos sem relação": [
+          "SYNONYM_DEFINITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "FELIZ_E_CONTENTE_REVISAO",
+      "explanation": "Sinônimos têm significados próximos, sem precisar ser idênticos em toda frase.",
+      "hint": "Pense no sentimento descrito.",
+      "errorFocus": "SYNONYM_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: Sinônimos têm significados próximos, sem precisar ser idênticos em toda frase.",
+        "incorrect": "Sinônimos têm significados próximos, sem precisar ser idênticos em toda frase.",
+        "hint": "Pense no sentimento descrito.",
+        "errorFocus": "SYNONYM_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-27",
+      "statement": "Um brinquedo está dentro da caixa. Qual palavra indica a posição oposta?",
+      "prompt": "Um brinquedo está dentro da caixa. Qual palavra indica a posição oposta?",
+      "options": [
+        "Perto",
+        "Novo",
+        "Fora.",
+        "Alto"
+      ],
+      "correctAnswer": "Fora.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Perto": [
+          "CONTAINMENT_ANTONYMS"
+        ],
+        "Novo": [
+          "CONTAINMENT_ANTONYMS"
+        ],
+        "Alto": [
+          "CONTAINMENT_ANTONYMS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DENTRO_E_FORA_DA_CAIXA",
+      "explanation": "Dentro e fora se opõem quanto à posição em relação à caixa.",
+      "hint": "Imagine o brinquedo do lado de fora.",
+      "errorFocus": "CONTAINMENT_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Dentro e fora se opõem quanto à posição em relação à caixa.",
+        "incorrect": "Dentro e fora se opõem quanto à posição em relação à caixa.",
+        "hint": "Imagine o brinquedo do lado de fora.",
+        "errorFocus": "CONTAINMENT_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-28",
+      "statement": "Qual par pode ser agrupado por aproximação de significado?",
+      "prompt": "Qual par pode ser agrupado por aproximação de significado?",
+      "options": [
+        "Cheio e vazio",
+        "Alto e baixo",
+        "Aberto e fechado",
+        "Alegre e contente."
+      ],
+      "correctAnswer": "Alegre e contente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cheio e vazio": [
+          "SYNONYM_GROUPING"
+        ],
+        "Alto e baixo": [
+          "SYNONYM_GROUPING"
+        ],
+        "Aberto e fechado": [
+          "SYNONYM_GROUPING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SORRISO_ALEGRE_E_CONTENTE",
+      "explanation": "Alegre e contente podem expressar uma sensação parecida.",
+      "hint": "Compare o sentimento.",
+      "errorFocus": "SYNONYM_GROUPING",
+      "feedback": {
+        "correct": "Boa observação: Alegre e contente podem expressar uma sensação parecida.",
+        "incorrect": "Alegre e contente podem expressar uma sensação parecida.",
+        "hint": "Compare o sentimento.",
+        "errorFocus": "SYNONYM_GROUPING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-29",
+      "statement": "Leve e pesada podem ser opostas ao descrever o peso de uma mochila. Elas são",
+      "prompt": "Leve e pesada podem ser opostas ao descrever o peso de uma mochila. Elas são",
+      "options": [
+        "antônimas nesse contexto.",
+        "sinônimas em qualquer frase",
+        "palavras sem significado",
+        "iguais porque rimam"
+      ],
+      "correctAnswer": "antônimas nesse contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sinônimas em qualquer frase": [
+          "WEIGHT_ANTONYMS"
+        ],
+        "palavras sem significado": [
+          "WEIGHT_ANTONYMS"
+        ],
+        "iguais porque rimam": [
+          "WEIGHT_ANTONYMS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ROUPA_LEVE_E_PESADA",
+      "explanation": "O contexto de peso mostra a oposição entre leve e pesada.",
+      "hint": "Use o peso como critério.",
+      "errorFocus": "WEIGHT_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: O contexto de peso mostra a oposição entre leve e pesada.",
+        "incorrect": "O contexto de peso mostra a oposição entre leve e pesada.",
+        "hint": "Use o peso como critério.",
+        "errorFocus": "WEIGHT_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-30",
+      "statement": "A fala foi bonita. Qual palavra pode aproximar o sentido usado nessa frase?",
+      "prompt": "A fala foi bonita. Qual palavra pode aproximar o sentido usado nessa frase?",
+      "options": [
+        "Fechada",
+        "Bela.",
+        "Curta",
+        "Gelada"
+      ],
+      "correctAnswer": "Bela.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fechada": [
+          "POSITIVE_QUALITY_SYNONYM"
+        ],
+        "Curta": [
+          "POSITIVE_QUALITY_SYNONYM"
+        ],
+        "Gelada": [
+          "POSITIVE_QUALITY_SYNONYM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FALA_BONITA_E_BELA",
+      "explanation": "Bonita e bela podem avaliar positivamente a fala.",
+      "hint": "Procure uma descrição parecida.",
+      "errorFocus": "POSITIVE_QUALITY_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Bonita e bela podem avaliar positivamente a fala.",
+        "incorrect": "Bonita e bela podem avaliar positivamente a fala.",
+        "hint": "Procure uma descrição parecida.",
+        "errorFocus": "POSITIVE_QUALITY_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-31",
+      "statement": "Por que ler uma frase inteira antes de escolher um sinônimo?",
+      "prompt": "Por que ler uma frase inteira antes de escolher um sinônimo?",
+      "options": [
+        "Porque toda frase tem uma palavra oposta",
+        "Porque o contexto muda o número de letras",
+        "Porque a frase ajuda a descobrir o sentido usado.",
+        "Porque sinônimos sempre são idênticos"
+      ],
+      "correctAnswer": "Porque a frase ajuda a descobrir o sentido usado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque toda frase tem uma palavra oposta": [
+          "CONTEXT_BEFORE_SUBSTITUTION"
+        ],
+        "Porque o contexto muda o número de letras": [
+          "CONTEXT_BEFORE_SUBSTITUTION"
+        ],
+        "Porque sinônimos sempre são idênticos": [
+          "CONTEXT_BEFORE_SUBSTITUTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TROCA_DE_PALAVRA",
+      "explanation": "O contexto limita qual aproximação de significado faz sentido.",
+      "hint": "Descubra primeiro o que a palavra quer dizer.",
+      "errorFocus": "CONTEXT_BEFORE_SUBSTITUTION",
+      "feedback": {
+        "correct": "Boa observação: O contexto limita qual aproximação de significado faz sentido.",
+        "incorrect": "O contexto limita qual aproximação de significado faz sentido.",
+        "hint": "Descubra primeiro o que a palavra quer dizer.",
+        "errorFocus": "CONTEXT_BEFORE_SUBSTITUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-32",
+      "statement": "Ao falar da posição numa canção, início e fim expressam",
+      "prompt": "Ao falar da posição numa canção, início e fim expressam",
+      "options": [
+        "ideias parecidas",
+        "o mesmo som",
+        "nomes de instrumentos",
+        "ideias opostas."
+      ],
+      "correctAnswer": "ideias opostas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ideias parecidas": [
+          "ORDER_ANTONYMS"
+        ],
+        "o mesmo som": [
+          "ORDER_ANTONYMS"
+        ],
+        "nomes de instrumentos": [
+          "ORDER_ANTONYMS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "INICIO_E_FIM_DA_CANCAO",
+      "explanation": "Início e fim indicam posições opostas na sequência.",
+      "hint": "Pense no primeiro e no último momento.",
+      "errorFocus": "ORDER_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Início e fim indicam posições opostas na sequência.",
+        "incorrect": "Início e fim indicam posições opostas na sequência.",
+        "hint": "Pense no primeiro e no último momento.",
+        "errorFocus": "ORDER_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-33",
+      "statement": "A caixa está cheia. Qual palavra pode aproximar o sentido?",
+      "prompt": "A caixa está cheia. Qual palavra pode aproximar o sentido?",
+      "options": [
+        "Repleta.",
+        "Vazia",
+        "Pequena",
+        "Leve"
+      ],
+      "correctAnswer": "Repleta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vazia": [
+          "FULLNESS_SYNONYM"
+        ],
+        "Pequena": [
+          "FULLNESS_SYNONYM"
+        ],
+        "Leve": [
+          "FULLNESS_SYNONYM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVISAO_CHEIO_E_REPLETO",
+      "explanation": "Cheia e repleta podem indicar que há bastante conteúdo na caixa.",
+      "hint": "Imagine a caixa sem espaço livre.",
+      "errorFocus": "FULLNESS_SYNONYM",
+      "feedback": {
+        "correct": "Boa observação: Cheia e repleta podem indicar que há bastante conteúdo na caixa.",
+        "incorrect": "Cheia e repleta podem indicar que há bastante conteúdo na caixa.",
+        "hint": "Imagine a caixa sem espaço livre.",
+        "errorFocus": "FULLNESS_SYNONYM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-34",
+      "statement": "A sala está clara. Qual palavra expressa sentido oposto à iluminação descrita?",
+      "prompt": "A sala está clara. Qual palavra expressa sentido oposto à iluminação descrita?",
+      "options": [
+        "Iluminada",
+        "Escura.",
+        "Brilhante",
+        "Visível"
+      ],
+      "correctAnswer": "Escura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Iluminada": [
+          "LIGHTING_ANTONYM_REVIEW"
+        ],
+        "Brilhante": [
+          "LIGHTING_ANTONYM_REVIEW"
+        ],
+        "Visível": [
+          "LIGHTING_ANTONYM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_CLARO_E_ESCURO",
+      "explanation": "Escura se opõe a clara quando a frase trata de iluminação.",
+      "hint": "Pense na luz apagada.",
+      "errorFocus": "LIGHTING_ANTONYM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escura se opõe a clara quando a frase trata de iluminação.",
+        "incorrect": "Escura se opõe a clara quando a frase trata de iluminação.",
+        "hint": "Pense na luz apagada.",
+        "errorFocus": "LIGHTING_ANTONYM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-35",
+      "statement": "O terreno é grande. Qual expressão pode se aproximar desse sentido?",
+      "prompt": "O terreno é grande. Qual expressão pode se aproximar desse sentido?",
+      "options": [
+        "Apertado",
+        "Baixo",
+        "Amplo.",
+        "Curto"
+      ],
+      "correctAnswer": "Amplo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apertado": [
+          "SIZE_SYNONYM_REVIEW"
+        ],
+        "Baixo": [
+          "SIZE_SYNONYM_REVIEW"
+        ],
+        "Curto": [
+          "SIZE_SYNONYM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_GRANDE_E_AMPLA",
+      "explanation": "Grande e amplo podem descrever extensão significativa nesse contexto.",
+      "hint": "Compare o tamanho do terreno.",
+      "errorFocus": "SIZE_SYNONYM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Grande e amplo podem descrever extensão significativa nesse contexto.",
+        "incorrect": "Grande e amplo podem descrever extensão significativa nesse contexto.",
+        "hint": "Compare o tamanho do terreno.",
+        "errorFocus": "SIZE_SYNONYM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-36",
+      "statement": "Uma tarefa é fácil. Qual palavra indica uma ideia oposta?",
+      "prompt": "Uma tarefa é fácil. Qual palavra indica uma ideia oposta?",
+      "options": [
+        "Simples",
+        "Tranquila",
+        "Leve",
+        "Difícil."
+      ],
+      "correctAnswer": "Difícil.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Simples": [
+          "TASK_DIFFICULTY_ANTONYMS"
+        ],
+        "Tranquila": [
+          "TASK_DIFFICULTY_ANTONYMS"
+        ],
+        "Leve": [
+          "TASK_DIFFICULTY_ANTONYMS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_FACIL_E_DIFICIL",
+      "explanation": "Fácil e difícil se opõem ao avaliar a realização da tarefa.",
+      "hint": "Pense no esforço necessário.",
+      "errorFocus": "TASK_DIFFICULTY_ANTONYMS",
+      "feedback": {
+        "correct": "Boa observação: Fácil e difícil se opõem ao avaliar a realização da tarefa.",
+        "incorrect": "Fácil e difícil se opõem ao avaliar a realização da tarefa.",
+        "hint": "Pense no esforço necessário.",
+        "errorFocus": "TASK_DIFFICULTY_ANTONYMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-37",
+      "statement": "Na frase “O mar ficou calmo”, qual palavra pode se aproximar do sentido?",
+      "prompt": "Na frase “O mar ficou calmo”, qual palavra pode se aproximar do sentido?",
+      "options": [
+        "Tranquilo.",
+        "Agitado",
+        "Molhado",
+        "Distante"
+      ],
+      "correctAnswer": "Tranquilo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Agitado": [
+          "CALMNESS_IN_SENTENCE"
+        ],
+        "Molhado": [
+          "CALMNESS_IN_SENTENCE"
+        ],
+        "Distante": [
+          "CALMNESS_IN_SENTENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_FRASE_COM_CALMO",
+      "explanation": "Calmo e tranquilo descrevem pouca agitação nessa cena.",
+      "hint": "Veja como o mar se comporta.",
+      "errorFocus": "CALMNESS_IN_SENTENCE",
+      "feedback": {
+        "correct": "Boa observação: Calmo e tranquilo descrevem pouca agitação nessa cena.",
+        "incorrect": "Calmo e tranquilo descrevem pouca agitação nessa cena.",
+        "hint": "Veja como o mar se comporta.",
+        "errorFocus": "CALMNESS_IN_SENTENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-38",
+      "statement": "Um grupo foi formado com alto e elevado. Qual critério poderia justificar essa escolha?",
+      "prompt": "Um grupo foi formado com alto e elevado. Qual critério poderia justificar essa escolha?",
+      "options": [
+        "O mesmo número de letras",
+        "Aproximação de sentido ao descrever altura.",
+        "A mesma cor no cartão",
+        "Uma ideia oposta"
+      ],
+      "correctAnswer": "Aproximação de sentido ao descrever altura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O mesmo número de letras": [
+          "EXPLAIN_SYNONYM_CRITERION"
+        ],
+        "A mesma cor no cartão": [
+          "EXPLAIN_SYNONYM_CRITERION"
+        ],
+        "Uma ideia oposta": [
+          "EXPLAIN_SYNONYM_CRITERION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DO_GRUPO",
+      "explanation": "Alto e elevado podem se aproximar quando falam da altura.",
+      "hint": "Explique o que as palavras descrevem.",
+      "errorFocus": "EXPLAIN_SYNONYM_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Alto e elevado podem se aproximar quando falam da altura.",
+        "incorrect": "Alto e elevado podem se aproximar quando falam da altura.",
+        "hint": "Explique o que as palavras descrevem.",
+        "errorFocus": "EXPLAIN_SYNONYM_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-39",
+      "statement": "Antes e depois organizam momentos em posições opostas numa sequência. Esse par pode ser separado por",
+      "prompt": "Antes e depois organizam momentos em posições opostas numa sequência. Esse par pode ser separado por",
+      "options": [
+        "aproximação de significado",
+        "quantidade de sílabas",
+        "oposição de significado.",
+        "formato das letras"
+      ],
+      "correctAnswer": "oposição de significado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "aproximação de significado": [
+          "TEMPORAL_ANTONYM_REVIEW"
+        ],
+        "quantidade de sílabas": [
+          "TEMPORAL_ANTONYM_REVIEW"
+        ],
+        "formato das letras": [
+          "TEMPORAL_ANTONYM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVISAO_ANTES_E_DEPOIS",
+      "explanation": "Antes e depois se opõem quanto à ordem dos momentos.",
+      "hint": "Compare a ordem dos acontecimentos.",
+      "errorFocus": "TEMPORAL_ANTONYM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Antes e depois se opõem quanto à ordem dos momentos.",
+        "incorrect": "Antes e depois se opõem quanto à ordem dos momentos.",
+        "hint": "Compare a ordem dos acontecimentos.",
+        "errorFocus": "TEMPORAL_ANTONYM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp15-meaning-groups-v1-40",
+      "statement": "Se duas palavras parecem parecidas mas a frase não combina com uma delas, o que fazer?",
+      "prompt": "Se duas palavras parecem parecidas mas a frase não combina com uma delas, o que fazer?",
+      "options": [
+        "Agrupar mesmo assim",
+        "Escolher a palavra maior",
+        "Ignorar a situação",
+        "Voltar à frase e conferir o sentido."
+      ],
+      "correctAnswer": "Voltar à frase e conferir o sentido.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Agrupar mesmo assim": [
+          "CONTEXTUAL_VALIDATION"
+        ],
+        "Escolher a palavra maior": [
+          "CONTEXTUAL_VALIDATION"
+        ],
+        "Ignorar a situação": [
+          "CONTEXTUAL_VALIDATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DO_CONTEXTO",
+      "explanation": "O contexto confirma se a aproximação de sentido funciona.",
+      "hint": "Leia a frase outra vez.",
+      "errorFocus": "CONTEXTUAL_VALIDATION",
+      "feedback": {
+        "correct": "Boa observação: O contexto confirma se a aproximação de sentido funciona.",
+        "incorrect": "O contexto confirma se a aproximação de sentido funciona.",
+        "hint": "Leia a frase outra vez.",
+        "errorFocus": "CONTEXTUAL_VALIDATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar palavras em fonte ampliada, cartões com símbolos e leitura oral, sem depender apenas de cores.",
+          "Permitir agrupar cartões, apontar, responder oralmente, desenhar ou usar comunicação alternativa."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

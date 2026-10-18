@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-create-algorithms-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO03_CREATE_AND_REORGANIZE_ALGORITHMS",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO_COMPUTACIONAL",
+  "topic": "criar e reorganizar sequências de passos como algoritmos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra ‘Algoritmos’.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Criar e reorganizar algoritmos",
+    "objective": "Reorganizar passos apresentados fora de ordem e criar instruções simples, em formato oral, escrito, pictográfico, físico ou digital, reconhecendo essa sequência planejada como algoritmo.",
+    "summary": "Um algoritmo é uma sequência de instruções que explica como realizar uma tarefa ou resolver um problema. É possível organizar cartões embaralhados ou decidir e comunicar os passos desde o início.",
+    "explanation": "## O que é um algoritmo\nQuando explicamos a outra pessoa como realizar uma tarefa por meio de instruções ordenadas, estamos criando um algoritmo. Ele pode ser falado, escrito, mostrado em desenhos ou representado em uma ferramenta digital simples.\n\n## Reorganizar instruções\nÀs vezes os passos já existem, mas estão fora de ordem. Para reorganizá-los, identifique o resultado desejado e pergunte o que precisa acontecer antes de cada ação. Depois, teste a sequência com materiais seguros e revise as instruções que não levaram ao resultado.\n\n## Criar do início\nTambém podemos planejar uma tarefa, escolher os passos necessários e colocá-los em ordem. Uma boa sequência é clara para quem vai usá-la. Desenhos, palavras curtas, gestos ou símbolos podem comunicar as mesmas instruções. Criar o algoritmo é diferente de apenas executar uma sequência que outra pessoa já forneceu.",
+    "workedExample": "Para explicar como construir uma pequena ponte com três blocos, a criança planeja: escolher uma base estável, colocar dois blocos de apoio separados e apoiar o terceiro bloco atravessado por cima. Ela representa cada ação com um desenho, pede a um colega que siga as imagens e revisa uma instrução se o colega não entender onde posicionar os apoios.",
+    "commonMistake": "Chamar de algoritmo apenas uma lista de objetos ou apresentar passos que não explicam como alcançar o resultado combinado.",
+    "tips": [
+      "Defina primeiro o que a sequência deve ajudar a fazer.",
+      "Use uma ação clara por cartão, desenho ou frase curta.",
+      "Reorganize os cartões pensando no que precisa ocorrer antes e depois.",
+      "Peça a alguém que siga as instruções e use o teste para melhorar a clareza."
+    ],
+    "priorKnowledge": [
+      "Reconhecer ações e relações simples de antes e depois.",
+      "Acompanhar instruções curtas e comunicar uma ideia por fala, gesto, desenho ou símbolo."
+    ],
+    "keyConcepts": [
+      "algoritmo como sequência de instruções",
+      "reorganizar passos embaralhados",
+      "criar instruções desde o início",
+      "representação oral, escrita, pictográfica ou digital",
+      "objetivo, teste e revisão"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "NAME_ALGORITHM",
+        "text": "Uma sequência planejada de instruções para realizar uma tarefa ou resolver um problema é um algoritmo."
+      },
+      {
+        "trigger": "REORDER_STEPS",
+        "text": "Ao reorganizar cartões, use o objetivo e as relações entre as ações para decidir a ordem."
+      },
+      {
+        "trigger": "CREATE_AND_TEST",
+        "text": "Crie instruções compreensíveis, peça que alguém as siga e revise o que não ficou claro."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "STEPS_DO_NOT_REACH_GOAL",
+        "action": "Retome o objetivo, compare cada ação proposta com o resultado e acrescente ou reorganize apenas os passos necessários."
+      },
+      {
+        "errorFocus": "AMBIGUOUS_INSTRUCTION",
+        "action": "Troque uma instrução vaga por uma ação observável e teste se outra pessoa consegue segui-la."
+      },
+      {
+        "errorFocus": "CONFUSES_CREATE_WITH_FOLLOW",
+        "action": "Compare um conjunto pronto de cartões com uma tarefa sem cartões e identifique em qual situação é preciso criar ou reorganizar."
+      }
+    ],
+    "accessibilitySupports": [
+      "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+      "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+      "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+      "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-create-algorithms-fi-activity-1",
+        "title": "Cartões embaralhados para uma construção",
+        "instructions": "Reorganizar desenhos de passos para construir uma ponte simples com blocos grandes e leves.\n1. Observar o modelo e dizer ou apontar o que a construção precisa alcançar.\n2. Receber cartões de ações embaralhados e discutir qual ação prepara a próxima.\n3. Organizar os cartões e representar a construção seguindo a sequência.\n4. Testar se um colega compreende as instruções e revisar um cartão se necessário.",
+        "steps": [
+          "Observar o modelo e dizer ou apontar o que a construção precisa alcançar.",
+          "Receber cartões de ações embaralhados e discutir qual ação prepara a próxima.",
+          "Organizar os cartões e representar a construção seguindo a sequência.",
+          "Testar se um colega compreende as instruções e revisar um cartão se necessário."
+        ],
+        "evidence": "Cartões ordenados, construção produzida, objetivo declarado e revisão feita após o teste.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma ação relevante com modelo e apoio.",
+            "developing": "organiza parte dos passos e testa com lembretes.",
+            "proficient": "comunica uma ordem funcional e revisa uma instrução a partir da evidência do teste."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-create-algorithms-fi-activity-2",
+        "title": "Inventar instruções para um personagem",
+        "instructions": "Criar instruções pictográficas ou digitais para levar um personagem genérico por uma rota curta até um destino amplo.\n1. Escolher um destino e marcar o início e o fim em um tabuleiro seguro.\n2. Criar cartões, símbolos ou comandos orais que descrevam cada movimento.\n3. Convidar alguém a seguir o algoritmo sem receber dicas além das instruções criadas.\n4. Comparar a rota realizada com o destino e tornar mais clara qualquer instrução ambígua.",
+        "steps": [
+          "Escolher um destino e marcar o início e o fim em um tabuleiro seguro.",
+          "Criar cartões, símbolos ou comandos orais que descrevam cada movimento.",
+          "Convidar alguém a seguir o algoritmo sem receber dicas além das instruções criadas.",
+          "Comparar a rota realizada com o destino e tornar mais clara qualquer instrução ambígua."
+        ],
+        "evidence": "Algoritmo representado, percurso executado, correspondência com o destino e alterações justificadas pelo teste.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "representa uma instrução com ajuda.",
+            "developing": "cria uma sequência que chega perto do destino e ajusta com apoio.",
+            "proficient": "cria instruções compreensíveis, testa e revisa a sequência para atingir o destino."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-create-algorithms-fi-01",
+          "v1-computing-create-algorithms-fi-02",
+          "v1-computing-create-algorithms-fi-03",
+          "v1-computing-create-algorithms-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-create-algorithms-fi-05",
+          "v1-computing-create-algorithms-fi-06",
+          "v1-computing-create-algorithms-fi-07",
+          "v1-computing-create-algorithms-fi-08",
+          "v1-computing-create-algorithms-fi-09",
+          "v1-computing-create-algorithms-fi-10",
+          "v1-computing-create-algorithms-fi-11",
+          "v1-computing-create-algorithms-fi-12",
+          "v1-computing-create-algorithms-fi-13",
+          "v1-computing-create-algorithms-fi-14",
+          "v1-computing-create-algorithms-fi-15",
+          "v1-computing-create-algorithms-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-create-algorithms-fi-17",
+          "v1-computing-create-algorithms-fi-18",
+          "v1-computing-create-algorithms-fi-19",
+          "v1-computing-create-algorithms-fi-20",
+          "v1-computing-create-algorithms-fi-21",
+          "v1-computing-create-algorithms-fi-22",
+          "v1-computing-create-algorithms-fi-23",
+          "v1-computing-create-algorithms-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-create-algorithms-fi-25",
+          "v1-computing-create-algorithms-fi-26",
+          "v1-computing-create-algorithms-fi-27",
+          "v1-computing-create-algorithms-fi-28",
+          "v1-computing-create-algorithms-fi-29",
+          "v1-computing-create-algorithms-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-create-algorithms-fi-31",
+          "v1-computing-create-algorithms-fi-32",
+          "v1-computing-create-algorithms-fi-33",
+          "v1-computing-create-algorithms-fi-34",
+          "v1-computing-create-algorithms-fi-35",
+          "v1-computing-create-algorithms-fi-36",
+          "v1-computing-create-algorithms-fi-37",
+          "v1-computing-create-algorithms-fi-38",
+          "v1-computing-create-algorithms-fi-39",
+          "v1-computing-create-algorithms-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO03",
+        "descriptor": "Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra ‘Algoritmos’.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 16
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-create-algorithms-fi-01",
+      "statement": "Cartões mostram escolher uma base, apoiar duas peças e colocar uma peça por cima. Para começar a reorganizar a construção, o que observar?",
+      "prompt": "Cartões mostram escolher uma base, apoiar duas peças e colocar uma peça por cima. Para começar a reorganizar a construção, o que observar?",
+      "options": [
+        "O modelo ou resultado que a sequência deve formar.",
+        "A cor favorita de quem montou.",
+        "Qual cartão tem mais palavras.",
+        "O que fazer depois da atividade."
+      ],
+      "correctAnswer": "O modelo ou resultado que a sequência deve formar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor favorita de quem montou.": [
+          "START_FROM_GOAL"
+        ],
+        "Qual cartão tem mais palavras.": [
+          "START_FROM_GOAL"
+        ],
+        "O que fazer depois da atividade.": [
+          "START_FROM_GOAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "SHUFFLED_BRIDGE",
+      "explanation": "O resultado desejado ajuda a decidir quais ações e relações precisam aparecer na ordem.",
+      "hint": "Veja a construção que os cartões devem formar.",
+      "errorFocus": "START_FROM_GOAL",
+      "feedback": {
+        "correct": "Boa observação: O resultado desejado ajuda a decidir quais ações e relações precisam aparecer na ordem.",
+        "incorrect": "O resultado desejado ajuda a decidir quais ações e relações precisam aparecer na ordem.",
+        "hint": "Veja a construção que os cartões devem formar.",
+        "errorFocus": "START_FROM_GOAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-02",
+      "statement": "Uma criança desenha instruções ordenadas para ensinar um jogo a outra pessoa. Como podemos chamar essa sequência planejada?",
+      "prompt": "Uma criança desenha instruções ordenadas para ensinar um jogo a outra pessoa. Como podemos chamar essa sequência planejada?",
+      "options": [
+        "Uma lista sem relação com o jogo.",
+        "Um algoritmo.",
+        "Um desenho decorativo sem instruções.",
+        "Uma resposta aleatória."
+      ],
+      "correctAnswer": "Um algoritmo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista sem relação com o jogo.": [
+          "ALGORITHM_CONCEPT"
+        ],
+        "Um desenho decorativo sem instruções.": [
+          "ALGORITHM_CONCEPT"
+        ],
+        "Uma resposta aleatória.": [
+          "ALGORITHM_CONCEPT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DEFINE",
+      "contextFamily": "ALGORITHM_WORD",
+      "explanation": "Uma sequência de instruções para realizar uma tarefa pode ser chamada de algoritmo.",
+      "hint": "Que nome damos a passos planejados para uma tarefa?",
+      "errorFocus": "ALGORITHM_CONCEPT",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência de instruções para realizar uma tarefa pode ser chamada de algoritmo.",
+        "incorrect": "Uma sequência de instruções para realizar uma tarefa pode ser chamada de algoritmo.",
+        "hint": "Que nome damos a passos planejados para uma tarefa?",
+        "errorFocus": "ALGORITHM_CONCEPT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-03",
+      "statement": "Para criar instruções para um personagem chegar ao círculo, o que precisa ser decidido?",
+      "prompt": "Para criar instruções para um personagem chegar ao círculo, o que precisa ser decidido?",
+      "options": [
+        "Somente a cor do personagem.",
+        "O nome real de um colega.",
+        "O destino e os passos que levam até ele.",
+        "Quantos adesivos há na sala."
+      ],
+      "correctAnswer": "O destino e os passos que levam até ele.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente a cor do personagem.": [
+          "PLAN_ROUTE"
+        ],
+        "O nome real de um colega.": [
+          "PLAN_ROUTE"
+        ],
+        "Quantos adesivos há na sala.": [
+          "PLAN_ROUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "ROUTE_CARDS",
+      "explanation": "O destino define o objetivo e orienta a escolha dos comandos necessários.",
+      "hint": "Pense no começo e no destino do percurso.",
+      "errorFocus": "PLAN_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: O destino define o objetivo e orienta a escolha dos comandos necessários.",
+        "incorrect": "O destino define o objetivo e orienta a escolha dos comandos necessários.",
+        "hint": "Pense no começo e no destino do percurso.",
+        "errorFocus": "PLAN_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-04",
+      "statement": "Uma pessoa não usa texto para explicar uma montagem. Qual representação ainda pode comunicar o algoritmo?",
+      "prompt": "Uma pessoa não usa texto para explicar uma montagem. Qual representação ainda pode comunicar o algoritmo?",
+      "options": [
+        "Uma folha em branco sem sequência.",
+        "Uma coleção de cores sem significado combinado.",
+        "Uma imagem escondida de quem vai seguir.",
+        "Desenhos organizados que mostrem as ações."
+      ],
+      "correctAnswer": "Desenhos organizados que mostrem as ações.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma folha em branco sem sequência.": [
+          "MULTIMODAL_REPRESENTATION"
+        ],
+        "Uma coleção de cores sem significado combinado.": [
+          "MULTIMODAL_REPRESENTATION"
+        ],
+        "Uma imagem escondida de quem vai seguir.": [
+          "MULTIMODAL_REPRESENTATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "PICTURE_STEPS",
+      "explanation": "Uma sequência pictográfica pode comunicar as instruções sem texto corrido.",
+      "hint": "Como imagens podem mostrar a ordem das ações?",
+      "errorFocus": "MULTIMODAL_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência pictográfica pode comunicar as instruções sem texto corrido.",
+        "incorrect": "Uma sequência pictográfica pode comunicar as instruções sem texto corrido.",
+        "hint": "Como imagens podem mostrar a ordem das ações?",
+        "errorFocus": "MULTIMODAL_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-05",
+      "statement": "Cartões mostram abrir a folha, alinhar uma ponta e dobrar. Qual ação deve aparecer antes de alinhar a ponta?",
+      "prompt": "Cartões mostram abrir a folha, alinhar uma ponta e dobrar. Qual ação deve aparecer antes de alinhar a ponta?",
+      "options": [
+        "Abrir a folha.",
+        "Guardar o avião pronto.",
+        "Pintar outra folha.",
+        "Jogar a folha no chão."
+      ],
+      "correctAnswer": "Abrir a folha.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Guardar o avião pronto.": [
+          "PREREQUISITE_INSTRUCTION"
+        ],
+        "Pintar outra folha.": [
+          "PREREQUISITE_INSTRUCTION"
+        ],
+        "Jogar a folha no chão.": [
+          "PREREQUISITE_INSTRUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "PAPER_AIRPLANE",
+      "explanation": "A folha precisa estar aberta antes de alinhar e dobrar a ponta.",
+      "hint": "O que precisa estar pronto para alinhar a ponta?",
+      "errorFocus": "PREREQUISITE_INSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: A folha precisa estar aberta antes de alinhar e dobrar a ponta.",
+        "incorrect": "A folha precisa estar aberta antes de alinhar e dobrar a ponta.",
+        "hint": "O que precisa estar pronto para alinhar a ponta?",
+        "errorFocus": "PREREQUISITE_INSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-06",
+      "statement": "Você vai criar instruções para desenhar um sol simples. O que ajuda outra pessoa a começar?",
+      "prompt": "Você vai criar instruções para desenhar um sol simples. O que ajuda outra pessoa a começar?",
+      "options": [
+        "Dizer apenas “desenhe bonito”.",
+        "Uma primeira instrução clara, como desenhar um círculo no espaço indicado.",
+        "Esconder o papel e não explicar.",
+        "Listar cores sem dizer o que fazer."
+      ],
+      "correctAnswer": "Uma primeira instrução clara, como desenhar um círculo no espaço indicado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer apenas “desenhe bonito”.": [
+          "ACTIONABLE_STEP"
+        ],
+        "Esconder o papel e não explicar.": [
+          "ACTIONABLE_STEP"
+        ],
+        "Listar cores sem dizer o que fazer.": [
+          "ACTIONABLE_STEP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "DRAWING_GUIDE",
+      "explanation": "Uma instrução observável informa uma ação que a outra pessoa pode realizar.",
+      "hint": "Use uma ação que possa ser seguida.",
+      "errorFocus": "ACTIONABLE_STEP",
+      "feedback": {
+        "correct": "Boa observação: Uma instrução observável informa uma ação que a outra pessoa pode realizar.",
+        "incorrect": "Uma instrução observável informa uma ação que a outra pessoa pode realizar.",
+        "hint": "Use uma ação que possa ser seguida.",
+        "errorFocus": "ACTIONABLE_STEP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-07",
+      "statement": "Cartões embaralhados mostram colocar fruta já lavada no prato e chamar um adulto para cortar. Qual passo vem primeiro?",
+      "prompt": "Cartões embaralhados mostram colocar fruta já lavada no prato e chamar um adulto para cortar. Qual passo vem primeiro?",
+      "options": [
+        "Usar uma faca sem adulto.",
+        "Cortar antes de lavar.",
+        "Colocar a fruta já lavada no prato.",
+        "Guardar o prato depois de terminar."
+      ],
+      "correctAnswer": "Colocar a fruta já lavada no prato.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Usar uma faca sem adulto.": [
+          "SAFE_ORDER"
+        ],
+        "Cortar antes de lavar.": [
+          "SAFE_ORDER"
+        ],
+        "Guardar o prato depois de terminar.": [
+          "SAFE_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "SNACK_PICTURE_CARDS",
+      "explanation": "A sequência segura prepara a fruta e chama um adulto antes da etapa de corte.",
+      "hint": "Considere também qual passo requer ajuda adulta.",
+      "errorFocus": "SAFE_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A sequência segura prepara a fruta e chama um adulto antes da etapa de corte.",
+        "incorrect": "A sequência segura prepara a fruta e chama um adulto antes da etapa de corte.",
+        "hint": "Considere também qual passo requer ajuda adulta.",
+        "errorFocus": "SAFE_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-08",
+      "statement": "Para ensinar alguém a fazer uma fileira com quatro blocos, qual instrução é mais útil?",
+      "prompt": "Para ensinar alguém a fazer uma fileira com quatro blocos, qual instrução é mais útil?",
+      "options": [
+        "Faça uma coisa interessante.",
+        "Pense em uma cor sem tocar nos blocos.",
+        "Coloque os blocos onde quiser e não confira.",
+        "Coloque um bloco ao lado do outro até formar quatro na fileira."
+      ],
+      "correctAnswer": "Coloque um bloco ao lado do outro até formar quatro na fileira.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Faça uma coisa interessante.": [
+          "SPECIFIC_INSTRUCTION"
+        ],
+        "Pense em uma cor sem tocar nos blocos.": [
+          "SPECIFIC_INSTRUCTION"
+        ],
+        "Coloque os blocos onde quiser e não confira.": [
+          "SPECIFIC_INSTRUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "BLOCK_PATTERN",
+      "explanation": "A instrução descreve uma ação e um resultado que podem ser observados.",
+      "hint": "Uma boa instrução permite saber quando o passo foi feito.",
+      "errorFocus": "SPECIFIC_INSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: A instrução descreve uma ação e um resultado que podem ser observados.",
+        "incorrect": "A instrução descreve uma ação e um resultado que podem ser observados.",
+        "hint": "Uma boa instrução permite saber quando o passo foi feito.",
+        "errorFocus": "SPECIFIC_INSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-09",
+      "statement": "Os cartões mostram regar, colocar a semente no solo e preparar o recipiente com terra. Qual deve ser o primeiro passo?",
+      "prompt": "Os cartões mostram regar, colocar a semente no solo e preparar o recipiente com terra. Qual deve ser o primeiro passo?",
+      "options": [
+        "Preparar o recipiente com terra.",
+        "Regar antes de preparar o recipiente.",
+        "Guardar a semente sem plantá-la.",
+        "Retirar a terra do recipiente."
+      ],
+      "correctAnswer": "Preparar o recipiente com terra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Regar antes de preparar o recipiente.": [
+          "REORDER_DEPENDENCY"
+        ],
+        "Guardar a semente sem plantá-la.": [
+          "REORDER_DEPENDENCY"
+        ],
+        "Retirar a terra do recipiente.": [
+          "REORDER_DEPENDENCY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "PLANT_SEQUENCE_SHUFFLE",
+      "explanation": "Preparar o recipiente cria o lugar necessário para colocar a semente.",
+      "hint": "Qual ação prepara o local de plantio?",
+      "errorFocus": "REORDER_DEPENDENCY",
+      "feedback": {
+        "correct": "Boa observação: Preparar o recipiente cria o lugar necessário para colocar a semente.",
+        "incorrect": "Preparar o recipiente cria o lugar necessário para colocar a semente.",
+        "hint": "Qual ação prepara o local de plantio?",
+        "errorFocus": "REORDER_DEPENDENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-10",
+      "statement": "A sequência ilustrada ensina como iniciar um jogo e passar a vez. Qual palavra nomeia as instruções organizadas?",
+      "prompt": "A sequência ilustrada ensina como iniciar um jogo e passar a vez. Qual palavra nomeia as instruções organizadas?",
+      "options": [
+        "Decoração.",
+        "Algoritmo.",
+        "Pedaço de tabuleiro.",
+        "Placar sem regras."
+      ],
+      "correctAnswer": "Algoritmo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Decoração.": [
+          "ALGORITHM_VOCABULARY"
+        ],
+        "Pedaço de tabuleiro.": [
+          "ALGORITHM_VOCABULARY"
+        ],
+        "Placar sem regras.": [
+          "ALGORITHM_VOCABULARY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "NAME",
+      "contextFamily": "GAME_RULES",
+      "explanation": "As instruções organizadas para realizar o jogo formam um algoritmo.",
+      "hint": "Lembre-se do nome para uma sequência planejada.",
+      "errorFocus": "ALGORITHM_VOCABULARY",
+      "feedback": {
+        "correct": "Boa observação: As instruções organizadas para realizar o jogo formam um algoritmo.",
+        "incorrect": "As instruções organizadas para realizar o jogo formam um algoritmo.",
+        "hint": "Lembre-se do nome para uma sequência planejada.",
+        "errorFocus": "ALGORITHM_VOCABULARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-11",
+      "statement": "Em uma ferramenta digital, você escolhe comandos para um personagem chegar à bandeira. O que fazer se o caminho parar antes da bandeira?",
+      "prompt": "Em uma ferramenta digital, você escolhe comandos para um personagem chegar à bandeira. O que fazer se o caminho parar antes da bandeira?",
+      "options": [
+        "Apagar a bandeira sem mudar o percurso.",
+        "Dizer que o objetivo foi alcançado sem verificar.",
+        "Rever os comandos e criar ou ajustar os passos que faltam.",
+        "Escolher comandos ao acaso e nunca testar."
+      ],
+      "correctAnswer": "Rever os comandos e criar ou ajustar os passos que faltam.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apagar a bandeira sem mudar o percurso.": [
+          "TEST_AND_REVISE"
+        ],
+        "Dizer que o objetivo foi alcançado sem verificar.": [
+          "TEST_AND_REVISE"
+        ],
+        "Escolher comandos ao acaso e nunca testar.": [
+          "TEST_AND_REVISE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "DIGITAL_CHARACTER",
+      "explanation": "Comparar o percurso com o objetivo revela que a sequência precisa ser revista.",
+      "hint": "Compare onde parou com o destino planejado.",
+      "errorFocus": "TEST_AND_REVISE",
+      "feedback": {
+        "correct": "Boa observação: Comparar o percurso com o objetivo revela que a sequência precisa ser revista.",
+        "incorrect": "Comparar o percurso com o objetivo revela que a sequência precisa ser revista.",
+        "hint": "Compare onde parou com o destino planejado.",
+        "errorFocus": "TEST_AND_REVISE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-12",
+      "statement": "Peças de tangram devem formar uma casa. Qual evidência ajuda a escolher a posição do telhado?",
+      "prompt": "Peças de tangram devem formar uma casa. Qual evidência ajuda a escolher a posição do telhado?",
+      "options": [
+        "A ordem de chegada das peças.",
+        "A preferência de quem observa.",
+        "A cor da mesa sem relação com o modelo.",
+        "O contorno do modelo e o espaço que resta acima das paredes."
+      ],
+      "correctAnswer": "O contorno do modelo e o espaço que resta acima das paredes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A ordem de chegada das peças.": [
+          "USE_MODEL_EVIDENCE"
+        ],
+        "A preferência de quem observa.": [
+          "USE_MODEL_EVIDENCE"
+        ],
+        "A cor da mesa sem relação com o modelo.": [
+          "USE_MODEL_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "TANGRAM_HOUSE",
+      "explanation": "O modelo e a relação entre as peças ajudam a organizar as ações e posições.",
+      "hint": "Observe a forma final que precisa ser construída.",
+      "errorFocus": "USE_MODEL_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O modelo e a relação entre as peças ajudam a organizar as ações e posições.",
+        "incorrect": "O modelo e a relação entre as peças ajudam a organizar as ações e posições.",
+        "hint": "Observe a forma final que precisa ser construída.",
+        "errorFocus": "USE_MODEL_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-13",
+      "statement": "Uma criança explica oralmente como chegar ao alvo usando setas desenhadas. Isso pode representar um algoritmo?",
+      "prompt": "Uma criança explica oralmente como chegar ao alvo usando setas desenhadas. Isso pode representar um algoritmo?",
+      "options": [
+        "Sim, se as instruções comunicarem uma sequência para chegar ao alvo.",
+        "Não, porque só texto digitado pode ser algoritmo.",
+        "Não, porque setas nunca comunicam ações.",
+        "Sim, mesmo que as setas não tenham relação com a rota."
+      ],
+      "correctAnswer": "Sim, se as instruções comunicarem uma sequência para chegar ao alvo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, porque só texto digitado pode ser algoritmo.": [
+          "ORAL_AND_SYMBOLIC"
+        ],
+        "Não, porque setas nunca comunicam ações.": [
+          "ORAL_AND_SYMBOLIC"
+        ],
+        "Sim, mesmo que as setas não tenham relação com a rota.": [
+          "ORAL_AND_SYMBOLIC"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "ORAL_ROUTE",
+      "explanation": "A sequência pode ser comunicada por fala e pictogramas desde que indique ações ordenadas.",
+      "hint": "O que importa é o formato ou a instrução compreensível?",
+      "errorFocus": "ORAL_AND_SYMBOLIC",
+      "feedback": {
+        "correct": "Boa observação: A sequência pode ser comunicada por fala e pictogramas desde que indique ações ordenadas.",
+        "incorrect": "A sequência pode ser comunicada por fala e pictogramas desde que indique ações ordenadas.",
+        "hint": "O que importa é o formato ou a instrução compreensível?",
+        "errorFocus": "ORAL_AND_SYMBOLIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-14",
+      "statement": "Uma rota deve avançar duas casas e virar para o alvo. Como deixar a instrução clara?",
+      "prompt": "Uma rota deve avançar duas casas e virar para o alvo. Como deixar a instrução clara?",
+      "options": [
+        "Dizer “vá para lá” sem apontar ou indicar direção.",
+        "Indicar cada movimento e a direção da virada em ordem.",
+        "Mudar o alvo depois de cada passo.",
+        "Omitir a virada e esperar que adivinhem."
+      ],
+      "correctAnswer": "Indicar cada movimento e a direção da virada em ordem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer “vá para lá” sem apontar ou indicar direção.": [
+          "DIRECTIONAL_CLARITY"
+        ],
+        "Mudar o alvo depois de cada passo.": [
+          "DIRECTIONAL_CLARITY"
+        ],
+        "Omitir a virada e esperar que adivinhem.": [
+          "DIRECTIONAL_CLARITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "ROUTE_GRID",
+      "explanation": "A direção e a ordem precisam estar explícitas para outra pessoa executar a rota.",
+      "hint": "Que informação o colega precisa para saber para onde ir?",
+      "errorFocus": "DIRECTIONAL_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: A direção e a ordem precisam estar explícitas para outra pessoa executar a rota.",
+        "incorrect": "A direção e a ordem precisam estar explícitas para outra pessoa executar a rota.",
+        "hint": "Que informação o colega precisa para saber para onde ir?",
+        "errorFocus": "DIRECTIONAL_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-15",
+      "statement": "Um colega não entende o cartão “arrume tudo” na atividade de organizar lápis. Como melhorar o algoritmo?",
+      "prompt": "Um colega não entende o cartão “arrume tudo” na atividade de organizar lápis. Como melhorar o algoritmo?",
+      "options": [
+        "Repetir “arrume tudo” sem explicar.",
+        "Retirar o estojo e esconder os lápis.",
+        "Especificar ações observáveis, como colocar os lápis no estojo e fechar o estojo.",
+        "Culpar o colega por não adivinhar."
+      ],
+      "correctAnswer": "Especificar ações observáveis, como colocar os lápis no estojo e fechar o estojo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir “arrume tudo” sem explicar.": [
+          "REVISE_AMBIGUITY"
+        ],
+        "Retirar o estojo e esconder os lápis.": [
+          "REVISE_AMBIGUITY"
+        ],
+        "Culpar o colega por não adivinhar.": [
+          "REVISE_AMBIGUITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "UNCLEAR_CARD",
+      "explanation": "A instrução fica mais útil quando descreve ações que outra pessoa consegue observar e realizar.",
+      "hint": "Troque a frase vaga por ações menores.",
+      "errorFocus": "REVISE_AMBIGUITY",
+      "feedback": {
+        "correct": "Boa observação: A instrução fica mais útil quando descreve ações que outra pessoa consegue observar e realizar.",
+        "incorrect": "A instrução fica mais útil quando descreve ações que outra pessoa consegue observar e realizar.",
+        "hint": "Troque a frase vaga por ações menores.",
+        "errorFocus": "REVISE_AMBIGUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-16",
+      "statement": "Uma criança recebe cartões prontos e apenas os executa. Em qual situação ela cria um algoritmo?",
+      "prompt": "Uma criança recebe cartões prontos e apenas os executa. Em qual situação ela cria um algoritmo?",
+      "options": [
+        "Toda vez que toca em um cartão.",
+        "Quando copia uma sequência sem escolher instruções.",
+        "Quando termina sem olhar o objetivo.",
+        "Quando decide e representa os passos para uma tarefa, em vez de somente executar os cartões fornecidos."
+      ],
+      "correctAnswer": "Quando decide e representa os passos para uma tarefa, em vez de somente executar os cartões fornecidos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda vez que toca em um cartão.": [
+          "AUTHOR_VS_EXECUTE"
+        ],
+        "Quando copia uma sequência sem escolher instruções.": [
+          "AUTHOR_VS_EXECUTE"
+        ],
+        "Quando termina sem olhar o objetivo.": [
+          "AUTHOR_VS_EXECUTE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CREATE_OR_FOLLOW",
+      "explanation": "Criar envolve planejar e comunicar os passos; executar é seguir uma sequência já dada.",
+      "hint": "Quem escolheu as instruções nessa situação?",
+      "errorFocus": "AUTHOR_VS_EXECUTE",
+      "feedback": {
+        "correct": "Boa observação: Criar envolve planejar e comunicar os passos; executar é seguir uma sequência já dada.",
+        "incorrect": "Criar envolve planejar e comunicar os passos; executar é seguir uma sequência já dada.",
+        "hint": "Quem escolheu as instruções nessa situação?",
+        "errorFocus": "AUTHOR_VS_EXECUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-17",
+      "statement": "A turma inventará um jogo de lançar uma bola macia até uma caixa ampla. O que deve fazer parte das instruções para outra turma jogar?",
+      "prompt": "A turma inventará um jogo de lançar uma bola macia até uma caixa ampla. O que deve fazer parte das instruções para outra turma jogar?",
+      "options": [
+        "Passos claros para iniciar, lançar com segurança e reconhecer quando a bola chegou à caixa.",
+        "Somente o nome do jogo.",
+        "Uma regra que muda a cada rodada sem avisar.",
+        "Informações pessoais dos participantes."
+      ],
+      "correctAnswer": "Passos claros para iniciar, lançar com segurança e reconhecer quando a bola chegou à caixa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente o nome do jogo.": [
+          "TRANSFER_GAME_ALGORITHM"
+        ],
+        "Uma regra que muda a cada rodada sem avisar.": [
+          "TRANSFER_GAME_ALGORITHM"
+        ],
+        "Informações pessoais dos participantes.": [
+          "TRANSFER_GAME_ALGORITHM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "NEW_CLASSROOM_GAME",
+      "explanation": "Um algoritmo de jogo comunica ações e um critério observável para a tarefa, preservando segurança e privacidade.",
+      "hint": "Que instruções a outra turma precisaria para jogar?",
+      "errorFocus": "TRANSFER_GAME_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: Um algoritmo de jogo comunica ações e um critério observável para a tarefa, preservando segurança e privacidade.",
+        "incorrect": "Um algoritmo de jogo comunica ações e um critério observável para a tarefa, preservando segurança e privacidade.",
+        "hint": "Que instruções a outra turma precisaria para jogar?",
+        "errorFocus": "TRANSFER_GAME_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-18",
+      "statement": "Um conjunto de cartões para montar uma torre está embaralhado. Há um cartão de base, um de empilhar blocos e um de conferir estabilidade. Qual ideia ajuda a ordenar?",
+      "prompt": "Um conjunto de cartões para montar uma torre está embaralhado. Há um cartão de base, um de empilhar blocos e um de conferir estabilidade. Qual ideia ajuda a ordenar?",
+      "options": [
+        "O cartão mais colorido sempre vem por último.",
+        "A base sustenta o empilhamento, e a conferência acontece depois da montagem.",
+        "A conferência deve ocorrer antes de existir torre.",
+        "A ordem não afeta a montagem."
+      ],
+      "correctAnswer": "A base sustenta o empilhamento, e a conferência acontece depois da montagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O cartão mais colorido sempre vem por último.": [
+          "TRANSFER_DEPENDENCIES"
+        ],
+        "A conferência deve ocorrer antes de existir torre.": [
+          "TRANSFER_DEPENDENCIES"
+        ],
+        "A ordem não afeta a montagem.": [
+          "TRANSFER_DEPENDENCIES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "NEW_BUILDING_SET",
+      "explanation": "As relações entre as ações indicam preparar a base, empilhar e depois conferir.",
+      "hint": "Qual ação depende de a torre já estar montada?",
+      "errorFocus": "TRANSFER_DEPENDENCIES",
+      "feedback": {
+        "correct": "Boa observação: As relações entre as ações indicam preparar a base, empilhar e depois conferir.",
+        "incorrect": "As relações entre as ações indicam preparar a base, empilhar e depois conferir.",
+        "hint": "Qual ação depende de a torre já estar montada?",
+        "errorFocus": "TRANSFER_DEPENDENCIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-19",
+      "statement": "Um colega compreende melhor imagens do que frases. Como compartilhar com ele as instruções de um percurso?",
+      "prompt": "Um colega compreende melhor imagens do que frases. Como compartilhar com ele as instruções de um percurso?",
+      "options": [
+        "Entregar um texto pequeno sem explicação.",
+        "Retirar o destino do tabuleiro.",
+        "Criar pictogramas em sequência e testar se mostram cada movimento.",
+        "Usar símbolos sem combinar o significado."
+      ],
+      "correctAnswer": "Criar pictogramas em sequência e testar se mostram cada movimento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Entregar um texto pequeno sem explicação.": [
+          "ACCESSIBLE_ALGORITHM"
+        ],
+        "Retirar o destino do tabuleiro.": [
+          "ACCESSIBLE_ALGORITHM"
+        ],
+        "Usar símbolos sem combinar o significado.": [
+          "ACCESSIBLE_ALGORITHM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "NEW_AUDIO_PICTURES",
+      "explanation": "A representação pode mudar para oferecer acesso, mantendo instruções ordenadas e compreensíveis.",
+      "hint": "Que formato o colega pode interpretar e testar?",
+      "errorFocus": "ACCESSIBLE_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: A representação pode mudar para oferecer acesso, mantendo instruções ordenadas e compreensíveis.",
+        "incorrect": "A representação pode mudar para oferecer acesso, mantendo instruções ordenadas e compreensíveis.",
+        "hint": "Que formato o colega pode interpretar e testar?",
+        "errorFocus": "ACCESSIBLE_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-20",
+      "statement": "Você quer ensinar alguém a fazer um marcador de página de papel sem tesoura. O que é importante ao planejar?",
+      "prompt": "Você quer ensinar alguém a fazer um marcador de página de papel sem tesoura. O que é importante ao planejar?",
+      "options": [
+        "Incluir uma etapa de corte com ferramenta não autorizada.",
+        "Usar uma sequência que não menciona dobras.",
+        "Omitir o resultado esperado.",
+        "Escolher passos seguros e ordenados que transformem a folha no marcador."
+      ],
+      "correctAnswer": "Escolher passos seguros e ordenados que transformem a folha no marcador.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Incluir uma etapa de corte com ferramenta não autorizada.": [
+          "SAFE_CREATION"
+        ],
+        "Usar uma sequência que não menciona dobras.": [
+          "SAFE_CREATION"
+        ],
+        "Omitir o resultado esperado.": [
+          "SAFE_CREATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "NEW_PAPER_BOOKMARK",
+      "explanation": "O algoritmo precisa atender ao objetivo e usar materiais e passos adequados à situação.",
+      "hint": "Verifique se cada ação ajuda a obter o marcador com segurança.",
+      "errorFocus": "SAFE_CREATION",
+      "feedback": {
+        "correct": "Boa observação: O algoritmo precisa atender ao objetivo e usar materiais e passos adequados à situação.",
+        "incorrect": "O algoritmo precisa atender ao objetivo e usar materiais e passos adequados à situação.",
+        "hint": "Verifique se cada ação ajuda a obter o marcador com segurança.",
+        "errorFocus": "SAFE_CREATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-21",
+      "statement": "Uma colega segue suas instruções, mas chega a outra casa do tabuleiro. Qual é a melhor evidência para revisar?",
+      "prompt": "Uma colega segue suas instruções, mas chega a outra casa do tabuleiro. Qual é a melhor evidência para revisar?",
+      "options": [
+        "Comparar cada comando executado com o caminho e o destino planejados.",
+        "Mudar o destino para dizer que estava certo.",
+        "Ignorar o percurso feito.",
+        "Repetir a mesma sequência sem conferir."
+      ],
+      "correctAnswer": "Comparar cada comando executado com o caminho e o destino planejados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Mudar o destino para dizer que estava certo.": [
+          "EVIDENCE_BASED_REVISION"
+        ],
+        "Ignorar o percurso feito.": [
+          "EVIDENCE_BASED_REVISION"
+        ],
+        "Repetir a mesma sequência sem conferir.": [
+          "EVIDENCE_BASED_REVISION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TEST",
+      "contextFamily": "NEW_PEER_TRIAL",
+      "explanation": "O caminho percorrido mostra em qual instrução a sequência se desviou do objetivo.",
+      "hint": "Use o percurso real para localizar a etapa a ajustar.",
+      "errorFocus": "EVIDENCE_BASED_REVISION",
+      "feedback": {
+        "correct": "Boa observação: O caminho percorrido mostra em qual instrução a sequência se desviou do objetivo.",
+        "incorrect": "O caminho percorrido mostra em qual instrução a sequência se desviou do objetivo.",
+        "hint": "Use o percurso real para localizar a etapa a ajustar.",
+        "errorFocus": "EVIDENCE_BASED_REVISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-22",
+      "statement": "Um algoritmo deve ensinar como preparar um vaso para receber uma muda já pronta. Qual conjunto de ações é mais completo?",
+      "prompt": "Um algoritmo deve ensinar como preparar um vaso para receber uma muda já pronta. Qual conjunto de ações é mais completo?",
+      "options": [
+        "Escolher um vaso e parar sem preparar o lugar.",
+        "Escolher um vaso estável, colocar terra, acomodar a muda com ajuda e conferir se ficou apoiada.",
+        "Puxar a muda pelas folhas e correr com o vaso.",
+        "Molhar a mesa e não colocar a muda."
+      ],
+      "correctAnswer": "Escolher um vaso estável, colocar terra, acomodar a muda com ajuda e conferir se ficou apoiada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher um vaso e parar sem preparar o lugar.": [
+          "COMPLETE_TASK_STEPS"
+        ],
+        "Puxar a muda pelas folhas e correr com o vaso.": [
+          "COMPLETE_TASK_STEPS"
+        ],
+        "Molhar a mesa e não colocar a muda.": [
+          "COMPLETE_TASK_STEPS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "NEW_CLASS_PLANT_LABEL",
+      "explanation": "A sequência conecta preparação, acomodação cuidadosa e conferência do resultado.",
+      "hint": "Quais ações levam do vaso vazio ao resultado combinado?",
+      "errorFocus": "COMPLETE_TASK_STEPS",
+      "feedback": {
+        "correct": "Boa observação: A sequência conecta preparação, acomodação cuidadosa e conferência do resultado.",
+        "incorrect": "A sequência conecta preparação, acomodação cuidadosa e conferência do resultado.",
+        "hint": "Quais ações levam do vaso vazio ao resultado combinado?",
+        "errorFocus": "COMPLETE_TASK_STEPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-23",
+      "statement": "Cartões de uma rotina já existem, mas estão fora de ordem. A turma decide a ordem e depois acrescenta um passo necessário. O que está fazendo?",
+      "prompt": "Cartões de uma rotina já existem, mas estão fora de ordem. A turma decide a ordem e depois acrescenta um passo necessário. O que está fazendo?",
+      "options": [
+        "Somente repetindo os cartões sem pensar.",
+        "Apagando o objetivo da tarefa.",
+        "Reorganizando e ampliando uma sequência de instruções.",
+        "Classificando os cartões pela cor, sem criar passos."
+      ],
+      "correctAnswer": "Reorganizando e ampliando uma sequência de instruções.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente repetindo os cartões sem pensar.": [
+          "REORDER_AND_EXTEND"
+        ],
+        "Apagando o objetivo da tarefa.": [
+          "REORDER_AND_EXTEND"
+        ],
+        "Classificando os cartões pela cor, sem criar passos.": [
+          "REORDER_AND_EXTEND"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_REORDER_VS_CREATE",
+      "explanation": "A turma reorganiza o material existente e cria uma instrução que faltava.",
+      "hint": "Que mudanças a turma fez nas instruções prontas?",
+      "errorFocus": "REORDER_AND_EXTEND",
+      "feedback": {
+        "correct": "Boa observação: A turma reorganiza o material existente e cria uma instrução que faltava.",
+        "incorrect": "A turma reorganiza o material existente e cria uma instrução que faltava.",
+        "hint": "Que mudanças a turma fez nas instruções prontas?",
+        "errorFocus": "REORDER_AND_EXTEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-24",
+      "statement": "Um personagem digital não chega ao destino porque os comandos apontam para longe dele. O que revisar primeiro?",
+      "prompt": "Um personagem digital não chega ao destino porque os comandos apontam para longe dele. O que revisar primeiro?",
+      "options": [
+        "O brilho da tela.",
+        "O nome do personagem.",
+        "O volume do computador.",
+        "As direções e a ordem dos comandos comparadas com a posição do destino."
+      ],
+      "correctAnswer": "As direções e a ordem dos comandos comparadas com a posição do destino.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O brilho da tela.": [
+          "DEBUG_DIRECTION"
+        ],
+        "O nome do personagem.": [
+          "DEBUG_DIRECTION"
+        ],
+        "O volume do computador.": [
+          "DEBUG_DIRECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_DIGITAL_COMMANDS",
+      "explanation": "A posição final depende das direções e da ordem dos comandos usados.",
+      "hint": "Que comandos determinaram o percurso feito?",
+      "errorFocus": "DEBUG_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: A posição final depende das direções e da ordem dos comandos usados.",
+        "incorrect": "A posição final depende das direções e da ordem dos comandos usados.",
+        "hint": "Que comandos determinaram o percurso feito?",
+        "errorFocus": "DEBUG_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-25",
+      "statement": "Por que uma sequência de instruções pode ser chamada de algoritmo?",
+      "prompt": "Por que uma sequência de instruções pode ser chamada de algoritmo?",
+      "options": [
+        "Porque organiza ações para orientar uma tarefa ou resolver um problema.",
+        "Porque qualquer lista de palavras é algoritmo.",
+        "Porque não precisa ter relação com um objetivo.",
+        "Porque não pode ser explicada a outra pessoa."
+      ],
+      "correctAnswer": "Porque organiza ações para orientar uma tarefa ou resolver um problema.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque qualquer lista de palavras é algoritmo.": [
+          "ALGORITHM_PURPOSE"
+        ],
+        "Porque não precisa ter relação com um objetivo.": [
+          "ALGORITHM_PURPOSE"
+        ],
+        "Porque não pode ser explicada a outra pessoa.": [
+          "ALGORITHM_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_ALGORITHM",
+      "explanation": "O algoritmo comunica passos planejados para uma tarefa ou problema.",
+      "hint": "Relacione as instruções ao que elas ajudam a realizar.",
+      "errorFocus": "ALGORITHM_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: O algoritmo comunica passos planejados para uma tarefa ou problema.",
+        "incorrect": "O algoritmo comunica passos planejados para uma tarefa ou problema.",
+        "hint": "Relacione as instruções ao que elas ajudam a realizar.",
+        "errorFocus": "ALGORITHM_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-26",
+      "statement": "Qual instrução ajuda mais um colega a montar uma figura com peças grandes?",
+      "prompt": "Qual instrução ajuda mais um colega a montar uma figura com peças grandes?",
+      "options": [
+        "Faça a figura direito.",
+        "Coloque o triângulo sobre o retângulo, como mostra o modelo.",
+        "Use uma peça qualquer em algum lugar.",
+        "Termine logo sem olhar."
+      ],
+      "correctAnswer": "Coloque o triângulo sobre o retângulo, como mostra o modelo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Faça a figura direito.": [
+          "OBSERVABLE_ACTION"
+        ],
+        "Use uma peça qualquer em algum lugar.": [
+          "OBSERVABLE_ACTION"
+        ],
+        "Termine logo sem olhar.": [
+          "OBSERVABLE_ACTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "LOCKIN_ONE_ACTION",
+      "explanation": "A instrução especifica a peça, a posição e uma referência observável.",
+      "hint": "Qual frase deixa claro o que fazer e onde?",
+      "errorFocus": "OBSERVABLE_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A instrução especifica a peça, a posição e uma referência observável.",
+        "incorrect": "A instrução especifica a peça, a posição e uma referência observável.",
+        "hint": "Qual frase deixa claro o que fazer e onde?",
+        "errorFocus": "OBSERVABLE_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-27",
+      "statement": "A sequência diz encaixar as rodas antes de apoiar o carrinho no chão. Como verificar essa ordem?",
+      "prompt": "A sequência diz encaixar as rodas antes de apoiar o carrinho no chão. Como verificar essa ordem?",
+      "options": [
+        "Escolher a ordem pelo tamanho das palavras.",
+        "Guardar as rodas antes de usar.",
+        "Testar a sequência com as peças e observar se o carrinho fica montado como esperado.",
+        "Declarar que qualquer ordem serve sem testar."
+      ],
+      "correctAnswer": "Testar a sequência com as peças e observar se o carrinho fica montado como esperado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher a ordem pelo tamanho das palavras.": [
+          "TEST_ORDER"
+        ],
+        "Guardar as rodas antes de usar.": [
+          "TEST_ORDER"
+        ],
+        "Declarar que qualquer ordem serve sem testar.": [
+          "TEST_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "LOCKIN_ORDER_TEST",
+      "explanation": "A montagem e o resultado observado fornecem evidência para confirmar ou revisar a ordem.",
+      "hint": "Faça a sequência de forma segura e compare com o objetivo.",
+      "errorFocus": "TEST_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A montagem e o resultado observado fornecem evidência para confirmar ou revisar a ordem.",
+        "incorrect": "A montagem e o resultado observado fornecem evidência para confirmar ou revisar a ordem.",
+        "hint": "Faça a sequência de forma segura e compare com o objetivo.",
+        "errorFocus": "TEST_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-28",
+      "statement": "A instrução “vire” não diz para que lado o personagem deve virar. O que melhorar?",
+      "prompt": "A instrução “vire” não diz para que lado o personagem deve virar. O que melhorar?",
+      "options": [
+        "Apagar o destino.",
+        "Manter “vire” e pedir que adivinhem.",
+        "Adicionar uma cor sem informar direção.",
+        "Indicar a direção necessária para alcançar o destino."
+      ],
+      "correctAnswer": "Indicar a direção necessária para alcançar o destino.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar o destino.": [
+          "COMPLETE_COMMAND"
+        ],
+        "Manter “vire” e pedir que adivinhem.": [
+          "COMPLETE_COMMAND"
+        ],
+        "Adicionar uma cor sem informar direção.": [
+          "COMPLETE_COMMAND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "LOCKIN_MISSING_DETAIL",
+      "explanation": "Uma direção explícita elimina a ambiguidade importante para executar a rota.",
+      "hint": "Qual informação falta para escolher o movimento?",
+      "errorFocus": "COMPLETE_COMMAND",
+      "feedback": {
+        "correct": "Boa observação: Uma direção explícita elimina a ambiguidade importante para executar a rota.",
+        "incorrect": "Uma direção explícita elimina a ambiguidade importante para executar a rota.",
+        "hint": "Qual informação falta para escolher o movimento?",
+        "errorFocus": "COMPLETE_COMMAND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-29",
+      "statement": "Qual conjunto pode comunicar um algoritmo sem usar frases escritas?",
+      "prompt": "Qual conjunto pode comunicar um algoritmo sem usar frases escritas?",
+      "options": [
+        "Cartões com desenhos claros, ordenados e compreendidos por quem vai segui-los.",
+        "Desenhos soltos sem ordem.",
+        "Uma folha em branco.",
+        "Ícones escolhidos sem explicar o que significam."
+      ],
+      "correctAnswer": "Cartões com desenhos claros, ordenados e compreendidos por quem vai segui-los.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Desenhos soltos sem ordem.": [
+          "NON_TEXT_ALGORITHM"
+        ],
+        "Uma folha em branco.": [
+          "NON_TEXT_ALGORITHM"
+        ],
+        "Ícones escolhidos sem explicar o que significam.": [
+          "NON_TEXT_ALGORITHM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "LOCKIN_FORMAT",
+      "explanation": "Pictogramas ordenados podem representar instruções quando seus significados são compreensíveis.",
+      "hint": "As imagens mostram ações e uma ordem?",
+      "errorFocus": "NON_TEXT_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: Pictogramas ordenados podem representar instruções quando seus significados são compreensíveis.",
+        "incorrect": "Pictogramas ordenados podem representar instruções quando seus significados são compreensíveis.",
+        "hint": "As imagens mostram ações e uma ordem?",
+        "errorFocus": "NON_TEXT_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-30",
+      "statement": "Depois de testar um algoritmo, uma pessoa percebe que uma instrução não foi compreendida. Qual é o próximo passo produtivo?",
+      "prompt": "Depois de testar um algoritmo, uma pessoa percebe que uma instrução não foi compreendida. Qual é o próximo passo produtivo?",
+      "options": [
+        "Parar de pedir que outras pessoas usem o algoritmo.",
+        "Reescrever ou redesenhar a instrução e testar novamente.",
+        "Culpar quem tentou seguir.",
+        "Esconder o resultado do teste."
+      ],
+      "correctAnswer": "Reescrever ou redesenhar a instrução e testar novamente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Parar de pedir que outras pessoas usem o algoritmo.": [
+          "ITERATIVE_IMPROVEMENT"
+        ],
+        "Culpar quem tentou seguir.": [
+          "ITERATIVE_IMPROVEMENT"
+        ],
+        "Esconder o resultado do teste.": [
+          "ITERATIVE_IMPROVEMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "LOCKIN_REVISION",
+      "explanation": "O teste oferece evidência para tornar a instrução mais clara e verificar a melhoria.",
+      "hint": "Use o que aconteceu no teste para revisar o passo.",
+      "errorFocus": "ITERATIVE_IMPROVEMENT",
+      "feedback": {
+        "correct": "Boa observação: O teste oferece evidência para tornar a instrução mais clara e verificar a melhoria.",
+        "incorrect": "O teste oferece evidência para tornar a instrução mais clara e verificar a melhoria.",
+        "hint": "Use o que aconteceu no teste para revisar o passo.",
+        "errorFocus": "ITERATIVE_IMPROVEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-31",
+      "statement": "Qual palavra nomeia uma sequência planejada de instruções para uma tarefa?",
+      "prompt": "Qual palavra nomeia uma sequência planejada de instruções para uma tarefa?",
+      "options": [
+        "Adesivo.",
+        "Intervalo.",
+        "Algoritmo.",
+        "Pedaço de papel sem instrução."
+      ],
+      "correctAnswer": "Algoritmo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Adesivo.": [
+          "VOCABULARY_REVIEW"
+        ],
+        "Intervalo.": [
+          "VOCABULARY_REVIEW"
+        ],
+        "Pedaço de papel sem instrução.": [
+          "VOCABULARY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_ALGORITHM_NAME",
+      "explanation": "Uma sequência planejada de instruções pode ser chamada de algoritmo.",
+      "hint": "Recorde o conceito central desta trilha.",
+      "errorFocus": "VOCABULARY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência planejada de instruções pode ser chamada de algoritmo.",
+        "incorrect": "Uma sequência planejada de instruções pode ser chamada de algoritmo.",
+        "hint": "Recorde o conceito central desta trilha.",
+        "errorFocus": "VOCABULARY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-32",
+      "statement": "Uma aluna escolhe ações e as desenha em ordem para ensinar um jogo. O que ela está fazendo?",
+      "prompt": "Uma aluna escolhe ações e as desenha em ordem para ensinar um jogo. O que ela está fazendo?",
+      "options": [
+        "Apenas executando uma sequência pronta.",
+        "Decorando uma folha sem instruções.",
+        "Contando peças sem planejar ações.",
+        "Criando um algoritmo."
+      ],
+      "correctAnswer": "Criando um algoritmo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas executando uma sequência pronta.": [
+          "CREATION_REVIEW"
+        ],
+        "Decorando uma folha sem instruções.": [
+          "CREATION_REVIEW"
+        ],
+        "Contando peças sem planejar ações.": [
+          "CREATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_CREATE",
+      "explanation": "Ela planeja e representa instruções para que outra pessoa realize a tarefa.",
+      "hint": "Quem decidiu e comunicou os passos?",
+      "errorFocus": "CREATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Ela planeja e representa instruções para que outra pessoa realize a tarefa.",
+        "incorrect": "Ela planeja e representa instruções para que outra pessoa realize a tarefa.",
+        "hint": "Quem decidiu e comunicou os passos?",
+        "errorFocus": "CREATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-33",
+      "statement": "Cartões para montar uma caixa estão embaralhados. O que a turma precisa fazer?",
+      "prompt": "Cartões para montar uma caixa estão embaralhados. O que a turma precisa fazer?",
+      "options": [
+        "Descobrir e organizar uma ordem que permita montar a caixa.",
+        "Alinhar os cartões pelo tamanho e ignorar as ações.",
+        "Usar somente o último cartão.",
+        "Jogar fora o modelo sem olhar."
+      ],
+      "correctAnswer": "Descobrir e organizar uma ordem que permita montar a caixa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Alinhar os cartões pelo tamanho e ignorar as ações.": [
+          "REORGANIZATION_REVIEW"
+        ],
+        "Usar somente o último cartão.": [
+          "REORGANIZATION_REVIEW"
+        ],
+        "Jogar fora o modelo sem olhar.": [
+          "REORGANIZATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REORGANIZE",
+      "contextFamily": "REVIEW_SHUFFLED",
+      "explanation": "Reorganizar é decidir a ordem dos passos existentes em função da tarefa.",
+      "hint": "Os cartões já existem, mas estão em que condição?",
+      "errorFocus": "REORGANIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Reorganizar é decidir a ordem dos passos existentes em função da tarefa.",
+        "incorrect": "Reorganizar é decidir a ordem dos passos existentes em função da tarefa.",
+        "hint": "Os cartões já existem, mas estão em que condição?",
+        "errorFocus": "REORGANIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-34",
+      "statement": "Qual opção mostra uma forma pictográfica de representar um algoritmo?",
+      "prompt": "Qual opção mostra uma forma pictográfica de representar um algoritmo?",
+      "options": [
+        "Uma lista de cores sem significado.",
+        "Desenhos numerados que mostram as ações na sequência.",
+        "Um desenho único sem mostrar passos.",
+        "Um título sem instruções."
+      ],
+      "correctAnswer": "Desenhos numerados que mostram as ações na sequência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista de cores sem significado.": [
+          "PICTOGRAPHIC_REVIEW"
+        ],
+        "Um desenho único sem mostrar passos.": [
+          "PICTOGRAPHIC_REVIEW"
+        ],
+        "Um título sem instruções.": [
+          "PICTOGRAPHIC_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "REVIEW_MODALITY",
+      "explanation": "Desenhos em ordem podem representar as instruções e sua sequência.",
+      "hint": "As imagens comunicam ações em uma ordem?",
+      "errorFocus": "PICTOGRAPHIC_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Desenhos em ordem podem representar as instruções e sua sequência.",
+        "incorrect": "Desenhos em ordem podem representar as instruções e sua sequência.",
+        "hint": "As imagens comunicam ações em uma ordem?",
+        "errorFocus": "PICTOGRAPHIC_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-35",
+      "statement": "Ao criar passos para chegar a um alvo no tabuleiro, o que ajuda a decidir quais comandos são necessários?",
+      "prompt": "Ao criar passos para chegar a um alvo no tabuleiro, o que ajuda a decidir quais comandos são necessários?",
+      "options": [
+        "A preferência de quem observa a tela.",
+        "A quantidade de desenhos na parede.",
+        "O ponto de partida, o alvo e o percurso que conecta os dois.",
+        "O nome de quem emprestou os cartões."
+      ],
+      "correctAnswer": "O ponto de partida, o alvo e o percurso que conecta os dois.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A preferência de quem observa a tela.": [
+          "OBJECTIVE_REVIEW"
+        ],
+        "A quantidade de desenhos na parede.": [
+          "OBJECTIVE_REVIEW"
+        ],
+        "O nome de quem emprestou os cartões.": [
+          "OBJECTIVE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "REVIEW_DESTINATION",
+      "explanation": "O objetivo e a rota orientam a escolha de comandos relevantes.",
+      "hint": "Que informações definem o caminho?",
+      "errorFocus": "OBJECTIVE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O objetivo e a rota orientam a escolha de comandos relevantes.",
+        "incorrect": "O objetivo e a rota orientam a escolha de comandos relevantes.",
+        "hint": "Que informações definem o caminho?",
+        "errorFocus": "OBJECTIVE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-36",
+      "statement": "Um colega segue uma sequência e não alcança a figura planejada. Como usar esse resultado?",
+      "prompt": "Um colega segue uma sequência e não alcança a figura planejada. Como usar esse resultado?",
+      "options": [
+        "Dizer que o objetivo foi alcançado sem conferir.",
+        "Apagar todos os cartões sem analisar.",
+        "Repetir sem observar o que ocorreu.",
+        "Localizar a instrução que precisa ser ajustada e testar a nova versão."
+      ],
+      "correctAnswer": "Localizar a instrução que precisa ser ajustada e testar a nova versão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que o objetivo foi alcançado sem conferir.": [
+          "TEST_EVIDENCE_REVIEW"
+        ],
+        "Apagar todos os cartões sem analisar.": [
+          "TEST_EVIDENCE_REVIEW"
+        ],
+        "Repetir sem observar o que ocorreu.": [
+          "TEST_EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "REVIEW_TEST",
+      "explanation": "O teste mostra a diferença entre o resultado planejado e o produzido.",
+      "hint": "Compare o objetivo com o resultado real.",
+      "errorFocus": "TEST_EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O teste mostra a diferença entre o resultado planejado e o produzido.",
+        "incorrect": "O teste mostra a diferença entre o resultado planejado e o produzido.",
+        "hint": "Compare o objetivo com o resultado real.",
+        "errorFocus": "TEST_EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-37",
+      "statement": "Qual exemplo mostra criação em vez de somente seguir?",
+      "prompt": "Qual exemplo mostra criação em vez de somente seguir?",
+      "options": [
+        "Decidir os passos e representá-los para ensinar a montar um brinquedo.",
+        "Executar cartões já ordenados por outra pessoa.",
+        "Ler um passo fornecido e realizá-lo.",
+        "Mover uma peça sem escolher instruções."
+      ],
+      "correctAnswer": "Decidir os passos e representá-los para ensinar a montar um brinquedo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Executar cartões já ordenados por outra pessoa.": [
+          "CREATE_VS_FOLLOW_REVIEW"
+        ],
+        "Ler um passo fornecido e realizá-lo.": [
+          "CREATE_VS_FOLLOW_REVIEW"
+        ],
+        "Mover uma peça sem escolher instruções.": [
+          "CREATE_VS_FOLLOW_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_SEQUENCE_EXECUTION",
+      "explanation": "Criar implica planejar e comunicar a sequência; seguir é executar instruções recebidas.",
+      "hint": "Quem planejou os passos neste exemplo?",
+      "errorFocus": "CREATE_VS_FOLLOW_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Criar implica planejar e comunicar a sequência; seguir é executar instruções recebidas.",
+        "incorrect": "Criar implica planejar e comunicar a sequência; seguir é executar instruções recebidas.",
+        "hint": "Quem planejou os passos neste exemplo?",
+        "errorFocus": "CREATE_VS_FOLLOW_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-38",
+      "statement": "Qual algoritmo está mais claro para ensinar um percurso?",
+      "prompt": "Qual algoritmo está mais claro para ensinar um percurso?",
+      "options": [
+        "“Vá para algum lugar.”",
+        "“Avance duas casas, vire à esquerda e pare no círculo.”",
+        "“Faça o caminho certo.”",
+        "“Ande e depois veja.”"
+      ],
+      "correctAnswer": "“Avance duas casas, vire à esquerda e pare no círculo.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Vá para algum lugar.”": [
+          "CLARITY_REVIEW"
+        ],
+        "“Faça o caminho certo.”": [
+          "CLARITY_REVIEW"
+        ],
+        "“Ande e depois veja.”": [
+          "CLARITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_CLEARNESS",
+      "explanation": "A instrução clara informa quantidade, direção e condição de parada observável.",
+      "hint": "Procure comandos que outra pessoa consegue executar sem adivinhar.",
+      "errorFocus": "CLARITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A instrução clara informa quantidade, direção e condição de parada observável.",
+        "incorrect": "A instrução clara informa quantidade, direção e condição de parada observável.",
+        "hint": "Procure comandos que outra pessoa consegue executar sem adivinhar.",
+        "errorFocus": "CLARITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-39",
+      "statement": "Um colega comunica melhor por símbolos e gestos. Como ele pode participar da autoria de um algoritmo?",
+      "prompt": "Um colega comunica melhor por símbolos e gestos. Como ele pode participar da autoria de um algoritmo?",
+      "options": [
+        "Ser impedido de escolher instruções.",
+        "Receber somente texto pequeno sem apoio.",
+        "Escolher ou organizar símbolos e demonstrar os passos por gestos ou comunicação alternativa.",
+        "Observar sem poder contribuir."
+      ],
+      "correctAnswer": "Escolher ou organizar símbolos e demonstrar os passos por gestos ou comunicação alternativa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ser impedido de escolher instruções.": [
+          "ACCESSIBLE_AUTHORING_REVIEW"
+        ],
+        "Receber somente texto pequeno sem apoio.": [
+          "ACCESSIBLE_AUTHORING_REVIEW"
+        ],
+        "Observar sem poder contribuir.": [
+          "ACCESSIBLE_AUTHORING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "REVIEW_ALTERNATIVE",
+      "explanation": "Diferentes meios podem expressar a autoria e a sequência de instruções.",
+      "hint": "Que formato permite que o colega comunique suas ideias?",
+      "errorFocus": "ACCESSIBLE_AUTHORING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Diferentes meios podem expressar a autoria e a sequência de instruções.",
+        "incorrect": "Diferentes meios podem expressar a autoria e a sequência de instruções.",
+        "hint": "Que formato permite que o colega comunique suas ideias?",
+        "errorFocus": "ACCESSIBLE_AUTHORING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-create-algorithms-fi-40",
+      "statement": "Qual conjunto de características melhor descreve um algoritmo útil para uma tarefa escolar?",
+      "prompt": "Qual conjunto de características melhor descreve um algoritmo útil para uma tarefa escolar?",
+      "options": [
+        "É uma lista sem objetivo e impossível de seguir.",
+        "Tem passos escolhidos ao acaso e nunca é conferido.",
+        "Depende de dados pessoais dos colegas para funcionar.",
+        "Tem objetivo, instruções ordenadas compreensíveis e pode ser testado e revisado."
+      ],
+      "correctAnswer": "Tem objetivo, instruções ordenadas compreensíveis e pode ser testado e revisado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "É uma lista sem objetivo e impossível de seguir.": [
+          "ALGORITHM_QUALITY_REVIEW"
+        ],
+        "Tem passos escolhidos ao acaso e nunca é conferido.": [
+          "ALGORITHM_QUALITY_REVIEW"
+        ],
+        "Depende de dados pessoais dos colegas para funcionar.": [
+          "ALGORITHM_QUALITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_COMPLETE_ALGORITHM",
+      "explanation": "Objetivo, ordem, clareza e teste apoiam o uso e a melhoria de uma sequência.",
+      "hint": "Lembre-se do planejamento, comunicação e teste.",
+      "errorFocus": "ALGORITHM_QUALITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Objetivo, ordem, clareza e teste apoiam o uso e a melhoria de uma sequência.",
+        "incorrect": "Objetivo, ordem, clareza e teste apoiam o uso e a melhoria de uma sequência.",
+        "hint": "Lembre-se do planejamento, comunicação e teste.",
+        "errorFocus": "ALGORITHM_QUALITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Permitir criar algoritmos por fala, escrita compartilhada, gestos, objetos, pictogramas ou editor digital acessível.",
+          "Usar símbolos grandes, contraste adequado, descrição oral e alternativa tátil quando útil.",
+          "Oferecer cartões móveis, comunicação alternativa, parceiro escolhido e tempo para testar a sequência.",
+          "Usar materiais grandes, leves e seguros, com espaço acessível para montar e demonstrar."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

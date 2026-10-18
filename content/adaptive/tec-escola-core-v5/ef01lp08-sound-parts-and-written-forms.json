@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp08-sound-parts-and-written-forms",
+  "canonicalSkillCode": "AUTHORING_EF01LP08_RELATE_SOUND_PARTS_TO_WRITING",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA — ALFABETIZAÇÃO",
+  "topic": "relação entre sílabas, fonemas, partes de palavras e representação escrita",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP08",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Partes que ouvimos e vemos nas palavras",
+    "objective": "Relacionar, em palavras familiares e com apoio acessível, sílabas e sons iniciais a partes escritas, reconhecendo que fala e escrita se relacionam sem tratar toda pronúncia como idêntica.",
+    "summary": "Palavras faladas podem ser percebidas em partes sonoras, como sílabas e sons iniciais. Na escrita, letras e grupos de letras registram essas palavras. Em “pato”, podemos separar as sílabas pa-to e observar que a palavra escrita começa com P. A pronúncia pode variar entre regiões e pessoas; a atividade compara exemplos e não avalia sotaque. Ouvir não é a única forma de participar: imagens, escrita ampliada, leitura compartilhada e apontamento também ajudam.",
+    "explanation": "Escolha uma palavra familiar apresentada por escrito e, quando possível, também falada. Diga-a devagar ou acompanhe a leitura do educador, marque as sílabas com palmas ou fichas e depois compare cada parte com a escrita. Em “bola”, as partes faladas podem ser representadas na escrita como bo-la. Para sons iniciais, observe palavras simples como pato e bola e relacione o som indicado à letra inicial daquele exemplo. Não conclua que toda letra tem sempre o mesmo som nem corrija sotaques. Considere a palavra inteira e aceite formas de resposta oral, visual, gestual ou por comunicação alternativa.",
+    "workedExample": "Na palavra escrita “mesa”, uma leitura compartilhada pode marcar duas partes: me-sa. O cartão ME representa a primeira sílaba escrita e SA, a segunda. As partes faladas e as partes escritas se relacionam nesta palavra, mas sílaba e letra são unidades diferentes.",
+    "commonMistake": "Confundir sílaba com letra ou fonema, ou considerar uma pronúncia regional como erro ao comparar a palavra com sua escrita.",
+    "priorKnowledge": [
+      "Reconhecer algumas palavras familiares em leitura compartilhada.",
+      "Perceber que uma palavra pode ser dividida oralmente em partes, com apoio."
+    ],
+    "keyConcepts": [
+      "palavra",
+      "som",
+      "fonema",
+      "sílaba",
+      "letra",
+      "representação escrita",
+      "segmentação",
+      "variação de fala"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SYLLABLE_VS_LETTER",
+        "action": "Use uma palavra familiar e cartões separados para cada sílaba escrita; compare a quantidade de partes pronunciadas com as letras sem dizer que são a mesma unidade."
+      },
+      {
+        "errorFocus": "SOUND_TO_WRITTEN_PART",
+        "action": "Mostre a palavra inteira em fonte ampliada, leia-a com apoio e destaque apenas a parte inicial trabalhada antes de comparar o som indicado."
+      },
+      {
+        "errorFocus": "DIALECT_STIGMA",
+        "action": "Aceite pronúncias regionais e use a forma escrita convencional como referência visual, sem avaliar sotaque ou exigir repetição oral."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+      "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+      "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp08-word-part-cards",
+        "title": "Trilha de partes da palavra",
+        "instructions": "Cartões ilustrados apresentam palavras familiares e suas partes escritas em sílabas.\n1. Escolha uma palavra e escute ou acompanhe sua leitura.\n2. Marque as partes faladas com fichas ou apontamentos.\n3. Combine cada parte com os cartões escritos e explique a relação observada.",
+        "steps": [
+          "Escolha uma palavra e escute ou acompanhe sua leitura.",
+          "Marque as partes faladas com fichas ou apontamentos.",
+          "Combine cada parte com os cartões escritos e explique a relação observada."
+        ],
+        "evidence": "Combinação de palavra, segmentação apoiada e partes escritas, usando uma forma de resposta acessível.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "acompanha a segmentação com modelagem.",
+            "developing": "relaciona algumas partes sonoras e escritas com apoio.",
+            "proficient": "relaciona as partes trabalhadas e distingue sílaba de letra sem julgar pronúncias."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp08-classroom-word-museum",
+        "title": "Pequeno museu de palavras",
+        "instructions": "A turma organiza cartões ilustrados com palavras e partes escritas escolhidas pelo educador.\n1. Selecione uma palavra e identifique sua escrita completa.\n2. Organize cartões para representar suas partes sonoras e escritas.\n3. Apresente uma relação usando fala, gesto, desenho ou apontamento.",
+        "steps": [
+          "Selecione uma palavra e identifique sua escrita completa.",
+          "Organize cartões para representar suas partes sonoras e escritas.",
+          "Apresente uma relação usando fala, gesto, desenho ou apontamento."
+        ],
+        "evidence": "Cartão acessível que mostra uma palavra e pelo menos uma relação entre parte sonora e representação escrita.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma imagem correspondente à palavra.",
+            "developing": "localiza uma parte com ajuda.",
+            "proficient": "explica ou demonstra a relação entre a parte sonora trabalhada e sua escrita."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp08-sound-parts-and-written-forms-01",
+          "v1-ef01lp08-sound-parts-and-written-forms-02",
+          "v1-ef01lp08-sound-parts-and-written-forms-03",
+          "v1-ef01lp08-sound-parts-and-written-forms-04",
+          "v1-ef01lp08-sound-parts-and-written-forms-05",
+          "v1-ef01lp08-sound-parts-and-written-forms-06",
+          "v1-ef01lp08-sound-parts-and-written-forms-07",
+          "v1-ef01lp08-sound-parts-and-written-forms-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp08-sound-parts-and-written-forms-09",
+          "v1-ef01lp08-sound-parts-and-written-forms-10",
+          "v1-ef01lp08-sound-parts-and-written-forms-11",
+          "v1-ef01lp08-sound-parts-and-written-forms-12",
+          "v1-ef01lp08-sound-parts-and-written-forms-13",
+          "v1-ef01lp08-sound-parts-and-written-forms-14",
+          "v1-ef01lp08-sound-parts-and-written-forms-15",
+          "v1-ef01lp08-sound-parts-and-written-forms-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp08-sound-parts-and-written-forms-17",
+          "v1-ef01lp08-sound-parts-and-written-forms-18",
+          "v1-ef01lp08-sound-parts-and-written-forms-19",
+          "v1-ef01lp08-sound-parts-and-written-forms-20",
+          "v1-ef01lp08-sound-parts-and-written-forms-21",
+          "v1-ef01lp08-sound-parts-and-written-forms-22",
+          "v1-ef01lp08-sound-parts-and-written-forms-23",
+          "v1-ef01lp08-sound-parts-and-written-forms-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp08-sound-parts-and-written-forms-25",
+          "v1-ef01lp08-sound-parts-and-written-forms-26",
+          "v1-ef01lp08-sound-parts-and-written-forms-27",
+          "v1-ef01lp08-sound-parts-and-written-forms-28",
+          "v1-ef01lp08-sound-parts-and-written-forms-29",
+          "v1-ef01lp08-sound-parts-and-written-forms-30",
+          "v1-ef01lp08-sound-parts-and-written-forms-31",
+          "v1-ef01lp08-sound-parts-and-written-forms-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp08-sound-parts-and-written-forms-33",
+          "v1-ef01lp08-sound-parts-and-written-forms-34",
+          "v1-ef01lp08-sound-parts-and-written-forms-35",
+          "v1-ef01lp08-sound-parts-and-written-forms-36",
+          "v1-ef01lp08-sound-parts-and-written-forms-37",
+          "v1-ef01lp08-sound-parts-and-written-forms-38",
+          "v1-ef01lp08-sound-parts-and-written-forms-39",
+          "v1-ef01lp08-sound-parts-and-written-forms-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP08",
+        "descriptor": "Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-01",
+      "statement": "Na palavra escrita “pato”, qual parte aparece primeiro?",
+      "prompt": "Na palavra escrita “pato”, qual parte aparece primeiro?",
+      "options": [
+        "pa.",
+        "to",
+        "ta",
+        "po"
+      ],
+      "correctAnswer": "pa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "to": [
+          "INITIAL_SYLLABLE"
+        ],
+        "ta": [
+          "INITIAL_SYLLABLE"
+        ],
+        "po": [
+          "INITIAL_SYLLABLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PALAVRA_PATO",
+      "explanation": "A palavra pode ser segmentada como pa-to; pa vem primeiro.",
+      "hint": "Leia a palavra da esquerda para a direita.",
+      "errorFocus": "INITIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: A palavra pode ser segmentada como pa-to; pa vem primeiro.",
+        "incorrect": "A palavra pode ser segmentada como pa-to; pa vem primeiro.",
+        "hint": "Leia a palavra da esquerda para a direita.",
+        "errorFocus": "INITIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-02",
+      "statement": "A palavra “bola” pode ser segmentada como bo-la. Quantas sílabas aparecem nessa divisão?",
+      "prompt": "A palavra “bola” pode ser segmentada como bo-la. Quantas sílabas aparecem nessa divisão?",
+      "options": [
+        "Uma",
+        "Duas.",
+        "Três",
+        "Quatro"
+      ],
+      "correctAnswer": "Duas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma": [
+          "SYLLABLE_COUNT"
+        ],
+        "Três": [
+          "SYLLABLE_COUNT"
+        ],
+        "Quatro": [
+          "SYLLABLE_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DE_BOLA",
+      "explanation": "A divisão apresentada tem as partes bo e la.",
+      "hint": "Conte as partes separadas pelo traço.",
+      "errorFocus": "SYLLABLE_COUNT",
+      "feedback": {
+        "correct": "Boa observação: A divisão apresentada tem as partes bo e la.",
+        "incorrect": "A divisão apresentada tem as partes bo e la.",
+        "hint": "Conte as partes separadas pelo traço.",
+        "errorFocus": "SYLLABLE_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-03",
+      "statement": "Na palavra “mesa”, “me” é uma sílaba escrita com quais letras?",
+      "prompt": "Na palavra “mesa”, “me” é uma sílaba escrita com quais letras?",
+      "options": [
+        "Apenas M",
+        "Apenas E",
+        "M e E.",
+        "As letras S e A"
+      ],
+      "correctAnswer": "M e E.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apenas M": [
+          "SYLLABLE_CONTAINS_LETTERS"
+        ],
+        "Apenas E": [
+          "SYLLABLE_CONTAINS_LETTERS"
+        ],
+        "As letras S e A": [
+          "SYLLABLE_CONTAINS_LETTERS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LETRA_E_SILABA_ME",
+      "explanation": "A parte escrita “me” contém as letras M e E.",
+      "hint": "Observe a primeira parte escrita.",
+      "errorFocus": "SYLLABLE_CONTAINS_LETTERS",
+      "feedback": {
+        "correct": "Boa observação: A parte escrita “me” contém as letras M e E.",
+        "incorrect": "A parte escrita “me” contém as letras M e E.",
+        "hint": "Observe a primeira parte escrita.",
+        "errorFocus": "SYLLABLE_CONTAINS_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-04",
+      "statement": "A palavra “vela” começa com qual sílaba escrita?",
+      "prompt": "A palavra “vela” começa com qual sílaba escrita?",
+      "options": [
+        "la",
+        "va",
+        "el",
+        "ve."
+      ],
+      "correctAnswer": "ve.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "la": [
+          "WRITTEN_INITIAL_PART"
+        ],
+        "va": [
+          "WRITTEN_INITIAL_PART"
+        ],
+        "el": [
+          "WRITTEN_INITIAL_PART"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FIGURA_DA_VELA",
+      "explanation": "A segmentação ve-la mostra ve no início.",
+      "hint": "Olhe as duas primeiras letras da palavra.",
+      "errorFocus": "WRITTEN_INITIAL_PART",
+      "feedback": {
+        "correct": "Boa observação: A segmentação ve-la mostra ve no início.",
+        "incorrect": "A segmentação ve-la mostra ve no início.",
+        "hint": "Olhe as duas primeiras letras da palavra.",
+        "errorFocus": "WRITTEN_INITIAL_PART"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-05",
+      "statement": "“Pato” e “pipa” começam com a mesma letra escrita. Qual é?",
+      "prompt": "“Pato” e “pipa” começam com a mesma letra escrita. Qual é?",
+      "options": [
+        "P.",
+        "B",
+        "T",
+        "A"
+      ],
+      "correctAnswer": "P.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "B": [
+          "SHARED_INITIAL_LETTER"
+        ],
+        "T": [
+          "SHARED_INITIAL_LETTER"
+        ],
+        "A": [
+          "SHARED_INITIAL_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PATO_E_PIPA",
+      "explanation": "As duas palavras começam com P.",
+      "hint": "Compare a primeira letra de cada palavra.",
+      "errorFocus": "SHARED_INITIAL_LETTER",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras começam com P.",
+        "incorrect": "As duas palavras começam com P.",
+        "hint": "Compare a primeira letra de cada palavra.",
+        "errorFocus": "SHARED_INITIAL_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-06",
+      "statement": "Na segmentação “ca-sa”, qual parte vem depois de ca?",
+      "prompt": "Na segmentação “ca-sa”, qual parte vem depois de ca?",
+      "options": [
+        "ca",
+        "sa.",
+        "as",
+        "a"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ca": [
+          "FINAL_SYLLABLE"
+        ],
+        "as": [
+          "FINAL_SYLLABLE"
+        ],
+        "a": [
+          "FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PALAVRA_CASA",
+      "explanation": "A segunda parte escrita da palavra é sa.",
+      "hint": "Siga a palavra após o traço.",
+      "errorFocus": "FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: A segunda parte escrita da palavra é sa.",
+        "incorrect": "A segunda parte escrita da palavra é sa.",
+        "hint": "Siga a palavra após o traço.",
+        "errorFocus": "FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-07",
+      "statement": "Um cartão mostra “foca” e outro “fita”. Qual parte escrita aparece no começo das duas palavras?",
+      "prompt": "Um cartão mostra “foca” e outro “fita”. Qual parte escrita aparece no começo das duas palavras?",
+      "options": [
+        "A sílaba fi",
+        "A letra T",
+        "A letra F.",
+        "A sílaba ca"
+      ],
+      "correctAnswer": "A letra F.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A sílaba fi": [
+          "SHARED_INITIAL_WRITING"
+        ],
+        "A letra T": [
+          "SHARED_INITIAL_WRITING"
+        ],
+        "A sílaba ca": [
+          "SHARED_INITIAL_WRITING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTOES_DE_SONS",
+      "explanation": "As duas palavras começam com a letra F, embora as sílabas completas sejam diferentes.",
+      "hint": "Compare o início escrito de cada palavra.",
+      "errorFocus": "SHARED_INITIAL_WRITING",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras começam com a letra F, embora as sílabas completas sejam diferentes.",
+        "incorrect": "As duas palavras começam com a letra F, embora as sílabas completas sejam diferentes.",
+        "hint": "Compare o início escrito de cada palavra.",
+        "errorFocus": "SHARED_INITIAL_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-08",
+      "statement": "Uma estudante não usa áudio para responder. Como pode mostrar a primeira sílaba de “mesa”?",
+      "prompt": "Uma estudante não usa áudio para responder. Como pode mostrar a primeira sílaba de “mesa”?",
+      "options": [
+        "Sendo obrigada a repetir um som",
+        "Ficando sem participar",
+        "Escolhendo uma sílaba sem olhar",
+        "Apontando para “me” na palavra escrita ou no cartão."
+      ],
+      "correctAnswer": "Apontando para “me” na palavra escrita ou no cartão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sendo obrigada a repetir um som": [
+          "ACCESSIBLE_WORD_ANALYSIS"
+        ],
+        "Ficando sem participar": [
+          "ACCESSIBLE_WORD_ANALYSIS"
+        ],
+        "Escolhendo uma sílaba sem olhar": [
+          "ACCESSIBLE_WORD_ANALYSIS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPOSTA_SEM_AUDIO",
+      "explanation": "Apontar para a parte escrita permite participar sem depender do áudio.",
+      "hint": "Use a escrita visível como pista.",
+      "errorFocus": "ACCESSIBLE_WORD_ANALYSIS",
+      "feedback": {
+        "correct": "Boa observação: Apontar para a parte escrita permite participar sem depender do áudio.",
+        "incorrect": "Apontar para a parte escrita permite participar sem depender do áudio.",
+        "hint": "Use a escrita visível como pista.",
+        "errorFocus": "ACCESSIBLE_WORD_ANALYSIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-09",
+      "statement": "Na palavra “mala”, qual é a segunda sílaba da divisão ma-la?",
+      "prompt": "Na palavra “mala”, qual é a segunda sílaba da divisão ma-la?",
+      "options": [
+        "la.",
+        "ma",
+        "mal",
+        "a"
+      ],
+      "correctAnswer": "la.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ma": [
+          "SECOND_SYLLABLE"
+        ],
+        "mal": [
+          "SECOND_SYLLABLE"
+        ],
+        "a": [
+          "SECOND_SYLLABLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_MALA",
+      "explanation": "Na divisão ma-la, la é a segunda parte.",
+      "hint": "Observe o que vem depois do traço.",
+      "errorFocus": "SECOND_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: Na divisão ma-la, la é a segunda parte.",
+        "incorrect": "Na divisão ma-la, la é a segunda parte.",
+        "hint": "Observe o que vem depois do traço.",
+        "errorFocus": "SECOND_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-10",
+      "statement": "Quantas partes aparecem na escrita segmentada “bo-la”?",
+      "prompt": "Quantas partes aparecem na escrita segmentada “bo-la”?",
+      "options": [
+        "Uma",
+        "Duas.",
+        "Três",
+        "Cinco"
+      ],
+      "correctAnswer": "Duas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma": [
+          "COUNT_WRITTEN_PARTS"
+        ],
+        "Três": [
+          "COUNT_WRITTEN_PARTS"
+        ],
+        "Cinco": [
+          "COUNT_WRITTEN_PARTS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PALAVRA_BOLA",
+      "explanation": "A segmentação apresenta bo e la.",
+      "hint": "Conte cada parte escrita.",
+      "errorFocus": "COUNT_WRITTEN_PARTS",
+      "feedback": {
+        "correct": "Boa observação: A segmentação apresenta bo e la.",
+        "incorrect": "A segmentação apresenta bo e la.",
+        "hint": "Conte cada parte escrita.",
+        "errorFocus": "COUNT_WRITTEN_PARTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-11",
+      "statement": "As palavras “tatu” e “teto” começam com a mesma letra. Qual?",
+      "prompt": "As palavras “tatu” e “teto” começam com a mesma letra. Qual?",
+      "options": [
+        "D",
+        "P",
+        "T.",
+        "V"
+      ],
+      "correctAnswer": "T.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "D": [
+          "INITIAL_LETTER_COMPARISON"
+        ],
+        "P": [
+          "INITIAL_LETTER_COMPARISON"
+        ],
+        "V": [
+          "INITIAL_LETTER_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TATU_E_TETO",
+      "explanation": "As duas escritas começam com T.",
+      "hint": "Confira a primeira letra de cada palavra.",
+      "errorFocus": "INITIAL_LETTER_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As duas escritas começam com T.",
+        "incorrect": "As duas escritas começam com T.",
+        "hint": "Confira a primeira letra de cada palavra.",
+        "errorFocus": "INITIAL_LETTER_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-12",
+      "statement": "Na palavra “pato”, qual opção é uma sílaba e não uma letra isolada?",
+      "prompt": "Na palavra “pato”, qual opção é uma sílaba e não uma letra isolada?",
+      "options": [
+        "P",
+        "A",
+        "T",
+        "pa."
+      ],
+      "correctAnswer": "pa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "P": [
+          "SYLLABLE_NOT_SINGLE_LETTER"
+        ],
+        "A": [
+          "SYLLABLE_NOT_SINGLE_LETTER"
+        ],
+        "T": [
+          "SYLLABLE_NOT_SINGLE_LETTER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FICHA_DE_SILABA",
+      "explanation": "Pa reúne duas letras numa parte pronunciada da palavra.",
+      "hint": "Procure uma opção com mais de uma letra.",
+      "errorFocus": "SYLLABLE_NOT_SINGLE_LETTER",
+      "feedback": {
+        "correct": "Boa observação: Pa reúne duas letras numa parte pronunciada da palavra.",
+        "incorrect": "Pa reúne duas letras numa parte pronunciada da palavra.",
+        "hint": "Procure uma opção com mais de uma letra.",
+        "errorFocus": "SYLLABLE_NOT_SINGLE_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-13",
+      "statement": "Para montar a palavra “casa” com cartões de sílaba, quais partes usar?",
+      "prompt": "Para montar a palavra “casa” com cartões de sílaba, quais partes usar?",
+      "options": [
+        "ca e sa.",
+        "c e a",
+        "as e a",
+        "sa e ca na ordem inversa"
+      ],
+      "correctAnswer": "ca e sa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "c e a": [
+          "SYLLABLE_TO_WRITING"
+        ],
+        "as e a": [
+          "SYLLABLE_TO_WRITING"
+        ],
+        "sa e ca na ordem inversa": [
+          "SYLLABLE_TO_WRITING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MONTAGEM_DE_CASA",
+      "explanation": "A divisão trabalhada é ca-sa, na ordem da palavra.",
+      "hint": "Leia a palavra da esquerda para a direita.",
+      "errorFocus": "SYLLABLE_TO_WRITING",
+      "feedback": {
+        "correct": "Boa observação: A divisão trabalhada é ca-sa, na ordem da palavra.",
+        "incorrect": "A divisão trabalhada é ca-sa, na ordem da palavra.",
+        "hint": "Leia a palavra da esquerda para a direita.",
+        "errorFocus": "SYLLABLE_TO_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-14",
+      "statement": "Uma imagem de boneca aparece junto da palavra “boneca”. Qual parte escrita vem primeiro na divisão bo-ne-ca?",
+      "prompt": "Uma imagem de boneca aparece junto da palavra “boneca”. Qual parte escrita vem primeiro na divisão bo-ne-ca?",
+      "options": [
+        "ne",
+        "bo.",
+        "ca",
+        "na"
+      ],
+      "correctAnswer": "bo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ne": [
+          "FIRST_PART_IN_WORD"
+        ],
+        "ca": [
+          "FIRST_PART_IN_WORD"
+        ],
+        "na": [
+          "FIRST_PART_IN_WORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FRASE_COM_BONECA",
+      "explanation": "A primeira sílaba representada é bo.",
+      "hint": "Observe o início da sequência.",
+      "errorFocus": "FIRST_PART_IN_WORD",
+      "feedback": {
+        "correct": "Boa observação: A primeira sílaba representada é bo.",
+        "incorrect": "A primeira sílaba representada é bo.",
+        "hint": "Observe o início da sequência.",
+        "errorFocus": "FIRST_PART_IN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-15",
+      "statement": "Duas pessoas pronunciam uma palavra com variação regional. Como a aula deve tratar essa diferença?",
+      "prompt": "Duas pessoas pronunciam uma palavra com variação regional. Como a aula deve tratar essa diferença?",
+      "options": [
+        "Chamando uma pronúncia de inferior",
+        "Exigindo que todos falem igual",
+        "Com respeito, usando a palavra escrita como referência sem julgar sotaques.",
+        "Impedindo uma pessoa de responder"
+      ],
+      "correctAnswer": "Com respeito, usando a palavra escrita como referência sem julgar sotaques.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Chamando uma pronúncia de inferior": [
+          "RESPECT_LANGUAGE_VARIATION"
+        ],
+        "Exigindo que todos falem igual": [
+          "RESPECT_LANGUAGE_VARIATION"
+        ],
+        "Impedindo uma pessoa de responder": [
+          "RESPECT_LANGUAGE_VARIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PRONUNCIA_REGIONAL",
+      "explanation": "Variações de fala devem ser respeitadas e não são motivo para estigmatizar.",
+      "hint": "Escolha a atitude que acolhe diferentes falas.",
+      "errorFocus": "RESPECT_LANGUAGE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Variações de fala devem ser respeitadas e não são motivo para estigmatizar.",
+        "incorrect": "Variações de fala devem ser respeitadas e não são motivo para estigmatizar.",
+        "hint": "Escolha a atitude que acolhe diferentes falas.",
+        "errorFocus": "RESPECT_LANGUAGE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-16",
+      "statement": "“Vela” e “vaca” começam com a mesma letra, mas têm sílabas iniciais diferentes. Quais são?",
+      "prompt": "“Vela” e “vaca” começam com a mesma letra, mas têm sílabas iniciais diferentes. Quais são?",
+      "options": [
+        "la e ca",
+        "ve e ca",
+        "va e la",
+        "ve e va."
+      ],
+      "correctAnswer": "ve e va.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "la e ca": [
+          "SAME_LETTER_DIFFERENT_SYLLABLE"
+        ],
+        "ve e ca": [
+          "SAME_LETTER_DIFFERENT_SYLLABLE"
+        ],
+        "va e la": [
+          "SAME_LETTER_DIFFERENT_SYLLABLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CARTAO_DE_VELA_E_VACA",
+      "explanation": "As letras iniciais coincidem, enquanto as sílabas iniciais diferem.",
+      "hint": "Compare as duas primeiras letras de cada palavra.",
+      "errorFocus": "SAME_LETTER_DIFFERENT_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: As letras iniciais coincidem, enquanto as sílabas iniciais diferem.",
+        "incorrect": "As letras iniciais coincidem, enquanto as sílabas iniciais diferem.",
+        "hint": "Compare as duas primeiras letras de cada palavra.",
+        "errorFocus": "SAME_LETTER_DIFFERENT_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-17",
+      "statement": "“Lata” e “lago” começam com L, mas suas primeiras sílabas são la e la. O que elas compartilham?",
+      "prompt": "“Lata” e “lago” começam com L, mas suas primeiras sílabas são la e la. O que elas compartilham?",
+      "options": [
+        "A mesma sílaba inicial escrita “la”.",
+        "A palavra inteira",
+        "A sílaba final",
+        "Todas as letras"
+      ],
+      "correctAnswer": "A mesma sílaba inicial escrita “la”.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A palavra inteira": [
+          "SHARED_SYLLABLE"
+        ],
+        "A sílaba final": [
+          "SHARED_SYLLABLE"
+        ],
+        "Todas as letras": [
+          "SHARED_SYLLABLE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "JOGO_DE_PALAVRAS_COM_L",
+      "explanation": "As duas palavras apresentam la no início.",
+      "hint": "Compare as primeiras duas letras.",
+      "errorFocus": "SHARED_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras apresentam la no início.",
+        "incorrect": "As duas palavras apresentam la no início.",
+        "hint": "Compare as primeiras duas letras.",
+        "errorFocus": "SHARED_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-18",
+      "statement": "Pipa e pato começam com P, mas uma começa com pi e outra com pa. O que permanece igual?",
+      "prompt": "Pipa e pato começam com P, mas uma começa com pi e outra com pa. O que permanece igual?",
+      "options": [
+        "A palavra inteira",
+        "A letra inicial P; a sílaba inicial muda.",
+        "A segunda sílaba",
+        "Todas as letras das palavras"
+      ],
+      "correctAnswer": "A letra inicial P; a sílaba inicial muda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A palavra inteira": [
+          "LETTER_AND_SYLLABLE_CONTRAST"
+        ],
+        "A segunda sílaba": [
+          "LETTER_AND_SYLLABLE_CONTRAST"
+        ],
+        "Todas as letras das palavras": [
+          "LETTER_AND_SYLLABLE_CONTRAST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PIPA_E_PATO",
+      "explanation": "O início tem a mesma letra, mas vogais diferentes formam sílabas distintas.",
+      "hint": "Separe a primeira letra da sílaba inteira.",
+      "errorFocus": "LETTER_AND_SYLLABLE_CONTRAST",
+      "feedback": {
+        "correct": "Boa observação: O início tem a mesma letra, mas vogais diferentes formam sílabas distintas.",
+        "incorrect": "O início tem a mesma letra, mas vogais diferentes formam sílabas distintas.",
+        "hint": "Separe a primeira letra da sílaba inteira.",
+        "errorFocus": "LETTER_AND_SYLLABLE_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-19",
+      "statement": "Uma criança diz que “bo” é uma letra da palavra bola. Qual correção ajuda?",
+      "prompt": "Uma criança diz que “bo” é uma letra da palavra bola. Qual correção ajuda?",
+      "options": [
+        "“Bo” é a palavra inteira",
+        "“Bo” é apenas a letra B",
+        "“Bo” é uma sílaba escrita com B e O.",
+        "“Bo” não aparece em bola"
+      ],
+      "correctAnswer": "“Bo” é uma sílaba escrita com B e O.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Bo” é a palavra inteira": [
+          "SYLLABLE_UNIT_CORRECTION"
+        ],
+        "“Bo” é apenas a letra B": [
+          "SYLLABLE_UNIT_CORRECTION"
+        ],
+        "“Bo” não aparece em bola": [
+          "SYLLABLE_UNIT_CORRECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRASE_SOBRE_SILABA",
+      "explanation": "A sílaba bo reúne as letras B e O na palavra bola.",
+      "hint": "Conte quantas letras formam bo.",
+      "errorFocus": "SYLLABLE_UNIT_CORRECTION",
+      "feedback": {
+        "correct": "Boa observação: A sílaba bo reúne as letras B e O na palavra bola.",
+        "incorrect": "A sílaba bo reúne as letras B e O na palavra bola.",
+        "hint": "Conte quantas letras formam bo.",
+        "errorFocus": "SYLLABLE_UNIT_CORRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-20",
+      "statement": "Uma ficha mostra a figura de uma fita e as partes fi-ta. Como ordená-las para formar a palavra?",
+      "prompt": "Uma ficha mostra a figura de uma fita e as partes fi-ta. Como ordená-las para formar a palavra?",
+      "options": [
+        "ta antes de fi",
+        "fi depois de ta e antes de fi",
+        "somente ta",
+        "fi antes de ta."
+      ],
+      "correctAnswer": "fi antes de ta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ta antes de fi": [
+          "ORDER_WRITTEN_SYLLABLES"
+        ],
+        "fi depois de ta e antes de fi": [
+          "ORDER_WRITTEN_SYLLABLES"
+        ],
+        "somente ta": [
+          "ORDER_WRITTEN_SYLLABLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MONTAGEM_DE_FITA",
+      "explanation": "A palavra fita se escreve na ordem fi-ta.",
+      "hint": "Siga a palavra do começo ao fim.",
+      "errorFocus": "ORDER_WRITTEN_SYLLABLES",
+      "feedback": {
+        "correct": "Boa observação: A palavra fita se escreve na ordem fi-ta.",
+        "incorrect": "A palavra fita se escreve na ordem fi-ta.",
+        "hint": "Siga a palavra do começo ao fim.",
+        "errorFocus": "ORDER_WRITTEN_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-21",
+      "statement": "Na palavra “dado”, qual parte escrita corresponde à primeira sílaba na divisão da-do?",
+      "prompt": "Na palavra “dado”, qual parte escrita corresponde à primeira sílaba na divisão da-do?",
+      "options": [
+        "da.",
+        "do",
+        "ad",
+        "d"
+      ],
+      "correctAnswer": "da.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "do": [
+          "SOUND_PART_WRITING"
+        ],
+        "ad": [
+          "SOUND_PART_WRITING"
+        ],
+        "d": [
+          "SOUND_PART_WRITING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PALAVRA_DADO",
+      "explanation": "Da é a primeira parte da divisão apresentada.",
+      "hint": "Veja o que aparece antes do traço.",
+      "errorFocus": "SOUND_PART_WRITING",
+      "feedback": {
+        "correct": "Boa observação: Da é a primeira parte da divisão apresentada.",
+        "incorrect": "Da é a primeira parte da divisão apresentada.",
+        "hint": "Veja o que aparece antes do traço.",
+        "errorFocus": "SOUND_PART_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-22",
+      "statement": "Por que a palavra escrita ajuda a relacionar uma sílaba falada à sua representação?",
+      "prompt": "Por que a palavra escrita ajuda a relacionar uma sílaba falada à sua representação?",
+      "options": [
+        "Porque som e letra são a mesma coisa",
+        "Porque podemos comparar a parte pronunciada com a sequência de letras correspondente na palavra.",
+        "Porque toda pessoa pronuncia de modo idêntico",
+        "Porque a escrita não tem relação com a fala"
+      ],
+      "correctAnswer": "Porque podemos comparar a parte pronunciada com a sequência de letras correspondente na palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque som e letra são a mesma coisa": [
+          "SOUND_WRITING_RELATION"
+        ],
+        "Porque toda pessoa pronuncia de modo idêntico": [
+          "SOUND_WRITING_RELATION"
+        ],
+        "Porque a escrita não tem relação com a fala": [
+          "SOUND_WRITING_RELATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SOM_E_REGISTRO",
+      "explanation": "Comparar a parte falada e a escrita evidencia uma relação sem confundir as unidades.",
+      "hint": "Pense no que se ouve e no que se vê.",
+      "errorFocus": "SOUND_WRITING_RELATION",
+      "feedback": {
+        "correct": "Boa observação: Comparar a parte falada e a escrita evidencia uma relação sem confundir as unidades.",
+        "incorrect": "Comparar a parte falada e a escrita evidencia uma relação sem confundir as unidades.",
+        "hint": "Pense no que se ouve e no que se vê.",
+        "errorFocus": "SOUND_WRITING_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-23",
+      "statement": "Bola, boca e bota começam com qual parte escrita comum?",
+      "prompt": "Bola, boca e bota começam com qual parte escrita comum?",
+      "options": [
+        "A sílaba bo",
+        "A letra A",
+        "A letra B.",
+        "A sílaba ta"
+      ],
+      "correctAnswer": "A letra B.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A sílaba bo": [
+          "COMMON_INITIAL_LETTER"
+        ],
+        "A letra A": [
+          "COMMON_INITIAL_LETTER"
+        ],
+        "A sílaba ta": [
+          "COMMON_INITIAL_LETTER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FAMILIA_DE_PALAVRAS_COM_B",
+      "explanation": "As palavras começam com B, mas as sílabas seguintes variam.",
+      "hint": "Compare a primeira letra, não a palavra toda.",
+      "errorFocus": "COMMON_INITIAL_LETTER",
+      "feedback": {
+        "correct": "Boa observação: As palavras começam com B, mas as sílabas seguintes variam.",
+        "incorrect": "As palavras começam com B, mas as sílabas seguintes variam.",
+        "hint": "Compare a primeira letra, não a palavra toda.",
+        "errorFocus": "COMMON_INITIAL_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-24",
+      "statement": "Uma criança não consegue bater palmas para separar sílabas. Qual alternativa mantém o objetivo?",
+      "prompt": "Uma criança não consegue bater palmas para separar sílabas. Qual alternativa mantém o objetivo?",
+      "options": [
+        "Excluir a criança do exercício",
+        "Exigir que bata palmas",
+        "Dizer que só a fala pode mostrar sílabas",
+        "Organizar cartões ou fichas visuais para representar as partes da palavra."
+      ],
+      "correctAnswer": "Organizar cartões ou fichas visuais para representar as partes da palavra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Excluir a criança do exercício": [
+          "MULTIMODAL_SEGMENTATION"
+        ],
+        "Exigir que bata palmas": [
+          "MULTIMODAL_SEGMENTATION"
+        ],
+        "Dizer que só a fala pode mostrar sílabas": [
+          "MULTIMODAL_SEGMENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ACESSO_VISUAL_A_SEGMENTACAO",
+      "explanation": "A segmentação pode ser representada visualmente ou por apontamento.",
+      "hint": "Escolha uma resposta acessível que ainda mostre as partes.",
+      "errorFocus": "MULTIMODAL_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa observação: A segmentação pode ser representada visualmente ou por apontamento.",
+        "incorrect": "A segmentação pode ser representada visualmente ou por apontamento.",
+        "hint": "Escolha uma resposta acessível que ainda mostre as partes.",
+        "errorFocus": "MULTIMODAL_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-25",
+      "statement": "Casa e cama começam com a mesma sílaba escrita. Qual é?",
+      "prompt": "Casa e cama começam com a mesma sílaba escrita. Qual é?",
+      "options": [
+        "ca.",
+        "sa",
+        "ma",
+        "a"
+      ],
+      "correctAnswer": "ca.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sa": [
+          "SHARED_INITIAL_SYLLABLE"
+        ],
+        "ma": [
+          "SHARED_INITIAL_SYLLABLE"
+        ],
+        "a": [
+          "SHARED_INITIAL_SYLLABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_CASA_E_CAMA",
+      "explanation": "As duas palavras começam com ca.",
+      "hint": "Observe as primeiras duas letras.",
+      "errorFocus": "SHARED_INITIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras começam com ca.",
+        "incorrect": "As duas palavras começam com ca.",
+        "hint": "Observe as primeiras duas letras.",
+        "errorFocus": "SHARED_INITIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-26",
+      "statement": "Na palavra “pato”, qual opção nomeia uma letra e qual nomeia a primeira sílaba?",
+      "prompt": "Na palavra “pato”, qual opção nomeia uma letra e qual nomeia a primeira sílaba?",
+      "options": [
+        "P é uma sílaba; pa é uma letra",
+        "P é uma letra; pa é a primeira sílaba.",
+        "P e pa são a palavra inteira",
+        "A letra inicial é o"
+      ],
+      "correctAnswer": "P é uma letra; pa é a primeira sílaba.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "P é uma sílaba; pa é uma letra": [
+          "LETTER_SYLLABLE_DISTINCTION"
+        ],
+        "P e pa são a palavra inteira": [
+          "LETTER_SYLLABLE_DISTINCTION"
+        ],
+        "A letra inicial é o": [
+          "LETTER_SYLLABLE_DISTINCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LETRA_P_SILABA_PA",
+      "explanation": "P é uma letra e pa é uma sílaba escrita por duas letras.",
+      "hint": "Compare uma unidade e duas letras juntas.",
+      "errorFocus": "LETTER_SYLLABLE_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: P é uma letra e pa é uma sílaba escrita por duas letras.",
+        "incorrect": "P é uma letra e pa é uma sílaba escrita por duas letras.",
+        "hint": "Compare uma unidade e duas letras juntas.",
+        "errorFocus": "LETTER_SYLLABLE_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-27",
+      "statement": "Uma ficha separa “mala” como ma-la. Como a escrita mostra essa divisão?",
+      "prompt": "Uma ficha separa “mala” como ma-la. Como a escrita mostra essa divisão?",
+      "options": [
+        "Com la antes de ma",
+        "Com uma única parte mal",
+        "Com as partes ma e la, na ordem da palavra.",
+        "Com as letras sem relação com a palavra"
+      ],
+      "correctAnswer": "Com as partes ma e la, na ordem da palavra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Com la antes de ma": [
+          "ORDER_AND_SEGMENTATION"
+        ],
+        "Com uma única parte mal": [
+          "ORDER_AND_SEGMENTATION"
+        ],
+        "Com as letras sem relação com a palavra": [
+          "ORDER_AND_SEGMENTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_PALAVRA_MALA",
+      "explanation": "A representação mantém as partes na ordem em que aparecem na palavra.",
+      "hint": "Siga a palavra da esquerda para a direita.",
+      "errorFocus": "ORDER_AND_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa observação: A representação mantém as partes na ordem em que aparecem na palavra.",
+        "incorrect": "A representação mantém as partes na ordem em que aparecem na palavra.",
+        "hint": "Siga a palavra da esquerda para a direita.",
+        "errorFocus": "ORDER_AND_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-28",
+      "statement": "Uma criança procura a primeira sílaba de “vaca”. Que parte deve destacar?",
+      "prompt": "Uma criança procura a primeira sílaba de “vaca”. Que parte deve destacar?",
+      "options": [
+        "ca",
+        "ac",
+        "a",
+        "va."
+      ],
+      "correctAnswer": "va.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ca": [
+          "INITIAL_SYLLABLE_TRANSFER"
+        ],
+        "ac": [
+          "INITIAL_SYLLABLE_TRANSFER"
+        ],
+        "a": [
+          "INITIAL_SYLLABLE_TRANSFER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTAO_DE_VACA",
+      "explanation": "Va é a primeira sílaba na palavra vaca.",
+      "hint": "Encontre a parte inicial escrita.",
+      "errorFocus": "INITIAL_SYLLABLE_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: Va é a primeira sílaba na palavra vaca.",
+        "incorrect": "Va é a primeira sílaba na palavra vaca.",
+        "hint": "Encontre a parte inicial escrita.",
+        "errorFocus": "INITIAL_SYLLABLE_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-29",
+      "statement": "Fita e foca começam com F. Qual diferença aparece na sílaba inicial?",
+      "prompt": "Fita e foca começam com F. Qual diferença aparece na sílaba inicial?",
+      "options": [
+        "Uma começa com fi e a outra com fo.",
+        "A letra inicial muda para V",
+        "As duas têm a mesma sílaba inteira",
+        "Uma não tem sílaba inicial"
+      ],
+      "correctAnswer": "Uma começa com fi e a outra com fo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A letra inicial muda para V": [
+          "INITIAL_VOWEL_VARIATION"
+        ],
+        "As duas têm a mesma sílaba inteira": [
+          "INITIAL_VOWEL_VARIATION"
+        ],
+        "Uma não tem sílaba inicial": [
+          "INITIAL_VOWEL_VARIATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FITA_E_FOCA",
+      "explanation": "A letra F é comum, mas a vogal seguinte muda a sílaba.",
+      "hint": "Compare as duas primeiras letras.",
+      "errorFocus": "INITIAL_VOWEL_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A letra F é comum, mas a vogal seguinte muda a sílaba.",
+        "incorrect": "A letra F é comum, mas a vogal seguinte muda a sílaba.",
+        "hint": "Compare as duas primeiras letras.",
+        "errorFocus": "INITIAL_VOWEL_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-30",
+      "statement": "Uma pessoa conclui que a letra inicial sempre forma a sílaba inteira. Qual exemplo mostra o limite?",
+      "prompt": "Uma pessoa conclui que a letra inicial sempre forma a sílaba inteira. Qual exemplo mostra o limite?",
+      "options": [
+        "Em “pato”, a palavra tem letras",
+        "Em “pato”, P é uma letra e “pa” é a sílaba inicial.",
+        "A letra P está escrita",
+        "A palavra começa à esquerda"
+      ],
+      "correctAnswer": "Em “pato”, P é uma letra e “pa” é a sílaba inicial.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Em “pato”, a palavra tem letras": [
+          "LETTER_NOT_WHOLE_SYLLABLE"
+        ],
+        "A letra P está escrita": [
+          "LETTER_NOT_WHOLE_SYLLABLE"
+        ],
+        "A palavra começa à esquerda": [
+          "LETTER_NOT_WHOLE_SYLLABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GENERALIZACAO_DA_LETRA",
+      "explanation": "Uma letra pode fazer parte de uma sílaba sem ser a sílaba inteira.",
+      "hint": "Observe P e pa separadamente.",
+      "errorFocus": "LETTER_NOT_WHOLE_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: Uma letra pode fazer parte de uma sílaba sem ser a sílaba inteira.",
+        "incorrect": "Uma letra pode fazer parte de uma sílaba sem ser a sílaba inteira.",
+        "hint": "Observe P e pa separadamente.",
+        "errorFocus": "LETTER_NOT_WHOLE_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-31",
+      "statement": "“A palavra mala tem ma e la.” O que essa frase descreve?",
+      "prompt": "“A palavra mala tem ma e la.” O que essa frase descreve?",
+      "options": [
+        "Duas palavras diferentes",
+        "Duas pessoas falando",
+        "Duas partes silábicas escritas da palavra.",
+        "Uma letra repetida"
+      ],
+      "correctAnswer": "Duas partes silábicas escritas da palavra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Duas palavras diferentes": [
+          "SEGMENTED_WORD_REVIEW"
+        ],
+        "Duas pessoas falando": [
+          "SEGMENTED_WORD_REVIEW"
+        ],
+        "Uma letra repetida": [
+          "SEGMENTED_WORD_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FRASE_DE_REVISAO",
+      "explanation": "Ma e la são as duas partes apresentadas para mala.",
+      "hint": "Conte as partes nomeadas.",
+      "errorFocus": "SEGMENTED_WORD_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Ma e la são as duas partes apresentadas para mala.",
+        "incorrect": "Ma e la são as duas partes apresentadas para mala.",
+        "hint": "Conte as partes nomeadas.",
+        "errorFocus": "SEGMENTED_WORD_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-32",
+      "statement": "Um estudante prefere não responder oralmente. Como pode mostrar que identificou a sílaba inicial?",
+      "prompt": "Um estudante prefere não responder oralmente. Como pode mostrar que identificou a sílaba inicial?",
+      "options": [
+        "Ser avaliado como se não soubesse",
+        "Ser obrigado a repetir em voz alta",
+        "Receber a resposta sem tentar",
+        "Apontar ou selecionar o cartão com a parte escrita correta."
+      ],
+      "correctAnswer": "Apontar ou selecionar o cartão com a parte escrita correta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ser avaliado como se não soubesse": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ],
+        "Ser obrigado a repetir em voz alta": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ],
+        "Receber a resposta sem tentar": [
+          "ACCESSIBLE_RESPONSE_MODE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPOSTA_SEM_FALA",
+      "explanation": "Apontar para o cartão é uma forma válida de demonstrar a relação aprendida.",
+      "hint": "Escolha uma resposta sem fala que mostre a parte escrita.",
+      "errorFocus": "ACCESSIBLE_RESPONSE_MODE",
+      "feedback": {
+        "correct": "Boa observação: Apontar para o cartão é uma forma válida de demonstrar a relação aprendida.",
+        "incorrect": "Apontar para o cartão é uma forma válida de demonstrar a relação aprendida.",
+        "hint": "Escolha uma resposta sem fala que mostre a parte escrita.",
+        "errorFocus": "ACCESSIBLE_RESPONSE_MODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-33",
+      "statement": "Na palavra bola, qual é a primeira sílaba da divisão bo-la?",
+      "prompt": "Na palavra bola, qual é a primeira sílaba da divisão bo-la?",
+      "options": [
+        "bo.",
+        "la",
+        "ba",
+        "ol"
+      ],
+      "correctAnswer": "bo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "la": [
+          "FIRST_SYLLABLE_REVIEW"
+        ],
+        "ba": [
+          "FIRST_SYLLABLE_REVIEW"
+        ],
+        "ol": [
+          "FIRST_SYLLABLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_BO_LA",
+      "explanation": "Bo vem primeiro em bo-la.",
+      "hint": "Leia a palavra desde o começo.",
+      "errorFocus": "FIRST_SYLLABLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Bo vem primeiro em bo-la.",
+        "incorrect": "Bo vem primeiro em bo-la.",
+        "hint": "Leia a palavra desde o começo.",
+        "errorFocus": "FIRST_SYLLABLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-34",
+      "statement": "Na divisão ca-sa, qual parte aparece no final?",
+      "prompt": "Na divisão ca-sa, qual parte aparece no final?",
+      "options": [
+        "ca",
+        "sa.",
+        "as",
+        "c"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ca": [
+          "FINAL_SYLLABLE_REVIEW"
+        ],
+        "as": [
+          "FINAL_SYLLABLE_REVIEW"
+        ],
+        "c": [
+          "FINAL_SYLLABLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_CASA",
+      "explanation": "Sa é a segunda parte de ca-sa.",
+      "hint": "Olhe o trecho após o traço.",
+      "errorFocus": "FINAL_SYLLABLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Sa é a segunda parte de ca-sa.",
+        "incorrect": "Sa é a segunda parte de ca-sa.",
+        "hint": "Olhe o trecho após o traço.",
+        "errorFocus": "FINAL_SYLLABLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-35",
+      "statement": "Na palavra “pato”, P é uma letra e pa é uma sílaba. O que essas unidades têm em comum?",
+      "prompt": "Na palavra “pato”, P é uma letra e pa é uma sílaba. O que essas unidades têm em comum?",
+      "options": [
+        "São a mesma unidade",
+        "Pa é uma única letra",
+        "A letra P faz parte da escrita da sílaba pa.",
+        "P não aparece na palavra"
+      ],
+      "correctAnswer": "A letra P faz parte da escrita da sílaba pa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "São a mesma unidade": [
+          "LETTER_IN_SYLLABLE_REVIEW"
+        ],
+        "Pa é uma única letra": [
+          "LETTER_IN_SYLLABLE_REVIEW"
+        ],
+        "P não aparece na palavra": [
+          "LETTER_IN_SYLLABLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_LETRA_E_SOM",
+      "explanation": "A letra P integra a sílaba escrita pa, mas não é a sílaba inteira.",
+      "hint": "Veja quais letras compõem pa.",
+      "errorFocus": "LETTER_IN_SYLLABLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A letra P integra a sílaba escrita pa, mas não é a sílaba inteira.",
+        "incorrect": "A letra P integra a sílaba escrita pa, mas não é a sílaba inteira.",
+        "hint": "Veja quais letras compõem pa.",
+        "errorFocus": "LETTER_IN_SYLLABLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-36",
+      "statement": "Que parte escrita aparece no começo de fita e foca?",
+      "prompt": "Que parte escrita aparece no começo de fita e foca?",
+      "options": [
+        "A sílaba fi",
+        "A sílaba fo",
+        "A letra A",
+        "A letra F."
+      ],
+      "correctAnswer": "A letra F.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A sílaba fi": [
+          "SHARED_INITIAL_REVIEW"
+        ],
+        "A sílaba fo": [
+          "SHARED_INITIAL_REVIEW"
+        ],
+        "A letra A": [
+          "SHARED_INITIAL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_FITA_FOCA",
+      "explanation": "As duas palavras começam com F.",
+      "hint": "Compare a primeira letra de cada uma.",
+      "errorFocus": "SHARED_INITIAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras começam com F.",
+        "incorrect": "As duas palavras começam com F.",
+        "hint": "Compare a primeira letra de cada uma.",
+        "errorFocus": "SHARED_INITIAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-37",
+      "statement": "Qual atitude é adequada quando uma pessoa pronuncia uma palavra de modo regional?",
+      "prompt": "Qual atitude é adequada quando uma pessoa pronuncia uma palavra de modo regional?",
+      "options": [
+        "Respeitar a variedade e analisar a relação com a escrita sem julgar o sotaque.",
+        "Corrigir a pessoa em público",
+        "Impedir que ela participe",
+        "Dizer que sua fala vale menos"
+      ],
+      "correctAnswer": "Respeitar a variedade e analisar a relação com a escrita sem julgar o sotaque.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Corrigir a pessoa em público": [
+          "LANGUAGE_RESPECT_REVIEW"
+        ],
+        "Impedir que ela participe": [
+          "LANGUAGE_RESPECT_REVIEW"
+        ],
+        "Dizer que sua fala vale menos": [
+          "LANGUAGE_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_VARIACAO",
+      "explanation": "Variações regionais são respeitadas e não devem ser estigmatizadas.",
+      "hint": "Escolha uma atitude acolhedora.",
+      "errorFocus": "LANGUAGE_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Variações regionais são respeitadas e não devem ser estigmatizadas.",
+        "incorrect": "Variações regionais são respeitadas e não devem ser estigmatizadas.",
+        "hint": "Escolha uma atitude acolhedora.",
+        "errorFocus": "LANGUAGE_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-38",
+      "statement": "Uma ficha tem a palavra “dado” e os cartões da e do. O que os cartões representam?",
+      "prompt": "Uma ficha tem a palavra “dado” e os cartões da e do. O que os cartões representam?",
+      "options": [
+        "Duas letras isoladas",
+        "As partes silábicas escritas na ordem da palavra.",
+        "Duas palavras sem ligação",
+        "A palavra sem suas letras"
+      ],
+      "correctAnswer": "As partes silábicas escritas na ordem da palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Duas letras isoladas": [
+          "SYLLABLE_CARDS_REVIEW"
+        ],
+        "Duas palavras sem ligação": [
+          "SYLLABLE_CARDS_REVIEW"
+        ],
+        "A palavra sem suas letras": [
+          "SYLLABLE_CARDS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_SEGMENTACAO",
+      "explanation": "Da e do são as partes que formam dado na ordem apresentada.",
+      "hint": "Combine os cartões para reconstruir a palavra.",
+      "errorFocus": "SYLLABLE_CARDS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Da e do são as partes que formam dado na ordem apresentada.",
+        "incorrect": "Da e do são as partes que formam dado na ordem apresentada.",
+        "hint": "Combine os cartões para reconstruir a palavra.",
+        "errorFocus": "SYLLABLE_CARDS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-39",
+      "statement": "Que recurso pode ajudar a relacionar partes sonoras e escrita sem depender só da audição?",
+      "prompt": "Que recurso pode ajudar a relacionar partes sonoras e escrita sem depender só da audição?",
+      "options": [
+        "Som alto obrigatório",
+        "Exclusão de imagens",
+        "Cartões visuais e leitura compartilhada.",
+        "Avaliação do sotaque"
+      ],
+      "correctAnswer": "Cartões visuais e leitura compartilhada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Som alto obrigatório": [
+          "MULTIMODAL_SUPPORT_REVIEW"
+        ],
+        "Exclusão de imagens": [
+          "MULTIMODAL_SUPPORT_REVIEW"
+        ],
+        "Avaliação do sotaque": [
+          "MULTIMODAL_SUPPORT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_APOIO_VISUAL",
+      "explanation": "Apoios visuais e leitura compartilhada ampliam o acesso.",
+      "hint": "Escolha uma opção que mostre as partes por escrito.",
+      "errorFocus": "MULTIMODAL_SUPPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Apoios visuais e leitura compartilhada ampliam o acesso.",
+        "incorrect": "Apoios visuais e leitura compartilhada ampliam o acesso.",
+        "hint": "Escolha uma opção que mostre as partes por escrito.",
+        "errorFocus": "MULTIMODAL_SUPPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp08-sound-parts-and-written-forms-40",
+      "statement": "Como explicar a relação entre uma palavra falada e suas partes escritas?",
+      "prompt": "Como explicar a relação entre uma palavra falada e suas partes escritas?",
+      "options": [
+        "Toda letra é uma sílaba",
+        "Todas as pessoas devem pronunciar igual",
+        "A escrita não registra partes da palavra",
+        "Podemos identificar partes sonoras com apoio e compará-las à sequência escrita, respeitando variações de fala."
+      ],
+      "correctAnswer": "Podemos identificar partes sonoras com apoio e compará-las à sequência escrita, respeitando variações de fala.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda letra é uma sílaba": [
+          "SOUND_WRITING_SUMMARY"
+        ],
+        "Todas as pessoas devem pronunciar igual": [
+          "SOUND_WRITING_SUMMARY"
+        ],
+        "A escrita não registra partes da palavra": [
+          "SOUND_WRITING_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_PARTES",
+      "explanation": "A comparação relaciona fala e escrita sem confundir unidades ou desrespeitar variedades.",
+      "hint": "Una segmentação, representação e respeito à fala.",
+      "errorFocus": "SOUND_WRITING_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A comparação relaciona fala e escrita sem confundir unidades ou desrespeitar variedades.",
+        "incorrect": "A comparação relaciona fala e escrita sem confundir unidades ou desrespeitar variedades.",
+        "hint": "Una segmentação, representação e respeito à fala.",
+        "errorFocus": "SOUND_WRITING_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar palavras em alto contraste, cartões táteis de sílabas, imagens descritas e leitura compartilhada.",
+          "Permitir segmentar com fichas, apontar, sinalizar, escrever ou usar comunicação alternativa sem depender apenas da audição ou da fala.",
+          "Aceitar variedades linguísticas e pronúncias regionais; evitar corrigir sotaque ou atribuir valor às formas de falar."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

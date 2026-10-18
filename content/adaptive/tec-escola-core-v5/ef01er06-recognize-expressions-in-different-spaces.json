@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er06-recognize-expressions-in-different-spaces",
+  "canonicalSkillCode": "AUTHORING_EF01ER06_RECOGNIZE_PERSONAL_EXPRESSIONS",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "formas de manifestar sentimentos, ideias, memórias, gostos e crenças",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Cada pessoa pode se expressar de um jeito",
+    "objective": "Reconhecer formas diversas de expressão em contextos cotidianos e fictícios, respeitando privacidade, diferenças e o direito de não compartilhar.",
+    "summary": "Pessoas podem expressar sentimentos, ideias, memórias, gostos e crenças por fala, escrita, desenho, música, gestos, silêncio ou outras formas. A mesma pessoa pode escolher expressar algo de maneiras diferentes em espaços distintos. Não se deve adivinhar crenças ou sentimentos apenas pela aparência nem presumir que um grupo inteiro pense igual. As atividades usam situações fictícias ou relatos voluntários, sem exigir informações pessoais ou religiosas dos estudantes.",
+    "explanation": "Leia a situação e identifique a forma de expressão que a fonte apresenta. Uma personagem pode desenhar uma lembrança, explicar uma ideia, escolher uma atividade de que gosta ou compartilhar uma crença numa conversa familiar. A descrição vale para aquela fonte, não para todas as pessoas. Escute sem ridicularizar e aceite que alguém prefira não falar. Diferencie a forma de expressão do conteúdo e do contexto em que aparece.",
+    "workedExample": "Uma personagem desenha uma lembrança de um passeio e decide mostrá-la à turma. O desenho é uma forma de expressar uma memória; não precisamos concluir que todos expressem lembranças por desenho.",
+    "commonMistake": "Supor o que alguém acredita ou sente sem evidência, generalizar uma expressão para todo um grupo ou pressionar estudantes a revelar crenças privadas.",
+    "priorKnowledge": [
+      "Reconhecer ações e informações explícitas em histórias curtas.",
+      "Praticar escuta e turnos de conversa com respeito."
+    ],
+    "keyConcepts": [
+      "expressão",
+      "sentimento",
+      "ideia",
+      "memória",
+      "gosto",
+      "crença",
+      "contexto",
+      "privacidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SOURCE_BASED_EXPRESSION",
+        "action": "Volte à fala, desenho ou ação que a fonte apresenta e separe observação de suposição."
+      },
+      {
+        "errorFocus": "NO_BELIEF_STEREOTYPE",
+        "action": "Trate cada relato como específico e não atribua a mesma crença a todo um grupo."
+      },
+      {
+        "errorFocus": "RIGHT_NOT_TO_SHARE",
+        "action": "Ofereça personagem fictícia, resposta alternativa ou opção de passar a vez."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+      "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+      "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er06-expression-cards",
+        "title": "Cartões de expressão",
+        "instructions": "Personagens fictícias demonstram ideias, sentimentos e gostos por meios variados.\n1. Leia ou observe um cartão fictício.\n2. Identifique o que a personagem manifesta e como.\n3. Registre uma resposta que respeite sua escolha e contexto.",
+        "steps": [
+          "Leia ou observe um cartão fictício.",
+          "Identifique o que a personagem manifesta e como.",
+          "Registre uma resposta que respeite sua escolha e contexto."
+        ],
+        "evidence": "Descrição da expressão baseada no cartão, sem inferir além da fonte.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma ação com apoio.",
+            "developing": "relaciona conteúdo e forma de expressão.",
+            "proficient": "considera contexto e evita estereótipos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er06-many-ways-to-express",
+        "title": "Muitas formas de comunicar",
+        "instructions": "Exemplos fictícios mostram escrita, desenho, música, gestos e silêncio em situações distintas.\n1. Associe cada situação a uma forma de expressão.\n2. Compare duas formas sem hierarquizá-las.\n3. Proponha uma opção acessível de participação.",
+        "steps": [
+          "Associe cada situação a uma forma de expressão.",
+          "Compare duas formas sem hierarquizá-las.",
+          "Proponha uma opção acessível de participação."
+        ],
+        "evidence": "Associação contextualizada e alternativa respeitosa de comunicação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma forma de expressão.",
+            "developing": "compara formas com apoio.",
+            "proficient": "identifica contexto e valoriza escolhas diversas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er06-recognize-expressions-in-different-spaces-01",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-02",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-03",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-04",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-05",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-06",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-07",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er06-recognize-expressions-in-different-spaces-09",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-10",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-11",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-12",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-13",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-14",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-15",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er06-recognize-expressions-in-different-spaces-17",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-18",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-19",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-20",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-21",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-22",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-23",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er06-recognize-expressions-in-different-spaces-25",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-26",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-27",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-28",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-29",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-30",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-31",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er06-recognize-expressions-in-different-spaces-33",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-34",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-35",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-36",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-37",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-38",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-39",
+          "v1-ef01er06-recognize-expressions-in-different-spaces-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER06",
+        "descriptor": "Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-01",
+      "statement": "Uma personagem desenha um passeio que recorda. Como ela expressa a lembrança?",
+      "prompt": "Uma personagem desenha um passeio que recorda. Como ela expressa a lembrança?",
+      "options": [
+        "Por meio de um desenho.",
+        "Por uma medição de temperatura",
+        "Por uma regra de trânsito",
+        "Por uma lista de compras"
+      ],
+      "correctAnswer": "Por meio de um desenho.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Por uma medição de temperatura": [
+          "MEMORY_EXPRESSION"
+        ],
+        "Por uma regra de trânsito": [
+          "MEMORY_EXPRESSION"
+        ],
+        "Por uma lista de compras": [
+          "MEMORY_EXPRESSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DESENHO_DE_UMA_MEMORIA",
+      "explanation": "A história diz que a personagem desenhou a lembrança.",
+      "hint": "Observe a ação descrita.",
+      "errorFocus": "MEMORY_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: A história diz que a personagem desenhou a lembrança.",
+        "incorrect": "A história diz que a personagem desenhou a lembrança.",
+        "hint": "Observe a ação descrita.",
+        "errorFocus": "MEMORY_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-02",
+      "statement": "Uma personagem explica uma ideia durante uma conversa. Qual forma de expressão aparece?",
+      "prompt": "Uma personagem explica uma ideia durante uma conversa. Qual forma de expressão aparece?",
+      "options": [
+        "Silêncio sem contexto",
+        "Fala.",
+        "Uma fotografia sem legenda",
+        "Uma medida"
+      ],
+      "correctAnswer": "Fala.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Silêncio sem contexto": [
+          "IDEA_EXPRESSION"
+        ],
+        "Uma fotografia sem legenda": [
+          "IDEA_EXPRESSION"
+        ],
+        "Uma medida": [
+          "IDEA_EXPRESSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "IDEIA_EM_CONVERSA",
+      "explanation": "A personagem comunica a ideia falando.",
+      "hint": "Use o que a história informa.",
+      "errorFocus": "IDEA_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: A personagem comunica a ideia falando.",
+        "incorrect": "A personagem comunica a ideia falando.",
+        "hint": "Use o que a história informa.",
+        "errorFocus": "IDEA_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-03",
+      "statement": "Uma pessoa diz que gosta de música calma. Qual resposta é respeitosa?",
+      "prompt": "Uma pessoa diz que gosta de música calma. Qual resposta é respeitosa?",
+      "options": [
+        "Dizer que todos gostam do mesmo",
+        "Rir do gosto dela",
+        "Reconhecer que esse é o gosto que ela compartilhou.",
+        "Afirmar que ela não pode gostar de outra música"
+      ],
+      "correctAnswer": "Reconhecer que esse é o gosto que ela compartilhou.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer que todos gostam do mesmo": [
+          "RESPECT_PREFERENCE"
+        ],
+        "Rir do gosto dela": [
+          "RESPECT_PREFERENCE"
+        ],
+        "Afirmar que ela não pode gostar de outra música": [
+          "RESPECT_PREFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GOSTO_DE_MUSICA",
+      "explanation": "A fala informa uma preferência individual.",
+      "hint": "Não transforme o gosto em regra.",
+      "errorFocus": "RESPECT_PREFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A fala informa uma preferência individual.",
+        "incorrect": "A fala informa uma preferência individual.",
+        "hint": "Não transforme o gosto em regra.",
+        "errorFocus": "RESPECT_PREFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-04",
+      "statement": "Uma personagem sorri e diz que ficou feliz. O que está expresso?",
+      "prompt": "Uma personagem sorri e diz que ficou feliz. O que está expresso?",
+      "options": [
+        "Uma crença de toda a turma",
+        "Uma lembrança não contada",
+        "Um cálculo",
+        "Um sentimento nomeado e demonstrado."
+      ],
+      "correctAnswer": "Um sentimento nomeado e demonstrado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma crença de toda a turma": [
+          "FEELING_EXPRESSION"
+        ],
+        "Uma lembrança não contada": [
+          "FEELING_EXPRESSION"
+        ],
+        "Um cálculo": [
+          "FEELING_EXPRESSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GESTO_DE_ALEGRIA",
+      "explanation": "A fala nomeia felicidade e a cena mostra um sorriso.",
+      "hint": "Observe a fala e a ação.",
+      "errorFocus": "FEELING_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: A fala nomeia felicidade e a cena mostra um sorriso.",
+        "incorrect": "A fala nomeia felicidade e a cena mostra um sorriso.",
+        "hint": "Observe a fala e a ação.",
+        "errorFocus": "FEELING_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-05",
+      "statement": "Uma pessoa conta uma crença importante para ela. O que não devemos presumir?",
+      "prompt": "Uma pessoa conta uma crença importante para ela. O que não devemos presumir?",
+      "options": [
+        "Que todas as pessoas do grupo acreditam exatamente igual.",
+        "Que ela compartilhou uma crença",
+        "Que o relato tem um contexto",
+        "Que outras pessoas podem pensar diferente"
+      ],
+      "correctAnswer": "Que todas as pessoas do grupo acreditam exatamente igual.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que ela compartilhou uma crença": [
+          "NO_GROUP_GENERALIZATION"
+        ],
+        "Que o relato tem um contexto": [
+          "NO_GROUP_GENERALIZATION"
+        ],
+        "Que outras pessoas podem pensar diferente": [
+          "NO_GROUP_GENERALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELATO_DE_CRENCIA",
+      "explanation": "Um relato individual não representa automaticamente todas as pessoas.",
+      "hint": "Considere o alcance da fonte.",
+      "errorFocus": "NO_GROUP_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Um relato individual não representa automaticamente todas as pessoas.",
+        "incorrect": "Um relato individual não representa automaticamente todas as pessoas.",
+        "hint": "Considere o alcance da fonte.",
+        "errorFocus": "NO_GROUP_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-06",
+      "statement": "Uma atividade pergunta sobre gostos pessoais e alguém prefere não responder. O que é adequado?",
+      "prompt": "Uma atividade pergunta sobre gostos pessoais e alguém prefere não responder. O que é adequado?",
+      "options": [
+        "Exigir uma resposta íntima",
+        "Permitir passar a vez ou usar um exemplo fictício.",
+        "Perguntar repetidamente",
+        "Dar uma nota menor"
+      ],
+      "correctAnswer": "Permitir passar a vez ou usar um exemplo fictício.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigir uma resposta íntima": [
+          "RIGHT_TO_DECLINE"
+        ],
+        "Perguntar repetidamente": [
+          "RIGHT_TO_DECLINE"
+        ],
+        "Dar uma nota menor": [
+          "RIGHT_TO_DECLINE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PASSAR_A_VEZ_DE_CONVERSA",
+      "explanation": "A pessoa pode escolher não compartilhar.",
+      "hint": "Respeite a escolha.",
+      "errorFocus": "RIGHT_TO_DECLINE",
+      "feedback": {
+        "correct": "Boa observação: A pessoa pode escolher não compartilhar.",
+        "incorrect": "A pessoa pode escolher não compartilhar.",
+        "hint": "Respeite a escolha.",
+        "errorFocus": "RIGHT_TO_DECLINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-07",
+      "statement": "Uma personagem escreve uma ideia num cartão. Que formas aparecem?",
+      "prompt": "Uma personagem escreve uma ideia num cartão. Que formas aparecem?",
+      "options": [
+        "Dança como única forma",
+        "Medição como crença",
+        "Escrita como meio de expressar uma ideia.",
+        "Silêncio obrigatório"
+      ],
+      "correctAnswer": "Escrita como meio de expressar uma ideia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dança como única forma": [
+          "WRITTEN_IDEA"
+        ],
+        "Medição como crença": [
+          "WRITTEN_IDEA"
+        ],
+        "Silêncio obrigatório": [
+          "WRITTEN_IDEA"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_IDEIA_ESCRITA",
+      "explanation": "O cartão mostra uma ideia escrita.",
+      "hint": "Relacione o meio e o conteúdo.",
+      "errorFocus": "WRITTEN_IDEA",
+      "feedback": {
+        "correct": "Boa observação: O cartão mostra uma ideia escrita.",
+        "incorrect": "O cartão mostra uma ideia escrita.",
+        "hint": "Relacione o meio e o conteúdo.",
+        "errorFocus": "WRITTEN_IDEA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-08",
+      "statement": "Uma pessoa permanece em silêncio numa conversa. Podemos afirmar que ela concorda?",
+      "prompt": "Uma pessoa permanece em silêncio numa conversa. Podemos afirmar que ela concorda?",
+      "options": [
+        "Sim, sempre",
+        "Sim, em qualquer espaço",
+        "Não, porque silêncio não existe",
+        "Não; o silêncio sozinho não informa o motivo."
+      ],
+      "correctAnswer": "Não; o silêncio sozinho não informa o motivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_INFERENCE_FROM_SILENCE"
+        ],
+        "Sim, em qualquer espaço": [
+          "NO_INFERENCE_FROM_SILENCE"
+        ],
+        "Não, porque silêncio não existe": [
+          "NO_INFERENCE_FROM_SILENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SILENCIO_COMO_ESCOLHA",
+      "explanation": "A fonte não informa por que a pessoa ficou em silêncio.",
+      "hint": "Não adivinhe a intenção.",
+      "errorFocus": "NO_INFERENCE_FROM_SILENCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte não informa por que a pessoa ficou em silêncio.",
+        "incorrect": "A fonte não informa por que a pessoa ficou em silêncio.",
+        "hint": "Não adivinhe a intenção.",
+        "errorFocus": "NO_INFERENCE_FROM_SILENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-09",
+      "statement": "Uma personagem canta uma canção que criou. O que pode estar expressando?",
+      "prompt": "Uma personagem canta uma canção que criou. O que pode estar expressando?",
+      "options": [
+        "Uma ideia ou sentimento por meio da música.",
+        "Uma medida de distância",
+        "Um número de casa",
+        "Uma regra universal"
+      ],
+      "correctAnswer": "Uma ideia ou sentimento por meio da música.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma medida de distância": [
+          "MUSIC_EXPRESSION"
+        ],
+        "Um número de casa": [
+          "MUSIC_EXPRESSION"
+        ],
+        "Uma regra universal": [
+          "MUSIC_EXPRESSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CANTAR_PARA_EXPRESSAR",
+      "explanation": "A situação apresenta música como meio de expressão.",
+      "hint": "Observe o que a personagem criou.",
+      "errorFocus": "MUSIC_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: A situação apresenta música como meio de expressão.",
+        "incorrect": "A situação apresenta música como meio de expressão.",
+        "hint": "Observe o que a personagem criou.",
+        "errorFocus": "MUSIC_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-10",
+      "statement": "Duas personagens comunicam a mesma ideia, uma por desenho e outra por fala. O que varia?",
+      "prompt": "Duas personagens comunicam a mesma ideia, uma por desenho e outra por fala. O que varia?",
+      "options": [
+        "A existência da ideia",
+        "A forma de expressão usada.",
+        "O valor das pessoas",
+        "A necessidade de respeitar ambas"
+      ],
+      "correctAnswer": "A forma de expressão usada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A existência da ideia": [
+          "EXPRESSION_MODE_COMPARISON"
+        ],
+        "O valor das pessoas": [
+          "EXPRESSION_MODE_COMPARISON"
+        ],
+        "A necessidade de respeitar ambas": [
+          "EXPRESSION_MODE_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DESENHO_E_FALA",
+      "explanation": "A ideia pode ser semelhante mesmo com meios distintos.",
+      "hint": "Compare os meios.",
+      "errorFocus": "EXPRESSION_MODE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A ideia pode ser semelhante mesmo com meios distintos.",
+        "incorrect": "A ideia pode ser semelhante mesmo com meios distintos.",
+        "hint": "Compare os meios.",
+        "errorFocus": "EXPRESSION_MODE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-11",
+      "statement": "Uma pessoa conta uma lembrança de infância. Como descrevê-la?",
+      "prompt": "Uma pessoa conta uma lembrança de infância. Como descrevê-la?",
+      "options": [
+        "Como lembrança de todos",
+        "Como crença obrigatória",
+        "Como memória que aquela pessoa compartilhou.",
+        "Como fato sobre qualquer família"
+      ],
+      "correctAnswer": "Como memória que aquela pessoa compartilhou.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como lembrança de todos": [
+          "MEMORY_SCOPE"
+        ],
+        "Como crença obrigatória": [
+          "MEMORY_SCOPE"
+        ],
+        "Como fato sobre qualquer família": [
+          "MEMORY_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MEMORIA_CONTADA",
+      "explanation": "A memória pertence ao relato apresentado.",
+      "hint": "Identifique quem contou.",
+      "errorFocus": "MEMORY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A memória pertence ao relato apresentado.",
+        "incorrect": "A memória pertence ao relato apresentado.",
+        "hint": "Identifique quem contou.",
+        "errorFocus": "MEMORY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-12",
+      "statement": "Um personagem compartilha uma crença numa conversa respeitosa. O que os colegas devem fazer?",
+      "prompt": "Um personagem compartilha uma crença numa conversa respeitosa. O que os colegas devem fazer?",
+      "options": [
+        "Fazer piada",
+        "Exigir que explique por todos",
+        "Afirmar que a turma inteira pensa igual",
+        "Escutar sem ridicularizar e sem exigir que todos concordem."
+      ],
+      "correctAnswer": "Escutar sem ridicularizar e sem exigir que todos concordem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fazer piada": [
+          "RESPECTFUL_BELIEF_LISTENING"
+        ],
+        "Exigir que explique por todos": [
+          "RESPECTFUL_BELIEF_LISTENING"
+        ],
+        "Afirmar que a turma inteira pensa igual": [
+          "RESPECTFUL_BELIEF_LISTENING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CRENCA_EM_ESPACO_PUBLICO",
+      "explanation": "Escuta respeitosa não força concordância nem generaliza.",
+      "hint": "Considere respeito e escolha.",
+      "errorFocus": "RESPECTFUL_BELIEF_LISTENING",
+      "feedback": {
+        "correct": "Boa observação: Escuta respeitosa não força concordância nem generaliza.",
+        "incorrect": "Escuta respeitosa não força concordância nem generaliza.",
+        "hint": "Considere respeito e escolha.",
+        "errorFocus": "RESPECTFUL_BELIEF_LISTENING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-13",
+      "statement": "Uma estudante prefere apontar um cartão em vez de falar. Isso pode expressar uma escolha?",
+      "prompt": "Uma estudante prefere apontar um cartão em vez de falar. Isso pode expressar uma escolha?",
+      "options": [
+        "Sim; apontar pode comunicar uma resposta.",
+        "Não, só fala comunica",
+        "Não, cartões não têm sentido",
+        "Sim, apenas se for rápido"
+      ],
+      "correctAnswer": "Sim; apontar pode comunicar uma resposta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, só fala comunica": [
+          "MULTIPLE_COMMUNICATION_MODES"
+        ],
+        "Não, cartões não têm sentido": [
+          "MULTIPLE_COMMUNICATION_MODES"
+        ],
+        "Sim, apenas se for rápido": [
+          "MULTIPLE_COMMUNICATION_MODES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMUNICACAO_ALTERNATIVA",
+      "explanation": "Diferentes meios podem permitir participação.",
+      "hint": "Observe o significado da escolha.",
+      "errorFocus": "MULTIPLE_COMMUNICATION_MODES",
+      "feedback": {
+        "correct": "Boa observação: Diferentes meios podem permitir participação.",
+        "incorrect": "Diferentes meios podem permitir participação.",
+        "hint": "Observe o significado da escolha.",
+        "errorFocus": "MULTIPLE_COMMUNICATION_MODES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-14",
+      "statement": "Uma pessoa usa uma roupa de determinada cor. Isso prova sua crença?",
+      "prompt": "Uma pessoa usa uma roupa de determinada cor. Isso prova sua crença?",
+      "options": [
+        "Sim, sempre",
+        "Não; a aparência não basta para saber o que ela acredita.",
+        "Sim, se a cor for escura",
+        "Não, porque crenças não existem"
+      ],
+      "correctAnswer": "Não; a aparência não basta para saber o que ela acredita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_BELIEF_INFERENCE_FROM_APPEARANCE"
+        ],
+        "Sim, se a cor for escura": [
+          "NO_BELIEF_INFERENCE_FROM_APPEARANCE"
+        ],
+        "Não, porque crenças não existem": [
+          "NO_BELIEF_INFERENCE_FROM_APPEARANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "IDEIA_E_APARENCIA",
+      "explanation": "A crença precisa ser informada pela pessoa ou fonte.",
+      "hint": "Separe aparência de informação.",
+      "errorFocus": "NO_BELIEF_INFERENCE_FROM_APPEARANCE",
+      "feedback": {
+        "correct": "Boa observação: A crença precisa ser informada pela pessoa ou fonte.",
+        "incorrect": "A crença precisa ser informada pela pessoa ou fonte.",
+        "hint": "Separe aparência de informação.",
+        "errorFocus": "NO_BELIEF_INFERENCE_FROM_APPEARANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-15",
+      "statement": "Um cartão diz “prefiro brincar ao ar livre”. O que ele comunica?",
+      "prompt": "Um cartão diz “prefiro brincar ao ar livre”. O que ele comunica?",
+      "options": [
+        "Uma regra para toda criança",
+        "Uma lembrança de todos",
+        "Uma preferência da personagem do cartão.",
+        "Uma crença de toda comunidade"
+      ],
+      "correctAnswer": "Uma preferência da personagem do cartão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma regra para toda criança": [
+          "PREFERENCE_SCOPE"
+        ],
+        "Uma lembrança de todos": [
+          "PREFERENCE_SCOPE"
+        ],
+        "Uma crença de toda comunidade": [
+          "PREFERENCE_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GOSTO_REGISTRADO_EM_CARTAO",
+      "explanation": "O cartão apresenta uma preferência específica.",
+      "hint": "Leia quem é o sujeito.",
+      "errorFocus": "PREFERENCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O cartão apresenta uma preferência específica.",
+        "incorrect": "O cartão apresenta uma preferência específica.",
+        "hint": "Leia quem é o sujeito.",
+        "errorFocus": "PREFERENCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-16",
+      "statement": "Por que aceitar desenho, fala e gesto como meios de expressão?",
+      "prompt": "Por que aceitar desenho, fala e gesto como meios de expressão?",
+      "options": [
+        "Porque todos devem usar os três ao mesmo tempo",
+        "Porque gestos são sempre melhores",
+        "Porque escrita não expressa ideias",
+        "Porque pessoas podem comunicar ideias de maneiras diferentes."
+      ],
+      "correctAnswer": "Porque pessoas podem comunicar ideias de maneiras diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque todos devem usar os três ao mesmo tempo": [
+          "ACCESSIBLE_EXPRESSION"
+        ],
+        "Porque gestos são sempre melhores": [
+          "ACCESSIBLE_EXPRESSION"
+        ],
+        "Porque escrita não expressa ideias": [
+          "ACCESSIBLE_EXPRESSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESPEITAR_FORMAS_DIVERSAS",
+      "explanation": "Meios distintos podem apoiar comunicação e participação.",
+      "hint": "Pense em diferentes pessoas e contextos.",
+      "errorFocus": "ACCESSIBLE_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: Meios distintos podem apoiar comunicação e participação.",
+        "incorrect": "Meios distintos podem apoiar comunicação e participação.",
+        "hint": "Pense em diferentes pessoas e contextos.",
+        "errorFocus": "ACCESSIBLE_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-17",
+      "statement": "Uma personagem coloca uma ideia num cartaz coletivo. Qual espaço de expressão aparece?",
+      "prompt": "Uma personagem coloca uma ideia num cartaz coletivo. Qual espaço de expressão aparece?",
+      "options": [
+        "Escrita ou desenho num espaço compartilhado.",
+        "Uma conversa privada obrigatória",
+        "Uma crença presumida",
+        "Uma lembrança de todos"
+      ],
+      "correctAnswer": "Escrita ou desenho num espaço compartilhado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma conversa privada obrigatória": [
+          "PUBLIC_EXPRESSION_CONTEXT"
+        ],
+        "Uma crença presumida": [
+          "PUBLIC_EXPRESSION_CONTEXT"
+        ],
+        "Uma lembrança de todos": [
+          "PUBLIC_EXPRESSION_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "IDEIA_EM_CARTAZ",
+      "explanation": "O cartaz comunica ideias num espaço coletivo.",
+      "hint": "Observe o suporte e o lugar.",
+      "errorFocus": "PUBLIC_EXPRESSION_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O cartaz comunica ideias num espaço coletivo.",
+        "incorrect": "O cartaz comunica ideias num espaço coletivo.",
+        "hint": "Observe o suporte e o lugar.",
+        "errorFocus": "PUBLIC_EXPRESSION_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-18",
+      "statement": "Uma pessoa fala sobre sua tradição. Como registrar o relato?",
+      "prompt": "Uma pessoa fala sobre sua tradição. Como registrar o relato?",
+      "options": [
+        "Como regra universal",
+        "Como experiência daquela fonte, sem falar por todas as pessoas.",
+        "Como crença de todos os colegas",
+        "Como informação sem autor"
+      ],
+      "correctAnswer": "Como experiência daquela fonte, sem falar por todas as pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como regra universal": [
+          "SOURCE_BOUNDED_BELIEF"
+        ],
+        "Como crença de todos os colegas": [
+          "SOURCE_BOUNDED_BELIEF"
+        ],
+        "Como informação sem autor": [
+          "SOURCE_BOUNDED_BELIEF"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELATO_NAO_REPRESENTA_TODOS",
+      "explanation": "O registro deve respeitar o alcance do relato.",
+      "hint": "Nomeie a fonte e seu contexto.",
+      "errorFocus": "SOURCE_BOUNDED_BELIEF",
+      "feedback": {
+        "correct": "Boa observação: O registro deve respeitar o alcance do relato.",
+        "incorrect": "O registro deve respeitar o alcance do relato.",
+        "hint": "Nomeie a fonte e seu contexto.",
+        "errorFocus": "SOURCE_BOUNDED_BELIEF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-19",
+      "statement": "Um desenho não vem acompanhado de explicação. O que podemos afirmar?",
+      "prompt": "Um desenho não vem acompanhado de explicação. O que podemos afirmar?",
+      "options": [
+        "Sabemos com certeza toda a memória",
+        "A pessoa tem uma crença específica",
+        "Podemos descrever formas visíveis, mas não adivinhar a intenção.",
+        "O desenho não pode expressar nada"
+      ],
+      "correctAnswer": "Podemos descrever formas visíveis, mas não adivinhar a intenção.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sabemos com certeza toda a memória": [
+          "LIMITED_VISUAL_INTERPRETATION"
+        ],
+        "A pessoa tem uma crença específica": [
+          "LIMITED_VISUAL_INTERPRETATION"
+        ],
+        "O desenho não pode expressar nada": [
+          "LIMITED_VISUAL_INTERPRETATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESENHO_SEM_EXPLICACAO",
+      "explanation": "Sem explicação, a intenção permanece incerta.",
+      "hint": "Diferencie descrição e interpretação.",
+      "errorFocus": "LIMITED_VISUAL_INTERPRETATION",
+      "feedback": {
+        "correct": "Boa observação: Sem explicação, a intenção permanece incerta.",
+        "incorrect": "Sem explicação, a intenção permanece incerta.",
+        "hint": "Diferencie descrição e interpretação.",
+        "errorFocus": "LIMITED_VISUAL_INTERPRETATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-20",
+      "statement": "Uma personagem fala de um gosto em casa e desenha na escola. O que isso mostra?",
+      "prompt": "Uma personagem fala de um gosto em casa e desenha na escola. O que isso mostra?",
+      "options": [
+        "A ideia mudou obrigatoriamente",
+        "Toda pessoa usa os mesmos meios",
+        "Um espaço é mais correto",
+        "Pode expressar algo por meios diferentes em espaços distintos."
+      ],
+      "correctAnswer": "Pode expressar algo por meios diferentes em espaços distintos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A ideia mudou obrigatoriamente": [
+          "SPACE_AND_MODE"
+        ],
+        "Toda pessoa usa os mesmos meios": [
+          "SPACE_AND_MODE"
+        ],
+        "Um espaço é mais correto": [
+          "SPACE_AND_MODE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "EXPRESSAO_EM_CASA_E_ESCOLA",
+      "explanation": "A fonte mostra escolhas de expressão em contextos diferentes.",
+      "hint": "Compare os meios e espaços.",
+      "errorFocus": "SPACE_AND_MODE",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra escolhas de expressão em contextos diferentes.",
+        "incorrect": "A fonte mostra escolhas de expressão em contextos diferentes.",
+        "hint": "Compare os meios e espaços.",
+        "errorFocus": "SPACE_AND_MODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-21",
+      "statement": "Qual pergunta abre espaço sem pressionar alguém a compartilhar crença?",
+      "prompt": "Qual pergunta abre espaço sem pressionar alguém a compartilhar crença?",
+      "options": [
+        "“Você gostaria de contar mais ou prefere deixar assim?”",
+        "“Prove que sua crença é correta.”",
+        "“Fale por todas as pessoas.”",
+        "“Por que você não pensa como nós?”"
+      ],
+      "correctAnswer": "“Você gostaria de contar mais ou prefere deixar assim?”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Prove que sua crença é correta.”": [
+          "NONCOERCIVE_QUESTION"
+        ],
+        "“Fale por todas as pessoas.”": [
+          "NONCOERCIVE_QUESTION"
+        ],
+        "“Por que você não pensa como nós?”": [
+          "NONCOERCIVE_QUESTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PERGUNTAR_COM_RESPEITO",
+      "explanation": "A pergunta permite continuar ou encerrar o relato.",
+      "hint": "Ofereça escolha genuína.",
+      "errorFocus": "NONCOERCIVE_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta permite continuar ou encerrar o relato.",
+        "incorrect": "A pergunta permite continuar ou encerrar o relato.",
+        "hint": "Ofereça escolha genuína.",
+        "errorFocus": "NONCOERCIVE_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-22",
+      "statement": "Uma personagem mostra uma foto e conta o que lembra. Que formas aparecem?",
+      "prompt": "Uma personagem mostra uma foto e conta o que lembra. Que formas aparecem?",
+      "options": [
+        "Medição e cálculo",
+        "Imagem e fala como formas de compartilhar memória.",
+        "Silêncio e regra universal",
+        "Apenas aparência sem contexto"
+      ],
+      "correctAnswer": "Imagem e fala como formas de compartilhar memória.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Medição e cálculo": [
+          "MULTIMODAL_MEMORY"
+        ],
+        "Silêncio e regra universal": [
+          "MULTIMODAL_MEMORY"
+        ],
+        "Apenas aparência sem contexto": [
+          "MULTIMODAL_MEMORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MEMORIA_EM_FOTOGRAFIA",
+      "explanation": "A cena combina fotografia e relato oral.",
+      "hint": "Observe todos os meios usados.",
+      "errorFocus": "MULTIMODAL_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: A cena combina fotografia e relato oral.",
+        "incorrect": "A cena combina fotografia e relato oral.",
+        "hint": "Observe todos os meios usados.",
+        "errorFocus": "MULTIMODAL_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-23",
+      "statement": "Uma atividade aborda crenças e alguém prefere não falar da própria. Qual alternativa é adequada?",
+      "prompt": "Uma atividade aborda crenças e alguém prefere não falar da própria. Qual alternativa é adequada?",
+      "options": [
+        "Exigir declaração pessoal",
+        "Registrar crenças dos colegas",
+        "Analisar personagens fictícias e formas de expressão apresentadas.",
+        "Fazer votação sobre quem deve falar"
+      ],
+      "correctAnswer": "Analisar personagens fictícias e formas de expressão apresentadas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Exigir declaração pessoal": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Registrar crenças dos colegas": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Fazer votação sobre quem deve falar": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "EXPRESSAR_SEM_EXPOSICAO",
+      "explanation": "Ficção permite estudar o tema sem exposição pessoal.",
+      "hint": "Proteja a privacidade.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Ficção permite estudar o tema sem exposição pessoal.",
+        "incorrect": "Ficção permite estudar o tema sem exposição pessoal.",
+        "hint": "Proteja a privacidade.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-24",
+      "statement": "Por que considerar o espaço onde uma ideia foi expressa?",
+      "prompt": "Por que considerar o espaço onde uma ideia foi expressa?",
+      "options": [
+        "Porque todo espaço muda o significado igualmente",
+        "Porque só um lugar permite falar",
+        "Porque apaga a autoria",
+        "O contexto ajuda a entender a situação e a escolha do meio."
+      ],
+      "correctAnswer": "O contexto ajuda a entender a situação e a escolha do meio.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque todo espaço muda o significado igualmente": [
+          "CONTEXTUAL_EXPRESSION"
+        ],
+        "Porque só um lugar permite falar": [
+          "CONTEXTUAL_EXPRESSION"
+        ],
+        "Porque apaga a autoria": [
+          "CONTEXTUAL_EXPRESSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONTEXTO_DE_EXPRESSAO",
+      "explanation": "Espaço e situação ajudam a interpretar a fonte.",
+      "hint": "Leia a legenda do contexto.",
+      "errorFocus": "CONTEXTUAL_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: Espaço e situação ajudam a interpretar a fonte.",
+        "incorrect": "Espaço e situação ajudam a interpretar a fonte.",
+        "hint": "Leia a legenda do contexto.",
+        "errorFocus": "CONTEXTUAL_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-25",
+      "statement": "Uma personagem escreve “estou animada”. Que conteúdo compartilha?",
+      "prompt": "Uma personagem escreve “estou animada”. Que conteúdo compartilha?",
+      "options": [
+        "Um sentimento.",
+        "Uma medida",
+        "Um objeto",
+        "Uma regra de trânsito"
+      ],
+      "correctAnswer": "Um sentimento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma medida": [
+          "FEELING_CONTENT_REVIEW"
+        ],
+        "Um objeto": [
+          "FEELING_CONTENT_REVIEW"
+        ],
+        "Uma regra de trânsito": [
+          "FEELING_CONTENT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_SENTIMENTO",
+      "explanation": "A frase nomeia como a personagem se sente.",
+      "hint": "Use as palavras do cartão.",
+      "errorFocus": "FEELING_CONTENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase nomeia como a personagem se sente.",
+        "incorrect": "A frase nomeia como a personagem se sente.",
+        "hint": "Use as palavras do cartão.",
+        "errorFocus": "FEELING_CONTENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-26",
+      "statement": "“Gosto de desenhar” é uma preferência ou regra para todos?",
+      "prompt": "“Gosto de desenhar” é uma preferência ou regra para todos?",
+      "options": [
+        "Uma regra universal",
+        "Uma preferência da pessoa que falou.",
+        "Uma memória de toda turma",
+        "Uma crença de todos"
+      ],
+      "correctAnswer": "Uma preferência da pessoa que falou.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma regra universal": [
+          "PREFERENCE_NOT_RULE_REVIEW"
+        ],
+        "Uma memória de toda turma": [
+          "PREFERENCE_NOT_RULE_REVIEW"
+        ],
+        "Uma crença de todos": [
+          "PREFERENCE_NOT_RULE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "GOSTO_E_REGRA",
+      "explanation": "A fala expressa gosto individual.",
+      "hint": "Observe o sujeito da frase.",
+      "errorFocus": "PREFERENCE_NOT_RULE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fala expressa gosto individual.",
+        "incorrect": "A fala expressa gosto individual.",
+        "hint": "Observe o sujeito da frase.",
+        "errorFocus": "PREFERENCE_NOT_RULE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-27",
+      "statement": "Uma fonte apresenta uma crença. Qual conclusão é cuidadosa?",
+      "prompt": "Uma fonte apresenta uma crença. Qual conclusão é cuidadosa?",
+      "options": [
+        "Todas as pessoas pensam igual",
+        "A aparência prova a crença",
+        "A fonte registra essa crença naquele contexto.",
+        "A turma deve concordar"
+      ],
+      "correctAnswer": "A fonte registra essa crença naquele contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as pessoas pensam igual": [
+          "BELIEF_SOURCE_SCOPE_REVIEW"
+        ],
+        "A aparência prova a crença": [
+          "BELIEF_SOURCE_SCOPE_REVIEW"
+        ],
+        "A turma deve concordar": [
+          "BELIEF_SOURCE_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CRENCA_SEM_ESTEREOTIPO",
+      "explanation": "A conclusão fica limitada à fonte.",
+      "hint": "Não generalize além do relato.",
+      "errorFocus": "BELIEF_SOURCE_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A conclusão fica limitada à fonte.",
+        "incorrect": "A conclusão fica limitada à fonte.",
+        "hint": "Não generalize além do relato.",
+        "errorFocus": "BELIEF_SOURCE_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-28",
+      "statement": "O que pode fazer quem prefere não responder sobre uma memória?",
+      "prompt": "O que pode fazer quem prefere não responder sobre uma memória?",
+      "options": [
+        "Ser obrigado a contar",
+        "Explicar em público por que não quer",
+        "Perder participação",
+        "Passar a vez ou escolher um exemplo fictício."
+      ],
+      "correctAnswer": "Passar a vez ou escolher um exemplo fictício.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ser obrigado a contar": [
+          "RIGHT_TO_DECLINE_REVIEW"
+        ],
+        "Explicar em público por que não quer": [
+          "RIGHT_TO_DECLINE_REVIEW"
+        ],
+        "Perder participação": [
+          "RIGHT_TO_DECLINE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PASSAR_A_VEZ_REVISADO",
+      "explanation": "A escolha de não compartilhar deve ser respeitada.",
+      "hint": "Ofereça uma alternativa.",
+      "errorFocus": "RIGHT_TO_DECLINE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A escolha de não compartilhar deve ser respeitada.",
+        "incorrect": "A escolha de não compartilhar deve ser respeitada.",
+        "hint": "Ofereça uma alternativa.",
+        "errorFocus": "RIGHT_TO_DECLINE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-29",
+      "statement": "Fala e desenho podem ambos expressar...",
+      "prompt": "Fala e desenho podem ambos expressar...",
+      "options": [
+        "ideias, sentimentos ou memórias.",
+        "somente números",
+        "apenas regras escolares",
+        "somente crenças religiosas"
+      ],
+      "correctAnswer": "ideias, sentimentos ou memórias.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "somente números": [
+          "EXPRESSION_MODES_REVIEW"
+        ],
+        "apenas regras escolares": [
+          "EXPRESSION_MODES_REVIEW"
+        ],
+        "somente crenças religiosas": [
+          "EXPRESSION_MODES_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FALA_E_DESENHO_REVISADO",
+      "explanation": "Diferentes meios podem comunicar conteúdos variados.",
+      "hint": "Pense no que cada meio permite.",
+      "errorFocus": "EXPRESSION_MODES_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Diferentes meios podem comunicar conteúdos variados.",
+        "incorrect": "Diferentes meios podem comunicar conteúdos variados.",
+        "hint": "Pense no que cada meio permite.",
+        "errorFocus": "EXPRESSION_MODES_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-30",
+      "statement": "Um desenho sem legenda permite saber com certeza o sentimento da pessoa?",
+      "prompt": "Um desenho sem legenda permite saber com certeza o sentimento da pessoa?",
+      "options": [
+        "Sim, sempre",
+        "Não; é preciso outra informação para confirmar a intenção.",
+        "Sim, pela cor apenas",
+        "Não, porque desenhos não comunicam"
+      ],
+      "correctAnswer": "Não; é preciso outra informação para confirmar a intenção.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_UNSUPPORTED_INFERENCE_REVIEW"
+        ],
+        "Sim, pela cor apenas": [
+          "NO_UNSUPPORTED_INFERENCE_REVIEW"
+        ],
+        "Não, porque desenhos não comunicam": [
+          "NO_UNSUPPORTED_INFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NAO_ADIVINHAR_INTENCAO",
+      "explanation": "A intenção não é sempre evidente apenas pela imagem.",
+      "hint": "Separe o que vê e o que supõe.",
+      "errorFocus": "NO_UNSUPPORTED_INFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A intenção não é sempre evidente apenas pela imagem.",
+        "incorrect": "A intenção não é sempre evidente apenas pela imagem.",
+        "hint": "Separe o que vê e o que supõe.",
+        "errorFocus": "NO_UNSUPPORTED_INFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-31",
+      "statement": "Como acolher uma pessoa que compartilha uma memória?",
+      "prompt": "Como acolher uma pessoa que compartilha uma memória?",
+      "options": [
+        "Interromper e rir",
+        "Divulgar sem autorização",
+        "Ouvir com respeito e perguntar se deseja continuar.",
+        "Exigir mais detalhes"
+      ],
+      "correctAnswer": "Ouvir com respeito e perguntar se deseja continuar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Interromper e rir": [
+          "LISTENING_AND_CONSENT_REVIEW"
+        ],
+        "Divulgar sem autorização": [
+          "LISTENING_AND_CONSENT_REVIEW"
+        ],
+        "Exigir mais detalhes": [
+          "LISTENING_AND_CONSENT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCUTA_DE_RELATO",
+      "explanation": "Escuta respeitosa preserva a escolha de quem relata.",
+      "hint": "Dê espaço e pergunte.",
+      "errorFocus": "LISTENING_AND_CONSENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escuta respeitosa preserva a escolha de quem relata.",
+        "incorrect": "Escuta respeitosa preserva a escolha de quem relata.",
+        "hint": "Dê espaço e pergunte.",
+        "errorFocus": "LISTENING_AND_CONSENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-32",
+      "statement": "Reconhecer formas diversas de expressão requer observar o meio, o conteúdo e...",
+      "prompt": "Reconhecer formas diversas de expressão requer observar o meio, o conteúdo e...",
+      "options": [
+        "supor crenças pela roupa",
+        "forçar relatos",
+        "generalizar para todos",
+        "o contexto e a escolha de cada pessoa."
+      ],
+      "correctAnswer": "o contexto e a escolha de cada pessoa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "supor crenças pela roupa": [
+          "EXPRESSION_CONTEXT_SUMMARY"
+        ],
+        "forçar relatos": [
+          "EXPRESSION_CONTEXT_SUMMARY"
+        ],
+        "generalizar para todos": [
+          "EXPRESSION_CONTEXT_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_EXPRESSAO",
+      "explanation": "Meio, conteúdo, contexto e autonomia orientam a interpretação.",
+      "hint": "Reúna os elementos da fonte.",
+      "errorFocus": "EXPRESSION_CONTEXT_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Meio, conteúdo, contexto e autonomia orientam a interpretação.",
+        "incorrect": "Meio, conteúdo, contexto e autonomia orientam a interpretação.",
+        "hint": "Reúna os elementos da fonte.",
+        "errorFocus": "EXPRESSION_CONTEXT_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-33",
+      "statement": "Uma ideia pode ser expressa por fala, escrita, desenho ou...",
+      "prompt": "Uma ideia pode ser expressa por fala, escrita, desenho ou...",
+      "options": [
+        "gestos e outros meios.",
+        "somente uma forma universal",
+        "medidas de temperatura",
+        "tamanho do papel apenas"
+      ],
+      "correctAnswer": "gestos e outros meios.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "somente uma forma universal": [
+          "EXPRESSION_MODE_REVIEW"
+        ],
+        "medidas de temperatura": [
+          "EXPRESSION_MODE_REVIEW"
+        ],
+        "tamanho do papel apenas": [
+          "EXPRESSION_MODE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_MEIOS",
+      "explanation": "Há diversos meios de expressão.",
+      "hint": "Lembre-se dos exemplos.",
+      "errorFocus": "EXPRESSION_MODE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Há diversos meios de expressão.",
+        "incorrect": "Há diversos meios de expressão.",
+        "hint": "Lembre-se dos exemplos.",
+        "errorFocus": "EXPRESSION_MODE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-34",
+      "statement": "Uma pessoa conta o que lembra. Isso é...",
+      "prompt": "Uma pessoa conta o que lembra. Isso é...",
+      "options": [
+        "lembrança de todos",
+        "uma memória compartilhada por ela.",
+        "regra para toda família",
+        "previsão"
+      ],
+      "correctAnswer": "uma memória compartilhada por ela.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "lembrança de todos": [
+          "MEMORY_SCOPE_REVIEW"
+        ],
+        "regra para toda família": [
+          "MEMORY_SCOPE_REVIEW"
+        ],
+        "previsão": [
+          "MEMORY_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_MEMORIA",
+      "explanation": "O relato tem uma fonte específica.",
+      "hint": "Identifique quem falou.",
+      "errorFocus": "MEMORY_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O relato tem uma fonte específica.",
+        "incorrect": "O relato tem uma fonte específica.",
+        "hint": "Identifique quem falou.",
+        "errorFocus": "MEMORY_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-35",
+      "statement": "Um gosto individual deve ser...",
+      "prompt": "Um gosto individual deve ser...",
+      "options": [
+        "imposto a todos",
+        "ridicularizado",
+        "reconhecido sem transformá-lo em regra para todos.",
+        "adivinhado pela aparência"
+      ],
+      "correctAnswer": "reconhecido sem transformá-lo em regra para todos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "imposto a todos": [
+          "PREFERENCE_RESPECT_REVIEW"
+        ],
+        "ridicularizado": [
+          "PREFERENCE_RESPECT_REVIEW"
+        ],
+        "adivinhado pela aparência": [
+          "PREFERENCE_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_GOSTO",
+      "explanation": "Preferências podem variar entre pessoas.",
+      "hint": "Evite generalizar.",
+      "errorFocus": "PREFERENCE_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Preferências podem variar entre pessoas.",
+        "incorrect": "Preferências podem variar entre pessoas.",
+        "hint": "Evite generalizar.",
+        "errorFocus": "PREFERENCE_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-36",
+      "statement": "Como conversar sobre crenças sem expor estudantes?",
+      "prompt": "Como conversar sobre crenças sem expor estudantes?",
+      "options": [
+        "Exigir que todos declarem sua crença",
+        "Publicar respostas",
+        "Falar por cada família",
+        "Usar relatos voluntários ou personagens fictícias."
+      ],
+      "correctAnswer": "Usar relatos voluntários ou personagens fictícias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que todos declarem sua crença": [
+          "PRIVACY_SAFE_EXPRESSION_REVIEW"
+        ],
+        "Publicar respostas": [
+          "PRIVACY_SAFE_EXPRESSION_REVIEW"
+        ],
+        "Falar por cada família": [
+          "PRIVACY_SAFE_EXPRESSION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Fontes fictícias ou voluntárias protegem privacidade.",
+      "hint": "Escolha uma alternativa segura.",
+      "errorFocus": "PRIVACY_SAFE_EXPRESSION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Fontes fictícias ou voluntárias protegem privacidade.",
+        "incorrect": "Fontes fictícias ou voluntárias protegem privacidade.",
+        "hint": "Escolha uma alternativa segura.",
+        "errorFocus": "PRIVACY_SAFE_EXPRESSION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-37",
+      "statement": "Uma resposta respeitosa a um relato é...",
+      "prompt": "Uma resposta respeitosa a um relato é...",
+      "options": [
+        "escutar sem ridicularizar e sem exigir concordância.",
+        "fazer piada",
+        "pressionar para continuar",
+        "falar por todo o grupo"
+      ],
+      "correctAnswer": "escutar sem ridicularizar e sem exigir concordância.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "fazer piada": [
+          "RESPECTFUL_LISTENING_REVIEW"
+        ],
+        "pressionar para continuar": [
+          "RESPECTFUL_LISTENING_REVIEW"
+        ],
+        "falar por todo o grupo": [
+          "RESPECTFUL_LISTENING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ESCUTA",
+      "explanation": "Escuta não exige concordância nem exposição.",
+      "hint": "Considere respeito e autonomia.",
+      "errorFocus": "RESPECTFUL_LISTENING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escuta não exige concordância nem exposição.",
+        "incorrect": "Escuta não exige concordância nem exposição.",
+        "hint": "Considere respeito e autonomia.",
+        "errorFocus": "RESPECTFUL_LISTENING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-38",
+      "statement": "Por que observar o espaço e a situação da expressão?",
+      "prompt": "Por que observar o espaço e a situação da expressão?",
+      "options": [
+        "Para adivinhar tudo sobre a pessoa",
+        "Para compreender melhor a fonte sem presumir uma regra universal.",
+        "Para classificar grupos",
+        "Para apagar a autoria"
+      ],
+      "correctAnswer": "Para compreender melhor a fonte sem presumir uma regra universal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para adivinhar tudo sobre a pessoa": [
+          "CONTEXTUAL_SOURCE_REVIEW"
+        ],
+        "Para classificar grupos": [
+          "CONTEXTUAL_SOURCE_REVIEW"
+        ],
+        "Para apagar a autoria": [
+          "CONTEXTUAL_SOURCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONTEXTO",
+      "explanation": "Contexto orienta uma leitura cuidadosa.",
+      "hint": "Leia a fonte e sua legenda.",
+      "errorFocus": "CONTEXTUAL_SOURCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Contexto orienta uma leitura cuidadosa.",
+        "incorrect": "Contexto orienta uma leitura cuidadosa.",
+        "hint": "Leia a fonte e sua legenda.",
+        "errorFocus": "CONTEXTUAL_SOURCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-39",
+      "statement": "Uma crença compartilhada por uma pessoa deve ser atribuída...",
+      "prompt": "Uma crença compartilhada por uma pessoa deve ser atribuída...",
+      "options": [
+        "a todos os colegas",
+        "a qualquer pessoa da mesma região",
+        "àquela fonte, não automaticamente a todo um grupo.",
+        "a quem veste a mesma cor"
+      ],
+      "correctAnswer": "àquela fonte, não automaticamente a todo um grupo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a todos os colegas": [
+          "NO_GROUP_GENERALIZATION_REVIEW"
+        ],
+        "a qualquer pessoa da mesma região": [
+          "NO_GROUP_GENERALIZATION_REVIEW"
+        ],
+        "a quem veste a mesma cor": [
+          "NO_GROUP_GENERALIZATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_CRENCIA",
+      "explanation": "Um relato não representa necessariamente todas as pessoas.",
+      "hint": "Limite a conclusão.",
+      "errorFocus": "NO_GROUP_GENERALIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um relato não representa necessariamente todas as pessoas.",
+        "incorrect": "Um relato não representa necessariamente todas as pessoas.",
+        "hint": "Limite a conclusão.",
+        "errorFocus": "NO_GROUP_GENERALIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er06-recognize-expressions-in-different-spaces-40",
+      "statement": "Expressar e escutar com respeito inclui permitir que alguém...",
+      "prompt": "Expressar e escutar com respeito inclui permitir que alguém...",
+      "options": [
+        "seja pressionado a falar",
+        "seja definido por estereótipos",
+        "fale por toda uma comunidade",
+        "escolha como e se deseja compartilhar."
+      ],
+      "correctAnswer": "escolha como e se deseja compartilhar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "seja pressionado a falar": [
+          "AUTONOMY_SUMMARY"
+        ],
+        "seja definido por estereótipos": [
+          "AUTONOMY_SUMMARY"
+        ],
+        "fale por toda uma comunidade": [
+          "AUTONOMY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_RESPEITO",
+      "explanation": "Autonomia inclui escolha de forma e participação.",
+      "hint": "Reúna expressão e escolha.",
+      "errorFocus": "AUTONOMY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Autonomia inclui escolha de forma e participação.",
+        "incorrect": "Autonomia inclui escolha de forma e participação.",
+        "hint": "Reúna expressão e escolha.",
+        "errorFocus": "AUTONOMY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar formas de expressão por texto, imagem descrita, gestos e cartões de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não solicitar declaração de crença, lembrança íntima ou preferência pessoal."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

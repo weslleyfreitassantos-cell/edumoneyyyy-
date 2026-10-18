@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v13",
+  "campaignId": "TECESCOLA_BNCC_FULL_CURRICULUM_PRODUCTION_V13",
+  "branch": "codex/bncc-question-first-adaptive-tutor-v5",
+  "head": "85bb15600c0e548525efbb343908fe38cd3228b8",
+  "recordedAt": "2026-10-17",
+  "lastOperation": {
+    "target": ["EF03HI02", "EF03HI03", "EF03HI04", "EF03HI05", "EF03HI06", "EF03HI07", "EF03HI08", "EF03HI09", "EF03HI10"],
+    "type": "MULTISET_AUTHORING_CONTEXT_AND_STAGED_CONTENT",
+    "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
+    "result": "STAGED_AUTHORING_CONTEXTS_CREATED",
+    "mappingStatus": "CANONICAL_GAP",
+    "relationDecision": "NOT_ASSERTED",
+    "studentPublicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+  },
+  "inventory": {
+    "officialNodes": 1723,
+    "pendingNodes": 1721,
+    "canonicalMappings": 2,
+    "exactSourceVerifications": 563,
+    "newStagingPackagesInThisOperation": 9,
+    "stagedQuestionsInThisOperation": 450,
+    "authoringContextPackages": 12,
+    "v5QuestionTotal": 5856,
+    "consolidatedQuestionTotal": 6678,
+    "contentTechnicallyComplete": 0,
+    "learningPathsComplete": 0,
+    "lessonsAdded": 9,
+    "activitiesAdded": 9,
+    "assessmentsAdded": 9
+  },
+  "evidence": {
+    "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
+    "verificationIds": [
+      "BNCC_EF03HI02_MEC_P413_V1",
+      "BNCC_EF03HI03_MEC_P413_V1",
+      "BNCC_EF03HI04_MEC_P413_V1",
+      "BNCC_EF03HI05_MEC_P413_V1",
+      "BNCC_EF03HI06_MEC_P413_V1",
+      "BNCC_EF03HI07_MEC_P413_V1",
+      "BNCC_EF03HI08_MEC_P413_V1",
+      "BNCC_EF03HI09_MEC_P413_V1",
+      "BNCC_EF03HI10_MEC_P413_V1"
+    ],
+    "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
+    "coverageSizing": "content/bncc/authoring/coverage-sizing-v3.json",
+    "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
+    "mappingResolution": "content/bncc/mappings/resolutions-v8.json",
+    "contentPackages": [
+      "content/adaptive/tec-escola-core-v5/v13-history-time-sources.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-perspectives.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-heritage.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-landmarks.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-memory-records.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-community-comparisons.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-city-country-life.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-public-spaces-map.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-space-distinctions.json"
+    ]
+  },
+  "validation": {
+    "focusedTests": "PASS: 6 files, 9 tests; V13 history sets and prior checkpoint coverage",
+    "bnccValidate": "PASS: catalog 1723, mappings 1723, resolutions 121",
+    "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
+    "contentPackages": "PASS: 15 packages, 65 skills; V13 packages validated separately",
+    "typecheck": "PASS",
+    "build": "PASS: Vite production build; existing chunk-size/import warnings only",
+    "gitDiffCheck": "PASS"
+  },
+  "gates": {
+    "productionWrites": "NONE",
+    "productionDeploy": "NO",
+    "remoteMigrations": "NO",
+    "newContent": "STAGING_ONLY",
+    "officialMappingClaim": "NONE",
+    "pedagogicalReview": "PENDING"
+  },
+  "nextTarget": "EF03HI11_OR_NEXT_INDEPENDENT_CURRICULAR_SET",
+  "nextOperation": "Continue with the next independent curricular set; keep V13 packages inactive until canonical mapping and pedagogical review are independently approved."
+}

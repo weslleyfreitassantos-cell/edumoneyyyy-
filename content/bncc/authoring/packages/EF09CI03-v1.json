@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef09ci03-models-of-matter-and-atom-history",
+  "officialCode": "EF09CI03",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef09ci03-models-of-matter-and-atom-history.json",
+  "canonicalSkillCode": "AUTHORING_EF09CI03_MODELS_OF_MATTER_AND_ATOM_HISTORY",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "modelos da estrutura da matéria e evolução histórica",
+  "officialDescriptor": "Identificar modelos que descrevem a estrutura da matéria (constituição do átomo e composição de moléculas simples) e reconhecer sua evolução histórica.",
+  "officialSource": {
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 352
+  },
+  "lesson": {
+    "title": "Modelos científicos: o que explicam e como mudam",
+    "objective": "Interpretar modelos de átomos e moléculas simples como representações científicas, relacionando modelos históricos às evidências e reconhecendo que os modelos atuais não são desenhos em escala nem órbitas planetárias literais.",
+    "summary": "A matéria é constituída por partículas; átomos podem se combinar para formar moléculas simples. Como não observamos um átomo como um objeto cotidiano, cientistas criam modelos para explicar evidências. Modelos históricos mudaram quando novas observações e perguntas apareceram: Dalton representou átomos como partículas indivisíveis; Thomson incorporou elétrons; Rutherford evidenciou um núcleo pequeno e positivo; Bohr propôs níveis de energia; modelos quânticos descrevem regiões de probabilidade para elétrons. Cada modelo respondeu a questões de seu tempo, e nenhum desenho deve ser confundido com uma fotografia do átomo.",
+    "explanation": "Um modelo é uma representação que destaca certas características para explicar observações. O modelo de Dalton ajudava a representar combinações em proporções definidas; o de Thomson incluiu partículas negativas; os resultados de Rutherford apoiaram a ideia de um núcleo pequeno e positivo; Bohr explicou certos espectros com níveis de energia. O modelo quântico atual não descreve elétrons como planetas em trilhas fixas: utiliza estados e distribuições de probabilidade. Em modelos moleculares, esferas e ligações são convenções visuais, não os tamanhos e cores reais. Para comparar modelos, pergunte: que evidência cada um explica, que aspecto representa e qual limite deve ser lembrado?",
+    "workedExample": "Um esquema escolar usa uma esfera grande para o núcleo e pontos em regiões ao redor para representar elétrons. Ele ajuda a localizar componentes de forma simplificada, mas não mostra tamanhos em escala nem uma trajetória que o elétron percorra como um planeta. A legenda deve dizer que se trata de representação didática.",
+    "commonMistake": "Ler imagens simplificadas como fotografias, imaginar elétrons em órbitas planetárias fixas no modelo quântico, ou dizer que um modelo antigo era apenas um erro sem reconhecer o que explicava com as evidências disponíveis.",
+    "priorKnowledge": [
+      "Distinguir substância, átomo e molécula em exemplos introdutórios.",
+      "Ler legendas, setas e escalas em diagramas científicos.",
+      "Reconhecer que uma explicação científica pode ser revisada quando novas evidências aparecem."
+    ],
+    "keyConcepts": [
+      "átomo",
+      "núcleo",
+      "elétron",
+      "molécula",
+      "modelo científico",
+      "evidência",
+      "representação",
+      "evolução histórica"
+    ],
+    "remediations": [
+      { "errorFocus": "MODEL_AS_PHOTOGRAPH", "action": "Leia a legenda e destaque o que o esquema representa; depois anote uma característica que não está em escala ou não aparece literalmente." },
+      { "errorFocus": "PLANETARY_ORBIT_OVERCLAIM", "action": "Compare a imagem de Bohr com a legenda do modelo quântico; substitua a ideia de trilha fixa por regiões de probabilidade." },
+      { "errorFocus": "HISTORY_AS_LINEAR_FAILURE", "action": "Associe cada modelo à evidência ou questão que ajudava a explicar antes de compará-lo com modelos posteriores." }
+    ],
+    "accessibilitySupports": [
+      "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+      "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+      "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+      "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci03-model-evidence-museum",
+        "title": "Galeria de modelos e evidências",
+        "context": "Estações mostram diagramas didáticos identificados como Dalton, Thomson, Rutherford, Bohr e modelo quântico, acompanhados de cartões com perguntas e evidências históricas resumidas.",
+        "steps": [
+          "Associe cada diagrama ao cartão histórico correspondente usando as legendas, não a aparência como única pista.",
+          "Registre uma característica que o modelo representa e uma limitação da imagem didática.",
+          "Escolha uma evidência ou pergunta que motivou a ampliação de um modelo posterior."
+        ],
+        "evidence": "Quadro comparativo que identifica representações, associa evidências historicamente pertinentes e explicita limites dos desenhos.",
+        "rubric": [
+          "Inicial: identifica uma partícula com apoio, mas interpreta o desenho literalmente.",
+          "Em desenvolvimento: compara dois modelos e descreve uma limitação com lembrete.",
+          "Consolidado: relaciona cada modelo a uma evidência e distingue representação de fotografia."
+        ]
+      },
+      {
+        "id": "ci03-molecule-model-and-legend",
+        "title": "Molécula em cartões e legenda",
+        "context": "Cartões com símbolos de elementos e ligações representam moléculas simples, sem produtos químicos ou experimentos de bancada.",
+        "steps": [
+          "Monte uma representação de água ou dióxido de carbono a partir de cartões com símbolos e quantidades indicadas.",
+          "Escreva uma legenda que diga quais átomos estão representados e como aparecem conectados.",
+          "Acrescente uma nota de que tamanho, cor e distância dos cartões são convenções, não escala real."
+        ],
+        "evidence": "Representação simbólica coerente acompanhada de legenda sobre composição e limites do modelo.",
+        "rubric": [
+          "Inicial: reconhece um símbolo com orientação, mas confunde símbolo com objeto real.",
+          "Em desenvolvimento: monta a composição com apoio e identifica uma simplificação.",
+          "Consolidado: comunica a composição molecular e explicita que o modelo não está em escala."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","IDENTIFY","ESQUEMA_DE_ESFERAS","Um esquema mostra círculos com letras para representar partículas. O que os círculos são?","Símbolos de um modelo didático",["Fotografias ampliadas dos átomos","Átomos em tamanho real","Prova de que todos têm a mesma cor"],"MODEL_AS_PHOTOGRAPH","Círculos e cores em diagramas são convenções para comunicar ideias.","Confira o título e a legenda."],
+      ["EASY","RECALL","CARTAO_ATOMO_MOLECULA","Uma molécula simples é formada por quê?","Átomos ligados em uma composição definida",["Somente um elétron","Qualquer mistura visível de materiais","Uma camada de células"],"MOLECULE_AS_MIXTURE","Moléculas são conjuntos de átomos ligados; não são qualquer mistura macroscópica.","Pense nas unidades que compõem a molécula."],
+      ["EASY","DISTINGUISH","MODELO_DALTON_EM_CARTAZ","Um cartaz apresenta o modelo de Dalton com átomos como partículas indivisíveis. Isso é uma representação de qual período?","De uma proposta histórica anterior à inclusão de partículas subatômicas",["Do modelo quântico atual em todos os detalhes","De uma fotografia contemporânea","De uma molécula de água"],"HISTORICAL_MODEL_MIXUP","Dalton propôs uma representação histórica anterior à descoberta de partículas subatômicas.","Observe a época e o que o modelo inclui."],
+      ["EASY","IDENTIFY","SIMBOLO_DE_ELETRON","Em um modelo, qual partícula tem carga elétrica negativa?","Elétron",["Próton","Nêutron","Molécula inteira"],"PARTICLE_CHARGE_CONFUSION","Elétrons têm carga negativa; prótons são positivos e nêutrons não têm carga elétrica.","Lembre-se da carga indicada no esquema."],
+      ["EASY","RECALL","LEGENDA_DE_NUCLEO","No modelo nuclear, onde se concentra a carga positiva do átomo?","No núcleo, associado aos prótons",["Em toda a nuvem de elétrons","No espaço vazio entre átomos","Apenas na legenda"],"NUCLEAR_MODEL","O modelo nuclear situa carga positiva no núcleo pequeno.","Localize o centro do modelo."],
+      ["EASY","IDENTIFY","DIAGRAMA_DE_AGUA","Um cartão mostra dois H ligados a um O. Que fórmula representa essa composição?","H₂O",["HO₂","H₂O₂","2HO₂"],"SUBSCRIPT_COMPOSITION","A fórmula H₂O indica dois átomos de hidrogênio e um de oxigênio.","Conte os símbolos e os números menores."],
+      ["EASY","DISTINGUISH","DESENHO_DE_ORBITAS","Um desenho didático mostra linhas circulares ao redor do núcleo. O que é importante lembrar?","As linhas simplificam um modelo e não são fotografia do átomo",["Elétrons percorrem sempre trilhas visíveis como planetas","As linhas mostram o tamanho real do átomo","Cada cor prova a forma da partícula"],"ORBIT_AS_REAL_PATH","Diagramas de órbitas são representações simplificadas, não trajetórias fotografadas.","Leia a ressalva do modelo."],
+      ["EASY","IDENTIFY","TABELA_DE_MODELOS","Por que cientistas usam modelos para estudar átomos?","Para representar aspectos e explicar evidências que não observamos diretamente no cotidiano",["Para substituir toda evidência por desenhos","Para garantir que nenhum modelo mude","Para mostrar partículas em escala real"],"MODEL_REPLACES_EVIDENCE","Modelos ajudam a interpretar evidências e podem ser revisados.","Pense no que um modelo permite explicar."]
+    ],
+    "PRACTICE": [
+      ["EASY","CLASSIFY","CARTOES_DE_DALTON_THOMSON","Qual mudança aparece quando o modelo de Thomson sucede o de Dalton?","A representação passa a incluir elétrons",["O átomo deixa de ter qualquer partícula","A molécula vira uma célula","O núcleo passa a ser uma fotografia"],"MODEL_CHANGE_CONTENT","Thomson incorporou o elétron ao modelo atômico.","Veja qual componente novo aparece."],
+      ["MEDIUM","APPLY","RESULTADO_DE_ESPALHAMENTO","Em uma experiência histórica, algumas partículas sofreram grandes desvios ao atravessar uma lâmina fina. Que ideia isso apoiou?","A carga positiva e grande parte da massa ficam concentradas em uma região pequena",["O átomo é uma esfera maciça uniforme","Elétrons ficam todos no núcleo","Toda matéria é uma molécula de ouro"],"RUTHERFORD_EVIDENCE","Os desvios inesperados apoiaram a proposta de um núcleo pequeno e positivo.","Procure o modelo que explica desvios fortes."],
+      ["MEDIUM","COMPARE","ESPECTRO_DE_LUZ","Um modelo de Bohr foi usado para explicar linhas em espectros de certos átomos. Qual ideia ele propôs?","Elétrons ocupam níveis de energia definidos no modelo",["Elétrons são bolinhas coloridas em tamanho real","Núcleo não contém carga positiva","Átomos são indivisíveis em qualquer teoria"],"BOHR_LEVELS","Bohr propôs níveis de energia quantizados para explicar espectros.","Associe espectros e níveis de energia."],
+      ["EASY","INTERPRET","SIMBOLOS_DE_NUCLEO","Um núcleo tem 6 prótons e 6 nêutrons em um cartão. Quantas partículas nucleares aparecem no esquema?","12",["6","2","36"],"NUCLEON_COUNT","Prótons e nêutrons são somados para contar as partículas nucleares representadas.","Some os dois grupos indicados."],
+      ["MEDIUM","DISTINGUISH","MODELO_QUANTICO_EM_TELA","Um diagrama atual mostra regiões mais prováveis para encontrar elétrons. O que ele não afirma?","Que cada elétron percorre uma órbita circular fixa como um planeta",["Que o átomo tem elétrons","Que modelos representam ideias científicas","Que probabilidades podem ser visualizadas"],"QUANTUM_ORBIT_LITERAL","O modelo quântico descreve probabilidades, não órbitas planetárias literais.","Compare probabilidade e trilha fixa."],
+      ["EASY","APPLY","CARTOES_DE_CO2","Um modelo contém um átomo de carbono ligado a dois de oxigênio. Qual legenda é correta?","A representação mostra CO₂",["A representação mostra H₂O","O cartão prova o tamanho real dos átomos","O modelo representa dois carbonos e um oxigênio"],"MOLECULAR_FORMULA","CO₂ corresponde a um carbono e dois oxigênios.","Leia os símbolos e índices."],
+      ["MEDIUM","COMPARE","LINHA_HISTORICA","Uma linha mostra modelos de Dalton, Thomson, Rutherford e Bohr em sequência. O que a ordem representa?","Mudanças nas explicações científicas ao longo do tempo",["Uma lista de cientistas que observaram átomos a olho nu","Uma sequência de tamanhos em escala","Uma prova de que modelos posteriores nunca serão revistos"],"HISTORY_AS_FINALITY","A sequência registra desenvolvimento histórico, não observação direta nem fim da ciência.","Leia a linha do tempo como mudança de explicação."],
+      ["MEDIUM","CLASSIFY","LEGENDA_DE_CORES","Um diagrama usa vermelho para prótons e azul para nêutrons. Que papel têm as cores?","Ajudam a distinguir componentes no esquema",["Indicam as cores reais das partículas","Mostram a temperatura do núcleo","Provam que todos os átomos têm esses tons"],"COLOR_AS_PHYSICAL_PROPERTY","Cores são códigos visuais escolhidos para facilitar a leitura.","Confira a legenda." ]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","ANALYZE","REVISAO_DE_LIVRO_DIDATICO","Um livro chama o modelo de Bohr de “planetário” em uma figura escolar. Qual complemento evita um equívoco?","A figura é uma analogia histórica simplificada, não a descrição literal do modelo quântico",["Os elétrons são planetas com trilhas observáveis","A figura mede distâncias em escala","O modelo de Bohr e o quântico são idênticos"],"ANALOGY_OVEREXTENSION","A analogia ajuda a visualizar, mas não deve ser tomada literalmente nem confundida com o modelo atual.","Acrescente um limite à analogia."],
+      ["MEDIUM","JUSTIFY","PAINEL_DE_EVIDENCIAS","Qual afirmação relaciona evidência e modelo de forma adequada?","Resultados de espalhamento ajudaram a sustentar um modelo com núcleo pequeno",["Um desenho bonito prova sozinho o núcleo","Toda evidência confirma todos os detalhes de um modelo","O modelo de Dalton incluía elétrons conhecidos"],"EVIDENCE_DECORATION","Modelos são avaliados por sua capacidade de explicar resultados, não pela aparência do desenho.","Associe um resultado à explicação que ele apoiou."],
+      ["MEDIUM","ANALYZE","MOLDE_DE_MOLECULA","Uma maquete de H₂O usa bolas grandes de plástico e varetas. Qual limite deve aparecer na legenda?","Bolas e varetas representam átomos e ligações, mas não mostram tamanhos e distâncias reais",["A maquete é uma fotografia da molécula","Varetas são ligações materiais dentro da água","As cores são propriedades obrigatórias dos átomos"],"MODEL_SCALE_LIMIT","Maquetes destacam composição e ligação, mas simplificam escala e aparência.","Diga o que foi simplificado."],
+      ["MEDIUM","EVALUATE","TEXTO_DE_MUSEU","Um texto diz que modelos antigos foram inúteis porque mudaram. Qual avaliação é melhor?","Modelos antigos podem ter explicado algumas evidências e foram ampliados diante de novas observações",["Todo modelo antigo explica tudo até hoje","Mudança científica prova que nenhuma evidência existe","Modelos nunca respondem perguntas úteis"],"HISTORY_AS_FAILURE","Mudanças podem preservar explicações úteis e corrigir limites identificados.","Pense no papel histórico do modelo."],
+      ["MEDIUM","APPLY","SIMULACAO_DE_ORBITAL","Uma simulação colore regiões onde um elétron é mais provável de ser encontrado. Como interpretá-la?","Como representação probabilística, não como fotografia nem caminho fixo",["Como mapa de uma trilha que o elétron percorre","Como prova de que elétrons não existem","Como escala exata do átomo"],"PROBABILITY_AS_PATH","A visualização representa probabilidade associada a estados quânticos.","Observe as palavras usadas na legenda."],
+      ["MEDIUM","ANALYZE","CARTAO_ATOMO_NEUTRO","Um cartão representa 8 prótons e 8 elétrons. O que se pode inferir sobre a carga total?","As cargas positivas e negativas se equilibram no modelo",["O átomo tem carga positiva de oito unidades","O átomo não contém elétrons","O número de nêutrons decide a carga elétrica"],"CHARGE_BALANCE","Com quantidades iguais de prótons e elétrons, as cargas se equilibram.","Compare os sinais e as quantidades."],
+      ["MEDIUM","COMPARE","DESENHO_DE_DOIS_MODELOS","Dois diagramas representam o mesmo átomo, um com núcleo e órbitas e outro com nuvem de probabilidade. O que a comparação evidencia?","Diferentes modelos destacam explicações distintas em contextos históricos",["Um dos diagramas necessariamente é fotografia","Todos os desenhos têm a mesma precisão e finalidade","O átomo muda de espécie entre as imagens"],"DIAGRAMS_AS_OBJECTS","As representações diferem no modo de descrever a estrutura, não no elemento representado.","Compare as ideias e legendas."],
+      ["MEDIUM","JUSTIFY","CADERNO_DE_LABORATORIO_SIMULADO","Uma turma usa uma simulação digital de partículas. Que cuidado melhora a conclusão?","Anotar as regras e limitações da simulação antes de generalizar para a matéria real",["Tratar cada pixel como observação direta","Ignorar os parâmetros do modelo","Concluir que a simulação prova qualquer hipótese"],"SIMULATION_AS_DIRECT_OBSERVATION","Simulações dependem de regras e parâmetros que delimitam o que podem mostrar.","Pergunte como a simulação foi construída."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","CLASSIFY","QUADRO_DE_MODELO_E_LIMITE","Qual par associa corretamente modelo e limite?","Modelo quântico: regiões de probabilidade, não órbitas planetárias fixas",["Dalton: elétrons em nuvens de probabilidade","Thomson: núcleo pequeno confirmado por espalhamento","Rutherford: átomo como esfera indivisível"],"MODEL_FEATURE_MISMATCH","O modelo quântico trata estados e probabilidades; as outras associações trocam características históricas.","Confira a característica principal do modelo."],
+      ["MEDIUM","APPLY","SEQUENCIA_DE_DESCOBERTAS","Uma nova evidência não é explicada bem pelo modelo usado. Qual atitude científica é apropriada?","Rever ou ampliar o modelo e testar a explicação com evidências",["Apagar a evidência","Manter a explicação sem análise","Escolher o desenho mais colorido"],"MODEL_IMMUTABILITY","Modelos podem ser avaliados e revistos quando novas evidências surgem.","Pense em como ciência responde a limites."],
+      ["MEDIUM","DISTINGUISH","ROTULOS_DE_PARTICULAS","Qual frase descreve corretamente uma molécula simples em um esquema?","A fórmula indica quais átomos estão ligados e em que proporção",["A fórmula mostra cada átomo em tamanho real","A cor dos símbolos é propriedade natural","Toda molécula possui o mesmo número de átomos"],"FORMULA_AS_IMAGE","Fórmulas representam composição, não escala, cor ou forma literal.","Leia os símbolos e os índices."],
+      ["MEDIUM","ANALYZE","RESUMO_DE_RUTHERFORD","Qual evidência está associada à mudança do modelo de Rutherford?","O espalhamento de algumas partículas indicou concentração de carga positiva em região pequena",["A observação de elétrons a olho nu","A formação de moléculas de água","A descoberta de níveis de energia por espectros"],"HISTORICAL_EVIDENCE_SWAP","O espalhamento apoiou o modelo nuclear; espectros foram centrais à proposta de Bohr.","Associe a evidência ao pesquisador e à pergunta."],
+      ["MEDIUM","EVALUATE","LEGENDAS_DE_ESQUEMA","Uma figura não informa se está em escala. Qual pergunta deve ser feita antes de medir distâncias nela?","A legenda ou fonte esclarece se a figura está em escala?",["Qual partícula parece mais bonita?","Qual cor todos os átomos devem ter?","Qual órbita é visível no microscópio?"],"UNSUPPORTED_SCALE_READING","Sem indicação de escala, não se deve medir proporções diretamente no desenho.","Procure a nota de escala."],
+      ["MEDIUM","COMPARE","PAINEL_DE_DALTON_A_BOHR","Por que comparar modelos de Dalton e Bohr é útil?","Para identificar como as representações mudaram ao incluir novas partículas e evidências",["Para provar que Dalton observou elétrons","Para decidir qual cientista era mais inteligente","Para concluir que todos os modelos são iguais"],"HISTORY_AS_RANKING","Comparação histórica examina ideias e evidências, não classifica pessoas.","Compare o que cada modelo representa."],
+      ["MEDIUM","APPLY","TEXTO_SOBRE_NUVEM","Um texto chama a nuvem eletrônica de “lugar onde o elétron provavelmente é encontrado”. Qual interpretação combina?","A nuvem representa distribuição de probabilidade",["A nuvem é fumaça real ao redor do átomo","O elétron tem uma trilha circular fixa desenhada ali","O núcleo está espalhado pela nuvem"],"CLOUD_AS_MATERIAL","Nuvem eletrônica é uma representação, não uma nuvem material.","Leia a palavra “probabilidade”."],
+      ["MEDIUM","SYNTHESIZE","MAPA_FINAL_DA_UNIDADE","Qual síntese é mais completa?","Modelos representam aspectos da matéria, explicam evidências e podem mudar quando novas questões aparecem",["Modelos são fotografias e não mudam","Um modelo explica toda característica sem limite","A história científica é uma lista de desenhos"],"MODEL_SCOPE","A síntese reúne representação, evidência e revisão histórica.","Inclua o que representa, explica e como pode mudar."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","REVISAO_PARTICULA_NEGATIVA","Qual partícula tem carga negativa?","Elétron",["Próton","Nêutron","Molécula"],"PARTICLE_CHARGE_RECALL","O elétron tem carga negativa.","Lembre do sinal do elétron."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_DIAGRAMA","Uma figura colore prótons de vermelho. O que a cor indica?","Uma convenção da legenda",["A cor real do próton","A temperatura do átomo","O tamanho em escala"],"COLOR_LITERAL","Cores ajudam a distinguir símbolos e dependem da legenda.","A cor foi escolhida pelo autor."],
+      ["MEDIUM","APPLY","REVISAO_DE_NUCLEO","Um esquema mostra núcleo pequeno e regiões eletrônicas ao redor. Qual descrição é adequada?","É uma representação simplificada da estrutura atômica",["É uma fotografia em escala","É um mapa de órbitas fixas do modelo quântico","É uma molécula completa"],"SCHEMATIC_AS_PHOTOGRAPH","Esquemas comunicam relações e simplificações.","Procure a palavra modelo."],
+      ["MEDIUM","ANALYZE","REVISAO_DE_EVIDENCIA","Uma evidência contradiz parte de um modelo. O que pode acontecer?","O modelo pode ser revisado ou ampliado",["A evidência precisa ser escondida","A ciência termina","A evidência torna-se uma molécula"],"EVIDENCE_REJECTION","A revisão é parte do desenvolvimento dos modelos científicos.","Pense na sequência histórica."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_MOLECULA","O cartão H₂O mostra quantos átomos de cada tipo?","Dois de hidrogênio e um de oxigênio",["Um de hidrogênio e dois de oxigênio","Dois de cada tipo","Um de cada tipo"],"FORMULA_COUNT","Os índices indicam quantidades dos símbolos que os precedem.","Conte os números pequenos."],
+      ["MEDIUM","JUSTIFY","REVISAO_DE_BOHR","Que contribuição é associada ao modelo de Bohr?","Níveis de energia usados para explicar certos espectros",["A ideia de átomo sem qualquer partícula","O modelo quântico de nuvens probabilísticas completo","A descoberta de moléculas como células"],"BOHR_CONTRIBUTION","Bohr introduziu níveis de energia quantizados em sua explicação.","Associe Bohr aos espectros."],
+      ["MEDIUM","EVALUATE","REVISAO_DE_ORBITAS","Por que não devemos dizer que o modelo quântico mostra elétrons como planetas?","Porque ele descreve estados e probabilidades, não trajetórias planetárias fixas",["Porque não há elétrons nos átomos","Porque os átomos são visíveis a olho nu","Porque modelos não usam evidências"],"PLANETARY_ORBIT_RECALL","A descrição quântica não usa órbitas planetárias literais.","Compare órbita fixa com probabilidade."],
+      ["MEDIUM","SYNTHESIZE","REVISAO_DE_MODELOS_HISTORICOS","Qual afirmação reconhece a história dos modelos sem chamar os anteriores de inúteis?","Cada modelo destacou aspectos e limites conforme as evidências disponíveis",["O primeiro modelo já explicava todos os dados","Modelos mudam somente por preferência estética","Modelos antigos não tiveram função científica"],"HISTORICAL_VALUE","Modelos históricos podem ter utilidade e limites em contextos específicos.","Considere evidências e contexto histórico."]
+    ]
+  }
+}

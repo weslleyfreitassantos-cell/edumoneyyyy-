@@ -10,6 +10,8 @@ import {
 import { useQueryClient } from '@tanstack/react-query';
 import type { User } from '@supabase/supabase-js';
 
+import { withAcademicReadTimeout } from '../lib/academicReadTimeout';
+
 import { supabase } from '../lib/supabaseClient';
 import {
   isDatabaseRole,
@@ -85,6 +87,8 @@ class AccountAccessBlockedError extends Error {
     this.name = 'AccountAccessBlockedError';
   }
 }
+
+const AUTH_OPERATION_TIMEOUT_MS = 20_000;
 
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
@@ -496,22 +500,24 @@ export function AuthProvider({
     email: string,
     password: string,
   ): Promise<void> {
-    const { data, error } =
-      await supabase.auth.signInWithPassword({
-        email: email.trim().toLowerCase(),
-        password,
-      });
+    await withAcademicReadTimeout(async () => {
+      const { data, error } =
+        await supabase.auth.signInWithPassword({
+          email: email.trim().toLowerCase(),
+          password,
+        });
 
-    if (error) {
-      throw error;
-    }
+      if (error) {
+        throw error;
+      }
 
-    await synchronizeSession(
-      data.session?.user ?? data.user ?? null,
-      {
-        throwOnProfileError: true,
-      },
-    );
+      await synchronizeSession(
+        data.session?.user ?? data.user ?? null,
+        {
+          throwOnProfileError: true,
+        },
+      );
+    }, AUTH_OPERATION_TIMEOUT_MS);
   }
 
   async function signOut(): Promise<void> {

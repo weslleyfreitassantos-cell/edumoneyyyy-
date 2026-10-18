@@ -1,0 +1,2033 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01ge10-nature-rhythms-v1",
+  "canonicalSkillCode": "GEOGRAPHY_DESCRIBE_NATURE_RHYTHMS_IN_LIVED_PLACES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "observação e descrição de ritmos da natureza nos lugares de vivência",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE10",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever características de seus lugares de vivência relacionadas aos ritmos da natureza (chuva, vento, calor etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Observar os ritmos da natureza no lugar",
+    "objective": "Descrever características observáveis de chuva, vento, calor e outros ritmos da natureza em cenários próximos ou fictícios, usando registros simples sem generalizar além das evidências.",
+    "summary": "O tempo pode mudar de um momento para outro. Observar chuva, vento, calor, sombra e nuvens ajuda a descrever como um lugar se apresenta. Um registro de poucos dias mostra apenas o período observado; não prova sozinho que o clima de uma região mudou.",
+    "explanation": "Observe uma característica de cada vez: o chão está seco ou molhado? Uma fita se move com o vento? Há sombra ou sol incidindo no pátio? Compare registros feitos em horários combinados e descreva o que foi visto. Relacione uma observação a uma atividade segura, sem concluir que todos os dias serão iguais. Para preservar a privacidade, use o pátio da escola, uma imagem ou um cenário inventado, não endereços residenciais.",
+    "workedExample": "Em três observações no pátio fictício, a turma anotou: segunda, chão seco e sombra longa; terça, chuva e chão molhado; quarta, vento que moveu uma fita. Uma descrição apoiada nos registros diz que as condições variaram nesses dias, sem afirmar como será a semana inteira.",
+    "commonMistake": "Achar que uma observação vale para todos os dias ou confundir uma condição do tempo com uma regra permanente do lugar.",
+    "priorKnowledge": [
+      "Reconhecer chuva, vento, sol, calor e sombra em imagens ou no ambiente.",
+      "Comparar duas observações usando palavras como igual, diferente, antes e depois."
+    ],
+    "keyConcepts": [
+      "observação",
+      "ritmo da natureza",
+      "tempo observado",
+      "registro",
+      "descrição cuidadosa"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ONE_OBSERVATION_OVERGENERALIZATION",
+        "action": "Compare dois registros datados e pergunte o que eles mostram e o que ainda não permitem concluir."
+      },
+      {
+        "errorFocus": "WEATHER_FEATURE_CONFUSION",
+        "action": "Use cartões de chuva, vento, calor e sombra para separar cada característica antes de descrever o cenário."
+      },
+      {
+        "errorFocus": "OBSERVATION_WITHOUT_EVIDENCE",
+        "action": "Peça que a criança aponte a pista visível ou registrada que sustenta cada frase."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+      "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge10-schoolyard-weather-log",
+        "title": "Diário do pátio",
+        "instructions": "Uma sequência de cartões mostra o mesmo pátio fictício em dias diferentes.\n1. Observe o cartão de cada dia.\n2. Registre chuva, vento, sol ou sombra com símbolos.\n3. Compare dois dias e descreva uma diferença observada.",
+        "steps": [
+          "Observe o cartão de cada dia.",
+          "Registre chuva, vento, sol ou sombra com símbolos.",
+          "Compare dois dias e descreva uma diferença observada."
+        ],
+        "evidence": "Registro com ao menos duas características associadas aos cartões correspondentes.",
+        "privacyGuard": "Usar imagens fictícias ou do espaço escolar autorizado; não registrar endereços ou rotas pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma pista com ajuda.",
+            "developing": "registra uma condição e compara com apoio.",
+            "proficient": "descreve uma mudança e aponta os registros que a sustentam."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge10-wind-ribbon-model",
+        "title": "O que a fita mostra?",
+        "instructions": "Uma fita presa em uma maquete se move em três cartões ilustrados de vento.\n1. Observe a direção e a intensidade desenhadas.\n2. Escolha palavras para descrever o movimento da fita.\n3. Compare o cartão com vento e o cartão sem vento representado.",
+        "steps": [
+          "Observe a direção e a intensidade desenhadas.",
+          "Escolha palavras para descrever o movimento da fita.",
+          "Compare o cartão com vento e o cartão sem vento representado."
+        ],
+        "evidence": "Descrição que associa o movimento representado a uma condição de vento, sem extrapolar para outros dias.",
+        "privacyGuard": "Atividade de modelo; não requer sair da sala nem compartilhar relatos pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece a fita em um cartão.",
+            "developing": "relaciona movimento e vento com pistas.",
+            "proficient": "compara as representações e limita a conclusão ao que foi mostrado."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01ge10-nature-rhythms-v1-01",
+          "bncc-ef01ge10-nature-rhythms-v1-02",
+          "bncc-ef01ge10-nature-rhythms-v1-03",
+          "bncc-ef01ge10-nature-rhythms-v1-04",
+          "bncc-ef01ge10-nature-rhythms-v1-05",
+          "bncc-ef01ge10-nature-rhythms-v1-06",
+          "bncc-ef01ge10-nature-rhythms-v1-07",
+          "bncc-ef01ge10-nature-rhythms-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01ge10-nature-rhythms-v1-09",
+          "bncc-ef01ge10-nature-rhythms-v1-10",
+          "bncc-ef01ge10-nature-rhythms-v1-11",
+          "bncc-ef01ge10-nature-rhythms-v1-12",
+          "bncc-ef01ge10-nature-rhythms-v1-13",
+          "bncc-ef01ge10-nature-rhythms-v1-14",
+          "bncc-ef01ge10-nature-rhythms-v1-15",
+          "bncc-ef01ge10-nature-rhythms-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01ge10-nature-rhythms-v1-17",
+          "bncc-ef01ge10-nature-rhythms-v1-18",
+          "bncc-ef01ge10-nature-rhythms-v1-19",
+          "bncc-ef01ge10-nature-rhythms-v1-20",
+          "bncc-ef01ge10-nature-rhythms-v1-21",
+          "bncc-ef01ge10-nature-rhythms-v1-22",
+          "bncc-ef01ge10-nature-rhythms-v1-23",
+          "bncc-ef01ge10-nature-rhythms-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01ge10-nature-rhythms-v1-25",
+          "bncc-ef01ge10-nature-rhythms-v1-26",
+          "bncc-ef01ge10-nature-rhythms-v1-27",
+          "bncc-ef01ge10-nature-rhythms-v1-28",
+          "bncc-ef01ge10-nature-rhythms-v1-29",
+          "bncc-ef01ge10-nature-rhythms-v1-30",
+          "bncc-ef01ge10-nature-rhythms-v1-31",
+          "bncc-ef01ge10-nature-rhythms-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01ge10-nature-rhythms-v1-33",
+          "bncc-ef01ge10-nature-rhythms-v1-34",
+          "bncc-ef01ge10-nature-rhythms-v1-35",
+          "bncc-ef01ge10-nature-rhythms-v1-36",
+          "bncc-ef01ge10-nature-rhythms-v1-37",
+          "bncc-ef01ge10-nature-rhythms-v1-38",
+          "bncc-ef01ge10-nature-rhythms-v1-39",
+          "bncc-ef01ge10-nature-rhythms-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE10",
+        "descriptor": "Descrever características de seus lugares de vivência relacionadas aos ritmos da natureza (chuva, vento, calor etc.).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-01",
+      "statement": "No desenho do pátio, o chão aparece molhado depois de uma chuva. O que foi observado?",
+      "prompt": "No desenho do pátio, o chão aparece molhado depois de uma chuva. O que foi observado?",
+      "options": [
+        "O chão estava molhado naquele registro.",
+        "Vai chover todos os dias",
+        "O pátio fica sempre alagado",
+        "O vento desapareceu"
+      ],
+      "correctAnswer": "O chão estava molhado naquele registro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vai chover todos os dias": [
+          "OBSERVED_VS_PREDICTED"
+        ],
+        "O pátio fica sempre alagado": [
+          "OBSERVED_VS_PREDICTED"
+        ],
+        "O vento desapareceu": [
+          "OBSERVED_VS_PREDICTED"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PATIO_CHUVOSO",
+      "explanation": "O desenho mostra uma condição em um momento, não todos os dias.",
+      "hint": "Descreva somente o que aparece.",
+      "errorFocus": "OBSERVED_VS_PREDICTED",
+      "feedback": {
+        "correct": "Boa observação: O desenho mostra uma condição em um momento, não todos os dias.",
+        "incorrect": "O desenho mostra uma condição em um momento, não todos os dias.",
+        "hint": "Descreva somente o que aparece.",
+        "errorFocus": "OBSERVED_VS_PREDICTED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-02",
+      "statement": "Uma fita da maquete está inclinada para um lado. Qual condição pode estar representada?",
+      "prompt": "Uma fita da maquete está inclinada para um lado. Qual condição pode estar representada?",
+      "options": [
+        "Chuva enchendo a fita",
+        "Vento movendo a fita.",
+        "Calor apagando a fita",
+        "Sombra mudando a fita"
+      ],
+      "correctAnswer": "Vento movendo a fita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Chuva enchendo a fita": [
+          "WEATHER_EVIDENCE_MATCH"
+        ],
+        "Calor apagando a fita": [
+          "WEATHER_EVIDENCE_MATCH"
+        ],
+        "Sombra mudando a fita": [
+          "WEATHER_EVIDENCE_MATCH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FITA_MOVIDA_PELO_VENTO",
+      "explanation": "O movimento da fita é a pista usada para representar vento.",
+      "hint": "Procure o que se move.",
+      "errorFocus": "WEATHER_EVIDENCE_MATCH",
+      "feedback": {
+        "correct": "Boa observação: O movimento da fita é a pista usada para representar vento.",
+        "incorrect": "O movimento da fita é a pista usada para representar vento.",
+        "hint": "Procure o que se move.",
+        "errorFocus": "WEATHER_EVIDENCE_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-03",
+      "statement": "Uma imagem mostra uma parte do piso iluminada e outra escura sob uma árvore. Que característica aparece?",
+      "prompt": "Uma imagem mostra uma parte do piso iluminada e outra escura sob uma árvore. Que característica aparece?",
+      "options": [
+        "Neve cobrindo o piso",
+        "Vento dentro do chão",
+        "Uma área de sol e outra de sombra.",
+        "Chuva em todos os cantos"
+      ],
+      "correctAnswer": "Uma área de sol e outra de sombra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Neve cobrindo o piso": [
+          "SUNLIGHT_AND_SHADE"
+        ],
+        "Vento dentro do chão": [
+          "SUNLIGHT_AND_SHADE"
+        ],
+        "Chuva em todos os cantos": [
+          "SUNLIGHT_AND_SHADE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOL_E_SOMBRA_NO_PISO",
+      "explanation": "A diferença de iluminação indica sol e sombra no cenário.",
+      "hint": "Compare as duas áreas.",
+      "errorFocus": "SUNLIGHT_AND_SHADE",
+      "feedback": {
+        "correct": "Boa observação: A diferença de iluminação indica sol e sombra no cenário.",
+        "incorrect": "A diferença de iluminação indica sol e sombra no cenário.",
+        "hint": "Compare as duas áreas.",
+        "errorFocus": "SUNLIGHT_AND_SHADE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-04",
+      "statement": "No cartão A há muitas nuvens e no B há céu sem nuvens desenhadas. O que podemos dizer?",
+      "prompt": "No cartão A há muitas nuvens e no B há céu sem nuvens desenhadas. O que podemos dizer?",
+      "options": [
+        "A imagem A prova que choveu",
+        "O cartão B é de outro planeta",
+        "O céu nunca muda",
+        "As imagens representam céus diferentes."
+      ],
+      "correctAnswer": "As imagens representam céus diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A imagem A prova que choveu": [
+          "CLOUD_IMAGE_SCOPE"
+        ],
+        "O cartão B é de outro planeta": [
+          "CLOUD_IMAGE_SCOPE"
+        ],
+        "O céu nunca muda": [
+          "CLOUD_IMAGE_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_CARTOES_DE_NUVENS",
+      "explanation": "A comparação permite descrever diferenças nas imagens, sem inventar chuva.",
+      "hint": "Diga apenas o que mudou.",
+      "errorFocus": "CLOUD_IMAGE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A comparação permite descrever diferenças nas imagens, sem inventar chuva.",
+        "incorrect": "A comparação permite descrever diferenças nas imagens, sem inventar chuva.",
+        "hint": "Diga apenas o que mudou.",
+        "errorFocus": "CLOUD_IMAGE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-05",
+      "statement": "Uma turma vê gotas na janela durante a observação. Qual registro combina com essa pista?",
+      "prompt": "Uma turma vê gotas na janela durante a observação. Qual registro combina com essa pista?",
+      "options": [
+        "Chuva observada naquele momento.",
+        "Calor observado no mês inteiro",
+        "Vento inexistente para sempre",
+        "Sombra dentro de uma mochila"
+      ],
+      "correctAnswer": "Chuva observada naquele momento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Calor observado no mês inteiro": [
+          "RAINFALL_DIRECT_OBSERVATION"
+        ],
+        "Vento inexistente para sempre": [
+          "RAINFALL_DIRECT_OBSERVATION"
+        ],
+        "Sombra dentro de uma mochila": [
+          "RAINFALL_DIRECT_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "JANELA_EM_DIA_DE_CHUVA",
+      "explanation": "Gotas visíveis na janela sustentam o registro de chuva naquele momento.",
+      "hint": "Use a pista que foi vista.",
+      "errorFocus": "RAINFALL_DIRECT_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Gotas visíveis na janela sustentam o registro de chuva naquele momento.",
+        "incorrect": "Gotas visíveis na janela sustentam o registro de chuva naquele momento.",
+        "hint": "Use a pista que foi vista.",
+        "errorFocus": "RAINFALL_DIRECT_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-06",
+      "statement": "Um cartão de terça mostra piso seco e outro, de quarta, piso molhado. Qual comparação é cuidadosa?",
+      "prompt": "Um cartão de terça mostra piso seco e outro, de quarta, piso molhado. Qual comparação é cuidadosa?",
+      "options": [
+        "Sempre chove às quartas",
+        "O piso estava diferente nos dois registros.",
+        "O piso seco prova que nunca chove",
+        "A escola mudou de lugar"
+      ],
+      "correctAnswer": "O piso estava diferente nos dois registros.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sempre chove às quartas": [
+          "DATED_OBSERVATION_COMPARISON"
+        ],
+        "O piso seco prova que nunca chove": [
+          "DATED_OBSERVATION_COMPARISON"
+        ],
+        "A escola mudou de lugar": [
+          "DATED_OBSERVATION_COMPARISON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PATIO_SECO_E_MOLHADO",
+      "explanation": "Os cartões mostram duas condições em dois registros, não uma regra semanal.",
+      "hint": "Compare os cartões, sem prever.",
+      "errorFocus": "DATED_OBSERVATION_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Os cartões mostram duas condições em dois registros, não uma regra semanal.",
+        "incorrect": "Os cartões mostram duas condições em dois registros, não uma regra semanal.",
+        "hint": "Compare os cartões, sem prever.",
+        "errorFocus": "DATED_OBSERVATION_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-07",
+      "statement": "Em uma ilustração, algumas folhas estão inclinadas e em movimento. Que pista ela oferece?",
+      "prompt": "Em uma ilustração, algumas folhas estão inclinadas e em movimento. Que pista ela oferece?",
+      "options": [
+        "O chão está congelado",
+        "A chuva já durou um ano",
+        "Pode haver vento no cenário ilustrado.",
+        "Todas as árvores são iguais"
+      ],
+      "correctAnswer": "Pode haver vento no cenário ilustrado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O chão está congelado": [
+          "WIND_VISUAL_CUE"
+        ],
+        "A chuva já durou um ano": [
+          "WIND_VISUAL_CUE"
+        ],
+        "Todas as árvores são iguais": [
+          "WIND_VISUAL_CUE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ARVORE_COM_FOLHAS_EM_MOVIMENTO",
+      "explanation": "Folhas em movimento podem representar vento na cena.",
+      "hint": "Observe as folhas.",
+      "errorFocus": "WIND_VISUAL_CUE",
+      "feedback": {
+        "correct": "Boa observação: Folhas em movimento podem representar vento na cena.",
+        "incorrect": "Folhas em movimento podem representar vento na cena.",
+        "hint": "Observe as folhas.",
+        "errorFocus": "WIND_VISUAL_CUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-08",
+      "statement": "Por que escrever o dia ao lado de uma observação do tempo?",
+      "prompt": "Por que escrever o dia ao lado de uma observação do tempo?",
+      "options": [
+        "Para garantir que ela se repetirá",
+        "Para transformar um desenho em previsão",
+        "Para mudar o clima do lugar",
+        "Para saber quando aquela condição foi observada."
+      ],
+      "correctAnswer": "Para saber quando aquela condição foi observada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para garantir que ela se repetirá": [
+          "DATE_SUPPORTS_SCOPE"
+        ],
+        "Para transformar um desenho em previsão": [
+          "DATE_SUPPORTS_SCOPE"
+        ],
+        "Para mudar o clima do lugar": [
+          "DATE_SUPPORTS_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REGISTRO_COM_DATA",
+      "explanation": "A data ajuda a limitar a descrição ao momento registrado.",
+      "hint": "A data situa a observação.",
+      "errorFocus": "DATE_SUPPORTS_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A data ajuda a limitar a descrição ao momento registrado.",
+        "incorrect": "A data ajuda a limitar a descrição ao momento registrado.",
+        "hint": "A data situa a observação.",
+        "errorFocus": "DATE_SUPPORTS_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-09",
+      "statement": "Num cenário de brincadeira, o cartão mostra chuva e uma criança com capa. Qual relação está representada?",
+      "prompt": "Num cenário de brincadeira, o cartão mostra chuva e uma criança com capa. Qual relação está representada?",
+      "options": [
+        "A capa ajuda a se proteger da chuva mostrada.",
+        "A capa produz o vento",
+        "A chuva acontece por causa da capa",
+        "A capa prova que nunca há sol"
+      ],
+      "correctAnswer": "A capa ajuda a se proteger da chuva mostrada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A capa produz o vento": [
+          "WEATHER_AND_SAFE_ACTIVITY"
+        ],
+        "A chuva acontece por causa da capa": [
+          "WEATHER_AND_SAFE_ACTIVITY"
+        ],
+        "A capa prova que nunca há sol": [
+          "WEATHER_AND_SAFE_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ROUPA_NO_CENARIO_FICTICIO",
+      "explanation": "A roupa é adequada à condição ilustrada, mas não causa a chuva.",
+      "hint": "Separe condição e resposta.",
+      "errorFocus": "WEATHER_AND_SAFE_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A roupa é adequada à condição ilustrada, mas não causa a chuva.",
+        "incorrect": "A roupa é adequada à condição ilustrada, mas não causa a chuva.",
+        "hint": "Separe condição e resposta.",
+        "errorFocus": "WEATHER_AND_SAFE_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-10",
+      "statement": "Duas figuras brincam: uma sob uma árvore e outra ao sol. O que diferencia os lugares?",
+      "prompt": "Duas figuras brincam: uma sob uma árvore e outra ao sol. O que diferencia os lugares?",
+      "options": [
+        "Um tem chuva e o outro tem neve",
+        "Um está sombreado e o outro recebe sol.",
+        "A árvore muda de comunidade",
+        "O sol fica preso na figura"
+      ],
+      "correctAnswer": "Um está sombreado e o outro recebe sol.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um tem chuva e o outro tem neve": [
+          "SHADE_AS_PLACE_FEATURE"
+        ],
+        "A árvore muda de comunidade": [
+          "SHADE_AS_PLACE_FEATURE"
+        ],
+        "O sol fica preso na figura": [
+          "SHADE_AS_PLACE_FEATURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BRINCADEIRA_NO_SOL_E_NA_SOMBRA",
+      "explanation": "A sombra e a área iluminada são características observáveis.",
+      "hint": "Olhe para a luz no desenho.",
+      "errorFocus": "SHADE_AS_PLACE_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: A sombra e a área iluminada são características observáveis.",
+        "incorrect": "A sombra e a área iluminada são características observáveis.",
+        "hint": "Olhe para a luz no desenho.",
+        "errorFocus": "SHADE_AS_PLACE_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-11",
+      "statement": "A fita moveu pouco na segunda e muito na terceira observação. Qual descrição compara os registros?",
+      "prompt": "A fita moveu pouco na segunda e muito na terceira observação. Qual descrição compara os registros?",
+      "options": [
+        "O vento foi igual nos dois registros",
+        "A fita causou uma tempestade",
+        "O movimento representado foi maior na terceira.",
+        "A terceira observação prova vento constante"
+      ],
+      "correctAnswer": "O movimento representado foi maior na terceira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O vento foi igual nos dois registros": [
+          "WIND_INTENSITY_COMPARISON"
+        ],
+        "A fita causou uma tempestade": [
+          "WIND_INTENSITY_COMPARISON"
+        ],
+        "A terceira observação prova vento constante": [
+          "WIND_INTENSITY_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TRES_REGISTROS_DE_VENTO",
+      "explanation": "A comparação diz respeito ao movimento registrado, sem generalizar para sempre.",
+      "hint": "Compare o que cada cartão mostra.",
+      "errorFocus": "WIND_INTENSITY_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação diz respeito ao movimento registrado, sem generalizar para sempre.",
+        "incorrect": "A comparação diz respeito ao movimento registrado, sem generalizar para sempre.",
+        "hint": "Compare o que cada cartão mostra.",
+        "errorFocus": "WIND_INTENSITY_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-12",
+      "statement": "Uma foto fictícia mostra gotas nas folhas, mas o céu não aparece. O que podemos concluir com segurança?",
+      "prompt": "Uma foto fictícia mostra gotas nas folhas, mas o céu não aparece. O que podemos concluir com segurança?",
+      "options": [
+        "Choveu durante toda a noite",
+        "O lugar é sempre úmido",
+        "O céu estava sem nuvens",
+        "Há gotas nas folhas nessa imagem."
+      ],
+      "correctAnswer": "Há gotas nas folhas nessa imagem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Choveu durante toda a noite": [
+          "VISIBLE_EVIDENCE_LIMIT"
+        ],
+        "O lugar é sempre úmido": [
+          "VISIBLE_EVIDENCE_LIMIT"
+        ],
+        "O céu estava sem nuvens": [
+          "VISIBLE_EVIDENCE_LIMIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "POCAS_GOTAS_NO_JARDIM",
+      "explanation": "As gotas são visíveis, mas a imagem não informa a duração nem o céu.",
+      "hint": "Não invente o que ficou fora da imagem.",
+      "errorFocus": "VISIBLE_EVIDENCE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: As gotas são visíveis, mas a imagem não informa a duração nem o céu.",
+        "incorrect": "As gotas são visíveis, mas a imagem não informa a duração nem o céu.",
+        "hint": "Não invente o que ficou fora da imagem.",
+        "errorFocus": "VISIBLE_EVIDENCE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-13",
+      "statement": "A sombra de uma árvore aparece em posições diferentes nos desenhos da manhã e da tarde. O que mudou?",
+      "prompt": "A sombra de uma árvore aparece em posições diferentes nos desenhos da manhã e da tarde. O que mudou?",
+      "options": [
+        "A posição desenhada da sombra entre os horários.",
+        "A árvore mudou de espécie",
+        "A rua virou um rio",
+        "O desenho prova a temperatura exata"
+      ],
+      "correctAnswer": "A posição desenhada da sombra entre os horários.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A árvore mudou de espécie": [
+          "SHADOW_TIME_COMPARISON"
+        ],
+        "A rua virou um rio": [
+          "SHADOW_TIME_COMPARISON"
+        ],
+        "O desenho prova a temperatura exata": [
+          "SHADOW_TIME_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SOMBRA_EM_HORARIOS_DIFERENTES",
+      "explanation": "Os dois registros permitem comparar a posição da sombra, não medir calor.",
+      "hint": "Compare os horários e as sombras.",
+      "errorFocus": "SHADOW_TIME_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Os dois registros permitem comparar a posição da sombra, não medir calor.",
+        "incorrect": "Os dois registros permitem comparar a posição da sombra, não medir calor.",
+        "hint": "Compare os horários e as sombras.",
+        "errorFocus": "SHADOW_TIME_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-14",
+      "statement": "Um papel preso com segurança se move numa simulação de vento. Qual frase descreve a pista?",
+      "prompt": "Um papel preso com segurança se move numa simulação de vento. Qual frase descreve a pista?",
+      "options": [
+        "O papel criou o vento",
+        "O papel se moveu no cenário com vento representado.",
+        "Todos os objetos se movem igual",
+        "O movimento prova que vai chover"
+      ],
+      "correctAnswer": "O papel se moveu no cenário com vento representado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O papel criou o vento": [
+          "WIND_EFFECT_WITHOUT_OVERCLAIM"
+        ],
+        "Todos os objetos se movem igual": [
+          "WIND_EFFECT_WITHOUT_OVERCLAIM"
+        ],
+        "O movimento prova que vai chover": [
+          "WIND_EFFECT_WITHOUT_OVERCLAIM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "VENTO_E_PAPEL_LEVE",
+      "explanation": "A pista demonstra movimento no modelo, sem prever outras condições.",
+      "hint": "Relacione o movimento ao cenário.",
+      "errorFocus": "WIND_EFFECT_WITHOUT_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: A pista demonstra movimento no modelo, sem prever outras condições.",
+        "incorrect": "A pista demonstra movimento no modelo, sem prever outras condições.",
+        "hint": "Relacione o movimento ao cenário.",
+        "errorFocus": "WIND_EFFECT_WITHOUT_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-15",
+      "statement": "Uma tabela registra: dia 1 sem chuva/piso seco; dia 2 chuva/piso molhado. Qual linha associa as duas pistas do segundo dia?",
+      "prompt": "Uma tabela registra: dia 1 sem chuva/piso seco; dia 2 chuva/piso molhado. Qual linha associa as duas pistas do segundo dia?",
+      "options": [
+        "Sem chuva e piso molhado",
+        "Vento e piso congelado",
+        "Chuva e piso molhado.",
+        "Calor e neve"
+      ],
+      "correctAnswer": "Chuva e piso molhado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sem chuva e piso molhado": [
+          "MATCHING_WEATHER_RECORD"
+        ],
+        "Vento e piso congelado": [
+          "MATCHING_WEATHER_RECORD"
+        ],
+        "Calor e neve": [
+          "MATCHING_WEATHER_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TABELA_DE_CHUVA_E_PISO",
+      "explanation": "A resposta mantém as duas informações registradas para o mesmo dia.",
+      "hint": "Leia a linha do mesmo dia.",
+      "errorFocus": "MATCHING_WEATHER_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A resposta mantém as duas informações registradas para o mesmo dia.",
+        "incorrect": "A resposta mantém as duas informações registradas para o mesmo dia.",
+        "hint": "Leia a linha do mesmo dia.",
+        "errorFocus": "MATCHING_WEATHER_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-16",
+      "statement": "Uma criança descreve um cartão: “Há sol e uma área de sombra sob o telhado”. Por que é uma descrição útil?",
+      "prompt": "Uma criança descreve um cartão: “Há sol e uma área de sombra sob o telhado”. Por que é uma descrição útil?",
+      "options": [
+        "Ela prevê o clima do próximo mês",
+        "Ela mostra quem mora ali",
+        "Ela prova que não há vento",
+        "Ela nomeia duas características visíveis do lugar."
+      ],
+      "correctAnswer": "Ela nomeia duas características visíveis do lugar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ela prevê o clima do próximo mês": [
+          "EVIDENCE_BASED_DESCRIPTION"
+        ],
+        "Ela mostra quem mora ali": [
+          "EVIDENCE_BASED_DESCRIPTION"
+        ],
+        "Ela prova que não há vento": [
+          "EVIDENCE_BASED_DESCRIPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DESCRICAO_DE_DIA_QUENTE",
+      "explanation": "A frase descreve elementos visíveis sem afirmar o que não foi mostrado.",
+      "hint": "Encontre as pistas citadas.",
+      "errorFocus": "EVIDENCE_BASED_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve elementos visíveis sem afirmar o que não foi mostrado.",
+        "incorrect": "A frase descreve elementos visíveis sem afirmar o que não foi mostrado.",
+        "hint": "Encontre as pistas citadas.",
+        "errorFocus": "EVIDENCE_BASED_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-17",
+      "statement": "Uma praça inventada aparece com pequenas poças e folhas no chão. Qual legenda é mais cuidadosa?",
+      "prompt": "Uma praça inventada aparece com pequenas poças e folhas no chão. Qual legenda é mais cuidadosa?",
+      "options": [
+        "Depois da chuva representada, há poças e folhas no chão.",
+        "A praça fica alagada todos os dias",
+        "As folhas fizeram chover",
+        "Nunca há sol nessa praça"
+      ],
+      "correctAnswer": "Depois da chuva representada, há poças e folhas no chão.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A praça fica alagada todos os dias": [
+          "FICTIONAL_SCENE_DESCRIPTION"
+        ],
+        "As folhas fizeram chover": [
+          "FICTIONAL_SCENE_DESCRIPTION"
+        ],
+        "Nunca há sol nessa praça": [
+          "FICTIONAL_SCENE_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRACA_FICTICIA_APOS_CHUVA",
+      "explanation": "A legenda descreve a cena e evita transformar uma imagem em regra permanente.",
+      "hint": "Use o que aparece no cenário.",
+      "errorFocus": "FICTIONAL_SCENE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda descreve a cena e evita transformar uma imagem em regra permanente.",
+        "incorrect": "A legenda descreve a cena e evita transformar uma imagem em regra permanente.",
+        "hint": "Use o que aparece no cenário.",
+        "errorFocus": "FICTIONAL_SCENE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-18",
+      "statement": "Em dois cartões, a cortina se move no primeiro e fica parada no segundo. Que diferença pode ser descrita?",
+      "prompt": "Em dois cartões, a cortina se move no primeiro e fica parada no segundo. Que diferença pode ser descrita?",
+      "options": [
+        "O primeiro dia foi sempre ventoso",
+        "A cortina aparece em movimento num registro e parada no outro.",
+        "A cortina criou o clima",
+        "O segundo lugar não tem natureza"
+      ],
+      "correctAnswer": "A cortina aparece em movimento num registro e parada no outro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O primeiro dia foi sempre ventoso": [
+          "REPRESENTED_WIND_CHANGE"
+        ],
+        "A cortina criou o clima": [
+          "REPRESENTED_WIND_CHANGE"
+        ],
+        "O segundo lugar não tem natureza": [
+          "REPRESENTED_WIND_CHANGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JANELA_EM_DOIS_PERIODOS",
+      "explanation": "A comparação limita a conclusão às duas imagens observadas.",
+      "hint": "Compare as cortinas nos cartões.",
+      "errorFocus": "REPRESENTED_WIND_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A comparação limita a conclusão às duas imagens observadas.",
+        "incorrect": "A comparação limita a conclusão às duas imagens observadas.",
+        "hint": "Compare as cortinas nos cartões.",
+        "errorFocus": "REPRESENTED_WIND_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-19",
+      "statement": "Um calendário da turma marca chuva em dois dias e sol em outro. O que ele ajuda a descrever?",
+      "prompt": "Um calendário da turma marca chuva em dois dias e sol em outro. O que ele ajuda a descrever?",
+      "options": [
+        "O clima de todos os anos",
+        "A previsão exata da próxima estação",
+        "As condições anotadas nos dias observados.",
+        "O motivo de cada mudança"
+      ],
+      "correctAnswer": "As condições anotadas nos dias observados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O clima de todos os anos": [
+          "OBSERVATION_LOG_SCOPE"
+        ],
+        "A previsão exata da próxima estação": [
+          "OBSERVATION_LOG_SCOPE"
+        ],
+        "O motivo de cada mudança": [
+          "OBSERVATION_LOG_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CALENDARIO_DE_OBSERVACOES",
+      "explanation": "Um calendário de observações mostra registros, não explica sozinho as causas.",
+      "hint": "Veja quais dias foram anotados.",
+      "errorFocus": "OBSERVATION_LOG_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Um calendário de observações mostra registros, não explica sozinho as causas.",
+        "incorrect": "Um calendário de observações mostra registros, não explica sozinho as causas.",
+        "hint": "Veja quais dias foram anotados.",
+        "errorFocus": "OBSERVATION_LOG_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-20",
+      "statement": "Uma maquete fictícia tem um caminho seco e outro com poças desenhadas. Qual escolha se baseia no cenário?",
+      "prompt": "Uma maquete fictícia tem um caminho seco e outro com poças desenhadas. Qual escolha se baseia no cenário?",
+      "options": [
+        "Afirmar que vai chover amanhã",
+        "Dizer que o caminho com poças nunca seca",
+        "Apagar o registro do caminho",
+        "Escolher o caminho seco para uma atividade que evita poças."
+      ],
+      "correctAnswer": "Escolher o caminho seco para uma atividade que evita poças.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Afirmar que vai chover amanhã": [
+          "WEATHER_AWARE_SAFE_CHOICE"
+        ],
+        "Dizer que o caminho com poças nunca seca": [
+          "WEATHER_AWARE_SAFE_CHOICE"
+        ],
+        "Apagar o registro do caminho": [
+          "WEATHER_AWARE_SAFE_CHOICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CAMINHO_DA_MAQUETE",
+      "explanation": "A escolha usa a condição desenhada sem tratá-la como previsão.",
+      "hint": "Decida com base no que está mostrado.",
+      "errorFocus": "WEATHER_AWARE_SAFE_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: A escolha usa a condição desenhada sem tratá-la como previsão.",
+        "incorrect": "A escolha usa a condição desenhada sem tratá-la como previsão.",
+        "hint": "Decida com base no que está mostrado.",
+        "errorFocus": "WEATHER_AWARE_SAFE_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-21",
+      "statement": "Um mapa simples mostra sombra sob uma árvore e sob um toldo. O que há em comum?",
+      "prompt": "Um mapa simples mostra sombra sob uma árvore e sob um toldo. O que há em comum?",
+      "options": [
+        "Os dois pontos estão representados como sombreados.",
+        "Os dois pontos têm chuva",
+        "A árvore e o toldo são iguais",
+        "O mapa mede o calor exato"
+      ],
+      "correctAnswer": "Os dois pontos estão representados como sombreados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os dois pontos têm chuva": [
+          "COMMON_PLACE_FEATURE"
+        ],
+        "A árvore e o toldo são iguais": [
+          "COMMON_PLACE_FEATURE"
+        ],
+        "O mapa mede o calor exato": [
+          "COMMON_PLACE_FEATURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SOMBRA_DE_ARVORE_E_TOLDO",
+      "explanation": "O elemento comum é a sombra representada, não a origem dela.",
+      "hint": "Procure a característica igual.",
+      "errorFocus": "COMMON_PLACE_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: O elemento comum é a sombra representada, não a origem dela.",
+        "incorrect": "O elemento comum é a sombra representada, não a origem dela.",
+        "hint": "Procure a característica igual.",
+        "errorFocus": "COMMON_PLACE_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-22",
+      "statement": "Três desenhos mostram poucas, muitas e poucas nuvens. Qual afirmação respeita a sequência?",
+      "prompt": "Três desenhos mostram poucas, muitas e poucas nuvens. Qual afirmação respeita a sequência?",
+      "options": [
+        "Vai chover no quarto desenho",
+        "A quantidade desenhada de nuvens variou entre os registros.",
+        "As nuvens desapareceram para sempre",
+        "O vento causou cada mudança"
+      ],
+      "correctAnswer": "A quantidade desenhada de nuvens variou entre os registros.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Vai chover no quarto desenho": [
+          "CLOUD_PATTERN_WITHOUT_PREDICTION"
+        ],
+        "As nuvens desapareceram para sempre": [
+          "CLOUD_PATTERN_WITHOUT_PREDICTION"
+        ],
+        "O vento causou cada mudança": [
+          "CLOUD_PATTERN_WITHOUT_PREDICTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SEQUENCIA_DE_NUVENS",
+      "explanation": "A sequência registra variações, mas não determina o próximo estado.",
+      "hint": "Descreva os registros existentes.",
+      "errorFocus": "CLOUD_PATTERN_WITHOUT_PREDICTION",
+      "feedback": {
+        "correct": "Boa observação: A sequência registra variações, mas não determina o próximo estado.",
+        "incorrect": "A sequência registra variações, mas não determina o próximo estado.",
+        "hint": "Descreva os registros existentes.",
+        "errorFocus": "CLOUD_PATTERN_WITHOUT_PREDICTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-23",
+      "statement": "Uma estudante observa o pátio pela janela e escolhe cartões de sol, vento e chuva. Como pode participar do registro?",
+      "prompt": "Uma estudante observa o pátio pela janela e escolhe cartões de sol, vento e chuva. Como pode participar do registro?",
+      "options": [
+        "Precisa sair sozinha para medir o tempo",
+        "Deve informar seu endereço",
+        "Selecionando o cartão que corresponde à observação.",
+        "Não pode participar sem escrever frases"
+      ],
+      "correctAnswer": "Selecionando o cartão que corresponde à observação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Precisa sair sozinha para medir o tempo": [
+          "MULTIMODAL_OBSERVATION"
+        ],
+        "Deve informar seu endereço": [
+          "MULTIMODAL_OBSERVATION"
+        ],
+        "Não pode participar sem escrever frases": [
+          "MULTIMODAL_OBSERVATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBSERVACAO_DO_PATIO_ACESSIVEL",
+      "explanation": "A seleção de cartões é uma forma válida de registrar uma pista observada.",
+      "hint": "Pense em diferentes formas de resposta.",
+      "errorFocus": "MULTIMODAL_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A seleção de cartões é uma forma válida de registrar uma pista observada.",
+        "incorrect": "A seleção de cartões é uma forma válida de registrar uma pista observada.",
+        "hint": "Pense em diferentes formas de resposta.",
+        "errorFocus": "MULTIMODAL_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-24",
+      "statement": "Uma criança diz: “Na segunda vi sol; na terça, vi chuva”. O que torna o relato preciso?",
+      "prompt": "Uma criança diz: “Na segunda vi sol; na terça, vi chuva”. O que torna o relato preciso?",
+      "options": [
+        "Ele prevê o restante do ano",
+        "Ele prova que todos viveram o mesmo tempo",
+        "Ele explica sozinho por que choveu",
+        "Ele informa condições diferentes e os dias observados."
+      ],
+      "correctAnswer": "Ele informa condições diferentes e os dias observados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ele prevê o restante do ano": [
+          "DATED_NATURE_DESCRIPTION"
+        ],
+        "Ele prova que todos viveram o mesmo tempo": [
+          "DATED_NATURE_DESCRIPTION"
+        ],
+        "Ele explica sozinho por que choveu": [
+          "DATED_NATURE_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RELATO_DE_DOIS_DIAS",
+      "explanation": "A frase delimita cada condição ao dia correspondente.",
+      "hint": "Note como os dias são identificados.",
+      "errorFocus": "DATED_NATURE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase delimita cada condição ao dia correspondente.",
+        "incorrect": "A frase delimita cada condição ao dia correspondente.",
+        "hint": "Note como os dias são identificados.",
+        "errorFocus": "DATED_NATURE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-25",
+      "statement": "Ao descrever o tempo de uma observação, qual frase é mais bem apoiada?",
+      "prompt": "Ao descrever o tempo de uma observação, qual frase é mais bem apoiada?",
+      "options": [
+        "O cartão mostra vento movendo as folhas.",
+        "Sempre venta neste lugar",
+        "Amanhã haverá tempestade",
+        "As folhas controlam o clima"
+      ],
+      "correctAnswer": "O cartão mostra vento movendo as folhas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sempre venta neste lugar": [
+          "EVIDENCE_AND_GENERALIZATION"
+        ],
+        "Amanhã haverá tempestade": [
+          "EVIDENCE_AND_GENERALIZATION"
+        ],
+        "As folhas controlam o clima": [
+          "EVIDENCE_AND_GENERALIZATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "FRASE_COM_EVIDENCIA",
+      "explanation": "A primeira frase descreve uma pista visível sem generalizar.",
+      "hint": "Escolha a frase que fica na observação.",
+      "errorFocus": "EVIDENCE_AND_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A primeira frase descreve uma pista visível sem generalizar.",
+        "incorrect": "A primeira frase descreve uma pista visível sem generalizar.",
+        "hint": "Escolha a frase que fica na observação.",
+        "errorFocus": "EVIDENCE_AND_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-26",
+      "statement": "Um piso molhado num cartão de chuva permite dizer que",
+      "prompt": "Um piso molhado num cartão de chuva permite dizer que",
+      "options": [
+        "o piso nunca seca",
+        "o piso aparece molhado naquele registro.",
+        "chove em todos os horários",
+        "a escola está sempre inundada"
+      ],
+      "correctAnswer": "o piso aparece molhado naquele registro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "o piso nunca seca": [
+          "SCOPE_OF_ONE_RECORD"
+        ],
+        "chove em todos os horários": [
+          "SCOPE_OF_ONE_RECORD"
+        ],
+        "a escola está sempre inundada": [
+          "SCOPE_OF_ONE_RECORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PISO_MOLHADO",
+      "explanation": "Uma imagem sustenta uma descrição daquele registro.",
+      "hint": "Acrescente “naquele registro”.",
+      "errorFocus": "SCOPE_OF_ONE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: Uma imagem sustenta uma descrição daquele registro.",
+        "incorrect": "Uma imagem sustenta uma descrição daquele registro.",
+        "hint": "Acrescente “naquele registro”.",
+        "errorFocus": "SCOPE_OF_ONE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-27",
+      "statement": "A fita de papel se move numa imagem. Qual palavra pode descrever a característica representada?",
+      "prompt": "A fita de papel se move numa imagem. Qual palavra pode descrever a característica representada?",
+      "options": [
+        "Neve",
+        "Sombra",
+        "Vento.",
+        "Silêncio"
+      ],
+      "correctAnswer": "Vento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Neve": [
+          "NATURE_RHYTHM_VOCABULARY"
+        ],
+        "Sombra": [
+          "NATURE_RHYTHM_VOCABULARY"
+        ],
+        "Silêncio": [
+          "NATURE_RHYTHM_VOCABULARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "VENTO_EM_FITA",
+      "explanation": "A fita em movimento é usada como pista de vento.",
+      "hint": "Lembre o que move a fita.",
+      "errorFocus": "NATURE_RHYTHM_VOCABULARY",
+      "feedback": {
+        "correct": "Boa observação: A fita em movimento é usada como pista de vento.",
+        "incorrect": "A fita em movimento é usada como pista de vento.",
+        "hint": "Lembre o que move a fita.",
+        "errorFocus": "NATURE_RHYTHM_VOCABULARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-28",
+      "statement": "Uma área sob a cobertura está mais escura que o espaço aberto. Que característica pode ser nomeada?",
+      "prompt": "Uma área sob a cobertura está mais escura que o espaço aberto. Que característica pode ser nomeada?",
+      "options": [
+        "Chuva dentro da cobertura",
+        "Vento sem movimento",
+        "Calor medido em números",
+        "Sombra sob a cobertura."
+      ],
+      "correctAnswer": "Sombra sob a cobertura.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Chuva dentro da cobertura": [
+          "SHADE_DESCRIPTION"
+        ],
+        "Vento sem movimento": [
+          "SHADE_DESCRIPTION"
+        ],
+        "Calor medido em números": [
+          "SHADE_DESCRIPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SOL_E_AREA_SOMBREADA",
+      "explanation": "A diferença visível permite descrever uma área sombreada.",
+      "hint": "Nomeie a área com pouca luz.",
+      "errorFocus": "SHADE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A diferença visível permite descrever uma área sombreada.",
+        "incorrect": "A diferença visível permite descrever uma área sombreada.",
+        "hint": "Nomeie a área com pouca luz.",
+        "errorFocus": "SHADE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-29",
+      "statement": "Um registro com data ajuda a turma a",
+      "prompt": "Um registro com data ajuda a turma a",
+      "options": [
+        "relacionar a descrição ao dia observado.",
+        "garantir que o tempo se repetirá",
+        "descobrir a previsão sem observação",
+        "apagar a diferença entre dias"
+      ],
+      "correctAnswer": "relacionar a descrição ao dia observado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "garantir que o tempo se repetirá": [
+          "WHY_DATE_MATTERS"
+        ],
+        "descobrir a previsão sem observação": [
+          "WHY_DATE_MATTERS"
+        ],
+        "apagar a diferença entre dias": [
+          "WHY_DATE_MATTERS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REGISTRO_DATADO",
+      "explanation": "A data localiza temporalmente a observação.",
+      "hint": "A data responde quando.",
+      "errorFocus": "WHY_DATE_MATTERS",
+      "feedback": {
+        "correct": "Boa observação: A data localiza temporalmente a observação.",
+        "incorrect": "A data localiza temporalmente a observação.",
+        "hint": "A data responde quando.",
+        "errorFocus": "WHY_DATE_MATTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-30",
+      "statement": "Dois cartões mostram quantidades diferentes de nuvens. O que a turma pode comparar?",
+      "prompt": "Dois cartões mostram quantidades diferentes de nuvens. O que a turma pode comparar?",
+      "options": [
+        "O endereço de quem desenhou",
+        "A quantidade de nuvens desenhadas nos cartões.",
+        "A temperatura exata sem termômetro",
+        "A cor real de todas as nuvens"
+      ],
+      "correctAnswer": "A quantidade de nuvens desenhadas nos cartões.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O endereço de quem desenhou": [
+          "COMPARISON_WITHIN_MEDIA"
+        ],
+        "A temperatura exata sem termômetro": [
+          "COMPARISON_WITHIN_MEDIA"
+        ],
+        "A cor real de todas as nuvens": [
+          "COMPARISON_WITHIN_MEDIA"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NUVENS_DESENHADAS",
+      "explanation": "A comparação usa apenas a informação apresentada nos cartões.",
+      "hint": "Compare o que foi representado.",
+      "errorFocus": "COMPARISON_WITHIN_MEDIA",
+      "feedback": {
+        "correct": "Boa observação: A comparação usa apenas a informação apresentada nos cartões.",
+        "incorrect": "A comparação usa apenas a informação apresentada nos cartões.",
+        "hint": "Compare o que foi representado.",
+        "errorFocus": "COMPARISON_WITHIN_MEDIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-31",
+      "statement": "Por que uma observação de chuva em um dia não prova que choverá em todos os dias?",
+      "prompt": "Por que uma observação de chuva em um dia não prova que choverá em todos os dias?",
+      "options": [
+        "Porque chuva não pode ser observada",
+        "Porque todos os cartões são iguais",
+        "Porque o registro descreve um momento, não uma regra para o futuro.",
+        "Porque um dia não tem data"
+      ],
+      "correctAnswer": "Porque o registro descreve um momento, não uma regra para o futuro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque chuva não pode ser observada": [
+          "NO_FUTURE_CERTAINTY"
+        ],
+        "Porque todos os cartões são iguais": [
+          "NO_FUTURE_CERTAINTY"
+        ],
+        "Porque um dia não tem data": [
+          "NO_FUTURE_CERTAINTY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TEMPO_NAO_E_REGRA",
+      "explanation": "Um registro não determina sozinho as condições futuras.",
+      "hint": "Diferencie observar de prever.",
+      "errorFocus": "NO_FUTURE_CERTAINTY",
+      "feedback": {
+        "correct": "Boa observação: Um registro não determina sozinho as condições futuras.",
+        "incorrect": "Um registro não determina sozinho as condições futuras.",
+        "hint": "Diferencie observar de prever.",
+        "errorFocus": "NO_FUTURE_CERTAINTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-32",
+      "statement": "Qual conjunto reúne características da natureza que podem ser observadas no lugar?",
+      "prompt": "Qual conjunto reúne características da natureza que podem ser observadas no lugar?",
+      "options": [
+        "Endereço, telefone e senha",
+        "Prova, tarefa e nota",
+        "Mesa, caderno e mochila",
+        "Chuva, vento e calor."
+      ],
+      "correctAnswer": "Chuva, vento e calor.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Endereço, telefone e senha": [
+          "NATURE_FEATURE_SET"
+        ],
+        "Prova, tarefa e nota": [
+          "NATURE_FEATURE_SET"
+        ],
+        "Mesa, caderno e mochila": [
+          "NATURE_FEATURE_SET"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PALAVRAS_DE_NATUREZA",
+      "explanation": "Chuva, vento e calor são condições naturais observáveis.",
+      "hint": "Escolha condições do ambiente.",
+      "errorFocus": "NATURE_FEATURE_SET",
+      "feedback": {
+        "correct": "Boa observação: Chuva, vento e calor são condições naturais observáveis.",
+        "incorrect": "Chuva, vento e calor são condições naturais observáveis.",
+        "hint": "Escolha condições do ambiente.",
+        "errorFocus": "NATURE_FEATURE_SET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-33",
+      "statement": "Um registro mostra piso seco e outro, chuva com piso molhado. Qual resumo é adequado?",
+      "prompt": "Um registro mostra piso seco e outro, chuva com piso molhado. Qual resumo é adequado?",
+      "options": [
+        "As condições registradas foram diferentes.",
+        "O piso nunca mais secará",
+        "A chuva só acontece naquele dia",
+        "Os dois cartões mostram a mesma coisa"
+      ],
+      "correctAnswer": "As condições registradas foram diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O piso nunca mais secará": [
+          "SUMMARY_OF_COMPARISON"
+        ],
+        "A chuva só acontece naquele dia": [
+          "SUMMARY_OF_COMPARISON"
+        ],
+        "Os dois cartões mostram a mesma coisa": [
+          "SUMMARY_OF_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DIA_SECO_E_CHUVOSO",
+      "explanation": "O resumo preserva a diferença visível sem exagerar.",
+      "hint": "Faça uma comparação curta.",
+      "errorFocus": "SUMMARY_OF_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: O resumo preserva a diferença visível sem exagerar.",
+        "incorrect": "O resumo preserva a diferença visível sem exagerar.",
+        "hint": "Faça uma comparação curta.",
+        "errorFocus": "SUMMARY_OF_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-34",
+      "statement": "Qual pista de uma imagem pode representar vento?",
+      "prompt": "Qual pista de uma imagem pode representar vento?",
+      "options": [
+        "Uma sombra parada",
+        "Folhas inclinadas e em movimento.",
+        "Um livro fechado",
+        "Uma poça sem marcas"
+      ],
+      "correctAnswer": "Folhas inclinadas e em movimento.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma sombra parada": [
+          "WIND_CUE_REVIEW"
+        ],
+        "Um livro fechado": [
+          "WIND_CUE_REVIEW"
+        ],
+        "Uma poça sem marcas": [
+          "WIND_CUE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_VENTO",
+      "explanation": "O movimento das folhas é uma pista visual de vento.",
+      "hint": "Procure movimento no cenário.",
+      "errorFocus": "WIND_CUE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O movimento das folhas é uma pista visual de vento.",
+        "incorrect": "O movimento das folhas é uma pista visual de vento.",
+        "hint": "Procure movimento no cenário.",
+        "errorFocus": "WIND_CUE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-35",
+      "statement": "Por que uma descrição pode mencionar a sombra de uma árvore?",
+      "prompt": "Por que uma descrição pode mencionar a sombra de uma árvore?",
+      "options": [
+        "Porque a sombra informa o endereço de alguém",
+        "Porque ela prova que não existe sol",
+        "Porque a sombra é uma característica observável do lugar.",
+        "Porque árvores impedem qualquer mudança"
+      ],
+      "correctAnswer": "Porque a sombra é uma característica observável do lugar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque a sombra informa o endereço de alguém": [
+          "PLACE_FEATURE_DESCRIPTION"
+        ],
+        "Porque ela prova que não existe sol": [
+          "PLACE_FEATURE_DESCRIPTION"
+        ],
+        "Porque árvores impedem qualquer mudança": [
+          "PLACE_FEATURE_DESCRIPTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_SOMBRA",
+      "explanation": "A sombra ajuda a descrever como o lugar aparece.",
+      "hint": "Pense no que pode ser visto.",
+      "errorFocus": "PLACE_FEATURE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A sombra ajuda a descrever como o lugar aparece.",
+        "incorrect": "A sombra ajuda a descrever como o lugar aparece.",
+        "hint": "Pense no que pode ser visto.",
+        "errorFocus": "PLACE_FEATURE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-36",
+      "statement": "Três cartões mostram sol, chuva e vento em dias diferentes. Qual conclusão é sustentada?",
+      "prompt": "Três cartões mostram sol, chuva e vento em dias diferentes. Qual conclusão é sustentada?",
+      "options": [
+        "A semana inteira será igual",
+        "Cada condição dura sempre um dia",
+        "Uma condição causou todas as outras",
+        "Houve condições diferentes nos cartões observados."
+      ],
+      "correctAnswer": "Houve condições diferentes nos cartões observados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A semana inteira será igual": [
+          "MULTIDAY_SCOPE"
+        ],
+        "Cada condição dura sempre um dia": [
+          "MULTIDAY_SCOPE"
+        ],
+        "Uma condição causou todas as outras": [
+          "MULTIDAY_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_TRES_DIAS",
+      "explanation": "Os cartões mostram diferenças, não duração futura nem causa.",
+      "hint": "Fique nos dias registrados.",
+      "errorFocus": "MULTIDAY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Os cartões mostram diferenças, não duração futura nem causa.",
+        "incorrect": "Os cartões mostram diferenças, não duração futura nem causa.",
+        "hint": "Fique nos dias registrados.",
+        "errorFocus": "MULTIDAY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-37",
+      "statement": "O que é importante guardar junto de uma observação feita pela turma?",
+      "prompt": "O que é importante guardar junto de uma observação feita pela turma?",
+      "options": [
+        "O momento ou dia em que foi observada.",
+        "A senha de um estudante",
+        "Um endereço residencial",
+        "Uma previsão garantida"
+      ],
+      "correctAnswer": "O momento ou dia em que foi observada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A senha de um estudante": [
+          "OBSERVATION_TRACEABILITY"
+        ],
+        "Um endereço residencial": [
+          "OBSERVATION_TRACEABILITY"
+        ],
+        "Uma previsão garantida": [
+          "OBSERVATION_TRACEABILITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_REGISTRO",
+      "explanation": "A data ajuda a interpretar o alcance do registro.",
+      "hint": "Pense em quando ocorreu.",
+      "errorFocus": "OBSERVATION_TRACEABILITY",
+      "feedback": {
+        "correct": "Boa observação: A data ajuda a interpretar o alcance do registro.",
+        "incorrect": "A data ajuda a interpretar o alcance do registro.",
+        "hint": "Pense em quando ocorreu.",
+        "errorFocus": "OBSERVATION_TRACEABILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-38",
+      "statement": "Para observar chuva e vento sem expor dados pessoais, a turma pode",
+      "prompt": "Para observar chuva e vento sem expor dados pessoais, a turma pode",
+      "options": [
+        "registrar endereços das casas",
+        "usar cartões, imagens ou o espaço escolar autorizado.",
+        "publicar rotas de cada criança",
+        "pedir que todos relatem sua vida familiar"
+      ],
+      "correctAnswer": "usar cartões, imagens ou o espaço escolar autorizado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "registrar endereços das casas": [
+          "PRIVACY_SAFE_OBSERVATION"
+        ],
+        "publicar rotas de cada criança": [
+          "PRIVACY_SAFE_OBSERVATION"
+        ],
+        "pedir que todos relatem sua vida familiar": [
+          "PRIVACY_SAFE_OBSERVATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ATIVIDADE_SEGURA",
+      "explanation": "Cenários escolares ou fictícios permitem observar sem coletar dados pessoais.",
+      "hint": "Escolha um contexto seguro.",
+      "errorFocus": "PRIVACY_SAFE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Cenários escolares ou fictícios permitem observar sem coletar dados pessoais.",
+        "incorrect": "Cenários escolares ou fictícios permitem observar sem coletar dados pessoais.",
+        "hint": "Escolha um contexto seguro.",
+        "errorFocus": "PRIVACY_SAFE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-39",
+      "statement": "Uma fita se move pouco num cartão e muito noutro. Qual frase preserva a evidência?",
+      "prompt": "Uma fita se move pouco num cartão e muito noutro. Qual frase preserva a evidência?",
+      "options": [
+        "O segundo cartão terá vento para sempre",
+        "A fita mediu a temperatura",
+        "O movimento representado foi maior no segundo cartão.",
+        "O primeiro cartão prova ausência de natureza"
+      ],
+      "correctAnswer": "O movimento representado foi maior no segundo cartão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O segundo cartão terá vento para sempre": [
+          "COMPARATIVE_EVIDENCE"
+        ],
+        "A fita mediu a temperatura": [
+          "COMPARATIVE_EVIDENCE"
+        ],
+        "O primeiro cartão prova ausência de natureza": [
+          "COMPARATIVE_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_FITA_COM_POUCO_E_MUITO_MOVIMENTO",
+      "explanation": "A frase compara apenas a intensidade desenhada nos cartões.",
+      "hint": "Mencione os dois cartões.",
+      "errorFocus": "COMPARATIVE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase compara apenas a intensidade desenhada nos cartões.",
+        "incorrect": "A frase compara apenas a intensidade desenhada nos cartões.",
+        "hint": "Mencione os dois cartões.",
+        "errorFocus": "COMPARATIVE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge10-nature-rhythms-v1-40",
+      "statement": "Uma boa descrição de ritmos da natureza deve",
+      "prompt": "Uma boa descrição de ritmos da natureza deve",
+      "options": [
+        "afirmar o futuro com certeza",
+        "generalizar a partir de uma imagem",
+        "trocar observação por palpite",
+        "nomear pistas observadas e o período do registro."
+      ],
+      "correctAnswer": "nomear pistas observadas e o período do registro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "afirmar o futuro com certeza": [
+          "OBSERVATION_BASED_DESCRIPTION"
+        ],
+        "generalizar a partir de uma imagem": [
+          "OBSERVATION_BASED_DESCRIPTION"
+        ],
+        "trocar observação por palpite": [
+          "OBSERVATION_BASED_DESCRIPTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DESCREVER_RITMO",
+      "explanation": "Pistas e período tornam a descrição mais precisa.",
+      "hint": "Junte pista e momento.",
+      "errorFocus": "OBSERVATION_BASED_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: Pistas e período tornam a descrição mais precisa.",
+        "incorrect": "Pistas e período tornam a descrição mais precisa.",
+        "hint": "Junte pista e momento.",
+        "errorFocus": "OBSERVATION_BASED_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens ampliadas, objetos táteis, descrição oral e símbolos de alto contraste para cada condição observada.",
+          "Permitir resposta por fala, apontamento, desenho, comunicação alternativa ou seleção de cartões; não exigir exposição de vivências familiares."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

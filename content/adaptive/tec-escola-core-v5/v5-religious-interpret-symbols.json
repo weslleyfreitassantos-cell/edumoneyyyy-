@@ -1,0 +1,1198 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-religious-interpret-symbols",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "SIMBOLOS_E_ESPACOS",
+  "topic": "interpretar símbolos em contexto",
+  "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-religious_education-religious_diversity-4",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-10",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-probe-01",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-probe-02",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-practice-03",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-practice-04",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-transfer-05",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-lock_in-06",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-review-07",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-review-08",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "RELIGIOUS_INTERPRET_SYMBOLS_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 10,
+    "feedbackAdded": 10,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Interpretar símbolos em contexto",
+    "objective": "Interpretar símbolos e espaços considerando uso, comunidade, história, autoria e limites da observação.",
+    "summary": "Um objeto ou imagem não possui um significado único fora das práticas. O contexto e as vozes dos participantes orientam uma leitura responsável.",
+    "explanation": "## 1. Separe objeto e uso\nA mesma forma material pode cumprir funções diferentes em lugares e momentos distintos.\n\n## 2. Procure contexto\nPergunte quem usa, quando, para quê, em qual espaço e com qual explicação.\n\n## 3. Leia fontes e imagens\nLegenda, autoria, data e enquadramento ajudam a limitar a interpretação.\n\n## Exemplo resolvido\nÁgua em uma fotografia não basta para identificar o sentido de um rito. É preciso saber a tradição, a prática e o contexto.\n\n## 4. Respeite pessoas e espaços\nPerguntar com consentimento é diferente de tocar, expor ou exigir uma resposta.",
+    "workedExample": "Analise um símbolo por cinco perguntas: o que é visível, quem o usa, quando, com qual finalidade e o que ainda não pode ser concluído.",
+    "commonMistake": "Fixar significado universal, tomar aparência como prova ou transformar uma imagem isolada em retrato de toda uma tradição.",
+    "tips": [
+      "Contextualize autoria e ocasião.",
+      "Consulte explicações internas.",
+      "Use linguagem provisória quando faltar dado.",
+      "Respeite limites e consentimento."
+    ],
+    "estimatedMinutes": 27,
+    "priorKnowledge": [
+      "Descrever imagens e objetos.",
+      "Distinguir observação de interpretação."
+    ],
+    "keyConcepts": [
+      "símbolo",
+      "contexto",
+      "uso",
+      "autoria",
+      "memória",
+      "consentimento"
+    ],
+    "activity": "Produzir uma ficha de análise visual que diferencie observação, hipótese interpretativa, fonte consultada e limite.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-religious-interpret-symbols-01",
+          "v5-religious-interpret-symbols-02",
+          "v5-religious-interpret-symbols-03",
+          "v5-religious-interpret-symbols-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-religious-interpret-symbols-05",
+          "v5-religious-interpret-symbols-06",
+          "v5-religious-interpret-symbols-07",
+          "v5-religious-interpret-symbols-08",
+          "v5-religious-interpret-symbols-09",
+          "v5-religious-interpret-symbols-10",
+          "v5-religious-interpret-symbols-11",
+          "v5-religious-interpret-symbols-12",
+          "v5-religious-interpret-symbols-13",
+          "v5-religious-interpret-symbols-14",
+          "v5-religious-interpret-symbols-15",
+          "v5-religious-interpret-symbols-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-religious-interpret-symbols-17",
+          "v5-religious-interpret-symbols-18",
+          "v5-religious-interpret-symbols-19",
+          "v5-religious-interpret-symbols-20",
+          "v5-religious-interpret-symbols-21",
+          "v5-religious-interpret-symbols-22",
+          "v5-religious-interpret-symbols-23",
+          "v5-religious-interpret-symbols-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-religious-interpret-symbols-25",
+          "v5-religious-interpret-symbols-26",
+          "v5-religious-interpret-symbols-27",
+          "v5-religious-interpret-symbols-28",
+          "v5-religious-interpret-symbols-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-religious-interpret-symbols-30",
+          "v5-religious-interpret-symbols-31",
+          "v5-religious-interpret-symbols-32",
+          "v5-religious-interpret-symbols-33",
+          "v5-religious-interpret-symbols-34",
+          "v5-religious-interpret-symbols-35",
+          "v5-religious-interpret-symbols-36",
+          "v5-religious-interpret-symbols-37",
+          "v5-religious-interpret-symbols-38",
+          "v5-religious-interpret-symbols-39",
+          "v5-religious-interpret-symbols-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-religious-interpret-symbols-activity",
+        "title": "Oficina de interpretar símbolos em contexto",
+        "objective": "Interpretar símbolos e espaços considerando uso, comunidade, história, autoria e limites da observação.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Produzir uma ficha de análise visual que diferencie observação, hipótese interpretativa, fonte consultada e limite.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-religious-interpret-symbols-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VELA_01",
+      "statement": "Em uma cerimônia, uma vela é acesa no início e permanece próxima a um texto.. O que é necessário para interpretar o símbolo?",
+      "options": [
+        "observar a prática, a explicação da comunidade e o contexto, sem fixar um significado universal.",
+        "o objeto explica tudo sozinho",
+        "a posição é irrelevante",
+        "qualquer interpretação é igualmente comprovada"
+      ],
+      "correctAnswer": "observar a prática, a explicação da comunidade e o contexto, sem fixar um significado universal.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "o objeto explica tudo sozinho": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VELA_02",
+      "statement": "Em uma cerimônia, uma vela é acesa no início e permanece próxima a um texto.. Que critério deve orientar a análise?",
+      "options": [
+        "o objeto explica tudo sozinho",
+        "perguntar quando, por quem e para que a vela é usada",
+        "a posição é irrelevante",
+        "qualquer interpretação é igualmente comprovada"
+      ],
+      "correctAnswer": "perguntar quando, por quem e para que a vela é usada",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "o objeto explica tudo sozinho": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VELA_03",
+      "statement": "Em uma cerimônia, uma vela é acesa no início e permanece próxima a um texto.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "o objeto explica tudo sozinho",
+        "a posição é irrelevante",
+        "comparar o uso em outro contexto mantendo a diferença de sentido",
+        "qualquer interpretação é igualmente comprovada"
+      ],
+      "correctAnswer": "comparar o uso em outro contexto mantendo a diferença de sentido",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "o objeto explica tudo sozinho": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VELA_04",
+      "statement": "Em uma cerimônia, uma vela é acesa no início e permanece próxima a um texto.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "o objeto explica tudo sozinho",
+        "a posição é irrelevante",
+        "qualquer interpretação é igualmente comprovada",
+        "dizer que toda vela simboliza exatamente a mesma coisa"
+      ],
+      "correctAnswer": "dizer que toda vela simboliza exatamente a mesma coisa",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "o objeto explica tudo sozinho": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ÁGUA_05",
+      "statement": "Uma atividade apresenta água em um rito, mas não informa a tradição nem a finalidade.. Qual é o limite da leitura?",
+      "options": [
+        "sem contexto, não é possível atribuir um significado específico ao uso da água.",
+        "a água tem um sentido único",
+        "a imagem basta",
+        "o observador pode inventar o rito"
+      ],
+      "correctAnswer": "sem contexto, não é possível atribuir um significado específico ao uso da água.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a água tem um sentido único": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ÁGUA_06",
+      "statement": "Uma atividade apresenta água em um rito, mas não informa a tradição nem a finalidade.. Que critério deve orientar a análise?",
+      "options": [
+        "a água tem um sentido único",
+        "buscar comunidade, prática, momento, finalidade e explicação",
+        "a imagem basta",
+        "o observador pode inventar o rito"
+      ],
+      "correctAnswer": "buscar comunidade, prática, momento, finalidade e explicação",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a água tem um sentido único": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ÁGUA_07",
+      "statement": "Uma atividade apresenta água em um rito, mas não informa a tradição nem a finalidade.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a água tem um sentido único",
+        "a imagem basta",
+        "formular hipóteses com linguagem provisória e procurar confirmação",
+        "o observador pode inventar o rito"
+      ],
+      "correctAnswer": "formular hipóteses com linguagem provisória e procurar confirmação",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a água tem um sentido único": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ÁGUA_08",
+      "statement": "Uma atividade apresenta água em um rito, mas não informa a tradição nem a finalidade.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a água tem um sentido único",
+        "a imagem basta",
+        "o observador pode inventar o rito",
+        "escolher o significado mais conhecido"
+      ],
+      "correctAnswer": "escolher o significado mais conhecido",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a água tem um sentido único": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VESTIMENTA_09",
+      "statement": "Uma fotografia mostra vestimentas diferentes em uma celebração comunitária.. Que cuidado evita estereótipo?",
+      "options": [
+        "não usar uma imagem isolada para definir todas as pessoas ou ocasiões de uma tradição.",
+        "fotografias nunca têm recorte",
+        "a roupa prova intenção",
+        "uma imagem representa todos"
+      ],
+      "correctAnswer": "não usar uma imagem isolada para definir todas as pessoas ou ocasiões de uma tradição.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "fotografias nunca têm recorte": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VESTIMENTA_10",
+      "statement": "Uma fotografia mostra vestimentas diferentes em uma celebração comunitária.. Que critério deve orientar a análise?",
+      "options": [
+        "fotografias nunca têm recorte",
+        "identificar ocasião, participantes, autoria e recorte da fotografia",
+        "a roupa prova intenção",
+        "uma imagem representa todos"
+      ],
+      "correctAnswer": "identificar ocasião, participantes, autoria e recorte da fotografia",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "fotografias nunca têm recorte": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VESTIMENTA_11",
+      "statement": "Uma fotografia mostra vestimentas diferentes em uma celebração comunitária.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "fotografias nunca têm recorte",
+        "a roupa prova intenção",
+        "comparar imagens e relatos sem transformar aparência em regra",
+        "uma imagem representa todos"
+      ],
+      "correctAnswer": "comparar imagens e relatos sem transformar aparência em regra",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "fotografias nunca têm recorte": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_VESTIMENTA_12",
+      "statement": "Uma fotografia mostra vestimentas diferentes em uma celebração comunitária.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "fotografias nunca têm recorte",
+        "a roupa prova intenção",
+        "uma imagem representa todos",
+        "afirmar que a roupa indica toda a crença"
+      ],
+      "correctAnswer": "afirmar que a roupa indica toda a crença",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "fotografias nunca têm recorte": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MÚSICA_13",
+      "statement": "Um canto aparece em um encontro e os participantes explicam quando ele é usado.. Como interpretar melhor?",
+      "options": [
+        "relacionar letra, momento, participação e explicação dos participantes.",
+        "música não comunica valores",
+        "a melodia determina tudo",
+        "qualquer canto tem a mesma função"
+      ],
+      "correctAnswer": "relacionar letra, momento, participação e explicação dos participantes.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "música não comunica valores": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MÚSICA_14",
+      "statement": "Um canto aparece em um encontro e os participantes explicam quando ele é usado.. Que critério deve orientar a análise?",
+      "options": [
+        "música não comunica valores",
+        "observar texto, prática, autoria, função e contexto sonoro",
+        "a melodia determina tudo",
+        "qualquer canto tem a mesma função"
+      ],
+      "correctAnswer": "observar texto, prática, autoria, função e contexto sonoro",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "música não comunica valores": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MÚSICA_15",
+      "statement": "Um canto aparece em um encontro e os participantes explicam quando ele é usado.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "música não comunica valores",
+        "a melodia determina tudo",
+        "comparar função musical em outro encontro sem copiar o significado",
+        "qualquer canto tem a mesma função"
+      ],
+      "correctAnswer": "comparar função musical em outro encontro sem copiar o significado",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "música não comunica valores": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MÚSICA_16",
+      "statement": "Um canto aparece em um encontro e os participantes explicam quando ele é usado.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "música não comunica valores",
+        "a melodia determina tudo",
+        "qualquer canto tem a mesma função",
+        "ler a música fora do contexto como definição completa"
+      ],
+      "correctAnswer": "ler a música fora do contexto como definição completa",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "música não comunica valores": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_IMAGEM_E_LEGENDA_17",
+      "statement": "Um material mostra um símbolo com a legenda produzida por uma comunidade.. Por que a legenda é importante?",
+      "options": [
+        "ela registra uma explicação situada e deve ser lida junto da imagem e do contexto.",
+        "a imagem é sempre mais verdadeira",
+        "a legenda vale para todos os contextos",
+        "a autoria não importa"
+      ],
+      "correctAnswer": "ela registra uma explicação situada e deve ser lida junto da imagem e do contexto.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a imagem é sempre mais verdadeira": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_IMAGEM_E_LEGENDA_18",
+      "statement": "Um material mostra um símbolo com a legenda produzida por uma comunidade.. Que critério deve orientar a análise?",
+      "options": [
+        "a imagem é sempre mais verdadeira",
+        "verificar autoria, público, data e relação entre imagem e legenda",
+        "a legenda vale para todos os contextos",
+        "a autoria não importa"
+      ],
+      "correctAnswer": "verificar autoria, público, data e relação entre imagem e legenda",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a imagem é sempre mais verdadeira": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_IMAGEM_E_LEGENDA_19",
+      "statement": "Um material mostra um símbolo com a legenda produzida por uma comunidade.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a imagem é sempre mais verdadeira",
+        "a legenda vale para todos os contextos",
+        "comparar com outra explicação da mesma comunidade",
+        "a autoria não importa"
+      ],
+      "correctAnswer": "comparar com outra explicação da mesma comunidade",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a imagem é sempre mais verdadeira": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_IMAGEM_E_LEGENDA_20",
+      "statement": "Um material mostra um símbolo com a legenda produzida por uma comunidade.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a imagem é sempre mais verdadeira",
+        "a legenda vale para todos os contextos",
+        "a autoria não importa",
+        "ignorar a legenda por ser texto"
+      ],
+      "correctAnswer": "ignorar a legenda por ser texto",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a imagem é sempre mais verdadeira": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_OBJETO_COTIDIANO_21",
+      "statement": "Um objeto comum é usado de modo especial em uma celebração.. O que a situação ensina?",
+      "options": [
+        "o significado de um objeto depende das relações e práticas em que ele é utilizado.",
+        "uso e significado são independentes",
+        "a aparência define a função",
+        "objetos cotidianos não podem ter valor simbólico"
+      ],
+      "correctAnswer": "o significado de um objeto depende das relações e práticas em que ele é utilizado.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "uso e significado são independentes": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_OBJETO_COTIDIANO_22",
+      "statement": "Um objeto comum é usado de modo especial em uma celebração.. Que critério deve orientar a análise?",
+      "options": [
+        "uso e significado são independentes",
+        "distinguir forma material, uso, momento e interpretação",
+        "a aparência define a função",
+        "objetos cotidianos não podem ter valor simbólico"
+      ],
+      "correctAnswer": "distinguir forma material, uso, momento e interpretação",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "uso e significado são independentes": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_OBJETO_COTIDIANO_23",
+      "statement": "Um objeto comum é usado de modo especial em uma celebração.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "uso e significado são independentes",
+        "a aparência define a função",
+        "observar como o mesmo objeto muda de função em outro contexto",
+        "objetos cotidianos não podem ter valor simbólico"
+      ],
+      "correctAnswer": "observar como o mesmo objeto muda de função em outro contexto",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "uso e significado são independentes": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_OBJETO_COTIDIANO_24",
+      "statement": "Um objeto comum é usado de modo especial em uma celebração.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "uso e significado são independentes",
+        "a aparência define a função",
+        "objetos cotidianos não podem ter valor simbólico",
+        "dizer que o objeto tem um significado religioso permanente"
+      ],
+      "correctAnswer": "dizer que o objeto tem um significado religioso permanente",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "uso e significado são independentes": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_SILÊNCIO_25",
+      "statement": "Durante uma prática, o grupo permanece em silêncio por alguns minutos.. Como analisar sem concluir demais?",
+      "options": [
+        "considerar instruções, duração, participantes e explicações antes de atribuir sentido ao silêncio.",
+        "silêncio não pode comunicar",
+        "a duração prova o sentido",
+        "um observador sabe a intenção"
+      ],
+      "correctAnswer": "considerar instruções, duração, participantes e explicações antes de atribuir sentido ao silêncio.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "silêncio não pode comunicar": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_SILÊNCIO_26",
+      "statement": "Durante uma prática, o grupo permanece em silêncio por alguns minutos.. Que critério deve orientar a análise?",
+      "options": [
+        "silêncio não pode comunicar",
+        "observar regras, momento, finalidade e vozes da comunidade",
+        "a duração prova o sentido",
+        "um observador sabe a intenção"
+      ],
+      "correctAnswer": "observar regras, momento, finalidade e vozes da comunidade",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "silêncio não pode comunicar": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_SILÊNCIO_27",
+      "statement": "Durante uma prática, o grupo permanece em silêncio por alguns minutos.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "silêncio não pode comunicar",
+        "a duração prova o sentido",
+        "comparar outro silêncio sem supor que seja a mesma prática",
+        "um observador sabe a intenção"
+      ],
+      "correctAnswer": "comparar outro silêncio sem supor que seja a mesma prática",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "silêncio não pode comunicar": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_SILÊNCIO_28",
+      "statement": "Durante uma prática, o grupo permanece em silêncio por alguns minutos.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "silêncio não pode comunicar",
+        "a duração prova o sentido",
+        "um observador sabe a intenção",
+        "dizer que todo silêncio é oração"
+      ],
+      "correctAnswer": "dizer que todo silêncio é oração",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "silêncio não pode comunicar": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ARQUITETURA_29",
+      "statement": "A entrada de um espaço apresenta formas, cores e objetos relacionados à história local.. Que pergunta ajuda?",
+      "options": [
+        "investigar como os elementos visuais organizam memória, uso e pertencimento naquele espaço.",
+        "cores não têm contexto",
+        "o prédio não muda com o uso",
+        "um detalhe explica o conjunto"
+      ],
+      "correctAnswer": "investigar como os elementos visuais organizam memória, uso e pertencimento naquele espaço.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "cores não têm contexto": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ARQUITETURA_30",
+      "statement": "A entrada de um espaço apresenta formas, cores e objetos relacionados à história local.. Que critério deve orientar a análise?",
+      "options": [
+        "cores não têm contexto",
+        "relacionar forma, localização, história, usuários e explicações",
+        "o prédio não muda com o uso",
+        "um detalhe explica o conjunto"
+      ],
+      "correctAnswer": "relacionar forma, localização, história, usuários e explicações",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "cores não têm contexto": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ARQUITETURA_31",
+      "statement": "A entrada de um espaço apresenta formas, cores e objetos relacionados à história local.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "cores não têm contexto",
+        "o prédio não muda com o uso",
+        "comparar espaços sem tratar estilo como prova de crença",
+        "um detalhe explica o conjunto"
+      ],
+      "correctAnswer": "comparar espaços sem tratar estilo como prova de crença",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "cores não têm contexto": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_ARQUITETURA_32",
+      "statement": "A entrada de um espaço apresenta formas, cores e objetos relacionados à história local.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "cores não têm contexto",
+        "o prédio não muda com o uso",
+        "um detalhe explica o conjunto",
+        "dizer que a arquitetura fala por todos"
+      ],
+      "correctAnswer": "dizer que a arquitetura fala por todos",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "cores não têm contexto": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MUDANÇA_HISTÓRICA_33",
+      "statement": "O mesmo símbolo aparece em documentos de épocas diferentes com usos distintos.. Qual conclusão é proporcional?",
+      "options": [
+        "o símbolo pode manter uma forma e adquirir usos ou interpretações diferentes em contextos históricos.",
+        "a forma prova continuidade total",
+        "contexto histórico não importa",
+        "um documento substitui todos os outros"
+      ],
+      "correctAnswer": "o símbolo pode manter uma forma e adquirir usos ou interpretações diferentes em contextos históricos.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a forma prova continuidade total": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MUDANÇA_HISTÓRICA_34",
+      "statement": "O mesmo símbolo aparece em documentos de épocas diferentes com usos distintos.. Que critério deve orientar a análise?",
+      "options": [
+        "a forma prova continuidade total",
+        "comparar data, autoria, prática e vocabulário de cada fonte",
+        "contexto histórico não importa",
+        "um documento substitui todos os outros"
+      ],
+      "correctAnswer": "comparar data, autoria, prática e vocabulário de cada fonte",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a forma prova continuidade total": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MUDANÇA_HISTÓRICA_35",
+      "statement": "O mesmo símbolo aparece em documentos de épocas diferentes com usos distintos.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a forma prova continuidade total",
+        "contexto histórico não importa",
+        "mapear permanências e transformações sem escolher uma leitura única",
+        "um documento substitui todos os outros"
+      ],
+      "correctAnswer": "mapear permanências e transformações sem escolher uma leitura única",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a forma prova continuidade total": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_MUDANÇA_HISTÓRICA_36",
+      "statement": "O mesmo símbolo aparece em documentos de épocas diferentes com usos distintos.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a forma prova continuidade total",
+        "contexto histórico não importa",
+        "um documento substitui todos os outros",
+        "afirmar que o sentido nunca mudou"
+      ],
+      "correctAnswer": "afirmar que o sentido nunca mudou",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "a forma prova continuidade total": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_PERGUNTA_RESPEITOSA_37",
+      "statement": "Uma estudante não reconhece um símbolo e pede explicação sem tocar no objeto.. Por que a conduta é adequada?",
+      "options": [
+        "ela busca compreender com respeito, preservando a autonomia e a integridade do espaço e das pessoas.",
+        "curiosidade autoriza qualquer ação",
+        "a pergunta deve exigir uma resposta",
+        "o símbolo pertence ao visitante"
+      ],
+      "correctAnswer": "ela busca compreender com respeito, preservando a autonomia e a integridade do espaço e das pessoas.",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "curiosidade autoriza qualquer ação": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_PERGUNTA_RESPEITOSA_38",
+      "statement": "Uma estudante não reconhece um símbolo e pede explicação sem tocar no objeto.. Que critério deve orientar a análise?",
+      "options": [
+        "curiosidade autoriza qualquer ação",
+        "considerar consentimento, linguagem, contexto e direito de não responder",
+        "a pergunta deve exigir uma resposta",
+        "o símbolo pertence ao visitante"
+      ],
+      "correctAnswer": "considerar consentimento, linguagem, contexto e direito de não responder",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "curiosidade autoriza qualquer ação": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_PERGUNTA_RESPEITOSA_39",
+      "statement": "Uma estudante não reconhece um símbolo e pede explicação sem tocar no objeto.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "curiosidade autoriza qualquer ação",
+        "a pergunta deve exigir uma resposta",
+        "transferir o cuidado para uma visita a outro espaço",
+        "o símbolo pertence ao visitante"
+      ],
+      "correctAnswer": "transferir o cuidado para uma visita a outro espaço",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "curiosidade autoriza qualquer ação": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-interpret-symbols-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_INTERPRET_SYMBOLS_PERGUNTA_RESPEITOSA_40",
+      "statement": "Uma estudante não reconhece um símbolo e pede explicação sem tocar no objeto.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "curiosidade autoriza qualquer ação",
+        "a pergunta deve exigir uma resposta",
+        "o símbolo pertence ao visitante",
+        "tocar para descobrir o significado"
+      ],
+      "correctAnswer": "tocar para descobrir o significado",
+      "explanation": "Símbolos e espaços adquirem sentido em práticas e comunidades; imagem ou objeto isolado não autoriza uma leitura universal.",
+      "hint": "Pergunte quem usa, quando, onde, para quê e qual fonte explica o sentido.",
+      "errorFocus": "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "curiosidade autoriza qualquer ação": [
+          "SYMBOL_MEANING_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import type {
 } from 'lucide-react';
 import {
   Building2,
+  Accessibility,
   BookOpen,
   BookMarked,
   BadgeCheck,
@@ -16,6 +17,7 @@ import {
   ClipboardList,
   CircleHelp,
   Clock3,
+  Download,
   FileCheck2,
   FileUser,
   GraduationCap,
@@ -28,6 +30,7 @@ import {
   Palette,
   School,
   ShieldCheck,
+  TrendingUp,
   Users,
   UsersRound,
   Video,
@@ -124,7 +127,58 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
   'global',
   'account',
   'school',
+];
+
+const collapsibleNavigationSections: readonly NavigationSection[] = [
   'personal',
+  'teacher',
+];
+
+const inclusiveEducationNavigation: ReadonlyArray<{
+  label: string;
+  path: string;
+  icon: LucideIcon;
+}> = [
+  {
+    label: 'Painel Inclusivo',
+    path: '/inclusive-education',
+    icon: LayoutDashboard,
+  },
+  {
+    label: 'PEI dos Alunos',
+    path: '/inclusive-education/pei',
+    icon: GraduationCap,
+  },
+  {
+    label: 'AEE / PAEE',
+    path: '/inclusive-education/aee-paee',
+    icon: Accessibility,
+  },
+  {
+    label: 'Biblioteca de Atividades',
+    path: '/inclusive-education/activities',
+    icon: BookOpen,
+  },
+  {
+    label: 'Exercícios Interativos',
+    path: '/inclusive-education/exercises',
+    icon: ListChecks,
+  },
+  {
+    label: 'Materiais para Download',
+    path: '/inclusive-education/materials',
+    icon: Download,
+  },
+  {
+    label: 'Evolução Pedagógica',
+    path: '/inclusive-education/progress',
+    icon: TrendingUp,
+  },
+  {
+    label: 'Vídeos didáticos',
+    path: '/inclusive-education/videos',
+    icon: Video,
+  },
 ];
 
 const adminModuleIcons: Record<
@@ -612,6 +666,10 @@ export default function Sidebar({
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
     useState<AdminNavigationGroupId | null>(null);
+  const [openNavigationSection, setOpenNavigationSection] =
+    useState<NavigationSection | null>(null);
+  const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
+    useState(false);
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
@@ -669,7 +727,7 @@ export default function Sidebar({
     ),
   );
   const brandName =
-    branding.displayName?.trim() || 'EduManager Pro';
+    branding.displayName?.trim() || 'Tec Escola';
   const brandLogoUrl =
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
@@ -704,6 +762,18 @@ export default function Sidebar({
     setOpenAdminGroupId((current) =>
       current === groupId ? null : groupId,
     );
+  }
+
+  function toggleNavigationSection(
+    section: NavigationSection,
+  ): void {
+    setOpenNavigationSection((current) =>
+      current === section ? null : section,
+    );
+  }
+
+  function toggleInclusiveEducationNavigation(): void {
+    setIsInclusiveEducationOpen((current) => !current);
   }
 
   function preloadNavigationItem(item: SidebarNavigationItem): void {
@@ -886,6 +956,57 @@ export default function Sidebar({
     );
   }
 
+  function renderInclusiveEducationNavigation() {
+    if (
+      !currentInstitutionId ||
+      !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+    ) return null;
+    const isCollapsed = !isInclusiveEducationOpen;
+    const childGroupId = 'sidebar-inclusive-education';
+
+    return (
+      <section className="mb-4 last:mb-0" aria-label="Educação Inclusiva">
+        <button
+          type="button"
+          aria-expanded={!isCollapsed}
+          aria-controls={childGroupId}
+          onClick={toggleInclusiveEducationNavigation}
+          className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+        >
+          <Accessibility
+            className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+            aria-hidden="true"
+          />
+          <span className="min-w-0 flex-1">
+            Educação Inclusiva
+          </span>
+          {isCollapsed ? (
+            <ChevronRight
+              className="h-4 w-4 shrink-0 text-[#7b879d]"
+              aria-hidden="true"
+            />
+          ) : (
+            <ChevronDown
+              className="h-4 w-4 shrink-0 text-[#7b879d]"
+              aria-hidden="true"
+            />
+          )}
+        </button>
+
+        <div
+          id={childGroupId}
+          hidden={isCollapsed}
+          className="space-y-1.5 pl-1"
+        >
+          {inclusiveEducationNavigation.map(({ label, path, icon: Icon }) => {
+            const active = location.pathname === path;
+            return <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}><Icon className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" /><span className="truncate">{label}</span></Link>;
+          })}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       {isMobileOpen && (
@@ -989,22 +1110,73 @@ export default function Sidebar({
             const items = navigationItems.filter(
               (item) => item.section === section,
             );
+            const isCollapsible =
+              collapsibleNavigationSections.includes(section);
+            const isCollapsed =
+              isCollapsible && openNavigationSection !== section;
+            const childGroupId =
+              `sidebar-navigation-section-${section}`;
 
             return (
-              <div
+              <section
                 key={section}
                 className="mb-4 last:mb-0"
+                aria-label={
+                  isCollapsible
+                    ? sectionLabels[section]
+                    : undefined
+                }
               >
-                {hiddenSectionLabels.includes(section) ? null : (
+                {isCollapsible ? (
+                  <button
+                    type="button"
+                    aria-expanded={!isCollapsed}
+                    aria-controls={childGroupId}
+                    onClick={() =>
+                      toggleNavigationSection(section)
+                    }
+                    className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                  >
+                    {section === 'teacher' ? (
+                      <GraduationCap
+                        className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <LayoutDashboard
+                        className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="min-w-0 flex-1">
+                      {sectionLabels[section]}
+                    </span>
+                    {isCollapsed ? (
+                      <ChevronRight
+                        className="h-4 w-4 shrink-0 text-[#7b879d]"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <ChevronDown
+                        className="h-4 w-4 shrink-0 text-[#7b879d]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </button>
+                ) : hiddenSectionLabels.includes(section) ? null : (
                   <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">
                     {sectionLabels[section]}
                   </p>
                 )}
 
-                <div className="space-y-1.5">
+                <div
+                  id={isCollapsible ? childGroupId : undefined}
+                  hidden={isCollapsed}
+                  className="space-y-1.5"
+                >
                   {items.map(renderNavigationLink)}
                 </div>
-              </div>
+              </section>
             );
           })}
 
@@ -1017,6 +1189,7 @@ export default function Sidebar({
           ) : null}
 
           {renderAdminModules()}
+          {renderInclusiveEducationNavigation()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">

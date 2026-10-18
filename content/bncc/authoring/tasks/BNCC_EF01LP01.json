@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "tec-escola.bncc.authoring-context-brief.v1",
+  "taskId": "BNCC_EF01LP01",
+  "officialCode": "EF01LP01",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "componentCode": "LP",
+  "relation": "AUTHORING_CONTEXT_ONLY",
+  "sourceStatus": "VERIFIED",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "publicationStatus": "STAGING_INACTIVE",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "sourceEvidence": {
+    "verificationId": "BNCC_EF01LP01_MEC_P101_V1",
+    "descriptor": "Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "evidenceCheckedAt": "2026-10-16"
+  },
+  "requirements": {
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "lessons": 1,
+    "workedExamples": 1,
+    "activities": 1,
+    "diagnosticAssessments": 1,
+    "masteryAssessments": 1,
+    "questions": 40
+  },
+  "missingRequirements": [
+    "AUTHORING_PACKAGE",
+    "LESSON",
+    "WORKED_EXAMPLES",
+    "GUIDED_ACTIVITIES",
+    "ASSESSMENTS",
+    "REMEDIATION",
+    "PEDAGOGICAL_REVIEW"
+  ],
+  "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
+  "checkpointHash": "c7dc073b08080448c08f79bb1fb8d93131a6843e751c8c435402aba9e18213f1"
+}

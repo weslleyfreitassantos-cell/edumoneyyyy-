@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Uma praça em duas paletas</title>
+  <desc id="desc">Dois painéis mostram a mesma praça estilizada com casas e árvores; o painel esquerdo usa amarelo e vermelho, e o direito usa azul e verde.</desc>
+  <rect width="600" height="360" fill="#f6f2e8"/>
+  <rect x="24" y="34" width="264" height="292" rx="8" fill="#f2cf78"/>
+  <rect x="312" y="34" width="264" height="292" rx="8" fill="#a8cbd0"/>
+  <g>
+    <path d="M45 214h224v84H45z" fill="#d75b43"/><path d="M62 214v-73l48-39 48 39v73z" fill="#ef9655"/><path d="M168 214v-54l40-32 40 32v54z" fill="#a9473c"/>
+    <circle cx="95" cy="109" r="24" fill="#527354"/><circle cx="227" cy="116" r="25" fill="#567657"/>
+    <path d="M45 248h224M333 214h224v84H333z" fill="none" stroke="#38596b" stroke-width="0"/>
+    <path d="M350 214v-73l48-39 48 39v73z" fill="#638d9f"/><path d="M456 214v-54l40-32 40 32v54z" fill="#477486"/>
+    <circle cx="383" cy="109" r="24" fill="#4d806a"/><circle cx="515" cy="116" r="25" fill="#568a70"/>
+    <path d="M350 214h207v84H350z" fill="#658b76"/>
+  </g>
+  <path d="M35 298h241M323 298h241" stroke="#4a5a50" stroke-width="7"/>
+</svg>

@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-personal-data-safety-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO07_SAFE_TECH_USE_AND_PERSONAL_DATA",
+  "subject": "COMPUTING",
+  "domain": "CULTURA_DIGITAL",
+  "topic": "uso seguro de tecnologias e proteção de dados pessoais",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 18
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Cuidar de si e dos dados ao usar tecnologia",
+    "objective": "Reconhecer exemplos de dados pessoais, praticar decisões seguras em situações fictícias de uso de tecnologia e procurar ajuda de um adulto de confiança quando uma situação causar dúvida ou desconforto.",
+    "summary": "Tecnologias podem apoiar atividades, e seu uso seguro inclui proteger dados pessoais e a própria segurança. Crianças podem parar, não compartilhar informações privadas e consultar um adulto de confiança antes de agir em situações desconhecidas.",
+    "explanation": "## Dados pessoais merecem cuidado\nNome completo, endereço, escola, telefone, localização, senhas e imagens pessoais podem identificar ou localizar alguém. Não se deve enviar essas informações a qualquer pessoa ou publicá-las em espaços abertos. Uma atividade escolar pode usar personagens e dados fictícios para praticar sem expor crianças reais.\n\n## Pare, não compartilhe e peça ajuda\nSe uma mensagem pede dados, uma senha, uma foto ou um encontro, pare antes de responder. Não clique nem envie; mostre a situação a um adulto de confiança usando um canal conhecido. Mesmo que a mensagem pareça amigável ou urgente, a criança não precisa resolver sozinha.\n\n## Usar tecnologia com orientação\nUse dispositivos e aplicativos autorizados por um responsável, respeite as regras combinadas e peça ajuda se algo inesperado aparecer. Não culpamos nem assustamos quem recebeu uma mensagem. A segurança é uma prática de cuidado compartilhado, e um adulto pode ajudar a bloquear, denunciar ou responder de forma adequada.",
+    "workedExample": "Num jogo de cartas fictício, um personagem recebe uma mensagem de alguém desconhecido pedindo seu endereço para enviar um prêmio. A resposta segura é não fornecer o endereço, não continuar a conversa e mostrar o cartão a um adulto de confiança. O grupo explica que o endereço é dado pessoal e que o personagem não precisa decidir sozinho.",
+    "commonMistake": "Acreditar que uma solicitação é segura só porque parece urgente, oferece um prêmio ou diz conhecer a criança.",
+    "tips": [
+      "Não compartilhe senha, endereço, localização, telefone ou foto com pessoas ou espaços não autorizados.",
+      "Se algo inesperado aparecer, pare e procure um adulto de confiança.",
+      "Use somente dispositivos e atividades autorizados, com as regras combinadas.",
+      "Se alguém já compartilhou algo ou se sente desconfortável, peça ajuda sem culpa ou vergonha."
+    ],
+    "priorKnowledge": [
+      "Reconhecer mensagens e situações em que alguém pede uma informação.",
+      "Saber a quem recorrer na escola ou em casa quando precisa de ajuda."
+    ],
+    "keyConcepts": [
+      "dado pessoal",
+      "proteção de senha e localização",
+      "uso autorizado e regras de segurança",
+      "parar, não compartilhar e pedir ajuda",
+      "apoio adulto sem culpa"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "PERSONAL_DATA",
+        "text": "Dados como endereço, telefone, localização e senha podem identificar ou localizar uma pessoa."
+      },
+      {
+        "trigger": "PAUSE_AND_ASK",
+        "text": "Diante de pedido inesperado, pare, não compartilhe e mostre a situação a um adulto de confiança."
+      },
+      {
+        "trigger": "NO_BLAME",
+        "text": "Se algo já foi compartilhado ou causou desconforto, peça ajuda; a criança não precisa resolver sozinha."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SHARES_PERSONAL_DATA",
+        "action": "Use cartões fictícios para separar informação pública de dado pessoal e ensaie uma resposta de pausa e busca de ajuda."
+      },
+      {
+        "errorFocus": "TRUSTS_URGENCY_OR_PRIZE",
+        "action": "Compare mensagens simuladas com pedidos urgentes ou promessas e pratique mostrar qualquer solicitação a um adulto de confiança."
+      },
+      {
+        "errorFocus": "FEELS_ALONE_OR_BLAMED",
+        "action": "Repita que pedir ajuda é adequado, identifique um adulto de confiança e ensaie como contar o que apareceu sem compartilhar a mensagem com colegas."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+      "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+      "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+      "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-personal-data-safety-fi-activity-1",
+        "title": "O que pode ser compartilhado?",
+        "instructions": "Classificar cartões inteiramente fictícios com exemplos de informação pública escolar, dado pessoal e pedido que requer ajuda adulta.\n1. Ler ou ouvir cada situação fictícia preparada pelo professor.\n2. Identificar se ela inclui informação pessoal ou solicitação inesperada.\n3. Escolher entre continuar com autorização, não compartilhar ou pedir ajuda.\n4. Explicar como a decisão protege a pessoa, sem contar experiências reais.",
+        "steps": [
+          "Ler ou ouvir cada situação fictícia preparada pelo professor.",
+          "Identificar se ela inclui informação pessoal ou solicitação inesperada.",
+          "Escolher entre continuar com autorização, não compartilhar ou pedir ajuda.",
+          "Explicar como a decisão protege a pessoa, sem contar experiências reais."
+        ],
+        "evidence": "Classificação dos cartões, decisão de segurança e indicação de um adulto de confiança para pedidos duvidosos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um dado pessoal com apoio.",
+            "developing": "decide não compartilhar ou pede ajuda após uma pista.",
+            "proficient": "identifica o risco simulado e escolhe uma resposta segura sem culpa ou exposição."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-personal-data-safety-fi-activity-2",
+        "title": "Ensaiar a pausa segura",
+        "instructions": "Praticar com personagens fictícios uma mensagem inesperada que pede senha, localização ou fotografia; nenhum dispositivo real ou conta será usado.\n1. Observar uma mensagem simulada claramente marcada como fictícia.\n2. Nomear a informação privada solicitada, se houver.\n3. Ensaiar parar, não responder nem enviar e procurar um adulto de confiança.\n4. Repetir a resposta com outra forma acessível de comunicação e lembrar que não há culpa em pedir ajuda.",
+        "steps": [
+          "Observar uma mensagem simulada claramente marcada como fictícia.",
+          "Nomear a informação privada solicitada, se houver.",
+          "Ensaiar parar, não responder nem enviar e procurar um adulto de confiança.",
+          "Repetir a resposta com outra forma acessível de comunicação e lembrar que não há culpa em pedir ajuda."
+        ],
+        "evidence": "Identificação do pedido, sequência de decisão segura e demonstração de como pedir apoio.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "percebe que a situação pede ajuda adulta com mediação.",
+            "developing": "pratica uma parte da resposta segura com lembrete.",
+            "proficient": "pausa, evita compartilhar e procura apoio usando o modo de comunicação escolhido."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-personal-data-safety-fi-01",
+          "v1-computing-personal-data-safety-fi-02",
+          "v1-computing-personal-data-safety-fi-03",
+          "v1-computing-personal-data-safety-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-personal-data-safety-fi-05",
+          "v1-computing-personal-data-safety-fi-06",
+          "v1-computing-personal-data-safety-fi-07",
+          "v1-computing-personal-data-safety-fi-08",
+          "v1-computing-personal-data-safety-fi-09",
+          "v1-computing-personal-data-safety-fi-10",
+          "v1-computing-personal-data-safety-fi-11",
+          "v1-computing-personal-data-safety-fi-12",
+          "v1-computing-personal-data-safety-fi-13",
+          "v1-computing-personal-data-safety-fi-14",
+          "v1-computing-personal-data-safety-fi-15",
+          "v1-computing-personal-data-safety-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-personal-data-safety-fi-17",
+          "v1-computing-personal-data-safety-fi-18",
+          "v1-computing-personal-data-safety-fi-19",
+          "v1-computing-personal-data-safety-fi-20",
+          "v1-computing-personal-data-safety-fi-21",
+          "v1-computing-personal-data-safety-fi-22",
+          "v1-computing-personal-data-safety-fi-23",
+          "v1-computing-personal-data-safety-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-personal-data-safety-fi-25",
+          "v1-computing-personal-data-safety-fi-26",
+          "v1-computing-personal-data-safety-fi-27",
+          "v1-computing-personal-data-safety-fi-28",
+          "v1-computing-personal-data-safety-fi-29",
+          "v1-computing-personal-data-safety-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-personal-data-safety-fi-31",
+          "v1-computing-personal-data-safety-fi-32",
+          "v1-computing-personal-data-safety-fi-33",
+          "v1-computing-personal-data-safety-fi-34",
+          "v1-computing-personal-data-safety-fi-35",
+          "v1-computing-personal-data-safety-fi-36",
+          "v1-computing-personal-data-safety-fi-37",
+          "v1-computing-personal-data-safety-fi-38",
+          "v1-computing-personal-data-safety-fi-39",
+          "v1-computing-personal-data-safety-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO07",
+        "descriptor": "Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 18
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-personal-data-safety-fi-01",
+      "statement": "Uma pessoa desconhecida numa história pede o endereço de um personagem. Que tipo de informação foi solicitada?",
+      "prompt": "Uma pessoa desconhecida numa história pede o endereço de um personagem. Que tipo de informação foi solicitada?",
+      "options": [
+        "Um dado pessoal que não deve ser enviado a qualquer pessoa.",
+        "Uma cor pública do mural.",
+        "O título de um livro da sala.",
+        "Uma forma geométrica sem relação com a identidade."
+      ],
+      "correctAnswer": "Um dado pessoal que não deve ser enviado a qualquer pessoa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma cor pública do mural.": [
+          "PERSONAL_DATA"
+        ],
+        "O título de um livro da sala.": [
+          "PERSONAL_DATA"
+        ],
+        "Uma forma geométrica sem relação com a identidade.": [
+          "PERSONAL_DATA"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ADDRESS_REQUEST",
+      "explanation": "Endereço pode identificar ou localizar uma pessoa e exige proteção.",
+      "hint": "Essa informação pode indicar onde alguém mora?",
+      "errorFocus": "PERSONAL_DATA",
+      "feedback": {
+        "correct": "Boa observação: Endereço pode identificar ou localizar uma pessoa e exige proteção.",
+        "incorrect": "Endereço pode identificar ou localizar uma pessoa e exige proteção.",
+        "hint": "Essa informação pode indicar onde alguém mora?",
+        "errorFocus": "PERSONAL_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-02",
+      "statement": "Um personagem recebe uma mensagem pedindo sua senha para ganhar um adesivo fictício. O que fazer?",
+      "prompt": "Um personagem recebe uma mensagem pedindo sua senha para ganhar um adesivo fictício. O que fazer?",
+      "options": [
+        "Enviar a senha para receber o adesivo.",
+        "Não informar a senha e mostrar a mensagem a um adulto de confiança.",
+        "Publicar a senha no mural.",
+        "Pedir a senha de outra criança."
+      ],
+      "correctAnswer": "Não informar a senha e mostrar a mensagem a um adulto de confiança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Enviar a senha para receber o adesivo.": [
+          "PASSWORD_PROTECTION"
+        ],
+        "Publicar a senha no mural.": [
+          "PASSWORD_PROTECTION"
+        ],
+        "Pedir a senha de outra criança.": [
+          "PASSWORD_PROTECTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "PASSWORD_CHAT",
+      "explanation": "Senha é privada; uma promessa não torna seguro compartilhá-la.",
+      "hint": "Qual informação não deve ser enviada?",
+      "errorFocus": "PASSWORD_PROTECTION",
+      "feedback": {
+        "correct": "Boa observação: Senha é privada; uma promessa não torna seguro compartilhá-la.",
+        "incorrect": "Senha é privada; uma promessa não torna seguro compartilhá-la.",
+        "hint": "Qual informação não deve ser enviada?",
+        "errorFocus": "PASSWORD_PROTECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-03",
+      "statement": "Durante uma atividade autorizada aparece uma janela que a criança não entende. Qual é uma resposta segura?",
+      "prompt": "Durante uma atividade autorizada aparece uma janela que a criança não entende. Qual é uma resposta segura?",
+      "options": [
+        "Clicar em todos os botões rapidamente.",
+        "Digitar nome e endereço para fechar a janela.",
+        "Parar e chamar o adulto que acompanha a atividade.",
+        "Enviar uma foto da tela a desconhecidos."
+      ],
+      "correctAnswer": "Parar e chamar o adulto que acompanha a atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Clicar em todos os botões rapidamente.": [
+          "UNEXPECTED_CONTENT"
+        ],
+        "Digitar nome e endereço para fechar a janela.": [
+          "UNEXPECTED_CONTENT"
+        ],
+        "Enviar uma foto da tela a desconhecidos.": [
+          "UNEXPECTED_CONTENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "UNEXPECTED_POPUP",
+      "explanation": "Uma criança pode pausar e pedir ajuda antes de interagir com algo desconhecido.",
+      "hint": "Quem está acompanhando a atividade?",
+      "errorFocus": "UNEXPECTED_CONTENT",
+      "feedback": {
+        "correct": "Boa observação: Uma criança pode pausar e pedir ajuda antes de interagir com algo desconhecido.",
+        "incorrect": "Uma criança pode pausar e pedir ajuda antes de interagir com algo desconhecido.",
+        "hint": "Quem está acompanhando a atividade?",
+        "errorFocus": "UNEXPECTED_CONTENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-04",
+      "statement": "Qual informação é mais adequada para um mural escolar autorizado?",
+      "prompt": "Qual informação é mais adequada para um mural escolar autorizado?",
+      "options": [
+        "O endereço residencial de um estudante.",
+        "Uma senha de conta.",
+        "A localização em tempo real de uma criança.",
+        "O horário de uma apresentação escolar aprovada para divulgação."
+      ],
+      "correctAnswer": "O horário de uma apresentação escolar aprovada para divulgação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O endereço residencial de um estudante.": [
+          "PUBLIC_VS_PRIVATE"
+        ],
+        "Uma senha de conta.": [
+          "PUBLIC_VS_PRIVATE"
+        ],
+        "A localização em tempo real de uma criança.": [
+          "PUBLIC_VS_PRIVATE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PUBLIC_EVENT_PRIVATE_HOME",
+      "explanation": "Um horário de evento aprovado pode ser público; endereço, senha e localização individual são privados.",
+      "hint": "Escolha a informação que a escola autorizou divulgar.",
+      "errorFocus": "PUBLIC_VS_PRIVATE",
+      "feedback": {
+        "correct": "Boa observação: Um horário de evento aprovado pode ser público; endereço, senha e localização individual são privados.",
+        "incorrect": "Um horário de evento aprovado pode ser público; endereço, senha e localização individual são privados.",
+        "hint": "Escolha a informação que a escola autorizou divulgar.",
+        "errorFocus": "PUBLIC_VS_PRIVATE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-05",
+      "statement": "Um cartão fictício mostra o telefone de uma personagem. Por que esse dado precisa de cuidado?",
+      "prompt": "Um cartão fictício mostra o telefone de uma personagem. Por que esse dado precisa de cuidado?",
+      "options": [
+        "Ele pode ser usado para identificar ou contatar a personagem.",
+        "Porque números nunca comunicam nada.",
+        "Porque todo número é uma senha universal.",
+        "Porque o telefone é um desenho público sem pessoa associada."
+      ],
+      "correctAnswer": "Ele pode ser usado para identificar ou contatar a personagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque números nunca comunicam nada.": [
+          "CONTACT_DATA"
+        ],
+        "Porque todo número é uma senha universal.": [
+          "CONTACT_DATA"
+        ],
+        "Porque o telefone é um desenho público sem pessoa associada.": [
+          "CONTACT_DATA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PHONE_NUMBER_CARD",
+      "explanation": "Telefone é dado pessoal quando está ligado a uma pessoa.",
+      "hint": "Esse número permite entrar em contato com alguém?",
+      "errorFocus": "CONTACT_DATA",
+      "feedback": {
+        "correct": "Boa observação: Telefone é dado pessoal quando está ligado a uma pessoa.",
+        "incorrect": "Telefone é dado pessoal quando está ligado a uma pessoa.",
+        "hint": "Esse número permite entrar em contato com alguém?",
+        "errorFocus": "CONTACT_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-06",
+      "statement": "Um personagem desconhecido pede uma foto privada num jogo simulado. Qual ação ajuda a manter segurança?",
+      "prompt": "Um personagem desconhecido pede uma foto privada num jogo simulado. Qual ação ajuda a manter segurança?",
+      "options": [
+        "Enviar a foto para provar amizade.",
+        "Não enviar a foto e conversar com um adulto de confiança.",
+        "Pedir uma foto privada de volta.",
+        "Postar a foto em um espaço aberto."
+      ],
+      "correctAnswer": "Não enviar a foto e conversar com um adulto de confiança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Enviar a foto para provar amizade.": [
+          "IMAGE_PRIVACY"
+        ],
+        "Pedir uma foto privada de volta.": [
+          "IMAGE_PRIVACY"
+        ],
+        "Postar a foto em um espaço aberto.": [
+          "IMAGE_PRIVACY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "PHOTO_REQUEST",
+      "explanation": "Imagens pessoais podem revelar informações e não devem ser enviadas por pedido inesperado.",
+      "hint": "A criança precisa enviar a imagem para pedir ajuda?",
+      "errorFocus": "IMAGE_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Imagens pessoais podem revelar informações e não devem ser enviadas por pedido inesperado.",
+        "incorrect": "Imagens pessoais podem revelar informações e não devem ser enviadas por pedido inesperado.",
+        "hint": "A criança precisa enviar a imagem para pedir ajuda?",
+        "errorFocus": "IMAGE_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-07",
+      "statement": "Uma mensagem quer saber onde a criança está agora. O que é seguro fazer?",
+      "prompt": "Uma mensagem quer saber onde a criança está agora. O que é seguro fazer?",
+      "options": [
+        "Enviar o ponto exato para qualquer pessoa.",
+        "Publicar o trajeto de volta para casa.",
+        "Não informar a localização e pedir orientação a um adulto de confiança.",
+        "Compartilhar senha para confirmar o local."
+      ],
+      "correctAnswer": "Não informar a localização e pedir orientação a um adulto de confiança.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Enviar o ponto exato para qualquer pessoa.": [
+          "LOCATION_PRIVACY"
+        ],
+        "Publicar o trajeto de volta para casa.": [
+          "LOCATION_PRIVACY"
+        ],
+        "Compartilhar senha para confirmar o local.": [
+          "LOCATION_PRIVACY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "LOCATION_SHARE",
+      "explanation": "Localização pode revelar onde alguém está; consulte um adulto antes de compartilhar.",
+      "hint": "Essa informação pode mostrar onde alguém está?",
+      "errorFocus": "LOCATION_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Localização pode revelar onde alguém está; consulte um adulto antes de compartilhar.",
+        "incorrect": "Localização pode revelar onde alguém está; consulte um adulto antes de compartilhar.",
+        "hint": "Essa informação pode mostrar onde alguém está?",
+        "errorFocus": "LOCATION_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-08",
+      "statement": "Um jogo fictício pede nome completo e escola para continuar. O que está solicitando?",
+      "prompt": "Um jogo fictício pede nome completo e escola para continuar. O que está solicitando?",
+      "options": [
+        "Somente uma cor do personagem.",
+        "A regra de uma brincadeira sem identificação.",
+        "Uma informação que nunca precisa de cuidado.",
+        "Dados que podem identificar a criança e que não devem ser informados sem autorização adulta."
+      ],
+      "correctAnswer": "Dados que podem identificar a criança e que não devem ser informados sem autorização adulta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente uma cor do personagem.": [
+          "IDENTIFIERS"
+        ],
+        "A regra de uma brincadeira sem identificação.": [
+          "IDENTIFIERS"
+        ],
+        "Uma informação que nunca precisa de cuidado.": [
+          "IDENTIFIERS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FULL_NAME_GAME",
+      "explanation": "Nome completo combinado com escola pode identificar uma criança.",
+      "hint": "A solicitação revela quem e onde estuda?",
+      "errorFocus": "IDENTIFIERS",
+      "feedback": {
+        "correct": "Boa observação: Nome completo combinado com escola pode identificar uma criança.",
+        "incorrect": "Nome completo combinado com escola pode identificar uma criança.",
+        "hint": "A solicitação revela quem e onde estuda?",
+        "errorFocus": "IDENTIFIERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-09",
+      "statement": "Antes de usar um tablet compartilhado da escola, que regra ajuda?",
+      "prompt": "Antes de usar um tablet compartilhado da escola, que regra ajuda?",
+      "options": [
+        "Usá-lo na atividade autorizada e seguir as instruções do adulto.",
+        "Abrir mensagens pessoais de outra pessoa.",
+        "Instalar qualquer aplicativo sem perguntar.",
+        "Anotar senhas de colegas."
+      ],
+      "correctAnswer": "Usá-lo na atividade autorizada e seguir as instruções do adulto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Abrir mensagens pessoais de outra pessoa.": [
+          "AUTHORIZED_DEVICE_USE"
+        ],
+        "Instalar qualquer aplicativo sem perguntar.": [
+          "AUTHORIZED_DEVICE_USE"
+        ],
+        "Anotar senhas de colegas.": [
+          "AUTHORIZED_DEVICE_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW_RULE",
+      "contextFamily": "SHARED_TABLET",
+      "explanation": "Regras de uso e acompanhamento protegem dispositivos e dados de todos.",
+      "hint": "O dispositivo foi preparado para qual atividade?",
+      "errorFocus": "AUTHORIZED_DEVICE_USE",
+      "feedback": {
+        "correct": "Boa observação: Regras de uso e acompanhamento protegem dispositivos e dados de todos.",
+        "incorrect": "Regras de uso e acompanhamento protegem dispositivos e dados de todos.",
+        "hint": "O dispositivo foi preparado para qual atividade?",
+        "errorFocus": "AUTHORIZED_DEVICE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-10",
+      "statement": "Uma mensagem fictícia deixa a personagem desconfortável. O que ela pode fazer?",
+      "prompt": "Uma mensagem fictícia deixa a personagem desconfortável. O que ela pode fazer?",
+      "options": [
+        "Continuar porque precisa ser educada.",
+        "Parar de responder e contar a um adulto de confiança.",
+        "Apagar a mensagem sem contar a ninguém se estiver com medo.",
+        "Enviar seus dados para encerrar a conversa."
+      ],
+      "correctAnswer": "Parar de responder e contar a um adulto de confiança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Continuar porque precisa ser educada.": [
+          "DISCOMFORT_RESPONSE"
+        ],
+        "Apagar a mensagem sem contar a ninguém se estiver com medo.": [
+          "DISCOMFORT_RESPONSE"
+        ],
+        "Enviar seus dados para encerrar a conversa.": [
+          "DISCOMFORT_RESPONSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "STRANGE_MESSAGE",
+      "explanation": "Desconforto é um motivo suficiente para parar e pedir apoio, sem culpa.",
+      "hint": "A personagem precisa continuar a conversa?",
+      "errorFocus": "DISCOMFORT_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Desconforto é um motivo suficiente para parar e pedir apoio, sem culpa.",
+        "incorrect": "Desconforto é um motivo suficiente para parar e pedir apoio, sem culpa.",
+        "hint": "A personagem precisa continuar a conversa?",
+        "errorFocus": "DISCOMFORT_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-11",
+      "statement": "A escola usa seu nome em uma atividade interna autorizada. Isso significa que o nome pode ser publicado em qualquer lugar?",
+      "prompt": "A escola usa seu nome em uma atividade interna autorizada. Isso significa que o nome pode ser publicado em qualquer lugar?",
+      "options": [
+        "Sim, toda informação escolar deve ser pública.",
+        "Sim, porque uma atividade interna libera qualquer dado.",
+        "Não; a autorização e o contexto determinam como o dado pode ser usado.",
+        "Não, mas deve compartilhar a senha em vez do nome."
+      ],
+      "correctAnswer": "Não; a autorização e o contexto determinam como o dado pode ser usado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, toda informação escolar deve ser pública.": [
+          "CONTEXT_AND_PERMISSION"
+        ],
+        "Sim, porque uma atividade interna libera qualquer dado.": [
+          "CONTEXT_AND_PERMISSION"
+        ],
+        "Não, mas deve compartilhar a senha em vez do nome.": [
+          "CONTEXT_AND_PERMISSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_NAME_CONTEXT",
+      "explanation": "Um uso autorizado em contexto específico não autoriza divulgação ampla.",
+      "hint": "A permissão vale para qualquer público e finalidade?",
+      "errorFocus": "CONTEXT_AND_PERMISSION",
+      "feedback": {
+        "correct": "Boa observação: Um uso autorizado em contexto específico não autoriza divulgação ampla.",
+        "incorrect": "Um uso autorizado em contexto específico não autoriza divulgação ampla.",
+        "hint": "A permissão vale para qualquer público e finalidade?",
+        "errorFocus": "CONTEXT_AND_PERMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-12",
+      "statement": "Um cartão de jogo simulado promete prêmio se a criança clicar e informar o endereço. Qual decisão é segura?",
+      "prompt": "Um cartão de jogo simulado promete prêmio se a criança clicar e informar o endereço. Qual decisão é segura?",
+      "options": [
+        "Clicar depressa antes que o prêmio acabe.",
+        "Digitar endereço para verificar a promessa.",
+        "Encaminhar o pedido aos colegas para que tentem.",
+        "Não clicar nem fornecer o endereço; mostrar a solicitação a um adulto."
+      ],
+      "correctAnswer": "Não clicar nem fornecer o endereço; mostrar a solicitação a um adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Clicar depressa antes que o prêmio acabe.": [
+          "URGENCY_AND_PRIZE"
+        ],
+        "Digitar endereço para verificar a promessa.": [
+          "URGENCY_AND_PRIZE"
+        ],
+        "Encaminhar o pedido aos colegas para que tentem.": [
+          "URGENCY_AND_PRIZE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "PRIZE_LINK",
+      "explanation": "Pressa ou promessa não justificam compartilhar dados ou abrir pedido inesperado.",
+      "hint": "Quem pode avaliar a mensagem com a criança?",
+      "errorFocus": "URGENCY_AND_PRIZE",
+      "feedback": {
+        "correct": "Boa observação: Pressa ou promessa não justificam compartilhar dados ou abrir pedido inesperado.",
+        "incorrect": "Pressa ou promessa não justificam compartilhar dados ou abrir pedido inesperado.",
+        "hint": "Quem pode avaliar a mensagem com a criança?",
+        "errorFocus": "URGENCY_AND_PRIZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-13",
+      "statement": "Ao terminar uma atividade num dispositivo compartilhado, o que fazer conforme a orientação do adulto?",
+      "prompt": "Ao terminar uma atividade num dispositivo compartilhado, o que fazer conforme a orientação do adulto?",
+      "options": [
+        "Sair da conta de demonstração ou devolver o dispositivo preparado.",
+        "Deixar a conta aberta para qualquer pessoa.",
+        "Anotar senha real no dispositivo.",
+        "Abrir arquivos pessoais de outra turma."
+      ],
+      "correctAnswer": "Sair da conta de demonstração ou devolver o dispositivo preparado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Deixar a conta aberta para qualquer pessoa.": [
+          "SHARED_DEVICE_CARE"
+        ],
+        "Anotar senha real no dispositivo.": [
+          "SHARED_DEVICE_CARE"
+        ],
+        "Abrir arquivos pessoais de outra turma.": [
+          "SHARED_DEVICE_CARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PROTECT",
+      "contextFamily": "ACCOUNT_LOGOUT",
+      "explanation": "Encerrar a sessão autorizada e devolver o equipamento evita acesso indevido.",
+      "hint": "O que a turma combinou ao terminar?",
+      "errorFocus": "SHARED_DEVICE_CARE",
+      "feedback": {
+        "correct": "Boa observação: Encerrar a sessão autorizada e devolver o equipamento evita acesso indevido.",
+        "incorrect": "Encerrar a sessão autorizada e devolver o equipamento evita acesso indevido.",
+        "hint": "O que a turma combinou ao terminar?",
+        "errorFocus": "SHARED_DEVICE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-14",
+      "statement": "Um perfil desconhecido diz ser colega e pede para encontrar a personagem fora da escola. O que fazer?",
+      "prompt": "Um perfil desconhecido diz ser colega e pede para encontrar a personagem fora da escola. O que fazer?",
+      "options": [
+        "Ir sozinha para confirmar quem é.",
+        "Não combinar encontro nem compartilhar localização; contar a um adulto de confiança.",
+        "Enviar endereço e horário.",
+        "Manter segredo de todos os adultos."
+      ],
+      "correctAnswer": "Não combinar encontro nem compartilhar localização; contar a um adulto de confiança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ir sozinha para confirmar quem é.": [
+          "OFFLINE_SAFETY"
+        ],
+        "Enviar endereço e horário.": [
+          "OFFLINE_SAFETY"
+        ],
+        "Manter segredo de todos os adultos.": [
+          "OFFLINE_SAFETY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "UNKNOWN_FRIEND",
+      "explanation": "Convites de desconhecidos para encontro precisam de apoio adulto; a criança não deve ir sozinha.",
+      "hint": "Quem pode ajudar a decidir sobre esse convite?",
+      "errorFocus": "OFFLINE_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Convites de desconhecidos para encontro precisam de apoio adulto; a criança não deve ir sozinha.",
+        "incorrect": "Convites de desconhecidos para encontro precisam de apoio adulto; a criança não deve ir sozinha.",
+        "hint": "Quem pode ajudar a decidir sobre esse convite?",
+        "errorFocus": "OFFLINE_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-15",
+      "statement": "Um cartaz autorizado informa o nome de uma peça teatral escolar, mas não identifica crianças. O que isso exemplifica?",
+      "prompt": "Um cartaz autorizado informa o nome de uma peça teatral escolar, mas não identifica crianças. O que isso exemplifica?",
+      "options": [
+        "Que qualquer dado pessoal pode ser publicado.",
+        "Que autorização nunca importa.",
+        "Uma informação coletiva pode ser divulgada quando autorizada e apropriada.",
+        "Que senha é segura para um cartaz."
+      ],
+      "correctAnswer": "Uma informação coletiva pode ser divulgada quando autorizada e apropriada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que qualquer dado pessoal pode ser publicado.": [
+          "APPROVED_PUBLIC_INFO"
+        ],
+        "Que autorização nunca importa.": [
+          "APPROVED_PUBLIC_INFO"
+        ],
+        "Que senha é segura para um cartaz.": [
+          "APPROVED_PUBLIC_INFO"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CLASSROOM_POSTER",
+      "explanation": "Informação coletiva autorizada não é o mesmo que divulgar dados pessoais de estudantes.",
+      "hint": "A mensagem identifica uma criança ou divulga um evento aprovado?",
+      "errorFocus": "APPROVED_PUBLIC_INFO",
+      "feedback": {
+        "correct": "Boa observação: Informação coletiva autorizada não é o mesmo que divulgar dados pessoais de estudantes.",
+        "incorrect": "Informação coletiva autorizada não é o mesmo que divulgar dados pessoais de estudantes.",
+        "hint": "A mensagem identifica uma criança ou divulga um evento aprovado?",
+        "errorFocus": "APPROVED_PUBLIC_INFO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-16",
+      "statement": "Qual frase fictícia ajuda a criança a pedir apoio quando uma mensagem solicita dado privado?",
+      "prompt": "Qual frase fictícia ajuda a criança a pedir apoio quando uma mensagem solicita dado privado?",
+      "options": [
+        "“Vou guardar segredo e enviar agora.”",
+        "“Aqui está minha senha.”",
+        "“Não conte a ninguém que pedi ajuda.”",
+        "“Não sei se isso é seguro. Você pode olhar comigo?”"
+      ],
+      "correctAnswer": "“Não sei se isso é seguro. Você pode olhar comigo?”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Vou guardar segredo e enviar agora.”": [
+          "HELP_SEEKING_LANGUAGE"
+        ],
+        "“Aqui está minha senha.”": [
+          "HELP_SEEKING_LANGUAGE"
+        ],
+        "“Não conte a ninguém que pedi ajuda.”": [
+          "HELP_SEEKING_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "HELP_SCRIPT",
+      "explanation": "Uma frase direta procura apoio de um adulto sem expor o dado solicitado.",
+      "hint": "Como pedir que um adulto avalie a situação junto com você?",
+      "errorFocus": "HELP_SEEKING_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: Uma frase direta procura apoio de um adulto sem expor o dado solicitado.",
+        "incorrect": "Uma frase direta procura apoio de um adulto sem expor o dado solicitado.",
+        "hint": "Como pedir que um adulto avalie a situação junto com você?",
+        "errorFocus": "HELP_SEEKING_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-17",
+      "statement": "Uma atividade em grupo pede que cada participante escreva seu endereço para entrar no jogo. O que o grupo deve fazer?",
+      "prompt": "Uma atividade em grupo pede que cada participante escreva seu endereço para entrar no jogo. O que o grupo deve fazer?",
+      "options": [
+        "Parar e perguntar ao adulto se há um modo seguro sem endereços pessoais.",
+        "Escrever os endereços no mural.",
+        "Usar os endereços de casa como nomes de jogo.",
+        "Pedir que uma criança preencha os dados das outras."
+      ],
+      "correctAnswer": "Parar e perguntar ao adulto se há um modo seguro sem endereços pessoais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escrever os endereços no mural.": [
+          "DATA_MINIMIZATION"
+        ],
+        "Usar os endereços de casa como nomes de jogo.": [
+          "DATA_MINIMIZATION"
+        ],
+        "Pedir que uma criança preencha os dados das outras.": [
+          "DATA_MINIMIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_SHARED_GAME",
+      "explanation": "A atividade deve evitar dados pessoais desnecessários e ser revisada por um adulto.",
+      "hint": "O jogo precisa realmente de endereços residenciais?",
+      "errorFocus": "DATA_MINIMIZATION",
+      "feedback": {
+        "correct": "Boa observação: A atividade deve evitar dados pessoais desnecessários e ser revisada por um adulto.",
+        "incorrect": "A atividade deve evitar dados pessoais desnecessários e ser revisada por um adulto.",
+        "hint": "O jogo precisa realmente de endereços residenciais?",
+        "errorFocus": "DATA_MINIMIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-18",
+      "statement": "Uma tela fictícia diz “sua conta será apagada agora” e pede senha. Qual resposta protege a criança?",
+      "prompt": "Uma tela fictícia diz “sua conta será apagada agora” e pede senha. Qual resposta protege a criança?",
+      "options": [
+        "Digitar a senha para impedir a mensagem.",
+        "Não digitar a senha; parar e consultar o adulto responsável pela atividade.",
+        "Enviar a senha a um colega para conferir.",
+        "Publicar a mensagem com a senha."
+      ],
+      "correctAnswer": "Não digitar a senha; parar e consultar o adulto responsável pela atividade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Digitar a senha para impedir a mensagem.": [
+          "URGENT_CREDENTIAL_REQUEST"
+        ],
+        "Enviar a senha a um colega para conferir.": [
+          "URGENT_CREDENTIAL_REQUEST"
+        ],
+        "Publicar a mensagem com a senha.": [
+          "URGENT_CREDENTIAL_REQUEST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "NEW_URGENT_PASSWORD",
+      "explanation": "Uma mensagem urgente não deve levar a criança a revelar credenciais; o adulto pode verificar.",
+      "hint": "A pressa torna seguro informar uma senha?",
+      "errorFocus": "URGENT_CREDENTIAL_REQUEST",
+      "feedback": {
+        "correct": "Boa observação: Uma mensagem urgente não deve levar a criança a revelar credenciais; o adulto pode verificar.",
+        "incorrect": "Uma mensagem urgente não deve levar a criança a revelar credenciais; o adulto pode verificar.",
+        "hint": "A pressa torna seguro informar uma senha?",
+        "errorFocus": "URGENT_CREDENTIAL_REQUEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-19",
+      "statement": "A professora pede uma foto da maquete para um mural interno, mas uma criança não quer aparecer. Qual escolha respeita a segurança e a decisão?",
+      "prompt": "A professora pede uma foto da maquete para um mural interno, mas uma criança não quer aparecer. Qual escolha respeita a segurança e a decisão?",
+      "options": [
+        "Fotografar a criança escondida.",
+        "Publicar a foto contra a vontade dela.",
+        "Fotografar somente a maquete, sem a criança, ou escolher outra forma autorizada de registro.",
+        "Exigir uma conta pessoal para enviar a imagem."
+      ],
+      "correctAnswer": "Fotografar somente a maquete, sem a criança, ou escolher outra forma autorizada de registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fotografar a criança escondida.": [
+          "CONSENT_AND_SCOPE"
+        ],
+        "Publicar a foto contra a vontade dela.": [
+          "CONSENT_AND_SCOPE"
+        ],
+        "Exigir uma conta pessoal para enviar a imagem.": [
+          "CONSENT_AND_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_PHOTO_PERMISSION",
+      "explanation": "A necessidade de registrar o trabalho pode ser atendida sem incluir a pessoa que não deseja aparecer.",
+      "hint": "É possível mostrar o trabalho sem fotografar a criança?",
+      "errorFocus": "CONSENT_AND_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A necessidade de registrar o trabalho pode ser atendida sem incluir a pessoa que não deseja aparecer.",
+        "incorrect": "A necessidade de registrar o trabalho pode ser atendida sem incluir a pessoa que não deseja aparecer.",
+        "hint": "É possível mostrar o trabalho sem fotografar a criança?",
+        "errorFocus": "CONSENT_AND_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-20",
+      "statement": "Um jogo de sala pede instalar um arquivo não previsto. O que a criança deve fazer?",
+      "prompt": "Um jogo de sala pede instalar um arquivo não previsto. O que a criança deve fazer?",
+      "options": [
+        "Instalar para ver o que acontece.",
+        "Desativar proteções do dispositivo.",
+        "Enviar o arquivo para um desconhecido.",
+        "Não instalar e pedir ao adulto responsável para verificar."
+      ],
+      "correctAnswer": "Não instalar e pedir ao adulto responsável para verificar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Instalar para ver o que acontece.": [
+          "UNAPPROVED_INSTALL"
+        ],
+        "Desativar proteções do dispositivo.": [
+          "UNAPPROVED_INSTALL"
+        ],
+        "Enviar o arquivo para um desconhecido.": [
+          "UNAPPROVED_INSTALL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "NEW_UNKNOWN_DOWNLOAD",
+      "explanation": "Instalação inesperada deve ser avaliada por um adulto, não executada por impulso.",
+      "hint": "Quem autorizou a instalação?",
+      "errorFocus": "UNAPPROVED_INSTALL",
+      "feedback": {
+        "correct": "Boa observação: Instalação inesperada deve ser avaliada por um adulto, não executada por impulso.",
+        "incorrect": "Instalação inesperada deve ser avaliada por um adulto, não executada por impulso.",
+        "hint": "Quem autorizou a instalação?",
+        "errorFocus": "UNAPPROVED_INSTALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-21",
+      "statement": "Um perfil simulado está visível para qualquer pessoa e mostra escola e localização. Qual ação é adequada?",
+      "prompt": "Um perfil simulado está visível para qualquer pessoa e mostra escola e localização. Qual ação é adequada?",
+      "options": [
+        "Parar de compartilhar e pedir a um adulto para revisar as informações e configurações.",
+        "Adicionar endereço e telefone para completar o perfil.",
+        "Convidar desconhecidos para ver o local.",
+        "Manter tudo visível sem perguntar."
+      ],
+      "correctAnswer": "Parar de compartilhar e pedir a um adulto para revisar as informações e configurações.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adicionar endereço e telefone para completar o perfil.": [
+          "PUBLIC_PROFILE_RISK"
+        ],
+        "Convidar desconhecidos para ver o local.": [
+          "PUBLIC_PROFILE_RISK"
+        ],
+        "Manter tudo visível sem perguntar.": [
+          "PUBLIC_PROFILE_RISK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PROTECT",
+      "contextFamily": "NEW_PUBLIC_PROFILE",
+      "explanation": "Escola e localização podem identificar ou localizar a criança; um adulto ajuda a revisar o perfil.",
+      "hint": "Que informações devem ser protegidas nesse perfil?",
+      "errorFocus": "PUBLIC_PROFILE_RISK",
+      "feedback": {
+        "correct": "Boa observação: Escola e localização podem identificar ou localizar a criança; um adulto ajuda a revisar o perfil.",
+        "incorrect": "Escola e localização podem identificar ou localizar a criança; um adulto ajuda a revisar o perfil.",
+        "hint": "Que informações devem ser protegidas nesse perfil?",
+        "errorFocus": "PUBLIC_PROFILE_RISK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-22",
+      "statement": "Uma mensagem parece simpática, mas pede segredo e uma foto pessoal. O que importa para decidir?",
+      "prompt": "Uma mensagem parece simpática, mas pede segredo e uma foto pessoal. O que importa para decidir?",
+      "options": [
+        "Somente o tom amigável da mensagem.",
+        "O tipo de informação solicitada e o pedido de segredo; a criança deve parar e falar com um adulto.",
+        "A quantidade de emojis.",
+        "A promessa de que ninguém vai descobrir."
+      ],
+      "correctAnswer": "O tipo de informação solicitada e o pedido de segredo; a criança deve parar e falar com um adulto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente o tom amigável da mensagem.": [
+          "FRIENDLY_TONE_NOT_PROOF"
+        ],
+        "A quantidade de emojis.": [
+          "FRIENDLY_TONE_NOT_PROOF"
+        ],
+        "A promessa de que ninguém vai descobrir.": [
+          "FRIENDLY_TONE_NOT_PROOF"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NEW_FRIENDLY_REQUEST",
+      "explanation": "A aparência amigável não torna seguro um pedido de imagem ou segredo.",
+      "hint": "Que dado está sendo solicitado, além do tom da mensagem?",
+      "errorFocus": "FRIENDLY_TONE_NOT_PROOF",
+      "feedback": {
+        "correct": "Boa observação: A aparência amigável não torna seguro um pedido de imagem ou segredo.",
+        "incorrect": "A aparência amigável não torna seguro um pedido de imagem ou segredo.",
+        "hint": "Que dado está sendo solicitado, além do tom da mensagem?",
+        "errorFocus": "FRIENDLY_TONE_NOT_PROOF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-23",
+      "statement": "Uma personagem já enviou uma informação pessoal e agora está preocupada. O que deve acontecer?",
+      "prompt": "Uma personagem já enviou uma informação pessoal e agora está preocupada. O que deve acontecer?",
+      "options": [
+        "Esconder o ocorrido para sempre.",
+        "Enviar mais dados para corrigir.",
+        "Contar a um adulto de confiança imediatamente e pedir ajuda, sem culpa.",
+        "Culpar a personagem por não saber tudo."
+      ],
+      "correctAnswer": "Contar a um adulto de confiança imediatamente e pedir ajuda, sem culpa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Esconder o ocorrido para sempre.": [
+          "AFTER_DISCLOSURE_SUPPORT"
+        ],
+        "Enviar mais dados para corrigir.": [
+          "AFTER_DISCLOSURE_SUPPORT"
+        ],
+        "Culpar a personagem por não saber tudo.": [
+          "AFTER_DISCLOSURE_SUPPORT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "NEW_ALREADY_SHARED",
+      "explanation": "Pedir ajuda rapidamente permite que um adulto avalie os próximos passos; a criança não deve ser culpada.",
+      "hint": "Qual adulto pode apoiar a personagem agora?",
+      "errorFocus": "AFTER_DISCLOSURE_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Pedir ajuda rapidamente permite que um adulto avalie os próximos passos; a criança não deve ser culpada.",
+        "incorrect": "Pedir ajuda rapidamente permite que um adulto avalie os próximos passos; a criança não deve ser culpada.",
+        "hint": "Qual adulto pode apoiar a personagem agora?",
+        "errorFocus": "AFTER_DISCLOSURE_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-24",
+      "statement": "Uma criança não sabe se um pedido é seguro e seu responsável habitual não está por perto. Qual é uma opção?",
+      "prompt": "Uma criança não sabe se um pedido é seguro e seu responsável habitual não está por perto. Qual é uma opção?",
+      "options": [
+        "Responder ao desconhecido para ganhar tempo.",
+        "Compartilhar a senha com um colega.",
+        "Marcar encontro sem contar a ninguém.",
+        "Procurar outro adulto de confiança indicado pela família ou pela escola."
+      ],
+      "correctAnswer": "Procurar outro adulto de confiança indicado pela família ou pela escola.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Responder ao desconhecido para ganhar tempo.": [
+          "ALTERNATE_HELP_SEEKING"
+        ],
+        "Compartilhar a senha com um colega.": [
+          "ALTERNATE_HELP_SEEKING"
+        ],
+        "Marcar encontro sem contar a ninguém.": [
+          "ALTERNATE_HELP_SEEKING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "NEW_TRUSTED_ADULT",
+      "explanation": "Uma rede de adultos de confiança oferece apoio quando a primeira pessoa não está disponível.",
+      "hint": "Quem mais, na escola ou em casa, pode ajudar?",
+      "errorFocus": "ALTERNATE_HELP_SEEKING",
+      "feedback": {
+        "correct": "Boa observação: Uma rede de adultos de confiança oferece apoio quando a primeira pessoa não está disponível.",
+        "incorrect": "Uma rede de adultos de confiança oferece apoio quando a primeira pessoa não está disponível.",
+        "hint": "Quem mais, na escola ou em casa, pode ajudar?",
+        "errorFocus": "ALTERNATE_HELP_SEEKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-25",
+      "statement": "Por que endereço e senha exigem cuidado?",
+      "prompt": "Por que endereço e senha exigem cuidado?",
+      "options": [
+        "Porque podem identificar, localizar ou permitir acesso às informações de uma pessoa.",
+        "Porque são dados sem qualquer significado.",
+        "Porque toda informação escolar é pública.",
+        "Porque uma senha deve ser compartilhada com amigos."
+      ],
+      "correctAnswer": "Porque podem identificar, localizar ou permitir acesso às informações de uma pessoa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque são dados sem qualquer significado.": [
+          "DATA_RISK"
+        ],
+        "Porque toda informação escolar é pública.": [
+          "DATA_RISK"
+        ],
+        "Porque uma senha deve ser compartilhada com amigos.": [
+          "DATA_RISK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_PRIVATE_DATA",
+      "explanation": "Dados de localização e credenciais podem afetar privacidade e segurança.",
+      "hint": "O que alguém poderia descobrir ou acessar com esses dados?",
+      "errorFocus": "DATA_RISK",
+      "feedback": {
+        "correct": "Boa observação: Dados de localização e credenciais podem afetar privacidade e segurança.",
+        "incorrect": "Dados de localização e credenciais podem afetar privacidade e segurança.",
+        "hint": "O que alguém poderia descobrir ou acessar com esses dados?",
+        "errorFocus": "DATA_RISK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-26",
+      "statement": "Qual sequência ajuda diante de uma solicitação inesperada de informação pessoal?",
+      "prompt": "Qual sequência ajuda diante de uma solicitação inesperada de informação pessoal?",
+      "options": [
+        "Clicar, digitar dados e só depois perguntar.",
+        "Parar, não compartilhar e pedir ajuda a um adulto de confiança.",
+        "Enviar a mensagem a todos os colegas.",
+        "Esconder o pedido e continuar a conversa."
+      ],
+      "correctAnswer": "Parar, não compartilhar e pedir ajuda a um adulto de confiança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Clicar, digitar dados e só depois perguntar.": [
+          "SAFE_RESPONSE_SEQUENCE"
+        ],
+        "Enviar a mensagem a todos os colegas.": [
+          "SAFE_RESPONSE_SEQUENCE"
+        ],
+        "Esconder o pedido e continuar a conversa.": [
+          "SAFE_RESPONSE_SEQUENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "LOCKIN_PAUSE",
+      "explanation": "A pausa evita uma ação impulsiva enquanto o adulto avalia a situação.",
+      "hint": "O que fazer antes de responder?",
+      "errorFocus": "SAFE_RESPONSE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A pausa evita uma ação impulsiva enquanto o adulto avalia a situação.",
+        "incorrect": "A pausa evita uma ação impulsiva enquanto o adulto avalia a situação.",
+        "hint": "O que fazer antes de responder?",
+        "errorFocus": "SAFE_RESPONSE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-27",
+      "statement": "Uma mensagem promete um prêmio se a senha for enviada em um minuto. O que a urgência muda?",
+      "prompt": "Uma mensagem promete um prêmio se a senha for enviada em um minuto. O que a urgência muda?",
+      "options": [
+        "Torna o pedido automaticamente confiável.",
+        "Autoriza divulgar credenciais.",
+        "Nada: ainda é preciso proteger a senha e pedir ajuda.",
+        "Significa que a criança deve responder sozinha."
+      ],
+      "correctAnswer": "Nada: ainda é preciso proteger a senha e pedir ajuda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Torna o pedido automaticamente confiável.": [
+          "URGENCY_NOT_AUTHORIZATION"
+        ],
+        "Autoriza divulgar credenciais.": [
+          "URGENCY_NOT_AUTHORIZATION"
+        ],
+        "Significa que a criança deve responder sozinha.": [
+          "URGENCY_NOT_AUTHORIZATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCKIN_URGENCY",
+      "explanation": "Pressão de tempo ou prêmio não tornam seguro compartilhar uma senha.",
+      "hint": "A regra de proteção muda por causa do relógio?",
+      "errorFocus": "URGENCY_NOT_AUTHORIZATION",
+      "feedback": {
+        "correct": "Boa observação: Pressão de tempo ou prêmio não tornam seguro compartilhar uma senha.",
+        "incorrect": "Pressão de tempo ou prêmio não tornam seguro compartilhar uma senha.",
+        "hint": "A regra de proteção muda por causa do relógio?",
+        "errorFocus": "URGENCY_NOT_AUTHORIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-28",
+      "statement": "Uma informação pode ser usada em uma atividade escolar interna. Isso autoriza publicá-la numa rede aberta?",
+      "prompt": "Uma informação pode ser usada em uma atividade escolar interna. Isso autoriza publicá-la numa rede aberta?",
+      "options": [
+        "Sim, qualquer uso permite todos os outros.",
+        "Sim, se alguém pedir com urgência.",
+        "Não; mas a senha pode ser publicada.",
+        "Não; autorização depende do propósito, do público e das regras de proteção."
+      ],
+      "correctAnswer": "Não; autorização depende do propósito, do público e das regras de proteção.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, qualquer uso permite todos os outros.": [
+          "PURPOSE_LIMIT"
+        ],
+        "Sim, se alguém pedir com urgência.": [
+          "PURPOSE_LIMIT"
+        ],
+        "Não; mas a senha pode ser publicada.": [
+          "PURPOSE_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_PERMISSION",
+      "explanation": "Permissão num contexto não é autorização irrestrita para novos usos ou públicos.",
+      "hint": "Quem autorizou e para qual finalidade?",
+      "errorFocus": "PURPOSE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Permissão num contexto não é autorização irrestrita para novos usos ou públicos.",
+        "incorrect": "Permissão num contexto não é autorização irrestrita para novos usos ou públicos.",
+        "hint": "Quem autorizou e para qual finalidade?",
+        "errorFocus": "PURPOSE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-29",
+      "statement": "A criança clicou numa mensagem antes de perceber o risco. Qual é a resposta adequada?",
+      "prompt": "A criança clicou numa mensagem antes de perceber o risco. Qual é a resposta adequada?",
+      "options": [
+        "Contar a um adulto de confiança e seguir as orientações sem culpar a criança.",
+        "Esconder o ocorrido e continuar clicando.",
+        "Expor a criança diante da turma.",
+        "Enviar dados adicionais para resolver sozinha."
+      ],
+      "correctAnswer": "Contar a um adulto de confiança e seguir as orientações sem culpar a criança.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Esconder o ocorrido e continuar clicando.": [
+          "SUPPORT_NOT_BLAME"
+        ],
+        "Expor a criança diante da turma.": [
+          "SUPPORT_NOT_BLAME"
+        ],
+        "Enviar dados adicionais para resolver sozinha.": [
+          "SUPPORT_NOT_BLAME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "LOCKIN_NO_BLAME",
+      "explanation": "Apoio rápido e sem culpa ajuda a proteger a criança e a conta.",
+      "hint": "Qual é o próximo passo seguro?",
+      "errorFocus": "SUPPORT_NOT_BLAME",
+      "feedback": {
+        "correct": "Boa observação: Apoio rápido e sem culpa ajuda a proteger a criança e a conta.",
+        "incorrect": "Apoio rápido e sem culpa ajuda a proteger a criança e a conta.",
+        "hint": "Qual é o próximo passo seguro?",
+        "errorFocus": "SUPPORT_NOT_BLAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-30",
+      "statement": "Qual prática combina proteção de dados e uso responsável de tecnologia?",
+      "prompt": "Qual prática combina proteção de dados e uso responsável de tecnologia?",
+      "options": [
+        "Compartilhar senha para entrar mais rápido.",
+        "Usar atividade autorizada, proteger informações pessoais e pedir ajuda diante de pedidos inesperados.",
+        "Publicar localização em tempo real.",
+        "Instalar qualquer arquivo sem orientação."
+      ],
+      "correctAnswer": "Usar atividade autorizada, proteger informações pessoais e pedir ajuda diante de pedidos inesperados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Compartilhar senha para entrar mais rápido.": [
+          "SAFE_USE_SYNTHESIS"
+        ],
+        "Publicar localização em tempo real.": [
+          "SAFE_USE_SYNTHESIS"
+        ],
+        "Instalar qualquer arquivo sem orientação.": [
+          "SAFE_USE_SYNTHESIS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCKIN_SAFE_USE",
+      "explanation": "Uso seguro combina autorização, cuidado com dados e apoio quando há dúvida.",
+      "hint": "Reúna as regras principais desta trilha.",
+      "errorFocus": "SAFE_USE_SYNTHESIS",
+      "feedback": {
+        "correct": "Boa observação: Uso seguro combina autorização, cuidado com dados e apoio quando há dúvida.",
+        "incorrect": "Uso seguro combina autorização, cuidado com dados e apoio quando há dúvida.",
+        "hint": "Reúna as regras principais desta trilha.",
+        "errorFocus": "SAFE_USE_SYNTHESIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-31",
+      "statement": "Qual opção é um dado pessoal?",
+      "prompt": "Qual opção é um dado pessoal?",
+      "options": [
+        "Uma forma geométrica genérica.",
+        "O título público de um livro.",
+        "Endereço residencial.",
+        "A cor de um cartaz sem nome associado."
+      ],
+      "correctAnswer": "Endereço residencial.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma forma geométrica genérica.": [
+          "PERSONAL_DATA_REVIEW"
+        ],
+        "O título público de um livro.": [
+          "PERSONAL_DATA_REVIEW"
+        ],
+        "A cor de um cartaz sem nome associado.": [
+          "PERSONAL_DATA_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_PERSONAL_DATA",
+      "explanation": "Endereço pode indicar onde uma pessoa mora.",
+      "hint": "Qual item ajuda a localizar alguém?",
+      "errorFocus": "PERSONAL_DATA_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Endereço pode indicar onde uma pessoa mora.",
+        "incorrect": "Endereço pode indicar onde uma pessoa mora.",
+        "hint": "Qual item ajuda a localizar alguém?",
+        "errorFocus": "PERSONAL_DATA_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-32",
+      "statement": "O que fazer com a senha de uma conta?",
+      "prompt": "O que fazer com a senha de uma conta?",
+      "options": [
+        "Publicá-la para receber um prêmio.",
+        "Anotá-la num cartaz aberto.",
+        "Enviar para um perfil desconhecido.",
+        "Mantê-la privada e não enviá-la a pessoas ou mensagens inesperadas."
+      ],
+      "correctAnswer": "Mantê-la privada e não enviá-la a pessoas ou mensagens inesperadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Publicá-la para receber um prêmio.": [
+          "CREDENTIAL_REVIEW"
+        ],
+        "Anotá-la num cartaz aberto.": [
+          "CREDENTIAL_REVIEW"
+        ],
+        "Enviar para um perfil desconhecido.": [
+          "CREDENTIAL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "PROTECT",
+      "contextFamily": "REVIEW_PASSWORD",
+      "explanation": "Senha protege acesso e não deve ser compartilhada em pedidos inesperados.",
+      "hint": "Essa informação deve ficar pública?",
+      "errorFocus": "CREDENTIAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Senha protege acesso e não deve ser compartilhada em pedidos inesperados.",
+        "incorrect": "Senha protege acesso e não deve ser compartilhada em pedidos inesperados.",
+        "hint": "Essa informação deve ficar pública?",
+        "errorFocus": "CREDENTIAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-33",
+      "statement": "Aparece um pedido inesperado de foto durante um jogo. Quem pode ajudar a avaliar?",
+      "prompt": "Aparece um pedido inesperado de foto durante um jogo. Quem pode ajudar a avaliar?",
+      "options": [
+        "Um adulto de confiança.",
+        "Um perfil desconhecido que pediu a foto.",
+        "Uma pessoa que exige segredo.",
+        "Ninguém; a criança precisa resolver sozinha."
+      ],
+      "correctAnswer": "Um adulto de confiança.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um perfil desconhecido que pediu a foto.": [
+          "TRUSTED_HELP_REVIEW"
+        ],
+        "Uma pessoa que exige segredo.": [
+          "TRUSTED_HELP_REVIEW"
+        ],
+        "Ninguém; a criança precisa resolver sozinha.": [
+          "TRUSTED_HELP_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "REVIEW_ADULT",
+      "explanation": "Adultos de confiança podem orientar quando pedidos ou conteúdos causam dúvida.",
+      "hint": "Quem acompanha e protege a criança?",
+      "errorFocus": "TRUSTED_HELP_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Adultos de confiança podem orientar quando pedidos ou conteúdos causam dúvida.",
+        "incorrect": "Adultos de confiança podem orientar quando pedidos ou conteúdos causam dúvida.",
+        "hint": "Quem acompanha e protege a criança?",
+        "errorFocus": "TRUSTED_HELP_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-34",
+      "statement": "Qual opção pode ser divulgada em um mural aprovado pela escola?",
+      "prompt": "Qual opção pode ser divulgada em um mural aprovado pela escola?",
+      "options": [
+        "Endereço de casa de um estudante.",
+        "Um convite escolar fictício autorizado, sem dados pessoais de crianças.",
+        "Senha de tablet.",
+        "Localização atual de uma criança."
+      ],
+      "correctAnswer": "Um convite escolar fictício autorizado, sem dados pessoais de crianças.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Endereço de casa de um estudante.": [
+          "PUBLIC_PRIVATE_REVIEW"
+        ],
+        "Senha de tablet.": [
+          "PUBLIC_PRIVATE_REVIEW"
+        ],
+        "Localização atual de uma criança.": [
+          "PUBLIC_PRIVATE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_PUBLIC_PRIVATE",
+      "explanation": "Um aviso coletivo autorizado pode ser público; os demais são dados privados.",
+      "hint": "Qual mensagem foi autorizada e não identifica uma criança?",
+      "errorFocus": "PUBLIC_PRIVATE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um aviso coletivo autorizado pode ser público; os demais são dados privados.",
+        "incorrect": "Um aviso coletivo autorizado pode ser público; os demais são dados privados.",
+        "hint": "Qual mensagem foi autorizada e não identifica uma criança?",
+        "errorFocus": "PUBLIC_PRIVATE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-35",
+      "statement": "Uma mensagem desconhecida pede para clicar num link e digitar o nome completo. O que fazer?",
+      "prompt": "Uma mensagem desconhecida pede para clicar num link e digitar o nome completo. O que fazer?",
+      "options": [
+        "Clicar antes de a mensagem desaparecer.",
+        "Digitar dados para descobrir a finalidade.",
+        "Não clicar nem informar o nome; mostrar a mensagem a um adulto.",
+        "Encaminhar o link a colegas."
+      ],
+      "correctAnswer": "Não clicar nem informar o nome; mostrar a mensagem a um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Clicar antes de a mensagem desaparecer.": [
+          "UNKNOWN_LINK_REVIEW"
+        ],
+        "Digitar dados para descobrir a finalidade.": [
+          "UNKNOWN_LINK_REVIEW"
+        ],
+        "Encaminhar o link a colegas.": [
+          "UNKNOWN_LINK_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECIDE",
+      "contextFamily": "REVIEW_STRANGE_LINK",
+      "explanation": "Parar e procurar apoio evita responder a uma solicitação inesperada.",
+      "hint": "A criança precisa abrir o link para pedir ajuda?",
+      "errorFocus": "UNKNOWN_LINK_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Parar e procurar apoio evita responder a uma solicitação inesperada.",
+        "incorrect": "Parar e procurar apoio evita responder a uma solicitação inesperada.",
+        "hint": "A criança precisa abrir o link para pedir ajuda?",
+        "errorFocus": "UNKNOWN_LINK_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-36",
+      "statement": "Como usar com cuidado um dispositivo compartilhado da escola?",
+      "prompt": "Como usar com cuidado um dispositivo compartilhado da escola?",
+      "options": [
+        "Abrir os arquivos pessoais de outra pessoa.",
+        "Deixar a conta aberta para todos.",
+        "Instalar aplicativos sem pedir.",
+        "Seguir as regras, usar a atividade autorizada e sair da sessão conforme orientação."
+      ],
+      "correctAnswer": "Seguir as regras, usar a atividade autorizada e sair da sessão conforme orientação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Abrir os arquivos pessoais de outra pessoa.": [
+          "SHARED_DEVICE_REVIEW"
+        ],
+        "Deixar a conta aberta para todos.": [
+          "SHARED_DEVICE_REVIEW"
+        ],
+        "Instalar aplicativos sem pedir.": [
+          "SHARED_DEVICE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PROTECT",
+      "contextFamily": "REVIEW_SHARED_DEVICE",
+      "explanation": "Regras de uso protegem dados e dispositivos compartilhados.",
+      "hint": "Que instrução vale ao terminar a atividade?",
+      "errorFocus": "SHARED_DEVICE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Regras de uso protegem dados e dispositivos compartilhados.",
+        "incorrect": "Regras de uso protegem dados e dispositivos compartilhados.",
+        "hint": "Que instrução vale ao terminar a atividade?",
+        "errorFocus": "SHARED_DEVICE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-37",
+      "statement": "Uma conversa online simulada deixa a personagem desconfortável. O que ela pode fazer?",
+      "prompt": "Uma conversa online simulada deixa a personagem desconfortável. O que ela pode fazer?",
+      "options": [
+        "Parar a conversa e contar a um adulto de confiança.",
+        "Continuar para não parecer mal-educada.",
+        "Enviar endereço para agradar.",
+        "Guardar segredo mesmo com medo."
+      ],
+      "correctAnswer": "Parar a conversa e contar a um adulto de confiança.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Continuar para não parecer mal-educada.": [
+          "DISCOMFORT_REVIEW"
+        ],
+        "Enviar endereço para agradar.": [
+          "DISCOMFORT_REVIEW"
+        ],
+        "Guardar segredo mesmo com medo.": [
+          "DISCOMFORT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEEK_HELP",
+      "contextFamily": "REVIEW_UNCOMFORTABLE",
+      "explanation": "Desconforto é motivo suficiente para parar e pedir apoio.",
+      "hint": "A personagem pode interromper a conversa?",
+      "errorFocus": "DISCOMFORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Desconforto é motivo suficiente para parar e pedir apoio.",
+        "incorrect": "Desconforto é motivo suficiente para parar e pedir apoio.",
+        "hint": "A personagem pode interromper a conversa?",
+        "errorFocus": "DISCOMFORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-38",
+      "statement": "Um perfil usa palavras amigáveis, mas pede a localização da criança e que ela não conte a ninguém. O que observar?",
+      "prompt": "Um perfil usa palavras amigáveis, mas pede a localização da criança e que ela não conte a ninguém. O que observar?",
+      "options": [
+        "Somente os emojis simpáticos.",
+        "O pedido de localização e segredo é preocupante mesmo com tom amigável.",
+        "A cor do perfil.",
+        "A promessa de amizade como prova de segurança."
+      ],
+      "correctAnswer": "O pedido de localização e segredo é preocupante mesmo com tom amigável.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente os emojis simpáticos.": [
+          "TONE_VS_REQUEST_REVIEW"
+        ],
+        "A cor do perfil.": [
+          "TONE_VS_REQUEST_REVIEW"
+        ],
+        "A promessa de amizade como prova de segurança.": [
+          "TONE_VS_REQUEST_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVIEW_FRIENDLY",
+      "explanation": "A solicitação e o segredo são sinais de risco que precisam de avaliação adulta.",
+      "hint": "Além do tom, que informação foi pedida?",
+      "errorFocus": "TONE_VS_REQUEST_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A solicitação e o segredo são sinais de risco que precisam de avaliação adulta.",
+        "incorrect": "A solicitação e o segredo são sinais de risco que precisam de avaliação adulta.",
+        "hint": "Além do tom, que informação foi pedida?",
+        "errorFocus": "TONE_VS_REQUEST_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-39",
+      "statement": "Uma criança enviou um dado pessoal numa atividade simulada e ficou preocupada. O que fazer?",
+      "prompt": "Uma criança enviou um dado pessoal numa atividade simulada e ficou preocupada. O que fazer?",
+      "options": [
+        "Enviar ainda mais dados.",
+        "Esconder o ocorrido de todos.",
+        "Procurar um adulto de confiança e contar o que ocorreu, sem culpa.",
+        "Publicar a situação para a turma rir."
+      ],
+      "correctAnswer": "Procurar um adulto de confiança e contar o que ocorreu, sem culpa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Enviar ainda mais dados.": [
+          "RECOVERY_SUPPORT_REVIEW"
+        ],
+        "Esconder o ocorrido de todos.": [
+          "RECOVERY_SUPPORT_REVIEW"
+        ],
+        "Publicar a situação para a turma rir.": [
+          "RECOVERY_SUPPORT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "REVIEW_ALREADY_SENT",
+      "explanation": "Um adulto pode ajudar com os próximos passos; a criança deve receber apoio, não culpa.",
+      "hint": "Quem pode ajudar agora?",
+      "errorFocus": "RECOVERY_SUPPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um adulto pode ajudar com os próximos passos; a criança deve receber apoio, não culpa.",
+        "incorrect": "Um adulto pode ajudar com os próximos passos; a criança deve receber apoio, não culpa.",
+        "hint": "Quem pode ajudar agora?",
+        "errorFocus": "RECOVERY_SUPPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-personal-data-safety-fi-40",
+      "statement": "Qual é um padrão seguro para usar tecnologia diante de uma situação desconhecida?",
+      "prompt": "Qual é um padrão seguro para usar tecnologia diante de uma situação desconhecida?",
+      "options": [
+        "Responder com senha e endereço.",
+        "Clicar primeiro e perguntar depois.",
+        "Manter segredo mesmo com desconforto.",
+        "Pausar, proteger dados pessoais e pedir orientação a um adulto de confiança."
+      ],
+      "correctAnswer": "Pausar, proteger dados pessoais e pedir orientação a um adulto de confiança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Responder com senha e endereço.": [
+          "SAFE_PATTERN_REVIEW"
+        ],
+        "Clicar primeiro e perguntar depois.": [
+          "SAFE_PATTERN_REVIEW"
+        ],
+        "Manter segredo mesmo com desconforto.": [
+          "SAFE_PATTERN_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_SAFE_PATTERN",
+      "explanation": "Pausa, privacidade e apoio adulto compõem uma resposta segura adequada à idade.",
+      "hint": "Quais três ações ajudam a manter a segurança?",
+      "errorFocus": "SAFE_PATTERN_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Pausa, privacidade e apoio adulto compõem uma resposta segura adequada à idade.",
+        "incorrect": "Pausa, privacidade e apoio adulto compõem uma resposta segura adequada à idade.",
+        "hint": "Quais três ações ajudam a manter a segurança?",
+        "errorFocus": "SAFE_PATTERN_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar histórias e cartões fictícios; não solicitar que crianças revelem dados ou experiências pessoais.",
+          "Apresentar as opções por texto simples, imagens descritas, dramatização consentida ou comunicação alternativa.",
+          "Identificar adultos de confiança por função ou imagem combinada, sem publicar contatos pessoais.",
+          "Permitir pausa, saída da atividade e conversa privada com adulto, sem exposição ou culpa."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

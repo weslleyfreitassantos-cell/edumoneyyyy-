@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-labelledby="title desc">
+  <title id="title">A mesma distancia em mapas com escalas diferentes</title>
+  <desc id="desc">O mapa A usa escala 1 para 25 mil e mostra o trecho de 1 quilometro como 4 centimetros. O mapa B usa escala 1 para 50 mil e mostra o mesmo trecho como 2 centimetros.</desc>
+  <rect width="640" height="220" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <rect x="28" y="28" width="278" height="164" rx="10" fill="#fff" stroke="#9bb4c8"/>
+    <rect x="334" y="28" width="278" height="164" rx="10" fill="#fff" stroke="#9bb4c8"/>
+    <text x="48" y="58" font-size="19" font-weight="700">Mapa A · 1:25 000</text>
+    <text x="354" y="58" font-size="19" font-weight="700">Mapa B · 1:50 000</text>
+    <path d="M60 108h220" stroke="#176b87" stroke-width="8" stroke-linecap="round"/>
+    <path d="M364 108h110" stroke="#176b87" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="60" cy="108" r="8" fill="#b4472e"/><circle cx="280" cy="108" r="8" fill="#b4472e"/>
+    <circle cx="364" cy="108" r="8" fill="#b4472e"/><circle cx="474" cy="108" r="8" fill="#b4472e"/>
+    <text x="170" y="144" text-anchor="middle" font-size="17">4 cm</text>
+    <text x="419" y="144" text-anchor="middle" font-size="17">2 cm</text>
+    <text x="170" y="174" text-anchor="middle" font-size="16" font-weight="700">1 km no terreno</text>
+    <text x="474" y="174" text-anchor="middle" font-size="16" font-weight="700">1 km no terreno</text>
+  </g>
+</svg>

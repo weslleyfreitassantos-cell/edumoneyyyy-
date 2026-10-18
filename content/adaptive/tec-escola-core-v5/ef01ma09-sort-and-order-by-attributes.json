@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma09-sort-objects-by-attributes",
+  "canonicalSkillCode": "AUTHORING_EF01MA09_SORT_OBJECTS_BY_ATTRIBUTES",
+  "subject": "MATHEMATICS",
+  "domain": "ÁLGEBRA",
+  "topic": "organização e ordenação por atributos como cor, forma e medida",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA09",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Organizar e ordenar objetos familiares ou representações por figuras, por meio de atributos, tais como cor, forma e medida.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Agrupar e ordenar por uma característica",
+    "objective": "Organizar e ordenar objetos familiares ou imagens de acordo com atributos definidos, como cor, forma, comprimento ou altura, explicando o critério usado.",
+    "summary": "Objetos podem ser agrupados por uma característica comum, como forma ou cor, e ordenados por uma medida, como do menor para o maior. O critério precisa estar claro para que outra pessoa entenda a organização. Um mesmo conjunto pode ser organizado de mais de uma maneira, dependendo do atributo escolhido. Comparar medidas pode usar unidades não padronizadas, como blocos iguais, quando todos usam o mesmo instrumento. Agrupar não significa classificar objetos como melhores ou piores; representa apenas uma característica escolhida para a tarefa.",
+    "explanation": "Escolha um atributo e observe cada objeto. Se o critério é forma, reúna círculos com círculos e quadrados com quadrados. Se é comprimento, alinhe os objetos pelo mesmo ponto inicial e ordene do mais curto ao mais comprido. Se a medida for comparada com blocos, use blocos iguais e conte quantos cobrem cada objeto. Diga o critério em voz alta ou registre-o com um cartão. Se mudar de atributo, a organização também pode mudar sem que uma esteja errada.",
+    "workedExample": "Quatro tiras de papel têm comprimentos diferentes. Alinhando uma ponta de cada tira, podemos ordená-las da mais curta à mais comprida. Se depois usarmos a cor como critério, os grupos podem ficar diferentes; cada organização responde a uma pergunta distinta.",
+    "commonMistake": "Ordenar comprimentos sem alinhar uma extremidade ou misturar critérios sem dizer qual característica orienta os grupos.",
+    "priorKnowledge": [
+      "Observar características visíveis de objetos e figuras.",
+      "Comparar quantidades ou tamanhos com apoio de materiais."
+    ],
+    "keyConcepts": [
+      "atributo",
+      "critério",
+      "agrupar",
+      "ordenar",
+      "cor",
+      "forma",
+      "medida",
+      "comparação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "DECLARE_SORTING_CRITERION",
+        "action": "Nomeie uma característica antes de organizar e confira se cada objeto atende ao critério."
+      },
+      {
+        "errorFocus": "ALIGN_FOR_LENGTH_COMPARISON",
+        "action": "Alinhe as extremidades e compare usando a mesma unidade ou instrumento."
+      },
+      {
+        "errorFocus": "SEPARATE_ATTRIBUTE_FROM_VALUE_JUDGMENT",
+        "action": "Descreva diferenças como características, sem transformar grupos em julgamentos de valor."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+      "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+      "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma09-attribute-sorting-station",
+        "title": "Estação de atributos",
+        "instructions": "Uma coleção de objetos e figuras pode ser organizada por cor, forma ou medida conforme cartões de critério.\n1. Escolha um cartão com o critério.\n2. Agrupe ou ordene os elementos conforme a característica.\n3. Explique o critério e confira cada posição.",
+        "steps": [
+          "Escolha um cartão com o critério.",
+          "Agrupe ou ordene os elementos conforme a característica.",
+          "Explique o critério e confira cada posição."
+        ],
+        "evidence": "Coleção organizada com critério nomeado e justificativa observável.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma característica com apoio.",
+            "developing": "agrupa por um critério.",
+            "proficient": "ordena ou agrupa e explica a característica escolhida."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma09-length-order-gallery",
+        "title": "Galeria do mais curto ao mais comprido",
+        "instructions": "Tiras de papel fictícias são comparadas com as pontas alinhadas e blocos de mesma medida.\n1. Alinhe uma extremidade das tiras.\n2. Compare os comprimentos ou conte unidades iguais.\n3. Organize em ordem e descreva o critério.",
+        "steps": [
+          "Alinhe uma extremidade das tiras.",
+          "Compare os comprimentos ou conte unidades iguais.",
+          "Organize em ordem e descreva o critério."
+        ],
+        "evidence": "Sequência ordenada com registro da medida comparada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma tira.",
+            "developing": "compara duas medidas.",
+            "proficient": "ordena o conjunto usando alinhamento e critério consistente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma09-sort-objects-by-attributes-01",
+          "v1-ef01ma09-sort-objects-by-attributes-02",
+          "v1-ef01ma09-sort-objects-by-attributes-03",
+          "v1-ef01ma09-sort-objects-by-attributes-04",
+          "v1-ef01ma09-sort-objects-by-attributes-05",
+          "v1-ef01ma09-sort-objects-by-attributes-06",
+          "v1-ef01ma09-sort-objects-by-attributes-07",
+          "v1-ef01ma09-sort-objects-by-attributes-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma09-sort-objects-by-attributes-09",
+          "v1-ef01ma09-sort-objects-by-attributes-10",
+          "v1-ef01ma09-sort-objects-by-attributes-11",
+          "v1-ef01ma09-sort-objects-by-attributes-12",
+          "v1-ef01ma09-sort-objects-by-attributes-13",
+          "v1-ef01ma09-sort-objects-by-attributes-14",
+          "v1-ef01ma09-sort-objects-by-attributes-15",
+          "v1-ef01ma09-sort-objects-by-attributes-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma09-sort-objects-by-attributes-17",
+          "v1-ef01ma09-sort-objects-by-attributes-18",
+          "v1-ef01ma09-sort-objects-by-attributes-19",
+          "v1-ef01ma09-sort-objects-by-attributes-20",
+          "v1-ef01ma09-sort-objects-by-attributes-21",
+          "v1-ef01ma09-sort-objects-by-attributes-22",
+          "v1-ef01ma09-sort-objects-by-attributes-23",
+          "v1-ef01ma09-sort-objects-by-attributes-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma09-sort-objects-by-attributes-25",
+          "v1-ef01ma09-sort-objects-by-attributes-26",
+          "v1-ef01ma09-sort-objects-by-attributes-27",
+          "v1-ef01ma09-sort-objects-by-attributes-28",
+          "v1-ef01ma09-sort-objects-by-attributes-29",
+          "v1-ef01ma09-sort-objects-by-attributes-30",
+          "v1-ef01ma09-sort-objects-by-attributes-31",
+          "v1-ef01ma09-sort-objects-by-attributes-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma09-sort-objects-by-attributes-33",
+          "v1-ef01ma09-sort-objects-by-attributes-34",
+          "v1-ef01ma09-sort-objects-by-attributes-35",
+          "v1-ef01ma09-sort-objects-by-attributes-36",
+          "v1-ef01ma09-sort-objects-by-attributes-37",
+          "v1-ef01ma09-sort-objects-by-attributes-38",
+          "v1-ef01ma09-sort-objects-by-attributes-39",
+          "v1-ef01ma09-sort-objects-by-attributes-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA09",
+        "descriptor": "Organizar e ordenar objetos familiares ou representações por figuras, por meio de atributos, tais como cor, forma e medida.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-01",
+      "statement": "Um conjunto tem círculos e triângulos. Se o critério é forma, onde ficam os triângulos?",
+      "prompt": "Um conjunto tem círculos e triângulos. Se o critério é forma, onde ficam os triângulos?",
+      "options": [
+        "No grupo das formas triangulares.",
+        "No grupo de todas as cores",
+        "No grupo de objetos mais compridos",
+        "Sem qualquer critério"
+      ],
+      "correctAnswer": "No grupo das formas triangulares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "No grupo de todas as cores": [
+          "GROUP_BY_SHAPE"
+        ],
+        "No grupo de objetos mais compridos": [
+          "GROUP_BY_SHAPE"
+        ],
+        "Sem qualquer critério": [
+          "GROUP_BY_SHAPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "BLOCOS_TRIANGULARES",
+      "explanation": "A forma escolhida orienta o agrupamento.",
+      "hint": "Observe o contorno.",
+      "errorFocus": "GROUP_BY_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: A forma escolhida orienta o agrupamento.",
+        "incorrect": "A forma escolhida orienta o agrupamento.",
+        "hint": "Observe o contorno.",
+        "errorFocus": "GROUP_BY_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-02",
+      "statement": "Para ordenar tiras do menor comprimento ao maior, o que ajuda?",
+      "prompt": "Para ordenar tiras do menor comprimento ao maior, o que ajuda?",
+      "options": [
+        "Alinhar pelo meio sem critério",
+        "Alinhar uma ponta e comparar os comprimentos.",
+        "Escolher a cor mais bonita",
+        "Misturar tamanhos"
+      ],
+      "correctAnswer": "Alinhar uma ponta e comparar os comprimentos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Alinhar pelo meio sem critério": [
+          "ORDER_BY_LENGTH"
+        ],
+        "Escolher a cor mais bonita": [
+          "ORDER_BY_LENGTH"
+        ],
+        "Misturar tamanhos": [
+          "ORDER_BY_LENGTH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "TIRAS_DE_PAPEL",
+      "explanation": "Uma extremidade alinhada facilita a comparação.",
+      "hint": "Use o mesmo ponto de partida.",
+      "errorFocus": "ORDER_BY_LENGTH",
+      "feedback": {
+        "correct": "Boa observação: Uma extremidade alinhada facilita a comparação.",
+        "incorrect": "Uma extremidade alinhada facilita a comparação.",
+        "hint": "Use o mesmo ponto de partida.",
+        "errorFocus": "ORDER_BY_LENGTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-03",
+      "statement": "Um cartão pede separar objetos vermelhos e azuis. Qual atributo está sendo usado?",
+      "prompt": "Um cartão pede separar objetos vermelhos e azuis. Qual atributo está sendo usado?",
+      "options": [
+        "Forma",
+        "Comprimento",
+        "Cor.",
+        "Peso"
+      ],
+      "correctAnswer": "Cor.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Forma": [
+          "IDENTIFY_COLOR_ATTRIBUTE"
+        ],
+        "Comprimento": [
+          "IDENTIFY_COLOR_ATTRIBUTE"
+        ],
+        "Peso": [
+          "IDENTIFY_COLOR_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DA_COR",
+      "explanation": "O critério nomeia cores.",
+      "hint": "Leia o cartão.",
+      "errorFocus": "IDENTIFY_COLOR_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: O critério nomeia cores.",
+        "incorrect": "O critério nomeia cores.",
+        "hint": "Leia o cartão.",
+        "errorFocus": "IDENTIFY_COLOR_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-04",
+      "statement": "Qual figura pertence a um grupo definido pelo critério “quadrado”?",
+      "prompt": "Qual figura pertence a um grupo definido pelo critério “quadrado”?",
+      "options": [
+        "Um círculo",
+        "Um triângulo",
+        "Uma linha curva sem cantos",
+        "Uma figura com quatro lados iguais e cantos retos."
+      ],
+      "correctAnswer": "Uma figura com quatro lados iguais e cantos retos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um círculo": [
+          "MATCH_SHAPE_CRITERION"
+        ],
+        "Um triângulo": [
+          "MATCH_SHAPE_CRITERION"
+        ],
+        "Uma linha curva sem cantos": [
+          "MATCH_SHAPE_CRITERION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "FIGURAS_QUADRADAS",
+      "explanation": "O critério seleciona a forma quadrada.",
+      "hint": "Observe lados e cantos.",
+      "errorFocus": "MATCH_SHAPE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: O critério seleciona a forma quadrada.",
+        "incorrect": "O critério seleciona a forma quadrada.",
+        "hint": "Observe lados e cantos.",
+        "errorFocus": "MATCH_SHAPE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-05",
+      "statement": "Uma criança agrupou primeiro por cor e outra por forma. As duas organizações podem fazer sentido?",
+      "prompt": "Uma criança agrupou primeiro por cor e outra por forma. As duas organizações podem fazer sentido?",
+      "options": [
+        "Sim, cada uma usa um critério diferente.",
+        "Não, só existe uma forma de agrupar",
+        "Sim, mas uma cor vale mais",
+        "Não, objetos não podem ser organizados"
+      ],
+      "correctAnswer": "Sim, cada uma usa um critério diferente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, só existe uma forma de agrupar": [
+          "ACCEPT_MULTIPLE_SORTING_CRITERIA"
+        ],
+        "Sim, mas uma cor vale mais": [
+          "ACCEPT_MULTIPLE_SORTING_CRITERIA"
+        ],
+        "Não, objetos não podem ser organizados": [
+          "ACCEPT_MULTIPLE_SORTING_CRITERIA"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DOIS_CRITERIOS",
+      "explanation": "A tarefa pode variar com o atributo escolhido.",
+      "hint": "Identifique o critério de cada grupo.",
+      "errorFocus": "ACCEPT_MULTIPLE_SORTING_CRITERIA",
+      "feedback": {
+        "correct": "Boa observação: A tarefa pode variar com o atributo escolhido.",
+        "incorrect": "A tarefa pode variar com o atributo escolhido.",
+        "hint": "Identifique o critério de cada grupo.",
+        "errorFocus": "ACCEPT_MULTIPLE_SORTING_CRITERIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-06",
+      "statement": "Ao comparar comprimentos com blocos, por que usar blocos do mesmo tamanho?",
+      "prompt": "Ao comparar comprimentos com blocos, por que usar blocos do mesmo tamanho?",
+      "options": [
+        "Para mudar a cor dos objetos",
+        "Para manter uma unidade de comparação consistente.",
+        "Para fazer a tira crescer",
+        "Para não precisar comparar"
+      ],
+      "correctAnswer": "Para manter uma unidade de comparação consistente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para mudar a cor dos objetos": [
+          "USE_EQUAL_MEASUREMENT_UNITS"
+        ],
+        "Para fazer a tira crescer": [
+          "USE_EQUAL_MEASUREMENT_UNITS"
+        ],
+        "Para não precisar comparar": [
+          "USE_EQUAL_MEASUREMENT_UNITS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BLOCOS_DE_MEDIDA",
+      "explanation": "Unidades iguais tornam a comparação coerente.",
+      "hint": "Mantenha a medida constante.",
+      "errorFocus": "USE_EQUAL_MEASUREMENT_UNITS",
+      "feedback": {
+        "correct": "Boa observação: Unidades iguais tornam a comparação coerente.",
+        "incorrect": "Unidades iguais tornam a comparação coerente.",
+        "hint": "Mantenha a medida constante.",
+        "errorFocus": "USE_EQUAL_MEASUREMENT_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-07",
+      "statement": "Agrupar objetos pela cor significa dizer que um grupo é melhor?",
+      "prompt": "Agrupar objetos pela cor significa dizer que um grupo é melhor?",
+      "options": [
+        "Sim, uma cor sempre é melhor",
+        "Sim, objetos maiores valem mais",
+        "Não; o agrupamento apenas segue o critério escolhido.",
+        "Não, porque toda organização é impossível"
+      ],
+      "correctAnswer": "Não; o agrupamento apenas segue o critério escolhido.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, uma cor sempre é melhor": [
+          "ATTRIBUTE_NOT_VALUE_JUDGMENT"
+        ],
+        "Sim, objetos maiores valem mais": [
+          "ATTRIBUTE_NOT_VALUE_JUDGMENT"
+        ],
+        "Não, porque toda organização é impossível": [
+          "ATTRIBUTE_NOT_VALUE_JUDGMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AGRUPAR_E_JULGAR",
+      "explanation": "O atributo descreve uma característica, não um valor.",
+      "hint": "Separe descrição de julgamento.",
+      "errorFocus": "ATTRIBUTE_NOT_VALUE_JUDGMENT",
+      "feedback": {
+        "correct": "Boa observação: O atributo descreve uma característica, não um valor.",
+        "incorrect": "O atributo descreve uma característica, não um valor.",
+        "hint": "Separe descrição de julgamento.",
+        "errorFocus": "ATTRIBUTE_NOT_VALUE_JUDGMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-08",
+      "statement": "Como ordenar figuras de torres da mais baixa à mais alta?",
+      "prompt": "Como ordenar figuras de torres da mais baixa à mais alta?",
+      "options": [
+        "Agrupar por nome",
+        "Ordenar por cor sem olhar altura",
+        "Escolher ao acaso",
+        "Comparar as alturas com uma referência comum."
+      ],
+      "correctAnswer": "Comparar as alturas com uma referência comum.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Agrupar por nome": [
+          "ORDER_BY_HEIGHT"
+        ],
+        "Ordenar por cor sem olhar altura": [
+          "ORDER_BY_HEIGHT"
+        ],
+        "Escolher ao acaso": [
+          "ORDER_BY_HEIGHT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FIGURAS_POR_ALTURA",
+      "explanation": "O critério indicado é altura.",
+      "hint": "Compare a dimensão vertical.",
+      "errorFocus": "ORDER_BY_HEIGHT",
+      "feedback": {
+        "correct": "Boa observação: O critério indicado é altura.",
+        "incorrect": "O critério indicado é altura.",
+        "hint": "Compare a dimensão vertical.",
+        "errorFocus": "ORDER_BY_HEIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-09",
+      "statement": "Uma coleção tem tampinhas azuis e amarelas. Para agrupar por cor, o que fazer?",
+      "prompt": "Uma coleção tem tampinhas azuis e amarelas. Para agrupar por cor, o que fazer?",
+      "options": [
+        "Colocar juntas as tampinhas da mesma cor.",
+        "Separar por tamanho sem aviso",
+        "Misturar todas sem critério",
+        "Organizar pelo nome de quem trouxe"
+      ],
+      "correctAnswer": "Colocar juntas as tampinhas da mesma cor.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Separar por tamanho sem aviso": [
+          "PRACTICE_GROUP_BY_COLOR"
+        ],
+        "Misturar todas sem critério": [
+          "PRACTICE_GROUP_BY_COLOR"
+        ],
+        "Organizar pelo nome de quem trouxe": [
+          "PRACTICE_GROUP_BY_COLOR"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "TAMPINHAS_AZUIS",
+      "explanation": "A cor define os grupos.",
+      "hint": "Observe qual atributo foi pedido.",
+      "errorFocus": "PRACTICE_GROUP_BY_COLOR",
+      "feedback": {
+        "correct": "Boa observação: A cor define os grupos.",
+        "incorrect": "A cor define os grupos.",
+        "hint": "Observe qual atributo foi pedido.",
+        "errorFocus": "PRACTICE_GROUP_BY_COLOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-10",
+      "statement": "Três lápis têm comprimentos diferentes. Qual procedimento permite ordená-los?",
+      "prompt": "Três lápis têm comprimentos diferentes. Qual procedimento permite ordená-los?",
+      "options": [
+        "Medir a cor de cada lápis",
+        "Alinhar uma extremidade e comparar os comprimentos.",
+        "Alinhar pontas diferentes aleatoriamente",
+        "Escolher pelo desenho"
+      ],
+      "correctAnswer": "Alinhar uma extremidade e comparar os comprimentos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Medir a cor de cada lápis": [
+          "PRACTICE_ORDER_LENGTH"
+        ],
+        "Alinhar pontas diferentes aleatoriamente": [
+          "PRACTICE_ORDER_LENGTH"
+        ],
+        "Escolher pelo desenho": [
+          "PRACTICE_ORDER_LENGTH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "LAPIS_CURTOS_LONGOS",
+      "explanation": "O alinhamento deixa visíveis as diferenças de comprimento.",
+      "hint": "Comece do mesmo ponto.",
+      "errorFocus": "PRACTICE_ORDER_LENGTH",
+      "feedback": {
+        "correct": "Boa observação: O alinhamento deixa visíveis as diferenças de comprimento.",
+        "incorrect": "O alinhamento deixa visíveis as diferenças de comprimento.",
+        "hint": "Comece do mesmo ponto.",
+        "errorFocus": "PRACTICE_ORDER_LENGTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-11",
+      "statement": "Um cartão pede “agrupe os círculos”. Qual atributo deve observar?",
+      "prompt": "Um cartão pede “agrupe os círculos”. Qual atributo deve observar?",
+      "options": [
+        "Altura",
+        "Cor apenas",
+        "Forma.",
+        "Peso"
+      ],
+      "correctAnswer": "Forma.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Altura": [
+          "PRACTICE_IDENTIFY_SHAPE"
+        ],
+        "Cor apenas": [
+          "PRACTICE_IDENTIFY_SHAPE"
+        ],
+        "Peso": [
+          "PRACTICE_IDENTIFY_SHAPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DA_FORMA",
+      "explanation": "Círculo nomeia uma forma.",
+      "hint": "Observe o contorno.",
+      "errorFocus": "PRACTICE_IDENTIFY_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: Círculo nomeia uma forma.",
+        "incorrect": "Círculo nomeia uma forma.",
+        "hint": "Observe o contorno.",
+        "errorFocus": "PRACTICE_IDENTIFY_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-12",
+      "statement": "Um objeto é pequeno e verde. Se o critério é cor, em que grupo entra?",
+      "prompt": "Um objeto é pequeno e verde. Se o critério é cor, em que grupo entra?",
+      "options": [
+        "No grupo de todos os pequenos sem considerar cor",
+        "No grupo dos círculos",
+        "Em nenhum grupo",
+        "No grupo verde."
+      ],
+      "correctAnswer": "No grupo verde.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "No grupo de todos os pequenos sem considerar cor": [
+          "PRACTICE_APPLY_SINGLE_CRITERION"
+        ],
+        "No grupo dos círculos": [
+          "PRACTICE_APPLY_SINGLE_CRITERION"
+        ],
+        "Em nenhum grupo": [
+          "PRACTICE_APPLY_SINGLE_CRITERION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COR_E_TAMANHO",
+      "explanation": "O critério solicitado é cor.",
+      "hint": "Use apenas a característica indicada.",
+      "errorFocus": "PRACTICE_APPLY_SINGLE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: O critério solicitado é cor.",
+        "incorrect": "O critério solicitado é cor.",
+        "hint": "Use apenas a característica indicada.",
+        "errorFocus": "PRACTICE_APPLY_SINGLE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-13",
+      "statement": "Uma criança mede uma tira com blocos de tamanhos variados. Qual é a dificuldade?",
+      "prompt": "Uma criança mede uma tira com blocos de tamanhos variados. Qual é a dificuldade?",
+      "options": [
+        "A unidade muda, então a comparação pode ficar inconsistente.",
+        "A tira perde sua cor",
+        "A forma deixa de existir",
+        "A medida se torna uma palavra"
+      ],
+      "correctAnswer": "A unidade muda, então a comparação pode ficar inconsistente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A tira perde sua cor": [
+          "PRACTICE_CONSISTENT_MEASUREMENT"
+        ],
+        "A forma deixa de existir": [
+          "PRACTICE_CONSISTENT_MEASUREMENT"
+        ],
+        "A medida se torna uma palavra": [
+          "PRACTICE_CONSISTENT_MEASUREMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "UNIDADES_IGUAIS",
+      "explanation": "Unidades de comprimentos diferentes não são uma comparação uniforme.",
+      "hint": "Use blocos iguais.",
+      "errorFocus": "PRACTICE_CONSISTENT_MEASUREMENT",
+      "feedback": {
+        "correct": "Boa observação: Unidades de comprimentos diferentes não são uma comparação uniforme.",
+        "incorrect": "Unidades de comprimentos diferentes não são uma comparação uniforme.",
+        "hint": "Use blocos iguais.",
+        "errorFocus": "PRACTICE_CONSISTENT_MEASUREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-14",
+      "statement": "Um cartão pede primeiro forma e depois cor. Como registrar a organização?",
+      "prompt": "Um cartão pede primeiro forma e depois cor. Como registrar a organização?",
+      "options": [
+        "Mudar o critério sem avisar",
+        "Indicar os dois critérios em etapas claras.",
+        "Esconder todos os objetos",
+        "Dizer que só uma característica existe"
+      ],
+      "correctAnswer": "Indicar os dois critérios em etapas claras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mudar o critério sem avisar": [
+          "PRACTICE_MULTI_CRITERION_ORDER"
+        ],
+        "Esconder todos os objetos": [
+          "PRACTICE_MULTI_CRITERION_ORDER"
+        ],
+        "Dizer que só uma característica existe": [
+          "PRACTICE_MULTI_CRITERION_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "AGRUPAMENTO_POR_DOIS_ATRIBUTOS",
+      "explanation": "Etapas explícitas permitem entender os critérios usados.",
+      "hint": "Explique cada etapa.",
+      "errorFocus": "PRACTICE_MULTI_CRITERION_ORDER",
+      "feedback": {
+        "correct": "Boa observação: Etapas explícitas permitem entender os critérios usados.",
+        "incorrect": "Etapas explícitas permitem entender os critérios usados.",
+        "hint": "Explique cada etapa.",
+        "errorFocus": "PRACTICE_MULTI_CRITERION_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-15",
+      "statement": "Peças redondas devem ser separadas das quadradas. Qual grupo reúne as redondas?",
+      "prompt": "Peças redondas devem ser separadas das quadradas. Qual grupo reúne as redondas?",
+      "options": [
+        "O grupo dos triângulos",
+        "O grupo dos retângulos",
+        "O grupo dos círculos.",
+        "O grupo das linhas"
+      ],
+      "correctAnswer": "O grupo dos círculos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O grupo dos triângulos": [
+          "PRACTICE_SHAPE_SORT"
+        ],
+        "O grupo dos retângulos": [
+          "PRACTICE_SHAPE_SORT"
+        ],
+        "O grupo das linhas": [
+          "PRACTICE_SHAPE_SORT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "PECAS_CIRCULARES",
+      "explanation": "Redondas correspondem ao grupo circular.",
+      "hint": "Compare os contornos.",
+      "errorFocus": "PRACTICE_SHAPE_SORT",
+      "feedback": {
+        "correct": "Boa observação: Redondas correspondem ao grupo circular.",
+        "incorrect": "Redondas correspondem ao grupo circular.",
+        "hint": "Compare os contornos.",
+        "errorFocus": "PRACTICE_SHAPE_SORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-16",
+      "statement": "Que frase ajuda outra pessoa a entender uma organização?",
+      "prompt": "Que frase ajuda outra pessoa a entender uma organização?",
+      "options": [
+        "“Organizei de um jeito qualquer.”",
+        "“Este grupo vale mais.”",
+        "“Não há critério.”",
+        "“Agrupei por forma: círculos aqui e quadrados ali.”"
+      ],
+      "correctAnswer": "“Agrupei por forma: círculos aqui e quadrados ali.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Organizei de um jeito qualquer.”": [
+          "PRACTICE_EXPLAIN_CRITERION"
+        ],
+        "“Este grupo vale mais.”": [
+          "PRACTICE_EXPLAIN_CRITERION"
+        ],
+        "“Não há critério.”": [
+          "PRACTICE_EXPLAIN_CRITERION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMUNICAR_CRITERIO",
+      "explanation": "A frase nomeia o atributo e os grupos.",
+      "hint": "Diga a característica usada.",
+      "errorFocus": "PRACTICE_EXPLAIN_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: A frase nomeia o atributo e os grupos.",
+        "incorrect": "A frase nomeia o atributo e os grupos.",
+        "hint": "Diga a característica usada.",
+        "errorFocus": "PRACTICE_EXPLAIN_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-17",
+      "statement": "Quatro potes devem ser ordenados do mais baixo ao mais alto. O que comparar?",
+      "prompt": "Quatro potes devem ser ordenados do mais baixo ao mais alto. O que comparar?",
+      "options": [
+        "A altura de cada pote em relação à mesma base.",
+        "A cor da etiqueta",
+        "O nome do pote",
+        "A quantidade de letras"
+      ],
+      "correctAnswer": "A altura de cada pote em relação à mesma base.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor da etiqueta": [
+          "TRANSFER_ORDER_HEIGHT"
+        ],
+        "O nome do pote": [
+          "TRANSFER_ORDER_HEIGHT"
+        ],
+        "A quantidade de letras": [
+          "TRANSFER_ORDER_HEIGHT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "POTES_DE_ALTURAS",
+      "explanation": "A altura é o atributo indicado.",
+      "hint": "Use uma base comum.",
+      "errorFocus": "TRANSFER_ORDER_HEIGHT",
+      "feedback": {
+        "correct": "Boa observação: A altura é o atributo indicado.",
+        "incorrect": "A altura é o atributo indicado.",
+        "hint": "Use uma base comum.",
+        "errorFocus": "TRANSFER_ORDER_HEIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-18",
+      "statement": "Cartões mostram estrelas, círculos e triângulos. Qual critério pode formar grupos por contorno?",
+      "prompt": "Cartões mostram estrelas, círculos e triângulos. Qual critério pode formar grupos por contorno?",
+      "options": [
+        "Data",
+        "Forma.",
+        "Nome de estudante",
+        "Som"
+      ],
+      "correctAnswer": "Forma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Data": [
+          "TRANSFER_GROUP_BY_SHAPE"
+        ],
+        "Nome de estudante": [
+          "TRANSFER_GROUP_BY_SHAPE"
+        ],
+        "Som": [
+          "TRANSFER_GROUP_BY_SHAPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "CARTOES_DE_FORMAS",
+      "explanation": "Contornos diferentes representam formas.",
+      "hint": "Observe o formato.",
+      "errorFocus": "TRANSFER_GROUP_BY_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: Contornos diferentes representam formas.",
+        "incorrect": "Contornos diferentes representam formas.",
+        "hint": "Observe o formato.",
+        "errorFocus": "TRANSFER_GROUP_BY_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-19",
+      "statement": "Um registro diz que uma tira mede 5 blocos iguais e outra mede 3 blocos iguais. Qual é mais comprida?",
+      "prompt": "Um registro diz que uma tira mede 5 blocos iguais e outra mede 3 blocos iguais. Qual é mais comprida?",
+      "options": [
+        "A de 3 blocos",
+        "São necessariamente iguais",
+        "A tira de 5 blocos, conforme esse registro.",
+        "Não é possível comparar unidades iguais"
+      ],
+      "correctAnswer": "A tira de 5 blocos, conforme esse registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A de 3 blocos": [
+          "TRANSFER_COMPARE_LENGTH_UNITS"
+        ],
+        "São necessariamente iguais": [
+          "TRANSFER_COMPARE_LENGTH_UNITS"
+        ],
+        "Não é possível comparar unidades iguais": [
+          "TRANSFER_COMPARE_LENGTH_UNITS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MEDIDA_DE_TIRAS",
+      "explanation": "Cinco unidades iguais são mais que três unidades iguais.",
+      "hint": "Compare a contagem de blocos.",
+      "errorFocus": "TRANSFER_COMPARE_LENGTH_UNITS",
+      "feedback": {
+        "correct": "Boa observação: Cinco unidades iguais são mais que três unidades iguais.",
+        "incorrect": "Cinco unidades iguais são mais que três unidades iguais.",
+        "hint": "Compare a contagem de blocos.",
+        "errorFocus": "TRANSFER_COMPARE_LENGTH_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-20",
+      "statement": "Uma coleção foi agrupada por cor e depois por forma. O que mudou?",
+      "prompt": "Uma coleção foi agrupada por cor e depois por forma. O que mudou?",
+      "options": [
+        "Os objetos necessariamente mudaram",
+        "A coleção desapareceu",
+        "As cores viraram medidas",
+        "O atributo usado como critério."
+      ],
+      "correctAnswer": "O atributo usado como critério.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os objetos necessariamente mudaram": [
+          "TRANSFER_CRITERION_CHANGE"
+        ],
+        "A coleção desapareceu": [
+          "TRANSFER_CRITERION_CHANGE"
+        ],
+        "As cores viraram medidas": [
+          "TRANSFER_CRITERION_CHANGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CRITERIO_MUDOU",
+      "explanation": "Cor e forma são atributos diferentes.",
+      "hint": "Nomeie os critérios das duas etapas.",
+      "errorFocus": "TRANSFER_CRITERION_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: Cor e forma são atributos diferentes.",
+        "incorrect": "Cor e forma são atributos diferentes.",
+        "hint": "Nomeie os critérios das duas etapas.",
+        "errorFocus": "TRANSFER_CRITERION_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-21",
+      "statement": "Um conjunto tem quadrados vermelhos e círculos vermelhos. Se o critério é forma, como separar?",
+      "prompt": "Um conjunto tem quadrados vermelhos e círculos vermelhos. Se o critério é forma, como separar?",
+      "options": [
+        "Quadrados juntos e círculos juntos, independentemente da cor.",
+        "Todos os vermelhos no mesmo grupo",
+        "Todos os objetos maiores juntos",
+        "Misturar sem explicar"
+      ],
+      "correctAnswer": "Quadrados juntos e círculos juntos, independentemente da cor.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos os vermelhos no mesmo grupo": [
+          "TRANSFER_PRIORITIZE_NAMED_ATTRIBUTE"
+        ],
+        "Todos os objetos maiores juntos": [
+          "TRANSFER_PRIORITIZE_NAMED_ATTRIBUTE"
+        ],
+        "Misturar sem explicar": [
+          "TRANSFER_PRIORITIZE_NAMED_ATTRIBUTE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OBJETOS_COM_COR_E_FORMA",
+      "explanation": "A forma é o critério declarado.",
+      "hint": "Siga o atributo pedido.",
+      "errorFocus": "TRANSFER_PRIORITIZE_NAMED_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A forma é o critério declarado.",
+        "incorrect": "A forma é o critério declarado.",
+        "hint": "Siga o atributo pedido.",
+        "errorFocus": "TRANSFER_PRIORITIZE_NAMED_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-22",
+      "statement": "Uma estudante quer ordenar quatro fitas e tem blocos iguais. Qual procedimento?",
+      "prompt": "Uma estudante quer ordenar quatro fitas e tem blocos iguais. Qual procedimento?",
+      "options": [
+        "Usar blocos variados",
+        "Contar blocos iguais ao longo de cada fita e ordenar as contagens.",
+        "Medir apenas a cor",
+        "Ordenar os nomes alfabeticamente"
+      ],
+      "correctAnswer": "Contar blocos iguais ao longo de cada fita e ordenar as contagens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usar blocos variados": [
+          "TRANSFER_MEASURE_WITH_EQUAL_UNITS"
+        ],
+        "Medir apenas a cor": [
+          "TRANSFER_MEASURE_WITH_EQUAL_UNITS"
+        ],
+        "Ordenar os nomes alfabeticamente": [
+          "TRANSFER_MEASURE_WITH_EQUAL_UNITS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TIRAS_COM_BLOCOS",
+      "explanation": "A contagem de unidades iguais apoia a ordem de comprimentos.",
+      "hint": "Repita a mesma unidade.",
+      "errorFocus": "TRANSFER_MEASURE_WITH_EQUAL_UNITS",
+      "feedback": {
+        "correct": "Boa observação: A contagem de unidades iguais apoia a ordem de comprimentos.",
+        "incorrect": "A contagem de unidades iguais apoia a ordem de comprimentos.",
+        "hint": "Repita a mesma unidade.",
+        "errorFocus": "TRANSFER_MEASURE_WITH_EQUAL_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-23",
+      "statement": "Uma etiqueta diz “amarelo”. Que tipo de atributo ela nomeia?",
+      "prompt": "Uma etiqueta diz “amarelo”. Que tipo de atributo ela nomeia?",
+      "options": [
+        "Forma",
+        "Comprimento",
+        "Cor.",
+        "Altura"
+      ],
+      "correctAnswer": "Cor.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Forma": [
+          "TRANSFER_IDENTIFY_COLOR"
+        ],
+        "Comprimento": [
+          "TRANSFER_IDENTIFY_COLOR"
+        ],
+        "Altura": [
+          "TRANSFER_IDENTIFY_COLOR"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ATRIBUTO_DE_COR",
+      "explanation": "Amarelo é uma cor.",
+      "hint": "Leia a característica.",
+      "errorFocus": "TRANSFER_IDENTIFY_COLOR",
+      "feedback": {
+        "correct": "Boa observação: Amarelo é uma cor.",
+        "incorrect": "Amarelo é uma cor.",
+        "hint": "Leia a característica.",
+        "errorFocus": "TRANSFER_IDENTIFY_COLOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-24",
+      "statement": "Por que dizer o critério antes de agrupar ajuda?",
+      "prompt": "Por que dizer o critério antes de agrupar ajuda?",
+      "options": [
+        "Para esconder diferenças",
+        "Para decidir qual objeto vale mais",
+        "Para impedir outras organizações",
+        "Para que outras pessoas compreendam como os objetos foram organizados."
+      ],
+      "correctAnswer": "Para que outras pessoas compreendam como os objetos foram organizados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para esconder diferenças": [
+          "JUSTIFY_SORTING_CRITERION"
+        ],
+        "Para decidir qual objeto vale mais": [
+          "JUSTIFY_SORTING_CRITERION"
+        ],
+        "Para impedir outras organizações": [
+          "JUSTIFY_SORTING_CRITERION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DO_CRITERIO",
+      "explanation": "O critério torna a organização comunicável.",
+      "hint": "Pense em quem vai conferir.",
+      "errorFocus": "JUSTIFY_SORTING_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: O critério torna a organização comunicável.",
+        "incorrect": "O critério torna a organização comunicável.",
+        "hint": "Pense em quem vai conferir.",
+        "errorFocus": "JUSTIFY_SORTING_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-25",
+      "statement": "Cor, forma e comprimento são exemplos de...",
+      "prompt": "Cor, forma e comprimento são exemplos de...",
+      "options": [
+        "atributos que podem orientar uma organização.",
+        "nomes de pessoas",
+        "regras de trânsito",
+        "perguntas"
+      ],
+      "correctAnswer": "atributos que podem orientar uma organização.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "nomes de pessoas": [
+          "RECALL_ATTRIBUTES"
+        ],
+        "regras de trânsito": [
+          "RECALL_ATTRIBUTES"
+        ],
+        "perguntas": [
+          "RECALL_ATTRIBUTES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CONCEITO_DE_ATRIBUTO",
+      "explanation": "Essas características descrevem objetos.",
+      "hint": "Lembre das características observáveis.",
+      "errorFocus": "RECALL_ATTRIBUTES",
+      "feedback": {
+        "correct": "Boa observação: Essas características descrevem objetos.",
+        "incorrect": "Essas características descrevem objetos.",
+        "hint": "Lembre das características observáveis.",
+        "errorFocus": "RECALL_ATTRIBUTES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-26",
+      "statement": "Para separar círculos de quadrados, o critério é...",
+      "prompt": "Para separar círculos de quadrados, o critério é...",
+      "options": [
+        "cor",
+        "forma.",
+        "altura",
+        "peso"
+      ],
+      "correctAnswer": "forma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "cor": [
+          "RECALL_SHAPE_CRITERION"
+        ],
+        "altura": [
+          "RECALL_SHAPE_CRITERION"
+        ],
+        "peso": [
+          "RECALL_SHAPE_CRITERION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "GROUP",
+      "contextFamily": "CIRCULOS_E_QUADRADOS",
+      "explanation": "Círculo e quadrado são formas.",
+      "hint": "Observe o contorno.",
+      "errorFocus": "RECALL_SHAPE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Círculo e quadrado são formas.",
+        "incorrect": "Círculo e quadrado são formas.",
+        "hint": "Observe o contorno.",
+        "errorFocus": "RECALL_SHAPE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-27",
+      "statement": "Para ordenar do mais curto ao mais longo, comparamos...",
+      "prompt": "Para ordenar do mais curto ao mais longo, comparamos...",
+      "options": [
+        "nomes",
+        "cores apenas",
+        "comprimentos usando uma referência consistente.",
+        "quantidade de cantos"
+      ],
+      "correctAnswer": "comprimentos usando uma referência consistente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "nomes": [
+          "RECALL_LENGTH_ORDER"
+        ],
+        "cores apenas": [
+          "RECALL_LENGTH_ORDER"
+        ],
+        "quantidade de cantos": [
+          "RECALL_LENGTH_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ORDEM_DE_COMPRIMENTO",
+      "explanation": "Comprimento é o atributo relevante.",
+      "hint": "Alinhe as extremidades.",
+      "errorFocus": "RECALL_LENGTH_ORDER",
+      "feedback": {
+        "correct": "Boa observação: Comprimento é o atributo relevante.",
+        "incorrect": "Comprimento é o atributo relevante.",
+        "hint": "Alinhe as extremidades.",
+        "errorFocus": "RECALL_LENGTH_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-28",
+      "statement": "Uma organização por cor é diferente de uma por forma porque...",
+      "prompt": "Uma organização por cor é diferente de uma por forma porque...",
+      "options": [
+        "uma é sempre correta e a outra não",
+        "objetos mudam de existência",
+        "cor e forma significam o mesmo",
+        "cada uma observa um atributo distinto."
+      ],
+      "correctAnswer": "cada uma observa um atributo distinto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma é sempre correta e a outra não": [
+          "RECALL_DIFFERENT_CRITERIA"
+        ],
+        "objetos mudam de existência": [
+          "RECALL_DIFFERENT_CRITERIA"
+        ],
+        "cor e forma significam o mesmo": [
+          "RECALL_DIFFERENT_CRITERIA"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CRITERIO_EXPLICITO",
+      "explanation": "Critérios podem variar conforme a tarefa.",
+      "hint": "Nomeie os atributos.",
+      "errorFocus": "RECALL_DIFFERENT_CRITERIA",
+      "feedback": {
+        "correct": "Boa observação: Critérios podem variar conforme a tarefa.",
+        "incorrect": "Critérios podem variar conforme a tarefa.",
+        "hint": "Nomeie os atributos.",
+        "errorFocus": "RECALL_DIFFERENT_CRITERIA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-29",
+      "statement": "Se o cartão diz “junte os objetos azuis”, devemos observar...",
+      "prompt": "Se o cartão diz “junte os objetos azuis”, devemos observar...",
+      "options": [
+        "a cor azul.",
+        "o comprimento apenas",
+        "o nome do fabricante",
+        "o peso de cada pessoa"
+      ],
+      "correctAnswer": "a cor azul.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "o comprimento apenas": [
+          "RECALL_COLOR_GROUPING"
+        ],
+        "o nome do fabricante": [
+          "RECALL_COLOR_GROUPING"
+        ],
+        "o peso de cada pessoa": [
+          "RECALL_COLOR_GROUPING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AGRUPAR_POR_COR",
+      "explanation": "O cartão declara o critério de cor.",
+      "hint": "Siga a instrução.",
+      "errorFocus": "RECALL_COLOR_GROUPING",
+      "feedback": {
+        "correct": "Boa observação: O cartão declara o critério de cor.",
+        "incorrect": "O cartão declara o critério de cor.",
+        "hint": "Siga a instrução.",
+        "errorFocus": "RECALL_COLOR_GROUPING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-30",
+      "statement": "Para comparar comprimentos usando unidades, o que é mais consistente?",
+      "prompt": "Para comparar comprimentos usando unidades, o que é mais consistente?",
+      "options": [
+        "Trocar de unidade no meio",
+        "Usar unidades iguais para cada objeto.",
+        "Escolher pela aparência da cor",
+        "Evitar qualquer registro"
+      ],
+      "correctAnswer": "Usar unidades iguais para cada objeto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Trocar de unidade no meio": [
+          "RECALL_EQUAL_MEASURE_UNITS"
+        ],
+        "Escolher pela aparência da cor": [
+          "RECALL_EQUAL_MEASURE_UNITS"
+        ],
+        "Evitar qualquer registro": [
+          "RECALL_EQUAL_MEASURE_UNITS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMPARACAO_JUSTA",
+      "explanation": "Unidades iguais mantêm o critério estável.",
+      "hint": "Use a mesma unidade.",
+      "errorFocus": "RECALL_EQUAL_MEASURE_UNITS",
+      "feedback": {
+        "correct": "Boa observação: Unidades iguais mantêm o critério estável.",
+        "incorrect": "Unidades iguais mantêm o critério estável.",
+        "hint": "Use a mesma unidade.",
+        "errorFocus": "RECALL_EQUAL_MEASURE_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-31",
+      "statement": "A mesma coleção pode ser agrupada por forma e depois por cor?",
+      "prompt": "A mesma coleção pode ser agrupada por forma e depois por cor?",
+      "options": [
+        "Não, uma organização apaga a outra",
+        "Sim, mas os grupos devem ser iguais",
+        "Sim; são critérios diferentes para organizar o conjunto.",
+        "Não, só se pode usar medida"
+      ],
+      "correctAnswer": "Sim; são critérios diferentes para organizar o conjunto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, uma organização apaga a outra": [
+          "RECALL_MULTIPLE_VALID_SORTS"
+        ],
+        "Sim, mas os grupos devem ser iguais": [
+          "RECALL_MULTIPLE_VALID_SORTS"
+        ],
+        "Não, só se pode usar medida": [
+          "RECALL_MULTIPLE_VALID_SORTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_ORDENS_POSSIVEIS",
+      "explanation": "Perguntas distintas podem gerar organizações distintas.",
+      "hint": "Observe que critério muda.",
+      "errorFocus": "RECALL_MULTIPLE_VALID_SORTS",
+      "feedback": {
+        "correct": "Boa observação: Perguntas distintas podem gerar organizações distintas.",
+        "incorrect": "Perguntas distintas podem gerar organizações distintas.",
+        "hint": "Observe que critério muda.",
+        "errorFocus": "RECALL_MULTIPLE_VALID_SORTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-32",
+      "statement": "Organizar por atributo significa...",
+      "prompt": "Organizar por atributo significa...",
+      "options": [
+        "julgar o valor dos objetos",
+        "escolher ao acaso",
+        "revelar dados pessoais",
+        "agrupar ou ordenar objetos conforme uma característica nomeada."
+      ],
+      "correctAnswer": "agrupar ou ordenar objetos conforme uma característica nomeada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "julgar o valor dos objetos": [
+          "ATTRIBUTE_SORTING_SUMMARY"
+        ],
+        "escolher ao acaso": [
+          "ATTRIBUTE_SORTING_SUMMARY"
+        ],
+        "revelar dados pessoais": [
+          "ATTRIBUTE_SORTING_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ORDENACAO",
+      "explanation": "O atributo declarado orienta a tarefa.",
+      "hint": "Reúna critério e organização.",
+      "errorFocus": "ATTRIBUTE_SORTING_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: O atributo declarado orienta a tarefa.",
+        "incorrect": "O atributo declarado orienta a tarefa.",
+        "hint": "Reúna critério e organização.",
+        "errorFocus": "ATTRIBUTE_SORTING_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-33",
+      "statement": "“Azul” é um exemplo de...",
+      "prompt": "“Azul” é um exemplo de...",
+      "options": [
+        "cor.",
+        "forma",
+        "medida",
+        "posição"
+      ],
+      "correctAnswer": "cor.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "forma": [
+          "REVIEW_COLOR_ATTRIBUTE"
+        ],
+        "medida": [
+          "REVIEW_COLOR_ATTRIBUTE"
+        ],
+        "posição": [
+          "REVIEW_COLOR_ATTRIBUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_COR",
+      "explanation": "Azul nomeia uma cor.",
+      "hint": "Classifique a característica.",
+      "errorFocus": "REVIEW_COLOR_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Azul nomeia uma cor.",
+        "incorrect": "Azul nomeia uma cor.",
+        "hint": "Classifique a característica.",
+        "errorFocus": "REVIEW_COLOR_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-34",
+      "statement": "Triângulo e círculo diferem principalmente em...",
+      "prompt": "Triângulo e círculo diferem principalmente em...",
+      "options": [
+        "nome de estudante",
+        "forma.",
+        "data",
+        "endereço"
+      ],
+      "correctAnswer": "forma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "nome de estudante": [
+          "REVIEW_SHAPE"
+        ],
+        "data": [
+          "REVIEW_SHAPE"
+        ],
+        "endereço": [
+          "REVIEW_SHAPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVISAO_DE_FORMA",
+      "explanation": "Os contornos são formas distintas.",
+      "hint": "Observe o contorno.",
+      "errorFocus": "REVIEW_SHAPE",
+      "feedback": {
+        "correct": "Boa observação: Os contornos são formas distintas.",
+        "incorrect": "Os contornos são formas distintas.",
+        "hint": "Observe o contorno.",
+        "errorFocus": "REVIEW_SHAPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-35",
+      "statement": "Como começar a comparar duas fitas?",
+      "prompt": "Como começar a comparar duas fitas?",
+      "options": [
+        "Alinhar pontos diferentes",
+        "Escolher pela cor",
+        "Alinhar uma extremidade e observar o comprimento.",
+        "Misturar os materiais"
+      ],
+      "correctAnswer": "Alinhar uma extremidade e observar o comprimento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Alinhar pontos diferentes": [
+          "REVIEW_LENGTH_COMPARISON"
+        ],
+        "Escolher pela cor": [
+          "REVIEW_LENGTH_COMPARISON"
+        ],
+        "Misturar os materiais": [
+          "REVIEW_LENGTH_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_COMPRIMENTO",
+      "explanation": "Alinhamento comum apoia comparação.",
+      "hint": "Use o mesmo ponto inicial.",
+      "errorFocus": "REVIEW_LENGTH_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Alinhamento comum apoia comparação.",
+        "incorrect": "Alinhamento comum apoia comparação.",
+        "hint": "Use o mesmo ponto inicial.",
+        "errorFocus": "REVIEW_LENGTH_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-36",
+      "statement": "Uma coleção separada por altura usa qual atributo?",
+      "prompt": "Uma coleção separada por altura usa qual atributo?",
+      "options": [
+        "Cor",
+        "Forma",
+        "Textura exclusivamente",
+        "Altura."
+      ],
+      "correctAnswer": "Altura.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cor": [
+          "REVIEW_HEIGHT_CRITERION"
+        ],
+        "Forma": [
+          "REVIEW_HEIGHT_CRITERION"
+        ],
+        "Textura exclusivamente": [
+          "REVIEW_HEIGHT_CRITERION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_CRITERIO",
+      "explanation": "A ordem é baseada na dimensão vertical.",
+      "hint": "Leia o atributo pedido.",
+      "errorFocus": "REVIEW_HEIGHT_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: A ordem é baseada na dimensão vertical.",
+        "incorrect": "A ordem é baseada na dimensão vertical.",
+        "hint": "Leia o atributo pedido.",
+        "errorFocus": "REVIEW_HEIGHT_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-37",
+      "statement": "Por que comparar com blocos iguais?",
+      "prompt": "Por que comparar com blocos iguais?",
+      "options": [
+        "Para manter a unidade de medida consistente.",
+        "Para mudar o resultado",
+        "Para deixar uma tira mais colorida",
+        "Para evitar nomear o critério"
+      ],
+      "correctAnswer": "Para manter a unidade de medida consistente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para mudar o resultado": [
+          "REVIEW_MEASUREMENT_UNIT"
+        ],
+        "Para deixar uma tira mais colorida": [
+          "REVIEW_MEASUREMENT_UNIT"
+        ],
+        "Para evitar nomear o critério": [
+          "REVIEW_MEASUREMENT_UNIT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_UNIDADE",
+      "explanation": "Unidades iguais tornam a contagem comparável.",
+      "hint": "Repita a mesma unidade.",
+      "errorFocus": "REVIEW_MEASUREMENT_UNIT",
+      "feedback": {
+        "correct": "Boa observação: Unidades iguais tornam a contagem comparável.",
+        "incorrect": "Unidades iguais tornam a contagem comparável.",
+        "hint": "Repita a mesma unidade.",
+        "errorFocus": "REVIEW_MEASUREMENT_UNIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-38",
+      "statement": "Um objeto pode ser descrito como vermelho e redondo. Esses são...",
+      "prompt": "Um objeto pode ser descrito como vermelho e redondo. Esses são...",
+      "options": [
+        "uma única medida",
+        "dois atributos distintos.",
+        "dois nomes de pessoas",
+        "duas posições espaciais"
+      ],
+      "correctAnswer": "dois atributos distintos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma única medida": [
+          "REVIEW_MULTIPLE_ATTRIBUTES"
+        ],
+        "dois nomes de pessoas": [
+          "REVIEW_MULTIPLE_ATTRIBUTES"
+        ],
+        "duas posições espaciais": [
+          "REVIEW_MULTIPLE_ATTRIBUTES"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_DOIS_ATRIBUTOS",
+      "explanation": "Cor e forma descrevem características diferentes.",
+      "hint": "Separe cada característica.",
+      "errorFocus": "REVIEW_MULTIPLE_ATTRIBUTES",
+      "feedback": {
+        "correct": "Boa observação: Cor e forma descrevem características diferentes.",
+        "incorrect": "Cor e forma descrevem características diferentes.",
+        "hint": "Separe cada característica.",
+        "errorFocus": "REVIEW_MULTIPLE_ATTRIBUTES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-39",
+      "statement": "O que dizer ao apresentar seus grupos?",
+      "prompt": "O que dizer ao apresentar seus grupos?",
+      "options": [
+        "Qual objeto é melhor",
+        "Quem trouxe cada peça",
+        "Qual atributo usei e como ele organizou os objetos.",
+        "Um endereço"
+      ],
+      "correctAnswer": "Qual atributo usei e como ele organizou os objetos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual objeto é melhor": [
+          "REVIEW_EXPLAIN_SORT"
+        ],
+        "Quem trouxe cada peça": [
+          "REVIEW_EXPLAIN_SORT"
+        ],
+        "Um endereço": [
+          "REVIEW_EXPLAIN_SORT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_EXPLICACAO",
+      "explanation": "Explicar o critério comunica a organização.",
+      "hint": "Nomeie a regra usada.",
+      "errorFocus": "REVIEW_EXPLAIN_SORT",
+      "feedback": {
+        "correct": "Boa observação: Explicar o critério comunica a organização.",
+        "incorrect": "Explicar o critério comunica a organização.",
+        "hint": "Nomeie a regra usada.",
+        "errorFocus": "REVIEW_EXPLAIN_SORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma09-sort-objects-by-attributes-40",
+      "statement": "Uma organização pode mudar quando...",
+      "prompt": "Uma organização pode mudar quando...",
+      "options": [
+        "os objetos perdem suas características",
+        "todas as medidas desaparecem",
+        "alguém decide sem observar",
+        "a pergunta ou o atributo escolhido muda."
+      ],
+      "correctAnswer": "a pergunta ou o atributo escolhido muda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "os objetos perdem suas características": [
+          "REVIEW_CRITERION_SUMMARY"
+        ],
+        "todas as medidas desaparecem": [
+          "REVIEW_CRITERION_SUMMARY"
+        ],
+        "alguém decide sem observar": [
+          "REVIEW_CRITERION_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_CRITERIO",
+      "explanation": "Critérios distintos respondem a perguntas distintas.",
+      "hint": "Pense em cor, forma e medida.",
+      "errorFocus": "REVIEW_CRITERION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Critérios distintos respondem a perguntas distintas.",
+        "incorrect": "Critérios distintos respondem a perguntas distintas.",
+        "hint": "Pense em cor, forma e medida.",
+        "errorFocus": "REVIEW_CRITERION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos táteis, figuras ampliadas, contraste e cartões com símbolos para cada critério.",
+          "Permitir agrupar fisicamente, apontar, desenhar, falar ou responder por comunicação alternativa.",
+          "Usar peças seguras e unidades iguais de comparação, com tempo flexível e instruções de um critério por vez."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

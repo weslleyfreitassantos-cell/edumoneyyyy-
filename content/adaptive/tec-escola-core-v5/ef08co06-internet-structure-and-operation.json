@@ -1,0 +1,2121 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef08co06-internet-structure-and-operation",
+  "canonicalSkillCode": "AUTHORING_EF08CO06_INTERNET_STRUCTURE_AND_OPERATION",
+  "subject": "COMPUTING",
+  "domain": "MUNDO DIGITAL",
+  "topic": "estrutura e funcionamento da internet",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF08CO06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Entender como é a estrutura e funcionamento da internet.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 52
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Internet: redes que se comunicam",
+    "objective": "Explicar, em nível introdutório, a internet como interconexão de redes e descrever papéis de dispositivos, roteadores, endereços, protocolos e serviços sem confundir internet com web.",
+    "summary": "A internet conecta muitas redes e dispositivos por meio de regras compartilhadas de comunicação. Uma mensagem pode ser dividida em pacotes, encaminhada por equipamentos de rede e reunida no destino, conforme os protocolos envolvidos. Roteadores encaminham tráfego entre redes; endereços ajudam a identificar origem e destino. Nomes de domínio podem ser consultados em serviços DNS para encontrar endereços IP. A web é um serviço que usa a internet, assim como correio eletrônico e chamadas de voz. Nem toda conexão percorre uma única rota, e um diagrama escolar simplifica uma infraestrutura muito maior.",
+    "explanation": "Leia o percurso como um modelo, não como um mapa completo da internet. Um dispositivo cliente solicita um recurso a um servidor; os dados seguem regras de protocolo e podem atravessar várias redes e roteadores. O DNS associa nomes de domínio a informações de endereçamento, mas conexões também podem usar endereços diretamente ou outros mecanismos. Uma página web é um recurso acessado por protocolos da web; internet é a infraestrutura mais ampla. O HTTPS protege a comunicação entre navegador e servidor contra leitura ou alteração por terceiros no caminho, mas não prova que a fonte seja verdadeira ou confiável. Quando uma rota falha, o comportamento depende dos protocolos e das alternativas de rede disponíveis.",
+    "workedExample": "Ao abrir o endereço de uma biblioteca fictícia, o navegador consulta informações de nome, estabelece comunicação com um servidor e recebe dados em mensagens conforme protocolos. Roteadores encaminham o tráfego entre redes. Isso descreve um modelo simplificado; não significa que a página percorra sempre o mesmo caminho nem que DNS contenha o texto da página.",
+    "commonMistake": "Dizer que internet e web são sinônimos, imaginar que todos os dados passam por um único computador central, ou supor que o cadeado HTTPS confirma a veracidade do conteúdo.",
+    "priorKnowledge": [
+      "Reconhecer dispositivos que enviam e recebem mensagens digitais.",
+      "Ler diagramas com setas e legendas.",
+      "Distinguir endereço/nome de um conteúdo armazenado."
+    ],
+    "keyConcepts": [
+      "interconexão de redes",
+      "cliente",
+      "servidor",
+      "roteador",
+      "pacote",
+      "endereço IP",
+      "DNS",
+      "protocolo",
+      "web"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "INTERNET_EQUALS_WEB",
+        "action": "Desenhe uma caixa ampla “internet” e represente a web como um serviço dentro dela; acrescente e-mail como outro serviço."
+      },
+      {
+        "errorFocus": "ONE_CENTRAL_COMPUTER",
+        "action": "Substitua o servidor único por várias redes e roteadores e explique que serviços distintos podem estar em servidores diferentes."
+      },
+      {
+        "errorFocus": "HTTPS_AS_TRUTH",
+        "action": "Separe proteção do transporte de verificação da fonte: confira autoria, domínio, contexto e evidências."
+      }
+    ],
+    "accessibilitySupports": [
+      "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+      "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+      "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+      "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co06-paper-packet-route",
+        "title": "Simulação de pacotes em rede fictícia",
+        "instructions": "Cartões numerados atravessam estações que representam roteadores numa rede desenhada para a aula.\n1. Identifique cliente, servidor, roteadores e redes na legenda.\n2. Envie três cartões de dados por um caminho autorizado e registre a ordem de chegada.\n3. Remova uma ligação do modelo e discuta que alternativas o desenho apresenta, sem afirmar que toda rede sempre se recupera.",
+        "steps": [
+          "Identifique cliente, servidor, roteadores e redes na legenda.",
+          "Envie três cartões de dados por um caminho autorizado e registre a ordem de chegada.",
+          "Remova uma ligação do modelo e discuta que alternativas o desenho apresenta, sem afirmar que toda rede sempre se recupera."
+        ],
+        "evidence": "Diagrama anotado com percurso de pacotes, papéis dos componentes e limite da simulação.",
+        "privacyGuard": "Não conectar a atividade a contas pessoais nem capturar tráfego real.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece dispositivos, mas confunde seus papéis.",
+            "developing": "descreve o percurso com apoio e usa a legenda.",
+            "proficient": "explica encaminhamento e explicita que o modelo é uma simplificação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co06-internet-web-service-map",
+        "title": "Mapa de infraestrutura e serviços",
+        "instructions": "Uma equipe compara um serviço de páginas web, uma chamada de voz e correio eletrônico num esquema fictício.\n1. Separe a infraestrutura de internet dos serviços que a utilizam.\n2. Indique clientes, servidores e protocolos conhecidos apenas quando definidos no material.\n3. Explique por que HTTPS não substitui a avaliação da confiabilidade da fonte.",
+        "steps": [
+          "Separe a infraestrutura de internet dos serviços que a utilizam.",
+          "Indique clientes, servidores e protocolos conhecidos apenas quando definidos no material.",
+          "Explique por que HTTPS não substitui a avaliação da confiabilidade da fonte."
+        ],
+        "evidence": "Mapa conceitual com internet como infraestrutura, serviços distintos e uma ressalva sobre segurança e confiabilidade.",
+        "privacyGuard": "Usar exemplos inventados e não inspecionar contas nem mensagens reais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "chama qualquer serviço de web.",
+            "developing": "separa internet e web, mas precisa de ajuda para explicar HTTPS.",
+            "proficient": "diferencia infraestrutura, serviço e proteção do transporte com evidências do modelo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 55,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef08co06-internet-structure-and-operation-01",
+          "v1-ef08co06-internet-structure-and-operation-02",
+          "v1-ef08co06-internet-structure-and-operation-03",
+          "v1-ef08co06-internet-structure-and-operation-04",
+          "v1-ef08co06-internet-structure-and-operation-05",
+          "v1-ef08co06-internet-structure-and-operation-06",
+          "v1-ef08co06-internet-structure-and-operation-07",
+          "v1-ef08co06-internet-structure-and-operation-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef08co06-internet-structure-and-operation-09",
+          "v1-ef08co06-internet-structure-and-operation-10",
+          "v1-ef08co06-internet-structure-and-operation-11",
+          "v1-ef08co06-internet-structure-and-operation-12",
+          "v1-ef08co06-internet-structure-and-operation-13",
+          "v1-ef08co06-internet-structure-and-operation-14",
+          "v1-ef08co06-internet-structure-and-operation-15",
+          "v1-ef08co06-internet-structure-and-operation-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef08co06-internet-structure-and-operation-17",
+          "v1-ef08co06-internet-structure-and-operation-18",
+          "v1-ef08co06-internet-structure-and-operation-19",
+          "v1-ef08co06-internet-structure-and-operation-20",
+          "v1-ef08co06-internet-structure-and-operation-21",
+          "v1-ef08co06-internet-structure-and-operation-22",
+          "v1-ef08co06-internet-structure-and-operation-23",
+          "v1-ef08co06-internet-structure-and-operation-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef08co06-internet-structure-and-operation-25",
+          "v1-ef08co06-internet-structure-and-operation-26",
+          "v1-ef08co06-internet-structure-and-operation-27",
+          "v1-ef08co06-internet-structure-and-operation-28",
+          "v1-ef08co06-internet-structure-and-operation-29",
+          "v1-ef08co06-internet-structure-and-operation-30",
+          "v1-ef08co06-internet-structure-and-operation-31",
+          "v1-ef08co06-internet-structure-and-operation-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef08co06-internet-structure-and-operation-33",
+          "v1-ef08co06-internet-structure-and-operation-34",
+          "v1-ef08co06-internet-structure-and-operation-35",
+          "v1-ef08co06-internet-structure-and-operation-36",
+          "v1-ef08co06-internet-structure-and-operation-37",
+          "v1-ef08co06-internet-structure-and-operation-38",
+          "v1-ef08co06-internet-structure-and-operation-39",
+          "v1-ef08co06-internet-structure-and-operation-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF08CO06",
+        "descriptor": "Entender como é a estrutura e funcionamento da internet.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 52
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-01",
+      "statement": "Qual frase diferencia internet e web?",
+      "prompt": "Qual frase diferencia internet e web?",
+      "options": [
+        "Internet é uma infraestrutura de redes; a web é um serviço que a utiliza",
+        "Internet é somente uma página inicial",
+        "Web e internet são nomes obrigatoriamente idênticos",
+        "A web é o roteador principal"
+      ],
+      "correctAnswer": "Internet é uma infraestrutura de redes; a web é um serviço que a utiliza",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Internet é somente uma página inicial": [
+          "INTERNET_WEB_CONFUSION"
+        ],
+        "Web e internet são nomes obrigatoriamente idênticos": [
+          "INTERNET_WEB_CONFUSION"
+        ],
+        "A web é o roteador principal": [
+          "INTERNET_WEB_CONFUSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INTERNET_AND_WEB",
+      "explanation": "A web usa a internet, mas não representa todos os seus serviços.",
+      "hint": "Qual termo descreve a infraestrutura mais ampla?",
+      "errorFocus": "INTERNET_WEB_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: A web usa a internet, mas não representa todos os seus serviços.",
+        "incorrect": "A web usa a internet, mas não representa todos os seus serviços.",
+        "hint": "Qual termo descreve a infraestrutura mais ampla?",
+        "errorFocus": "INTERNET_WEB_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-02",
+      "statement": "Qual é um papel comum de um roteador?",
+      "prompt": "Qual é um papel comum de um roteador?",
+      "options": [
+        "Escrever o conteúdo de toda página",
+        "Encaminhar tráfego entre redes",
+        "Guardar todas as senhas da internet",
+        "Substituir todos os protocolos"
+      ],
+      "correctAnswer": "Encaminhar tráfego entre redes",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escrever o conteúdo de toda página": [
+          "ROUTER_AS_CONTENT"
+        ],
+        "Guardar todas as senhas da internet": [
+          "ROUTER_AS_CONTENT"
+        ],
+        "Substituir todos os protocolos": [
+          "ROUTER_AS_CONTENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROUTER_ROLE",
+      "explanation": "Roteadores encaminham tráfego conforme informações de rede.",
+      "hint": "O aparelho decide por onde os dados seguem ou escreve a página?",
+      "errorFocus": "ROUTER_AS_CONTENT",
+      "feedback": {
+        "correct": "Boa observação: Roteadores encaminham tráfego conforme informações de rede.",
+        "incorrect": "Roteadores encaminham tráfego conforme informações de rede.",
+        "hint": "O aparelho decide por onde os dados seguem ou escreve a página?",
+        "errorFocus": "ROUTER_AS_CONTENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-03",
+      "statement": "Num modelo cliente-servidor, quem solicita um recurso?",
+      "prompt": "Num modelo cliente-servidor, quem solicita um recurso?",
+      "options": [
+        "Apenas o cabo de rede",
+        "O DNS em todos os casos",
+        "O cliente",
+        "A legenda do diagrama"
+      ],
+      "correctAnswer": "O cliente",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apenas o cabo de rede": [
+          "CLIENT_SERVER_SWAP"
+        ],
+        "O DNS em todos os casos": [
+          "CLIENT_SERVER_SWAP"
+        ],
+        "A legenda do diagrama": [
+          "CLIENT_SERVER_SWAP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CLIENT_SERVER",
+      "explanation": "O cliente solicita; o servidor disponibiliza um recurso ou serviço.",
+      "hint": "Quem inicia a solicitação no exemplo?",
+      "errorFocus": "CLIENT_SERVER_SWAP",
+      "feedback": {
+        "correct": "Boa observação: O cliente solicita; o servidor disponibiliza um recurso ou serviço.",
+        "incorrect": "O cliente solicita; o servidor disponibiliza um recurso ou serviço.",
+        "hint": "Quem inicia a solicitação no exemplo?",
+        "errorFocus": "CLIENT_SERVER_SWAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-04",
+      "statement": "O que é um pacote num modelo de comunicação de rede?",
+      "prompt": "O que é um pacote num modelo de comunicação de rede?",
+      "options": [
+        "Um computador central que contém toda a web",
+        "Uma senha compartilhada",
+        "Um tipo de endereço residencial",
+        "Uma unidade de dados encaminhada conforme protocolos"
+      ],
+      "correctAnswer": "Uma unidade de dados encaminhada conforme protocolos",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um computador central que contém toda a web": [
+          "PACKET_AS_DEVICE"
+        ],
+        "Uma senha compartilhada": [
+          "PACKET_AS_DEVICE"
+        ],
+        "Um tipo de endereço residencial": [
+          "PACKET_AS_DEVICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PACKET_CONCEPT",
+      "explanation": "Pacotes são unidades de dados, não equipamentos.",
+      "hint": "Pense em parte da informação transmitida.",
+      "errorFocus": "PACKET_AS_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: Pacotes são unidades de dados, não equipamentos.",
+        "incorrect": "Pacotes são unidades de dados, não equipamentos.",
+        "hint": "Pense em parte da informação transmitida.",
+        "errorFocus": "PACKET_AS_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-05",
+      "statement": "Para que pode servir o DNS quando alguém usa um nome de domínio?",
+      "prompt": "Para que pode servir o DNS quando alguém usa um nome de domínio?",
+      "options": [
+        "Consultar informações que associam o nome a endereços de rede",
+        "Armazenar o texto completo de toda página",
+        "Garantir que o site seja confiável",
+        "Substituir os roteadores"
+      ],
+      "correctAnswer": "Consultar informações que associam o nome a endereços de rede",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Armazenar o texto completo de toda página": [
+          "DNS_AS_CONTENT_OR_TRUST"
+        ],
+        "Garantir que o site seja confiável": [
+          "DNS_AS_CONTENT_OR_TRUST"
+        ],
+        "Substituir os roteadores": [
+          "DNS_AS_CONTENT_OR_TRUST"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DNS_ROLE",
+      "explanation": "DNS ajuda a localizar endereços; não valida a veracidade do conteúdo.",
+      "hint": "Ele auxilia a encontrar um destino ou julga o texto?",
+      "errorFocus": "DNS_AS_CONTENT_OR_TRUST",
+      "feedback": {
+        "correct": "Boa observação: DNS ajuda a localizar endereços; não valida a veracidade do conteúdo.",
+        "incorrect": "DNS ajuda a localizar endereços; não valida a veracidade do conteúdo.",
+        "hint": "Ele auxilia a encontrar um destino ou julga o texto?",
+        "errorFocus": "DNS_AS_CONTENT_OR_TRUST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-06",
+      "statement": "Um endereço IP ajuda principalmente a quê?",
+      "prompt": "Um endereço IP ajuda principalmente a quê?",
+      "options": [
+        "Descrever se uma notícia é verdadeira",
+        "Identificar um destino ou interface de rede para comunicação",
+        "Definir a cor de uma página",
+        "Armazenar todos os arquivos do usuário"
+      ],
+      "correctAnswer": "Identificar um destino ou interface de rede para comunicação",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Descrever se uma notícia é verdadeira": [
+          "IP_AS_TRUTH"
+        ],
+        "Definir a cor de uma página": [
+          "IP_AS_TRUTH"
+        ],
+        "Armazenar todos os arquivos do usuário": [
+          "IP_AS_TRUTH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "IP_ADDRESS_ROLE",
+      "explanation": "Endereços apoiam comunicação e encaminhamento, não avaliação de conteúdo.",
+      "hint": "O endereço é usado para localizar comunicação na rede.",
+      "errorFocus": "IP_AS_TRUTH",
+      "feedback": {
+        "correct": "Boa observação: Endereços apoiam comunicação e encaminhamento, não avaliação de conteúdo.",
+        "incorrect": "Endereços apoiam comunicação e encaminhamento, não avaliação de conteúdo.",
+        "hint": "O endereço é usado para localizar comunicação na rede.",
+        "errorFocus": "IP_AS_TRUTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-07",
+      "statement": "O cadeado HTTPS prova que todo conteúdo publicado no site é verdadeiro?",
+      "prompt": "O cadeado HTTPS prova que todo conteúdo publicado no site é verdadeiro?",
+      "options": [
+        "Sim, qualquer página protegida é verdadeira",
+        "Sim, o DNS revisa cada afirmação",
+        "Não; ele indica proteção da comunicação, não veracidade do conteúdo",
+        "Não, porque HTTPS impede qualquer conexão"
+      ],
+      "correctAnswer": "Não; ele indica proteção da comunicação, não veracidade do conteúdo",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, qualquer página protegida é verdadeira": [
+          "HTTPS_AS_TRUTH"
+        ],
+        "Sim, o DNS revisa cada afirmação": [
+          "HTTPS_AS_TRUTH"
+        ],
+        "Não, porque HTTPS impede qualquer conexão": [
+          "HTTPS_AS_TRUTH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HTTPS_LOCK",
+      "explanation": "Proteção de transporte não certifica a credibilidade de uma fonte.",
+      "hint": "Segurança da conexão e qualidade da informação são perguntas diferentes.",
+      "errorFocus": "HTTPS_AS_TRUTH",
+      "feedback": {
+        "correct": "Boa observação: Proteção de transporte não certifica a credibilidade de uma fonte.",
+        "incorrect": "Proteção de transporte não certifica a credibilidade de uma fonte.",
+        "hint": "Segurança da conexão e qualidade da informação são perguntas diferentes.",
+        "errorFocus": "HTTPS_AS_TRUTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-08",
+      "statement": "O que um protocolo de rede estabelece?",
+      "prompt": "O que um protocolo de rede estabelece?",
+      "options": [
+        "O significado secreto de todas as páginas",
+        "A posição de cada computador no mundo",
+        "Uma lista de usuários autorizados na escola",
+        "Regras para dispositivos trocarem dados"
+      ],
+      "correctAnswer": "Regras para dispositivos trocarem dados",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O significado secreto de todas as páginas": [
+          "PROTOCOL_AS_DEVICE"
+        ],
+        "A posição de cada computador no mundo": [
+          "PROTOCOL_AS_DEVICE"
+        ],
+        "Uma lista de usuários autorizados na escola": [
+          "PROTOCOL_AS_DEVICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PROTOCOL_RULES",
+      "explanation": "Protocolos definem convenções de comunicação.",
+      "hint": "É um conjunto de regras ou um equipamento?",
+      "errorFocus": "PROTOCOL_AS_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: Protocolos definem convenções de comunicação.",
+        "incorrect": "Protocolos definem convenções de comunicação.",
+        "hint": "É um conjunto de regras ou um equipamento?",
+        "errorFocus": "PROTOCOL_AS_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-09",
+      "statement": "Um diagrama mostra cliente → roteador A → roteador B → servidor. Qual percurso está desenhado?",
+      "prompt": "Um diagrama mostra cliente → roteador A → roteador B → servidor. Qual percurso está desenhado?",
+      "options": [
+        "O tráfego passa pelos roteadores A e B antes do servidor",
+        "O servidor escreve a rota para o cliente",
+        "Os dados não usam roteadores",
+        "O DNS é o único destinatário"
+      ],
+      "correctAnswer": "O tráfego passa pelos roteadores A e B antes do servidor",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O servidor escreve a rota para o cliente": [
+          "ROUTE_TRACE"
+        ],
+        "Os dados não usam roteadores": [
+          "ROUTE_TRACE"
+        ],
+        "O DNS é o único destinatário": [
+          "ROUTE_TRACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "ROUTER_PATH",
+      "explanation": "Siga as setas e a legenda do diagrama.",
+      "hint": "Leia a sequência da origem ao destino.",
+      "errorFocus": "ROUTE_TRACE",
+      "feedback": {
+        "correct": "Boa observação: Siga as setas e a legenda do diagrama.",
+        "incorrect": "Siga as setas e a legenda do diagrama.",
+        "hint": "Leia a sequência da origem ao destino.",
+        "errorFocus": "ROUTE_TRACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-10",
+      "statement": "Uma pessoa envia e-mail usando a internet, sem abrir uma página web. O que isso demonstra?",
+      "prompt": "Uma pessoa envia e-mail usando a internet, sem abrir uma página web. O que isso demonstra?",
+      "options": [
+        "E-mail não usa redes",
+        "A internet oferece serviços além da web",
+        "A web e a internet são sinônimos",
+        "E-mail é um roteador"
+      ],
+      "correctAnswer": "A internet oferece serviços além da web",
+      "answerPosition": "B",
+      "misconceptions": {
+        "E-mail não usa redes": [
+          "WEB_AS_ONLY_SERVICE"
+        ],
+        "A web e a internet são sinônimos": [
+          "WEB_AS_ONLY_SERVICE"
+        ],
+        "E-mail é um roteador": [
+          "WEB_AS_ONLY_SERVICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EMAIL_WEB",
+      "explanation": "Correio eletrônico é outro serviço que pode usar a infraestrutura da internet.",
+      "hint": "O exemplo usa rede sem ser uma página?",
+      "errorFocus": "WEB_AS_ONLY_SERVICE",
+      "feedback": {
+        "correct": "Boa observação: Correio eletrônico é outro serviço que pode usar a infraestrutura da internet.",
+        "incorrect": "Correio eletrônico é outro serviço que pode usar a infraestrutura da internet.",
+        "hint": "O exemplo usa rede sem ser uma página?",
+        "errorFocus": "WEB_AS_ONLY_SERVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-11",
+      "statement": "Três pacotes de uma mensagem chegam em ordem diferente. O que pode ocorrer?",
+      "prompt": "Três pacotes de uma mensagem chegam em ordem diferente. O que pode ocorrer?",
+      "options": [
+        "A rede automaticamente perde todo conteúdo",
+        "Roteadores mudam o significado da mensagem",
+        "Protocolos e mecanismos do serviço podem reorganizar ou tratar os dados, conforme o caso",
+        "O DNS transforma pacotes em notícias"
+      ],
+      "correctAnswer": "Protocolos e mecanismos do serviço podem reorganizar ou tratar os dados, conforme o caso",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A rede automaticamente perde todo conteúdo": [
+          "PACKET_ORDER_GUARANTEE"
+        ],
+        "Roteadores mudam o significado da mensagem": [
+          "PACKET_ORDER_GUARANTEE"
+        ],
+        "O DNS transforma pacotes em notícias": [
+          "PACKET_ORDER_GUARANTEE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PACKET_ORDER",
+      "explanation": "A entrega e ordenação dependem dos protocolos e serviços usados.",
+      "hint": "Não presuma que toda camada resolve o mesmo problema.",
+      "errorFocus": "PACKET_ORDER_GUARANTEE",
+      "feedback": {
+        "correct": "Boa observação: A entrega e ordenação dependem dos protocolos e serviços usados.",
+        "incorrect": "A entrega e ordenação dependem dos protocolos e serviços usados.",
+        "hint": "Não presuma que toda camada resolve o mesmo problema.",
+        "errorFocus": "PACKET_ORDER_GUARANTEE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-12",
+      "statement": "Uma pessoa digita um nome de domínio no navegador. Que etapa pode ajudar a localizar o servidor?",
+      "prompt": "Uma pessoa digita um nome de domínio no navegador. Que etapa pode ajudar a localizar o servidor?",
+      "options": [
+        "A página é convertida em senha",
+        "O roteador altera o texto do site",
+        "O navegador consulta uma lista de colegas",
+        "Uma consulta DNS para obter informação de endereço"
+      ],
+      "correctAnswer": "Uma consulta DNS para obter informação de endereço",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A página é convertida em senha": [
+          "DNS_MISUSE"
+        ],
+        "O roteador altera o texto do site": [
+          "DNS_MISUSE"
+        ],
+        "O navegador consulta uma lista de colegas": [
+          "DNS_MISUSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DOMAIN_NAME_LOOKUP",
+      "explanation": "DNS pode resolver nomes para endereços usados na conexão.",
+      "hint": "Qual serviço lida com nomes de domínio?",
+      "errorFocus": "DNS_MISUSE",
+      "feedback": {
+        "correct": "Boa observação: DNS pode resolver nomes para endereços usados na conexão.",
+        "incorrect": "DNS pode resolver nomes para endereços usados na conexão.",
+        "hint": "Qual serviço lida com nomes de domínio?",
+        "errorFocus": "DNS_MISUSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-13",
+      "statement": "Um servidor fica indisponível, mas outros sites ainda abrem. Qual explicação é coerente?",
+      "prompt": "Um servidor fica indisponível, mas outros sites ainda abrem. Qual explicação é coerente?",
+      "options": [
+        "Um serviço ou servidor pode falhar sem desligar toda a internet",
+        "Todo servidor é a internet inteira",
+        "A rede não possui outros servidores",
+        "O navegador passa a ser roteador"
+      ],
+      "correctAnswer": "Um serviço ou servidor pode falhar sem desligar toda a internet",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todo servidor é a internet inteira": [
+          "SINGLE_SERVER_ASSUMPTION"
+        ],
+        "A rede não possui outros servidores": [
+          "SINGLE_SERVER_ASSUMPTION"
+        ],
+        "O navegador passa a ser roteador": [
+          "SINGLE_SERVER_ASSUMPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SERVER_IS_NOT_INTERNET",
+      "explanation": "A internet é composta de muitas redes e serviços; falhas podem ser localizadas.",
+      "hint": "A indisponibilidade está limitada a qual recurso?",
+      "errorFocus": "SINGLE_SERVER_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: A internet é composta de muitas redes e serviços; falhas podem ser localizadas.",
+        "incorrect": "A internet é composta de muitas redes e serviços; falhas podem ser localizadas.",
+        "hint": "A indisponibilidade está limitada a qual recurso?",
+        "errorFocus": "SINGLE_SERVER_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-14",
+      "statement": "Uma página usa HTTPS. Que avaliação ainda é necessária?",
+      "prompt": "Uma página usa HTTPS. Que avaliação ainda é necessária?",
+      "options": [
+        "Nenhuma: todo conteúdo é garantido",
+        "Verificar autoria, domínio, contexto e confiabilidade das informações",
+        "Somente contar os roteadores",
+        "Desativar o navegador"
+      ],
+      "correctAnswer": "Verificar autoria, domínio, contexto e confiabilidade das informações",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Nenhuma: todo conteúdo é garantido": [
+          "TRANSPORT_SECURITY_OVERCLAIM"
+        ],
+        "Somente contar os roteadores": [
+          "TRANSPORT_SECURITY_OVERCLAIM"
+        ],
+        "Desativar o navegador": [
+          "TRANSPORT_SECURITY_OVERCLAIM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HTTPS_CERTIFICATE",
+      "explanation": "HTTPS protege comunicação, mas não valida afirmações ou intenções.",
+      "hint": "Que aspecto não é confirmado pelo cadeado?",
+      "errorFocus": "TRANSPORT_SECURITY_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: HTTPS protege comunicação, mas não valida afirmações ou intenções.",
+        "incorrect": "HTTPS protege comunicação, mas não valida afirmações ou intenções.",
+        "hint": "Que aspecto não é confirmado pelo cadeado?",
+        "errorFocus": "TRANSPORT_SECURITY_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-15",
+      "statement": "Um pacote cruza redes diferentes por roteadores. O que o modelo ilustra?",
+      "prompt": "Um pacote cruza redes diferentes por roteadores. O que o modelo ilustra?",
+      "options": [
+        "Uma rede única precisa de um computador central para cada pacote",
+        "Pacotes são páginas completas sempre armazenadas no DNS",
+        "A internet interliga redes e encaminha dados entre elas",
+        "Toda rota é fisicamente idêntica"
+      ],
+      "correctAnswer": "A internet interliga redes e encaminha dados entre elas",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma rede única precisa de um computador central para cada pacote": [
+          "NETWORK_OF_NETWORKS"
+        ],
+        "Pacotes são páginas completas sempre armazenadas no DNS": [
+          "NETWORK_OF_NETWORKS"
+        ],
+        "Toda rota é fisicamente idêntica": [
+          "NETWORK_OF_NETWORKS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "PACKET_NETWORKS",
+      "explanation": "A internet funciona pela interconexão de redes e encaminhamento.",
+      "hint": "O que acontece quando o dado cruza limites entre redes?",
+      "errorFocus": "NETWORK_OF_NETWORKS",
+      "feedback": {
+        "correct": "Boa observação: A internet funciona pela interconexão de redes e encaminhamento.",
+        "incorrect": "A internet funciona pela interconexão de redes e encaminhamento.",
+        "hint": "O que acontece quando o dado cruza limites entre redes?",
+        "errorFocus": "NETWORK_OF_NETWORKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-16",
+      "statement": "Qual combinação descreve melhor um nome de domínio e DNS?",
+      "prompt": "Qual combinação descreve melhor um nome de domínio e DNS?",
+      "options": [
+        "DNS é o conteúdo visual de uma página",
+        "Domínio é sempre a senha do roteador",
+        "DNS prova a identidade moral do autor",
+        "O domínio é um nome legível; DNS auxilia a encontrar informação de endereço correspondente"
+      ],
+      "correctAnswer": "O domínio é um nome legível; DNS auxilia a encontrar informação de endereço correspondente",
+      "answerPosition": "D",
+      "misconceptions": {
+        "DNS é o conteúdo visual de uma página": [
+          "DOMAIN_DNS_SWAP"
+        ],
+        "Domínio é sempre a senha do roteador": [
+          "DOMAIN_DNS_SWAP"
+        ],
+        "DNS prova a identidade moral do autor": [
+          "DOMAIN_DNS_SWAP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WEB_AND_DNS",
+      "explanation": "Nomes e resolução de endereços têm papéis diferentes da página e da confiança.",
+      "hint": "Separe nome, endereço e conteúdo.",
+      "errorFocus": "DOMAIN_DNS_SWAP",
+      "feedback": {
+        "correct": "Boa observação: Nomes e resolução de endereços têm papéis diferentes da página e da confiança.",
+        "incorrect": "Nomes e resolução de endereços têm papéis diferentes da página e da confiança.",
+        "hint": "Separe nome, endereço e conteúdo.",
+        "errorFocus": "DOMAIN_DNS_SWAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-17",
+      "statement": "Uma biblioteca fictícia publica um catálogo web num servidor. Que elementos pertencem ao modelo básico de solicitação?",
+      "prompt": "Uma biblioteca fictícia publica um catálogo web num servidor. Que elementos pertencem ao modelo básico de solicitação?",
+      "options": [
+        "Cliente, rede com roteadores e servidor do catálogo",
+        "Somente DNS e o texto de uma senha",
+        "Um único cabo que contém a página",
+        "Uma rede social obrigatória"
+      ],
+      "correctAnswer": "Cliente, rede com roteadores e servidor do catálogo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente DNS e o texto de uma senha": [
+          "MODEL_MISSING_ROLES"
+        ],
+        "Um único cabo que contém a página": [
+          "MODEL_MISSING_ROLES"
+        ],
+        "Uma rede social obrigatória": [
+          "MODEL_MISSING_ROLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MODEL",
+      "contextFamily": "SCHOOL_LIBRARY_REQUEST",
+      "explanation": "O modelo identifica quem solicita, por onde a comunicação segue e quem fornece o recurso.",
+      "hint": "Quais são origem, intermediários e destino?",
+      "errorFocus": "MODEL_MISSING_ROLES",
+      "feedback": {
+        "correct": "Boa observação: O modelo identifica quem solicita, por onde a comunicação segue e quem fornece o recurso.",
+        "incorrect": "O modelo identifica quem solicita, por onde a comunicação segue e quem fornece o recurso.",
+        "hint": "Quais são origem, intermediários e destino?",
+        "errorFocus": "MODEL_MISSING_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-18",
+      "statement": "Uma conexão entre dois roteadores falha. O que é uma conclusão prudente?",
+      "prompt": "Uma conexão entre dois roteadores falha. O que é uma conclusão prudente?",
+      "options": [
+        "A internet inteira sempre para",
+        "O tráfego pode ser afetado e a rede pode ou não ter rota alternativa conforme sua configuração",
+        "Todo pacote muda de rota sem demora",
+        "O DNS repara qualquer defeito físico"
+      ],
+      "correctAnswer": "O tráfego pode ser afetado e a rede pode ou não ter rota alternativa conforme sua configuração",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A internet inteira sempre para": [
+          "AUTOMATIC_REDUNDANCY_CLAIM"
+        ],
+        "Todo pacote muda de rota sem demora": [
+          "AUTOMATIC_REDUNDANCY_CLAIM"
+        ],
+        "O DNS repara qualquer defeito físico": [
+          "AUTOMATIC_REDUNDANCY_CLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ROUTE_FAILURE",
+      "explanation": "Rotas alternativas dependem da topologia, protocolos e condições reais.",
+      "hint": "O diagrama mostra outra ligação?",
+      "errorFocus": "AUTOMATIC_REDUNDANCY_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: Rotas alternativas dependem da topologia, protocolos e condições reais.",
+        "incorrect": "Rotas alternativas dependem da topologia, protocolos e condições reais.",
+        "hint": "O diagrama mostra outra ligação?",
+        "errorFocus": "AUTOMATIC_REDUNDANCY_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-19",
+      "statement": "Um nome foi consultado recentemente e abriu rapidamente. Qual explicação possível respeita o modelo?",
+      "prompt": "Um nome foi consultado recentemente e abriu rapidamente. Qual explicação possível respeita o modelo?",
+      "options": [
+        "O DNS armazenou todo o site no nome",
+        "O roteador escreveu o conteúdo",
+        "Uma resposta pode estar em cache por um período definido",
+        "O servidor não participou da resposta"
+      ],
+      "correctAnswer": "Uma resposta pode estar em cache por um período definido",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O DNS armazenou todo o site no nome": [
+          "DNS_CACHE_AS_SITE"
+        ],
+        "O roteador escreveu o conteúdo": [
+          "DNS_CACHE_AS_SITE"
+        ],
+        "O servidor não participou da resposta": [
+          "DNS_CACHE_AS_SITE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DNS_CACHE",
+      "explanation": "Caches podem guardar respostas de resolução, não necessariamente a página inteira.",
+      "hint": "O que pode ser armazenado temporariamente: endereço ou página?",
+      "errorFocus": "DNS_CACHE_AS_SITE",
+      "feedback": {
+        "correct": "Boa observação: Caches podem guardar respostas de resolução, não necessariamente a página inteira.",
+        "incorrect": "Caches podem guardar respostas de resolução, não necessariamente a página inteira.",
+        "hint": "O que pode ser armazenado temporariamente: endereço ou página?",
+        "errorFocus": "DNS_CACHE_AS_SITE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-20",
+      "statement": "Uma mensagem leva a uma página HTTPS que imita um portal confiável. Qual decisão é mais segura?",
+      "prompt": "Uma mensagem leva a uma página HTTPS que imita um portal confiável. Qual decisão é mais segura?",
+      "options": [
+        "Confiar porque HTTPS torna o conteúdo legítimo",
+        "Compartilhar a senha para testar",
+        "Desativar as atualizações do dispositivo",
+        "Confirmar o domínio por canal conhecido e não inserir credenciais a partir da mensagem"
+      ],
+      "correctAnswer": "Confirmar o domínio por canal conhecido e não inserir credenciais a partir da mensagem",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Confiar porque HTTPS torna o conteúdo legítimo": [
+          "HTTPS_PHISHING_CONFUSION"
+        ],
+        "Compartilhar a senha para testar": [
+          "HTTPS_PHISHING_CONFUSION"
+        ],
+        "Desativar as atualizações do dispositivo": [
+          "HTTPS_PHISHING_CONFUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HTTPS_AND_PHISHING",
+      "explanation": "HTTPS não impede golpes de personificação; domínio e origem ainda importam.",
+      "hint": "O cadeado confirma conexão protegida, mas qual é o domínio?",
+      "errorFocus": "HTTPS_PHISHING_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: HTTPS não impede golpes de personificação; domínio e origem ainda importam.",
+        "incorrect": "HTTPS não impede golpes de personificação; domínio e origem ainda importam.",
+        "hint": "O cadeado confirma conexão protegida, mas qual é o domínio?",
+        "errorFocus": "HTTPS_PHISHING_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-21",
+      "statement": "Qual afirmação diferencia domínio de endereço IP?",
+      "prompt": "Qual afirmação diferencia domínio de endereço IP?",
+      "options": [
+        "Domínio é um nome legível; IP é um identificador de rede usado para comunicação",
+        "Domínio é sempre um endereço de rua",
+        "IP descreve a veracidade de um texto",
+        "São dois nomes para senha pessoal"
+      ],
+      "correctAnswer": "Domínio é um nome legível; IP é um identificador de rede usado para comunicação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Domínio é sempre um endereço de rua": [
+          "DOMAIN_IP_CONFUSION"
+        ],
+        "IP descreve a veracidade de um texto": [
+          "DOMAIN_IP_CONFUSION"
+        ],
+        "São dois nomes para senha pessoal": [
+          "DOMAIN_IP_CONFUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "IP_AND_DOMAIN",
+      "explanation": "Os papéis são relacionados, mas distintos.",
+      "hint": "Qual é o nome e qual é o endereço numérico?",
+      "errorFocus": "DOMAIN_IP_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: Os papéis são relacionados, mas distintos.",
+        "incorrect": "Os papéis são relacionados, mas distintos.",
+        "hint": "Qual é o nome e qual é o endereço numérico?",
+        "errorFocus": "DOMAIN_IP_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-22",
+      "statement": "Uma aplicação usa protocolos da web sobre a internet. Qual relação está correta?",
+      "prompt": "Uma aplicação usa protocolos da web sobre a internet. Qual relação está correta?",
+      "options": [
+        "O protocolo substitui toda rede física",
+        "A internet oferece infraestrutura e os protocolos organizam a comunicação do serviço",
+        "Internet é apenas a tela do navegador",
+        "Um protocolo determina se a notícia é verdadeira"
+      ],
+      "correctAnswer": "A internet oferece infraestrutura e os protocolos organizam a comunicação do serviço",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O protocolo substitui toda rede física": [
+          "PROTOCOL_LAYER_CONFUSION"
+        ],
+        "Internet é apenas a tela do navegador": [
+          "PROTOCOL_LAYER_CONFUSION"
+        ],
+        "Um protocolo determina se a notícia é verdadeira": [
+          "PROTOCOL_LAYER_CONFUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SERVICE_PROTOCOL",
+      "explanation": "Infraestrutura, protocolos e aplicações atuam em papéis diferentes.",
+      "hint": "Separe transporte, regras e serviço.",
+      "errorFocus": "PROTOCOL_LAYER_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: Infraestrutura, protocolos e aplicações atuam em papéis diferentes.",
+        "incorrect": "Infraestrutura, protocolos e aplicações atuam em papéis diferentes.",
+        "hint": "Separe transporte, regras e serviço.",
+        "errorFocus": "PROTOCOL_LAYER_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-23",
+      "statement": "Por que dividir uma mensagem em pacotes pode ser útil?",
+      "prompt": "Por que dividir uma mensagem em pacotes pode ser útil?",
+      "options": [
+        "Garante que nenhuma falha ocorra",
+        "Transforma todos os dados em e-mail",
+        "Permite encaminhar partes de dados segundo protocolos pela rede",
+        "Dispensa endereços"
+      ],
+      "correctAnswer": "Permite encaminhar partes de dados segundo protocolos pela rede",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Garante que nenhuma falha ocorra": [
+          "PACKET_BENEFITS_OVERCLAIM"
+        ],
+        "Transforma todos os dados em e-mail": [
+          "PACKET_BENEFITS_OVERCLAIM"
+        ],
+        "Dispensa endereços": [
+          "PACKET_BENEFITS_OVERCLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PACKET_REASSEMBLY",
+      "explanation": "Pacotes apoiam o transporte em rede, sem garantir ausência de falhas.",
+      "hint": "Que vantagem de encaminhamento o modelo mostra?",
+      "errorFocus": "PACKET_BENEFITS_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: Pacotes apoiam o transporte em rede, sem garantir ausência de falhas.",
+        "incorrect": "Pacotes apoiam o transporte em rede, sem garantir ausência de falhas.",
+        "hint": "Que vantagem de encaminhamento o modelo mostra?",
+        "errorFocus": "PACKET_BENEFITS_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-24",
+      "statement": "Uma maquete tem só três roteadores. O que não se deve inferir?",
+      "prompt": "Uma maquete tem só três roteadores. O que não se deve inferir?",
+      "options": [
+        "Que roteadores encaminham tráfego",
+        "Que redes se conectam",
+        "Que diagramas podem simplificar",
+        "Que a internet real tenha exatamente três roteadores ou sempre aquela rota"
+      ],
+      "correctAnswer": "Que a internet real tenha exatamente três roteadores ou sempre aquela rota",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que roteadores encaminham tráfego": [
+          "MODEL_AS_REAL_TOPOLOGY"
+        ],
+        "Que redes se conectam": [
+          "MODEL_AS_REAL_TOPOLOGY"
+        ],
+        "Que diagramas podem simplificar": [
+          "MODEL_AS_REAL_TOPOLOGY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "INTERNET_MODEL_LIMIT",
+      "explanation": "Modelos de aula ilustram relações, não retratam toda topologia real.",
+      "hint": "Que elementos foram omitidos pela simplificação?",
+      "errorFocus": "MODEL_AS_REAL_TOPOLOGY",
+      "feedback": {
+        "correct": "Boa observação: Modelos de aula ilustram relações, não retratam toda topologia real.",
+        "incorrect": "Modelos de aula ilustram relações, não retratam toda topologia real.",
+        "hint": "Que elementos foram omitidos pela simplificação?",
+        "errorFocus": "MODEL_AS_REAL_TOPOLOGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-25",
+      "statement": "A web é: ",
+      "prompt": "A web é: ",
+      "options": [
+        "um serviço que utiliza a infraestrutura da internet",
+        "a única rede existente",
+        "um tipo de endereço IP",
+        "o nome de todos os roteadores"
+      ],
+      "correctAnswer": "um serviço que utiliza a infraestrutura da internet",
+      "answerPosition": "A",
+      "misconceptions": {
+        "a única rede existente": [
+          "WEB_LOCK"
+        ],
+        "um tipo de endereço IP": [
+          "WEB_LOCK"
+        ],
+        "o nome de todos os roteadores": [
+          "WEB_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INTERNET_WEB_LOCK",
+      "explanation": "A internet inclui infraestrutura e vários serviços.",
+      "hint": "Qual é o serviço e qual é a infraestrutura?",
+      "errorFocus": "WEB_LOCK",
+      "feedback": {
+        "correct": "Boa observação: A internet inclui infraestrutura e vários serviços.",
+        "incorrect": "A internet inclui infraestrutura e vários serviços.",
+        "hint": "Qual é o serviço e qual é a infraestrutura?",
+        "errorFocus": "WEB_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-26",
+      "statement": "Roteadores ajudam a: ",
+      "prompt": "Roteadores ajudam a: ",
+      "options": [
+        "validar se cada notícia é verdadeira",
+        "encaminhar tráfego entre redes",
+        "armazenar todo o conteúdo mundial",
+        "substituir os protocolos"
+      ],
+      "correctAnswer": "encaminhar tráfego entre redes",
+      "answerPosition": "B",
+      "misconceptions": {
+        "validar se cada notícia é verdadeira": [
+          "ROUTER_LOCK"
+        ],
+        "armazenar todo o conteúdo mundial": [
+          "ROUTER_LOCK"
+        ],
+        "substituir os protocolos": [
+          "ROUTER_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROUTER_LOCK",
+      "explanation": "Roteadores encaminham tráfego segundo informações de rede.",
+      "hint": "Qual papel aparece no percurso?",
+      "errorFocus": "ROUTER_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Roteadores encaminham tráfego segundo informações de rede.",
+        "incorrect": "Roteadores encaminham tráfego segundo informações de rede.",
+        "hint": "Qual papel aparece no percurso?",
+        "errorFocus": "ROUTER_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-27",
+      "statement": "DNS pode ajudar um dispositivo a: ",
+      "prompt": "DNS pode ajudar um dispositivo a: ",
+      "options": [
+        "revisar a confiabilidade do autor",
+        "reunir todo o conteúdo da página",
+        "encontrar informações de endereço associadas a um nome de domínio",
+        "escolher a senha do usuário"
+      ],
+      "correctAnswer": "encontrar informações de endereço associadas a um nome de domínio",
+      "answerPosition": "C",
+      "misconceptions": {
+        "revisar a confiabilidade do autor": [
+          "DNS_LOCK"
+        ],
+        "reunir todo o conteúdo da página": [
+          "DNS_LOCK"
+        ],
+        "escolher a senha do usuário": [
+          "DNS_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DNS_LOCK",
+      "explanation": "DNS apoia resolução de nomes, não análise de conteúdo.",
+      "hint": "O nome precisa ser associado a que informação?",
+      "errorFocus": "DNS_LOCK",
+      "feedback": {
+        "correct": "Boa observação: DNS apoia resolução de nomes, não análise de conteúdo.",
+        "incorrect": "DNS apoia resolução de nomes, não análise de conteúdo.",
+        "hint": "O nome precisa ser associado a que informação?",
+        "errorFocus": "DNS_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-28",
+      "statement": "HTTPS protege principalmente: ",
+      "prompt": "HTTPS protege principalmente: ",
+      "options": [
+        "a verdade de todas as afirmações do site",
+        "a disponibilidade permanente do servidor",
+        "a identidade civil do autor",
+        "a comunicação entre cliente e servidor contra leitura ou alteração no caminho"
+      ],
+      "correctAnswer": "a comunicação entre cliente e servidor contra leitura ou alteração no caminho",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a verdade de todas as afirmações do site": [
+          "HTTPS_LOCK"
+        ],
+        "a disponibilidade permanente do servidor": [
+          "HTTPS_LOCK"
+        ],
+        "a identidade civil do autor": [
+          "HTTPS_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HTTPS_PROTECTION_LOCK",
+      "explanation": "Proteção de transporte não é garantia editorial.",
+      "hint": "Qual risco de comunicação o protocolo reduz?",
+      "errorFocus": "HTTPS_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Proteção de transporte não é garantia editorial.",
+        "incorrect": "Proteção de transporte não é garantia editorial.",
+        "hint": "Qual risco de comunicação o protocolo reduz?",
+        "errorFocus": "HTTPS_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-29",
+      "statement": "No modelo cliente-servidor, o servidor geralmente: ",
+      "prompt": "No modelo cliente-servidor, o servidor geralmente: ",
+      "options": [
+        "oferece um recurso ou serviço solicitado pelo cliente",
+        "é toda a internet",
+        "converte qualquer nome em verdade",
+        "dispensa conexão de rede"
+      ],
+      "correctAnswer": "oferece um recurso ou serviço solicitado pelo cliente",
+      "answerPosition": "A",
+      "misconceptions": {
+        "é toda a internet": [
+          "SERVER_ROLE_LOCK"
+        ],
+        "converte qualquer nome em verdade": [
+          "SERVER_ROLE_LOCK"
+        ],
+        "dispensa conexão de rede": [
+          "SERVER_ROLE_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "CLIENT_SERVER_LOCK",
+      "explanation": "O servidor disponibiliza recursos aos clientes.",
+      "hint": "Quem responde à solicitação?",
+      "errorFocus": "SERVER_ROLE_LOCK",
+      "feedback": {
+        "correct": "Boa observação: O servidor disponibiliza recursos aos clientes.",
+        "incorrect": "O servidor disponibiliza recursos aos clientes.",
+        "hint": "Quem responde à solicitação?",
+        "errorFocus": "SERVER_ROLE_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-30",
+      "statement": "Dizer que a internet interliga redes significa que: ",
+      "prompt": "Dizer que a internet interliga redes significa que: ",
+      "options": [
+        "todos os dispositivos têm o mesmo proprietário",
+        "muitas redes conectadas podem trocar dados usando regras compartilhadas",
+        "um computador central guarda todos os serviços",
+        "não existem falhas locais"
+      ],
+      "correctAnswer": "muitas redes conectadas podem trocar dados usando regras compartilhadas",
+      "answerPosition": "B",
+      "misconceptions": {
+        "todos os dispositivos têm o mesmo proprietário": [
+          "NETWORKS_LOCK"
+        ],
+        "um computador central guarda todos os serviços": [
+          "NETWORKS_LOCK"
+        ],
+        "não existem falhas locais": [
+          "NETWORKS_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NETWORKS_LOCK",
+      "explanation": "Interconexão permite comunicação entre redes sem implicar centralização total.",
+      "hint": "O que a palavra interconexão destaca?",
+      "errorFocus": "NETWORKS_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Interconexão permite comunicação entre redes sem implicar centralização total.",
+        "incorrect": "Interconexão permite comunicação entre redes sem implicar centralização total.",
+        "hint": "O que a palavra interconexão destaca?",
+        "errorFocus": "NETWORKS_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-31",
+      "statement": "Um pacote é: ",
+      "prompt": "Um pacote é: ",
+      "options": [
+        "um tipo de roteador",
+        "um nome de domínio",
+        "uma unidade de dados transportada segundo protocolos",
+        "uma prova de segurança"
+      ],
+      "correctAnswer": "uma unidade de dados transportada segundo protocolos",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um tipo de roteador": [
+          "PACKET_LOCK"
+        ],
+        "um nome de domínio": [
+          "PACKET_LOCK"
+        ],
+        "uma prova de segurança": [
+          "PACKET_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PACKET_LOCK",
+      "explanation": "Pacotes são unidades de dados, não equipamentos ou certificados.",
+      "hint": "Que elemento é encaminhado?",
+      "errorFocus": "PACKET_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Pacotes são unidades de dados, não equipamentos ou certificados.",
+        "incorrect": "Pacotes são unidades de dados, não equipamentos ou certificados.",
+        "hint": "Que elemento é encaminhado?",
+        "errorFocus": "PACKET_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-32",
+      "statement": "Mesmo quando um site usa HTTPS, uma informação importante deve ser: ",
+      "prompt": "Mesmo quando um site usa HTTPS, uma informação importante deve ser: ",
+      "options": [
+        "aceita sem leitura",
+        "compartilhada sem conferir",
+        "considerada verdadeira por padrão",
+        "verificada quanto à autoria, domínio, contexto e evidências"
+      ],
+      "correctAnswer": "verificada quanto à autoria, domínio, contexto e evidências",
+      "answerPosition": "D",
+      "misconceptions": {
+        "aceita sem leitura": [
+          "SOURCE_CHECK_LOCK"
+        ],
+        "compartilhada sem conferir": [
+          "SOURCE_CHECK_LOCK"
+        ],
+        "considerada verdadeira por padrão": [
+          "SOURCE_CHECK_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SOURCE_CHECK_LOCK",
+      "explanation": "A segurança da conexão não substitui checagem de fonte.",
+      "hint": "O que o HTTPS não atesta?",
+      "errorFocus": "SOURCE_CHECK_LOCK",
+      "feedback": {
+        "correct": "Boa observação: A segurança da conexão não substitui checagem de fonte.",
+        "incorrect": "A segurança da conexão não substitui checagem de fonte.",
+        "hint": "O que o HTTPS não atesta?",
+        "errorFocus": "SOURCE_CHECK_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-33",
+      "statement": "A internet conecta principalmente: ",
+      "prompt": "A internet conecta principalmente: ",
+      "options": [
+        "redes e dispositivos por regras de comunicação",
+        "somente páginas web",
+        "apenas um computador central",
+        "somente impressoras locais"
+      ],
+      "correctAnswer": "redes e dispositivos por regras de comunicação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "somente páginas web": [
+          "INTERNET_RECALL"
+        ],
+        "apenas um computador central": [
+          "INTERNET_RECALL"
+        ],
+        "somente impressoras locais": [
+          "INTERNET_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "INTERNET_REVIEW",
+      "explanation": "A internet é uma interconexão de redes.",
+      "hint": "Qual é a infraestrutura mais ampla?",
+      "errorFocus": "INTERNET_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A internet é uma interconexão de redes.",
+        "incorrect": "A internet é uma interconexão de redes.",
+        "hint": "Qual é a infraestrutura mais ampla?",
+        "errorFocus": "INTERNET_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-34",
+      "statement": "Explique brevemente o papel do DNS.",
+      "prompt": "Explique brevemente o papel do DNS.",
+      "options": [
+        "Armazenar todas as mensagens do usuário",
+        "Ajudar a associar nomes de domínio a informações de endereço",
+        "Garantir que um site seja honesto",
+        "Encaminhar cada pacote sem roteadores"
+      ],
+      "correctAnswer": "Ajudar a associar nomes de domínio a informações de endereço",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Armazenar todas as mensagens do usuário": [
+          "DNS_RECALL"
+        ],
+        "Garantir que um site seja honesto": [
+          "DNS_RECALL"
+        ],
+        "Encaminhar cada pacote sem roteadores": [
+          "DNS_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DNS_REVIEW",
+      "explanation": "DNS auxilia a resolução de nomes.",
+      "hint": "O que um nome legível precisa localizar?",
+      "errorFocus": "DNS_RECALL",
+      "feedback": {
+        "correct": "Boa observação: DNS auxilia a resolução de nomes.",
+        "incorrect": "DNS auxilia a resolução de nomes.",
+        "hint": "O que um nome legível precisa localizar?",
+        "errorFocus": "DNS_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-35",
+      "statement": "Por que a web não representa todos os serviços da internet?",
+      "prompt": "Por que a web não representa todos os serviços da internet?",
+      "options": [
+        "Porque a web não transmite dados",
+        "Porque e-mail é sempre offline",
+        "Porque outros serviços, como e-mail e chamadas, também podem usar a internet",
+        "Porque internet não usa protocolos"
+      ],
+      "correctAnswer": "Porque outros serviços, como e-mail e chamadas, também podem usar a internet",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque a web não transmite dados": [
+          "WEB_RECALL"
+        ],
+        "Porque e-mail é sempre offline": [
+          "WEB_RECALL"
+        ],
+        "Porque internet não usa protocolos": [
+          "WEB_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WEB_REVIEW",
+      "explanation": "A internet suporta vários serviços.",
+      "hint": "Considere outro serviço de comunicação online.",
+      "errorFocus": "WEB_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A internet suporta vários serviços.",
+        "incorrect": "A internet suporta vários serviços.",
+        "hint": "Considere outro serviço de comunicação online.",
+        "errorFocus": "WEB_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-36",
+      "statement": "Em uma rede, roteadores podem: ",
+      "prompt": "Em uma rede, roteadores podem: ",
+      "options": [
+        "escrever notícias",
+        "provar a confiabilidade das fontes",
+        "substituir todos os servidores",
+        "encaminhar tráfego entre redes"
+      ],
+      "correctAnswer": "encaminhar tráfego entre redes",
+      "answerPosition": "D",
+      "misconceptions": {
+        "escrever notícias": [
+          "ROUTER_RECALL"
+        ],
+        "provar a confiabilidade das fontes": [
+          "ROUTER_RECALL"
+        ],
+        "substituir todos os servidores": [
+          "ROUTER_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ROUTER_REVIEW",
+      "explanation": "Roteadores ajudam a encaminhar dados.",
+      "hint": "Que equipamento conecta caminhos de rede?",
+      "errorFocus": "ROUTER_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Roteadores ajudam a encaminhar dados.",
+        "incorrect": "Roteadores ajudam a encaminhar dados.",
+        "hint": "Que equipamento conecta caminhos de rede?",
+        "errorFocus": "ROUTER_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-37",
+      "statement": "O que deve ser conferido além do HTTPS?",
+      "prompt": "O que deve ser conferido além do HTTPS?",
+      "options": [
+        "Origem, domínio, autoria, contexto e evidências do conteúdo",
+        "Apenas o tamanho da página",
+        "Somente a quantidade de roteadores",
+        "A cor do cadeado"
+      ],
+      "correctAnswer": "Origem, domínio, autoria, contexto e evidências do conteúdo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apenas o tamanho da página": [
+          "HTTPS_RECALL"
+        ],
+        "Somente a quantidade de roteadores": [
+          "HTTPS_RECALL"
+        ],
+        "A cor do cadeado": [
+          "HTTPS_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HTTPS_REVIEW",
+      "explanation": "Proteção da conexão não valida o conteúdo.",
+      "hint": "Que evidências ajudam a julgar a fonte?",
+      "errorFocus": "HTTPS_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Proteção da conexão não valida o conteúdo.",
+        "incorrect": "Proteção da conexão não valida o conteúdo.",
+        "hint": "Que evidências ajudam a julgar a fonte?",
+        "errorFocus": "HTTPS_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-38",
+      "statement": "Que função os protocolos têm na transmissão de dados?",
+      "prompt": "Que função os protocolos têm na transmissão de dados?",
+      "options": [
+        "Definir a verdade de uma página",
+        "Definir regras para dispositivos comunicarem e tratarem dados",
+        "Escolher a localização física de todos os usuários",
+        "Substituir endereços"
+      ],
+      "correctAnswer": "Definir regras para dispositivos comunicarem e tratarem dados",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Definir a verdade de uma página": [
+          "PROTOCOL_RECALL"
+        ],
+        "Escolher a localização física de todos os usuários": [
+          "PROTOCOL_RECALL"
+        ],
+        "Substituir endereços": [
+          "PROTOCOL_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "PACKET_REVIEW",
+      "explanation": "Protocolos orientam a comunicação.",
+      "hint": "São regras ou objetos físicos?",
+      "errorFocus": "PROTOCOL_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Protocolos orientam a comunicação.",
+        "incorrect": "Protocolos orientam a comunicação.",
+        "hint": "São regras ou objetos físicos?",
+        "errorFocus": "PROTOCOL_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-39",
+      "statement": "Por que um desenho simplificado não deve ser tratado como mapa completo da internet?",
+      "prompt": "Por que um desenho simplificado não deve ser tratado como mapa completo da internet?",
+      "options": [
+        "Porque roteadores não existem",
+        "Porque toda maquete é falsa",
+        "Ele mostra uma seleção de componentes e relações, omitindo grande parte da infraestrutura real",
+        "Porque os dados nunca percorrem redes"
+      ],
+      "correctAnswer": "Ele mostra uma seleção de componentes e relações, omitindo grande parte da infraestrutura real",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque roteadores não existem": [
+          "MODEL_LIMIT_RECALL"
+        ],
+        "Porque toda maquete é falsa": [
+          "MODEL_LIMIT_RECALL"
+        ],
+        "Porque os dados nunca percorrem redes": [
+          "MODEL_LIMIT_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MODEL_LIMIT_REVIEW",
+      "explanation": "Um modelo escolar explica ideias sem representar toda a escala real.",
+      "hint": "O que a simplificação deixa de mostrar?",
+      "errorFocus": "MODEL_LIMIT_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Um modelo escolar explica ideias sem representar toda a escala real.",
+        "incorrect": "Um modelo escolar explica ideias sem representar toda a escala real.",
+        "hint": "O que a simplificação deixa de mostrar?",
+        "errorFocus": "MODEL_LIMIT_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef08co06-internet-structure-and-operation-40",
+      "statement": "Num modelo básico de navegação, o cliente faz o quê?",
+      "prompt": "Num modelo básico de navegação, o cliente faz o quê?",
+      "options": [
+        "Torna-se automaticamente o DNS",
+        "Substitui a internet",
+        "Garante a veracidade do recurso",
+        "Solicita um recurso a um servidor por meio de comunicação de rede"
+      ],
+      "correctAnswer": "Solicita um recurso a um servidor por meio de comunicação de rede",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Torna-se automaticamente o DNS": [
+          "CLIENT_RECALL"
+        ],
+        "Substitui a internet": [
+          "CLIENT_RECALL"
+        ],
+        "Garante a veracidade do recurso": [
+          "CLIENT_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "CLIENT_SERVER_REVIEW",
+      "explanation": "Clientes solicitam serviços e servidores respondem.",
+      "hint": "Quem pede e quem fornece?",
+      "errorFocus": "CLIENT_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Clientes solicitam serviços e servidores respondem.",
+        "incorrect": "Clientes solicitam serviços e servidores respondem.",
+        "hint": "Quem pede e quem fornece?",
+        "errorFocus": "CLIENT_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Fornecer diagramas de rede com descrição textual de cada nó e seta, alto contraste e versão tátil simplificada.",
+          "Permitir explicar o percurso por cartões, fala, texto, diagrama ou comunicação alternativa.",
+          "Dividir os termos em etapas: dispositivo, nome/endereço, roteador, protocolo e serviço.",
+          "Usar domínios e redes inventados; não solicitar credenciais, histórico de navegação ou identificadores reais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01ma07-compose-decompose-two-order-numbers",
+  "officialCode": "EF01MA07",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01ma07-compose-decompose-two-order-numbers.json",
+  "canonicalSkillCode": "AUTHORING_EF01MA07_COMPOSE_DECOMPOSE_TWO_ORDERS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "composição e decomposição de números de até duas ordens por adições",
+  "officialDescriptor": "Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 281 },
+  "lesson": {
+    "title": "Números em grupos de dez e unidades",
+    "objective": "Compor e decompor números naturais de até duas ordens de diferentes maneiras usando adições e representações de dezenas e unidades, com apoio de materiais manipuláveis.",
+    "summary": "Um número de duas ordens pode ser representado por dezenas e unidades e também por diferentes adições. Por exemplo, 34 pode ser visto como 30 + 4 ou 20 + 14. Agrupar dez unidades ajuda a compreender o sistema decimal, mas as representações precisam continuar equivalentes ao mesmo total. Tampinhas, blocos, desenhos e quadros de dezenas podem apoiar a exploração. Estratégias podem variar; rapidez não é o objetivo, e estudantes podem usar materiais ou registros visuais.",
+    "explanation": "Para representar 42, forme quatro grupos de dez e mais duas unidades: 40 + 2. Também é possível reorganizar um grupo de dez em unidades e obter 30 + 12. As duas adições totalizam 42. Confira contando o material ou somando os valores. O primeiro número representa dezenas quando agrupado de dez em dez; as unidades restantes completam o total. Use diferentes decomposições, mas não altere a quantidade representada.",
+    "workedExample": "Com 3 barras de dez e 6 cubinhos temos 36. A decomposição usual é 30 + 6. Se trocarmos uma barra por 10 cubinhos, podemos mostrar 20 + 16; o total continua 36.",
+    "commonMistake": "Confundir o algarismo das dezenas com o número de unidades ou propor uma adição que não conserva o total representado.",
+    "priorKnowledge": ["Contar coleções pequenas e agrupamentos de dez com apoio concreto.", "Reconhecer adições simples em situações de juntar quantidades."],
+    "keyConcepts": ["número natural", "dezena", "unidade", "composição", "decomposição", "adição", "equivalência", "material manipulável"],
+    "remediations": [
+      { "errorFocus": "TENS_AND_ONES_VALUE", "action": "Construa grupos de dez e unidades soltas, nomeando quanto vale cada grupo antes de registrar a adição." },
+      { "errorFocus": "EQUIVALENT_ADDITIVE_DECOMPOSITION", "action": "Conte ou recomponha os dois lados para verificar se representam o mesmo total." },
+      { "errorFocus": "FLEXIBLE_COMPOSITION_STRATEGY", "action": "Troque uma dezena por dez unidades no material e registre a nova adição equivalente." }
+    ],
+    "accessibilitySupports": ["Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.", "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.", "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."],
+    "authenticActivities": [
+      { "id": "ma07-number-building-station", "title": "Estação de montar números", "context": "Cartões apresentam totais de até duas ordens e materiais agrupáveis em dezenas e unidades.", "steps": ["Escolha um cartão de número.", "Represente-o com grupos de dez e unidades.", "Registre duas adições diferentes que conservem o total."], "evidence": "Representação manipulável e dois registros aditivos equivalentes.", "rubric": ["Inicial: representa unidades com apoio.", "Em desenvolvimento: compõe dezenas e unidades.", "Consolidado: apresenta duas decomposições equivalentes e explica a troca de uma dezena."] },
+      { "id": "ma07-equivalent-addition-gallery", "title": "Galeria de decomposições", "context": "Cada dupla recebe um número e compara maneiras diferentes de representá-lo com materiais e adições.", "steps": ["Monte o número com material.", "Troque uma dezena por dez unidades quando possível.", "Compare os registros e confira se mantêm o mesmo total."], "evidence": "Galeria de representações com conferência do total.", "rubric": ["Inicial: identifica uma quantidade.", "Em desenvolvimento: registra dezenas e unidades.", "Consolidado: justifica equivalência entre adições com apoio da representação."] }
+    ],
+    "estimatedMinutes": 40
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","COMPOSE","TRINTA_E_DOIS","Que número é formado por 3 dezenas e 2 unidades?","32.",["23","302","5"],"COMPOSE_TENS_ONES","Três dezenas valem 30; com 2 unidades formam 32.","Junte 30 e 2."],
+      ["EASY","DECOMPOSE","QUARENTA_E_SETE","Qual adição representa 47 em dezenas e unidades?","40 + 7.",["4 + 7","7 + 40 + 7","40 + 70"],"DECOMPOSE_TENS_ONES","Quatro dezenas valem 40 e sobram 7 unidades.","Separe dezenas e unidades."],
+      ["MEDIUM","COMPOSE","VINTE_E_DEZOITO","Qual total é representado por 20 + 18?","38.",["218","28","48"],"COMPOSE_EQUIVALENT_ADDITION","Duas dezenas mais 18 unidades totalizam 38.","Some as duas parcelas."],
+      ["EASY","IDENTIFY","BARRAS_E_CUBINHOS","Uma figura mostra 5 barras de dez e 1 cubinho. Qual quantidade aparece?","51.",["15","501","6"],"READ_BASE_TEN_MODEL","Cinco dezenas e uma unidade formam 51.","Cada barra vale dez."],
+      ["MEDIUM","EVALUATE","TROCA_DE_DEZENA","Uma dezena foi trocada por 10 unidades. O que acontece com a quantidade total?","Ela permanece igual.",["Aumenta em dez","Diminui em uma dezena","Vira zero"],"CONSERVE_TOTAL_ON_EXCHANGE","Uma dezena e dez unidades têm o mesmo valor.","Compare os valores trocados."],
+      ["MEDIUM","COMPARE","TRINTA_E_QUINZE","Qual adição também representa 45?","30 + 15.",["30 + 5","40 + 15","3 + 15"],"SELECT_EQUIVALENT_DECOMPOSITION","Trinta mais quinze totaliza 45.","Confira o total."],
+      ["EASY","DISTINGUISH","VALOR_DO_ALGARISMO","No número 62, quanto valem as 6 dezenas?","60.",["6","2","8"],"TENS_DIGIT_VALUE","O algarismo 6 ocupa a ordem das dezenas.","Cada dezena vale dez unidades."],
+      ["MEDIUM","APPLY","QUADRO_DE_DEZENAS","Qual material ajuda a mostrar 28 como dezenas e unidades?","Duas barras de dez e oito unidades.",["Oito barras e duas unidades","Duas unidades e oito dezenas","Vinte e oito barras"],"CHOOSE_BASE_TEN_REPRESENTATION","28 contém duas dezenas e oito unidades.","Agrupe de dez em dez."]
+    ],
+    "PRACTICE": [
+      ["EASY","COMPOSE","SESSENTA_E_TRES","Quanto é 60 + 3?","63.",["36","603","9"],"ADD_TENS_ONES","Seis dezenas e três unidades formam 63.","Una as partes."],
+      ["MEDIUM","DECOMPOSE","CINQUENTA_E_NOVE","Qual decomposição usual de 59 mostra dezenas e unidades?","50 + 9.",["5 + 9","9 + 50 + 9","50 + 90"],"DECOMPOSE_TWO_ORDER_NUMBER","Cinco dezenas valem cinquenta e restam nove unidades.","Separe o valor posicional."],
+      ["MEDIUM","COMPOSE","VINTE_E_VINTE_E_SETE","Qual número é representado por 20 + 27?","47.",["227","29","57"],"COMPOSE_ALTERNATE_ADDITION","Duas dezenas mais 27 unidades totalizam 47.","Some 20 e 27."],
+      ["EASY","IDENTIFY","QUATRO_DEZENAS_E_NOVE","Um conjunto tem quatro grupos de dez e nove fichas. Quantas fichas há?","49.",["13","94","409"],"COUNT_GROUPS_AND_ONES","Quatro grupos de dez mais nove são 49.","Conte dezenas e unidades."],
+      ["MEDIUM","EVALUATE","ADICAO_IGUAL_A_TRINTA_E_SEIS","Qual adição conserva o total 36?","20 + 16.",["20 + 6","30 + 16","2 + 16"],"CHECK_ADDITION_TOTAL","Vinte mais dezesseis é 36.","Some para conferir."],
+      ["HARD","ANALYZE","DUAS_FORMAS_DE_QUARENTA_E_DOIS","Quais duas expressões representam 42?","40 + 2 e 30 + 12.",["40 + 2 e 30 + 2","20 + 12 e 40 + 12","4 + 2 e 30 + 12"],"COMPARE_EQUIVALENT_FORMS","As duas adições somam 42.","Calcule cada expressão."],
+      ["EASY","DISTINGUISH","UNIDADES_SOLTAS","Quantas unidades ficam fora dos grupos ao mostrar 74 como 70 + unidades?","4 unidades.",["7 unidades","40 unidades","74 unidades"],"IDENTIFY_REMAINDER_ONES","Setenta e quatro tem sete dezenas e quatro unidades.","Observe o algarismo das unidades."],
+      ["MEDIUM","APPLY","MATERIAL_TATIL","Uma criança representa 31 com materiais táteis. Que composição está correta?","Três grupos de dez e uma unidade.",["Um grupo de dez e três unidades","Trinta e uma dezenas","Três unidades e dez grupos"],"ACCESSIBLE_NUMBER_COMPOSITION","31 é trinta mais uma unidade.","Agrupe três dezenas." ]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","COMPOSE","CARTAO_DE_PONTOS","Um cartão mostra 4 grupos de dez pontos e 8 pontos soltos. Qual número?","48.",["84","408","12"],"TRANSFER_GROUPED_COLLECTION","Quatro dezenas e oito unidades formam 48.","Conte grupos e pontos soltos."],
+      ["EASY","DECOMPOSE","SETENTA_E_CINCO","Como escrever 75 como dezenas mais unidades?","70 + 5.",["7 + 5","50 + 7","70 + 50"],"TRANSFER_PLACE_VALUE","Setenta e cinco contém sete dezenas e cinco unidades.","Separe as ordens."],
+      ["MEDIUM","COMPARE","QUARENTA_E_VINTE_E_QUATRO","Qual número é igual a 40 + 24?","64.",["44","624","84"],"TRANSFER_ALTERNATE_ADDITION","Quarenta e vinte e quatro totalizam 64.","Some as parcelas."],
+      ["MEDIUM","EVALUATE","REGISTRO_DE_MATERIAL","Uma representação de 53 tem 5 barras de dez e 3 cubos. Qual registro confere?","50 + 3.",["5 + 3","30 + 5","50 + 30"],"MATCH_MODEL_TO_ADDITION","O modelo mostra cinco dezenas e três unidades.","Relacione cada material ao valor."],
+      ["HARD","ANALYZE","TROCA_EM_SESSENTA_E_NOVE","Ao trocar uma das 6 dezenas de 69 por 10 unidades, que decomposição aparece?","50 + 19.",["60 + 19","50 + 9","6 + 19"],"RECOMPOSE_WITH_TRADE","Cinco dezenas ficam e as unidades passam a 19.","Troque 10 por 10 sem alterar o total."],
+      ["MEDIUM","APPLY","CARTAZ_DA_BIBLIOTECA","Um cartaz registra 27 livros em uma pilha e 30 em outra. Qual total e decomposição?","57, representado por 50 + 7.",["37, representado por 30 + 7","527, representado por 50 + 27","57, representado por 5 + 7"],"APPLY_ADDITION_TO_COLLECTION","27 mais 30 é 57, ou 50 mais 7.","Some e depois observe dezenas e unidades."],
+      ["EASY","IDENTIFY","BLOCOS_DE_CINQUENTA_E_DOIS","Um modelo tem 5 dezenas e 2 unidades. Qual cartão escolher?","52.",["25","502","7"],"TRANSFER_MODEL_TO_NUMBER","O modelo vale cinquenta e dois.","Leia dezenas antes das unidades."],
+      ["HARD","JUSTIFY","ESTRATEGIA_SEM_PRESSA","Como conferir que 20 + 18 e 30 + 8 representam o mesmo número?","Somar cada expressão e verificar que ambas dão 38.",["Contar quantos sinais aparecem","Escolher a expressão mais rápida","Apagar uma parcela"],"JUSTIFY_EQUIVALENT_ADDITIONS","As duas somas têm o mesmo total.","Confira com cálculo ou material." ]
+    ],
+    "LOCK_IN": [
+      ["EASY","RECALL","QUATRO_DEZENAS","Quatro dezenas equivalem a quanto?","40.",["4","14","400"],"RECALL_TENS_VALUE","Cada dezena vale dez.","Multiplique quatro grupos por dez."],
+      ["EASY","COMPOSE","NOVENTA_E_SETE","Que número é 90 + 7?","97.",["79","907","16"],"RECALL_COMPOSITION","Nove dezenas e sete unidades formam 97.","Junte as ordens."],
+      ["MEDIUM","DECOMPOSE","OITENTA_E_QUATRO","Qual forma separa dezenas e unidades de 84?","80 + 4.",["8 + 4","40 + 8","80 + 40"],"RECALL_DECOMPOSITION","Oito dezenas valem 80 e restam quatro unidades.","Leia o valor de cada algarismo."],
+      ["MEDIUM","EVALUATE","EQUIVALENCIA_DE_VINTE_E_TRES","Qual expressão equivale a 23?","10 + 13.",["10 + 3","20 + 13","2 + 13"],"RECALL_EQUIVALENT_ADDITION","Dez mais treze é 23.","Some para testar."],
+      ["EASY","DISTINGUISH","ALGARISMO_DAS_DEZENAS","No número 38, o algarismo 3 indica...","três dezenas, ou 30.",["três unidades","oito dezenas","trinta unidades sempre soltas"],"RECALL_PLACE_VALUE","A posição do 3 representa dezenas.","Observe sua posição."],
+      ["MEDIUM","APPLY","TROCA_DE_BARRA","Uma barra de dez é trocada por dez cubinhos. O total muda?","Não; as duas representações valem dez.",["Sim, aumenta para vinte","Sim, diminui para um","Sim, zera"],"RECALL_MATERIAL_EXCHANGE","Dez unidades equivalem a uma dezena.","Compare os valores."],
+      ["HARD","ANALYZE","DUAS_DECOMPOSICOES_DE_56","Qual par mostra duas decomposições equivalentes de 56?","50 + 6 e 40 + 16.",["50 + 6 e 40 + 6","50 + 16 e 40 + 16","5 + 6 e 40 + 16"],"RECALL_TWO_EQUIVALENT_FORMS","Ambas as expressões totalizam 56.","Some cada par."],
+      ["HARD","JUSTIFY","SINTese_DE_DEZENAS","Por que materiais agrupados de dez ajudam a decompor números?","Eles mostram dezenas e unidades e ajudam a conferir o total.",["Eles substituem a necessidade de contar","Cada objeto vira uma dezena","Eles obrigam uma única estratégia"],"NUMBER_COMPOSITION_SUMMARY","Agrupamentos tornam visível o valor posicional.","Relacione material e valor." ]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","REVISAO_DEZENA","Uma dezena tem quantas unidades?","Dez unidades.",["Uma unidade","Duas unidades","Cem unidades"],"REVIEW_TEN_UNITS","Uma dezena corresponde a dez unidades.","Lembre do agrupamento de dez."],
+      ["EASY","COMPOSE","REVISAO_DE_NUMERO","Qual número corresponde a 30 + 6?","36.",["63","306","9"],"REVIEW_COMPOSE","Três dezenas e seis unidades formam 36.","Una dezenas e unidades."],
+      ["MEDIUM","DECOMPOSE","REVISAO_DE_72","Qual decomposição usual representa 72?","70 + 2.",["7 + 2","20 + 7","70 + 20"],"REVIEW_DECOMPOSE","Setenta e dois contém sete dezenas e duas unidades.","Separe as ordens."],
+      ["MEDIUM","COMPARE","REVISAO_DE_EQUIVALENCIA","Qual expressão também vale 41?","30 + 11.",["30 + 1","40 + 11","3 + 11"],"REVIEW_EQUIVALENCE","Trinta mais onze totaliza 41.","Confira a soma."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_UNIDADES","No número 68, quantas unidades ficam além das dezenas agrupadas?","8 unidades.",["6 unidades","60 unidades","68 dezenas"],"REVIEW_ONES","O algarismo das unidades é 8.","Observe a posição final."],
+      ["HARD","ANALYZE","REVISAO_DE_TROCA","Depois de trocar uma dezena de 45 por unidades, qual registro conserva 45?","30 + 15.",["30 + 5","40 + 15","3 + 15"],"REVIEW_DECOMPOSITION_TRADE","Trinta mais quinze é 45.","Troque 10 por 10."],
+      ["MEDIUM","APPLY","REVISAO_DE_MATERIAL","Qual representação concreta mostra 29?","Duas dezenas e nove unidades.",["Nove dezenas e duas unidades","Duas unidades e nove dezenas","Vinte e nove dezenas"],"REVIEW_CONCRETE_MODEL","29 é 20 mais 9.","Monte dois grupos de dez."],
+      ["HARD","JUSTIFY","SINTese_DE_ESTRATEGIAS","O que deve permanecer ao registrar diferentes adições para o mesmo número?","O total representado.",["A quantidade de parcelas sempre igual","Os mesmos algarismos na mesma ordem","Uma única estratégia"],"REVIEW_TOTAL_CONSERVATION","Decomposições podem variar e manter o valor.","Confira o total em cada forma."]
+    ]
+  }
+}

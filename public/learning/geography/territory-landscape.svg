@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Paisagem urbana esquemática</title>
+  <desc id="desc">Rio azul, avenida cinza, três quarteirões construídos e uma praça verde em um mesmo recorte.</desc>
+  <rect width="720" height="360" fill="#f5f8fc"/>
+  <path d="M0 278 C120 245 160 310 276 276 S470 245 720 282 L720 360 L0 360Z" fill="#5aa9d6"/>
+  <path d="M0 104 L720 104" stroke="#4b5563" stroke-width="36"/>
+  <path d="M0 104 L720 104" stroke="#f8fafc" stroke-width="3" stroke-dasharray="18 16"/>
+  <rect x="64" y="148" width="140" height="84" rx="6" fill="#d7e2ec" stroke="#486581" stroke-width="3"/>
+  <rect x="250" y="148" width="140" height="84" rx="6" fill="#d7e2ec" stroke="#486581" stroke-width="3"/>
+  <rect x="438" y="148" width="140" height="84" rx="6" fill="#d7e2ec" stroke="#486581" stroke-width="3"/>
+  <rect x="600" y="148" width="82" height="84" rx="6" fill="#69b578" stroke="#32734a" stroke-width="3"/>
+  <g fill="#263747" font-family="Arial,sans-serif" font-size="20" font-weight="700">
+    <text x="291" y="83">AVENIDA</text><text x="611" y="196">PRACA</text><text x="320" y="333">RIO</text>
+  </g>
+  <g fill="#3c5368" font-family="Arial,sans-serif" font-size="16">
+    <text x="81" y="196">QUARTEIRAO 1</text><text x="267" y="196">QUARTEIRAO 2</text><text x="455" y="196">QUARTEIRAO 3</text>
+  </g>
+</svg>

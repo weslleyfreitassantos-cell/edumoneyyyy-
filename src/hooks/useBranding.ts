@@ -28,21 +28,130 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
+// Invalidate entries created before the first-load gate started waiting for
+// the current hostname's branding and image assets.
+const publicBrandingCacheVersion = 4;
 export const PUBLIC_BRANDING_STALE_TIME = 60_000;
+
+interface PersistedPublicBranding {
+  version: number;
+  cachedAt: number;
+  branding: PublicBranding;
+}
 
 function getPublicBrandingCacheKey(hostname: string): string {
   return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
 }
 
+function isPublicBranding(value: unknown): value is PublicBranding {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+
+  const candidate = value as Record<string, unknown>;
+  const validScope =
+    candidate.scope === 'GLOBAL' ||
+    candidate.scope === 'ACCOUNT' ||
+    candidate.scope === 'INSTITUTION' ||
+    candidate.scope === 'FALLBACK';
+  const validAsset = (asset: unknown) =>
+    asset === null ||
+    asset === undefined ||
+    typeof asset === 'string';
+
+  return (
+    validScope &&
+    (typeof candidate.displayName === 'string' ||
+      candidate.displayName === null) &&
+    validAsset(candidate.logoUrl) &&
+    validAsset(candidate.faviconUrl) &&
+    validAsset(candidate.loginBackgroundUrl) &&
+    typeof candidate.primaryColor === 'string' &&
+    typeof candidate.secondaryColor === 'string'
+  );
+}
+
+function readPersistedPublicBranding(
+  hostname: string,
+): PersistedPublicBranding | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const raw = window.localStorage.getItem(
+      getPublicBrandingCacheKey(hostname),
+    );
+    if (!raw) {
+      return null;
+    }
+
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') {
+      return null;
+    }
+
+    const entry = parsed as Partial<PersistedPublicBranding>;
+    if (
+      entry.version !== publicBrandingCacheVersion ||
+      !isPublicBranding(entry.branding)
+    ) {
+      return null;
+    }
+
+    return {
+      version: publicBrandingCacheVersion,
+      cachedAt:
+        typeof entry.cachedAt === 'number' &&
+        Number.isFinite(entry.cachedAt)
+          ? entry.cachedAt
+          : 0,
+      branding: normalizePublicBrandingAssetUrls(entry.branding),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function persistPublicBranding(
+  hostname: string,
+  branding: PublicBranding,
+): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    const entry: PersistedPublicBranding = {
+      version: publicBrandingCacheVersion,
+      cachedAt: Date.now(),
+      branding: normalizePublicBrandingAssetUrls(branding),
+    };
+    window.localStorage.setItem(
+      getPublicBrandingCacheKey(hostname),
+      JSON.stringify(entry),
+    );
+  } catch {
+    // Storage can be disabled or full; the in-memory query remains authoritative.
+  }
+}
+
 const brandingAssetLoadTimeoutMs = 10000;
 
-function preloadImage(url: string): Promise<boolean> {
+function preloadImage(
+  url: string,
+  requireSquare = false,
+): Promise<boolean> {
   if (typeof Image === 'undefined') {
     return Promise.resolve(true);
   }
 
   return new Promise((resolve) => {
     const image = new Image();
+    const hasUsableDimensions = () =>
+      image.naturalWidth > 0 &&
+      image.naturalHeight > 0 &&
+      (!requireSquare || image.naturalWidth === image.naturalHeight);
     let settled = false;
     let timeoutId: number | undefined;
 
@@ -57,13 +166,13 @@ function preloadImage(url: string): Promise<boolean> {
 
     const decodeAndFinish = () => {
       if (typeof image.decode !== 'function') {
-        finish(image.naturalWidth > 0);
+        finish(hasUsableDimensions());
         return;
       }
 
       void image.decode().then(
-        () => finish(true),
-        () => finish(image.naturalWidth > 0),
+        () => finish(hasUsableDimensions()),
+        () => finish(hasUsableDimensions()),
       );
     };
 
@@ -76,7 +185,7 @@ function preloadImage(url: string): Promise<boolean> {
     image.src = url;
 
     if (image.complete) {
-      if (image.naturalWidth > 0) {
+      if (hasUsableDimensions()) {
         decodeAndFinish();
       } else {
         finish(false);
@@ -87,34 +196,67 @@ function preloadImage(url: string): Promise<boolean> {
 
 export async function preloadPublicBrandingAssets(
   branding: PublicBranding,
+  fallbackBranding?: PublicBranding,
 ): Promise<PublicBranding> {
   const normalizedBranding = normalizePublicBrandingAssetUrls(branding);
-  const urls = new Set(
-    [
-      normalizedBranding.logoUrl,
-      normalizedBranding.faviconUrl,
-      normalizedBranding.loginBackgroundUrl,
-    ]
-      .map((url) => url?.trim())
-      .filter((url): url is string => Boolean(url)),
-  );
-
+  const assets = [
+    ['logo', normalizedBranding.logoUrl, false],
+    // Favicons may be supplied as legacy rectangular school assets. The
+    // browser can still render them correctly; rejecting them here drops the
+    // institution identity during a background revalidation.
+    ['favicon', normalizedBranding.faviconUrl, false],
+    ['loginBackground', normalizedBranding.loginBackgroundUrl, false],
+  ] as const;
   const loaded = new Map<string, boolean>();
   await Promise.all(
-    [...urls].map(async (url) => {
-      loaded.set(url, await preloadImage(url));
+    assets.flatMap(([kind, url, requireSquare]) => {
+      const normalizedUrl = url?.trim();
+
+      if (!normalizedUrl) {
+        return [];
+      }
+
+      return [
+        preloadImage(normalizedUrl, requireSquare).then((isLoaded) => {
+          loaded.set(`${kind}:${normalizedUrl}`, isLoaded);
+        }),
+      ];
     }),
   );
 
-  const keepLoadedAsset = (url: string | null | undefined) =>
-    url && loaded.get(url.trim()) ? url : null;
+  const keepLoadedAsset = (
+    kind: (typeof assets)[number][0],
+    url: string | null | undefined,
+    fallbackUrl: string | null | undefined,
+  ) => {
+    const normalizedUrl = url?.trim();
+    if (normalizedUrl && loaded.get(`${kind}:${normalizedUrl}`)) {
+      return url;
+    }
+
+    // A transient storage/CDN failure must not erase an already working
+    // identity while the tab is being revalidated after being suspended.
+    return normalizedUrl && fallbackUrl?.trim()
+      ? fallbackUrl
+      : null;
+  };
 
   return {
     ...normalizedBranding,
-    logoUrl: keepLoadedAsset(normalizedBranding.logoUrl),
-    faviconUrl: keepLoadedAsset(normalizedBranding.faviconUrl),
+    logoUrl: keepLoadedAsset(
+      'logo',
+      normalizedBranding.logoUrl,
+      fallbackBranding?.logoUrl,
+    ),
+    faviconUrl: keepLoadedAsset(
+      'favicon',
+      normalizedBranding.faviconUrl,
+      fallbackBranding?.faviconUrl,
+    ),
     loginBackgroundUrl: keepLoadedAsset(
+      'loginBackground',
       normalizedBranding.loginBackgroundUrl,
+      fallbackBranding?.loginBackgroundUrl,
     ),
   };
 }
@@ -191,6 +333,7 @@ export async function updateResolvedPublicBrandingCache(
     brandingKeys.public(normalizedHostname),
     readyBranding,
   );
+  persistPublicBranding(normalizedHostname, readyBranding);
 
   if (getWindowHostname() === normalizedHostname) {
     applyDocumentBranding(readyBranding);
@@ -203,26 +346,63 @@ export function useResolvedBranding(
   const normalizedHostname = normalizeHostnameValue(
     hostname || 'unknown',
   );
+  const queryClient = useQueryClient();
+  const publicQueryKey = brandingKeys.public(normalizedHostname);
+  const persistedBranding = readPersistedPublicBranding(
+    normalizedHostname,
+  );
   const query = useQuery<PublicBranding>({
-    queryKey: brandingKeys.public(normalizedHostname),
+    queryKey: publicQueryKey,
+    initialData: persistedBranding?.branding,
+    initialDataUpdatedAt: persistedBranding?.cachedAt,
     queryFn: async () => {
+      const previousBranding = queryClient.getQueryData<PublicBranding>(
+        publicQueryKey,
+      );
       const branding = await brandingService.resolveForHostname(
         normalizedHostname,
       );
-      return preloadPublicBrandingAssets(branding);
+      const readyBranding = await preloadPublicBrandingAssets(
+        branding,
+        previousBranding,
+      );
+      persistPublicBranding(normalizedHostname, readyBranding);
+      return readyBranding;
     },
-    retry: false,
+    retry: 1,
+    retryDelay: 500,
     staleTime: PUBLIC_BRANDING_STALE_TIME,
     gcTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
   });
 
-  // Never paint a cached response while the current hostname is being checked.
-  // This prevents the previous tenant's logo/background flashing on navigation.
-  return {
-    ...query,
-    data: query.isFetching || query.isError ? undefined : query.data,
-    isLoading: query.isFetching || query.isLoading,
-  };
+  useEffect(() => {
+    const reapplyCurrentBranding = () => {
+      if (document.visibilityState === 'hidden') {
+        return;
+      }
+
+      const currentBranding = queryClient.getQueryData<PublicBranding>(
+        publicQueryKey,
+      ) ?? readPersistedPublicBranding(normalizedHostname)?.branding;
+      if (currentBranding) {
+        applyDocumentBranding(currentBranding);
+      }
+    };
+
+    window.addEventListener('pageshow', reapplyCurrentBranding);
+    document.addEventListener('visibilitychange', reapplyCurrentBranding);
+
+    return () => {
+      window.removeEventListener('pageshow', reapplyCurrentBranding);
+      document.removeEventListener('visibilitychange', reapplyCurrentBranding);
+    };
+  }, [normalizedHostname, queryClient]);
+
+  // Keep the last successful identity visible while a background refresh is
+  // pending or failed. Only the first load should block the application.
+  return query;
 }
 
 export function useHostBranding(
@@ -231,15 +411,17 @@ export function useHostBranding(
   const query = useResolvedBranding(hostname);
   const branding = query.data ?? FALLBACK_BRANDING;
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    // This effect owns the active document identity. Do not return the
+    // helper's restoration callback: route transitions must not restore the
+    // static EduManager title or favicon over the school's branding.
+    applyDocumentBranding(branding);
+  }, [
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   return branding;
 }

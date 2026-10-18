@@ -17,8 +17,15 @@ import {
   validateAccountDomainHostname,
   validateBrandingImageFile,
 } from './brandingValidation';
+import { withAcademicReadTimeout } from '../lib/academicReadTimeout';
 
 export const BRANDING_BUCKET = 'institution-branding';
+export const DEFAULT_BRAND_NAME = 'Tec Escola';
+export const DEFAULT_BRAND_LOGO_URL =
+  '/icons/tecescola-favicon.png?v=tec-logo-20261015';
+export const DEFAULT_BRAND_FAVICON_URL =
+  '/icons/tecescola-favicon.png?v=tec-favicon-20261015';
+export const PUBLIC_BRANDING_TIMEOUT_MS = 8_000;
 
 export type BrandingScope = 'GLOBAL' | 'ACCOUNT';
 export type PublicBrandingScope = BrandingScope | 'INSTITUTION' | 'FALLBACK';
@@ -179,11 +186,24 @@ const domainSelect = [
   'accounts(name)',
 ].join(', ');
 
+function abortableRequest<T extends object>(
+  request: T,
+  signal: AbortSignal,
+): T {
+  const candidate = request as T & {
+    abortSignal?: (nextSignal: AbortSignal) => T;
+  };
+
+  return typeof candidate.abortSignal === 'function'
+    ? candidate.abortSignal.call(request, signal)
+    : request;
+}
+
 export const FALLBACK_BRANDING: PublicBranding = {
   scope: 'FALLBACK',
-  displayName: null,
-  logoUrl: null,
-  faviconUrl: null,
+  displayName: DEFAULT_BRAND_NAME,
+  logoUrl: DEFAULT_BRAND_LOGO_URL,
+  faviconUrl: DEFAULT_BRAND_FAVICON_URL,
   loginBackgroundUrl: null,
   primaryColor: DEFAULT_BRAND_PRIMARY_COLOR,
   secondaryColor: DEFAULT_BRAND_SECONDARY_COLOR,
@@ -214,6 +234,11 @@ function normalizeDisplayName(value: string | null): string | null {
   const normalized = value?.trim() ?? '';
 
   return normalized.length > 0 ? normalized : null;
+}
+
+function isLegacyNativeBrandName(value: string | null): boolean {
+  return value?.toLocaleLowerCase('pt-BR') === 'edumanager pro' ||
+    value?.toLocaleLowerCase('pt-BR') === 'edumanager';
 }
 
 function assertColor(value: string, label: string): string {
@@ -259,6 +284,7 @@ function getPublicBrandingAssetUrl(
 
 function normalizePublicBrandingRow(
   row: PublicBrandingRow | null | undefined,
+  useNativeDefaults = false,
 ): PublicBranding {
   const rawScope = row?.scope;
   const scope: PublicBrandingScope =
@@ -279,15 +305,26 @@ function normalizePublicBrandingRow(
     row?.login_background_path,
     { kind: 'background' },
   );
+  const displayName = normalizeDisplayName(
+    typeof row?.display_name === 'string'
+      ? row.display_name
+      : null,
+  );
+  const useNativeIdentity =
+    useNativeDefaults &&
+    (scope === 'FALLBACK' || isLegacyNativeBrandName(displayName));
 
   return {
     scope,
-    displayName:
-      typeof row?.display_name === 'string'
-        ? row.display_name
-        : null,
-    logoUrl: getPublicBrandingAssetUrl(logoPath),
-    faviconUrl: getPublicBrandingAssetUrl(faviconPath),
+    displayName: useNativeIdentity
+      ? DEFAULT_BRAND_NAME
+      : displayName,
+    logoUrl: useNativeIdentity
+      ? DEFAULT_BRAND_LOGO_URL
+      : getPublicBrandingAssetUrl(logoPath),
+    faviconUrl: useNativeIdentity
+      ? DEFAULT_BRAND_FAVICON_URL
+      : getPublicBrandingAssetUrl(faviconPath),
     loginBackgroundUrl: getPublicBrandingAssetUrl(backgroundPath),
     primaryColor: sanitizeBrandColor(
       typeof row?.primary_color === 'string'
@@ -307,6 +344,10 @@ function normalizePublicBrandingRow(
 function normalizePublicInstitutionBrandingRow(
   row: PublicInstitutionBrandingRow,
 ): PublicBranding {
+  const logoUrl = typeof row.logo_url === 'string' ? row.logo_url : null;
+  const configuredFaviconUrl =
+    typeof row.favicon_url === 'string' ? row.favicon_url : null;
+
   return normalizePublicBrandingAssetUrls({
     scope: 'INSTITUTION',
     displayName:
@@ -316,8 +357,10 @@ function normalizePublicInstitutionBrandingRow(
         : typeof row.name === 'string'
           ? row.name
           : null,
-    logoUrl: typeof row.logo_url === 'string' ? row.logo_url : null,
-    faviconUrl: typeof row.favicon_url === 'string' ? row.favicon_url : null,
+    logoUrl,
+    // Older institutions only have a logo. Reuse it as the favicon instead
+    // of silently falling back to the platform identity.
+    faviconUrl: configuredFaviconUrl || logoUrl,
     loginBackgroundUrl:
       typeof row.login_background_url === 'string'
         ? row.login_background_url
@@ -339,16 +382,21 @@ function normalizePublicInstitutionBrandingRow(
 
 async function resolveInstitutionBranding(
   resolution: Extract<HostResolution, { type: 'institution' }>,
+    signal: AbortSignal,
 ): Promise<PublicBranding> {
-  const { data, error } = await supabase.rpc(
-    'resolve_public_institution_by_subdomain',
-    {
-      target_subdomain: resolution.subdomain,
-    },
+  const request = abortableRequest(
+    supabase.rpc(
+      'resolve_public_institution_by_subdomain',
+      {
+        target_subdomain: resolution.subdomain,
+      },
+    ),
+    signal,
   );
+  const { data, error } = await request;
 
   if (error) {
-    return FALLBACK_BRANDING;
+    throw error;
   }
 
   const rows = Array.isArray(data) ? data : data ? [data] : [];
@@ -790,28 +838,27 @@ export const brandingService = {
     const normalizedHostname = normalizeHostnameValue(hostname);
     const resolution = classifyHostname(normalizedHostname);
 
-    if (resolution.type === 'institution') {
-      return resolveInstitutionBranding(resolution);
-    }
+    return withAcademicReadTimeout(async (signal) => {
+      if (resolution.type === 'institution') {
+        return resolveInstitutionBranding(resolution, signal);
+      }
 
-    try {
-      const { data, error } = await supabase.rpc(
-        'resolve_public_branding',
-        {
+      const request = abortableRequest(
+        supabase.rpc('resolve_public_branding', {
           hostname: normalizedHostname,
-        },
+        }),
+        signal,
       );
+      const { data, error } = await request;
 
       if (error) {
-        return FALLBACK_BRANDING;
+        throw error;
       }
 
       const row = Array.isArray(data) ? data[0] : data;
 
-      return normalizePublicBrandingRow(row as PublicBrandingRow);
-    } catch {
-      return FALLBACK_BRANDING;
-    }
+      return normalizePublicBrandingRow(row as PublicBrandingRow, true);
+    }, PUBLIC_BRANDING_TIMEOUT_MS);
   },
 
   getGlobalBranding(): Promise<BrandingRecord | null> {

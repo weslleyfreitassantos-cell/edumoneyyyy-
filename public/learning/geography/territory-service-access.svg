@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
+  <title id="title">Serviços e transporte em dois bairros</title>
+  <desc id="desc">Os bairros A e B estão ambos a três quilômetros do centro. A tem três linhas de ônibus e uma clínica mapeada; B tem uma linha e nenhuma clínica desenhada no recorte. Serviços externos não estão contabilizados.</desc>
+  <rect width="720" height="380" fill="#f7f9fc"/>
+  <circle cx="360" cy="62" r="36" fill="#f5cf73" stroke="#8a6110" stroke-width="3"/>
+  <text x="360" y="68" text-anchor="middle" fill="#263747" font-family="Arial,sans-serif" font-size="17" font-weight="700">CENTRO</text>
+  <path d="M338 90 L205 134 M382 90 L515 134" stroke="#8798a8" stroke-width="3"/>
+  <text x="240" y="111" fill="#4c5f72" font-family="Arial,sans-serif" font-size="17">3 km</text>
+  <text x="470" y="111" fill="#4c5f72" font-family="Arial,sans-serif" font-size="17">3 km</text>
+  <rect x="35" y="142" width="310" height="190" rx="16" fill="#e8f4ec" stroke="#387a50" stroke-width="3"/>
+  <rect x="375" y="142" width="310" height="190" rx="16" fill="#edf1f7" stroke="#556b82" stroke-width="3"/>
+  <g fill="#263747" font-family="Arial,sans-serif" font-size="22" font-weight="700"><text x="58" y="177">BAIRRO A</text><text x="398" y="177">BAIRRO B</text></g>
+  <g stroke="#1b70b7" stroke-width="5" fill="none"><path d="M60 205 H315"/><path d="M60 232 H315"/><path d="M60 259 H315"/><path d="M400 232 H660"/></g>
+  <g fill="#fff" stroke="#164e80" stroke-width="3"><circle cx="112" cy="205" r="7"/><circle cx="210" cy="232" r="7"/><circle cx="286" cy="259" r="7"/><circle cx="528" cy="232" r="7"/></g>
+  <g fill="#34495e" font-family="Arial,sans-serif" font-size="17"><text x="58" y="294">3 linhas de onibus</text><text x="398" y="294">1 linha de onibus</text></g>
+  <g fill="#d9534f"><circle cx="230" cy="290" r="10"/><path d="M226 274h8v32h-8zM218 286h24v8h-24z"/></g>
+  <text x="58" y="320" fill="#34495e" font-family="Arial,sans-serif" font-size="16">1 clinica mapeada</text>
+  <text x="398" y="320" fill="#34495e" font-family="Arial,sans-serif" font-size="16">Nenhuma clinica desenhada no recorte</text>
+  <text x="360" y="363" text-anchor="middle" fill="#5b6570" font-family="Arial,sans-serif" font-size="16">A oferta fora do recorte nao esta contabilizada.</text>
+</svg>

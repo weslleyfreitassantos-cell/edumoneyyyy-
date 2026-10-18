@@ -1,0 +1,955 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "v5-history-order-events",
+  "canonicalSkillCode": "HISTORY_ORDER_EVENTS",
+  "subject": "HISTORY",
+  "domain": "CRONOLOGIA",
+  "topic": "ordem duracao e simultaneidade",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 1,
+    "PRACTICE": 8,
+    "TRANSFER": 6,
+    "LOCK_IN": 4,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 27,
+  "expectedContextCount": 27,
+  "expectedAnswerPositionCounts": {
+    "A": 7,
+    "B": 7,
+    "C": 7,
+    "D": 6
+  },
+  "lesson": {
+    "title": "Organizar acontecimentos no tempo sem achatar a História",
+    "objective": "Ordenar acontecimentos e processos usando anterioridade, duração e simultaneidade, interpretando datas e intervalos sem confundir sequência temporal com causa ou importância.",
+    "summary": "Uma cronologia organiza relações temporais. Para lê-la, confira a escala, diferencie evento de processo, calcule duração com a convenção indicada e observe o que a seleção da linha do tempo deixa de fora.",
+    "explanation": "## Ordem e escala\nUma linha do tempo representa relações temporais segundo uma escala escolhida. Antes de posicionar um acontecimento, confira se a escala é contínua, se cada divisão corresponde ao mesmo intervalo e se as datas indicam início, término ou publicação de uma fonte. Em uma cronologia por anos, anos maiores vêm depois; quando há mês e dia, esses detalhes podem ordenar acontecimentos ocorridos no mesmo ano.\n\n## Evento, processo e duração\nUm evento pode ser situado em uma data ou intervalo curto; um processo se desenvolve ao longo do tempo e pode ter ritmos diferentes em lugares distintos. Para calcular duração, identifique o marco inicial e final e a convenção usada. A diferença entre anos de dois marcos é uma medida de intervalo; a contagem inclusiva de anos-calendário inclui os dois extremos. Não misture as duas respostas. Séculos também exigem cuidado: o século XIX vai de 1801 a 1900; o século XX, de 1901 a 2000.\n\n## Simultaneidade e perspectivas\nAcontecimentos em lugares diferentes podem ocorrer ao mesmo tempo. Uma linha do tempo com faixas paralelas ajuda a comparar processos sem supor que todos os grupos viveram a mesma experiência. O recorte importa: a seleção de eventos depende da pergunta, das fontes e da escala. Uma cronologia curta pode ocultar continuidades, conflitos, experiências locais ou processos que começaram antes da data destacada.\n\n## Sequência não é causa\nSe um evento ocorreu antes de outro, isso estabelece anterioridade, não prova que o primeiro causou o segundo. Uma explicação histórica precisa de evidências sobre mecanismos, contexto, atores e outras condições. Ao usar uma fonte, diferencie a data em que foi produzida da data do acontecimento que ela descreve; considere autoria, finalidade, público e distância temporal. Uma linha do tempo organiza evidências, mas não substitui sua interpretação.",
+    "workedExample": "Um painel apresenta três marcos: uma associação de moradores foi criada em 1998; uma ata registra a primeira reunião em 2001; uma obra de drenagem começou em 2004 e terminou em 2006. A diferença entre a criação da associação e o início da obra é de seis anos; contando anos-calendário de 1998 a 2004, aparecem sete anos nomeados. O projeto durou dois anos entre início e término, embora tenha atravessado três anos-calendário (2004, 2005 e 2006). A ordem não demonstra que a associação causou a obra: para avaliar essa hipótese, seria preciso analisar documentos, decisões e outros fatores do período.",
+    "commonMistake": "Ler uma cronologia como lista completa e neutra, confundir duração com contagem inclusiva de anos, ou deduzir causalidade apenas porque um fato veio antes de outro.",
+    "tips": [
+      "Leia título, escala, legenda e recorte antes de ordenar os marcos.",
+      "Marque se cada data é do evento, do início de um processo ou da produção da fonte.",
+      "Diga se está calculando intervalo entre marcos ou quantidade inclusiva de anos-calendário.",
+      "Use faixas paralelas para comparar simultaneidade e pergunte quem ou o que ficou fora do recorte."
+    ],
+    "priorKnowledge": [
+      "Comparar anos e ordenar datas simples.",
+      "Distinguir um acontecimento pontual de uma mudança que se desenvolve."
+    ],
+    "keyConcepts": [
+      "Anterioridade e posterioridade descrevem ordem; não demonstram causa.",
+      "Duração depende dos marcos e da convenção de contagem declarada.",
+      "Eventos de lugares diferentes podem ser simultâneos.",
+      "Recortes e escalas destacam alguns acontecimentos e tornam outros menos visíveis.",
+      "A data de produção de uma fonte pode diferir da data do evento narrado."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Ordenar marcos e reconhecer simultaneidade indicada.",
+        "questionIds": [
+          "v5-history-chronology-probe-01",
+          "v5-history-chronology-practice-01"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Interpretar escalas, intervalos, séculos, processos e recortes.",
+        "questionIds": [
+          "v5-history-chronology-practice-07",
+          "v5-history-chronology-practice-08"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Comparar cronologias locais, registros e processos em mais de um lugar.",
+        "questionIds": [
+          "v5-history-chronology-transfer-01",
+          "v5-history-chronology-transfer-06"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Avaliar causalidade, autoria da fonte e efeitos de escala e seleção.",
+        "questionIds": [
+          "v5-history-chronology-lock-01",
+          "v5-history-chronology-lock-04"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar ordem, duração e simultaneidade em novos contextos; espaçamento ainda depende do agendador do produto.",
+        "questionIds": [
+          "v5-history-chronology-review-01",
+          "v5-history-chronology-review-08"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "DURATION_COUNT_CONFUSION",
+        "text": "Subtraia as datas para obter o intervalo entre marcos; conte os anos de calendário separadamente se a pergunta pedir uma contagem inclusiva."
+      },
+      {
+        "trigger": "SEQUENCE_AS_CAUSALITY",
+        "text": "“Veio antes” é uma relação temporal. Para sustentar causa, procure evidência de mecanismo, contexto e outras condições."
+      },
+      {
+        "trigger": "EVENT_PROCESS_CONFUSION",
+        "text": "Um processo ocupa um intervalo e pode ter ritmos distintos; uma data destacada pode marcar apenas um começo, fim ou marco público."
+      },
+      {
+        "trigger": "SOURCE_DATE_CONFUSION",
+        "text": "Separe a data em que o documento foi produzido daquela do acontecimento descrito; ambas ajudam, mas respondem perguntas diferentes."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "INCLUSIVE_COUNT_AS_DURATION",
+        "prompt": "Desenhe os dois marcos, calcule a diferença entre os anos e depois conte os rótulos de ano incluindo os extremos. Identifique qual operação a pergunta solicita."
+      },
+      {
+        "misconception": "CHRONOLOGY_PROVES_CAUSE",
+        "prompt": "Escreva a sequência observada e, em uma coluna separada, liste evidências necessárias para explicar uma relação causal."
+      },
+      {
+        "misconception": "ONE_DATE_FOR_LONG_PROCESS",
+        "prompt": "Transforme o evento em uma faixa com início, marcos intermediários e término; indique quais datas são conhecidas e quais permanecem incertas."
+      },
+      {
+        "misconception": "TIMELINE_IS_COMPLETE",
+        "prompt": "Pergunte quem escolheu os marcos, qual escala foi usada e quais grupos, locais ou processos poderiam não aparecer nesse recorte."
+      },
+      {
+        "misconception": "SOURCE_CREATION_DATE_AS_EVENT_DATE",
+        "prompt": "Anote duas datas, se disponíveis: produção do registro e evento narrado. Use autoria e finalidade para avaliar o que a fonte pode informar."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 13,
+    "sourceDossier": [
+      {
+        "title": "U.S. History Primary Source Timeline",
+        "publisher": "Library of Congress",
+        "url": "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "organizing historical topics over time",
+          "connecting timelines with primary sources",
+          "using a declared historical scope"
+        ],
+        "use": "Reference for timeline and source-based teaching design only; no U.S. historical content was reused as a Brazil-specific claim."
+      },
+      {
+        "title": "History in the Raw",
+        "publisher": "National Archives and Records Administration",
+        "url": "https://www.archives.gov/education/research/history-in-the-raw.html",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "considering source point of view",
+          "noting limits and contradictions",
+          "interpreting records in context"
+        ],
+        "use": "Historical-source literacy fact check only; wording, examples and questions in this pack are original."
+      }
+    ],
+    "copyrightNote": "All scenarios and question wording are original. Dates supplied inside questions are hypothetical unless the question explicitly names a widely documented Brazilian event; no source passage, image, dataset, or timeline was copied."
+  },
+  "questions": [
+    {
+      "id": "v5-history-chronology-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ARQUIVO_DE_BAIRRO",
+      "statement": "Uma pasta reúne três registros: o clube foi fundado em 1998, a primeira ata disponível é de 2001 e a reforma da sede terminou em 2006. Qual marco ocorreu primeiro?",
+      "options": [
+        "A primeira ata disponível, em 2001.",
+        "O término da reforma, em 2006.",
+        "Não é possível ordenar anos diferentes.",
+        "A fundação do clube, em 1998."
+      ],
+      "correctAnswer": "A fundação do clube, em 1998.",
+      "explanation": "1998 é anterior a 2001 e 2006. A data da primeira ata disponível não prova que o clube só começou a existir naquele ano.",
+      "hint": "Compare os anos e diferencie a data do registro da data de fundação.",
+      "errorFocus": "CHRONOLOGY_ORDER_ERROR",
+      "misconceptions": {
+        "A primeira ata disponível, em 2001.": [
+          "DOCUMENT_DATE_AS_ORIGIN"
+        ],
+        "O término da reforma, em 2006.": [
+          "REVERSE_ORDER"
+        ],
+        "Não é possível ordenar anos diferentes.": [
+          "ORDER_RELATION_NOT_RECOGNIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FESTIVAL_E_MUSEU",
+      "statement": "Um festival aconteceu em maio de 2019; uma exposição sobre ele abriu em fevereiro de 2020. Qual afirmação temporal é correta?",
+      "options": [
+        "O festival veio antes da abertura da exposição.",
+        "A exposição necessariamente começou antes do festival.",
+        "Os dois ocorreram no mesmo mês.",
+        "A ordem depende de qual evento foi mais importante."
+      ],
+      "correctAnswer": "O festival veio antes da abertura da exposição.",
+      "explanation": "Maio de 2019 antecede fevereiro de 2020. A ordem não depende da importância atribuída aos eventos.",
+      "hint": "Compare primeiro os anos; depois, se necessário, os meses.",
+      "errorFocus": "CHRONOLOGY_ORDER_ERROR",
+      "misconceptions": {
+        "A exposição necessariamente começou antes do festival.": [
+          "REVERSE_ORDER"
+        ],
+        "Os dois ocorreram no mesmo mês.": [
+          "YEAR_IGNORED"
+        ],
+        "A ordem depende de qual evento foi mais importante.": [
+          "TEMPORAL_ORDER_AS_VALUE_JUDGMENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "OBRA_DRENAGEM",
+      "statement": "Uma obra começou em 2004 e foi concluída em 2007. Qual é a diferença entre os anos dos dois marcos?",
+      "options": [
+        "Três anos.",
+        "Quatro anos.",
+        "Sete anos.",
+        "Dois anos."
+      ],
+      "correctAnswer": "Três anos.",
+      "explanation": "A diferença entre os anos é 2007 − 2004 = 3. A obra atravessa quatro rótulos de ano-calendário se ambos os extremos forem contados.",
+      "hint": "Subtraia o ano inicial do ano final; não conte os dois extremos nessa operação.",
+      "errorFocus": "INCLUSIVE_COUNT_AS_DURATION",
+      "misconceptions": {
+        "Quatro anos.": [
+          "INCLUSIVE_COUNT_AS_DURATION"
+        ],
+        "Sete anos.": [
+          "YEAR_AS_DURATION"
+        ],
+        "Dois anos.": [
+          "OFF_BY_ONE_UNDERCOUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LINHAS_PARALELAS",
+      "statement": "Uma linha do tempo mostra, na mesma faixa de 1975 a 1978, uma associação criada em uma cidade e uma cooperativa organizada em outra. O que a faixa permite afirmar?",
+      "options": [
+        "Os processos ocorreram em períodos que se sobrepõem.",
+        "A associação causou a cooperativa.",
+        "Os dois grupos tiveram os mesmos objetivos.",
+        "Um dos registros precisa estar errado."
+      ],
+      "correctAnswer": "Os processos ocorreram em períodos que se sobrepõem.",
+      "explanation": "Faixas sobrepostas indicam simultaneidade parcial. Isso não estabelece contato, influência ou objetivos iguais entre os grupos.",
+      "hint": "Leia a sobreposição como relação de tempo, não como relação causal.",
+      "errorFocus": "SIMULTANEITY_AS_CAUSALITY",
+      "misconceptions": {
+        "A associação causou a cooperativa.": [
+          "SIMULTANEITY_AS_CAUSALITY"
+        ],
+        "Os dois grupos tiveram os mesmos objetivos.": [
+          "SAME_TIME_AS_SAME_MEANING"
+        ],
+        "Um dos registros precisa estar errado.": [
+          "SIMULTANEOUS_EVENTS_REJECTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SEculo_E_MARCO",
+      "statement": "O ano de 1900 pertence a qual século?",
+      "options": [
+        "Ao século XX, porque começa com 19.",
+        "Ao século XIX, que vai de 1801 a 1900.",
+        "Ao século XXI.",
+        "Ao século XVII."
+      ],
+      "correctAnswer": "Ao século XIX, que vai de 1801 a 1900.",
+      "explanation": "O primeiro século abrange os anos 1 a 100; por isso, o século XIX vai de 1801 a 1900, e o XX começa em 1901.",
+      "hint": "Os séculos não começam no ano terminado em 00; confira o intervalo completo.",
+      "errorFocus": "CENTURY_BOUNDARY_ERROR",
+      "misconceptions": {
+        "Ao século XX, porque começa com 19.": [
+          "CENTURY_LABEL_SHORTCUT"
+        ],
+        "Ao século XXI.": [
+          "CENTURY_SHIFT"
+        ],
+        "Ao século XVII.": [
+          "CENTURY_NUMBER_MISREAD"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTAS_E_PUBLICACAO",
+      "statement": "Uma carta foi escrita em 1912 e publicada em um livro em 1980. Qual data responde à pergunta “quando a carta foi produzida”?",
+      "options": [
+        "1980.",
+        "As duas datas significam a mesma coisa.",
+        "A data do acontecimento narrado, mesmo que não esteja indicada.",
+        "1912."
+      ],
+      "correctAnswer": "1912.",
+      "explanation": "1912 é a data de produção da carta; 1980 é a data de publicação no livro. O evento narrado pode ter uma terceira data.",
+      "hint": "Identifique qual objeto ou etapa a pergunta está datando.",
+      "errorFocus": "SOURCE_DATE_CONFUSION",
+      "misconceptions": {
+        "1980.": [
+          "PUBLICATION_AS_CREATION"
+        ],
+        "As duas datas significam a mesma coisa.": [
+          "DATES_COLLAPSED"
+        ],
+        "A data do acontecimento narrado, mesmo que não esteja indicada.": [
+          "EVENT_DATE_AS_DOCUMENT_DATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PROCESSO_DE_MIGRACAO",
+      "statement": "Um relatório descreve uma migração ocorrida entre 1930 e 1945, com chegadas em anos diferentes. Como representar melhor o processo?",
+      "options": [
+        "Escolher uma chegada e afirmar que todos migraram naquele dia.",
+        "Apagar os anos que não coincidem.",
+        "Mostrar apenas o último ano para resumir o processo.",
+        "Usar uma faixa de duração e marcar os registros datados, distinguindo início estimado e chegadas documentadas."
+      ],
+      "correctAnswer": "Usar uma faixa de duração e marcar os registros datados, distinguindo início estimado e chegadas documentadas.",
+      "explanation": "Uma faixa representa duração e marcos internos sem transformar um processo longo em evento único. A incerteza do começo deve permanecer explícita.",
+      "hint": "Um processo com várias ocorrências pede intervalo, não necessariamente uma data única.",
+      "errorFocus": "EVENT_PROCESS_CONFUSION",
+      "misconceptions": {
+        "Escolher uma chegada e afirmar que todos migraram naquele dia.": [
+          "PROCESS_COLLAPSED_TO_EVENT"
+        ],
+        "Apagar os anos que não coincidem.": [
+          "SELECTIVE_RECORD"
+        ],
+        "Mostrar apenas o último ano para resumir o processo.": [
+          "DURATION_HIDDEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCALA_DE_MAPA_TEMPORAL",
+      "statement": "Dois gráficos cobrem os mesmos 40 anos. Um marca cada ano; outro marca intervalos de dez anos. Por que a posição visual de um evento pode parecer diferente?",
+      "options": [
+        "Porque a escala altera a data real do evento.",
+        "Porque cada divisão representa um intervalo diferente; é preciso ler a escala antes de comparar distâncias.",
+        "Porque um gráfico necessariamente omite todos os fatos.",
+        "Porque eventos históricos não podem ser comparados no tempo."
+      ],
+      "correctAnswer": "Porque cada divisão representa um intervalo diferente; é preciso ler a escala antes de comparar distâncias.",
+      "explanation": "A distância no desenho depende da escala gráfica. A data do evento não muda, mas a representação visual exige interpretar cada divisão.",
+      "hint": "Conte quanto tempo cada marca representa em cada gráfico.",
+      "errorFocus": "TIMELINE_SCALE_MISREAD",
+      "misconceptions": {
+        "Porque a escala altera a data real do evento.": [
+          "REPRESENTATION_AS_REAL_CHANGE"
+        ],
+        "Porque um gráfico necessariamente omite todos os fatos.": [
+          "SCALE_AS_OMISSION_ONLY"
+        ],
+        "Porque eventos históricos não podem ser comparados no tempo.": [
+          "COMPARISON_DENIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "ANOS_CALENDARIO_DE_PROJETO",
+      "statement": "Um projeto começou em novembro de 2018 e terminou em fevereiro de 2021. Entre os anos indicados, qual é a diferença numérica?",
+      "options": [
+        "A diferença é de 2021 − 2018 = 3 anos; o tempo exato também depende dos meses e dias.",
+        "Quatro anos.",
+        "Três anos.",
+        "Dois anos."
+      ],
+      "correctAnswer": "A diferença é de 2021 − 2018 = 3 anos; o tempo exato também depende dos meses e dias.",
+      "explanation": "A diferença entre os números dos anos é três. Como os meses não são iguais, o intervalo exato é menor que três anos completos; a resposta depende do que se pede.",
+      "hint": "Separe diferença entre rótulos de ano e duração exata em meses/dias.",
+      "errorFocus": "YEAR_DIFFERENCE_AS_EXACT_DURATION",
+      "misconceptions": {
+        "Quatro anos.": [
+          "INCLUSIVE_COUNT_AS_DURATION"
+        ],
+        "Três anos.": [
+          "YEAR_DIFFERENCE_AS_EXACT_DURATION"
+        ],
+        "Dois anos.": [
+          "YEAR_DIFFERENCE_UNDERCOUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_CIDADES_E_TRANSPORTE",
+      "statement": "Em duas cidades, a primeira linha de ônibus foi inaugurada em 1987 e 1989. Os registros não indicam troca entre as equipes. Qual afirmação é sustentada pela cronologia?",
+      "options": [
+        "A linha da cidade A causou a da cidade B.",
+        "As inaugurações ocorreram em anos diferentes, com a da cidade A anterior à da cidade B.",
+        "As cidades tinham a mesma política de transporte.",
+        "A linha da cidade B foi planejada antes da outra."
+      ],
+      "correctAnswer": "As inaugurações ocorreram em anos diferentes, com a da cidade A anterior à da cidade B.",
+      "explanation": "As datas sustentam a ordem dos eventos. Causalidade, contato ou planejamento anterior exigiriam outras fontes.",
+      "hint": "Fique no que as datas fornecem e não acrescente relações ausentes.",
+      "errorFocus": "SEQUENCE_AS_CAUSALITY",
+      "misconceptions": {
+        "A linha da cidade A causou a da cidade B.": [
+          "CAUSALITY_WITHOUT_EVIDENCE"
+        ],
+        "As cidades tinham a mesma política de transporte.": [
+          "SIMILAR_DATE_AS_SAME_POLICY"
+        ],
+        "A linha da cidade B foi planejada antes da outra.": [
+          "PLANNING_DATE_INFERRED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ABOLICAO_REPUBLICA",
+      "statement": "Uma atividade informa que a abolição legal da escravidão no Brasil ocorreu em 1888 e a Proclamação da República em 1889. Qual ordem está correta?",
+      "options": [
+        "A República ocorreu antes da abolição.",
+        "A abolição veio antes da Proclamação da República.",
+        "Os dois marcos ocorreram no mesmo ano.",
+        "A ordem não pode ser estabelecida porque são temas diferentes."
+      ],
+      "correctAnswer": "A abolição veio antes da Proclamação da República.",
+      "explanation": "1888 antecede 1889. A cronologia estabelece a ordem, mas não explica por si só a relação histórica entre os processos.",
+      "hint": "Compare os anos sem inferir causa a partir da sequência.",
+      "errorFocus": "CHRONOLOGY_ORDER_ERROR",
+      "misconceptions": {
+        "A República ocorreu antes da abolição.": [
+          "REVERSE_ORDER"
+        ],
+        "Os dois marcos ocorreram no mesmo ano.": [
+          "YEAR_COMPARISON_ERROR"
+        ],
+        "A ordem não pode ser estabelecida porque são temas diferentes.": [
+          "TOPIC_DIFFERENCE_BLOCKS_ORDER"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "COLHEITAS_SOBREPOSTAS",
+      "statement": "Uma linha do tempo mostra que a colheita começou em uma região enquanto o plantio ainda ocorria em outra. Qual leitura é mais adequada?",
+      "options": [
+        "As atividades podem ser simultâneas porque lugares e calendários agrícolas diferem.",
+        "A linha do tempo tem erro, pois todos devem plantar ao mesmo tempo.",
+        "A colheita causou automaticamente o plantio distante.",
+        "Uma das atividades não é um processo histórico."
+      ],
+      "correctAnswer": "As atividades podem ser simultâneas porque lugares e calendários agrícolas diferem.",
+      "explanation": "Processos podem ocorrer ao mesmo tempo em lugares distintos e seguir ritmos locais. Uma cronologia com faixas paralelas ajuda a mostrar essa coexistência.",
+      "hint": "Não transforme uma sequência local em calendário universal.",
+      "errorFocus": "SIMULTANEITY_NOT_RECOGNIZED",
+      "misconceptions": {
+        "A linha do tempo tem erro, pois todos devem plantar ao mesmo tempo.": [
+          "UNIVERSAL_TIMING_ASSUMPTION"
+        ],
+        "A colheita causou automaticamente o plantio distante.": [
+          "SIMULTANEITY_AS_CAUSALITY"
+        ],
+        "Uma das atividades não é um processo histórico.": [
+          "PROCESS_NOT_RECOGNIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MEMORIA_ORAL_TARDIA",
+      "statement": "Uma entrevista gravada em 1995 recorda uma assembleia de 1970. Que datas devem ser distinguidas na linha do tempo?",
+      "options": [
+        "Apenas 1995, pois é a data mais segura.",
+        "1995 como data da gravação e 1970 como data lembrada, registrando que a lembrança foi produzida depois.",
+        "Apenas 1970, pois a entrevista é irrelevante.",
+        "Nenhuma data, porque memórias não podem ser fontes."
+      ],
+      "correctAnswer": "1995 como data da gravação e 1970 como data lembrada, registrando que a lembrança foi produzida depois.",
+      "explanation": "A data da entrevista e a do evento narrado são diferentes. A fonte pode informar a memória e a interpretação da pessoa em 1995, com limites próprios.",
+      "hint": "Uma fonte pode ter sua própria data e descrever um acontecimento anterior.",
+      "errorFocus": "SOURCE_DATE_CONFUSION",
+      "misconceptions": {
+        "Apenas 1995, pois é a data mais segura.": [
+          "EVENT_DATE_OMITTED"
+        ],
+        "Apenas 1970, pois a entrevista é irrelevante.": [
+          "SOURCE_CONTEXT_OMITTED"
+        ],
+        "Nenhuma data, porque memórias não podem ser fontes.": [
+          "SOURCE_TYPE_DISMISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CRONOLOGIA_DE_GREVE",
+      "statement": "Um jornal de uma cidade registra uma greve em março; um diário de outra região relata protesto no mesmo mês. O que a coincidência permite concluir sem outras evidências?",
+      "options": [
+        "Que os grupos se coordenaram.",
+        "Que um registro copiou o outro.",
+        "Que os eventos tiveram as mesmas demandas.",
+        "Que os registros indicam acontecimentos no mesmo período; vínculo entre eles exige investigação adicional."
+      ],
+      "correctAnswer": "Que os registros indicam acontecimentos no mesmo período; vínculo entre eles exige investigação adicional.",
+      "explanation": "A simultaneidade localiza eventos no tempo. Relação entre grupos, cópia ou objetivos comuns não decorrem apenas da coincidência de datas.",
+      "hint": "Diferencie coexistência temporal de conexão histórica demonstrada.",
+      "errorFocus": "SIMULTANEITY_AS_CONNECTION",
+      "misconceptions": {
+        "Que os grupos se coordenaram.": [
+          "COORDINATION_INFERRED"
+        ],
+        "Que um registro copiou o outro.": [
+          "SOURCE_LINK_INFERRED"
+        ],
+        "Que os eventos tiveram as mesmas demandas.": [
+          "SAME_TIME_AS_SAME_MOTIVE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MUSEU_E_ESCOLHA_DE_MARCOS",
+      "statement": "Um museu mostra uma linha do tempo sobre uma cidade com apenas inaugurações oficiais, sem mudanças de trabalho ou moradia. Qual pergunta ajuda a avaliar o recorte?",
+      "options": [
+        "Quem escolheu os marcos e quais experiências ou processos ficaram fora da seleção?",
+        "Qual cor das placas ficou mais visível?",
+        "Quantas datas cabem em uma página?",
+        "Qual inauguração parece mais impressionante?"
+      ],
+      "correctAnswer": "Quem escolheu os marcos e quais experiências ou processos ficaram fora da seleção?",
+      "explanation": "Uma cronologia é uma seleção organizada para uma pergunta. Examinar autoria e ausências permite perceber que perspectivas não estão representadas.",
+      "hint": "Investigue seleção, escala e vozes ausentes, não só a aparência do painel.",
+      "errorFocus": "TIMELINE_AS_COMPLETE_NEUTRAL",
+      "misconceptions": {
+        "Qual cor das placas ficou mais visível?": [
+          "VISUAL_DETAIL_OVER_SCOPE"
+        ],
+        "Quantas datas cabem em uma página?": [
+          "SPACE_AS_HISTORICAL_CRITERION"
+        ],
+        "Qual inauguração parece mais impressionante?": [
+          "IMPORTANCE_AS_SELECTION_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "DURACAO_E_ANOS_NOMEADOS",
+      "statement": "Um conselho foi criado em 2012 e encerrado em 2016. Qual par expressa corretamente a diferença entre anos e a quantidade de anos-calendário tocados?",
+      "options": [
+        "Diferença de 5 anos; quatro anos-calendário.",
+        "Diferença de 3 anos; três anos-calendário.",
+        "Diferença de 4 anos; cinco anos-calendário (2012 a 2016, inclusive).",
+        "Diferença de 4 anos; quatro anos-calendário, incluindo os extremos."
+      ],
+      "correctAnswer": "Diferença de 4 anos; cinco anos-calendário (2012 a 2016, inclusive).",
+      "explanation": "2016 − 2012 = 4 anos de diferença entre os marcos. Os anos nomeados são 2012, 2013, 2014, 2015 e 2016: cinco rótulos inclusivos.",
+      "hint": "Faça a subtração e a contagem dos rótulos como duas operações separadas.",
+      "errorFocus": "INCLUSIVE_COUNT_AS_DURATION",
+      "misconceptions": {
+        "Diferença de 5 anos; quatro anos-calendário.": [
+          "OPERATIONS_REVERSED"
+        ],
+        "Diferença de 3 anos; três anos-calendário.": [
+          "OFF_BY_ONE_UNDERCOUNT"
+        ],
+        "Diferença de 4 anos; quatro anos-calendário, incluindo os extremos.": [
+          "INCLUSIVE_COUNT_UNDERCOUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CRISE_E_REFORMA",
+      "statement": "Uma reforma foi aprovada após uma crise econômica. O gráfico mostra apenas essas duas datas, sem documentos sobre decisões ou outros fatores. Qual conclusão é adequada?",
+      "options": [
+        "A crise causou a reforma com certeza.",
+        "A ordem temporal é conhecida; a causalidade requer evidências sobre decisões e contexto.",
+        "A reforma ocorreu antes da crise.",
+        "A ordem dos marcos não tem valor histórico."
+      ],
+      "correctAnswer": "A ordem temporal é conhecida; a causalidade requer evidências sobre decisões e contexto.",
+      "explanation": "A cronologia apoia anterioridade. Para explicar a reforma, é necessário analisar fontes e mecanismos, considerando outras condições.",
+      "hint": "Pergunte qual relação a linha do tempo realmente registra.",
+      "errorFocus": "CHRONOLOGY_PROVES_CAUSE",
+      "misconceptions": {
+        "A crise causou a reforma com certeza.": [
+          "POST_HOC_CAUSALITY"
+        ],
+        "A reforma ocorreu antes da crise.": [
+          "REVERSE_ORDER"
+        ],
+        "A ordem dos marcos não tem valor histórico.": [
+          "CHRONOLOGY_DISMISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PERIODIZACAO_DE_BAIRRO",
+      "statement": "Um estudo chama 1950–1970 de “período de expansão do bairro”. Qual cuidado evita transformar essa escolha analítica em fronteira natural?",
+      "options": [
+        "Supor que a vida local começou em 1950.",
+        "Perguntar por que esses limites foram escolhidos e verificar continuidades antes e depois deles.",
+        "Afirmar que todos os moradores viveram a mesma mudança.",
+        "Tratar qualquer evento fora do intervalo como irrelevante."
+      ],
+      "correctAnswer": "Perguntar por que esses limites foram escolhidos e verificar continuidades antes e depois deles.",
+      "explanation": "Periodizações são ferramentas de análise. Justificar limites e examinar continuidades revela o que o recorte esclarece e o que pode ocultar.",
+      "hint": "Os limites de um período são escolhas interpretativas que precisam de justificativa.",
+      "errorFocus": "PERIODIZATION_AS_NATURAL_BOUNDARY",
+      "misconceptions": {
+        "Supor que a vida local começou em 1950.": [
+          "START_DATE_AS_ORIGIN"
+        ],
+        "Afirmar que todos os moradores viveram a mesma mudança.": [
+          "UNIVERSAL_EXPERIENCE"
+        ],
+        "Tratar qualquer evento fora do intervalo como irrelevante.": [
+          "BOUNDARY_AS_EXCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DATAS_CONFLITANTES",
+      "statement": "Dois registros dão anos diferentes para a criação de uma associação: um estatuto foi assinado em 1964 e uma reportagem comemorativa diz que ela surgiu em 1965. Qual procedimento é melhor?",
+      "options": [
+        "Escolher o ano mais antigo porque documentos oficiais nunca erram.",
+        "Fazer a média dos anos e registrar 1964,5.",
+        "Apagar uma fonte para deixar a linha do tempo simples.",
+        "Registrar a divergência, identificar o que cada fonte chama de criação e investigar autoria e finalidade."
+      ],
+      "correctAnswer": "Registrar a divergência, identificar o que cada fonte chama de criação e investigar autoria e finalidade.",
+      "explanation": "As fontes podem usar critérios diferentes, como assinatura formal ou início das atividades. A divergência é evidência a investigar, não ruído a ocultar.",
+      "hint": "Antes de declarar uma data errada, compare o significado atribuído ao marco.",
+      "errorFocus": "CONFLICTING_SOURCES_COLLAPSED",
+      "misconceptions": {
+        "Escolher o ano mais antigo porque documentos oficiais nunca erram.": [
+          "SOURCE_AUTHORITY_AS_INFALLIBLE"
+        ],
+        "Fazer a média dos anos e registrar 1964,5.": [
+          "DATES_AS_MEASUREMENT_AVERAGE"
+        ],
+        "Apagar uma fonte para deixar a linha do tempo simples.": [
+          "CONTRADICTION_SUPPRESSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "REVISAO_DE_JORNAL",
+      "statement": "Um jornal foi publicado em 1952 e descreve uma assembleia realizada em 1950. Qual marco veio primeiro?",
+      "options": [
+        "A publicação de 1952.",
+        "Os dois necessariamente ocorreram ao mesmo tempo.",
+        "A assembleia de 1950.",
+        "Não há como comparar anos."
+      ],
+      "correctAnswer": "A assembleia de 1950.",
+      "explanation": "1950 antecede 1952. Uma fonte posterior pode narrar um acontecimento anterior.",
+      "hint": "Compare a data do acontecimento com a data de publicação.",
+      "errorFocus": "SOURCE_DATE_CONFUSION",
+      "misconceptions": {
+        "A publicação de 1952.": [
+          "DOCUMENT_DATE_AS_EVENT_DATE"
+        ],
+        "Os dois necessariamente ocorreram ao mesmo tempo.": [
+          "DATES_COLLAPSED"
+        ],
+        "Não há como comparar anos.": [
+          "ORDER_RELATION_NOT_RECOGNIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "INTERVALO_DE_ACERVO",
+      "statement": "Um acervo tem documentos datados de 1978 e 1983. Qual é a diferença entre os anos dos documentos?",
+      "options": [
+        "Seis anos.",
+        "Dois anos.",
+        "Cinco anos.",
+        "Onze anos."
+      ],
+      "correctAnswer": "Cinco anos.",
+      "explanation": "1983 − 1978 = 5. A quantidade de anos-calendário incluídos seria outra contagem.",
+      "hint": "Subtraia o ano inicial do final.",
+      "errorFocus": "INCLUSIVE_COUNT_AS_DURATION",
+      "misconceptions": {
+        "Seis anos.": [
+          "INCLUSIVE_COUNT_AS_DURATION"
+        ],
+        "Dois anos.": [
+          "SUBTRACTION_ERROR"
+        ],
+        "Onze anos.": [
+          "YEARS_ADDED_INSTEAD"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MARCOS_QUE_SE_SOBREPOEM",
+      "statement": "Uma faixa de 2002 a 2008 aparece parcialmente sobreposta à faixa de 2006 a 2010. O que a representação indica?",
+      "options": [
+        "A primeira faixa causou a segunda.",
+        "As duas faixas têm a mesma duração.",
+        "Há anos em que os processos ocorreram ao mesmo tempo.",
+        "O processo mais curto começou por último necessariamente."
+      ],
+      "correctAnswer": "Há anos em que os processos ocorreram ao mesmo tempo.",
+      "explanation": "A área de sobreposição indica um intervalo compartilhado. A representação não afirma causalidade nem igualdade de duração.",
+      "hint": "Localize os anos que pertencem às duas faixas.",
+      "errorFocus": "SIMULTANEITY_NOT_RECOGNIZED",
+      "misconceptions": {
+        "A primeira faixa causou a segunda.": [
+          "SIMULTANEITY_AS_CAUSALITY"
+        ],
+        "As duas faixas têm a mesma duração.": [
+          "OVERLAP_AS_EQUAL_DURATION"
+        ],
+        "O processo mais curto começou por último necessariamente.": [
+          "DURATION_AS_START_ORDER"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SÉCULO_DE_1822",
+      "statement": "O ano de 1822 faz parte de qual século?",
+      "options": [
+        "Século XVIII.",
+        "Século XVII.",
+        "Século XX.",
+        "Século XIX."
+      ],
+      "correctAnswer": "Século XIX.",
+      "explanation": "O século XIX abrange os anos de 1801 a 1900; 1822 está dentro desse intervalo.",
+      "hint": "Compare o ano com os limites do século, não apenas com os dois primeiros algarismos.",
+      "errorFocus": "CENTURY_BOUNDARY_ERROR",
+      "misconceptions": {
+        "Século XVIII.": [
+          "CENTURY_SHIFT_BACK"
+        ],
+        "Século XVII.": [
+          "CENTURY_NUMBER_MISREAD"
+        ],
+        "Século XX.": [
+          "CENTURY_SHIFT_FORWARD"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CRONOLOGIA_E_IMPORTANCIA",
+      "statement": "Uma exposição coloca uma greve de longa duração abaixo de uma inauguração ocorrida em um só dia. Que leitura é mais cuidadosa?",
+      "options": [
+        "A greve foi menos importante porque aparece abaixo.",
+        "A inauguração durou mais porque ocupa uma linha.",
+        "A posição visual não mede automaticamente importância nem duração; confira escala, legenda e critério de seleção.",
+        "A exposição prova que os fatos ocorreram em ordens diferentes."
+      ],
+      "correctAnswer": "A posição visual não mede automaticamente importância nem duração; confira escala, legenda e critério de seleção.",
+      "explanation": "Layout e posição podem organizar categorias, não expressar duração ou valor. A legenda e a escala explicam a representação.",
+      "hint": "Não converta localização gráfica em significado histórico sem uma legenda.",
+      "errorFocus": "VISUAL_POSITION_AS_MEANING",
+      "misconceptions": {
+        "A greve foi menos importante porque aparece abaixo.": [
+          "LAYOUT_AS_VALUE"
+        ],
+        "A inauguração durou mais porque ocupa uma linha.": [
+          "SPACE_AS_DURATION"
+        ],
+        "A exposição prova que os fatos ocorreram em ordens diferentes.": [
+          "LAYOUT_AS_CHRONOLOGY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FONTE_COM_DATA_APROXIMADA",
+      "statement": "Uma fotografia de arquivo está catalogada como “cerca de 1930”. Qual representação preserva melhor a informação?",
+      "options": [
+        "Fixar a data em 1930 sem observação.",
+        "Mudar para 1931 para evitar dúvida.",
+        "Marcar um intervalo ou símbolo de incerteza e registrar que a data é aproximada.",
+        "Excluir a fotografia porque não tem dia e mês."
+      ],
+      "correctAnswer": "Marcar um intervalo ou símbolo de incerteza e registrar que a data é aproximada.",
+      "explanation": "A expressão “cerca de” comunica incerteza. A linha do tempo deve preservar essa condição, em vez de fabricar precisão.",
+      "hint": "A representação precisa manter o grau de precisão da fonte.",
+      "errorFocus": "FALSE_DATE_PRECISION",
+      "misconceptions": {
+        "Fixar a data em 1930 sem observação.": [
+          "APPROXIMATE_AS_EXACT"
+        ],
+        "Mudar para 1931 para evitar dúvida.": [
+          "DATE_FABRICATION"
+        ],
+        "Excluir a fotografia porque não tem dia e mês.": [
+          "UNCERTAINTY_AS_INVALIDITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CIDADE_E_PERIFERIA",
+      "statement": "Uma linha do tempo municipal destaca três obras no centro entre 1970 e 1980. Para estudar mudanças na periferia no mesmo período, o que falta?",
+      "options": [
+        "Aumentar o tamanho das datas centrais.",
+        "Presumir que as obras tiveram o mesmo efeito nos bairros.",
+        "Localizar fontes e marcos da periferia, considerando que o recorte atual não representa todas as experiências.",
+        "Retirar as datas para não comparar espaços."
+      ],
+      "correctAnswer": "Localizar fontes e marcos da periferia, considerando que o recorte atual não representa todas as experiências.",
+      "explanation": "O recorte espacial deixa experiências fora do painel. Outras fontes são necessárias para investigar trajetórias e impactos em áreas diferentes.",
+      "hint": "Pergunte quais pessoas e lugares o recorte visível não contempla.",
+      "errorFocus": "SCOPE_AND_VOICE_OMISSION",
+      "misconceptions": {
+        "Aumentar o tamanho das datas centrais.": [
+          "VISUAL_CHANGE_AS_EVIDENCE"
+        ],
+        "Presumir que as obras tiveram o mesmo efeito nos bairros.": [
+          "UNIVERSAL_IMPACT_ASSUMPTION"
+        ],
+        "Retirar as datas para não comparar espaços.": [
+          "COMPARISON_AVOIDED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-chronology-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CAUSA_E_SEQUENCIA",
+      "statement": "Uma linha do tempo mostra uma lei promulgada em 1985 e uma mudança social registrada em 1987. Qual próximo passo é mais adequado para investigar se há relação entre elas?",
+      "options": [
+        "Comparar documentos sobre implementação, atores, contexto e outras mudanças no período.",
+        "Declarar causalidade porque a lei veio primeiro.",
+        "Afirmar que as datas não podem ajudar em uma investigação.",
+        "Ignorar registros produzidos depois da lei."
+      ],
+      "correctAnswer": "Comparar documentos sobre implementação, atores, contexto e outras mudanças no período.",
+      "explanation": "A sequência temporal pode orientar a pergunta, mas a explicação exige evidências sobre como a lei foi aplicada e quais outros fatores atuaram.",
+      "hint": "A cronologia sugere uma hipótese; fontes contextuais ajudam a testá-la.",
+      "errorFocus": "CHRONOLOGY_PROVES_CAUSE",
+      "misconceptions": {
+        "Declarar causalidade porque a lei veio primeiro.": [
+          "POST_HOC_CAUSALITY"
+        ],
+        "Afirmar que as datas não podem ajudar em uma investigação.": [
+          "CHRONOLOGY_DISMISSED"
+        ],
+        "Ignorar registros produzidos depois da lei.": [
+          "SOURCE_RANGE_RESTRICTED"
+        ]
+      }
+    }
+  ]
+}

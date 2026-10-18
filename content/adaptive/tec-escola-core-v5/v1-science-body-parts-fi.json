@@ -1,0 +1,1416 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-science-body-parts-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CI02_BODY_FUNCTIONS",
+  "subject": "SCIENCE",
+  "domain": "CORPO_HUMANO",
+  "topic": "partes do corpo humano e suas funções",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CI02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Localizar, nomear e representar graficamente (por meio de desenhos) partes do corpo humano e explicar suas funções.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 335
+    },
+    "note": "O descritor é contexto de autoria; o vínculo canônico, a revisão pedagógica e a publicação permanecem pendentes.",
+    "sourceVerificationRecord": "BNCC_EF01CI02_MEC_P335_V1"
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Meu corpo: partes, sentidos e funções",
+    "objective": "Localizar, nomear e representar partes do corpo humano, relacionando-as a funções observáveis e respeitando diferentes formas de perceber e movimentar o corpo.",
+    "summary": "O corpo tem partes que trabalham juntas. Podemos observar funções como ver, ouvir, cheirar, saborear, tocar, respirar e movimentar-se sem reduzir pessoas a um único padrão corporal.",
+    "explanation": "## Observar sem reduzir\nNomeie partes do corpo a partir de desenhos, movimentos e situações cotidianas. Uma mesma ação pode envolver várias partes e cada pessoa pode realizá-la de maneira diferente.\n\n## Relacionar parte e função\nOs olhos participam da visão, as orelhas da audição, o nariz do olfato e a língua do paladar. A pele participa do tato; mãos, braços, pernas e articulações ajudam em movimentos. Pulmões e coração têm funções internas que podem ser estudadas por sinais e modelos apropriados.\n\n## Cuidar e incluir\nHigiene, descanso, segurança e comunicação acessível ajudam a cuidar do corpo. Não se deve diagnosticar uma pessoa pela aparência nem excluir alguém por se movimentar ou perceber de outro modo.",
+    "workedExample": "Em um desenho de uma criança ouvindo uma história, marque as orelhas como partes relacionadas à audição, os olhos como partes que podem acompanhar imagens e as mãos como partes que podem segurar o livro. Explique que a atividade pode ser adaptada para diferentes formas de participação.",
+    "commonMistake": "Confundir uma parte do corpo com outra função, tratar um único jeito de mover-se como regra para todas as pessoas ou fazer diagnóstico sem orientação profissional.",
+    "tips": [
+      "Pergunte qual ação está sendo realizada antes de escolher a parte do corpo.",
+      "Use desenhos, gestos, objetos e comunicação alternativa para representar funções.",
+      "Diferencie observação, explicação e diagnóstico.",
+      "Adapte a atividade sem pressupor que todos os corpos funcionam da mesma maneira."
+    ],
+    "priorKnowledge": [
+      "Nomear objetos e ações do cotidiano.",
+      "Comparar situações simples e seguir orientações de segurança."
+    ],
+    "keyConcepts": [
+      "parte do corpo",
+      "função",
+      "sentidos",
+      "movimento",
+      "higiene",
+      "segurança",
+      "acessibilidade",
+      "respeito às diferenças"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Nomear partes e relacionar sentidos a situações simples.",
+        "questionIds": [
+          "v1-science-body-parts-fi-01",
+          "v1-science-body-parts-fi-02",
+          "v1-science-body-parts-fi-03",
+          "v1-science-body-parts-fi-04"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Explicar funções e cuidados em atividades do cotidiano.",
+        "questionIds": [
+          "v1-science-body-parts-fi-05",
+          "v1-science-body-parts-fi-06",
+          "v1-science-body-parts-fi-07",
+          "v1-science-body-parts-fi-08",
+          "v1-science-body-parts-fi-09",
+          "v1-science-body-parts-fi-10",
+          "v1-science-body-parts-fi-11",
+          "v1-science-body-parts-fi-12",
+          "v1-science-body-parts-fi-13",
+          "v1-science-body-parts-fi-14",
+          "v1-science-body-parts-fi-15",
+          "v1-science-body-parts-fi-16"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar o conhecimento em situações de segurança e inclusão.",
+        "questionIds": [
+          "v1-science-body-parts-fi-17",
+          "v1-science-body-parts-fi-18",
+          "v1-science-body-parts-fi-19",
+          "v1-science-body-parts-fi-20",
+          "v1-science-body-parts-fi-21",
+          "v1-science-body-parts-fi-22",
+          "v1-science-body-parts-fi-23",
+          "v1-science-body-parts-fi-24"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Distinguir função, aparência, observação e diagnóstico.",
+        "questionIds": [
+          "v1-science-body-parts-fi-25",
+          "v1-science-body-parts-fi-26",
+          "v1-science-body-parts-fi-27",
+          "v1-science-body-parts-fi-28",
+          "v1-science-body-parts-fi-29",
+          "v1-science-body-parts-fi-30"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar partes, sentidos, movimento e cuidado em contextos novos.",
+        "questionIds": [
+          "v1-science-body-parts-fi-31",
+          "v1-science-body-parts-fi-32",
+          "v1-science-body-parts-fi-33",
+          "v1-science-body-parts-fi-34",
+          "v1-science-body-parts-fi-35",
+          "v1-science-body-parts-fi-36",
+          "v1-science-body-parts-fi-37",
+          "v1-science-body-parts-fi-38",
+          "v1-science-body-parts-fi-39",
+          "v1-science-body-parts-fi-40"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "PART_FUNCTION_CONFUSION",
+        "text": "Volte à ação descrita: ver, ouvir, cheirar, saborear, tocar ou movimentar-se. Depois relacione a parte do corpo à função observável."
+      },
+      {
+        "trigger": "BODY_STANDARDIZATION",
+        "text": "A função pode ser realizada com adaptações e apoios diferentes. Não transforme um único corpo em padrão para avaliar todos."
+      },
+      {
+        "trigger": "OBSERVATION_AS_DIAGNOSIS",
+        "text": "Uma observação em sala não permite diagnosticar uma pessoa. Descreva o que foi percebido e procure um adulto ou profissional responsável quando necessário."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "PART_FUNCTION_CONFUSION",
+        "prompt": "Ligue cartões de ações a partes do corpo e explique por que cada ligação faz sentido.",
+        "errorFocus": "Confundir o nome de uma parte com a função que ela pode desempenhar.",
+        "action": "Use cartões de parte e ação, explique uma associação com evidência e indique quando mais de uma parte participa."
+      },
+      {
+        "misconception": "BODY_STANDARDIZATION",
+        "prompt": "Adapte uma brincadeira para duas formas diferentes de participação e registre como ambas alcançam o objetivo.",
+        "errorFocus": "Tratar uma ação como se dependesse de uma única parte do corpo.",
+        "action": "Observe ou represente a ação em etapas e registre as partes envolvidas sem exigir demonstração corporal do estudante."
+      },
+      {
+        "misconception": "OBSERVATION_AS_DIAGNOSIS",
+        "prompt": "Separe em duas colunas o que pode ser observado e o que exigiria avaliação de um profissional.",
+        "errorFocus": "Supor que todas as pessoas percebem ou se movimentam da mesma forma.",
+        "action": "Compare duas formas de participação representadas e descreva adaptações sem classificar uma como melhor."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "body-map-with-accessible-choices",
+        "title": "Representar partes do corpo e funções observáveis",
+        "instructions": "Escolha uma silhueta ou personagem fictício e marque partes do corpo sem comparar corpos reais da turma. Associe cada parte a uma função observável usando fala, desenho, cartões, gesto ou comunicação alternativa. Revise uma associação com apoio de fonte ou demonstração segura e registre uma adaptação de participação possível.",
+        "evidence": "Mapa multimodal que nomeia e representa pelo menos seis partes, associa funções justificáveis e registra uma forma acessível de participação.",
+        "privacyGuard": "Não registrar diagnósticos, fotos corporais ou informações de saúde; usar materiais e exemplos genéricos.",
+        "rubric": [
+          {
+            "criterion": "Localização e nomeação",
+            "emerging": "Marca partes sem nomeá-las.",
+            "developing": "Nomeia partes com apoio visual.",
+            "proficient": "Localiza e nomeia partes usando a representação escolhida."
+          },
+          {
+            "criterion": "Relação entre parte e função",
+            "emerging": "Associa uma função sem relação observável.",
+            "developing": "Relaciona parte e função com apoio.",
+            "proficient": "Explica relações observáveis e reconhece que ações podem envolver mais de uma parte."
+          },
+          {
+            "criterion": "Participação respeitosa",
+            "emerging": "Pressupõe que todos realizem o mesmo movimento.",
+            "developing": "Aceita uma forma alternativa após mediação.",
+            "proficient": "Escolhe e reconhece diferentes formas de representar ou participar."
+          }
+        ],
+        "context": "Silhueta ou personagem fictício, cartões de partes do corpo e formas variadas de comunicação.",
+        "steps": [
+          "Escolha uma silhueta ou personagem fictício e marque partes do corpo sem comparar corpos reais da turma.",
+          "Associe cada parte a uma função observável usando fala, desenho, cartões, gesto ou comunicação alternativa.",
+          "Revise uma associação com apoio de fonte ou demonstração segura e registre uma adaptação de participação possível."
+        ]
+      }
+    ],
+    "estimatedMinutes": 30,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "title": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "publisher": "MEC/CNE",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 335,
+        "accessedOn": "2026-10-16",
+        "supports": [
+          "partes do corpo",
+          "representação gráfica",
+          "funções observáveis"
+        ],
+        "use": "Fonte oficial usada para rastreabilidade do descritor; nenhum texto, questão ou ilustração foi copiado."
+      }
+    ],
+    "copyrightNote": "Situações, alternativas, explicações e atividade são autorais e hipotéticas; o descritor oficial permanece apenas como contexto de autoria.",
+    "accessibilitySupports": [
+      "Permitir representação por personagem, silhueta, cartões, objetos táteis, descrição oral ou comunicação alternativa, sem tocar no corpo de colegas.",
+      "Usar imagens nítidas com contraste, linguagem direta e tempo de resposta flexível; não inferir capacidade a partir da aparência ou do movimento."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v1-science-body-parts-fi-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROSTO_ESPELHO",
+      "statement": "Ao olhar para o rosto no espelho, qual parte do corpo ajuda a enxergar o próprio reflexo?",
+      "options": [
+        "Os olhos.",
+        "As mãos.",
+        "Os joelhos.",
+        "Os pés."
+      ],
+      "correctAnswer": "Os olhos.",
+      "explanation": "A resposta relaciona a situação apresentada à função de os olhos.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EYES_FUNCTION",
+      "misconceptions": {
+        "As mãos.": [
+          "EYES_FUNCTION"
+        ],
+        "Os joelhos.": [
+          "EYES_FUNCTION"
+        ],
+        "Os pés.": [
+          "EYES_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "NAME",
+      "contextFamily": "PALMAS_BATENDO",
+      "statement": "Para bater palmas, quais partes do corpo se aproximam?",
+      "options": [
+        "As orelhas.",
+        "As mãos.",
+        "Os tornozelos.",
+        "Os cabelos."
+      ],
+      "correctAnswer": "As mãos.",
+      "explanation": "A resposta relaciona a situação apresentada à função de as mãos.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "BODY_PART_NAME",
+      "misconceptions": {
+        "As orelhas.": [
+          "BODY_PART_NAME"
+        ],
+        "Os tornozelos.": [
+          "BODY_PART_NAME"
+        ],
+        "Os cabelos.": [
+          "BODY_PART_NAME"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "SOM_DA_CAMPANHA",
+      "statement": "Uma criança ouve a campainha da escola. Qual parte do corpo recebe esse som?",
+      "options": [
+        "Os dedos.",
+        "Os dentes.",
+        "As orelhas.",
+        "Os ombros."
+      ],
+      "correctAnswer": "As orelhas.",
+      "explanation": "A resposta relaciona a situação apresentada à função de as orelhas.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EARS_FUNCTION",
+      "misconceptions": {
+        "Os dedos.": [
+          "EARS_FUNCTION"
+        ],
+        "Os dentes.": [
+          "EARS_FUNCTION"
+        ],
+        "Os ombros.": [
+          "EARS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CHEIRO_DA_FRUTA",
+      "statement": "Para perceber o cheiro de uma fruta, qual parte do corpo participa principalmente?",
+      "options": [
+        "O cotovelo.",
+        "O calcanhar.",
+        "A unha.",
+        "O nariz."
+      ],
+      "correctAnswer": "O nariz.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o nariz.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "NOSE_FUNCTION",
+      "misconceptions": {
+        "O cotovelo.": [
+          "NOSE_FUNCTION"
+        ],
+        "O calcanhar.": [
+          "NOSE_FUNCTION"
+        ],
+        "A unha.": [
+          "NOSE_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CHUTE_BOLA",
+      "statement": "Na brincadeira de chutar uma bola, qual parte do corpo empurra a bola?",
+      "options": [
+        "O pé.",
+        "A língua.",
+        "A testa.",
+        "A orelha."
+      ],
+      "correctAnswer": "O pé.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o pé.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "LEGS_AND_FEET",
+      "misconceptions": {
+        "A língua.": [
+          "LEGS_AND_FEET"
+        ],
+        "A testa.": [
+          "LEGS_AND_FEET"
+        ],
+        "A orelha.": [
+          "LEGS_AND_FEET"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "DESENHO_LINHAS",
+      "statement": "Para segurar o lápis e fazer linhas, qual parte do corpo é usada diretamente?",
+      "options": [
+        "O peito.",
+        "A mão.",
+        "O nariz.",
+        "O calcanhar."
+      ],
+      "correctAnswer": "A mão.",
+      "explanation": "A resposta relaciona a situação apresentada à função de a mão.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HANDS_FUNCTION",
+      "misconceptions": {
+        "O peito.": [
+          "HANDS_FUNCTION"
+        ],
+        "O nariz.": [
+          "HANDS_FUNCTION"
+        ],
+        "O calcanhar.": [
+          "HANDS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MASTIGAR_MACA",
+      "statement": "Os dentes ajudam a realizar qual ação quando comemos uma maçã?",
+      "options": [
+        "Escutar a música.",
+        "Sentir o cheiro da sala.",
+        "Mastigar e triturar o alimento.",
+        "Dobrar o joelho."
+      ],
+      "correctAnswer": "Mastigar e triturar o alimento.",
+      "explanation": "A resposta relaciona a situação apresentada à função de mastigar e triturar o alimento.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "TEETH_FUNCTION",
+      "misconceptions": {
+        "Escutar a música.": [
+          "TEETH_FUNCTION"
+        ],
+        "Sentir o cheiro da sala.": [
+          "TEETH_FUNCTION"
+        ],
+        "Dobrar o joelho.": [
+          "TEETH_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-08",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CORRER_NO_PATIO",
+      "statement": "Quando uma criança corre no pátio, quais partes do corpo ajudam a sustentar e mover o corpo?",
+      "options": [
+        "As unhas e os cabelos.",
+        "Os dentes e a língua.",
+        "As orelhas e o nariz.",
+        "As pernas e os pés."
+      ],
+      "correctAnswer": "As pernas e os pés.",
+      "explanation": "A resposta relaciona a situação apresentada à função de as pernas e os pés.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "LEGS_AND_FEET",
+      "misconceptions": {
+        "As unhas e os cabelos.": [
+          "LEGS_AND_FEET"
+        ],
+        "Os dentes e a língua.": [
+          "LEGS_AND_FEET"
+        ],
+        "As orelhas e o nariz.": [
+          "LEGS_AND_FEET"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-09",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "OUVIR_HISTORIA",
+      "statement": "A professora lê uma história. O que as orelhas ajudam a fazer?",
+      "options": [
+        "Ouvir os sons e as palavras.",
+        "Sentir o gosto do lanche.",
+        "Segurar o livro.",
+        "Pular mais alto."
+      ],
+      "correctAnswer": "Ouvir os sons e as palavras.",
+      "explanation": "A resposta relaciona a situação apresentada à função de ouvir os sons e as palavras.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EARS_FUNCTION",
+      "misconceptions": {
+        "Sentir o gosto do lanche.": [
+          "EARS_FUNCTION"
+        ],
+        "Segurar o livro.": [
+          "EARS_FUNCTION"
+        ],
+        "Pular mais alto.": [
+          "EARS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-10",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SABONETE_MAOS",
+      "statement": "Por que lavamos as mãos antes de comer?",
+      "options": [
+        "Para enxergar melhor.",
+        "Para remover sujeiras e microrganismos da pele.",
+        "Para ouvir mais longe.",
+        "Para fazer os dentes crescerem."
+      ],
+      "correctAnswer": "Para remover sujeiras e microrganismos da pele.",
+      "explanation": "A resposta relaciona a situação apresentada à função de para remover sujeiras e microrganismos da pele.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SKIN_CARE",
+      "misconceptions": {
+        "Para enxergar melhor.": [
+          "SKIN_CARE"
+        ],
+        "Para ouvir mais longe.": [
+          "SKIN_CARE"
+        ],
+        "Para fazer os dentes crescerem.": [
+          "SKIN_CARE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-11",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "GOSTO_DA_BANANA",
+      "statement": "Qual parte da boca ajuda a perceber sabores como o doce da banana?",
+      "options": [
+        "O cotovelo.",
+        "O joelho.",
+        "A língua.",
+        "A sobrancelha."
+      ],
+      "correctAnswer": "A língua.",
+      "explanation": "A resposta relaciona a situação apresentada à função de a língua.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "TONGUE_FUNCTION",
+      "misconceptions": {
+        "O cotovelo.": [
+          "TONGUE_FUNCTION"
+        ],
+        "O joelho.": [
+          "TONGUE_FUNCTION"
+        ],
+        "A sobrancelha.": [
+          "TONGUE_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-12",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RESPIRAR_TRANQUILO",
+      "statement": "Qual ação está relacionada ao trabalho dos pulmões?",
+      "options": [
+        "Mastigar a comida.",
+        "Escrever uma palavra.",
+        "Escutar uma canção.",
+        "Respirar e trocar gases com o ambiente."
+      ],
+      "correctAnswer": "Respirar e trocar gases com o ambiente.",
+      "explanation": "A resposta relaciona a situação apresentada à função de respirar e trocar gases com o ambiente.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "LUNGS_FUNCTION",
+      "misconceptions": {
+        "Mastigar a comida.": [
+          "LUNGS_FUNCTION"
+        ],
+        "Escrever uma palavra.": [
+          "LUNGS_FUNCTION"
+        ],
+        "Escutar uma canção.": [
+          "LUNGS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CORACAO_BATENDO",
+      "statement": "Depois de correr, a criança percebe o coração batendo mais rápido. O que o coração faz?",
+      "options": [
+        "Ajuda a movimentar o sangue pelo corpo.",
+        "Transforma som em luz.",
+        "Tritura os alimentos na boca.",
+        "Movimenta apenas os cabelos."
+      ],
+      "correctAnswer": "Ajuda a movimentar o sangue pelo corpo.",
+      "explanation": "A resposta relaciona a situação apresentada à função de ajuda a movimentar o sangue pelo corpo.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HEART_FUNCTION",
+      "misconceptions": {
+        "Transforma som em luz.": [
+          "HEART_FUNCTION"
+        ],
+        "Tritura os alimentos na boca.": [
+          "HEART_FUNCTION"
+        ],
+        "Movimenta apenas os cabelos.": [
+          "HEART_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "BRACO_ALCANCE",
+      "statement": "Para alcançar um livro na mesa, que combinação ajuda a realizar o movimento?",
+      "options": [
+        "Dentes, língua e nariz.",
+        "Braço, mão e articulações.",
+        "Orelhas, olhos e cabelos.",
+        "Unhas, pele e sobrancelhas."
+      ],
+      "correctAnswer": "Braço, mão e articulações.",
+      "explanation": "A resposta relaciona a situação apresentada à função de braço, mão e articulações.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "JOINTS_AND_MOVEMENT",
+      "misconceptions": {
+        "Dentes, língua e nariz.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "Orelhas, olhos e cabelos.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "Unhas, pele e sobrancelhas.": [
+          "JOINTS_AND_MOVEMENT"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "JOELHO_DOBRA",
+      "statement": "Qual parte permite dobrar a perna quando sentamos?",
+      "options": [
+        "O pulso da mão.",
+        "A língua.",
+        "O joelho.",
+        "O nariz."
+      ],
+      "correctAnswer": "O joelho.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o joelho.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "JOINTS_AND_MOVEMENT",
+      "misconceptions": {
+        "O pulso da mão.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "A língua.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "O nariz.": [
+          "JOINTS_AND_MOVEMENT"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PELE_TOQUE",
+      "statement": "A pele ajuda a perceber qual situação?",
+      "options": [
+        "Qual é o nome de uma música sem ouvi-la.",
+        "Quanto uma pessoa enxerga sem olhar.",
+        "O gosto de um alimento sem colocá-lo na boca.",
+        "Que um objeto está quente, frio, macio ou áspero."
+      ],
+      "correctAnswer": "Que um objeto está quente, frio, macio ou áspero.",
+      "explanation": "A resposta relaciona a situação apresentada à função de que um objeto está quente, frio, macio ou áspero.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SKIN_SENSATION",
+      "misconceptions": {
+        "Qual é o nome de uma música sem ouvi-la.": [
+          "SKIN_SENSATION"
+        ],
+        "Quanto uma pessoa enxerga sem olhar.": [
+          "SKIN_SENSATION"
+        ],
+        "O gosto de um alimento sem colocá-lo na boca.": [
+          "SKIN_SENSATION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BOLA_NO_GOL",
+      "statement": "Durante um jogo de bola, uma criança não enxerga bem o gol à distância. Qual cuidado ajuda?",
+      "options": [
+        "Aproximar-se com segurança e pedir orientação a um adulto.",
+        "Correr de olhos fechados.",
+        "Usar os ouvidos para enxergar.",
+        "Colocar o lápis na boca."
+      ],
+      "correctAnswer": "Aproximar-se com segurança e pedir orientação a um adulto.",
+      "explanation": "A resposta relaciona a situação apresentada à função de aproximar-se com segurança e pedir orientação a um adulto.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SAFETY_AND_ACCESS",
+      "misconceptions": {
+        "Correr de olhos fechados.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Usar os ouvidos para enxergar.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Colocar o lápis na boca.": [
+          "SAFETY_AND_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCUTAR_NO_RUIDO",
+      "statement": "Em um lugar muito barulhento, qual estratégia pode ajudar alguém a acompanhar uma explicação?",
+      "options": [
+        "Tapar os olhos para ouvir melhor.",
+        "Ir para um local mais silencioso ou usar um recurso de comunicação combinado.",
+        "Correr sem avisar ninguém.",
+        "Ignorar a pessoa que está falando."
+      ],
+      "correctAnswer": "Ir para um local mais silencioso ou usar um recurso de comunicação combinado.",
+      "explanation": "A resposta relaciona a situação apresentada à função de ir para um local mais silencioso ou usar um recurso de comunicação combinado.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SAFETY_AND_ACCESS",
+      "misconceptions": {
+        "Tapar os olhos para ouvir melhor.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Correr sem avisar ninguém.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Ignorar a pessoa que está falando.": [
+          "SAFETY_AND_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ADAPTAR_BRINCADEIRA",
+      "statement": "Uma colega movimenta o corpo de um jeito diferente. Qual atitude torna a brincadeira mais inclusiva?",
+      "options": [
+        "Dizer que ela não pode brincar.",
+        "Escolher por ela sem perguntar.",
+        "Perguntar como ela prefere participar e adaptar regras com segurança.",
+        "Exigir que todos façam o mesmo movimento."
+      ],
+      "correctAnswer": "Perguntar como ela prefere participar e adaptar regras com segurança.",
+      "explanation": "A resposta relaciona a situação apresentada à função de perguntar como ela prefere participar e adaptar regras com segurança.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "RESPECT_AND_INCLUSION",
+      "misconceptions": {
+        "Dizer que ela não pode brincar.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Escolher por ela sem perguntar.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Exigir que todos façam o mesmo movimento.": [
+          "RESPECT_AND_INCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-20",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LANCHE_SEGURO",
+      "statement": "Antes do lanche, qual conjunto de ações cuida melhor do corpo?",
+      "options": [
+        "Correr enquanto mastiga.",
+        "Compartilhar utensílios sem combinar.",
+        "Comer sem lavar as mãos.",
+        "Lavar as mãos, sentar com segurança e comer com atenção."
+      ],
+      "correctAnswer": "Lavar as mãos, sentar com segurança e comer com atenção.",
+      "explanation": "A resposta relaciona a situação apresentada à função de lavar as mãos, sentar com segurança e comer com atenção.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HEALTH_ROUTINE",
+      "misconceptions": {
+        "Correr enquanto mastiga.": [
+          "HEALTH_ROUTINE"
+        ],
+        "Compartilhar utensílios sem combinar.": [
+          "HEALTH_ROUTINE"
+        ],
+        "Comer sem lavar as mãos.": [
+          "HEALTH_ROUTINE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-21",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DESENHO_DO_CORPO",
+      "statement": "Ao desenhar uma pessoa, como representar uma parte do corpo com respeito?",
+      "options": [
+        "Observar que os corpos têm formas e características diversas.",
+        "Desenhar todos os corpos exatamente iguais.",
+        "Dizer que só um formato é correto.",
+        "Apagar colegas que têm características diferentes."
+      ],
+      "correctAnswer": "Observar que os corpos têm formas e características diversas.",
+      "explanation": "A resposta relaciona a situação apresentada à função de observar que os corpos têm formas e características diversas.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "RESPECT_AND_INCLUSION",
+      "misconceptions": {
+        "Desenhar todos os corpos exatamente iguais.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Dizer que só um formato é correto.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Apagar colegas que têm características diferentes.": [
+          "RESPECT_AND_INCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-22",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SINAL_DE_PARADA",
+      "statement": "Uma criança não ouve um aviso sonoro no pátio. Qual alternativa pode transmitir o mesmo aviso?",
+      "options": [
+        "Falar mais baixo sem olhar para ela.",
+        "Um sinal visual ou um gesto combinado.",
+        "Esconder o aviso.",
+        "Esperar que ela adivinhe."
+      ],
+      "correctAnswer": "Um sinal visual ou um gesto combinado.",
+      "explanation": "A resposta relaciona a situação apresentada à função de um sinal visual ou um gesto combinado.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SAFETY_AND_ACCESS",
+      "misconceptions": {
+        "Falar mais baixo sem olhar para ela.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Esconder o aviso.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Esperar que ela adivinhe.": [
+          "SAFETY_AND_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-23",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SOL_E_PELE",
+      "statement": "Ao brincar no sol, qual cuidado protege a pele?",
+      "options": [
+        "Ficar no sol mais tempo para a pele mudar de cor.",
+        "Usar qualquer produto desconhecido.",
+        "Usar proteção adequada, procurar sombra e seguir a orientação de um adulto.",
+        "Evitar beber água."
+      ],
+      "correctAnswer": "Usar proteção adequada, procurar sombra e seguir a orientação de um adulto.",
+      "explanation": "A resposta relaciona a situação apresentada à função de usar proteção adequada, procurar sombra e seguir a orientação de um adulto.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SKIN_CARE",
+      "misconceptions": {
+        "Ficar no sol mais tempo para a pele mudar de cor.": [
+          "SKIN_CARE"
+        ],
+        "Usar qualquer produto desconhecido.": [
+          "SKIN_CARE"
+        ],
+        "Evitar beber água.": [
+          "SKIN_CARE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-24",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MOVIMENTO_E_DESCANSO",
+      "statement": "Depois de uma atividade intensa, por que é importante fazer uma pausa?",
+      "options": [
+        "Porque os olhos deixam de existir.",
+        "Porque o coração para de funcionar.",
+        "Porque descansar impede todo movimento futuro.",
+        "Porque o corpo precisa recuperar energia e observar como está se sentindo."
+      ],
+      "correctAnswer": "Porque o corpo precisa recuperar energia e observar como está se sentindo.",
+      "explanation": "A resposta relaciona a situação apresentada à função de porque o corpo precisa recuperar energia e observar como está se sentindo.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HEALTH_ROUTINE",
+      "misconceptions": {
+        "Porque os olhos deixam de existir.": [
+          "HEALTH_ROUTINE"
+        ],
+        "Porque o coração para de funcionar.": [
+          "HEALTH_ROUTINE"
+        ],
+        "Porque descansar impede todo movimento futuro.": [
+          "HEALTH_ROUTINE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OLHO_E_ORELHA",
+      "statement": "Qual frase diferencia corretamente olhos e orelhas?",
+      "options": [
+        "Os olhos ajudam a ver e as orelhas ajudam a ouvir.",
+        "Os olhos mastigam e as orelhas respiram.",
+        "Os olhos correm e as orelhas dobram o joelho.",
+        "Os olhos sentem cheiro e as orelhas sentem gosto."
+      ],
+      "correctAnswer": "Os olhos ajudam a ver e as orelhas ajudam a ouvir.",
+      "explanation": "A resposta relaciona a situação apresentada à função de os olhos ajudam a ver e as orelhas ajudam a ouvir.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SENSES_DISTINCTION",
+      "misconceptions": {
+        "Os olhos mastigam e as orelhas respiram.": [
+          "SENSES_DISTINCTION"
+        ],
+        "Os olhos correm e as orelhas dobram o joelho.": [
+          "SENSES_DISTINCTION"
+        ],
+        "Os olhos sentem cheiro e as orelhas sentem gosto.": [
+          "SENSES_DISTINCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NARIZ_E_LINGUA",
+      "statement": "Qual frase diferencia corretamente nariz e língua?",
+      "options": [
+        "O nariz bombeia sangue e a língua move as pernas.",
+        "O nariz participa do olfato e a língua participa do paladar.",
+        "O nariz enxerga e a língua escuta.",
+        "O nariz dobra o braço e a língua protege a pele."
+      ],
+      "correctAnswer": "O nariz participa do olfato e a língua participa do paladar.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o nariz participa do olfato e a língua participa do paladar.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SENSES_DISTINCTION",
+      "misconceptions": {
+        "O nariz bombeia sangue e a língua move as pernas.": [
+          "SENSES_DISTINCTION"
+        ],
+        "O nariz enxerga e a língua escuta.": [
+          "SENSES_DISTINCTION"
+        ],
+        "O nariz dobra o braço e a língua protege a pele.": [
+          "SENSES_DISTINCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CORPO_EM_CONJUNTO",
+      "statement": "Por que várias partes do corpo podem participar da mesma atividade?",
+      "options": [
+        "Porque uma única parte faz todas as funções.",
+        "Porque sentidos não ajudam em atividades.",
+        "Porque os movimentos e sentidos trabalham em conjunto para realizar ações.",
+        "Porque o corpo funciona apenas quando está parado."
+      ],
+      "correctAnswer": "Porque os movimentos e sentidos trabalham em conjunto para realizar ações.",
+      "explanation": "A resposta relaciona a situação apresentada à função de porque os movimentos e sentidos trabalham em conjunto para realizar ações.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "BODY_SYSTEMS_OVERVIEW",
+      "misconceptions": {
+        "Porque uma única parte faz todas as funções.": [
+          "BODY_SYSTEMS_OVERVIEW"
+        ],
+        "Porque sentidos não ajudam em atividades.": [
+          "BODY_SYSTEMS_OVERVIEW"
+        ],
+        "Porque o corpo funciona apenas quando está parado.": [
+          "BODY_SYSTEMS_OVERVIEW"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LIMITE_DA_OBSERVACAO",
+      "statement": "Uma criança observa apenas que alguém correu mais devagar. O que ela pode afirmar com segurança?",
+      "options": [
+        "Pode afirmar qual órgão está doente.",
+        "Pode diagnosticar uma pessoa.",
+        "Pode dizer que todos correrão assim.",
+        "Pode descrever o movimento observado, sem concluir sozinha a causa."
+      ],
+      "correctAnswer": "Pode descrever o movimento observado, sem concluir sozinha a causa.",
+      "explanation": "A resposta relaciona a situação apresentada à função de pode descrever o movimento observado, sem concluir sozinha a causa.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EVIDENCE_AND_LIMITS",
+      "misconceptions": {
+        "Pode afirmar qual órgão está doente.": [
+          "EVIDENCE_AND_LIMITS"
+        ],
+        "Pode diagnosticar uma pessoa.": [
+          "EVIDENCE_AND_LIMITS"
+        ],
+        "Pode dizer que todos correrão assim.": [
+          "EVIDENCE_AND_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CUIDADO_COM_DOR",
+      "statement": "Se uma parte do corpo dói durante a atividade, qual é uma atitude segura?",
+      "options": [
+        "Parar, avisar um adulto e seguir a orientação recebida.",
+        "Continuar para provar coragem.",
+        "Esconder a dor dos adultos.",
+        "Tomar qualquer remédio por conta própria."
+      ],
+      "correctAnswer": "Parar, avisar um adulto e seguir a orientação recebida.",
+      "explanation": "A resposta relaciona a situação apresentada à função de parar, avisar um adulto e seguir a orientação recebida.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SAFETY_AND_ACCESS",
+      "misconceptions": {
+        "Continuar para provar coragem.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Esconder a dor dos adultos.": [
+          "SAFETY_AND_ACCESS"
+        ],
+        "Tomar qualquer remédio por conta própria.": [
+          "SAFETY_AND_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FUNCAO_E_APARENCIA",
+      "statement": "Qual comparação usa uma função do corpo, e não apenas sua aparência?",
+      "options": [
+        "Dizer que o cabelo é bonito.",
+        "Dizer que as mãos ajudam a segurar e manipular objetos.",
+        "Dizer que a camiseta é azul.",
+        "Dizer que o sapato é novo."
+      ],
+      "correctAnswer": "Dizer que as mãos ajudam a segurar e manipular objetos.",
+      "explanation": "A resposta relaciona a situação apresentada à função de dizer que as mãos ajudam a segurar e manipular objetos.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "FUNCTION_NOT_APPEARANCE",
+      "misconceptions": {
+        "Dizer que o cabelo é bonito.": [
+          "FUNCTION_NOT_APPEARANCE"
+        ],
+        "Dizer que a camiseta é azul.": [
+          "FUNCTION_NOT_APPEARANCE"
+        ],
+        "Dizer que o sapato é novo.": [
+          "FUNCTION_NOT_APPEARANCE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-31",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_OLHOS",
+      "statement": "Qual parte do corpo usamos principalmente para ler uma figura?",
+      "options": [
+        "Os joelhos.",
+        "As mãos.",
+        "Os olhos.",
+        "Os dentes."
+      ],
+      "correctAnswer": "Os olhos.",
+      "explanation": "A resposta relaciona a situação apresentada à função de os olhos.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EYES_FUNCTION",
+      "misconceptions": {
+        "Os joelhos.": [
+          "EYES_FUNCTION"
+        ],
+        "As mãos.": [
+          "EYES_FUNCTION"
+        ],
+        "Os dentes.": [
+          "EYES_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-32",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_MAOS",
+      "statement": "Qual parte do corpo ajuda a abrir uma caixa com cuidado?",
+      "options": [
+        "As orelhas.",
+        "Os pulmões.",
+        "A língua.",
+        "As mãos."
+      ],
+      "correctAnswer": "As mãos.",
+      "explanation": "A resposta relaciona a situação apresentada à função de as mãos.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HANDS_FUNCTION",
+      "misconceptions": {
+        "As orelhas.": [
+          "HANDS_FUNCTION"
+        ],
+        "Os pulmões.": [
+          "HANDS_FUNCTION"
+        ],
+        "A língua.": [
+          "HANDS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-33",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_OUVIDO",
+      "statement": "Quando ouvimos uma música, qual sentido está sendo usado?",
+      "options": [
+        "A audição.",
+        "A visão.",
+        "O paladar.",
+        "O tato."
+      ],
+      "correctAnswer": "A audição.",
+      "explanation": "A resposta relaciona a situação apresentada à função de a audição.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "EARS_FUNCTION",
+      "misconceptions": {
+        "A visão.": [
+          "EARS_FUNCTION"
+        ],
+        "O paladar.": [
+          "EARS_FUNCTION"
+        ],
+        "O tato.": [
+          "EARS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-34",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_CHEIRO",
+      "statement": "Quando percebemos o cheiro do sabonete, qual sentido está sendo usado?",
+      "options": [
+        "A audição.",
+        "O olfato.",
+        "A visão.",
+        "O equilíbrio."
+      ],
+      "correctAnswer": "O olfato.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o olfato.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "NOSE_FUNCTION",
+      "misconceptions": {
+        "A audição.": [
+          "NOSE_FUNCTION"
+        ],
+        "A visão.": [
+          "NOSE_FUNCTION"
+        ],
+        "O equilíbrio.": [
+          "NOSE_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-35",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "REVISAO_SABOR",
+      "statement": "Quando percebemos que uma fruta está doce, qual sentido participa?",
+      "options": [
+        "A audição.",
+        "A visão.",
+        "O paladar.",
+        "O tato."
+      ],
+      "correctAnswer": "O paladar.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o paladar.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "TONGUE_FUNCTION",
+      "misconceptions": {
+        "A audição.": [
+          "TONGUE_FUNCTION"
+        ],
+        "A visão.": [
+          "TONGUE_FUNCTION"
+        ],
+        "O tato.": [
+          "TONGUE_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_RESPIRACAO",
+      "statement": "Qual frase explica uma função dos pulmões?",
+      "options": [
+        "Eles produzem pensamentos.",
+        "Eles mastigam alimentos.",
+        "Eles dobram os dedos.",
+        "Eles participam da respiração."
+      ],
+      "correctAnswer": "Eles participam da respiração.",
+      "explanation": "A resposta relaciona a situação apresentada à função de eles participam da respiração.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "LUNGS_FUNCTION",
+      "misconceptions": {
+        "Eles produzem pensamentos.": [
+          "LUNGS_FUNCTION"
+        ],
+        "Eles mastigam alimentos.": [
+          "LUNGS_FUNCTION"
+        ],
+        "Eles dobram os dedos.": [
+          "LUNGS_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-37",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_CIRCULACAO",
+      "statement": "Qual frase explica uma função do coração?",
+      "options": [
+        "Ele ajuda a impulsionar o sangue pelo corpo.",
+        "Ele reconhece cores.",
+        "Ele produz sons da fala.",
+        "Ele sente o gosto do sal."
+      ],
+      "correctAnswer": "Ele ajuda a impulsionar o sangue pelo corpo.",
+      "explanation": "A resposta relaciona a situação apresentada à função de ele ajuda a impulsionar o sangue pelo corpo.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "HEART_FUNCTION",
+      "misconceptions": {
+        "Ele reconhece cores.": [
+          "HEART_FUNCTION"
+        ],
+        "Ele produz sons da fala.": [
+          "HEART_FUNCTION"
+        ],
+        "Ele sente o gosto do sal.": [
+          "HEART_FUNCTION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-38",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_HIGIENE",
+      "statement": "Qual rotina ajuda a cuidar da pele das mãos?",
+      "options": [
+        "Usar as mãos sujas para comer.",
+        "Lavar as mãos quando necessário e secá-las adequadamente.",
+        "Compartilhar qualquer produto sem orientação.",
+        "Esconder feridas sem avisar."
+      ],
+      "correctAnswer": "Lavar as mãos quando necessário e secá-las adequadamente.",
+      "explanation": "A resposta relaciona a situação apresentada à função de lavar as mãos quando necessário e secá-las adequadamente.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "SKIN_CARE",
+      "misconceptions": {
+        "Usar as mãos sujas para comer.": [
+          "SKIN_CARE"
+        ],
+        "Compartilhar qualquer produto sem orientação.": [
+          "SKIN_CARE"
+        ],
+        "Esconder feridas sem avisar.": [
+          "SKIN_CARE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-39",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_MOVIMENTO",
+      "statement": "Qual opção relaciona corretamente parte e movimento?",
+      "options": [
+        "O nariz ajuda a fechar a mão.",
+        "A orelha ajuda a chutar a bola.",
+        "O joelho ajuda a dobrar a perna.",
+        "A língua ajuda a girar o tornozelo."
+      ],
+      "correctAnswer": "O joelho ajuda a dobrar a perna.",
+      "explanation": "A resposta relaciona a situação apresentada à função de o joelho ajuda a dobrar a perna.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "JOINTS_AND_MOVEMENT",
+      "misconceptions": {
+        "O nariz ajuda a fechar a mão.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "A orelha ajuda a chutar a bola.": [
+          "JOINTS_AND_MOVEMENT"
+        ],
+        "A língua ajuda a girar o tornozelo.": [
+          "JOINTS_AND_MOVEMENT"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-body-parts-fi-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_INCLUSAO",
+      "statement": "Qual atitude respeita diferentes maneiras de usar e perceber o corpo?",
+      "options": [
+        "Impor um único jeito de participar.",
+        "Fazer piada com uma diferença corporal.",
+        "Excluir quem precisa de apoio.",
+        "Ouvir a pessoa e adaptar a comunicação ou a atividade com segurança."
+      ],
+      "correctAnswer": "Ouvir a pessoa e adaptar a comunicação ou a atividade com segurança.",
+      "explanation": "A resposta relaciona a situação apresentada à função de ouvir a pessoa e adaptar a comunicação ou a atividade com segurança.. A observação deve permanecer limitada ao que a atividade permite perceber.",
+      "hint": "Nomeie a parte do corpo ou o sentido ligado à ação descrita e explique a função observável.",
+      "errorFocus": "RESPECT_AND_INCLUSION",
+      "misconceptions": {
+        "Impor um único jeito de participar.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Fazer piada com uma diferença corporal.": [
+          "RESPECT_AND_INCLUSION"
+        ],
+        "Excluir quem precisa de apoio.": [
+          "RESPECT_AND_INCLUSION"
+        ]
+      }
+    }
+  ]
+}

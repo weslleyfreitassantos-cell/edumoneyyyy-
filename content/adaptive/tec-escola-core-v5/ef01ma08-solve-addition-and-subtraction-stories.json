@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma08-solve-addition-and-subtraction-stories",
+  "canonicalSkillCode": "AUTHORING_EF01MA08_SOLVE_AND_CREATE_ADDITION_SUBTRACTION_PROBLEMS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "problemas de adição e subtração com significados de juntar, acrescentar, separar e retirar",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA08",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até dois algarismos, com os significados de juntar, acrescentar, separar e retirar, com o suporte de imagens e/ou material manipulável, utilizando estratégias e formas de registro pessoais.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Histórias de juntar, acrescentar e retirar",
+    "objective": "Resolver e elaborar situações de adição e subtração com números de até dois algarismos, usando imagens, materiais e estratégias pessoais para representar as ações.",
+    "summary": "Problemas podem contar que duas coleções foram juntadas, que algo foi acrescentado a uma quantidade, que um grupo foi separado ou que alguns itens foram retirados. Desenhos, fichas, blocos, reta numérica e cálculos pessoais ajudam a representar a situação. Uma mesma resposta pode ser encontrada por estratégias diferentes, como contar, agrupar ou decompor. O importante é relacionar a operação à história e conferir o total ou a quantidade que restou, sem pressão de velocidade.",
+    "explanation": "Leia a história, identifique o que havia no início e o que aconteceu. Se duas coleções se juntam, represente os dois grupos e conte o total; se itens são retirados, marque a quantidade inicial e o que saiu para descobrir quanto ficou. Por exemplo, 23 livros na estante e mais 4 colocados nela formam 27. Uma imagem ou material pode tornar as quantidades visíveis. Registre o raciocínio com desenho, palavras, números ou sinais, e confira se a resposta faz sentido no contexto.",
+    "workedExample": "Uma caixa tinha 18 lápis e recebeu mais 5. Podemos desenhar 18 marcas e acrescentar 5, ou pensar 18 + 5 = 23. A caixa fica com 23 lápis; outra estratégia que chega ao mesmo resultado também é válida.",
+    "commonMistake": "Escolher uma operação sem considerar a ação da história ou alterar a quantidade inicial ao representar o problema.",
+    "priorKnowledge": [
+      "Contar quantidades e comparar coleções com apoio concreto.",
+      "Reconhecer situações cotidianas de reunir, acrescentar ou retirar."
+    ],
+    "keyConcepts": [
+      "adição",
+      "subtração",
+      "juntar",
+      "acrescentar",
+      "separar",
+      "retirar",
+      "estratégia pessoal",
+      "representação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MATCH_OPERATION_TO_STORY_ACTION",
+        "action": "Destaque o que a história faz com a quantidade: juntar, acrescentar, separar ou retirar."
+      },
+      {
+        "errorFocus": "REPRESENT_QUANTITIES_CONCRETELY",
+        "action": "Modele a quantidade inicial com fichas ou desenho e faça a ação descrita antes de calcular."
+      },
+      {
+        "errorFocus": "CHECK_CONTEXTUAL_RESULT",
+        "action": "Releia a pergunta e confira se o total ou restante responde à história."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+      "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+      "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma08-story-problem-stations",
+        "title": "Estações de histórias matemáticas",
+        "instructions": "Cartões ilustrados apresentam coleções que se juntam, aumentam, se separam ou perdem alguns itens.\n1. Escolha um cartão e identifique a quantidade inicial.\n2. Represente com material a ação descrita.\n3. Registre uma estratégia e responda à pergunta do cartão.",
+        "steps": [
+          "Escolha um cartão e identifique a quantidade inicial.",
+          "Represente com material a ação descrita.",
+          "Registre uma estratégia e responda à pergunta do cartão."
+        ],
+        "evidence": "Representação da situação, cálculo ou estratégia pessoal e resposta contextualizada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma quantidade com apoio.",
+            "developing": "representa a ação do problema.",
+            "proficient": "resolve e confere usando uma estratégia coerente com a história."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma08-create-a-problem",
+        "title": "Inventar uma história de números",
+        "instructions": "A turma escolhe quantidades de cartões e cria um problema de juntar, acrescentar, separar ou retirar.\n1. Escolha duas quantidades de até dois algarismos.\n2. Crie uma situação ilustrada com uma ação clara.\n3. Troque com um colega para resolver e conferir.",
+        "steps": [
+          "Escolha duas quantidades de até dois algarismos.",
+          "Crie uma situação ilustrada com uma ação clara.",
+          "Troque com um colega para resolver e conferir."
+        ],
+        "evidence": "Problema elaborado com imagem ou material e solução registrada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe quantidades.",
+            "developing": "descreve uma ação matemática.",
+            "proficient": "formula uma pergunta clara e verifica a solução por estratégia pessoal."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-01",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-02",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-03",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-04",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-05",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-06",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-07",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-09",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-10",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-11",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-12",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-13",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-14",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-15",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-17",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-18",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-19",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-20",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-21",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-22",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-23",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-25",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-26",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-27",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-28",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-29",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-30",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-31",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-33",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-34",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-35",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-36",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-37",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-38",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-39",
+          "v1-ef01ma08-solve-addition-and-subtraction-stories-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA08",
+        "descriptor": "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até dois algarismos, com os significados de juntar, acrescentar, separar e retirar, com o suporte de imagens e/ou material manipulável, utilizando estratégias e formas de registro pessoais.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-01",
+      "statement": "Há 12 livros azuis e 5 verdes numa mesa. Quantos livros há ao juntar as coleções?",
+      "prompt": "Há 12 livros azuis e 5 verdes numa mesa. Quantos livros há ao juntar as coleções?",
+      "options": [
+        "17 livros.",
+        "7 livros",
+        "15 livros",
+        "125 livros"
+      ],
+      "correctAnswer": "17 livros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7 livros": [
+          "ADD_JOIN_TWO_COLLECTIONS"
+        ],
+        "15 livros": [
+          "ADD_JOIN_TWO_COLLECTIONS"
+        ],
+        "125 livros": [
+          "ADD_JOIN_TWO_COLLECTIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "LIVROS_JUNTOS",
+      "explanation": "12 + 5 = 17 livros.",
+      "hint": "Represente os dois grupos e junte.",
+      "errorFocus": "ADD_JOIN_TWO_COLLECTIONS",
+      "feedback": {
+        "correct": "Boa observação: 12 + 5 = 17 livros.",
+        "incorrect": "12 + 5 = 17 livros.",
+        "hint": "Represente os dois grupos e junte.",
+        "errorFocus": "ADD_JOIN_TWO_COLLECTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-02",
+      "statement": "Bia tinha 21 figurinhas e recebeu mais 3. Quantas tem agora?",
+      "prompt": "Bia tinha 21 figurinhas e recebeu mais 3. Quantas tem agora?",
+      "options": [
+        "18 figurinhas",
+        "24 figurinhas.",
+        "23 figurinhas",
+        "213 figurinhas"
+      ],
+      "correctAnswer": "24 figurinhas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "18 figurinhas": [
+          "ADD_INCREASE_QUANTITY"
+        ],
+        "23 figurinhas": [
+          "ADD_INCREASE_QUANTITY"
+        ],
+        "213 figurinhas": [
+          "ADD_INCREASE_QUANTITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "FIGURINHAS_ACRESCENTADAS",
+      "explanation": "21 + 3 = 24.",
+      "hint": "Acrescente três à quantidade inicial.",
+      "errorFocus": "ADD_INCREASE_QUANTITY",
+      "feedback": {
+        "correct": "Boa observação: 21 + 3 = 24.",
+        "incorrect": "21 + 3 = 24.",
+        "hint": "Acrescente três à quantidade inicial.",
+        "errorFocus": "ADD_INCREASE_QUANTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-03",
+      "statement": "Uma caixa tinha 16 blocos; 4 foram retirados. Quantos ficaram?",
+      "prompt": "Uma caixa tinha 16 blocos; 4 foram retirados. Quantos ficaram?",
+      "options": [
+        "20 blocos",
+        "14 blocos",
+        "12 blocos.",
+        "10 blocos"
+      ],
+      "correctAnswer": "12 blocos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "20 blocos": [
+          "SUBTRACT_TAKE_AWAY"
+        ],
+        "14 blocos": [
+          "SUBTRACT_TAKE_AWAY"
+        ],
+        "10 blocos": [
+          "SUBTRACT_TAKE_AWAY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "BLOCOS_RETIRADOS",
+      "explanation": "16 - 4 = 12 blocos.",
+      "hint": "Comece em 16 e retire 4.",
+      "errorFocus": "SUBTRACT_TAKE_AWAY",
+      "feedback": {
+        "correct": "Boa observação: 16 - 4 = 12 blocos.",
+        "incorrect": "16 - 4 = 12 blocos.",
+        "hint": "Comece em 16 e retire 4.",
+        "errorFocus": "SUBTRACT_TAKE_AWAY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-04",
+      "statement": "De 19 bolas, 7 foram colocadas em outra cesta. Quantas ficaram na primeira?",
+      "prompt": "De 19 bolas, 7 foram colocadas em outra cesta. Quantas ficaram na primeira?",
+      "options": [
+        "26 bolas",
+        "7 bolas",
+        "13 bolas",
+        "12 bolas."
+      ],
+      "correctAnswer": "12 bolas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "26 bolas": [
+          "SUBTRACT_SEPARATE_GROUP"
+        ],
+        "7 bolas": [
+          "SUBTRACT_SEPARATE_GROUP"
+        ],
+        "13 bolas": [
+          "SUBTRACT_SEPARATE_GROUP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEPARAR_BOLAS",
+      "explanation": "Separar 7 de 19 deixa 12.",
+      "hint": "Represente o grupo inicial e separe.",
+      "errorFocus": "SUBTRACT_SEPARATE_GROUP",
+      "feedback": {
+        "correct": "Boa observação: Separar 7 de 19 deixa 12.",
+        "incorrect": "Separar 7 de 19 deixa 12.",
+        "hint": "Represente o grupo inicial e separe.",
+        "errorFocus": "SUBTRACT_SEPARATE_GROUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-05",
+      "statement": "Um desenho mostra 14 estrelas e depois mais 6. Qual conta combina com a história?",
+      "prompt": "Um desenho mostra 14 estrelas e depois mais 6. Qual conta combina com a história?",
+      "options": [
+        "14 + 6 = 20.",
+        "14 - 6 = 8",
+        "14 + 6 = 19",
+        "6 - 14 = 8"
+      ],
+      "correctAnswer": "14 + 6 = 20.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "14 - 6 = 8": [
+          "MATCH_ADDITION_TO_DRAWING"
+        ],
+        "14 + 6 = 19": [
+          "MATCH_ADDITION_TO_DRAWING"
+        ],
+        "6 - 14 = 8": [
+          "MATCH_ADDITION_TO_DRAWING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DESENHO_DA_ADICAO",
+      "explanation": "A imagem acrescenta seis estrelas às 14 iniciais.",
+      "hint": "Observe se a quantidade aumentou.",
+      "errorFocus": "MATCH_ADDITION_TO_DRAWING",
+      "feedback": {
+        "correct": "Boa observação: A imagem acrescenta seis estrelas às 14 iniciais.",
+        "incorrect": "A imagem acrescenta seis estrelas às 14 iniciais.",
+        "hint": "Observe se a quantidade aumentou.",
+        "errorFocus": "MATCH_ADDITION_TO_DRAWING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-06",
+      "statement": "Uma pessoa conta fichas uma a uma e outra usa 20 + 3 para achar 23. O que podemos dizer?",
+      "prompt": "Uma pessoa conta fichas uma a uma e outra usa 20 + 3 para achar 23. O que podemos dizer?",
+      "options": [
+        "Só a estratégia mais rápida vale",
+        "As duas estratégias podem ser válidas se representam a mesma quantidade.",
+        "Contar fichas nunca funciona",
+        "20 + 3 é sempre errado"
+      ],
+      "correctAnswer": "As duas estratégias podem ser válidas se representam a mesma quantidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Só a estratégia mais rápida vale": [
+          "ACCEPT_PERSONAL_STRATEGY"
+        ],
+        "Contar fichas nunca funciona": [
+          "ACCEPT_PERSONAL_STRATEGY"
+        ],
+        "20 + 3 é sempre errado": [
+          "ACCEPT_PERSONAL_STRATEGY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_ESTRATEGIAS",
+      "explanation": "Estratégias diferentes podem chegar ao mesmo resultado correto.",
+      "hint": "Confira o total representado.",
+      "errorFocus": "ACCEPT_PERSONAL_STRATEGY",
+      "feedback": {
+        "correct": "Boa observação: Estratégias diferentes podem chegar ao mesmo resultado correto.",
+        "incorrect": "Estratégias diferentes podem chegar ao mesmo resultado correto.",
+        "hint": "Confira o total representado.",
+        "errorFocus": "ACCEPT_PERSONAL_STRATEGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-07",
+      "statement": "Uma história pergunta quantos itens sobraram depois de retirar alguns. Que ação devemos representar?",
+      "prompt": "Uma história pergunta quantos itens sobraram depois de retirar alguns. Que ação devemos representar?",
+      "options": [
+        "Somente itens que chegaram depois",
+        "Uma coleção sem relação",
+        "A quantidade inicial e os itens retirados.",
+        "O número de colegas"
+      ],
+      "correctAnswer": "A quantidade inicial e os itens retirados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente itens que chegaram depois": [
+          "IDENTIFY_SUBTRACTION_ACTION"
+        ],
+        "Uma coleção sem relação": [
+          "IDENTIFY_SUBTRACTION_ACTION"
+        ],
+        "O número de colegas": [
+          "IDENTIFY_SUBTRACTION_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PERGUNTA_DE_RESTANTE",
+      "explanation": "A situação pede encontrar o que restou.",
+      "hint": "Veja o que saiu do grupo.",
+      "errorFocus": "IDENTIFY_SUBTRACTION_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A situação pede encontrar o que restou.",
+        "incorrect": "A situação pede encontrar o que restou.",
+        "hint": "Veja o que saiu do grupo.",
+        "errorFocus": "IDENTIFY_SUBTRACTION_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-08",
+      "statement": "Como resolver 13 + 4 com fichas?",
+      "prompt": "Como resolver 13 + 4 com fichas?",
+      "options": [
+        "Montar 4 e retirar 13",
+        "Esconder as fichas",
+        "Trocar 13 por 31 sem motivo",
+        "Montar 13 fichas e acrescentar mais 4."
+      ],
+      "correctAnswer": "Montar 13 fichas e acrescentar mais 4.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Montar 4 e retirar 13": [
+          "MODEL_ADDITION_WITH_OBJECTS"
+        ],
+        "Esconder as fichas": [
+          "MODEL_ADDITION_WITH_OBJECTS"
+        ],
+        "Trocar 13 por 31 sem motivo": [
+          "MODEL_ADDITION_WITH_OBJECTS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATERIAL_MANIPULAVEL",
+      "explanation": "O material representa o início e o acréscimo.",
+      "hint": "Faça a ação do enunciado.",
+      "errorFocus": "MODEL_ADDITION_WITH_OBJECTS",
+      "feedback": {
+        "correct": "Boa observação: O material representa o início e o acréscimo.",
+        "incorrect": "O material representa o início e o acréscimo.",
+        "hint": "Faça a ação do enunciado.",
+        "errorFocus": "MODEL_ADDITION_WITH_OBJECTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-09",
+      "statement": "Havia 23 passarinhos desenhados; 2 foram apagados do desenho. Quantos aparecem agora?",
+      "prompt": "Havia 23 passarinhos desenhados; 2 foram apagados do desenho. Quantos aparecem agora?",
+      "options": [
+        "21 passarinhos.",
+        "25 passarinhos",
+        "20 passarinhos",
+        "32 passarinhos"
+      ],
+      "correctAnswer": "21 passarinhos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "25 passarinhos": [
+          "SUBTRACT_REMOVE_SMALL_AMOUNT"
+        ],
+        "20 passarinhos": [
+          "SUBTRACT_REMOVE_SMALL_AMOUNT"
+        ],
+        "32 passarinhos": [
+          "SUBTRACT_REMOVE_SMALL_AMOUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "PASSAROS_NO_FIO",
+      "explanation": "23 - 2 = 21.",
+      "hint": "Retire dois da quantidade inicial.",
+      "errorFocus": "SUBTRACT_REMOVE_SMALL_AMOUNT",
+      "feedback": {
+        "correct": "Boa observação: 23 - 2 = 21.",
+        "incorrect": "23 - 2 = 21.",
+        "hint": "Retire dois da quantidade inicial.",
+        "errorFocus": "SUBTRACT_REMOVE_SMALL_AMOUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-10",
+      "statement": "Uma caixa tem 15 lápis e outra tem 12. Quantos lápis há ao juntar as duas?",
+      "prompt": "Uma caixa tem 15 lápis e outra tem 12. Quantos lápis há ao juntar as duas?",
+      "options": [
+        "3 lápis",
+        "27 lápis.",
+        "17 lápis",
+        "1512 lápis"
+      ],
+      "correctAnswer": "27 lápis.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "3 lápis": [
+          "ADD_JOIN_TWO_BOXES"
+        ],
+        "17 lápis": [
+          "ADD_JOIN_TWO_BOXES"
+        ],
+        "1512 lápis": [
+          "ADD_JOIN_TWO_BOXES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "LAPIS_NA_CAIXA",
+      "explanation": "15 + 12 = 27.",
+      "hint": "Some as duas coleções.",
+      "errorFocus": "ADD_JOIN_TWO_BOXES",
+      "feedback": {
+        "correct": "Boa observação: 15 + 12 = 27.",
+        "incorrect": "15 + 12 = 27.",
+        "hint": "Some as duas coleções.",
+        "errorFocus": "ADD_JOIN_TWO_BOXES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-11",
+      "statement": "Uma criança plantou 8 sementes e depois mais 7. Quantas plantou ao todo?",
+      "prompt": "Uma criança plantou 8 sementes e depois mais 7. Quantas plantou ao todo?",
+      "options": [
+        "1 semente",
+        "14 sementes",
+        "15 sementes.",
+        "87 sementes"
+      ],
+      "correctAnswer": "15 sementes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "1 semente": [
+          "ADD_APPEND_SEEDS"
+        ],
+        "14 sementes": [
+          "ADD_APPEND_SEEDS"
+        ],
+        "87 sementes": [
+          "ADD_APPEND_SEEDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "SEMENTES_PLANTADAS",
+      "explanation": "8 + 7 = 15 sementes.",
+      "hint": "Acrescente o segundo grupo.",
+      "errorFocus": "ADD_APPEND_SEEDS",
+      "feedback": {
+        "correct": "Boa observação: 8 + 7 = 15 sementes.",
+        "incorrect": "8 + 7 = 15 sementes.",
+        "hint": "Acrescente o segundo grupo.",
+        "errorFocus": "ADD_APPEND_SEEDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-12",
+      "statement": "Há 28 cartões numa pilha; 10 são separados para outra mesa. Qual expressão representa quantos ficam?",
+      "prompt": "Há 28 cartões numa pilha; 10 são separados para outra mesa. Qual expressão representa quantos ficam?",
+      "options": [
+        "28 + 10",
+        "10 - 28",
+        "28 + 1",
+        "28 - 10."
+      ],
+      "correctAnswer": "28 - 10.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "28 + 10": [
+          "SELECT_SUBTRACTION_EXPRESSION"
+        ],
+        "10 - 28": [
+          "SELECT_SUBTRACTION_EXPRESSION"
+        ],
+        "28 + 1": [
+          "SELECT_SUBTRACTION_EXPRESSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEPARAR_CARTOES",
+      "explanation": "A história separa dez cartões da pilha inicial.",
+      "hint": "Observe a ação descrita.",
+      "errorFocus": "SELECT_SUBTRACTION_EXPRESSION",
+      "feedback": {
+        "correct": "Boa observação: A história separa dez cartões da pilha inicial.",
+        "incorrect": "A história separa dez cartões da pilha inicial.",
+        "hint": "Observe a ação descrita.",
+        "errorFocus": "SELECT_SUBTRACTION_EXPRESSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-13",
+      "statement": "Uma conta para 17 + 5 deu 22. Como conferir com material?",
+      "prompt": "Uma conta para 17 + 5 deu 22. Como conferir com material?",
+      "options": [
+        "Representar 17 e acrescentar 5, contando 22.",
+        "Retirar 5 de 17",
+        "Representar 22 e esconder 17",
+        "Trocar os números sem contar"
+      ],
+      "correctAnswer": "Representar 17 e acrescentar 5, contando 22.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar 5 de 17": [
+          "VERIFY_ADDITION_WITH_MODEL"
+        ],
+        "Representar 22 e esconder 17": [
+          "VERIFY_ADDITION_WITH_MODEL"
+        ],
+        "Trocar os números sem contar": [
+          "VERIFY_ADDITION_WITH_MODEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RESULTADO_CONFERIDO",
+      "explanation": "O modelo deve mostrar o mesmo total.",
+      "hint": "Monte a situação com objetos.",
+      "errorFocus": "VERIFY_ADDITION_WITH_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O modelo deve mostrar o mesmo total.",
+        "incorrect": "O modelo deve mostrar o mesmo total.",
+        "hint": "Monte a situação com objetos.",
+        "errorFocus": "VERIFY_ADDITION_WITH_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-14",
+      "statement": "Uma cesta tinha 31 maçãs desenhadas; 6 foram marcadas para outra cesta. Quantas ficam na primeira?",
+      "prompt": "Uma cesta tinha 31 maçãs desenhadas; 6 foram marcadas para outra cesta. Quantas ficam na primeira?",
+      "options": [
+        "37 maçãs",
+        "25 maçãs.",
+        "26 maçãs",
+        "13 maçãs"
+      ],
+      "correctAnswer": "25 maçãs.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "37 maçãs": [
+          "SUBTRACT_GROUP_TRANSFER"
+        ],
+        "26 maçãs": [
+          "SUBTRACT_GROUP_TRANSFER"
+        ],
+        "13 maçãs": [
+          "SUBTRACT_GROUP_TRANSFER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DIFERENCA_DE_QUANTIDADES",
+      "explanation": "31 - 6 = 25.",
+      "hint": "Separe seis da coleção de 31.",
+      "errorFocus": "SUBTRACT_GROUP_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: 31 - 6 = 25.",
+        "incorrect": "31 - 6 = 25.",
+        "hint": "Separe seis da coleção de 31.",
+        "errorFocus": "SUBTRACT_GROUP_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-15",
+      "statement": "Para representar 24 + 3 na reta numérica, que movimento ajuda?",
+      "prompt": "Para representar 24 + 3 na reta numérica, que movimento ajuda?",
+      "options": [
+        "Partir de 24 e voltar 3",
+        "Partir de 3 e apagar 24",
+        "Partir de 24 e avançar 3 unidades.",
+        "Saltar até 42"
+      ],
+      "correctAnswer": "Partir de 24 e avançar 3 unidades.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Partir de 24 e voltar 3": [
+          "MODEL_ADDITION_ON_NUMBER_LINE"
+        ],
+        "Partir de 3 e apagar 24": [
+          "MODEL_ADDITION_ON_NUMBER_LINE"
+        ],
+        "Saltar até 42": [
+          "MODEL_ADDITION_ON_NUMBER_LINE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RETA_NUMERICA",
+      "explanation": "Acrescentar 3 corresponde a avançar três posições.",
+      "hint": "Comece no primeiro número.",
+      "errorFocus": "MODEL_ADDITION_ON_NUMBER_LINE",
+      "feedback": {
+        "correct": "Boa observação: Acrescentar 3 corresponde a avançar três posições.",
+        "incorrect": "Acrescentar 3 corresponde a avançar três posições.",
+        "hint": "Comece no primeiro número.",
+        "errorFocus": "MODEL_ADDITION_ON_NUMBER_LINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-16",
+      "statement": "Qual enunciado representa juntar 9 e 4?",
+      "prompt": "Qual enunciado representa juntar 9 e 4?",
+      "options": [
+        "Havia 9 conchas e 4 foram retiradas; quantas restam?",
+        "Havia 4 e queremos separar 9 sem coleção inicial.",
+        "Qual concha é mais bonita?",
+        "Há 9 conchas e encontramos mais 4; quantas há ao todo?"
+      ],
+      "correctAnswer": "Há 9 conchas e encontramos mais 4; quantas há ao todo?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Havia 9 conchas e 4 foram retiradas; quantas restam?": [
+          "FORMULATE_JOINING_PROBLEM"
+        ],
+        "Havia 4 e queremos separar 9 sem coleção inicial.": [
+          "FORMULATE_JOINING_PROBLEM"
+        ],
+        "Qual concha é mais bonita?": [
+          "FORMULATE_JOINING_PROBLEM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "CRIAR_PROBLEMA_DE_JUNTAR",
+      "explanation": "O enunciado reúne dois grupos e pergunta o total.",
+      "hint": "Procure a ação de juntar.",
+      "errorFocus": "FORMULATE_JOINING_PROBLEM",
+      "feedback": {
+        "correct": "Boa observação: O enunciado reúne dois grupos e pergunta o total.",
+        "incorrect": "O enunciado reúne dois grupos e pergunta o total.",
+        "hint": "Procure a ação de juntar.",
+        "errorFocus": "FORMULATE_JOINING_PROBLEM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-17",
+      "statement": "No pátio havia 18 cadeiras; chegaram mais 11. Quantas há agora?",
+      "prompt": "No pátio havia 18 cadeiras; chegaram mais 11. Quantas há agora?",
+      "options": [
+        "29 cadeiras.",
+        "7 cadeiras",
+        "28 cadeiras",
+        "1811 cadeiras"
+      ],
+      "correctAnswer": "29 cadeiras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7 cadeiras": [
+          "TRANSFER_ADD_TO_SCENE"
+        ],
+        "28 cadeiras": [
+          "TRANSFER_ADD_TO_SCENE"
+        ],
+        "1811 cadeiras": [
+          "TRANSFER_ADD_TO_SCENE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "CADEIRAS_NO_PATIO",
+      "explanation": "18 + 11 = 29.",
+      "hint": "Acrescente as cadeiras que chegaram.",
+      "errorFocus": "TRANSFER_ADD_TO_SCENE",
+      "feedback": {
+        "correct": "Boa observação: 18 + 11 = 29.",
+        "incorrect": "18 + 11 = 29.",
+        "hint": "Acrescente as cadeiras que chegaram.",
+        "errorFocus": "TRANSFER_ADD_TO_SCENE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-18",
+      "statement": "Um prato tinha 14 biscoitos e 5 foram servidos. Quantos restaram?",
+      "prompt": "Um prato tinha 14 biscoitos e 5 foram servidos. Quantos restaram?",
+      "options": [
+        "19 biscoitos",
+        "9 biscoitos.",
+        "10 biscoitos",
+        "5 biscoitos"
+      ],
+      "correctAnswer": "9 biscoitos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "19 biscoitos": [
+          "TRANSFER_SUBTRACT_SERVED_ITEMS"
+        ],
+        "10 biscoitos": [
+          "TRANSFER_SUBTRACT_SERVED_ITEMS"
+        ],
+        "5 biscoitos": [
+          "TRANSFER_SUBTRACT_SERVED_ITEMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "BISCOITOS_RESTANTES",
+      "explanation": "14 - 5 = 9 biscoitos ficam.",
+      "hint": "Retire o que foi servido.",
+      "errorFocus": "TRANSFER_SUBTRACT_SERVED_ITEMS",
+      "feedback": {
+        "correct": "Boa observação: 14 - 5 = 9 biscoitos ficam.",
+        "incorrect": "14 - 5 = 9 biscoitos ficam.",
+        "hint": "Retire o que foi servido.",
+        "errorFocus": "TRANSFER_SUBTRACT_SERVED_ITEMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-19",
+      "statement": "Uma horta tinha 22 mudas e recebeu mais 8. Que operação representa o aumento?",
+      "prompt": "Uma horta tinha 22 mudas e recebeu mais 8. Que operação representa o aumento?",
+      "options": [
+        "Subtração: 22 - 8",
+        "Subtração: 8 - 22",
+        "Adição: 22 + 8.",
+        "Multiplicação: 22 × 8"
+      ],
+      "correctAnswer": "Adição: 22 + 8.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Subtração: 22 - 8": [
+          "TRANSFER_SELECT_OPERATION"
+        ],
+        "Subtração: 8 - 22": [
+          "TRANSFER_SELECT_OPERATION"
+        ],
+        "Multiplicação: 22 × 8": [
+          "TRANSFER_SELECT_OPERATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HISTORIA_DE_ACRESCENTAR",
+      "explanation": "A nova quantidade foi acrescentada à inicial.",
+      "hint": "A quantidade aumentou.",
+      "errorFocus": "TRANSFER_SELECT_OPERATION",
+      "feedback": {
+        "correct": "Boa observação: A nova quantidade foi acrescentada à inicial.",
+        "incorrect": "A nova quantidade foi acrescentada à inicial.",
+        "hint": "A quantidade aumentou.",
+        "errorFocus": "TRANSFER_SELECT_OPERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-20",
+      "statement": "Um problema diz que 26 crianças estavam no salão e 7 saíram. A pergunta “quantas ficaram?” pede...",
+      "prompt": "Um problema diz que 26 crianças estavam no salão e 7 saíram. A pergunta “quantas ficaram?” pede...",
+      "options": [
+        "26 + 7",
+        "7 - 26",
+        "26 + 26",
+        "26 - 7."
+      ],
+      "correctAnswer": "26 - 7.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "26 + 7": [
+          "TRANSFER_MATCH_QUESTION_TO_OPERATION"
+        ],
+        "7 - 26": [
+          "TRANSFER_MATCH_QUESTION_TO_OPERATION"
+        ],
+        "26 + 26": [
+          "TRANSFER_MATCH_QUESTION_TO_OPERATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DADOS_E_PERGUNTA",
+      "explanation": "A pergunta busca a quantidade restante.",
+      "hint": "Identifique o que saiu.",
+      "errorFocus": "TRANSFER_MATCH_QUESTION_TO_OPERATION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta busca a quantidade restante.",
+        "incorrect": "A pergunta busca a quantidade restante.",
+        "hint": "Identifique o que saiu.",
+        "errorFocus": "TRANSFER_MATCH_QUESTION_TO_OPERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-21",
+      "statement": "Para calcular 32 + 6, uma criança pensa 30 + 2 + 6. Qual total obtém?",
+      "prompt": "Para calcular 32 + 6, uma criança pensa 30 + 2 + 6. Qual total obtém?",
+      "options": [
+        "38.",
+        "36",
+        "326",
+        "44"
+      ],
+      "correctAnswer": "38.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "36": [
+          "TRANSFER_PERSONAL_DECOMPOSITION"
+        ],
+        "44": [
+          "TRANSFER_PERSONAL_DECOMPOSITION"
+        ],
+        "326": [
+          "TRANSFER_PERSONAL_DECOMPOSITION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ESTRATEGIA_DE_DECOMPOSICAO",
+      "explanation": "30 + 2 + 6 = 38.",
+      "hint": "Some as unidades e mantenha as dezenas.",
+      "errorFocus": "TRANSFER_PERSONAL_DECOMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: 30 + 2 + 6 = 38.",
+        "incorrect": "30 + 2 + 6 = 38.",
+        "hint": "Some as unidades e mantenha as dezenas.",
+        "errorFocus": "TRANSFER_PERSONAL_DECOMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-22",
+      "statement": "Qual situação inventada pergunta sobre uma quantidade que restou?",
+      "prompt": "Qual situação inventada pergunta sobre uma quantidade que restou?",
+      "options": [
+        "Chegaram 4 revistas para uma estante com 25; quantas há agora?",
+        "Uma estante tinha 25 revistas e 4 foram emprestadas; quantas ficaram?",
+        "Duas pilhas de 25 e 4 revistas foram juntas; quantas há ao todo?",
+        "Qual revista tem a capa mais colorida?"
+      ],
+      "correctAnswer": "Uma estante tinha 25 revistas e 4 foram emprestadas; quantas ficaram?",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Chegaram 4 revistas para uma estante com 25; quantas há agora?": [
+          "TRANSFER_FORMULATE_TAKE_AWAY"
+        ],
+        "Duas pilhas de 25 e 4 revistas foram juntas; quantas há ao todo?": [
+          "TRANSFER_FORMULATE_TAKE_AWAY"
+        ],
+        "Qual revista tem a capa mais colorida?": [
+          "TRANSFER_FORMULATE_TAKE_AWAY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "INVENTAR_PROBLEMA_DE_RETIRAR",
+      "explanation": "O enunciado retira quatro da quantidade inicial.",
+      "hint": "Escolha uma história em que algo sai.",
+      "errorFocus": "TRANSFER_FORMULATE_TAKE_AWAY",
+      "feedback": {
+        "correct": "Boa observação: O enunciado retira quatro da quantidade inicial.",
+        "incorrect": "O enunciado retira quatro da quantidade inicial.",
+        "hint": "Escolha uma história em que algo sai.",
+        "errorFocus": "TRANSFER_FORMULATE_TAKE_AWAY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-23",
+      "statement": "Para modelar 20 - 3, o que fazer com as fichas?",
+      "prompt": "Para modelar 20 - 3, o que fazer com as fichas?",
+      "options": [
+        "Montar 3 e acrescentar 20",
+        "Montar 20 e acrescentar 3",
+        "Montar 20 e retirar 3.",
+        "Separar 20 de um grupo de 3"
+      ],
+      "correctAnswer": "Montar 20 e retirar 3.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Montar 3 e acrescentar 20": [
+          "TRANSFER_SUBTRACTION_MODEL"
+        ],
+        "Montar 20 e acrescentar 3": [
+          "TRANSFER_SUBTRACTION_MODEL"
+        ],
+        "Separar 20 de um grupo de 3": [
+          "TRANSFER_SUBTRACTION_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FICHAS_PARA_SEPARAR",
+      "explanation": "A ação representa retirar três de vinte.",
+      "hint": "Comece com vinte fichas.",
+      "errorFocus": "TRANSFER_SUBTRACTION_MODEL",
+      "feedback": {
+        "correct": "Boa observação: A ação representa retirar três de vinte.",
+        "incorrect": "A ação representa retirar três de vinte.",
+        "hint": "Comece com vinte fichas.",
+        "errorFocus": "TRANSFER_SUBTRACTION_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-24",
+      "statement": "Por que reler a história depois de calcular?",
+      "prompt": "Por que reler a história depois de calcular?",
+      "options": [
+        "Para mudar os números aleatoriamente",
+        "Para escolher a resposta mais rápida",
+        "Para ignorar o desenho",
+        "Para verificar se o resultado responde à pergunta sobre total ou restante."
+      ],
+      "correctAnswer": "Para verificar se o resultado responde à pergunta sobre total ou restante.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para mudar os números aleatoriamente": [
+          "TRANSFER_CHECK_CONTEXT"
+        ],
+        "Para escolher a resposta mais rápida": [
+          "TRANSFER_CHECK_CONTEXT"
+        ],
+        "Para ignorar o desenho": [
+          "TRANSFER_CHECK_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONFERIR_RESPOSTA",
+      "explanation": "A conferência conecta o cálculo à situação narrada.",
+      "hint": "Volte à pergunta final.",
+      "errorFocus": "TRANSFER_CHECK_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A conferência conecta o cálculo à situação narrada.",
+        "incorrect": "A conferência conecta o cálculo à situação narrada.",
+        "hint": "Volte à pergunta final.",
+        "errorFocus": "TRANSFER_CHECK_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-25",
+      "statement": "Quando duas coleções são reunidas, geralmente podemos usar...",
+      "prompt": "Quando duas coleções são reunidas, geralmente podemos usar...",
+      "options": [
+        "adição.",
+        "subtração apenas",
+        "uma comparação de cores",
+        "uma divisão por endereço"
+      ],
+      "correctAnswer": "adição.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "subtração apenas": [
+          "RECALL_JOINING_ADDITION"
+        ],
+        "uma comparação de cores": [
+          "RECALL_JOINING_ADDITION"
+        ],
+        "uma divisão por endereço": [
+          "RECALL_JOINING_ADDITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "JUNTAR_DOIS_GRUPOS",
+      "explanation": "Juntar quantidades corresponde a adicionar.",
+      "hint": "Pense no total conjunto.",
+      "errorFocus": "RECALL_JOINING_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Juntar quantidades corresponde a adicionar.",
+        "incorrect": "Juntar quantidades corresponde a adicionar.",
+        "hint": "Pense no total conjunto.",
+        "errorFocus": "RECALL_JOINING_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-26",
+      "statement": "Quanto é 18 + 2?",
+      "prompt": "Quanto é 18 + 2?",
+      "options": [
+        "16",
+        "20.",
+        "19",
+        "182"
+      ],
+      "correctAnswer": "20.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "16": [
+          "RECALL_ADDITION"
+        ],
+        "19": [
+          "RECALL_ADDITION"
+        ],
+        "182": [
+          "RECALL_ADDITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "DEZOITO_MAIS_DOIS",
+      "explanation": "Acrescentar duas unidades a 18 dá 20.",
+      "hint": "Conte dois passos depois de 18.",
+      "errorFocus": "RECALL_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Acrescentar duas unidades a 18 dá 20.",
+        "incorrect": "Acrescentar duas unidades a 18 dá 20.",
+        "hint": "Conte dois passos depois de 18.",
+        "errorFocus": "RECALL_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-27",
+      "statement": "Uma história diz que 6 objetos chegaram a uma coleção de 13. A quantidade...",
+      "prompt": "Uma história diz que 6 objetos chegaram a uma coleção de 13. A quantidade...",
+      "options": [
+        "diminuiu para 7",
+        "permaneceu 13",
+        "aumentou para 19.",
+        "virou 136"
+      ],
+      "correctAnswer": "aumentou para 19.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "diminuiu para 7": [
+          "RECALL_ADD_TO_ACTION"
+        ],
+        "permaneceu 13": [
+          "RECALL_ADD_TO_ACTION"
+        ],
+        "virou 136": [
+          "RECALL_ADD_TO_ACTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEPARAR_E_ACRESCENTAR",
+      "explanation": "13 + 6 = 19.",
+      "hint": "Os objetos chegaram à coleção.",
+      "errorFocus": "RECALL_ADD_TO_ACTION",
+      "feedback": {
+        "correct": "Boa observação: 13 + 6 = 19.",
+        "incorrect": "13 + 6 = 19.",
+        "hint": "Os objetos chegaram à coleção.",
+        "errorFocus": "RECALL_ADD_TO_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-28",
+      "statement": "Uma caixa tinha 27 peças e 5 foram retiradas. Quantas ficam?",
+      "prompt": "Uma caixa tinha 27 peças e 5 foram retiradas. Quantas ficam?",
+      "options": [
+        "32 peças",
+        "21 peças",
+        "5 peças",
+        "22 peças."
+      ],
+      "correctAnswer": "22 peças.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "32 peças": [
+          "RECALL_SUBTRACTION"
+        ],
+        "21 peças": [
+          "RECALL_SUBTRACTION"
+        ],
+        "5 peças": [
+          "RECALL_SUBTRACTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "VINTE_E_SETE_MENOS_CINCO",
+      "explanation": "27 - 5 = 22.",
+      "hint": "Retire cinco da quantidade.",
+      "errorFocus": "RECALL_SUBTRACTION",
+      "feedback": {
+        "correct": "Boa observação: 27 - 5 = 22.",
+        "incorrect": "27 - 5 = 22.",
+        "hint": "Retire cinco da quantidade.",
+        "errorFocus": "RECALL_SUBTRACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-29",
+      "statement": "Um desenho mostra 10 círculos e mais 4. Que registro combina?",
+      "prompt": "Um desenho mostra 10 círculos e mais 4. Que registro combina?",
+      "options": [
+        "10 + 4 = 14.",
+        "10 - 4 = 6",
+        "4 - 10 = 6",
+        "10 + 4 = 15"
+      ],
+      "correctAnswer": "10 + 4 = 14.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "10 - 4 = 6": [
+          "RECALL_DRAWING_TO_EQUATION"
+        ],
+        "4 - 10 = 6": [
+          "RECALL_DRAWING_TO_EQUATION"
+        ],
+        "10 + 4 = 15": [
+          "RECALL_DRAWING_TO_EQUATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESENHO_DE_QUANTIDADES",
+      "explanation": "O desenho acrescenta quatro círculos a dez.",
+      "hint": "Conte todas as marcas.",
+      "errorFocus": "RECALL_DRAWING_TO_EQUATION",
+      "feedback": {
+        "correct": "Boa observação: O desenho acrescenta quatro círculos a dez.",
+        "incorrect": "O desenho acrescenta quatro círculos a dez.",
+        "hint": "Conte todas as marcas.",
+        "errorFocus": "RECALL_DRAWING_TO_EQUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-30",
+      "statement": "Duas estratégias diferentes resultam em 18 para a mesma situação. O que verificar?",
+      "prompt": "Duas estratégias diferentes resultam em 18 para a mesma situação. O que verificar?",
+      "options": [
+        "Qual pessoa calculou mais rápido",
+        "Se cada estratégia representa corretamente os dados do problema.",
+        "Qual desenho é mais bonito",
+        "Se ambas usaram os mesmos sinais"
+      ],
+      "correctAnswer": "Se cada estratégia representa corretamente os dados do problema.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual pessoa calculou mais rápido": [
+          "RECALL_STRATEGY_VALIDATION"
+        ],
+        "Qual desenho é mais bonito": [
+          "RECALL_STRATEGY_VALIDATION"
+        ],
+        "Se ambas usaram os mesmos sinais": [
+          "RECALL_STRATEGY_VALIDATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESTRATEGIA_PESSOAL",
+      "explanation": "A coerência com a situação valida a estratégia.",
+      "hint": "Compare com o enunciado.",
+      "errorFocus": "RECALL_STRATEGY_VALIDATION",
+      "feedback": {
+        "correct": "Boa observação: A coerência com a situação valida a estratégia.",
+        "incorrect": "A coerência com a situação valida a estratégia.",
+        "hint": "Compare com o enunciado.",
+        "errorFocus": "RECALL_STRATEGY_VALIDATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-31",
+      "statement": "Uma imagem mostra 15 flores num vaso e 4 noutro. Qual pergunta combina com juntar?",
+      "prompt": "Uma imagem mostra 15 flores num vaso e 4 noutro. Qual pergunta combina com juntar?",
+      "options": [
+        "Quantas flores restam depois de retirar 4?",
+        "Qual vaso é mais alto?",
+        "Quantas flores há nos dois vasos ao todo?",
+        "Quantas flores há numa cor não mostrada?"
+      ],
+      "correctAnswer": "Quantas flores há nos dois vasos ao todo?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quantas flores restam depois de retirar 4?": [
+          "RECALL_CREATE_JOIN_QUESTION"
+        ],
+        "Qual vaso é mais alto?": [
+          "RECALL_CREATE_JOIN_QUESTION"
+        ],
+        "Quantas flores há numa cor não mostrada?": [
+          "RECALL_CREATE_JOIN_QUESTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "PERGUNTA_DE_TOTAL",
+      "explanation": "A pergunta solicita o total das duas coleções.",
+      "hint": "Pergunte sobre o conjunto.",
+      "errorFocus": "RECALL_CREATE_JOIN_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta solicita o total das duas coleções.",
+        "incorrect": "A pergunta solicita o total das duas coleções.",
+        "hint": "Pergunte sobre o conjunto.",
+        "errorFocus": "RECALL_CREATE_JOIN_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-32",
+      "statement": "Escolher entre adição e subtração depende...",
+      "prompt": "Escolher entre adição e subtração depende...",
+      "options": [
+        "do tamanho da página",
+        "da rapidez desejada",
+        "do nome dos objetos",
+        "da ação descrita e da pergunta do problema."
+      ],
+      "correctAnswer": "da ação descrita e da pergunta do problema.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "do tamanho da página": [
+          "ADDITION_SUBTRACTION_SUMMARY"
+        ],
+        "da rapidez desejada": [
+          "ADDITION_SUBTRACTION_SUMMARY"
+        ],
+        "do nome dos objetos": [
+          "ADDITION_SUBTRACTION_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_OPERACOES",
+      "explanation": "A situação determina como representar as quantidades.",
+      "hint": "Leia o que acontece aos itens.",
+      "errorFocus": "ADDITION_SUBTRACTION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A situação determina como representar as quantidades.",
+        "incorrect": "A situação determina como representar as quantidades.",
+        "hint": "Leia o que acontece aos itens.",
+        "errorFocus": "ADDITION_SUBTRACTION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-33",
+      "statement": "12 bolas azuis e 6 amarelas são juntadas. Quantas bolas há?",
+      "prompt": "12 bolas azuis e 6 amarelas são juntadas. Quantas bolas há?",
+      "options": [
+        "18 bolas.",
+        "6 bolas",
+        "16 bolas",
+        "126 bolas"
+      ],
+      "correctAnswer": "18 bolas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "6 bolas": [
+          "REVIEW_JOINING"
+        ],
+        "16 bolas": [
+          "REVIEW_JOINING"
+        ],
+        "126 bolas": [
+          "REVIEW_JOINING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "REVISAO_DE_JUNTAR",
+      "explanation": "12 + 6 = 18.",
+      "hint": "Some os dois grupos.",
+      "errorFocus": "REVIEW_JOINING",
+      "feedback": {
+        "correct": "Boa observação: 12 + 6 = 18.",
+        "incorrect": "12 + 6 = 18.",
+        "hint": "Some os dois grupos.",
+        "errorFocus": "REVIEW_JOINING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-34",
+      "statement": "De 25 cartões, 3 são retirados. Quantos ficam?",
+      "prompt": "De 25 cartões, 3 são retirados. Quantos ficam?",
+      "options": [
+        "28 cartões",
+        "22 cartões.",
+        "23 cartões",
+        "3 cartões"
+      ],
+      "correctAnswer": "22 cartões.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "28 cartões": [
+          "REVIEW_TAKE_AWAY"
+        ],
+        "23 cartões": [
+          "REVIEW_TAKE_AWAY"
+        ],
+        "3 cartões": [
+          "REVIEW_TAKE_AWAY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SOLVE",
+      "contextFamily": "REVISAO_DE_RETIRAR",
+      "explanation": "25 - 3 = 22.",
+      "hint": "Retire três do total.",
+      "errorFocus": "REVIEW_TAKE_AWAY",
+      "feedback": {
+        "correct": "Boa observação: 25 - 3 = 22.",
+        "incorrect": "25 - 3 = 22.",
+        "hint": "Retire três do total.",
+        "errorFocus": "REVIEW_TAKE_AWAY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-35",
+      "statement": "Uma história diz que mais 7 objetos foram colocados numa coleção. A ação é...",
+      "prompt": "Uma história diz que mais 7 objetos foram colocados numa coleção. A ação é...",
+      "options": [
+        "separar e diminuir sempre",
+        "juntar sem conhecer a coleção",
+        "acrescentar e aumentar a quantidade.",
+        "comparar endereços"
+      ],
+      "correctAnswer": "acrescentar e aumentar a quantidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "separar e diminuir sempre": [
+          "REVIEW_ADD_TO"
+        ],
+        "juntar sem conhecer a coleção": [
+          "REVIEW_ADD_TO"
+        ],
+        "comparar endereços": [
+          "REVIEW_ADD_TO"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_ACRESCENTAR",
+      "explanation": "A coleção recebe novos objetos.",
+      "hint": "Observe o que foi colocado.",
+      "errorFocus": "REVIEW_ADD_TO",
+      "feedback": {
+        "correct": "Boa observação: A coleção recebe novos objetos.",
+        "incorrect": "A coleção recebe novos objetos.",
+        "hint": "Observe o que foi colocado.",
+        "errorFocus": "REVIEW_ADD_TO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-36",
+      "statement": "A pergunta “quantos sobraram?” normalmente pede observar...",
+      "prompt": "A pergunta “quantos sobraram?” normalmente pede observar...",
+      "options": [
+        "o total antes de qualquer ação",
+        "o que chegou depois",
+        "a cor dos objetos",
+        "o que ficou após a retirada ou separação."
+      ],
+      "correctAnswer": "o que ficou após a retirada ou separação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "o total antes de qualquer ação": [
+          "REVIEW_REMAINING_QUANTITY"
+        ],
+        "o que chegou depois": [
+          "REVIEW_REMAINING_QUANTITY"
+        ],
+        "a cor dos objetos": [
+          "REVIEW_REMAINING_QUANTITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_RESTANTE",
+      "explanation": "“Sobraram” aponta para a quantidade restante.",
+      "hint": "Veja o que saiu do grupo.",
+      "errorFocus": "REVIEW_REMAINING_QUANTITY",
+      "feedback": {
+        "correct": "Boa observação: “Sobraram” aponta para a quantidade restante.",
+        "incorrect": "“Sobraram” aponta para a quantidade restante.",
+        "hint": "Veja o que saiu do grupo.",
+        "errorFocus": "REVIEW_REMAINING_QUANTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-37",
+      "statement": "Qual material pode representar quantidades num problema?",
+      "prompt": "Qual material pode representar quantidades num problema?",
+      "options": [
+        "Fichas, blocos ou desenhos.",
+        "Uma senha pessoal",
+        "Um endereço real",
+        "Uma regra sem números"
+      ],
+      "correctAnswer": "Fichas, blocos ou desenhos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma senha pessoal": [
+          "REVIEW_MANIPULATIVE_SUPPORT"
+        ],
+        "Um endereço real": [
+          "REVIEW_MANIPULATIVE_SUPPORT"
+        ],
+        "Uma regra sem números": [
+          "REVIEW_MANIPULATIVE_SUPPORT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_MATERIAL",
+      "explanation": "Materiais concretos apoiam a representação.",
+      "hint": "Escolha algo que possa contar.",
+      "errorFocus": "REVIEW_MANIPULATIVE_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Materiais concretos apoiam a representação.",
+        "incorrect": "Materiais concretos apoiam a representação.",
+        "hint": "Escolha algo que possa contar.",
+        "errorFocus": "REVIEW_MANIPULATIVE_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-38",
+      "statement": "Uma criança encontra 16 para 9 + 7. Qual conferência é útil?",
+      "prompt": "Uma criança encontra 16 para 9 + 7. Qual conferência é útil?",
+      "options": [
+        "Retirar sete de nove",
+        "Representar nove itens e acrescentar sete para verificar 16.",
+        "Trocar nove por dezenove",
+        "Escolher 16 sem olhar a situação"
+      ],
+      "correctAnswer": "Representar nove itens e acrescentar sete para verificar 16.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Retirar sete de nove": [
+          "REVIEW_VERIFY_ADDITION"
+        ],
+        "Trocar nove por dezenove": [
+          "REVIEW_VERIFY_ADDITION"
+        ],
+        "Escolher 16 sem olhar a situação": [
+          "REVIEW_VERIFY_ADDITION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONFERENCIA",
+      "explanation": "A representação confirma o cálculo.",
+      "hint": "Modele os dois grupos.",
+      "errorFocus": "REVIEW_VERIFY_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: A representação confirma o cálculo.",
+        "incorrect": "A representação confirma o cálculo.",
+        "hint": "Modele os dois grupos.",
+        "errorFocus": "REVIEW_VERIFY_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-39",
+      "statement": "Um bom enunciado de subtração precisa deixar claro...",
+      "prompt": "Um bom enunciado de subtração precisa deixar claro...",
+      "options": [
+        "apenas a cor do papel",
+        "um endereço privado",
+        "qual era a quantidade inicial e o que foi retirado ou separado.",
+        "uma resposta sem pergunta"
+      ],
+      "correctAnswer": "qual era a quantidade inicial e o que foi retirado ou separado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "apenas a cor do papel": [
+          "REVIEW_PROBLEM_FORMULATION"
+        ],
+        "um endereço privado": [
+          "REVIEW_PROBLEM_FORMULATION"
+        ],
+        "uma resposta sem pergunta": [
+          "REVIEW_PROBLEM_FORMULATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "REVISAO_DE_PROBLEMA",
+      "explanation": "Esses dados permitem representar a ação.",
+      "hint": "Inclua início e mudança.",
+      "errorFocus": "REVIEW_PROBLEM_FORMULATION",
+      "feedback": {
+        "correct": "Boa observação: Esses dados permitem representar a ação.",
+        "incorrect": "Esses dados permitem representar a ação.",
+        "hint": "Inclua início e mudança.",
+        "errorFocus": "REVIEW_PROBLEM_FORMULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma08-solve-addition-and-subtraction-stories-40",
+      "statement": "Uma estratégia pessoal é adequada quando...",
+      "prompt": "Uma estratégia pessoal é adequada quando...",
+      "options": [
+        "é obrigatoriamente a mais rápida",
+        "usa só um tipo de material",
+        "não precisa considerar o enunciado",
+        "representa a situação e responde à pergunta com resultado conferido."
+      ],
+      "correctAnswer": "representa a situação e responde à pergunta com resultado conferido.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "é obrigatoriamente a mais rápida": [
+          "REVIEW_REASONING_SUMMARY"
+        ],
+        "usa só um tipo de material": [
+          "REVIEW_REASONING_SUMMARY"
+        ],
+        "não precisa considerar o enunciado": [
+          "REVIEW_REASONING_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ESTRATEGIA",
+      "explanation": "A estratégia precisa ser coerente e verificável.",
+      "hint": "Releia a situação e confira.",
+      "errorFocus": "REVIEW_REASONING_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A estratégia precisa ser coerente e verificável.",
+        "incorrect": "A estratégia precisa ser coerente e verificável.",
+        "hint": "Releia a situação e confira.",
+        "errorFocus": "REVIEW_REASONING_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer imagens, fichas táteis, blocos, reta numérica ampliada e enunciados lidos em voz alta.",
+          "Permitir resposta por desenho, manipulação, fala, registro numérico ou comunicação alternativa.",
+          "Aceitar estratégias pessoais corretas e tempo flexível, sem premiar rapidez."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

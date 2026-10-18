@@ -58,6 +58,15 @@ describe('V4 semantic ownership', () => {
     expect(contentImport).toContain('v4-authored-mathematics-ratio-probe-01');
   });
 
+  it('keeps non-persisted hint metadata out of the V4 SQL content hash', () => {
+    const withFeedback = structuredClone(pack);
+    const question = withFeedback.questions[0] as typeof withFeedback.questions[number] & { hint?: string; errorFocus?: string };
+    question.hint = 'Targeted source hint';
+    question.errorFocus = 'Specific misconception';
+
+    expect(validateV4Pack(withFeedback).canonicalHash).toBe(validateV4Pack(pack).canonicalHash);
+  });
+
   it('separates Portuguese inference, thesis/evidence, genre and source comparison', () => {
     const byTopic = new Map(pack.questions.filter((question) => question.subject === 'PORTUGUESE').map((question) => [question.topic, question.primarySkill]));
     expect(byTopic.get('editorial e tese')).toBe('PORTUGUESE_ARGUMENT_EVIDENCE');

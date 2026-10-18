@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-information-messages-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO04_RECOGNIZE_INFORMATION_STORAGE_AND_TRANSMISSION",
+  "subject": "COMPUTING",
+  "domain": "MUNDO_DIGITAL",
+  "topic": "informação descrita, armazenada e transmitida em diferentes meios",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Informações em diferentes meios",
+    "objective": "Reconhecer que uma informação pode ser comunicada por diferentes linguagens, transmitida por meios diversos e guardada em um suporte para ser consultada depois.",
+    "summary": "Uma mesma informação pode ser apresentada por fala, escrita, imagem ou som. Mensagens podem chegar a outra pessoa por diferentes meios e podem ser guardadas em papel, gravação ou arquivo para serem recuperadas depois.",
+    "explanation": "## Informação e forma de apresentar\nA informação é aquilo que queremos comunicar, como avisar que haverá uma atividade no pátio. Essa mesma informação pode aparecer em palavras, em um desenho do pátio ou em um símbolo combinado. A forma escolhida é uma linguagem ou representação da informação.\n\n## Transmitir uma mensagem\nTransmitir é fazer uma mensagem chegar a outra pessoa ou lugar. Podemos entregar um bilhete, mostrar um desenho, falar, reproduzir um áudio ou enviar uma mensagem por um dispositivo com autorização. O meio usado ajuda a transportar a mensagem, mas não é a informação em si.\n\n## Armazenar e recuperar\nPodemos guardar uma informação em um caderno, numa gravação ou num arquivo para consultar mais tarde. Ao recuperar, precisamos localizar o registro e interpretar a linguagem usada. Use apenas mensagens escolares fictícias ou públicas nesta atividade: não é preciso guardar ou compartilhar dados pessoais.",
+    "workedExample": "A turma quer informar que a biblioteca abrirá depois do recreio. A mensagem pode ser escrita num aviso, dita em voz alta ou representada por um pictograma combinado. O aviso pode ficar no mural para consulta posterior; uma gravação de áudio autorizada também pode ser reproduzida para outra turma. Em cada caso, a informação é o mesmo horário e local, embora a linguagem e o meio mudem.",
+    "commonMistake": "Confundir a mensagem com o meio que a transporta, ou supor que uma informação só existe quando está escrita em um computador.",
+    "tips": [
+      "Pergunte o que a mensagem informa e, separadamente, como ela foi apresentada.",
+      "Compare diferentes formas que comunicam a mesma ideia.",
+      "Diferencie enviar uma mensagem de guardá-la para depois.",
+      "Use informações fictícias ou autorizadas e não compartilhe dados pessoais."
+    ],
+    "priorKnowledge": [
+      "Reconhecer mensagens simples em fala, desenhos ou palavras.",
+      "Identificar objetos cotidianos usados para mostrar ou guardar registros."
+    ],
+    "keyConcepts": [
+      "informação e mensagem",
+      "linguagem ou representação",
+      "meio de transmissão",
+      "armazenamento e recuperação",
+      "privacidade em mensagens"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SAME_INFORMATION",
+        "text": "Uma ideia pode ser comunicada por palavras, imagens ou sons sem deixar de ser a mesma informação."
+      },
+      {
+        "trigger": "TRANSMIT",
+        "text": "Transmitir é fazer uma mensagem chegar por um meio a outra pessoa ou lugar."
+      },
+      {
+        "trigger": "STORE_RETRIEVE",
+        "text": "Armazenar é guardar um registro para poder localizá-lo e interpretá-lo mais tarde."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CONFUSES_MESSAGE_AND_MEDIUM",
+        "action": "Compare o conteúdo de dois avisos e nomeie separadamente a informação comunicada e o suporte usado para mostrá-la."
+      },
+      {
+        "errorFocus": "CONFUSES_TRANSMIT_AND_STORE",
+        "action": "Classifique exemplos em “fazer chegar agora” ou “guardar para consultar depois” e explique quando uma ação pode cumprir as duas funções."
+      },
+      {
+        "errorFocus": "ONE_LANGUAGE_ONLY",
+        "action": "Represente uma mensagem fictícia por fala, desenho e palavras, conferindo se cada versão comunica a informação combinada."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+      "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+      "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+      "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-information-messages-fi-activity-1",
+        "title": "Uma informação, três apresentações",
+        "instructions": "Comunicar uma informação escolar fictícia — por exemplo, “a roda de leitura será na sala azul” — por palavras, desenho e fala gravada com autorização.\n1. Escolher uma mensagem fictícia e identificar exatamente o que ela informa.\n2. Representar a mesma informação em duas ou três linguagens acessíveis.\n3. Comparar as versões para verificar se mantêm o local e a atividade.\n4. Compartilhar uma versão com uma turma parceira usando um meio autorizado.",
+        "steps": [
+          "Escolher uma mensagem fictícia e identificar exatamente o que ela informa.",
+          "Representar a mesma informação em duas ou três linguagens acessíveis.",
+          "Comparar as versões para verificar se mantêm o local e a atividade.",
+          "Compartilhar uma versão com uma turma parceira usando um meio autorizado."
+        ],
+        "evidence": "Versões da mensagem, identificação da informação comum e registro de como ela foi transmitida.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma parte da mensagem com apoio.",
+            "developing": "representa a informação em dois formatos com lembretes.",
+            "proficient": "preserva o sentido em formatos diferentes e identifica o meio de transmissão."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-information-messages-fi-activity-2",
+        "title": "Guardar e recuperar um aviso",
+        "instructions": "Criar um aviso fictício de atividade de sala, guardá-lo em mural ou pasta de aula e recuperá-lo para responder uma pergunta sobre ele.\n1. Produzir um aviso com informação não pessoal e legível.\n2. Escolher um local ou suporte de armazenamento combinado.\n3. Depois de uma pausa, localizar o aviso pelo título, símbolo ou pasta.\n4. Interpretar a informação e explicar como foi recuperada.",
+        "steps": [
+          "Produzir um aviso com informação não pessoal e legível.",
+          "Escolher um local ou suporte de armazenamento combinado.",
+          "Depois de uma pausa, localizar o aviso pelo título, símbolo ou pasta.",
+          "Interpretar a informação e explicar como foi recuperada."
+        ],
+        "evidence": "Aviso criado, local de armazenamento identificado e informação correta recuperada posteriormente.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece o aviso com indicação do adulto.",
+            "developing": "localiza o registro usando uma pista.",
+            "proficient": "identifica onde a informação foi guardada e recupera o conteúdo sem confundir suporte e mensagem."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-information-messages-fi-01",
+          "v1-computing-information-messages-fi-02",
+          "v1-computing-information-messages-fi-03",
+          "v1-computing-information-messages-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-information-messages-fi-05",
+          "v1-computing-information-messages-fi-06",
+          "v1-computing-information-messages-fi-07",
+          "v1-computing-information-messages-fi-08",
+          "v1-computing-information-messages-fi-09",
+          "v1-computing-information-messages-fi-10",
+          "v1-computing-information-messages-fi-11",
+          "v1-computing-information-messages-fi-12",
+          "v1-computing-information-messages-fi-13",
+          "v1-computing-information-messages-fi-14",
+          "v1-computing-information-messages-fi-15",
+          "v1-computing-information-messages-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-information-messages-fi-17",
+          "v1-computing-information-messages-fi-18",
+          "v1-computing-information-messages-fi-19",
+          "v1-computing-information-messages-fi-20",
+          "v1-computing-information-messages-fi-21",
+          "v1-computing-information-messages-fi-22",
+          "v1-computing-information-messages-fi-23",
+          "v1-computing-information-messages-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-information-messages-fi-25",
+          "v1-computing-information-messages-fi-26",
+          "v1-computing-information-messages-fi-27",
+          "v1-computing-information-messages-fi-28",
+          "v1-computing-information-messages-fi-29",
+          "v1-computing-information-messages-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-information-messages-fi-31",
+          "v1-computing-information-messages-fi-32",
+          "v1-computing-information-messages-fi-33",
+          "v1-computing-information-messages-fi-34",
+          "v1-computing-information-messages-fi-35",
+          "v1-computing-information-messages-fi-36",
+          "v1-computing-information-messages-fi-37",
+          "v1-computing-information-messages-fi-38",
+          "v1-computing-information-messages-fi-39",
+          "v1-computing-information-messages-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO04",
+        "descriptor": "Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 16
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-information-messages-fi-01",
+      "statement": "Um aviso diz “a roda de leitura será na sala azul”. O que é a informação principal?",
+      "prompt": "Um aviso diz “a roda de leitura será na sala azul”. O que é a informação principal?",
+      "options": [
+        "O local e a atividade anunciados.",
+        "A cor do papel do aviso.",
+        "O mural onde o aviso está preso.",
+        "A pessoa que imprimiu a folha."
+      ],
+      "correctAnswer": "O local e a atividade anunciados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor do papel do aviso.": [
+          "INFORMATION_VS_SUPPORT"
+        ],
+        "O mural onde o aviso está preso.": [
+          "INFORMATION_VS_SUPPORT"
+        ],
+        "A pessoa que imprimiu a folha.": [
+          "INFORMATION_VS_SUPPORT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_NOTICE",
+      "explanation": "O conteúdo da mensagem é a atividade e seu local; papel e mural são suportes.",
+      "hint": "Pergunte o que o aviso comunica.",
+      "errorFocus": "INFORMATION_VS_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo da mensagem é a atividade e seu local; papel e mural são suportes.",
+        "incorrect": "O conteúdo da mensagem é a atividade e seu local; papel e mural são suportes.",
+        "hint": "Pergunte o que o aviso comunica.",
+        "errorFocus": "INFORMATION_VS_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-02",
+      "statement": "Uma imagem e um áudio dizem que há um cachorro no desenho. O que pode ser igual nas duas versões?",
+      "prompt": "Uma imagem e um áudio dizem que há um cachorro no desenho. O que pode ser igual nas duas versões?",
+      "options": [
+        "O tipo de arquivo necessariamente.",
+        "A informação comunicada sobre o cachorro.",
+        "O material usado para produzir os dois.",
+        "A duração do áudio e o tamanho da imagem."
+      ],
+      "correctAnswer": "A informação comunicada sobre o cachorro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O tipo de arquivo necessariamente.": [
+          "SAME_INFO_DIFFERENT_FORM"
+        ],
+        "O material usado para produzir os dois.": [
+          "SAME_INFO_DIFFERENT_FORM"
+        ],
+        "A duração do áudio e o tamanho da imagem.": [
+          "SAME_INFO_DIFFERENT_FORM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOG_IMAGE_SOUND",
+      "explanation": "Uma informação pode ser comunicada por linguagens diferentes.",
+      "hint": "Compare a ideia, não o formato.",
+      "errorFocus": "SAME_INFO_DIFFERENT_FORM",
+      "feedback": {
+        "correct": "Boa observação: Uma informação pode ser comunicada por linguagens diferentes.",
+        "incorrect": "Uma informação pode ser comunicada por linguagens diferentes.",
+        "hint": "Compare a ideia, não o formato.",
+        "errorFocus": "SAME_INFO_DIFFERENT_FORM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-03",
+      "statement": "Uma criança entrega um bilhete à turma para informar a hora da brincadeira. O que ela fez com a mensagem?",
+      "prompt": "Uma criança entrega um bilhete à turma para informar a hora da brincadeira. O que ela fez com a mensagem?",
+      "options": [
+        "Guardou-a sem mostrar a ninguém.",
+        "Apagou a informação.",
+        "Transmitiu a mensagem à turma.",
+        "Transformou o bilhete em brinquedo."
+      ],
+      "correctAnswer": "Transmitiu a mensagem à turma.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Guardou-a sem mostrar a ninguém.": [
+          "TRANSMISSION"
+        ],
+        "Apagou a informação.": [
+          "TRANSMISSION"
+        ],
+        "Transformou o bilhete em brinquedo.": [
+          "TRANSMISSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "TRANSMIT",
+      "contextFamily": "NOTE_TO_CLASS",
+      "explanation": "Entregar o bilhete faz a informação chegar a outras pessoas.",
+      "hint": "A mensagem chegou a alguém?",
+      "errorFocus": "TRANSMISSION",
+      "feedback": {
+        "correct": "Boa observação: Entregar o bilhete faz a informação chegar a outras pessoas.",
+        "incorrect": "Entregar o bilhete faz a informação chegar a outras pessoas.",
+        "hint": "A mensagem chegou a alguém?",
+        "errorFocus": "TRANSMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-04",
+      "statement": "Um aviso é colocado numa pasta para ser consultado amanhã. O que aconteceu?",
+      "prompt": "Um aviso é colocado numa pasta para ser consultado amanhã. O que aconteceu?",
+      "options": [
+        "Foi transmitida por som sem ser reproduzida.",
+        "Deixou de existir.",
+        "Foi transformada em pessoa.",
+        "A informação foi armazenada para consulta posterior."
+      ],
+      "correctAnswer": "A informação foi armazenada para consulta posterior.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Foi transmitida por som sem ser reproduzida.": [
+          "STORAGE"
+        ],
+        "Deixou de existir.": [
+          "STORAGE"
+        ],
+        "Foi transformada em pessoa.": [
+          "STORAGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "STORE",
+      "contextFamily": "CLASS_FOLDER",
+      "explanation": "Guardar o aviso permite localizá-lo e consultá-lo mais tarde.",
+      "hint": "O aviso ficará disponível para depois?",
+      "errorFocus": "STORAGE",
+      "feedback": {
+        "correct": "Boa observação: Guardar o aviso permite localizá-lo e consultá-lo mais tarde.",
+        "incorrect": "Guardar o aviso permite localizá-lo e consultá-lo mais tarde.",
+        "hint": "O aviso ficará disponível para depois?",
+        "errorFocus": "STORAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-05",
+      "statement": "A turma quer comunicar que hoje está ventando. Qual opção pode representar essa informação sem palavras?",
+      "prompt": "A turma quer comunicar que hoje está ventando. Qual opção pode representar essa informação sem palavras?",
+      "options": [
+        "Um desenho combinado de árvores inclinadas pelo vento.",
+        "Uma folha em branco sem símbolo.",
+        "O nome de quem desenhou.",
+        "Uma figura de sol sem relação com o vento."
+      ],
+      "correctAnswer": "Um desenho combinado de árvores inclinadas pelo vento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma folha em branco sem símbolo.": [
+          "VISUAL_LANGUAGE"
+        ],
+        "O nome de quem desenhou.": [
+          "VISUAL_LANGUAGE"
+        ],
+        "Uma figura de sol sem relação com o vento.": [
+          "VISUAL_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "WEATHER_DRAWING",
+      "explanation": "Um desenho escolhido para esse significado pode apresentar a informação visualmente.",
+      "hint": "Qual imagem ajudaria alguém a entender que há vento?",
+      "errorFocus": "VISUAL_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: Um desenho escolhido para esse significado pode apresentar a informação visualmente.",
+        "incorrect": "Um desenho escolhido para esse significado pode apresentar a informação visualmente.",
+        "hint": "Qual imagem ajudaria alguém a entender que há vento?",
+        "errorFocus": "VISUAL_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-06",
+      "statement": "Uma gravação autorizada é reproduzida para outra sala. O que a reprodução permite?",
+      "prompt": "Uma gravação autorizada é reproduzida para outra sala. O que a reprodução permite?",
+      "options": [
+        "Guardar um papel no armário.",
+        "Fazer a mensagem de áudio chegar a quem está na outra sala.",
+        "Mudar automaticamente o conteúdo da mensagem.",
+        "Apagar a informação de todos os registros."
+      ],
+      "correctAnswer": "Fazer a mensagem de áudio chegar a quem está na outra sala.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Guardar um papel no armário.": [
+          "AUDIO_TRANSMISSION"
+        ],
+        "Mudar automaticamente o conteúdo da mensagem.": [
+          "AUDIO_TRANSMISSION"
+        ],
+        "Apagar a informação de todos os registros.": [
+          "AUDIO_TRANSMISSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "TRANSMIT",
+      "contextFamily": "AUDIO_MESSAGE",
+      "explanation": "Reproduzir o áudio transmite sua mensagem a ouvintes presentes.",
+      "hint": "Quem consegue receber a mensagem quando ela toca?",
+      "errorFocus": "AUDIO_TRANSMISSION",
+      "feedback": {
+        "correct": "Boa observação: Reproduzir o áudio transmite sua mensagem a ouvintes presentes.",
+        "incorrect": "Reproduzir o áudio transmite sua mensagem a ouvintes presentes.",
+        "hint": "Quem consegue receber a mensagem quando ela toca?",
+        "errorFocus": "AUDIO_TRANSMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-07",
+      "statement": "Uma criança coloca seu desenho identificado numa pasta de trabalhos da turma. Qual ação descreve isso?",
+      "prompt": "Uma criança coloca seu desenho identificado numa pasta de trabalhos da turma. Qual ação descreve isso?",
+      "options": [
+        "Transmitir o desenho por telefone.",
+        "Descrever o desenho por cheiro.",
+        "Armazenar o desenho para encontrá-lo depois.",
+        "Apagar o desenho antes de guardar."
+      ],
+      "correctAnswer": "Armazenar o desenho para encontrá-lo depois.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Transmitir o desenho por telefone.": [
+          "PAPER_STORAGE"
+        ],
+        "Descrever o desenho por cheiro.": [
+          "PAPER_STORAGE"
+        ],
+        "Apagar o desenho antes de guardar.": [
+          "PAPER_STORAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "STORE",
+      "contextFamily": "DRAWING_PORTFOLIO",
+      "explanation": "A pasta conserva o registro e ajuda a recuperá-lo mais tarde.",
+      "hint": "O desenho ficará disponível para outra consulta?",
+      "errorFocus": "PAPER_STORAGE",
+      "feedback": {
+        "correct": "Boa observação: A pasta conserva o registro e ajuda a recuperá-lo mais tarde.",
+        "incorrect": "A pasta conserva o registro e ajuda a recuperá-lo mais tarde.",
+        "hint": "O desenho ficará disponível para outra consulta?",
+        "errorFocus": "PAPER_STORAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-08",
+      "statement": "No rádio escolar, a voz é o meio pelo qual a mensagem chega aos ouvintes. O que é a informação?",
+      "prompt": "No rádio escolar, a voz é o meio pelo qual a mensagem chega aos ouvintes. O que é a informação?",
+      "options": [
+        "O alto-falante sozinho.",
+        "A cor do aparelho.",
+        "O botão de volume.",
+        "O conteúdo comunicado pela fala."
+      ],
+      "correctAnswer": "O conteúdo comunicado pela fala.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O alto-falante sozinho.": [
+          "MESSAGE_MEDIUM"
+        ],
+        "A cor do aparelho.": [
+          "MESSAGE_MEDIUM"
+        ],
+        "O botão de volume.": [
+          "MESSAGE_MEDIUM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_RADIO",
+      "explanation": "A informação é o que a fala comunica, não o equipamento que a reproduz.",
+      "hint": "O que os ouvintes aprendem ao escutar?",
+      "errorFocus": "MESSAGE_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: A informação é o que a fala comunica, não o equipamento que a reproduz.",
+        "incorrect": "A informação é o que a fala comunica, não o equipamento que a reproduz.",
+        "hint": "O que os ouvintes aprendem ao escutar?",
+        "errorFocus": "MESSAGE_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-09",
+      "statement": "Um pictograma de livro e a frase “hora de ler” são usados para convidar a turma à leitura. O que compartilham?",
+      "prompt": "Um pictograma de livro e a frase “hora de ler” são usados para convidar a turma à leitura. O que compartilham?",
+      "options": [
+        "A mensagem de que é hora de ler.",
+        "O mesmo formato gráfico.",
+        "O mesmo tamanho de arquivo.",
+        "O mesmo som ao serem vistos."
+      ],
+      "correctAnswer": "A mensagem de que é hora de ler.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O mesmo formato gráfico.": [
+          "LANGUAGE_COMPARISON"
+        ],
+        "O mesmo tamanho de arquivo.": [
+          "LANGUAGE_COMPARISON"
+        ],
+        "O mesmo som ao serem vistos.": [
+          "LANGUAGE_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SYMBOL_AND_WORD",
+      "explanation": "Pictograma e frase são linguagens diferentes que podem comunicar a mesma mensagem.",
+      "hint": "Qual convite as duas versões apresentam?",
+      "errorFocus": "LANGUAGE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Pictograma e frase são linguagens diferentes que podem comunicar a mesma mensagem.",
+        "incorrect": "Pictograma e frase são linguagens diferentes que podem comunicar a mesma mensagem.",
+        "hint": "Qual convite as duas versões apresentam?",
+        "errorFocus": "LANGUAGE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-10",
+      "statement": "Um aviso antigo precisa ser encontrado na pasta da turma. Qual pista ajuda a recuperar a informação?",
+      "prompt": "Um aviso antigo precisa ser encontrado na pasta da turma. Qual pista ajuda a recuperar a informação?",
+      "options": [
+        "O nome de uma pessoa que não participa.",
+        "O título ou símbolo usado para identificar a pasta ou o aviso.",
+        "A cor aleatória da parede.",
+        "Apagar os avisos mais recentes sem procurar."
+      ],
+      "correctAnswer": "O título ou símbolo usado para identificar a pasta ou o aviso.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome de uma pessoa que não participa.": [
+          "RETRIEVAL_CUE"
+        ],
+        "A cor aleatória da parede.": [
+          "RETRIEVAL_CUE"
+        ],
+        "Apagar os avisos mais recentes sem procurar.": [
+          "RETRIEVAL_CUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "ARCHIVE_LABEL",
+      "explanation": "Uma identificação ajuda a localizar o registro armazenado.",
+      "hint": "Que rótulo pode indicar onde o aviso foi guardado?",
+      "errorFocus": "RETRIEVAL_CUE",
+      "feedback": {
+        "correct": "Boa observação: Uma identificação ajuda a localizar o registro armazenado.",
+        "incorrect": "Uma identificação ajuda a localizar o registro armazenado.",
+        "hint": "Que rótulo pode indicar onde o aviso foi guardado?",
+        "errorFocus": "RETRIEVAL_CUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-11",
+      "statement": "Uma estudante mostra seu desenho a um colega e explica o que ele representa. Qual ação está acontecendo?",
+      "prompt": "Uma estudante mostra seu desenho a um colega e explica o que ele representa. Qual ação está acontecendo?",
+      "options": [
+        "A imagem foi armazenada em arquivo digital necessariamente.",
+        "O papel se tornou a mensagem inteira.",
+        "A informação está sendo transmitida por imagem e fala.",
+        "O colega apagou o desenho ao olhar."
+      ],
+      "correctAnswer": "A informação está sendo transmitida por imagem e fala.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A imagem foi armazenada em arquivo digital necessariamente.": [
+          "MULTIMODAL_TRANSMISSION"
+        ],
+        "O papel se tornou a mensagem inteira.": [
+          "MULTIMODAL_TRANSMISSION"
+        ],
+        "O colega apagou o desenho ao olhar.": [
+          "MULTIMODAL_TRANSMISSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSMIT",
+      "contextFamily": "DRAWING_HANDOFF",
+      "explanation": "Mostrar e explicar permite que o colega receba a informação por dois meios de representação.",
+      "hint": "Como a mensagem chegou ao colega?",
+      "errorFocus": "MULTIMODAL_TRANSMISSION",
+      "feedback": {
+        "correct": "Boa observação: Mostrar e explicar permite que o colega receba a informação por dois meios de representação.",
+        "incorrect": "Mostrar e explicar permite que o colega receba a informação por dois meios de representação.",
+        "hint": "Como a mensagem chegou ao colega?",
+        "errorFocus": "MULTIMODAL_TRANSMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-12",
+      "statement": "Uma professora grava uma instrução de sala e guarda o áudio autorizado para reproduzir depois. Quais ações aparecem?",
+      "prompt": "Uma professora grava uma instrução de sala e guarda o áudio autorizado para reproduzir depois. Quais ações aparecem?",
+      "options": [
+        "Apenas desenhar uma mensagem.",
+        "Apagar e não guardar informação.",
+        "Enviar sem produzir ou reproduzir áudio.",
+        "Armazenar a gravação e poder transmiti-la quando for reproduzida."
+      ],
+      "correctAnswer": "Armazenar a gravação e poder transmiti-la quando for reproduzida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas desenhar uma mensagem.": [
+          "STORE_AND_LATER_TRANSMIT"
+        ],
+        "Apagar e não guardar informação.": [
+          "STORE_AND_LATER_TRANSMIT"
+        ],
+        "Enviar sem produzir ou reproduzir áudio.": [
+          "STORE_AND_LATER_TRANSMIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "STORE",
+      "contextFamily": "VOICE_NOTE_CLASS",
+      "explanation": "O arquivo é guardado e a reprodução posterior faz a mensagem chegar aos ouvintes.",
+      "hint": "Pense no que acontece quando grava e depois toca o áudio.",
+      "errorFocus": "STORE_AND_LATER_TRANSMIT",
+      "feedback": {
+        "correct": "Boa observação: O arquivo é guardado e a reprodução posterior faz a mensagem chegar aos ouvintes.",
+        "incorrect": "O arquivo é guardado e a reprodução posterior faz a mensagem chegar aos ouvintes.",
+        "hint": "Pense no que acontece quando grava e depois toca o áudio.",
+        "errorFocus": "STORE_AND_LATER_TRANSMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-13",
+      "statement": "Um mapa da sala usa um círculo para indicar a biblioteca, conforme a legenda. O que o círculo comunica?",
+      "prompt": "Um mapa da sala usa um círculo para indicar a biblioteca, conforme a legenda. O que o círculo comunica?",
+      "options": [
+        "A localização da biblioteca segundo a legenda.",
+        "O tamanho exato do prédio.",
+        "O nome de quem desenhou o mapa.",
+        "Uma informação sem relação com a legenda."
+      ],
+      "correctAnswer": "A localização da biblioteca segundo a legenda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O tamanho exato do prédio.": [
+          "SYMBOL_MEANING"
+        ],
+        "O nome de quem desenhou o mapa.": [
+          "SYMBOL_MEANING"
+        ],
+        "Uma informação sem relação com a legenda.": [
+          "SYMBOL_MEANING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAP_SYMBOL",
+      "explanation": "A legenda conecta o símbolo à informação representada.",
+      "hint": "Consulte o significado combinado do círculo.",
+      "errorFocus": "SYMBOL_MEANING",
+      "feedback": {
+        "correct": "Boa observação: A legenda conecta o símbolo à informação representada.",
+        "incorrect": "A legenda conecta o símbolo à informação representada.",
+        "hint": "Consulte o significado combinado do círculo.",
+        "errorFocus": "SYMBOL_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-14",
+      "statement": "Um tablet guarda um arquivo com um aviso da feira. O que é o tablet nesse exemplo?",
+      "prompt": "Um tablet guarda um arquivo com um aviso da feira. O que é o tablet nesse exemplo?",
+      "options": [
+        "O conteúdo do aviso.",
+        "Um dispositivo usado para armazenar a representação da mensagem.",
+        "O significado da feira.",
+        "A mensagem sem qualquer arquivo."
+      ],
+      "correctAnswer": "Um dispositivo usado para armazenar a representação da mensagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O conteúdo do aviso.": [
+          "DEVICE_AS_MEDIUM"
+        ],
+        "O significado da feira.": [
+          "DEVICE_AS_MEDIUM"
+        ],
+        "A mensagem sem qualquer arquivo.": [
+          "DEVICE_AS_MEDIUM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MESSAGE_VS_DEVICE",
+      "explanation": "O dispositivo é o meio de armazenamento; a mensagem é a informação que o arquivo representa.",
+      "hint": "Separe o objeto do conteúdo guardado nele.",
+      "errorFocus": "DEVICE_AS_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: O dispositivo é o meio de armazenamento; a mensagem é a informação que o arquivo representa.",
+        "incorrect": "O dispositivo é o meio de armazenamento; a mensagem é a informação que o arquivo representa.",
+        "hint": "Separe o objeto do conteúdo guardado nele.",
+        "errorFocus": "DEVICE_AS_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-15",
+      "statement": "Uma criança conta oralmente a hora da apresentação e outra escreve a mesma hora num aviso. O que mudou?",
+      "prompt": "Uma criança conta oralmente a hora da apresentação e outra escreve a mesma hora num aviso. O que mudou?",
+      "options": [
+        "Necessariamente o horário informado.",
+        "A existência da apresentação.",
+        "A linguagem e o meio usados para comunicar a informação.",
+        "A necessidade de compreender a mensagem."
+      ],
+      "correctAnswer": "A linguagem e o meio usados para comunicar a informação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Necessariamente o horário informado.": [
+          "SAME_CONTENT_DIFFERENT_LANGUAGE"
+        ],
+        "A existência da apresentação.": [
+          "SAME_CONTENT_DIFFERENT_LANGUAGE"
+        ],
+        "A necessidade de compreender a mensagem.": [
+          "SAME_CONTENT_DIFFERENT_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ORAL_WRITTEN",
+      "explanation": "A informação pode permanecer enquanto linguagem e suporte mudam.",
+      "hint": "Compare o conteúdo antes de comparar o formato.",
+      "errorFocus": "SAME_CONTENT_DIFFERENT_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: A informação pode permanecer enquanto linguagem e suporte mudam.",
+        "incorrect": "A informação pode permanecer enquanto linguagem e suporte mudam.",
+        "hint": "Compare o conteúdo antes de comparar o formato.",
+        "errorFocus": "SAME_CONTENT_DIFFERENT_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-16",
+      "statement": "A turma precisa enviar um convite de brincadeira. Qual mensagem é adequada para compartilhar no mural público?",
+      "prompt": "A turma precisa enviar um convite de brincadeira. Qual mensagem é adequada para compartilhar no mural público?",
+      "options": [
+        "A senha de um estudante.",
+        "O endereço residencial de uma criança.",
+        "O telefone pessoal de uma família.",
+        "Um convite fictício com data e local da atividade escolar autorizados."
+      ],
+      "correctAnswer": "Um convite fictício com data e local da atividade escolar autorizados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A senha de um estudante.": [
+          "SAFE_INFORMATION"
+        ],
+        "O endereço residencial de uma criança.": [
+          "SAFE_INFORMATION"
+        ],
+        "O telefone pessoal de uma família.": [
+          "SAFE_INFORMATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PRIVACY",
+      "contextFamily": "CLASS_CONTACT",
+      "explanation": "A atividade usa informação escolar autorizada e evita dados pessoais ou secretos.",
+      "hint": "Escolha conteúdo que possa ser público com segurança.",
+      "errorFocus": "SAFE_INFORMATION",
+      "feedback": {
+        "correct": "Boa observação: A atividade usa informação escolar autorizada e evita dados pessoais ou secretos.",
+        "incorrect": "A atividade usa informação escolar autorizada e evita dados pessoais ou secretos.",
+        "hint": "Escolha conteúdo que possa ser público com segurança.",
+        "errorFocus": "SAFE_INFORMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-17",
+      "statement": "Um sinal combinado informa que a aula vai começar. Como a turma pode transmitir a mesma informação sem usar o sinal sonoro?",
+      "prompt": "Um sinal combinado informa que a aula vai começar. Como a turma pode transmitir a mesma informação sem usar o sinal sonoro?",
+      "options": [
+        "Mostrar um pictograma combinado ou dizer a mensagem em voz alta.",
+        "Esconder o aviso e não comunicar.",
+        "Mudar o significado sem combinar.",
+        "Usar a senha de alguém como anúncio."
+      ],
+      "correctAnswer": "Mostrar um pictograma combinado ou dizer a mensagem em voz alta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Esconder o aviso e não comunicar.": [
+          "ALTERNATIVE_MEDIUM"
+        ],
+        "Mudar o significado sem combinar.": [
+          "ALTERNATIVE_MEDIUM"
+        ],
+        "Usar a senha de alguém como anúncio.": [
+          "ALTERNATIVE_MEDIUM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_BELL_NOTICE",
+      "explanation": "A informação pode ser comunicada por outro meio acessível mantendo o significado combinado.",
+      "hint": "Qual outra linguagem alcança a turma?",
+      "errorFocus": "ALTERNATIVE_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: A informação pode ser comunicada por outro meio acessível mantendo o significado combinado.",
+        "incorrect": "A informação pode ser comunicada por outro meio acessível mantendo o significado combinado.",
+        "hint": "Qual outra linguagem alcança a turma?",
+        "errorFocus": "ALTERNATIVE_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-18",
+      "statement": "Um grupo guardou registros fictícios de uma experiência em uma pasta com etiquetas. Como localizar a informação sobre o dia ensolarado?",
+      "prompt": "Um grupo guardou registros fictícios de uma experiência em uma pasta com etiquetas. Como localizar a informação sobre o dia ensolarado?",
+      "options": [
+        "Abrir arquivos ao acaso e apagar os demais.",
+        "Procurar o rótulo relacionado ao tempo ou à data e conferir o registro.",
+        "Perguntar a senha de um colega.",
+        "Escolher um registro sem verificar seu conteúdo."
+      ],
+      "correctAnswer": "Procurar o rótulo relacionado ao tempo ou à data e conferir o registro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Abrir arquivos ao acaso e apagar os demais.": [
+          "RETRIEVAL_AND_VERIFY"
+        ],
+        "Perguntar a senha de um colega.": [
+          "RETRIEVAL_AND_VERIFY"
+        ],
+        "Escolher um registro sem verificar seu conteúdo.": [
+          "RETRIEVAL_AND_VERIFY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "NEW_CLASS_ARCHIVE",
+      "explanation": "Uma etiqueta orienta a recuperação; conferir o conteúdo evita confundir registros.",
+      "hint": "Que rótulo ajudaria a encontrar o registro certo?",
+      "errorFocus": "RETRIEVAL_AND_VERIFY",
+      "feedback": {
+        "correct": "Boa observação: Uma etiqueta orienta a recuperação; conferir o conteúdo evita confundir registros.",
+        "incorrect": "Uma etiqueta orienta a recuperação; conferir o conteúdo evita confundir registros.",
+        "hint": "Que rótulo ajudaria a encontrar o registro certo?",
+        "errorFocus": "RETRIEVAL_AND_VERIFY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-19",
+      "statement": "Uma mensagem sobre a exposição chega a outra sala por bilhete e também por leitura em voz alta. O que pode ser observado?",
+      "prompt": "Uma mensagem sobre a exposição chega a outra sala por bilhete e também por leitura em voz alta. O que pode ser observado?",
+      "options": [
+        "O bilhete e a voz são o mesmo suporte físico.",
+        "A mensagem deixa de existir quando é lida.",
+        "Dois meios diferentes transmitiram uma informação equivalente.",
+        "Somente uma forma pode comunicar informação."
+      ],
+      "correctAnswer": "Dois meios diferentes transmitiram uma informação equivalente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O bilhete e a voz são o mesmo suporte físico.": [
+          "MULTIPLE_TRANSMISSION_PATHS"
+        ],
+        "A mensagem deixa de existir quando é lida.": [
+          "MULTIPLE_TRANSMISSION_PATHS"
+        ],
+        "Somente uma forma pode comunicar informação.": [
+          "MULTIPLE_TRANSMISSION_PATHS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_TWO_CLASSES",
+      "explanation": "A mesma informação pode chegar a destinatários por meios diversos.",
+      "hint": "Compare como a mensagem chegou em cada caso.",
+      "errorFocus": "MULTIPLE_TRANSMISSION_PATHS",
+      "feedback": {
+        "correct": "Boa observação: A mesma informação pode chegar a destinatários por meios diversos.",
+        "incorrect": "A mesma informação pode chegar a destinatários por meios diversos.",
+        "hint": "Compare como a mensagem chegou em cada caso.",
+        "errorFocus": "MULTIPLE_TRANSMISSION_PATHS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-20",
+      "statement": "Uma foto autorizada de uma construção de blocos é salva na pasta da turma para observar depois. O que foi armazenado?",
+      "prompt": "Uma foto autorizada de uma construção de blocos é salva na pasta da turma para observar depois. O que foi armazenado?",
+      "options": [
+        "A própria construção física dentro do dispositivo.",
+        "A voz de quem construiu, mesmo sem gravação.",
+        "Todos os dados pessoais de quem aparece na sala.",
+        "Uma representação visual da construção."
+      ],
+      "correctAnswer": "Uma representação visual da construção.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A própria construção física dentro do dispositivo.": [
+          "DIGITAL_RECORD_SCOPE"
+        ],
+        "A voz de quem construiu, mesmo sem gravação.": [
+          "DIGITAL_RECORD_SCOPE"
+        ],
+        "Todos os dados pessoais de quem aparece na sala.": [
+          "DIGITAL_RECORD_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "STORE",
+      "contextFamily": "NEW_PHOTO_RECORD",
+      "explanation": "O arquivo guarda a representação visual, não o objeto físico; imagens devem ser autorizadas e cuidadosas.",
+      "hint": "O que o arquivo contém de fato?",
+      "errorFocus": "DIGITAL_RECORD_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O arquivo guarda a representação visual, não o objeto físico; imagens devem ser autorizadas e cuidadosas.",
+        "incorrect": "O arquivo guarda a representação visual, não o objeto físico; imagens devem ser autorizadas e cuidadosas.",
+        "hint": "O que o arquivo contém de fato?",
+        "errorFocus": "DIGITAL_RECORD_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-21",
+      "statement": "Um mapa só usa cores para indicar os espaços, mas algumas pessoas não distinguem essas cores. Como melhorar a informação?",
+      "prompt": "Um mapa só usa cores para indicar os espaços, mas algumas pessoas não distinguem essas cores. Como melhorar a informação?",
+      "options": [
+        "Adicionar rótulos, formas ou símbolos acompanhados de legenda.",
+        "Retirar a legenda e manter apenas cores.",
+        "Diminuir todos os símbolos.",
+        "Substituir o mapa por uma senha pessoal."
+      ],
+      "correctAnswer": "Adicionar rótulos, formas ou símbolos acompanhados de legenda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar a legenda e manter apenas cores.": [
+          "ACCESSIBLE_REPRESENTATION"
+        ],
+        "Diminuir todos os símbolos.": [
+          "ACCESSIBLE_REPRESENTATION"
+        ],
+        "Substituir o mapa por uma senha pessoal.": [
+          "ACCESSIBLE_REPRESENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "NEW_ACCESSIBLE_MAP",
+      "explanation": "Símbolos e rótulos junto às cores tornam a mensagem mais acessível sem mudar os locais representados.",
+      "hint": "Que pistas além da cor podem comunicar os espaços?",
+      "errorFocus": "ACCESSIBLE_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Símbolos e rótulos junto às cores tornam a mensagem mais acessível sem mudar os locais representados.",
+        "incorrect": "Símbolos e rótulos junto às cores tornam a mensagem mais acessível sem mudar os locais representados.",
+        "hint": "Que pistas além da cor podem comunicar os espaços?",
+        "errorFocus": "ACCESSIBLE_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-22",
+      "statement": "O mesmo aviso aparece impresso e gravado em áudio. Qual afirmação é correta?",
+      "prompt": "O mesmo aviso aparece impresso e gravado em áudio. Qual afirmação é correta?",
+      "options": [
+        "A informação é o papel e também o aparelho.",
+        "Há duas representações que podem comunicar a mesma informação.",
+        "Uma representação precisa apagar a outra.",
+        "Os meios diferentes tornam a mensagem necessariamente contraditória."
+      ],
+      "correctAnswer": "Há duas representações que podem comunicar a mesma informação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A informação é o papel e também o aparelho.": [
+          "REPRESENTATION_VS_INFORMATION"
+        ],
+        "Uma representação precisa apagar a outra.": [
+          "REPRESENTATION_VS_INFORMATION"
+        ],
+        "Os meios diferentes tornam a mensagem necessariamente contraditória.": [
+          "REPRESENTATION_VS_INFORMATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_DUPLICATE_MESSAGE",
+      "explanation": "A informação pode ter mais de uma representação sem que os suportes sejam iguais.",
+      "hint": "Separe o conteúdo dos dois registros.",
+      "errorFocus": "REPRESENTATION_VS_INFORMATION",
+      "feedback": {
+        "correct": "Boa observação: A informação pode ter mais de uma representação sem que os suportes sejam iguais.",
+        "incorrect": "A informação pode ter mais de uma representação sem que os suportes sejam iguais.",
+        "hint": "Separe o conteúdo dos dois registros.",
+        "errorFocus": "REPRESENTATION_VS_INFORMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-23",
+      "statement": "Ao copiar um aviso para um pictograma, o local da atividade foi omitido. O que fazer?",
+      "prompt": "Ao copiar um aviso para um pictograma, o local da atividade foi omitido. O que fazer?",
+      "options": [
+        "Dizer que o local não importa sem consultar a tarefa.",
+        "Apagar todos os registros.",
+        "Rever a representação para incluir também o local e conferir se o sentido foi preservado.",
+        "Transmitir o pictograma sem verificar."
+      ],
+      "correctAnswer": "Rever a representação para incluir também o local e conferir se o sentido foi preservado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer que o local não importa sem consultar a tarefa.": [
+          "INFORMATION_PRESERVATION"
+        ],
+        "Apagar todos os registros.": [
+          "INFORMATION_PRESERVATION"
+        ],
+        "Transmitir o pictograma sem verificar.": [
+          "INFORMATION_PRESERVATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_MESSAGE_LOSS",
+      "explanation": "Uma representação deve manter as informações necessárias da mensagem original.",
+      "hint": "Compare os detalhes essenciais entre as versões.",
+      "errorFocus": "INFORMATION_PRESERVATION",
+      "feedback": {
+        "correct": "Boa observação: Uma representação deve manter as informações necessárias da mensagem original.",
+        "incorrect": "Uma representação deve manter as informações necessárias da mensagem original.",
+        "hint": "Compare os detalhes essenciais entre as versões.",
+        "errorFocus": "INFORMATION_PRESERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-24",
+      "statement": "Uma sala distante precisa receber um aviso curto e consultá-lo mais tarde. Qual combinação atende às duas necessidades?",
+      "prompt": "Uma sala distante precisa receber um aviso curto e consultá-lo mais tarde. Qual combinação atende às duas necessidades?",
+      "options": [
+        "Falar sem destinatário e descartar todo registro.",
+        "Esconder o aviso no armário de outra sala.",
+        "Compartilhar dados pessoais não relacionados.",
+        "Enviar a mensagem por meio autorizado e guardar uma cópia identificada para consulta."
+      ],
+      "correctAnswer": "Enviar a mensagem por meio autorizado e guardar uma cópia identificada para consulta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Falar sem destinatário e descartar todo registro.": [
+          "TRANSMIT_AND_STORE"
+        ],
+        "Esconder o aviso no armário de outra sala.": [
+          "TRANSMIT_AND_STORE"
+        ],
+        "Compartilhar dados pessoais não relacionados.": [
+          "TRANSMIT_AND_STORE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHOOSE_MEDIUM",
+      "contextFamily": "NEW_REMOTE_CLASS",
+      "explanation": "Transmitir alcança a outra sala e uma cópia armazenada permite consulta posterior.",
+      "hint": "A situação pede fazer chegar e também guardar.",
+      "errorFocus": "TRANSMIT_AND_STORE",
+      "feedback": {
+        "correct": "Boa observação: Transmitir alcança a outra sala e uma cópia armazenada permite consulta posterior.",
+        "incorrect": "Transmitir alcança a outra sala e uma cópia armazenada permite consulta posterior.",
+        "hint": "A situação pede fazer chegar e também guardar.",
+        "errorFocus": "TRANSMIT_AND_STORE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-25",
+      "statement": "O que diferencia uma informação do papel em que ela foi escrita?",
+      "prompt": "O que diferencia uma informação do papel em que ela foi escrita?",
+      "options": [
+        "A informação é o conteúdo comunicado; o papel é um suporte que o apresenta ou guarda.",
+        "O papel sempre é a informação.",
+        "A informação só existe em telas.",
+        "Não há diferença entre conteúdo e suporte."
+      ],
+      "correctAnswer": "A informação é o conteúdo comunicado; o papel é um suporte que o apresenta ou guarda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O papel sempre é a informação.": [
+          "CONTENT_AND_SUPPORT"
+        ],
+        "A informação só existe em telas.": [
+          "CONTENT_AND_SUPPORT"
+        ],
+        "Não há diferença entre conteúdo e suporte.": [
+          "CONTENT_AND_SUPPORT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_INFORMATION",
+      "explanation": "O conteúdo e o meio de registro são partes relacionadas, mas distintas.",
+      "hint": "O que o papel mostra e o que ele é?",
+      "errorFocus": "CONTENT_AND_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo e o meio de registro são partes relacionadas, mas distintas.",
+        "incorrect": "O conteúdo e o meio de registro são partes relacionadas, mas distintas.",
+        "hint": "O que o papel mostra e o que ele é?",
+        "errorFocus": "CONTENT_AND_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-26",
+      "statement": "Qual situação mostra armazenamento, não apenas transmissão?",
+      "prompt": "Qual situação mostra armazenamento, não apenas transmissão?",
+      "options": [
+        "Ler o aviso em voz alta para a turma agora.",
+        "Guardar um aviso identificado na pasta para consultar amanhã.",
+        "Entregar um bilhete a outra sala.",
+        "Mostrar um desenho a um colega."
+      ],
+      "correctAnswer": "Guardar um aviso identificado na pasta para consultar amanhã.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ler o aviso em voz alta para a turma agora.": [
+          "STORAGE_VS_TRANSMISSION"
+        ],
+        "Entregar um bilhete a outra sala.": [
+          "STORAGE_VS_TRANSMISSION"
+        ],
+        "Mostrar um desenho a um colega.": [
+          "STORAGE_VS_TRANSMISSION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_TRANSMIT_STORE",
+      "explanation": "Guardar o aviso para consulta posterior é armazenamento; os outros exemplos fazem a mensagem chegar.",
+      "hint": "A mensagem fica guardada para uso posterior?",
+      "errorFocus": "STORAGE_VS_TRANSMISSION",
+      "feedback": {
+        "correct": "Boa observação: Guardar o aviso para consulta posterior é armazenamento; os outros exemplos fazem a mensagem chegar.",
+        "incorrect": "Guardar o aviso para consulta posterior é armazenamento; os outros exemplos fazem a mensagem chegar.",
+        "hint": "A mensagem fica guardada para uso posterior?",
+        "errorFocus": "STORAGE_VS_TRANSMISSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-27",
+      "statement": "Uma frase e um desenho combinado comunicam a mesma atividade. O que pode variar?",
+      "prompt": "Uma frase e um desenho combinado comunicam a mesma atividade. O que pode variar?",
+      "options": [
+        "A necessidade de interpretar a mensagem.",
+        "O fato de ambas comunicarem algo.",
+        "A linguagem e a representação, enquanto a informação principal permanece.",
+        "O objetivo anunciado sem qualquer alteração."
+      ],
+      "correctAnswer": "A linguagem e a representação, enquanto a informação principal permanece.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A necessidade de interpretar a mensagem.": [
+          "LANGUAGE_VARIATION"
+        ],
+        "O fato de ambas comunicarem algo.": [
+          "LANGUAGE_VARIATION"
+        ],
+        "O objetivo anunciado sem qualquer alteração.": [
+          "LANGUAGE_VARIATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCKIN_LANGUAGES",
+      "explanation": "Diferentes linguagens podem apresentar a mesma informação.",
+      "hint": "O que muda entre texto e desenho?",
+      "errorFocus": "LANGUAGE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Diferentes linguagens podem apresentar a mesma informação.",
+        "incorrect": "Diferentes linguagens podem apresentar a mesma informação.",
+        "hint": "O que muda entre texto e desenho?",
+        "errorFocus": "LANGUAGE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-28",
+      "statement": "Uma mensagem foi guardada em um arquivo com título claro. Qual é o próximo passo para recuperar a informação?",
+      "prompt": "Uma mensagem foi guardada em um arquivo com título claro. Qual é o próximo passo para recuperar a informação?",
+      "options": [
+        "Apagar o arquivo antes de procurar.",
+        "Alterar o título de todos os registros.",
+        "Adivinhar o conteúdo sem consultar.",
+        "Localizar o arquivo pelo título e abrir ou interpretar o registro com autorização."
+      ],
+      "correctAnswer": "Localizar o arquivo pelo título e abrir ou interpretar o registro com autorização.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar o arquivo antes de procurar.": [
+          "RECOVERY_PROCESS"
+        ],
+        "Alterar o título de todos os registros.": [
+          "RECOVERY_PROCESS"
+        ],
+        "Adivinhar o conteúdo sem consultar.": [
+          "RECOVERY_PROCESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "LOCKIN_FIND",
+      "explanation": "Recuperar envolve encontrar e interpretar o registro armazenado.",
+      "hint": "Como o título ajuda a encontrar o arquivo?",
+      "errorFocus": "RECOVERY_PROCESS",
+      "feedback": {
+        "correct": "Boa observação: Recuperar envolve encontrar e interpretar o registro armazenado.",
+        "incorrect": "Recuperar envolve encontrar e interpretar o registro armazenado.",
+        "hint": "Como o título ajuda a encontrar o arquivo?",
+        "errorFocus": "RECOVERY_PROCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-29",
+      "statement": "Qual informação deve ficar fora de um mural aberto da turma?",
+      "prompt": "Qual informação deve ficar fora de um mural aberto da turma?",
+      "options": [
+        "Uma senha ou endereço residencial pessoal.",
+        "Um pictograma público de atividade escolar autorizado.",
+        "O título de um livro da biblioteca.",
+        "A data de uma exposição aprovada para divulgação."
+      ],
+      "correctAnswer": "Uma senha ou endereço residencial pessoal.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um pictograma público de atividade escolar autorizado.": [
+          "PRIVACY_BOUNDARY"
+        ],
+        "O título de um livro da biblioteca.": [
+          "PRIVACY_BOUNDARY"
+        ],
+        "A data de uma exposição aprovada para divulgação.": [
+          "PRIVACY_BOUNDARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PRIVACY",
+      "contextFamily": "LOCKIN_PUBLIC",
+      "explanation": "Senhas e endereços são dados pessoais e não devem ser expostos em mural público.",
+      "hint": "Qual opção é um dado privado?",
+      "errorFocus": "PRIVACY_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: Senhas e endereços são dados pessoais e não devem ser expostos em mural público.",
+        "incorrect": "Senhas e endereços são dados pessoais e não devem ser expostos em mural público.",
+        "hint": "Qual opção é um dado privado?",
+        "errorFocus": "PRIVACY_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-30",
+      "statement": "Qual sequência descreve um ciclo possível da informação?",
+      "prompt": "Qual sequência descreve um ciclo possível da informação?",
+      "options": [
+        "Confundir o suporte com o conteúdo e descartar a mensagem.",
+        "Representar uma mensagem, transmiti-la por um meio e armazenar um registro para recuperar depois.",
+        "Transmitir sem mensagem nem destinatário.",
+        "Guardar uma informação sem qualquer modo de localizá-la."
+      ],
+      "correctAnswer": "Representar uma mensagem, transmiti-la por um meio e armazenar um registro para recuperar depois.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Confundir o suporte com o conteúdo e descartar a mensagem.": [
+          "INFORMATION_LIFECYCLE"
+        ],
+        "Transmitir sem mensagem nem destinatário.": [
+          "INFORMATION_LIFECYCLE"
+        ],
+        "Guardar uma informação sem qualquer modo de localizá-la.": [
+          "INFORMATION_LIFECYCLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCKIN_FULL_CYCLE",
+      "explanation": "Uma informação pode ser representada, enviada e guardada para recuperação posterior.",
+      "hint": "Ligue linguagem, envio e consulta posterior.",
+      "errorFocus": "INFORMATION_LIFECYCLE",
+      "feedback": {
+        "correct": "Boa observação: Uma informação pode ser representada, enviada e guardada para recuperação posterior.",
+        "incorrect": "Uma informação pode ser representada, enviada e guardada para recuperação posterior.",
+        "hint": "Ligue linguagem, envio e consulta posterior.",
+        "errorFocus": "INFORMATION_LIFECYCLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-31",
+      "statement": "O que uma mensagem pode comunicar?",
+      "prompt": "O que uma mensagem pode comunicar?",
+      "options": [
+        "Somente o material do papel.",
+        "A cor do aparelho sem contexto.",
+        "Uma informação ou ideia a outra pessoa.",
+        "Nada que possa ser compreendido."
+      ],
+      "correctAnswer": "Uma informação ou ideia a outra pessoa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente o material do papel.": [
+          "MESSAGE_REVIEW"
+        ],
+        "A cor do aparelho sem contexto.": [
+          "MESSAGE_REVIEW"
+        ],
+        "Nada que possa ser compreendido.": [
+          "MESSAGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_INFO",
+      "explanation": "Mensagem é uma forma de comunicar informação.",
+      "hint": "Pense no conteúdo que alguém recebe.",
+      "errorFocus": "MESSAGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Mensagem é uma forma de comunicar informação.",
+        "incorrect": "Mensagem é uma forma de comunicar informação.",
+        "hint": "Pense no conteúdo que alguém recebe.",
+        "errorFocus": "MESSAGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-32",
+      "statement": "Uma gravação e um desenho representam a mesma informação sobre um animal. O que é diferente?",
+      "prompt": "Uma gravação e um desenho representam a mesma informação sobre um animal. O que é diferente?",
+      "options": [
+        "Necessariamente o animal mencionado.",
+        "O significado combinado da mensagem.",
+        "A possibilidade de compreender a informação.",
+        "A linguagem e o meio de representação."
+      ],
+      "correctAnswer": "A linguagem e o meio de representação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Necessariamente o animal mencionado.": [
+          "REPRESENTATION_REVIEW"
+        ],
+        "O significado combinado da mensagem.": [
+          "REPRESENTATION_REVIEW"
+        ],
+        "A possibilidade de compreender a informação.": [
+          "REPRESENTATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_VOICE_DRAWING",
+      "explanation": "Som e imagem são formas diferentes de apresentar uma informação.",
+      "hint": "Compare os formatos usados.",
+      "errorFocus": "REPRESENTATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Som e imagem são formas diferentes de apresentar uma informação.",
+        "incorrect": "Som e imagem são formas diferentes de apresentar uma informação.",
+        "hint": "Compare os formatos usados.",
+        "errorFocus": "REPRESENTATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-33",
+      "statement": "Entregar um convite a uma turma vizinha é um exemplo de quê?",
+      "prompt": "Entregar um convite a uma turma vizinha é um exemplo de quê?",
+      "options": [
+        "Transmissão de uma mensagem.",
+        "Armazenamento sem acesso.",
+        "Apagamento do convite.",
+        "Codificação sem destinatário."
+      ],
+      "correctAnswer": "Transmissão de uma mensagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Armazenamento sem acesso.": [
+          "TRANSMISSION_REVIEW"
+        ],
+        "Apagamento do convite.": [
+          "TRANSMISSION_REVIEW"
+        ],
+        "Codificação sem destinatário.": [
+          "TRANSMISSION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_TRANSMIT",
+      "explanation": "Entregar o convite faz a informação chegar a outra turma.",
+      "hint": "A mensagem foi feita chegar a alguém?",
+      "errorFocus": "TRANSMISSION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Entregar o convite faz a informação chegar a outra turma.",
+        "incorrect": "Entregar o convite faz a informação chegar a outra turma.",
+        "hint": "A mensagem foi feita chegar a alguém?",
+        "errorFocus": "TRANSMISSION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-34",
+      "statement": "Salvar um arquivo de áudio para tocar amanhã é um exemplo de quê?",
+      "prompt": "Salvar um arquivo de áudio para tocar amanhã é um exemplo de quê?",
+      "options": [
+        "Som ao vivo sem registro.",
+        "Armazenamento para uso posterior.",
+        "Desenho no mural.",
+        "Mensagem transmitida e imediatamente esquecida."
+      ],
+      "correctAnswer": "Armazenamento para uso posterior.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Som ao vivo sem registro.": [
+          "STORAGE_REVIEW"
+        ],
+        "Desenho no mural.": [
+          "STORAGE_REVIEW"
+        ],
+        "Mensagem transmitida e imediatamente esquecida.": [
+          "STORAGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_STORE",
+      "explanation": "Salvar conserva um registro que poderá ser recuperado mais tarde.",
+      "hint": "O arquivo ficará guardado para depois?",
+      "errorFocus": "STORAGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Salvar conserva um registro que poderá ser recuperado mais tarde.",
+        "incorrect": "Salvar conserva um registro que poderá ser recuperado mais tarde.",
+        "hint": "O arquivo ficará guardado para depois?",
+        "errorFocus": "STORAGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-35",
+      "statement": "Em uma mensagem de voz no celular, qual item é o conteúdo e qual é o meio?",
+      "prompt": "Em uma mensagem de voz no celular, qual item é o conteúdo e qual é o meio?",
+      "options": [
+        "O celular é sempre o conteúdo falado.",
+        "A mensagem é o botão de volume.",
+        "A fala gravada é a mensagem; o celular ou arquivo é parte do meio de registro e reprodução.",
+        "Não existe conteúdo quando a fala é gravada."
+      ],
+      "correctAnswer": "A fala gravada é a mensagem; o celular ou arquivo é parte do meio de registro e reprodução.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O celular é sempre o conteúdo falado.": [
+          "MEDIUM_REVIEW"
+        ],
+        "A mensagem é o botão de volume.": [
+          "MEDIUM_REVIEW"
+        ],
+        "Não existe conteúdo quando a fala é gravada.": [
+          "MEDIUM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_MEDIUM",
+      "explanation": "Separar a fala do dispositivo ajuda a distinguir informação e suporte.",
+      "hint": "O que foi dito e por qual meio chegou?",
+      "errorFocus": "MEDIUM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Separar a fala do dispositivo ajuda a distinguir informação e suporte.",
+        "incorrect": "Separar a fala do dispositivo ajuda a distinguir informação e suporte.",
+        "hint": "O que foi dito e por qual meio chegou?",
+        "errorFocus": "MEDIUM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-36",
+      "statement": "Por que um rótulo ajuda a encontrar um registro armazenado?",
+      "prompt": "Por que um rótulo ajuda a encontrar um registro armazenado?",
+      "options": [
+        "Ele apaga outros arquivos automaticamente.",
+        "Ele transmite a mensagem sem destinatário.",
+        "Ele muda a informação sem abrir o registro.",
+        "Ele fornece uma pista para localizar e depois interpretar a informação desejada."
+      ],
+      "correctAnswer": "Ele fornece uma pista para localizar e depois interpretar a informação desejada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ele apaga outros arquivos automaticamente.": [
+          "RETRIEVAL_REVIEW"
+        ],
+        "Ele transmite a mensagem sem destinatário.": [
+          "RETRIEVAL_REVIEW"
+        ],
+        "Ele muda a informação sem abrir o registro.": [
+          "RETRIEVAL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECOVER",
+      "contextFamily": "REVIEW_LABEL",
+      "explanation": "Rótulos organizam registros e orientam sua recuperação.",
+      "hint": "Que pista o rótulo oferece?",
+      "errorFocus": "RETRIEVAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Rótulos organizam registros e orientam sua recuperação.",
+        "incorrect": "Rótulos organizam registros e orientam sua recuperação.",
+        "hint": "Que pista o rótulo oferece?",
+        "errorFocus": "RETRIEVAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-37",
+      "statement": "Uma estrela significa “atividade no pátio” porque a turma combinou isso. O que a estrela representa?",
+      "prompt": "Uma estrela significa “atividade no pátio” porque a turma combinou isso. O que a estrela representa?",
+      "options": [
+        "A informação da atividade no pátio segundo o acordo.",
+        "A forma física do pátio.",
+        "O nome de quem desenhou.",
+        "Um significado universal sem combinação."
+      ],
+      "correctAnswer": "A informação da atividade no pátio segundo o acordo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A forma física do pátio.": [
+          "SYMBOL_REVIEW"
+        ],
+        "O nome de quem desenhou.": [
+          "SYMBOL_REVIEW"
+        ],
+        "Um significado universal sem combinação.": [
+          "SYMBOL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPRESENT",
+      "contextFamily": "REVIEW_SYMBOL",
+      "explanation": "O significado do símbolo depende do acordo e do contexto em que é usado.",
+      "hint": "Use a legenda combinada pela turma.",
+      "errorFocus": "SYMBOL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O significado do símbolo depende do acordo e do contexto em que é usado.",
+        "incorrect": "O significado do símbolo depende do acordo e do contexto em que é usado.",
+        "hint": "Use a legenda combinada pela turma.",
+        "errorFocus": "SYMBOL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-38",
+      "statement": "Um aviso para uma apresentação mostra a atividade, mas omite o horário. Como melhorar?",
+      "prompt": "Um aviso para uma apresentação mostra a atividade, mas omite o horário. Como melhorar?",
+      "options": [
+        "Trocar o papel por outro sem incluir o horário.",
+        "Acrescentar o horário na linguagem escolhida e verificar se a mensagem está completa.",
+        "Guardar o aviso sem corrigir.",
+        "Compartilhar o endereço pessoal de alguém."
+      ],
+      "correctAnswer": "Acrescentar o horário na linguagem escolhida e verificar se a mensagem está completa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Trocar o papel por outro sem incluir o horário.": [
+          "COMPLETE_MESSAGE_REVIEW"
+        ],
+        "Guardar o aviso sem corrigir.": [
+          "COMPLETE_MESSAGE_REVIEW"
+        ],
+        "Compartilhar o endereço pessoal de alguém.": [
+          "COMPLETE_MESSAGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_MISSING_DETAIL",
+      "explanation": "A informação necessária precisa estar presente para que a mensagem cumpra seu propósito.",
+      "hint": "Que detalhe o destinatário precisa saber?",
+      "errorFocus": "COMPLETE_MESSAGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A informação necessária precisa estar presente para que a mensagem cumpra seu propósito.",
+        "incorrect": "A informação necessária precisa estar presente para que a mensagem cumpra seu propósito.",
+        "hint": "Que detalhe o destinatário precisa saber?",
+        "errorFocus": "COMPLETE_MESSAGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-39",
+      "statement": "Uma mensagem só em áudio não está acessível a uma pessoa que não pode ouvi-la. Qual adaptação ajuda?",
+      "prompt": "Uma mensagem só em áudio não está acessível a uma pessoa que não pode ouvi-la. Qual adaptação ajuda?",
+      "options": [
+        "Repetir o áudio mais alto sem perguntar.",
+        "Retirar a mensagem de todos.",
+        "Disponibilizar também texto, legenda ou pictograma com a mesma informação.",
+        "Deixar a pessoa sem alternativa."
+      ],
+      "correctAnswer": "Disponibilizar também texto, legenda ou pictograma com a mesma informação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir o áudio mais alto sem perguntar.": [
+          "ACCESSIBLE_MESSAGE_REVIEW"
+        ],
+        "Retirar a mensagem de todos.": [
+          "ACCESSIBLE_MESSAGE_REVIEW"
+        ],
+        "Deixar a pessoa sem alternativa.": [
+          "ACCESSIBLE_MESSAGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "REVIEW_ACCESSIBLE",
+      "explanation": "Uma representação alternativa pode preservar a informação e ampliar o acesso.",
+      "hint": "Qual linguagem visual pode comunicar o mesmo conteúdo?",
+      "errorFocus": "ACCESSIBLE_MESSAGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma representação alternativa pode preservar a informação e ampliar o acesso.",
+        "incorrect": "Uma representação alternativa pode preservar a informação e ampliar o acesso.",
+        "hint": "Qual linguagem visual pode comunicar o mesmo conteúdo?",
+        "errorFocus": "ACCESSIBLE_MESSAGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-information-messages-fi-40",
+      "statement": "Qual exemplo inclui representar, transmitir e armazenar informação?",
+      "prompt": "Qual exemplo inclui representar, transmitir e armazenar informação?",
+      "options": [
+        "Dizer algo sem mensagem e jogar fora o registro.",
+        "Guardar uma folha sem conteúdo e não informar ninguém.",
+        "Usar uma senha pessoal como cartaz.",
+        "Criar um aviso com símbolo, enviá-lo à turma parceira e guardar uma cópia identificada."
+      ],
+      "correctAnswer": "Criar um aviso com símbolo, enviá-lo à turma parceira e guardar uma cópia identificada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer algo sem mensagem e jogar fora o registro.": [
+          "LIFECYCLE_REVIEW"
+        ],
+        "Guardar uma folha sem conteúdo e não informar ninguém.": [
+          "LIFECYCLE_REVIEW"
+        ],
+        "Usar uma senha pessoal como cartaz.": [
+          "LIFECYCLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_CYCLE",
+      "explanation": "O exemplo comunica por símbolo, faz a mensagem chegar e preserva uma cópia para consulta.",
+      "hint": "Procure as três ações: representar, enviar e guardar.",
+      "errorFocus": "LIFECYCLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O exemplo comunica por símbolo, faz a mensagem chegar e preserva uma cópia para consulta.",
+        "incorrect": "O exemplo comunica por símbolo, faz a mensagem chegar e preserva uma cópia para consulta.",
+        "hint": "Procure as três ações: representar, enviar e guardar.",
+        "errorFocus": "LIFECYCLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar mensagens por texto ampliado, áudio, pictogramas, Libras ou comunicação alternativa conforme o acesso necessário.",
+          "Descrever imagens e sons em palavras; combinar cores com símbolos e rótulos.",
+          "Permitir respostas por apontar, fala, desenho, seleção de símbolos ou digitação assistida.",
+          "Trabalhar apenas com conteúdo fictício ou autorizado, sem expor nomes, endereços ou contatos pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

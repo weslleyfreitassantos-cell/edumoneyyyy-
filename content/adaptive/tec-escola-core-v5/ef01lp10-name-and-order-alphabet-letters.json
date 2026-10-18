@@ -1,0 +1,2077 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp10-name-and-order-alphabet-letters",
+  "canonicalSkillCode": "AUTHORING_EF01LP10_NAME_AND_ORDER_ALPHABET",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA — ALFABETIZAÇÃO",
+  "topic": "nomes das letras e ordem do alfabeto",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP10",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "As letras em ordem",
+    "objective": "Reconhecer nomes de letras e localizar letras na ordem alfabética, distinguindo o nome da letra do som que ela pode representar em palavras.",
+    "summary": "O alfabeto da língua portuguesa tem 26 letras, organizadas numa sequência convencional de A a Z. Saber nomear e localizar letras ajuda a consultar listas, organizar palavras e acompanhar a leitura. O nome de uma letra não é o mesmo que o som que ela representa em todas as palavras. Estudantes podem demonstrar conhecimento apontando, ordenando cartões, usando letras móveis ou recitando com apoio, sem depender de uma única forma de resposta.",
+    "explanation": "Use uma sequência visual completa e acompanhe as letras da esquerda para a direita. Localize uma letra pelo nome e observe qual vem antes ou depois. Por exemplo, H vem depois de G e antes de I. A sequência inclui K, W e Y. Ao comparar letra e som, lembre que o nome da letra não determina sozinho sua pronúncia em toda palavra. A atividade avalia a ordem convencional, não velocidade de recitação ou sotaque.",
+    "workedExample": "Na sequência J, K, L, a letra que fica entre J e L é K. Podemos apontá-la ou dizer seu nome; não precisamos confundir o nome da letra com o som em uma palavra.",
+    "commonMistake": "Pular letras na sequência, deixar K, W ou Y de fora, ou afirmar que o nome da letra é sempre o som que ela representa na palavra.",
+    "priorKnowledge": [
+      "Reconhecer algumas letras em nomes e palavras familiares.",
+      "Acompanhar uma sequência visual da esquerda para a direita."
+    ],
+    "keyConcepts": [
+      "alfabeto",
+      "letra",
+      "nome da letra",
+      "ordem",
+      "antes",
+      "depois",
+      "sequência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "LETTER_SEQUENCE",
+        "action": "Use uma faixa completa do alfabeto e avance uma letra por vez, destacando a posição consultada."
+      },
+      {
+        "errorFocus": "LETTER_NAME_VS_SOUND",
+        "action": "Separe o cartão com o nome da letra de exemplos de palavras e explique que a letra pode representar sons diferentes."
+      },
+      {
+        "errorFocus": "ACCESSIBLE_ALPHABET",
+        "action": "Permita ordenar letras móveis, apontar ou usar recursos táteis e ampliados em vez de exigir recitação oral."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+      "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+      "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp10-alphabet-card-line",
+        "title": "Trilha do alfabeto",
+        "instructions": "Cartões com letras maiúsculas e minúsculas são organizados numa faixa alfabética.\n1. Escolha um cartão e diga ou indique o nome da letra.\n2. Localize sua posição usando a sequência visual.\n3. Confira qual letra vem antes e depois.",
+        "steps": [
+          "Escolha um cartão e diga ou indique o nome da letra.",
+          "Localize sua posição usando a sequência visual.",
+          "Confira qual letra vem antes e depois."
+        ],
+        "evidence": "Cartões ordenados com identificação correta de posições selecionadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece algumas letras com apoio.",
+            "developing": "localiza letras em trechos da sequência.",
+            "proficient": "nomeia e ordena letras consultando a sequência completa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp10-class-list-index",
+        "title": "Lista organizada por letras",
+        "instructions": "Uma lista fictícia de palavras é ordenada por sua letra inicial para facilitar consulta.\n1. Observe as letras iniciais das palavras.\n2. Consulte a sequência do alfabeto.\n3. Organize cartões e explique qual letra vem antes.",
+        "steps": [
+          "Observe as letras iniciais das palavras.",
+          "Consulte a sequência do alfabeto.",
+          "Organize cartões e explique qual letra vem antes."
+        ],
+        "evidence": "Organização que usa a ordem alfabética indicada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "encontra uma letra conhecida.",
+            "developing": "compara posições com apoio.",
+            "proficient": "explica a ordenação por letras iniciais."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp10-name-and-order-alphabet-letters-01",
+          "v1-ef01lp10-name-and-order-alphabet-letters-02",
+          "v1-ef01lp10-name-and-order-alphabet-letters-03",
+          "v1-ef01lp10-name-and-order-alphabet-letters-04",
+          "v1-ef01lp10-name-and-order-alphabet-letters-05",
+          "v1-ef01lp10-name-and-order-alphabet-letters-06",
+          "v1-ef01lp10-name-and-order-alphabet-letters-07",
+          "v1-ef01lp10-name-and-order-alphabet-letters-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp10-name-and-order-alphabet-letters-09",
+          "v1-ef01lp10-name-and-order-alphabet-letters-10",
+          "v1-ef01lp10-name-and-order-alphabet-letters-11",
+          "v1-ef01lp10-name-and-order-alphabet-letters-12",
+          "v1-ef01lp10-name-and-order-alphabet-letters-13",
+          "v1-ef01lp10-name-and-order-alphabet-letters-14",
+          "v1-ef01lp10-name-and-order-alphabet-letters-15",
+          "v1-ef01lp10-name-and-order-alphabet-letters-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp10-name-and-order-alphabet-letters-17",
+          "v1-ef01lp10-name-and-order-alphabet-letters-18",
+          "v1-ef01lp10-name-and-order-alphabet-letters-19",
+          "v1-ef01lp10-name-and-order-alphabet-letters-20",
+          "v1-ef01lp10-name-and-order-alphabet-letters-21",
+          "v1-ef01lp10-name-and-order-alphabet-letters-22",
+          "v1-ef01lp10-name-and-order-alphabet-letters-23",
+          "v1-ef01lp10-name-and-order-alphabet-letters-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp10-name-and-order-alphabet-letters-25",
+          "v1-ef01lp10-name-and-order-alphabet-letters-26",
+          "v1-ef01lp10-name-and-order-alphabet-letters-27",
+          "v1-ef01lp10-name-and-order-alphabet-letters-28",
+          "v1-ef01lp10-name-and-order-alphabet-letters-29",
+          "v1-ef01lp10-name-and-order-alphabet-letters-30",
+          "v1-ef01lp10-name-and-order-alphabet-letters-31",
+          "v1-ef01lp10-name-and-order-alphabet-letters-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp10-name-and-order-alphabet-letters-33",
+          "v1-ef01lp10-name-and-order-alphabet-letters-34",
+          "v1-ef01lp10-name-and-order-alphabet-letters-35",
+          "v1-ef01lp10-name-and-order-alphabet-letters-36",
+          "v1-ef01lp10-name-and-order-alphabet-letters-37",
+          "v1-ef01lp10-name-and-order-alphabet-letters-38",
+          "v1-ef01lp10-name-and-order-alphabet-letters-39",
+          "v1-ef01lp10-name-and-order-alphabet-letters-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP10",
+        "descriptor": "Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-01",
+      "statement": "Na sequência do alfabeto, qual letra vem depois de A?",
+      "prompt": "Na sequência do alfabeto, qual letra vem depois de A?",
+      "options": [
+        "B.",
+        "C",
+        "D",
+        "Z"
+      ],
+      "correctAnswer": "B.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "C": [
+          "NEXT_LETTER"
+        ],
+        "D": [
+          "NEXT_LETTER"
+        ],
+        "Z": [
+          "NEXT_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DEPOIS_DO_A",
+      "explanation": "B vem imediatamente depois de A.",
+      "hint": "Acompanhe a sequência da esquerda para a direita.",
+      "errorFocus": "NEXT_LETTER",
+      "feedback": {
+        "correct": "Boa observação: B vem imediatamente depois de A.",
+        "incorrect": "B vem imediatamente depois de A.",
+        "hint": "Acompanhe a sequência da esquerda para a direita.",
+        "errorFocus": "NEXT_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-02",
+      "statement": "Qual letra vem imediatamente antes de D?",
+      "prompt": "Qual letra vem imediatamente antes de D?",
+      "options": [
+        "E",
+        "C.",
+        "B",
+        "A"
+      ],
+      "correctAnswer": "C.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "E": [
+          "PREVIOUS_LETTER"
+        ],
+        "B": [
+          "PREVIOUS_LETTER"
+        ],
+        "A": [
+          "PREVIOUS_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ANTES_DO_D",
+      "explanation": "C aparece antes de D na sequência.",
+      "hint": "Procure a letra vizinha anterior.",
+      "errorFocus": "PREVIOUS_LETTER",
+      "feedback": {
+        "correct": "Boa observação: C aparece antes de D na sequência.",
+        "incorrect": "C aparece antes de D na sequência.",
+        "hint": "Procure a letra vizinha anterior.",
+        "errorFocus": "PREVIOUS_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-03",
+      "statement": "Qual letra fica entre G e I?",
+      "prompt": "Qual letra fica entre G e I?",
+      "options": [
+        "F",
+        "J",
+        "H.",
+        "K"
+      ],
+      "correctAnswer": "H.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "F": [
+          "MISSING_MIDDLE_LETTER"
+        ],
+        "J": [
+          "MISSING_MIDDLE_LETTER"
+        ],
+        "K": [
+          "MISSING_MIDDLE_LETTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ENTRE_G_E_I",
+      "explanation": "A sequência é G, H, I.",
+      "hint": "Leia as três posições em ordem.",
+      "errorFocus": "MISSING_MIDDLE_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A sequência é G, H, I.",
+        "incorrect": "A sequência é G, H, I.",
+        "hint": "Leia as três posições em ordem.",
+        "errorFocus": "MISSING_MIDDLE_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-04",
+      "statement": "Que letra está escrita no cartão: M?",
+      "prompt": "Que letra está escrita no cartão: M?",
+      "options": [
+        "N",
+        "W",
+        "R",
+        "M."
+      ],
+      "correctAnswer": "M.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "N": [
+          "LETTER_NAME"
+        ],
+        "W": [
+          "LETTER_NAME"
+        ],
+        "R": [
+          "LETTER_NAME"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "NAME",
+      "contextFamily": "CARTAO_M",
+      "explanation": "O símbolo apresentado é a letra M.",
+      "hint": "Observe o formato impresso.",
+      "errorFocus": "LETTER_NAME",
+      "feedback": {
+        "correct": "Boa observação: O símbolo apresentado é a letra M.",
+        "incorrect": "O símbolo apresentado é a letra M.",
+        "hint": "Observe o formato impresso.",
+        "errorFocus": "LETTER_NAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-05",
+      "statement": "O nome de uma letra e o som dela numa palavra são sempre a mesma coisa?",
+      "prompt": "O nome de uma letra e o som dela numa palavra são sempre a mesma coisa?",
+      "options": [
+        "Não; o nome e o som representado podem ser diferentes.",
+        "Sim, em toda palavra",
+        "Sim, porque cada letra tem um único som",
+        "Não, letras nunca representam sons"
+      ],
+      "correctAnswer": "Não; o nome e o som representado podem ser diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, em toda palavra": [
+          "NAME_VS_SOUND"
+        ],
+        "Sim, porque cada letra tem um único som": [
+          "NAME_VS_SOUND"
+        ],
+        "Não, letras nunca representam sons": [
+          "NAME_VS_SOUND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOME_E_SOM",
+      "explanation": "O nome da letra não determina sozinho todos os sons que ela pode representar.",
+      "hint": "Separe o nome da letra do som na palavra.",
+      "errorFocus": "NAME_VS_SOUND",
+      "feedback": {
+        "correct": "Boa observação: O nome da letra não determina sozinho todos os sons que ela pode representar.",
+        "incorrect": "O nome da letra não determina sozinho todos os sons que ela pode representar.",
+        "hint": "Separe o nome da letra do som na palavra.",
+        "errorFocus": "NAME_VS_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-06",
+      "statement": "Qual sequência mostra as três primeiras letras do alfabeto?",
+      "prompt": "Qual sequência mostra as três primeiras letras do alfabeto?",
+      "options": [
+        "A, C, B",
+        "A, B, C.",
+        "B, A, C",
+        "C, B, A"
+      ],
+      "correctAnswer": "A, B, C.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A, C, B": [
+          "INITIAL_ALPHABET_ORDER"
+        ],
+        "B, A, C": [
+          "INITIAL_ALPHABET_ORDER"
+        ],
+        "C, B, A": [
+          "INITIAL_ALPHABET_ORDER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "PRIMEIRAS_TRES",
+      "explanation": "A, B e C iniciam a sequência alfabética.",
+      "hint": "Comece pela primeira letra.",
+      "errorFocus": "INITIAL_ALPHABET_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A, B e C iniciam a sequência alfabética.",
+        "incorrect": "A, B e C iniciam a sequência alfabética.",
+        "hint": "Comece pela primeira letra.",
+        "errorFocus": "INITIAL_ALPHABET_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-07",
+      "statement": "Qual letra vem depois de K na ordem alfabética?",
+      "prompt": "Qual letra vem depois de K na ordem alfabética?",
+      "options": [
+        "J",
+        "M",
+        "L.",
+        "N"
+      ],
+      "correctAnswer": "L.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "J": [
+          "KLM_SEQUENCE"
+        ],
+        "M": [
+          "KLM_SEQUENCE"
+        ],
+        "N": [
+          "KLM_SEQUENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LETRA_DEPOIS_DO_K",
+      "explanation": "A sequência ao redor é J, K, L, M.",
+      "hint": "Consulte as letras vizinhas.",
+      "errorFocus": "KLM_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência ao redor é J, K, L, M.",
+        "incorrect": "A sequência ao redor é J, K, L, M.",
+        "hint": "Consulte as letras vizinhas.",
+        "errorFocus": "KLM_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-08",
+      "statement": "Como ordenar os cartões A, D, B e C?",
+      "prompt": "Como ordenar os cartões A, D, B e C?",
+      "options": [
+        "D, C, B, A",
+        "A, C, B, D",
+        "B, A, D, C",
+        "A, B, C, D."
+      ],
+      "correctAnswer": "A, B, C, D.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "D, C, B, A": [
+          "SORT_LETTERS"
+        ],
+        "A, C, B, D": [
+          "SORT_LETTERS"
+        ],
+        "B, A, D, C": [
+          "SORT_LETTERS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORDEM_DE_CARTOES_A_D",
+      "explanation": "A ordem alfabética começa A, B, C, D.",
+      "hint": "Encontre a sequência no alfabeto.",
+      "errorFocus": "SORT_LETTERS",
+      "feedback": {
+        "correct": "Boa observação: A ordem alfabética começa A, B, C, D.",
+        "incorrect": "A ordem alfabética começa A, B, C, D.",
+        "hint": "Encontre a sequência no alfabeto.",
+        "errorFocus": "SORT_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-09",
+      "statement": "Qual letra aparece depois de F?",
+      "prompt": "Qual letra aparece depois de F?",
+      "options": [
+        "G.",
+        "E",
+        "H",
+        "J"
+      ],
+      "correctAnswer": "G.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "E": [
+          "NEXT_G"
+        ],
+        "H": [
+          "NEXT_G"
+        ],
+        "J": [
+          "NEXT_G"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DEPOIS_DO_F",
+      "explanation": "G vem imediatamente depois de F.",
+      "hint": "Siga uma posição adiante.",
+      "errorFocus": "NEXT_G",
+      "feedback": {
+        "correct": "Boa observação: G vem imediatamente depois de F.",
+        "incorrect": "G vem imediatamente depois de F.",
+        "hint": "Siga uma posição adiante.",
+        "errorFocus": "NEXT_G"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-10",
+      "statement": "Qual letra vem antes de P?",
+      "prompt": "Qual letra vem antes de P?",
+      "options": [
+        "N",
+        "O.",
+        "Q",
+        "R"
+      ],
+      "correctAnswer": "O.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "N": [
+          "PREVIOUS_O"
+        ],
+        "Q": [
+          "PREVIOUS_O"
+        ],
+        "R": [
+          "PREVIOUS_O"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ANTES_DO_P",
+      "explanation": "O precede P na sequência.",
+      "hint": "Localize P e volte uma posição.",
+      "errorFocus": "PREVIOUS_O",
+      "feedback": {
+        "correct": "Boa observação: O precede P na sequência.",
+        "incorrect": "O precede P na sequência.",
+        "hint": "Localize P e volte uma posição.",
+        "errorFocus": "PREVIOUS_O"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-11",
+      "statement": "A letra minúscula b corresponde a qual maiúscula?",
+      "prompt": "A letra minúscula b corresponde a qual maiúscula?",
+      "options": [
+        "D",
+        "P",
+        "B.",
+        "R"
+      ],
+      "correctAnswer": "B.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "D": [
+          "UPPER_LOWER_MATCH"
+        ],
+        "P": [
+          "UPPER_LOWER_MATCH"
+        ],
+        "R": [
+          "UPPER_LOWER_MATCH"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "NAME",
+      "contextFamily": "LETRA_MINUSCULA_B",
+      "explanation": "b e B são formas da mesma letra.",
+      "hint": "Compare o nome, não o formato.",
+      "errorFocus": "UPPER_LOWER_MATCH",
+      "feedback": {
+        "correct": "Boa observação: b e B são formas da mesma letra.",
+        "incorrect": "b e B são formas da mesma letra.",
+        "hint": "Compare o nome, não o formato.",
+        "errorFocus": "UPPER_LOWER_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-12",
+      "statement": "Qual letra falta em L, __, N?",
+      "prompt": "Qual letra falta em L, __, N?",
+      "options": [
+        "K",
+        "O",
+        "P",
+        "M."
+      ],
+      "correctAnswer": "M.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "K": [
+          "SEQUENCE_GAP"
+        ],
+        "O": [
+          "SEQUENCE_GAP"
+        ],
+        "P": [
+          "SEQUENCE_GAP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TRECHO_L_M_N",
+      "explanation": "M fica entre L e N.",
+      "hint": "Leia antes e depois do espaço.",
+      "errorFocus": "SEQUENCE_GAP",
+      "feedback": {
+        "correct": "Boa observação: M fica entre L e N.",
+        "incorrect": "M fica entre L e N.",
+        "hint": "Leia antes e depois do espaço.",
+        "errorFocus": "SEQUENCE_GAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-13",
+      "statement": "K, W e Y fazem parte do alfabeto usado em português?",
+      "prompt": "K, W e Y fazem parte do alfabeto usado em português?",
+      "options": [
+        "Sim; o alfabeto tem 26 letras incluindo K, W e Y.",
+        "Não; são símbolos de outro alfabeto",
+        "Só K faz parte",
+        "Somente W e Y fazem parte"
+      ],
+      "correctAnswer": "Sim; o alfabeto tem 26 letras incluindo K, W e Y.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não; são símbolos de outro alfabeto": [
+          "COMPLETE_ALPHABET"
+        ],
+        "Só K faz parte": [
+          "COMPLETE_ALPHABET"
+        ],
+        "Somente W e Y fazem parte": [
+          "COMPLETE_ALPHABET"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "K_W_Y_NO_ALFABETO",
+      "explanation": "O alfabeto atual inclui as 26 letras.",
+      "hint": "Confira a sequência completa até Z.",
+      "errorFocus": "COMPLETE_ALPHABET",
+      "feedback": {
+        "correct": "Boa observação: O alfabeto atual inclui as 26 letras.",
+        "incorrect": "O alfabeto atual inclui as 26 letras.",
+        "hint": "Confira a sequência completa até Z.",
+        "errorFocus": "COMPLETE_ALPHABET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-14",
+      "statement": "Qual ordem alfabética das iniciais de casa, bola e dado?",
+      "prompt": "Qual ordem alfabética das iniciais de casa, bola e dado?",
+      "options": [
+        "C, D, B",
+        "B, C, D.",
+        "D, B, C",
+        "B, D, C"
+      ],
+      "correctAnswer": "B, C, D.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "C, D, B": [
+          "INITIAL_LETTER_SORT"
+        ],
+        "D, B, C": [
+          "INITIAL_LETTER_SORT"
+        ],
+        "B, D, C": [
+          "INITIAL_LETTER_SORT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORDENAR_INICIAIS_CASA_BOLA_DADO",
+      "explanation": "B vem antes de C, que vem antes de D.",
+      "hint": "Compare as letras iniciais.",
+      "errorFocus": "INITIAL_LETTER_SORT",
+      "feedback": {
+        "correct": "Boa observação: B vem antes de C, que vem antes de D.",
+        "incorrect": "B vem antes de C, que vem antes de D.",
+        "hint": "Compare as letras iniciais.",
+        "errorFocus": "INITIAL_LETTER_SORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-15",
+      "statement": "Qual é a última letra do alfabeto?",
+      "prompt": "Qual é a última letra do alfabeto?",
+      "options": [
+        "Y",
+        "X",
+        "Z.",
+        "W"
+      ],
+      "correctAnswer": "Z.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Y": [
+          "FINAL_LETTER"
+        ],
+        "X": [
+          "FINAL_LETTER"
+        ],
+        "W": [
+          "FINAL_LETTER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ULTIMA_LETRA",
+      "explanation": "Z fecha a sequência alfabética.",
+      "hint": "Siga até o fim do alfabeto.",
+      "errorFocus": "FINAL_LETTER",
+      "feedback": {
+        "correct": "Boa observação: Z fecha a sequência alfabética.",
+        "incorrect": "Z fecha a sequência alfabética.",
+        "hint": "Siga até o fim do alfabeto.",
+        "errorFocus": "FINAL_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-16",
+      "statement": "Qual letra está entre H e J?",
+      "prompt": "Qual letra está entre H e J?",
+      "options": [
+        "G",
+        "K",
+        "L",
+        "I."
+      ],
+      "correctAnswer": "I.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "G": [
+          "MIDDLE_POSITION_I"
+        ],
+        "K": [
+          "MIDDLE_POSITION_I"
+        ],
+        "L": [
+          "MIDDLE_POSITION_I"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "H_E_J",
+      "explanation": "I ocupa a posição entre H e J.",
+      "hint": "Leia H, __, J.",
+      "errorFocus": "MIDDLE_POSITION_I",
+      "feedback": {
+        "correct": "Boa observação: I ocupa a posição entre H e J.",
+        "incorrect": "I ocupa a posição entre H e J.",
+        "hint": "Leia H, __, J.",
+        "errorFocus": "MIDDLE_POSITION_I"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-17",
+      "statement": "Numa lista por letra inicial, qual nome fictício deve vir primeiro: Lia, Ana ou Beto?",
+      "prompt": "Numa lista por letra inicial, qual nome fictício deve vir primeiro: Lia, Ana ou Beto?",
+      "options": [
+        "Ana.",
+        "Beto",
+        "Lia",
+        "A ordem não pode ser comparada"
+      ],
+      "correctAnswer": "Ana.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Beto": [
+          "ALPHABETICAL_LIST"
+        ],
+        "Lia": [
+          "ALPHABETICAL_LIST"
+        ],
+        "A ordem não pode ser comparada": [
+          "ALPHABETICAL_LIST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "LISTA_DE_NOMES_FICTICIOS",
+      "explanation": "A começa antes de B e L.",
+      "hint": "Compare as letras iniciais.",
+      "errorFocus": "ALPHABETICAL_LIST",
+      "feedback": {
+        "correct": "Boa observação: A começa antes de B e L.",
+        "incorrect": "A começa antes de B e L.",
+        "hint": "Compare as letras iniciais.",
+        "errorFocus": "ALPHABETICAL_LIST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-18",
+      "statement": "Duas palavras começam com M. Para decidir qual vem primeiro na lista, o que comparar em seguida?",
+      "prompt": "Duas palavras começam com M. Para decidir qual vem primeiro na lista, o que comparar em seguida?",
+      "options": [
+        "A última letra sempre",
+        "A próxima letra de cada palavra.",
+        "O tamanho do desenho",
+        "A cor da página"
+      ],
+      "correctAnswer": "A próxima letra de cada palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A última letra sempre": [
+          "NEXT_LETTER_TIE_BREAK"
+        ],
+        "O tamanho do desenho": [
+          "NEXT_LETTER_TIE_BREAK"
+        ],
+        "A cor da página": [
+          "NEXT_LETTER_TIE_BREAK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PALAVRAS_COM_MESMA_INICIAL",
+      "explanation": "Quando a inicial coincide, compara-se a próxima letra.",
+      "hint": "Continue olhando letra por letra.",
+      "errorFocus": "NEXT_LETTER_TIE_BREAK",
+      "feedback": {
+        "correct": "Boa observação: Quando a inicial coincide, compara-se a próxima letra.",
+        "incorrect": "Quando a inicial coincide, compara-se a próxima letra.",
+        "hint": "Continue olhando letra por letra.",
+        "errorFocus": "NEXT_LETTER_TIE_BREAK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-19",
+      "statement": "Qual letra aparece imediatamente antes de W?",
+      "prompt": "Qual letra aparece imediatamente antes de W?",
+      "options": [
+        "X",
+        "U",
+        "V.",
+        "Y"
+      ],
+      "correctAnswer": "V.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "X": [
+          "PREVIOUS_W"
+        ],
+        "U": [
+          "PREVIOUS_W"
+        ],
+        "Y": [
+          "PREVIOUS_W"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LETRA_ANTES_DO_W",
+      "explanation": "V precede W na sequência.",
+      "hint": "Encontre W no trecho final.",
+      "errorFocus": "PREVIOUS_W",
+      "feedback": {
+        "correct": "Boa observação: V precede W na sequência.",
+        "incorrect": "V precede W na sequência.",
+        "hint": "Encontre W no trecho final.",
+        "errorFocus": "PREVIOUS_W"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-20",
+      "statement": "Qual é a ordem correta dos cartões D, F e E?",
+      "prompt": "Qual é a ordem correta dos cartões D, F e E?",
+      "options": [
+        "F, E, D",
+        "E, D, F",
+        "D, F, E",
+        "D, E, F."
+      ],
+      "correctAnswer": "D, E, F.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "F, E, D": [
+          "LOCAL_SORT_DEF"
+        ],
+        "E, D, F": [
+          "LOCAL_SORT_DEF"
+        ],
+        "D, F, E": [
+          "LOCAL_SORT_DEF"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_D_E_F",
+      "explanation": "E fica entre D e F.",
+      "hint": "Ordene pelo alfabeto.",
+      "errorFocus": "LOCAL_SORT_DEF",
+      "feedback": {
+        "correct": "Boa observação: E fica entre D e F.",
+        "incorrect": "E fica entre D e F.",
+        "hint": "Ordene pelo alfabeto.",
+        "errorFocus": "LOCAL_SORT_DEF"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-21",
+      "statement": "Ao encontrar a letra C num cartão, qual pergunta trata do nome da letra?",
+      "prompt": "Ao encontrar a letra C num cartão, qual pergunta trata do nome da letra?",
+      "options": [
+        "“Que letra está escrita neste cartão?”",
+        "“Qual é a temperatura do papel?”",
+        "“Quantas sílabas tem qualquer palavra?”",
+        "“A letra sempre tem o mesmo som?”"
+      ],
+      "correctAnswer": "“Que letra está escrita neste cartão?”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Qual é a temperatura do papel?”": [
+          "LETTER_IDENTIFICATION"
+        ],
+        "“Quantas sílabas tem qualquer palavra?”": [
+          "LETTER_IDENTIFICATION"
+        ],
+        "“A letra sempre tem o mesmo som?”": [
+          "LETTER_IDENTIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOME_DA_LETRA_E_PALAVRA",
+      "explanation": "A pergunta solicita identificar o nome da letra apresentada.",
+      "hint": "Foque na letra isolada.",
+      "errorFocus": "LETTER_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta solicita identificar o nome da letra apresentada.",
+        "incorrect": "A pergunta solicita identificar o nome da letra apresentada.",
+        "hint": "Foque na letra isolada.",
+        "errorFocus": "LETTER_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-22",
+      "statement": "Qual letra completa R, S, __?",
+      "prompt": "Qual letra completa R, S, __?",
+      "options": [
+        "Q",
+        "T.",
+        "U",
+        "V"
+      ],
+      "correctAnswer": "T.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Q": [
+          "SEQUENCE_T"
+        ],
+        "U": [
+          "SEQUENCE_T"
+        ],
+        "V": [
+          "SEQUENCE_T"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "SEQUENCIA_R_S_T",
+      "explanation": "T vem logo depois de S.",
+      "hint": "Siga uma posição.",
+      "errorFocus": "SEQUENCE_T",
+      "feedback": {
+        "correct": "Boa observação: T vem logo depois de S.",
+        "incorrect": "T vem logo depois de S.",
+        "hint": "Siga uma posição.",
+        "errorFocus": "SEQUENCE_T"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-23",
+      "statement": "Uma criança quer localizar uma palavra numa lista alfabética. O que ajuda primeiro?",
+      "prompt": "Uma criança quer localizar uma palavra numa lista alfabética. O que ajuda primeiro?",
+      "options": [
+        "Escolher a página mais colorida",
+        "Ler a última palavra apenas",
+        "Procurar a letra inicial e consultar a sequência do alfabeto.",
+        "Ignorar a ordem da lista"
+      ],
+      "correctAnswer": "Procurar a letra inicial e consultar a sequência do alfabeto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher a página mais colorida": [
+          "ALPHABET_REFERENCE"
+        ],
+        "Ler a última palavra apenas": [
+          "ALPHABET_REFERENCE"
+        ],
+        "Ignorar a ordem da lista": [
+          "ALPHABET_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONSULTA_DE_INDICE",
+      "explanation": "A letra inicial ajuda a localizar a seção da lista.",
+      "hint": "Use a letra inicial como pista.",
+      "errorFocus": "ALPHABET_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A letra inicial ajuda a localizar a seção da lista.",
+        "incorrect": "A letra inicial ajuda a localizar a seção da lista.",
+        "hint": "Use a letra inicial como pista.",
+        "errorFocus": "ALPHABET_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-24",
+      "statement": "Uma criança organiza cartões corretamente, mas prefere não recitar em voz alta. O que demonstra seu conhecimento?",
+      "prompt": "Uma criança organiza cartões corretamente, mas prefere não recitar em voz alta. O que demonstra seu conhecimento?",
+      "options": [
+        "Nada, pois só a recitação vale",
+        "A rapidez com que fala",
+        "A quantidade de cartões coloridos",
+        "A sequência ordenada que montou com os cartões."
+      ],
+      "correctAnswer": "A sequência ordenada que montou com os cartões.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Nada, pois só a recitação vale": [
+          "MULTIPLE_RESPONSE_MODES"
+        ],
+        "A rapidez com que fala": [
+          "MULTIPLE_RESPONSE_MODES"
+        ],
+        "A quantidade de cartões coloridos": [
+          "MULTIPLE_RESPONSE_MODES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RECITACAO_COM_APOIO",
+      "explanation": "A ordenação é uma forma válida de demonstrar a sequência.",
+      "hint": "Observe a evidência produzida.",
+      "errorFocus": "MULTIPLE_RESPONSE_MODES",
+      "feedback": {
+        "correct": "Boa observação: A ordenação é uma forma válida de demonstrar a sequência.",
+        "incorrect": "A ordenação é uma forma válida de demonstrar a sequência.",
+        "hint": "Observe a evidência produzida.",
+        "errorFocus": "MULTIPLE_RESPONSE_MODES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-25",
+      "statement": "Qual letra vem imediatamente depois de Q?",
+      "prompt": "Qual letra vem imediatamente depois de Q?",
+      "options": [
+        "R.",
+        "P",
+        "S",
+        "T"
+      ],
+      "correctAnswer": "R.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "P": [
+          "NEXT_R"
+        ],
+        "S": [
+          "NEXT_R"
+        ],
+        "T": [
+          "NEXT_R"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VEM_DEPOIS_DO_Q",
+      "explanation": "R vem logo após Q na ordem alfabética.",
+      "hint": "Consulte o trecho do alfabeto.",
+      "errorFocus": "NEXT_R",
+      "feedback": {
+        "correct": "Boa observação: R vem logo após Q na ordem alfabética.",
+        "incorrect": "R vem logo após Q na ordem alfabética.",
+        "hint": "Consulte o trecho do alfabeto.",
+        "errorFocus": "NEXT_R"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-26",
+      "statement": "Qual letra aparece imediatamente antes de X?",
+      "prompt": "Qual letra aparece imediatamente antes de X?",
+      "options": [
+        "V",
+        "W.",
+        "Y",
+        "Z"
+      ],
+      "correctAnswer": "W.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "V": [
+          "PREVIOUS_X"
+        ],
+        "Y": [
+          "PREVIOUS_X"
+        ],
+        "Z": [
+          "PREVIOUS_X"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VEM_ANTES_DO_X",
+      "explanation": "W precede X.",
+      "hint": "Use a sequência V, W, X, Y.",
+      "errorFocus": "PREVIOUS_X",
+      "feedback": {
+        "correct": "Boa observação: W precede X.",
+        "incorrect": "W precede X.",
+        "hint": "Use a sequência V, W, X, Y.",
+        "errorFocus": "PREVIOUS_X"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-27",
+      "statement": "Qual sequência está em ordem alfabética?",
+      "prompt": "Qual sequência está em ordem alfabética?",
+      "options": [
+        "J, L, K, M",
+        "M, L, K, J",
+        "J, K, L, M.",
+        "K, J, M, L"
+      ],
+      "correctAnswer": "J, K, L, M.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "J, L, K, M": [
+          "SEQUENCE_JKLM"
+        ],
+        "M, L, K, J": [
+          "SEQUENCE_JKLM"
+        ],
+        "K, J, M, L": [
+          "SEQUENCE_JKLM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "TRECHO_J_K_L_M",
+      "explanation": "As letras seguem posições consecutivas.",
+      "hint": "Confira uma posição por vez.",
+      "errorFocus": "SEQUENCE_JKLM",
+      "feedback": {
+        "correct": "Boa observação: As letras seguem posições consecutivas.",
+        "incorrect": "As letras seguem posições consecutivas.",
+        "hint": "Confira uma posição por vez.",
+        "errorFocus": "SEQUENCE_JKLM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-28",
+      "statement": "A letra F sozinha é uma sílaba?",
+      "prompt": "A letra F sozinha é uma sílaba?",
+      "options": [
+        "Sim, sempre é uma palavra",
+        "Sim, é uma frase",
+        "Não, porque F não existe",
+        "Não; é uma letra do alfabeto."
+      ],
+      "correctAnswer": "Não; é uma letra do alfabeto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre é uma palavra": [
+          "LETTER_NOT_SYLLABLE"
+        ],
+        "Sim, é uma frase": [
+          "LETTER_NOT_SYLLABLE"
+        ],
+        "Não, porque F não existe": [
+          "LETTER_NOT_SYLLABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LETRA_E_SILABA",
+      "explanation": "Uma letra isolada não é necessariamente uma sílaba ou palavra.",
+      "hint": "Diferencie unidade escrita e sílaba.",
+      "errorFocus": "LETTER_NOT_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: Uma letra isolada não é necessariamente uma sílaba ou palavra.",
+        "incorrect": "Uma letra isolada não é necessariamente uma sílaba ou palavra.",
+        "hint": "Diferencie unidade escrita e sílaba.",
+        "errorFocus": "LETTER_NOT_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-29",
+      "statement": "Qual ordem das iniciais B, B e C é correta?",
+      "prompt": "Qual ordem das iniciais B, B e C é correta?",
+      "options": [
+        "As duas palavras com B vêm antes da palavra com C.",
+        "C vem antes de B",
+        "B vem depois de C",
+        "Não se pode comparar letras"
+      ],
+      "correctAnswer": "As duas palavras com B vêm antes da palavra com C.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "C vem antes de B": [
+          "INITIAL_ORDER"
+        ],
+        "B vem depois de C": [
+          "INITIAL_ORDER"
+        ],
+        "Não se pode comparar letras": [
+          "INITIAL_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORDENAR_BOLA_BONECA_CASA",
+      "explanation": "B aparece antes de C no alfabeto.",
+      "hint": "Compare as iniciais.",
+      "errorFocus": "INITIAL_ORDER",
+      "feedback": {
+        "correct": "Boa observação: B aparece antes de C no alfabeto.",
+        "incorrect": "B aparece antes de C no alfabeto.",
+        "hint": "Compare as iniciais.",
+        "errorFocus": "INITIAL_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-30",
+      "statement": "“Bala” e “bola” começam com B. Qual letra diferencia o segundo lugar?",
+      "prompt": "“Bala” e “bola” começam com B. Qual letra diferencia o segundo lugar?",
+      "options": [
+        "As duas têm A",
+        "A em “bala” e O em “bola”.",
+        "As duas têm Z",
+        "L e B"
+      ],
+      "correctAnswer": "A em “bala” e O em “bola”.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As duas têm A": [
+          "LETTER_BY_LETTER"
+        ],
+        "As duas têm Z": [
+          "LETTER_BY_LETTER"
+        ],
+        "L e B": [
+          "LETTER_BY_LETTER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SEGUNDO_CARACTERE",
+      "explanation": "A segunda letra é diferente nos exemplos.",
+      "hint": "Compare a posição seguinte à inicial.",
+      "errorFocus": "LETTER_BY_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A segunda letra é diferente nos exemplos.",
+        "incorrect": "A segunda letra é diferente nos exemplos.",
+        "hint": "Compare a posição seguinte à inicial.",
+        "errorFocus": "LETTER_BY_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-31",
+      "statement": "Que letra vem antes de Z?",
+      "prompt": "Que letra vem antes de Z?",
+      "options": [
+        "X",
+        "W",
+        "Y.",
+        "V"
+      ],
+      "correctAnswer": "Y.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "X": [
+          "PREVIOUS_Z"
+        ],
+        "W": [
+          "PREVIOUS_Z"
+        ],
+        "V": [
+          "PREVIOUS_Z"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LETRAS_ATE_Z",
+      "explanation": "Y ocupa a posição imediatamente anterior a Z.",
+      "hint": "Olhe o final da sequência.",
+      "errorFocus": "PREVIOUS_Z",
+      "feedback": {
+        "correct": "Boa observação: Y ocupa a posição imediatamente anterior a Z.",
+        "incorrect": "Y ocupa a posição imediatamente anterior a Z.",
+        "hint": "Olhe o final da sequência.",
+        "errorFocus": "PREVIOUS_Z"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-32",
+      "statement": "Por que manter as letras em sequência ajuda a consultar uma lista?",
+      "prompt": "Por que manter as letras em sequência ajuda a consultar uma lista?",
+      "options": [
+        "Porque todas as palavras começam igual",
+        "Porque elimina a necessidade de ler",
+        "Porque muda o nome das letras",
+        "A posição das letras orienta a busca por iniciais."
+      ],
+      "correctAnswer": "A posição das letras orienta a busca por iniciais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque todas as palavras começam igual": [
+          "ALPHABET_ORDER_PURPOSE"
+        ],
+        "Porque elimina a necessidade de ler": [
+          "ALPHABET_ORDER_PURPOSE"
+        ],
+        "Porque muda o nome das letras": [
+          "ALPHABET_ORDER_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "POR_QUE_USAR_ORDEM",
+      "explanation": "A ordem convencional facilita localizar entradas.",
+      "hint": "Pense em como o índice organiza a busca.",
+      "errorFocus": "ALPHABET_ORDER_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A ordem convencional facilita localizar entradas.",
+        "incorrect": "A ordem convencional facilita localizar entradas.",
+        "hint": "Pense em como o índice organiza a busca.",
+        "errorFocus": "ALPHABET_ORDER_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-33",
+      "statement": "Qual letra inicia a sequência alfabética?",
+      "prompt": "Qual letra inicia a sequência alfabética?",
+      "options": [
+        "A.",
+        "B",
+        "Y",
+        "Z"
+      ],
+      "correctAnswer": "A.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "B": [
+          "ALPHABET_START_REVIEW"
+        ],
+        "Y": [
+          "ALPHABET_START_REVIEW"
+        ],
+        "Z": [
+          "ALPHABET_START_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PRIMEIRA_LETRA",
+      "explanation": "A inicia a ordem convencional.",
+      "hint": "Lembre-se do começo.",
+      "errorFocus": "ALPHABET_START_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A inicia a ordem convencional.",
+        "incorrect": "A inicia a ordem convencional.",
+        "hint": "Lembre-se do começo.",
+        "errorFocus": "ALPHABET_START_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-34",
+      "statement": "Qual letra vem depois de M?",
+      "prompt": "Qual letra vem depois de M?",
+      "options": [
+        "L",
+        "N.",
+        "O",
+        "P"
+      ],
+      "correctAnswer": "N.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "L": [
+          "NEXT_N_REVIEW"
+        ],
+        "O": [
+          "NEXT_N_REVIEW"
+        ],
+        "P": [
+          "NEXT_N_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LETRA_DEPOIS_DO_M",
+      "explanation": "N vem logo após M na sequência alfabética.",
+      "hint": "Avance uma posição.",
+      "errorFocus": "NEXT_N_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: N vem logo após M na sequência alfabética.",
+        "incorrect": "N vem logo após M na sequência alfabética.",
+        "hint": "Avance uma posição.",
+        "errorFocus": "NEXT_N_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-35",
+      "statement": "Qual sequência mostra as últimas cinco letras?",
+      "prompt": "Qual sequência mostra as últimas cinco letras?",
+      "options": [
+        "W, V, X, Z, Y",
+        "V, X, W, Y, Z",
+        "V, W, X, Y, Z.",
+        "Z, Y, X, W, V"
+      ],
+      "correctAnswer": "V, W, X, Y, Z.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "W, V, X, Z, Y": [
+          "FINAL_SEQUENCE_REVIEW"
+        ],
+        "V, X, W, Y, Z": [
+          "FINAL_SEQUENCE_REVIEW"
+        ],
+        "Z, Y, X, W, V": [
+          "FINAL_SEQUENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "SEQUENCIA_V_W_X_Y_Z",
+      "explanation": "A sequência final segue V, W, X, Y, Z.",
+      "hint": "Confira a ordem até Z.",
+      "errorFocus": "FINAL_SEQUENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A sequência final segue V, W, X, Y, Z.",
+        "incorrect": "A sequência final segue V, W, X, Y, Z.",
+        "hint": "Confira a ordem até Z.",
+        "errorFocus": "FINAL_SEQUENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-36",
+      "statement": "O nome de uma letra sempre informa sozinho seu som na palavra?",
+      "prompt": "O nome de uma letra sempre informa sozinho seu som na palavra?",
+      "options": [
+        "Sim, em qualquer palavra",
+        "Sim, toda letra só pode ter um som",
+        "Não, palavras não têm letras",
+        "Não; é preciso observar a letra na palavra e seu contexto."
+      ],
+      "correctAnswer": "Não; é preciso observar a letra na palavra e seu contexto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, em qualquer palavra": [
+          "NAME_SOUND_REVIEW"
+        ],
+        "Sim, toda letra só pode ter um som": [
+          "NAME_SOUND_REVIEW"
+        ],
+        "Não, palavras não têm letras": [
+          "NAME_SOUND_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOME_E_PRONUNCIA_REVISADO",
+      "explanation": "Nome de letra e realização sonora não são idênticos em todo contexto.",
+      "hint": "Separe nome e som.",
+      "errorFocus": "NAME_SOUND_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Nome de letra e realização sonora não são idênticos em todo contexto.",
+        "incorrect": "Nome de letra e realização sonora não são idênticos em todo contexto.",
+        "hint": "Separe nome e som.",
+        "errorFocus": "NAME_SOUND_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-37",
+      "statement": "Qual ordem correta para E, G e F?",
+      "prompt": "Qual ordem correta para E, G e F?",
+      "options": [
+        "E, F, G.",
+        "G, F, E",
+        "F, E, G",
+        "E, G, F"
+      ],
+      "correctAnswer": "E, F, G.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "G, F, E": [
+          "LOCAL_ORDER_REVIEW"
+        ],
+        "F, E, G": [
+          "LOCAL_ORDER_REVIEW"
+        ],
+        "E, G, F": [
+          "LOCAL_ORDER_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ORDENAR_CARTOES_E_F_G",
+      "explanation": "F fica entre E e G.",
+      "hint": "Consulte as posições.",
+      "errorFocus": "LOCAL_ORDER_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: F fica entre E e G.",
+        "incorrect": "F fica entre E e G.",
+        "hint": "Consulte as posições.",
+        "errorFocus": "LOCAL_ORDER_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-38",
+      "statement": "Se duas palavras começam pela mesma letra, que outra comparação pode organizar a lista?",
+      "prompt": "Se duas palavras começam pela mesma letra, que outra comparação pode organizar a lista?",
+      "options": [
+        "Comparar a cor da tinta",
+        "Comparar as letras seguintes até encontrar diferença.",
+        "Escolher uma ao acaso",
+        "Ignorar o restante"
+      ],
+      "correctAnswer": "Comparar as letras seguintes até encontrar diferença.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Comparar a cor da tinta": [
+          "LEXICOGRAPHIC_NEXT_LETTER_REVIEW"
+        ],
+        "Escolher uma ao acaso": [
+          "LEXICOGRAPHIC_NEXT_LETTER_REVIEW"
+        ],
+        "Ignorar o restante": [
+          "LEXICOGRAPHIC_NEXT_LETTER_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PALAVRAS_COM_LETRAS_INICIAIS_IGUAIS",
+      "explanation": "A comparação avança posição por posição.",
+      "hint": "Continue depois da letra inicial.",
+      "errorFocus": "LEXICOGRAPHIC_NEXT_LETTER_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A comparação avança posição por posição.",
+        "incorrect": "A comparação avança posição por posição.",
+        "hint": "Continue depois da letra inicial.",
+        "errorFocus": "LEXICOGRAPHIC_NEXT_LETTER_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-39",
+      "statement": "Qual é uma forma válida de mostrar que sabe a ordem de letras?",
+      "prompt": "Qual é uma forma válida de mostrar que sabe a ordem de letras?",
+      "options": [
+        "Somente falar rápido",
+        "Não responder",
+        "Ordenar cartões ou indicar a sequência com apoio visual.",
+        "Escolher sem observar"
+      ],
+      "correctAnswer": "Ordenar cartões ou indicar a sequência com apoio visual.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente falar rápido": [
+          "ACCESSIBLE_DEMONSTRATION_REVIEW"
+        ],
+        "Não responder": [
+          "ACCESSIBLE_DEMONSTRATION_REVIEW"
+        ],
+        "Escolher sem observar": [
+          "ACCESSIBLE_DEMONSTRATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FORMA_DE_RESPOSTA",
+      "explanation": "A ordenação visual demonstra conhecimento da sequência.",
+      "hint": "Escolha uma ação que mostre a ordem.",
+      "errorFocus": "ACCESSIBLE_DEMONSTRATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A ordenação visual demonstra conhecimento da sequência.",
+        "incorrect": "A ordenação visual demonstra conhecimento da sequência.",
+        "hint": "Escolha uma ação que mostre a ordem.",
+        "errorFocus": "ACCESSIBLE_DEMONSTRATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp10-name-and-order-alphabet-letters-40",
+      "statement": "Nomear letras e recitá-las em ordem exige conhecer...",
+      "prompt": "Nomear letras e recitá-las em ordem exige conhecer...",
+      "options": [
+        "somente a cor dos cartões",
+        "uma única pronúncia para cada palavra",
+        "apenas a última letra",
+        "os nomes e as posições das letras na sequência."
+      ],
+      "correctAnswer": "os nomes e as posições das letras na sequência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "somente a cor dos cartões": [
+          "ALPHABET_SEQUENCE_SUMMARY"
+        ],
+        "uma única pronúncia para cada palavra": [
+          "ALPHABET_SEQUENCE_SUMMARY"
+        ],
+        "apenas a última letra": [
+          "ALPHABET_SEQUENCE_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ALFABETO",
+      "explanation": "Nome e posição são aspectos relacionados da sequência alfabética.",
+      "hint": "Reúna reconhecimento e ordem.",
+      "errorFocus": "ALPHABET_SEQUENCE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Nome e posição são aspectos relacionados da sequência alfabética.",
+        "incorrect": "Nome e posição são aspectos relacionados da sequência alfabética.",
+        "hint": "Reúna reconhecimento e ordem.",
+        "errorFocus": "ALPHABET_SEQUENCE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.",
+          "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.",
+          "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

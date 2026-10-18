@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma05-compare-two-digit-numbers",
+  "canonicalSkillCode": "AUTHORING_EF01MA05_COMPARE_NATURAL_NUMBERS_TO_TWO_ORDERS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "comparação de números naturais de até duas ordens",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Qual número é maior?",
+    "objective": "Comparar números naturais de até duas ordens usando quantidades, dezenas e unidades, a sequência numérica e a reta numérica quando disponível.",
+    "summary": "Números de até duas ordens têm dezenas e unidades. Na comparação, primeiro podemos observar as dezenas; se forem iguais, comparamos as unidades. Na reta numérica, um número que aparece mais à direita é maior que um número à esquerda. Os sinais >, < e = registram maior, menor e igual. Exemplos cotidianos devem ser comparados com base nos números apresentados, sem transformar pontuações em julgamentos sobre pessoas.",
+    "explanation": "Represente cada número com cartões, objetos agrupados ou uma reta numerada. Por exemplo, 34 tem três dezenas e quatro unidades; 29 tem duas dezenas e nove unidades, então 34 é maior porque tem mais dezenas. Já 42 e 47 têm quatro dezenas: compare as unidades para concluir que 47 é maior. Na reta numérica, caminhar para a direita corresponde a números maiores. A reta é um apoio possível, mas a comparação também pode ser feita com decomposição ou contagem.",
+    "workedExample": "Compare 36 e 32. Ambos têm três dezenas; seis unidades são mais que duas, então 36 > 32. Numa reta numérica, 36 também aparece à direita de 32.",
+    "commonMistake": "Comparar apenas o último algarismo quando as dezenas são diferentes, inverter os sinais > e < ou considerar o algarismo maior sem observar sua posição.",
+    "priorKnowledge": [
+      "Ler e representar números naturais de até duas ordens.",
+      "Reconhecer dezenas e unidades com apoio de agrupamentos."
+    ],
+    "keyConcepts": [
+      "número natural",
+      "dezena",
+      "unidade",
+      "maior que",
+      "menor que",
+      "igual",
+      "reta numérica",
+      "comparação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COMPARE_TENS_FIRST",
+        "action": "Monte cada número com dezenas e unidades e compare as dezenas antes de olhar as unidades."
+      },
+      {
+        "errorFocus": "INEQUALITY_SYMBOL_DIRECTION",
+        "action": "Leia o sinal em voz alta como “é maior que” ou “é menor que” e confira qual número está à esquerda."
+      },
+      {
+        "errorFocus": "NUMBER_LINE_SUPPORT",
+        "action": "Marque os dois números na reta e observe suas posições; ofereça também objetos ou cartões."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+      "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+      "Apresentar um par por vez e separar visualmente dezenas e unidades."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma05-number-line-walk",
+        "title": "Trilha numérica",
+        "instructions": "Cartões com números de até duas ordens são posicionados numa reta visível.\n1. Escolha dois cartões e leia seus numerais.\n2. Marque ou localize cada posição na reta.\n3. Diga qual está à esquerda, à direita ou na mesma posição.",
+        "steps": [
+          "Escolha dois cartões e leia seus numerais.",
+          "Marque ou localize cada posição na reta.",
+          "Diga qual está à esquerda, à direita ou na mesma posição."
+        ],
+        "evidence": "Comparação correta apoiada na posição dos números.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um número com apoio.",
+            "developing": "compara dois números na reta.",
+            "proficient": "compara e registra maior, menor ou igualdade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma05-classroom-collections",
+        "title": "Comparar coleções organizadas",
+        "instructions": "Coleções fictícias são representadas em dezenas e unidades para planejar materiais de uma atividade.\n1. Leia os números de cada coleção.\n2. Represente dezenas e unidades com cartões ou desenho.\n3. Compare e justifique qual quantidade é maior ou se são iguais.",
+        "steps": [
+          "Leia os números de cada coleção.",
+          "Represente dezenas e unidades com cartões ou desenho.",
+          "Compare e justifique qual quantidade é maior ou se são iguais."
+        ],
+        "evidence": "Registro numérico com comparação justificada pela posição ou valor dos algarismos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece números com apoio.",
+            "developing": "compara dezenas ou unidades.",
+            "proficient": "escolhe uma estratégia coerente e justifica a comparação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma05-compare-two-digit-numbers-01",
+          "v1-ef01ma05-compare-two-digit-numbers-02",
+          "v1-ef01ma05-compare-two-digit-numbers-03",
+          "v1-ef01ma05-compare-two-digit-numbers-04",
+          "v1-ef01ma05-compare-two-digit-numbers-05",
+          "v1-ef01ma05-compare-two-digit-numbers-06",
+          "v1-ef01ma05-compare-two-digit-numbers-07",
+          "v1-ef01ma05-compare-two-digit-numbers-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma05-compare-two-digit-numbers-09",
+          "v1-ef01ma05-compare-two-digit-numbers-10",
+          "v1-ef01ma05-compare-two-digit-numbers-11",
+          "v1-ef01ma05-compare-two-digit-numbers-12",
+          "v1-ef01ma05-compare-two-digit-numbers-13",
+          "v1-ef01ma05-compare-two-digit-numbers-14",
+          "v1-ef01ma05-compare-two-digit-numbers-15",
+          "v1-ef01ma05-compare-two-digit-numbers-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma05-compare-two-digit-numbers-17",
+          "v1-ef01ma05-compare-two-digit-numbers-18",
+          "v1-ef01ma05-compare-two-digit-numbers-19",
+          "v1-ef01ma05-compare-two-digit-numbers-20",
+          "v1-ef01ma05-compare-two-digit-numbers-21",
+          "v1-ef01ma05-compare-two-digit-numbers-22",
+          "v1-ef01ma05-compare-two-digit-numbers-23",
+          "v1-ef01ma05-compare-two-digit-numbers-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma05-compare-two-digit-numbers-25",
+          "v1-ef01ma05-compare-two-digit-numbers-26",
+          "v1-ef01ma05-compare-two-digit-numbers-27",
+          "v1-ef01ma05-compare-two-digit-numbers-28",
+          "v1-ef01ma05-compare-two-digit-numbers-29",
+          "v1-ef01ma05-compare-two-digit-numbers-30",
+          "v1-ef01ma05-compare-two-digit-numbers-31",
+          "v1-ef01ma05-compare-two-digit-numbers-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma05-compare-two-digit-numbers-33",
+          "v1-ef01ma05-compare-two-digit-numbers-34",
+          "v1-ef01ma05-compare-two-digit-numbers-35",
+          "v1-ef01ma05-compare-two-digit-numbers-36",
+          "v1-ef01ma05-compare-two-digit-numbers-37",
+          "v1-ef01ma05-compare-two-digit-numbers-38",
+          "v1-ef01ma05-compare-two-digit-numbers-39",
+          "v1-ef01ma05-compare-two-digit-numbers-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA05",
+        "descriptor": "Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-01",
+      "statement": "Qual número é maior: 18 ou 23?",
+      "prompt": "Qual número é maior: 18 ou 23?",
+      "options": [
+        "23.",
+        "18",
+        "São iguais",
+        "Nenhum pode ser comparado"
+      ],
+      "correctAnswer": "23.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "18": [
+          "COMPARE_TENS"
+        ],
+        "São iguais": [
+          "COMPARE_TENS"
+        ],
+        "Nenhum pode ser comparado": [
+          "COMPARE_TENS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTOES_18_E_23",
+      "explanation": "23 tem duas dezenas e 18 tem uma.",
+      "hint": "Compare primeiro as dezenas.",
+      "errorFocus": "COMPARE_TENS",
+      "feedback": {
+        "correct": "Boa observação: 23 tem duas dezenas e 18 tem uma.",
+        "incorrect": "23 tem duas dezenas e 18 tem uma.",
+        "hint": "Compare primeiro as dezenas.",
+        "errorFocus": "COMPARE_TENS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-02",
+      "statement": "Na reta numérica, qual fica mais à direita: 12 ou 16?",
+      "prompt": "Na reta numérica, qual fica mais à direita: 12 ou 16?",
+      "options": [
+        "12",
+        "16.",
+        "Os dois ficam no mesmo ponto",
+        "Nenhum aparece"
+      ],
+      "correctAnswer": "16.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "12": [
+          "RIGHT_IS_GREATER"
+        ],
+        "Os dois ficam no mesmo ponto": [
+          "RIGHT_IS_GREATER"
+        ],
+        "Nenhum aparece": [
+          "RIGHT_IS_GREATER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "RETA_12_E_16",
+      "explanation": "16 vem depois de 12 na reta.",
+      "hint": "Procure o ponto mais à direita.",
+      "errorFocus": "RIGHT_IS_GREATER",
+      "feedback": {
+        "correct": "Boa observação: 16 vem depois de 12 na reta.",
+        "incorrect": "16 vem depois de 12 na reta.",
+        "hint": "Procure o ponto mais à direita.",
+        "errorFocus": "RIGHT_IS_GREATER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-03",
+      "statement": "Qual número é maior: 41 ou 47?",
+      "prompt": "Qual número é maior: 41 ou 47?",
+      "options": [
+        "41",
+        "São iguais",
+        "47.",
+        "4"
+      ],
+      "correctAnswer": "47.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "4": [
+          "COMPARE_UNITS_IF_TENS_EQUAL"
+        ],
+        "41": [
+          "COMPARE_UNITS_IF_TENS_EQUAL"
+        ],
+        "São iguais": [
+          "COMPARE_UNITS_IF_TENS_EQUAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "QUARENTA_E_UM_E_QUARENTA_E_SETE",
+      "explanation": "As dezenas são iguais; sete unidades são mais que uma.",
+      "hint": "Como as dezenas coincidem, compare as unidades.",
+      "errorFocus": "COMPARE_UNITS_IF_TENS_EQUAL",
+      "feedback": {
+        "correct": "Boa observação: As dezenas são iguais; sete unidades são mais que uma.",
+        "incorrect": "As dezenas são iguais; sete unidades são mais que uma.",
+        "hint": "Como as dezenas coincidem, compare as unidades.",
+        "errorFocus": "COMPARE_UNITS_IF_TENS_EQUAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-04",
+      "statement": "Que sinal indica que 35 e 35 têm o mesmo valor?",
+      "prompt": "Que sinal indica que 35 e 35 têm o mesmo valor?",
+      "options": [
+        ">",
+        "<",
+        "+",
+        "=."
+      ],
+      "correctAnswer": "=.",
+      "answerPosition": "D",
+      "misconceptions": {
+        ">": [
+          "EQUALITY_SYMBOL"
+        ],
+        "<": [
+          "EQUALITY_SYMBOL"
+        ],
+        "+": [
+          "EQUALITY_SYMBOL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SINAL_DE_IGUALDADE",
+      "explanation": "Os dois números são iguais.",
+      "hint": "Escolha o sinal de igualdade.",
+      "errorFocus": "EQUALITY_SYMBOL",
+      "feedback": {
+        "correct": "Boa observação: Os dois números são iguais.",
+        "incorrect": "Os dois números são iguais.",
+        "hint": "Escolha o sinal de igualdade.",
+        "errorFocus": "EQUALITY_SYMBOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-05",
+      "statement": "Uma caixa tem 5 dezenas de fichas e outra tem 4 dezenas. Qual número é maior: 50 ou 40?",
+      "prompt": "Uma caixa tem 5 dezenas de fichas e outra tem 4 dezenas. Qual número é maior: 50 ou 40?",
+      "options": [
+        "50.",
+        "40",
+        "São iguais",
+        "5"
+      ],
+      "correctAnswer": "50.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "5": [
+          "TENS_VALUE"
+        ],
+        "40": [
+          "TENS_VALUE"
+        ],
+        "São iguais": [
+          "TENS_VALUE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DEZENAS_DE_FICHAS",
+      "explanation": "Cinco dezenas representam mais que quatro dezenas.",
+      "hint": "Compare o algarismo das dezenas.",
+      "errorFocus": "TENS_VALUE",
+      "feedback": {
+        "correct": "Boa observação: Cinco dezenas representam mais que quatro dezenas.",
+        "incorrect": "Cinco dezenas representam mais que quatro dezenas.",
+        "hint": "Compare o algarismo das dezenas.",
+        "errorFocus": "TENS_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-06",
+      "statement": "Num placar, aparecem 62 e 59. Qual pontuação é maior?",
+      "prompt": "Num placar, aparecem 62 e 59. Qual pontuação é maior?",
+      "options": [
+        "59",
+        "62.",
+        "São iguais",
+        "2"
+      ],
+      "correctAnswer": "62.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "2": [
+          "TENS_BEFORE_UNITS"
+        ],
+        "59": [
+          "TENS_BEFORE_UNITS"
+        ],
+        "São iguais": [
+          "TENS_BEFORE_UNITS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PLACAR_62_E_59",
+      "explanation": "62 tem seis dezenas, mais que as cinco dezenas de 59.",
+      "hint": "Não compare só o último algarismo.",
+      "errorFocus": "TENS_BEFORE_UNITS",
+      "feedback": {
+        "correct": "Boa observação: 62 tem seis dezenas, mais que as cinco dezenas de 59.",
+        "incorrect": "62 tem seis dezenas, mais que as cinco dezenas de 59.",
+        "hint": "Não compare só o último algarismo.",
+        "errorFocus": "TENS_BEFORE_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-07",
+      "statement": "Na reta de 0 a 10, qual número aparece depois de 7?",
+      "prompt": "Na reta de 0 a 10, qual número aparece depois de 7?",
+      "options": [
+        "6",
+        "5",
+        "8.",
+        "10"
+      ],
+      "correctAnswer": "8.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "5": [
+          "NEXT_NUMBER_ON_LINE"
+        ],
+        "6": [
+          "NEXT_NUMBER_ON_LINE"
+        ],
+        "10": [
+          "NEXT_NUMBER_ON_LINE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "POSICAO_DO_8",
+      "explanation": "8 vem imediatamente depois de 7.",
+      "hint": "Avance um ponto.",
+      "errorFocus": "NEXT_NUMBER_ON_LINE",
+      "feedback": {
+        "correct": "Boa observação: 8 vem imediatamente depois de 7.",
+        "incorrect": "8 vem imediatamente depois de 7.",
+        "hint": "Avance um ponto.",
+        "errorFocus": "NEXT_NUMBER_ON_LINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-08",
+      "statement": "Complete: 28 __ 31.",
+      "prompt": "Complete: 28 __ 31.",
+      "options": [
+        ">",
+        "=",
+        "+",
+        "<."
+      ],
+      "correctAnswer": "<.",
+      "answerPosition": "D",
+      "misconceptions": {
+        ">": [
+          "LESS_THAN_SYMBOL"
+        ],
+        "=": [
+          "LESS_THAN_SYMBOL"
+        ],
+        "+": [
+          "LESS_THAN_SYMBOL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SINAL_MAIOR_QUE",
+      "explanation": "28 é menor que 31.",
+      "hint": "O número menor fica à esquerda do sinal <.",
+      "errorFocus": "LESS_THAN_SYMBOL",
+      "feedback": {
+        "correct": "Boa observação: 28 é menor que 31.",
+        "incorrect": "28 é menor que 31.",
+        "hint": "O número menor fica à esquerda do sinal <.",
+        "errorFocus": "LESS_THAN_SYMBOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-09",
+      "statement": "Qual número é maior: 44 ou 39?",
+      "prompt": "Qual número é maior: 44 ou 39?",
+      "options": [
+        "44.",
+        "39",
+        "São iguais",
+        "4"
+      ],
+      "correctAnswer": "44.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "4": [
+          "COMPARE_TENS_2"
+        ],
+        "39": [
+          "COMPARE_TENS_2"
+        ],
+        "São iguais": [
+          "COMPARE_TENS_2"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTAZ_44_E_39",
+      "explanation": "44 tem quatro dezenas e 39 tem três.",
+      "hint": "Olhe as dezenas primeiro.",
+      "errorFocus": "COMPARE_TENS_2",
+      "feedback": {
+        "correct": "Boa observação: 44 tem quatro dezenas e 39 tem três.",
+        "incorrect": "44 tem quatro dezenas e 39 tem três.",
+        "hint": "Olhe as dezenas primeiro.",
+        "errorFocus": "COMPARE_TENS_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-10",
+      "statement": "Complete: 26 __ 29.",
+      "prompt": "Complete: 26 __ 29.",
+      "options": [
+        ">",
+        "<.",
+        "=",
+        "-"
+      ],
+      "correctAnswer": "<.",
+      "answerPosition": "B",
+      "misconceptions": {
+        ">": [
+          "COMPARE_UNITS_2"
+        ],
+        "=": [
+          "COMPARE_UNITS_2"
+        ],
+        "-": [
+          "COMPARE_UNITS_2"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NUMEROS_26_E_29",
+      "explanation": "As dezenas são iguais e seis é menor que nove.",
+      "hint": "Compare as unidades.",
+      "errorFocus": "COMPARE_UNITS_2",
+      "feedback": {
+        "correct": "Boa observação: As dezenas são iguais e seis é menor que nove.",
+        "incorrect": "As dezenas são iguais e seis é menor que nove.",
+        "hint": "Compare as unidades.",
+        "errorFocus": "COMPARE_UNITS_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-11",
+      "statement": "Entre 52 e 58, qual ponto fica mais perto de 60 na reta?",
+      "prompt": "Entre 52 e 58, qual ponto fica mais perto de 60 na reta?",
+      "options": [
+        "52",
+        "50",
+        "58.",
+        "Os dois ficam em 60"
+      ],
+      "correctAnswer": "58.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "50": [
+          "DISTANCE_ON_LINE"
+        ],
+        "52": [
+          "DISTANCE_ON_LINE"
+        ],
+        "Os dois ficam em 60": [
+          "DISTANCE_ON_LINE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "RETA_50_A_60",
+      "explanation": "58 está a dois passos de 60; 52 está a oito.",
+      "hint": "Conte os passos até 60.",
+      "errorFocus": "DISTANCE_ON_LINE",
+      "feedback": {
+        "correct": "Boa observação: 58 está a dois passos de 60; 52 está a oito.",
+        "incorrect": "58 está a dois passos de 60; 52 está a oito.",
+        "hint": "Conte os passos até 60.",
+        "errorFocus": "DISTANCE_ON_LINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-12",
+      "statement": "Qual é maior: 42 ou 39?",
+      "prompt": "Qual é maior: 42 ou 39?",
+      "options": [
+        "39",
+        "São iguais",
+        "2",
+        "42."
+      ],
+      "correctAnswer": "42.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "2": [
+          "TENS_COMPARISON_2"
+        ],
+        "39": [
+          "TENS_COMPARISON_2"
+        ],
+        "São iguais": [
+          "TENS_COMPARISON_2"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "QUARENTA_E_DOIS_E_TRINTA_E_NOVE",
+      "explanation": "42 tem quatro dezenas e 39 tem três.",
+      "hint": "Compare as dezenas completas.",
+      "errorFocus": "TENS_COMPARISON_2",
+      "feedback": {
+        "correct": "Boa observação: 42 tem quatro dezenas e 39 tem três.",
+        "incorrect": "42 tem quatro dezenas e 39 tem três.",
+        "hint": "Compare as dezenas completas.",
+        "errorFocus": "TENS_COMPARISON_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-13",
+      "statement": "O número 57 tem quantas dezenas?",
+      "prompt": "O número 57 tem quantas dezenas?",
+      "options": [
+        "5 dezenas.",
+        "7 dezenas",
+        "2 dezenas",
+        "57 dezenas"
+      ],
+      "correctAnswer": "5 dezenas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7 dezenas": [
+          "TENS_PLACE_VALUE"
+        ],
+        "2 dezenas": [
+          "TENS_PLACE_VALUE"
+        ],
+        "57 dezenas": [
+          "TENS_PLACE_VALUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DECOMPOSICAO_57",
+      "explanation": "O algarismo 5 ocupa a posição das dezenas.",
+      "hint": "Leia o primeiro algarismo como dezenas.",
+      "errorFocus": "TENS_PLACE_VALUE",
+      "feedback": {
+        "correct": "Boa observação: O algarismo 5 ocupa a posição das dezenas.",
+        "incorrect": "O algarismo 5 ocupa a posição das dezenas.",
+        "hint": "Leia o primeiro algarismo como dezenas.",
+        "errorFocus": "TENS_PLACE_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-14",
+      "statement": "70 ou 69: qual é maior?",
+      "prompt": "70 ou 69: qual é maior?",
+      "options": [
+        "69",
+        "70.",
+        "São iguais",
+        "9"
+      ],
+      "correctAnswer": "70.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "9": [
+          "BOUNDARY_TENS"
+        ],
+        "69": [
+          "BOUNDARY_TENS"
+        ],
+        "São iguais": [
+          "BOUNDARY_TENS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NUMEROS_70_E_69",
+      "explanation": "Sete dezenas são mais que seis dezenas e nove unidades.",
+      "hint": "Compare os grupos de dez.",
+      "errorFocus": "BOUNDARY_TENS",
+      "feedback": {
+        "correct": "Boa observação: Sete dezenas são mais que seis dezenas e nove unidades.",
+        "incorrect": "Sete dezenas são mais que seis dezenas e nove unidades.",
+        "hint": "Compare os grupos de dez.",
+        "errorFocus": "BOUNDARY_TENS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-15",
+      "statement": "Duas coleções têm 14 objetos cada. Como comparar as quantidades?",
+      "prompt": "Duas coleções têm 14 objetos cada. Como comparar as quantidades?",
+      "options": [
+        "A primeira é maior",
+        "A segunda é maior",
+        "São iguais.",
+        "Não há como comparar"
+      ],
+      "correctAnswer": "São iguais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A primeira é maior": [
+          "EQUAL_QUANTITIES"
+        ],
+        "A segunda é maior": [
+          "EQUAL_QUANTITIES"
+        ],
+        "Não há como comparar": [
+          "EQUAL_QUANTITIES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COLECOES_14_E_14",
+      "explanation": "Os dois registros mostram a mesma quantidade.",
+      "hint": "Confira os numerais.",
+      "errorFocus": "EQUAL_QUANTITIES",
+      "feedback": {
+        "correct": "Boa observação: Os dois registros mostram a mesma quantidade.",
+        "incorrect": "Os dois registros mostram a mesma quantidade.",
+        "hint": "Confira os numerais.",
+        "errorFocus": "EQUAL_QUANTITIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-16",
+      "statement": "Qual sinal completa 36 __ 42?",
+      "prompt": "Qual sinal completa 36 __ 42?",
+      "options": [
+        ">",
+        "=",
+        "×",
+        "<."
+      ],
+      "correctAnswer": "<.",
+      "answerPosition": "D",
+      "misconceptions": {
+        ">": [
+          "SELECT_COMPARISON_SYMBOL"
+        ],
+        "=": [
+          "SELECT_COMPARISON_SYMBOL"
+        ],
+        "×": [
+          "SELECT_COMPARISON_SYMBOL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SINAL_PARA_36_E_42",
+      "explanation": "36 é menor que 42.",
+      "hint": "Localize qual número é menor.",
+      "errorFocus": "SELECT_COMPARISON_SYMBOL",
+      "feedback": {
+        "correct": "Boa observação: 36 é menor que 42.",
+        "incorrect": "36 é menor que 42.",
+        "hint": "Localize qual número é menor.",
+        "errorFocus": "SELECT_COMPARISON_SYMBOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-17",
+      "statement": "Uma prateleira tem 28 livros e outra 31. Qual tem mais?",
+      "prompt": "Uma prateleira tem 28 livros e outra 31. Qual tem mais?",
+      "options": [
+        "A prateleira com 31 livros.",
+        "A de 28 livros",
+        "As duas têm a mesma quantidade",
+        "Não é possível comparar"
+      ],
+      "correctAnswer": "A prateleira com 31 livros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A de 28 livros": [
+          "COMPARE_COLLECTIONS"
+        ],
+        "As duas têm a mesma quantidade": [
+          "COMPARE_COLLECTIONS"
+        ],
+        "Não é possível comparar": [
+          "COMPARE_COLLECTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LIVROS_28_E_31",
+      "explanation": "31 é maior que 28.",
+      "hint": "Compare os números das etiquetas.",
+      "errorFocus": "COMPARE_COLLECTIONS",
+      "feedback": {
+        "correct": "Boa observação: 31 é maior que 28.",
+        "incorrect": "31 é maior que 28.",
+        "hint": "Compare os números das etiquetas.",
+        "errorFocus": "COMPARE_COLLECTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-18",
+      "statement": "Uma criança diz que 9 é maior que 80 porque 9 é um algarismo grande. Qual resposta está correta?",
+      "prompt": "Uma criança diz que 9 é maior que 80 porque 9 é um algarismo grande. Qual resposta está correta?",
+      "options": [
+        "9 é maior porque tem um só algarismo",
+        "80 é maior que 9, pois tem oito dezenas.",
+        "Os dois são iguais",
+        "Nenhum pode ser comparado"
+      ],
+      "correctAnswer": "80 é maior que 9, pois tem oito dezenas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "9 é maior porque tem um só algarismo": [
+          "PLACE_VALUE_NOT_DIGIT_SIZE"
+        ],
+        "Os dois são iguais": [
+          "PLACE_VALUE_NOT_DIGIT_SIZE"
+        ],
+        "Nenhum pode ser comparado": [
+          "PLACE_VALUE_NOT_DIGIT_SIZE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NOVE_E_OITENTA",
+      "explanation": "O valor posicional das dezenas torna 80 maior.",
+      "hint": "Compare quantidades, não o desenho dos algarismos.",
+      "errorFocus": "PLACE_VALUE_NOT_DIGIT_SIZE",
+      "feedback": {
+        "correct": "Boa observação: O valor posicional das dezenas torna 80 maior.",
+        "incorrect": "O valor posicional das dezenas torna 80 maior.",
+        "hint": "Compare quantidades, não o desenho dos algarismos.",
+        "errorFocus": "PLACE_VALUE_NOT_DIGIT_SIZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-19",
+      "statement": "Duas equipes fictícias registram 54 e 45 pontos. Qual registro é maior?",
+      "prompt": "Duas equipes fictícias registram 54 e 45 pontos. Qual registro é maior?",
+      "options": [
+        "45",
+        "São iguais",
+        "54.",
+        "4"
+      ],
+      "correctAnswer": "54.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "4": [
+          "TENS_ORDER_REVERSED"
+        ],
+        "45": [
+          "TENS_ORDER_REVERSED"
+        ],
+        "São iguais": [
+          "TENS_ORDER_REVERSED"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PONTOS_54_E_45",
+      "explanation": "Cinco dezenas são mais que quatro dezenas.",
+      "hint": "Observe o algarismo das dezenas.",
+      "errorFocus": "TENS_ORDER_REVERSED",
+      "feedback": {
+        "correct": "Boa observação: Cinco dezenas são mais que quatro dezenas.",
+        "incorrect": "Cinco dezenas são mais que quatro dezenas.",
+        "hint": "Observe o algarismo das dezenas.",
+        "errorFocus": "TENS_ORDER_REVERSED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-20",
+      "statement": "Na reta numérica, qual número aparece primeiro ao andar para a direita: 33 ou 38?",
+      "prompt": "Na reta numérica, qual número aparece primeiro ao andar para a direita: 33 ou 38?",
+      "options": [
+        "38",
+        "Os dois aparecem no mesmo ponto",
+        "Nenhum aparece",
+        "33."
+      ],
+      "correctAnswer": "33.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "38": [
+          "LEFT_TO_RIGHT_ORDER"
+        ],
+        "Os dois aparecem no mesmo ponto": [
+          "LEFT_TO_RIGHT_ORDER"
+        ],
+        "Nenhum aparece": [
+          "LEFT_TO_RIGHT_ORDER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RETA_COM_33_E_38",
+      "explanation": "33 está à esquerda de 38.",
+      "hint": "Leia a reta da esquerda para a direita.",
+      "errorFocus": "LEFT_TO_RIGHT_ORDER",
+      "feedback": {
+        "correct": "Boa observação: 33 está à esquerda de 38.",
+        "incorrect": "33 está à esquerda de 38.",
+        "hint": "Leia a reta da esquerda para a direita.",
+        "errorFocus": "LEFT_TO_RIGHT_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-21",
+      "statement": "Uma pessoa diz que 64 > 61 porque ambos têm seis dezenas e quatro unidades são mais que uma. A justificativa está correta?",
+      "prompt": "Uma pessoa diz que 64 > 61 porque ambos têm seis dezenas e quatro unidades são mais que uma. A justificativa está correta?",
+      "options": [
+        "Sim; as dezenas são iguais e 4 é maior que 1.",
+        "Não; compare apenas as dezenas",
+        "Não; 61 é maior",
+        "Sim, porque 64 tem menos dezenas"
+      ],
+      "correctAnswer": "Sim; as dezenas são iguais e 4 é maior que 1.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não; compare apenas as dezenas": [
+          "JUSTIFY_EQUAL_TENS"
+        ],
+        "Não; 61 é maior": [
+          "JUSTIFY_EQUAL_TENS"
+        ],
+        "Sim, porque 64 tem menos dezenas": [
+          "JUSTIFY_EQUAL_TENS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMPARACAO_COM_RETA_E_DECOMPOSICAO",
+      "explanation": "Com dezenas iguais, comparar unidades decide o par.",
+      "hint": "Confira as duas posições.",
+      "errorFocus": "JUSTIFY_EQUAL_TENS",
+      "feedback": {
+        "correct": "Boa observação: Com dezenas iguais, comparar unidades decide o par.",
+        "incorrect": "Com dezenas iguais, comparar unidades decide o par.",
+        "hint": "Confira as duas posições.",
+        "errorFocus": "JUSTIFY_EQUAL_TENS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-22",
+      "statement": "Qual número está mais perto de 20: 18 ou 12?",
+      "prompt": "Qual número está mais perto de 20: 18 ou 12?",
+      "options": [
+        "12",
+        "18.",
+        "Os dois estão à mesma distância",
+        "20 não pode ser comparado"
+      ],
+      "correctAnswer": "18.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "12": [
+          "DISTANCE_TO_REFERENCE"
+        ],
+        "Os dois estão à mesma distância": [
+          "DISTANCE_TO_REFERENCE"
+        ],
+        "20 não pode ser comparado": [
+          "DISTANCE_TO_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NUMERO_MAIS_PERTO_DE_20",
+      "explanation": "18 está a dois de 20; 12 está a oito.",
+      "hint": "Conte a distância até 20.",
+      "errorFocus": "DISTANCE_TO_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: 18 está a dois de 20; 12 está a oito.",
+        "incorrect": "18 está a dois de 20; 12 está a oito.",
+        "hint": "Conte a distância até 20.",
+        "errorFocus": "DISTANCE_TO_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-23",
+      "statement": "Qual é o maior entre 27, 72 e 47?",
+      "prompt": "Qual é o maior entre 27, 72 e 47?",
+      "options": [
+        "27",
+        "47",
+        "72.",
+        "Todos são iguais"
+      ],
+      "correctAnswer": "72.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "27": [
+          "ORDER_THREE_NUMBERS"
+        ],
+        "47": [
+          "ORDER_THREE_NUMBERS"
+        ],
+        "Todos são iguais": [
+          "ORDER_THREE_NUMBERS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMPARAR_TRES_CARTOES",
+      "explanation": "72 tem sete dezenas, mais que os outros.",
+      "hint": "Compare os algarismos das dezenas.",
+      "errorFocus": "ORDER_THREE_NUMBERS",
+      "feedback": {
+        "correct": "Boa observação: 72 tem sete dezenas, mais que os outros.",
+        "incorrect": "72 tem sete dezenas, mais que os outros.",
+        "hint": "Compare os algarismos das dezenas.",
+        "errorFocus": "ORDER_THREE_NUMBERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-24",
+      "statement": "Por que 25 < 30 é uma comparação correta?",
+      "prompt": "Por que 25 < 30 é uma comparação correta?",
+      "options": [
+        "25 é igual a 30",
+        "25 é maior porque termina em 5",
+        "O sinal indica adição",
+        "25 é menor que 30 e aparece antes dele na sequência."
+      ],
+      "correctAnswer": "25 é menor que 30 e aparece antes dele na sequência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "25 é igual a 30": [
+          "EXPLAIN_LESS_THAN"
+        ],
+        "25 é maior porque termina em 5": [
+          "EXPLAIN_LESS_THAN"
+        ],
+        "O sinal indica adição": [
+          "EXPLAIN_LESS_THAN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_SINAL",
+      "explanation": "O sinal < aponta a relação de menor valor.",
+      "hint": "Leia a frase como “25 é menor que 30”.",
+      "errorFocus": "EXPLAIN_LESS_THAN",
+      "feedback": {
+        "correct": "Boa observação: O sinal < aponta a relação de menor valor.",
+        "incorrect": "O sinal < aponta a relação de menor valor.",
+        "hint": "Leia a frase como “25 é menor que 30”.",
+        "errorFocus": "EXPLAIN_LESS_THAN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-25",
+      "statement": "Qual número é maior: 83 ou 38?",
+      "prompt": "Qual número é maior: 83 ou 38?",
+      "options": [
+        "83.",
+        "38",
+        "São iguais",
+        "3"
+      ],
+      "correctAnswer": "83.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "3": [
+          "TENS_FIRST_REVIEW"
+        ],
+        "38": [
+          "TENS_FIRST_REVIEW"
+        ],
+        "São iguais": [
+          "TENS_FIRST_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NUMEROS_83_E_38",
+      "explanation": "83 tem oito dezenas e 38 tem três.",
+      "hint": "Observe a primeira posição.",
+      "errorFocus": "TENS_FIRST_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 83 tem oito dezenas e 38 tem três.",
+        "incorrect": "83 tem oito dezenas e 38 tem três.",
+        "hint": "Observe a primeira posição.",
+        "errorFocus": "TENS_FIRST_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-26",
+      "statement": "Complete: 52 __ 52.",
+      "prompt": "Complete: 52 __ 52.",
+      "options": [
+        ">",
+        "=.",
+        "<",
+        "−"
+      ],
+      "correctAnswer": "=.",
+      "answerPosition": "B",
+      "misconceptions": {
+        ">": [
+          "EQUAL_SYMBOL_REVIEW"
+        ],
+        "<": [
+          "EQUAL_SYMBOL_REVIEW"
+        ],
+        "−": [
+          "EQUAL_SYMBOL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SINAL_52_E_52",
+      "explanation": "Os valores são idênticos.",
+      "hint": "Compare os dois numerais.",
+      "errorFocus": "EQUAL_SYMBOL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os valores são idênticos.",
+        "incorrect": "Os valores são idênticos.",
+        "hint": "Compare os dois numerais.",
+        "errorFocus": "EQUAL_SYMBOL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-27",
+      "statement": "Qual comparação é verdadeira?",
+      "prompt": "Qual comparação é verdadeira?",
+      "options": [
+        "62 > 68",
+        "68 = 62",
+        "68 > 62.",
+        "68 < 62"
+      ],
+      "correctAnswer": "68 > 62.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "62 > 68": [
+          "COMPARE_UNITS_REVIEW"
+        ],
+        "68 = 62": [
+          "COMPARE_UNITS_REVIEW"
+        ],
+        "68 < 62": [
+          "COMPARE_UNITS_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NUMEROS_68_E_62",
+      "explanation": "As dezenas são iguais e oito unidades são mais que duas.",
+      "hint": "Compare as unidades.",
+      "errorFocus": "COMPARE_UNITS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As dezenas são iguais e oito unidades são mais que duas.",
+        "incorrect": "As dezenas são iguais e oito unidades são mais que duas.",
+        "hint": "Compare as unidades.",
+        "errorFocus": "COMPARE_UNITS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-28",
+      "statement": "Qual número fica à direita: 41 ou 46?",
+      "prompt": "Qual número fica à direita: 41 ou 46?",
+      "options": [
+        "41",
+        "Os dois ficam no mesmo ponto",
+        "Nenhum pode ser marcado",
+        "46."
+      ],
+      "correctAnswer": "46.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "41": [
+          "RIGHTWARD_GREATER_REVIEW"
+        ],
+        "Os dois ficam no mesmo ponto": [
+          "RIGHTWARD_GREATER_REVIEW"
+        ],
+        "Nenhum pode ser marcado": [
+          "RIGHTWARD_GREATER_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "RETA_41_E_46",
+      "explanation": "46 é posterior a 41 na reta.",
+      "hint": "Procure a posição mais à direita.",
+      "errorFocus": "RIGHTWARD_GREATER_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 46 é posterior a 41 na reta.",
+        "incorrect": "46 é posterior a 41 na reta.",
+        "hint": "Procure a posição mais à direita.",
+        "errorFocus": "RIGHTWARD_GREATER_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-29",
+      "statement": "O número escrito com mais traços é sempre maior?",
+      "prompt": "O número escrito com mais traços é sempre maior?",
+      "options": [
+        "Não; é preciso comparar o valor dos números.",
+        "Sim, todo número longo é maior",
+        "Sim, a escrita decide a quantidade",
+        "Não, números nunca representam quantidades"
+      ],
+      "correctAnswer": "Não; é preciso comparar o valor dos números.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, todo número longo é maior": [
+          "NUMERAL_APPEARANCE_REVIEW"
+        ],
+        "Sim, a escrita decide a quantidade": [
+          "NUMERAL_APPEARANCE_REVIEW"
+        ],
+        "Não, números nunca representam quantidades": [
+          "NUMERAL_APPEARANCE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "QUANTIDADE_E_TAMANHO_DO_NUMERAL",
+      "explanation": "A aparência do símbolo não determina sozinha o valor.",
+      "hint": "Compare dezenas e unidades.",
+      "errorFocus": "NUMERAL_APPEARANCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A aparência do símbolo não determina sozinha o valor.",
+        "incorrect": "A aparência do símbolo não determina sozinha o valor.",
+        "hint": "Compare dezenas e unidades.",
+        "errorFocus": "NUMERAL_APPEARANCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-30",
+      "statement": "Qual cartão vem no meio em 19, 20 e 21?",
+      "prompt": "Qual cartão vem no meio em 19, 20 e 21?",
+      "options": [
+        "19",
+        "20.",
+        "21",
+        "Nenhum"
+      ],
+      "correctAnswer": "20.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "19": [
+          "CONSECUTIVE_NUMBERS_REVIEW"
+        ],
+        "21": [
+          "CONSECUTIVE_NUMBERS_REVIEW"
+        ],
+        "Nenhum": [
+          "CONSECUTIVE_NUMBERS_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_19_20_21",
+      "explanation": "20 está entre 19 e 21.",
+      "hint": "Siga a sequência numérica.",
+      "errorFocus": "CONSECUTIVE_NUMBERS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 20 está entre 19 e 21.",
+        "incorrect": "20 está entre 19 e 21.",
+        "hint": "Siga a sequência numérica.",
+        "errorFocus": "CONSECUTIVE_NUMBERS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-31",
+      "statement": "Um grupo tem 37 peças e outro 42. Qual conclusão é correta?",
+      "prompt": "Um grupo tem 37 peças e outro 42. Qual conclusão é correta?",
+      "options": [
+        "37 é maior",
+        "As quantidades são iguais",
+        "42 peças é uma quantidade maior.",
+        "Peças não podem ser contadas"
+      ],
+      "correctAnswer": "42 peças é uma quantidade maior.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "37 é maior": [
+          "QUANTITY_COMPARISON_REVIEW"
+        ],
+        "As quantidades são iguais": [
+          "QUANTITY_COMPARISON_REVIEW"
+        ],
+        "Peças não podem ser contadas": [
+          "QUANTITY_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMPARACAO_DE_QUANTIDADES",
+      "explanation": "42 vem depois de 37 e representa mais unidades.",
+      "hint": "Compare os números.",
+      "errorFocus": "QUANTITY_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 42 vem depois de 37 e representa mais unidades.",
+        "incorrect": "42 vem depois de 37 e representa mais unidades.",
+        "hint": "Compare os números.",
+        "errorFocus": "QUANTITY_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-32",
+      "statement": "Como conferir se 57 > 49 faz sentido?",
+      "prompt": "Como conferir se 57 > 49 faz sentido?",
+      "options": [
+        "Olhar somente o 7 e o 9",
+        "Dizer que ambos começam com número",
+        "Ignorar a posição dos algarismos",
+        "Comparar as dezenas: cinco dezenas são mais que quatro."
+      ],
+      "correctAnswer": "Comparar as dezenas: cinco dezenas são mais que quatro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Olhar somente o 7 e o 9": [
+          "POSITIONAL_JUSTIFICATION_REVIEW"
+        ],
+        "Dizer que ambos começam com número": [
+          "POSITIONAL_JUSTIFICATION_REVIEW"
+        ],
+        "Ignorar a posição dos algarismos": [
+          "POSITIONAL_JUSTIFICATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINAL_MAIOR_MENOR",
+      "explanation": "A dezena de 57 supera a de 49.",
+      "hint": "Compare primeiro a casa das dezenas.",
+      "errorFocus": "POSITIONAL_JUSTIFICATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A dezena de 57 supera a de 49.",
+        "incorrect": "A dezena de 57 supera a de 49.",
+        "hint": "Compare primeiro a casa das dezenas.",
+        "errorFocus": "POSITIONAL_JUSTIFICATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-33",
+      "statement": "Qual é maior: 8 ou 6?",
+      "prompt": "Qual é maior: 8 ou 6?",
+      "options": [
+        "8.",
+        "6",
+        "São iguais",
+        "Nenhum"
+      ],
+      "correctAnswer": "8.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "6": [
+          "SINGLE_DIGIT_REVIEW"
+        ],
+        "São iguais": [
+          "SINGLE_DIGIT_REVIEW"
+        ],
+        "Nenhum": [
+          "SINGLE_DIGIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "MAIOR_8_OU_6",
+      "explanation": "8 vem depois de 6.",
+      "hint": "Use a sequência numérica.",
+      "errorFocus": "SINGLE_DIGIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 8 vem depois de 6.",
+        "incorrect": "8 vem depois de 6.",
+        "hint": "Use a sequência numérica.",
+        "errorFocus": "SINGLE_DIGIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-34",
+      "statement": "Qual número é maior: 46 ou 64?",
+      "prompt": "Qual número é maior: 46 ou 64?",
+      "options": [
+        "46",
+        "64.",
+        "São iguais",
+        "4"
+      ],
+      "correctAnswer": "64.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "4": [
+          "TENS_REVIEW"
+        ],
+        "46": [
+          "TENS_REVIEW"
+        ],
+        "São iguais": [
+          "TENS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MAIOR_46_OU_64",
+      "explanation": "64 tem seis dezenas e 46 tem quatro.",
+      "hint": "Compare as dezenas.",
+      "errorFocus": "TENS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 64 tem seis dezenas e 46 tem quatro.",
+        "incorrect": "64 tem seis dezenas e 46 tem quatro.",
+        "hint": "Compare as dezenas.",
+        "errorFocus": "TENS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-35",
+      "statement": "Que sinal completa 18 __ 25?",
+      "prompt": "Que sinal completa 18 __ 25?",
+      "options": [
+        ">",
+        "=",
+        "<.",
+        "+"
+      ],
+      "correctAnswer": "<.",
+      "answerPosition": "C",
+      "misconceptions": {
+        ">": [
+          "LESS_SYMBOL_REVIEW"
+        ],
+        "=": [
+          "LESS_SYMBOL_REVIEW"
+        ],
+        "+": [
+          "LESS_SYMBOL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SINAL_MENOR",
+      "explanation": "18 é menor que 25.",
+      "hint": "Leia a comparação em palavras.",
+      "errorFocus": "LESS_SYMBOL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 18 é menor que 25.",
+        "incorrect": "18 é menor que 25.",
+        "hint": "Leia a comparação em palavras.",
+        "errorFocus": "LESS_SYMBOL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-36",
+      "statement": "Qual desses números fica entre 10 e 20: 15 ou 25?",
+      "prompt": "Qual desses números fica entre 10 e 20: 15 ou 25?",
+      "options": [
+        "25",
+        "Ambos ficam entre",
+        "Nenhum pode ser usado",
+        "15."
+      ],
+      "correctAnswer": "15.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "25": [
+          "BETWEEN_NUMBERS_REVIEW"
+        ],
+        "Ambos ficam entre": [
+          "BETWEEN_NUMBERS_REVIEW"
+        ],
+        "Nenhum pode ser usado": [
+          "BETWEEN_NUMBERS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RETA_10_15_20",
+      "explanation": "15 está depois de 10 e antes de 20.",
+      "hint": "Marque os pontos na reta.",
+      "errorFocus": "BETWEEN_NUMBERS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 15 está depois de 10 e antes de 20.",
+        "incorrect": "15 está depois de 10 e antes de 20.",
+        "hint": "Marque os pontos na reta.",
+        "errorFocus": "BETWEEN_NUMBERS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-37",
+      "statement": "Em 72 e 78, qual parte é igual?",
+      "prompt": "Em 72 e 78, qual parte é igual?",
+      "options": [
+        "As dezenas: ambos têm sete.",
+        "As unidades",
+        "O número completo",
+        "Nenhuma parte"
+      ],
+      "correctAnswer": "As dezenas: ambos têm sete.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As unidades": [
+          "TENS_SAME_REVIEW"
+        ],
+        "O número completo": [
+          "TENS_SAME_REVIEW"
+        ],
+        "Nenhuma parte": [
+          "TENS_SAME_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "IGUALDADE_DE_DEZENAS",
+      "explanation": "Os dois têm 7 dezenas; as unidades diferem.",
+      "hint": "Separe dezenas e unidades.",
+      "errorFocus": "TENS_SAME_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os dois têm 7 dezenas; as unidades diferem.",
+        "incorrect": "Os dois têm 7 dezenas; as unidades diferem.",
+        "hint": "Separe dezenas e unidades.",
+        "errorFocus": "TENS_SAME_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-38",
+      "statement": "Uma resposta afirma 39 > 42. Como corrigir?",
+      "prompt": "Uma resposta afirma 39 > 42. Como corrigir?",
+      "options": [
+        "39 = 42",
+        "39 < 42.",
+        "42 < 39",
+        "39 + 42"
+      ],
+      "correctAnswer": "39 < 42.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "39 = 42": [
+          "SIGN_DIRECTION_REVIEW"
+        ],
+        "42 < 39": [
+          "SIGN_DIRECTION_REVIEW"
+        ],
+        "39 + 42": [
+          "SIGN_DIRECTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONFERIR_SINAL",
+      "explanation": "42 é maior que 39.",
+      "hint": "Leia a relação de menor para maior.",
+      "errorFocus": "SIGN_DIRECTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 42 é maior que 39.",
+        "incorrect": "42 é maior que 39.",
+        "hint": "Leia a relação de menor para maior.",
+        "errorFocus": "SIGN_DIRECTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-39",
+      "statement": "Duas caixas registram 25 objetos cada. O que se conclui?",
+      "prompt": "Duas caixas registram 25 objetos cada. O que se conclui?",
+      "options": [
+        "A primeira tem mais",
+        "A segunda tem mais",
+        "As quantidades são iguais.",
+        "Os números são diferentes"
+      ],
+      "correctAnswer": "As quantidades são iguais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A primeira tem mais": [
+          "EQUALITY_REVIEW"
+        ],
+        "A segunda tem mais": [
+          "EQUALITY_REVIEW"
+        ],
+        "Os números são diferentes": [
+          "EQUALITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COLECOES_25_E_25",
+      "explanation": "Os dois registros têm o mesmo valor.",
+      "hint": "Compare cada algarismo.",
+      "errorFocus": "EQUALITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os dois registros têm o mesmo valor.",
+        "incorrect": "Os dois registros têm o mesmo valor.",
+        "hint": "Compare cada algarismo.",
+        "errorFocus": "EQUALITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma05-compare-two-digit-numbers-40",
+      "statement": "Uma comparação cuidadosa considera valor posicional e pode usar...",
+      "prompt": "Uma comparação cuidadosa considera valor posicional e pode usar...",
+      "options": [
+        "apenas a aparência dos algarismos",
+        "a cor do cartão",
+        "um palpite sem conferir",
+        "a sequência numérica ou a reta como apoio."
+      ],
+      "correctAnswer": "a sequência numérica ou a reta como apoio.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "apenas a aparência dos algarismos": [
+          "COMPARISON_STRATEGY_SUMMARY"
+        ],
+        "a cor do cartão": [
+          "COMPARISON_STRATEGY_SUMMARY"
+        ],
+        "um palpite sem conferir": [
+          "COMPARISON_STRATEGY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMPARACAO_NUMERICA",
+      "explanation": "Decomposição, sequência e reta apoiam a comparação.",
+      "hint": "Reúna uma estratégia válida.",
+      "errorFocus": "COMPARISON_STRATEGY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Decomposição, sequência e reta apoiam a comparação.",
+        "incorrect": "Decomposição, sequência e reta apoiam a comparação.",
+        "hint": "Reúna uma estratégia válida.",
+        "errorFocus": "COMPARISON_STRATEGY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.",
+          "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.",
+          "Apresentar um par por vez e separar visualmente dezenas e unidades."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

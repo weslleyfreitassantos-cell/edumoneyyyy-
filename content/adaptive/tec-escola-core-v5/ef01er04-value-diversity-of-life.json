@@ -1,0 +1,2077 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er04-value-diversity-of-life",
+  "canonicalSkillCode": "AUTHORING_EF01ER04_VALUE_DIVERSITY_OF_LIFE",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "valorização da diversidade de formas de vida",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Valorizar a diversidade de formas de vida.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Diferentes formas de vida merecem cuidado",
+    "objective": "Reconhecer exemplos de diversidade de vida e propor atitudes de cuidado, sem atribuir a todas as tradições religiosas ou pessoas uma única explicação sobre a natureza.",
+    "summary": "Plantas, animais, fungos e outros seres vivos apresentam muitas formas e modos de viver. A turma pode observar essa diversidade com curiosidade, cuidado e respeito. Pessoas e tradições podem expressar diferentes relações com a vida; não se deve presumir que todas pensem igual. As atividades usam exemplos seguros e não retiram animais, plantas ou partes deles do ambiente.",
+    "explanation": "Observe imagens, histórias ou o entorno sem tocar em seres desconhecidos. Descreva uma diferença visível, como forma de folha ou modo de deslocamento, sem chamar uma vida de melhor ou pior. Em situações cotidianas, cuidar pode significar não destruir ninhos, não arrancar plantas, manter distância segura e seguir orientações de adultos. Ao conversar sobre valores e tradições, escute as fontes apresentadas e evite afirmar que todas as pessoas de um grupo têm a mesma crença.",
+    "workedExample": "Duas imagens mostram uma árvore e uma joaninha. São formas de vida diferentes; podemos observá-las sem retirar folhas ou capturar o inseto e explicar uma maneira de manter o local seguro para ambas.",
+    "commonMistake": "Hierarquizar seres vivos, manusear animais ou plantas sem orientação, ou atribuir uma mesma crença a todas as pessoas de uma tradição.",
+    "priorKnowledge": [
+      "Reconhecer exemplos conhecidos de plantas e animais.",
+      "Descrever uma observação sem transformar opinião em fato."
+    ],
+    "keyConcepts": [
+      "diversidade",
+      "formas de vida",
+      "cuidado",
+      "respeito",
+      "observação",
+      "tradições",
+      "convivência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "VALUE_WITHOUT_HIERARCHY",
+        "action": "Compare características observáveis sem ordenar os seres vivos por importância ou utilidade para as pessoas."
+      },
+      {
+        "errorFocus": "SAFE_OBSERVATION",
+        "action": "Use imagens ou observe à distância; não capture, alimente nem toque seres desconhecidos."
+      },
+      {
+        "errorFocus": "NO_RELIGIOUS_GENERALIZATION",
+        "action": "Retome a fala ou fonte específica e evite generalizar uma tradição para todas as pessoas."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+      "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+      "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er04-life-diversity-observation",
+        "title": "Painel de formas de vida",
+        "instructions": "Imagens autorizadas apresentam seres vivos de diferentes ambientes.\n1. Escolha duas imagens e descreva uma diferença observável.\n2. Registre uma atitude de cuidado adequada para cada situação.\n3. Confira se a descrição evita hierarquizar ou generalizar pessoas.",
+        "steps": [
+          "Escolha duas imagens e descreva uma diferença observável.",
+          "Registre uma atitude de cuidado adequada para cada situação.",
+          "Confira se a descrição evita hierarquizar ou generalizar pessoas."
+        ],
+        "evidence": "Comparação respeitosa acompanhada de atitude segura de cuidado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um ser vivo com apoio.",
+            "developing": "descreve uma diferença observável.",
+            "proficient": "compara sem hierarquia e sugere cuidado seguro."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er04-care-agreement",
+        "title": "Combinados de cuidado",
+        "instructions": "Cenários fictícios mostram escolhas cotidianas que afetam plantas e animais.\n1. Leia um cenário fictício.\n2. Identifique possível risco para uma forma de vida.\n3. Proponha um combinado de cuidado e explique sua escolha.",
+        "steps": [
+          "Leia um cenário fictício.",
+          "Identifique possível risco para uma forma de vida.",
+          "Proponha um combinado de cuidado e explique sua escolha."
+        ],
+        "evidence": "Combinado claro que protege seres vivos sem exigir manuseio.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma ação cuidadosa com ajuda.",
+            "developing": "relaciona ação e cuidado.",
+            "proficient": "justifica uma prática segura e respeitosa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er04-value-diversity-of-life-01",
+          "v1-ef01er04-value-diversity-of-life-02",
+          "v1-ef01er04-value-diversity-of-life-03",
+          "v1-ef01er04-value-diversity-of-life-04",
+          "v1-ef01er04-value-diversity-of-life-05",
+          "v1-ef01er04-value-diversity-of-life-06",
+          "v1-ef01er04-value-diversity-of-life-07",
+          "v1-ef01er04-value-diversity-of-life-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er04-value-diversity-of-life-09",
+          "v1-ef01er04-value-diversity-of-life-10",
+          "v1-ef01er04-value-diversity-of-life-11",
+          "v1-ef01er04-value-diversity-of-life-12",
+          "v1-ef01er04-value-diversity-of-life-13",
+          "v1-ef01er04-value-diversity-of-life-14",
+          "v1-ef01er04-value-diversity-of-life-15",
+          "v1-ef01er04-value-diversity-of-life-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er04-value-diversity-of-life-17",
+          "v1-ef01er04-value-diversity-of-life-18",
+          "v1-ef01er04-value-diversity-of-life-19",
+          "v1-ef01er04-value-diversity-of-life-20",
+          "v1-ef01er04-value-diversity-of-life-21",
+          "v1-ef01er04-value-diversity-of-life-22",
+          "v1-ef01er04-value-diversity-of-life-23",
+          "v1-ef01er04-value-diversity-of-life-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er04-value-diversity-of-life-25",
+          "v1-ef01er04-value-diversity-of-life-26",
+          "v1-ef01er04-value-diversity-of-life-27",
+          "v1-ef01er04-value-diversity-of-life-28",
+          "v1-ef01er04-value-diversity-of-life-29",
+          "v1-ef01er04-value-diversity-of-life-30",
+          "v1-ef01er04-value-diversity-of-life-31",
+          "v1-ef01er04-value-diversity-of-life-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er04-value-diversity-of-life-33",
+          "v1-ef01er04-value-diversity-of-life-34",
+          "v1-ef01er04-value-diversity-of-life-35",
+          "v1-ef01er04-value-diversity-of-life-36",
+          "v1-ef01er04-value-diversity-of-life-37",
+          "v1-ef01er04-value-diversity-of-life-38",
+          "v1-ef01er04-value-diversity-of-life-39",
+          "v1-ef01er04-value-diversity-of-life-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER04",
+        "descriptor": "Valorizar a diversidade de formas de vida.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-01",
+      "statement": "Uma imagem mostra folhas de formatos diferentes. O que ela evidencia?",
+      "prompt": "Uma imagem mostra folhas de formatos diferentes. O que ela evidencia?",
+      "options": [
+        "Diversidade entre plantas.",
+        "Que uma planta vale mais que outra",
+        "Que todas as folhas têm a mesma forma",
+        "Que a imagem mostra animais iguais"
+      ],
+      "correctAnswer": "Diversidade entre plantas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que uma planta vale mais que outra": [
+          "OBSERVE_DIVERSITY"
+        ],
+        "Que todas as folhas têm a mesma forma": [
+          "OBSERVE_DIVERSITY"
+        ],
+        "Que a imagem mostra animais iguais": [
+          "OBSERVE_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOLHA_DE_COSTELA_DE_ADAO",
+      "explanation": "Os formatos apresentados são variados.",
+      "hint": "Compare o formato visível.",
+      "errorFocus": "OBSERVE_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Os formatos apresentados são variados.",
+        "incorrect": "Os formatos apresentados são variados.",
+        "hint": "Compare o formato visível.",
+        "errorFocus": "OBSERVE_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-02",
+      "statement": "Joaninha e arbusto são exemplos de quê?",
+      "prompt": "Joaninha e arbusto são exemplos de quê?",
+      "options": [
+        "Objetos sem vida",
+        "Formas de vida diferentes.",
+        "Duas espécies de planta",
+        "A mesma forma de vida"
+      ],
+      "correctAnswer": "Formas de vida diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Objetos sem vida": [
+          "LIVING_DIVERSITY"
+        ],
+        "Duas espécies de planta": [
+          "LIVING_DIVERSITY"
+        ],
+        "A mesma forma de vida": [
+          "LIVING_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "JOANINHA_E_ARBUSTO",
+      "explanation": "Um animal e uma planta são formas de vida distintas.",
+      "hint": "Observe o que aparece na cena.",
+      "errorFocus": "LIVING_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Um animal e uma planta são formas de vida distintas.",
+        "incorrect": "Um animal e uma planta são formas de vida distintas.",
+        "hint": "Observe o que aparece na cena.",
+        "errorFocus": "LIVING_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-03",
+      "statement": "Uma criança encontra um ninho. Qual atitude é mais cuidadosa?",
+      "prompt": "Uma criança encontra um ninho. Qual atitude é mais cuidadosa?",
+      "options": [
+        "Retirar o ninho para ver dentro",
+        "Tocar nos ovos",
+        "Observar de longe e avisar um adulto.",
+        "Levar o ninho para a sala"
+      ],
+      "correctAnswer": "Observar de longe e avisar um adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Retirar o ninho para ver dentro": [
+          "SAFE_DISTANCE"
+        ],
+        "Tocar nos ovos": [
+          "SAFE_DISTANCE"
+        ],
+        "Levar o ninho para a sala": [
+          "SAFE_DISTANCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NINHO_NO_QUINTAL",
+      "explanation": "A distância evita perturbar os animais.",
+      "hint": "Escolha a ação que não mexe no ninho.",
+      "errorFocus": "SAFE_DISTANCE",
+      "feedback": {
+        "correct": "Boa observação: A distância evita perturbar os animais.",
+        "incorrect": "A distância evita perturbar os animais.",
+        "hint": "Escolha a ação que não mexe no ninho.",
+        "errorFocus": "SAFE_DISTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-04",
+      "statement": "Uma planta cresce no canteiro da escola. O que demonstra cuidado?",
+      "prompt": "Uma planta cresce no canteiro da escola. O que demonstra cuidado?",
+      "options": [
+        "Pisar nela para testar sua força",
+        "Arrancar folhas sem perguntar",
+        "Cobri-la para não receber luz",
+        "Evitar arrancá-la e seguir as orientações de cultivo."
+      ],
+      "correctAnswer": "Evitar arrancá-la e seguir as orientações de cultivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pisar nela para testar sua força": [
+          "PLANT_CARE"
+        ],
+        "Arrancar folhas sem perguntar": [
+          "PLANT_CARE"
+        ],
+        "Cobri-la para não receber luz": [
+          "PLANT_CARE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PLANTA_NO_CANTEIRO",
+      "explanation": "Cuidado respeita a planta e as instruções do espaço.",
+      "hint": "Pense em preservar a planta.",
+      "errorFocus": "PLANT_CARE",
+      "feedback": {
+        "correct": "Boa observação: Cuidado respeita a planta e as instruções do espaço.",
+        "incorrect": "Cuidado respeita a planta e as instruções do espaço.",
+        "hint": "Pense em preservar a planta.",
+        "errorFocus": "PLANT_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-05",
+      "statement": "Uma imagem mostra peixe na água e pássaro numa árvore. O que podemos concluir?",
+      "prompt": "Uma imagem mostra peixe na água e pássaro numa árvore. O que podemos concluir?",
+      "options": [
+        "Há formas de vida em ambientes diferentes.",
+        "Todo pássaro vive em árvore",
+        "Peixes e pássaros são iguais",
+        "Um ambiente é melhor que todos os outros"
+      ],
+      "correctAnswer": "Há formas de vida em ambientes diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todo pássaro vive em árvore": [
+          "HABITAT_DIVERSITY"
+        ],
+        "Peixes e pássaros são iguais": [
+          "HABITAT_DIVERSITY"
+        ],
+        "Um ambiente é melhor que todos os outros": [
+          "HABITAT_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_AMBIENTES",
+      "explanation": "A cena apresenta seres em ambientes diferentes.",
+      "hint": "Limite-se ao que a imagem mostra.",
+      "errorFocus": "HABITAT_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta seres em ambientes diferentes.",
+        "incorrect": "A cena apresenta seres em ambientes diferentes.",
+        "hint": "Limite-se ao que a imagem mostra.",
+        "errorFocus": "HABITAT_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-06",
+      "statement": "Uma turma lê relatos diferentes sobre cuidado com a natureza. Como conversar?",
+      "prompt": "Uma turma lê relatos diferentes sobre cuidado com a natureza. Como conversar?",
+      "options": [
+        "Escolher um relato e falar por todos",
+        "Escutar cada relato sem dizer que todas as pessoas pensam igual.",
+        "Rir de uma tradição",
+        "Afirmar que ninguém pode ter outra visão"
+      ],
+      "correctAnswer": "Escutar cada relato sem dizer que todas as pessoas pensam igual.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher um relato e falar por todos": [
+          "TRADITIONAL_DIVERSITY"
+        ],
+        "Rir de uma tradição": [
+          "TRADITIONAL_DIVERSITY"
+        ],
+        "Afirmar que ninguém pode ter outra visão": [
+          "TRADITIONAL_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TRADICOES_E_NATUREZA",
+      "explanation": "Relatos específicos não representam automaticamente todas as pessoas.",
+      "hint": "Respeite quem falou e a fonte.",
+      "errorFocus": "TRADITIONAL_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Relatos específicos não representam automaticamente todas as pessoas.",
+        "incorrect": "Relatos específicos não representam automaticamente todas as pessoas.",
+        "hint": "Respeite quem falou e a fonte.",
+        "errorFocus": "TRADITIONAL_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-07",
+      "statement": "Uma imagem apresenta cogumelos numa floresta. Qual descrição é adequada?",
+      "prompt": "Uma imagem apresenta cogumelos numa floresta. Qual descrição é adequada?",
+      "options": [
+        "Cogumelos são todos plantas",
+        "A imagem prova que todos são comestíveis",
+        "A imagem mostra fungos entre outros seres do ambiente.",
+        "Fungos não fazem parte da diversidade"
+      ],
+      "correctAnswer": "A imagem mostra fungos entre outros seres do ambiente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cogumelos são todos plantas": [
+          "LIFE_FORM_CATEGORIES"
+        ],
+        "A imagem prova que todos são comestíveis": [
+          "LIFE_FORM_CATEGORIES"
+        ],
+        "Fungos não fazem parte da diversidade": [
+          "LIFE_FORM_CATEGORIES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FUNGOS_NA_IMAGEM",
+      "explanation": "A imagem permite reconhecer fungos sem classificá-los como plantas.",
+      "hint": "Descreva sem experimentar.",
+      "errorFocus": "LIFE_FORM_CATEGORIES",
+      "feedback": {
+        "correct": "Boa observação: A imagem permite reconhecer fungos sem classificá-los como plantas.",
+        "incorrect": "A imagem permite reconhecer fungos sem classificá-los como plantas.",
+        "hint": "Descreva sem experimentar.",
+        "errorFocus": "LIFE_FORM_CATEGORIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-08",
+      "statement": "Há formigas atravessando uma trilha. O que fazer?",
+      "prompt": "Há formigas atravessando uma trilha. O que fazer?",
+      "options": [
+        "Destruir o caminho",
+        "Capturar todas as formigas",
+        "Colocar a mão sobre o grupo",
+        "Observar sem pisar nem bloquear o caminho delas."
+      ],
+      "correctAnswer": "Observar sem pisar nem bloquear o caminho delas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Destruir o caminho": [
+          "NONDESTRUCTIVE_OBSERVATION"
+        ],
+        "Capturar todas as formigas": [
+          "NONDESTRUCTIVE_OBSERVATION"
+        ],
+        "Colocar a mão sobre o grupo": [
+          "NONDESTRUCTIVE_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FORMIGA_NO_CAMINHO",
+      "explanation": "A observação pode acontecer sem ferir os animais.",
+      "hint": "Mantenha espaço para os seres vivos.",
+      "errorFocus": "NONDESTRUCTIVE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A observação pode acontecer sem ferir os animais.",
+        "incorrect": "A observação pode acontecer sem ferir os animais.",
+        "hint": "Mantenha espaço para os seres vivos.",
+        "errorFocus": "NONDESTRUCTIVE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-09",
+      "statement": "Duas folhas têm larguras diferentes. Qual registro é objetivo?",
+      "prompt": "Duas folhas têm larguras diferentes. Qual registro é objetivo?",
+      "options": [
+        "As folhas têm larguras diferentes.",
+        "Uma folha é melhor",
+        "A folha estreita é triste",
+        "As plantas são iguais em tudo"
+      ],
+      "correctAnswer": "As folhas têm larguras diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma folha é melhor": [
+          "OBSERVABLE_DIFFERENCE"
+        ],
+        "A folha estreita é triste": [
+          "OBSERVABLE_DIFFERENCE"
+        ],
+        "As plantas são iguais em tudo": [
+          "OBSERVABLE_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FOLHAS_REDONDA_E_ESTREITA",
+      "explanation": "A largura pode ser comparada sem julgamento.",
+      "hint": "Registre uma característica visível.",
+      "errorFocus": "OBSERVABLE_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A largura pode ser comparada sem julgamento.",
+        "incorrect": "A largura pode ser comparada sem julgamento.",
+        "hint": "Registre uma característica visível.",
+        "errorFocus": "OBSERVABLE_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-10",
+      "statement": "Uma borboleta pousa numa flor. Como observá-la com segurança?",
+      "prompt": "Uma borboleta pousa numa flor. Como observá-la com segurança?",
+      "options": [
+        "Segurá-la pelas asas",
+        "Acompanhar com os olhos sem tentar pegá-la.",
+        "Sacudi-la para fazê-la voar",
+        "Levá-la para dentro"
+      ],
+      "correctAnswer": "Acompanhar com os olhos sem tentar pegá-la.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Segurá-la pelas asas": [
+          "ANIMAL_OBSERVATION"
+        ],
+        "Sacudi-la para fazê-la voar": [
+          "ANIMAL_OBSERVATION"
+        ],
+        "Levá-la para dentro": [
+          "ANIMAL_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BORBOLETA_NO_JARDIM",
+      "explanation": "Observar sem capturar evita machucar o inseto.",
+      "hint": "Não toque no animal.",
+      "errorFocus": "ANIMAL_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Observar sem capturar evita machucar o inseto.",
+        "incorrect": "Observar sem capturar evita machucar o inseto.",
+        "hint": "Não toque no animal.",
+        "errorFocus": "ANIMAL_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-11",
+      "statement": "Árvore e grama são exemplos de quê?",
+      "prompt": "Árvore e grama são exemplos de quê?",
+      "options": [
+        "Animais de espécies iguais",
+        "Objetos fabricados",
+        "Plantas com formas diferentes.",
+        "Uma única planta"
+      ],
+      "correctAnswer": "Plantas com formas diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Animais de espécies iguais": [
+          "PLANT_VARIETY"
+        ],
+        "Objetos fabricados": [
+          "PLANT_VARIETY"
+        ],
+        "Uma única planta": [
+          "PLANT_VARIETY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ARVORE_E_GRAMA",
+      "explanation": "Ambas são plantas, mas têm formas distintas.",
+      "hint": "Compare os exemplos.",
+      "errorFocus": "PLANT_VARIETY",
+      "feedback": {
+        "correct": "Boa observação: Ambas são plantas, mas têm formas distintas.",
+        "incorrect": "Ambas são plantas, mas têm formas distintas.",
+        "hint": "Compare os exemplos.",
+        "errorFocus": "PLANT_VARIETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-12",
+      "statement": "Um animal desconhecido aparece no pátio. Qual é a conduta segura?",
+      "prompt": "Um animal desconhecido aparece no pátio. Qual é a conduta segura?",
+      "options": [
+        "Tentar alimentá-lo",
+        "Pegá-lo para mostrar à turma",
+        "Provocá-lo para observar sua reação",
+        "Manter distância e chamar um adulto responsável."
+      ],
+      "correctAnswer": "Manter distância e chamar um adulto responsável.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tentar alimentá-lo": [
+          "UNKNOWN_ANIMAL_SAFETY"
+        ],
+        "Pegá-lo para mostrar à turma": [
+          "UNKNOWN_ANIMAL_SAFETY"
+        ],
+        "Provocá-lo para observar sua reação": [
+          "UNKNOWN_ANIMAL_SAFETY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CUIDADO_COM_ANIMAL_DESCONHECIDO",
+      "explanation": "Um adulto pode orientar uma resposta segura.",
+      "hint": "Não se aproxime nem alimente.",
+      "errorFocus": "UNKNOWN_ANIMAL_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Um adulto pode orientar uma resposta segura.",
+        "incorrect": "Um adulto pode orientar uma resposta segura.",
+        "hint": "Não se aproxime nem alimente.",
+        "errorFocus": "UNKNOWN_ANIMAL_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-13",
+      "statement": "Um broto aparece num vaso coletivo. Qual cuidado respeita a vida?",
+      "prompt": "Um broto aparece num vaso coletivo. Qual cuidado respeita a vida?",
+      "options": [
+        "Regar conforme a orientação e evitar puxar o broto.",
+        "Retirá-lo para medir a raiz",
+        "Deixar o vaso cair",
+        "Cobrir o broto com objetos"
+      ],
+      "correctAnswer": "Regar conforme a orientação e evitar puxar o broto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirá-lo para medir a raiz": [
+          "GROWTH_CARE"
+        ],
+        "Deixar o vaso cair": [
+          "GROWTH_CARE"
+        ],
+        "Cobrir o broto com objetos": [
+          "GROWTH_CARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VASO_COM_BROTO",
+      "explanation": "Cuidado segue a rotina adequada sem danificar a planta.",
+      "hint": "Pense no que favorece o crescimento.",
+      "errorFocus": "GROWTH_CARE",
+      "feedback": {
+        "correct": "Boa observação: Cuidado segue a rotina adequada sem danificar a planta.",
+        "incorrect": "Cuidado segue a rotina adequada sem danificar a planta.",
+        "hint": "Pense no que favorece o crescimento.",
+        "errorFocus": "GROWTH_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-14",
+      "statement": "Uma pessoa conta uma prática de sua comunidade. O que a turma deve fazer?",
+      "prompt": "Uma pessoa conta uma prática de sua comunidade. O que a turma deve fazer?",
+      "options": [
+        "Afirmar que todos fazem igual",
+        "Ouvir a experiência como relato daquela pessoa ou grupo.",
+        "Dizer que a experiência é falsa sem escutar",
+        "Transformar a prática numa regra universal"
+      ],
+      "correctAnswer": "Ouvir a experiência como relato daquela pessoa ou grupo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Afirmar que todos fazem igual": [
+          "SOURCE_BOUNDED_TRADITION"
+        ],
+        "Dizer que a experiência é falsa sem escutar": [
+          "SOURCE_BOUNDED_TRADITION"
+        ],
+        "Transformar a prática numa regra universal": [
+          "SOURCE_BOUNDED_TRADITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELATO_DE_COMUNIDADE",
+      "explanation": "Um relato representa a fonte apresentada, não automaticamente todos.",
+      "hint": "Evite generalizar.",
+      "errorFocus": "SOURCE_BOUNDED_TRADITION",
+      "feedback": {
+        "correct": "Boa observação: Um relato representa a fonte apresentada, não automaticamente todos.",
+        "incorrect": "Um relato representa a fonte apresentada, não automaticamente todos.",
+        "hint": "Evite generalizar.",
+        "errorFocus": "SOURCE_BOUNDED_TRADITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-15",
+      "statement": "Abelha e flores aparecem juntas numa imagem. O que há na cena?",
+      "prompt": "Abelha e flores aparecem juntas numa imagem. O que há na cena?",
+      "options": [
+        "Somente objetos",
+        "Duas plantas iguais",
+        "Um animal e plantas em relação no ambiente.",
+        "Um animal dentro de um objeto"
+      ],
+      "correctAnswer": "Um animal e plantas em relação no ambiente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente objetos": [
+          "LIFE_RELATIONSHIP"
+        ],
+        "Duas plantas iguais": [
+          "LIFE_RELATIONSHIP"
+        ],
+        "Um animal dentro de um objeto": [
+          "LIFE_RELATIONSHIP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ABELHA_E_FLORES",
+      "explanation": "A cena reúne seres diferentes no mesmo ambiente.",
+      "hint": "Observe os elementos vivos.",
+      "errorFocus": "LIFE_RELATIONSHIP",
+      "feedback": {
+        "correct": "Boa observação: A cena reúne seres diferentes no mesmo ambiente.",
+        "incorrect": "A cena reúne seres diferentes no mesmo ambiente.",
+        "hint": "Observe os elementos vivos.",
+        "errorFocus": "LIFE_RELATIONSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-16",
+      "statement": "Por que desenhar uma planta em vez de arrancá-la para levar à sala?",
+      "prompt": "Por que desenhar uma planta em vez de arrancá-la para levar à sala?",
+      "options": [
+        "Porque plantas não podem ser observadas",
+        "Porque desenhar muda a espécie",
+        "Porque toda planta precisa ser escondida",
+        "O desenho registra a observação sem retirar ou danificar a planta."
+      ],
+      "correctAnswer": "O desenho registra a observação sem retirar ou danificar a planta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque plantas não podem ser observadas": [
+          "NONDESTRUCTIVE_RECORD"
+        ],
+        "Porque desenhar muda a espécie": [
+          "NONDESTRUCTIVE_RECORD"
+        ],
+        "Porque toda planta precisa ser escondida": [
+          "NONDESTRUCTIVE_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CANTEIRO_SEM_COLETA",
+      "explanation": "O desenho permite registrar sem coleta.",
+      "hint": "Escolha um registro que preserve o ser vivo.",
+      "errorFocus": "NONDESTRUCTIVE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: O desenho permite registrar sem coleta.",
+        "incorrect": "O desenho permite registrar sem coleta.",
+        "hint": "Escolha um registro que preserve o ser vivo.",
+        "errorFocus": "NONDESTRUCTIVE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-17",
+      "statement": "Um pássaro é observado ao ar livre. Qual atitude demonstra cuidado?",
+      "prompt": "Um pássaro é observado ao ar livre. Qual atitude demonstra cuidado?",
+      "options": [
+        "Manter distância e não tentar capturá-lo.",
+        "Jogar objetos para vê-lo voar",
+        "Retirá-lo do local",
+        "Puxar suas penas"
+      ],
+      "correctAnswer": "Manter distância e não tentar capturá-lo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Jogar objetos para vê-lo voar": [
+          "WILDLIFE_RESPECT"
+        ],
+        "Retirá-lo do local": [
+          "WILDLIFE_RESPECT"
+        ],
+        "Puxar suas penas": [
+          "WILDLIFE_RESPECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PASSARO_NO_FIO",
+      "explanation": "A observação respeitosa não interfere no animal.",
+      "hint": "Não tente tocar ou capturar.",
+      "errorFocus": "WILDLIFE_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: A observação respeitosa não interfere no animal.",
+        "incorrect": "A observação respeitosa não interfere no animal.",
+        "hint": "Não tente tocar ou capturar.",
+        "errorFocus": "WILDLIFE_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-18",
+      "statement": "Musgo e árvore aparecem em partes úmidas e secas de um parque. O que se pode comparar?",
+      "prompt": "Musgo e árvore aparecem em partes úmidas e secas de um parque. O que se pode comparar?",
+      "options": [
+        "Qual vida merece existir",
+        "Os exemplos de vida e as condições descritas para cada local.",
+        "Que todo musgo precisa da mesma condição",
+        "Que a árvore e o musgo são idênticos"
+      ],
+      "correctAnswer": "Os exemplos de vida e as condições descritas para cada local.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual vida merece existir": [
+          "CONTEXTUAL_COMPARISON"
+        ],
+        "Que todo musgo precisa da mesma condição": [
+          "CONTEXTUAL_COMPARISON"
+        ],
+        "Que a árvore e o musgo são idênticos": [
+          "CONTEXTUAL_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MICROAMBIENTES",
+      "explanation": "A comparação considera os exemplos e contextos apresentados.",
+      "hint": "Compare sem hierarquizar.",
+      "errorFocus": "CONTEXTUAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação considera os exemplos e contextos apresentados.",
+        "incorrect": "A comparação considera os exemplos e contextos apresentados.",
+        "hint": "Compare sem hierarquizar.",
+        "errorFocus": "CONTEXTUAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-19",
+      "statement": "Durante um passeio, a turma vê uma planta desconhecida. O que fazer?",
+      "prompt": "Durante um passeio, a turma vê uma planta desconhecida. O que fazer?",
+      "options": [
+        "Provar uma parte",
+        "Arrancar para identificar",
+        "Observar sem tocar e seguir a orientação do educador.",
+        "Cheirar de perto sem perguntar"
+      ],
+      "correctAnswer": "Observar sem tocar e seguir a orientação do educador.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Provar uma parte": [
+          "UNKNOWN_PLANT_SAFETY"
+        ],
+        "Arrancar para identificar": [
+          "UNKNOWN_PLANT_SAFETY"
+        ],
+        "Cheirar de perto sem perguntar": [
+          "UNKNOWN_PLANT_SAFETY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PASSEIO_COM_ORIENTADOR",
+      "explanation": "Plantas desconhecidas não devem ser manuseadas ou provadas.",
+      "hint": "Aguarde instrução segura.",
+      "errorFocus": "UNKNOWN_PLANT_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: Plantas desconhecidas não devem ser manuseadas ou provadas.",
+        "incorrect": "Plantas desconhecidas não devem ser manuseadas ou provadas.",
+        "hint": "Aguarde instrução segura.",
+        "errorFocus": "UNKNOWN_PLANT_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-20",
+      "statement": "Qual frase descreve sem hierarquizar?",
+      "prompt": "Qual frase descreve sem hierarquizar?",
+      "options": [
+        "Um deles é inútil",
+        "Só o maior merece cuidado",
+        "O menor vale menos",
+        "As duas imagens mostram seres vivos com formas distintas."
+      ],
+      "correctAnswer": "As duas imagens mostram seres vivos com formas distintas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um deles é inútil": [
+          "VALUE_WITHOUT_HIERARCHY"
+        ],
+        "Só o maior merece cuidado": [
+          "VALUE_WITHOUT_HIERARCHY"
+        ],
+        "O menor vale menos": [
+          "VALUE_WITHOUT_HIERARCHY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FATO_E_OPINIAO_SOBRE_ESPECIES",
+      "explanation": "A descrição reconhece diferença sem atribuir valor inferior.",
+      "hint": "Retire palavras de julgamento.",
+      "errorFocus": "VALUE_WITHOUT_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A descrição reconhece diferença sem atribuir valor inferior.",
+        "incorrect": "A descrição reconhece diferença sem atribuir valor inferior.",
+        "hint": "Retire palavras de julgamento.",
+        "errorFocus": "VALUE_WITHOUT_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-21",
+      "statement": "Uma placa pede para não alimentar os animais do parque. O que fazer?",
+      "prompt": "Uma placa pede para não alimentar os animais do parque. O que fazer?",
+      "options": [
+        "Seguir a orientação para evitar riscos aos animais e visitantes.",
+        "Ignorar a placa",
+        "Oferecer qualquer alimento",
+        "Chamar o animal para perto"
+      ],
+      "correctAnswer": "Seguir a orientação para evitar riscos aos animais e visitantes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ignorar a placa": [
+          "PUBLIC_WILDLIFE_GUIDANCE"
+        ],
+        "Oferecer qualquer alimento": [
+          "PUBLIC_WILDLIFE_GUIDANCE"
+        ],
+        "Chamar o animal para perto": [
+          "PUBLIC_WILDLIFE_GUIDANCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CUIDADO_EM_LOCAL_PUBLICO",
+      "explanation": "A orientação local ajuda a manter todos seguros.",
+      "hint": "Leia e siga a placa.",
+      "errorFocus": "PUBLIC_WILDLIFE_GUIDANCE",
+      "feedback": {
+        "correct": "Boa observação: A orientação local ajuda a manter todos seguros.",
+        "incorrect": "A orientação local ajuda a manter todos seguros.",
+        "hint": "Leia e siga a placa.",
+        "errorFocus": "PUBLIC_WILDLIFE_GUIDANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-22",
+      "statement": "Uma coleção didática contém imagens de sementes variadas. Como comparar?",
+      "prompt": "Uma coleção didática contém imagens de sementes variadas. Como comparar?",
+      "options": [
+        "Comer as sementes desconhecidas",
+        "Descrever diferenças de forma ou tamanho indicadas nas imagens.",
+        "Afirmar que uma forma é superior",
+        "Plantá-las sem autorização"
+      ],
+      "correctAnswer": "Descrever diferenças de forma ou tamanho indicadas nas imagens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Comer as sementes desconhecidas": [
+          "SAFE_IMAGE_COMPARISON"
+        ],
+        "Afirmar que uma forma é superior": [
+          "SAFE_IMAGE_COMPARISON"
+        ],
+        "Plantá-las sem autorização": [
+          "SAFE_IMAGE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DIVERSIDADE_DE_SEMENTES",
+      "explanation": "A comparação visual não exige manuseio nem consumo.",
+      "hint": "Use apenas as imagens autorizadas.",
+      "errorFocus": "SAFE_IMAGE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação visual não exige manuseio nem consumo.",
+        "incorrect": "A comparação visual não exige manuseio nem consumo.",
+        "hint": "Use apenas as imagens autorizadas.",
+        "errorFocus": "SAFE_IMAGE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-23",
+      "statement": "Um colega explica uma crença familiar sobre a vida. Qual resposta é respeitosa?",
+      "prompt": "Um colega explica uma crença familiar sobre a vida. Qual resposta é respeitosa?",
+      "options": [
+        "Exigir que fale por todos",
+        "Fazer piada",
+        "Agradecer o relato e não presumir que todas as famílias pensem igual.",
+        "Dizer que sua família deve pensar igual"
+      ],
+      "correctAnswer": "Agradecer o relato e não presumir que todas as famílias pensem igual.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Exigir que fale por todos": [
+          "RESPECT_PERSONAL_ACCOUNT"
+        ],
+        "Fazer piada": [
+          "RESPECT_PERSONAL_ACCOUNT"
+        ],
+        "Dizer que sua família deve pensar igual": [
+          "RESPECT_PERSONAL_ACCOUNT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FALA_SOBRE_CRENCAS",
+      "explanation": "Uma experiência pessoal não deve ser generalizada nem ridicularizada.",
+      "hint": "Reconheça que é o relato dele.",
+      "errorFocus": "RESPECT_PERSONAL_ACCOUNT",
+      "feedback": {
+        "correct": "Boa observação: Uma experiência pessoal não deve ser generalizada nem ridicularizada.",
+        "incorrect": "Uma experiência pessoal não deve ser generalizada nem ridicularizada.",
+        "hint": "Reconheça que é o relato dele.",
+        "errorFocus": "RESPECT_PERSONAL_ACCOUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-24",
+      "statement": "Como o desenho pode ajudar a valorizar a diversidade de vida?",
+      "prompt": "Como o desenho pode ajudar a valorizar a diversidade de vida?",
+      "options": [
+        "Substitui todos os seres vivos",
+        "Prova que todos são iguais",
+        "Permite classificar por importância",
+        "Registra diferenças observadas sem retirar os seres do ambiente."
+      ],
+      "correctAnswer": "Registra diferenças observadas sem retirar os seres do ambiente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Substitui todos os seres vivos": [
+          "OBSERVATION_EVIDENCE"
+        ],
+        "Prova que todos são iguais": [
+          "OBSERVATION_EVIDENCE"
+        ],
+        "Permite classificar por importância": [
+          "OBSERVATION_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGISTRO_POR_DESENHO",
+      "explanation": "O registro pode comunicar características sem causar dano.",
+      "hint": "Pense em documentar com cuidado.",
+      "errorFocus": "OBSERVATION_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O registro pode comunicar características sem causar dano.",
+        "incorrect": "O registro pode comunicar características sem causar dano.",
+        "hint": "Pense em documentar com cuidado.",
+        "errorFocus": "OBSERVATION_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-25",
+      "statement": "Um painel mostra plantas, animais e fungos. O que ele comunica?",
+      "prompt": "Um painel mostra plantas, animais e fungos. O que ele comunica?",
+      "options": [
+        "Há diferentes formas de vida.",
+        "Todos são objetos sem vida",
+        "Só animais fazem parte da diversidade",
+        "Todas as formas são iguais"
+      ],
+      "correctAnswer": "Há diferentes formas de vida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos são objetos sem vida": [
+          "LIFE_DIVERSITY_REVIEW"
+        ],
+        "Só animais fazem parte da diversidade": [
+          "LIFE_DIVERSITY_REVIEW"
+        ],
+        "Todas as formas são iguais": [
+          "LIFE_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PAINEL_DE_VIDA_VARIADA",
+      "explanation": "Os exemplos representam grupos diversos de seres vivos.",
+      "hint": "Observe os diferentes exemplos.",
+      "errorFocus": "LIFE_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos representam grupos diversos de seres vivos.",
+        "incorrect": "Os exemplos representam grupos diversos de seres vivos.",
+        "hint": "Observe os diferentes exemplos.",
+        "errorFocus": "LIFE_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-26",
+      "statement": "Qual ação evita perturbar aves durante a observação?",
+      "prompt": "Qual ação evita perturbar aves durante a observação?",
+      "options": [
+        "Mexer nos ovos",
+        "Manter distância e seguir a orientação de um adulto.",
+        "Mudar o ninho de lugar",
+        "Fazer barulho junto dele"
+      ],
+      "correctAnswer": "Manter distância e seguir a orientação de um adulto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mexer nos ovos": [
+          "NEST_SAFETY_REVIEW"
+        ],
+        "Mudar o ninho de lugar": [
+          "NEST_SAFETY_REVIEW"
+        ],
+        "Fazer barulho junto dele": [
+          "NEST_SAFETY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CUIDADO_DE_NINHO_REVISADO",
+      "explanation": "Distância e orientação reduzem perturbação.",
+      "hint": "Não toque no ninho.",
+      "errorFocus": "NEST_SAFETY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Distância e orientação reduzem perturbação.",
+        "incorrect": "Distância e orientação reduzem perturbação.",
+        "hint": "Não toque no ninho.",
+        "errorFocus": "NEST_SAFETY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-27",
+      "statement": "Uma história apresenta uma prática de uma comunidade. O que não se deve concluir sem evidência?",
+      "prompt": "Uma história apresenta uma prática de uma comunidade. O que não se deve concluir sem evidência?",
+      "options": [
+        "Que a história relata uma prática",
+        "Que a fonte tem um contexto",
+        "Que todas as comunidades fazem a mesma coisa.",
+        "Que pessoas podem ter experiências distintas"
+      ],
+      "correctAnswer": "Que todas as comunidades fazem a mesma coisa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que a história relata uma prática": [
+          "NO_OVERGENERALIZATION_REVIEW"
+        ],
+        "Que a fonte tem um contexto": [
+          "NO_OVERGENERALIZATION_REVIEW"
+        ],
+        "Que pessoas podem ter experiências distintas": [
+          "NO_OVERGENERALIZATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELATO_NAO_UNIVERSAL",
+      "explanation": "Uma fonte particular não prova uma regra universal.",
+      "hint": "Pense no alcance da fonte.",
+      "errorFocus": "NO_OVERGENERALIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte particular não prova uma regra universal.",
+        "incorrect": "Uma fonte particular não prova uma regra universal.",
+        "hint": "Pense no alcance da fonte.",
+        "errorFocus": "NO_OVERGENERALIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-28",
+      "statement": "Duas espécies aparecem no jardim. Como descrevê-las?",
+      "prompt": "Duas espécies aparecem no jardim. Como descrevê-las?",
+      "options": [
+        "Uma como vencedora",
+        "A outra como sem valor",
+        "Ambas como objetos",
+        "Como formas diferentes de vida, sem dizer que uma merece menos cuidado."
+      ],
+      "correctAnswer": "Como formas diferentes de vida, sem dizer que uma merece menos cuidado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma como vencedora": [
+          "NONHIERARCHICAL_REVIEW"
+        ],
+        "A outra como sem valor": [
+          "NONHIERARCHICAL_REVIEW"
+        ],
+        "Ambas como objetos": [
+          "NONHIERARCHICAL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FORMAS_DE_VIDA_NO_JARDIM",
+      "explanation": "Diferença não implica valor inferior.",
+      "hint": "Compare sem competir.",
+      "errorFocus": "NONHIERARCHICAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Diferença não implica valor inferior.",
+        "incorrect": "Diferença não implica valor inferior.",
+        "hint": "Compare sem competir.",
+        "errorFocus": "NONHIERARCHICAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-29",
+      "statement": "Qual alternativa permite estudar um ser desconhecido com segurança?",
+      "prompt": "Qual alternativa permite estudar um ser desconhecido com segurança?",
+      "options": [
+        "Consultar imagem ou observá-lo à distância com orientação.",
+        "Prová-lo",
+        "Capturá-lo",
+        "Tocá-lo para testar"
+      ],
+      "correctAnswer": "Consultar imagem ou observá-lo à distância com orientação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Prová-lo": [
+          "SAFE_OBSERVATION_REVIEW"
+        ],
+        "Capturá-lo": [
+          "SAFE_OBSERVATION_REVIEW"
+        ],
+        "Tocá-lo para testar": [
+          "SAFE_OBSERVATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBSERVACAO_SEM_TOQUE",
+      "explanation": "Imagens e distância evitam contato de risco.",
+      "hint": "Escolha sem manuseio.",
+      "errorFocus": "SAFE_OBSERVATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Imagens e distância evitam contato de risco.",
+        "incorrect": "Imagens e distância evitam contato de risco.",
+        "hint": "Escolha sem manuseio.",
+        "errorFocus": "SAFE_OBSERVATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-30",
+      "statement": "Por que evitar arrancar uma planta durante uma atividade?",
+      "prompt": "Por que evitar arrancar uma planta durante uma atividade?",
+      "options": [
+        "Porque plantas não mudam",
+        "Para observar sem danificar o ser vivo nem retirar do ambiente.",
+        "Porque não se pode fazer registros",
+        "Porque arrancar ajuda toda planta"
+      ],
+      "correctAnswer": "Para observar sem danificar o ser vivo nem retirar do ambiente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque plantas não mudam": [
+          "NONDESTRUCTIVE_CARE_REVIEW"
+        ],
+        "Porque não se pode fazer registros": [
+          "NONDESTRUCTIVE_CARE_REVIEW"
+        ],
+        "Porque arrancar ajuda toda planta": [
+          "NONDESTRUCTIVE_CARE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CUIDADO_COM_PLANTAS",
+      "explanation": "Registros podem ser feitos sem retirar a planta.",
+      "hint": "Relacione cuidado e observação.",
+      "errorFocus": "NONDESTRUCTIVE_CARE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Registros podem ser feitos sem retirar a planta.",
+        "incorrect": "Registros podem ser feitos sem retirar a planta.",
+        "hint": "Relacione cuidado e observação.",
+        "errorFocus": "NONDESTRUCTIVE_CARE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-31",
+      "statement": "Qual item é uma diferença observável entre duas plantas?",
+      "prompt": "Qual item é uma diferença observável entre duas plantas?",
+      "options": [
+        "Qual planta é mais importante",
+        "Qual planta é mais inteligente",
+        "O formato das folhas mostrado nas imagens.",
+        "Qual planta gosta de música"
+      ],
+      "correctAnswer": "O formato das folhas mostrado nas imagens.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual planta é mais importante": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ],
+        "Qual planta é mais inteligente": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ],
+        "Qual planta gosta de música": [
+          "OBSERVABLE_TRAIT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIFERENCA_OBSERVAVEL_FINAL",
+      "explanation": "Formato é observável; as outras opções não são atributos adequados.",
+      "hint": "Escolha o que aparece na imagem.",
+      "errorFocus": "OBSERVABLE_TRAIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Formato é observável; as outras opções não são atributos adequados.",
+        "incorrect": "Formato é observável; as outras opções não são atributos adequados.",
+        "hint": "Escolha o que aparece na imagem.",
+        "errorFocus": "OBSERVABLE_TRAIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-32",
+      "statement": "Valorizar formas de vida envolve observar com cuidado, reconhecer diferenças e...",
+      "prompt": "Valorizar formas de vida envolve observar com cuidado, reconhecer diferenças e...",
+      "options": [
+        "hierarquizar os seres",
+        "presumir crenças de todos",
+        "capturar o que se quer estudar",
+        "evitar danos e respeitar contextos e pessoas."
+      ],
+      "correctAnswer": "evitar danos e respeitar contextos e pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "hierarquizar os seres": [
+          "RESPECTFUL_LIFE_SUMMARY"
+        ],
+        "presumir crenças de todos": [
+          "RESPECTFUL_LIFE_SUMMARY"
+        ],
+        "capturar o que se quer estudar": [
+          "RESPECTFUL_LIFE_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SINTese_DE_RESPEITO_A_VIDA",
+      "explanation": "Respeito combina observação segura, não hierarquia e cuidado.",
+      "hint": "Reúna cuidado e respeito.",
+      "errorFocus": "RESPECTFUL_LIFE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Respeito combina observação segura, não hierarquia e cuidado.",
+        "incorrect": "Respeito combina observação segura, não hierarquia e cuidado.",
+        "hint": "Reúna cuidado e respeito.",
+        "errorFocus": "RESPECTFUL_LIFE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-33",
+      "statement": "Plantas e animais diferentes exemplificam...",
+      "prompt": "Plantas e animais diferentes exemplificam...",
+      "options": [
+        "diversidade de formas de vida.",
+        "objetos fabricados",
+        "uma única espécie",
+        "ausência de vida"
+      ],
+      "correctAnswer": "diversidade de formas de vida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "objetos fabricados": [
+          "DIVERSITY_REVIEW"
+        ],
+        "uma única espécie": [
+          "DIVERSITY_REVIEW"
+        ],
+        "ausência de vida": [
+          "DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_DIVERSIDADE",
+      "explanation": "Os exemplos apresentam formas distintas de vida.",
+      "hint": "Lembre-se dos exemplos.",
+      "errorFocus": "DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos apresentam formas distintas de vida.",
+        "incorrect": "Os exemplos apresentam formas distintas de vida.",
+        "hint": "Lembre-se dos exemplos.",
+        "errorFocus": "DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-34",
+      "statement": "Como observar um animal desconhecido?",
+      "prompt": "Como observar um animal desconhecido?",
+      "options": [
+        "Capturando-o",
+        "À distância e com orientação responsável.",
+        "Alimentando-o",
+        "Tocando nele"
+      ],
+      "correctAnswer": "À distância e com orientação responsável.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Capturando-o": [
+          "SAFE_OBSERVATION_SUMMARY"
+        ],
+        "Alimentando-o": [
+          "SAFE_OBSERVATION_SUMMARY"
+        ],
+        "Tocando nele": [
+          "SAFE_OBSERVATION_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_OBSERVACAO_SEGURA",
+      "explanation": "Distância e orientação tornam a observação mais segura.",
+      "hint": "Não se aproxime por conta própria.",
+      "errorFocus": "SAFE_OBSERVATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Distância e orientação tornam a observação mais segura.",
+        "incorrect": "Distância e orientação tornam a observação mais segura.",
+        "hint": "Não se aproxime por conta própria.",
+        "errorFocus": "SAFE_OBSERVATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-35",
+      "statement": "Um relato individual permite afirmar que todos pensam igual?",
+      "prompt": "Um relato individual permite afirmar que todos pensam igual?",
+      "options": [
+        "Sim, sempre",
+        "Só se for uma história",
+        "Não; ele informa uma experiência específica.",
+        "Sim, se a pessoa for adulta"
+      ],
+      "correctAnswer": "Não; ele informa uma experiência específica.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "Só se for uma história": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "Sim, se a pessoa for adulta": [
+          "SOURCE_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_RELATO",
+      "explanation": "A fonte tem um alcance limitado ao que apresenta.",
+      "hint": "Considere quem contou e o quê.",
+      "errorFocus": "SOURCE_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fonte tem um alcance limitado ao que apresenta.",
+        "incorrect": "A fonte tem um alcance limitado ao que apresenta.",
+        "hint": "Considere quem contou e o quê.",
+        "errorFocus": "SOURCE_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-36",
+      "statement": "Duas plantas têm folhas de formas diferentes. Qual conclusão é adequada?",
+      "prompt": "Duas plantas têm folhas de formas diferentes. Qual conclusão é adequada?",
+      "options": [
+        "Uma vale mais",
+        "São seres sem vida",
+        "Precisam ter o mesmo ambiente",
+        "Elas apresentam uma diferença observável."
+      ],
+      "correctAnswer": "Elas apresentam uma diferença observável.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma vale mais": [
+          "OBSERVABLE_DIFFERENCE_REVIEW"
+        ],
+        "São seres sem vida": [
+          "OBSERVABLE_DIFFERENCE_REVIEW"
+        ],
+        "Precisam ter o mesmo ambiente": [
+          "OBSERVABLE_DIFFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_PLANTAS",
+      "explanation": "A diferença pode ser descrita sem julgamento.",
+      "hint": "Use apenas a informação observada.",
+      "errorFocus": "OBSERVABLE_DIFFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A diferença pode ser descrita sem julgamento.",
+        "incorrect": "A diferença pode ser descrita sem julgamento.",
+        "hint": "Use apenas a informação observada.",
+        "errorFocus": "OBSERVABLE_DIFFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-37",
+      "statement": "Como cuidar de um canteiro escolar?",
+      "prompt": "Como cuidar de um canteiro escolar?",
+      "options": [
+        "Seguir orientações e evitar danificar as plantas.",
+        "Arrancar folhas sem motivo",
+        "Pisar no canteiro",
+        "Cobrir as plantas"
+      ],
+      "correctAnswer": "Seguir orientações e evitar danificar as plantas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Arrancar folhas sem motivo": [
+          "PLANT_CARE_REVIEW"
+        ],
+        "Pisar no canteiro": [
+          "PLANT_CARE_REVIEW"
+        ],
+        "Cobrir as plantas": [
+          "PLANT_CARE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_CUIDADO_COM_CANTEIRO",
+      "explanation": "Orientações ajudam a cuidar sem causar dano.",
+      "hint": "Pense na preservação.",
+      "errorFocus": "PLANT_CARE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Orientações ajudam a cuidar sem causar dano.",
+        "incorrect": "Orientações ajudam a cuidar sem causar dano.",
+        "hint": "Pense na preservação.",
+        "errorFocus": "PLANT_CARE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-38",
+      "statement": "Por que dizer que uma forma de vida é “inútil” pode ser inadequado?",
+      "prompt": "Por que dizer que uma forma de vida é “inútil” pode ser inadequado?",
+      "options": [
+        "Porque diferenças não existem",
+        "A frase hierarquiza sem considerar a diversidade e o contexto.",
+        "Porque tudo tem a mesma aparência",
+        "Porque só plantas importam"
+      ],
+      "correctAnswer": "A frase hierarquiza sem considerar a diversidade e o contexto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque diferenças não existem": [
+          "NO_HIERARCHY_REVIEW"
+        ],
+        "Porque tudo tem a mesma aparência": [
+          "NO_HIERARCHY_REVIEW"
+        ],
+        "Porque só plantas importam": [
+          "NO_HIERARCHY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_HIERARQUIA",
+      "explanation": "A frase julga em vez de descrever a diversidade.",
+      "hint": "Diferencie fato e julgamento.",
+      "errorFocus": "NO_HIERARCHY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase julga em vez de descrever a diversidade.",
+        "incorrect": "A frase julga em vez de descrever a diversidade.",
+        "hint": "Diferencie fato e julgamento.",
+        "errorFocus": "NO_HIERARCHY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-39",
+      "statement": "Como responder a uma tradição apresentada por uma fonte?",
+      "prompt": "Como responder a uma tradição apresentada por uma fonte?",
+      "options": [
+        "Ridicularizar a fonte",
+        "Falar por todo o grupo",
+        "Escutar com respeito e não generalizar além do relato.",
+        "Exigir que todos concordem"
+      ],
+      "correctAnswer": "Escutar com respeito e não generalizar além do relato.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ridicularizar a fonte": [
+          "TRADITIONAL_RESPECT_REVIEW"
+        ],
+        "Falar por todo o grupo": [
+          "TRADITIONAL_RESPECT_REVIEW"
+        ],
+        "Exigir que todos concordem": [
+          "TRADITIONAL_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_RESPEITO_A_TRADICOES",
+      "explanation": "Escuta respeitosa reconhece o contexto da fonte.",
+      "hint": "Evite falar por outras pessoas.",
+      "errorFocus": "TRADITIONAL_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escuta respeitosa reconhece o contexto da fonte.",
+        "incorrect": "Escuta respeitosa reconhece o contexto da fonte.",
+        "hint": "Evite falar por outras pessoas.",
+        "errorFocus": "TRADITIONAL_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er04-value-diversity-of-life-40",
+      "statement": "Uma observação responsável combina curiosidade com...",
+      "prompt": "Uma observação responsável combina curiosidade com...",
+      "options": [
+        "captura e julgamento",
+        "pressa e competição",
+        "generalização e dano",
+        "segurança, cuidado e respeito à diversidade."
+      ],
+      "correctAnswer": "segurança, cuidado e respeito à diversidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "captura e julgamento": [
+          "RESPONSIBLE_OBSERVATION_SUMMARY"
+        ],
+        "pressa e competição": [
+          "RESPONSIBLE_OBSERVATION_SUMMARY"
+        ],
+        "generalização e dano": [
+          "RESPONSIBLE_OBSERVATION_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESUMO_DE_CUIDADO",
+      "explanation": "Curiosidade pode coexistir com cuidado e segurança.",
+      "hint": "Lembre-se do combinado de cuidado.",
+      "errorFocus": "RESPONSIBLE_OBSERVATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Curiosidade pode coexistir com cuidado e segurança.",
+        "incorrect": "Curiosidade pode coexistir com cuidado e segurança.",
+        "hint": "Lembre-se do combinado de cuidado.",
+        "errorFocus": "RESPONSIBLE_OBSERVATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar imagens descritas, modelos visuais de alto contraste e vocabulário concreto.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Realizar observação acessível sem coleta, toque obrigatório ou exposição de estudantes."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

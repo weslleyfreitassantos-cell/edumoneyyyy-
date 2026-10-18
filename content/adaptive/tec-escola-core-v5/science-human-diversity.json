@@ -1,0 +1,1273 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "science-human-diversity",
+  "canonicalSkillCode": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+  "subject": "SCIENCE",
+  "domain": "OBSERVACAO_E_DIVERSIDADE",
+  "topic": "observar diversidade humana sem hierarquizar ou expor estudantes",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 11,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 9
+  },
+  "expectedQuestionCount": 35,
+  "expectedContextCount": 35,
+  "expectedAnswerPositionCounts": {
+    "A": 9,
+    "B": 9,
+    "C": 9,
+    "D": 8
+  },
+  "lesson": {
+    "title": "Observar diferenças sem comparar valor",
+    "objective": "Descrever semelhanças e diferenças em personagens fictícios, separando observação de suposição e escolhendo ações que preservem dignidade, autonomia e participação.",
+    "summary": "Pessoas têm características diversas. Uma característica visível não define o valor, os gostos, a saúde ou todas as capacidades de alguém. É possível comparar personagens com cuidado, sem ranking, apelidos, toque sem permissão ou exposição de estudantes.",
+    "explanation": "## Observe antes de concluir\nEm uma ilustração, “o personagem usa óculos” é uma observação. “Ele é melhor aluno” é uma suposição: a imagem não contou isso. Descreva o que aparece e pergunte o que ainda não sabemos.\n\n## Compare sem criar ranking\nDois personagens podem ter cabelos, alturas ou tons de pele diferentes e compartilhar uma atividade. Uma diferença não torna ninguém melhor ou pior. Uma semelhança também não significa que as pessoas sejam iguais em tudo.\n\n## Não transforme uma característica em regra\nUma imagem não permite adivinhar personalidade, saúde, sentimentos ou preferências. Um recurso de apoio não explica sozinho tudo o que a pessoa consegue fazer. Considere a ação mostrada, o ambiente e os recursos disponíveis, sem decidir por outra pessoa.\n\n## Respeite privacidade e espaço\nNão toque no corpo ou em um recurso de apoio sem permissão. Ninguém precisa explicar uma característica pessoal para participar. Para esta atividade, use personagens inventados; não compare corpos de colegas, não peça fotos ou relatos pessoais e não faça diagnósticos.\n\n## Exemplo resolvido\nUma história mostra Bia usando óculos e escolhendo um livro. Sabemos que ela usa óculos e escolheu aquele livro nessa cena. Não sabemos se gosta de ler sempre, por que usa óculos nem como aprende. Uma descrição cuidadosa fica no que a história mostra.",
+    "workedExample": "Em uma ilustração, uma personagem é mais baixa que outra e ambas constroem uma maquete. Podemos registrar a diferença de altura representada e a atividade compartilhada. Não concluímos que uma sabe mais, precisa de ajuda ou deve liderar. Se houver uma barreira no ambiente, pensamos em uma adaptação segura e perguntamos antes de agir.",
+    "commonMistake": "Confundir uma característica visível com uma explicação completa da pessoa; tratar diferença como ranking; adivinhar capacidade, saúde ou sentimento; comparar estudantes reais ou exigir que alguém revele informações pessoais.",
+    "tips": [
+      "Diga “a história mostra...” para separar observação de suposição.",
+      "Compare uma característica por vez e não use “melhor” ou “pior”.",
+      "Não conclua personalidade, saúde ou capacidade pela aparência.",
+      "Pergunte antes de ajudar ou tocar; aceite um “não”.",
+      "Use personagens fictícios e peça apoio de um adulto quando houver zombaria."
+    ],
+    "priorKnowledge": [
+      "Descrever elementos de uma ilustração.",
+      "Identificar uma ação apresentada em uma história curta.",
+      "Reconhecer regras simples de cuidado e convivência."
+    ],
+    "keyConcepts": [
+      "Observação é o que a história mostra.",
+      "Suposição acrescenta algo que não está comprovado.",
+      "Diferenças não criam hierarquia de valor.",
+      "Uma barreira pode estar no ambiente.",
+      "Participar não exige exposição pessoal."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Nomear o que aparece em personagens fictícios sem inventar informações.",
+        "questionIds": [
+          "v5-sci-diversity-probe-01",
+          "v5-sci-diversity-probe-02",
+          "v5-sci-diversity-probe-03",
+          "v5-sci-diversity-practice-01",
+          "v5-sci-diversity-practice-02",
+          "v5-sci-diversity-practice-03"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Comparar uma diferença e uma semelhança sem ranking ou generalização.",
+        "questionIds": [
+          "v5-sci-diversity-practice-04",
+          "v5-sci-diversity-practice-05",
+          "v5-sci-diversity-practice-06",
+          "v5-sci-diversity-practice-07",
+          "v5-sci-diversity-practice-08",
+          "v5-sci-diversity-practice-09",
+          "v5-sci-diversity-practice-10",
+          "v5-sci-diversity-practice-11"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar observação cuidadosa a histórias, atividades e barreiras de acesso novas.",
+        "questionIds": [
+          "v5-sci-diversity-transfer-01",
+          "v5-sci-diversity-transfer-02",
+          "v5-sci-diversity-transfer-03",
+          "v5-sci-diversity-transfer-04",
+          "v5-sci-diversity-transfer-05",
+          "v5-sci-diversity-transfer-06",
+          "v5-sci-diversity-transfer-07"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Responder a zombaria, pedidos invasivos e necessidades de acessibilidade com respeito.",
+        "questionIds": [
+          "v5-sci-diversity-lock-01",
+          "v5-sci-diversity-lock-02",
+          "v5-sci-diversity-lock-03",
+          "v5-sci-diversity-lock-04",
+          "v5-sci-diversity-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar limites da evidência, autonomia e participação em novos contextos.",
+        "questionIds": [
+          "v5-sci-diversity-review-01",
+          "v5-sci-diversity-review-02",
+          "v5-sci-diversity-review-03",
+          "v5-sci-diversity-review-04",
+          "v5-sci-diversity-review-05",
+          "v5-sci-diversity-review-06",
+          "v5-sci-diversity-review-07",
+          "v5-sci-diversity-review-08",
+          "v5-sci-diversity-review-09"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBSERVATION_VS_ASSUMPTION",
+        "text": "“Usa óculos” pode ser observado no desenho; inteligência, saúde ou gostos não aparecem automaticamente."
+      },
+      {
+        "trigger": "DIFFERENCE_AS_RANK",
+        "text": "Diferença descreve variedade, não quem vale mais. Retire o ranking e diga somente o que a história mostra."
+      },
+      {
+        "trigger": "BODY_OR_DEVICE_TOUCH",
+        "text": "Curiosidade não é permissão. Pergunte antes de tocar e aceite a resposta sem insistir."
+      },
+      {
+        "trigger": "ACCESS_BARRIER",
+        "text": "Observe se o espaço ou material cria uma barreira. Não atribua o obstáculo à pessoa."
+      },
+      {
+        "trigger": "HURTFUL_COMMENT",
+        "text": "Não repita a zombaria nem exija explicações da pessoa atingida. Apoie e procure um adulto."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "ABILITY_FROM_APPEARANCE",
+        "prompt": "Sublinhe o que a imagem mostra e risque o que você imaginou. Reescreva a resposta usando apenas uma evidência."
+      },
+      {
+        "misconception": "DIFFERENCE_AS_RANK",
+        "prompt": "Troque “melhor/pior” por uma descrição observável. Depois diga uma ação ou semelhança que a história apresenta."
+      },
+      {
+        "misconception": "PERSON_AS_BARRIER",
+        "prompt": "Localize o obstáculo no ambiente ou na regra. Proponha uma mudança acessível sem decidir pela pessoa."
+      },
+      {
+        "misconception": "FORCED_DISCLOSURE",
+        "prompt": "Reformule a pergunta para permitir que o personagem passe a vez ou participe de outro modo sem explicar o motivo."
+      },
+      {
+        "misconception": "HELP_WITHOUT_PERMISSION",
+        "prompt": "Antes de agir, escreva uma pergunta curta que ofereça ajuda e aceite um “não”."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-science-fictional-portraits-observation",
+        "title": "O que a história mostra?",
+        "objective": "Comparar personagens fictícios com base em evidências e propor uma regra de convivência que não classifique nem exponha estudantes.",
+        "context": "Atividade mediada pelo professor com cartões ou ilustrações de personagens inventados e características não hierarquizadas.",
+        "materials": [
+          "Cartões fictícios selecionados pelo educador",
+          "Quadro com as colunas “mostra” e “ainda não sabemos”",
+          "Folhas para registrar uma descrição respeitosa"
+        ],
+        "instructions": "Em dupla, escolha dois cartões fictícios. Registre uma característica observável, uma informação que o desenho não permite concluir e uma atividade que os personagens podem realizar juntos. A turma cria um combinado para impedir apelidos e respeitar a opção de não responder. Não usar autorretratos, fotos, comparação entre colegas, toque, diagnóstico ou relatos pessoais.",
+        "evidence": "Registro que separa observação e suposição, comparação sem ranking e proposta de convivência com participação voluntária.",
+        "safety": "Usar personagens inventados ou materiais aprovados pelo educador; evitar atributos usados para ridicularizar grupos; interromper comentários depreciativos e oferecer outra forma de participação.",
+        "privacyGuard": "Não coletar ou registrar aparência, saúde, deficiência, diagnóstico, imagem, identidade ou experiência pessoal de estudantes. Não pedir que alguém represente um grupo real nem explique seu corpo ou recurso assistivo.",
+        "ageRange": "1º ano do Ensino Fundamental, com leitura e mediação docente.",
+        "mediation": "O professor modela a diferença entre evidência e suposição, protege a opção de passar a vez e aborda imediatamente qualquer comentário que diminua uma pessoa. A rubrica avalia o raciocínio sobre o material fictício, não a aparência de alunos.",
+        "rubric": [
+          {
+            "criterion": "Observação e evidência",
+            "emerging": "Confunde o que vê com uma explicação inventada.",
+            "developing": "Nomeia um elemento visível após uma pergunta orientadora.",
+            "proficient": "Descreve um elemento e identifica algo que a imagem não permite concluir."
+          },
+          {
+            "criterion": "Comparação respeitosa",
+            "emerging": "Usa diferença para ranquear ou excluir.",
+            "developing": "Compara sem ranking com mediação.",
+            "proficient": "Nomeia diferença e semelhança apoiadas na história, sem generalizar."
+          },
+          {
+            "criterion": "Participação e privacidade",
+            "emerging": "Propõe exposição, toque ou participação forçada.",
+            "developing": "Aceita uma opção de escolha após apoio.",
+            "proficient": "Propõe participação voluntária e preserva o direito de não revelar informações."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 20,
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Educação Infantil e Ensino Fundamental",
+        "publisher": "Ministério da Educação",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "O dossiê local registra a descrição de EF01CI04 sobre diversidade, acolhimento e respeito; a extração local contém mistura com texto de História."
+        ],
+        "use": "Consulta de escopo com alerta explícito sobre a extração contaminada. Este pacote não afirma alinhamento oficial aprovado; o mapeamento permanece pendente de validação humana."
+      },
+      {
+        "title": "Inclusion in education: what you need to know",
+        "publisher": "UNESCO",
+        "url": "https://www.unesco.org/en/inclusion-education/need-know",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Considerar necessidades e características diversas no ambiente de aprendizagem e combater discriminação."
+        ],
+        "use": "Referência de desenho inclusivo para cenários e atividade; itens e explicações são autorais."
+      },
+      {
+        "title": "Convention on the Rights of the Child: full text",
+        "publisher": "UNICEF",
+        "url": "https://www.unicef.org/child-rights-convention/convention-text",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Princípio de não discriminação e direitos da criança."
+        ],
+        "use": "Referência de salvaguarda de dignidade e privacidade; não substitui revisão jurídica ou pedagógica."
+      },
+      {
+        "title": "Building strong foundations: What to teach for foundational education for health and well-being",
+        "publisher": "UNICEF",
+        "url": "https://www.unicef.org/media/158031/file/BSF2.%2520What%2520to%2520Teach%2520for%2520Foundational%2520Education%2520for%2520Health%2520and%2520Well-being.pdf.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Abordagem de respeito ao corpo próprio e ao corpo de outras pessoas desde os primeiros anos."
+        ],
+        "use": "Referência de salvaguarda para autonomia corporal; a atividade evita examinar ou comparar corpos reais."
+      }
+    ],
+    "copyrightNote": "Personagens, enunciados, alternativas, explicações e atividade são originais e fictícios. As fontes orientam salvaguardas e escopo. A extração BNCC de origem apresenta contaminação textual documentada; mapeamento oficial e revisão pedagógica humana não foram aprovados."
+  },
+  "questions": [
+    {
+      "id": "v5-sci-diversity-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "FICTIONAL_PORTRAIT_HEIGHT",
+      "statement": "Em uma ilustração, Lia aparece mais alta que Beto. O que a imagem permite dizer?",
+      "options": [
+        "A ilustração mostra uma diferença de altura; não diz que alguém vale mais.",
+        "Lia é melhor em todas as atividades.",
+        "Beto não consegue aprender coisas novas.",
+        "Toda criança mais alta é mais velha."
+      ],
+      "correctAnswer": "A ilustração mostra uma diferença de altura; não diz que alguém vale mais.",
+      "explanation": "A imagem permite descrever a altura representada, mas não concluir valor, capacidade ou idade.",
+      "hint": "Diga apenas o que está visível, sem inventar outras informações.",
+      "errorFocus": "Inferir valor ou capacidade pela aparência",
+      "misconceptions": {
+        "Lia é melhor em todas as atividades.": [
+          "HEIGHT_RANKING"
+        ],
+        "Beto não consegue aprender coisas novas.": [
+          "ABILITY_FROM_BODY"
+        ],
+        "Toda criança mais alta é mais velha.": [
+          "AGE_FROM_HEIGHT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FICTIONAL_HAIR_TEXTURE",
+      "statement": "Duas personagens de uma história têm cabelos com texturas diferentes e gostam de desenhar. Qual frase compara com respeito?",
+      "options": [
+        "Uma textura de cabelo é melhor que a outra.",
+        "Elas têm uma característica diferente e compartilham o gosto por desenhar.",
+        "O cabelo mostra quem desenha melhor.",
+        "Todas as pessoas com a mesma textura gostam de desenhar."
+      ],
+      "correctAnswer": "Elas têm uma característica diferente e compartilham o gosto por desenhar.",
+      "explanation": "Uma comparação cuidadosa descreve a diferença e a semelhança sem criar um ranking ou uma regra para todos.",
+      "hint": "Procure uma característica mostrada e um interesse que as duas compartilham.",
+      "errorFocus": "Hierarquizar ou generalizar uma característica",
+      "misconceptions": {
+        "Uma textura de cabelo é melhor que a outra.": [
+          "TEXTURE_RANKING"
+        ],
+        "O cabelo mostra quem desenha melhor.": [
+          "SKILL_FROM_HAIR"
+        ],
+        "Todas as pessoas com a mesma textura gostam de desenhar.": [
+          "GROUP_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FICTIONAL_GLASSES",
+      "statement": "Em um desenho, Caio está usando óculos. O que sabemos somente por essa imagem?",
+      "options": [
+        "Ele gosta mais de estudar que os outros.",
+        "Ele não consegue brincar sem ajuda.",
+        "O personagem está usando óculos; o desenho não informa sua inteligência ou seus gostos.",
+        "Todos que usam óculos têm os mesmos interesses."
+      ],
+      "correctAnswer": "O personagem está usando óculos; o desenho não informa sua inteligência ou seus gostos.",
+      "explanation": "Óculos são uma característica visível no desenho; não revelam personalidade, capacidade ou preferências.",
+      "hint": "Separe a informação visível das ideias que a imagem não mostra.",
+      "errorFocus": "Atribuir capacidade a partir de um acessório",
+      "misconceptions": {
+        "Ele gosta mais de estudar que os outros.": [
+          "INTELLIGENCE_FROM_GLASSES"
+        ],
+        "Ele não consegue brincar sem ajuda.": [
+          "DEPENDENCE_FROM_GLASSES"
+        ],
+        "Todos que usam óculos têm os mesmos interesses.": [
+          "INTEREST_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "FICTIONAL_FRECKLES",
+      "statement": "Uma personagem de um livro tem sardas. Qual descrição usa somente o que a história mostra?",
+      "options": [
+        "Ela é mais corajosa por causa das sardas.",
+        "Ela deve gostar de ficar ao sol.",
+        "Todas as pessoas com sardas têm o mesmo jeito.",
+        "A personagem tem sardas no rosto."
+      ],
+      "correctAnswer": "A personagem tem sardas no rosto.",
+      "explanation": "Descrever uma característica não exige imaginar causas, gostos ou personalidade.",
+      "hint": "Escolha a frase que não acrescenta uma suposição.",
+      "errorFocus": "Inventar traços pessoais a partir da aparência",
+      "misconceptions": {
+        "Ela é mais corajosa por causa das sardas.": [
+          "COURAGE_FROM_FRECKLES"
+        ],
+        "Ela deve gostar de ficar ao sol.": [
+          "HOBBY_FROM_FRECKLES"
+        ],
+        "Todas as pessoas com sardas têm o mesmo jeito.": [
+          "PERSONALITY_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FICTIONAL_SKIN_TONES",
+      "statement": "Uma ilustração mostra personagens com tons de pele diferentes colaborando no mesmo mural. O que ela mostra?",
+      "options": [
+        "Os personagens têm aparências diversas e trabalham juntos no mural.",
+        "Um tom de pele torna alguém melhor para pintar.",
+        "A aparência permite saber quem lidera o grupo.",
+        "Pessoas com o mesmo tom de pele sempre escolhem a mesma tarefa."
+      ],
+      "correctAnswer": "Os personagens têm aparências diversas e trabalham juntos no mural.",
+      "explanation": "A cena mostra diversidade e uma colaboração; o tom de pele não determina valor ou papel.",
+      "hint": "Use a ação visível na história, sem criar uma regra sobre grupos.",
+      "errorFocus": "Hierarquizar tons de pele ou atribuir papéis",
+      "misconceptions": {
+        "Um tom de pele torna alguém melhor para pintar.": [
+          "SKIN_TONE_RANK"
+        ],
+        "A aparência permite saber quem lidera o grupo.": [
+          "ROLE_FROM_APPEARANCE"
+        ],
+        "Pessoas com o mesmo tom de pele sempre escolhem a mesma tarefa.": [
+          "GROUP_ROLE_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "FICTIONAL_HAIR_STYLE",
+      "statement": "No conto, uma personagem usa o cabelo preso e outra solto. O que podemos concluir?",
+      "options": [
+        "A personagem de cabelo preso é mais organizada.",
+        "A história mostra dois penteados diferentes.",
+        "A personagem de cabelo solto não gosta de regras.",
+        "O penteado revela como cada uma se sente."
+      ],
+      "correctAnswer": "A história mostra dois penteados diferentes.",
+      "explanation": "O conto informa os penteados, não a personalidade nem os sentimentos das personagens.",
+      "hint": "Fique na informação apresentada, sem adivinhar o motivo.",
+      "errorFocus": "Inferir personalidade ou emoção pelo penteado",
+      "misconceptions": {
+        "A personagem de cabelo preso é mais organizada.": [
+          "ORDER_FROM_HAIR"
+        ],
+        "A personagem de cabelo solto não gosta de regras.": [
+          "RULES_FROM_HAIR"
+        ],
+        "O penteado revela como cada uma se sente.": [
+          "EMOTION_FROM_HAIR"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FICTION_VS_GUESS",
+      "statement": "Em um cartaz fictício, uma criança tem uma marca de nascença no braço. Qual afirmação é uma observação, não uma suposição?",
+      "options": [
+        "A marca diz como ele se comporta.",
+        "A marca significa que ele está doente.",
+        "O desenho mostra uma marca no braço do personagem.",
+        "A marca conta algo sobre sua família."
+      ],
+      "correctAnswer": "O desenho mostra uma marca no braço do personagem.",
+      "explanation": "A imagem mostra a marca; não oferece evidência sobre saúde, comportamento ou família.",
+      "hint": "Pergunte: “eu vi isso no desenho ou estou imaginando?”.",
+      "errorFocus": "Transformar aparência em diagnóstico ou história pessoal",
+      "misconceptions": {
+        "A marca diz como ele se comporta.": [
+          "HEALTH_DIAGNOSIS_FROM_MARK"
+        ],
+        "A marca significa que ele está doente.": [
+          "BEHAVIOR_FROM_MARK"
+        ],
+        "A marca conta algo sobre sua família.": [
+          "FAMILY_FROM_MARK"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NO_APPEARANCE_RANK",
+      "statement": "Um grupo vai escrever legendas para retratos de personagens fictícios. Qual legenda é respeitosa?",
+      "options": [
+        "“A personagem de cabelo comprido é a mais gentil.”",
+        "“O cabelo curto mostra quem manda no grupo.”",
+        "“A personagem com o cabelo diferente precisa explicar por quê.”",
+        "“As personagens têm cabelos diferentes e escolheram juntas o livro da roda.”"
+      ],
+      "correctAnswer": "“As personagens têm cabelos diferentes e escolheram juntas o livro da roda.”",
+      "explanation": "A legenda descreve uma diferença e uma ação, sem classificar nem exigir explicações pessoais.",
+      "hint": "Combine uma descrição observável com algo que acontece na história.",
+      "errorFocus": "Ranquear personagens ou exigir justificativa",
+      "misconceptions": {
+        "“A personagem de cabelo comprido é a mais gentil.”": [
+          "KINDNESS_FROM_HAIR"
+        ],
+        "“O cabelo curto mostra quem manda no grupo.”": [
+          "AUTHORITY_FROM_HAIR"
+        ],
+        "“A personagem com o cabelo diferente precisa explicar por quê.”": [
+          "FORCED_EXPLANATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "HEIGHT_AND_REACH",
+      "statement": "Uma personagem baixa quer pegar um livro em uma prateleira alta. O que ajuda a decidir o que fazer?",
+      "options": [
+        "Observar a situação e oferecer uma opção segura, como pedir ajuda ou usar um banco adequado com um adulto.",
+        "Concluir pela altura que ela não pode escolher o livro.",
+        "Pegar a personagem no colo sem perguntar.",
+        "Dizer que pessoas baixas nunca alcançam prateleiras."
+      ],
+      "correctAnswer": "Observar a situação e oferecer uma opção segura, como pedir ajuda ou usar um banco adequado com um adulto.",
+      "explanation": "A altura sozinha não informa o que a personagem consegue fazer; segurança, escolha e contexto importam.",
+      "hint": "Não decida por alguém só pela aparência; procure uma opção segura e respeitosa.",
+      "errorFocus": "Supor incapacidade e ignorar escolha ou segurança",
+      "misconceptions": {
+        "Concluir pela altura que ela não pode escolher o livro.": [
+          "HEIGHT_AS_INCAPACITY"
+        ],
+        "Pegar a personagem no colo sem perguntar.": [
+          "UNASKED_LIFTING"
+        ],
+        "Dizer que pessoas baixas nunca alcançam prateleiras.": [
+          "BODY_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HEARING_AID_CLASSROOM",
+      "statement": "Em uma história, Davi usa um aparelho auditivo e participa de uma roda. O que a ilustração permite afirmar?",
+      "options": [
+        "Ele não consegue ouvir nenhuma fala.",
+        "Davi usa um aparelho auditivo e participa da roda; não sabemos tudo sobre sua audição.",
+        "O aparelho indica que ele não pode participar.",
+        "Ele precisa explicar seu aparelho para a turma."
+      ],
+      "correctAnswer": "Davi usa um aparelho auditivo e participa da roda; não sabemos tudo sobre sua audição.",
+      "explanation": "O desenho mostra um aparelho e uma atividade; não autoriza diagnóstico nem exclusão.",
+      "hint": "Descreva o que aparece e evite completar a história com suposições.",
+      "errorFocus": "Inferir capacidade ou exigir explicação sobre recurso assistivo",
+      "misconceptions": {
+        "Ele não consegue ouvir nenhuma fala.": [
+          "TOTAL_HEARING_ASSUMPTION"
+        ],
+        "O aparelho indica que ele não pode participar.": [
+          "EXCLUDE_ASSISTIVE_DEVICE"
+        ],
+        "Ele precisa explicar seu aparelho para a turma.": [
+          "FORCED_DEVICE_EXPLANATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "WHEELCHAIR_ACCESS",
+      "statement": "Uma personagem que usa cadeira de rodas encontra três degraus na entrada da biblioteca. O que pode impedir sua entrada nessa cena?",
+      "options": [
+        "A cadeira de rodas torna a biblioteca impossível para todas as pessoas.",
+        "A personagem precisa desistir de participar.",
+        "A entrada sem uma rota acessível pode criar uma barreira; a personagem não é a barreira.",
+        "A aparência da personagem mostra que ela não gosta de ler."
+      ],
+      "correctAnswer": "A entrada sem uma rota acessível pode criar uma barreira; a personagem não é a barreira.",
+      "explanation": "A barreira descrita está no acesso ao prédio; não se deve atribuir a exclusão à pessoa nem inventar preferências.",
+      "hint": "Localize o obstáculo na situação, não no valor ou nos gostos da personagem.",
+      "errorFocus": "Confundir uma barreira do ambiente com uma característica da pessoa",
+      "misconceptions": {
+        "A cadeira de rodas torna a biblioteca impossível para todas as pessoas.": [
+          "PERSON_AS_BARRIER"
+        ],
+        "A personagem precisa desistir de participar.": [
+          "EXCLUSION_AS_SOLUTION"
+        ],
+        "A aparência da personagem mostra que ela não gosta de ler.": [
+          "PREFERENCE_FROM_DEVICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "UNWANTED_BODY_COMMENT",
+      "statement": "Uma personagem ouve um comentário que zomba de seu cabelo. Qual resposta de uma colega ajuda sem expô-la mais?",
+      "options": [
+        "Repetir o comentário em voz alta para a turma.",
+        "Pedir que a personagem conte por que seu cabelo é assim.",
+        "Rir junto para não chamar atenção.",
+        "Dizer que não é correto zombar, oferecer apoio e procurar um adulto se a situação continuar."
+      ],
+      "correctAnswer": "Dizer que não é correto zombar, oferecer apoio e procurar um adulto se a situação continuar.",
+      "explanation": "Apoiar não exige que a pessoa alvo se explique; interromper a zombaria e buscar ajuda são opções mais cuidadosas.",
+      "hint": "Proteja a pessoa sem transformar sua aparência em assunto público.",
+      "errorFocus": "Ampliar a exposição ou responsabilizar quem sofreu a zombaria",
+      "misconceptions": {
+        "Repetir o comentário em voz alta para a turma.": [
+          "AMPLIFY_MOCKERY"
+        ],
+        "Pedir que a personagem conte por que seu cabelo é assim.": [
+          "FORCE_BODY_DISCLOSURE"
+        ],
+        "Rir junto para não chamar atenção.": [
+          "JOIN_MOCKERY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "PERSONAL_SPACE",
+      "statement": "Uma criança quer tocar no cabelo de uma personagem durante uma brincadeira. Qual combinado respeita o espaço pessoal?",
+      "options": [
+        "Não tocar sem permissão; escolher outra brincadeira se a personagem não quiser.",
+        "Tocar rapidamente porque a curiosidade é grande.",
+        "Pedir que outra criança toque por ela.",
+        "Afirmar que personagens de uma história não precisam de respeito."
+      ],
+      "correctAnswer": "Não tocar sem permissão; escolher outra brincadeira se a personagem não quiser.",
+      "explanation": "Curiosidade não substitui permissão. O personagem pode recusar sem precisar explicar o motivo.",
+      "hint": "Uma pergunta respeitosa aceita a resposta “não”.",
+      "errorFocus": "Tratar curiosidade como autorização para tocar",
+      "misconceptions": {
+        "Tocar rapidamente porque a curiosidade é grande.": [
+          "CURIOSITY_AS_CONSENT"
+        ],
+        "Pedir que outra criança toque por ela.": [
+          "TOUCH_BY_PROXY"
+        ],
+        "Afirmar que personagens de uma história não precisam de respeito.": [
+          "FICTION_AS_NO_RESPECT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "FICTIONAL_ROLE_BY_APPEARANCE",
+      "statement": "Ao organizar uma brincadeira para personagens fictícios, alguém diz que o personagem mais alto deve sempre liderar. O que é mais justo?",
+      "options": [
+        "Deixar sempre o mais alto decidir.",
+        "Perguntar quem quer liderar e alternar papéis; altura não mostra preferência ou habilidade.",
+        "Dizer que personagens mais baixos não podem liderar.",
+        "Escolher o líder pela aparência sem ouvir os personagens."
+      ],
+      "correctAnswer": "Perguntar quem quer liderar e alternar papéis; altura não mostra preferência ou habilidade.",
+      "explanation": "Altura não informa quem quer ou pode liderar. Perguntar e alternar papéis evita transformar aparência em regra.",
+      "hint": "Troque a suposição por uma escolha e uma oportunidade para cada personagem.",
+      "errorFocus": "Distribuir papéis por aparência",
+      "misconceptions": {
+        "Deixar sempre o mais alto decidir.": [
+          "LEADERSHIP_FROM_HEIGHT"
+        ],
+        "Dizer que personagens mais baixos não podem liderar.": [
+          "EXCLUDE_SHORT_CHARACTER"
+        ],
+        "Escolher o líder pela aparência sem ouvir os personagens.": [
+          "ASSIGN_WITHOUT_CHOICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_FICTIONAL_STORY",
+      "statement": "Em outra história, duas crianças têm alturas diferentes e gostam da mesma música. Qual comparação é sustentada pelo texto?",
+      "options": [
+        "A mais alta sempre escolhe a música.",
+        "A altura explica por que gostam da mesma música.",
+        "Elas diferem na altura representada e compartilham o gosto pela música.",
+        "Todas as crianças dessas alturas gostam dessa música."
+      ],
+      "correctAnswer": "Elas diferem na altura representada e compartilham o gosto pela música.",
+      "explanation": "A resposta separa duas informações da história, sem dizer que uma causa a outra.",
+      "hint": "Mantenha cada observação ligada ao que o texto realmente informa.",
+      "errorFocus": "Confundir coincidência com causa ou regra geral",
+      "misconceptions": {
+        "A mais alta sempre escolhe a música.": [
+          "HEIGHT_CAUSES_TASTE"
+        ],
+        "A altura explica por que gostam da mesma música.": [
+          "AUTHORITY_FROM_HEIGHT"
+        ],
+        "Todas as crianças dessas alturas gostam dessa música.": [
+          "GENERALIZE_TASTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_CHARACTER_CARD",
+      "statement": "Um cartão mostra uma personagem com uma pinta e um livro nas mãos. Qual informação não pode ser descoberta apenas pelo cartão?",
+      "options": [
+        "Que o cartão mostra uma pinta.",
+        "Que há um livro nas mãos dela.",
+        "Que o desenho apresenta uma personagem.",
+        "Se a personagem gosta de ler ou está apenas carregando o livro."
+      ],
+      "correctAnswer": "Se a personagem gosta de ler ou está apenas carregando o livro.",
+      "explanation": "Um objeto na imagem não comprova preferência ou intenção.",
+      "hint": "Diferencie “está com um livro” de “gosta de ler”.",
+      "errorFocus": "Confundir objeto presente com preferência pessoal",
+      "misconceptions": {
+        "Que o cartão mostra uma pinta.": [
+          "PREFERENCE_FROM_OBJECT"
+        ],
+        "Que há um livro nas mãos dela.": [
+          "VISIBLE_MARK"
+        ],
+        "Que o desenho apresenta uma personagem.": [
+          "FICTIONAL_CHARACTER"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSROOM_PORTRAIT_ACTIVITY",
+      "statement": "A turma compara retratos inventados para praticar descrições. Qual regra mantém a atividade acolhedora?",
+      "options": [
+        "Usar somente personagens fictícios, descrever sem ranking e permitir que alguém passe a vez.",
+        "Pedir que cada criança compare o próprio corpo com o dos colegas.",
+        "Dar nota para o retrato considerado mais bonito.",
+        "Exigir que todos expliquem suas características pessoais."
+      ],
+      "correctAnswer": "Usar somente personagens fictícios, descrever sem ranking e permitir que alguém passe a vez.",
+      "explanation": "Personagens fictícios permitem observar sem pressionar crianças a expor ou avaliar os próprios corpos.",
+      "hint": "A atividade pode ensinar comparação sem transformar alunos em exemplos.",
+      "errorFocus": "Exposição, ranking e divulgação obrigatória",
+      "misconceptions": {
+        "Pedir que cada criança compare o próprio corpo com o dos colegas.": [
+          "BODY_COMPARISON"
+        ],
+        "Dar nota para o retrato considerado mais bonito.": [
+          "BEAUTY_RANK"
+        ],
+        "Exigir que todos expliquem suas características pessoais.": [
+          "MANDATORY_SELF_DISCLOSURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "NEW_STUDENT_APPEARANCE_QUESTION",
+      "statement": "Uma criança nova ouve “por que seu cabelo é assim?” e não quer responder. O que um colega pode fazer?",
+      "options": [
+        "Insistir até receber uma explicação.",
+        "Aceitar que ela não responda e mudar de assunto ou convidá-la para uma atividade sem pressão.",
+        "Responder por ela com uma suposição.",
+        "Dizer que ela precisa contar para fazer parte da turma."
+      ],
+      "correctAnswer": "Aceitar que ela não responda e mudar de assunto ou convidá-la para uma atividade sem pressão.",
+      "explanation": "Ninguém precisa explicar uma característica pessoal para ser acolhido.",
+      "hint": "Acolher também é respeitar o limite de uma conversa.",
+      "errorFocus": "Vincular pertencimento à exposição pessoal",
+      "misconceptions": {
+        "Insistir até receber uma explicação.": [
+          "INSISTENT_QUESTION"
+        ],
+        "Responder por ela com uma suposição.": [
+          "SPEAK_FOR_OTHER"
+        ],
+        "Dizer que ela precisa contar para fazer parte da turma.": [
+          "DISCLOSURE_FOR_BELONGING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NEW_ACCESS_SCENARIO",
+      "statement": "Uma exposição escolar tem cartazes colocados muito altos e uma criança não consegue ler um deles. Qual solução foca no acesso?",
+      "options": [
+        "Concluir que a criança não se interessa pelo tema.",
+        "Pedir que ela desista daquela parte da exposição.",
+        "Reposicionar ou oferecer outra forma acessível de ler o cartaz.",
+        "Mudar a criança de lugar sem perguntar."
+      ],
+      "correctAnswer": "Reposicionar ou oferecer outra forma acessível de ler o cartaz.",
+      "explanation": "Ajustar o material pode remover a barreira sem presumir interesse ou decidir pela criança.",
+      "hint": "Observe qual parte do ambiente pode ser adaptada.",
+      "errorFocus": "Atribuir a barreira ou o desinteresse à criança",
+      "misconceptions": {
+        "Concluir que a criança não se interessa pelo tema.": [
+          "INTEREST_FROM_ACCESS"
+        ],
+        "Pedir que ela desista daquela parte da exposição.": [
+          "EXCLUSION_FROM_BARRIER"
+        ],
+        "Mudar a criança de lugar sem perguntar.": [
+          "MOVE_WITHOUT_ASKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_PHYSICAL_FEATURE_STEREOTYPE",
+      "statement": "Em um conto, uma criança tem uma cicatriz visível. Um personagem diz que isso prova que ela é corajosa. Qual resposta é mais cuidadosa?",
+      "options": [
+        "Toda pessoa com cicatriz é corajosa.",
+        "A cicatriz prova que a criança passou por uma situação específica.",
+        "A criança deve contar a história da cicatriz.",
+        "A cicatriz é observável, mas não prova como a criança se sente ou age."
+      ],
+      "correctAnswer": "A cicatriz é observável, mas não prova como a criança se sente ou age.",
+      "explanation": "Uma característica visível não permite adivinhar experiência, personalidade ou saúde.",
+      "hint": "O que a história mostrou, e o que ainda não sabemos?",
+      "errorFocus": "Inventar história ou traço de personalidade a partir do corpo",
+      "misconceptions": {
+        "Toda pessoa com cicatriz é corajosa.": [
+          "COURAGE_FROM_SCAR"
+        ],
+        "A cicatriz prova que a criança passou por uma situação específica.": [
+          "TRAUMA_FROM_SCAR"
+        ],
+        "A criança deve contar a história da cicatriz.": [
+          "FORCED_SCAR_STORY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "NEW_GROUP_WORK",
+      "statement": "Um grupo precisa escolher quem apresenta um cartaz. Como distribuir a tarefa sem decidir pela aparência?",
+      "options": [
+        "Perguntar quem quer apresentar e oferecer outras funções, com possibilidade de trocar.",
+        "Escolher quem parece mais alto para falar.",
+        "Escolher quem tem determinada aparência para representar o grupo.",
+        "Obrigar a pessoa mais quieta a falar para “perder a timidez”."
+      ],
+      "correctAnswer": "Perguntar quem quer apresentar e oferecer outras funções, com possibilidade de trocar.",
+      "explanation": "Interesse e escolha devem ser perguntados; aparência não prevê habilidade nem autorização.",
+      "hint": "Substitua a suposição por uma pergunta e ofereça opções.",
+      "errorFocus": "Atribuir funções por aparência ou forçar participação",
+      "misconceptions": {
+        "Escolher quem parece mais alto para falar.": [
+          "ROLE_FROM_HEIGHT"
+        ],
+        "Escolher quem tem determinada aparência para representar o grupo.": [
+          "REPRESENTATION_BY_APPEARANCE"
+        ],
+        "Obrigar a pessoa mais quieta a falar para “perder a timidez”.": [
+          "FORCED_CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "TEASING_IN_PLAY",
+      "statement": "Durante um jogo, uma criança chama outra de “estranha” por causa de sua aparência. Qual ação é mais adequada?",
+      "options": [
+        "Repetir o apelido para mostrar que ouviu.",
+        "Não repetir o apelido, dizer que a brincadeira deve parar e buscar apoio de um adulto.",
+        "Pedir à criança alvo que prove que é igual às outras.",
+        "Continuar o jogo e deixar a criança de fora."
+      ],
+      "correctAnswer": "Não repetir o apelido, dizer que a brincadeira deve parar e buscar apoio de um adulto.",
+      "explanation": "Interromper a ofensa e buscar apoio evita normalizar a exclusão e não exige justificativa da criança alvo.",
+      "hint": "Ajude sem fazer da pessoa atingida a responsável por resolver a ofensa.",
+      "errorFocus": "Normalizar apelido ou transferir a responsabilidade",
+      "misconceptions": {
+        "Repetir o apelido para mostrar que ouviu.": [
+          "REPEAT_NICKNAME"
+        ],
+        "Pedir à criança alvo que prove que é igual às outras.": [
+          "PROVE_NORMALITY"
+        ],
+        "Continuar o jogo e deixar a criança de fora.": [
+          "IGNORE_EXCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "ASSISTIVE_DEVICE_PERMISSION",
+      "statement": "Uma personagem usa um recurso de mobilidade. Um colega quer movê-lo para abrir espaço. O que deve fazer?",
+      "options": [
+        "Mover depressa porque quer ajudar.",
+        "Pedir a outra pessoa que mova sem avisar.",
+        "Perguntar antes e seguir a resposta; não mover o recurso sem permissão.",
+        "Retirar o recurso durante a atividade."
+      ],
+      "correctAnswer": "Perguntar antes e seguir a resposta; não mover o recurso sem permissão.",
+      "explanation": "Um recurso de mobilidade faz parte do espaço pessoal; ajuda deve respeitar a escolha da pessoa.",
+      "hint": "Antes de ajudar ou tocar em um recurso, pergunte.",
+      "errorFocus": "Ajuda não solicitada que retira autonomia",
+      "misconceptions": {
+        "Mover depressa porque quer ajudar.": [
+          "HELP_WITHOUT_PERMISSION"
+        ],
+        "Pedir a outra pessoa que mova sem avisar.": [
+          "MOVE_BY_PROXY"
+        ],
+        "Retirar o recurso durante a atividade.": [
+          "REMOVE_DEVICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OBSERVATION_AND_INFERENCE",
+      "statement": "O desenho mostra uma criança com aparelho auditivo sorrindo para uma amiga. Qual frase separa observação de suposição?",
+      "options": [
+        "“Ela está feliz o dia inteiro porque sorri.”",
+        "“Ela não consegue ouvir a amiga.”",
+        "“Ela precisa de ajuda para conversar.”",
+        "“Ela usa aparelho auditivo e sorri”; a imagem não explica tudo sobre sua audição."
+      ],
+      "correctAnswer": "“Ela usa aparelho auditivo e sorri”; a imagem não explica tudo sobre sua audição.",
+      "explanation": "Um sorriso e um aparelho são elementos visíveis; sentimentos duradouros e capacidade auditiva não foram demonstrados.",
+      "hint": "Descreva os elementos e marque o que a imagem não conta.",
+      "errorFocus": "Tratar um instante como prova de um estado permanente",
+      "misconceptions": {
+        "“Ela está feliz o dia inteiro porque sorri.”": [
+          "PERMANENT_EMOTION_FROM_SMILE"
+        ],
+        "“Ela não consegue ouvir a amiga.”": [
+          "NO_HEARING_FROM_DEVICE"
+        ],
+        "“Ela precisa de ajuda para conversar.”": [
+          "HELP_ASSUMPTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "HURTFUL_COMMENT_REPAIR",
+      "statement": "Uma criança percebe que fez um comentário que magoou alguém. Qual próximo passo ajuda a reparar?",
+      "options": [
+        "Parar o comentário, pedir desculpas sem exigir resposta e conversar com um adulto sobre como agir melhor.",
+        "Dizer que era brincadeira e exigir que a pessoa esqueça.",
+        "Pedir que a pessoa explique por que ficou magoada diante de todos.",
+        "Repetir o comentário de outro jeito."
+      ],
+      "correctAnswer": "Parar o comentário, pedir desculpas sem exigir resposta e conversar com um adulto sobre como agir melhor.",
+      "explanation": "Uma desculpa não deve pressionar a pessoa atingida a perdoar ou explicar seus sentimentos em público.",
+      "hint": "Assuma responsabilidade e dê espaço à outra pessoa.",
+      "errorFocus": "Minimizar a ofensa ou exigir perdão",
+      "misconceptions": {
+        "Dizer que era brincadeira e exigir que a pessoa esqueça.": [
+          "JOKE_EXCUSE"
+        ],
+        "Pedir que a pessoa explique por que ficou magoada diante de todos.": [
+          "PUBLIC_EMOTION_DEMAND"
+        ],
+        "Repetir o comentário de outro jeito.": [
+          "REPEAT_HARM"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "CLASSROOM_DISPLAY",
+      "statement": "A turma quer montar um mural com desenhos de personagens diversos. Qual plano evita expor alunos?",
+      "options": [
+        "Fotografar cada estudante para comparar características.",
+        "Usar personagens inventados ou imagens selecionadas pelo educador, sem pedir autorretratos ou comparações corporais.",
+        "Escolher o estudante “mais diferente” para representar o mural.",
+        "Pedir que cada criança explique uma característica do próprio corpo."
+      ],
+      "correctAnswer": "Usar personagens inventados ou imagens selecionadas pelo educador, sem pedir autorretratos ou comparações corporais.",
+      "explanation": "A atividade pode representar diversidade sem registrar ou classificar estudantes reais.",
+      "hint": "Prefira materiais fictícios e participação voluntária.",
+      "errorFocus": "Transformar alunos em material de comparação",
+      "misconceptions": {
+        "Fotografar cada estudante para comparar características.": [
+          "STUDENT_PHOTO_COLLECTION"
+        ],
+        "Escolher o estudante “mais diferente” para representar o mural.": [
+          "TOKEN_STUDENT"
+        ],
+        "Pedir que cada criança explique uma característica do próprio corpo.": [
+          "BODY_DISCLOSURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "NEW_REVIEW_PORTRAIT",
+      "statement": "Uma figura mostra duas personagens com tipos de cabelo diferentes. Qual frase é uma observação?",
+      "options": [
+        "Uma delas é mais gentil por causa do cabelo.",
+        "Uma delas prefere brincar sozinha.",
+        "As personagens têm cabelos diferentes na ilustração.",
+        "Uma delas deve cuidar melhor do cabelo."
+      ],
+      "correctAnswer": "As personagens têm cabelos diferentes na ilustração.",
+      "explanation": "A figura pode mostrar o cabelo, mas não revela gentileza, preferência ou hábitos.",
+      "hint": "Volte ao que seus olhos podem confirmar no desenho.",
+      "errorFocus": "Adivinhar personalidade ou hábitos",
+      "misconceptions": {
+        "Uma delas é mais gentil por causa do cabelo.": [
+          "KINDNESS_FROM_HAIR"
+        ],
+        "Uma delas prefere brincar sozinha.": [
+          "SOLITUDE_FROM_HAIR"
+        ],
+        "Uma delas deve cuidar melhor do cabelo.": [
+          "HABIT_FROM_HAIR"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_REVIEW_SHARED_ACTIVITY",
+      "statement": "Dois personagens de uma história têm tons de pele diferentes e constroem uma maquete juntos. O que podemos registrar?",
+      "options": [
+        "Um deles trabalhou melhor por causa do tom de pele.",
+        "A aparência mostra quem teve a ideia.",
+        "Toda pessoa com o mesmo tom de pele gosta de construir maquetes.",
+        "Eles têm aparências diferentes e participaram juntos da construção."
+      ],
+      "correctAnswer": "Eles têm aparências diferentes e participaram juntos da construção.",
+      "explanation": "A ação observada é colaboração; aparência não explica habilidade ou preferência.",
+      "hint": "Registre a diferença sem transformar aparência em causa.",
+      "errorFocus": "Ligar desempenho à aparência",
+      "misconceptions": {
+        "Um deles trabalhou melhor por causa do tom de pele.": [
+          "PERFORMANCE_FROM_SKIN"
+        ],
+        "A aparência mostra quem teve a ideia.": [
+          "IDEA_FROM_APPEARANCE"
+        ],
+        "Toda pessoa com o mesmo tom de pele gosta de construir maquetes.": [
+          "GROUP_HOBBY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_REVIEW_GLASSES_BOOK",
+      "statement": "Uma personagem desenhada usa óculos e segura um livro. O que não podemos saber apenas pela imagem?",
+      "options": [
+        "Se ela gosta de ler ou só está levando o livro naquele momento.",
+        "Que há óculos no rosto da personagem.",
+        "Que ela segura um livro.",
+        "Que o desenho mostra uma personagem."
+      ],
+      "correctAnswer": "Se ela gosta de ler ou só está levando o livro naquele momento.",
+      "explanation": "A presença de um livro não prova um gosto ou hábito.",
+      "hint": "A imagem mostra uma ação, mas não necessariamente uma preferência.",
+      "errorFocus": "Confundir objeto ou ação com hábito",
+      "misconceptions": {
+        "Que há óculos no rosto da personagem.": [
+          "READING_PREFERENCE_FROM_BOOK"
+        ],
+        "Que ela segura um livro.": [
+          "VISIBLE_GLASSES"
+        ],
+        "Que o desenho mostra uma personagem.": [
+          "DRAWING_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NEW_REVIEW_ACCESS",
+      "statement": "Uma rampa está bloqueada por caixas na entrada da sala. Qual descrição localiza melhor o problema?",
+      "options": [
+        "A pessoa que usa a rampa está causando o problema.",
+        "As caixas bloqueiam uma rota de acesso e precisam ser retiradas.",
+        "A pessoa deve esperar sempre do lado de fora.",
+        "A rampa só serve para algumas pessoas e pode ficar bloqueada."
+      ],
+      "correctAnswer": "As caixas bloqueiam uma rota de acesso e precisam ser retiradas.",
+      "explanation": "A barreira é o bloqueio da rota; remover o obstáculo melhora o acesso.",
+      "hint": "Identifique o que no ambiente impede a passagem.",
+      "errorFocus": "Atribuir barreira à pessoa ou normalizar exclusão",
+      "misconceptions": {
+        "A pessoa que usa a rampa está causando o problema.": [
+          "PERSON_CAUSES_BARRIER"
+        ],
+        "A pessoa deve esperar sempre do lado de fora.": [
+          "PERMANENT_WAIT"
+        ],
+        "A rampa só serve para algumas pessoas e pode ficar bloqueada.": [
+          "ACCESS_ROUTE_UNIMPORTANT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "NEW_REVIEW_PERSONAL_QUESTION",
+      "statement": "Uma criança não quer responder a uma pergunta sobre uma característica do corpo. O que respeita seu limite?",
+      "options": [
+        "Perguntar de novo até ela explicar.",
+        "Pedir que um colega responda por ela.",
+        "Aceitar que ela não responda e continuar a atividade sem punição.",
+        "Dizer que a resposta é obrigatória para participar."
+      ],
+      "correctAnswer": "Aceitar que ela não responda e continuar a atividade sem punição.",
+      "explanation": "Privacidade e participação não dependem de revelar características pessoais.",
+      "hint": "Aceite a opção de passar a vez sem pedir justificativa.",
+      "errorFocus": "Pressionar por informação pessoal",
+      "misconceptions": {
+        "Perguntar de novo até ela explicar.": [
+          "REPEAT_PRIVATE_QUESTION"
+        ],
+        "Pedir que um colega responda por ela.": [
+          "ANSWER_FOR_PEER"
+        ],
+        "Dizer que a resposta é obrigatória para participar.": [
+          "DISCLOSURE_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_REVIEW_ABILITIES",
+      "statement": "Uma história mostra uma personagem baixa alcançando um objeto depois de usar uma escada baixa e segura. O que essa cena ensina sobre uma conclusão anterior de que ela não conseguiria?",
+      "options": [
+        "A personagem é melhor que as pessoas mais altas.",
+        "Toda pessoa baixa deve usar uma escada.",
+        "A cena prova que altura nunca faz diferença em nenhuma situação.",
+        "A primeira suposição foi apressada; o contexto e os recursos também importam."
+      ],
+      "correctAnswer": "A primeira suposição foi apressada; o contexto e os recursos também importam.",
+      "explanation": "A situação mostra uma possibilidade com um recurso seguro, sem criar uma regra absoluta sobre todos os corpos.",
+      "hint": "Revise a conclusão usando a nova evidência, sem exagerar para o lado oposto.",
+      "errorFocus": "Trocar um estereótipo por uma regra universal",
+      "misconceptions": {
+        "A personagem é melhor que as pessoas mais altas.": [
+          "HEIGHT_SUPERIORITY"
+        ],
+        "Toda pessoa baixa deve usar uma escada.": [
+          "MANDATORY_AID"
+        ],
+        "A cena prova que altura nunca faz diferença em nenhuma situação.": [
+          "ABSOLUTE_NO_DIFFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "NEW_REVIEW_GROUP_CHOICE",
+      "statement": "Um grupo vai escolher tarefas para uma apresentação. Qual combinação é mais justa?",
+      "options": [
+        "Perguntar as preferências, explicar as tarefas e permitir escolhas ou trocas.",
+        "Escolher tarefas pelo rosto ou pelo corpo de cada colega.",
+        "Decidir que todos devem falar na frente da turma.",
+        "Dar sempre as tarefas mais importantes à mesma pessoa."
+      ],
+      "correctAnswer": "Perguntar as preferências, explicar as tarefas e permitir escolhas ou trocas.",
+      "explanation": "Perguntar e oferecer alternativas evita suposições e permite participação.",
+      "hint": "Descubra o que as pessoas querem fazer em vez de adivinhar.",
+      "errorFocus": "Distribuir papéis por aparência ou impor um único modo",
+      "misconceptions": {
+        "Escolher tarefas pelo rosto ou pelo corpo de cada colega.": [
+          "APPEARANCE_ROLE_ASSIGNMENT"
+        ],
+        "Decidir que todos devem falar na frente da turma.": [
+          "SPEAKING_COERCION"
+        ],
+        "Dar sempre as tarefas mais importantes à mesma pessoa.": [
+          "FIXED_STATUS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "NEW_REVIEW_REPEATED_TEASING",
+      "statement": "A zombaria sobre a aparência de um personagem continua mesmo depois que ele pede para parar. O que um colega pode fazer?",
+      "options": [
+        "Encaminhar a fala para outras turmas como piada.",
+        "Apoiar o pedido para parar, não compartilhar a zombaria e procurar ajuda de um adulto.",
+        "Pedir ao personagem que prove que não se importa.",
+        "Esperar que ele resolva tudo sozinho."
+      ],
+      "correctAnswer": "Apoiar o pedido para parar, não compartilhar a zombaria e procurar ajuda de um adulto.",
+      "explanation": "Apoio reduz a circulação da ofensa e envolve um adulto quando ela continua.",
+      "hint": "Não amplifique a fala; procure ajuda.",
+      "errorFocus": "Disseminar ofensa ou exigir prova de sofrimento",
+      "misconceptions": {
+        "Encaminhar a fala para outras turmas como piada.": [
+          "SPREAD_MOCKERY"
+        ],
+        "Pedir ao personagem que prove que não se importa.": [
+          "PROVE_HARM"
+        ],
+        "Esperar que ele resolva tudo sozinho.": [
+          "LEAVE_TARGET_ALONE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-diversity-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEW_REVIEW_EVIDENCE_LIMIT",
+      "statement": "Um retrato mostra uma personagem com uma cicatriz e um caderno. Qual conclusão respeita os limites da evidência?",
+      "options": [
+        "A cicatriz prova que ela viveu um acidente.",
+        "O caderno prova que ela gosta de todas as matérias.",
+        "O retrato mostra uma cicatriz e um caderno; não explica a origem da cicatriz nem o que ela pensa.",
+        "A cicatriz indica que ela não pode brincar."
+      ],
+      "correctAnswer": "O retrato mostra uma cicatriz e um caderno; não explica a origem da cicatriz nem o que ela pensa.",
+      "explanation": "Os objetos e marcas estão visíveis, mas sua origem, preferências e capacidades não aparecem automaticamente.",
+      "hint": "Diga o que está na imagem e nomeie uma coisa que ela não informa.",
+      "errorFocus": "Inventar causa, gosto ou limite funcional",
+      "misconceptions": {
+        "A cicatriz prova que ela viveu um acidente.": [
+          "CAUSE_FROM_SCAR"
+        ],
+        "O caderno prova que ela gosta de todas as matérias.": [
+          "ALL_SUBJECTS_FROM_NOTEBOOK"
+        ],
+        "A cicatriz indica que ela não pode brincar.": [
+          "PLAY_LIMIT_FROM_SCAR"
+        ]
+      }
+    }
+  ]
+}

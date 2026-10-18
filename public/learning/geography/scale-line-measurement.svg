@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" role="img" aria-labelledby="title desc">
+  <title id="title">Medida reta entre os pontos P e Q</title>
+  <desc id="desc">Em um mapa esquematico de escala 1 para 50 mil, um segmento reto entre P e Q mede 2,4 centimetros.</desc>
+  <rect width="640" height="230" rx="16" fill="#f7fafc"/>
+  <rect x="26" y="24" width="588" height="182" rx="12" fill="#fff" stroke="#9bb4c8"/>
+  <g stroke="#b9d8dc" stroke-width="16" fill="none" stroke-linecap="round">
+    <path d="M58 158c72-72 94 22 154-46s101 32 157-35 106 21 206-42"/>
+    <path d="M90 44c30 63 88 14 119 72s83 24 126 75M362 34c-3 54 52 61 58 105s53 22 99 40"/>
+  </g>
+  <path d="M126 127L503 79" stroke="#b4472e" stroke-width="4" stroke-dasharray="10 7"/>
+  <circle cx="126" cy="127" r="8" fill="#b4472e"/><circle cx="503" cy="79" r="8" fill="#b4472e"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <text x="106" y="112" font-size="18" font-weight="700">P</text><text x="510" y="72" font-size="18" font-weight="700">Q</text>
+    <rect x="257" y="85" width="126" height="30" rx="8" fill="#fff" stroke="#d5e0e8"/>
+    <text x="320" y="106" text-anchor="middle" font-size="17" font-weight="700">2,4 cm</text>
+    <text x="44" y="190" font-size="16">Escala numerica: 1:50 000</text>
+  </g>
+</svg>

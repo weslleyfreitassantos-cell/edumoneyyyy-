@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma07-compose-decompose-two-order-numbers",
+  "canonicalSkillCode": "AUTHORING_EF01MA07_COMPOSE_DECOMPOSE_TWO_ORDERS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "composição e decomposição de números de até duas ordens por adições",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Números em grupos de dez e unidades",
+    "objective": "Compor e decompor números naturais de até duas ordens de diferentes maneiras usando adições e representações de dezenas e unidades, com apoio de materiais manipuláveis.",
+    "summary": "Um número de duas ordens pode ser representado por dezenas e unidades e também por diferentes adições. Por exemplo, 34 pode ser visto como 30 + 4 ou 20 + 14. Agrupar dez unidades ajuda a compreender o sistema decimal, mas as representações precisam continuar equivalentes ao mesmo total. Tampinhas, blocos, desenhos e quadros de dezenas podem apoiar a exploração. Estratégias podem variar; rapidez não é o objetivo, e estudantes podem usar materiais ou registros visuais.",
+    "explanation": "Para representar 42, forme quatro grupos de dez e mais duas unidades: 40 + 2. Também é possível reorganizar um grupo de dez em unidades e obter 30 + 12. As duas adições totalizam 42. Confira contando o material ou somando os valores. O primeiro número representa dezenas quando agrupado de dez em dez; as unidades restantes completam o total. Use diferentes decomposições, mas não altere a quantidade representada.",
+    "workedExample": "Com 3 barras de dez e 6 cubinhos temos 36. A decomposição usual é 30 + 6. Se trocarmos uma barra por 10 cubinhos, podemos mostrar 20 + 16; o total continua 36.",
+    "commonMistake": "Confundir o algarismo das dezenas com o número de unidades ou propor uma adição que não conserva o total representado.",
+    "priorKnowledge": [
+      "Contar coleções pequenas e agrupamentos de dez com apoio concreto.",
+      "Reconhecer adições simples em situações de juntar quantidades."
+    ],
+    "keyConcepts": [
+      "número natural",
+      "dezena",
+      "unidade",
+      "composição",
+      "decomposição",
+      "adição",
+      "equivalência",
+      "material manipulável"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "TENS_AND_ONES_VALUE",
+        "action": "Construa grupos de dez e unidades soltas, nomeando quanto vale cada grupo antes de registrar a adição."
+      },
+      {
+        "errorFocus": "EQUIVALENT_ADDITIVE_DECOMPOSITION",
+        "action": "Conte ou recomponha os dois lados para verificar se representam o mesmo total."
+      },
+      {
+        "errorFocus": "FLEXIBLE_COMPOSITION_STRATEGY",
+        "action": "Troque uma dezena por dez unidades no material e registre a nova adição equivalente."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+      "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+      "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma07-number-building-station",
+        "title": "Estação de montar números",
+        "instructions": "Cartões apresentam totais de até duas ordens e materiais agrupáveis em dezenas e unidades.\n1. Escolha um cartão de número.\n2. Represente-o com grupos de dez e unidades.\n3. Registre duas adições diferentes que conservem o total.",
+        "steps": [
+          "Escolha um cartão de número.",
+          "Represente-o com grupos de dez e unidades.",
+          "Registre duas adições diferentes que conservem o total."
+        ],
+        "evidence": "Representação manipulável e dois registros aditivos equivalentes.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "representa unidades com apoio.",
+            "developing": "compõe dezenas e unidades.",
+            "proficient": "apresenta duas decomposições equivalentes e explica a troca de uma dezena."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma07-equivalent-addition-gallery",
+        "title": "Galeria de decomposições",
+        "instructions": "Cada dupla recebe um número e compara maneiras diferentes de representá-lo com materiais e adições.\n1. Monte o número com material.\n2. Troque uma dezena por dez unidades quando possível.\n3. Compare os registros e confira se mantêm o mesmo total.",
+        "steps": [
+          "Monte o número com material.",
+          "Troque uma dezena por dez unidades quando possível.",
+          "Compare os registros e confira se mantêm o mesmo total."
+        ],
+        "evidence": "Galeria de representações com conferência do total.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma quantidade.",
+            "developing": "registra dezenas e unidades.",
+            "proficient": "justifica equivalência entre adições com apoio da representação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma07-compose-decompose-two-order-numbers-01",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-02",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-03",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-04",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-05",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-06",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-07",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma07-compose-decompose-two-order-numbers-09",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-10",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-11",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-12",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-13",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-14",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-15",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma07-compose-decompose-two-order-numbers-17",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-18",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-19",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-20",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-21",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-22",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-23",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma07-compose-decompose-two-order-numbers-25",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-26",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-27",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-28",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-29",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-30",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-31",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma07-compose-decompose-two-order-numbers-33",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-34",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-35",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-36",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-37",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-38",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-39",
+          "v1-ef01ma07-compose-decompose-two-order-numbers-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA07",
+        "descriptor": "Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-01",
+      "statement": "Que número é formado por 3 dezenas e 2 unidades?",
+      "prompt": "Que número é formado por 3 dezenas e 2 unidades?",
+      "options": [
+        "32.",
+        "23",
+        "302",
+        "5"
+      ],
+      "correctAnswer": "32.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "5": [
+          "COMPOSE_TENS_ONES"
+        ],
+        "23": [
+          "COMPOSE_TENS_ONES"
+        ],
+        "302": [
+          "COMPOSE_TENS_ONES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "TRINTA_E_DOIS",
+      "explanation": "Três dezenas valem 30; com 2 unidades formam 32.",
+      "hint": "Junte 30 e 2.",
+      "errorFocus": "COMPOSE_TENS_ONES",
+      "feedback": {
+        "correct": "Boa observação: Três dezenas valem 30; com 2 unidades formam 32.",
+        "incorrect": "Três dezenas valem 30; com 2 unidades formam 32.",
+        "hint": "Junte 30 e 2.",
+        "errorFocus": "COMPOSE_TENS_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-02",
+      "statement": "Qual adição representa 47 em dezenas e unidades?",
+      "prompt": "Qual adição representa 47 em dezenas e unidades?",
+      "options": [
+        "4 + 7",
+        "40 + 7.",
+        "7 + 40 + 7",
+        "40 + 70"
+      ],
+      "correctAnswer": "40 + 7.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "4 + 7": [
+          "DECOMPOSE_TENS_ONES"
+        ],
+        "7 + 40 + 7": [
+          "DECOMPOSE_TENS_ONES"
+        ],
+        "40 + 70": [
+          "DECOMPOSE_TENS_ONES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECOMPOSE",
+      "contextFamily": "QUARENTA_E_SETE",
+      "explanation": "Quatro dezenas valem 40 e sobram 7 unidades.",
+      "hint": "Separe dezenas e unidades.",
+      "errorFocus": "DECOMPOSE_TENS_ONES",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas valem 40 e sobram 7 unidades.",
+        "incorrect": "Quatro dezenas valem 40 e sobram 7 unidades.",
+        "hint": "Separe dezenas e unidades.",
+        "errorFocus": "DECOMPOSE_TENS_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-03",
+      "statement": "Qual total é representado por 20 + 18?",
+      "prompt": "Qual total é representado por 20 + 18?",
+      "options": [
+        "218",
+        "28",
+        "38.",
+        "48"
+      ],
+      "correctAnswer": "38.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "28": [
+          "COMPOSE_EQUIVALENT_ADDITION"
+        ],
+        "48": [
+          "COMPOSE_EQUIVALENT_ADDITION"
+        ],
+        "218": [
+          "COMPOSE_EQUIVALENT_ADDITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "VINTE_E_DEZOITO",
+      "explanation": "Duas dezenas mais 18 unidades totalizam 38.",
+      "hint": "Some as duas parcelas.",
+      "errorFocus": "COMPOSE_EQUIVALENT_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Duas dezenas mais 18 unidades totalizam 38.",
+        "incorrect": "Duas dezenas mais 18 unidades totalizam 38.",
+        "hint": "Some as duas parcelas.",
+        "errorFocus": "COMPOSE_EQUIVALENT_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-04",
+      "statement": "Uma figura mostra 5 barras de dez e 1 cubinho. Qual quantidade aparece?",
+      "prompt": "Uma figura mostra 5 barras de dez e 1 cubinho. Qual quantidade aparece?",
+      "options": [
+        "15",
+        "501",
+        "6",
+        "51."
+      ],
+      "correctAnswer": "51.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "6": [
+          "READ_BASE_TEN_MODEL"
+        ],
+        "15": [
+          "READ_BASE_TEN_MODEL"
+        ],
+        "501": [
+          "READ_BASE_TEN_MODEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BARRAS_E_CUBINHOS",
+      "explanation": "Cinco dezenas e uma unidade formam 51.",
+      "hint": "Cada barra vale dez.",
+      "errorFocus": "READ_BASE_TEN_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Cinco dezenas e uma unidade formam 51.",
+        "incorrect": "Cinco dezenas e uma unidade formam 51.",
+        "hint": "Cada barra vale dez.",
+        "errorFocus": "READ_BASE_TEN_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-05",
+      "statement": "Uma dezena foi trocada por 10 unidades. O que acontece com a quantidade total?",
+      "prompt": "Uma dezena foi trocada por 10 unidades. O que acontece com a quantidade total?",
+      "options": [
+        "Ela permanece igual.",
+        "Aumenta em dez",
+        "Diminui em uma dezena",
+        "Vira zero"
+      ],
+      "correctAnswer": "Ela permanece igual.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Aumenta em dez": [
+          "CONSERVE_TOTAL_ON_EXCHANGE"
+        ],
+        "Diminui em uma dezena": [
+          "CONSERVE_TOTAL_ON_EXCHANGE"
+        ],
+        "Vira zero": [
+          "CONSERVE_TOTAL_ON_EXCHANGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TROCA_DE_DEZENA",
+      "explanation": "Uma dezena e dez unidades têm o mesmo valor.",
+      "hint": "Compare os valores trocados.",
+      "errorFocus": "CONSERVE_TOTAL_ON_EXCHANGE",
+      "feedback": {
+        "correct": "Boa observação: Uma dezena e dez unidades têm o mesmo valor.",
+        "incorrect": "Uma dezena e dez unidades têm o mesmo valor.",
+        "hint": "Compare os valores trocados.",
+        "errorFocus": "CONSERVE_TOTAL_ON_EXCHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-06",
+      "statement": "Qual adição também representa 45?",
+      "prompt": "Qual adição também representa 45?",
+      "options": [
+        "30 + 5",
+        "30 + 15.",
+        "40 + 15",
+        "3 + 15"
+      ],
+      "correctAnswer": "30 + 15.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "30 + 5": [
+          "SELECT_EQUIVALENT_DECOMPOSITION"
+        ],
+        "40 + 15": [
+          "SELECT_EQUIVALENT_DECOMPOSITION"
+        ],
+        "3 + 15": [
+          "SELECT_EQUIVALENT_DECOMPOSITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRINTA_E_QUINZE",
+      "explanation": "Trinta mais quinze totaliza 45.",
+      "hint": "Confira o total.",
+      "errorFocus": "SELECT_EQUIVALENT_DECOMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Trinta mais quinze totaliza 45.",
+        "incorrect": "Trinta mais quinze totaliza 45.",
+        "hint": "Confira o total.",
+        "errorFocus": "SELECT_EQUIVALENT_DECOMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-07",
+      "statement": "No número 62, quanto valem as 6 dezenas?",
+      "prompt": "No número 62, quanto valem as 6 dezenas?",
+      "options": [
+        "6",
+        "2",
+        "60.",
+        "8"
+      ],
+      "correctAnswer": "60.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "2": [
+          "TENS_DIGIT_VALUE"
+        ],
+        "6": [
+          "TENS_DIGIT_VALUE"
+        ],
+        "8": [
+          "TENS_DIGIT_VALUE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VALOR_DO_ALGARISMO",
+      "explanation": "O algarismo 6 ocupa a ordem das dezenas.",
+      "hint": "Cada dezena vale dez unidades.",
+      "errorFocus": "TENS_DIGIT_VALUE",
+      "feedback": {
+        "correct": "Boa observação: O algarismo 6 ocupa a ordem das dezenas.",
+        "incorrect": "O algarismo 6 ocupa a ordem das dezenas.",
+        "hint": "Cada dezena vale dez unidades.",
+        "errorFocus": "TENS_DIGIT_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-08",
+      "statement": "Qual material ajuda a mostrar 28 como dezenas e unidades?",
+      "prompt": "Qual material ajuda a mostrar 28 como dezenas e unidades?",
+      "options": [
+        "Oito barras e duas unidades",
+        "Duas unidades e oito dezenas",
+        "Vinte e oito barras",
+        "Duas barras de dez e oito unidades."
+      ],
+      "correctAnswer": "Duas barras de dez e oito unidades.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Oito barras e duas unidades": [
+          "CHOOSE_BASE_TEN_REPRESENTATION"
+        ],
+        "Duas unidades e oito dezenas": [
+          "CHOOSE_BASE_TEN_REPRESENTATION"
+        ],
+        "Vinte e oito barras": [
+          "CHOOSE_BASE_TEN_REPRESENTATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "QUADRO_DE_DEZENAS",
+      "explanation": "28 contém duas dezenas e oito unidades.",
+      "hint": "Agrupe de dez em dez.",
+      "errorFocus": "CHOOSE_BASE_TEN_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: 28 contém duas dezenas e oito unidades.",
+        "incorrect": "28 contém duas dezenas e oito unidades.",
+        "hint": "Agrupe de dez em dez.",
+        "errorFocus": "CHOOSE_BASE_TEN_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-09",
+      "statement": "Quanto é 60 + 3?",
+      "prompt": "Quanto é 60 + 3?",
+      "options": [
+        "63.",
+        "36",
+        "603",
+        "9"
+      ],
+      "correctAnswer": "63.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "9": [
+          "ADD_TENS_ONES"
+        ],
+        "36": [
+          "ADD_TENS_ONES"
+        ],
+        "603": [
+          "ADD_TENS_ONES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "SESSENTA_E_TRES",
+      "explanation": "Seis dezenas e três unidades formam 63.",
+      "hint": "Una as partes.",
+      "errorFocus": "ADD_TENS_ONES",
+      "feedback": {
+        "correct": "Boa observação: Seis dezenas e três unidades formam 63.",
+        "incorrect": "Seis dezenas e três unidades formam 63.",
+        "hint": "Una as partes.",
+        "errorFocus": "ADD_TENS_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-10",
+      "statement": "Qual decomposição usual de 59 mostra dezenas e unidades?",
+      "prompt": "Qual decomposição usual de 59 mostra dezenas e unidades?",
+      "options": [
+        "5 + 9",
+        "50 + 9.",
+        "9 + 50 + 9",
+        "50 + 90"
+      ],
+      "correctAnswer": "50 + 9.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "5 + 9": [
+          "DECOMPOSE_TWO_ORDER_NUMBER"
+        ],
+        "9 + 50 + 9": [
+          "DECOMPOSE_TWO_ORDER_NUMBER"
+        ],
+        "50 + 90": [
+          "DECOMPOSE_TWO_ORDER_NUMBER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECOMPOSE",
+      "contextFamily": "CINQUENTA_E_NOVE",
+      "explanation": "Cinco dezenas valem cinquenta e restam nove unidades.",
+      "hint": "Separe o valor posicional.",
+      "errorFocus": "DECOMPOSE_TWO_ORDER_NUMBER",
+      "feedback": {
+        "correct": "Boa observação: Cinco dezenas valem cinquenta e restam nove unidades.",
+        "incorrect": "Cinco dezenas valem cinquenta e restam nove unidades.",
+        "hint": "Separe o valor posicional.",
+        "errorFocus": "DECOMPOSE_TWO_ORDER_NUMBER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-11",
+      "statement": "Qual número é representado por 20 + 27?",
+      "prompt": "Qual número é representado por 20 + 27?",
+      "options": [
+        "227",
+        "29",
+        "47.",
+        "57"
+      ],
+      "correctAnswer": "47.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "29": [
+          "COMPOSE_ALTERNATE_ADDITION"
+        ],
+        "57": [
+          "COMPOSE_ALTERNATE_ADDITION"
+        ],
+        "227": [
+          "COMPOSE_ALTERNATE_ADDITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "VINTE_E_VINTE_E_SETE",
+      "explanation": "Duas dezenas mais 27 unidades totalizam 47.",
+      "hint": "Some 20 e 27.",
+      "errorFocus": "COMPOSE_ALTERNATE_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Duas dezenas mais 27 unidades totalizam 47.",
+        "incorrect": "Duas dezenas mais 27 unidades totalizam 47.",
+        "hint": "Some 20 e 27.",
+        "errorFocus": "COMPOSE_ALTERNATE_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-12",
+      "statement": "Um conjunto tem quatro grupos de dez e nove fichas. Quantas fichas há?",
+      "prompt": "Um conjunto tem quatro grupos de dez e nove fichas. Quantas fichas há?",
+      "options": [
+        "13",
+        "94",
+        "409",
+        "49."
+      ],
+      "correctAnswer": "49.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "13": [
+          "COUNT_GROUPS_AND_ONES"
+        ],
+        "94": [
+          "COUNT_GROUPS_AND_ONES"
+        ],
+        "409": [
+          "COUNT_GROUPS_AND_ONES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "QUATRO_DEZENAS_E_NOVE",
+      "explanation": "Quatro grupos de dez mais nove são 49.",
+      "hint": "Conte dezenas e unidades.",
+      "errorFocus": "COUNT_GROUPS_AND_ONES",
+      "feedback": {
+        "correct": "Boa observação: Quatro grupos de dez mais nove são 49.",
+        "incorrect": "Quatro grupos de dez mais nove são 49.",
+        "hint": "Conte dezenas e unidades.",
+        "errorFocus": "COUNT_GROUPS_AND_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-13",
+      "statement": "Qual adição conserva o total 36?",
+      "prompt": "Qual adição conserva o total 36?",
+      "options": [
+        "20 + 16.",
+        "20 + 6",
+        "30 + 16",
+        "2 + 16"
+      ],
+      "correctAnswer": "20 + 16.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "20 + 6": [
+          "CHECK_ADDITION_TOTAL"
+        ],
+        "30 + 16": [
+          "CHECK_ADDITION_TOTAL"
+        ],
+        "2 + 16": [
+          "CHECK_ADDITION_TOTAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ADICAO_IGUAL_A_TRINTA_E_SEIS",
+      "explanation": "Vinte mais dezesseis é 36.",
+      "hint": "Some para conferir.",
+      "errorFocus": "CHECK_ADDITION_TOTAL",
+      "feedback": {
+        "correct": "Boa observação: Vinte mais dezesseis é 36.",
+        "incorrect": "Vinte mais dezesseis é 36.",
+        "hint": "Some para conferir.",
+        "errorFocus": "CHECK_ADDITION_TOTAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-14",
+      "statement": "Quais duas expressões representam 42?",
+      "prompt": "Quais duas expressões representam 42?",
+      "options": [
+        "40 + 2 e 30 + 2",
+        "40 + 2 e 30 + 12.",
+        "20 + 12 e 40 + 12",
+        "4 + 2 e 30 + 12"
+      ],
+      "correctAnswer": "40 + 2 e 30 + 12.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "40 + 2 e 30 + 2": [
+          "COMPARE_EQUIVALENT_FORMS"
+        ],
+        "20 + 12 e 40 + 12": [
+          "COMPARE_EQUIVALENT_FORMS"
+        ],
+        "4 + 2 e 30 + 12": [
+          "COMPARE_EQUIVALENT_FORMS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_FORMAS_DE_QUARENTA_E_DOIS",
+      "explanation": "As duas adições somam 42.",
+      "hint": "Calcule cada expressão.",
+      "errorFocus": "COMPARE_EQUIVALENT_FORMS",
+      "feedback": {
+        "correct": "Boa observação: As duas adições somam 42.",
+        "incorrect": "As duas adições somam 42.",
+        "hint": "Calcule cada expressão.",
+        "errorFocus": "COMPARE_EQUIVALENT_FORMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-15",
+      "statement": "Quantas unidades ficam fora dos grupos ao mostrar 74 como 70 + unidades?",
+      "prompt": "Quantas unidades ficam fora dos grupos ao mostrar 74 como 70 + unidades?",
+      "options": [
+        "7 unidades",
+        "40 unidades",
+        "4 unidades.",
+        "74 unidades"
+      ],
+      "correctAnswer": "4 unidades.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "7 unidades": [
+          "IDENTIFY_REMAINDER_ONES"
+        ],
+        "40 unidades": [
+          "IDENTIFY_REMAINDER_ONES"
+        ],
+        "74 unidades": [
+          "IDENTIFY_REMAINDER_ONES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "UNIDADES_SOLTAS",
+      "explanation": "Setenta e quatro tem sete dezenas e quatro unidades.",
+      "hint": "Observe o algarismo das unidades.",
+      "errorFocus": "IDENTIFY_REMAINDER_ONES",
+      "feedback": {
+        "correct": "Boa observação: Setenta e quatro tem sete dezenas e quatro unidades.",
+        "incorrect": "Setenta e quatro tem sete dezenas e quatro unidades.",
+        "hint": "Observe o algarismo das unidades.",
+        "errorFocus": "IDENTIFY_REMAINDER_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-16",
+      "statement": "Uma criança representa 31 com materiais táteis. Que composição está correta?",
+      "prompt": "Uma criança representa 31 com materiais táteis. Que composição está correta?",
+      "options": [
+        "Um grupo de dez e três unidades",
+        "Trinta e uma dezenas",
+        "Três unidades e dez grupos",
+        "Três grupos de dez e uma unidade."
+      ],
+      "correctAnswer": "Três grupos de dez e uma unidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um grupo de dez e três unidades": [
+          "ACCESSIBLE_NUMBER_COMPOSITION"
+        ],
+        "Trinta e uma dezenas": [
+          "ACCESSIBLE_NUMBER_COMPOSITION"
+        ],
+        "Três unidades e dez grupos": [
+          "ACCESSIBLE_NUMBER_COMPOSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATERIAL_TATIL",
+      "explanation": "31 é trinta mais uma unidade.",
+      "hint": "Agrupe três dezenas.",
+      "errorFocus": "ACCESSIBLE_NUMBER_COMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: 31 é trinta mais uma unidade.",
+        "incorrect": "31 é trinta mais uma unidade.",
+        "hint": "Agrupe três dezenas.",
+        "errorFocus": "ACCESSIBLE_NUMBER_COMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-17",
+      "statement": "Um cartão mostra 4 grupos de dez pontos e 8 pontos soltos. Qual número?",
+      "prompt": "Um cartão mostra 4 grupos de dez pontos e 8 pontos soltos. Qual número?",
+      "options": [
+        "48.",
+        "84",
+        "408",
+        "12"
+      ],
+      "correctAnswer": "48.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "12": [
+          "TRANSFER_GROUPED_COLLECTION"
+        ],
+        "84": [
+          "TRANSFER_GROUPED_COLLECTION"
+        ],
+        "408": [
+          "TRANSFER_GROUPED_COLLECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "CARTAO_DE_PONTOS",
+      "explanation": "Quatro dezenas e oito unidades formam 48.",
+      "hint": "Conte grupos e pontos soltos.",
+      "errorFocus": "TRANSFER_GROUPED_COLLECTION",
+      "feedback": {
+        "correct": "Boa observação: Quatro dezenas e oito unidades formam 48.",
+        "incorrect": "Quatro dezenas e oito unidades formam 48.",
+        "hint": "Conte grupos e pontos soltos.",
+        "errorFocus": "TRANSFER_GROUPED_COLLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-18",
+      "statement": "Como escrever 75 como dezenas mais unidades?",
+      "prompt": "Como escrever 75 como dezenas mais unidades?",
+      "options": [
+        "7 + 5",
+        "70 + 5.",
+        "50 + 7",
+        "70 + 50"
+      ],
+      "correctAnswer": "70 + 5.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "7 + 5": [
+          "TRANSFER_PLACE_VALUE"
+        ],
+        "50 + 7": [
+          "TRANSFER_PLACE_VALUE"
+        ],
+        "70 + 50": [
+          "TRANSFER_PLACE_VALUE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DECOMPOSE",
+      "contextFamily": "SETENTA_E_CINCO",
+      "explanation": "Setenta e cinco contém sete dezenas e cinco unidades.",
+      "hint": "Separe as ordens.",
+      "errorFocus": "TRANSFER_PLACE_VALUE",
+      "feedback": {
+        "correct": "Boa observação: Setenta e cinco contém sete dezenas e cinco unidades.",
+        "incorrect": "Setenta e cinco contém sete dezenas e cinco unidades.",
+        "hint": "Separe as ordens.",
+        "errorFocus": "TRANSFER_PLACE_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-19",
+      "statement": "Qual número é igual a 40 + 24?",
+      "prompt": "Qual número é igual a 40 + 24?",
+      "options": [
+        "44",
+        "624",
+        "64.",
+        "84"
+      ],
+      "correctAnswer": "64.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "44": [
+          "TRANSFER_ALTERNATE_ADDITION"
+        ],
+        "84": [
+          "TRANSFER_ALTERNATE_ADDITION"
+        ],
+        "624": [
+          "TRANSFER_ALTERNATE_ADDITION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "QUARENTA_E_VINTE_E_QUATRO",
+      "explanation": "Quarenta e vinte e quatro totalizam 64.",
+      "hint": "Some as parcelas.",
+      "errorFocus": "TRANSFER_ALTERNATE_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Quarenta e vinte e quatro totalizam 64.",
+        "incorrect": "Quarenta e vinte e quatro totalizam 64.",
+        "hint": "Some as parcelas.",
+        "errorFocus": "TRANSFER_ALTERNATE_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-20",
+      "statement": "Uma representação de 53 tem 5 barras de dez e 3 cubos. Qual registro confere?",
+      "prompt": "Uma representação de 53 tem 5 barras de dez e 3 cubos. Qual registro confere?",
+      "options": [
+        "5 + 3",
+        "30 + 5",
+        "50 + 30",
+        "50 + 3."
+      ],
+      "correctAnswer": "50 + 3.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "5 + 3": [
+          "MATCH_MODEL_TO_ADDITION"
+        ],
+        "30 + 5": [
+          "MATCH_MODEL_TO_ADDITION"
+        ],
+        "50 + 30": [
+          "MATCH_MODEL_TO_ADDITION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGISTRO_DE_MATERIAL",
+      "explanation": "O modelo mostra cinco dezenas e três unidades.",
+      "hint": "Relacione cada material ao valor.",
+      "errorFocus": "MATCH_MODEL_TO_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: O modelo mostra cinco dezenas e três unidades.",
+        "incorrect": "O modelo mostra cinco dezenas e três unidades.",
+        "hint": "Relacione cada material ao valor.",
+        "errorFocus": "MATCH_MODEL_TO_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-21",
+      "statement": "Ao trocar uma das 6 dezenas de 69 por 10 unidades, que decomposição aparece?",
+      "prompt": "Ao trocar uma das 6 dezenas de 69 por 10 unidades, que decomposição aparece?",
+      "options": [
+        "50 + 19.",
+        "60 + 19",
+        "50 + 9",
+        "6 + 19"
+      ],
+      "correctAnswer": "50 + 19.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "60 + 19": [
+          "RECOMPOSE_WITH_TRADE"
+        ],
+        "50 + 9": [
+          "RECOMPOSE_WITH_TRADE"
+        ],
+        "6 + 19": [
+          "RECOMPOSE_WITH_TRADE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TROCA_EM_SESSENTA_E_NOVE",
+      "explanation": "Cinco dezenas ficam e as unidades passam a 19.",
+      "hint": "Troque 10 por 10 sem alterar o total.",
+      "errorFocus": "RECOMPOSE_WITH_TRADE",
+      "feedback": {
+        "correct": "Boa observação: Cinco dezenas ficam e as unidades passam a 19.",
+        "incorrect": "Cinco dezenas ficam e as unidades passam a 19.",
+        "hint": "Troque 10 por 10 sem alterar o total.",
+        "errorFocus": "RECOMPOSE_WITH_TRADE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-22",
+      "statement": "Um cartaz registra 27 livros em uma pilha e 30 em outra. Qual total e decomposição?",
+      "prompt": "Um cartaz registra 27 livros em uma pilha e 30 em outra. Qual total e decomposição?",
+      "options": [
+        "37, representado por 30 + 7",
+        "57, representado por 50 + 7.",
+        "527, representado por 50 + 27",
+        "57, representado por 5 + 7"
+      ],
+      "correctAnswer": "57, representado por 50 + 7.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "37, representado por 30 + 7": [
+          "APPLY_ADDITION_TO_COLLECTION"
+        ],
+        "527, representado por 50 + 27": [
+          "APPLY_ADDITION_TO_COLLECTION"
+        ],
+        "57, representado por 5 + 7": [
+          "APPLY_ADDITION_TO_COLLECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTAZ_DA_BIBLIOTECA",
+      "explanation": "27 mais 30 é 57, ou 50 mais 7.",
+      "hint": "Some e depois observe dezenas e unidades.",
+      "errorFocus": "APPLY_ADDITION_TO_COLLECTION",
+      "feedback": {
+        "correct": "Boa observação: 27 mais 30 é 57, ou 50 mais 7.",
+        "incorrect": "27 mais 30 é 57, ou 50 mais 7.",
+        "hint": "Some e depois observe dezenas e unidades.",
+        "errorFocus": "APPLY_ADDITION_TO_COLLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-23",
+      "statement": "Um modelo tem 5 dezenas e 2 unidades. Qual cartão escolher?",
+      "prompt": "Um modelo tem 5 dezenas e 2 unidades. Qual cartão escolher?",
+      "options": [
+        "25",
+        "502",
+        "52.",
+        "7"
+      ],
+      "correctAnswer": "52.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "7": [
+          "TRANSFER_MODEL_TO_NUMBER"
+        ],
+        "25": [
+          "TRANSFER_MODEL_TO_NUMBER"
+        ],
+        "502": [
+          "TRANSFER_MODEL_TO_NUMBER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BLOCOS_DE_CINQUENTA_E_DOIS",
+      "explanation": "O modelo vale cinquenta e dois.",
+      "hint": "Leia dezenas antes das unidades.",
+      "errorFocus": "TRANSFER_MODEL_TO_NUMBER",
+      "feedback": {
+        "correct": "Boa observação: O modelo vale cinquenta e dois.",
+        "incorrect": "O modelo vale cinquenta e dois.",
+        "hint": "Leia dezenas antes das unidades.",
+        "errorFocus": "TRANSFER_MODEL_TO_NUMBER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-24",
+      "statement": "Como conferir que 20 + 18 e 30 + 8 representam o mesmo número?",
+      "prompt": "Como conferir que 20 + 18 e 30 + 8 representam o mesmo número?",
+      "options": [
+        "Contar quantos sinais aparecem",
+        "Escolher a expressão mais rápida",
+        "Apagar uma parcela",
+        "Somar cada expressão e verificar que ambas dão 38."
+      ],
+      "correctAnswer": "Somar cada expressão e verificar que ambas dão 38.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Contar quantos sinais aparecem": [
+          "JUSTIFY_EQUIVALENT_ADDITIONS"
+        ],
+        "Escolher a expressão mais rápida": [
+          "JUSTIFY_EQUIVALENT_ADDITIONS"
+        ],
+        "Apagar uma parcela": [
+          "JUSTIFY_EQUIVALENT_ADDITIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESTRATEGIA_SEM_PRESSA",
+      "explanation": "As duas somas têm o mesmo total.",
+      "hint": "Confira com cálculo ou material.",
+      "errorFocus": "JUSTIFY_EQUIVALENT_ADDITIONS",
+      "feedback": {
+        "correct": "Boa observação: As duas somas têm o mesmo total.",
+        "incorrect": "As duas somas têm o mesmo total.",
+        "hint": "Confira com cálculo ou material.",
+        "errorFocus": "JUSTIFY_EQUIVALENT_ADDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-25",
+      "statement": "Quatro dezenas equivalem a quanto?",
+      "prompt": "Quatro dezenas equivalem a quanto?",
+      "options": [
+        "40.",
+        "4",
+        "14",
+        "400"
+      ],
+      "correctAnswer": "40.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "4": [
+          "RECALL_TENS_VALUE"
+        ],
+        "14": [
+          "RECALL_TENS_VALUE"
+        ],
+        "400": [
+          "RECALL_TENS_VALUE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "QUATRO_DEZENAS",
+      "explanation": "Cada dezena vale dez.",
+      "hint": "Multiplique quatro grupos por dez.",
+      "errorFocus": "RECALL_TENS_VALUE",
+      "feedback": {
+        "correct": "Boa observação: Cada dezena vale dez.",
+        "incorrect": "Cada dezena vale dez.",
+        "hint": "Multiplique quatro grupos por dez.",
+        "errorFocus": "RECALL_TENS_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-26",
+      "statement": "Que número é 90 + 7?",
+      "prompt": "Que número é 90 + 7?",
+      "options": [
+        "79",
+        "97.",
+        "907",
+        "16"
+      ],
+      "correctAnswer": "97.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "16": [
+          "RECALL_COMPOSITION"
+        ],
+        "79": [
+          "RECALL_COMPOSITION"
+        ],
+        "907": [
+          "RECALL_COMPOSITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "NOVENTA_E_SETE",
+      "explanation": "Nove dezenas e sete unidades formam 97.",
+      "hint": "Junte as ordens.",
+      "errorFocus": "RECALL_COMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Nove dezenas e sete unidades formam 97.",
+        "incorrect": "Nove dezenas e sete unidades formam 97.",
+        "hint": "Junte as ordens.",
+        "errorFocus": "RECALL_COMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-27",
+      "statement": "Qual forma separa dezenas e unidades de 84?",
+      "prompt": "Qual forma separa dezenas e unidades de 84?",
+      "options": [
+        "8 + 4",
+        "40 + 8",
+        "80 + 4.",
+        "80 + 40"
+      ],
+      "correctAnswer": "80 + 4.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "8 + 4": [
+          "RECALL_DECOMPOSITION"
+        ],
+        "40 + 8": [
+          "RECALL_DECOMPOSITION"
+        ],
+        "80 + 40": [
+          "RECALL_DECOMPOSITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECOMPOSE",
+      "contextFamily": "OITENTA_E_QUATRO",
+      "explanation": "Oito dezenas valem 80 e restam quatro unidades.",
+      "hint": "Leia o valor de cada algarismo.",
+      "errorFocus": "RECALL_DECOMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Oito dezenas valem 80 e restam quatro unidades.",
+        "incorrect": "Oito dezenas valem 80 e restam quatro unidades.",
+        "hint": "Leia o valor de cada algarismo.",
+        "errorFocus": "RECALL_DECOMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-28",
+      "statement": "Qual expressão equivale a 23?",
+      "prompt": "Qual expressão equivale a 23?",
+      "options": [
+        "10 + 3",
+        "20 + 13",
+        "2 + 13",
+        "10 + 13."
+      ],
+      "correctAnswer": "10 + 13.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "10 + 3": [
+          "RECALL_EQUIVALENT_ADDITION"
+        ],
+        "20 + 13": [
+          "RECALL_EQUIVALENT_ADDITION"
+        ],
+        "2 + 13": [
+          "RECALL_EQUIVALENT_ADDITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "EQUIVALENCIA_DE_VINTE_E_TRES",
+      "explanation": "Dez mais treze é 23.",
+      "hint": "Some para testar.",
+      "errorFocus": "RECALL_EQUIVALENT_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Dez mais treze é 23.",
+        "incorrect": "Dez mais treze é 23.",
+        "hint": "Some para testar.",
+        "errorFocus": "RECALL_EQUIVALENT_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-29",
+      "statement": "No número 38, o algarismo 3 indica...",
+      "prompt": "No número 38, o algarismo 3 indica...",
+      "options": [
+        "três dezenas, ou 30.",
+        "três unidades",
+        "oito dezenas",
+        "trinta unidades sempre soltas"
+      ],
+      "correctAnswer": "três dezenas, ou 30.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "três unidades": [
+          "RECALL_PLACE_VALUE"
+        ],
+        "oito dezenas": [
+          "RECALL_PLACE_VALUE"
+        ],
+        "trinta unidades sempre soltas": [
+          "RECALL_PLACE_VALUE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ALGARISMO_DAS_DEZENAS",
+      "explanation": "A posição do 3 representa dezenas.",
+      "hint": "Observe sua posição.",
+      "errorFocus": "RECALL_PLACE_VALUE",
+      "feedback": {
+        "correct": "Boa observação: A posição do 3 representa dezenas.",
+        "incorrect": "A posição do 3 representa dezenas.",
+        "hint": "Observe sua posição.",
+        "errorFocus": "RECALL_PLACE_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-30",
+      "statement": "Uma barra de dez é trocada por dez cubinhos. O total muda?",
+      "prompt": "Uma barra de dez é trocada por dez cubinhos. O total muda?",
+      "options": [
+        "Sim, aumenta para vinte",
+        "Não; as duas representações valem dez.",
+        "Sim, diminui para um",
+        "Sim, zera"
+      ],
+      "correctAnswer": "Não; as duas representações valem dez.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, aumenta para vinte": [
+          "RECALL_MATERIAL_EXCHANGE"
+        ],
+        "Sim, diminui para um": [
+          "RECALL_MATERIAL_EXCHANGE"
+        ],
+        "Sim, zera": [
+          "RECALL_MATERIAL_EXCHANGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TROCA_DE_BARRA",
+      "explanation": "Dez unidades equivalem a uma dezena.",
+      "hint": "Compare os valores.",
+      "errorFocus": "RECALL_MATERIAL_EXCHANGE",
+      "feedback": {
+        "correct": "Boa observação: Dez unidades equivalem a uma dezena.",
+        "incorrect": "Dez unidades equivalem a uma dezena.",
+        "hint": "Compare os valores.",
+        "errorFocus": "RECALL_MATERIAL_EXCHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-31",
+      "statement": "Qual par mostra duas decomposições equivalentes de 56?",
+      "prompt": "Qual par mostra duas decomposições equivalentes de 56?",
+      "options": [
+        "50 + 6 e 40 + 6",
+        "50 + 16 e 40 + 16",
+        "50 + 6 e 40 + 16.",
+        "5 + 6 e 40 + 16"
+      ],
+      "correctAnswer": "50 + 6 e 40 + 16.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "50 + 6 e 40 + 6": [
+          "RECALL_TWO_EQUIVALENT_FORMS"
+        ],
+        "50 + 16 e 40 + 16": [
+          "RECALL_TWO_EQUIVALENT_FORMS"
+        ],
+        "5 + 6 e 40 + 16": [
+          "RECALL_TWO_EQUIVALENT_FORMS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_DECOMPOSICOES_DE_56",
+      "explanation": "Ambas as expressões totalizam 56.",
+      "hint": "Some cada par.",
+      "errorFocus": "RECALL_TWO_EQUIVALENT_FORMS",
+      "feedback": {
+        "correct": "Boa observação: Ambas as expressões totalizam 56.",
+        "incorrect": "Ambas as expressões totalizam 56.",
+        "hint": "Some cada par.",
+        "errorFocus": "RECALL_TWO_EQUIVALENT_FORMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-32",
+      "statement": "Por que materiais agrupados de dez ajudam a decompor números?",
+      "prompt": "Por que materiais agrupados de dez ajudam a decompor números?",
+      "options": [
+        "Eles substituem a necessidade de contar",
+        "Cada objeto vira uma dezena",
+        "Eles obrigam uma única estratégia",
+        "Eles mostram dezenas e unidades e ajudam a conferir o total."
+      ],
+      "correctAnswer": "Eles mostram dezenas e unidades e ajudam a conferir o total.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Eles substituem a necessidade de contar": [
+          "NUMBER_COMPOSITION_SUMMARY"
+        ],
+        "Cada objeto vira uma dezena": [
+          "NUMBER_COMPOSITION_SUMMARY"
+        ],
+        "Eles obrigam uma única estratégia": [
+          "NUMBER_COMPOSITION_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_DEZENAS",
+      "explanation": "Agrupamentos tornam visível o valor posicional.",
+      "hint": "Relacione material e valor.",
+      "errorFocus": "NUMBER_COMPOSITION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Agrupamentos tornam visível o valor posicional.",
+        "incorrect": "Agrupamentos tornam visível o valor posicional.",
+        "hint": "Relacione material e valor.",
+        "errorFocus": "NUMBER_COMPOSITION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-33",
+      "statement": "Uma dezena tem quantas unidades?",
+      "prompt": "Uma dezena tem quantas unidades?",
+      "options": [
+        "Dez unidades.",
+        "Uma unidade",
+        "Duas unidades",
+        "Cem unidades"
+      ],
+      "correctAnswer": "Dez unidades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma unidade": [
+          "REVIEW_TEN_UNITS"
+        ],
+        "Duas unidades": [
+          "REVIEW_TEN_UNITS"
+        ],
+        "Cem unidades": [
+          "REVIEW_TEN_UNITS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DEZENA",
+      "explanation": "Uma dezena corresponde a dez unidades.",
+      "hint": "Lembre do agrupamento de dez.",
+      "errorFocus": "REVIEW_TEN_UNITS",
+      "feedback": {
+        "correct": "Boa observação: Uma dezena corresponde a dez unidades.",
+        "incorrect": "Uma dezena corresponde a dez unidades.",
+        "hint": "Lembre do agrupamento de dez.",
+        "errorFocus": "REVIEW_TEN_UNITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-34",
+      "statement": "Qual número corresponde a 30 + 6?",
+      "prompt": "Qual número corresponde a 30 + 6?",
+      "options": [
+        "63",
+        "36.",
+        "306",
+        "9"
+      ],
+      "correctAnswer": "36.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "9": [
+          "REVIEW_COMPOSE"
+        ],
+        "63": [
+          "REVIEW_COMPOSE"
+        ],
+        "306": [
+          "REVIEW_COMPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPOSE",
+      "contextFamily": "REVISAO_DE_NUMERO",
+      "explanation": "Três dezenas e seis unidades formam 36.",
+      "hint": "Una dezenas e unidades.",
+      "errorFocus": "REVIEW_COMPOSE",
+      "feedback": {
+        "correct": "Boa observação: Três dezenas e seis unidades formam 36.",
+        "incorrect": "Três dezenas e seis unidades formam 36.",
+        "hint": "Una dezenas e unidades.",
+        "errorFocus": "REVIEW_COMPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-35",
+      "statement": "Qual decomposição usual representa 72?",
+      "prompt": "Qual decomposição usual representa 72?",
+      "options": [
+        "7 + 2",
+        "20 + 7",
+        "70 + 2.",
+        "70 + 20"
+      ],
+      "correctAnswer": "70 + 2.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "7 + 2": [
+          "REVIEW_DECOMPOSE"
+        ],
+        "20 + 7": [
+          "REVIEW_DECOMPOSE"
+        ],
+        "70 + 20": [
+          "REVIEW_DECOMPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DECOMPOSE",
+      "contextFamily": "REVISAO_DE_72",
+      "explanation": "Setenta e dois contém sete dezenas e duas unidades.",
+      "hint": "Separe as ordens.",
+      "errorFocus": "REVIEW_DECOMPOSE",
+      "feedback": {
+        "correct": "Boa observação: Setenta e dois contém sete dezenas e duas unidades.",
+        "incorrect": "Setenta e dois contém sete dezenas e duas unidades.",
+        "hint": "Separe as ordens.",
+        "errorFocus": "REVIEW_DECOMPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-36",
+      "statement": "Qual expressão também vale 41?",
+      "prompt": "Qual expressão também vale 41?",
+      "options": [
+        "30 + 1",
+        "40 + 11",
+        "3 + 11",
+        "30 + 11."
+      ],
+      "correctAnswer": "30 + 11.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "30 + 1": [
+          "REVIEW_EQUIVALENCE"
+        ],
+        "40 + 11": [
+          "REVIEW_EQUIVALENCE"
+        ],
+        "3 + 11": [
+          "REVIEW_EQUIVALENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_EQUIVALENCIA",
+      "explanation": "Trinta mais onze totaliza 41.",
+      "hint": "Confira a soma.",
+      "errorFocus": "REVIEW_EQUIVALENCE",
+      "feedback": {
+        "correct": "Boa observação: Trinta mais onze totaliza 41.",
+        "incorrect": "Trinta mais onze totaliza 41.",
+        "hint": "Confira a soma.",
+        "errorFocus": "REVIEW_EQUIVALENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-37",
+      "statement": "No número 68, quantas unidades ficam além das dezenas agrupadas?",
+      "prompt": "No número 68, quantas unidades ficam além das dezenas agrupadas?",
+      "options": [
+        "8 unidades.",
+        "6 unidades",
+        "60 unidades",
+        "68 dezenas"
+      ],
+      "correctAnswer": "8 unidades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "6 unidades": [
+          "REVIEW_ONES"
+        ],
+        "60 unidades": [
+          "REVIEW_ONES"
+        ],
+        "68 dezenas": [
+          "REVIEW_ONES"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_UNIDADES",
+      "explanation": "O algarismo das unidades é 8.",
+      "hint": "Observe a posição final.",
+      "errorFocus": "REVIEW_ONES",
+      "feedback": {
+        "correct": "Boa observação: O algarismo das unidades é 8.",
+        "incorrect": "O algarismo das unidades é 8.",
+        "hint": "Observe a posição final.",
+        "errorFocus": "REVIEW_ONES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-38",
+      "statement": "Depois de trocar uma dezena de 45 por unidades, qual registro conserva 45?",
+      "prompt": "Depois de trocar uma dezena de 45 por unidades, qual registro conserva 45?",
+      "options": [
+        "30 + 5",
+        "30 + 15.",
+        "40 + 15",
+        "3 + 15"
+      ],
+      "correctAnswer": "30 + 15.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "30 + 5": [
+          "REVIEW_DECOMPOSITION_TRADE"
+        ],
+        "40 + 15": [
+          "REVIEW_DECOMPOSITION_TRADE"
+        ],
+        "3 + 15": [
+          "REVIEW_DECOMPOSITION_TRADE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_TROCA",
+      "explanation": "Trinta mais quinze é 45.",
+      "hint": "Troque 10 por 10.",
+      "errorFocus": "REVIEW_DECOMPOSITION_TRADE",
+      "feedback": {
+        "correct": "Boa observação: Trinta mais quinze é 45.",
+        "incorrect": "Trinta mais quinze é 45.",
+        "hint": "Troque 10 por 10.",
+        "errorFocus": "REVIEW_DECOMPOSITION_TRADE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-39",
+      "statement": "Qual representação concreta mostra 29?",
+      "prompt": "Qual representação concreta mostra 29?",
+      "options": [
+        "Nove dezenas e duas unidades",
+        "Duas unidades e nove dezenas",
+        "Duas dezenas e nove unidades.",
+        "Vinte e nove dezenas"
+      ],
+      "correctAnswer": "Duas dezenas e nove unidades.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Nove dezenas e duas unidades": [
+          "REVIEW_CONCRETE_MODEL"
+        ],
+        "Duas unidades e nove dezenas": [
+          "REVIEW_CONCRETE_MODEL"
+        ],
+        "Vinte e nove dezenas": [
+          "REVIEW_CONCRETE_MODEL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_MATERIAL",
+      "explanation": "29 é 20 mais 9.",
+      "hint": "Monte dois grupos de dez.",
+      "errorFocus": "REVIEW_CONCRETE_MODEL",
+      "feedback": {
+        "correct": "Boa observação: 29 é 20 mais 9.",
+        "incorrect": "29 é 20 mais 9.",
+        "hint": "Monte dois grupos de dez.",
+        "errorFocus": "REVIEW_CONCRETE_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma07-compose-decompose-two-order-numbers-40",
+      "statement": "O que deve permanecer ao registrar diferentes adições para o mesmo número?",
+      "prompt": "O que deve permanecer ao registrar diferentes adições para o mesmo número?",
+      "options": [
+        "A quantidade de parcelas sempre igual",
+        "Os mesmos algarismos na mesma ordem",
+        "Uma única estratégia",
+        "O total representado."
+      ],
+      "correctAnswer": "O total representado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A quantidade de parcelas sempre igual": [
+          "REVIEW_TOTAL_CONSERVATION"
+        ],
+        "Os mesmos algarismos na mesma ordem": [
+          "REVIEW_TOTAL_CONSERVATION"
+        ],
+        "Uma única estratégia": [
+          "REVIEW_TOTAL_CONSERVATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ESTRATEGIAS",
+      "explanation": "Decomposições podem variar e manter o valor.",
+      "hint": "Confira o total em cada forma.",
+      "errorFocus": "REVIEW_TOTAL_CONSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Decomposições podem variar e manter o valor.",
+        "incorrect": "Decomposições podem variar e manter o valor.",
+        "hint": "Confira o total em cada forma.",
+        "errorFocus": "REVIEW_TOTAL_CONSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar barras de dez, cubos, fichas táteis, quadro posicional ampliado e números em alto contraste.",
+          "Permitir compor movendo materiais, desenhando, falando ou usando comunicação alternativa.",
+          "Oferecer tempo flexível e validar estratégias diferentes quando conservam o total."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

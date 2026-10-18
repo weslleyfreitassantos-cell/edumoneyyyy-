@@ -1,0 +1,2141 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-geography-lived-places-fi",
+  "canonicalSkillCode": "AUTHORING_EF01GE01_OBSERVE_AND_COMPARE_LIVED_PLACES",
+  "subject": "GEOGRAPHY",
+  "domain": "O_SUJEITO_E_SEU_LUGAR_NO_MUNDO",
+  "topic": "características observáveis e comparações entre lugares de vivência",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Observar e comparar lugares de vivência",
+    "objective": "Descrever características que podem ser observadas em lugares de vivência, como moradia e escola, e identificar semelhanças e diferenças sem hierarquizar pessoas ou espaços.",
+    "summary": "Observar elementos, usos e características de lugares ajuda a descrevê-los e compará-los. Diferenças entre moradias, escolas e comunidades não indicam que um lugar ou seus moradores sejam melhores.",
+    "explanation": "## 1. Descreva o que pode ser observado\nUm lugar de vivência pode ser a escola, a moradia, a rua, uma praça ou outro espaço significativo. Podemos observar, por exemplo, materiais, ambientes, caminhos, elementos naturais e usos, sem registrar dados privados.\n\n## 2. Compare com um critério\nDuas salas podem ter janelas, mas organizar as mesas de modos diferentes. Uma comparação fica clara quando dizemos o que estamos observando: presença de plantas, espaços de brincar ou materiais usados.\n\n## 3. Respeite as pessoas e os contextos\nMoradias e comunidades são diversas. Não precisamos pedir endereço, fotografar interiores nem concluir como uma família vive. Descrever e comparar não significa avaliar, classificar ou estereotipar os lugares.",
+    "workedExample": "Observe duas imagens autorizadas de espaços de leitura. Nas duas há livros; em uma, os livros estão em prateleiras e, na outra, em caixas baixas. Podemos dizer que ambas oferecem livros e que os móveis diferem, sem afirmar que uma comunidade valoriza mais a leitura.",
+    "commonMistake": "Comparar lugares para dizer que um é superior, presumir como todas as pessoas vivem ou expor endereço e imagens privadas para concluir algo sobre uma família.",
+    "tips": [
+      "Escolha características observáveis e explique o critério da comparação.",
+      "Use imagens com autorização, espaços públicos ou exemplos fictícios quando necessário.",
+      "Evite coletar endereços, fotografar interiores ou pedir relatos pessoais obrigatórios.",
+      "Trate diversidade de materiais e organização sem hierarquizar moradias ou comunidades."
+    ],
+    "priorKnowledge": [
+      "Reconhecer alguns espaços frequentados no cotidiano, sem necessidade de revelar dados pessoais.",
+      "Descrever oralmente elementos visíveis em uma imagem ou espaço acessível."
+    ],
+    "keyConcepts": [
+      "lugar de vivência",
+      "característica observável",
+      "descrição",
+      "critério de comparação",
+      "semelhança",
+      "diferença",
+      "uso do espaço",
+      "diversidade sem hierarquia"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBSERVE_BEFORE_CONCLUDE",
+        "text": "Primeiro diga o que está visível; depois evite concluir mais do que a observação permite."
+      },
+      {
+        "trigger": "COMPARE_BY_CRITERION",
+        "text": "Escolha um aspecto, como presença de árvores ou organização de mesas, e compare esse mesmo aspecto nos dois lugares."
+      },
+      {
+        "trigger": "DIFFERENCE_WITHOUT_RANK",
+        "text": "Uma diferença descreve variação; ela não transforma um lugar em melhor ou pior."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "RANKS_LIVED_PLACES",
+        "action": "Retome a descrição com frases como “neste lugar há…” e “no outro há…”, retirando palavras de superioridade."
+      },
+      {
+        "errorFocus": "ASSUMES_PRIVATE_FACTS",
+        "action": "Troque relatos pessoais obrigatórios por imagens autorizadas, espaços comuns ou cenários fictícios observáveis."
+      },
+      {
+        "errorFocus": "COMPARES_WITHOUT_CRITERION",
+        "action": "Escolha uma característica visível e compare somente esse aspecto nos dois lugares."
+      }
+    ],
+    "accessibilitySupports": [
+      "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+      "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+      "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+      "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-geography-lived-places-fi-activity-1",
+        "title": "Dois espaços de leitura",
+        "instructions": "Comparar dois espaços de leitura da escola ou imagens públicas autorizadas, sem registrar pessoas ou informações privadas.\n1. Escolher um critério visível, como onde ficam os livros.\n2. Descrever o primeiro espaço.\n3. Descrever o segundo usando o mesmo critério.\n4. Apontar uma semelhança e uma diferença sem hierarquizar.",
+        "steps": [
+          "Escolher um critério visível, como onde ficam os livros.",
+          "Descrever o primeiro espaço.",
+          "Descrever o segundo usando o mesmo critério.",
+          "Apontar uma semelhança e uma diferença sem hierarquizar."
+        ],
+        "evidence": "Registro de duas descrições, critério de comparação e uma semelhança e diferença observáveis.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "nomeia um elemento com apoio.",
+            "developing": "descreve um critério em cada lugar.",
+            "proficient": "identifica semelhanças e diferenças e evita conclusões não observadas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-geography-lived-places-fi-activity-2",
+        "title": "Mapa de usos da escola",
+        "instructions": "Investigar espaços comuns da escola, como sala, pátio ou biblioteca, conforme acessibilidade e autorização.\n1. Selecionar dois espaços comuns.\n2. Observar elementos e usos possíveis.\n3. Registrar as observações por desenho, fala ou cartões.\n4. Comparar um aspecto comum e um aspecto diferente.",
+        "steps": [
+          "Selecionar dois espaços comuns.",
+          "Observar elementos e usos possíveis.",
+          "Registrar as observações por desenho, fala ou cartões.",
+          "Comparar um aspecto comum e um aspecto diferente."
+        ],
+        "evidence": "Mapa ou painel simples com elementos observados, usos descritos e comparação por critério.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um espaço com mediação.",
+            "developing": "descreve elementos de dois espaços.",
+            "proficient": "compara usos e características sem expor dados privados nem criar hierarquias."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-geography-lived-places-fi-01",
+          "v1-geography-lived-places-fi-02",
+          "v1-geography-lived-places-fi-03",
+          "v1-geography-lived-places-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-geography-lived-places-fi-05",
+          "v1-geography-lived-places-fi-06",
+          "v1-geography-lived-places-fi-07",
+          "v1-geography-lived-places-fi-08",
+          "v1-geography-lived-places-fi-09",
+          "v1-geography-lived-places-fi-10",
+          "v1-geography-lived-places-fi-11",
+          "v1-geography-lived-places-fi-12",
+          "v1-geography-lived-places-fi-13",
+          "v1-geography-lived-places-fi-14",
+          "v1-geography-lived-places-fi-15",
+          "v1-geography-lived-places-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-geography-lived-places-fi-17",
+          "v1-geography-lived-places-fi-18",
+          "v1-geography-lived-places-fi-19",
+          "v1-geography-lived-places-fi-20",
+          "v1-geography-lived-places-fi-21",
+          "v1-geography-lived-places-fi-22",
+          "v1-geography-lived-places-fi-23",
+          "v1-geography-lived-places-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-geography-lived-places-fi-25",
+          "v1-geography-lived-places-fi-26",
+          "v1-geography-lived-places-fi-27",
+          "v1-geography-lived-places-fi-28",
+          "v1-geography-lived-places-fi-29",
+          "v1-geography-lived-places-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-geography-lived-places-fi-31",
+          "v1-geography-lived-places-fi-32",
+          "v1-geography-lived-places-fi-33",
+          "v1-geography-lived-places-fi-34",
+          "v1-geography-lived-places-fi-35",
+          "v1-geography-lived-places-fi-36",
+          "v1-geography-lived-places-fi-37",
+          "v1-geography-lived-places-fi-38",
+          "v1-geography-lived-places-fi-39",
+          "v1-geography-lived-places-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE01",
+        "descriptor": "Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-geography-lived-places-fi-01",
+      "statement": "Ao observar duas imagens autorizadas, qual fala descreve um lugar sem avaliá-lo?",
+      "prompt": "Ao observar duas imagens autorizadas, qual fala descreve um lugar sem avaliá-lo?",
+      "options": [
+        "“Nesta imagem há uma janela e uma mesa.”",
+        "“Este lugar é melhor que o outro.”",
+        "“Todas as famílias têm uma casa igual.”",
+        "“A imagem prova como mora cada estudante.”"
+      ],
+      "correctAnswer": "“Nesta imagem há uma janela e uma mesa.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Este lugar é melhor que o outro.”": [
+          "DESCRIBE_VISIBLE_FEATURE"
+        ],
+        "“Todas as famílias têm uma casa igual.”": [
+          "DESCRIBE_VISIBLE_FEATURE"
+        ],
+        "“A imagem prova como mora cada estudante.”": [
+          "DESCRIBE_VISIBLE_FEATURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "SCHOOL_AND_HOME_IMAGE",
+      "explanation": "A frase nomeia elementos observáveis e não faz julgamentos sobre moradores.",
+      "hint": "Diga o que você consegue ver na imagem.",
+      "errorFocus": "DESCRIBE_VISIBLE_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: A frase nomeia elementos observáveis e não faz julgamentos sobre moradores.",
+        "incorrect": "A frase nomeia elementos observáveis e não faz julgamentos sobre moradores.",
+        "hint": "Diga o que você consegue ver na imagem.",
+        "errorFocus": "DESCRIBE_VISIBLE_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-02",
+      "statement": "Duas salas têm mesas. Qual observação identifica uma semelhança?",
+      "prompt": "Duas salas têm mesas. Qual observação identifica uma semelhança?",
+      "options": [
+        "Uma sala é sempre melhor.",
+        "As duas salas têm mesas.",
+        "Nenhuma sala tem objetos.",
+        "As pessoas de uma sala são iguais."
+      ],
+      "correctAnswer": "As duas salas têm mesas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma sala é sempre melhor.": [
+          "IDENTIFY_SHARED_FEATURE"
+        ],
+        "Nenhuma sala tem objetos.": [
+          "IDENTIFY_SHARED_FEATURE"
+        ],
+        "As pessoas de uma sala são iguais.": [
+          "IDENTIFY_SHARED_FEATURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_CLASSROOMS",
+      "explanation": "A semelhança é uma característica presente nos dois espaços observados.",
+      "hint": "Procure um elemento que aparece nas duas salas.",
+      "errorFocus": "IDENTIFY_SHARED_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: A semelhança é uma característica presente nos dois espaços observados.",
+        "incorrect": "A semelhança é uma característica presente nos dois espaços observados.",
+        "hint": "Procure um elemento que aparece nas duas salas.",
+        "errorFocus": "IDENTIFY_SHARED_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-03",
+      "statement": "A turma compara um pátio e uma biblioteca da escola. Qual critério pode ser observado nos dois?",
+      "prompt": "A turma compara um pátio e uma biblioteca da escola. Qual critério pode ser observado nos dois?",
+      "options": [
+        "O endereço das casas das crianças.",
+        "A renda das famílias.",
+        "Quais objetos e espaços estão presentes em cada lugar.",
+        "Quem é melhor em cada lugar."
+      ],
+      "correctAnswer": "Quais objetos e espaços estão presentes em cada lugar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O endereço das casas das crianças.": [
+          "CHOOSE_OBSERVABLE_CRITERION"
+        ],
+        "A renda das famílias.": [
+          "CHOOSE_OBSERVABLE_CRITERION"
+        ],
+        "Quem é melhor em cada lugar.": [
+          "CHOOSE_OBSERVABLE_CRITERION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "PUBLIC_SPACE",
+      "explanation": "Elementos presentes podem ser observados sem investigar a vida privada.",
+      "hint": "Escolha algo visível nos dois espaços.",
+      "errorFocus": "CHOOSE_OBSERVABLE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Elementos presentes podem ser observados sem investigar a vida privada.",
+        "incorrect": "Elementos presentes podem ser observados sem investigar a vida privada.",
+        "hint": "Escolha algo visível nos dois espaços.",
+        "errorFocus": "CHOOSE_OBSERVABLE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-04",
+      "statement": "Uma criança não quer mostrar sua moradia em uma atividade. Qual alternativa mantém a participação?",
+      "prompt": "Uma criança não quer mostrar sua moradia em uma atividade. Qual alternativa mantém a participação?",
+      "options": [
+        "Exigir que mostre seu endereço.",
+        "Pedir que fotografe o interior da casa.",
+        "Retirá-la da atividade.",
+        "Usar um espaço público ou uma imagem autorizada como exemplo."
+      ],
+      "correctAnswer": "Usar um espaço público ou uma imagem autorizada como exemplo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que mostre seu endereço.": [
+          "PROTECT_PRIVACY"
+        ],
+        "Pedir que fotografe o interior da casa.": [
+          "PROTECT_PRIVACY"
+        ],
+        "Retirá-la da atividade.": [
+          "PROTECT_PRIVACY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PRIVATE_HOME",
+      "explanation": "É possível aprender a comparar lugares sem expor a moradia de alguém.",
+      "hint": "Pense em outro lugar que a turma possa observar com segurança.",
+      "errorFocus": "PROTECT_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: É possível aprender a comparar lugares sem expor a moradia de alguém.",
+        "incorrect": "É possível aprender a comparar lugares sem expor a moradia de alguém.",
+        "hint": "Pense em outro lugar que a turma possa observar com segurança.",
+        "errorFocus": "PROTECT_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-05",
+      "statement": "Uma sala tem duas janelas e outra tem uma. Qual frase registra uma diferença observável?",
+      "prompt": "Uma sala tem duas janelas e outra tem uma. Qual frase registra uma diferença observável?",
+      "options": [
+        "As salas têm quantidades diferentes de janelas.",
+        "A primeira sala é melhor.",
+        "A sala com uma janela não serve para ninguém.",
+        "As pessoas das salas têm hábitos iguais."
+      ],
+      "correctAnswer": "As salas têm quantidades diferentes de janelas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A primeira sala é melhor.": [
+          "DESCRIBE_DIFFERENCE"
+        ],
+        "A sala com uma janela não serve para ninguém.": [
+          "DESCRIBE_DIFFERENCE"
+        ],
+        "As pessoas das salas têm hábitos iguais.": [
+          "DESCRIBE_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "CLASSROOM_WINDOWS",
+      "explanation": "A comparação se limita à quantidade observada e evita julgar os lugares.",
+      "hint": "Conte o mesmo elemento em cada sala.",
+      "errorFocus": "DESCRIBE_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação se limita à quantidade observada e evita julgar os lugares.",
+        "incorrect": "A comparação se limita à quantidade observada e evita julgar os lugares.",
+        "hint": "Conte o mesmo elemento em cada sala.",
+        "errorFocus": "DESCRIBE_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-06",
+      "statement": "Um jardim da escola e uma praça têm árvores. O que é uma semelhança possível?",
+      "prompt": "Um jardim da escola e uma praça têm árvores. O que é uma semelhança possível?",
+      "options": [
+        "Os dois lugares são exatamente iguais.",
+        "Há árvores nos dois lugares observados.",
+        "Todos usam os lugares do mesmo modo.",
+        "Uma árvore torna um lugar superior."
+      ],
+      "correctAnswer": "Há árvores nos dois lugares observados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os dois lugares são exatamente iguais.": [
+          "COMPARE_SHARED_ELEMENT"
+        ],
+        "Todos usam os lugares do mesmo modo.": [
+          "COMPARE_SHARED_ELEMENT"
+        ],
+        "Uma árvore torna um lugar superior.": [
+          "COMPARE_SHARED_ELEMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCHOOL_GARDEN",
+      "explanation": "A semelhança precisa se apoiar em algo que aparece nos dois espaços.",
+      "hint": "Nomeie o elemento comum sem dizer que tudo é igual.",
+      "errorFocus": "COMPARE_SHARED_ELEMENT",
+      "feedback": {
+        "correct": "Boa observação: A semelhança precisa se apoiar em algo que aparece nos dois espaços.",
+        "incorrect": "A semelhança precisa se apoiar em algo que aparece nos dois espaços.",
+        "hint": "Nomeie o elemento comum sem dizer que tudo é igual.",
+        "errorFocus": "COMPARE_SHARED_ELEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-07",
+      "statement": "Qual frase descreve o uso de uma biblioteca escolar?",
+      "prompt": "Qual frase descreve o uso de uma biblioteca escolar?",
+      "options": [
+        "É um lugar que todas as pessoas usam da mesma forma.",
+        "É um espaço reservado a quem lê mais rápido.",
+        "É um espaço onde a comunidade escolar pode acessar livros e materiais de leitura.",
+        "É uma moradia de estudantes."
+      ],
+      "correctAnswer": "É um espaço onde a comunidade escolar pode acessar livros e materiais de leitura.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "É um lugar que todas as pessoas usam da mesma forma.": [
+          "DESCRIBE_SPACE_USE"
+        ],
+        "É um espaço reservado a quem lê mais rápido.": [
+          "DESCRIBE_SPACE_USE"
+        ],
+        "É uma moradia de estudantes.": [
+          "DESCRIBE_SPACE_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "LIBRARY_AND_ROOM",
+      "explanation": "A descrição relaciona o espaço a um uso possível sem criar restrições ou estereótipos.",
+      "hint": "Pense no que as pessoas podem fazer nesse espaço.",
+      "errorFocus": "DESCRIBE_SPACE_USE",
+      "feedback": {
+        "correct": "Boa observação: A descrição relaciona o espaço a um uso possível sem criar restrições ou estereótipos.",
+        "incorrect": "A descrição relaciona o espaço a um uso possível sem criar restrições ou estereótipos.",
+        "hint": "Pense no que as pessoas podem fazer nesse espaço.",
+        "errorFocus": "DESCRIBE_SPACE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-08",
+      "statement": "Dois espaços de brincar têm pisos diferentes. Qual registro é adequado?",
+      "prompt": "Dois espaços de brincar têm pisos diferentes. Qual registro é adequado?",
+      "options": [
+        "Um piso prova que uma comunidade cuida mais do lugar.",
+        "Um piso é sempre mais seguro sem observar.",
+        "As crianças de cada lugar brincam igual.",
+        "Os pisos observados são diferentes; podemos descrever cada material visível."
+      ],
+      "correctAnswer": "Os pisos observados são diferentes; podemos descrever cada material visível.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um piso prova que uma comunidade cuida mais do lugar.": [
+          "OBSERVE_WITHOUT_INFERENCE"
+        ],
+        "Um piso é sempre mais seguro sem observar.": [
+          "OBSERVE_WITHOUT_INFERENCE"
+        ],
+        "As crianças de cada lugar brincam igual.": [
+          "OBSERVE_WITHOUT_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "PLAYGROUND_SURFACE",
+      "explanation": "A diferença visível não permite concluir, sozinha, sobre cuidado ou segurança.",
+      "hint": "Registre o que vê antes de interpretar.",
+      "errorFocus": "OBSERVE_WITHOUT_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A diferença visível não permite concluir, sozinha, sobre cuidado ou segurança.",
+        "incorrect": "A diferença visível não permite concluir, sozinha, sobre cuidado ou segurança.",
+        "hint": "Registre o que vê antes de interpretar.",
+        "errorFocus": "OBSERVE_WITHOUT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-09",
+      "statement": "Duas salas são observadas e apenas uma tem plantas. Qual comparação é precisa?",
+      "prompt": "Duas salas são observadas e apenas uma tem plantas. Qual comparação é precisa?",
+      "options": [
+        "Uma das salas observadas tem plantas e a outra não tem plantas visíveis.",
+        "A sala sem plantas não é acolhedora.",
+        "Todas as escolas devem ter a mesma sala.",
+        "As plantas mostram quem estuda melhor."
+      ],
+      "correctAnswer": "Uma das salas observadas tem plantas e a outra não tem plantas visíveis.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A sala sem plantas não é acolhedora.": [
+          "PRECISE_COMPARISON"
+        ],
+        "Todas as escolas devem ter a mesma sala.": [
+          "PRECISE_COMPARISON"
+        ],
+        "As plantas mostram quem estuda melhor.": [
+          "PRECISE_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CLASSROOM_PLANTS",
+      "explanation": "A frase limita a comparação ao que aparece nas salas observadas.",
+      "hint": "Use as palavras “observadas” e “visíveis” para não generalizar.",
+      "errorFocus": "PRECISE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A frase limita a comparação ao que aparece nas salas observadas.",
+        "incorrect": "A frase limita a comparação ao que aparece nas salas observadas.",
+        "hint": "Use as palavras “observadas” e “visíveis” para não generalizar.",
+        "errorFocus": "PRECISE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-10",
+      "statement": "Duas imagens autorizadas mostram moradias com materiais diferentes. Qual conclusão é respeitosa?",
+      "prompt": "Duas imagens autorizadas mostram moradias com materiais diferentes. Qual conclusão é respeitosa?",
+      "options": [
+        "Uma família é melhor que a outra.",
+        "As moradias observadas usam materiais diferentes.",
+        "Todas as moradias de uma região são iguais.",
+        "O material revela o valor das pessoas."
+      ],
+      "correctAnswer": "As moradias observadas usam materiais diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma família é melhor que a outra.": [
+          "DIVERSITY_WITHOUT_HIERARCHY"
+        ],
+        "Todas as moradias de uma região são iguais.": [
+          "DIVERSITY_WITHOUT_HIERARCHY"
+        ],
+        "O material revela o valor das pessoas.": [
+          "DIVERSITY_WITHOUT_HIERARCHY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "HOME_TYPES_IMAGE",
+      "explanation": "Diferenças de material descrevem lugares, não o valor de seus moradores.",
+      "hint": "Fale dos materiais, não de quem seria melhor.",
+      "errorFocus": "DIVERSITY_WITHOUT_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: Diferenças de material descrevem lugares, não o valor de seus moradores.",
+        "incorrect": "Diferenças de material descrevem lugares, não o valor de seus moradores.",
+        "hint": "Fale dos materiais, não de quem seria melhor.",
+        "errorFocus": "DIVERSITY_WITHOUT_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-11",
+      "statement": "Um mapa simples da escola mostra pátio e biblioteca. Qual característica pode ser comparada entre eles?",
+      "prompt": "Um mapa simples da escola mostra pátio e biblioteca. Qual característica pode ser comparada entre eles?",
+      "options": [
+        "A vida privada das pessoas que passam ali.",
+        "O endereço residencial de cada usuário.",
+        "Os usos e elementos representados em cada espaço.",
+        "A inteligência de quem frequenta o local."
+      ],
+      "correctAnswer": "Os usos e elementos representados em cada espaço.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A vida privada das pessoas que passam ali.": [
+          "COMPARE_SPACE_FEATURES"
+        ],
+        "O endereço residencial de cada usuário.": [
+          "COMPARE_SPACE_FEATURES"
+        ],
+        "A inteligência de quem frequenta o local.": [
+          "COMPARE_SPACE_FEATURES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "NEIGHBORHOOD_MAP",
+      "explanation": "O mapa apoia a observação de espaços e usos sem inferir características pessoais.",
+      "hint": "Observe o que está representado em cada local.",
+      "errorFocus": "COMPARE_SPACE_FEATURES",
+      "feedback": {
+        "correct": "Boa observação: O mapa apoia a observação de espaços e usos sem inferir características pessoais.",
+        "incorrect": "O mapa apoia a observação de espaços e usos sem inferir características pessoais.",
+        "hint": "Observe o que está representado em cada local.",
+        "errorFocus": "COMPARE_SPACE_FEATURES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-12",
+      "statement": "Duas imagens mostram lugares com características naturais diferentes. O que é correto dizer?",
+      "prompt": "Duas imagens mostram lugares com características naturais diferentes. O que é correto dizer?",
+      "options": [
+        "Um tipo de lugar é sempre melhor.",
+        "Todas as pessoas vivem no mesmo tipo de espaço.",
+        "Uma imagem permite conhecer a vida inteira de seus moradores.",
+        "Os lugares observados apresentam diferenças que podem ser descritas pelo que aparece."
+      ],
+      "correctAnswer": "Os lugares observados apresentam diferenças que podem ser descritas pelo que aparece.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um tipo de lugar é sempre melhor.": [
+          "LIMIT_GENERALIZATION"
+        ],
+        "Todas as pessoas vivem no mesmo tipo de espaço.": [
+          "LIMIT_GENERALIZATION"
+        ],
+        "Uma imagem permite conhecer a vida inteira de seus moradores.": [
+          "LIMIT_GENERALIZATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REASON",
+      "contextFamily": "RURAL_URBAN_IMAGES",
+      "explanation": "Uma observação visual não autoriza generalizações sobre todas as pessoas de um lugar.",
+      "hint": "Descreva essas imagens, sem falar por todas as comunidades.",
+      "errorFocus": "LIMIT_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Uma observação visual não autoriza generalizações sobre todas as pessoas de um lugar.",
+        "incorrect": "Uma observação visual não autoriza generalizações sobre todas as pessoas de um lugar.",
+        "hint": "Descreva essas imagens, sem falar por todas as comunidades.",
+        "errorFocus": "LIMIT_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-13",
+      "statement": "Uma entrada tem rampa e outra imagem mostra degraus. Qual descrição é observável?",
+      "prompt": "Uma entrada tem rampa e outra imagem mostra degraus. Qual descrição é observável?",
+      "options": [
+        "Os acessos representados têm características diferentes.",
+        "Todas as pessoas conseguem usar qualquer acesso.",
+        "A imagem prova que a escola é acessível em tudo.",
+        "Um acesso indica que estudantes são iguais."
+      ],
+      "correctAnswer": "Os acessos representados têm características diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as pessoas conseguem usar qualquer acesso.": [
+          "ACCESS_DESCRIPTION_NOT_ASSUMPTION"
+        ],
+        "A imagem prova que a escola é acessível em tudo.": [
+          "ACCESS_DESCRIPTION_NOT_ASSUMPTION"
+        ],
+        "Um acesso indica que estudantes são iguais.": [
+          "ACCESS_DESCRIPTION_NOT_ASSUMPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "SCHOOL_ENTRANCE",
+      "explanation": "É possível descrever elementos visíveis sem concluir acessibilidade completa sem investigação.",
+      "hint": "Diga o que aparece e evite afirmar além da imagem.",
+      "errorFocus": "ACCESS_DESCRIPTION_NOT_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: É possível descrever elementos visíveis sem concluir acessibilidade completa sem investigação.",
+        "incorrect": "É possível descrever elementos visíveis sem concluir acessibilidade completa sem investigação.",
+        "hint": "Diga o que aparece e evite afirmar além da imagem.",
+        "errorFocus": "ACCESS_DESCRIPTION_NOT_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-14",
+      "statement": "Dois espaços têm canteiros, mas em um as plantas ficam em vasos. Qual é uma diferença?",
+      "prompt": "Dois espaços têm canteiros, mas em um as plantas ficam em vasos. Qual é uma diferença?",
+      "options": [
+        "O lugar com vasos é menos importante.",
+        "Um espaço mostra plantas em canteiros e o outro em vasos.",
+        "As pessoas de um espaço conhecem mais plantas.",
+        "Os espaços não têm nenhuma semelhança."
+      ],
+      "correctAnswer": "Um espaço mostra plantas em canteiros e o outro em vasos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O lugar com vasos é menos importante.": [
+          "IDENTIFY_CONTRAST"
+        ],
+        "As pessoas de um espaço conhecem mais plantas.": [
+          "IDENTIFY_CONTRAST"
+        ],
+        "Os espaços não têm nenhuma semelhança.": [
+          "IDENTIFY_CONTRAST"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COMMUNITY_GARDENS",
+      "explanation": "A diferença descreve o modo observado de organizar as plantas.",
+      "hint": "Compare o mesmo aspecto nos dois espaços.",
+      "errorFocus": "IDENTIFY_CONTRAST",
+      "feedback": {
+        "correct": "Boa observação: A diferença descreve o modo observado de organizar as plantas.",
+        "incorrect": "A diferença descreve o modo observado de organizar as plantas.",
+        "hint": "Compare o mesmo aspecto nos dois espaços.",
+        "errorFocus": "IDENTIFY_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-15",
+      "statement": "A turma quer registrar uma praça para comparar com o pátio. O que deve fazer antes de fotografar?",
+      "prompt": "A turma quer registrar uma praça para comparar com o pátio. O que deve fazer antes de fotografar?",
+      "options": [
+        "Fotografar qualquer pessoa de perto.",
+        "Publicar endereços junto das imagens.",
+        "Seguir as regras de autorização e evitar registrar pessoas identificáveis.",
+        "Registrar conversas privadas sem avisar."
+      ],
+      "correctAnswer": "Seguir as regras de autorização e evitar registrar pessoas identificáveis.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fotografar qualquer pessoa de perto.": [
+          "SAFE_OBSERVATION"
+        ],
+        "Publicar endereços junto das imagens.": [
+          "SAFE_OBSERVATION"
+        ],
+        "Registrar conversas privadas sem avisar.": [
+          "SAFE_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "PHOTO_PERMISSION",
+      "explanation": "A investigação de lugares deve respeitar privacidade e autorização.",
+      "hint": "Planeje como observar o espaço sem expor pessoas.",
+      "errorFocus": "SAFE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A investigação de lugares deve respeitar privacidade e autorização.",
+        "incorrect": "A investigação de lugares deve respeitar privacidade e autorização.",
+        "hint": "Planeje como observar o espaço sem expor pessoas.",
+        "errorFocus": "SAFE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-16",
+      "statement": "Por que uma história fictícia pode ser útil para comparar moradias?",
+      "prompt": "Por que uma história fictícia pode ser útil para comparar moradias?",
+      "options": [
+        "Prova que todas as casas são iguais.",
+        "Permite classificar famílias por valor.",
+        "Substitui toda observação por adivinhação.",
+        "Permite observar características sem exigir que alguém exponha sua vida privada."
+      ],
+      "correctAnswer": "Permite observar características sem exigir que alguém exponha sua vida privada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Prova que todas as casas são iguais.": [
+          "USE_SAFE_EXAMPLES"
+        ],
+        "Permite classificar famílias por valor.": [
+          "USE_SAFE_EXAMPLES"
+        ],
+        "Substitui toda observação por adivinhação.": [
+          "USE_SAFE_EXAMPLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "HOME_OR_FICTION",
+      "explanation": "Exemplos fictícios podem apoiar comparações respeitosas quando relatos pessoais não são adequados.",
+      "hint": "Pense em como preservar a privacidade durante a atividade.",
+      "errorFocus": "USE_SAFE_EXAMPLES",
+      "feedback": {
+        "correct": "Boa observação: Exemplos fictícios podem apoiar comparações respeitosas quando relatos pessoais não são adequados.",
+        "incorrect": "Exemplos fictícios podem apoiar comparações respeitosas quando relatos pessoais não são adequados.",
+        "hint": "Pense em como preservar a privacidade durante a atividade.",
+        "errorFocus": "USE_SAFE_EXAMPLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-17",
+      "statement": "Uma turma visita uma biblioteca pública diferente da escolar. Como comparar os lugares?",
+      "prompt": "Uma turma visita uma biblioteca pública diferente da escolar. Como comparar os lugares?",
+      "options": [
+        "Escolher um critério visível, descrever cada espaço e apontar semelhanças e diferenças.",
+        "Decidir qual comunidade gosta mais de livros.",
+        "Pedir endereço de todos os visitantes.",
+        "Concluir que todos usam a biblioteca da mesma forma."
+      ],
+      "correctAnswer": "Escolher um critério visível, descrever cada espaço e apontar semelhanças e diferenças.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Decidir qual comunidade gosta mais de livros.": [
+          "TRANSFER_COMPARISON_METHOD"
+        ],
+        "Pedir endereço de todos os visitantes.": [
+          "TRANSFER_COMPARISON_METHOD"
+        ],
+        "Concluir que todos usam a biblioteca da mesma forma.": [
+          "TRANSFER_COMPARISON_METHOD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_PUBLIC_LIBRARY",
+      "explanation": "O mesmo critério permite uma comparação cuidadosa em lugares novos.",
+      "hint": "Use a sequência: critério, descrição, comparação.",
+      "errorFocus": "TRANSFER_COMPARISON_METHOD",
+      "feedback": {
+        "correct": "Boa observação: O mesmo critério permite uma comparação cuidadosa em lugares novos.",
+        "incorrect": "O mesmo critério permite uma comparação cuidadosa em lugares novos.",
+        "hint": "Use a sequência: critério, descrição, comparação.",
+        "errorFocus": "TRANSFER_COMPARISON_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-18",
+      "statement": "Uma imagem nova mostra uma área de brincar com bancos e árvores. Qual frase se apoia na imagem?",
+      "prompt": "Uma imagem nova mostra uma área de brincar com bancos e árvores. Qual frase se apoia na imagem?",
+      "options": [
+        "Todas as crianças brincam ali todos os dias.",
+        "A imagem mostra bancos e árvores perto da área de brincar.",
+        "O lugar é melhor que qualquer outro.",
+        "As pessoas que usam o espaço são iguais."
+      ],
+      "correctAnswer": "A imagem mostra bancos e árvores perto da área de brincar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as crianças brincam ali todos os dias.": [
+          "TRANSFER_EVIDENCE"
+        ],
+        "O lugar é melhor que qualquer outro.": [
+          "TRANSFER_EVIDENCE"
+        ],
+        "As pessoas que usam o espaço são iguais.": [
+          "TRANSFER_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "NEW_PLAY_AREA",
+      "explanation": "A frase descreve elementos visíveis, sem inventar frequência ou características de pessoas.",
+      "hint": "Use apenas o que está representado.",
+      "errorFocus": "TRANSFER_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve elementos visíveis, sem inventar frequência ou características de pessoas.",
+        "incorrect": "A frase descreve elementos visíveis, sem inventar frequência ou características de pessoas.",
+        "hint": "Use apenas o que está representado.",
+        "errorFocus": "TRANSFER_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-19",
+      "statement": "Duas escolas têm espaços de entrada diferentes. O que podemos comparar sem generalizar?",
+      "prompt": "Duas escolas têm espaços de entrada diferentes. O que podemos comparar sem generalizar?",
+      "options": [
+        "A qualidade de todas as escolas de cada cidade.",
+        "A inteligência das crianças.",
+        "As características visíveis das entradas nas duas imagens.",
+        "A renda de cada família."
+      ],
+      "correctAnswer": "As características visíveis das entradas nas duas imagens.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A qualidade de todas as escolas de cada cidade.": [
+          "TRANSFER_LIMIT_SCOPE"
+        ],
+        "A inteligência das crianças.": [
+          "TRANSFER_LIMIT_SCOPE"
+        ],
+        "A renda de cada família.": [
+          "TRANSFER_LIMIT_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIFFERENT_SCHOOLS",
+      "explanation": "A comparação deve permanecer no conjunto observado.",
+      "hint": "Compare as duas entradas, não todas as escolas.",
+      "errorFocus": "TRANSFER_LIMIT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A comparação deve permanecer no conjunto observado.",
+        "incorrect": "A comparação deve permanecer no conjunto observado.",
+        "hint": "Compare as duas entradas, não todas as escolas.",
+        "errorFocus": "TRANSFER_LIMIT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-20",
+      "statement": "Durante um percurso acessível perto da escola, a turma observa uma praça e uma rua. O que pode registrar?",
+      "prompt": "Durante um percurso acessível perto da escola, a turma observa uma praça e uma rua. O que pode registrar?",
+      "options": [
+        "Conversas privadas dos moradores.",
+        "Endereços completos de residências.",
+        "Conclusões sobre todas as famílias do bairro.",
+        "Elementos visíveis e usos observados, respeitando a privacidade das pessoas."
+      ],
+      "correctAnswer": "Elementos visíveis e usos observados, respeitando a privacidade das pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Conversas privadas dos moradores.": [
+          "TRANSFER_SAFE_FIELDWORK"
+        ],
+        "Endereços completos de residências.": [
+          "TRANSFER_SAFE_FIELDWORK"
+        ],
+        "Conclusões sobre todas as famílias do bairro.": [
+          "TRANSFER_SAFE_FIELDWORK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEIGHBORHOOD_WALK",
+      "explanation": "Uma observação de campo pode registrar características e usos sem coletar dados pessoais.",
+      "hint": "Anote elementos do lugar, não informações privadas.",
+      "errorFocus": "TRANSFER_SAFE_FIELDWORK",
+      "feedback": {
+        "correct": "Boa observação: Uma observação de campo pode registrar características e usos sem coletar dados pessoais.",
+        "incorrect": "Uma observação de campo pode registrar características e usos sem coletar dados pessoais.",
+        "hint": "Anote elementos do lugar, não informações privadas.",
+        "errorFocus": "TRANSFER_SAFE_FIELDWORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-21",
+      "statement": "Dois lugares têm espaços de encontro, mas móveis diferentes. Qual comparação faz sentido?",
+      "prompt": "Dois lugares têm espaços de encontro, mas móveis diferentes. Qual comparação faz sentido?",
+      "options": [
+        "Ambos podem apoiar encontros, embora os móveis observados sejam diferentes.",
+        "Só um deles permite encontros.",
+        "O mobiliário define o valor das pessoas.",
+        "Os dois lugares são idênticos em tudo."
+      ],
+      "correctAnswer": "Ambos podem apoiar encontros, embora os móveis observados sejam diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Só um deles permite encontros.": [
+          "TRANSFER_FUNCTION_AND_FEATURE"
+        ],
+        "O mobiliário define o valor das pessoas.": [
+          "TRANSFER_FUNCTION_AND_FEATURE"
+        ],
+        "Os dois lugares são idênticos em tudo.": [
+          "TRANSFER_FUNCTION_AND_FEATURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REASON",
+      "contextFamily": "SAME_USE_DIFFERENT_FORM",
+      "explanation": "Semelhanças de uso podem coexistir com diferenças nos elementos do espaço.",
+      "hint": "Separe o uso possível do que muda na aparência.",
+      "errorFocus": "TRANSFER_FUNCTION_AND_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: Semelhanças de uso podem coexistir com diferenças nos elementos do espaço.",
+        "incorrect": "Semelhanças de uso podem coexistir com diferenças nos elementos do espaço.",
+        "hint": "Separe o uso possível do que muda na aparência.",
+        "errorFocus": "TRANSFER_FUNCTION_AND_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-22",
+      "statement": "Ao usar imagens públicas de moradias para estudar características, o que deve evitar?",
+      "prompt": "Ao usar imagens públicas de moradias para estudar características, o que deve evitar?",
+      "options": [
+        "Descrever materiais que aparecem.",
+        "Afirmar como vivem pessoas específicas ou classificar as moradias.",
+        "Comparar elementos visíveis.",
+        "Reconhecer que existem diferentes formas de morar."
+      ],
+      "correctAnswer": "Afirmar como vivem pessoas específicas ou classificar as moradias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Descrever materiais que aparecem.": [
+          "TRANSFER_RESPECTFUL_REPRESENTATION"
+        ],
+        "Comparar elementos visíveis.": [
+          "TRANSFER_RESPECTFUL_REPRESENTATION"
+        ],
+        "Reconhecer que existem diferentes formas de morar.": [
+          "TRANSFER_RESPECTFUL_REPRESENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PUBLIC_IMAGES",
+      "explanation": "A observação geográfica não autoriza julgamento nem inferência sobre moradores identificáveis.",
+      "hint": "Pense em quais conclusões a imagem realmente permite.",
+      "errorFocus": "TRANSFER_RESPECTFUL_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: A observação geográfica não autoriza julgamento nem inferência sobre moradores identificáveis.",
+        "incorrect": "A observação geográfica não autoriza julgamento nem inferência sobre moradores identificáveis.",
+        "hint": "Pense em quais conclusões a imagem realmente permite.",
+        "errorFocus": "TRANSFER_RESPECTFUL_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-23",
+      "statement": "Como explicar uma comparação entre dois lugares novos de forma clara?",
+      "prompt": "Como explicar uma comparação entre dois lugares novos de forma clara?",
+      "options": [
+        "Dizer qual lugar é superior sem explicar.",
+        "Falar sobre pessoas que não foram observadas.",
+        "Nomear o critério, descrever o que foi observado em cada lugar e indicar uma semelhança ou diferença.",
+        "Escolher um lugar e ignorar o outro."
+      ],
+      "correctAnswer": "Nomear o critério, descrever o que foi observado em cada lugar e indicar uma semelhança ou diferença.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer qual lugar é superior sem explicar.": [
+          "TRANSFER_EXPLAIN_COMPARISON"
+        ],
+        "Falar sobre pessoas que não foram observadas.": [
+          "TRANSFER_EXPLAIN_COMPARISON"
+        ],
+        "Escolher um lugar e ignorar o outro.": [
+          "TRANSFER_EXPLAIN_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEW_TWO_PLACES",
+      "explanation": "Critério e evidência tornam a comparação compreensível e limitada.",
+      "hint": "Inclua critério, evidência e relação entre os lugares.",
+      "errorFocus": "TRANSFER_EXPLAIN_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Critério e evidência tornam a comparação compreensível e limitada.",
+        "incorrect": "Critério e evidência tornam a comparação compreensível e limitada.",
+        "hint": "Inclua critério, evidência e relação entre os lugares.",
+        "errorFocus": "TRANSFER_EXPLAIN_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-24",
+      "statement": "Uma foto mostra uma rampa na entrada. O que podemos afirmar com segurança?",
+      "prompt": "Uma foto mostra uma rampa na entrada. O que podemos afirmar com segurança?",
+      "options": [
+        "Todo o prédio é acessível para todas as pessoas.",
+        "Ninguém precisa de outro apoio.",
+        "A escola não tem barreiras em nenhum espaço.",
+        "A imagem mostra uma rampa naquela entrada; outros aspectos de acesso precisam ser observados."
+      ],
+      "correctAnswer": "A imagem mostra uma rampa naquela entrada; outros aspectos de acesso precisam ser observados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todo o prédio é acessível para todas as pessoas.": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ],
+        "Ninguém precisa de outro apoio.": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ],
+        "A escola não tem barreiras em nenhum espaço.": [
+          "TRANSFER_AVOID_OVERCLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_ACCESS_FEATURE",
+      "explanation": "Uma característica visível não prova todas as condições de acessibilidade do lugar.",
+      "hint": "Afirme o que a imagem mostra e reserve o que ainda não foi observado.",
+      "errorFocus": "TRANSFER_AVOID_OVERCLAIM",
+      "feedback": {
+        "correct": "Boa observação: Uma característica visível não prova todas as condições de acessibilidade do lugar.",
+        "incorrect": "Uma característica visível não prova todas as condições de acessibilidade do lugar.",
+        "hint": "Afirme o que a imagem mostra e reserve o que ainda não foi observado.",
+        "errorFocus": "TRANSFER_AVOID_OVERCLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-25",
+      "statement": "Para comparar duas moradias em imagens, qual procedimento é mais adequado?",
+      "prompt": "Para comparar duas moradias em imagens, qual procedimento é mais adequado?",
+      "options": [
+        "Observar o mesmo critério em cada imagem e descrever as características encontradas.",
+        "Comparar uma janela de uma com a família da outra.",
+        "Escolher qual família é melhor.",
+        "Inventar elementos que não aparecem."
+      ],
+      "correctAnswer": "Observar o mesmo critério em cada imagem e descrever as características encontradas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Comparar uma janela de uma com a família da outra.": [
+          "LOCK_IN_COMPARISON_METHOD"
+        ],
+        "Escolher qual família é melhor.": [
+          "LOCK_IN_COMPARISON_METHOD"
+        ],
+        "Inventar elementos que não aparecem.": [
+          "LOCK_IN_COMPARISON_METHOD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_SAME_CRITERION",
+      "explanation": "Usar o mesmo critério torna a comparação mais justa e observável.",
+      "hint": "Escolha um aspecto e use-o nos dois lugares.",
+      "errorFocus": "LOCK_IN_COMPARISON_METHOD",
+      "feedback": {
+        "correct": "Boa observação: Usar o mesmo critério torna a comparação mais justa e observável.",
+        "incorrect": "Usar o mesmo critério torna a comparação mais justa e observável.",
+        "hint": "Escolha um aspecto e use-o nos dois lugares.",
+        "errorFocus": "LOCK_IN_COMPARISON_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-26",
+      "statement": "Dois pátios têm árvores, mas bancos diferentes. Qual conclusão inclui semelhança e diferença?",
+      "prompt": "Dois pátios têm árvores, mas bancos diferentes. Qual conclusão inclui semelhança e diferença?",
+      "options": [
+        "Os pátios são iguais em tudo.",
+        "Ambos têm árvores; os bancos observados são diferentes.",
+        "Um pátio é melhor por ter certo banco.",
+        "Nenhum tem elementos em comum."
+      ],
+      "correctAnswer": "Ambos têm árvores; os bancos observados são diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os pátios são iguais em tudo.": [
+          "LOCK_IN_BOTH_RELATIONS"
+        ],
+        "Um pátio é melhor por ter certo banco.": [
+          "LOCK_IN_BOTH_RELATIONS"
+        ],
+        "Nenhum tem elementos em comum.": [
+          "LOCK_IN_BOTH_RELATIONS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_SIMILAR_DIFFERENT",
+      "explanation": "A resposta registra uma característica comum e outra diferente.",
+      "hint": "Procure uma coisa em comum e uma que muda.",
+      "errorFocus": "LOCK_IN_BOTH_RELATIONS",
+      "feedback": {
+        "correct": "Boa observação: A resposta registra uma característica comum e outra diferente.",
+        "incorrect": "A resposta registra uma característica comum e outra diferente.",
+        "hint": "Procure uma coisa em comum e uma que muda.",
+        "errorFocus": "LOCK_IN_BOTH_RELATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-27",
+      "statement": "Por que é importante dizer “nas imagens observadas” ao comparar lugares?",
+      "prompt": "Por que é importante dizer “nas imagens observadas” ao comparar lugares?",
+      "options": [
+        "Porque uma imagem mostra a vida inteira dos moradores.",
+        "Porque todos os lugares são iguais.",
+        "Porque limita a conclusão aos exemplos vistos, sem generalizar para todas as moradias.",
+        "Porque comparação não pode usar evidências."
+      ],
+      "correctAnswer": "Porque limita a conclusão aos exemplos vistos, sem generalizar para todas as moradias.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque uma imagem mostra a vida inteira dos moradores.": [
+          "LOCK_IN_LIMIT_SCOPE"
+        ],
+        "Porque todos os lugares são iguais.": [
+          "LOCK_IN_LIMIT_SCOPE"
+        ],
+        "Porque comparação não pode usar evidências.": [
+          "LOCK_IN_LIMIT_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_OBSERVATION",
+      "explanation": "A expressão explicita o limite da evidência usada.",
+      "hint": "Pense na diferença entre dois exemplos e todas as casas.",
+      "errorFocus": "LOCK_IN_LIMIT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A expressão explicita o limite da evidência usada.",
+        "incorrect": "A expressão explicita o limite da evidência usada.",
+        "hint": "Pense na diferença entre dois exemplos e todas as casas.",
+        "errorFocus": "LOCK_IN_LIMIT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-28",
+      "statement": "Qual frase compara sem criar hierarquia entre comunidades?",
+      "prompt": "Qual frase compara sem criar hierarquia entre comunidades?",
+      "options": [
+        "“Uma comunidade vale mais por ter mais móveis.”",
+        "“Toda moradia de um tipo é igual.”",
+        "“Quem vive em certo lugar tem os mesmos hábitos.”",
+        "“Os espaços observados têm organizações diferentes e algumas características em comum.”"
+      ],
+      "correctAnswer": "“Os espaços observados têm organizações diferentes e algumas características em comum.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Uma comunidade vale mais por ter mais móveis.”": [
+          "LOCK_IN_NO_RANKING"
+        ],
+        "“Toda moradia de um tipo é igual.”": [
+          "LOCK_IN_NO_RANKING"
+        ],
+        "“Quem vive em certo lugar tem os mesmos hábitos.”": [
+          "LOCK_IN_NO_RANKING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_NO_HIERARCHY",
+      "explanation": "A frase descreve variações sem atribuir valor às pessoas ou comunidades.",
+      "hint": "Escolha uma descrição sem “melhor” ou “pior”.",
+      "errorFocus": "LOCK_IN_NO_RANKING",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve variações sem atribuir valor às pessoas ou comunidades.",
+        "incorrect": "A frase descreve variações sem atribuir valor às pessoas ou comunidades.",
+        "hint": "Escolha uma descrição sem “melhor” ou “pior”.",
+        "errorFocus": "LOCK_IN_NO_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-29",
+      "statement": "Qual atividade permite estudar moradia sem expor dados pessoais?",
+      "prompt": "Qual atividade permite estudar moradia sem expor dados pessoais?",
+      "options": [
+        "Comparar imagens autorizadas ou cenários fictícios com critérios observáveis.",
+        "Publicar endereços da turma.",
+        "Exigir fotos internas de todas as casas.",
+        "Pedir relatos pessoais diante de todos."
+      ],
+      "correctAnswer": "Comparar imagens autorizadas ou cenários fictícios com critérios observáveis.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar endereços da turma.": [
+          "LOCK_IN_PRIVACY"
+        ],
+        "Exigir fotos internas de todas as casas.": [
+          "LOCK_IN_PRIVACY"
+        ],
+        "Pedir relatos pessoais diante de todos.": [
+          "LOCK_IN_PRIVACY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_PRIVACY",
+      "explanation": "O objetivo pode ser alcançado com exemplos que protegem privacidade.",
+      "hint": "Procure alternativa segura e voluntária.",
+      "errorFocus": "LOCK_IN_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: O objetivo pode ser alcançado com exemplos que protegem privacidade.",
+        "incorrect": "O objetivo pode ser alcançado com exemplos que protegem privacidade.",
+        "hint": "Procure alternativa segura e voluntária.",
+        "errorFocus": "LOCK_IN_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-30",
+      "statement": "Qual anotação descreve evidência geográfica observada?",
+      "prompt": "Qual anotação descreve evidência geográfica observada?",
+      "options": [
+        "“Uma família cuida melhor do lugar.”",
+        "“Nas duas imagens há uma área externa; em uma aparecem vasos e na outra canteiros.”",
+        "“Todas as pessoas usam o espaço do mesmo modo.”",
+        "“Uma casa é melhor porque parece maior.”"
+      ],
+      "correctAnswer": "“Nas duas imagens há uma área externa; em uma aparecem vasos e na outra canteiros.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Uma família cuida melhor do lugar.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ],
+        "“Todas as pessoas usam o espaço do mesmo modo.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ],
+        "“Uma casa é melhor porque parece maior.”": [
+          "LOCK_IN_RECORD_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "LOCK_IN_EVIDENCE",
+      "explanation": "A anotação relaciona características visíveis nos dois lugares, sem julgar moradores.",
+      "hint": "Registre elementos observáveis e a comparação.",
+      "errorFocus": "LOCK_IN_RECORD_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A anotação relaciona características visíveis nos dois lugares, sem julgar moradores.",
+        "incorrect": "A anotação relaciona características visíveis nos dois lugares, sem julgar moradores.",
+        "hint": "Registre elementos observáveis e a comparação.",
+        "errorFocus": "LOCK_IN_RECORD_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-31",
+      "statement": "Qual é um exemplo de lugar de vivência que pode ser observado?",
+      "prompt": "Qual é um exemplo de lugar de vivência que pode ser observado?",
+      "options": [
+        "Somente um endereço privado divulgado em público.",
+        "Um lugar imaginado como se tivesse sido observado.",
+        "A escola ou outro espaço frequentado no cotidiano.",
+        "Uma característica pessoal de um colega."
+      ],
+      "correctAnswer": "A escola ou outro espaço frequentado no cotidiano.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente um endereço privado divulgado em público.": [
+          "REVIEW_PLACE"
+        ],
+        "Um lugar imaginado como se tivesse sido observado.": [
+          "REVIEW_PLACE"
+        ],
+        "Uma característica pessoal de um colega.": [
+          "REVIEW_PLACE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_LIVED_PLACE",
+      "explanation": "A escola é um espaço de vivência possível e pode ser observada com segurança.",
+      "hint": "Pense em um espaço que a turma frequenta.",
+      "errorFocus": "REVIEW_PLACE",
+      "feedback": {
+        "correct": "Boa observação: A escola é um espaço de vivência possível e pode ser observada com segurança.",
+        "incorrect": "A escola é um espaço de vivência possível e pode ser observada com segurança.",
+        "hint": "Pense em um espaço que a turma frequenta.",
+        "errorFocus": "REVIEW_PLACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-32",
+      "statement": "Qual frase usa uma característica observável?",
+      "prompt": "Qual frase usa uma característica observável?",
+      "options": [
+        "“A praça é a melhor do bairro.”",
+        "“Todos gostam da praça.”",
+        "“Quem vai à praça é igual.”",
+        "“A praça tem bancos e árvores visíveis.”"
+      ],
+      "correctAnswer": "“A praça tem bancos e árvores visíveis.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“A praça é a melhor do bairro.”": [
+          "REVIEW_DESCRIPTION"
+        ],
+        "“Todos gostam da praça.”": [
+          "REVIEW_DESCRIPTION"
+        ],
+        "“Quem vai à praça é igual.”": [
+          "REVIEW_DESCRIPTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "REVIEW_VISIBLE",
+      "explanation": "A frase nomeia elementos visíveis sem criar avaliações ou generalizações.",
+      "hint": "Escolha algo que pode ser apontado no lugar.",
+      "errorFocus": "REVIEW_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase nomeia elementos visíveis sem criar avaliações ou generalizações.",
+        "incorrect": "A frase nomeia elementos visíveis sem criar avaliações ou generalizações.",
+        "hint": "Escolha algo que pode ser apontado no lugar.",
+        "errorFocus": "REVIEW_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-33",
+      "statement": "Dois lugares têm árvores. O que isso pode indicar?",
+      "prompt": "Dois lugares têm árvores. O que isso pode indicar?",
+      "options": [
+        "Uma semelhança observada entre esses lugares.",
+        "Que eles são iguais em tudo.",
+        "Que todas as pessoas os usam do mesmo modo.",
+        "Que um deles é superior."
+      ],
+      "correctAnswer": "Uma semelhança observada entre esses lugares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que eles são iguais em tudo.": [
+          "REVIEW_SIMILARITY"
+        ],
+        "Que todas as pessoas os usam do mesmo modo.": [
+          "REVIEW_SIMILARITY"
+        ],
+        "Que um deles é superior.": [
+          "REVIEW_SIMILARITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_SHARED",
+      "explanation": "Uma característica compartilhada indica semelhança, não identidade total.",
+      "hint": "Pense no elemento específico que aparece nos dois.",
+      "errorFocus": "REVIEW_SIMILARITY",
+      "feedback": {
+        "correct": "Boa observação: Uma característica compartilhada indica semelhança, não identidade total.",
+        "incorrect": "Uma característica compartilhada indica semelhança, não identidade total.",
+        "hint": "Pense no elemento específico que aparece nos dois.",
+        "errorFocus": "REVIEW_SIMILARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-34",
+      "statement": "O que é uma diferença observável entre dois espaços?",
+      "prompt": "O que é uma diferença observável entre dois espaços?",
+      "options": [
+        "Um julgamento sobre quem vale mais.",
+        "Uma característica que aparece de modo distinto em cada espaço observado.",
+        "Uma informação privada sobre um morador.",
+        "Uma suposição sem evidência."
+      ],
+      "correctAnswer": "Uma característica que aparece de modo distinto em cada espaço observado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um julgamento sobre quem vale mais.": [
+          "REVIEW_DIFFERENCE"
+        ],
+        "Uma informação privada sobre um morador.": [
+          "REVIEW_DIFFERENCE"
+        ],
+        "Uma suposição sem evidência.": [
+          "REVIEW_DIFFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_DIFFERENCE",
+      "explanation": "Diferença descreve variação observada entre lugares.",
+      "hint": "Procure algo que muda e pode ser visto.",
+      "errorFocus": "REVIEW_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Diferença descreve variação observada entre lugares.",
+        "incorrect": "Diferença descreve variação observada entre lugares.",
+        "hint": "Procure algo que muda e pode ser visto.",
+        "errorFocus": "REVIEW_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-35",
+      "statement": "Para comparar dois lugares, por que usar o mesmo critério?",
+      "prompt": "Para comparar dois lugares, por que usar o mesmo critério?",
+      "options": [
+        "Para escolher um vencedor.",
+        "Para ignorar diferenças.",
+        "Para observar o mesmo aspecto em ambos e tornar a comparação clara.",
+        "Para descobrir dados privados."
+      ],
+      "correctAnswer": "Para observar o mesmo aspecto em ambos e tornar a comparação clara.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para escolher um vencedor.": [
+          "REVIEW_CRITERION"
+        ],
+        "Para ignorar diferenças.": [
+          "REVIEW_CRITERION"
+        ],
+        "Para descobrir dados privados.": [
+          "REVIEW_CRITERION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "REVIEW_CRITERION",
+      "explanation": "Um critério compartilhado ajuda a comparar evidências equivalentes.",
+      "hint": "Pense em observar janelas nos dois, por exemplo.",
+      "errorFocus": "REVIEW_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Um critério compartilhado ajuda a comparar evidências equivalentes.",
+        "incorrect": "Um critério compartilhado ajuda a comparar evidências equivalentes.",
+        "hint": "Pense em observar janelas nos dois, por exemplo.",
+        "errorFocus": "REVIEW_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-36",
+      "statement": "Qual informação não é necessária para comparar espaços da escola?",
+      "prompt": "Qual informação não é necessária para comparar espaços da escola?",
+      "options": [
+        "A presença de bancos no pátio.",
+        "A organização de livros na biblioteca.",
+        "A existência de uma área de brincar.",
+        "O endereço residencial dos estudantes."
+      ],
+      "correctAnswer": "O endereço residencial dos estudantes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A presença de bancos no pátio.": [
+          "REVIEW_PRIVACY"
+        ],
+        "A organização de livros na biblioteca.": [
+          "REVIEW_PRIVACY"
+        ],
+        "A existência de uma área de brincar.": [
+          "REVIEW_PRIVACY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_PRIVACY",
+      "explanation": "Dados residenciais não são necessários para observar espaços comuns.",
+      "hint": "Escolha o dado pessoal que não tem relação com o critério.",
+      "errorFocus": "REVIEW_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Dados residenciais não são necessários para observar espaços comuns.",
+        "incorrect": "Dados residenciais não são necessários para observar espaços comuns.",
+        "hint": "Escolha o dado pessoal que não tem relação com o critério.",
+        "errorFocus": "REVIEW_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-37",
+      "statement": "Qual frase deve ser evitada em uma comparação geográfica?",
+      "prompt": "Qual frase deve ser evitada em uma comparação geográfica?",
+      "options": [
+        "“Este lugar é melhor e seus moradores são mais cuidadosos.”",
+        "“Nos dois lugares há árvores.”",
+        "“As mesas estão organizadas de modos diferentes.”",
+        "“A imagem mostra uma janela.”"
+      ],
+      "correctAnswer": "“Este lugar é melhor e seus moradores são mais cuidadosos.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Nos dois lugares há árvores.”": [
+          "REVIEW_NO_HIERARCHY"
+        ],
+        "“As mesas estão organizadas de modos diferentes.”": [
+          "REVIEW_NO_HIERARCHY"
+        ],
+        "“A imagem mostra uma janela.”": [
+          "REVIEW_NO_HIERARCHY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_RANKING",
+      "explanation": "A frase hierarquiza e atribui características pessoais sem evidência.",
+      "hint": "Procure julgamento sobre pessoas ou lugares.",
+      "errorFocus": "REVIEW_NO_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A frase hierarquiza e atribui características pessoais sem evidência.",
+        "incorrect": "A frase hierarquiza e atribui características pessoais sem evidência.",
+        "hint": "Procure julgamento sobre pessoas ou lugares.",
+        "errorFocus": "REVIEW_NO_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-38",
+      "statement": "Uma imagem mostra uma casa. O que ela não permite concluir sozinha?",
+      "prompt": "Uma imagem mostra uma casa. O que ela não permite concluir sozinha?",
+      "options": [
+        "Que alguns elementos visíveis aparecem na imagem.",
+        "Como vive toda a família ou comunidade representada.",
+        "Que podemos descrever características observadas.",
+        "Que o enquadramento contém certos objetos."
+      ],
+      "correctAnswer": "Como vive toda a família ou comunidade representada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que alguns elementos visíveis aparecem na imagem.": [
+          "REVIEW_LIMIT_INFERENCE"
+        ],
+        "Que podemos descrever características observadas.": [
+          "REVIEW_LIMIT_INFERENCE"
+        ],
+        "Que o enquadramento contém certos objetos.": [
+          "REVIEW_LIMIT_INFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_IMAGE_LIMIT",
+      "explanation": "Uma imagem não revela toda a vida de quem mora em um lugar.",
+      "hint": "Separe o visível das suposições sobre moradores.",
+      "errorFocus": "REVIEW_LIMIT_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Uma imagem não revela toda a vida de quem mora em um lugar.",
+        "incorrect": "Uma imagem não revela toda a vida de quem mora em um lugar.",
+        "hint": "Separe o visível das suposições sobre moradores.",
+        "errorFocus": "REVIEW_LIMIT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-39",
+      "statement": "Em uma visita a um espaço novo, qual registro atende ao objetivo?",
+      "prompt": "Em uma visita a um espaço novo, qual registro atende ao objetivo?",
+      "options": [
+        "Classificar moradores por valor.",
+        "Anotar endereços privados.",
+        "Descrever características observáveis e comparar com outro espaço usando um critério comum.",
+        "Afirmar que todas as praças são iguais."
+      ],
+      "correctAnswer": "Descrever características observáveis e comparar com outro espaço usando um critério comum.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Classificar moradores por valor.": [
+          "REVIEW_TRANSFER"
+        ],
+        "Anotar endereços privados.": [
+          "REVIEW_TRANSFER"
+        ],
+        "Afirmar que todas as praças são iguais.": [
+          "REVIEW_TRANSFER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_NEW_CONTEXT",
+      "explanation": "O procedimento combina descrição, critério e comparação com limites de evidência.",
+      "hint": "Lembre-se de descrever e depois comparar.",
+      "errorFocus": "REVIEW_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: O procedimento combina descrição, critério e comparação com limites de evidência.",
+        "incorrect": "O procedimento combina descrição, critério e comparação com limites de evidência.",
+        "hint": "Lembre-se de descrever e depois comparar.",
+        "errorFocus": "REVIEW_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-geography-lived-places-fi-40",
+      "statement": "Qual registro mostra uma semelhança e uma diferença entre dois lugares?",
+      "prompt": "Qual registro mostra uma semelhança e uma diferença entre dois lugares?",
+      "options": [
+        "“Um é melhor porque parece novo.”",
+        "“Todos os moradores gostam das árvores.”",
+        "“Os lugares são iguais em tudo.”",
+        "“Os dois têm árvores; em um há bancos de madeira e no outro, bancos de metal.”"
+      ],
+      "correctAnswer": "“Os dois têm árvores; em um há bancos de madeira e no outro, bancos de metal.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Um é melhor porque parece novo.”": [
+          "REVIEW_BOTH_RELATIONS"
+        ],
+        "“Todos os moradores gostam das árvores.”": [
+          "REVIEW_BOTH_RELATIONS"
+        ],
+        "“Os lugares são iguais em tudo.”": [
+          "REVIEW_BOTH_RELATIONS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "REVIEW_EVIDENCE",
+      "explanation": "A anotação identifica uma característica comum e uma diferença material observada.",
+      "hint": "Inclua uma coisa comum e outra distinta.",
+      "errorFocus": "REVIEW_BOTH_RELATIONS",
+      "feedback": {
+        "correct": "Boa observação: A anotação identifica uma característica comum e uma diferença material observada.",
+        "incorrect": "A anotação identifica uma característica comum e uma diferença material observada.",
+        "hint": "Inclua uma coisa comum e outra distinta.",
+        "errorFocus": "REVIEW_BOTH_RELATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Imagens autorizadas com descrição oral, contraste adequado e organização visual simples.",
+          "Resposta por fala, apontar, cartões, desenho, comunicação alternativa ou seleção de características.",
+          "Alternativa fictícia ou espaço público quando uma criança não quiser compartilhar aspectos da moradia.",
+          "Critérios de observação em linguagem direta, com tempo flexível e mediação acessível."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

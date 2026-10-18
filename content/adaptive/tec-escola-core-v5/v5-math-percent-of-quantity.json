@@ -1,0 +1,1188 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-math-percent-of-quantity",
+  "subject": "MATHEMATICS",
+  "domain": "PORCENTAGEM",
+  "topic": "calcular percentual de uma quantidade",
+  "canonicalSkillCode": "MATH_PERCENT_OF_QUANTITY",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-mathematics-percentage-1",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-3",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-4",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-7",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-11",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-12",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-review-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-transfer-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_PERCENT_OF_QUANTITY_SCOPE_AND_EVIDENCE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 8,
+    "feedbackAdded": 8,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Calcular percentual de uma quantidade",
+    "objective": "Calcular um percentual de uma quantidade mantendo explícita a base do cálculo.",
+    "summary": "Percentual é uma razão sobre 100. Para encontrar uma parte, transforme a taxa em fração ou decimal e multiplique pela quantidade-base.",
+    "explanation": "## 1. Identifique a base\nA base é o todo ao qual o percentual se refere. Leia a frase completa antes de calcular.\n\n## 2. Transforme a taxa\n10% = 10/100 = 0,10; 25% = 25/100 = 0,25.\n\n## 3. Multiplique\nPara 25% de 200, calcule 25/100 × 200 = 50. A unidade acompanha a base.\n\n## 4. Faça uma estimativa\n10% deve ser um décimo; 50% deve ser metade. A estimativa ajuda a detectar respostas maiores que o todo.\n\n## Exemplo resolvido\n20% de 160 = 0,20 × 160 = 32 estudantes. A base é 160, não 20.\n\n## 5. Comunique\nEscreva taxa, base, operação e unidade. Se a pergunta pedir o restante, subtraia a parte do todo depois de calcular.",
+    "workedExample": "Para 15% de 800 cartões, use 15/100 × 800 = 120 cartões. O número 800 é a base e 120 é a parte correspondente.",
+    "commonMistake": "Usar o percentual como se fosse a quantidade, trocar a base ou esquecer a unidade.",
+    "tips": [
+      "Circule a quantidade-base.",
+      "Converta a taxa para uma fração sobre 100.",
+      "Compare o resultado com o todo.",
+      "Mantenha a unidade da quantidade."
+    ],
+    "estimatedMinutes": 22,
+    "priorKnowledge": [
+      "Multiplicar e dividir por 10 e 100.",
+      "Interpretar parte e todo."
+    ],
+    "keyConcepts": [
+      "percentual",
+      "base",
+      "parte",
+      "fração",
+      "decimal",
+      "estimativa"
+    ],
+    "activity": "Resolver situações de percentual em um quadro com taxa, base, operação, resultado e unidade.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar a ideia ou operação central.",
+        "questionIds": [
+          "v5-math-percent-of-quantity-01",
+          "v5-math-percent-of-quantity-02",
+          "v5-math-percent-of-quantity-03",
+          "v5-math-percent-of-quantity-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-math-percent-of-quantity-05",
+          "v5-math-percent-of-quantity-06",
+          "v5-math-percent-of-quantity-07",
+          "v5-math-percent-of-quantity-08",
+          "v5-math-percent-of-quantity-09",
+          "v5-math-percent-of-quantity-10",
+          "v5-math-percent-of-quantity-11",
+          "v5-math-percent-of-quantity-12",
+          "v5-math-percent-of-quantity-13",
+          "v5-math-percent-of-quantity-14",
+          "v5-math-percent-of-quantity-15",
+          "v5-math-percent-of-quantity-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-math-percent-of-quantity-17",
+          "v5-math-percent-of-quantity-18",
+          "v5-math-percent-of-quantity-19",
+          "v5-math-percent-of-quantity-20",
+          "v5-math-percent-of-quantity-21",
+          "v5-math-percent-of-quantity-22",
+          "v5-math-percent-of-quantity-23",
+          "v5-math-percent-of-quantity-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-math-percent-of-quantity-25",
+          "v5-math-percent-of-quantity-26",
+          "v5-math-percent-of-quantity-27",
+          "v5-math-percent-of-quantity-28",
+          "v5-math-percent-of-quantity-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-math-percent-of-quantity-30",
+          "v5-math-percent-of-quantity-31",
+          "v5-math-percent-of-quantity-32",
+          "v5-math-percent-of-quantity-33",
+          "v5-math-percent-of-quantity-34",
+          "v5-math-percent-of-quantity-35",
+          "v5-math-percent-of-quantity-36",
+          "v5-math-percent-of-quantity-37",
+          "v5-math-percent-of-quantity-38",
+          "v5-math-percent-of-quantity-39",
+          "v5-math-percent-of-quantity-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e unidade antes de escolher."
+      },
+      {
+        "trigger": "BOUND_CONCLUSION",
+        "text": "A melhor resposta é a que não afirma mais do que os dados permitem."
+      },
+      {
+        "trigger": "CHECK_OPERATION",
+        "text": "Nomeie a operação ou evidência usada antes de concluir."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar recorte, base ou condição da situação.",
+        "prompt": "Sublinhe sujeito, período, unidade e condição. Reescreva a resposta incluindo esses limites."
+      },
+      {
+        "id": "SEPARATE_EVIDENCE",
+        "misconception": "Confundir observação, cálculo, causa ou conclusão.",
+        "prompt": "Faça duas colunas: o que está registrado ou calculado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_RESULT",
+        "misconception": "Aceitar resultado sem verificar operação ou coerência.",
+        "prompt": "Refaça a operação, compare com uma estimativa e escreva a unidade ou consequência."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de aplicar o procedimento."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-math-percent-of-quantity-activity",
+        "title": "Oficina de calcular percentual de uma quantidade",
+        "objective": "Calcular um percentual de uma quantidade mantendo explícita a base do cálculo.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto ou tabela didática acessível",
+          "Registro de estratégia",
+          "Feedback do professor"
+        ],
+        "instructions": "Resolver situações de percentual em um quadro com taxa, base, operação, resultado e unidade.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-math-percent-of-quantity-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MATH_PERCENT_LIVROS_DA_BIBLIOTECA_01",
+      "statement": "Quantos livros correspondem a 10% de 120? A base é 120 livros.",
+      "options": [
+        "12 livros",
+        "10 livros",
+        "110 livros",
+        "1200 livros"
+      ],
+      "correctAnswer": "12 livros",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 120, mantendo explícito que a base é 120 livros.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 livros": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_PERCENT_LIVROS_DA_BIBLIOTECA_02",
+      "statement": "Uma atividade registra 120 livros em livros da biblioteca. Qual é 10% dessa quantidade?",
+      "options": [
+        "10 livros",
+        "12 livros",
+        "110 livros",
+        "1200 livros"
+      ],
+      "correctAnswer": "12 livros",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 120, mantendo explícito que a base é 120 livros.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 livros": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_LIVROS_DA_BIBLIOTECA_03",
+      "statement": "Para conferir uma meta de 10% de 120 livros em livros da biblioteca, qual quantidade deve ser calculada?",
+      "options": [
+        "10 livros",
+        "110 livros",
+        "12 livros",
+        "1200 livros"
+      ],
+      "correctAnswer": "12 livros",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 120, mantendo explícito que a base é 120 livros.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 livros": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_LIVROS_DA_BIBLIOTECA_04",
+      "statement": "A tabela de livros da biblioteca tem base de 120 livros. Qual expressão representa 10% da base?",
+      "options": [
+        "10 livros",
+        "110 livros",
+        "1200 livros",
+        "10/100 × 120 = 12 livros"
+      ],
+      "correctAnswer": "10/100 × 120 = 12 livros",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 120, mantendo explícito que a base é 120 livros.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 livros": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_ESTUDANTES_INSCRITOS_05",
+      "statement": "Quantos estudantes correspondem a 20% de 160? A base é 160 estudantes.",
+      "options": [
+        "32 estudantes",
+        "20 estudantes",
+        "80 estudantes",
+        "140 estudantes"
+      ],
+      "correctAnswer": "32 estudantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 160, mantendo explícito que a base é 160 estudantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "20 estudantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_PERCENT_ESTUDANTES_INSCRITOS_06",
+      "statement": "Uma atividade registra 160 estudantes em estudantes inscritos. Qual é 20% dessa quantidade?",
+      "options": [
+        "20 estudantes",
+        "32 estudantes",
+        "80 estudantes",
+        "140 estudantes"
+      ],
+      "correctAnswer": "32 estudantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 160, mantendo explícito que a base é 160 estudantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "20 estudantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_ESTUDANTES_INSCRITOS_07",
+      "statement": "Para conferir uma meta de 20% de 160 estudantes em estudantes inscritos, qual quantidade deve ser calculada?",
+      "options": [
+        "20 estudantes",
+        "80 estudantes",
+        "32 estudantes",
+        "140 estudantes"
+      ],
+      "correctAnswer": "32 estudantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 160, mantendo explícito que a base é 160 estudantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "20 estudantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_PERCENT_ESTUDANTES_INSCRITOS_08",
+      "statement": "A tabela de estudantes inscritos tem base de 160 estudantes. Qual expressão representa 20% da base?",
+      "options": [
+        "20 estudantes",
+        "80 estudantes",
+        "140 estudantes",
+        "20/100 × 160 = 32 estudantes"
+      ],
+      "correctAnswer": "20/100 × 160 = 32 estudantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 160, mantendo explícito que a base é 160 estudantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "20 estudantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_GARRAFAS_RECOLHIDAS_09",
+      "statement": "Quantas garrafas correspondem a 25% de 200? A base é 200 garrafas.",
+      "options": [
+        "50 garrafas",
+        "25 garrafas",
+        "75 garrafas",
+        "175 garrafas"
+      ],
+      "correctAnswer": "50 garrafas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 200, mantendo explícito que a base é 200 garrafas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 garrafas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_PERCENT_GARRAFAS_RECOLHIDAS_10",
+      "statement": "Uma atividade registra 200 garrafas em garrafas recolhidas. Qual é 25% dessa quantidade?",
+      "options": [
+        "25 garrafas",
+        "50 garrafas",
+        "75 garrafas",
+        "175 garrafas"
+      ],
+      "correctAnswer": "50 garrafas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 200, mantendo explícito que a base é 200 garrafas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 garrafas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_GARRAFAS_RECOLHIDAS_11",
+      "statement": "Para conferir uma meta de 25% de 200 garrafas em garrafas recolhidas, qual quantidade deve ser calculada?",
+      "options": [
+        "25 garrafas",
+        "75 garrafas",
+        "50 garrafas",
+        "175 garrafas"
+      ],
+      "correctAnswer": "50 garrafas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 200, mantendo explícito que a base é 200 garrafas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 garrafas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_PERCENT_GARRAFAS_RECOLHIDAS_12",
+      "statement": "A tabela de garrafas recolhidas tem base de 200 garrafas. Qual expressão representa 25% da base?",
+      "options": [
+        "25 garrafas",
+        "75 garrafas",
+        "175 garrafas",
+        "25/100 × 200 = 50 garrafas"
+      ],
+      "correctAnswer": "25/100 × 200 = 50 garrafas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 200, mantendo explícito que a base é 200 garrafas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 garrafas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_INGRESSOS_VENDIDOS_13",
+      "statement": "Quantos ingressos correspondem a 30% de 240? A base é 240 ingressos.",
+      "options": [
+        "72 ingressos",
+        "30 ingressos",
+        "80 ingressos",
+        "210 ingressos"
+      ],
+      "correctAnswer": "72 ingressos",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 240, mantendo explícito que a base é 240 ingressos.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "30 ingressos": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_PERCENT_INGRESSOS_VENDIDOS_14",
+      "statement": "Uma atividade registra 240 ingressos em ingressos vendidos. Qual é 30% dessa quantidade?",
+      "options": [
+        "30 ingressos",
+        "72 ingressos",
+        "80 ingressos",
+        "210 ingressos"
+      ],
+      "correctAnswer": "72 ingressos",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 240, mantendo explícito que a base é 240 ingressos.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "30 ingressos": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_INGRESSOS_VENDIDOS_15",
+      "statement": "Para conferir uma meta de 30% de 240 ingressos em ingressos vendidos, qual quantidade deve ser calculada?",
+      "options": [
+        "30 ingressos",
+        "80 ingressos",
+        "72 ingressos",
+        "210 ingressos"
+      ],
+      "correctAnswer": "72 ingressos",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 240, mantendo explícito que a base é 240 ingressos.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "30 ingressos": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_PERCENT_INGRESSOS_VENDIDOS_16",
+      "statement": "A tabela de ingressos vendidos tem base de 240 ingressos. Qual expressão representa 30% da base?",
+      "options": [
+        "30 ingressos",
+        "80 ingressos",
+        "210 ingressos",
+        "30/100 × 240 = 72 ingressos"
+      ],
+      "correctAnswer": "30/100 × 240 = 72 ingressos",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 240, mantendo explícito que a base é 240 ingressos.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "30 ingressos": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_MUDAS_PLANTADAS_17",
+      "statement": "Quantas mudas correspondem a 15% de 300? A base é 300 mudas.",
+      "options": [
+        "45 mudas",
+        "15 mudas",
+        "60 mudas",
+        "285 mudas"
+      ],
+      "correctAnswer": "45 mudas",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 300, mantendo explícito que a base é 300 mudas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "15 mudas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_PERCENT_MUDAS_PLANTADAS_18",
+      "statement": "Uma atividade registra 300 mudas em mudas plantadas. Qual é 15% dessa quantidade?",
+      "options": [
+        "15 mudas",
+        "45 mudas",
+        "60 mudas",
+        "285 mudas"
+      ],
+      "correctAnswer": "45 mudas",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 300, mantendo explícito que a base é 300 mudas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "15 mudas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_MUDAS_PLANTADAS_19",
+      "statement": "Para conferir uma meta de 15% de 300 mudas em mudas plantadas, qual quantidade deve ser calculada?",
+      "options": [
+        "15 mudas",
+        "60 mudas",
+        "45 mudas",
+        "285 mudas"
+      ],
+      "correctAnswer": "45 mudas",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 300, mantendo explícito que a base é 300 mudas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "15 mudas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "MATH_PERCENT_MUDAS_PLANTADAS_20",
+      "statement": "A tabela de mudas plantadas tem base de 300 mudas. Qual expressão representa 15% da base?",
+      "options": [
+        "15 mudas",
+        "60 mudas",
+        "285 mudas",
+        "15/100 × 300 = 45 mudas"
+      ],
+      "correctAnswer": "15/100 × 300 = 45 mudas",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 300, mantendo explícito que a base é 300 mudas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "15 mudas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_PÁGINAS_LIDAS_21",
+      "statement": "Quantas páginas correspondem a 25% de 360? A base é 360 páginas.",
+      "options": [
+        "90 páginas",
+        "25 páginas",
+        "120 páginas",
+        "335 páginas"
+      ],
+      "correctAnswer": "90 páginas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 360, mantendo explícito que a base é 360 páginas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 páginas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_PERCENT_PÁGINAS_LIDAS_22",
+      "statement": "Uma atividade registra 360 páginas em páginas lidas. Qual é 25% dessa quantidade?",
+      "options": [
+        "25 páginas",
+        "90 páginas",
+        "120 páginas",
+        "335 páginas"
+      ],
+      "correctAnswer": "90 páginas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 360, mantendo explícito que a base é 360 páginas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 páginas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_PÁGINAS_LIDAS_23",
+      "statement": "Para conferir uma meta de 25% de 360 páginas em páginas lidas, qual quantidade deve ser calculada?",
+      "options": [
+        "25 páginas",
+        "120 páginas",
+        "90 páginas",
+        "335 páginas"
+      ],
+      "correctAnswer": "90 páginas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 360, mantendo explícito que a base é 360 páginas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 páginas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "MATH_PERCENT_PÁGINAS_LIDAS_24",
+      "statement": "A tabela de páginas lidas tem base de 360 páginas. Qual expressão representa 25% da base?",
+      "options": [
+        "25 páginas",
+        "120 páginas",
+        "335 páginas",
+        "25/100 × 360 = 90 páginas"
+      ],
+      "correctAnswer": "25/100 × 360 = 90 páginas",
+      "explanation": "25% significa 25/100 da base. Calculamos 25/100 × 360, mantendo explícito que a base é 360 páginas.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "25 páginas": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_PERCENT_KITS_DISTRIBUÍDOS_25",
+      "statement": "Quantos kits correspondem a 10% de 480? A base é 480 kits.",
+      "options": [
+        "48 kits",
+        "10 kits",
+        "96 kits",
+        "470 kits"
+      ],
+      "correctAnswer": "48 kits",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 480, mantendo explícito que a base é 480 kits.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 kits": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_KITS_DISTRIBUÍDOS_26",
+      "statement": "Uma atividade registra 480 kits em kits distribuídos. Qual é 10% dessa quantidade?",
+      "options": [
+        "10 kits",
+        "48 kits",
+        "96 kits",
+        "470 kits"
+      ],
+      "correctAnswer": "48 kits",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 480, mantendo explícito que a base é 480 kits.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 kits": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_KITS_DISTRIBUÍDOS_27",
+      "statement": "Para conferir uma meta de 10% de 480 kits em kits distribuídos, qual quantidade deve ser calculada?",
+      "options": [
+        "10 kits",
+        "96 kits",
+        "48 kits",
+        "470 kits"
+      ],
+      "correctAnswer": "48 kits",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 480, mantendo explícito que a base é 480 kits.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 kits": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_PERCENT_KITS_DISTRIBUÍDOS_28",
+      "statement": "A tabela de kits distribuídos tem base de 480 kits. Qual expressão representa 10% da base?",
+      "options": [
+        "10 kits",
+        "96 kits",
+        "470 kits",
+        "10/100 × 480 = 48 kits"
+      ],
+      "correctAnswer": "10/100 × 480 = 48 kits",
+      "explanation": "10% significa 10/100 da base. Calculamos 10/100 × 480, mantendo explícito que a base é 480 kits.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "10 kits": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_PARTICIPANTES_29",
+      "statement": "Quantos participantes correspondem a 20% de 560? A base é 560 participantes.",
+      "options": [
+        "112 participantes",
+        "1120 participantes",
+        "56 participantes",
+        "440 participantes"
+      ],
+      "correctAnswer": "112 participantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 560, mantendo explícito que a base é 560 participantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "1120 participantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_PARTICIPANTES_30",
+      "statement": "Uma atividade registra 560 participantes em participantes. Qual é 20% dessa quantidade?",
+      "options": [
+        "1120 participantes",
+        "112 participantes",
+        "56 participantes",
+        "440 participantes"
+      ],
+      "correctAnswer": "112 participantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 560, mantendo explícito que a base é 560 participantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "1120 participantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_PARTICIPANTES_31",
+      "statement": "Para conferir uma meta de 20% de 560 participantes em participantes, qual quantidade deve ser calculada?",
+      "options": [
+        "1120 participantes",
+        "56 participantes",
+        "112 participantes",
+        "440 participantes"
+      ],
+      "correctAnswer": "112 participantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 560, mantendo explícito que a base é 560 participantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "1120 participantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_PARTICIPANTES_32",
+      "statement": "A tabela de participantes tem base de 560 participantes. Qual expressão representa 20% da base?",
+      "options": [
+        "1120 participantes",
+        "56 participantes",
+        "440 participantes",
+        "20/100 × 560 = 112 participantes"
+      ],
+      "correctAnswer": "20/100 × 560 = 112 participantes",
+      "explanation": "20% significa 20/100 da base. Calculamos 20/100 × 560, mantendo explícito que a base é 560 participantes.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "1120 participantes": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_QUESTÕES_REVISADAS_33",
+      "statement": "Quantas questões correspondem a 30% de 640? A base é 640 questões.",
+      "options": [
+        "192 questões",
+        "160 questões",
+        "210 questões",
+        "448 questões"
+      ],
+      "correctAnswer": "192 questões",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 640, mantendo explícito que a base é 640 questões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "160 questões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_QUESTÕES_REVISADAS_34",
+      "statement": "Uma atividade registra 640 questões em questões revisadas. Qual é 30% dessa quantidade?",
+      "options": [
+        "160 questões",
+        "192 questões",
+        "210 questões",
+        "448 questões"
+      ],
+      "correctAnswer": "192 questões",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 640, mantendo explícito que a base é 640 questões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "160 questões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_QUESTÕES_REVISADAS_35",
+      "statement": "Para conferir uma meta de 30% de 640 questões em questões revisadas, qual quantidade deve ser calculada?",
+      "options": [
+        "160 questões",
+        "210 questões",
+        "192 questões",
+        "448 questões"
+      ],
+      "correctAnswer": "192 questões",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 640, mantendo explícito que a base é 640 questões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "160 questões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_QUESTÕES_REVISADAS_36",
+      "statement": "A tabela de questões revisadas tem base de 640 questões. Qual expressão representa 30% da base?",
+      "options": [
+        "160 questões",
+        "210 questões",
+        "448 questões",
+        "30/100 × 640 = 192 questões"
+      ],
+      "correctAnswer": "30/100 × 640 = 192 questões",
+      "explanation": "30% significa 30/100 da base. Calculamos 30/100 × 640, mantendo explícito que a base é 640 questões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "160 questões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_PERCENT_CARTÕES_IMPRESSOS_37",
+      "statement": "Quantos cartões correspondem a 15% de 800? A base é 800 cartões.",
+      "options": [
+        "120 cartões",
+        "80 cartões",
+        "150 cartões",
+        "680 cartões"
+      ],
+      "correctAnswer": "120 cartões",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 800, mantendo explícito que a base é 800 cartões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "80 cartões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_PERCENT_CARTÕES_IMPRESSOS_38",
+      "statement": "Uma atividade registra 800 cartões em cartões impressos. Qual é 15% dessa quantidade?",
+      "options": [
+        "80 cartões",
+        "120 cartões",
+        "150 cartões",
+        "680 cartões"
+      ],
+      "correctAnswer": "120 cartões",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 800, mantendo explícito que a base é 800 cartões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "80 cartões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_PERCENT_CARTÕES_IMPRESSOS_39",
+      "statement": "Para conferir uma meta de 15% de 800 cartões em cartões impressos, qual quantidade deve ser calculada?",
+      "options": [
+        "80 cartões",
+        "150 cartões",
+        "120 cartões",
+        "680 cartões"
+      ],
+      "correctAnswer": "120 cartões",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 800, mantendo explícito que a base é 800 cartões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "80 cartões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-of-quantity-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_PERCENT_CARTÕES_IMPRESSOS_40",
+      "statement": "A tabela de cartões impressos tem base de 800 cartões. Qual expressão representa 15% da base?",
+      "options": [
+        "80 cartões",
+        "150 cartões",
+        "680 cartões",
+        "15/100 × 800 = 120 cartões"
+      ],
+      "correctAnswer": "15/100 × 800 = 120 cartões",
+      "explanation": "15% significa 15/100 da base. Calculamos 15/100 × 800, mantendo explícito que a base é 800 cartões.",
+      "hint": "Transforme o percentual em fração sobre 100 e multiplique pela quantidade-base.",
+      "errorFocus": "PERCENT_BASE_OR_RATE_CONFUSION",
+      "misconceptions": {
+        "80 cartões": [
+          "PERCENT_BASE_OR_RATE_CONFUSION"
+        ]
+      }
+    }
+  ]
+}

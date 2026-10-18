@@ -23,14 +23,24 @@ export async function withAcademicReadTimeout<T>(
   timeoutMs = ACADEMIC_READ_TIMEOUT_MS,
 ): Promise<T> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(
-    () => controller.abort(),
-    timeoutMs,
-  );
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => {
+      const error = new Error('A leitura demorou mais que o esperado.');
+      error.name = 'TimeoutError';
+      reject(error);
+      controller.abort();
+    }, timeoutMs);
+  });
 
   try {
-    return await operation(controller.signal);
+    return await Promise.race([
+      operation(controller.signal),
+      timeout,
+    ]);
   } finally {
-    clearTimeout(timeoutId);
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+    }
   }
 }

@@ -1,0 +1,2034 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01ge11-seasonal-changes-v1",
+  "canonicalSkillCode": "GEOGRAPHY_ASSOCIATE_COMMUNITY_CHANGES_WITH_TEMPERATURE_AND_HUMIDITY",
+  "subject": "GEOGRAPHY",
+  "domain": "NATUREZA, AMBIENTES E QUALIDADE DE VIDA",
+  "topic": "mudanças de vestuário e hábitos alimentares relacionadas às variações de temperatura e umidade",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE11",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Como o tempo do lugar influencia escolhas cotidianas",
+    "objective": "Relacionar exemplos observados de vestuário e alimentação a variações de temperatura e umidade, distinguindo associação de regra universal.",
+    "summary": "Ao longo do ano, temperatura e umidade podem variar. Em alguns lugares e períodos, as pessoas escolhem roupas mais leves ou mais quentes e podem preferir alimentos e bebidas diferentes. Essas relações dependem do ambiente, da disponibilidade, da cultura, do trabalho e das escolhas de cada pessoa: não são iguais para todas as famílias.",
+    "explanation": "Compare registros de um mesmo lugar feitos em períodos diferentes. Observe as condições anotadas, como dias mais quentes, frios, secos ou úmidos, e as escolhas mostradas em uma história, feira ou calendário fictício. Uma associação cuidadosa usa pistas dos dois registros; ela não afirma que toda pessoa se veste ou se alimenta do mesmo modo. Não é preciso contar hábitos da própria família: use exemplos inventados, materiais escolares ou informações compartilhadas com autorização.",
+    "workedExample": "Em uma história sobre a Vila do Ipê, um cartão de um dia quente mostra pessoas escolhendo roupas leves e água fresca; outro, de um dia frio, mostra algumas pessoas usando agasalho e tomando sopa. A conclusão possível é que, naquela história, as escolhas aparecem associadas às condições registradas. Isso não estabelece uma regra para todas as pessoas ou lugares.",
+    "commonMistake": "Afirmar que uma roupa ou alimento é usado por todas as pessoas em uma estação, ou dizer que a temperatura sozinha explica cada escolha.",
+    "priorKnowledge": [
+      "Reconhecer em imagens situações de calor, frio, ar seco ou úmido.",
+      "Comparar dois registros usando palavras como diferente, mais e menos."
+    ],
+    "keyConcepts": [
+      "temperatura",
+      "umidade",
+      "vestuário",
+      "hábitos alimentares",
+      "associação",
+      "diversidade de escolhas"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "UNIVERSAL_RULE_FROM_ONE_EXAMPLE",
+        "action": "Troque uma afirmação sobre todas as pessoas por uma descrição limitada ao cartão ou à comunidade fictícia apresentada."
+      },
+      {
+        "errorFocus": "IGNORE_WEATHER_EVIDENCE",
+        "action": "Coloque lado a lado o registro do ambiente e a escolha de roupa ou alimento; peça que a criança aponte as duas pistas."
+      },
+      {
+        "errorFocus": "WEATHER_AS_ONLY_CAUSE",
+        "action": "Acrescente cartões de cultura, disponibilidade e preferência para lembrar que escolhas podem ter mais de um motivo."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+      "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge11-fictional-weather-choice-calendar",
+        "title": "Calendário da Vila do Ipê",
+        "instructions": "Dois cartões fictícios mostram a mesma vila em períodos com temperatura e umidade diferentes.\n1. Observe as condições anotadas em cada cartão.\n2. Localize as roupas e os alimentos mostrados em cada cena.\n3. Complete a frase ‘nesta história, quando..., algumas pessoas...’ e indique as pistas usadas.",
+        "steps": [
+          "Observe as condições anotadas em cada cartão.",
+          "Localize as roupas e os alimentos mostrados em cada cena.",
+          "Complete a frase ‘nesta história, quando..., algumas pessoas...’ e indique as pistas usadas."
+        ],
+        "evidence": "Uma associação entre condição ambiental e escolha cotidiana, limitada às evidências dos cartões.",
+        "privacyGuard": "Cenário inteiramente fictício; não pedir relatos, fotos ou registros pessoais de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "percebe uma diferença ambiental com apoio.",
+            "developing": "associa uma condição a uma escolha mostrada.",
+            "proficient": "descreve a associação e evita transformá-la em regra para todas as pessoas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge11-market-seasonal-observation",
+        "title": "Feira em dois períodos",
+        "instructions": "Uma feira fictícia apresenta produtos e bebidas diferentes em dois dias com condições ambientais registradas.\n1. Compare a temperatura e a umidade anotadas.\n2. Observe quais produtos aparecem em cada cena.\n3. Explique uma relação possível sem afirmar que ela vale para todas as feiras.",
+        "steps": [
+          "Compare a temperatura e a umidade anotadas.",
+          "Observe quais produtos aparecem em cada cena.",
+          "Explique uma relação possível sem afirmar que ela vale para todas as feiras."
+        ],
+        "evidence": "Comparação apoiada em pistas do ambiente e da cena, com linguagem de possibilidade em vez de regra universal.",
+        "privacyGuard": "Usar ilustrações e produtos genéricos; não classificar culturas, dietas ou condições econômicas.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um produto ou uma condição.",
+            "developing": "compara os dois períodos usando uma pista.",
+            "proficient": "relaciona as pistas e reconhece que disponibilidade e costumes também influenciam escolhas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01ge11-seasonal-changes-v1-01",
+          "bncc-ef01ge11-seasonal-changes-v1-02",
+          "bncc-ef01ge11-seasonal-changes-v1-03",
+          "bncc-ef01ge11-seasonal-changes-v1-04",
+          "bncc-ef01ge11-seasonal-changes-v1-05",
+          "bncc-ef01ge11-seasonal-changes-v1-06",
+          "bncc-ef01ge11-seasonal-changes-v1-07",
+          "bncc-ef01ge11-seasonal-changes-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01ge11-seasonal-changes-v1-09",
+          "bncc-ef01ge11-seasonal-changes-v1-10",
+          "bncc-ef01ge11-seasonal-changes-v1-11",
+          "bncc-ef01ge11-seasonal-changes-v1-12",
+          "bncc-ef01ge11-seasonal-changes-v1-13",
+          "bncc-ef01ge11-seasonal-changes-v1-14",
+          "bncc-ef01ge11-seasonal-changes-v1-15",
+          "bncc-ef01ge11-seasonal-changes-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01ge11-seasonal-changes-v1-17",
+          "bncc-ef01ge11-seasonal-changes-v1-18",
+          "bncc-ef01ge11-seasonal-changes-v1-19",
+          "bncc-ef01ge11-seasonal-changes-v1-20",
+          "bncc-ef01ge11-seasonal-changes-v1-21",
+          "bncc-ef01ge11-seasonal-changes-v1-22",
+          "bncc-ef01ge11-seasonal-changes-v1-23",
+          "bncc-ef01ge11-seasonal-changes-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01ge11-seasonal-changes-v1-25",
+          "bncc-ef01ge11-seasonal-changes-v1-26",
+          "bncc-ef01ge11-seasonal-changes-v1-27",
+          "bncc-ef01ge11-seasonal-changes-v1-28",
+          "bncc-ef01ge11-seasonal-changes-v1-29",
+          "bncc-ef01ge11-seasonal-changes-v1-30",
+          "bncc-ef01ge11-seasonal-changes-v1-31",
+          "bncc-ef01ge11-seasonal-changes-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01ge11-seasonal-changes-v1-33",
+          "bncc-ef01ge11-seasonal-changes-v1-34",
+          "bncc-ef01ge11-seasonal-changes-v1-35",
+          "bncc-ef01ge11-seasonal-changes-v1-36",
+          "bncc-ef01ge11-seasonal-changes-v1-37",
+          "bncc-ef01ge11-seasonal-changes-v1-38",
+          "bncc-ef01ge11-seasonal-changes-v1-39",
+          "bncc-ef01ge11-seasonal-changes-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE11",
+        "descriptor": "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-01",
+      "statement": "O cartão da Vila do Ipê registra um dia quente e mostra algumas pessoas usando roupas leves. Qual relação aparece na história?",
+      "prompt": "O cartão da Vila do Ipê registra um dia quente e mostra algumas pessoas usando roupas leves. Qual relação aparece na história?",
+      "options": [
+        "A escolha de roupas leves aparece junto ao registro de calor.",
+        "A roupa fez a temperatura subir",
+        "Todas as pessoas do mundo usam a mesma roupa",
+        "O cartão mostra um dia frio"
+      ],
+      "correctAnswer": "A escolha de roupas leves aparece junto ao registro de calor.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A roupa fez a temperatura subir": [
+          "MATCH_WEATHER_AND_CLOTHING"
+        ],
+        "Todas as pessoas do mundo usam a mesma roupa": [
+          "MATCH_WEATHER_AND_CLOTHING"
+        ],
+        "O cartão mostra um dia frio": [
+          "MATCH_WEATHER_AND_CLOTHING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VILA_CARTAO_DIA_QUENTE",
+      "explanation": "A cena associa a escolha mostrada à condição registrada, sem criar uma regra geral.",
+      "hint": "Observe a condição e a roupa no mesmo cartão.",
+      "errorFocus": "MATCH_WEATHER_AND_CLOTHING",
+      "feedback": {
+        "correct": "Boa observação: A cena associa a escolha mostrada à condição registrada, sem criar uma regra geral.",
+        "incorrect": "A cena associa a escolha mostrada à condição registrada, sem criar uma regra geral.",
+        "hint": "Observe a condição e a roupa no mesmo cartão.",
+        "errorFocus": "MATCH_WEATHER_AND_CLOTHING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-02",
+      "statement": "Num cartão de uma história, o dia está frio e uma pessoa escolhe um agasalho. O que se pode descrever?",
+      "prompt": "Num cartão de uma história, o dia está frio e uma pessoa escolhe um agasalho. O que se pode descrever?",
+      "options": [
+        "O agasalho causou o frio",
+        "Na história, o agasalho aparece em um dia registrado como frio.",
+        "Ninguém usa roupa leve em lugar algum",
+        "O cartão prova que todos sentem frio do mesmo jeito"
+      ],
+      "correctAnswer": "Na história, o agasalho aparece em um dia registrado como frio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O agasalho causou o frio": [
+          "CLOTHING_ASSOCIATION_SCOPE"
+        ],
+        "Ninguém usa roupa leve em lugar algum": [
+          "CLOTHING_ASSOCIATION_SCOPE"
+        ],
+        "O cartão prova que todos sentem frio do mesmo jeito": [
+          "CLOTHING_ASSOCIATION_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VILA_CARTAO_DIA_FRIO",
+      "explanation": "A resposta descreve somente a situação representada.",
+      "hint": "Comece com ‘na história’.",
+      "errorFocus": "CLOTHING_ASSOCIATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A resposta descreve somente a situação representada.",
+        "incorrect": "A resposta descreve somente a situação representada.",
+        "hint": "Comece com ‘na história’.",
+        "errorFocus": "CLOTHING_ASSOCIATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-03",
+      "statement": "Um desenho de dia quente mostra uma jarra de água na mesa. Qual pista combina com a cena?",
+      "prompt": "Um desenho de dia quente mostra uma jarra de água na mesa. Qual pista combina com a cena?",
+      "options": [
+        "A jarra mudou o tempo",
+        "O desenho mostra neve",
+        "A água aparece numa situação registrada como quente.",
+        "A água prova que toda família bebe igual"
+      ],
+      "correctAnswer": "A água aparece numa situação registrada como quente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A jarra mudou o tempo": [
+          "FOOD_CHOICE_AND_EVIDENCE"
+        ],
+        "O desenho mostra neve": [
+          "FOOD_CHOICE_AND_EVIDENCE"
+        ],
+        "A água prova que toda família bebe igual": [
+          "FOOD_CHOICE_AND_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BEBIDA_EM_DIA_QUENTE",
+      "explanation": "A cena permite relacionar a bebida ao contexto, não generalizar hábitos.",
+      "hint": "Olhe o que está escrito sobre o dia.",
+      "errorFocus": "FOOD_CHOICE_AND_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A cena permite relacionar a bebida ao contexto, não generalizar hábitos.",
+        "incorrect": "A cena permite relacionar a bebida ao contexto, não generalizar hábitos.",
+        "hint": "Olhe o que está escrito sobre o dia.",
+        "errorFocus": "FOOD_CHOICE_AND_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-04",
+      "statement": "Num lugar fictício, o ar está úmido e as roupas no varal demoram a secar. O que a observação informa?",
+      "prompt": "Num lugar fictício, o ar está úmido e as roupas no varal demoram a secar. O que a observação informa?",
+      "options": [
+        "A roupa criou a umidade",
+        "O ar está sempre seco",
+        "A temperatura não pode variar",
+        "A umidade aparece associada à secagem mais lenta naquele registro."
+      ],
+      "correctAnswer": "A umidade aparece associada à secagem mais lenta naquele registro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A roupa criou a umidade": [
+          "HUMIDITY_OBSERVATION"
+        ],
+        "O ar está sempre seco": [
+          "HUMIDITY_OBSERVATION"
+        ],
+        "A temperatura não pode variar": [
+          "HUMIDITY_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROUPA_E_UMIDADE",
+      "explanation": "A frase relaciona a condição descrita à observação sem dizer que ocorre sempre.",
+      "hint": "Compare a condição do ar e o varal.",
+      "errorFocus": "HUMIDITY_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A frase relaciona a condição descrita à observação sem dizer que ocorre sempre.",
+        "incorrect": "A frase relaciona a condição descrita à observação sem dizer que ocorre sempre.",
+        "hint": "Compare a condição do ar e o varal.",
+        "errorFocus": "HUMIDITY_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-05",
+      "statement": "Uma ficha diz ‘ar seco’ e mostra uma pessoa usando chapéu ao sol. Qual item descreve o ambiente?",
+      "prompt": "Uma ficha diz ‘ar seco’ e mostra uma pessoa usando chapéu ao sol. Qual item descreve o ambiente?",
+      "options": [
+        "A indicação de ar seco.",
+        "O chapéu",
+        "A cor da mesa",
+        "O nome da pessoa"
+      ],
+      "correctAnswer": "A indicação de ar seco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O chapéu": [
+          "ENVIRONMENT_VS_CHOICE"
+        ],
+        "A cor da mesa": [
+          "ENVIRONMENT_VS_CHOICE"
+        ],
+        "O nome da pessoa": [
+          "ENVIRONMENT_VS_CHOICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DIA_SECO",
+      "explanation": "Separar a condição ambiental da escolha ajuda a comparar as duas pistas.",
+      "hint": "Procure a informação sobre o ar.",
+      "errorFocus": "ENVIRONMENT_VS_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Separar a condição ambiental da escolha ajuda a comparar as duas pistas.",
+        "incorrect": "Separar a condição ambiental da escolha ajuda a comparar as duas pistas.",
+        "hint": "Procure a informação sobre o ar.",
+        "errorFocus": "ENVIRONMENT_VS_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-06",
+      "statement": "Uma cena mostra manga curta e outra mostra casaco; as legendas registram calor e frio, respectivamente. O que mudou?",
+      "prompt": "Uma cena mostra manga curta e outra mostra casaco; as legendas registram calor e frio, respectivamente. O que mudou?",
+      "options": [
+        "As cenas provam que todos trocam de roupa do mesmo modo",
+        "As roupas mostradas acompanham registros ambientais diferentes.",
+        "O casaco mudou o clima",
+        "Não há diferença entre as legendas"
+      ],
+      "correctAnswer": "As roupas mostradas acompanham registros ambientais diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As cenas provam que todos trocam de roupa do mesmo modo": [
+          "COMPARE_TWO_CONTEXTS"
+        ],
+        "O casaco mudou o clima": [
+          "COMPARE_TWO_CONTEXTS"
+        ],
+        "Não há diferença entre as legendas": [
+          "COMPARE_TWO_CONTEXTS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_CENAS_DE_ROUPA",
+      "explanation": "A comparação considera roupa e legenda em cada cena.",
+      "hint": "Leia as duas legendas.",
+      "errorFocus": "COMPARE_TWO_CONTEXTS",
+      "feedback": {
+        "correct": "Boa observação: A comparação considera roupa e legenda em cada cena.",
+        "incorrect": "A comparação considera roupa e legenda em cada cena.",
+        "hint": "Leia as duas legendas.",
+        "errorFocus": "COMPARE_TWO_CONTEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-07",
+      "statement": "Em uma história, pessoas compartilham sopa num dia frio. Qual é a descrição mais cuidadosa?",
+      "prompt": "Em uma história, pessoas compartilham sopa num dia frio. Qual é a descrição mais cuidadosa?",
+      "options": [
+        "Toda pessoa precisa comer sopa quando esfria",
+        "A sopa tornou o dia frio",
+        "A história mostra sopa em um dia registrado como frio.",
+        "O prato representa todos os lugares"
+      ],
+      "correctAnswer": "A história mostra sopa em um dia registrado como frio.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda pessoa precisa comer sopa quando esfria": [
+          "AVOID_FOOD_UNIVERSALIZATION"
+        ],
+        "A sopa tornou o dia frio": [
+          "AVOID_FOOD_UNIVERSALIZATION"
+        ],
+        "O prato representa todos os lugares": [
+          "AVOID_FOOD_UNIVERSALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOPA_EM_HISTORIA_FRIA",
+      "explanation": "A resposta fica limitada ao exemplo e não transforma um costume em obrigação.",
+      "hint": "Use as palavras ‘a história mostra’.",
+      "errorFocus": "AVOID_FOOD_UNIVERSALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A resposta fica limitada ao exemplo e não transforma um costume em obrigação.",
+        "incorrect": "A resposta fica limitada ao exemplo e não transforma um costume em obrigação.",
+        "hint": "Use as palavras ‘a história mostra’.",
+        "errorFocus": "AVOID_FOOD_UNIVERSALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-08",
+      "statement": "Para relacionar uma escolha ao ambiente, qual par de pistas é mais útil?",
+      "prompt": "Para relacionar uma escolha ao ambiente, qual par de pistas é mais útil?",
+      "options": [
+        "Apenas o nome da rua",
+        "A cor da moldura e o tamanho do papel",
+        "Uma opinião sem observar a cena",
+        "Uma condição anotada e uma escolha mostrada na mesma situação."
+      ],
+      "correctAnswer": "Uma condição anotada e uma escolha mostrada na mesma situação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas o nome da rua": [
+          "PAIRING_EVIDENCE"
+        ],
+        "A cor da moldura e o tamanho do papel": [
+          "PAIRING_EVIDENCE"
+        ],
+        "Uma opinião sem observar a cena": [
+          "PAIRING_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REGISTRO_AMBIENTAL",
+      "explanation": "A relação precisa de uma pista ambiental e outra sobre a escolha.",
+      "hint": "Pense em duas informações que possam ser comparadas.",
+      "errorFocus": "PAIRING_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A relação precisa de uma pista ambiental e outra sobre a escolha.",
+        "incorrect": "A relação precisa de uma pista ambiental e outra sobre a escolha.",
+        "hint": "Pense em duas informações que possam ser comparadas.",
+        "errorFocus": "PAIRING_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-09",
+      "statement": "No calendário da Comunidade das Mangueiras, um período está mais quente e algumas figuras escolhem roupas leves. Que frase usa as pistas sem exagerar?",
+      "prompt": "No calendário da Comunidade das Mangueiras, um período está mais quente e algumas figuras escolhem roupas leves. Que frase usa as pistas sem exagerar?",
+      "options": [
+        "Nesse período do calendário, algumas pessoas aparecem com roupas leves em dias mais quentes.",
+        "Todas as comunidades fazem exatamente isso",
+        "As roupas leves aumentaram a temperatura",
+        "O calendário prova como cada pessoa se sente"
+      ],
+      "correctAnswer": "Nesse período do calendário, algumas pessoas aparecem com roupas leves em dias mais quentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as comunidades fazem exatamente isso": [
+          "LIMITED_ASSOCIATION_LANGUAGE"
+        ],
+        "As roupas leves aumentaram a temperatura": [
+          "LIMITED_ASSOCIATION_LANGUAGE"
+        ],
+        "O calendário prova como cada pessoa se sente": [
+          "LIMITED_ASSOCIATION_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CALENDARIO_DA_PRIMAVERA_FICTICIA",
+      "explanation": "‘Algumas’ e ‘nesse período’ mantêm a afirmação dentro das evidências.",
+      "hint": "Evite usar ‘todas’ sem evidência.",
+      "errorFocus": "LIMITED_ASSOCIATION_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: ‘Algumas’ e ‘nesse período’ mantêm a afirmação dentro das evidências.",
+        "incorrect": "‘Algumas’ e ‘nesse período’ mantêm a afirmação dentro das evidências.",
+        "hint": "Evite usar ‘todas’ sem evidência.",
+        "errorFocus": "LIMITED_ASSOCIATION_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-10",
+      "statement": "Uma feira fictícia acontece num dia úmido; o desenho mostra frutas cobertas e garrafas de água. O que pode ser associado ao ambiente?",
+      "prompt": "Uma feira fictícia acontece num dia úmido; o desenho mostra frutas cobertas e garrafas de água. O que pode ser associado ao ambiente?",
+      "options": [
+        "A umidade escolheu as frutas",
+        "As escolhas representadas aparecem em uma cena de ar úmido.",
+        "A cena prova o cardápio de todo o ano",
+        "A garrafa mudou a umidade"
+      ],
+      "correctAnswer": "As escolhas representadas aparecem em uma cena de ar úmido.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A umidade escolheu as frutas": [
+          "WEATHER_AND_FOOD_CONTEXT"
+        ],
+        "A cena prova o cardápio de todo o ano": [
+          "WEATHER_AND_FOOD_CONTEXT"
+        ],
+        "A garrafa mudou a umidade": [
+          "WEATHER_AND_FOOD_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CENA_DE_FEIRA_UMIDA",
+      "explanation": "A relação é uma possibilidade observada na cena, não uma causa exclusiva.",
+      "hint": "Descreva o contexto da cena.",
+      "errorFocus": "WEATHER_AND_FOOD_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A relação é uma possibilidade observada na cena, não uma causa exclusiva.",
+        "incorrect": "A relação é uma possibilidade observada na cena, não uma causa exclusiva.",
+        "hint": "Descreva o contexto da cena.",
+        "errorFocus": "WEATHER_AND_FOOD_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-11",
+      "statement": "Um quadro marca 18 graus num dia e 30 em outro; as cenas mostram casaco e roupa leve. Qual comparação combina?",
+      "prompt": "Um quadro marca 18 graus num dia e 30 em outro; as cenas mostram casaco e roupa leve. Qual comparação combina?",
+      "options": [
+        "A roupa explica a diferença de temperatura",
+        "O quadro mostra a mesma condição nos dois dias",
+        "A roupa mostrada varia entre dois registros de temperatura diferentes.",
+        "Todo mundo prefere a roupa leve"
+      ],
+      "correctAnswer": "A roupa mostrada varia entre dois registros de temperatura diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A roupa explica a diferença de temperatura": [
+          "TEMPERATURE_COMPARISON"
+        ],
+        "O quadro mostra a mesma condição nos dois dias": [
+          "TEMPERATURE_COMPARISON"
+        ],
+        "Todo mundo prefere a roupa leve": [
+          "TEMPERATURE_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DOIS_REGISTROS_DE_TEMPERATURA",
+      "explanation": "As duas legendas e as cenas sustentam a comparação.",
+      "hint": "Associe cada cena ao próprio número.",
+      "errorFocus": "TEMPERATURE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As duas legendas e as cenas sustentam a comparação.",
+        "incorrect": "As duas legendas e as cenas sustentam a comparação.",
+        "hint": "Associe cada cena ao próprio número.",
+        "errorFocus": "TEMPERATURE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-12",
+      "statement": "Uma história registra um período seco e mostra a turma levando água para uma horta escolar. O que a imagem permite relacionar?",
+      "prompt": "Uma história registra um período seco e mostra a turma levando água para uma horta escolar. O que a imagem permite relacionar?",
+      "options": [
+        "A horta causou a falta de umidade",
+        "Toda comida depende apenas do tempo",
+        "A imagem prova que não choveu no ano inteiro",
+        "A atividade de levar água aparece num período descrito como seco."
+      ],
+      "correctAnswer": "A atividade de levar água aparece num período descrito como seco.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A horta causou a falta de umidade": [
+          "DRYNESS_AND_DAILY_ACTION"
+        ],
+        "Toda comida depende apenas do tempo": [
+          "DRYNESS_AND_DAILY_ACTION"
+        ],
+        "A imagem prova que não choveu no ano inteiro": [
+          "DRYNESS_AND_DAILY_ACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIA_SECO_E_HORTA_FICTICIA",
+      "explanation": "A atividade pode responder à condição representada, mas o registro não cobre o ano inteiro.",
+      "hint": "Limite a conclusão ao período marcado.",
+      "errorFocus": "DRYNESS_AND_DAILY_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A atividade pode responder à condição representada, mas o registro não cobre o ano inteiro.",
+        "incorrect": "A atividade pode responder à condição representada, mas o registro não cobre o ano inteiro.",
+        "hint": "Limite a conclusão ao período marcado.",
+        "errorFocus": "DRYNESS_AND_DAILY_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-13",
+      "statement": "Um cardápio fictício oferece fruta fresca num dia quente e caldo num dia frio. Qual conclusão é apoiada pelas cenas?",
+      "prompt": "Um cardápio fictício oferece fruta fresca num dia quente e caldo num dia frio. Qual conclusão é apoiada pelas cenas?",
+      "options": [
+        "Na história, opções diferentes aparecem em dois contextos de temperatura.",
+        "Um prato é melhor para todas as pessoas",
+        "O cardápio é igual em todas as comunidades",
+        "A comida fez os dias mudarem"
+      ],
+      "correctAnswer": "Na história, opções diferentes aparecem em dois contextos de temperatura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um prato é melhor para todas as pessoas": [
+          "FOOD_VARIATION_WITHOUT_RANKING"
+        ],
+        "O cardápio é igual em todas as comunidades": [
+          "FOOD_VARIATION_WITHOUT_RANKING"
+        ],
+        "A comida fez os dias mudarem": [
+          "FOOD_VARIATION_WITHOUT_RANKING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARDAPIO_DE_DOIS_DIAS",
+      "explanation": "A comparação não julga alimentos nem transforma o cardápio em regra universal.",
+      "hint": "Compare as cenas sem dizer qual é melhor.",
+      "errorFocus": "FOOD_VARIATION_WITHOUT_RANKING",
+      "feedback": {
+        "correct": "Boa observação: A comparação não julga alimentos nem transforma o cardápio em regra universal.",
+        "incorrect": "A comparação não julga alimentos nem transforma o cardápio em regra universal.",
+        "hint": "Compare as cenas sem dizer qual é melhor.",
+        "errorFocus": "FOOD_VARIATION_WITHOUT_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-14",
+      "statement": "Numa ilustração, uma trabalhadora escolhe roupa confortável e proteção para uma tarefa externa em dia quente. Qual explicação é mais cuidadosa?",
+      "prompt": "Numa ilustração, uma trabalhadora escolhe roupa confortável e proteção para uma tarefa externa em dia quente. Qual explicação é mais cuidadosa?",
+      "options": [
+        "O calor determina sozinho toda roupa",
+        "A escolha pode considerar o calor e também a tarefa e a proteção necessária.",
+        "A ilustração prova que todas as trabalhadoras usam a mesma roupa",
+        "A tarefa não tem relação com a escolha"
+      ],
+      "correctAnswer": "A escolha pode considerar o calor e também a tarefa e a proteção necessária.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O calor determina sozinho toda roupa": [
+          "MULTIPLE_FACTORS_IN_CLOTHING"
+        ],
+        "A ilustração prova que todas as trabalhadoras usam a mesma roupa": [
+          "MULTIPLE_FACTORS_IN_CLOTHING"
+        ],
+        "A tarefa não tem relação com a escolha": [
+          "MULTIPLE_FACTORS_IN_CLOTHING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ROUPA_DE_TRABALHO_NO_CALOR",
+      "explanation": "Ambiente, conforto, atividade e segurança podem participar da escolha.",
+      "hint": "Considere o ambiente e o que a pessoa fará.",
+      "errorFocus": "MULTIPLE_FACTORS_IN_CLOTHING",
+      "feedback": {
+        "correct": "Boa observação: Ambiente, conforto, atividade e segurança podem participar da escolha.",
+        "incorrect": "Ambiente, conforto, atividade e segurança podem participar da escolha.",
+        "hint": "Considere o ambiente e o que a pessoa fará.",
+        "errorFocus": "MULTIPLE_FACTORS_IN_CLOTHING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-15",
+      "statement": "Dois cartões mostram a mesma roupa: um período seco com roupa seca rápido e outro úmido com secagem mais lenta. Qual relação é coerente?",
+      "prompt": "Dois cartões mostram a mesma roupa: um período seco com roupa seca rápido e outro úmido com secagem mais lenta. Qual relação é coerente?",
+      "options": [
+        "A roupa cria a umidade",
+        "Os cartões não mostram nenhuma diferença",
+        "A umidade mais alta aparece associada à secagem mais lenta nos cartões.",
+        "A secagem prova que choveu em todos os dias"
+      ],
+      "correctAnswer": "A umidade mais alta aparece associada à secagem mais lenta nos cartões.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A roupa cria a umidade": [
+          "HUMIDITY_AND_OBSERVATION"
+        ],
+        "Os cartões não mostram nenhuma diferença": [
+          "HUMIDITY_AND_OBSERVATION"
+        ],
+        "A secagem prova que choveu em todos os dias": [
+          "HUMIDITY_AND_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "AR_UMIDO_E_SECAGEM",
+      "explanation": "A evidência compara a mesma roupa sob condições registradas diferentes.",
+      "hint": "Compare condição do ar e tempo de secagem.",
+      "errorFocus": "HUMIDITY_AND_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A evidência compara a mesma roupa sob condições registradas diferentes.",
+        "incorrect": "A evidência compara a mesma roupa sob condições registradas diferentes.",
+        "hint": "Compare condição do ar e tempo de secagem.",
+        "errorFocus": "HUMIDITY_AND_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-16",
+      "statement": "Em um dia quente fictício, uma pessoa usa chapéu e outra prefere ficar na sombra. O que a cena ensina?",
+      "prompt": "Em um dia quente fictício, uma pessoa usa chapéu e outra prefere ficar na sombra. O que a cena ensina?",
+      "options": [
+        "Uma das pessoas está necessariamente errada",
+        "O calor afeta todas as pessoas de modo idêntico",
+        "A sombra torna o dia frio",
+        "Pessoas podem fazer escolhas diferentes mesmo diante da mesma condição."
+      ],
+      "correctAnswer": "Pessoas podem fazer escolhas diferentes mesmo diante da mesma condição.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma das pessoas está necessariamente errada": [
+          "RESPECT_DIVERSE_CHOICES"
+        ],
+        "O calor afeta todas as pessoas de modo idêntico": [
+          "RESPECT_DIVERSE_CHOICES"
+        ],
+        "A sombra torna o dia frio": [
+          "RESPECT_DIVERSE_CHOICES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ESCOLHAS_DIVERSAS_NO_MESMO_DIA",
+      "explanation": "A diversidade das escolhas deve ser reconhecida, sem julgar ou generalizar.",
+      "hint": "Observe que há mais de uma resposta possível ao mesmo dia.",
+      "errorFocus": "RESPECT_DIVERSE_CHOICES",
+      "feedback": {
+        "correct": "Boa observação: A diversidade das escolhas deve ser reconhecida, sem julgar ou generalizar.",
+        "incorrect": "A diversidade das escolhas deve ser reconhecida, sem julgar ou generalizar.",
+        "hint": "Observe que há mais de uma resposta possível ao mesmo dia.",
+        "errorFocus": "RESPECT_DIVERSE_CHOICES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-17",
+      "statement": "Um mapa fictício registra um mês mais úmido e mostra algumas pessoas levando capa em dias de chuva. Qual legenda é mais precisa?",
+      "prompt": "Um mapa fictício registra um mês mais úmido e mostra algumas pessoas levando capa em dias de chuva. Qual legenda é mais precisa?",
+      "options": [
+        "No período úmido do mapa, algumas cenas mostram capas durante a chuva.",
+        "Toda pessoa usa capa no mês inteiro",
+        "As capas fizeram o mês ficar úmido",
+        "O mapa mostra a mesma roupa em todo lugar"
+      ],
+      "correctAnswer": "No período úmido do mapa, algumas cenas mostram capas durante a chuva.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda pessoa usa capa no mês inteiro": [
+          "TRANSFER_LIMITED_TO_MAP"
+        ],
+        "As capas fizeram o mês ficar úmido": [
+          "TRANSFER_LIMITED_TO_MAP"
+        ],
+        "O mapa mostra a mesma roupa em todo lugar": [
+          "TRANSFER_LIMITED_TO_MAP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_DE_ROUPAS_DA_CIDADE_FICTICIA",
+      "explanation": "A legenda mantém o lugar, o período e a quantidade dentro do que foi representado.",
+      "hint": "Inclua lugar, período e ‘algumas cenas’.",
+      "errorFocus": "TRANSFER_LIMITED_TO_MAP",
+      "feedback": {
+        "correct": "Boa observação: A legenda mantém o lugar, o período e a quantidade dentro do que foi representado.",
+        "incorrect": "A legenda mantém o lugar, o período e a quantidade dentro do que foi representado.",
+        "hint": "Inclua lugar, período e ‘algumas cenas’.",
+        "errorFocus": "TRANSFER_LIMITED_TO_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-18",
+      "statement": "Dois bairros fictícios têm a mesma temperatura, mas feiras com alimentos diferentes. O que isso mostra?",
+      "prompt": "Dois bairros fictícios têm a mesma temperatura, mas feiras com alimentos diferentes. O que isso mostra?",
+      "options": [
+        "Um bairro escolheu o clima",
+        "A temperatura não é a única influência nas opções alimentares.",
+        "A temperatura sempre determina o mesmo alimento",
+        "Os bairros precisam ter a mesma feira"
+      ],
+      "correctAnswer": "A temperatura não é a única influência nas opções alimentares.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um bairro escolheu o clima": [
+          "FOOD_AVAILABILITY_AND_CULTURE"
+        ],
+        "A temperatura sempre determina o mesmo alimento": [
+          "FOOD_AVAILABILITY_AND_CULTURE"
+        ],
+        "Os bairros precisam ter a mesma feira": [
+          "FOOD_AVAILABILITY_AND_CULTURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_BAIRROS_E_DISPONIBILIDADE",
+      "explanation": "Disponibilidade e práticas locais também podem influenciar alimentos.",
+      "hint": "Compare o ambiente e as opções da feira.",
+      "errorFocus": "FOOD_AVAILABILITY_AND_CULTURE",
+      "feedback": {
+        "correct": "Boa observação: Disponibilidade e práticas locais também podem influenciar alimentos.",
+        "incorrect": "Disponibilidade e práticas locais também podem influenciar alimentos.",
+        "hint": "Compare o ambiente e as opções da feira.",
+        "errorFocus": "FOOD_AVAILABILITY_AND_CULTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-19",
+      "statement": "Durante uma semana fictícia, os registros alternam dias secos e úmidos; as roupas também variam. Que resumo é sustentado?",
+      "prompt": "Durante uma semana fictícia, os registros alternam dias secos e úmidos; as roupas também variam. Que resumo é sustentado?",
+      "options": [
+        "A roupa prova o clima de todo o ano",
+        "Todas as pessoas mudaram de escolha todos os dias",
+        "As escolhas mostradas variam junto com condições registradas diferentes naquela semana.",
+        "A semana teve uma única condição"
+      ],
+      "correctAnswer": "As escolhas mostradas variam junto com condições registradas diferentes naquela semana.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A roupa prova o clima de todo o ano": [
+          "SCOPE_OF_WEEKLY_EVIDENCE"
+        ],
+        "Todas as pessoas mudaram de escolha todos os dias": [
+          "SCOPE_OF_WEEKLY_EVIDENCE"
+        ],
+        "A semana teve uma única condição": [
+          "SCOPE_OF_WEEKLY_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SEMANA_COM_TEMPO_VARIAVEL",
+      "explanation": "O resumo limita a descrição aos dias observados.",
+      "hint": "Use ‘naquela semana’.",
+      "errorFocus": "SCOPE_OF_WEEKLY_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O resumo limita a descrição aos dias observados.",
+        "incorrect": "O resumo limita a descrição aos dias observados.",
+        "hint": "Use ‘naquela semana’.",
+        "errorFocus": "SCOPE_OF_WEEKLY_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-20",
+      "statement": "Numa história, duas pessoas escolhem bebidas diferentes num dia quente. Qual explicação respeita as evidências?",
+      "prompt": "Numa história, duas pessoas escolhem bebidas diferentes num dia quente. Qual explicação respeita as evidências?",
+      "options": [
+        "Uma escolha é errada porque está quente",
+        "A temperatura obriga todas as pessoas a escolher a mesma bebida",
+        "A bebida de uma pessoa causou a escolha da outra",
+        "As duas fizeram escolhas diferentes no mesmo contexto; a cena não explica todos os motivos."
+      ],
+      "correctAnswer": "As duas fizeram escolhas diferentes no mesmo contexto; a cena não explica todos os motivos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma escolha é errada porque está quente": [
+          "INDIVIDUAL_PREFERENCE"
+        ],
+        "A temperatura obriga todas as pessoas a escolher a mesma bebida": [
+          "INDIVIDUAL_PREFERENCE"
+        ],
+        "A bebida de uma pessoa causou a escolha da outra": [
+          "INDIVIDUAL_PREFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "FAMILIA_FICTICIA_E_PREFERENCIAS",
+      "explanation": "O registro mostra escolhas, mas não revela sozinho todas as razões pessoais.",
+      "hint": "Descreva o que sabe e o que não sabe.",
+      "errorFocus": "INDIVIDUAL_PREFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O registro mostra escolhas, mas não revela sozinho todas as razões pessoais.",
+        "incorrect": "O registro mostra escolhas, mas não revela sozinho todas as razões pessoais.",
+        "hint": "Descreva o que sabe e o que não sabe.",
+        "errorFocus": "INDIVIDUAL_PREFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-21",
+      "statement": "Dois calendários de uma comunidade fictícia têm temperaturas diferentes no mesmo mês e mostram opções de roupa distintas. O que se pode dizer?",
+      "prompt": "Dois calendários de uma comunidade fictícia têm temperaturas diferentes no mesmo mês e mostram opções de roupa distintas. O que se pode dizer?",
+      "options": [
+        "Os registros mostram diferenças naquele mês nos dois calendários.",
+        "Todo ano será exatamente igual ao primeiro",
+        "A roupa é a causa da temperatura",
+        "A comunidade não pode ter outras escolhas"
+      ],
+      "correctAnswer": "Os registros mostram diferenças naquele mês nos dois calendários.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todo ano será exatamente igual ao primeiro": [
+          "YEAR_TO_YEAR_VARIATION"
+        ],
+        "A roupa é a causa da temperatura": [
+          "YEAR_TO_YEAR_VARIATION"
+        ],
+        "A comunidade não pode ter outras escolhas": [
+          "YEAR_TO_YEAR_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CALENDARIO_DE_DOIS_ANOS",
+      "explanation": "Dois registros permitem comparar anos, não prever todos os próximos anos.",
+      "hint": "Não transforme dois anos em regra permanente.",
+      "errorFocus": "YEAR_TO_YEAR_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Dois registros permitem comparar anos, não prever todos os próximos anos.",
+        "incorrect": "Dois registros permitem comparar anos, não prever todos os próximos anos.",
+        "hint": "Não transforme dois anos em regra permanente.",
+        "errorFocus": "YEAR_TO_YEAR_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-22",
+      "statement": "A previsão de uma feira escolar fictícia indica um dia quente e úmido. Qual decisão pode considerar essa informação sem excluir escolhas diversas?",
+      "prompt": "A previsão de uma feira escolar fictícia indica um dia quente e úmido. Qual decisão pode considerar essa informação sem excluir escolhas diversas?",
+      "options": [
+        "Obrigar todas as pessoas a comer o mesmo prato",
+        "Oferecer água e sombra, mantendo opções variadas de alimentos.",
+        "Retirar toda roupa de proteção",
+        "Afirmar que o dia será igual em todas as cidades"
+      ],
+      "correctAnswer": "Oferecer água e sombra, mantendo opções variadas de alimentos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Obrigar todas as pessoas a comer o mesmo prato": [
+          "ENVIRONMENTAL_PLANNING_WITH_INCLUSION"
+        ],
+        "Retirar toda roupa de proteção": [
+          "ENVIRONMENTAL_PLANNING_WITH_INCLUSION"
+        ],
+        "Afirmar que o dia será igual em todas as cidades": [
+          "ENVIRONMENTAL_PLANNING_WITH_INCLUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANEJAR_FEIRA_ESCOLAR",
+      "explanation": "Uma condição pode orientar o planejamento e ainda respeitar diferentes preferências.",
+      "hint": "Pense em cuidado sem impor um hábito único.",
+      "errorFocus": "ENVIRONMENTAL_PLANNING_WITH_INCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Uma condição pode orientar o planejamento e ainda respeitar diferentes preferências.",
+        "incorrect": "Uma condição pode orientar o planejamento e ainda respeitar diferentes preferências.",
+        "hint": "Pense em cuidado sem impor um hábito único.",
+        "errorFocus": "ENVIRONMENTAL_PLANNING_WITH_INCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-23",
+      "statement": "Uma história mostra uma fruta disponível numa feira depois de um período chuvoso. Qual afirmação é cautelosa?",
+      "prompt": "Uma história mostra uma fruta disponível numa feira depois de um período chuvoso. Qual afirmação é cautelosa?",
+      "options": [
+        "A chuva produziu sozinha todas as frutas",
+        "A fruta estará disponível em qualquer lugar",
+        "A fruta aparece disponível nessa feira e nesse período da história.",
+        "Toda pessoa come essa fruta quando chove"
+      ],
+      "correctAnswer": "A fruta aparece disponível nessa feira e nesse período da história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A chuva produziu sozinha todas as frutas": [
+          "AVAILABILITY_NOT_CAUSALITY"
+        ],
+        "A fruta estará disponível em qualquer lugar": [
+          "AVAILABILITY_NOT_CAUSALITY"
+        ],
+        "Toda pessoa come essa fruta quando chove": [
+          "AVAILABILITY_NOT_CAUSALITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REGISTRO_DE_COLHEITA_LOCAL",
+      "explanation": "A cena mostra disponibilidade, mas não explica toda a produção ou preferência.",
+      "hint": "Descreva a feira, não todas as comunidades.",
+      "errorFocus": "AVAILABILITY_NOT_CAUSALITY",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra disponibilidade, mas não explica toda a produção ou preferência.",
+        "incorrect": "A cena mostra disponibilidade, mas não explica toda a produção ou preferência.",
+        "hint": "Descreva a feira, não todas as comunidades.",
+        "errorFocus": "AVAILABILITY_NOT_CAUSALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-24",
+      "statement": "Um mural fictício reúne roupas diferentes usadas por pessoas no mesmo período frio. Qual conclusão é melhor?",
+      "prompt": "Um mural fictício reúne roupas diferentes usadas por pessoas no mesmo período frio. Qual conclusão é melhor?",
+      "options": [
+        "Só existe um jeito certo de se vestir",
+        "A roupa de uma pessoa muda a temperatura do grupo",
+        "O mural mostra um costume obrigatório",
+        "As escolhas de vestuário podem variar entre pessoas mesmo em condição semelhante."
+      ],
+      "correctAnswer": "As escolhas de vestuário podem variar entre pessoas mesmo em condição semelhante.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só existe um jeito certo de se vestir": [
+          "COMMUNITY_DIVERSITY"
+        ],
+        "A roupa de uma pessoa muda a temperatura do grupo": [
+          "COMMUNITY_DIVERSITY"
+        ],
+        "O mural mostra um costume obrigatório": [
+          "COMMUNITY_DIVERSITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MURAL_DE_ESCOLHAS_COMUNITARIAS",
+      "explanation": "O mural destaca diversidade; não é uma regra para cada pessoa.",
+      "hint": "Observe quantas escolhas diferentes aparecem.",
+      "errorFocus": "COMMUNITY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: O mural destaca diversidade; não é uma regra para cada pessoa.",
+        "incorrect": "O mural destaca diversidade; não é uma regra para cada pessoa.",
+        "hint": "Observe quantas escolhas diferentes aparecem.",
+        "errorFocus": "COMMUNITY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-25",
+      "statement": "Uma legenda registra frio; a cena mostra uma pessoa com casaco. Qual par de evidências sustenta uma associação?",
+      "prompt": "Uma legenda registra frio; a cena mostra uma pessoa com casaco. Qual par de evidências sustenta uma associação?",
+      "options": [
+        "A condição fria registrada e o casaco mostrado.",
+        "A cor do papel e o nome da rua",
+        "O casaco e uma previsão sem data",
+        "Uma opinião e uma imagem sem legenda"
+      ],
+      "correctAnswer": "A condição fria registrada e o casaco mostrado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor do papel e o nome da rua": [
+          "EVIDENCE_PAIR"
+        ],
+        "O casaco e uma previsão sem data": [
+          "EVIDENCE_PAIR"
+        ],
+        "Uma opinião e uma imagem sem legenda": [
+          "EVIDENCE_PAIR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PISTA_DE_TEMPERATURA_E_AGASALHO",
+      "explanation": "Uma associação deve reunir a informação ambiental e a escolha observada.",
+      "hint": "Escolha uma pista de cada tipo.",
+      "errorFocus": "EVIDENCE_PAIR",
+      "feedback": {
+        "correct": "Boa observação: Uma associação deve reunir a informação ambiental e a escolha observada.",
+        "incorrect": "Uma associação deve reunir a informação ambiental e a escolha observada.",
+        "hint": "Escolha uma pista de cada tipo.",
+        "errorFocus": "EVIDENCE_PAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-26",
+      "statement": "Uma história mostra sopa numa noite fria e salada em uma tarde quente. O que se pode concluir sem julgar os pratos?",
+      "prompt": "Uma história mostra sopa numa noite fria e salada em uma tarde quente. O que se pode concluir sem julgar os pratos?",
+      "options": [
+        "Sopa é sempre inadequada no calor",
+        "A história associa opções diferentes a situações ambientais distintas.",
+        "Toda pessoa precisa comer salada no calor",
+        "Os pratos alteraram o tempo"
+      ],
+      "correctAnswer": "A história associa opções diferentes a situações ambientais distintas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sopa é sempre inadequada no calor": [
+          "NO_FOOD_JUDGMENT"
+        ],
+        "Toda pessoa precisa comer salada no calor": [
+          "NO_FOOD_JUDGMENT"
+        ],
+        "Os pratos alteraram o tempo": [
+          "NO_FOOD_JUDGMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SOPA_E_DIA_QUENTE",
+      "explanation": "A tarefa é reconhecer a relação contextual, não classificar alimentos como certos ou errados.",
+      "hint": "Fale das cenas, não de uma regra alimentar.",
+      "errorFocus": "NO_FOOD_JUDGMENT",
+      "feedback": {
+        "correct": "Boa observação: A tarefa é reconhecer a relação contextual, não classificar alimentos como certos ou errados.",
+        "incorrect": "A tarefa é reconhecer a relação contextual, não classificar alimentos como certos ou errados.",
+        "hint": "Fale das cenas, não de uma regra alimentar.",
+        "errorFocus": "NO_FOOD_JUDGMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-27",
+      "statement": "Um registro marca ar úmido e possibilidade de chuva; uma pessoa leva guarda-chuva. Qual frase usa linguagem cuidadosa?",
+      "prompt": "Um registro marca ar úmido e possibilidade de chuva; uma pessoa leva guarda-chuva. Qual frase usa linguagem cuidadosa?",
+      "options": [
+        "O guarda-chuva prova que choveu",
+        "A umidade obriga toda pessoa a levar guarda-chuva",
+        "Na cena, o guarda-chuva aparece como preparação para a condição indicada.",
+        "O guarda-chuva criou a chuva"
+      ],
+      "correctAnswer": "Na cena, o guarda-chuva aparece como preparação para a condição indicada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O guarda-chuva prova que choveu": [
+          "PREPARATION_VS_OBSERVATION"
+        ],
+        "A umidade obriga toda pessoa a levar guarda-chuva": [
+          "PREPARATION_VS_OBSERVATION"
+        ],
+        "O guarda-chuva criou a chuva": [
+          "PREPARATION_VS_OBSERVATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "UMIDADE_E_GUARDA_CHUVA",
+      "explanation": "Levar um objeto pode ser preparação, não prova de que o evento aconteceu.",
+      "hint": "Diferencie previsão e observação.",
+      "errorFocus": "PREPARATION_VS_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Levar um objeto pode ser preparação, não prova de que o evento aconteceu.",
+        "incorrect": "Levar um objeto pode ser preparação, não prova de que o evento aconteceu.",
+        "hint": "Diferencie previsão e observação.",
+        "errorFocus": "PREPARATION_VS_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-28",
+      "statement": "Uma comunidade costeira inventada tem dias de umidade variável; o mural mostra roupas diferentes. Como comparar?",
+      "prompt": "Uma comunidade costeira inventada tem dias de umidade variável; o mural mostra roupas diferentes. Como comparar?",
+      "options": [
+        "Dizer que o litoral determina toda escolha",
+        "Ignorar os registros ambientais",
+        "Afirmar que todas as pessoas têm a mesma rotina",
+        "Relacionar cada escolha à condição registrada para aquele período, sem supor uma roupa única."
+      ],
+      "correctAnswer": "Relacionar cada escolha à condição registrada para aquele período, sem supor uma roupa única.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que o litoral determina toda escolha": [
+          "CONTEXTUAL_COMPARISON"
+        ],
+        "Ignorar os registros ambientais": [
+          "CONTEXTUAL_COMPARISON"
+        ],
+        "Afirmar que todas as pessoas têm a mesma rotina": [
+          "CONTEXTUAL_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ROUPAS_EM_COMUNIDADE_COSTEIRA_FICTICIA",
+      "explanation": "O lugar e o período importam, mas não apagam as diferenças individuais.",
+      "hint": "Compare registro e escolha em cada cartão.",
+      "errorFocus": "CONTEXTUAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: O lugar e o período importam, mas não apagam as diferenças individuais.",
+        "incorrect": "O lugar e o período importam, mas não apagam as diferenças individuais.",
+        "hint": "Compare registro e escolha em cada cartão.",
+        "errorFocus": "CONTEXTUAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-29",
+      "statement": "Uma feira fictícia muda algumas opções depois de uma colheita local, enquanto a temperatura permanece parecida. O que isso sugere?",
+      "prompt": "Uma feira fictícia muda algumas opções depois de uma colheita local, enquanto a temperatura permanece parecida. O que isso sugere?",
+      "options": [
+        "Disponibilidade da colheita também pode influenciar as opções da feira.",
+        "Somente a temperatura define a alimentação",
+        "A feira controla a temperatura",
+        "As opções precisam ser iguais o ano todo"
+      ],
+      "correctAnswer": "Disponibilidade da colheita também pode influenciar as opções da feira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente a temperatura define a alimentação": [
+          "MULTIPLE_ENVIRONMENTAL_AND_SOCIAL_FACTORS"
+        ],
+        "A feira controla a temperatura": [
+          "MULTIPLE_ENVIRONMENTAL_AND_SOCIAL_FACTORS"
+        ],
+        "As opções precisam ser iguais o ano todo": [
+          "MULTIPLE_ENVIRONMENTAL_AND_SOCIAL_FACTORS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ALIMENTO_E_ORIGEM_DE_PRODUTO",
+      "explanation": "A variação de alimentos pode relacionar-se à disponibilidade, além do clima.",
+      "hint": "Observe o que mudou na feira.",
+      "errorFocus": "MULTIPLE_ENVIRONMENTAL_AND_SOCIAL_FACTORS",
+      "feedback": {
+        "correct": "Boa observação: A variação de alimentos pode relacionar-se à disponibilidade, além do clima.",
+        "incorrect": "A variação de alimentos pode relacionar-se à disponibilidade, além do clima.",
+        "hint": "Observe o que mudou na feira.",
+        "errorFocus": "MULTIPLE_ENVIRONMENTAL_AND_SOCIAL_FACTORS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-30",
+      "statement": "Dois registros mostram um dia seco e outro úmido; em ambos há roupas confortáveis diferentes. Qual comparação é válida?",
+      "prompt": "Dois registros mostram um dia seco e outro úmido; em ambos há roupas confortáveis diferentes. Qual comparação é válida?",
+      "options": [
+        "A umidade é a única razão possível",
+        "As roupas mostradas são diferentes nos dois registros, que também têm condições distintas.",
+        "As pessoas devem usar roupas iguais",
+        "Os registros descrevem a mesma condição"
+      ],
+      "correctAnswer": "As roupas mostradas são diferentes nos dois registros, que também têm condições distintas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A umidade é a única razão possível": [
+          "VALID_COMPARISON_NOT_SINGLE_CAUSE"
+        ],
+        "As pessoas devem usar roupas iguais": [
+          "VALID_COMPARISON_NOT_SINGLE_CAUSE"
+        ],
+        "Os registros descrevem a mesma condição": [
+          "VALID_COMPARISON_NOT_SINGLE_CAUSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIA_SECO_E_DIA_UMIDO",
+      "explanation": "A comparação reconhece duas diferenças sem inventar uma causa única.",
+      "hint": "Diga o que mudou e não o motivo que não foi mostrado.",
+      "errorFocus": "VALID_COMPARISON_NOT_SINGLE_CAUSE",
+      "feedback": {
+        "correct": "Boa observação: A comparação reconhece duas diferenças sem inventar uma causa única.",
+        "incorrect": "A comparação reconhece duas diferenças sem inventar uma causa única.",
+        "hint": "Diga o que mudou e não o motivo que não foi mostrado.",
+        "errorFocus": "VALID_COMPARISON_NOT_SINGLE_CAUSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-31",
+      "statement": "Qual início de frase deixa claro que a conclusão vale para uma cena, não para todas as pessoas?",
+      "prompt": "Qual início de frase deixa claro que a conclusão vale para uma cena, não para todas as pessoas?",
+      "options": [
+        "‘Em todo lugar, todas as pessoas...’",
+        "‘Sempre, sem exceção...’",
+        "‘Neste cartão, algumas pessoas...’.",
+        "‘Ninguém pode escolher...’"
+      ],
+      "correctAnswer": "‘Neste cartão, algumas pessoas...’.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "‘Em todo lugar, todas as pessoas...’": [
+          "QUALIFIED_CLAIM_LANGUAGE"
+        ],
+        "‘Sempre, sem exceção...’": [
+          "QUALIFIED_CLAIM_LANGUAGE"
+        ],
+        "‘Ninguém pode escolher...’": [
+          "QUALIFIED_CLAIM_LANGUAGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PALAVRAS_DE_ASSOCIACAO",
+      "explanation": "Palavras como ‘neste cartão’ e ‘algumas’ limitam a afirmação.",
+      "hint": "Escolha a frase que não generaliza.",
+      "errorFocus": "QUALIFIED_CLAIM_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: Palavras como ‘neste cartão’ e ‘algumas’ limitam a afirmação.",
+        "incorrect": "Palavras como ‘neste cartão’ e ‘algumas’ limitam a afirmação.",
+        "hint": "Escolha a frase que não generaliza.",
+        "errorFocus": "QUALIFIED_CLAIM_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-32",
+      "statement": "O que é necessário para associar uma escolha de roupa a uma mudança ambiental?",
+      "prompt": "O que é necessário para associar uma escolha de roupa a uma mudança ambiental?",
+      "options": [
+        "Uma roupa sem contexto",
+        "Uma previsão sem registro",
+        "Um palpite sobre todas as famílias",
+        "Uma pista da condição do ambiente e uma pista da escolha observada."
+      ],
+      "correctAnswer": "Uma pista da condição do ambiente e uma pista da escolha observada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma roupa sem contexto": [
+          "RECALL_EVIDENCE_REQUIREMENT"
+        ],
+        "Uma previsão sem registro": [
+          "RECALL_EVIDENCE_REQUIREMENT"
+        ],
+        "Um palpite sobre todas as famílias": [
+          "RECALL_EVIDENCE_REQUIREMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_DUAS_PISTAS",
+      "explanation": "A relação depende de comparar os dois elementos no mesmo contexto.",
+      "hint": "Lembre-se do par de evidências.",
+      "errorFocus": "RECALL_EVIDENCE_REQUIREMENT",
+      "feedback": {
+        "correct": "Boa observação: A relação depende de comparar os dois elementos no mesmo contexto.",
+        "incorrect": "A relação depende de comparar os dois elementos no mesmo contexto.",
+        "hint": "Lembre-se do par de evidências.",
+        "errorFocus": "RECALL_EVIDENCE_REQUIREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-33",
+      "statement": "Um cartão registra frio e mostra um cachecol em uma figura. Qual descrição é apoiada?",
+      "prompt": "Um cartão registra frio e mostra um cachecol em uma figura. Qual descrição é apoiada?",
+      "options": [
+        "O cachecol aparece na figura de um dia registrado como frio.",
+        "O cachecol causa o frio",
+        "Toda figura usa cachecol",
+        "O cartão mostra calor"
+      ],
+      "correctAnswer": "O cachecol aparece na figura de um dia registrado como frio.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O cachecol causa o frio": [
+          "REVIEW_CLOTHING_CUE"
+        ],
+        "Toda figura usa cachecol": [
+          "REVIEW_CLOTHING_CUE"
+        ],
+        "O cartão mostra calor": [
+          "REVIEW_CLOTHING_CUE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DIA_FRIO",
+      "explanation": "A resposta retoma o que foi registrado e mostrado.",
+      "hint": "Confira a legenda e a figura.",
+      "errorFocus": "REVIEW_CLOTHING_CUE",
+      "feedback": {
+        "correct": "Boa observação: A resposta retoma o que foi registrado e mostrado.",
+        "incorrect": "A resposta retoma o que foi registrado e mostrado.",
+        "hint": "Confira a legenda e a figura.",
+        "errorFocus": "REVIEW_CLOTHING_CUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-34",
+      "statement": "Dois cartões de uma história mostram bebidas diferentes em dias com temperaturas diferentes. O que comparar?",
+      "prompt": "Dois cartões de uma história mostram bebidas diferentes em dias com temperaturas diferentes. O que comparar?",
+      "options": [
+        "A bebida que todas as pessoas preferem",
+        "As opções mostradas em cada dia e a temperatura registrada.",
+        "A cor das bordas somente",
+        "Uma regra para todos os meses"
+      ],
+      "correctAnswer": "As opções mostradas em cada dia e a temperatura registrada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A bebida que todas as pessoas preferem": [
+          "REVIEW_COMPARE_TWO_CUES"
+        ],
+        "A cor das bordas somente": [
+          "REVIEW_COMPARE_TWO_CUES"
+        ],
+        "Uma regra para todos os meses": [
+          "REVIEW_COMPARE_TWO_CUES"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DUAS_BEBIDAS",
+      "explanation": "Compare a escolha e a condição de cada cartão.",
+      "hint": "Leia cada cartão inteiro.",
+      "errorFocus": "REVIEW_COMPARE_TWO_CUES",
+      "feedback": {
+        "correct": "Boa observação: Compare a escolha e a condição de cada cartão.",
+        "incorrect": "Compare a escolha e a condição de cada cartão.",
+        "hint": "Leia cada cartão inteiro.",
+        "errorFocus": "REVIEW_COMPARE_TWO_CUES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-35",
+      "statement": "Um dia úmido aparece num registro e algumas roupas estão no varal. O que uma observação pode afirmar?",
+      "prompt": "Um dia úmido aparece num registro e algumas roupas estão no varal. O que uma observação pode afirmar?",
+      "options": [
+        "Todas as roupas do ano secam igual",
+        "A roupa controla a umidade",
+        "O registro descreve aquele dia e as roupas mostradas naquela cena.",
+        "O registro explica os hábitos de todas as pessoas"
+      ],
+      "correctAnswer": "O registro descreve aquele dia e as roupas mostradas naquela cena.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as roupas do ano secam igual": [
+          "REVIEW_SCOPE"
+        ],
+        "A roupa controla a umidade": [
+          "REVIEW_SCOPE"
+        ],
+        "O registro explica os hábitos de todas as pessoas": [
+          "REVIEW_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_AR_UMIDO",
+      "explanation": "A descrição fica no alcance do registro.",
+      "hint": "Use ‘naquela cena’.",
+      "errorFocus": "REVIEW_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A descrição fica no alcance do registro.",
+        "incorrect": "A descrição fica no alcance do registro.",
+        "hint": "Use ‘naquela cena’.",
+        "errorFocus": "REVIEW_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-36",
+      "statement": "Duas pessoas fazem escolhas diferentes no mesmo dia quente. Qual explicação é respeitosa?",
+      "prompt": "Duas pessoas fazem escolhas diferentes no mesmo dia quente. Qual explicação é respeitosa?",
+      "options": [
+        "Uma pessoa está necessariamente errada",
+        "O calor decide tudo",
+        "As escolhas não podem variar",
+        "As pessoas podem ter escolhas diferentes; a cena não informa todos os motivos."
+      ],
+      "correctAnswer": "As pessoas podem ter escolhas diferentes; a cena não informa todos os motivos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma pessoa está necessariamente errada": [
+          "REVIEW_RESPECT_DIFFERENCE"
+        ],
+        "O calor decide tudo": [
+          "REVIEW_RESPECT_DIFFERENCE"
+        ],
+        "As escolhas não podem variar": [
+          "REVIEW_RESPECT_DIFFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_ESCOLHA_DIVERSA",
+      "explanation": "Não julgar é importante quando a evidência não explica a preferência.",
+      "hint": "Descreva a diferença sem avaliar.",
+      "errorFocus": "REVIEW_RESPECT_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Não julgar é importante quando a evidência não explica a preferência.",
+        "incorrect": "Não julgar é importante quando a evidência não explica a preferência.",
+        "hint": "Descreva a diferença sem avaliar.",
+        "errorFocus": "REVIEW_RESPECT_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-37",
+      "statement": "Em ‘dia seco; feira com melancia’, qual trecho registra o ambiente?",
+      "prompt": "Em ‘dia seco; feira com melancia’, qual trecho registra o ambiente?",
+      "options": [
+        "Dia seco.",
+        "Feira",
+        "Melancia",
+        "Nome da história"
+      ],
+      "correctAnswer": "Dia seco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Feira": [
+          "REVIEW_ENVIRONMENT_TERM"
+        ],
+        "Melancia": [
+          "REVIEW_ENVIRONMENT_TERM"
+        ],
+        "Nome da história": [
+          "REVIEW_ENVIRONMENT_TERM"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVISAO_CONDICAO_E_ESCOLHA",
+      "explanation": "‘Dia seco’ é a pista sobre a condição ambiental.",
+      "hint": "Procure a informação do tempo.",
+      "errorFocus": "REVIEW_ENVIRONMENT_TERM",
+      "feedback": {
+        "correct": "Boa observação: ‘Dia seco’ é a pista sobre a condição ambiental.",
+        "incorrect": "‘Dia seco’ é a pista sobre a condição ambiental.",
+        "hint": "Procure a informação do tempo.",
+        "errorFocus": "REVIEW_ENVIRONMENT_TERM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-38",
+      "statement": "Uma atividade escolar ocorrerá num dia quente. Qual medida considera o ambiente e respeita escolhas?",
+      "prompt": "Uma atividade escolar ocorrerá num dia quente. Qual medida considera o ambiente e respeita escolhas?",
+      "options": [
+        "Obrigar todos a usar a mesma roupa",
+        "Disponibilizar água e sombra e permitir roupas adequadas à atividade.",
+        "Cancelar toda escolha individual",
+        "Dizer que o clima será igual em qualquer lugar"
+      ],
+      "correctAnswer": "Disponibilizar água e sombra e permitir roupas adequadas à atividade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Obrigar todos a usar a mesma roupa": [
+          "REVIEW_INCLUSIVE_ADAPTATION"
+        ],
+        "Cancelar toda escolha individual": [
+          "REVIEW_INCLUSIVE_ADAPTATION"
+        ],
+        "Dizer que o clima será igual em qualquer lugar": [
+          "REVIEW_INCLUSIVE_ADAPTATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_PLANEJAR_SOMBRA",
+      "explanation": "Planejar cuidado não exige impor hábitos idênticos.",
+      "hint": "Pense em apoio sem regra universal.",
+      "errorFocus": "REVIEW_INCLUSIVE_ADAPTATION",
+      "feedback": {
+        "correct": "Boa observação: Planejar cuidado não exige impor hábitos idênticos.",
+        "incorrect": "Planejar cuidado não exige impor hábitos idênticos.",
+        "hint": "Pense em apoio sem regra universal.",
+        "errorFocus": "REVIEW_INCLUSIVE_ADAPTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-39",
+      "statement": "Uma feira aparece depois de um dia chuvoso, com verduras cobertas. O que a imagem confirma?",
+      "prompt": "Uma feira aparece depois de um dia chuvoso, com verduras cobertas. O que a imagem confirma?",
+      "options": [
+        "A chuva fez todas as verduras crescerem",
+        "A feira sempre funciona do mesmo modo",
+        "As verduras estão cobertas naquela cena após o dia registrado como chuvoso.",
+        "Todas as pessoas compraram verduras"
+      ],
+      "correctAnswer": "As verduras estão cobertas naquela cena após o dia registrado como chuvoso.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A chuva fez todas as verduras crescerem": [
+          "REVIEW_NO_UNSUPPORTED_CAUSE"
+        ],
+        "A feira sempre funciona do mesmo modo": [
+          "REVIEW_NO_UNSUPPORTED_CAUSE"
+        ],
+        "Todas as pessoas compraram verduras": [
+          "REVIEW_NO_UNSUPPORTED_CAUSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_CHUVA_E_FEIRA",
+      "explanation": "A imagem confirma elementos visíveis, não causas que não foram mostradas.",
+      "hint": "Separe o que aparece do que seria um palpite.",
+      "errorFocus": "REVIEW_NO_UNSUPPORTED_CAUSE",
+      "feedback": {
+        "correct": "Boa observação: A imagem confirma elementos visíveis, não causas que não foram mostradas.",
+        "incorrect": "A imagem confirma elementos visíveis, não causas que não foram mostradas.",
+        "hint": "Separe o que aparece do que seria um palpite.",
+        "errorFocus": "REVIEW_NO_UNSUPPORTED_CAUSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ge11-seasonal-changes-v1-40",
+      "statement": "Qual conclusão usa corretamente a palavra ‘algumas’?",
+      "prompt": "Qual conclusão usa corretamente a palavra ‘algumas’?",
+      "options": [
+        "Algumas pessoas nunca podem escolher",
+        "Todas as comunidades seguem os cartões",
+        "Algumas roupas mudam o clima",
+        "Em alguns cartões, algumas escolhas aparecem junto a condições ambientais diferentes."
+      ],
+      "correctAnswer": "Em alguns cartões, algumas escolhas aparecem junto a condições ambientais diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Algumas pessoas nunca podem escolher": [
+          "REVIEW_QUALIFIED_CONCLUSION"
+        ],
+        "Todas as comunidades seguem os cartões": [
+          "REVIEW_QUALIFIED_CONCLUSION"
+        ],
+        "Algumas roupas mudam o clima": [
+          "REVIEW_QUALIFIED_CONCLUSION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_ASSOCIACAO_LIMITADA",
+      "explanation": "A linguagem limitada preserva as diferenças entre lugares e pessoas.",
+      "hint": "Escolha a frase que continua sendo uma observação.",
+      "errorFocus": "REVIEW_QUALIFIED_CONCLUSION",
+      "feedback": {
+        "correct": "Boa observação: A linguagem limitada preserva as diferenças entre lugares e pessoas.",
+        "incorrect": "A linguagem limitada preserva as diferenças entre lugares e pessoas.",
+        "hint": "Escolha a frase que continua sendo uma observação.",
+        "errorFocus": "REVIEW_QUALIFIED_CONCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com imagens nítidas, símbolos táteis e palavras simples para quente, frio, seco e úmido.",
+          "Permitir resposta por fala, apontamento, seleção de cartões, desenho ou comunicação alternativa; não solicitar dados familiares ou alimentares pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

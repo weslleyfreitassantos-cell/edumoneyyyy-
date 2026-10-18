@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi05-games-across-times-and-places",
+  "canonicalSkillCode": "AUTHORING_EF01HI05_COMPARE_GAMES_ACROSS_CONTEXTS",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "semelhanças e diferenças entre jogos e brincadeiras em tempos e lugares distintos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar semelhanças e diferenças entre jogos e brincadeiras atuais e de outras épocas e lugares.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Brincadeiras mudam e também permanecem",
+    "objective": "Comparar jogos e brincadeiras descritos em fontes de diferentes épocas e lugares, reconhecendo características compartilhadas e mudanças sem hierarquizar culturas ou gerações.",
+    "summary": "Jogos e brincadeiras podem ter regras, materiais e nomes variados. Algumas práticas mudam com o tempo ou entre lugares; outras mantêm aspectos em comum. Relatos, fotografias identificadas e objetos podem servir como fontes, mas cada fonte informa apenas o contexto que apresenta. Nenhuma época ou comunidade deve ser chamada de superior ou inferior por brincar de outra maneira. As propostas incluem opções acessíveis e não exigem que estudantes revelem memórias familiares.",
+    "explanation": "Leia a legenda da fonte para identificar quem, onde e quando. Compare um aspecto de cada exemplo, como material, regra ou número de participantes. Uma brincadeira relatada por uma pessoa mais velha pode ser comum em um contexto específico, mas não representa todas as pessoas daquela geração. Da mesma forma, jogos atuais variam entre comunidades. Registre semelhanças e diferenças com palavras respeitosas e permita participar como observador, narrador, organizador ou jogador conforme a escolha de cada estudante.",
+    "workedExample": "Uma fotografia identificada mostra crianças brincando de roda décadas atrás; outra fonte atual descreve uma roda na escola. As duas incluem movimento em grupo, e as fontes podem mostrar diferenças de música ou regras. Isso não prova que todas as rodas eram iguais em qualquer lugar.",
+    "commonMistake": "Tratar uma memória como regra para toda uma época, chamar uma brincadeira de atrasada ou presumir que todas as crianças podem participar do mesmo modo.",
+    "priorKnowledge": [
+      "Reconhecer regras e materiais de jogos conhecidos.",
+      "Identificar informações básicas em uma legenda ou relato."
+    ],
+    "keyConcepts": [
+      "jogo",
+      "brincadeira",
+      "fonte",
+      "tempo",
+      "lugar",
+      "semelhança",
+      "diferença",
+      "mudança",
+      "permanência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SOURCE_CONTEXT",
+        "action": "Volte à legenda e identifique o contexto que a fonte realmente informa antes de generalizar."
+      },
+      {
+        "errorFocus": "NO_GENERATION_HIERARCHY",
+        "action": "Substitua comparações de superioridade por descrições concretas de regra, material ou participação."
+      },
+      {
+        "errorFocus": "ACCESSIBLE_PLAY",
+        "action": "Ofereça papéis diversos e adaptações, sem exigir participação física ou exposição de memórias pessoais."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+      "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+      "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi05-play-source-cards",
+        "title": "Cartas de fontes de brincadeiras",
+        "instructions": "Cartões fictícios e fontes identificadas descrevem jogos de tempos e lugares diferentes.\n1. Leia ou ouça a legenda de cada fonte.\n2. Compare regra, material ou modo de participação.\n3. Registre uma semelhança e uma diferença sem classificar grupos.",
+        "steps": [
+          "Leia ou ouça a legenda de cada fonte.",
+          "Compare regra, material ou modo de participação.",
+          "Registre uma semelhança e uma diferença sem classificar grupos."
+        ],
+        "evidence": "Comparação fundamentada em detalhes e contexto das fontes.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um jogo com apoio.",
+            "developing": "aponta uma semelhança ou diferença.",
+            "proficient": "compara duas fontes contextualizadas sem generalizações."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi05-adapted-play-lab",
+        "title": "Laboratório de regras",
+        "instructions": "A turma testa versões acessíveis de uma brincadeira sem competir por desempenho físico.\n1. Conheça a regra descrita em um cartão.\n2. Experimente ou observe uma adaptação escolhida.\n3. Compare o que permaneceu e o que mudou.",
+        "steps": [
+          "Conheça a regra descrita em um cartão.",
+          "Experimente ou observe uma adaptação escolhida.",
+          "Compare o que permaneceu e o que mudou."
+        ],
+        "evidence": "Registro claro de continuidade e mudança na regra ou participação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "participa ou observa uma etapa.",
+            "developing": "identifica uma regra comum ou alterada.",
+            "proficient": "explica a mudança e considera diferentes formas de participação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi05-games-across-times-and-places-01",
+          "v1-ef01hi05-games-across-times-and-places-02",
+          "v1-ef01hi05-games-across-times-and-places-03",
+          "v1-ef01hi05-games-across-times-and-places-04",
+          "v1-ef01hi05-games-across-times-and-places-05",
+          "v1-ef01hi05-games-across-times-and-places-06",
+          "v1-ef01hi05-games-across-times-and-places-07",
+          "v1-ef01hi05-games-across-times-and-places-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi05-games-across-times-and-places-09",
+          "v1-ef01hi05-games-across-times-and-places-10",
+          "v1-ef01hi05-games-across-times-and-places-11",
+          "v1-ef01hi05-games-across-times-and-places-12",
+          "v1-ef01hi05-games-across-times-and-places-13",
+          "v1-ef01hi05-games-across-times-and-places-14",
+          "v1-ef01hi05-games-across-times-and-places-15",
+          "v1-ef01hi05-games-across-times-and-places-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi05-games-across-times-and-places-17",
+          "v1-ef01hi05-games-across-times-and-places-18",
+          "v1-ef01hi05-games-across-times-and-places-19",
+          "v1-ef01hi05-games-across-times-and-places-20",
+          "v1-ef01hi05-games-across-times-and-places-21",
+          "v1-ef01hi05-games-across-times-and-places-22",
+          "v1-ef01hi05-games-across-times-and-places-23",
+          "v1-ef01hi05-games-across-times-and-places-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi05-games-across-times-and-places-25",
+          "v1-ef01hi05-games-across-times-and-places-26",
+          "v1-ef01hi05-games-across-times-and-places-27",
+          "v1-ef01hi05-games-across-times-and-places-28",
+          "v1-ef01hi05-games-across-times-and-places-29",
+          "v1-ef01hi05-games-across-times-and-places-30",
+          "v1-ef01hi05-games-across-times-and-places-31",
+          "v1-ef01hi05-games-across-times-and-places-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi05-games-across-times-and-places-33",
+          "v1-ef01hi05-games-across-times-and-places-34",
+          "v1-ef01hi05-games-across-times-and-places-35",
+          "v1-ef01hi05-games-across-times-and-places-36",
+          "v1-ef01hi05-games-across-times-and-places-37",
+          "v1-ef01hi05-games-across-times-and-places-38",
+          "v1-ef01hi05-games-across-times-and-places-39",
+          "v1-ef01hi05-games-across-times-and-places-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI05",
+        "descriptor": "Identificar semelhanças e diferenças entre jogos e brincadeiras atuais e de outras épocas e lugares.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-01",
+      "statement": "Uma fotografia identificada mostra crianças numa roda. O que a fonte apresenta?",
+      "prompt": "Uma fotografia identificada mostra crianças numa roda. O que a fonte apresenta?",
+      "options": [
+        "Uma brincadeira em roda naquele contexto.",
+        "Todas as crianças de toda época brincavam assim",
+        "Uma regra universal",
+        "Um jogo sem participantes"
+      ],
+      "correctAnswer": "Uma brincadeira em roda naquele contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as crianças de toda época brincavam assim": [
+          "SOURCE_BOUNDED_DESCRIPTION"
+        ],
+        "Uma regra universal": [
+          "SOURCE_BOUNDED_DESCRIPTION"
+        ],
+        "Um jogo sem participantes": [
+          "SOURCE_BOUNDED_DESCRIPTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RODA_EM_FOTOGRAFIA",
+      "explanation": "A fotografia registra uma cena situada.",
+      "hint": "Leia a legenda antes de concluir.",
+      "errorFocus": "SOURCE_BOUNDED_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A fotografia registra uma cena situada.",
+        "incorrect": "A fotografia registra uma cena situada.",
+        "hint": "Leia a legenda antes de concluir.",
+        "errorFocus": "SOURCE_BOUNDED_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-02",
+      "statement": "Dois relatos mencionam lançar uma bola ao alvo. O que pode ser uma semelhança?",
+      "prompt": "Dois relatos mencionam lançar uma bola ao alvo. O que pode ser uma semelhança?",
+      "options": [
+        "Usam sempre o mesmo material",
+        "Ambos incluem lançar algo em direção a um alvo.",
+        "Aconteceram no mesmo século",
+        "Têm todas as regras iguais"
+      ],
+      "correctAnswer": "Ambos incluem lançar algo em direção a um alvo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usam sempre o mesmo material": [
+          "COMPARE_ACTIONS"
+        ],
+        "Aconteceram no mesmo século": [
+          "COMPARE_ACTIONS"
+        ],
+        "Têm todas as regras iguais": [
+          "COMPARE_ACTIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOLINHA_DE_GUDE_E_BOLAS_ATUAIS",
+      "explanation": "A ação descrita aparece nos dois relatos.",
+      "hint": "Compare o que cada relato diz.",
+      "errorFocus": "COMPARE_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: A ação descrita aparece nos dois relatos.",
+        "incorrect": "A ação descrita aparece nos dois relatos.",
+        "hint": "Compare o que cada relato diz.",
+        "errorFocus": "COMPARE_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-03",
+      "statement": "Uma avó conta uma brincadeira de sua infância. O que esse relato informa diretamente?",
+      "prompt": "Uma avó conta uma brincadeira de sua infância. O que esse relato informa diretamente?",
+      "options": [
+        "O que todas as crianças faziam",
+        "Todas as regras de uma época",
+        "Uma experiência lembrada por ela.",
+        "A única brincadeira de seu lugar"
+      ],
+      "correctAnswer": "Uma experiência lembrada por ela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O que todas as crianças faziam": [
+          "MEMORY_SCOPE"
+        ],
+        "Todas as regras de uma época": [
+          "MEMORY_SCOPE"
+        ],
+        "A única brincadeira de seu lugar": [
+          "MEMORY_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "RELATO_DE_AVO",
+      "explanation": "Uma memória pessoal tem um alcance específico.",
+      "hint": "Considere quem contou a história.",
+      "errorFocus": "MEMORY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Uma memória pessoal tem um alcance específico.",
+        "incorrect": "Uma memória pessoal tem um alcance específico.",
+        "hint": "Considere quem contou a história.",
+        "errorFocus": "MEMORY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-04",
+      "statement": "Um cartão atual descreve regras de um jogo. Ele pode ser comparado com uma fonte antiga?",
+      "prompt": "Um cartão atual descreve regras de um jogo. Ele pode ser comparado com uma fonte antiga?",
+      "options": [
+        "Não, jogos nunca têm história",
+        "Sim, mas sem ler as fontes",
+        "Só se uma regra for superior",
+        "Sim, observando os detalhes e o contexto de cada fonte."
+      ],
+      "correctAnswer": "Sim, observando os detalhes e o contexto de cada fonte.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, jogos nunca têm história": [
+          "SOURCE_COMPARISON"
+        ],
+        "Sim, mas sem ler as fontes": [
+          "SOURCE_COMPARISON"
+        ],
+        "Só se uma regra for superior": [
+          "SOURCE_COMPARISON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "JOGO_COM_CARTOES",
+      "explanation": "Fontes contextualizadas permitem comparações cuidadosas.",
+      "hint": "Leia as informações dos dois cartões.",
+      "errorFocus": "SOURCE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Fontes contextualizadas permitem comparações cuidadosas.",
+        "incorrect": "Fontes contextualizadas permitem comparações cuidadosas.",
+        "hint": "Leia as informações dos dois cartões.",
+        "errorFocus": "SOURCE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-05",
+      "statement": "Dois lugares usam nomes diferentes para brincadeiras parecidas. Qual conclusão é cuidadosa?",
+      "prompt": "Dois lugares usam nomes diferentes para brincadeiras parecidas. Qual conclusão é cuidadosa?",
+      "options": [
+        "Os nomes e detalhes podem variar entre lugares.",
+        "Um lugar está errado",
+        "Todos usam o mesmo nome",
+        "Um nome é mais correto por ser antigo"
+      ],
+      "correctAnswer": "Os nomes e detalhes podem variar entre lugares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um lugar está errado": [
+          "PLACE_VARIATION"
+        ],
+        "Todos usam o mesmo nome": [
+          "PLACE_VARIATION"
+        ],
+        "Um nome é mais correto por ser antigo": [
+          "PLACE_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BRINCADEIRA_EM_DOIS_LUGARES",
+      "explanation": "Diferenças de nome podem refletir contextos diversos.",
+      "hint": "Evite declarar um nome universal.",
+      "errorFocus": "PLACE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Diferenças de nome podem refletir contextos diversos.",
+        "incorrect": "Diferenças de nome podem refletir contextos diversos.",
+        "hint": "Evite declarar um nome universal.",
+        "errorFocus": "PLACE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-06",
+      "statement": "Duas fontes mostram pular corda, mas contam regras diferentes. O que registrar?",
+      "prompt": "Duas fontes mostram pular corda, mas contam regras diferentes. O que registrar?",
+      "options": [
+        "Que uma fonte precisa ser falsa",
+        "Uma semelhança na atividade e uma diferença nas regras descritas.",
+        "Que toda regra é idêntica",
+        "Que a prática não mudou"
+      ],
+      "correctAnswer": "Uma semelhança na atividade e uma diferença nas regras descritas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que uma fonte precisa ser falsa": [
+          "RULE_VARIATION"
+        ],
+        "Que toda regra é idêntica": [
+          "RULE_VARIATION"
+        ],
+        "Que a prática não mudou": [
+          "RULE_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CORDA_COM_REGRAS_DIFERENTES",
+      "explanation": "As fontes podem registrar versões distintas.",
+      "hint": "Separe ação comum e regra diferente.",
+      "errorFocus": "RULE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: As fontes podem registrar versões distintas.",
+        "incorrect": "As fontes podem registrar versões distintas.",
+        "hint": "Separe ação comum e regra diferente.",
+        "errorFocus": "RULE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-07",
+      "statement": "Uma fonte descreve passar um objeto em grupo. Qual elemento podemos comparar?",
+      "prompt": "Uma fonte descreve passar um objeto em grupo. Qual elemento podemos comparar?",
+      "options": [
+        "A cor preferida de todos",
+        "O mês em que todo mundo nasceu",
+        "A regra de passar o objeto entre participantes.",
+        "A altura dos jogadores"
+      ],
+      "correctAnswer": "A regra de passar o objeto entre participantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor preferida de todos": [
+          "GAME_FEATURE"
+        ],
+        "O mês em que todo mundo nasceu": [
+          "GAME_FEATURE"
+        ],
+        "A altura dos jogadores": [
+          "GAME_FEATURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BRINCADEIRA_DE_ESTAFETA",
+      "explanation": "A regra aparece explicitamente na fonte.",
+      "hint": "Encontre uma característica do jogo.",
+      "errorFocus": "GAME_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: A regra aparece explicitamente na fonte.",
+        "incorrect": "A regra aparece explicitamente na fonte.",
+        "hint": "Encontre uma característica do jogo.",
+        "errorFocus": "GAME_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-08",
+      "statement": "Qual frase compara brincadeiras sem diminuir uma geração?",
+      "prompt": "Qual frase compara brincadeiras sem diminuir uma geração?",
+      "options": [
+        "Brincadeiras antigas eram inferiores",
+        "Jogos atuais são sempre melhores",
+        "Uma geração não sabia brincar",
+        "As fontes mostram materiais diferentes em contextos distintos."
+      ],
+      "correctAnswer": "As fontes mostram materiais diferentes em contextos distintos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Brincadeiras antigas eram inferiores": [
+          "RESPECTFUL_TIME_COMPARISON"
+        ],
+        "Jogos atuais são sempre melhores": [
+          "RESPECTFUL_TIME_COMPARISON"
+        ],
+        "Uma geração não sabia brincar": [
+          "RESPECTFUL_TIME_COMPARISON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_HIERARQUIA_ENTRE_GERACOES",
+      "explanation": "A frase descreve fontes sem hierarquia.",
+      "hint": "Escolha uma descrição sem julgamento.",
+      "errorFocus": "RESPECTFUL_TIME_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve fontes sem hierarquia.",
+        "incorrect": "A frase descreve fontes sem hierarquia.",
+        "hint": "Escolha uma descrição sem julgamento.",
+        "errorFocus": "RESPECTFUL_TIME_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-09",
+      "statement": "Um desenho atual e uma foto antiga mostram casas marcadas no chão para pular. O que pode ser semelhante?",
+      "prompt": "Um desenho atual e uma foto antiga mostram casas marcadas no chão para pular. O que pode ser semelhante?",
+      "options": [
+        "Há um percurso marcado para a brincadeira.",
+        "O material é obrigatoriamente igual",
+        "As fontes são do mesmo ano",
+        "As crianças usam a mesma roupa"
+      ],
+      "correctAnswer": "Há um percurso marcado para a brincadeira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O material é obrigatoriamente igual": [
+          "SHARED_GAME_STRUCTURE"
+        ],
+        "As fontes são do mesmo ano": [
+          "SHARED_GAME_STRUCTURE"
+        ],
+        "As crianças usam a mesma roupa": [
+          "SHARED_GAME_STRUCTURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AMARELINHA_DESENHADA",
+      "explanation": "As duas fontes mostram um percurso marcado.",
+      "hint": "Compare a estrutura do jogo.",
+      "errorFocus": "SHARED_GAME_STRUCTURE",
+      "feedback": {
+        "correct": "Boa observação: As duas fontes mostram um percurso marcado.",
+        "incorrect": "As duas fontes mostram um percurso marcado.",
+        "hint": "Compare a estrutura do jogo.",
+        "errorFocus": "SHARED_GAME_STRUCTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-10",
+      "statement": "Por que observar data e cidade numa fonte sobre brincadeira?",
+      "prompt": "Por que observar data e cidade numa fonte sobre brincadeira?",
+      "options": [
+        "Para decidir qual cidade é melhor",
+        "Para situar quando e onde o registro foi feito.",
+        "Para apagar as regras",
+        "Para provar que todos brincavam assim"
+      ],
+      "correctAnswer": "Para situar quando e onde o registro foi feito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para decidir qual cidade é melhor": [
+          "SOURCE_METADATA"
+        ],
+        "Para apagar as regras": [
+          "SOURCE_METADATA"
+        ],
+        "Para provar que todos brincavam assim": [
+          "SOURCE_METADATA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "LEGENDA_COM_DATA_E_CIDADE",
+      "explanation": "Data e lugar ajudam a interpretar a fonte.",
+      "hint": "Leia as informações da legenda.",
+      "errorFocus": "SOURCE_METADATA",
+      "feedback": {
+        "correct": "Boa observação: Data e lugar ajudam a interpretar a fonte.",
+        "incorrect": "Data e lugar ajudam a interpretar a fonte.",
+        "hint": "Leia as informações da legenda.",
+        "errorFocus": "SOURCE_METADATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-11",
+      "statement": "Um relato descreve esticar um elástico e criar sequências. Qual é um elemento citado?",
+      "prompt": "Um relato descreve esticar um elástico e criar sequências. Qual é um elemento citado?",
+      "options": [
+        "Construir uma casa",
+        "Medir a temperatura",
+        "Uma sequência de movimentos com elástico.",
+        "Contar páginas"
+      ],
+      "correctAnswer": "Uma sequência de movimentos com elástico.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Construir uma casa": [
+          "GAME_MATERIAL_AND_RULE"
+        ],
+        "Medir a temperatura": [
+          "GAME_MATERIAL_AND_RULE"
+        ],
+        "Contar páginas": [
+          "GAME_MATERIAL_AND_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PULAR_ELASTICO",
+      "explanation": "O relato informa o material e a ação.",
+      "hint": "Procure o que os participantes fazem.",
+      "errorFocus": "GAME_MATERIAL_AND_RULE",
+      "feedback": {
+        "correct": "Boa observação: O relato informa o material e a ação.",
+        "incorrect": "O relato informa o material e a ação.",
+        "hint": "Procure o que os participantes fazem.",
+        "errorFocus": "GAME_MATERIAL_AND_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-12",
+      "statement": "Duas versões de uma brincadeira usam cantigas diferentes. Isso mostra que...",
+      "prompt": "Duas versões de uma brincadeira usam cantigas diferentes. Isso mostra que...",
+      "options": [
+        "uma versão apaga todas as outras",
+        "só uma cantiga pode existir",
+        "as fontes não podem ser comparadas",
+        "uma prática pode ter variações."
+      ],
+      "correctAnswer": "uma prática pode ter variações.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma versão apaga todas as outras": [
+          "VARIANTS_NOT_ERRORS"
+        ],
+        "só uma cantiga pode existir": [
+          "VARIANTS_NOT_ERRORS"
+        ],
+        "as fontes não podem ser comparadas": [
+          "VARIANTS_NOT_ERRORS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VERSO_EM_BRINCADEIRA",
+      "explanation": "Variações podem coexistir em contextos diferentes.",
+      "hint": "Diferença não significa erro automaticamente.",
+      "errorFocus": "VARIANTS_NOT_ERRORS",
+      "feedback": {
+        "correct": "Boa observação: Variações podem coexistir em contextos diferentes.",
+        "incorrect": "Variações podem coexistir em contextos diferentes.",
+        "hint": "Diferença não significa erro automaticamente.",
+        "errorFocus": "VARIANTS_NOT_ERRORS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-13",
+      "statement": "Uma regra impede que alguém participe. O que pode ser feito numa atividade escolar?",
+      "prompt": "Uma regra impede que alguém participe. O que pode ser feito numa atividade escolar?",
+      "options": [
+        "Combinar uma adaptação que preserve o objetivo e amplie a participação.",
+        "Excluir a pessoa",
+        "Dizer que não é uma brincadeira",
+        "Comparar quem corre mais"
+      ],
+      "correctAnswer": "Combinar uma adaptação que preserve o objetivo e amplie a participação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Excluir a pessoa": [
+          "INCLUSIVE_ADAPTATION"
+        ],
+        "Dizer que não é uma brincadeira": [
+          "INCLUSIVE_ADAPTATION"
+        ],
+        "Comparar quem corre mais": [
+          "INCLUSIVE_ADAPTATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BRINCADEIRA_ACESSIVEL",
+      "explanation": "Adaptar pode manter a proposta e ampliar participação.",
+      "hint": "Pense em diferentes papéis e movimentos.",
+      "errorFocus": "INCLUSIVE_ADAPTATION",
+      "feedback": {
+        "correct": "Boa observação: Adaptar pode manter a proposta e ampliar participação.",
+        "incorrect": "Adaptar pode manter a proposta e ampliar participação.",
+        "hint": "Pense em diferentes papéis e movimentos.",
+        "errorFocus": "INCLUSIVE_ADAPTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-14",
+      "statement": "Duas fontes mostram peças de materiais diferentes para jogos semelhantes. O que mudou?",
+      "prompt": "Duas fontes mostram peças de materiais diferentes para jogos semelhantes. O que mudou?",
+      "options": [
+        "A existência de todas as regras",
+        "O material das peças, segundo as fontes.",
+        "O lugar de nascimento dos jogadores",
+        "A idade de todos os participantes"
+      ],
+      "correctAnswer": "O material das peças, segundo as fontes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A existência de todas as regras": [
+          "MATERIAL_CHANGE"
+        ],
+        "O lugar de nascimento dos jogadores": [
+          "MATERIAL_CHANGE"
+        ],
+        "A idade de todos os participantes": [
+          "MATERIAL_CHANGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OBJETO_DE_MADEIRA_E_PLASTICO",
+      "explanation": "A diferença indicada é o material.",
+      "hint": "Use apenas o que a imagem informa.",
+      "errorFocus": "MATERIAL_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A diferença indicada é o material.",
+        "incorrect": "A diferença indicada é o material.",
+        "hint": "Use apenas o que a imagem informa.",
+        "errorFocus": "MATERIAL_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-15",
+      "statement": "Uma gravação tem data e nome de quem contou. Que tipo de fonte ela é?",
+      "prompt": "Uma gravação tem data e nome de quem contou. Que tipo de fonte ela é?",
+      "options": [
+        "Uma regra universal",
+        "Um mapa sem legenda",
+        "Um relato oral identificado.",
+        "Um objeto sem informação"
+      ],
+      "correctAnswer": "Um relato oral identificado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma regra universal": [
+          "ORAL_SOURCE"
+        ],
+        "Um mapa sem legenda": [
+          "ORAL_SOURCE"
+        ],
+        "Um objeto sem informação": [
+          "ORAL_SOURCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "RELATO_ORAL_IDENTIFICADO",
+      "explanation": "A gravação registra uma narrativa oral contextualizada.",
+      "hint": "Observe o formato da fonte.",
+      "errorFocus": "ORAL_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A gravação registra uma narrativa oral contextualizada.",
+        "incorrect": "A gravação registra uma narrativa oral contextualizada.",
+        "hint": "Observe o formato da fonte.",
+        "errorFocus": "ORAL_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-16",
+      "statement": "Por que comparar jogos não precisa decidir qual é melhor?",
+      "prompt": "Por que comparar jogos não precisa decidir qual é melhor?",
+      "options": [
+        "Porque nenhuma brincadeira tem regra",
+        "Porque fontes não mostram diferenças",
+        "Porque só uma época importa",
+        "Porque a atividade busca reconhecer características e contextos."
+      ],
+      "correctAnswer": "Porque a atividade busca reconhecer características e contextos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque nenhuma brincadeira tem regra": [
+          "PURPOSE_OF_HISTORY_COMPARISON"
+        ],
+        "Porque fontes não mostram diferenças": [
+          "PURPOSE_OF_HISTORY_COMPARISON"
+        ],
+        "Porque só uma época importa": [
+          "PURPOSE_OF_HISTORY_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARAR_SEM_DISPUTA",
+      "explanation": "Comparar identifica semelhanças e diferenças, não vencedores.",
+      "hint": "Pense no objetivo de estudar fontes.",
+      "errorFocus": "PURPOSE_OF_HISTORY_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Comparar identifica semelhanças e diferenças, não vencedores.",
+        "incorrect": "Comparar identifica semelhanças e diferenças, não vencedores.",
+        "hint": "Pense no objetivo de estudar fontes.",
+        "errorFocus": "PURPOSE_OF_HISTORY_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-17",
+      "statement": "Uma fonte descreve um jogo de tabuleiro de outro lugar. Como comparar com um jogo conhecido?",
+      "prompt": "Uma fonte descreve um jogo de tabuleiro de outro lugar. Como comparar com um jogo conhecido?",
+      "options": [
+        "Observar objetivo, regras e materiais descritos em cada fonte.",
+        "Presumir que todos jogam igual",
+        "Chamar um jogo de inferior",
+        "Ignorar a fonte por ser diferente"
+      ],
+      "correctAnswer": "Observar objetivo, regras e materiais descritos em cada fonte.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Presumir que todos jogam igual": [
+          "CROSS_PLACE_COMPARISON"
+        ],
+        "Chamar um jogo de inferior": [
+          "CROSS_PLACE_COMPARISON"
+        ],
+        "Ignorar a fonte por ser diferente": [
+          "CROSS_PLACE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "JOGO_DE_TABULEIRO_DE_OUTRO_LUGAR",
+      "explanation": "As características descritas permitem comparação respeitosa.",
+      "hint": "Compare as regras e o contexto.",
+      "errorFocus": "CROSS_PLACE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As características descritas permitem comparação respeitosa.",
+        "incorrect": "As características descritas permitem comparação respeitosa.",
+        "hint": "Compare as regras e o contexto.",
+        "errorFocus": "CROSS_PLACE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-18",
+      "statement": "Uma foto antiga não tem data nem lugar. Qual cuidado é necessário?",
+      "prompt": "Uma foto antiga não tem data nem lugar. Qual cuidado é necessário?",
+      "options": [
+        "Inventar a cidade",
+        "Não afirmar quando ou onde aconteceu sem outra evidência.",
+        "Dizer que retrata todos",
+        "Descartar qualquer observação visual"
+      ],
+      "correctAnswer": "Não afirmar quando ou onde aconteceu sem outra evidência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Inventar a cidade": [
+          "SOURCE_LIMITS"
+        ],
+        "Dizer que retrata todos": [
+          "SOURCE_LIMITS"
+        ],
+        "Descartar qualquer observação visual": [
+          "SOURCE_LIMITS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "UMA_FOTO_SEM_LEGENDA",
+      "explanation": "Sem legenda, parte do contexto permanece desconhecida.",
+      "hint": "Separe o que vê do que não sabe.",
+      "errorFocus": "SOURCE_LIMITS",
+      "feedback": {
+        "correct": "Boa observação: Sem legenda, parte do contexto permanece desconhecida.",
+        "incorrect": "Sem legenda, parte do contexto permanece desconhecida.",
+        "hint": "Separe o que vê do que não sabe.",
+        "errorFocus": "SOURCE_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-19",
+      "statement": "Dois registros de jogo de palmas usam ritmo e sequência. Qual semelhança pode ser apontada?",
+      "prompt": "Dois registros de jogo de palmas usam ritmo e sequência. Qual semelhança pode ser apontada?",
+      "options": [
+        "Aconteceram na mesma época",
+        "Usam as mesmas palavras",
+        "Ambos coordenam palmas em uma sequência.",
+        "Têm participantes idênticos"
+      ],
+      "correctAnswer": "Ambos coordenam palmas em uma sequência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Aconteceram na mesma época": [
+          "COMMON_ACTION"
+        ],
+        "Usam as mesmas palavras": [
+          "COMMON_ACTION"
+        ],
+        "Têm participantes idênticos": [
+          "COMMON_ACTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JOGO_DE_PALMAS",
+      "explanation": "A sequência de palmas é compartilhada nos registros.",
+      "hint": "Encontre uma ação presente nos dois.",
+      "errorFocus": "COMMON_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A sequência de palmas é compartilhada nos registros.",
+        "incorrect": "A sequência de palmas é compartilhada nos registros.",
+        "hint": "Encontre uma ação presente nos dois.",
+        "errorFocus": "COMMON_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-20",
+      "statement": "Um jogo atual usa aplicativo e outro usa cartões. O que a diferença mostra?",
+      "prompt": "Um jogo atual usa aplicativo e outro usa cartões. O que a diferença mostra?",
+      "options": [
+        "O jogo com cartões não tem regras",
+        "Toda brincadeira antiga era igual",
+        "Aplicativos definem uma época inteira",
+        "Os materiais podem variar entre versões e contextos."
+      ],
+      "correctAnswer": "Os materiais podem variar entre versões e contextos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O jogo com cartões não tem regras": [
+          "MATERIAL_CONTEXT"
+        ],
+        "Toda brincadeira antiga era igual": [
+          "MATERIAL_CONTEXT"
+        ],
+        "Aplicativos definem uma época inteira": [
+          "MATERIAL_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BRINCADEIRA_E_TECNOLOGIA",
+      "explanation": "Os materiais apresentados são diferentes; isso não resume uma época inteira.",
+      "hint": "Limite a conclusão às fontes.",
+      "errorFocus": "MATERIAL_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Os materiais apresentados são diferentes; isso não resume uma época inteira.",
+        "incorrect": "Os materiais apresentados são diferentes; isso não resume uma época inteira.",
+        "hint": "Limite a conclusão às fontes.",
+        "errorFocus": "MATERIAL_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-21",
+      "statement": "Dois relatos de décadas distintas descrevem esconder objetos. O que comparar?",
+      "prompt": "Dois relatos de décadas distintas descrevem esconder objetos. O que comparar?",
+      "options": [
+        "As regras e os contextos informados em cada relato.",
+        "Qual narrador é mais importante",
+        "Qual geração é superior",
+        "Se todos os jogos eram iguais"
+      ],
+      "correctAnswer": "As regras e os contextos informados em cada relato.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual narrador é mais importante": [
+          "TEMPORAL_SOURCE_COMPARISON"
+        ],
+        "Qual geração é superior": [
+          "TEMPORAL_SOURCE_COMPARISON"
+        ],
+        "Se todos os jogos eram iguais": [
+          "TEMPORAL_SOURCE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "READ",
+      "contextFamily": "DOIS_RELATOS_DE_TEMPOS",
+      "explanation": "Fontes diferentes permitem comparar características específicas.",
+      "hint": "Use detalhes relatados.",
+      "errorFocus": "TEMPORAL_SOURCE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Fontes diferentes permitem comparar características específicas.",
+        "incorrect": "Fontes diferentes permitem comparar características específicas.",
+        "hint": "Use detalhes relatados.",
+        "errorFocus": "TEMPORAL_SOURCE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-22",
+      "statement": "Um cartão descreve rebater uma peteca sem deixá-la cair. Qual aspecto pode ser registrado?",
+      "prompt": "Um cartão descreve rebater uma peteca sem deixá-la cair. Qual aspecto pode ser registrado?",
+      "options": [
+        "O gosto musical dos jogadores",
+        "A regra de manter a peteca em movimento.",
+        "A idade de todas as pessoas",
+        "A temperatura do local"
+      ],
+      "correctAnswer": "A regra de manter a peteca em movimento.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O gosto musical dos jogadores": [
+          "RULE_AS_EVIDENCE"
+        ],
+        "A idade de todas as pessoas": [
+          "RULE_AS_EVIDENCE"
+        ],
+        "A temperatura do local": [
+          "RULE_AS_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGRAS_DE_PETeca",
+      "explanation": "A regra está explícita no cartão.",
+      "hint": "Identifique a ação da regra.",
+      "errorFocus": "RULE_AS_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A regra está explícita no cartão.",
+        "incorrect": "A regra está explícita no cartão.",
+        "hint": "Identifique a ação da regra.",
+        "errorFocus": "RULE_AS_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-23",
+      "statement": "Uma prática descrita por uma comunidade é nova para a turma. Como estudá-la?",
+      "prompt": "Uma prática descrita por uma comunidade é nova para a turma. Como estudá-la?",
+      "options": [
+        "Imitar sem conhecer contexto",
+        "Fazer piadas sobre a comunidade",
+        "Escutar a fonte, registrar contexto e evitar estereótipos.",
+        "Dizer que a prática é inferior"
+      ],
+      "correctAnswer": "Escutar a fonte, registrar contexto e evitar estereótipos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Imitar sem conhecer contexto": [
+          "CULTURAL_RESPECT"
+        ],
+        "Fazer piadas sobre a comunidade": [
+          "CULTURAL_RESPECT"
+        ],
+        "Dizer que a prática é inferior": [
+          "CULTURAL_RESPECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "JOGO_DE_OUTRA_COMUNIDADE",
+      "explanation": "Contextualização evita reduzir uma comunidade a uma prática.",
+      "hint": "Trate a fonte com respeito.",
+      "errorFocus": "CULTURAL_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Contextualização evita reduzir uma comunidade a uma prática.",
+        "incorrect": "Contextualização evita reduzir uma comunidade a uma prática.",
+        "hint": "Trate a fonte com respeito.",
+        "errorFocus": "CULTURAL_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-24",
+      "statement": "Por que a turma deve permitir comparar fontes sem pedir histórias familiares pessoais?",
+      "prompt": "Por que a turma deve permitir comparar fontes sem pedir histórias familiares pessoais?",
+      "options": [
+        "Porque memórias nunca têm valor",
+        "Porque só adultos podem estudar jogos",
+        "Porque todos têm as mesmas lembranças",
+        "A investigação pode ocorrer com fontes públicas e exemplos fictícios."
+      ],
+      "correctAnswer": "A investigação pode ocorrer com fontes públicas e exemplos fictícios.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque memórias nunca têm valor": [
+          "PRIVACY_SAFE_HISTORY"
+        ],
+        "Porque só adultos podem estudar jogos": [
+          "PRIVACY_SAFE_HISTORY"
+        ],
+        "Porque todos têm as mesmas lembranças": [
+          "PRIVACY_SAFE_HISTORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MEMORIA_VOLUNTARIA",
+      "explanation": "Fontes compartilhadas permitem aprender sem exposição pessoal.",
+      "hint": "Escolha uma fonte que todos possam consultar.",
+      "errorFocus": "PRIVACY_SAFE_HISTORY",
+      "feedback": {
+        "correct": "Boa observação: Fontes compartilhadas permitem aprender sem exposição pessoal.",
+        "incorrect": "Fontes compartilhadas permitem aprender sem exposição pessoal.",
+        "hint": "Escolha uma fonte que todos possam consultar.",
+        "errorFocus": "PRIVACY_SAFE_HISTORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-25",
+      "statement": "Dois cartões têm regras parecidas e materiais diferentes. O que registrar?",
+      "prompt": "Dois cartões têm regras parecidas e materiais diferentes. O que registrar?",
+      "options": [
+        "Uma semelhança nas regras e diferença nos materiais.",
+        "Que os cartões são idênticos",
+        "Que um material é melhor",
+        "Que nenhum jogo tem contexto"
+      ],
+      "correctAnswer": "Uma semelhança nas regras e diferença nos materiais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que os cartões são idênticos": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ],
+        "Que um material é melhor": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ],
+        "Que nenhum jogo tem contexto": [
+          "SIMILARITY_AND_DIFFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DOIS_CARTOES_DE_BRINCADEIRA",
+      "explanation": "A comparação pode registrar ambos os aspectos.",
+      "hint": "Nomeie uma semelhança e uma diferença.",
+      "errorFocus": "SIMILARITY_AND_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação pode registrar ambos os aspectos.",
+        "incorrect": "A comparação pode registrar ambos os aspectos.",
+        "hint": "Nomeie uma semelhança e uma diferença.",
+        "errorFocus": "SIMILARITY_AND_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-26",
+      "statement": "Uma legenda informa um bairro e um ano. O que esses dados indicam?",
+      "prompt": "Uma legenda informa um bairro e um ano. O que esses dados indicam?",
+      "options": [
+        "A regra universal do jogo",
+        "O contexto de lugar e tempo da fonte.",
+        "O nome de todos os jogadores",
+        "O resultado de uma competição"
+      ],
+      "correctAnswer": "O contexto de lugar e tempo da fonte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A regra universal do jogo": [
+          "TIME_PLACE_CONTEXT_REVIEW"
+        ],
+        "O nome de todos os jogadores": [
+          "TIME_PLACE_CONTEXT_REVIEW"
+        ],
+        "O resultado de uma competição": [
+          "TIME_PLACE_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "FONTE_COM_LOCAL",
+      "explanation": "A legenda situa o registro.",
+      "hint": "Consulte a legenda.",
+      "errorFocus": "TIME_PLACE_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A legenda situa o registro.",
+        "incorrect": "A legenda situa o registro.",
+        "hint": "Consulte a legenda.",
+        "errorFocus": "TIME_PLACE_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-27",
+      "statement": "Uma pessoa lembra uma brincadeira da infância. Qual conclusão extrapola a fonte?",
+      "prompt": "Uma pessoa lembra uma brincadeira da infância. Qual conclusão extrapola a fonte?",
+      "options": [
+        "Que aquela pessoa relata uma memória",
+        "Que a fonte tem um narrador",
+        "Que todas as crianças da época brincavam do mesmo modo.",
+        "Que a lembrança tem um contexto"
+      ],
+      "correctAnswer": "Que todas as crianças da época brincavam do mesmo modo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que aquela pessoa relata uma memória": [
+          "MEMORY_SCOPE_REVIEW"
+        ],
+        "Que a fonte tem um narrador": [
+          "MEMORY_SCOPE_REVIEW"
+        ],
+        "Que a lembrança tem um contexto": [
+          "MEMORY_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NAO_GENERALIZAR_UMA_MEMORIA",
+      "explanation": "Uma memória não representa automaticamente todas as pessoas.",
+      "hint": "Considere o alcance do relato.",
+      "errorFocus": "MEMORY_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma memória não representa automaticamente todas as pessoas.",
+        "incorrect": "Uma memória não representa automaticamente todas as pessoas.",
+        "hint": "Considere o alcance do relato.",
+        "errorFocus": "MEMORY_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-28",
+      "statement": "Duas fontes citam corrida com sacos. Qual detalhe ainda pode variar?",
+      "prompt": "Duas fontes citam corrida com sacos. Qual detalhe ainda pode variar?",
+      "options": [
+        "A necessidade de comparar",
+        "A possibilidade de regras",
+        "O fato de haver fontes",
+        "As regras e os materiais usados em cada contexto."
+      ],
+      "correctAnswer": "As regras e os materiais usados em cada contexto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A necessidade de comparar": [
+          "VARIATION_WITHIN_GAME"
+        ],
+        "A possibilidade de regras": [
+          "VARIATION_WITHIN_GAME"
+        ],
+        "O fato de haver fontes": [
+          "VARIATION_WITHIN_GAME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CORRIDA_DE_SACO",
+      "explanation": "Uma brincadeira pode ter versões distintas.",
+      "hint": "Observe cada descrição.",
+      "errorFocus": "VARIATION_WITHIN_GAME",
+      "feedback": {
+        "correct": "Boa observação: Uma brincadeira pode ter versões distintas.",
+        "incorrect": "Uma brincadeira pode ter versões distintas.",
+        "hint": "Observe cada descrição.",
+        "errorFocus": "VARIATION_WITHIN_GAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-29",
+      "statement": "Chamar um jogo antigo de “atrasado” é uma comparação histórica adequada?",
+      "prompt": "Chamar um jogo antigo de “atrasado” é uma comparação histórica adequada?",
+      "options": [
+        "Não; é melhor descrever materiais e regras sem hierarquizar épocas.",
+        "Sim, toda prática antiga é inferior",
+        "Sim, porque novidade sempre vence",
+        "Não, porque jogos não mudam"
+      ],
+      "correctAnswer": "Não; é melhor descrever materiais e regras sem hierarquizar épocas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, toda prática antiga é inferior": [
+          "NO_TIME_HIERARCHY"
+        ],
+        "Sim, porque novidade sempre vence": [
+          "NO_TIME_HIERARCHY"
+        ],
+        "Não, porque jogos não mudam": [
+          "NO_TIME_HIERARCHY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PALAVRA_ATRASADA",
+      "explanation": "A descrição concreta evita julgar uma época.",
+      "hint": "Troque julgamento por evidência.",
+      "errorFocus": "NO_TIME_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A descrição concreta evita julgar uma época.",
+        "incorrect": "A descrição concreta evita julgar uma época.",
+        "hint": "Troque julgamento por evidência.",
+        "errorFocus": "NO_TIME_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-30",
+      "statement": "Uma fonte mostra uma regra e outra mostra uma versão adaptada. O que investigar?",
+      "prompt": "Uma fonte mostra uma regra e outra mostra uma versão adaptada. O que investigar?",
+      "options": [
+        "Qual participante é melhor",
+        "Qual regra mudou e em que contexto cada fonte foi produzida.",
+        "Qual geração deve ser apagada",
+        "Se uma fonte deve ser escondida"
+      ],
+      "correctAnswer": "Qual regra mudou e em que contexto cada fonte foi produzida.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual participante é melhor": [
+          "CHANGE_AND_CONTEXT"
+        ],
+        "Qual geração deve ser apagada": [
+          "CHANGE_AND_CONTEXT"
+        ],
+        "Se uma fonte deve ser escondida": [
+          "CHANGE_AND_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGRA_QUE_MUDOU",
+      "explanation": "Mudanças são compreendidas com contexto das fontes.",
+      "hint": "Compare as regras e legendas.",
+      "errorFocus": "CHANGE_AND_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Mudanças são compreendidas com contexto das fontes.",
+        "incorrect": "Mudanças são compreendidas com contexto das fontes.",
+        "hint": "Compare as regras e legendas.",
+        "errorFocus": "CHANGE_AND_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-31",
+      "statement": "Uma pessoa prefere não correr numa brincadeira. Qual opção amplia participação?",
+      "prompt": "Uma pessoa prefere não correr numa brincadeira. Qual opção amplia participação?",
+      "options": [
+        "Obrigá-la a correr",
+        "Retirá-la do grupo",
+        "Oferecer papel de marcar pontos, organizar ou observar, se ela escolher.",
+        "Fazer competição de velocidade"
+      ],
+      "correctAnswer": "Oferecer papel de marcar pontos, organizar ou observar, se ela escolher.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Obrigá-la a correr": [
+          "CHOICE_AND_ACCESS"
+        ],
+        "Retirá-la do grupo": [
+          "CHOICE_AND_ACCESS"
+        ],
+        "Fazer competição de velocidade": [
+          "CHOICE_AND_ACCESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PARTICIPAR_COM_PAPEIS",
+      "explanation": "Papéis variados respeitam escolha e participação.",
+      "hint": "Ofereça opções sem impor.",
+      "errorFocus": "CHOICE_AND_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Papéis variados respeitam escolha e participação.",
+        "incorrect": "Papéis variados respeitam escolha e participação.",
+        "hint": "Ofereça opções sem impor.",
+        "errorFocus": "CHOICE_AND_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-32",
+      "statement": "Uma boa comparação histórica usa detalhes das fontes e...",
+      "prompt": "Uma boa comparação histórica usa detalhes das fontes e...",
+      "options": [
+        "declara uma época superior",
+        "inventa dados ausentes",
+        "fala por todas as famílias",
+        "explica limites e contextos sem generalizar grupos."
+      ],
+      "correctAnswer": "explica limites e contextos sem generalizar grupos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "declara uma época superior": [
+          "EVIDENCE_BOUNDED_COMPARISON"
+        ],
+        "inventa dados ausentes": [
+          "EVIDENCE_BOUNDED_COMPARISON"
+        ],
+        "fala por todas as famílias": [
+          "EVIDENCE_BOUNDED_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONCLUSAO_COM_FONTES",
+      "explanation": "Uma conclusão cuidadosa se apoia nas fontes e reconhece seus limites.",
+      "hint": "Use evidência e contexto.",
+      "errorFocus": "EVIDENCE_BOUNDED_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Uma conclusão cuidadosa se apoia nas fontes e reconhece seus limites.",
+        "incorrect": "Uma conclusão cuidadosa se apoia nas fontes e reconhece seus limites.",
+        "hint": "Use evidência e contexto.",
+        "errorFocus": "EVIDENCE_BOUNDED_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-33",
+      "statement": "Jogos e brincadeiras podem mudar entre...",
+      "prompt": "Jogos e brincadeiras podem mudar entre...",
+      "options": [
+        "tempos e lugares.",
+        "somente páginas de um livro",
+        "partes do corpo",
+        "cores de uma sala"
+      ],
+      "correctAnswer": "tempos e lugares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "somente páginas de um livro": [
+          "TIME_PLACE_REVIEW"
+        ],
+        "partes do corpo": [
+          "TIME_PLACE_REVIEW"
+        ],
+        "cores de uma sala": [
+          "TIME_PLACE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_JOGOS",
+      "explanation": "O contexto pode variar ao longo do tempo e entre lugares.",
+      "hint": "Lembre-se do descritor.",
+      "errorFocus": "TIME_PLACE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O contexto pode variar ao longo do tempo e entre lugares.",
+        "incorrect": "O contexto pode variar ao longo do tempo e entre lugares.",
+        "hint": "Lembre-se do descritor.",
+        "errorFocus": "TIME_PLACE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-34",
+      "statement": "Uma legenda com data ajuda a identificar...",
+      "prompt": "Uma legenda com data ajuda a identificar...",
+      "options": [
+        "a regra de todos os jogos",
+        "quando o registro foi produzido.",
+        "o futuro de uma brincadeira",
+        "a opinião de toda uma geração"
+      ],
+      "correctAnswer": "quando o registro foi produzido.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a regra de todos os jogos": [
+          "SOURCE_DATE_REVIEW"
+        ],
+        "o futuro de uma brincadeira": [
+          "SOURCE_DATE_REVIEW"
+        ],
+        "a opinião de toda uma geração": [
+          "SOURCE_DATE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_FONTE",
+      "explanation": "A data situa temporalmente a fonte.",
+      "hint": "Leia a legenda.",
+      "errorFocus": "SOURCE_DATE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A data situa temporalmente a fonte.",
+        "incorrect": "A data situa temporalmente a fonte.",
+        "hint": "Leia a legenda.",
+        "errorFocus": "SOURCE_DATE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-35",
+      "statement": "Duas versões têm um objetivo parecido e regras distintas. O que isso mostra?",
+      "prompt": "Duas versões têm um objetivo parecido e regras distintas. O que isso mostra?",
+      "options": [
+        "Uma versão nunca existiu",
+        "Todas as regras são iguais",
+        "Há semelhança no objetivo e diferença nas regras.",
+        "Uma cultura é superior"
+      ],
+      "correctAnswer": "Há semelhança no objetivo e diferença nas regras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma versão nunca existiu": [
+          "RULE_COMPARISON_REVIEW"
+        ],
+        "Todas as regras são iguais": [
+          "RULE_COMPARISON_REVIEW"
+        ],
+        "Uma cultura é superior": [
+          "RULE_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_REGRAS",
+      "explanation": "As fontes podem ter aspectos comuns e distintos.",
+      "hint": "Compare os dois aspectos.",
+      "errorFocus": "RULE_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As fontes podem ter aspectos comuns e distintos.",
+        "incorrect": "As fontes podem ter aspectos comuns e distintos.",
+        "hint": "Compare os dois aspectos.",
+        "errorFocus": "RULE_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-36",
+      "statement": "Uma lembrança pessoal representa automaticamente todos?",
+      "prompt": "Uma lembrança pessoal representa automaticamente todos?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se for antiga",
+        "Não, porque lembranças são inúteis",
+        "Não; ela é uma fonte com perspectiva própria."
+      ],
+      "correctAnswer": "Não; ela é uma fonte com perspectiva própria.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "MEMORY_LIMIT_REVIEW"
+        ],
+        "Sim, se for antiga": [
+          "MEMORY_LIMIT_REVIEW"
+        ],
+        "Não, porque lembranças são inúteis": [
+          "MEMORY_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_MEMORIA",
+      "explanation": "Memórias têm valor e limites específicos.",
+      "hint": "Considere a pessoa que relata.",
+      "errorFocus": "MEMORY_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Memórias têm valor e limites específicos.",
+        "incorrect": "Memórias têm valor e limites específicos.",
+        "hint": "Considere a pessoa que relata.",
+        "errorFocus": "MEMORY_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-37",
+      "statement": "Como comparar brincadeiras de lugares diferentes?",
+      "prompt": "Como comparar brincadeiras de lugares diferentes?",
+      "options": [
+        "Descrever características com respeito e contexto.",
+        "Classificar povos como melhores",
+        "Ridicularizar nomes",
+        "Presumir que todos brincam igual"
+      ],
+      "correctAnswer": "Descrever características com respeito e contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Classificar povos como melhores": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ],
+        "Ridicularizar nomes": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ],
+        "Presumir que todos brincam igual": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_RESPEITO",
+      "explanation": "Contexto e respeito evitam estereótipos.",
+      "hint": "Compare sem hierarquizar.",
+      "errorFocus": "RESPECTFUL_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Contexto e respeito evitam estereótipos.",
+        "incorrect": "Contexto e respeito evitam estereótipos.",
+        "hint": "Compare sem hierarquizar.",
+        "errorFocus": "RESPECTFUL_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-38",
+      "statement": "Uma foto sem data permite afirmar que mostra um século específico?",
+      "prompt": "Uma foto sem data permite afirmar que mostra um século específico?",
+      "options": [
+        "Sim, sempre",
+        "Não, sem evidência adicional.",
+        "Sim, pela cor da imagem apenas",
+        "Não, nenhuma foto pode ser fonte"
+      ],
+      "correctAnswer": "Não, sem evidência adicional.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Sim, pela cor da imagem apenas": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Não, nenhuma foto pode ser fonte": [
+          "SOURCE_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_LIMITE_DA_FOTO",
+      "explanation": "Uma data não deve ser inventada.",
+      "hint": "Identifique o que falta.",
+      "errorFocus": "SOURCE_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma data não deve ser inventada.",
+        "incorrect": "Uma data não deve ser inventada.",
+        "hint": "Identifique o que falta.",
+        "errorFocus": "SOURCE_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-39",
+      "statement": "Uma regra dificulta a participação de alguém. O que a turma pode propor?",
+      "prompt": "Uma regra dificulta a participação de alguém. O que a turma pode propor?",
+      "options": [
+        "Excluir a pessoa",
+        "Manter a barreira sem conversar",
+        "Uma adaptação que respeite escolha e amplie acesso.",
+        "Comparar capacidades"
+      ],
+      "correctAnswer": "Uma adaptação que respeite escolha e amplie acesso.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Excluir a pessoa": [
+          "ACCESSIBLE_PLAY_REVIEW"
+        ],
+        "Manter a barreira sem conversar": [
+          "ACCESSIBLE_PLAY_REVIEW"
+        ],
+        "Comparar capacidades": [
+          "ACCESSIBLE_PLAY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ADAPTACAO",
+      "explanation": "Adaptação pode ampliar a participação.",
+      "hint": "Pense em opções.",
+      "errorFocus": "ACCESSIBLE_PLAY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Adaptação pode ampliar a participação.",
+        "incorrect": "Adaptação pode ampliar a participação.",
+        "hint": "Pense em opções.",
+        "errorFocus": "ACCESSIBLE_PLAY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi05-games-across-times-and-places-40",
+      "statement": "Estudar brincadeiras em tempos e lugares diferentes ajuda a reconhecer...",
+      "prompt": "Estudar brincadeiras em tempos e lugares diferentes ajuda a reconhecer...",
+      "options": [
+        "qual geração vale mais",
+        "que toda lembrança é universal",
+        "que toda regra permanece igual",
+        "semelhanças, diferenças e mudanças com base em fontes."
+      ],
+      "correctAnswer": "semelhanças, diferenças e mudanças com base em fontes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "qual geração vale mais": [
+          "HISTORY_COMPARISON_SUMMARY"
+        ],
+        "que toda lembrança é universal": [
+          "HISTORY_COMPARISON_SUMMARY"
+        ],
+        "que toda regra permanece igual": [
+          "HISTORY_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMPARACAO",
+      "explanation": "Fontes ajudam a observar continuidades e diferenças.",
+      "hint": "Reúna evidência e contexto.",
+      "errorFocus": "HISTORY_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Fontes ajudam a observar continuidades e diferenças.",
+        "incorrect": "Fontes ajudam a observar continuidades e diferenças.",
+        "hint": "Reúna evidência e contexto.",
+        "errorFocus": "HISTORY_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, regras em etapas e materiais táteis ou ampliados quando disponíveis.",
+          "Permitir jogar, observar, narrar, organizar cartas ou responder por comunicação alternativa.",
+          "Usar fontes com data e local claros e não exigir relatos familiares pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,2120 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef09ci03-models-of-matter-and-atom-history",
+  "canonicalSkillCode": "AUTHORING_EF09CI03_MODELS_OF_MATTER_AND_ATOM_HISTORY",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "modelos da estrutura da matéria e evolução histórica",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF09CI03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar modelos que descrevem a estrutura da matéria (constituição do átomo e composição de moléculas simples) e reconhecer sua evolução histórica.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 352
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Modelos científicos: o que explicam e como mudam",
+    "objective": "Interpretar modelos de átomos e moléculas simples como representações científicas, relacionando modelos históricos às evidências e reconhecendo que os modelos atuais não são desenhos em escala nem órbitas planetárias literais.",
+    "summary": "A matéria é constituída por partículas; átomos podem se combinar para formar moléculas simples. Como não observamos um átomo como um objeto cotidiano, cientistas criam modelos para explicar evidências. Modelos históricos mudaram quando novas observações e perguntas apareceram: Dalton representou átomos como partículas indivisíveis; Thomson incorporou elétrons; Rutherford evidenciou um núcleo pequeno e positivo; Bohr propôs níveis de energia; modelos quânticos descrevem regiões de probabilidade para elétrons. Cada modelo respondeu a questões de seu tempo, e nenhum desenho deve ser confundido com uma fotografia do átomo.",
+    "explanation": "Um modelo é uma representação que destaca certas características para explicar observações. O modelo de Dalton ajudava a representar combinações em proporções definidas; o de Thomson incluiu partículas negativas; os resultados de Rutherford apoiaram a ideia de um núcleo pequeno e positivo; Bohr explicou certos espectros com níveis de energia. O modelo quântico atual não descreve elétrons como planetas em trilhas fixas: utiliza estados e distribuições de probabilidade. Em modelos moleculares, esferas e ligações são convenções visuais, não os tamanhos e cores reais. Para comparar modelos, pergunte: que evidência cada um explica, que aspecto representa e qual limite deve ser lembrado?",
+    "workedExample": "Um esquema escolar usa uma esfera grande para o núcleo e pontos em regiões ao redor para representar elétrons. Ele ajuda a localizar componentes de forma simplificada, mas não mostra tamanhos em escala nem uma trajetória que o elétron percorra como um planeta. A legenda deve dizer que se trata de representação didática.",
+    "commonMistake": "Ler imagens simplificadas como fotografias, imaginar elétrons em órbitas planetárias fixas no modelo quântico, ou dizer que um modelo antigo era apenas um erro sem reconhecer o que explicava com as evidências disponíveis.",
+    "priorKnowledge": [
+      "Distinguir substância, átomo e molécula em exemplos introdutórios.",
+      "Ler legendas, setas e escalas em diagramas científicos.",
+      "Reconhecer que uma explicação científica pode ser revisada quando novas evidências aparecem."
+    ],
+    "keyConcepts": [
+      "átomo",
+      "núcleo",
+      "elétron",
+      "molécula",
+      "modelo científico",
+      "evidência",
+      "representação",
+      "evolução histórica"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MODEL_AS_PHOTOGRAPH",
+        "action": "Leia a legenda e destaque o que o esquema representa; depois anote uma característica que não está em escala ou não aparece literalmente."
+      },
+      {
+        "errorFocus": "PLANETARY_ORBIT_OVERCLAIM",
+        "action": "Compare a imagem de Bohr com a legenda do modelo quântico; substitua a ideia de trilha fixa por regiões de probabilidade."
+      },
+      {
+        "errorFocus": "HISTORY_AS_LINEAR_FAILURE",
+        "action": "Associe cada modelo à evidência ou questão que ajudava a explicar antes de compará-lo com modelos posteriores."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+      "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+      "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+      "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci03-model-evidence-museum",
+        "title": "Galeria de modelos e evidências",
+        "instructions": "Estações mostram diagramas didáticos identificados como Dalton, Thomson, Rutherford, Bohr e modelo quântico, acompanhados de cartões com perguntas e evidências históricas resumidas.\n1. Associe cada diagrama ao cartão histórico correspondente usando as legendas, não a aparência como única pista.\n2. Registre uma característica que o modelo representa e uma limitação da imagem didática.\n3. Escolha uma evidência ou pergunta que motivou a ampliação de um modelo posterior.",
+        "steps": [
+          "Associe cada diagrama ao cartão histórico correspondente usando as legendas, não a aparência como única pista.",
+          "Registre uma característica que o modelo representa e uma limitação da imagem didática.",
+          "Escolha uma evidência ou pergunta que motivou a ampliação de um modelo posterior."
+        ],
+        "evidence": "Quadro comparativo que identifica representações, associa evidências historicamente pertinentes e explicita limites dos desenhos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma partícula com apoio, mas interpreta o desenho literalmente.",
+            "developing": "compara dois modelos e descreve uma limitação com lembrete.",
+            "proficient": "relaciona cada modelo a uma evidência e distingue representação de fotografia."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci03-molecule-model-and-legend",
+        "title": "Molécula em cartões e legenda",
+        "instructions": "Cartões com símbolos de elementos e ligações representam moléculas simples, sem produtos químicos ou experimentos de bancada.\n1. Monte uma representação de água ou dióxido de carbono a partir de cartões com símbolos e quantidades indicadas.\n2. Escreva uma legenda que diga quais átomos estão representados e como aparecem conectados.\n3. Acrescente uma nota de que tamanho, cor e distância dos cartões são convenções, não escala real.",
+        "steps": [
+          "Monte uma representação de água ou dióxido de carbono a partir de cartões com símbolos e quantidades indicadas.",
+          "Escreva uma legenda que diga quais átomos estão representados e como aparecem conectados.",
+          "Acrescente uma nota de que tamanho, cor e distância dos cartões são convenções, não escala real."
+        ],
+        "evidence": "Representação simbólica coerente acompanhada de legenda sobre composição e limites do modelo.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um símbolo com orientação, mas confunde símbolo com objeto real.",
+            "developing": "monta a composição com apoio e identifica uma simplificação.",
+            "proficient": "comunica a composição molecular e explicita que o modelo não está em escala."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef09ci03-models-of-matter-and-atom-history-01",
+          "v1-ef09ci03-models-of-matter-and-atom-history-02",
+          "v1-ef09ci03-models-of-matter-and-atom-history-03",
+          "v1-ef09ci03-models-of-matter-and-atom-history-04",
+          "v1-ef09ci03-models-of-matter-and-atom-history-05",
+          "v1-ef09ci03-models-of-matter-and-atom-history-06",
+          "v1-ef09ci03-models-of-matter-and-atom-history-07",
+          "v1-ef09ci03-models-of-matter-and-atom-history-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef09ci03-models-of-matter-and-atom-history-09",
+          "v1-ef09ci03-models-of-matter-and-atom-history-10",
+          "v1-ef09ci03-models-of-matter-and-atom-history-11",
+          "v1-ef09ci03-models-of-matter-and-atom-history-12",
+          "v1-ef09ci03-models-of-matter-and-atom-history-13",
+          "v1-ef09ci03-models-of-matter-and-atom-history-14",
+          "v1-ef09ci03-models-of-matter-and-atom-history-15",
+          "v1-ef09ci03-models-of-matter-and-atom-history-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef09ci03-models-of-matter-and-atom-history-17",
+          "v1-ef09ci03-models-of-matter-and-atom-history-18",
+          "v1-ef09ci03-models-of-matter-and-atom-history-19",
+          "v1-ef09ci03-models-of-matter-and-atom-history-20",
+          "v1-ef09ci03-models-of-matter-and-atom-history-21",
+          "v1-ef09ci03-models-of-matter-and-atom-history-22",
+          "v1-ef09ci03-models-of-matter-and-atom-history-23",
+          "v1-ef09ci03-models-of-matter-and-atom-history-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef09ci03-models-of-matter-and-atom-history-25",
+          "v1-ef09ci03-models-of-matter-and-atom-history-26",
+          "v1-ef09ci03-models-of-matter-and-atom-history-27",
+          "v1-ef09ci03-models-of-matter-and-atom-history-28",
+          "v1-ef09ci03-models-of-matter-and-atom-history-29",
+          "v1-ef09ci03-models-of-matter-and-atom-history-30",
+          "v1-ef09ci03-models-of-matter-and-atom-history-31",
+          "v1-ef09ci03-models-of-matter-and-atom-history-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef09ci03-models-of-matter-and-atom-history-33",
+          "v1-ef09ci03-models-of-matter-and-atom-history-34",
+          "v1-ef09ci03-models-of-matter-and-atom-history-35",
+          "v1-ef09ci03-models-of-matter-and-atom-history-36",
+          "v1-ef09ci03-models-of-matter-and-atom-history-37",
+          "v1-ef09ci03-models-of-matter-and-atom-history-38",
+          "v1-ef09ci03-models-of-matter-and-atom-history-39",
+          "v1-ef09ci03-models-of-matter-and-atom-history-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF09CI03",
+        "descriptor": "Identificar modelos que descrevem a estrutura da matéria (constituição do átomo e composição de moléculas simples) e reconhecer sua evolução histórica.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 352
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-01",
+      "statement": "Um esquema mostra círculos com letras para representar partículas. O que os círculos são?",
+      "prompt": "Um esquema mostra círculos com letras para representar partículas. O que os círculos são?",
+      "options": [
+        "Símbolos de um modelo didático",
+        "Fotografias ampliadas dos átomos",
+        "Átomos em tamanho real",
+        "Prova de que todos têm a mesma cor"
+      ],
+      "correctAnswer": "Símbolos de um modelo didático",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fotografias ampliadas dos átomos": [
+          "MODEL_AS_PHOTOGRAPH"
+        ],
+        "Átomos em tamanho real": [
+          "MODEL_AS_PHOTOGRAPH"
+        ],
+        "Prova de que todos têm a mesma cor": [
+          "MODEL_AS_PHOTOGRAPH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESQUEMA_DE_ESFERAS",
+      "explanation": "Círculos e cores em diagramas são convenções para comunicar ideias.",
+      "hint": "Confira o título e a legenda.",
+      "errorFocus": "MODEL_AS_PHOTOGRAPH",
+      "feedback": {
+        "correct": "Boa observação: Círculos e cores em diagramas são convenções para comunicar ideias.",
+        "incorrect": "Círculos e cores em diagramas são convenções para comunicar ideias.",
+        "hint": "Confira o título e a legenda.",
+        "errorFocus": "MODEL_AS_PHOTOGRAPH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-02",
+      "statement": "Uma molécula simples é formada por quê?",
+      "prompt": "Uma molécula simples é formada por quê?",
+      "options": [
+        "Somente um elétron",
+        "Átomos ligados em uma composição definida",
+        "Qualquer mistura visível de materiais",
+        "Uma camada de células"
+      ],
+      "correctAnswer": "Átomos ligados em uma composição definida",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente um elétron": [
+          "MOLECULE_AS_MIXTURE"
+        ],
+        "Qualquer mistura visível de materiais": [
+          "MOLECULE_AS_MIXTURE"
+        ],
+        "Uma camada de células": [
+          "MOLECULE_AS_MIXTURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_ATOMO_MOLECULA",
+      "explanation": "Moléculas são conjuntos de átomos ligados; não são qualquer mistura macroscópica.",
+      "hint": "Pense nas unidades que compõem a molécula.",
+      "errorFocus": "MOLECULE_AS_MIXTURE",
+      "feedback": {
+        "correct": "Boa observação: Moléculas são conjuntos de átomos ligados; não são qualquer mistura macroscópica.",
+        "incorrect": "Moléculas são conjuntos de átomos ligados; não são qualquer mistura macroscópica.",
+        "hint": "Pense nas unidades que compõem a molécula.",
+        "errorFocus": "MOLECULE_AS_MIXTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-03",
+      "statement": "Um cartaz apresenta o modelo de Dalton com átomos como partículas indivisíveis. Isso é uma representação de qual período?",
+      "prompt": "Um cartaz apresenta o modelo de Dalton com átomos como partículas indivisíveis. Isso é uma representação de qual período?",
+      "options": [
+        "Do modelo quântico atual em todos os detalhes",
+        "De uma fotografia contemporânea",
+        "De uma proposta histórica anterior à inclusão de partículas subatômicas",
+        "De uma molécula de água"
+      ],
+      "correctAnswer": "De uma proposta histórica anterior à inclusão de partículas subatômicas",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Do modelo quântico atual em todos os detalhes": [
+          "HISTORICAL_MODEL_MIXUP"
+        ],
+        "De uma fotografia contemporânea": [
+          "HISTORICAL_MODEL_MIXUP"
+        ],
+        "De uma molécula de água": [
+          "HISTORICAL_MODEL_MIXUP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MODELO_DALTON_EM_CARTAZ",
+      "explanation": "Dalton propôs uma representação histórica anterior à descoberta de partículas subatômicas.",
+      "hint": "Observe a época e o que o modelo inclui.",
+      "errorFocus": "HISTORICAL_MODEL_MIXUP",
+      "feedback": {
+        "correct": "Boa observação: Dalton propôs uma representação histórica anterior à descoberta de partículas subatômicas.",
+        "incorrect": "Dalton propôs uma representação histórica anterior à descoberta de partículas subatômicas.",
+        "hint": "Observe a época e o que o modelo inclui.",
+        "errorFocus": "HISTORICAL_MODEL_MIXUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-04",
+      "statement": "Em um modelo, qual partícula tem carga elétrica negativa?",
+      "prompt": "Em um modelo, qual partícula tem carga elétrica negativa?",
+      "options": [
+        "Próton",
+        "Nêutron",
+        "Molécula inteira",
+        "Elétron"
+      ],
+      "correctAnswer": "Elétron",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Próton": [
+          "PARTICLE_CHARGE_CONFUSION"
+        ],
+        "Nêutron": [
+          "PARTICLE_CHARGE_CONFUSION"
+        ],
+        "Molécula inteira": [
+          "PARTICLE_CHARGE_CONFUSION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SIMBOLO_DE_ELETRON",
+      "explanation": "Elétrons têm carga negativa; prótons são positivos e nêutrons não têm carga elétrica.",
+      "hint": "Lembre-se da carga indicada no esquema.",
+      "errorFocus": "PARTICLE_CHARGE_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: Elétrons têm carga negativa; prótons são positivos e nêutrons não têm carga elétrica.",
+        "incorrect": "Elétrons têm carga negativa; prótons são positivos e nêutrons não têm carga elétrica.",
+        "hint": "Lembre-se da carga indicada no esquema.",
+        "errorFocus": "PARTICLE_CHARGE_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-05",
+      "statement": "No modelo nuclear, onde se concentra a carga positiva do átomo?",
+      "prompt": "No modelo nuclear, onde se concentra a carga positiva do átomo?",
+      "options": [
+        "No núcleo, associado aos prótons",
+        "Em toda a nuvem de elétrons",
+        "No espaço vazio entre átomos",
+        "Apenas na legenda"
+      ],
+      "correctAnswer": "No núcleo, associado aos prótons",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Em toda a nuvem de elétrons": [
+          "NUCLEAR_MODEL"
+        ],
+        "No espaço vazio entre átomos": [
+          "NUCLEAR_MODEL"
+        ],
+        "Apenas na legenda": [
+          "NUCLEAR_MODEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "LEGENDA_DE_NUCLEO",
+      "explanation": "O modelo nuclear situa carga positiva no núcleo pequeno.",
+      "hint": "Localize o centro do modelo.",
+      "errorFocus": "NUCLEAR_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O modelo nuclear situa carga positiva no núcleo pequeno.",
+        "incorrect": "O modelo nuclear situa carga positiva no núcleo pequeno.",
+        "hint": "Localize o centro do modelo.",
+        "errorFocus": "NUCLEAR_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-06",
+      "statement": "Um cartão mostra dois H ligados a um O. Que fórmula representa essa composição?",
+      "prompt": "Um cartão mostra dois H ligados a um O. Que fórmula representa essa composição?",
+      "options": [
+        "HO₂",
+        "H₂O",
+        "H₂O₂",
+        "2HO₂"
+      ],
+      "correctAnswer": "H₂O",
+      "answerPosition": "B",
+      "misconceptions": {
+        "HO₂": [
+          "SUBSCRIPT_COMPOSITION"
+        ],
+        "H₂O₂": [
+          "SUBSCRIPT_COMPOSITION"
+        ],
+        "2HO₂": [
+          "SUBSCRIPT_COMPOSITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIAGRAMA_DE_AGUA",
+      "explanation": "A fórmula H₂O indica dois átomos de hidrogênio e um de oxigênio.",
+      "hint": "Conte os símbolos e os números menores.",
+      "errorFocus": "SUBSCRIPT_COMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: A fórmula H₂O indica dois átomos de hidrogênio e um de oxigênio.",
+        "incorrect": "A fórmula H₂O indica dois átomos de hidrogênio e um de oxigênio.",
+        "hint": "Conte os símbolos e os números menores.",
+        "errorFocus": "SUBSCRIPT_COMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-07",
+      "statement": "Um desenho didático mostra linhas circulares ao redor do núcleo. O que é importante lembrar?",
+      "prompt": "Um desenho didático mostra linhas circulares ao redor do núcleo. O que é importante lembrar?",
+      "options": [
+        "Elétrons percorrem sempre trilhas visíveis como planetas",
+        "As linhas mostram o tamanho real do átomo",
+        "As linhas simplificam um modelo e não são fotografia do átomo",
+        "Cada cor prova a forma da partícula"
+      ],
+      "correctAnswer": "As linhas simplificam um modelo e não são fotografia do átomo",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Elétrons percorrem sempre trilhas visíveis como planetas": [
+          "ORBIT_AS_REAL_PATH"
+        ],
+        "As linhas mostram o tamanho real do átomo": [
+          "ORBIT_AS_REAL_PATH"
+        ],
+        "Cada cor prova a forma da partícula": [
+          "ORBIT_AS_REAL_PATH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESENHO_DE_ORBITAS",
+      "explanation": "Diagramas de órbitas são representações simplificadas, não trajetórias fotografadas.",
+      "hint": "Leia a ressalva do modelo.",
+      "errorFocus": "ORBIT_AS_REAL_PATH",
+      "feedback": {
+        "correct": "Boa observação: Diagramas de órbitas são representações simplificadas, não trajetórias fotografadas.",
+        "incorrect": "Diagramas de órbitas são representações simplificadas, não trajetórias fotografadas.",
+        "hint": "Leia a ressalva do modelo.",
+        "errorFocus": "ORBIT_AS_REAL_PATH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-08",
+      "statement": "Por que cientistas usam modelos para estudar átomos?",
+      "prompt": "Por que cientistas usam modelos para estudar átomos?",
+      "options": [
+        "Para substituir toda evidência por desenhos",
+        "Para garantir que nenhum modelo mude",
+        "Para mostrar partículas em escala real",
+        "Para representar aspectos e explicar evidências que não observamos diretamente no cotidiano"
+      ],
+      "correctAnswer": "Para representar aspectos e explicar evidências que não observamos diretamente no cotidiano",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para substituir toda evidência por desenhos": [
+          "MODEL_REPLACES_EVIDENCE"
+        ],
+        "Para garantir que nenhum modelo mude": [
+          "MODEL_REPLACES_EVIDENCE"
+        ],
+        "Para mostrar partículas em escala real": [
+          "MODEL_REPLACES_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TABELA_DE_MODELOS",
+      "explanation": "Modelos ajudam a interpretar evidências e podem ser revisados.",
+      "hint": "Pense no que um modelo permite explicar.",
+      "errorFocus": "MODEL_REPLACES_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Modelos ajudam a interpretar evidências e podem ser revisados.",
+        "incorrect": "Modelos ajudam a interpretar evidências e podem ser revisados.",
+        "hint": "Pense no que um modelo permite explicar.",
+        "errorFocus": "MODEL_REPLACES_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-09",
+      "statement": "Qual mudança aparece quando o modelo de Thomson sucede o de Dalton?",
+      "prompt": "Qual mudança aparece quando o modelo de Thomson sucede o de Dalton?",
+      "options": [
+        "A representação passa a incluir elétrons",
+        "O átomo deixa de ter qualquer partícula",
+        "A molécula vira uma célula",
+        "O núcleo passa a ser uma fotografia"
+      ],
+      "correctAnswer": "A representação passa a incluir elétrons",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O átomo deixa de ter qualquer partícula": [
+          "MODEL_CHANGE_CONTENT"
+        ],
+        "A molécula vira uma célula": [
+          "MODEL_CHANGE_CONTENT"
+        ],
+        "O núcleo passa a ser uma fotografia": [
+          "MODEL_CHANGE_CONTENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_DALTON_THOMSON",
+      "explanation": "Thomson incorporou o elétron ao modelo atômico.",
+      "hint": "Veja qual componente novo aparece.",
+      "errorFocus": "MODEL_CHANGE_CONTENT",
+      "feedback": {
+        "correct": "Boa observação: Thomson incorporou o elétron ao modelo atômico.",
+        "incorrect": "Thomson incorporou o elétron ao modelo atômico.",
+        "hint": "Veja qual componente novo aparece.",
+        "errorFocus": "MODEL_CHANGE_CONTENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-10",
+      "statement": "Em uma experiência histórica, algumas partículas sofreram grandes desvios ao atravessar uma lâmina fina. Que ideia isso apoiou?",
+      "prompt": "Em uma experiência histórica, algumas partículas sofreram grandes desvios ao atravessar uma lâmina fina. Que ideia isso apoiou?",
+      "options": [
+        "O átomo é uma esfera maciça uniforme",
+        "A carga positiva e grande parte da massa ficam concentradas em uma região pequena",
+        "Elétrons ficam todos no núcleo",
+        "Toda matéria é uma molécula de ouro"
+      ],
+      "correctAnswer": "A carga positiva e grande parte da massa ficam concentradas em uma região pequena",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O átomo é uma esfera maciça uniforme": [
+          "RUTHERFORD_EVIDENCE"
+        ],
+        "Elétrons ficam todos no núcleo": [
+          "RUTHERFORD_EVIDENCE"
+        ],
+        "Toda matéria é uma molécula de ouro": [
+          "RUTHERFORD_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESULTADO_DE_ESPALHAMENTO",
+      "explanation": "Os desvios inesperados apoiaram a proposta de um núcleo pequeno e positivo.",
+      "hint": "Procure o modelo que explica desvios fortes.",
+      "errorFocus": "RUTHERFORD_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os desvios inesperados apoiaram a proposta de um núcleo pequeno e positivo.",
+        "incorrect": "Os desvios inesperados apoiaram a proposta de um núcleo pequeno e positivo.",
+        "hint": "Procure o modelo que explica desvios fortes.",
+        "errorFocus": "RUTHERFORD_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-11",
+      "statement": "Um modelo de Bohr foi usado para explicar linhas em espectros de certos átomos. Qual ideia ele propôs?",
+      "prompt": "Um modelo de Bohr foi usado para explicar linhas em espectros de certos átomos. Qual ideia ele propôs?",
+      "options": [
+        "Elétrons são bolinhas coloridas em tamanho real",
+        "Núcleo não contém carga positiva",
+        "Elétrons ocupam níveis de energia definidos no modelo",
+        "Átomos são indivisíveis em qualquer teoria"
+      ],
+      "correctAnswer": "Elétrons ocupam níveis de energia definidos no modelo",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Elétrons são bolinhas coloridas em tamanho real": [
+          "BOHR_LEVELS"
+        ],
+        "Núcleo não contém carga positiva": [
+          "BOHR_LEVELS"
+        ],
+        "Átomos são indivisíveis em qualquer teoria": [
+          "BOHR_LEVELS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESPECTRO_DE_LUZ",
+      "explanation": "Bohr propôs níveis de energia quantizados para explicar espectros.",
+      "hint": "Associe espectros e níveis de energia.",
+      "errorFocus": "BOHR_LEVELS",
+      "feedback": {
+        "correct": "Boa observação: Bohr propôs níveis de energia quantizados para explicar espectros.",
+        "incorrect": "Bohr propôs níveis de energia quantizados para explicar espectros.",
+        "hint": "Associe espectros e níveis de energia.",
+        "errorFocus": "BOHR_LEVELS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-12",
+      "statement": "Um núcleo tem 6 prótons e 6 nêutrons em um cartão. Quantas partículas nucleares aparecem no esquema?",
+      "prompt": "Um núcleo tem 6 prótons e 6 nêutrons em um cartão. Quantas partículas nucleares aparecem no esquema?",
+      "options": [
+        "6",
+        "2",
+        "36",
+        "12"
+      ],
+      "correctAnswer": "12",
+      "answerPosition": "D",
+      "misconceptions": {
+        "2": [
+          "NUCLEON_COUNT"
+        ],
+        "6": [
+          "NUCLEON_COUNT"
+        ],
+        "36": [
+          "NUCLEON_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SIMBOLOS_DE_NUCLEO",
+      "explanation": "Prótons e nêutrons são somados para contar as partículas nucleares representadas.",
+      "hint": "Some os dois grupos indicados.",
+      "errorFocus": "NUCLEON_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Prótons e nêutrons são somados para contar as partículas nucleares representadas.",
+        "incorrect": "Prótons e nêutrons são somados para contar as partículas nucleares representadas.",
+        "hint": "Some os dois grupos indicados.",
+        "errorFocus": "NUCLEON_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-13",
+      "statement": "Um diagrama atual mostra regiões mais prováveis para encontrar elétrons. O que ele não afirma?",
+      "prompt": "Um diagrama atual mostra regiões mais prováveis para encontrar elétrons. O que ele não afirma?",
+      "options": [
+        "Que cada elétron percorre uma órbita circular fixa como um planeta",
+        "Que o átomo tem elétrons",
+        "Que modelos representam ideias científicas",
+        "Que probabilidades podem ser visualizadas"
+      ],
+      "correctAnswer": "Que cada elétron percorre uma órbita circular fixa como um planeta",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que o átomo tem elétrons": [
+          "QUANTUM_ORBIT_LITERAL"
+        ],
+        "Que modelos representam ideias científicas": [
+          "QUANTUM_ORBIT_LITERAL"
+        ],
+        "Que probabilidades podem ser visualizadas": [
+          "QUANTUM_ORBIT_LITERAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MODELO_QUANTICO_EM_TELA",
+      "explanation": "O modelo quântico descreve probabilidades, não órbitas planetárias literais.",
+      "hint": "Compare probabilidade e trilha fixa.",
+      "errorFocus": "QUANTUM_ORBIT_LITERAL",
+      "feedback": {
+        "correct": "Boa observação: O modelo quântico descreve probabilidades, não órbitas planetárias literais.",
+        "incorrect": "O modelo quântico descreve probabilidades, não órbitas planetárias literais.",
+        "hint": "Compare probabilidade e trilha fixa.",
+        "errorFocus": "QUANTUM_ORBIT_LITERAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-14",
+      "statement": "Um modelo contém um átomo de carbono ligado a dois de oxigênio. Qual legenda é correta?",
+      "prompt": "Um modelo contém um átomo de carbono ligado a dois de oxigênio. Qual legenda é correta?",
+      "options": [
+        "A representação mostra H₂O",
+        "A representação mostra CO₂",
+        "O cartão prova o tamanho real dos átomos",
+        "O modelo representa dois carbonos e um oxigênio"
+      ],
+      "correctAnswer": "A representação mostra CO₂",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A representação mostra H₂O": [
+          "MOLECULAR_FORMULA"
+        ],
+        "O cartão prova o tamanho real dos átomos": [
+          "MOLECULAR_FORMULA"
+        ],
+        "O modelo representa dois carbonos e um oxigênio": [
+          "MOLECULAR_FORMULA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_DE_CO2",
+      "explanation": "CO₂ corresponde a um carbono e dois oxigênios.",
+      "hint": "Leia os símbolos e índices.",
+      "errorFocus": "MOLECULAR_FORMULA",
+      "feedback": {
+        "correct": "Boa observação: CO₂ corresponde a um carbono e dois oxigênios.",
+        "incorrect": "CO₂ corresponde a um carbono e dois oxigênios.",
+        "hint": "Leia os símbolos e índices.",
+        "errorFocus": "MOLECULAR_FORMULA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-15",
+      "statement": "Uma linha mostra modelos de Dalton, Thomson, Rutherford e Bohr em sequência. O que a ordem representa?",
+      "prompt": "Uma linha mostra modelos de Dalton, Thomson, Rutherford e Bohr em sequência. O que a ordem representa?",
+      "options": [
+        "Uma lista de cientistas que observaram átomos a olho nu",
+        "Uma sequência de tamanhos em escala",
+        "Mudanças nas explicações científicas ao longo do tempo",
+        "Uma prova de que modelos posteriores nunca serão revistos"
+      ],
+      "correctAnswer": "Mudanças nas explicações científicas ao longo do tempo",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista de cientistas que observaram átomos a olho nu": [
+          "HISTORY_AS_FINALITY"
+        ],
+        "Uma sequência de tamanhos em escala": [
+          "HISTORY_AS_FINALITY"
+        ],
+        "Uma prova de que modelos posteriores nunca serão revistos": [
+          "HISTORY_AS_FINALITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LINHA_HISTORICA",
+      "explanation": "A sequência registra desenvolvimento histórico, não observação direta nem fim da ciência.",
+      "hint": "Leia a linha do tempo como mudança de explicação.",
+      "errorFocus": "HISTORY_AS_FINALITY",
+      "feedback": {
+        "correct": "Boa observação: A sequência registra desenvolvimento histórico, não observação direta nem fim da ciência.",
+        "incorrect": "A sequência registra desenvolvimento histórico, não observação direta nem fim da ciência.",
+        "hint": "Leia a linha do tempo como mudança de explicação.",
+        "errorFocus": "HISTORY_AS_FINALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-16",
+      "statement": "Um diagrama usa vermelho para prótons e azul para nêutrons. Que papel têm as cores?",
+      "prompt": "Um diagrama usa vermelho para prótons e azul para nêutrons. Que papel têm as cores?",
+      "options": [
+        "Indicam as cores reais das partículas",
+        "Mostram a temperatura do núcleo",
+        "Provam que todos os átomos têm esses tons",
+        "Ajudam a distinguir componentes no esquema"
+      ],
+      "correctAnswer": "Ajudam a distinguir componentes no esquema",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Indicam as cores reais das partículas": [
+          "COLOR_AS_PHYSICAL_PROPERTY"
+        ],
+        "Mostram a temperatura do núcleo": [
+          "COLOR_AS_PHYSICAL_PROPERTY"
+        ],
+        "Provam que todos os átomos têm esses tons": [
+          "COLOR_AS_PHYSICAL_PROPERTY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LEGENDA_DE_CORES",
+      "explanation": "Cores são códigos visuais escolhidos para facilitar a leitura.",
+      "hint": "Confira a legenda.",
+      "errorFocus": "COLOR_AS_PHYSICAL_PROPERTY",
+      "feedback": {
+        "correct": "Boa observação: Cores são códigos visuais escolhidos para facilitar a leitura.",
+        "incorrect": "Cores são códigos visuais escolhidos para facilitar a leitura.",
+        "hint": "Confira a legenda.",
+        "errorFocus": "COLOR_AS_PHYSICAL_PROPERTY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-17",
+      "statement": "Um livro chama o modelo de Bohr de “planetário” em uma figura escolar. Qual complemento evita um equívoco?",
+      "prompt": "Um livro chama o modelo de Bohr de “planetário” em uma figura escolar. Qual complemento evita um equívoco?",
+      "options": [
+        "A figura é uma analogia histórica simplificada, não a descrição literal do modelo quântico",
+        "Os elétrons são planetas com trilhas observáveis",
+        "A figura mede distâncias em escala",
+        "O modelo de Bohr e o quântico são idênticos"
+      ],
+      "correctAnswer": "A figura é uma analogia histórica simplificada, não a descrição literal do modelo quântico",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os elétrons são planetas com trilhas observáveis": [
+          "ANALOGY_OVEREXTENSION"
+        ],
+        "A figura mede distâncias em escala": [
+          "ANALOGY_OVEREXTENSION"
+        ],
+        "O modelo de Bohr e o quântico são idênticos": [
+          "ANALOGY_OVEREXTENSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_LIVRO_DIDATICO",
+      "explanation": "A analogia ajuda a visualizar, mas não deve ser tomada literalmente nem confundida com o modelo atual.",
+      "hint": "Acrescente um limite à analogia.",
+      "errorFocus": "ANALOGY_OVEREXTENSION",
+      "feedback": {
+        "correct": "Boa observação: A analogia ajuda a visualizar, mas não deve ser tomada literalmente nem confundida com o modelo atual.",
+        "incorrect": "A analogia ajuda a visualizar, mas não deve ser tomada literalmente nem confundida com o modelo atual.",
+        "hint": "Acrescente um limite à analogia.",
+        "errorFocus": "ANALOGY_OVEREXTENSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-18",
+      "statement": "Qual afirmação relaciona evidência e modelo de forma adequada?",
+      "prompt": "Qual afirmação relaciona evidência e modelo de forma adequada?",
+      "options": [
+        "Um desenho bonito prova sozinho o núcleo",
+        "Resultados de espalhamento ajudaram a sustentar um modelo com núcleo pequeno",
+        "Toda evidência confirma todos os detalhes de um modelo",
+        "O modelo de Dalton incluía elétrons conhecidos"
+      ],
+      "correctAnswer": "Resultados de espalhamento ajudaram a sustentar um modelo com núcleo pequeno",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um desenho bonito prova sozinho o núcleo": [
+          "EVIDENCE_DECORATION"
+        ],
+        "Toda evidência confirma todos os detalhes de um modelo": [
+          "EVIDENCE_DECORATION"
+        ],
+        "O modelo de Dalton incluía elétrons conhecidos": [
+          "EVIDENCE_DECORATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PAINEL_DE_EVIDENCIAS",
+      "explanation": "Modelos são avaliados por sua capacidade de explicar resultados, não pela aparência do desenho.",
+      "hint": "Associe um resultado à explicação que ele apoiou.",
+      "errorFocus": "EVIDENCE_DECORATION",
+      "feedback": {
+        "correct": "Boa observação: Modelos são avaliados por sua capacidade de explicar resultados, não pela aparência do desenho.",
+        "incorrect": "Modelos são avaliados por sua capacidade de explicar resultados, não pela aparência do desenho.",
+        "hint": "Associe um resultado à explicação que ele apoiou.",
+        "errorFocus": "EVIDENCE_DECORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-19",
+      "statement": "Uma maquete de H₂O usa bolas grandes de plástico e varetas. Qual limite deve aparecer na legenda?",
+      "prompt": "Uma maquete de H₂O usa bolas grandes de plástico e varetas. Qual limite deve aparecer na legenda?",
+      "options": [
+        "A maquete é uma fotografia da molécula",
+        "Varetas são ligações materiais dentro da água",
+        "Bolas e varetas representam átomos e ligações, mas não mostram tamanhos e distâncias reais",
+        "As cores são propriedades obrigatórias dos átomos"
+      ],
+      "correctAnswer": "Bolas e varetas representam átomos e ligações, mas não mostram tamanhos e distâncias reais",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A maquete é uma fotografia da molécula": [
+          "MODEL_SCALE_LIMIT"
+        ],
+        "Varetas são ligações materiais dentro da água": [
+          "MODEL_SCALE_LIMIT"
+        ],
+        "As cores são propriedades obrigatórias dos átomos": [
+          "MODEL_SCALE_LIMIT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MOLDE_DE_MOLECULA",
+      "explanation": "Maquetes destacam composição e ligação, mas simplificam escala e aparência.",
+      "hint": "Diga o que foi simplificado.",
+      "errorFocus": "MODEL_SCALE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Maquetes destacam composição e ligação, mas simplificam escala e aparência.",
+        "incorrect": "Maquetes destacam composição e ligação, mas simplificam escala e aparência.",
+        "hint": "Diga o que foi simplificado.",
+        "errorFocus": "MODEL_SCALE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-20",
+      "statement": "Um texto diz que modelos antigos foram inúteis porque mudaram. Qual avaliação é melhor?",
+      "prompt": "Um texto diz que modelos antigos foram inúteis porque mudaram. Qual avaliação é melhor?",
+      "options": [
+        "Todo modelo antigo explica tudo até hoje",
+        "Mudança científica prova que nenhuma evidência existe",
+        "Modelos nunca respondem perguntas úteis",
+        "Modelos antigos podem ter explicado algumas evidências e foram ampliados diante de novas observações"
+      ],
+      "correctAnswer": "Modelos antigos podem ter explicado algumas evidências e foram ampliados diante de novas observações",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todo modelo antigo explica tudo até hoje": [
+          "HISTORY_AS_FAILURE"
+        ],
+        "Mudança científica prova que nenhuma evidência existe": [
+          "HISTORY_AS_FAILURE"
+        ],
+        "Modelos nunca respondem perguntas úteis": [
+          "HISTORY_AS_FAILURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TEXTO_DE_MUSEU",
+      "explanation": "Mudanças podem preservar explicações úteis e corrigir limites identificados.",
+      "hint": "Pense no papel histórico do modelo.",
+      "errorFocus": "HISTORY_AS_FAILURE",
+      "feedback": {
+        "correct": "Boa observação: Mudanças podem preservar explicações úteis e corrigir limites identificados.",
+        "incorrect": "Mudanças podem preservar explicações úteis e corrigir limites identificados.",
+        "hint": "Pense no papel histórico do modelo.",
+        "errorFocus": "HISTORY_AS_FAILURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-21",
+      "statement": "Uma simulação colore regiões onde um elétron é mais provável de ser encontrado. Como interpretá-la?",
+      "prompt": "Uma simulação colore regiões onde um elétron é mais provável de ser encontrado. Como interpretá-la?",
+      "options": [
+        "Como representação probabilística, não como fotografia nem caminho fixo",
+        "Como mapa de uma trilha que o elétron percorre",
+        "Como prova de que elétrons não existem",
+        "Como escala exata do átomo"
+      ],
+      "correctAnswer": "Como representação probabilística, não como fotografia nem caminho fixo",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como mapa de uma trilha que o elétron percorre": [
+          "PROBABILITY_AS_PATH"
+        ],
+        "Como prova de que elétrons não existem": [
+          "PROBABILITY_AS_PATH"
+        ],
+        "Como escala exata do átomo": [
+          "PROBABILITY_AS_PATH"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SIMULACAO_DE_ORBITAL",
+      "explanation": "A visualização representa probabilidade associada a estados quânticos.",
+      "hint": "Observe as palavras usadas na legenda.",
+      "errorFocus": "PROBABILITY_AS_PATH",
+      "feedback": {
+        "correct": "Boa observação: A visualização representa probabilidade associada a estados quânticos.",
+        "incorrect": "A visualização representa probabilidade associada a estados quânticos.",
+        "hint": "Observe as palavras usadas na legenda.",
+        "errorFocus": "PROBABILITY_AS_PATH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-22",
+      "statement": "Um cartão representa 8 prótons e 8 elétrons. O que se pode inferir sobre a carga total?",
+      "prompt": "Um cartão representa 8 prótons e 8 elétrons. O que se pode inferir sobre a carga total?",
+      "options": [
+        "O átomo tem carga positiva de oito unidades",
+        "As cargas positivas e negativas se equilibram no modelo",
+        "O átomo não contém elétrons",
+        "O número de nêutrons decide a carga elétrica"
+      ],
+      "correctAnswer": "As cargas positivas e negativas se equilibram no modelo",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O átomo tem carga positiva de oito unidades": [
+          "CHARGE_BALANCE"
+        ],
+        "O átomo não contém elétrons": [
+          "CHARGE_BALANCE"
+        ],
+        "O número de nêutrons decide a carga elétrica": [
+          "CHARGE_BALANCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CARTAO_ATOMO_NEUTRO",
+      "explanation": "Com quantidades iguais de prótons e elétrons, as cargas se equilibram.",
+      "hint": "Compare os sinais e as quantidades.",
+      "errorFocus": "CHARGE_BALANCE",
+      "feedback": {
+        "correct": "Boa observação: Com quantidades iguais de prótons e elétrons, as cargas se equilibram.",
+        "incorrect": "Com quantidades iguais de prótons e elétrons, as cargas se equilibram.",
+        "hint": "Compare os sinais e as quantidades.",
+        "errorFocus": "CHARGE_BALANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-23",
+      "statement": "Dois diagramas representam o mesmo átomo, um com núcleo e órbitas e outro com nuvem de probabilidade. O que a comparação evidencia?",
+      "prompt": "Dois diagramas representam o mesmo átomo, um com núcleo e órbitas e outro com nuvem de probabilidade. O que a comparação evidencia?",
+      "options": [
+        "Um dos diagramas necessariamente é fotografia",
+        "Todos os desenhos têm a mesma precisão e finalidade",
+        "Diferentes modelos destacam explicações distintas em contextos históricos",
+        "O átomo muda de espécie entre as imagens"
+      ],
+      "correctAnswer": "Diferentes modelos destacam explicações distintas em contextos históricos",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um dos diagramas necessariamente é fotografia": [
+          "DIAGRAMS_AS_OBJECTS"
+        ],
+        "Todos os desenhos têm a mesma precisão e finalidade": [
+          "DIAGRAMS_AS_OBJECTS"
+        ],
+        "O átomo muda de espécie entre as imagens": [
+          "DIAGRAMS_AS_OBJECTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DESENHO_DE_DOIS_MODELOS",
+      "explanation": "As representações diferem no modo de descrever a estrutura, não no elemento representado.",
+      "hint": "Compare as ideias e legendas.",
+      "errorFocus": "DIAGRAMS_AS_OBJECTS",
+      "feedback": {
+        "correct": "Boa observação: As representações diferem no modo de descrever a estrutura, não no elemento representado.",
+        "incorrect": "As representações diferem no modo de descrever a estrutura, não no elemento representado.",
+        "hint": "Compare as ideias e legendas.",
+        "errorFocus": "DIAGRAMS_AS_OBJECTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-24",
+      "statement": "Uma turma usa uma simulação digital de partículas. Que cuidado melhora a conclusão?",
+      "prompt": "Uma turma usa uma simulação digital de partículas. Que cuidado melhora a conclusão?",
+      "options": [
+        "Tratar cada pixel como observação direta",
+        "Ignorar os parâmetros do modelo",
+        "Concluir que a simulação prova qualquer hipótese",
+        "Anotar as regras e limitações da simulação antes de generalizar para a matéria real"
+      ],
+      "correctAnswer": "Anotar as regras e limitações da simulação antes de generalizar para a matéria real",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tratar cada pixel como observação direta": [
+          "SIMULATION_AS_DIRECT_OBSERVATION"
+        ],
+        "Ignorar os parâmetros do modelo": [
+          "SIMULATION_AS_DIRECT_OBSERVATION"
+        ],
+        "Concluir que a simulação prova qualquer hipótese": [
+          "SIMULATION_AS_DIRECT_OBSERVATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CADERNO_DE_LABORATORIO_SIMULADO",
+      "explanation": "Simulações dependem de regras e parâmetros que delimitam o que podem mostrar.",
+      "hint": "Pergunte como a simulação foi construída.",
+      "errorFocus": "SIMULATION_AS_DIRECT_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Simulações dependem de regras e parâmetros que delimitam o que podem mostrar.",
+        "incorrect": "Simulações dependem de regras e parâmetros que delimitam o que podem mostrar.",
+        "hint": "Pergunte como a simulação foi construída.",
+        "errorFocus": "SIMULATION_AS_DIRECT_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-25",
+      "statement": "Qual par associa corretamente modelo e limite?",
+      "prompt": "Qual par associa corretamente modelo e limite?",
+      "options": [
+        "Modelo quântico: regiões de probabilidade, não órbitas planetárias fixas",
+        "Dalton: elétrons em nuvens de probabilidade",
+        "Thomson: núcleo pequeno confirmado por espalhamento",
+        "Rutherford: átomo como esfera indivisível"
+      ],
+      "correctAnswer": "Modelo quântico: regiões de probabilidade, não órbitas planetárias fixas",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dalton: elétrons em nuvens de probabilidade": [
+          "MODEL_FEATURE_MISMATCH"
+        ],
+        "Thomson: núcleo pequeno confirmado por espalhamento": [
+          "MODEL_FEATURE_MISMATCH"
+        ],
+        "Rutherford: átomo como esfera indivisível": [
+          "MODEL_FEATURE_MISMATCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "QUADRO_DE_MODELO_E_LIMITE",
+      "explanation": "O modelo quântico trata estados e probabilidades; as outras associações trocam características históricas.",
+      "hint": "Confira a característica principal do modelo.",
+      "errorFocus": "MODEL_FEATURE_MISMATCH",
+      "feedback": {
+        "correct": "Boa observação: O modelo quântico trata estados e probabilidades; as outras associações trocam características históricas.",
+        "incorrect": "O modelo quântico trata estados e probabilidades; as outras associações trocam características históricas.",
+        "hint": "Confira a característica principal do modelo.",
+        "errorFocus": "MODEL_FEATURE_MISMATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-26",
+      "statement": "Uma nova evidência não é explicada bem pelo modelo usado. Qual atitude científica é apropriada?",
+      "prompt": "Uma nova evidência não é explicada bem pelo modelo usado. Qual atitude científica é apropriada?",
+      "options": [
+        "Apagar a evidência",
+        "Rever ou ampliar o modelo e testar a explicação com evidências",
+        "Manter a explicação sem análise",
+        "Escolher o desenho mais colorido"
+      ],
+      "correctAnswer": "Rever ou ampliar o modelo e testar a explicação com evidências",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar a evidência": [
+          "MODEL_IMMUTABILITY"
+        ],
+        "Manter a explicação sem análise": [
+          "MODEL_IMMUTABILITY"
+        ],
+        "Escolher o desenho mais colorido": [
+          "MODEL_IMMUTABILITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEQUENCIA_DE_DESCOBERTAS",
+      "explanation": "Modelos podem ser avaliados e revistos quando novas evidências surgem.",
+      "hint": "Pense em como ciência responde a limites.",
+      "errorFocus": "MODEL_IMMUTABILITY",
+      "feedback": {
+        "correct": "Boa observação: Modelos podem ser avaliados e revistos quando novas evidências surgem.",
+        "incorrect": "Modelos podem ser avaliados e revistos quando novas evidências surgem.",
+        "hint": "Pense em como ciência responde a limites.",
+        "errorFocus": "MODEL_IMMUTABILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-27",
+      "statement": "Qual frase descreve corretamente uma molécula simples em um esquema?",
+      "prompt": "Qual frase descreve corretamente uma molécula simples em um esquema?",
+      "options": [
+        "A fórmula mostra cada átomo em tamanho real",
+        "A cor dos símbolos é propriedade natural",
+        "A fórmula indica quais átomos estão ligados e em que proporção",
+        "Toda molécula possui o mesmo número de átomos"
+      ],
+      "correctAnswer": "A fórmula indica quais átomos estão ligados e em que proporção",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A fórmula mostra cada átomo em tamanho real": [
+          "FORMULA_AS_IMAGE"
+        ],
+        "A cor dos símbolos é propriedade natural": [
+          "FORMULA_AS_IMAGE"
+        ],
+        "Toda molécula possui o mesmo número de átomos": [
+          "FORMULA_AS_IMAGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ROTULOS_DE_PARTICULAS",
+      "explanation": "Fórmulas representam composição, não escala, cor ou forma literal.",
+      "hint": "Leia os símbolos e os índices.",
+      "errorFocus": "FORMULA_AS_IMAGE",
+      "feedback": {
+        "correct": "Boa observação: Fórmulas representam composição, não escala, cor ou forma literal.",
+        "incorrect": "Fórmulas representam composição, não escala, cor ou forma literal.",
+        "hint": "Leia os símbolos e os índices.",
+        "errorFocus": "FORMULA_AS_IMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-28",
+      "statement": "Qual evidência está associada à mudança do modelo de Rutherford?",
+      "prompt": "Qual evidência está associada à mudança do modelo de Rutherford?",
+      "options": [
+        "A observação de elétrons a olho nu",
+        "A formação de moléculas de água",
+        "A descoberta de níveis de energia por espectros",
+        "O espalhamento de algumas partículas indicou concentração de carga positiva em região pequena"
+      ],
+      "correctAnswer": "O espalhamento de algumas partículas indicou concentração de carga positiva em região pequena",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A observação de elétrons a olho nu": [
+          "HISTORICAL_EVIDENCE_SWAP"
+        ],
+        "A formação de moléculas de água": [
+          "HISTORICAL_EVIDENCE_SWAP"
+        ],
+        "A descoberta de níveis de energia por espectros": [
+          "HISTORICAL_EVIDENCE_SWAP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RESUMO_DE_RUTHERFORD",
+      "explanation": "O espalhamento apoiou o modelo nuclear; espectros foram centrais à proposta de Bohr.",
+      "hint": "Associe a evidência ao pesquisador e à pergunta.",
+      "errorFocus": "HISTORICAL_EVIDENCE_SWAP",
+      "feedback": {
+        "correct": "Boa observação: O espalhamento apoiou o modelo nuclear; espectros foram centrais à proposta de Bohr.",
+        "incorrect": "O espalhamento apoiou o modelo nuclear; espectros foram centrais à proposta de Bohr.",
+        "hint": "Associe a evidência ao pesquisador e à pergunta.",
+        "errorFocus": "HISTORICAL_EVIDENCE_SWAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-29",
+      "statement": "Uma figura não informa se está em escala. Qual pergunta deve ser feita antes de medir distâncias nela?",
+      "prompt": "Uma figura não informa se está em escala. Qual pergunta deve ser feita antes de medir distâncias nela?",
+      "options": [
+        "A legenda ou fonte esclarece se a figura está em escala?",
+        "Qual partícula parece mais bonita?",
+        "Qual cor todos os átomos devem ter?",
+        "Qual órbita é visível no microscópio?"
+      ],
+      "correctAnswer": "A legenda ou fonte esclarece se a figura está em escala?",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual partícula parece mais bonita?": [
+          "UNSUPPORTED_SCALE_READING"
+        ],
+        "Qual cor todos os átomos devem ter?": [
+          "UNSUPPORTED_SCALE_READING"
+        ],
+        "Qual órbita é visível no microscópio?": [
+          "UNSUPPORTED_SCALE_READING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEGENDAS_DE_ESQUEMA",
+      "explanation": "Sem indicação de escala, não se deve medir proporções diretamente no desenho.",
+      "hint": "Procure a nota de escala.",
+      "errorFocus": "UNSUPPORTED_SCALE_READING",
+      "feedback": {
+        "correct": "Boa observação: Sem indicação de escala, não se deve medir proporções diretamente no desenho.",
+        "incorrect": "Sem indicação de escala, não se deve medir proporções diretamente no desenho.",
+        "hint": "Procure a nota de escala.",
+        "errorFocus": "UNSUPPORTED_SCALE_READING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-30",
+      "statement": "Por que comparar modelos de Dalton e Bohr é útil?",
+      "prompt": "Por que comparar modelos de Dalton e Bohr é útil?",
+      "options": [
+        "Para provar que Dalton observou elétrons",
+        "Para identificar como as representações mudaram ao incluir novas partículas e evidências",
+        "Para decidir qual cientista era mais inteligente",
+        "Para concluir que todos os modelos são iguais"
+      ],
+      "correctAnswer": "Para identificar como as representações mudaram ao incluir novas partículas e evidências",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para provar que Dalton observou elétrons": [
+          "HISTORY_AS_RANKING"
+        ],
+        "Para decidir qual cientista era mais inteligente": [
+          "HISTORY_AS_RANKING"
+        ],
+        "Para concluir que todos os modelos são iguais": [
+          "HISTORY_AS_RANKING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PAINEL_DE_DALTON_A_BOHR",
+      "explanation": "Comparação histórica examina ideias e evidências, não classifica pessoas.",
+      "hint": "Compare o que cada modelo representa.",
+      "errorFocus": "HISTORY_AS_RANKING",
+      "feedback": {
+        "correct": "Boa observação: Comparação histórica examina ideias e evidências, não classifica pessoas.",
+        "incorrect": "Comparação histórica examina ideias e evidências, não classifica pessoas.",
+        "hint": "Compare o que cada modelo representa.",
+        "errorFocus": "HISTORY_AS_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-31",
+      "statement": "Um texto chama a nuvem eletrônica de “lugar onde o elétron provavelmente é encontrado”. Qual interpretação combina?",
+      "prompt": "Um texto chama a nuvem eletrônica de “lugar onde o elétron provavelmente é encontrado”. Qual interpretação combina?",
+      "options": [
+        "A nuvem é fumaça real ao redor do átomo",
+        "O elétron tem uma trilha circular fixa desenhada ali",
+        "A nuvem representa distribuição de probabilidade",
+        "O núcleo está espalhado pela nuvem"
+      ],
+      "correctAnswer": "A nuvem representa distribuição de probabilidade",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A nuvem é fumaça real ao redor do átomo": [
+          "CLOUD_AS_MATERIAL"
+        ],
+        "O elétron tem uma trilha circular fixa desenhada ali": [
+          "CLOUD_AS_MATERIAL"
+        ],
+        "O núcleo está espalhado pela nuvem": [
+          "CLOUD_AS_MATERIAL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEXTO_SOBRE_NUVEM",
+      "explanation": "Nuvem eletrônica é uma representação, não uma nuvem material.",
+      "hint": "Leia a palavra “probabilidade”.",
+      "errorFocus": "CLOUD_AS_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: Nuvem eletrônica é uma representação, não uma nuvem material.",
+        "incorrect": "Nuvem eletrônica é uma representação, não uma nuvem material.",
+        "hint": "Leia a palavra “probabilidade”.",
+        "errorFocus": "CLOUD_AS_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-32",
+      "statement": "Qual síntese é mais completa?",
+      "prompt": "Qual síntese é mais completa?",
+      "options": [
+        "Modelos são fotografias e não mudam",
+        "Um modelo explica toda característica sem limite",
+        "A história científica é uma lista de desenhos",
+        "Modelos representam aspectos da matéria, explicam evidências e podem mudar quando novas questões aparecem"
+      ],
+      "correctAnswer": "Modelos representam aspectos da matéria, explicam evidências e podem mudar quando novas questões aparecem",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Modelos são fotografias e não mudam": [
+          "MODEL_SCOPE"
+        ],
+        "Um modelo explica toda característica sem limite": [
+          "MODEL_SCOPE"
+        ],
+        "A história científica é uma lista de desenhos": [
+          "MODEL_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MAPA_FINAL_DA_UNIDADE",
+      "explanation": "A síntese reúne representação, evidência e revisão histórica.",
+      "hint": "Inclua o que representa, explica e como pode mudar.",
+      "errorFocus": "MODEL_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A síntese reúne representação, evidência e revisão histórica.",
+        "incorrect": "A síntese reúne representação, evidência e revisão histórica.",
+        "hint": "Inclua o que representa, explica e como pode mudar.",
+        "errorFocus": "MODEL_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-33",
+      "statement": "Qual partícula tem carga negativa?",
+      "prompt": "Qual partícula tem carga negativa?",
+      "options": [
+        "Elétron",
+        "Próton",
+        "Nêutron",
+        "Molécula"
+      ],
+      "correctAnswer": "Elétron",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Próton": [
+          "PARTICLE_CHARGE_RECALL"
+        ],
+        "Nêutron": [
+          "PARTICLE_CHARGE_RECALL"
+        ],
+        "Molécula": [
+          "PARTICLE_CHARGE_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_PARTICULA_NEGATIVA",
+      "explanation": "O elétron tem carga negativa.",
+      "hint": "Lembre do sinal do elétron.",
+      "errorFocus": "PARTICLE_CHARGE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: O elétron tem carga negativa.",
+        "incorrect": "O elétron tem carga negativa.",
+        "hint": "Lembre do sinal do elétron.",
+        "errorFocus": "PARTICLE_CHARGE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-34",
+      "statement": "Uma figura colore prótons de vermelho. O que a cor indica?",
+      "prompt": "Uma figura colore prótons de vermelho. O que a cor indica?",
+      "options": [
+        "A cor real do próton",
+        "Uma convenção da legenda",
+        "A temperatura do átomo",
+        "O tamanho em escala"
+      ],
+      "correctAnswer": "Uma convenção da legenda",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A cor real do próton": [
+          "COLOR_LITERAL"
+        ],
+        "A temperatura do átomo": [
+          "COLOR_LITERAL"
+        ],
+        "O tamanho em escala": [
+          "COLOR_LITERAL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_DIAGRAMA",
+      "explanation": "Cores ajudam a distinguir símbolos e dependem da legenda.",
+      "hint": "A cor foi escolhida pelo autor.",
+      "errorFocus": "COLOR_LITERAL",
+      "feedback": {
+        "correct": "Boa observação: Cores ajudam a distinguir símbolos e dependem da legenda.",
+        "incorrect": "Cores ajudam a distinguir símbolos e dependem da legenda.",
+        "hint": "A cor foi escolhida pelo autor.",
+        "errorFocus": "COLOR_LITERAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-35",
+      "statement": "Um esquema mostra núcleo pequeno e regiões eletrônicas ao redor. Qual descrição é adequada?",
+      "prompt": "Um esquema mostra núcleo pequeno e regiões eletrônicas ao redor. Qual descrição é adequada?",
+      "options": [
+        "É uma fotografia em escala",
+        "É um mapa de órbitas fixas do modelo quântico",
+        "É uma representação simplificada da estrutura atômica",
+        "É uma molécula completa"
+      ],
+      "correctAnswer": "É uma representação simplificada da estrutura atômica",
+      "answerPosition": "C",
+      "misconceptions": {
+        "É uma fotografia em escala": [
+          "SCHEMATIC_AS_PHOTOGRAPH"
+        ],
+        "É um mapa de órbitas fixas do modelo quântico": [
+          "SCHEMATIC_AS_PHOTOGRAPH"
+        ],
+        "É uma molécula completa": [
+          "SCHEMATIC_AS_PHOTOGRAPH"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_NUCLEO",
+      "explanation": "Esquemas comunicam relações e simplificações.",
+      "hint": "Procure a palavra modelo.",
+      "errorFocus": "SCHEMATIC_AS_PHOTOGRAPH",
+      "feedback": {
+        "correct": "Boa observação: Esquemas comunicam relações e simplificações.",
+        "incorrect": "Esquemas comunicam relações e simplificações.",
+        "hint": "Procure a palavra modelo.",
+        "errorFocus": "SCHEMATIC_AS_PHOTOGRAPH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-36",
+      "statement": "Uma evidência contradiz parte de um modelo. O que pode acontecer?",
+      "prompt": "Uma evidência contradiz parte de um modelo. O que pode acontecer?",
+      "options": [
+        "A evidência precisa ser escondida",
+        "A ciência termina",
+        "A evidência torna-se uma molécula",
+        "O modelo pode ser revisado ou ampliado"
+      ],
+      "correctAnswer": "O modelo pode ser revisado ou ampliado",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A evidência precisa ser escondida": [
+          "EVIDENCE_REJECTION"
+        ],
+        "A ciência termina": [
+          "EVIDENCE_REJECTION"
+        ],
+        "A evidência torna-se uma molécula": [
+          "EVIDENCE_REJECTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_EVIDENCIA",
+      "explanation": "A revisão é parte do desenvolvimento dos modelos científicos.",
+      "hint": "Pense na sequência histórica.",
+      "errorFocus": "EVIDENCE_REJECTION",
+      "feedback": {
+        "correct": "Boa observação: A revisão é parte do desenvolvimento dos modelos científicos.",
+        "incorrect": "A revisão é parte do desenvolvimento dos modelos científicos.",
+        "hint": "Pense na sequência histórica.",
+        "errorFocus": "EVIDENCE_REJECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-37",
+      "statement": "O cartão H₂O mostra quantos átomos de cada tipo?",
+      "prompt": "O cartão H₂O mostra quantos átomos de cada tipo?",
+      "options": [
+        "Dois de hidrogênio e um de oxigênio",
+        "Um de hidrogênio e dois de oxigênio",
+        "Dois de cada tipo",
+        "Um de cada tipo"
+      ],
+      "correctAnswer": "Dois de hidrogênio e um de oxigênio",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um de hidrogênio e dois de oxigênio": [
+          "FORMULA_COUNT"
+        ],
+        "Dois de cada tipo": [
+          "FORMULA_COUNT"
+        ],
+        "Um de cada tipo": [
+          "FORMULA_COUNT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_MOLECULA",
+      "explanation": "Os índices indicam quantidades dos símbolos que os precedem.",
+      "hint": "Conte os números pequenos.",
+      "errorFocus": "FORMULA_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Os índices indicam quantidades dos símbolos que os precedem.",
+        "incorrect": "Os índices indicam quantidades dos símbolos que os precedem.",
+        "hint": "Conte os números pequenos.",
+        "errorFocus": "FORMULA_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-38",
+      "statement": "Que contribuição é associada ao modelo de Bohr?",
+      "prompt": "Que contribuição é associada ao modelo de Bohr?",
+      "options": [
+        "A ideia de átomo sem qualquer partícula",
+        "Níveis de energia usados para explicar certos espectros",
+        "O modelo quântico de nuvens probabilísticas completo",
+        "A descoberta de moléculas como células"
+      ],
+      "correctAnswer": "Níveis de energia usados para explicar certos espectros",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A ideia de átomo sem qualquer partícula": [
+          "BOHR_CONTRIBUTION"
+        ],
+        "O modelo quântico de nuvens probabilísticas completo": [
+          "BOHR_CONTRIBUTION"
+        ],
+        "A descoberta de moléculas como células": [
+          "BOHR_CONTRIBUTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_BOHR",
+      "explanation": "Bohr introduziu níveis de energia quantizados em sua explicação.",
+      "hint": "Associe Bohr aos espectros.",
+      "errorFocus": "BOHR_CONTRIBUTION",
+      "feedback": {
+        "correct": "Boa observação: Bohr introduziu níveis de energia quantizados em sua explicação.",
+        "incorrect": "Bohr introduziu níveis de energia quantizados em sua explicação.",
+        "hint": "Associe Bohr aos espectros.",
+        "errorFocus": "BOHR_CONTRIBUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-39",
+      "statement": "Por que não devemos dizer que o modelo quântico mostra elétrons como planetas?",
+      "prompt": "Por que não devemos dizer que o modelo quântico mostra elétrons como planetas?",
+      "options": [
+        "Porque não há elétrons nos átomos",
+        "Porque os átomos são visíveis a olho nu",
+        "Porque ele descreve estados e probabilidades, não trajetórias planetárias fixas",
+        "Porque modelos não usam evidências"
+      ],
+      "correctAnswer": "Porque ele descreve estados e probabilidades, não trajetórias planetárias fixas",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque não há elétrons nos átomos": [
+          "PLANETARY_ORBIT_RECALL"
+        ],
+        "Porque os átomos são visíveis a olho nu": [
+          "PLANETARY_ORBIT_RECALL"
+        ],
+        "Porque modelos não usam evidências": [
+          "PLANETARY_ORBIT_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ORBITAS",
+      "explanation": "A descrição quântica não usa órbitas planetárias literais.",
+      "hint": "Compare órbita fixa com probabilidade.",
+      "errorFocus": "PLANETARY_ORBIT_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A descrição quântica não usa órbitas planetárias literais.",
+        "incorrect": "A descrição quântica não usa órbitas planetárias literais.",
+        "hint": "Compare órbita fixa com probabilidade.",
+        "errorFocus": "PLANETARY_ORBIT_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef09ci03-models-of-matter-and-atom-history-40",
+      "statement": "Qual afirmação reconhece a história dos modelos sem chamar os anteriores de inúteis?",
+      "prompt": "Qual afirmação reconhece a história dos modelos sem chamar os anteriores de inúteis?",
+      "options": [
+        "O primeiro modelo já explicava todos os dados",
+        "Modelos mudam somente por preferência estética",
+        "Modelos antigos não tiveram função científica",
+        "Cada modelo destacou aspectos e limites conforme as evidências disponíveis"
+      ],
+      "correctAnswer": "Cada modelo destacou aspectos e limites conforme as evidências disponíveis",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O primeiro modelo já explicava todos os dados": [
+          "HISTORICAL_VALUE"
+        ],
+        "Modelos mudam somente por preferência estética": [
+          "HISTORICAL_VALUE"
+        ],
+        "Modelos antigos não tiveram função científica": [
+          "HISTORICAL_VALUE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVISAO_DE_MODELOS_HISTORICOS",
+      "explanation": "Modelos históricos podem ter utilidade e limites em contextos específicos.",
+      "hint": "Considere evidências e contexto histórico.",
+      "errorFocus": "HISTORICAL_VALUE",
+      "feedback": {
+        "correct": "Boa observação: Modelos históricos podem ter utilidade e limites em contextos específicos.",
+        "incorrect": "Modelos históricos podem ter utilidade e limites em contextos específicos.",
+        "hint": "Considere evidências e contexto histórico.",
+        "errorFocus": "HISTORICAL_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer diagramas com alto contraste, rótulos textuais e versão linear que descreva cada componente e ligação.",
+          "Permitir construir explicações por texto, fala, cartões ordenáveis, diagramas táteis seguros ou comunicação alternativa.",
+          "Dividir a linha histórica em etapas curtas e fornecer glossário de átomo, núcleo, elétron, molécula e modelo.",
+          "Descrever verbalmente informações de cor e forma, sem usar cor como único meio de diferenciar partículas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

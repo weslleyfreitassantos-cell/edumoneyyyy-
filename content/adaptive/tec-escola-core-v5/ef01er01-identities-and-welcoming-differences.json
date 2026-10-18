@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er01-identities-and-welcoming-differences",
+  "canonicalSkillCode": "AUTHORING_EF01ER01_IDENTITIES_AND_WELCOMING_DIFFERENCES",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "semelhanças e diferenças entre o eu, o outro e o nós",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Cada pessoa, um jeito de participar",
+    "objective": "Identificar semelhanças e diferenças observáveis em situações fictícias e escolher formas respeitosas de convivência, sem exigir que alguém revele crenças, costumes ou informações pessoais.",
+    "summary": "Pessoas podem compartilhar gostos, tarefas ou experiências e também ter características e preferências diferentes. Uma diferença não torna alguém melhor ou pior. Acolher é tratar cada pessoa com respeito, escutar sem pressionar e permitir diferentes formas de participar. Aprendemos sobre personagens e situações, sem adivinhar características nem pedir relatos íntimos.",
+    "explanation": "Para identificar uma semelhança, procure algo que duas pessoas realmente têm em comum na história, como gostar de desenhar. Para notar uma diferença, compare apenas uma informação apresentada, como escolher materiais diferentes. Não complete o que não foi contado: roupa, aparência ou nome não revelam automaticamente gostos, crenças ou capacidades. No grupo, acolher significa ouvir, usar palavras respeitosas e combinar uma participação possível para todos. Uma diferença é uma característica da pessoa ou da situação; não é motivo para excluir, ridicularizar ou classificar alguém como superior.",
+    "workedExample": "Em uma narrativa, Joana e Ravi gostam de montar blocos; Joana escolhe peças azuis e Ravi prefere peças verdes. A semelhança é a brincadeira compartilhada; a cor escolhida é uma diferença. A história não permite concluir que um dos dois monta melhor nem que todas as pessoas com aquela preferência sejam iguais.",
+    "commonMistake": "Supor gostos, crenças ou habilidades a partir de aparência, nome ou pertencimento a um grupo; ou tratar uma diferença como motivo para excluir.",
+    "priorKnowledge": [
+      "Reconhecer personagens e ações explícitas em uma história curta.",
+      "Compreender combinados simples de escuta e respeito em uma atividade coletiva."
+    ],
+    "keyConcepts": [
+      "eu",
+      "outro",
+      "nós",
+      "semelhança",
+      "diferença",
+      "acolhimento",
+      "respeito",
+      "informação observável"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ASSUMING_UNSTATED_TRAITS",
+        "action": "Volte à frase da história e separe o que está dito do que foi imaginado; responda apenas com uma pista apresentada."
+      },
+      {
+        "errorFocus": "DIFFERENCE_AS_RANK",
+        "action": "Compare duas escolhas sem usar melhor ou pior; depois nomeie uma regra de convivência que protege ambas as pessoas."
+      },
+      {
+        "errorFocus": "FORCED_DISCLOSURE",
+        "action": "Troque o exemplo pessoal por personagens fictícios e permita observar, apontar ou passar a vez sem explicar o motivo."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+      "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+      "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er01-fictional-story-overlap",
+        "title": "Mapa de encontros em uma história",
+        "instructions": "Cartões apresentam personagens inventados com duas informações explícitas sobre interesses e formas de participar; nenhuma característica é atribuída a estudantes reais.\n1. Escolha dois cartões e sublinhe uma informação apresentada sobre cada personagem.\n2. Registre uma semelhança e uma diferença usando somente essas pistas.\n3. Sugira uma frase ou combinado que permita aos dois participar com respeito.",
+        "steps": [
+          "Escolha dois cartões e sublinhe uma informação apresentada sobre cada personagem.",
+          "Registre uma semelhança e uma diferença usando somente essas pistas.",
+          "Sugira uma frase ou combinado que permita aos dois participar com respeito."
+        ],
+        "evidence": "Registro que diferencia semelhança e diferença observáveis e propõe uma ação acolhedora sem adivinhar traços pessoais.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma informação com apoio, mas ainda acrescenta suposições.",
+            "developing": "identifica uma semelhança ou diferença usando a história e propõe respeito com lembrete.",
+            "proficient": "compara duas informações explícitas e justifica um combinado que acolhe as diferentes escolhas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er01-shared-group-mural",
+        "title": "Painel de muitas maneiras de participar",
+        "instructions": "A turma monta um painel coletivo com opções fictícias de contribuição: desenhar, escolher símbolos, ditar uma legenda ou organizar cartões.\n1. Observe as diferentes opções de contribuição apresentadas.\n2. Em dupla ou individualmente, escolha ou aponte duas formas que podem ajudar o grupo.\n3. Combine uma legenda que reconheça contribuições diferentes sem classificar uma como superior.",
+        "steps": [
+          "Observe as diferentes opções de contribuição apresentadas.",
+          "Em dupla ou individualmente, escolha ou aponte duas formas que podem ajudar o grupo.",
+          "Combine uma legenda que reconheça contribuições diferentes sem classificar uma como superior."
+        ],
+        "evidence": "Painel ou relato acessível que mostra pelo menos duas contribuições possíveis e um combinado de acolhimento.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "participa com apoio e reconhece uma contribuição.",
+            "developing": "identifica contribuições diferentes e ajuda a formular um combinado.",
+            "proficient": "explica como as contribuições se somam e usa linguagem não hierárquica."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er01-identities-and-welcoming-differences-01",
+          "v1-ef01er01-identities-and-welcoming-differences-02",
+          "v1-ef01er01-identities-and-welcoming-differences-03",
+          "v1-ef01er01-identities-and-welcoming-differences-04",
+          "v1-ef01er01-identities-and-welcoming-differences-05",
+          "v1-ef01er01-identities-and-welcoming-differences-06",
+          "v1-ef01er01-identities-and-welcoming-differences-07",
+          "v1-ef01er01-identities-and-welcoming-differences-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er01-identities-and-welcoming-differences-09",
+          "v1-ef01er01-identities-and-welcoming-differences-10",
+          "v1-ef01er01-identities-and-welcoming-differences-11",
+          "v1-ef01er01-identities-and-welcoming-differences-12",
+          "v1-ef01er01-identities-and-welcoming-differences-13",
+          "v1-ef01er01-identities-and-welcoming-differences-14",
+          "v1-ef01er01-identities-and-welcoming-differences-15",
+          "v1-ef01er01-identities-and-welcoming-differences-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er01-identities-and-welcoming-differences-17",
+          "v1-ef01er01-identities-and-welcoming-differences-18",
+          "v1-ef01er01-identities-and-welcoming-differences-19",
+          "v1-ef01er01-identities-and-welcoming-differences-20",
+          "v1-ef01er01-identities-and-welcoming-differences-21",
+          "v1-ef01er01-identities-and-welcoming-differences-22",
+          "v1-ef01er01-identities-and-welcoming-differences-23",
+          "v1-ef01er01-identities-and-welcoming-differences-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er01-identities-and-welcoming-differences-25",
+          "v1-ef01er01-identities-and-welcoming-differences-26",
+          "v1-ef01er01-identities-and-welcoming-differences-27",
+          "v1-ef01er01-identities-and-welcoming-differences-28",
+          "v1-ef01er01-identities-and-welcoming-differences-29",
+          "v1-ef01er01-identities-and-welcoming-differences-30",
+          "v1-ef01er01-identities-and-welcoming-differences-31",
+          "v1-ef01er01-identities-and-welcoming-differences-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er01-identities-and-welcoming-differences-33",
+          "v1-ef01er01-identities-and-welcoming-differences-34",
+          "v1-ef01er01-identities-and-welcoming-differences-35",
+          "v1-ef01er01-identities-and-welcoming-differences-36",
+          "v1-ef01er01-identities-and-welcoming-differences-37",
+          "v1-ef01er01-identities-and-welcoming-differences-38",
+          "v1-ef01er01-identities-and-welcoming-differences-39",
+          "v1-ef01er01-identities-and-welcoming-differences-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER01",
+        "descriptor": "Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-01",
+      "statement": "Na história, Lia e Tom escolhem montar uma ponte de blocos. Qual semelhança está escrita?",
+      "prompt": "Na história, Lia e Tom escolhem montar uma ponte de blocos. Qual semelhança está escrita?",
+      "options": [
+        "Os dois escolheram montar com blocos.",
+        "Os dois escolheram exatamente as mesmas cores",
+        "Tom construiu mais alto",
+        "Lia prefere toda brincadeira de montar"
+      ],
+      "correctAnswer": "Os dois escolheram montar com blocos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os dois escolheram exatamente as mesmas cores": [
+          "OBSERVABLE_COMMONALITY"
+        ],
+        "Tom construiu mais alto": [
+          "OBSERVABLE_COMMONALITY"
+        ],
+        "Lia prefere toda brincadeira de montar": [
+          "OBSERVABLE_COMMONALITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HISTORIA_DOS_BLOCOS",
+      "explanation": "A narrativa informa a escolha compartilhada, mas não diz que cores ou resultados foram iguais.",
+      "hint": "Procure a ação que aparece para os dois.",
+      "errorFocus": "OBSERVABLE_COMMONALITY",
+      "feedback": {
+        "correct": "Boa observação: A narrativa informa a escolha compartilhada, mas não diz que cores ou resultados foram iguais.",
+        "incorrect": "A narrativa informa a escolha compartilhada, mas não diz que cores ou resultados foram iguais.",
+        "hint": "Procure a ação que aparece para os dois.",
+        "errorFocus": "OBSERVABLE_COMMONALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-02",
+      "statement": "Um cartão diz que Nara desenha com giz e outro que Ivo desenha com lápis. O que é possível comparar?",
+      "prompt": "Um cartão diz que Nara desenha com giz e outro que Ivo desenha com lápis. O que é possível comparar?",
+      "options": [
+        "Ivo desenha melhor",
+        "Os dois desenham e usam materiais diferentes.",
+        "Nara gosta de todas as artes",
+        "O material revela a personalidade inteira"
+      ],
+      "correctAnswer": "Os dois desenham e usam materiais diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ivo desenha melhor": [
+          "DIFFERENCE_WITHOUT_RANK"
+        ],
+        "Nara gosta de todas as artes": [
+          "DIFFERENCE_WITHOUT_RANK"
+        ],
+        "O material revela a personalidade inteira": [
+          "DIFFERENCE_WITHOUT_RANK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTOES_DE_DESENHO",
+      "explanation": "O texto apresenta a atividade comum e materiais diferentes, sem comparar habilidade.",
+      "hint": "Separe a atividade do material escolhido.",
+      "errorFocus": "DIFFERENCE_WITHOUT_RANK",
+      "feedback": {
+        "correct": "Boa observação: O texto apresenta a atividade comum e materiais diferentes, sem comparar habilidade.",
+        "incorrect": "O texto apresenta a atividade comum e materiais diferentes, sem comparar habilidade.",
+        "hint": "Separe a atividade do material escolhido.",
+        "errorFocus": "DIFFERENCE_WITHOUT_RANK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-03",
+      "statement": "Em uma cena fictícia, uma criança acena e outra diz “bom dia”. Qual conclusão respeita o que foi mostrado?",
+      "prompt": "Em uma cena fictícia, uma criança acena e outra diz “bom dia”. Qual conclusão respeita o que foi mostrado?",
+      "options": [
+        "Uma delas não quis participar",
+        "Todas as crianças preferem falar",
+        "Elas cumprimentaram de formas diferentes.",
+        "O aceno significa que a pessoa está triste"
+      ],
+      "correctAnswer": "Elas cumprimentaram de formas diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma delas não quis participar": [
+          "NO_UNSUPPORTED_INFERENCE"
+        ],
+        "Todas as crianças preferem falar": [
+          "NO_UNSUPPORTED_INFERENCE"
+        ],
+        "O aceno significa que a pessoa está triste": [
+          "NO_UNSUPPORTED_INFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RODA_DE_CUMPRIMENTOS",
+      "explanation": "A cena mostra duas formas de cumprimento; não revela sentimentos ou preferências gerais.",
+      "hint": "Use apenas as ações da cena.",
+      "errorFocus": "NO_UNSUPPORTED_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra duas formas de cumprimento; não revela sentimentos ou preferências gerais.",
+        "incorrect": "A cena mostra duas formas de cumprimento; não revela sentimentos ou preferências gerais.",
+        "hint": "Use apenas as ações da cena.",
+        "errorFocus": "NO_UNSUPPORTED_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-04",
+      "statement": "Dois personagens gostam do mesmo jogo, mas escolhem peças de cores distintas. Qual par de ideias está correto?",
+      "prompt": "Dois personagens gostam do mesmo jogo, mas escolhem peças de cores distintas. Qual par de ideias está correto?",
+      "options": [
+        "Jogo diferente e cores iguais",
+        "Mesma habilidade e mesmo gosto por tudo",
+        "Uma cor é melhor para jogar",
+        "Jogo em comum e cores diferentes."
+      ],
+      "correctAnswer": "Jogo em comum e cores diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Jogo diferente e cores iguais": [
+          "COMMON_AND_DIFFERENT"
+        ],
+        "Mesma habilidade e mesmo gosto por tudo": [
+          "COMMON_AND_DIFFERENT"
+        ],
+        "Uma cor é melhor para jogar": [
+          "COMMON_AND_DIFFERENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "JOGO_DE_CARTAS_COLORIDAS",
+      "explanation": "A informação permite reconhecer uma preferência compartilhada e escolhas distintas.",
+      "hint": "Encontre uma coisa comum e uma diferente.",
+      "errorFocus": "COMMON_AND_DIFFERENT",
+      "feedback": {
+        "correct": "Boa observação: A informação permite reconhecer uma preferência compartilhada e escolhas distintas.",
+        "incorrect": "A informação permite reconhecer uma preferência compartilhada e escolhas distintas.",
+        "hint": "Encontre uma coisa comum e uma diferente.",
+        "errorFocus": "COMMON_AND_DIFFERENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-05",
+      "statement": "A personagem Bia prefere ouvir uma história; Davi prefere acompanhar as figuras. O que a turma pode concluir?",
+      "prompt": "A personagem Bia prefere ouvir uma história; Davi prefere acompanhar as figuras. O que a turma pode concluir?",
+      "options": [
+        "Eles acompanham a história de modos diferentes.",
+        "Davi não gosta de histórias",
+        "Bia não consegue observar figuras",
+        "Um modo é sempre melhor"
+      ],
+      "correctAnswer": "Eles acompanham a história de modos diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Davi não gosta de histórias": [
+          "RESPECTFUL_MODES"
+        ],
+        "Bia não consegue observar figuras": [
+          "RESPECTFUL_MODES"
+        ],
+        "Um modo é sempre melhor": [
+          "RESPECTFUL_MODES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CONTO_DA_BIBLIOTECA",
+      "explanation": "O conto apresenta duas formas de acompanhar, sem avaliar capacidade ou gosto total.",
+      "hint": "Não transforme uma escolha em julgamento.",
+      "errorFocus": "RESPECTFUL_MODES",
+      "feedback": {
+        "correct": "Boa observação: O conto apresenta duas formas de acompanhar, sem avaliar capacidade ou gosto total.",
+        "incorrect": "O conto apresenta duas formas de acompanhar, sem avaliar capacidade ou gosto total.",
+        "hint": "Não transforme uma escolha em julgamento.",
+        "errorFocus": "RESPECTFUL_MODES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-06",
+      "statement": "Em um mural de personagens, duas pessoas escolhem música e uma escolhe silêncio para trabalhar. Qual comparação é sustentada?",
+      "prompt": "Em um mural de personagens, duas pessoas escolhem música e uma escolhe silêncio para trabalhar. Qual comparação é sustentada?",
+      "options": [
+        "Quem escolhe silêncio não gosta dos colegas",
+        "Há uma escolha compartilhada e outra diferente.",
+        "Todos preferem a mesma atividade",
+        "A escolha revela crença religiosa"
+      ],
+      "correctAnswer": "Há uma escolha compartilhada e outra diferente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quem escolhe silêncio não gosta dos colegas": [
+          "LIMITED_EVIDENCE"
+        ],
+        "Todos preferem a mesma atividade": [
+          "LIMITED_EVIDENCE"
+        ],
+        "A escolha revela crença religiosa": [
+          "LIMITED_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MURAL_DE_PREFERENCIAS_FICTICIAS",
+      "explanation": "O mural permite comparar as escolhas descritas, não explicar motivos que não aparecem.",
+      "hint": "Leia somente as preferências registradas.",
+      "errorFocus": "LIMITED_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O mural permite comparar as escolhas descritas, não explicar motivos que não aparecem.",
+        "incorrect": "O mural permite comparar as escolhas descritas, não explicar motivos que não aparecem.",
+        "hint": "Leia somente as preferências registradas.",
+        "errorFocus": "LIMITED_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-07",
+      "statement": "Numa peça, Rui narra e Eva segura o cenário. O que ambos fazem?",
+      "prompt": "Numa peça, Rui narra e Eva segura o cenário. O que ambos fazem?",
+      "options": [
+        "Fazem a mesma tarefa",
+        "Têm o mesmo jeito de falar",
+        "Contribuem para a apresentação.",
+        "Um papel é mais importante"
+      ],
+      "correctAnswer": "Contribuem para a apresentação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fazem a mesma tarefa": [
+          "DIFFERENT_CONTRIBUTIONS"
+        ],
+        "Têm o mesmo jeito de falar": [
+          "DIFFERENT_CONTRIBUTIONS"
+        ],
+        "Um papel é mais importante": [
+          "DIFFERENT_CONTRIBUTIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PECA_DE_TEATRO_DE_PAPEIS",
+      "explanation": "A cena mostra tarefas distintas que participam da mesma apresentação.",
+      "hint": "Observe o objetivo compartilhado.",
+      "errorFocus": "DIFFERENT_CONTRIBUTIONS",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra tarefas distintas que participam da mesma apresentação.",
+        "incorrect": "A cena mostra tarefas distintas que participam da mesma apresentação.",
+        "hint": "Observe o objetivo compartilhado.",
+        "errorFocus": "DIFFERENT_CONTRIBUTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-08",
+      "statement": "Uma criança quer responder falando e outra prefere apontar um cartão. Que combinado acolhe ambas?",
+      "prompt": "Uma criança quer responder falando e outra prefere apontar um cartão. Que combinado acolhe ambas?",
+      "options": [
+        "Obrigar todos a falar",
+        "Ignorar quem aponta",
+        "Escolher uma forma como a única correta",
+        "Aceitar as duas formas de resposta."
+      ],
+      "correctAnswer": "Aceitar as duas formas de resposta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Obrigar todos a falar": [
+          "ACCESSIBLE_PARTICIPATION"
+        ],
+        "Ignorar quem aponta": [
+          "ACCESSIBLE_PARTICIPATION"
+        ],
+        "Escolher uma forma como a única correta": [
+          "ACCESSIBLE_PARTICIPATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMBINADO_DA_RODA",
+      "explanation": "Formas diferentes de participar podem ser respeitadas quando comunicam a resposta.",
+      "hint": "Pense em como incluir as duas contribuições.",
+      "errorFocus": "ACCESSIBLE_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: Formas diferentes de participar podem ser respeitadas quando comunicam a resposta.",
+        "incorrect": "Formas diferentes de participar podem ser respeitadas quando comunicam a resposta.",
+        "hint": "Pense em como incluir as duas contribuições.",
+        "errorFocus": "ACCESSIBLE_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-09",
+      "statement": "Dois personagens modelam animais; um escolhe peixe e outro escolhe pássaro. O que compartilham?",
+      "prompt": "Dois personagens modelam animais; um escolhe peixe e outro escolhe pássaro. O que compartilham?",
+      "options": [
+        "A atividade de modelar figuras.",
+        "O mesmo animal",
+        "A mesma cor de massinha",
+        "A mesma habilidade em toda tarefa"
+      ],
+      "correctAnswer": "A atividade de modelar figuras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O mesmo animal": [
+          "SHARED_ACTIVITY"
+        ],
+        "A mesma cor de massinha": [
+          "SHARED_ACTIVITY"
+        ],
+        "A mesma habilidade em toda tarefa": [
+          "SHARED_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "OFICINA_DE_MASSINHA",
+      "explanation": "A história informa que os dois modelam, embora escolham figuras distintas.",
+      "hint": "Compare o que fazem, não o que produziram.",
+      "errorFocus": "SHARED_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A história informa que os dois modelam, embora escolham figuras distintas.",
+        "incorrect": "A história informa que os dois modelam, embora escolham figuras distintas.",
+        "hint": "Compare o que fazem, não o que produziram.",
+        "errorFocus": "SHARED_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-10",
+      "statement": "Num exemplo inventado, uma personagem escolhe fruta e outra escolhe pão. O que a informação mostra?",
+      "prompt": "Num exemplo inventado, uma personagem escolhe fruta e outra escolhe pão. O que a informação mostra?",
+      "options": [
+        "Quem escolheu fruta é mais saudável",
+        "Escolhas diferentes para o lanche.",
+        "Uma delas não pode comer pão",
+        "As escolhas definem toda a pessoa"
+      ],
+      "correctAnswer": "Escolhas diferentes para o lanche.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quem escolheu fruta é mais saudável": [
+          "CHOICE_NOT_IDENTITY"
+        ],
+        "Uma delas não pode comer pão": [
+          "CHOICE_NOT_IDENTITY"
+        ],
+        "As escolhas definem toda a pessoa": [
+          "CHOICE_NOT_IDENTITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PAINEL_DE_LANCHE_FICTICIO",
+      "explanation": "O exemplo apresenta opções, não motivo, saúde ou identidade das personagens.",
+      "hint": "Descreva a escolha sem julgar.",
+      "errorFocus": "CHOICE_NOT_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: O exemplo apresenta opções, não motivo, saúde ou identidade das personagens.",
+        "incorrect": "O exemplo apresenta opções, não motivo, saúde ou identidade das personagens.",
+        "hint": "Descreva a escolha sem julgar.",
+        "errorFocus": "CHOICE_NOT_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-11",
+      "statement": "No conto, Ana lê uma frase e Leo vira a página quando ela termina. O que fazem juntos?",
+      "prompt": "No conto, Ana lê uma frase e Leo vira a página quando ela termina. O que fazem juntos?",
+      "options": [
+        "Leem em voz alta ao mesmo tempo",
+        "Gostam de todos os mesmos livros",
+        "Acompanham a leitura do conto.",
+        "Têm a mesma idade"
+      ],
+      "correctAnswer": "Acompanham a leitura do conto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Leem em voz alta ao mesmo tempo": [
+          "SHARED_STORY_ACTION"
+        ],
+        "Gostam de todos os mesmos livros": [
+          "SHARED_STORY_ACTION"
+        ],
+        "Têm a mesma idade": [
+          "SHARED_STORY_ACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DUPLA_DE_LEITURA",
+      "explanation": "As ações descritas mostram uma atividade compartilhada, não gostos gerais ou idade.",
+      "hint": "Procure o que a cena confirma.",
+      "errorFocus": "SHARED_STORY_ACTION",
+      "feedback": {
+        "correct": "Boa observação: As ações descritas mostram uma atividade compartilhada, não gostos gerais ou idade.",
+        "incorrect": "As ações descritas mostram uma atividade compartilhada, não gostos gerais ou idade.",
+        "hint": "Procure o que a cena confirma.",
+        "errorFocus": "SHARED_STORY_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-12",
+      "statement": "Uma ficha mostra dois personagens brincando: um pula e outro observa a sequência para depois entrar. Qual leitura é justa?",
+      "prompt": "Uma ficha mostra dois personagens brincando: um pula e outro observa a sequência para depois entrar. Qual leitura é justa?",
+      "options": [
+        "Quem observa foi excluído",
+        "Só pular conta como participar",
+        "A ficha revela quem é mais corajoso",
+        "Participam de maneiras diferentes da brincadeira."
+      ],
+      "correctAnswer": "Participam de maneiras diferentes da brincadeira.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Quem observa foi excluído": [
+          "PARTICIPATION_VARIETY"
+        ],
+        "Só pular conta como participar": [
+          "PARTICIPATION_VARIETY"
+        ],
+        "A ficha revela quem é mais corajoso": [
+          "PARTICIPATION_VARIETY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTAZ_DE_BRINCADEIRAS",
+      "explanation": "A ficha mostra formas distintas de participação, sem informar exclusão ou sentimentos.",
+      "hint": "Considere observar como uma forma possível de participar.",
+      "errorFocus": "PARTICIPATION_VARIETY",
+      "feedback": {
+        "correct": "Boa observação: A ficha mostra formas distintas de participação, sem informar exclusão ou sentimentos.",
+        "incorrect": "A ficha mostra formas distintas de participação, sem informar exclusão ou sentimentos.",
+        "hint": "Considere observar como uma forma possível de participar.",
+        "errorFocus": "PARTICIPATION_VARIETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-13",
+      "statement": "Duas personagens ajudam a iluminar uma maquete; uma coloca estrelas e outra organiza as janelas. O que é diferente?",
+      "prompt": "Duas personagens ajudam a iluminar uma maquete; uma coloca estrelas e outra organiza as janelas. O que é diferente?",
+      "options": [
+        "As tarefas que cada uma realiza.",
+        "O objetivo de iluminar a maquete",
+        "O direito de participar",
+        "A importância de cada contribuição"
+      ],
+      "correctAnswer": "As tarefas que cada uma realiza.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O objetivo de iluminar a maquete": [
+          "TASK_DIFFERENCE"
+        ],
+        "O direito de participar": [
+          "TASK_DIFFERENCE"
+        ],
+        "A importância de cada contribuição": [
+          "TASK_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "HISTORIA_DAS_LANTERNAS",
+      "explanation": "As tarefas são diferentes e servem ao projeto comum.",
+      "hint": "Compare as ações específicas.",
+      "errorFocus": "TASK_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: As tarefas são diferentes e servem ao projeto comum.",
+        "incorrect": "As tarefas são diferentes e servem ao projeto comum.",
+        "hint": "Compare as ações específicas.",
+        "errorFocus": "TASK_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-14",
+      "statement": "Um personagem prefere contar uma ideia agora; outro precisa de mais tempo. Qual convite é respeitoso?",
+      "prompt": "Um personagem prefere contar uma ideia agora; outro precisa de mais tempo. Qual convite é respeitoso?",
+      "options": [
+        "“Responda logo para ser igual aos outros.”",
+        "“Você pode falar quando estiver pronto ou escolher outra forma.”",
+        "“Se não falar, não participa.”",
+        "“Vou decidir o que você pensa.”"
+      ],
+      "correctAnswer": "“Você pode falar quando estiver pronto ou escolher outra forma.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Responda logo para ser igual aos outros.”": [
+          "RESPECTFUL_WAIT"
+        ],
+        "“Se não falar, não participa.”": [
+          "RESPECTFUL_WAIT"
+        ],
+        "“Vou decidir o que você pensa.”": [
+          "RESPECTFUL_WAIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVITE_PARA_CONVERSA",
+      "explanation": "Dar tempo e alternativas respeita a participação sem pressionar por uma revelação.",
+      "hint": "Escolha a fala que oferece possibilidade sem obrigar.",
+      "errorFocus": "RESPECTFUL_WAIT",
+      "feedback": {
+        "correct": "Boa observação: Dar tempo e alternativas respeita a participação sem pressionar por uma revelação.",
+        "incorrect": "Dar tempo e alternativas respeita a participação sem pressionar por uma revelação.",
+        "hint": "Escolha a fala que oferece possibilidade sem obrigar.",
+        "errorFocus": "RESPECTFUL_WAIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-15",
+      "statement": "Em uma galeria de personagens, duas figuras usam roupas diferentes. O que isso permite afirmar?",
+      "prompt": "Em uma galeria de personagens, duas figuras usam roupas diferentes. O que isso permite afirmar?",
+      "options": [
+        "Elas têm gostos opostos em tudo",
+        "Uma personagem pertence a um grupo específico",
+        "As roupas representadas são diferentes.",
+        "A roupa indica como cada uma se sente"
+      ],
+      "correctAnswer": "As roupas representadas são diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Elas têm gostos opostos em tudo": [
+          "VISIBLE_DETAIL_ONLY"
+        ],
+        "Uma personagem pertence a um grupo específico": [
+          "VISIBLE_DETAIL_ONLY"
+        ],
+        "A roupa indica como cada uma se sente": [
+          "VISIBLE_DETAIL_ONLY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "GALERIA_DE_AUTORRETRATOS_FICTICIOS",
+      "explanation": "A roupa é a diferença visível apresentada; outras informações não podem ser deduzidas.",
+      "hint": "Limite a resposta ao detalhe descrito.",
+      "errorFocus": "VISIBLE_DETAIL_ONLY",
+      "feedback": {
+        "correct": "Boa observação: A roupa é a diferença visível apresentada; outras informações não podem ser deduzidas.",
+        "incorrect": "A roupa é a diferença visível apresentada; outras informações não podem ser deduzidas.",
+        "hint": "Limite a resposta ao detalhe descrito.",
+        "errorFocus": "VISIBLE_DETAIL_ONLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-16",
+      "statement": "Em uma história, crianças têm ideias diferentes para organizar um jogo e escutam uma à outra. Por que isso acolhe diferenças?",
+      "prompt": "Em uma história, crianças têm ideias diferentes para organizar um jogo e escutam uma à outra. Por que isso acolhe diferenças?",
+      "options": [
+        "Porque todas precisam escolher a mesma ideia",
+        "Porque uma pessoa decide sem escutar",
+        "Porque diferenças devem ser escondidas",
+        "Porque considera ideias distintas antes de combinar a atividade."
+      ],
+      "correctAnswer": "Porque considera ideias distintas antes de combinar a atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque todas precisam escolher a mesma ideia": [
+          "LISTENING_AND_NEGOTIATION"
+        ],
+        "Porque uma pessoa decide sem escutar": [
+          "LISTENING_AND_NEGOTIATION"
+        ],
+        "Porque diferenças devem ser escondidas": [
+          "LISTENING_AND_NEGOTIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CIRCULO_DE_ESCUTA",
+      "explanation": "Escutar e combinar permite que ideias diferentes sejam consideradas.",
+      "hint": "Observe como o grupo chega ao combinado.",
+      "errorFocus": "LISTENING_AND_NEGOTIATION",
+      "feedback": {
+        "correct": "Boa observação: Escutar e combinar permite que ideias diferentes sejam consideradas.",
+        "incorrect": "Escutar e combinar permite que ideias diferentes sejam consideradas.",
+        "hint": "Observe como o grupo chega ao combinado.",
+        "errorFocus": "LISTENING_AND_NEGOTIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-17",
+      "statement": "Na cena A, personagens brincam de roda; na B, montam um caminho de peças. O que permanece igual?",
+      "prompt": "Na cena A, personagens brincam de roda; na B, montam um caminho de peças. O que permanece igual?",
+      "options": [
+        "Em ambas, compartilham uma atividade em grupo.",
+        "As regras e materiais são idênticos",
+        "Todas as pessoas escolhem a mesma brincadeira",
+        "As cenas provam que todos têm o mesmo gosto"
+      ],
+      "correctAnswer": "Em ambas, compartilham uma atividade em grupo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As regras e materiais são idênticos": [
+          "COMMON_PURPOSE_DIFFERENT_ACTIONS"
+        ],
+        "Todas as pessoas escolhem a mesma brincadeira": [
+          "COMMON_PURPOSE_DIFFERENT_ACTIONS"
+        ],
+        "As cenas provam que todos têm o mesmo gosto": [
+          "COMMON_PURPOSE_DIFFERENT_ACTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_CENAS_DA_PRACA",
+      "explanation": "As cenas mostram atividades distintas realizadas em grupo.",
+      "hint": "Compare o modo de brincar com a situação compartilhada.",
+      "errorFocus": "COMMON_PURPOSE_DIFFERENT_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: As cenas mostram atividades distintas realizadas em grupo.",
+        "incorrect": "As cenas mostram atividades distintas realizadas em grupo.",
+        "hint": "Compare o modo de brincar com a situação compartilhada.",
+        "errorFocus": "COMMON_PURPOSE_DIFFERENT_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-18",
+      "statement": "Uma legenda diz “Mara usa aparelho auditivo e gosta de histórias”. Qual frase evita uma suposição?",
+      "prompt": "Uma legenda diz “Mara usa aparelho auditivo e gosta de histórias”. Qual frase evita uma suposição?",
+      "options": [
+        "Todas as pessoas que usam aparelho gostam de histórias",
+        "A legenda informa um recurso e um gosto dessa personagem.",
+        "Mara não consegue participar sem ajuda",
+        "O aparelho explica toda a identidade de Mara"
+      ],
+      "correctAnswer": "A legenda informa um recurso e um gosto dessa personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as pessoas que usam aparelho gostam de histórias": [
+          "NO_STEREOTYPE"
+        ],
+        "Mara não consegue participar sem ajuda": [
+          "NO_STEREOTYPE"
+        ],
+        "O aparelho explica toda a identidade de Mara": [
+          "NO_STEREOTYPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LEGENDA_DE_RETRATO_FICTICIO",
+      "explanation": "A legenda apresenta duas informações sobre uma personagem, sem autorizar generalizações.",
+      "hint": "Fale desta personagem, não de todas as pessoas.",
+      "errorFocus": "NO_STEREOTYPE",
+      "feedback": {
+        "correct": "Boa observação: A legenda apresenta duas informações sobre uma personagem, sem autorizar generalizações.",
+        "incorrect": "A legenda apresenta duas informações sobre uma personagem, sem autorizar generalizações.",
+        "hint": "Fale desta personagem, não de todas as pessoas.",
+        "errorFocus": "NO_STEREOTYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-19",
+      "statement": "Um grupo recebe ideias diferentes para um cartaz. Qual decisão acolhe o grupo?",
+      "prompt": "Um grupo recebe ideias diferentes para um cartaz. Qual decisão acolhe o grupo?",
+      "options": [
+        "Apagar as ideias diferentes",
+        "Escolher pela aparência de quem falou",
+        "Ouvir as propostas e combinar como cada uma pode contribuir.",
+        "Permitir somente a primeira sugestão"
+      ],
+      "correctAnswer": "Ouvir as propostas e combinar como cada uma pode contribuir.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apagar as ideias diferentes": [
+          "INCLUSIVE_DECISION"
+        ],
+        "Escolher pela aparência de quem falou": [
+          "INCLUSIVE_DECISION"
+        ],
+        "Permitir somente a primeira sugestão": [
+          "INCLUSIVE_DECISION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHA_DO_PROJETO_COLETIVO",
+      "explanation": "Escuta e organização de contribuições consideram diferentes pessoas e ideias.",
+      "hint": "Procure uma decisão que não exclua propostas.",
+      "errorFocus": "INCLUSIVE_DECISION",
+      "feedback": {
+        "correct": "Boa observação: Escuta e organização de contribuições consideram diferentes pessoas e ideias.",
+        "incorrect": "Escuta e organização de contribuições consideram diferentes pessoas e ideias.",
+        "hint": "Procure uma decisão que não exclua propostas.",
+        "errorFocus": "INCLUSIVE_DECISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-20",
+      "statement": "Durante uma conversa fictícia, uma personagem escolhe responder com desenho em vez de fala. O que o grupo deve fazer?",
+      "prompt": "Durante uma conversa fictícia, uma personagem escolhe responder com desenho em vez de fala. O que o grupo deve fazer?",
+      "options": [
+        "Exigir que explique em voz alta",
+        "Desconsiderar a resposta",
+        "Concluir que não entendeu",
+        "Considerar o desenho como uma forma de expressão."
+      ],
+      "correctAnswer": "Considerar o desenho como uma forma de expressão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que explique em voz alta": [
+          "MULTIPLE_EXPRESSION_MODES"
+        ],
+        "Desconsiderar a resposta": [
+          "MULTIPLE_EXPRESSION_MODES"
+        ],
+        "Concluir que não entendeu": [
+          "MULTIPLE_EXPRESSION_MODES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_DE_RESPOSTA",
+      "explanation": "Um desenho pode comunicar uma ideia; a forma não prova falta de compreensão.",
+      "hint": "Avalie a mensagem, não apenas o modo.",
+      "errorFocus": "MULTIPLE_EXPRESSION_MODES",
+      "feedback": {
+        "correct": "Boa observação: Um desenho pode comunicar uma ideia; a forma não prova falta de compreensão.",
+        "incorrect": "Um desenho pode comunicar uma ideia; a forma não prova falta de compreensão.",
+        "hint": "Avalie a mensagem, não apenas o modo.",
+        "errorFocus": "MULTIPLE_EXPRESSION_MODES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-21",
+      "statement": "Uma personagem gosta de jogos com regras e outra prefere inventar uma história. O que pode ser dito?",
+      "prompt": "Uma personagem gosta de jogos com regras e outra prefere inventar uma história. O que pode ser dito?",
+      "options": [
+        "Elas preferem propostas diferentes nesta situação.",
+        "Não podem brincar juntas",
+        "Uma prefere brincar melhor",
+        "A preferência vale para qualquer situação"
+      ],
+      "correctAnswer": "Elas preferem propostas diferentes nesta situação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não podem brincar juntas": [
+          "SITUATIONAL_PREFERENCE"
+        ],
+        "Uma prefere brincar melhor": [
+          "SITUATIONAL_PREFERENCE"
+        ],
+        "A preferência vale para qualquer situação": [
+          "SITUATIONAL_PREFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_BRINCADEIRAS_DE_PERSONAGENS",
+      "explanation": "A evidência refere-se às propostas desta situação, não à capacidade de conviver.",
+      "hint": "Use “nesta situação” para não generalizar.",
+      "errorFocus": "SITUATIONAL_PREFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A evidência refere-se às propostas desta situação, não à capacidade de conviver.",
+        "incorrect": "A evidência refere-se às propostas desta situação, não à capacidade de conviver.",
+        "hint": "Use “nesta situação” para não generalizar.",
+        "errorFocus": "SITUATIONAL_PREFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-22",
+      "statement": "Uma personagem diz que só existe um jeito certo de cumprimentar. Qual resposta respeita diferenças?",
+      "prompt": "Uma personagem diz que só existe um jeito certo de cumprimentar. Qual resposta respeita diferenças?",
+      "options": [
+        "“Todos devem fazer igual.”",
+        "“Há maneiras diferentes de cumprimentar; podemos combinar uma forma confortável para todos.”",
+        "“Quem cumprimenta diferente está errado.”",
+        "“Não precisamos respeitar ninguém.”"
+      ],
+      "correctAnswer": "“Há maneiras diferentes de cumprimentar; podemos combinar uma forma confortável para todos.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Todos devem fazer igual.”": [
+          "NONHIERARCHICAL_DIFFERENCE"
+        ],
+        "“Quem cumprimenta diferente está errado.”": [
+          "NONHIERARCHICAL_DIFFERENCE"
+        ],
+        "“Não precisamos respeitar ninguém.”": [
+          "NONHIERARCHICAL_DIFFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONSELHO_DA_TURMA_FICTICIA",
+      "explanation": "Acolhimento considera diferentes formas de expressão sem declarar uma superior.",
+      "hint": "Escolha uma resposta que reconheça mais de uma forma.",
+      "errorFocus": "NONHIERARCHICAL_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Acolhimento considera diferentes formas de expressão sem declarar uma superior.",
+        "incorrect": "Acolhimento considera diferentes formas de expressão sem declarar uma superior.",
+        "hint": "Escolha uma resposta que reconheça mais de uma forma.",
+        "errorFocus": "NONHIERARCHICAL_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-23",
+      "statement": "Na história, cada personagem escolhe um lugar diferente à mesa e todos conseguem conversar. O que a cena mostra?",
+      "prompt": "Na história, cada personagem escolhe um lugar diferente à mesa e todos conseguem conversar. O que a cena mostra?",
+      "options": [
+        "As escolhas precisam ser idênticas",
+        "Quem senta diferente não pertence ao grupo",
+        "É possível conviver mesmo com escolhas diferentes.",
+        "O lugar revela a personalidade"
+      ],
+      "correctAnswer": "É possível conviver mesmo com escolhas diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As escolhas precisam ser idênticas": [
+          "COEXISTENCE_WITH_DIFFERENCE"
+        ],
+        "Quem senta diferente não pertence ao grupo": [
+          "COEXISTENCE_WITH_DIFFERENCE"
+        ],
+        "O lugar revela a personalidade": [
+          "COEXISTENCE_WITH_DIFFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HISTORIA_DA_MESA_COMPARTILHADA",
+      "explanation": "A narrativa apresenta escolhas distintas e convivência compartilhada.",
+      "hint": "Observe o resultado da cena.",
+      "errorFocus": "COEXISTENCE_WITH_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta escolhas distintas e convivência compartilhada.",
+        "incorrect": "A narrativa apresenta escolhas distintas e convivência compartilhada.",
+        "hint": "Observe o resultado da cena.",
+        "errorFocus": "COEXISTENCE_WITH_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-24",
+      "statement": "Uma regra diz “escutamos sem rir da resposta de outra pessoa”. Como ela ajuda o grupo?",
+      "prompt": "Uma regra diz “escutamos sem rir da resposta de outra pessoa”. Como ela ajuda o grupo?",
+      "options": [
+        "Faz todos pensarem igual",
+        "Impede qualquer pergunta",
+        "Escolhe qual diferença é aceitável",
+        "Protege a participação de quem pensa ou se expressa de outro modo."
+      ],
+      "correctAnswer": "Protege a participação de quem pensa ou se expressa de outro modo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Faz todos pensarem igual": [
+          "SAFE_RESPECTFUL_DIALOGUE"
+        ],
+        "Impede qualquer pergunta": [
+          "SAFE_RESPECTFUL_DIALOGUE"
+        ],
+        "Escolhe qual diferença é aceitável": [
+          "SAFE_RESPECTFUL_DIALOGUE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGRA_DE_CONVIVENCIA_FICTICIA",
+      "explanation": "A regra reduz ridicularização e permite que pessoas participem com respeito.",
+      "hint": "Relacione a regra com a segurança de participar.",
+      "errorFocus": "SAFE_RESPECTFUL_DIALOGUE",
+      "feedback": {
+        "correct": "Boa observação: A regra reduz ridicularização e permite que pessoas participem com respeito.",
+        "incorrect": "A regra reduz ridicularização e permite que pessoas participem com respeito.",
+        "hint": "Relacione a regra com a segurança de participar.",
+        "errorFocus": "SAFE_RESPECTFUL_DIALOGUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-25",
+      "statement": "Dois personagens gostam de construir; um terceiro gosta de observar antes de participar. Qual afirmação separa comum e diferente?",
+      "prompt": "Dois personagens gostam de construir; um terceiro gosta de observar antes de participar. Qual afirmação separa comum e diferente?",
+      "options": [
+        "Os dois compartilham o gosto por construir; o terceiro escolhe outra forma nesta cena.",
+        "Todos gostam da mesma ação",
+        "O observador não participa nunca",
+        "Os dois construtores têm habilidades iguais"
+      ],
+      "correctAnswer": "Os dois compartilham o gosto por construir; o terceiro escolhe outra forma nesta cena.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos gostam da mesma ação": [
+          "COMPARE_WITH_SCOPE"
+        ],
+        "O observador não participa nunca": [
+          "COMPARE_WITH_SCOPE"
+        ],
+        "Os dois construtores têm habilidades iguais": [
+          "COMPARE_WITH_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TRES_CARTOES_DE_PERSONAGEM",
+      "explanation": "A comparação respeita as informações limitadas da cena.",
+      "hint": "Diga o que é comum e qual diferença foi apresentada.",
+      "errorFocus": "COMPARE_WITH_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A comparação respeita as informações limitadas da cena.",
+        "incorrect": "A comparação respeita as informações limitadas da cena.",
+        "hint": "Diga o que é comum e qual diferença foi apresentada.",
+        "errorFocus": "COMPARE_WITH_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-26",
+      "statement": "Uma personagem não quer escolher entre duas opções do clube naquele momento. Qual atitude acolhe?",
+      "prompt": "Uma personagem não quer escolher entre duas opções do clube naquele momento. Qual atitude acolhe?",
+      "options": [
+        "Escolher por ela e exigir concordância",
+        "Oferecer tempo e permitir que passe a vez.",
+        "Retirá-la de toda atividade",
+        "Pedir que conte um motivo pessoal"
+      ],
+      "correctAnswer": "Oferecer tempo e permitir que passe a vez.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher por ela e exigir concordância": [
+          "CHOICE_AND_PRIVACY"
+        ],
+        "Retirá-la de toda atividade": [
+          "CHOICE_AND_PRIVACY"
+        ],
+        "Pedir que conte um motivo pessoal": [
+          "CHOICE_AND_PRIVACY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REUNIAO_DE_CLUBE_INVENTADO",
+      "explanation": "Acolher não exige justificar uma preferência ou decisão pessoal.",
+      "hint": "Procure uma opção que preserve escolha e privacidade.",
+      "errorFocus": "CHOICE_AND_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Acolher não exige justificar uma preferência ou decisão pessoal.",
+        "incorrect": "Acolher não exige justificar uma preferência ou decisão pessoal.",
+        "hint": "Procure uma opção que preserve escolha e privacidade.",
+        "errorFocus": "CHOICE_AND_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-27",
+      "statement": "Uma tabela fictícia registra que dois personagens gostam de música e um prefere silêncio para ler. O que os dados não permitem concluir?",
+      "prompt": "Uma tabela fictícia registra que dois personagens gostam de música e um prefere silêncio para ler. O que os dados não permitem concluir?",
+      "options": [
+        "Que há preferências diferentes na tabela",
+        "Que dois cartões registram música",
+        "Que todos de um grupo real tenham os mesmos gostos.",
+        "Que a tabela descreve personagens"
+      ],
+      "correctAnswer": "Que todos de um grupo real tenham os mesmos gostos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que há preferências diferentes na tabela": [
+          "NO_GROUP_GENERALIZATION"
+        ],
+        "Que dois cartões registram música": [
+          "NO_GROUP_GENERALIZATION"
+        ],
+        "Que a tabela descreve personagens": [
+          "NO_GROUP_GENERALIZATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TABELA_DE_GOSTOS_DA_HISTORIA",
+      "explanation": "Dados de personagens não autorizam generalizações sobre pessoas reais.",
+      "hint": "Pense no limite de uma pequena história.",
+      "errorFocus": "NO_GROUP_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Dados de personagens não autorizam generalizações sobre pessoas reais.",
+        "incorrect": "Dados de personagens não autorizam generalizações sobre pessoas reais.",
+        "hint": "Pense no limite de uma pequena história.",
+        "errorFocus": "NO_GROUP_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-28",
+      "statement": "Uma dupla escolhe alternar quem segura os cartões e quem explica. Como a decisão pode ser acolhedora?",
+      "prompt": "Uma dupla escolhe alternar quem segura os cartões e quem explica. Como a decisão pode ser acolhedora?",
+      "options": [
+        "Impõe o mesmo papel para sempre",
+        "Proíbe pedir outra forma de participar",
+        "Mostra quem é mais importante",
+        "Dá espaço às contribuições e pode ser ajustada às escolhas da dupla."
+      ],
+      "correctAnswer": "Dá espaço às contribuições e pode ser ajustada às escolhas da dupla.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Impõe o mesmo papel para sempre": [
+          "FLEXIBLE_SHARED_ROLES"
+        ],
+        "Proíbe pedir outra forma de participar": [
+          "FLEXIBLE_SHARED_ROLES"
+        ],
+        "Mostra quem é mais importante": [
+          "FLEXIBLE_SHARED_ROLES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMBINADO_DE_TRABALHO_EM_DUPLA",
+      "explanation": "Papéis combinados e revisáveis permitem colaboração sem hierarquia fixa.",
+      "hint": "Veja se a regra permite combinar e ajustar.",
+      "errorFocus": "FLEXIBLE_SHARED_ROLES",
+      "feedback": {
+        "correct": "Boa observação: Papéis combinados e revisáveis permitem colaboração sem hierarquia fixa.",
+        "incorrect": "Papéis combinados e revisáveis permitem colaboração sem hierarquia fixa.",
+        "hint": "Veja se a regra permite combinar e ajustar.",
+        "errorFocus": "FLEXIBLE_SHARED_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-29",
+      "statement": "Um cartaz apresenta duas personagens e informa apenas seus nomes. O que não sabemos ainda?",
+      "prompt": "Um cartaz apresenta duas personagens e informa apenas seus nomes. O que não sabemos ainda?",
+      "options": [
+        "Seus gostos, crenças e habilidades.",
+        "Como os nomes estão escritos",
+        "Que há duas personagens",
+        "Que os nomes as identificam"
+      ],
+      "correctAnswer": "Seus gostos, crenças e habilidades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como os nomes estão escritos": [
+          "NAME_IS_NOT_PROFILE"
+        ],
+        "Que há duas personagens": [
+          "NAME_IS_NOT_PROFILE"
+        ],
+        "Que os nomes as identificam": [
+          "NAME_IS_NOT_PROFILE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAZ_COM_DOIS_NOMES",
+      "explanation": "Nome identifica a personagem, mas não revela outras características.",
+      "hint": "Não deduza um perfil pelo nome.",
+      "errorFocus": "NAME_IS_NOT_PROFILE",
+      "feedback": {
+        "correct": "Boa observação: Nome identifica a personagem, mas não revela outras características.",
+        "incorrect": "Nome identifica a personagem, mas não revela outras características.",
+        "hint": "Não deduza um perfil pelo nome.",
+        "errorFocus": "NAME_IS_NOT_PROFILE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-30",
+      "statement": "Uma personagem afirma “quem escolhe diferente não pode brincar”. Qual alternativa melhora essa fala?",
+      "prompt": "Uma personagem afirma “quem escolhe diferente não pode brincar”. Qual alternativa melhora essa fala?",
+      "options": [
+        "“Só participa quem escolher como eu.”",
+        "“Podemos combinar regras para que pessoas com escolhas diferentes participem.”",
+        "“Vamos esconder as diferenças.”",
+        "“A pessoa diferente deve sair.”"
+      ],
+      "correctAnswer": "“Podemos combinar regras para que pessoas com escolhas diferentes participem.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Só participa quem escolher como eu.”": [
+          "WELCOME_DIFFERENT_CHOICES"
+        ],
+        "“Vamos esconder as diferenças.”": [
+          "WELCOME_DIFFERENT_CHOICES"
+        ],
+        "“A pessoa diferente deve sair.”": [
+          "WELCOME_DIFFERENT_CHOICES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FALA_DA_PERSONAGEM_NO_CONTO",
+      "explanation": "A alternativa combina convivência e respeito sem apagar diferenças.",
+      "hint": "Procure uma fala que mantenha o grupo aberto.",
+      "errorFocus": "WELCOME_DIFFERENT_CHOICES",
+      "feedback": {
+        "correct": "Boa observação: A alternativa combina convivência e respeito sem apagar diferenças.",
+        "incorrect": "A alternativa combina convivência e respeito sem apagar diferenças.",
+        "hint": "Procure uma fala que mantenha o grupo aberto.",
+        "errorFocus": "WELCOME_DIFFERENT_CHOICES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-31",
+      "statement": "Em um jardim ilustrado, flores de formatos diferentes aparecem no mesmo canteiro. Que ideia a imagem pode representar na história?",
+      "prompt": "Em um jardim ilustrado, flores de formatos diferentes aparecem no mesmo canteiro. Que ideia a imagem pode representar na história?",
+      "options": [
+        "Todos os elementos são iguais",
+        "Um formato deve ser retirado",
+        "Elementos diferentes podem compartilhar um espaço.",
+        "A imagem prova que todas as diferenças são simples"
+      ],
+      "correctAnswer": "Elementos diferentes podem compartilhar um espaço.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos os elementos são iguais": [
+          "SHARED_SPACE"
+        ],
+        "Um formato deve ser retirado": [
+          "SHARED_SPACE"
+        ],
+        "A imagem prova que todas as diferenças são simples": [
+          "SHARED_SPACE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "JARDIM_DE_CARTOES",
+      "explanation": "A ilustração sugere diversidade no mesmo espaço, sem hierarquizar formas.",
+      "hint": "Use a imagem como comparação, não como regra sobre todas as pessoas.",
+      "errorFocus": "SHARED_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A ilustração sugere diversidade no mesmo espaço, sem hierarquizar formas.",
+        "incorrect": "A ilustração sugere diversidade no mesmo espaço, sem hierarquizar formas.",
+        "hint": "Use a imagem como comparação, não como regra sobre todas as pessoas.",
+        "errorFocus": "SHARED_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-32",
+      "statement": "Qual resposta demonstra acolhimento em uma conversa de personagens?",
+      "prompt": "Qual resposta demonstra acolhimento em uma conversa de personagens?",
+      "options": [
+        "“Sua ideia só vale se for igual à minha.”",
+        "“Vou explicar por você.”",
+        "“Conte algo íntimo para provar sua diferença.”",
+        "“Posso escutar sua ideia e perguntar se você quer acrescentar algo.”"
+      ],
+      "correctAnswer": "“Posso escutar sua ideia e perguntar se você quer acrescentar algo.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Sua ideia só vale se for igual à minha.”": [
+          "LISTEN_WITHOUT_PRESSURE"
+        ],
+        "“Vou explicar por você.”": [
+          "LISTEN_WITHOUT_PRESSURE"
+        ],
+        "“Conte algo íntimo para provar sua diferença.”": [
+          "LISTEN_WITHOUT_PRESSURE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PERGUNTA_DE_FECHAMENTO",
+      "explanation": "A fala escuta e deixa a pessoa decidir se deseja continuar.",
+      "hint": "Escolha a opção que respeita a decisão de falar ou não.",
+      "errorFocus": "LISTEN_WITHOUT_PRESSURE",
+      "feedback": {
+        "correct": "Boa observação: A fala escuta e deixa a pessoa decidir se deseja continuar.",
+        "incorrect": "A fala escuta e deixa a pessoa decidir se deseja continuar.",
+        "hint": "Escolha a opção que respeita a decisão de falar ou não.",
+        "errorFocus": "LISTEN_WITHOUT_PRESSURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-33",
+      "statement": "Duas personagens aparecem com preferências diferentes. O que significa acolher essa diferença?",
+      "prompt": "Duas personagens aparecem com preferências diferentes. O que significa acolher essa diferença?",
+      "options": [
+        "Tratar ambas com respeito.",
+        "Obrigá-las a mudar",
+        "Escolher uma como melhor",
+        "Fingir que a diferença não existe"
+      ],
+      "correctAnswer": "Tratar ambas com respeito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Obrigá-las a mudar": [
+          "MEANING_OF_WELCOME"
+        ],
+        "Escolher uma como melhor": [
+          "MEANING_OF_WELCOME"
+        ],
+        "Fingir que a diferença não existe": [
+          "MEANING_OF_WELCOME"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_REVISAO",
+      "explanation": "Acolher é respeitar, não apagar nem hierarquizar a diferença.",
+      "hint": "Pense em uma atitude respeitosa.",
+      "errorFocus": "MEANING_OF_WELCOME",
+      "feedback": {
+        "correct": "Boa observação: Acolher é respeitar, não apagar nem hierarquizar a diferença.",
+        "incorrect": "Acolher é respeitar, não apagar nem hierarquizar a diferença.",
+        "hint": "Pense em uma atitude respeitosa.",
+        "errorFocus": "MEANING_OF_WELCOME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-34",
+      "statement": "Em uma roda fictícia, alguém prefere não responder agora. Qual atitude respeita a pessoa?",
+      "prompt": "Em uma roda fictícia, alguém prefere não responder agora. Qual atitude respeita a pessoa?",
+      "options": [
+        "Insistir até contar um segredo",
+        "Permitir que passe a vez sem exigir explicação.",
+        "Responder por ela e atribuir uma opinião",
+        "Retirá-la do grupo"
+      ],
+      "correctAnswer": "Permitir que passe a vez sem exigir explicação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Insistir até contar um segredo": [
+          "OPTIONAL_SHARING"
+        ],
+        "Responder por ela e atribuir uma opinião": [
+          "OPTIONAL_SHARING"
+        ],
+        "Retirá-la do grupo": [
+          "OPTIONAL_SHARING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RODA_COM_OPCAO_DE_PASSAR",
+      "explanation": "A participação não deve depender de divulgar informação pessoal.",
+      "hint": "Considere privacidade e escolha.",
+      "errorFocus": "OPTIONAL_SHARING",
+      "feedback": {
+        "correct": "Boa observação: A participação não deve depender de divulgar informação pessoal.",
+        "incorrect": "A participação não deve depender de divulgar informação pessoal.",
+        "hint": "Considere privacidade e escolha.",
+        "errorFocus": "OPTIONAL_SHARING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-35",
+      "statement": "Dois personagens chegam ao mesmo lugar por caminhos diferentes. O que é comum?",
+      "prompt": "Dois personagens chegam ao mesmo lugar por caminhos diferentes. O que é comum?",
+      "options": [
+        "O trajeto que fizeram",
+        "O modo de caminhar",
+        "O destino apresentado na história.",
+        "A razão de cada escolha"
+      ],
+      "correctAnswer": "O destino apresentado na história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O trajeto que fizeram": [
+          "COMMON_OUTCOME_DIFFERENT_PATHS"
+        ],
+        "O modo de caminhar": [
+          "COMMON_OUTCOME_DIFFERENT_PATHS"
+        ],
+        "A razão de cada escolha": [
+          "COMMON_OUTCOME_DIFFERENT_PATHS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESENHO_DE_DOIS_CAMINHOS",
+      "explanation": "A história informa o destino comum, mas caminhos distintos.",
+      "hint": "Compare o que a história mostra no final.",
+      "errorFocus": "COMMON_OUTCOME_DIFFERENT_PATHS",
+      "feedback": {
+        "correct": "Boa observação: A história informa o destino comum, mas caminhos distintos.",
+        "incorrect": "A história informa o destino comum, mas caminhos distintos.",
+        "hint": "Compare o que a história mostra no final.",
+        "errorFocus": "COMMON_OUTCOME_DIFFERENT_PATHS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-36",
+      "statement": "Qual legenda reconhece semelhanças sem dizer que todos são iguais?",
+      "prompt": "Qual legenda reconhece semelhanças sem dizer que todos são iguais?",
+      "options": [
+        "“Somos iguais em tudo.”",
+        "“Quem pensa diferente não é do grupo.”",
+        "“Uma escolha define toda a pessoa.”",
+        "“Compartilhamos algumas ideias e cada pessoa também pode ter suas escolhas.”"
+      ],
+      "correctAnswer": "“Compartilhamos algumas ideias e cada pessoa também pode ter suas escolhas.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Somos iguais em tudo.”": [
+          "BALANCED_IDENTITY"
+        ],
+        "“Quem pensa diferente não é do grupo.”": [
+          "BALANCED_IDENTITY"
+        ],
+        "“Uma escolha define toda a pessoa.”": [
+          "BALANCED_IDENTITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEGENDA_DE_GRUPO",
+      "explanation": "A legenda permite semelhanças e diferenças sem reduzir a identidade.",
+      "hint": "Evite palavras absolutas como tudo e sempre.",
+      "errorFocus": "BALANCED_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: A legenda permite semelhanças e diferenças sem reduzir a identidade.",
+        "incorrect": "A legenda permite semelhanças e diferenças sem reduzir a identidade.",
+        "hint": "Evite palavras absolutas como tudo e sempre.",
+        "errorFocus": "BALANCED_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-37",
+      "statement": "Em uma atividade, personagens usam fala, desenho e cartões para apresentar ideias. Que semelhança compartilham?",
+      "prompt": "Em uma atividade, personagens usam fala, desenho e cartões para apresentar ideias. Que semelhança compartilham?",
+      "options": [
+        "Estão comunicando ideias ao grupo.",
+        "Usam o mesmo recurso",
+        "Têm as mesmas opiniões",
+        "Falam todos ao mesmo tempo"
+      ],
+      "correctAnswer": "Estão comunicando ideias ao grupo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usam o mesmo recurso": [
+          "COMMUNICATION_PURPOSE"
+        ],
+        "Têm as mesmas opiniões": [
+          "COMMUNICATION_PURPOSE"
+        ],
+        "Falam todos ao mesmo tempo": [
+          "COMMUNICATION_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CENA_DE_MATERIAIS_COMPARTILHADOS",
+      "explanation": "Os meios diferem, mas a finalidade comum é apresentar ideias.",
+      "hint": "Observe o objetivo das três formas.",
+      "errorFocus": "COMMUNICATION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Os meios diferem, mas a finalidade comum é apresentar ideias.",
+        "incorrect": "Os meios diferem, mas a finalidade comum é apresentar ideias.",
+        "hint": "Observe o objetivo das três formas.",
+        "errorFocus": "COMMUNICATION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-38",
+      "statement": "Por que esperar a vez pode ajudar pessoas com formas diferentes de se expressar?",
+      "prompt": "Por que esperar a vez pode ajudar pessoas com formas diferentes de se expressar?",
+      "options": [
+        "Faz todos responderem do mesmo modo",
+        "Dá tempo para cada contribuição ser percebida.",
+        "Garante que as ideias sejam iguais",
+        "Impede alguém de pedir apoio"
+      ],
+      "correctAnswer": "Dá tempo para cada contribuição ser percebida.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Faz todos responderem do mesmo modo": [
+          "WAITING_FOR_TURN"
+        ],
+        "Garante que as ideias sejam iguais": [
+          "WAITING_FOR_TURN"
+        ],
+        "Impede alguém de pedir apoio": [
+          "WAITING_FOR_TURN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMBINADO_DE_ESCUTA_FINAL",
+      "explanation": "A espera respeitosa ajuda a participação sem uniformizar as respostas.",
+      "hint": "Relacione espera com escuta.",
+      "errorFocus": "WAITING_FOR_TURN",
+      "feedback": {
+        "correct": "Boa observação: A espera respeitosa ajuda a participação sem uniformizar as respostas.",
+        "incorrect": "A espera respeitosa ajuda a participação sem uniformizar as respostas.",
+        "hint": "Relacione espera com escuta.",
+        "errorFocus": "WAITING_FOR_TURN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-39",
+      "statement": "Em uma história nova, duas personagens discordam sobre uma brincadeira. Qual ação aplica o que aprendemos?",
+      "prompt": "Em uma história nova, duas personagens discordam sobre uma brincadeira. Qual ação aplica o que aprendemos?",
+      "options": [
+        "Declarar uma personagem vencedora",
+        "Excluir quem não concorda",
+        "Escutar as propostas e procurar um combinado possível para ambas.",
+        "Supor que discordar encerra a amizade"
+      ],
+      "correctAnswer": "Escutar as propostas e procurar um combinado possível para ambas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Declarar uma personagem vencedora": [
+          "TRANSFER_TO_NEW_SITUATION"
+        ],
+        "Excluir quem não concorda": [
+          "TRANSFER_TO_NEW_SITUATION"
+        ],
+        "Supor que discordar encerra a amizade": [
+          "TRANSFER_TO_NEW_SITUATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "NOVA_HISTORIA_DE_AMIZADE",
+      "explanation": "Escuta e negociação levam respeito a uma situação nova.",
+      "hint": "Escolha uma ação que preserve convivência.",
+      "errorFocus": "TRANSFER_TO_NEW_SITUATION",
+      "feedback": {
+        "correct": "Boa observação: Escuta e negociação levam respeito a uma situação nova.",
+        "incorrect": "Escuta e negociação levam respeito a uma situação nova.",
+        "hint": "Escolha uma ação que preserve convivência.",
+        "errorFocus": "TRANSFER_TO_NEW_SITUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er01-identities-and-welcoming-differences-40",
+      "statement": "Qual frase descreve corretamente uma comparação entre duas pessoas fictícias?",
+      "prompt": "Qual frase descreve corretamente uma comparação entre duas pessoas fictícias?",
+      "options": [
+        "“São iguais em tudo.”",
+        "“Uma diferença mostra quem é melhor.”",
+        "“Uma escolha revela toda a história de cada pessoa.”",
+        "“Elas compartilham uma atividade e fizeram escolhas diferentes.”"
+      ],
+      "correctAnswer": "“Elas compartilham uma atividade e fizeram escolhas diferentes.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“São iguais em tudo.”": [
+          "SUMMARY_COMPARISON"
+        ],
+        "“Uma diferença mostra quem é melhor.”": [
+          "SUMMARY_COMPARISON"
+        ],
+        "“Uma escolha revela toda a história de cada pessoa.”": [
+          "SUMMARY_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SEMELHANCA_E_DIFERENCA",
+      "explanation": "A frase reconhece um ponto comum e uma diferença específica sem julgar.",
+      "hint": "Procure uma comparação com escopo limitado.",
+      "errorFocus": "SUMMARY_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece um ponto comum e uma diferença específica sem julgar.",
+        "incorrect": "A frase reconhece um ponto comum e uma diferença específica sem julgar.",
+        "hint": "Procure uma comparação com escopo limitado.",
+        "errorFocus": "SUMMARY_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar histórias curtas em texto, áudio, pictogramas ou leitura compartilhada; descrever imagens sem depender somente de cor.",
+          "Permitir resposta por fala, gesto, cartões, desenho, comunicação alternativa ou observação silenciosa.",
+          "Não solicitar relatos de crença, religião, família, origem ou experiências pessoais; oferecer sempre personagens fictícios e opção de não compartilhar."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma06-basic-addition-facts-and-problems",
+  "canonicalSkillCode": "AUTHORING_EF01MA06_ADDITION_FACTS_AND_STRATEGIES",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "fatos básicos da adição e procedimentos de cálculo em problemas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Juntar quantidades e pensar estratégias",
+    "objective": "Construir fatos básicos da adição e escolher estratégias como contar, decompor ou usar materiais para resolver problemas cotidianos.",
+    "summary": "A adição pode representar juntar quantidades ou acrescentar elementos. Fatos como 5 + 3 = 8 podem ser construídos com objetos, desenhos, dedos, decomposição ou conhecimento de combinações conhecidas. Estratégias diferentes podem chegar ao mesmo resultado. Problemas devem ser lidos para identificar as quantidades e o que se pergunta. Não é necessário responder rapidamente; explicar ou representar o raciocínio também demonstra aprendizagem.",
+    "explanation": "Represente cada quantidade com objetos, marcas ou números. Para 7 + 5, pode-se começar no 7 e contar mais cinco passos, ou decompor 5 em 3 e 2 para chegar primeiro a 10 e depois a 12. A estratégia precisa corresponder à situação descrita. Verifique se a pergunta pede o total juntado. Use objetos seguros, desenhos ou reta numérica e aceite diferentes registros corretos; velocidade não é critério de entendimento.",
+    "workedExample": "Há 6 lápis numa caixa e 4 noutra. Juntando as quantidades, 6 + 4 = 10 lápis. É possível contar todos, formar dez ou desenhar os grupos e conferir o resultado.",
+    "commonMistake": "Somar números sem compreender a situação, contar um objeto duas vezes ou achar que existe uma única estratégia correta.",
+    "priorKnowledge": [
+      "Contar pequenas quantidades com apoio.",
+      "Reconhecer numerais e representar conjuntos simples."
+    ],
+    "keyConcepts": [
+      "adição",
+      "juntar",
+      "acrescentar",
+      "parcela",
+      "total",
+      "estratégia",
+      "contagem",
+      "decomposição"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MODEL_BOTH_ADDENDS",
+        "action": "Represente cada parcela separadamente antes de juntá-las e contar o total uma única vez."
+      },
+      {
+        "errorFocus": "STRATEGY_CHOICE",
+        "action": "Compare contagem, decomposição e reta numérica; aceite qualquer procedimento válido e verificável."
+      },
+      {
+        "errorFocus": "WORD_PROBLEM_MEANING",
+        "action": "Releia o enunciado e identifique se a situação junta ou acrescenta quantidades."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+      "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+      "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma06-make-ten",
+        "title": "Formar dez de jeitos diferentes",
+        "instructions": "Cartões e objetos representam pequenas somas em jogos cooperativos.\n1. Escolha duas quantidades e represente cada uma.\n2. Junte ou decomponha para encontrar o total.\n3. Mostre o resultado por numeral, desenho ou explicação.",
+        "steps": [
+          "Escolha duas quantidades e represente cada uma.",
+          "Junte ou decomponha para encontrar o total.",
+          "Mostre o resultado por numeral, desenho ou explicação."
+        ],
+        "evidence": "Estratégia de adição representada e resultado conferido.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "conta quantidades com ajuda.",
+            "developing": "resolve fatos simples com material.",
+            "proficient": "escolhe e explica uma estratégia coerente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma06-classroom-problem-cards",
+        "title": "Problemas de juntar",
+        "instructions": "Cartões fictícios descrevem coleções e situações de acréscimo acessíveis.\n1. Identifique as quantidades e a pergunta.\n2. Escolha uma representação ou estratégia.\n3. Registre a soma e confira se responde ao problema.",
+        "steps": [
+          "Identifique as quantidades e a pergunta.",
+          "Escolha uma representação ou estratégia.",
+          "Registre a soma e confira se responde ao problema."
+        ],
+        "evidence": "Soma correspondente à situação e estratégia reconhecível.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma quantidade com apoio.",
+            "developing": "junta quantidades com representação.",
+            "proficient": "resolve e verifica problemas de adição com estratégia própria."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma06-basic-addition-facts-and-problems-01",
+          "v1-ef01ma06-basic-addition-facts-and-problems-02",
+          "v1-ef01ma06-basic-addition-facts-and-problems-03",
+          "v1-ef01ma06-basic-addition-facts-and-problems-04",
+          "v1-ef01ma06-basic-addition-facts-and-problems-05",
+          "v1-ef01ma06-basic-addition-facts-and-problems-06",
+          "v1-ef01ma06-basic-addition-facts-and-problems-07",
+          "v1-ef01ma06-basic-addition-facts-and-problems-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma06-basic-addition-facts-and-problems-09",
+          "v1-ef01ma06-basic-addition-facts-and-problems-10",
+          "v1-ef01ma06-basic-addition-facts-and-problems-11",
+          "v1-ef01ma06-basic-addition-facts-and-problems-12",
+          "v1-ef01ma06-basic-addition-facts-and-problems-13",
+          "v1-ef01ma06-basic-addition-facts-and-problems-14",
+          "v1-ef01ma06-basic-addition-facts-and-problems-15",
+          "v1-ef01ma06-basic-addition-facts-and-problems-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma06-basic-addition-facts-and-problems-17",
+          "v1-ef01ma06-basic-addition-facts-and-problems-18",
+          "v1-ef01ma06-basic-addition-facts-and-problems-19",
+          "v1-ef01ma06-basic-addition-facts-and-problems-20",
+          "v1-ef01ma06-basic-addition-facts-and-problems-21",
+          "v1-ef01ma06-basic-addition-facts-and-problems-22",
+          "v1-ef01ma06-basic-addition-facts-and-problems-23",
+          "v1-ef01ma06-basic-addition-facts-and-problems-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma06-basic-addition-facts-and-problems-25",
+          "v1-ef01ma06-basic-addition-facts-and-problems-26",
+          "v1-ef01ma06-basic-addition-facts-and-problems-27",
+          "v1-ef01ma06-basic-addition-facts-and-problems-28",
+          "v1-ef01ma06-basic-addition-facts-and-problems-29",
+          "v1-ef01ma06-basic-addition-facts-and-problems-30",
+          "v1-ef01ma06-basic-addition-facts-and-problems-31",
+          "v1-ef01ma06-basic-addition-facts-and-problems-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma06-basic-addition-facts-and-problems-33",
+          "v1-ef01ma06-basic-addition-facts-and-problems-34",
+          "v1-ef01ma06-basic-addition-facts-and-problems-35",
+          "v1-ef01ma06-basic-addition-facts-and-problems-36",
+          "v1-ef01ma06-basic-addition-facts-and-problems-37",
+          "v1-ef01ma06-basic-addition-facts-and-problems-38",
+          "v1-ef01ma06-basic-addition-facts-and-problems-39",
+          "v1-ef01ma06-basic-addition-facts-and-problems-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA06",
+        "descriptor": "Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-01",
+      "statement": "Quanto é 3 + 2?",
+      "prompt": "Quanto é 3 + 2?",
+      "options": [
+        "5.",
+        "4",
+        "6",
+        "3"
+      ],
+      "correctAnswer": "5.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "3": [
+          "BASIC_ADD_3_2"
+        ],
+        "4": [
+          "BASIC_ADD_3_2"
+        ],
+        "6": [
+          "BASIC_ADD_3_2"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TRES_MAIS_DOIS",
+      "explanation": "Juntar três e duas unidades resulta em cinco.",
+      "hint": "Conte mais duas a partir de três.",
+      "errorFocus": "BASIC_ADD_3_2",
+      "feedback": {
+        "correct": "Boa observação: Juntar três e duas unidades resulta em cinco.",
+        "incorrect": "Juntar três e duas unidades resulta em cinco.",
+        "hint": "Conte mais duas a partir de três.",
+        "errorFocus": "BASIC_ADD_3_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-02",
+      "statement": "Uma criança tem 4 bolas e recebe mais 1. Quantas tem agora?",
+      "prompt": "Uma criança tem 4 bolas e recebe mais 1. Quantas tem agora?",
+      "options": [
+        "3",
+        "5.",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "5.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "3": [
+          "ADD_ONE"
+        ],
+        "4": [
+          "ADD_ONE"
+        ],
+        "6": [
+          "ADD_ONE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "QUATRO_BOLAS_E_UMA",
+      "explanation": "Quatro mais uma unidade é cinco.",
+      "hint": "Acrescente uma à quantidade inicial.",
+      "errorFocus": "ADD_ONE",
+      "feedback": {
+        "correct": "Boa observação: Quatro mais uma unidade é cinco.",
+        "incorrect": "Quatro mais uma unidade é cinco.",
+        "hint": "Acrescente uma à quantidade inicial.",
+        "errorFocus": "ADD_ONE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-03",
+      "statement": "Qual é o total de 5 + 3?",
+      "prompt": "Qual é o total de 5 + 3?",
+      "options": [
+        "7",
+        "6",
+        "8.",
+        "9"
+      ],
+      "correctAnswer": "8.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "6": [
+          "COUNT_ON_5_3"
+        ],
+        "7": [
+          "COUNT_ON_5_3"
+        ],
+        "9": [
+          "COUNT_ON_5_3"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "CINCO_MAIS_TRES",
+      "explanation": "Contar três após cinco chega a oito.",
+      "hint": "Comece em cinco e avance três.",
+      "errorFocus": "COUNT_ON_5_3",
+      "feedback": {
+        "correct": "Boa observação: Contar três após cinco chega a oito.",
+        "incorrect": "Contar três após cinco chega a oito.",
+        "hint": "Comece em cinco e avance três.",
+        "errorFocus": "COUNT_ON_5_3"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-04",
+      "statement": "Um grupo tem 2 cartões e outro tem 3. Qual expressão representa juntar?",
+      "prompt": "Um grupo tem 2 cartões e outro tem 3. Qual expressão representa juntar?",
+      "options": [
+        "2 − 3",
+        "2 = 3",
+        "3 − 2",
+        "2 + 3."
+      ],
+      "correctAnswer": "2 + 3.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "2 − 3": [
+          "REPRESENT_ADDITION"
+        ],
+        "2 = 3": [
+          "REPRESENT_ADDITION"
+        ],
+        "3 − 2": [
+          "REPRESENT_ADDITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMA_DOS_DOIS_GRUPOS",
+      "explanation": "O sinal de adição representa juntar as quantidades.",
+      "hint": "Procure a operação de juntar.",
+      "errorFocus": "REPRESENT_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: O sinal de adição representa juntar as quantidades.",
+        "incorrect": "O sinal de adição representa juntar as quantidades.",
+        "hint": "Procure a operação de juntar.",
+        "errorFocus": "REPRESENT_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-05",
+      "statement": "Uma caixa tem 6 peças e recebe 4. Qual é o total?",
+      "prompt": "Uma caixa tem 6 peças e recebe 4. Qual é o total?",
+      "options": [
+        "10.",
+        "9",
+        "8",
+        "11"
+      ],
+      "correctAnswer": "10.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "8": [
+          "MAKE_TEN_6_4"
+        ],
+        "9": [
+          "MAKE_TEN_6_4"
+        ],
+        "11": [
+          "MAKE_TEN_6_4"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEIS_MAIS_QUATRO",
+      "explanation": "Seis mais quatro formam dez.",
+      "hint": "Complete dez a partir de seis.",
+      "errorFocus": "MAKE_TEN_6_4",
+      "feedback": {
+        "correct": "Boa observação: Seis mais quatro formam dez.",
+        "incorrect": "Seis mais quatro formam dez.",
+        "hint": "Complete dez a partir de seis.",
+        "errorFocus": "MAKE_TEN_6_4"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-06",
+      "statement": "Quanto é 1 + 7?",
+      "prompt": "Quanto é 1 + 7?",
+      "options": [
+        "6",
+        "8.",
+        "7",
+        "9"
+      ],
+      "correctAnswer": "8.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "6": [
+          "COMMUTATIVE_FACT_1_7"
+        ],
+        "7": [
+          "COMMUTATIVE_FACT_1_7"
+        ],
+        "9": [
+          "COMMUTATIVE_FACT_1_7"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "UM_MAIS_SETE",
+      "explanation": "Uma unidade junto de sete resulta em oito.",
+      "hint": "Conte uma unidade além de sete.",
+      "errorFocus": "COMMUTATIVE_FACT_1_7",
+      "feedback": {
+        "correct": "Boa observação: Uma unidade junto de sete resulta em oito.",
+        "incorrect": "Uma unidade junto de sete resulta em oito.",
+        "hint": "Conte uma unidade além de sete.",
+        "errorFocus": "COMMUTATIVE_FACT_1_7"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-07",
+      "statement": "Em 4 + 3 = 7, qual número é o total?",
+      "prompt": "Em 4 + 3 = 7, qual número é o total?",
+      "options": [
+        "4",
+        "3",
+        "7.",
+        "1"
+      ],
+      "correctAnswer": "7.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "1": [
+          "IDENTIFY_SUM"
+        ],
+        "3": [
+          "IDENTIFY_SUM"
+        ],
+        "4": [
+          "IDENTIFY_SUM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PARCELAS_E_TOTAL",
+      "explanation": "O resultado da adição é sete.",
+      "hint": "Veja o número depois do sinal de igual.",
+      "errorFocus": "IDENTIFY_SUM",
+      "feedback": {
+        "correct": "Boa observação: O resultado da adição é sete.",
+        "incorrect": "O resultado da adição é sete.",
+        "hint": "Veja o número depois do sinal de igual.",
+        "errorFocus": "IDENTIFY_SUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-08",
+      "statement": "Para resolver 3 + 4, qual estratégia ajuda?",
+      "prompt": "Para resolver 3 + 4, qual estratégia ajuda?",
+      "options": [
+        "Esconder uma quantidade",
+        "Contar o mesmo objeto duas vezes",
+        "Escolher sem verificar",
+        "Representar três e quatro objetos e juntá-los."
+      ],
+      "correctAnswer": "Representar três e quatro objetos e juntá-los.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder uma quantidade": [
+          "MODEL_ADDITION"
+        ],
+        "Contar o mesmo objeto duas vezes": [
+          "MODEL_ADDITION"
+        ],
+        "Escolher sem verificar": [
+          "MODEL_ADDITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESTRATEGIA_COM_OBJETOS",
+      "explanation": "Representar as parcelas permite conferir o total.",
+      "hint": "Mostre os dois grupos primeiro.",
+      "errorFocus": "MODEL_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Representar as parcelas permite conferir o total.",
+        "incorrect": "Representar as parcelas permite conferir o total.",
+        "hint": "Mostre os dois grupos primeiro.",
+        "errorFocus": "MODEL_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-09",
+      "statement": "Quanto é 2 + 6?",
+      "prompt": "Quanto é 2 + 6?",
+      "options": [
+        "8.",
+        "7",
+        "6",
+        "9"
+      ],
+      "correctAnswer": "8.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "6": [
+          "ADD_FACT_2_6"
+        ],
+        "7": [
+          "ADD_FACT_2_6"
+        ],
+        "9": [
+          "ADD_FACT_2_6"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "DOIS_MAIS_SEIS",
+      "explanation": "Duas e seis unidades somam oito.",
+      "hint": "Conte a partir de seis.",
+      "errorFocus": "ADD_FACT_2_6",
+      "feedback": {
+        "correct": "Boa observação: Duas e seis unidades somam oito.",
+        "incorrect": "Duas e seis unidades somam oito.",
+        "hint": "Conte a partir de seis.",
+        "errorFocus": "ADD_FACT_2_6"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-10",
+      "statement": "Há 5 cadernos numa pilha e 2 noutra. Quantos ao todo?",
+      "prompt": "Há 5 cadernos numa pilha e 2 noutra. Quantos ao todo?",
+      "options": [
+        "6",
+        "7.",
+        "8",
+        "5"
+      ],
+      "correctAnswer": "7.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "5": [
+          "JOIN_COLLECTIONS"
+        ],
+        "6": [
+          "JOIN_COLLECTIONS"
+        ],
+        "8": [
+          "JOIN_COLLECTIONS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CADERNOS_5_E_2",
+      "explanation": "Cinco mais dois é sete.",
+      "hint": "Junte as duas pilhas.",
+      "errorFocus": "JOIN_COLLECTIONS",
+      "feedback": {
+        "correct": "Boa observação: Cinco mais dois é sete.",
+        "incorrect": "Cinco mais dois é sete.",
+        "hint": "Junte as duas pilhas.",
+        "errorFocus": "JOIN_COLLECTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-11",
+      "statement": "Quanto falta adicionar a 9 para formar 10?",
+      "prompt": "Quanto falta adicionar a 9 para formar 10?",
+      "options": [
+        "2",
+        "3",
+        "1.",
+        "9"
+      ],
+      "correctAnswer": "1.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "2": [
+          "MAKE_TEN_9_1"
+        ],
+        "3": [
+          "MAKE_TEN_9_1"
+        ],
+        "9": [
+          "MAKE_TEN_9_1"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "NOVE_MAIS_UM",
+      "explanation": "Uma unidade após nove forma dez.",
+      "hint": "Pense no próximo número.",
+      "errorFocus": "MAKE_TEN_9_1",
+      "feedback": {
+        "correct": "Boa observação: Uma unidade após nove forma dez.",
+        "incorrect": "Uma unidade após nove forma dez.",
+        "hint": "Pense no próximo número.",
+        "errorFocus": "MAKE_TEN_9_1"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-12",
+      "statement": "Um desenho mostra 4 círculos e 4 quadrados. Qual soma encontra o total de figuras?",
+      "prompt": "Um desenho mostra 4 círculos e 4 quadrados. Qual soma encontra o total de figuras?",
+      "options": [
+        "4 − 4",
+        "4 = 4",
+        "8 − 4",
+        "4 + 4."
+      ],
+      "correctAnswer": "4 + 4.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "4 − 4": [
+          "WRITE_ADDITION_FROM_MODEL"
+        ],
+        "4 = 4": [
+          "WRITE_ADDITION_FROM_MODEL"
+        ],
+        "8 − 4": [
+          "WRITE_ADDITION_FROM_MODEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMA_DE_FIGURAS",
+      "explanation": "O desenho mostra dois grupos de quatro para juntar.",
+      "hint": "Conte cada grupo e una-os.",
+      "errorFocus": "WRITE_ADDITION_FROM_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O desenho mostra dois grupos de quatro para juntar.",
+        "incorrect": "O desenho mostra dois grupos de quatro para juntar.",
+        "hint": "Conte cada grupo e una-os.",
+        "errorFocus": "WRITE_ADDITION_FROM_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-13",
+      "statement": "Um jogo marca 7 pontos e depois mais 2. Qual o novo total?",
+      "prompt": "Um jogo marca 7 pontos e depois mais 2. Qual o novo total?",
+      "options": [
+        "9.",
+        "8",
+        "7",
+        "10"
+      ],
+      "correctAnswer": "9.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7": [
+          "ADD_ON_7_2"
+        ],
+        "8": [
+          "ADD_ON_7_2"
+        ],
+        "10": [
+          "ADD_ON_7_2"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SETE_MAIS_DOIS",
+      "explanation": "Sete mais dois resulta em nove.",
+      "hint": "Avance dois números depois de sete.",
+      "errorFocus": "ADD_ON_7_2",
+      "feedback": {
+        "correct": "Boa observação: Sete mais dois resulta em nove.",
+        "incorrect": "Sete mais dois resulta em nove.",
+        "hint": "Avance dois números depois de sete.",
+        "errorFocus": "ADD_ON_7_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-14",
+      "statement": "Para calcular 8 + 5 formando dez primeiro, como decompor o 5?",
+      "prompt": "Para calcular 8 + 5 formando dez primeiro, como decompor o 5?",
+      "options": [
+        "1 e 4",
+        "2 e 3.",
+        "5 e 5",
+        "3 e 4"
+      ],
+      "correctAnswer": "2 e 3.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "1 e 4": [
+          "MAKE_TEN_DECOMPOSITION"
+        ],
+        "5 e 5": [
+          "MAKE_TEN_DECOMPOSITION"
+        ],
+        "3 e 4": [
+          "MAKE_TEN_DECOMPOSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DECOMPOSICAO_8_MAIS_5",
+      "explanation": "Dois completam oito até dez, restam três; o total é treze.",
+      "hint": "Pergunte quanto falta para oito chegar a dez.",
+      "errorFocus": "MAKE_TEN_DECOMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: Dois completam oito até dez, restam três; o total é treze.",
+        "incorrect": "Dois completam oito até dez, restam três; o total é treze.",
+        "hint": "Pergunte quanto falta para oito chegar a dez.",
+        "errorFocus": "MAKE_TEN_DECOMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-15",
+      "statement": "3 + 4 e 4 + 3 têm o mesmo total?",
+      "prompt": "3 + 4 e 4 + 3 têm o mesmo total?",
+      "options": [
+        "Não, 3 + 4 é maior",
+        "Não, 4 + 3 é maior",
+        "Sim, ambos totalizam 7.",
+        "Ambos totalizam 8"
+      ],
+      "correctAnswer": "Sim, ambos totalizam 7.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, 3 + 4 é maior": [
+          "ADDITION_ORDER_FACT"
+        ],
+        "Não, 4 + 3 é maior": [
+          "ADDITION_ORDER_FACT"
+        ],
+        "Ambos totalizam 8": [
+          "ADDITION_ORDER_FACT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRES_MAIS_QUATRO_E_QUATRO_MAIS_TRES",
+      "explanation": "Trocar a ordem das parcelas mantém o total nesses exemplos.",
+      "hint": "Represente os mesmos grupos.",
+      "errorFocus": "ADDITION_ORDER_FACT",
+      "feedback": {
+        "correct": "Boa observação: Trocar a ordem das parcelas mantém o total nesses exemplos.",
+        "incorrect": "Trocar a ordem das parcelas mantém o total nesses exemplos.",
+        "hint": "Represente os mesmos grupos.",
+        "errorFocus": "ADDITION_ORDER_FACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-16",
+      "statement": "Depois de calcular 6 + 2 = 8, como conferir?",
+      "prompt": "Depois de calcular 6 + 2 = 8, como conferir?",
+      "options": [
+        "Apagar os números",
+        "Contar seis duas vezes",
+        "Mudar o total sem verificar",
+        "Representar seis e acrescentar duas unidades para contar oito."
+      ],
+      "correctAnswer": "Representar seis e acrescentar duas unidades para contar oito.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar os números": [
+          "VERIFY_ADDITION"
+        ],
+        "Contar seis duas vezes": [
+          "VERIFY_ADDITION"
+        ],
+        "Mudar o total sem verificar": [
+          "VERIFY_ADDITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONFERIR_SOMA",
+      "explanation": "Uma representação permite conferir o resultado.",
+      "hint": "Use objetos ou marcas.",
+      "errorFocus": "VERIFY_ADDITION",
+      "feedback": {
+        "correct": "Boa observação: Uma representação permite conferir o resultado.",
+        "incorrect": "Uma representação permite conferir o resultado.",
+        "hint": "Use objetos ou marcas.",
+        "errorFocus": "VERIFY_ADDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-17",
+      "statement": "Há 8 livros na mesa e chegam mais 3. Quantos ficam?",
+      "prompt": "Há 8 livros na mesa e chegam mais 3. Quantos ficam?",
+      "options": [
+        "11.",
+        "10",
+        "9",
+        "12"
+      ],
+      "correctAnswer": "11.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "9": [
+          "WORD_PROBLEM_ADD_8_3"
+        ],
+        "10": [
+          "WORD_PROBLEM_ADD_8_3"
+        ],
+        "12": [
+          "WORD_PROBLEM_ADD_8_3"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LIVROS_NA_MESA",
+      "explanation": "Oito mais três resulta em onze.",
+      "hint": "Conte três a partir de oito.",
+      "errorFocus": "WORD_PROBLEM_ADD_8_3",
+      "feedback": {
+        "correct": "Boa observação: Oito mais três resulta em onze.",
+        "incorrect": "Oito mais três resulta em onze.",
+        "hint": "Conte três a partir de oito.",
+        "errorFocus": "WORD_PROBLEM_ADD_8_3"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-18",
+      "statement": "Um quadro mostra 10 marcas e mais 4. Qual expressão e total correspondem?",
+      "prompt": "Um quadro mostra 10 marcas e mais 4. Qual expressão e total correspondem?",
+      "options": [
+        "10 − 4 = 6",
+        "10 + 4 = 14.",
+        "4 + 4 = 8",
+        "10 + 2 = 12"
+      ],
+      "correctAnswer": "10 + 4 = 14.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "10 − 4 = 6": [
+          "REPRESENT_AND_SOLVE"
+        ],
+        "4 + 4 = 8": [
+          "REPRESENT_AND_SOLVE"
+        ],
+        "10 + 2 = 12": [
+          "REPRESENT_AND_SOLVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DEZ_E_QUATRO",
+      "explanation": "Juntar dez e quatro dá quatorze.",
+      "hint": "Leia os dois grupos.",
+      "errorFocus": "REPRESENT_AND_SOLVE",
+      "feedback": {
+        "correct": "Boa observação: Juntar dez e quatro dá quatorze.",
+        "incorrect": "Juntar dez e quatro dá quatorze.",
+        "hint": "Leia os dois grupos.",
+        "errorFocus": "REPRESENT_AND_SOLVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-19",
+      "statement": "Qual soma tem maior resultado: 9 + 3 ou 7 + 5?",
+      "prompt": "Qual soma tem maior resultado: 9 + 3 ou 7 + 5?",
+      "options": [
+        "9 + 3 é maior",
+        "7 + 5 é maior",
+        "Têm o mesmo resultado: 12.",
+        "Ambas resultam em 10"
+      ],
+      "correctAnswer": "Têm o mesmo resultado: 12.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "9 + 3 é maior": [
+          "COMPARE_SUMS"
+        ],
+        "7 + 5 é maior": [
+          "COMPARE_SUMS"
+        ],
+        "Ambas resultam em 10": [
+          "COMPARE_SUMS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NOVE_MAIS_TRES_E_SETE_MAIS_CINCO",
+      "explanation": "As duas somas totalizam doze.",
+      "hint": "Calcule cada expressão.",
+      "errorFocus": "COMPARE_SUMS",
+      "feedback": {
+        "correct": "Boa observação: As duas somas totalizam doze.",
+        "incorrect": "As duas somas totalizam doze.",
+        "hint": "Calcule cada expressão.",
+        "errorFocus": "COMPARE_SUMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-20",
+      "statement": "Uma coleção tem 6 itens e recebe mais 5. Que operação representa a situação?",
+      "prompt": "Uma coleção tem 6 itens e recebe mais 5. Que operação representa a situação?",
+      "options": [
+        "Subtração: 6 − 5",
+        "Multiplicação: 6 × 5",
+        "Igualdade: 6 = 5",
+        "Adição: 6 + 5."
+      ],
+      "correctAnswer": "Adição: 6 + 5.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Subtração: 6 − 5": [
+          "OPERATION_FROM_CONTEXT"
+        ],
+        "Multiplicação: 6 × 5": [
+          "OPERATION_FROM_CONTEXT"
+        ],
+        "Igualdade: 6 = 5": [
+          "OPERATION_FROM_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ACRESCENTAR_A_UMA_COLECAO",
+      "explanation": "A situação acrescenta elementos à coleção.",
+      "hint": "Identifique se a quantidade aumenta ou diminui.",
+      "errorFocus": "OPERATION_FROM_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A situação acrescenta elementos à coleção.",
+        "incorrect": "A situação acrescenta elementos à coleção.",
+        "hint": "Identifique se a quantidade aumenta ou diminui.",
+        "errorFocus": "OPERATION_FROM_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-21",
+      "statement": "Para 6 + 7, uma pessoa conta tudo e outra completa dez. As duas estratégias podem ser válidas?",
+      "prompt": "Para 6 + 7, uma pessoa conta tudo e outra completa dez. As duas estratégias podem ser válidas?",
+      "options": [
+        "Sim, se representam as parcelas e chegam ao total correto.",
+        "Não, só uma estratégia existe",
+        "Não, completar dez muda a soma",
+        "Sim, sem conferir o total"
+      ],
+      "correctAnswer": "Sim, se representam as parcelas e chegam ao total correto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, só uma estratégia existe": [
+          "MULTIPLE_VALID_STRATEGIES"
+        ],
+        "Não, completar dez muda a soma": [
+          "MULTIPLE_VALID_STRATEGIES"
+        ],
+        "Sim, sem conferir o total": [
+          "MULTIPLE_VALID_STRATEGIES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESTRATEGIAS_EQUIVALENTES",
+      "explanation": "Estratégias diferentes podem resolver a mesma adição.",
+      "hint": "Confira se ambas preservam as quantidades.",
+      "errorFocus": "MULTIPLE_VALID_STRATEGIES",
+      "feedback": {
+        "correct": "Boa observação: Estratégias diferentes podem resolver a mesma adição.",
+        "incorrect": "Estratégias diferentes podem resolver a mesma adição.",
+        "hint": "Confira se ambas preservam as quantidades.",
+        "errorFocus": "MULTIPLE_VALID_STRATEGIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-22",
+      "statement": "Um cartaz tem 7 estrelas azuis e 6 verdes. Quantas estrelas há?",
+      "prompt": "Um cartaz tem 7 estrelas azuis e 6 verdes. Quantas estrelas há?",
+      "options": [
+        "12",
+        "13.",
+        "11",
+        "14"
+      ],
+      "correctAnswer": "13.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "11": [
+          "ADD_TWO_GROUPS_7_6"
+        ],
+        "12": [
+          "ADD_TWO_GROUPS_7_6"
+        ],
+        "14": [
+          "ADD_TWO_GROUPS_7_6"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FIGURAS_NO_CARTAZ",
+      "explanation": "Sete mais seis são treze.",
+      "hint": "Junte as duas quantidades.",
+      "errorFocus": "ADD_TWO_GROUPS_7_6",
+      "feedback": {
+        "correct": "Boa observação: Sete mais seis são treze.",
+        "incorrect": "Sete mais seis são treze.",
+        "hint": "Junte as duas quantidades.",
+        "errorFocus": "ADD_TWO_GROUPS_7_6"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-23",
+      "statement": "Uma caixa tinha 5 lápis; foram colocados mais 4. O que a pergunta “quantos agora?” solicita?",
+      "prompt": "Uma caixa tinha 5 lápis; foram colocados mais 4. O que a pergunta “quantos agora?” solicita?",
+      "options": [
+        "Quantos foram retirados",
+        "A cor dos lápis",
+        "O total após acrescentar os quatro lápis.",
+        "O tamanho da caixa"
+      ],
+      "correctAnswer": "O total após acrescentar os quatro lápis.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quantos foram retirados": [
+          "INTERPRET_ADD_CONTEXT"
+        ],
+        "A cor dos lápis": [
+          "INTERPRET_ADD_CONTEXT"
+        ],
+        "O tamanho da caixa": [
+          "INTERPRET_ADD_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROBLEMA_COM_PERGUNTA",
+      "explanation": "A pergunta pede a quantidade final após adicionar.",
+      "hint": "Localize o que mudou na situação.",
+      "errorFocus": "INTERPRET_ADD_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A pergunta pede a quantidade final após adicionar.",
+        "incorrect": "A pergunta pede a quantidade final após adicionar.",
+        "hint": "Localize o que mudou na situação.",
+        "errorFocus": "INTERPRET_ADD_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-24",
+      "statement": "Por que conferir uma soma com desenho pode ajudar?",
+      "prompt": "Por que conferir uma soma com desenho pode ajudar?",
+      "options": [
+        "Porque desenhos substituem todos os números",
+        "Porque evita entender o problema",
+        "Porque velocidade é o objetivo",
+        "O desenho mostra as parcelas e permite verificar o total."
+      ],
+      "correctAnswer": "O desenho mostra as parcelas e permite verificar o total.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque desenhos substituem todos os números": [
+          "VISUAL_VERIFICATION"
+        ],
+        "Porque evita entender o problema": [
+          "VISUAL_VERIFICATION"
+        ],
+        "Porque velocidade é o objetivo": [
+          "VISUAL_VERIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SEM_PRESSA_NO_CALCULO",
+      "explanation": "A representação torna os grupos visíveis para conferência.",
+      "hint": "Compare o desenho com a expressão.",
+      "errorFocus": "VISUAL_VERIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A representação torna os grupos visíveis para conferência.",
+        "incorrect": "A representação torna os grupos visíveis para conferência.",
+        "hint": "Compare o desenho com a expressão.",
+        "errorFocus": "VISUAL_VERIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-25",
+      "statement": "Quanto é 4 + 5?",
+      "prompt": "Quanto é 4 + 5?",
+      "options": [
+        "9.",
+        "8",
+        "7",
+        "10"
+      ],
+      "correctAnswer": "9.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "7": [
+          "ADD_FACT_4_5_REVIEW"
+        ],
+        "8": [
+          "ADD_FACT_4_5_REVIEW"
+        ],
+        "10": [
+          "ADD_FACT_4_5_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "QUATRO_MAIS_CINCO",
+      "explanation": "Quatro mais cinco totaliza nove.",
+      "hint": "Conte cinco a partir de quatro.",
+      "errorFocus": "ADD_FACT_4_5_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Quatro mais cinco totaliza nove.",
+        "incorrect": "Quatro mais cinco totaliza nove.",
+        "hint": "Conte cinco a partir de quatro.",
+        "errorFocus": "ADD_FACT_4_5_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-26",
+      "statement": "Qual é o resultado de 10 + 6?",
+      "prompt": "Qual é o resultado de 10 + 6?",
+      "options": [
+        "15",
+        "16.",
+        "14",
+        "17"
+      ],
+      "correctAnswer": "16.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "14": [
+          "ADD_TEN_REVIEW"
+        ],
+        "15": [
+          "ADD_TEN_REVIEW"
+        ],
+        "17": [
+          "ADD_TEN_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DEZ_MAIS_SEIS",
+      "explanation": "Dez mais seis formam dezesseis.",
+      "hint": "Acrescente seis a dez.",
+      "errorFocus": "ADD_TEN_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Dez mais seis formam dezesseis.",
+        "incorrect": "Dez mais seis formam dezesseis.",
+        "hint": "Acrescente seis a dez.",
+        "errorFocus": "ADD_TEN_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-27",
+      "statement": "Qual número deve ser somado a 8 para obter 12?",
+      "prompt": "Qual número deve ser somado a 8 para obter 12?",
+      "options": [
+        "3",
+        "5",
+        "4.",
+        "2"
+      ],
+      "correctAnswer": "4.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "2": [
+          "MISSING_ADDEND"
+        ],
+        "3": [
+          "MISSING_ADDEND"
+        ],
+        "5": [
+          "MISSING_ADDEND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COMPLETAR_8_ATE_12",
+      "explanation": "Oito mais quatro é doze.",
+      "hint": "Conte a distância de oito até doze.",
+      "errorFocus": "MISSING_ADDEND",
+      "feedback": {
+        "correct": "Boa observação: Oito mais quatro é doze.",
+        "incorrect": "Oito mais quatro é doze.",
+        "hint": "Conte a distância de oito até doze.",
+        "errorFocus": "MISSING_ADDEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-28",
+      "statement": "Qual expressão representa juntar 3 e 6?",
+      "prompt": "Qual expressão representa juntar 3 e 6?",
+      "options": [
+        "6 − 3",
+        "3 = 6",
+        "3 − 6",
+        "3 + 6."
+      ],
+      "correctAnswer": "3 + 6.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "6 − 3": [
+          "ADDITION_SYMBOL_REVIEW"
+        ],
+        "3 = 6": [
+          "ADDITION_SYMBOL_REVIEW"
+        ],
+        "3 − 6": [
+          "ADDITION_SYMBOL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "EXPRESSAO_DE_JUNTAR",
+      "explanation": "O sinal + representa juntar quantidades.",
+      "hint": "Procure o sinal da adição.",
+      "errorFocus": "ADDITION_SYMBOL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O sinal + representa juntar quantidades.",
+        "incorrect": "O sinal + representa juntar quantidades.",
+        "hint": "Procure o sinal da adição.",
+        "errorFocus": "ADDITION_SYMBOL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-29",
+      "statement": "Como um quadro de dez pode apoiar 7 + 3?",
+      "prompt": "Como um quadro de dez pode apoiar 7 + 3?",
+      "options": [
+        "Preencher três espaços restantes para formar dez.",
+        "Retirar sete espaços",
+        "Ignorar os três",
+        "Contar o quadro duas vezes"
+      ],
+      "correctAnswer": "Preencher três espaços restantes para formar dez.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Retirar sete espaços": [
+          "TEN_FRAME_STRATEGY"
+        ],
+        "Ignorar os três": [
+          "TEN_FRAME_STRATEGY"
+        ],
+        "Contar o quadro duas vezes": [
+          "TEN_FRAME_STRATEGY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "USAR_QUADRO_DE_DEZ",
+      "explanation": "Três completam os espaços que faltam após sete.",
+      "hint": "Observe quantos espaços estão vazios.",
+      "errorFocus": "TEN_FRAME_STRATEGY",
+      "feedback": {
+        "correct": "Boa observação: Três completam os espaços que faltam após sete.",
+        "incorrect": "Três completam os espaços que faltam após sete.",
+        "hint": "Observe quantos espaços estão vazios.",
+        "errorFocus": "TEN_FRAME_STRATEGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-30",
+      "statement": "Qual frase é correta sobre 5 + 8 e 8 + 5?",
+      "prompt": "Qual frase é correta sobre 5 + 8 e 8 + 5?",
+      "options": [
+        "5 + 8 é menor",
+        "As duas somas resultam em 13.",
+        "8 + 5 é maior",
+        "Ambas resultam em 12"
+      ],
+      "correctAnswer": "As duas somas resultam em 13.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "5 + 8 é menor": [
+          "ORDER_INVARIANCE_REVIEW"
+        ],
+        "8 + 5 é maior": [
+          "ORDER_INVARIANCE_REVIEW"
+        ],
+        "Ambas resultam em 12": [
+          "ORDER_INVARIANCE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RESULTADO_5_MAIS_8",
+      "explanation": "A ordem das parcelas pode ser trocada sem mudar o total.",
+      "hint": "Calcule os dois lados.",
+      "errorFocus": "ORDER_INVARIANCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A ordem das parcelas pode ser trocada sem mudar o total.",
+        "incorrect": "A ordem das parcelas pode ser trocada sem mudar o total.",
+        "hint": "Calcule os dois lados.",
+        "errorFocus": "ORDER_INVARIANCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-31",
+      "statement": "Um marcador mostra 11 e recebe 2 pontos. Qual total?",
+      "prompt": "Um marcador mostra 11 e recebe 2 pontos. Qual total?",
+      "options": [
+        "12",
+        "14",
+        "13.",
+        "9"
+      ],
+      "correctAnswer": "13.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "9": [
+          "ADD_ON_TWO_REVIEW"
+        ],
+        "12": [
+          "ADD_ON_TWO_REVIEW"
+        ],
+        "14": [
+          "ADD_ON_TWO_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MARCADOR_11_E_MAIS_2",
+      "explanation": "Onze mais dois é treze.",
+      "hint": "Avance duas unidades.",
+      "errorFocus": "ADD_ON_TWO_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Onze mais dois é treze.",
+        "incorrect": "Onze mais dois é treze.",
+        "hint": "Avance duas unidades.",
+        "errorFocus": "ADD_ON_TWO_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-32",
+      "statement": "Uma explicação completa para 9 + 4 pode dizer...",
+      "prompt": "Uma explicação completa para 9 + 4 pode dizer...",
+      "options": [
+        "somente “porque sim”",
+        "que o resultado foi escolhido ao acaso",
+        "que contar é sempre proibido",
+        "como as quantidades foram juntadas e como o total foi conferido."
+      ],
+      "correctAnswer": "como as quantidades foram juntadas e como o total foi conferido.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "somente “porque sim”": [
+          "EXPLAIN_ADDITION_REVIEW"
+        ],
+        "que o resultado foi escolhido ao acaso": [
+          "EXPLAIN_ADDITION_REVIEW"
+        ],
+        "que contar é sempre proibido": [
+          "EXPLAIN_ADDITION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "EXPLICAR_ESTRATEGIA",
+      "explanation": "A justificativa descreve procedimento e conferência.",
+      "hint": "Conte como chegou ao total.",
+      "errorFocus": "EXPLAIN_ADDITION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A justificativa descreve procedimento e conferência.",
+        "incorrect": "A justificativa descreve procedimento e conferência.",
+        "hint": "Conte como chegou ao total.",
+        "errorFocus": "EXPLAIN_ADDITION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-33",
+      "statement": "Quanto é 2 + 2?",
+      "prompt": "Quanto é 2 + 2?",
+      "options": [
+        "4.",
+        "3",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "4.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "2": [
+          "ADD_FACT_REVIEW"
+        ],
+        "3": [
+          "ADD_FACT_REVIEW"
+        ],
+        "5": [
+          "ADD_FACT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "DOIS_MAIS_DOIS",
+      "explanation": "Juntar dois e dois resulta em quatro.",
+      "hint": "Conte os grupos.",
+      "errorFocus": "ADD_FACT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Juntar dois e dois resulta em quatro.",
+        "incorrect": "Juntar dois e dois resulta em quatro.",
+        "hint": "Conte os grupos.",
+        "errorFocus": "ADD_FACT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-34",
+      "statement": "Uma cesta tem 6 frutas e recebe 3. Qual o total?",
+      "prompt": "Uma cesta tem 6 frutas e recebe 3. Qual o total?",
+      "options": [
+        "8",
+        "9.",
+        "7",
+        "10"
+      ],
+      "correctAnswer": "9.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "7": [
+          "WORD_PROBLEM_REVIEW"
+        ],
+        "8": [
+          "WORD_PROBLEM_REVIEW"
+        ],
+        "10": [
+          "WORD_PROBLEM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEIS_MAIS_TRES",
+      "explanation": "Seis mais três totalizam nove.",
+      "hint": "Acrescente três à quantidade inicial.",
+      "errorFocus": "WORD_PROBLEM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Seis mais três totalizam nove.",
+        "incorrect": "Seis mais três totalizam nove.",
+        "hint": "Acrescente três à quantidade inicial.",
+        "errorFocus": "WORD_PROBLEM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-35",
+      "statement": "Na expressão 4 + 7, quais são as parcelas?",
+      "prompt": "Na expressão 4 + 7, quais são as parcelas?",
+      "options": [
+        "11 apenas",
+        "4 e 11",
+        "4 e 7.",
+        "7 e 11"
+      ],
+      "correctAnswer": "4 e 7.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "11 apenas": [
+          "ADDENDS_REVIEW"
+        ],
+        "4 e 11": [
+          "ADDENDS_REVIEW"
+        ],
+        "7 e 11": [
+          "ADDENDS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARCELAS_DE_4_MAIS_7",
+      "explanation": "As parcelas são os números que estão sendo somados.",
+      "hint": "Observe os termos antes do resultado.",
+      "errorFocus": "ADDENDS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As parcelas são os números que estão sendo somados.",
+        "incorrect": "As parcelas são os números que estão sendo somados.",
+        "hint": "Observe os termos antes do resultado.",
+        "errorFocus": "ADDENDS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-36",
+      "statement": "Contar e usar uma reta numérica podem resolver a mesma soma?",
+      "prompt": "Contar e usar uma reta numérica podem resolver a mesma soma?",
+      "options": [
+        "Não, só objetos servem",
+        "Não, retas não mostram números",
+        "Sim, sem verificar",
+        "Sim, se cada estratégia representar corretamente as quantidades."
+      ],
+      "correctAnswer": "Sim, se cada estratégia representar corretamente as quantidades.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, só objetos servem": [
+          "STRATEGY_CHOICE_REVIEW"
+        ],
+        "Não, retas não mostram números": [
+          "STRATEGY_CHOICE_REVIEW"
+        ],
+        "Sim, sem verificar": [
+          "STRATEGY_CHOICE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_ESTRATEGIAS",
+      "explanation": "Estratégias diferentes podem ser válidas e conferidas.",
+      "hint": "Confira o raciocínio.",
+      "errorFocus": "STRATEGY_CHOICE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Estratégias diferentes podem ser válidas e conferidas.",
+        "incorrect": "Estratégias diferentes podem ser válidas e conferidas.",
+        "hint": "Confira o raciocínio.",
+        "errorFocus": "STRATEGY_CHOICE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-37",
+      "statement": "Uma situação acrescenta 2 objetos a 5. Qual operação combina?",
+      "prompt": "Uma situação acrescenta 2 objetos a 5. Qual operação combina?",
+      "options": [
+        "Adição.",
+        "Subtração",
+        "Comparação de cor",
+        "Leitura de legenda"
+      ],
+      "correctAnswer": "Adição.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Subtração": [
+          "OPERATION_MEANING_REVIEW"
+        ],
+        "Comparação de cor": [
+          "OPERATION_MEANING_REVIEW"
+        ],
+        "Leitura de legenda": [
+          "OPERATION_MEANING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ADIÇÃO_E_RETIRADA",
+      "explanation": "Acrescentar aumenta a quantidade.",
+      "hint": "Observe se objetos chegam ou saem.",
+      "errorFocus": "OPERATION_MEANING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Acrescentar aumenta a quantidade.",
+        "incorrect": "Acrescentar aumenta a quantidade.",
+        "hint": "Observe se objetos chegam ou saem.",
+        "errorFocus": "OPERATION_MEANING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-38",
+      "statement": "Qual fato básico forma dez?",
+      "prompt": "Qual fato básico forma dez?",
+      "options": [
+        "8 + 1 = 10",
+        "8 + 2 = 10.",
+        "8 + 3 = 10",
+        "8 + 2 = 9"
+      ],
+      "correctAnswer": "8 + 2 = 10.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "8 + 1 = 10": [
+          "MAKE_TEN_REVIEW"
+        ],
+        "8 + 3 = 10": [
+          "MAKE_TEN_REVIEW"
+        ],
+        "8 + 2 = 9": [
+          "MAKE_TEN_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FATO_8_MAIS_2",
+      "explanation": "Duas unidades completam oito até dez.",
+      "hint": "Conte o que falta para dez.",
+      "errorFocus": "MAKE_TEN_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Duas unidades completam oito até dez.",
+        "incorrect": "Duas unidades completam oito até dez.",
+        "hint": "Conte o que falta para dez.",
+        "errorFocus": "MAKE_TEN_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-39",
+      "statement": "Uma criança usa objetos para chegar ao total correto. O que isso demonstra?",
+      "prompt": "Uma criança usa objetos para chegar ao total correto. O que isso demonstra?",
+      "options": [
+        "Que ela não aprendeu porque demorou",
+        "Que só a resposta rápida vale",
+        "Uma estratégia de cálculo representada e conferível.",
+        "Que objetos não podem ajudar"
+      ],
+      "correctAnswer": "Uma estratégia de cálculo representada e conferível.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que ela não aprendeu porque demorou": [
+          "PROCESS_OVER_SPEED"
+        ],
+        "Que só a resposta rápida vale": [
+          "PROCESS_OVER_SPEED"
+        ],
+        "Que objetos não podem ajudar": [
+          "PROCESS_OVER_SPEED"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_VELOCIDADE",
+      "explanation": "A estratégia e o resultado são evidências de aprendizagem.",
+      "hint": "Valorize o raciocínio, não a rapidez.",
+      "errorFocus": "PROCESS_OVER_SPEED",
+      "feedback": {
+        "correct": "Boa observação: A estratégia e o resultado são evidências de aprendizagem.",
+        "incorrect": "A estratégia e o resultado são evidências de aprendizagem.",
+        "hint": "Valorize o raciocínio, não a rapidez.",
+        "errorFocus": "PROCESS_OVER_SPEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma06-basic-addition-facts-and-problems-40",
+      "statement": "Resolver uma situação de adição envolve compreender quantidades, escolher estratégia e...",
+      "prompt": "Resolver uma situação de adição envolve compreender quantidades, escolher estratégia e...",
+      "options": [
+        "ignorar o enunciado",
+        "somar sem representar",
+        "responder o mais rápido possível",
+        "conferir se o resultado responde à pergunta."
+      ],
+      "correctAnswer": "conferir se o resultado responde à pergunta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ignorar o enunciado": [
+          "ADDITION_PROBLEM_SUMMARY"
+        ],
+        "somar sem representar": [
+          "ADDITION_PROBLEM_SUMMARY"
+        ],
+        "responder o mais rápido possível": [
+          "ADDITION_PROBLEM_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ADICAO",
+      "explanation": "A conferência relaciona o cálculo ao problema.",
+      "hint": "Reúna leitura, cálculo e verificação.",
+      "errorFocus": "ADDITION_PROBLEM_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A conferência relaciona o cálculo ao problema.",
+        "incorrect": "A conferência relaciona o cálculo ao problema.",
+        "hint": "Reúna leitura, cálculo e verificação.",
+        "errorFocus": "ADDITION_PROBLEM_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.",
+          "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.",
+          "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

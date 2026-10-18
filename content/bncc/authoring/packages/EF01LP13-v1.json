@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01lp13-compare-medial-and-final-syllable-sounds",
+  "officialCode": "EF01LP13",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01lp13-compare-medial-and-final-syllable-sounds.json",
+  "canonicalSkillCode": "AUTHORING_EF01LP13_COMPARE_SYLLABLE_SOUNDS",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "comparação de semelhanças e diferenças nos sons de sílabas mediais e finais",
+  "officialDescriptor": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+  "lesson": {
+    "title": "Sons no meio e no final das palavras",
+    "objective": "Comparar oralmente palavras conhecidas, identificando semelhanças e diferenças nos sons das sílabas mediais e finais.",
+    "summary": "Palavras podem ter sílabas com sons iguais ou diferentes no meio e no final. Ao escutar “panela” e “caneta”, é possível perceber a sílaba medial “ne” nas duas; em “casa” e “mesa”, a sílaba final “sa” aparece em ambas. Falar devagar, bater palmas para cada sílaba e usar figuras ajuda a comparação. A atividade trata de sons na pronúncia apresentada, não de avaliar sotaques ou variedades linguísticas; formas legítimas de falar devem ser respeitadas. Respostas podem ser dadas oralmente, apontando imagens ou usando cartões.",
+    "explanation": "Pronuncie ou escute cada palavra e separe suas sílabas oralmente. Em uma palavra com três sílabas, a medial é a do meio e a final é a última. Compare a sílaba inteira e seus sons, não somente uma letra escrita. Por exemplo, “panela” e “caneta” têm “ne” no meio, embora as outras sílabas sejam diferentes. “Casa” e “mesa” terminam com “sa”. Se uma pronúncia local variar, descreva com respeito o modo de falar apresentado e compare o áudio ou modelo escolhido para a atividade.",
+    "workedExample": "Ao dizer “janela” (ja-ne-la) e “panela” (pa-ne-la), ouvimos “ne” na sílaba medial das duas palavras. O início e o final são diferentes. Essa observação compara os exemplos falados, sem julgar outras pronúncias.",
+    "commonMistake": "Comparar somente letras escritas quando a atividade pergunta sobre sons, ou chamar uma variedade linguística de errada por diferir do modelo usado.",
+    "priorKnowledge": ["Reconhecer palavras familiares em imagens, histórias ou conversas.", "Perceber partes orais de palavras com apoio de palmas, ritmo ou cartões."],
+    "keyConcepts": ["palavra", "som", "sílaba", "sílaba medial", "sílaba final", "comparação", "escuta", "variedade linguística"],
+    "remediations": [
+      { "errorFocus": "LOCATE_MEDIAL_AND_FINAL_SYLLABLE", "action": "Pronuncie a palavra devagar, marque cada sílaba com um cartão e localize a do meio ou a última." },
+      { "errorFocus": "COMPARE_SPOKEN_SYLLABLE_SOUNDS", "action": "Escute as duas palavras no modelo escolhido e compare a sílaba inteira indicada." },
+      { "errorFocus": "RESPECT_LANGUAGE_VARIATION", "action": "Descreva diferenças entre modelos de fala sem rotular sotaques ou variedades como errados." }
+    ],
+    "accessibilitySupports": ["Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.", "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.", "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."],
+    "authenticActivities": [
+      { "id": "lp13-syllable-sound-pairs", "title": "Pares de sons no meio e no final", "context": "Cartões de figuras e gravações curtas apresentam palavras conhecidas para comparação oral.", "steps": ["Escute ou fale as duas palavras no ritmo combinado.", "Marque as sílabas com palmas ou cartões.", "Compare a sílaba medial ou final indicada."], "evidence": "Pares classificados por semelhança ou diferença sonora na posição pedida.", "rubric": ["Inicial: escuta uma palavra com apoio.", "Em desenvolvimento: localiza a sílaba solicitada.", "Consolidado: compara sons mediais e finais sem confundir som com julgamento de sotaque."] },
+      { "id": "lp13-word-rhythm-gallery", "title": "Galeria de ritmos das palavras", "context": "A turma organiza cartões ilustrados em sequências de sílabas para notar o que se repete ou muda.", "steps": ["Escolha duas palavras representadas por figuras.", "Marque as sílabas no ritmo da fala-modelo.", "Registre uma semelhança ou diferença no meio ou no final."], "evidence": "Registro oral ou visual da comparação entre duas palavras.", "rubric": ["Inicial: relaciona uma figura à palavra.", "Em desenvolvimento: identifica a última sílaba.", "Consolidado: compara a posição solicitada com base no modelo sonoro e respeito linguístico."] }
+    ],
+    "estimatedMinutes": 35
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","COMPARE","PANELA_E_CANETA","No modelo falado, “panela” e “caneta” compartilham qual sílaba medial?","ne.",["pa","ta","la"],"MATCH_MEDIAL_SYLLABLE","As duas palavras têm “ne” no meio.","Marque as sílabas e compare a do meio."],
+      ["EASY","COMPARE","CASA_E_MESA","“Casa” e “mesa” terminam com qual sílaba no modelo apresentado?","sa.",["ca","me","ta"],"MATCH_FINAL_SYLLABLE","A sílaba final comum é “sa”.","Escute a última parte."],
+      ["MEDIUM","DISTINGUISH","JANELA_E_PANELA","Qual sílaba medial aparece em “janela” e “panela”?","ne.",["ja","pa","la"],"IDENTIFY_SHARED_MIDDLE_SOUND","As palavras são ja-ne-la e pa-ne-la.","Compare a sílaba central."],
+      ["EASY","IDENTIFY","SILABA_FINAL_DE_BONECA","Qual é a sílaba final de “boneca” no modelo falado?","ca.",["bo","ne","na"],"LOCATE_FINAL_SYLLABLE","A divisão apresentada é bo-ne-ca.","Encontre a última parte falada."],
+      ["MEDIUM","COMPARE","CAVALO_E_CABANA","“Cavalo” e “cabana” têm a mesma sílaba medial?","Não; “va” e “ba” são diferentes no modelo dado.",["Sim, ambas têm “na”","Sim, ambas têm “lo”","Não, a primeira não tem sílaba medial"],"DISTINGUISH_MEDIAL_SOUNDS","As sílabas do meio são “va” e “ba”.","Compare a parte central."],
+      ["MEDIUM","READ","TOMATE_E_CADERNO","Em “tomate” e “caderno”, quais sílabas finais são comparadas?","te e no.",["to e ca","ma e der","ta e de"],"COMPARE_FINAL_SYLLABLES","As palavras terminam em “te” e “no”.","Escute a última sílaba de cada uma."],
+      ["EASY","DISTINGUISH","PALAVRA_DE_DUAS_SILABAS","Em “casa”, qual é a sílaba final?","sa.",["ca","ca-sa inteira como duas palavras","a letra c"],"IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD","A palavra pode ser marcada ca-sa.","A última sílaba vem depois de ca."],
+      ["MEDIUM","APPLY","CARTOES_DE_SOM","Qual recurso ajuda a comparar sílabas mediais sem focar só na escrita?","Escutar ou pronunciar as palavras no ritmo combinado.",["Contar apenas as letras","Comparar o tamanho da figura","Ignorar o modelo falado"],"USE_ORAL_SOUND_MODEL","A habilidade observa sons das sílabas.","Use a escuta e o ritmo." ]
+    ],
+    "PRACTICE": [
+      ["EASY","COMPARE","BOLA_E_COLA","No modelo usado, “bola” e “cola” têm qual sílaba final em comum?","la.",["bo","co","da"],"MATCH_FINAL_LA","As duas palavras terminam em “la”.","Compare o final falado."],
+      ["MEDIUM","COMPARE","JANELA_E_CANETA","Qual sílaba medial se repete em “janela” e “caneta”?","ne.",["ja","ca","ta"],"FIND_SHARED_MEDIAL_NE","As duas têm “ne” como sílaba do meio.","Marque três partes em cada palavra."],
+      ["EASY","IDENTIFY","SILABA_MEDIAL_DE_BANANA","Qual sílaba aparece no meio de “banana” (ba-na-na)?","na.",["ba","na final","ca"],"LOCATE_MIDDLE_BANANA","A segunda sílaba é “na”.","A sílaba medial fica entre as outras."],
+      ["MEDIUM","DISTINGUISH","TOMATE_E_PIPOCA","As sílabas mediais de “tomate” e “pipoca” são iguais?","Não; são “ma” e “po”.",["Sim, são “ta”","Sim, são “ca”","Não; ambas têm apenas duas sílabas"],"DISTINGUISH_MIDDLE_TOMATE_PIPOCA","to-ma-te e pi-po-ca têm meios diferentes.","Compare as sílabas centrais."],
+      ["MEDIUM","EVALUATE","GIRASSOL_E_CASA","Uma comparação pede a sílaba final de “casa”. Qual resposta observa o modelo falado?","sa.",["ca","as","sol"],"HEAR_FINAL_CASA","A divisão é ca-sa.","Escute a última sílaba."],
+      ["HARD","ANALYZE","CAVALO_E_JANELA","Qual diferença aparece entre as sílabas mediais de “cavalo” e “janela”?","“va” e “ne” têm sons diferentes no modelo apresentado.",["Ambas são “la”","Ambas são “ca”","As duas palavras não têm sílabas mediais"],"ANALYZE_MEDIAL_DIFFERENCE","As partes centrais são va e ne.","Localize a sílaba do meio em cada palavra."],
+      ["EASY","IDENTIFY","SILABA_FINAL_DE_PIPOCA","Qual é a sílaba final de “pipoca”?","ca.",["pi","po","pa"],"HEAR_FINAL_PIPOCA","A divisão é pi-po-ca.","Ouça a última parte."],
+      ["MEDIUM","APPLY","JOGO_DE_PARES","Uma criança compara os sons finais de duas palavras usando figuras. O que deve escutar?","A última sílaba de cada palavra.",["A primeira letra somente","O tamanho dos cartões","A sílaba do meio sempre"],"FOCUS_REQUESTED_SYLLABLE_POSITION","O pedido é comparar o final.","Siga a posição indicada." ]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","COMPARE","PANELA_E_JANELA","“Panela” e “janela” compartilham qual sílaba medial?","ne.",["pa","ja","la"],"TRANSFER_SHARED_MEDIAL","As duas palavras têm “ne” no centro.","Diga as palavras devagar."],
+      ["EASY","IDENTIFY","FINAL_DE_CABANA","Em “cabana” (ca-ba-na), qual é a sílaba final?","na.",["ca","ba","ma"],"TRANSFER_FINAL_SYLLABLE","A última sílaba é na.","Observe a parte depois de ba."],
+      ["MEDIUM","DISTINGUISH","BONECA_E_JANELA","Qual par apresenta as sílabas finais de “boneca” e “janela”?","ca e la.",["bo e ja","ne e ne","ca e ne"],"TRANSFER_COMPARE_FINALS","As palavras terminam em ca e la.","Compare apenas as últimas sílabas."],
+      ["MEDIUM","EVALUATE","VARIACAO_DE_FALA","Uma pessoa pronuncia uma palavra com uma variedade local diferente. Qual atitude combina com a atividade?","Descrever o modelo ouvido com respeito, sem chamar a variedade de errada.",["Ridicularizar a pronúncia","Afirmar que só existe um jeito de falar","Excluir a pessoa da comparação"],"RESPECT_SPEECH_VARIATION","A comparação de sons não é julgamento de sotaques.","Observe sem desrespeitar."],
+      ["HARD","ANALYZE","CADERNO_E_CANETA","“Caderno” e “caneta” começam com sílabas diferentes. Qual é a sílaba final de cada palavra?","no e ta.",["ca e ca","der e ne","de e na"],"TRANSFER_FINAL_PAIR_ANALYSIS","As divisões são ca-der-no e ca-ne-ta.","Siga cada palavra até o fim."],
+      ["MEDIUM","APPLY","PALMAS_PARA_SILABAS","Como localizar a sílaba medial de “macaco” usando ritmo?","Marcar ma-ca-co e identificar “ca” no meio.",["Contar letras e escolher a maior","Marcar só ma","Separar a palavra em cinco palavras"],"TRANSFER_RHYTHMIC_SEGMENTATION","A sequência oral tem três sílabas e ca fica no centro.","Marque uma palma por sílaba."],
+      ["EASY","COMPARE","GATA_E_LATA","No modelo falado, “gata” e “lata” terminam com qual sílaba igual?","ta.",["ga","la","da"],"TRANSFER_FINAL_TA","As duas palavras terminam em ta.","Escute a última sílaba."],
+      ["HARD","JUSTIFY","COMPARAR_SONS","Por que escutar a palavra ajuda a comparar uma sílaba medial?","Porque a atividade pede observar sons na posição do meio.",["Porque a figura informa todos os sons","Porque letras e sons são sempre idênticos","Porque elimina as sílabas finais"],"JUSTIFY_ORAL_COMPARISON","A escuta orienta a comparação sonora solicitada.","Relacione escuta e posição silábica."]
+    ],
+    "LOCK_IN": [
+      ["EASY","RECALL","SILABA_FINAL","A sílaba final de uma palavra é...","a última sílaba falada.",["a primeira letra","sempre a sílaba maior","a parte do meio"],"RECALL_FINAL_SYLLABLE","Final significa que vem por último.","Lembre da ordem de fala."],
+      ["EASY","IDENTIFY","MEIO_DE_TOMATE","Em to-ma-te, qual sílaba é medial?","ma.",["to","te","ta"],"RECALL_MEDIAL_SYLLABLE","ma fica entre to e te.","Escolha a sílaba central."],
+      ["MEDIUM","COMPARE","CASA_E_BOLA","As sílabas finais de “casa” e “bola” são...","sa e la, diferentes.",["ca e bo, iguais","sa e sa, iguais","la e ca, iguais"],"RECALL_FINAL_DIFFERENCE","Casa termina em sa; bola termina em la.","Compare os finais."],
+      ["MEDIUM","DISTINGUISH","MEIO_DE_JANELA","Em ja-ne-la, qual sílaba vem antes da final?","ne.",["ja","la","na"],"RECALL_SYLLABLE_ORDER","ne é a medial e la é a final.","Encontre a sílaba entre as duas."],
+      ["EASY","APPLY","MODELO_DE_AUDIO","Para comparar sons numa atividade, o áudio deve ser...","escutado com atenção e no ritmo necessário.",["ignorado","substituído por uma adivinhação","usado para julgar sotaques"],"RECALL_ATTENTIVE_LISTENING","A escuta apoia a comparação sonora.","Ouça as palavras."],
+      ["MEDIUM","EVALUATE","RESPEITO_A_VARIANTES","Uma pronúncia varia entre comunidades. Como responder?","Reconhecer a variação com respeito e comparar o modelo combinado.",["Dizer que uma comunidade fala errado","Proibir a pessoa de falar","Fazer a comparação sobre sua família"],"RECALL_LANGUAGE_RESPECT","Variedades linguísticas devem ser respeitadas.","Compare sem julgar pessoas."],
+      ["HARD","ANALYZE","MEDIAL_COMUM","“Panela” e “caneta” têm uma sílaba medial em comum. Qual é?","ne.",["pa","ca","ta"],"RECALL_SHARED_MEDIAL","A sequência ne aparece no meio das duas.","Marque as partes centrais."],
+      ["HARD","JUSTIFY","SINTese_DE_SONS","Comparar sílabas mediais e finais significa observar...","semelhanças e diferenças nos sons do meio e do final das palavras.",["somente o tamanho das letras","a origem das famílias","a velocidade da fala"],"SYLLABLE_COMPARISON_SUMMARY","A habilidade trata de sons em posições silábicas.","Reúna posição e som."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","REVISAO_FINAL","Em ca-sa, qual é a sílaba final?","sa.",["ca","as","ma"],"REVIEW_FINAL_SYLLABLE","sa vem por último.","Escute o final."],
+      ["EASY","IDENTIFY","REVISAO_MEDIAL","Em pa-ne-la, qual parte fica no meio?","ne.",["pa","la","na"],"REVIEW_MEDIAL_SYLLABLE","ne fica entre pa e la.","Olhe para a posição central."],
+      ["MEDIUM","COMPARE","REVISAO_DE_PARES","“Bola” e “cola” compartilham qual sílaba final?","la.",["bo","co","ta"],"REVIEW_SHARED_FINAL","As duas terminam em la.","Compare o que vem por último."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_SONS","Uma atividade pergunta sobre sons, então é útil...","escutar ou pronunciar as palavras no modelo combinado.",["contar apenas letras","comparar o tamanho das figuras","ignorar as palavras"],"REVIEW_SOUND_FOCUS","A escuta permite comparar os sons pedidos.","Use o modelo oral."],
+      ["MEDIUM","EVALUATE","REVISAO_DE_RESPEITO","Qual fala respeita variedades linguísticas?","“Neste modelo, ouvi uma diferença entre estas sílabas.”",["“Esse sotaque é errado.”","“Ninguém pode falar diferente.”","“Vou rir dessa pronúncia.”"],"REVIEW_RESPECTFUL_DESCRIPTION","A frase descreve a observação sem julgar a pessoa.","Fale dos sons, não do valor de quem fala."],
+      ["HARD","ANALYZE","REVISAO_DE_DUAS_POSICOES","Em “janela” e “panela”, o que se repete no meio e muda no início?","A sílaba medial “ne” se repete; as sílabas iniciais são diferentes.",["O início se repete e todo o resto é igual","A sílaba final é ne","As palavras têm duas sílabas"],"REVIEW_MEDIAL_AND_INITIAL","ja-ne-la e pa-ne-la compartilham o meio.","Compare cada posição separadamente."],
+      ["MEDIUM","APPLY","REVISAO_DE_CARTOES","Como cartões podem apoiar a comparação de sílabas?","Um cartão para cada sílaba ajuda a localizar meio e final.",["Um cartão para cada endereço","Cartões escondidos sem ordem","Cartões que substituem a escuta sempre"],"REVIEW_SYLLABLE_CARDS","A sequência de cartões deixa as posições visíveis.","Organize as partes na ordem."],
+      ["HARD","JUSTIFY","SINTese_DE_COMPARACAO","A comparação de palavras deve registrar...","quais sons são semelhantes ou diferentes na posição pedida.",["qual pronúncia é superior","quantas casas existem","o tamanho das letras apenas"],"REVIEW_COMPARISON_SUMMARY","A análise registra semelhança ou diferença sonora.","Responda sobre os sons solicitados."]
+    ]
+  }
+}

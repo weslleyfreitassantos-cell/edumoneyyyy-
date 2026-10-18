@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi07-family-organization-change-and-continuity",
+  "canonicalSkillCode": "AUTHORING_EF01HI07_FAMILY_ORGANIZATION_CHANGE_CONTINUITY",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "mudanças e permanências nas formas de organização familiar",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar mudanças e permanências nas formas de organização familiar.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Famílias: mudanças e permanências",
+    "objective": "Identificar mudanças e aspectos que permanecem em formas diversas de organização familiar usando fontes fictícias, sem impor um modelo único nem solicitar relatos pessoais.",
+    "summary": "Famílias podem se organizar de maneiras diversas, e uma mesma família pode mudar ao longo do tempo. Algumas relações, práticas de cuidado, convivência ou celebração podem permanecer; outras podem se transformar. Registros, objetos, narrativas autorizadas e histórias fictícias oferecem pistas situadas, não regras sobre todas as famílias. A turma não precisa compartilhar fotografias, nomes, endereços, histórias privadas ou informações sobre sua composição familiar.",
+    "explanation": "Compare duas fontes identificadas sobre a mesma personagem ou grupo fictício. Primeiro observe o que mudou, como quem mora junto ou a rotina de cuidado; depois identifique o que permaneceu, como uma atividade compartilhada. Uma fonte informa apenas o recorte apresentado. Famílias monoparentais, extensas, reconstituídas, adotivas, com responsáveis diversos ou outros arranjos são famílias; não existe um único formato que sirva de medida para todas.",
+    "workedExample": "Em duas cenas fictícias, Lia mora com uma tia na primeira e passa a morar também com um primo na segunda. As duas cenas mostram leitura compartilhada antes de dormir. A composição da casa mudou e a leitura permaneceu; isso descreve apenas a história de Lia.",
+    "commonMistake": "Tratar um arranjo como normal e os demais como incompletos, ou presumir que uma mudança observada vale para todas as famílias.",
+    "priorKnowledge": [
+      "Reconhecer informações explícitas em imagens e narrativas curtas.",
+      "Comparar situações em dois momentos representados."
+    ],
+    "keyConcepts": [
+      "família",
+      "organização",
+      "mudança",
+      "permanência",
+      "convivência",
+      "cuidado",
+      "fonte",
+      "tempo"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CHANGE_VS_CONTINUITY",
+        "action": "Compare a mesma característica nas duas fontes e marque se mudou ou permaneceu."
+      },
+      {
+        "errorFocus": "FAMILY_DIVERSITY",
+        "action": "Use exemplos plurais e descreva arranjos sem classificar algum como padrão ou incompleto."
+      },
+      {
+        "errorFocus": "PRIVACY_SAFE_HISTORY",
+        "action": "Retorne a personagens fictícias ou fontes autorizadas; nunca exija relatos familiares pessoais."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+      "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+      "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi07-fictional-family-timeline",
+        "title": "Linha do tempo de uma família fictícia",
+        "instructions": "Cartões contam momentos de uma família inventada, com fontes claramente identificadas.\n1. Ordene os cartões no tempo.\n2. Marque uma característica que mudou e outra que permaneceu.\n3. Escreva conclusões limitadas à história apresentada.",
+        "steps": [
+          "Ordene os cartões no tempo.",
+          "Marque uma característica que mudou e outra que permaneceu.",
+          "Escreva conclusões limitadas à história apresentada."
+        ],
+        "evidence": "Linha do tempo com mudança e permanência apoiadas por cartões.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "ordena um cartão com apoio.",
+            "developing": "identifica uma mudança.",
+            "proficient": "identifica mudança e permanência sem generalizar para outras famílias."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi07-care-routines-comparison",
+        "title": "Rotinas de cuidado em histórias",
+        "instructions": "Duas narrativas fictícias apresentam diferentes pessoas responsáveis por atividades de cuidado.\n1. Localize quem participa de cada rotina.\n2. Compare uma atividade nos dois momentos.\n3. Registre diferenças sem hierarquizar os arranjos.",
+        "steps": [
+          "Localize quem participa de cada rotina.",
+          "Compare uma atividade nos dois momentos.",
+          "Registre diferenças sem hierarquizar os arranjos."
+        ],
+        "evidence": "Quadro comparativo com evidências das narrativas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma ação.",
+            "developing": "compara duas rotinas.",
+            "proficient": "explica mudança ou permanência com referência à fonte e respeito à diversidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi07-family-organization-change-and-continuity-01",
+          "v1-ef01hi07-family-organization-change-and-continuity-02",
+          "v1-ef01hi07-family-organization-change-and-continuity-03",
+          "v1-ef01hi07-family-organization-change-and-continuity-04",
+          "v1-ef01hi07-family-organization-change-and-continuity-05",
+          "v1-ef01hi07-family-organization-change-and-continuity-06",
+          "v1-ef01hi07-family-organization-change-and-continuity-07",
+          "v1-ef01hi07-family-organization-change-and-continuity-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi07-family-organization-change-and-continuity-09",
+          "v1-ef01hi07-family-organization-change-and-continuity-10",
+          "v1-ef01hi07-family-organization-change-and-continuity-11",
+          "v1-ef01hi07-family-organization-change-and-continuity-12",
+          "v1-ef01hi07-family-organization-change-and-continuity-13",
+          "v1-ef01hi07-family-organization-change-and-continuity-14",
+          "v1-ef01hi07-family-organization-change-and-continuity-15",
+          "v1-ef01hi07-family-organization-change-and-continuity-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi07-family-organization-change-and-continuity-17",
+          "v1-ef01hi07-family-organization-change-and-continuity-18",
+          "v1-ef01hi07-family-organization-change-and-continuity-19",
+          "v1-ef01hi07-family-organization-change-and-continuity-20",
+          "v1-ef01hi07-family-organization-change-and-continuity-21",
+          "v1-ef01hi07-family-organization-change-and-continuity-22",
+          "v1-ef01hi07-family-organization-change-and-continuity-23",
+          "v1-ef01hi07-family-organization-change-and-continuity-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi07-family-organization-change-and-continuity-25",
+          "v1-ef01hi07-family-organization-change-and-continuity-26",
+          "v1-ef01hi07-family-organization-change-and-continuity-27",
+          "v1-ef01hi07-family-organization-change-and-continuity-28",
+          "v1-ef01hi07-family-organization-change-and-continuity-29",
+          "v1-ef01hi07-family-organization-change-and-continuity-30",
+          "v1-ef01hi07-family-organization-change-and-continuity-31",
+          "v1-ef01hi07-family-organization-change-and-continuity-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi07-family-organization-change-and-continuity-33",
+          "v1-ef01hi07-family-organization-change-and-continuity-34",
+          "v1-ef01hi07-family-organization-change-and-continuity-35",
+          "v1-ef01hi07-family-organization-change-and-continuity-36",
+          "v1-ef01hi07-family-organization-change-and-continuity-37",
+          "v1-ef01hi07-family-organization-change-and-continuity-38",
+          "v1-ef01hi07-family-organization-change-and-continuity-39",
+          "v1-ef01hi07-family-organization-change-and-continuity-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI07",
+        "descriptor": "Identificar mudanças e permanências nas formas de organização familiar.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-01",
+      "statement": "Uma história inventada mostra Lia morando com a avó. Quem aparece na organização familiar apresentada?",
+      "prompt": "Uma história inventada mostra Lia morando com a avó. Quem aparece na organização familiar apresentada?",
+      "options": [
+        "Lia e a avó.",
+        "Todas as crianças da cidade",
+        "Somente colegas da escola",
+        "Pessoas não citadas"
+      ],
+      "correctAnswer": "Lia e a avó.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as crianças da cidade": [
+          "SOURCE_FAMILY_MEMBERS"
+        ],
+        "Somente colegas da escola": [
+          "SOURCE_FAMILY_MEMBERS"
+        ],
+        "Pessoas não citadas": [
+          "SOURCE_FAMILY_MEMBERS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FAMILIA_FICTICIA_LIA",
+      "explanation": "A história nomeia Lia e a avó.",
+      "hint": "Use apenas os nomes da narrativa.",
+      "errorFocus": "SOURCE_FAMILY_MEMBERS",
+      "feedback": {
+        "correct": "Boa observação: A história nomeia Lia e a avó.",
+        "incorrect": "A história nomeia Lia e a avó.",
+        "hint": "Use apenas os nomes da narrativa.",
+        "errorFocus": "SOURCE_FAMILY_MEMBERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-02",
+      "statement": "Em dois momentos da história, uma personagem lê com alguém da família. O que permaneceu?",
+      "prompt": "Em dois momentos da história, uma personagem lê com alguém da família. O que permaneceu?",
+      "options": [
+        "A quantidade de casas da cidade",
+        "A leitura compartilhada.",
+        "A idade de todas as pessoas",
+        "O endereço da escola"
+      ],
+      "correctAnswer": "A leitura compartilhada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A quantidade de casas da cidade": [
+          "IDENTIFY_CONTINUITY"
+        ],
+        "A idade de todas as pessoas": [
+          "IDENTIFY_CONTINUITY"
+        ],
+        "O endereço da escola": [
+          "IDENTIFY_CONTINUITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ROTINA_DE_LEITURA",
+      "explanation": "A ação aparece nos dois momentos.",
+      "hint": "Procure o que se repete.",
+      "errorFocus": "IDENTIFY_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: A ação aparece nos dois momentos.",
+        "incorrect": "A ação aparece nos dois momentos.",
+        "hint": "Procure o que se repete.",
+        "errorFocus": "IDENTIFY_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-03",
+      "statement": "Uma narrativa mostra Rui vivendo com o pai; depois, uma tia também passa a morar na casa. O que mudou?",
+      "prompt": "Uma narrativa mostra Rui vivendo com o pai; depois, uma tia também passa a morar na casa. O que mudou?",
+      "options": [
+        "Todas as famílias mudaram",
+        "A escola de toda a turma",
+        "A composição da casa mostrada na história.",
+        "O valor das pessoas"
+      ],
+      "correctAnswer": "A composição da casa mostrada na história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as famílias mudaram": [
+          "IDENTIFY_FAMILY_CHANGE"
+        ],
+        "A escola de toda a turma": [
+          "IDENTIFY_FAMILY_CHANGE"
+        ],
+        "O valor das pessoas": [
+          "IDENTIFY_FAMILY_CHANGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MUDANCA_DE_MORADIA",
+      "explanation": "A fonte apresenta uma pessoa a mais no segundo momento.",
+      "hint": "Compare quem aparece em cada cena.",
+      "errorFocus": "IDENTIFY_FAMILY_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta uma pessoa a mais no segundo momento.",
+        "incorrect": "A fonte apresenta uma pessoa a mais no segundo momento.",
+        "hint": "Compare quem aparece em cada cena.",
+        "errorFocus": "IDENTIFY_FAMILY_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-04",
+      "statement": "Uma personagem fictícia vive com duas mães. O que a fonte permite afirmar?",
+      "prompt": "Uma personagem fictícia vive com duas mães. O que a fonte permite afirmar?",
+      "options": [
+        "Toda família tem duas mães",
+        "A história está errada",
+        "Todas as pessoas moram igual",
+        "Na história, as duas mães fazem parte da família da personagem."
+      ],
+      "correctAnswer": "Na história, as duas mães fazem parte da família da personagem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda família tem duas mães": [
+          "RESPECT_FAMILY_DIVERSITY"
+        ],
+        "A história está errada": [
+          "RESPECT_FAMILY_DIVERSITY"
+        ],
+        "Todas as pessoas moram igual": [
+          "RESPECT_FAMILY_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FAMILIA_COM_RESPONSAVEIS_DIVERSOS",
+      "explanation": "A conclusão descreve apenas a personagem da fonte.",
+      "hint": "Limite a resposta à história.",
+      "errorFocus": "RESPECT_FAMILY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A conclusão descreve apenas a personagem da fonte.",
+        "incorrect": "A conclusão descreve apenas a personagem da fonte.",
+        "hint": "Limite a resposta à história.",
+        "errorFocus": "RESPECT_FAMILY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-05",
+      "statement": "Qual afirmação respeita formas diversas de organização familiar?",
+      "prompt": "Qual afirmação respeita formas diversas de organização familiar?",
+      "options": [
+        "Famílias podem se organizar de maneiras diferentes.",
+        "Só um arranjo é família",
+        "Toda criança vive com as mesmas pessoas",
+        "Famílias diferentes são incompletas"
+      ],
+      "correctAnswer": "Famílias podem se organizar de maneiras diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Só um arranjo é família": [
+          "NO_SINGLE_FAMILY_MODEL"
+        ],
+        "Toda criança vive com as mesmas pessoas": [
+          "NO_SINGLE_FAMILY_MODEL"
+        ],
+        "Famílias diferentes são incompletas": [
+          "NO_SINGLE_FAMILY_MODEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_MODELO_UNICO",
+      "explanation": "Há diferentes organizações familiares.",
+      "hint": "Escolha a frase sem hierarquia.",
+      "errorFocus": "NO_SINGLE_FAMILY_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Há diferentes organizações familiares.",
+        "incorrect": "Há diferentes organizações familiares.",
+        "hint": "Escolha a frase sem hierarquia.",
+        "errorFocus": "NO_SINGLE_FAMILY_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-06",
+      "statement": "Uma legenda de uma foto autorizada identifica uma celebração de uma família. O que ela informa?",
+      "prompt": "Uma legenda de uma foto autorizada identifica uma celebração de uma família. O que ela informa?",
+      "options": [
+        "Como todas as famílias celebram",
+        "Uma celebração apresentada naquela fonte.",
+        "A crença de cada estudante",
+        "A rotina de toda a comunidade"
+      ],
+      "correctAnswer": "Uma celebração apresentada naquela fonte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como todas as famílias celebram": [
+          "BOUNDED_FAMILY_SOURCE"
+        ],
+        "A crença de cada estudante": [
+          "BOUNDED_FAMILY_SOURCE"
+        ],
+        "A rotina de toda a comunidade": [
+          "BOUNDED_FAMILY_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "FOTO_AUTORIZADA_FICTICIA",
+      "explanation": "A legenda descreve um registro específico.",
+      "hint": "Considere o limite da fonte.",
+      "errorFocus": "BOUNDED_FAMILY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A legenda descreve um registro específico.",
+        "incorrect": "A legenda descreve um registro específico.",
+        "hint": "Considere o limite da fonte.",
+        "errorFocus": "BOUNDED_FAMILY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-07",
+      "statement": "Uma história mostra dois responsáveis preparando o lanche de uma criança. O que está representado?",
+      "prompt": "Uma história mostra dois responsáveis preparando o lanche de uma criança. O que está representado?",
+      "options": [
+        "Uma regra para todas as casas",
+        "Uma competição entre responsáveis",
+        "Uma atividade de cuidado compartilhada na história.",
+        "Uma prova sobre renda"
+      ],
+      "correctAnswer": "Uma atividade de cuidado compartilhada na história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma regra para todas as casas": [
+          "FAMILY_CARE_ACTION"
+        ],
+        "Uma competição entre responsáveis": [
+          "FAMILY_CARE_ACTION"
+        ],
+        "Uma prova sobre renda": [
+          "FAMILY_CARE_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CUIDADO_COMPARTILHADO",
+      "explanation": "A cena mostra preparação do lanche.",
+      "hint": "Descreva a ação observada.",
+      "errorFocus": "FAMILY_CARE_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra preparação do lanche.",
+        "incorrect": "A cena mostra preparação do lanche.",
+        "hint": "Descreva a ação observada.",
+        "errorFocus": "FAMILY_CARE_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-08",
+      "statement": "Como comparar famílias sem expor estudantes?",
+      "prompt": "Como comparar famílias sem expor estudantes?",
+      "options": [
+        "Pedir fotos de todas as casas",
+        "Exigir que cada pessoa conte sua história",
+        "Publicar nomes de responsáveis",
+        "Usar narrativas fictícias ou fontes autorizadas."
+      ],
+      "correctAnswer": "Usar narrativas fictícias ou fontes autorizadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir fotos de todas as casas": [
+          "PRIVACY_SAFE_COMPARISON"
+        ],
+        "Exigir que cada pessoa conte sua história": [
+          "PRIVACY_SAFE_COMPARISON"
+        ],
+        "Publicar nomes de responsáveis": [
+          "PRIVACY_SAFE_COMPARISON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVACIDADE_DA_TURMA",
+      "explanation": "Fontes fictícias permitem comparar sem solicitar dados pessoais.",
+      "hint": "Escolha a opção que protege a turma.",
+      "errorFocus": "PRIVACY_SAFE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Fontes fictícias permitem comparar sem solicitar dados pessoais.",
+        "incorrect": "Fontes fictícias permitem comparar sem solicitar dados pessoais.",
+        "hint": "Escolha a opção que protege a turma.",
+        "errorFocus": "PRIVACY_SAFE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-09",
+      "statement": "Uma história mostra uma família fictícia preparando o jantar em dois dias diferentes. O que se pode observar?",
+      "prompt": "Uma história mostra uma família fictícia preparando o jantar em dois dias diferentes. O que se pode observar?",
+      "options": [
+        "Uma atividade que aparece nos dois momentos.",
+        "A rotina de todas as cidades",
+        "O endereço real da personagem",
+        "A composição de toda família"
+      ],
+      "correctAnswer": "Uma atividade que aparece nos dois momentos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A rotina de todas as cidades": [
+          "OBSERVE_REPEATED_ROUTINE"
+        ],
+        "O endereço real da personagem": [
+          "OBSERVE_REPEATED_ROUTINE"
+        ],
+        "A composição de toda família": [
+          "OBSERVE_REPEATED_ROUTINE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROTINA_DE_JANTAR",
+      "explanation": "A comparação usa os momentos descritos.",
+      "hint": "Observe os dois dias.",
+      "errorFocus": "OBSERVE_REPEATED_ROUTINE",
+      "feedback": {
+        "correct": "Boa observação: A comparação usa os momentos descritos.",
+        "incorrect": "A comparação usa os momentos descritos.",
+        "hint": "Observe os dois dias.",
+        "errorFocus": "OBSERVE_REPEATED_ROUTINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-10",
+      "statement": "No início, uma personagem é acompanhada por um tio; depois, por uma mãe e um tio. O que mudou?",
+      "prompt": "No início, uma personagem é acompanhada por um tio; depois, por uma mãe e um tio. O que mudou?",
+      "options": [
+        "O valor de cada pessoa",
+        "As pessoas que aparecem acompanhando a personagem.",
+        "O formato de todas as famílias",
+        "A importância da escola"
+      ],
+      "correctAnswer": "As pessoas que aparecem acompanhando a personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O valor de cada pessoa": [
+          "COMPARE_FAMILY_COMPOSITION"
+        ],
+        "O formato de todas as famílias": [
+          "COMPARE_FAMILY_COMPOSITION"
+        ],
+        "A importância da escola": [
+          "COMPARE_FAMILY_COMPOSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MUDANCA_DE_RESPONSAVEL",
+      "explanation": "As fontes mostram participantes diferentes.",
+      "hint": "Compare quem está presente.",
+      "errorFocus": "COMPARE_FAMILY_COMPOSITION",
+      "feedback": {
+        "correct": "Boa observação: As fontes mostram participantes diferentes.",
+        "incorrect": "As fontes mostram participantes diferentes.",
+        "hint": "Compare quem está presente.",
+        "errorFocus": "COMPARE_FAMILY_COMPOSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-11",
+      "statement": "Uma criança fictícia brinca de montar blocos nas duas cenas. O que permaneceu?",
+      "prompt": "Uma criança fictícia brinca de montar blocos nas duas cenas. O que permaneceu?",
+      "options": [
+        "A idade de toda a família",
+        "A moradia de todas as crianças",
+        "A brincadeira de montar blocos.",
+        "A estação do ano"
+      ],
+      "correctAnswer": "A brincadeira de montar blocos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A idade de toda a família": [
+          "CONTINUITY_IN_ACTIVITY"
+        ],
+        "A moradia de todas as crianças": [
+          "CONTINUITY_IN_ACTIVITY"
+        ],
+        "A estação do ano": [
+          "CONTINUITY_IN_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PERMANENCIA_DE_BRINCADEIRA",
+      "explanation": "A mesma brincadeira aparece nas cenas.",
+      "hint": "Procure a atividade repetida.",
+      "errorFocus": "CONTINUITY_IN_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A mesma brincadeira aparece nas cenas.",
+        "incorrect": "A mesma brincadeira aparece nas cenas.",
+        "hint": "Procure a atividade repetida.",
+        "errorFocus": "CONTINUITY_IN_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-12",
+      "statement": "Um cartão autorizado diz que a família se reuniu para ouvir histórias em dois anos. Qual conclusão é adequada?",
+      "prompt": "Um cartão autorizado diz que a família se reuniu para ouvir histórias em dois anos. Qual conclusão é adequada?",
+      "options": [
+        "Todas as famílias fazem isso",
+        "Toda criança gosta da atividade",
+        "A reunião nunca mudou",
+        "O cartão registra essa reunião nos dois anos citados."
+      ],
+      "correctAnswer": "O cartão registra essa reunião nos dois anos citados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as famílias fazem isso": [
+          "LIMITED_MEMORY_SOURCE"
+        ],
+        "Toda criança gosta da atividade": [
+          "LIMITED_MEMORY_SOURCE"
+        ],
+        "A reunião nunca mudou": [
+          "LIMITED_MEMORY_SOURCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CARTAO_DE_MEMORIA",
+      "explanation": "A conclusão fica nos anos e na família da fonte.",
+      "hint": "Não amplie o relato.",
+      "errorFocus": "LIMITED_MEMORY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão fica nos anos e na família da fonte.",
+        "incorrect": "A conclusão fica nos anos e na família da fonte.",
+        "hint": "Não amplie o relato.",
+        "errorFocus": "LIMITED_MEMORY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-13",
+      "statement": "Uma turma lê histórias de famílias com diferentes responsáveis. Como falar delas?",
+      "prompt": "Uma turma lê histórias de famílias com diferentes responsáveis. Como falar delas?",
+      "options": [
+        "Descrever cada história com respeito, sem chamar uma de incompleta.",
+        "Escolher uma como a única correta",
+        "Fazer piada com diferenças",
+        "Afirmar que todas são iguais"
+      ],
+      "correctAnswer": "Descrever cada história com respeito, sem chamar uma de incompleta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher uma como a única correta": [
+          "RESPECTFUL_FAMILY_LANGUAGE"
+        ],
+        "Fazer piada com diferenças": [
+          "RESPECTFUL_FAMILY_LANGUAGE"
+        ],
+        "Afirmar que todas são iguais": [
+          "RESPECTFUL_FAMILY_LANGUAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ARRANJOS_DIVERSOS",
+      "explanation": "Respeito inclui evitar hierarquias e rótulos.",
+      "hint": "Use palavras que acolham a diversidade.",
+      "errorFocus": "RESPECTFUL_FAMILY_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: Respeito inclui evitar hierarquias e rótulos.",
+        "incorrect": "Respeito inclui evitar hierarquias e rótulos.",
+        "hint": "Use palavras que acolham a diversidade.",
+        "errorFocus": "RESPECTFUL_FAMILY_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-14",
+      "statement": "Uma personagem passa a morar com um primo, mas continua visitando a mesma biblioteca com uma responsável. O que mudou e o que permaneceu?",
+      "prompt": "Uma personagem passa a morar com um primo, mas continua visitando a mesma biblioteca com uma responsável. O que mudou e o que permaneceu?",
+      "options": [
+        "Tudo mudou",
+        "Mudou quem mora junto; a visita à biblioteca continuou.",
+        "Nada mudou",
+        "Mudou a biblioteca, mas a moradia não"
+      ],
+      "correctAnswer": "Mudou quem mora junto; a visita à biblioteca continuou.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Tudo mudou": [
+          "ANALYZE_CHANGE_CONTINUITY"
+        ],
+        "Nada mudou": [
+          "ANALYZE_CHANGE_CONTINUITY"
+        ],
+        "Mudou a biblioteca, mas a moradia não": [
+          "ANALYZE_CHANGE_CONTINUITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MUDANCA_E_PERMANENCIA",
+      "explanation": "A fonte mostra uma mudança e uma ação repetida.",
+      "hint": "Separe cada característica.",
+      "errorFocus": "ANALYZE_CHANGE_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra uma mudança e uma ação repetida.",
+        "incorrect": "A fonte mostra uma mudança e uma ação repetida.",
+        "hint": "Separe cada característica.",
+        "errorFocus": "ANALYZE_CHANGE_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-15",
+      "statement": "Uma narrativa mostra duas pessoas da família cuidando de plantas em casa. O que elas fazem?",
+      "prompt": "Uma narrativa mostra duas pessoas da família cuidando de plantas em casa. O que elas fazem?",
+      "options": [
+        "Definem uma regra para todas as famílias",
+        "Comparam salários",
+        "Compartilham uma atividade de cuidado.",
+        "Registram dados de colegas"
+      ],
+      "correctAnswer": "Compartilham uma atividade de cuidado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Definem uma regra para todas as famílias": [
+          "FAMILY_SHARED_ACTIVITY"
+        ],
+        "Comparam salários": [
+          "FAMILY_SHARED_ACTIVITY"
+        ],
+        "Registram dados de colegas": [
+          "FAMILY_SHARED_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CUIDADO_DE_PLANTAS",
+      "explanation": "A cena apresenta cuidado com plantas.",
+      "hint": "Nomeie a ação retratada.",
+      "errorFocus": "FAMILY_SHARED_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta cuidado com plantas.",
+        "incorrect": "A cena apresenta cuidado com plantas.",
+        "hint": "Nomeie a ação retratada.",
+        "errorFocus": "FAMILY_SHARED_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-16",
+      "statement": "Qual pergunta é apropriada ao analisar uma história familiar fictícia?",
+      "prompt": "Qual pergunta é apropriada ao analisar uma história familiar fictícia?",
+      "options": [
+        "Qual é o endereço real da sua família?",
+        "Quem da turma mora com cada responsável?",
+        "Qual família tem mais dinheiro?",
+        "O que mudou entre as duas cenas da personagem?"
+      ],
+      "correctAnswer": "O que mudou entre as duas cenas da personagem?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual é o endereço real da sua família?": [
+          "SAFE_HISTORICAL_QUESTION"
+        ],
+        "Quem da turma mora com cada responsável?": [
+          "SAFE_HISTORICAL_QUESTION"
+        ],
+        "Qual família tem mais dinheiro?": [
+          "SAFE_HISTORICAL_QUESTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PERGUNTA_SEGURA",
+      "explanation": "A pergunta se concentra na fonte fictícia.",
+      "hint": "Pergunte sobre a narrativa, não sobre dados privados.",
+      "errorFocus": "SAFE_HISTORICAL_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta se concentra na fonte fictícia.",
+        "incorrect": "A pergunta se concentra na fonte fictícia.",
+        "hint": "Pergunte sobre a narrativa, não sobre dados privados.",
+        "errorFocus": "SAFE_HISTORICAL_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-17",
+      "statement": "Duas fontes autorizadas mostram a rotina de uma personagem em momentos distintos. Que estratégia ajuda?",
+      "prompt": "Duas fontes autorizadas mostram a rotina de uma personagem em momentos distintos. Que estratégia ajuda?",
+      "options": [
+        "Comparar a mesma característica em cada momento.",
+        "Adivinhar o que não está registrado",
+        "Generalizar para toda a comunidade",
+        "Classificar qual família é melhor"
+      ],
+      "correctAnswer": "Comparar a mesma característica em cada momento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adivinhar o que não está registrado": [
+          "COMPARE_SAME_FEATURE"
+        ],
+        "Generalizar para toda a comunidade": [
+          "COMPARE_SAME_FEATURE"
+        ],
+        "Classificar qual família é melhor": [
+          "COMPARE_SAME_FEATURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FONTES_AUTORIZADAS",
+      "explanation": "Comparar a mesma característica evidencia mudança ou permanência.",
+      "hint": "Escolha algo presente nas duas fontes.",
+      "errorFocus": "COMPARE_SAME_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: Comparar a mesma característica evidencia mudança ou permanência.",
+        "incorrect": "Comparar a mesma característica evidencia mudança ou permanência.",
+        "hint": "Escolha algo presente nas duas fontes.",
+        "errorFocus": "COMPARE_SAME_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-18",
+      "statement": "Uma história mostra uma criança convivendo com mãe, avô e primas. O que a fonte apresenta?",
+      "prompt": "Uma história mostra uma criança convivendo com mãe, avô e primas. O que a fonte apresenta?",
+      "options": [
+        "Um único formato obrigatório",
+        "Uma família fictícia com diferentes parentes convivendo.",
+        "Uma família incompleta",
+        "A casa de todos os estudantes"
+      ],
+      "correctAnswer": "Uma família fictícia com diferentes parentes convivendo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um único formato obrigatório": [
+          "IDENTIFY_DIVERSE_ARRANGEMENT"
+        ],
+        "Uma família incompleta": [
+          "IDENTIFY_DIVERSE_ARRANGEMENT"
+        ],
+        "A casa de todos os estudantes": [
+          "IDENTIFY_DIVERSE_ARRANGEMENT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FAMILIA_EXTENSA_FICTICIA",
+      "explanation": "A narrativa apresenta vários parentes.",
+      "hint": "Descreva este exemplo.",
+      "errorFocus": "IDENTIFY_DIVERSE_ARRANGEMENT",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta vários parentes.",
+        "incorrect": "A narrativa apresenta vários parentes.",
+        "hint": "Descreva este exemplo.",
+        "errorFocus": "IDENTIFY_DIVERSE_ARRANGEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-19",
+      "statement": "Uma personagem começa a estudar à tarde e deixa de participar de um passeio matinal com a família. O que mudou?",
+      "prompt": "Uma personagem começa a estudar à tarde e deixa de participar de um passeio matinal com a família. O que mudou?",
+      "options": [
+        "O valor da família",
+        "A rotina de todas as crianças",
+        "A rotina da personagem nessa história.",
+        "A composição de todas as casas"
+      ],
+      "correctAnswer": "A rotina da personagem nessa história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O valor da família": [
+          "ROUTINE_CHANGE_CONTEXT"
+        ],
+        "A rotina de todas as crianças": [
+          "ROUTINE_CHANGE_CONTEXT"
+        ],
+        "A composição de todas as casas": [
+          "ROUTINE_CHANGE_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MUDANCA_DE_ROTINA",
+      "explanation": "A fonte mostra uma alteração de horário e atividade.",
+      "hint": "Limite à personagem.",
+      "errorFocus": "ROUTINE_CHANGE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra uma alteração de horário e atividade.",
+        "incorrect": "A fonte mostra uma alteração de horário e atividade.",
+        "hint": "Limite à personagem.",
+        "errorFocus": "ROUTINE_CHANGE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-20",
+      "statement": "Uma narrativa mostra uma família que celebra de certo modo. Qual conclusão evita generalização?",
+      "prompt": "Uma narrativa mostra uma família que celebra de certo modo. Qual conclusão evita generalização?",
+      "options": [
+        "Todas as famílias celebram igual",
+        "Toda pessoa da região tem a mesma prática",
+        "A fonte prova uma regra universal",
+        "Essa família celebrou assim na situação narrada."
+      ],
+      "correctAnswer": "Essa família celebrou assim na situação narrada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as famílias celebram igual": [
+          "NO_FAMILY_GENERALIZATION"
+        ],
+        "Toda pessoa da região tem a mesma prática": [
+          "NO_FAMILY_GENERALIZATION"
+        ],
+        "A fonte prova uma regra universal": [
+          "NO_FAMILY_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_GENERALIZACAO",
+      "explanation": "Uma fonte singular não representa todos os grupos.",
+      "hint": "Diga o que a fonte registra.",
+      "errorFocus": "NO_FAMILY_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte singular não representa todos os grupos.",
+        "incorrect": "Uma fonte singular não representa todos os grupos.",
+        "hint": "Diga o que a fonte registra.",
+        "errorFocus": "NO_FAMILY_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-21",
+      "statement": "Um desenho antigo e outro recente de uma história fictícia mostram a mesma personagem e sua casa. O que permite analisar?",
+      "prompt": "Um desenho antigo e outro recente de uma história fictícia mostram a mesma personagem e sua casa. O que permite analisar?",
+      "options": [
+        "Características que aparecem, mudam ou permanecem nos desenhos.",
+        "O que todas as casas escondem",
+        "A renda de pessoas reais",
+        "Uma regra sobre famílias"
+      ],
+      "correctAnswer": "Características que aparecem, mudam ou permanecem nos desenhos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O que todas as casas escondem": [
+          "ANALYZE_FAMILY_RECORDS"
+        ],
+        "A renda de pessoas reais": [
+          "ANALYZE_FAMILY_RECORDS"
+        ],
+        "Uma regra sobre famílias": [
+          "ANALYZE_FAMILY_RECORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGISTROS_EM_TEMPOS",
+      "explanation": "Comparar registros situados apoia observações sobre tempo.",
+      "hint": "Observe cada desenho e sua data.",
+      "errorFocus": "ANALYZE_FAMILY_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: Comparar registros situados apoia observações sobre tempo.",
+        "incorrect": "Comparar registros situados apoia observações sobre tempo.",
+        "hint": "Observe cada desenho e sua data.",
+        "errorFocus": "ANALYZE_FAMILY_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-22",
+      "statement": "Uma atividade convida a falar de lembranças, mas uma criança prefere não compartilhar. O que fazer?",
+      "prompt": "Uma atividade convida a falar de lembranças, mas uma criança prefere não compartilhar. O que fazer?",
+      "options": [
+        "Insistir até contar",
+        "Permitir que use a história fictícia ou passe a vez.",
+        "Pedir aos colegas que respondam por ela",
+        "Registrar a recusa publicamente"
+      ],
+      "correctAnswer": "Permitir que use a história fictícia ou passe a vez.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Insistir até contar": [
+          "RESPECT_OPT_OUT"
+        ],
+        "Pedir aos colegas que respondam por ela": [
+          "RESPECT_OPT_OUT"
+        ],
+        "Registrar a recusa publicamente": [
+          "RESPECT_OPT_OUT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVERSA_VOLUNTARIA",
+      "explanation": "Participação não deve exigir memórias privadas.",
+      "hint": "Respeite a escolha da pessoa.",
+      "errorFocus": "RESPECT_OPT_OUT",
+      "feedback": {
+        "correct": "Boa observação: Participação não deve exigir memórias privadas.",
+        "incorrect": "Participação não deve exigir memórias privadas.",
+        "hint": "Respeite a escolha da pessoa.",
+        "errorFocus": "RESPECT_OPT_OUT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-23",
+      "statement": "Uma personagem é cuidada por uma madrinha que mora perto. O que essa história mostra?",
+      "prompt": "Uma personagem é cuidada por uma madrinha que mora perto. O que essa história mostra?",
+      "options": [
+        "Madrinhas sempre cuidam de crianças",
+        "Toda família mora perto",
+        "A madrinha participa do cuidado naquela narrativa.",
+        "A personagem não tem outros vínculos"
+      ],
+      "correctAnswer": "A madrinha participa do cuidado naquela narrativa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Madrinhas sempre cuidam de crianças": [
+          "DESCRIBE_CARE_SOURCE"
+        ],
+        "Toda família mora perto": [
+          "DESCRIBE_CARE_SOURCE"
+        ],
+        "A personagem não tem outros vínculos": [
+          "DESCRIBE_CARE_SOURCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RESPONSABILIDADE_DE_CUIDADO",
+      "explanation": "A conclusão se apoia na ação narrada.",
+      "hint": "Use só a informação apresentada.",
+      "errorFocus": "DESCRIBE_CARE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão se apoia na ação narrada.",
+        "incorrect": "A conclusão se apoia na ação narrada.",
+        "hint": "Use só a informação apresentada.",
+        "errorFocus": "DESCRIBE_CARE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-24",
+      "statement": "Por que uma mudança numa história não define todas as famílias?",
+      "prompt": "Por que uma mudança numa história não define todas as famílias?",
+      "options": [
+        "Porque histórias nunca informam nada",
+        "Porque famílias não mudam",
+        "Porque só existe um modelo familiar",
+        "Porque a fonte apresenta um caso situado, não uma regra universal."
+      ],
+      "correctAnswer": "Porque a fonte apresenta um caso situado, não uma regra universal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque histórias nunca informam nada": [
+          "JUSTIFY_SOURCE_SCOPE"
+        ],
+        "Porque famílias não mudam": [
+          "JUSTIFY_SOURCE_SCOPE"
+        ],
+        "Porque só existe um modelo familiar": [
+          "JUSTIFY_SOURCE_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONCLUSAO_HISTORICA",
+      "explanation": "Uma fonte específica sustenta uma conclusão específica.",
+      "hint": "Considere o alcance da evidência.",
+      "errorFocus": "JUSTIFY_SOURCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte específica sustenta uma conclusão específica.",
+        "incorrect": "Uma fonte específica sustenta uma conclusão específica.",
+        "hint": "Considere o alcance da evidência.",
+        "errorFocus": "JUSTIFY_SOURCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-25",
+      "statement": "Quando uma característica da organização familiar fica diferente entre dois momentos, ela...",
+      "prompt": "Quando uma característica da organização familiar fica diferente entre dois momentos, ela...",
+      "options": [
+        "mudou naquele exemplo.",
+        "define todas as famílias",
+        "fica igual para sempre",
+        "deixa de ser uma fonte"
+      ],
+      "correctAnswer": "mudou naquele exemplo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "define todas as famílias": [
+          "RECALL_CHANGE"
+        ],
+        "fica igual para sempre": [
+          "RECALL_CHANGE"
+        ],
+        "deixa de ser uma fonte": [
+          "RECALL_CHANGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CONCEITO_DE_MUDANCA",
+      "explanation": "Mudança é uma diferença entre momentos comparados.",
+      "hint": "Pense no antes e depois.",
+      "errorFocus": "RECALL_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: Mudança é uma diferença entre momentos comparados.",
+        "incorrect": "Mudança é uma diferença entre momentos comparados.",
+        "hint": "Pense no antes e depois.",
+        "errorFocus": "RECALL_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-26",
+      "statement": "Quando uma atividade aparece nos dois momentos da fonte, ela...",
+      "prompt": "Quando uma atividade aparece nos dois momentos da fonte, ela...",
+      "options": [
+        "prova que ninguém muda",
+        "permaneceu nesse recorte.",
+        "vale para todo grupo",
+        "não pode ser descrita"
+      ],
+      "correctAnswer": "permaneceu nesse recorte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "prova que ninguém muda": [
+          "RECALL_CONTINUITY"
+        ],
+        "vale para todo grupo": [
+          "RECALL_CONTINUITY"
+        ],
+        "não pode ser descrita": [
+          "RECALL_CONTINUITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CONCEITO_DE_PERMANENCIA",
+      "explanation": "A característica continua nos momentos observados.",
+      "hint": "Procure o que se repete.",
+      "errorFocus": "RECALL_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: A característica continua nos momentos observados.",
+        "incorrect": "A característica continua nos momentos observados.",
+        "hint": "Procure o que se repete.",
+        "errorFocus": "RECALL_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-27",
+      "statement": "Uma história mostra uma criança vivendo com dois responsáveis. Isso é...",
+      "prompt": "Uma história mostra uma criança vivendo com dois responsáveis. Isso é...",
+      "options": [
+        "uma regra para todas as crianças",
+        "prova de um único modelo",
+        "um exemplo daquela história.",
+        "um motivo para classificar famílias"
+      ],
+      "correctAnswer": "um exemplo daquela história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma regra para todas as crianças": [
+          "DISTINGUISH_EXAMPLE_RULE"
+        ],
+        "prova de um único modelo": [
+          "DISTINGUISH_EXAMPLE_RULE"
+        ],
+        "um motivo para classificar famílias": [
+          "DISTINGUISH_EXAMPLE_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FONTE_E_REGRA",
+      "explanation": "O caso não deve ser universalizado.",
+      "hint": "Separe exemplo de regra.",
+      "errorFocus": "DISTINGUISH_EXAMPLE_RULE",
+      "feedback": {
+        "correct": "Boa observação: O caso não deve ser universalizado.",
+        "incorrect": "O caso não deve ser universalizado.",
+        "hint": "Separe exemplo de regra.",
+        "errorFocus": "DISTINGUISH_EXAMPLE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-28",
+      "statement": "Qual descrição respeita uma família com avó responsável?",
+      "prompt": "Qual descrição respeita uma família com avó responsável?",
+      "options": [
+        "A família é incompleta",
+        "Essa situação não é família",
+        "Toda criança deveria viver assim",
+        "A avó participa do cuidado na história apresentada."
+      ],
+      "correctAnswer": "A avó participa do cuidado na história apresentada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A família é incompleta": [
+          "ACCURATE_FAMILY_DESCRIPTION"
+        ],
+        "Essa situação não é família": [
+          "ACCURATE_FAMILY_DESCRIPTION"
+        ],
+        "Toda criança deveria viver assim": [
+          "ACCURATE_FAMILY_DESCRIPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LINGUAGEM_ACOLHEDORA",
+      "explanation": "A descrição é específica e sem julgamento.",
+      "hint": "Descreva sem hierarquia.",
+      "errorFocus": "ACCURATE_FAMILY_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A descrição é específica e sem julgamento.",
+        "incorrect": "A descrição é específica e sem julgamento.",
+        "hint": "Descreva sem hierarquia.",
+        "errorFocus": "ACCURATE_FAMILY_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-29",
+      "statement": "Em duas cenas, uma família fictícia prepara uma refeição em conjunto. O que permanece?",
+      "prompt": "Em duas cenas, uma família fictícia prepara uma refeição em conjunto. O que permanece?",
+      "options": [
+        "A atividade de preparar a refeição juntos.",
+        "O lugar de todas as famílias",
+        "A idade dos personagens",
+        "O número de casas do bairro"
+      ],
+      "correctAnswer": "A atividade de preparar a refeição juntos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O lugar de todas as famílias": [
+          "IDENTIFY_REPEATED_ACTION"
+        ],
+        "A idade dos personagens": [
+          "IDENTIFY_REPEATED_ACTION"
+        ],
+        "O número de casas do bairro": [
+          "IDENTIFY_REPEATED_ACTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ATIVIDADE_REPETIDA",
+      "explanation": "A ação está nas duas cenas.",
+      "hint": "Compare a rotina.",
+      "errorFocus": "IDENTIFY_REPEATED_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A ação está nas duas cenas.",
+        "incorrect": "A ação está nas duas cenas.",
+        "hint": "Compare a rotina.",
+        "errorFocus": "IDENTIFY_REPEATED_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-30",
+      "statement": "Qual fonte é apropriada para uma atividade histórica sobre família?",
+      "prompt": "Qual fonte é apropriada para uma atividade histórica sobre família?",
+      "options": [
+        "Uma foto privada obtida sem consentimento",
+        "Uma narrativa fictícia criada para a aula.",
+        "Lista de endereços de estudantes",
+        "Relato obrigatório de cada criança"
+      ],
+      "correctAnswer": "Uma narrativa fictícia criada para a aula.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma foto privada obtida sem consentimento": [
+          "SELECT_PRIVACY_SAFE_SOURCE"
+        ],
+        "Lista de endereços de estudantes": [
+          "SELECT_PRIVACY_SAFE_SOURCE"
+        ],
+        "Relato obrigatório de cada criança": [
+          "SELECT_PRIVACY_SAFE_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_AUTORIZADA",
+      "explanation": "A narrativa fictícia evita exposição.",
+      "hint": "Escolha uma fonte segura.",
+      "errorFocus": "SELECT_PRIVACY_SAFE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa fictícia evita exposição.",
+        "incorrect": "A narrativa fictícia evita exposição.",
+        "hint": "Escolha uma fonte segura.",
+        "errorFocus": "SELECT_PRIVACY_SAFE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-31",
+      "statement": "Uma personagem muda de casa e mantém a chamada semanal para um parente. Identifique os dois aspectos.",
+      "prompt": "Uma personagem muda de casa e mantém a chamada semanal para um parente. Identifique os dois aspectos.",
+      "options": [
+        "Moradia e chamada mudaram",
+        "Nada mudou",
+        "Mudou a moradia; a chamada semanal permaneceu.",
+        "A família toda mudou de região"
+      ],
+      "correctAnswer": "Mudou a moradia; a chamada semanal permaneceu.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Moradia e chamada mudaram": [
+          "ANALYZE_TWO_FEATURES"
+        ],
+        "Nada mudou": [
+          "ANALYZE_TWO_FEATURES"
+        ],
+        "A família toda mudou de região": [
+          "ANALYZE_TWO_FEATURES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DOIS_ASPECTOS",
+      "explanation": "A fonte apresenta uma alteração e uma continuidade.",
+      "hint": "Observe cada detalhe separadamente.",
+      "errorFocus": "ANALYZE_TWO_FEATURES",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta uma alteração e uma continuidade.",
+        "incorrect": "A fonte apresenta uma alteração e uma continuidade.",
+        "hint": "Observe cada detalhe separadamente.",
+        "errorFocus": "ANALYZE_TWO_FEATURES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-32",
+      "statement": "Estudar mudanças e permanências familiares significa...",
+      "prompt": "Estudar mudanças e permanências familiares significa...",
+      "options": [
+        "definir um modelo certo",
+        "exigir histórias pessoais",
+        "julgar famílias por sua organização",
+        "comparar fontes situadas com respeito à diversidade e à privacidade."
+      ],
+      "correctAnswer": "comparar fontes situadas com respeito à diversidade e à privacidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "definir um modelo certo": [
+          "FAMILY_HISTORY_SUMMARY"
+        ],
+        "exigir histórias pessoais": [
+          "FAMILY_HISTORY_SUMMARY"
+        ],
+        "julgar famílias por sua organização": [
+          "FAMILY_HISTORY_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_HI07",
+      "explanation": "A comparação deve ser cuidadosa e inclusiva.",
+      "hint": "Reúna tempo, evidência e respeito.",
+      "errorFocus": "FAMILY_HISTORY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A comparação deve ser cuidadosa e inclusiva.",
+        "incorrect": "A comparação deve ser cuidadosa e inclusiva.",
+        "hint": "Reúna tempo, evidência e respeito.",
+        "errorFocus": "FAMILY_HISTORY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-33",
+      "statement": "Uma característica aparece diferente em dois momentos. Como podemos descrevê-la?",
+      "prompt": "Uma característica aparece diferente em dois momentos. Como podemos descrevê-la?",
+      "options": [
+        "Como uma mudança observada na fonte.",
+        "Como regra para todo mundo",
+        "Como prova sobre a turma",
+        "Como julgamento de valor"
+      ],
+      "correctAnswer": "Como uma mudança observada na fonte.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como regra para todo mundo": [
+          "REVIEW_CHANGE"
+        ],
+        "Como prova sobre a turma": [
+          "REVIEW_CHANGE"
+        ],
+        "Como julgamento de valor": [
+          "REVIEW_CHANGE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_MUDANCA",
+      "explanation": "A diferença é descrita no recorte da fonte.",
+      "hint": "Use os dois momentos.",
+      "errorFocus": "REVIEW_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A diferença é descrita no recorte da fonte.",
+        "incorrect": "A diferença é descrita no recorte da fonte.",
+        "hint": "Use os dois momentos.",
+        "errorFocus": "REVIEW_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-34",
+      "statement": "Uma atividade aparece antes e depois na história. O que ocorreu?",
+      "prompt": "Uma atividade aparece antes e depois na história. O que ocorreu?",
+      "options": [
+        "Toda família faz a atividade",
+        "Ela permaneceu nesse exemplo.",
+        "Nada pode mudar",
+        "A fonte é universal"
+      ],
+      "correctAnswer": "Ela permaneceu nesse exemplo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda família faz a atividade": [
+          "REVIEW_CONTINUITY"
+        ],
+        "Nada pode mudar": [
+          "REVIEW_CONTINUITY"
+        ],
+        "A fonte é universal": [
+          "REVIEW_CONTINUITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_PERMANENCIA",
+      "explanation": "A repetição indica permanência no recorte.",
+      "hint": "Procure o aspecto repetido.",
+      "errorFocus": "REVIEW_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: A repetição indica permanência no recorte.",
+        "incorrect": "A repetição indica permanência no recorte.",
+        "hint": "Procure o aspecto repetido.",
+        "errorFocus": "REVIEW_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-35",
+      "statement": "Duas histórias mostram responsáveis diferentes. O que pode ser comparado?",
+      "prompt": "Duas histórias mostram responsáveis diferentes. O que pode ser comparado?",
+      "options": [
+        "Qual família é superior",
+        "Quem tem mais recursos",
+        "As formas como as personagens são cuidadas nas fontes.",
+        "Qual arranjo é obrigatório"
+      ],
+      "correctAnswer": "As formas como as personagens são cuidadas nas fontes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual família é superior": [
+          "REVIEW_COMPARE_WITHOUT_HIERARCHY"
+        ],
+        "Quem tem mais recursos": [
+          "REVIEW_COMPARE_WITHOUT_HIERARCHY"
+        ],
+        "Qual arranjo é obrigatório": [
+          "REVIEW_COMPARE_WITHOUT_HIERARCHY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_ARRANJOS",
+      "explanation": "Comparação descreve sem ranquear pessoas.",
+      "hint": "Compare ações e evidências.",
+      "errorFocus": "REVIEW_COMPARE_WITHOUT_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: Comparação descreve sem ranquear pessoas.",
+        "incorrect": "Comparação descreve sem ranquear pessoas.",
+        "hint": "Compare ações e evidências.",
+        "errorFocus": "REVIEW_COMPARE_WITHOUT_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-36",
+      "statement": "Qual prática protege estudantes numa aula sobre famílias?",
+      "prompt": "Qual prática protege estudantes numa aula sobre famílias?",
+      "options": [
+        "Exigir árvore genealógica de todos",
+        "Publicar fotos de casa",
+        "Perguntar detalhes privados em roda",
+        "Usar personagens fictícias e não pedir dados pessoais."
+      ],
+      "correctAnswer": "Usar personagens fictícias e não pedir dados pessoais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir árvore genealógica de todos": [
+          "REVIEW_PRIVACY"
+        ],
+        "Publicar fotos de casa": [
+          "REVIEW_PRIVACY"
+        ],
+        "Perguntar detalhes privados em roda": [
+          "REVIEW_PRIVACY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_PRIVACIDADE",
+      "explanation": "Exemplos fictícios evitam exposição.",
+      "hint": "Priorize privacidade e escolha.",
+      "errorFocus": "REVIEW_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Exemplos fictícios evitam exposição.",
+        "incorrect": "Exemplos fictícios evitam exposição.",
+        "hint": "Priorize privacidade e escolha.",
+        "errorFocus": "REVIEW_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-37",
+      "statement": "Uma fonte mostra uma família específica. Ela representa automaticamente todas?",
+      "prompt": "Uma fonte mostra uma família específica. Ela representa automaticamente todas?",
+      "options": [
+        "Não; descreve o caso que apresenta.",
+        "Sim, sempre",
+        "Sim, se for antiga",
+        "Não, fontes nunca são úteis"
+      ],
+      "correctAnswer": "Não; descreve o caso que apresenta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, sempre": [
+          "REVIEW_SOURCE_SCOPE"
+        ],
+        "Sim, se for antiga": [
+          "REVIEW_SOURCE_SCOPE"
+        ],
+        "Não, fontes nunca são úteis": [
+          "REVIEW_SOURCE_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_FONTE",
+      "explanation": "Uma fonte tem alcance limitado.",
+      "hint": "Considere quem e o que aparece.",
+      "errorFocus": "REVIEW_SOURCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte tem alcance limitado.",
+        "incorrect": "Uma fonte tem alcance limitado.",
+        "hint": "Considere quem e o que aparece.",
+        "errorFocus": "REVIEW_SOURCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-38",
+      "statement": "Uma pessoa que cuida permanece nas duas cenas, mas muda a rotina de trabalho. O que isso mostra?",
+      "prompt": "Uma pessoa que cuida permanece nas duas cenas, mas muda a rotina de trabalho. O que isso mostra?",
+      "options": [
+        "Uma regra para todos",
+        "Uma permanência e uma mudança naquele recorte.",
+        "Que nada pode ser comparado",
+        "Que toda família tem a mesma rotina"
+      ],
+      "correctAnswer": "Uma permanência e uma mudança naquele recorte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma regra para todos": [
+          "REVIEW_CHANGE_AND_CONTINUITY"
+        ],
+        "Que nada pode ser comparado": [
+          "REVIEW_CHANGE_AND_CONTINUITY"
+        ],
+        "Que toda família tem a mesma rotina": [
+          "REVIEW_CHANGE_AND_CONTINUITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_TEMPO",
+      "explanation": "As fontes permitem separar aspectos diferentes.",
+      "hint": "Analise cada característica.",
+      "errorFocus": "REVIEW_CHANGE_AND_CONTINUITY",
+      "feedback": {
+        "correct": "Boa observação: As fontes permitem separar aspectos diferentes.",
+        "incorrect": "As fontes permitem separar aspectos diferentes.",
+        "hint": "Analise cada característica.",
+        "errorFocus": "REVIEW_CHANGE_AND_CONTINUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-39",
+      "statement": "Uma criança não quer compartilhar uma lembrança. Qual alternativa respeitosa existe?",
+      "prompt": "Uma criança não quer compartilhar uma lembrança. Qual alternativa respeitosa existe?",
+      "options": [
+        "Pressioná-la a contar",
+        "Pedir que colegas investiguem",
+        "Analisar uma lembrança de personagem fictícia.",
+        "Excluí-la da aula"
+      ],
+      "correctAnswer": "Analisar uma lembrança de personagem fictícia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pressioná-la a contar": [
+          "REVIEW_AUTONOMY"
+        ],
+        "Pedir que colegas investiguem": [
+          "REVIEW_AUTONOMY"
+        ],
+        "Excluí-la da aula": [
+          "REVIEW_AUTONOMY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_OPT_OUT",
+      "explanation": "Há alternativas sem exposição pessoal.",
+      "hint": "Ofereça uma escolha segura.",
+      "errorFocus": "REVIEW_AUTONOMY",
+      "feedback": {
+        "correct": "Boa observação: Há alternativas sem exposição pessoal.",
+        "incorrect": "Há alternativas sem exposição pessoal.",
+        "hint": "Ofereça uma escolha segura.",
+        "errorFocus": "REVIEW_AUTONOMY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi07-family-organization-change-and-continuity-40",
+      "statement": "Por que não se deve chamar um arranjo familiar de incompleto?",
+      "prompt": "Por que não se deve chamar um arranjo familiar de incompleto?",
+      "options": [
+        "Porque toda família é igual",
+        "Porque mudanças são impossíveis",
+        "Porque só um arranjo existe",
+        "Porque famílias são diversas e a fonte não autoriza hierarquizar seus vínculos."
+      ],
+      "correctAnswer": "Porque famílias são diversas e a fonte não autoriza hierarquizar seus vínculos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque toda família é igual": [
+          "REVIEW_FAMILY_DIVERSITY"
+        ],
+        "Porque mudanças são impossíveis": [
+          "REVIEW_FAMILY_DIVERSITY"
+        ],
+        "Porque só um arranjo existe": [
+          "REVIEW_FAMILY_DIVERSITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ORGANIZACAO",
+      "explanation": "A diversidade não é uma escala de valor.",
+      "hint": "Lembre-se de respeito e variedade.",
+      "errorFocus": "REVIEW_FAMILY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A diversidade não é uma escala de valor.",
+        "incorrect": "A diversidade não é uma escala de valor.",
+        "hint": "Lembre-se de respeito e variedade.",
+        "errorFocus": "REVIEW_FAMILY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões visuais de antes/depois, leitura em voz alta e descrições de imagens.",
+          "Permitir apontar, ordenar cartões, desenhar ou responder por comunicação alternativa.",
+          "Usar famílias fictícias variadas e permitir que estudantes passem a vez em qualquer pergunta pessoal."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

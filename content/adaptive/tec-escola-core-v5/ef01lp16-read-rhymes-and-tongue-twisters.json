@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01lp16-read-daily-texts-v1",
+  "canonicalSkillCode": "PORTUGUESE_READ_AND_UNDERSTAND_DAILY_LIFE_VERSE_GENRES",
+  "subject": "PORTUGUESE",
+  "domain": "CAMPO DA VIDA COTIDIANA · COMPREENSÃO EM LEITURA",
+  "topic": "leitura compartilhada e compreensão de quadras, quadrinhas, parlendas e trava-línguas autorais",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP16",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 105
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Ler versos para perceber tema, forma e finalidade",
+    "objective": "Compreender textos versificados curtos lidos com apoio, identificar seu tema e situação de circulação e relacionar repetição, ritmo ou rima à finalidade do texto.",
+    "summary": "Quadras, quadrinhas, parlendas e trava-línguas são textos que podem circular em brincadeiras e situações cotidianas. A leitura compartilhada ajuda a observar quem fala, para quem, sobre o quê e com qual finalidade. Rimas, repetições e sons parecidos podem organizar o texto e tornar a recitação ou a brincadeira mais fácil de acompanhar.",
+    "explanation": "Leia um texto curto junto com outra pessoa. Primeiro descubra o assunto: pode ser um objeto, uma brincadeira, um animal inventado ou uma tarefa da turma. Depois procure pistas de como o texto foi organizado: palavras que rimam, versos curtos, repetição de uma expressão ou sons difíceis de dizer depressa. Por fim pergunte para que ele pode servir naquela situação: brincar, recitar, convidar alguém a participar ou lembrar uma sequência. Um texto pode ter mais de uma característica; use pistas do próprio texto e do contexto, sem exigir uma única forma de ler.",
+    "workedExample": "Versos autorais: ‘A bola rola no chão / volta perto do portão’. O assunto é uma bola em movimento. As duas linhas formam um pequeno verso e ‘chão/portão’ têm sons finais parecidos. Numa roda de leitura, esses recursos podem ajudar o grupo a recitar e brincar com o texto.",
+    "commonMistake": "Escolher a finalidade apenas porque o texto rima, sem observar o contexto, o assunto e as outras pistas de organização.",
+    "priorKnowledge": [
+      "Escutar ou acompanhar textos curtos lidos em voz alta.",
+      "Perceber palavras repetidas ou sons finais parecidos com apoio."
+    ],
+    "keyConcepts": [
+      "tema",
+      "situação comunicativa",
+      "finalidade",
+      "verso",
+      "rima",
+      "repetição",
+      "leitura compartilhada"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "RHYME_ALONE_DETERMINES_PURPOSE",
+        "action": "Leia novamente o texto e identifique quem poderia usá-lo e em qual situação antes de escolher a finalidade."
+      },
+      {
+        "errorFocus": "MISS_REPEATED_WORDS",
+        "action": "Marque com fichas cada palavra repetida e diga como essa repetição organiza a recitação ou brincadeira."
+      },
+      {
+        "errorFocus": "THEME_WITHOUT_TEXT_EVIDENCE",
+        "action": "Peça que a criança aponte uma palavra ou ação do texto que ajude a nomear o assunto."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+      "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp16-read-and-map-original-verse",
+        "title": "Mapa do versinho inventado",
+        "instructions": "A dupla recebe um texto curto criado para a atividade e cartões de tema, forma e finalidade.\n1. Acompanhe a leitura feita por um colega ou professor.\n2. Escolha uma palavra que indique o assunto e marque uma repetição ou rima.\n3. Combine os cartões que melhor descrevem a situação e para que o texto pode servir.",
+        "steps": [
+          "Acompanhe a leitura feita por um colega ou professor.",
+          "Escolha uma palavra que indique o assunto e marque uma repetição ou rima.",
+          "Combine os cartões que melhor descrevem a situação e para que o texto pode servir."
+        ],
+        "evidence": "Uma interpretação que aponta pistas do texto e relaciona organização e finalidade com apoio colaborativo.",
+        "privacyGuard": "Usar versos originais, sem solicitar produções autobiográficas ou exposição oral individual obrigatória.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "acompanha a leitura e reconhece uma palavra com apoio.",
+            "developing": "identifica tema ou recurso formal usando uma pista.",
+            "proficient": "relaciona tema, organização e finalidade em uma situação de leitura compartilhada."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp16-create-playful-call-and-response",
+        "title": "Verso de chamada e resposta",
+        "instructions": "O grupo cria duas linhas curtas para convidar colegas a participar de uma brincadeira fictícia.\n1. Definam quem fará o convite e quem poderá responder.\n2. Escolham um tema simples, como formas, cores ou objetos inventados.\n3. Experimentem repetição ou sons finais parecidos e expliquem como ajudam na participação.",
+        "steps": [
+          "Definam quem fará o convite e quem poderá responder.",
+          "Escolham um tema simples, como formas, cores ou objetos inventados.",
+          "Experimentem repetição ou sons finais parecidos e expliquem como ajudam na participação."
+        ],
+        "evidence": "Texto breve com situação comunicativa identificável e explicação de ao menos um recurso de organização.",
+        "privacyGuard": "Tema fictício e participação por diferentes meios; não publicar nomes, vozes ou imagens sem autorização.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "contribui com uma palavra ou ideia.",
+            "developing": "participa da montagem das linhas com apoio.",
+            "proficient": "relaciona o recurso usado à finalidade de convidar ou brincar em grupo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01lp16-read-daily-texts-v1-01",
+          "bncc-ef01lp16-read-daily-texts-v1-02",
+          "bncc-ef01lp16-read-daily-texts-v1-03",
+          "bncc-ef01lp16-read-daily-texts-v1-04",
+          "bncc-ef01lp16-read-daily-texts-v1-05",
+          "bncc-ef01lp16-read-daily-texts-v1-06",
+          "bncc-ef01lp16-read-daily-texts-v1-07",
+          "bncc-ef01lp16-read-daily-texts-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01lp16-read-daily-texts-v1-09",
+          "bncc-ef01lp16-read-daily-texts-v1-10",
+          "bncc-ef01lp16-read-daily-texts-v1-11",
+          "bncc-ef01lp16-read-daily-texts-v1-12",
+          "bncc-ef01lp16-read-daily-texts-v1-13",
+          "bncc-ef01lp16-read-daily-texts-v1-14",
+          "bncc-ef01lp16-read-daily-texts-v1-15",
+          "bncc-ef01lp16-read-daily-texts-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01lp16-read-daily-texts-v1-17",
+          "bncc-ef01lp16-read-daily-texts-v1-18",
+          "bncc-ef01lp16-read-daily-texts-v1-19",
+          "bncc-ef01lp16-read-daily-texts-v1-20",
+          "bncc-ef01lp16-read-daily-texts-v1-21",
+          "bncc-ef01lp16-read-daily-texts-v1-22",
+          "bncc-ef01lp16-read-daily-texts-v1-23",
+          "bncc-ef01lp16-read-daily-texts-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01lp16-read-daily-texts-v1-25",
+          "bncc-ef01lp16-read-daily-texts-v1-26",
+          "bncc-ef01lp16-read-daily-texts-v1-27",
+          "bncc-ef01lp16-read-daily-texts-v1-28",
+          "bncc-ef01lp16-read-daily-texts-v1-29",
+          "bncc-ef01lp16-read-daily-texts-v1-30",
+          "bncc-ef01lp16-read-daily-texts-v1-31",
+          "bncc-ef01lp16-read-daily-texts-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01lp16-read-daily-texts-v1-33",
+          "bncc-ef01lp16-read-daily-texts-v1-34",
+          "bncc-ef01lp16-read-daily-texts-v1-35",
+          "bncc-ef01lp16-read-daily-texts-v1-36",
+          "bncc-ef01lp16-read-daily-texts-v1-37",
+          "bncc-ef01lp16-read-daily-texts-v1-38",
+          "bncc-ef01lp16-read-daily-texts-v1-39",
+          "bncc-ef01lp16-read-daily-texts-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP16",
+        "descriptor": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 105
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-01",
+      "statement": "Leia o verso autoral: ‘A bola rola no chão / volta perto do portão’. Qual é o assunto principal?",
+      "prompt": "Leia o verso autoral: ‘A bola rola no chão / volta perto do portão’. Qual é o assunto principal?",
+      "options": [
+        "Uma bola que rola e volta.",
+        "Uma receita de bolo",
+        "Uma viagem de barco",
+        "Uma lista de tarefas"
+      ],
+      "correctAnswer": "Uma bola que rola e volta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma receita de bolo": [
+          "IDENTIFY_TEXT_THEME"
+        ],
+        "Uma viagem de barco": [
+          "IDENTIFY_TEXT_THEME"
+        ],
+        "Uma lista de tarefas": [
+          "IDENTIFY_TEXT_THEME"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "VERSO_BOLA_ROLA",
+      "explanation": "As palavras ‘bola’, ‘rola’ e ‘volta’ mostram o que acontece no texto.",
+      "hint": "Procure o objeto e a ação.",
+      "errorFocus": "IDENTIFY_TEXT_THEME",
+      "feedback": {
+        "correct": "Boa observação: As palavras ‘bola’, ‘rola’ e ‘volta’ mostram o que acontece no texto.",
+        "incorrect": "As palavras ‘bola’, ‘rola’ e ‘volta’ mostram o que acontece no texto.",
+        "hint": "Procure o objeto e a ação.",
+        "errorFocus": "IDENTIFY_TEXT_THEME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-02",
+      "statement": "Versos inventados: ‘Lua de papel no mural / brilha no desenho do quintal’. O que aparece no texto?",
+      "prompt": "Versos inventados: ‘Lua de papel no mural / brilha no desenho do quintal’. O que aparece no texto?",
+      "options": [
+        "Uma receita de sopa",
+        "Uma lua desenhada num mural.",
+        "Uma instrução para montar uma cadeira",
+        "Uma notícia sobre chuva real"
+      ],
+      "correctAnswer": "Uma lua desenhada num mural.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma receita de sopa": [
+          "THEME_FROM_EXPLICIT_WORDS"
+        ],
+        "Uma instrução para montar uma cadeira": [
+          "THEME_FROM_EXPLICIT_WORDS"
+        ],
+        "Uma notícia sobre chuva real": [
+          "THEME_FROM_EXPLICIT_WORDS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "QUADRINHA_DA_LUA_DE_PAPEL",
+      "explanation": "‘Lua’, ‘papel’ e ‘mural’ ajudam a identificar o assunto imaginado.",
+      "hint": "Aponte uma palavra que aparece nos versos.",
+      "errorFocus": "THEME_FROM_EXPLICIT_WORDS",
+      "feedback": {
+        "correct": "Boa observação: ‘Lua’, ‘papel’ e ‘mural’ ajudam a identificar o assunto imaginado.",
+        "incorrect": "‘Lua’, ‘papel’ e ‘mural’ ajudam a identificar o assunto imaginado.",
+        "hint": "Aponte uma palavra que aparece nos versos.",
+        "errorFocus": "THEME_FROM_EXPLICIT_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-03",
+      "statement": "Texto inventado: ‘Trem de caixa, vai passar / trem de caixa, vai parar’. Qual expressão se repete?",
+      "prompt": "Texto inventado: ‘Trem de caixa, vai passar / trem de caixa, vai parar’. Qual expressão se repete?",
+      "options": [
+        "Vai passar",
+        "Vai parar",
+        "Trem de caixa.",
+        "Caixa de papel"
+      ],
+      "correctAnswer": "Trem de caixa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Vai passar": [
+          "NOTICE_REPEATED_PHRASE"
+        ],
+        "Vai parar": [
+          "NOTICE_REPEATED_PHRASE"
+        ],
+        "Caixa de papel": [
+          "NOTICE_REPEATED_PHRASE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REPETICAO_DO_TREM",
+      "explanation": "A repetição aparece no começo das duas linhas.",
+      "hint": "Compare o começo de cada verso.",
+      "errorFocus": "NOTICE_REPEATED_PHRASE",
+      "feedback": {
+        "correct": "Boa observação: A repetição aparece no começo das duas linhas.",
+        "incorrect": "A repetição aparece no começo das duas linhas.",
+        "hint": "Compare o começo de cada verso.",
+        "errorFocus": "NOTICE_REPEATED_PHRASE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-04",
+      "statement": "Texto autoral: ‘Três traças treinam no trilho’. O que torna a frase divertida de dizer?",
+      "prompt": "Texto autoral: ‘Três traças treinam no trilho’. O que torna a frase divertida de dizer?",
+      "options": [
+        "Todas as palavras têm o mesmo significado",
+        "A frase traz uma lista de compras",
+        "O texto explica uma regra de trânsito",
+        "Vários sons parecidos aparecem próximos."
+      ],
+      "correctAnswer": "Vários sons parecidos aparecem próximos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as palavras têm o mesmo significado": [
+          "SOUND_PATTERN"
+        ],
+        "A frase traz uma lista de compras": [
+          "SOUND_PATTERN"
+        ],
+        "O texto explica uma regra de trânsito": [
+          "SOUND_PATTERN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TRAVA_LINGUA_TRACA",
+      "explanation": "A repetição de sons iniciais pode desafiar a fala e apoiar a brincadeira.",
+      "hint": "Escute os primeiros sons.",
+      "errorFocus": "SOUND_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A repetição de sons iniciais pode desafiar a fala e apoiar a brincadeira.",
+        "incorrect": "A repetição de sons iniciais pode desafiar a fala e apoiar a brincadeira.",
+        "hint": "Escute os primeiros sons.",
+        "errorFocus": "SOUND_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-05",
+      "statement": "Verso inventado para a sala: ‘Quem quiser pode chegar / nossa roda vai começar’. Para que o texto pode servir?",
+      "prompt": "Verso inventado para a sala: ‘Quem quiser pode chegar / nossa roda vai começar’. Para que o texto pode servir?",
+      "options": [
+        "Convidar alguém a participar da roda.",
+        "Explicar como consertar um relógio",
+        "Registrar a temperatura do dia",
+        "Dar uma notícia sobre um jogo encerrado"
+      ],
+      "correctAnswer": "Convidar alguém a participar da roda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Explicar como consertar um relógio": [
+          "SITUATION_AND_PURPOSE"
+        ],
+        "Registrar a temperatura do dia": [
+          "SITUATION_AND_PURPOSE"
+        ],
+        "Dar uma notícia sobre um jogo encerrado": [
+          "SITUATION_AND_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CONVITE_DA_RODA",
+      "explanation": "‘Quem quiser pode chegar’ indica um convite para participar.",
+      "hint": "Observe o que o texto pede ao leitor.",
+      "errorFocus": "SITUATION_AND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: ‘Quem quiser pode chegar’ indica um convite para participar.",
+        "incorrect": "‘Quem quiser pode chegar’ indica um convite para participar.",
+        "hint": "Observe o que o texto pede ao leitor.",
+        "errorFocus": "SITUATION_AND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-06",
+      "statement": "Verso autoral: ‘O gato viu o sapato / e sentou ao lado do prato’. Quais palavras têm sons finais parecidos?",
+      "prompt": "Verso autoral: ‘O gato viu o sapato / e sentou ao lado do prato’. Quais palavras têm sons finais parecidos?",
+      "options": [
+        "Gato e sentou",
+        "Sapato e prato.",
+        "Viu e lado",
+        "O e do"
+      ],
+      "correctAnswer": "Sapato e prato.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Gato e sentou": [
+          "HEAR_END_SOUNDS"
+        ],
+        "Viu e lado": [
+          "HEAR_END_SOUNDS"
+        ],
+        "O e do": [
+          "HEAR_END_SOUNDS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RIMA_GATO_SAPATO",
+      "explanation": "Os finais de ‘sapato’ e ‘prato’ têm sons parecidos.",
+      "hint": "Escute o final das palavras.",
+      "errorFocus": "HEAR_END_SOUNDS",
+      "feedback": {
+        "correct": "Boa observação: Os finais de ‘sapato’ e ‘prato’ têm sons parecidos.",
+        "incorrect": "Os finais de ‘sapato’ e ‘prato’ têm sons parecidos.",
+        "hint": "Escute o final das palavras.",
+        "errorFocus": "HEAR_END_SOUNDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-07",
+      "statement": "Texto criado: ‘Um passo pequeno, dois passos no chão, três passos juntos na mesma canção’. O texto organiza principalmente",
+      "prompt": "Texto criado: ‘Um passo pequeno, dois passos no chão, três passos juntos na mesma canção’. O texto organiza principalmente",
+      "options": [
+        "um aviso de perigo",
+        "uma descrição de um planeta",
+        "uma sequência de passos para recitar.",
+        "uma lista de ingredientes"
+      ],
+      "correctAnswer": "uma sequência de passos para recitar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um aviso de perigo": [
+          "SEQUENCE_IN_VERSE"
+        ],
+        "uma descrição de um planeta": [
+          "SEQUENCE_IN_VERSE"
+        ],
+        "uma lista de ingredientes": [
+          "SEQUENCE_IN_VERSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PARLENDA_DOS_PASSOS",
+      "explanation": "Os números e a ordem dos passos organizam a recitação.",
+      "hint": "Procure as palavras que mostram ordem.",
+      "errorFocus": "SEQUENCE_IN_VERSE",
+      "feedback": {
+        "correct": "Boa observação: Os números e a ordem dos passos organizam a recitação.",
+        "incorrect": "Os números e a ordem dos passos organizam a recitação.",
+        "hint": "Procure as palavras que mostram ordem.",
+        "errorFocus": "SEQUENCE_IN_VERSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-08",
+      "statement": "Por que ler um verso com um colega pode ajudar a compreendê-lo?",
+      "prompt": "Por que ler um verso com um colega pode ajudar a compreendê-lo?",
+      "options": [
+        "Um colega muda todas as palavras",
+        "A leitura dispensa olhar o texto",
+        "Só uma pessoa pode entender versos",
+        "Os leitores podem ouvir, repetir e conversar sobre pistas do texto."
+      ],
+      "correctAnswer": "Os leitores podem ouvir, repetir e conversar sobre pistas do texto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um colega muda todas as palavras": [
+          "COLLABORATIVE_READING_PURPOSE"
+        ],
+        "A leitura dispensa olhar o texto": [
+          "COLLABORATIVE_READING_PURPOSE"
+        ],
+        "Só uma pessoa pode entender versos": [
+          "COLLABORATIVE_READING_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "LEITURA_COM_COLEGA",
+      "explanation": "A colaboração permite compartilhar observações e reler trechos.",
+      "hint": "Pense no que duas pessoas podem observar juntas.",
+      "errorFocus": "COLLABORATIVE_READING_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A colaboração permite compartilhar observações e reler trechos.",
+        "incorrect": "A colaboração permite compartilhar observações e reler trechos.",
+        "hint": "Pense no que duas pessoas podem observar juntas.",
+        "errorFocus": "COLLABORATIVE_READING_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-09",
+      "statement": "Versos inventados: ‘Livro aberto, vem olhar / uma história vai começar’. Em uma roda, qual finalidade combina melhor?",
+      "prompt": "Versos inventados: ‘Livro aberto, vem olhar / uma história vai começar’. Em uma roda, qual finalidade combina melhor?",
+      "options": [
+        "Convidar o grupo a ouvir uma história.",
+        "Ensinar a medir uma parede",
+        "Avisar que a luz acabou",
+        "Listar os nomes de todos os leitores"
+      ],
+      "correctAnswer": "Convidar o grupo a ouvir uma história.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ensinar a medir uma parede": [
+          "PURPOSE_FROM_CONTEXT"
+        ],
+        "Avisar que a luz acabou": [
+          "PURPOSE_FROM_CONTEXT"
+        ],
+        "Listar os nomes de todos os leitores": [
+          "PURPOSE_FROM_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "AVISO_CANTADO_DO_LIVRO",
+      "explanation": "O texto menciona abrir o livro e começar uma história, pistas do convite à leitura.",
+      "hint": "Relacione as palavras à situação da roda.",
+      "errorFocus": "PURPOSE_FROM_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O texto menciona abrir o livro e começar uma história, pistas do convite à leitura.",
+        "incorrect": "O texto menciona abrir o livro e começar uma história, pistas do convite à leitura.",
+        "hint": "Relacione as palavras à situação da roda.",
+        "errorFocus": "PURPOSE_FROM_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-10",
+      "statement": "Leia: ‘Vento leve no varal / faz dançar o lençol azul’. Qual ideia aparece?",
+      "prompt": "Leia: ‘Vento leve no varal / faz dançar o lençol azul’. Qual ideia aparece?",
+      "options": [
+        "O lençol cria o vento",
+        "O vento movimenta o lençol na cena.",
+        "O texto descreve uma conta de somar",
+        "A cena acontece dentro do mar"
+      ],
+      "correctAnswer": "O vento movimenta o lençol na cena.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O lençol cria o vento": [
+          "UNDERSTAND_ACTION_IN_VERSE"
+        ],
+        "O texto descreve uma conta de somar": [
+          "UNDERSTAND_ACTION_IN_VERSE"
+        ],
+        "A cena acontece dentro do mar": [
+          "UNDERSTAND_ACTION_IN_VERSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "VERSOS_DO_VENTO_DE_BRINCADEIRA",
+      "explanation": "A ação ‘faz dançar’ liga vento e movimento do lençol.",
+      "hint": "Observe quem faz o quê.",
+      "errorFocus": "UNDERSTAND_ACTION_IN_VERSE",
+      "feedback": {
+        "correct": "Boa observação: A ação ‘faz dançar’ liga vento e movimento do lençol.",
+        "incorrect": "A ação ‘faz dançar’ liga vento e movimento do lençol.",
+        "hint": "Observe quem faz o quê.",
+        "errorFocus": "UNDERSTAND_ACTION_IN_VERSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-11",
+      "statement": "Versos originais: ‘O pato calçou sapato / e passeou pelo mato’. Qual par tem finais parecidos?",
+      "prompt": "Versos originais: ‘O pato calçou sapato / e passeou pelo mato’. Qual par tem finais parecidos?",
+      "options": [
+        "Pato e passeou",
+        "Calçou e pelo",
+        "Sapato e mato.",
+        "O e e"
+      ],
+      "correctAnswer": "Sapato e mato.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pato e passeou": [
+          "RHYME_AS_ORGANIZATION_CUE"
+        ],
+        "Calçou e pelo": [
+          "RHYME_AS_ORGANIZATION_CUE"
+        ],
+        "O e e": [
+          "RHYME_AS_ORGANIZATION_CUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RIMA_PATO_SAPATO",
+      "explanation": "A semelhança sonora no final organiza a brincadeira verbal.",
+      "hint": "Diga as duas palavras devagar.",
+      "errorFocus": "RHYME_AS_ORGANIZATION_CUE",
+      "feedback": {
+        "correct": "Boa observação: A semelhança sonora no final organiza a brincadeira verbal.",
+        "incorrect": "A semelhança sonora no final organiza a brincadeira verbal.",
+        "hint": "Diga as duas palavras devagar.",
+        "errorFocus": "RHYME_AS_ORGANIZATION_CUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-12",
+      "statement": "Texto criado: ‘Círculo gira, quadrado espera / triângulo aponta para a primavera’. Qual tema aparece?",
+      "prompt": "Texto criado: ‘Círculo gira, quadrado espera / triângulo aponta para a primavera’. Qual tema aparece?",
+      "options": [
+        "Como fazer uma sopa",
+        "Uma regra para atravessar a rua",
+        "Um relato real de uma viagem",
+        "Formas geométricas em uma cena de brincadeira."
+      ],
+      "correctAnswer": "Formas geométricas em uma cena de brincadeira.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como fazer uma sopa": [
+          "THEME_AND_FICTION"
+        ],
+        "Uma regra para atravessar a rua": [
+          "THEME_AND_FICTION"
+        ],
+        "Um relato real de uma viagem": [
+          "THEME_AND_FICTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PARLENDA_DAS_FORMAS",
+      "explanation": "As formas são personagens numa situação inventada; não é uma instrução de trânsito ou receita.",
+      "hint": "Nomeie o que os versos apresentam.",
+      "errorFocus": "THEME_AND_FICTION",
+      "feedback": {
+        "correct": "Boa observação: As formas são personagens numa situação inventada; não é uma instrução de trânsito ou receita.",
+        "incorrect": "As formas são personagens numa situação inventada; não é uma instrução de trânsito ou receita.",
+        "hint": "Nomeie o que os versos apresentam.",
+        "errorFocus": "THEME_AND_FICTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-13",
+      "statement": "Texto autoral: ‘Bruno brinca com blocos brancos’. Qual recurso pode dificultar a fala rápida?",
+      "prompt": "Texto autoral: ‘Bruno brinca com blocos brancos’. Qual recurso pode dificultar a fala rápida?",
+      "options": [
+        "A repetição de sons de ‘b’ próximos.",
+        "A presença de números em ordem",
+        "A descrição de um lugar distante",
+        "A ausência de qualquer som parecido"
+      ],
+      "correctAnswer": "A repetição de sons de ‘b’ próximos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A presença de números em ordem": [
+          "TRICKY_SOUND_SEQUENCE"
+        ],
+        "A descrição de um lugar distante": [
+          "TRICKY_SOUND_SEQUENCE"
+        ],
+        "A ausência de qualquer som parecido": [
+          "TRICKY_SOUND_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TRAVA_LINGUA_BLOCO_BRANCO",
+      "explanation": "A proximidade dos sons iniciais parecidos torna o trava-língua desafiador.",
+      "hint": "Perceba o som que volta no começo.",
+      "errorFocus": "TRICKY_SOUND_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A proximidade dos sons iniciais parecidos torna o trava-língua desafiador.",
+        "incorrect": "A proximidade dos sons iniciais parecidos torna o trava-língua desafiador.",
+        "hint": "Perceba o som que volta no começo.",
+        "errorFocus": "TRICKY_SOUND_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-14",
+      "statement": "Texto A: ‘Venha brincar no pátio’. Texto B: ‘A bola quica no chão’. Qual diferença é mais clara?",
+      "prompt": "Texto A: ‘Venha brincar no pátio’. Texto B: ‘A bola quica no chão’. Qual diferença é mais clara?",
+      "options": [
+        "Os dois são receitas",
+        "O primeiro convida; o segundo descreve uma ação.",
+        "O primeiro descreve chuva e o segundo dá uma ordem",
+        "Nenhum tem assunto"
+      ],
+      "correctAnswer": "O primeiro convida; o segundo descreve uma ação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os dois são receitas": [
+          "SITUATION_CHANGES_PURPOSE"
+        ],
+        "O primeiro descreve chuva e o segundo dá uma ordem": [
+          "SITUATION_CHANGES_PURPOSE"
+        ],
+        "Nenhum tem assunto": [
+          "SITUATION_CHANGES_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FINALIDADES",
+      "explanation": "As palavras de convite e de descrição sustentam finalidades diferentes.",
+      "hint": "Observe se o texto chama alguém ou conta algo.",
+      "errorFocus": "SITUATION_CHANGES_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: As palavras de convite e de descrição sustentam finalidades diferentes.",
+        "incorrect": "As palavras de convite e de descrição sustentam finalidades diferentes.",
+        "hint": "Observe se o texto chama alguém ou conta algo.",
+        "errorFocus": "SITUATION_CHANGES_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-15",
+      "statement": "Verso criado: ‘Sino toca, sino toca, hora de guardar’. Como a repetição pode ajudar?",
+      "prompt": "Verso criado: ‘Sino toca, sino toca, hora de guardar’. Como a repetição pode ajudar?",
+      "options": [
+        "Ela transforma o verso em mapa",
+        "Ela apaga o assunto",
+        "Ela marca um ritmo e reforça o aviso na brincadeira.",
+        "Ela prova que um sino tocou de verdade"
+      ],
+      "correctAnswer": "Ela marca um ritmo e reforça o aviso na brincadeira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela transforma o verso em mapa": [
+          "FORM_SUPPORTS_FUNCTION"
+        ],
+        "Ela apaga o assunto": [
+          "FORM_SUPPORTS_FUNCTION"
+        ],
+        "Ela prova que um sino tocou de verdade": [
+          "FORM_SUPPORTS_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REPETICAO_DO_SINO",
+      "explanation": "A repetição organiza a recitação e destaca a mensagem no contexto fictício.",
+      "hint": "Pergunte o que a repetição enfatiza.",
+      "errorFocus": "FORM_SUPPORTS_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A repetição organiza a recitação e destaca a mensagem no contexto fictício.",
+        "incorrect": "A repetição organiza a recitação e destaca a mensagem no contexto fictício.",
+        "hint": "Pergunte o que a repetição enfatiza.",
+        "errorFocus": "FORM_SUPPORTS_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-16",
+      "statement": "A turma quer começar uma brincadeira de roda. Qual verso combina com esse momento?",
+      "prompt": "A turma quer começar uma brincadeira de roda. Qual verso combina com esse momento?",
+      "options": [
+        "‘Misture farinha e água na tigela’",
+        "‘A janela tem dois parafusos’",
+        "‘Ontem a rua ficou silenciosa’",
+        "‘Dê as mãos, vamos girar; quando parar, vamos contar.’"
+      ],
+      "correctAnswer": "‘Dê as mãos, vamos girar; quando parar, vamos contar.’",
+      "answerPosition": "D",
+      "misconceptions": {
+        "‘Misture farinha e água na tigela’": [
+          "GENRE_AND_COMMUNICATIVE_SITUATION"
+        ],
+        "‘A janela tem dois parafusos’": [
+          "GENRE_AND_COMMUNICATIVE_SITUATION"
+        ],
+        "‘Ontem a rua ficou silenciosa’": [
+          "GENRE_AND_COMMUNICATIVE_SITUATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCOLHER_TEXTO_PARA_BRINCAR",
+      "explanation": "O verso chama o grupo para uma ação coletiva, adequada à roda.",
+      "hint": "Escolha o texto que convida a participar.",
+      "errorFocus": "GENRE_AND_COMMUNICATIVE_SITUATION",
+      "feedback": {
+        "correct": "Boa observação: O verso chama o grupo para uma ação coletiva, adequada à roda.",
+        "incorrect": "O verso chama o grupo para uma ação coletiva, adequada à roda.",
+        "hint": "Escolha o texto que convida a participar.",
+        "errorFocus": "GENRE_AND_COMMUNICATIVE_SITUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-17",
+      "statement": "Um grupo quer recitar um texto com duas linhas e palavras finais parecidas. Qual apresentação ajuda a perceber a organização?",
+      "prompt": "Um grupo quer recitar um texto com duas linhas e palavras finais parecidas. Qual apresentação ajuda a perceber a organização?",
+      "options": [
+        "Separar as linhas e destacar os sons finais durante a leitura compartilhada.",
+        "Juntar todas as palavras sem espaço",
+        "Apagar uma linha antes de ler",
+        "Trocar o tema sem conversar"
+      ],
+      "correctAnswer": "Separar as linhas e destacar os sons finais durante a leitura compartilhada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Juntar todas as palavras sem espaço": [
+          "LAYOUT_SUPPORTS_READING"
+        ],
+        "Apagar uma linha antes de ler": [
+          "LAYOUT_SUPPORTS_READING"
+        ],
+        "Trocar o tema sem conversar": [
+          "LAYOUT_SUPPORTS_READING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CRIAR_LEGENDA_DE_RECITACAO",
+      "explanation": "A organização visual das linhas ajuda leitores a acompanhar versos e rimas.",
+      "hint": "Pense em como mostrar cada linha.",
+      "errorFocus": "LAYOUT_SUPPORTS_READING",
+      "feedback": {
+        "correct": "Boa observação: A organização visual das linhas ajuda leitores a acompanhar versos e rimas.",
+        "incorrect": "A organização visual das linhas ajuda leitores a acompanhar versos e rimas.",
+        "hint": "Pense em como mostrar cada linha.",
+        "errorFocus": "LAYOUT_SUPPORTS_READING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-18",
+      "statement": "Versos autorais: ‘Barquinho de papel / dorme no lago azul’. O que podemos compreender sem inventar uma viagem real?",
+      "prompt": "Versos autorais: ‘Barquinho de papel / dorme no lago azul’. O que podemos compreender sem inventar uma viagem real?",
+      "options": [
+        "Um barco real atravessou o oceano",
+        "O texto imagina um barquinho de papel no lago.",
+        "O texto informa a previsão do tempo",
+        "Uma pessoa precisa comprar um barco"
+      ],
+      "correctAnswer": "O texto imagina um barquinho de papel no lago.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um barco real atravessou o oceano": [
+          "FICTIONAL_IMAGE_SCOPE"
+        ],
+        "O texto informa a previsão do tempo": [
+          "FICTIONAL_IMAGE_SCOPE"
+        ],
+        "Uma pessoa precisa comprar um barco": [
+          "FICTIONAL_IMAGE_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "QUADRINHA_DO_BARQUINHO_DE_PAPEL",
+      "explanation": "As palavras compõem uma imagem poética; não relatam necessariamente um fato.",
+      "hint": "Use as pistas do texto e evite acrescentar fatos.",
+      "errorFocus": "FICTIONAL_IMAGE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: As palavras compõem uma imagem poética; não relatam necessariamente um fato.",
+        "incorrect": "As palavras compõem uma imagem poética; não relatam necessariamente um fato.",
+        "hint": "Use as pistas do texto e evite acrescentar fatos.",
+        "errorFocus": "FICTIONAL_IMAGE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-19",
+      "statement": "Um recado da turma diz: ‘Amanhã traga o caderno / para desenhar no inverno’. O que ajuda a identificar a situação?",
+      "prompt": "Um recado da turma diz: ‘Amanhã traga o caderno / para desenhar no inverno’. O que ajuda a identificar a situação?",
+      "options": [
+        "Ele ensina a cozinhar",
+        "Ele dá o resultado de um exame",
+        "O texto menciona uma ação combinada para amanhã.",
+        "Ele apresenta uma regra de jogo completa"
+      ],
+      "correctAnswer": "O texto menciona uma ação combinada para amanhã.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ele ensina a cozinhar": [
+          "COMMUNICATIVE_CONTEXT"
+        ],
+        "Ele dá o resultado de um exame": [
+          "COMMUNICATIVE_CONTEXT"
+        ],
+        "Ele apresenta uma regra de jogo completa": [
+          "COMMUNICATIVE_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RECADO_EM_VERSO",
+      "explanation": "A referência a amanhã e ao caderno sugere um recado para orientar uma atividade.",
+      "hint": "Procure as palavras que indicam quando e o que fazer.",
+      "errorFocus": "COMMUNICATIVE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A referência a amanhã e ao caderno sugere um recado para orientar uma atividade.",
+        "incorrect": "A referência a amanhã e ao caderno sugere um recado para orientar uma atividade.",
+        "hint": "Procure as palavras que indicam quando e o que fazer.",
+        "errorFocus": "COMMUNICATIVE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-20",
+      "statement": "Texto criado: ‘Uma estrela a piscar / duas nuvens a passar / três amigos a acenar’. Como a forma organiza o texto?",
+      "prompt": "Texto criado: ‘Uma estrela a piscar / duas nuvens a passar / três amigos a acenar’. Como a forma organiza o texto?",
+      "options": [
+        "As palavras estão em ordem alfabética",
+        "O texto é uma lista de preços",
+        "A sequência descreve instruções de montagem",
+        "A contagem crescente organiza as imagens em sequência."
+      ],
+      "correctAnswer": "A contagem crescente organiza as imagens em sequência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "As palavras estão em ordem alfabética": [
+          "COUNTING_SEQUENCE_FORM"
+        ],
+        "O texto é uma lista de preços": [
+          "COUNTING_SEQUENCE_FORM"
+        ],
+        "A sequência descreve instruções de montagem": [
+          "COUNTING_SEQUENCE_FORM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PARLENDA_COM_NUMEROS",
+      "explanation": "Os números um, dois e três marcam a progressão entre os versos.",
+      "hint": "Veja o que muda de um verso para o outro.",
+      "errorFocus": "COUNTING_SEQUENCE_FORM",
+      "feedback": {
+        "correct": "Boa observação: Os números um, dois e três marcam a progressão entre os versos.",
+        "incorrect": "Os números um, dois e três marcam a progressão entre os versos.",
+        "hint": "Veja o que muda de um verso para o outro.",
+        "errorFocus": "COUNTING_SEQUENCE_FORM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-21",
+      "statement": "Texto inventado: ‘Tito toca tambor, tatu tapa o tambor’. Qual é o tema mais próximo?",
+      "prompt": "Texto inventado: ‘Tito toca tambor, tatu tapa o tambor’. Qual é o tema mais próximo?",
+      "options": [
+        "Uma brincadeira com sons e personagens inventados.",
+        "Uma reportagem sobre instrumento real",
+        "Um aviso de vacinação",
+        "Uma receita de pão"
+      ],
+      "correctAnswer": "Uma brincadeira com sons e personagens inventados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma reportagem sobre instrumento real": [
+          "GENRE_SIGNAL_AND_THEME"
+        ],
+        "Um aviso de vacinação": [
+          "GENRE_SIGNAL_AND_THEME"
+        ],
+        "Uma receita de pão": [
+          "GENRE_SIGNAL_AND_THEME"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TRAVA_LINGUA_TITO_TATU",
+      "explanation": "Os sons repetidos e a situação fantasiosa sugerem jogo verbal.",
+      "hint": "Observe os sons parecidos e os personagens.",
+      "errorFocus": "GENRE_SIGNAL_AND_THEME",
+      "feedback": {
+        "correct": "Boa observação: Os sons repetidos e a situação fantasiosa sugerem jogo verbal.",
+        "incorrect": "Os sons repetidos e a situação fantasiosa sugerem jogo verbal.",
+        "hint": "Observe os sons parecidos e os personagens.",
+        "errorFocus": "GENRE_SIGNAL_AND_THEME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-22",
+      "statement": "Texto A repete ‘vem brincar’; texto B termina duas linhas com sons parecidos. O que ambos podem fazer?",
+      "prompt": "Texto A repete ‘vem brincar’; texto B termina duas linhas com sons parecidos. O que ambos podem fazer?",
+      "options": [
+        "Garantir que os fatos aconteceram",
+        "Ajudar a organizar uma recitação ou brincadeira verbal.",
+        "Substituir toda conversa",
+        "Definir uma única interpretação possível"
+      ],
+      "correctAnswer": "Ajudar a organizar uma recitação ou brincadeira verbal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Garantir que os fatos aconteceram": [
+          "FORM_FEATURES_SUPPORT_READING"
+        ],
+        "Substituir toda conversa": [
+          "FORM_FEATURES_SUPPORT_READING"
+        ],
+        "Definir uma única interpretação possível": [
+          "FORM_FEATURES_SUPPORT_READING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RIMA_E_REPETICAO",
+      "explanation": "Repetição e rima são pistas de organização, sem provar um acontecimento real.",
+      "hint": "Pense em como o texto soa ao ser lido.",
+      "errorFocus": "FORM_FEATURES_SUPPORT_READING",
+      "feedback": {
+        "correct": "Boa observação: Repetição e rima são pistas de organização, sem provar um acontecimento real.",
+        "incorrect": "Repetição e rima são pistas de organização, sem provar um acontecimento real.",
+        "hint": "Pense em como o texto soa ao ser lido.",
+        "errorFocus": "FORM_FEATURES_SUPPORT_READING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-23",
+      "statement": "Qual texto original pode ser usado para convidar colegas a ouvir uma história?",
+      "prompt": "Qual texto original pode ser usado para convidar colegas a ouvir uma história?",
+      "options": [
+        "‘A pedra pesa mais que o papel’",
+        "‘O lápis tem ponta azul’",
+        "‘Chegue perto, venha escutar; uma história vai começar.’",
+        "‘A chuva molhou a rua ontem’"
+      ],
+      "correctAnswer": "‘Chegue perto, venha escutar; uma história vai começar.’",
+      "answerPosition": "C",
+      "misconceptions": {
+        "‘A pedra pesa mais que o papel’": [
+          "PURPOSE_MATCH"
+        ],
+        "‘O lápis tem ponta azul’": [
+          "PURPOSE_MATCH"
+        ],
+        "‘A chuva molhou a rua ontem’": [
+          "PURPOSE_MATCH"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SELECIONAR_TEXTO_PARA_CONVITE",
+      "explanation": "O primeiro verso chama o leitor para ouvir; os demais apenas descrevem.",
+      "hint": "Escolha a opção que fala diretamente ao grupo.",
+      "errorFocus": "PURPOSE_MATCH",
+      "feedback": {
+        "correct": "Boa observação: O primeiro verso chama o leitor para ouvir; os demais apenas descrevem.",
+        "incorrect": "O primeiro verso chama o leitor para ouvir; os demais apenas descrevem.",
+        "hint": "Escolha a opção que fala diretamente ao grupo.",
+        "errorFocus": "PURPOSE_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-24",
+      "statement": "Uma criança acompanha a leitura apontando cada linha enquanto o professor lê. Como isso pode ajudar?",
+      "prompt": "Uma criança acompanha a leitura apontando cada linha enquanto o professor lê. Como isso pode ajudar?",
+      "options": [
+        "O apontamento muda a finalidade do verso",
+        "A leitura em voz alta impede compreensão",
+        "Só quem lê sozinho pode participar",
+        "A criança pode relacionar o que ouve à organização visível do texto."
+      ],
+      "correctAnswer": "A criança pode relacionar o que ouve à organização visível do texto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O apontamento muda a finalidade do verso": [
+          "ACCESSIBLE_SHARED_READING"
+        ],
+        "A leitura em voz alta impede compreensão": [
+          "ACCESSIBLE_SHARED_READING"
+        ],
+        "Só quem lê sozinho pode participar": [
+          "ACCESSIBLE_SHARED_READING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LEITURA_COM_APOIO",
+      "explanation": "A leitura compartilhada admite diferentes maneiras de acompanhar e compreender.",
+      "hint": "Relacione ouvir e seguir as linhas.",
+      "errorFocus": "ACCESSIBLE_SHARED_READING",
+      "feedback": {
+        "correct": "Boa observação: A leitura compartilhada admite diferentes maneiras de acompanhar e compreender.",
+        "incorrect": "A leitura compartilhada admite diferentes maneiras de acompanhar e compreender.",
+        "hint": "Relacione ouvir e seguir as linhas.",
+        "errorFocus": "ACCESSIBLE_SHARED_READING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-25",
+      "statement": "Texto autoral: ‘Pipa colorida no céu / dança pertinho do véu’. Qual palavra ajuda mais a descobrir o tema?",
+      "prompt": "Texto autoral: ‘Pipa colorida no céu / dança pertinho do véu’. Qual palavra ajuda mais a descobrir o tema?",
+      "options": [
+        "Pipa.",
+        "Perto",
+        "Do",
+        "O"
+      ],
+      "correctAnswer": "Pipa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Perto": [
+          "LOCATE_THEME_WORD"
+        ],
+        "Do": [
+          "LOCATE_THEME_WORD"
+        ],
+        "O": [
+          "LOCATE_THEME_WORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TEMA_DA_PIPA",
+      "explanation": "‘Pipa’ nomeia o elemento principal da cena.",
+      "hint": "Procure o substantivo que aparece no começo.",
+      "errorFocus": "LOCATE_THEME_WORD",
+      "feedback": {
+        "correct": "Boa observação: ‘Pipa’ nomeia o elemento principal da cena.",
+        "incorrect": "‘Pipa’ nomeia o elemento principal da cena.",
+        "hint": "Procure o substantivo que aparece no começo.",
+        "errorFocus": "LOCATE_THEME_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-26",
+      "statement": "Para que um trava-língua curto pode ser usado numa atividade de leitura?",
+      "prompt": "Para que um trava-língua curto pode ser usado numa atividade de leitura?",
+      "options": [
+        "Medir a altura de uma árvore",
+        "Brincar de repetir sons e observar como as palavras se organizam.",
+        "Enviar uma encomenda",
+        "Registrar a presença em sala"
+      ],
+      "correctAnswer": "Brincar de repetir sons e observar como as palavras se organizam.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Medir a altura de uma árvore": [
+          "TRICKY_TEXT_FUNCTION"
+        ],
+        "Enviar uma encomenda": [
+          "TRICKY_TEXT_FUNCTION"
+        ],
+        "Registrar a presença em sala": [
+          "TRICKY_TEXT_FUNCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FINALIDADE_DE_TRAVA_LINGUA",
+      "explanation": "O desafio sonoro é uma pista da finalidade lúdica do gênero.",
+      "hint": "Pense no efeito dos sons repetidos.",
+      "errorFocus": "TRICKY_TEXT_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: O desafio sonoro é uma pista da finalidade lúdica do gênero.",
+        "incorrect": "O desafio sonoro é uma pista da finalidade lúdica do gênero.",
+        "hint": "Pense no efeito dos sons repetidos.",
+        "errorFocus": "TRICKY_TEXT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-27",
+      "statement": "Versos inventados: ‘Gato quieto no telhado / vê o céu todo estrelado’. O que o texto apresenta?",
+      "prompt": "Versos inventados: ‘Gato quieto no telhado / vê o céu todo estrelado’. O que o texto apresenta?",
+      "options": [
+        "Uma ordem para subir no telhado",
+        "Uma notícia comprovada sobre um gato",
+        "Uma cena imaginada com um gato olhando o céu.",
+        "Uma tabela de temperaturas"
+      ],
+      "correctAnswer": "Uma cena imaginada com um gato olhando o céu.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma ordem para subir no telhado": [
+          "DESCRIBE_SCENE_NOT_COMMAND"
+        ],
+        "Uma notícia comprovada sobre um gato": [
+          "DESCRIBE_SCENE_NOT_COMMAND"
+        ],
+        "Uma tabela de temperaturas": [
+          "DESCRIBE_SCENE_NOT_COMMAND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "VERSO_DO_GATO_SILENCIOSO",
+      "explanation": "As linhas descrevem uma cena, não orientam o leitor a subir.",
+      "hint": "Observe se há um convite, ordem ou descrição.",
+      "errorFocus": "DESCRIBE_SCENE_NOT_COMMAND",
+      "feedback": {
+        "correct": "Boa observação: As linhas descrevem uma cena, não orientam o leitor a subir.",
+        "incorrect": "As linhas descrevem uma cena, não orientam o leitor a subir.",
+        "hint": "Observe se há um convite, ordem ou descrição.",
+        "errorFocus": "DESCRIBE_SCENE_NOT_COMMAND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-28",
+      "statement": "Em uma quadrinha, duas palavras finais têm sons parecidos. Como isso pode ajudar o leitor?",
+      "prompt": "Em uma quadrinha, duas palavras finais têm sons parecidos. Como isso pode ajudar o leitor?",
+      "options": [
+        "Mostra automaticamente quem escreveu",
+        "Faz o texto virar receita",
+        "Prova que a história é verdadeira",
+        "Pode criar ritmo e tornar a recitação mais fácil de acompanhar."
+      ],
+      "correctAnswer": "Pode criar ritmo e tornar a recitação mais fácil de acompanhar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mostra automaticamente quem escreveu": [
+          "RHYME_FUNCTION"
+        ],
+        "Faz o texto virar receita": [
+          "RHYME_FUNCTION"
+        ],
+        "Prova que a história é verdadeira": [
+          "RHYME_FUNCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RIMA_AJUDA_A_RECITAR",
+      "explanation": "A semelhança sonora pode apoiar o ritmo, sem definir autoria ou verdade.",
+      "hint": "Pense no som ao ler em voz alta.",
+      "errorFocus": "RHYME_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A semelhança sonora pode apoiar o ritmo, sem definir autoria ou verdade.",
+        "incorrect": "A semelhança sonora pode apoiar o ritmo, sem definir autoria ou verdade.",
+        "hint": "Pense no som ao ler em voz alta.",
+        "errorFocus": "RHYME_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-29",
+      "statement": "Um cartaz diz ‘Feche a torneira ao sair’; uma quadrinha brinca com sons da água. Qual diferença pode haver?",
+      "prompt": "Um cartaz diz ‘Feche a torneira ao sair’; uma quadrinha brinca com sons da água. Qual diferença pode haver?",
+      "options": [
+        "O cartaz orienta uma ação; a quadrinha pode brincar com o tema e os sons.",
+        "Os dois sempre têm a mesma finalidade",
+        "A quadrinha não pode falar de água",
+        "O cartaz é necessariamente uma parlenda"
+      ],
+      "correctAnswer": "O cartaz orienta uma ação; a quadrinha pode brincar com o tema e os sons.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os dois sempre têm a mesma finalidade": [
+          "GENRE_AND_PURPOSE_COMPARISON"
+        ],
+        "A quadrinha não pode falar de água": [
+          "GENRE_AND_PURPOSE_COMPARISON"
+        ],
+        "O cartaz é necessariamente uma parlenda": [
+          "GENRE_AND_PURPOSE_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AVISO_E_QUADRINHA",
+      "explanation": "Tema semelhante não torna iguais a forma e a finalidade dos textos.",
+      "hint": "Compare o que cada texto pede ou faz.",
+      "errorFocus": "GENRE_AND_PURPOSE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Tema semelhante não torna iguais a forma e a finalidade dos textos.",
+        "incorrect": "Tema semelhante não torna iguais a forma e a finalidade dos textos.",
+        "hint": "Compare o que cada texto pede ou faz.",
+        "errorFocus": "GENRE_AND_PURPOSE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-30",
+      "statement": "Uma dupla quer acompanhar versos impressos com letras grandes e leitura pausada. Isso pode",
+      "prompt": "Uma dupla quer acompanhar versos impressos com letras grandes e leitura pausada. Isso pode",
+      "options": [
+        "mudar obrigatoriamente o assunto",
+        "facilitar o acompanhamento colaborativo do texto.",
+        "impedir que a dupla observe rimas",
+        "transformar o verso em notícia"
+      ],
+      "correctAnswer": "facilitar o acompanhamento colaborativo do texto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "mudar obrigatoriamente o assunto": [
+          "ACCESS_SUPPORT_PURPOSE"
+        ],
+        "impedir que a dupla observe rimas": [
+          "ACCESS_SUPPORT_PURPOSE"
+        ],
+        "transformar o verso em notícia": [
+          "ACCESS_SUPPORT_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LER_COM_TEXTO_AMPLIADO",
+      "explanation": "Ajustes de acesso apoiam a leitura sem alterar o tema do texto.",
+      "hint": "Pense no objetivo do apoio.",
+      "errorFocus": "ACCESS_SUPPORT_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Ajustes de acesso apoiam a leitura sem alterar o tema do texto.",
+        "incorrect": "Ajustes de acesso apoiam a leitura sem alterar o tema do texto.",
+        "hint": "Pense no objetivo do apoio.",
+        "errorFocus": "ACCESS_SUPPORT_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-31",
+      "statement": "Uma parlenda original é lida antes de uma brincadeira de contagem. Qual pista mostra a situação comunicativa?",
+      "prompt": "Uma parlenda original é lida antes de uma brincadeira de contagem. Qual pista mostra a situação comunicativa?",
+      "options": [
+        "A cor do papel",
+        "O tamanho da sala",
+        "Ela é apresentada ao grupo antes da brincadeira.",
+        "O nome do ilustrador"
+      ],
+      "correctAnswer": "Ela é apresentada ao grupo antes da brincadeira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do papel": [
+          "CONTEXT_CLUE"
+        ],
+        "O tamanho da sala": [
+          "CONTEXT_CLUE"
+        ],
+        "O nome do ilustrador": [
+          "CONTEXT_CLUE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SITUACAO_DE_PARLENDA",
+      "explanation": "O momento de leitura ajuda a entender por que o texto foi escolhido.",
+      "hint": "Considere quando e com quem ele é lido.",
+      "errorFocus": "CONTEXT_CLUE",
+      "feedback": {
+        "correct": "Boa observação: O momento de leitura ajuda a entender por que o texto foi escolhido.",
+        "incorrect": "O momento de leitura ajuda a entender por que o texto foi escolhido.",
+        "hint": "Considere quando e com quem ele é lido.",
+        "errorFocus": "CONTEXT_CLUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-32",
+      "statement": "Quais três aspectos ajudam a compreender um verso cotidiano?",
+      "prompt": "Quais três aspectos ajudam a compreender um verso cotidiano?",
+      "options": [
+        "Somente a cor da página",
+        "A idade de quem lê, sem olhar o texto",
+        "O número de letras de uma palavra",
+        "Tema, organização do texto e situação/finalidade."
+      ],
+      "correctAnswer": "Tema, organização do texto e situação/finalidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente a cor da página": [
+          "RECALL_COMPREHENSION_FRAME"
+        ],
+        "A idade de quem lê, sem olhar o texto": [
+          "RECALL_COMPREHENSION_FRAME"
+        ],
+        "O número de letras de uma palavra": [
+          "RECALL_COMPREHENSION_FRAME"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TRIO_TEMA_FORMA_FINALIDADE",
+      "explanation": "Tema, forma e contexto se complementam na compreensão.",
+      "hint": "Lembre-se do assunto, das pistas e do uso.",
+      "errorFocus": "RECALL_COMPREHENSION_FRAME",
+      "feedback": {
+        "correct": "Boa observação: Tema, forma e contexto se complementam na compreensão.",
+        "incorrect": "Tema, forma e contexto se complementam na compreensão.",
+        "hint": "Lembre-se do assunto, das pistas e do uso.",
+        "errorFocus": "RECALL_COMPREHENSION_FRAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-33",
+      "statement": "Versos inventados: ‘Venha ouvir, pode chegar / uma história vai começar’. Qual é a finalidade provável?",
+      "prompt": "Versos inventados: ‘Venha ouvir, pode chegar / uma história vai começar’. Qual é a finalidade provável?",
+      "options": [
+        "Convidar o grupo a ouvir uma história.",
+        "Ensinar a apagar um desenho",
+        "Informar uma temperatura medida",
+        "Descrever uma receita"
+      ],
+      "correctAnswer": "Convidar o grupo a ouvir uma história.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ensinar a apagar um desenho": [
+          "REVIEW_PURPOSE"
+        ],
+        "Informar uma temperatura medida": [
+          "REVIEW_PURPOSE"
+        ],
+        "Descrever uma receita": [
+          "REVIEW_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DO_CONVITE",
+      "explanation": "As expressões ‘venha’ e ‘pode chegar’ chamam o leitor.",
+      "hint": "Observe os verbos dirigidos ao grupo.",
+      "errorFocus": "REVIEW_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: As expressões ‘venha’ e ‘pode chegar’ chamam o leitor.",
+        "incorrect": "As expressões ‘venha’ e ‘pode chegar’ chamam o leitor.",
+        "hint": "Observe os verbos dirigidos ao grupo.",
+        "errorFocus": "REVIEW_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-34",
+      "statement": "No verso ‘O botão caiu no chão’, quais palavras têm som final parecido?",
+      "prompt": "No verso ‘O botão caiu no chão’, quais palavras têm som final parecido?",
+      "options": [
+        "O e caiu",
+        "Botão e chão.",
+        "Caiu e no",
+        "No e o"
+      ],
+      "correctAnswer": "Botão e chão.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O e caiu": [
+          "REVIEW_RHYME"
+        ],
+        "Caiu e no": [
+          "REVIEW_RHYME"
+        ],
+        "No e o": [
+          "REVIEW_RHYME"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DA_RIMA",
+      "explanation": "A semelhança aparece nos sons finais das palavras.",
+      "hint": "Diga as palavras em voz alta.",
+      "errorFocus": "REVIEW_RHYME",
+      "feedback": {
+        "correct": "Boa observação: A semelhança aparece nos sons finais das palavras.",
+        "incorrect": "A semelhança aparece nos sons finais das palavras.",
+        "hint": "Diga as palavras em voz alta.",
+        "errorFocus": "REVIEW_RHYME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-35",
+      "statement": "Texto criado: ‘Roda gira, roda gira’. O que se repete?",
+      "prompt": "Texto criado: ‘Roda gira, roda gira’. O que se repete?",
+      "options": [
+        "Texto criado",
+        "A palavra ‘o’",
+        "A expressão ‘roda gira’.",
+        "Nenhuma palavra"
+      ],
+      "correctAnswer": "A expressão ‘roda gira’.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Texto criado": [
+          "REVIEW_REPETITION"
+        ],
+        "A palavra ‘o’": [
+          "REVIEW_REPETITION"
+        ],
+        "Nenhuma palavra": [
+          "REVIEW_REPETITION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DA_REPETICAO",
+      "explanation": "As duas partes repetem as mesmas palavras.",
+      "hint": "Compare os dois trechos.",
+      "errorFocus": "REVIEW_REPETITION",
+      "feedback": {
+        "correct": "Boa observação: As duas partes repetem as mesmas palavras.",
+        "incorrect": "As duas partes repetem as mesmas palavras.",
+        "hint": "Compare os dois trechos.",
+        "errorFocus": "REVIEW_REPETITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-36",
+      "statement": "Uma quadrinha original fala de uma bola que quica e para. Como identificar o tema?",
+      "prompt": "Uma quadrinha original fala de uma bola que quica e para. Como identificar o tema?",
+      "options": [
+        "Escolher um tema sem ler",
+        "Supor que fala de uma viagem",
+        "Usar somente a cor do papel",
+        "Usar as palavras e ações do texto, como bola, quicar e parar."
+      ],
+      "correctAnswer": "Usar as palavras e ações do texto, como bola, quicar e parar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher um tema sem ler": [
+          "REVIEW_TEXT_EVIDENCE"
+        ],
+        "Supor que fala de uma viagem": [
+          "REVIEW_TEXT_EVIDENCE"
+        ],
+        "Usar somente a cor do papel": [
+          "REVIEW_TEXT_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DO_TEMA",
+      "explanation": "As palavras e ações do texto dão evidências do assunto.",
+      "hint": "Encontre pistas no próprio verso.",
+      "errorFocus": "REVIEW_TEXT_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: As palavras e ações do texto dão evidências do assunto.",
+        "incorrect": "As palavras e ações do texto dão evidências do assunto.",
+        "hint": "Encontre pistas no próprio verso.",
+        "errorFocus": "REVIEW_TEXT_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-37",
+      "statement": "Qual característica combina com um trava-língua usado em brincadeira?",
+      "prompt": "Qual característica combina com um trava-língua usado em brincadeira?",
+      "options": [
+        "Sons parecidos ou repetidos que desafiam a fala.",
+        "Uma tabela de preços",
+        "Uma lista de materiais obrigatórios",
+        "Uma informação sem relação com sons"
+      ],
+      "correctAnswer": "Sons parecidos ou repetidos que desafiam a fala.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma tabela de preços": [
+          "REVIEW_GENRE_CUE"
+        ],
+        "Uma lista de materiais obrigatórios": [
+          "REVIEW_GENRE_CUE"
+        ],
+        "Uma informação sem relação com sons": [
+          "REVIEW_GENRE_CUE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVISAO_TRAVA_LINGUA",
+      "explanation": "A brincadeira com sequências sonoras é uma pista formal do texto.",
+      "hint": "Escute os sons que voltam.",
+      "errorFocus": "REVIEW_GENRE_CUE",
+      "feedback": {
+        "correct": "Boa observação: A brincadeira com sequências sonoras é uma pista formal do texto.",
+        "incorrect": "A brincadeira com sequências sonoras é uma pista formal do texto.",
+        "hint": "Escute os sons que voltam.",
+        "errorFocus": "REVIEW_GENRE_CUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-38",
+      "statement": "O mesmo verso é lido numa roda e depois aparece num cartaz-convite. O que pode mudar?",
+      "prompt": "O mesmo verso é lido numa roda e depois aparece num cartaz-convite. O que pode mudar?",
+      "options": [
+        "As palavras sempre mudam sozinhas",
+        "A situação e a finalidade de circulação podem mudar.",
+        "O tema desaparece",
+        "A leitura deixa de ter sentido"
+      ],
+      "correctAnswer": "A situação e a finalidade de circulação podem mudar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As palavras sempre mudam sozinhas": [
+          "REVIEW_CONTEXT_MATTERS"
+        ],
+        "O tema desaparece": [
+          "REVIEW_CONTEXT_MATTERS"
+        ],
+        "A leitura deixa de ter sentido": [
+          "REVIEW_CONTEXT_MATTERS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DUAS_SITUACOES",
+      "explanation": "O contexto de circulação ajuda a interpretar como o texto é usado.",
+      "hint": "Observe onde e para quem ele aparece.",
+      "errorFocus": "REVIEW_CONTEXT_MATTERS",
+      "feedback": {
+        "correct": "Boa observação: O contexto de circulação ajuda a interpretar como o texto é usado.",
+        "incorrect": "O contexto de circulação ajuda a interpretar como o texto é usado.",
+        "hint": "Observe onde e para quem ele aparece.",
+        "errorFocus": "REVIEW_CONTEXT_MATTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-39",
+      "statement": "A dupla não entendeu uma palavra de um verso. Qual próximo passo ajuda?",
+      "prompt": "A dupla não entendeu uma palavra de um verso. Qual próximo passo ajuda?",
+      "options": [
+        "Pular todas as linhas",
+        "Inventar uma resposta sem reler",
+        "Reler com o colega ou pedir apoio ao professor e buscar pistas no texto.",
+        "Concluir que ninguém pode compreender"
+      ],
+      "correctAnswer": "Reler com o colega ou pedir apoio ao professor e buscar pistas no texto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pular todas as linhas": [
+          "REVIEW_COLLABORATIVE_STRATEGY"
+        ],
+        "Inventar uma resposta sem reler": [
+          "REVIEW_COLLABORATIVE_STRATEGY"
+        ],
+        "Concluir que ninguém pode compreender": [
+          "REVIEW_COLLABORATIVE_STRATEGY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_RELEITURA_COMPARTILHADA",
+      "explanation": "Reler e conversar são estratégias de compreensão compartilhada.",
+      "hint": "Use uma nova leitura e peça apoio.",
+      "errorFocus": "REVIEW_COLLABORATIVE_STRATEGY",
+      "feedback": {
+        "correct": "Boa observação: Reler e conversar são estratégias de compreensão compartilhada.",
+        "incorrect": "Reler e conversar são estratégias de compreensão compartilhada.",
+        "hint": "Use uma nova leitura e peça apoio.",
+        "errorFocus": "REVIEW_COLLABORATIVE_STRATEGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp16-read-daily-texts-v1-40",
+      "statement": "Por que observar rimas e repetições pode ajudar na leitura?",
+      "prompt": "Por que observar rimas e repetições pode ajudar na leitura?",
+      "options": [
+        "Eles revelam todos os fatos da vida real",
+        "Eles substituem o tema e o contexto",
+        "Eles provam que cada texto é igual",
+        "Esses recursos podem mostrar como o texto se organiza e apoiar sua finalidade."
+      ],
+      "correctAnswer": "Esses recursos podem mostrar como o texto se organiza e apoiar sua finalidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Eles revelam todos os fatos da vida real": [
+          "REVIEW_FORM_PURPOSE_LINK"
+        ],
+        "Eles substituem o tema e o contexto": [
+          "REVIEW_FORM_PURPOSE_LINK"
+        ],
+        "Eles provam que cada texto é igual": [
+          "REVIEW_FORM_PURPOSE_LINK"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_FINALIDADE_DA_FORMA",
+      "explanation": "A organização formal se relaciona à leitura, mas não substitui outras pistas.",
+      "hint": "Ligue a forma ao uso do texto.",
+      "errorFocus": "REVIEW_FORM_PURPOSE_LINK",
+      "feedback": {
+        "correct": "Boa observação: A organização formal se relaciona à leitura, mas não substitui outras pistas.",
+        "incorrect": "A organização formal se relaciona à leitura, mas não substitui outras pistas.",
+        "hint": "Ligue a forma ao uso do texto.",
+        "errorFocus": "REVIEW_FORM_PURPOSE_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral pausada, texto ampliado, espaçamento confortável, símbolos de apoio e possibilidade de ouvir mais de uma vez.",
+          "Permitir resposta por fala, apontamento, escolha de cartões, gesto, desenho ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

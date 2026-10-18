@@ -302,6 +302,7 @@ export async function validateBrandingImageFile(
     if (!hasValidSignature(bytes, file.type)) {
       return 'A imagem selecionada e invalida.';
     }
+
   } catch {
     return 'Nao foi possivel validar a imagem.';
   }

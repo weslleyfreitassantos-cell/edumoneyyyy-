@@ -96,17 +96,16 @@ export default function SetPassword() {
   const brandingQuery = useResolvedBranding();
   const branding = brandingQuery.data ?? FALLBACK_BRANDING;
   const displayName =
-    brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
+    brandingQuery.data?.displayName ?? branding.displayName ?? 'Tec Escola';
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    applyDocumentBranding(branding);
+  }, [
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const brandStyle: CSSProperties = {
     '--brand-primary': branding.primaryColor,

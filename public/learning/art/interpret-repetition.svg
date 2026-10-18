@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Repetição e mudança de intervalo</title>
+  <desc id="desc">Formas geométricas repetidas aparecem em três faixas; os intervalos diminuem gradualmente em uma delas.</desc>
+  <rect width="600" height="360" fill="#f3efe4"/>
+  <g fill="#326d72">
+    <ellipse cx="70" cy="83" rx="20" ry="13"/><ellipse cx="180" cy="83" rx="20" ry="13"/><ellipse cx="290" cy="83" rx="20" ry="13"/><ellipse cx="400" cy="83" rx="20" ry="13"/><ellipse cx="510" cy="83" rx="20" ry="13"/>
+    <path d="M50 178l22-30 22 30z M160 178l22-30 22 30z M270 178l22-30 22 30z M380 178l22-30 22 30z M490 178l22-30 22 30z"/>
+    <ellipse cx="65" cy="275" rx="20" ry="13"/><ellipse cx="148" cy="275" rx="20" ry="13"/><ellipse cx="218" cy="275" rx="20" ry="13"/><ellipse cx="277" cy="275" rx="20" ry="13"/><ellipse cx="326" cy="275" rx="20" ry="13"/><ellipse cx="367" cy="275" rx="20" ry="13"/>
+  </g>
+  <path d="M42 222H558" stroke="#d39b45" stroke-width="3" stroke-dasharray="8 9"/>
+</svg>

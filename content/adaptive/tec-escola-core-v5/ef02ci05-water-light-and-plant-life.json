@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci05-investigate-water-and-light-for-plants",
+  "canonicalSkillCode": "AUTHORING_EF02CI05_INVESTIGATE_WATER_AND_LIGHT",
+  "subject": "SCIENCE",
+  "domain": "VIDA E EVOLUÇÃO",
+  "topic": "investigação sobre a importância da água e da luz para a vida das plantas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Investigar a importância da água e da luz para a manutenção da vida de plantas em geral.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "O que a água e a luz fazem pelas plantas?",
+    "objective": "Investigar, por observações seguras e registros, como água e luz contribuem para a manutenção da vida das plantas, reconhecendo que espécies diferentes podem ter necessidades e tolerâncias distintas.",
+    "summary": "Plantas precisam de água e luz, além de outras condições, para manter a vida. A quantidade de água e de luz adequada pode variar conforme a espécie e o ambiente. Em uma investigação escolar, com orientação adulta, podemos observar plantas semelhantes em condições cuidadosamente descritas e registrar mudanças ao longo do tempo. Não é preciso deixar uma planta sem água ou luz por muito tempo: fotografias, dados preparados e observações breves permitem estudar sem causar dano.",
+    "explanation": "Para investigar, formule uma pergunta e compare evidências. Se duas plantas semelhantes recebem água e luz de modos registrados, observe folhas, tamanho ou aparência em momentos diferentes. Para entender uma condição, mantenha as demais o mais parecidas possível e mude apenas o que o educador planejou, por pouco tempo e com cuidado. Nunca deixe plantas sofrerem por um experimento, use produtos químicos ou manipule exemplares desconhecidos. A luz pode vir do Sol ou de fonte segura planejada pelo adulto; plantas de espécies distintas toleram quantidades diferentes. Registre o que foi observado e evite afirmar que uma única experiência representa toda planta em qualquer lugar.",
+    "workedExample": "Uma turma observa duas mudas da mesma espécie por alguns dias. O educador mantém solo, recipiente e local semelhantes e registra que ambas recebem água e luz suficientes. A turma compara fotografias das folhas e anota mudanças. O registro mostra o que ocorreu nessas mudas e não autoriza retirar água ou luz de outra planta por período prolongado.",
+    "commonMistake": "Afirmar que todas as plantas precisam da mesma quantidade de luz e água ou realizar uma comparação que prejudica um ser vivo por privação prolongada.",
+    "priorKnowledge": [
+      "Descrever características visíveis de plantas em imagens ou observações seguras.",
+      "Reconhecer água e luz como elementos do ambiente."
+    ],
+    "keyConcepts": [
+      "planta",
+      "água",
+      "luz",
+      "manutenção da vida",
+      "investigação",
+      "observação",
+      "registro",
+      "comparação justa",
+      "cuidado ambiental"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "WATER_AND_LIGHT_EVIDENCE",
+        "action": "Use registros preparados de plantas e destaque evidências relacionadas à água e à luz, sem extrapolar além das condições descritas."
+      },
+      {
+        "errorFocus": "FAIR_COMPARISON",
+        "action": "Compare plantas semelhantes e confira quais condições foram mantidas; se várias mudaram, limite a conclusão ao que o registro permite afirmar."
+      },
+      {
+        "errorFocus": "NO_HARMFUL_DEPRIVATION",
+        "action": "Substitua qualquer proposta de privação prolongada por fotografias, dados históricos ou observação breve supervisionada que mantenha a planta saudável."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+      "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+      "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci05-photo-observation-log",
+        "title": "Diário de observação por imagens",
+        "instructions": "Uma sequência de fotografias autorizadas mostra plantas cuidadas com água e luz ao longo de alguns dias.\n1. Observe as imagens em ordem e identifique água e luz nas condições descritas.\n2. Registre uma característica visível em cada momento.\n3. Compare as mudanças e diga o que a sequência permite concluir, sem generalizar para toda espécie.",
+        "steps": [
+          "Observe as imagens em ordem e identifique água e luz nas condições descritas.",
+          "Registre uma característica visível em cada momento.",
+          "Compare as mudanças e diga o que a sequência permite concluir, sem generalizar para toda espécie."
+        ],
+        "evidence": "Diário ilustrado que cita condições e características observadas com conclusão limitada à evidência.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica água ou luz com apoio.",
+            "developing": "registra uma característica em mais de um momento.",
+            "proficient": "relaciona condições e observações, reconhecendo limites do exemplo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci05-safe-investigation-plan",
+        "title": "Plano de investigação cuidadosa",
+        "instructions": "A turma planeja uma observação hipotética de mudas semelhantes com orientação adulta e sem privação prolongada.\n1. Formule uma pergunta sobre água ou luz para uma planta.\n2. Escolha o que será observado e quais condições precisam ser registradas.\n3. Revise o plano para manter as plantas saudáveis e usar fotos ou dados se houver risco.",
+        "steps": [
+          "Formule uma pergunta sobre água ou luz para uma planta.",
+          "Escolha o que será observado e quais condições precisam ser registradas.",
+          "Revise o plano para manter as plantas saudáveis e usar fotos ou dados se houver risco."
+        ],
+        "evidence": "Plano com pergunta observável, registro de condições e uma medida explícita de cuidado com a vida vegetal.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "sugere uma pergunta com ajuda.",
+            "developing": "identifica uma condição e uma característica a observar.",
+            "proficient": "propõe comparação cuidadosa com controle de condições e sem dano à planta."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci05-investigate-water-and-light-for-plants-01",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-02",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-03",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-04",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-05",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-06",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-07",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci05-investigate-water-and-light-for-plants-09",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-10",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-11",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-12",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-13",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-14",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-15",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci05-investigate-water-and-light-for-plants-17",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-18",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-19",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-20",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-21",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-22",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-23",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci05-investigate-water-and-light-for-plants-25",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-26",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-27",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-28",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-29",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-30",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-31",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci05-investigate-water-and-light-for-plants-33",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-34",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-35",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-36",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-37",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-38",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-39",
+          "v1-ef02ci05-investigate-water-and-light-for-plants-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI05",
+        "descriptor": "Investigar a importância da água e da luz para a manutenção da vida de plantas em geral.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-01",
+      "statement": "Uma ficha informa que uma muda recebeu água e permaneceu num local iluminado. Quais condições aparecem?",
+      "prompt": "Uma ficha informa que uma muda recebeu água e permaneceu num local iluminado. Quais condições aparecem?",
+      "options": [
+        "Água e luz.",
+        "Areia e vento apenas",
+        "Escuridão e ausência de água",
+        "Som e metal"
+      ],
+      "correctAnswer": "Água e luz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Areia e vento apenas": [
+          "WATER_LIGHT_CONDITIONS"
+        ],
+        "Escuridão e ausência de água": [
+          "WATER_LIGHT_CONDITIONS"
+        ],
+        "Som e metal": [
+          "WATER_LIGHT_CONDITIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MUDA_COM_REGISTRO_DE_AGUA",
+      "explanation": "A ficha registra água e um local iluminado.",
+      "hint": "Procure o que a planta recebeu e onde estava.",
+      "errorFocus": "WATER_LIGHT_CONDITIONS",
+      "feedback": {
+        "correct": "Boa observação: A ficha registra água e um local iluminado.",
+        "incorrect": "A ficha registra água e um local iluminado.",
+        "hint": "Procure o que a planta recebeu e onde estava.",
+        "errorFocus": "WATER_LIGHT_CONDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-02",
+      "statement": "Uma planta aparece perto de uma janela com luz e é regada pelo adulto responsável. Que elementos são destacados?",
+      "prompt": "Uma planta aparece perto de uma janela com luz e é regada pelo adulto responsável. Que elementos são destacados?",
+      "options": [
+        "Penas e abrigo",
+        "Luz e água como condições para a planta.",
+        "Barulho e movimento",
+        "Papel e tinta"
+      ],
+      "correctAnswer": "Luz e água como condições para a planta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Penas e abrigo": [
+          "PLANT_NEEDS_CONTEXT"
+        ],
+        "Barulho e movimento": [
+          "PLANT_NEEDS_CONTEXT"
+        ],
+        "Papel e tinta": [
+          "PLANT_NEEDS_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "VASO_PERTO_DA_JANELA",
+      "explanation": "A cena mostra luz e água como condições importantes para manter a vida da planta.",
+      "hint": "Observe a janela e a rega.",
+      "errorFocus": "PLANT_NEEDS_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra luz e água como condições importantes para manter a vida da planta.",
+        "incorrect": "A cena mostra luz e água como condições importantes para manter a vida da planta.",
+        "hint": "Observe a janela e a rega.",
+        "errorFocus": "PLANT_NEEDS_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-03",
+      "statement": "Para comparar duas mudas e estudar a água, o que ajuda a tornar a observação mais justa?",
+      "prompt": "Para comparar duas mudas e estudar a água, o que ajuda a tornar a observação mais justa?",
+      "options": [
+        "Mudar água, luz, vaso e solo ao mesmo tempo",
+        "Escolher mudas muito diferentes sem registrar",
+        "Registrar as condições e manter semelhantes os fatores que não estão sendo investigados.",
+        "Deixar uma muda sem água por muito tempo"
+      ],
+      "correctAnswer": "Registrar as condições e manter semelhantes os fatores que não estão sendo investigados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Mudar água, luz, vaso e solo ao mesmo tempo": [
+          "FAIR_COMPARISON_DESIGN"
+        ],
+        "Escolher mudas muito diferentes sem registrar": [
+          "FAIR_COMPARISON_DESIGN"
+        ],
+        "Deixar uma muda sem água por muito tempo": [
+          "FAIR_COMPARISON_DESIGN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INVESTIGATE",
+      "contextFamily": "DUAS_MUDAS_SEMELHANTES",
+      "explanation": "Registrar e controlar outras condições ajuda a interpretar o que foi observado.",
+      "hint": "Pense em mudar uma condição planejada e anotar as demais.",
+      "errorFocus": "FAIR_COMPARISON_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: Registrar e controlar outras condições ajuda a interpretar o que foi observado.",
+        "incorrect": "Registrar e controlar outras condições ajuda a interpretar o que foi observado.",
+        "hint": "Pense em mudar uma condição planejada e anotar as demais.",
+        "errorFocus": "FAIR_COMPARISON_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-04",
+      "statement": "Uma proposta deixa uma planta sem água por semanas para observar o que acontece. Qual avaliação é adequada?",
+      "prompt": "Uma proposta deixa uma planta sem água por semanas para observar o que acontece. Qual avaliação é adequada?",
+      "options": [
+        "É necessária para qualquer investigação",
+        "É segura se ninguém olhar",
+        "Deve ser feita sem avisar o adulto",
+        "Não é cuidadosa; devemos usar registros ou uma observação segura sem prejudicar a planta."
+      ],
+      "correctAnswer": "Não é cuidadosa; devemos usar registros ou uma observação segura sem prejudicar a planta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "É necessária para qualquer investigação": [
+          "NO_PROLONGED_DEPRIVATION"
+        ],
+        "É segura se ninguém olhar": [
+          "NO_PROLONGED_DEPRIVATION"
+        ],
+        "Deve ser feita sem avisar o adulto": [
+          "NO_PROLONGED_DEPRIVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLANTA_SEM_REGAR_POR_MUITO_TEMPO",
+      "explanation": "Uma investigação não deve causar sofrimento ou dano prolongado à planta.",
+      "hint": "Escolha uma alternativa que preserve a vida vegetal.",
+      "errorFocus": "NO_PROLONGED_DEPRIVATION",
+      "feedback": {
+        "correct": "Boa observação: Uma investigação não deve causar sofrimento ou dano prolongado à planta.",
+        "incorrect": "Uma investigação não deve causar sofrimento ou dano prolongado à planta.",
+        "hint": "Escolha uma alternativa que preserve a vida vegetal.",
+        "errorFocus": "NO_PROLONGED_DEPRIVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-05",
+      "statement": "Duas fotos mostram a mesma planta em dias diferentes. O que pode ser registrado?",
+      "prompt": "Duas fotos mostram a mesma planta em dias diferentes. O que pode ser registrado?",
+      "options": [
+        "Mudanças visíveis nas folhas entre os registros.",
+        "A quantidade exata de água sem dado",
+        "A preferência da planta",
+        "O que acontecerá com todas as plantas"
+      ],
+      "correctAnswer": "Mudanças visíveis nas folhas entre os registros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A quantidade exata de água sem dado": [
+          "OBSERVATION_FROM_IMAGES"
+        ],
+        "A preferência da planta": [
+          "OBSERVATION_FROM_IMAGES"
+        ],
+        "O que acontecerá com todas as plantas": [
+          "OBSERVATION_FROM_IMAGES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FOTO_DE_FOLHAS_EM_DOIS_DIAS",
+      "explanation": "As fotos permitem comparar características visíveis nos dois momentos.",
+      "hint": "Use somente a informação que aparece.",
+      "errorFocus": "OBSERVATION_FROM_IMAGES",
+      "feedback": {
+        "correct": "Boa observação: As fotos permitem comparar características visíveis nos dois momentos.",
+        "incorrect": "As fotos permitem comparar características visíveis nos dois momentos.",
+        "hint": "Use somente a informação que aparece.",
+        "errorFocus": "OBSERVATION_FROM_IMAGES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-06",
+      "statement": "Uma planta recebe luz indireta num ambiente protegido. O que a cena ilustra?",
+      "prompt": "Uma planta recebe luz indireta num ambiente protegido. O que a cena ilustra?",
+      "options": [
+        "Que todas as plantas precisam de sol forte o dia inteiro",
+        "Uma forma de iluminação do ambiente da planta.",
+        "Que luz não importa",
+        "Que a planta vive sem água"
+      ],
+      "correctAnswer": "Uma forma de iluminação do ambiente da planta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que todas as plantas precisam de sol forte o dia inteiro": [
+          "LIGHT_VARIATION"
+        ],
+        "Que luz não importa": [
+          "LIGHT_VARIATION"
+        ],
+        "Que a planta vive sem água": [
+          "LIGHT_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PLANTA_EM_LOCAL_ILUMINADO",
+      "explanation": "As espécies podem tolerar quantidades e tipos de luz diferentes.",
+      "hint": "Evite transformar uma cena em regra para todas.",
+      "errorFocus": "LIGHT_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: As espécies podem tolerar quantidades e tipos de luz diferentes.",
+        "incorrect": "As espécies podem tolerar quantidades e tipos de luz diferentes.",
+        "hint": "Evite transformar uma cena em regra para todas.",
+        "errorFocus": "LIGHT_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-07",
+      "statement": "Um diário marca os dias em que uma planta recebeu água. Para que serve esse registro?",
+      "prompt": "Um diário marca os dias em que uma planta recebeu água. Para que serve esse registro?",
+      "options": [
+        "Para provar que a planta gosta de uma pessoa",
+        "Para descobrir todas as necessidades de qualquer espécie",
+        "Para relacionar as observações às condições de água descritas.",
+        "Para substituir a observação"
+      ],
+      "correctAnswer": "Para relacionar as observações às condições de água descritas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para provar que a planta gosta de uma pessoa": [
+          "CONDITION_RECORD"
+        ],
+        "Para descobrir todas as necessidades de qualquer espécie": [
+          "CONDITION_RECORD"
+        ],
+        "Para substituir a observação": [
+          "CONDITION_RECORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGISTRO_DE_REGAS",
+      "explanation": "O diário ajuda a interpretar a condição registrada ao comparar mudanças.",
+      "hint": "Relacione os dados ao que foi observado.",
+      "errorFocus": "CONDITION_RECORD",
+      "feedback": {
+        "correct": "Boa observação: O diário ajuda a interpretar a condição registrada ao comparar mudanças.",
+        "incorrect": "O diário ajuda a interpretar a condição registrada ao comparar mudanças.",
+        "hint": "Relacione os dados ao que foi observado.",
+        "errorFocus": "CONDITION_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-08",
+      "statement": "Como uma criança pode observar uma planta com segurança?",
+      "prompt": "Como uma criança pode observar uma planta com segurança?",
+      "options": [
+        "Retirar a planta do vaso",
+        "Cortar folhas para comparar",
+        "Cavar até expor as raízes",
+        "Descrever ou fotografar com autorização, sem arrancar folhas nem mexer nas raízes."
+      ],
+      "correctAnswer": "Descrever ou fotografar com autorização, sem arrancar folhas nem mexer nas raízes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar a planta do vaso": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ],
+        "Cortar folhas para comparar": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ],
+        "Cavar até expor as raízes": [
+          "NON_DESTRUCTIVE_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OBSERVACAO_SEM_MEXER_NA_PLANTA",
+      "explanation": "Observar e registrar não exige danificar a planta.",
+      "hint": "Escolha uma ação sem cortar ou arrancar partes.",
+      "errorFocus": "NON_DESTRUCTIVE_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Observar e registrar não exige danificar a planta.",
+        "incorrect": "Observar e registrar não exige danificar a planta.",
+        "hint": "Escolha uma ação sem cortar ou arrancar partes.",
+        "errorFocus": "NON_DESTRUCTIVE_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-09",
+      "statement": "Uma tabela registra que uma muda ficou num local iluminado. Que condição foi anotada?",
+      "prompt": "Uma tabela registra que uma muda ficou num local iluminado. Que condição foi anotada?",
+      "options": [
+        "Luz.",
+        "Som",
+        "Penas",
+        "Areia"
+      ],
+      "correctAnswer": "Luz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Som": [
+          "LIGHT_CONDITION_RECORD"
+        ],
+        "Penas": [
+          "LIGHT_CONDITION_RECORD"
+        ],
+        "Areia": [
+          "LIGHT_CONDITION_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TABELA_DE_LUZ",
+      "explanation": "A tabela informa o local iluminado.",
+      "hint": "Leia a coluna sobre o ambiente.",
+      "errorFocus": "LIGHT_CONDITION_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A tabela informa o local iluminado.",
+        "incorrect": "A tabela informa o local iluminado.",
+        "hint": "Leia a coluna sobre o ambiente.",
+        "errorFocus": "LIGHT_CONDITION_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-10",
+      "statement": "Uma observação descreve solo úmido após a rega. Qual elemento está presente?",
+      "prompt": "Uma observação descreve solo úmido após a rega. Qual elemento está presente?",
+      "options": [
+        "Luz apagada",
+        "Água.",
+        "Papel",
+        "Metal"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Luz apagada": [
+          "WATER_IN_SOIL"
+        ],
+        "Papel": [
+          "WATER_IN_SOIL"
+        ],
+        "Metal": [
+          "WATER_IN_SOIL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "SOLO_UMIDO",
+      "explanation": "Solo úmido indica água na condição descrita.",
+      "hint": "Pense no que deixa o solo úmido.",
+      "errorFocus": "WATER_IN_SOIL",
+      "feedback": {
+        "correct": "Boa observação: Solo úmido indica água na condição descrita.",
+        "incorrect": "Solo úmido indica água na condição descrita.",
+        "hint": "Pense no que deixa o solo úmido.",
+        "errorFocus": "WATER_IN_SOIL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-11",
+      "statement": "Duas imagens de uma planta mostram folhas em momentos diferentes e registram água e luz. O que comparar?",
+      "prompt": "Duas imagens de uma planta mostram folhas em momentos diferentes e registram água e luz. O que comparar?",
+      "options": [
+        "A personalidade da planta",
+        "A vida de todas as espécies",
+        "As características visíveis junto às condições anotadas.",
+        "Uma informação que não foi registrada"
+      ],
+      "correctAnswer": "As características visíveis junto às condições anotadas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A personalidade da planta": [
+          "CONDITION_AND_TRAIT_COMPARISON"
+        ],
+        "A vida de todas as espécies": [
+          "CONDITION_AND_TRAIT_COMPARISON"
+        ],
+        "Uma informação que não foi registrada": [
+          "CONDITION_AND_TRAIT_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FOTOS_COM_CONDICOES",
+      "explanation": "A comparação usa registros de características e condições.",
+      "hint": "Relacione cada foto às anotações.",
+      "errorFocus": "CONDITION_AND_TRAIT_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação usa registros de características e condições.",
+        "incorrect": "A comparação usa registros de características e condições.",
+        "hint": "Relacione cada foto às anotações.",
+        "errorFocus": "CONDITION_AND_TRAIT_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-12",
+      "statement": "Uma turma quer estudar o efeito da luz usando duas mudas semelhantes. Qual plano é mais cuidadoso?",
+      "prompt": "Uma turma quer estudar o efeito da luz usando duas mudas semelhantes. Qual plano é mais cuidadoso?",
+      "options": [
+        "Deixar uma muda no escuro por muito tempo",
+        "Mudar várias condições e não anotar nada",
+        "Retirar as folhas de uma muda",
+        "Registrar as condições, manter a saúde das mudas e fazer observações supervisionadas por período adequado."
+      ],
+      "correctAnswer": "Registrar as condições, manter a saúde das mudas e fazer observações supervisionadas por período adequado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Deixar uma muda no escuro por muito tempo": [
+          "SAFE_LIGHT_INVESTIGATION"
+        ],
+        "Mudar várias condições e não anotar nada": [
+          "SAFE_LIGHT_INVESTIGATION"
+        ],
+        "Retirar as folhas de uma muda": [
+          "SAFE_LIGHT_INVESTIGATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INVESTIGATE",
+      "contextFamily": "MUDAR_UMA_CONDICAO",
+      "explanation": "O plano precisa de observação organizada sem prejudicar as plantas.",
+      "hint": "Inclua registro e cuidado ao longo da investigação.",
+      "errorFocus": "SAFE_LIGHT_INVESTIGATION",
+      "feedback": {
+        "correct": "Boa observação: O plano precisa de observação organizada sem prejudicar as plantas.",
+        "incorrect": "O plano precisa de observação organizada sem prejudicar as plantas.",
+        "hint": "Inclua registro e cuidado ao longo da investigação.",
+        "errorFocus": "SAFE_LIGHT_INVESTIGATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-13",
+      "statement": "Uma planta está em local claro, mas longe de calor excessivo. O que a ficha destaca?",
+      "prompt": "Uma planta está em local claro, mas longe de calor excessivo. O que a ficha destaca?",
+      "options": [
+        "Disponibilidade de luz com cuidado para evitar condição prejudicial.",
+        "Que calor extremo é necessário",
+        "Que toda planta deve ficar sob sol forte",
+        "Que água não é importante"
+      ],
+      "correctAnswer": "Disponibilidade de luz com cuidado para evitar condição prejudicial.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que calor extremo é necessário": [
+          "LIGHT_WITHOUT_EXCESS"
+        ],
+        "Que toda planta deve ficar sob sol forte": [
+          "LIGHT_WITHOUT_EXCESS"
+        ],
+        "Que água não é importante": [
+          "LIGHT_WITHOUT_EXCESS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LUZ_E_CALOR",
+      "explanation": "Luz é importante, mas condições extremas podem prejudicar seres vivos.",
+      "hint": "Separe luz de calor excessivo.",
+      "errorFocus": "LIGHT_WITHOUT_EXCESS",
+      "feedback": {
+        "correct": "Boa observação: Luz é importante, mas condições extremas podem prejudicar seres vivos.",
+        "incorrect": "Luz é importante, mas condições extremas podem prejudicar seres vivos.",
+        "hint": "Separe luz de calor excessivo.",
+        "errorFocus": "LIGHT_WITHOUT_EXCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-14",
+      "statement": "Duas espécies apresentam folhas diferentes e recebem quantidades distintas de luz. O que devemos considerar?",
+      "prompt": "Duas espécies apresentam folhas diferentes e recebem quantidades distintas de luz. O que devemos considerar?",
+      "options": [
+        "Todas precisam de exatamente a mesma luz",
+        "Espécies podem ter tolerâncias diferentes; é preciso registrar a espécie e as condições.",
+        "Uma espécie é melhor",
+        "A diferença de folhas prova falta de água"
+      ],
+      "correctAnswer": "Espécies podem ter tolerâncias diferentes; é preciso registrar a espécie e as condições.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas precisam de exatamente a mesma luz": [
+          "SPECIES_DIFFERENCE"
+        ],
+        "Uma espécie é melhor": [
+          "SPECIES_DIFFERENCE"
+        ],
+        "A diferença de folhas prova falta de água": [
+          "SPECIES_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLANTA_DE_ESPECIE_DIFERENTE",
+      "explanation": "As necessidades variam e os dados devem ser interpretados no contexto da espécie.",
+      "hint": "Considere espécie e condição observada.",
+      "errorFocus": "SPECIES_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: As necessidades variam e os dados devem ser interpretados no contexto da espécie.",
+        "incorrect": "As necessidades variam e os dados devem ser interpretados no contexto da espécie.",
+        "hint": "Considere espécie e condição observada.",
+        "errorFocus": "SPECIES_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-15",
+      "statement": "Qual registro comunica uma observação de modo útil?",
+      "prompt": "Qual registro comunica uma observação de modo útil?",
+      "options": [
+        "Uma opinião sem descrição",
+        "Uma previsão para todas as plantas",
+        "Data, condição de água ou luz e uma característica visível.",
+        "Uma nota sobre a pessoa que regou"
+      ],
+      "correctAnswer": "Data, condição de água ou luz e uma característica visível.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma opinião sem descrição": [
+          "OBSERVATION_RECORD_FIELDS"
+        ],
+        "Uma previsão para todas as plantas": [
+          "OBSERVATION_RECORD_FIELDS"
+        ],
+        "Uma nota sobre a pessoa que regou": [
+          "OBSERVATION_RECORD_FIELDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_DE_OBSERVACAO",
+      "explanation": "Data, condição e característica ajudam a acompanhar a investigação.",
+      "hint": "Inclua evidência observável.",
+      "errorFocus": "OBSERVATION_RECORD_FIELDS",
+      "feedback": {
+        "correct": "Boa observação: Data, condição e característica ajudam a acompanhar a investigação.",
+        "incorrect": "Data, condição e característica ajudam a acompanhar a investigação.",
+        "hint": "Inclua evidência observável.",
+        "errorFocus": "OBSERVATION_RECORD_FIELDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-16",
+      "statement": "Uma foto mostra uma planta, mas não diz se foi regada. O que não podemos concluir?",
+      "prompt": "Uma foto mostra uma planta, mas não diz se foi regada. O que não podemos concluir?",
+      "options": [
+        "Que uma planta aparece na foto",
+        "Que a imagem registra um momento",
+        "Que algumas folhas estão visíveis",
+        "Que a planta nunca recebeu água."
+      ],
+      "correctAnswer": "Que a planta nunca recebeu água.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que uma planta aparece na foto": [
+          "MISSING_CONDITION_LIMIT"
+        ],
+        "Que a imagem registra um momento": [
+          "MISSING_CONDITION_LIMIT"
+        ],
+        "Que algumas folhas estão visíveis": [
+          "MISSING_CONDITION_LIMIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FOTO_SEM_INFORMACAO_DE_AGUA",
+      "explanation": "A foto não informa a história de rega da planta.",
+      "hint": "Diferencie informação ausente de evidência negativa.",
+      "errorFocus": "MISSING_CONDITION_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A foto não informa a história de rega da planta.",
+        "incorrect": "A foto não informa a história de rega da planta.",
+        "hint": "Diferencie informação ausente de evidência negativa.",
+        "errorFocus": "MISSING_CONDITION_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-17",
+      "statement": "Uma ficha mostra uma planta mantida em sombra parcial e regada conforme orientação. Qual afirmação é cuidadosa?",
+      "prompt": "Uma ficha mostra uma planta mantida em sombra parcial e regada conforme orientação. Qual afirmação é cuidadosa?",
+      "options": [
+        "A planta da ficha recebeu alguma luz e água em condições registradas.",
+        "Toda planta deve ficar na sombra",
+        "Nenhuma planta tolera luz solar",
+        "A ficha prova que a água não importa"
+      ],
+      "correctAnswer": "A planta da ficha recebeu alguma luz e água em condições registradas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda planta deve ficar na sombra": [
+          "CONTEXT_BOUNDED_NEEDS"
+        ],
+        "Nenhuma planta tolera luz solar": [
+          "CONTEXT_BOUNDED_NEEDS"
+        ],
+        "A ficha prova que a água não importa": [
+          "CONTEXT_BOUNDED_NEEDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PLANTA_DE_SOMBRA",
+      "explanation": "A afirmação descreve a planta e as condições do registro, sem generalizar para espécies diferentes.",
+      "hint": "Use a expressão “a planta da ficha”.",
+      "errorFocus": "CONTEXT_BOUNDED_NEEDS",
+      "feedback": {
+        "correct": "Boa observação: A afirmação descreve a planta e as condições do registro, sem generalizar para espécies diferentes.",
+        "incorrect": "A afirmação descreve a planta e as condições do registro, sem generalizar para espécies diferentes.",
+        "hint": "Use a expressão “a planta da ficha”.",
+        "errorFocus": "CONTEXT_BOUNDED_NEEDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-18",
+      "statement": "Dois registros mostram mudas semelhantes: uma teve água e luz anotadas, outra teve condições diferentes por pouco tempo sob supervisão. O que deve acompanhar a conclusão?",
+      "prompt": "Dois registros mostram mudas semelhantes: uma teve água e luz anotadas, outra teve condições diferentes por pouco tempo sob supervisão. O que deve acompanhar a conclusão?",
+      "options": [
+        "Uma afirmação sobre todas as plantas",
+        "Quais condições foram registradas e quais mudanças foram observadas.",
+        "Uma suposição sem dados",
+        "Uma conclusão que ignora as diferenças"
+      ],
+      "correctAnswer": "Quais condições foram registradas e quais mudanças foram observadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma afirmação sobre todas as plantas": [
+          "OBSERVATION_AND_CONDITIONS"
+        ],
+        "Uma suposição sem dados": [
+          "OBSERVATION_AND_CONDITIONS"
+        ],
+        "Uma conclusão que ignora as diferenças": [
+          "OBSERVATION_AND_CONDITIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIARIO_DE_DUAS_MUDAS",
+      "explanation": "Uma conclusão deve citar condições e evidências observadas.",
+      "hint": "Use o diário antes de responder.",
+      "errorFocus": "OBSERVATION_AND_CONDITIONS",
+      "feedback": {
+        "correct": "Boa observação: Uma conclusão deve citar condições e evidências observadas.",
+        "incorrect": "Uma conclusão deve citar condições e evidências observadas.",
+        "hint": "Use o diário antes de responder.",
+        "errorFocus": "OBSERVATION_AND_CONDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-19",
+      "statement": "Uma proposta cobre uma planta por meses para estudar luz. Qual alternativa é mais responsável?",
+      "prompt": "Uma proposta cobre uma planta por meses para estudar luz. Qual alternativa é mais responsável?",
+      "options": [
+        "Fazer o teste sem monitoramento",
+        "Repetir em várias plantas até uma morrer",
+        "Analisar registros ou planejar uma observação breve e supervisionada que mantenha a planta saudável.",
+        "Desligar a luz de todo o ambiente"
+      ],
+      "correctAnswer": "Analisar registros ou planejar uma observação breve e supervisionada que mantenha a planta saudável.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fazer o teste sem monitoramento": [
+          "NO_LONG_TERM_HARM"
+        ],
+        "Repetir em várias plantas até uma morrer": [
+          "NO_LONG_TERM_HARM"
+        ],
+        "Desligar a luz de todo o ambiente": [
+          "NO_LONG_TERM_HARM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "EXPERIMENTO_SEM_LUZ_PROLONGADO",
+      "explanation": "Há formas de estudar com dados ou observações seguras sem privação prolongada.",
+      "hint": "Priorize manter os seres vivos saudáveis.",
+      "errorFocus": "NO_LONG_TERM_HARM",
+      "feedback": {
+        "correct": "Boa observação: Há formas de estudar com dados ou observações seguras sem privação prolongada.",
+        "incorrect": "Há formas de estudar com dados ou observações seguras sem privação prolongada.",
+        "hint": "Priorize manter os seres vivos saudáveis.",
+        "errorFocus": "NO_LONG_TERM_HARM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-20",
+      "statement": "A escola tem fotos autorizadas de uma planta em dias diferentes com anotações de rega. Como usá-las?",
+      "prompt": "A escola tem fotos autorizadas de uma planta em dias diferentes com anotações de rega. Como usá-las?",
+      "options": [
+        "Concluir sem olhar as anotações",
+        "Alterar a foto para mostrar outra condição",
+        "Dizer que todas as plantas mudaram igual",
+        "Organizar por data e comparar mudanças visíveis com as condições registradas."
+      ],
+      "correctAnswer": "Organizar por data e comparar mudanças visíveis com as condições registradas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Concluir sem olhar as anotações": [
+          "USE_EXISTING_RECORDS"
+        ],
+        "Alterar a foto para mostrar outra condição": [
+          "USE_EXISTING_RECORDS"
+        ],
+        "Dizer que todas as plantas mudaram igual": [
+          "USE_EXISTING_RECORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PLANO_DE_FOTOS_AUTORIZADAS",
+      "explanation": "Sequências e anotações permitem investigar sem manipular a planta.",
+      "hint": "Ordene as fotos e leia os registros.",
+      "errorFocus": "USE_EXISTING_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: Sequências e anotações permitem investigar sem manipular a planta.",
+        "incorrect": "Sequências e anotações permitem investigar sem manipular a planta.",
+        "hint": "Ordene as fotos e leia os registros.",
+        "errorFocus": "USE_EXISTING_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-21",
+      "statement": "Uma sequência mostra folhas mais firmes após cuidados registrados. O que ela sugere para aquela planta?",
+      "prompt": "Uma sequência mostra folhas mais firmes após cuidados registrados. O que ela sugere para aquela planta?",
+      "options": [
+        "As condições de água e luz anotadas podem estar relacionadas às observações.",
+        "A água sozinha explica tudo sem outras informações",
+        "Todas as folhas de todas as espécies ficarão iguais",
+        "A planta prefere um estudante"
+      ],
+      "correctAnswer": "As condições de água e luz anotadas podem estar relacionadas às observações.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A água sozinha explica tudo sem outras informações": [
+          "CAUSALITY_CAUTION"
+        ],
+        "Todas as folhas de todas as espécies ficarão iguais": [
+          "CAUSALITY_CAUTION"
+        ],
+        "A planta prefere um estudante": [
+          "CAUSALITY_CAUTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FOLHAS_COM_MUDANCAS",
+      "explanation": "O registro permite uma relação possível, mas outras condições também podem influenciar.",
+      "hint": "Use uma conclusão prudente e ligada aos dados.",
+      "errorFocus": "CAUSALITY_CAUTION",
+      "feedback": {
+        "correct": "Boa observação: O registro permite uma relação possível, mas outras condições também podem influenciar.",
+        "incorrect": "O registro permite uma relação possível, mas outras condições também podem influenciar.",
+        "hint": "Use uma conclusão prudente e ligada aos dados.",
+        "errorFocus": "CAUSALITY_CAUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-22",
+      "statement": "Por que registrar vaso, solo, água e luz numa investigação?",
+      "prompt": "Por que registrar vaso, solo, água e luz numa investigação?",
+      "options": [
+        "Para esconder mudanças",
+        "Para saber em que condições a planta foi observada e interpretar comparações com cuidado.",
+        "Para provar que todas as plantas são idênticas",
+        "Para evitar observar as folhas"
+      ],
+      "correctAnswer": "Para saber em que condições a planta foi observada e interpretar comparações com cuidado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para esconder mudanças": [
+          "INVESTIGATION_CONTROL_RECORD"
+        ],
+        "Para provar que todas as plantas são idênticas": [
+          "INVESTIGATION_CONTROL_RECORD"
+        ],
+        "Para evitar observar as folhas": [
+          "INVESTIGATION_CONTROL_RECORD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARACAO_CONTROLADA",
+      "explanation": "Registrar condições ajuda a entender evidências e limites da comparação.",
+      "hint": "Pense em quais informações explicam a observação.",
+      "errorFocus": "INVESTIGATION_CONTROL_RECORD",
+      "feedback": {
+        "correct": "Boa observação: Registrar condições ajuda a entender evidências e limites da comparação.",
+        "incorrect": "Registrar condições ajuda a entender evidências e limites da comparação.",
+        "hint": "Pense em quais informações explicam a observação.",
+        "errorFocus": "INVESTIGATION_CONTROL_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-23",
+      "statement": "Um cartão mostra um regador e uma janela iluminada ao lado de uma muda. Quais fatores estão representados?",
+      "prompt": "Um cartão mostra um regador e uma janela iluminada ao lado de uma muda. Quais fatores estão representados?",
+      "options": [
+        "Vento e som",
+        "Penas e abrigo",
+        "Água e luz.",
+        "Areia e metal"
+      ],
+      "correctAnswer": "Água e luz.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Vento e som": [
+          "TWO_PLANT_FACTORS"
+        ],
+        "Penas e abrigo": [
+          "TWO_PLANT_FACTORS"
+        ],
+        "Areia e metal": [
+          "TWO_PLANT_FACTORS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DE_AGUA_E_LUZ",
+      "explanation": "O regador representa água e a janela iluminada representa luz.",
+      "hint": "Associe cada objeto ao fator correspondente.",
+      "errorFocus": "TWO_PLANT_FACTORS",
+      "feedback": {
+        "correct": "Boa observação: O regador representa água e a janela iluminada representa luz.",
+        "incorrect": "O regador representa água e a janela iluminada representa luz.",
+        "hint": "Associe cada objeto ao fator correspondente.",
+        "errorFocus": "TWO_PLANT_FACTORS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-24",
+      "statement": "Uma turma observa uma espécie e conclui que todas as plantas precisam da mesma quantidade de água. O que melhorar?",
+      "prompt": "Uma turma observa uma espécie e conclui que todas as plantas precisam da mesma quantidade de água. O que melhorar?",
+      "options": [
+        "Manter a conclusão universal",
+        "Parar de registrar condições",
+        "Retirar água de outras plantas",
+        "Limitar a conclusão e reconhecer que espécies e ambientes podem diferir."
+      ],
+      "correctAnswer": "Limitar a conclusão e reconhecer que espécies e ambientes podem diferir.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Manter a conclusão universal": [
+          "NO_UNIVERSAL_QUANTITY_CLAIM"
+        ],
+        "Parar de registrar condições": [
+          "NO_UNIVERSAL_QUANTITY_CLAIM"
+        ],
+        "Retirar água de outras plantas": [
+          "NO_UNIVERSAL_QUANTITY_CLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONCLUSAO_PARA_TODA_PLANTA",
+      "explanation": "A observação de uma espécie não define a mesma quantidade para todas.",
+      "hint": "Considere o alcance da amostra observada.",
+      "errorFocus": "NO_UNIVERSAL_QUANTITY_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A observação de uma espécie não define a mesma quantidade para todas.",
+        "incorrect": "A observação de uma espécie não define a mesma quantidade para todas.",
+        "hint": "Considere o alcance da amostra observada.",
+        "errorFocus": "NO_UNIVERSAL_QUANTITY_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-25",
+      "statement": "Uma ficha marca luz disponível e rega supervisionada. O que ela registra?",
+      "prompt": "Uma ficha marca luz disponível e rega supervisionada. O que ela registra?",
+      "options": [
+        "Condições de luz e água para a planta observada.",
+        "A opinião da planta",
+        "O nome de todas as espécies",
+        "Uma regra de jardinagem universal"
+      ],
+      "correctAnswer": "Condições de luz e água para a planta observada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A opinião da planta": [
+          "CONDITION_RECORD_REVIEW"
+        ],
+        "O nome de todas as espécies": [
+          "CONDITION_RECORD_REVIEW"
+        ],
+        "Uma regra de jardinagem universal": [
+          "CONDITION_RECORD_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PLANTA_COM_REGISTRO_DE_LUZ",
+      "explanation": "A ficha informa duas condições da planta observada.",
+      "hint": "Leia os registros da ficha.",
+      "errorFocus": "CONDITION_RECORD_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A ficha informa duas condições da planta observada.",
+        "incorrect": "A ficha informa duas condições da planta observada.",
+        "hint": "Leia os registros da ficha.",
+        "errorFocus": "CONDITION_RECORD_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-26",
+      "statement": "A luz é importante para plantas. Isso significa que todas devem ficar sob sol forte o dia inteiro?",
+      "prompt": "A luz é importante para plantas. Isso significa que todas devem ficar sob sol forte o dia inteiro?",
+      "options": [
+        "Sim, todas precisam do mesmo sol",
+        "Não; as necessidades variam e a luz deve ser adequada à espécie.",
+        "Não, luz nunca importa",
+        "Sim, mesmo quando a planta está em ambiente protegido"
+      ],
+      "correctAnswer": "Não; as necessidades variam e a luz deve ser adequada à espécie.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, todas precisam do mesmo sol": [
+          "LIGHT_NEED_NOT_SAME_EXPOSURE"
+        ],
+        "Não, luz nunca importa": [
+          "LIGHT_NEED_NOT_SAME_EXPOSURE"
+        ],
+        "Sim, mesmo quando a planta está em ambiente protegido": [
+          "LIGHT_NEED_NOT_SAME_EXPOSURE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LUZ_SUFICIENTE_E_SOL_FORTE",
+      "explanation": "Importância da luz não implica uma exposição idêntica para todas as plantas.",
+      "hint": "Diferencie precisar de luz de receber luz forte o tempo todo.",
+      "errorFocus": "LIGHT_NEED_NOT_SAME_EXPOSURE",
+      "feedback": {
+        "correct": "Boa observação: Importância da luz não implica uma exposição idêntica para todas as plantas.",
+        "incorrect": "Importância da luz não implica uma exposição idêntica para todas as plantas.",
+        "hint": "Diferencie precisar de luz de receber luz forte o tempo todo.",
+        "errorFocus": "LIGHT_NEED_NOT_SAME_EXPOSURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-27",
+      "statement": "Um diário tem observações semanais e condições anotadas. Qual é uma conclusão adequada?",
+      "prompt": "Um diário tem observações semanais e condições anotadas. Qual é uma conclusão adequada?",
+      "options": [
+        "Afirmar que toda espécie terá o mesmo resultado",
+        "Ignorar as condições",
+        "Descrever as mudanças observadas naquela planta durante o período registrado.",
+        "Prever exatamente o crescimento de qualquer planta"
+      ],
+      "correctAnswer": "Descrever as mudanças observadas naquela planta durante o período registrado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Afirmar que toda espécie terá o mesmo resultado": [
+          "TIME_AND_SAMPLE_SCOPE"
+        ],
+        "Ignorar as condições": [
+          "TIME_AND_SAMPLE_SCOPE"
+        ],
+        "Prever exatamente o crescimento de qualquer planta": [
+          "TIME_AND_SAMPLE_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGISTRO_DE_DUAS_SEMANAS",
+      "explanation": "Conclusões devem respeitar a planta e o período observados.",
+      "hint": "Use “durante o período registrado”.",
+      "errorFocus": "TIME_AND_SAMPLE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Conclusões devem respeitar a planta e o período observados.",
+        "incorrect": "Conclusões devem respeitar a planta e o período observados.",
+        "hint": "Use “durante o período registrado”.",
+        "errorFocus": "TIME_AND_SAMPLE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-28",
+      "statement": "A turma quer acompanhar uma muda por uma semana. Qual cuidado é essencial?",
+      "prompt": "A turma quer acompanhar uma muda por uma semana. Qual cuidado é essencial?",
+      "options": [
+        "Arrancar folhas para medir",
+        "Esquecer a rega como teste",
+        "Mudar o vaso diariamente sem registrar",
+        "Manter cuidados adequados com orientação adulta e registrar sem danificá-la."
+      ],
+      "correctAnswer": "Manter cuidados adequados com orientação adulta e registrar sem danificá-la.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Arrancar folhas para medir": [
+          "SAFE_PLANT_CARE"
+        ],
+        "Esquecer a rega como teste": [
+          "SAFE_PLANT_CARE"
+        ],
+        "Mudar o vaso diariamente sem registrar": [
+          "SAFE_PLANT_CARE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CUIDADO_COM_MUDA",
+      "explanation": "Uma investigação deve preservar a planta e registrar condições planejadas.",
+      "hint": "Escolha a opção que mantém o ser vivo saudável.",
+      "errorFocus": "SAFE_PLANT_CARE",
+      "feedback": {
+        "correct": "Boa observação: Uma investigação deve preservar a planta e registrar condições planejadas.",
+        "incorrect": "Uma investigação deve preservar a planta e registrar condições planejadas.",
+        "hint": "Escolha a opção que mantém o ser vivo saudável.",
+        "errorFocus": "SAFE_PLANT_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-29",
+      "statement": "Por que a água é importante para a manutenção da vida das plantas?",
+      "prompt": "Por que a água é importante para a manutenção da vida das plantas?",
+      "options": [
+        "A água é uma condição necessária para processos vitais das plantas.",
+        "Porque toda planta vive submersa",
+        "Porque a água substitui a luz",
+        "Porque qualquer quantidade serve a toda espécie"
+      ],
+      "correctAnswer": "A água é uma condição necessária para processos vitais das plantas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque toda planta vive submersa": [
+          "WATER_IMPORTANCE"
+        ],
+        "Porque a água substitui a luz": [
+          "WATER_IMPORTANCE"
+        ],
+        "Porque qualquer quantidade serve a toda espécie": [
+          "WATER_IMPORTANCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "IMPORTANCIA_DA_AGUA",
+      "explanation": "Água é importante para a vida vegetal, embora necessidades variem entre espécies.",
+      "hint": "Escolha a resposta que não afirma excesso nem substituição.",
+      "errorFocus": "WATER_IMPORTANCE",
+      "feedback": {
+        "correct": "Boa observação: Água é importante para a vida vegetal, embora necessidades variem entre espécies.",
+        "incorrect": "Água é importante para a vida vegetal, embora necessidades variem entre espécies.",
+        "hint": "Escolha a resposta que não afirma excesso nem substituição.",
+        "errorFocus": "WATER_IMPORTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-30",
+      "statement": "Uma sala quer observar uma planta com luz artificial. Qual decisão é adequada?",
+      "prompt": "Uma sala quer observar uma planta com luz artificial. Qual decisão é adequada?",
+      "options": [
+        "Apontar uma lâmpada quente diretamente às folhas",
+        "Usar fonte segura escolhida pelo adulto e seguir orientações para a espécie.",
+        "Deixar cabos expostos",
+        "Usar luz intensa sem supervisão"
+      ],
+      "correctAnswer": "Usar fonte segura escolhida pelo adulto e seguir orientações para a espécie.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apontar uma lâmpada quente diretamente às folhas": [
+          "SAFE_LIGHT_SOURCE"
+        ],
+        "Deixar cabos expostos": [
+          "SAFE_LIGHT_SOURCE"
+        ],
+        "Usar luz intensa sem supervisão": [
+          "SAFE_LIGHT_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FONTE_DE_LUZ_SEGURA",
+      "explanation": "Uma fonte de luz deve ser segura e planejada com orientação adulta.",
+      "hint": "Considere segurança da turma e da planta.",
+      "errorFocus": "SAFE_LIGHT_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte de luz deve ser segura e planejada com orientação adulta.",
+        "incorrect": "Uma fonte de luz deve ser segura e planejada com orientação adulta.",
+        "hint": "Considere segurança da turma e da planta.",
+        "errorFocus": "SAFE_LIGHT_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-31",
+      "statement": "Um registro mostra uma semente germinando após receber água e luz em condição apropriada. O que ele ilustra?",
+      "prompt": "Um registro mostra uma semente germinando após receber água e luz em condição apropriada. O que ele ilustra?",
+      "options": [
+        "Que toda semente germina no mesmo tempo",
+        "Que luz e água são dispensáveis",
+        "Acompanhamento de uma fase inicial de vida vegetal sob condições registradas.",
+        "Que todas as sementes têm o mesmo tamanho"
+      ],
+      "correctAnswer": "Acompanhamento de uma fase inicial de vida vegetal sob condições registradas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que toda semente germina no mesmo tempo": [
+          "PLANT_GERMINATION_SCOPE"
+        ],
+        "Que luz e água são dispensáveis": [
+          "PLANT_GERMINATION_SCOPE"
+        ],
+        "Que todas as sementes têm o mesmo tamanho": [
+          "PLANT_GERMINATION_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SEMENTE_GERMINANDO",
+      "explanation": "O registro mostra uma semente e suas condições, sem tornar o resultado universal.",
+      "hint": "Limite a resposta ao exemplo observado.",
+      "errorFocus": "PLANT_GERMINATION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O registro mostra uma semente e suas condições, sem tornar o resultado universal.",
+        "incorrect": "O registro mostra uma semente e suas condições, sem tornar o resultado universal.",
+        "hint": "Limite a resposta ao exemplo observado.",
+        "errorFocus": "PLANT_GERMINATION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-32",
+      "statement": "Qual método permite investigar água e luz sem prejudicar plantas?",
+      "prompt": "Qual método permite investigar água e luz sem prejudicar plantas?",
+      "options": [
+        "Deixar plantas sem água por longo tempo",
+        "Cobrir todas as folhas sem monitoramento",
+        "Cortar partes para pesar",
+        "Comparar registros, fotografias ou observações breves supervisionadas mantendo os cuidados necessários."
+      ],
+      "correctAnswer": "Comparar registros, fotografias ou observações breves supervisionadas mantendo os cuidados necessários.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Deixar plantas sem água por longo tempo": [
+          "NON_HARMFUL_INVESTIGATION"
+        ],
+        "Cobrir todas as folhas sem monitoramento": [
+          "NON_HARMFUL_INVESTIGATION"
+        ],
+        "Cortar partes para pesar": [
+          "NON_HARMFUL_INVESTIGATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCOLHA_DE_METODO_SEM_DANO",
+      "explanation": "Dados existentes e observação cuidadosa permitem estudar sem dano.",
+      "hint": "Escolha um método que preserve a planta.",
+      "errorFocus": "NON_HARMFUL_INVESTIGATION",
+      "feedback": {
+        "correct": "Boa observação: Dados existentes e observação cuidadosa permitem estudar sem dano.",
+        "incorrect": "Dados existentes e observação cuidadosa permitem estudar sem dano.",
+        "hint": "Escolha um método que preserve a planta.",
+        "errorFocus": "NON_HARMFUL_INVESTIGATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-33",
+      "statement": "Quais dois fatores são destacados nesta investigação sobre plantas?",
+      "prompt": "Quais dois fatores são destacados nesta investigação sobre plantas?",
+      "options": [
+        "Água e luz.",
+        "Som e metal",
+        "Penas e abrigo",
+        "Vento e tinta"
+      ],
+      "correctAnswer": "Água e luz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Som e metal": [
+          "WATER_LIGHT_REVIEW"
+        ],
+        "Penas e abrigo": [
+          "WATER_LIGHT_REVIEW"
+        ],
+        "Vento e tinta": [
+          "WATER_LIGHT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_DOIS_FATORES",
+      "explanation": "O descritor destaca investigar água e luz.",
+      "hint": "Lembre-se do que a planta recebe no ambiente.",
+      "errorFocus": "WATER_LIGHT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O descritor destaca investigar água e luz.",
+        "incorrect": "O descritor destaca investigar água e luz.",
+        "hint": "Lembre-se do que a planta recebe no ambiente.",
+        "errorFocus": "WATER_LIGHT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-34",
+      "statement": "Um regador aparece numa ficha de cuidados. A qual fator ele se relaciona?",
+      "prompt": "Um regador aparece numa ficha de cuidados. A qual fator ele se relaciona?",
+      "options": [
+        "Luz",
+        "Água.",
+        "Solo seco",
+        "Som"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Luz": [
+          "WATER_FACTOR_REVIEW"
+        ],
+        "Solo seco": [
+          "WATER_FACTOR_REVIEW"
+        ],
+        "Som": [
+          "WATER_FACTOR_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_REGADOR",
+      "explanation": "O regador representa água para a planta.",
+      "hint": "Associe o objeto ao cuidado.",
+      "errorFocus": "WATER_FACTOR_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O regador representa água para a planta.",
+        "incorrect": "O regador representa água para a planta.",
+        "hint": "Associe o objeto ao cuidado.",
+        "errorFocus": "WATER_FACTOR_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-35",
+      "statement": "Plantas precisam de luz. Qual conclusão evita exagero?",
+      "prompt": "Plantas precisam de luz. Qual conclusão evita exagero?",
+      "options": [
+        "Todas precisam de sol forte o dia todo",
+        "Nenhuma espécie precisa de água",
+        "A quantidade e a tolerância podem variar entre espécies.",
+        "Toda planta vive no escuro"
+      ],
+      "correctAnswer": "A quantidade e a tolerância podem variar entre espécies.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas precisam de sol forte o dia todo": [
+          "SPECIES_LIGHT_VARIATION_REVIEW"
+        ],
+        "Nenhuma espécie precisa de água": [
+          "SPECIES_LIGHT_VARIATION_REVIEW"
+        ],
+        "Toda planta vive no escuro": [
+          "SPECIES_LIGHT_VARIATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_LUZ",
+      "explanation": "A importância da luz não significa necessidade igual de exposição para todas.",
+      "hint": "Escolha a conclusão que considera diferenças.",
+      "errorFocus": "SPECIES_LIGHT_VARIATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A importância da luz não significa necessidade igual de exposição para todas.",
+        "incorrect": "A importância da luz não significa necessidade igual de exposição para todas.",
+        "hint": "Escolha a conclusão que considera diferenças.",
+        "errorFocus": "SPECIES_LIGHT_VARIATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-36",
+      "statement": "Duas fotos mostram uma planta em momentos diferentes. O que ajuda a comparar?",
+      "prompt": "Duas fotos mostram uma planta em momentos diferentes. O que ajuda a comparar?",
+      "options": [
+        "Uma opinião sobre a planta",
+        "O tamanho de outra espécie não registrada",
+        "Uma previsão sem olhar as fotos",
+        "As características visíveis, a data e as condições registradas."
+      ],
+      "correctAnswer": "As características visíveis, a data e as condições registradas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma opinião sobre a planta": [
+          "EVIDENCE_BASED_COMPARISON_REVIEW"
+        ],
+        "O tamanho de outra espécie não registrada": [
+          "EVIDENCE_BASED_COMPARISON_REVIEW"
+        ],
+        "Uma previsão sem olhar as fotos": [
+          "EVIDENCE_BASED_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_FOTOS",
+      "explanation": "Dados de tempo e condições ajudam a interpretar as imagens.",
+      "hint": "Use as informações que acompanham as fotos.",
+      "errorFocus": "EVIDENCE_BASED_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Dados de tempo e condições ajudam a interpretar as imagens.",
+        "incorrect": "Dados de tempo e condições ajudam a interpretar as imagens.",
+        "hint": "Use as informações que acompanham as fotos.",
+        "errorFocus": "EVIDENCE_BASED_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-37",
+      "statement": "Uma investigação deve deixar uma planta sem água por muito tempo?",
+      "prompt": "Uma investigação deve deixar uma planta sem água por muito tempo?",
+      "options": [
+        "Não; devemos usar métodos seguros que mantenham a planta saudável.",
+        "Sim, sempre",
+        "Sim, sem supervisão",
+        "Não, mas podemos arrancá-la"
+      ],
+      "correctAnswer": "Não; devemos usar métodos seguros que mantenham a planta saudável.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_HARM_REVIEW"
+        ],
+        "Sim, sem supervisão": [
+          "NO_HARM_REVIEW"
+        ],
+        "Não, mas podemos arrancá-la": [
+          "NO_HARM_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACAO",
+      "explanation": "A investigação não deve causar dano prolongado ao ser vivo.",
+      "hint": "Priorize cuidado ambiental.",
+      "errorFocus": "NO_HARM_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A investigação não deve causar dano prolongado ao ser vivo.",
+        "incorrect": "A investigação não deve causar dano prolongado ao ser vivo.",
+        "hint": "Priorize cuidado ambiental.",
+        "errorFocus": "NO_HARM_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-38",
+      "statement": "Por que registrar água, luz e tempo de observação?",
+      "prompt": "Por que registrar água, luz e tempo de observação?",
+      "options": [
+        "Para eliminar todas as diferenças entre espécies",
+        "Para relacionar as condições às mudanças observadas e limitar conclusões.",
+        "Para evitar uma observação",
+        "Para provar uma regra universal"
+      ],
+      "correctAnswer": "Para relacionar as condições às mudanças observadas e limitar conclusões.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para eliminar todas as diferenças entre espécies": [
+          "INVESTIGATION_RECORD_REVIEW"
+        ],
+        "Para evitar uma observação": [
+          "INVESTIGATION_RECORD_REVIEW"
+        ],
+        "Para provar uma regra universal": [
+          "INVESTIGATION_RECORD_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONDICOES",
+      "explanation": "Registros apoiam interpretação e reconhecem os limites da evidência.",
+      "hint": "Pense no que explica uma comparação.",
+      "errorFocus": "INVESTIGATION_RECORD_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Registros apoiam interpretação e reconhecem os limites da evidência.",
+        "incorrect": "Registros apoiam interpretação e reconhecem os limites da evidência.",
+        "hint": "Pense no que explica uma comparação.",
+        "errorFocus": "INVESTIGATION_RECORD_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-39",
+      "statement": "Qual alternativa é segura para estudar uma planta?",
+      "prompt": "Qual alternativa é segura para estudar uma planta?",
+      "options": [
+        "Cortar folhas para comparar",
+        "Retirar raízes",
+        "Usar uma foto autorizada ou observar sem arrancar partes.",
+        "Cobrir a planta sem monitoramento"
+      ],
+      "correctAnswer": "Usar uma foto autorizada ou observar sem arrancar partes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cortar folhas para comparar": [
+          "SAFE_OBSERVATION_REVIEW"
+        ],
+        "Retirar raízes": [
+          "SAFE_OBSERVATION_REVIEW"
+        ],
+        "Cobrir a planta sem monitoramento": [
+          "SAFE_OBSERVATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_OBSERVACAO",
+      "explanation": "Imagens e observações cuidadosas evitam dano.",
+      "hint": "Escolha uma opção sem manipulação prejudicial.",
+      "errorFocus": "SAFE_OBSERVATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Imagens e observações cuidadosas evitam dano.",
+        "incorrect": "Imagens e observações cuidadosas evitam dano.",
+        "hint": "Escolha uma opção sem manipulação prejudicial.",
+        "errorFocus": "SAFE_OBSERVATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci05-investigate-water-and-light-for-plants-40",
+      "statement": "Como investigar a importância de água e luz de modo responsável?",
+      "prompt": "Como investigar a importância de água e luz de modo responsável?",
+      "options": [
+        "Privar uma planta por muito tempo",
+        "Generalizar de uma foto para todas as espécies",
+        "Alterar várias condições sem anotar",
+        "Registrar condições e mudanças, comparar com cuidado e manter as plantas saudáveis."
+      ],
+      "correctAnswer": "Registrar condições e mudanças, comparar com cuidado e manter as plantas saudáveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Privar uma planta por muito tempo": [
+          "RESPONSIBLE_INVESTIGATION_SUMMARY"
+        ],
+        "Generalizar de uma foto para todas as espécies": [
+          "RESPONSIBLE_INVESTIGATION_SUMMARY"
+        ],
+        "Alterar várias condições sem anotar": [
+          "RESPONSIBLE_INVESTIGATION_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_INVESTIGACAO",
+      "explanation": "Uma investigação cuidadosa usa evidências, registra condições e preserva a vida vegetal.",
+      "hint": "Una método, registro e cuidado.",
+      "errorFocus": "RESPONSIBLE_INVESTIGATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Uma investigação cuidadosa usa evidências, registra condições e preserva a vida vegetal.",
+        "incorrect": "Uma investigação cuidadosa usa evidências, registra condições e preserva a vida vegetal.",
+        "hint": "Una método, registro e cuidado.",
+        "errorFocus": "RESPONSIBLE_INVESTIGATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar sequências de fotos, tabelas com símbolos, descrições de imagens e modelos táteis de folhas sem retirar plantas vivas.",
+          "Permitir registrar por desenho, fala, apontamento, tabela, fotografia autorizada ou comunicação alternativa.",
+          "Garantir observação sem produtos químicos, coleta ou privação; o educador supervisiona qualquer cuidado direto com as plantas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

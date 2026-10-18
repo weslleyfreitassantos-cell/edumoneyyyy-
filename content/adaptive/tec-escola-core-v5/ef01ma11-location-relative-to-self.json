@@ -1,0 +1,2034 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01ma11-location-from-own-position-v1",
+  "canonicalSkillCode": "MATHEMATICS_DESCRIBE_LOCATION_RELATIVE_TO_OWN_POSITION",
+  "subject": "MATHEMATICS",
+  "domain": "GEOMETRIA · LOCALIZAÇÃO, ORIENTAÇÃO E REPRESENTAÇÃO ESPACIAL",
+  "topic": "localização de pessoas e objetos em relação à própria posição",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA11",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Onde está em relação a mim?",
+    "objective": "Descrever onde pessoas e objetos estão em relação à própria posição, usando direita, esquerda, em frente e atrás com um referencial explícito.",
+    "summary": "Para localizar algo em relação à própria posição, primeiro saiba para onde você está olhando. À direita e à esquerda são lados do seu corpo; em frente fica na direção para a qual você olha e atrás fica na direção oposta. Se a pessoa muda de posição ou vira o corpo, a descrição relativa a ela também pode mudar.",
+    "explanation": "Imagine que você está de frente para um quadro. Uma caixa que está ao lado da sua mão direita fica à sua direita; uma mochila atrás de você fica atrás de sua posição. Para fazer uma descrição clara, diga quem é a referência e para onde essa pessoa está olhando. Se duas pessoas olham em direções diferentes, o mesmo objeto pode ficar à direita de uma e à esquerda da outra. A tarefa descreve posições; não é necessário caminhar, tocar em objetos ou compartilhar uma localização pessoal.",
+    "workedExample": "Lia está de frente para a porta da sala. A mesa está diante dela e a estante está ao lado de sua mão esquerda. Uma descrição clara é: ‘Para Lia, que olha para a porta, a mesa está em frente e a estante está à esquerda’. Se Lia virar para outro lado, a referência muda.",
+    "commonMistake": "Descrever direita e esquerda como se fossem iguais para todas as pessoas, sem indicar a posição de quem observa.",
+    "priorKnowledge": [
+      "Reconhecer partes do próprio corpo, como direita e esquerda, com apoio quando necessário.",
+      "Comparar posições próximas em desenhos, maquetes ou objetos da sala."
+    ],
+    "keyConcepts": [
+      "referencial",
+      "posição do observador",
+      "direita",
+      "esquerda",
+      "em frente",
+      "atrás"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MISSING_OBSERVER_REFERENCE",
+        "action": "Marque com uma seta para onde a pessoa está olhando e descreva cada posição a partir dela."
+      },
+      {
+        "errorFocus": "REVERSE_RIGHT_LEFT",
+        "action": "Use uma figura voltada para a mesma direção da criança e identifique os lados do corpo antes de localizar o objeto."
+      },
+      {
+        "errorFocus": "CONFUSE_FRONT_AND_BACK",
+        "action": "Desenhe uma seta à frente da pessoa e outra no sentido oposto para representar atrás."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+      "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma11-desk-position-cards",
+        "title": "Cartões ao redor da mesa",
+        "instructions": "Uma figura sentada olha para o quadro; cartões representam uma mochila, uma cadeira e um livro ao redor dela.\n1. Confira para onde a figura está olhando.\n2. Coloque os cartões direita, esquerda, em frente e atrás de acordo com a posição da figura.\n3. Explique uma localização começando por ‘em relação à pessoa que olha para o quadro’.",
+        "steps": [
+          "Confira para onde a figura está olhando.",
+          "Coloque os cartões direita, esquerda, em frente e atrás de acordo com a posição da figura.",
+          "Explique uma localização começando por ‘em relação à pessoa que olha para o quadro’."
+        ],
+        "evidence": "Descrição que nomeia a pessoa de referência e usa corretamente um termo espacial.",
+        "privacyGuard": "Usar cenário ilustrado ou maquete; não pedir que estudantes compartilhem rotas ou endereços.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um objeto com apoio visual.",
+            "developing": "usa um termo espacial com o referencial indicado.",
+            "proficient": "descreve a posição da figura e explica como a orientação sustenta a resposta."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma11-two-observers-same-object",
+        "title": "Um objeto, dois pontos de vista",
+        "instructions": "Duas figuras olham em direções opostas e observam a mesma bola no chão.\n1. Marque a direção do olhar de cada figura.\n2. Descreva a bola em relação à primeira figura.\n3. Compare a descrição a partir da segunda figura e explique por que pode mudar.",
+        "steps": [
+          "Marque a direção do olhar de cada figura.",
+          "Descreva a bola em relação à primeira figura.",
+          "Compare a descrição a partir da segunda figura e explique por que pode mudar."
+        ],
+        "evidence": "Reconhecimento de que o referencial altera direita e esquerda, com posição da pessoa explicitada.",
+        "privacyGuard": "Atividade inteiramente ilustrada; aceitar resposta oral, gestual ou por posicionamento de cartões.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica que há duas figuras com ajuda.",
+            "developing": "descreve a bola a partir de uma delas.",
+            "proficient": "compara as duas perspectivas e nomeia a mudança de referencial."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01ma11-location-from-own-position-v1-01",
+          "bncc-ef01ma11-location-from-own-position-v1-02",
+          "bncc-ef01ma11-location-from-own-position-v1-03",
+          "bncc-ef01ma11-location-from-own-position-v1-04",
+          "bncc-ef01ma11-location-from-own-position-v1-05",
+          "bncc-ef01ma11-location-from-own-position-v1-06",
+          "bncc-ef01ma11-location-from-own-position-v1-07",
+          "bncc-ef01ma11-location-from-own-position-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01ma11-location-from-own-position-v1-09",
+          "bncc-ef01ma11-location-from-own-position-v1-10",
+          "bncc-ef01ma11-location-from-own-position-v1-11",
+          "bncc-ef01ma11-location-from-own-position-v1-12",
+          "bncc-ef01ma11-location-from-own-position-v1-13",
+          "bncc-ef01ma11-location-from-own-position-v1-14",
+          "bncc-ef01ma11-location-from-own-position-v1-15",
+          "bncc-ef01ma11-location-from-own-position-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01ma11-location-from-own-position-v1-17",
+          "bncc-ef01ma11-location-from-own-position-v1-18",
+          "bncc-ef01ma11-location-from-own-position-v1-19",
+          "bncc-ef01ma11-location-from-own-position-v1-20",
+          "bncc-ef01ma11-location-from-own-position-v1-21",
+          "bncc-ef01ma11-location-from-own-position-v1-22",
+          "bncc-ef01ma11-location-from-own-position-v1-23",
+          "bncc-ef01ma11-location-from-own-position-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01ma11-location-from-own-position-v1-25",
+          "bncc-ef01ma11-location-from-own-position-v1-26",
+          "bncc-ef01ma11-location-from-own-position-v1-27",
+          "bncc-ef01ma11-location-from-own-position-v1-28",
+          "bncc-ef01ma11-location-from-own-position-v1-29",
+          "bncc-ef01ma11-location-from-own-position-v1-30",
+          "bncc-ef01ma11-location-from-own-position-v1-31",
+          "bncc-ef01ma11-location-from-own-position-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01ma11-location-from-own-position-v1-33",
+          "bncc-ef01ma11-location-from-own-position-v1-34",
+          "bncc-ef01ma11-location-from-own-position-v1-35",
+          "bncc-ef01ma11-location-from-own-position-v1-36",
+          "bncc-ef01ma11-location-from-own-position-v1-37",
+          "bncc-ef01ma11-location-from-own-position-v1-38",
+          "bncc-ef01ma11-location-from-own-position-v1-39",
+          "bncc-ef01ma11-location-from-own-position-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA11",
+        "descriptor": "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-01",
+      "statement": "Lia olha para a porta. Uma mesa está diante dela, na direção do olhar. Onde está a mesa em relação a Lia?",
+      "prompt": "Lia olha para a porta. Uma mesa está diante dela, na direção do olhar. Onde está a mesa em relação a Lia?",
+      "options": [
+        "Em frente.",
+        "Atrás",
+        "À esquerda",
+        "À direita"
+      ],
+      "correctAnswer": "Em frente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Atrás": [
+          "FRONT_RELATIVE_TO_GAZE"
+        ],
+        "À esquerda": [
+          "FRONT_RELATIVE_TO_GAZE"
+        ],
+        "À direita": [
+          "FRONT_RELATIVE_TO_GAZE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIA_FRENTE_PARA_PORTA",
+      "explanation": "A mesa fica na direção para a qual Lia está olhando.",
+      "hint": "Siga a direção do olhar de Lia.",
+      "errorFocus": "FRONT_RELATIVE_TO_GAZE",
+      "feedback": {
+        "correct": "Boa observação: A mesa fica na direção para a qual Lia está olhando.",
+        "incorrect": "A mesa fica na direção para a qual Lia está olhando.",
+        "hint": "Siga a direção do olhar de Lia.",
+        "errorFocus": "FRONT_RELATIVE_TO_GAZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-02",
+      "statement": "Rui olha para o quadro. Uma caixa está ao lado de sua mão direita. Onde está a caixa para Rui?",
+      "prompt": "Rui olha para o quadro. Uma caixa está ao lado de sua mão direita. Onde está a caixa para Rui?",
+      "options": [
+        "À esquerda",
+        "À direita.",
+        "Atrás",
+        "Em frente"
+      ],
+      "correctAnswer": "À direita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "À esquerda": [
+          "RIGHT_FROM_OBSERVER"
+        ],
+        "Atrás": [
+          "RIGHT_FROM_OBSERVER"
+        ],
+        "Em frente": [
+          "RIGHT_FROM_OBSERVER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAIXA_AO_LADO_DIREITO",
+      "explanation": "A posição é descrita a partir do corpo de Rui.",
+      "hint": "Use o lado direito do observador.",
+      "errorFocus": "RIGHT_FROM_OBSERVER",
+      "feedback": {
+        "correct": "Boa observação: A posição é descrita a partir do corpo de Rui.",
+        "incorrect": "A posição é descrita a partir do corpo de Rui.",
+        "hint": "Use o lado direito do observador.",
+        "errorFocus": "RIGHT_FROM_OBSERVER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-03",
+      "statement": "Bia está olhando para a janela. A mochila está atrás dela, no sentido oposto ao seu olhar. Onde está a mochila para Bia?",
+      "prompt": "Bia está olhando para a janela. A mochila está atrás dela, no sentido oposto ao seu olhar. Onde está a mochila para Bia?",
+      "options": [
+        "Em frente",
+        "À direita",
+        "Atrás.",
+        "À esquerda"
+      ],
+      "correctAnswer": "Atrás.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Em frente": [
+          "BACK_OPPOSITE_GAZE"
+        ],
+        "À direita": [
+          "BACK_OPPOSITE_GAZE"
+        ],
+        "À esquerda": [
+          "BACK_OPPOSITE_GAZE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MOCHILA_ATRAS_DE_BIA",
+      "explanation": "Atrás fica no sentido oposto ao que Bia está olhando.",
+      "hint": "Procure a direção contrária ao olhar.",
+      "errorFocus": "BACK_OPPOSITE_GAZE",
+      "feedback": {
+        "correct": "Boa observação: Atrás fica no sentido oposto ao que Bia está olhando.",
+        "incorrect": "Atrás fica no sentido oposto ao que Bia está olhando.",
+        "hint": "Procure a direção contrária ao olhar.",
+        "errorFocus": "BACK_OPPOSITE_GAZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-04",
+      "statement": "Noah olha para a estante. O livro está ao lado da mão esquerda dele. Onde está o livro em relação a Noah?",
+      "prompt": "Noah olha para a estante. O livro está ao lado da mão esquerda dele. Onde está o livro em relação a Noah?",
+      "options": [
+        "À direita",
+        "Em frente",
+        "Atrás",
+        "À esquerda."
+      ],
+      "correctAnswer": "À esquerda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "À direita": [
+          "LEFT_FROM_BODY_REFERENCE"
+        ],
+        "Em frente": [
+          "LEFT_FROM_BODY_REFERENCE"
+        ],
+        "Atrás": [
+          "LEFT_FROM_BODY_REFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LIVRO_A_ESQUERDA_DE_NOAH",
+      "explanation": "A mão esquerda de Noah é a referência indicada.",
+      "hint": "Observe qual mão foi mencionada.",
+      "errorFocus": "LEFT_FROM_BODY_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A mão esquerda de Noah é a referência indicada.",
+        "incorrect": "A mão esquerda de Noah é a referência indicada.",
+        "hint": "Observe qual mão foi mencionada.",
+        "errorFocus": "LEFT_FROM_BODY_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-05",
+      "statement": "Uma figura está de frente para a janela. Uma cadeira fica na direção para a qual ela olha. A cadeira está",
+      "prompt": "Uma figura está de frente para a janela. Uma cadeira fica na direção para a qual ela olha. A cadeira está",
+      "options": [
+        "em frente à figura.",
+        "atrás da figura",
+        "à sua direita",
+        "à sua esquerda"
+      ],
+      "correctAnswer": "em frente à figura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "atrás da figura": [
+          "FRONT_WITH_EXPLICIT_VIEW"
+        ],
+        "à sua direita": [
+          "FRONT_WITH_EXPLICIT_VIEW"
+        ],
+        "à sua esquerda": [
+          "FRONT_WITH_EXPLICIT_VIEW"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FIGURA_OLHA_PARA_JANELA",
+      "explanation": "A janela indica a direção do olhar e a cadeira está nesse sentido.",
+      "hint": "Use a direção indicada pela janela.",
+      "errorFocus": "FRONT_WITH_EXPLICIT_VIEW",
+      "feedback": {
+        "correct": "Boa observação: A janela indica a direção do olhar e a cadeira está nesse sentido.",
+        "incorrect": "A janela indica a direção do olhar e a cadeira está nesse sentido.",
+        "hint": "Use a direção indicada pela janela.",
+        "errorFocus": "FRONT_WITH_EXPLICIT_VIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-06",
+      "statement": "Joana olha para uma porta. Um vaso está ao lado esquerdo do corpo dela. Onde está o vaso?",
+      "prompt": "Joana olha para uma porta. Um vaso está ao lado esquerdo do corpo dela. Onde está o vaso?",
+      "options": [
+        "À direita de Joana",
+        "À esquerda de Joana.",
+        "Atrás de Joana",
+        "Em frente a Joana"
+      ],
+      "correctAnswer": "À esquerda de Joana.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "À direita de Joana": [
+          "LEFT_RIGHT_DISTINCTION"
+        ],
+        "Atrás de Joana": [
+          "LEFT_RIGHT_DISTINCTION"
+        ],
+        "Em frente a Joana": [
+          "LEFT_RIGHT_DISTINCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBJETO_AO_LADO_ESQUERDO",
+      "explanation": "O enunciado informa explicitamente o lado do corpo de Joana.",
+      "hint": "Repita ‘lado esquerdo’.",
+      "errorFocus": "LEFT_RIGHT_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: O enunciado informa explicitamente o lado do corpo de Joana.",
+        "incorrect": "O enunciado informa explicitamente o lado do corpo de Joana.",
+        "hint": "Repita ‘lado esquerdo’.",
+        "errorFocus": "LEFT_RIGHT_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-07",
+      "statement": "Davi olha para o quadro. Uma caixa fica no sentido oposto ao olhar dele. A caixa está",
+      "prompt": "Davi olha para o quadro. Uma caixa fica no sentido oposto ao olhar dele. A caixa está",
+      "options": [
+        "em frente a Davi",
+        "à direita de Davi",
+        "atrás de Davi.",
+        "à esquerda de Davi"
+      ],
+      "correctAnswer": "atrás de Davi.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "em frente a Davi": [
+          "OPPOSITE_DIRECTION_IS_BEHIND"
+        ],
+        "à direita de Davi": [
+          "OPPOSITE_DIRECTION_IS_BEHIND"
+        ],
+        "à esquerda de Davi": [
+          "OPPOSITE_DIRECTION_IS_BEHIND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CAIXA_NA_DIRECAO_OPPOSTA",
+      "explanation": "A direção oposta ao olhar é atrás, conforme o referencial descrito.",
+      "hint": "Compare com a direção para onde Davi olha.",
+      "errorFocus": "OPPOSITE_DIRECTION_IS_BEHIND",
+      "feedback": {
+        "correct": "Boa observação: A direção oposta ao olhar é atrás, conforme o referencial descrito.",
+        "incorrect": "A direção oposta ao olhar é atrás, conforme o referencial descrito.",
+        "hint": "Compare com a direção para onde Davi olha.",
+        "errorFocus": "OPPOSITE_DIRECTION_IS_BEHIND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-08",
+      "statement": "Para dizer que um brinquedo está à direita de uma pessoa, o que precisamos saber?",
+      "prompt": "Para dizer que um brinquedo está à direita de uma pessoa, o que precisamos saber?",
+      "options": [
+        "A cor do brinquedo",
+        "O nome da sala",
+        "O tamanho do papel",
+        "Qual pessoa é a referência e para onde ela está orientada."
+      ],
+      "correctAnswer": "Qual pessoa é a referência e para onde ela está orientada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do brinquedo": [
+          "REFERENCE_POINT_REQUIRED"
+        ],
+        "O nome da sala": [
+          "REFERENCE_POINT_REQUIRED"
+        ],
+        "O tamanho do papel": [
+          "REFERENCE_POINT_REQUIRED"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "INDICAR_REFERENCIAL",
+      "explanation": "Direita e esquerda dependem da posição de quem observa.",
+      "hint": "Pense em quem está olhando.",
+      "errorFocus": "REFERENCE_POINT_REQUIRED",
+      "feedback": {
+        "correct": "Boa observação: Direita e esquerda dependem da posição de quem observa.",
+        "incorrect": "Direita e esquerda dependem da posição de quem observa.",
+        "hint": "Pense em quem está olhando.",
+        "errorFocus": "REFERENCE_POINT_REQUIRED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-09",
+      "statement": "Nina está de frente para a porta. A bola está ao lado da mão direita dela. Qual descrição é correta?",
+      "prompt": "Nina está de frente para a porta. A bola está ao lado da mão direita dela. Qual descrição é correta?",
+      "options": [
+        "A bola está à direita de Nina.",
+        "A bola está atrás de Nina",
+        "A bola está à esquerda de Nina",
+        "A bola está em frente a Nina"
+      ],
+      "correctAnswer": "A bola está à direita de Nina.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A bola está atrás de Nina": [
+          "IDENTIFY_RIGHT_FROM_PERSON"
+        ],
+        "A bola está à esquerda de Nina": [
+          "IDENTIFY_RIGHT_FROM_PERSON"
+        ],
+        "A bola está em frente a Nina": [
+          "IDENTIFY_RIGHT_FROM_PERSON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NINA_E_A_BOLA",
+      "explanation": "A mão direita de Nina define o lado da bola.",
+      "hint": "Use o corpo de Nina como referência.",
+      "errorFocus": "IDENTIFY_RIGHT_FROM_PERSON",
+      "feedback": {
+        "correct": "Boa observação: A mão direita de Nina define o lado da bola.",
+        "incorrect": "A mão direita de Nina define o lado da bola.",
+        "hint": "Use o corpo de Nina como referência.",
+        "errorFocus": "IDENTIFY_RIGHT_FROM_PERSON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-10",
+      "statement": "Caio olha para a mesa. Um livro está sobre a mesa diante dele. Onde está o livro para Caio?",
+      "prompt": "Caio olha para a mesa. Um livro está sobre a mesa diante dele. Onde está o livro para Caio?",
+      "options": [
+        "Atrás",
+        "Em frente.",
+        "À direita",
+        "À esquerda"
+      ],
+      "correctAnswer": "Em frente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Atrás": [
+          "FRONT_POSITION"
+        ],
+        "À direita": [
+          "FRONT_POSITION"
+        ],
+        "À esquerda": [
+          "FRONT_POSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVRO_EM_FRENTE_A_CAIO",
+      "explanation": "A mesa está na direção do olhar de Caio.",
+      "hint": "Siga a linha do olhar.",
+      "errorFocus": "FRONT_POSITION",
+      "feedback": {
+        "correct": "Boa observação: A mesa está na direção do olhar de Caio.",
+        "incorrect": "A mesa está na direção do olhar de Caio.",
+        "hint": "Siga a linha do olhar.",
+        "errorFocus": "FRONT_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-11",
+      "statement": "Uma figura olha para o quadro. O estojo está ao lado de sua mão esquerda. Em qual lado está o estojo para a figura?",
+      "prompt": "Uma figura olha para o quadro. O estojo está ao lado de sua mão esquerda. Em qual lado está o estojo para a figura?",
+      "options": [
+        "À direita",
+        "Atrás",
+        "À esquerda.",
+        "Em frente"
+      ],
+      "correctAnswer": "À esquerda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "À direita": [
+          "LEFT_POSITION_FROM_FIGURE"
+        ],
+        "Atrás": [
+          "LEFT_POSITION_FROM_FIGURE"
+        ],
+        "Em frente": [
+          "LEFT_POSITION_FROM_FIGURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ESTOJO_A_ESQUERDA_DA_FIGURA",
+      "explanation": "A resposta usa a orientação indicada para a figura.",
+      "hint": "Localize a mão esquerda da figura.",
+      "errorFocus": "LEFT_POSITION_FROM_FIGURE",
+      "feedback": {
+        "correct": "Boa observação: A resposta usa a orientação indicada para a figura.",
+        "incorrect": "A resposta usa a orientação indicada para a figura.",
+        "hint": "Localize a mão esquerda da figura.",
+        "errorFocus": "LEFT_POSITION_FROM_FIGURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-12",
+      "statement": "Mara olha para a porta; Ivo está virado para o lado contrário. Um banco está à direita de Mara. O banco necessariamente está à direita de Ivo?",
+      "prompt": "Mara olha para a porta; Ivo está virado para o lado contrário. Um banco está à direita de Mara. O banco necessariamente está à direita de Ivo?",
+      "options": [
+        "Sim, direita significa sempre o mesmo lado da sala",
+        "Sim, o banco muda de lugar",
+        "Não, porque o banco fica em frente de todos",
+        "Não; a posição relativa pode mudar porque Ivo olha para outro lado."
+      ],
+      "correctAnswer": "Não; a posição relativa pode mudar porque Ivo olha para outro lado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, direita significa sempre o mesmo lado da sala": [
+          "VIEWPOINT_CHANGES_RIGHT_LEFT"
+        ],
+        "Sim, o banco muda de lugar": [
+          "VIEWPOINT_CHANGES_RIGHT_LEFT"
+        ],
+        "Não, porque o banco fica em frente de todos": [
+          "VIEWPOINT_CHANGES_RIGHT_LEFT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DUAS_FIGURAS_DIRECOES_OPostas",
+      "explanation": "Direita e esquerda são descritas em relação a cada observador, não como rótulos fixos da sala.",
+      "hint": "Compare para onde cada pessoa olha.",
+      "errorFocus": "VIEWPOINT_CHANGES_RIGHT_LEFT",
+      "feedback": {
+        "correct": "Boa observação: Direita e esquerda são descritas em relação a cada observador, não como rótulos fixos da sala.",
+        "incorrect": "Direita e esquerda são descritas em relação a cada observador, não como rótulos fixos da sala.",
+        "hint": "Compare para onde cada pessoa olha.",
+        "errorFocus": "VIEWPOINT_CHANGES_RIGHT_LEFT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-13",
+      "statement": "Tomás olha para a janela. A caixa está no sentido oposto ao seu olhar. Qual termo localiza a caixa?",
+      "prompt": "Tomás olha para a janela. A caixa está no sentido oposto ao seu olhar. Qual termo localiza a caixa?",
+      "options": [
+        "Atrás.",
+        "Em frente",
+        "À esquerda",
+        "À direita"
+      ],
+      "correctAnswer": "Atrás.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Em frente": [
+          "BACK_FROM_VIEW_DIRECTION"
+        ],
+        "À esquerda": [
+          "BACK_FROM_VIEW_DIRECTION"
+        ],
+        "À direita": [
+          "BACK_FROM_VIEW_DIRECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TOMAS_E_A_CAIXA_ATRAS",
+      "explanation": "O sentido oposto à direção de olhar foi descrito como atrás.",
+      "hint": "Procure o sentido contrário.",
+      "errorFocus": "BACK_FROM_VIEW_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: O sentido oposto à direção de olhar foi descrito como atrás.",
+        "incorrect": "O sentido oposto à direção de olhar foi descrito como atrás.",
+        "hint": "Procure o sentido contrário.",
+        "errorFocus": "BACK_FROM_VIEW_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-14",
+      "statement": "Uma criança olha para o quadro e quer colocar um cartão à direita da figura. Onde deve colocá-lo?",
+      "prompt": "Uma criança olha para o quadro e quer colocar um cartão à direita da figura. Onde deve colocá-lo?",
+      "options": [
+        "Sempre no lado direito de quem vê o papel",
+        "Ao lado da mão direita da figura, respeitando para onde ela olha.",
+        "No sentido oposto ao olhar",
+        "Sobre o quadro"
+      ],
+      "correctAnswer": "Ao lado da mão direita da figura, respeitando para onde ela olha.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sempre no lado direito de quem vê o papel": [
+          "APPLY_SELF_REFERENCE"
+        ],
+        "No sentido oposto ao olhar": [
+          "APPLY_SELF_REFERENCE"
+        ],
+        "Sobre o quadro": [
+          "APPLY_SELF_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "POSICIONAR_CARTAO_DIREITA",
+      "explanation": "A posição deve ser relativa à figura, não a quem segura o papel.",
+      "hint": "Use a figura como observadora.",
+      "errorFocus": "APPLY_SELF_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A posição deve ser relativa à figura, não a quem segura o papel.",
+        "incorrect": "A posição deve ser relativa à figura, não a quem segura o papel.",
+        "hint": "Use a figura como observadora.",
+        "errorFocus": "APPLY_SELF_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-15",
+      "statement": "Uma boneca está olhando para a mesa. A cadeira está à sua esquerda. Como completar: ‘Para a boneca, a cadeira está...’?",
+      "prompt": "Uma boneca está olhando para a mesa. A cadeira está à sua esquerda. Como completar: ‘Para a boneca, a cadeira está...’?",
+      "options": [
+        "à direita",
+        "em frente",
+        "à esquerda.",
+        "atrás"
+      ],
+      "correctAnswer": "à esquerda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "à direita": [
+          "RELATIVE_LOCATION_SENTENCE"
+        ],
+        "em frente": [
+          "RELATIVE_LOCATION_SENTENCE"
+        ],
+        "atrás": [
+          "RELATIVE_LOCATION_SENTENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BONECA_E_CADEIRA_A_ESQUERDA",
+      "explanation": "O enunciado já informa a posição em relação à boneca.",
+      "hint": "Mantenha o mesmo referencial.",
+      "errorFocus": "RELATIVE_LOCATION_SENTENCE",
+      "feedback": {
+        "correct": "Boa observação: O enunciado já informa a posição em relação à boneca.",
+        "incorrect": "O enunciado já informa a posição em relação à boneca.",
+        "hint": "Mantenha o mesmo referencial.",
+        "errorFocus": "RELATIVE_LOCATION_SENTENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-16",
+      "statement": "Por que uma porta pode ficar em frente de uma pessoa e atrás de outra que está virada ao contrário?",
+      "prompt": "Por que uma porta pode ficar em frente de uma pessoa e atrás de outra que está virada ao contrário?",
+      "options": [
+        "Porque a porta muda de lugar sozinha",
+        "Porque as palavras não indicam posição",
+        "Porque as duas pessoas estão no mesmo ponto",
+        "Porque ‘em frente’ e ‘atrás’ dependem da direção para onde cada pessoa olha."
+      ],
+      "correctAnswer": "Porque ‘em frente’ e ‘atrás’ dependem da direção para onde cada pessoa olha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque a porta muda de lugar sozinha": [
+          "FRONT_BACK_VIEWPOINT"
+        ],
+        "Porque as palavras não indicam posição": [
+          "FRONT_BACK_VIEWPOINT"
+        ],
+        "Porque as duas pessoas estão no mesmo ponto": [
+          "FRONT_BACK_VIEWPOINT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "FRENTE_DEPENDE_DO_OLHAR",
+      "explanation": "A orientação do observador muda a descrição relativa.",
+      "hint": "Compare as direções dos dois olhares.",
+      "errorFocus": "FRONT_BACK_VIEWPOINT",
+      "feedback": {
+        "correct": "Boa observação: A orientação do observador muda a descrição relativa.",
+        "incorrect": "A orientação do observador muda a descrição relativa.",
+        "hint": "Compare as direções dos dois olhares.",
+        "errorFocus": "FRONT_BACK_VIEWPOINT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-17",
+      "statement": "Uma personagem olha para a entrada da biblioteca. Uma estante está à direita dela e um banco está em frente. Qual descrição mantém a personagem como referência?",
+      "prompt": "Uma personagem olha para a entrada da biblioteca. Uma estante está à direita dela e um banco está em frente. Qual descrição mantém a personagem como referência?",
+      "options": [
+        "A estante está à direita dela e o banco está em frente.",
+        "A estante está sempre à direita de todas as pessoas",
+        "O banco está atrás dela",
+        "A entrada está à esquerda sem informação"
+      ],
+      "correctAnswer": "A estante está à direita dela e o banco está em frente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A estante está sempre à direita de todas as pessoas": [
+          "TRANSFER_WITH_EXPLICIT_REFERENCE"
+        ],
+        "O banco está atrás dela": [
+          "TRANSFER_WITH_EXPLICIT_REFERENCE"
+        ],
+        "A entrada está à esquerda sem informação": [
+          "TRANSFER_WITH_EXPLICIT_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ARRANJO_DA_BIBLIOTECA_FICTICIA",
+      "explanation": "A descrição preserva os dois termos em relação à personagem indicada.",
+      "hint": "Comece com ‘para a personagem’.",
+      "errorFocus": "TRANSFER_WITH_EXPLICIT_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A descrição preserva os dois termos em relação à personagem indicada.",
+        "incorrect": "A descrição preserva os dois termos em relação à personagem indicada.",
+        "hint": "Comece com ‘para a personagem’.",
+        "errorFocus": "TRANSFER_WITH_EXPLICIT_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-18",
+      "statement": "Duas crianças ficam em lados diferentes de uma bola e olham em direções opostas. O que é importante antes de dizer direita ou esquerda?",
+      "prompt": "Duas crianças ficam em lados diferentes de uma bola e olham em direções opostas. O que é importante antes de dizer direita ou esquerda?",
+      "options": [
+        "Contar quantas cores há na bola",
+        "Indicar qual criança é a referência e para onde ela olha.",
+        "Mudar a bola de lugar",
+        "Escolher qualquer lado sem explicar"
+      ],
+      "correctAnswer": "Indicar qual criança é a referência e para onde ela olha.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Contar quantas cores há na bola": [
+          "EXPLICIT_OBSERVER_NEEDED"
+        ],
+        "Mudar a bola de lugar": [
+          "EXPLICIT_OBSERVER_NEEDED"
+        ],
+        "Escolher qualquer lado sem explicar": [
+          "EXPLICIT_OBSERVER_NEEDED"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_OBSERVADORES_BOLA",
+      "explanation": "O mesmo objeto pode ter posições relativas distintas para observadores diferentes.",
+      "hint": "Nomeie quem observa primeiro.",
+      "errorFocus": "EXPLICIT_OBSERVER_NEEDED",
+      "feedback": {
+        "correct": "Boa observação: O mesmo objeto pode ter posições relativas distintas para observadores diferentes.",
+        "incorrect": "O mesmo objeto pode ter posições relativas distintas para observadores diferentes.",
+        "hint": "Nomeie quem observa primeiro.",
+        "errorFocus": "EXPLICIT_OBSERVER_NEEDED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-19",
+      "statement": "Uma imagem mostra uma pessoa olhando para a porta; uma mochila está no sentido oposto. Como descrevê-la?",
+      "prompt": "Uma imagem mostra uma pessoa olhando para a porta; uma mochila está no sentido oposto. Como descrevê-la?",
+      "options": [
+        "A mochila está sempre atrás de quem vê a foto",
+        "A mochila está à direita sem pista",
+        "A mochila está atrás da pessoa, em relação à direção do olhar dela.",
+        "A mochila está em frente à pessoa"
+      ],
+      "correctAnswer": "A mochila está atrás da pessoa, em relação à direção do olhar dela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A mochila está sempre atrás de quem vê a foto": [
+          "IMAGE_VIEWPOINT_SCOPE"
+        ],
+        "A mochila está à direita sem pista": [
+          "IMAGE_VIEWPOINT_SCOPE"
+        ],
+        "A mochila está em frente à pessoa": [
+          "IMAGE_VIEWPOINT_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FOTO_COM_FIGURA_DE_COSTAS",
+      "explanation": "A referência é a pessoa representada, não quem observa a imagem.",
+      "hint": "Diga quem é o observador no desenho.",
+      "errorFocus": "IMAGE_VIEWPOINT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A referência é a pessoa representada, não quem observa a imagem.",
+        "incorrect": "A referência é a pessoa representada, não quem observa a imagem.",
+        "hint": "Diga quem é o observador no desenho.",
+        "errorFocus": "IMAGE_VIEWPOINT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-20",
+      "statement": "Uma criança gira para olhar a janela. Um vaso que antes estava à direita pode passar a ser descrito à esquerda?",
+      "prompt": "Uma criança gira para olhar a janela. Um vaso que antes estava à direita pode passar a ser descrito à esquerda?",
+      "options": [
+        "Não; direita e esquerda são fixas no chão",
+        "Sim, porque o vaso precisa se mover",
+        "Não; objetos não têm posição",
+        "Sim, se a mudança de orientação colocar o vaso do outro lado em relação à criança."
+      ],
+      "correctAnswer": "Sim, se a mudança de orientação colocar o vaso do outro lado em relação à criança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não; direita e esquerda são fixas no chão": [
+          "ORIENTATION_CHANGE"
+        ],
+        "Sim, porque o vaso precisa se mover": [
+          "ORIENTATION_CHANGE"
+        ],
+        "Não; objetos não têm posição": [
+          "ORIENTATION_CHANGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MESA_MUDA_REFERENCIAL",
+      "explanation": "A descrição pode mudar quando muda a posição ou orientação da referência.",
+      "hint": "Considere a rotação da criança.",
+      "errorFocus": "ORIENTATION_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A descrição pode mudar quando muda a posição ou orientação da referência.",
+        "incorrect": "A descrição pode mudar quando muda a posição ou orientação da referência.",
+        "hint": "Considere a rotação da criança.",
+        "errorFocus": "ORIENTATION_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-21",
+      "statement": "Numa maquete, a figura olha para o quadro; um armário fica ao lado de sua mão esquerda. Como registrar a posição?",
+      "prompt": "Numa maquete, a figura olha para o quadro; um armário fica ao lado de sua mão esquerda. Como registrar a posição?",
+      "options": [
+        "O armário está à esquerda da figura que olha para o quadro.",
+        "O armário está sempre à esquerda da maquete",
+        "O armário está atrás da figura",
+        "O armário está em frente sem saber a direção"
+      ],
+      "correctAnswer": "O armário está à esquerda da figura que olha para o quadro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O armário está sempre à esquerda da maquete": [
+          "TRANSFER_MODEL_TO_DESCRIPTION"
+        ],
+        "O armário está atrás da figura": [
+          "TRANSFER_MODEL_TO_DESCRIPTION"
+        ],
+        "O armário está em frente sem saber a direção": [
+          "TRANSFER_MODEL_TO_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAQUETE_DE_SALA",
+      "explanation": "A frase declara a figura e a direção do olhar como referenciais.",
+      "hint": "Use ‘da figura’ na descrição.",
+      "errorFocus": "TRANSFER_MODEL_TO_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase declara a figura e a direção do olhar como referenciais.",
+        "incorrect": "A frase declara a figura e a direção do olhar como referenciais.",
+        "hint": "Use ‘da figura’ na descrição.",
+        "errorFocus": "TRANSFER_MODEL_TO_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-22",
+      "statement": "Sara olha para o leste do desenho; Beto olha para o oeste. Um livro está à direita de Sara. Qual cuidado é necessário para localizar o livro para Beto?",
+      "prompt": "Sara olha para o leste do desenho; Beto olha para o oeste. Um livro está à direita de Sara. Qual cuidado é necessário para localizar o livro para Beto?",
+      "options": [
+        "Manter a resposta de Sara sem conferir",
+        "Recalcular a posição usando a orientação de Beto.",
+        "Dizer que o livro está atrás de todos",
+        "Ignorar para onde Beto olha"
+      ],
+      "correctAnswer": "Recalcular a posição usando a orientação de Beto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter a resposta de Sara sem conferir": [
+          "RECOMPUTE_FROM_NEW_VIEWPOINT"
+        ],
+        "Dizer que o livro está atrás de todos": [
+          "RECOMPUTE_FROM_NEW_VIEWPOINT"
+        ],
+        "Ignorar para onde Beto olha": [
+          "RECOMPUTE_FROM_NEW_VIEWPOINT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AMIGOS_OLHAM_PARA_DIRECOES_DIFERENTES",
+      "explanation": "O termo direita precisa ser interpretado novamente a partir do novo observador.",
+      "hint": "Mude o referencial, não o objeto.",
+      "errorFocus": "RECOMPUTE_FROM_NEW_VIEWPOINT",
+      "feedback": {
+        "correct": "Boa observação: O termo direita precisa ser interpretado novamente a partir do novo observador.",
+        "incorrect": "O termo direita precisa ser interpretado novamente a partir do novo observador.",
+        "hint": "Mude o referencial, não o objeto.",
+        "errorFocus": "RECOMPUTE_FROM_NEW_VIEWPOINT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-23",
+      "statement": "A frase ‘a caixa está à direita’ não diz de quem. Como torná-la mais clara?",
+      "prompt": "A frase ‘a caixa está à direita’ não diz de quem. Como torná-la mais clara?",
+      "options": [
+        "Escrever apenas ‘caixa’",
+        "Apagar a palavra direita",
+        "Dizer ‘a caixa está à direita de Lia, que olha para a porta’. ",
+        "Dizer que a caixa está em todo lugar"
+      ],
+      "correctAnswer": "Dizer ‘a caixa está à direita de Lia, que olha para a porta’. ",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escrever apenas ‘caixa’": [
+          "CLARIFY_REFERENCE"
+        ],
+        "Apagar a palavra direita": [
+          "CLARIFY_REFERENCE"
+        ],
+        "Dizer que a caixa está em todo lugar": [
+          "CLARIFY_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DESCRICAO_COM_AMBIGUIDADE",
+      "explanation": "Nomear observador e orientação reduz a ambiguidade.",
+      "hint": "Acrescente a pessoa de referência.",
+      "errorFocus": "CLARIFY_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Nomear observador e orientação reduz a ambiguidade.",
+        "incorrect": "Nomear observador e orientação reduz a ambiguidade.",
+        "hint": "Acrescente a pessoa de referência.",
+        "errorFocus": "CLARIFY_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-24",
+      "statement": "Um desenho tem uma cadeira e uma mesa, mas não mostra pessoa nem seta de orientação. O que falta para dizer esquerda e direita em relação a alguém?",
+      "prompt": "Um desenho tem uma cadeira e uma mesa, mas não mostra pessoa nem seta de orientação. O que falta para dizer esquerda e direita em relação a alguém?",
+      "options": [
+        "Mais cores no desenho",
+        "O tamanho exato da mesa",
+        "Uma legenda com nomes de objetos",
+        "A posição e a direção do olhar da pessoa de referência."
+      ],
+      "correctAnswer": "A posição e a direção do olhar da pessoa de referência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mais cores no desenho": [
+          "MISSING_VIEWPOINT"
+        ],
+        "O tamanho exato da mesa": [
+          "MISSING_VIEWPOINT"
+        ],
+        "Uma legenda com nomes de objetos": [
+          "MISSING_VIEWPOINT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MAPA_DE_CARTOES_SEM_PESSOA",
+      "explanation": "Sem indicar a referência, os lados podem ficar ambíguos.",
+      "hint": "Pergunte ‘à direita de quem?’.",
+      "errorFocus": "MISSING_VIEWPOINT",
+      "feedback": {
+        "correct": "Boa observação: Sem indicar a referência, os lados podem ficar ambíguos.",
+        "incorrect": "Sem indicar a referência, os lados podem ficar ambíguos.",
+        "hint": "Pergunte ‘à direita de quem?’.",
+        "errorFocus": "MISSING_VIEWPOINT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-25",
+      "statement": "Leo olha para o quadro. Uma planta está ao lado da mão esquerda dele. Onde está a planta para Leo?",
+      "prompt": "Leo olha para o quadro. Uma planta está ao lado da mão esquerda dele. Onde está a planta para Leo?",
+      "options": [
+        "À esquerda.",
+        "À direita",
+        "Em frente",
+        "Atrás"
+      ],
+      "correctAnswer": "À esquerda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "À direita": [
+          "LOCK_IN_LEFT"
+        ],
+        "Em frente": [
+          "LOCK_IN_LEFT"
+        ],
+        "Atrás": [
+          "LOCK_IN_LEFT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PESSOA_FRENTE_PARA_QUADRO",
+      "explanation": "A mão esquerda de Leo é a referência descrita.",
+      "hint": "Localize o lado do corpo indicado.",
+      "errorFocus": "LOCK_IN_LEFT",
+      "feedback": {
+        "correct": "Boa observação: A mão esquerda de Leo é a referência descrita.",
+        "incorrect": "A mão esquerda de Leo é a referência descrita.",
+        "hint": "Localize o lado do corpo indicado.",
+        "errorFocus": "LOCK_IN_LEFT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-26",
+      "statement": "Uma criança olha para a porta. Um tapete está na direção do olhar e uma mochila no sentido oposto. Qual par está correto?",
+      "prompt": "Uma criança olha para a porta. Um tapete está na direção do olhar e uma mochila no sentido oposto. Qual par está correto?",
+      "options": [
+        "Tapete atrás; mochila em frente",
+        "Tapete em frente; mochila atrás.",
+        "Ambos à direita",
+        "Ambos à esquerda"
+      ],
+      "correctAnswer": "Tapete em frente; mochila atrás.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Tapete atrás; mochila em frente": [
+          "LOCK_IN_FRONT_BACK_PAIR"
+        ],
+        "Ambos à direita": [
+          "LOCK_IN_FRONT_BACK_PAIR"
+        ],
+        "Ambos à esquerda": [
+          "LOCK_IN_FRONT_BACK_PAIR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBJETO_EM_FRENTE_E_ATRAS",
+      "explanation": "As duas posições são definidas pela direção do olhar da criança.",
+      "hint": "Compare cada objeto com a seta do olhar.",
+      "errorFocus": "LOCK_IN_FRONT_BACK_PAIR",
+      "feedback": {
+        "correct": "Boa observação: As duas posições são definidas pela direção do olhar da criança.",
+        "incorrect": "As duas posições são definidas pela direção do olhar da criança.",
+        "hint": "Compare cada objeto com a seta do olhar.",
+        "errorFocus": "LOCK_IN_FRONT_BACK_PAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-27",
+      "statement": "Uma bola está à direita da figura A. A figura B está virada ao contrário. Qual informação adicional precisamos para dizer a posição da bola para B?",
+      "prompt": "Uma bola está à direita da figura A. A figura B está virada ao contrário. Qual informação adicional precisamos para dizer a posição da bola para B?",
+      "options": [
+        "A marca da bola",
+        "A cor da roupa de A",
+        "A orientação e a posição de B em relação à bola.",
+        "A quantidade de janelas"
+      ],
+      "correctAnswer": "A orientação e a posição de B em relação à bola.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A marca da bola": [
+          "LOCK_IN_REFERENCE_SWITCH"
+        ],
+        "A cor da roupa de A": [
+          "LOCK_IN_REFERENCE_SWITCH"
+        ],
+        "A quantidade de janelas": [
+          "LOCK_IN_REFERENCE_SWITCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "DIREITA_DE_QUEM",
+      "explanation": "A posição relativa de B precisa ser recalculada a partir de B.",
+      "hint": "Use B como novo observador.",
+      "errorFocus": "LOCK_IN_REFERENCE_SWITCH",
+      "feedback": {
+        "correct": "Boa observação: A posição relativa de B precisa ser recalculada a partir de B.",
+        "incorrect": "A posição relativa de B precisa ser recalculada a partir de B.",
+        "hint": "Use B como novo observador.",
+        "errorFocus": "LOCK_IN_REFERENCE_SWITCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-28",
+      "statement": "A professora pede para desenhar uma estrela atrás da pessoa que olha para o quadro. Onde deve aparecer a estrela?",
+      "prompt": "A professora pede para desenhar uma estrela atrás da pessoa que olha para o quadro. Onde deve aparecer a estrela?",
+      "options": [
+        "Na direção do quadro",
+        "Sempre no canto direito da folha",
+        "Sobre o rosto da pessoa",
+        "No lado oposto à direção do olhar da pessoa."
+      ],
+      "correctAnswer": "No lado oposto à direção do olhar da pessoa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Na direção do quadro": [
+          "LOCK_IN_BEHIND"
+        ],
+        "Sempre no canto direito da folha": [
+          "LOCK_IN_BEHIND"
+        ],
+        "Sobre o rosto da pessoa": [
+          "LOCK_IN_BEHIND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "INSTRUCAO_DE_POSICIONAMENTO",
+      "explanation": "Atrás corresponde ao sentido contrário ao olhar.",
+      "hint": "Pense no lado oposto ao quadro.",
+      "errorFocus": "LOCK_IN_BEHIND",
+      "feedback": {
+        "correct": "Boa observação: Atrás corresponde ao sentido contrário ao olhar.",
+        "incorrect": "Atrás corresponde ao sentido contrário ao olhar.",
+        "hint": "Pense no lado oposto ao quadro.",
+        "errorFocus": "LOCK_IN_BEHIND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-29",
+      "statement": "Duas figuras lado a lado olham para a mesma parede. Para ambas, qual regra ajuda a localizar algo à direita?",
+      "prompt": "Duas figuras lado a lado olham para a mesma parede. Para ambas, qual regra ajuda a localizar algo à direita?",
+      "options": [
+        "Usar o lado direito de cada figura como referência.",
+        "Usar sempre o lado direito de quem vê o desenho",
+        "Escolher o lado mais próximo da parede",
+        "Ignorar a orientação das figuras"
+      ],
+      "correctAnswer": "Usar o lado direito de cada figura como referência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usar sempre o lado direito de quem vê o desenho": [
+          "LOCK_IN_BODY_REFERENCE"
+        ],
+        "Escolher o lado mais próximo da parede": [
+          "LOCK_IN_BODY_REFERENCE"
+        ],
+        "Ignorar a orientação das figuras": [
+          "LOCK_IN_BODY_REFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DIREITA_NO_ESPELHO",
+      "explanation": "A descrição solicitada é relativa à posição de cada pessoa.",
+      "hint": "Use o corpo da figura, não o seu.",
+      "errorFocus": "LOCK_IN_BODY_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A descrição solicitada é relativa à posição de cada pessoa.",
+        "incorrect": "A descrição solicitada é relativa à posição de cada pessoa.",
+        "hint": "Use o corpo da figura, não o seu.",
+        "errorFocus": "LOCK_IN_BODY_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-30",
+      "statement": "Uma criança vira-se e passa a olhar para a parede oposta. O que pode acontecer às descrições direita e esquerda de um objeto fixo?",
+      "prompt": "Uma criança vira-se e passa a olhar para a parede oposta. O que pode acontecer às descrições direita e esquerda de um objeto fixo?",
+      "options": [
+        "O objeto necessariamente se move",
+        "Podem trocar de lado em relação à criança.",
+        "As palavras deixam de existir",
+        "A posição nunca pode ser descrita"
+      ],
+      "correctAnswer": "Podem trocar de lado em relação à criança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O objeto necessariamente se move": [
+          "LOCK_IN_ROTATION_EFFECT"
+        ],
+        "As palavras deixam de existir": [
+          "LOCK_IN_ROTATION_EFFECT"
+        ],
+        "A posição nunca pode ser descrita": [
+          "LOCK_IN_ROTATION_EFFECT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TROCA_DE_POSICAO_DA_PESSOA",
+      "explanation": "A orientação da criança mudou; o objeto pode ficar em outro lado relativo.",
+      "hint": "Mantenha o objeto parado e gire a referência.",
+      "errorFocus": "LOCK_IN_ROTATION_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: A orientação da criança mudou; o objeto pode ficar em outro lado relativo.",
+        "incorrect": "A orientação da criança mudou; o objeto pode ficar em outro lado relativo.",
+        "hint": "Mantenha o objeto parado e gire a referência.",
+        "errorFocus": "LOCK_IN_ROTATION_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-31",
+      "statement": "Qual frase informa melhor um referencial?",
+      "prompt": "Qual frase informa melhor um referencial?",
+      "options": [
+        "O banco está à direita.",
+        "Tem um banco na sala.",
+        "‘Para Ana, que olha para a janela, o banco está à direita’.",
+        "A janela é bonita."
+      ],
+      "correctAnswer": "‘Para Ana, que olha para a janela, o banco está à direita’.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O banco está à direita.": [
+          "LOCK_IN_CLEAR_DESCRIPTION"
+        ],
+        "Tem um banco na sala.": [
+          "LOCK_IN_CLEAR_DESCRIPTION"
+        ],
+        "A janela é bonita.": [
+          "LOCK_IN_CLEAR_DESCRIPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "QUAL_FRASE_E_CLARA",
+      "explanation": "A frase clara identifica observadora, orientação e posição.",
+      "hint": "Escolha a frase que diz de quem é a direita.",
+      "errorFocus": "LOCK_IN_CLEAR_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase clara identifica observadora, orientação e posição.",
+        "incorrect": "A frase clara identifica observadora, orientação e posição.",
+        "hint": "Escolha a frase que diz de quem é a direita.",
+        "errorFocus": "LOCK_IN_CLEAR_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-32",
+      "statement": "Quais palavras do descritor ajudam a falar da posição em relação à própria pessoa?",
+      "prompt": "Quais palavras do descritor ajudam a falar da posição em relação à própria pessoa?",
+      "options": [
+        "Ontem, hoje, amanhã e depois",
+        "Quente, frio, seco e úmido",
+        "Maior, menor, longo e curto",
+        "À direita, à esquerda, em frente e atrás."
+      ],
+      "correctAnswer": "À direita, à esquerda, em frente e atrás.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ontem, hoje, amanhã e depois": [
+          "LOCK_IN_SPATIAL_VOCABULARY"
+        ],
+        "Quente, frio, seco e úmido": [
+          "LOCK_IN_SPATIAL_VOCABULARY"
+        ],
+        "Maior, menor, longo e curto": [
+          "LOCK_IN_SPATIAL_VOCABULARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TERMOS_ESPACIAIS",
+      "explanation": "Esses termos indicam posição relativa ao observador.",
+      "hint": "Procure os termos de localização.",
+      "errorFocus": "LOCK_IN_SPATIAL_VOCABULARY",
+      "feedback": {
+        "correct": "Boa observação: Esses termos indicam posição relativa ao observador.",
+        "incorrect": "Esses termos indicam posição relativa ao observador.",
+        "hint": "Procure os termos de localização.",
+        "errorFocus": "LOCK_IN_SPATIAL_VOCABULARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-33",
+      "statement": "Uma pessoa olha para o quadro. O estojo está ao lado da mão direita dela. Onde está o estojo?",
+      "prompt": "Uma pessoa olha para o quadro. O estojo está ao lado da mão direita dela. Onde está o estojo?",
+      "options": [
+        "À direita da pessoa.",
+        "Atrás da pessoa",
+        "Em frente da pessoa",
+        "À esquerda da pessoa"
+      ],
+      "correctAnswer": "À direita da pessoa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Atrás da pessoa": [
+          "REVIEW_RIGHT"
+        ],
+        "Em frente da pessoa": [
+          "REVIEW_RIGHT"
+        ],
+        "À esquerda da pessoa": [
+          "REVIEW_RIGHT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_OBJETO_DIREITA",
+      "explanation": "A mão indicada define o lado relativo.",
+      "hint": "Use a pessoa como referência.",
+      "errorFocus": "REVIEW_RIGHT",
+      "feedback": {
+        "correct": "Boa observação: A mão indicada define o lado relativo.",
+        "incorrect": "A mão indicada define o lado relativo.",
+        "hint": "Use a pessoa como referência.",
+        "errorFocus": "REVIEW_RIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-34",
+      "statement": "A figura olha para a porta e a bola fica no sentido oposto. Onde está a bola?",
+      "prompt": "A figura olha para a porta e a bola fica no sentido oposto. Onde está a bola?",
+      "options": [
+        "Em frente à figura",
+        "Atrás da figura.",
+        "À esquerda sem outra pista",
+        "À direita sem outra pista"
+      ],
+      "correctAnswer": "Atrás da figura.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Em frente à figura": [
+          "REVIEW_BEHIND"
+        ],
+        "À esquerda sem outra pista": [
+          "REVIEW_BEHIND"
+        ],
+        "À direita sem outra pista": [
+          "REVIEW_BEHIND"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_OBJETO_ATRAS",
+      "explanation": "O sentido oposto ao olhar é atrás.",
+      "hint": "Compare com a seta do olhar.",
+      "errorFocus": "REVIEW_BEHIND",
+      "feedback": {
+        "correct": "Boa observação: O sentido oposto ao olhar é atrás.",
+        "incorrect": "O sentido oposto ao olhar é atrás.",
+        "hint": "Compare com a seta do olhar.",
+        "errorFocus": "REVIEW_BEHIND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-35",
+      "statement": "Duas pessoas olham para lados opostos da sala. Por que a mesma cadeira pode estar à direita de uma e à esquerda da outra?",
+      "prompt": "Duas pessoas olham para lados opostos da sala. Por que a mesma cadeira pode estar à direita de uma e à esquerda da outra?",
+      "options": [
+        "A cadeira muda de cor",
+        "As palavras sempre indicam paredes fixas",
+        "Porque direita e esquerda dependem da orientação de cada observador.",
+        "Uma pessoa não pode olhar para a sala"
+      ],
+      "correctAnswer": "Porque direita e esquerda dependem da orientação de cada observador.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cadeira muda de cor": [
+          "REVIEW_VIEWPOINT_DEPENDENCE"
+        ],
+        "As palavras sempre indicam paredes fixas": [
+          "REVIEW_VIEWPOINT_DEPENDENCE"
+        ],
+        "Uma pessoa não pode olhar para a sala": [
+          "REVIEW_VIEWPOINT_DEPENDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DOIS_PONTOS_DE_VISTA",
+      "explanation": "A referência corporal muda com a orientação.",
+      "hint": "Considere o lado direito de cada pessoa.",
+      "errorFocus": "REVIEW_VIEWPOINT_DEPENDENCE",
+      "feedback": {
+        "correct": "Boa observação: A referência corporal muda com a orientação.",
+        "incorrect": "A referência corporal muda com a orientação.",
+        "hint": "Considere o lado direito de cada pessoa.",
+        "errorFocus": "REVIEW_VIEWPOINT_DEPENDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-36",
+      "statement": "Como completar ‘___, a caixa está em frente’?",
+      "prompt": "Como completar ‘___, a caixa está em frente’?",
+      "options": [
+        "No papel, sem pessoa",
+        "Para qualquer observador sempre",
+        "Atrás da sala",
+        "Para Rui, que olha para a porta."
+      ],
+      "correctAnswer": "Para Rui, que olha para a porta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "No papel, sem pessoa": [
+          "REVIEW_NAME_REFERENCE"
+        ],
+        "Para qualquer observador sempre": [
+          "REVIEW_NAME_REFERENCE"
+        ],
+        "Atrás da sala": [
+          "REVIEW_NAME_REFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_FRASE_COMPLETA",
+      "explanation": "A frase completa identifica quem olha e qual direção é considerada.",
+      "hint": "Nomeie a pessoa e o olhar.",
+      "errorFocus": "REVIEW_NAME_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A frase completa identifica quem olha e qual direção é considerada.",
+        "incorrect": "A frase completa identifica quem olha e qual direção é considerada.",
+        "hint": "Nomeie a pessoa e o olhar.",
+        "errorFocus": "REVIEW_NAME_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-37",
+      "statement": "Uma figura olha para a janela. Coloque um ponto à esquerda dela. Qual lado deve usar?",
+      "prompt": "Uma figura olha para a janela. Coloque um ponto à esquerda dela. Qual lado deve usar?",
+      "options": [
+        "O lado esquerdo do corpo da figura.",
+        "O lado esquerdo de quem segura o cartão, sem comparar",
+        "O sentido atrás da figura",
+        "O lado da janela em todos os casos"
+      ],
+      "correctAnswer": "O lado esquerdo do corpo da figura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O lado esquerdo de quem segura o cartão, sem comparar": [
+          "REVIEW_FIGURE_BODY"
+        ],
+        "O sentido atrás da figura": [
+          "REVIEW_FIGURE_BODY"
+        ],
+        "O lado da janela em todos os casos": [
+          "REVIEW_FIGURE_BODY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_FIGURA_NO_CARTAO",
+      "explanation": "A referência é a pessoa representada no cartão.",
+      "hint": "Imagine-se acompanhando a figura voltada para a janela.",
+      "errorFocus": "REVIEW_FIGURE_BODY",
+      "feedback": {
+        "correct": "Boa observação: A referência é a pessoa representada no cartão.",
+        "incorrect": "A referência é a pessoa representada no cartão.",
+        "hint": "Imagine-se acompanhando a figura voltada para a janela.",
+        "errorFocus": "REVIEW_FIGURE_BODY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-38",
+      "statement": "Uma mesa está na mesma direção para a qual a pessoa olha. Qual expressão descreve a mesa?",
+      "prompt": "Uma mesa está na mesma direção para a qual a pessoa olha. Qual expressão descreve a mesa?",
+      "options": [
+        "Atrás da pessoa",
+        "Em frente à pessoa.",
+        "À esquerda necessariamente",
+        "À direita necessariamente"
+      ],
+      "correctAnswer": "Em frente à pessoa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Atrás da pessoa": [
+          "REVIEW_FRONT"
+        ],
+        "À esquerda necessariamente": [
+          "REVIEW_FRONT"
+        ],
+        "À direita necessariamente": [
+          "REVIEW_FRONT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVISAO_EM_FRENTE",
+      "explanation": "A posição à frente acompanha a direção do olhar.",
+      "hint": "Siga a orientação da pessoa.",
+      "errorFocus": "REVIEW_FRONT",
+      "feedback": {
+        "correct": "Boa observação: A posição à frente acompanha a direção do olhar.",
+        "incorrect": "A posição à frente acompanha a direção do olhar.",
+        "hint": "Siga a orientação da pessoa.",
+        "errorFocus": "REVIEW_FRONT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-39",
+      "statement": "Uma criança muda de lugar e passa a olhar para outra direção. O que deve fazer para descrever um objeto?",
+      "prompt": "Uma criança muda de lugar e passa a olhar para outra direção. O que deve fazer para descrever um objeto?",
+      "options": [
+        "Repetir a descrição antiga sem verificar",
+        "Mudar o nome do objeto",
+        "Indicar a nova posição da criança e usar esse referencial.",
+        "Usar apenas a cor"
+      ],
+      "correctAnswer": "Indicar a nova posição da criança e usar esse referencial.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir a descrição antiga sem verificar": [
+          "REVIEW_UPDATE_VIEWPOINT"
+        ],
+        "Mudar o nome do objeto": [
+          "REVIEW_UPDATE_VIEWPOINT"
+        ],
+        "Usar apenas a cor": [
+          "REVIEW_UPDATE_VIEWPOINT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_REFERENCIAL_NOVO",
+      "explanation": "Uma nova orientação pode mudar a descrição relativa.",
+      "hint": "Atualize quem observa e para onde olha.",
+      "errorFocus": "REVIEW_UPDATE_VIEWPOINT",
+      "feedback": {
+        "correct": "Boa observação: Uma nova orientação pode mudar a descrição relativa.",
+        "incorrect": "Uma nova orientação pode mudar a descrição relativa.",
+        "hint": "Atualize quem observa e para onde olha.",
+        "errorFocus": "REVIEW_UPDATE_VIEWPOINT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01ma11-location-from-own-position-v1-40",
+      "statement": "Antes de dizer ‘à esquerda’, qual pergunta ajuda?",
+      "prompt": "Antes de dizer ‘à esquerda’, qual pergunta ajuda?",
+      "options": [
+        "‘Qual é a cor do chão?’",
+        "‘Quem desenhou a figura?’",
+        "‘Quantos objetos há na sala?’",
+        "‘À esquerda de quem e olhando para onde?’"
+      ],
+      "correctAnswer": "‘À esquerda de quem e olhando para onde?’",
+      "answerPosition": "D",
+      "misconceptions": {
+        "‘Qual é a cor do chão?’": [
+          "REVIEW_REFERENCE_CHECK"
+        ],
+        "‘Quem desenhou a figura?’": [
+          "REVIEW_REFERENCE_CHECK"
+        ],
+        "‘Quantos objetos há na sala?’": [
+          "REVIEW_REFERENCE_CHECK"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DIREITA_ESQUERDA",
+      "explanation": "A pergunta confirma a pessoa de referência e sua orientação.",
+      "hint": "Pergunte de quem é o lado.",
+      "errorFocus": "REVIEW_REFERENCE_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A pergunta confirma a pessoa de referência e sua orientação.",
+        "incorrect": "A pergunta confirma a pessoa de referência e sua orientação.",
+        "hint": "Pergunte de quem é o lado.",
+        "errorFocus": "REVIEW_REFERENCE_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar vista frontal e lateral consistentes, setas táteis, objetos em miniatura e descrição oral clara da orientação.",
+          "Permitir responder apontando, posicionando cartões, falando, desenhando ou usando comunicação alternativa; não exigir deslocamento físico."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

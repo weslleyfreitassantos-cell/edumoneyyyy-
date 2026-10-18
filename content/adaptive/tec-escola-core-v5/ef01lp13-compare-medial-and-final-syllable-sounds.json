@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp13-compare-medial-and-final-syllable-sounds",
+  "canonicalSkillCode": "AUTHORING_EF01LP13_COMPARE_SYLLABLE_SOUNDS",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "comparação de semelhanças e diferenças nos sons de sílabas mediais e finais",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP13",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Sons no meio e no final das palavras",
+    "objective": "Comparar oralmente palavras conhecidas, identificando semelhanças e diferenças nos sons das sílabas mediais e finais.",
+    "summary": "Palavras podem ter sílabas com sons iguais ou diferentes no meio e no final. Ao escutar “panela” e “caneta”, é possível perceber a sílaba medial “ne” nas duas; em “casa” e “mesa”, a sílaba final “sa” aparece em ambas. Falar devagar, bater palmas para cada sílaba e usar figuras ajuda a comparação. A atividade trata de sons na pronúncia apresentada, não de avaliar sotaques ou variedades linguísticas; formas legítimas de falar devem ser respeitadas. Respostas podem ser dadas oralmente, apontando imagens ou usando cartões.",
+    "explanation": "Pronuncie ou escute cada palavra e separe suas sílabas oralmente. Em uma palavra com três sílabas, a medial é a do meio e a final é a última. Compare a sílaba inteira e seus sons, não somente uma letra escrita. Por exemplo, “panela” e “caneta” têm “ne” no meio, embora as outras sílabas sejam diferentes. “Casa” e “mesa” terminam com “sa”. Se uma pronúncia local variar, descreva com respeito o modo de falar apresentado e compare o áudio ou modelo escolhido para a atividade.",
+    "workedExample": "Ao dizer “janela” (ja-ne-la) e “panela” (pa-ne-la), ouvimos “ne” na sílaba medial das duas palavras. O início e o final são diferentes. Essa observação compara os exemplos falados, sem julgar outras pronúncias.",
+    "commonMistake": "Comparar somente letras escritas quando a atividade pergunta sobre sons, ou chamar uma variedade linguística de errada por diferir do modelo usado.",
+    "priorKnowledge": [
+      "Reconhecer palavras familiares em imagens, histórias ou conversas.",
+      "Perceber partes orais de palavras com apoio de palmas, ritmo ou cartões."
+    ],
+    "keyConcepts": [
+      "palavra",
+      "som",
+      "sílaba",
+      "sílaba medial",
+      "sílaba final",
+      "comparação",
+      "escuta",
+      "variedade linguística"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "LOCATE_MEDIAL_AND_FINAL_SYLLABLE",
+        "action": "Pronuncie a palavra devagar, marque cada sílaba com um cartão e localize a do meio ou a última."
+      },
+      {
+        "errorFocus": "COMPARE_SPOKEN_SYLLABLE_SOUNDS",
+        "action": "Escute as duas palavras no modelo escolhido e compare a sílaba inteira indicada."
+      },
+      {
+        "errorFocus": "RESPECT_LANGUAGE_VARIATION",
+        "action": "Descreva diferenças entre modelos de fala sem rotular sotaques ou variedades como errados."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+      "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+      "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp13-syllable-sound-pairs",
+        "title": "Pares de sons no meio e no final",
+        "instructions": "Cartões de figuras e gravações curtas apresentam palavras conhecidas para comparação oral.\n1. Escute ou fale as duas palavras no ritmo combinado.\n2. Marque as sílabas com palmas ou cartões.\n3. Compare a sílaba medial ou final indicada.",
+        "steps": [
+          "Escute ou fale as duas palavras no ritmo combinado.",
+          "Marque as sílabas com palmas ou cartões.",
+          "Compare a sílaba medial ou final indicada."
+        ],
+        "evidence": "Pares classificados por semelhança ou diferença sonora na posição pedida.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escuta uma palavra com apoio.",
+            "developing": "localiza a sílaba solicitada.",
+            "proficient": "compara sons mediais e finais sem confundir som com julgamento de sotaque."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp13-word-rhythm-gallery",
+        "title": "Galeria de ritmos das palavras",
+        "instructions": "A turma organiza cartões ilustrados em sequências de sílabas para notar o que se repete ou muda.\n1. Escolha duas palavras representadas por figuras.\n2. Marque as sílabas no ritmo da fala-modelo.\n3. Registre uma semelhança ou diferença no meio ou no final.",
+        "steps": [
+          "Escolha duas palavras representadas por figuras.",
+          "Marque as sílabas no ritmo da fala-modelo.",
+          "Registre uma semelhança ou diferença no meio ou no final."
+        ],
+        "evidence": "Registro oral ou visual da comparação entre duas palavras.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "relaciona uma figura à palavra.",
+            "developing": "identifica a última sílaba.",
+            "proficient": "compara a posição solicitada com base no modelo sonoro e respeito linguístico."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 35,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-01",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-02",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-03",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-04",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-05",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-06",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-07",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-09",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-10",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-11",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-12",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-13",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-14",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-15",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-17",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-18",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-19",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-20",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-21",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-22",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-23",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-25",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-26",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-27",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-28",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-29",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-30",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-31",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-33",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-34",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-35",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-36",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-37",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-38",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-39",
+          "v1-ef01lp13-compare-medial-and-final-syllable-sounds-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP13",
+        "descriptor": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-01",
+      "statement": "No modelo falado, “panela” e “caneta” compartilham qual sílaba medial?",
+      "prompt": "No modelo falado, “panela” e “caneta” compartilham qual sílaba medial?",
+      "options": [
+        "ne.",
+        "pa",
+        "ta",
+        "la"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "pa": [
+          "MATCH_MEDIAL_SYLLABLE"
+        ],
+        "ta": [
+          "MATCH_MEDIAL_SYLLABLE"
+        ],
+        "la": [
+          "MATCH_MEDIAL_SYLLABLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PANELA_E_CANETA",
+      "explanation": "As duas palavras têm “ne” no meio.",
+      "hint": "Marque as sílabas e compare a do meio.",
+      "errorFocus": "MATCH_MEDIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras têm “ne” no meio.",
+        "incorrect": "As duas palavras têm “ne” no meio.",
+        "hint": "Marque as sílabas e compare a do meio.",
+        "errorFocus": "MATCH_MEDIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-02",
+      "statement": "“Casa” e “mesa” terminam com qual sílaba no modelo apresentado?",
+      "prompt": "“Casa” e “mesa” terminam com qual sílaba no modelo apresentado?",
+      "options": [
+        "ca",
+        "sa.",
+        "me",
+        "ta"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ca": [
+          "MATCH_FINAL_SYLLABLE"
+        ],
+        "me": [
+          "MATCH_FINAL_SYLLABLE"
+        ],
+        "ta": [
+          "MATCH_FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CASA_E_MESA",
+      "explanation": "A sílaba final comum é “sa”.",
+      "hint": "Escute a última parte.",
+      "errorFocus": "MATCH_FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: A sílaba final comum é “sa”.",
+        "incorrect": "A sílaba final comum é “sa”.",
+        "hint": "Escute a última parte.",
+        "errorFocus": "MATCH_FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-03",
+      "statement": "Qual sílaba medial aparece em “janela” e “panela”?",
+      "prompt": "Qual sílaba medial aparece em “janela” e “panela”?",
+      "options": [
+        "ja",
+        "pa",
+        "ne.",
+        "la"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ja": [
+          "IDENTIFY_SHARED_MIDDLE_SOUND"
+        ],
+        "pa": [
+          "IDENTIFY_SHARED_MIDDLE_SOUND"
+        ],
+        "la": [
+          "IDENTIFY_SHARED_MIDDLE_SOUND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "JANELA_E_PANELA",
+      "explanation": "As palavras são ja-ne-la e pa-ne-la.",
+      "hint": "Compare a sílaba central.",
+      "errorFocus": "IDENTIFY_SHARED_MIDDLE_SOUND",
+      "feedback": {
+        "correct": "Boa observação: As palavras são ja-ne-la e pa-ne-la.",
+        "incorrect": "As palavras são ja-ne-la e pa-ne-la.",
+        "hint": "Compare a sílaba central.",
+        "errorFocus": "IDENTIFY_SHARED_MIDDLE_SOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-04",
+      "statement": "Qual é a sílaba final de “boneca” no modelo falado?",
+      "prompt": "Qual é a sílaba final de “boneca” no modelo falado?",
+      "options": [
+        "bo",
+        "ne",
+        "na",
+        "ca."
+      ],
+      "correctAnswer": "ca.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "bo": [
+          "LOCATE_FINAL_SYLLABLE"
+        ],
+        "ne": [
+          "LOCATE_FINAL_SYLLABLE"
+        ],
+        "na": [
+          "LOCATE_FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SILABA_FINAL_DE_BONECA",
+      "explanation": "A divisão apresentada é bo-ne-ca.",
+      "hint": "Encontre a última parte falada.",
+      "errorFocus": "LOCATE_FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: A divisão apresentada é bo-ne-ca.",
+        "incorrect": "A divisão apresentada é bo-ne-ca.",
+        "hint": "Encontre a última parte falada.",
+        "errorFocus": "LOCATE_FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-05",
+      "statement": "“Cavalo” e “cabana” têm a mesma sílaba medial?",
+      "prompt": "“Cavalo” e “cabana” têm a mesma sílaba medial?",
+      "options": [
+        "Não; “va” e “ba” são diferentes no modelo dado.",
+        "Sim, ambas têm “na”",
+        "Sim, ambas têm “lo”",
+        "Não, a primeira não tem sílaba medial"
+      ],
+      "correctAnswer": "Não; “va” e “ba” são diferentes no modelo dado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, ambas têm “na”": [
+          "DISTINGUISH_MEDIAL_SOUNDS"
+        ],
+        "Sim, ambas têm “lo”": [
+          "DISTINGUISH_MEDIAL_SOUNDS"
+        ],
+        "Não, a primeira não tem sílaba medial": [
+          "DISTINGUISH_MEDIAL_SOUNDS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CAVALO_E_CABANA",
+      "explanation": "As sílabas do meio são “va” e “ba”.",
+      "hint": "Compare a parte central.",
+      "errorFocus": "DISTINGUISH_MEDIAL_SOUNDS",
+      "feedback": {
+        "correct": "Boa observação: As sílabas do meio são “va” e “ba”.",
+        "incorrect": "As sílabas do meio são “va” e “ba”.",
+        "hint": "Compare a parte central.",
+        "errorFocus": "DISTINGUISH_MEDIAL_SOUNDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-06",
+      "statement": "Em “tomate” e “caderno”, quais sílabas finais são comparadas?",
+      "prompt": "Em “tomate” e “caderno”, quais sílabas finais são comparadas?",
+      "options": [
+        "to e ca",
+        "te e no.",
+        "ma e der",
+        "ta e de"
+      ],
+      "correctAnswer": "te e no.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "to e ca": [
+          "COMPARE_FINAL_SYLLABLES"
+        ],
+        "ma e der": [
+          "COMPARE_FINAL_SYLLABLES"
+        ],
+        "ta e de": [
+          "COMPARE_FINAL_SYLLABLES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "TOMATE_E_CADERNO",
+      "explanation": "As palavras terminam em “te” e “no”.",
+      "hint": "Escute a última sílaba de cada uma.",
+      "errorFocus": "COMPARE_FINAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa observação: As palavras terminam em “te” e “no”.",
+        "incorrect": "As palavras terminam em “te” e “no”.",
+        "hint": "Escute a última sílaba de cada uma.",
+        "errorFocus": "COMPARE_FINAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-07",
+      "statement": "Em “casa”, qual é a sílaba final?",
+      "prompt": "Em “casa”, qual é a sílaba final?",
+      "options": [
+        "ca",
+        "ca-sa inteira como duas palavras",
+        "sa.",
+        "a letra c"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ca": [
+          "IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD"
+        ],
+        "ca-sa inteira como duas palavras": [
+          "IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD"
+        ],
+        "a letra c": [
+          "IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PALAVRA_DE_DUAS_SILABAS",
+      "explanation": "A palavra pode ser marcada ca-sa.",
+      "hint": "A última sílaba vem depois de ca.",
+      "errorFocus": "IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD",
+      "feedback": {
+        "correct": "Boa observação: A palavra pode ser marcada ca-sa.",
+        "incorrect": "A palavra pode ser marcada ca-sa.",
+        "hint": "A última sílaba vem depois de ca.",
+        "errorFocus": "IDENTIFY_FINAL_IN_TWO_SYLLABLE_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-08",
+      "statement": "Qual recurso ajuda a comparar sílabas mediais sem focar só na escrita?",
+      "prompt": "Qual recurso ajuda a comparar sílabas mediais sem focar só na escrita?",
+      "options": [
+        "Contar apenas as letras",
+        "Comparar o tamanho da figura",
+        "Ignorar o modelo falado",
+        "Escutar ou pronunciar as palavras no ritmo combinado."
+      ],
+      "correctAnswer": "Escutar ou pronunciar as palavras no ritmo combinado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Contar apenas as letras": [
+          "USE_ORAL_SOUND_MODEL"
+        ],
+        "Comparar o tamanho da figura": [
+          "USE_ORAL_SOUND_MODEL"
+        ],
+        "Ignorar o modelo falado": [
+          "USE_ORAL_SOUND_MODEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_DE_SOM",
+      "explanation": "A habilidade observa sons das sílabas.",
+      "hint": "Use a escuta e o ritmo.",
+      "errorFocus": "USE_ORAL_SOUND_MODEL",
+      "feedback": {
+        "correct": "Boa observação: A habilidade observa sons das sílabas.",
+        "incorrect": "A habilidade observa sons das sílabas.",
+        "hint": "Use a escuta e o ritmo.",
+        "errorFocus": "USE_ORAL_SOUND_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-09",
+      "statement": "No modelo usado, “bola” e “cola” têm qual sílaba final em comum?",
+      "prompt": "No modelo usado, “bola” e “cola” têm qual sílaba final em comum?",
+      "options": [
+        "la.",
+        "bo",
+        "co",
+        "da"
+      ],
+      "correctAnswer": "la.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "bo": [
+          "MATCH_FINAL_LA"
+        ],
+        "co": [
+          "MATCH_FINAL_LA"
+        ],
+        "da": [
+          "MATCH_FINAL_LA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOLA_E_COLA",
+      "explanation": "As duas palavras terminam em “la”.",
+      "hint": "Compare o final falado.",
+      "errorFocus": "MATCH_FINAL_LA",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras terminam em “la”.",
+        "incorrect": "As duas palavras terminam em “la”.",
+        "hint": "Compare o final falado.",
+        "errorFocus": "MATCH_FINAL_LA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-10",
+      "statement": "Qual sílaba medial se repete em “janela” e “caneta”?",
+      "prompt": "Qual sílaba medial se repete em “janela” e “caneta”?",
+      "options": [
+        "ja",
+        "ne.",
+        "ca",
+        "ta"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ja": [
+          "FIND_SHARED_MEDIAL_NE"
+        ],
+        "ca": [
+          "FIND_SHARED_MEDIAL_NE"
+        ],
+        "ta": [
+          "FIND_SHARED_MEDIAL_NE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "JANELA_E_CANETA",
+      "explanation": "As duas têm “ne” como sílaba do meio.",
+      "hint": "Marque três partes em cada palavra.",
+      "errorFocus": "FIND_SHARED_MEDIAL_NE",
+      "feedback": {
+        "correct": "Boa observação: As duas têm “ne” como sílaba do meio.",
+        "incorrect": "As duas têm “ne” como sílaba do meio.",
+        "hint": "Marque três partes em cada palavra.",
+        "errorFocus": "FIND_SHARED_MEDIAL_NE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-11",
+      "statement": "Qual sílaba aparece no meio de “banana” (ba-na-na)?",
+      "prompt": "Qual sílaba aparece no meio de “banana” (ba-na-na)?",
+      "options": [
+        "ba",
+        "na final",
+        "na.",
+        "ca"
+      ],
+      "correctAnswer": "na.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ba": [
+          "LOCATE_MIDDLE_BANANA"
+        ],
+        "na final": [
+          "LOCATE_MIDDLE_BANANA"
+        ],
+        "ca": [
+          "LOCATE_MIDDLE_BANANA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SILABA_MEDIAL_DE_BANANA",
+      "explanation": "A segunda sílaba é “na”.",
+      "hint": "A sílaba medial fica entre as outras.",
+      "errorFocus": "LOCATE_MIDDLE_BANANA",
+      "feedback": {
+        "correct": "Boa observação: A segunda sílaba é “na”.",
+        "incorrect": "A segunda sílaba é “na”.",
+        "hint": "A sílaba medial fica entre as outras.",
+        "errorFocus": "LOCATE_MIDDLE_BANANA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-12",
+      "statement": "As sílabas mediais de “tomate” e “pipoca” são iguais?",
+      "prompt": "As sílabas mediais de “tomate” e “pipoca” são iguais?",
+      "options": [
+        "Sim, são “ta”",
+        "Sim, são “ca”",
+        "Não; ambas têm apenas duas sílabas",
+        "Não; são “ma” e “po”."
+      ],
+      "correctAnswer": "Não; são “ma” e “po”.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, são “ta”": [
+          "DISTINGUISH_MIDDLE_TOMATE_PIPOCA"
+        ],
+        "Sim, são “ca”": [
+          "DISTINGUISH_MIDDLE_TOMATE_PIPOCA"
+        ],
+        "Não; ambas têm apenas duas sílabas": [
+          "DISTINGUISH_MIDDLE_TOMATE_PIPOCA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TOMATE_E_PIPOCA",
+      "explanation": "to-ma-te e pi-po-ca têm meios diferentes.",
+      "hint": "Compare as sílabas centrais.",
+      "errorFocus": "DISTINGUISH_MIDDLE_TOMATE_PIPOCA",
+      "feedback": {
+        "correct": "Boa observação: to-ma-te e pi-po-ca têm meios diferentes.",
+        "incorrect": "to-ma-te e pi-po-ca têm meios diferentes.",
+        "hint": "Compare as sílabas centrais.",
+        "errorFocus": "DISTINGUISH_MIDDLE_TOMATE_PIPOCA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-13",
+      "statement": "Uma comparação pede a sílaba final de “casa”. Qual resposta observa o modelo falado?",
+      "prompt": "Uma comparação pede a sílaba final de “casa”. Qual resposta observa o modelo falado?",
+      "options": [
+        "sa.",
+        "ca",
+        "as",
+        "sol"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ca": [
+          "HEAR_FINAL_CASA"
+        ],
+        "as": [
+          "HEAR_FINAL_CASA"
+        ],
+        "sol": [
+          "HEAR_FINAL_CASA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GIRASSOL_E_CASA",
+      "explanation": "A divisão é ca-sa.",
+      "hint": "Escute a última sílaba.",
+      "errorFocus": "HEAR_FINAL_CASA",
+      "feedback": {
+        "correct": "Boa observação: A divisão é ca-sa.",
+        "incorrect": "A divisão é ca-sa.",
+        "hint": "Escute a última sílaba.",
+        "errorFocus": "HEAR_FINAL_CASA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-14",
+      "statement": "Qual diferença aparece entre as sílabas mediais de “cavalo” e “janela”?",
+      "prompt": "Qual diferença aparece entre as sílabas mediais de “cavalo” e “janela”?",
+      "options": [
+        "Ambas são “la”",
+        "“va” e “ne” têm sons diferentes no modelo apresentado.",
+        "Ambas são “ca”",
+        "As duas palavras não têm sílabas mediais"
+      ],
+      "correctAnswer": "“va” e “ne” têm sons diferentes no modelo apresentado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ambas são “la”": [
+          "ANALYZE_MEDIAL_DIFFERENCE"
+        ],
+        "Ambas são “ca”": [
+          "ANALYZE_MEDIAL_DIFFERENCE"
+        ],
+        "As duas palavras não têm sílabas mediais": [
+          "ANALYZE_MEDIAL_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CAVALO_E_JANELA",
+      "explanation": "As partes centrais são va e ne.",
+      "hint": "Localize a sílaba do meio em cada palavra.",
+      "errorFocus": "ANALYZE_MEDIAL_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: As partes centrais são va e ne.",
+        "incorrect": "As partes centrais são va e ne.",
+        "hint": "Localize a sílaba do meio em cada palavra.",
+        "errorFocus": "ANALYZE_MEDIAL_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-15",
+      "statement": "Qual é a sílaba final de “pipoca”?",
+      "prompt": "Qual é a sílaba final de “pipoca”?",
+      "options": [
+        "pi",
+        "po",
+        "ca.",
+        "pa"
+      ],
+      "correctAnswer": "ca.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "pi": [
+          "HEAR_FINAL_PIPOCA"
+        ],
+        "po": [
+          "HEAR_FINAL_PIPOCA"
+        ],
+        "pa": [
+          "HEAR_FINAL_PIPOCA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SILABA_FINAL_DE_PIPOCA",
+      "explanation": "A divisão é pi-po-ca.",
+      "hint": "Ouça a última parte.",
+      "errorFocus": "HEAR_FINAL_PIPOCA",
+      "feedback": {
+        "correct": "Boa observação: A divisão é pi-po-ca.",
+        "incorrect": "A divisão é pi-po-ca.",
+        "hint": "Ouça a última parte.",
+        "errorFocus": "HEAR_FINAL_PIPOCA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-16",
+      "statement": "Uma criança compara os sons finais de duas palavras usando figuras. O que deve escutar?",
+      "prompt": "Uma criança compara os sons finais de duas palavras usando figuras. O que deve escutar?",
+      "options": [
+        "A primeira letra somente",
+        "O tamanho dos cartões",
+        "A sílaba do meio sempre",
+        "A última sílaba de cada palavra."
+      ],
+      "correctAnswer": "A última sílaba de cada palavra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A primeira letra somente": [
+          "FOCUS_REQUESTED_SYLLABLE_POSITION"
+        ],
+        "O tamanho dos cartões": [
+          "FOCUS_REQUESTED_SYLLABLE_POSITION"
+        ],
+        "A sílaba do meio sempre": [
+          "FOCUS_REQUESTED_SYLLABLE_POSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "JOGO_DE_PARES",
+      "explanation": "O pedido é comparar o final.",
+      "hint": "Siga a posição indicada.",
+      "errorFocus": "FOCUS_REQUESTED_SYLLABLE_POSITION",
+      "feedback": {
+        "correct": "Boa observação: O pedido é comparar o final.",
+        "incorrect": "O pedido é comparar o final.",
+        "hint": "Siga a posição indicada.",
+        "errorFocus": "FOCUS_REQUESTED_SYLLABLE_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-17",
+      "statement": "“Panela” e “janela” compartilham qual sílaba medial?",
+      "prompt": "“Panela” e “janela” compartilham qual sílaba medial?",
+      "options": [
+        "ne.",
+        "pa",
+        "ja",
+        "la"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "pa": [
+          "TRANSFER_SHARED_MEDIAL"
+        ],
+        "ja": [
+          "TRANSFER_SHARED_MEDIAL"
+        ],
+        "la": [
+          "TRANSFER_SHARED_MEDIAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PANELA_E_JANELA",
+      "explanation": "As duas palavras têm “ne” no centro.",
+      "hint": "Diga as palavras devagar.",
+      "errorFocus": "TRANSFER_SHARED_MEDIAL",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras têm “ne” no centro.",
+        "incorrect": "As duas palavras têm “ne” no centro.",
+        "hint": "Diga as palavras devagar.",
+        "errorFocus": "TRANSFER_SHARED_MEDIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-18",
+      "statement": "Em “cabana” (ca-ba-na), qual é a sílaba final?",
+      "prompt": "Em “cabana” (ca-ba-na), qual é a sílaba final?",
+      "options": [
+        "ca",
+        "na.",
+        "ba",
+        "ma"
+      ],
+      "correctAnswer": "na.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ca": [
+          "TRANSFER_FINAL_SYLLABLE"
+        ],
+        "ba": [
+          "TRANSFER_FINAL_SYLLABLE"
+        ],
+        "ma": [
+          "TRANSFER_FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FINAL_DE_CABANA",
+      "explanation": "A última sílaba é na.",
+      "hint": "Observe a parte depois de ba.",
+      "errorFocus": "TRANSFER_FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: A última sílaba é na.",
+        "incorrect": "A última sílaba é na.",
+        "hint": "Observe a parte depois de ba.",
+        "errorFocus": "TRANSFER_FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-19",
+      "statement": "Qual par apresenta as sílabas finais de “boneca” e “janela”?",
+      "prompt": "Qual par apresenta as sílabas finais de “boneca” e “janela”?",
+      "options": [
+        "bo e ja",
+        "ne e ne",
+        "ca e la.",
+        "ca e ne"
+      ],
+      "correctAnswer": "ca e la.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "bo e ja": [
+          "TRANSFER_COMPARE_FINALS"
+        ],
+        "ne e ne": [
+          "TRANSFER_COMPARE_FINALS"
+        ],
+        "ca e ne": [
+          "TRANSFER_COMPARE_FINALS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BONECA_E_JANELA",
+      "explanation": "As palavras terminam em ca e la.",
+      "hint": "Compare apenas as últimas sílabas.",
+      "errorFocus": "TRANSFER_COMPARE_FINALS",
+      "feedback": {
+        "correct": "Boa observação: As palavras terminam em ca e la.",
+        "incorrect": "As palavras terminam em ca e la.",
+        "hint": "Compare apenas as últimas sílabas.",
+        "errorFocus": "TRANSFER_COMPARE_FINALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-20",
+      "statement": "Uma pessoa pronuncia uma palavra com uma variedade local diferente. Qual atitude combina com a atividade?",
+      "prompt": "Uma pessoa pronuncia uma palavra com uma variedade local diferente. Qual atitude combina com a atividade?",
+      "options": [
+        "Ridicularizar a pronúncia",
+        "Afirmar que só existe um jeito de falar",
+        "Excluir a pessoa da comparação",
+        "Descrever o modelo ouvido com respeito, sem chamar a variedade de errada."
+      ],
+      "correctAnswer": "Descrever o modelo ouvido com respeito, sem chamar a variedade de errada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ridicularizar a pronúncia": [
+          "RESPECT_SPEECH_VARIATION"
+        ],
+        "Afirmar que só existe um jeito de falar": [
+          "RESPECT_SPEECH_VARIATION"
+        ],
+        "Excluir a pessoa da comparação": [
+          "RESPECT_SPEECH_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VARIACAO_DE_FALA",
+      "explanation": "A comparação de sons não é julgamento de sotaques.",
+      "hint": "Observe sem desrespeitar.",
+      "errorFocus": "RESPECT_SPEECH_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A comparação de sons não é julgamento de sotaques.",
+        "incorrect": "A comparação de sons não é julgamento de sotaques.",
+        "hint": "Observe sem desrespeitar.",
+        "errorFocus": "RESPECT_SPEECH_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-21",
+      "statement": "“Caderno” e “caneta” começam com sílabas diferentes. Qual é a sílaba final de cada palavra?",
+      "prompt": "“Caderno” e “caneta” começam com sílabas diferentes. Qual é a sílaba final de cada palavra?",
+      "options": [
+        "no e ta.",
+        "ca e ca",
+        "der e ne",
+        "de e na"
+      ],
+      "correctAnswer": "no e ta.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ca e ca": [
+          "TRANSFER_FINAL_PAIR_ANALYSIS"
+        ],
+        "der e ne": [
+          "TRANSFER_FINAL_PAIR_ANALYSIS"
+        ],
+        "de e na": [
+          "TRANSFER_FINAL_PAIR_ANALYSIS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CADERNO_E_CANETA",
+      "explanation": "As divisões são ca-der-no e ca-ne-ta.",
+      "hint": "Siga cada palavra até o fim.",
+      "errorFocus": "TRANSFER_FINAL_PAIR_ANALYSIS",
+      "feedback": {
+        "correct": "Boa observação: As divisões são ca-der-no e ca-ne-ta.",
+        "incorrect": "As divisões são ca-der-no e ca-ne-ta.",
+        "hint": "Siga cada palavra até o fim.",
+        "errorFocus": "TRANSFER_FINAL_PAIR_ANALYSIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-22",
+      "statement": "Como localizar a sílaba medial de “macaco” usando ritmo?",
+      "prompt": "Como localizar a sílaba medial de “macaco” usando ritmo?",
+      "options": [
+        "Contar letras e escolher a maior",
+        "Marcar ma-ca-co e identificar “ca” no meio.",
+        "Marcar só ma",
+        "Separar a palavra em cinco palavras"
+      ],
+      "correctAnswer": "Marcar ma-ca-co e identificar “ca” no meio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Contar letras e escolher a maior": [
+          "TRANSFER_RHYTHMIC_SEGMENTATION"
+        ],
+        "Marcar só ma": [
+          "TRANSFER_RHYTHMIC_SEGMENTATION"
+        ],
+        "Separar a palavra em cinco palavras": [
+          "TRANSFER_RHYTHMIC_SEGMENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PALMAS_PARA_SILABAS",
+      "explanation": "A sequência oral tem três sílabas e ca fica no centro.",
+      "hint": "Marque uma palma por sílaba.",
+      "errorFocus": "TRANSFER_RHYTHMIC_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa observação: A sequência oral tem três sílabas e ca fica no centro.",
+        "incorrect": "A sequência oral tem três sílabas e ca fica no centro.",
+        "hint": "Marque uma palma por sílaba.",
+        "errorFocus": "TRANSFER_RHYTHMIC_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-23",
+      "statement": "No modelo falado, “gata” e “lata” terminam com qual sílaba igual?",
+      "prompt": "No modelo falado, “gata” e “lata” terminam com qual sílaba igual?",
+      "options": [
+        "ga",
+        "la",
+        "ta.",
+        "da"
+      ],
+      "correctAnswer": "ta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ga": [
+          "TRANSFER_FINAL_TA"
+        ],
+        "la": [
+          "TRANSFER_FINAL_TA"
+        ],
+        "da": [
+          "TRANSFER_FINAL_TA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "GATA_E_LATA",
+      "explanation": "As duas palavras terminam em ta.",
+      "hint": "Escute a última sílaba.",
+      "errorFocus": "TRANSFER_FINAL_TA",
+      "feedback": {
+        "correct": "Boa observação: As duas palavras terminam em ta.",
+        "incorrect": "As duas palavras terminam em ta.",
+        "hint": "Escute a última sílaba.",
+        "errorFocus": "TRANSFER_FINAL_TA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-24",
+      "statement": "Por que escutar a palavra ajuda a comparar uma sílaba medial?",
+      "prompt": "Por que escutar a palavra ajuda a comparar uma sílaba medial?",
+      "options": [
+        "Porque a figura informa todos os sons",
+        "Porque letras e sons são sempre idênticos",
+        "Porque elimina as sílabas finais",
+        "Porque a atividade pede observar sons na posição do meio."
+      ],
+      "correctAnswer": "Porque a atividade pede observar sons na posição do meio.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque a figura informa todos os sons": [
+          "JUSTIFY_ORAL_COMPARISON"
+        ],
+        "Porque letras e sons são sempre idênticos": [
+          "JUSTIFY_ORAL_COMPARISON"
+        ],
+        "Porque elimina as sílabas finais": [
+          "JUSTIFY_ORAL_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARAR_SONS",
+      "explanation": "A escuta orienta a comparação sonora solicitada.",
+      "hint": "Relacione escuta e posição silábica.",
+      "errorFocus": "JUSTIFY_ORAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A escuta orienta a comparação sonora solicitada.",
+        "incorrect": "A escuta orienta a comparação sonora solicitada.",
+        "hint": "Relacione escuta e posição silábica.",
+        "errorFocus": "JUSTIFY_ORAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-25",
+      "statement": "A sílaba final de uma palavra é...",
+      "prompt": "A sílaba final de uma palavra é...",
+      "options": [
+        "a última sílaba falada.",
+        "a primeira letra",
+        "sempre a sílaba maior",
+        "a parte do meio"
+      ],
+      "correctAnswer": "a última sílaba falada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "a primeira letra": [
+          "RECALL_FINAL_SYLLABLE"
+        ],
+        "sempre a sílaba maior": [
+          "RECALL_FINAL_SYLLABLE"
+        ],
+        "a parte do meio": [
+          "RECALL_FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SILABA_FINAL",
+      "explanation": "Final significa que vem por último.",
+      "hint": "Lembre da ordem de fala.",
+      "errorFocus": "RECALL_FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: Final significa que vem por último.",
+        "incorrect": "Final significa que vem por último.",
+        "hint": "Lembre da ordem de fala.",
+        "errorFocus": "RECALL_FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-26",
+      "statement": "Em to-ma-te, qual sílaba é medial?",
+      "prompt": "Em to-ma-te, qual sílaba é medial?",
+      "options": [
+        "to",
+        "ma.",
+        "te",
+        "ta"
+      ],
+      "correctAnswer": "ma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "to": [
+          "RECALL_MEDIAL_SYLLABLE"
+        ],
+        "te": [
+          "RECALL_MEDIAL_SYLLABLE"
+        ],
+        "ta": [
+          "RECALL_MEDIAL_SYLLABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MEIO_DE_TOMATE",
+      "explanation": "ma fica entre to e te.",
+      "hint": "Escolha a sílaba central.",
+      "errorFocus": "RECALL_MEDIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: ma fica entre to e te.",
+        "incorrect": "ma fica entre to e te.",
+        "hint": "Escolha a sílaba central.",
+        "errorFocus": "RECALL_MEDIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-27",
+      "statement": "As sílabas finais de “casa” e “bola” são...",
+      "prompt": "As sílabas finais de “casa” e “bola” são...",
+      "options": [
+        "ca e bo, iguais",
+        "sa e sa, iguais",
+        "sa e la, diferentes.",
+        "la e ca, iguais"
+      ],
+      "correctAnswer": "sa e la, diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ca e bo, iguais": [
+          "RECALL_FINAL_DIFFERENCE"
+        ],
+        "sa e sa, iguais": [
+          "RECALL_FINAL_DIFFERENCE"
+        ],
+        "la e ca, iguais": [
+          "RECALL_FINAL_DIFFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CASA_E_BOLA",
+      "explanation": "Casa termina em sa; bola termina em la.",
+      "hint": "Compare os finais.",
+      "errorFocus": "RECALL_FINAL_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Casa termina em sa; bola termina em la.",
+        "incorrect": "Casa termina em sa; bola termina em la.",
+        "hint": "Compare os finais.",
+        "errorFocus": "RECALL_FINAL_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-28",
+      "statement": "Em ja-ne-la, qual sílaba vem antes da final?",
+      "prompt": "Em ja-ne-la, qual sílaba vem antes da final?",
+      "options": [
+        "ja",
+        "la",
+        "na",
+        "ne."
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "ja": [
+          "RECALL_SYLLABLE_ORDER"
+        ],
+        "la": [
+          "RECALL_SYLLABLE_ORDER"
+        ],
+        "na": [
+          "RECALL_SYLLABLE_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MEIO_DE_JANELA",
+      "explanation": "ne é a medial e la é a final.",
+      "hint": "Encontre a sílaba entre as duas.",
+      "errorFocus": "RECALL_SYLLABLE_ORDER",
+      "feedback": {
+        "correct": "Boa observação: ne é a medial e la é a final.",
+        "incorrect": "ne é a medial e la é a final.",
+        "hint": "Encontre a sílaba entre as duas.",
+        "errorFocus": "RECALL_SYLLABLE_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-29",
+      "statement": "Para comparar sons numa atividade, o áudio deve ser...",
+      "prompt": "Para comparar sons numa atividade, o áudio deve ser...",
+      "options": [
+        "escutado com atenção e no ritmo necessário.",
+        "ignorado",
+        "substituído por uma adivinhação",
+        "usado para julgar sotaques"
+      ],
+      "correctAnswer": "escutado com atenção e no ritmo necessário.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ignorado": [
+          "RECALL_ATTENTIVE_LISTENING"
+        ],
+        "substituído por uma adivinhação": [
+          "RECALL_ATTENTIVE_LISTENING"
+        ],
+        "usado para julgar sotaques": [
+          "RECALL_ATTENTIVE_LISTENING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MODELO_DE_AUDIO",
+      "explanation": "A escuta apoia a comparação sonora.",
+      "hint": "Ouça as palavras.",
+      "errorFocus": "RECALL_ATTENTIVE_LISTENING",
+      "feedback": {
+        "correct": "Boa observação: A escuta apoia a comparação sonora.",
+        "incorrect": "A escuta apoia a comparação sonora.",
+        "hint": "Ouça as palavras.",
+        "errorFocus": "RECALL_ATTENTIVE_LISTENING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-30",
+      "statement": "Uma pronúncia varia entre comunidades. Como responder?",
+      "prompt": "Uma pronúncia varia entre comunidades. Como responder?",
+      "options": [
+        "Dizer que uma comunidade fala errado",
+        "Reconhecer a variação com respeito e comparar o modelo combinado.",
+        "Proibir a pessoa de falar",
+        "Fazer a comparação sobre sua família"
+      ],
+      "correctAnswer": "Reconhecer a variação com respeito e comparar o modelo combinado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer que uma comunidade fala errado": [
+          "RECALL_LANGUAGE_RESPECT"
+        ],
+        "Proibir a pessoa de falar": [
+          "RECALL_LANGUAGE_RESPECT"
+        ],
+        "Fazer a comparação sobre sua família": [
+          "RECALL_LANGUAGE_RESPECT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RESPEITO_A_VARIANTES",
+      "explanation": "Variedades linguísticas devem ser respeitadas.",
+      "hint": "Compare sem julgar pessoas.",
+      "errorFocus": "RECALL_LANGUAGE_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Variedades linguísticas devem ser respeitadas.",
+        "incorrect": "Variedades linguísticas devem ser respeitadas.",
+        "hint": "Compare sem julgar pessoas.",
+        "errorFocus": "RECALL_LANGUAGE_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-31",
+      "statement": "“Panela” e “caneta” têm uma sílaba medial em comum. Qual é?",
+      "prompt": "“Panela” e “caneta” têm uma sílaba medial em comum. Qual é?",
+      "options": [
+        "pa",
+        "ca",
+        "ne.",
+        "ta"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "pa": [
+          "RECALL_SHARED_MEDIAL"
+        ],
+        "ca": [
+          "RECALL_SHARED_MEDIAL"
+        ],
+        "ta": [
+          "RECALL_SHARED_MEDIAL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MEDIAL_COMUM",
+      "explanation": "A sequência ne aparece no meio das duas.",
+      "hint": "Marque as partes centrais.",
+      "errorFocus": "RECALL_SHARED_MEDIAL",
+      "feedback": {
+        "correct": "Boa observação: A sequência ne aparece no meio das duas.",
+        "incorrect": "A sequência ne aparece no meio das duas.",
+        "hint": "Marque as partes centrais.",
+        "errorFocus": "RECALL_SHARED_MEDIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-32",
+      "statement": "Comparar sílabas mediais e finais significa observar...",
+      "prompt": "Comparar sílabas mediais e finais significa observar...",
+      "options": [
+        "somente o tamanho das letras",
+        "a origem das famílias",
+        "a velocidade da fala",
+        "semelhanças e diferenças nos sons do meio e do final das palavras."
+      ],
+      "correctAnswer": "semelhanças e diferenças nos sons do meio e do final das palavras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "somente o tamanho das letras": [
+          "SYLLABLE_COMPARISON_SUMMARY"
+        ],
+        "a origem das famílias": [
+          "SYLLABLE_COMPARISON_SUMMARY"
+        ],
+        "a velocidade da fala": [
+          "SYLLABLE_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_SONS",
+      "explanation": "A habilidade trata de sons em posições silábicas.",
+      "hint": "Reúna posição e som.",
+      "errorFocus": "SYLLABLE_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A habilidade trata de sons em posições silábicas.",
+        "incorrect": "A habilidade trata de sons em posições silábicas.",
+        "hint": "Reúna posição e som.",
+        "errorFocus": "SYLLABLE_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-33",
+      "statement": "Em ca-sa, qual é a sílaba final?",
+      "prompt": "Em ca-sa, qual é a sílaba final?",
+      "options": [
+        "sa.",
+        "ca",
+        "as",
+        "ma"
+      ],
+      "correctAnswer": "sa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ca": [
+          "REVIEW_FINAL_SYLLABLE"
+        ],
+        "as": [
+          "REVIEW_FINAL_SYLLABLE"
+        ],
+        "ma": [
+          "REVIEW_FINAL_SYLLABLE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_FINAL",
+      "explanation": "sa vem por último.",
+      "hint": "Escute o final.",
+      "errorFocus": "REVIEW_FINAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: sa vem por último.",
+        "incorrect": "sa vem por último.",
+        "hint": "Escute o final.",
+        "errorFocus": "REVIEW_FINAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-34",
+      "statement": "Em pa-ne-la, qual parte fica no meio?",
+      "prompt": "Em pa-ne-la, qual parte fica no meio?",
+      "options": [
+        "pa",
+        "ne.",
+        "la",
+        "na"
+      ],
+      "correctAnswer": "ne.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "pa": [
+          "REVIEW_MEDIAL_SYLLABLE"
+        ],
+        "la": [
+          "REVIEW_MEDIAL_SYLLABLE"
+        ],
+        "na": [
+          "REVIEW_MEDIAL_SYLLABLE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_MEDIAL",
+      "explanation": "ne fica entre pa e la.",
+      "hint": "Olhe para a posição central.",
+      "errorFocus": "REVIEW_MEDIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa observação: ne fica entre pa e la.",
+        "incorrect": "ne fica entre pa e la.",
+        "hint": "Olhe para a posição central.",
+        "errorFocus": "REVIEW_MEDIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-35",
+      "statement": "“Bola” e “cola” compartilham qual sílaba final?",
+      "prompt": "“Bola” e “cola” compartilham qual sílaba final?",
+      "options": [
+        "bo",
+        "co",
+        "la.",
+        "ta"
+      ],
+      "correctAnswer": "la.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "bo": [
+          "REVIEW_SHARED_FINAL"
+        ],
+        "co": [
+          "REVIEW_SHARED_FINAL"
+        ],
+        "ta": [
+          "REVIEW_SHARED_FINAL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_PARES",
+      "explanation": "As duas terminam em la.",
+      "hint": "Compare o que vem por último.",
+      "errorFocus": "REVIEW_SHARED_FINAL",
+      "feedback": {
+        "correct": "Boa observação: As duas terminam em la.",
+        "incorrect": "As duas terminam em la.",
+        "hint": "Compare o que vem por último.",
+        "errorFocus": "REVIEW_SHARED_FINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-36",
+      "statement": "Uma atividade pergunta sobre sons, então é útil...",
+      "prompt": "Uma atividade pergunta sobre sons, então é útil...",
+      "options": [
+        "contar apenas letras",
+        "comparar o tamanho das figuras",
+        "ignorar as palavras",
+        "escutar ou pronunciar as palavras no modelo combinado."
+      ],
+      "correctAnswer": "escutar ou pronunciar as palavras no modelo combinado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "contar apenas letras": [
+          "REVIEW_SOUND_FOCUS"
+        ],
+        "comparar o tamanho das figuras": [
+          "REVIEW_SOUND_FOCUS"
+        ],
+        "ignorar as palavras": [
+          "REVIEW_SOUND_FOCUS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_SONS",
+      "explanation": "A escuta permite comparar os sons pedidos.",
+      "hint": "Use o modelo oral.",
+      "errorFocus": "REVIEW_SOUND_FOCUS",
+      "feedback": {
+        "correct": "Boa observação: A escuta permite comparar os sons pedidos.",
+        "incorrect": "A escuta permite comparar os sons pedidos.",
+        "hint": "Use o modelo oral.",
+        "errorFocus": "REVIEW_SOUND_FOCUS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-37",
+      "statement": "Qual fala respeita variedades linguísticas?",
+      "prompt": "Qual fala respeita variedades linguísticas?",
+      "options": [
+        "“Neste modelo, ouvi uma diferença entre estas sílabas.”",
+        "“Esse sotaque é errado.”",
+        "“Ninguém pode falar diferente.”",
+        "“Vou rir dessa pronúncia.”"
+      ],
+      "correctAnswer": "“Neste modelo, ouvi uma diferença entre estas sílabas.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“Esse sotaque é errado.”": [
+          "REVIEW_RESPECTFUL_DESCRIPTION"
+        ],
+        "“Ninguém pode falar diferente.”": [
+          "REVIEW_RESPECTFUL_DESCRIPTION"
+        ],
+        "“Vou rir dessa pronúncia.”": [
+          "REVIEW_RESPECTFUL_DESCRIPTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_RESPEITO",
+      "explanation": "A frase descreve a observação sem julgar a pessoa.",
+      "hint": "Fale dos sons, não do valor de quem fala.",
+      "errorFocus": "REVIEW_RESPECTFUL_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve a observação sem julgar a pessoa.",
+        "incorrect": "A frase descreve a observação sem julgar a pessoa.",
+        "hint": "Fale dos sons, não do valor de quem fala.",
+        "errorFocus": "REVIEW_RESPECTFUL_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-38",
+      "statement": "Em “janela” e “panela”, o que se repete no meio e muda no início?",
+      "prompt": "Em “janela” e “panela”, o que se repete no meio e muda no início?",
+      "options": [
+        "O início se repete e todo o resto é igual",
+        "A sílaba medial “ne” se repete; as sílabas iniciais são diferentes.",
+        "A sílaba final é ne",
+        "As palavras têm duas sílabas"
+      ],
+      "correctAnswer": "A sílaba medial “ne” se repete; as sílabas iniciais são diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O início se repete e todo o resto é igual": [
+          "REVIEW_MEDIAL_AND_INITIAL"
+        ],
+        "A sílaba final é ne": [
+          "REVIEW_MEDIAL_AND_INITIAL"
+        ],
+        "As palavras têm duas sílabas": [
+          "REVIEW_MEDIAL_AND_INITIAL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_DUAS_POSICOES",
+      "explanation": "ja-ne-la e pa-ne-la compartilham o meio.",
+      "hint": "Compare cada posição separadamente.",
+      "errorFocus": "REVIEW_MEDIAL_AND_INITIAL",
+      "feedback": {
+        "correct": "Boa observação: ja-ne-la e pa-ne-la compartilham o meio.",
+        "incorrect": "ja-ne-la e pa-ne-la compartilham o meio.",
+        "hint": "Compare cada posição separadamente.",
+        "errorFocus": "REVIEW_MEDIAL_AND_INITIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-39",
+      "statement": "Como cartões podem apoiar a comparação de sílabas?",
+      "prompt": "Como cartões podem apoiar a comparação de sílabas?",
+      "options": [
+        "Um cartão para cada endereço",
+        "Cartões escondidos sem ordem",
+        "Um cartão para cada sílaba ajuda a localizar meio e final.",
+        "Cartões que substituem a escuta sempre"
+      ],
+      "correctAnswer": "Um cartão para cada sílaba ajuda a localizar meio e final.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um cartão para cada endereço": [
+          "REVIEW_SYLLABLE_CARDS"
+        ],
+        "Cartões escondidos sem ordem": [
+          "REVIEW_SYLLABLE_CARDS"
+        ],
+        "Cartões que substituem a escuta sempre": [
+          "REVIEW_SYLLABLE_CARDS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_CARTOES",
+      "explanation": "A sequência de cartões deixa as posições visíveis.",
+      "hint": "Organize as partes na ordem.",
+      "errorFocus": "REVIEW_SYLLABLE_CARDS",
+      "feedback": {
+        "correct": "Boa observação: A sequência de cartões deixa as posições visíveis.",
+        "incorrect": "A sequência de cartões deixa as posições visíveis.",
+        "hint": "Organize as partes na ordem.",
+        "errorFocus": "REVIEW_SYLLABLE_CARDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp13-compare-medial-and-final-syllable-sounds-40",
+      "statement": "A comparação de palavras deve registrar...",
+      "prompt": "A comparação de palavras deve registrar...",
+      "options": [
+        "qual pronúncia é superior",
+        "quantas casas existem",
+        "o tamanho das letras apenas",
+        "quais sons são semelhantes ou diferentes na posição pedida."
+      ],
+      "correctAnswer": "quais sons são semelhantes ou diferentes na posição pedida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "qual pronúncia é superior": [
+          "REVIEW_COMPARISON_SUMMARY"
+        ],
+        "quantas casas existem": [
+          "REVIEW_COMPARISON_SUMMARY"
+        ],
+        "o tamanho das letras apenas": [
+          "REVIEW_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMPARACAO",
+      "explanation": "A análise registra semelhança ou diferença sonora.",
+      "hint": "Responda sobre os sons solicitados.",
+      "errorFocus": "REVIEW_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A análise registra semelhança ou diferença sonora.",
+        "incorrect": "A análise registra semelhança ou diferença sonora.",
+        "hint": "Responda sobre os sons solicitados.",
+        "errorFocus": "REVIEW_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar áudio pausável, imagens, cartões silábicos ampliados e ritmo marcado por palmas ou toques.",
+          "Permitir responder apontando imagens, selecionando cartões ou usando comunicação alternativa.",
+          "Respeitar diferentes variedades do português e não avaliar velocidade, sotaque ou articulação individual."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

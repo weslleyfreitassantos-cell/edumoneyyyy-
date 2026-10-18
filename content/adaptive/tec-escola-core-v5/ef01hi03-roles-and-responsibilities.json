@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi03-roles-and-responsibilities",
+  "canonicalSkillCode": "AUTHORING_EF01HI03_DESCRIBE_ROLES_IN_CONTEXTS",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "papéis e responsabilidades em diferentes famílias, na escola e na comunidade",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever e distinguir os seus papéis e responsabilidades relacionados à família, à escola e à comunidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Papéis que mudam conforme o lugar",
+    "objective": "Descrever e distinguir papéis e responsabilidades em narrativas fictícias sobre família, escola e comunidade, sem pressupor uma configuração familiar e sem atribuir tarefas inseguras a crianças.",
+    "summary": "Uma pessoa pode participar de diferentes grupos e ter papéis variados em cada contexto. Em histórias fictícias, alguém pode ser estudante na escola, integrante de uma família com diferentes pessoas de cuidado e participante de uma atividade comunitária. As responsabilidades dependem da situação e devem ser seguras e adequadas à idade. Famílias não são todas iguais; ninguém precisa contar como é a própria casa para aprender a comparar papéis.",
+    "explanation": "Leia cada cena e pergunte: em que lugar acontece, quem está envolvido e qual responsabilidade foi descrita? Uma criança pode guardar materiais da atividade, pedir ajuda ou participar de uma tarefa simples com supervisão. Adultos são responsáveis por segurança, cuidado e decisões que não cabem a crianças. Na escola, estudante, educador e equipe podem ter responsabilidades diferentes. Na comunidade, pessoas podem cuidar de espaços coletivos, oferecer serviços ou participar de atividades. Não transforme um exemplo em regra sobre gênero, parentesco ou todas as famílias; relate apenas o que a história apresenta.",
+    "workedExample": "Em uma narrativa inventada, Duda estuda numa escola, ajuda a guardar os lápis depois de uma atividade e participa com pessoas de cuidado de uma horta comunitária. Guardar o material é uma responsabilidade escolar simples; cuidar da horta é uma participação comunitária. A história não define como todas as famílias se organizam.",
+    "commonMistake": "Achar que um papel é igual em todos os lugares, que certas tarefas pertencem a um gênero ou que uma criança deve assumir responsabilidades de segurança e cuidado próprias de adultos.",
+    "priorKnowledge": [
+      "Reconhecer cenários como casa, escola e espaços comunitários em narrativas.",
+      "Identificar ações simples realizadas por personagens."
+    ],
+    "keyConcepts": [
+      "papel",
+      "responsabilidade",
+      "família",
+      "escola",
+      "comunidade",
+      "contexto",
+      "cuidado",
+      "segurança"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ROLE_DEPENDS_ON_CONTEXT",
+        "action": "Separe cartões de cenas por lugar e compare a mesma personagem em papéis diferentes, citando a ação de cada contexto."
+      },
+      {
+        "errorFocus": "ONE_FAMILY_MODEL",
+        "action": "Use narrativas fictícias com diferentes pessoas de cuidado e descreva cada configuração sem tratá-la como regra para todas as famílias."
+      },
+      {
+        "errorFocus": "CHILD_SAFETY_RESPONSIBILITY",
+        "action": "Diferencie tarefas simples e supervisionadas de decisões e trabalhos de adultos; substitua qualquer exemplo inseguro por um papel adequado à idade."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+      "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+      "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi03-context-role-cards",
+        "title": "Cartões de papel e lugar",
+        "instructions": "Personagens fictícias aparecem em cenas de família, escola e comunidade com ações seguras e concretas.\n1. Observe o lugar e a ação de cada personagem.\n2. Agrupe os cartões por contexto e identifique a responsabilidade descrita.\n3. Compare como uma personagem participa em dois contextos diferentes.",
+        "steps": [
+          "Observe o lugar e a ação de cada personagem.",
+          "Agrupe os cartões por contexto e identifique a responsabilidade descrita.",
+          "Compare como uma personagem participa em dois contextos diferentes."
+        ],
+        "evidence": "Classificação que associa lugar, papel e responsabilidade sem generalizar sobre famílias ou papéis de gênero.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um contexto com apoio.",
+            "developing": "associa papel e ação em pelo menos dois contextos.",
+            "proficient": "distingue papéis e explica a responsabilidade com evidência da cena e linguagem inclusiva."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi03-safe-classroom-community",
+        "title": "Mapa de responsabilidades seguras",
+        "instructions": "A turma monta um mapa fictício de uma escola e de um espaço comunitário, mostrando quem pode cuidar de cada atividade.\n1. Escolha uma atividade coletiva segura, como guardar materiais ou manter um canteiro supervisionado.\n2. Associe ações às personagens responsáveis em cada lugar.\n3. Revise se as tarefas são adequadas à idade e se não colocam a segurança sob responsabilidade de uma criança.",
+        "steps": [
+          "Escolha uma atividade coletiva segura, como guardar materiais ou manter um canteiro supervisionado.",
+          "Associe ações às personagens responsáveis em cada lugar.",
+          "Revise se as tarefas são adequadas à idade e se não colocam a segurança sob responsabilidade de uma criança."
+        ],
+        "evidence": "Mapa que diferencia responsabilidades de crianças e adultos e identifica a escola ou comunidade como contexto.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma atividade com apoio.",
+            "developing": "distribui ações com orientação do educador.",
+            "proficient": "explica a responsabilidade por contexto e reconhece quando a segurança cabe a adultos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi03-roles-and-responsibilities-01",
+          "v1-ef01hi03-roles-and-responsibilities-02",
+          "v1-ef01hi03-roles-and-responsibilities-03",
+          "v1-ef01hi03-roles-and-responsibilities-04",
+          "v1-ef01hi03-roles-and-responsibilities-05",
+          "v1-ef01hi03-roles-and-responsibilities-06",
+          "v1-ef01hi03-roles-and-responsibilities-07",
+          "v1-ef01hi03-roles-and-responsibilities-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi03-roles-and-responsibilities-09",
+          "v1-ef01hi03-roles-and-responsibilities-10",
+          "v1-ef01hi03-roles-and-responsibilities-11",
+          "v1-ef01hi03-roles-and-responsibilities-12",
+          "v1-ef01hi03-roles-and-responsibilities-13",
+          "v1-ef01hi03-roles-and-responsibilities-14",
+          "v1-ef01hi03-roles-and-responsibilities-15",
+          "v1-ef01hi03-roles-and-responsibilities-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi03-roles-and-responsibilities-17",
+          "v1-ef01hi03-roles-and-responsibilities-18",
+          "v1-ef01hi03-roles-and-responsibilities-19",
+          "v1-ef01hi03-roles-and-responsibilities-20",
+          "v1-ef01hi03-roles-and-responsibilities-21",
+          "v1-ef01hi03-roles-and-responsibilities-22",
+          "v1-ef01hi03-roles-and-responsibilities-23",
+          "v1-ef01hi03-roles-and-responsibilities-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi03-roles-and-responsibilities-25",
+          "v1-ef01hi03-roles-and-responsibilities-26",
+          "v1-ef01hi03-roles-and-responsibilities-27",
+          "v1-ef01hi03-roles-and-responsibilities-28",
+          "v1-ef01hi03-roles-and-responsibilities-29",
+          "v1-ef01hi03-roles-and-responsibilities-30",
+          "v1-ef01hi03-roles-and-responsibilities-31",
+          "v1-ef01hi03-roles-and-responsibilities-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi03-roles-and-responsibilities-33",
+          "v1-ef01hi03-roles-and-responsibilities-34",
+          "v1-ef01hi03-roles-and-responsibilities-35",
+          "v1-ef01hi03-roles-and-responsibilities-36",
+          "v1-ef01hi03-roles-and-responsibilities-37",
+          "v1-ef01hi03-roles-and-responsibilities-38",
+          "v1-ef01hi03-roles-and-responsibilities-39",
+          "v1-ef01hi03-roles-and-responsibilities-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI03",
+        "descriptor": "Descrever e distinguir os seus papéis e responsabilidades relacionados à família, à escola e à comunidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-01",
+      "statement": "Na história, Ravi guarda os lápis usados pela turma. Em que contexto está essa responsabilidade?",
+      "prompt": "Na história, Ravi guarda os lápis usados pela turma. Em que contexto está essa responsabilidade?",
+      "options": [
+        "Na escola.",
+        "No trânsito da cidade",
+        "Na biblioteca de sua casa, que não aparece",
+        "Em todos os lugares ao mesmo tempo"
+      ],
+      "correctAnswer": "Na escola.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "No trânsito da cidade": [
+          "SCHOOL_CONTEXT"
+        ],
+        "Na biblioteca de sua casa, que não aparece": [
+          "SCHOOL_CONTEXT"
+        ],
+        "Em todos os lugares ao mesmo tempo": [
+          "SCHOOL_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESTOJO_DA_ESCOLA",
+      "explanation": "A cena liga guardar materiais a uma atividade escolar.",
+      "hint": "Observe onde a turma usa os lápis.",
+      "errorFocus": "SCHOOL_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A cena liga guardar materiais a uma atividade escolar.",
+        "incorrect": "A cena liga guardar materiais a uma atividade escolar.",
+        "hint": "Observe onde a turma usa os lápis.",
+        "errorFocus": "SCHOOL_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-02",
+      "statement": "Uma narrativa diz que Joana prepara o lanche com uma pessoa responsável por ela. O que podemos afirmar?",
+      "prompt": "Uma narrativa diz que Joana prepara o lanche com uma pessoa responsável por ela. O que podemos afirmar?",
+      "options": [
+        "Toda família prepara o lanche do mesmo jeito",
+        "Naquela história, elas compartilham uma atividade de cuidado.",
+        "A tarefa pertence sempre a uma mulher",
+        "A criança cuida sozinha de todos"
+      ],
+      "correctAnswer": "Naquela história, elas compartilham uma atividade de cuidado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda família prepara o lanche do mesmo jeito": [
+          "FAMILY_VARIATION"
+        ],
+        "A tarefa pertence sempre a uma mulher": [
+          "FAMILY_VARIATION"
+        ],
+        "A criança cuida sozinha de todos": [
+          "FAMILY_VARIATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CENA_DE_PESSOAS_DE_CUIDADO",
+      "explanation": "A fonte apresenta uma situação específica, não uma regra para todas as famílias.",
+      "hint": "Fale somente sobre as personagens da narrativa.",
+      "errorFocus": "FAMILY_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta uma situação específica, não uma regra para todas as famílias.",
+        "incorrect": "A fonte apresenta uma situação específica, não uma regra para todas as famílias.",
+        "hint": "Fale somente sobre as personagens da narrativa.",
+        "errorFocus": "FAMILY_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-03",
+      "statement": "Uma personagem rega plantas com um grupo adulto num canteiro comunitário. Qual é o contexto?",
+      "prompt": "Uma personagem rega plantas com um grupo adulto num canteiro comunitário. Qual é o contexto?",
+      "options": [
+        "Uma prova da escola",
+        "Uma tarefa de segurança em casa",
+        "A comunidade.",
+        "Uma atividade que ocorre em qualquer lugar"
+      ],
+      "correctAnswer": "A comunidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma prova da escola": [
+          "COMMUNITY_CONTEXT"
+        ],
+        "Uma tarefa de segurança em casa": [
+          "COMMUNITY_CONTEXT"
+        ],
+        "Uma atividade que ocorre em qualquer lugar": [
+          "COMMUNITY_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CANTEIRO_COMUNITARIO",
+      "explanation": "O canteiro coletivo é apresentado como atividade comunitária.",
+      "hint": "Procure o lugar compartilhado pela vizinhança.",
+      "errorFocus": "COMMUNITY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O canteiro coletivo é apresentado como atividade comunitária.",
+        "incorrect": "O canteiro coletivo é apresentado como atividade comunitária.",
+        "hint": "Procure o lugar compartilhado pela vizinhança.",
+        "errorFocus": "COMMUNITY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-04",
+      "statement": "Uma estudante participa da aula e a professora explica a atividade. Qual papel aparece para a estudante?",
+      "prompt": "Uma estudante participa da aula e a professora explica a atividade. Qual papel aparece para a estudante?",
+      "options": [
+        "Decidir sozinha todas as regras da escola",
+        "Substituir a professora",
+        "Garantir a segurança de todos os adultos",
+        "Aprender e participar da atividade escolar."
+      ],
+      "correctAnswer": "Aprender e participar da atividade escolar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Decidir sozinha todas as regras da escola": [
+          "STUDENT_ROLE_SCOPE"
+        ],
+        "Substituir a professora": [
+          "STUDENT_ROLE_SCOPE"
+        ],
+        "Garantir a segurança de todos os adultos": [
+          "STUDENT_ROLE_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MESA_DE_ESTUDO",
+      "explanation": "A estudante aprende e participa; decisões e segurança cabem aos adultos responsáveis.",
+      "hint": "Pense no que faz uma estudante durante a aula.",
+      "errorFocus": "STUDENT_ROLE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A estudante aprende e participa; decisões e segurança cabem aos adultos responsáveis.",
+        "incorrect": "A estudante aprende e participa; decisões e segurança cabem aos adultos responsáveis.",
+        "hint": "Pense no que faz uma estudante durante a aula.",
+        "errorFocus": "STUDENT_ROLE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-05",
+      "statement": "Lu organiza cartões numa atividade escolar e depois participa de um jogo com pessoas de cuidado. O que mudou?",
+      "prompt": "Lu organiza cartões numa atividade escolar e depois participa de um jogo com pessoas de cuidado. O que mudou?",
+      "options": [
+        "O contexto e o papel exercido em cada cena.",
+        "A identidade da personagem",
+        "A necessidade de respeitar as pessoas",
+        "O fato de serem exemplos fictícios"
+      ],
+      "correctAnswer": "O contexto e o papel exercido em cada cena.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A identidade da personagem": [
+          "ROLE_CONTEXT_CHANGE"
+        ],
+        "A necessidade de respeitar as pessoas": [
+          "ROLE_CONTEXT_CHANGE"
+        ],
+        "O fato de serem exemplos fictícios": [
+          "ROLE_CONTEXT_CHANGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_CENAS_DE_LU",
+      "explanation": "A mesma personagem pode participar de modos diferentes conforme o contexto.",
+      "hint": "Compare o lugar e a atividade de cada cena.",
+      "errorFocus": "ROLE_CONTEXT_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A mesma personagem pode participar de modos diferentes conforme o contexto.",
+        "incorrect": "A mesma personagem pode participar de modos diferentes conforme o contexto.",
+        "hint": "Compare o lugar e a atividade de cada cena.",
+        "errorFocus": "ROLE_CONTEXT_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-06",
+      "statement": "Uma criança recebe a tarefa de atravessar sozinha uma rua movimentada para buscar algo. Qual avaliação é segura?",
+      "prompt": "Uma criança recebe a tarefa de atravessar sozinha uma rua movimentada para buscar algo. Qual avaliação é segura?",
+      "options": [
+        "A criança deve sempre resolver sozinha",
+        "Um adulto responsável deve cuidar dessa situação de segurança.",
+        "A tarefa pertence a qualquer estudante",
+        "A idade não importa"
+      ],
+      "correctAnswer": "Um adulto responsável deve cuidar dessa situação de segurança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A criança deve sempre resolver sozinha": [
+          "ADULT_SAFETY_RESPONSIBILITY"
+        ],
+        "A tarefa pertence a qualquer estudante": [
+          "ADULT_SAFETY_RESPONSIBILITY"
+        ],
+        "A idade não importa": [
+          "ADULT_SAFETY_RESPONSIBILITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TAREFA_DE_SEGURANCA",
+      "explanation": "Segurança em uma situação de risco é responsabilidade de adultos.",
+      "hint": "Escolha a opção que protege a criança.",
+      "errorFocus": "ADULT_SAFETY_RESPONSIBILITY",
+      "feedback": {
+        "correct": "Boa observação: Segurança em uma situação de risco é responsabilidade de adultos.",
+        "incorrect": "Segurança em uma situação de risco é responsabilidade de adultos.",
+        "hint": "Escolha a opção que protege a criança.",
+        "errorFocus": "ADULT_SAFETY_RESPONSIBILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-07",
+      "statement": "Uma bibliotecária ajuda visitantes a localizar livros. Que papel aparece?",
+      "prompt": "Uma bibliotecária ajuda visitantes a localizar livros. Que papel aparece?",
+      "options": [
+        "Escolher todos os livros de cada família",
+        "Ensinar somente numa sala de aula",
+        "Apoiar o uso da biblioteca comunitária.",
+        "Cuidar de uma casa privada"
+      ],
+      "correctAnswer": "Apoiar o uso da biblioteca comunitária.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher todos os livros de cada família": [
+          "COMMUNITY_SERVICE_ROLE"
+        ],
+        "Ensinar somente numa sala de aula": [
+          "COMMUNITY_SERVICE_ROLE"
+        ],
+        "Cuidar de uma casa privada": [
+          "COMMUNITY_SERVICE_ROLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVRO_DA_BIBLIOTECA_PUBLICA",
+      "explanation": "A cena apresenta um serviço oferecido na biblioteca.",
+      "hint": "Observe o local e a ajuda oferecida.",
+      "errorFocus": "COMMUNITY_SERVICE_ROLE",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta um serviço oferecido na biblioteca.",
+        "incorrect": "A cena apresenta um serviço oferecido na biblioteca.",
+        "hint": "Observe o local e a ajuda oferecida.",
+        "errorFocus": "COMMUNITY_SERVICE_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-08",
+      "statement": "A atividade compara tarefas em famílias, mas alguém prefere não contar sobre sua casa. Como pode participar?",
+      "prompt": "A atividade compara tarefas em famílias, mas alguém prefere não contar sobre sua casa. Como pode participar?",
+      "options": [
+        "Sendo obrigado a contar um segredo",
+        "Ficando sem alternativa de participação",
+        "Entregando fotos de casa",
+        "Analisando uma família fictícia da história."
+      ],
+      "correctAnswer": "Analisando uma família fictícia da história.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sendo obrigado a contar um segredo": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Ficando sem alternativa de participação": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Entregando fotos de casa": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EXEMPLO_SEM_RELATO_PESSOAL",
+      "explanation": "Uma narrativa fictícia permite aprender sem expor a vida pessoal.",
+      "hint": "Escolha uma alternativa que mantenha a atividade segura.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Uma narrativa fictícia permite aprender sem expor a vida pessoal.",
+        "incorrect": "Uma narrativa fictícia permite aprender sem expor a vida pessoal.",
+        "hint": "Escolha uma alternativa que mantenha a atividade segura.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-09",
+      "statement": "Em um conto, uma criança coloca guardanapos na mesa com supervisão. Que tipo de responsabilidade é essa?",
+      "prompt": "Em um conto, uma criança coloca guardanapos na mesa com supervisão. Que tipo de responsabilidade é essa?",
+      "options": [
+        "Uma tarefa simples compartilhada no contexto da família fictícia.",
+        "Uma decisão de segurança de adultos",
+        "Uma obrigação igual em todas as casas",
+        "Um trabalho perigoso para a criança"
+      ],
+      "correctAnswer": "Uma tarefa simples compartilhada no contexto da família fictícia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma decisão de segurança de adultos": [
+          "SAFE_AGE_APPROPRIATE_TASK"
+        ],
+        "Uma obrigação igual em todas as casas": [
+          "SAFE_AGE_APPROPRIATE_TASK"
+        ],
+        "Um trabalho perigoso para a criança": [
+          "SAFE_AGE_APPROPRIATE_TASK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LANCHE_DE_FAZ_DE_CONTA",
+      "explanation": "A cena descreve uma tarefa simples feita com supervisão, sem torná-la regra universal.",
+      "hint": "Considere a ação e a presença de supervisão.",
+      "errorFocus": "SAFE_AGE_APPROPRIATE_TASK",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve uma tarefa simples feita com supervisão, sem torná-la regra universal.",
+        "incorrect": "A cena descreve uma tarefa simples feita com supervisão, sem torná-la regra universal.",
+        "hint": "Considere a ação e a presença de supervisão.",
+        "errorFocus": "SAFE_AGE_APPROPRIATE_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-10",
+      "statement": "Uma equipe escolar prepara um aviso para a turma. Qual responsabilidade pode caber ao estudante na atividade?",
+      "prompt": "Uma equipe escolar prepara um aviso para a turma. Qual responsabilidade pode caber ao estudante na atividade?",
+      "options": [
+        "Autorizar sozinho todas as regras da escola",
+        "Ajudar a organizar materiais com orientação.",
+        "Assumir a função de segurança do prédio",
+        "Garantir o trabalho dos adultos"
+      ],
+      "correctAnswer": "Ajudar a organizar materiais com orientação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Autorizar sozinho todas as regras da escola": [
+          "STUDENT_PARTICIPATION"
+        ],
+        "Assumir a função de segurança do prédio": [
+          "STUDENT_PARTICIPATION"
+        ],
+        "Garantir o trabalho dos adultos": [
+          "STUDENT_PARTICIPATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "QUADRO_DE_AVISOS",
+      "explanation": "A criança pode participar de tarefas escolares apropriadas, com orientação.",
+      "hint": "Escolha uma ação de participação segura.",
+      "errorFocus": "STUDENT_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: A criança pode participar de tarefas escolares apropriadas, com orientação.",
+        "incorrect": "A criança pode participar de tarefas escolares apropriadas, com orientação.",
+        "hint": "Escolha uma ação de participação segura.",
+        "errorFocus": "STUDENT_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-11",
+      "statement": "Uma história mostra uma criança vivendo com uma tia; outra, com dois responsáveis sem parentesco informado. Qual descrição é adequada?",
+      "prompt": "Uma história mostra uma criança vivendo com uma tia; outra, com dois responsáveis sem parentesco informado. Qual descrição é adequada?",
+      "options": [
+        "Uma delas é a única forma correta de família",
+        "A relação de cuidado depende de gênero",
+        "As narrativas apresentam diferentes configurações de cuidado.",
+        "Uma história é mais verdadeira que a outra"
+      ],
+      "correctAnswer": "As narrativas apresentam diferentes configurações de cuidado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma delas é a única forma correta de família": [
+          "FAMILY_DIVERSITY"
+        ],
+        "A relação de cuidado depende de gênero": [
+          "FAMILY_DIVERSITY"
+        ],
+        "Uma história é mais verdadeira que a outra": [
+          "FAMILY_DIVERSITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_PESSOAS_DE_CUIDADO",
+      "explanation": "As cenas mostram formas diferentes sem hierarquia ou regra universal.",
+      "hint": "Descreva o que as duas histórias apresentam.",
+      "errorFocus": "FAMILY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: As cenas mostram formas diferentes sem hierarquia ou regra universal.",
+        "incorrect": "As cenas mostram formas diferentes sem hierarquia ou regra universal.",
+        "hint": "Descreva o que as duas histórias apresentam.",
+        "errorFocus": "FAMILY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-12",
+      "statement": "Um grupo de moradores combina recolher papéis do chão com equipamentos adequados e supervisão adulta. Qual contexto aparece?",
+      "prompt": "Um grupo de moradores combina recolher papéis do chão com equipamentos adequados e supervisão adulta. Qual contexto aparece?",
+      "options": [
+        "Uma tarefa individual de sala de aula",
+        "Uma responsabilidade exclusiva de uma criança",
+        "Uma regra para todas as famílias",
+        "Uma atividade comunitária de cuidado coletivo."
+      ],
+      "correctAnswer": "Uma atividade comunitária de cuidado coletivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma tarefa individual de sala de aula": [
+          "COMMUNITY_SHARED_CARE"
+        ],
+        "Uma responsabilidade exclusiva de uma criança": [
+          "COMMUNITY_SHARED_CARE"
+        ],
+        "Uma regra para todas as famílias": [
+          "COMMUNITY_SHARED_CARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CUIDADO_DA_PRACA",
+      "explanation": "A cena descreve uma ação coletiva num espaço da comunidade.",
+      "hint": "Observe onde o grupo atua.",
+      "errorFocus": "COMMUNITY_SHARED_CARE",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve uma ação coletiva num espaço da comunidade.",
+        "incorrect": "A cena descreve uma ação coletiva num espaço da comunidade.",
+        "hint": "Observe onde o grupo atua.",
+        "errorFocus": "COMMUNITY_SHARED_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-13",
+      "statement": "Uma personagem é estudante na escola e integrante de uma equipe de jardinagem comunitária. O que os papéis têm em comum?",
+      "prompt": "Uma personagem é estudante na escola e integrante de uma equipe de jardinagem comunitária. O que os papéis têm em comum?",
+      "options": [
+        "Ela participa de grupos diferentes com responsabilidades próprias de cada contexto.",
+        "Ela deve realizar o mesmo trabalho em ambos",
+        "Ela é responsável por todas as pessoas",
+        "Os lugares são iguais"
+      ],
+      "correctAnswer": "Ela participa de grupos diferentes com responsabilidades próprias de cada contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ela deve realizar o mesmo trabalho em ambos": [
+          "ROLE_BY_CONTEXT"
+        ],
+        "Ela é responsável por todas as pessoas": [
+          "ROLE_BY_CONTEXT"
+        ],
+        "Os lugares são iguais": [
+          "ROLE_BY_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PAPEL_EM_DOIS_LUGARES",
+      "explanation": "Os papéis se relacionam aos grupos e às tarefas de cada lugar.",
+      "hint": "Compare as atividades específicas.",
+      "errorFocus": "ROLE_BY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Os papéis se relacionam aos grupos e às tarefas de cada lugar.",
+        "incorrect": "Os papéis se relacionam aos grupos e às tarefas de cada lugar.",
+        "hint": "Compare as atividades específicas.",
+        "errorFocus": "ROLE_BY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-14",
+      "statement": "Um educador organiza uma leitura e uma criança escolhe um livro. Qual diferença de papel aparece?",
+      "prompt": "Um educador organiza uma leitura e uma criança escolhe um livro. Qual diferença de papel aparece?",
+      "options": [
+        "A criança é responsável por todos os visitantes",
+        "O educador conduz a atividade e a criança participa escolhendo um livro.",
+        "O educador escolhe o que todos devem gostar",
+        "Os dois papéis são idênticos"
+      ],
+      "correctAnswer": "O educador conduz a atividade e a criança participa escolhendo um livro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A criança é responsável por todos os visitantes": [
+          "ADULT_AND_CHILD_ROLES"
+        ],
+        "O educador escolhe o que todos devem gostar": [
+          "ADULT_AND_CHILD_ROLES"
+        ],
+        "Os dois papéis são idênticos": [
+          "ADULT_AND_CHILD_ROLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CUIDADO_DA_BIBLIOTECA",
+      "explanation": "As ações diferem na cena; nenhuma define o valor das pessoas.",
+      "hint": "Associe cada ação à personagem que a realiza.",
+      "errorFocus": "ADULT_AND_CHILD_ROLES",
+      "feedback": {
+        "correct": "Boa observação: As ações diferem na cena; nenhuma define o valor das pessoas.",
+        "incorrect": "As ações diferem na cena; nenhuma define o valor das pessoas.",
+        "hint": "Associe cada ação à personagem que a realiza.",
+        "errorFocus": "ADULT_AND_CHILD_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-15",
+      "statement": "Uma turma decide quem apresenta o trabalho por sorteio, sem separar tarefas por gênero. Qual princípio aparece?",
+      "prompt": "Uma turma decide quem apresenta o trabalho por sorteio, sem separar tarefas por gênero. Qual princípio aparece?",
+      "options": [
+        "Cada gênero deve ter uma tarefa fixa",
+        "Só adultos podem participar",
+        "Papéis podem ser combinados sem estereótipos de gênero.",
+        "A tarefa define a identidade da pessoa"
+      ],
+      "correctAnswer": "Papéis podem ser combinados sem estereótipos de gênero.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cada gênero deve ter uma tarefa fixa": [
+          "GENDER_STEREOTYPE_AVOIDANCE"
+        ],
+        "Só adultos podem participar": [
+          "GENDER_STEREOTYPE_AVOIDANCE"
+        ],
+        "A tarefa define a identidade da pessoa": [
+          "GENDER_STEREOTYPE_AVOIDANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DISTRIBUICAO_DE_TAREFAS",
+      "explanation": "A divisão descrita não presume que uma função pertença a um gênero.",
+      "hint": "Observe como a turma escolhe as funções.",
+      "errorFocus": "GENDER_STEREOTYPE_AVOIDANCE",
+      "feedback": {
+        "correct": "Boa observação: A divisão descrita não presume que uma função pertença a um gênero.",
+        "incorrect": "A divisão descrita não presume que uma função pertença a um gênero.",
+        "hint": "Observe como a turma escolhe as funções.",
+        "errorFocus": "GENDER_STEREOTYPE_AVOIDANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-16",
+      "statement": "Uma atividade escolar usa material pesado numa prateleira alta. O que uma criança deve fazer?",
+      "prompt": "Uma atividade escolar usa material pesado numa prateleira alta. O que uma criança deve fazer?",
+      "options": [
+        "Subir numa cadeira instável sozinha",
+        "Ignorar a segurança para terminar rápido",
+        "Pedir que outra criança faça sem supervisão",
+        "Pedir ajuda a um adulto responsável."
+      ],
+      "correctAnswer": "Pedir ajuda a um adulto responsável.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Subir numa cadeira instável sozinha": [
+          "SAFETY_AND_HELP_SEEKING"
+        ],
+        "Ignorar a segurança para terminar rápido": [
+          "SAFETY_AND_HELP_SEEKING"
+        ],
+        "Pedir que outra criança faça sem supervisão": [
+          "SAFETY_AND_HELP_SEEKING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PEDIR_AJUDA",
+      "explanation": "Pedir ajuda adulta é uma forma segura de participar.",
+      "hint": "Priorize segurança antes de concluir a tarefa.",
+      "errorFocus": "SAFETY_AND_HELP_SEEKING",
+      "feedback": {
+        "correct": "Boa observação: Pedir ajuda adulta é uma forma segura de participar.",
+        "incorrect": "Pedir ajuda adulta é uma forma segura de participar.",
+        "hint": "Priorize segurança antes de concluir a tarefa.",
+        "errorFocus": "SAFETY_AND_HELP_SEEKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-17",
+      "statement": "Numa narrativa, Beto participa de uma aula, conversa com pessoas de cuidado e ajuda numa feira comunitária supervisionada. O que a comparação mostra?",
+      "prompt": "Numa narrativa, Beto participa de uma aula, conversa com pessoas de cuidado e ajuda numa feira comunitária supervisionada. O que a comparação mostra?",
+      "options": [
+        "A pessoa pode exercer papéis diferentes em contextos diferentes.",
+        "Toda pessoa tem as mesmas tarefas",
+        "A escola e a família são o mesmo lugar",
+        "Crianças devem organizar qualquer evento sozinhas"
+      ],
+      "correctAnswer": "A pessoa pode exercer papéis diferentes em contextos diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda pessoa tem as mesmas tarefas": [
+          "MULTIPLE_CONTEXTS"
+        ],
+        "A escola e a família são o mesmo lugar": [
+          "MULTIPLE_CONTEXTS"
+        ],
+        "Crianças devem organizar qualquer evento sozinhas": [
+          "MULTIPLE_CONTEXTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PERSONAGEM_EM_TRES_CONTEXTOS",
+      "explanation": "As cenas apresentam participação distinta de Beto em cada grupo.",
+      "hint": "Compare o papel em cada cenário.",
+      "errorFocus": "MULTIPLE_CONTEXTS",
+      "feedback": {
+        "correct": "Boa observação: As cenas apresentam participação distinta de Beto em cada grupo.",
+        "incorrect": "As cenas apresentam participação distinta de Beto em cada grupo.",
+        "hint": "Compare o papel em cada cenário.",
+        "errorFocus": "MULTIPLE_CONTEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-18",
+      "statement": "Uma criança guarda seus próprios lápis após a aula; um funcionário adulto guarda equipamentos pesados. Qual distinção é adequada?",
+      "prompt": "Uma criança guarda seus próprios lápis após a aula; um funcionário adulto guarda equipamentos pesados. Qual distinção é adequada?",
+      "options": [
+        "Crianças devem guardar qualquer equipamento",
+        "As responsabilidades podem variar conforme a tarefa e a segurança.",
+        "Adultos nunca ajudam estudantes",
+        "Todas as tarefas têm o mesmo risco"
+      ],
+      "correctAnswer": "As responsabilidades podem variar conforme a tarefa e a segurança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Crianças devem guardar qualquer equipamento": [
+          "TASK_SAFETY_SCOPE"
+        ],
+        "Adultos nunca ajudam estudantes": [
+          "TASK_SAFETY_SCOPE"
+        ],
+        "Todas as tarefas têm o mesmo risco": [
+          "TASK_SAFETY_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RESPONSABILIDADE_DE_MATERIAIS",
+      "explanation": "A cena diferencia uma ação simples de uma tarefa com materiais pesados.",
+      "hint": "Observe o risco e quem pode ajudar.",
+      "errorFocus": "TASK_SAFETY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A cena diferencia uma ação simples de uma tarefa com materiais pesados.",
+        "incorrect": "A cena diferencia uma ação simples de uma tarefa com materiais pesados.",
+        "hint": "Observe o risco e quem pode ajudar.",
+        "errorFocus": "TASK_SAFETY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-19",
+      "statement": "Alguém diz que toda família tem as mesmas tarefas e pessoas. Qual resposta é mais precisa?",
+      "prompt": "Alguém diz que toda família tem as mesmas tarefas e pessoas. Qual resposta é mais precisa?",
+      "options": [
+        "A afirmação é sempre verdadeira",
+        "Só uma composição é uma família",
+        "As famílias podem se organizar de formas diferentes; descrevemos cada história sem generalizar.",
+        "As tarefas dependem sempre do gênero"
+      ],
+      "correctAnswer": "As famílias podem se organizar de formas diferentes; descrevemos cada história sem generalizar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A afirmação é sempre verdadeira": [
+          "NO_UNIVERSAL_FAMILY_MODEL"
+        ],
+        "Só uma composição é uma família": [
+          "NO_UNIVERSAL_FAMILY_MODEL"
+        ],
+        "As tarefas dependem sempre do gênero": [
+          "NO_UNIVERSAL_FAMILY_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AFIRMACAO_SOBRE_FAMILIAS",
+      "explanation": "Famílias são diversas e uma narrativa não representa todas.",
+      "hint": "Evite transformar um exemplo em regra.",
+      "errorFocus": "NO_UNIVERSAL_FAMILY_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Famílias são diversas e uma narrativa não representa todas.",
+        "incorrect": "Famílias são diversas e uma narrativa não representa todas.",
+        "hint": "Evite transformar um exemplo em regra.",
+        "errorFocus": "NO_UNIVERSAL_FAMILY_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-20",
+      "statement": "Uma personagem participa de uma reunião comunitária acompanhada por um adulto. Qual papel infantil seguro pode aparecer?",
+      "prompt": "Uma personagem participa de uma reunião comunitária acompanhada por um adulto. Qual papel infantil seguro pode aparecer?",
+      "options": [
+        "Tomar sozinha decisões legais por todos",
+        "Responder pela segurança do grupo",
+        "Substituir os adultos responsáveis",
+        "Escutar, compartilhar uma ideia ou ajudar numa tarefa apropriada com apoio."
+      ],
+      "correctAnswer": "Escutar, compartilhar uma ideia ou ajudar numa tarefa apropriada com apoio.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tomar sozinha decisões legais por todos": [
+          "CHILD_PARTICIPATION_LIMIT"
+        ],
+        "Responder pela segurança do grupo": [
+          "CHILD_PARTICIPATION_LIMIT"
+        ],
+        "Substituir os adultos responsáveis": [
+          "CHILD_PARTICIPATION_LIMIT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REUNIAO_DE_BAIRRO",
+      "explanation": "A criança pode participar sem assumir responsabilidades adultas.",
+      "hint": "Escolha uma ação compatível com sua idade e supervisão.",
+      "errorFocus": "CHILD_PARTICIPATION_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A criança pode participar sem assumir responsabilidades adultas.",
+        "incorrect": "A criança pode participar sem assumir responsabilidades adultas.",
+        "hint": "Escolha uma ação compatível com sua idade e supervisão.",
+        "errorFocus": "CHILD_PARTICIPATION_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-21",
+      "statement": "Na escola, a professora lê instruções e os estudantes organizam cartões. Como os papéis se distinguem?",
+      "prompt": "Na escola, a professora lê instruções e os estudantes organizam cartões. Como os papéis se distinguem?",
+      "options": [
+        "A professora orienta a atividade; os estudantes participam organizando cartões.",
+        "Todos fazem exatamente o mesmo papel",
+        "Os estudantes são responsáveis pelo prédio",
+        "A professora pertence à família de todos"
+      ],
+      "correctAnswer": "A professora orienta a atividade; os estudantes participam organizando cartões.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos fazem exatamente o mesmo papel": [
+          "SCHOOL_ROLE_DISTINCTION"
+        ],
+        "Os estudantes são responsáveis pelo prédio": [
+          "SCHOOL_ROLE_DISTINCTION"
+        ],
+        "A professora pertence à família de todos": [
+          "SCHOOL_ROLE_DISTINCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ATIVIDADE_DE_LEITURA",
+      "explanation": "A cena mostra orientação da professora e participação dos estudantes.",
+      "hint": "Relacione cada ação ao contexto escolar.",
+      "errorFocus": "SCHOOL_ROLE_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra orientação da professora e participação dos estudantes.",
+        "incorrect": "A cena mostra orientação da professora e participação dos estudantes.",
+        "hint": "Relacione cada ação ao contexto escolar.",
+        "errorFocus": "SCHOOL_ROLE_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-22",
+      "statement": "Por que indicar a ação da personagem ao descrever seu papel?",
+      "prompt": "Por que indicar a ação da personagem ao descrever seu papel?",
+      "options": [
+        "Porque uma ação define toda a pessoa",
+        "Porque a ação observada mostra qual responsabilidade aparece naquela cena.",
+        "Porque a cena representa todas as famílias",
+        "Porque o papel nunca muda"
+      ],
+      "correctAnswer": "Porque a ação observada mostra qual responsabilidade aparece naquela cena.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque uma ação define toda a pessoa": [
+          "ROLE_DESCRIPTION_EVIDENCE"
+        ],
+        "Porque a cena representa todas as famílias": [
+          "ROLE_DESCRIPTION_EVIDENCE"
+        ],
+        "Porque o papel nunca muda": [
+          "ROLE_DESCRIPTION_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESPONSABILIDADE_EVIDENCIA",
+      "explanation": "A ação e o contexto dão evidência para descrever o papel sem extrapolar.",
+      "hint": "Use uma pista concreta da história.",
+      "errorFocus": "ROLE_DESCRIPTION_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A ação e o contexto dão evidência para descrever o papel sem extrapolar.",
+        "incorrect": "A ação e o contexto dão evidência para descrever o papel sem extrapolar.",
+        "hint": "Use uma pista concreta da história.",
+        "errorFocus": "ROLE_DESCRIPTION_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-23",
+      "statement": "Uma estudante rega um canteiro da escola junto com a equipe adulta. Qual descrição é melhor?",
+      "prompt": "Uma estudante rega um canteiro da escola junto com a equipe adulta. Qual descrição é melhor?",
+      "options": [
+        "Ela é a única responsável pela segurança do canteiro",
+        "Todas as crianças precisam cuidar de plantas",
+        "Ela participa de uma atividade escolar de cuidado com supervisão.",
+        "A tarefa pertence a um gênero"
+      ],
+      "correctAnswer": "Ela participa de uma atividade escolar de cuidado com supervisão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela é a única responsável pela segurança do canteiro": [
+          "SUPERVISED_PARTICIPATION"
+        ],
+        "Todas as crianças precisam cuidar de plantas": [
+          "SUPERVISED_PARTICIPATION"
+        ],
+        "A tarefa pertence a um gênero": [
+          "SUPERVISED_PARTICIPATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CUIDADO_DO_CANTEIRO",
+      "explanation": "A cena delimita a participação e inclui supervisão adulta.",
+      "hint": "Mantenha o contexto e a supervisão na descrição.",
+      "errorFocus": "SUPERVISED_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: A cena delimita a participação e inclui supervisão adulta.",
+        "incorrect": "A cena delimita a participação e inclui supervisão adulta.",
+        "hint": "Mantenha o contexto e a supervisão na descrição.",
+        "errorFocus": "SUPERVISED_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-24",
+      "statement": "Um conto atribui a uma criança a responsabilidade de cuidar sozinha de um bebê durante a noite. Como revisar para uma aprendizagem segura?",
+      "prompt": "Um conto atribui a uma criança a responsabilidade de cuidar sozinha de um bebê durante a noite. Como revisar para uma aprendizagem segura?",
+      "options": [
+        "Dizer que toda criança deve cuidar de bebês",
+        "Manter a responsabilidade sem apoio",
+        "Transformar a tarefa em castigo",
+        "Mostrar um adulto como responsável pelo cuidado e a criança participando de uma ação simples e supervisionada."
+      ],
+      "correctAnswer": "Mostrar um adulto como responsável pelo cuidado e a criança participando de uma ação simples e supervisionada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que toda criança deve cuidar de bebês": [
+          "CHILDCARE_NOT_CHILD_RESPONSIBILITY"
+        ],
+        "Manter a responsabilidade sem apoio": [
+          "CHILDCARE_NOT_CHILD_RESPONSIBILITY"
+        ],
+        "Transformar a tarefa em castigo": [
+          "CHILDCARE_NOT_CHILD_RESPONSIBILITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TAREFA_INSEGURA_NA_NARRATIVA",
+      "explanation": "A segurança e o cuidado contínuo cabem a adultos responsáveis.",
+      "hint": "Reescreva separando participação infantil e responsabilidade adulta.",
+      "errorFocus": "CHILDCARE_NOT_CHILD_RESPONSIBILITY",
+      "feedback": {
+        "correct": "Boa observação: A segurança e o cuidado contínuo cabem a adultos responsáveis.",
+        "incorrect": "A segurança e o cuidado contínuo cabem a adultos responsáveis.",
+        "hint": "Reescreva separando participação infantil e responsabilidade adulta.",
+        "errorFocus": "CHILDCARE_NOT_CHILD_RESPONSIBILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-25",
+      "statement": "Uma ficha descreve uma criança lendo com uma pessoa de cuidado, outra guardando cadernos na escola e outra ouvindo uma contadora de histórias do bairro. O que as fichas ilustram?",
+      "prompt": "Uma ficha descreve uma criança lendo com uma pessoa de cuidado, outra guardando cadernos na escola e outra ouvindo uma contadora de histórias do bairro. O que as fichas ilustram?",
+      "options": [
+        "Papéis e responsabilidades em contextos diferentes.",
+        "Uma única tarefa para todas as pessoas",
+        "Uma regra sobre composição familiar",
+        "A obrigação de crianças trabalharem sem adultos"
+      ],
+      "correctAnswer": "Papéis e responsabilidades em contextos diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma única tarefa para todas as pessoas": [
+          "CONTEXTUAL_ROLE_SUMMARY"
+        ],
+        "Uma regra sobre composição familiar": [
+          "CONTEXTUAL_ROLE_SUMMARY"
+        ],
+        "A obrigação de crianças trabalharem sem adultos": [
+          "CONTEXTUAL_ROLE_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_CASA_ESCOLA_COMUNIDADE",
+      "explanation": "As fichas separam família, escola e comunidade por suas situações.",
+      "hint": "Nomeie os contextos das cenas.",
+      "errorFocus": "CONTEXTUAL_ROLE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: As fichas separam família, escola e comunidade por suas situações.",
+        "incorrect": "As fichas separam família, escola e comunidade por suas situações.",
+        "hint": "Nomeie os contextos das cenas.",
+        "errorFocus": "CONTEXTUAL_ROLE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-26",
+      "statement": "Numa atividade, um adulto explica o uso seguro de ferramentas e uma criança escolhe sementes. Como diferem os papéis?",
+      "prompt": "Numa atividade, um adulto explica o uso seguro de ferramentas e uma criança escolhe sementes. Como diferem os papéis?",
+      "options": [
+        "A criança responde pela segurança",
+        "O adulto orienta a segurança e a criança participa escolhendo sementes.",
+        "Os papéis são idênticos",
+        "O adulto não participa"
+      ],
+      "correctAnswer": "O adulto orienta a segurança e a criança participa escolhendo sementes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A criança responde pela segurança": [
+          "SAFETY_ROLE_DISTINCTION"
+        ],
+        "Os papéis são idênticos": [
+          "SAFETY_ROLE_DISTINCTION"
+        ],
+        "O adulto não participa": [
+          "SAFETY_ROLE_DISTINCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ORIENTACAO_E_PARTICIPACAO",
+      "explanation": "A cena atribui a orientação segura ao adulto e uma escolha apropriada à criança.",
+      "hint": "Observe quem orienta e quem escolhe.",
+      "errorFocus": "SAFETY_ROLE_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: A cena atribui a orientação segura ao adulto e uma escolha apropriada à criança.",
+        "incorrect": "A cena atribui a orientação segura ao adulto e uma escolha apropriada à criança.",
+        "hint": "Observe quem orienta e quem escolhe.",
+        "errorFocus": "SAFETY_ROLE_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-27",
+      "statement": "Uma personagem ajuda a organizar livros na escola e escolhe um livro como visitante da biblioteca. O que mudou?",
+      "prompt": "Uma personagem ajuda a organizar livros na escola e escolhe um livro como visitante da biblioteca. O que mudou?",
+      "options": [
+        "O valor da personagem",
+        "A necessidade de acesso a livros",
+        "O papel depende do contexto e da atividade descrita.",
+        "A identidade da pessoa"
+      ],
+      "correctAnswer": "O papel depende do contexto e da atividade descrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O valor da personagem": [
+          "ROLE_CONTEXT_ANALYSIS"
+        ],
+        "A necessidade de acesso a livros": [
+          "ROLE_CONTEXT_ANALYSIS"
+        ],
+        "A identidade da pessoa": [
+          "ROLE_CONTEXT_ANALYSIS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PAPEL_MUDA_COM_O_LUGAR",
+      "explanation": "Organizar materiais e escolher como visitante são ações diferentes em lugares distintos.",
+      "hint": "Compare as duas cenas, não a pessoa.",
+      "errorFocus": "ROLE_CONTEXT_ANALYSIS",
+      "feedback": {
+        "correct": "Boa observação: Organizar materiais e escolher como visitante são ações diferentes em lugares distintos.",
+        "incorrect": "Organizar materiais e escolher como visitante são ações diferentes em lugares distintos.",
+        "hint": "Compare as duas cenas, não a pessoa.",
+        "errorFocus": "ROLE_CONTEXT_ANALYSIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-28",
+      "statement": "Uma história mostra uma criança guardando seus brinquedos com orientação. Qual relato evita impor regra a todas as casas?",
+      "prompt": "Uma história mostra uma criança guardando seus brinquedos com orientação. Qual relato evita impor regra a todas as casas?",
+      "options": [
+        "“Toda criança sempre guarda tudo sozinha.”",
+        "“Só meninas organizam brinquedos.”",
+        "“Uma família correta faz assim.”",
+        "“Nesta história, a personagem guarda os brinquedos com orientação.”"
+      ],
+      "correctAnswer": "“Nesta história, a personagem guarda os brinquedos com orientação.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Toda criança sempre guarda tudo sozinha.”": [
+          "BOUNDED_FAMILY_DESCRIPTION"
+        ],
+        "“Só meninas organizam brinquedos.”": [
+          "BOUNDED_FAMILY_DESCRIPTION"
+        ],
+        "“Uma família correta faz assim.”": [
+          "BOUNDED_FAMILY_DESCRIPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TAREFA_DOMESTICA_FICTICIA",
+      "explanation": "A frase descreve somente a narrativa mostrada.",
+      "hint": "Use “nesta história” para delimitar o exemplo.",
+      "errorFocus": "BOUNDED_FAMILY_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve somente a narrativa mostrada.",
+        "incorrect": "A frase descreve somente a narrativa mostrada.",
+        "hint": "Use “nesta história” para delimitar o exemplo.",
+        "errorFocus": "BOUNDED_FAMILY_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-29",
+      "statement": "Por que uma criança deve pedir ajuda antes de usar uma ferramenta que não conhece?",
+      "prompt": "Por que uma criança deve pedir ajuda antes de usar uma ferramenta que não conhece?",
+      "options": [
+        "Porque um adulto responsável pode orientar o uso seguro.",
+        "Porque crianças nunca podem participar",
+        "Porque a ferramenta define o papel da família",
+        "Porque a tarefa é igual em todo lugar"
+      ],
+      "correctAnswer": "Porque um adulto responsável pode orientar o uso seguro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque crianças nunca podem participar": [
+          "SUPERVISED_SAFETY"
+        ],
+        "Porque a ferramenta define o papel da família": [
+          "SUPERVISED_SAFETY"
+        ],
+        "Porque a tarefa é igual em todo lugar": [
+          "SUPERVISED_SAFETY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PEDIR_SUPERVISAO",
+      "explanation": "A orientação adulta reduz riscos sem excluir a participação apropriada.",
+      "hint": "Pense em cuidado e segurança.",
+      "errorFocus": "SUPERVISED_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: A orientação adulta reduz riscos sem excluir a participação apropriada.",
+        "incorrect": "A orientação adulta reduz riscos sem excluir a participação apropriada.",
+        "hint": "Pense em cuidado e segurança.",
+        "errorFocus": "SUPERVISED_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-30",
+      "statement": "Um grupo diz que só meninos devem montar cadeiras e só meninas devem decorar. Qual avaliação é justa?",
+      "prompt": "Um grupo diz que só meninos devem montar cadeiras e só meninas devem decorar. Qual avaliação é justa?",
+      "options": [
+        "A divisão é obrigatória em toda escola",
+        "As tarefas podem ser distribuídas sem estereótipos, considerando interesse e segurança.",
+        "Cada tarefa pertence a um gênero",
+        "A atividade deve excluir quem discorda"
+      ],
+      "correctAnswer": "As tarefas podem ser distribuídas sem estereótipos, considerando interesse e segurança.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A divisão é obrigatória em toda escola": [
+          "GENDER_ROLE_STEREOTYPE"
+        ],
+        "Cada tarefa pertence a um gênero": [
+          "GENDER_ROLE_STEREOTYPE"
+        ],
+        "A atividade deve excluir quem discorda": [
+          "GENDER_ROLE_STEREOTYPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIVISAO_ESTEREOTIPADA",
+      "explanation": "Responsabilidades não devem ser determinadas por estereótipos de gênero.",
+      "hint": "Escolha uma regra que permita participação justa.",
+      "errorFocus": "GENDER_ROLE_STEREOTYPE",
+      "feedback": {
+        "correct": "Boa observação: Responsabilidades não devem ser determinadas por estereótipos de gênero.",
+        "incorrect": "Responsabilidades não devem ser determinadas por estereótipos de gênero.",
+        "hint": "Escolha uma regra que permita participação justa.",
+        "errorFocus": "GENDER_ROLE_STEREOTYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-31",
+      "statement": "Uma turma conversa com adultos sobre cuidar do pátio. Qual papel a turma pode exercer?",
+      "prompt": "Uma turma conversa com adultos sobre cuidar do pátio. Qual papel a turma pode exercer?",
+      "options": [
+        "Assumir sozinha a manutenção do prédio",
+        "Substituir profissionais adultos",
+        "Compartilhar ideias e participar de ações seguras combinadas.",
+        "Responder por todos os visitantes"
+      ],
+      "correctAnswer": "Compartilhar ideias e participar de ações seguras combinadas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Assumir sozinha a manutenção do prédio": [
+          "COLLECTIVE_SCHOOL_PARTICIPATION"
+        ],
+        "Substituir profissionais adultos": [
+          "COLLECTIVE_SCHOOL_PARTICIPATION"
+        ],
+        "Responder por todos os visitantes": [
+          "COLLECTIVE_SCHOOL_PARTICIPATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CONSELHO_DA_ESCOLA",
+      "explanation": "A participação pode ser colaborativa e adequada, sem substituir responsabilidades adultas.",
+      "hint": "Procure a forma segura de contribuir.",
+      "errorFocus": "COLLECTIVE_SCHOOL_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: A participação pode ser colaborativa e adequada, sem substituir responsabilidades adultas.",
+        "incorrect": "A participação pode ser colaborativa e adequada, sem substituir responsabilidades adultas.",
+        "hint": "Procure a forma segura de contribuir.",
+        "errorFocus": "COLLECTIVE_SCHOOL_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-32",
+      "statement": "Que pistas ajudam a distinguir se uma responsabilidade é da escola ou da comunidade?",
+      "prompt": "Que pistas ajudam a distinguir se uma responsabilidade é da escola ou da comunidade?",
+      "options": [
+        "O gênero da personagem",
+        "Uma suposição sobre sua família",
+        "A cor da roupa sem relação com a ação",
+        "O lugar e a atividade coletiva descritos na cena."
+      ],
+      "correctAnswer": "O lugar e a atividade coletiva descritos na cena.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O gênero da personagem": [
+          "CONTEXT_EVIDENCE"
+        ],
+        "Uma suposição sobre sua família": [
+          "CONTEXT_EVIDENCE"
+        ],
+        "A cor da roupa sem relação com a ação": [
+          "CONTEXT_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TRES_PISTAS_DE_CONTEXTO",
+      "explanation": "Lugar e atividade são pistas diretamente relacionadas ao contexto.",
+      "hint": "Use informações que aparecem na cena.",
+      "errorFocus": "CONTEXT_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Lugar e atividade são pistas diretamente relacionadas ao contexto.",
+        "incorrect": "Lugar e atividade são pistas diretamente relacionadas ao contexto.",
+        "hint": "Use informações que aparecem na cena.",
+        "errorFocus": "CONTEXT_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-33",
+      "statement": "O que ajuda a identificar o papel de uma personagem?",
+      "prompt": "O que ajuda a identificar o papel de uma personagem?",
+      "options": [
+        "O contexto e a ação que a história descreve.",
+        "Uma suposição sobre seu gênero",
+        "Um julgamento sobre sua família",
+        "Uma informação que não aparece"
+      ],
+      "correctAnswer": "O contexto e a ação que a história descreve.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma suposição sobre seu gênero": [
+          "ROLE_CONTEXT_REVIEW"
+        ],
+        "Um julgamento sobre sua família": [
+          "ROLE_CONTEXT_REVIEW"
+        ],
+        "Uma informação que não aparece": [
+          "ROLE_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_PAPEIS",
+      "explanation": "A ação e o lugar dão pistas sobre o papel na cena.",
+      "hint": "Volte ao cenário e ao verbo.",
+      "errorFocus": "ROLE_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A ação e o lugar dão pistas sobre o papel na cena.",
+        "incorrect": "A ação e o lugar dão pistas sobre o papel na cena.",
+        "hint": "Volte ao cenário e ao verbo.",
+        "errorFocus": "ROLE_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-34",
+      "statement": "Um estudante guarda os materiais usados na aula. Onde ocorre essa responsabilidade?",
+      "prompt": "Um estudante guarda os materiais usados na aula. Onde ocorre essa responsabilidade?",
+      "options": [
+        "Em uma rua sem relação com a cena",
+        "Na escola.",
+        "Em todas as famílias",
+        "Em qualquer lugar ao mesmo tempo"
+      ],
+      "correctAnswer": "Na escola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Em uma rua sem relação com a cena": [
+          "SCHOOL_CONTEXT_REVIEW"
+        ],
+        "Em todas as famílias": [
+          "SCHOOL_CONTEXT_REVIEW"
+        ],
+        "Em qualquer lugar ao mesmo tempo": [
+          "SCHOOL_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DA_ESCOLA",
+      "explanation": "Os materiais da aula situam a ação na escola.",
+      "hint": "Observe a pista da aula.",
+      "errorFocus": "SCHOOL_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os materiais da aula situam a ação na escola.",
+        "incorrect": "Os materiais da aula situam a ação na escola.",
+        "hint": "Observe a pista da aula.",
+        "errorFocus": "SCHOOL_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-35",
+      "statement": "Uma pessoa da biblioteca ajuda visitantes a encontrar livros. Que serviço comunitário aparece?",
+      "prompt": "Uma pessoa da biblioteca ajuda visitantes a encontrar livros. Que serviço comunitário aparece?",
+      "options": [
+        "Uma tarefa de casa de cada visitante",
+        "Uma regra familiar universal",
+        "Apoio ao acesso e à organização de livros na biblioteca.",
+        "Uma atividade que só existe na escola"
+      ],
+      "correctAnswer": "Apoio ao acesso e à organização de livros na biblioteca.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma tarefa de casa de cada visitante": [
+          "COMMUNITY_ROLE_REVIEW"
+        ],
+        "Uma regra familiar universal": [
+          "COMMUNITY_ROLE_REVIEW"
+        ],
+        "Uma atividade que só existe na escola": [
+          "COMMUNITY_ROLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DA_COMUNIDADE",
+      "explanation": "A biblioteca presta um serviço a pessoas da comunidade.",
+      "hint": "Pense no local e no apoio oferecido.",
+      "errorFocus": "COMMUNITY_ROLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A biblioteca presta um serviço a pessoas da comunidade.",
+        "incorrect": "A biblioteca presta um serviço a pessoas da comunidade.",
+        "hint": "Pense no local e no apoio oferecido.",
+        "errorFocus": "COMMUNITY_ROLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-36",
+      "statement": "Uma cena mostra uma família fictícia com três pessoas. O que não devemos concluir?",
+      "prompt": "Uma cena mostra uma família fictícia com três pessoas. O que não devemos concluir?",
+      "options": [
+        "Que aquela história mostra três pessoas",
+        "Que a família participa da narrativa",
+        "Que a cena é um exemplo fictício",
+        "Que todas as famílias têm essa mesma composição."
+      ],
+      "correctAnswer": "Que todas as famílias têm essa mesma composição.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que aquela história mostra três pessoas": [
+          "FAMILY_GENERALIZATION_REVIEW"
+        ],
+        "Que a família participa da narrativa": [
+          "FAMILY_GENERALIZATION_REVIEW"
+        ],
+        "Que a cena é um exemplo fictício": [
+          "FAMILY_GENERALIZATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DA_DIVERSIDADE_FAMILIAR",
+      "explanation": "Uma narrativa particular não representa todas as famílias.",
+      "hint": "Limite a conclusão à cena.",
+      "errorFocus": "FAMILY_GENERALIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma narrativa particular não representa todas as famílias.",
+        "incorrect": "Uma narrativa particular não representa todas as famílias.",
+        "hint": "Limite a conclusão à cena.",
+        "errorFocus": "FAMILY_GENERALIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-37",
+      "statement": "Uma tarefa envolve subir numa escada alta para alcançar um objeto. O que a criança deve fazer?",
+      "prompt": "Uma tarefa envolve subir numa escada alta para alcançar um objeto. O que a criança deve fazer?",
+      "options": [
+        "Pedir a ajuda de um adulto responsável.",
+        "Subir sozinha rapidamente",
+        "Pedir a outra criança para subir",
+        "Ignorar o risco"
+      ],
+      "correctAnswer": "Pedir a ajuda de um adulto responsável.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Subir sozinha rapidamente": [
+          "SAFETY_REVIEW"
+        ],
+        "Pedir a outra criança para subir": [
+          "SAFETY_REVIEW"
+        ],
+        "Ignorar o risco": [
+          "SAFETY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_SEGURANCA",
+      "explanation": "Um adulto deve orientar uma situação com risco de queda.",
+      "hint": "Priorize segurança e ajuda adulta.",
+      "errorFocus": "SAFETY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um adulto deve orientar uma situação com risco de queda.",
+        "incorrect": "Um adulto deve orientar uma situação com risco de queda.",
+        "hint": "Priorize segurança e ajuda adulta.",
+        "errorFocus": "SAFETY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-38",
+      "statement": "Uma pessoa é estudante durante a aula e visitante numa biblioteca do bairro. O que isso mostra?",
+      "prompt": "Uma pessoa é estudante durante a aula e visitante numa biblioteca do bairro. O que isso mostra?",
+      "options": [
+        "Uma pessoa tem apenas um papel",
+        "Uma pessoa pode participar de grupos diferentes com papéis próprios.",
+        "Os lugares têm as mesmas regras",
+        "Todas as pessoas precisam ter as mesmas tarefas"
+      ],
+      "correctAnswer": "Uma pessoa pode participar de grupos diferentes com papéis próprios.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma pessoa tem apenas um papel": [
+          "MULTIPLE_ROLE_REVIEW"
+        ],
+        "Os lugares têm as mesmas regras": [
+          "MULTIPLE_ROLE_REVIEW"
+        ],
+        "Todas as pessoas precisam ter as mesmas tarefas": [
+          "MULTIPLE_ROLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_PAPEIS_VARIADOS",
+      "explanation": "Os papéis dependem dos contextos em que a pessoa participa.",
+      "hint": "Compare escola e biblioteca.",
+      "errorFocus": "MULTIPLE_ROLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os papéis dependem dos contextos em que a pessoa participa.",
+        "incorrect": "Os papéis dependem dos contextos em que a pessoa participa.",
+        "hint": "Compare escola e biblioteca.",
+        "errorFocus": "MULTIPLE_ROLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-39",
+      "statement": "Por que uma tarefa escolar para crianças deve ser segura e supervisionada quando necessário?",
+      "prompt": "Por que uma tarefa escolar para crianças deve ser segura e supervisionada quando necessário?",
+      "options": [
+        "Para excluir crianças de toda atividade",
+        "Para transferir deveres de adultos",
+        "Para permitir participação sem colocar a criança em risco.",
+        "Para definir o gênero de cada participante"
+      ],
+      "correctAnswer": "Para permitir participação sem colocar a criança em risco.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para excluir crianças de toda atividade": [
+          "SAFE_PARTICIPATION_REVIEW"
+        ],
+        "Para transferir deveres de adultos": [
+          "SAFE_PARTICIPATION_REVIEW"
+        ],
+        "Para definir o gênero de cada participante": [
+          "SAFE_PARTICIPATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_TAREFA_SEGURA",
+      "explanation": "Segurança orienta a participação apropriada, sem excluir a criança.",
+      "hint": "Relacione segurança e participação.",
+      "errorFocus": "SAFE_PARTICIPATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Segurança orienta a participação apropriada, sem excluir a criança.",
+        "incorrect": "Segurança orienta a participação apropriada, sem excluir a criança.",
+        "hint": "Relacione segurança e participação.",
+        "errorFocus": "SAFE_PARTICIPATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi03-roles-and-responsibilities-40",
+      "statement": "Qual frase resume papéis na família, escola e comunidade de modo cuidadoso?",
+      "prompt": "Qual frase resume papéis na família, escola e comunidade de modo cuidadoso?",
+      "options": [
+        "Toda família e escola tem tarefas iguais",
+        "Crianças são responsáveis por toda segurança",
+        "Um papel define a pessoa para sempre",
+        "Os papéis variam conforme o contexto; descrevemos cada situação sem generalizar e respeitando a segurança."
+      ],
+      "correctAnswer": "Os papéis variam conforme o contexto; descrevemos cada situação sem generalizar e respeitando a segurança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda família e escola tem tarefas iguais": [
+          "CONTEXTUAL_AND_SAFE_SUMMARY"
+        ],
+        "Crianças são responsáveis por toda segurança": [
+          "CONTEXTUAL_AND_SAFE_SUMMARY"
+        ],
+        "Um papel define a pessoa para sempre": [
+          "CONTEXTUAL_AND_SAFE_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SINTese_DE_RESPONSABILIDADES",
+      "explanation": "A síntese considera contexto, diversidade e segurança.",
+      "hint": "Combine os três cuidados da lição.",
+      "errorFocus": "CONTEXTUAL_AND_SAFE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A síntese considera contexto, diversidade e segurança.",
+        "incorrect": "A síntese considera contexto, diversidade e segurança.",
+        "hint": "Combine os três cuidados da lição.",
+        "errorFocus": "CONTEXTUAL_AND_SAFE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cenas com pictogramas, descrição verbal, fonte ampliada e vocabulário concreto para cada lugar.",
+          "Permitir classificar cartões, apontar, desenhar, responder oralmente ou usar comunicação alternativa.",
+          "Manter todos os exemplos fictícios; não solicitar relatos de casa, nomes de familiares, fotografias ou informações privadas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "reassignments": [
+    {
+      "sourceFile": "journey-expansion-c-v1.json",
+      "journeyCode": "PHILOSOPHY_DISTINGUISH_CONCEPT_V93",
+      "sourceSkillCode": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "targetSkillCode": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "sourceQuestionIdPrefix": "v93-phil-argument-",
+      "questionCount": 20,
+      "status": "SEMANTICALLY_REASSIGNED",
+      "reason": "The legacy lesson and questions assess premises, conclusions, evidence, and inference rather than distinguishing concepts from preferences or opinions.",
+      "forwardMigration": "20261013003400_bncc_philosophy_concept_semantic_reconciliation_v1.sql",
+      "historicalRowsPreserved": true
+    }
+  ]
+}

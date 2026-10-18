@@ -1,0 +1,2120 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef06co01-classifying-information-and-data-types",
+  "canonicalSkillCode": "AUTHORING_EF06CO01_CLASSIFYING_INFORMATION_AND_DATA_TYPES",
+  "subject": "COMPUTING",
+  "domain": "PENSAMENTO COMPUTACIONAL",
+  "topic": "classificação de informações e tipos de dados",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF06CO01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Classificar informações, agrupando-as em coleções (conjuntos) e associando cada coleção a um ‘tipo de dados’.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 42
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Como organizar informações para um problema",
+    "objective": "Agrupar informações de acordo com uma finalidade explícita e associar cada coleção a um tipo de dado coerente, reconhecendo que a mesma informação pode pertencer a grupos diferentes conforme a pergunta.",
+    "summary": "Uma coleção reúne itens que compartilham uma característica útil para determinada tarefa. Um tipo de dado descreve que espécie de valor esperamos encontrar, como texto, número, valor lógico ou uma coleção de valores. A classificação deve servir ao problema, não ao formato visual do cartão. Uma data escrita como texto pode continuar sendo texto se o sistema não a interpretar como data. Um nome e um número de matrícula não são intercambiáveis só porque ambos aparecem como caracteres.",
+    "explanation": "Primeiro, pergunte qual problema a coleção ajuda a resolver. Depois compare a característica escolhida e registre os itens que a atendem. Para cada coleção, declare o tipo de valor esperado: texto para palavras e rótulos, número para quantidades, valor lógico para sim/não e coleção para vários itens relacionados. Algumas informações precisam de mais de um campo: um registro de livro pode reunir título (texto), páginas (número) e disponível (valor lógico). Não infira atributos pessoais que não foram fornecidos e não use dados reais de estudantes para exercícios. A mesma entidade pode aparecer em mais de uma coleção, desde que o critério esteja claro.",
+    "workedExample": "Um clube fictício organiza materiais para empréstimo. A coleção “quantidade de páginas” contém 48, 120 e 96, portanto espera números. A coleção “título” contém palavras, portanto espera texto. Se houver uma coleção “tem empréstimo disponível?”, seus valores são sim ou não. Esses campos descrevem aspectos diferentes do mesmo livro.",
+    "commonMistake": "Agrupar apenas porque os itens têm a mesma cor ou posição no quadro, confundir número escrito em um identificador com quantidade, ou supor que todo campo de uma ficha precisa ter o mesmo tipo.",
+    "priorKnowledge": [
+      "Ler rótulos e reconhecer atributos simples em cartões.",
+      "Distinguir uma palavra de uma quantidade e uma resposta sim/não.",
+      "Explicar o critério usado para colocar objetos em grupos."
+    ],
+    "keyConcepts": [
+      "informação",
+      "coleção",
+      "critério de agrupamento",
+      "tipo de dado",
+      "texto",
+      "número",
+      "valor lógico",
+      "registro"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GROUP_WITHOUT_CRITERION",
+        "action": "Escreva a pergunta que a coleção deve responder e destaque a característica comum antes de mover os cartões."
+      },
+      {
+        "errorFocus": "IDENTIFIER_AS_QUANTITY",
+        "action": "Pergunte se o número pode ser somado para responder a uma pergunta quantitativa; se apenas identifica um item, trate-o como rótulo/texto."
+      },
+      {
+        "errorFocus": "ONE_TYPE_FOR_WHOLE_RECORD",
+        "action": "Separe os campos do registro e escolha o tipo de cada campo, em vez de atribuir um único tipo ao registro inteiro."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+      "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+      "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+      "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co01-library-material-sort",
+        "title": "Catálogo de materiais fictícios",
+        "instructions": "Cartões fictícios descrevem livros, jogos e kits com campos de título, quantidade e disponibilidade.\n1. Escolha uma pergunta de consulta, como localizar materiais disponíveis.\n2. Agrupe os cartões por um critério declarado e identifique o tipo de cada campo usado.\n3. Explique por que o identificador do item não é uma quantidade de exemplares.",
+        "steps": [
+          "Escolha uma pergunta de consulta, como localizar materiais disponíveis.",
+          "Agrupe os cartões por um critério declarado e identifique o tipo de cada campo usado.",
+          "Explique por que o identificador do item não é uma quantidade de exemplares."
+        ],
+        "evidence": "Tabela de coleções com critério escrito, tipos dos campos e justificativa para um caso-limite.",
+        "privacyGuard": "Usar itens inventados e não registrar dados de empréstimos de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "agrupa alguns itens com apoio, mas ainda não explica o critério.",
+            "developing": "declara um critério e identifica o tipo de pelo menos dois campos.",
+            "proficient": "justifica grupos, tipos e diferença entre identificador e quantidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co01-data-card-design",
+        "title": "Ficha de inscrição para evento imaginário",
+        "instructions": "A turma projeta uma ficha fictícia para contagem de materiais de uma feira, sem cadastrar participantes reais.\n1. Defina quais informações são necessárias para estimar materiais, sem pedir dados pessoais.\n2. Associe cada campo a texto, número, valor lógico ou coleção.\n3. Teste a ficha com três registros inventados e corrija campos ambíguos.",
+        "steps": [
+          "Defina quais informações são necessárias para estimar materiais, sem pedir dados pessoais.",
+          "Associe cada campo a texto, número, valor lógico ou coleção.",
+          "Teste a ficha com três registros inventados e corrija campos ambíguos."
+        ],
+        "evidence": "Protótipo de ficha com tipos explícitos e três registros de teste coerentes.",
+        "privacyGuard": "Não coletar nome, contato, imagem, endereço ou qualquer informação identificável de colegas.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "lista campos sem indicar seus tipos.",
+            "developing": "associa tipos, mas deixa uma ambiguidade sem explicar.",
+            "proficient": "escolhe somente campos necessários e demonstra a coerência com exemplos fictícios."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef06co01-classifying-information-and-data-types-01",
+          "v1-ef06co01-classifying-information-and-data-types-02",
+          "v1-ef06co01-classifying-information-and-data-types-03",
+          "v1-ef06co01-classifying-information-and-data-types-04",
+          "v1-ef06co01-classifying-information-and-data-types-05",
+          "v1-ef06co01-classifying-information-and-data-types-06",
+          "v1-ef06co01-classifying-information-and-data-types-07",
+          "v1-ef06co01-classifying-information-and-data-types-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef06co01-classifying-information-and-data-types-09",
+          "v1-ef06co01-classifying-information-and-data-types-10",
+          "v1-ef06co01-classifying-information-and-data-types-11",
+          "v1-ef06co01-classifying-information-and-data-types-12",
+          "v1-ef06co01-classifying-information-and-data-types-13",
+          "v1-ef06co01-classifying-information-and-data-types-14",
+          "v1-ef06co01-classifying-information-and-data-types-15",
+          "v1-ef06co01-classifying-information-and-data-types-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef06co01-classifying-information-and-data-types-17",
+          "v1-ef06co01-classifying-information-and-data-types-18",
+          "v1-ef06co01-classifying-information-and-data-types-19",
+          "v1-ef06co01-classifying-information-and-data-types-20",
+          "v1-ef06co01-classifying-information-and-data-types-21",
+          "v1-ef06co01-classifying-information-and-data-types-22",
+          "v1-ef06co01-classifying-information-and-data-types-23",
+          "v1-ef06co01-classifying-information-and-data-types-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef06co01-classifying-information-and-data-types-25",
+          "v1-ef06co01-classifying-information-and-data-types-26",
+          "v1-ef06co01-classifying-information-and-data-types-27",
+          "v1-ef06co01-classifying-information-and-data-types-28",
+          "v1-ef06co01-classifying-information-and-data-types-29",
+          "v1-ef06co01-classifying-information-and-data-types-30",
+          "v1-ef06co01-classifying-information-and-data-types-31",
+          "v1-ef06co01-classifying-information-and-data-types-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef06co01-classifying-information-and-data-types-33",
+          "v1-ef06co01-classifying-information-and-data-types-34",
+          "v1-ef06co01-classifying-information-and-data-types-35",
+          "v1-ef06co01-classifying-information-and-data-types-36",
+          "v1-ef06co01-classifying-information-and-data-types-37",
+          "v1-ef06co01-classifying-information-and-data-types-38",
+          "v1-ef06co01-classifying-information-and-data-types-39",
+          "v1-ef06co01-classifying-information-and-data-types-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF06CO01",
+        "descriptor": "Classificar informações, agrupando-as em coleções (conjuntos) e associando cada coleção a um ‘tipo de dados’.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 42
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-01",
+      "statement": "No catálogo fictício, o campo “título” guarda “A ponte azul”. Qual tipo combina melhor?",
+      "prompt": "No catálogo fictício, o campo “título” guarda “A ponte azul”. Qual tipo combina melhor?",
+      "options": [
+        "Texto",
+        "Número",
+        "Valor lógico",
+        "Uma imagem obrigatória"
+      ],
+      "correctAnswer": "Texto",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Número": [
+          "TEXT_AS_NUMBER"
+        ],
+        "Valor lógico": [
+          "TEXT_AS_NUMBER"
+        ],
+        "Uma imagem obrigatória": [
+          "TEXT_AS_NUMBER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_TITLE_TEXT",
+      "explanation": "O título é uma sequência de palavras e deve ser tratado como texto.",
+      "hint": "Observe se o valor representa palavras ou uma quantidade.",
+      "errorFocus": "TEXT_AS_NUMBER",
+      "feedback": {
+        "correct": "Boa observação: O título é uma sequência de palavras e deve ser tratado como texto.",
+        "incorrect": "O título é uma sequência de palavras e deve ser tratado como texto.",
+        "hint": "Observe se o valor representa palavras ou uma quantidade.",
+        "errorFocus": "TEXT_AS_NUMBER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-02",
+      "statement": "Uma ficha registra 24 sementes usadas em um canteiro. Que tipo representa essa quantidade?",
+      "prompt": "Uma ficha registra 24 sementes usadas em um canteiro. Que tipo representa essa quantidade?",
+      "options": [
+        "Texto descritivo",
+        "Número",
+        "Valor lógico",
+        "Coleção de títulos"
+      ],
+      "correctAnswer": "Número",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Texto descritivo": [
+          "COUNT_AS_LABEL"
+        ],
+        "Valor lógico": [
+          "COUNT_AS_LABEL"
+        ],
+        "Coleção de títulos": [
+          "COUNT_AS_LABEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GARDEN_SEED_COUNT",
+      "explanation": "A quantidade pode ser comparada e calculada como número.",
+      "hint": "Pergunte se o valor responde a “quantas”.",
+      "errorFocus": "COUNT_AS_LABEL",
+      "feedback": {
+        "correct": "Boa observação: A quantidade pode ser comparada e calculada como número.",
+        "incorrect": "A quantidade pode ser comparada e calculada como número.",
+        "hint": "Pergunte se o valor responde a “quantas”.",
+        "errorFocus": "COUNT_AS_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-03",
+      "statement": "Um armário está disponível ou indisponível para uso. Qual tipo representa essa escolha?",
+      "prompt": "Um armário está disponível ou indisponível para uso. Qual tipo representa essa escolha?",
+      "options": [
+        "Número de série",
+        "Texto longo obrigatório",
+        "Valor lógico",
+        "Coleção de salas"
+      ],
+      "correctAnswer": "Valor lógico",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Número de série": [
+          "BOOLEAN_AS_COUNT"
+        ],
+        "Texto longo obrigatório": [
+          "BOOLEAN_AS_COUNT"
+        ],
+        "Coleção de salas": [
+          "BOOLEAN_AS_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ROOM_AVAILABLE_FLAG",
+      "explanation": "Uma alternativa entre sim e não pode ser representada por valor lógico.",
+      "hint": "Há duas respostas mutuamente exclusivas?",
+      "errorFocus": "BOOLEAN_AS_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa entre sim e não pode ser representada por valor lógico.",
+        "incorrect": "Uma alternativa entre sim e não pode ser representada por valor lógico.",
+        "hint": "Há duas respostas mutuamente exclusivas?",
+        "errorFocus": "BOOLEAN_AS_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-04",
+      "statement": "Uma lista reúne lápis, régua e papel para uma atividade. O que é essa lista?",
+      "prompt": "Uma lista reúne lápis, régua e papel para uma atividade. O que é essa lista?",
+      "options": [
+        "Um único número",
+        "Uma resposta sim/não",
+        "Uma evidência de que os itens são idênticos",
+        "Uma coleção de itens"
+      ],
+      "correctAnswer": "Uma coleção de itens",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um único número": [
+          "COLLECTION_AS_SINGLE_VALUE"
+        ],
+        "Uma resposta sim/não": [
+          "COLLECTION_AS_SINGLE_VALUE"
+        ],
+        "Uma evidência de que os itens são idênticos": [
+          "COLLECTION_AS_SINGLE_VALUE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MATERIALS_COLLECTION",
+      "explanation": "A lista agrupa vários itens segundo uma finalidade.",
+      "hint": "Conte quantos itens diferentes aparecem.",
+      "errorFocus": "COLLECTION_AS_SINGLE_VALUE",
+      "feedback": {
+        "correct": "Boa observação: A lista agrupa vários itens segundo uma finalidade.",
+        "incorrect": "A lista agrupa vários itens segundo uma finalidade.",
+        "hint": "Conte quantos itens diferentes aparecem.",
+        "errorFocus": "COLLECTION_AS_SINGLE_VALUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-05",
+      "statement": "O código fictício “0048” identifica um objeto do inventário. Por que não se deve somá-lo como quantidade?",
+      "prompt": "O código fictício “0048” identifica um objeto do inventário. Por que não se deve somá-lo como quantidade?",
+      "options": [
+        "Porque funciona como identificador, não como contagem de objetos",
+        "Porque todo valor com dígitos é sempre inválido",
+        "Porque identificadores são temperaturas",
+        "Porque o código prova que há 48 objetos"
+      ],
+      "correctAnswer": "Porque funciona como identificador, não como contagem de objetos",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque todo valor com dígitos é sempre inválido": [
+          "IDENTIFIER_AS_QUANTITY"
+        ],
+        "Porque identificadores são temperaturas": [
+          "IDENTIFIER_AS_QUANTITY"
+        ],
+        "Porque o código prova que há 48 objetos": [
+          "IDENTIFIER_AS_QUANTITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "STUDENT_CODE_IDENTIFIER",
+      "explanation": "Dígitos usados para identificar não se tornam automaticamente quantidades.",
+      "hint": "Que pergunta o código responde: “qual item?” ou “quantos?”",
+      "errorFocus": "IDENTIFIER_AS_QUANTITY",
+      "feedback": {
+        "correct": "Boa observação: Dígitos usados para identificar não se tornam automaticamente quantidades.",
+        "incorrect": "Dígitos usados para identificar não se tornam automaticamente quantidades.",
+        "hint": "Que pergunta o código responde: “qual item?” ou “quantos?”",
+        "errorFocus": "IDENTIFIER_AS_QUANTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-06",
+      "statement": "Os rótulos “Sol”, “Lua” e “Mar” nomeiam três espaços fictícios. Que tipo combina com os rótulos?",
+      "prompt": "Os rótulos “Sol”, “Lua” e “Mar” nomeiam três espaços fictícios. Que tipo combina com os rótulos?",
+      "options": [
+        "Valor lógico",
+        "Texto",
+        "Número de visitantes",
+        "Coleção de datas"
+      ],
+      "correctAnswer": "Texto",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Valor lógico": [
+          "LABEL_AS_BOOLEAN"
+        ],
+        "Número de visitantes": [
+          "LABEL_AS_BOOLEAN"
+        ],
+        "Coleção de datas": [
+          "LABEL_AS_BOOLEAN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CLASSROOM_LABELS",
+      "explanation": "Nomes e rótulos são texto.",
+      "hint": "Os valores são palavras ou respostas binárias?",
+      "errorFocus": "LABEL_AS_BOOLEAN",
+      "feedback": {
+        "correct": "Boa observação: Nomes e rótulos são texto.",
+        "incorrect": "Nomes e rótulos são texto.",
+        "hint": "Os valores são palavras ou respostas binárias?",
+        "errorFocus": "LABEL_AS_BOOLEAN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-07",
+      "statement": "Uma ficha de livro possui título, número de páginas e disponível sim/não. Qual afirmação é correta?",
+      "prompt": "Uma ficha de livro possui título, número de páginas e disponível sim/não. Qual afirmação é correta?",
+      "options": [
+        "Todos devem ser números",
+        "Um registro inteiro só pode guardar texto",
+        "Campos diferentes podem ter tipos diferentes",
+        "A disponibilidade deve ser somada ao título"
+      ],
+      "correctAnswer": "Campos diferentes podem ter tipos diferentes",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todos devem ser números": [
+          "RECORD_SINGLE_TYPE"
+        ],
+        "Um registro inteiro só pode guardar texto": [
+          "RECORD_SINGLE_TYPE"
+        ],
+        "A disponibilidade deve ser somada ao título": [
+          "RECORD_SINGLE_TYPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOOK_RECORD_FIELDS",
+      "explanation": "Um registro pode reunir campos de tipos distintos.",
+      "hint": "Examine cada campo separadamente.",
+      "errorFocus": "RECORD_SINGLE_TYPE",
+      "feedback": {
+        "correct": "Boa observação: Um registro pode reunir campos de tipos distintos.",
+        "incorrect": "Um registro pode reunir campos de tipos distintos.",
+        "hint": "Examine cada campo separadamente.",
+        "errorFocus": "RECORD_SINGLE_TYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-08",
+      "statement": "Uma atividade agrupa caixas com capacidade de 2, 4 e 8 litros para comparar volumes. Qual critério foi usado?",
+      "prompt": "Uma atividade agrupa caixas com capacidade de 2, 4 e 8 litros para comparar volumes. Qual critério foi usado?",
+      "options": [
+        "Cor dos rótulos",
+        "Nome de quem trouxe a caixa",
+        "Disponibilidade de internet",
+        "Capacidade numérica"
+      ],
+      "correctAnswer": "Capacidade numérica",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cor dos rótulos": [
+          "VISIBLE_FEATURE_ONLY"
+        ],
+        "Nome de quem trouxe a caixa": [
+          "VISIBLE_FEATURE_ONLY"
+        ],
+        "Disponibilidade de internet": [
+          "VISIBLE_FEATURE_ONLY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SORTING_BY_SIZE",
+      "explanation": "O critério relevante à comparação é a capacidade.",
+      "hint": "Qual propriedade ajuda a responder à pergunta sobre volume?",
+      "errorFocus": "VISIBLE_FEATURE_ONLY",
+      "feedback": {
+        "correct": "Boa observação: O critério relevante à comparação é a capacidade.",
+        "incorrect": "O critério relevante à comparação é a capacidade.",
+        "hint": "Qual propriedade ajuda a responder à pergunta sobre volume?",
+        "errorFocus": "VISIBLE_FEATURE_ONLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-09",
+      "statement": "Uma tabela fictícia registra o preço de cada fruta em reais, como 3,50 e 4,00. Qual tipo é mais adequado ao campo preço?",
+      "prompt": "Uma tabela fictícia registra o preço de cada fruta em reais, como 3,50 e 4,00. Qual tipo é mais adequado ao campo preço?",
+      "options": [
+        "Número",
+        "Valor lógico",
+        "Título em texto",
+        "Coleção sem valores"
+      ],
+      "correctAnswer": "Número",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Valor lógico": [
+          "PRICE_AS_LABEL"
+        ],
+        "Título em texto": [
+          "PRICE_AS_LABEL"
+        ],
+        "Coleção sem valores": [
+          "PRICE_AS_LABEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CANTEEN_PRICE_FIELD",
+      "explanation": "Preço é uma grandeza numérica, mesmo quando inclui casas decimais.",
+      "hint": "Pode ser comparado por valor?",
+      "errorFocus": "PRICE_AS_LABEL",
+      "feedback": {
+        "correct": "Boa observação: Preço é uma grandeza numérica, mesmo quando inclui casas decimais.",
+        "incorrect": "Preço é uma grandeza numérica, mesmo quando inclui casas decimais.",
+        "hint": "Pode ser comparado por valor?",
+        "errorFocus": "PRICE_AS_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-10",
+      "statement": "O identificador “0007” aponta para um livro, mas o inventário tem 12 exemplares. Como representar os dois campos?",
+      "prompt": "O identificador “0007” aponta para um livro, mas o inventário tem 12 exemplares. Como representar os dois campos?",
+      "options": [
+        "Ambos como valores lógicos",
+        "Identificador como rótulo/texto e exemplares como número",
+        "Identificador 7 e quantidade 12 sem distinguir seus papéis",
+        "Ambos como coleções de títulos"
+      ],
+      "correctAnswer": "Identificador como rótulo/texto e exemplares como número",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ambos como valores lógicos": [
+          "IDENTIFIER_QUANTITY_COLLAPSE"
+        ],
+        "Identificador 7 e quantidade 12 sem distinguir seus papéis": [
+          "IDENTIFIER_QUANTITY_COLLAPSE"
+        ],
+        "Ambos como coleções de títulos": [
+          "IDENTIFIER_QUANTITY_COLLAPSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LIBRARY_IDENTIFIER_TEST",
+      "explanation": "O papel do campo, não a aparência dos caracteres, define seu tipo.",
+      "hint": "Qual campo identifica e qual campo conta?",
+      "errorFocus": "IDENTIFIER_QUANTITY_COLLAPSE",
+      "feedback": {
+        "correct": "Boa observação: O papel do campo, não a aparência dos caracteres, define seu tipo.",
+        "incorrect": "O papel do campo, não a aparência dos caracteres, define seu tipo.",
+        "hint": "Qual campo identifica e qual campo conta?",
+        "errorFocus": "IDENTIFIER_QUANTITY_COLLAPSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-11",
+      "statement": "Uma estação escolar fictícia guarda temperatura 21,5 e “nublado”. Que tipos descrevem os campos?",
+      "prompt": "Uma estação escolar fictícia guarda temperatura 21,5 e “nublado”. Que tipos descrevem os campos?",
+      "options": [
+        "Ambos valores lógicos",
+        "Temperatura textual e condição numérica",
+        "Temperatura numérica e condição textual",
+        "Ambos são identificadores"
+      ],
+      "correctAnswer": "Temperatura numérica e condição textual",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ambos valores lógicos": [
+          "MIXED_FIELDS"
+        ],
+        "Temperatura textual e condição numérica": [
+          "MIXED_FIELDS"
+        ],
+        "Ambos são identificadores": [
+          "MIXED_FIELDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WEATHER_RECORD_FIELDS",
+      "explanation": "Cada campo pode usar o tipo que corresponde ao valor registrado.",
+      "hint": "Classifique cada valor separadamente.",
+      "errorFocus": "MIXED_FIELDS",
+      "feedback": {
+        "correct": "Boa observação: Cada campo pode usar o tipo que corresponde ao valor registrado.",
+        "incorrect": "Cada campo pode usar o tipo que corresponde ao valor registrado.",
+        "hint": "Classifique cada valor separadamente.",
+        "errorFocus": "MIXED_FIELDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-12",
+      "statement": "Um kit possui três componentes: fita, tesoura e cartão. Como representar os componentes?",
+      "prompt": "Um kit possui três componentes: fita, tesoura e cartão. Como representar os componentes?",
+      "options": [
+        "Como um único valor lógico",
+        "Como o número 3 sem guardar os itens",
+        "Como uma data",
+        "Como uma coleção de itens"
+      ],
+      "correctAnswer": "Como uma coleção de itens",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como um único valor lógico": [
+          "COUNT_REPLACES_COLLECTION"
+        ],
+        "Como o número 3 sem guardar os itens": [
+          "COUNT_REPLACES_COLLECTION"
+        ],
+        "Como uma data": [
+          "COUNT_REPLACES_COLLECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "KIT_COMPONENTS",
+      "explanation": "Uma contagem resume o total, mas não substitui a coleção quando é preciso saber os itens.",
+      "hint": "A pergunta pede somente quantidade ou também quais componentes?",
+      "errorFocus": "COUNT_REPLACES_COLLECTION",
+      "feedback": {
+        "correct": "Boa observação: Uma contagem resume o total, mas não substitui a coleção quando é preciso saber os itens.",
+        "incorrect": "Uma contagem resume o total, mas não substitui a coleção quando é preciso saber os itens.",
+        "hint": "A pergunta pede somente quantidade ou também quais componentes?",
+        "errorFocus": "COUNT_REPLACES_COLLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-13",
+      "statement": "Para saber se um equipamento foi testado, uma ficha oferece “sim” ou “não”. Qual tipo representa a resposta?",
+      "prompt": "Para saber se um equipamento foi testado, uma ficha oferece “sim” ou “não”. Qual tipo representa a resposta?",
+      "options": [
+        "Valor lógico",
+        "Número decimal",
+        "Coleção de locais",
+        "Texto de qualquer tamanho como única possibilidade"
+      ],
+      "correctAnswer": "Valor lógico",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Número decimal": [
+          "YES_NO_AS_TEXT"
+        ],
+        "Coleção de locais": [
+          "YES_NO_AS_TEXT"
+        ],
+        "Texto de qualquer tamanho como única possibilidade": [
+          "YES_NO_AS_TEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EVENT_CONFIRMATION",
+      "explanation": "Uma resposta binária simples corresponde a um valor lógico.",
+      "hint": "Quantas alternativas lógicas existem?",
+      "errorFocus": "YES_NO_AS_TEXT",
+      "feedback": {
+        "correct": "Boa observação: Uma resposta binária simples corresponde a um valor lógico.",
+        "incorrect": "Uma resposta binária simples corresponde a um valor lógico.",
+        "hint": "Quantas alternativas lógicas existem?",
+        "errorFocus": "YES_NO_AS_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-14",
+      "statement": "Um arquivo agrupa materiais por tamanho para escolher embalagens. Por que o tamanho é um critério útil?",
+      "prompt": "Um arquivo agrupa materiais por tamanho para escolher embalagens. Por que o tamanho é um critério útil?",
+      "options": [
+        "Porque todo grupo precisa ter a mesma cor",
+        "Porque se relaciona diretamente à escolha da embalagem",
+        "Porque nomes devem sempre ser números",
+        "Porque o critério foi escolhido por acaso"
+      ],
+      "correctAnswer": "Porque se relaciona diretamente à escolha da embalagem",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque todo grupo precisa ter a mesma cor": [
+          "IRRELEVANT_CRITERION"
+        ],
+        "Porque nomes devem sempre ser números": [
+          "IRRELEVANT_CRITERION"
+        ],
+        "Porque o critério foi escolhido por acaso": [
+          "IRRELEVANT_CRITERION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CLASSIFICATION_PURPOSE",
+      "explanation": "Um critério útil contribui para resolver o problema definido.",
+      "hint": "Conecte a característica agrupada à decisão final.",
+      "errorFocus": "IRRELEVANT_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Um critério útil contribui para resolver o problema definido.",
+        "incorrect": "Um critério útil contribui para resolver o problema definido.",
+        "hint": "Conecte a característica agrupada à decisão final.",
+        "errorFocus": "IRRELEVANT_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-15",
+      "statement": "Uma agenda guarda “18/10/2026” em um campo que não faz operações de calendário. O que se deve considerar?",
+      "prompt": "Uma agenda guarda “18/10/2026” em um campo que não faz operações de calendário. O que se deve considerar?",
+      "options": [
+        "A barra transforma o valor em número de páginas",
+        "Toda sequência de dígitos é automaticamente data",
+        "O valor pode estar armazenado como texto se o sistema não o interpreta como data",
+        "O campo só pode ser lógico"
+      ],
+      "correctAnswer": "O valor pode estar armazenado como texto se o sistema não o interpreta como data",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A barra transforma o valor em número de páginas": [
+          "FORMAT_AS_SEMANTICS"
+        ],
+        "Toda sequência de dígitos é automaticamente data": [
+          "FORMAT_AS_SEMANTICS"
+        ],
+        "O campo só pode ser lógico": [
+          "FORMAT_AS_SEMANTICS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DATE_AS_TEXT",
+      "explanation": "A aparência não garante a interpretação semântica do sistema.",
+      "hint": "O sistema reconhece operações de data ou guarda apenas caracteres?",
+      "errorFocus": "FORMAT_AS_SEMANTICS",
+      "feedback": {
+        "correct": "Boa observação: A aparência não garante a interpretação semântica do sistema.",
+        "incorrect": "A aparência não garante a interpretação semântica do sistema.",
+        "hint": "O sistema reconhece operações de data ou guarda apenas caracteres?",
+        "errorFocus": "FORMAT_AS_SEMANTICS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-16",
+      "statement": "Para localizar jogos que podem ser emprestados, qual coleção/atributo ajuda mais?",
+      "prompt": "Para localizar jogos que podem ser emprestados, qual coleção/atributo ajuda mais?",
+      "options": [
+        "Uma lista dos títulos sem disponibilidade",
+        "O código somado à quantidade",
+        "Uma coleção de temperaturas",
+        "Um atributo de disponibilidade com valor lógico"
+      ],
+      "correctAnswer": "Um atributo de disponibilidade com valor lógico",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma lista dos títulos sem disponibilidade": [
+          "MISSING_QUERY_ATTRIBUTE"
+        ],
+        "O código somado à quantidade": [
+          "MISSING_QUERY_ATTRIBUTE"
+        ],
+        "Uma coleção de temperaturas": [
+          "MISSING_QUERY_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATERIAL_CATALOG_FILTER",
+      "explanation": "A disponibilidade responde diretamente à pergunta de consulta.",
+      "hint": "Que atributo indica se o empréstimo pode ocorrer?",
+      "errorFocus": "MISSING_QUERY_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A disponibilidade responde diretamente à pergunta de consulta.",
+        "incorrect": "A disponibilidade responde diretamente à pergunta de consulta.",
+        "hint": "Que atributo indica se o empréstimo pode ocorrer?",
+        "errorFocus": "MISSING_QUERY_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-17",
+      "statement": "Uma equipe fictícia precisa repor copos e registrar se cada caixa está fechada. Qual desenho de campos atende às duas perguntas?",
+      "prompt": "Uma equipe fictícia precisa repor copos e registrar se cada caixa está fechada. Qual desenho de campos atende às duas perguntas?",
+      "options": [
+        "Tipo de material em texto, unidades em número e caixa fechada em valor lógico",
+        "Todos os campos como nomes",
+        "Quantidade como valor lógico e fechamento como número",
+        "Um único campo com informações misturadas"
+      ],
+      "correctAnswer": "Tipo de material em texto, unidades em número e caixa fechada em valor lógico",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos os campos como nomes": [
+          "FIELD_PURPOSE_MISMATCH"
+        ],
+        "Quantidade como valor lógico e fechamento como número": [
+          "FIELD_PURPOSE_MISMATCH"
+        ],
+        "Um único campo com informações misturadas": [
+          "FIELD_PURPOSE_MISMATCH"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "SCIENCE_FAIR_INVENTORY",
+      "explanation": "Separar atributos permite consultar materiais, contar unidades e verificar fechamento.",
+      "hint": "Liste o que será nomeado, contado e confirmado.",
+      "errorFocus": "FIELD_PURPOSE_MISMATCH",
+      "feedback": {
+        "correct": "Boa observação: Separar atributos permite consultar materiais, contar unidades e verificar fechamento.",
+        "incorrect": "Separar atributos permite consultar materiais, contar unidades e verificar fechamento.",
+        "hint": "Liste o que será nomeado, contado e confirmado.",
+        "errorFocus": "FIELD_PURPOSE_MISMATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-18",
+      "statement": "Cartões de animais podem ser agrupados por habitat ou por alimentação. O que determina a coleção correta?",
+      "prompt": "Cartões de animais podem ser agrupados por habitat ou por alimentação. O que determina a coleção correta?",
+      "options": [
+        "A ordem aleatória dos cartões",
+        "A pergunta que a atividade precisa responder",
+        "A cor do papel sem relação com a tarefa",
+        "O tamanho da letra dos nomes"
+      ],
+      "correctAnswer": "A pergunta que a atividade precisa responder",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A ordem aleatória dos cartões": [
+          "ONE_FIXED_CLASSIFICATION"
+        ],
+        "A cor do papel sem relação com a tarefa": [
+          "ONE_FIXED_CLASSIFICATION"
+        ],
+        "O tamanho da letra dos nomes": [
+          "ONE_FIXED_CLASSIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "GENERALIZE",
+      "contextFamily": "ANIMAL_CARDS_GROUPS",
+      "explanation": "A classificação depende do critério e da finalidade declarados.",
+      "hint": "Que questão deve ser respondida pelo grupo?",
+      "errorFocus": "ONE_FIXED_CLASSIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A classificação depende do critério e da finalidade declarados.",
+        "incorrect": "A classificação depende do critério e da finalidade declarados.",
+        "hint": "Que questão deve ser respondida pelo grupo?",
+        "errorFocus": "ONE_FIXED_CLASSIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-19",
+      "statement": "Um mapa de espaços registra nome, capacidade, acessível sim/não e materiais disponíveis. Qual decisão de esquema é mais clara?",
+      "prompt": "Um mapa de espaços registra nome, capacidade, acessível sim/não e materiais disponíveis. Qual decisão de esquema é mais clara?",
+      "options": [
+        "Guardar tudo em um campo numérico",
+        "Armazenar acessibilidade como nome de pessoa",
+        "Separar nome textual, capacidade numérica, acessibilidade lógica e materiais em coleção",
+        "Omitir tipos porque o mapa tem ícones"
+      ],
+      "correctAnswer": "Separar nome textual, capacidade numérica, acessibilidade lógica e materiais em coleção",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Guardar tudo em um campo numérico": [
+          "SCHEMA_COLLAPSE"
+        ],
+        "Armazenar acessibilidade como nome de pessoa": [
+          "SCHEMA_COLLAPSE"
+        ],
+        "Omitir tipos porque o mapa tem ícones": [
+          "SCHEMA_COLLAPSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CAMPUS_ROOM_QUERY",
+      "explanation": "Tipos explícitos facilitam consulta e interpretação dos campos.",
+      "hint": "Separe identificação, quantidade, condição e vários itens.",
+      "errorFocus": "SCHEMA_COLLAPSE",
+      "feedback": {
+        "correct": "Boa observação: Tipos explícitos facilitam consulta e interpretação dos campos.",
+        "incorrect": "Tipos explícitos facilitam consulta e interpretação dos campos.",
+        "hint": "Separe identificação, quantidade, condição e vários itens.",
+        "errorFocus": "SCHEMA_COLLAPSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-20",
+      "statement": "Uma equipe chama a coleção de “grandes” sem definir o que significa grande. Qual melhoria é necessária?",
+      "prompt": "Uma equipe chama a coleção de “grandes” sem definir o que significa grande. Qual melhoria é necessária?",
+      "options": [
+        "Mudar os itens para outra cor",
+        "Adicionar um identificador aleatório",
+        "Trocar o nome por “outros” sem regra",
+        "Declarar um limite ou uma regra observável para a categoria"
+      ],
+      "correctAnswer": "Declarar um limite ou uma regra observável para a categoria",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mudar os itens para outra cor": [
+          "VAGUE_CRITERION"
+        ],
+        "Adicionar um identificador aleatório": [
+          "VAGUE_CRITERION"
+        ],
+        "Trocar o nome por “outros” sem regra": [
+          "VAGUE_CRITERION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMBIGUOUS_CATEGORY",
+      "explanation": "Categorias precisam de regras compreensíveis para que duas pessoas classifiquem de modo consistente.",
+      "hint": "Como outra pessoa decidiria se o item entra no grupo?",
+      "errorFocus": "VAGUE_CRITERION",
+      "feedback": {
+        "correct": "Boa observação: Categorias precisam de regras compreensíveis para que duas pessoas classifiquem de modo consistente.",
+        "incorrect": "Categorias precisam de regras compreensíveis para que duas pessoas classifiquem de modo consistente.",
+        "hint": "Como outra pessoa decidiria se o item entra no grupo?",
+        "errorFocus": "VAGUE_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-21",
+      "statement": "Uma pesquisa fictícia registra idade numérica e preferência por transporte entre quatro opções. Como conservar a informação?",
+      "prompt": "Uma pesquisa fictícia registra idade numérica e preferência por transporte entre quatro opções. Como conservar a informação?",
+      "options": [
+        "Idade em campo numérico e preferência em campo textual/categórico",
+        "As duas respostas como contagem",
+        "Preferência como valor lógico único apesar de quatro opções",
+        "Idade como coleção de títulos"
+      ],
+      "correctAnswer": "Idade em campo numérico e preferência em campo textual/categórico",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As duas respostas como contagem": [
+          "MULTI_OPTION_AS_BOOLEAN"
+        ],
+        "Preferência como valor lógico único apesar de quatro opções": [
+          "MULTI_OPTION_AS_BOOLEAN"
+        ],
+        "Idade como coleção de títulos": [
+          "MULTI_OPTION_AS_BOOLEAN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SURVEY_SUMMARY",
+      "explanation": "Uma escolha entre várias categorias não é necessariamente sim/não.",
+      "hint": "Quantas opções de preferência existem?",
+      "errorFocus": "MULTI_OPTION_AS_BOOLEAN",
+      "feedback": {
+        "correct": "Boa observação: Uma escolha entre várias categorias não é necessariamente sim/não.",
+        "incorrect": "Uma escolha entre várias categorias não é necessariamente sim/não.",
+        "hint": "Quantas opções de preferência existem?",
+        "errorFocus": "MULTI_OPTION_AS_BOOLEAN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-22",
+      "statement": "Dois registros têm código “0012” e quantidade 12. Por que podem ter tipos conceituais diferentes?",
+      "prompt": "Dois registros têm código “0012” e quantidade 12. Por que podem ter tipos conceituais diferentes?",
+      "options": [
+        "O código sempre vale doze unidades",
+        "O código identifica um item; a quantidade mede unidades",
+        "A quantidade identifica o fornecedor",
+        "Zeros à esquerda provam que o valor é texto livre"
+      ],
+      "correctAnswer": "O código identifica um item; a quantidade mede unidades",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O código sempre vale doze unidades": [
+          "IDENTIFIER_QUANTITY_CONFUSION"
+        ],
+        "A quantidade identifica o fornecedor": [
+          "IDENTIFIER_QUANTITY_CONFUSION"
+        ],
+        "Zeros à esquerda provam que o valor é texto livre": [
+          "IDENTIFIER_QUANTITY_CONFUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "STOCK_CODE_AND_STOCK",
+      "explanation": "O propósito define a semântica, mesmo quando a escrita é parecida.",
+      "hint": "Que operação faz sentido em cada campo?",
+      "errorFocus": "IDENTIFIER_QUANTITY_CONFUSION",
+      "feedback": {
+        "correct": "Boa observação: O propósito define a semântica, mesmo quando a escrita é parecida.",
+        "incorrect": "O propósito define a semântica, mesmo quando a escrita é parecida.",
+        "hint": "Que operação faz sentido em cada campo?",
+        "errorFocus": "IDENTIFIER_QUANTITY_CONFUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-23",
+      "statement": "Uma lista acompanha materiais e permite marcar se cada etapa foi conferida. Qual representação é adequada?",
+      "prompt": "Uma lista acompanha materiais e permite marcar se cada etapa foi conferida. Qual representação é adequada?",
+      "options": [
+        "Uma soma de nomes",
+        "Um único texto sem separação de etapas",
+        "Coleção de materiais e um valor lógico de conferência por etapa",
+        "A lista de materiais como valor lógico"
+      ],
+      "correctAnswer": "Coleção de materiais e um valor lógico de conferência por etapa",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma soma de nomes": [
+          "COLLECTION_FLAG_MIX"
+        ],
+        "Um único texto sem separação de etapas": [
+          "COLLECTION_FLAG_MIX"
+        ],
+        "A lista de materiais como valor lógico": [
+          "COLLECTION_FLAG_MIX"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "WORKSHOP_CHECKLIST",
+      "explanation": "A coleção guarda vários materiais; a conferência é uma condição.",
+      "hint": "Diferencie os itens acompanhados da marca de conclusão.",
+      "errorFocus": "COLLECTION_FLAG_MIX",
+      "feedback": {
+        "correct": "Boa observação: A coleção guarda vários materiais; a conferência é uma condição.",
+        "incorrect": "A coleção guarda vários materiais; a conferência é uma condição.",
+        "hint": "Diferencie os itens acompanhados da marca de conclusão.",
+        "errorFocus": "COLLECTION_FLAG_MIX"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-24",
+      "statement": "Um conjunto de frutas foi agrupado por cor numa tarefa e por estação de colheita em outra. Como avaliar os dois agrupamentos?",
+      "prompt": "Um conjunto de frutas foi agrupado por cor numa tarefa e por estação de colheita em outra. Como avaliar os dois agrupamentos?",
+      "options": [
+        "Declarar que só a cor pode ser usada",
+        "Dizer que todo agrupamento com dois grupos é válido",
+        "Escolher pelo maior número de cartões sem olhar o objetivo",
+        "Verificar se cada critério é claro e pertinente à pergunta correspondente"
+      ],
+      "correctAnswer": "Verificar se cada critério é claro e pertinente à pergunta correspondente",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Declarar que só a cor pode ser usada": [
+          "GROUPING_WITHOUT_TASK"
+        ],
+        "Dizer que todo agrupamento com dois grupos é válido": [
+          "GROUPING_WITHOUT_TASK"
+        ],
+        "Escolher pelo maior número de cartões sem olhar o objetivo": [
+          "GROUPING_WITHOUT_TASK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "TWO_VALID_GROUPINGS",
+      "explanation": "Um critério pode ser válido em uma tarefa e inadequado em outra.",
+      "hint": "Relacione cada classificação ao objetivo da atividade.",
+      "errorFocus": "GROUPING_WITHOUT_TASK",
+      "feedback": {
+        "correct": "Boa observação: Um critério pode ser válido em uma tarefa e inadequado em outra.",
+        "incorrect": "Um critério pode ser válido em uma tarefa e inadequado em outra.",
+        "hint": "Relacione cada classificação ao objetivo da atividade.",
+        "errorFocus": "GROUPING_WITHOUT_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-25",
+      "statement": "Uma receita fictícia registra nome do ingrediente, massa em gramas e se foi separado. Quais tipos cabem?",
+      "prompt": "Uma receita fictícia registra nome do ingrediente, massa em gramas e se foi separado. Quais tipos cabem?",
+      "options": [
+        "Texto, número e valor lógico",
+        "Três números obrigatórios",
+        "Número, texto e coleção de estudantes",
+        "Três valores lógicos"
+      ],
+      "correctAnswer": "Texto, número e valor lógico",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Três números obrigatórios": [
+          "FIELD_TYPES_SWAPPED"
+        ],
+        "Número, texto e coleção de estudantes": [
+          "FIELD_TYPES_SWAPPED"
+        ],
+        "Três valores lógicos": [
+          "FIELD_TYPES_SWAPPED"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "RECIPE_FIELDS",
+      "explanation": "Cada tipo deve corresponder ao significado do campo.",
+      "hint": "Nomeia, mede ou confirma?",
+      "errorFocus": "FIELD_TYPES_SWAPPED",
+      "feedback": {
+        "correct": "Boa observação: Cada tipo deve corresponder ao significado do campo.",
+        "incorrect": "Cada tipo deve corresponder ao significado do campo.",
+        "hint": "Nomeia, mede ou confirma?",
+        "errorFocus": "FIELD_TYPES_SWAPPED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-26",
+      "statement": "Um painel precisa apenas contar quantos kits foram entregues. Qual tipo deve guardar o total?",
+      "prompt": "Um painel precisa apenas contar quantos kits foram entregues. Qual tipo deve guardar o total?",
+      "options": [
+        "Texto de uma cor",
+        "Número",
+        "Coleção de nomes",
+        "Valor lógico"
+      ],
+      "correctAnswer": "Número",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Texto de uma cor": [
+          "COUNT_AS_COLLECTION"
+        ],
+        "Coleção de nomes": [
+          "COUNT_AS_COLLECTION"
+        ],
+        "Valor lógico": [
+          "COUNT_AS_COLLECTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ATTENDANCE_TOTAL",
+      "explanation": "Um total é uma quantidade numérica.",
+      "hint": "O painel precisa guardar itens ou um total?",
+      "errorFocus": "COUNT_AS_COLLECTION",
+      "feedback": {
+        "correct": "Boa observação: Um total é uma quantidade numérica.",
+        "incorrect": "Um total é uma quantidade numérica.",
+        "hint": "O painel precisa guardar itens ou um total?",
+        "errorFocus": "COUNT_AS_COLLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-27",
+      "statement": "Um item tem nome, peso e pode ser reutilizado sim/não. O que é correto no esquema?",
+      "prompt": "Um item tem nome, peso e pode ser reutilizado sim/não. O que é correto no esquema?",
+      "options": [
+        "Um campo lógico para todas as informações",
+        "Peso armazenado na coleção de nomes",
+        "Três campos com tipos adequados ao significado de cada um",
+        "Nome convertido em quantidade"
+      ],
+      "correctAnswer": "Três campos com tipos adequados ao significado de cada um",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um campo lógico para todas as informações": [
+          "ONE_TYPE_PER_RECORD"
+        ],
+        "Peso armazenado na coleção de nomes": [
+          "ONE_TYPE_PER_RECORD"
+        ],
+        "Nome convertido em quantidade": [
+          "ONE_TYPE_PER_RECORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MULTI_ATTRIBUTE_ITEM",
+      "explanation": "Registros podem combinar campos de tipos diferentes.",
+      "hint": "Avalie nome, medida e condição separadamente.",
+      "errorFocus": "ONE_TYPE_PER_RECORD",
+      "feedback": {
+        "correct": "Boa observação: Registros podem combinar campos de tipos diferentes.",
+        "incorrect": "Registros podem combinar campos de tipos diferentes.",
+        "hint": "Avalie nome, medida e condição separadamente.",
+        "errorFocus": "ONE_TYPE_PER_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-28",
+      "statement": "O valor “2026” identifica a edição de um boletim, não uma contagem. Como interpretá-lo?",
+      "prompt": "O valor “2026” identifica a edição de um boletim, não uma contagem. Como interpretá-lo?",
+      "options": [
+        "Como 2026 exemplares necessariamente",
+        "Como valor lógico",
+        "Como uma lista de edições",
+        "Como rótulo/identificador segundo sua finalidade"
+      ],
+      "correctAnswer": "Como rótulo/identificador segundo sua finalidade",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como 2026 exemplares necessariamente": [
+          "YEAR_AS_COUNT"
+        ],
+        "Como valor lógico": [
+          "YEAR_AS_COUNT"
+        ],
+        "Como uma lista de edições": [
+          "YEAR_AS_COUNT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TEXT_NUMBER_LOOKALIKE",
+      "explanation": "Um valor numérico usado como código serve para identificar, não contar.",
+      "hint": "Ele será somado ou usado para localizar uma edição?",
+      "errorFocus": "YEAR_AS_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Um valor numérico usado como código serve para identificar, não contar.",
+        "incorrect": "Um valor numérico usado como código serve para identificar, não contar.",
+        "hint": "Ele será somado ou usado para localizar uma edição?",
+        "errorFocus": "YEAR_AS_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-29",
+      "statement": "Uma coleção contém vários códigos de cor para um projeto. Como guardar esse conjunto?",
+      "prompt": "Uma coleção contém vários códigos de cor para um projeto. Como guardar esse conjunto?",
+      "options": [
+        "Como coleção de valores textuais",
+        "Como um único número de cores sem códigos",
+        "Como resposta sim/não",
+        "Como um único nome obrigatório"
+      ],
+      "correctAnswer": "Como coleção de valores textuais",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como um único número de cores sem códigos": [
+          "SET_AS_COUNT_ONLY"
+        ],
+        "Como resposta sim/não": [
+          "SET_AS_COUNT_ONLY"
+        ],
+        "Como um único nome obrigatório": [
+          "SET_AS_COUNT_ONLY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MULTIPLE_COLORS_SET",
+      "explanation": "A coleção preserva os códigos individuais; uma contagem é um resumo distinto.",
+      "hint": "A atividade precisa saber quais códigos existem?",
+      "errorFocus": "SET_AS_COUNT_ONLY",
+      "feedback": {
+        "correct": "Boa observação: A coleção preserva os códigos individuais; uma contagem é um resumo distinto.",
+        "incorrect": "A coleção preserva os códigos individuais; uma contagem é um resumo distinto.",
+        "hint": "A atividade precisa saber quais códigos existem?",
+        "errorFocus": "SET_AS_COUNT_ONLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-30",
+      "statement": "Uma ficha de inventário pede data de nascimento de quem usou cada objeto, sem necessidade. Qual revisão é melhor?",
+      "prompt": "Uma ficha de inventário pede data de nascimento de quem usou cada objeto, sem necessidade. Qual revisão é melhor?",
+      "options": [
+        "Manter porque qualquer formulário deve coletar tudo",
+        "Remover o dado pessoal que não é necessário à finalidade",
+        "Substituir o dado por outro identificador pessoal",
+        "Publicar a ficha para validar a coleção"
+      ],
+      "correctAnswer": "Remover o dado pessoal que não é necessário à finalidade",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter porque qualquer formulário deve coletar tudo": [
+          "UNNECESSARY_PERSONAL_DATA"
+        ],
+        "Substituir o dado por outro identificador pessoal": [
+          "UNNECESSARY_PERSONAL_DATA"
+        ],
+        "Publicar a ficha para validar a coleção": [
+          "UNNECESSARY_PERSONAL_DATA"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DATA_MINIMIZATION",
+      "explanation": "O esquema deve coletar somente o necessário e proteger a privacidade.",
+      "hint": "A informação pessoal ajuda a resolver a tarefa?",
+      "errorFocus": "UNNECESSARY_PERSONAL_DATA",
+      "feedback": {
+        "correct": "Boa observação: O esquema deve coletar somente o necessário e proteger a privacidade.",
+        "incorrect": "O esquema deve coletar somente o necessário e proteger a privacidade.",
+        "hint": "A informação pessoal ajuda a resolver a tarefa?",
+        "errorFocus": "UNNECESSARY_PERSONAL_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-31",
+      "statement": "Uma coleção de materiais ainda não recebeu itens. Isso é igual a registrar “quantidade disponível = 0”?",
+      "prompt": "Uma coleção de materiais ainda não recebeu itens. Isso é igual a registrar “quantidade disponível = 0”?",
+      "options": [
+        "Sim; qualquer coleção vazia contém um título",
+        "Não; zero é sempre texto",
+        "Não; a coleção guarda itens e o campo numérico guarda uma quantidade",
+        "Sim; ambos significam que há um item"
+      ],
+      "correctAnswer": "Não; a coleção guarda itens e o campo numérico guarda uma quantidade",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim; qualquer coleção vazia contém um título": [
+          "EMPTY_SET_AS_ZERO_FIELD"
+        ],
+        "Não; zero é sempre texto": [
+          "EMPTY_SET_AS_ZERO_FIELD"
+        ],
+        "Sim; ambos significam que há um item": [
+          "EMPTY_SET_AS_ZERO_FIELD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EMPTY_COLLECTION_COUNT",
+      "explanation": "Coleção vazia e quantidade zero são representações diferentes, embora possam descrever a mesma situação sob perguntas distintas.",
+      "hint": "Uma estrutura guarda quais itens ou quantos existem?",
+      "errorFocus": "EMPTY_SET_AS_ZERO_FIELD",
+      "feedback": {
+        "correct": "Boa observação: Coleção vazia e quantidade zero são representações diferentes, embora possam descrever a mesma situação sob perguntas distintas.",
+        "incorrect": "Coleção vazia e quantidade zero são representações diferentes, embora possam descrever a mesma situação sob perguntas distintas.",
+        "hint": "Uma estrutura guarda quais itens ou quantos existem?",
+        "errorFocus": "EMPTY_SET_AS_ZERO_FIELD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-32",
+      "statement": "Uma ficha fictícia precisa guardar código do item, descrição e unidades em estoque. Qual esquema é mais coerente?",
+      "prompt": "Uma ficha fictícia precisa guardar código do item, descrição e unidades em estoque. Qual esquema é mais coerente?",
+      "options": [
+        "Todos como valor lógico",
+        "Descrição como quantidade e estoque como nome",
+        "Código como lista de usuários",
+        "Código como identificador, descrição como texto e estoque como número"
+      ],
+      "correctAnswer": "Código como identificador, descrição como texto e estoque como número",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todos como valor lógico": [
+          "INVENTORY_FIELD_TYPES"
+        ],
+        "Descrição como quantidade e estoque como nome": [
+          "INVENTORY_FIELD_TYPES"
+        ],
+        "Código como lista de usuários": [
+          "INVENTORY_FIELD_TYPES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "INVENTORY_RECORD_TYPE",
+      "explanation": "O significado de cada campo orienta seu tipo.",
+      "hint": "Separe identificar, descrever e contar.",
+      "errorFocus": "INVENTORY_FIELD_TYPES",
+      "feedback": {
+        "correct": "Boa observação: O significado de cada campo orienta seu tipo.",
+        "incorrect": "O significado de cada campo orienta seu tipo.",
+        "hint": "Separe identificar, descrever e contar.",
+        "errorFocus": "INVENTORY_FIELD_TYPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-33",
+      "statement": "Qual tipo é adequado para guardar uma descrição como “material reutilizável”?",
+      "prompt": "Qual tipo é adequado para guardar uma descrição como “material reutilizável”?",
+      "options": [
+        "Texto",
+        "Número",
+        "Valor lógico",
+        "Coleção sem itens"
+      ],
+      "correctAnswer": "Texto",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Número": [
+          "TEXT_RECALL"
+        ],
+        "Valor lógico": [
+          "TEXT_RECALL"
+        ],
+        "Coleção sem itens": [
+          "TEXT_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TYPE_TEXT_REVIEW",
+      "explanation": "Uma descrição escrita é texto.",
+      "hint": "Que tipo guarda palavras?",
+      "errorFocus": "TEXT_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Uma descrição escrita é texto.",
+        "incorrect": "Uma descrição escrita é texto.",
+        "hint": "Que tipo guarda palavras?",
+        "errorFocus": "TEXT_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-34",
+      "statement": "Que tipo representa uma contagem de 17 objetos?",
+      "prompt": "Que tipo representa uma contagem de 17 objetos?",
+      "options": [
+        "Texto",
+        "Número",
+        "Valor lógico",
+        "Imagem"
+      ],
+      "correctAnswer": "Número",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Texto": [
+          "NUMBER_RECALL"
+        ],
+        "Valor lógico": [
+          "NUMBER_RECALL"
+        ],
+        "Imagem": [
+          "NUMBER_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TYPE_NUMBER_REVIEW",
+      "explanation": "Uma contagem é numérica.",
+      "hint": "Qual tipo permite comparar quantidades?",
+      "errorFocus": "NUMBER_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Uma contagem é numérica.",
+        "incorrect": "Uma contagem é numérica.",
+        "hint": "Qual tipo permite comparar quantidades?",
+        "errorFocus": "NUMBER_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-35",
+      "statement": "Uma resposta “sim/não” simples corresponde melhor a qual tipo?",
+      "prompt": "Uma resposta “sim/não” simples corresponde melhor a qual tipo?",
+      "options": [
+        "Número decimal",
+        "Coleção de palavras",
+        "Valor lógico",
+        "Registro de livro"
+      ],
+      "correctAnswer": "Valor lógico",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Número decimal": [
+          "BOOLEAN_RECALL"
+        ],
+        "Coleção de palavras": [
+          "BOOLEAN_RECALL"
+        ],
+        "Registro de livro": [
+          "BOOLEAN_RECALL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "TYPE_BOOLEAN_REVIEW",
+      "explanation": "Um valor lógico representa uma condição binária.",
+      "hint": "A resposta tem duas possibilidades?",
+      "errorFocus": "BOOLEAN_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Um valor lógico representa uma condição binária.",
+        "incorrect": "Um valor lógico representa uma condição binária.",
+        "hint": "A resposta tem duas possibilidades?",
+        "errorFocus": "BOOLEAN_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-36",
+      "statement": "Por que declarar o critério de uma coleção?",
+      "prompt": "Por que declarar o critério de uma coleção?",
+      "options": [
+        "Para impedir qualquer reclassificação",
+        "Para transformar todos os campos em números",
+        "Para esconder os itens do grupo",
+        "Para que a classificação seja compreensível e útil à pergunta"
+      ],
+      "correctAnswer": "Para que a classificação seja compreensível e útil à pergunta",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para impedir qualquer reclassificação": [
+          "CRITERION_PURPOSE"
+        ],
+        "Para transformar todos os campos em números": [
+          "CRITERION_PURPOSE"
+        ],
+        "Para esconder os itens do grupo": [
+          "CRITERION_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "COLLECTION_REVIEW",
+      "explanation": "Um critério explícito apoia consistência e consulta.",
+      "hint": "Como outra pessoa entenderá por que cada item entrou?",
+      "errorFocus": "CRITERION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Um critério explícito apoia consistência e consulta.",
+        "incorrect": "Um critério explícito apoia consistência e consulta.",
+        "hint": "Como outra pessoa entenderá por que cada item entrou?",
+        "errorFocus": "CRITERION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-37",
+      "statement": "Qual frase diferencia um código de item de uma contagem?",
+      "prompt": "Qual frase diferencia um código de item de uma contagem?",
+      "options": [
+        "Código identifica; contagem mede quantas unidades existem",
+        "Código e contagem sempre significam a mesma coisa",
+        "Contagem identifica o nome do material",
+        "Código é sempre um valor lógico"
+      ],
+      "correctAnswer": "Código identifica; contagem mede quantas unidades existem",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Código e contagem sempre significam a mesma coisa": [
+          "IDENTIFIER_REVIEW"
+        ],
+        "Contagem identifica o nome do material": [
+          "IDENTIFIER_REVIEW"
+        ],
+        "Código é sempre um valor lógico": [
+          "IDENTIFIER_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CODE_OR_COUNT_REVIEW",
+      "explanation": "O papel do campo determina sua interpretação.",
+      "hint": "Qual pergunta cada campo responde?",
+      "errorFocus": "IDENTIFIER_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O papel do campo determina sua interpretação.",
+        "incorrect": "O papel do campo determina sua interpretação.",
+        "hint": "Qual pergunta cada campo responde?",
+        "errorFocus": "IDENTIFIER_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-38",
+      "statement": "Um registro reúne título e quantidade. Como escolher o tipo?",
+      "prompt": "Um registro reúne título e quantidade. Como escolher o tipo?",
+      "options": [
+        "Usar o tipo do campo mais longo nos dois",
+        "Escolher separadamente pelo significado de cada campo",
+        "Converter o título em número",
+        "Remover a quantidade"
+      ],
+      "correctAnswer": "Escolher separadamente pelo significado de cada campo",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usar o tipo do campo mais longo nos dois": [
+          "FIELD_TYPE_REVIEW"
+        ],
+        "Converter o título em número": [
+          "FIELD_TYPE_REVIEW"
+        ],
+        "Remover a quantidade": [
+          "FIELD_TYPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MIXED_RECORD_REVIEW",
+      "explanation": "Cada campo de um registro pode ter um tipo adequado diferente.",
+      "hint": "Olhe cada coluna do registro.",
+      "errorFocus": "FIELD_TYPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Cada campo de um registro pode ter um tipo adequado diferente.",
+        "incorrect": "Cada campo de um registro pode ter um tipo adequado diferente.",
+        "hint": "Olhe cada coluna do registro.",
+        "errorFocus": "FIELD_TYPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-39",
+      "statement": "Duas equipes classificaram os mesmos cartões de maneiras diferentes. Qual informação permite avaliar se ambas foram coerentes?",
+      "prompt": "Duas equipes classificaram os mesmos cartões de maneiras diferentes. Qual informação permite avaliar se ambas foram coerentes?",
+      "options": [
+        "A cor das mesas usadas",
+        "A ordem em que os cartões foram impressos",
+        "O critério e a finalidade declarados por cada equipe",
+        "A quantidade de pessoas na sala"
+      ],
+      "correctAnswer": "O critério e a finalidade declarados por cada equipe",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor das mesas usadas": [
+          "CLASSIFICATION_REVIEW"
+        ],
+        "A ordem em que os cartões foram impressos": [
+          "CLASSIFICATION_REVIEW"
+        ],
+        "A quantidade de pessoas na sala": [
+          "CLASSIFICATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CLASSIFICATION_REVIEW",
+      "explanation": "A coerência depende do objetivo e da regra de agrupamento.",
+      "hint": "Compare as regras com as perguntas de cada equipe.",
+      "errorFocus": "CLASSIFICATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A coerência depende do objetivo e da regra de agrupamento.",
+        "incorrect": "A coerência depende do objetivo e da regra de agrupamento.",
+        "hint": "Compare as regras com as perguntas de cada equipe.",
+        "errorFocus": "CLASSIFICATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef06co01-classifying-information-and-data-types-40",
+      "statement": "Antes de salvar um novo campo numa ficha, qual pergunta ajuda a escolher o tipo de dado?",
+      "prompt": "Antes de salvar um novo campo numa ficha, qual pergunta ajuda a escolher o tipo de dado?",
+      "options": [
+        "Qual tipo ocupa mais espaço na tela?",
+        "Que cor combina com o formulário?",
+        "Como evitar explicar o campo?",
+        "Que significado e operações a informação precisa suportar?"
+      ],
+      "correctAnswer": "Que significado e operações a informação precisa suportar?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual tipo ocupa mais espaço na tela?": [
+          "SCHEMA_REVIEW"
+        ],
+        "Que cor combina com o formulário?": [
+          "SCHEMA_REVIEW"
+        ],
+        "Como evitar explicar o campo?": [
+          "SCHEMA_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHEMA_REVIEW",
+      "explanation": "Significado e uso orientam o tipo de dado.",
+      "hint": "Considere o que o sistema fará com o valor.",
+      "errorFocus": "SCHEMA_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Significado e uso orientam o tipo de dado.",
+        "incorrect": "Significado e uso orientam o tipo de dado.",
+        "hint": "Considere o que o sistema fará com o valor.",
+        "errorFocus": "SCHEMA_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões digitais acessíveis e cartões impressos com texto, símbolos e descrição verbal; não depender apenas de cores.",
+          "Permitir resposta por fala, texto, ordenação de cartões, comunicação alternativa ou diagrama tátil.",
+          "Apresentar uma instrução por vez, com exemplos concretos e glossário de coleção, critério e tipo.",
+          "Usar somente registros fictícios; não solicitar nomes, notas ou dados pessoais reais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

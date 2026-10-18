@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp14-recognize-punctuation-and-intonation",
+  "canonicalSkillCode": "AUTHORING_EF01LP14_IDENTIFY_PUNCTUATION_EFFECTS",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "pontos finais, de interrogação e exclamação e seus efeitos na entonação",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP14",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Sinais que ajudam a ler frases",
+    "objective": "Identificar pontos finais, de interrogação e de exclamação em textos curtos e relacioná-los a diferentes entonações e propósitos de leitura.",
+    "summary": "Além das letras, sinais de pontuação ajudam a organizar frases e orientar a leitura. O ponto final costuma indicar encerramento de uma declaração; o ponto de interrogação marca uma pergunta; e o ponto de exclamação pode marcar surpresa, alegria, chamado ou ênfase conforme o contexto. Na leitura em voz alta, esses sinais podem influenciar a entonação, mas não determinam uma única emoção em toda situação. A entonação também varia entre leitores e modos de comunicação. É possível identificar os sinais visualmente, ouvir modelos ou responder apontando, sem exigir apresentação oral.",
+    "explanation": "Leia a frase e observe o sinal ao final. “A chuva chegou.” termina uma declaração com ponto final. “A chuva chegou?” é uma pergunta e termina com interrogação. “A chuva chegou!” pode expressar ênfase ou surpresa conforme a cena. O sinal ajuda a orientar a leitura, mas o contexto também importa. Uma pergunta pode ser lida com diferentes vozes respeitosas, e pessoas podem expressar entonação por fala, comunicação alternativa ou gravação. Não use o sinal para adivinhar sentimentos privados do leitor.",
+    "workedExample": "Compare “Você trouxe o livro?” e “Você trouxe o livro.”. A primeira frase pergunta; a segunda informa. O sinal final muda o propósito e pode orientar a entonação, ainda que as palavras sejam iguais.",
+    "commonMistake": "Confundir os sinais de interrogação e exclamação ou supor que todo ponto de exclamação representa sempre a mesma emoção.",
+    "priorKnowledge": [
+      "Reconhecer letras e palavras em frases curtas.",
+      "Escutar ou acompanhar a leitura de diferentes tipos de frase."
+    ],
+    "keyConcepts": [
+      "pontuação",
+      "ponto final",
+      "interrogação",
+      "exclamação",
+      "entonação",
+      "pergunta",
+      "declaração",
+      "contexto"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "IDENTIFY_ENDING_PUNCTUATION",
+        "action": "Destaque o último sinal e associe seu formato ao nome antes de interpretar a frase."
+      },
+      {
+        "errorFocus": "PUNCTUATION_AND_SENTENCE_PURPOSE",
+        "action": "Compare a mesma frase terminada em sinais diferentes e observe se informa, pergunta ou enfatiza."
+      },
+      {
+        "errorFocus": "CONTEXTUAL_INTONATION",
+        "action": "Leia o sinal junto ao contexto e aceite modos diversos de comunicar a entonação."
+      }
+    ],
+    "accessibilitySupports": [
+      "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+      "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+      "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp14-punctuation-card-sort",
+        "title": "Organizar frases pelos sinais",
+        "instructions": "Cartões trazem frases curtas com ponto final, interrogação e exclamação em contextos fictícios.\n1. Localize o sinal no fim de cada frase.\n2. Classifique o propósito indicado pelo sinal e contexto.\n3. Compare como o sinal pode orientar a leitura.",
+        "steps": [
+          "Localize o sinal no fim de cada frase.",
+          "Classifique o propósito indicado pelo sinal e contexto.",
+          "Compare como o sinal pode orientar a leitura."
+        ],
+        "evidence": "Classificação de frases com identificação do sinal e propósito.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um sinal.",
+            "developing": "distingue pergunta de declaração.",
+            "proficient": "relaciona sinais, contexto e entonação sem impor uma emoção única."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp14-same-words-new-mark",
+        "title": "As mesmas palavras, outro sinal",
+        "instructions": "A mesma sequência de palavras aparece em três cartões, cada um com sinal final diferente.\n1. Observe as três versões.\n2. Identifique como o sinal altera o propósito da frase.\n3. Escolha um modo acessível de mostrar a entonação sugerida.",
+        "steps": [
+          "Observe as três versões.",
+          "Identifique como o sinal altera o propósito da frase.",
+          "Escolha um modo acessível de mostrar a entonação sugerida."
+        ],
+        "evidence": "Comparação entre versões com explicação do papel do sinal.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta o sinal final.",
+            "developing": "identifica uma pergunta.",
+            "proficient": "explica como sinais e contexto orientam a leitura."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 35,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp14-recognize-punctuation-and-intonation-01",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-02",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-03",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-04",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-05",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-06",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-07",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp14-recognize-punctuation-and-intonation-09",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-10",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-11",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-12",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-13",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-14",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-15",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp14-recognize-punctuation-and-intonation-17",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-18",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-19",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-20",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-21",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-22",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-23",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp14-recognize-punctuation-and-intonation-25",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-26",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-27",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-28",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-29",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-30",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-31",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp14-recognize-punctuation-and-intonation-33",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-34",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-35",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-36",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-37",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-38",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-39",
+          "v1-ef01lp14-recognize-punctuation-and-intonation-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP14",
+        "descriptor": "Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-01",
+      "statement": "“O sol apareceu.” Qual sinal encerra a frase?",
+      "prompt": "“O sol apareceu.” Qual sinal encerra a frase?",
+      "options": [
+        "Ponto final.",
+        "Ponto de interrogação",
+        "Ponto de exclamação",
+        "Vírgula"
+      ],
+      "correctAnswer": "Ponto final.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ponto de interrogação": [
+          "IDENTIFY_PERIOD"
+        ],
+        "Ponto de exclamação": [
+          "IDENTIFY_PERIOD"
+        ],
+        "Vírgula": [
+          "IDENTIFY_PERIOD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_DO_SOL",
+      "explanation": "O ponto final aparece após a declaração.",
+      "hint": "Observe o sinal no fim.",
+      "errorFocus": "IDENTIFY_PERIOD",
+      "feedback": {
+        "correct": "Boa observação: O ponto final aparece após a declaração.",
+        "incorrect": "O ponto final aparece após a declaração.",
+        "hint": "Observe o sinal no fim.",
+        "errorFocus": "IDENTIFY_PERIOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-02",
+      "statement": "“A chuva vai parar?” Que sinal indica uma pergunta?",
+      "prompt": "“A chuva vai parar?” Que sinal indica uma pergunta?",
+      "options": [
+        "Ponto final",
+        "Ponto de interrogação.",
+        "Ponto de exclamação",
+        "Dois-pontos"
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ponto final": [
+          "IDENTIFY_QUESTION_MARK"
+        ],
+        "Ponto de exclamação": [
+          "IDENTIFY_QUESTION_MARK"
+        ],
+        "Dois-pontos": [
+          "IDENTIFY_QUESTION_MARK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PERGUNTA_DA_CHUVA",
+      "explanation": "O sinal ? marca a pergunta.",
+      "hint": "Procure o sinal curvo.",
+      "errorFocus": "IDENTIFY_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: O sinal ? marca a pergunta.",
+        "incorrect": "O sinal ? marca a pergunta.",
+        "hint": "Procure o sinal curvo.",
+        "errorFocus": "IDENTIFY_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-03",
+      "statement": "“O trem chegou!” Qual leitura combina com a exclamação nesse contexto de anúncio?",
+      "prompt": "“O trem chegou!” Qual leitura combina com a exclamação nesse contexto de anúncio?",
+      "options": [
+        "Uma pergunta obrigatória",
+        "Uma declaração sempre neutra",
+        "Uma fala com ênfase ou entusiasmo, conforme a cena.",
+        "Uma palavra sem entonação"
+      ],
+      "correctAnswer": "Uma fala com ênfase ou entusiasmo, conforme a cena.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma pergunta obrigatória": [
+          "INTERPRET_EXCLAMATION_IN_CONTEXT"
+        ],
+        "Uma declaração sempre neutra": [
+          "INTERPRET_EXCLAMATION_IN_CONTEXT"
+        ],
+        "Uma palavra sem entonação": [
+          "INTERPRET_EXCLAMATION_IN_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AVISO_DO_TREM",
+      "explanation": "A cena de anúncio pode justificar ênfase.",
+      "hint": "Considere o contexto e o sinal.",
+      "errorFocus": "INTERPRET_EXCLAMATION_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A cena de anúncio pode justificar ênfase.",
+        "incorrect": "A cena de anúncio pode justificar ênfase.",
+        "hint": "Considere o contexto e o sinal.",
+        "errorFocus": "INTERPRET_EXCLAMATION_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-04",
+      "statement": "Qual sinal costuma encerrar uma declaração como “A porta está aberta.”?",
+      "prompt": "Qual sinal costuma encerrar uma declaração como “A porta está aberta.”?",
+      "options": [
+        "Ponto de interrogação",
+        "Ponto de exclamação",
+        "Hífen",
+        "Ponto final."
+      ],
+      "correctAnswer": "Ponto final.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ponto de interrogação": [
+          "SELECT_PERIOD_FOR_STATEMENT"
+        ],
+        "Ponto de exclamação": [
+          "SELECT_PERIOD_FOR_STATEMENT"
+        ],
+        "Hífen": [
+          "SELECT_PERIOD_FOR_STATEMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PONTO_AO_FINAL",
+      "explanation": "A frase informa algo e termina com ponto final.",
+      "hint": "Leia o propósito da frase.",
+      "errorFocus": "SELECT_PERIOD_FOR_STATEMENT",
+      "feedback": {
+        "correct": "Boa observação: A frase informa algo e termina com ponto final.",
+        "incorrect": "A frase informa algo e termina com ponto final.",
+        "hint": "Leia o propósito da frase.",
+        "errorFocus": "SELECT_PERIOD_FOR_STATEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-05",
+      "statement": "“Você viu o livro?” e “Você viu o livro.” diferem principalmente no...",
+      "prompt": "“Você viu o livro?” e “Você viu o livro.” diferem principalmente no...",
+      "options": [
+        "sinal e propósito da frase.",
+        "número de letras",
+        "nome do objeto",
+        "idioma usado"
+      ],
+      "correctAnswer": "sinal e propósito da frase.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "número de letras": [
+          "COMPARE_PUNCTUATION_PURPOSE"
+        ],
+        "nome do objeto": [
+          "COMPARE_PUNCTUATION_PURPOSE"
+        ],
+        "idioma usado": [
+          "COMPARE_PUNCTUATION_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MESMAS_PALAVRAS_PERGUNTA",
+      "explanation": "Um sinal apresenta pergunta e o outro declaração.",
+      "hint": "Compare o final das frases.",
+      "errorFocus": "COMPARE_PUNCTUATION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Um sinal apresenta pergunta e o outro declaração.",
+        "incorrect": "Um sinal apresenta pergunta e o outro declaração.",
+        "hint": "Compare o final das frases.",
+        "errorFocus": "COMPARE_PUNCTUATION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-06",
+      "statement": "Qual sinal pode orientar uma leitura com entonação de pergunta?",
+      "prompt": "Qual sinal pode orientar uma leitura com entonação de pergunta?",
+      "options": [
+        "Ponto final",
+        "Ponto de interrogação.",
+        "Ponto de exclamação sempre",
+        "Sem sinal algum"
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ponto final": [
+          "CONNECT_QUESTION_TO_INTONATION"
+        ],
+        "Ponto de exclamação sempre": [
+          "CONNECT_QUESTION_TO_INTONATION"
+        ],
+        "Sem sinal algum": [
+          "CONNECT_QUESTION_TO_INTONATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "VOZ_DA_PERGUNTA",
+      "explanation": "A interrogação orienta uma pergunta.",
+      "hint": "Pense no que a frase pede.",
+      "errorFocus": "CONNECT_QUESTION_TO_INTONATION",
+      "feedback": {
+        "correct": "Boa observação: A interrogação orienta uma pergunta.",
+        "incorrect": "A interrogação orienta uma pergunta.",
+        "hint": "Pense no que a frase pede.",
+        "errorFocus": "CONNECT_QUESTION_TO_INTONATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-07",
+      "statement": "Qual par relaciona corretamente os sinais aos nomes?",
+      "prompt": "Qual par relaciona corretamente os sinais aos nomes?",
+      "options": [
+        "? é ponto final; ! é vírgula",
+        "? é exclamação; ! é interrogação",
+        "? é interrogação; ! é exclamação.",
+        "? e ! são letras"
+      ],
+      "correctAnswer": "? é interrogação; ! é exclamação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "? é ponto final; ! é vírgula": [
+          "DISTINGUISH_MARK_SHAPES"
+        ],
+        "? é exclamação; ! é interrogação": [
+          "DISTINGUISH_MARK_SHAPES"
+        ],
+        "? e ! são letras": [
+          "DISTINGUISH_MARK_SHAPES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EXCLAMACAO_E_INTERROGACAO",
+      "explanation": "Os formatos representam sinais diferentes.",
+      "hint": "Observe a forma de cada sinal.",
+      "errorFocus": "DISTINGUISH_MARK_SHAPES",
+      "feedback": {
+        "correct": "Boa observação: Os formatos representam sinais diferentes.",
+        "incorrect": "Os formatos representam sinais diferentes.",
+        "hint": "Observe a forma de cada sinal.",
+        "errorFocus": "DISTINGUISH_MARK_SHAPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-08",
+      "statement": "Uma estudante não quer ler em voz alta. Como ainda pode mostrar que identificou a interrogação?",
+      "prompt": "Uma estudante não quer ler em voz alta. Como ainda pode mostrar que identificou a interrogação?",
+      "options": [
+        "Ser obrigada a falar",
+        "Não participar da atividade",
+        "Revelar um sentimento pessoal",
+        "Apontar ou selecionar o cartão com ?."
+      ],
+      "correctAnswer": "Apontar ou selecionar o cartão com ?.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ser obrigada a falar": [
+          "ACCESSIBLE_PUNCTUATION_RESPONSE"
+        ],
+        "Não participar da atividade": [
+          "ACCESSIBLE_PUNCTUATION_RESPONSE"
+        ],
+        "Revelar um sentimento pessoal": [
+          "ACCESSIBLE_PUNCTUATION_RESPONSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPOSTA_SEM_FALA",
+      "explanation": "Apontar permite demonstrar reconhecimento sem fala.",
+      "hint": "Escolha outro modo de responder.",
+      "errorFocus": "ACCESSIBLE_PUNCTUATION_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Apontar permite demonstrar reconhecimento sem fala.",
+        "incorrect": "Apontar permite demonstrar reconhecimento sem fala.",
+        "hint": "Escolha outro modo de responder.",
+        "errorFocus": "ACCESSIBLE_PUNCTUATION_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-09",
+      "statement": "“A janela está fechada.” Que sinal aparece ao final?",
+      "prompt": "“A janela está fechada.” Que sinal aparece ao final?",
+      "options": [
+        "Ponto final.",
+        "Ponto de exclamação",
+        "Ponto de interrogação",
+        "Parêntese"
+      ],
+      "correctAnswer": "Ponto final.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ponto de exclamação": [
+          "READ_PERIOD_IN_TEXT"
+        ],
+        "Ponto de interrogação": [
+          "READ_PERIOD_IN_TEXT"
+        ],
+        "Parêntese": [
+          "READ_PERIOD_IN_TEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_DA_JANELA",
+      "explanation": "O ponto final encerra a declaração.",
+      "hint": "Veja o último caractere.",
+      "errorFocus": "READ_PERIOD_IN_TEXT",
+      "feedback": {
+        "correct": "Boa observação: O ponto final encerra a declaração.",
+        "incorrect": "O ponto final encerra a declaração.",
+        "hint": "Veja o último caractere.",
+        "errorFocus": "READ_PERIOD_IN_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-10",
+      "statement": "“A janela está fechada?” Como a pontuação orienta a leitura?",
+      "prompt": "“A janela está fechada?” Como a pontuação orienta a leitura?",
+      "options": [
+        "Como uma afirmação necessariamente",
+        "Como uma pergunta.",
+        "Como uma exclamação",
+        "Como uma lista"
+      ],
+      "correctAnswer": "Como uma pergunta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como uma afirmação necessariamente": [
+          "MATCH_QUESTION_MARK_TO_PURPOSE"
+        ],
+        "Como uma exclamação": [
+          "MATCH_QUESTION_MARK_TO_PURPOSE"
+        ],
+        "Como uma lista": [
+          "MATCH_QUESTION_MARK_TO_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PERGUNTA_SOBRE_A_JANELA",
+      "explanation": "A interrogação marca pergunta.",
+      "hint": "Leia o sinal final.",
+      "errorFocus": "MATCH_QUESTION_MARK_TO_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A interrogação marca pergunta.",
+        "incorrect": "A interrogação marca pergunta.",
+        "hint": "Leia o sinal final.",
+        "errorFocus": "MATCH_QUESTION_MARK_TO_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-11",
+      "statement": "“Venha brincar!” Qual sinal encerra o chamado?",
+      "prompt": "“Venha brincar!” Qual sinal encerra o chamado?",
+      "options": [
+        "Ponto final",
+        "Ponto de interrogação",
+        "Ponto de exclamação.",
+        "Vírgula"
+      ],
+      "correctAnswer": "Ponto de exclamação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ponto final": [
+          "IDENTIFY_EXCLAMATION_MARK"
+        ],
+        "Ponto de interrogação": [
+          "IDENTIFY_EXCLAMATION_MARK"
+        ],
+        "Vírgula": [
+          "IDENTIFY_EXCLAMATION_MARK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CHAMADO_COM_EXCLAMACAO",
+      "explanation": "A frase termina com !.",
+      "hint": "Procure o traço e o ponto.",
+      "errorFocus": "IDENTIFY_EXCLAMATION_MARK",
+      "feedback": {
+        "correct": "Boa observação: A frase termina com !.",
+        "incorrect": "A frase termina com !.",
+        "hint": "Procure o traço e o ponto.",
+        "errorFocus": "IDENTIFY_EXCLAMATION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-12",
+      "statement": "Uma frase termina com !. O que é importante considerar ao interpretá-la?",
+      "prompt": "Uma frase termina com !. O que é importante considerar ao interpretá-la?",
+      "options": [
+        "Que sempre indica raiva",
+        "Que sempre indica medo",
+        "Que revela o sentimento privado do leitor",
+        "O contexto, pois o sinal pode acompanhar diferentes ênfases."
+      ],
+      "correctAnswer": "O contexto, pois o sinal pode acompanhar diferentes ênfases.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que sempre indica raiva": [
+          "CONTEXTUALIZE_EXCLAMATION"
+        ],
+        "Que sempre indica medo": [
+          "CONTEXTUALIZE_EXCLAMATION"
+        ],
+        "Que revela o sentimento privado do leitor": [
+          "CONTEXTUALIZE_EXCLAMATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NAO_ADIVINHAR_EMOCAO",
+      "explanation": "A exclamação pode ter funções variadas.",
+      "hint": "Leia também a cena.",
+      "errorFocus": "CONTEXTUALIZE_EXCLAMATION",
+      "feedback": {
+        "correct": "Boa observação: A exclamação pode ter funções variadas.",
+        "incorrect": "A exclamação pode ter funções variadas.",
+        "hint": "Leia também a cena.",
+        "errorFocus": "CONTEXTUALIZE_EXCLAMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-13",
+      "statement": "Uma personagem pergunta “Onde fica a biblioteca”. Qual sinal final combina?",
+      "prompt": "Uma personagem pergunta “Onde fica a biblioteca”. Qual sinal final combina?",
+      "options": [
+        "Ponto de interrogação.",
+        "Ponto final",
+        "Ponto de exclamação",
+        "Travessão"
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ponto final": [
+          "CHOOSE_QUESTION_PUNCTUATION"
+        ],
+        "Ponto de exclamação": [
+          "CHOOSE_QUESTION_PUNCTUATION"
+        ],
+        "Travessão": [
+          "CHOOSE_QUESTION_PUNCTUATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCOLHER_SINAL_DE_PERGUNTA",
+      "explanation": "A frase solicita uma informação.",
+      "hint": "Observe o propósito interrogativo.",
+      "errorFocus": "CHOOSE_QUESTION_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa observação: A frase solicita uma informação.",
+        "incorrect": "A frase solicita uma informação.",
+        "hint": "Observe o propósito interrogativo.",
+        "errorFocus": "CHOOSE_QUESTION_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-14",
+      "statement": "“O jogo começou.”, “O jogo começou?” e “O jogo começou!” mostram que...",
+      "prompt": "“O jogo começou.”, “O jogo começou?” e “O jogo começou!” mostram que...",
+      "options": [
+        "as palavras mudam de ordem",
+        "o sinal pode alterar propósito e entonação sugerida.",
+        "os três sinais são iguais",
+        "a frase deixa de ter sentido sempre"
+      ],
+      "correctAnswer": "o sinal pode alterar propósito e entonação sugerida.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "as palavras mudam de ordem": [
+          "ANALYZE_MARK_EFFECT"
+        ],
+        "os três sinais são iguais": [
+          "ANALYZE_MARK_EFFECT"
+        ],
+        "a frase deixa de ter sentido sempre": [
+          "ANALYZE_MARK_EFFECT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MESMA_FRASE_TRES_SINAIS",
+      "explanation": "A pontuação muda como a frase é interpretada.",
+      "hint": "Compare as três terminações.",
+      "errorFocus": "ANALYZE_MARK_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: A pontuação muda como a frase é interpretada.",
+        "incorrect": "A pontuação muda como a frase é interpretada.",
+        "hint": "Compare as três terminações.",
+        "errorFocus": "ANALYZE_MARK_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-15",
+      "statement": "Um cartão termina com ?. Que nome damos a esse sinal?",
+      "prompt": "Um cartão termina com ?. Que nome damos a esse sinal?",
+      "options": [
+        "Ponto final",
+        "Ponto de exclamação",
+        "Ponto de interrogação.",
+        "Ponto e vírgula"
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ponto final": [
+          "NAME_QUESTION_MARK"
+        ],
+        "Ponto de exclamação": [
+          "NAME_QUESTION_MARK"
+        ],
+        "Ponto e vírgula": [
+          "NAME_QUESTION_MARK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PONTO_INTERROGACAO_EM_CARTAO",
+      "explanation": "O símbolo ? é interrogação.",
+      "hint": "Associe formato e nome.",
+      "errorFocus": "NAME_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: O símbolo ? é interrogação.",
+        "incorrect": "O símbolo ? é interrogação.",
+        "hint": "Associe formato e nome.",
+        "errorFocus": "NAME_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-16",
+      "statement": "Como um áudio pode apoiar a observação de entonação?",
+      "prompt": "Como um áudio pode apoiar a observação de entonação?",
+      "options": [
+        "Esconder o texto",
+        "Substituir todos os sinais",
+        "Exigir imitação exata da voz",
+        "Permitir ouvir a frase e acompanhar a transcrição com o sinal."
+      ],
+      "correctAnswer": "Permitir ouvir a frase e acompanhar a transcrição com o sinal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder o texto": [
+          "ACCESSIBLE_INTONATION_MODEL"
+        ],
+        "Substituir todos os sinais": [
+          "ACCESSIBLE_INTONATION_MODEL"
+        ],
+        "Exigir imitação exata da voz": [
+          "ACCESSIBLE_INTONATION_MODEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEITURA_COM_AUDIO",
+      "explanation": "Áudio e transcrição relacionam sinal e leitura.",
+      "hint": "Use recursos juntos.",
+      "errorFocus": "ACCESSIBLE_INTONATION_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Áudio e transcrição relacionam sinal e leitura.",
+        "incorrect": "Áudio e transcrição relacionam sinal e leitura.",
+        "hint": "Use recursos juntos.",
+        "errorFocus": "ACCESSIBLE_INTONATION_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-17",
+      "statement": "Um bilhete diz “A biblioteca fecha às cinco.” Qual propósito predomina?",
+      "prompt": "Um bilhete diz “A biblioteca fecha às cinco.” Qual propósito predomina?",
+      "options": [
+        "Informar, com ponto final.",
+        "Perguntar",
+        "Exclamar necessariamente",
+        "Listar nomes"
+      ],
+      "correctAnswer": "Informar, com ponto final.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Perguntar": [
+          "TRANSFER_STATEMENT_PURPOSE"
+        ],
+        "Exclamar necessariamente": [
+          "TRANSFER_STATEMENT_PURPOSE"
+        ],
+        "Listar nomes": [
+          "TRANSFER_STATEMENT_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BILHETE_DE_AVISO",
+      "explanation": "A frase comunica uma informação.",
+      "hint": "Leia a frase e o sinal.",
+      "errorFocus": "TRANSFER_STATEMENT_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A frase comunica uma informação.",
+        "incorrect": "A frase comunica uma informação.",
+        "hint": "Leia a frase e o sinal.",
+        "errorFocus": "TRANSFER_STATEMENT_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-18",
+      "statement": "No mural está escrito “Quem trouxe as tintas?”. Que sinal orienta a leitura?",
+      "prompt": "No mural está escrito “Quem trouxe as tintas?”. Que sinal orienta a leitura?",
+      "options": [
+        "Ponto final",
+        "Interrogação.",
+        "Exclamação",
+        "Hífen"
+      ],
+      "correctAnswer": "Interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ponto final": [
+          "TRANSFER_QUESTION_MARK"
+        ],
+        "Exclamação": [
+          "TRANSFER_QUESTION_MARK"
+        ],
+        "Hífen": [
+          "TRANSFER_QUESTION_MARK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PERGUNTA_NO_MURAL",
+      "explanation": "A frase pergunta quem trouxe algo.",
+      "hint": "Observe o sinal no final.",
+      "errorFocus": "TRANSFER_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: A frase pergunta quem trouxe algo.",
+        "incorrect": "A frase pergunta quem trouxe algo.",
+        "hint": "Observe o sinal no final.",
+        "errorFocus": "TRANSFER_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-19",
+      "statement": "Uma história mostra uma personagem vendo um arco-íris e dizendo “Que cores bonitas!”. Qual leitura é possível?",
+      "prompt": "Uma história mostra uma personagem vendo um arco-íris e dizendo “Que cores bonitas!”. Qual leitura é possível?",
+      "options": [
+        "Uma pergunta sobre endereço",
+        "Uma afirmação sempre sem expressão",
+        "Uma fala com ênfase ou surpresa conforme a história.",
+        "Uma prova do sentimento de cada leitor"
+      ],
+      "correctAnswer": "Uma fala com ênfase ou surpresa conforme a história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma pergunta sobre endereço": [
+          "TRANSFER_CONTEXTUAL_EXCLAMATION"
+        ],
+        "Uma afirmação sempre sem expressão": [
+          "TRANSFER_CONTEXTUAL_EXCLAMATION"
+        ],
+        "Uma prova do sentimento de cada leitor": [
+          "TRANSFER_CONTEXTUAL_EXCLAMATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "EXCLAMACAO_DE_SURPRESA",
+      "explanation": "O contexto pode apoiar uma entonação expressiva.",
+      "hint": "Use a cena, não uma regra única.",
+      "errorFocus": "TRANSFER_CONTEXTUAL_EXCLAMATION",
+      "feedback": {
+        "correct": "Boa observação: O contexto pode apoiar uma entonação expressiva.",
+        "incorrect": "O contexto pode apoiar uma entonação expressiva.",
+        "hint": "Use a cena, não uma regra única.",
+        "errorFocus": "TRANSFER_CONTEXTUAL_EXCLAMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-20",
+      "statement": "O ponto final é...",
+      "prompt": "O ponto final é...",
+      "options": [
+        "uma vogal",
+        "uma sílaba",
+        "uma palavra de pergunta",
+        "um sinal de pontuação, não uma letra."
+      ],
+      "correctAnswer": "um sinal de pontuação, não uma letra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma vogal": [
+          "TRANSFER_MARK_VS_LETTER"
+        ],
+        "uma sílaba": [
+          "TRANSFER_MARK_VS_LETTER"
+        ],
+        "uma palavra de pergunta": [
+          "TRANSFER_MARK_VS_LETTER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PONTUACAO_NAO_E_LETRA",
+      "explanation": "A habilidade distingue sinais além das letras.",
+      "hint": "Observe sua função no texto.",
+      "errorFocus": "TRANSFER_MARK_VS_LETTER",
+      "feedback": {
+        "correct": "Boa observação: A habilidade distingue sinais além das letras.",
+        "incorrect": "A habilidade distingue sinais além das letras.",
+        "hint": "Observe sua função no texto.",
+        "errorFocus": "TRANSFER_MARK_VS_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-21",
+      "statement": "Duas pessoas leem uma exclamação com vozes diferentes e respeitosas. Isso pode acontecer?",
+      "prompt": "Duas pessoas leem uma exclamação com vozes diferentes e respeitosas. Isso pode acontecer?",
+      "options": [
+        "Sim; a entonação pode variar conforme leitor e contexto.",
+        "Não, existe uma única voz obrigatória",
+        "Não, pontuação não se lê",
+        "Sim, mas uma pessoa está sempre errada"
+      ],
+      "correctAnswer": "Sim; a entonação pode variar conforme leitor e contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, existe uma única voz obrigatória": [
+          "ALLOW_INTONATION_VARIATION"
+        ],
+        "Não, pontuação não se lê": [
+          "ALLOW_INTONATION_VARIATION"
+        ],
+        "Sim, mas uma pessoa está sempre errada": [
+          "ALLOW_INTONATION_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ENTONACAO_E_CONTEXTO",
+      "explanation": "O sinal orienta, mas não exige uma única performance.",
+      "hint": "Considere modos variados de leitura.",
+      "errorFocus": "ALLOW_INTONATION_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: O sinal orienta, mas não exige uma única performance.",
+        "incorrect": "O sinal orienta, mas não exige uma única performance.",
+        "hint": "Considere modos variados de leitura.",
+        "errorFocus": "ALLOW_INTONATION_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-22",
+      "statement": "Para transformar “A turma chegou.” numa pergunta, qual sinal usar no final?",
+      "prompt": "Para transformar “A turma chegou.” numa pergunta, qual sinal usar no final?",
+      "options": [
+        "Ponto final",
+        "Ponto de interrogação.",
+        "Ponto de exclamação sempre",
+        "Dois-pontos"
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ponto final": [
+          "TRANSFER_CHANGE_SENTENCE_PURPOSE"
+        ],
+        "Ponto de exclamação sempre": [
+          "TRANSFER_CHANGE_SENTENCE_PURPOSE"
+        ],
+        "Dois-pontos": [
+          "TRANSFER_CHANGE_SENTENCE_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REESCREVER_COM_PERGUNTA",
+      "explanation": "A interrogação marca a pergunta.",
+      "hint": "Escolha o sinal interrogativo.",
+      "errorFocus": "TRANSFER_CHANGE_SENTENCE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A interrogação marca a pergunta.",
+        "incorrect": "A interrogação marca a pergunta.",
+        "hint": "Escolha o sinal interrogativo.",
+        "errorFocus": "TRANSFER_CHANGE_SENTENCE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-23",
+      "statement": "Qual destes símbolos é o ponto de exclamação?",
+      "prompt": "Qual destes símbolos é o ponto de exclamação?",
+      "options": [
+        "?",
+        ".",
+        "!",
+        ","
+      ],
+      "correctAnswer": "!",
+      "answerPosition": "C",
+      "misconceptions": {
+        "?": [
+          "TRANSFER_RECOGNIZE_EXCLAMATION"
+        ],
+        ".": [
+          "TRANSFER_RECOGNIZE_EXCLAMATION"
+        ],
+        ",": [
+          "TRANSFER_RECOGNIZE_EXCLAMATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SINAL_DE_EXCLAMACAO",
+      "explanation": "O símbolo ! é a exclamação.",
+      "hint": "Encontre o traço vertical e o ponto.",
+      "errorFocus": "TRANSFER_RECOGNIZE_EXCLAMATION",
+      "feedback": {
+        "correct": "Boa observação: O símbolo ! é a exclamação.",
+        "incorrect": "O símbolo ! é a exclamação.",
+        "hint": "Encontre o traço vertical e o ponto.",
+        "errorFocus": "TRANSFER_RECOGNIZE_EXCLAMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-24",
+      "statement": "Por que observar a pontuação durante a leitura?",
+      "prompt": "Por que observar a pontuação durante a leitura?",
+      "options": [
+        "Porque substituem todas as palavras",
+        "Porque mostram a identidade do leitor",
+        "Porque definem sempre uma única emoção",
+        "Porque os sinais ajudam a reconhecer propósito e orientar a entonação."
+      ],
+      "correctAnswer": "Porque os sinais ajudam a reconhecer propósito e orientar a entonação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque substituem todas as palavras": [
+          "JUSTIFY_PUNCTUATION_EFFECT"
+        ],
+        "Porque mostram a identidade do leitor": [
+          "JUSTIFY_PUNCTUATION_EFFECT"
+        ],
+        "Porque definem sempre uma única emoção": [
+          "JUSTIFY_PUNCTUATION_EFFECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PONTUACAO_GUIA_LEITURA",
+      "explanation": "Pontuação organiza a leitura sem determinar todo o contexto.",
+      "hint": "Relacione sinal e propósito.",
+      "errorFocus": "JUSTIFY_PUNCTUATION_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: Pontuação organiza a leitura sem determinar todo o contexto.",
+        "incorrect": "Pontuação organiza a leitura sem determinar todo o contexto.",
+        "hint": "Relacione sinal e propósito.",
+        "errorFocus": "JUSTIFY_PUNCTUATION_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-25",
+      "statement": "O ponto final costuma encerrar...",
+      "prompt": "O ponto final costuma encerrar...",
+      "options": [
+        "uma declaração.",
+        "uma pergunta",
+        "uma exclamação sempre",
+        "uma letra"
+      ],
+      "correctAnswer": "uma declaração.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma pergunta": [
+          "RECALL_PERIOD"
+        ],
+        "uma exclamação sempre": [
+          "RECALL_PERIOD"
+        ],
+        "uma letra": [
+          "RECALL_PERIOD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PONTO_FINAL",
+      "explanation": "O ponto final pode marcar o fim de uma informação.",
+      "hint": "Lembre da frase que informa.",
+      "errorFocus": "RECALL_PERIOD",
+      "feedback": {
+        "correct": "Boa observação: O ponto final pode marcar o fim de uma informação.",
+        "incorrect": "O ponto final pode marcar o fim de uma informação.",
+        "hint": "Lembre da frase que informa.",
+        "errorFocus": "RECALL_PERIOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-26",
+      "statement": "Como se chama o sinal que marca uma pergunta?",
+      "prompt": "Como se chama o sinal que marca uma pergunta?",
+      "options": [
+        "ponto final",
+        "ponto de interrogação.",
+        "ponto de exclamação",
+        "vírgula"
+      ],
+      "correctAnswer": "ponto de interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ponto final": [
+          "RECALL_QUESTION_MARK"
+        ],
+        "ponto de exclamação": [
+          "RECALL_QUESTION_MARK"
+        ],
+        "vírgula": [
+          "RECALL_QUESTION_MARK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "INTERROGACAO",
+      "explanation": "? marca uma pergunta.",
+      "hint": "Associe o símbolo ao nome.",
+      "errorFocus": "RECALL_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: ? marca uma pergunta.",
+        "incorrect": "? marca uma pergunta.",
+        "hint": "Associe o símbolo ao nome.",
+        "errorFocus": "RECALL_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-27",
+      "statement": "Qual é o nome do sinal !",
+      "prompt": "Qual é o nome do sinal !",
+      "options": [
+        "ponto final",
+        "ponto de interrogação",
+        "ponto de exclamação.",
+        "dois-pontos"
+      ],
+      "correctAnswer": "ponto de exclamação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ponto final": [
+          "RECALL_EXCLAMATION_MARK"
+        ],
+        "ponto de interrogação": [
+          "RECALL_EXCLAMATION_MARK"
+        ],
+        "dois-pontos": [
+          "RECALL_EXCLAMATION_MARK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "EXCLAMACAO",
+      "explanation": "! é o sinal de exclamação.",
+      "hint": "Observe o traço vertical.",
+      "errorFocus": "RECALL_EXCLAMATION_MARK",
+      "feedback": {
+        "correct": "Boa observação: ! é o sinal de exclamação.",
+        "incorrect": "! é o sinal de exclamação.",
+        "hint": "Observe o traço vertical.",
+        "errorFocus": "RECALL_EXCLAMATION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-28",
+      "statement": "“O ônibus chegou.” informa; “O ônibus chegou?”...",
+      "prompt": "“O ônibus chegou.” informa; “O ônibus chegou?”...",
+      "options": [
+        "informa a mesma coisa sem mudança",
+        "marca sempre alegria",
+        "não tem sinal",
+        "pergunta se o ônibus chegou."
+      ],
+      "correctAnswer": "pergunta se o ônibus chegou.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "informa a mesma coisa sem mudança": [
+          "RECALL_PURPOSE_CONTRAST"
+        ],
+        "marca sempre alegria": [
+          "RECALL_PURPOSE_CONTRAST"
+        ],
+        "não tem sinal": [
+          "RECALL_PURPOSE_CONTRAST"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DECLARACAO_E_PERGUNTA",
+      "explanation": "A interrogação transforma a frase em pergunta.",
+      "hint": "Compare os sinais finais.",
+      "errorFocus": "RECALL_PURPOSE_CONTRAST",
+      "feedback": {
+        "correct": "Boa observação: A interrogação transforma a frase em pergunta.",
+        "incorrect": "A interrogação transforma a frase em pergunta.",
+        "hint": "Compare os sinais finais.",
+        "errorFocus": "RECALL_PURPOSE_CONTRAST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-29",
+      "statement": "Qual sinal pode orientar entonação de pergunta?",
+      "prompt": "Qual sinal pode orientar entonação de pergunta?",
+      "options": [
+        "Interrogação.",
+        "Ponto final",
+        "Ponto de exclamação exclusivamente",
+        "Vírgula"
+      ],
+      "correctAnswer": "Interrogação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ponto final": [
+          "RECALL_QUESTION_INTONATION"
+        ],
+        "Ponto de exclamação exclusivamente": [
+          "RECALL_QUESTION_INTONATION"
+        ],
+        "Vírgula": [
+          "RECALL_QUESTION_INTONATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SINAL_E_ENTONACAO",
+      "explanation": "O sinal interrogativo indica pergunta.",
+      "hint": "Pense no propósito da fala.",
+      "errorFocus": "RECALL_QUESTION_INTONATION",
+      "feedback": {
+        "correct": "Boa observação: O sinal interrogativo indica pergunta.",
+        "incorrect": "O sinal interrogativo indica pergunta.",
+        "hint": "Pense no propósito da fala.",
+        "errorFocus": "RECALL_QUESTION_INTONATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-30",
+      "statement": "Uma exclamação sempre indica a mesma emoção?",
+      "prompt": "Uma exclamação sempre indica a mesma emoção?",
+      "options": [
+        "Sim, sempre raiva",
+        "Não; o contexto ajuda a interpretá-la.",
+        "Sim, sempre surpresa",
+        "Não, e por isso o sinal não serve"
+      ],
+      "correctAnswer": "Não; o contexto ajuda a interpretá-la.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre raiva": [
+          "RECALL_CONTEXTUAL_MARK"
+        ],
+        "Sim, sempre surpresa": [
+          "RECALL_CONTEXTUAL_MARK"
+        ],
+        "Não, e por isso o sinal não serve": [
+          "RECALL_CONTEXTUAL_MARK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONTEXTO_DA_EXCLAMACAO",
+      "explanation": "A exclamação pode acompanhar diferentes intenções.",
+      "hint": "Considere as palavras e a cena.",
+      "errorFocus": "RECALL_CONTEXTUAL_MARK",
+      "feedback": {
+        "correct": "Boa observação: A exclamação pode acompanhar diferentes intenções.",
+        "incorrect": "A exclamação pode acompanhar diferentes intenções.",
+        "hint": "Considere as palavras e a cena.",
+        "errorFocus": "RECALL_CONTEXTUAL_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-31",
+      "statement": "Reconhecer uma interrogação exige que a criança leia em voz alta?",
+      "prompt": "Reconhecer uma interrogação exige que a criança leia em voz alta?",
+      "options": [
+        "Sim, sempre",
+        "Sim, com a mesma voz de todos",
+        "Não; pode identificar o sinal apontando ou selecionando-o.",
+        "Não, mas só por escrito"
+      ],
+      "correctAnswer": "Não; pode identificar o sinal apontando ou selecionando-o.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "RECALL_ACCESSIBLE_RESPONSE"
+        ],
+        "Sim, com a mesma voz de todos": [
+          "RECALL_ACCESSIBLE_RESPONSE"
+        ],
+        "Não, mas só por escrito": [
+          "RECALL_ACCESSIBLE_RESPONSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SINAL_VERSUS_PERFORMANCE",
+      "explanation": "Há formas acessíveis de demonstrar reconhecimento.",
+      "hint": "Pense em alternativas de resposta.",
+      "errorFocus": "RECALL_ACCESSIBLE_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Há formas acessíveis de demonstrar reconhecimento.",
+        "incorrect": "Há formas acessíveis de demonstrar reconhecimento.",
+        "hint": "Pense em alternativas de resposta.",
+        "errorFocus": "RECALL_ACCESSIBLE_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-32",
+      "statement": "Pontos finais, interrogação e exclamação ajudam a...",
+      "prompt": "Pontos finais, interrogação e exclamação ajudam a...",
+      "options": [
+        "substituir letras",
+        "revelar sentimentos privados",
+        "determinar uma única voz",
+        "organizar frases e orientar diferentes leituras."
+      ],
+      "correctAnswer": "organizar frases e orientar diferentes leituras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "substituir letras": [
+          "PUNCTUATION_SUMMARY"
+        ],
+        "revelar sentimentos privados": [
+          "PUNCTUATION_SUMMARY"
+        ],
+        "determinar uma única voz": [
+          "PUNCTUATION_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_PONTUACAO",
+      "explanation": "Os sinais orientam propósito e entonação.",
+      "hint": "Reúna organização e leitura.",
+      "errorFocus": "PUNCTUATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Os sinais orientam propósito e entonação.",
+        "incorrect": "Os sinais orientam propósito e entonação.",
+        "hint": "Reúna organização e leitura.",
+        "errorFocus": "PUNCTUATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-33",
+      "statement": "“A aula terminou.” termina com...",
+      "prompt": "“A aula terminou.” termina com...",
+      "options": [
+        "ponto final.",
+        "interrogação",
+        "exclamação",
+        "vírgula"
+      ],
+      "correctAnswer": "ponto final.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "interrogação": [
+          "REVIEW_PERIOD"
+        ],
+        "exclamação": [
+          "REVIEW_PERIOD"
+        ],
+        "vírgula": [
+          "REVIEW_PERIOD"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_PONTO",
+      "explanation": "A frase informa e encerra com ponto.",
+      "hint": "Olhe o sinal final.",
+      "errorFocus": "REVIEW_PERIOD",
+      "feedback": {
+        "correct": "Boa observação: A frase informa e encerra com ponto.",
+        "incorrect": "A frase informa e encerra com ponto.",
+        "hint": "Olhe o sinal final.",
+        "errorFocus": "REVIEW_PERIOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-34",
+      "statement": "“Você viu o cartaz?” usa...",
+      "prompt": "“Você viu o cartaz?” usa...",
+      "options": [
+        "ponto final",
+        "ponto de interrogação.",
+        "exclamação",
+        "parêntese"
+      ],
+      "correctAnswer": "ponto de interrogação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "ponto final": [
+          "REVIEW_QUESTION_MARK"
+        ],
+        "exclamação": [
+          "REVIEW_QUESTION_MARK"
+        ],
+        "parêntese": [
+          "REVIEW_QUESTION_MARK"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVISAO_DE_PERGUNTA",
+      "explanation": "A frase pergunta algo.",
+      "hint": "Observe ?.",
+      "errorFocus": "REVIEW_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: A frase pergunta algo.",
+        "incorrect": "A frase pergunta algo.",
+        "hint": "Observe ?.",
+        "errorFocus": "REVIEW_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-35",
+      "statement": "Uma frase com ! pode ser lida com...",
+      "prompt": "Uma frase com ! pode ser lida com...",
+      "options": [
+        "uma única emoção obrigatória",
+        "nenhuma variação",
+        "ênfase adequada ao contexto.",
+        "somente voz de pergunta"
+      ],
+      "correctAnswer": "ênfase adequada ao contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma única emoção obrigatória": [
+          "REVIEW_EXCLAMATION_CONTEXT"
+        ],
+        "nenhuma variação": [
+          "REVIEW_EXCLAMATION_CONTEXT"
+        ],
+        "somente voz de pergunta": [
+          "REVIEW_EXCLAMATION_CONTEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_EXCLAMACAO",
+      "explanation": "A interpretação considera a cena.",
+      "hint": "Leia palavras e contexto.",
+      "errorFocus": "REVIEW_EXCLAMATION_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A interpretação considera a cena.",
+        "incorrect": "A interpretação considera a cena.",
+        "hint": "Leia palavras e contexto.",
+        "errorFocus": "REVIEW_EXCLAMATION_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-36",
+      "statement": "Uma frase pergunta “Onde está a bola”. Qual sinal final pode indicar isso?",
+      "prompt": "Uma frase pergunta “Onde está a bola”. Qual sinal final pode indicar isso?",
+      "options": [
+        "Ponto final",
+        "Ponto de exclamação",
+        "Vírgula",
+        "Ponto de interrogação."
+      ],
+      "correctAnswer": "Ponto de interrogação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ponto final": [
+          "REVIEW_SELECT_QUESTION_MARK"
+        ],
+        "Ponto de exclamação": [
+          "REVIEW_SELECT_QUESTION_MARK"
+        ],
+        "Vírgula": [
+          "REVIEW_SELECT_QUESTION_MARK"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_SINAL",
+      "explanation": "A frase solicita uma informação.",
+      "hint": "Identifique o propósito.",
+      "errorFocus": "REVIEW_SELECT_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa observação: A frase solicita uma informação.",
+        "incorrect": "A frase solicita uma informação.",
+        "hint": "Identifique o propósito.",
+        "errorFocus": "REVIEW_SELECT_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-37",
+      "statement": "Qual opção permite participar sem leitura oral?",
+      "prompt": "Qual opção permite participar sem leitura oral?",
+      "options": [
+        "Selecionar o cartão com o sinal correspondente.",
+        "Ser obrigada a ler em público",
+        "Imitar uma voz específica",
+        "Contar uma experiência privada"
+      ],
+      "correctAnswer": "Selecionar o cartão com o sinal correspondente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ser obrigada a ler em público": [
+          "REVIEW_ACCESSIBLE_PUNCTUATION"
+        ],
+        "Imitar uma voz específica": [
+          "REVIEW_ACCESSIBLE_PUNCTUATION"
+        ],
+        "Contar uma experiência privada": [
+          "REVIEW_ACCESSIBLE_PUNCTUATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ACESSO",
+      "explanation": "Selecionar cartões demonstra identificação.",
+      "hint": "Escolha uma resposta não oral.",
+      "errorFocus": "REVIEW_ACCESSIBLE_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa observação: Selecionar cartões demonstra identificação.",
+        "incorrect": "Selecionar cartões demonstra identificação.",
+        "hint": "Escolha uma resposta não oral.",
+        "errorFocus": "REVIEW_ACCESSIBLE_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-38",
+      "statement": "“A porta abriu!” e “A porta abriu?” têm palavras iguais. O que varia?",
+      "prompt": "“A porta abriu!” e “A porta abriu?” têm palavras iguais. O que varia?",
+      "options": [
+        "A ordem das letras",
+        "O sinal, o propósito e a entonação sugerida.",
+        "O número de palavras",
+        "O nome da porta"
+      ],
+      "correctAnswer": "O sinal, o propósito e a entonação sugerida.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A ordem das letras": [
+          "REVIEW_MARK_EFFECT"
+        ],
+        "O número de palavras": [
+          "REVIEW_MARK_EFFECT"
+        ],
+        "O nome da porta": [
+          "REVIEW_MARK_EFFECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_MESMAS_PALAVRAS",
+      "explanation": "A pontuação altera a leitura da mesma sequência.",
+      "hint": "Compare as terminações.",
+      "errorFocus": "REVIEW_MARK_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: A pontuação altera a leitura da mesma sequência.",
+        "incorrect": "A pontuação altera a leitura da mesma sequência.",
+        "hint": "Compare as terminações.",
+        "errorFocus": "REVIEW_MARK_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-39",
+      "statement": "Além das letras, o que podemos identificar num texto?",
+      "prompt": "Além das letras, o que podemos identificar num texto?",
+      "options": [
+        "Somente desenhos de objetos",
+        "Endereços pessoais",
+        "Sinais como ponto final, interrogação e exclamação.",
+        "A voz privada de quem lê"
+      ],
+      "correctAnswer": "Sinais como ponto final, interrogação e exclamação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente desenhos de objetos": [
+          "REVIEW_NONLETTER_SIGNS"
+        ],
+        "Endereços pessoais": [
+          "REVIEW_NONLETTER_SIGNS"
+        ],
+        "A voz privada de quem lê": [
+          "REVIEW_NONLETTER_SIGNS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_SINAL_NAO_LETRA",
+      "explanation": "Os sinais de pontuação fazem parte do texto.",
+      "hint": "Procure caracteres no fim.",
+      "errorFocus": "REVIEW_NONLETTER_SIGNS",
+      "feedback": {
+        "correct": "Boa observação: Os sinais de pontuação fazem parte do texto.",
+        "incorrect": "Os sinais de pontuação fazem parte do texto.",
+        "hint": "Procure caracteres no fim.",
+        "errorFocus": "REVIEW_NONLETTER_SIGNS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp14-recognize-punctuation-and-intonation-40",
+      "statement": "Como os sinais ajudam a ler uma frase?",
+      "prompt": "Como os sinais ajudam a ler uma frase?",
+      "options": [
+        "Definem sempre quem escreveu",
+        "Substituem a compreensão",
+        "Obrigam uma emoção específica",
+        "Indicam como ela se organiza e qual propósito pode ter."
+      ],
+      "correctAnswer": "Indicam como ela se organiza e qual propósito pode ter.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Definem sempre quem escreveu": [
+          "REVIEW_PUNCTUATION_SUMMARY"
+        ],
+        "Substituem a compreensão": [
+          "REVIEW_PUNCTUATION_SUMMARY"
+        ],
+        "Obrigam uma emoção específica": [
+          "REVIEW_PUNCTUATION_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_LEITURA",
+      "explanation": "Os sinais orientam leitura, junto ao contexto.",
+      "hint": "Relacione forma e propósito.",
+      "errorFocus": "REVIEW_PUNCTUATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Os sinais orientam leitura, junto ao contexto.",
+        "incorrect": "Os sinais orientam leitura, junto ao contexto.",
+        "hint": "Relacione forma e propósito.",
+        "errorFocus": "REVIEW_PUNCTUATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Ampliar os sinais, usar cores de apoio, leitura oral pausável e modelos de áudio com transcrição.",
+          "Permitir identificar sinais apontando, selecionando cartões ou usando comunicação alternativa.",
+          "Não exigir leitura performática, interpretação emocional pessoal ou um único padrão de entonação."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

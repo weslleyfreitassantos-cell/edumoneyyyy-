@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-labelledby="title desc">
+  <title id="title">Medida reta e medida de uma rota</title>
+  <desc id="desc">Entre P e Q, o segmento reto mede 8 centimetros e a rota curva medida com fio mede 12 centimetros. A escala do mapa e 1 para 25 mil.</desc>
+  <rect width="640" height="260" rx="16" fill="#f7fafc"/>
+  <rect x="22" y="20" width="596" height="218" rx="12" fill="#fff" stroke="#9bb4c8"/>
+  <path d="M92 176 C145 120, 162 192, 220 132 S300 183, 351 112 S438 160, 520 68" fill="none" stroke="#176b87" stroke-width="9" stroke-linecap="round"/>
+  <path d="M92 176L520 68" fill="none" stroke="#b4472e" stroke-width="4" stroke-dasharray="10 8"/>
+  <circle cx="92" cy="176" r="9" fill="#b4472e"/><circle cx="520" cy="68" r="9" fill="#b4472e"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <text x="70" y="158" font-size="18" font-weight="700">P</text><text x="529" y="64" font-size="18" font-weight="700">Q</text>
+    <rect x="248" y="101" width="112" height="30" rx="7" fill="#fff" stroke="#d5e0e8"/>
+    <text x="304" y="122" text-anchor="middle" font-size="16" font-weight="700">reta: 8 cm</text>
+    <rect x="235" y="192" width="164" height="28" rx="7" fill="#fff" stroke="#d5e0e8"/>
+    <text x="317" y="212" text-anchor="middle" font-size="16" font-weight="700">rota com fio: 12 cm</text>
+    <text x="42" y="54" font-size="17">Escala numerica: 1:25 000</text>
+  </g>
+</svg>

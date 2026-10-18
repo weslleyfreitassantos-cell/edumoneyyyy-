@@ -1,0 +1,1264 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "portuguese-infer-from-clues",
+  "canonicalSkillCode": "PORTUGUESE_INFER_FROM_CLUES",
+  "subject": "PORTUGUESE",
+  "domain": "LEITURA",
+  "topic": "inferência textual e evidência",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 11,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 9
+  },
+  "expectedQuestionCount": 35,
+  "expectedContextCount": 35,
+  "expectedAnswerPositionCounts": {
+    "A": 9,
+    "B": 9,
+    "C": 9,
+    "D": 8
+  },
+  "lesson": {
+    "title": "Inferir sem abandonar as pistas do texto",
+    "objective": "Construir inferências justificáveis conectando pistas textuais e conhecimento pertinente, distinguindo o que o texto diz do que o leitor conclui.",
+    "summary": "Inferir é ligar pistas a uma conclusão que não está escrita literalmente. Uma inferência forte pode ser justificada por trechos e reconhece o que continua desconhecido. Plausível não significa confirmado.",
+    "explanation": "## Dado, pista e inferência\nUma informação explícita está diretamente no texto: “a janela estava aberta”. Uma inferência conecta essa pista a outra informação para propor uma leitura: “pode ter entrado vento”. A segunda frase não é um fato explícito e ainda pode haver outras explicações.\n\n## Mostre o caminho\nVolte ao trecho, destaque a pista e explique como ela apoia a conclusão. Em narrativas, uma fala, uma ação e a reação de outro personagem podem se combinar. Em avisos e notícias, observe quem é citado, qual período foi medido e a que situação a informação se aplica.\n\n## Calibre a certeza\nUse “sugere”, “é provável” ou “pode indicar” quando as pistas permitem uma hipótese, mas não a confirmam. Evite transformar ausência de informação em prova: uma página em branco não prova que alguém não sabe; um horário não informado não pode ser inventado.\n\n## Compare alternativas\nUma resposta pode parecer possível pela experiência pessoal, mas não ser a mais apoiada pelo texto. Pergunte: qual trecho sustenta esta opção? Que dado adicional seria necessário para as outras? Quando duas leituras continuam possíveis, registre a ambiguidade em vez de forçar uma certeza.\n\n## Exemplo resolvido\n“Quando o ônibus chegou, Lina guardou o guarda-chuva ainda pingando e conferiu o relógio. ‘A apresentação já começou?’, perguntou.” As pistas sugerem preocupação em ter perdido parte do evento. Não sabemos por que o ônibus chegou naquele horário, se a apresentação começou nem se Lina perdeu alguma parte. A resposta cuidadosa mostra tanto a pista quanto o limite.",
+    "workedExample": "Trecho: “A sala estava silenciosa. Sobre a mesa, havia três folhas preenchidas e uma quarta em branco. Júlia conferiu o relógio e chamou a colega.” Pistas: o silêncio, as folhas e a quarta página em branco; ação: conferir o relógio e chamar alguém. Inferência possível: a atividade talvez estivesse perto do fim ou Júlia buscasse ajuda. O trecho não confirma nenhuma dessas leituras nem diz por que a folha ficou vazia. Uma resposta adequada explicita a hipótese e cita o que ainda não sabemos.",
+    "commonMistake": "Completar lacunas com a própria experiência, confundir hipótese plausível com fato textual, escolher resposta sem indicar pista, generalizar um caso limitado e ignorar que mais de uma leitura pode permanecer possível.",
+    "tips": [
+      "Cite uma palavra, ação ou dado específico como pista.",
+      "Explique a ligação entre a pista e a conclusão.",
+      "Prefira uma conclusão limitada quando houver várias causas possíveis.",
+      "Não transforme uma informação ausente em resposta certa.",
+      "Se duas leituras forem compatíveis, explique a ambiguidade."
+    ],
+    "priorKnowledge": [
+      "Localizar informações explícitas.",
+      "Reconhecer ações, falas e relações simples no texto.",
+      "Distinguir dado observado de explicação proposta."
+    ],
+    "keyConcepts": [
+      "informação explícita",
+      "pista textual",
+      "inferência",
+      "justificativa",
+      "grau de certeza",
+      "ambiguidade",
+      "limite da evidência"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Localizar pistas e distinguir informação explícita de inferência.",
+        "questionIds": [
+          "v5-pt-infer-probe-01",
+          "v5-pt-infer-probe-02",
+          "v5-pt-infer-probe-03",
+          "v5-pt-infer-practice-01",
+          "v5-pt-infer-practice-02",
+          "v5-pt-infer-practice-03",
+          "v5-pt-infer-practice-04"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Combinar pistas, comparar alternativas e calibrar a certeza.",
+        "questionIds": [
+          "v5-pt-infer-practice-05",
+          "v5-pt-infer-practice-06",
+          "v5-pt-infer-practice-07",
+          "v5-pt-infer-practice-08",
+          "v5-pt-infer-practice-09",
+          "v5-pt-infer-practice-10",
+          "v5-pt-infer-practice-11"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Usar pistas em gêneros diversos e explicitar explicações alternativas.",
+        "questionIds": [
+          "v5-pt-infer-transfer-01",
+          "v5-pt-infer-transfer-02",
+          "v5-pt-infer-transfer-03",
+          "v5-pt-infer-transfer-04",
+          "v5-pt-infer-transfer-05",
+          "v5-pt-infer-transfer-06",
+          "v5-pt-infer-transfer-07"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Justificar interpretações e reconhecer limites do que se pode concluir.",
+        "questionIds": [
+          "v5-pt-infer-lock-01",
+          "v5-pt-infer-lock-02",
+          "v5-pt-infer-lock-03",
+          "v5-pt-infer-lock-04",
+          "v5-pt-infer-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar distinções entre fato, inferência e hipótese em contextos novos.",
+        "questionIds": [
+          "v5-pt-infer-review-01",
+          "v5-pt-infer-review-02",
+          "v5-pt-infer-review-03",
+          "v5-pt-infer-review-04",
+          "v5-pt-infer-review-05",
+          "v5-pt-infer-review-06",
+          "v5-pt-infer-review-07",
+          "v5-pt-infer-review-08",
+          "v5-pt-infer-review-09"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "QUOTE_THE_CLUE",
+        "text": "Aponte o trecho que sustenta sua leitura. Sem pista, a resposta pode ser apenas uma suposição."
+      },
+      {
+        "trigger": "PLAUSIBLE_NOT_CONFIRMED",
+        "text": "Uma hipótese pode fazer sentido e ainda não estar confirmada. Diga o que a pista sugere e o que falta saber."
+      },
+      {
+        "trigger": "EXPLICIT_VS_INFERRED",
+        "text": "O texto informa diretamente uma coisa; você pode inferir outra ao relacionar pistas. Marque essa diferença."
+      },
+      {
+        "trigger": "LIMIT_THE_SCOPE",
+        "text": "Delimite a conclusão ao personagem, período, amostra ou local que o texto apresenta."
+      },
+      {
+        "trigger": "ALTERNATIVE_EXPLANATION",
+        "text": "Se outra explicação também combina com a pista, não afirme uma causa única sem evidência."
+      },
+      {
+        "trigger": "AMBIGUOUS_TEXT",
+        "text": "Quando o texto não resolve a dúvida, reconhecer a ambiguidade também é uma leitura fundamentada."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "TEXTUAL_CLUE",
+        "misconception": "TEXTUAL_CLUE",
+        "prompt": "Volte ao trecho, marque uma ou duas pistas e complete: “Isso sugere ___ porque ___”."
+      },
+      {
+        "id": "LIMIT_INFERENCE",
+        "misconception": "LIMIT_INFERENCE",
+        "prompt": "Risque detalhes que não aparecem nem decorrem das pistas. Reescreva a conclusão usando “pode” ou “sugere” quando necessário."
+      },
+      {
+        "id": "EXPLICIT_OR_INFERRED",
+        "misconception": "EXPLICIT_OR_INFERRED",
+        "prompt": "Separe em duas colunas: o que o texto diz literalmente e o que você conclui a partir disso."
+      },
+      {
+        "id": "COMPARE_ALTERNATIVES",
+        "misconception": "COMPARE_ALTERNATIVES",
+        "prompt": "Para cada alternativa, aponte a pista que a apoia. Descarte as que exigem fatos ausentes."
+      },
+      {
+        "id": "AMBIGUITY_CHECK",
+        "misconception": "AMBIGUITY_CHECK",
+        "prompt": "Imagine uma segunda explicação compatível com as mesmas pistas. Se não há como escolher entre elas, registre o limite em vez de adivinhar."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-evidence-inference-sort",
+        "title": "Pistas, conclusões e perguntas em aberto",
+        "objective": "Justificar inferências com pistas textuais e reconhecer quando uma conclusão excede a evidência.",
+        "context": "Grupos analisam três microtextos fictícios de gêneros diferentes: narrativa, aviso e notícia curta.",
+        "materials": [
+          "Cartões com textos fictícios",
+          "Quadro com colunas “trecho”, “o que informa”, “o que sugere” e “o que falta saber”",
+          "Canetas ou marcadores opcionais"
+        ],
+        "instructions": "Cada grupo escolhe um microtexto, sublinha duas pistas e registra uma informação explícita e uma inferência. Em seguida, escreve uma explicação alternativa que também poderia combinar com as pistas e indica qual dado resolveria a dúvida. Trocam os cartões com outro grupo, que tenta localizar o apoio textual. Nenhum relato pessoal é solicitado.",
+        "evidence": "Quadro preenchido com pistas citadas, inferência ligada a elas, limite reconhecido e pergunta pertinente para obter evidência adicional.",
+        "safety": "Use apenas personagens e situações fictícias; ofereça resposta oral, escrita ou por cartões e não associe interpretações a histórias pessoais dos estudantes.",
+        "privacyGuard": "Não coletar nomes, relatos pessoais, desempenho individual público nem dados identificáveis; guardar somente o produto do grupo, se necessário.",
+        "ageRange": "6º ao 9º ano do Ensino Fundamental, ajustando extensão e vocabulário dos microtextos.",
+        "mediation": "O professor pede que estudantes apontem a pista antes de avaliar a resposta. Quando duas leituras forem apoiadas, reconhece ambas e discute que dado diferenciaria as hipóteses.",
+        "rubric": [
+          {
+            "criterion": "Uso de pistas",
+            "emerging": "Apresenta uma conclusão sem localizar evidência.",
+            "developing": "Localiza uma pista após orientação, mas não explica a ligação.",
+            "proficient": "Cita pistas e explica como sustentam a conclusão."
+          },
+          {
+            "criterion": "Calibração da inferência",
+            "emerging": "Trata suposição como fato confirmado.",
+            "developing": "Usa linguagem cautelosa com mediação.",
+            "proficient": "Distingue explicitamente fato, hipótese e informação ainda desconhecida."
+          },
+          {
+            "criterion": "Consideração de alternativas",
+            "emerging": "Ignora outras explicações possíveis.",
+            "developing": "Reconhece uma alternativa quando questionado.",
+            "proficient": "Propõe alternativa compatível e indica que evidência ajudaria a diferenciá-la."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 22,
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Educação Infantil e Ensino Fundamental",
+        "publisher": "Ministério da Educação",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "O documento trata de estratégias de leitura, inferências e justificativas apoiadas em pistas textuais em diferentes campos e anos."
+        ],
+        "use": "Referência curricular de escopo; não representa aprovação de mapeamento da habilidade interna PORTUGUESE_INFER_FROM_CLUES."
+      },
+      {
+        "title": "Língua Portuguesa: relações lógico-discursivas nos textos",
+        "publisher": "Secretaria Municipal de Educação de Goiânia, Conexão Escola",
+        "url": "https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/lingua-portuguesa-as-relacoes-logico-discursivas-nos-textos/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Material aberto propõe leitura atenta de pistas lexicais e estruturais e justificação de interpretações."
+        ],
+        "use": "Referência didática de apoio; enunciados e exemplos do pacote são autorais."
+      }
+    ],
+    "copyrightNote": "Textos, alternativas, exemplos e atividade são autorais e fictícios. As fontes orientam escopo; mapeamento oficial e revisão pedagógica humana seguem pendentes."
+  },
+  "questions": [
+    {
+      "id": "v5-pt-infer-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "RAIN_WINDOW",
+      "statement": "“Rui fechou a janela. Gotas batiam no vidro.” O que as pistas sugerem?",
+      "options": [
+        "Chovia ou a chuva começava.",
+        "O dia ficou mais quente.",
+        "Rui terminou todos os livros.",
+        "A janela estava quebrada."
+      ],
+      "correctAnswer": "Chovia ou a chuva começava.",
+      "explanation": "As gotas no vidro e a janela fechada sustentam a inferência de chuva, mas não informam quando ela começou.",
+      "hint": "Use a ação e o que aparece do lado de fora.",
+      "errorFocus": "Ignorar pistas combinadas",
+      "misconceptions": {
+        "O dia ficou mais quente.": [
+          "HEAT_WITHOUT_CLUE"
+        ],
+        "Rui terminou todos os livros.": [
+          "BOOKS_UNSUPPORTED"
+        ],
+        "A janela estava quebrada.": [
+          "BROKEN_WINDOW_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIBRARY_NOTICE",
+      "statement": "Aviso: “A sala de leitura fecha às 16h. Devoluções podem ser feitas na recepção.” O que o aviso permite concluir?",
+      "options": [
+        "Todos os espaços fecham às 16h.",
+        "A recepção é uma alternativa para devolver livros durante o fechamento da sala.",
+        "A recepção estará fechada.",
+        "A reorganização termina às 16h."
+      ],
+      "correctAnswer": "A recepção é uma alternativa para devolver livros durante o fechamento da sala.",
+      "explanation": "O aviso informa a alternativa e seu alcance; não generaliza o horário para outros espaços.",
+      "hint": "Aponte a frase que informa onde devolver.",
+      "errorFocus": "Ampliar uma informação além do texto",
+      "misconceptions": {
+        "Todos os espaços fecham às 16h.": [
+          "ALL_SPACES_CLOSE"
+        ],
+        "A recepção estará fechada.": [
+          "RECEPTION_CLOSED"
+        ],
+        "A reorganização termina às 16h.": [
+          "END_TIME_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "BUS_ARRIVAL",
+      "statement": "“Lina conferiu o relógio e perguntou: ‘A apresentação já começou?’” Que inferência é apoiada, sem afirmar demais?",
+      "options": [
+        "Ela perdeu toda a apresentação com certeza.",
+        "O ônibus atrasou por causa da chuva.",
+        "Ela parece preocupada em ter perdido parte da apresentação.",
+        "Ela não queria assistir à apresentação."
+      ],
+      "correctAnswer": "Ela parece preocupada em ter perdido parte da apresentação.",
+      "explanation": "A pergunta e a conferência do relógio sugerem preocupação; o texto não informa a causa nem confirma o atraso.",
+      "hint": "Use a fala e a ação; evite inventar o motivo.",
+      "errorFocus": "Tratar hipótese como fato confirmado",
+      "misconceptions": {
+        "Ela perdeu toda a apresentação com certeza.": [
+          "CERTAINLY_MISSED_ALL"
+        ],
+        "O ônibus atrasou por causa da chuva.": [
+          "BUS_RAIN_CAUSE"
+        ],
+        "Ela não queria assistir à apresentação.": [
+          "DISINTEREST_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "WET_FLOOR_SIGN",
+      "statement": "“No corredor, havia pegadas molhadas e um guarda-chuva aberto perto da porta.” Qual hipótese é mais apoiada?",
+      "options": [
+        "O corredor foi lavado com sabão.",
+        "A chuva parou há exatamente cinco minutos.",
+        "O guarda-chuva pertence ao porteiro.",
+        "Alguém entrou há pouco com um guarda-chuva molhado."
+      ],
+      "correctAnswer": "Alguém entrou há pouco com um guarda-chuva molhado.",
+      "explanation": "Pegadas molhadas e guarda-chuva aberto combinam com a hipótese de alguém ter chegado molhado; horário e dono não aparecem.",
+      "hint": "Combine as duas pistas sem acrescentar detalhes específicos.",
+      "errorFocus": "Adicionar tempo ou identidade não informados",
+      "misconceptions": {
+        "O corredor foi lavado com sabão.": [
+          "SOAP_UNSUPPORTED"
+        ],
+        "A chuva parou há exatamente cinco minutos.": [
+          "EXACT_TIME_UNSUPPORTED"
+        ],
+        "O guarda-chuva pertence ao porteiro.": [
+          "OWNER_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "EMPTY_BOTTLE",
+      "statement": "“Bia virou a garrafa, ouviu apenas uma gota e guardou-a na mochila.” O que é mais provável?",
+      "options": [
+        "A garrafa está quase vazia.",
+        "Bia esqueceu de beber água o dia todo.",
+        "A garrafa está quebrada.",
+        "Bia vai sair da escola."
+      ],
+      "correctAnswer": "A garrafa está quase vazia.",
+      "explanation": "O som de uma gota ao virar a garrafa sugere pouco líquido, não explica o consumo anterior ou o próximo plano.",
+      "hint": "O que a ação permite dizer sobre o conteúdo agora?",
+      "errorFocus": "Inferir rotina ou intenção a partir de uma pista",
+      "misconceptions": {
+        "Bia esqueceu de beber água o dia todo.": [
+          "ALL_DAY_NO_WATER"
+        ],
+        "A garrafa está quebrada.": [
+          "BROKEN_CONTAINER"
+        ],
+        "Bia vai sair da escola.": [
+          "LEAVING_SCHOOL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CLOSED_SHOP",
+      "statement": "“A placa dizia ‘Fechado para inventário’. As luzes internas estavam apagadas.” Qual afirmação é explícita?",
+      "options": [
+        "O inventário já terminou.",
+        "A placa informa que o local está fechado para inventário.",
+        "A loja não abrirá mais.",
+        "Os funcionários foram embora para casa."
+      ],
+      "correctAnswer": "A placa informa que o local está fechado para inventário.",
+      "explanation": "A placa declara o motivo do fechamento; as outras opções acrescentam horário ou destino não informados.",
+      "hint": "Separe o que está escrito do que você supõe.",
+      "errorFocus": "Trocar hipótese por informação explícita",
+      "misconceptions": {
+        "O inventário já terminou.": [
+          "INVENTORY_OVER"
+        ],
+        "A loja não abrirá mais.": [
+          "PERMANENT_CLOSURE"
+        ],
+        "Os funcionários foram embora para casa.": [
+          "STAFF_DESTINATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "UNFINISHED_POSTER",
+      "statement": "“O cartaz tinha o título pronto, mas um espaço vazio onde deveria estar a data.” O que pode ser inferido?",
+      "options": [
+        "O evento foi cancelado.",
+        "Ninguém sabia que dia era.",
+        "A data ainda não havia sido preenchida no cartaz.",
+        "O cartaz foi feito depois do evento."
+      ],
+      "correctAnswer": "A data ainda não havia sido preenchida no cartaz.",
+      "explanation": "O espaço vazio sustenta que a data não aparece; não determina se o evento foi cancelado ou quando o cartaz foi feito.",
+      "hint": "Observe o espaço e limite a conclusão ao que falta nele.",
+      "errorFocus": "Concluir cancelamento por informação ausente",
+      "misconceptions": {
+        "O evento foi cancelado.": [
+          "EVENT_CANCELLED"
+        ],
+        "Ninguém sabia que dia era.": [
+          "DATE_UNKNOWN_TO_ALL"
+        ],
+        "O cartaz foi feito depois do evento.": [
+          "AFTER_EVENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CONNECT_CLUES",
+      "contextFamily": "QUIET_CLASSROOM",
+      "statement": "“Quando o sinal tocou, Joana fechou o caderno, guardou o lápis e foi até a porta com a turma.” O que a sequência sugere?",
+      "options": [
+        "Joana terminou todas as tarefas do mês.",
+        "A professora cancelou a próxima aula.",
+        "Joana esqueceu o caderno na sala.",
+        "A atividade provavelmente terminou e a turma se preparava para sair."
+      ],
+      "correctAnswer": "A atividade provavelmente terminou e a turma se preparava para sair.",
+      "explanation": "O sinal e os materiais guardados sugerem encerramento daquele período; não mostram o que foi concluído depois.",
+      "hint": "Relacione o sinal à ação imediata, não a todo o dia.",
+      "errorFocus": "Generalizar o fim de uma atividade para outras tarefas",
+      "misconceptions": {
+        "Joana terminou todas as tarefas do mês.": [
+          "MONTH_TASKS_DONE"
+        ],
+        "A professora cancelou a próxima aula.": [
+          "NEXT_CLASS_CANCELLED"
+        ],
+        "Joana esqueceu o caderno na sala.": [
+          "NOTEBOOK_FORGOTTEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "LIBRARY_QUEUE",
+      "statement": "“Caio entrou na fila com dois livros e um cartão de empréstimo na mão.” O que é mais provável?",
+      "options": [
+        "Ele pretende retirar ou renovar livros na biblioteca.",
+        "Ele já leu os dois livros hoje.",
+        "Os livros estão atrasados.",
+        "Ele trabalha na biblioteca."
+      ],
+      "correctAnswer": "Ele pretende retirar ou renovar livros na biblioteca.",
+      "explanation": "Fila, livros e cartão de empréstimo apoiam uma finalidade ligada ao serviço da biblioteca, mas não revelam o histórico.",
+      "hint": "Considere a função do cartão no local.",
+      "errorFocus": "Inventar histórico ou papel da pessoa",
+      "misconceptions": {
+        "Ele já leu os dois livros hoje.": [
+          "READ_TODAY"
+        ],
+        "Os livros estão atrasados.": [
+          "OVERDUE_UNSUPPORTED"
+        ],
+        "Ele trabalha na biblioteca.": [
+          "EMPLOYEE_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_EVIDENCE",
+      "contextFamily": "TWO_NOTES",
+      "statement": "Bilhete A: “A reunião mudou para quinta.” Bilhete B: “A sala estará ocupada na quarta.” O que os bilhetes juntos sugerem?",
+      "options": [
+        "A sala está ocupada toda a semana.",
+        "A reunião pode ter sido transferida para evitar a ocupação de quarta, mas o motivo não foi declarado.",
+        "A reunião foi cancelada.",
+        "A reunião mudou por causa de uma falha elétrica."
+      ],
+      "correctAnswer": "A reunião pode ter sido transferida para evitar a ocupação de quarta, mas o motivo não foi declarado.",
+      "explanation": "A nova data e a ocupação de quarta tornam a hipótese plausível; nenhum bilhete declara o motivo da mudança.",
+      "hint": "Diferencie a hipótese apoiada da explicação confirmada.",
+      "errorFocus": "Inferir motivo como certeza",
+      "misconceptions": {
+        "A sala está ocupada toda a semana.": [
+          "ALL_WEEK_OCCUPIED"
+        ],
+        "A reunião foi cancelada.": [
+          "MEETING_CANCELLED"
+        ],
+        "A reunião mudou por causa de uma falha elétrica.": [
+          "POWER_FAILURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "PLANT_LEAVES",
+      "statement": "“A terra do vaso estava seca e duas folhas estavam caídas.” Qual conclusão é mais cuidadosa?",
+      "options": [
+        "A planta está morta.",
+        "A falta de luz é certamente a causa.",
+        "A planta pode estar precisando de água, mas outras condições também podem afetá-la.",
+        "Todas as plantas precisam da mesma quantidade de água."
+      ],
+      "correctAnswer": "A planta pode estar precisando de água, mas outras condições também podem afetá-la.",
+      "explanation": "Solo seco e folhas caídas apoiam uma hipótese de necessidade de água, mas não bastam para diagnosticar a causa com certeza.",
+      "hint": "Use “pode” quando mais de uma explicação continua possível.",
+      "errorFocus": "Diagnóstico certo com evidência limitada",
+      "misconceptions": {
+        "A planta está morta.": [
+          "DEAD_UNSUPPORTED"
+        ],
+        "A falta de luz é certamente a causa.": [
+          "LIGHT_CAUSE_CERTAIN"
+        ],
+        "Todas as plantas precisam da mesma quantidade de água.": [
+          "UNIVERSAL_WATER_RULE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "THEATER_TICKET",
+      "statement": "“O ingresso marcava 19h30. No relato, Davi disse: ‘Cheguei quando as portas já estavam fechando’.” O que se pode inferir?",
+      "options": [
+        "O espetáculo começou às 19h exatamente.",
+        "Davi assistiu a toda a apresentação.",
+        "As portas fecharam por defeito.",
+        "Davi chegou perto do horário de início ou depois dele."
+      ],
+      "correctAnswer": "Davi chegou perto do horário de início ou depois dele.",
+      "explanation": "O relato situa a chegada perto do fechamento das portas; não informa o horário exato nem quanto ele assistiu.",
+      "hint": "Use o ingresso e a fala sem inventar a duração do espetáculo.",
+      "errorFocus": "Precisão temporal não fornecida",
+      "misconceptions": {
+        "O espetáculo começou às 19h exatamente.": [
+          "START_EXACT"
+        ],
+        "Davi assistiu a toda a apresentação.": [
+          "WATCHED_ALL"
+        ],
+        "As portas fecharam por defeito.": [
+          "DOOR_FAILURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMBIGUOUS_REPLY",
+      "statement": "A professora perguntou se o grupo precisava de mais tempo. Nando respondeu “talvez” e continuou escrevendo. Qual leitura é mais adequada?",
+      "options": [
+        "Nando ainda não deu uma resposta definitiva e parece continuar trabalhando.",
+        "Nando terminou e não quer mais tempo.",
+        "Nando certamente está confuso.",
+        "O grupo inteiro pediu uma extensão."
+      ],
+      "correctAnswer": "Nando ainda não deu uma resposta definitiva e parece continuar trabalhando.",
+      "explanation": "“Talvez” não confirma sim ou não; continuar escrevendo é uma ação observável, mas não revela sozinho o estado de todo o grupo.",
+      "hint": "Não transforme uma resposta ambígua em certeza.",
+      "errorFocus": "Generalizar a fala de uma pessoa",
+      "misconceptions": {
+        "Nando terminou e não quer mais tempo.": [
+          "DEFINITIVE_NO"
+        ],
+        "Nando certamente está confuso.": [
+          "CONFUSION_CERTAIN"
+        ],
+        "O grupo inteiro pediu uma extensão.": [
+          "GROUP_REPLY_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CHARACTER_REHEARSAL",
+      "statement": "“Antes de apresentar, Malik conferiu os cartões duas vezes e pediu para ensaiar a primeira fala.” Qual inferência é melhor apoiada?",
+      "options": [
+        "Ele tem medo de falar em público.",
+        "Ele está se preparando para a apresentação e quer revisar o início.",
+        "Ele esqueceu todas as falas.",
+        "Ele não participou da criação."
+      ],
+      "correctAnswer": "Ele está se preparando para a apresentação e quer revisar o início.",
+      "explanation": "Conferir cartões e pedir ensaio apoiam a preparação; emoções e participação anterior não são informadas.",
+      "hint": "Cite as ações antes de atribuir um sentimento.",
+      "errorFocus": "Atribuir emoção ou histórico sem pista",
+      "misconceptions": {
+        "Ele tem medo de falar em público.": [
+          "FEAR_UNSUPPORTED"
+        ],
+        "Ele esqueceu todas as falas.": [
+          "FORGOT_ALL"
+        ],
+        "Ele não participou da criação.": [
+          "NO_CREATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "COMMUNITY_GARDEN_LOG",
+      "statement": "Registro: “Na segunda, o canteiro estava seco. Na terça, após a rega, o solo estava úmido.” Qual conclusão os dados permitem?",
+      "options": [
+        "A rega foi a única causa possível.",
+        "O canteiro fica seco todos os dias.",
+        "O solo estava úmido após a rega observada; um registro não explica sozinho todas as mudanças.",
+        "A chuva nunca molha aquele local."
+      ],
+      "correctAnswer": "O solo estava úmido após a rega observada; um registro não explica sozinho todas as mudanças.",
+      "explanation": "O registro mostra estados em dois momentos e a rega entre eles; não controla outras condições nem sustenta regras permanentes.",
+      "hint": "Diga o que foi observado e qual limite permanece.",
+      "errorFocus": "Transformar dois registros em regra geral",
+      "misconceptions": {
+        "A rega foi a única causa possível.": [
+          "SOLE_CAUSE"
+        ],
+        "O canteiro fica seco todos os dias.": [
+          "DAILY_PATTERN"
+        ],
+        "A chuva nunca molha aquele local.": [
+          "NO_RAIN_EVER"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_CLUES",
+      "contextFamily": "TRAIN_PLATFORM",
+      "statement": "“O painel marcou atraso. Uma pessoa consultou outro horário, guardou o bilhete e foi até a área de espera.” O que é mais plausível?",
+      "options": [
+        "Ela perdeu o trem com certeza.",
+        "O trem foi cancelado.",
+        "A pessoa não tinha bilhete.",
+        "Ela ajustou seus planos enquanto aguardava o transporte."
+      ],
+      "correctAnswer": "Ela ajustou seus planos enquanto aguardava o transporte.",
+      "explanation": "O painel e a ida à espera sugerem que a pessoa aguardaria; o texto não informa se perdeu ou se houve cancelamento.",
+      "hint": "Junte o aviso do painel às ações da pessoa.",
+      "errorFocus": "Confundir atraso com cancelamento ou perda",
+      "misconceptions": {
+        "Ela perdeu o trem com certeza.": [
+          "MISSED_CERTAIN"
+        ],
+        "O trem foi cancelado.": [
+          "CANCELLED_UNSUPPORTED"
+        ],
+        "A pessoa não tinha bilhete.": [
+          "NO_TICKET"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER_FROM_GENRE",
+      "contextFamily": "WEATHER_BULLETIN",
+      "statement": "Boletim: “A previsão indica chuva à tarde. Atividades externas devem ter plano alternativo.” O que a recomendação sugere?",
+      "options": [
+        "A organização deve considerar a possibilidade de chuva, sem afirmar que ela ocorrerá com certeza.",
+        "A chuva já começou em toda a região.",
+        "Todas as atividades externas foram canceladas.",
+        "O plano alternativo garante que não haverá chuva."
+      ],
+      "correctAnswer": "A organização deve considerar a possibilidade de chuva, sem afirmar que ela ocorrerá com certeza.",
+      "explanation": "Previsão e recomendação tratam de possibilidade e planejamento; não confirmam o evento nem um cancelamento.",
+      "hint": "Observe as palavras que indicam previsão e orientação.",
+      "errorFocus": "Tratar previsão como observação confirmada",
+      "misconceptions": {
+        "A chuva já começou em toda a região.": [
+          "RAIN_ALREADY"
+        ],
+        "Todas as atividades externas foram canceladas.": [
+          "ALL_CANCELLED"
+        ],
+        "O plano alternativo garante que não haverá chuva.": [
+          "PLAN_CONTROLS_WEATHER"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "WEIGH_EVIDENCE",
+      "contextFamily": "MISSING_BOOK",
+      "statement": "Uma estante está incompleta. A lista diz que o livro foi emprestado e um recibo mostra a devolução ontem. Qual inferência é melhor?",
+      "options": [
+        "O livro foi roubado.",
+        "Há registros de empréstimo e devolução; é preciso conferir a estante ou o registro antes de afirmar que o livro sumiu.",
+        "A lista está sempre errada.",
+        "O recibo prova que o livro está na estante."
+      ],
+      "correctAnswer": "Há registros de empréstimo e devolução; é preciso conferir a estante ou o registro antes de afirmar que o livro sumiu.",
+      "explanation": "Os documentos apoiam uma devolução registrada, mas não confirmam a localização física atual nem uma causa para a ausência.",
+      "hint": "Compare o alcance de cada fonte.",
+      "errorFocus": "Confundir registro com localização física",
+      "misconceptions": {
+        "O livro foi roubado.": [
+          "THEFT_UNSUPPORTED"
+        ],
+        "A lista está sempre errada.": [
+          "LIST_ALWAYS_WRONG"
+        ],
+        "O recibo prova que o livro está na estante.": [
+          "RECEIPT_LOCATION_PROOF"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "CLOUDY_PHOTO",
+      "statement": "Uma foto mostra céu escuro e pessoas fechando guarda-sóis. Não há data nem local. Qual inferência é defensável?",
+      "options": [
+        "A foto foi tirada em julho em Recife.",
+        "Uma tempestade destruiu a praia.",
+        "A cena pode indicar que o tempo estava mudando naquele momento.",
+        "Todos os visitantes foram embora."
+      ],
+      "correctAnswer": "A cena pode indicar que o tempo estava mudando naquele momento.",
+      "explanation": "O céu e os guarda-sóis são pistas de mudança no tempo; sem data, local e sequência, não sustentam os detalhes das alternativas.",
+      "hint": "Use só o que aparece na imagem descrita.",
+      "errorFocus": "Inventar local, data e consequência",
+      "misconceptions": {
+        "A foto foi tirada em julho em Recife.": [
+          "DATE_PLACE_UNSUPPORTED"
+        ],
+        "Uma tempestade destruiu a praia.": [
+          "STORM_DAMAGE"
+        ],
+        "Todos os visitantes foram embora.": [
+          "ALL_LEFT"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TWO_CHARACTER_ACCOUNTS",
+      "statement": "Uma personagem diz que ouviu passos; outra afirma que o corredor estava vazio quando chegou. Qual conclusão respeita as duas falas?",
+      "options": [
+        "Uma delas está mentindo.",
+        "Os passos eram de um visitante.",
+        "O corredor esteve vazio a noite toda.",
+        "As personagens relatam momentos ou observações diferentes; o texto ainda não resolve a divergência."
+      ],
+      "correctAnswer": "As personagens relatam momentos ou observações diferentes; o texto ainda não resolve a divergência.",
+      "explanation": "As falas podem se referir a instantes diferentes. Sem informação adicional, não se pode decidir quem errou ou o que causou os passos.",
+      "hint": "Considere se as duas observações poderiam ocorrer em tempos distintos.",
+      "errorFocus": "Escolher uma versão sem evidência adicional",
+      "misconceptions": {
+        "Uma delas está mentindo.": [
+          "LYING_UNSUPPORTED"
+        ],
+        "Os passos eram de um visitante.": [
+          "VISITOR_UNSUPPORTED"
+        ],
+        "O corredor esteve vazio a noite toda.": [
+          "WHOLE_NIGHT_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEWS_HEADLINE_AND_BODY",
+      "statement": "Manchete: “Nova praça atrai moradores”. Texto: “No sábado de abertura, 120 pessoas visitaram o local.” Qual limite é importante?",
+      "options": [
+        "O dado registra visitas no sábado; sozinho, não mostra que a praça continuará atraindo moradores.",
+        "A praça atrairá pessoas todos os dias.",
+        "As 120 pessoas eram moradoras do bairro.",
+        "A praça foi construída por causa das visitas."
+      ],
+      "correctAnswer": "O dado registra visitas no sábado; sozinho, não mostra que a praça continuará atraindo moradores.",
+      "explanation": "A contagem confirma visitas no dia descrito, mas não comprova frequência futura, residência nem causalidade.",
+      "hint": "Compare o alcance da manchete com o dado específico.",
+      "errorFocus": "Generalizar uma contagem de um dia",
+      "misconceptions": {
+        "A praça atrairá pessoas todos os dias.": [
+          "EVERY_DAY"
+        ],
+        "As 120 pessoas eram moradoras do bairro.": [
+          "RESIDENT_IDENTITY"
+        ],
+        "A praça foi construída por causa das visitas.": [
+          "VISITS_CAUSED_BUILD"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT_EVIDENCE",
+      "contextFamily": "MISSING_UMBRELLA",
+      "statement": "“A mochila estava seca; o guarda-chuva pingava ao lado da porta.” Qual inferência é melhor apoiada?",
+      "options": [
+        "A mochila pertence a quem mora mais perto.",
+        "O guarda-chuva esteve exposto à chuva ou a outra fonte de água.",
+        "A chuva durou exatamente uma hora.",
+        "A porta ficou aberta a noite toda."
+      ],
+      "correctAnswer": "O guarda-chuva esteve exposto à chuva ou a outra fonte de água.",
+      "explanation": "O guarda-chuva pingando apoia que recebeu água; sua origem e duração não aparecem.",
+      "hint": "Escolha uma conclusão que não ultrapasse o objeto observado.",
+      "errorFocus": "Acrescentar propriedade e duração",
+      "misconceptions": {
+        "A mochila pertence a quem mora mais perto.": [
+          "OWNER_DISTANCE"
+        ],
+        "A chuva durou exatamente uma hora.": [
+          "EXACT_DURATION"
+        ],
+        "A porta ficou aberta a noite toda.": [
+          "DOOR_ALL_NIGHT"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "QUIZ_RESULT",
+      "statement": "Uma tabela mostra que a equipe terminou 8 de 10 tarefas. Qual afirmação é inferência, não dado direto?",
+      "options": [
+        "A tabela registra 8 tarefas concluídas.",
+        "O total listado é 10 tarefas.",
+        "A equipe provavelmente está perto de concluir o trabalho.",
+        "Duas tarefas ainda não aparecem concluídas."
+      ],
+      "correctAnswer": "A equipe provavelmente está perto de concluir o trabalho.",
+      "explanation": "“Perto de concluir” interpreta a proporção; as outras afirmações repetem o que a tabela registra.",
+      "hint": "Separe número observado de avaliação sobre o estágio.",
+      "errorFocus": "Confundir interpretação e medida",
+      "misconceptions": {
+        "A tabela registra 8 tarefas concluídas.": [
+          "TABLE_VALUE_AS_INFERENCE"
+        ],
+        "O total listado é 10 tarefas.": [
+          "TOTAL_AS_INFERENCE"
+        ],
+        "Duas tarefas ainda não aparecem concluídas.": [
+          "REMAINING_AS_INFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_SURVEY",
+      "statement": "Uma enquete voluntária recebeu 18 respostas: 14 preferiram a biblioteca silenciosa. Qual afirmação é mais defensável?",
+      "options": [
+        "Todos os estudantes preferem silêncio.",
+        "A preferência melhora as notas.",
+        "A enquete representa quem não respondeu.",
+        "Entre quem respondeu, a maioria preferiu a biblioteca silenciosa."
+      ],
+      "correctAnswer": "Entre quem respondeu, a maioria preferiu a biblioteca silenciosa.",
+      "explanation": "A conclusão delimita o resultado aos participantes e ao que foi perguntado.",
+      "hint": "Nomeie quem respondeu e o que foi medido.",
+      "errorFocus": "Generalizar amostra voluntária",
+      "misconceptions": {
+        "Todos os estudantes preferem silêncio.": [
+          "ALL_STUDENTS"
+        ],
+        "A preferência melhora as notas.": [
+          "GRADE_EFFECT_UNMEASURED"
+        ],
+        "A enquete representa quem não respondeu.": [
+          "NONRESPONDERS_REPRESENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "STORY_ENDING",
+      "statement": "No fim de um conto, a personagem deixou a chave sobre a mesa e saiu sem olhar para trás. O texto não explica por quê. Qual resposta de leitor é mais cuidadosa?",
+      "options": [
+        "A ação pode sugerir uma decisão importante, mas o motivo permanece aberto.",
+        "Ela decidiu mudar de cidade por causa de uma briga.",
+        "Ela nunca voltará.",
+        "Ela esqueceu a chave."
+      ],
+      "correctAnswer": "A ação pode sugerir uma decisão importante, mas o motivo permanece aberto.",
+      "explanation": "A ação final permite levantar uma leitura, mas não confirma motivo, permanência ou esquecimento.",
+      "hint": "Diferencie efeito sugerido de explicação confirmada.",
+      "errorFocus": "Fechar interpretação sem apoio",
+      "misconceptions": {
+        "Ela decidiu mudar de cidade por causa de uma briga.": [
+          "MOVE_CITY_CAUSE"
+        ],
+        "Ela nunca voltará.": [
+          "NEVER_RETURN"
+        ],
+        "Ela esqueceu a chave.": [
+          "FORGOT_KEY"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CLOSED_CAFE",
+      "statement": "“As cadeiras estavam empilhadas e o caixa apagado.” Que conclusão é proporcional às pistas?",
+      "options": [
+        "O café fechou definitivamente.",
+        "O café provavelmente estava encerrando o atendimento ou já havia fechado.",
+        "Os funcionários foram demitidos.",
+        "O estabelecimento não abrirá amanhã."
+      ],
+      "correctAnswer": "O café provavelmente estava encerrando o atendimento ou já havia fechado.",
+      "explanation": "Cadeiras empilhadas e caixa apagado sugerem fechamento naquele momento, não encerramento permanente ou decisões futuras.",
+      "hint": "Limite a conclusão ao momento representado.",
+      "errorFocus": "Transformar estado momentâneo em futuro certo",
+      "misconceptions": {
+        "O café fechou definitivamente.": [
+          "PERMANENT_CLOSURE"
+        ],
+        "Os funcionários foram demitidos.": [
+          "LAYOFF_UNSUPPORTED"
+        ],
+        "O estabelecimento não abrirá amanhã.": [
+          "TOMORROW_UNKNOWN"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "SNOWY_SHOES",
+      "statement": "“Havia marcas de barro no tapete e botas junto à entrada.” O que as pistas sugerem?",
+      "options": [
+        "O tapete foi comprado hoje.",
+        "As botas pertencem à diretora.",
+        "Alguém entrou com botas sujas de barro.",
+        "Choveu durante três horas."
+      ],
+      "correctAnswer": "Alguém entrou com botas sujas de barro.",
+      "explanation": "As marcas e as botas apoiam uma hipótese de entrada com barro; não identificam a pessoa nem o horário.",
+      "hint": "Use as duas pistas visíveis.",
+      "errorFocus": "Inferir identidade ou horário",
+      "misconceptions": {
+        "O tapete foi comprado hoje.": [
+          "NEW_RUG"
+        ],
+        "As botas pertencem à diretora.": [
+          "OWNER_IDENTITY"
+        ],
+        "Choveu durante três horas.": [
+          "RAIN_DURATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EVENT_SIGNUP",
+      "statement": "“Inscrições até terça; vagas limitadas.” O que a mensagem afirma?",
+      "options": [
+        "A atividade ocorrerá na terça.",
+        "Todas as vagas já foram preenchidas.",
+        "Quem não se inscrever será impedido de entrar em qualquer evento.",
+        "As inscrições têm prazo e o número de vagas é limitado."
+      ],
+      "correctAnswer": "As inscrições têm prazo e o número de vagas é limitado.",
+      "explanation": "O prazo é para inscrição, e as vagas são limitadas; a mensagem não informa que já acabaram nem a data da atividade.",
+      "hint": "Leia exatamente a função de “até terça”.",
+      "errorFocus": "Confundir prazo com data do evento",
+      "misconceptions": {
+        "A atividade ocorrerá na terça.": [
+          "EVENT_DATE_AS_DEADLINE"
+        ],
+        "Todas as vagas já foram preenchidas.": [
+          "SOLD_OUT_UNSUPPORTED"
+        ],
+        "Quem não se inscrever será impedido de entrar em qualquer evento.": [
+          "ALL_EVENTS_BAN"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "LIBRARY_LIGHTS",
+      "statement": "“A luz da sala estava acesa, mas ninguém respondeu ao chamado.” Qual conclusão é mais prudente?",
+      "options": [
+        "A sala estava iluminada, mas não há resposta audível no trecho.",
+        "A sala estava cheia.",
+        "Todos foram embora.",
+        "A luz foi deixada acesa por esquecimento."
+      ],
+      "correctAnswer": "A sala estava iluminada, mas não há resposta audível no trecho.",
+      "explanation": "O texto informa luz e ausência de resposta; presença, saída e motivo não são confirmados.",
+      "hint": "Mantenha separadas as duas observações.",
+      "errorFocus": "Explicar sem pista o motivo da luz",
+      "misconceptions": {
+        "A sala estava cheia.": [
+          "FULL_ROOM"
+        ],
+        "Todos foram embora.": [
+          "ALL_LEFT"
+        ],
+        "A luz foi deixada acesa por esquecimento.": [
+          "FORGOT_LIGHT"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_CLUES",
+      "contextFamily": "LATE_DELIVERY",
+      "statement": "“O pacote chegou depois da data prevista. Na caixa, havia um aviso de tentativa de entrega no dia anterior.” O que os registros sugerem?",
+      "options": [
+        "O destinatário recusou o pacote.",
+        "Houve uma tentativa anterior à entrega registrada, mas não se sabe por que o pacote chegou tarde.",
+        "A transportadora perdeu o pacote por uma semana.",
+        "O aviso prova que ninguém estava em casa."
+      ],
+      "correctAnswer": "Houve uma tentativa anterior à entrega registrada, mas não se sabe por que o pacote chegou tarde.",
+      "explanation": "As datas mostram tentativa e entrega posterior; não informam motivo do atraso nem o que ocorreu no local.",
+      "hint": "Use a ordem dos registros e reconheça o que falta.",
+      "errorFocus": "Atribuir causa sem informação",
+      "misconceptions": {
+        "O destinatário recusou o pacote.": [
+          "RECIPIENT_REFUSED"
+        ],
+        "A transportadora perdeu o pacote por uma semana.": [
+          "WEEK_LOST"
+        ],
+        "O aviso prova que ninguém estava em casa.": [
+          "NO_ONE_HOME_PROOF"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CLOSED_NOTEBOOK",
+      "statement": "“A página tinha um exercício resolvido e uma pergunta sem resposta.” Qual inferência é aceitável?",
+      "options": [
+        "O estudante não sabe o conteúdo.",
+        "A aula acabou antes do exercício.",
+        "O exercício seguinte ainda não está respondido naquela página.",
+        "A pergunta foi anulada."
+      ],
+      "correctAnswer": "O exercício seguinte ainda não está respondido naquela página.",
+      "explanation": "A página mostra uma resposta e uma questão em branco; não revela conhecimento ou motivo.",
+      "hint": "Descreva o estado da página, não a capacidade da pessoa.",
+      "errorFocus": "Inferir habilidade a partir de uma página",
+      "misconceptions": {
+        "O estudante não sabe o conteúdo.": [
+          "KNOWLEDGE_DEFICIT"
+        ],
+        "A aula acabou antes do exercício.": [
+          "CLASS_END_CAUSE"
+        ],
+        "A pergunta foi anulada.": [
+          "QUESTION_CANCELLED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCAL_TEMPERATURE",
+      "statement": "Um termômetro marcou 29 °C às 14h no pátio. Qual frase distingue melhor observação e inferência?",
+      "options": [
+        "Observação: o verão causa calor em todas as escolas.",
+        "Inferência: o termômetro deve estar quebrado.",
+        "Conclusão: o pátio é sempre o lugar mais quente.",
+        "Observação: 29 °C às 14h; inferir que todos os dias têm essa temperatura exigiria outras medidas."
+      ],
+      "correctAnswer": "Observação: 29 °C às 14h; inferir que todos os dias têm essa temperatura exigiria outras medidas.",
+      "explanation": "A medida é específica a local e horário; padrões gerais exigem novas observações e comparação.",
+      "hint": "Inclua local e tempo na descrição do dado.",
+      "errorFocus": "Generalizar medida pontual",
+      "misconceptions": {
+        "Observação: o verão causa calor em todas as escolas.": [
+          "ALL_SCHOOLS_SUMMER"
+        ],
+        "Inferência: o termômetro deve estar quebrado.": [
+          "DEVICE_FAULT_UNSUPPORTED"
+        ],
+        "Conclusão: o pátio é sempre o lugar mais quente.": [
+          "ALWAYS_HOTTEST"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "STAGE_LIGHT",
+      "statement": "Uma personagem acendeu uma lanterna e chamou alguém pelo nome; não houve resposta. Qual leitura é apoiada?",
+      "options": [
+        "Ela procurava alguém ou queria chamar a atenção dessa pessoa, mas o texto não mostra onde ela está.",
+        "A pessoa está escondida no porão.",
+        "A lanterna acabou de quebrar.",
+        "A personagem está em perigo."
+      ],
+      "correctAnswer": "Ela procurava alguém ou queria chamar a atenção dessa pessoa, mas o texto não mostra onde ela está.",
+      "explanation": "Acender a lanterna e chamar sustentam a busca ou tentativa de contato; o local e o risco não são informados.",
+      "hint": "Use as ações para inferir a intenção ampla, sem inventar cenário.",
+      "errorFocus": "Acrescentar perigo ou localização",
+      "misconceptions": {
+        "A pessoa está escondida no porão.": [
+          "BASEMENT_UNSUPPORTED"
+        ],
+        "A lanterna acabou de quebrar.": [
+          "LANTERN_BROKEN"
+        ],
+        "A personagem está em perigo.": [
+          "DANGER_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TWO_REPORTS",
+      "statement": "Relatório A registra menos ruído após a instalação de painéis. Relatório B informa que o trânsito também diminuiu naquele período. O que precisa ser considerado?",
+      "options": [
+        "Os painéis com certeza não tiveram efeito.",
+        "Os dois fatores podem estar relacionados ao resultado; os registros não isolam o efeito dos painéis.",
+        "A redução do trânsito foi causada pelos painéis.",
+        "O ruído desapareceu em toda a cidade."
+      ],
+      "correctAnswer": "Os dois fatores podem estar relacionados ao resultado; os registros não isolam o efeito dos painéis.",
+      "explanation": "Como duas condições mudaram, os relatórios não isolam qual delas explica a variação.",
+      "hint": "Procure fatores que mudaram ao mesmo tempo.",
+      "errorFocus": "Atribuir efeito sem comparar alternativas",
+      "misconceptions": {
+        "Os painéis com certeza não tiveram efeito.": [
+          "NO_PANEL_EFFECT_CERTAIN"
+        ],
+        "A redução do trânsito foi causada pelos painéis.": [
+          "TRAFFIC_CAUSED_BY_PANELS"
+        ],
+        "O ruído desapareceu em toda a cidade.": [
+          "CITYWIDE_ZERO_NOISE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pt-infer-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_INFERENCE",
+      "contextFamily": "CLASSROOM_WINDOW",
+      "statement": "Rascunho: “A janela estava aberta; portanto, alguém saiu por ela.” Que revisão melhor respeita as pistas se o texto só diz que havia vento?",
+      "options": [
+        "“A janela estava aberta, logo alguém fugiu.”",
+        "“Como havia vento, uma pessoa saiu.”",
+        "“A janela estava aberta, e havia vento; o texto não informa quem a abriu ou por quê.”",
+        "“A janela prova que ninguém estava na sala.”"
+      ],
+      "correctAnswer": "“A janela estava aberta, e havia vento; o texto não informa quem a abriu ou por quê.”",
+      "explanation": "A revisão registra as duas pistas e deixa em aberto autoria e motivo, que não foram informados.",
+      "hint": "Remova a ação que não está sustentada por evidência.",
+      "errorFocus": "Inventar pessoa e motivo a partir de uma condição",
+      "misconceptions": {
+        "“A janela estava aberta, logo alguém fugiu.”": [
+          "FUGA_UNSUPPORTED"
+        ],
+        "“Como havia vento, uma pessoa saiu.”": [
+          "WIND_CAUSED_EXIT"
+        ],
+        "“A janela prova que ninguém estava na sala.”": [
+          "EMPTY_ROOM_UNSUPPORTED"
+        ]
+      }
+    }
+  ]
+}

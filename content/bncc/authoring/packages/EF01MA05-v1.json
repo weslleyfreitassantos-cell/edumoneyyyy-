@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01ma05-compare-two-digit-numbers",
+  "officialCode": "EF01MA05",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01ma05-compare-two-digit-numbers.json",
+  "canonicalSkillCode": "AUTHORING_EF01MA05_COMPARE_NATURAL_NUMBERS_TO_TWO_ORDERS",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "comparação de números naturais de até duas ordens",
+  "officialDescriptor": "Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 281 },
+  "lesson": {
+    "title": "Qual número é maior?",
+    "objective": "Comparar números naturais de até duas ordens usando quantidades, dezenas e unidades, a sequência numérica e a reta numérica quando disponível.",
+    "summary": "Números de até duas ordens têm dezenas e unidades. Na comparação, primeiro podemos observar as dezenas; se forem iguais, comparamos as unidades. Na reta numérica, um número que aparece mais à direita é maior que um número à esquerda. Os sinais >, < e = registram maior, menor e igual. Exemplos cotidianos devem ser comparados com base nos números apresentados, sem transformar pontuações em julgamentos sobre pessoas.",
+    "explanation": "Represente cada número com cartões, objetos agrupados ou uma reta numerada. Por exemplo, 34 tem três dezenas e quatro unidades; 29 tem duas dezenas e nove unidades, então 34 é maior porque tem mais dezenas. Já 42 e 47 têm quatro dezenas: compare as unidades para concluir que 47 é maior. Na reta numérica, caminhar para a direita corresponde a números maiores. A reta é um apoio possível, mas a comparação também pode ser feita com decomposição ou contagem.",
+    "workedExample": "Compare 36 e 32. Ambos têm três dezenas; seis unidades são mais que duas, então 36 > 32. Numa reta numérica, 36 também aparece à direita de 32.",
+    "commonMistake": "Comparar apenas o último algarismo quando as dezenas são diferentes, inverter os sinais > e < ou considerar o algarismo maior sem observar sua posição.",
+    "priorKnowledge": ["Ler e representar números naturais de até duas ordens.", "Reconhecer dezenas e unidades com apoio de agrupamentos."],
+    "keyConcepts": ["número natural", "dezena", "unidade", "maior que", "menor que", "igual", "reta numérica", "comparação"],
+    "remediations": [
+      { "errorFocus": "COMPARE_TENS_FIRST", "action": "Monte cada número com dezenas e unidades e compare as dezenas antes de olhar as unidades." },
+      { "errorFocus": "INEQUALITY_SYMBOL_DIRECTION", "action": "Leia o sinal em voz alta como “é maior que” ou “é menor que” e confira qual número está à esquerda." },
+      { "errorFocus": "NUMBER_LINE_SUPPORT", "action": "Marque os dois números na reta e observe suas posições; ofereça também objetos ou cartões." }
+    ],
+    "accessibilitySupports": ["Oferecer reta numérica ampliada, cartões táteis, numerais de alto contraste e agrupamentos concretos.", "Permitir comparar apontando, manipulando objetos, explicando oralmente ou usando comunicação alternativa.", "Apresentar um par por vez e separar visualmente dezenas e unidades."],
+    "authenticActivities": [
+      { "id": "ma05-number-line-walk", "title": "Trilha numérica", "context": "Cartões com números de até duas ordens são posicionados numa reta visível.", "steps": ["Escolha dois cartões e leia seus numerais.", "Marque ou localize cada posição na reta.", "Diga qual está à esquerda, à direita ou na mesma posição."], "evidence": "Comparação correta apoiada na posição dos números.", "rubric": ["Inicial: localiza um número com apoio.", "Em desenvolvimento: compara dois números na reta.", "Consolidado: compara e registra maior, menor ou igualdade."] },
+      { "id": "ma05-classroom-collections", "title": "Comparar coleções organizadas", "context": "Coleções fictícias são representadas em dezenas e unidades para planejar materiais de uma atividade.", "steps": ["Leia os números de cada coleção.", "Represente dezenas e unidades com cartões ou desenho.", "Compare e justifique qual quantidade é maior ou se são iguais."], "evidence": "Registro numérico com comparação justificada pela posição ou valor dos algarismos.", "rubric": ["Inicial: reconhece números com apoio.", "Em desenvolvimento: compara dezenas ou unidades.", "Consolidado: escolhe uma estratégia coerente e justifica a comparação."] }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","COMPARE","CARTOES_18_E_23","Qual número é maior: 18 ou 23?","23.",["18","São iguais","Nenhum pode ser comparado"],"COMPARE_TENS","23 tem duas dezenas e 18 tem uma.","Compare primeiro as dezenas."],
+      ["EASY","READ","RETA_12_E_16","Na reta numérica, qual fica mais à direita: 12 ou 16?","16.",["12","Os dois ficam no mesmo ponto","Nenhum aparece"],"RIGHT_IS_GREATER","16 vem depois de 12 na reta.","Procure o ponto mais à direita."],
+      ["MEDIUM","COMPARE","QUARENTA_E_UM_E_QUARENTA_E_SETE","Qual número é maior: 41 ou 47?","47.",["41","São iguais","4"],"COMPARE_UNITS_IF_TENS_EQUAL","As dezenas são iguais; sete unidades são mais que uma.","Como as dezenas coincidem, compare as unidades."],
+      ["EASY","IDENTIFY","SINAL_DE_IGUALDADE","Que sinal indica que 35 e 35 têm o mesmo valor?","=.",[">","<","+"],"EQUALITY_SYMBOL","Os dois números são iguais.","Escolha o sinal de igualdade."],
+      ["MEDIUM","APPLY","DEZENAS_DE_FICHAS","Uma caixa tem 5 dezenas de fichas e outra tem 4 dezenas. Qual número é maior: 50 ou 40?","50.",["40","São iguais","5"],"TENS_VALUE","Cinco dezenas representam mais que quatro dezenas.","Compare o algarismo das dezenas."],
+      ["MEDIUM","COMPARE","PLACAR_62_E_59","Num placar, aparecem 62 e 59. Qual pontuação é maior?","62.",["59","São iguais","2"],"TENS_BEFORE_UNITS","62 tem seis dezenas, mais que as cinco dezenas de 59.","Não compare só o último algarismo."],
+      ["EASY","IDENTIFY","POSICAO_DO_8","Na reta de 0 a 10, qual número aparece depois de 7?","8.",["6","5","10"],"NEXT_NUMBER_ON_LINE","8 vem imediatamente depois de 7.","Avance um ponto."],
+      ["MEDIUM","DISTINGUISH","SINAL_MAIOR_QUE","Complete: 28 __ 31.","<.",[">","=","+"],"LESS_THAN_SYMBOL","28 é menor que 31.","O número menor fica à esquerda do sinal <."]
+    ],
+    "PRACTICE": [
+      ["EASY","COMPARE","CARTAZ_44_E_39","Qual número é maior: 44 ou 39?","44.",["39","São iguais","4"],"COMPARE_TENS_2","44 tem quatro dezenas e 39 tem três.","Olhe as dezenas primeiro."],
+      ["MEDIUM","APPLY","NUMEROS_26_E_29","Complete: 26 __ 29.","<.",[">","=","-"],"COMPARE_UNITS_2","As dezenas são iguais e seis é menor que nove.","Compare as unidades."],
+      ["EASY","READ","RETA_50_A_60","Entre 52 e 58, qual ponto fica mais perto de 60 na reta?","58.",["52","50","Os dois ficam em 60"],"DISTANCE_ON_LINE","58 está a dois passos de 60; 52 está a oito.","Conte os passos até 60."],
+      ["MEDIUM","COMPARE","QUARENTA_E_DOIS_E_TRINTA_E_NOVE","Qual é maior: 42 ou 39?","42.",["39","São iguais","2"],"TENS_COMPARISON_2","42 tem quatro dezenas e 39 tem três.","Compare as dezenas completas."],
+      ["MEDIUM","IDENTIFY","DECOMPOSICAO_57","O número 57 tem quantas dezenas?","5 dezenas.",["7 dezenas","2 dezenas","57 dezenas"],"TENS_PLACE_VALUE","O algarismo 5 ocupa a posição das dezenas.","Leia o primeiro algarismo como dezenas."],
+      ["HARD","ANALYZE","NUMEROS_70_E_69","70 ou 69: qual é maior?","70.",["69","São iguais","9"],"BOUNDARY_TENS","Sete dezenas são mais que seis dezenas e nove unidades.","Compare os grupos de dez."],
+      ["EASY","COMPARE","COLECOES_14_E_14","Duas coleções têm 14 objetos cada. Como comparar as quantidades?","São iguais.",["A primeira é maior","A segunda é maior","Não há como comparar"],"EQUAL_QUANTITIES","Os dois registros mostram a mesma quantidade.","Confira os numerais."],
+      ["MEDIUM","APPLY","SINAL_PARA_36_E_42","Qual sinal completa 36 __ 42?","<.",[">","=","×"],"SELECT_COMPARISON_SYMBOL","36 é menor que 42.","Localize qual número é menor."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","COMPARE","LIVROS_28_E_31","Uma prateleira tem 28 livros e outra 31. Qual tem mais?","A prateleira com 31 livros.",["A de 28 livros","As duas têm a mesma quantidade","Não é possível comparar"],"COMPARE_COLLECTIONS","31 é maior que 28.","Compare os números das etiquetas."],
+      ["HARD","ANALYZE","NOVE_E_OITENTA","Uma criança diz que 9 é maior que 80 porque 9 é um algarismo grande. Qual resposta está correta?","80 é maior que 9, pois tem oito dezenas.",["9 é maior porque tem um só algarismo","Os dois são iguais","Nenhum pode ser comparado"],"PLACE_VALUE_NOT_DIGIT_SIZE","O valor posicional das dezenas torna 80 maior.","Compare quantidades, não o desenho dos algarismos."],
+      ["MEDIUM","APPLY","PONTOS_54_E_45","Duas equipes fictícias registram 54 e 45 pontos. Qual registro é maior?","54.",["45","São iguais","4"],"TENS_ORDER_REVERSED","Cinco dezenas são mais que quatro dezenas.","Observe o algarismo das dezenas."],
+      ["MEDIUM","COMPARE","RETA_COM_33_E_38","Na reta numérica, qual número aparece primeiro ao andar para a direita: 33 ou 38?","33.",["38","Os dois aparecem no mesmo ponto","Nenhum aparece"],"LEFT_TO_RIGHT_ORDER","33 está à esquerda de 38.","Leia a reta da esquerda para a direita."],
+      ["HARD","EVALUATE","COMPARACAO_COM_RETA_E_DECOMPOSICAO","Uma pessoa diz que 64 > 61 porque ambos têm seis dezenas e quatro unidades são mais que uma. A justificativa está correta?","Sim; as dezenas são iguais e 4 é maior que 1.",["Não; compare apenas as dezenas","Não; 61 é maior","Sim, porque 64 tem menos dezenas"],"JUSTIFY_EQUAL_TENS","Com dezenas iguais, comparar unidades decide o par.","Confira as duas posições."],
+      ["MEDIUM","IDENTIFY","NUMERO_MAIS_PERTO_DE_20","Qual número está mais perto de 20: 18 ou 12?","18.",["12","Os dois estão à mesma distância","20 não pode ser comparado"],"DISTANCE_TO_REFERENCE","18 está a dois de 20; 12 está a oito.","Conte a distância até 20."],
+      ["HARD","APPLY","COMPARAR_TRES_CARTOES","Qual é o maior entre 27, 72 e 47?","72.",["27","47","Todos são iguais"],"ORDER_THREE_NUMBERS","72 tem sete dezenas, mais que os outros.","Compare os algarismos das dezenas."],
+      ["MEDIUM","JUSTIFY","ESCOLHA_DE_SINAL","Por que 25 < 30 é uma comparação correta?","25 é menor que 30 e aparece antes dele na sequência.",["25 é igual a 30","25 é maior porque termina em 5","O sinal indica adição"],"EXPLAIN_LESS_THAN","O sinal < aponta a relação de menor valor.","Leia a frase como “25 é menor que 30”."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","COMPARE","NUMEROS_83_E_38","Qual número é maior: 83 ou 38?","83.",["38","São iguais","3"],"TENS_FIRST_REVIEW","83 tem oito dezenas e 38 tem três.","Observe a primeira posição."],
+      ["MEDIUM","APPLY","SINAL_52_E_52","Complete: 52 __ 52.","=.",[">","<","−"],"EQUAL_SYMBOL_REVIEW","Os valores são idênticos.","Compare os dois numerais."],
+      ["HARD","ANALYZE","NUMEROS_68_E_62","Qual comparação é verdadeira?","68 > 62.",["62 > 68","68 = 62","68 < 62"],"COMPARE_UNITS_REVIEW","As dezenas são iguais e oito unidades são mais que duas.","Compare as unidades."],
+      ["MEDIUM","READ","RETA_41_E_46","Qual número fica à direita: 41 ou 46?","46.",["41","Os dois ficam no mesmo ponto","Nenhum pode ser marcado"],"RIGHTWARD_GREATER_REVIEW","46 é posterior a 41 na reta.","Procure a posição mais à direita."],
+      ["MEDIUM","DISTINGUISH","QUANTIDADE_E_TAMANHO_DO_NUMERAL","O número escrito com mais traços é sempre maior?","Não; é preciso comparar o valor dos números.",["Sim, todo número longo é maior","Sim, a escrita decide a quantidade","Não, números nunca representam quantidades"],"NUMERAL_APPEARANCE_REVIEW","A aparência do símbolo não determina sozinha o valor.","Compare dezenas e unidades."],
+      ["HARD","APPLY","CARTOES_19_20_21","Qual cartão vem no meio em 19, 20 e 21?","20.",["19","21","Nenhum"],"CONSECUTIVE_NUMBERS_REVIEW","20 está entre 19 e 21.","Siga a sequência numérica."],
+      ["MEDIUM","EVALUATE","COMPARACAO_DE_QUANTIDADES","Um grupo tem 37 peças e outro 42. Qual conclusão é correta?","42 peças é uma quantidade maior.",["37 é maior","As quantidades são iguais","Peças não podem ser contadas"],"QUANTITY_COMPARISON_REVIEW","42 vem depois de 37 e representa mais unidades.","Compare os números."],
+      ["HARD","JUSTIFY","SINAL_MAIOR_MENOR","Como conferir se 57 > 49 faz sentido?","Comparar as dezenas: cinco dezenas são mais que quatro.",["Olhar somente o 7 e o 9","Dizer que ambos começam com número","Ignorar a posição dos algarismos"],"POSITIONAL_JUSTIFICATION_REVIEW","A dezena de 57 supera a de 49.","Compare primeiro a casa das dezenas."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","MAIOR_8_OU_6","Qual é maior: 8 ou 6?","8.",["6","São iguais","Nenhum"],"SINGLE_DIGIT_REVIEW","8 vem depois de 6.","Use a sequência numérica."],
+      ["MEDIUM","COMPARE","MAIOR_46_OU_64","Qual número é maior: 46 ou 64?","64.",["46","São iguais","4"],"TENS_REVIEW","64 tem seis dezenas e 46 tem quatro.","Compare as dezenas."],
+      ["MEDIUM","IDENTIFY","SINAL_MENOR","Que sinal completa 18 __ 25?","<.",[">","=","+"],"LESS_SYMBOL_REVIEW","18 é menor que 25.","Leia a comparação em palavras."],
+      ["MEDIUM","APPLY","RETA_10_15_20","Qual desses números fica entre 10 e 20: 15 ou 25?","15.",["25","Ambos ficam entre","Nenhum pode ser usado"],"BETWEEN_NUMBERS_REVIEW","15 está depois de 10 e antes de 20.","Marque os pontos na reta."],
+      ["HARD","ANALYZE","IGUALDADE_DE_DEZENAS","Em 72 e 78, qual parte é igual?","As dezenas: ambos têm sete.",["As unidades","O número completo","Nenhuma parte"],"TENS_SAME_REVIEW","Os dois têm 7 dezenas; as unidades diferem.","Separe dezenas e unidades."],
+      ["MEDIUM","EVALUATE","CONFERIR_SINAL","Uma resposta afirma 39 > 42. Como corrigir?","39 < 42.",["39 = 42","42 < 39","39 + 42"],"SIGN_DIRECTION_REVIEW","42 é maior que 39.","Leia a relação de menor para maior."],
+      ["MEDIUM","COMPARE","COLECOES_25_E_25","Duas caixas registram 25 objetos cada. O que se conclui?","As quantidades são iguais.",["A primeira tem mais","A segunda tem mais","Os números são diferentes"],"EQUALITY_REVIEW","Os dois registros têm o mesmo valor.","Compare cada algarismo."],
+      ["HARD","JUSTIFY","SINTese_DE_COMPARACAO_NUMERICA","Uma comparação cuidadosa considera valor posicional e pode usar...","a sequência numérica ou a reta como apoio.",["apenas a aparência dos algarismos","a cor do cartão","um palpite sem conferir"],"COMPARISON_STRATEGY_SUMMARY","Decomposição, sequência e reta apoiam a comparação.","Reúna uma estratégia válida."]
+    ]
+  }
+}

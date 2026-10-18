@@ -326,17 +326,16 @@ export default function ResetPassword() {
   const displayName =
     brandingQuery.data?.displayName ??
     branding.displayName ??
-    'EduManager Pro';
+    'Tec Escola';
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    applyDocumentBranding(branding);
+  }, [
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const brandStyle: CSSProperties = {
     '--brand-primary': branding.primaryColor,

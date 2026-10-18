@@ -1,0 +1,2916 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v14-chemistry-reaction-evidence",
+  "subject": "CHEMISTRY",
+  "domain": "REACOES",
+  "topic": "evidencias e limites ao interpretar transformacoes quimicas",
+  "canonicalSkillCode": "CHEMISTRY_REACTION_EVIDENCE",
+  "contentVersion": 14,
+  "expectedQuestionCount": 116,
+  "expectedContextCount": 116,
+  "expectedAnswerPositionCounts": {
+    "A": 29,
+    "B": 29,
+    "C": 29,
+    "D": 29
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 12,
+    "PRACTICE": 43,
+    "TRANSFER": 28,
+    "LOCK_IN": 11,
+    "REVIEW": 22
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "questions": [
+    {
+      "id": "v5-chem-reaction-evidence-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SUGAR_DISSOLUTION_RECOVERY",
+      "statement": "Açúcar é misturado à água e deixa de ser visível. Depois, a água evapora e cristais de açúcar aparecem no recipiente. Qual conclusão é mais compatível com as observações?",
+      "options": [
+        "O açúcar se dissolveu e voltou a cristalizar; não há evidência de uma substância nova.",
+        "O açúcar reagiu porque desapareceu da vista.",
+        "A evaporação transformou açúcar em água.",
+        "Os cristais provam que uma reação ocorreu durante a dissolução."
+      ],
+      "correctAnswer": "O açúcar se dissolveu e voltou a cristalizar; não há evidência de uma substância nova.",
+      "explanation": "A dissolução dispersa partículas na água, e a evaporação permite recuperar o açúcar. Mudança de aparência, sem mudança de composição, é física.",
+      "errorFocus": "Interpretar o desaparecimento visual durante dissolução como formação de outra substância.",
+      "hint": "Pergunte se a composição mudou ou se as mesmas partículas apenas se dispersaram e puderam ser recuperadas.",
+      "misconceptions": {
+        "O açúcar reagiu porque desapareceu da vista.": [
+          "INTERPRETAR_O_DESAPARECIMENTO_VISUAL_DURANTE_DISSOLU_O_COMO_FORMA_O_DE_OUTRA_SUBST_NCIA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DYE_MIXTURE_CHROMATOGRAPHY",
+      "statement": "Duas soluções de corantes são misturadas e ficam roxas. Uma análise posterior separa novamente os mesmos dois corantes, sem detectar produtos diferentes. O que a mudança de cor permite concluir?",
+      "options": [
+        "A cor roxa prova que surgiu uma substância nova.",
+        "Sozinha, não demonstra reação; os dados mostram uma mistura física dos corantes originais.",
+        "A análise não importa, pois toda mistura de soluções é reação.",
+        "Os corantes deixaram de existir porque a cor mudou."
+      ],
+      "correctAnswer": "Sozinha, não demonstra reação; os dados mostram uma mistura física dos corantes originais.",
+      "explanation": "A cor observada mudou, mas a análise recuperou os mesmos componentes. Uma mudança de cor pode ser pista, não prova isolada de reação.",
+      "errorFocus": "Tomar qualquer mudança de cor como prova conclusiva de transformação química.",
+      "hint": "Separe a observação visual dos dados sobre quais substâncias estavam presentes antes e depois.",
+      "misconceptions": {
+        "A cor roxa prova que surgiu uma substância nova.": [
+          "TOMAR_QUALQUER_MUDAN_A_DE_COR_COMO_PROVA_CONCLUSIVA_DE_TRANSFORMA_O_QU_MICA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COLORLESS_SOLUTIONS_CONTROLLED_PRECIPITATE",
+      "statement": "Duas soluções transparentes formam um sólido ao serem combinadas. Em ensaios de controle, cada solução permanece transparente quando submetida sozinha às mesmas condições. Qual interpretação é mais forte?",
+      "options": [
+        "A transparência inicial prova que as soluções eram a mesma substância.",
+        "O sólido é necessariamente um reagente que já estava visível.",
+        "A formação do sólido, ausente nos controles, sustenta a hipótese de uma nova substância insolúvel.",
+        "Nenhuma conclusão é possível mesmo com controles e produto diferente."
+      ],
+      "correctAnswer": "A formação do sólido, ausente nos controles, sustenta a hipótese de uma nova substância insolúvel.",
+      "explanation": "O sólido aparece apenas quando os reagentes interagem. Um precipitado com propriedades diferentes das soluções é evidência convergente de formação de produto.",
+      "errorFocus": "Ignorar controles ou afirmar uma causa sem comparar os reagentes isolados.",
+      "hint": "Compare o resultado da mistura com cada controle e procure uma propriedade do sólido diferente das soluções iniciais.",
+      "misconceptions": {
+        "A transparência inicial prova que as soluções eram a mesma substância.": [
+          "IGNORAR_CONTROLES_OU_AFIRMAR_UMA_CAUSA_SEM_COMPARAR_OS_REAGENTES_ISOLADOS"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DISTILLATION_WATER_IDENTITY",
+      "statement": "Durante uma demonstração, água líquida ferve, o vapor passa por um condensador e volta a ser coletado como líquido. Qual afirmação descreve melhor o processo observado?",
+      "options": [
+        "A água se decompôs porque apareceram bolhas.",
+        "O condensador criou uma substância nova ao resfriar o vapor.",
+        "A ebulição prova que os átomos de hidrogênio desapareceram.",
+        "A água mudou de estado e voltou ao líquido; isso, por si só, não indica uma reação química."
+      ],
+      "correctAnswer": "A água mudou de estado e voltou ao líquido; isso, por si só, não indica uma reação química.",
+      "explanation": "Ebulição e condensação são mudanças de estado. Se a substância recuperada continua sendo água, não se identificou mudança química.",
+      "errorFocus": "Confundir ebulição e condensação com reação por causa da formação de vapor.",
+      "hint": "Verifique se houve apenas mudança de estado ou se os produtos têm composição diferente da água.",
+      "misconceptions": {
+        "A água se decompôs porque apareceram bolhas.": [
+          "CONFUNDIR_EBULI_O_E_CONDENSA_O_COM_REA_O_POR_CAUSA_DA_FORMA_O_DE_VAPOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REACTION_EVIDENCE_CONVERGING_TABLE",
+      "statement": "Três equipes analisam amostras. Na A, um líquido aquecido produz bolhas; na B, uma mistura forma um sólido que não aparece nos controles; na C, duas tintas apenas se misturam. Qual resultado oferece a evidência mais forte de reação?",
+      "options": [
+        "A equipe B, porque o sólido novo aparece após a interação e não nos controles.",
+        "A equipe A, pois qualquer bolha prova reação.",
+        "A equipe C, pois qualquer cor final diferente prova produto químico.",
+        "As três equipes têm evidência igualmente conclusiva."
+      ],
+      "correctAnswer": "A equipe B, porque o sólido novo aparece após a interação e não nos controles.",
+      "explanation": "Bolhas podem vir de ebulição, e misturar pigmentos pode alterar a cor sem criar substância. Um sólido novo, ausente em controles comparáveis, sustenta melhor a hipótese química.",
+      "errorFocus": "Escolher a pista mais visível sem considerar explicações alternativas e controles.",
+      "hint": "Procure uma mudança que dependa da interação dos reagentes e compare com controles adequados.",
+      "misconceptions": {
+        "A equipe A, pois qualquer bolha prova reação.": [
+          "ESCOLHER_A_PISTA_MAIS_VIS_VEL_SEM_CONSIDERAR_EXPLICA_ES_ALTERNATIVAS_E_CONTROLES"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BREAD_FERMENTATION_BLANK_CONTROL",
+      "statement": "Em dois frascos com a mesma solução açucarada, apenas aquele que recebeu levedura produz gás. A análise identifica dióxido de carbono e etanol nesse frasco; o controle sem levedura não apresenta esses produtos. Qual conclusão é sustentada?",
+      "options": [
+        "Apenas ocorreu ebulição, embora o frasco não tenha sido aquecido.",
+        "Os dados apoiam uma transformação química associada à fermentação, com produtos diferentes dos reagentes.",
+        "O açúcar mudou de estado e por isso virou dióxido de carbono.",
+        "O controle prova que qualquer gás em líquido é produto químico."
+      ],
+      "correctAnswer": "Os dados apoiam uma transformação química associada à fermentação, com produtos diferentes dos reagentes.",
+      "explanation": "Produtos identificados apenas no sistema com levedura e açúcar sustentam a formação de novas substâncias. O controle ajuda a excluir produção espontânea ou causada pelo recipiente.",
+      "errorFocus": "Confundir a observação de gás com a explicação do processo sem usar o controle e a análise dos produtos.",
+      "hint": "Compare os produtos do frasco com levedura ao controle e identifique o que mudou na composição.",
+      "misconceptions": {
+        "Apenas ocorreu ebulição, embora o frasco não tenha sido aquecido.": [
+          "CONFUNDIR_A_OBSERVA_O_DE_G_S_COM_A_EXPLICA_O_DO_PROCESSO_SEM_USAR_O_CONTROLE_E_A_AN_LISE_DOS_PRODUTOS"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SODA_BOTTLE_PRESSURE_RELEASE",
+      "statement": "Ao abrir uma garrafa de água gaseificada, surgem bolhas e o som de liberação de gás. A quantidade de dióxido de carbono dissolvido diminui, mas não há reagentes novos nem produtos detectados. Qual interpretação é adequada?",
+      "options": [
+        "O dióxido de carbono foi produzido por uma reação porque se tornou visível.",
+        "A água se decompôs em gás e líquido ao abrir a tampa.",
+        "O gás dissolvido está saindo da solução após a queda de pressão; as bolhas não demonstram uma reação nova.",
+        "Toda liberação de gás transforma a bebida em outra substância."
+      ],
+      "correctAnswer": "O gás dissolvido está saindo da solução após a queda de pressão; as bolhas não demonstram uma reação nova.",
+      "explanation": "A abertura altera a pressão e favorece a saída do dióxido de carbono que já estava dissolvido. A observação de bolhas não basta para afirmar que houve reação.",
+      "errorFocus": "Supor que um gás observado necessariamente se formou durante o evento.",
+      "hint": "Pergunte se o gás foi produzido por reagentes ou se já estava dissolvido e apenas escapou.",
+      "misconceptions": {
+        "O dióxido de carbono foi produzido por uma reação porque se tornou visível.": [
+          "SUPOR_QUE_UM_G_S_OBSERVADO_NECESSARIAMENTE_SE_FORMOU_DURANTE_O_EVENTO"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "IRON_CORROSION_DRY_MOIST_CONTROLS",
+      "statement": "Três peças iguais de ferro ficam em condições distintas: ar seco, água sem contato com ar e ar úmido. Apenas na última aparece uma camada de ferrugem; a inspeção confirma material com propriedades diferentes do ferro. O que os dados sustentam?",
+      "options": [
+        "A ferrugem é somente água que mudou de estado sobre o ferro.",
+        "O controle em ar seco prova que o ferro nunca reage com oxigênio.",
+        "A camada confirma que a massa de ferro foi destruída.",
+        "A interação do ferro com água e oxigênio favoreceu uma transformação química; os controles ajudam a identificar as condições necessárias."
+      ],
+      "correctAnswer": "A interação do ferro com água e oxigênio favoreceu uma transformação química; os controles ajudam a identificar as condições necessárias.",
+      "explanation": "O produto com propriedades diferentes aparece na condição que reúne umidade e oxigênio. Comparar controles permite avaliar quais condições acompanham a corrosão.",
+      "errorFocus": "Atribuir ferrugem a uma única condição sem considerar a comparação controlada.",
+      "hint": "Compare as condições dos três recipientes e relacione o produto observado às condições que ocorreram juntas.",
+      "misconceptions": {
+        "A ferrugem é somente água que mudou de estado sobre o ferro.": [
+          "ATRIBUIR_FERRUGEM_A_UMA_NICA_CONDI_O_SEM_CONSIDERAR_A_COMPARA_O_CONTROLADA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CANDLE_MELTING_AND_COMBUSTION",
+      "statement": "Ao acender uma vela, a cera próxima ao pavio derrete e a chama libera gases. Qual análise separa corretamente os dois fenômenos?",
+      "options": [
+        "Derreter a cera é mudança física; a combustão da cera vaporizada forma substâncias diferentes e é química.",
+        "Os dois fenômenos são físicos porque ocorrem na mesma vela.",
+        "Os dois são reações porque a vela muda de forma.",
+        "A chama é física, mas derreter a cera é uma reação química."
+      ],
+      "correctAnswer": "Derreter a cera é mudança física; a combustão da cera vaporizada forma substâncias diferentes e é química.",
+      "explanation": "A cera líquida continua sendo cera, então a fusão é física. Na combustão, a cera reage com oxigênio e origina produtos com composição diferente.",
+      "errorFocus": "Classificar processos simultâneos como se todos tivessem a mesma natureza.",
+      "hint": "Analise cada etapa separadamente: mudança de estado e formação de produtos são evidências diferentes.",
+      "misconceptions": {
+        "Os dois fenômenos são físicos porque ocorrem na mesma vela.": [
+          "CLASSIFICAR_PROCESSOS_SIMULT_NEOS_COMO_SE_TODOS_TIVESSEM_A_MESMA_NATUREZA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OPEN_REACTOR_ESCAPING_GAS_MASS",
+      "statement": "Uma reação que libera gás ocorre em um frasco aberto sobre uma balança. A massa indicada diminui, mas o gás que sai é coletado em outro recipiente e também pesado. Como interpretar o resultado?",
+      "options": [
+        "A reação destruiu matéria, pois o frasco ficou mais leve.",
+        "A leitura do frasco diminui porque parte da matéria saiu; ao incluir o gás coletado, a massa total se conserva.",
+        "A massa do gás não conta porque ele deixou o recipiente.",
+        "A queda na balança prova que não houve reação química."
+      ],
+      "correctAnswer": "A leitura do frasco diminui porque parte da matéria saiu; ao incluir o gás coletado, a massa total se conserva.",
+      "explanation": "A balança do frasco aberto mede apenas o que permaneceu nele. Somando o gás que escapou, o sistema ampliado inclui a matéria transferida e conserva a massa.",
+      "errorFocus": "Confundir a fronteira do sistema medido com a quantidade total de matéria.",
+      "hint": "Defina o que está dentro do sistema da balança e inclua a matéria que saiu ao comparar o total.",
+      "misconceptions": {
+        "A reação destruiu matéria, pois o frasco ficou mais leve.": [
+          "CONFUNDIR_A_FRONTEIRA_DO_SISTEMA_MEDIDO_COM_A_QUANTIDADE_TOTAL_DE_MAT_RIA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "APPLE_BROWNING_AFTER_CUT",
+      "statement": "Uma maçã cortada escurece após ficar exposta ao ar. Qual dado favorece a interpretação de transformação química, em vez de simples mudança de forma?",
+      "options": [
+        "O corte aumentou a área exposta, portanto nenhuma mudança química pode ocorrer.",
+        "A cor prova sozinha que uma substância específica foi formada.",
+        "A exposição ao oxigênio acompanha a formação de compostos escuros diferentes dos presentes na polpa fresca.",
+        "A maçã perdeu todos os átomos de sua superfície."
+      ],
+      "correctAnswer": "A exposição ao oxigênio acompanha a formação de compostos escuros diferentes dos presentes na polpa fresca.",
+      "explanation": "O corte é uma mudança física, mas o escurecimento envolve reações com o oxigênio e a formação de compostos diferentes. A cor é uma pista interpretada junto da evidência sobre os produtos.",
+      "errorFocus": "Confundir o corte físico com os processos químicos posteriores ou usar cor como prova isolada.",
+      "hint": "Separe o efeito mecânico do corte das mudanças que ocorreram depois da exposição ao ar.",
+      "misconceptions": {
+        "O corte aumentou a área exposta, portanto nenhuma mudança química pode ocorrer.": [
+          "CONFUNDIR_O_CORTE_F_SICO_COM_OS_PROCESSOS_QU_MICOS_POSTERIORES_OU_USAR_COR_COMO_PROVA_ISOLADA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REUSABLE_HANDWARMER_CRYSTALLIZATION",
+      "statement": "Em um aquecedor reutilizável, uma solução supersaturada cristaliza após um gatilho e libera calor. Depois, o sólido pode voltar a se dissolver quando aquecido, sem formar outros produtos. Qual conclusão é mais compatível?",
+      "options": [
+        "A liberação de calor comprova que novas substâncias foram formadas.",
+        "O cristal é necessariamente um produto químico porque é sólido.",
+        "O processo destruiu a solução e criou matéria do recipiente.",
+        "A cristalização é uma mudança física de organização e estado; a liberação de calor não prova, sozinha, reação."
+      ],
+      "correctAnswer": "A cristalização é uma mudança física de organização e estado; a liberação de calor não prova, sozinha, reação.",
+      "explanation": "A mesma substância pode cristalizar e depois se dissolver. Mudança térmica acompanha o processo, mas, sem mudança de composição, não basta para classificá-lo como reação.",
+      "errorFocus": "Tratar qualquer variação de temperatura ou formação de sólido como prova de reação.",
+      "hint": "Use a possibilidade de recuperar a mesma composição e procure evidência de produtos diferentes.",
+      "misconceptions": {
+        "A liberação de calor comprova que novas substâncias foram formadas.": [
+          "TRATAR_QUALQUER_VARIA_O_DE_TEMPERATURA_OU_FORMA_O_DE_S_LIDO_COMO_PROVA_DE_REA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SEALED_REACTION_MASS_BALANCE",
+      "statement": "Dois reagentes são misturados dentro de um recipiente selado. Há mudança de cor e formação de um sólido; a massa total antes e depois permanece igual. Qual afirmação concilia as observações?",
+      "options": [
+        "Uma reação pode formar substâncias novas e conservar a massa total em sistema fechado.",
+        "A massa igual prova que nenhuma reação aconteceu.",
+        "A cor mudou, então os átomos deixaram de ser conservados.",
+        "O sólido formado precisa ter vindo de fora do recipiente."
+      ],
+      "correctAnswer": "Uma reação pode formar substâncias novas e conservar a massa total em sistema fechado.",
+      "explanation": "Uma reação reorganiza átomos sem criar ou destruir matéria. A massa total do sistema fechado pode permanecer igual enquanto as substâncias mudam.",
+      "errorFocus": "Interpretar conservação da massa como ausência de transformação química.",
+      "hint": "Separe conservação dos átomos e da massa da identidade das substâncias antes e depois.",
+      "misconceptions": {
+        "A massa igual prova que nenhuma reação aconteceu.": [
+          "INTERPRETAR_CONSERVA_O_DA_MASSA_COMO_AUS_NCIA_DE_TRANSFORMA_O_QU_MICA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INDICATOR_COLOR_CONTROLLED_PH",
+      "statement": "Um indicador muda de cor quando é adicionado a uma solução. Para avaliar se a amostra também sofreu outra reação, qual informação é mais útil?",
+      "options": [
+        "A cor, sozinha, identifica todos os produtos formados.",
+        "Comparar a amostra a um controle e analisar se apareceram produtos diferentes, além da resposta de cor do indicador.",
+        "O indicador sempre reage com qualquer substância da solução.",
+        "Nenhum controle é necessário porque a cor é uma prova direta."
+      ],
+      "correctAnswer": "Comparar a amostra a um controle e analisar se apareceram produtos diferentes, além da resposta de cor do indicador.",
+      "explanation": "A cor do indicador responde às condições químicas da solução, mas não descreve por si só toda a composição da amostra. Controle e análise de produtos delimitam a conclusão.",
+      "errorFocus": "Atribuir ao material analisado toda mudança de cor causada pelo próprio indicador.",
+      "hint": "Considere o papel do indicador e compare a amostra com um controle sem a mudança investigada.",
+      "misconceptions": {
+        "A cor, sozinha, identifica todos os produtos formados.": [
+          "ATRIBUIR_AO_MATERIAL_ANALISADO_TODA_MUDAN_A_DE_COR_CAUSADA_PELO_PR_PRIO_INDICADOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "FAIR_CONTROL_FOR_COLOR_CHANGE",
+      "statement": "Uma estudante quer testar se duas soluções reagem para formar um produto colorido. Qual desenho oferece a comparação mais informativa?",
+      "options": [
+        "Misturar volumes diferentes e comparar com uma solução de outro recipiente.",
+        "Testar somente a mistura e concluir a partir da primeira cor observada.",
+        "Manter volumes, temperatura e recipiente iguais, testar cada solução isolada e a mistura, repetir e comparar a composição final.",
+        "Alterar temperatura e iluminação ao mesmo tempo para acelerar a mudança."
+      ],
+      "correctAnswer": "Manter volumes, temperatura e recipiente iguais, testar cada solução isolada e a mistura, repetir e comparar a composição final.",
+      "explanation": "Controles isolam o efeito da interação entre as soluções. Repetições e condições constantes ajudam a separar produto novo de cor inicial, iluminação ou aquecimento.",
+      "errorFocus": "Mudar várias condições ao mesmo tempo e atribuir o resultado a uma única causa.",
+      "hint": "Mantenha as condições constantes e inclua controles de cada reagente isolado.",
+      "misconceptions": {
+        "Misturar volumes diferentes e comparar com uma solução de outro recipiente.": [
+          "MUDAR_V_RIAS_CONDI_ES_AO_MESMO_TEMPO_E_ATRIBUIR_O_RESULTADO_A_UMA_NICA_CAUSA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-reaction-evidence-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CLAIM_EVIDENCE_REASONING_FINAL",
+      "statement": "Um relatório afirma: “Houve reação química porque a mistura borbulhou”. Qual revisão transforma a afirmação em uma conclusão melhor justificada?",
+      "options": [
+        "Manter a frase, pois bolhas são prova universal de reação.",
+        "Trocar “borbulhou” por “mudou de cor” e manter a mesma conclusão.",
+        "Concluir que ocorreu ebulição sem verificar a temperatura.",
+        "Registrar as bolhas como observação, comparar com controles e buscar evidência de produto novo antes de concluir."
+      ],
+      "correctAnswer": "Registrar as bolhas como observação, comparar com controles e buscar evidência de produto novo antes de concluir.",
+      "explanation": "Uma conclusão científica distingue observação de inferência e avalia alternativas, como gás dissolvido ou ebulição. Evidência de produto novo e controles fortalecem a afirmação.",
+      "errorFocus": "Apresentar uma inferência como fato sem mostrar dados que a sustentem.",
+      "hint": "Escreva separadamente o que foi observado, a hipótese e o teste que poderia diferenciá-la de alternativas.",
+      "misconceptions": {
+        "Manter a frase, pois bolhas são prova universal de reação.": [
+          "APRESENTAR_UMA_INFER_NCIA_COMO_FATO_SEM_MOSTRAR_DADOS_QUE_A_SUSTENTEM"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_01",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Que evidência torna a hipótese de reação mais forte?",
+      "options": [
+        "O sólido aparece na mistura e não nos controles, indicando um produto com propriedades diferentes.",
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "O sólido aparece na mistura e não nos controles, indicando um produto com propriedades diferentes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_02",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Qual critério deve orientar a análise?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "Use Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "Use Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_03",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Avalie outro experimento em que um produto surge somente depois da combinação dos reagentes.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "Avalie outro experimento em que um produto surge somente depois da combinação dos reagentes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_04",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Qual conclusão deve ser evitada?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química.",
+        "Evite dizer que qualquer turvação prova uma reação sem verificar o controle."
+      ],
+      "correctAnswer": "Evite dizer que qualquer turvação prova uma reação sem verificar o controle.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_05",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira sólido formado, controles e propriedades das soluções.",
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "Confira sólido formado, controles e propriedades das soluções.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_06",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "repetir a mistura e caracterizar o sólido com uma propriedade observável",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "repetir a mistura e caracterizar o sólido com uma propriedade observável",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_07",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Mantenha a conclusão ligada a a evidência disponível e as condições do ensaio.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a evidência disponível e as condições do ensaio.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_08",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Que comparação é mais justa?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química.",
+        "Compare mistura e controles, mantendo volume e temperatura comparáveis."
+      ],
+      "correctAnswer": "Compare mistura e controles, mantendo volume e temperatura comparáveis.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_09",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que qualquer turvação prova uma reação sem verificar o controle.",
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "Seria exagero dizer que qualquer turvação prova uma reação sem verificar o controle.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_PRECIPITATE_10",
+      "statement": "Duas soluções incolores são misturadas e formam um sólido branco. Em um controle, cada solução permanece líquida quando testada separadamente. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A cor branca prova a reação mesmo sem comparar controles.",
+        "o sólido também aparece quando cada solução é testada sozinha?",
+        "O sólido estava necessariamente escondido em uma das soluções.",
+        "Nenhuma observação de produto pode apoiar uma hipótese química."
+      ],
+      "correctAnswer": "o sólido também aparece quando cada solução é testada sozinha?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Compare o produto com os reagentes e use controles realizados nas mesmas condições.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor branca prova a reação mesmo sem comparar controles.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_01",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Como separar as explicações possíveis?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "É preciso comparar os ensaios: o aquecimento pode liberar gás dissolvido, enquanto o comprimido pode produzir gás por uma transformação química.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "É preciso comparar os ensaios: o aquecimento pode liberar gás dissolvido, enquanto o comprimido pode produzir gás por uma transformação química.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_02",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Qual critério deve orientar a análise?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação.",
+        "Use Distingua uma pista observada de uma explicação e compare condições de controle."
+      ],
+      "correctAnswer": "Use Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_03",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Interprete outro caso com bolhas verificando se o gás já estava dissolvido ou se apareceu após reagentes interagirem.",
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Interprete outro caso com bolhas verificando se o gás já estava dissolvido ou se apareceu após reagentes interagirem.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_04",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Qual conclusão deve ser evitada?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Evite afirmar que toda bolha é produto de uma reação.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Evite afirmar que toda bolha é produto de uma reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_05",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "Confira presença do comprimido, temperatura e identidade do gás.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Confira presença do comprimido, temperatura e identidade do gás.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_06",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação.",
+        "manter um controle sem comprimido e analisar o gás formado"
+      ],
+      "correctAnswer": "manter um controle sem comprimido e analisar o gás formado",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_07",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a as condições comparadas e a identificação do gás.",
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as condições comparadas e a identificação do gás.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_08",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Que comparação é mais justa?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Compare ensaio com comprimido e ensaio aquecido sem comprimido.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Compare ensaio com comprimido e ensaio aquecido sem comprimido.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_09",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Qual seria um exagero interpretativo?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "Seria exagero afirmar que toda bolha é produto de uma reação.",
+        "O controle sem comprimido não acrescenta informação."
+      ],
+      "correctAnswer": "Seria exagero afirmar que toda bolha é produto de uma reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_GAS_10",
+      "statement": "Um comprimido efervescente é colocado em água à temperatura ambiente e libera bolhas. Em outro ensaio, a água é aquecida sem o comprimido e também libera pequenas bolhas. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "As bolhas sempre têm a mesma origem, independentemente das condições.",
+        "Aquecer água transforma qualquer gás dissolvido em uma nova substância.",
+        "O controle sem comprimido não acrescenta informação.",
+        "o gás aparece sem os reagentes que supostamente o produziriam?"
+      ],
+      "correctAnswer": "o gás aparece sem os reagentes que supostamente o produziriam?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Distingua uma pista observada de uma explicação e compare condições de controle.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "As bolhas sempre têm a mesma origem, independentemente das condições.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_01",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual interpretação é mais cuidadosa?",
+      "options": [
+        "A mudança de cor é uma pista, mas a recuperação dos componentes impede tratá-la sozinha como prova de produto novo.",
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "A mudança de cor é uma pista, mas a recuperação dos componentes impede tratá-la sozinha como prova de produto novo.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_02",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual critério deve orientar a análise?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "Use Não confunda mudança visual com identificação de substância; considere análises complementares.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "Use Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_03",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Analise uma mudança de cor em que a composição final ainda não foi determinada.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "Analise uma mudança de cor em que a composição final ainda não foi determinada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_04",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual conclusão deve ser evitada?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química.",
+        "Evite concluir uma transformação química apenas pela cor observada."
+      ],
+      "correctAnswer": "Evite concluir uma transformação química apenas pela cor observada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_05",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira cor inicial, cor final e recuperação dos componentes.",
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "Confira cor inicial, cor final e recuperação dos componentes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_06",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "usar uma análise adicional para verificar se surgiu uma substância diferente",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "usar uma análise adicional para verificar se surgiu uma substância diferente",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_07",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Mantenha a conclusão ligada a o que a observação e a separação permitem afirmar.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o que a observação e a separação permitem afirmar.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_08",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Que comparação é mais justa?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química.",
+        "Compare amostras antes e depois, usando o mesmo método de análise."
+      ],
+      "correctAnswer": "Compare amostras antes e depois, usando o mesmo método de análise.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_09",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero concluir uma transformação química apenas pela cor observada.",
+        "A cor final identifica automaticamente todos os produtos.",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "Seria exagero concluir uma transformação química apenas pela cor observada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_COLOR_10",
+      "statement": "Uma solução azul fica verde após a adição de outra solução. Em uma repetição, a mistura é separada e os componentes originais são recuperados. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A cor final identifica automaticamente todos os produtos.",
+        "a cor mudou porque houve reação ou porque os componentes foram combinados?",
+        "Recuperar os componentes prova que a cor nunca mudou.",
+        "Toda mistura colorida é uma transformação química."
+      ],
+      "correctAnswer": "a cor mudou porque houve reação ou porque os componentes foram combinados?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Não confunda mudança visual com identificação de substância; considere análises complementares.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A cor final identifica automaticamente todos os produtos.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_01",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. O que o resfriamento sustenta?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "A diferença entre a mistura e os controles é uma evidência de interação energética, mas a classificação química exige avaliar também a composição e a reversibilidade.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "A diferença entre a mistura e os controles é uma evidência de interação energética, mas a classificação química exige avaliar também a composição e a reversibilidade.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_02",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Qual critério deve orientar a análise?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor.",
+        "Use Use a temperatura como evidência contextual, sem tratá-la como prova isolada."
+      ],
+      "correctAnswer": "Use Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_03",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Avalie outro experimento em que calor é absorvido e verifique se houve formação de substância nova.",
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Avalie outro experimento em que calor é absorvido e verifique se houve formação de substância nova.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_04",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Qual conclusão deve ser evitada?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Evite tratar qualquer mudança de temperatura como prova conclusiva de reação.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Evite tratar qualquer mudança de temperatura como prova conclusiva de reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_05",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Confira temperaturas inicial e final, controles e composição após o ensaio.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Confira temperaturas inicial e final, controles e composição após o ensaio.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_06",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor.",
+        "medir as condições com repetição e investigar produtos e reversibilidade"
+      ],
+      "correctAnswer": "medir as condições com repetição e investigar produtos e reversibilidade",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_07",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a variação térmica observada e suas explicações alternativas.",
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a variação térmica observada e suas explicações alternativas.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_08",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Que comparação é mais justa?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Compare mistura dos reagentes e controles térmicos.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Compare mistura dos reagentes e controles térmicos.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_09",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Qual seria um exagero interpretativo?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Seria exagero tratar qualquer mudança de temperatura como prova conclusiva de reação.",
+        "Controles térmicos não são necessários para interpretar calor."
+      ],
+      "correctAnswer": "Seria exagero tratar qualquer mudança de temperatura como prova conclusiva de reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_TEMPERATURE_10",
+      "statement": "Ao misturar duas substâncias, a temperatura do recipiente diminui. O mesmo resfriamento não ocorre quando cada substância é misturada com água em separado. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "O resfriamento prova sozinho quais produtos foram formados.",
+        "Uma mistura que esfria nunca pode ser uma mudança física.",
+        "Controles térmicos não são necessários para interpretar calor.",
+        "a energia mudou por reação ou por dissolução e transferência de calor?"
+      ],
+      "correctAnswer": "a energia mudou por reação ou por dissolução e transferência de calor?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Use a temperatura como evidência contextual, sem tratá-la como prova isolada.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O resfriamento prova sozinho quais produtos foram formados.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_01",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual conclusão combina as duas observações?",
+      "options": [
+        "Pode ter ocorrido uma transformação química com conservação da massa total no sistema fechado.",
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Pode ter ocorrido uma transformação química com conservação da massa total no sistema fechado.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_02",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual critério deve orientar a análise?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "Use Separe conservação da massa de conservação da identidade das substâncias.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Use Separe conservação da massa de conservação da identidade das substâncias.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_03",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Interprete uma reação em outro recipiente fechado comparando massa e composição.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Interprete uma reação em outro recipiente fechado comparando massa e composição.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_04",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual conclusão deve ser evitada?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa.",
+        "Evite dizer que massa constante significa que nenhuma reação ocorreu."
+      ],
+      "correctAnswer": "Evite dizer que massa constante significa que nenhuma reação ocorreu.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_05",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira massa do sistema fechado e evidências de composição diferente.",
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Confira massa do sistema fechado e evidências de composição diferente.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_06",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "identificar reagentes e produtos sem abandonar a fronteira do sistema",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "identificar reagentes e produtos sem abandonar a fronteira do sistema",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_07",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Mantenha a conclusão ligada a a conservação de massa no recipiente analisado.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a conservação de massa no recipiente analisado.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_08",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Que comparação é mais justa?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa.",
+        "Compare massa total e identidade das substâncias antes e depois."
+      ],
+      "correctAnswer": "Compare massa total e identidade das substâncias antes e depois.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_09",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que massa constante significa que nenhuma reação ocorreu.",
+        "Massa constante impede a formação de substâncias novas.",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "Seria exagero dizer que massa constante significa que nenhuma reação ocorreu.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_MASS_10",
+      "statement": "Em um recipiente fechado, dois reagentes são misturados e a massa total permanece igual antes e depois. A aparência e a composição das amostras mudam. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Massa constante impede a formação de substâncias novas.",
+        "a massa foi medida no mesmo sistema e a composição foi investigada?",
+        "A mudança de composição prova que parte da massa desapareceu.",
+        "Somente sistemas abertos conservam massa."
+      ],
+      "correctAnswer": "a massa foi medida no mesmo sistema e a composição foi investigada?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Separe conservação da massa de conservação da identidade das substâncias.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Massa constante impede a formação de substâncias novas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_01",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Por que a massa indicada pode diminuir?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Parte da matéria saiu do sistema medido como gás; a leitura não permite concluir que a matéria foi destruída.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Parte da matéria saiu do sistema medido como gás; a leitura não permite concluir que a matéria foi destruída.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_02",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Qual critério deve orientar a análise?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química.",
+        "Use Defina a fronteira do sistema antes de interpretar uma mudança na massa medida."
+      ],
+      "correctAnswer": "Use Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_03",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise uma reação em que um sólido entra no sistema e compare a massa registrada com a massa total.",
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Analise uma reação em que um sólido entra no sistema e compare a massa registrada com a massa total.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_04",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Qual conclusão deve ser evitada?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "Evite afirmar destruição de matéria a partir de uma balança que mede só o recipiente.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Evite afirmar destruição de matéria a partir de uma balança que mede só o recipiente.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_05",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Confira recipiente aberto, gás liberado e ausência de coleta.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Confira recipiente aberto, gás liberado e ausência de coleta.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_06",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química.",
+        "fechar o sistema ou coletar o gás para comparar a massa total"
+      ],
+      "correctAnswer": "fechar o sistema ou coletar o gás para comparar a massa total",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_07",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a massa do conteúdo que permaneceu no recipiente.",
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a massa do conteúdo que permaneceu no recipiente.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_08",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Que comparação é mais justa?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "Compare sistema medido e sistema ampliado com o gás liberado.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Compare sistema medido e sistema ampliado com o gás liberado.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_09",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Qual seria um exagero interpretativo?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Seria exagero afirmar destruição de matéria a partir de uma balança que mede só o recipiente.",
+        "Fechar o sistema impediria qualquer transformação química."
+      ],
+      "correctAnswer": "Seria exagero afirmar destruição de matéria a partir de uma balança que mede só o recipiente.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_OPEN-SYSTEM_10",
+      "statement": "Uma reação que produz gás acontece em um copo aberto. A massa medida no copo diminui, e o gás não foi coletado. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A massa caiu porque toda reação destrói matéria.",
+        "O gás não tem massa depois que sai do copo.",
+        "Fechar o sistema impediria qualquer transformação química.",
+        "qual parte da matéria ficou fora da balança?"
+      ],
+      "correctAnswer": "qual parte da matéria ficou fora da balança?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Defina a fronteira do sistema antes de interpretar uma mudança na massa medida.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "A massa caiu porque toda reação destrói matéria.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_01",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Que dado favorece uma mudança física?",
+      "options": [
+        "A recuperação do mesmo soluto após aquecimento indica reorganização reversível sem evidência de substância nova.",
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "A recuperação do mesmo soluto após aquecimento indica reorganização reversível sem evidência de substância nova.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_02",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Qual critério deve orientar a análise?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Use Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "Use Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_03",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Classifique outro processo reversível verificando se a substância original pode ser obtida novamente.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "Classifique outro processo reversível verificando se a substância original pode ser obtida novamente.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_04",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Qual conclusão deve ser evitada?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química.",
+        "Evite usar a formação de cristais como prova suficiente de reação."
+      ],
+      "correctAnswer": "Evite usar a formação de cristais como prova suficiente de reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_05",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira cristalização, aquecimento e recuperação do soluto.",
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "Confira cristalização, aquecimento e recuperação do soluto.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_06",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "comparar a composição antes e depois do ciclo",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "comparar a composição antes e depois do ciclo",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_07",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Mantenha a conclusão ligada a a reversibilidade demonstrada nas condições do experimento.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a reversibilidade demonstrada nas condições do experimento.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_08",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Que comparação é mais justa?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química.",
+        "Compare solução inicial, cristais e solução recuperada."
+      ],
+      "correctAnswer": "Compare solução inicial, cristais e solução recuperada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_09",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero usar a formação de cristais como prova suficiente de reação.",
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "Seria exagero usar a formação de cristais como prova suficiente de reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REVERSIBLE_10",
+      "statement": "Um sólido cristaliza ao resfriar uma solução e desaparece quando a solução é aquecida novamente. A composição do soluto pode ser recuperada. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Todo sólido formado durante resfriamento é produto químico.",
+        "o ciclo recupera a mesma substância ou produz outra?",
+        "Reversibilidade não informa nada sobre a composição.",
+        "Aquecer sempre desfaz uma reação química."
+      ],
+      "correctAnswer": "o ciclo recupera a mesma substância ou produz outra?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Considere reversibilidade e composição recuperada ao distinguir mudanças físicas e químicas.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Todo sólido formado durante resfriamento é produto químico.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_01",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. O que a comparação indica?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "A trituração aumentou a velocidade de contato, mas não prova que a quantidade total de transformação ou os produtos sejam diferentes.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "A trituração aumentou a velocidade de contato, mas não prova que a quantidade total de transformação ou os produtos sejam diferentes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_02",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Qual critério deve orientar a análise?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida.",
+        "Use Diferencie velocidade de reação de quantidade total e identidade dos produtos."
+      ],
+      "correctAnswer": "Use Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_03",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Interprete outro experimento em que uma condição altera o tempo, sem concluir automaticamente que alterou o produto.",
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Interprete outro experimento em que uma condição altera o tempo, sem concluir automaticamente que alterou o produto.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_04",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Qual conclusão deve ser evitada?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "Evite dizer que uma reação mais rápida sempre produz mais substância.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Evite dizer que uma reação mais rápida sempre produz mais substância.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_05",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Confira tamanho das partículas, tempo de liberação e produtos finais.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Confira tamanho das partículas, tempo de liberação e produtos finais.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_06",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida.",
+        "controlar a quantidade e comparar a transformação total ao final"
+      ],
+      "correctAnswer": "controlar a quantidade e comparar a transformação total ao final",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_07",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a velocidade observada e a quantidade de reagente usada.",
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a velocidade observada e a quantidade de reagente usada.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_08",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Que comparação é mais justa?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "Compare comprimido triturado e comprimido inteiro ao longo do tempo.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Compare comprimido triturado e comprimido inteiro ao longo do tempo.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_09",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Qual seria um exagero interpretativo?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Seria exagero dizer que uma reação mais rápida sempre produz mais substância.",
+        "Tempo de reação e quantidade transformada são a mesma medida."
+      ],
+      "correctAnswer": "Seria exagero dizer que uma reação mais rápida sempre produz mais substância.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_RATE_10",
+      "statement": "Dois comprimidos iguais reagem em água. Um foi triturado e libera gás mais rapidamente, mas ambos deixam de reagir após o mesmo tempo total. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Triturar cria uma substância diferente em qualquer reação.",
+        "A reação mais rápida necessariamente consome mais reagente.",
+        "Tempo de reação e quantidade transformada são a mesma medida.",
+        "a condição mudou a taxa ou também a quantidade final?"
+      ],
+      "correctAnswer": "a condição mudou a taxa ou também a quantidade final?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Diferencie velocidade de reação de quantidade total e identidade dos produtos.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Triturar cria uma substância diferente em qualquer reação.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_01",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual crítica melhora a conclusão?",
+      "options": [
+        "É necessário comparar a mistura com controles e investigar se a dissolução ou a temperatura inicial explicam o aquecimento antes de atribuí-lo a uma reação.",
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "É necessário comparar a mistura com controles e investigar se a dissolução ou a temperatura inicial explicam o aquecimento antes de atribuí-lo a uma reação.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_02",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual critério deve orientar a análise?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Use Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "Use Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_03",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "Revise outra conclusão baseada em uma única pista e proponha uma comparação relevante.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "Revise outra conclusão baseada em uma única pista e proponha uma comparação relevante.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_04",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual conclusão deve ser evitada?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra.",
+        "Evite aceitar a primeira explicação sem testar causas alternativas."
+      ],
+      "correctAnswer": "Evite aceitar a primeira explicação sem testar causas alternativas.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_05",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira temperaturas iniciais, controles de dissolução e produtos analisados.",
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "Confira temperaturas iniciais, controles de dissolução e produtos analisados.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_06",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "repetir o ensaio com medidas iniciais e controles adequados",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "repetir o ensaio com medidas iniciais e controles adequados",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_07",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "Mantenha a conclusão ligada a o que foi medido e o que ainda não foi testado.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o que foi medido e o que ainda não foi testado.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_08",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Que comparação é mais justa?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra.",
+        "Compare mistura reativa e processos físicos que também liberam ou absorvem calor."
+      ],
+      "correctAnswer": "Compare mistura reativa e processos físicos que também liberam ou absorvem calor.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_09",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero aceitar a primeira explicação sem testar causas alternativas.",
+        "Uma única observação sempre elimina explicações alternativas.",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "Seria exagero aceitar a primeira explicação sem testar causas alternativas.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_ALTERNATIVE_10",
+      "statement": "Uma amostra aquece quando dois líquidos são misturados. A equipe conclui que ocorreu uma reação, mas não mediu a temperatura dos líquidos ao serem combinados nem verificou a dissolução. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Uma única observação sempre elimina explicações alternativas.",
+        "qual explicação diferente da reação também prevê o aquecimento?",
+        "Controles só servem quando não há mudança de temperatura.",
+        "A equipe pode afirmar o produto sem analisar a amostra."
+      ],
+      "correctAnswer": "qual explicação diferente da reação também prevê o aquecimento?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Procure explicações alternativas e dados de controle antes de fechar uma inferência.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "Uma única observação sempre elimina explicações alternativas.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_01",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Como o relatório deve ser revisado?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Deve separar observações de interpretações, registrar controles e explicar se a composição mudou antes de afirmar uma reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Deve separar observações de interpretações, registrar controles e explicar se a composição mudou antes de afirmar uma reação irreversível.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_02",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Qual critério deve orientar a análise?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico.",
+        "Use Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza."
+      ],
+      "correctAnswer": "Use Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_03",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Melhore outro relatório que usa linguagem conclusiva sem descrever controles e limites.",
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Melhore outro relatório que usa linguagem conclusiva sem descrever controles e limites.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_04",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Evite transformar uma observação em conclusão definitiva sem dados suficientes.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Evite transformar uma observação em conclusão definitiva sem dados suficientes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_05",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Confira turbidez, calor, reversibilidade e ausência de controles no relatório.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Confira turbidez, calor, reversibilidade e ausência de controles no relatório.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_06",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico.",
+        "adicionar controles, método de análise e uma conclusão limitada aos dados"
+      ],
+      "correctAnswer": "adicionar controles, método de análise e uma conclusão limitada aos dados",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_07",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a qualidade e a extensão das evidências registradas.",
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a qualidade e a extensão das evidências registradas.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_08",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Que comparação é mais justa?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Compare observações descritas e afirmações feitas no relatório.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Compare observações descritas e afirmações feitas no relatório.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_09",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Qual seria um exagero interpretativo?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Seria exagero transformar uma observação em conclusão definitiva sem dados suficientes.",
+        "Controles e método não precisam aparecer em um relatório científico."
+      ],
+      "correctAnswer": "Seria exagero transformar uma observação em conclusão definitiva sem dados suficientes.",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    },
+    {
+      "id": "v14-chemistry-reaction-evidence-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14_CHEMISTRY_REACTION_REPORT_10",
+      "statement": "Um relatório descreve uma mistura que ficou turva, liberou calor e depois voltou a ficar transparente. O texto chama o processo de reação irreversível sem informar controles ou análise dos componentes. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "O relatório está completo porque menciona três observações.",
+        "Voltar a ficar transparente prova que houve reação irreversível.",
+        "Controles e método não precisam aparecer em um relatório científico.",
+        "quais dados faltam para distinguir mistura física de reação?"
+      ],
+      "correctAnswer": "quais dados faltam para distinguir mistura física de reação?",
+      "explanation": "A resposta interpreta uma evidência química sem ignorar controles, composição ou limites do sistema. Escreva conclusões proporcionais às evidências e torne explícitos método e incerteza.",
+      "hint": "Separe o que foi observado da explicação e procure controles que testem alternativas.",
+      "errorFocus": "CHEMISTRY_REACTION_EVIDENCE_SCOPE",
+      "misconceptions": {
+        "O relatório está completo porque menciona três observações.": [
+          "CHEMISTRY_REACTION_EVIDENCE_SCOPE"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Evidências: o que os dados permitem concluir",
+    "objective": "Distinguir mudanças físicas de transformações químicas e justificar conclusões sobre formação de novas substâncias com evidências, controles e explicações alternativas.",
+    "summary": "Bolhas, cor, temperatura e sólidos são observações úteis, mas uma pista isolada pode ter causas físicas. Compare controles, investigue produtos e delimite a conclusão.",
+    "explanation": "## Comece pelo que foi observado\nRegistre sem interpretar: surgiu gás, apareceu um sólido, a cor mudou, a temperatura variou ou houve mudança de estado? Em seguida, pergunte se alguma substância nova foi formada. Uma transformação química envolve reagentes que dão origem a produtos com composição ou identidade diferente.\n\n## Uma pista não é uma prova isolada\nBolhas podem resultar de ebulição ou da saída de gás já dissolvido; uma cor pode mudar porque pigmentos se misturaram ou porque um indicador respondeu ao pH; a temperatura pode variar durante dissolução ou cristalização. Essas observações orientam uma hipótese, mas devem ser comparadas a outras explicações.\n\n## Compare e controle\nTeste cada reagente isoladamente nas mesmas condições e compare com a mistura. Mantenha volumes, recipiente, temperatura e iluminação constantes, quando forem relevantes. Repita observações e procure propriedades de produtos diferentes dos reagentes. Um sólido que aparece apenas na mistura e apresenta propriedades próprias sustenta a hipótese de precipitação.\n\n## Explique no nível das partículas\nEm uma reação, os átomos dos reagentes se reorganizam e formam substâncias diferentes; os átomos não desaparecem. Em um sistema fechado, a massa total se conserva. Em um recipiente aberto, uma leitura pode diminuir se um gás sair: isso muda a fronteira do que a balança está medindo, não a quantidade total de matéria.\n\n## Exemplo resolvido\nDuas soluções transparentes são misturadas e surge um sólido branco. Controles de cada solução, preparados e mantidos nas mesmas condições, continuam transparentes. Uma análise adicional mostra que o sólido tem propriedades diferentes das soluções iniciais. A combinação de controle, produto distinto e observação reproduzível sustenta a conclusão de que ocorreu uma transformação química. Se o único dado fossem bolhas em um líquido aquecido, ebulição continuaria sendo uma explicação possível.",
+    "workedExample": "Em três recipientes iguais, a solução A fica sozinha, a solução B fica sozinha e A+B são misturadas. Apenas A+B forma um sólido. A observação é “surgiu um sólido”; a inferência é “pode ter se formado um produto insolúvel”. Controles iguais e uma comparação das propriedades do sólido com as dos reagentes tornam a inferência mais forte. A conclusão não deve ir além dos dados coletados.",
+    "commonMistake": "Tratar bolhas, cor, temperatura ou mudança de estado como prova automática, sem considerar controles, produtos e explicações físicas alternativas.",
+    "commonErrors": [
+      "Confundir observação com explicação e apresentar uma hipótese como certeza.",
+      "Tomar bolhas ou mudança de cor como prova sem testar causas físicas.",
+      "Ignorar controles que mostram o que acontece com cada reagente isolado.",
+      "Interpretar a queda de massa em sistema aberto como matéria destruída.",
+      "Afirmar formação de um produto específico sem dados que identifiquem sua composição."
+    ],
+    "tips": [
+      "Escreva primeiro a observação e depois a inferência.",
+      "Pergunte quais explicações físicas também poderiam produzir o sinal.",
+      "Compare a mistura com controles nas mesmas condições.",
+      "Procure propriedades ou composição de produtos diferentes dos reagentes.",
+      "Defina a fronteira do sistema antes de interpretar massa medida."
+    ],
+    "priorKnowledge": [
+      "Reconhecer estados físicos e propriedades observáveis.",
+      "Distinguir observação, hipótese e conclusão.",
+      "Ler tabelas simples de comparação entre amostras."
+    ],
+    "keyConcepts": [
+      "mudança física e identidade da substância",
+      "formação de novas substâncias por reorganização de átomos",
+      "gás, precipitado, cor e temperatura como evidências contextualizadas",
+      "controle experimental e explicações alternativas",
+      "conservação da matéria em sistema fechado"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Separar observação de inferência e reconhecer mudanças físicas.",
+        "questionIds": [
+          "v5-chem-reaction-evidence-probe-01",
+          "v5-chem-reaction-evidence-probe-02"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Interpretar evidências em situações controladas e comparáveis.",
+        "questionIds": [
+          "v5-chem-reaction-evidence-practice-01",
+          "v5-chem-reaction-evidence-practice-02",
+          "v5-chem-reaction-evidence-practice-03"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar o raciocínio a processos biológicos, ambientais e cotidianos.",
+        "questionIds": [
+          "v5-chem-reaction-evidence-transfer-01",
+          "v5-chem-reaction-evidence-transfer-02",
+          "v5-chem-reaction-evidence-transfer-03",
+          "v14-chemistry-reaction-evidence-051",
+          "v14-chemistry-reaction-evidence-052",
+          "v14-chemistry-reaction-evidence-053",
+          "v14-chemistry-reaction-evidence-054",
+          "v14-chemistry-reaction-evidence-055",
+          "v14-chemistry-reaction-evidence-056",
+          "v14-chemistry-reaction-evidence-057",
+          "v14-chemistry-reaction-evidence-058",
+          "v14-chemistry-reaction-evidence-059",
+          "v14-chemistry-reaction-evidence-060",
+          "v14-chemistry-reaction-evidence-061",
+          "v14-chemistry-reaction-evidence-062",
+          "v14-chemistry-reaction-evidence-063",
+          "v14-chemistry-reaction-evidence-064",
+          "v14-chemistry-reaction-evidence-065",
+          "v14-chemistry-reaction-evidence-066",
+          "v14-chemistry-reaction-evidence-067",
+          "v14-chemistry-reaction-evidence-068",
+          "v14-chemistry-reaction-evidence-069",
+          "v14-chemistry-reaction-evidence-070",
+          "v14-chemistry-reaction-evidence-071",
+          "v14-chemistry-reaction-evidence-072",
+          "v14-chemistry-reaction-evidence-073",
+          "v14-chemistry-reaction-evidence-074",
+          "v14-chemistry-reaction-evidence-075"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Combinar sinais, controles e conservação da matéria para justificar conclusões.",
+        "questionIds": [
+          "v5-chem-reaction-evidence-lock-01"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Recuperar a distinção entre pista, produto e prova em novos contextos.",
+        "questionIds": [
+          "v5-chem-reaction-evidence-review-01",
+          "v5-chem-reaction-evidence-review-02",
+          "v5-chem-reaction-evidence-review-03",
+          "v5-chem-reaction-evidence-review-04",
+          "v5-chem-reaction-evidence-review-05",
+          "v5-chem-reaction-evidence-review-06",
+          "v5-chem-reaction-evidence-review-07"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBSERVATION_VS_INFERENCE",
+        "text": "“Vi bolhas” é observação; “formou-se um produto” é inferência que precisa de evidência."
+      },
+      {
+        "trigger": "ALTERNATIVE_PHYSICAL_CAUSE",
+        "text": "Ebulição, gás dissolvido e mistura de pigmentos podem explicar alguns sinais sem uma reação nova."
+      },
+      {
+        "trigger": "NEW_SUBSTANCE",
+        "text": "A evidência mais importante é que uma ou mais substâncias diferentes foram formadas."
+      },
+      {
+        "trigger": "CONTROL_COMPARISON",
+        "text": "Controles nas mesmas condições mostram se a mudança dependeu da interação entre os reagentes."
+      },
+      {
+        "trigger": "MATTER_CONSERVATION_BOUNDARY",
+        "text": "Em recipiente aberto, gás que escapa deixa de ser contado pela balança local; a matéria não desaparece."
+      },
+      {
+        "trigger": "CLAIM_SCOPE",
+        "text": "A conclusão deve ser tão forte quanto os dados, sem nomear produtos que não foram identificados."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SIGN_IS_NOT_PROOF",
+        "misconception": "BOLHA_COR_OU_TEMPERATURA_COMO_PROVA",
+        "prompt": "Liste uma causa física para o sinal observado e compare-a com a hipótese de reação."
+      },
+      {
+        "id": "OBSERVATION_INFERENCE",
+        "misconception": "OBSERVACAO_COMO_CONCLUSAO",
+        "prompt": "Separe a frase em dado observado, hipótese e informação que falta para testar a hipótese."
+      },
+      {
+        "id": "CONTROL_DESIGN",
+        "misconception": "CONTROLE_AUSENTE",
+        "prompt": "Descreva como cada reagente se comportaria sozinho nas mesmas condições da mistura."
+      },
+      {
+        "id": "OPEN_SYSTEM_MASS",
+        "misconception": "MATERIA_DESTRUIDA",
+        "prompt": "Desenhe a fronteira do sistema medido e identifique se algum gás saiu ou entrou."
+      },
+      {
+        "id": "PRODUCT_IDENTITY",
+        "misconception": "PRODUTO_NAO_IDENTIFICADO",
+        "prompt": "Compare uma propriedade do produto com as propriedades conhecidas dos reagentes antes de nomeá-lo."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 22,
+    "sourceDossier": [
+      {
+        "title": "Chemistry 2e, Section 1.3: Physical and Chemical Properties",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Mudanças físicas alteram estado ou propriedades sem alterar a identidade química.",
+          "Uma mudança química produz matéria diferente da presente antes da mudança."
+        ],
+        "use": "Conferência conceitual; questões e explicações do pacote são autorais."
+      },
+      {
+        "title": "Chemistry 2e, Section 1.2: Phases and Classification of Matter",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A matéria total se conserva em mudanças químicas e físicas; a medição pode não incluir matéria que saiu do sistema."
+        ],
+        "use": "Conferência da explicação sobre conservação da matéria e fronteira de sistemas abertos."
+      },
+      {
+        "title": "Lesson 6.3: Forming a Precipitate",
+        "publisher": "American Chemical Society",
+        "url": "https://www.acs.org/middleschoolchemistry/lessonplans/chapter6/lesson3.html",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A comparação controlada das propriedades do precipitado e dos reagentes pode confirmar a formação de substância diferente."
+        ],
+        "use": "Referência didática para uso de controles e comparação de propriedades; texto e atividades do pacote são autorais."
+      },
+      {
+        "title": "Lesson 3.5: Different Substances React Differently",
+        "publisher": "American Chemical Society",
+        "url": "https://www.acs.org/education/resources/k-8/inquiryinaction/fifth-grade/chapter-3/different-substances-react-differently.html",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Gás, mudança de cor, temperatura e precipitado são evidências possíveis de reação, interpretadas em contexto."
+        ],
+        "use": "Conferência das pistas observáveis e dos exemplos; não é fonte de alinhamento BNCC para este pacote."
+      }
+    ],
+    "copyrightNote": "Questões, cenários, explicações e dados foram escritos para este pacote. As fontes conferem conceitos; alinhamento curricular oficial e revisão pedagógica humana permanecem pendentes. Lote V14 autoral com 100 questões e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "lessonVersion": 14,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 16,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V14"
+  }
+}

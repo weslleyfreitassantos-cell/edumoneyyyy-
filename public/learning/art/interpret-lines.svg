@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Linhas convergentes</title>
+  <desc id="desc">Quatro linhas curvas atravessam um campo azul e convergem para um pequeno círculo amarelo à direita.</desc>
+  <rect width="600" height="360" fill="#e9f1ed"/>
+  <path d="M35 45 C180 70 330 125 500 180" fill="none" stroke="#176b73" stroke-width="8"/>
+  <path d="M35 125 C190 145 335 160 500 180" fill="none" stroke="#398b8d" stroke-width="8"/>
+  <path d="M35 235 C190 215 335 200 500 180" fill="none" stroke="#237b86" stroke-width="8"/>
+  <path d="M35 315 C180 285 330 230 500 180" fill="none" stroke="#164f66" stroke-width="8"/>
+  <circle cx="510" cy="180" r="27" fill="#e9a840" stroke="#173e52" stroke-width="5"/>
+</svg>

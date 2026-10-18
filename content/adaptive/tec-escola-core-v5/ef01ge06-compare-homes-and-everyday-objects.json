@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge06-compare-homes-and-everyday-objects",
+  "canonicalSkillCode": "AUTHORING_EF01GE06_COMPARE_HOMES_OBJECTS_MATERIALS",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "moradias e objetos cotidianos, materiais e técnicas de produção",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever e comparar diferentes tipos de moradia ou objetos de uso cotidiano (brinquedos, roupas, mobiliários), considerando técnicas e materiais utilizados em sua produção.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Objetos e moradias em diferentes contextos",
+    "objective": "Descrever e comparar moradias ou objetos cotidianos a partir de materiais e técnicas informados nas fontes, evitando estereótipos e julgamentos sobre pessoas ou comunidades.",
+    "summary": "Moradias e objetos podem ser feitos de materiais variados e com técnicas diferentes, conforme ambiente, conhecimentos, escolhas, necessidades e recursos disponíveis. Uma imagem ou relato informa apenas o que mostra; não permite concluir como vivem todas as pessoas de uma região. Comparar significa identificar características, não declarar um tipo de moradia ou objeto superior. As atividades usam exemplos públicos ou fictícios e não solicitam que estudantes revelem endereço, condição econômica ou detalhes privados de casa.",
+    "explanation": "Observe a fonte e identifique o objeto ou moradia, os materiais nomeados e a técnica descrita. Uma cadeira pode ser feita de madeira, metal ou outros materiais; casas também variam conforme local, clima, conhecimento e projeto. Ao comparar, diga “nesta fonte” e destaque um aspecto específico. Não presuma que um material indique pobreza ou riqueza, nem que todas as casas de um lugar sejam iguais. Considere segurança e acessibilidade sem classificar famílias.",
+    "workedExample": "Duas imagens identificadas mostram brinquedos: um de tecido costurado e outro de madeira montada. Podemos comparar material e modo de produção sem afirmar que um é melhor para todas as crianças.",
+    "commonMistake": "Generalizar uma imagem para toda uma comunidade, associar material a valor de uma família ou chamar uma técnica de atrasada sem contexto.",
+    "priorKnowledge": [
+      "Reconhecer objetos cotidianos e alguns materiais.",
+      "Descrever características visíveis em imagem ou modelo."
+    ],
+    "keyConcepts": [
+      "moradia",
+      "objeto cotidiano",
+      "material",
+      "técnica",
+      "produção",
+      "lugar",
+      "comparação",
+      "contexto"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MATERIAL_AND_TECHNIQUE_EVIDENCE",
+        "action": "Separe o material nomeado da técnica descrita e não invente etapas que a fonte não apresenta."
+      },
+      {
+        "errorFocus": "NO_COMMUNITY_STEREOTYPE",
+        "action": "Limite a conclusão ao exemplo identificado e evite falar por todas as pessoas de um lugar."
+      },
+      {
+        "errorFocus": "PRIVACY_SAFE_COMPARISON",
+        "action": "Use fontes públicas ou fictícias em vez de pedir endereço, renda ou imagens de casas de estudantes."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+      "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+      "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge06-object-material-gallery",
+        "title": "Galeria de objetos e materiais",
+        "instructions": "Imagens públicas e cartões descrevem objetos com materiais e técnicas identificados.\n1. Escolha dois objetos e localize seus materiais.\n2. Compare uma técnica ou característica de produção indicada.\n3. Registre uma conclusão limitada às fontes.",
+        "steps": [
+          "Escolha dois objetos e localize seus materiais.",
+          "Compare uma técnica ou característica de produção indicada.",
+          "Registre uma conclusão limitada às fontes."
+        ],
+        "evidence": "Quadro comparativo que nomeia materiais e técnicas com referência aos exemplos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um objeto.",
+            "developing": "relaciona objeto e material.",
+            "proficient": "compara técnica e material sem generalizar ou hierarquizar pessoas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge06-housing-context-cards",
+        "title": "Moradias e seus contextos",
+        "instructions": "Cartões fictícios apresentam moradias em ambientes distintos e informações sobre projeto e materiais.\n1. Leia local e descrição de cada cartão.\n2. Identifique um material e uma escolha de projeto.\n3. Compare os exemplos sem presumir que representam todas as famílias.",
+        "steps": [
+          "Leia local e descrição de cada cartão.",
+          "Identifique um material e uma escolha de projeto.",
+          "Compare os exemplos sem presumir que representam todas as famílias."
+        ],
+        "evidence": "Descrição contextualizada de materiais e características das moradias apresentadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma característica com ajuda.",
+            "developing": "compara materiais dos exemplos.",
+            "proficient": "considera contexto e limita a conclusão às fontes."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge06-compare-homes-and-everyday-objects-01",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-02",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-03",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-04",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-05",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-06",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-07",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge06-compare-homes-and-everyday-objects-09",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-10",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-11",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-12",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-13",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-14",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-15",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge06-compare-homes-and-everyday-objects-17",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-18",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-19",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-20",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-21",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-22",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-23",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge06-compare-homes-and-everyday-objects-25",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-26",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-27",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-28",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-29",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-30",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-31",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge06-compare-homes-and-everyday-objects-33",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-34",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-35",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-36",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-37",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-38",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-39",
+          "v1-ef01ge06-compare-homes-and-everyday-objects-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE06",
+        "descriptor": "Descrever e comparar diferentes tipos de moradia ou objetos de uso cotidiano (brinquedos, roupas, mobiliários), considerando técnicas e materiais utilizados em sua produção.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-01",
+      "statement": "Uma ficha diz que um carrinho foi feito de madeira. Qual material foi identificado?",
+      "prompt": "Uma ficha diz que um carrinho foi feito de madeira. Qual material foi identificado?",
+      "options": [
+        "Madeira.",
+        "Vidro",
+        "Algodão",
+        "Papel"
+      ],
+      "correctAnswer": "Madeira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Vidro": [
+          "IDENTIFY_MATERIAL"
+        ],
+        "Algodão": [
+          "IDENTIFY_MATERIAL"
+        ],
+        "Papel": [
+          "IDENTIFY_MATERIAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARRINHO_DE_MADEIRA",
+      "explanation": "A ficha nomeia madeira como material.",
+      "hint": "Leia o material descrito.",
+      "errorFocus": "IDENTIFY_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A ficha nomeia madeira como material.",
+        "incorrect": "A ficha nomeia madeira como material.",
+        "hint": "Leia o material descrito.",
+        "errorFocus": "IDENTIFY_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-02",
+      "statement": "Uma imagem identificada mostra telhas no telhado. O que se pode descrever?",
+      "prompt": "Uma imagem identificada mostra telhas no telhado. O que se pode descrever?",
+      "options": [
+        "Todas as casas do bairro usam telhas",
+        "O telhado apresentado usa telhas.",
+        "A família é igual a todas",
+        "A casa é melhor que outras"
+      ],
+      "correctAnswer": "O telhado apresentado usa telhas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as casas do bairro usam telhas": [
+          "BOUNDED_HOUSING_DESCRIPTION"
+        ],
+        "A família é igual a todas": [
+          "BOUNDED_HOUSING_DESCRIPTION"
+        ],
+        "A casa é melhor que outras": [
+          "BOUNDED_HOUSING_DESCRIPTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "CASA_COM_TELHADO_DE_TELHA",
+      "explanation": "A descrição limita-se ao que a imagem mostra.",
+      "hint": "Use “nesta imagem”.",
+      "errorFocus": "BOUNDED_HOUSING_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A descrição limita-se ao que a imagem mostra.",
+        "incorrect": "A descrição limita-se ao que a imagem mostra.",
+        "hint": "Use “nesta imagem”.",
+        "errorFocus": "BOUNDED_HOUSING_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-03",
+      "statement": "Duas bonecas são descritas como feitas de pano e madeira. O que varia?",
+      "prompt": "Duas bonecas são descritas como feitas de pano e madeira. O que varia?",
+      "options": [
+        "O valor das crianças",
+        "A capacidade de brincar",
+        "O material usado nos exemplos.",
+        "O nome de todas as bonecas"
+      ],
+      "correctAnswer": "O material usado nos exemplos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O valor das crianças": [
+          "COMPARE_MATERIAL"
+        ],
+        "A capacidade de brincar": [
+          "COMPARE_MATERIAL"
+        ],
+        "O nome de todas as bonecas": [
+          "COMPARE_MATERIAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BONECA_DE_PANO_E_MADEIRA",
+      "explanation": "As fichas indicam materiais distintos.",
+      "hint": "Compare as descrições.",
+      "errorFocus": "COMPARE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: As fichas indicam materiais distintos.",
+        "incorrect": "As fichas indicam materiais distintos.",
+        "hint": "Compare as descrições.",
+        "errorFocus": "COMPARE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-04",
+      "statement": "Uma cadeira usa fibras trançadas segundo a legenda. Qual técnica está indicada?",
+      "prompt": "Uma cadeira usa fibras trançadas segundo a legenda. Qual técnica está indicada?",
+      "options": [
+        "Fundir metal",
+        "Costurar tecido",
+        "Moldar vidro",
+        "Trançar fibras."
+      ],
+      "correctAnswer": "Trançar fibras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fundir metal": [
+          "IDENTIFY_TECHNIQUE"
+        ],
+        "Costurar tecido": [
+          "IDENTIFY_TECHNIQUE"
+        ],
+        "Moldar vidro": [
+          "IDENTIFY_TECHNIQUE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CADEIRA_TRANCADA",
+      "explanation": "A legenda descreve fibras trançadas.",
+      "hint": "Procure a ação de produção.",
+      "errorFocus": "IDENTIFY_TECHNIQUE",
+      "feedback": {
+        "correct": "Boa observação: A legenda descreve fibras trançadas.",
+        "incorrect": "A legenda descreve fibras trançadas.",
+        "hint": "Procure a ação de produção.",
+        "errorFocus": "IDENTIFY_TECHNIQUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-05",
+      "statement": "Duas imagens mostram moradias diferentes. Qual conclusão é respeitosa?",
+      "prompt": "Duas imagens mostram moradias diferentes. Qual conclusão é respeitosa?",
+      "options": [
+        "Os exemplos têm características distintas.",
+        "Uma família vale mais",
+        "Todas as casas de um lugar são iguais",
+        "Uma moradia é sempre inferior"
+      ],
+      "correctAnswer": "Os exemplos têm características distintas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma família vale mais": [
+          "NO_HOUSING_HIERARCHY"
+        ],
+        "Todas as casas de um lugar são iguais": [
+          "NO_HOUSING_HIERARCHY"
+        ],
+        "Uma moradia é sempre inferior": [
+          "NO_HOUSING_HIERARCHY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MORADIAS_DIFERENTES",
+      "explanation": "Diferença observável não determina o valor das pessoas.",
+      "hint": "Descreva sem classificar famílias.",
+      "errorFocus": "NO_HOUSING_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: Diferença observável não determina o valor das pessoas.",
+        "incorrect": "Diferença observável não determina o valor das pessoas.",
+        "hint": "Descreva sem classificar famílias.",
+        "errorFocus": "NO_HOUSING_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-06",
+      "statement": "Uma ficha informa que um pote foi moldado em argila. Que material foi usado?",
+      "prompt": "Uma ficha informa que um pote foi moldado em argila. Que material foi usado?",
+      "options": [
+        "Lã",
+        "Argila.",
+        "Madeira",
+        "Borracha"
+      ],
+      "correctAnswer": "Argila.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Lã": [
+          "MATERIAL_FROM_SOURCE"
+        ],
+        "Madeira": [
+          "MATERIAL_FROM_SOURCE"
+        ],
+        "Borracha": [
+          "MATERIAL_FROM_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "FICHA_DE_CERAMICA",
+      "explanation": "A fonte nomeia argila.",
+      "hint": "Use a informação da ficha.",
+      "errorFocus": "MATERIAL_FROM_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte nomeia argila.",
+        "incorrect": "A fonte nomeia argila.",
+        "hint": "Use a informação da ficha.",
+        "errorFocus": "MATERIAL_FROM_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-07",
+      "statement": "Numa mesa de madeira, qual palavra nomeia o objeto?",
+      "prompt": "Numa mesa de madeira, qual palavra nomeia o objeto?",
+      "options": [
+        "Madeira",
+        "Marrom",
+        "Mesa.",
+        "Liso"
+      ],
+      "correctAnswer": "Mesa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Madeira": [
+          "OBJECT_VS_MATERIAL"
+        ],
+        "Marrom": [
+          "OBJECT_VS_MATERIAL"
+        ],
+        "Liso": [
+          "OBJECT_VS_MATERIAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OBJETO_E_MATERIAL",
+      "explanation": "Mesa é o objeto; madeira é o material descrito.",
+      "hint": "Separe o que é feito do que o compõe.",
+      "errorFocus": "OBJECT_VS_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: Mesa é o objeto; madeira é o material descrito.",
+        "incorrect": "Mesa é o objeto; madeira é o material descrito.",
+        "hint": "Separe o que é feito do que o compõe.",
+        "errorFocus": "OBJECT_VS_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-08",
+      "statement": "Qual é uma forma segura de estudar moradias na aula?",
+      "prompt": "Qual é uma forma segura de estudar moradias na aula?",
+      "options": [
+        "Pedir o endereço de cada estudante",
+        "Fotografar casas sem autorização",
+        "Comparar renda das famílias",
+        "Usar imagens públicas ou exemplos fictícios identificados."
+      ],
+      "correctAnswer": "Usar imagens públicas ou exemplos fictícios identificados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir o endereço de cada estudante": [
+          "HOUSING_PRIVACY"
+        ],
+        "Fotografar casas sem autorização": [
+          "HOUSING_PRIVACY"
+        ],
+        "Comparar renda das famílias": [
+          "HOUSING_PRIVACY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVACIDADE_DA_MORADIA",
+      "explanation": "Fontes públicas evitam expor dados privados.",
+      "hint": "Escolha uma fonte que proteja a turma.",
+      "errorFocus": "HOUSING_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Fontes públicas evitam expor dados privados.",
+        "incorrect": "Fontes públicas evitam expor dados privados.",
+        "hint": "Escolha uma fonte que proteja a turma.",
+        "errorFocus": "HOUSING_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-09",
+      "statement": "Uma etiqueta didática informa que um casaco é de lã. Qual material aparece?",
+      "prompt": "Uma etiqueta didática informa que um casaco é de lã. Qual material aparece?",
+      "options": [
+        "Lã.",
+        "Ferro",
+        "Argila",
+        "Vidro"
+      ],
+      "correctAnswer": "Lã.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ferro": [
+          "TEXTILE_MATERIAL"
+        ],
+        "Argila": [
+          "TEXTILE_MATERIAL"
+        ],
+        "Vidro": [
+          "TEXTILE_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CASACO_DE_LA",
+      "explanation": "A etiqueta nomeia lã.",
+      "hint": "Leia a informação do cartão.",
+      "errorFocus": "TEXTILE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta nomeia lã.",
+        "incorrect": "A etiqueta nomeia lã.",
+        "hint": "Leia a informação do cartão.",
+        "errorFocus": "TEXTILE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-10",
+      "statement": "Duas mesas usam materiais diferentes. O que pode ser comparado?",
+      "prompt": "Duas mesas usam materiais diferentes. O que pode ser comparado?",
+      "options": [
+        "Qual família é melhor",
+        "Os materiais indicados para cada mesa.",
+        "Quem merece usar a mesa",
+        "A inteligência dos fabricantes"
+      ],
+      "correctAnswer": "Os materiais indicados para cada mesa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual família é melhor": [
+          "COMPARE_OBJECT_MATERIALS"
+        ],
+        "Quem merece usar a mesa": [
+          "COMPARE_OBJECT_MATERIALS"
+        ],
+        "A inteligência dos fabricantes": [
+          "COMPARE_OBJECT_MATERIALS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MESA_DE_MADEIRA_E_METAL",
+      "explanation": "A fonte identifica madeira e metal.",
+      "hint": "Compare apenas os objetos descritos.",
+      "errorFocus": "COMPARE_OBJECT_MATERIALS",
+      "feedback": {
+        "correct": "Boa observação: A fonte identifica madeira e metal.",
+        "incorrect": "A fonte identifica madeira e metal.",
+        "hint": "Compare apenas os objetos descritos.",
+        "errorFocus": "COMPARE_OBJECT_MATERIALS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-11",
+      "statement": "Uma legenda descreve uma cesta feita por tecelagem. Qual técnica aparece?",
+      "prompt": "Uma legenda descreve uma cesta feita por tecelagem. Qual técnica aparece?",
+      "options": [
+        "Pintura de parede",
+        "Fundição",
+        "Tecelagem.",
+        "Costura de papel"
+      ],
+      "correctAnswer": "Tecelagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pintura de parede": [
+          "TECHNIQUE_FROM_LABEL"
+        ],
+        "Fundição": [
+          "TECHNIQUE_FROM_LABEL"
+        ],
+        "Costura de papel": [
+          "TECHNIQUE_FROM_LABEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CESTA_TECIDA",
+      "explanation": "A legenda informa a técnica de tecer.",
+      "hint": "Localize o verbo de produção.",
+      "errorFocus": "TECHNIQUE_FROM_LABEL",
+      "feedback": {
+        "correct": "Boa observação: A legenda informa a técnica de tecer.",
+        "incorrect": "A legenda informa a técnica de tecer.",
+        "hint": "Localize o verbo de produção.",
+        "errorFocus": "TECHNIQUE_FROM_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-12",
+      "statement": "Uma cadeira é azul e feita de plástico. Qual item é um material?",
+      "prompt": "Uma cadeira é azul e feita de plástico. Qual item é um material?",
+      "options": [
+        "Azul",
+        "Grande",
+        "Curva",
+        "Plástico."
+      ],
+      "correctAnswer": "Plástico.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Azul": [
+          "MATERIAL_VS_APPEARANCE"
+        ],
+        "Grande": [
+          "MATERIAL_VS_APPEARANCE"
+        ],
+        "Curva": [
+          "MATERIAL_VS_APPEARANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATERIAL_E_COR",
+      "explanation": "Plástico é material; azul é cor.",
+      "hint": "Separe material de aparência.",
+      "errorFocus": "MATERIAL_VS_APPEARANCE",
+      "feedback": {
+        "correct": "Boa observação: Plástico é material; azul é cor.",
+        "incorrect": "Plástico é material; azul é cor.",
+        "hint": "Separe material de aparência.",
+        "errorFocus": "MATERIAL_VS_APPEARANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-13",
+      "statement": "Uma fonte explica que uma moradia foi projetada para a chuva frequente do local. O que considerar?",
+      "prompt": "Uma fonte explica que uma moradia foi projetada para a chuva frequente do local. O que considerar?",
+      "options": [
+        "A relação entre projeto e condições descritas naquele contexto.",
+        "Que todas as casas do mundo são iguais",
+        "Que o clima é o mesmo em todo lugar",
+        "Que uma família escolheu errado"
+      ],
+      "correctAnswer": "A relação entre projeto e condições descritas naquele contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que todas as casas do mundo são iguais": [
+          "HOUSING_CONTEXT"
+        ],
+        "Que o clima é o mesmo em todo lugar": [
+          "HOUSING_CONTEXT"
+        ],
+        "Que uma família escolheu errado": [
+          "HOUSING_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CASA_E_CLIMA",
+      "explanation": "A fonte relaciona projeto e ambiente específico.",
+      "hint": "Use o contexto indicado.",
+      "errorFocus": "HOUSING_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A fonte relaciona projeto e ambiente específico.",
+        "incorrect": "A fonte relaciona projeto e ambiente específico.",
+        "hint": "Use o contexto indicado.",
+        "errorFocus": "HOUSING_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-14",
+      "statement": "Uma ficha diz: cortar tecido, costurar partes e preencher com fibra. O que ela descreve?",
+      "prompt": "Uma ficha diz: cortar tecido, costurar partes e preencher com fibra. O que ela descreve?",
+      "options": [
+        "Uma lista de moradias",
+        "Etapas de produção do brinquedo.",
+        "Uma regra de jogo",
+        "Uma previsão do tempo"
+      ],
+      "correctAnswer": "Etapas de produção do brinquedo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista de moradias": [
+          "PRODUCTION_TECHNIQUE"
+        ],
+        "Uma regra de jogo": [
+          "PRODUCTION_TECHNIQUE"
+        ],
+        "Uma previsão do tempo": [
+          "PRODUCTION_TECHNIQUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ETAPAS_DE_BRINQUEDO",
+      "explanation": "As ações indicam como o objeto foi produzido.",
+      "hint": "Observe a sequência de ações.",
+      "errorFocus": "PRODUCTION_TECHNIQUE",
+      "feedback": {
+        "correct": "Boa observação: As ações indicam como o objeto foi produzido.",
+        "incorrect": "As ações indicam como o objeto foi produzido.",
+        "hint": "Observe a sequência de ações.",
+        "errorFocus": "PRODUCTION_TECHNIQUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-15",
+      "statement": "Um banco aparece descrito como feito de pedra. Qual é o material?",
+      "prompt": "Um banco aparece descrito como feito de pedra. Qual é o material?",
+      "options": [
+        "Papel",
+        "Tecido",
+        "Pedra.",
+        "Lã"
+      ],
+      "correctAnswer": "Pedra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Papel": [
+          "STONE_MATERIAL"
+        ],
+        "Tecido": [
+          "STONE_MATERIAL"
+        ],
+        "Lã": [
+          "STONE_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BANCO_DE_PEDRA",
+      "explanation": "A descrição identifica pedra.",
+      "hint": "Encontre o material nomeado.",
+      "errorFocus": "STONE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A descrição identifica pedra.",
+        "incorrect": "A descrição identifica pedra.",
+        "hint": "Encontre o material nomeado.",
+        "errorFocus": "STONE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-16",
+      "statement": "Dois brinquedos têm materiais diferentes e permitem brincadeiras parecidas. O que podemos concluir?",
+      "prompt": "Dois brinquedos têm materiais diferentes e permitem brincadeiras parecidas. O que podemos concluir?",
+      "options": [
+        "Só um deles serve para brincar",
+        "O material define o valor da criança",
+        "Os objetos têm a mesma composição",
+        "Materiais diferentes podem compor objetos com usos semelhantes."
+      ],
+      "correctAnswer": "Materiais diferentes podem compor objetos com usos semelhantes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só um deles serve para brincar": [
+          "MATERIAL_AND_USE"
+        ],
+        "O material define o valor da criança": [
+          "MATERIAL_AND_USE"
+        ],
+        "Os objetos têm a mesma composição": [
+          "MATERIAL_AND_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "OBJETOS_COM_FUNCOES",
+      "explanation": "As fontes mostram composição diferente e uso semelhante.",
+      "hint": "Compare material e uso separadamente.",
+      "errorFocus": "MATERIAL_AND_USE",
+      "feedback": {
+        "correct": "Boa observação: As fontes mostram composição diferente e uso semelhante.",
+        "incorrect": "As fontes mostram composição diferente e uso semelhante.",
+        "hint": "Compare material e uso separadamente.",
+        "errorFocus": "MATERIAL_AND_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-17",
+      "statement": "Duas fontes descrevem casas com materiais diferentes. O que ajuda a comparação?",
+      "prompt": "Duas fontes descrevem casas com materiais diferentes. O que ajuda a comparação?",
+      "options": [
+        "Ler local, material e características indicadas em cada fonte.",
+        "Adivinhar renda das famílias",
+        "Dizer que todas as casas são iguais",
+        "Escolher uma como superior"
+      ],
+      "correctAnswer": "Ler local, material e características indicadas em cada fonte.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adivinhar renda das famílias": [
+          "CONTEXTUAL_HOUSING_COMPARISON"
+        ],
+        "Dizer que todas as casas são iguais": [
+          "CONTEXTUAL_HOUSING_COMPARISON"
+        ],
+        "Escolher uma como superior": [
+          "CONTEXTUAL_HOUSING_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MORADIAS_EM_FONTES",
+      "explanation": "O contexto ajuda a descrever sem estereótipos.",
+      "hint": "Use informações explícitas.",
+      "errorFocus": "CONTEXTUAL_HOUSING_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: O contexto ajuda a descrever sem estereótipos.",
+        "incorrect": "O contexto ajuda a descrever sem estereótipos.",
+        "hint": "Use informações explícitas.",
+        "errorFocus": "CONTEXTUAL_HOUSING_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-18",
+      "statement": "Uma ficha informa que uma cadeira foi reparada com uma peça de madeira. O que se pode inferir?",
+      "prompt": "Uma ficha informa que uma cadeira foi reparada com uma peça de madeira. O que se pode inferir?",
+      "options": [
+        "Todas as cadeiras são feitas de madeira",
+        "A peça descrita foi usada no reparo daquela cadeira.",
+        "A cadeira é insegura",
+        "O reparo foi feito por toda a comunidade"
+      ],
+      "correctAnswer": "A peça descrita foi usada no reparo daquela cadeira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as cadeiras são feitas de madeira": [
+          "LIMITED_REPAIR_INFERENCE"
+        ],
+        "A cadeira é insegura": [
+          "LIMITED_REPAIR_INFERENCE"
+        ],
+        "O reparo foi feito por toda a comunidade": [
+          "LIMITED_REPAIR_INFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OBJETO_REPARADO",
+      "explanation": "A conclusão restringe-se ao objeto e reparo apresentados.",
+      "hint": "Não amplie além da ficha.",
+      "errorFocus": "LIMITED_REPAIR_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão restringe-se ao objeto e reparo apresentados.",
+        "incorrect": "A conclusão restringe-se ao objeto e reparo apresentados.",
+        "hint": "Não amplie além da ficha.",
+        "errorFocus": "LIMITED_REPAIR_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-19",
+      "statement": "Uma descrição menciona fibras naturais entrelaçadas. Qual técnica é compatível?",
+      "prompt": "Uma descrição menciona fibras naturais entrelaçadas. Qual técnica é compatível?",
+      "options": [
+        "Moldar argila",
+        "Fundir vidro",
+        "Trançar ou entrelaçar fibras.",
+        "Costurar metal"
+      ],
+      "correctAnswer": "Trançar ou entrelaçar fibras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Moldar argila": [
+          "FIBER_TECHNIQUE"
+        ],
+        "Fundir vidro": [
+          "FIBER_TECHNIQUE"
+        ],
+        "Costurar metal": [
+          "FIBER_TECHNIQUE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TAPETE_DE_FIBRAS",
+      "explanation": "O texto cita fibras entrelaçadas.",
+      "hint": "Relacione o material à ação descrita.",
+      "errorFocus": "FIBER_TECHNIQUE",
+      "feedback": {
+        "correct": "Boa observação: O texto cita fibras entrelaçadas.",
+        "incorrect": "O texto cita fibras entrelaçadas.",
+        "hint": "Relacione o material à ação descrita.",
+        "errorFocus": "FIBER_TECHNIQUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-20",
+      "statement": "Qual pergunta compara objetos sem avaliar quem os possui?",
+      "prompt": "Qual pergunta compara objetos sem avaliar quem os possui?",
+      "options": [
+        "Qual estudante tem o objeto mais caro?",
+        "Qual família deve ser copiada?",
+        "Quem tem mais brinquedos?",
+        "Quais materiais e técnicas aparecem nas fontes?"
+      ],
+      "correctAnswer": "Quais materiais e técnicas aparecem nas fontes?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual estudante tem o objeto mais caro?": [
+          "NONJUDGMENTAL_COMPARISON"
+        ],
+        "Qual família deve ser copiada?": [
+          "NONJUDGMENTAL_COMPARISON"
+        ],
+        "Quem tem mais brinquedos?": [
+          "NONJUDGMENTAL_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OBJETOS_DE_USO_COTIDIANO",
+      "explanation": "A pergunta investiga material e técnica, não pessoas.",
+      "hint": "Foque no objeto e na fonte.",
+      "errorFocus": "NONJUDGMENTAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A pergunta investiga material e técnica, não pessoas.",
+        "incorrect": "A pergunta investiga material e técnica, não pessoas.",
+        "hint": "Foque no objeto e na fonte.",
+        "errorFocus": "NONJUDGMENTAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-21",
+      "statement": "Duas cadeiras têm projetos diferentes. Qual aspecto pode ser comparado com evidência?",
+      "prompt": "Duas cadeiras têm projetos diferentes. Qual aspecto pode ser comparado com evidência?",
+      "options": [
+        "Materiais, formas e técnicas descritos ou visíveis nas fontes.",
+        "Qual usuário é mais importante",
+        "O endereço dos fabricantes",
+        "A renda de quem comprou"
+      ],
+      "correctAnswer": "Materiais, formas e técnicas descritos ou visíveis nas fontes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual usuário é mais importante": [
+          "OBJECT_FEATURE_EVIDENCE"
+        ],
+        "O endereço dos fabricantes": [
+          "OBJECT_FEATURE_EVIDENCE"
+        ],
+        "A renda de quem comprou": [
+          "OBJECT_FEATURE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CADEIRAS_DE_DESIGN_DIFERENTE",
+      "explanation": "A fonte sustenta comparação de características do objeto.",
+      "hint": "Evite dados pessoais.",
+      "errorFocus": "OBJECT_FEATURE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte sustenta comparação de características do objeto.",
+        "incorrect": "A fonte sustenta comparação de características do objeto.",
+        "hint": "Evite dados pessoais.",
+        "errorFocus": "OBJECT_FEATURE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-22",
+      "statement": "Uma ficha descreve costura de peças de tecido. O que a técnica faz?",
+      "prompt": "Uma ficha descreve costura de peças de tecido. O que a técnica faz?",
+      "options": [
+        "Transforma tecido em argila",
+        "Une partes do tecido na produção da roupa.",
+        "Faz crescer fibras",
+        "Muda o endereço da pessoa"
+      ],
+      "correctAnswer": "Une partes do tecido na produção da roupa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Transforma tecido em argila": [
+          "SEWING_PURPOSE"
+        ],
+        "Faz crescer fibras": [
+          "SEWING_PURPOSE"
+        ],
+        "Muda o endereço da pessoa": [
+          "SEWING_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ROUPA_COSTURADA",
+      "explanation": "Costura une partes do material descrito.",
+      "hint": "Associe ação e material.",
+      "errorFocus": "SEWING_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Costura une partes do material descrito.",
+        "incorrect": "Costura une partes do material descrito.",
+        "hint": "Associe ação e material.",
+        "errorFocus": "SEWING_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-23",
+      "statement": "Uma foto de moradia não informa local. O que não se deve afirmar?",
+      "prompt": "Uma foto de moradia não informa local. O que não se deve afirmar?",
+      "options": [
+        "Que a foto mostra uma moradia",
+        "Que faltam dados de localização",
+        "Que todas as casas de uma região são iguais a ela.",
+        "Que a imagem pode ser descrita"
+      ],
+      "correctAnswer": "Que todas as casas de uma região são iguais a ela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que a foto mostra uma moradia": [
+          "NO_UNSUPPORTED_GENERALIZATION"
+        ],
+        "Que faltam dados de localização": [
+          "NO_UNSUPPORTED_GENERALIZATION"
+        ],
+        "Que a imagem pode ser descrita": [
+          "NO_UNSUPPORTED_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "IMAGEM_SEM_LEGENDA",
+      "explanation": "Sem contexto, não se generaliza a imagem para uma região inteira.",
+      "hint": "Identifique o limite da fonte.",
+      "errorFocus": "NO_UNSUPPORTED_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Sem contexto, não se generaliza a imagem para uma região inteira.",
+        "incorrect": "Sem contexto, não se generaliza a imagem para uma região inteira.",
+        "hint": "Identifique o limite da fonte.",
+        "errorFocus": "NO_UNSUPPORTED_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-24",
+      "statement": "Um brinquedo foi feito com material reutilizado, segundo uma ficha. O que isso descreve?",
+      "prompt": "Um brinquedo foi feito com material reutilizado, segundo uma ficha. O que isso descreve?",
+      "options": [
+        "Que todos devem fabricar igual",
+        "Que o brinquedo é inferior",
+        "Que o material não tem origem",
+        "Uma escolha de material para aquele objeto."
+      ],
+      "correctAnswer": "Uma escolha de material para aquele objeto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que todos devem fabricar igual": [
+          "MATERIAL_CHOICE"
+        ],
+        "Que o brinquedo é inferior": [
+          "MATERIAL_CHOICE"
+        ],
+        "Que o material não tem origem": [
+          "MATERIAL_CHOICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MATERIAIS_REUTILIZADOS",
+      "explanation": "A ficha descreve a escolha de material naquele caso.",
+      "hint": "Limite-se ao exemplo.",
+      "errorFocus": "MATERIAL_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: A ficha descreve a escolha de material naquele caso.",
+        "incorrect": "A ficha descreve a escolha de material naquele caso.",
+        "hint": "Limite-se ao exemplo.",
+        "errorFocus": "MATERIAL_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-25",
+      "statement": "Qual material é moldado para formar um pote na descrição?",
+      "prompt": "Qual material é moldado para formar um pote na descrição?",
+      "options": [
+        "Argila.",
+        "Lã",
+        "Papel",
+        "Metal"
+      ],
+      "correctAnswer": "Argila.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Lã": [
+          "MATERIAL_REVIEW"
+        ],
+        "Papel": [
+          "MATERIAL_REVIEW"
+        ],
+        "Metal": [
+          "MATERIAL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ARGILA_MOLDADA",
+      "explanation": "A fonte cita argila.",
+      "hint": "Confira o cartão.",
+      "errorFocus": "MATERIAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fonte cita argila.",
+        "incorrect": "A fonte cita argila.",
+        "hint": "Confira o cartão.",
+        "errorFocus": "MATERIAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-26",
+      "statement": "Dois brinquedos são de pano e madeira. Qual diferença está explícita?",
+      "prompt": "Dois brinquedos são de pano e madeira. Qual diferença está explícita?",
+      "options": [
+        "As crianças têm valores diferentes",
+        "Os materiais são diferentes.",
+        "Um brinquedo é inútil",
+        "As regras são iguais"
+      ],
+      "correctAnswer": "Os materiais são diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As crianças têm valores diferentes": [
+          "MATERIAL_DIFFERENCE_REVIEW"
+        ],
+        "Um brinquedo é inútil": [
+          "MATERIAL_DIFFERENCE_REVIEW"
+        ],
+        "As regras são iguais": [
+          "MATERIAL_DIFFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBJETO_DE_PANO_E_MADEIRA",
+      "explanation": "Pano e madeira são materiais distintos.",
+      "hint": "Compare as palavras do material.",
+      "errorFocus": "MATERIAL_DIFFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Pano e madeira são materiais distintos.",
+        "incorrect": "Pano e madeira são materiais distintos.",
+        "hint": "Compare as palavras do material.",
+        "errorFocus": "MATERIAL_DIFFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-27",
+      "statement": "Em “cesta tecida com fibras”, qual palavra indica uma técnica?",
+      "prompt": "Em “cesta tecida com fibras”, qual palavra indica uma técnica?",
+      "options": [
+        "Fibras",
+        "Cesta",
+        "Tecida.",
+        "Comprida"
+      ],
+      "correctAnswer": "Tecida.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fibras": [
+          "TECHNIQUE_WORD_REVIEW"
+        ],
+        "Cesta": [
+          "TECHNIQUE_WORD_REVIEW"
+        ],
+        "Comprida": [
+          "TECHNIQUE_WORD_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TECNICA_E_MATERIAL",
+      "explanation": "Tecida descreve o modo de produção.",
+      "hint": "Procure a ação de fazer.",
+      "errorFocus": "TECHNIQUE_WORD_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Tecida descreve o modo de produção.",
+        "incorrect": "Tecida descreve o modo de produção.",
+        "hint": "Procure a ação de fazer.",
+        "errorFocus": "TECHNIQUE_WORD_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-28",
+      "statement": "Uma moradia usa material diferente de outra. Qual descrição é adequada?",
+      "prompt": "Uma moradia usa material diferente de outra. Qual descrição é adequada?",
+      "options": [
+        "Uma família é melhor",
+        "Uma moradia vale menos",
+        "Todas as casas são iguais",
+        "As fontes mostram materiais distintos em contextos específicos."
+      ],
+      "correctAnswer": "As fontes mostram materiais distintos em contextos específicos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma família é melhor": [
+          "HOUSING_RESPECT_REVIEW"
+        ],
+        "Uma moradia vale menos": [
+          "HOUSING_RESPECT_REVIEW"
+        ],
+        "Todas as casas são iguais": [
+          "HOUSING_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIFERENCA_SEM_HIERARQUIA",
+      "explanation": "A descrição reconhece diferenças sem classificar famílias.",
+      "hint": "Use linguagem neutra.",
+      "errorFocus": "HOUSING_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A descrição reconhece diferenças sem classificar famílias.",
+        "incorrect": "A descrição reconhece diferenças sem classificar famílias.",
+        "hint": "Use linguagem neutra.",
+        "errorFocus": "HOUSING_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-29",
+      "statement": "Como comparar um móvel sem expor informações privadas?",
+      "prompt": "Como comparar um móvel sem expor informações privadas?",
+      "options": [
+        "Usar uma descrição pública ou exemplo fictício.",
+        "Publicar endereço de um estudante",
+        "Fotografar uma casa sem permissão",
+        "Listar bens familiares"
+      ],
+      "correctAnswer": "Usar uma descrição pública ou exemplo fictício.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar endereço de um estudante": [
+          "PRIVACY_REVIEW"
+        ],
+        "Fotografar uma casa sem permissão": [
+          "PRIVACY_REVIEW"
+        ],
+        "Listar bens familiares": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_PUBLICA_DE_OBJETO",
+      "explanation": "Fontes públicas e exemplos fictícios preservam privacidade.",
+      "hint": "Proteja dados pessoais.",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Fontes públicas e exemplos fictícios preservam privacidade.",
+        "incorrect": "Fontes públicas e exemplos fictícios preservam privacidade.",
+        "hint": "Proteja dados pessoais.",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-30",
+      "statement": "Uma fonte liga o telhado a chuvas frequentes naquele lugar. O que ela explica?",
+      "prompt": "Uma fonte liga o telhado a chuvas frequentes naquele lugar. O que ela explica?",
+      "options": [
+        "Toda casa tem o mesmo telhado",
+        "Uma característica do projeto no contexto descrito.",
+        "Todas as cidades têm a mesma chuva",
+        "A família fez uma escolha errada"
+      ],
+      "correctAnswer": "Uma característica do projeto no contexto descrito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda casa tem o mesmo telhado": [
+          "CONTEXTUAL_DESIGN_REVIEW"
+        ],
+        "Todas as cidades têm a mesma chuva": [
+          "CONTEXTUAL_DESIGN_REVIEW"
+        ],
+        "A família fez uma escolha errada": [
+          "CONTEXTUAL_DESIGN_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROJETO_E_AMBIENTE",
+      "explanation": "A fonte associa projeto e condição local.",
+      "hint": "Mantenha o contexto.",
+      "errorFocus": "CONTEXTUAL_DESIGN_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fonte associa projeto e condição local.",
+        "incorrect": "A fonte associa projeto e condição local.",
+        "hint": "Mantenha o contexto.",
+        "errorFocus": "CONTEXTUAL_DESIGN_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-31",
+      "statement": "Uma etiqueta indica algodão. O que é algodão nessa descrição?",
+      "prompt": "Uma etiqueta indica algodão. O que é algodão nessa descrição?",
+      "options": [
+        "Uma técnica de costura",
+        "A cor da roupa",
+        "Material da roupa.",
+        "O formato da manga"
+      ],
+      "correctAnswer": "Material da roupa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma técnica de costura": [
+          "MATERIAL_LABEL_REVIEW"
+        ],
+        "A cor da roupa": [
+          "MATERIAL_LABEL_REVIEW"
+        ],
+        "O formato da manga": [
+          "MATERIAL_LABEL_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROUPA_DE_ALGODAO",
+      "explanation": "Algodão é o material indicado.",
+      "hint": "Leia a etiqueta.",
+      "errorFocus": "MATERIAL_LABEL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Algodão é o material indicado.",
+        "incorrect": "Algodão é o material indicado.",
+        "hint": "Leia a etiqueta.",
+        "errorFocus": "MATERIAL_LABEL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-32",
+      "statement": "Para explicar como um objeto foi produzido, devemos considerar...",
+      "prompt": "Para explicar como um objeto foi produzido, devemos considerar...",
+      "options": [
+        "o valor de quem o possui",
+        "suposições sobre uma comunidade",
+        "a aparência sem contexto",
+        "as técnicas e os materiais indicados pelas fontes."
+      ],
+      "correctAnswer": "as técnicas e os materiais indicados pelas fontes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "o valor de quem o possui": [
+          "EVIDENCE_BASED_PRODUCTION_REVIEW"
+        ],
+        "suposições sobre uma comunidade": [
+          "EVIDENCE_BASED_PRODUCTION_REVIEW"
+        ],
+        "a aparência sem contexto": [
+          "EVIDENCE_BASED_PRODUCTION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PRODUCAO_EVIDENCIAS",
+      "explanation": "Materiais e técnicas são evidências de produção.",
+      "hint": "Use os dados do objeto.",
+      "errorFocus": "EVIDENCE_BASED_PRODUCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Materiais e técnicas são evidências de produção.",
+        "incorrect": "Materiais e técnicas são evidências de produção.",
+        "hint": "Use os dados do objeto.",
+        "errorFocus": "EVIDENCE_BASED_PRODUCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-33",
+      "statement": "Madeira, tecido e metal são exemplos de...",
+      "prompt": "Madeira, tecido e metal são exemplos de...",
+      "options": [
+        "materiais.",
+        "moradias",
+        "técnicas de leitura",
+        "sentimentos"
+      ],
+      "correctAnswer": "materiais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "moradias": [
+          "MATERIAL_REVIEW_SUMMARY"
+        ],
+        "técnicas de leitura": [
+          "MATERIAL_REVIEW_SUMMARY"
+        ],
+        "sentimentos": [
+          "MATERIAL_REVIEW_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_MATERIAL",
+      "explanation": "Os termos nomeiam materiais.",
+      "hint": "Lembre-se do que compõe um objeto.",
+      "errorFocus": "MATERIAL_REVIEW_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Os termos nomeiam materiais.",
+        "incorrect": "Os termos nomeiam materiais.",
+        "hint": "Lembre-se do que compõe um objeto.",
+        "errorFocus": "MATERIAL_REVIEW_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-34",
+      "statement": "Costurar ou trançar descreve...",
+      "prompt": "Costurar ou trançar descreve...",
+      "options": [
+        "um endereço",
+        "uma técnica de produção.",
+        "um sentimento",
+        "um tipo de clima"
+      ],
+      "correctAnswer": "uma técnica de produção.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um endereço": [
+          "TECHNIQUE_REVIEW_SUMMARY"
+        ],
+        "um sentimento": [
+          "TECHNIQUE_REVIEW_SUMMARY"
+        ],
+        "um tipo de clima": [
+          "TECHNIQUE_REVIEW_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_TECNICA",
+      "explanation": "As palavras descrevem ações de fazer.",
+      "hint": "Pense no modo de produzir.",
+      "errorFocus": "TECHNIQUE_REVIEW_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: As palavras descrevem ações de fazer.",
+        "incorrect": "As palavras descrevem ações de fazer.",
+        "hint": "Pense no modo de produzir.",
+        "errorFocus": "TECHNIQUE_REVIEW_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-35",
+      "statement": "Dois objetos podem ter usos parecidos e...",
+      "prompt": "Dois objetos podem ter usos parecidos e...",
+      "options": [
+        "sempre os mesmos fabricantes",
+        "a mesma composição obrigatória",
+        "materiais diferentes.",
+        "donos com o mesmo endereço"
+      ],
+      "correctAnswer": "materiais diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "sempre os mesmos fabricantes": [
+          "OBJECT_COMPARISON_REVIEW"
+        ],
+        "a mesma composição obrigatória": [
+          "OBJECT_COMPARISON_REVIEW"
+        ],
+        "donos com o mesmo endereço": [
+          "OBJECT_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_OBJETOS",
+      "explanation": "Uso semelhante não exige composição igual.",
+      "hint": "Separe função e material.",
+      "errorFocus": "OBJECT_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uso semelhante não exige composição igual.",
+        "incorrect": "Uso semelhante não exige composição igual.",
+        "hint": "Separe função e material.",
+        "errorFocus": "OBJECT_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-36",
+      "statement": "Uma imagem de casa sem local identificado permite generalizar sobre toda uma região?",
+      "prompt": "Uma imagem de casa sem local identificado permite generalizar sobre toda uma região?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se a casa for grande",
+        "Não, imagens nunca mostram casas",
+        "Não; faltam informações para essa conclusão."
+      ],
+      "correctAnswer": "Não; faltam informações para essa conclusão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Sim, se a casa for grande": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Não, imagens nunca mostram casas": [
+          "SOURCE_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_FONTE",
+      "explanation": "A imagem não sustenta generalização sem contexto.",
+      "hint": "Reconheça o que falta.",
+      "errorFocus": "SOURCE_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A imagem não sustenta generalização sem contexto.",
+        "incorrect": "A imagem não sustenta generalização sem contexto.",
+        "hint": "Reconheça o que falta.",
+        "errorFocus": "SOURCE_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-37",
+      "statement": "Comparar moradias deve evitar...",
+      "prompt": "Comparar moradias deve evitar...",
+      "options": [
+        "julgar famílias ou presumir sua situação.",
+        "descrever materiais",
+        "ler legendas",
+        "notar diferenças"
+      ],
+      "correctAnswer": "julgar famílias ou presumir sua situação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "descrever materiais": [
+          "NO_STEREOTYPE_REVIEW"
+        ],
+        "ler legendas": [
+          "NO_STEREOTYPE_REVIEW"
+        ],
+        "notar diferenças": [
+          "NO_STEREOTYPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_RESPEITO",
+      "explanation": "A análise é sobre exemplos, não o valor das pessoas.",
+      "hint": "Evite estereótipos.",
+      "errorFocus": "NO_STEREOTYPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A análise é sobre exemplos, não o valor das pessoas.",
+        "incorrect": "A análise é sobre exemplos, não o valor das pessoas.",
+        "hint": "Evite estereótipos.",
+        "errorFocus": "NO_STEREOTYPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-38",
+      "statement": "Por que considerar o ambiente ao comparar moradias?",
+      "prompt": "Por que considerar o ambiente ao comparar moradias?",
+      "options": [
+        "Porque todas as casas são iguais",
+        "Porque o contexto pode ajudar a compreender escolhas de projeto e materiais.",
+        "Porque o ambiente não afeta projetos",
+        "Porque permite adivinhar renda"
+      ],
+      "correctAnswer": "Porque o contexto pode ajudar a compreender escolhas de projeto e materiais.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque todas as casas são iguais": [
+          "ENVIRONMENT_CONTEXT_REVIEW"
+        ],
+        "Porque o ambiente não afeta projetos": [
+          "ENVIRONMENT_CONTEXT_REVIEW"
+        ],
+        "Porque permite adivinhar renda": [
+          "ENVIRONMENT_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONTEXTUALIZACAO",
+      "explanation": "O contexto pode explicar características descritas.",
+      "hint": "Use a informação fornecida.",
+      "errorFocus": "ENVIRONMENT_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O contexto pode explicar características descritas.",
+        "incorrect": "O contexto pode explicar características descritas.",
+        "hint": "Use a informação fornecida.",
+        "errorFocus": "ENVIRONMENT_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-39",
+      "statement": "Qual fonte é apropriada para estudar objetos cotidianos na turma?",
+      "prompt": "Qual fonte é apropriada para estudar objetos cotidianos na turma?",
+      "options": [
+        "Endereços residenciais publicados",
+        "Fotos privadas sem autorização",
+        "Imagens públicas ou exemplos fictícios sem dados pessoais.",
+        "Listas de bens dos colegas"
+      ],
+      "correctAnswer": "Imagens públicas ou exemplos fictícios sem dados pessoais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Endereços residenciais publicados": [
+          "SAFE_SOURCE_REVIEW"
+        ],
+        "Fotos privadas sem autorização": [
+          "SAFE_SOURCE_REVIEW"
+        ],
+        "Listas de bens dos colegas": [
+          "SAFE_SOURCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Fontes sem dados privados permitem estudo respeitoso.",
+      "hint": "Preserve informações pessoais.",
+      "errorFocus": "SAFE_SOURCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Fontes sem dados privados permitem estudo respeitoso.",
+        "incorrect": "Fontes sem dados privados permitem estudo respeitoso.",
+        "hint": "Preserve informações pessoais.",
+        "errorFocus": "SAFE_SOURCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge06-compare-homes-and-everyday-objects-40",
+      "statement": "Uma comparação geográfica cuidadosa descreve materiais, técnicas e...",
+      "prompt": "Uma comparação geográfica cuidadosa descreve materiais, técnicas e...",
+      "options": [
+        "o valor das famílias",
+        "uma regra para todo lugar",
+        "informações inventadas",
+        "o contexto específico de cada exemplo."
+      ],
+      "correctAnswer": "o contexto específico de cada exemplo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "o valor das famílias": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ],
+        "uma regra para todo lugar": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ],
+        "informações inventadas": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_MATERIAIS",
+      "explanation": "Contexto completa a leitura das evidências.",
+      "hint": "Reúna fonte, material e lugar.",
+      "errorFocus": "CONTEXTUAL_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Contexto completa a leitura das evidências.",
+        "incorrect": "Contexto completa a leitura das evidências.",
+        "hint": "Reúna fonte, material e lugar.",
+        "errorFocus": "CONTEXTUAL_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar fotografias descritas, amostras seguras de materiais e cartões com nomes ampliados.",
+          "Permitir comparar apontando, agrupando cartões, desenhando ou respondendo por comunicação alternativa.",
+          "Não solicitar endereço, imagens de residências ou informações econômicas pessoais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -7,7 +7,10 @@ import {
   it,
 } from 'vitest';
 
-import { applyDocumentBranding } from './documentBranding';
+import {
+  applyDocumentBranding,
+  defaultFaviconHref,
+} from './documentBranding';
 
 afterEach(() => {
   document.title = '';
@@ -58,5 +61,33 @@ describe('applyDocumentBranding', () => {
         'link[rel="icon"]',
       )?.href,
     ).toContain('/favicon-old.png');
+  });
+
+  it('usa Tec Escola quando a identidade ainda nao tem nome', () => {
+    applyDocumentBranding({
+      scope: 'FALLBACK',
+      displayName: null,
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#005bbf',
+      secondaryColor: '#55e6b5',
+    });
+
+    expect(document.title).toBe('Tec Escola');
+  });
+
+  it('mantem um favicon quadrado da Tec Escola sem favicon personalizado', () => {
+    applyDocumentBranding({
+      scope: 'FALLBACK',
+      displayName: null,
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#005bbf',
+      secondaryColor: '#55e6b5',
+    });
+
+    expect(
+      document.querySelector<HTMLLinkElement>('link[rel="icon"]')?.href,
+    ).toContain(defaultFaviconHref);
   });
 });

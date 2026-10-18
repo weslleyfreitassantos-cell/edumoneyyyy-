@@ -1,0 +1,1419 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-community-comparisons",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "comunidades_grupos_sociais_e_papeis",
+  "canonicalSkillCode": "AUTHORING_EF03HI07_HISTORY_COMMUNITIES",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI07",
+    "sourceVerificationRecord": "BNCC_EF03HI07_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_SEMELHANCAS_DIFERENCAS",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre semelhanças e diferenças entre comunidades para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "lesson": {
+    "title": "Semelhanças e diferenças entre comunidades",
+    "objective": "Comparar comunidades da cidade ou região e descrever o papel de diferentes grupos sociais sem apagar diferenças internas ou generalizar experiências.",
+    "summary": "Comunidades podem compartilhar espaços e necessidades, mas têm histórias, práticas e formas de organização diversas. Comparar exige observar critérios e descrever os papéis dos grupos com evidências.",
+    "explanation": "## O que investigar\nIdentificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: duas comunidades usam a mesma praça, mas organizam feira, leitura ou esporte em horários diferentes. A comparação pode descrever usos documentados sem afirmar que todos os moradores participam ou pensam da mesma maneira.",
+    "commonMistake": "Confundir diferença com desigualdade de valor, tratar uma comunidade como homogênea ou atribuir a um grupo o papel de todas as pessoas.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Descrever características explícitas de dois lugares.",
+      "Organizar informações em uma tabela de comparação."
+    ],
+    "keyConcepts": [
+      "comunidade",
+      "semelhança",
+      "diferença",
+      "grupo social",
+      "papel social",
+      "cooperação",
+      "generalização"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-community-comparisons-001",
+          "v13-history-community-comparisons-002",
+          "v13-history-community-comparisons-003",
+          "v13-history-community-comparisons-004",
+          "v13-history-community-comparisons-005"
+        ],
+        "phase": "PROBE"
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-community-comparisons-006",
+          "v13-history-community-comparisons-007",
+          "v13-history-community-comparisons-008",
+          "v13-history-community-comparisons-009",
+          "v13-history-community-comparisons-010",
+          "v13-history-community-comparisons-011",
+          "v13-history-community-comparisons-012",
+          "v13-history-community-comparisons-013",
+          "v13-history-community-comparisons-014",
+          "v13-history-community-comparisons-015",
+          "v13-history-community-comparisons-016",
+          "v13-history-community-comparisons-017",
+          "v13-history-community-comparisons-018",
+          "v13-history-community-comparisons-019",
+          "v13-history-community-comparisons-020"
+        ],
+        "phase": "PRACTICE"
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-community-comparisons-021",
+          "v13-history-community-comparisons-022",
+          "v13-history-community-comparisons-023",
+          "v13-history-community-comparisons-024",
+          "v13-history-community-comparisons-025",
+          "v13-history-community-comparisons-026",
+          "v13-history-community-comparisons-027",
+          "v13-history-community-comparisons-028",
+          "v13-history-community-comparisons-029",
+          "v13-history-community-comparisons-030",
+          "v13-history-community-comparisons-031",
+          "v13-history-community-comparisons-032"
+        ],
+        "phase": "TRANSFER"
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-community-comparisons-033",
+          "v13-history-community-comparisons-034",
+          "v13-history-community-comparisons-035",
+          "v13-history-community-comparisons-036",
+          "v13-history-community-comparisons-037",
+          "v13-history-community-comparisons-038",
+          "v13-history-community-comparisons-039",
+          "v13-history-community-comparisons-040"
+        ],
+        "phase": "LOCK_IN"
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-community-comparisons-041",
+          "v13-history-community-comparisons-042",
+          "v13-history-community-comparisons-043",
+          "v13-history-community-comparisons-044",
+          "v13-history-community-comparisons-045",
+          "v13-history-community-comparisons-046",
+          "v13-history-community-comparisons-047",
+          "v13-history-community-comparisons-048",
+          "v13-history-community-comparisons-049",
+          "v13-history-community-comparisons-050"
+        ],
+        "phase": "REVIEW"
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Generalizar uma prática observada para toda a comunidade.",
+        "action": "Acrescente o recorte de lugar, período e fonte e reescreva a conclusão sem quantificadores absolutos não sustentados."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Comparar comunidades por um critério implícito ou desigual.",
+        "action": "Escolha o mesmo aspecto para os dois casos e indique quais informações faltam para uma comparação justa."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Tratar diferença cultural como hierarquia.",
+        "action": "Descreva a função contextual de cada prática sem classificar uma como melhor ou mais desenvolvida."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-community-comparisons-local-inquiry",
+        "title": "Comparar comunidades sem generalizar",
+        "objective": "Comparar comunidades da cidade ou região e descrever o papel de diferentes grupos sociais sem apagar diferenças internas ou generalizar experiências.",
+        "context": "Dois estudos de caso didáticos, fontes públicas ou registros autorizados sobre comunidades distintas.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Defina um aspecto comum a comparar e identifique lugar, período e autoria de cada fonte. Registre semelhanças e diferenças apoiadas nas fontes, incluindo variações dentro de cada comunidade quando disponíveis. Escreva uma síntese que preserve contexto e indique o que as fontes não permitem generalizar.",
+        "evidence": "Quadro comparativo com recorte explícito, evidências atribuídas e limites de representação.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Recorte comparativo",
+            "emerging": "Compara comunidades sem definir aspecto ou período.",
+            "developing": "Define um aspecto com apoio.",
+            "proficient": "Compara o mesmo aspecto em contextos identificados."
+          },
+          {
+            "criterion": "Diversidade interna",
+            "emerging": "Generaliza uma prática a todos os membros.",
+            "developing": "Reconhece variação com mediação.",
+            "proficient": "Evita homogeneização e usa evidência para descrever variações."
+          },
+          {
+            "criterion": "Síntese",
+            "emerging": "Atribui valor superior a uma comunidade.",
+            "developing": "Registra diferença sem hierarquia após orientação.",
+            "proficient": "Explica semelhanças e diferenças sem ranking e explicita limites."
+          }
+        ],
+        "steps": [
+          "Defina um aspecto comum a comparar e identifique lugar, período e autoria de cada fonte.",
+          "Registre semelhanças e diferenças apoiadas nas fontes, incluindo variações dentro de cada comunidade quando disponíveis.",
+          "Escreva uma síntese que preserve contexto e indique o que as fontes não permitem generalizar."
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI07",
+        "descriptor": "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar os casos em fontes equivalentes e acessíveis, com legenda de lugar, período e autoria.",
+      "Permitir tabela visual, cartões, áudio ou resposta escrita; não pedir que estudantes representem ou falem em nome de comunidades."
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-community-comparisons-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SHARED-SPACE_01",
+      "statement": "Duas comunidades usam a mesma praça, mas uma organiza feira aos sábados e a outra realiza rodas de leitura. Que semelhança e diferença podem ser registradas?",
+      "options": [
+        "As duas usam a praça, mas desenvolvem atividades comunitárias diferentes.",
+        "As comunidades não têm nada em comum.",
+        "A atividade de sábado representa todos os moradores.",
+        "A praça pertence somente à comunidade que organiza a feira."
+      ],
+      "correctAnswer": "As duas usam a praça, mas desenvolvem atividades comunitárias diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "As comunidades não têm nada em comum.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SHARED-SPACE_02",
+      "statement": "Duas comunidades usam a mesma praça, mas uma organiza feira aos sábados e a outra realiza rodas de leitura. Que critério deve orientar a análise?",
+      "options": [
+        "As comunidades não têm nada em comum.",
+        "Considere Uma comparação separa o espaço compartilhado da prática específica observada.",
+        "A atividade de sábado representa todos os moradores.",
+        "A praça pertence somente à comunidade que organiza a feira."
+      ],
+      "correctAnswer": "Considere Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "As comunidades não têm nada em comum.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SHARED-SPACE_03",
+      "statement": "Duas comunidades usam a mesma praça, mas uma organiza feira aos sábados e a outra realiza rodas de leitura. Como transferir esse raciocínio?",
+      "options": [
+        "As comunidades não têm nada em comum.",
+        "A atividade de sábado representa todos os moradores.",
+        "Compare dois usos de uma biblioteca ou quadra.",
+        "A praça pertence somente à comunidade que organiza a feira."
+      ],
+      "correctAnswer": "Compare dois usos de uma biblioteca ou quadra.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "As comunidades não têm nada em comum.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SHARED-SPACE_04",
+      "statement": "Duas comunidades usam a mesma praça, mas uma organiza feira aos sábados e a outra realiza rodas de leitura. Qual conclusão deve ser evitada?",
+      "options": [
+        "As comunidades não têm nada em comum.",
+        "A atividade de sábado representa todos os moradores.",
+        "A praça pertence somente à comunidade que organiza a feira.",
+        "Evite dizer que uma comunidade usa melhor o espaço sem critério."
+      ],
+      "correctAnswer": "Evite dizer que uma comunidade usa melhor o espaço sem critério.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "As comunidades não têm nada em comum.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SHARED-SPACE_05",
+      "statement": "Duas comunidades usam a mesma praça, mas uma organiza feira aos sábados e a outra realiza rodas de leitura. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira local, atividade, dia e grupo responsável.",
+        "As comunidades não têm nada em comum.",
+        "A atividade de sábado representa todos os moradores.",
+        "A praça pertence somente à comunidade que organiza a feira."
+      ],
+      "correctAnswer": "Confira local, atividade, dia e grupo responsável.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação separa o espaço compartilhado da prática específica observada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "As comunidades não têm nada em comum.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ROLES_01",
+      "statement": "Na escola, cozinheiras, estudantes, famílias e professores participam de modos diferentes de uma campanha de alimentação. Como descrever os papéis?",
+      "options": [
+        "Dizer que apenas a direção forma a comunidade.",
+        "Indicar o que cada grupo faz na campanha e evitar dizer que todos realizam a mesma tarefa.",
+        "Inventar tarefas não registradas.",
+        "Concluir que grupos com funções diferentes não cooperam."
+      ],
+      "correctAnswer": "Indicar o que cada grupo faz na campanha e evitar dizer que todos realizam a mesma tarefa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas a direção forma a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ROLES_02",
+      "statement": "Na escola, cozinheiras, estudantes, famílias e professores participam de modos diferentes de uma campanha de alimentação. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que apenas a direção forma a comunidade.",
+        "Inventar tarefas não registradas.",
+        "Considere O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+        "Concluir que grupos com funções diferentes não cooperam."
+      ],
+      "correctAnswer": "Considere O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas a direção forma a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ROLES_03",
+      "statement": "Na escola, cozinheiras, estudantes, famílias e professores participam de modos diferentes de uma campanha de alimentação. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que apenas a direção forma a comunidade.",
+        "Inventar tarefas não registradas.",
+        "Concluir que grupos com funções diferentes não cooperam.",
+        "Aplique o critério a uma festa ou mutirão local."
+      ],
+      "correctAnswer": "Aplique o critério a uma festa ou mutirão local.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas a direção forma a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ROLES_04",
+      "statement": "Na escola, cozinheiras, estudantes, famílias e professores participam de modos diferentes de uma campanha de alimentação. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar que um grupo é responsável por toda a vida da escola.",
+        "Dizer que apenas a direção forma a comunidade.",
+        "Inventar tarefas não registradas.",
+        "Concluir que grupos com funções diferentes não cooperam."
+      ],
+      "correctAnswer": "Evite afirmar que um grupo é responsável por toda a vida da escola.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas a direção forma a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ROLES_05",
+      "statement": "Na escola, cozinheiras, estudantes, famílias e professores participam de modos diferentes de uma campanha de alimentação. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que apenas a direção forma a comunidade.",
+        "Confira tarefas, decisões e registros da campanha.",
+        "Inventar tarefas não registradas.",
+        "Concluir que grupos com funções diferentes não cooperam."
+      ],
+      "correctAnswer": "Confira tarefas, decisões e registros da campanha.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel social é descrito pela participação observável em uma situação, não por um rótulo fixo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas a direção forma a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_HOUSING_01",
+      "statement": "Um bairro tem prédios altos e outro tem casas térreas; ambos contam com moradores antigos e recém-chegados. O que a comparação deve evitar?",
+      "options": [
+        "Dizer que bairros diferentes não podem ser comparados.",
+        "Usar a casa como prova da personalidade do morador.",
+        "Evitar associar o tipo de moradia a uma ideia de superioridade ou a uma descrição de todas as pessoas.",
+        "Afirmar que prédios e casas têm exatamente as mesmas condições."
+      ],
+      "correctAnswer": "Evitar associar o tipo de moradia a uma ideia de superioridade ou a uma descrição de todas as pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que bairros diferentes não podem ser comparados.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_HOUSING_02",
+      "statement": "Um bairro tem prédios altos e outro tem casas térreas; ambos contam com moradores antigos e recém-chegados. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que bairros diferentes não podem ser comparados.",
+        "Usar a casa como prova da personalidade do morador.",
+        "Afirmar que prédios e casas têm exatamente as mesmas condições.",
+        "Considere Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores."
+      ],
+      "correctAnswer": "Considere Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que bairros diferentes não podem ser comparados.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_HOUSING_03",
+      "statement": "Um bairro tem prédios altos e outro tem casas térreas; ambos contam com moradores antigos e recém-chegados. Como transferir esse raciocínio?",
+      "options": [
+        "Compare formas de moradia com respeito à privacidade.",
+        "Dizer que bairros diferentes não podem ser comparados.",
+        "Usar a casa como prova da personalidade do morador.",
+        "Afirmar que prédios e casas têm exatamente as mesmas condições."
+      ],
+      "correctAnswer": "Compare formas de moradia com respeito à privacidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que bairros diferentes não podem ser comparados.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_HOUSING_04",
+      "statement": "Um bairro tem prédios altos e outro tem casas térreas; ambos contam com moradores antigos e recém-chegados. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que bairros diferentes não podem ser comparados.",
+        "Evite concluir que todas as pessoas do bairro têm a mesma renda.",
+        "Usar a casa como prova da personalidade do morador.",
+        "Afirmar que prédios e casas têm exatamente as mesmas condições."
+      ],
+      "correctAnswer": "Evite concluir que todas as pessoas do bairro têm a mesma renda.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que bairros diferentes não podem ser comparados.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_HOUSING_05",
+      "statement": "Um bairro tem prédios altos e outro tem casas térreas; ambos contam com moradores antigos e recém-chegados. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que bairros diferentes não podem ser comparados.",
+        "Usar a casa como prova da personalidade do morador.",
+        "Confira mapas públicos, tipos de construção e relatos não identificáveis.",
+        "Afirmar que prédios e casas têm exatamente as mesmas condições."
+      ],
+      "correctAnswer": "Confira mapas públicos, tipos de construção e relatos não identificáveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Características espaciais podem ser comparadas sem transformar aparência em julgamento sobre os moradores.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que bairros diferentes não podem ser comparados.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_CULTURAL_01",
+      "statement": "Uma comunidade mantém uma celebração local e outra organiza uma atividade musical em data diferente. Que papel dos grupos pode ser descrito?",
+      "options": [
+        "Apenas eventos oficiais têm valor cultural.",
+        "Toda pessoa da comunidade participa da mesma forma.",
+        "Práticas diferentes não podem ocupar o mesmo território.",
+        "Os grupos participam da vida cultural ao organizar, ensinar ou compartilhar práticas em seus contextos."
+      ],
+      "correctAnswer": "Os grupos participam da vida cultural ao organizar, ensinar ou compartilhar práticas em seus contextos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas eventos oficiais têm valor cultural.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_CULTURAL_02",
+      "statement": "Uma comunidade mantém uma celebração local e outra organiza uma atividade musical em data diferente. Que critério deve orientar a análise?",
+      "options": [
+        "Considere O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+        "Apenas eventos oficiais têm valor cultural.",
+        "Toda pessoa da comunidade participa da mesma forma.",
+        "Práticas diferentes não podem ocupar o mesmo território."
+      ],
+      "correctAnswer": "Considere O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas eventos oficiais têm valor cultural.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_CULTURAL_03",
+      "statement": "Uma comunidade mantém uma celebração local e outra organiza uma atividade musical em data diferente. Como transferir esse raciocínio?",
+      "options": [
+        "Apenas eventos oficiais têm valor cultural.",
+        "Compare duas práticas culturais com nomes e contextos respeitosos.",
+        "Toda pessoa da comunidade participa da mesma forma.",
+        "Práticas diferentes não podem ocupar o mesmo território."
+      ],
+      "correctAnswer": "Compare duas práticas culturais com nomes e contextos respeitosos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas eventos oficiais têm valor cultural.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_CULTURAL_04",
+      "statement": "Uma comunidade mantém uma celebração local e outra organiza uma atividade musical em data diferente. Qual conclusão deve ser evitada?",
+      "options": [
+        "Apenas eventos oficiais têm valor cultural.",
+        "Toda pessoa da comunidade participa da mesma forma.",
+        "Evite dizer que uma prática define toda a identidade do grupo.",
+        "Práticas diferentes não podem ocupar o mesmo território."
+      ],
+      "correctAnswer": "Evite dizer que uma prática define toda a identidade do grupo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas eventos oficiais têm valor cultural.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_CULTURAL_05",
+      "statement": "Uma comunidade mantém uma celebração local e outra organiza uma atividade musical em data diferente. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Apenas eventos oficiais têm valor cultural.",
+        "Toda pessoa da comunidade participa da mesma forma.",
+        "Práticas diferentes não podem ocupar o mesmo território.",
+        "Confira programação pública, autoria e participantes indicados."
+      ],
+      "correctAnswer": "Confira programação pública, autoria e participantes indicados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O papel deve ser ligado à prática observada e à fonte, sem transformar uma atividade em característica de todos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apenas eventos oficiais têm valor cultural.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SERVICES_01",
+      "statement": "Um grupo de moradores ajuda a divulgar horários de uma unidade de saúde, enquanto outro acompanha a manutenção da praça. Como explicar os papéis?",
+      "options": [
+        "Descrever as contribuições específicas de cada grupo para necessidades coletivas diferentes.",
+        "Dizer que somente funcionários ajudam a comunidade.",
+        "Tratar divulgação e manutenção como a mesma tarefa.",
+        "Afirmar que o papel nunca muda."
+      ],
+      "correctAnswer": "Descrever as contribuições específicas de cada grupo para necessidades coletivas diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que somente funcionários ajudam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SERVICES_02",
+      "statement": "Um grupo de moradores ajuda a divulgar horários de uma unidade de saúde, enquanto outro acompanha a manutenção da praça. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que somente funcionários ajudam a comunidade.",
+        "Considere Papéis podem ser complementares e mudam conforme a ação analisada.",
+        "Tratar divulgação e manutenção como a mesma tarefa.",
+        "Afirmar que o papel nunca muda."
+      ],
+      "correctAnswer": "Considere Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que somente funcionários ajudam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SERVICES_03",
+      "statement": "Um grupo de moradores ajuda a divulgar horários de uma unidade de saúde, enquanto outro acompanha a manutenção da praça. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que somente funcionários ajudam a comunidade.",
+        "Tratar divulgação e manutenção como a mesma tarefa.",
+        "Compare grupos envolvidos em uma biblioteca ou transporte.",
+        "Afirmar que o papel nunca muda."
+      ],
+      "correctAnswer": "Compare grupos envolvidos em uma biblioteca ou transporte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que somente funcionários ajudam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SERVICES_04",
+      "statement": "Um grupo de moradores ajuda a divulgar horários de uma unidade de saúde, enquanto outro acompanha a manutenção da praça. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que somente funcionários ajudam a comunidade.",
+        "Tratar divulgação e manutenção como a mesma tarefa.",
+        "Afirmar que o papel nunca muda.",
+        "Evite afirmar que um grupo atende sozinho todas as necessidades."
+      ],
+      "correctAnswer": "Evite afirmar que um grupo atende sozinho todas as necessidades.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que somente funcionários ajudam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SERVICES_05",
+      "statement": "Um grupo de moradores ajuda a divulgar horários de uma unidade de saúde, enquanto outro acompanha a manutenção da praça. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira avisos, atas públicas e tarefas registradas.",
+        "Dizer que somente funcionários ajudam a comunidade.",
+        "Tratar divulgação e manutenção como a mesma tarefa.",
+        "Afirmar que o papel nunca muda."
+      ],
+      "correctAnswer": "Confira avisos, atas públicas e tarefas registradas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Papéis podem ser complementares e mudam conforme a ação analisada.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que somente funcionários ajudam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_MIGRATION_01",
+      "statement": "Uma comunidade reúne famílias que chegaram em épocas diferentes e uma associação organiza encontros com comidas e histórias variadas. O que a situação revela?",
+      "options": [
+        "Dizer que recém-chegados não formam a comunidade.",
+        "Que a comunidade pode ser formada por trajetórias diferentes e que os encontros criam participação comum.",
+        "Usar uma família como representante de todas.",
+        "Concluir que trajetórias diferentes impedem cooperação."
+      ],
+      "correctAnswer": "Que a comunidade pode ser formada por trajetórias diferentes e que os encontros criam participação comum.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que recém-chegados não formam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_MIGRATION_02",
+      "statement": "Uma comunidade reúne famílias que chegaram em épocas diferentes e uma associação organiza encontros com comidas e histórias variadas. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que recém-chegados não formam a comunidade.",
+        "Usar uma família como representante de todas.",
+        "Considere A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+        "Concluir que trajetórias diferentes impedem cooperação."
+      ],
+      "correctAnswer": "Considere A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que recém-chegados não formam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_MIGRATION_03",
+      "statement": "Uma comunidade reúne famílias que chegaram em épocas diferentes e uma associação organiza encontros com comidas e histórias variadas. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que recém-chegados não formam a comunidade.",
+        "Usar uma família como representante de todas.",
+        "Concluir que trajetórias diferentes impedem cooperação.",
+        "Compare trajetórias de grupos em uma atividade pública sem coletar dados sensíveis."
+      ],
+      "correctAnswer": "Compare trajetórias de grupos em uma atividade pública sem coletar dados sensíveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que recém-chegados não formam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_MIGRATION_04",
+      "statement": "Uma comunidade reúne famílias que chegaram em épocas diferentes e uma associação organiza encontros com comidas e histórias variadas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dar a mesma história de chegada a todas as famílias.",
+        "Dizer que recém-chegados não formam a comunidade.",
+        "Usar uma família como representante de todas.",
+        "Concluir que trajetórias diferentes impedem cooperação."
+      ],
+      "correctAnswer": "Evite dar a mesma história de chegada a todas as famílias.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que recém-chegados não formam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_MIGRATION_05",
+      "statement": "Uma comunidade reúne famílias que chegaram em épocas diferentes e uma associação organiza encontros com comidas e histórias variadas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que recém-chegados não formam a comunidade.",
+        "Confira histórias autorizadas, programação e contexto do encontro.",
+        "Usar uma família como representante de todas.",
+        "Concluir que trajetórias diferentes impedem cooperação."
+      ],
+      "correctAnswer": "Confira histórias autorizadas, programação e contexto do encontro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação reconhece diversidade de trajetórias sem exigir que todos compartilhem uma origem.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que recém-chegados não formam a comunidade.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ACCESS_01",
+      "statement": "Duas comunidades têm uma escola, mas só uma possui rota acessível até a entrada principal. Que diferença é relevante?",
+      "options": [
+        "Acessibilidade é apenas uma preferência.",
+        "As escolas são iguais porque têm a mesma função.",
+        "A existência de rota acessível é uma diferença de condição de acesso, que deve ser descrita sem culpar os estudantes.",
+        "A rota acessível elimina qualquer outra barreira."
+      ],
+      "correctAnswer": "A existência de rota acessível é uma diferença de condição de acesso, que deve ser descrita sem culpar os estudantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Acessibilidade é apenas uma preferência.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ACCESS_02",
+      "statement": "Duas comunidades têm uma escola, mas só uma possui rota acessível até a entrada principal. Que critério deve orientar a análise?",
+      "options": [
+        "Acessibilidade é apenas uma preferência.",
+        "As escolas são iguais porque têm a mesma função.",
+        "A rota acessível elimina qualquer outra barreira.",
+        "Considere Comparar comunidades inclui condições materiais e barreiras que afetam a participação."
+      ],
+      "correctAnswer": "Considere Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Acessibilidade é apenas uma preferência.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ACCESS_03",
+      "statement": "Duas comunidades têm uma escola, mas só uma possui rota acessível até a entrada principal. Como transferir esse raciocínio?",
+      "options": [
+        "Investigue acessibilidade de espaços públicos sem registrar pessoas identificáveis.",
+        "Acessibilidade é apenas uma preferência.",
+        "As escolas são iguais porque têm a mesma função.",
+        "A rota acessível elimina qualquer outra barreira."
+      ],
+      "correctAnswer": "Investigue acessibilidade de espaços públicos sem registrar pessoas identificáveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Acessibilidade é apenas uma preferência.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ACCESS_04",
+      "statement": "Duas comunidades têm uma escola, mas só uma possui rota acessível até a entrada principal. Qual conclusão deve ser evitada?",
+      "options": [
+        "Acessibilidade é apenas uma preferência.",
+        "Evite dizer que a falta de acesso é escolha dos estudantes.",
+        "As escolas são iguais porque têm a mesma função.",
+        "A rota acessível elimina qualquer outra barreira."
+      ],
+      "correctAnswer": "Evite dizer que a falta de acesso é escolha dos estudantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Acessibilidade é apenas uma preferência.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ACCESS_05",
+      "statement": "Duas comunidades têm uma escola, mas só uma possui rota acessível até a entrada principal. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Acessibilidade é apenas uma preferência.",
+        "As escolas são iguais porque têm a mesma função.",
+        "Confira rota, sinalização, transporte e normas do espaço.",
+        "A rota acessível elimina qualquer outra barreira."
+      ],
+      "correctAnswer": "Confira rota, sinalização, transporte e normas do espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar comunidades inclui condições materiais e barreiras que afetam a participação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Acessibilidade é apenas uma preferência.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ABSENCE_01",
+      "statement": "Um relatório sobre a história do bairro cita comerciantes e gestores, mas não menciona trabalhadores informais. Que pergunta a comparação deve fazer?",
+      "options": [
+        "Considerar o relatório completo por ser oficial.",
+        "Apagar as informações já documentadas.",
+        "Dizer que todo grupo ausente teve o mesmo papel.",
+        "Quais grupos participaram e ficaram ausentes do relatório, e que fontes podem ampliar o registro?"
+      ],
+      "correctAnswer": "Quais grupos participaram e ficaram ausentes do relatório, e que fontes podem ampliar o registro?",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Considerar o relatório completo por ser oficial.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ABSENCE_02",
+      "statement": "Um relatório sobre a história do bairro cita comerciantes e gestores, mas não menciona trabalhadores informais. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+        "Considerar o relatório completo por ser oficial.",
+        "Apagar as informações já documentadas.",
+        "Dizer que todo grupo ausente teve o mesmo papel."
+      ],
+      "correctAnswer": "Considere Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Considerar o relatório completo por ser oficial.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ABSENCE_03",
+      "statement": "Um relatório sobre a história do bairro cita comerciantes e gestores, mas não menciona trabalhadores informais. Como transferir esse raciocínio?",
+      "options": [
+        "Considerar o relatório completo por ser oficial.",
+        "Procure vozes faltantes em uma história de serviço público.",
+        "Apagar as informações já documentadas.",
+        "Dizer que todo grupo ausente teve o mesmo papel."
+      ],
+      "correctAnswer": "Procure vozes faltantes em uma história de serviço público.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Considerar o relatório completo por ser oficial.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ABSENCE_04",
+      "statement": "Um relatório sobre a história do bairro cita comerciantes e gestores, mas não menciona trabalhadores informais. Qual conclusão deve ser evitada?",
+      "options": [
+        "Considerar o relatório completo por ser oficial.",
+        "Apagar as informações já documentadas.",
+        "Evite afirmar que o grupo não participou porque não foi citado.",
+        "Dizer que todo grupo ausente teve o mesmo papel."
+      ],
+      "correctAnswer": "Evite afirmar que o grupo não participou porque não foi citado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Considerar o relatório completo por ser oficial.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_ABSENCE_05",
+      "statement": "Um relatório sobre a história do bairro cita comerciantes e gestores, mas não menciona trabalhadores informais. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Considerar o relatório completo por ser oficial.",
+        "Apagar as informações já documentadas.",
+        "Dizer que todo grupo ausente teve o mesmo papel.",
+        "Confira pessoas citadas, período e finalidade do relatório."
+      ],
+      "correctAnswer": "Confira pessoas citadas, período e finalidade do relatório.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma ausência na fonte é uma lacuna de pesquisa, não prova de ausência na comunidade.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Considerar o relatório completo por ser oficial.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_COMPARE_01",
+      "statement": "Uma tabela compara duas comunidades por localização, atividades, grupos participantes e desafios de acesso. Por que esses critérios ajudam?",
+      "options": [
+        "Porque tornam a comparação explícita e impedem que uma impressão geral substitua as evidências.",
+        "Comparar apenas nomes dos bairros.",
+        "Misturar dados de períodos diferentes sem aviso.",
+        "Dizer que uma tabela elimina a diversidade interna."
+      ],
+      "correctAnswer": "Porque tornam a comparação explícita e impedem que uma impressão geral substitua as evidências.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Comparar apenas nomes dos bairros.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_COMPARE_02",
+      "statement": "Uma tabela compara duas comunidades por localização, atividades, grupos participantes e desafios de acesso. Que critério deve orientar a análise?",
+      "options": [
+        "Comparar apenas nomes dos bairros.",
+        "Considere Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+        "Misturar dados de períodos diferentes sem aviso.",
+        "Dizer que uma tabela elimina a diversidade interna."
+      ],
+      "correctAnswer": "Considere Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Comparar apenas nomes dos bairros.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_COMPARE_03",
+      "statement": "Uma tabela compara duas comunidades por localização, atividades, grupos participantes e desafios de acesso. Como transferir esse raciocínio?",
+      "options": [
+        "Comparar apenas nomes dos bairros.",
+        "Misturar dados de períodos diferentes sem aviso.",
+        "Crie critérios para comparar duas praças ou escolas.",
+        "Dizer que uma tabela elimina a diversidade interna."
+      ],
+      "correctAnswer": "Crie critérios para comparar duas praças ou escolas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Comparar apenas nomes dos bairros.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_COMPARE_04",
+      "statement": "Uma tabela compara duas comunidades por localização, atividades, grupos participantes e desafios de acesso. Qual conclusão deve ser evitada?",
+      "options": [
+        "Comparar apenas nomes dos bairros.",
+        "Misturar dados de períodos diferentes sem aviso.",
+        "Dizer que uma tabela elimina a diversidade interna.",
+        "Evite escolher a comunidade vencedora sem explicar o critério."
+      ],
+      "correctAnswer": "Evite escolher a comunidade vencedora sem explicar o critério.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Comparar apenas nomes dos bairros.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_COMPARE_05",
+      "statement": "Uma tabela compara duas comunidades por localização, atividades, grupos participantes e desafios de acesso. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira colunas, fontes e limites de cada informação.",
+        "Comparar apenas nomes dos bairros.",
+        "Misturar dados de períodos diferentes sem aviso.",
+        "Dizer que uma tabela elimina a diversidade interna."
+      ],
+      "correctAnswer": "Confira colunas, fontes e limites de cada informação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Critérios comuns ajudam a distinguir semelhanças e diferenças relevantes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Comparar apenas nomes dos bairros.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SYNTHESIS_01",
+      "statement": "Uma investigação reúne mapas, calendários e registros públicos sobre três comunidades da região. Como apresentar a síntese?",
+      "options": [
+        "Listar nomes sem comparar.",
+        "Descrever semelhanças, diferenças e papéis documentados, indicando limites e evitando falar por todos.",
+        "Escolher uma comunidade como padrão.",
+        "Inventar papéis para grupos não citados."
+      ],
+      "correctAnswer": "Descrever semelhanças, diferenças e papéis documentados, indicando limites e evitando falar por todos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem comparar.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SYNTHESIS_02",
+      "statement": "Uma investigação reúne mapas, calendários e registros públicos sobre três comunidades da região. Que critério deve orientar a análise?",
+      "options": [
+        "Listar nomes sem comparar.",
+        "Escolher uma comunidade como padrão.",
+        "Considere A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+        "Inventar papéis para grupos não citados."
+      ],
+      "correctAnswer": "Considere A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem comparar.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SYNTHESIS_03",
+      "statement": "Uma investigação reúne mapas, calendários e registros públicos sobre três comunidades da região. Como transferir esse raciocínio?",
+      "options": [
+        "Listar nomes sem comparar.",
+        "Escolher uma comunidade como padrão.",
+        "Inventar papéis para grupos não citados.",
+        "Produza um painel acessível sobre comunidades próximas."
+      ],
+      "correctAnswer": "Produza um painel acessível sobre comunidades próximas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem comparar.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SYNTHESIS_04",
+      "statement": "Uma investigação reúne mapas, calendários e registros públicos sobre três comunidades da região. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que três fontes representam toda a região.",
+        "Listar nomes sem comparar.",
+        "Escolher uma comunidade como padrão.",
+        "Inventar papéis para grupos não citados."
+      ],
+      "correctAnswer": "Evite dizer que três fontes representam toda a região.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem comparar.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-community-comparisons-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-COMMUNITY-COMPARISONS_SYNTHESIS_05",
+      "statement": "Uma investigação reúne mapas, calendários e registros públicos sobre três comunidades da região. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Listar nomes sem comparar.",
+        "Confira mapas, atividades, grupos, períodos e lacunas.",
+        "Escolher uma comunidade como padrão.",
+        "Inventar papéis para grupos não citados."
+      ],
+      "correctAnswer": "Confira mapas, atividades, grupos, períodos e lacunas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese proporcional mantém visíveis critérios, fontes e diferenças internas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem comparar.": [
+          "HISTORY_EF03HI07_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

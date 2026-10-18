@@ -1,0 +1,1198 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-religious-compare-traditions",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "TRADICOES_E_PLURALIDADE",
+  "topic": "comparar tradições com respeito",
+  "canonicalSkillCode": "RELIGIOUS_COMPARE_TRADITIONS",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-religious_education-religious_diversity-1",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-2",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-3",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-5",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-6",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-7",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-8",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-9",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-religious_education-religious_diversity-11",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-religious_education-review-01",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_COMPARE_TRADITIONS_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 10,
+    "feedbackAdded": 10,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Comparar tradições com respeito",
+    "objective": "Comparar tradições e práticas religiosas sem estereotipar, hierarquizar ou apagar a diversidade interna.",
+    "summary": "A comparação responsável começa pelo contexto e pelas vozes dos participantes. Semelhança não significa identidade, e diferença não significa incompatibilidade.",
+    "explanation": "## 1. Descreva antes de julgar\nRegistre prática, lugar, participantes, tempo e finalidade.\n\n## 2. Escute os sentidos\nFontes internas e explicações das comunidades ajudam a evitar interpretações impostas.\n\n## 3. Compare dimensões\nCompare práticas, valores, linguagens e contextos, deixando claro o que é aproximação e o que permanece diferente.\n\n## Exemplo resolvido\nDuas tradições podem valorizar o cuidado, mas justificá-lo e praticá-lo de modos próprios. A comparação deve preservar ambos os aspectos.\n\n## 4. Reconheça pluralidade\nUma pessoa ou comunidade não representa automaticamente todas as pessoas de uma tradição.",
+    "workedExample": "Use uma tabela com prática, contexto, sentido informado e limite da comparação. Evite transformar uma semelhança em equivalência total.",
+    "commonMistake": "Generalizar, hierarquizar, tratar uma fonte como voz de todos ou interpretar uma tradição com categorias externas.",
+    "tips": [
+      "Use fontes contextualizadas.",
+      "Diferencie semelhança de identidade.",
+      "Inclua pluralidade interna.",
+      "Proteja o direito de não se expor."
+    ],
+    "estimatedMinutes": 28,
+    "priorKnowledge": [
+      "Reconhecer diversidade cultural.",
+      "Participar de diálogo com respeito e escuta."
+    ],
+    "keyConcepts": [
+      "tradição",
+      "contexto",
+      "pluralidade",
+      "diálogo",
+      "prática",
+      "sentido"
+    ],
+    "activity": "Comparar duas descrições autorais de práticas, indicando aproximações, diferenças e informações que ainda faltam.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-religious-compare-traditions-01",
+          "v5-religious-compare-traditions-02",
+          "v5-religious-compare-traditions-03",
+          "v5-religious-compare-traditions-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-religious-compare-traditions-05",
+          "v5-religious-compare-traditions-06",
+          "v5-religious-compare-traditions-07",
+          "v5-religious-compare-traditions-08",
+          "v5-religious-compare-traditions-09",
+          "v5-religious-compare-traditions-10",
+          "v5-religious-compare-traditions-11",
+          "v5-religious-compare-traditions-12",
+          "v5-religious-compare-traditions-13",
+          "v5-religious-compare-traditions-14",
+          "v5-religious-compare-traditions-15",
+          "v5-religious-compare-traditions-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-religious-compare-traditions-17",
+          "v5-religious-compare-traditions-18",
+          "v5-religious-compare-traditions-19",
+          "v5-religious-compare-traditions-20",
+          "v5-religious-compare-traditions-21",
+          "v5-religious-compare-traditions-22",
+          "v5-religious-compare-traditions-23",
+          "v5-religious-compare-traditions-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-religious-compare-traditions-25",
+          "v5-religious-compare-traditions-26",
+          "v5-religious-compare-traditions-27",
+          "v5-religious-compare-traditions-28",
+          "v5-religious-compare-traditions-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-religious-compare-traditions-30",
+          "v5-religious-compare-traditions-31",
+          "v5-religious-compare-traditions-32",
+          "v5-religious-compare-traditions-33",
+          "v5-religious-compare-traditions-34",
+          "v5-religious-compare-traditions-35",
+          "v5-religious-compare-traditions-36",
+          "v5-religious-compare-traditions-37",
+          "v5-religious-compare-traditions-38",
+          "v5-religious-compare-traditions-39",
+          "v5-religious-compare-traditions-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-religious-compare-traditions-activity",
+        "title": "Oficina de comparar tradições com respeito",
+        "objective": "Comparar tradições e práticas religiosas sem estereotipar, hierarquizar ou apagar a diversidade interna.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Comparar duas descrições autorais de práticas, indicando aproximações, diferenças e informações que ainda faltam.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-religious-compare-traditions-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_FESTA_COMUNITÁRIA_01",
+      "statement": "Duas comunidades realizam festas em épocas diferentes e atribuem sentidos próprios à celebração.. Como comparar sem reduzir as tradições?",
+      "options": [
+        "descrever práticas, contextos e significados de cada comunidade antes de aproximá-las.",
+        "uma festa explica toda a tradição",
+        "a diferença prova incompatibilidade",
+        "o observador define o sentido sozinho"
+      ],
+      "correctAnswer": "descrever práticas, contextos e significados de cada comunidade antes de aproximá-las.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "uma festa explica toda a tradição": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_FESTA_COMUNITÁRIA_02",
+      "statement": "Duas comunidades realizam festas em épocas diferentes e atribuem sentidos próprios à celebração.. Que critério deve orientar a análise?",
+      "options": [
+        "uma festa explica toda a tradição",
+        "perguntar quem participa, qual contexto e que sentido é atribuído",
+        "a diferença prova incompatibilidade",
+        "o observador define o sentido sozinho"
+      ],
+      "correctAnswer": "perguntar quem participa, qual contexto e que sentido é atribuído",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "uma festa explica toda a tradição": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_FESTA_COMUNITÁRIA_03",
+      "statement": "Duas comunidades realizam festas em épocas diferentes e atribuem sentidos próprios à celebração.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "uma festa explica toda a tradição",
+        "a diferença prova incompatibilidade",
+        "comparar sem declarar que uma prática representa todas as pessoas da tradição",
+        "o observador define o sentido sozinho"
+      ],
+      "correctAnswer": "comparar sem declarar que uma prática representa todas as pessoas da tradição",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "uma festa explica toda a tradição": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_FESTA_COMUNITÁRIA_04",
+      "statement": "Duas comunidades realizam festas em épocas diferentes e atribuem sentidos próprios à celebração.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "uma festa explica toda a tradição",
+        "a diferença prova incompatibilidade",
+        "o observador define o sentido sozinho",
+        "dizer que festas semelhantes têm exatamente o mesmo significado"
+      ],
+      "correctAnswer": "dizer que festas semelhantes têm exatamente o mesmo significado",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "uma festa explica toda a tradição": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_SÍMBOLOS_DIFERENTES_05",
+      "statement": "Uma comunidade usa água em um rito e outra usa luz em uma celebração.. Qual comparação é responsável?",
+      "options": [
+        "reconhecer que símbolos podem ter sentidos diferentes conforme a tradição e a situação.",
+        "símbolos não possuem contexto",
+        "um objeto tem significado universal",
+        "a aparência basta para interpretar"
+      ],
+      "correctAnswer": "reconhecer que símbolos podem ter sentidos diferentes conforme a tradição e a situação.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "símbolos não possuem contexto": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_SÍMBOLOS_DIFERENTES_06",
+      "statement": "Uma comunidade usa água em um rito e outra usa luz em uma celebração.. Que critério deve orientar a análise?",
+      "options": [
+        "símbolos não possuem contexto",
+        "consultar contexto, participantes e explicações internas",
+        "um objeto tem significado universal",
+        "a aparência basta para interpretar"
+      ],
+      "correctAnswer": "consultar contexto, participantes e explicações internas",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "símbolos não possuem contexto": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_SÍMBOLOS_DIFERENTES_07",
+      "statement": "Uma comunidade usa água em um rito e outra usa luz em uma celebração.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "símbolos não possuem contexto",
+        "um objeto tem significado universal",
+        "comparar função e significado sem transformar símbolo em tradução automática",
+        "a aparência basta para interpretar"
+      ],
+      "correctAnswer": "comparar função e significado sem transformar símbolo em tradução automática",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "símbolos não possuem contexto": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_SÍMBOLOS_DIFERENTES_08",
+      "statement": "Uma comunidade usa água em um rito e outra usa luz em uma celebração.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "símbolos não possuem contexto",
+        "um objeto tem significado universal",
+        "a aparência basta para interpretar",
+        "afirmar que água e luz significam sempre a mesma coisa"
+      ],
+      "correctAnswer": "afirmar que água e luz significam sempre a mesma coisa",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "símbolos não possuem contexto": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_NARRATIVAS_DE_ORIGEM_09",
+      "statement": "Dois grupos contam narrativas de origem com personagens e imagens distintas.. O que a análise deve evitar?",
+      "options": [
+        "tratar uma narrativa como medida para julgar ou hierarquizar a outra.",
+        "narrativas não ensinam valores",
+        "diferença é erro",
+        "uma versão representa todos os grupos"
+      ],
+      "correctAnswer": "tratar uma narrativa como medida para julgar ou hierarquizar a outra.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "narrativas não ensinam valores": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_NARRATIVAS_DE_ORIGEM_10",
+      "statement": "Dois grupos contam narrativas de origem com personagens e imagens distintas.. Que critério deve orientar a análise?",
+      "options": [
+        "narrativas não ensinam valores",
+        "identificar voz, contexto, função e modo de transmissão",
+        "diferença é erro",
+        "uma versão representa todos os grupos"
+      ],
+      "correctAnswer": "identificar voz, contexto, função e modo de transmissão",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "narrativas não ensinam valores": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_NARRATIVAS_DE_ORIGEM_11",
+      "statement": "Dois grupos contam narrativas de origem com personagens e imagens distintas.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "narrativas não ensinam valores",
+        "diferença é erro",
+        "relacionar narrativas a práticas e memórias sem afirmar equivalência total",
+        "uma versão representa todos os grupos"
+      ],
+      "correctAnswer": "relacionar narrativas a práticas e memórias sem afirmar equivalência total",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "narrativas não ensinam valores": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_NARRATIVAS_DE_ORIGEM_12",
+      "statement": "Dois grupos contam narrativas de origem com personagens e imagens distintas.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "narrativas não ensinam valores",
+        "diferença é erro",
+        "uma versão representa todos os grupos",
+        "classificar uma como verdadeira apenas por ser familiar"
+      ],
+      "correctAnswer": "classificar uma como verdadeira apenas por ser familiar",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "narrativas não ensinam valores": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ESPAÇO_DE_CULTO_13",
+      "statement": "Um templo, uma sala e um espaço aberto são usados para práticas de grupos distintos.. Como interpretar os espaços?",
+      "options": [
+        "considerar usos, regras, objetos, pessoas e história de cada espaço.",
+        "o prédio é a tradição inteira",
+        "o visitante conhece todos os sentidos",
+        "objetos não influenciam o uso"
+      ],
+      "correctAnswer": "considerar usos, regras, objetos, pessoas e história de cada espaço.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "o prédio é a tradição inteira": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ESPAÇO_DE_CULTO_14",
+      "statement": "Um templo, uma sala e um espaço aberto são usados para práticas de grupos distintos.. Que critério deve orientar a análise?",
+      "options": [
+        "o prédio é a tradição inteira",
+        "observar organização, acesso, práticas e explicações dos participantes",
+        "o visitante conhece todos os sentidos",
+        "objetos não influenciam o uso"
+      ],
+      "correctAnswer": "observar organização, acesso, práticas e explicações dos participantes",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "o prédio é a tradição inteira": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ESPAÇO_DE_CULTO_15",
+      "statement": "Um templo, uma sala e um espaço aberto são usados para práticas de grupos distintos.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "o prédio é a tradição inteira",
+        "o visitante conhece todos os sentidos",
+        "comparar usos sem supor que o formato do espaço define a crença",
+        "objetos não influenciam o uso"
+      ],
+      "correctAnswer": "comparar usos sem supor que o formato do espaço define a crença",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "o prédio é a tradição inteira": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ESPAÇO_DE_CULTO_16",
+      "statement": "Um templo, uma sala e um espaço aberto são usados para práticas de grupos distintos.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "o prédio é a tradição inteira",
+        "o visitante conhece todos os sentidos",
+        "objetos não influenciam o uso",
+        "dizer que espaços diferentes não podem cumprir função semelhante"
+      ],
+      "correctAnswer": "dizer que espaços diferentes não podem cumprir função semelhante",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "o prédio é a tradição inteira": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_CALENDÁRIOS_17",
+      "statement": "Calendários religiosos marcam datas e práticas diferentes ao longo do ano.. Que leitura é mais adequada?",
+      "options": [
+        "comparar ciclos, motivos e práticas sem impor um único calendário como padrão.",
+        "calendários só servem para feriados",
+        "datas explicam tudo sozinhas",
+        "diferença de data é contradição"
+      ],
+      "correctAnswer": "comparar ciclos, motivos e práticas sem impor um único calendário como padrão.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "calendários só servem para feriados": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_CALENDÁRIOS_18",
+      "statement": "Calendários religiosos marcam datas e práticas diferentes ao longo do ano.. Que critério deve orientar a análise?",
+      "options": [
+        "calendários só servem para feriados",
+        "registrar referência temporal, prática, comunidade e contexto",
+        "datas explicam tudo sozinhas",
+        "diferença de data é contradição"
+      ],
+      "correctAnswer": "registrar referência temporal, prática, comunidade e contexto",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "calendários só servem para feriados": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_CALENDÁRIOS_19",
+      "statement": "Calendários religiosos marcam datas e práticas diferentes ao longo do ano.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "calendários só servem para feriados",
+        "datas explicam tudo sozinhas",
+        "organizar uma tabela que preserve diferenças de início e duração",
+        "diferença de data é contradição"
+      ],
+      "correctAnswer": "organizar uma tabela que preserve diferenças de início e duração",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "calendários só servem para feriados": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_CALENDÁRIOS_20",
+      "statement": "Calendários religiosos marcam datas e práticas diferentes ao longo do ano.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "calendários só servem para feriados",
+        "datas explicam tudo sozinhas",
+        "diferença de data é contradição",
+        "dizer que todos celebram na mesma data"
+      ],
+      "correctAnswer": "dizer que todos celebram na mesma data",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "calendários só servem para feriados": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ÉTICA_E_CUIDADO_21",
+      "statement": "Duas tradições incentivam cuidado com pessoas vulneráveis, mas usam linguagens e práticas próprias.. Como formular a comparação?",
+      "options": [
+        "reconhecer uma aproximação de valor sem apagar diferenças de fundamento, prática e contexto.",
+        "valores nunca aparecem em práticas",
+        "uma semelhança elimina diferenças",
+        "a linguagem não importa"
+      ],
+      "correctAnswer": "reconhecer uma aproximação de valor sem apagar diferenças de fundamento, prática e contexto.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "valores nunca aparecem em práticas": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ÉTICA_E_CUIDADO_22",
+      "statement": "Duas tradições incentivam cuidado com pessoas vulneráveis, mas usam linguagens e práticas próprias.. Que critério deve orientar a análise?",
+      "options": [
+        "valores nunca aparecem em práticas",
+        "separar valor aproximado, justificativa, prática e comunidade",
+        "uma semelhança elimina diferenças",
+        "a linguagem não importa"
+      ],
+      "correctAnswer": "separar valor aproximado, justificativa, prática e comunidade",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "valores nunca aparecem em práticas": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ÉTICA_E_CUIDADO_23",
+      "statement": "Duas tradições incentivam cuidado com pessoas vulneráveis, mas usam linguagens e práticas próprias.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "valores nunca aparecem em práticas",
+        "uma semelhança elimina diferenças",
+        "comparar uma ação concreta e indicar o que não é equivalente",
+        "a linguagem não importa"
+      ],
+      "correctAnswer": "comparar uma ação concreta e indicar o que não é equivalente",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "valores nunca aparecem em práticas": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_ÉTICA_E_CUIDADO_24",
+      "statement": "Duas tradições incentivam cuidado com pessoas vulneráveis, mas usam linguagens e práticas próprias.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "valores nunca aparecem em práticas",
+        "uma semelhança elimina diferenças",
+        "a linguagem não importa",
+        "dizer que as tradições são idênticas"
+      ],
+      "correctAnswer": "dizer que as tradições são idênticas",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "valores nunca aparecem em práticas": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_MEMÓRIA_FAMILIAR_25",
+      "statement": "Uma família mantém uma prática religiosa em casa e a adapta após mudar de cidade.. O que a situação evidencia?",
+      "options": [
+        "tradições podem ser vividas em contextos familiares e transformadas sem perder todo o sentido.",
+        "mudança sempre significa abandono",
+        "família é uma tradição inteira",
+        "o lugar não influencia práticas"
+      ],
+      "correctAnswer": "tradições podem ser vividas em contextos familiares e transformadas sem perder todo o sentido.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "mudança sempre significa abandono": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_MEMÓRIA_FAMILIAR_26",
+      "statement": "Uma família mantém uma prática religiosa em casa e a adapta após mudar de cidade.. Que critério deve orientar a análise?",
+      "options": [
+        "mudança sempre significa abandono",
+        "observar transmissão, mudança, lugar e escolha dos participantes",
+        "família é uma tradição inteira",
+        "o lugar não influencia práticas"
+      ],
+      "correctAnswer": "observar transmissão, mudança, lugar e escolha dos participantes",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "mudança sempre significa abandono": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_MEMÓRIA_FAMILIAR_27",
+      "statement": "Uma família mantém uma prática religiosa em casa e a adapta após mudar de cidade.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "mudança sempre significa abandono",
+        "família é uma tradição inteira",
+        "comparar a prática familiar com outra experiência sem generalizar",
+        "o lugar não influencia práticas"
+      ],
+      "correctAnswer": "comparar a prática familiar com outra experiência sem generalizar",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "mudança sempre significa abandono": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_MEMÓRIA_FAMILIAR_28",
+      "statement": "Uma família mantém uma prática religiosa em casa e a adapta após mudar de cidade.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "mudança sempre significa abandono",
+        "família é uma tradição inteira",
+        "o lugar não influencia práticas",
+        "afirmar que toda pessoa da tradição faz o mesmo"
+      ],
+      "correctAnswer": "afirmar que toda pessoa da tradição faz o mesmo",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "mudança sempre significa abandono": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_PLURALIDADE_INTERNA_29",
+      "statement": "Pessoas da mesma tradição discordam sobre a forma de realizar uma prática comunitária.. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "uma tradição pode conter interpretações e práticas internas diversas.",
+        "toda comunidade pensa igual",
+        "a discordância é sempre erro",
+        "uma fala basta para representar todos"
+      ],
+      "correctAnswer": "uma tradição pode conter interpretações e práticas internas diversas.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda comunidade pensa igual": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_PLURALIDADE_INTERNA_30",
+      "statement": "Pessoas da mesma tradição discordam sobre a forma de realizar uma prática comunitária.. Que critério deve orientar a análise?",
+      "options": [
+        "toda comunidade pensa igual",
+        "procurar vozes, contexto, autoridade e história das posições",
+        "a discordância é sempre erro",
+        "uma fala basta para representar todos"
+      ],
+      "correctAnswer": "procurar vozes, contexto, autoridade e história das posições",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda comunidade pensa igual": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_PLURALIDADE_INTERNA_31",
+      "statement": "Pessoas da mesma tradição discordam sobre a forma de realizar uma prática comunitária.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "toda comunidade pensa igual",
+        "a discordância é sempre erro",
+        "comparar divergências sem transformar uma posição em representante de todos",
+        "uma fala basta para representar todos"
+      ],
+      "correctAnswer": "comparar divergências sem transformar uma posição em representante de todos",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda comunidade pensa igual": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_PLURALIDADE_INTERNA_32",
+      "statement": "Pessoas da mesma tradição discordam sobre a forma de realizar uma prática comunitária.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "toda comunidade pensa igual",
+        "a discordância é sempre erro",
+        "uma fala basta para representar todos",
+        "dizer que a tradição não existe por haver discordância"
+      ],
+      "correctAnswer": "dizer que a tradição não existe por haver discordância",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda comunidade pensa igual": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_DIÁLOGO_33",
+      "statement": "Em uma roda, estudantes perguntam sobre tradições sem exigir que colegas exponham sua intimidade.. Que princípio orienta a situação?",
+      "options": [
+        "diálogo respeitoso combina curiosidade, consentimento, escuta e direito de não responder.",
+        "toda pergunta deve ser respondida",
+        "curiosidade autoriza exposição",
+        "respeito impede qualquer pergunta"
+      ],
+      "correctAnswer": "diálogo respeitoso combina curiosidade, consentimento, escuta e direito de não responder.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda pergunta deve ser respondida": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_DIÁLOGO_34",
+      "statement": "Em uma roda, estudantes perguntam sobre tradições sem exigir que colegas exponham sua intimidade.. Que critério deve orientar a análise?",
+      "options": [
+        "toda pergunta deve ser respondida",
+        "distinguir pergunta informativa de invasão e respeitar limites",
+        "curiosidade autoriza exposição",
+        "respeito impede qualquer pergunta"
+      ],
+      "correctAnswer": "distinguir pergunta informativa de invasão e respeitar limites",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda pergunta deve ser respondida": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_DIÁLOGO_35",
+      "statement": "Em uma roda, estudantes perguntam sobre tradições sem exigir que colegas exponham sua intimidade.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "toda pergunta deve ser respondida",
+        "curiosidade autoriza exposição",
+        "aplicar o princípio a outro debate com mediação",
+        "respeito impede qualquer pergunta"
+      ],
+      "correctAnswer": "aplicar o princípio a outro debate com mediação",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda pergunta deve ser respondida": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_DIÁLOGO_36",
+      "statement": "Em uma roda, estudantes perguntam sobre tradições sem exigir que colegas exponham sua intimidade.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "toda pergunta deve ser respondida",
+        "curiosidade autoriza exposição",
+        "respeito impede qualquer pergunta",
+        "tratar silêncio como confissão"
+      ],
+      "correctAnswer": "tratar silêncio como confissão",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "toda pergunta deve ser respondida": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_COMPARAÇÃO_ESCOLAR_37",
+      "statement": "Um trabalho compara duas tradições usando fontes produzidas por seus próprios participantes.. Por que isso melhora a análise?",
+      "options": [
+        "fontes internas ajudam a compreender sentidos e reduzem a dependência de estereótipos externos.",
+        "fonte interna é sempre propaganda",
+        "uma fonte elimina todas as dúvidas",
+        "comparar é escolher a melhor tradição"
+      ],
+      "correctAnswer": "fontes internas ajudam a compreender sentidos e reduzem a dependência de estereótipos externos.",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "fonte interna é sempre propaganda": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_COMPARAÇÃO_ESCOLAR_38",
+      "statement": "Um trabalho compara duas tradições usando fontes produzidas por seus próprios participantes.. Que critério deve orientar a análise?",
+      "options": [
+        "fonte interna é sempre propaganda",
+        "identificar autoria, contexto e limites das fontes consultadas",
+        "uma fonte elimina todas as dúvidas",
+        "comparar é escolher a melhor tradição"
+      ],
+      "correctAnswer": "identificar autoria, contexto e limites das fontes consultadas",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "fonte interna é sempre propaganda": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_COMPARAÇÃO_ESCOLAR_39",
+      "statement": "Um trabalho compara duas tradições usando fontes produzidas por seus próprios participantes.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "fonte interna é sempre propaganda",
+        "uma fonte elimina todas as dúvidas",
+        "cruzar fontes sem hierarquizar pessoas ou transformar descrição em julgamento",
+        "comparar é escolher a melhor tradição"
+      ],
+      "correctAnswer": "cruzar fontes sem hierarquizar pessoas ou transformar descrição em julgamento",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "fonte interna é sempre propaganda": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-religious-compare-traditions-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "RELIGIOUS_COMPARE_TRADITIONS_COMPARAÇÃO_ESCOLAR_40",
+      "statement": "Um trabalho compara duas tradições usando fontes produzidas por seus próprios participantes.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "fonte interna é sempre propaganda",
+        "uma fonte elimina todas as dúvidas",
+        "comparar é escolher a melhor tradição",
+        "dizer que apenas fontes externas são confiáveis"
+      ],
+      "correctAnswer": "dizer que apenas fontes externas são confiáveis",
+      "explanation": "Comparar tradições exige contexto, escuta e cuidado para não hierarquizar, estereotipar ou apagar a pluralidade interna.",
+      "hint": "Descreva prática e contexto antes de comparar; indique o que é aproximação e o que permanece diferente.",
+      "errorFocus": "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED",
+      "misconceptions": {
+        "fonte interna é sempre propaganda": [
+          "RELIGIOUS_TRADITION_STEREOTYPED_OR_HIERARCHIZED"
+        ]
+      }
+    }
+  ]
+}

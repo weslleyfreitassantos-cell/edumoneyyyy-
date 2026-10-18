@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge09-create-simple-maps-with-spatial-references",
+  "canonicalSkillCode": "AUTHORING_EF01GE09_SIMPLE_MAPS_SPATIAL_REFERENCES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "mapas simples e referenciais espaciais usando o corpo como referência",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE09",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Elaborar e utilizar mapas simples para localizar elementos do local de vivência, considerando referenciais espaciais (frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) e tendo o corpo como referência.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Mapas simples e posições no espaço",
+    "objective": "Elaborar e usar mapas esquemáticos para localizar elementos em um cenário seguro, empregando referências como frente, atrás, esquerda, direita, em cima, embaixo, dentro e fora a partir de um corpo orientado.",
+    "summary": "Um mapa simples pode mostrar onde estão objetos num cenário e usar símbolos ou desenhos como referências. Palavras como esquerda e direita dependem da orientação do corpo que serve de referência; frente e atrás também precisam de um ponto de vista combinado. Em cima, embaixo, dentro e fora descrevem outras relações espaciais. Mapas esquemáticos ajudam a comunicar posições sem precisar de escala precisa. As atividades usam maquetes ou layouts fictícios da sala e não solicitam endereços, mapas de casa ou trajetos pessoais de estudantes.",
+    "explanation": "Combine primeiro para onde uma personagem ou observador está voltado. A partir desse corpo, identifique o que fica à esquerda, à direita, à frente ou atrás. Para um objeto dentro de uma caixa, use a caixa como referência; para algo acima de uma mesa, a mesa é a referência. Desenhe os elementos num mapa simples, acrescente símbolos e leia as posições a partir do ponto de vista indicado. Se o observador virar, esquerda e direita podem trocar de lado no mapa; por isso, a orientação deve ficar clara.",
+    "workedExample": "Uma personagem está voltada para a porta. A mesa fica à esquerda dela e a estante fica atrás. No mapa da sala fictícia, uma seta mostra a direção para onde a personagem olha e a legenda identifica mesa e estante.",
+    "commonMistake": "Usar esquerda e direita sem indicar para onde o corpo de referência está voltado, ou tratar um mapa esquemático como endereço real.",
+    "priorKnowledge": [
+      "Reconhecer objetos e lugares num cenário conhecido ou fictício.",
+      "Seguir instruções simples de posição com apoio visual ou corporal."
+    ],
+    "keyConcepts": [
+      "mapa simples",
+      "referência espacial",
+      "corpo",
+      "frente",
+      "atrás",
+      "esquerda",
+      "direita",
+      "dentro e fora"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "BODY_ORIENTATION_REFERENCE",
+        "action": "Coloque uma figura no cenário, indique para onde olha e só então nomeie esquerda, direita, frente e atrás."
+      },
+      {
+        "errorFocus": "RELATIONAL_POSITION_WORDS",
+        "action": "Use objetos concretos como caixa e mesa para demonstrar dentro, fora, em cima e embaixo."
+      },
+      {
+        "errorFocus": "SIMPLE_MAP_SYMBOLS",
+        "action": "Desenhe os elementos principais e crie uma legenda para tornar suas posições legíveis."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+      "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+      "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge09-classroom-model-map",
+        "title": "Mapa de uma sala fictícia",
+        "instructions": "Uma maquete simples apresenta porta, mesa, estante e tapete com uma personagem orientada para a porta.\n1. Observe a direção para onde a personagem está voltada.\n2. Posicione os objetos conforme as pistas espaciais.\n3. Desenhe um mapa com legenda e confira as relações.",
+        "steps": [
+          "Observe a direção para onde a personagem está voltada.",
+          "Posicione os objetos conforme as pistas espaciais.",
+          "Desenhe um mapa com legenda e confira as relações."
+        ],
+        "evidence": "Mapa esquemático com posições descritas a partir do corpo de referência.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um objeto com apoio.",
+            "developing": "usa uma relação espacial.",
+            "proficient": "representa várias posições e indica orientação claramente."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge09-inside-outside-sort",
+        "title": "Dentro, fora, em cima e embaixo",
+        "instructions": "Objetos de uma maquete são colocados em relação a caixas, mesas e prateleiras fictícias.\n1. Escolha uma referência para cada relação.\n2. Posicione um objeto conforme a instrução.\n3. Registre a posição em desenho, frase ou mapa.",
+        "steps": [
+          "Escolha uma referência para cada relação.",
+          "Posicione um objeto conforme a instrução.",
+          "Registre a posição em desenho, frase ou mapa."
+        ],
+        "evidence": "Mapa ou registro que identifica posições relativas a referências nomeadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta um objeto.",
+            "developing": "descreve uma relação espacial.",
+            "proficient": "usa diferentes referenciais e comunica posições com clareza."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-01",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-02",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-03",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-04",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-05",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-06",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-07",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-09",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-10",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-11",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-12",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-13",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-14",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-15",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-17",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-18",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-19",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-20",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-21",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-22",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-23",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-25",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-26",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-27",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-28",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-29",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-30",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-31",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-33",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-34",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-35",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-36",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-37",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-38",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-39",
+          "v1-ef01ge09-create-simple-maps-with-spatial-references-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE09",
+        "descriptor": "Elaborar e utilizar mapas simples para localizar elementos do local de vivência, considerando referenciais espaciais (frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) e tendo o corpo como referência.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-01",
+      "statement": "Uma boneca olha para a porta. A mesa está à sua esquerda. Onde fica a mesa em relação à boneca?",
+      "prompt": "Uma boneca olha para a porta. A mesa está à sua esquerda. Onde fica a mesa em relação à boneca?",
+      "options": [
+        "À esquerda.",
+        "À direita",
+        "Atrás",
+        "Embaixo"
+      ],
+      "correctAnswer": "À esquerda.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "À direita": [
+          "USE_BODY_LEFT_REFERENCE"
+        ],
+        "Atrás": [
+          "USE_BODY_LEFT_REFERENCE"
+        ],
+        "Embaixo": [
+          "USE_BODY_LEFT_REFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BONECA_VOLTADA_PARA_PORTA",
+      "explanation": "A instrução define a orientação da boneca.",
+      "hint": "Imagine para onde ela está olhando.",
+      "errorFocus": "USE_BODY_LEFT_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A instrução define a orientação da boneca.",
+        "incorrect": "A instrução define a orientação da boneca.",
+        "hint": "Imagine para onde ela está olhando.",
+        "errorFocus": "USE_BODY_LEFT_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-02",
+      "statement": "Um livro está dentro de uma caixa. Qual palavra descreve sua posição em relação à caixa?",
+      "prompt": "Um livro está dentro de uma caixa. Qual palavra descreve sua posição em relação à caixa?",
+      "options": [
+        "Fora",
+        "Dentro.",
+        "Em cima",
+        "Atrás"
+      ],
+      "correctAnswer": "Dentro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fora": [
+          "IDENTIFY_INSIDE_RELATION"
+        ],
+        "Em cima": [
+          "IDENTIFY_INSIDE_RELATION"
+        ],
+        "Atrás": [
+          "IDENTIFY_INSIDE_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "LIVRO_DENTRO_DA_CAIXA",
+      "explanation": "A caixa é a referência e o livro está nela.",
+      "hint": "Use a caixa como referência.",
+      "errorFocus": "IDENTIFY_INSIDE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A caixa é a referência e o livro está nela.",
+        "incorrect": "A caixa é a referência e o livro está nela.",
+        "hint": "Use a caixa como referência.",
+        "errorFocus": "IDENTIFY_INSIDE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-03",
+      "statement": "Uma criança vira o corpo para olhar a janela. O lado esquerdo dela muda de posição no mapa?",
+      "prompt": "Uma criança vira o corpo para olhar a janela. O lado esquerdo dela muda de posição no mapa?",
+      "options": [
+        "Nunca muda",
+        "Vira automaticamente frente",
+        "Pode mudar, pois esquerda depende da orientação do corpo.",
+        "Torna-se dentro"
+      ],
+      "correctAnswer": "Pode mudar, pois esquerda depende da orientação do corpo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Nunca muda": [
+          "ORIENTATION_CHANGES_LEFT_RIGHT"
+        ],
+        "Vira automaticamente frente": [
+          "ORIENTATION_CHANGES_LEFT_RIGHT"
+        ],
+        "Torna-se dentro": [
+          "ORIENTATION_CHANGES_LEFT_RIGHT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OBSERVADOR_VIRADO",
+      "explanation": "Esquerda e direita dependem do ponto de vista.",
+      "hint": "Considere para onde o corpo se voltou.",
+      "errorFocus": "ORIENTATION_CHANGES_LEFT_RIGHT",
+      "feedback": {
+        "correct": "Boa observação: Esquerda e direita dependem do ponto de vista.",
+        "incorrect": "Esquerda e direita dependem do ponto de vista.",
+        "hint": "Considere para onde o corpo se voltou.",
+        "errorFocus": "ORIENTATION_CHANGES_LEFT_RIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-04",
+      "statement": "A bola está sobre a mesa. Que relação espacial aparece?",
+      "prompt": "A bola está sobre a mesa. Que relação espacial aparece?",
+      "options": [
+        "Dentro da mesa",
+        "Atrás do mapa",
+        "Fora do espaço",
+        "Em cima da mesa."
+      ],
+      "correctAnswer": "Em cima da mesa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dentro da mesa": [
+          "IDENTIFY_ABOVE_RELATION"
+        ],
+        "Atrás do mapa": [
+          "IDENTIFY_ABOVE_RELATION"
+        ],
+        "Fora do espaço": [
+          "IDENTIFY_ABOVE_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOLA_EM_CIMA_DA_MESA",
+      "explanation": "A bola está acima da superfície da mesa.",
+      "hint": "Observe a referência indicada.",
+      "errorFocus": "IDENTIFY_ABOVE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A bola está acima da superfície da mesa.",
+        "incorrect": "A bola está acima da superfície da mesa.",
+        "hint": "Observe a referência indicada.",
+        "errorFocus": "IDENTIFY_ABOVE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-05",
+      "statement": "Um mapa usa esquerda e direita, mas não mostra para onde a personagem olha. O que ajudaria?",
+      "prompt": "Um mapa usa esquerda e direita, mas não mostra para onde a personagem olha. O que ajudaria?",
+      "options": [
+        "Acrescentar uma figura ou seta indicando a orientação.",
+        "Apagar os objetos",
+        "Adicionar um endereço residencial",
+        "Esconder a legenda"
+      ],
+      "correctAnswer": "Acrescentar uma figura ou seta indicando a orientação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apagar os objetos": [
+          "CLARIFY_BODY_ORIENTATION"
+        ],
+        "Adicionar um endereço residencial": [
+          "CLARIFY_BODY_ORIENTATION"
+        ],
+        "Esconder a legenda": [
+          "CLARIFY_BODY_ORIENTATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MAPA_SEM_ORIENTACAO",
+      "explanation": "A orientação torna esquerda e direita interpretáveis.",
+      "hint": "Mostre o ponto de vista.",
+      "errorFocus": "CLARIFY_BODY_ORIENTATION",
+      "feedback": {
+        "correct": "Boa observação: A orientação torna esquerda e direita interpretáveis.",
+        "incorrect": "A orientação torna esquerda e direita interpretáveis.",
+        "hint": "Mostre o ponto de vista.",
+        "errorFocus": "CLARIFY_BODY_ORIENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-06",
+      "statement": "Uma personagem está voltada para a mesa e a cadeira aparece atrás dela. Onde está a cadeira?",
+      "prompt": "Uma personagem está voltada para a mesa e a cadeira aparece atrás dela. Onde está a cadeira?",
+      "options": [
+        "Dentro da mesa",
+        "Atrás da personagem.",
+        "À esquerda da sala necessariamente",
+        "Em cima da personagem"
+      ],
+      "correctAnswer": "Atrás da personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dentro da mesa": [
+          "READ_FRONT_BACK_RELATION"
+        ],
+        "À esquerda da sala necessariamente": [
+          "READ_FRONT_BACK_RELATION"
+        ],
+        "Em cima da personagem": [
+          "READ_FRONT_BACK_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CADEIRA_ATRAS_DA_MESA",
+      "explanation": "A frase relaciona a cadeira ao corpo de referência.",
+      "hint": "Use a personagem como referência.",
+      "errorFocus": "READ_FRONT_BACK_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A frase relaciona a cadeira ao corpo de referência.",
+        "incorrect": "A frase relaciona a cadeira ao corpo de referência.",
+        "hint": "Use a personagem como referência.",
+        "errorFocus": "READ_FRONT_BACK_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-07",
+      "statement": "Uma caixa está fora da prateleira e ao lado dela. Qual relação está explicitamente indicada?",
+      "prompt": "Uma caixa está fora da prateleira e ao lado dela. Qual relação está explicitamente indicada?",
+      "options": [
+        "Dentro da prateleira",
+        "Embaixo da caixa",
+        "Fora da prateleira.",
+        "À direita do observador"
+      ],
+      "correctAnswer": "Fora da prateleira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dentro da prateleira": [
+          "IDENTIFY_OUTSIDE_RELATION"
+        ],
+        "Embaixo da caixa": [
+          "IDENTIFY_OUTSIDE_RELATION"
+        ],
+        "À direita do observador": [
+          "IDENTIFY_OUTSIDE_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CAIXA_FORA_DA_PRATELEIRA",
+      "explanation": "O enunciado informa que está fora.",
+      "hint": "Leia a relação com a prateleira.",
+      "errorFocus": "IDENTIFY_OUTSIDE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: O enunciado informa que está fora.",
+        "incorrect": "O enunciado informa que está fora.",
+        "hint": "Leia a relação com a prateleira.",
+        "errorFocus": "IDENTIFY_OUTSIDE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-08",
+      "statement": "Que cenário é seguro para praticar mapas e posições na aula?",
+      "prompt": "Que cenário é seguro para praticar mapas e posições na aula?",
+      "options": [
+        "O endereço de casa de cada criança",
+        "A localização ao vivo da turma",
+        "Rotas residenciais sem autorização",
+        "Uma maquete fictícia de sala com objetos móveis."
+      ],
+      "correctAnswer": "Uma maquete fictícia de sala com objetos móveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O endereço de casa de cada criança": [
+          "SAFE_SPATIAL_MAP_ACTIVITY"
+        ],
+        "A localização ao vivo da turma": [
+          "SAFE_SPATIAL_MAP_ACTIVITY"
+        ],
+        "Rotas residenciais sem autorização": [
+          "SAFE_SPATIAL_MAP_ACTIVITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CENARIO_FICTICIO",
+      "explanation": "A maquete fictícia permite praticar sem expor localização.",
+      "hint": "Escolha um cenário inventado.",
+      "errorFocus": "SAFE_SPATIAL_MAP_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A maquete fictícia permite praticar sem expor localização.",
+        "incorrect": "A maquete fictícia permite praticar sem expor localização.",
+        "hint": "Escolha um cenário inventado.",
+        "errorFocus": "SAFE_SPATIAL_MAP_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-09",
+      "statement": "Uma figura está voltada para a janela e o tapete fica à sua direita. Que pista deve ser usada?",
+      "prompt": "Uma figura está voltada para a janela e o tapete fica à sua direita. Que pista deve ser usada?",
+      "options": [
+        "A orientação da figura voltada para a janela.",
+        "A cor do tapete",
+        "O endereço da sala",
+        "O tamanho do desenho"
+      ],
+      "correctAnswer": "A orientação da figura voltada para a janela.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor do tapete": [
+          "ANCHOR_RIGHT_TO_BODY"
+        ],
+        "O endereço da sala": [
+          "ANCHOR_RIGHT_TO_BODY"
+        ],
+        "O tamanho do desenho": [
+          "ANCHOR_RIGHT_TO_BODY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FIGURA_OLHANDO_PARA_JANELA",
+      "explanation": "A posição direita depende do corpo orientado.",
+      "hint": "Comece pela direção do olhar.",
+      "errorFocus": "ANCHOR_RIGHT_TO_BODY",
+      "feedback": {
+        "correct": "Boa observação: A posição direita depende do corpo orientado.",
+        "incorrect": "A posição direita depende do corpo orientado.",
+        "hint": "Comece pela direção do olhar.",
+        "errorFocus": "ANCHOR_RIGHT_TO_BODY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-10",
+      "statement": "Um lápis está embaixo de um caderno. Qual referência ajuda a descrever a posição?",
+      "prompt": "Um lápis está embaixo de um caderno. Qual referência ajuda a descrever a posição?",
+      "options": [
+        "A janela",
+        "O caderno.",
+        "A pessoa que desenhou",
+        "O corredor distante"
+      ],
+      "correctAnswer": "O caderno.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A janela": [
+          "NAME_RELATIONAL_REFERENCE"
+        ],
+        "A pessoa que desenhou": [
+          "NAME_RELATIONAL_REFERENCE"
+        ],
+        "O corredor distante": [
+          "NAME_RELATIONAL_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LAPIS_EMBAIXO_DO_CADERNO",
+      "explanation": "A palavra embaixo relaciona lápis e caderno.",
+      "hint": "Identifique em relação a quê.",
+      "errorFocus": "NAME_RELATIONAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A palavra embaixo relaciona lápis e caderno.",
+        "incorrect": "A palavra embaixo relaciona lápis e caderno.",
+        "hint": "Identifique em relação a quê.",
+        "errorFocus": "NAME_RELATIONAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-11",
+      "statement": "A bola aparece do lado de fora de um aro. Qual descrição corresponde?",
+      "prompt": "A bola aparece do lado de fora de um aro. Qual descrição corresponde?",
+      "options": [
+        "Dentro do aro",
+        "Em cima do aro",
+        "Fora do aro.",
+        "Atrás do aro"
+      ],
+      "correctAnswer": "Fora do aro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dentro do aro": [
+          "DISTINGUISH_INSIDE_OUTSIDE"
+        ],
+        "Em cima do aro": [
+          "DISTINGUISH_INSIDE_OUTSIDE"
+        ],
+        "Atrás do aro": [
+          "DISTINGUISH_INSIDE_OUTSIDE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BOLA_DENTRO_FORA",
+      "explanation": "O cenário informa que a bola está fora.",
+      "hint": "Observe o limite do aro.",
+      "errorFocus": "DISTINGUISH_INSIDE_OUTSIDE",
+      "feedback": {
+        "correct": "Boa observação: O cenário informa que a bola está fora.",
+        "incorrect": "O cenário informa que a bola está fora.",
+        "hint": "Observe o limite do aro.",
+        "errorFocus": "DISTINGUISH_INSIDE_OUTSIDE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-12",
+      "statement": "Uma seta num mapa indica para onde a personagem olha. Por que ela é útil?",
+      "prompt": "Uma seta num mapa indica para onde a personagem olha. Por que ela é útil?",
+      "options": [
+        "Mostra a temperatura",
+        "Indica um endereço real",
+        "Substitui todos os lugares",
+        "Ajuda a interpretar frente, atrás, esquerda e direita."
+      ],
+      "correctAnswer": "Ajuda a interpretar frente, atrás, esquerda e direita.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mostra a temperatura": [
+          "USE_ORIENTATION_ARROW"
+        ],
+        "Indica um endereço real": [
+          "USE_ORIENTATION_ARROW"
+        ],
+        "Substitui todos os lugares": [
+          "USE_ORIENTATION_ARROW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "MAPA_COM_SETINHA",
+      "explanation": "A seta comunica o ponto de vista do mapa.",
+      "hint": "Pense nas palavras direcionais.",
+      "errorFocus": "USE_ORIENTATION_ARROW",
+      "feedback": {
+        "correct": "Boa observação: A seta comunica o ponto de vista do mapa.",
+        "incorrect": "A seta comunica o ponto de vista do mapa.",
+        "hint": "Pense nas palavras direcionais.",
+        "errorFocus": "USE_ORIENTATION_ARROW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-13",
+      "statement": "Uma mochila está sobre a cadeira. Qual frase descreve essa posição?",
+      "prompt": "Uma mochila está sobre a cadeira. Qual frase descreve essa posição?",
+      "options": [
+        "A mochila está em cima da cadeira.",
+        "A mochila está dentro da cadeira",
+        "A cadeira está em cima da mochila necessariamente",
+        "A mochila está fora do mapa"
+      ],
+      "correctAnswer": "A mochila está em cima da cadeira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A mochila está dentro da cadeira": [
+          "DESCRIBE_ABOVE_OBJECT"
+        ],
+        "A cadeira está em cima da mochila necessariamente": [
+          "DESCRIBE_ABOVE_OBJECT"
+        ],
+        "A mochila está fora do mapa": [
+          "DESCRIBE_ABOVE_OBJECT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "POSICAO_EM_CIMA",
+      "explanation": "A cadeira é a referência da posição.",
+      "hint": "Use “sobre” como pista.",
+      "errorFocus": "DESCRIBE_ABOVE_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: A cadeira é a referência da posição.",
+        "incorrect": "A cadeira é a referência da posição.",
+        "hint": "Use “sobre” como pista.",
+        "errorFocus": "DESCRIBE_ABOVE_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-14",
+      "statement": "Uma personagem olha para a porta; outra olha para a janela. Para decidir a esquerda de cada uma, o que fazer?",
+      "prompt": "Uma personagem olha para a porta; outra olha para a janela. Para decidir a esquerda de cada uma, o que fazer?",
+      "options": [
+        "Usar um único lado para ambas sem olhar",
+        "Considerar separadamente a orientação de cada corpo.",
+        "Usar a cor dos objetos",
+        "Ignorar a direção dos olhares"
+      ],
+      "correctAnswer": "Considerar separadamente a orientação de cada corpo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Usar um único lado para ambas sem olhar": [
+          "ANALYZE_MULTIPLE_BODY_REFERENCES"
+        ],
+        "Usar a cor dos objetos": [
+          "ANALYZE_MULTIPLE_BODY_REFERENCES"
+        ],
+        "Ignorar a direção dos olhares": [
+          "ANALYZE_MULTIPLE_BODY_REFERENCES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_ORIENTACOES",
+      "explanation": "Cada pessoa orientada pode ter esquerda e direita distintas.",
+      "hint": "Leia cada ponto de vista.",
+      "errorFocus": "ANALYZE_MULTIPLE_BODY_REFERENCES",
+      "feedback": {
+        "correct": "Boa observação: Cada pessoa orientada pode ter esquerda e direita distintas.",
+        "incorrect": "Cada pessoa orientada pode ter esquerda e direita distintas.",
+        "hint": "Leia cada ponto de vista.",
+        "errorFocus": "ANALYZE_MULTIPLE_BODY_REFERENCES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-15",
+      "statement": "Uma personagem está posicionada à frente de uma caixa conforme o mapa. Qual relação aparece?",
+      "prompt": "Uma personagem está posicionada à frente de uma caixa conforme o mapa. Qual relação aparece?",
+      "options": [
+        "Atrás",
+        "Dentro",
+        "À frente.",
+        "Embaixo"
+      ],
+      "correctAnswer": "À frente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Atrás": [
+          "IDENTIFY_FRONT_RELATION"
+        ],
+        "Dentro": [
+          "IDENTIFY_FRONT_RELATION"
+        ],
+        "Embaixo": [
+          "IDENTIFY_FRONT_RELATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BONECO_A_FRENTE_DA_CAIXA",
+      "explanation": "A legenda coloca a personagem antes da caixa no ponto de vista dado.",
+      "hint": "Use a palavra espacial da instrução.",
+      "errorFocus": "IDENTIFY_FRONT_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A legenda coloca a personagem antes da caixa no ponto de vista dado.",
+        "incorrect": "A legenda coloca a personagem antes da caixa no ponto de vista dado.",
+        "hint": "Use a palavra espacial da instrução.",
+        "errorFocus": "IDENTIFY_FRONT_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-16",
+      "statement": "Como mostrar “o cubo está em cima da mesa” numa maquete?",
+      "prompt": "Como mostrar “o cubo está em cima da mesa” numa maquete?",
+      "options": [
+        "Esconder o cubo dentro da caixa",
+        "Colocar a mesa dentro do cubo",
+        "Desenhar um endereço",
+        "Colocar o cubo sobre a mesa."
+      ],
+      "correctAnswer": "Colocar o cubo sobre a mesa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder o cubo dentro da caixa": [
+          "MODEL_ABOVE_RELATION"
+        ],
+        "Colocar a mesa dentro do cubo": [
+          "MODEL_ABOVE_RELATION"
+        ],
+        "Desenhar um endereço": [
+          "MODEL_ABOVE_RELATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAQUETE_DE_MESA",
+      "explanation": "A posição concreta corresponde à frase.",
+      "hint": "Represente a relação com objetos.",
+      "errorFocus": "MODEL_ABOVE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A posição concreta corresponde à frase.",
+        "incorrect": "A posição concreta corresponde à frase.",
+        "hint": "Represente a relação com objetos.",
+        "errorFocus": "MODEL_ABOVE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-17",
+      "statement": "Uma maquete tem estante, almofada e mesa. O que um mapa simples deve incluir para localizar esses elementos?",
+      "prompt": "Uma maquete tem estante, almofada e mesa. O que um mapa simples deve incluir para localizar esses elementos?",
+      "options": [
+        "Símbolos identificados e relações espaciais claras.",
+        "Endereços dos estudantes",
+        "Rotinas de casa",
+        "Detalhes que ninguém consegue interpretar"
+      ],
+      "correctAnswer": "Símbolos identificados e relações espaciais claras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Endereços dos estudantes": [
+          "CREATE_SIMPLE_LOCATION_MAP"
+        ],
+        "Rotinas de casa": [
+          "CREATE_SIMPLE_LOCATION_MAP"
+        ],
+        "Detalhes que ninguém consegue interpretar": [
+          "CREATE_SIMPLE_LOCATION_MAP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "MAPA_DE_CANTO_DE_LEITURA",
+      "explanation": "Símbolos e relações comunicam posições.",
+      "hint": "Inclua uma legenda.",
+      "errorFocus": "CREATE_SIMPLE_LOCATION_MAP",
+      "feedback": {
+        "correct": "Boa observação: Símbolos e relações comunicam posições.",
+        "incorrect": "Símbolos e relações comunicam posições.",
+        "hint": "Inclua uma legenda.",
+        "errorFocus": "CREATE_SIMPLE_LOCATION_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-18",
+      "statement": "Uma boneca está dentro de uma barraca de brinquedo. Qual relação descreve isso?",
+      "prompt": "Uma boneca está dentro de uma barraca de brinquedo. Qual relação descreve isso?",
+      "options": [
+        "Fora da barraca",
+        "Dentro da barraca.",
+        "Atrás da boneca",
+        "Em cima da barraca"
+      ],
+      "correctAnswer": "Dentro da barraca.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fora da barraca": [
+          "TRANSFER_INSIDE_RELATION"
+        ],
+        "Atrás da boneca": [
+          "TRANSFER_INSIDE_RELATION"
+        ],
+        "Em cima da barraca": [
+          "TRANSFER_INSIDE_RELATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "BONECA_DENTRO_DA_TENDA",
+      "explanation": "A barraca contém a boneca no cenário.",
+      "hint": "Use a barraca como limite.",
+      "errorFocus": "TRANSFER_INSIDE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A barraca contém a boneca no cenário.",
+        "incorrect": "A barraca contém a boneca no cenário.",
+        "hint": "Use a barraca como limite.",
+        "errorFocus": "TRANSFER_INSIDE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-19",
+      "statement": "Uma figura gira meia-volta. Qual referência pode mudar para ela?",
+      "prompt": "Uma figura gira meia-volta. Qual referência pode mudar para ela?",
+      "options": [
+        "A posição dentro de uma caixa",
+        "O nome da figura",
+        "Os lados esquerdo e direito em relação ao corpo.",
+        "A existência do mapa"
+      ],
+      "correctAnswer": "Os lados esquerdo e direito em relação ao corpo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A posição dentro de uma caixa": [
+          "TRANSFER_ORIENTATION_CHANGE"
+        ],
+        "O nome da figura": [
+          "TRANSFER_ORIENTATION_CHANGE"
+        ],
+        "A existência do mapa": [
+          "TRANSFER_ORIENTATION_CHANGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VIRAR_PARA_OUTRO_LADO",
+      "explanation": "Uma nova orientação altera referências relativas ao corpo.",
+      "hint": "Imagine a figura virando.",
+      "errorFocus": "TRANSFER_ORIENTATION_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: Uma nova orientação altera referências relativas ao corpo.",
+        "incorrect": "Uma nova orientação altera referências relativas ao corpo.",
+        "hint": "Imagine a figura virando.",
+        "errorFocus": "TRANSFER_ORIENTATION_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-20",
+      "statement": "Um mapa mostra mesa à esquerda da figura e usa uma seta de orientação. Qual informação torna a posição clara?",
+      "prompt": "Um mapa mostra mesa à esquerda da figura e usa uma seta de orientação. Qual informação torna a posição clara?",
+      "options": [
+        "A cor da folha",
+        "O nome de quem pintou",
+        "A quantidade de letras na legenda",
+        "A posição é dada a partir da figura orientada."
+      ],
+      "correctAnswer": "A posição é dada a partir da figura orientada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor da folha": [
+          "TRANSFER_ORIENTATION_CLARITY"
+        ],
+        "O nome de quem pintou": [
+          "TRANSFER_ORIENTATION_CLARITY"
+        ],
+        "A quantidade de letras na legenda": [
+          "TRANSFER_ORIENTATION_CLARITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEGENDA_E_REFERENCIA",
+      "explanation": "A figura e a seta definem o referencial.",
+      "hint": "Pergunte “à esquerda de quem?”.",
+      "errorFocus": "TRANSFER_ORIENTATION_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: A figura e a seta definem o referencial.",
+        "incorrect": "A figura e a seta definem o referencial.",
+        "hint": "Pergunte “à esquerda de quem?”.",
+        "errorFocus": "TRANSFER_ORIENTATION_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-21",
+      "statement": "Um cubo está embaixo da mesa e atrás de uma personagem. Quantas relações são descritas?",
+      "prompt": "Um cubo está embaixo da mesa e atrás de uma personagem. Quantas relações são descritas?",
+      "options": [
+        "Duas relações.",
+        "Uma relação",
+        "Três relações",
+        "Nenhuma relação"
+      ],
+      "correctAnswer": "Duas relações.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma relação": [
+          "ANALYZE_MULTIPLE_SPATIAL_RELATIONS"
+        ],
+        "Três relações": [
+          "ANALYZE_MULTIPLE_SPATIAL_RELATIONS"
+        ],
+        "Nenhuma relação": [
+          "ANALYZE_MULTIPLE_SPATIAL_RELATIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OBJETO_EMBAIXO_E_ATRAS",
+      "explanation": "Embaixo e atrás são duas posições distintas.",
+      "hint": "Conte as pistas espaciais.",
+      "errorFocus": "ANALYZE_MULTIPLE_SPATIAL_RELATIONS",
+      "feedback": {
+        "correct": "Boa observação: Embaixo e atrás são duas posições distintas.",
+        "incorrect": "Embaixo e atrás são duas posições distintas.",
+        "hint": "Conte as pistas espaciais.",
+        "errorFocus": "ANALYZE_MULTIPLE_SPATIAL_RELATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-22",
+      "statement": "Uma pessoa explora o cenário pelo tato. Que recurso pode comunicar posições?",
+      "prompt": "Uma pessoa explora o cenário pelo tato. Que recurso pode comunicar posições?",
+      "options": [
+        "Símbolos minúsculos sem descrição",
+        "Peças táteis e referências nomeadas.",
+        "Um mapa sem limites",
+        "Uma lista de locais privados"
+      ],
+      "correctAnswer": "Peças táteis e referências nomeadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Símbolos minúsculos sem descrição": [
+          "ACCESSIBLE_SPATIAL_MODEL"
+        ],
+        "Um mapa sem limites": [
+          "ACCESSIBLE_SPATIAL_MODEL"
+        ],
+        "Uma lista de locais privados": [
+          "ACCESSIBLE_SPATIAL_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_TATIL",
+      "explanation": "Texturas e nomes comunicam relações espaciais.",
+      "hint": "Ofereça pistas táteis e verbais.",
+      "errorFocus": "ACCESSIBLE_SPATIAL_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Texturas e nomes comunicam relações espaciais.",
+        "incorrect": "Texturas e nomes comunicam relações espaciais.",
+        "hint": "Ofereça pistas táteis e verbais.",
+        "errorFocus": "ACCESSIBLE_SPATIAL_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-23",
+      "statement": "O carrinho está fora da caixa. Qual objeto serve de referência para “fora”?",
+      "prompt": "O carrinho está fora da caixa. Qual objeto serve de referência para “fora”?",
+      "options": [
+        "A janela",
+        "A pessoa que observa",
+        "A caixa.",
+        "A porta da sala"
+      ],
+      "correctAnswer": "A caixa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A janela": [
+          "TRANSFER_NAME_REFERENCE"
+        ],
+        "A pessoa que observa": [
+          "TRANSFER_NAME_REFERENCE"
+        ],
+        "A porta da sala": [
+          "TRANSFER_NAME_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARRINHO_FORA_DA_CAIXA",
+      "explanation": "“Fora” descreve a posição em relação à caixa.",
+      "hint": "Identifique o limite mencionado.",
+      "errorFocus": "TRANSFER_NAME_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: “Fora” descreve a posição em relação à caixa.",
+        "incorrect": "“Fora” descreve a posição em relação à caixa.",
+        "hint": "Identifique o limite mencionado.",
+        "errorFocus": "TRANSFER_NAME_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-24",
+      "statement": "Por que um mapa deve indicar a orientação do corpo quando usa esquerda e direita?",
+      "prompt": "Por que um mapa deve indicar a orientação do corpo quando usa esquerda e direita?",
+      "options": [
+        "Porque mapas não podem ter símbolos",
+        "Porque objetos mudam de cor",
+        "Porque esquerda é igual para todos os lados do mapa",
+        "Porque esses lados dependem do ponto de vista do observador."
+      ],
+      "correctAnswer": "Porque esses lados dependem do ponto de vista do observador.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque mapas não podem ter símbolos": [
+          "JUSTIFY_BODY_REFERENCE"
+        ],
+        "Porque objetos mudam de cor": [
+          "JUSTIFY_BODY_REFERENCE"
+        ],
+        "Porque esquerda é igual para todos os lados do mapa": [
+          "JUSTIFY_BODY_REFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CORPO_COMO_REFERENCIA",
+      "explanation": "A referência corporal torna os lados interpretáveis.",
+      "hint": "Considere para onde a pessoa olha.",
+      "errorFocus": "JUSTIFY_BODY_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A referência corporal torna os lados interpretáveis.",
+        "incorrect": "A referência corporal torna os lados interpretáveis.",
+        "hint": "Considere para onde a pessoa olha.",
+        "errorFocus": "JUSTIFY_BODY_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-25",
+      "statement": "Esquerda e direita num mapa simples dependem...",
+      "prompt": "Esquerda e direita num mapa simples dependem...",
+      "options": [
+        "da orientação do corpo de referência.",
+        "sempre do norte, sem indicação",
+        "da cor do papel",
+        "do nome do objeto"
+      ],
+      "correctAnswer": "da orientação do corpo de referência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sempre do norte, sem indicação": [
+          "RECALL_BODY_ORIENTATION"
+        ],
+        "da cor do papel": [
+          "RECALL_BODY_ORIENTATION"
+        ],
+        "do nome do objeto": [
+          "RECALL_BODY_ORIENTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ESQUERDA_E_DIREITA",
+      "explanation": "O corpo orientado define os lados relativos.",
+      "hint": "Lembre para onde o observador olha.",
+      "errorFocus": "RECALL_BODY_ORIENTATION",
+      "feedback": {
+        "correct": "Boa observação: O corpo orientado define os lados relativos.",
+        "incorrect": "O corpo orientado define os lados relativos.",
+        "hint": "Lembre para onde o observador olha.",
+        "errorFocus": "RECALL_BODY_ORIENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-26",
+      "statement": "Um botão está dentro de uma caixa. A caixa é...",
+      "prompt": "Um botão está dentro de uma caixa. A caixa é...",
+      "options": [
+        "um corpo orientado",
+        "a referência para a relação “dentro”.",
+        "um símbolo de direção",
+        "um objeto fora do cenário"
+      ],
+      "correctAnswer": "a referência para a relação “dentro”.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um corpo orientado": [
+          "RECALL_SPATIAL_REFERENCE"
+        ],
+        "um símbolo de direção": [
+          "RECALL_SPATIAL_REFERENCE"
+        ],
+        "um objeto fora do cenário": [
+          "RECALL_SPATIAL_REFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DENTRO_DA_CAIXA",
+      "explanation": "A posição é descrita em relação à caixa.",
+      "hint": "Nomeie o limite do objeto.",
+      "errorFocus": "RECALL_SPATIAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A posição é descrita em relação à caixa.",
+        "incorrect": "A posição é descrita em relação à caixa.",
+        "hint": "Nomeie o limite do objeto.",
+        "errorFocus": "RECALL_SPATIAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-27",
+      "statement": "Frente e atrás descrevem...",
+      "prompt": "Frente e atrás descrevem...",
+      "options": [
+        "a cor do objeto",
+        "o número de pessoas",
+        "posições relativas ao ponto de vista combinado.",
+        "uma medida exata"
+      ],
+      "correctAnswer": "posições relativas ao ponto de vista combinado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a cor do objeto": [
+          "RECALL_FRONT_BACK"
+        ],
+        "o número de pessoas": [
+          "RECALL_FRONT_BACK"
+        ],
+        "uma medida exata": [
+          "RECALL_FRONT_BACK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FRENTE_E_ATRAS",
+      "explanation": "Esses termos dependem de uma referência espacial.",
+      "hint": "Considere o observador.",
+      "errorFocus": "RECALL_FRONT_BACK",
+      "feedback": {
+        "correct": "Boa observação: Esses termos dependem de uma referência espacial.",
+        "incorrect": "Esses termos dependem de uma referência espacial.",
+        "hint": "Considere o observador.",
+        "errorFocus": "RECALL_FRONT_BACK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-28",
+      "statement": "Uma seta indica o olhar da personagem. O que ela ajuda a interpretar?",
+      "prompt": "Uma seta indica o olhar da personagem. O que ela ajuda a interpretar?",
+      "options": [
+        "A altura do prédio",
+        "A temperatura do espaço",
+        "A idade da personagem",
+        "Esquerda, direita, frente e atrás."
+      ],
+      "correctAnswer": "Esquerda, direita, frente e atrás.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A altura do prédio": [
+          "RECALL_ORIENTATION_ARROW"
+        ],
+        "A temperatura do espaço": [
+          "RECALL_ORIENTATION_ARROW"
+        ],
+        "A idade da personagem": [
+          "RECALL_ORIENTATION_ARROW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SETINHA_DE_ORIENTACAO",
+      "explanation": "A seta mostra o ponto de vista.",
+      "hint": "Use a direção indicada.",
+      "errorFocus": "RECALL_ORIENTATION_ARROW",
+      "feedback": {
+        "correct": "Boa observação: A seta mostra o ponto de vista.",
+        "incorrect": "A seta mostra o ponto de vista.",
+        "hint": "Use a direção indicada.",
+        "errorFocus": "RECALL_ORIENTATION_ARROW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-29",
+      "statement": "Um livro está em cima da prateleira. Que relação aparece?",
+      "prompt": "Um livro está em cima da prateleira. Que relação aparece?",
+      "options": [
+        "Em cima.",
+        "Dentro",
+        "Fora",
+        "Atrás"
+      ],
+      "correctAnswer": "Em cima.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dentro": [
+          "RECALL_ABOVE_RELATION"
+        ],
+        "Fora": [
+          "RECALL_ABOVE_RELATION"
+        ],
+        "Atrás": [
+          "RECALL_ABOVE_RELATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "EM_CIMA_DA_PRATELEIRA",
+      "explanation": "A prateleira fica abaixo do livro.",
+      "hint": "Observe os dois objetos.",
+      "errorFocus": "RECALL_ABOVE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A prateleira fica abaixo do livro.",
+        "incorrect": "A prateleira fica abaixo do livro.",
+        "hint": "Observe os dois objetos.",
+        "errorFocus": "RECALL_ABOVE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-30",
+      "statement": "O que torna símbolos num mapa simples mais compreensíveis?",
+      "prompt": "O que torna símbolos num mapa simples mais compreensíveis?",
+      "options": [
+        "Mais símbolos sem nomes",
+        "Uma legenda que explica o que cada símbolo representa.",
+        "Endereços privados",
+        "Apagar os lugares"
+      ],
+      "correctAnswer": "Uma legenda que explica o que cada símbolo representa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mais símbolos sem nomes": [
+          "RECALL_MAP_LEGEND"
+        ],
+        "Endereços privados": [
+          "RECALL_MAP_LEGEND"
+        ],
+        "Apagar os lugares": [
+          "RECALL_MAP_LEGEND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MAPA_COM_LEGENDA",
+      "explanation": "A legenda explica os símbolos.",
+      "hint": "Associe desenho e significado.",
+      "errorFocus": "RECALL_MAP_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A legenda explica os símbolos.",
+        "incorrect": "A legenda explica os símbolos.",
+        "hint": "Associe desenho e significado.",
+        "errorFocus": "RECALL_MAP_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-31",
+      "statement": "Duas figuras olham em direções opostas. A cadeira à esquerda da primeira fica necessariamente à esquerda da segunda?",
+      "prompt": "Duas figuras olham em direções opostas. A cadeira à esquerda da primeira fica necessariamente à esquerda da segunda?",
+      "options": [
+        "Sim, sempre",
+        "Sim, porque mapas nunca mudam",
+        "Não; a referência corporal da segunda está orientada de outro modo.",
+        "Não, pois cadeiras não podem ser mapeadas"
+      ],
+      "correctAnswer": "Não; a referência corporal da segunda está orientada de outro modo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "RECALL_RELATIVE_LEFT_RIGHT"
+        ],
+        "Sim, porque mapas nunca mudam": [
+          "RECALL_RELATIVE_LEFT_RIGHT"
+        ],
+        "Não, pois cadeiras não podem ser mapeadas": [
+          "RECALL_RELATIVE_LEFT_RIGHT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DUAS_FIGURAS",
+      "explanation": "Pontos de vista opostos podem inverter os lados relativos.",
+      "hint": "Compare as orientações.",
+      "errorFocus": "RECALL_RELATIVE_LEFT_RIGHT",
+      "feedback": {
+        "correct": "Boa observação: Pontos de vista opostos podem inverter os lados relativos.",
+        "incorrect": "Pontos de vista opostos podem inverter os lados relativos.",
+        "hint": "Compare as orientações.",
+        "errorFocus": "RECALL_RELATIVE_LEFT_RIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-32",
+      "statement": "Um mapa simples deve comunicar...",
+      "prompt": "Um mapa simples deve comunicar...",
+      "options": [
+        "a localização privada de todos",
+        "uma escala perfeita obrigatória",
+        "uma direção sem observador",
+        "onde estão os elementos em relação a referências claras."
+      ],
+      "correctAnswer": "onde estão os elementos em relação a referências claras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a localização privada de todos": [
+          "SPATIAL_MAP_SUMMARY"
+        ],
+        "uma escala perfeita obrigatória": [
+          "SPATIAL_MAP_SUMMARY"
+        ],
+        "uma direção sem observador": [
+          "SPATIAL_MAP_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_MAPA_ESPACIAL",
+      "explanation": "Referenciais claros apoiam a localização.",
+      "hint": "Reúna mapa, objeto e referência.",
+      "errorFocus": "SPATIAL_MAP_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Referenciais claros apoiam a localização.",
+        "incorrect": "Referenciais claros apoiam a localização.",
+        "hint": "Reúna mapa, objeto e referência.",
+        "errorFocus": "SPATIAL_MAP_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-33",
+      "statement": "Para usar “à esquerda” corretamente, primeiro indique...",
+      "prompt": "Para usar “à esquerda” corretamente, primeiro indique...",
+      "options": [
+        "para onde o corpo de referência está voltado.",
+        "a cor da sala",
+        "o endereço",
+        "o tamanho da figura"
+      ],
+      "correctAnswer": "para onde o corpo de referência está voltado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "a cor da sala": [
+          "REVIEW_ORIENTATION"
+        ],
+        "o endereço": [
+          "REVIEW_ORIENTATION"
+        ],
+        "o tamanho da figura": [
+          "REVIEW_ORIENTATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_ESQUERDA",
+      "explanation": "O ponto de vista define os lados.",
+      "hint": "Comece pela orientação.",
+      "errorFocus": "REVIEW_ORIENTATION",
+      "feedback": {
+        "correct": "Boa observação: O ponto de vista define os lados.",
+        "incorrect": "O ponto de vista define os lados.",
+        "hint": "Comece pela orientação.",
+        "errorFocus": "REVIEW_ORIENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-34",
+      "statement": "Uma bola está dentro do cesto. Qual é a referência?",
+      "prompt": "Uma bola está dentro do cesto. Qual é a referência?",
+      "options": [
+        "A porta",
+        "O cesto.",
+        "A janela",
+        "O desenho da bola"
+      ],
+      "correctAnswer": "O cesto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A porta": [
+          "REVIEW_INSIDE_REFERENCE"
+        ],
+        "A janela": [
+          "REVIEW_INSIDE_REFERENCE"
+        ],
+        "O desenho da bola": [
+          "REVIEW_INSIDE_REFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_DENTRO",
+      "explanation": "O cesto define o limite de dentro.",
+      "hint": "Use o objeto que contém.",
+      "errorFocus": "REVIEW_INSIDE_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O cesto define o limite de dentro.",
+        "incorrect": "O cesto define o limite de dentro.",
+        "hint": "Use o objeto que contém.",
+        "errorFocus": "REVIEW_INSIDE_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-35",
+      "statement": "Um lápis está embaixo do livro. Que relação aparece?",
+      "prompt": "Um lápis está embaixo do livro. Que relação aparece?",
+      "options": [
+        "Dentro do livro",
+        "Atrás do lápis",
+        "Embaixo do livro.",
+        "Fora do mapa"
+      ],
+      "correctAnswer": "Embaixo do livro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dentro do livro": [
+          "REVIEW_BELOW_RELATION"
+        ],
+        "Atrás do lápis": [
+          "REVIEW_BELOW_RELATION"
+        ],
+        "Fora do mapa": [
+          "REVIEW_BELOW_RELATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVISAO_DE_EMBAIXO",
+      "explanation": "O livro é a referência vertical.",
+      "hint": "Observe qual objeto está acima.",
+      "errorFocus": "REVIEW_BELOW_RELATION",
+      "feedback": {
+        "correct": "Boa observação: O livro é a referência vertical.",
+        "incorrect": "O livro é a referência vertical.",
+        "hint": "Observe qual objeto está acima.",
+        "errorFocus": "REVIEW_BELOW_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-36",
+      "statement": "Como explicar um triângulo que representa uma estante?",
+      "prompt": "Como explicar um triângulo que representa uma estante?",
+      "options": [
+        "Ocultar o triângulo",
+        "Adicionar o endereço da escola",
+        "Mudar o significado sem avisar",
+        "Registrar esse significado na legenda."
+      ],
+      "correctAnswer": "Registrar esse significado na legenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ocultar o triângulo": [
+          "REVIEW_MAP_SYMBOL"
+        ],
+        "Adicionar o endereço da escola": [
+          "REVIEW_MAP_SYMBOL"
+        ],
+        "Mudar o significado sem avisar": [
+          "REVIEW_MAP_SYMBOL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_LEGENDA",
+      "explanation": "A legenda associa símbolo e lugar.",
+      "hint": "Escreva a chave do mapa.",
+      "errorFocus": "REVIEW_MAP_SYMBOL",
+      "feedback": {
+        "correct": "Boa observação: A legenda associa símbolo e lugar.",
+        "incorrect": "A legenda associa símbolo e lugar.",
+        "hint": "Escreva a chave do mapa.",
+        "errorFocus": "REVIEW_MAP_SYMBOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-37",
+      "statement": "Qual mapa é apropriado para aula?",
+      "prompt": "Qual mapa é apropriado para aula?",
+      "options": [
+        "Um mapa fictício de uma maquete autorizada.",
+        "Um mapa de todos os endereços de casa",
+        "A localização em tempo real da turma",
+        "A rota pessoal sem consentimento"
+      ],
+      "correctAnswer": "Um mapa fictício de uma maquete autorizada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um mapa de todos os endereços de casa": [
+          "REVIEW_PRIVACY"
+        ],
+        "A localização em tempo real da turma": [
+          "REVIEW_PRIVACY"
+        ],
+        "A rota pessoal sem consentimento": [
+          "REVIEW_PRIVACY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Cenários fictícios preservam localização pessoal.",
+      "hint": "Escolha um espaço seguro.",
+      "errorFocus": "REVIEW_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Cenários fictícios preservam localização pessoal.",
+        "incorrect": "Cenários fictícios preservam localização pessoal.",
+        "hint": "Escolha um espaço seguro.",
+        "errorFocus": "REVIEW_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-38",
+      "statement": "Se uma personagem vira para outra direção, o que pode ocorrer com esquerda e direita?",
+      "prompt": "Se uma personagem vira para outra direção, o que pode ocorrer com esquerda e direita?",
+      "options": [
+        "Nada pode mudar",
+        "Essas posições podem mudar em relação ao corpo dela.",
+        "O mapa deixa de existir",
+        "A caixa vira uma pessoa"
+      ],
+      "correctAnswer": "Essas posições podem mudar em relação ao corpo dela.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Nada pode mudar": [
+          "REVIEW_RELATIVE_REFERENCE"
+        ],
+        "O mapa deixa de existir": [
+          "REVIEW_RELATIVE_REFERENCE"
+        ],
+        "A caixa vira uma pessoa": [
+          "REVIEW_RELATIVE_REFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_ORIENTACOES",
+      "explanation": "Lados são relacionais ao observador.",
+      "hint": "Considere a nova direção.",
+      "errorFocus": "REVIEW_RELATIVE_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Lados são relacionais ao observador.",
+        "incorrect": "Lados são relacionais ao observador.",
+        "hint": "Considere a nova direção.",
+        "errorFocus": "REVIEW_RELATIVE_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-39",
+      "statement": "Um objeto está à frente de uma pessoa no ponto de vista descrito. O que informa “à frente”?",
+      "prompt": "Um objeto está à frente de uma pessoa no ponto de vista descrito. O que informa “à frente”?",
+      "options": [
+        "A cor do objeto",
+        "A distância exata",
+        "A posição relativa à orientação da pessoa.",
+        "O nome do mapa"
+      ],
+      "correctAnswer": "A posição relativa à orientação da pessoa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do objeto": [
+          "REVIEW_FRONT_REFERENCE"
+        ],
+        "A distância exata": [
+          "REVIEW_FRONT_REFERENCE"
+        ],
+        "O nome do mapa": [
+          "REVIEW_FRONT_REFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_FRENTE",
+      "explanation": "Frente depende de um referencial orientado.",
+      "hint": "Use o ponto de vista.",
+      "errorFocus": "REVIEW_FRONT_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Frente depende de um referencial orientado.",
+        "incorrect": "Frente depende de um referencial orientado.",
+        "hint": "Use o ponto de vista.",
+        "errorFocus": "REVIEW_FRONT_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge09-create-simple-maps-with-spatial-references-40",
+      "statement": "Por que nomear o referencial ao descrever posições?",
+      "prompt": "Por que nomear o referencial ao descrever posições?",
+      "options": [
+        "Para esconder os objetos",
+        "Para definir uma crença",
+        "Para substituir a legenda",
+        "Para que outra pessoa saiba em relação a que objeto ou corpo a posição é dada."
+      ],
+      "correctAnswer": "Para que outra pessoa saiba em relação a que objeto ou corpo a posição é dada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para esconder os objetos": [
+          "REVIEW_REFERENCE_CLARITY"
+        ],
+        "Para definir uma crença": [
+          "REVIEW_REFERENCE_CLARITY"
+        ],
+        "Para substituir a legenda": [
+          "REVIEW_REFERENCE_CLARITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_REFERENCIA",
+      "explanation": "A referência torna a descrição espacial precisa.",
+      "hint": "Pense no leitor do mapa.",
+      "errorFocus": "REVIEW_REFERENCE_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: A referência torna a descrição espacial precisa.",
+        "incorrect": "A referência torna a descrição espacial precisa.",
+        "hint": "Pense no leitor do mapa.",
+        "errorFocus": "REVIEW_REFERENCE_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar maquete tátil, peças móveis, setas ampliadas e descrição oral do ponto de vista.",
+          "Permitir orientar uma figura, mover objetos, selecionar cartões ou usar comunicação alternativa.",
+          "Trabalhar com cenários fictícios ou espaços escolares autorizados; não coletar endereços e rotas residenciais."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

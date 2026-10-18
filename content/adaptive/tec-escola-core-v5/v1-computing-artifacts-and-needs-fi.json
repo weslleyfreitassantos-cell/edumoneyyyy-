@@ -1,0 +1,2138 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-computing-artifacts-and-needs-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CO06_EXPLORE_ARTIFACTS_FOR_NEEDS",
+  "subject": "COMPUTING",
+  "domain": "CULTURA_DIGITAL",
+  "topic": "artefatos computacionais e necessidades pessoais ou coletivas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CO06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 18
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Tecnologias que ajudam em tarefas",
+    "objective": "Reconhecer artefatos computacionais presentes em situações cotidianas, explorar recursos simples com mediação e relacionar suas funções a necessidades pessoais ou coletivas sem supor que todos precisam do mesmo dispositivo.",
+    "summary": "Artefatos computacionais podem apoiar comunicação, criação, acesso e organização. Observar a necessidade, explorar recursos de modo seguro e considerar alternativas ajuda a compreender sua utilidade para pessoas e grupos.",
+    "explanation": "## Observe a necessidade\nAntes de escolher uma tecnologia, pergunte qual tarefa precisa ser apoiada: registrar uma ideia, ouvir uma mensagem, ampliar um desenho ou permitir que mais pessoas participem. As necessidades podem ser pessoais ou compartilhadas pela turma.\n\n## Explore artefatos e recursos\nUm computador, tablet, gravador, projetor ou dispositivo de comunicação assistiva pode oferecer recursos diferentes. Explore apenas equipamentos preparados para a atividade e siga a orientação do adulto. Um botão, tela, teclado ou alto-falante tem uma função no uso do artefato.\n\n## Relacione função, acesso e cuidado\nA tecnologia pode ajudar, mas não é a única maneira de realizar uma tarefa. Compare opções, inclusive materiais não digitais, e respeite as necessidades e escolhas das pessoas. Não é necessário possuir um aparelho em casa para aprender; na escola, o professor pode oferecer demonstrações, imagens ou materiais compartilhados.",
+    "workedExample": "A turma precisa compartilhar com todos uma ilustração feita em grupo. Um projetor pode mostrar o desenho ampliado para a sala; uma impressão grande ou descrição oral também pode apoiar a participação. Com mediação, a turma observa o controle de ligar e a função de projeção, compara as alternativas e escolhe uma forma acessível sem divulgar dados pessoais.",
+    "commonMistake": "Supor que um dispositivo serve para todas as tarefas ou que toda pessoa precisa usar a mesma tecnologia para participar.",
+    "tips": [
+      "Comece pela necessidade ou tarefa, não pelo aparelho mais novo.",
+      "Explore uma função de cada vez com acompanhamento e equipamento preparado.",
+      "Compare opções digitais e não digitais para ampliar a participação.",
+      "Respeite as escolhas e os recursos assistivos usados por cada pessoa."
+    ],
+    "priorKnowledge": [
+      "Reconhecer objetos e dispositivos cotidianos pelo que permitem fazer.",
+      "Comunicar uma necessidade ou observar uma demonstração de uso."
+    ],
+    "keyConcepts": [
+      "artefato computacional",
+      "necessidade pessoal ou coletiva",
+      "recurso e função do dispositivo",
+      "exploração mediada",
+      "acessibilidade e alternativas"
+    ],
+    "microExplanations": [
+      {
+        "trigger": "START_FROM_NEED",
+        "text": "Identifique primeiro a tarefa ou necessidade que a tecnologia poderá apoiar."
+      },
+      {
+        "trigger": "MATCH_FUNCTION",
+        "text": "Relacione um recurso observado com a ação que ele permite realizar."
+      },
+      {
+        "trigger": "COMPARE_ALTERNATIVES",
+        "text": "Tecnologias diferentes e recursos não digitais podem atender à mesma necessidade de modos distintos."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "DEVICE_BEFORE_NEED",
+        "action": "Apresente uma tarefa simples e compare dois recursos disponíveis, explicando qual função de cada um pode apoiar a tarefa."
+      },
+      {
+        "errorFocus": "ONE_DEVICE_FOR_EVERYONE",
+        "action": "Compare modos de participação e convide a turma a identificar alternativas acessíveis sem exigir que todos usem o mesmo recurso."
+      },
+      {
+        "errorFocus": "UNSAFE_UNGUIDED_EXPLORATION",
+        "action": "Retome a demonstração com equipamento preparado e supervisão, explorando um controle permitido por vez."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+      "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+      "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+      "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+    ],
+    "authenticActivities": [
+      {
+        "id": "v1-computing-artifacts-and-needs-fi-activity-1",
+        "title": "Qual recurso ajuda esta tarefa?",
+        "instructions": "Relacionar tarefas fictícias da turma — ampliar uma imagem, gravar uma mensagem autorizada ou escrever uma ideia — a artefatos disponíveis ou a alternativas não digitais.\n1. Selecionar uma necessidade de sala sem incluir dados pessoais.\n2. Observar cartões ou uma demonstração dos recursos disponíveis.\n3. Relacionar o recurso escolhido à função que ajuda na tarefa.\n4. Comparar uma alternativa acessível e explicar a escolha ao grupo.",
+        "steps": [
+          "Selecionar uma necessidade de sala sem incluir dados pessoais.",
+          "Observar cartões ou uma demonstração dos recursos disponíveis.",
+          "Relacionar o recurso escolhido à função que ajuda na tarefa.",
+          "Comparar uma alternativa acessível e explicar a escolha ao grupo."
+        ],
+        "evidence": "Necessidade identificada, função observada, recurso ou alternativa relacionada e justificativa comunicada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um artefato ou uma tarefa com mediação.",
+            "developing": "relaciona uma função à tarefa usando pistas.",
+            "proficient": "justifica uma opção e considera uma alternativa de participação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "v1-computing-artifacts-and-needs-fi-activity-2",
+        "title": "Estação de exploração acompanhada",
+        "instructions": "Explorar um dispositivo escolar preparado — como gravador de demonstração, tablet em aplicativo fechado ou teclado desconectado — com supervisão e sem contas reais.\n1. Ouvir a orientação de segurança e identificar o recurso que será explorado.\n2. Observar ou experimentar um controle simples com permissão do adulto.\n3. Descrever qual resultado o controle produz e que necessidade pode apoiar.\n4. Desligar ou devolver o material conforme a instrução e registrar uma alternativa de acesso.",
+        "steps": [
+          "Ouvir a orientação de segurança e identificar o recurso que será explorado.",
+          "Observar ou experimentar um controle simples com permissão do adulto.",
+          "Descrever qual resultado o controle produz e que necessidade pode apoiar.",
+          "Desligar ou devolver o material conforme a instrução e registrar uma alternativa de acesso."
+        ],
+        "evidence": "Controle observado ou explorado, função descrita, necessidade relacionada e devolução segura do equipamento.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "participa da observação com apoio.",
+            "developing": "explora uma função seguindo a orientação.",
+            "proficient": "descreve a função e relaciona seu uso a uma necessidade sem ignorar cuidados e alternativas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-computing-artifacts-and-needs-fi-01",
+          "v1-computing-artifacts-and-needs-fi-02",
+          "v1-computing-artifacts-and-needs-fi-03",
+          "v1-computing-artifacts-and-needs-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-computing-artifacts-and-needs-fi-05",
+          "v1-computing-artifacts-and-needs-fi-06",
+          "v1-computing-artifacts-and-needs-fi-07",
+          "v1-computing-artifacts-and-needs-fi-08",
+          "v1-computing-artifacts-and-needs-fi-09",
+          "v1-computing-artifacts-and-needs-fi-10",
+          "v1-computing-artifacts-and-needs-fi-11",
+          "v1-computing-artifacts-and-needs-fi-12",
+          "v1-computing-artifacts-and-needs-fi-13",
+          "v1-computing-artifacts-and-needs-fi-14",
+          "v1-computing-artifacts-and-needs-fi-15",
+          "v1-computing-artifacts-and-needs-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-computing-artifacts-and-needs-fi-17",
+          "v1-computing-artifacts-and-needs-fi-18",
+          "v1-computing-artifacts-and-needs-fi-19",
+          "v1-computing-artifacts-and-needs-fi-20",
+          "v1-computing-artifacts-and-needs-fi-21",
+          "v1-computing-artifacts-and-needs-fi-22",
+          "v1-computing-artifacts-and-needs-fi-23",
+          "v1-computing-artifacts-and-needs-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-computing-artifacts-and-needs-fi-25",
+          "v1-computing-artifacts-and-needs-fi-26",
+          "v1-computing-artifacts-and-needs-fi-27",
+          "v1-computing-artifacts-and-needs-fi-28",
+          "v1-computing-artifacts-and-needs-fi-29",
+          "v1-computing-artifacts-and-needs-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-computing-artifacts-and-needs-fi-31",
+          "v1-computing-artifacts-and-needs-fi-32",
+          "v1-computing-artifacts-and-needs-fi-33",
+          "v1-computing-artifacts-and-needs-fi-34",
+          "v1-computing-artifacts-and-needs-fi-35",
+          "v1-computing-artifacts-and-needs-fi-36",
+          "v1-computing-artifacts-and-needs-fi-37",
+          "v1-computing-artifacts-and-needs-fi-38",
+          "v1-computing-artifacts-and-needs-fi-39",
+          "v1-computing-artifacts-and-needs-fi-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01CO06",
+        "descriptor": "Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 18
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-01",
+      "statement": "A turma quer que todos vejam um desenho grande na parede. Qual artefato pode apoiar essa necessidade?",
+      "prompt": "A turma quer que todos vejam um desenho grande na parede. Qual artefato pode apoiar essa necessidade?",
+      "options": [
+        "Um projetor preparado para mostrar a imagem à turma.",
+        "Uma colher sem relação com a imagem.",
+        "Um caderno fechado que ninguém pode consultar.",
+        "Uma mochila vazia."
+      ],
+      "correctAnswer": "Um projetor preparado para mostrar a imagem à turma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma colher sem relação com a imagem.": [
+          "ARTIFACT_FOR_NEED"
+        ],
+        "Um caderno fechado que ninguém pode consultar.": [
+          "ARTIFACT_FOR_NEED"
+        ],
+        "Uma mochila vazia.": [
+          "ARTIFACT_FOR_NEED"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PROJECTOR_CLASS",
+      "explanation": "O projetor pode ampliar e exibir a imagem para o grupo.",
+      "hint": "Qual recurso permite mostrar a imagem a várias pessoas?",
+      "errorFocus": "ARTIFACT_FOR_NEED",
+      "feedback": {
+        "correct": "Boa observação: O projetor pode ampliar e exibir a imagem para o grupo.",
+        "incorrect": "O projetor pode ampliar e exibir a imagem para o grupo.",
+        "hint": "Qual recurso permite mostrar a imagem a várias pessoas?",
+        "errorFocus": "ARTIFACT_FOR_NEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-02",
+      "statement": "Uma mensagem precisa ser gravada para escuta posterior. Qual recurso pode ajudar?",
+      "prompt": "Uma mensagem precisa ser gravada para escuta posterior. Qual recurso pode ajudar?",
+      "options": [
+        "Uma régua sem recurso de gravação.",
+        "Um gravador ou dispositivo autorizado com função de áudio.",
+        "Um cartaz em branco sem registro.",
+        "Uma caixa fechada sem som ou arquivo."
+      ],
+      "correctAnswer": "Um gravador ou dispositivo autorizado com função de áudio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma régua sem recurso de gravação.": [
+          "FUNCTION_MATCH"
+        ],
+        "Um cartaz em branco sem registro.": [
+          "FUNCTION_MATCH"
+        ],
+        "Uma caixa fechada sem som ou arquivo.": [
+          "FUNCTION_MATCH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "AUDIO_NOTE",
+      "explanation": "A função de gravação permite conservar uma mensagem de áudio para escuta posterior.",
+      "hint": "Que recurso registra som?",
+      "errorFocus": "FUNCTION_MATCH",
+      "feedback": {
+        "correct": "Boa observação: A função de gravação permite conservar uma mensagem de áudio para escuta posterior.",
+        "incorrect": "A função de gravação permite conservar uma mensagem de áudio para escuta posterior.",
+        "hint": "Que recurso registra som?",
+        "errorFocus": "FUNCTION_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-03",
+      "statement": "Uma pessoa usa um botão adaptado para acionar um programa acessível. O que esse artefato pode apoiar?",
+      "prompt": "Uma pessoa usa um botão adaptado para acionar um programa acessível. O que esse artefato pode apoiar?",
+      "options": [
+        "A obrigação de todos usarem o mesmo controle.",
+        "A divulgação de uma senha.",
+        "O acesso à interação com o programa por um recurso adequado à pessoa.",
+        "Uma tarefa sem relação com o programa."
+      ],
+      "correctAnswer": "O acesso à interação com o programa por um recurso adequado à pessoa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A obrigação de todos usarem o mesmo controle.": [
+          "ACCESS_TECHNOLOGY"
+        ],
+        "A divulgação de uma senha.": [
+          "ACCESS_TECHNOLOGY"
+        ],
+        "Uma tarefa sem relação com o programa.": [
+          "ACCESS_TECHNOLOGY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECOGNIZE",
+      "contextFamily": "ASSISTIVE_SWITCH",
+      "explanation": "Um recurso assistivo pode apoiar uma forma de interação escolhida para atender uma necessidade.",
+      "hint": "Que ação o botão permite à pessoa realizar?",
+      "errorFocus": "ACCESS_TECHNOLOGY",
+      "feedback": {
+        "correct": "Boa observação: Um recurso assistivo pode apoiar uma forma de interação escolhida para atender uma necessidade.",
+        "incorrect": "Um recurso assistivo pode apoiar uma forma de interação escolhida para atender uma necessidade.",
+        "hint": "Que ação o botão permite à pessoa realizar?",
+        "errorFocus": "ACCESS_TECHNOLOGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-04",
+      "statement": "Um tablet é usado para desenhar numa atividade escolar. O que ele é nesse exemplo?",
+      "prompt": "Um tablet é usado para desenhar numa atividade escolar. O que ele é nesse exemplo?",
+      "options": [
+        "O próprio desenho em papel.",
+        "A necessidade de todas as crianças.",
+        "Uma regra que obriga a usar tablet em casa.",
+        "Um artefato computacional usado para apoiar a criação de um desenho."
+      ],
+      "correctAnswer": "Um artefato computacional usado para apoiar a criação de um desenho.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O próprio desenho em papel.": [
+          "ARTIFACT_VS_TASK"
+        ],
+        "A necessidade de todas as crianças.": [
+          "ARTIFACT_VS_TASK"
+        ],
+        "Uma regra que obriga a usar tablet em casa.": [
+          "ARTIFACT_VS_TASK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_TABLET",
+      "explanation": "O tablet é o artefato; desenhar é a atividade que ele pode apoiar.",
+      "hint": "Separe o dispositivo da tarefa feita com ele.",
+      "errorFocus": "ARTIFACT_VS_TASK",
+      "feedback": {
+        "correct": "Boa observação: O tablet é o artefato; desenhar é a atividade que ele pode apoiar.",
+        "incorrect": "O tablet é o artefato; desenhar é a atividade que ele pode apoiar.",
+        "hint": "Separe o dispositivo da tarefa feita com ele.",
+        "errorFocus": "ARTIFACT_VS_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-05",
+      "statement": "Para digitar um título curto em um computador escolar, qual artefato de entrada pode ser usado?",
+      "prompt": "Para digitar um título curto em um computador escolar, qual artefato de entrada pode ser usado?",
+      "options": [
+        "Um teclado.",
+        "Um alto-falante usado apenas para ouvir.",
+        "Uma tela desligada sem entrada.",
+        "Um papel guardado na gaveta."
+      ],
+      "correctAnswer": "Um teclado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um alto-falante usado apenas para ouvir.": [
+          "INPUT_FUNCTION"
+        ],
+        "Uma tela desligada sem entrada.": [
+          "INPUT_FUNCTION"
+        ],
+        "Um papel guardado na gaveta.": [
+          "INPUT_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "KEYBOARD_TEXT",
+      "explanation": "O teclado permite inserir letras e sinais em uma atividade autorizada.",
+      "hint": "Qual recurso recebe as letras digitadas?",
+      "errorFocus": "INPUT_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: O teclado permite inserir letras e sinais em uma atividade autorizada.",
+        "incorrect": "O teclado permite inserir letras e sinais em uma atividade autorizada.",
+        "hint": "Qual recurso recebe as letras digitadas?",
+        "errorFocus": "INPUT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-06",
+      "statement": "A turma quer escutar uma história gravada. Qual recurso pode reproduzir o áudio?",
+      "prompt": "A turma quer escutar uma história gravada. Qual recurso pode reproduzir o áudio?",
+      "options": [
+        "Um teclado sem áudio.",
+        "Um alto-falante ou fone compartilhado apropriado.",
+        "Uma folha sem gravação.",
+        "Um mouse guardado."
+      ],
+      "correctAnswer": "Um alto-falante ou fone compartilhado apropriado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um teclado sem áudio.": [
+          "OUTPUT_FUNCTION"
+        ],
+        "Uma folha sem gravação.": [
+          "OUTPUT_FUNCTION"
+        ],
+        "Um mouse guardado.": [
+          "OUTPUT_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "SPEAKER_STORY",
+      "explanation": "Alto-falante ou fone reproduz áudio; o professor organiza o uso seguro e acessível.",
+      "hint": "Qual recurso permite ouvir o arquivo?",
+      "errorFocus": "OUTPUT_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Alto-falante ou fone reproduz áudio; o professor organiza o uso seguro e acessível.",
+        "incorrect": "Alto-falante ou fone reproduz áudio; o professor organiza o uso seguro e acessível.",
+        "hint": "Qual recurso permite ouvir o arquivo?",
+        "errorFocus": "OUTPUT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-07",
+      "statement": "A professora precisa registrar uma maquete feita pelo grupo com autorização. Qual função pode ajudar?",
+      "prompt": "A professora precisa registrar uma maquete feita pelo grupo com autorização. Qual função pode ajudar?",
+      "options": [
+        "O volume do alto-falante.",
+        "Uma senha escrita no quadro.",
+        "A câmera do dispositivo escolar preparada para registrar a imagem.",
+        "Uma calculadora sem câmera."
+      ],
+      "correctAnswer": "A câmera do dispositivo escolar preparada para registrar a imagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O volume do alto-falante.": [
+          "CAPTURE_FUNCTION"
+        ],
+        "Uma senha escrita no quadro.": [
+          "CAPTURE_FUNCTION"
+        ],
+        "Uma calculadora sem câmera.": [
+          "CAPTURE_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIGITAL_CAMERA_MODEL",
+      "explanation": "Uma câmera pode produzir um registro visual da maquete, respeitando autorização e privacidade.",
+      "hint": "Que recurso registra uma imagem?",
+      "errorFocus": "CAPTURE_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Uma câmera pode produzir um registro visual da maquete, respeitando autorização e privacidade.",
+        "incorrect": "Uma câmera pode produzir um registro visual da maquete, respeitando autorização e privacidade.",
+        "hint": "Que recurso registra uma imagem?",
+        "errorFocus": "CAPTURE_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-08",
+      "statement": "A turma quer uma cópia em papel de um desenho digital. Qual artefato pode realizar essa saída?",
+      "prompt": "A turma quer uma cópia em papel de um desenho digital. Qual artefato pode realizar essa saída?",
+      "options": [
+        "Um microfone sem função de impressão.",
+        "Uma pasta fechada sem arquivo.",
+        "Um botão de volume.",
+        "Uma impressora escolar preparada."
+      ],
+      "correctAnswer": "Uma impressora escolar preparada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um microfone sem função de impressão.": [
+          "PRINT_FUNCTION"
+        ],
+        "Uma pasta fechada sem arquivo.": [
+          "PRINT_FUNCTION"
+        ],
+        "Um botão de volume.": [
+          "PRINT_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PRINTER_POSTER",
+      "explanation": "A impressora transforma o arquivo preparado em uma saída impressa.",
+      "hint": "Qual dispositivo produz a cópia em papel?",
+      "errorFocus": "PRINT_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A impressora transforma o arquivo preparado em uma saída impressa.",
+        "incorrect": "A impressora transforma o arquivo preparado em uma saída impressa.",
+        "hint": "Qual dispositivo produz a cópia em papel?",
+        "errorFocus": "PRINT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-09",
+      "statement": "Uma criança quer rascunhar uma ideia, mas não há tela disponível. Qual alternativa também atende à tarefa?",
+      "prompt": "Uma criança quer rascunhar uma ideia, mas não há tela disponível. Qual alternativa também atende à tarefa?",
+      "options": [
+        "Desenhar num papel com lápis.",
+        "Adiar toda participação até possuir tablet próprio.",
+        "Compartilhar uma senha para pedir um dispositivo.",
+        "Não permitir o desenho."
+      ],
+      "correctAnswer": "Desenhar num papel com lápis.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Adiar toda participação até possuir tablet próprio.": [
+          "ALTERNATIVE_MEDIUM"
+        ],
+        "Compartilhar uma senha para pedir um dispositivo.": [
+          "ALTERNATIVE_MEDIUM"
+        ],
+        "Não permitir o desenho.": [
+          "ALTERNATIVE_MEDIUM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIGITAL_OR_PAPER",
+      "explanation": "Uma tarefa de criação pode ser realizada em meio não digital quando isso atende à necessidade.",
+      "hint": "A atividade exige necessariamente um aparelho?",
+      "errorFocus": "ALTERNATIVE_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: Uma tarefa de criação pode ser realizada em meio não digital quando isso atende à necessidade.",
+        "incorrect": "Uma tarefa de criação pode ser realizada em meio não digital quando isso atende à necessidade.",
+        "hint": "A atividade exige necessariamente um aparelho?",
+        "errorFocus": "ALTERNATIVE_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-10",
+      "statement": "Durante uma demonstração, a professora move o mouse e o ponteiro acompanha na tela. Qual relação foi explorada?",
+      "prompt": "Durante uma demonstração, a professora move o mouse e o ponteiro acompanha na tela. Qual relação foi explorada?",
+      "options": [
+        "O mouse imprime uma folha.",
+        "O mouse controla o movimento do ponteiro na interface.",
+        "A tela grava áudio automaticamente.",
+        "O ponteiro muda a cor da sala."
+      ],
+      "correctAnswer": "O mouse controla o movimento do ponteiro na interface.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O mouse imprime uma folha.": [
+          "CONTROL_FUNCTION"
+        ],
+        "A tela grava áudio automaticamente.": [
+          "CONTROL_FUNCTION"
+        ],
+        "O ponteiro muda a cor da sala.": [
+          "CONTROL_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLORE",
+      "contextFamily": "MOUSE_POINTER",
+      "explanation": "A demonstração relaciona o movimento do mouse à resposta do ponteiro na tela.",
+      "hint": "O que mudou quando o mouse foi movido?",
+      "errorFocus": "CONTROL_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A demonstração relaciona o movimento do mouse à resposta do ponteiro na tela.",
+        "incorrect": "A demonstração relaciona o movimento do mouse à resposta do ponteiro na tela.",
+        "hint": "O que mudou quando o mouse foi movido?",
+        "errorFocus": "CONTROL_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-11",
+      "statement": "Uma pessoa acompanha melhor um vídeo com texto das falas. Qual recurso pode apoiar a compreensão?",
+      "prompt": "Uma pessoa acompanha melhor um vídeo com texto das falas. Qual recurso pode apoiar a compreensão?",
+      "options": [
+        "Aumentar o brilho sem mostrar as falas.",
+        "Desligar o vídeo sem alternativa.",
+        "Legendas visíveis que apresentam as falas em texto.",
+        "Abrir uma conta pessoal."
+      ],
+      "correctAnswer": "Legendas visíveis que apresentam as falas em texto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Aumentar o brilho sem mostrar as falas.": [
+          "ACCESS_FEATURE"
+        ],
+        "Desligar o vídeo sem alternativa.": [
+          "ACCESS_FEATURE"
+        ],
+        "Abrir uma conta pessoal.": [
+          "ACCESS_FEATURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "CAPTION_VIDEO",
+      "explanation": "Legendas apresentam informação verbal por escrito e podem apoiar o acesso ao conteúdo.",
+      "hint": "Que recurso mostra as falas em texto?",
+      "errorFocus": "ACCESS_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: Legendas apresentam informação verbal por escrito e podem apoiar o acesso ao conteúdo.",
+        "incorrect": "Legendas apresentam informação verbal por escrito e podem apoiar o acesso ao conteúdo.",
+        "hint": "Que recurso mostra as falas em texto?",
+        "errorFocus": "ACCESS_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-12",
+      "statement": "O grupo quer comparar dois desenhos grandes e não precisa guardar cópias. Qual opção pode atender à apresentação coletiva?",
+      "prompt": "O grupo quer comparar dois desenhos grandes e não precisa guardar cópias. Qual opção pode atender à apresentação coletiva?",
+      "options": [
+        "Enviar fotos pessoais para desconhecidos.",
+        "Imprimir dezenas de cópias sem necessidade.",
+        "Esconder os desenhos do grupo.",
+        "Exibir os desenhos num monitor ou projetor com autorização."
+      ],
+      "correctAnswer": "Exibir os desenhos num monitor ou projetor com autorização.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Enviar fotos pessoais para desconhecidos.": [
+          "COLLECTIVE_NEED"
+        ],
+        "Imprimir dezenas de cópias sem necessidade.": [
+          "COLLECTIVE_NEED"
+        ],
+        "Esconder os desenhos do grupo.": [
+          "COLLECTIVE_NEED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "SHARED_DISPLAY",
+      "explanation": "A exibição compartilhada atende à comparação coletiva sem exigir cópias ou exposição externa.",
+      "hint": "Que recurso mostra os dois desenhos ao grupo?",
+      "errorFocus": "COLLECTIVE_NEED",
+      "feedback": {
+        "correct": "Boa observação: A exibição compartilhada atende à comparação coletiva sem exigir cópias ou exposição externa.",
+        "incorrect": "A exibição compartilhada atende à comparação coletiva sem exigir cópias ou exposição externa.",
+        "hint": "Que recurso mostra os dois desenhos ao grupo?",
+        "errorFocus": "COLLECTIVE_NEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-13",
+      "statement": "Uma gravação de leitura está muito baixa. Qual recurso de captação, usado com orientação, pode ajudar a produzir novo áudio?",
+      "prompt": "Uma gravação de leitura está muito baixa. Qual recurso de captação, usado com orientação, pode ajudar a produzir novo áudio?",
+      "options": [
+        "Um microfone preparado.",
+        "Uma impressora desligada.",
+        "Um mouse sem entrada de som.",
+        "Uma pasta de arquivos sem gravação."
+      ],
+      "correctAnswer": "Um microfone preparado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma impressora desligada.": [
+          "AUDIO_INPUT"
+        ],
+        "Um mouse sem entrada de som.": [
+          "AUDIO_INPUT"
+        ],
+        "Uma pasta de arquivos sem gravação.": [
+          "AUDIO_INPUT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MICROPHONE_READING",
+      "explanation": "O microfone capta som para a gravação, com cuidado e autorização das pessoas envolvidas.",
+      "hint": "Qual dispositivo capta a voz?",
+      "errorFocus": "AUDIO_INPUT",
+      "feedback": {
+        "correct": "Boa observação: O microfone capta som para a gravação, com cuidado e autorização das pessoas envolvidas.",
+        "incorrect": "O microfone capta som para a gravação, com cuidado e autorização das pessoas envolvidas.",
+        "hint": "Qual dispositivo capta a voz?",
+        "errorFocus": "AUDIO_INPUT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-14",
+      "statement": "A turma precisa escrever uma lista curta e tem papel e lápis disponíveis. O que é correto sobre a tecnologia?",
+      "prompt": "A turma precisa escrever uma lista curta e tem papel e lápis disponíveis. O que é correto sobre a tecnologia?",
+      "options": [
+        "Somente um computador permite escrever uma lista.",
+        "Um dispositivo digital pode ajudar, mas o papel também pode atender à tarefa.",
+        "A turma deve comprar um aparelho para participar.",
+        "Papel nunca comunica informação."
+      ],
+      "correctAnswer": "Um dispositivo digital pode ajudar, mas o papel também pode atender à tarefa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente um computador permite escrever uma lista.": [
+          "NO_SINGLE_REQUIRED_DEVICE"
+        ],
+        "A turma deve comprar um aparelho para participar.": [
+          "NO_SINGLE_REQUIRED_DEVICE"
+        ],
+        "Papel nunca comunica informação.": [
+          "NO_SINGLE_REQUIRED_DEVICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DEVICE_FOR_TASK",
+      "explanation": "A escolha deve considerar a necessidade, os recursos disponíveis e alternativas adequadas.",
+      "hint": "A lista pode ser feita por mais de um meio?",
+      "errorFocus": "NO_SINGLE_REQUIRED_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: A escolha deve considerar a necessidade, os recursos disponíveis e alternativas adequadas.",
+        "incorrect": "A escolha deve considerar a necessidade, os recursos disponíveis e alternativas adequadas.",
+        "hint": "A lista pode ser feita por mais de um meio?",
+        "errorFocus": "NO_SINGLE_REQUIRED_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-15",
+      "statement": "Um tablet escolar tem ampliação de texto ativada para uma atividade. Que necessidade o recurso pode apoiar?",
+      "prompt": "Um tablet escolar tem ampliação de texto ativada para uma atividade. Que necessidade o recurso pode apoiar?",
+      "options": [
+        "Compartilhar dados pessoais.",
+        "Aumentar a velocidade da internet de toda a cidade.",
+        "Ver melhor os elementos exibidos na tela.",
+        "Imprimir um cartaz sem impressora."
+      ],
+      "correctAnswer": "Ver melhor os elementos exibidos na tela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Compartilhar dados pessoais.": [
+          "ACCESSIBILITY_FEATURE"
+        ],
+        "Aumentar a velocidade da internet de toda a cidade.": [
+          "ACCESSIBILITY_FEATURE"
+        ],
+        "Imprimir um cartaz sem impressora.": [
+          "ACCESSIBILITY_FEATURE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLORE",
+      "contextFamily": "TABLET_ACCESSIBILITY",
+      "explanation": "A ampliação torna o conteúdo maior na tela e pode apoiar a leitura visual.",
+      "hint": "O que o recurso de ampliação modifica?",
+      "errorFocus": "ACCESSIBILITY_FEATURE",
+      "feedback": {
+        "correct": "Boa observação: A ampliação torna o conteúdo maior na tela e pode apoiar a leitura visual.",
+        "incorrect": "A ampliação torna o conteúdo maior na tela e pode apoiar a leitura visual.",
+        "hint": "O que o recurso de ampliação modifica?",
+        "errorFocus": "ACCESSIBILITY_FEATURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-16",
+      "statement": "Para que uma turma inteira acompanhe um áudio, qual fator deve ser considerado além do dispositivo?",
+      "prompt": "Para que uma turma inteira acompanhe um áudio, qual fator deve ser considerado além do dispositivo?",
+      "options": [
+        "Se todos têm o mesmo aparelho em casa.",
+        "Se o arquivo contém nomes privados.",
+        "Se ninguém pode pedir legenda ou transcrição.",
+        "Se o volume, o ambiente e alternativas de acesso permitem participação de todos."
+      ],
+      "correctAnswer": "Se o volume, o ambiente e alternativas de acesso permitem participação de todos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Se todos têm o mesmo aparelho em casa.": [
+          "COLLECTIVE_ACCESS"
+        ],
+        "Se o arquivo contém nomes privados.": [
+          "COLLECTIVE_ACCESS"
+        ],
+        "Se ninguém pode pedir legenda ou transcrição.": [
+          "COLLECTIVE_ACCESS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COLLECTIVE_AUDIO",
+      "explanation": "A escolha considera como as pessoas acessarão a mensagem, não apenas o artefato disponível.",
+      "hint": "O recurso atende às diferentes formas de ouvir ou acompanhar?",
+      "errorFocus": "COLLECTIVE_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: A escolha considera como as pessoas acessarão a mensagem, não apenas o artefato disponível.",
+        "incorrect": "A escolha considera como as pessoas acessarão a mensagem, não apenas o artefato disponível.",
+        "hint": "O recurso atende às diferentes formas de ouvir ou acompanhar?",
+        "errorFocus": "COLLECTIVE_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-17",
+      "statement": "Uma exposição precisa mostrar trabalhos a visitantes e também permitir que uma pessoa com baixa visão conheça o conteúdo. Qual plano combina recursos?",
+      "prompt": "Uma exposição precisa mostrar trabalhos a visitantes e também permitir que uma pessoa com baixa visão conheça o conteúdo. Qual plano combina recursos?",
+      "options": [
+        "Exibir os trabalhos e oferecer descrição ampliada ou oral, conforme a escolha da pessoa.",
+        "Mostrar apenas imagens pequenas sem descrição.",
+        "Obrigar todos a usar um tablet pessoal.",
+        "Publicar fotografias sem autorização."
+      ],
+      "correctAnswer": "Exibir os trabalhos e oferecer descrição ampliada ou oral, conforme a escolha da pessoa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Mostrar apenas imagens pequenas sem descrição.": [
+          "ACCESSIBLE_COLLECTIVE_USE"
+        ],
+        "Obrigar todos a usar um tablet pessoal.": [
+          "ACCESSIBLE_COLLECTIVE_USE"
+        ],
+        "Publicar fotografias sem autorização.": [
+          "ACCESSIBLE_COLLECTIVE_USE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NEW_CLASS_EXHIBIT",
+      "explanation": "Combinar exibição e descrição amplia o acesso e respeita escolhas e privacidade.",
+      "hint": "Como a exposição pode oferecer mais de uma forma de acesso?",
+      "errorFocus": "ACCESSIBLE_COLLECTIVE_USE",
+      "feedback": {
+        "correct": "Boa observação: Combinar exibição e descrição amplia o acesso e respeita escolhas e privacidade.",
+        "incorrect": "Combinar exibição e descrição amplia o acesso e respeita escolhas e privacidade.",
+        "hint": "Como a exposição pode oferecer mais de uma forma de acesso?",
+        "errorFocus": "ACCESSIBLE_COLLECTIVE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-18",
+      "statement": "A turma quer escolher entre duas histórias sem usar contas individuais. Qual recurso pode apoiar uma votação simples e privada em sala?",
+      "prompt": "A turma quer escolher entre duas histórias sem usar contas individuais. Qual recurso pode apoiar uma votação simples e privada em sala?",
+      "options": [
+        "Pedir senhas para entrar num aplicativo público.",
+        "Cartões ou marcas anônimas preparados pelo professor.",
+        "Publicar os votos com nome completo.",
+        "Usar um dispositivo sem explicar a atividade."
+      ],
+      "correctAnswer": "Cartões ou marcas anônimas preparados pelo professor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pedir senhas para entrar num aplicativo público.": [
+          "SAFE_TOOL_CHOICE"
+        ],
+        "Publicar os votos com nome completo.": [
+          "SAFE_TOOL_CHOICE"
+        ],
+        "Usar um dispositivo sem explicar a atividade.": [
+          "SAFE_TOOL_CHOICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "NEW_GROUP_VOTE",
+      "explanation": "Uma alternativa simples atende à votação sem coletar contas ou expor escolhas pessoais.",
+      "hint": "A necessidade pode ser atendida sem cadastro?",
+      "errorFocus": "SAFE_TOOL_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa simples atende à votação sem coletar contas ou expor escolhas pessoais.",
+        "incorrect": "Uma alternativa simples atende à votação sem coletar contas ou expor escolhas pessoais.",
+        "hint": "A necessidade pode ser atendida sem cadastro?",
+        "errorFocus": "SAFE_TOOL_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-19",
+      "statement": "A escola quer ampliar um mapa digital para projetá-lo durante uma explicação. Qual função é relevante?",
+      "prompt": "A escola quer ampliar um mapa digital para projetá-lo durante uma explicação. Qual função é relevante?",
+      "options": [
+        "A reprodução de música sem relação com o mapa.",
+        "O envio do endereço residencial de um aluno.",
+        "A ampliação ou exibição em tela grande do mapa.",
+        "A exclusão da legenda."
+      ],
+      "correctAnswer": "A ampliação ou exibição em tela grande do mapa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A reprodução de música sem relação com o mapa.": [
+          "FUNCTION_TO_SHARED_TASK"
+        ],
+        "O envio do endereço residencial de um aluno.": [
+          "FUNCTION_TO_SHARED_TASK"
+        ],
+        "A exclusão da legenda.": [
+          "FUNCTION_TO_SHARED_TASK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "NEW_SCHOOL_MAP",
+      "explanation": "Exibir o mapa ampliado apoia a tarefa coletiva de localizar espaços escolares.",
+      "hint": "Que recurso ajuda o grupo a ver os detalhes?",
+      "errorFocus": "FUNCTION_TO_SHARED_TASK",
+      "feedback": {
+        "correct": "Boa observação: Exibir o mapa ampliado apoia a tarefa coletiva de localizar espaços escolares.",
+        "incorrect": "Exibir o mapa ampliado apoia a tarefa coletiva de localizar espaços escolares.",
+        "hint": "Que recurso ajuda o grupo a ver os detalhes?",
+        "errorFocus": "FUNCTION_TO_SHARED_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-20",
+      "statement": "Uma pessoa pode escolher símbolos numa prancha de comunicação para expressar uma ideia. Como a turma deve tratar esse artefato?",
+      "prompt": "Uma pessoa pode escolher símbolos numa prancha de comunicação para expressar uma ideia. Como a turma deve tratar esse artefato?",
+      "options": [
+        "Como brinquedo que qualquer colega pode retirar sem pedir.",
+        "Como prova de que todos devem usar os mesmos símbolos.",
+        "Como convite para divulgar dados privados.",
+        "Como recurso de comunicação que apoia a participação da pessoa."
+      ],
+      "correctAnswer": "Como recurso de comunicação que apoia a participação da pessoa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como brinquedo que qualquer colega pode retirar sem pedir.": [
+          "ASSISTIVE_RESPECT"
+        ],
+        "Como prova de que todos devem usar os mesmos símbolos.": [
+          "ASSISTIVE_RESPECT"
+        ],
+        "Como convite para divulgar dados privados.": [
+          "ASSISTIVE_RESPECT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_COMMUNICATION_BOARD",
+      "explanation": "Recursos de comunicação pertencem à forma de participação da pessoa e devem ser usados com respeito e consentimento.",
+      "hint": "Quem escolhe como e quando usar o recurso?",
+      "errorFocus": "ASSISTIVE_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Recursos de comunicação pertencem à forma de participação da pessoa e devem ser usados com respeito e consentimento.",
+        "incorrect": "Recursos de comunicação pertencem à forma de participação da pessoa e devem ser usados com respeito e consentimento.",
+        "hint": "Quem escolhe como e quando usar o recurso?",
+        "errorFocus": "ASSISTIVE_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-21",
+      "statement": "A atividade de desenho pode ser feita num aplicativo ou com lápis. Como decidir?",
+      "prompt": "A atividade de desenho pode ser feita num aplicativo ou com lápis. Como decidir?",
+      "options": [
+        "Considerar objetivo, acessibilidade, recursos disponíveis e preferência dos participantes.",
+        "Escolher sempre a opção mais nova.",
+        "Escolher uma opção que exclui quem precisa de apoio.",
+        "Exigir que cada estudante compre o mesmo aparelho."
+      ],
+      "correctAnswer": "Considerar objetivo, acessibilidade, recursos disponíveis e preferência dos participantes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher sempre a opção mais nova.": [
+          "NEED_BASED_SELECTION"
+        ],
+        "Escolher uma opção que exclui quem precisa de apoio.": [
+          "NEED_BASED_SELECTION"
+        ],
+        "Exigir que cada estudante compre o mesmo aparelho.": [
+          "NEED_BASED_SELECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_OFFLINE_PLAN",
+      "explanation": "A escolha de recurso deve atender à tarefa e às pessoas, não ao prestígio do dispositivo.",
+      "hint": "Quais necessidades e condições importam?",
+      "errorFocus": "NEED_BASED_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: A escolha de recurso deve atender à tarefa e às pessoas, não ao prestígio do dispositivo.",
+        "incorrect": "A escolha de recurso deve atender à tarefa e às pessoas, não ao prestígio do dispositivo.",
+        "hint": "Quais necessidades e condições importam?",
+        "errorFocus": "NEED_BASED_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-22",
+      "statement": "Um grupo quer gravar uma explicação para rever na aula seguinte. O que deve preparar antes de usar o gravador?",
+      "prompt": "Um grupo quer gravar uma explicação para rever na aula seguinte. O que deve preparar antes de usar o gravador?",
+      "options": [
+        "Gravar colegas sem que saibam.",
+        "Obter autorização, combinar o conteúdo e usar o dispositivo escolar com orientação.",
+        "Incluir senhas no áudio.",
+        "Enviar a gravação a qualquer pessoa."
+      ],
+      "correctAnswer": "Obter autorização, combinar o conteúdo e usar o dispositivo escolar com orientação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Gravar colegas sem que saibam.": [
+          "CONSENT_AND_FUNCTION"
+        ],
+        "Incluir senhas no áudio.": [
+          "CONSENT_AND_FUNCTION"
+        ],
+        "Enviar a gravação a qualquer pessoa.": [
+          "CONSENT_AND_FUNCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "NEW_CLASS_RECORDING",
+      "explanation": "Preparação, autorização e uso orientado protegem as pessoas durante a exploração do artefato.",
+      "hint": "Que cuidado vem antes de registrar vozes?",
+      "errorFocus": "CONSENT_AND_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Preparação, autorização e uso orientado protegem as pessoas durante a exploração do artefato.",
+        "incorrect": "Preparação, autorização e uso orientado protegem as pessoas durante a exploração do artefato.",
+        "hint": "Que cuidado vem antes de registrar vozes?",
+        "errorFocus": "CONSENT_AND_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-23",
+      "statement": "Um projetor exibe uma imagem, mas não permite que cada estudante a manipule. O que isso mostra?",
+      "prompt": "Um projetor exibe uma imagem, mas não permite que cada estudante a manipule. O que isso mostra?",
+      "options": [
+        "Todo projetor faz qualquer tarefa.",
+        "A turma não pode usar outra alternativa.",
+        "O artefato tem funções e limites que precisam ser comparados à necessidade.",
+        "A imagem não pode ser compartilhada de outro modo."
+      ],
+      "correctAnswer": "O artefato tem funções e limites que precisam ser comparados à necessidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todo projetor faz qualquer tarefa.": [
+          "FUNCTION_LIMIT"
+        ],
+        "A turma não pode usar outra alternativa.": [
+          "FUNCTION_LIMIT"
+        ],
+        "A imagem não pode ser compartilhada de outro modo.": [
+          "FUNCTION_LIMIT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NEW_TOOL_LIMIT",
+      "explanation": "Conhecer um artefato inclui perceber o que ele faz e o que não faz para a tarefa.",
+      "hint": "A função observada atende a todos os passos necessários?",
+      "errorFocus": "FUNCTION_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: Conhecer um artefato inclui perceber o que ele faz e o que não faz para a tarefa.",
+        "incorrect": "Conhecer um artefato inclui perceber o que ele faz e o que não faz para a tarefa.",
+        "hint": "A função observada atende a todos os passos necessários?",
+        "errorFocus": "FUNCTION_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-24",
+      "statement": "A turma precisa apresentar uma história para pessoas que acompanham por texto ou áudio. Qual conjunto pode atender melhor?",
+      "prompt": "A turma precisa apresentar uma história para pessoas que acompanham por texto ou áudio. Qual conjunto pode atender melhor?",
+      "options": [
+        "Exibir somente uma imagem pequena sem descrição.",
+        "Impedir que alguém escolha outro formato.",
+        "Publicar dados pessoais junto à história.",
+        "Exibir ilustrações com descrição e disponibilizar texto ou áudio autorizado."
+      ],
+      "correctAnswer": "Exibir ilustrações com descrição e disponibilizar texto ou áudio autorizado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exibir somente uma imagem pequena sem descrição.": [
+          "MULTIMODAL_ACCESS_PLAN"
+        ],
+        "Impedir que alguém escolha outro formato.": [
+          "MULTIMODAL_ACCESS_PLAN"
+        ],
+        "Publicar dados pessoais junto à história.": [
+          "MULTIMODAL_ACCESS_PLAN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "NEW_ACCESS_PLAN",
+      "explanation": "Diferentes formas de apresentação podem apoiar a necessidade coletiva sem exigir um único dispositivo.",
+      "hint": "Quais formatos oferecem acesso complementar?",
+      "errorFocus": "MULTIMODAL_ACCESS_PLAN",
+      "feedback": {
+        "correct": "Boa observação: Diferentes formas de apresentação podem apoiar a necessidade coletiva sem exigir um único dispositivo.",
+        "incorrect": "Diferentes formas de apresentação podem apoiar a necessidade coletiva sem exigir um único dispositivo.",
+        "hint": "Quais formatos oferecem acesso complementar?",
+        "errorFocus": "MULTIMODAL_ACCESS_PLAN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-25",
+      "statement": "Por que identificar a tarefa antes de escolher um artefato?",
+      "prompt": "Por que identificar a tarefa antes de escolher um artefato?",
+      "options": [
+        "Porque cada recurso tem funções e limites diferentes em relação à necessidade.",
+        "Porque todos os aparelhos fazem exatamente o mesmo.",
+        "Porque a tecnologia é sempre obrigatória.",
+        "Porque a tarefa não importa para a escolha."
+      ],
+      "correctAnswer": "Porque cada recurso tem funções e limites diferentes em relação à necessidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque todos os aparelhos fazem exatamente o mesmo.": [
+          "NEED_BEFORE_TOOL"
+        ],
+        "Porque a tecnologia é sempre obrigatória.": [
+          "NEED_BEFORE_TOOL"
+        ],
+        "Porque a tarefa não importa para a escolha.": [
+          "NEED_BEFORE_TOOL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCKIN_NEED_FIRST",
+      "explanation": "A função do recurso precisa ser comparada à atividade que se quer apoiar.",
+      "hint": "O que a turma precisa realizar?",
+      "errorFocus": "NEED_BEFORE_TOOL",
+      "feedback": {
+        "correct": "Boa observação: A função do recurso precisa ser comparada à atividade que se quer apoiar.",
+        "incorrect": "A função do recurso precisa ser comparada à atividade que se quer apoiar.",
+        "hint": "O que a turma precisa realizar?",
+        "errorFocus": "NEED_BEFORE_TOOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-26",
+      "statement": "Um teclado permite inserir texto e um alto-falante reproduz som. O que se pode concluir?",
+      "prompt": "Um teclado permite inserir texto e um alto-falante reproduz som. O que se pode concluir?",
+      "options": [
+        "Os dois realizam todas as tarefas da mesma forma.",
+        "Artefatos diferentes oferecem funções diferentes.",
+        "O alto-falante imprime texto.",
+        "O teclado grava qualquer som sozinho."
+      ],
+      "correctAnswer": "Artefatos diferentes oferecem funções diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os dois realizam todas as tarefas da mesma forma.": [
+          "FUNCTION_DISTINCTION"
+        ],
+        "O alto-falante imprime texto.": [
+          "FUNCTION_DISTINCTION"
+        ],
+        "O teclado grava qualquer som sozinho.": [
+          "FUNCTION_DISTINCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_ARTIFACT",
+      "explanation": "Observar funções ajuda a relacionar cada artefato às tarefas adequadas.",
+      "hint": "Compare o que cada recurso permite fazer.",
+      "errorFocus": "FUNCTION_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Observar funções ajuda a relacionar cada artefato às tarefas adequadas.",
+        "incorrect": "Observar funções ajuda a relacionar cada artefato às tarefas adequadas.",
+        "hint": "Compare o que cada recurso permite fazer.",
+        "errorFocus": "FUNCTION_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-27",
+      "statement": "Uma atividade coletiva oferece apenas letras pequenas numa tela. O que pode melhorar o acesso?",
+      "prompt": "Uma atividade coletiva oferece apenas letras pequenas numa tela. O que pode melhorar o acesso?",
+      "options": [
+        "Diminuir ainda mais o texto.",
+        "Retirar a atividade de quem pede apoio.",
+        "Oferecer ampliação, leitura oral ou outra representação conforme a necessidade dos participantes.",
+        "Exigir um aparelho particular."
+      ],
+      "correctAnswer": "Oferecer ampliação, leitura oral ou outra representação conforme a necessidade dos participantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Diminuir ainda mais o texto.": [
+          "ACCESS_ALTERNATIVE"
+        ],
+        "Retirar a atividade de quem pede apoio.": [
+          "ACCESS_ALTERNATIVE"
+        ],
+        "Exigir um aparelho particular.": [
+          "ACCESS_ALTERNATIVE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCKIN_ACCESS",
+      "explanation": "Recursos alternativos e configurações acessíveis podem apoiar mais pessoas.",
+      "hint": "Que alternativa torna a informação acessível?",
+      "errorFocus": "ACCESS_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Recursos alternativos e configurações acessíveis podem apoiar mais pessoas.",
+        "incorrect": "Recursos alternativos e configurações acessíveis podem apoiar mais pessoas.",
+        "hint": "Que alternativa torna a informação acessível?",
+        "errorFocus": "ACCESS_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-28",
+      "statement": "Por que explorar um dispositivo escolar preparado com orientação?",
+      "prompt": "Por que explorar um dispositivo escolar preparado com orientação?",
+      "options": [
+        "Para acessar contas pessoais sem permissão.",
+        "Para mudar configurações de outras pessoas.",
+        "Para impedir que o adulto acompanhe.",
+        "Para observar suas funções e utilizá-lo de modo adequado e seguro."
+      ],
+      "correctAnswer": "Para observar suas funções e utilizá-lo de modo adequado e seguro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para acessar contas pessoais sem permissão.": [
+          "GUIDED_EXPLORATION"
+        ],
+        "Para mudar configurações de outras pessoas.": [
+          "GUIDED_EXPLORATION"
+        ],
+        "Para impedir que o adulto acompanhe.": [
+          "GUIDED_EXPLORATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLORE",
+      "contextFamily": "LOCKIN_GUIDANCE",
+      "explanation": "A mediação permite explorar recursos sem alterar contas ou dados de outras pessoas.",
+      "hint": "Que cuidado acompanha a exploração?",
+      "errorFocus": "GUIDED_EXPLORATION",
+      "feedback": {
+        "correct": "Boa observação: A mediação permite explorar recursos sem alterar contas ou dados de outras pessoas.",
+        "incorrect": "A mediação permite explorar recursos sem alterar contas ou dados de outras pessoas.",
+        "hint": "Que cuidado acompanha a exploração?",
+        "errorFocus": "GUIDED_EXPLORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-29",
+      "statement": "Uma projeção e um cartaz ampliado podem apoiar a apresentação de um desenho. O que comparar?",
+      "prompt": "Uma projeção e um cartaz ampliado podem apoiar a apresentação de um desenho. O que comparar?",
+      "options": [
+        "Qual alternativa atende melhor ao objetivo e às formas de participação da turma.",
+        "Qual recurso parece mais caro.",
+        "Qual exige dados privados.",
+        "Qual impede a descrição do conteúdo."
+      ],
+      "correctAnswer": "Qual alternativa atende melhor ao objetivo e às formas de participação da turma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual recurso parece mais caro.": [
+          "ALTERNATIVES_FOR_NEED"
+        ],
+        "Qual exige dados privados.": [
+          "ALTERNATIVES_FOR_NEED"
+        ],
+        "Qual impede a descrição do conteúdo.": [
+          "ALTERNATIVES_FOR_NEED"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCKIN_ALTERNATIVE",
+      "explanation": "Recursos diferentes podem atender à mesma necessidade com condições de acesso distintas.",
+      "hint": "Compare o objetivo e quem precisa acessar.",
+      "errorFocus": "ALTERNATIVES_FOR_NEED",
+      "feedback": {
+        "correct": "Boa observação: Recursos diferentes podem atender à mesma necessidade com condições de acesso distintas.",
+        "incorrect": "Recursos diferentes podem atender à mesma necessidade com condições de acesso distintas.",
+        "hint": "Compare o objetivo e quem precisa acessar.",
+        "errorFocus": "ALTERNATIVES_FOR_NEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-30",
+      "statement": "Uma criança não tem tablet em casa. Isso impede que participe da aprendizagem sobre tecnologias?",
+      "prompt": "Uma criança não tem tablet em casa. Isso impede que participe da aprendizagem sobre tecnologias?",
+      "options": [
+        "Sim; cada estudante precisa comprar um.",
+        "Não; a escola pode oferecer exploração compartilhada, demonstrações e alternativas.",
+        "Sim; só aparelhos particulares ensinam tecnologia.",
+        "Não; mas a criança deve compartilhar senhas para usar um."
+      ],
+      "correctAnswer": "Não; a escola pode oferecer exploração compartilhada, demonstrações e alternativas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim; cada estudante precisa comprar um.": [
+          "NO_DEVICE_REQUIREMENT"
+        ],
+        "Sim; só aparelhos particulares ensinam tecnologia.": [
+          "NO_DEVICE_REQUIREMENT"
+        ],
+        "Não; mas a criança deve compartilhar senhas para usar um.": [
+          "NO_DEVICE_REQUIREMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "LOCKIN_OWNERSHIP",
+      "explanation": "A aprendizagem não deve depender da posse de um dispositivo particular.",
+      "hint": "Que recursos a escola pode oferecer?",
+      "errorFocus": "NO_DEVICE_REQUIREMENT",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem não deve depender da posse de um dispositivo particular.",
+        "incorrect": "A aprendizagem não deve depender da posse de um dispositivo particular.",
+        "hint": "Que recursos a escola pode oferecer?",
+        "errorFocus": "NO_DEVICE_REQUIREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-31",
+      "statement": "O que é um artefato computacional nesta trilha?",
+      "prompt": "O que é um artefato computacional nesta trilha?",
+      "options": [
+        "Uma necessidade sem qualquer recurso.",
+        "Um dado pessoal.",
+        "Um dispositivo ou recurso tecnológico que pode apoiar uma tarefa ou necessidade.",
+        "Uma regra que nunca pode ser explorada."
+      ],
+      "correctAnswer": "Um dispositivo ou recurso tecnológico que pode apoiar uma tarefa ou necessidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma necessidade sem qualquer recurso.": [
+          "ARTIFACT_REVIEW"
+        ],
+        "Um dado pessoal.": [
+          "ARTIFACT_REVIEW"
+        ],
+        "Uma regra que nunca pode ser explorada.": [
+          "ARTIFACT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_ARTIFACT",
+      "explanation": "O artefato é o recurso explorado para apoiar uma atividade.",
+      "hint": "Pense no dispositivo ou recurso usado.",
+      "errorFocus": "ARTIFACT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O artefato é o recurso explorado para apoiar uma atividade.",
+        "incorrect": "O artefato é o recurso explorado para apoiar uma atividade.",
+        "hint": "Pense no dispositivo ou recurso usado.",
+        "errorFocus": "ARTIFACT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-32",
+      "statement": "Qual necessidade um teclado pode apoiar?",
+      "prompt": "Qual necessidade um teclado pode apoiar?",
+      "options": [
+        "Ouvir um áudio sem saída de som.",
+        "Projetar uma imagem na parede.",
+        "Imprimir uma folha.",
+        "Inserir letras ou sinais numa atividade digital autorizada."
+      ],
+      "correctAnswer": "Inserir letras ou sinais numa atividade digital autorizada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ouvir um áudio sem saída de som.": [
+          "FUNCTION_REVIEW"
+        ],
+        "Projetar uma imagem na parede.": [
+          "FUNCTION_REVIEW"
+        ],
+        "Imprimir uma folha.": [
+          "FUNCTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVIEW_KEYBOARD",
+      "explanation": "O teclado permite entrada de texto e comandos na interface.",
+      "hint": "O que acontece quando teclas são pressionadas?",
+      "errorFocus": "FUNCTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O teclado permite entrada de texto e comandos na interface.",
+        "incorrect": "O teclado permite entrada de texto e comandos na interface.",
+        "hint": "O que acontece quando teclas são pressionadas?",
+        "errorFocus": "FUNCTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-33",
+      "statement": "Qual recurso pode reproduzir uma história em áudio?",
+      "prompt": "Qual recurso pode reproduzir uma história em áudio?",
+      "options": [
+        "Um alto-falante ou fone apropriado.",
+        "Uma impressora.",
+        "Uma régua.",
+        "Um teclado sem áudio."
+      ],
+      "correctAnswer": "Um alto-falante ou fone apropriado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma impressora.": [
+          "OUTPUT_REVIEW"
+        ],
+        "Uma régua.": [
+          "OUTPUT_REVIEW"
+        ],
+        "Um teclado sem áudio.": [
+          "OUTPUT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVIEW_SPEAKER",
+      "explanation": "O alto-falante ou fone apresenta o som gravado.",
+      "hint": "Qual recurso permite escutar?",
+      "errorFocus": "OUTPUT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O alto-falante ou fone apresenta o som gravado.",
+        "incorrect": "O alto-falante ou fone apresenta o som gravado.",
+        "hint": "Qual recurso permite escutar?",
+        "errorFocus": "OUTPUT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-34",
+      "statement": "Uma turma precisa listar ideias e há papel disponível. É obrigatório usar computador?",
+      "prompt": "Uma turma precisa listar ideias e há papel disponível. É obrigatório usar computador?",
+      "options": [
+        "Sim; toda escrita exige computador.",
+        "Não; papel e lápis também podem atender à tarefa.",
+        "Sim; todos precisam ter tablet próprio.",
+        "Não; mas a lista não pode comunicar nada."
+      ],
+      "correctAnswer": "Não; papel e lápis também podem atender à tarefa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim; toda escrita exige computador.": [
+          "ALTERNATIVE_REVIEW"
+        ],
+        "Sim; todos precisam ter tablet próprio.": [
+          "ALTERNATIVE_REVIEW"
+        ],
+        "Não; mas a lista não pode comunicar nada.": [
+          "ALTERNATIVE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE",
+      "contextFamily": "REVIEW_PAPER",
+      "explanation": "A escolha depende da necessidade e de alternativas adequadas, não da posse do dispositivo.",
+      "hint": "A tarefa pode ser feita por outro meio?",
+      "errorFocus": "ALTERNATIVE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A escolha depende da necessidade e de alternativas adequadas, não da posse do dispositivo.",
+        "incorrect": "A escolha depende da necessidade e de alternativas adequadas, não da posse do dispositivo.",
+        "hint": "A tarefa pode ser feita por outro meio?",
+        "errorFocus": "ALTERNATIVE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-35",
+      "statement": "O que um projetor pode fazer numa apresentação de sala?",
+      "prompt": "O que um projetor pode fazer numa apresentação de sala?",
+      "options": [
+        "Gravar voz sem microfone.",
+        "Digitar texto sem dispositivo de entrada.",
+        "Exibir uma imagem para que o grupo a observe.",
+        "Proteger automaticamente todos os dados pessoais."
+      ],
+      "correctAnswer": "Exibir uma imagem para que o grupo a observe.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Gravar voz sem microfone.": [
+          "PROJECTOR_REVIEW"
+        ],
+        "Digitar texto sem dispositivo de entrada.": [
+          "PROJECTOR_REVIEW"
+        ],
+        "Proteger automaticamente todos os dados pessoais.": [
+          "PROJECTOR_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_PROJECT",
+      "explanation": "A projeção amplia ou exibe conteúdo visual ao grupo.",
+      "hint": "Que função foi observada na apresentação?",
+      "errorFocus": "PROJECTOR_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A projeção amplia ou exibe conteúdo visual ao grupo.",
+        "incorrect": "A projeção amplia ou exibe conteúdo visual ao grupo.",
+        "hint": "Que função foi observada na apresentação?",
+        "errorFocus": "PROJECTOR_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-36",
+      "statement": "Uma turma quer ampliar um mapa para olhar detalhes. Qual critério ajuda a escolher um recurso?",
+      "prompt": "Uma turma quer ampliar um mapa para olhar detalhes. Qual critério ajuda a escolher um recurso?",
+      "options": [
+        "Se o aparelho é novo, mesmo sem a função necessária.",
+        "Se exige compartilhar uma senha pessoal.",
+        "Se impede que alguém consulte a legenda.",
+        "Se o recurso permite ampliar o mapa e todos conseguem acessá-lo."
+      ],
+      "correctAnswer": "Se o recurso permite ampliar o mapa e todos conseguem acessá-lo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Se o aparelho é novo, mesmo sem a função necessária.": [
+          "SELECTION_CRITERIA_REVIEW"
+        ],
+        "Se exige compartilhar uma senha pessoal.": [
+          "SELECTION_CRITERIA_REVIEW"
+        ],
+        "Se impede que alguém consulte a legenda.": [
+          "SELECTION_CRITERIA_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_NEED",
+      "explanation": "A função e a acessibilidade devem corresponder à tarefa.",
+      "hint": "Que resultado a turma precisa obter?",
+      "errorFocus": "SELECTION_CRITERIA_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A função e a acessibilidade devem corresponder à tarefa.",
+        "incorrect": "A função e a acessibilidade devem corresponder à tarefa.",
+        "hint": "Que resultado a turma precisa obter?",
+        "errorFocus": "SELECTION_CRITERIA_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-37",
+      "statement": "O que fazer antes de experimentar um controle de um dispositivo escolar?",
+      "prompt": "O que fazer antes de experimentar um controle de um dispositivo escolar?",
+      "options": [
+        "Seguir a orientação do adulto e usar o equipamento preparado.",
+        "Abrir contas pessoais sem autorização.",
+        "Alterar arquivos de outra turma.",
+        "Desconectar cabos sem permissão."
+      ],
+      "correctAnswer": "Seguir a orientação do adulto e usar o equipamento preparado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Abrir contas pessoais sem autorização.": [
+          "SAFE_EXPLORATION_REVIEW"
+        ],
+        "Alterar arquivos de outra turma.": [
+          "SAFE_EXPLORATION_REVIEW"
+        ],
+        "Desconectar cabos sem permissão.": [
+          "SAFE_EXPLORATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLORE",
+      "contextFamily": "REVIEW_SAFE",
+      "explanation": "Exploração acompanhada protege equipamentos e dados e orienta a aprendizagem.",
+      "hint": "Que orientação foi combinada para o uso?",
+      "errorFocus": "SAFE_EXPLORATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Exploração acompanhada protege equipamentos e dados e orienta a aprendizagem.",
+        "incorrect": "Exploração acompanhada protege equipamentos e dados e orienta a aprendizagem.",
+        "hint": "Que orientação foi combinada para o uso?",
+        "errorFocus": "SAFE_EXPLORATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-38",
+      "statement": "Um colega utiliza tecnologia assistiva para se comunicar. Como a turma deve agir?",
+      "prompt": "Um colega utiliza tecnologia assistiva para se comunicar. Como a turma deve agir?",
+      "options": [
+        "Retirar o recurso para experimentar sem pedir.",
+        "Respeitar o recurso e deixar que a pessoa escolha como utilizá-lo.",
+        "Impedir que a pessoa participe.",
+        "Usar o dispositivo para acessar dados privados."
+      ],
+      "correctAnswer": "Respeitar o recurso e deixar que a pessoa escolha como utilizá-lo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Retirar o recurso para experimentar sem pedir.": [
+          "RESPECT_ASSISTIVE_REVIEW"
+        ],
+        "Impedir que a pessoa participe.": [
+          "RESPECT_ASSISTIVE_REVIEW"
+        ],
+        "Usar o dispositivo para acessar dados privados.": [
+          "RESPECT_ASSISTIVE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "REVIEW_ASSISTIVE",
+      "explanation": "Tecnologia assistiva apoia a participação e deve ser respeitada com consentimento.",
+      "hint": "Quem decide sobre o uso do recurso?",
+      "errorFocus": "RESPECT_ASSISTIVE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Tecnologia assistiva apoia a participação e deve ser respeitada com consentimento.",
+        "incorrect": "Tecnologia assistiva apoia a participação e deve ser respeitada com consentimento.",
+        "hint": "Quem decide sobre o uso do recurso?",
+        "errorFocus": "RESPECT_ASSISTIVE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-39",
+      "statement": "Qual pergunta avalia se uma ferramenta atende a uma necessidade coletiva?",
+      "prompt": "Qual pergunta avalia se uma ferramenta atende a uma necessidade coletiva?",
+      "options": [
+        "O recurso é o mais caro da sala?",
+        "Todos possuem o mesmo aparelho em casa?",
+        "As pessoas conseguem realizar a tarefa e acessar o resultado com esse recurso ou uma alternativa?",
+        "A ferramenta impede descrições alternativas?"
+      ],
+      "correctAnswer": "As pessoas conseguem realizar a tarefa e acessar o resultado com esse recurso ou uma alternativa?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O recurso é o mais caro da sala?": [
+          "COLLECTIVE_NEED_REVIEW"
+        ],
+        "Todos possuem o mesmo aparelho em casa?": [
+          "COLLECTIVE_NEED_REVIEW"
+        ],
+        "A ferramenta impede descrições alternativas?": [
+          "COLLECTIVE_NEED_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_COLLECTIVE",
+      "explanation": "A adequação considera a tarefa e as formas de participação do grupo.",
+      "hint": "Pense em quem precisa usar ou acessar o resultado.",
+      "errorFocus": "COLLECTIVE_NEED_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A adequação considera a tarefa e as formas de participação do grupo.",
+        "incorrect": "A adequação considera a tarefa e as formas de participação do grupo.",
+        "hint": "Pense em quem precisa usar ou acessar o resultado.",
+        "errorFocus": "COLLECTIVE_NEED_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-computing-artifacts-and-needs-fi-40",
+      "statement": "Qual é uma boa maneira de escolher entre dois artefatos?",
+      "prompt": "Qual é uma boa maneira de escolher entre dois artefatos?",
+      "options": [
+        "Escolher sempre o dispositivo mais novo.",
+        "Exigir que todos comprem o mesmo aparelho.",
+        "Ignorar a tarefa e compartilhar dados pessoais.",
+        "Comparar a necessidade, as funções, os cuidados e as alternativas de acesso."
+      ],
+      "correctAnswer": "Comparar a necessidade, as funções, os cuidados e as alternativas de acesso.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher sempre o dispositivo mais novo.": [
+          "NEED_FUNCTION_ACCESS_REVIEW"
+        ],
+        "Exigir que todos comprem o mesmo aparelho.": [
+          "NEED_FUNCTION_ACCESS_REVIEW"
+        ],
+        "Ignorar a tarefa e compartilhar dados pessoais.": [
+          "NEED_FUNCTION_ACCESS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_CHOICE",
+      "explanation": "Uma escolha informada considera objetivo, função, segurança e participação.",
+      "hint": "Quais fatores importam além do nome do aparelho?",
+      "errorFocus": "NEED_FUNCTION_ACCESS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma escolha informada considera objetivo, função, segurança e participação.",
+        "incorrect": "Uma escolha informada considera objetivo, função, segurança e participação.",
+        "hint": "Quais fatores importam além do nome do aparelho?",
+        "errorFocus": "NEED_FUNCTION_ACCESS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer exploração tátil ou demonstração visual descrita, com dispositivos desligados ou em modo seguro quando apropriado.",
+          "Permitir resposta por fala, apontar, comunicação alternativa, desenho ou observação acompanhada.",
+          "Disponibilizar recursos assistivos e alternativas não digitais sem tratar nenhuma como inferior.",
+          "Não exigir dispositivo próprio, cadastro, exposição de tela pessoal nem compartilhamento de dados."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

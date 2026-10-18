@@ -340,7 +340,7 @@ export function BrandingEditor({
         branding?.loginBackgroundUrl,
       )
     : null;
-  const previewDisplayName = displayName.trim() || 'EduManager Pro';
+  const previewDisplayName = displayName.trim() || 'Tec Escola';
 
   if (previewMode) {
     return (
@@ -442,7 +442,7 @@ export function BrandingEditor({
                     onChange={(event) =>
                       setDisplayName(event.target.value)
                     }
-                    placeholder="EduManager Pro"
+                    placeholder="Tec Escola"
                     className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-[#005bbf]/20"
                   />
                 </div>
@@ -517,7 +517,7 @@ export function BrandingEditor({
                 <AssetControl
                   id={`${title}-favicon`}
                   label="Favicon"
-                  helper="PNG, JPEG ou WebP."
+                  helper="PNG, JPEG ou WebP. Imagem quadrada recomendada para melhor nitidez."
                   kind="favicon"
                   draft={faviconDraft}
                   persistedUrl={branding?.faviconUrl}

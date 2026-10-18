@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01lp10-name-and-order-alphabet-letters",
+  "officialCode": "EF01LP10",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01lp10-name-and-order-alphabet-letters.json",
+  "canonicalSkillCode": "AUTHORING_EF01LP10_NAME_AND_ORDER_ALPHABET",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA — ALFABETIZAÇÃO",
+  "topic": "nomes das letras e ordem do alfabeto",
+  "officialDescriptor": "Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+  "lesson": {
+    "title": "As letras em ordem",
+    "objective": "Reconhecer nomes de letras e localizar letras na ordem alfabética, distinguindo o nome da letra do som que ela pode representar em palavras.",
+    "summary": "O alfabeto da língua portuguesa tem 26 letras, organizadas numa sequência convencional de A a Z. Saber nomear e localizar letras ajuda a consultar listas, organizar palavras e acompanhar a leitura. O nome de uma letra não é o mesmo que o som que ela representa em todas as palavras. Estudantes podem demonstrar conhecimento apontando, ordenando cartões, usando letras móveis ou recitando com apoio, sem depender de uma única forma de resposta.",
+    "explanation": "Use uma sequência visual completa e acompanhe as letras da esquerda para a direita. Localize uma letra pelo nome e observe qual vem antes ou depois. Por exemplo, H vem depois de G e antes de I. A sequência inclui K, W e Y. Ao comparar letra e som, lembre que o nome da letra não determina sozinho sua pronúncia em toda palavra. A atividade avalia a ordem convencional, não velocidade de recitação ou sotaque.",
+    "workedExample": "Na sequência J, K, L, a letra que fica entre J e L é K. Podemos apontá-la ou dizer seu nome; não precisamos confundir o nome da letra com o som em uma palavra.",
+    "commonMistake": "Pular letras na sequência, deixar K, W ou Y de fora, ou afirmar que o nome da letra é sempre o som que ela representa na palavra.",
+    "priorKnowledge": ["Reconhecer algumas letras em nomes e palavras familiares.", "Acompanhar uma sequência visual da esquerda para a direita."],
+    "keyConcepts": ["alfabeto", "letra", "nome da letra", "ordem", "antes", "depois", "sequência"],
+    "remediations": [
+      { "errorFocus": "LETTER_SEQUENCE", "action": "Use uma faixa completa do alfabeto e avance uma letra por vez, destacando a posição consultada." },
+      { "errorFocus": "LETTER_NAME_VS_SOUND", "action": "Separe o cartão com o nome da letra de exemplos de palavras e explique que a letra pode representar sons diferentes." },
+      { "errorFocus": "ACCESSIBLE_ALPHABET", "action": "Permita ordenar letras móveis, apontar ou usar recursos táteis e ampliados em vez de exigir recitação oral." }
+    ],
+    "accessibilitySupports": ["Apresentar sequência ampliada, alto contraste, letras móveis e versões táteis.", "Permitir nomear, apontar, ordenar cartões ou responder com comunicação alternativa.", "Oferecer tempo e apoio de leitura sem avaliar rapidez ou sotaque."],
+    "authenticActivities": [
+      { "id": "lp10-alphabet-card-line", "title": "Trilha do alfabeto", "context": "Cartões com letras maiúsculas e minúsculas são organizados numa faixa alfabética.", "steps": ["Escolha um cartão e diga ou indique o nome da letra.", "Localize sua posição usando a sequência visual.", "Confira qual letra vem antes e depois."], "evidence": "Cartões ordenados com identificação correta de posições selecionadas.", "rubric": ["Inicial: reconhece algumas letras com apoio.", "Em desenvolvimento: localiza letras em trechos da sequência.", "Consolidado: nomeia e ordena letras consultando a sequência completa."] },
+      { "id": "lp10-class-list-index", "title": "Lista organizada por letras", "context": "Uma lista fictícia de palavras é ordenada por sua letra inicial para facilitar consulta.", "steps": ["Observe as letras iniciais das palavras.", "Consulte a sequência do alfabeto.", "Organize cartões e explique qual letra vem antes."], "evidence": "Organização que usa a ordem alfabética indicada.", "rubric": ["Inicial: encontra uma letra conhecida.", "Em desenvolvimento: compara posições com apoio.", "Consolidado: explica a ordenação por letras iniciais."] }
+    ],
+    "estimatedMinutes": 40
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","IDENTIFY","DEPOIS_DO_A","Na sequência do alfabeto, qual letra vem depois de A?","B.",["C","D","Z"],"NEXT_LETTER","B vem imediatamente depois de A.","Acompanhe a sequência da esquerda para a direita."],
+      ["EASY","IDENTIFY","ANTES_DO_D","Qual letra vem imediatamente antes de D?","C.",["E","B","A"],"PREVIOUS_LETTER","C aparece antes de D na sequência.","Procure a letra vizinha anterior."],
+      ["MEDIUM","ORDER","ENTRE_G_E_I","Qual letra fica entre G e I?","H.",["F","J","K"],"MISSING_MIDDLE_LETTER","A sequência é G, H, I.","Leia as três posições em ordem."],
+      ["EASY","NAME","CARTAO_M","Que letra está escrita no cartão: M?","M.",["N","W","R"],"LETTER_NAME","O símbolo apresentado é a letra M.","Observe o formato impresso."],
+      ["MEDIUM","DISTINGUISH","NOME_E_SOM","O nome de uma letra e o som dela numa palavra são sempre a mesma coisa?","Não; o nome e o som representado podem ser diferentes.",["Sim, em toda palavra","Sim, porque cada letra tem um único som","Não, letras nunca representam sons"],"NAME_VS_SOUND","O nome da letra não determina sozinho todos os sons que ela pode representar.","Separe o nome da letra do som na palavra."],
+      ["EASY","ORDER","PRIMEIRAS_TRES","Qual sequência mostra as três primeiras letras do alfabeto?","A, B, C.",["A, C, B","B, A, C","C, B, A"],"INITIAL_ALPHABET_ORDER","A, B e C iniciam a sequência alfabética.","Comece pela primeira letra."],
+      ["MEDIUM","IDENTIFY","LETRA_DEPOIS_DO_K","Qual letra vem depois de K na ordem alfabética?","L.",["J","M","N"],"KLM_SEQUENCE","A sequência ao redor é J, K, L, M.","Consulte as letras vizinhas."],
+      ["MEDIUM","APPLY","ORDEM_DE_CARTOES_A_D","Como ordenar os cartões A, D, B e C?","A, B, C, D.",["D, C, B, A","A, C, B, D","B, A, D, C"],"SORT_LETTERS","A ordem alfabética começa A, B, C, D.","Encontre a sequência no alfabeto."]
+    ],
+    "PRACTICE": [
+      ["EASY","IDENTIFY","DEPOIS_DO_F","Qual letra aparece depois de F?","G.",["E","H","J"],"NEXT_G","G vem imediatamente depois de F.","Siga uma posição adiante."],
+      ["MEDIUM","ORDER","ANTES_DO_P","Qual letra vem antes de P?","O.",["N","Q","R"],"PREVIOUS_O","O precede P na sequência.","Localize P e volte uma posição."],
+      ["EASY","NAME","LETRA_MINUSCULA_B","A letra minúscula b corresponde a qual maiúscula?","B.",["D","P","R"],"UPPER_LOWER_MATCH","b e B são formas da mesma letra.","Compare o nome, não o formato."],
+      ["MEDIUM","ANALYZE","TRECHO_L_M_N","Qual letra falta em L, __, N?","M.",["K","O","P"],"SEQUENCE_GAP","M fica entre L e N.","Leia antes e depois do espaço."],
+      ["MEDIUM","DISTINGUISH","K_W_Y_NO_ALFABETO","K, W e Y fazem parte do alfabeto usado em português?","Sim; o alfabeto tem 26 letras incluindo K, W e Y.",["Não; são símbolos de outro alfabeto","Só K faz parte","Somente W e Y fazem parte"],"COMPLETE_ALPHABET","O alfabeto atual inclui as 26 letras.","Confira a sequência completa até Z."],
+      ["HARD","APPLY","ORDENAR_INICIAIS_CASA_BOLA_DADO","Qual ordem alfabética das iniciais de casa, bola e dado?","B, C, D.",["C, D, B","D, B, C","B, D, C"],"INITIAL_LETTER_SORT","B vem antes de C, que vem antes de D.","Compare as letras iniciais."],
+      ["EASY","IDENTIFY","ULTIMA_LETRA","Qual é a última letra do alfabeto?","Z.",["Y","X","W"],"FINAL_LETTER","Z fecha a sequência alfabética.","Siga até o fim do alfabeto."],
+      ["MEDIUM","COMPARE","H_E_J","Qual letra está entre H e J?","I.",["G","K","L"],"MIDDLE_POSITION_I","I ocupa a posição entre H e J.","Leia H, __, J." ]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","ORDER","LISTA_DE_NOMES_FICTICIOS","Numa lista por letra inicial, qual nome fictício deve vir primeiro: Lia, Ana ou Beto?","Ana.",["Beto","Lia","A ordem não pode ser comparada"],"ALPHABETICAL_LIST","A começa antes de B e L.","Compare as letras iniciais."],
+      ["HARD","ANALYZE","PALAVRAS_COM_MESMA_INICIAL","Duas palavras começam com M. Para decidir qual vem primeiro na lista, o que comparar em seguida?","A próxima letra de cada palavra.",["A última letra sempre","O tamanho do desenho","A cor da página"],"NEXT_LETTER_TIE_BREAK","Quando a inicial coincide, compara-se a próxima letra.","Continue olhando letra por letra."],
+      ["MEDIUM","IDENTIFY","LETRA_ANTES_DO_W","Qual letra aparece imediatamente antes de W?","V.",["X","U","Y"],"PREVIOUS_W","V precede W na sequência.","Encontre W no trecho final."],
+      ["MEDIUM","APPLY","CARTOES_D_E_F","Qual é a ordem correta dos cartões D, F e E?","D, E, F.",["F, E, D","E, D, F","D, F, E"],"LOCAL_SORT_DEF","E fica entre D e F.","Ordene pelo alfabeto."],
+      ["HARD","DISTINGUISH","NOME_DA_LETRA_E_PALAVRA","Ao encontrar a letra C num cartão, qual pergunta trata do nome da letra?","“Que letra está escrita neste cartão?”",["“Qual é a temperatura do papel?”","“Quantas sílabas tem qualquer palavra?”","“A letra sempre tem o mesmo som?”"],"LETTER_IDENTIFICATION","A pergunta solicita identificar o nome da letra apresentada.","Foque na letra isolada."],
+      ["MEDIUM","ORDER","SEQUENCIA_R_S_T","Qual letra completa R, S, __?","T.",["Q","U","V"],"SEQUENCE_T","T vem logo depois de S.","Siga uma posição."],
+      ["HARD","APPLY","CONSULTA_DE_INDICE","Uma criança quer localizar uma palavra numa lista alfabética. O que ajuda primeiro?","Procurar a letra inicial e consultar a sequência do alfabeto.",["Escolher a página mais colorida","Ler a última palavra apenas","Ignorar a ordem da lista"],"ALPHABET_REFERENCE","A letra inicial ajuda a localizar a seção da lista.","Use a letra inicial como pista."],
+      ["MEDIUM","EVALUATE","RECITACAO_COM_APOIO","Uma criança organiza cartões corretamente, mas prefere não recitar em voz alta. O que demonstra seu conhecimento?","A sequência ordenada que montou com os cartões.",["Nada, pois só a recitação vale","A rapidez com que fala","A quantidade de cartões coloridos"],"MULTIPLE_RESPONSE_MODES","A ordenação é uma forma válida de demonstrar a sequência.","Observe a evidência produzida." ]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","IDENTIFY","VEM_DEPOIS_DO_Q","Qual letra vem imediatamente depois de Q?","R.",["P","S","T"],"NEXT_R","R vem logo após Q na ordem alfabética.","Consulte o trecho do alfabeto."],
+      ["MEDIUM","IDENTIFY","VEM_ANTES_DO_X","Qual letra aparece imediatamente antes de X?","W.",["V","Y","Z"],"PREVIOUS_X","W precede X.","Use a sequência V, W, X, Y."],
+      ["HARD","ORDER","TRECHO_J_K_L_M","Qual sequência está em ordem alfabética?","J, K, L, M.",["J, L, K, M","M, L, K, J","K, J, M, L"],"SEQUENCE_JKLM","As letras seguem posições consecutivas.","Confira uma posição por vez."],
+      ["MEDIUM","DISTINGUISH","LETRA_E_SILABA","A letra F sozinha é uma sílaba?","Não; é uma letra do alfabeto.",["Sim, sempre é uma palavra","Sim, é uma frase","Não, porque F não existe"],"LETTER_NOT_SYLLABLE","Uma letra isolada não é necessariamente uma sílaba ou palavra.","Diferencie unidade escrita e sílaba."],
+      ["MEDIUM","APPLY","ORDENAR_BOLA_BONECA_CASA","Qual ordem das iniciais B, B e C é correta?","As duas palavras com B vêm antes da palavra com C.",["C vem antes de B","B vem depois de C","Não se pode comparar letras"],"INITIAL_ORDER","B aparece antes de C no alfabeto.","Compare as iniciais."],
+      ["HARD","ANALYZE","SEGUNDO_CARACTERE","“Bala” e “bola” começam com B. Qual letra diferencia o segundo lugar?","A em “bala” e O em “bola”.",["As duas têm A","As duas têm Z","L e B"],"LETTER_BY_LETTER","A segunda letra é diferente nos exemplos.","Compare a posição seguinte à inicial."],
+      ["MEDIUM","IDENTIFY","LETRAS_ATE_Z","Que letra vem antes de Z?","Y.",["X","W","V"],"PREVIOUS_Z","Y ocupa a posição imediatamente anterior a Z.","Olhe o final da sequência."],
+      ["HARD","JUSTIFY","POR_QUE_USAR_ORDEM","Por que manter as letras em sequência ajuda a consultar uma lista?","A posição das letras orienta a busca por iniciais.",["Porque todas as palavras começam igual","Porque elimina a necessidade de ler","Porque muda o nome das letras"],"ALPHABET_ORDER_PURPOSE","A ordem convencional facilita localizar entradas.","Pense em como o índice organiza a busca." ]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","PRIMEIRA_LETRA","Qual letra inicia a sequência alfabética?","A.",["B","Y","Z"],"ALPHABET_START_REVIEW","A inicia a ordem convencional.","Lembre-se do começo."],
+      ["EASY","IDENTIFY","LETRA_DEPOIS_DO_M","Qual letra vem depois de M?","N.",["L","O","P"],"NEXT_N_REVIEW","N vem logo após M na sequência alfabética.","Avance uma posição."],
+      ["MEDIUM","ORDER","SEQUENCIA_V_W_X_Y_Z","Qual sequência mostra as últimas cinco letras?","V, W, X, Y, Z.",["W, V, X, Z, Y","V, X, W, Y, Z","Z, Y, X, W, V"],"FINAL_SEQUENCE_REVIEW","A sequência final segue V, W, X, Y, Z.","Confira a ordem até Z."],
+      ["MEDIUM","DISTINGUISH","NOME_E_PRONUNCIA_REVISADO","O nome de uma letra sempre informa sozinho seu som na palavra?","Não; é preciso observar a letra na palavra e seu contexto.",["Sim, em qualquer palavra","Sim, toda letra só pode ter um som","Não, palavras não têm letras"],"NAME_SOUND_REVIEW","Nome de letra e realização sonora não são idênticos em todo contexto.","Separe nome e som."],
+      ["MEDIUM","APPLY","ORDENAR_CARTOES_E_F_G","Qual ordem correta para E, G e F?","E, F, G.",["G, F, E","F, E, G","E, G, F"],"LOCAL_ORDER_REVIEW","F fica entre E e G.","Consulte as posições."],
+      ["HARD","ANALYZE","PALAVRAS_COM_LETRAS_INICIAIS_IGUAIS","Se duas palavras começam pela mesma letra, que outra comparação pode organizar a lista?","Comparar as letras seguintes até encontrar diferença.",["Comparar a cor da tinta","Escolher uma ao acaso","Ignorar o restante"],"LEXICOGRAPHIC_NEXT_LETTER_REVIEW","A comparação avança posição por posição.","Continue depois da letra inicial."],
+      ["MEDIUM","EVALUATE","FORMA_DE_RESPOSTA","Qual é uma forma válida de mostrar que sabe a ordem de letras?","Ordenar cartões ou indicar a sequência com apoio visual.",["Somente falar rápido","Não responder","Escolher sem observar"],"ACCESSIBLE_DEMONSTRATION_REVIEW","A ordenação visual demonstra conhecimento da sequência.","Escolha uma ação que mostre a ordem."],
+      ["HARD","JUSTIFY","SINTese_DE_ALFABETO","Nomear letras e recitá-las em ordem exige conhecer...","os nomes e as posições das letras na sequência.",["somente a cor dos cartões","uma única pronúncia para cada palavra","apenas a última letra"],"ALPHABET_SEQUENCE_SUMMARY","Nome e posição são aspectos relacionados da sequência alfabética.","Reúna reconhecimento e ordem."]
+    ]
+  }
+}

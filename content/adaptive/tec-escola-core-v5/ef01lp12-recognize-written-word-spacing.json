@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01lp12-recognize-written-word-spacing",
+  "canonicalSkillCode": "AUTHORING_EF01LP12_RECOGNIZE_WORD_SPACING",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "separação de palavras na escrita por espaços em branco",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP12",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 103
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Palavras com espaços na escrita",
+    "objective": "Reconhecer limites entre palavras escritas em frases curtas, distinguindo espaços entre palavras de letras e sílabas dentro delas.",
+    "summary": "Na escrita convencional, espaços em branco ajudam a mostrar onde termina uma palavra e começa outra. Em “O gato dorme”, há três palavras separadas por espaços; dentro de “gato”, as letras não são separadas por espaços. A quantidade de letras ou sílabas não é a quantidade de palavras. Cartões, frases de rotina escolar e textos curtos podem tornar esses limites visíveis. A leitura é acessível com fonte ampliada, espaçamento visual e apoio oral, sem penalizar caligrafia ou velocidade.",
+    "explanation": "Leia uma frase curta e observe os espaços entre os grupos de letras. Cada grupo separado por espaço corresponde a uma palavra escrita. Em “A menina canta”, os espaços ficam entre A/menina e menina/canta. Não coloque espaços dentro de uma palavra para separar sílabas, e não junte palavras vizinhas. Pontuação pode aparecer junto de uma palavra, mas não cria por si só uma nova palavra.",
+    "workedExample": "Na frase “Bia pula corda”, os espaços separam Bia, pula e corda. São três palavras. Em “corda”, c-o-r-d-a são letras da mesma palavra, não cinco palavras.",
+    "commonMistake": "Contar letras ou sílabas como palavras, ou juntar duas palavras distintas sem espaço.",
+    "priorKnowledge": [
+      "Reconhecer palavras familiares em frases curtas.",
+      "Observar letras e espaços em materiais impressos ou digitais."
+    ],
+    "keyConcepts": [
+      "palavra escrita",
+      "espaço em branco",
+      "limite entre palavras",
+      "letra",
+      "frase",
+      "segmentação",
+      "leitura",
+      "revisão"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "WORD_BOUNDARY_SPACING",
+        "action": "Cubra a frase com uma régua e revele um grupo de letras por vez, marcando cada espaço entre palavras."
+      },
+      {
+        "errorFocus": "WORD_VS_LETTER_OR_SYLLABLE",
+        "action": "Compare uma palavra completa com suas letras ou partes sonoras, mantendo estas últimas sem espaço na escrita convencional."
+      },
+      {
+        "errorFocus": "READABLE_SENTENCE_SEGMENTATION",
+        "action": "Reorganize cartões de palavras e releia a frase para verificar os limites."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+      "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+      "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp12-word-card-sentences",
+        "title": "Frases com cartões de palavras",
+        "instructions": "Cartões separados mostram palavras de frases curtas usadas numa rotina fictícia de sala.\n1. Leia ou escute a frase-modelo.\n2. Organize um cartão para cada palavra com espaços entre eles.\n3. Releia apontando cada palavra escrita.",
+        "steps": [
+          "Leia ou escute a frase-modelo.",
+          "Organize um cartão para cada palavra com espaços entre eles.",
+          "Releia apontando cada palavra escrita."
+        ],
+        "evidence": "Frase montada com limites entre palavras reconhecíveis.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica letras ou cartões com apoio.",
+            "developing": "separa a maioria das palavras.",
+            "proficient": "reconhece e revisa espaços entre palavras sem confundi-los com letras ou sílabas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp12-space-detective",
+        "title": "Detetives dos espaços",
+        "instructions": "Frases curtas impressas apresentam separações convencionais e exemplos deliberados de palavras unidas.\n1. Observe os grupos de letras.\n2. Marque onde uma palavra termina e outra começa.\n3. Explique uma revisão usando a leitura da frase.",
+        "steps": [
+          "Observe os grupos de letras.",
+          "Marque onde uma palavra termina e outra começa.",
+          "Explique uma revisão usando a leitura da frase."
+        ],
+        "evidence": "Marcação dos limites das palavras com explicação baseada no texto.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um espaço com apoio.",
+            "developing": "corrige uma junção entre palavras.",
+            "proficient": "reconhece limites e distingue palavra de letra ou sílaba."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 35,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01lp12-recognize-written-word-spacing-01",
+          "v1-ef01lp12-recognize-written-word-spacing-02",
+          "v1-ef01lp12-recognize-written-word-spacing-03",
+          "v1-ef01lp12-recognize-written-word-spacing-04",
+          "v1-ef01lp12-recognize-written-word-spacing-05",
+          "v1-ef01lp12-recognize-written-word-spacing-06",
+          "v1-ef01lp12-recognize-written-word-spacing-07",
+          "v1-ef01lp12-recognize-written-word-spacing-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01lp12-recognize-written-word-spacing-09",
+          "v1-ef01lp12-recognize-written-word-spacing-10",
+          "v1-ef01lp12-recognize-written-word-spacing-11",
+          "v1-ef01lp12-recognize-written-word-spacing-12",
+          "v1-ef01lp12-recognize-written-word-spacing-13",
+          "v1-ef01lp12-recognize-written-word-spacing-14",
+          "v1-ef01lp12-recognize-written-word-spacing-15",
+          "v1-ef01lp12-recognize-written-word-spacing-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01lp12-recognize-written-word-spacing-17",
+          "v1-ef01lp12-recognize-written-word-spacing-18",
+          "v1-ef01lp12-recognize-written-word-spacing-19",
+          "v1-ef01lp12-recognize-written-word-spacing-20",
+          "v1-ef01lp12-recognize-written-word-spacing-21",
+          "v1-ef01lp12-recognize-written-word-spacing-22",
+          "v1-ef01lp12-recognize-written-word-spacing-23",
+          "v1-ef01lp12-recognize-written-word-spacing-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01lp12-recognize-written-word-spacing-25",
+          "v1-ef01lp12-recognize-written-word-spacing-26",
+          "v1-ef01lp12-recognize-written-word-spacing-27",
+          "v1-ef01lp12-recognize-written-word-spacing-28",
+          "v1-ef01lp12-recognize-written-word-spacing-29",
+          "v1-ef01lp12-recognize-written-word-spacing-30",
+          "v1-ef01lp12-recognize-written-word-spacing-31",
+          "v1-ef01lp12-recognize-written-word-spacing-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01lp12-recognize-written-word-spacing-33",
+          "v1-ef01lp12-recognize-written-word-spacing-34",
+          "v1-ef01lp12-recognize-written-word-spacing-35",
+          "v1-ef01lp12-recognize-written-word-spacing-36",
+          "v1-ef01lp12-recognize-written-word-spacing-37",
+          "v1-ef01lp12-recognize-written-word-spacing-38",
+          "v1-ef01lp12-recognize-written-word-spacing-39",
+          "v1-ef01lp12-recognize-written-word-spacing-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP12",
+        "descriptor": "Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 103
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-01",
+      "statement": "Na frase “O gato dorme”, o que o espaço entre “O” e “gato” indica?",
+      "prompt": "Na frase “O gato dorme”, o que o espaço entre “O” e “gato” indica?",
+      "options": [
+        "O limite entre duas palavras.",
+        "Uma letra nova",
+        "Uma sílaba de gato",
+        "O fim da frase"
+      ],
+      "correctAnswer": "O limite entre duas palavras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma letra nova": [
+          "SPACE_MARKS_WORD_BOUNDARY"
+        ],
+        "Uma sílaba de gato": [
+          "SPACE_MARKS_WORD_BOUNDARY"
+        ],
+        "O fim da frase": [
+          "SPACE_MARKS_WORD_BOUNDARY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_O_GATO_DORME",
+      "explanation": "O espaço separa “O” de “gato”.",
+      "hint": "Observe os grupos de letras.",
+      "errorFocus": "SPACE_MARKS_WORD_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: O espaço separa “O” de “gato”.",
+        "incorrect": "O espaço separa “O” de “gato”.",
+        "hint": "Observe os grupos de letras.",
+        "errorFocus": "SPACE_MARKS_WORD_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-02",
+      "statement": "Quantas palavras há em “Bia pula corda”?",
+      "prompt": "Quantas palavras há em “Bia pula corda”?",
+      "options": [
+        "Duas palavras",
+        "Três palavras.",
+        "Quatro palavras",
+        "Dez palavras"
+      ],
+      "correctAnswer": "Três palavras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Duas palavras": [
+          "COUNT_WORDS_BY_SPACES"
+        ],
+        "Quatro palavras": [
+          "COUNT_WORDS_BY_SPACES"
+        ],
+        "Dez palavras": [
+          "COUNT_WORDS_BY_SPACES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "FRASE_BIA_PULA_CORDA",
+      "explanation": "Os espaços dividem a frase em Bia, pula e corda.",
+      "hint": "Conte os grupos separados.",
+      "errorFocus": "COUNT_WORDS_BY_SPACES",
+      "feedback": {
+        "correct": "Boa observação: Os espaços dividem a frase em Bia, pula e corda.",
+        "incorrect": "Os espaços dividem a frase em Bia, pula e corda.",
+        "hint": "Conte os grupos separados.",
+        "errorFocus": "COUNT_WORDS_BY_SPACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-03",
+      "statement": "Em “gato”, as letras g-a-t-o formam quantas palavras escritas?",
+      "prompt": "Em “gato”, as letras g-a-t-o formam quantas palavras escritas?",
+      "options": [
+        "Quatro palavras",
+        "Duas palavras",
+        "Uma palavra.",
+        "Nenhuma palavra"
+      ],
+      "correctAnswer": "Uma palavra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quatro palavras": [
+          "WORD_VS_LETTERS"
+        ],
+        "Duas palavras": [
+          "WORD_VS_LETTERS"
+        ],
+        "Nenhuma palavra": [
+          "WORD_VS_LETTERS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LETRAS_DE_GATO",
+      "explanation": "As letras pertencem ao mesmo grupo sem espaço interno.",
+      "hint": "Não conte cada letra como palavra.",
+      "errorFocus": "WORD_VS_LETTERS",
+      "feedback": {
+        "correct": "Boa observação: As letras pertencem ao mesmo grupo sem espaço interno.",
+        "incorrect": "As letras pertencem ao mesmo grupo sem espaço interno.",
+        "hint": "Não conte cada letra como palavra.",
+        "errorFocus": "WORD_VS_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-04",
+      "statement": "Na frase “O sol brilha”, qual trecho é uma palavra?",
+      "prompt": "Na frase “O sol brilha”, qual trecho é uma palavra?",
+      "options": [
+        "O sol",
+        "sol brilha",
+        "O sol brilha",
+        "brilha."
+      ],
+      "correctAnswer": "brilha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O sol": [
+          "IDENTIFY_ONE_WRITTEN_WORD"
+        ],
+        "sol brilha": [
+          "IDENTIFY_ONE_WRITTEN_WORD"
+        ],
+        "O sol brilha": [
+          "IDENTIFY_ONE_WRITTEN_WORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_SOL_BRILHA",
+      "explanation": "“brilha” é um grupo de letras entre espaços.",
+      "hint": "Escolha um único grupo.",
+      "errorFocus": "IDENTIFY_ONE_WRITTEN_WORD",
+      "feedback": {
+        "correct": "Boa observação: “brilha” é um grupo de letras entre espaços.",
+        "incorrect": "“brilha” é um grupo de letras entre espaços.",
+        "hint": "Escolha um único grupo.",
+        "errorFocus": "IDENTIFY_ONE_WRITTEN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-05",
+      "statement": "A frase “Ana canta” foi escrita como “Anacanta”. O que falta para separar as palavras?",
+      "prompt": "A frase “Ana canta” foi escrita como “Anacanta”. O que falta para separar as palavras?",
+      "options": [
+        "Um espaço entre “Ana” e “canta”.",
+        "Uma letra dentro de Ana",
+        "Uma sílaba entre cada letra",
+        "Um ponto no meio da palavra"
+      ],
+      "correctAnswer": "Um espaço entre “Ana” e “canta”.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma letra dentro de Ana": [
+          "REPAIR_MISSING_WORD_SPACE"
+        ],
+        "Uma sílaba entre cada letra": [
+          "REPAIR_MISSING_WORD_SPACE"
+        ],
+        "Um ponto no meio da palavra": [
+          "REPAIR_MISSING_WORD_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PALAVRAS_JUNTAS",
+      "explanation": "O exemplo junta duas palavras distintas.",
+      "hint": "Marque o limite entre elas.",
+      "errorFocus": "REPAIR_MISSING_WORD_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O exemplo junta duas palavras distintas.",
+        "incorrect": "O exemplo junta duas palavras distintas.",
+        "hint": "Marque o limite entre elas.",
+        "errorFocus": "REPAIR_MISSING_WORD_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-06",
+      "statement": "Um cartão mostra “A bola rola”. Quantas separações entre palavras aparecem?",
+      "prompt": "Um cartão mostra “A bola rola”. Quantas separações entre palavras aparecem?",
+      "options": [
+        "Uma separação",
+        "Duas separações.",
+        "Três separações",
+        "Cinco separações"
+      ],
+      "correctAnswer": "Duas separações.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma separação": [
+          "COUNT_INTERWORD_SPACES"
+        ],
+        "Três separações": [
+          "COUNT_INTERWORD_SPACES"
+        ],
+        "Cinco separações": [
+          "COUNT_INTERWORD_SPACES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CARTAO_DE_FRASE",
+      "explanation": "Três palavras formam dois limites entre palavras.",
+      "hint": "Conte os espaços visíveis.",
+      "errorFocus": "COUNT_INTERWORD_SPACES",
+      "feedback": {
+        "correct": "Boa observação: Três palavras formam dois limites entre palavras.",
+        "incorrect": "Três palavras formam dois limites entre palavras.",
+        "hint": "Conte os espaços visíveis.",
+        "errorFocus": "COUNT_INTERWORD_SPACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-07",
+      "statement": "Ao escrever “casa”, devemos colocar espaço entre ca e sa?",
+      "prompt": "Ao escrever “casa”, devemos colocar espaço entre ca e sa?",
+      "options": [
+        "Sim, sempre",
+        "Sim, entre todas as letras",
+        "Não; “casa” permanece uma palavra escrita.",
+        "Não, pois cada letra é uma frase"
+      ],
+      "correctAnswer": "Não; “casa” permanece uma palavra escrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "WORD_VS_SYLLABLE_SPACING"
+        ],
+        "Sim, entre todas as letras": [
+          "WORD_VS_SYLLABLE_SPACING"
+        ],
+        "Não, pois cada letra é uma frase": [
+          "WORD_VS_SYLLABLE_SPACING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SILABAS_DA_PALAVRA",
+      "explanation": "Partes sonoras não são separadas por espaços dentro da palavra convencional.",
+      "hint": "Pense no limite da palavra inteira.",
+      "errorFocus": "WORD_VS_SYLLABLE_SPACING",
+      "feedback": {
+        "correct": "Boa observação: Partes sonoras não são separadas por espaços dentro da palavra convencional.",
+        "incorrect": "Partes sonoras não são separadas por espaços dentro da palavra convencional.",
+        "hint": "Pense no limite da palavra inteira.",
+        "errorFocus": "WORD_VS_SYLLABLE_SPACING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-08",
+      "statement": "Qual recurso pode ajudar a perceber palavras numa frase impressa?",
+      "prompt": "Qual recurso pode ajudar a perceber palavras numa frase impressa?",
+      "options": [
+        "Apagar os espaços",
+        "Juntar todas as letras",
+        "Esconder o texto sem leitura oral",
+        "Destacar visualmente os espaços entre grupos de letras."
+      ],
+      "correctAnswer": "Destacar visualmente os espaços entre grupos de letras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apagar os espaços": [
+          "ACCESSIBLE_WORD_BOUNDARIES"
+        ],
+        "Juntar todas as letras": [
+          "ACCESSIBLE_WORD_BOUNDARIES"
+        ],
+        "Esconder o texto sem leitura oral": [
+          "ACCESSIBLE_WORD_BOUNDARIES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEITURA_ACESSIVEL",
+      "explanation": "O destaque ajuda a localizar os limites escritos.",
+      "hint": "Torne os espaços visíveis.",
+      "errorFocus": "ACCESSIBLE_WORD_BOUNDARIES",
+      "feedback": {
+        "correct": "Boa observação: O destaque ajuda a localizar os limites escritos.",
+        "incorrect": "O destaque ajuda a localizar os limites escritos.",
+        "hint": "Torne os espaços visíveis.",
+        "errorFocus": "ACCESSIBLE_WORD_BOUNDARIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-09",
+      "statement": "Na frase “Lia lê a”, quantas palavras aparecem?",
+      "prompt": "Na frase “Lia lê a”, quantas palavras aparecem?",
+      "options": [
+        "Três palavras.",
+        "Uma palavra",
+        "Duas palavras",
+        "Cinco palavras"
+      ],
+      "correctAnswer": "Três palavras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma palavra": [
+          "COUNT_SHORT_WORDS"
+        ],
+        "Duas palavras": [
+          "COUNT_SHORT_WORDS"
+        ],
+        "Cinco palavras": [
+          "COUNT_SHORT_WORDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "FRASE_LIA_LE_A",
+      "explanation": "Lia, lê e a são três grupos separados.",
+      "hint": "Conte cada grupo.",
+      "errorFocus": "COUNT_SHORT_WORDS",
+      "feedback": {
+        "correct": "Boa observação: Lia, lê e a são três grupos separados.",
+        "incorrect": "Lia, lê e a são três grupos separados.",
+        "hint": "Conte cada grupo.",
+        "errorFocus": "COUNT_SHORT_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-10",
+      "statement": "Um texto diz “Joãobrinca no pátio”. Qual revisão separa as primeiras duas palavras?",
+      "prompt": "Um texto diz “Joãobrinca no pátio”. Qual revisão separa as primeiras duas palavras?",
+      "options": [
+        "Joã o brinca no pátio.",
+        "João brinca no pátio.",
+        "Joãob rinca no pátio.",
+        "João-brinca no pátio."
+      ],
+      "correctAnswer": "João brinca no pátio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Joã o brinca no pátio.": [
+          "REPAIR_JOINED_WORDS"
+        ],
+        "Joãob rinca no pátio.": [
+          "REPAIR_JOINED_WORDS"
+        ],
+        "João-brinca no pátio.": [
+          "REPAIR_JOINED_WORDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "FRASE_JOAO_BRINCA",
+      "explanation": "João e brinca são palavras diferentes.",
+      "hint": "Insira o espaço entre as palavras.",
+      "errorFocus": "REPAIR_JOINED_WORDS",
+      "feedback": {
+        "correct": "Boa observação: João e brinca são palavras diferentes.",
+        "incorrect": "João e brinca são palavras diferentes.",
+        "hint": "Insira o espaço entre as palavras.",
+        "errorFocus": "REPAIR_JOINED_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-11",
+      "statement": "Em “A mala cabe”, qual palavra vem entre os espaços após “A” e antes de “cabe”?",
+      "prompt": "Em “A mala cabe”, qual palavra vem entre os espaços após “A” e antes de “cabe”?",
+      "options": [
+        "A mala",
+        "cabe",
+        "mala.",
+        "A"
+      ],
+      "correctAnswer": "mala.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A mala": [
+          "IDENTIFY_MIDDLE_WORD"
+        ],
+        "cabe": [
+          "IDENTIFY_MIDDLE_WORD"
+        ],
+        "A": [
+          "IDENTIFY_MIDDLE_WORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_A_MALA",
+      "explanation": "“mala” está entre os outros dois grupos.",
+      "hint": "Localize o grupo do meio.",
+      "errorFocus": "IDENTIFY_MIDDLE_WORD",
+      "feedback": {
+        "correct": "Boa observação: “mala” está entre os outros dois grupos.",
+        "incorrect": "“mala” está entre os outros dois grupos.",
+        "hint": "Localize o grupo do meio.",
+        "errorFocus": "IDENTIFY_MIDDLE_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-12",
+      "statement": "Em “Vem, Beto!”, qual sinal aparece junto da palavra “Vem”?",
+      "prompt": "Em “Vem, Beto!”, qual sinal aparece junto da palavra “Vem”?",
+      "options": [
+        "Um espaço dentro de Vem",
+        "Uma nova letra no meio",
+        "Um espaço que divide Vem em duas palavras",
+        "A vírgula."
+      ],
+      "correctAnswer": "A vírgula.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um espaço dentro de Vem": [
+          "PUNCTUATION_NOT_WORD_BOUNDARY"
+        ],
+        "Uma nova letra no meio": [
+          "PUNCTUATION_NOT_WORD_BOUNDARY"
+        ],
+        "Um espaço que divide Vem em duas palavras": [
+          "PUNCTUATION_NOT_WORD_BOUNDARY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PALAVRA_COM_PONTUACAO",
+      "explanation": "A vírgula aparece junto da palavra e não a divide em duas.",
+      "hint": "Observe o sinal ao lado da palavra.",
+      "errorFocus": "PUNCTUATION_NOT_WORD_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: A vírgula aparece junto da palavra e não a divide em duas.",
+        "incorrect": "A vírgula aparece junto da palavra e não a divide em duas.",
+        "hint": "Observe o sinal ao lado da palavra.",
+        "errorFocus": "PUNCTUATION_NOT_WORD_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-13",
+      "statement": "Qual escrita separa corretamente as palavras de “O pato nada”?",
+      "prompt": "Qual escrita separa corretamente as palavras de “O pato nada”?",
+      "options": [
+        "O pato nada.",
+        "Opatonada.",
+        "Opa ton ada.",
+        "O p a t o n a d a."
+      ],
+      "correctAnswer": "O pato nada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Opatonada.": [
+          "SELECT_CONVENTIONAL_SPACING"
+        ],
+        "Opa ton ada.": [
+          "SELECT_CONVENTIONAL_SPACING"
+        ],
+        "O p a t o n a d a.": [
+          "SELECT_CONVENTIONAL_SPACING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRASE_COM_ESPACAMENTO",
+      "explanation": "Há espaços entre palavras, não dentro delas.",
+      "hint": "Mantenha cada palavra unida.",
+      "errorFocus": "SELECT_CONVENTIONAL_SPACING",
+      "feedback": {
+        "correct": "Boa observação: Há espaços entre palavras, não dentro delas.",
+        "incorrect": "Há espaços entre palavras, não dentro delas.",
+        "hint": "Mantenha cada palavra unida.",
+        "errorFocus": "SELECT_CONVENTIONAL_SPACING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-14",
+      "statement": "A frase “Mila sorri” tem duas palavras. Quantas letras há em “Mila”?",
+      "prompt": "A frase “Mila sorri” tem duas palavras. Quantas letras há em “Mila”?",
+      "options": [
+        "Uma letra",
+        "Quatro letras.",
+        "Duas letras",
+        "Duas palavras"
+      ],
+      "correctAnswer": "Quatro letras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma letra": [
+          "SEPARATE_WORD_AND_LETTER_COUNTS"
+        ],
+        "Duas letras": [
+          "SEPARATE_WORD_AND_LETTER_COUNTS"
+        ],
+        "Duas palavras": [
+          "SEPARATE_WORD_AND_LETTER_COUNTS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "LETRAS_E_PALAVRAS",
+      "explanation": "A pergunta solicita letras de uma única palavra.",
+      "hint": "Conte M, i, l e a.",
+      "errorFocus": "SEPARATE_WORD_AND_LETTER_COUNTS",
+      "feedback": {
+        "correct": "Boa observação: A pergunta solicita letras de uma única palavra.",
+        "incorrect": "A pergunta solicita letras de uma única palavra.",
+        "hint": "Conte M, i, l e a.",
+        "errorFocus": "SEPARATE_WORD_AND_LETTER_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-15",
+      "statement": "Na frase “Vovó chegou cedo”, qual grupo é uma palavra?",
+      "prompt": "Na frase “Vovó chegou cedo”, qual grupo é uma palavra?",
+      "options": [
+        "chegou cedo",
+        "Vovó chegou",
+        "cedo.",
+        "Vovó chegou cedo"
+      ],
+      "correctAnswer": "cedo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "chegou cedo": [
+          "IDENTIFY_WORD_IN_SENTENCE"
+        ],
+        "Vovó chegou": [
+          "IDENTIFY_WORD_IN_SENTENCE"
+        ],
+        "Vovó chegou cedo": [
+          "IDENTIFY_WORD_IN_SENTENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FRASE_VOVO_CHEGOU",
+      "explanation": "“cedo” é um grupo separado por espaços.",
+      "hint": "Escolha apenas um grupo.",
+      "errorFocus": "IDENTIFY_WORD_IN_SENTENCE",
+      "feedback": {
+        "correct": "Boa observação: “cedo” é um grupo separado por espaços.",
+        "incorrect": "“cedo” é um grupo separado por espaços.",
+        "hint": "Escolha apenas um grupo.",
+        "errorFocus": "IDENTIFY_WORD_IN_SENTENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-16",
+      "statement": "Os cartões “hoje”, “chove” e “muito” formam “Hoje chove muito”. O que deve ficar entre os cartões?",
+      "prompt": "Os cartões “hoje”, “chove” e “muito” formam “Hoje chove muito”. O que deve ficar entre os cartões?",
+      "options": [
+        "Um espaço entre cada letra",
+        "Nenhum espaço",
+        "Uma sílaba entre as palavras",
+        "Um espaço entre cada palavra."
+      ],
+      "correctAnswer": "Um espaço entre cada palavra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Um espaço entre cada letra": [
+          "ASSEMBLE_WORD_CARDS"
+        ],
+        "Nenhum espaço": [
+          "ASSEMBLE_WORD_CARDS"
+        ],
+        "Uma sílaba entre as palavras": [
+          "ASSEMBLE_WORD_CARDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_MISTURADOS",
+      "explanation": "Os cartões representam palavras completas.",
+      "hint": "Separe os cartões, não as letras.",
+      "errorFocus": "ASSEMBLE_WORD_CARDS",
+      "feedback": {
+        "correct": "Boa observação: Os cartões representam palavras completas.",
+        "incorrect": "Os cartões representam palavras completas.",
+        "hint": "Separe os cartões, não as letras.",
+        "errorFocus": "ASSEMBLE_WORD_CARDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-17",
+      "statement": "Um bilhete diz “A turma lê”. Qual formato mostra corretamente as palavras?",
+      "prompt": "Um bilhete diz “A turma lê”. Qual formato mostra corretamente as palavras?",
+      "options": [
+        "A turma lê.",
+        "Aturmalê.",
+        "A tur ma lê.",
+        "At urma lê."
+      ],
+      "correctAnswer": "A turma lê.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Aturmalê.": [
+          "TRANSFER_WORD_SPACING"
+        ],
+        "A tur ma lê.": [
+          "TRANSFER_WORD_SPACING"
+        ],
+        "At urma lê.": [
+          "TRANSFER_WORD_SPACING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "BILHETE_DA_TURMA",
+      "explanation": "A escrita convencional separa as três palavras.",
+      "hint": "Mantenha cada palavra inteira.",
+      "errorFocus": "TRANSFER_WORD_SPACING",
+      "feedback": {
+        "correct": "Boa observação: A escrita convencional separa as três palavras.",
+        "incorrect": "A escrita convencional separa as três palavras.",
+        "hint": "Mantenha cada palavra inteira.",
+        "errorFocus": "TRANSFER_WORD_SPACING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-18",
+      "statement": "Uma legenda diz “Meu peixe nada”. Qual é a segunda palavra?",
+      "prompt": "Uma legenda diz “Meu peixe nada”. Qual é a segunda palavra?",
+      "options": [
+        "Meu",
+        "peixe.",
+        "nada",
+        "Meu peixe"
+      ],
+      "correctAnswer": "peixe.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Meu": [
+          "FIND_WORD_POSITION"
+        ],
+        "nada": [
+          "FIND_WORD_POSITION"
+        ],
+        "Meu peixe": [
+          "FIND_WORD_POSITION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEGENDA_DO_DESENHO",
+      "explanation": "peixe aparece entre Meu e nada.",
+      "hint": "Conte os grupos da esquerda para a direita.",
+      "errorFocus": "FIND_WORD_POSITION",
+      "feedback": {
+        "correct": "Boa observação: peixe aparece entre Meu e nada.",
+        "incorrect": "peixe aparece entre Meu e nada.",
+        "hint": "Conte os grupos da esquerda para a direita.",
+        "errorFocus": "FIND_WORD_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-19",
+      "statement": "Em “borboleta voa”, “borboleta” tem muitas letras. Quantas palavras ela representa?",
+      "prompt": "Em “borboleta voa”, “borboleta” tem muitas letras. Quantas palavras ela representa?",
+      "options": [
+        "Oito palavras",
+        "Duas palavras",
+        "Uma palavra.",
+        "Nenhuma palavra"
+      ],
+      "correctAnswer": "Uma palavra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Oito palavras": [
+          "LONG_WORD_STILL_ONE_WORD"
+        ],
+        "Duas palavras": [
+          "LONG_WORD_STILL_ONE_WORD"
+        ],
+        "Nenhuma palavra": [
+          "LONG_WORD_STILL_ONE_WORD"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PALAVRA_LONGA",
+      "explanation": "O tamanho em letras não muda o limite da palavra.",
+      "hint": "Conte o grupo entre os espaços.",
+      "errorFocus": "LONG_WORD_STILL_ONE_WORD",
+      "feedback": {
+        "correct": "Boa observação: O tamanho em letras não muda o limite da palavra.",
+        "incorrect": "O tamanho em letras não muda o limite da palavra.",
+        "hint": "Conte o grupo entre os espaços.",
+        "errorFocus": "LONG_WORD_STILL_ONE_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-20",
+      "statement": "Uma criança escreveu “Osolaparece”. Qual revisão preserva as palavras da frase?",
+      "prompt": "Uma criança escreveu “Osolaparece”. Qual revisão preserva as palavras da frase?",
+      "options": [
+        "O s ol aparece.",
+        "Os olaparece.",
+        "Osol aparece.",
+        "O sol aparece."
+      ],
+      "correctAnswer": "O sol aparece.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O s ol aparece.": [
+          "REVISE_JOINED_PHRASE"
+        ],
+        "Os olaparece.": [
+          "REVISE_JOINED_PHRASE"
+        ],
+        "Osol aparece.": [
+          "REVISE_JOINED_PHRASE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAR_TEXTO_CURTO",
+      "explanation": "A frase tem três palavras separadas.",
+      "hint": "Leia em voz alta e marque os limites.",
+      "errorFocus": "REVISE_JOINED_PHRASE",
+      "feedback": {
+        "correct": "Boa observação: A frase tem três palavras separadas.",
+        "incorrect": "A frase tem três palavras separadas.",
+        "hint": "Leia em voz alta e marque os limites.",
+        "errorFocus": "REVISE_JOINED_PHRASE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-21",
+      "statement": "Em “Nina desenha.”, quantas palavras há antes do ponto final?",
+      "prompt": "Em “Nina desenha.”, quantas palavras há antes do ponto final?",
+      "options": [
+        "Duas palavras.",
+        "Uma palavra",
+        "Três palavras",
+        "O ponto é uma palavra"
+      ],
+      "correctAnswer": "Duas palavras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma palavra": [
+          "WORD_COUNT_WITH_PUNCTUATION"
+        ],
+        "Três palavras": [
+          "WORD_COUNT_WITH_PUNCTUATION"
+        ],
+        "O ponto é uma palavra": [
+          "WORD_COUNT_WITH_PUNCTUATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ESPACO_E_PONTUACAO",
+      "explanation": "Nina e desenha são separadas; o ponto final não é palavra.",
+      "hint": "Não conte o sinal como palavra.",
+      "errorFocus": "WORD_COUNT_WITH_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa observação: Nina e desenha são separadas; o ponto final não é palavra.",
+        "incorrect": "Nina e desenha são separadas; o ponto final não é palavra.",
+        "hint": "Não conte o sinal como palavra.",
+        "errorFocus": "WORD_COUNT_WITH_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-22",
+      "statement": "Uma estudante prefere apontar em vez de escrever. Como pode mostrar os limites entre palavras?",
+      "prompt": "Uma estudante prefere apontar em vez de escrever. Como pode mostrar os limites entre palavras?",
+      "options": [
+        "Separar cada letra em um cartão",
+        "Colocar cartões separados, um para cada palavra.",
+        "Juntar todos os cartões",
+        "Apagar as palavras curtas"
+      ],
+      "correctAnswer": "Colocar cartões separados, um para cada palavra.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Separar cada letra em um cartão": [
+          "ACCESSIBLE_SEGMENTATION_RESPONSE"
+        ],
+        "Juntar todos os cartões": [
+          "ACCESSIBLE_SEGMENTATION_RESPONSE"
+        ],
+        "Apagar as palavras curtas": [
+          "ACCESSIBLE_SEGMENTATION_RESPONSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FRASE_COM_CARTOES_VISUAIS",
+      "explanation": "Cartões inteiros permitem demonstrar a separação.",
+      "hint": "Use um cartão por palavra.",
+      "errorFocus": "ACCESSIBLE_SEGMENTATION_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Cartões inteiros permitem demonstrar a separação.",
+        "incorrect": "Cartões inteiros permitem demonstrar a separação.",
+        "hint": "Use um cartão por palavra.",
+        "errorFocus": "ACCESSIBLE_SEGMENTATION_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-23",
+      "statement": "Em “A pipa sobe alto”, quantas palavras estão separadas por espaços?",
+      "prompt": "Em “A pipa sobe alto”, quantas palavras estão separadas por espaços?",
+      "options": [
+        "Duas palavras",
+        "Três palavras",
+        "Quatro palavras.",
+        "Cinco palavras"
+      ],
+      "correctAnswer": "Quatro palavras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Duas palavras": [
+          "COUNT_FOUR_WORDS"
+        ],
+        "Três palavras": [
+          "COUNT_FOUR_WORDS"
+        ],
+        "Cinco palavras": [
+          "COUNT_FOUR_WORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "FRASE_PIPA_SOBE_ALTO",
+      "explanation": "A, pipa, sobe e alto formam quatro grupos.",
+      "hint": "Conte os grupos escritos.",
+      "errorFocus": "COUNT_FOUR_WORDS",
+      "feedback": {
+        "correct": "Boa observação: A, pipa, sobe e alto formam quatro grupos.",
+        "incorrect": "A, pipa, sobe e alto formam quatro grupos.",
+        "hint": "Conte os grupos escritos.",
+        "errorFocus": "COUNT_FOUR_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-24",
+      "statement": "Por que escrever “Duda pinta” com um espaço entre as palavras ajuda o leitor?",
+      "prompt": "Por que escrever “Duda pinta” com um espaço entre as palavras ajuda o leitor?",
+      "options": [
+        "Separa cada sílaba",
+        "Muda o tamanho das letras",
+        "Indica que cada letra é uma palavra",
+        "Mostra onde uma palavra termina e a outra começa."
+      ],
+      "correctAnswer": "Mostra onde uma palavra termina e a outra começa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Separa cada sílaba": [
+          "EXPLAIN_WORD_BOUNDARY_FUNCTION"
+        ],
+        "Muda o tamanho das letras": [
+          "EXPLAIN_WORD_BOUNDARY_FUNCTION"
+        ],
+        "Indica que cada letra é uma palavra": [
+          "EXPLAIN_WORD_BOUNDARY_FUNCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "EXPLICAR_ESPACOS",
+      "explanation": "Os espaços sinalizam limites entre palavras.",
+      "hint": "Pense em como o leitor reconhece cada grupo.",
+      "errorFocus": "EXPLAIN_WORD_BOUNDARY_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Os espaços sinalizam limites entre palavras.",
+        "incorrect": "Os espaços sinalizam limites entre palavras.",
+        "hint": "Pense em como o leitor reconhece cada grupo.",
+        "errorFocus": "EXPLAIN_WORD_BOUNDARY_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-25",
+      "statement": "Na escrita convencional, espaços em branco separam...",
+      "prompt": "Na escrita convencional, espaços em branco separam...",
+      "options": [
+        "palavras.",
+        "cada letra de uma palavra",
+        "cada som falado",
+        "todas as sílabas"
+      ],
+      "correctAnswer": "palavras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "cada letra de uma palavra": [
+          "RECALL_SPACING_RULE"
+        ],
+        "cada som falado": [
+          "RECALL_SPACING_RULE"
+        ],
+        "todas as sílabas": [
+          "RECALL_SPACING_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REGRA_DE_ESPACAMENTO",
+      "explanation": "Espaços marcam limites entre palavras.",
+      "hint": "Lembre-se dos grupos de letras.",
+      "errorFocus": "RECALL_SPACING_RULE",
+      "feedback": {
+        "correct": "Boa observação: Espaços marcam limites entre palavras.",
+        "incorrect": "Espaços marcam limites entre palavras.",
+        "hint": "Lembre-se dos grupos de letras.",
+        "errorFocus": "RECALL_SPACING_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-26",
+      "statement": "Quantas palavras há em “Cai chuva”?",
+      "prompt": "Quantas palavras há em “Cai chuva”?",
+      "options": [
+        "Uma palavra",
+        "Duas palavras.",
+        "Três palavras",
+        "Quatro palavras"
+      ],
+      "correctAnswer": "Duas palavras.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma palavra": [
+          "COUNT_TWO_WORDS"
+        ],
+        "Três palavras": [
+          "COUNT_TWO_WORDS"
+        ],
+        "Quatro palavras": [
+          "COUNT_TWO_WORDS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COUNT",
+      "contextFamily": "FRASE_CAI_CHUVA",
+      "explanation": "Cai e chuva estão separados por um espaço.",
+      "hint": "Conte os dois grupos.",
+      "errorFocus": "COUNT_TWO_WORDS",
+      "feedback": {
+        "correct": "Boa observação: Cai e chuva estão separados por um espaço.",
+        "incorrect": "Cai e chuva estão separados por um espaço.",
+        "hint": "Conte os dois grupos.",
+        "errorFocus": "COUNT_TWO_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-27",
+      "statement": "“Elefante” aparece entre dois espaços. Isso indica...",
+      "prompt": "“Elefante” aparece entre dois espaços. Isso indica...",
+      "options": [
+        "oito palavras",
+        "duas frases",
+        "uma palavra escrita.",
+        "uma letra apenas"
+      ],
+      "correctAnswer": "uma palavra escrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "oito palavras": [
+          "DISTINGUISH_WORD_LENGTH"
+        ],
+        "duas frases": [
+          "DISTINGUISH_WORD_LENGTH"
+        ],
+        "uma letra apenas": [
+          "DISTINGUISH_WORD_LENGTH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "UMA_PALAVRA_MUITAS_LETRAS",
+      "explanation": "O grupo inteiro é uma palavra, apesar de ter várias letras.",
+      "hint": "Observe o grupo completo.",
+      "errorFocus": "DISTINGUISH_WORD_LENGTH",
+      "feedback": {
+        "correct": "Boa observação: O grupo inteiro é uma palavra, apesar de ter várias letras.",
+        "incorrect": "O grupo inteiro é uma palavra, apesar de ter várias letras.",
+        "hint": "Observe o grupo completo.",
+        "errorFocus": "DISTINGUISH_WORD_LENGTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-28",
+      "statement": "Qual opção mantém “A lua brilha” legível e com separação adequada?",
+      "prompt": "Qual opção mantém “A lua brilha” legível e com separação adequada?",
+      "options": [
+        "Aluabr ilha.",
+        "A l u a b r i l h a.",
+        "Alua brilha.",
+        "A lua brilha."
+      ],
+      "correctAnswer": "A lua brilha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Aluabr ilha.": [
+          "SELECT_READABLE_SEGMENTATION"
+        ],
+        "A l u a b r i l h a.": [
+          "SELECT_READABLE_SEGMENTATION"
+        ],
+        "Alua brilha.": [
+          "SELECT_READABLE_SEGMENTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CORRECAO_DE_ESPACO",
+      "explanation": "As três palavras estão separadas sem espaços internos.",
+      "hint": "Confira cada limite.",
+      "errorFocus": "SELECT_READABLE_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa observação: As três palavras estão separadas sem espaços internos.",
+        "incorrect": "As três palavras estão separadas sem espaços internos.",
+        "hint": "Confira cada limite.",
+        "errorFocus": "SELECT_READABLE_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-29",
+      "statement": "Em “Pedro corre rápido”, qual palavra aparece por último?",
+      "prompt": "Em “Pedro corre rápido”, qual palavra aparece por último?",
+      "options": [
+        "rápido.",
+        "Pedro",
+        "corre",
+        "Pedro corre"
+      ],
+      "correctAnswer": "rápido.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Pedro": [
+          "IDENTIFY_FINAL_WORD"
+        ],
+        "corre": [
+          "IDENTIFY_FINAL_WORD"
+        ],
+        "Pedro corre": [
+          "IDENTIFY_FINAL_WORD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PALAVRA_FINAL",
+      "explanation": "“rápido” é o último grupo separado.",
+      "hint": "Olhe o grupo depois do segundo espaço.",
+      "errorFocus": "IDENTIFY_FINAL_WORD",
+      "feedback": {
+        "correct": "Boa observação: “rápido” é o último grupo separado.",
+        "incorrect": "“rápido” é o último grupo separado.",
+        "hint": "Olhe o grupo depois do segundo espaço.",
+        "errorFocus": "IDENTIFY_FINAL_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-30",
+      "statement": "Uma tira mostra as palavras “Eu”, “vejo” e “nuvens”. Como formar a frase escrita?",
+      "prompt": "Uma tira mostra as palavras “Eu”, “vejo” e “nuvens”. Como formar a frase escrita?",
+      "options": [
+        "Euv ejon uv ens.",
+        "Eu vejo nuvens.",
+        "Euvej nuvens.",
+        "E u v e j o nuvens."
+      ],
+      "correctAnswer": "Eu vejo nuvens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Euv ejon uv ens.": [
+          "ASSEMBLE_SPACED_SENTENCE"
+        ],
+        "Euvej nuvens.": [
+          "ASSEMBLE_SPACED_SENTENCE"
+        ],
+        "E u v e j o nuvens.": [
+          "ASSEMBLE_SPACED_SENTENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PALAVRAS_EM_TIRA",
+      "explanation": "Cada palavra permanece unida e recebe espaço da próxima.",
+      "hint": "Use um espaço entre os cartões.",
+      "errorFocus": "ASSEMBLE_SPACED_SENTENCE",
+      "feedback": {
+        "correct": "Boa observação: Cada palavra permanece unida e recebe espaço da próxima.",
+        "incorrect": "Cada palavra permanece unida e recebe espaço da próxima.",
+        "hint": "Use um espaço entre os cartões.",
+        "errorFocus": "ASSEMBLE_SPACED_SENTENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-31",
+      "statement": "Em “Luna pula”, quantas palavras há e quantas letras tem “Luna”?",
+      "prompt": "Em “Luna pula”, quantas palavras há e quantas letras tem “Luna”?",
+      "options": [
+        "Quatro palavras; duas letras",
+        "Uma palavra; quatro letras",
+        "Duas palavras; “Luna” tem quatro letras.",
+        "Duas palavras; oito letras em “Luna”"
+      ],
+      "correctAnswer": "Duas palavras; “Luna” tem quatro letras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quatro palavras; duas letras": [
+          "DISTINGUISH_COUNTS"
+        ],
+        "Uma palavra; quatro letras": [
+          "DISTINGUISH_COUNTS"
+        ],
+        "Duas palavras; oito letras em “Luna”": [
+          "DISTINGUISH_COUNTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONTAR_LETRAS_SEPARADAMENTE",
+      "explanation": "A frase tem dois grupos e a primeira palavra tem quatro letras.",
+      "hint": "Responda cada contagem separadamente.",
+      "errorFocus": "DISTINGUISH_COUNTS",
+      "feedback": {
+        "correct": "Boa observação: A frase tem dois grupos e a primeira palavra tem quatro letras.",
+        "incorrect": "A frase tem dois grupos e a primeira palavra tem quatro letras.",
+        "hint": "Responda cada contagem separadamente.",
+        "errorFocus": "DISTINGUISH_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-32",
+      "statement": "Reconhecer espaços entre palavras ajuda a...",
+      "prompt": "Reconhecer espaços entre palavras ajuda a...",
+      "options": [
+        "separar letras em toda palavra",
+        "adivinhar a fala de alguém",
+        "contar sílabas como palavras",
+        "perceber os limites das palavras na frase escrita."
+      ],
+      "correctAnswer": "perceber os limites das palavras na frase escrita.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "separar letras em toda palavra": [
+          "WORD_SPACING_SUMMARY"
+        ],
+        "adivinhar a fala de alguém": [
+          "WORD_SPACING_SUMMARY"
+        ],
+        "contar sílabas como palavras": [
+          "WORD_SPACING_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_SEGMENTACAO",
+      "explanation": "Os espaços tornam limites entre palavras visíveis.",
+      "hint": "Retome a função do espaço.",
+      "errorFocus": "WORD_SPACING_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Os espaços tornam limites entre palavras visíveis.",
+        "incorrect": "Os espaços tornam limites entre palavras visíveis.",
+        "hint": "Retome a função do espaço.",
+        "errorFocus": "WORD_SPACING_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-33",
+      "statement": "Em “Nina canta”, qual sinal separa Nina de canta?",
+      "prompt": "Em “Nina canta”, qual sinal separa Nina de canta?",
+      "options": [
+        "Um espaço em branco.",
+        "Uma letra",
+        "Uma sílaba",
+        "Um ponto final"
+      ],
+      "correctAnswer": "Um espaço em branco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma letra": [
+          "REVIEW_INTERWORD_SPACE"
+        ],
+        "Uma sílaba": [
+          "REVIEW_INTERWORD_SPACE"
+        ],
+        "Um ponto final": [
+          "REVIEW_INTERWORD_SPACE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_PALAVRAS",
+      "explanation": "O espaço marca o limite entre as duas palavras.",
+      "hint": "Observe o intervalo.",
+      "errorFocus": "REVIEW_INTERWORD_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O espaço marca o limite entre as duas palavras.",
+        "incorrect": "O espaço marca o limite entre as duas palavras.",
+        "hint": "Observe o intervalo.",
+        "errorFocus": "REVIEW_INTERWORD_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-34",
+      "statement": "Em “O rio corre”, qual grupo é uma palavra?",
+      "prompt": "Em “O rio corre”, qual grupo é uma palavra?",
+      "options": [
+        "O rio",
+        "rio.",
+        "rio corre",
+        "O rio corre"
+      ],
+      "correctAnswer": "rio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O rio": [
+          "REVIEW_WORD_GROUP"
+        ],
+        "rio corre": [
+          "REVIEW_WORD_GROUP"
+        ],
+        "O rio corre": [
+          "REVIEW_WORD_GROUP"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_GRUPO",
+      "explanation": "rio fica entre dois espaços.",
+      "hint": "Escolha um grupo só.",
+      "errorFocus": "REVIEW_WORD_GROUP",
+      "feedback": {
+        "correct": "Boa observação: rio fica entre dois espaços.",
+        "incorrect": "rio fica entre dois espaços.",
+        "hint": "Escolha um grupo só.",
+        "errorFocus": "REVIEW_WORD_GROUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-35",
+      "statement": "As letras de “lata” têm espaços entre si na escrita convencional?",
+      "prompt": "As letras de “lata” têm espaços entre si na escrita convencional?",
+      "options": [
+        "Sim, sempre",
+        "Só quando há quatro letras",
+        "Não; elas formam uma palavra unida.",
+        "Sim, se a frase for curta"
+      ],
+      "correctAnswer": "Não; elas formam uma palavra unida.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "REVIEW_LETTERS_WITHIN_WORD"
+        ],
+        "Só quando há quatro letras": [
+          "REVIEW_LETTERS_WITHIN_WORD"
+        ],
+        "Sim, se a frase for curta": [
+          "REVIEW_LETTERS_WITHIN_WORD"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_LETRAS",
+      "explanation": "Não se inserem espaços entre letras de uma palavra comum.",
+      "hint": "Pense na palavra inteira.",
+      "errorFocus": "REVIEW_LETTERS_WITHIN_WORD",
+      "feedback": {
+        "correct": "Boa observação: Não se inserem espaços entre letras de uma palavra comum.",
+        "incorrect": "Não se inserem espaços entre letras de uma palavra comum.",
+        "hint": "Pense na palavra inteira.",
+        "errorFocus": "REVIEW_LETTERS_WITHIN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-36",
+      "statement": "Como revisar “Betoestuda”?",
+      "prompt": "Como revisar “Betoestuda”?",
+      "options": [
+        "Be toestuda.",
+        "B e t o estuda.",
+        "Betoes tuda.",
+        "Beto estuda."
+      ],
+      "correctAnswer": "Beto estuda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Be toestuda.": [
+          "REVIEW_JOINED_WORDS"
+        ],
+        "B e t o estuda.": [
+          "REVIEW_JOINED_WORDS"
+        ],
+        "Betoes tuda.": [
+          "REVIEW_JOINED_WORDS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "REVISAO_DE_JUNCAO",
+      "explanation": "A frase apresenta duas palavras que precisam de separação.",
+      "hint": "Leia e localize o limite.",
+      "errorFocus": "REVIEW_JOINED_WORDS",
+      "feedback": {
+        "correct": "Boa observação: A frase apresenta duas palavras que precisam de separação.",
+        "incorrect": "A frase apresenta duas palavras que precisam de separação.",
+        "hint": "Leia e localize o limite.",
+        "errorFocus": "REVIEW_JOINED_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-37",
+      "statement": "Em “Vem, Ana!”, a vírgula deve ser contada como palavra?",
+      "prompt": "Em “Vem, Ana!”, a vírgula deve ser contada como palavra?",
+      "options": [
+        "Não; é um sinal junto à palavra.",
+        "Sim, como duas palavras",
+        "Sim, como uma letra",
+        "Não, e deve ser colocada dentro de Ana"
+      ],
+      "correctAnswer": "Não; é um sinal junto à palavra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, como duas palavras": [
+          "REVIEW_PUNCTUATION"
+        ],
+        "Sim, como uma letra": [
+          "REVIEW_PUNCTUATION"
+        ],
+        "Não, e deve ser colocada dentro de Ana": [
+          "REVIEW_PUNCTUATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PONTUACAO",
+      "explanation": "Sinais de pontuação não são palavras.",
+      "hint": "Separe sinal e palavra.",
+      "errorFocus": "REVIEW_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa observação: Sinais de pontuação não são palavras.",
+        "incorrect": "Sinais de pontuação não são palavras.",
+        "hint": "Separe sinal e palavra.",
+        "errorFocus": "REVIEW_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-38",
+      "statement": "“O menino ri” tem três palavras. Quantos espaços entre palavras são necessários?",
+      "prompt": "“O menino ri” tem três palavras. Quantos espaços entre palavras são necessários?",
+      "options": [
+        "Um espaço",
+        "Dois espaços.",
+        "Três espaços",
+        "Cinco espaços"
+      ],
+      "correctAnswer": "Dois espaços.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um espaço": [
+          "REVIEW_SPACE_COUNT"
+        ],
+        "Três espaços": [
+          "REVIEW_SPACE_COUNT"
+        ],
+        "Cinco espaços": [
+          "REVIEW_SPACE_COUNT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_QUANTIDADE",
+      "explanation": "Três palavras em sequência precisam de dois limites entre elas.",
+      "hint": "Conte os intervalos entre grupos.",
+      "errorFocus": "REVIEW_SPACE_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Três palavras em sequência precisam de dois limites entre elas.",
+        "incorrect": "Três palavras em sequência precisam de dois limites entre elas.",
+        "hint": "Conte os intervalos entre grupos.",
+        "errorFocus": "REVIEW_SPACE_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-39",
+      "statement": "Uma criança usa letras ampliadas. O que pode ajudar a ver a separação?",
+      "prompt": "Uma criança usa letras ampliadas. O que pode ajudar a ver a separação?",
+      "options": [
+        "Apagar os espaços",
+        "Diminuir todo o texto",
+        "Manter contraste e destacar os espaços entre palavras.",
+        "Juntar as palavras"
+      ],
+      "correctAnswer": "Manter contraste e destacar os espaços entre palavras.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Apagar os espaços": [
+          "REVIEW_ACCESSIBLE_TEXT"
+        ],
+        "Diminuir todo o texto": [
+          "REVIEW_ACCESSIBLE_TEXT"
+        ],
+        "Juntar as palavras": [
+          "REVIEW_ACCESSIBLE_TEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ACESSIBILIDADE",
+      "explanation": "Espaços visíveis apoiam o reconhecimento de limites.",
+      "hint": "Preserve intervalos claros.",
+      "errorFocus": "REVIEW_ACCESSIBLE_TEXT",
+      "feedback": {
+        "correct": "Boa observação: Espaços visíveis apoiam o reconhecimento de limites.",
+        "incorrect": "Espaços visíveis apoiam o reconhecimento de limites.",
+        "hint": "Preserve intervalos claros.",
+        "errorFocus": "REVIEW_ACCESSIBLE_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01lp12-recognize-written-word-spacing-40",
+      "statement": "Qual ideia resume a separação das palavras na escrita?",
+      "prompt": "Qual ideia resume a separação das palavras na escrita?",
+      "options": [
+        "Cada letra precisa de um espaço",
+        "Toda sílaba é uma palavra",
+        "A pontuação substitui todos os espaços",
+        "Espaços em branco indicam limites entre palavras."
+      ],
+      "correctAnswer": "Espaços em branco indicam limites entre palavras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cada letra precisa de um espaço": [
+          "REVIEW_WORD_BOUNDARY_SUMMARY"
+        ],
+        "Toda sílaba é uma palavra": [
+          "REVIEW_WORD_BOUNDARY_SUMMARY"
+        ],
+        "A pontuação substitui todos os espaços": [
+          "REVIEW_WORD_BOUNDARY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ESPACOS",
+      "explanation": "A habilidade foca os espaços entre palavras escritas.",
+      "hint": "Lembre da frase “O gato dorme”.",
+      "errorFocus": "REVIEW_WORD_BOUNDARY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A habilidade foca os espaços entre palavras escritas.",
+        "incorrect": "A habilidade foca os espaços entre palavras escritas.",
+        "hint": "Lembre da frase “O gato dorme”.",
+        "errorFocus": "REVIEW_WORD_BOUNDARY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.",
+          "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.",
+          "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

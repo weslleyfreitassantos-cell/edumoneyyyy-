@@ -579,7 +579,7 @@ export function DirectorLoginBrandingPage() {
                 </div>
               </div>
               <p className="mt-1 text-xs text-slate-500">
-                PNG, JPEG ou WebP.
+                PNG, JPEG ou WebP. Imagem quadrada recomendada para melhor nitidez.
               </p>
             </div>
 

@@ -1,0 +1,2674 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 10,
+  "contentId": "v10-pe-safe-activity-expansion-v10",
+  "canonicalSkillCode": "PE_PLAN_SAFE_ACTIVITY",
+  "subject": "PHYSICAL_EDUCATION",
+  "domain": "SAUDE",
+  "topic": "planejar atividades de movimento com segurança e acesso",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 11,
+    "PRACTICE": 42,
+    "TRANSFER": 26,
+    "LOCK_IN": 11,
+    "REVIEW": 16
+  },
+  "expectedQuestionCount": 106,
+  "expectedContextCount": 106,
+  "expectedAnswerPositionCounts": {
+    "A": 27,
+    "B": 27,
+    "C": 26,
+    "D": 26
+  },
+  "lesson": {
+    "title": "Planejar atividades de movimento com segurança e acesso",
+    "objective": "Planejar uma proposta escolar de movimento que considere espaço, supervisão, escolha, adaptação, pausa e resposta a sinais de desconforto.",
+    "summary": "Um plano seguro começa pelo contexto: espaço, circulação, materiais, supervisão e alternativas. A turma não precisa seguir um único ritmo nem expor informações de saúde. A experiência física é mediada pelo professor; a atividade digital trabalha planejamento, sem prescrever exercício pessoal ou avaliar aptidão.",
+    "explanation": "## Comece pelo ambiente\nAntes de uma proposta, observe piso, obstáculos, circulação, materiais, clima e supervisão. Uma mudança de local exige nova checagem: o plano não continua automaticamente seguro em qualquer espaço.\n\n## Planeje escolhas e adaptações\nUma proposta acessível permite formas diferentes de participação e uma alternativa equivalente, como observar e registrar estratégias. Pergunte sobre a atividade, não sobre diagnóstico, peso, condição de saúde ou rotina familiar. Ninguém deve ser pressionado a demonstrar movimento.\n\n## Combine comunicação e pausas\nO professor explica como pedir pausa e como chamar ajuda. Se alguém relata mal-estar, interrompe a participação e comunica o adulto responsável, seguindo o protocolo da escola; colegas não diagnosticam. Esta lição não prescreve intensidade, duração ou tratamento individual.\n\n## Exemplo resolvido\nA quadra está indisponível. O grupo não ocupa automaticamente o corredor: consulta o professor, verifica uma sala livre, circulação, piso e acessibilidade, propõe opções e combina sinal de pausa. Se nenhum espaço for adequado, adiar é uma decisão segura.",
+    "workedExample": "Revise um plano de caminhada quando começa a chover. 1) Pare antes de transferir a atividade. 2) Consulte o professor. 3) Verifique piso, circulação e acessibilidade do espaço alternativo. 4) Ofereça opção equivalente e possibilidade de adiamento. 5) Registre a razão da escolha sem atribuir culpa a participantes.",
+    "commonMistake": "Achar que uma atividade é segura apenas porque é curta; transferir o plano sem rever o espaço; impor ritmo igual; interpretar pausas como falta de esforço; pedir que estudantes revelem informações pessoais para receber uma adaptação.",
+    "tips": [
+      "Observe o contexto e o propósito, não apenas o nome do movimento.",
+      "Planeje opções seguras e acessíveis com mediação do professor.",
+      "A atividade digital verifica compreensão e planejamento, não aptidão física."
+    ],
+    "priorKnowledge": [
+      "Reconhecer movimentos corporais em situações cotidianas.",
+      "Descrever espaço, regras e escolhas em uma atividade."
+    ],
+    "keyConcepts": [
+      "Atividade física é uma categoria ampla de movimento.",
+      "Exercício físico é planejado, estruturado e repetido com propósito.",
+      "Segurança, acesso, escolha e adaptação fazem parte do planejamento."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Identificar o contexto, o planejamento e o propósito de uma situação.",
+        "questionIds": [
+          "v5-pe-safe-plan-probe-01",
+          "v5-pe-safe-plan-practice-01"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Planejar uma opção e justificar cuidados e adaptações.",
+        "questionIds": [
+          "v5-pe-safe-plan-practice-02",
+          "v5-pe-safe-plan-transfer-01",
+          "v5-pe-safe-plan-lock-01"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Revisar uma proposta diante de um novo contexto ou barreira.",
+        "questionIds": [
+          "v5-pe-safe-plan-review-01"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CHECK_ENVIRONMENT",
+        "text": "Antes de começar ou mudar de espaço, confira piso, obstáculos, circulação, materiais e supervisão."
+      },
+      {
+        "trigger": "ACCESS_IS_PART_OF_PLAN",
+        "text": "Planeje mais de uma forma de participar; escolha e acessibilidade não são exceções improvisadas."
+      },
+      {
+        "trigger": "PAUSE_AND_TELL_ADULT",
+        "text": "Diante de mal-estar, pare a participação e avise o professor. Não peça que colegas façam diagnóstico."
+      },
+      {
+        "trigger": "NO_PERSONAL_HEALTH_DISCLOSURE",
+        "text": "Uma adaptação não deve exigir que o estudante exponha diagnóstico ou histórico de saúde à turma."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "pe-safe-remediate-space",
+        "misconception": "ENVIRONMENT_IGNORED",
+        "prompt": "Faça uma lista de espaço, piso, obstáculos, circulação e supervisão. Marque o que o professor precisa verificar antes de decidir."
+      },
+      {
+        "id": "pe-safe-remediate-uniformity",
+        "misconception": "ONE_FORM_FOR_ALL",
+        "prompt": "Escreva duas opções equivalentes de participação e escolha uma que não exija explicar informações de saúde."
+      },
+      {
+        "id": "pe-safe-remediate-signal",
+        "misconception": "PUSH_THROUGH_SIGNAL",
+        "prompt": "Reordene as ações: parar, comunicar o adulto responsável e seguir o protocolo escolar. Retire diagnósticos e pressão por desempenho."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-pe-safe-activity-plan-audit",
+        "title": "Revisão de segurança e participação",
+        "objective": "Produzir e revisar um plano escolar de movimento com checagem do ambiente, alternativa acessível e comunicação de pausa.",
+        "context": "Planejamento em grupo a partir de um cenário fictício de aula, com implementação opcional somente se o professor avaliar o espaço e autorizar.",
+        "materials": [
+          "Mapa simples ou desenho de um espaço escolar fictício",
+          "Cartões de mudanças de contexto (chuva, circulação, material indisponível)",
+          "Quadro de checagem de acesso, supervisão, pausa e alternativas"
+        ],
+        "instructions": "Escolha um cenário fictício e desenhe um plano de movimento. Marque obstáculos, circulação, supervisão, materiais, uma alternativa equivalente e como qualquer participante pode pedir pausa. Em seguida, sorteie uma mudança de contexto e revise o plano. O professor decide se alguma vivência é apropriada; ela é voluntária e substituível por planejamento em papel. Não registrar esforço, medidas corporais, saúde ou desempenho individual.",
+        "evidence": "Plano visual revisado com condições verificadas, duas formas de participação, regra clara de pausa/comunicação e justificativa da decisão de realizar, adaptar ou adiar.",
+        "safety": "Não executar atividade sem aprovação docente do espaço, materiais e condições locais. Evitar obstáculos, competição de resistência, prescrição de intensidade e qualquer exigência de participação corporal. Seguir os protocolos escolares e interromper ao receber relato de desconforto.",
+        "privacyGuard": "Não coletar diagnóstico, deficiência, peso, medidas, frequência cardíaca, sintomas, imagens, rotina de exercício ou justificativas familiares. O aluno pode usar um cenário inteiramente fictício.",
+        "ageRange": "6º e 7º anos do Ensino Fundamental, com mediação docente.",
+        "mediation": "O professor valida o contexto local antes de qualquer execução, assegura alternativas equivalentes e avalia a qualidade do planejamento, não a aptidão ou disposição física dos estudantes.",
+        "rubric": [
+          {
+            "criterion": "Leitura do contexto e riscos",
+            "emerging": "Não identifica mudança no ambiente ou obstáculos relevantes.",
+            "developing": "Identifica um fator de segurança com orientação.",
+            "proficient": "Verifica ambiente, circulação, materiais e supervisão antes de decidir."
+          },
+          {
+            "criterion": "Acesso e escolhas",
+            "emerging": "Prevê uma forma obrigatória de participação.",
+            "developing": "Acrescenta alternativa após mediação.",
+            "proficient": "Prevê opções equivalentes e preserva escolha sem exigir divulgação de saúde."
+          },
+          {
+            "criterion": "Pausa e revisão",
+            "emerging": "Pressiona a continuidade diante de desconforto.",
+            "developing": "Inclui pausa depois de pergunta orientadora.",
+            "proficient": "Define como parar e comunicar o adulto, e revisa ou adia o plano quando o contexto muda."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      {
+        "title": "WHO Guidelines on Physical Activity and Sedentary Behaviour: Glossary of Terms",
+        "publisher": "World Health Organization",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK566047/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Exercício é subcategoria de atividade física planejada, estruturada e repetitiva com propósito definido."
+        ],
+        "use": "Checagem conceitual para diferenciar atividade física e exercício; enunciados, exemplos e atividades deste pacote são autorais."
+      },
+      {
+        "title": "WHO Guidelines on Physical Activity and Sedentary Behaviour: Children and Adolescents",
+        "publisher": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240015128",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Atividade física juvenil pode ocorrer em lazer, educação física, transporte e tarefas; oportunidades devem ser seguras, equitativas, agradáveis e adequadas à idade e capacidade."
+        ],
+        "use": "Fundamenta variedade, segurança e acessibilidade; não é usado para prescrever dose ou rotina individual."
+      },
+      {
+        "title": "Guia de Atividade Física para a População Brasileira",
+        "publisher": "Ministério da Saúde",
+        "url": "https://bvsms.saude.gov.br/bvs/publicacoes/guia_atividade_fisica_populacao_brasileira.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Orientações brasileiras para atividade física e exercício, inclusive crianças e jovens; distinção de que exercício é uma forma planejada de atividade física."
+        ],
+        "use": "Referência pública para contexto e linguagem; os pacotes não reproduzem o guia nem formulam recomendação clínica."
+      }
+    ],
+    "copyrightNote": "Questões e propostas de atividade são autorais. Fontes oficiais fundamentam conceitos e salvaguardas, mas não equivalem a validação do percurso ou aprovação curricular. Mapeamento e revisão pedagógica permanecem pendentes. Lote V10 autoral com 100 questões, progressão e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-pe-safe-plan-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_HAZARD",
+      "contextFamily": "CLEAR_SPACE",
+      "statement": "Antes de uma atividade de movimento, o grupo encontra mochilas espalhadas no espaço. Qual é o primeiro cuidado?",
+      "options": [
+        "Parar o início, organizar o espaço com o professor e confirmar uma área livre.",
+        "Começar depressa para terminar antes.",
+        "Pedir que alguém desvie dos obstáculos enquanto o grupo se move.",
+        "Ignorar as mochilas se a atividade for curta."
+      ],
+      "correctAnswer": "Parar o início, organizar o espaço com o professor e confirmar uma área livre.",
+      "explanation": "Um espaço obstruído pode causar tropeços; a turma deve organizar a área com supervisão antes de iniciar.",
+      "hint": "Observe primeiro o espaço e peça apoio docente para retirar obstáculos.",
+      "errorFocus": "Ignorar risco ambiental em favor de começar logo",
+      "misconceptions": {
+        "Começar depressa para terminar antes.": [
+          "START_WITH_OBSTACLES"
+        ],
+        "Pedir que alguém desvie dos obstáculos enquanto o grupo se move.": [
+          "INDIVIDUAL_AVOIDANCE_ONLY"
+        ],
+        "Ignorar as mochilas se a atividade for curta.": [
+          "SHORT_MEANS_SAFE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-safe-plan-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE_OPTION",
+      "contextFamily": "SCHOOL_ACTIVITY_SPACE",
+      "statement": "A quadra está fechada e a turma quer se movimentar em outro local da escola. Que plano considera melhor o contexto?",
+      "options": [
+        "Usar um corredor estreito com circulação de outras turmas.",
+        "Escolher com o professor uma área livre e supervisionada, com opções e pausas combinadas.",
+        "Exigir que todos mantenham o mesmo ritmo.",
+        "Continuar mesmo quando alguém pede pausa."
+      ],
+      "correctAnswer": "Escolher com o professor uma área livre e supervisionada, com opções e pausas combinadas.",
+      "explanation": "Área, circulação, supervisão e escolha precisam ser verificadas antes da atividade.",
+      "hint": "Confira espaço, pessoas circulando, alternativas e como pedir pausa.",
+      "errorFocus": "Ignorar circulação, escolha e sinais de desconforto",
+      "misconceptions": {
+        "Usar um corredor estreito com circulação de outras turmas.": [
+          "NARROW_BUSY_CORRIDOR"
+        ],
+        "Exigir que todos mantenham o mesmo ritmo.": [
+          "ONE_PACE_FOR_ALL"
+        ],
+        "Continuar mesmo quando alguém pede pausa.": [
+          "NO_PAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-safe-plan-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ADAPT",
+      "contextFamily": "WEATHER_CHANGE",
+      "statement": "Uma proposta ao ar livre não pode ocorrer por causa da chuva. Qual é uma revisão segura do plano?",
+      "options": [
+        "Usar o piso molhado para uma corrida.",
+        "Mover a atividade sem verificar o novo local.",
+        "Escolher com o educador uma alternativa interna adequada ou adiar, verificando espaço e acesso.",
+        "Cancelar toda atividade de movimento para sempre."
+      ],
+      "correctAnswer": "Escolher com o educador uma alternativa interna adequada ou adiar, verificando espaço e acesso.",
+      "explanation": "Mudar de espaço exige reavaliar piso, circulação, supervisão e acessibilidade; adiar pode ser uma escolha adequada.",
+      "hint": "Reavalie as condições antes de transferir a atividade para outro lugar.",
+      "errorFocus": "Supor que o plano continua seguro após mudar o ambiente",
+      "misconceptions": {
+        "Usar o piso molhado para uma corrida.": [
+          "WET_FLOOR_RUN"
+        ],
+        "Mover a atividade sem verificar o novo local.": [
+          "NO_NEW_SPACE_CHECK"
+        ],
+        "Cancelar toda atividade de movimento para sempre.": [
+          "NEVER_MOVE_AGAIN"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-safe-plan-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RESPOND_TO_SIGNAL",
+      "contextFamily": "DIZZINESS_SIGNAL",
+      "statement": "Durante uma atividade, uma pessoa relata tontura. Qual resposta é apropriada na aula?",
+      "options": [
+        "Mandar continuar até o fim para não atrasar o grupo.",
+        "Pedir aos colegas que descubram a causa médica.",
+        "Transformar a situação em disputa para ver quem aguenta mais.",
+        "Interromper a participação dela, avisar o professor e seguir o protocolo de segurança da escola."
+      ],
+      "correctAnswer": "Interromper a participação dela, avisar o professor e seguir o protocolo de segurança da escola.",
+      "explanation": "Tontura pede pausa e comunicação ao adulto responsável; colegas não devem diagnosticar nem pressionar a pessoa.",
+      "hint": "Priorize parar e avisar o professor, sem tentar diagnosticar.",
+      "errorFocus": "Desempenho sobreposto à segurança ou diagnóstico entre pares",
+      "misconceptions": {
+        "Mandar continuar até o fim para não atrasar o grupo.": [
+          "PUSH_THROUGH_SIGNAL"
+        ],
+        "Pedir aos colegas que descubram a causa médica.": [
+          "PEER_DIAGNOSIS"
+        ],
+        "Transformar a situação em disputa para ver quem aguenta mais.": [
+          "ENDURANCE_CONTEST"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-safe-plan-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_PLAN",
+      "contextFamily": "ACCESS_ALTERNATIVE",
+      "statement": "Um plano prevê uma única atividade em pé, mas a escola precisa oferecer participação por diferentes meios. Qual revisão melhora o plano?",
+      "options": [
+        "Consultar o grupo e preparar opções equivalentes, como versão sentada, observação ativa ou registro da estratégia.",
+        "Manter a regra para todos, sem exceção.",
+        "Retirar da atividade quem não fizer do modo original.",
+        "Pedir que cada pessoa explique sua condição de saúde para a turma."
+      ],
+      "correctAnswer": "Consultar o grupo e preparar opções equivalentes, como versão sentada, observação ativa ou registro da estratégia.",
+      "explanation": "Opções equivalentes ampliam participação; não é necessário exigir divulgação de informação pessoal.",
+      "hint": "Troque uma forma única por escolhas que preservem o objetivo pedagógico.",
+      "errorFocus": "Confundir uniformidade com equidade e exigir exposição",
+      "misconceptions": {
+        "Manter a regra para todos, sem exceção.": [
+          "ONE_FORM_FOR_ALL"
+        ],
+        "Retirar da atividade quem não fizer do modo original.": [
+          "EXCLUDE_DIFFERENCE"
+        ],
+        "Pedir que cada pessoa explique sua condição de saúde para a turma.": [
+          "FORCED_HEALTH_DISCLOSURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-safe-plan-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORGANIZE_MATERIALS",
+      "contextFamily": "SHARED_EQUIPMENT",
+      "statement": "Uma turma tem poucos materiais para uma atividade planejada. Qual ajuste considera participação e segurança?",
+      "options": [
+        "Lançar os materiais todos ao mesmo tempo em um espaço apertado.",
+        "Organizar estações ou turnos com espaço livre, regras claras e alternativas para quem aguarda.",
+        "Excluir quem não conseguiu pegar o material primeiro.",
+        "Aumentar a velocidade para que a turma termine logo."
+      ],
+      "correctAnswer": "Organizar estações ou turnos com espaço livre, regras claras e alternativas para quem aguarda.",
+      "explanation": "Turnos e espaço organizado reduzem colisões e permitem participação; o professor verifica se a proposta é adequada ao local.",
+      "hint": "Pense em circulação, espera e opção de participação antes de aumentar o ritmo.",
+      "errorFocus": "Confundir pressa e competição com organização segura",
+      "misconceptions": {
+        "Lançar os materiais todos ao mesmo tempo em um espaço apertado.": [
+          "CROWDED_EQUIPMENT"
+        ],
+        "Excluir quem não conseguiu pegar o material primeiro.": [
+          "FIRST_COMES_EXCLUDED"
+        ],
+        "Aumentar a velocidade para que a turma termine logo.": [
+          "SPEED_OVER_SAFETY"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_01",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual decisão deve vir primeiro?",
+      "options": [
+        "Interromper o início, isolar ou corrigir o risco com supervisão e escolher área adequada.",
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Interromper o início, isolar ou corrigir o risco com supervisão e escolher área adequada.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_02",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual critério deve orientar a análise?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "Use Verifique piso, circulação e supervisão antes de iniciar.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Use Verifique piso, circulação e supervisão antes de iniciar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_03",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Revise outro espaço com risco ambiental antes de propor movimento.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Revise outro espaço com risco ambiental antes de propor movimento.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_04",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos.",
+        "Evite dizer que duração curta torna qualquer piso seguro."
+      ],
+      "correctAnswer": "Evite dizer que duração curta torna qualquer piso seguro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_05",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique piso molhado, circulação e área de atividade.",
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Verifique piso molhado, circulação e área de atividade.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_06",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "reavaliar o local e decidir adaptar ou adiar",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "reavaliar o local e decidir adaptar ou adiar",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_07",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Mantenha a conclusão ligada a as condições concretas do espaço.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as condições concretas do espaço.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_08",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Que comparação é mais justa?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos.",
+        "Compare risco observado e decisão de realizar ou adiar."
+      ],
+      "correctAnswer": "Compare risco observado e decisão de realizar ou adiar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_09",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que duração curta torna qualquer piso seguro.",
+        "Começar logo antes que o piso seque.",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "Seria exagero dizer que duração curta torna qualquer piso seguro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_FLOOR_10",
+      "statement": "Antes da aula, o professor observa que parte do piso está molhada e há estudantes circulando pelo espaço. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Começar logo antes que o piso seque.",
+        "quem pode confirmar que o espaço está adequado?",
+        "Pedir que cada estudante desvie sozinho.",
+        "Ignorar o piso se a atividade durar poucos minutos."
+      ],
+      "correctAnswer": "quem pode confirmar que o espaço está adequado?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Verifique piso, circulação e supervisão antes de iniciar.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar logo antes que o piso seque.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_01",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual é um ajuste seguro?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Organizar ou remover os obstáculos com apoio do adulto e confirmar uma rota livre antes da atividade.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Organizar ou remover os obstáculos com apoio do adulto e confirmar uma rota livre antes da atividade.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_02",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual critério deve orientar a análise?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio.",
+        "Use Mapeie a área e não transfira todo o risco para quem participa."
+      ],
+      "correctAnswer": "Use Mapeie a área e não transfira todo o risco para quem participa.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_03",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Faça a mesma checagem em outro espaço com materiais espalhados.",
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Faça a mesma checagem em outro espaço com materiais espalhados.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_04",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Evite achar que atenção individual substitui organização do ambiente.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Evite achar que atenção individual substitui organização do ambiente.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_05",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Verifique obstáculos, rota de circulação e supervisão.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Verifique obstáculos, rota de circulação e supervisão.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_06",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio.",
+        "delimitar área livre e combinar circulação"
+      ],
+      "correctAnswer": "delimitar área livre e combinar circulação",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_07",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o espaço e os obstáculos descritos.",
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o espaço e os obstáculos descritos.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_08",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Que comparação é mais justa?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Compare ambiente antes e depois da organização.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Compare ambiente antes e depois da organização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_09",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Qual seria um exagero interpretativo?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Seria exagero achar que atenção individual substitui organização do ambiente.",
+        "Ocupar a área porque obstáculos fazem parte do desafio."
+      ],
+      "correctAnswer": "Seria exagero achar que atenção individual substitui organização do ambiente.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_OBSTACLE_10",
+      "statement": "Mochilas, cadeiras e cabos ocupam a área planejada para uma atividade de deslocamento. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Acelerar para passar antes dos obstáculos.",
+        "Manter tudo e exigir atenção perfeita.",
+        "Ocupar a área porque obstáculos fazem parte do desafio.",
+        "a rota está livre para todas as formas de participação?"
+      ],
+      "correctAnswer": "a rota está livre para todas as formas de participação?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Mapeie a área e não transfira todo o risco para quem participa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Acelerar para passar antes dos obstáculos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_01",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. O que falta antes de começar?",
+      "options": [
+        "Orientação, supervisão e combinados de circulação, pausas e uso do material.",
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Orientação, supervisão e combinados de circulação, pausas e uso do material.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_02",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Qual critério deve orientar a análise?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "Use Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Use Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_03",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Planeje combinados para outro material ou atividade.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Planeje combinados para outro material ou atividade.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_04",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico.",
+        "Evite presumir que estudantes descobrirão o protocolo durante o risco."
+      ],
+      "correctAnswer": "Evite presumir que estudantes descobrirão o protocolo durante o risco.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_05",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique material novo, ausência de regras e falta de sinal de ajuda.",
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Verifique material novo, ausência de regras e falta de sinal de ajuda.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_06",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "apresentar o uso, delimitar espaço e combinar como interromper",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "apresentar o uso, delimitar espaço e combinar como interromper",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_07",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Mantenha a conclusão ligada a o protocolo da aula.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o protocolo da aula.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_08",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Que comparação é mais justa?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico.",
+        "Compare material disponível e instruções de uso."
+      ],
+      "correctAnswer": "Compare material disponível e instruções de uso.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_09",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero presumir que estudantes descobrirão o protocolo durante o risco.",
+        "Começar para aprender pelo erro.",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "Seria exagero presumir que estudantes descobrirão o protocolo durante o risco.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_SUPERVISION_10",
+      "statement": "Uma turma recebe um material novo, mas ninguém explicou regras de uso, espaço de espera ou como pedir ajuda. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Começar para aprender pelo erro.",
+        "como uma pessoa pode pedir ajuda sem se expor?",
+        "Deixar o material circular sem supervisão.",
+        "Pedir que colegas decidam o protocolo médico."
+      ],
+      "correctAnswer": "como uma pessoa pode pedir ajuda sem se expor?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Segurança inclui comunicação e acompanhamento, não apenas o objeto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Começar para aprender pelo erro.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_01",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual organização favorece segurança e acesso?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Criar estações ou turnos com espaço livre, regras claras e alternativas para quem espera.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Criar estações ou turnos com espaço livre, regras claras e alternativas para quem espera.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_02",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual critério deve orientar a análise?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir.",
+        "Use Organize circulação e participação sem transformar recurso limitado em disputa."
+      ],
+      "correctAnswer": "Use Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_03",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Distribua outro material escasso com o mesmo cuidado.",
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Distribua outro material escasso com o mesmo cuidado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_04",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Evite tratar exclusão e velocidade como solução de organização.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Evite tratar exclusão e velocidade como solução de organização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_05",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Verifique quantidade de materiais, espaço e formas de participação.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Verifique quantidade de materiais, espaço e formas de participação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_06",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir.",
+        "combinar turnos e uma atividade equivalente para a espera"
+      ],
+      "correctAnswer": "combinar turnos e uma atividade equivalente para a espera",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_07",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a os recursos e o espaço da turma.",
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a os recursos e o espaço da turma.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_08",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Que comparação é mais justa?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Compare distribuição do material e qualidade da participação.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Compare distribuição do material e qualidade da participação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_09",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Qual seria um exagero interpretativo?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Seria exagero tratar exclusão e velocidade como solução de organização.",
+        "Aumentar o ritmo até alguém desistir."
+      ],
+      "correctAnswer": "Seria exagero tratar exclusão e velocidade como solução de organização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_EQUIPMENT_10",
+      "statement": "Há poucos materiais e a turma deseja participar sem disputar quem pega primeiro. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Lançar todos os materiais ao mesmo tempo.",
+        "Excluir quem não pegou primeiro.",
+        "Aumentar o ritmo até alguém desistir.",
+        "o que as pessoas fazem enquanto aguardam?"
+      ],
+      "correctAnswer": "o que as pessoas fazem enquanto aguardam?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Organize circulação e participação sem transformar recurso limitado em disputa.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Lançar todos os materiais ao mesmo tempo.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_01",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual revisão é mais adequada?",
+      "options": [
+        "Consultar o professor, verificar alternativa interna ou adiar após reavaliar piso, circulação e acesso.",
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Consultar o professor, verificar alternativa interna ou adiar após reavaliar piso, circulação e acesso.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_02",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual critério deve orientar a análise?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "Use Uma mudança de ambiente exige nova análise, não transferência automática.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Use Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_03",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Replaneje outra atividade diante de mudança climática ou espacial.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Replaneje outra atividade diante de mudança climática ou espacial.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_04",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição.",
+        "Evite assumir que o plano original continua seguro."
+      ],
+      "correctAnswer": "Evite assumir que o plano original continua seguro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_05",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique chuva, piso, visibilidade e alternativa de local.",
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Verifique chuva, piso, visibilidade e alternativa de local.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_06",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "comparar realizar, adaptar ou adiar com base nas condições",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "comparar realizar, adaptar ou adiar com base nas condições",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_07",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Mantenha a conclusão ligada a a atividade externa e a mudança de clima.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a atividade externa e a mudança de clima.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_08",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Que comparação é mais justa?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição.",
+        "Compare plano original e condições atuais."
+      ],
+      "correctAnswer": "Compare plano original e condições atuais.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_09",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero assumir que o plano original continua seguro.",
+        "Usar o piso molhado para cumprir o plano.",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "Seria exagero assumir que o plano original continua seguro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_WEATHER_10",
+      "statement": "Uma atividade externa estava planejada, mas a chuva deixou o piso escorregadio e reduziu a visibilidade. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Usar o piso molhado para cumprir o plano.",
+        "que condição precisa ser confirmada no espaço alternativo?",
+        "Transferir sem olhar o novo local.",
+        "Continuar porque a chuva não muda nenhuma condição."
+      ],
+      "correctAnswer": "que condição precisa ser confirmada no espaço alternativo?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Uma mudança de ambiente exige nova análise, não transferência automática.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Usar o piso molhado para cumprir o plano.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_01",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual resposta respeita o protocolo?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Permitir a pausa, comunicar o professor responsável e seguir o procedimento da escola sem diagnosticar.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Permitir a pausa, comunicar o professor responsável e seguir o procedimento da escola sem diagnosticar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_02",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual critério deve orientar a análise?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição.",
+        "Use Priorize pausa e comunicação com adulto responsável."
+      ],
+      "correctAnswer": "Use Priorize pausa e comunicação com adulto responsável.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_03",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Aplique o mesmo protocolo a outro sinal de desconforto.",
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Aplique o mesmo protocolo a outro sinal de desconforto.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_04",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Evite interpretar pausa como falta de esforço ou fazer diagnóstico entre colegas.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Evite interpretar pausa como falta de esforço ou fazer diagnóstico entre colegas.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_05",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Verifique sinal de desconforto, pedido de pausa e presença do professor.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Verifique sinal de desconforto, pedido de pausa e presença do professor.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_06",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição.",
+        "interromper a participação e seguir orientação responsável"
+      ],
+      "correctAnswer": "interromper a participação e seguir orientação responsável",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_07",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o relato e o protocolo institucional.",
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o relato e o protocolo institucional.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_08",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Que comparação é mais justa?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Compare sinal recebido e ação segura.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Compare sinal recebido e ação segura.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_09",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Qual seria um exagero interpretativo?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Seria exagero interpretar pausa como falta de esforço ou fazer diagnóstico entre colegas.",
+        "Transformar o desconforto em competição."
+      ],
+      "correctAnswer": "Seria exagero interpretar pausa como falta de esforço ou fazer diagnóstico entre colegas.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_PAUSE_10",
+      "statement": "Durante a atividade, uma participante sinaliza desconforto e pede para parar. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Mandar continuar para não atrasar.",
+        "Pedir aos colegas uma explicação médica.",
+        "Transformar o desconforto em competição.",
+        "qual ação não deve ser feita pelos colegas?"
+      ],
+      "correctAnswer": "qual ação não deve ser feita pelos colegas?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Priorize pausa e comunicação com adulto responsável.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Mandar continuar para não atrasar.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_01",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Como tornar a proposta mais acessível?",
+      "options": [
+        "Oferecer funções e formas equivalentes de participação que mantenham a análise de decisões.",
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Oferecer funções e formas equivalentes de participação que mantenham a análise de decisões.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_02",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Qual critério deve orientar a análise?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "Use Preserve o objetivo e diversifique a participação.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Use Preserve o objetivo e diversifique a participação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_03",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Adapte outra proposta sem retirar a evidência pedagógica central.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Adapte outra proposta sem retirar a evidência pedagógica central.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_04",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa.",
+        "Evite confundir uma única execução corporal com o objetivo inteiro."
+      ],
+      "correctAnswer": "Evite confundir uma única execução corporal com o objetivo inteiro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_05",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique objetivo de decisão, opções de função e evidência esperada.",
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Verifique objetivo de decisão, opções de função e evidência esperada.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_06",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "definir papéis e critérios de análise antes da vivência",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "definir papéis e critérios de análise antes da vivência",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_07",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Mantenha a conclusão ligada a o objetivo de analisar decisões.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o objetivo de analisar decisões.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_08",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Que comparação é mais justa?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa.",
+        "Compare forma corporal original e alternativas equivalentes."
+      ],
+      "correctAnswer": "Compare forma corporal original e alternativas equivalentes.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_09",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero confundir uma única execução corporal com o objetivo inteiro.",
+        "Obrigar corrida para todos.",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "Seria exagero confundir uma única execução corporal com o objetivo inteiro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_ACCESSIBILITY_10",
+      "statement": "O objetivo da aula é analisar tomada de decisão em jogos. O plano original oferece apenas corrida, embora o objetivo possa ser alcançado por observação, marcação ou estratégia. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Obrigar corrida para todos.",
+        "que evidência mostra a decisão em cada função?",
+        "Retirar da aula quem escolhe observar.",
+        "Pedir diagnóstico para autorizar uma alternativa."
+      ],
+      "correctAnswer": "que evidência mostra a decisão em cada função?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Preserve o objetivo e diversifique a participação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar corrida para todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_01",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Por que o combinado é importante?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Ele organiza pausas e comunicação sem prescrever uma rotina individual ou coletar dados de saúde.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Ele organiza pausas e comunicação sem prescrever uma rotina individual ou coletar dados de saúde.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_02",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Qual critério deve orientar a análise?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo.",
+        "Use Relacione cuidado coletivo e limites de uma aula não clínica."
+      ],
+      "correctAnswer": "Use Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_03",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise outro combinado de cuidado sem transformá-lo em prescrição.",
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Analise outro combinado de cuidado sem transformá-lo em prescrição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_04",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Evite usar a aula para diagnosticar ou medir corpos.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Evite usar a aula para diagnosticar ou medir corpos.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_05",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Verifique pausas, água, comunicação e ausência de prescrição individual.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Verifique pausas, água, comunicação e ausência de prescrição individual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_06",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo.",
+        "manter supervisão e seguir protocolos da instituição"
+      ],
+      "correctAnswer": "manter supervisão e seguir protocolos da instituição",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_07",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o combinado geral da aula.",
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o combinado geral da aula.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_08",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Que comparação é mais justa?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Compare cuidado coletivo e prescrição individual.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Compare cuidado coletivo e prescrição individual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_09",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Qual seria um exagero interpretativo?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Seria exagero usar a aula para diagnosticar ou medir corpos.",
+        "Impedir pausas para manter o ritmo."
+      ],
+      "correctAnswer": "Seria exagero usar a aula para diagnosticar ou medir corpos.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_HYDRATION_10",
+      "statement": "Em uma aula longa, o professor combina pausas para água conforme o contexto e orienta que cada pessoa comunique desconforto ao adulto. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Exigir que todos revelem sua saúde.",
+        "Definir uma dose pessoal sem avaliação.",
+        "Impedir pausas para manter o ritmo.",
+        "que informação deve permanecer privada?"
+      ],
+      "correctAnswer": "que informação deve permanecer privada?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione cuidado coletivo e limites de uma aula não clínica.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Exigir que todos revelem sua saúde.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_01",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Que melhoria é necessária?",
+      "options": [
+        "Explicitar consentimento, alternativas sem contato e como pedir pausa ou ajuda ao professor.",
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Explicitar consentimento, alternativas sem contato e como pedir pausa ou ajuda ao professor.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_02",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Qual critério deve orientar a análise?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "Use Planeje limites e alternativas antes da vivência.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Use Planeje limites e alternativas antes da vivência.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_03",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Revise outra dinâmica que possa envolver contato ou exposição.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Revise outra dinâmica que possa envolver contato ou exposição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_04",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação.",
+        "Evite tratar contato como obrigatório em toda atividade coletiva."
+      ],
+      "correctAnswer": "Evite tratar contato como obrigatório em toda atividade coletiva.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_05",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique duplas, contato não explicado e ausência de recusa combinada.",
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Verifique duplas, contato não explicado e ausência de recusa combinada.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_06",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "oferecer opção sem contato e comunicação segura",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "oferecer opção sem contato e comunicação segura",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_07",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Mantenha a conclusão ligada a a dinâmica e os acordos da turma.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a dinâmica e os acordos da turma.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_08",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Que comparação é mais justa?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação.",
+        "Compare interação proposta e alternativas de participação."
+      ],
+      "correctAnswer": "Compare interação proposta e alternativas de participação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_09",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar contato como obrigatório em toda atividade coletiva.",
+        "Obrigar contato para completar a atividade.",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "Seria exagero tratar contato como obrigatório em toda atividade coletiva.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_BOUNDARIES_10",
+      "statement": "Em uma atividade em duplas, o plano não explica contato corporal nem como recusar uma interação. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Obrigar contato para completar a atividade.",
+        "como a pessoa interrompe a interação sem constrangimento?",
+        "Deixar as duplas resolverem sem adulto.",
+        "Considerar recusa como falha de participação."
+      ],
+      "correctAnswer": "como a pessoa interrompe a interação sem constrangimento?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Planeje limites e alternativas antes da vivência.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Obrigar contato para completar a atividade.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_01",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual registro é proporcional?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Anotar contexto, adaptação, participação observada e próximo convite, sem coletar diagnóstico ou medidas corporais.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Anotar contexto, adaptação, participação observada e próximo convite, sem coletar diagnóstico ou medidas corporais.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_02",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual critério deve orientar a análise?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido.",
+        "Use Registre evidência pedagógica necessária e preserve a privacidade."
+      ],
+      "correctAnswer": "Use Registre evidência pedagógica necessária e preserve a privacidade.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_03",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Escolha campos proporcionais para outro registro de aula.",
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Escolha campos proporcionais para outro registro de aula.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_04",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Evite transformar relatório pedagógico em ficha clínica.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Evite transformar relatório pedagógico em ficha clínica.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_05",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Verifique contexto, adaptação, observação e próximo passo.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Verifique contexto, adaptação, observação e próximo passo.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_06",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido.",
+        "registrar apenas o necessário no sistema institucional protegido"
+      ],
+      "correctAnswer": "registrar apenas o necessário no sistema institucional protegido",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_07",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a finalidade pedagógica do registro.",
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a finalidade pedagógica do registro.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_08",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Que comparação é mais justa?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Compare evidência necessária e dado pessoal excessivo.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Compare evidência necessária e dado pessoal excessivo.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_09",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Qual seria um exagero interpretativo?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Seria exagero transformar relatório pedagógico em ficha clínica.",
+        "Registrar somente quem foi mais rápido."
+      ],
+      "correctAnswer": "Seria exagero transformar relatório pedagógico em ficha clínica.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-safe-activity-expansion-v10-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-SAFE-ACTIVITY-EXPANSION-V10_RECORD_10",
+      "statement": "Após uma atividade adaptada, o professor precisa registrar a decisão para planejar a próxima aula. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Guardar peso e frequência cardíaca de todos.",
+        "Pedir diagnóstico como justificativa pública.",
+        "Registrar somente quem foi mais rápido.",
+        "qual informação ajuda a próxima aula sem expor o estudante?"
+      ],
+      "correctAnswer": "qual informação ajuda a próxima aula sem expor o estudante?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Registre evidência pedagógica necessária e preserve a privacidade.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Guardar peso e frequência cardíaca de todos.": [
+          "PE_PLAN_SAFE_ACTIVITY_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    }
+  ],
+  "lessonVersion": 10,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 6,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V10"
+  }
+}

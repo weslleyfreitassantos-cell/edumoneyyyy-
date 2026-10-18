@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Alternância de figura e fundo</title>
+  <desc id="desc">Uma forma clara central lembra um vaso; as duas áreas escuras laterais podem ser percebidas como perfis voltados um para o outro.</desc>
+  <rect width="600" height="360" fill="#263c49"/>
+  <path d="M258 76 Q300 94 342 76 L332 134 Q360 156 346 190 L374 248 Q338 285 300 300 Q262 285 226 248 L254 190 Q240 156 268 134Z" fill="#f3e9d5"/>
+  <path d="M0 90 Q45 82 70 104 L94 104 Q108 116 92 128 L111 141 Q120 154 98 164 L115 182 Q120 199 95 205 L109 222 Q113 240 86 245 L98 268 Q100 288 68 290 L0 310Z" fill="#263c49"/>
+  <path d="M600 90 Q555 82 530 104 L506 104 Q492 116 508 128 L489 141 Q480 154 502 164 L485 182 Q480 199 505 205 L491 222 Q487 240 514 245 L502 268 Q500 288 532 290 L600 310Z" fill="#263c49"/>
+</svg>

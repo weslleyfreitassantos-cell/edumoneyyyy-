@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "tec-escola.bncc.authoring-context-brief.v1",
+  "taskId": "BNCC_EF01GE11",
+  "officialCode": "EF01GE11",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "componentCode": "GE",
+  "relation": "AUTHORING_CONTEXT_ONLY",
+  "sourceStatus": "VERIFIED",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "publicationStatus": "STAGING_INACTIVE",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "sourceEvidence": {
+    "verificationId": "BNCC_EF01GE11_MEC_P373_V1",
+    "descriptor": "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "evidenceCheckedAt": "2026-10-16"
+  },
+  "requirements": {
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "lessons": 1,
+    "workedExamples": 1,
+    "activities": 1,
+    "diagnosticAssessments": 1,
+    "masteryAssessments": 1,
+    "questions": 40
+  },
+  "missingRequirements": [
+    "AUTHORING_PACKAGE",
+    "LESSON",
+    "WORKED_EXAMPLES",
+    "GUIDED_ACTIVITIES",
+    "ASSESSMENTS",
+    "REMEDIATION",
+    "PEDAGOGICAL_REVIEW"
+  ],
+  "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
+  "checkpointHash": "afaeec9efc3eb85e78e4b79e74d2194287385a134540f42c2345d62f29e7371b"
+}

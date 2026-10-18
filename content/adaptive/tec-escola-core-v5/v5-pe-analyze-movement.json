@@ -1,0 +1,1264 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-pe-analyze-movement",
+  "subject": "PHYSICAL_EDUCATION",
+  "domain": "CORPO",
+  "topic": "analisar movimento corporal",
+  "canonicalSkillCode": "PE_ANALYZE_MOVEMENT",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-physical_education-pe_sport_principles-4",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-physical_education-pe_sport_principles-6",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-probe-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-probe-02",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-practice-03",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-practice-04",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-transfer-05",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-lock_in-06",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-review-07",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-review-08",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-02",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-03",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-04",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-05",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-06",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-07",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-08",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-09",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-10",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-11",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-12",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v9-pe-movement-13",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "PE_ANALYZE_MOVEMENT_SCOPE_AND_EVIDENCE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 23,
+    "feedbackAdded": 23,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Analisar movimento corporal",
+    "objective": "Analisar habilidades motoras considerando equilíbrio, força, coordenação, espaço e adaptação.",
+    "summary": "Movimento é uma relação entre corpo, tarefa e ambiente. Base de apoio, centro de massa, direção da força e coordenação ajudam a explicar controle.",
+    "explanation": "## 1. Observe antes de avaliar\nDescreva apoio, posição do corpo, direção, velocidade e sequência dos segmentos. Evite concluir apenas pelo resultado.\n\n## 2. Relacione equilíbrio e base\nBase mais ampla, centro de massa organizado e ajustes dos joelhos podem favorecer estabilidade, dependendo da tarefa.\n\n## 3. Analise a cadeia\nPés, pernas, tronco e braços podem coordenar contribuições. Nenhum segmento explica sozinho toda habilidade.\n\n## 4. Adapte com segurança\nMaterial, espaço, velocidade e amplitude podem ser ajustados para ampliar participação sem impor o mesmo padrão a todos.\n\n## Exemplo resolvido\nNa aterrissagem, flexão controlada de quadris e joelhos aumenta a possibilidade de absorver o impacto e manter equilíbrio; a orientação precisa respeitar condições individuais.\n\n## 5. Dê feedback observável\nIndique o que foi visto, o efeito provável e uma mudança testável, sem rotular o corpo ou garantir resultado.",
+    "workedExample": "Em uma mudança de direção, observe a base, o centro de massa e a direção da força. Reduzir velocidade e organizar os passos pode favorecer controle; a tarefa e o espaço precisam ser considerados.",
+    "commonMistake": "Reduzir o movimento a força, aparência ou um segmento, tratar técnica como garantia universal ou ignorar adaptação e segurança.",
+    "tips": [
+      "Descreva apoio, força e direção.",
+      "Relacione segmentos sem isolar um deles.",
+      "Adapte material e espaço quando necessário.",
+      "Use feedback observável e respeitoso."
+    ],
+    "estimatedMinutes": 26,
+    "priorKnowledge": [
+      "Reconhecer posições e deslocamentos.",
+      "Participar de práticas corporais com regras de segurança."
+    ],
+    "keyConcepts": [
+      "equilíbrio",
+      "base de apoio",
+      "centro de massa",
+      "força",
+      "coordenação",
+      "adaptação",
+      "segurança"
+    ],
+    "activity": "Observar uma habilidade com consentimento, registrar dois elementos do movimento e propor um ajuste seguro e testável.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar a ideia ou operação central.",
+        "questionIds": [
+          "v5-pe-analyze-movement-01",
+          "v5-pe-analyze-movement-02",
+          "v5-pe-analyze-movement-03",
+          "v5-pe-analyze-movement-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-pe-analyze-movement-05",
+          "v5-pe-analyze-movement-06",
+          "v5-pe-analyze-movement-07",
+          "v5-pe-analyze-movement-08",
+          "v5-pe-analyze-movement-09",
+          "v5-pe-analyze-movement-10",
+          "v5-pe-analyze-movement-11",
+          "v5-pe-analyze-movement-12",
+          "v5-pe-analyze-movement-13",
+          "v5-pe-analyze-movement-14",
+          "v5-pe-analyze-movement-15",
+          "v5-pe-analyze-movement-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-pe-analyze-movement-17",
+          "v5-pe-analyze-movement-18",
+          "v5-pe-analyze-movement-19",
+          "v5-pe-analyze-movement-20",
+          "v5-pe-analyze-movement-21",
+          "v5-pe-analyze-movement-22",
+          "v5-pe-analyze-movement-23",
+          "v5-pe-analyze-movement-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-pe-analyze-movement-25",
+          "v5-pe-analyze-movement-26",
+          "v5-pe-analyze-movement-27",
+          "v5-pe-analyze-movement-28",
+          "v5-pe-analyze-movement-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-pe-analyze-movement-30",
+          "v5-pe-analyze-movement-31",
+          "v5-pe-analyze-movement-32",
+          "v5-pe-analyze-movement-33",
+          "v5-pe-analyze-movement-34",
+          "v5-pe-analyze-movement-35",
+          "v5-pe-analyze-movement-36",
+          "v5-pe-analyze-movement-37",
+          "v5-pe-analyze-movement-38",
+          "v5-pe-analyze-movement-39",
+          "v5-pe-analyze-movement-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e unidade antes de escolher."
+      },
+      {
+        "trigger": "BOUND_CONCLUSION",
+        "text": "A melhor resposta é a que não afirma mais do que os dados permitem."
+      },
+      {
+        "trigger": "CHECK_OPERATION",
+        "text": "Nomeie a operação ou evidência usada antes de concluir."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar recorte, base ou condição da situação.",
+        "prompt": "Sublinhe sujeito, período, unidade e condição. Reescreva a resposta incluindo esses limites."
+      },
+      {
+        "id": "SEPARATE_EVIDENCE",
+        "misconception": "Confundir observação, cálculo, causa ou conclusão.",
+        "prompt": "Faça duas colunas: o que está registrado ou calculado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_RESULT",
+        "misconception": "Aceitar resultado sem verificar operação ou coerência.",
+        "prompt": "Refaça a operação, compare com uma estimativa e escreva a unidade ou consequência."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de aplicar o procedimento."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-pe-analyze-movement-activity",
+        "title": "Oficina de analisar movimento corporal",
+        "objective": "Analisar habilidades motoras considerando equilíbrio, força, coordenação, espaço e adaptação.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto ou tabela didática acessível",
+          "Registro de estratégia",
+          "Feedback do professor"
+        ],
+        "instructions": "Observar uma habilidade com consentimento, registrar dois elementos do movimento e propor um ajuste seguro e testável.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-pe-analyze-movement-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PE_MOVEMENT_EQUILÍBRIO_NA_RECEPÇÃO_01",
+      "statement": "Na situação de equilíbrio na recepção, a pessoa amplia a base de apoio e flexiona levemente os joelhos antes de empurrar um objeto leve. Qual efeito é mais diretamente esperado?",
+      "options": [
+        "maior estabilidade postural, pois a base e a posição do centro de massa favorecem o equilíbrio",
+        "eliminação de toda força de reação",
+        "redução da massa corporal",
+        "repouso permanente do movimento"
+      ],
+      "correctAnswer": "maior estabilidade postural, pois a base e a posição do centro de massa favorecem o equilíbrio",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "eliminação de toda força de reação": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PE_MOVEMENT_EQUILÍBRIO_NA_RECEPÇÃO_02",
+      "statement": "Na situação de equilíbrio na recepção, a pessoa amplia a base de apoio e flexiona levemente os joelhos antes de empurrar um objeto leve. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "eliminação de toda força de reação",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "redução da massa corporal",
+        "repouso permanente do movimento"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "eliminação de toda força de reação": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_EQUILÍBRIO_NA_RECEPÇÃO_03",
+      "statement": "Na situação de equilíbrio na recepção, a pessoa amplia a base de apoio e flexiona levemente os joelhos antes de empurrar um objeto leve. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "eliminação de toda força de reação",
+        "redução da massa corporal",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "repouso permanente do movimento"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "eliminação de toda força de reação": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_EQUILÍBRIO_NA_RECEPÇÃO_04",
+      "statement": "Na situação de equilíbrio na recepção, a pessoa amplia a base de apoio e flexiona levemente os joelhos antes de empurrar um objeto leve. Que conclusão seria exagerada?",
+      "options": [
+        "eliminação de toda força de reação",
+        "redução da massa corporal",
+        "repouso permanente do movimento",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "eliminação de toda força de reação": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_ARREMESSO_05",
+      "statement": "Na situação de arremesso, uma estudante coordena apoio dos pés, rotação do tronco e ação do braço. Qual análise é mais adequada?",
+      "options": [
+        "a coordenação de segmentos pode transferir contribuições ao movimento, mas o resultado depende da tarefa e da prática",
+        "somente o antebraço determina o arremesso",
+        "o tronco impede qualquer transferência",
+        "a técnica garante a mesma distância para todos"
+      ],
+      "correctAnswer": "a coordenação de segmentos pode transferir contribuições ao movimento, mas o resultado depende da tarefa e da prática",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o antebraço determina o arremesso": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PE_MOVEMENT_ARREMESSO_06",
+      "statement": "Na situação de arremesso, uma estudante coordena apoio dos pés, rotação do tronco e ação do braço. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "somente o antebraço determina o arremesso",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "o tronco impede qualquer transferência",
+        "a técnica garante a mesma distância para todos"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o antebraço determina o arremesso": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_ARREMESSO_07",
+      "statement": "Na situação de arremesso, uma estudante coordena apoio dos pés, rotação do tronco e ação do braço. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "somente o antebraço determina o arremesso",
+        "o tronco impede qualquer transferência",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "a técnica garante a mesma distância para todos"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o antebraço determina o arremesso": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PE_MOVEMENT_ARREMESSO_08",
+      "statement": "Na situação de arremesso, uma estudante coordena apoio dos pés, rotação do tronco e ação do braço. Que conclusão seria exagerada?",
+      "options": [
+        "somente o antebraço determina o arremesso",
+        "o tronco impede qualquer transferência",
+        "a técnica garante a mesma distância para todos",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o antebraço determina o arremesso": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_ATERRISSAGEM_09",
+      "statement": "Na situação de aterrissagem, um estudante aterrissa com joelhos rígidos e equilíbrio instável. Qual orientação favorece controle?",
+      "options": [
+        "flexionar quadris e joelhos de modo controlado e distribuir o apoio, respeitando condições individuais",
+        "travar as articulações",
+        "aterrissar sempre sobre uma perna",
+        "evitar qualquer ajuste postural"
+      ],
+      "correctAnswer": "flexionar quadris e joelhos de modo controlado e distribuir o apoio, respeitando condições individuais",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "travar as articulações": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PE_MOVEMENT_ATERRISSAGEM_10",
+      "statement": "Na situação de aterrissagem, um estudante aterrissa com joelhos rígidos e equilíbrio instável. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "travar as articulações",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "aterrissar sempre sobre uma perna",
+        "evitar qualquer ajuste postural"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "travar as articulações": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_ATERRISSAGEM_11",
+      "statement": "Na situação de aterrissagem, um estudante aterrissa com joelhos rígidos e equilíbrio instável. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "travar as articulações",
+        "aterrissar sempre sobre uma perna",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "evitar qualquer ajuste postural"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "travar as articulações": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PE_MOVEMENT_ATERRISSAGEM_12",
+      "statement": "Na situação de aterrissagem, um estudante aterrissa com joelhos rígidos e equilíbrio instável. Que conclusão seria exagerada?",
+      "options": [
+        "travar as articulações",
+        "aterrissar sempre sobre uma perna",
+        "evitar qualquer ajuste postural",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "travar as articulações": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_CORRIDA_E_FRENAGEM_13",
+      "statement": "Na situação de corrida e frenagem, uma atleta precisa parar após uma corrida curta em piso regular. Que ação ajuda a desacelerar com controle?",
+      "options": [
+        "reduzir a velocidade gradualmente e organizar passos e base de apoio antes da parada",
+        "parar com articulações travadas",
+        "aumentar a velocidade no último passo",
+        "ignorar a direção do corpo"
+      ],
+      "correctAnswer": "reduzir a velocidade gradualmente e organizar passos e base de apoio antes da parada",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "parar com articulações travadas": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PE_MOVEMENT_CORRIDA_E_FRENAGEM_14",
+      "statement": "Na situação de corrida e frenagem, uma atleta precisa parar após uma corrida curta em piso regular. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "parar com articulações travadas",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "aumentar a velocidade no último passo",
+        "ignorar a direção do corpo"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "parar com articulações travadas": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_CORRIDA_E_FRENAGEM_15",
+      "statement": "Na situação de corrida e frenagem, uma atleta precisa parar após uma corrida curta em piso regular. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "parar com articulações travadas",
+        "aumentar a velocidade no último passo",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "ignorar a direção do corpo"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "parar com articulações travadas": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PE_MOVEMENT_CORRIDA_E_FRENAGEM_16",
+      "statement": "Na situação de corrida e frenagem, uma atleta precisa parar após uma corrida curta em piso regular. Que conclusão seria exagerada?",
+      "options": [
+        "parar com articulações travadas",
+        "aumentar a velocidade no último passo",
+        "ignorar a direção do corpo",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "parar com articulações travadas": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_SALTO_HORIZONTAL_17",
+      "statement": "Na situação de salto horizontal, a turma compara saltos com braços parados e com balanço coordenado. O que deve ser observado?",
+      "options": [
+        "como braços, pernas e tronco se coordenam para produzir e controlar o deslocamento",
+        "apenas a altura da pessoa",
+        "a força de um único dedo do pé",
+        "o resultado sem considerar a tarefa"
+      ],
+      "correctAnswer": "como braços, pernas e tronco se coordenam para produzir e controlar o deslocamento",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "apenas a altura da pessoa": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PE_MOVEMENT_SALTO_HORIZONTAL_18",
+      "statement": "Na situação de salto horizontal, a turma compara saltos com braços parados e com balanço coordenado. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "apenas a altura da pessoa",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "a força de um único dedo do pé",
+        "o resultado sem considerar a tarefa"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "apenas a altura da pessoa": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_SALTO_HORIZONTAL_19",
+      "statement": "Na situação de salto horizontal, a turma compara saltos com braços parados e com balanço coordenado. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "apenas a altura da pessoa",
+        "a força de um único dedo do pé",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "o resultado sem considerar a tarefa"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "apenas a altura da pessoa": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PE_MOVEMENT_SALTO_HORIZONTAL_20",
+      "statement": "Na situação de salto horizontal, a turma compara saltos com braços parados e com balanço coordenado. Que conclusão seria exagerada?",
+      "options": [
+        "apenas a altura da pessoa",
+        "a força de um único dedo do pé",
+        "o resultado sem considerar a tarefa",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "apenas a altura da pessoa": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_MUDANÇA_DE_DIREÇÃO_21",
+      "statement": "Na situação de mudança de direção, em um jogo, a pessoa muda de direção rapidamente após sinal visual. Qual combinação apoia a mudança?",
+      "options": [
+        "baixar o centro de massa, organizar a base e orientar a força para a nova direção",
+        "manter o corpo rígido e a base estreita",
+        "olhar para trás e ignorar o apoio",
+        "aplicar força sempre para frente"
+      ],
+      "correctAnswer": "baixar o centro de massa, organizar a base e orientar a força para a nova direção",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter o corpo rígido e a base estreita": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PE_MOVEMENT_MUDANÇA_DE_DIREÇÃO_22",
+      "statement": "Na situação de mudança de direção, em um jogo, a pessoa muda de direção rapidamente após sinal visual. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "manter o corpo rígido e a base estreita",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "olhar para trás e ignorar o apoio",
+        "aplicar força sempre para frente"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter o corpo rígido e a base estreita": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_MUDANÇA_DE_DIREÇÃO_23",
+      "statement": "Na situação de mudança de direção, em um jogo, a pessoa muda de direção rapidamente após sinal visual. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "manter o corpo rígido e a base estreita",
+        "olhar para trás e ignorar o apoio",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "aplicar força sempre para frente"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter o corpo rígido e a base estreita": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PE_MOVEMENT_MUDANÇA_DE_DIREÇÃO_24",
+      "statement": "Na situação de mudança de direção, em um jogo, a pessoa muda de direção rapidamente após sinal visual. Que conclusão seria exagerada?",
+      "options": [
+        "manter o corpo rígido e a base estreita",
+        "olhar para trás e ignorar o apoio",
+        "aplicar força sempre para frente",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter o corpo rígido e a base estreita": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PE_MOVEMENT_LANÇAMENTO_ADAPTADO_25",
+      "statement": "Na situação de lançamento adaptado, um participante usa uma bola mais leve e ajusta a distância do alvo. Qual princípio orienta a adaptação?",
+      "options": [
+        "modificar material e espaço para preservar participação e permitir controle do movimento",
+        "usar o mesmo peso para todos",
+        "eliminar a escolha do participante",
+        "aumentar a distância sem observar segurança"
+      ],
+      "correctAnswer": "modificar material e espaço para preservar participação e permitir controle do movimento",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "usar o mesmo peso para todos": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_LANÇAMENTO_ADAPTADO_26",
+      "statement": "Na situação de lançamento adaptado, um participante usa uma bola mais leve e ajusta a distância do alvo. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "usar o mesmo peso para todos",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "eliminar a escolha do participante",
+        "aumentar a distância sem observar segurança"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "usar o mesmo peso para todos": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_LANÇAMENTO_ADAPTADO_27",
+      "statement": "Na situação de lançamento adaptado, um participante usa uma bola mais leve e ajusta a distância do alvo. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "usar o mesmo peso para todos",
+        "eliminar a escolha do participante",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "aumentar a distância sem observar segurança"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "usar o mesmo peso para todos": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PE_MOVEMENT_LANÇAMENTO_ADAPTADO_28",
+      "statement": "Na situação de lançamento adaptado, um participante usa uma bola mais leve e ajusta a distância do alvo. Que conclusão seria exagerada?",
+      "options": [
+        "usar o mesmo peso para todos",
+        "eliminar a escolha do participante",
+        "aumentar a distância sem observar segurança",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "usar o mesmo peso para todos": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_GIRO_29",
+      "statement": "Na situação de giro, durante um giro, a estudante aproxima os braços do corpo e depois os abre. Qual interpretação é coerente?",
+      "options": [
+        "a distribuição da massa em relação ao eixo pode alterar a facilidade de girar e de controlar a rotação",
+        "a massa desaparece ao girar",
+        "abrir os braços elimina o eixo",
+        "o giro não depende da posição dos segmentos"
+      ],
+      "correctAnswer": "a distribuição da massa em relação ao eixo pode alterar a facilidade de girar e de controlar a rotação",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "a massa desaparece ao girar": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_GIRO_30",
+      "statement": "Na situação de giro, durante um giro, a estudante aproxima os braços do corpo e depois os abre. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "a massa desaparece ao girar",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "abrir os braços elimina o eixo",
+        "o giro não depende da posição dos segmentos"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "a massa desaparece ao girar": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_GIRO_31",
+      "statement": "Na situação de giro, durante um giro, a estudante aproxima os braços do corpo e depois os abre. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "a massa desaparece ao girar",
+        "abrir os braços elimina o eixo",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "o giro não depende da posição dos segmentos"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "a massa desaparece ao girar": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_GIRO_32",
+      "statement": "Na situação de giro, durante um giro, a estudante aproxima os braços do corpo e depois os abre. Que conclusão seria exagerada?",
+      "options": [
+        "a massa desaparece ao girar",
+        "abrir os braços elimina o eixo",
+        "o giro não depende da posição dos segmentos",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "a massa desaparece ao girar": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_PASSE_COM_APOIO_33",
+      "statement": "Na situação de passe com apoio, em um passe, o estudante orienta os pés e acompanha o movimento com tronco e braços. O que a análise deve considerar?",
+      "options": [
+        "sequência, direção da força, equilíbrio e coordenação entre segmentos",
+        "somente o formato da bola",
+        "apenas a velocidade final",
+        "a intenção sem observar o movimento"
+      ],
+      "correctAnswer": "sequência, direção da força, equilíbrio e coordenação entre segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o formato da bola": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_PASSE_COM_APOIO_34",
+      "statement": "Na situação de passe com apoio, em um passe, o estudante orienta os pés e acompanha o movimento com tronco e braços. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "somente o formato da bola",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "apenas a velocidade final",
+        "a intenção sem observar o movimento"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o formato da bola": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_PASSE_COM_APOIO_35",
+      "statement": "Na situação de passe com apoio, em um passe, o estudante orienta os pés e acompanha o movimento com tronco e braços. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "somente o formato da bola",
+        "apenas a velocidade final",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "a intenção sem observar o movimento"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o formato da bola": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_PASSE_COM_APOIO_36",
+      "statement": "Na situação de passe com apoio, em um passe, o estudante orienta os pés e acompanha o movimento com tronco e braços. Que conclusão seria exagerada?",
+      "options": [
+        "somente o formato da bola",
+        "apenas a velocidade final",
+        "a intenção sem observar o movimento",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "somente o formato da bola": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PE_MOVEMENT_CAMINHADA_EM_TERRENO_IRREGULAR_37",
+      "statement": "Na situação de caminhada em terreno irregular, a turma caminha em uma superfície com pequenas mudanças de altura. Qual ajuste ajuda a manter segurança?",
+      "options": [
+        "reduzir a velocidade, ampliar a atenção ao apoio e ajustar o comprimento dos passos",
+        "manter passos longos sem olhar o terreno",
+        "bloquear os joelhos",
+        "aumentar a velocidade em toda mudança"
+      ],
+      "correctAnswer": "reduzir a velocidade, ampliar a atenção ao apoio e ajustar o comprimento dos passos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter passos longos sem olhar o terreno": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PE_MOVEMENT_CAMINHADA_EM_TERRENO_IRREGULAR_38",
+      "statement": "Na situação de caminhada em terreno irregular, a turma caminha em uma superfície com pequenas mudanças de altura. Que relação entre corpo, força e equilíbrio deve ser observada?",
+      "options": [
+        "manter passos longos sem olhar o terreno",
+        "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+        "bloquear os joelhos",
+        "aumentar a velocidade em toda mudança"
+      ],
+      "correctAnswer": "observar posição do centro de massa, base de apoio, direção da força e coordenação dos segmentos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter passos longos sem olhar o terreno": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PE_MOVEMENT_CAMINHADA_EM_TERRENO_IRREGULAR_39",
+      "statement": "Na situação de caminhada em terreno irregular, a turma caminha em uma superfície com pequenas mudanças de altura. Qual adaptação mantém participação e segurança?",
+      "options": [
+        "manter passos longos sem olhar o terreno",
+        "bloquear os joelhos",
+        "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+        "aumentar a velocidade em toda mudança"
+      ],
+      "correctAnswer": "ajustar espaço, material, velocidade ou amplitude conforme a tarefa e as condições da pessoa",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter passos longos sem olhar o terreno": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-analyze-movement-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PE_MOVEMENT_CAMINHADA_EM_TERRENO_IRREGULAR_40",
+      "statement": "Na situação de caminhada em terreno irregular, a turma caminha em uma superfície com pequenas mudanças de altura. Que conclusão seria exagerada?",
+      "options": [
+        "manter passos longos sem olhar o terreno",
+        "bloquear os joelhos",
+        "aumentar a velocidade em toda mudança",
+        "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos"
+      ],
+      "correctAnswer": "afirmar que uma única técnica garante o mesmo resultado para todos os corpos e contextos",
+      "explanation": "A análise do movimento relaciona equilíbrio, força, coordenação, espaço e tarefa. Uma orientação pode favorecer controle, mas precisa respeitar diferenças individuais e condições de segurança.",
+      "hint": "Observe base de apoio, centro de massa, direção da força, sequência dos segmentos e possibilidade de adaptação.",
+      "errorFocus": "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL",
+      "misconceptions": {
+        "manter passos longos sem olhar o terreno": [
+          "SINGLE_TECHNIQUE_OR_SEGMENT_TREATED_AS_UNIVERSAL"
+        ]
+      }
+    }
+  ]
+}

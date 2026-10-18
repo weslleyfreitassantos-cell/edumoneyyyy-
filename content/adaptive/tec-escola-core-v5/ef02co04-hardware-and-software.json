@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef02co04-distinguish-hardware-and-software-v1",
+  "canonicalSkillCode": "COMPUTING_DISTINGUISH_HARDWARE_AND_SOFTWARE",
+  "subject": "COMPUTING",
+  "domain": "MUNDO DIGITAL · DISPOSITIVOS, HARDWARE E SOFTWARE",
+  "topic": "diferenciação entre componentes físicos e programas que fornecem instruções aos dispositivos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CO04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "O que é parte física e o que é programa?",
+    "objective": "Distinguir componentes físicos de um dispositivo dos programas que fornecem instruções para o hardware.",
+    "summary": "Hardware é a parte física de um dispositivo computacional, como tela, teclado, câmera, alto-falante ou peças internas. Software é um programa que contém instruções para o hardware realizar tarefas. Um celular ou computador reúne elementos físicos e programas; um aplicativo é software, enquanto a tela que mostra suas imagens é hardware. Os termos ajudam a comparar componentes e funções sem sugerir que uma pessoa seja software.",
+    "explanation": "Observe um dispositivo de exemplo em um desenho ou modelo desligado e identifique partes que podem ser vistas ou tocadas: essas partes pertencem ao hardware. Depois observe os nomes de programas ou aplicativos e converse sobre as instruções que eles fornecem ao aparelho: isso é software. Um teclado é hardware; um programa de desenho é software. O aparelho precisa de hardware para executar programas, e programas instruem o hardware. Use imagens ou cartões se não houver dispositivos disponíveis. Não é preciso instalar aplicativos, conectar-se à internet nem compartilhar contas ou senhas.",
+    "workedExample": "Num tablet desenhado, a tela e os botões físicos são hardware. Um aplicativo de desenho é software: suas instruções ajudam o dispositivo a mostrar linhas e cores quando alguém seleciona ferramentas.",
+    "commonMistake": "Achar que tudo o que aparece numa tela é hardware, sem distinguir a imagem exibida do programa que fornece instruções ao dispositivo.",
+    "priorKnowledge": [
+      "Reconhecer dispositivos computacionais usados em exemplos cotidianos.",
+      "Perceber que um dispositivo pode realizar tarefas diferentes."
+    ],
+    "keyConcepts": [
+      "computador",
+      "dispositivo",
+      "hardware",
+      "componente físico",
+      "software",
+      "programa",
+      "instrução"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SOFTWARE_CONFUSED_WITH_SCREEN",
+        "action": "Mostre uma figura de uma tela e cartões separados para aparelho, imagem exibida e aplicativo; classifique cada elemento e explique a relação."
+      },
+      {
+        "errorFocus": "HARDWARE_ONLY_VISIBLE_PARTS",
+        "action": "Compare componentes externos visíveis e a ideia de que há outras partes físicas dentro do dispositivo, sem exigir desmontagem."
+      },
+      {
+        "errorFocus": "PROGRAM_AS_PERSON",
+        "action": "Use exemplos de aplicativos conhecidos em figuras e reforce que software é o programa com instruções, não a pessoa que o utiliza."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+      "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co04-sort-device-cards",
+        "title": "Cartões: peça física ou programa?",
+        "instructions": "Pequenos grupos recebem cartões ilustrados com dispositivos, componentes físicos e nomes genéricos de programas.\n1. Separem os cartões entre hardware e software.\n2. Escolham um dispositivo e relacionem um programa a uma tarefa que ele pode instruir.\n3. Expliquem como as partes físicas e o programa participam da tarefa.",
+        "steps": [
+          "Separem os cartões entre hardware e software.",
+          "Escolham um dispositivo e relacionem um programa a uma tarefa que ele pode instruir.",
+          "Expliquem como as partes físicas e o programa participam da tarefa."
+        ],
+        "evidence": "Classificação coerente de exemplos e explicação simples da relação entre software e hardware.",
+        "privacyGuard": "Usar cartões genéricos, sem contas, mensagens, imagens pessoais ou dados de dispositivos de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um exemplo de parte física com apoio.",
+            "developing": "classifica exemplos de hardware e software.",
+            "proficient": "explica que o programa fornece instruções ao hardware."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co04-paper-computer-model",
+        "title": "Modelo de computador no papel",
+        "instructions": "A turma monta um esquema de papel com tela, teclado, alto-falante e um cartão que representa um aplicativo fictício.\n1. Identifiquem quais cartões representam componentes físicos.\n2. Escolham um programa fictício e descrevam uma tarefa que ele instrui o dispositivo a realizar.\n3. Apresentem a relação por desenho, fala, cartões ou comunicação alternativa.",
+        "steps": [
+          "Identifiquem quais cartões representam componentes físicos.",
+          "Escolham um programa fictício e descrevam uma tarefa que ele instrui o dispositivo a realizar.",
+          "Apresentem a relação por desenho, fala, cartões ou comunicação alternativa."
+        ],
+        "evidence": "Modelo que separa componentes físicos do programa e comunica a função de cada um.",
+        "privacyGuard": "Não desmontar aparelhos; não instalar programas nem solicitar logins, senhas ou uso de contas pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "pareia um componente físico a um dispositivo.",
+            "developing": "diferencia um programa de uma parte do aparelho.",
+            "proficient": "descreve a relação entre instruções do programa e hardware."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-01",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-02",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-03",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-04",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-05",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-06",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-07",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-09",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-10",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-11",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-12",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-13",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-14",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-15",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-17",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-18",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-19",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-20",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-21",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-22",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-23",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-25",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-26",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-27",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-28",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-29",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-30",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-31",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-33",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-34",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-35",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-36",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-37",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-38",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-39",
+          "bncc-ef02co04-distinguish-hardware-and-software-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CO04",
+        "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-01",
+      "statement": "Um teclado que faz parte de um computador é",
+      "prompt": "Um teclado que faz parte de um computador é",
+      "options": [
+        "hardware, uma parte física.",
+        "software, um programa",
+        "uma senha",
+        "um arquivo de imagem"
+      ],
+      "correctAnswer": "hardware, uma parte física.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "software, um programa": [
+          "CLASSIFY_PHYSICAL_COMPONENT"
+        ],
+        "uma senha": [
+          "CLASSIFY_PHYSICAL_COMPONENT"
+        ],
+        "um arquivo de imagem": [
+          "CLASSIFY_PHYSICAL_COMPONENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TECLADO_FISICO",
+      "explanation": "O teclado é um componente físico do dispositivo.",
+      "hint": "Pense se é uma peça do aparelho.",
+      "errorFocus": "CLASSIFY_PHYSICAL_COMPONENT",
+      "feedback": {
+        "correct": "Boa observação: O teclado é um componente físico do dispositivo.",
+        "incorrect": "O teclado é um componente físico do dispositivo.",
+        "hint": "Pense se é uma peça do aparelho.",
+        "errorFocus": "CLASSIFY_PHYSICAL_COMPONENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-02",
+      "statement": "Um aplicativo de desenho é um exemplo de",
+      "prompt": "Um aplicativo de desenho é um exemplo de",
+      "options": [
+        "teclado",
+        "software.",
+        "tela física",
+        "alto-falante"
+      ],
+      "correctAnswer": "software.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "teclado": [
+          "CLASSIFY_PROGRAM"
+        ],
+        "tela física": [
+          "CLASSIFY_PROGRAM"
+        ],
+        "alto-falante": [
+          "CLASSIFY_PROGRAM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "APP_DESENHO",
+      "explanation": "O aplicativo é um programa que fornece instruções ao dispositivo.",
+      "hint": "Procure o nome do programa, não uma peça.",
+      "errorFocus": "CLASSIFY_PROGRAM",
+      "feedback": {
+        "correct": "Boa observação: O aplicativo é um programa que fornece instruções ao dispositivo.",
+        "incorrect": "O aplicativo é um programa que fornece instruções ao dispositivo.",
+        "hint": "Procure o nome do programa, não uma peça.",
+        "errorFocus": "CLASSIFY_PROGRAM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-03",
+      "statement": "A tela física de um tablet pertence ao",
+      "prompt": "A tela física de um tablet pertence ao",
+      "options": [
+        "software",
+        "convite",
+        "hardware.",
+        "calendário impresso"
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "software": [
+          "HARDWARE_DISPLAY_COMPONENT"
+        ],
+        "convite": [
+          "HARDWARE_DISPLAY_COMPONENT"
+        ],
+        "calendário impresso": [
+          "HARDWARE_DISPLAY_COMPONENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TELA_TABLET",
+      "explanation": "A tela é parte física do aparelho.",
+      "hint": "A tela pode ser vista e tocada como componente.",
+      "errorFocus": "HARDWARE_DISPLAY_COMPONENT",
+      "feedback": {
+        "correct": "Boa observação: A tela é parte física do aparelho.",
+        "incorrect": "A tela é parte física do aparelho.",
+        "hint": "A tela pode ser vista e tocada como componente.",
+        "errorFocus": "HARDWARE_DISPLAY_COMPONENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-04",
+      "statement": "Qual exemplo é software?",
+      "prompt": "Qual exemplo é software?",
+      "options": [
+        "O teclado físico",
+        "A câmera do aparelho",
+        "O botão de volume",
+        "Um programa de leitura instalado no dispositivo."
+      ],
+      "correctAnswer": "Um programa de leitura instalado no dispositivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O teclado físico": [
+          "DISTINGUISH_PROGRAM_FROM_DEVICE_PART"
+        ],
+        "A câmera do aparelho": [
+          "DISTINGUISH_PROGRAM_FROM_DEVICE_PART"
+        ],
+        "O botão de volume": [
+          "DISTINGUISH_PROGRAM_FROM_DEVICE_PART"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PROGRAMA_E_PECA",
+      "explanation": "O programa é software; teclado, câmera e botão são partes físicas.",
+      "hint": "Escolha o item que contém instruções para o aparelho.",
+      "errorFocus": "DISTINGUISH_PROGRAM_FROM_DEVICE_PART",
+      "feedback": {
+        "correct": "Boa observação: O programa é software; teclado, câmera e botão são partes físicas.",
+        "incorrect": "O programa é software; teclado, câmera e botão são partes físicas.",
+        "hint": "Escolha o item que contém instruções para o aparelho.",
+        "errorFocus": "DISTINGUISH_PROGRAM_FROM_DEVICE_PART"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-05",
+      "statement": "Hardware se refere principalmente a",
+      "prompt": "Hardware se refere principalmente a",
+      "options": [
+        "componentes físicos de um dispositivo computacional.",
+        "histórias inventadas",
+        "instruções escritas num programa",
+        "uma rede de amizades"
+      ],
+      "correctAnswer": "componentes físicos de um dispositivo computacional.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "histórias inventadas": [
+          "HARDWARE_DEFINITION"
+        ],
+        "instruções escritas num programa": [
+          "HARDWARE_DEFINITION"
+        ],
+        "uma rede de amizades": [
+          "HARDWARE_DEFINITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "HARDWARE_SIGNIFICADO",
+      "explanation": "A habilidade contrasta componentes físicos com programas.",
+      "hint": "Pense nas partes do aparelho.",
+      "errorFocus": "HARDWARE_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: A habilidade contrasta componentes físicos com programas.",
+        "incorrect": "A habilidade contrasta componentes físicos com programas.",
+        "hint": "Pense nas partes do aparelho.",
+        "errorFocus": "HARDWARE_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-06",
+      "statement": "Software é",
+      "prompt": "Software é",
+      "options": [
+        "uma peça física, como botão",
+        "um programa que fornece instruções para o hardware.",
+        "o nome de uma pessoa",
+        "o papel usado para desenhar"
+      ],
+      "correctAnswer": "um programa que fornece instruções para o hardware.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma peça física, como botão": [
+          "SOFTWARE_DEFINITION"
+        ],
+        "o nome de uma pessoa": [
+          "SOFTWARE_DEFINITION"
+        ],
+        "o papel usado para desenhar": [
+          "SOFTWARE_DEFINITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SOFTWARE_SIGNIFICADO",
+      "explanation": "O programa contém instruções que o hardware executa.",
+      "hint": "Lembre-se do papel dos programas.",
+      "errorFocus": "SOFTWARE_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: O programa contém instruções que o hardware executa.",
+        "incorrect": "O programa contém instruções que o hardware executa.",
+        "hint": "Lembre-se do papel dos programas.",
+        "errorFocus": "SOFTWARE_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-07",
+      "statement": "A câmera que faz parte de um celular é",
+      "prompt": "A câmera que faz parte de um celular é",
+      "options": [
+        "um aplicativo de calendário",
+        "software",
+        "hardware.",
+        "uma instrução escrita"
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um aplicativo de calendário": [
+          "CLASSIFY_CAMERA_COMPONENT"
+        ],
+        "software": [
+          "CLASSIFY_CAMERA_COMPONENT"
+        ],
+        "uma instrução escrita": [
+          "CLASSIFY_CAMERA_COMPONENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAMERA_FISICA",
+      "explanation": "A câmera física é um componente do dispositivo.",
+      "hint": "Observe se é parte do aparelho ou um programa.",
+      "errorFocus": "CLASSIFY_CAMERA_COMPONENT",
+      "feedback": {
+        "correct": "Boa observação: A câmera física é um componente do dispositivo.",
+        "incorrect": "A câmera física é um componente do dispositivo.",
+        "hint": "Observe se é parte do aparelho ou um programa.",
+        "errorFocus": "CLASSIFY_CAMERA_COMPONENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-08",
+      "statement": "Um computador pode reunir",
+      "prompt": "Um computador pode reunir",
+      "options": [
+        "somente desenhos sem componentes",
+        "apenas programas sem aparelho",
+        "somente teclado, sem instruções",
+        "hardware físico e software em programas."
+      ],
+      "correctAnswer": "hardware físico e software em programas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "somente desenhos sem componentes": [
+          "DEVICE_HAS_HARDWARE_AND_SOFTWARE"
+        ],
+        "apenas programas sem aparelho": [
+          "DEVICE_HAS_HARDWARE_AND_SOFTWARE"
+        ],
+        "somente teclado, sem instruções": [
+          "DEVICE_HAS_HARDWARE_AND_SOFTWARE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DISPOSITIVO_COMBINA",
+      "explanation": "Dispositivos executam software usando seus componentes físicos.",
+      "hint": "Pense nas partes e nos programas juntos.",
+      "errorFocus": "DEVICE_HAS_HARDWARE_AND_SOFTWARE",
+      "feedback": {
+        "correct": "Boa observação: Dispositivos executam software usando seus componentes físicos.",
+        "incorrect": "Dispositivos executam software usando seus componentes físicos.",
+        "hint": "Pense nas partes e nos programas juntos.",
+        "errorFocus": "DEVICE_HAS_HARDWARE_AND_SOFTWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-09",
+      "statement": "O alto-falante físico de um computador é",
+      "prompt": "O alto-falante físico de um computador é",
+      "options": [
+        "hardware.",
+        "software",
+        "um arquivo de texto",
+        "uma instrução de jogo"
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "software": [
+          "CLASSIFY_SPEAKER"
+        ],
+        "um arquivo de texto": [
+          "CLASSIFY_SPEAKER"
+        ],
+        "uma instrução de jogo": [
+          "CLASSIFY_SPEAKER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ALTO_FALANTE",
+      "explanation": "O alto-falante é um componente físico.",
+      "hint": "É uma parte que produz som no dispositivo.",
+      "errorFocus": "CLASSIFY_SPEAKER",
+      "feedback": {
+        "correct": "Boa observação: O alto-falante é um componente físico.",
+        "incorrect": "O alto-falante é um componente físico.",
+        "hint": "É uma parte que produz som no dispositivo.",
+        "errorFocus": "CLASSIFY_SPEAKER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-10",
+      "statement": "Um programa de música que orienta o aparelho a tocar sons é",
+      "prompt": "Um programa de música que orienta o aparelho a tocar sons é",
+      "options": [
+        "o alto-falante",
+        "software.",
+        "o botão físico",
+        "a tela"
+      ],
+      "correctAnswer": "software.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "o alto-falante": [
+          "PROGRAM_INSTRUCTS_DEVICE"
+        ],
+        "o botão físico": [
+          "PROGRAM_INSTRUCTS_DEVICE"
+        ],
+        "a tela": [
+          "PROGRAM_INSTRUCTS_DEVICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PROGRAMA_MUSICA",
+      "explanation": "O programa fornece instruções ao hardware para realizar uma tarefa.",
+      "hint": "Pense no aplicativo, não na peça que emite som.",
+      "errorFocus": "PROGRAM_INSTRUCTS_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: O programa fornece instruções ao hardware para realizar uma tarefa.",
+        "incorrect": "O programa fornece instruções ao hardware para realizar uma tarefa.",
+        "hint": "Pense no aplicativo, não na peça que emite som.",
+        "errorFocus": "PROGRAM_INSTRUCTS_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-11",
+      "statement": "Qual par está classificado corretamente?",
+      "prompt": "Qual par está classificado corretamente?",
+      "options": [
+        "Botão físico: software; aplicativo: hardware",
+        "Os dois são sempre hardware",
+        "Botão físico: hardware; aplicativo: software.",
+        "Os dois são sempre software"
+      ],
+      "correctAnswer": "Botão físico: hardware; aplicativo: software.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Botão físico: software; aplicativo: hardware": [
+          "PAIR_HARDWARE_SOFTWARE"
+        ],
+        "Os dois são sempre hardware": [
+          "PAIR_HARDWARE_SOFTWARE"
+        ],
+        "Os dois são sempre software": [
+          "PAIR_HARDWARE_SOFTWARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOTAO_VS_APP",
+      "explanation": "A classificação distingue parte física e programa.",
+      "hint": "Separe peça do aparelho e programa.",
+      "errorFocus": "PAIR_HARDWARE_SOFTWARE",
+      "feedback": {
+        "correct": "Boa observação: A classificação distingue parte física e programa.",
+        "incorrect": "A classificação distingue parte física e programa.",
+        "hint": "Separe peça do aparelho e programa.",
+        "errorFocus": "PAIR_HARDWARE_SOFTWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-12",
+      "statement": "Um mouse conectado a um computador é",
+      "prompt": "Um mouse conectado a um computador é",
+      "options": [
+        "um programa de escrita",
+        "uma pasta digital",
+        "um arquivo de som",
+        "um componente de hardware."
+      ],
+      "correctAnswer": "um componente de hardware.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "um programa de escrita": [
+          "MOUSE_IS_PHYSICAL_HARDWARE"
+        ],
+        "uma pasta digital": [
+          "MOUSE_IS_PHYSICAL_HARDWARE"
+        ],
+        "um arquivo de som": [
+          "MOUSE_IS_PHYSICAL_HARDWARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MOUSE_FISICO",
+      "explanation": "O mouse é uma peça física usada para interagir com o dispositivo.",
+      "hint": "Pense se o mouse é uma peça ou um programa.",
+      "errorFocus": "MOUSE_IS_PHYSICAL_HARDWARE",
+      "feedback": {
+        "correct": "Boa observação: O mouse é uma peça física usada para interagir com o dispositivo.",
+        "incorrect": "O mouse é uma peça física usada para interagir com o dispositivo.",
+        "hint": "Pense se o mouse é uma peça ou um programa.",
+        "errorFocus": "MOUSE_IS_PHYSICAL_HARDWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-13",
+      "statement": "Um aplicativo mostra ferramentas para colorir um desenho. O aplicativo é software porque",
+      "prompt": "Um aplicativo mostra ferramentas para colorir um desenho. O aplicativo é software porque",
+      "options": [
+        "é um programa com instruções para o dispositivo.",
+        "é a tela física",
+        "é um botão do aparelho",
+        "é uma mesa"
+      ],
+      "correctAnswer": "é um programa com instruções para o dispositivo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "é a tela física": [
+          "SOFTWARE_PROVIDES_INSTRUCTIONS"
+        ],
+        "é um botão do aparelho": [
+          "SOFTWARE_PROVIDES_INSTRUCTIONS"
+        ],
+        "é uma mesa": [
+          "SOFTWARE_PROVIDES_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "APP_INSTRUCOES",
+      "explanation": "O programa orienta as ações que o hardware realiza.",
+      "hint": "Considere o que faz o dispositivo exibir as ferramentas.",
+      "errorFocus": "SOFTWARE_PROVIDES_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: O programa orienta as ações que o hardware realiza.",
+        "incorrect": "O programa orienta as ações que o hardware realiza.",
+        "hint": "Considere o que faz o dispositivo exibir as ferramentas.",
+        "errorFocus": "SOFTWARE_PROVIDES_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-14",
+      "statement": "Uma imagem aberta na tela não é a tela física; é um conteúdo exibido por",
+      "prompt": "Uma imagem aberta na tela não é a tela física; é um conteúdo exibido por",
+      "options": [
+        "uma cadeira",
+        "hardware que recebe instruções de programas.",
+        "um teclado de papel",
+        "uma tomada"
+      ],
+      "correctAnswer": "hardware que recebe instruções de programas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma cadeira": [
+          "DISTINGUISH_DISPLAYED_CONTENT_FROM_HARDWARE"
+        ],
+        "um teclado de papel": [
+          "DISTINGUISH_DISPLAYED_CONTENT_FROM_HARDWARE"
+        ],
+        "uma tomada": [
+          "DISTINGUISH_DISPLAYED_CONTENT_FROM_HARDWARE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ARQUIVO_NAO_COMPONENTE",
+      "explanation": "O conteúdo exibido e o componente que o mostra são coisas diferentes.",
+      "hint": "Separe a imagem da tela que a exibe.",
+      "errorFocus": "DISTINGUISH_DISPLAYED_CONTENT_FROM_HARDWARE",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo exibido e o componente que o mostra são coisas diferentes.",
+        "incorrect": "O conteúdo exibido e o componente que o mostra são coisas diferentes.",
+        "hint": "Separe a imagem da tela que a exibe.",
+        "errorFocus": "DISTINGUISH_DISPLAYED_CONTENT_FROM_HARDWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-15",
+      "statement": "Como software e hardware trabalham juntos?",
+      "prompt": "Como software e hardware trabalham juntos?",
+      "options": [
+        "O software transforma pessoas em aparelhos",
+        "O hardware escreve histórias sem programas",
+        "O software fornece instruções e o hardware realiza tarefas usando suas partes físicas.",
+        "Os dois precisam ser a mesma peça"
+      ],
+      "correctAnswer": "O software fornece instruções e o hardware realiza tarefas usando suas partes físicas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O software transforma pessoas em aparelhos": [
+          "HARDWARE_SOFTWARE_RELATION"
+        ],
+        "O hardware escreve histórias sem programas": [
+          "HARDWARE_SOFTWARE_RELATION"
+        ],
+        "Os dois precisam ser a mesma peça": [
+          "HARDWARE_SOFTWARE_RELATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RELACAO_PROGRAMA_PECA",
+      "explanation": "O descritor destaca programas que fornecem instruções ao hardware.",
+      "hint": "Pense em programa orientando componentes.",
+      "errorFocus": "HARDWARE_SOFTWARE_RELATION",
+      "feedback": {
+        "correct": "Boa observação: O descritor destaca programas que fornecem instruções ao hardware.",
+        "incorrect": "O descritor destaca programas que fornecem instruções ao hardware.",
+        "hint": "Pense em programa orientando componentes.",
+        "errorFocus": "HARDWARE_SOFTWARE_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-16",
+      "statement": "Por que um aplicativo não é a mesma coisa que a tela do tablet?",
+      "prompt": "Por que um aplicativo não é a mesma coisa que a tela do tablet?",
+      "options": [
+        "O aplicativo é sempre um cabo",
+        "A tela é uma instrução escrita",
+        "Não existe diferença",
+        "O aplicativo é software; a tela é um componente físico do hardware."
+      ],
+      "correctAnswer": "O aplicativo é software; a tela é um componente físico do hardware.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O aplicativo é sempre um cabo": [
+          "APP_AND_SCREEN_DISTINCTION"
+        ],
+        "A tela é uma instrução escrita": [
+          "APP_AND_SCREEN_DISTINCTION"
+        ],
+        "Não existe diferença": [
+          "APP_AND_SCREEN_DISTINCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PROGRAMA_NAO_TELA",
+      "explanation": "Programa e componente físico têm naturezas diferentes.",
+      "hint": "Um pode ser instalado; o outro é parte do aparelho.",
+      "errorFocus": "APP_AND_SCREEN_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Programa e componente físico têm naturezas diferentes.",
+        "incorrect": "Programa e componente físico têm naturezas diferentes.",
+        "hint": "Um pode ser instalado; o outro é parte do aparelho.",
+        "errorFocus": "APP_AND_SCREEN_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-17",
+      "statement": "Um tablet usa um aplicativo de leitura para mostrar palavras. Qual classificação é adequada?",
+      "prompt": "Um tablet usa um aplicativo de leitura para mostrar palavras. Qual classificação é adequada?",
+      "options": [
+        "Tablet e tela são hardware; aplicativo é software.",
+        "Aplicativo é hardware e tela é software",
+        "Tudo é software",
+        "Tudo é hardware"
+      ],
+      "correctAnswer": "Tablet e tela são hardware; aplicativo é software.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Aplicativo é hardware e tela é software": [
+          "CLASSIFY_DEVICE_AND_APP"
+        ],
+        "Tudo é software": [
+          "CLASSIFY_DEVICE_AND_APP"
+        ],
+        "Tudo é hardware": [
+          "CLASSIFY_DEVICE_AND_APP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TABLET_LEITURA",
+      "explanation": "O aparelho é físico e o aplicativo é um programa.",
+      "hint": "Separe o dispositivo do que ele executa.",
+      "errorFocus": "CLASSIFY_DEVICE_AND_APP",
+      "feedback": {
+        "correct": "Boa observação: O aparelho é físico e o aplicativo é um programa.",
+        "incorrect": "O aparelho é físico e o aplicativo é um programa.",
+        "hint": "Separe o dispositivo do que ele executa.",
+        "errorFocus": "CLASSIFY_DEVICE_AND_APP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-18",
+      "statement": "Um programa envia instruções para tocar um áudio e o alto-falante produz o som. Qual parte é hardware?",
+      "prompt": "Um programa envia instruções para tocar um áudio e o alto-falante produz o som. Qual parte é hardware?",
+      "options": [
+        "O programa de áudio",
+        "O alto-falante físico.",
+        "A instrução do programa",
+        "O título da música"
+      ],
+      "correctAnswer": "O alto-falante físico.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O programa de áudio": [
+          "IDENTIFY_HARDWARE_IN_TASK"
+        ],
+        "A instrução do programa": [
+          "IDENTIFY_HARDWARE_IN_TASK"
+        ],
+        "O título da música": [
+          "IDENTIFY_HARDWARE_IN_TASK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SOM_E_PROGRAMA",
+      "explanation": "O alto-falante é componente físico; o programa é software.",
+      "hint": "Procure a peça que produz o som.",
+      "errorFocus": "IDENTIFY_HARDWARE_IN_TASK",
+      "feedback": {
+        "correct": "Boa observação: O alto-falante é componente físico; o programa é software.",
+        "incorrect": "O alto-falante é componente físico; o programa é software.",
+        "hint": "Procure a peça que produz o som.",
+        "errorFocus": "IDENTIFY_HARDWARE_IN_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-19",
+      "statement": "Uma câmera física registra imagens e um aplicativo aplica um filtro. Qual é o software?",
+      "prompt": "Uma câmera física registra imagens e um aplicativo aplica um filtro. Qual é o software?",
+      "options": [
+        "A lente física",
+        "O botão de captura",
+        "O aplicativo que aplica o filtro.",
+        "A câmera do aparelho"
+      ],
+      "correctAnswer": "O aplicativo que aplica o filtro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A lente física": [
+          "DISTINGUISH_APP_FROM_CAMERA"
+        ],
+        "O botão de captura": [
+          "DISTINGUISH_APP_FROM_CAMERA"
+        ],
+        "A câmera do aparelho": [
+          "DISTINGUISH_APP_FROM_CAMERA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CAMERA_E_FILTRO",
+      "explanation": "O aplicativo é programa; câmera e botão são componentes físicos.",
+      "hint": "Procure o que contém instruções de edição.",
+      "errorFocus": "DISTINGUISH_APP_FROM_CAMERA",
+      "feedback": {
+        "correct": "Boa observação: O aplicativo é programa; câmera e botão são componentes físicos.",
+        "incorrect": "O aplicativo é programa; câmera e botão são componentes físicos.",
+        "hint": "Procure o que contém instruções de edição.",
+        "errorFocus": "DISTINGUISH_APP_FROM_CAMERA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-20",
+      "statement": "Por que um programa precisa de hardware para ser executado num dispositivo?",
+      "prompt": "Por que um programa precisa de hardware para ser executado num dispositivo?",
+      "options": [
+        "Porque o programa é uma pessoa",
+        "Porque o papel substitui todas as peças",
+        "Porque hardware significa internet",
+        "Porque o hardware fornece componentes físicos que realizam as tarefas instruídas pelo programa."
+      ],
+      "correctAnswer": "Porque o hardware fornece componentes físicos que realizam as tarefas instruídas pelo programa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque o programa é uma pessoa": [
+          "HARDWARE_EXECUTES_SOFTWARE_INSTRUCTIONS"
+        ],
+        "Porque o papel substitui todas as peças": [
+          "HARDWARE_EXECUTES_SOFTWARE_INSTRUCTIONS"
+        ],
+        "Porque hardware significa internet": [
+          "HARDWARE_EXECUTES_SOFTWARE_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SEM_HARDWARE",
+      "explanation": "A relação envolve programa e componentes físicos do dispositivo.",
+      "hint": "Pense em quem realiza fisicamente a tarefa no aparelho.",
+      "errorFocus": "HARDWARE_EXECUTES_SOFTWARE_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: A relação envolve programa e componentes físicos do dispositivo.",
+        "incorrect": "A relação envolve programa e componentes físicos do dispositivo.",
+        "hint": "Pense em quem realiza fisicamente a tarefa no aparelho.",
+        "errorFocus": "HARDWARE_EXECUTES_SOFTWARE_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-21",
+      "statement": "Uma criança não tem acesso a um computador durante a aula. Como ainda pode praticar a classificação?",
+      "prompt": "Uma criança não tem acesso a um computador durante a aula. Como ainda pode praticar a classificação?",
+      "options": [
+        "Usando cartões ou desenhos de peças e programas.",
+        "Instalando um aplicativo sem autorização",
+        "Compartilhando uma senha",
+        "Desmontando um aparelho"
+      ],
+      "correctAnswer": "Usando cartões ou desenhos de peças e programas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Instalando um aplicativo sem autorização": [
+          "UNPLUGGED_ACCESSIBLE_LEARNING"
+        ],
+        "Compartilhando uma senha": [
+          "UNPLUGGED_ACCESSIBLE_LEARNING"
+        ],
+        "Desmontando um aparelho": [
+          "UNPLUGGED_ACCESSIBLE_LEARNING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESENHO_SEM_DISPOSITIVO",
+      "explanation": "A classificação pode ser praticada com materiais de papel.",
+      "hint": "Escolha uma alternativa sem conexão ou conta.",
+      "errorFocus": "UNPLUGGED_ACCESSIBLE_LEARNING",
+      "feedback": {
+        "correct": "Boa observação: A classificação pode ser praticada com materiais de papel.",
+        "incorrect": "A classificação pode ser praticada com materiais de papel.",
+        "hint": "Escolha uma alternativa sem conexão ou conta.",
+        "errorFocus": "UNPLUGGED_ACCESSIBLE_LEARNING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-22",
+      "statement": "Uma figura colorida aparece no monitor. Qual afirmação é correta?",
+      "prompt": "Uma figura colorida aparece no monitor. Qual afirmação é correta?",
+      "options": [
+        "A figura é o teclado",
+        "A figura é conteúdo exibido; o monitor é hardware.",
+        "O monitor é um programa",
+        "A figura e o monitor são o mesmo componente"
+      ],
+      "correctAnswer": "A figura é conteúdo exibido; o monitor é hardware.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A figura é o teclado": [
+          "CONTENT_VS_DISPLAY_COMPONENT"
+        ],
+        "O monitor é um programa": [
+          "CONTENT_VS_DISPLAY_COMPONENT"
+        ],
+        "A figura e o monitor são o mesmo componente": [
+          "CONTENT_VS_DISPLAY_COMPONENT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "IMAGEM_DA_TELA",
+      "explanation": "O conteúdo visual não é o componente físico que o exibe.",
+      "hint": "Separe o que aparece do equipamento.",
+      "errorFocus": "CONTENT_VS_DISPLAY_COMPONENT",
+      "feedback": {
+        "correct": "Boa observação: O conteúdo visual não é o componente físico que o exibe.",
+        "incorrect": "O conteúdo visual não é o componente físico que o exibe.",
+        "hint": "Separe o que aparece do equipamento.",
+        "errorFocus": "CONTENT_VS_DISPLAY_COMPONENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-23",
+      "statement": "Uma calculadora de mesa tem teclas físicas e executa um programa. O que é software?",
+      "prompt": "Uma calculadora de mesa tem teclas físicas e executa um programa. O que é software?",
+      "options": [
+        "As teclas",
+        "A carcaça",
+        "O programa que fornece instruções para calcular.",
+        "O visor físico"
+      ],
+      "correctAnswer": "O programa que fornece instruções para calcular.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As teclas": [
+          "PROGRAM_IN_CALCULATOR"
+        ],
+        "A carcaça": [
+          "PROGRAM_IN_CALCULATOR"
+        ],
+        "O visor físico": [
+          "PROGRAM_IN_CALCULATOR"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PROGRAMA_CALCULADORA",
+      "explanation": "Um programa pode orientar tarefas em diferentes dispositivos.",
+      "hint": "Escolha a parte que contém instruções, não as peças.",
+      "errorFocus": "PROGRAM_IN_CALCULATOR",
+      "feedback": {
+        "correct": "Boa observação: Um programa pode orientar tarefas em diferentes dispositivos.",
+        "incorrect": "Um programa pode orientar tarefas em diferentes dispositivos.",
+        "hint": "Escolha a parte que contém instruções, não as peças.",
+        "errorFocus": "PROGRAM_IN_CALCULATOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-24",
+      "statement": "Qual explicação distingue corretamente os dois conceitos?",
+      "prompt": "Qual explicação distingue corretamente os dois conceitos?",
+      "options": [
+        "Teclado é software e aplicativo é uma peça física",
+        "Tudo o que é digital é hardware",
+        "Hardware e software significam a mesma coisa",
+        "Teclado e tela são hardware; aplicativo é software que fornece instruções ao dispositivo."
+      ],
+      "correctAnswer": "Teclado e tela são hardware; aplicativo é software que fornece instruções ao dispositivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Teclado é software e aplicativo é uma peça física": [
+          "FULL_DISTINCTION"
+        ],
+        "Tudo o que é digital é hardware": [
+          "FULL_DISTINCTION"
+        ],
+        "Hardware e software significam a mesma coisa": [
+          "FULL_DISTINCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASSIFICACAO_COMPLETA",
+      "explanation": "A resposta identifica exemplos e sua relação com o dispositivo.",
+      "hint": "Confira a classificação de cada exemplo.",
+      "errorFocus": "FULL_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: A resposta identifica exemplos e sua relação com o dispositivo.",
+        "incorrect": "A resposta identifica exemplos e sua relação com o dispositivo.",
+        "hint": "Confira a classificação de cada exemplo.",
+        "errorFocus": "FULL_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-25",
+      "statement": "Um cabo usado para conectar componentes é",
+      "prompt": "Um cabo usado para conectar componentes é",
+      "options": [
+        "hardware.",
+        "software",
+        "um programa",
+        "um arquivo digital"
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "software": [
+          "CABLE_IS_PHYSICAL"
+        ],
+        "um programa": [
+          "CABLE_IS_PHYSICAL"
+        ],
+        "um arquivo digital": [
+          "CABLE_IS_PHYSICAL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CONECTOR_FISICO",
+      "explanation": "O cabo é um objeto físico que conecta dispositivos ou componentes.",
+      "hint": "Pense se pode ser visto e tocado como uma peça.",
+      "errorFocus": "CABLE_IS_PHYSICAL",
+      "feedback": {
+        "correct": "Boa observação: O cabo é um objeto físico que conecta dispositivos ou componentes.",
+        "incorrect": "O cabo é um objeto físico que conecta dispositivos ou componentes.",
+        "hint": "Pense se pode ser visto e tocado como uma peça.",
+        "errorFocus": "CABLE_IS_PHYSICAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-26",
+      "statement": "Um aplicativo de mapa é",
+      "prompt": "Um aplicativo de mapa é",
+      "options": [
+        "a tela física",
+        "software.",
+        "um botão",
+        "a câmera"
+      ],
+      "correctAnswer": "software.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a tela física": [
+          "MAP_APP_IS_SOFTWARE"
+        ],
+        "um botão": [
+          "MAP_APP_IS_SOFTWARE"
+        ],
+        "a câmera": [
+          "MAP_APP_IS_SOFTWARE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "APP_DE_MAPA",
+      "explanation": "O aplicativo é um programa executado pelo dispositivo.",
+      "hint": "Procure o programa, não uma parte do aparelho.",
+      "errorFocus": "MAP_APP_IS_SOFTWARE",
+      "feedback": {
+        "correct": "Boa observação: O aplicativo é um programa executado pelo dispositivo.",
+        "incorrect": "O aplicativo é um programa executado pelo dispositivo.",
+        "hint": "Procure o programa, não uma parte do aparelho.",
+        "errorFocus": "MAP_APP_IS_SOFTWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-27",
+      "statement": "O que o software fornece ao hardware?",
+      "prompt": "O que o software fornece ao hardware?",
+      "options": [
+        "um endereço residencial",
+        "uma peça de metal",
+        "Instruções para realizar tarefas.",
+        "uma imagem obrigatória"
+      ],
+      "correctAnswer": "Instruções para realizar tarefas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um endereço residencial": [
+          "SOFTWARE_INSTRUCTIONS"
+        ],
+        "uma peça de metal": [
+          "SOFTWARE_INSTRUCTIONS"
+        ],
+        "uma imagem obrigatória": [
+          "SOFTWARE_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "INSTRUCOES_SOFTWARE",
+      "explanation": "O descritor define software como programas que fornecem instruções ao hardware.",
+      "hint": "Lembre-se da função do programa.",
+      "errorFocus": "SOFTWARE_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: O descritor define software como programas que fornecem instruções ao hardware.",
+        "incorrect": "O descritor define software como programas que fornecem instruções ao hardware.",
+        "hint": "Lembre-se da função do programa.",
+        "errorFocus": "SOFTWARE_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-28",
+      "statement": "Uma unidade física de armazenamento dentro de um dispositivo pertence ao",
+      "prompt": "Uma unidade física de armazenamento dentro de um dispositivo pertence ao",
+      "options": [
+        "software",
+        "aplicativo de desenho",
+        "arquivo de texto",
+        "hardware."
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "software": [
+          "PHYSICAL_STORAGE_COMPONENT"
+        ],
+        "aplicativo de desenho": [
+          "PHYSICAL_STORAGE_COMPONENT"
+        ],
+        "arquivo de texto": [
+          "PHYSICAL_STORAGE_COMPONENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MEMORIA_FISICA",
+      "explanation": "Uma unidade física é componente de hardware.",
+      "hint": "A pergunta fala de uma peça física interna.",
+      "errorFocus": "PHYSICAL_STORAGE_COMPONENT",
+      "feedback": {
+        "correct": "Boa observação: Uma unidade física é componente de hardware.",
+        "incorrect": "Uma unidade física é componente de hardware.",
+        "hint": "A pergunta fala de uma peça física interna.",
+        "errorFocus": "PHYSICAL_STORAGE_COMPONENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-29",
+      "statement": "Qual item pode instruir um dispositivo a abrir e organizar textos?",
+      "prompt": "Qual item pode instruir um dispositivo a abrir e organizar textos?",
+      "options": [
+        "Um programa de edição de texto.",
+        "Um botão de volume",
+        "Uma tecla física",
+        "A carcaça"
+      ],
+      "correctAnswer": "Um programa de edição de texto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um botão de volume": [
+          "PROGRAM_FOR_TEXT_TASK"
+        ],
+        "Uma tecla física": [
+          "PROGRAM_FOR_TEXT_TASK"
+        ],
+        "A carcaça": [
+          "PROGRAM_FOR_TEXT_TASK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PROGRAMA_TAREFA",
+      "explanation": "O programa fornece instruções para que o dispositivo trabalhe com textos.",
+      "hint": "Escolha o item que é um programa.",
+      "errorFocus": "PROGRAM_FOR_TEXT_TASK",
+      "feedback": {
+        "correct": "Boa observação: O programa fornece instruções para que o dispositivo trabalhe com textos.",
+        "incorrect": "O programa fornece instruções para que o dispositivo trabalhe com textos.",
+        "hint": "Escolha o item que é um programa.",
+        "errorFocus": "PROGRAM_FOR_TEXT_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-30",
+      "statement": "Uma pessoa digita usando teclado físico em um programa de texto. Qual relação é correta?",
+      "prompt": "Uma pessoa digita usando teclado físico em um programa de texto. Qual relação é correta?",
+      "options": [
+        "O teclado é software e o programa é hardware",
+        "O teclado é hardware e o programa de texto é software.",
+        "Ambos são apenas telas",
+        "Nenhum faz parte do dispositivo"
+      ],
+      "correctAnswer": "O teclado é hardware e o programa de texto é software.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O teclado é software e o programa é hardware": [
+          "HARDWARE_INPUT_SOFTWARE_PROGRAM"
+        ],
+        "Ambos são apenas telas": [
+          "HARDWARE_INPUT_SOFTWARE_PROGRAM"
+        ],
+        "Nenhum faz parte do dispositivo": [
+          "HARDWARE_INPUT_SOFTWARE_PROGRAM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TECLADO_E_EDITOR",
+      "explanation": "O teclado é parte física; o editor é um programa.",
+      "hint": "Separe ferramenta física e programa.",
+      "errorFocus": "HARDWARE_INPUT_SOFTWARE_PROGRAM",
+      "feedback": {
+        "correct": "Boa observação: O teclado é parte física; o editor é um programa.",
+        "incorrect": "O teclado é parte física; o editor é um programa.",
+        "hint": "Separe ferramenta física e programa.",
+        "errorFocus": "HARDWARE_INPUT_SOFTWARE_PROGRAM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-31",
+      "statement": "Qual é uma forma segura de investigar hardware numa aula?",
+      "prompt": "Qual é uma forma segura de investigar hardware numa aula?",
+      "options": [
+        "Abrir aparelhos conectados à energia",
+        "Retirar peças de dispositivos de estudantes",
+        "Observar imagens ou modelos e nomear componentes sem desmontar equipamentos.",
+        "Instalar programas sem permissão"
+      ],
+      "correctAnswer": "Observar imagens ou modelos e nomear componentes sem desmontar equipamentos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Abrir aparelhos conectados à energia": [
+          "SAFE_COMPONENT_OBSERVATION"
+        ],
+        "Retirar peças de dispositivos de estudantes": [
+          "SAFE_COMPONENT_OBSERVATION"
+        ],
+        "Instalar programas sem permissão": [
+          "SAFE_COMPONENT_OBSERVATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NAO_DESMONTAR",
+      "explanation": "É possível aprender por observação, desenhos e cartões sem mexer em equipamentos reais.",
+      "hint": "Escolha uma forma sem desmontar ou instalar.",
+      "errorFocus": "SAFE_COMPONENT_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: É possível aprender por observação, desenhos e cartões sem mexer em equipamentos reais.",
+        "incorrect": "É possível aprender por observação, desenhos e cartões sem mexer em equipamentos reais.",
+        "hint": "Escolha uma forma sem desmontar ou instalar.",
+        "errorFocus": "SAFE_COMPONENT_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-32",
+      "statement": "Para estudar hardware e software, os estudantes precisam compartilhar senhas?",
+      "prompt": "Para estudar hardware e software, os estudantes precisam compartilhar senhas?",
+      "options": [
+        "Sim, sempre devem divulgar suas senhas",
+        "Sim, se o aplicativo pedir",
+        "Não, mas devem enviar mensagens privadas",
+        "Não; exemplos e cartões bastam para aprender os conceitos."
+      ],
+      "correctAnswer": "Não; exemplos e cartões bastam para aprender os conceitos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre devem divulgar suas senhas": [
+          "NO_CREDENTIALS_NEEDED"
+        ],
+        "Sim, se o aplicativo pedir": [
+          "NO_CREDENTIALS_NEEDED"
+        ],
+        "Não, mas devem enviar mensagens privadas": [
+          "NO_CREDENTIALS_NEEDED"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "PRIVACIDADE_CONTAS",
+      "explanation": "A classificação conceitual não exige acesso às contas pessoais.",
+      "hint": "Pense em atividades offline e genéricas.",
+      "errorFocus": "NO_CREDENTIALS_NEEDED",
+      "feedback": {
+        "correct": "Boa observação: A classificação conceitual não exige acesso às contas pessoais.",
+        "incorrect": "A classificação conceitual não exige acesso às contas pessoais.",
+        "hint": "Pense em atividades offline e genéricas.",
+        "errorFocus": "NO_CREDENTIALS_NEEDED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-33",
+      "statement": "Num aparelho de áudio, um fone físico é hardware; um programa de reprodução é",
+      "prompt": "Num aparelho de áudio, um fone físico é hardware; um programa de reprodução é",
+      "options": [
+        "software.",
+        "hardware também",
+        "um cabo de energia",
+        "uma tecla"
+      ],
+      "correctAnswer": "software.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "hardware também": [
+          "CLASSIFY_AUDIO_PAIR"
+        ],
+        "um cabo de energia": [
+          "CLASSIFY_AUDIO_PAIR"
+        ],
+        "uma tecla": [
+          "CLASSIFY_AUDIO_PAIR"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FONE_E_PLAYER",
+      "explanation": "A classificação distingue componente físico e programa.",
+      "hint": "Pense no fone como peça e no reprodutor como aplicativo.",
+      "errorFocus": "CLASSIFY_AUDIO_PAIR",
+      "feedback": {
+        "correct": "Boa observação: A classificação distingue componente físico e programa.",
+        "incorrect": "A classificação distingue componente físico e programa.",
+        "hint": "Pense no fone como peça e no reprodutor como aplicativo.",
+        "errorFocus": "CLASSIFY_AUDIO_PAIR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-34",
+      "statement": "Num jogo, o aplicativo é software e a tela que mostra as figuras é",
+      "prompt": "Num jogo, o aplicativo é software e a tela que mostra as figuras é",
+      "options": [
+        "software do jogo",
+        "hardware.",
+        "uma regra do jogo",
+        "um arquivo de áudio"
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "software do jogo": [
+          "SCREEN_IS_HARDWARE"
+        ],
+        "uma regra do jogo": [
+          "SCREEN_IS_HARDWARE"
+        ],
+        "um arquivo de áudio": [
+          "SCREEN_IS_HARDWARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TELA_E_JOGO",
+      "explanation": "A tela é componente físico, mesmo quando mostra conteúdo digital.",
+      "hint": "Separe o programa da peça que exibe as imagens.",
+      "errorFocus": "SCREEN_IS_HARDWARE",
+      "feedback": {
+        "correct": "Boa observação: A tela é componente físico, mesmo quando mostra conteúdo digital.",
+        "incorrect": "A tela é componente físico, mesmo quando mostra conteúdo digital.",
+        "hint": "Separe o programa da peça que exibe as imagens.",
+        "errorFocus": "SCREEN_IS_HARDWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-35",
+      "statement": "O que permite que um dispositivo execute tarefas diferentes?",
+      "prompt": "O que permite que um dispositivo execute tarefas diferentes?",
+      "options": [
+        "Somente a cor do aparelho",
+        "Uma pessoa considerada software",
+        "Seus componentes físicos e os programas que fornecem instruções.",
+        "Um papel sem nenhuma instrução"
+      ],
+      "correctAnswer": "Seus componentes físicos e os programas que fornecem instruções.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente a cor do aparelho": [
+          "COMBINED_HARDWARE_SOFTWARE"
+        ],
+        "Uma pessoa considerada software": [
+          "COMBINED_HARDWARE_SOFTWARE"
+        ],
+        "Um papel sem nenhuma instrução": [
+          "COMBINED_HARDWARE_SOFTWARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DISPOSITIVO_TAREFA",
+      "explanation": "Dispositivos combinam hardware e software para realizar tarefas.",
+      "hint": "Pense nas partes e nos programas.",
+      "errorFocus": "COMBINED_HARDWARE_SOFTWARE",
+      "feedback": {
+        "correct": "Boa observação: Dispositivos combinam hardware e software para realizar tarefas.",
+        "incorrect": "Dispositivos combinam hardware e software para realizar tarefas.",
+        "hint": "Pense nas partes e nos programas.",
+        "errorFocus": "COMBINED_HARDWARE_SOFTWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-36",
+      "statement": "O microfone físico de um tablet é",
+      "prompt": "O microfone físico de um tablet é",
+      "options": [
+        "software",
+        "uma mensagem",
+        "um aplicativo",
+        "hardware."
+      ],
+      "correctAnswer": "hardware.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "software": [
+          "MICROPHONE_IS_HARDWARE"
+        ],
+        "uma mensagem": [
+          "MICROPHONE_IS_HARDWARE"
+        ],
+        "um aplicativo": [
+          "MICROPHONE_IS_HARDWARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MICROFONE",
+      "explanation": "O microfone é componente do dispositivo.",
+      "hint": "É uma peça que capta som.",
+      "errorFocus": "MICROPHONE_IS_HARDWARE",
+      "feedback": {
+        "correct": "Boa observação: O microfone é componente do dispositivo.",
+        "incorrect": "O microfone é componente do dispositivo.",
+        "hint": "É uma peça que capta som.",
+        "errorFocus": "MICROPHONE_IS_HARDWARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-37",
+      "statement": "Qual frase explica software sem confundir com pessoa ou peça?",
+      "prompt": "Qual frase explica software sem confundir com pessoa ou peça?",
+      "options": [
+        "Software é um programa que fornece instruções ao hardware.",
+        "Software é quem usa o aparelho",
+        "Software é qualquer peça externa",
+        "Software é o nome do visor"
+      ],
+      "correctAnswer": "Software é um programa que fornece instruções ao hardware.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Software é quem usa o aparelho": [
+          "PRECISE_SOFTWARE_DEFINITION"
+        ],
+        "Software é qualquer peça externa": [
+          "PRECISE_SOFTWARE_DEFINITION"
+        ],
+        "Software é o nome do visor": [
+          "PRECISE_SOFTWARE_DEFINITION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SOFTWARE_PROGRAMA",
+      "explanation": "A definição segue a habilidade de Computação da BNCC.",
+      "hint": "Procure a opção que fala de programa e instruções.",
+      "errorFocus": "PRECISE_SOFTWARE_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: A definição segue a habilidade de Computação da BNCC.",
+        "incorrect": "A definição segue a habilidade de Computação da BNCC.",
+        "hint": "Procure a opção que fala de programa e instruções.",
+        "errorFocus": "PRECISE_SOFTWARE_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-38",
+      "statement": "O botão físico de ligar é hardware. As instruções de um programa que respondem a uma ação pertencem ao",
+      "prompt": "O botão físico de ligar é hardware. As instruções de um programa que respondem a uma ação pertencem ao",
+      "options": [
+        "cabo",
+        "software.",
+        "botão",
+        "monitor"
+      ],
+      "correctAnswer": "software.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "cabo": [
+          "PROGRAM_INSTRUCTIONS_CLASSIFICATION"
+        ],
+        "botão": [
+          "PROGRAM_INSTRUCTIONS_CLASSIFICATION"
+        ],
+        "monitor": [
+          "PROGRAM_INSTRUCTIONS_CLASSIFICATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOTAO_E_INSTRUCAO",
+      "explanation": "A ação física e as instruções do programa pertencem a categorias diferentes.",
+      "hint": "Pense no programa que orienta o dispositivo.",
+      "errorFocus": "PROGRAM_INSTRUCTIONS_CLASSIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A ação física e as instruções do programa pertencem a categorias diferentes.",
+        "incorrect": "A ação física e as instruções do programa pertencem a categorias diferentes.",
+        "hint": "Pense no programa que orienta o dispositivo.",
+        "errorFocus": "PROGRAM_INSTRUCTIONS_CLASSIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-39",
+      "statement": "Qual dupla apresenta uma peça e um programa, nessa ordem?",
+      "prompt": "Qual dupla apresenta uma peça e um programa, nessa ordem?",
+      "options": [
+        "Aplicativo de fotografia e câmera física",
+        "Duas telas",
+        "Câmera física e aplicativo de fotografia.",
+        "Dois programas"
+      ],
+      "correctAnswer": "Câmera física e aplicativo de fotografia.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Aplicativo de fotografia e câmera física": [
+          "HARDWARE_THEN_SOFTWARE_EXAMPLES"
+        ],
+        "Duas telas": [
+          "HARDWARE_THEN_SOFTWARE_EXAMPLES"
+        ],
+        "Dois programas": [
+          "HARDWARE_THEN_SOFTWARE_EXAMPLES"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DUPLA_CORRETA",
+      "explanation": "A câmera é componente físico; o aplicativo é software.",
+      "hint": "Confira a ordem pedida na pergunta.",
+      "errorFocus": "HARDWARE_THEN_SOFTWARE_EXAMPLES",
+      "feedback": {
+        "correct": "Boa observação: A câmera é componente físico; o aplicativo é software.",
+        "incorrect": "A câmera é componente físico; o aplicativo é software.",
+        "hint": "Confira a ordem pedida na pergunta.",
+        "errorFocus": "HARDWARE_THEN_SOFTWARE_EXAMPLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co04-distinguish-hardware-and-software-v1-40",
+      "statement": "Uma atividade usa cartões com desenho de teclado e nome de aplicativo, sem ligar aparelhos. Ela pode ensinar a habilidade?",
+      "prompt": "Uma atividade usa cartões com desenho de teclado e nome de aplicativo, sem ligar aparelhos. Ela pode ensinar a habilidade?",
+      "options": [
+        "Não, só uma conta conectada ensina",
+        "Não, é obrigatório desmontar o computador",
+        "Sim, mas exige compartilhar credenciais",
+        "Sim, se ajudar a diferenciar componentes físicos e programas."
+      ],
+      "correctAnswer": "Sim, se ajudar a diferenciar componentes físicos e programas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, só uma conta conectada ensina": [
+          "UNPLUGGED_CONCEPTUAL_EVIDENCE"
+        ],
+        "Não, é obrigatório desmontar o computador": [
+          "UNPLUGGED_CONCEPTUAL_EVIDENCE"
+        ],
+        "Sim, mas exige compartilhar credenciais": [
+          "UNPLUGGED_CONCEPTUAL_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "EXEMPLO_SEM_ACESSO",
+      "explanation": "A compreensão pode ser demonstrada por classificação e explicação com materiais offline.",
+      "hint": "O foco é distinguir os conceitos, não conectar-se.",
+      "errorFocus": "UNPLUGGED_CONCEPTUAL_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A compreensão pode ser demonstrada por classificação e explicação com materiais offline.",
+        "incorrect": "A compreensão pode ser demonstrada por classificação e explicação com materiais offline.",
+        "hint": "O foco é distinguir os conceitos, não conectar-se.",
+        "errorFocus": "UNPLUGGED_CONCEPTUAL_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões com ícones, descrições verbais, alto contraste e modelos não funcionais feitos de papel.",
+          "Permitir respostas por apontamento, fala, pareamento de cartões, desenho ou comunicação alternativa; não exigir uso de dispositivo conectado."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_5000_AND_REAL_COVERAGE_V3",
+  "officialCode": "EI01CG01",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Bebes, zero a 1 ano e 6 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Movimentar as partes do corpo para exprimir corporalmente emoções, necessidades e desejos.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Expressar emoções, necessidades e desejos com movimentos do corpo",
+    "objective": "Oferecer uma situação acolhedora para o bebê movimentar partes do corpo e comunicar-se corporalmente, respeitando seus sinais e seu ritmo.",
+    "experience": "Durante uma interação breve, o educador disponibiliza espaço seguro, nomeia suavemente emoções e necessidades percebidas e responde aos movimentos espontâneos do bebê com voz, olhar e pausa.",
+    "possibleInvitations": [
+      "Acompanhar uma canção curta com movimentos lentos, sem exigir imitação.",
+      "Oferecer objetos seguros e observar como o bebê movimenta mãos, braços, pernas ou tronco para alcançar, recusar ou pedir continuidade.",
+      "Nomear uma mudança de interesse ou desconforto e aguardar a resposta corporal do bebê."
+    ],
+    "educatorPrompts": [
+      "Eu percebi que você moveu as mãos; quer continuar?",
+      "Você virou o corpo para longe; vou dar espaço.",
+      "Seu movimento mostrou que você quer mais ou quer parar?"
+    ],
+    "observationCriteria": [
+      "Movimenta uma ou mais partes do corpo em resposta à situação ou à interação.",
+      "Produz movimentos que podem comunicar interesse, desconforto, necessidade ou desejo, sem exigir uma interpretação única.",
+      "Tem seus sinais acolhidos pelo adulto, com tempo, segurança e respeito ao ritmo individual.",
+      "Pode repetir, variar ou interromper a ação sem punição ou pressão por desempenho.",
+      "O registro descreve movimento ou sinal observável sem afirmar uma intenção que não foi comunicada."
+    ],
+    "evidenceRecord": {
+      "requiredFields": [
+        "date",
+        "context",
+        "observedMovement",
+        "possibleCommunication",
+        "educatorResponse",
+        "nextInvitation"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference",
+        "secure_photo_reference"
+      ],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não incluir diagnóstico, exposição pública ou inferência além do observado."
+    },
+    "adaptations": [
+      "Reduzir estímulos sonoros ou visuais quando houver sinais de sobrecarga.",
+      "Permitir observação em colo, no chão ou em outra posição segura indicada pela equipe.",
+      "Aceitar respostas corporais breves, repetidas, sutis ou ausência de resposta naquele momento."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Canção com movimento e pausa",
+        "steps": [
+          "Escolha uma canção curta e conhecida e deixe o bebê em posição segura.",
+          "Acompanhe o ritmo com movimentos suaves, sem exigir imitação, e faça pausas para perceber sinais.",
+          "Responda a movimentos, vocalizações, aproximação, recusa ou ausência de resposta sem atribuir uma intenção única."
+        ],
+        "observableEvidence": "Registro descritivo do movimento ou sinal observado, da pausa oferecida e da resposta do adulto, sem interpretar a intenção além do observável."
+      },
+      {
+        "title": "Exploração de objeto seguro",
+        "steps": [
+          "Disponibilize um objeto íntegro e apropriado à faixa etária em distância segura.",
+          "Aguarde se o bebê olha, alcança, toca, recusa ou solicita continuidade por seu modo de comunicação.",
+          "Ajuste distância, posição ou estímulos e encerre ou retome conforme sinais de interesse e conforto."
+        ],
+        "observableEvidence": "Descrição da forma de aproximação, recusa, pausa ou retomada e do apoio oferecido pelo adulto."
+      }
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  },
+  "active": false
+}
