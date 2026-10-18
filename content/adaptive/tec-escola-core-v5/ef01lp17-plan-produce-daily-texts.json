@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01lp17-plan-and-produce-daily-genres-v1",
+  "canonicalSkillCode": "PORTUGUESE_PLAN_AND_PRODUCE_DAILY_LIFE_GENRES",
+  "subject": "PORTUGUESE",
+  "domain": "CAMPO DA VIDA COTIDIANA · PRODUÇÃO DE TEXTOS",
+  "topic": "planejamento e produção colaborativa de textos cotidianos com situação, tema e finalidade definidos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP17",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 105
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Planejar textos para situações do dia a dia",
+    "objective": "Participar, com colegas e mediação docente, do planejamento e da produção de textos cotidianos, escolhendo gênero, leitor, assunto e finalidade.",
+    "summary": "Listas, convites, avisos, calendários, receitas, instruções e legendas ajudam pessoas a organizar atividades e compartilhar informações. Antes de produzir, o grupo combina para quem escreve, o que precisa dizer e para que o texto servirá. A escrita pode ser coletiva, com o professor como escriba, e pode circular em papel ou meio digital com os cuidados necessários.",
+    "explanation": "Comece pela situação: o que o grupo quer organizar ou comunicar? Depois escolha quem vai ler e qual gênero pode ajudar. Uma lista reúne itens; um convite chama alguém para uma atividade; um aviso destaca uma informação; uma receita ou instrução organiza etapas; uma legenda explica uma imagem. Releia o rascunho junto com outras pessoas para verificar se assunto e finalidade estão claros. Crianças podem contribuir com ideias, desenhos, ditado ao professor, letras e palavras conhecidas; não é necessário exigir escrita convencional independente.",
+    "workedExample": "A turma quer convidar outra sala para uma exposição de desenhos. Em conjunto, decide que o texto será um convite, identifica os leitores, registra o dia e o local confirmados pela escola e relê para conferir se quem receberá sabe como participar.",
+    "commonMistake": "Escolher um gênero apenas pelo formato, sem verificar se ele atende à situação, ao leitor e ao que se quer comunicar.",
+    "priorKnowledge": [
+      "Compartilhar ideias em conversas e observar textos usados no cotidiano.",
+      "Reconhecer que desenhos, letras e palavras podem comunicar informações."
+    ],
+    "keyConcepts": [
+      "situação comunicativa",
+      "leitor",
+      "tema",
+      "finalidade",
+      "gênero cotidiano",
+      "planejamento",
+      "releitura"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "GENRE_WITHOUT_PURPOSE",
+        "action": "Apresente duas situações familiares e compare qual tipo de texto ajuda melhor em cada uma, explicando a escolha oralmente ou por cartões."
+      },
+      {
+        "errorFocus": "MISSING_READER_INFORMATION",
+        "action": "Use cartões ‘quem escreve’, ‘para quem’ e ‘para quê’ antes de redigir; releia procurando uma informação necessária ao leitor."
+      },
+      {
+        "errorFocus": "INDEPENDENT_SPELLING_EXPECTED",
+        "action": "Convide a criança a ditar, desenhar, selecionar palavras móveis ou escrever trechos, mantendo a produção como colaboração mediada."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+      "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp17-plan-classroom-notice",
+        "title": "Aviso que ajuda a turma",
+        "instructions": "O grupo precisa comunicar uma mudança fictícia em uma rotina escolar, sem divulgar dados pessoais.\n1. Conversem sobre quem precisa receber a informação.\n2. Escolham aviso ou outro gênero que combine com a situação.\n3. Registrem a informação essencial e releiam juntos para verificar clareza.",
+        "steps": [
+          "Conversem sobre quem precisa receber a informação.",
+          "Escolham aviso ou outro gênero que combine com a situação.",
+          "Registrem a informação essencial e releiam juntos para verificar clareza."
+        ],
+        "evidence": "Contribuição ao planejamento e identificação de leitor, assunto e finalidade com apoio.",
+        "privacyGuard": "Usar situação inventada e não registrar nomes, contatos, horários pessoais ou dados de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe ou aponta uma informação relevante com ajuda.",
+            "developing": "relaciona uma informação ao leitor ou à finalidade.",
+            "proficient": "participa de uma produção coletiva coerente com a situação comunicativa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp17-make-captioned-gallery",
+        "title": "Galeria com legendas",
+        "instructions": "A turma organiza desenhos autorais em uma galeria de sala e cria legendas coletivas.\n1. Escolham uma imagem e conversem sobre o que pode ser comunicado.\n2. Decidam quem lerá a legenda e que informação ajuda a compreender a imagem.\n3. Produzam e releiam a legenda em papel ou painel local.",
+        "steps": [
+          "Escolham uma imagem e conversem sobre o que pode ser comunicado.",
+          "Decidam quem lerá a legenda e que informação ajuda a compreender a imagem.",
+          "Produzam e releiam a legenda em papel ou painel local."
+        ],
+        "evidence": "Legenda breve que se relaciona à imagem e considera o leitor, com participação colaborativa.",
+        "privacyGuard": "Exibir apenas produções sem nomes completos ou imagens identificáveis de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "associa uma palavra, símbolo ou fala à imagem.",
+            "developing": "inclui uma informação que ajuda o leitor.",
+            "proficient": "participa da revisão para alinhar legenda, tema e finalidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-01",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-02",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-03",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-04",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-05",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-06",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-07",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-09",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-10",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-11",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-12",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-13",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-14",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-15",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-17",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-18",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-19",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-20",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-21",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-22",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-23",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-25",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-26",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-27",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-28",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-29",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-30",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-31",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-33",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-34",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-35",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-36",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-37",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-38",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-39",
+          "bncc-ef01lp17-plan-and-produce-daily-genres-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP17",
+        "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 105
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-01",
+      "statement": "A turma vai separar papéis e lápis para uma atividade. Qual texto ajuda a conferir os materiais?",
+      "prompt": "A turma vai separar papéis e lápis para uma atividade. Qual texto ajuda a conferir os materiais?",
+      "options": [
+        "Uma lista de materiais.",
+        "Um convite para uma festa",
+        "Uma legenda para uma paisagem",
+        "Uma receita de sopa"
+      ],
+      "correctAnswer": "Uma lista de materiais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um convite para uma festa": [
+          "GENRE_MATCHES_INVENTORY_PURPOSE"
+        ],
+        "Uma legenda para uma paisagem": [
+          "GENRE_MATCHES_INVENTORY_PURPOSE"
+        ],
+        "Uma receita de sopa": [
+          "GENRE_MATCHES_INVENTORY_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LISTA_MATERIAIS_ARTE",
+      "explanation": "Uma lista reúne itens que o grupo precisa conferir.",
+      "hint": "Pense em um texto que reúne nomes de objetos.",
+      "errorFocus": "GENRE_MATCHES_INVENTORY_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Uma lista reúne itens que o grupo precisa conferir.",
+        "incorrect": "Uma lista reúne itens que o grupo precisa conferir.",
+        "hint": "Pense em um texto que reúne nomes de objetos.",
+        "errorFocus": "GENRE_MATCHES_INVENTORY_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-02",
+      "statement": "O grupo quer chamar outra turma para ver desenhos. Que texto combina?",
+      "prompt": "O grupo quer chamar outra turma para ver desenhos. Que texto combina?",
+      "options": [
+        "Uma lista de compras",
+        "Um convite.",
+        "Uma receita",
+        "Uma agenda pessoal"
+      ],
+      "correctAnswer": "Um convite.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista de compras": [
+          "GENRE_MATCHES_INVITATION_PURPOSE"
+        ],
+        "Uma receita": [
+          "GENRE_MATCHES_INVITATION_PURPOSE"
+        ],
+        "Uma agenda pessoal": [
+          "GENRE_MATCHES_INVITATION_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CONVITE_EXPOSICAO",
+      "explanation": "O objetivo é convidar leitores para participar de uma visita.",
+      "hint": "O texto deve chamar alguém para ir.",
+      "errorFocus": "GENRE_MATCHES_INVITATION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: O objetivo é convidar leitores para participar de uma visita.",
+        "incorrect": "O objetivo é convidar leitores para participar de uma visita.",
+        "hint": "O texto deve chamar alguém para ir.",
+        "errorFocus": "GENRE_MATCHES_INVITATION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-03",
+      "statement": "Uma imagem mostra um barco de papel sobre uma mesa. Que texto pode ajudar a pessoa que vê a imagem?",
+      "prompt": "Uma imagem mostra um barco de papel sobre uma mesa. Que texto pode ajudar a pessoa que vê a imagem?",
+      "options": [
+        "Uma lista de ingredientes",
+        "Um calendário do mês",
+        "Uma legenda relacionada ao desenho.",
+        "Uma instrução sem relação com a imagem"
+      ],
+      "correctAnswer": "Uma legenda relacionada ao desenho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista de ingredientes": [
+          "CAPTION_RELATES_TO_IMAGE"
+        ],
+        "Um calendário do mês": [
+          "CAPTION_RELATES_TO_IMAGE"
+        ],
+        "Uma instrução sem relação com a imagem": [
+          "CAPTION_RELATES_TO_IMAGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LEGENDA_DESENHO",
+      "explanation": "A legenda acrescenta informação sobre a imagem apresentada.",
+      "hint": "Procure um texto que acompanha uma imagem.",
+      "errorFocus": "CAPTION_RELATES_TO_IMAGE",
+      "feedback": {
+        "correct": "Boa observação: A legenda acrescenta informação sobre a imagem apresentada.",
+        "incorrect": "A legenda acrescenta informação sobre a imagem apresentada.",
+        "hint": "Procure um texto que acompanha uma imagem.",
+        "errorFocus": "CAPTION_RELATES_TO_IMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-04",
+      "statement": "A biblioteca da sala ficará fechada durante uma atividade. Qual texto pode comunicar isso aos leitores?",
+      "prompt": "A biblioteca da sala ficará fechada durante uma atividade. Qual texto pode comunicar isso aos leitores?",
+      "options": [
+        "Uma quadrinha",
+        "Uma lista de cores",
+        "Uma receita",
+        "Um aviso."
+      ],
+      "correctAnswer": "Um aviso.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma quadrinha": [
+          "NOTICE_COMMUNICATES_INFORMATION"
+        ],
+        "Uma lista de cores": [
+          "NOTICE_COMMUNICATES_INFORMATION"
+        ],
+        "Uma receita": [
+          "NOTICE_COMMUNICATES_INFORMATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "AVISO_LIVRO",
+      "explanation": "Um aviso destaca uma informação para quem precisa conhecê-la.",
+      "hint": "Pense no texto usado para comunicar uma informação importante.",
+      "errorFocus": "NOTICE_COMMUNICATES_INFORMATION",
+      "feedback": {
+        "correct": "Boa observação: Um aviso destaca uma informação para quem precisa conhecê-la.",
+        "incorrect": "Um aviso destaca uma informação para quem precisa conhecê-la.",
+        "hint": "Pense no texto usado para comunicar uma informação importante.",
+        "errorFocus": "NOTICE_COMMUNICATES_INFORMATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-05",
+      "statement": "O grupo vai preparar uma salada de frutas fictícia em uma brincadeira de faz de conta. Qual texto organiza ingredientes e etapas?",
+      "prompt": "O grupo vai preparar uma salada de frutas fictícia em uma brincadeira de faz de conta. Qual texto organiza ingredientes e etapas?",
+      "options": [
+        "Uma receita.",
+        "Um convite",
+        "Uma legenda",
+        "Um calendário"
+      ],
+      "correctAnswer": "Uma receita.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um convite": [
+          "RECIPE_ORGANIZES_INGREDIENTS_AND_STEPS"
+        ],
+        "Uma legenda": [
+          "RECIPE_ORGANIZES_INGREDIENTS_AND_STEPS"
+        ],
+        "Um calendário": [
+          "RECIPE_ORGANIZES_INGREDIENTS_AND_STEPS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RECEITA_ETAPAS",
+      "explanation": "Receitas costumam organizar itens e etapas para preparar algo.",
+      "hint": "Procure um gênero com ingredientes e modo de fazer.",
+      "errorFocus": "RECIPE_ORGANIZES_INGREDIENTS_AND_STEPS",
+      "feedback": {
+        "correct": "Boa observação: Receitas costumam organizar itens e etapas para preparar algo.",
+        "incorrect": "Receitas costumam organizar itens e etapas para preparar algo.",
+        "hint": "Procure um gênero com ingredientes e modo de fazer.",
+        "errorFocus": "RECIPE_ORGANIZES_INGREDIENTS_AND_STEPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-06",
+      "statement": "A equipe precisa lembrar em que dia ocorrerá uma reunião inventada. Qual recurso pode ajudar a organizar a data?",
+      "prompt": "A equipe precisa lembrar em que dia ocorrerá uma reunião inventada. Qual recurso pode ajudar a organizar a data?",
+      "options": [
+        "Uma legenda de desenho",
+        "Uma agenda ou calendário.",
+        "Uma receita",
+        "Uma quadrinha"
+      ],
+      "correctAnswer": "Uma agenda ou calendário.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma legenda de desenho": [
+          "AGENDA_CALENDAR_ORGANIZES_DATES"
+        ],
+        "Uma receita": [
+          "AGENDA_CALENDAR_ORGANIZES_DATES"
+        ],
+        "Uma quadrinha": [
+          "AGENDA_CALENDAR_ORGANIZES_DATES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "AGENDA_ENCONTRO",
+      "explanation": "Agendas e calendários ajudam a registrar compromissos e datas.",
+      "hint": "Pense em um texto organizado por dias.",
+      "errorFocus": "AGENDA_CALENDAR_ORGANIZES_DATES",
+      "feedback": {
+        "correct": "Boa observação: Agendas e calendários ajudam a registrar compromissos e datas.",
+        "incorrect": "Agendas e calendários ajudam a registrar compromissos e datas.",
+        "hint": "Pense em um texto organizado por dias.",
+        "errorFocus": "AGENDA_CALENDAR_ORGANIZES_DATES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-07",
+      "statement": "Antes de escrever um convite coletivo, o que o grupo precisa combinar?",
+      "prompt": "Antes de escrever um convite coletivo, o que o grupo precisa combinar?",
+      "options": [
+        "Qual será a cor favorita de cada leitor",
+        "Como esconder o assunto",
+        "Para quem é e o que quer comunicar.",
+        "Que o texto não precisa ser lido"
+      ],
+      "correctAnswer": "Para quem é e o que quer comunicar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual será a cor favorita de cada leitor": [
+          "PLAN_AUDIENCE_AND_MESSAGE"
+        ],
+        "Como esconder o assunto": [
+          "PLAN_AUDIENCE_AND_MESSAGE"
+        ],
+        "Que o texto não precisa ser lido": [
+          "PLAN_AUDIENCE_AND_MESSAGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PLANEJAR_ANTES",
+      "explanation": "Leitor e mensagem ajudam a orientar a produção.",
+      "hint": "Pergunte quem receberá o convite e para quê.",
+      "errorFocus": "PLAN_AUDIENCE_AND_MESSAGE",
+      "feedback": {
+        "correct": "Boa observação: Leitor e mensagem ajudam a orientar a produção.",
+        "incorrect": "Leitor e mensagem ajudam a orientar a produção.",
+        "hint": "Pergunte quem receberá o convite e para quê.",
+        "errorFocus": "PLAN_AUDIENCE_AND_MESSAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-08",
+      "statement": "Na produção coletiva, como o professor pode apoiar crianças que ainda estão aprendendo a escrever?",
+      "prompt": "Na produção coletiva, como o professor pode apoiar crianças que ainda estão aprendendo a escrever?",
+      "options": [
+        "Deve impedir que as crianças contribuam",
+        "Deve exigir que cada criança escreva sozinha",
+        "Deve trocar as ideias do grupo por uma cópia",
+        "Pode registrar ideias ditadas pelo grupo e reler com todos."
+      ],
+      "correctAnswer": "Pode registrar ideias ditadas pelo grupo e reler com todos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Deve impedir que as crianças contribuam": [
+          "TEACHER_MEDIATED_COLLABORATION"
+        ],
+        "Deve exigir que cada criança escreva sozinha": [
+          "TEACHER_MEDIATED_COLLABORATION"
+        ],
+        "Deve trocar as ideias do grupo por uma cópia": [
+          "TEACHER_MEDIATED_COLLABORATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESCRIBA_PROFESSOR",
+      "explanation": "O descritor prevê colaboração com ajuda do professor.",
+      "hint": "Pense em uma forma de escrever junto com a turma.",
+      "errorFocus": "TEACHER_MEDIATED_COLLABORATION",
+      "feedback": {
+        "correct": "Boa observação: O descritor prevê colaboração com ajuda do professor.",
+        "incorrect": "O descritor prevê colaboração com ajuda do professor.",
+        "hint": "Pense em uma forma de escrever junto com a turma.",
+        "errorFocus": "TEACHER_MEDIATED_COLLABORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-09",
+      "statement": "O grupo vai montar uma figura de papel seguindo passos em ordem. Qual gênero pode orientar a tarefa?",
+      "prompt": "O grupo vai montar uma figura de papel seguindo passos em ordem. Qual gênero pode orientar a tarefa?",
+      "options": [
+        "Uma instrução de montagem.",
+        "Uma legenda de fotografia",
+        "Um convite",
+        "Uma lista de aniversários"
+      ],
+      "correctAnswer": "Uma instrução de montagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma legenda de fotografia": [
+          "INSTRUCTIONS_SEQUENCE_ACTIONS"
+        ],
+        "Um convite": [
+          "INSTRUCTIONS_SEQUENCE_ACTIONS"
+        ],
+        "Uma lista de aniversários": [
+          "INSTRUCTIONS_SEQUENCE_ACTIONS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "INSTRUCAO_MONTAGEM",
+      "explanation": "Instruções apresentam passos para realizar uma tarefa.",
+      "hint": "Procure um texto que diga o que fazer em cada etapa.",
+      "errorFocus": "INSTRUCTIONS_SEQUENCE_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: Instruções apresentam passos para realizar uma tarefa.",
+        "incorrect": "Instruções apresentam passos para realizar uma tarefa.",
+        "hint": "Procure um texto que diga o que fazer em cada etapa.",
+        "errorFocus": "INSTRUCTIONS_SEQUENCE_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-10",
+      "statement": "Um convite diz ‘Venha à nossa mostra’, mas não informa quando. O que ajudaria o leitor?",
+      "prompt": "Um convite diz ‘Venha à nossa mostra’, mas não informa quando. O que ajudaria o leitor?",
+      "options": [
+        "Apagar o motivo do convite",
+        "Acrescentar a data ou indicar onde obtê-la.",
+        "Trocar por uma lista de frutas",
+        "Adicionar uma palavra sem relação"
+      ],
+      "correctAnswer": "Acrescentar a data ou indicar onde obtê-la.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar o motivo do convite": [
+          "INVITATION_NEEDS_RELEVANT_DETAILS"
+        ],
+        "Trocar por uma lista de frutas": [
+          "INVITATION_NEEDS_RELEVANT_DETAILS"
+        ],
+        "Adicionar uma palavra sem relação": [
+          "INVITATION_NEEDS_RELEVANT_DETAILS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CONVITE_SEM_DATA",
+      "explanation": "O leitor precisa de informação suficiente para compreender como participar.",
+      "hint": "Pense no dado que falta para a pessoa chegar no momento certo.",
+      "errorFocus": "INVITATION_NEEDS_RELEVANT_DETAILS",
+      "feedback": {
+        "correct": "Boa observação: O leitor precisa de informação suficiente para compreender como participar.",
+        "incorrect": "O leitor precisa de informação suficiente para compreender como participar.",
+        "hint": "Pense no dado que falta para a pessoa chegar no momento certo.",
+        "errorFocus": "INVITATION_NEEDS_RELEVANT_DETAILS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-11",
+      "statement": "Uma lista de objetos para uma brincadeira serve principalmente para",
+      "prompt": "Uma lista de objetos para uma brincadeira serve principalmente para",
+      "options": [
+        "contar uma história longa",
+        "mostrar os passos de uma dança sem itens",
+        "reunir e conferir os itens necessários.",
+        "substituir todos os avisos da escola"
+      ],
+      "correctAnswer": "reunir e conferir os itens necessários.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "contar uma história longa": [
+          "LIST_FUNCTION"
+        ],
+        "mostrar os passos de uma dança sem itens": [
+          "LIST_FUNCTION"
+        ],
+        "substituir todos os avisos da escola": [
+          "LIST_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LISTA_ORDEM",
+      "explanation": "Listas organizam itens que o grupo quer lembrar ou conferir.",
+      "hint": "Observe que os elementos aparecem reunidos.",
+      "errorFocus": "LIST_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: Listas organizam itens que o grupo quer lembrar ou conferir.",
+        "incorrect": "Listas organizam itens que o grupo quer lembrar ou conferir.",
+        "hint": "Observe que os elementos aparecem reunidos.",
+        "errorFocus": "LIST_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-12",
+      "statement": "A imagem mostra uma planta desenhada pela turma. Qual legenda ajuda sem inventar uma história sobre a planta?",
+      "prompt": "A imagem mostra uma planta desenhada pela turma. Qual legenda ajuda sem inventar uma história sobre a planta?",
+      "options": [
+        "‘Esta planta cresce no deserto.’",
+        "‘A planta ganhou uma corrida.’",
+        "‘Amanhã haverá uma reunião.’",
+        "‘Planta desenhada pela turma no papel.’"
+      ],
+      "correctAnswer": "‘Planta desenhada pela turma no papel.’",
+      "answerPosition": "D",
+      "misconceptions": {
+        "‘Esta planta cresce no deserto.’": [
+          "CAPTION_STAYS_CONNECTED_TO_IMAGE"
+        ],
+        "‘A planta ganhou uma corrida.’": [
+          "CAPTION_STAYS_CONNECTED_TO_IMAGE"
+        ],
+        "‘Amanhã haverá uma reunião.’": [
+          "CAPTION_STAYS_CONNECTED_TO_IMAGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEGENDA_LEITOR",
+      "explanation": "Uma legenda deve guardar relação clara com o que a imagem mostra.",
+      "hint": "Escolha uma frase que descreve o desenho observado.",
+      "errorFocus": "CAPTION_STAYS_CONNECTED_TO_IMAGE",
+      "feedback": {
+        "correct": "Boa observação: Uma legenda deve guardar relação clara com o que a imagem mostra.",
+        "incorrect": "Uma legenda deve guardar relação clara com o que a imagem mostra.",
+        "hint": "Escolha uma frase que descreve o desenho observado.",
+        "errorFocus": "CAPTION_STAYS_CONNECTED_TO_IMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-13",
+      "statement": "O grupo quer explicar como guardar materiais depois da aula. Qual assunto deve aparecer no texto?",
+      "prompt": "O grupo quer explicar como guardar materiais depois da aula. Qual assunto deve aparecer no texto?",
+      "options": [
+        "O cuidado para guardar os materiais.",
+        "Uma viagem imaginária ao espaço",
+        "Uma lista de animais marinhos",
+        "O resultado de uma partida"
+      ],
+      "correctAnswer": "O cuidado para guardar os materiais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma viagem imaginária ao espaço": [
+          "TEXT_TOPIC_MATCHES_COMMUNICATIVE_NEED"
+        ],
+        "Uma lista de animais marinhos": [
+          "TEXT_TOPIC_MATCHES_COMMUNICATIVE_NEED"
+        ],
+        "O resultado de uma partida": [
+          "TEXT_TOPIC_MATCHES_COMMUNICATIVE_NEED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TEMA_TEXTO",
+      "explanation": "O tema deve corresponder ao que a situação precisa comunicar.",
+      "hint": "Volte ao objetivo combinado pelo grupo.",
+      "errorFocus": "TEXT_TOPIC_MATCHES_COMMUNICATIVE_NEED",
+      "feedback": {
+        "correct": "Boa observação: O tema deve corresponder ao que a situação precisa comunicar.",
+        "incorrect": "O tema deve corresponder ao que a situação precisa comunicar.",
+        "hint": "Volte ao objetivo combinado pelo grupo.",
+        "errorFocus": "TEXT_TOPIC_MATCHES_COMMUNICATIVE_NEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-14",
+      "statement": "Um aviso para a turma deve trazer informações que",
+      "prompt": "Um aviso para a turma deve trazer informações que",
+      "options": [
+        "não tenham relação com o assunto",
+        "ajudem os leitores a entender a mensagem necessária.",
+        "sejam segredo para quem vai ler",
+        "substituam a conversa por desenhos sem contexto"
+      ],
+      "correctAnswer": "ajudem os leitores a entender a mensagem necessária.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "não tenham relação com o assunto": [
+          "NOTICE_RELEVANCE"
+        ],
+        "sejam segredo para quem vai ler": [
+          "NOTICE_RELEVANCE"
+        ],
+        "substituam a conversa por desenhos sem contexto": [
+          "NOTICE_RELEVANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "AVISO_LEITURA",
+      "explanation": "Informações relevantes tornam o aviso compreensível.",
+      "hint": "Pense no que o leitor precisa saber.",
+      "errorFocus": "NOTICE_RELEVANCE",
+      "feedback": {
+        "correct": "Boa observação: Informações relevantes tornam o aviso compreensível.",
+        "incorrect": "Informações relevantes tornam o aviso compreensível.",
+        "hint": "Pense no que o leitor precisa saber.",
+        "errorFocus": "NOTICE_RELEVANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-15",
+      "statement": "Uma criança escolhe cartões ‘sábado’, ‘mostra’ e ‘famílias’ enquanto a turma planeja um convite. Isso é",
+      "prompt": "Uma criança escolhe cartões ‘sábado’, ‘mostra’ e ‘famílias’ enquanto a turma planeja um convite. Isso é",
+      "options": [
+        "um erro que deve ser apagado",
+        "prova de que a criança não pode participar",
+        "uma contribuição válida ao planejamento coletivo.",
+        "um texto publicado sem revisão"
+      ],
+      "correctAnswer": "uma contribuição válida ao planejamento coletivo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um erro que deve ser apagado": [
+          "MULTIMODAL_CONTRIBUTION"
+        ],
+        "prova de que a criança não pode participar": [
+          "MULTIMODAL_CONTRIBUTION"
+        ],
+        "um texto publicado sem revisão": [
+          "MULTIMODAL_CONTRIBUTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRODUCAO_COM_CARTOES",
+      "explanation": "Ideias podem ser oferecidas por seleção de cartões, fala, desenho ou escrita.",
+      "hint": "Considere diferentes formas de contribuir.",
+      "errorFocus": "MULTIMODAL_CONTRIBUTION",
+      "feedback": {
+        "correct": "Boa observação: Ideias podem ser oferecidas por seleção de cartões, fala, desenho ou escrita.",
+        "incorrect": "Ideias podem ser oferecidas por seleção de cartões, fala, desenho ou escrita.",
+        "hint": "Considere diferentes formas de contribuir.",
+        "errorFocus": "MULTIMODAL_CONTRIBUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-16",
+      "statement": "Por que reler um texto depois de escrevê-lo em grupo?",
+      "prompt": "Por que reler um texto depois de escrevê-lo em grupo?",
+      "options": [
+        "Para mudar o assunto sem conversar",
+        "Para remover todas as informações úteis",
+        "Para impedir que alguém compreenda",
+        "Para conferir se a mensagem combina com o leitor e a finalidade."
+      ],
+      "correctAnswer": "Para conferir se a mensagem combina com o leitor e a finalidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para mudar o assunto sem conversar": [
+          "REVISION_FOR_AUDIENCE_AND_PURPOSE"
+        ],
+        "Para remover todas as informações úteis": [
+          "REVISION_FOR_AUDIENCE_AND_PURPOSE"
+        ],
+        "Para impedir que alguém compreenda": [
+          "REVISION_FOR_AUDIENCE_AND_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RELEITURA_FINALIDADE",
+      "explanation": "A releitura verifica se o texto atende à situação combinada.",
+      "hint": "Pergunte se quem receber o texto entenderá o que fazer ou saber.",
+      "errorFocus": "REVISION_FOR_AUDIENCE_AND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A releitura verifica se o texto atende à situação combinada.",
+        "incorrect": "A releitura verifica se o texto atende à situação combinada.",
+        "hint": "Pergunte se quem receber o texto entenderá o que fazer ou saber.",
+        "errorFocus": "REVISION_FOR_AUDIENCE_AND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-17",
+      "statement": "A turma precisa avisar que os livros devem voltar à estante depois da leitura. Qual planejamento faz sentido?",
+      "prompt": "A turma precisa avisar que os livros devem voltar à estante depois da leitura. Qual planejamento faz sentido?",
+      "options": [
+        "Definir leitores da turma, mensagem e formato de aviso.",
+        "Escrever qualquer gênero sem considerar o recado",
+        "Criar uma lista de nomes pessoais para expor",
+        "Fazer uma receita sem relação com livros"
+      ],
+      "correctAnswer": "Definir leitores da turma, mensagem e formato de aviso.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escrever qualquer gênero sem considerar o recado": [
+          "PLAN_GENRE_FROM_REAL_COMMUNICATIVE_SITUATION"
+        ],
+        "Criar uma lista de nomes pessoais para expor": [
+          "PLAN_GENRE_FROM_REAL_COMMUNICATIVE_SITUATION"
+        ],
+        "Fazer uma receita sem relação com livros": [
+          "PLAN_GENRE_FROM_REAL_COMMUNICATIVE_SITUATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AVISO_MATERIALS",
+      "explanation": "A situação pede um recado claro aos leitores da sala.",
+      "hint": "Comece perguntando a quem o texto será dirigido.",
+      "errorFocus": "PLAN_GENRE_FROM_REAL_COMMUNICATIVE_SITUATION",
+      "feedback": {
+        "correct": "Boa observação: A situação pede um recado claro aos leitores da sala.",
+        "incorrect": "A situação pede um recado claro aos leitores da sala.",
+        "hint": "Comece perguntando a quem o texto será dirigido.",
+        "errorFocus": "PLAN_GENRE_FROM_REAL_COMMUNICATIVE_SITUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-18",
+      "statement": "O grupo organiza uma semana de leitura com dias diferentes. Qual gênero ajuda a mostrar a sequência das datas?",
+      "prompt": "O grupo organiza uma semana de leitura com dias diferentes. Qual gênero ajuda a mostrar a sequência das datas?",
+      "options": [
+        "Uma legenda de uma única imagem",
+        "Um calendário organizado por dias.",
+        "Uma receita com ingredientes",
+        "Um convite sem data"
+      ],
+      "correctAnswer": "Um calendário organizado por dias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma legenda de uma única imagem": [
+          "CALENDAR_SUPPORTS_DATE_SEQUENCE"
+        ],
+        "Uma receita com ingredientes": [
+          "CALENDAR_SUPPORTS_DATE_SEQUENCE"
+        ],
+        "Um convite sem data": [
+          "CALENDAR_SUPPORTS_DATE_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CALENDARIO_EVENTO",
+      "explanation": "A organização em dias ajuda o leitor a localizar cada atividade.",
+      "hint": "Pense em uma forma de organizar mais de uma data.",
+      "errorFocus": "CALENDAR_SUPPORTS_DATE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A organização em dias ajuda o leitor a localizar cada atividade.",
+        "incorrect": "A organização em dias ajuda o leitor a localizar cada atividade.",
+        "hint": "Pense em uma forma de organizar mais de uma data.",
+        "errorFocus": "CALENDAR_SUPPORTS_DATE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-19",
+      "statement": "Uma foto autoral mostra uma maquete de papel. O grupo quer contar o que ela representa. Qual texto pode acompanhar a foto?",
+      "prompt": "Uma foto autoral mostra uma maquete de papel. O grupo quer contar o que ela representa. Qual texto pode acompanhar a foto?",
+      "options": [
+        "Uma lista aleatória de objetos",
+        "Um aviso sobre outro tema",
+        "Uma legenda planejada para explicar a imagem.",
+        "Uma agenda sem relação"
+      ],
+      "correctAnswer": "Uma legenda planejada para explicar a imagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista aleatória de objetos": [
+          "CAPTION_PURPOSE_IN_CONTEXT"
+        ],
+        "Um aviso sobre outro tema": [
+          "CAPTION_PURPOSE_IN_CONTEXT"
+        ],
+        "Uma agenda sem relação": [
+          "CAPTION_PURPOSE_IN_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FOTO_SEM_CONTEXTO",
+      "explanation": "A legenda conecta uma imagem ao assunto que o grupo quer compartilhar.",
+      "hint": "Escolha o gênero que acompanha uma imagem.",
+      "errorFocus": "CAPTION_PURPOSE_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A legenda conecta uma imagem ao assunto que o grupo quer compartilhar.",
+        "incorrect": "A legenda conecta uma imagem ao assunto que o grupo quer compartilhar.",
+        "hint": "Escolha o gênero que acompanha uma imagem.",
+        "errorFocus": "CAPTION_PURPOSE_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-20",
+      "statement": "Para ensinar uma brincadeira inventada de tabuleiro, a equipe quer explicar a ordem das ações. O que ajuda?",
+      "prompt": "Para ensinar uma brincadeira inventada de tabuleiro, a equipe quer explicar a ordem das ações. O que ajuda?",
+      "options": [
+        "Escrever só o nome do jogo",
+        "Fazer um convite sem regras",
+        "Registrar datas em uma lista",
+        "Planejar instruções curtas em uma sequência compreensível."
+      ],
+      "correctAnswer": "Planejar instruções curtas em uma sequência compreensível.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escrever só o nome do jogo": [
+          "INSTRUCTIONS_FOR_ACTION"
+        ],
+        "Fazer um convite sem regras": [
+          "INSTRUCTIONS_FOR_ACTION"
+        ],
+        "Registrar datas em uma lista": [
+          "INSTRUCTIONS_FOR_ACTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "INSTRUCAO_JOGO",
+      "explanation": "Uma sequência de instruções pode apoiar quem vai realizar a atividade.",
+      "hint": "Pense no que o leitor precisa fazer primeiro e depois.",
+      "errorFocus": "INSTRUCTIONS_FOR_ACTION",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência de instruções pode apoiar quem vai realizar a atividade.",
+        "incorrect": "Uma sequência de instruções pode apoiar quem vai realizar a atividade.",
+        "hint": "Pense no que o leitor precisa fazer primeiro e depois.",
+        "errorFocus": "INSTRUCTIONS_FOR_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-21",
+      "statement": "Por que identificar o leitor antes de produzir um convite?",
+      "prompt": "Por que identificar o leitor antes de produzir um convite?",
+      "options": [
+        "Para escolher informações e palavras adequadas a quem será convidado.",
+        "Para impedir a participação do leitor",
+        "Para ocultar quando e onde será o encontro",
+        "Porque todo convite precisa ter o mesmo texto"
+      ],
+      "correctAnswer": "Para escolher informações e palavras adequadas a quem será convidado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para impedir a participação do leitor": [
+          "AUDIENCE_SHAPES_TEXT_CHOICES"
+        ],
+        "Para ocultar quando e onde será o encontro": [
+          "AUDIENCE_SHAPES_TEXT_CHOICES"
+        ],
+        "Porque todo convite precisa ter o mesmo texto": [
+          "AUDIENCE_SHAPES_TEXT_CHOICES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LEITOR_CONVITE",
+      "explanation": "Conhecer o leitor ajuda a decidir quais detalhes serão necessários.",
+      "hint": "Pense no que a pessoa convidada precisa saber.",
+      "errorFocus": "AUDIENCE_SHAPES_TEXT_CHOICES",
+      "feedback": {
+        "correct": "Boa observação: Conhecer o leitor ajuda a decidir quais detalhes serão necessários.",
+        "incorrect": "Conhecer o leitor ajuda a decidir quais detalhes serão necessários.",
+        "hint": "Pense no que a pessoa convidada precisa saber.",
+        "errorFocus": "AUDIENCE_SHAPES_TEXT_CHOICES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-22",
+      "statement": "Qual diferença ajuda a escolher entre lista e receita?",
+      "prompt": "Qual diferença ajuda a escolher entre lista e receita?",
+      "options": [
+        "A lista sempre conta uma história e a receita nunca tem ingredientes",
+        "A lista reúne itens; a receita também organiza etapas de preparo.",
+        "Os dois gêneros são idênticos em toda situação",
+        "A receita serve apenas para marcar datas"
+      ],
+      "correctAnswer": "A lista reúne itens; a receita também organiza etapas de preparo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A lista sempre conta uma história e a receita nunca tem ingredientes": [
+          "DISTINGUISH_GENRE_FUNCTIONS"
+        ],
+        "Os dois gêneros são idênticos em toda situação": [
+          "DISTINGUISH_GENRE_FUNCTIONS"
+        ],
+        "A receita serve apenas para marcar datas": [
+          "DISTINGUISH_GENRE_FUNCTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LISTA_RECEITA",
+      "explanation": "A organização acompanha a finalidade de cada gênero.",
+      "hint": "Compare o que cada texto ajuda o leitor a fazer.",
+      "errorFocus": "DISTINGUISH_GENRE_FUNCTIONS",
+      "feedback": {
+        "correct": "Boa observação: A organização acompanha a finalidade de cada gênero.",
+        "incorrect": "A organização acompanha a finalidade de cada gênero.",
+        "hint": "Compare o que cada texto ajuda o leitor a fazer.",
+        "errorFocus": "DISTINGUISH_GENRE_FUNCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-23",
+      "statement": "Depois da produção, um colega diz que não entendeu onde será a atividade. O que o grupo pode fazer?",
+      "prompt": "Depois da produção, um colega diz que não entendeu onde será a atividade. O que o grupo pode fazer?",
+      "options": [
+        "Culpar o leitor e encerrar a conversa",
+        "Apagar toda a mensagem",
+        "Rever o texto e incluir a informação combinada que falta.",
+        "Adicionar nomes completos dos estudantes"
+      ],
+      "correctAnswer": "Rever o texto e incluir a informação combinada que falta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Culpar o leitor e encerrar a conversa": [
+          "REVISION_RESPONDS_TO_READER_NEED"
+        ],
+        "Apagar toda a mensagem": [
+          "REVISION_RESPONDS_TO_READER_NEED"
+        ],
+        "Adicionar nomes completos dos estudantes": [
+          "REVISION_RESPONDS_TO_READER_NEED"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_LEGIBILIDADE",
+      "explanation": "A revisão pode tornar explícita uma informação necessária sem expor dados pessoais.",
+      "hint": "Identifique o que falta para o leitor compreender.",
+      "errorFocus": "REVISION_RESPONDS_TO_READER_NEED",
+      "feedback": {
+        "correct": "Boa observação: A revisão pode tornar explícita uma informação necessária sem expor dados pessoais.",
+        "incorrect": "A revisão pode tornar explícita uma informação necessária sem expor dados pessoais.",
+        "hint": "Identifique o que falta para o leitor compreender.",
+        "errorFocus": "REVISION_RESPONDS_TO_READER_NEED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-24",
+      "statement": "A turma quer guardar uma sequência de tarefas e também convidar famílias para uma mostra. Qual decisão é mais adequada?",
+      "prompt": "A turma quer guardar uma sequência de tarefas e também convidar famílias para uma mostra. Qual decisão é mais adequada?",
+      "options": [
+        "Usar uma lista para substituir qualquer comunicação",
+        "Fazer apenas uma legenda sem considerar leitores",
+        "Evitar decidir o assunto",
+        "Planejar textos diferentes para as duas finalidades."
+      ],
+      "correctAnswer": "Planejar textos diferentes para as duas finalidades.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usar uma lista para substituir qualquer comunicação": [
+          "GENRE_SELECTION_DEPENDS_ON_PURPOSE"
+        ],
+        "Fazer apenas uma legenda sem considerar leitores": [
+          "GENRE_SELECTION_DEPENDS_ON_PURPOSE"
+        ],
+        "Evitar decidir o assunto": [
+          "GENRE_SELECTION_DEPENDS_ON_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DOIS_GENEROS_POSSIVEIS",
+      "explanation": "Uma tarefa organiza ações; um convite chama leitores para participar.",
+      "hint": "Há duas necessidades comunicativas distintas.",
+      "errorFocus": "GENRE_SELECTION_DEPENDS_ON_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Uma tarefa organiza ações; um convite chama leitores para participar.",
+        "incorrect": "Uma tarefa organiza ações; um convite chama leitores para participar.",
+        "hint": "Há duas necessidades comunicativas distintas.",
+        "errorFocus": "GENRE_SELECTION_DEPENDS_ON_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-25",
+      "statement": "Quais perguntas ajudam a planejar um texto cotidiano?",
+      "prompt": "Quais perguntas ajudam a planejar um texto cotidiano?",
+      "options": [
+        "Quem vai ler, o que queremos dizer e para que serve.",
+        "Qual é a cor preferida de todos",
+        "Como evitar reler o texto",
+        "Quem não poderá ver a mensagem"
+      ],
+      "correctAnswer": "Quem vai ler, o que queremos dizer e para que serve.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual é a cor preferida de todos": [
+          "PLAN_CORE_COMMUNICATIVE_ELEMENTS"
+        ],
+        "Como evitar reler o texto": [
+          "PLAN_CORE_COMMUNICATIVE_ELEMENTS"
+        ],
+        "Quem não poderá ver a mensagem": [
+          "PLAN_CORE_COMMUNICATIVE_ELEMENTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "QUEM_PARA_QUE",
+      "explanation": "Leitor, assunto e finalidade orientam a produção.",
+      "hint": "Lembre-se da situação comunicativa.",
+      "errorFocus": "PLAN_CORE_COMMUNICATIVE_ELEMENTS",
+      "feedback": {
+        "correct": "Boa observação: Leitor, assunto e finalidade orientam a produção.",
+        "incorrect": "Leitor, assunto e finalidade orientam a produção.",
+        "hint": "Lembre-se da situação comunicativa.",
+        "errorFocus": "PLAN_CORE_COMMUNICATIVE_ELEMENTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-26",
+      "statement": "Um texto reúne segunda, terça e quarta com atividades previstas. Qual forma pode organizar essas informações?",
+      "prompt": "Um texto reúne segunda, terça e quarta com atividades previstas. Qual forma pode organizar essas informações?",
+      "options": [
+        "Uma quadrinha sem datas",
+        "Uma agenda ou calendário.",
+        "Uma legenda de um objeto",
+        "Uma receita"
+      ],
+      "correctAnswer": "Uma agenda ou calendário.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma quadrinha sem datas": [
+          "DATE_ORGANIZER_GENRE"
+        ],
+        "Uma legenda de um objeto": [
+          "DATE_ORGANIZER_GENRE"
+        ],
+        "Uma receita": [
+          "DATE_ORGANIZER_GENRE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GENERO_DIA",
+      "explanation": "Agendas e calendários ajudam a organizar compromissos no tempo.",
+      "hint": "Observe a sequência de dias.",
+      "errorFocus": "DATE_ORGANIZER_GENRE",
+      "feedback": {
+        "correct": "Boa observação: Agendas e calendários ajudam a organizar compromissos no tempo.",
+        "incorrect": "Agendas e calendários ajudam a organizar compromissos no tempo.",
+        "hint": "Observe a sequência de dias.",
+        "errorFocus": "DATE_ORGANIZER_GENRE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-27",
+      "statement": "Um aviso coletivo deve ser escrito para",
+      "prompt": "Um aviso coletivo deve ser escrito para",
+      "options": [
+        "esconder o que aconteceu",
+        "misturar assuntos sem relação",
+        "comunicar uma informação relevante de forma compreensível aos leitores.",
+        "ser entendido apenas por quem escreveu"
+      ],
+      "correctAnswer": "comunicar uma informação relevante de forma compreensível aos leitores.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "esconder o que aconteceu": [
+          "NOTICE_AUDIENCE_CLARITY"
+        ],
+        "misturar assuntos sem relação": [
+          "NOTICE_AUDIENCE_CLARITY"
+        ],
+        "ser entendido apenas por quem escreveu": [
+          "NOTICE_AUDIENCE_CLARITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AVISO_CLARO",
+      "explanation": "O aviso considera quem precisa receber a informação.",
+      "hint": "Pense no leitor do aviso.",
+      "errorFocus": "NOTICE_AUDIENCE_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: O aviso considera quem precisa receber a informação.",
+        "incorrect": "O aviso considera quem precisa receber a informação.",
+        "hint": "Pense no leitor do aviso.",
+        "errorFocus": "NOTICE_AUDIENCE_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-28",
+      "statement": "Como uma criança pode participar mesmo sem escrever todas as palavras convencionalmente?",
+      "prompt": "Como uma criança pode participar mesmo sem escrever todas as palavras convencionalmente?",
+      "options": [
+        "Apenas observando sem poder contribuir",
+        "Copiando um texto sem saber a finalidade",
+        "Esperando aprender tudo antes de participar",
+        "Pode sugerir ideias, desenhar, escolher letras ou ditar ao professor."
+      ],
+      "correctAnswer": "Pode sugerir ideias, desenhar, escolher letras ou ditar ao professor.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas observando sem poder contribuir": [
+          "EMERGENT_WRITING_PARTICIPATION"
+        ],
+        "Copiando um texto sem saber a finalidade": [
+          "EMERGENT_WRITING_PARTICIPATION"
+        ],
+        "Esperando aprender tudo antes de participar": [
+          "EMERGENT_WRITING_PARTICIPATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "COLABORAR_NA_ESCRITA",
+      "explanation": "Produzir em colaboração admite diferentes formas de contribuição.",
+      "hint": "Pense em fala, desenho e escolhas de palavras.",
+      "errorFocus": "EMERGENT_WRITING_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: Produzir em colaboração admite diferentes formas de contribuição.",
+        "incorrect": "Produzir em colaboração admite diferentes formas de contribuição.",
+        "hint": "Pense em fala, desenho e escolhas de palavras.",
+        "errorFocus": "EMERGENT_WRITING_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-29",
+      "statement": "Qual frase diferencia uma legenda de um aviso?",
+      "prompt": "Qual frase diferencia uma legenda de um aviso?",
+      "options": [
+        "A legenda acompanha uma imagem; o aviso comunica uma informação aos leitores.",
+        "A legenda sempre é secreta e o aviso sempre é uma lista",
+        "Os dois não têm leitor",
+        "Um aviso só pode aparecer em calendário"
+      ],
+      "correctAnswer": "A legenda acompanha uma imagem; o aviso comunica uma informação aos leitores.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A legenda sempre é secreta e o aviso sempre é uma lista": [
+          "DISTINGUISH_CAPTION_NOTICE"
+        ],
+        "Os dois não têm leitor": [
+          "DISTINGUISH_CAPTION_NOTICE"
+        ],
+        "Um aviso só pode aparecer em calendário": [
+          "DISTINGUISH_CAPTION_NOTICE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LEGENDA_E_AVISO",
+      "explanation": "A finalidade e a relação com uma imagem ajudam a distinguir os gêneros.",
+      "hint": "Pergunte se o texto acompanha uma imagem ou destaca uma informação.",
+      "errorFocus": "DISTINGUISH_CAPTION_NOTICE",
+      "feedback": {
+        "correct": "Boa observação: A finalidade e a relação com uma imagem ajudam a distinguir os gêneros.",
+        "incorrect": "A finalidade e a relação com uma imagem ajudam a distinguir os gêneros.",
+        "hint": "Pergunte se o texto acompanha uma imagem ou destaca uma informação.",
+        "errorFocus": "DISTINGUISH_CAPTION_NOTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-30",
+      "statement": "Um convite para a feira de desenhos deve falar principalmente",
+      "prompt": "Um convite para a feira de desenhos deve falar principalmente",
+      "options": [
+        "de assuntos aleatórios sem relação",
+        "da atividade para a qual as pessoas estão sendo convidadas.",
+        "de dados pessoais de cada criança",
+        "de instruções para outra tarefa"
+      ],
+      "correctAnswer": "da atividade para a qual as pessoas estão sendo convidadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "de assuntos aleatórios sem relação": [
+          "TOPIC_RELEVANCE"
+        ],
+        "de dados pessoais de cada criança": [
+          "TOPIC_RELEVANCE"
+        ],
+        "de instruções para outra tarefa": [
+          "TOPIC_RELEVANCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEMA_FOCADO",
+      "explanation": "Manter o tema relacionado à finalidade ajuda o leitor.",
+      "hint": "Volte ao motivo do convite.",
+      "errorFocus": "TOPIC_RELEVANCE",
+      "feedback": {
+        "correct": "Boa observação: Manter o tema relacionado à finalidade ajuda o leitor.",
+        "incorrect": "Manter o tema relacionado à finalidade ajuda o leitor.",
+        "hint": "Volte ao motivo do convite.",
+        "errorFocus": "TOPIC_RELEVANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-31",
+      "statement": "Para montar um brinquedo de papel, por que as instruções precisam apresentar passos em ordem?",
+      "prompt": "Para montar um brinquedo de papel, por que as instruções precisam apresentar passos em ordem?",
+      "options": [
+        "Porque toda lista precisa esconder o último passo",
+        "Porque o leitor não deve seguir o texto",
+        "Porque a ordem pode ajudar o leitor a realizar a montagem.",
+        "Porque instruções servem para convidar pessoas"
+      ],
+      "correctAnswer": "Porque a ordem pode ajudar o leitor a realizar a montagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque toda lista precisa esconder o último passo": [
+          "SEQUENCED_INSTRUCTIONS"
+        ],
+        "Porque o leitor não deve seguir o texto": [
+          "SEQUENCED_INSTRUCTIONS"
+        ],
+        "Porque instruções servem para convidar pessoas": [
+          "SEQUENCED_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ETAPAS_ORDENADAS",
+      "explanation": "A sequência dá apoio a quem executa uma tarefa.",
+      "hint": "Imagine o que aconteceria se os passos fossem trocados.",
+      "errorFocus": "SEQUENCED_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: A sequência dá apoio a quem executa uma tarefa.",
+        "incorrect": "A sequência dá apoio a quem executa uma tarefa.",
+        "hint": "Imagine o que aconteceria se os passos fossem trocados.",
+        "errorFocus": "SEQUENCED_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-32",
+      "statement": "Qual revisão é mais útil para um texto coletivo que será lido por outra turma?",
+      "prompt": "Qual revisão é mais útil para um texto coletivo que será lido por outra turma?",
+      "options": [
+        "Trocar palavras por outras sem relação",
+        "Retirar o propósito do texto",
+        "Adicionar informações privadas",
+        "Verificar se o leitor entende o assunto e encontra as informações necessárias."
+      ],
+      "correctAnswer": "Verificar se o leitor entende o assunto e encontra as informações necessárias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Trocar palavras por outras sem relação": [
+          "REVIEW_FOR_EXTERNAL_READER"
+        ],
+        "Retirar o propósito do texto": [
+          "REVIEW_FOR_EXTERNAL_READER"
+        ],
+        "Adicionar informações privadas": [
+          "REVIEW_FOR_EXTERNAL_READER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAR_COM_LEITOR",
+      "explanation": "Revisar significa olhar o texto com atenção às necessidades de quem vai ler.",
+      "hint": "Faça de conta que você recebeu a mensagem.",
+      "errorFocus": "REVIEW_FOR_EXTERNAL_READER",
+      "feedback": {
+        "correct": "Boa observação: Revisar significa olhar o texto com atenção às necessidades de quem vai ler.",
+        "incorrect": "Revisar significa olhar o texto com atenção às necessidades de quem vai ler.",
+        "hint": "Faça de conta que você recebeu a mensagem.",
+        "errorFocus": "REVIEW_FOR_EXTERNAL_READER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-33",
+      "statement": "A equipe precisa lembrar materiais e chamar visitantes para uma exposição. Que planejamento atende melhor?",
+      "prompt": "A equipe precisa lembrar materiais e chamar visitantes para uma exposição. Que planejamento atende melhor?",
+      "options": [
+        "Preparar uma lista de materiais e um convite para os visitantes.",
+        "Usar apenas uma receita para as duas tarefas",
+        "Fazer uma legenda sem imagem",
+        "Não escolher leitor nem finalidade"
+      ],
+      "correctAnswer": "Preparar uma lista de materiais e um convite para os visitantes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usar apenas uma receita para as duas tarefas": [
+          "MULTIPLE_PURPOSES_MAY_NEED_MULTIPLE_TEXTS"
+        ],
+        "Fazer uma legenda sem imagem": [
+          "MULTIPLE_PURPOSES_MAY_NEED_MULTIPLE_TEXTS"
+        ],
+        "Não escolher leitor nem finalidade": [
+          "MULTIPLE_PURPOSES_MAY_NEED_MULTIPLE_TEXTS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LISTA_E_CONVITE",
+      "explanation": "Gêneros diferentes podem atender a necessidades diferentes.",
+      "hint": "Separe a organização dos materiais do convite.",
+      "errorFocus": "MULTIPLE_PURPOSES_MAY_NEED_MULTIPLE_TEXTS",
+      "feedback": {
+        "correct": "Boa observação: Gêneros diferentes podem atender a necessidades diferentes.",
+        "incorrect": "Gêneros diferentes podem atender a necessidades diferentes.",
+        "hint": "Separe a organização dos materiais do convite.",
+        "errorFocus": "MULTIPLE_PURPOSES_MAY_NEED_MULTIPLE_TEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-34",
+      "statement": "Na escrita coletiva, o grupo dita ideias e o professor registra no quadro. Qual é o foco?",
+      "prompt": "Na escrita coletiva, o grupo dita ideias e o professor registra no quadro. Qual é o foco?",
+      "options": [
+        "Testar quem escreve mais rápido",
+        "Produzir e revisar em colaboração com mediação.",
+        "Substituir as ideias da turma",
+        "Evitar que os alunos falem sobre o texto"
+      ],
+      "correctAnswer": "Produzir e revisar em colaboração com mediação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Testar quem escreve mais rápido": [
+          "COLLABORATIVE_AUTHORING"
+        ],
+        "Substituir as ideias da turma": [
+          "COLLABORATIVE_AUTHORING"
+        ],
+        "Evitar que os alunos falem sobre o texto": [
+          "COLLABORATIVE_AUTHORING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRODUCAO_COM_PROFESSOR",
+      "explanation": "A ajuda do professor faz parte da proposta de produção compartilhada.",
+      "hint": "Observe que as ideias vêm do grupo.",
+      "errorFocus": "COLLABORATIVE_AUTHORING",
+      "feedback": {
+        "correct": "Boa observação: A ajuda do professor faz parte da proposta de produção compartilhada.",
+        "incorrect": "A ajuda do professor faz parte da proposta de produção compartilhada.",
+        "hint": "Observe que as ideias vêm do grupo.",
+        "errorFocus": "COLLABORATIVE_AUTHORING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-35",
+      "statement": "Um convite apresenta atividade e leitor, mas falta local. Qual pergunta guia a revisão?",
+      "prompt": "Um convite apresenta atividade e leitor, mas falta local. Qual pergunta guia a revisão?",
+      "options": [
+        "Qual desenho não combina com a receita",
+        "Que nome completo devemos publicar",
+        "Que informação falta para o convidado saber onde participar?",
+        "Como retirar o assunto do convite"
+      ],
+      "correctAnswer": "Que informação falta para o convidado saber onde participar?",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual desenho não combina com a receita": [
+          "REVISION_CHECKS_ACTIONABLE_DETAILS"
+        ],
+        "Que nome completo devemos publicar": [
+          "REVISION_CHECKS_ACTIONABLE_DETAILS"
+        ],
+        "Como retirar o assunto do convite": [
+          "REVISION_CHECKS_ACTIONABLE_DETAILS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONVITE_COMPLETO",
+      "explanation": "A revisão verifica se os detalhes atendem à finalidade.",
+      "hint": "Pense no que o convidado precisa saber para agir.",
+      "errorFocus": "REVISION_CHECKS_ACTIONABLE_DETAILS",
+      "feedback": {
+        "correct": "Boa observação: A revisão verifica se os detalhes atendem à finalidade.",
+        "incorrect": "A revisão verifica se os detalhes atendem à finalidade.",
+        "hint": "Pense no que o convidado precisa saber para agir.",
+        "errorFocus": "REVISION_CHECKS_ACTIONABLE_DETAILS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-36",
+      "statement": "Qual texto ajuda a localizar em que dia acontecerá cada atividade?",
+      "prompt": "Qual texto ajuda a localizar em que dia acontecerá cada atividade?",
+      "options": [
+        "Uma lista de objetos sem datas",
+        "Uma legenda de uma imagem",
+        "Uma instrução de montagem",
+        "Um calendário ou agenda."
+      ],
+      "correctAnswer": "Um calendário ou agenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma lista de objetos sem datas": [
+          "DATE_INFORMATION_STRUCTURE"
+        ],
+        "Uma legenda de uma imagem": [
+          "DATE_INFORMATION_STRUCTURE"
+        ],
+        "Uma instrução de montagem": [
+          "DATE_INFORMATION_STRUCTURE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LISTA_E_CALENDARIO",
+      "explanation": "Datas organizadas por dia ajudam a localizar acontecimentos.",
+      "hint": "Procure o gênero que organiza o tempo.",
+      "errorFocus": "DATE_INFORMATION_STRUCTURE",
+      "feedback": {
+        "correct": "Boa observação: Datas organizadas por dia ajudam a localizar acontecimentos.",
+        "incorrect": "Datas organizadas por dia ajudam a localizar acontecimentos.",
+        "hint": "Procure o gênero que organiza o tempo.",
+        "errorFocus": "DATE_INFORMATION_STRUCTURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-37",
+      "statement": "Por que o mesmo assunto pode aparecer em gêneros diferentes?",
+      "prompt": "Por que o mesmo assunto pode aparecer em gêneros diferentes?",
+      "options": [
+        "Porque situação, leitor e finalidade podem mudar.",
+        "Porque textos não têm finalidade",
+        "Porque todo gênero é sempre igual",
+        "Porque o assunto precisa ser secreto"
+      ],
+      "correctAnswer": "Porque situação, leitor e finalidade podem mudar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque textos não têm finalidade": [
+          "GENRE_CONTEXT_RELATION"
+        ],
+        "Porque todo gênero é sempre igual": [
+          "GENRE_CONTEXT_RELATION"
+        ],
+        "Porque o assunto precisa ser secreto": [
+          "GENRE_CONTEXT_RELATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ESCOLHA_DE_GENERO",
+      "explanation": "A situação comunicativa ajuda a decidir como tratar um assunto.",
+      "hint": "Pense em informar, convidar ou organizar.",
+      "errorFocus": "GENRE_CONTEXT_RELATION",
+      "feedback": {
+        "correct": "Boa observação: A situação comunicativa ajuda a decidir como tratar um assunto.",
+        "incorrect": "A situação comunicativa ajuda a decidir como tratar um assunto.",
+        "hint": "Pense em informar, convidar ou organizar.",
+        "errorFocus": "GENRE_CONTEXT_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-38",
+      "statement": "A turma cria um aviso para um painel da sala. Qual cuidado continua importante, mesmo sendo impresso?",
+      "prompt": "A turma cria um aviso para um painel da sala. Qual cuidado continua importante, mesmo sendo impresso?",
+      "options": [
+        "Incluir dados pessoais de todos",
+        "Deixar a mensagem compreensível para quem vai ler.",
+        "Esquecer a finalidade",
+        "Evitar revisar"
+      ],
+      "correctAnswer": "Deixar a mensagem compreensível para quem vai ler.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Incluir dados pessoais de todos": [
+          "MEDIUM_DOES_NOT_REPLACE_AUDIENCE_AWARENESS"
+        ],
+        "Esquecer a finalidade": [
+          "MEDIUM_DOES_NOT_REPLACE_AUDIENCE_AWARENESS"
+        ],
+        "Evitar revisar": [
+          "MEDIUM_DOES_NOT_REPLACE_AUDIENCE_AWARENESS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEXTO_IMPRESSO_DIGITAL",
+      "explanation": "O suporte não elimina a necessidade de planejar o texto.",
+      "hint": "O leitor ainda precisa entender a mensagem.",
+      "errorFocus": "MEDIUM_DOES_NOT_REPLACE_AUDIENCE_AWARENESS",
+      "feedback": {
+        "correct": "Boa observação: O suporte não elimina a necessidade de planejar o texto.",
+        "incorrect": "O suporte não elimina a necessidade de planejar o texto.",
+        "hint": "O leitor ainda precisa entender a mensagem.",
+        "errorFocus": "MEDIUM_DOES_NOT_REPLACE_AUDIENCE_AWARENESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-39",
+      "statement": "Ao criar uma legenda de uma foto de uma maquete, qual detalhe é apropriado?",
+      "prompt": "Ao criar uma legenda de uma foto de uma maquete, qual detalhe é apropriado?",
+      "options": [
+        "Um endereço residencial de estudante",
+        "Uma afirmação não observável apresentada como fato",
+        "Uma informação relacionada ao que a imagem mostra e à intenção do grupo.",
+        "Uma lista de senhas"
+      ],
+      "correctAnswer": "Uma informação relacionada ao que a imagem mostra e à intenção do grupo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um endereço residencial de estudante": [
+          "CAPTION_PRIVACY_AND_RELEVANCE"
+        ],
+        "Uma afirmação não observável apresentada como fato": [
+          "CAPTION_PRIVACY_AND_RELEVANCE"
+        ],
+        "Uma lista de senhas": [
+          "CAPTION_PRIVACY_AND_RELEVANCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHA_DE_INFORMACAO",
+      "explanation": "A legenda relaciona-se à imagem e deve respeitar privacidade.",
+      "hint": "Escolha algo que o leitor possa relacionar à foto.",
+      "errorFocus": "CAPTION_PRIVACY_AND_RELEVANCE",
+      "feedback": {
+        "correct": "Boa observação: A legenda relaciona-se à imagem e deve respeitar privacidade.",
+        "incorrect": "A legenda relaciona-se à imagem e deve respeitar privacidade.",
+        "hint": "Escolha algo que o leitor possa relacionar à foto.",
+        "errorFocus": "CAPTION_PRIVACY_AND_RELEVANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp17-plan-and-produce-daily-genres-v1-40",
+      "statement": "Qual prática amplia a participação no planejamento coletivo?",
+      "prompt": "Qual prática amplia a participação no planejamento coletivo?",
+      "options": [
+        "Permitir apenas uma forma de resposta",
+        "Exigir leitura em público de todas as crianças",
+        "Comparar a letra dos colegas",
+        "Aceitar ideias por fala, desenho, cartões, escrita emergente ou comunicação alternativa."
+      ],
+      "correctAnswer": "Aceitar ideias por fala, desenho, cartões, escrita emergente ou comunicação alternativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Permitir apenas uma forma de resposta": [
+          "ACCESSIBLE_COLLABORATION"
+        ],
+        "Exigir leitura em público de todas as crianças": [
+          "ACCESSIBLE_COLLABORATION"
+        ],
+        "Comparar a letra dos colegas": [
+          "ACCESSIBLE_COLLABORATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "PRODUCAO_COM_ACESSIBILIDADE",
+      "explanation": "Diferentes modos de participação permitem que mais crianças contribuam.",
+      "hint": "Pense em mais de uma forma de comunicar uma ideia.",
+      "errorFocus": "ACCESSIBLE_COLLABORATION",
+      "feedback": {
+        "correct": "Boa observação: Diferentes modos de participação permitem que mais crianças contribuam.",
+        "incorrect": "Diferentes modos de participação permitem que mais crianças contribuam.",
+        "hint": "Pense em mais de uma forma de comunicar uma ideia.",
+        "errorFocus": "ACCESSIBLE_COLLABORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar modelos visuais, letras móveis, pictogramas, comunicação alternativa, ditado ao escriba e tempo adicional.",
+          "Aceitar contribuições por fala, apontamento, seleção de cartões, desenho ou escrita emergente; não expor comparações públicas de desempenho."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

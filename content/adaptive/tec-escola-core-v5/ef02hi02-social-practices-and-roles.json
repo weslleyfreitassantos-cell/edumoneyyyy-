@@ -1,0 +1,2034 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef02hi02-community-practices-and-roles-v1",
+  "canonicalSkillCode": "HISTORY_IDENTIFY_PRACTICES_AND_SOCIAL_ROLES_IN_COMMUNITIES",
+  "subject": "HISTORY",
+  "domain": "A COMUNIDADE E SEUS REGISTROS",
+  "topic": "práticas coletivas e papéis sociais em comunidades diversas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02HI02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e descrever práticas e papéis sociais que as pessoas exercem em diferentes comunidades.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 411
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Práticas e papéis nas comunidades",
+    "objective": "Identificar práticas coletivas e descrever diferentes papéis que as pessoas exercem em comunidades, reconhecendo que funções podem variar, se combinar e não são determinadas por gênero, origem ou outra característica pessoal.",
+    "summary": "Comunidades são formadas por pessoas que convivem e realizam atividades. Em uma escola, por exemplo, pessoas ensinam, aprendem, cuidam de espaços, organizam materiais e apoiam a convivência. Em outros grupos, há práticas próprias. Uma pessoa pode exercer mais de um papel, e a mesma função pode ser realizada por pessoas diferentes.",
+    "explanation": "Observe o que as pessoas fazem numa situação coletiva e como essa prática ajuda o grupo. No mercado de uma história, algumas pessoas organizam produtos e outras escolhem o que levar; numa biblioteca, alguém organiza livros e outras pessoas leem ou ajudam na escolha. Esses papéis descrevem atividades na cena, não características fixas de quem as realiza. Compare comunidades sem dizer que uma é melhor ou que todas funcionam do mesmo modo.",
+    "workedExample": "Numa feira fictícia do bairro, uma pessoa monta uma banca, outra organiza as placas e visitantes conversam e escolhem produtos. Descrever os papéis significa nomear essas ações na feira, sem afirmar que só certas pessoas podem fazê-las.",
+    "commonMistake": "Atribuir uma função a todas as pessoas de um grupo ou associar um papel social a gênero, origem, idade ou valor maior ou menor.",
+    "priorKnowledge": [
+      "Reconhecer grupos de convivência como escola, biblioteca, feira ou associação.",
+      "Descrever ações observáveis com verbos simples, como organizar, ensinar, cuidar e participar."
+    ],
+    "keyConcepts": [
+      "comunidade",
+      "prática coletiva",
+      "papel social",
+      "convivência",
+      "diversidade",
+      "cooperação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ROLE_AS_FIXED_IDENTITY",
+        "action": "Descreva a ação na situação concreta e depois pergunte se outra pessoa também poderia realizá-la."
+      },
+      {
+        "errorFocus": "COMMUNITY_STEREOTYPE",
+        "action": "Compare dois exemplos diversos e procure diferenças sem classificar uma comunidade como superior."
+      },
+      {
+        "errorFocus": "ROLE_HIERARCHY",
+        "action": "Mapeie como diferentes ações contribuem para uma prática coletiva, sem ordenar as pessoas por importância."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+      "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi02-community-scene-map",
+        "title": "Quem faz o quê na cena?",
+        "instructions": "Uma ilustração fictícia apresenta uma feira com pessoas organizando, visitando e compartilhando informações.\n1. Observe as ações de cada personagem.\n2. Associe cartões de verbos às práticas representadas.\n3. Descreva como duas ações ajudam a feira a acontecer.",
+        "steps": [
+          "Observe as ações de cada personagem.",
+          "Associe cartões de verbos às práticas representadas.",
+          "Descreva como duas ações ajudam a feira a acontecer."
+        ],
+        "evidence": "Descrição de papéis ligados a ações observáveis e à prática coletiva.",
+        "privacyGuard": "Usar personagens e situações fictícias; não exigir relatos sobre a comunidade pessoal do estudante.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma ação com apoio.",
+            "developing": "associa ações a personagens da cena.",
+            "proficient": "descreve papéis e sua contribuição sem generalizar sobre grupos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi02-school-community-cards",
+        "title": "Cartões de convivência",
+        "instructions": "Cartões mostram diferentes práticas possíveis em uma escola ou biblioteca imaginada.\n1. Agrupe cartões por prática coletiva.\n2. Nomeie papéis diversos presentes na atividade.\n3. Troque os personagens e converse sobre quem mais poderia exercer cada papel.",
+        "steps": [
+          "Agrupe cartões por prática coletiva.",
+          "Nomeie papéis diversos presentes na atividade.",
+          "Troque os personagens e converse sobre quem mais poderia exercer cada papel."
+        ],
+        "evidence": "Classificação de práticas com reconhecimento de que funções podem ser exercidas por pessoas diversas.",
+        "privacyGuard": "Exemplos inventados e flexíveis; não pedir nomes ou imagens de pessoas reais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma ação em um cartão.",
+            "developing": "identifica uma prática e um papel com pistas.",
+            "proficient": "descreve como papéis variam e podem ser compartilhados."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef02hi02-community-practices-and-roles-v1-01",
+          "bncc-ef02hi02-community-practices-and-roles-v1-02",
+          "bncc-ef02hi02-community-practices-and-roles-v1-03",
+          "bncc-ef02hi02-community-practices-and-roles-v1-04",
+          "bncc-ef02hi02-community-practices-and-roles-v1-05",
+          "bncc-ef02hi02-community-practices-and-roles-v1-06",
+          "bncc-ef02hi02-community-practices-and-roles-v1-07",
+          "bncc-ef02hi02-community-practices-and-roles-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef02hi02-community-practices-and-roles-v1-09",
+          "bncc-ef02hi02-community-practices-and-roles-v1-10",
+          "bncc-ef02hi02-community-practices-and-roles-v1-11",
+          "bncc-ef02hi02-community-practices-and-roles-v1-12",
+          "bncc-ef02hi02-community-practices-and-roles-v1-13",
+          "bncc-ef02hi02-community-practices-and-roles-v1-14",
+          "bncc-ef02hi02-community-practices-and-roles-v1-15",
+          "bncc-ef02hi02-community-practices-and-roles-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef02hi02-community-practices-and-roles-v1-17",
+          "bncc-ef02hi02-community-practices-and-roles-v1-18",
+          "bncc-ef02hi02-community-practices-and-roles-v1-19",
+          "bncc-ef02hi02-community-practices-and-roles-v1-20",
+          "bncc-ef02hi02-community-practices-and-roles-v1-21",
+          "bncc-ef02hi02-community-practices-and-roles-v1-22",
+          "bncc-ef02hi02-community-practices-and-roles-v1-23",
+          "bncc-ef02hi02-community-practices-and-roles-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef02hi02-community-practices-and-roles-v1-25",
+          "bncc-ef02hi02-community-practices-and-roles-v1-26",
+          "bncc-ef02hi02-community-practices-and-roles-v1-27",
+          "bncc-ef02hi02-community-practices-and-roles-v1-28",
+          "bncc-ef02hi02-community-practices-and-roles-v1-29",
+          "bncc-ef02hi02-community-practices-and-roles-v1-30",
+          "bncc-ef02hi02-community-practices-and-roles-v1-31",
+          "bncc-ef02hi02-community-practices-and-roles-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef02hi02-community-practices-and-roles-v1-33",
+          "bncc-ef02hi02-community-practices-and-roles-v1-34",
+          "bncc-ef02hi02-community-practices-and-roles-v1-35",
+          "bncc-ef02hi02-community-practices-and-roles-v1-36",
+          "bncc-ef02hi02-community-practices-and-roles-v1-37",
+          "bncc-ef02hi02-community-practices-and-roles-v1-38",
+          "bncc-ef02hi02-community-practices-and-roles-v1-39",
+          "bncc-ef02hi02-community-practices-and-roles-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02HI02",
+        "descriptor": "Identificar e descrever práticas e papéis sociais que as pessoas exercem em diferentes comunidades.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 411
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-01",
+      "statement": "Numa biblioteca fictícia, uma pessoa organiza livros e visitantes leem. Qual é uma prática do grupo?",
+      "prompt": "Numa biblioteca fictícia, uma pessoa organiza livros e visitantes leem. Qual é uma prática do grupo?",
+      "options": [
+        "Organizar e consultar livros.",
+        "Pintar uma estrada sem relação",
+        "Preparar uma previsão do tempo",
+        "Esconder todos os livros"
+      ],
+      "correctAnswer": "Organizar e consultar livros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Pintar uma estrada sem relação": [
+          "COMMUNITY_PRACTICE_IDENTIFICATION"
+        ],
+        "Preparar uma previsão do tempo": [
+          "COMMUNITY_PRACTICE_IDENTIFICATION"
+        ],
+        "Esconder todos os livros": [
+          "COMMUNITY_PRACTICE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BIBLIOTECA_DA_HISTORIA",
+      "explanation": "As ações de organizar e ler fazem parte da convivência na biblioteca.",
+      "hint": "Observe o que as pessoas fazem juntas.",
+      "errorFocus": "COMMUNITY_PRACTICE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: As ações de organizar e ler fazem parte da convivência na biblioteca.",
+        "incorrect": "As ações de organizar e ler fazem parte da convivência na biblioteca.",
+        "hint": "Observe o que as pessoas fazem juntas.",
+        "errorFocus": "COMMUNITY_PRACTICE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-02",
+      "statement": "Na feira da história, alguém organiza uma banca. O que essa ação descreve?",
+      "prompt": "Na feira da história, alguém organiza uma banca. O que essa ação descreve?",
+      "options": [
+        "Uma característica de todas as pessoas",
+        "Um papel exercido na feira.",
+        "Uma regra para todas as comunidades",
+        "Uma qualidade que vale mais que as outras"
+      ],
+      "correctAnswer": "Um papel exercido na feira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma característica de todas as pessoas": [
+          "ROLE_AS_ACTION_IN_CONTEXT"
+        ],
+        "Uma regra para todas as comunidades": [
+          "ROLE_AS_ACTION_IN_CONTEXT"
+        ],
+        "Uma qualidade que vale mais que as outras": [
+          "ROLE_AS_ACTION_IN_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FEIRA_DO_BAIRRO_IMAGINADA",
+      "explanation": "O papel está ligado à ação daquela pessoa naquela situação.",
+      "hint": "Nomeie a ação na cena.",
+      "errorFocus": "ROLE_AS_ACTION_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O papel está ligado à ação daquela pessoa naquela situação.",
+        "incorrect": "O papel está ligado à ação daquela pessoa naquela situação.",
+        "hint": "Nomeie a ação na cena.",
+        "errorFocus": "ROLE_AS_ACTION_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-03",
+      "statement": "Uma escola e uma praça têm atividades diferentes. O que podemos comparar?",
+      "prompt": "Uma escola e uma praça têm atividades diferentes. O que podemos comparar?",
+      "options": [
+        "Qual comunidade vale mais",
+        "Quem pode participar por origem",
+        "As práticas e os papéis mostrados em cada lugar.",
+        "Qual grupo é sempre igual"
+      ],
+      "correctAnswer": "As práticas e os papéis mostrados em cada lugar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual comunidade vale mais": [
+          "COMMUNITY_COMPARISON_WITHOUT_HIERARCHY"
+        ],
+        "Quem pode participar por origem": [
+          "COMMUNITY_COMPARISON_WITHOUT_HIERARCHY"
+        ],
+        "Qual grupo é sempre igual": [
+          "COMMUNITY_COMPARISON_WITHOUT_HIERARCHY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCOLA_E_PRAÇA",
+      "explanation": "Comparar práticas não exige dizer que uma comunidade é superior.",
+      "hint": "Observe as ações em cada lugar.",
+      "errorFocus": "COMMUNITY_COMPARISON_WITHOUT_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: Comparar práticas não exige dizer que uma comunidade é superior.",
+        "incorrect": "Comparar práticas não exige dizer que uma comunidade é superior.",
+        "hint": "Observe as ações em cada lugar.",
+        "errorFocus": "COMMUNITY_COMPARISON_WITHOUT_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-04",
+      "statement": "Numa horta coletiva, algumas pessoas regam e outras organizam ferramentas. O que essa cena mostra?",
+      "prompt": "Numa horta coletiva, algumas pessoas regam e outras organizam ferramentas. O que essa cena mostra?",
+      "options": [
+        "Somente uma pessoa pode participar",
+        "Regar é função de um gênero",
+        "A horta não precisa de cooperação",
+        "Pessoas exercendo papéis diferentes numa prática comum."
+      ],
+      "correctAnswer": "Pessoas exercendo papéis diferentes numa prática comum.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente uma pessoa pode participar": [
+          "MULTIPLE_ROLES_IN_SHARED_PRACTICE"
+        ],
+        "Regar é função de um gênero": [
+          "MULTIPLE_ROLES_IN_SHARED_PRACTICE"
+        ],
+        "A horta não precisa de cooperação": [
+          "MULTIPLE_ROLES_IN_SHARED_PRACTICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HORTA_COLETIVA_FICTICIA",
+      "explanation": "A horta reúne ações diferentes que contribuem para a atividade.",
+      "hint": "Veja como as ações se relacionam.",
+      "errorFocus": "MULTIPLE_ROLES_IN_SHARED_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: A horta reúne ações diferentes que contribuem para a atividade.",
+        "incorrect": "A horta reúne ações diferentes que contribuem para a atividade.",
+        "hint": "Veja como as ações se relacionam.",
+        "errorFocus": "MULTIPLE_ROLES_IN_SHARED_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-05",
+      "statement": "Para descrever um papel social numa cena, é útil dizer",
+      "prompt": "Para descrever um papel social numa cena, é útil dizer",
+      "options": [
+        "qual ação a pessoa realiza no grupo.",
+        "qual pessoa é mais importante",
+        "qual família tem mais valor",
+        "qual aparência define a tarefa"
+      ],
+      "correctAnswer": "qual ação a pessoa realiza no grupo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "qual pessoa é mais importante": [
+          "ROLE_DESCRIPTION_BY_ACTION"
+        ],
+        "qual família tem mais valor": [
+          "ROLE_DESCRIPTION_BY_ACTION"
+        ],
+        "qual aparência define a tarefa": [
+          "ROLE_DESCRIPTION_BY_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PAPEL_SOCIAL_EM_CENA",
+      "explanation": "Descrever ações observáveis evita transformar papéis em julgamentos pessoais.",
+      "hint": "Use um verbo de ação.",
+      "errorFocus": "ROLE_DESCRIPTION_BY_ACTION",
+      "feedback": {
+        "correct": "Boa observação: Descrever ações observáveis evita transformar papéis em julgamentos pessoais.",
+        "incorrect": "Descrever ações observáveis evita transformar papéis em julgamentos pessoais.",
+        "hint": "Use um verbo de ação.",
+        "errorFocus": "ROLE_DESCRIPTION_BY_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-06",
+      "statement": "Num grupo de leitura, uma pessoa lê em voz alta e outras acompanham o texto. Que prática aparece?",
+      "prompt": "Num grupo de leitura, uma pessoa lê em voz alta e outras acompanham o texto. Que prática aparece?",
+      "options": [
+        "Construir uma ponte",
+        "Ler e acompanhar uma história em grupo.",
+        "Plantar um campo sem texto",
+        "Apagar todas as páginas"
+      ],
+      "correctAnswer": "Ler e acompanhar uma história em grupo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Construir uma ponte": [
+          "GROUP_PRACTICE_RECOGNITION"
+        ],
+        "Plantar um campo sem texto": [
+          "GROUP_PRACTICE_RECOGNITION"
+        ],
+        "Apagar todas as páginas": [
+          "GROUP_PRACTICE_RECOGNITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GRUPO_DE_LEITURA",
+      "explanation": "As ações compõem uma prática compartilhada de leitura.",
+      "hint": "Pense no que o grupo faz.",
+      "errorFocus": "GROUP_PRACTICE_RECOGNITION",
+      "feedback": {
+        "correct": "Boa observação: As ações compõem uma prática compartilhada de leitura.",
+        "incorrect": "As ações compõem uma prática compartilhada de leitura.",
+        "hint": "Pense no que o grupo faz.",
+        "errorFocus": "GROUP_PRACTICE_RECOGNITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-07",
+      "statement": "Em duas cenas, pessoas diferentes ajudam uma turma a aprender. O que isso mostra?",
+      "prompt": "Em duas cenas, pessoas diferentes ajudam uma turma a aprender. O que isso mostra?",
+      "options": [
+        "Só uma pessoa pode ensinar",
+        "O papel depende da aparência",
+        "Papéis semelhantes podem ser exercidos por pessoas diferentes.",
+        "As duas turmas são idênticas"
+      ],
+      "correctAnswer": "Papéis semelhantes podem ser exercidos por pessoas diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Só uma pessoa pode ensinar": [
+          "ROLE_NOT_FIXED_TO_PERSON"
+        ],
+        "O papel depende da aparência": [
+          "ROLE_NOT_FIXED_TO_PERSON"
+        ],
+        "As duas turmas são idênticas": [
+          "ROLE_NOT_FIXED_TO_PERSON"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_PESSOAS_QUE_ENSINAM",
+      "explanation": "A atividade não fica limitada a uma única pessoa.",
+      "hint": "Compare a ação, não quem a realiza.",
+      "errorFocus": "ROLE_NOT_FIXED_TO_PERSON",
+      "feedback": {
+        "correct": "Boa observação: A atividade não fica limitada a uma única pessoa.",
+        "incorrect": "A atividade não fica limitada a uma única pessoa.",
+        "hint": "Compare a ação, não quem a realiza.",
+        "errorFocus": "ROLE_NOT_FIXED_TO_PERSON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-08",
+      "statement": "Por que uma comunidade pode reunir papéis diversos?",
+      "prompt": "Por que uma comunidade pode reunir papéis diversos?",
+      "options": [
+        "Porque todos fazem exatamente a mesma coisa",
+        "Porque alguns papéis não têm valor",
+        "Porque as comunidades não mudam",
+        "Porque várias ações podem contribuir para uma prática comum."
+      ],
+      "correctAnswer": "Porque várias ações podem contribuir para uma prática comum.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque todos fazem exatamente a mesma coisa": [
+          "DIVERSE_ROLES_SUPPORT_PRACTICE"
+        ],
+        "Porque alguns papéis não têm valor": [
+          "DIVERSE_ROLES_SUPPORT_PRACTICE"
+        ],
+        "Porque as comunidades não mudam": [
+          "DIVERSE_ROLES_SUPPORT_PRACTICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ATIVIDADE_COLETIVA",
+      "explanation": "Uma prática pode depender de contribuições diferentes.",
+      "hint": "Pense em como as ações se apoiam.",
+      "errorFocus": "DIVERSE_ROLES_SUPPORT_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: Uma prática pode depender de contribuições diferentes.",
+        "incorrect": "Uma prática pode depender de contribuições diferentes.",
+        "hint": "Pense em como as ações se apoiam.",
+        "errorFocus": "DIVERSE_ROLES_SUPPORT_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-09",
+      "statement": "Num posto de leitura fictício, uma pessoa apresenta livros e outras escolhem o que ler. Qual ação é um papel na cena?",
+      "prompt": "Num posto de leitura fictício, uma pessoa apresenta livros e outras escolhem o que ler. Qual ação é um papel na cena?",
+      "options": [
+        "Apresentar livros aos visitantes.",
+        "Ser mais importante que os visitantes",
+        "Pertencer a uma única família",
+        "Ter sempre a mesma opinião"
+      ],
+      "correctAnswer": "Apresentar livros aos visitantes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ser mais importante que os visitantes": [
+          "ROLE_AS_OBSERVABLE_ACTION"
+        ],
+        "Pertencer a uma única família": [
+          "ROLE_AS_OBSERVABLE_ACTION"
+        ],
+        "Ter sempre a mesma opinião": [
+          "ROLE_AS_OBSERVABLE_ACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "POSTO_DE_LEITURA",
+      "explanation": "Apresentar livros é uma ação observável ligada à atividade.",
+      "hint": "Procure o verbo que descreve o que se faz.",
+      "errorFocus": "ROLE_AS_OBSERVABLE_ACTION",
+      "feedback": {
+        "correct": "Boa observação: Apresentar livros é uma ação observável ligada à atividade.",
+        "incorrect": "Apresentar livros é uma ação observável ligada à atividade.",
+        "hint": "Procure o verbo que descreve o que se faz.",
+        "errorFocus": "ROLE_AS_OBSERVABLE_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-10",
+      "statement": "Num mutirão imaginado, pessoas recolhem folhas, plantam mudas e organizam água. O que essas ações mostram?",
+      "prompt": "Num mutirão imaginado, pessoas recolhem folhas, plantam mudas e organizam água. O que essas ações mostram?",
+      "options": [
+        "Que todos devem fazer a mesma tarefa",
+        "Papéis variados que colaboram no cuidado da praça.",
+        "Que uma função depende do gênero",
+        "Que a praça pertence a uma só pessoa"
+      ],
+      "correctAnswer": "Papéis variados que colaboram no cuidado da praça.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que todos devem fazer a mesma tarefa": [
+          "COOPERATIVE_COMMUNITY_ROLES"
+        ],
+        "Que uma função depende do gênero": [
+          "COOPERATIVE_COMMUNITY_ROLES"
+        ],
+        "Que a praça pertence a uma só pessoa": [
+          "COOPERATIVE_COMMUNITY_ROLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MUTIRAO_DE_PRACA",
+      "explanation": "A cena apresenta ações diversas que contribuem para cuidar do espaço.",
+      "hint": "Veja como as tarefas se complementam.",
+      "errorFocus": "COOPERATIVE_COMMUNITY_ROLES",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta ações diversas que contribuem para cuidar do espaço.",
+        "incorrect": "A cena apresenta ações diversas que contribuem para cuidar do espaço.",
+        "hint": "Veja como as tarefas se complementam.",
+        "errorFocus": "COOPERATIVE_COMMUNITY_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-11",
+      "statement": "Uma pessoa guia visitantes por uma exposição fictícia. Qual papel está representado?",
+      "prompt": "Uma pessoa guia visitantes por uma exposição fictícia. Qual papel está representado?",
+      "options": [
+        "Controlar todas as memórias do grupo",
+        "Decidir quem pode aprender",
+        "Ajudar visitantes a conhecer a exposição.",
+        "Ser dono de todas as peças"
+      ],
+      "correctAnswer": "Ajudar visitantes a conhecer a exposição.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Controlar todas as memórias do grupo": [
+          "CULTURAL_SPACE_ROLE"
+        ],
+        "Decidir quem pode aprender": [
+          "CULTURAL_SPACE_ROLE"
+        ],
+        "Ser dono de todas as peças": [
+          "CULTURAL_SPACE_ROLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MUSEU_DA_COMUNIDADE",
+      "explanation": "O papel descrito é orientar a visita na cena.",
+      "hint": "Relacione a ação ao espaço.",
+      "errorFocus": "CULTURAL_SPACE_ROLE",
+      "feedback": {
+        "correct": "Boa observação: O papel descrito é orientar a visita na cena.",
+        "incorrect": "O papel descrito é orientar a visita na cena.",
+        "hint": "Relacione a ação ao espaço.",
+        "errorFocus": "CULTURAL_SPACE_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-12",
+      "statement": "Uma biblioteca organiza livros em prateleiras; outra oferece rodas de leitura. Qual afirmação é adequada?",
+      "prompt": "Uma biblioteca organiza livros em prateleiras; outra oferece rodas de leitura. Qual afirmação é adequada?",
+      "options": [
+        "Uma prática torna a outra errada",
+        "Todas as bibliotecas funcionam do mesmo jeito",
+        "Uma comunidade vale mais que outra",
+        "As comunidades podem ter práticas diferentes ligadas aos livros."
+      ],
+      "correctAnswer": "As comunidades podem ter práticas diferentes ligadas aos livros.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma prática torna a outra errada": [
+          "DIVERSE_COMMUNITY_PRACTICES"
+        ],
+        "Todas as bibliotecas funcionam do mesmo jeito": [
+          "DIVERSE_COMMUNITY_PRACTICES"
+        ],
+        "Uma comunidade vale mais que outra": [
+          "DIVERSE_COMMUNITY_PRACTICES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_BIBLIOTECAS",
+      "explanation": "As cenas mostram práticas distintas sem hierarquizar os grupos.",
+      "hint": "Compare sem escolher uma vencedora.",
+      "errorFocus": "DIVERSE_COMMUNITY_PRACTICES",
+      "feedback": {
+        "correct": "Boa observação: As cenas mostram práticas distintas sem hierarquizar os grupos.",
+        "incorrect": "As cenas mostram práticas distintas sem hierarquizar os grupos.",
+        "hint": "Compare sem escolher uma vencedora.",
+        "errorFocus": "DIVERSE_COMMUNITY_PRACTICES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-13",
+      "statement": "Em uma atividade, uma criança organiza materiais e depois participa da leitura. O que isso mostra?",
+      "prompt": "Em uma atividade, uma criança organiza materiais e depois participa da leitura. O que isso mostra?",
+      "options": [
+        "Uma pessoa pode exercer papéis diferentes em momentos distintos.",
+        "Cada pessoa tem só um papel para sempre",
+        "Organizar impede participar",
+        "Papéis são definidos pela idade"
+      ],
+      "correctAnswer": "Uma pessoa pode exercer papéis diferentes em momentos distintos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cada pessoa tem só um papel para sempre": [
+          "MULTIPLE_ROLES_OVER_TIME"
+        ],
+        "Organizar impede participar": [
+          "MULTIPLE_ROLES_OVER_TIME"
+        ],
+        "Papéis são definidos pela idade": [
+          "MULTIPLE_ROLES_OVER_TIME"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ROLES_QUE_MUDAM",
+      "explanation": "As ações da personagem mudam conforme a atividade.",
+      "hint": "Observe antes e depois.",
+      "errorFocus": "MULTIPLE_ROLES_OVER_TIME",
+      "feedback": {
+        "correct": "Boa observação: As ações da personagem mudam conforme a atividade.",
+        "incorrect": "As ações da personagem mudam conforme a atividade.",
+        "hint": "Observe antes e depois.",
+        "errorFocus": "MULTIPLE_ROLES_OVER_TIME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-14",
+      "statement": "Num jardim comunitário fictício, uma pessoa rega e outra identifica plantas com placas. Qual prática comum aparece?",
+      "prompt": "Num jardim comunitário fictício, uma pessoa rega e outra identifica plantas com placas. Qual prática comum aparece?",
+      "options": [
+        "Fazer uma competição de valor pessoal",
+        "Cuidar e organizar informações sobre o jardim.",
+        "Impedir outras pessoas de visitar",
+        "Apagar os nomes das plantas"
+      ],
+      "correctAnswer": "Cuidar e organizar informações sobre o jardim.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Fazer uma competição de valor pessoal": [
+          "SHARED_GARDEN_PRACTICE"
+        ],
+        "Impedir outras pessoas de visitar": [
+          "SHARED_GARDEN_PRACTICE"
+        ],
+        "Apagar os nomes das plantas": [
+          "SHARED_GARDEN_PRACTICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CUIDADO_COM_JARDIM",
+      "explanation": "As duas ações ajudam a cuidar e comunicar sobre o jardim.",
+      "hint": "Encontre o objetivo que as une.",
+      "errorFocus": "SHARED_GARDEN_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: As duas ações ajudam a cuidar e comunicar sobre o jardim.",
+        "incorrect": "As duas ações ajudam a cuidar e comunicar sobre o jardim.",
+        "hint": "Encontre o objetivo que as une.",
+        "errorFocus": "SHARED_GARDEN_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-15",
+      "statement": "Numa reunião inventada, pessoas ouvem propostas e organizam uma festa. Qual papel a pessoa que registra ideias exerce?",
+      "prompt": "Numa reunião inventada, pessoas ouvem propostas e organizam uma festa. Qual papel a pessoa que registra ideias exerce?",
+      "options": [
+        "Decidir sozinha por todas as pessoas",
+        "Falar em nome de todos sem ouvir",
+        "Registrar propostas para apoiar a organização do grupo.",
+        "Ser responsável por qualquer atividade"
+      ],
+      "correctAnswer": "Registrar propostas para apoiar a organização do grupo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Decidir sozinha por todas as pessoas": [
+          "RECORDING_ROLE_WITH_LIMITS"
+        ],
+        "Falar em nome de todos sem ouvir": [
+          "RECORDING_ROLE_WITH_LIMITS"
+        ],
+        "Ser responsável por qualquer atividade": [
+          "RECORDING_ROLE_WITH_LIMITS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REUNIAO_DE_BAIRRO",
+      "explanation": "Registrar ideias é uma ação, mas não significa decidir por todas as pessoas.",
+      "hint": "Separe registrar de decidir.",
+      "errorFocus": "RECORDING_ROLE_WITH_LIMITS",
+      "feedback": {
+        "correct": "Boa observação: Registrar ideias é uma ação, mas não significa decidir por todas as pessoas.",
+        "incorrect": "Registrar ideias é uma ação, mas não significa decidir por todas as pessoas.",
+        "hint": "Separe registrar de decidir.",
+        "errorFocus": "RECORDING_ROLE_WITH_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-16",
+      "statement": "Na feira, uma pessoa prepara alimentos e outra informa os preços. Qual frase evita estereótipo?",
+      "prompt": "Na feira, uma pessoa prepara alimentos e outra informa os preços. Qual frase evita estereótipo?",
+      "options": [
+        "Só um gênero pode preparar alimentos",
+        "A tarefa depende da origem",
+        "Uma função é naturalmente mais importante",
+        "Pessoas diversas podem realizar essas tarefas."
+      ],
+      "correctAnswer": "Pessoas diversas podem realizar essas tarefas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só um gênero pode preparar alimentos": [
+          "NON_STEREOTYPED_ROLE_ASSIGNMENT"
+        ],
+        "A tarefa depende da origem": [
+          "NON_STEREOTYPED_ROLE_ASSIGNMENT"
+        ],
+        "Uma função é naturalmente mais importante": [
+          "NON_STEREOTYPED_ROLE_ASSIGNMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRABALHOS_NA_FEIRA",
+      "explanation": "A cena descreve ações sem restringi-las por identidade pessoal.",
+      "hint": "Pense em quem pode exercer cada tarefa.",
+      "errorFocus": "NON_STEREOTYPED_ROLE_ASSIGNMENT",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve ações sem restringi-las por identidade pessoal.",
+        "incorrect": "A cena descreve ações sem restringi-las por identidade pessoal.",
+        "hint": "Pense em quem pode exercer cada tarefa.",
+        "errorFocus": "NON_STEREOTYPED_ROLE_ASSIGNMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-17",
+      "statement": "Uma biblioteca fictícia prepara uma festa de leitura. Que papéis podem apoiar a prática?",
+      "prompt": "Uma biblioteca fictícia prepara uma festa de leitura. Que papéis podem apoiar a prática?",
+      "options": [
+        "Organizar livros, acolher visitantes e escolher histórias para ler.",
+        "Proibir perguntas e participação",
+        "Atribuir todas as tarefas a uma pessoa",
+        "Escolher papéis pela aparência"
+      ],
+      "correctAnswer": "Organizar livros, acolher visitantes e escolher histórias para ler.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Proibir perguntas e participação": [
+          "MULTIPLE_ROLES_FOR_EVENT"
+        ],
+        "Atribuir todas as tarefas a uma pessoa": [
+          "MULTIPLE_ROLES_FOR_EVENT"
+        ],
+        "Escolher papéis pela aparência": [
+          "MULTIPLE_ROLES_FOR_EVENT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FESTA_DA_BIBLIOTECA_FICTICIA",
+      "explanation": "Papéis diferentes podem apoiar a realização da atividade coletiva.",
+      "hint": "Pense no que a festa precisa.",
+      "errorFocus": "MULTIPLE_ROLES_FOR_EVENT",
+      "feedback": {
+        "correct": "Boa observação: Papéis diferentes podem apoiar a realização da atividade coletiva.",
+        "incorrect": "Papéis diferentes podem apoiar a realização da atividade coletiva.",
+        "hint": "Pense no que a festa precisa.",
+        "errorFocus": "MULTIPLE_ROLES_FOR_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-18",
+      "statement": "Uma história mostra moradores organizando uma feira perto do rio. O que a descrição pode registrar sem generalizar?",
+      "prompt": "Uma história mostra moradores organizando uma feira perto do rio. O que a descrição pode registrar sem generalizar?",
+      "options": [
+        "Que todas as comunidades ribeirinhas fazem igual",
+        "As ações das pessoas naquela feira específica.",
+        "Que todos têm os mesmos papéis",
+        "Que o lugar define o valor das pessoas"
+      ],
+      "correctAnswer": "As ações das pessoas naquela feira específica.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que todas as comunidades ribeirinhas fazem igual": [
+          "CONTEXTUAL_DESCRIPTION_WITHOUT_GENERALIZATION"
+        ],
+        "Que todos têm os mesmos papéis": [
+          "CONTEXTUAL_DESCRIPTION_WITHOUT_GENERALIZATION"
+        ],
+        "Que o lugar define o valor das pessoas": [
+          "CONTEXTUAL_DESCRIPTION_WITHOUT_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "COMUNIDADE_RIBEIRINHA_FICTICIA",
+      "explanation": "A descrição deve permanecer na comunidade e situação mostradas.",
+      "hint": "Fique na cena apresentada.",
+      "errorFocus": "CONTEXTUAL_DESCRIPTION_WITHOUT_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A descrição deve permanecer na comunidade e situação mostradas.",
+        "incorrect": "A descrição deve permanecer na comunidade e situação mostradas.",
+        "hint": "Fique na cena apresentada.",
+        "errorFocus": "CONTEXTUAL_DESCRIPTION_WITHOUT_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-19",
+      "statement": "Uma escola organiza uma leitura e um grupo musical ensaia uma canção. O que é possível dizer?",
+      "prompt": "Uma escola organiza uma leitura e um grupo musical ensaia uma canção. O que é possível dizer?",
+      "options": [
+        "Uma atividade é sempre superior",
+        "Todos os participantes têm o mesmo papel",
+        "Cada comunidade realiza práticas próprias com papéis diversos.",
+        "Uma comunidade não pode aprender com outra"
+      ],
+      "correctAnswer": "Cada comunidade realiza práticas próprias com papéis diversos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma atividade é sempre superior": [
+          "CROSS_COMMUNITY_PRACTICE"
+        ],
+        "Todos os participantes têm o mesmo papel": [
+          "CROSS_COMMUNITY_PRACTICE"
+        ],
+        "Uma comunidade não pode aprender com outra": [
+          "CROSS_COMMUNITY_PRACTICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCOLA_E_GRUPO_MUSICAL",
+      "explanation": "As práticas são diferentes e podem ser descritas sem hierarquia.",
+      "hint": "Nomeie cada prática com respeito.",
+      "errorFocus": "CROSS_COMMUNITY_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: As práticas são diferentes e podem ser descritas sem hierarquia.",
+        "incorrect": "As práticas são diferentes e podem ser descritas sem hierarquia.",
+        "hint": "Nomeie cada prática com respeito.",
+        "errorFocus": "CROSS_COMMUNITY_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-20",
+      "statement": "Uma pessoa cuida da horta de uma escola. Qual descrição se baseia no que ela faz?",
+      "prompt": "Uma pessoa cuida da horta de uma escola. Qual descrição se baseia no que ela faz?",
+      "options": [
+        "Ela nasceu para cuidar de plantas",
+        "Só ela pode usar a horta",
+        "Seu papel vale mais que os outros",
+        "Ela rega plantas e organiza ferramentas na atividade."
+      ],
+      "correctAnswer": "Ela rega plantas e organiza ferramentas na atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ela nasceu para cuidar de plantas": [
+          "ROLE_BASED_ON_EVIDENCE"
+        ],
+        "Só ela pode usar a horta": [
+          "ROLE_BASED_ON_EVIDENCE"
+        ],
+        "Seu papel vale mais que os outros": [
+          "ROLE_BASED_ON_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PESSOA_QUE_CUIDA_DA_HORTA",
+      "explanation": "A descrição usa ações observáveis, não identidade ou julgamento.",
+      "hint": "Fale da tarefa na situação.",
+      "errorFocus": "ROLE_BASED_ON_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A descrição usa ações observáveis, não identidade ou julgamento.",
+        "incorrect": "A descrição usa ações observáveis, não identidade ou julgamento.",
+        "hint": "Fale da tarefa na situação.",
+        "errorFocus": "ROLE_BASED_ON_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-21",
+      "statement": "Um grupo quer organizar uma exposição. Qual divisão de papéis é coerente e flexível?",
+      "prompt": "Um grupo quer organizar uma exposição. Qual divisão de papéis é coerente e flexível?",
+      "options": [
+        "Pessoas podem preparar legendas, organizar desenhos e acolher visitantes, trocando tarefas se desejarem.",
+        "Uma pessoa decide tudo sozinha",
+        "As tarefas dependem de gênero",
+        "Alguns participantes não podem ajudar"
+      ],
+      "correctAnswer": "Pessoas podem preparar legendas, organizar desenhos e acolher visitantes, trocando tarefas se desejarem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma pessoa decide tudo sozinha": [
+          "FLEXIBLE_ROLE_DISTRIBUTION"
+        ],
+        "As tarefas dependem de gênero": [
+          "FLEXIBLE_ROLE_DISTRIBUTION"
+        ],
+        "Alguns participantes não podem ajudar": [
+          "FLEXIBLE_ROLE_DISTRIBUTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MURAL_COM_TAREFAS",
+      "explanation": "A divisão apoia a prática e permite participação diversa.",
+      "hint": "Escolha uma organização inclusiva.",
+      "errorFocus": "FLEXIBLE_ROLE_DISTRIBUTION",
+      "feedback": {
+        "correct": "Boa observação: A divisão apoia a prática e permite participação diversa.",
+        "incorrect": "A divisão apoia a prática e permite participação diversa.",
+        "hint": "Escolha uma organização inclusiva.",
+        "errorFocus": "FLEXIBLE_ROLE_DISTRIBUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-22",
+      "statement": "Uma cena de mercado mostra alguém vendendo, alguém comprando e outra pessoa levando uma cesta. O que podemos identificar?",
+      "prompt": "Uma cena de mercado mostra alguém vendendo, alguém comprando e outra pessoa levando uma cesta. O que podemos identificar?",
+      "options": [
+        "Papéis fixos de todas as comunidades",
+        "Ações diferentes exercidas por pessoas naquela situação.",
+        "Uma hierarquia de importância",
+        "Uma regra baseada na idade"
+      ],
+      "correctAnswer": "Ações diferentes exercidas por pessoas naquela situação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Papéis fixos de todas as comunidades": [
+          "MARKET_SCENE_ACTIONS"
+        ],
+        "Uma hierarquia de importância": [
+          "MARKET_SCENE_ACTIONS"
+        ],
+        "Uma regra baseada na idade": [
+          "MARKET_SCENE_ACTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MERCADO_DE_HISTORIA",
+      "explanation": "A imagem permite identificar ações, sem definir papéis permanentes.",
+      "hint": "Descreva quem faz o quê na cena.",
+      "errorFocus": "MARKET_SCENE_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: A imagem permite identificar ações, sem definir papéis permanentes.",
+        "incorrect": "A imagem permite identificar ações, sem definir papéis permanentes.",
+        "hint": "Descreva quem faz o quê na cena.",
+        "errorFocus": "MARKET_SCENE_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-23",
+      "statement": "Duas pessoas compartilham ideias numa roda e outra organiza a fala por turnos. Qual é uma prática coletiva?",
+      "prompt": "Duas pessoas compartilham ideias numa roda e outra organiza a fala por turnos. Qual é uma prática coletiva?",
+      "options": [
+        "Uma pessoa falar sem ouvir ninguém",
+        "Escolher quem vale mais",
+        "Conversar e escutar ideias em grupo.",
+        "Impedir que os papéis mudem"
+      ],
+      "correctAnswer": "Conversar e escutar ideias em grupo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma pessoa falar sem ouvir ninguém": [
+          "DIALOGUE_AS_COMMUNITY_PRACTICE"
+        ],
+        "Escolher quem vale mais": [
+          "DIALOGUE_AS_COMMUNITY_PRACTICE"
+        ],
+        "Impedir que os papéis mudem": [
+          "DIALOGUE_AS_COMMUNITY_PRACTICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RODA_DE_CONVERSA",
+      "explanation": "A roda reúne fala e escuta organizadas na situação.",
+      "hint": "Observe a ação feita em conjunto.",
+      "errorFocus": "DIALOGUE_AS_COMMUNITY_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: A roda reúne fala e escuta organizadas na situação.",
+        "incorrect": "A roda reúne fala e escuta organizadas na situação.",
+        "hint": "Observe a ação feita em conjunto.",
+        "errorFocus": "DIALOGUE_AS_COMMUNITY_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-24",
+      "statement": "Por que é melhor descrever “organiza os livros na cena” do que dizer “essa pessoa sempre é organizadora”?",
+      "prompt": "Por que é melhor descrever “organiza os livros na cena” do que dizer “essa pessoa sempre é organizadora”?",
+      "options": [
+        "Porque livros não podem ser organizados",
+        "Porque a pessoa não participa da comunidade",
+        "Porque toda função deve ser permanente",
+        "Porque a primeira frase limita o papel à ação observada."
+      ],
+      "correctAnswer": "Porque a primeira frase limita o papel à ação observada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque livros não podem ser organizados": [
+          "TEMPORARY_ROLE_DESCRIPTION"
+        ],
+        "Porque a pessoa não participa da comunidade": [
+          "TEMPORARY_ROLE_DESCRIPTION"
+        ],
+        "Porque toda função deve ser permanente": [
+          "TEMPORARY_ROLE_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PAPEL_NAO_E_IDENTIDADE",
+      "explanation": "Uma ação numa cena não define para sempre a identidade ou o papel da pessoa.",
+      "hint": "Use palavras que descrevem a situação.",
+      "errorFocus": "TEMPORARY_ROLE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: Uma ação numa cena não define para sempre a identidade ou o papel da pessoa.",
+        "incorrect": "Uma ação numa cena não define para sempre a identidade ou o papel da pessoa.",
+        "hint": "Use palavras que descrevem a situação.",
+        "errorFocus": "TEMPORARY_ROLE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-25",
+      "statement": "Uma prática coletiva é",
+      "prompt": "Uma prática coletiva é",
+      "options": [
+        "uma atividade realizada por pessoas em convivência.",
+        "uma característica física de uma pessoa",
+        "uma tarefa sem relação com grupos",
+        "uma regra igual em todo lugar"
+      ],
+      "correctAnswer": "uma atividade realizada por pessoas em convivência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma característica física de uma pessoa": [
+          "COMMUNITY_PRACTICE_RECALL"
+        ],
+        "uma tarefa sem relação com grupos": [
+          "COMMUNITY_PRACTICE_RECALL"
+        ],
+        "uma regra igual em todo lugar": [
+          "COMMUNITY_PRACTICE_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "PRATICA_COLETIVA",
+      "explanation": "A prática acontece no contexto de convivência de um grupo.",
+      "hint": "Pense em uma ação compartilhada.",
+      "errorFocus": "COMMUNITY_PRACTICE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A prática acontece no contexto de convivência de um grupo.",
+        "incorrect": "A prática acontece no contexto de convivência de um grupo.",
+        "hint": "Pense em uma ação compartilhada.",
+        "errorFocus": "COMMUNITY_PRACTICE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-26",
+      "statement": "Numa roda de leitura, acompanhar a história é",
+      "prompt": "Numa roda de leitura, acompanhar a história é",
+      "options": [
+        "um traço que define a pessoa para sempre",
+        "um papel possível na atividade.",
+        "uma tarefa proibida a outras pessoas",
+        "um sinal de maior valor"
+      ],
+      "correctAnswer": "um papel possível na atividade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um traço que define a pessoa para sempre": [
+          "ROLE_IN_ACTIVITY_RECALL"
+        ],
+        "uma tarefa proibida a outras pessoas": [
+          "ROLE_IN_ACTIVITY_RECALL"
+        ],
+        "um sinal de maior valor": [
+          "ROLE_IN_ACTIVITY_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PAPEL_DE_LEITURA",
+      "explanation": "A ação descreve uma participação na leitura em grupo.",
+      "hint": "Associe à atividade.",
+      "errorFocus": "ROLE_IN_ACTIVITY_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A ação descreve uma participação na leitura em grupo.",
+        "incorrect": "A ação descreve uma participação na leitura em grupo.",
+        "hint": "Associe à atividade.",
+        "errorFocus": "ROLE_IN_ACTIVITY_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-27",
+      "statement": "Por que uma mesma comunidade pode ter papéis sociais diferentes?",
+      "prompt": "Por que uma mesma comunidade pode ter papéis sociais diferentes?",
+      "options": [
+        "Porque as pessoas são todas iguais",
+        "Porque alguns papéis não contam",
+        "Porque uma prática pode envolver várias ações.",
+        "Porque a comunidade nunca muda"
+      ],
+      "correctAnswer": "Porque uma prática pode envolver várias ações.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque as pessoas são todas iguais": [
+          "VARIED_ROLE_RECALL"
+        ],
+        "Porque alguns papéis não contam": [
+          "VARIED_ROLE_RECALL"
+        ],
+        "Porque a comunidade nunca muda": [
+          "VARIED_ROLE_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DIFERENTES_PAPEIS",
+      "explanation": "Ações variadas podem apoiar atividades comuns.",
+      "hint": "Considere uma feira ou uma escola.",
+      "errorFocus": "VARIED_ROLE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Ações variadas podem apoiar atividades comuns.",
+        "incorrect": "Ações variadas podem apoiar atividades comuns.",
+        "hint": "Considere uma feira ou uma escola.",
+        "errorFocus": "VARIED_ROLE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-28",
+      "statement": "Duas pessoas diferentes organizam livros em momentos distintos. O que isso mostra?",
+      "prompt": "Duas pessoas diferentes organizam livros em momentos distintos. O que isso mostra?",
+      "options": [
+        "Só uma pessoa tem permissão natural",
+        "A tarefa não pertence à comunidade",
+        "Uma pessoa é sempre superior",
+        "Uma tarefa pode ser realizada por pessoas diferentes."
+      ],
+      "correctAnswer": "Uma tarefa pode ser realizada por pessoas diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só uma pessoa tem permissão natural": [
+          "ROLE_NOT_PERSON_BOUND"
+        ],
+        "A tarefa não pertence à comunidade": [
+          "ROLE_NOT_PERSON_BOUND"
+        ],
+        "Uma pessoa é sempre superior": [
+          "ROLE_NOT_PERSON_BOUND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_PESSOAS_MESMA_TAREFA",
+      "explanation": "O papel na situação não está preso a uma pessoa específica.",
+      "hint": "Compare a ação realizada.",
+      "errorFocus": "ROLE_NOT_PERSON_BOUND",
+      "feedback": {
+        "correct": "Boa observação: O papel na situação não está preso a uma pessoa específica.",
+        "incorrect": "O papel na situação não está preso a uma pessoa específica.",
+        "hint": "Compare a ação realizada.",
+        "errorFocus": "ROLE_NOT_PERSON_BOUND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-29",
+      "statement": "Recolher folhas e plantar mudas numa praça fictícia são ações de",
+      "prompt": "Recolher folhas e plantar mudas numa praça fictícia são ações de",
+      "options": [
+        "cuidado de um espaço coletivo.",
+        "uma atividade sem comunidade",
+        "uma prova de que todos fazem igual",
+        "uma competição entre famílias"
+      ],
+      "correctAnswer": "cuidado de um espaço coletivo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma atividade sem comunidade": [
+          "SHARED_SPACE_CARE_RECALL"
+        ],
+        "uma prova de que todos fazem igual": [
+          "SHARED_SPACE_CARE_RECALL"
+        ],
+        "uma competição entre famílias": [
+          "SHARED_SPACE_CARE_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GRUPO_QUE_CUIDA_DA_PRACA",
+      "explanation": "As ações contribuem para o cuidado da praça apresentada.",
+      "hint": "Observe o objetivo comum.",
+      "errorFocus": "SHARED_SPACE_CARE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: As ações contribuem para o cuidado da praça apresentada.",
+        "incorrect": "As ações contribuem para o cuidado da praça apresentada.",
+        "hint": "Observe o objetivo comum.",
+        "errorFocus": "SHARED_SPACE_CARE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-30",
+      "statement": "Como descrever papéis sem dizer que uma pessoa é mais importante?",
+      "prompt": "Como descrever papéis sem dizer que uma pessoa é mais importante?",
+      "options": [
+        "Ordenando pessoas por valor",
+        "Nomeando as ações e como contribuem para a prática.",
+        "Dando tarefas por aparência",
+        "Chamando um papel de natural"
+      ],
+      "correctAnswer": "Nomeando as ações e como contribuem para a prática.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ordenando pessoas por valor": [
+          "NON_HIERARCHICAL_DESCRIPTION"
+        ],
+        "Dando tarefas por aparência": [
+          "NON_HIERARCHICAL_DESCRIPTION"
+        ],
+        "Chamando um papel de natural": [
+          "NON_HIERARCHICAL_DESCRIPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SEM_HIERARQUIA_DE_PAPEIS",
+      "explanation": "A descrição pode explicar contribuições sem classificar pessoas.",
+      "hint": "Fale da contribuição observável.",
+      "errorFocus": "NON_HIERARCHICAL_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A descrição pode explicar contribuições sem classificar pessoas.",
+        "incorrect": "A descrição pode explicar contribuições sem classificar pessoas.",
+        "hint": "Fale da contribuição observável.",
+        "errorFocus": "NON_HIERARCHICAL_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-31",
+      "statement": "Comunidades diferentes podem",
+      "prompt": "Comunidades diferentes podem",
+      "options": [
+        "ser obrigadas a agir do mesmo jeito",
+        "ter sempre os mesmos costumes",
+        "realizar práticas e organizar papéis de modos variados.",
+        "ser comparadas por valor"
+      ],
+      "correctAnswer": "realizar práticas e organizar papéis de modos variados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "ser obrigadas a agir do mesmo jeito": [
+          "COMMUNITY_VARIATION_RECALL"
+        ],
+        "ter sempre os mesmos costumes": [
+          "COMMUNITY_VARIATION_RECALL"
+        ],
+        "ser comparadas por valor": [
+          "COMMUNITY_VARIATION_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "COMUNIDADES_DIVERSAS",
+      "explanation": "As práticas variam conforme as situações e grupos.",
+      "hint": "Lembre que há diversidade.",
+      "errorFocus": "COMMUNITY_VARIATION_RECALL",
+      "feedback": {
+        "correct": "Boa observação: As práticas variam conforme as situações e grupos.",
+        "incorrect": "As práticas variam conforme as situações e grupos.",
+        "hint": "Lembre que há diversidade.",
+        "errorFocus": "COMMUNITY_VARIATION_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-32",
+      "statement": "Uma pessoa participa de uma feira e depois de uma leitura. O que pode acontecer com seus papéis?",
+      "prompt": "Uma pessoa participa de uma feira e depois de uma leitura. O que pode acontecer com seus papéis?",
+      "options": [
+        "Precisam permanecer iguais para sempre",
+        "São definidos por uma só característica",
+        "Impedem novas participações",
+        "Podem mudar conforme a atividade."
+      ],
+      "correctAnswer": "Podem mudar conforme a atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Precisam permanecer iguais para sempre": [
+          "ROLE_VARIATION_OVER_CONTEXT"
+        ],
+        "São definidos por uma só característica": [
+          "ROLE_VARIATION_OVER_CONTEXT"
+        ],
+        "Impedem novas participações": [
+          "ROLE_VARIATION_OVER_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MUDANCA_DE_PAPEL",
+      "explanation": "Os papéis descritos dependem das práticas em que a pessoa participa.",
+      "hint": "Compare as duas atividades.",
+      "errorFocus": "ROLE_VARIATION_OVER_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Os papéis descritos dependem das práticas em que a pessoa participa.",
+        "incorrect": "Os papéis descritos dependem das práticas em que a pessoa participa.",
+        "hint": "Compare as duas atividades.",
+        "errorFocus": "ROLE_VARIATION_OVER_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-33",
+      "statement": "Numa feira fictícia, uma pessoa organiza placas e outra conversa com visitantes. O que podemos registrar?",
+      "prompt": "Numa feira fictícia, uma pessoa organiza placas e outra conversa com visitantes. O que podemos registrar?",
+      "options": [
+        "Papéis diferentes exercidos naquela feira.",
+        "Uma regra para todas as feiras",
+        "Uma escala de valor entre pessoas",
+        "Uma identidade que não muda"
+      ],
+      "correctAnswer": "Papéis diferentes exercidos naquela feira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma regra para todas as feiras": [
+          "SCENE_SPECIFIC_ROLE_REVIEW"
+        ],
+        "Uma escala de valor entre pessoas": [
+          "SCENE_SPECIFIC_ROLE_REVIEW"
+        ],
+        "Uma identidade que não muda": [
+          "SCENE_SPECIFIC_ROLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_PAPEIS_NA_FEIRA",
+      "explanation": "A resposta descreve ações da situação apresentada.",
+      "hint": "Fique na feira do exemplo.",
+      "errorFocus": "SCENE_SPECIFIC_ROLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A resposta descreve ações da situação apresentada.",
+        "incorrect": "A resposta descreve ações da situação apresentada.",
+        "hint": "Fique na feira do exemplo.",
+        "errorFocus": "SCENE_SPECIFIC_ROLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-34",
+      "statement": "Uma escola e uma biblioteca têm práticas diferentes. Como compará-las com respeito?",
+      "prompt": "Uma escola e uma biblioteca têm práticas diferentes. Como compará-las com respeito?",
+      "options": [
+        "Dizer qual é melhor para todos",
+        "Descrever as ações de cada uma sem hierarquizar.",
+        "Afirmar que funcionam sempre igual",
+        "Escolher papéis por aparência"
+      ],
+      "correctAnswer": "Descrever as ações de cada uma sem hierarquizar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer qual é melhor para todos": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ],
+        "Afirmar que funcionam sempre igual": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ],
+        "Escolher papéis por aparência": [
+          "RESPECTFUL_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_ESCOLA_E_BIBLIOTECA",
+      "explanation": "A comparação pode observar diferenças sem criar uma hierarquia.",
+      "hint": "Descreva cada prática.",
+      "errorFocus": "RESPECTFUL_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A comparação pode observar diferenças sem criar uma hierarquia.",
+        "incorrect": "A comparação pode observar diferenças sem criar uma hierarquia.",
+        "hint": "Descreva cada prática.",
+        "errorFocus": "RESPECTFUL_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-35",
+      "statement": "Num grupo, as pessoas trocam tarefas durante uma atividade. O que isso mostra?",
+      "prompt": "Num grupo, as pessoas trocam tarefas durante uma atividade. O que isso mostra?",
+      "options": [
+        "Uma pessoa só pode ter uma função",
+        "A atividade deixou de ser coletiva",
+        "Papéis podem variar entre pessoas e momentos.",
+        "Toda tarefa pertence a uma identidade"
+      ],
+      "correctAnswer": "Papéis podem variar entre pessoas e momentos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma pessoa só pode ter uma função": [
+          "ROLE_FLEXIBILITY_REVIEW"
+        ],
+        "A atividade deixou de ser coletiva": [
+          "ROLE_FLEXIBILITY_REVIEW"
+        ],
+        "Toda tarefa pertence a uma identidade": [
+          "ROLE_FLEXIBILITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_TROCA_DE_TAREFAS",
+      "explanation": "A troca mostra que a participação pode mudar.",
+      "hint": "Observe antes e depois da troca.",
+      "errorFocus": "ROLE_FLEXIBILITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A troca mostra que a participação pode mudar.",
+        "incorrect": "A troca mostra que a participação pode mudar.",
+        "hint": "Observe antes e depois da troca.",
+        "errorFocus": "ROLE_FLEXIBILITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-36",
+      "statement": "Regar plantas e etiquetar mudas numa horta coletiva são",
+      "prompt": "Regar plantas e etiquetar mudas numa horta coletiva são",
+      "options": [
+        "provas de que só uma pessoa pode ajudar",
+        "características de uma família",
+        "funções sem relação entre si",
+        "ações de uma prática compartilhada."
+      ],
+      "correctAnswer": "ações de uma prática compartilhada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "provas de que só uma pessoa pode ajudar": [
+          "SHARED_PRACTICE_REVIEW"
+        ],
+        "características de uma família": [
+          "SHARED_PRACTICE_REVIEW"
+        ],
+        "funções sem relação entre si": [
+          "SHARED_PRACTICE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DA_HORTA",
+      "explanation": "As ações se relacionam ao cuidado da horta.",
+      "hint": "Encontre o que as ações têm em comum.",
+      "errorFocus": "SHARED_PRACTICE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As ações se relacionam ao cuidado da horta.",
+        "incorrect": "As ações se relacionam ao cuidado da horta.",
+        "hint": "Encontre o que as ações têm em comum.",
+        "errorFocus": "SHARED_PRACTICE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-37",
+      "statement": "Uma imagem mostra alguém varrendo o pátio. Qual frase evita generalização?",
+      "prompt": "Uma imagem mostra alguém varrendo o pátio. Qual frase evita generalização?",
+      "options": [
+        "Nesta cena, uma pessoa está varrendo o pátio.",
+        "Todas as pessoas daquela comunidade varrem",
+        "Só essa pessoa pode varrer",
+        "A imagem mostra todos os dias"
+      ],
+      "correctAnswer": "Nesta cena, uma pessoa está varrendo o pátio.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as pessoas daquela comunidade varrem": [
+          "OBSERVATION_SCOPE_REVIEW"
+        ],
+        "Só essa pessoa pode varrer": [
+          "OBSERVATION_SCOPE_REVIEW"
+        ],
+        "A imagem mostra todos os dias": [
+          "OBSERVATION_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_IMAGEM_DA_ESCOLA",
+      "explanation": "A frase limita a descrição ao que aparece na imagem.",
+      "hint": "Use “nesta cena”.",
+      "errorFocus": "OBSERVATION_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase limita a descrição ao que aparece na imagem.",
+        "incorrect": "A frase limita a descrição ao que aparece na imagem.",
+        "hint": "Use “nesta cena”.",
+        "errorFocus": "OBSERVATION_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-38",
+      "statement": "Um grupo prepara uma apresentação. Qual escolha permite papéis diversos?",
+      "prompt": "Um grupo prepara uma apresentação. Qual escolha permite papéis diversos?",
+      "options": [
+        "Distribuir tarefas por gênero",
+        "Combinar tarefas e permitir que pessoas escolham ou troquem sua participação.",
+        "Impedir algumas pessoas de ajudar",
+        "Deixar uma pessoa fazer tudo"
+      ],
+      "correctAnswer": "Combinar tarefas e permitir que pessoas escolham ou troquem sua participação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Distribuir tarefas por gênero": [
+          "INCLUSIVE_ROLE_ALLOCATION_REVIEW"
+        ],
+        "Impedir algumas pessoas de ajudar": [
+          "INCLUSIVE_ROLE_ALLOCATION_REVIEW"
+        ],
+        "Deixar uma pessoa fazer tudo": [
+          "INCLUSIVE_ROLE_ALLOCATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ORGANIZACAO_INCLUSIVA",
+      "explanation": "Papéis flexíveis ampliam a participação na prática coletiva.",
+      "hint": "Escolha a opção que inclui o grupo.",
+      "errorFocus": "INCLUSIVE_ROLE_ALLOCATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Papéis flexíveis ampliam a participação na prática coletiva.",
+        "incorrect": "Papéis flexíveis ampliam a participação na prática coletiva.",
+        "hint": "Escolha a opção que inclui o grupo.",
+        "errorFocus": "INCLUSIVE_ROLE_ALLOCATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-39",
+      "statement": "Um papel social numa atividade é melhor descrito por",
+      "prompt": "Um papel social numa atividade é melhor descrito por",
+      "options": [
+        "um julgamento sobre seu valor",
+        "uma característica fixa da aparência",
+        "uma ação que a pessoa realiza na situação.",
+        "uma regra para todas as comunidades"
+      ],
+      "correctAnswer": "uma ação que a pessoa realiza na situação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um julgamento sobre seu valor": [
+          "ROLE_AS_ACTION_REVIEW"
+        ],
+        "uma característica fixa da aparência": [
+          "ROLE_AS_ACTION_REVIEW"
+        ],
+        "uma regra para todas as comunidades": [
+          "ROLE_AS_ACTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_PAPEL_SOCIAL",
+      "explanation": "Descrever ações evita estereótipos e generalizações.",
+      "hint": "Use um verbo observado.",
+      "errorFocus": "ROLE_AS_ACTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Descrever ações evita estereótipos e generalizações.",
+        "incorrect": "Descrever ações evita estereótipos e generalizações.",
+        "hint": "Use um verbo observado.",
+        "errorFocus": "ROLE_AS_ACTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02hi02-community-practices-and-roles-v1-40",
+      "statement": "Por que práticas de comunidades diferentes podem variar?",
+      "prompt": "Por que práticas de comunidades diferentes podem variar?",
+      "options": [
+        "Porque uma comunidade está sempre errada",
+        "Porque todas precisam copiar uma só forma",
+        "Porque papéis não podem mudar",
+        "Porque grupos e situações podem se organizar de modos diversos."
+      ],
+      "correctAnswer": "Porque grupos e situações podem se organizar de modos diversos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque uma comunidade está sempre errada": [
+          "COMMUNITY_DIVERSITY_REVIEW"
+        ],
+        "Porque todas precisam copiar uma só forma": [
+          "COMMUNITY_DIVERSITY_REVIEW"
+        ],
+        "Porque papéis não podem mudar": [
+          "COMMUNITY_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_DIVERSIDADE",
+      "explanation": "A diversidade de práticas é compatível com diferentes contextos de convivência.",
+      "hint": "Pense em grupos diferentes sem hierarquia.",
+      "errorFocus": "COMMUNITY_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A diversidade de práticas é compatível com diferentes contextos de convivência.",
+        "incorrect": "A diversidade de práticas é compatível com diferentes contextos de convivência.",
+        "hint": "Pense em grupos diferentes sem hierarquia.",
+        "errorFocus": "COMMUNITY_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenas ilustradas com descrição oral, contraste alto, legendas e personagens variados sem estereótipos.",
+          "Permitir responder por fala, seleção de cartões, desenho, dramatização ou comunicação alternativa."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

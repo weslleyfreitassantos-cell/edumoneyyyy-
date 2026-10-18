@@ -1,0 +1,2034 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef02co03-machine-instructions-v1",
+  "canonicalSkillCode": "COMPUTING_IDENTIFY_MACHINE_SPECIFIC_INSTRUCTION_SETS",
+  "subject": "COMPUTING",
+  "domain": "MUNDO DIGITAL",
+  "topic": "máquinas executam conjuntos próprios de instruções que podem definir algoritmos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CO03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar que máquinas diferentes executam conjuntos próprios de instruções e que podem ser usadas para definir algoritmos.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Instruções próprias para cada máquina",
+    "objective": "Identificar que máquinas podem executar conjuntos específicos de instruções e organizar uma sequência de comandos compatíveis para alcançar um resultado simples em um modelo seguro.",
+    "summary": "Máquinas diferentes respondem a instruções diferentes. Um robô de sala pode reconhecer comandos de avançar e virar; outro aparelho pode ter botões com funções próprias. Um algoritmo é uma sequência organizada de instruções para uma tarefa. Os comandos precisam ser claros e compatíveis com a máquina imaginada ou usada.",
+    "explanation": "Primeiro identifique o que a máquina consegue reconhecer. Depois escolha instruções daquele conjunto e organize-as na ordem necessária. Se um robô aceita avançar e virar, uma ordem de movimentos pode levá-lo até um alvo num tabuleiro. Um comando que não existe no conjunto não ajuda a máquina a executar a tarefa. Simulações com peças ou cartões permitem planejar e conferir a sequência sem risco.",
+    "workedExample": "Um robô de brinquedo em uma grade aceita apenas avançar uma casa, virar à esquerda, virar à direita e parar. Para chegar à estrela, a criança observa a posição inicial e organiza os comandos reconhecidos pelo robô. A sequência descreve passos claros, não uma intenção vaga como “vá até lá”.",
+    "commonMistake": "Supor que todas as máquinas entendem as mesmas instruções ou deixar uma etapa ambígua para a máquina completar sozinha.",
+    "priorKnowledge": [
+      "Seguir instruções simples em ordem, como avançar e parar.",
+      "Reconhecer que aparelhos e brinquedos têm funções diferentes."
+    ],
+    "keyConcepts": [
+      "máquina",
+      "instrução",
+      "conjunto de comandos",
+      "ordem",
+      "algoritmo",
+      "simulação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COMMAND_NOT_IN_MACHINE_SET",
+        "action": "Mostre o conjunto de cartões reconhecidos pela máquina e peça que a criança selecione somente comandos disponíveis."
+      },
+      {
+        "errorFocus": "ORDER_OF_INSTRUCTIONS",
+        "action": "Execute uma instrução por vez em um tabuleiro e compare o resultado de duas ordens diferentes."
+      },
+      {
+        "errorFocus": "VAGUE_INSTRUCTION",
+        "action": "Substitua expressões como “vá para lá” por passos observáveis, como avançar uma casa e parar."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+      "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co03-command-card-robot",
+        "title": "Robô de cartões",
+        "instructions": "Um robô fictício percorre uma grade usando apenas os comandos impressos nos cartões.\n1. Leia o conjunto de comandos disponíveis.\n2. Planeje uma sequência para chegar a um alvo.\n3. Simule cada comando e confira onde o robô terminou.",
+        "steps": [
+          "Leia o conjunto de comandos disponíveis.",
+          "Planeje uma sequência para chegar a um alvo.",
+          "Simule cada comando e confira onde o robô terminou."
+        ],
+        "evidence": "Sequência ordenada composta por instruções que pertencem ao conjunto do robô.",
+        "privacyGuard": "Usar grade e personagens fictícios; não coletar dados, imagens ou localização de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um comando com mediação.",
+            "developing": "escolhe comandos disponíveis para um passo.",
+            "proficient": "organiza uma sequência compatível e verifica o resultado."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co03-two-machines-two-sets",
+        "title": "Duas máquinas, dois conjuntos",
+        "instructions": "Dois modelos de máquina apresentam cartões diferentes de instruções.\n1. Observe quais comandos cada modelo reconhece.\n2. Separe os cartões em dois conjuntos.\n3. Explique por que uma instrução de um conjunto pode não servir ao outro.",
+        "steps": [
+          "Observe quais comandos cada modelo reconhece.",
+          "Separe os cartões em dois conjuntos.",
+          "Explique por que uma instrução de um conjunto pode não servir ao outro."
+        ],
+        "evidence": "Classificação de comandos por máquina, acompanhada de uma justificativa simples.",
+        "privacyGuard": "Atividade com modelos fictícios e comandos impressos; não requer conta nem conexão à internet.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma diferença entre os modelos.",
+            "developing": "classifica comandos com apoio visual.",
+            "proficient": "relaciona cada comando à máquina que pode executá-lo."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef02co03-machine-instructions-v1-01",
+          "bncc-ef02co03-machine-instructions-v1-02",
+          "bncc-ef02co03-machine-instructions-v1-03",
+          "bncc-ef02co03-machine-instructions-v1-04",
+          "bncc-ef02co03-machine-instructions-v1-05",
+          "bncc-ef02co03-machine-instructions-v1-06",
+          "bncc-ef02co03-machine-instructions-v1-07",
+          "bncc-ef02co03-machine-instructions-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef02co03-machine-instructions-v1-09",
+          "bncc-ef02co03-machine-instructions-v1-10",
+          "bncc-ef02co03-machine-instructions-v1-11",
+          "bncc-ef02co03-machine-instructions-v1-12",
+          "bncc-ef02co03-machine-instructions-v1-13",
+          "bncc-ef02co03-machine-instructions-v1-14",
+          "bncc-ef02co03-machine-instructions-v1-15",
+          "bncc-ef02co03-machine-instructions-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef02co03-machine-instructions-v1-17",
+          "bncc-ef02co03-machine-instructions-v1-18",
+          "bncc-ef02co03-machine-instructions-v1-19",
+          "bncc-ef02co03-machine-instructions-v1-20",
+          "bncc-ef02co03-machine-instructions-v1-21",
+          "bncc-ef02co03-machine-instructions-v1-22",
+          "bncc-ef02co03-machine-instructions-v1-23",
+          "bncc-ef02co03-machine-instructions-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef02co03-machine-instructions-v1-25",
+          "bncc-ef02co03-machine-instructions-v1-26",
+          "bncc-ef02co03-machine-instructions-v1-27",
+          "bncc-ef02co03-machine-instructions-v1-28",
+          "bncc-ef02co03-machine-instructions-v1-29",
+          "bncc-ef02co03-machine-instructions-v1-30",
+          "bncc-ef02co03-machine-instructions-v1-31",
+          "bncc-ef02co03-machine-instructions-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef02co03-machine-instructions-v1-33",
+          "bncc-ef02co03-machine-instructions-v1-34",
+          "bncc-ef02co03-machine-instructions-v1-35",
+          "bncc-ef02co03-machine-instructions-v1-36",
+          "bncc-ef02co03-machine-instructions-v1-37",
+          "bncc-ef02co03-machine-instructions-v1-38",
+          "bncc-ef02co03-machine-instructions-v1-39",
+          "bncc-ef02co03-machine-instructions-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CO03",
+        "descriptor": "Identificar que máquinas diferentes executam conjuntos próprios de instruções e que podem ser usadas para definir algoritmos.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-01",
+      "statement": "Um robô de grade reconhece avançar, virar e parar. Qual cartão pertence ao conjunto?",
+      "prompt": "Um robô de grade reconhece avançar, virar e parar. Qual cartão pertence ao conjunto?",
+      "options": [
+        "Avançar uma casa.",
+        "Enviar uma mensagem",
+        "Assar um bolo",
+        "Mudar a cor do papel"
+      ],
+      "correctAnswer": "Avançar uma casa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Enviar uma mensagem": [
+          "COMMAND_SET_MEMBERSHIP"
+        ],
+        "Assar um bolo": [
+          "COMMAND_SET_MEMBERSHIP"
+        ],
+        "Mudar a cor do papel": [
+          "COMMAND_SET_MEMBERSHIP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROBO_DE_GRADE",
+      "explanation": "Avançar uma casa está entre os comandos mostrados para esse robô.",
+      "hint": "Use a lista de cartões do robô.",
+      "errorFocus": "COMMAND_SET_MEMBERSHIP",
+      "feedback": {
+        "correct": "Boa observação: Avançar uma casa está entre os comandos mostrados para esse robô.",
+        "incorrect": "Avançar uma casa está entre os comandos mostrados para esse robô.",
+        "hint": "Use a lista de cartões do robô.",
+        "errorFocus": "COMMAND_SET_MEMBERSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-02",
+      "statement": "Dois brinquedos têm botões com funções diferentes. O que isso mostra?",
+      "prompt": "Dois brinquedos têm botões com funções diferentes. O que isso mostra?",
+      "options": [
+        "Todas as máquinas fazem a mesma coisa",
+        "Cada máquina pode ter instruções próprias.",
+        "Um botão serve para qualquer aparelho",
+        "Máquinas não precisam de instruções"
+      ],
+      "correctAnswer": "Cada máquina pode ter instruções próprias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as máquinas fazem a mesma coisa": [
+          "MACHINE_SPECIFIC_INSTRUCTIONS"
+        ],
+        "Um botão serve para qualquer aparelho": [
+          "MACHINE_SPECIFIC_INSTRUCTIONS"
+        ],
+        "Máquinas não precisam de instruções": [
+          "MACHINE_SPECIFIC_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_BRINQUEDOS",
+      "explanation": "Conjuntos diferentes de comandos podem corresponder a máquinas diferentes.",
+      "hint": "Compare os botões dos brinquedos.",
+      "errorFocus": "MACHINE_SPECIFIC_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: Conjuntos diferentes de comandos podem corresponder a máquinas diferentes.",
+        "incorrect": "Conjuntos diferentes de comandos podem corresponder a máquinas diferentes.",
+        "hint": "Compare os botões dos brinquedos.",
+        "errorFocus": "MACHINE_SPECIFIC_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-03",
+      "statement": "Uma máquina deve avançar e depois parar. Por que a ordem importa?",
+      "prompt": "Uma máquina deve avançar e depois parar. Por que a ordem importa?",
+      "options": [
+        "A ordem muda o nome da máquina",
+        "A máquina escolhe o objetivo sozinha",
+        "A sequência orienta o que a máquina faz primeiro e depois.",
+        "Os comandos desaparecem"
+      ],
+      "correctAnswer": "A sequência orienta o que a máquina faz primeiro e depois.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A ordem muda o nome da máquina": [
+          "INSTRUCTION_ORDER"
+        ],
+        "A máquina escolhe o objetivo sozinha": [
+          "INSTRUCTION_ORDER"
+        ],
+        "Os comandos desaparecem": [
+          "INSTRUCTION_ORDER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ORDEM_DE_COMANDOS",
+      "explanation": "Uma sequência define a ordem em que as instruções são executadas.",
+      "hint": "Pense no primeiro passo.",
+      "errorFocus": "INSTRUCTION_ORDER",
+      "feedback": {
+        "correct": "Boa observação: Uma sequência define a ordem em que as instruções são executadas.",
+        "incorrect": "Uma sequência define a ordem em que as instruções são executadas.",
+        "hint": "Pense no primeiro passo.",
+        "errorFocus": "INSTRUCTION_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-04",
+      "statement": "Um modelo de robô tem cartões avançar, virar e parar. Qual comando encerra o movimento?",
+      "prompt": "Um modelo de robô tem cartões avançar, virar e parar. Qual comando encerra o movimento?",
+      "options": [
+        "Virar",
+        "Avançar",
+        "Desenhar",
+        "Parar."
+      ],
+      "correctAnswer": "Parar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Virar": [
+          "STOP_COMMAND_PURPOSE"
+        ],
+        "Avançar": [
+          "STOP_COMMAND_PURPOSE"
+        ],
+        "Desenhar": [
+          "STOP_COMMAND_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOTAO_DE_PARAR",
+      "explanation": "Parar é a instrução que encerra o movimento no modelo.",
+      "hint": "Procure a instrução de encerramento.",
+      "errorFocus": "STOP_COMMAND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Parar é a instrução que encerra o movimento no modelo.",
+        "incorrect": "Parar é a instrução que encerra o movimento no modelo.",
+        "hint": "Procure a instrução de encerramento.",
+        "errorFocus": "STOP_COMMAND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-05",
+      "statement": "Um carrinho automático de uma história reconhece seguir linha e parar. Qual instrução combina com ele?",
+      "prompt": "Um carrinho automático de uma história reconhece seguir linha e parar. Qual instrução combina com ele?",
+      "options": [
+        "Seguir a linha marcada.",
+        "Escolher uma música sem comando",
+        "Ler o pensamento de alguém",
+        "Abrir qualquer porta"
+      ],
+      "correctAnswer": "Seguir a linha marcada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher uma música sem comando": [
+          "COMPATIBLE_MACHINE_COMMAND"
+        ],
+        "Ler o pensamento de alguém": [
+          "COMPATIBLE_MACHINE_COMMAND"
+        ],
+        "Abrir qualquer porta": [
+          "COMPATIBLE_MACHINE_COMMAND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MAQUINA_DE_BIBLIOTECA_FICTICIA",
+      "explanation": "Seguir uma linha marcada pertence ao conjunto apresentado para o carrinho.",
+      "hint": "Confira quais comandos foram dados.",
+      "errorFocus": "COMPATIBLE_MACHINE_COMMAND",
+      "feedback": {
+        "correct": "Boa observação: Seguir uma linha marcada pertence ao conjunto apresentado para o carrinho.",
+        "incorrect": "Seguir uma linha marcada pertence ao conjunto apresentado para o carrinho.",
+        "hint": "Confira quais comandos foram dados.",
+        "errorFocus": "COMPATIBLE_MACHINE_COMMAND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-06",
+      "statement": "Uma máquina de tabuleiro só reconhece avançar uma casa. O comando “pular três casas” está no conjunto?",
+      "prompt": "Uma máquina de tabuleiro só reconhece avançar uma casa. O comando “pular três casas” está no conjunto?",
+      "options": [
+        "Sim; toda máquina entende qualquer comando",
+        "Não; esse comando não foi listado.",
+        "Sim; porque três é maior que um",
+        "Não; máquinas não se movem"
+      ],
+      "correctAnswer": "Não; esse comando não foi listado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim; toda máquina entende qualquer comando": [
+          "UNSUPPORTED_COMMAND"
+        ],
+        "Sim; porque três é maior que um": [
+          "UNSUPPORTED_COMMAND"
+        ],
+        "Não; máquinas não se movem": [
+          "UNSUPPORTED_COMMAND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTOES_DE_MOVIMENTO",
+      "explanation": "O conjunto informado contém apenas avançar uma casa.",
+      "hint": "Compare o comando com a lista.",
+      "errorFocus": "UNSUPPORTED_COMMAND",
+      "feedback": {
+        "correct": "Boa observação: O conjunto informado contém apenas avançar uma casa.",
+        "incorrect": "O conjunto informado contém apenas avançar uma casa.",
+        "hint": "Compare o comando com a lista.",
+        "errorFocus": "UNSUPPORTED_COMMAND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-07",
+      "statement": "Como chamamos uma sequência organizada de instruções para uma tarefa?",
+      "prompt": "Como chamamos uma sequência organizada de instruções para uma tarefa?",
+      "options": [
+        "Fotografia",
+        "Adorno",
+        "Algoritmo.",
+        "Endereço"
+      ],
+      "correctAnswer": "Algoritmo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Fotografia": [
+          "ALGORITHM_AS_ORDERED_INSTRUCTIONS"
+        ],
+        "Adorno": [
+          "ALGORITHM_AS_ORDERED_INSTRUCTIONS"
+        ],
+        "Endereço": [
+          "ALGORITHM_AS_ORDERED_INSTRUCTIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SEQUENCIA_DE_PASSOS",
+      "explanation": "Um algoritmo organiza instruções para realizar uma tarefa.",
+      "hint": "Lembre a palavra usada para uma sequência de comandos.",
+      "errorFocus": "ALGORITHM_AS_ORDERED_INSTRUCTIONS",
+      "feedback": {
+        "correct": "Boa observação: Um algoritmo organiza instruções para realizar uma tarefa.",
+        "incorrect": "Um algoritmo organiza instruções para realizar uma tarefa.",
+        "hint": "Lembre a palavra usada para uma sequência de comandos.",
+        "errorFocus": "ALGORITHM_AS_ORDERED_INSTRUCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-08",
+      "statement": "Por que “avance uma casa” é mais claro para um robô do que “vá para lá”?",
+      "prompt": "Por que “avance uma casa” é mais claro para um robô do que “vá para lá”?",
+      "options": [
+        "Tem mais letras",
+        "Usa o nome do robô",
+        "Não precisa de ordem",
+        "Indica um passo observável e específico."
+      ],
+      "correctAnswer": "Indica um passo observável e específico.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tem mais letras": [
+          "CLEAR_INSTRUCTION"
+        ],
+        "Usa o nome do robô": [
+          "CLEAR_INSTRUCTION"
+        ],
+        "Não precisa de ordem": [
+          "CLEAR_INSTRUCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "INSTRUCAO_CLARA",
+      "explanation": "A instrução específica reduz dúvidas sobre o movimento.",
+      "hint": "Compare o que cada frase informa.",
+      "errorFocus": "CLEAR_INSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: A instrução específica reduz dúvidas sobre o movimento.",
+        "incorrect": "A instrução específica reduz dúvidas sobre o movimento.",
+        "hint": "Compare o que cada frase informa.",
+        "errorFocus": "CLEAR_INSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-09",
+      "statement": "Um robô está voltado para a estrela e tem os comandos avançar e parar. Qual sequência simples chega ao alvo de uma casa?",
+      "prompt": "Um robô está voltado para a estrela e tem os comandos avançar e parar. Qual sequência simples chega ao alvo de uma casa?",
+      "options": [
+        "Avançar uma casa e parar.",
+        "Parar e avançar para trás",
+        "Enviar uma mensagem e esperar",
+        "Virar duas vezes sem avançar"
+      ],
+      "correctAnswer": "Avançar uma casa e parar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Parar e avançar para trás": [
+          "SEQUENCE_MATCHES_GOAL"
+        ],
+        "Enviar uma mensagem e esperar": [
+          "SEQUENCE_MATCHES_GOAL"
+        ],
+        "Virar duas vezes sem avançar": [
+          "SEQUENCE_MATCHES_GOAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CAMINHO_ATE_A_ESTRELA",
+      "explanation": "Avançar leva ao alvo próximo e parar encerra o percurso.",
+      "hint": "Use o comando que move o robô.",
+      "errorFocus": "SEQUENCE_MATCHES_GOAL",
+      "feedback": {
+        "correct": "Boa observação: Avançar leva ao alvo próximo e parar encerra o percurso.",
+        "incorrect": "Avançar leva ao alvo próximo e parar encerra o percurso.",
+        "hint": "Use o comando que move o robô.",
+        "errorFocus": "SEQUENCE_MATCHES_GOAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-10",
+      "statement": "Uma história apresenta uma impressora que reconhece “imprimir” e “pausar”. Qual comando não pertence ao conjunto descrito?",
+      "prompt": "Uma história apresenta uma impressora que reconhece “imprimir” e “pausar”. Qual comando não pertence ao conjunto descrito?",
+      "options": [
+        "Imprimir",
+        "Virar à esquerda.",
+        "Pausar",
+        "Imprimir e depois pausar"
+      ],
+      "correctAnswer": "Virar à esquerda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Imprimir": [
+          "COMMANDS_BELONG_TO_DEVICE"
+        ],
+        "Pausar": [
+          "COMMANDS_BELONG_TO_DEVICE"
+        ],
+        "Imprimir e depois pausar": [
+          "COMMANDS_BELONG_TO_DEVICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "IMPRESSORA_FICTICIA",
+      "explanation": "Virar à esquerda não foi apresentado como instrução da impressora.",
+      "hint": "Observe a lista da máquina.",
+      "errorFocus": "COMMANDS_BELONG_TO_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: Virar à esquerda não foi apresentado como instrução da impressora.",
+        "incorrect": "Virar à esquerda não foi apresentado como instrução da impressora.",
+        "hint": "Observe a lista da máquina.",
+        "errorFocus": "COMMANDS_BELONG_TO_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-11",
+      "statement": "Um elevador de maquete reconhece subir, descer e abrir porta. Qual comando serve para levar a cabine ao andar acima?",
+      "prompt": "Um elevador de maquete reconhece subir, descer e abrir porta. Qual comando serve para levar a cabine ao andar acima?",
+      "options": [
+        "Abrir porta",
+        "Descer",
+        "Subir.",
+        "Pintar a cabine"
+      ],
+      "correctAnswer": "Subir.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Abrir porta": [
+          "ELEVATOR_INSTRUCTION_SELECTION"
+        ],
+        "Descer": [
+          "ELEVATOR_INSTRUCTION_SELECTION"
+        ],
+        "Pintar a cabine": [
+          "ELEVATOR_INSTRUCTION_SELECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ELEVADOR_DE_MAQUETE",
+      "explanation": "Subir corresponde à mudança para um andar acima no modelo.",
+      "hint": "Relacione o objetivo ao comando.",
+      "errorFocus": "ELEVATOR_INSTRUCTION_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: Subir corresponde à mudança para um andar acima no modelo.",
+        "incorrect": "Subir corresponde à mudança para um andar acima no modelo.",
+        "hint": "Relacione o objetivo ao comando.",
+        "errorFocus": "ELEVATOR_INSTRUCTION_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-12",
+      "statement": "O robô está de frente para a ponte, mas a sequência manda virar antes de avançar. O que devemos conferir?",
+      "prompt": "O robô está de frente para a ponte, mas a sequência manda virar antes de avançar. O que devemos conferir?",
+      "options": [
+        "A cor da ponte",
+        "O nome de quem desenhou",
+        "A quantidade de cartões na caixa",
+        "Se a virada ainda aponta o robô para a ponte."
+      ],
+      "correctAnswer": "Se a virada ainda aponta o robô para a ponte.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor da ponte": [
+          "ORIENTATION_AND_COMMAND_ORDER"
+        ],
+        "O nome de quem desenhou": [
+          "ORIENTATION_AND_COMMAND_ORDER"
+        ],
+        "A quantidade de cartões na caixa": [
+          "ORIENTATION_AND_COMMAND_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROBO_VIRADO_PARA_A_PONTE",
+      "explanation": "A ordem pode mudar a direção para a qual o robô seguirá.",
+      "hint": "Confira a direção depois da virada.",
+      "errorFocus": "ORIENTATION_AND_COMMAND_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A ordem pode mudar a direção para a qual o robô seguirá.",
+        "incorrect": "A ordem pode mudar a direção para a qual o robô seguirá.",
+        "hint": "Confira a direção depois da virada.",
+        "errorFocus": "ORIENTATION_AND_COMMAND_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-13",
+      "statement": "Uma máquina fictícia executa apenas os cartões 1, 2 e 3, nessa ordem. Como organizar a tarefa?",
+      "prompt": "Uma máquina fictícia executa apenas os cartões 1, 2 e 3, nessa ordem. Como organizar a tarefa?",
+      "options": [
+        "Usar uma sequência ordenada com os cartões reconhecidos.",
+        "Inventar um cartão 9 sem explicar",
+        "Misturar cartões ao acaso",
+        "Pedir que a máquina adivinhe"
+      ],
+      "correctAnswer": "Usar uma sequência ordenada com os cartões reconhecidos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Inventar um cartão 9 sem explicar": [
+          "DEFINED_INSTRUCTION_SET"
+        ],
+        "Misturar cartões ao acaso": [
+          "DEFINED_INSTRUCTION_SET"
+        ],
+        "Pedir que a máquina adivinhe": [
+          "DEFINED_INSTRUCTION_SET"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAQUINA_COM_CARTOES_NUMERADOS",
+      "explanation": "A tarefa deve usar o conjunto conhecido e uma ordem explícita.",
+      "hint": "Mantenha os comandos reconhecidos.",
+      "errorFocus": "DEFINED_INSTRUCTION_SET",
+      "feedback": {
+        "correct": "Boa observação: A tarefa deve usar o conjunto conhecido e uma ordem explícita.",
+        "incorrect": "A tarefa deve usar o conjunto conhecido e uma ordem explícita.",
+        "hint": "Mantenha os comandos reconhecidos.",
+        "errorFocus": "DEFINED_INSTRUCTION_SET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-14",
+      "statement": "O robô do tabuleiro não tem o comando “saltar”. O que fazer para planejar um trajeto?",
+      "prompt": "O robô do tabuleiro não tem o comando “saltar”. O que fazer para planejar um trajeto?",
+      "options": [
+        "Repetir “saltar” mais alto",
+        "Replanejar usando movimentos disponíveis no conjunto.",
+        "Esperar que o robô invente o comando",
+        "Usar qualquer botão de outra máquina"
+      ],
+      "correctAnswer": "Replanejar usando movimentos disponíveis no conjunto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Repetir “saltar” mais alto": [
+          "NO_ASSUMED_CAPABILITY"
+        ],
+        "Esperar que o robô invente o comando": [
+          "NO_ASSUMED_CAPABILITY"
+        ],
+        "Usar qualquer botão de outra máquina": [
+          "NO_ASSUMED_CAPABILITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ROBO_QUE_NAO_RECONHECE_SALTAR",
+      "explanation": "O plano precisa respeitar as instruções que a máquina reconhece.",
+      "hint": "Escolha entre os comandos existentes.",
+      "errorFocus": "NO_ASSUMED_CAPABILITY",
+      "feedback": {
+        "correct": "Boa observação: O plano precisa respeitar as instruções que a máquina reconhece.",
+        "incorrect": "O plano precisa respeitar as instruções que a máquina reconhece.",
+        "hint": "Escolha entre os comandos existentes.",
+        "errorFocus": "NO_ASSUMED_CAPABILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-15",
+      "statement": "O robô A avança e vira; o robô B recebe cartões de cores para executar. O que é correto?",
+      "prompt": "O robô A avança e vira; o robô B recebe cartões de cores para executar. O que é correto?",
+      "options": [
+        "Os dois precisam aceitar os mesmos cartões",
+        "Cores sempre têm o mesmo significado",
+        "Cada modelo pode usar um conjunto próprio de instruções.",
+        "Nenhum deles precisa de instruções"
+      ],
+      "correctAnswer": "Cada modelo pode usar um conjunto próprio de instruções.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Os dois precisam aceitar os mesmos cartões": [
+          "DISTINCT_COMMAND_VOCABULARIES"
+        ],
+        "Cores sempre têm o mesmo significado": [
+          "DISTINCT_COMMAND_VOCABULARIES"
+        ],
+        "Nenhum deles precisa de instruções": [
+          "DISTINCT_COMMAND_VOCABULARIES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_MODELOS_DE_ROBO",
+      "explanation": "Os modelos apresentados reconhecem instruções diferentes.",
+      "hint": "Compare os conjuntos mostrados.",
+      "errorFocus": "DISTINCT_COMMAND_VOCABULARIES",
+      "feedback": {
+        "correct": "Boa observação: Os modelos apresentados reconhecem instruções diferentes.",
+        "incorrect": "Os modelos apresentados reconhecem instruções diferentes.",
+        "hint": "Compare os conjuntos mostrados.",
+        "errorFocus": "DISTINCT_COMMAND_VOCABULARIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-16",
+      "statement": "Uma sequência para chegar ao alvo foi embaralhada. Qual passo ajuda a reconstruí-la?",
+      "prompt": "Uma sequência para chegar ao alvo foi embaralhada. Qual passo ajuda a reconstruí-la?",
+      "options": [
+        "Escolher a palavra mais longa",
+        "Tirar o comando de parar sempre",
+        "Ler os cartões de trás para frente sem conferir",
+        "Ordenar os comandos conforme o caminho e simular cada um."
+      ],
+      "correctAnswer": "Ordenar os comandos conforme o caminho e simular cada um.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher a palavra mais longa": [
+          "ALGORITHM_SEQUENCE_RECONSTRUCTION"
+        ],
+        "Tirar o comando de parar sempre": [
+          "ALGORITHM_SEQUENCE_RECONSTRUCTION"
+        ],
+        "Ler os cartões de trás para frente sem conferir": [
+          "ALGORITHM_SEQUENCE_RECONSTRUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "INSTRUCOES_EMBARALHADAS",
+      "explanation": "Simular em ordem permite verificar se os comandos levam ao alvo.",
+      "hint": "Siga o percurso passo a passo.",
+      "errorFocus": "ALGORITHM_SEQUENCE_RECONSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: Simular em ordem permite verificar se os comandos levam ao alvo.",
+        "incorrect": "Simular em ordem permite verificar se os comandos levam ao alvo.",
+        "hint": "Siga o percurso passo a passo.",
+        "errorFocus": "ALGORITHM_SEQUENCE_RECONSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-17",
+      "statement": "No cenário fictício, uma porta automática aceita detectar aproximação e abrir. Qual sequência representa a ação?",
+      "prompt": "No cenário fictício, uma porta automática aceita detectar aproximação e abrir. Qual sequência representa a ação?",
+      "options": [
+        "Detectar aproximação e depois abrir.",
+        "Fechar antes de detectar",
+        "Escolher um desenho sem relação",
+        "Esperar que a porta fale"
+      ],
+      "correctAnswer": "Detectar aproximação e depois abrir.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fechar antes de detectar": [
+          "ORDERED_MACHINE_RESPONSE"
+        ],
+        "Escolher um desenho sem relação": [
+          "ORDERED_MACHINE_RESPONSE"
+        ],
+        "Esperar que a porta fale": [
+          "ORDERED_MACHINE_RESPONSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTA_AUTOMATICA_DE_CENARIO",
+      "explanation": "A sequência coloca a detecção antes da abertura prevista.",
+      "hint": "Pense no que precisa acontecer primeiro.",
+      "errorFocus": "ORDERED_MACHINE_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: A sequência coloca a detecção antes da abertura prevista.",
+        "incorrect": "A sequência coloca a detecção antes da abertura prevista.",
+        "hint": "Pense no que precisa acontecer primeiro.",
+        "errorFocus": "ORDERED_MACHINE_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-18",
+      "statement": "Um jogo mostra duas máquinas: uma recebe setas e outra recebe botões numerados. Qual plano é adequado?",
+      "prompt": "Um jogo mostra duas máquinas: uma recebe setas e outra recebe botões numerados. Qual plano é adequado?",
+      "options": [
+        "Enviar setas à máquina de números sempre",
+        "Usar para cada uma os comandos que ela reconhece.",
+        "Usar números na máquina sem esses botões",
+        "Ignorar os conjuntos de instruções"
+      ],
+      "correctAnswer": "Usar para cada uma os comandos que ela reconhece.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Enviar setas à máquina de números sempre": [
+          "MATCH_COMMANDS_TO_MACHINE"
+        ],
+        "Usar números na máquina sem esses botões": [
+          "MATCH_COMMANDS_TO_MACHINE"
+        ],
+        "Ignorar os conjuntos de instruções": [
+          "MATCH_COMMANDS_TO_MACHINE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_APARELHOS_DE_JOGO",
+      "explanation": "Cada máquina deve receber instruções compatíveis com seu conjunto.",
+      "hint": "Associe cada comando ao aparelho.",
+      "errorFocus": "MATCH_COMMANDS_TO_MACHINE",
+      "feedback": {
+        "correct": "Boa observação: Cada máquina deve receber instruções compatíveis com seu conjunto.",
+        "incorrect": "Cada máquina deve receber instruções compatíveis com seu conjunto.",
+        "hint": "Associe cada comando ao aparelho.",
+        "errorFocus": "MATCH_COMMANDS_TO_MACHINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-19",
+      "statement": "Uma máquina de brinquedo deve entregar uma carta numa caixa marcada. O que torna o plano um algoritmo?",
+      "prompt": "Uma máquina de brinquedo deve entregar uma carta numa caixa marcada. O que torna o plano um algoritmo?",
+      "options": [
+        "Uma frase vaga sem passos",
+        "Uma foto da caixa",
+        "Uma sequência clara de instruções para chegar e soltar a carta.",
+        "Um palpite sobre o destino"
+      ],
+      "correctAnswer": "Uma sequência clara de instruções para chegar e soltar a carta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma frase vaga sem passos": [
+          "ALGORITHM_TASK_SEQUENCE"
+        ],
+        "Uma foto da caixa": [
+          "ALGORITHM_TASK_SEQUENCE"
+        ],
+        "Um palpite sobre o destino": [
+          "ALGORITHM_TASK_SEQUENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ALGORITMO_DE_ENTREGA_DE_CARTAS",
+      "explanation": "O plano organiza instruções para alcançar um resultado definido.",
+      "hint": "Procure começo, passos e resultado.",
+      "errorFocus": "ALGORITHM_TASK_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: O plano organiza instruções para alcançar um resultado definido.",
+        "incorrect": "O plano organiza instruções para alcançar um resultado definido.",
+        "hint": "Procure começo, passos e resultado.",
+        "errorFocus": "ALGORITHM_TASK_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-20",
+      "statement": "O manual de um modelo lista “acender” e “apagar”, mas alguém envia “girar”. O que pode ser dito?",
+      "prompt": "O manual de um modelo lista “acender” e “apagar”, mas alguém envia “girar”. O que pode ser dito?",
+      "options": [
+        "O aparelho certamente vai girar",
+        "O comando muda o manual sozinho",
+        "Todos os aparelhos entendem girar",
+        "Esse comando não está entre os reconhecidos no manual."
+      ],
+      "correctAnswer": "Esse comando não está entre os reconhecidos no manual.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O aparelho certamente vai girar": [
+          "MANUAL_BOUNDARY"
+        ],
+        "O comando muda o manual sozinho": [
+          "MANUAL_BOUNDARY"
+        ],
+        "Todos os aparelhos entendem girar": [
+          "MANUAL_BOUNDARY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "COMANDO_FORA_DO_MANUAL",
+      "explanation": "O conjunto apresentado não inclui girar, então não devemos supor que será executado.",
+      "hint": "Confira o conjunto informado.",
+      "errorFocus": "MANUAL_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: O conjunto apresentado não inclui girar, então não devemos supor que será executado.",
+        "incorrect": "O conjunto apresentado não inclui girar, então não devemos supor que será executado.",
+        "hint": "Confira o conjunto informado.",
+        "errorFocus": "MANUAL_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-21",
+      "statement": "Um robô precisa avançar até uma curva, virar à direita e seguir uma casa. Qual plano usa as instruções do modelo?",
+      "prompt": "Um robô precisa avançar até uma curva, virar à direita e seguir uma casa. Qual plano usa as instruções do modelo?",
+      "options": [
+        "Avançar até a curva, virar à direita e avançar uma casa.",
+        "Virar à esquerda e parar antes da curva",
+        "Pedir para atravessar sem comando",
+        "Avançar e apagar o tabuleiro"
+      ],
+      "correctAnswer": "Avançar até a curva, virar à direita e avançar uma casa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Virar à esquerda e parar antes da curva": [
+          "MULTISTEP_COMPATIBLE_PLAN"
+        ],
+        "Pedir para atravessar sem comando": [
+          "MULTISTEP_COMPATIBLE_PLAN"
+        ],
+        "Avançar e apagar o tabuleiro": [
+          "MULTISTEP_COMPATIBLE_PLAN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ROBO_NO_TABULEIRO_COM_CURVA",
+      "explanation": "A sequência combina os passos necessários com comandos reconhecidos.",
+      "hint": "Siga o caminho na ordem.",
+      "errorFocus": "MULTISTEP_COMPATIBLE_PLAN",
+      "feedback": {
+        "correct": "Boa observação: A sequência combina os passos necessários com comandos reconhecidos.",
+        "incorrect": "A sequência combina os passos necessários com comandos reconhecidos.",
+        "hint": "Siga o caminho na ordem.",
+        "errorFocus": "MULTISTEP_COMPATIBLE_PLAN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-22",
+      "statement": "Um carro de brinquedo recebe controle de frente e ré; um robô didático usa cartões de virar. O que a comparação permite afirmar?",
+      "prompt": "Um carro de brinquedo recebe controle de frente e ré; um robô didático usa cartões de virar. O que a comparação permite afirmar?",
+      "options": [
+        "Todo controle serve em toda máquina",
+        "As instruções dependem do conjunto de cada máquina.",
+        "As duas máquinas fazem exatamente a mesma tarefa",
+        "Instruções não mudam resultados"
+      ],
+      "correctAnswer": "As instruções dependem do conjunto de cada máquina.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todo controle serve em toda máquina": [
+          "DEVICE_SPECIFIC_COMMANDS"
+        ],
+        "As duas máquinas fazem exatamente a mesma tarefa": [
+          "DEVICE_SPECIFIC_COMMANDS"
+        ],
+        "Instruções não mudam resultados": [
+          "DEVICE_SPECIFIC_COMMANDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARRO_DE_BRINQUEDO_E_ROBO",
+      "explanation": "Os exemplos mostram comandos próprios para máquinas diferentes.",
+      "hint": "Compare os controles descritos.",
+      "errorFocus": "DEVICE_SPECIFIC_COMMANDS",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos mostram comandos próprios para máquinas diferentes.",
+        "incorrect": "Os exemplos mostram comandos próprios para máquinas diferentes.",
+        "hint": "Compare os controles descritos.",
+        "errorFocus": "DEVICE_SPECIFIC_COMMANDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-23",
+      "statement": "Depois de planejar comandos, por que simular a sequência em uma grade?",
+      "prompt": "Depois de planejar comandos, por que simular a sequência em uma grade?",
+      "options": [
+        "Para mudar as regras da máquina",
+        "Para esconder os cartões",
+        "Para verificar se as instruções levam ao resultado esperado.",
+        "Para garantir que não existam erros"
+      ],
+      "correctAnswer": "Para verificar se as instruções levam ao resultado esperado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para mudar as regras da máquina": [
+          "SIMULATION_CHECK"
+        ],
+        "Para esconder os cartões": [
+          "SIMULATION_CHECK"
+        ],
+        "Para garantir que não existam erros": [
+          "SIMULATION_CHECK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TESTE_DE_SEQUENCIA",
+      "explanation": "A simulação permite conferir o resultado e encontrar possíveis ajustes.",
+      "hint": "Observe o destino após cada passo.",
+      "errorFocus": "SIMULATION_CHECK",
+      "feedback": {
+        "correct": "Boa observação: A simulação permite conferir o resultado e encontrar possíveis ajustes.",
+        "incorrect": "A simulação permite conferir o resultado e encontrar possíveis ajustes.",
+        "hint": "Observe o destino após cada passo.",
+        "errorFocus": "SIMULATION_CHECK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-24",
+      "statement": "Um boneco de papel segue os cartões andar, virar e parar. Qual plano é mais adequado para uma curva?",
+      "prompt": "Um boneco de papel segue os cartões andar, virar e parar. Qual plano é mais adequado para uma curva?",
+      "options": [
+        "Continuar reto sem olhar o caminho",
+        "Parar antes de sair do lugar",
+        "Usar um comando de outra máquina sem conferir",
+        "Andar até a curva, virar e depois continuar."
+      ],
+      "correctAnswer": "Andar até a curva, virar e depois continuar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Continuar reto sem olhar o caminho": [
+          "PAPER_MODEL_ALGORITHM"
+        ],
+        "Parar antes de sair do lugar": [
+          "PAPER_MODEL_ALGORITHM"
+        ],
+        "Usar um comando de outra máquina sem conferir": [
+          "PAPER_MODEL_ALGORITHM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BONECO_ROBOTICO_DE_PAPEL",
+      "explanation": "A sequência usa comandos do modelo na ordem necessária.",
+      "hint": "Planeje a curva antes de avançar.",
+      "errorFocus": "PAPER_MODEL_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: A sequência usa comandos do modelo na ordem necessária.",
+        "incorrect": "A sequência usa comandos do modelo na ordem necessária.",
+        "hint": "Planeje a curva antes de avançar.",
+        "errorFocus": "PAPER_MODEL_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-25",
+      "statement": "Máquinas diferentes podem executar",
+      "prompt": "Máquinas diferentes podem executar",
+      "options": [
+        "conjuntos próprios de instruções.",
+        "sempre o mesmo comando universal",
+        "qualquer frase sem ordem",
+        "somente desenhos"
+      ],
+      "correctAnswer": "conjuntos próprios de instruções.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sempre o mesmo comando universal": [
+          "MACHINE_SPECIFIC_SET_RECALL"
+        ],
+        "qualquer frase sem ordem": [
+          "MACHINE_SPECIFIC_SET_RECALL"
+        ],
+        "somente desenhos": [
+          "MACHINE_SPECIFIC_SET_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CONJUNTO_PROPRIO",
+      "explanation": "Cada máquina reconhece instruções compatíveis com suas funções.",
+      "hint": "Lembre que os conjuntos podem variar.",
+      "errorFocus": "MACHINE_SPECIFIC_SET_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Cada máquina reconhece instruções compatíveis com suas funções.",
+        "incorrect": "Cada máquina reconhece instruções compatíveis com suas funções.",
+        "hint": "Lembre que os conjuntos podem variar.",
+        "errorFocus": "MACHINE_SPECIFIC_SET_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-26",
+      "statement": "Uma sequência organizada de comandos para cumprir uma tarefa é",
+      "prompt": "Uma sequência organizada de comandos para cumprir uma tarefa é",
+      "options": [
+        "um endereço",
+        "um algoritmo.",
+        "uma fotografia",
+        "um enfeite"
+      ],
+      "correctAnswer": "um algoritmo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um endereço": [
+          "ALGORITHM_RECALL"
+        ],
+        "uma fotografia": [
+          "ALGORITHM_RECALL"
+        ],
+        "um enfeite": [
+          "ALGORITHM_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ALGORITMO_DE_TRES_PASSOS",
+      "explanation": "O algoritmo organiza passos para orientar a tarefa.",
+      "hint": "Pense no nome da sequência de instruções.",
+      "errorFocus": "ALGORITHM_RECALL",
+      "feedback": {
+        "correct": "Boa observação: O algoritmo organiza passos para orientar a tarefa.",
+        "incorrect": "O algoritmo organiza passos para orientar a tarefa.",
+        "hint": "Pense no nome da sequência de instruções.",
+        "errorFocus": "ALGORITHM_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-27",
+      "statement": "Qual instrução é mais clara para um robô de grade?",
+      "prompt": "Qual instrução é mais clara para um robô de grade?",
+      "options": [
+        "Vá para algum lugar",
+        "Faça o que achar melhor",
+        "Avance uma casa e pare.",
+        "Chegue logo"
+      ],
+      "correctAnswer": "Avance uma casa e pare.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Vá para algum lugar": [
+          "EXPLICIT_COMMAND_RECALL"
+        ],
+        "Faça o que achar melhor": [
+          "EXPLICIT_COMMAND_RECALL"
+        ],
+        "Chegue logo": [
+          "EXPLICIT_COMMAND_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "COMANDO_CLARO",
+      "explanation": "A frase informa ações observáveis e sua ordem.",
+      "hint": "Escolha o comando com passos definidos.",
+      "errorFocus": "EXPLICIT_COMMAND_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A frase informa ações observáveis e sua ordem.",
+        "incorrect": "A frase informa ações observáveis e sua ordem.",
+        "hint": "Escolha o comando com passos definidos.",
+        "errorFocus": "EXPLICIT_COMMAND_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-28",
+      "statement": "A máquina A reconhece setas e a B reconhece números. O que deve guiar a escolha de cartões?",
+      "prompt": "A máquina A reconhece setas e a B reconhece números. O que deve guiar a escolha de cartões?",
+      "options": [
+        "A cor favorita do usuário",
+        "A quantidade de letras",
+        "A escolha ao acaso",
+        "O conjunto reconhecido por cada máquina."
+      ],
+      "correctAnswer": "O conjunto reconhecido por cada máquina.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor favorita do usuário": [
+          "SELECT_FROM_DEVICE_SET"
+        ],
+        "A quantidade de letras": [
+          "SELECT_FROM_DEVICE_SET"
+        ],
+        "A escolha ao acaso": [
+          "SELECT_FROM_DEVICE_SET"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTAO_DE_MAQUINA_A",
+      "explanation": "As instruções precisam combinar com a máquina que vai executá-las.",
+      "hint": "Leia as listas dos dois modelos.",
+      "errorFocus": "SELECT_FROM_DEVICE_SET",
+      "feedback": {
+        "correct": "Boa observação: As instruções precisam combinar com a máquina que vai executá-las.",
+        "incorrect": "As instruções precisam combinar com a máquina que vai executá-las.",
+        "hint": "Leia as listas dos dois modelos.",
+        "errorFocus": "SELECT_FROM_DEVICE_SET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-29",
+      "statement": "Por que não devemos supor que uma máquina entende um comando que não foi listado?",
+      "prompt": "Por que não devemos supor que uma máquina entende um comando que não foi listado?",
+      "options": [
+        "Porque cada máquina executa instruções do seu próprio conjunto.",
+        "Porque listas não têm utilidade",
+        "Porque toda máquina entende tudo",
+        "Porque comandos não precisam de significado"
+      ],
+      "correctAnswer": "Porque cada máquina executa instruções do seu próprio conjunto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque listas não têm utilidade": [
+          "NO_UNSUPPORTED_ASSUMPTION"
+        ],
+        "Porque toda máquina entende tudo": [
+          "NO_UNSUPPORTED_ASSUMPTION"
+        ],
+        "Porque comandos não precisam de significado": [
+          "NO_UNSUPPORTED_ASSUMPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "COMANDO_AUSENTE",
+      "explanation": "O conjunto define quais instruções foram apresentadas como reconhecidas.",
+      "hint": "Confira o que está disponível.",
+      "errorFocus": "NO_UNSUPPORTED_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: O conjunto define quais instruções foram apresentadas como reconhecidas.",
+        "incorrect": "O conjunto define quais instruções foram apresentadas como reconhecidas.",
+        "hint": "Confira o que está disponível.",
+        "errorFocus": "NO_UNSUPPORTED_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-30",
+      "statement": "Para mover uma peça e depois encerrar, qual ordem faz sentido?",
+      "prompt": "Para mover uma peça e depois encerrar, qual ordem faz sentido?",
+      "options": [
+        "Parar e depois esperar que ela avance",
+        "Avançar e depois parar.",
+        "Virar sem mover",
+        "Repetir parar antes de começar"
+      ],
+      "correctAnswer": "Avançar e depois parar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Parar e depois esperar que ela avance": [
+          "ORDERED_STEPS_RECALL"
+        ],
+        "Virar sem mover": [
+          "ORDERED_STEPS_RECALL"
+        ],
+        "Repetir parar antes de começar": [
+          "ORDERED_STEPS_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ORDEM_AVANCAR_E_PARAR",
+      "explanation": "A ação de mover precisa vir antes da instrução de parar.",
+      "hint": "Pense no objetivo da sequência.",
+      "errorFocus": "ORDERED_STEPS_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A ação de mover precisa vir antes da instrução de parar.",
+        "incorrect": "A ação de mover precisa vir antes da instrução de parar.",
+        "hint": "Pense no objetivo da sequência.",
+        "errorFocus": "ORDERED_STEPS_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-31",
+      "statement": "O que observar durante a simulação de um algoritmo?",
+      "prompt": "O que observar durante a simulação de um algoritmo?",
+      "options": [
+        "Somente o desenho do cartão",
+        "A cor preferida da máquina",
+        "O resultado de cada instrução e a posição alcançada.",
+        "Se todos os cartões têm o mesmo tamanho"
+      ],
+      "correctAnswer": "O resultado de cada instrução e a posição alcançada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente o desenho do cartão": [
+          "OBSERVABLE_EXECUTION"
+        ],
+        "A cor preferida da máquina": [
+          "OBSERVABLE_EXECUTION"
+        ],
+        "Se todos os cartões têm o mesmo tamanho": [
+          "OBSERVABLE_EXECUTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TESTAR_UM_COMANDO_POR_VEZ",
+      "explanation": "A simulação verifica o efeito dos passos no modelo.",
+      "hint": "Acompanhe cada movimento.",
+      "errorFocus": "OBSERVABLE_EXECUTION",
+      "feedback": {
+        "correct": "Boa observação: A simulação verifica o efeito dos passos no modelo.",
+        "incorrect": "A simulação verifica o efeito dos passos no modelo.",
+        "hint": "Acompanhe cada movimento.",
+        "errorFocus": "OBSERVABLE_EXECUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-32",
+      "statement": "Uma lista de instruções pode ser usada para",
+      "prompt": "Uma lista de instruções pode ser usada para",
+      "options": [
+        "trocar automaticamente a máquina",
+        "adivinhar um objetivo não descrito",
+        "substituir qualquer cuidado",
+        "definir os passos de uma tarefa para uma máquina."
+      ],
+      "correctAnswer": "definir os passos de uma tarefa para uma máquina.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "trocar automaticamente a máquina": [
+          "INSTRUCTIONS_DEFINE_ALGORITHM"
+        ],
+        "adivinhar um objetivo não descrito": [
+          "INSTRUCTIONS_DEFINE_ALGORITHM"
+        ],
+        "substituir qualquer cuidado": [
+          "INSTRUCTIONS_DEFINE_ALGORITHM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "INSTRUCOES_E_TAREFA",
+      "explanation": "Instruções organizadas descrevem como executar uma tarefa.",
+      "hint": "Relacione lista e passos.",
+      "errorFocus": "INSTRUCTIONS_DEFINE_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: Instruções organizadas descrevem como executar uma tarefa.",
+        "incorrect": "Instruções organizadas descrevem como executar uma tarefa.",
+        "hint": "Relacione lista e passos.",
+        "errorFocus": "INSTRUCTIONS_DEFINE_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-33",
+      "statement": "Um robô didático reconhece avançar e parar. Qual cartão pode receber?",
+      "prompt": "Um robô didático reconhece avançar e parar. Qual cartão pode receber?",
+      "options": [
+        "Parar.",
+        "Cantar",
+        "Pintar uma parede",
+        "Enviar uma carta"
+      ],
+      "correctAnswer": "Parar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Cantar": [
+          "COMPATIBLE_COMMAND_REVIEW"
+        ],
+        "Pintar uma parede": [
+          "COMPATIBLE_COMMAND_REVIEW"
+        ],
+        "Enviar uma carta": [
+          "COMPATIBLE_COMMAND_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_COMANDO_COMPATIVEL",
+      "explanation": "Parar está no conjunto de instruções do robô.",
+      "hint": "Confira a lista novamente.",
+      "errorFocus": "COMPATIBLE_COMMAND_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Parar está no conjunto de instruções do robô.",
+        "incorrect": "Parar está no conjunto de instruções do robô.",
+        "hint": "Confira a lista novamente.",
+        "errorFocus": "COMPATIBLE_COMMAND_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-34",
+      "statement": "Um robô aceita avançar uma casa e virar. Para percorrer duas casas em linha reta, qual sequência serve?",
+      "prompt": "Um robô aceita avançar uma casa e virar. Para percorrer duas casas em linha reta, qual sequência serve?",
+      "options": [
+        "Virar duas vezes",
+        "Avançar uma casa e avançar outra casa.",
+        "Parar antes de começar",
+        "Usar um comando que não existe"
+      ],
+      "correctAnswer": "Avançar uma casa e avançar outra casa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Virar duas vezes": [
+          "REPEATED_AVAILABLE_COMMAND"
+        ],
+        "Parar antes de começar": [
+          "REPEATED_AVAILABLE_COMMAND"
+        ],
+        "Usar um comando que não existe": [
+          "REPEATED_AVAILABLE_COMMAND"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_CAMINHO_DE_DUAS_CASAS",
+      "explanation": "Repetir o comando disponível move a peça duas casas no modelo.",
+      "hint": "Use o mesmo comando compatível.",
+      "errorFocus": "REPEATED_AVAILABLE_COMMAND",
+      "feedback": {
+        "correct": "Boa observação: Repetir o comando disponível move a peça duas casas no modelo.",
+        "incorrect": "Repetir o comando disponível move a peça duas casas no modelo.",
+        "hint": "Use o mesmo comando compatível.",
+        "errorFocus": "REPEATED_AVAILABLE_COMMAND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-35",
+      "statement": "Duas máquinas mostram instruções diferentes. Qual conclusão é correta?",
+      "prompt": "Duas máquinas mostram instruções diferentes. Qual conclusão é correta?",
+      "options": [
+        "Uma lista precisa ser copiada para todas",
+        "Máquinas não executam passos",
+        "Cada conjunto orienta a máquina correspondente.",
+        "As instruções sempre são intercambiáveis"
+      ],
+      "correctAnswer": "Cada conjunto orienta a máquina correspondente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista precisa ser copiada para todas": [
+          "OWN_INSTRUCTION_SET_REVIEW"
+        ],
+        "Máquinas não executam passos": [
+          "OWN_INSTRUCTION_SET_REVIEW"
+        ],
+        "As instruções sempre são intercambiáveis": [
+          "OWN_INSTRUCTION_SET_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DOIS_CONJUNTOS",
+      "explanation": "Os conjuntos apresentados pertencem a máquinas diferentes.",
+      "hint": "Relacione cada lista à sua máquina.",
+      "errorFocus": "OWN_INSTRUCTION_SET_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os conjuntos apresentados pertencem a máquinas diferentes.",
+        "incorrect": "Os conjuntos apresentados pertencem a máquinas diferentes.",
+        "hint": "Relacione cada lista à sua máquina.",
+        "errorFocus": "OWN_INSTRUCTION_SET_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-36",
+      "statement": "Por que colocar primeiro “virar” e depois “avançar” pode mudar o caminho?",
+      "prompt": "Por que colocar primeiro “virar” e depois “avançar” pode mudar o caminho?",
+      "options": [
+        "A cor do cartão altera o tabuleiro",
+        "A ordem só muda o nome",
+        "A máquina ignora o primeiro passo",
+        "A máquina executa as instruções na ordem recebida."
+      ],
+      "correctAnswer": "A máquina executa as instruções na ordem recebida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do cartão altera o tabuleiro": [
+          "ORDER_AFFECTS_RESULT_REVIEW"
+        ],
+        "A ordem só muda o nome": [
+          "ORDER_AFFECTS_RESULT_REVIEW"
+        ],
+        "A máquina ignora o primeiro passo": [
+          "ORDER_AFFECTS_RESULT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_SEQUENCIA",
+      "explanation": "A posição e a direção mudam conforme a ordem dos comandos.",
+      "hint": "Compare os resultados das duas ordens.",
+      "errorFocus": "ORDER_AFFECTS_RESULT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A posição e a direção mudam conforme a ordem dos comandos.",
+        "incorrect": "A posição e a direção mudam conforme a ordem dos comandos.",
+        "hint": "Compare os resultados das duas ordens.",
+        "errorFocus": "ORDER_AFFECTS_RESULT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-37",
+      "statement": "O que não pode faltar num algoritmo simples para uma máquina?",
+      "prompt": "O que não pode faltar num algoritmo simples para uma máquina?",
+      "options": [
+        "Instruções organizadas e relacionadas à tarefa.",
+        "Um comando impossível de executar",
+        "Uma informação pessoal",
+        "Um palpite sem sequência"
+      ],
+      "correctAnswer": "Instruções organizadas e relacionadas à tarefa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um comando impossível de executar": [
+          "ALGORITHM_COMPONENT_REVIEW"
+        ],
+        "Uma informação pessoal": [
+          "ALGORITHM_COMPONENT_REVIEW"
+        ],
+        "Um palpite sem sequência": [
+          "ALGORITHM_COMPONENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_ALGORITMO",
+      "explanation": "O algoritmo organiza comandos que a máquina pode executar.",
+      "hint": "Lembre o objetivo dos passos.",
+      "errorFocus": "ALGORITHM_COMPONENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O algoritmo organiza comandos que a máquina pode executar.",
+        "incorrect": "O algoritmo organiza comandos que a máquina pode executar.",
+        "hint": "Lembre o objetivo dos passos.",
+        "errorFocus": "ALGORITHM_COMPONENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-38",
+      "statement": "Uma máquina não reconhece “pular”. O plano deve",
+      "prompt": "Uma máquina não reconhece “pular”. O plano deve",
+      "options": [
+        "repetir o comando até funcionar",
+        "usar apenas instruções disponíveis ou ser revisto.",
+        "presumir que ela vai aprender sozinha",
+        "copiar qualquer comando de outro aparelho"
+      ],
+      "correctAnswer": "usar apenas instruções disponíveis ou ser revisto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "repetir o comando até funcionar": [
+          "REPLAN_WITH_AVAILABLE_COMMANDS"
+        ],
+        "presumir que ela vai aprender sozinha": [
+          "REPLAN_WITH_AVAILABLE_COMMANDS"
+        ],
+        "copiar qualquer comando de outro aparelho": [
+          "REPLAN_WITH_AVAILABLE_COMMANDS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DO_COMANDO_INEXISTENTE",
+      "explanation": "A sequência precisa respeitar os comandos reconhecidos pelo modelo.",
+      "hint": "Veja as opções existentes.",
+      "errorFocus": "REPLAN_WITH_AVAILABLE_COMMANDS",
+      "feedback": {
+        "correct": "Boa observação: A sequência precisa respeitar os comandos reconhecidos pelo modelo.",
+        "incorrect": "A sequência precisa respeitar os comandos reconhecidos pelo modelo.",
+        "hint": "Veja as opções existentes.",
+        "errorFocus": "REPLAN_WITH_AVAILABLE_COMMANDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-39",
+      "statement": "Na simulação, a peça termina longe do alvo. Qual é um próximo passo útil?",
+      "prompt": "Na simulação, a peça termina longe do alvo. Qual é um próximo passo útil?",
+      "options": [
+        "Afirmar que a máquina entendeu",
+        "Apagar o objetivo",
+        "Rever a ordem dos comandos e testar a sequência outra vez.",
+        "Acrescentar instruções sem conferir"
+      ],
+      "correctAnswer": "Rever a ordem dos comandos e testar a sequência outra vez.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Afirmar que a máquina entendeu": [
+          "DEBUG_BY_SIMULATING"
+        ],
+        "Apagar o objetivo": [
+          "DEBUG_BY_SIMULATING"
+        ],
+        "Acrescentar instruções sem conferir": [
+          "DEBUG_BY_SIMULATING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_SIMULACAO",
+      "explanation": "O resultado permite identificar e revisar passos do algoritmo.",
+      "hint": "Compare o caminho com o destino.",
+      "errorFocus": "DEBUG_BY_SIMULATING",
+      "feedback": {
+        "correct": "Boa observação: O resultado permite identificar e revisar passos do algoritmo.",
+        "incorrect": "O resultado permite identificar e revisar passos do algoritmo.",
+        "hint": "Compare o caminho com o destino.",
+        "errorFocus": "DEBUG_BY_SIMULATING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co03-machine-instructions-v1-40",
+      "statement": "“Avance uma casa” é mais útil que “vá para lá” porque",
+      "prompt": "“Avance uma casa” é mais útil que “vá para lá” porque",
+      "options": [
+        "tem sempre menos palavras",
+        "faz qualquer máquina entender",
+        "elimina a necessidade de ordem",
+        "diz um movimento que pode ser simulado."
+      ],
+      "correctAnswer": "diz um movimento que pode ser simulado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "tem sempre menos palavras": [
+          "SPECIFICITY_REVIEW"
+        ],
+        "faz qualquer máquina entender": [
+          "SPECIFICITY_REVIEW"
+        ],
+        "elimina a necessidade de ordem": [
+          "SPECIFICITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DE_COMANDO_ESPECIFICO",
+      "explanation": "A instrução específica indica um passo verificável.",
+      "hint": "Pergunte qual movimento deve acontecer.",
+      "errorFocus": "SPECIFICITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A instrução específica indica um passo verificável.",
+        "incorrect": "A instrução específica indica um passo verificável.",
+        "hint": "Pergunte qual movimento deve acontecer.",
+        "errorFocus": "SPECIFICITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões grandes com palavra, símbolo e leitura oral para cada comando.",
+          "Permitir simular com peça, apontamento, fala, desenho ou comunicação alternativa, sem exigir dispositivo eletrônico."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

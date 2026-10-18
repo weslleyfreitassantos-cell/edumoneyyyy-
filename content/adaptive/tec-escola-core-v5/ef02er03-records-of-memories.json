@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef02er03-memory-records-v1",
+  "canonicalSkillCode": "RELIGIOUS_EDUCATION_IDENTIFY_RECORDS_OF_PERSONAL_FAMILY_AND_SCHOOL_MEMORIES",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "diferentes formas de registrar memórias pessoais, familiares e escolares",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02ER03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar as diferentes formas de registro das memórias pessoais, familiares e escolares (fotos, músicas, narrativas, álbuns...).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 447
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Registros que guardam memórias",
+    "objective": "Identificar fotografias, músicas, narrativas, álbuns e outros registros como formas de guardar ou comunicar memórias pessoais, familiares e escolares, respeitando diferentes histórias e escolhas de compartilhamento.",
+    "summary": "Uma memória pode ser registrada de vários modos: em uma fotografia, uma canção, um relato, um desenho ou um álbum. Cada registro destaca aspectos diferentes e não precisa existir em todas as famílias ou escolas. É possível aprender com exemplos fictícios, coletivos ou escolhidos voluntariamente.",
+    "explanation": "Observe o tipo de registro e o que ele ajuda a lembrar. Uma fotografia mostra detalhes de uma cena; uma narrativa conta acontecimentos com palavras; uma música pode lembrar uma celebração ou um momento vivido; um álbum reúne registros. Um registro não conta tudo sobre o passado e pode refletir a escolha de quem o produziu. Escutar uma memória exige respeito, e compartilhar imagens ou histórias pessoais depende de autorização.",
+    "workedExample": "Um álbum fictício da escola reúne um desenho da horta, uma foto autorizada da feira escolar e a letra de uma canção criada pela turma. Cada item registra uma parte diferente de uma experiência coletiva; nenhum deles precisa representar a história de todas as crianças.",
+    "commonMistake": "Supor que toda pessoa tem os mesmos tipos de registros familiares ou que uma fotografia sozinha explica completamente um acontecimento.",
+    "priorKnowledge": [
+      "Reconhecer imagens, relatos, músicas e desenhos como formas de comunicação.",
+      "Perceber que pessoas podem lembrar ou contar acontecimentos de modos diferentes."
+    ],
+    "keyConcepts": [
+      "memória",
+      "registro",
+      "fotografia",
+      "música",
+      "narrativa",
+      "álbum",
+      "respeito à diversidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ONE_RECORD_TELLS_EVERYTHING",
+        "action": "Compare dois registros diferentes da mesma situação e nomeie o que cada um mostra e o que deixa de fora."
+      },
+      {
+        "errorFocus": "FAMILY_EXPERIENCE_ASSUMPTION",
+        "action": "Use exemplos fictícios e coletivos, sem pedir que estudantes apresentem objetos ou histórias de casa."
+      },
+      {
+        "errorFocus": "UNCONSENTED_SHARING",
+        "action": "Discuta quem pode decidir sobre compartilhar uma imagem ou relato e ofereça sempre uma alternativa sem exposição."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+      "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er03-fictional-memory-gallery",
+        "title": "Galeria de memórias inventadas",
+        "instructions": "Uma galeria fictícia combina desenho, trecho musical inventado e narrativa curta sobre uma feira escolar imaginária.\n1. Observe cada tipo de registro.\n2. Associe-o ao que ajuda a lembrar ou comunicar.\n3. Explique uma diferença entre dois registros.",
+        "steps": [
+          "Observe cada tipo de registro.",
+          "Associe-o ao que ajuda a lembrar ou comunicar.",
+          "Explique uma diferença entre dois registros."
+        ],
+        "evidence": "Identificação de pelo menos dois formatos e descrição do que cada um registra.",
+        "privacyGuard": "Todos os exemplos são fictícios; não solicitar fotos, nomes ou histórias pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um formato com ajuda.",
+            "developing": "associa um registro a uma lembrança representada.",
+            "proficient": "compara formatos e reconhece que cada registro mostra aspectos diferentes."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er03-class-memory-album",
+        "title": "Álbum coletivo da turma",
+        "instructions": "A turma organiza cartões sem dados pessoais sobre atividades escolares compartilhadas.\n1. Escolha cartões de desenhos, palavras ou músicas criadas para a atividade.\n2. Agrupe-os como registros de uma experiência escolar fictícia.\n3. Converse sobre como preservar o respeito e pedir autorização antes de compartilhar imagens.",
+        "steps": [
+          "Escolha cartões de desenhos, palavras ou músicas criadas para a atividade.",
+          "Agrupe-os como registros de uma experiência escolar fictícia.",
+          "Converse sobre como preservar o respeito e pedir autorização antes de compartilhar imagens."
+        ],
+        "evidence": "Álbum coletivo com formatos identificados e uma regra de cuidado ao compartilhar.",
+        "privacyGuard": "Não usar fotos pessoais ou nomes; qualquer lembrança individual pode ser substituída por um exemplo inventado.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma imagem ou relato.",
+            "developing": "participa da organização com uma orientação.",
+            "proficient": "descreve o formato do registro e propõe uma forma respeitosa de compartilhamento."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef02er03-memory-records-v1-01",
+          "bncc-ef02er03-memory-records-v1-02",
+          "bncc-ef02er03-memory-records-v1-03",
+          "bncc-ef02er03-memory-records-v1-04",
+          "bncc-ef02er03-memory-records-v1-05",
+          "bncc-ef02er03-memory-records-v1-06",
+          "bncc-ef02er03-memory-records-v1-07",
+          "bncc-ef02er03-memory-records-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef02er03-memory-records-v1-09",
+          "bncc-ef02er03-memory-records-v1-10",
+          "bncc-ef02er03-memory-records-v1-11",
+          "bncc-ef02er03-memory-records-v1-12",
+          "bncc-ef02er03-memory-records-v1-13",
+          "bncc-ef02er03-memory-records-v1-14",
+          "bncc-ef02er03-memory-records-v1-15",
+          "bncc-ef02er03-memory-records-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef02er03-memory-records-v1-17",
+          "bncc-ef02er03-memory-records-v1-18",
+          "bncc-ef02er03-memory-records-v1-19",
+          "bncc-ef02er03-memory-records-v1-20",
+          "bncc-ef02er03-memory-records-v1-21",
+          "bncc-ef02er03-memory-records-v1-22",
+          "bncc-ef02er03-memory-records-v1-23",
+          "bncc-ef02er03-memory-records-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef02er03-memory-records-v1-25",
+          "bncc-ef02er03-memory-records-v1-26",
+          "bncc-ef02er03-memory-records-v1-27",
+          "bncc-ef02er03-memory-records-v1-28",
+          "bncc-ef02er03-memory-records-v1-29",
+          "bncc-ef02er03-memory-records-v1-30",
+          "bncc-ef02er03-memory-records-v1-31",
+          "bncc-ef02er03-memory-records-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef02er03-memory-records-v1-33",
+          "bncc-ef02er03-memory-records-v1-34",
+          "bncc-ef02er03-memory-records-v1-35",
+          "bncc-ef02er03-memory-records-v1-36",
+          "bncc-ef02er03-memory-records-v1-37",
+          "bncc-ef02er03-memory-records-v1-38",
+          "bncc-ef02er03-memory-records-v1-39",
+          "bncc-ef02er03-memory-records-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02ER03",
+        "descriptor": "Identificar as diferentes formas de registro das memórias pessoais, familiares e escolares (fotos, músicas, narrativas, álbuns...).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 447
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef02er03-memory-records-v1-01",
+      "statement": "Uma fotografia autorizada da feira escolar pode ajudar a lembrar",
+      "prompt": "Uma fotografia autorizada da feira escolar pode ajudar a lembrar",
+      "options": [
+        "como uma cena da feira aparecia naquele momento.",
+        "tudo o que cada pessoa pensou",
+        "todos os acontecimentos do ano",
+        "a história de todas as famílias"
+      ],
+      "correctAnswer": "como uma cena da feira aparecia naquele momento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "tudo o que cada pessoa pensou": [
+          "PHOTO_SCOPE_LIMIT"
+        ],
+        "todos os acontecimentos do ano": [
+          "PHOTO_SCOPE_LIMIT"
+        ],
+        "a história de todas as famílias": [
+          "PHOTO_SCOPE_LIMIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOTO_DE_UMA_FEIRA_ESCOLAR",
+      "explanation": "A imagem registra aspectos visíveis de uma cena, não tudo o que ocorreu.",
+      "hint": "Observe o que aparece na foto.",
+      "errorFocus": "PHOTO_SCOPE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A imagem registra aspectos visíveis de uma cena, não tudo o que ocorreu.",
+        "incorrect": "A imagem registra aspectos visíveis de uma cena, não tudo o que ocorreu.",
+        "hint": "Observe o que aparece na foto.",
+        "errorFocus": "PHOTO_SCOPE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-02",
+      "statement": "Uma turma criou uma canção sobre a horta. Que tipo de registro ela é?",
+      "prompt": "Uma turma criou uma canção sobre a horta. Que tipo de registro ela é?",
+      "options": [
+        "Mapa de ruas da cidade",
+        "Registro musical de uma experiência da turma.",
+        "Lista de notas escolares",
+        "Fotografia de uma pessoa"
+      ],
+      "correctAnswer": "Registro musical de uma experiência da turma.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mapa de ruas da cidade": [
+          "MUSIC_AS_MEMORY_RECORD"
+        ],
+        "Lista de notas escolares": [
+          "MUSIC_AS_MEMORY_RECORD"
+        ],
+        "Fotografia de uma pessoa": [
+          "MUSIC_AS_MEMORY_RECORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CANCAO_CRIADA_PELA_TURMA",
+      "explanation": "A canção pode comunicar ou lembrar uma experiência coletiva.",
+      "hint": "Pense no formato da canção.",
+      "errorFocus": "MUSIC_AS_MEMORY_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A canção pode comunicar ou lembrar uma experiência coletiva.",
+        "incorrect": "A canção pode comunicar ou lembrar uma experiência coletiva.",
+        "hint": "Pense no formato da canção.",
+        "errorFocus": "MUSIC_AS_MEMORY_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-03",
+      "statement": "Uma pessoa conta com palavras o que aconteceu num passeio inventado. Esse registro é uma",
+      "prompt": "Uma pessoa conta com palavras o que aconteceu num passeio inventado. Esse registro é uma",
+      "options": [
+        "fotografia",
+        "melodia",
+        "narrativa.",
+        "planta de jardim"
+      ],
+      "correctAnswer": "narrativa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "fotografia": [
+          "NARRATIVE_FORMAT"
+        ],
+        "melodia": [
+          "NARRATIVE_FORMAT"
+        ],
+        "planta de jardim": [
+          "NARRATIVE_FORMAT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RELATO_DE_UM_PASSEIO_FICTICIO",
+      "explanation": "Uma narrativa organiza acontecimentos contados por palavras.",
+      "hint": "Procure o formato contado.",
+      "errorFocus": "NARRATIVE_FORMAT",
+      "feedback": {
+        "correct": "Boa observação: Uma narrativa organiza acontecimentos contados por palavras.",
+        "incorrect": "Uma narrativa organiza acontecimentos contados por palavras.",
+        "hint": "Procure o formato contado.",
+        "errorFocus": "NARRATIVE_FORMAT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-04",
+      "statement": "Um álbum reúne desenhos e fotos autorizadas de atividades. O que ele faz?",
+      "prompt": "Um álbum reúne desenhos e fotos autorizadas de atividades. O que ele faz?",
+      "options": [
+        "Mostra todos os pensamentos sem conversa",
+        "Substitui todas as lembranças",
+        "Garante que ninguém esqueça nada",
+        "Agrupa registros que lembram diferentes momentos."
+      ],
+      "correctAnswer": "Agrupa registros que lembram diferentes momentos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mostra todos os pensamentos sem conversa": [
+          "ALBUM_AS_COLLECTION"
+        ],
+        "Substitui todas as lembranças": [
+          "ALBUM_AS_COLLECTION"
+        ],
+        "Garante que ninguém esqueça nada": [
+          "ALBUM_AS_COLLECTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ALBUM_COM_VARIOS_REGISTROS",
+      "explanation": "O álbum organiza registros variados, sem conter toda a memória de alguém.",
+      "hint": "Veja que há mais de um item.",
+      "errorFocus": "ALBUM_AS_COLLECTION",
+      "feedback": {
+        "correct": "Boa observação: O álbum organiza registros variados, sem conter toda a memória de alguém.",
+        "incorrect": "O álbum organiza registros variados, sem conter toda a memória de alguém.",
+        "hint": "Veja que há mais de um item.",
+        "errorFocus": "ALBUM_AS_COLLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-05",
+      "statement": "Um desenho mostra como uma criança imaginou a horta da escola. Ele pode servir como",
+      "prompt": "Um desenho mostra como uma criança imaginou a horta da escola. Ele pode servir como",
+      "options": [
+        "registro visual de uma experiência ou ideia.",
+        "comprovante de todas as colheitas",
+        "lista de nomes da turma",
+        "gravação de uma música"
+      ],
+      "correctAnswer": "registro visual de uma experiência ou ideia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "comprovante de todas as colheitas": [
+          "DRAWING_AS_RECORD"
+        ],
+        "lista de nomes da turma": [
+          "DRAWING_AS_RECORD"
+        ],
+        "gravação de uma música": [
+          "DRAWING_AS_RECORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DESENHO_DE_UMA_HORTA",
+      "explanation": "O desenho registra visualmente uma representação da horta.",
+      "hint": "Observe o formato usado.",
+      "errorFocus": "DRAWING_AS_RECORD",
+      "feedback": {
+        "correct": "Boa observação: O desenho registra visualmente uma representação da horta.",
+        "incorrect": "O desenho registra visualmente uma representação da horta.",
+        "hint": "Observe o formato usado.",
+        "errorFocus": "DRAWING_AS_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-06",
+      "statement": "Qual grupo reúne formas diferentes de guardar ou comunicar memórias?",
+      "prompt": "Qual grupo reúne formas diferentes de guardar ou comunicar memórias?",
+      "options": [
+        "Senha, endereço e telefone",
+        "Fotografia, música e narrativa.",
+        "Cadeira, mesa e janela",
+        "Número, sinal e conta"
+      ],
+      "correctAnswer": "Fotografia, música e narrativa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Senha, endereço e telefone": [
+          "MEMORY_RECORD_TYPES"
+        ],
+        "Cadeira, mesa e janela": [
+          "MEMORY_RECORD_TYPES"
+        ],
+        "Número, sinal e conta": [
+          "MEMORY_RECORD_TYPES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "VARIEDADE_DE_REGISTROS",
+      "explanation": "Fotografias, músicas e narrativas podem registrar memórias de modos diferentes.",
+      "hint": "Escolha formatos de registro.",
+      "errorFocus": "MEMORY_RECORD_TYPES",
+      "feedback": {
+        "correct": "Boa observação: Fotografias, músicas e narrativas podem registrar memórias de modos diferentes.",
+        "incorrect": "Fotografias, músicas e narrativas podem registrar memórias de modos diferentes.",
+        "hint": "Escolha formatos de registro.",
+        "errorFocus": "MEMORY_RECORD_TYPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-07",
+      "statement": "Uma turma escolhe um mural de desenhos para lembrar uma atividade. Por que isso pode funcionar?",
+      "prompt": "Uma turma escolhe um mural de desenhos para lembrar uma atividade. Por que isso pode funcionar?",
+      "options": [
+        "Todo desenho mostra a mesma lembrança",
+        "O mural revela pensamentos sem autorização",
+        "Os desenhos registram aspectos da experiência coletiva.",
+        "A atividade precisa ter acontecido em casa"
+      ],
+      "correctAnswer": "Os desenhos registram aspectos da experiência coletiva.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todo desenho mostra a mesma lembrança": [
+          "COLLECTIVE_SCHOOL_MEMORY"
+        ],
+        "O mural revela pensamentos sem autorização": [
+          "COLLECTIVE_SCHOOL_MEMORY"
+        ],
+        "A atividade precisa ter acontecido em casa": [
+          "COLLECTIVE_SCHOOL_MEMORY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "MEMORIA_DA_ESCOLA",
+      "explanation": "Um mural pode reunir registros feitos para lembrar uma experiência da turma.",
+      "hint": "Pense no que o mural reúne.",
+      "errorFocus": "COLLECTIVE_SCHOOL_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: Um mural pode reunir registros feitos para lembrar uma experiência da turma.",
+        "incorrect": "Um mural pode reunir registros feitos para lembrar uma experiência da turma.",
+        "hint": "Pense no que o mural reúne.",
+        "errorFocus": "COLLECTIVE_SCHOOL_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-08",
+      "statement": "Uma letra inventada fala da brincadeira de uma turma. Qual formato registra essa lembrança?",
+      "prompt": "Uma letra inventada fala da brincadeira de uma turma. Qual formato registra essa lembrança?",
+      "options": [
+        "Fotografia de um objeto",
+        "Planta de uma sala",
+        "Calendário de provas",
+        "Texto de uma canção."
+      ],
+      "correctAnswer": "Texto de uma canção.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fotografia de um objeto": [
+          "SONG_LYRICS_AS_RECORD"
+        ],
+        "Planta de uma sala": [
+          "SONG_LYRICS_AS_RECORD"
+        ],
+        "Calendário de provas": [
+          "SONG_LYRICS_AS_RECORD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LETRA_DE_MUSICA_FICTICIA",
+      "explanation": "A letra é parte escrita de uma música criada para lembrar a brincadeira.",
+      "hint": "Observe que o texto pode ser cantado.",
+      "errorFocus": "SONG_LYRICS_AS_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A letra é parte escrita de uma música criada para lembrar a brincadeira.",
+        "incorrect": "A letra é parte escrita de uma música criada para lembrar a brincadeira.",
+        "hint": "Observe que o texto pode ser cantado.",
+        "errorFocus": "SONG_LYRICS_AS_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-09",
+      "statement": "Uma foto mostra canteiros e um relato conta como a turma plantou. Que diferença existe?",
+      "prompt": "Uma foto mostra canteiros e um relato conta como a turma plantou. Que diferença existe?",
+      "options": [
+        "A foto mostra uma cena; o relato conta acontecimentos.",
+        "Os dois registros são fotografias",
+        "O relato mostra cores sem palavras",
+        "A foto conta tudo sobre o plantio"
+      ],
+      "correctAnswer": "A foto mostra uma cena; o relato conta acontecimentos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os dois registros são fotografias": [
+          "FORMAT_AND_INFORMATION_DIFFERENCE"
+        ],
+        "O relato mostra cores sem palavras": [
+          "FORMAT_AND_INFORMATION_DIFFERENCE"
+        ],
+        "A foto conta tudo sobre o plantio": [
+          "FORMAT_AND_INFORMATION_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FOTO_E_RELATO_DA_MESMA_HORTA",
+      "explanation": "Cada formato comunica aspectos diferentes da atividade.",
+      "hint": "Compare imagem e palavras.",
+      "errorFocus": "FORMAT_AND_INFORMATION_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Cada formato comunica aspectos diferentes da atividade.",
+        "incorrect": "Cada formato comunica aspectos diferentes da atividade.",
+        "hint": "Compare imagem e palavras.",
+        "errorFocus": "FORMAT_AND_INFORMATION_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-10",
+      "statement": "Uma caixa guarda cartas inventadas por personagens para lembrar uma viagem. Que registro foi usado?",
+      "prompt": "Uma caixa guarda cartas inventadas por personagens para lembrar uma viagem. Que registro foi usado?",
+      "options": [
+        "Uma canção gravada",
+        "Narrativas escritas em cartas.",
+        "Um mapa meteorológico",
+        "Uma fotografia sem texto"
+      ],
+      "correctAnswer": "Narrativas escritas em cartas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma canção gravada": [
+          "WRITTEN_NARRATIVE_RECORD"
+        ],
+        "Um mapa meteorológico": [
+          "WRITTEN_NARRATIVE_RECORD"
+        ],
+        "Uma fotografia sem texto": [
+          "WRITTEN_NARRATIVE_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAIXA_DE_CARTAS_FICTICIAS",
+      "explanation": "As cartas contam acontecimentos por escrito.",
+      "hint": "Pense no conteúdo das cartas.",
+      "errorFocus": "WRITTEN_NARRATIVE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: As cartas contam acontecimentos por escrito.",
+        "incorrect": "As cartas contam acontecimentos por escrito.",
+        "hint": "Pense no conteúdo das cartas.",
+        "errorFocus": "WRITTEN_NARRATIVE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-11",
+      "statement": "Uma foto antiga mostra uma mesa decorada, mas não tem legenda. O que não podemos saber apenas pela imagem?",
+      "prompt": "Uma foto antiga mostra uma mesa decorada, mas não tem legenda. O que não podemos saber apenas pela imagem?",
+      "options": [
+        "Que objetos aparecem",
+        "Que a imagem mostra uma mesa",
+        "Todas as razões pelas quais a mesa foi preparada.",
+        "Que a foto registra uma cena"
+      ],
+      "correctAnswer": "Todas as razões pelas quais a mesa foi preparada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que objetos aparecem": [
+          "PHOTO_NEEDS_CONTEXT"
+        ],
+        "Que a imagem mostra uma mesa": [
+          "PHOTO_NEEDS_CONTEXT"
+        ],
+        "Que a foto registra uma cena": [
+          "PHOTO_NEEDS_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FOTO_SEM_LEGENDA",
+      "explanation": "A imagem mostra objetos, mas não explica sozinha todo o contexto.",
+      "hint": "Separe o que aparece do que não foi contado.",
+      "errorFocus": "PHOTO_NEEDS_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A imagem mostra objetos, mas não explica sozinha todo o contexto.",
+        "incorrect": "A imagem mostra objetos, mas não explica sozinha todo o contexto.",
+        "hint": "Separe o que aparece do que não foi contado.",
+        "errorFocus": "PHOTO_NEEDS_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-12",
+      "statement": "Uma narrativa descreve uma brincadeira e uma cantiga repete um refrão dela. Qual afirmação é adequada?",
+      "prompt": "Uma narrativa descreve uma brincadeira e uma cantiga repete um refrão dela. Qual afirmação é adequada?",
+      "options": [
+        "A cantiga é uma fotografia",
+        "A narrativa sempre conta tudo",
+        "Um registro torna o outro falso",
+        "Os dois registros podem lembrar a brincadeira de modos diferentes."
+      ],
+      "correctAnswer": "Os dois registros podem lembrar a brincadeira de modos diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cantiga é uma fotografia": [
+          "MULTIPLE_MEMORY_FORMATS"
+        ],
+        "A narrativa sempre conta tudo": [
+          "MULTIPLE_MEMORY_FORMATS"
+        ],
+        "Um registro torna o outro falso": [
+          "MULTIPLE_MEMORY_FORMATS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NARRATIVA_E_CANTIGA",
+      "explanation": "Formatos diferentes podem guardar aspectos da mesma experiência.",
+      "hint": "Compare como cada registro comunica.",
+      "errorFocus": "MULTIPLE_MEMORY_FORMATS",
+      "feedback": {
+        "correct": "Boa observação: Formatos diferentes podem guardar aspectos da mesma experiência.",
+        "incorrect": "Formatos diferentes podem guardar aspectos da mesma experiência.",
+        "hint": "Compare como cada registro comunica.",
+        "errorFocus": "MULTIPLE_MEMORY_FORMATS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-13",
+      "statement": "Um álbum reúne desenhos feitos em datas diferentes. O que as datas ajudam a organizar?",
+      "prompt": "Um álbum reúne desenhos feitos em datas diferentes. O que as datas ajudam a organizar?",
+      "options": [
+        "Quando cada desenho foi registrado.",
+        "Quem pensou em cada cor",
+        "A verdade de toda lembrança",
+        "A autorização de todas as pessoas"
+      ],
+      "correctAnswer": "Quando cada desenho foi registrado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Quem pensou em cada cor": [
+          "DATE_AND_RECORD_ORDER"
+        ],
+        "A verdade de toda lembrança": [
+          "DATE_AND_RECORD_ORDER"
+        ],
+        "A autorização de todas as pessoas": [
+          "DATE_AND_RECORD_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ALBUM_DE_DESENHOS",
+      "explanation": "Datas ajudam a localizar registros no tempo.",
+      "hint": "Pense na ordem dos desenhos.",
+      "errorFocus": "DATE_AND_RECORD_ORDER",
+      "feedback": {
+        "correct": "Boa observação: Datas ajudam a localizar registros no tempo.",
+        "incorrect": "Datas ajudam a localizar registros no tempo.",
+        "hint": "Pense na ordem dos desenhos.",
+        "errorFocus": "DATE_AND_RECORD_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-14",
+      "statement": "Duas pessoas contam de forma diferente uma atividade escolar. O que é respeitoso fazer?",
+      "prompt": "Duas pessoas contam de forma diferente uma atividade escolar. O que é respeitoso fazer?",
+      "options": [
+        "Apagar uma delas automaticamente",
+        "Escutar cada narrativa e notar que são relatos de perspectivas diferentes.",
+        "Decidir que uma pessoa não pode lembrar",
+        "Dizer que todas as famílias vivem igual"
+      ],
+      "correctAnswer": "Escutar cada narrativa e notar que são relatos de perspectivas diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar uma delas automaticamente": [
+          "RESPECTFUL_MULTIPLE_NARRATIVES"
+        ],
+        "Decidir que uma pessoa não pode lembrar": [
+          "RESPECTFUL_MULTIPLE_NARRATIVES"
+        ],
+        "Dizer que todas as famílias vivem igual": [
+          "RESPECTFUL_MULTIPLE_NARRATIVES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "RELATO_COM_DOIS_PONTOS_DE_VISTA",
+      "explanation": "Narrativas podem destacar aspectos diferentes e merecem escuta respeitosa.",
+      "hint": "Ouça sem comparar quem é melhor.",
+      "errorFocus": "RESPECTFUL_MULTIPLE_NARRATIVES",
+      "feedback": {
+        "correct": "Boa observação: Narrativas podem destacar aspectos diferentes e merecem escuta respeitosa.",
+        "incorrect": "Narrativas podem destacar aspectos diferentes e merecem escuta respeitosa.",
+        "hint": "Ouça sem comparar quem é melhor.",
+        "errorFocus": "RESPECTFUL_MULTIPLE_NARRATIVES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-15",
+      "statement": "Um cartão traz o título de uma música que a turma inventou. Que tipo de memória ele pode representar?",
+      "prompt": "Um cartão traz o título de uma música que a turma inventou. Que tipo de memória ele pode representar?",
+      "options": [
+        "Uma fotografia de uniforme",
+        "Uma medida de distância",
+        "Uma memória comunicada por música.",
+        "Uma lista de compras"
+      ],
+      "correctAnswer": "Uma memória comunicada por música.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma fotografia de uniforme": [
+          "MUSIC_RECORD_IDENTIFICATION"
+        ],
+        "Uma medida de distância": [
+          "MUSIC_RECORD_IDENTIFICATION"
+        ],
+        "Uma lista de compras": [
+          "MUSIC_RECORD_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DE_MEMORIA_MUSICAL",
+      "explanation": "O título remete a um registro musical criado para a atividade.",
+      "hint": "Relacione o cartão ao som.",
+      "errorFocus": "MUSIC_RECORD_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: O título remete a um registro musical criado para a atividade.",
+        "incorrect": "O título remete a um registro musical criado para a atividade.",
+        "hint": "Relacione o cartão ao som.",
+        "errorFocus": "MUSIC_RECORD_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-16",
+      "statement": "Uma estudante não quer usar uma foto pessoal no mural de memória. Qual alternativa respeita a escolha?",
+      "prompt": "Uma estudante não quer usar uma foto pessoal no mural de memória. Qual alternativa respeita a escolha?",
+      "options": [
+        "Exigir que ela compartilhe a foto",
+        "Publicar a imagem sem perguntar",
+        "Retirar sua participação da atividade",
+        "Usar um desenho ou um exemplo fictício."
+      ],
+      "correctAnswer": "Usar um desenho ou um exemplo fictício.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que ela compartilhe a foto": [
+          "VOLUNTARY_PERSONAL_RECORDS"
+        ],
+        "Publicar a imagem sem perguntar": [
+          "VOLUNTARY_PERSONAL_RECORDS"
+        ],
+        "Retirar sua participação da atividade": [
+          "VOLUNTARY_PERSONAL_RECORDS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_DE_EVENTO_SEM_FOTO",
+      "explanation": "Registros fictícios ou desenhos permitem participar sem exposição pessoal.",
+      "hint": "Escolha uma alternativa sem foto pessoal.",
+      "errorFocus": "VOLUNTARY_PERSONAL_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: Registros fictícios ou desenhos permitem participar sem exposição pessoal.",
+        "incorrect": "Registros fictícios ou desenhos permitem participar sem exposição pessoal.",
+        "hint": "Escolha uma alternativa sem foto pessoal.",
+        "errorFocus": "VOLUNTARY_PERSONAL_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-17",
+      "statement": "A turma quer registrar uma feira inventada para outra turma conhecer. Qual conjunto pode comunicar essa memória?",
+      "prompt": "A turma quer registrar uma feira inventada para outra turma conhecer. Qual conjunto pode comunicar essa memória?",
+      "options": [
+        "Desenho, narrativa curta e música criada para a feira.",
+        "Senhas dos estudantes",
+        "Endereços residenciais",
+        "Notas privadas de cada pessoa"
+      ],
+      "correctAnswer": "Desenho, narrativa curta e música criada para a feira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Senhas dos estudantes": [
+          "SAFE_COLLECTIVE_RECORD_SELECTION"
+        ],
+        "Endereços residenciais": [
+          "SAFE_COLLECTIVE_RECORD_SELECTION"
+        ],
+        "Notas privadas de cada pessoa": [
+          "SAFE_COLLECTIVE_RECORD_SELECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MURAL_DE_HISTORIA_DA_TURMA",
+      "explanation": "Os formatos escolhidos podem representar a experiência sem divulgar dados pessoais.",
+      "hint": "Pense em registros seguros e variados.",
+      "errorFocus": "SAFE_COLLECTIVE_RECORD_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: Os formatos escolhidos podem representar a experiência sem divulgar dados pessoais.",
+        "incorrect": "Os formatos escolhidos podem representar a experiência sem divulgar dados pessoais.",
+        "hint": "Pense em registros seguros e variados.",
+        "errorFocus": "SAFE_COLLECTIVE_RECORD_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-18",
+      "statement": "Uma foto mostra flores, mas não informa quem as plantou. Qual afirmação é cuidadosa?",
+      "prompt": "Uma foto mostra flores, mas não informa quem as plantou. Qual afirmação é cuidadosa?",
+      "options": [
+        "A mesma pessoa plantou todas",
+        "A imagem registra flores, mas não identifica quem cuidou delas.",
+        "A foto prova que nunca houve outras flores",
+        "Ninguém pode saber o que aparece"
+      ],
+      "correctAnswer": "A imagem registra flores, mas não identifica quem cuidou delas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A mesma pessoa plantou todas": [
+          "IMAGE_EVIDENCE_BOUNDARY"
+        ],
+        "A foto prova que nunca houve outras flores": [
+          "IMAGE_EVIDENCE_BOUNDARY"
+        ],
+        "Ninguém pode saber o que aparece": [
+          "IMAGE_EVIDENCE_BOUNDARY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FOTO_DE_UM_JARDIM",
+      "explanation": "A imagem não fornece informações que não aparecem nela.",
+      "hint": "Descreva somente a evidência visível.",
+      "errorFocus": "IMAGE_EVIDENCE_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: A imagem não fornece informações que não aparecem nela.",
+        "incorrect": "A imagem não fornece informações que não aparecem nela.",
+        "hint": "Descreva somente a evidência visível.",
+        "errorFocus": "IMAGE_EVIDENCE_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-19",
+      "statement": "Um desenho mostra a decoração e uma narrativa conta a preparação de uma festa fictícia. O que cada um acrescenta?",
+      "prompt": "Um desenho mostra a decoração e uma narrativa conta a preparação de uma festa fictícia. O que cada um acrescenta?",
+      "options": [
+        "Os dois mostram exatamente a mesma coisa",
+        "A narrativa não pode registrar memória",
+        "O desenho mostra elementos visuais e a narrativa relata ações.",
+        "O desenho prova todas as falas"
+      ],
+      "correctAnswer": "O desenho mostra elementos visuais e a narrativa relata ações.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Os dois mostram exatamente a mesma coisa": [
+          "COMPLEMENTARY_RECORDS"
+        ],
+        "A narrativa não pode registrar memória": [
+          "COMPLEMENTARY_RECORDS"
+        ],
+        "O desenho prova todas as falas": [
+          "COMPLEMENTARY_RECORDS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_REGISTROS_DE_UMA_FESTA_FICTICIA",
+      "explanation": "Os formatos podem se complementar sem se tornarem idênticos.",
+      "hint": "Compare imagem e acontecimentos contados.",
+      "errorFocus": "COMPLEMENTARY_RECORDS",
+      "feedback": {
+        "correct": "Boa observação: Os formatos podem se complementar sem se tornarem idênticos.",
+        "incorrect": "Os formatos podem se complementar sem se tornarem idênticos.",
+        "hint": "Compare imagem e acontecimentos contados.",
+        "errorFocus": "COMPLEMENTARY_RECORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-20",
+      "statement": "Uma turma deseja lembrar uma canção criada na aula. Qual registro ajuda a recuperar a letra?",
+      "prompt": "Uma turma deseja lembrar uma canção criada na aula. Qual registro ajuda a recuperar a letra?",
+      "options": [
+        "Fazer uma lista de carteiras",
+        "Guardar um mapa sem palavras",
+        "Contar quantos lápis existem",
+        "Escrever a letra ou guardar uma gravação autorizada."
+      ],
+      "correctAnswer": "Escrever a letra ou guardar uma gravação autorizada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fazer uma lista de carteiras": [
+          "CHOOSE_FORMAT_FOR_MEMORY"
+        ],
+        "Guardar um mapa sem palavras": [
+          "CHOOSE_FORMAT_FOR_MEMORY"
+        ],
+        "Contar quantos lápis existem": [
+          "CHOOSE_FORMAT_FOR_MEMORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCOLHA_DE_REGISTRO_ESCOLAR",
+      "explanation": "A letra escrita ou a gravação pode preservar a canção, com autorização apropriada.",
+      "hint": "Pense no que a turma quer lembrar.",
+      "errorFocus": "CHOOSE_FORMAT_FOR_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: A letra escrita ou a gravação pode preservar a canção, com autorização apropriada.",
+        "incorrect": "A letra escrita ou a gravação pode preservar a canção, com autorização apropriada.",
+        "hint": "Pense no que a turma quer lembrar.",
+        "errorFocus": "CHOOSE_FORMAT_FOR_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-21",
+      "statement": "Por que uma legenda pode acompanhar uma fotografia de atividade?",
+      "prompt": "Por que uma legenda pode acompanhar uma fotografia de atividade?",
+      "options": [
+        "Para acrescentar contexto, como a data ou o nome do evento.",
+        "Para garantir que a foto mostre todos os detalhes",
+        "Para substituir a autorização de compartilhar",
+        "Para provar toda lembrança como idêntica"
+      ],
+      "correctAnswer": "Para acrescentar contexto, como a data ou o nome do evento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para garantir que a foto mostre todos os detalhes": [
+          "CAPTION_ADDS_CONTEXT"
+        ],
+        "Para substituir a autorização de compartilhar": [
+          "CAPTION_ADDS_CONTEXT"
+        ],
+        "Para provar toda lembrança como idêntica": [
+          "CAPTION_ADDS_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LEGENDA_DE_FOTOGRAFIA",
+      "explanation": "A legenda acrescenta informações que podem não estar visíveis na imagem.",
+      "hint": "Pense no que a fotografia não informa sozinha.",
+      "errorFocus": "CAPTION_ADDS_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A legenda acrescenta informações que podem não estar visíveis na imagem.",
+        "incorrect": "A legenda acrescenta informações que podem não estar visíveis na imagem.",
+        "hint": "Pense no que a fotografia não informa sozinha.",
+        "errorFocus": "CAPTION_ADDS_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-22",
+      "statement": "Uma atividade coletiva não foi vivida do mesmo modo por todas as pessoas. Como registrá-la com respeito?",
+      "prompt": "Uma atividade coletiva não foi vivida do mesmo modo por todas as pessoas. Como registrá-la com respeito?",
+      "options": [
+        "Escolher uma lembrança e impor a todos",
+        "Apresentar diferentes desenhos ou narrativas sem dizer que uma representa todos.",
+        "Dizer que todos devem recordar igual",
+        "Apagar opiniões diferentes"
+      ],
+      "correctAnswer": "Apresentar diferentes desenhos ou narrativas sem dizer que uma representa todos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher uma lembrança e impor a todos": [
+          "DIVERSE_MEMORY_REPRESENTATION"
+        ],
+        "Dizer que todos devem recordar igual": [
+          "DIVERSE_MEMORY_REPRESENTATION"
+        ],
+        "Apagar opiniões diferentes": [
+          "DIVERSE_MEMORY_REPRESENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MEMORIA_DE_GRUPO_DIVERSO",
+      "explanation": "Registros diversos evitam afirmar que uma experiência representa todas as pessoas.",
+      "hint": "Deixe espaço para perspectivas diferentes.",
+      "errorFocus": "DIVERSE_MEMORY_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Registros diversos evitam afirmar que uma experiência representa todas as pessoas.",
+        "incorrect": "Registros diversos evitam afirmar que uma experiência representa todas as pessoas.",
+        "hint": "Deixe espaço para perspectivas diferentes.",
+        "errorFocus": "DIVERSE_MEMORY_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-23",
+      "statement": "Um álbum fictício tem páginas vazias. O que isso pode significar?",
+      "prompt": "Um álbum fictício tem páginas vazias. O que isso pode significar?",
+      "options": [
+        "O álbum está necessariamente errado",
+        "Ninguém viveu experiências",
+        "Nem toda lembrança precisa ter um registro guardado.",
+        "Toda memória precisa de fotografia"
+      ],
+      "correctAnswer": "Nem toda lembrança precisa ter um registro guardado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O álbum está necessariamente errado": [
+          "ABSENCE_OF_RECORD_IS_NOT_ABSENCE_OF_MEMORY"
+        ],
+        "Ninguém viveu experiências": [
+          "ABSENCE_OF_RECORD_IS_NOT_ABSENCE_OF_MEMORY"
+        ],
+        "Toda memória precisa de fotografia": [
+          "ABSENCE_OF_RECORD_IS_NOT_ABSENCE_OF_MEMORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ALBUM_COM_PAGINAS_VAZIAS",
+      "explanation": "A falta de um registro não prova que uma memória não existe.",
+      "hint": "Separe memória e objeto guardado.",
+      "errorFocus": "ABSENCE_OF_RECORD_IS_NOT_ABSENCE_OF_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: A falta de um registro não prova que uma memória não existe.",
+        "incorrect": "A falta de um registro não prova que uma memória não existe.",
+        "hint": "Separe memória e objeto guardado.",
+        "errorFocus": "ABSENCE_OF_RECORD_IS_NOT_ABSENCE_OF_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-24",
+      "statement": "Antes de publicar um relato pessoal de outra pessoa, qual cuidado é necessário?",
+      "prompt": "Antes de publicar um relato pessoal de outra pessoa, qual cuidado é necessário?",
+      "options": [
+        "Publicar rápido sem avisar",
+        "Alterar o relato para parecer engraçado",
+        "Compartilhar com qualquer pessoa",
+        "Pedir autorização e respeitar a decisão dela."
+      ],
+      "correctAnswer": "Pedir autorização e respeitar a decisão dela.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Publicar rápido sem avisar": [
+          "CONSENT_FOR_MEMORY_SHARING"
+        ],
+        "Alterar o relato para parecer engraçado": [
+          "CONSENT_FOR_MEMORY_SHARING"
+        ],
+        "Compartilhar com qualquer pessoa": [
+          "CONSENT_FOR_MEMORY_SHARING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "COMPARTILHAR_RELATO_DE_OUTRA_PESSOA",
+      "explanation": "A pessoa deve participar da decisão sobre compartilhar seu relato.",
+      "hint": "Pense em quem pode decidir pelo relato.",
+      "errorFocus": "CONSENT_FOR_MEMORY_SHARING",
+      "feedback": {
+        "correct": "Boa observação: A pessoa deve participar da decisão sobre compartilhar seu relato.",
+        "incorrect": "A pessoa deve participar da decisão sobre compartilhar seu relato.",
+        "hint": "Pense em quem pode decidir pelo relato.",
+        "errorFocus": "CONSENT_FOR_MEMORY_SHARING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-25",
+      "statement": "Uma fotografia é um registro que pode",
+      "prompt": "Uma fotografia é um registro que pode",
+      "options": [
+        "mostrar aspectos visíveis de uma cena.",
+        "contar tudo o que cada pessoa pensou",
+        "substituir qualquer narrativa",
+        "garantir que todos lembrem igual"
+      ],
+      "correctAnswer": "mostrar aspectos visíveis de uma cena.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "contar tudo o que cada pessoa pensou": [
+          "PHOTO_SCOPE_RECALL"
+        ],
+        "substituir qualquer narrativa": [
+          "PHOTO_SCOPE_RECALL"
+        ],
+        "garantir que todos lembrem igual": [
+          "PHOTO_SCOPE_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "FOTOGRAFIA_E_CENA",
+      "explanation": "A fotografia registra a aparência de alguns elementos da cena.",
+      "hint": "Pense no que a imagem mostra.",
+      "errorFocus": "PHOTO_SCOPE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A fotografia registra a aparência de alguns elementos da cena.",
+        "incorrect": "A fotografia registra a aparência de alguns elementos da cena.",
+        "hint": "Pense no que a imagem mostra.",
+        "errorFocus": "PHOTO_SCOPE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-26",
+      "statement": "Um texto que conta acontecimentos vividos ou inventados é uma",
+      "prompt": "Um texto que conta acontecimentos vividos ou inventados é uma",
+      "options": [
+        "fotografia",
+        "narrativa.",
+        "melodia sem palavras",
+        "medida"
+      ],
+      "correctAnswer": "narrativa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "fotografia": [
+          "NARRATIVE_RECALL"
+        ],
+        "melodia sem palavras": [
+          "NARRATIVE_RECALL"
+        ],
+        "medida": [
+          "NARRATIVE_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RELATO_EM_PALAVRAS",
+      "explanation": "A narrativa organiza acontecimentos por meio de palavras.",
+      "hint": "Lembre o formato do relato.",
+      "errorFocus": "NARRATIVE_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A narrativa organiza acontecimentos por meio de palavras.",
+        "incorrect": "A narrativa organiza acontecimentos por meio de palavras.",
+        "hint": "Lembre o formato do relato.",
+        "errorFocus": "NARRATIVE_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-27",
+      "statement": "Uma canção criada para lembrar uma atividade é",
+      "prompt": "Uma canção criada para lembrar uma atividade é",
+      "options": [
+        "um mapa de localização",
+        "uma fotografia",
+        "um registro musical.",
+        "uma lista de números"
+      ],
+      "correctAnswer": "um registro musical.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "um mapa de localização": [
+          "MUSIC_RECORD_RECALL"
+        ],
+        "uma fotografia": [
+          "MUSIC_RECORD_RECALL"
+        ],
+        "uma lista de números": [
+          "MUSIC_RECORD_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MUSICA_E_MEMORIA",
+      "explanation": "A canção é um formato que pode comunicar uma lembrança.",
+      "hint": "Ligue canção e música.",
+      "errorFocus": "MUSIC_RECORD_RECALL",
+      "feedback": {
+        "correct": "Boa observação: A canção é um formato que pode comunicar uma lembrança.",
+        "incorrect": "A canção é um formato que pode comunicar uma lembrança.",
+        "hint": "Ligue canção e música.",
+        "errorFocus": "MUSIC_RECORD_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-28",
+      "statement": "Por que uma lembrança pode aparecer em mais de um tipo de registro?",
+      "prompt": "Por que uma lembrança pode aparecer em mais de um tipo de registro?",
+      "options": [
+        "Porque só existe uma forma correta",
+        "Porque um álbum mostra pensamentos",
+        "Porque todo registro é igual",
+        "Porque foto, música e narrativa comunicam aspectos diferentes."
+      ],
+      "correctAnswer": "Porque foto, música e narrativa comunicam aspectos diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque só existe uma forma correta": [
+          "MULTIFORMAT_MEMORY_RECALL"
+        ],
+        "Porque um álbum mostra pensamentos": [
+          "MULTIFORMAT_MEMORY_RECALL"
+        ],
+        "Porque todo registro é igual": [
+          "MULTIFORMAT_MEMORY_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REGISTROS_DIFERENTES",
+      "explanation": "Formatos diversos podem preservar informações diferentes.",
+      "hint": "Compare o que cada formato oferece.",
+      "errorFocus": "MULTIFORMAT_MEMORY_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Formatos diversos podem preservar informações diferentes.",
+        "incorrect": "Formatos diversos podem preservar informações diferentes.",
+        "hint": "Compare o que cada formato oferece.",
+        "errorFocus": "MULTIFORMAT_MEMORY_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-29",
+      "statement": "Um álbum costuma servir para",
+      "prompt": "Um álbum costuma servir para",
+      "options": [
+        "reunir e organizar registros.",
+        "inventar lembranças de todas as pessoas",
+        "provar que nada mudou",
+        "guardar apenas sons"
+      ],
+      "correctAnswer": "reunir e organizar registros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "inventar lembranças de todas as pessoas": [
+          "ALBUM_FUNCTION_RECALL"
+        ],
+        "provar que nada mudou": [
+          "ALBUM_FUNCTION_RECALL"
+        ],
+        "guardar apenas sons": [
+          "ALBUM_FUNCTION_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ALBUM_DE_MEMORIAS",
+      "explanation": "Álbuns agrupam registros como fotos, textos ou desenhos.",
+      "hint": "Pense no que pode ser reunido.",
+      "errorFocus": "ALBUM_FUNCTION_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Álbuns agrupam registros como fotos, textos ou desenhos.",
+        "incorrect": "Álbuns agrupam registros como fotos, textos ou desenhos.",
+        "hint": "Pense no que pode ser reunido.",
+        "errorFocus": "ALBUM_FUNCTION_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-30",
+      "statement": "Por que pedir autorização antes de compartilhar foto de outra pessoa?",
+      "prompt": "Por que pedir autorização antes de compartilhar foto de outra pessoa?",
+      "options": [
+        "Porque toda foto é falsa",
+        "Porque ela deve poder decidir sobre sua imagem.",
+        "Porque álbum não aceita fotos",
+        "Porque imagens não podem comunicar"
+      ],
+      "correctAnswer": "Porque ela deve poder decidir sobre sua imagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque toda foto é falsa": [
+          "CONSENT_RECALL"
+        ],
+        "Porque álbum não aceita fotos": [
+          "CONSENT_RECALL"
+        ],
+        "Porque imagens não podem comunicar": [
+          "CONSENT_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "AUTORIZACAO_PARA_COMPARTILHAR",
+      "explanation": "Respeitar a escolha da pessoa protege sua privacidade.",
+      "hint": "Pense em quem aparece na imagem.",
+      "errorFocus": "CONSENT_RECALL",
+      "feedback": {
+        "correct": "Boa observação: Respeitar a escolha da pessoa protege sua privacidade.",
+        "incorrect": "Respeitar a escolha da pessoa protege sua privacidade.",
+        "hint": "Pense em quem aparece na imagem.",
+        "errorFocus": "CONSENT_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-31",
+      "statement": "Se uma pessoa não tem fotografia de uma lembrança, isso significa que",
+      "prompt": "Se uma pessoa não tem fotografia de uma lembrança, isso significa que",
+      "options": [
+        "a experiência nunca ocorreu",
+        "todas as pessoas esqueceram",
+        "ela ainda pode ter a lembrança sem um registro guardado.",
+        "só fotos guardam memórias"
+      ],
+      "correctAnswer": "ela ainda pode ter a lembrança sem um registro guardado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a experiência nunca ocorreu": [
+          "MEMORY_WITHOUT_ARTIFACT"
+        ],
+        "todas as pessoas esqueceram": [
+          "MEMORY_WITHOUT_ARTIFACT"
+        ],
+        "só fotos guardam memórias": [
+          "MEMORY_WITHOUT_ARTIFACT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "MEMORIA_SEM_OBJETO",
+      "explanation": "A memória pode existir mesmo sem uma foto, álbum ou gravação.",
+      "hint": "Separe lembrar de guardar um objeto.",
+      "errorFocus": "MEMORY_WITHOUT_ARTIFACT",
+      "feedback": {
+        "correct": "Boa observação: A memória pode existir mesmo sem uma foto, álbum ou gravação.",
+        "incorrect": "A memória pode existir mesmo sem uma foto, álbum ou gravação.",
+        "hint": "Separe lembrar de guardar um objeto.",
+        "errorFocus": "MEMORY_WITHOUT_ARTIFACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-32",
+      "statement": "Um painel de desenhos feitos na escola pode registrar",
+      "prompt": "Um painel de desenhos feitos na escola pode registrar",
+      "options": [
+        "os dados privados de cada família",
+        "todas as opiniões de todas as pessoas",
+        "o clima de todos os anos",
+        "uma experiência ou criação coletiva."
+      ],
+      "correctAnswer": "uma experiência ou criação coletiva.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "os dados privados de cada família": [
+          "SCHOOL_MEMORY_RECALL"
+        ],
+        "todas as opiniões de todas as pessoas": [
+          "SCHOOL_MEMORY_RECALL"
+        ],
+        "o clima de todos os anos": [
+          "SCHOOL_MEMORY_RECALL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRO_ESCOLAR_COLETIVO",
+      "explanation": "O painel pode reunir produções ligadas à experiência escolar.",
+      "hint": "Veja o que os desenhos representam.",
+      "errorFocus": "SCHOOL_MEMORY_RECALL",
+      "feedback": {
+        "correct": "Boa observação: O painel pode reunir produções ligadas à experiência escolar.",
+        "incorrect": "O painel pode reunir produções ligadas à experiência escolar.",
+        "hint": "Veja o que os desenhos representam.",
+        "errorFocus": "SCHOOL_MEMORY_RECALL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-33",
+      "statement": "Uma foto e uma música podem registrar uma atividade de modos diferentes. Qual frase é correta?",
+      "prompt": "Uma foto e uma música podem registrar uma atividade de modos diferentes. Qual frase é correta?",
+      "options": [
+        "A foto mostra aspectos visuais e a música registra sons ou letra.",
+        "A música é sempre uma foto",
+        "A foto conta todas as falas",
+        "Os formatos são idênticos"
+      ],
+      "correctAnswer": "A foto mostra aspectos visuais e a música registra sons ou letra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A música é sempre uma foto": [
+          "RECORD_FORMAT_REVIEW"
+        ],
+        "A foto conta todas as falas": [
+          "RECORD_FORMAT_REVIEW"
+        ],
+        "Os formatos são idênticos": [
+          "RECORD_FORMAT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_FOTO_E_MUSICA",
+      "explanation": "Imagem e música comunicam aspectos distintos de uma lembrança.",
+      "hint": "Compare o que cada formato transmite.",
+      "errorFocus": "RECORD_FORMAT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Imagem e música comunicam aspectos distintos de uma lembrança.",
+        "incorrect": "Imagem e música comunicam aspectos distintos de uma lembrança.",
+        "hint": "Compare o que cada formato transmite.",
+        "errorFocus": "RECORD_FORMAT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-34",
+      "statement": "Qual item é uma narrativa?",
+      "prompt": "Qual item é uma narrativa?",
+      "options": [
+        "Uma imagem sem palavras",
+        "Um relato curto que conta uma visita fictícia.",
+        "Uma nota musical isolada",
+        "Um desenho de uma árvore"
+      ],
+      "correctAnswer": "Um relato curto que conta uma visita fictícia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma imagem sem palavras": [
+          "NARRATIVE_FORMAT_REVIEW"
+        ],
+        "Uma nota musical isolada": [
+          "NARRATIVE_FORMAT_REVIEW"
+        ],
+        "Um desenho de uma árvore": [
+          "NARRATIVE_FORMAT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_NARRATIVA",
+      "explanation": "O relato organiza acontecimentos em palavras.",
+      "hint": "Procure a sequência contada.",
+      "errorFocus": "NARRATIVE_FORMAT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O relato organiza acontecimentos em palavras.",
+        "incorrect": "O relato organiza acontecimentos em palavras.",
+        "hint": "Procure a sequência contada.",
+        "errorFocus": "NARRATIVE_FORMAT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-35",
+      "statement": "Uma foto mostra uma atividade, mas não tem data. O que ainda falta para localizar o momento?",
+      "prompt": "Uma foto mostra uma atividade, mas não tem data. O que ainda falta para localizar o momento?",
+      "options": [
+        "Uma lista de todas as memórias",
+        "O pensamento de cada pessoa",
+        "Uma informação de quando a foto foi feita.",
+        "A certeza de quem aparece"
+      ],
+      "correctAnswer": "Uma informação de quando a foto foi feita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma lista de todas as memórias": [
+          "RECORD_CONTEXT_REVIEW"
+        ],
+        "O pensamento de cada pessoa": [
+          "RECORD_CONTEXT_REVIEW"
+        ],
+        "A certeza de quem aparece": [
+          "RECORD_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REVISAO_DE_FOTO_SEM_DATA",
+      "explanation": "A imagem não informa sua data se ela não estiver registrada.",
+      "hint": "Pergunte quando aconteceu.",
+      "errorFocus": "RECORD_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A imagem não informa sua data se ela não estiver registrada.",
+        "incorrect": "A imagem não informa sua data se ela não estiver registrada.",
+        "hint": "Pergunte quando aconteceu.",
+        "errorFocus": "RECORD_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-36",
+      "statement": "O que um álbum de memórias pode reunir?",
+      "prompt": "O que um álbum de memórias pode reunir?",
+      "options": [
+        "Somente senhas",
+        "Somente dados privados",
+        "Apenas números sem contexto",
+        "Fotografias, desenhos, textos ou outros registros."
+      ],
+      "correctAnswer": "Fotografias, desenhos, textos ou outros registros.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente senhas": [
+          "ALBUM_COLLECTION_REVIEW"
+        ],
+        "Somente dados privados": [
+          "ALBUM_COLLECTION_REVIEW"
+        ],
+        "Apenas números sem contexto": [
+          "ALBUM_COLLECTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_ALBUM",
+      "explanation": "Álbuns podem reunir diferentes formatos de registro.",
+      "hint": "Pense em formatos variados.",
+      "errorFocus": "ALBUM_COLLECTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Álbuns podem reunir diferentes formatos de registro.",
+        "incorrect": "Álbuns podem reunir diferentes formatos de registro.",
+        "hint": "Pense em formatos variados.",
+        "errorFocus": "ALBUM_COLLECTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-37",
+      "statement": "Por que não devemos afirmar que um mesmo álbum representa todas as famílias?",
+      "prompt": "Por que não devemos afirmar que um mesmo álbum representa todas as famílias?",
+      "options": [
+        "Porque as pessoas têm histórias e registros diferentes.",
+        "Porque álbuns não guardam imagens",
+        "Porque memórias são sempre iguais",
+        "Porque só existe história escolar"
+      ],
+      "correctAnswer": "Porque as pessoas têm histórias e registros diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque álbuns não guardam imagens": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "Porque memórias são sempre iguais": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "Porque só existe história escolar": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_DA_DIVERSIDADE",
+      "explanation": "Experiências e formas de registrá-las podem variar entre pessoas.",
+      "hint": "Considere diferentes histórias.",
+      "errorFocus": "FAMILY_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Experiências e formas de registrá-las podem variar entre pessoas.",
+        "incorrect": "Experiências e formas de registrá-las podem variar entre pessoas.",
+        "hint": "Considere diferentes histórias.",
+        "errorFocus": "FAMILY_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-38",
+      "statement": "Uma criança prefere não contar uma memória pessoal na aula. Como manter a participação?",
+      "prompt": "Uma criança prefere não contar uma memória pessoal na aula. Como manter a participação?",
+      "options": [
+        "Exigir que conte mesmo assim",
+        "Oferecer uma narrativa inventada ou um registro coletivo.",
+        "Pedir uma foto de casa",
+        "Retirar o direito de participar"
+      ],
+      "correctAnswer": "Oferecer uma narrativa inventada ou um registro coletivo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigir que conte mesmo assim": [
+          "OPTIONAL_PERSONAL_DISCLOSURE_REVIEW"
+        ],
+        "Pedir uma foto de casa": [
+          "OPTIONAL_PERSONAL_DISCLOSURE_REVIEW"
+        ],
+        "Retirar o direito de participar": [
+          "OPTIONAL_PERSONAL_DISCLOSURE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ALTERNATIVA",
+      "explanation": "Exemplos fictícios permitem aprender sem exposição pessoal.",
+      "hint": "Escolha uma alternativa respeitosa.",
+      "errorFocus": "OPTIONAL_PERSONAL_DISCLOSURE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Exemplos fictícios permitem aprender sem exposição pessoal.",
+        "incorrect": "Exemplos fictícios permitem aprender sem exposição pessoal.",
+        "hint": "Escolha uma alternativa respeitosa.",
+        "errorFocus": "OPTIONAL_PERSONAL_DISCLOSURE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-39",
+      "statement": "Uma narrativa e uma foto mostram partes diferentes de uma festa. O que a turma deve lembrar?",
+      "prompt": "Uma narrativa e uma foto mostram partes diferentes de uma festa. O que a turma deve lembrar?",
+      "options": [
+        "Um deles precisa estar errado",
+        "A foto registra todos os sons",
+        "Cada registro é parcial e pode acrescentar informações distintas.",
+        "A narrativa mostra todas as imagens"
+      ],
+      "correctAnswer": "Cada registro é parcial e pode acrescentar informações distintas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um deles precisa estar errado": [
+          "PARTIAL_RECORDS_REVIEW"
+        ],
+        "A foto registra todos os sons": [
+          "PARTIAL_RECORDS_REVIEW"
+        ],
+        "A narrativa mostra todas as imagens": [
+          "PARTIAL_RECORDS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DO_REGISTRO_PARCIAL",
+      "explanation": "Registros podem se complementar sem contar tudo sozinhos.",
+      "hint": "Pense no que cada formato deixa visível.",
+      "errorFocus": "PARTIAL_RECORDS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Registros podem se complementar sem contar tudo sozinhos.",
+        "incorrect": "Registros podem se complementar sem contar tudo sozinhos.",
+        "hint": "Pense no que cada formato deixa visível.",
+        "errorFocus": "PARTIAL_RECORDS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02er03-memory-records-v1-40",
+      "statement": "Qual afirmação sobre memórias e registros é adequada?",
+      "prompt": "Qual afirmação sobre memórias e registros é adequada?",
+      "options": [
+        "Só fotografias podem guardar memórias",
+        "Toda pessoa deve expor sua história",
+        "Um registro conta tudo sobre o passado",
+        "Há diferentes formas de registrar memórias, e nem todas precisam ser compartilhadas."
+      ],
+      "correctAnswer": "Há diferentes formas de registrar memórias, e nem todas precisam ser compartilhadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só fotografias podem guardar memórias": [
+          "MEMORY_RECORDS_REVIEW"
+        ],
+        "Toda pessoa deve expor sua história": [
+          "MEMORY_RECORDS_REVIEW"
+        ],
+        "Um registro conta tudo sobre o passado": [
+          "MEMORY_RECORDS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DA_MEMORIA",
+      "explanation": "A variedade de formatos convive com respeito à escolha e aos limites de cada registro.",
+      "hint": "Lembre dos formatos e do cuidado.",
+      "errorFocus": "MEMORY_RECORDS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A variedade de formatos convive com respeito à escolha e aos limites de cada registro.",
+        "incorrect": "A variedade de formatos convive com respeito à escolha e aos limites de cada registro.",
+        "hint": "Lembre dos formatos e do cuidado.",
+        "errorFocus": "MEMORY_RECORDS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar registros com descrição oral, texto ampliado, símbolos táteis e legendas claras.",
+          "Permitir escolher entre exemplo fictício, memória coletiva escolar, desenho, fala ou comunicação alternativa; participação pessoal é opcional."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
