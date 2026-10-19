@@ -484,7 +484,7 @@ begin
   end loop;
 
   for item in
-    select distinct anchor.teacher_profile_id, teacher.full_name teacher_name,
+    select distinct anchor_offering.teacher_profile_id, teacher.full_name teacher_name,
       anchor.term_id, anchor_term.name term_name, anchor.day_of_week,
       coalesce(scheduling.max_daily_lessons, policy_daily) individual_limit,
       count(distinct other.id)::integer daily_load
@@ -504,7 +504,7 @@ begin
      and scheduling.teacher_profile_id = anchor_offering.teacher_profile_id
      and scheduling.academic_year_id = version_row.academic_year_id
     where anchor.version_id = p_version_id and anchor.institution_id = p_institution_id and anchor.active is true
-    group by anchor.teacher_profile_id, teacher.full_name, anchor.term_id, anchor_term.name, anchor.day_of_week,
+    group by anchor_offering.teacher_profile_id, teacher.full_name, anchor.term_id, anchor_term.name, anchor.day_of_week,
       scheduling.max_daily_lessons, policy_daily
     having count(distinct other.id) >
       least(coalesce(scheduling.max_daily_lessons, policy_daily), policy_daily)
