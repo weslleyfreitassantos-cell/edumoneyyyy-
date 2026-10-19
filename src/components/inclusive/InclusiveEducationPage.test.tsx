@@ -11,6 +11,7 @@ import {
   listInclusiveAeePlans,
   listInclusiveAeeSessions,
   listInclusivePeiPlans,
+  listInclusiveProgressStudents,
   listInclusiveStudents,
   saveInclusiveAeePlan,
   saveInclusiveAeeSession,
@@ -26,6 +27,7 @@ vi.mock('../../services/inclusiveEducationService', () => ({
   listInclusiveAeePlans: vi.fn(),
   listInclusiveAeeSessions: vi.fn(),
   listInclusivePeiPlans: vi.fn(),
+  listInclusiveProgressStudents: vi.fn(),
   listInclusiveStudents: vi.fn(),
   printInclusiveDocument: vi.fn(),
   saveInclusiveAeePlan: vi.fn(),
@@ -42,6 +44,7 @@ vi.mock('../../services/pedagogicalMonitoringService', () => ({
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution = vi.mocked(useInstitution);
 const mockedListStudents = vi.mocked(listInclusiveStudents);
+const mockedListProgressStudents = vi.mocked(listInclusiveProgressStudents);
 const mockedListPei = vi.mocked(listInclusivePeiPlans);
 const mockedListAee = vi.mocked(listInclusiveAeePlans);
 const mockedListAeeSessions = vi.mocked(listInclusiveAeeSessions);
@@ -67,6 +70,7 @@ beforeEach(() => {
     currentInstitutionId: 'institution-1',
   } as ReturnType<typeof useInstitution>);
   mockedListStudents.mockResolvedValue([{ id: 'student-1', name: 'Estudante QA' }]);
+  mockedListProgressStudents.mockResolvedValue([]);
   mockedListPei.mockResolvedValue([]);
   mockedListAee.mockResolvedValue([]);
   mockedListAeeSessions.mockResolvedValue([]);
@@ -85,6 +89,9 @@ async function chooseAuthorizedStudent() {
 describe('InclusiveEducationPage PEI/AEE access', () => {
   it('uses the searchable student list to open pedagogical progress', async () => {
     mockedListStudents.mockResolvedValue([
+      { id: 'student-outside', name: 'Aluno sem vínculo inclusivo' },
+    ]);
+    mockedListProgressStudents.mockResolvedValue([
       { id: 'student-1', name: 'Ana Souza' },
       { id: 'student-2', name: 'Davi Mendes' },
     ]);
@@ -93,6 +100,10 @@ describe('InclusiveEducationPage PEI/AEE access', () => {
     } as Awaited<ReturnType<typeof pedagogicalMonitoringService.getInstitutionMonitoring>>);
 
     renderInclusivePage('/inclusive-education/progress');
+
+    await waitFor(() => expect(mockedListProgressStudents).toHaveBeenCalledWith('institution-1'));
+    expect(mockedListStudents).not.toHaveBeenCalled();
+    expect(screen.queryByText('Aluno sem vínculo inclusivo')).toBeNull();
 
     const search = await screen.findByRole('textbox', {
       name: 'Pesquisar em estudantes para consultar evolução',

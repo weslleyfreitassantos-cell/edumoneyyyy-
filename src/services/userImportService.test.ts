@@ -7,6 +7,8 @@ import {
   buildStudentImportPreviews,
   buildTeacherImportPreviews,
   importStudents,
+  TEACHER_REQUIRED_IMPORT_EXAMPLE,
+  TEACHER_REQUIRED_IMPORT_HEADERS,
   type ImportPreview,
   type StudentImportPreviewData,
 } from './userImportService';
@@ -28,6 +30,11 @@ const subjects = [
 ] as SubjectRow[];
 
 describe('userImportService', () => {
+  it('includes a discipline column and examples in the minimum teacher template', () => {
+    expect(TEACHER_REQUIRED_IMPORT_HEADERS).toEqual(['Nome completo', 'E-mail', 'Disciplinas']);
+    expect(TEACHER_REQUIRED_IMPORT_EXAMPLE.Disciplinas).toBe('Matemática; Física');
+  });
+
   it('builds the complete student draft and resolves academic links', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
