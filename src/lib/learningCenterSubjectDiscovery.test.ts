@@ -49,6 +49,13 @@ describe('student subject discovery', () => {
     ]);
   });
 
+  it('recognizes Aurora Portuguese subject code PORT and normalizes its display label', () => {
+    expect(mergeStudentSubjectsWithGuidedJourneys(
+      [{ id: 'portuguese', name: 'Componente de linguagem', code: 'PORT' }],
+      [],
+    )).toEqual([{ id: 'portuguese', name: 'Língua Portuguesa', code: 'PORT' }]);
+  });
+
   it('shows only the twelve standard high-school BNCC components, including recognized codes and aliases', () => {
     const subjects = mergeStudentSubjectsWithGuidedJourneys(
       [

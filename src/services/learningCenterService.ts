@@ -967,7 +967,7 @@ export const learningCenterService = {
     return read<LearningSubject[]>(
       supabase
         .from('subjects')
-        .select('id,name')
+        .select('id,name,code')
         .eq('institution_id', institutionId)
         .eq('active', true)
         .in('id', subjectIds)
