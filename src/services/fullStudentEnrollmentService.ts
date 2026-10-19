@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 
 import { schoolUserInviteService } from './schoolUserInviteService';
 import { schoolUserManagementService } from './schoolUserManagementService';
+import { uploadStudentDocumentFiles } from './studentDocumentService';
 
 export interface FullStudentIdentity {
   full_name: string;
@@ -75,6 +76,8 @@ export interface StudentDocumentDraft {
   document_type: string;
   status: StudentDocumentStatus;
   notes: string;
+  file_path?: string | null;
+  file?: File | null;
 }
 
 export interface FullStudentEnrollmentDraft {
@@ -173,7 +176,7 @@ function dateValue(value: unknown): string {
 }
 
 function emptyEditorDocuments(
-  rows: Array<{ document_type: string; status: StudentDocumentStatus; notes: string | null }>,
+  rows: Array<{ document_type: string; status: StudentDocumentStatus; file_path: string | null; notes: string | null }>,
 ): StudentDocumentDraft[] {
   const byType = new Map(rows.map((row) => [row.document_type, row]));
   return editorDocumentTypes.map((documentType) => {
@@ -182,6 +185,7 @@ function emptyEditorDocuments(
       document_type: documentType,
       status: row?.status ?? 'PENDING',
       notes: row?.notes ?? '',
+      file_path: row?.file_path ?? null,
     };
   });
 }
@@ -223,7 +227,7 @@ export async function getFullStudentEditorData(
       .maybeSingle(),
     supabase
       .from('student_documents')
-      .select('document_type, status, notes')
+      .select('document_type, status, file_path, notes')
       .eq('student_id', studentId)
       .eq('institution_id', institutionId)
       .order('document_type'),
@@ -281,6 +285,7 @@ export async function getFullStudentEditorData(
   const documentRows = (documentsResult.data ?? []) as unknown as Array<{
     document_type: string;
     status: StudentDocumentStatus;
+    file_path: string | null;
     notes: string | null;
   }>;
 
@@ -437,7 +442,12 @@ function toRpcPayload(
       origin_year: draft.previous_schooling.origin_year || null,
     },
     health: draft.health,
-    documents: draft.documents,
+    documents: draft.documents.map((document) => ({
+      document_type: document.document_type,
+      status: document.status,
+      file_path: document.file_path ?? null,
+      notes: document.notes,
+    })),
   guardians: draft.guardians.map((guardian) => ({
       guardian_profile_id: guardian.profile_id,
       relationship: guardian.relationship.trim(),
@@ -536,6 +546,8 @@ export async function createFullStudentEnrollment(
       throw new Error('A matricula nao foi confirmada.');
     }
 
+    await uploadStudentDocumentFiles(institutionId, result.student_id, draft.documents);
+
     return {
       student_id: result.student_id,
       enrollment_id: result.enrollment_id,
@@ -617,5 +629,7 @@ export async function updateFullStudentEnrollment(
   if (error) {
     throw error;
   }
+
+  await uploadStudentDocumentFiles(institutionId, studentId, draft.documents);
 
 }

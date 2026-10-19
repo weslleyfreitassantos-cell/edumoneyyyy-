@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
+import { normalizeClassName } from '../lib/academic/classNaming';
 
 import {
   classSchema,
@@ -85,10 +86,6 @@ function normalizeRelation<T>(
   return relation;
 }
 
-function normalizeName(value: string): string {
-  return value.trim().toLocaleLowerCase('pt-BR');
-}
-
 export function buildClassDeletionBlockedMessage(
   impact: ClassDeletionImpact,
 ): string | null {
@@ -143,13 +140,18 @@ async function assertUniqueClassName(
   institutionId: string,
   academicYearId: string,
   name: string,
+  shift: string | null,
   exceptId?: string,
 ): Promise<void> {
-  const { data, error } = await supabase
+  let query = supabase
     .from('classes')
     .select('id, name')
     .eq('institution_id', institutionId)
     .eq('academic_year_id', academicYearId);
+
+  query = shift ? query.eq('shift', shift) : query.is('shift', null);
+
+  const { data, error } = await query;
 
   if (error) {
     throw error;
@@ -158,8 +160,8 @@ async function assertUniqueClassName(
   const duplicate = (data ?? []).find(
     (classRecord) =>
       classRecord.id !== exceptId &&
-      normalizeName(String(classRecord.name)) ===
-        normalizeName(name),
+      normalizeClassName(String(classRecord.name)) ===
+        normalizeClassName(name),
   );
 
   if (duplicate) {
@@ -380,6 +382,7 @@ export const classService = {
       data.institution_id,
       data.academic_year_id,
       data.name,
+      normalizedShift,
     );
 
     const { data: created, error } = await supabase
@@ -442,6 +445,7 @@ export const classService = {
       institutionId,
       data.academic_year_id,
       data.name,
+      normalizedShift,
       id,
     );
 

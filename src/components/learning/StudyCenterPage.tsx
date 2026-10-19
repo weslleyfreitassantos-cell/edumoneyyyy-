@@ -229,56 +229,60 @@ export default function StudyCenterPage() {
         </div>
       </section>
 
-      <section id="study-subjects" aria-label="Matérias" className="space-y-4 scroll-mt-24">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <label className="relative block sm:w-64">
-            <span className="sr-only">Pesquisar matéria</span>
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <input
-              aria-label="Pesquisar matéria"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Pesquisar matéria"
-              className="min-h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-            />
-          </label>
-          <button
-            type="button"
-            aria-expanded={isSubjectsExpanded}
-            aria-controls="student-subjects-content"
-            onClick={() => setIsSubjectsExpanded((expanded) => !expanded)}
-            className="flex min-w-0 flex-1 items-start justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
-          >
+      <section id="study-subjects" aria-label="Matérias" className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+        <button
+          type="button"
+          aria-expanded={isSubjectsExpanded}
+          aria-controls="student-subjects-content"
+          onClick={() => setIsSubjectsExpanded((expanded) => !expanded)}
+          className="flex w-full items-start justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
+        >
+          <span className="flex min-w-0 items-start gap-2 text-[#005bbf] dark:text-blue-300">
+            <BookOpen className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
             <span className="min-w-0">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
+              <span className="block text-xs font-bold uppercase tracking-[0.16em]">Prática por matéria</span>
+              <h2 className="mt-2 block text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
               <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">Comece pelo conteúdo que você quer praticar hoje.</span>
             </span>
-            <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
-          </button>
-        </div>
+          </span>
+          <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
+        </button>
 
-        {isSubjectsExpanded ? <div id="student-subjects-content">
-        {subjects.isLoading && !guidedJourneys.data?.length ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
-        {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
-        {guidedJourneys.isError ? <p role="status" className="text-sm text-amber-700 dark:text-amber-300">O estudo guiado não pôde ser verificado; suas matérias e atividades da escola continuam disponíveis.</p> : null}
-        {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredSubjects.map((subject) => {
-            const Icon = subjectIcon(subject.name);
-            const journeyCount = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id).length;
-            return (
-              <Link
-                key={subject.id}
-                to={`/student/study/subject/${subject.id}`}
-                className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
-              >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{journeyCount ? `${journeyCount} ${journeyCount === 1 ? 'jornada guiada' : 'jornadas guiadas'} · prévia` : 'Abrir matéria'}</span></span>
-                <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
-              </Link>
-            );
-          })}
-        </div>
+        {isSubjectsExpanded ? <div id="student-subjects-content" className="mt-5">
+          <div className="mb-4 flex justify-start">
+            <label className="relative block w-full sm:w-64">
+              <span className="sr-only">Pesquisar matéria</span>
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                aria-label="Pesquisar matéria"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Pesquisar matéria"
+                className="min-h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
+            </label>
+          </div>
+          {subjects.isLoading && !guidedJourneys.data?.length ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
+          {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
+          {guidedJourneys.isError ? <p role="status" className="text-sm text-amber-700 dark:text-amber-300">O estudo guiado não pôde ser verificado; suas matérias e atividades da escola continuam disponíveis.</p> : null}
+          {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredSubjects.map((subject) => {
+              const Icon = subjectIcon(subject.name);
+              const journeyCount = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id).length;
+              return (
+                <Link
+                  key={subject.id}
+                  to={`/student/study/subject/${subject.id}`}
+                  className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{journeyCount ? `${journeyCount} ${journeyCount === 1 ? 'jornada guiada' : 'jornadas guiadas'} · prévia` : 'Abrir matéria'}</span></span>
+                  <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
+                </Link>
+              );
+            })}
+          </div>
         </div> : null}
       </section>
     </div>

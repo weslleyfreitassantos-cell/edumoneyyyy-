@@ -864,6 +864,26 @@ function isMissingRpcError(error: { message?: string | null; code?: string | nul
     || /could not find the function|function .* does not exist/i.test(message);
 }
 
+async function startEnemSimulationAttempt(input: {
+  institutionId: string;
+  studentId: string;
+  simulationId: string;
+  languageChoice?: 'ENGLISH' | 'SPANISH';
+}): Promise<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }> {
+  const params = {
+    p_institution_id: input.institutionId,
+    p_student_id: input.studentId,
+    p_simulation_id: input.simulationId,
+    p_language_choice: input.languageChoice ?? null,
+  };
+  try {
+    return await read(supabase.rpc('start_enem_simulation_attempt_v3', params));
+  } catch (error) {
+    if (!isMissingRpcError(error as { message?: string | null; code?: string | null })) throw error;
+    return read(supabase.rpc('start_enem_simulation_attempt_v2', params));
+  }
+}
+
 function isLegacyGuidedV4Miss(error: { message?: string | null } | null | undefined): boolean {
   return /LEARNING_GUIDED_STEP_NOT_FOUND/i.test(error?.message ?? '');
 }
@@ -1592,13 +1612,7 @@ export const learningCenterService = {
       p_simulation_id: input.simulationId,
     })),
 
-  startEnemSimulation: (input: { institutionId: string; studentId: string; simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
-    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }>(supabase.rpc('start_enem_simulation_attempt_v3', {
-      p_institution_id: input.institutionId,
-      p_student_id: input.studentId,
-      p_simulation_id: input.simulationId,
-      p_language_choice: input.languageChoice ?? null,
-    })),
+  startEnemSimulation: startEnemSimulationAttempt,
 
   getEnemSimulationAttempt: (attemptId: string) =>
     read<EnemSimulationAttempt>(supabase.rpc('get_enem_simulation_attempt_v2', {

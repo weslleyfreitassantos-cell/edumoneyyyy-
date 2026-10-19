@@ -144,7 +144,7 @@ async function advanceToReview() {
     target: { value: 'responsavel@example.com' },
   });
   fireEvent.change(screen.getByLabelText('Parentesco *'), {
-    target: { value: 'Mae' },
+    target: { value: 'Mãe' },
   });
 
   for (let index = 2; index < 7; index += 1) {
@@ -227,7 +227,7 @@ describe('FullStudentEnrollmentWizard', () => {
       target: { value: 'guardian-profile' },
     });
     fireEvent.change(screen.getByLabelText('Parentesco *'), {
-      target: { value: 'Mae' },
+      target: { value: 'Mãe' },
     });
     for (let index = 2; index < 7; index += 1) {
       fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
@@ -324,7 +324,7 @@ describe('FullStudentEnrollmentWizard', () => {
           full_name: 'Maria Silva',
           email: 'maria@example.com',
           phone: '',
-          relationship: 'Mae',
+          relationship: 'Mãe',
           is_primary: true,
         }],
         previous_schooling: {

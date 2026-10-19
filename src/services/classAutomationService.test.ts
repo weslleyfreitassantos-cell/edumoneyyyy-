@@ -23,8 +23,8 @@ describe('buildClassBatchNames', () => {
     ]);
   });
 
-  it('mantem o nome-base quando apenas uma turma e criada', () => {
-    expect(buildClassBatchNames('Turma unica', 1)).toEqual(['Turma unica']);
+  it('identifica a primeira turma com a letra A', () => {
+    expect(buildClassBatchNames('Turma unica', 1)).toEqual(['Turma unica A']);
   });
 
   it('rejeita uma quantidade fora do limite operacional', () => {
@@ -50,6 +50,15 @@ describe('buildClassBatchNames', () => {
     });
   });
 
+  it('mostra o sufixo do turno na prévia do preset', () => {
+    const definitions = buildEducationPresetClassDefinitions(
+      { 'fundamental-1': 1 },
+      'NOTURNO',
+    );
+
+    expect(definitions[0].names).toEqual(['1º ano A N']);
+  });
+
   it('permite zerar uma serie e personalizar outra', () => {
     const definitions = buildEducationPresetClassDefinitions({
       'fundamental-1': 0,
@@ -57,7 +66,7 @@ describe('buildClassBatchNames', () => {
     });
 
     expect(definitions[0].names).toEqual([]);
-    expect(definitions[11].names).toEqual(['3ª série EM']);
+    expect(definitions[11].names).toEqual(['3ª série EM A']);
   });
 
   it('executa o preset sem depender do contexto this', async () => {

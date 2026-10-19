@@ -28,6 +28,10 @@ import {
   type GuardianDraft,
   type StudentDocumentDraft,
 } from '../../../services/fullStudentEnrollmentService';
+import {
+  createStudentDocumentSignedUrl,
+  STUDENT_DOCUMENT_ACCEPT,
+} from '../../../services/studentDocumentService';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface FullStudentEnrollmentWizardProps {
@@ -63,6 +67,23 @@ const documentTypes = [
   'Laudo ou relatorio',
   'Foto 3x4',
   'Outros',
+];
+
+const guardianRelationshipOptions = [
+  'Mãe',
+  'Pai',
+  'Responsável legal',
+  'Avó',
+  'Avô',
+  'Irmã',
+  'Irmão',
+  'Tia',
+  'Tio',
+  'Madrinha',
+  'Padrinho',
+  'Tutora',
+  'Tutor',
+  'Outro responsável',
 ];
 
 function emptyDocuments(): StudentDocumentDraft[] {
@@ -302,6 +323,27 @@ export default function FullStudentEnrollmentWizard({
     }));
   }
 
+  function updateDocument(
+    index: number,
+    patch: Partial<StudentDocumentDraft>,
+  ) {
+    setDraft((current) => ({
+      ...current,
+      documents: current.documents.map((document, documentIndex) =>
+        documentIndex === index ? { ...document, ...patch } : document,
+      ),
+    }));
+  }
+
+  async function openStoredDocument(filePath: string) {
+    try {
+      const signedUrl = await createStudentDocumentSignedUrl(filePath);
+      window.open(signedUrl, '_blank', 'noopener,noreferrer');
+    } catch (documentError) {
+      setError(getUserFacingErrorMessage(documentError, 'Não foi possível abrir o documento armazenado.'));
+    }
+  }
+
   function addGuardian() {
     setDraft((current) => ({
       ...current,
@@ -526,7 +568,7 @@ export default function FullStudentEnrollmentWizard({
               <div className="grid gap-3 md:grid-cols-2">
                 <Field label="Origem"><select className={inputClass} value={guardian.mode} onChange={(event) => updateGuardian(index, { mode: event.target.value as GuardianDraft['mode'], profile_id: '' })}><option value="existing">Responsável já cadastrado</option><option value="new">Novo responsável</option></select></Field>
                 {guardian.mode === 'existing' ? <Field label="Responsável"><select className={inputClass} value={guardian.profile_id} onChange={(event) => updateGuardian(index, { profile_id: event.target.value })}><option value="">Selecione</option>{guardians.map((user) => <option key={user.profile_id} value={user.profile_id}>{user.profile?.full_name ?? user.profile?.email}</option>)}</select></Field> : <><Field label="Nome completo *"><input className={inputClass} value={guardian.full_name} onChange={(event) => updateGuardian(index, { full_name: event.target.value })} /></Field><Field label="E-mail *"><input type="email" className={inputClass} value={guardian.email} onChange={(event) => updateGuardian(index, { email: event.target.value })} /></Field><Field label="Telefone"><input className={inputClass} value={guardian.phone} onChange={(event) => updateGuardian(index, { phone: event.target.value })} /></Field></>}
-                <Field label="Parentesco *"><input className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })} placeholder="Mãe, pai, avó..." /></Field>
+                <Field label="Parentesco *"><select className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })}><option value="">Selecione o parentesco</option>{guardian.relationship && !guardianRelationshipOptions.includes(guardian.relationship) && <option value={guardian.relationship}>{guardian.relationship}</option>}{guardianRelationshipOptions.map((relationship) => <option key={relationship} value={relationship}>{relationship}</option>)}</select></Field>
               </div>
               {matchingGuardian ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200"><p>Já existe um responsável com este e-mail: <strong>{matchingGuardian.profile?.full_name ?? matchingGuardian.profile?.email}</strong>.</p><button type="button" className="mt-2 rounded-lg border border-amber-700 px-3 py-2 font-semibold dark:border-amber-500 dark:text-amber-300" onClick={() => updateGuardian(index, { mode: 'existing', profile_id: matchingGuardian.profile_id })}>Usar cadastro existente</button></div> : null}
               <label className="mt-3 flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200"><input type="radio" name="primary-guardian" checked={guardian.is_primary} onChange={() => setPrimaryGuardian(index)} /> Responsável principal</label>
@@ -551,7 +593,7 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderDocuments() {
-    return <div className="space-y-3"><p className="text-sm text-slate-600 dark:text-slate-400">Esta etapa registra a pendência documental. O envio de arquivos será ativado somente com armazenamento privado e política validada.</p>{draft.documents.map((document, index) => <div key={document.document_type} className="grid gap-2 rounded-lg border border-slate-200 p-3 dark:border-slate-700 md:grid-cols-[1fr_180px_1fr]"><span className="self-center text-sm font-medium text-slate-700 dark:text-slate-200">{document.document_type}</span><select className={inputClass} value={document.status} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, status: event.target.value as StudentDocumentDraft['status'] } : item) }))}><option value="PENDING">Pendente</option><option value="DELIVERED">Entregue</option><option value="VALIDATED">Validado</option><option value="DISPENSED">Dispensado</option></select><input className={inputClass} placeholder="Observação" value={document.notes} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, notes: event.target.value } : item) }))} /></div>)}</div>;
+    return <div className="space-y-3"><p className="text-sm text-slate-600 dark:text-slate-400">Anexe os documentos nesta etapa. Os arquivos ficam armazenados de forma privada e vinculados ao cadastro do aluno.</p><p className="text-xs text-slate-500 dark:text-slate-400">Formatos aceitos: PDF, DOC, DOCX, JPG, PNG e WEBP. Limite de 10 MB por arquivo.</p>{draft.documents.map((document, index) => <div key={document.document_type} className="rounded-lg border border-slate-200 p-3 dark:border-slate-700"><div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_180px_minmax(0,1.4fr)]"><span className="self-center text-sm font-medium text-slate-700 dark:text-slate-200">{document.document_type}</span><select aria-label={`Status de ${document.document_type}`} className={inputClass} value={document.status} onChange={(event) => updateDocument(index, { status: event.target.value as StudentDocumentDraft['status'] })}><option value="PENDING">Pendente</option><option value="DELIVERED">Entregue</option><option value="VALIDATED">Validado</option><option value="DISPENSED">Dispensado</option></select><input type="text" className={inputClass} placeholder="Observação" value={document.notes} onChange={(event) => updateDocument(index, { notes: event.target.value })} /></div><div className="mt-2 flex flex-wrap items-center gap-2"><label className="inline-flex cursor-pointer items-center rounded-lg border border-blue-600 px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-950/30"><span>Selecionar arquivo</span><input type="file" accept={STUDENT_DOCUMENT_ACCEPT} className="sr-only" onChange={(event) => updateDocument(index, { file: event.target.files?.[0] ?? null })} /></label>{document.file && <span className="text-xs text-slate-600 dark:text-slate-300">Novo arquivo: {document.file.name}</span>}{document.file_path && !document.file && <><span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">Arquivo armazenado</span><button type="button" className="text-xs font-semibold text-blue-700 underline dark:text-blue-300" onClick={() => void openStoredDocument(document.file_path as string)}>Abrir arquivo</button></>}</div></div>)}</div>;
   }
 
   function renderEnrollment() {

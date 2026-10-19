@@ -163,6 +163,7 @@ export interface CurriculumTemplateRow {
   grade_level: string | null;
   stage: string | null;
   active: boolean;
+  applied_class_ids: string[];
 }
 
 function assertDateOrder(startDate: string, endDate: string, message = 'A data inicial deve ser anterior ou igual a data final.'): void {
@@ -423,9 +424,32 @@ export const academicAutomationService = {
   },
 
   async listCurriculumTemplates(institutionId: string): Promise<CurriculumTemplateRow[]> {
-    const { data, error } = await supabase.from('curriculum_templates').select('id, institution_id, name, grade_level, stage, active').eq('institution_id', institutionId).eq('active', true).order('name');
+    const [{ data, error }, { data: links, error: linksError }] = await Promise.all([
+      supabase
+        .from('curriculum_templates')
+        .select('id, institution_id, name, grade_level, stage, active')
+        .eq('institution_id', institutionId)
+        .eq('active', true)
+        .order('name'),
+      supabase
+        .from('curriculum_template_classes')
+        .select('template_id, class_id')
+        .eq('institution_id', institutionId),
+    ]);
     if (error) throw error;
-    return (data ?? []) as CurriculumTemplateRow[];
+    if (linksError) throw linksError;
+
+    const classIdsByTemplate = new Map<string, string[]>();
+    for (const link of links ?? []) {
+      const classIds = classIdsByTemplate.get(link.template_id) ?? [];
+      classIds.push(link.class_id);
+      classIdsByTemplate.set(link.template_id, classIds);
+    }
+
+    return ((data ?? []) as Omit<CurriculumTemplateRow, 'applied_class_ids'>[]).map((template) => ({
+      ...template,
+      applied_class_ids: classIdsByTemplate.get(template.id) ?? [],
+    }));
   },
 
   async deleteCurriculumTemplate(input: { institution_id: string; template_id: string }): Promise<void> {
@@ -453,6 +477,9 @@ export const academicAutomationService = {
     if (templateError) throw templateError;
     const { error: itemsError } = await supabase.from('curriculum_template_items').insert(input.items.map((item) => ({ institution_id: input.institution_id, template_id: template.id, ...item, active: true })));
     if (itemsError) throw itemsError;
-    return template as CurriculumTemplateRow;
+    return {
+      ...(template as Omit<CurriculumTemplateRow, 'applied_class_ids'>),
+      applied_class_ids: [],
+    };
   },
 };

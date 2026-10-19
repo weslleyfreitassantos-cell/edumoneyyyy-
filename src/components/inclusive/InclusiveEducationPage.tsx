@@ -2,12 +2,15 @@ import {
   Accessibility,
   ArrowRight,
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
   Download,
   GraduationCap,
   LayoutDashboard,
   Pencil,
   Puzzle,
   Printer,
+  Search,
   Save,
   TrendingUp,
   Youtube,
@@ -18,7 +21,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { pedagogicalMonitoringService, type PedagogicalStudentSummary } from '../../services/pedagogicalMonitoringService';
-import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusivePeiPlans, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
+import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveAeeSessions, listInclusivePeiPlans, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusiveAeeSession, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusiveAeeSession, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
 import { inclusiveActivities, externalResources, type InclusiveActivity } from './inclusiveEducationCatalog';
 import { InclusiveIllustration, type InclusiveVisualKey } from './InclusiveIllustration';
 import { InclusivePrintableMaterial, printableMaterials } from './InclusivePrintableMaterial';
@@ -52,6 +55,7 @@ function riskLabel(level: PedagogicalStudentSummary['risk']['level']): string {
 const emptyPeiForm: InclusivePeiInput = {
   student_id: '',
   academic_year_id: null,
+  class_id: null,
   status: 'DRAFT',
   review_due_on: null,
   strengths: '',
@@ -69,6 +73,8 @@ const emptyPeiForm: InclusivePeiInput = {
 const emptyAeeForm: InclusiveAeeInput = {
   student_id: '',
   pei_plan_id: null,
+  academic_year_id: null,
+  class_id: null,
   responsible_profile_id: '',
   status: 'DRAFT',
   objectives: '',
@@ -77,12 +83,20 @@ const emptyAeeForm: InclusiveAeeInput = {
   review_due_on: null,
 };
 
+const emptyAeeSessionForm = {
+  attended_on: new Date().toISOString().slice(0, 10),
+  objectives: '',
+  resources_used: '',
+  observations: '',
+};
+
 type InclusiveStudentOption = { id: string; name: string };
 
 interface InclusivePlanWorkspaceProps {
   isPei: boolean;
   institutionId: string | null;
   profileId: string | null;
+  profileName: string | null;
   students: InclusiveStudentOption[];
   studentsLoading: boolean;
   peiPlans: InclusivePeiPlan[];
@@ -91,10 +105,117 @@ interface InclusivePlanWorkspaceProps {
   onAeePlansChange: (plans: InclusiveAeePlan[]) => void;
 }
 
+interface StudentSearchListProps {
+  label: string;
+  description: string;
+  students: InclusiveStudentOption[];
+  search: string;
+  onSearchChange: (value: string) => void;
+  selectedStudentId: string;
+  onSelect: (studentId: string) => void;
+  emptyMessage: string;
+}
+
+function StudentSearchList({
+  label,
+  description,
+  students,
+  search,
+  onSearchChange,
+  selectedStudentId,
+  onSelect,
+  emptyMessage,
+}: StudentSearchListProps) {
+  const pageSize = 8;
+  const [page, setPage] = useState(1);
+  const normalizedSearch = search.trim().toLocaleLowerCase('pt-BR');
+  const filteredStudents = students.filter((student) =>
+    student.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch),
+  );
+  const totalPages = Math.max(1, Math.ceil(filteredStudents.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const visibleStudents = filteredStudents.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize,
+  );
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, students.length]);
+
+  useEffect(() => {
+    if (page > totalPages) setPage(totalPages);
+  }, [page, totalPages]);
+
+  return (
+    <section className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h3 className="font-bold text-slate-900 dark:text-white">{label}</h3>
+          <p className="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-300">{description}</p>
+        </div>
+        <span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-slate-900 dark:text-slate-300">{students.length}</span>
+      </div>
+      <label className="relative mt-4 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+        <span className="sr-only">Pesquisar aluno</span>
+        <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-slate-400" aria-hidden="true" />
+        <input
+          value={search}
+          onChange={(event) => onSearchChange(event.target.value)}
+          placeholder="Pesquisar pelo nome"
+          aria-label={`Pesquisar em ${label.toLocaleLowerCase('pt-BR')}`}
+          className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-sm font-normal text-slate-700 outline-none transition focus:border-[#075fc4] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        />
+      </label>
+      <div className="mt-3 max-h-56 space-y-2 overflow-y-auto" role="listbox" aria-label={label}>
+        {visibleStudents.map((student) => (
+          <button
+            key={student.id}
+            type="button"
+            role="option"
+            aria-selected={selectedStudentId === student.id}
+            onClick={() => onSelect(student.id)}
+            className={`flex w-full items-center rounded-lg border px-3 py-2.5 text-left text-sm font-semibold transition ${selectedStudentId === student.id ? 'border-[#075fc4] bg-blue-50 text-[#075fc4] dark:border-blue-400 dark:bg-blue-950/40 dark:text-blue-200' : 'border-slate-200 bg-white text-slate-700 hover:border-[#075fc4] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200'}`}
+          >
+            {student.name}
+          </button>
+        ))}
+        {filteredStudents.length === 0 && <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">{emptyMessage}</p>}
+      </div>
+      {filteredStudents.length > pageSize && <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
+        <span className="text-xs text-slate-500 dark:text-slate-400">Página {currentPage} de {totalPages}</span>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            title="Página anterior"
+            aria-label="Página anterior"
+            disabled={currentPage === 1}
+            onClick={() => setPage((current) => Math.max(1, current - 1))}
+            className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            title="Próxima página"
+            aria-label="Próxima página"
+            disabled={currentPage === totalPages}
+            onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
+            className="grid h-8 w-8 place-items-center rounded-lg border border-slate-300 bg-white text-slate-700 transition hover:border-[#075fc4] hover:text-[#075fc4] disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          >
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+      </div>}
+    </section>
+  );
+}
+
 function InclusivePlanWorkspace({
   isPei,
   institutionId,
   profileId,
+  profileName,
   students,
   studentsLoading,
   peiPlans,
@@ -107,8 +228,36 @@ function InclusivePlanWorkspace({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [registeredStudentSearch, setRegisteredStudentSearch] = useState('');
+  const [availableStudentSearch, setAvailableStudentSearch] = useState('');
+  const [showStudentDirectory, setShowStudentDirectory] = useState(false);
+  const [aeeSessions, setAeeSessions] = useState<InclusiveAeeSession[]>([]);
+  const [aeeSessionForm, setAeeSessionForm] = useState(emptyAeeSessionForm);
+  const [sessionSaving, setSessionSaving] = useState(false);
   const selectedStudentId = isPei ? peiForm.student_id : aeeForm.student_id;
   const selectedStudent = students.find((student) => student.id === selectedStudentId);
+  const currentPlans = isPei ? peiPlans : aeePlans;
+  const registeredStudentIds = new Set(currentPlans.map((plan) => plan.student_id));
+  const registeredStudents = students.filter((student) => registeredStudentIds.has(student.id));
+  const availableStudents = students.filter((student) => !registeredStudentIds.has(student.id));
+
+  useEffect(() => {
+    if (isPei || !institutionId || !editingId) {
+      setAeeSessions([]);
+      return;
+    }
+    let cancelled = false;
+    void listInclusiveAeeSessions(institutionId, editingId)
+      .then((sessions) => {
+        if (!cancelled) setAeeSessions(sessions);
+      })
+      .catch(() => {
+        if (!cancelled) setAeeSessions([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [editingId, institutionId, isPei]);
 
   function studentName(studentId: string): string {
     return students.find((student) => student.id === studentId)?.name ?? 'Estudante sem nome';
@@ -119,6 +268,7 @@ function InclusivePlanWorkspace({
     setPeiForm({
       student_id: plan.student_id,
       academic_year_id: plan.academic_year_id,
+      class_id: plan.class_id,
       status: plan.status,
       review_due_on: plan.review_due_on,
       strengths: plan.strengths ?? '',
@@ -140,6 +290,8 @@ function InclusivePlanWorkspace({
     setAeeForm({
       student_id: plan.student_id,
       pei_plan_id: plan.pei_plan_id,
+      academic_year_id: plan.academic_year_id,
+      class_id: plan.class_id,
       responsible_profile_id: plan.responsible_profile_id,
       status: plan.status,
       objectives: plan.objectives ?? '',
@@ -151,6 +303,7 @@ function InclusivePlanWorkspace({
   }
 
   function chooseStudent(studentId: string) {
+    setShowStudentDirectory(false);
     if (isPei) {
       const existing = peiPlans.find((plan) => plan.student_id === studentId);
       if (existing) editPei(existing);
@@ -185,13 +338,39 @@ function InclusivePlanWorkspace({
         setFeedback('PEI salvo como rascunho.');
       } else {
         await saveInclusiveAeePlan(institutionId, profileId, aeeForm, editingId ?? undefined);
-        onAeePlansChange(await listInclusiveAeePlans(institutionId));
+        const refreshed = await listInclusiveAeePlans(institutionId);
+        onAeePlansChange(refreshed);
+        if (!editingId) {
+          const savedPlan = refreshed.find((plan) => plan.student_id === selectedStudentId);
+          if (savedPlan) setEditingId(savedPlan.id);
+        }
         setFeedback('Plano AEE/PAEE salvo como rascunho.');
       }
     } catch (error) {
       setFeedback(error instanceof Error && error.message ? `Não foi possível salvar. ${error.message}` : 'Não foi possível salvar. Verifique o vínculo e as permissões da sua conta.');
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleSessionSubmit(event?: FormEvent<HTMLFormElement>) {
+    event?.preventDefault();
+    if (isPei || !institutionId || !profileId || !editingId || !selectedStudentId) return;
+    setSessionSaving(true);
+    try {
+      await saveInclusiveAeeSession(institutionId, profileId, {
+        ...aeeSessionForm,
+        student_id: selectedStudentId,
+        aee_plan_id: editingId,
+        professional_profile_id: profileId,
+      });
+      setAeeSessions(await listInclusiveAeeSessions(institutionId, editingId));
+      setAeeSessionForm(emptyAeeSessionForm);
+      setFeedback('Atendimento AEE registrado.');
+    } catch (error) {
+      setFeedback(error instanceof Error && error.message ? `Não foi possível registrar o atendimento. ${error.message}` : 'Não foi possível registrar o atendimento.');
+    } finally {
+      setSessionSaving(false);
     }
   }
 
@@ -216,17 +395,52 @@ function InclusivePlanWorkspace({
   return (
     <div className="space-y-6">
       <PageHeader title={isPei ? 'PEI dos Alunos' : 'AEE / PAEE'} description={isPei ? 'Crie, revise e acompanhe planos educacionais individualizados com os estudantes autorizados da instituição.' : 'Planeje o atendimento educacional especializado e mantenha o registro vinculado ao estudante.'} icon={isPei ? GraduationCap : Accessibility} />
-      <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-sm leading-6 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-100"><strong>Fluxo conectado aos dados da escola.</strong> A lista contém estudantes ativos da instituição atual. A leitura e a gravação continuam protegidas pelas policies de RLS e pelos vínculos pedagógicos da conta.</section>
-      <form onSubmit={handleSubmit} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+      <section className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-sm leading-6 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-100"><strong>Fluxo conectado aos dados da escola.</strong> A área principal mostra somente alunos já cadastrados neste módulo. A inclusão de novos estudantes usa apenas alunos ativos autorizados pela instituição e continua protegida pelas policies de RLS.</section>
+      <StudentSearchList
+        label={`Alunos cadastrados no ${isPei ? 'PEI' : 'AEE / PAEE'}`}
+        description="Pesquise pelo nome e selecione um cadastro para revisar ou continuar o preenchimento."
+        students={registeredStudents}
+        search={registeredStudentSearch}
+        onSearchChange={setRegisteredStudentSearch}
+        selectedStudentId={selectedStudentId}
+        onSelect={chooseStudent}
+        emptyMessage="Nenhum aluno cadastrado neste módulo ainda."
+      />
+      <div className="flex flex-wrap items-center gap-3">
+        <button type="button" onClick={() => setShowStudentDirectory((current) => !current)} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-700">
+          <Search className="h-4 w-4" aria-hidden="true" />
+          {showStudentDirectory ? 'Fechar busca de novos alunos' : 'Adicionar aluno autorizado'}
+        </button>
+        {selectedStudent && <p className="text-sm text-slate-600 dark:text-slate-300">Selecionado: <strong>{selectedStudent.name}</strong></p>}
+      </div>
+      {showStudentDirectory && <StudentSearchList
+        label="Alunos autorizados para novo cadastro"
+        description="Escolha um aluno ativo da instituição para criar o primeiro registro neste módulo."
+        students={availableStudents}
+        search={availableStudentSearch}
+        onSearchChange={setAvailableStudentSearch}
+        selectedStudentId={selectedStudentId}
+        onSelect={chooseStudent}
+        emptyMessage="Nenhum aluno autorizado corresponde à pesquisa."
+      />}
+      <form onSubmit={handleSubmit} className="inclusive-printable rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="text-lg font-bold text-slate-900 dark:text-white">{isPei ? 'Planejamento individualizado' : 'Planejamento e registro do atendimento'}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Os dados ficam vinculados ao estudante selecionado e podem ser revisados pela equipe autorizada.</p></div><span className="rounded-full border border-emerald-300 px-3 py-1 text-xs font-bold text-emerald-800 dark:border-emerald-700 dark:text-emerald-200">Persistência protegida</span></div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Estudante<select aria-label="Estudante" value={selectedStudentId} onChange={(event) => chooseStudent(event.target.value)} disabled={studentsLoading || students.length === 0} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="">{studentsLoading ? 'Carregando estudantes...' : students.length > 0 ? 'Selecione um estudante' : 'Nenhum estudante ativo encontrado'}</option>{students.map((student) => <option key={student.id} value={student.id}>{student.name}</option>)}</select></label>
-          {isPei ? <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Status<select value={peiForm.status} onChange={(event) => setPeiForm((current) => ({ ...current, status: event.target.value as InclusivePeiInput['status'] }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="DRAFT">Rascunho</option><option value="ACTIVE">Ativo</option><option value="ARCHIVED">Arquivado</option></select></label> : <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional responsável<input value={profileId ?? ''} readOnly className="mt-1 w-full rounded-lg border border-slate-300 bg-slate-100 px-3 py-2.5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" aria-label="Profissional responsável" /></label>}
+          <div className="sm:col-span-2 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-950 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">
+            <strong>Aluno do registro:</strong>{' '}
+            {studentsLoading ? 'Carregando...' : selectedStudent?.name ?? 'Selecione um aluno na área acima.'}
+          </div>
+          {isPei ? <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Status<select value={peiForm.status} onChange={(event) => setPeiForm((current) => ({ ...current, status: event.target.value as InclusivePeiInput['status'] }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="DRAFT">Rascunho</option><option value="ACTIVE">Ativo</option><option value="ARCHIVED">Arquivado</option></select></label> : <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional responsável<input value={profileName ?? 'Profissional atual'} readOnly className="mt-1 w-full rounded-lg border border-slate-300 bg-slate-100 px-3 py-2.5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" aria-label="Profissional responsável" /></label>}
         </div>
         {selectedStudent && <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">Editando registros autorizados de <strong>{selectedStudent.name}</strong>. Dados clínicos e laudos não são solicitados neste formulário.</p>}
         {isPei ? <div className="mt-5 grid gap-4 sm:grid-cols-2">{peiTextFields.map((field) => <label key={field.key} className="text-sm font-semibold text-slate-700 dark:text-slate-200">{field.label}<textarea rows={3} value={peiForm[field.key]} onChange={(event) => setPeiForm((current) => ({ ...current, [field.key]: event.target.value }))} placeholder={field.placeholder} className="mt-1 w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-700 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label>)}<label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Próxima revisão<input type="date" value={peiForm.review_due_on ?? ''} onChange={(event) => setPeiForm((current) => ({ ...current, review_due_on: event.target.value || null }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label></div> : <div className="mt-5 grid gap-4 sm:grid-cols-2">{aeeTextFields.map((field) => <label key={field.key} className="text-sm font-semibold text-slate-700 dark:text-slate-200 sm:col-span-2">{field.label}<textarea rows={3} value={aeeForm[field.key]} onChange={(event) => setAeeForm((current) => ({ ...current, [field.key]: event.target.value }))} placeholder={field.placeholder} className="mt-1 w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-700 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label>)}<label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Status<select value={aeeForm.status} onChange={(event) => setAeeForm((current) => ({ ...current, status: event.target.value as InclusiveAeeInput['status'] }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="DRAFT">Rascunho</option><option value="ACTIVE">Ativo</option><option value="ARCHIVED">Arquivado</option></select></label><label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Próxima revisão<input type="date" value={aeeForm.review_due_on ?? ''} onChange={(event) => setAeeForm((current) => ({ ...current, review_due_on: event.target.value || null }))} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label></div>}
+        {!isPei && editingId && <section className="print-hidden mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
+          <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold text-slate-900 dark:text-white">Histórico de atendimentos</h3><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Registre cada encontro do AEE/PAEE e mantenha o histórico vinculado ao plano.</p></div><span className="rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-slate-900 dark:text-slate-300">{aeeSessions.length}</span></div>
+          <div className="mt-4 space-y-2">{aeeSessions.length === 0 ? <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Nenhum atendimento registrado neste plano.</p> : aeeSessions.map((session) => <article key={session.id} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap justify-between gap-2 text-xs"><strong className="text-slate-800 dark:text-slate-100">{new Date(`${session.attended_on}T12:00:00`).toLocaleDateString('pt-BR')}</strong><span className="text-slate-500 dark:text-slate-400">{session.professional?.full_name ?? 'Profissional registrado'}</span></div><p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{session.observations || session.objectives || 'Atendimento registrado sem observação.'}</p></article>)}</div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2"><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Data<input type="date" value={aeeSessionForm.attended_on} onChange={(event) => setAeeSessionForm((current) => ({ ...current, attended_on: event.target.value }))} required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200 sm:col-span-2">Objetivo<textarea value={aeeSessionForm.objectives} onChange={(event) => setAeeSessionForm((current) => ({ ...current, objectives: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Recursos<textarea value={aeeSessionForm.resources_used} onChange={(event) => setAeeSessionForm((current) => ({ ...current, resources_used: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><label className="text-xs font-bold text-slate-700 dark:text-slate-200">Observações<textarea value={aeeSessionForm.observations} onChange={(event) => setAeeSessionForm((current) => ({ ...current, observations: event.target.value }))} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200" /></label><button type="button" onClick={() => void handleSessionSubmit()} disabled={sessionSaving || !profileId} className="inline-flex w-fit items-center gap-2 rounded-lg bg-[#075fc4] px-3 py-2 text-xs font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-3.5 w-3.5" aria-hidden="true" />{sessionSaving ? 'Registrando...' : 'Registrar atendimento'}</button></div>
+        </section>}
         {feedback && <p role="status" className="mt-5 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">{feedback}</p>}
-        <div className="mt-6 flex flex-wrap gap-2"><button type="submit" disabled={saving || studentsLoading || !selectedStudentId} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-4 w-4" aria-hidden="true" />{saving ? 'Salvando...' : editingId ? 'Atualizar registro' : 'Salvar rascunho'}</button><button type="button" disabled={!selectedStudentId} onClick={() => printInclusiveDocument(`${isPei ? 'PEI' : 'AEE PAEE'} - ${studentName(selectedStudentId)}`)} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:text-slate-200"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir documento</button></div>
+        <div className="print-hidden mt-6 flex flex-wrap gap-2"><button type="submit" disabled={saving || studentsLoading || !selectedStudentId} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-300"><Save className="h-4 w-4" aria-hidden="true" />{saving ? 'Salvando...' : editingId ? 'Atualizar registro' : 'Salvar rascunho'}</button><button type="button" disabled={!selectedStudentId} onClick={() => printInclusiveDocument(`${isPei ? 'PEI' : 'AEE PAEE'} - ${studentName(selectedStudentId)}`)} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:text-slate-200"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir documento</button></div>
       </form>
       <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center justify-between gap-3"><div><h2 className="font-bold text-slate-900 dark:text-white">Registros existentes</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Selecione um registro para revisar ou continuar o preenchimento.</p></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#075fc4] dark:bg-blue-950/40 dark:text-blue-200">{isPei ? peiPlans.length : aeePlans.length}</span></div>{(isPei ? peiPlans : aeePlans).length === 0 ? <p className="mt-5 rounded-lg border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum registro encontrado para esta instituição.</p> : <div className="mt-5 grid gap-3 md:grid-cols-2">{(isPei ? peiPlans : aeePlans).map((plan) => <article key={plan.id} className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div><h3 className="font-bold text-slate-900 dark:text-white">{studentName(plan.student_id)}</h3><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{plan.status === 'DRAFT' ? 'Rascunho' : plan.status === 'ACTIVE' ? 'Ativo' : 'Arquivado'} · Atualizado em {new Date(plan.updated_at).toLocaleDateString('pt-BR')}</p></div><button type="button" onClick={() => isPei ? editPei(plan as InclusivePeiPlan) : editAee(plan as InclusiveAeePlan)} className="inline-flex items-center gap-2 rounded-lg border border-[#075fc4] px-3 py-2 text-xs font-bold text-[#075fc4]"><Pencil className="h-3.5 w-3.5" aria-hidden="true" />Editar</button></article>)}</div>}</section>
       <Link to="/inclusive-education" className="inline-flex items-center gap-2 text-sm font-bold text-[#075fc4] hover:underline"><ArrowRight className="h-4 w-4 rotate-180" aria-hidden="true" />Voltar para a visão geral</Link>
@@ -461,6 +675,7 @@ export default function InclusiveEducationPage() {
           isPei={current.id === 'pei'}
           institutionId={currentInstitutionId}
           profileId={profile?.id ?? null}
+          profileName={profile?.full_name ?? null}
           students={students}
           studentsLoading={studentsLoading}
           peiPlans={plans}

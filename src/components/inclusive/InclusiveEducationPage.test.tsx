@@ -8,9 +8,11 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import {
   listInclusiveAeePlans,
+  listInclusiveAeeSessions,
   listInclusivePeiPlans,
   listInclusiveStudents,
   saveInclusiveAeePlan,
+  saveInclusiveAeeSession,
   saveInclusivePeiPlan,
 } from '../../services/inclusiveEducationService';
 import InclusiveEducationPage from './InclusiveEducationPage';
@@ -21,10 +23,12 @@ vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: vi.fn() })
 vi.mock('../../services/inclusiveEducationService', () => ({
   INCLUSIVE_EDUCATION_DATA_ENABLED: true,
   listInclusiveAeePlans: vi.fn(),
+  listInclusiveAeeSessions: vi.fn(),
   listInclusivePeiPlans: vi.fn(),
   listInclusiveStudents: vi.fn(),
   printInclusiveDocument: vi.fn(),
   saveInclusiveAeePlan: vi.fn(),
+  saveInclusiveAeeSession: vi.fn(),
   saveInclusivePeiPlan: vi.fn(),
 }));
 
@@ -39,8 +43,10 @@ const mockedUseInstitution = vi.mocked(useInstitution);
 const mockedListStudents = vi.mocked(listInclusiveStudents);
 const mockedListPei = vi.mocked(listInclusivePeiPlans);
 const mockedListAee = vi.mocked(listInclusiveAeePlans);
+const mockedListAeeSessions = vi.mocked(listInclusiveAeeSessions);
 const mockedSavePei = vi.mocked(saveInclusivePeiPlan);
 const mockedSaveAee = vi.mocked(saveInclusiveAeePlan);
+const mockedSaveAeeSession = vi.mocked(saveInclusiveAeeSession);
 
 function renderInclusivePage(path: string) {
   return render(
@@ -61,21 +67,26 @@ beforeEach(() => {
   mockedListStudents.mockResolvedValue([{ id: 'student-1', name: 'Estudante QA' }]);
   mockedListPei.mockResolvedValue([]);
   mockedListAee.mockResolvedValue([]);
+  mockedListAeeSessions.mockResolvedValue([]);
   mockedSavePei.mockResolvedValue(undefined);
   mockedSaveAee.mockResolvedValue(undefined);
+  mockedSaveAeeSession.mockResolvedValue(undefined);
 });
 
 afterEach(cleanup);
+
+async function chooseAuthorizedStudent() {
+  fireEvent.click(screen.getByRole('button', { name: 'Adicionar aluno autorizado' }));
+  fireEvent.click(await screen.findByRole('option', { name: 'Estudante QA' }));
+}
 
 describe('InclusiveEducationPage PEI/AEE access', () => {
   it('loads an authorized student and saves a PEI draft from the interactive form', async () => {
     renderInclusivePage('/inclusive-education/pei');
 
-    const studentSelect = await screen.findByLabelText('Estudante');
-    expect((studentSelect as HTMLSelectElement).disabled).toBe(false);
+    await chooseAuthorizedStudent();
     expect(screen.queryByText(/Modo seguro de preparação/i)).toBeNull();
 
-    fireEvent.change(studentSelect, { target: { value: 'student-1' } });
     const strengths = screen.getByLabelText('Pontos fortes');
     expect((strengths as HTMLTextAreaElement).disabled).toBe(false);
     fireEvent.change(strengths, { target: { value: 'Aprende com atividades visuais.' } });
@@ -97,11 +108,9 @@ describe('InclusiveEducationPage PEI/AEE access', () => {
   it('loads an authorized student and saves an AEE draft from the interactive form', async () => {
     renderInclusivePage('/inclusive-education/aee-paee');
 
-    const studentSelect = await screen.findByLabelText('Estudante');
-    expect((studentSelect as HTMLSelectElement).disabled).toBe(false);
+    await chooseAuthorizedStudent();
     expect(screen.queryByText(/Modo seguro de preparação/i)).toBeNull();
 
-    fireEvent.change(studentSelect, { target: { value: 'student-1' } });
     fireEvent.change(screen.getByLabelText('Objetivo do atendimento'), {
       target: { value: 'Ampliar comunicação funcional.' },
     });
