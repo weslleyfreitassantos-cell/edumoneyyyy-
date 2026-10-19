@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
+import { academicAutomationService, type PeriodDraft, type TeacherAvailabilityDraft, type TeacherSchedulingProfileDraft } from '../services/academicAutomationService';
 import { assignmentAutomationService } from '../services/assignmentAutomationService';
 import { classAutomationService } from '../services/classAutomationService';
 import { timetableAutomationService, type TimetableDayCopyPreview, type TimetableDraftValidation, type TimetableEditorContext, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
@@ -10,6 +10,9 @@ export const academicAutomationKeys = {
   all: ['academic-automation'] as const,
   teacherSubjects: (institutionId: string, teacherProfileId: string) => [...academicAutomationKeys.all, 'teacher-subjects', institutionId, teacherProfileId] as const,
   teacherAvailability: (institutionId: string, teacherProfileId: string) => [...academicAutomationKeys.all, 'teacher-availability', institutionId, teacherProfileId] as const,
+  institutionTeacherAvailability: (institutionId: string) => [...academicAutomationKeys.all, 'teacher-availability-institution', institutionId] as const,
+  teacherSchedulingProfile: (institutionId: string, academicYearId: string, teacherProfileId: string) => [...academicAutomationKeys.all, 'teacher-scheduling-profile', institutionId, academicYearId, teacherProfileId] as const,
+  teacherSchedulingProfiles: (institutionId: string, academicYearId: string) => [...academicAutomationKeys.all, 'teacher-scheduling-profiles', institutionId, academicYearId] as const,
   timeSlots: (institutionId: string, shift?: string) => [...academicAutomationKeys.all, 'time-slots', institutionId, shift ?? 'all'] as const,
   timetablePreparationPrefix: (institutionId: string) => [...academicAutomationKeys.all, 'timetable-preparation', institutionId] as const,
   timetablePreparation: (institutionId: string, academicYearId: string, shift?: string) => [...academicAutomationKeys.all, 'timetable-preparation', institutionId, academicYearId, shift ?? 'TODOS'] as const,
@@ -35,10 +38,53 @@ export function useTeacherAvailability(institutionId: string, teacherProfileId: 
   });
 }
 
+export function useInstitutionTeacherAvailability(institutionId: string) {
+  return useQuery({
+    queryKey: academicAutomationKeys.institutionTeacherAvailability(institutionId),
+    queryFn: () => academicAutomationService.listInstitutionTeacherAvailability(institutionId),
+    enabled: Boolean(institutionId),
+  });
+}
+
+export function useTeacherSchedulingProfile(institutionId: string, academicYearId: string, teacherProfileId: string) {
+  return useQuery({
+    queryKey: academicAutomationKeys.teacherSchedulingProfile(institutionId, academicYearId, teacherProfileId),
+    queryFn: () => academicAutomationService.getTeacherSchedulingProfile(institutionId, teacherProfileId, academicYearId),
+    enabled: Boolean(institutionId && academicYearId && teacherProfileId),
+  });
+}
+
+export function useTeacherSchedulingProfiles(institutionId: string, academicYearId: string) {
+  return useQuery({
+    queryKey: academicAutomationKeys.teacherSchedulingProfiles(institutionId, academicYearId),
+    queryFn: () => academicAutomationService.listTeacherSchedulingProfiles(institutionId, academicYearId),
+    enabled: Boolean(institutionId && academicYearId),
+  });
+}
+
+export function useSaveTeacherSchedulingConfiguration() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { institution_id: string; teacher_profile_id: string; academic_year_id: string; profile: TeacherSchedulingProfileDraft; availability: TeacherAvailabilityDraft[]; subject_ids?: string[]; primary_subject_id?: string; only_if_unconfigured?: boolean }) =>
+      academicAutomationService.saveTeacherSchedulingConfiguration(input),
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.teacherSchedulingProfile(variables.institution_id, variables.academic_year_id, variables.teacher_profile_id) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.teacherSchedulingProfiles(variables.institution_id, variables.academic_year_id) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.teacherSubjects(variables.institution_id, variables.teacher_profile_id) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.teacherAvailability(variables.institution_id, variables.teacher_profile_id) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.institutionTeacherAvailability(variables.institution_id) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
+      ]);
+    },
+  });
+}
+
 export function useSaveTeacherAcademicSettings() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (input: { institution_id: string; teacher_profile_id: string; subject_ids: string[]; primary_subject_id?: string; availability: Array<{ day_of_week: number; start_time: string; end_time: string }> }) => {
+    mutationFn: async (input: { institution_id: string; teacher_profile_id: string; subject_ids: string[]; primary_subject_id?: string; availability: TeacherAvailabilityDraft[] }) => {
       await academicAutomationService.replaceTeacherSubjects(input);
       await academicAutomationService.replaceTeacherAvailability(input);
     },
