@@ -16,7 +16,10 @@ import {
   type SaveBrandingInput,
   normalizePublicBrandingAssetUrls,
 } from '../services/brandingService';
-import { applyDocumentBranding } from '../services/documentBranding';
+import {
+  applyDocumentBranding,
+  applyDocumentTitle,
+} from '../services/documentBranding';
 import { normalizeHostnameValue } from '../services/brandingValidation';
 
 function getWindowHostname(): string {
@@ -251,6 +254,15 @@ export function useResolvedBranding(
       const branding = await brandingService.resolveForHostname(
         normalizedHostname,
       );
+      if (
+        normalizeHostnameValue(getWindowHostname()) ===
+        normalizedHostname
+      ) {
+        // Set the tenant title as soon as its public identity arrives. Image
+        // preloads can take several seconds and must not leave the generic
+        // index.html title in the browser tab while the page is resolving.
+        applyDocumentTitle(branding);
+      }
       return preloadPublicBrandingAssets(branding, previousBranding);
     },
     retry: 1,

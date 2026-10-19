@@ -146,7 +146,7 @@ describe('useResolvedBranding', () => {
   });
 
   it('ignora branding persistido antigo e só publica a resposta após pre-carregar os assets', async () => {
-    const host = 'escola.example.com';
+    const host = window.location.hostname;
     localStorage.setItem(
       `tecescola:public-branding:${host}`,
       JSON.stringify({
@@ -159,6 +159,7 @@ describe('useResolvedBranding', () => {
     const currentBranding: PublicBranding = {
       ...staleBranding,
       displayName: 'Escola atual',
+      documentTitle: 'Colégio atual',
       logoUrl: 'https://cdn.example.com/new-logo.png',
       faviconUrl: 'https://cdn.example.com/new-favicon.png',
       loginBackgroundUrl: 'https://cdn.example.com/new-background.png',
@@ -218,6 +219,7 @@ describe('useResolvedBranding', () => {
       await response;
     });
     await waitFor(() => expect(images).toHaveLength(3));
+    expect(document.title).toBe('Colégio atual');
     expect(new Set(images.map((image) => image.src))).toEqual(
       new Set([
         currentBranding.logoUrl,

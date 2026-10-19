@@ -95,15 +95,21 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     }
   }, [profile, navigate, showSubdomainMismatch]);
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    if (!brandingQuery.data && brandingQuery.isLoading) {
+      return;
+    }
+
+    return applyDocumentBranding(branding);
+  }, [
+    brandingQuery.data,
+    brandingQuery.isLoading,
+    branding.documentTitle,
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

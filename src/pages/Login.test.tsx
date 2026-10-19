@@ -27,8 +27,9 @@ const authMock = vi.hoisted(() => ({
 
 const brandingMock = vi.hoisted(() => ({
   data: null as null | {
-    scope: 'GLOBAL' | 'ACCOUNT' | 'FALLBACK';
+    scope: 'GLOBAL' | 'ACCOUNT' | 'INSTITUTION' | 'FALLBACK';
     displayName: string | null;
+    documentTitle?: string | null;
     logoUrl: string | null;
     faviconUrl: string | null;
     loginBackgroundUrl?: string | null;
@@ -216,6 +217,23 @@ describe('Login', () => {
         'link[rel="icon"]',
       )?.href,
     ).toBe('https://cdn.example.com/favicon.png');
+  });
+
+  it('usa o nome da escola do subdomínio no título da aba', () => {
+    brandingMock.data = {
+      scope: 'INSTITUTION',
+      displayName: 'Portal Acadêmico',
+      documentTitle: 'Colégio Helita Vieira',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+
+    renderLogin();
+
+    expect(document.title).toBe('Colégio Helita Vieira');
+    expect(screen.getAllByText('Portal Acadêmico').length).toBeGreaterThan(0);
   });
 
   it('renderiza o formulario centralizado sem hero', () => {
