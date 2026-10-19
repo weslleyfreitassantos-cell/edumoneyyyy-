@@ -17,6 +17,7 @@ const standardBnccSubjectsByCode = new Map<string, string>([
   ['ING', 'Língua Inglesa'],
   ['ENGLISH', 'Língua Inglesa'],
   ['LP', 'Língua Portuguesa'],
+  ['PORT', 'Língua Portuguesa'],
   ['PORTUGUESE', 'Língua Portuguesa'],
   ['MAT', 'Matemática'],
   ['MATHEMATICS', 'Matemática'],
