@@ -11,7 +11,14 @@ StateDirectoryMode=0700
 Environment=HOME=/root
 Environment=XDG_CONFIG_HOME=/root/.config
 ExecStart=/usr/bin/python3 /srv/grupotec/bin/tecescola_pilot_monitor.py
-TimeoutStartSec=60
+TimeoutStartSec=180
+RuntimeMaxSec=180
+CPUAccounting=true
+MemoryAccounting=true
+CPUQuota=25%
+MemoryMax=512M
+TasksMax=64
+Nice=10
 PrivateTmp=true
 ProtectSystem=full
 ProtectHome=read-only
