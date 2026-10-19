@@ -1,9 +1,8 @@
 begin;
 
--- Enable the existing, explicitly labeled BNCC demonstration preview for the
--- Aurora fixture institution. This does not publish or alter curriculum data.
--- The preview remains limited by the existing active-student, institution,
--- enrollment, and active-class checks in private.bncc_demo_preview_allowed.
+-- Add exact local-to-canonical subject mappings for the Aurora institution.
+-- Preview eligibility is governed by authenticated student/institution scope,
+-- enrollment, class, and content-state checks, not a per-institution allowlist.
 do $aurora_preview$
 declare
   candidate_count integer;
@@ -24,28 +23,7 @@ begin
     raise exception 'BNCC_AURORA_DEMO_INSTITUTION_NOT_UNIQUE';
   end if;
 
-  -- Do not enable a similarly named but unrelated institution. Require the
-  -- stored fixture marker on an active student in this school,
-  -- plus the exact subject/content pair used by the reported failure.
-  if not exists (
-    select 1
-      from public.students student
-      join auth.users auth_user on auth_user.id = student.profile_id
-      join public.enrollments enrollment
-        on enrollment.student_id = student.id
-       and enrollment.active
-       and upper(enrollment.status::text) = 'ACTIVE'
-      join public.classes class
-        on class.id = enrollment.class_id
-       and class.institution_id = target_institution_id
-       and class.active
-     where student.institution_id = target_institution_id
-       and student.active
-       and auth_user.raw_user_meta_data->>'aurora_fixture' = 'AURORA_INTEGRAL_DEMO'
-  ) then
-    return;
-  end if;
-
+  -- Require the exact subject/content pair used by the reported failure.
   if not exists (
     select 1
       from public.subjects subject
@@ -123,19 +101,6 @@ begin
     raise exception 'BNCC_AURORA_DEMO_ART_BINDING_REQUIRED';
   end if;
 
-  insert into private.bncc_demo_preview_institutions(
-    institution_id,
-    preview_code,
-    active
-  )
-  values (
-    target_institution_id,
-    'TECESCOLA_BNCC_AURORA_INTEGRAL_DEMO_V1',
-    true
-  )
-  on conflict (institution_id) do update
-    set preview_code = excluded.preview_code,
-        active = true;
 end;
 $aurora_preview$;
 
