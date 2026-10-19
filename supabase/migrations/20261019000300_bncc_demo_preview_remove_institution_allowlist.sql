@@ -1,9 +1,9 @@
 begin;
 
 -- Demo preview access is no longer gated by a manually maintained institution
--- allowlist. Keep authenticated student/institution scope and require an active
--- enrollment and active class in the requested institution. Consumers retain
--- their publication, mapping, grade, and pedagogical-review state checks.
+-- allowlist. An institution must have at least one private, exact subject
+-- mapping, and the requester must remain in authenticated student scope with
+-- an active enrollment and class. Content-state checks remain in consumers.
 create or replace function private.bncc_demo_preview_allowed(
   p_institution_id uuid,
   p_student_id uuid
@@ -29,11 +29,16 @@ as $$
         where student.id = p_student_id
           and student.institution_id = p_institution_id
           and student.active
+          and exists (
+            select 1
+              from private.learning_demo_subject_bindings binding
+             where binding.institution_id = p_institution_id
+          )
      );
 $$;
 
 comment on function private.bncc_demo_preview_allowed(uuid, uuid) is
-  'Allows technical demo preview for authenticated institution-scoped students with active enrollment and class; no institution allowlist is required. Content publication, mapping, grade, and review-state checks remain in consuming functions.';
+  'Allows technical demo preview only for authenticated institution-scoped students with active enrollment/class and at least one private institution-local canonical subject mapping; no separate institution allowlist is required. Content publication, grade, and pedagogical review-state checks remain in consuming functions.';
 
 revoke all on function private.bncc_demo_preview_allowed(uuid, uuid)
   from public, anon, authenticated;
