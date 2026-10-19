@@ -22,6 +22,21 @@ const baseInput: TimetableGeneratorInput = {
 };
 
 describe('timetable generator', () => {
+  const readyRegentProfile = {
+    institutionId: 'institution-a',
+    teacherProfileId: 'teacher-a',
+    academicYearId: 'year-2027',
+    actuationType: 'REGENTE' as const,
+    authorizedShifts: ['MATUTINO'],
+    authorizedStages: ['FUNDAMENTAL_I' as const],
+    authorizedGradeLevels: ['1'],
+    authorizedClassIds: ['class-a'],
+    maxWeeklyLessons: null,
+    maxDailyLessons: null,
+    contractualWeeklyMinutes: null,
+    configurationStatus: 'READY' as const,
+  };
+
   it('allocates the exact weekly workload deterministically', () => {
     const first = generateTimetable(baseInput);
     const second = generateTimetable(baseInput);
@@ -125,7 +140,7 @@ describe('timetable generator', () => {
     });
 
     expect(result.status).toBe('UNSATISFIED');
-    expect(result.diagnostics[0]?.suggestions).toContain('Expand teacher availability.');
+    expect(result.diagnostics[0]?.suggestions.some((suggestion) => suggestion.toLocaleLowerCase('pt-BR').includes('disponibilidade'))).toBe(true);
     expect(result.entries.length).toBeLessThan(5);
   });
 
@@ -406,5 +421,59 @@ describe('timetable generator', () => {
 
     expect(result.status).toBe('UNSATISFIED');
     expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_SCHEDULE_BREAK_REQUIRED')).toBe(true);
+  });
+
+  it('allows an explicitly scoped F1 regent to cover only core regent subjects', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], gradeLevel: '1º ano' }],
+      teacherSubjects: [],
+      teacherSchedulingProfiles: [readyRegentProfile],
+      teacherAvailabilityByShift: baseInput.teacherAvailability.map((item) => ({ ...item, shift: 'MATUTINO' })),
+      subjectLabels: { math: 'Matemática' },
+      requireTeacherSchedulingProfiles: true,
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(2);
+
+    const nonCoreSubject = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], gradeLevel: '1º ano' }],
+      curriculumItems: [{ classId: 'class-a', subjectId: 'english', weeklyLessons: 1, lessonDurationMinutes: 50 }],
+      subjectOfferings: [{ ...baseInput.subjectOfferings[0], subjectId: 'english' }],
+      teacherSubjects: [],
+      teacherSchedulingProfiles: [readyRegentProfile],
+      teacherAvailabilityByShift: baseInput.teacherAvailability.map((item) => ({ ...item, shift: 'MATUTINO' })),
+      subjectLabels: { english: 'Inglês' },
+      requireTeacherSchedulingProfiles: true,
+    });
+    expect(nonCoreSubject.valid).toBe(false);
+    expect(nonCoreSubject.diagnostics.some((diagnostic) => diagnostic.code === 'TEACHER_SUBJECT_NOT_AUTHORIZED')).toBe(true);
+  });
+
+  it('requires shift-specific availability and enforces an individual weekly limit during placement', () => {
+    const withoutMorningAvailability = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], gradeLevel: '1º ano' }],
+      teacherSchedulingProfiles: [readyRegentProfile],
+      teacherAvailabilityByShift: baseInput.teacherAvailability.map((item) => ({ ...item, shift: 'VESPERTINO' })),
+      subjectLabels: { math: 'Matemática' },
+      requireTeacherSchedulingProfiles: true,
+    });
+    expect(withoutMorningAvailability.entries).toHaveLength(0);
+    expect(withoutMorningAvailability.diagnostics.some((diagnostic) => diagnostic.code === 'UNSATISFIED')).toBe(true);
+
+    const weeklyLimitResult = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], gradeLevel: '1º ano' }],
+      teacherSchedulingProfiles: [{ ...readyRegentProfile, maxWeeklyLessons: 1 }],
+      teacherAvailabilityByShift: baseInput.teacherAvailability.map((item) => ({ ...item, shift: 'MATUTINO' })),
+      subjectLabels: { math: 'Matemática' },
+      requireTeacherSchedulingProfiles: true,
+    });
+    expect(weeklyLimitResult.entries).toHaveLength(1);
+    expect(weeklyLimitResult.valid).toBe(false);
+    expect(weeklyLimitResult.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKLY_LESSONS_MISMATCH')).toBe(true);
   });
 });

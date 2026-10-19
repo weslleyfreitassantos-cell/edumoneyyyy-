@@ -35,6 +35,41 @@ describe('automatic timetable preparation', () => {
     expect(result.unassigned).toEqual([{ classId: 'class-1', subjectId: 'science' }]);
   });
 
+  it('assigns a scoped F1 regent for core subjects but not as a general specialist', () => {
+    const profile = {
+      institutionId: 'institution-1',
+      teacherProfileId: 'teacher-regent',
+      academicYearId: 'year-1',
+      actuationType: 'REGENTE' as const,
+      authorizedShifts: ['MATUTINO'],
+      authorizedStages: ['FUNDAMENTAL_I' as const],
+      authorizedGradeLevels: ['1'],
+      authorizedClassIds: ['class-1'],
+      maxWeeklyLessons: null,
+      maxDailyLessons: null,
+      contractualWeeklyMinutes: null,
+      configurationStatus: 'READY' as const,
+    };
+    const shared = {
+      classes: [{ id: 'class-1', institutionId: 'institution-1', academicYearId: 'year-1', name: '1A', shift: 'MATUTINO', gradeLevel: '1º ano' }],
+      curriculumItems: [{ classId: 'class-1', subjectId: 'portuguese', weeklyLessons: 3, lessonDurationMinutes: 50 }],
+      subjectOfferings: [],
+      teacherSubjects: [],
+      teacherSchedulingProfiles: [profile],
+      requireTeacherSchedulingProfiles: true,
+      subjectLabels: { portuguese: 'Língua Portuguesa', english: 'Inglês' },
+      termIds: ['term-1'],
+    };
+
+    expect(planAutomaticAssignments(shared).assignments).toEqual([
+      { classId: 'class-1', subjectId: 'portuguese', teacherProfileId: 'teacher-regent' },
+    ]);
+    expect(planAutomaticAssignments({
+      ...shared,
+      curriculumItems: [{ classId: 'class-1', subjectId: 'english', weeklyLessons: 2, lessonDurationMinutes: 50 }],
+    }).unassigned).toEqual([{ classId: 'class-1', subjectId: 'english' }]);
+  });
+
   it('distributes new assignments by weekly workload instead of link count', () => {
     const result = planAutomaticAssignments({
       classes: [
@@ -63,14 +98,17 @@ describe('automatic timetable preparation', () => {
     expect(result.assignments).toEqual([{ classId: 'class-heavy', subjectId: 'math', teacherProfileId: 'teacher-2' }]);
   });
 
-  it('creates standard slots for custom and integral shifts', () => {
+  it('keeps the morning shift inside its boundary and builds separate evening periods', () => {
     const slots = buildDefaultTimeSlots(['Integral', 'Noturno']);
     const expandedMorning = buildDefaultTimeSlots(['MATUTINO'], { MATUTINO: 8 });
+    const afternoon = buildDefaultTimeSlots(['VESPERTINO']);
 
     expect(slots.filter((slot) => slot.shift === 'Integral')).toHaveLength(40);
     expect(slots.filter((slot) => slot.shift === 'Noturno')).toHaveLength(25);
     expect(slots[0]).toMatchObject({ shift: 'Integral', day_of_week: 1, start_time: '07:00' });
-    expect(expandedMorning).toHaveLength(40);
-    expect(expandedMorning.at(-1)).toMatchObject({ day_of_week: 5, slot_number: 8, end_time: '14:40' });
+    expect(expandedMorning).toHaveLength(30);
+    expect(expandedMorning.at(-1)).toMatchObject({ day_of_week: 5, slot_number: 6, end_time: '12:30' });
+    expect(afternoon.every((slot) => slot.start_time >= '13:00')).toBe(true);
+    expect(slots.filter((slot) => slot.shift === 'Noturno').every((slot) => slot.start_time >= '18:50')).toBe(true);
   });
 });

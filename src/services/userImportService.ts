@@ -3,9 +3,12 @@ import { normalizeAcademicLevel } from '../lib/academic/academicLevels';
 import { getActiveClassesForYear } from '../lib/academicSelection';
 import {
   academicAutomationService,
-  type TeacherAvailabilityRow,
+  type TeacherAvailabilityDraft,
+  type TeacherSchedulingProfileDraft,
 } from './academicAutomationService';
 import type { ClassRow } from './classService';
+import { normalizeAcademicShift, toAcademicShift } from '../lib/academic/academicShifts';
+import { getTeacherStage, type TeacherActuationType, type TeacherStage } from '../lib/academic/teacherScheduling';
 import {
   createFullStudentEnrollment,
   type FullStudentEnrollmentDraft,
@@ -18,11 +21,6 @@ import {
   type ParsedSpreadsheet,
   type ParsedSpreadsheetRow,
 } from './spreadsheetImportService';
-
-type TeacherAvailabilityDraft = Omit<
-  TeacherAvailabilityRow,
-  'id' | 'active' | 'institution_id' | 'teacher_profile_id'
->;
 
 export interface ImportPreview<T> {
   rowNumber: number;
@@ -41,6 +39,7 @@ export interface TeacherImportPreviewData {
   subject_ids: string[];
   primary_subject_id?: string;
   availability: TeacherAvailabilityDraft[];
+  schedulingProfile?: TeacherSchedulingProfileDraft;
 }
 
 export interface ImportProgress {
@@ -94,8 +93,12 @@ export const TEACHER_IMPORT_HEADERS = [
   'Nome completo', 'E-mail', 'Telefone', 'Disciplinas', 'Disciplina principal',
   ...Array.from({ length: 10 }, (_, index) => {
     const slot = index + 1;
-    return [`Disponibilidade ${slot} - Dia`, `Disponibilidade ${slot} - Início`, `Disponibilidade ${slot} - Fim`];
+    return [`Disponibilidade ${slot} - Turno`, `Disponibilidade ${slot} - Dia`, `Disponibilidade ${slot} - Início`, `Disponibilidade ${slot} - Fim`];
   }).flat(),
+  'Janelas adicionais (Turno|Dia|Início|Fim)',
+  'Tipo de atuação', 'Etapas autorizadas', 'Turnos autorizados', 'Séries autorizadas',
+  'Turmas autorizadas (IDs)', 'Máximo semanal (aulas)', 'Máximo diário (aulas)',
+  'Carga contratual semanal (minutos)',
 ] as const;
 
 export const STUDENT_REQUIRED_IMPORT_HEADERS = [
@@ -111,6 +114,7 @@ export const STUDENT_REQUIRED_IMPORT_HEADERS = [
 export const TEACHER_REQUIRED_IMPORT_HEADERS = [
   'Nome completo',
   'E-mail',
+  'Disciplinas',
 ] as const;
 
 const studentDocumentFields: Array<{ type: string; key: string }> = [
@@ -298,6 +302,28 @@ function parseDay(valueToParse: string): number | null {
   return days[input] ?? null;
 }
 
+function parseTeacherShift(valueToParse: string): string | null {
+  return toAcademicShift(valueToParse);
+}
+
+function parseTeacherActuationType(valueToParse: string): TeacherActuationType | null {
+  const input = normalize(valueToParse).replace(/[ _-]+/g, ' ');
+  if (!input) return null;
+  if (['regente', 'regent', 'professor regente'].includes(input)) return 'REGENTE';
+  if (['especialista', 'specialist', 'professor especialista'].includes(input)) return 'ESPECIALISTA';
+  if (['ambos', 'regente e especialista', 'regente especialista'].includes(input)) return 'AMBOS';
+  return null;
+}
+
+function parseTeacherStage(valueToParse: string): TeacherStage | null {
+  const input = normalize(valueToParse).replace(/[ _-]+/g, ' ');
+  if (!input) return null;
+  if (['fundamental i', 'fundamental 1', 'f1', 'anos iniciais'].includes(input)) return 'FUNDAMENTAL_I';
+  if (['fundamental ii', 'fundamental 2', 'f2', 'anos finais'].includes(input)) return 'FUNDAMENTAL_II';
+  if (['ensino medio', 'medio', 'em'].includes(input)) return 'ENSINO_MEDIO';
+  return null;
+}
+
 function documentStatus(valueToParse: string, label: string, errors: string[]): StudentDocumentStatus {
   const input = normalize(valueToParse).replace(/ /g, '_');
   const statuses: Record<string, StudentDocumentStatus> = {
@@ -377,7 +403,7 @@ function teacherKnownHeaders(): Set<string> {
     'disciplina_principal', 'materia_principal', 'disponibilidade_1_dia',
     ...Array.from({ length: 10 }, (_, index) => {
       const slot = index + 1;
-      return [`disponibilidade_${slot}_dia`, `disponibilidade_${slot}_inicio`, `disponibilidade_${slot}_fim`];
+      return [`disponibilidade_${slot}_turno`, `disponibilidade_${slot}_dia`, `disponibilidade_${slot}_inicio`, `disponibilidade_${slot}_fim`];
     }).flat(),
   ].map((header) => normalizeSpreadsheetHeader(header)));
 }
@@ -548,6 +574,7 @@ export function buildStudentImportPreviews(
 export function buildTeacherImportPreviews(
   parsed: ParsedSpreadsheet,
   subjects: SubjectRow[],
+  options: { academicYearId?: string; classes?: ClassRow[] } = {},
 ): { previews: ImportPreview<TeacherImportPreviewData>[]; unknownHeaders: string[] } {
   const previews = parsed.rows.map((row) => {
     const errors: string[] = [];
@@ -574,18 +601,114 @@ export function buildTeacherImportPreviews(
 
     const availability: TeacherAvailabilityDraft[] = [];
     for (let index = 1; index <= 10; index += 1) {
+      const shiftInput = value(row, [`availability_${index}_shift`, `disponibilidade_${index}_turno`]);
       const dayInput = value(row, [`availability_${index}_day`, `disponibilidade_${index}_dia`]);
       const startInput = value(row, [`availability_${index}_start`, `disponibilidade_${index}_inicio`]);
       const endInput = value(row, [`availability_${index}_end`, `disponibilidade_${index}_fim`]);
       if (!dayInput && !startInput && !endInput) continue;
+      const shift = shiftInput ? parseTeacherShift(shiftInput) : null;
+      if (shiftInput && !shift) errors.push(`Disponibilidade ${index}: turno inválido.`);
       const day = parseDay(dayInput);
       const start = parseTime(startInput);
       const end = parseTime(endInput);
       if (!day) errors.push(`Disponibilidade ${index}: dia inválido.`);
       if (!start || !end) errors.push(`Disponibilidade ${index}: informe horários válidos.`);
       if (start && end && start >= end) errors.push(`Disponibilidade ${index}: o fim deve ser posterior ao início.`);
-      if (day && start && end) availability.push({ day_of_week: day, start_time: start, end_time: end });
+      if (day && start && end) availability.push({ shift, day_of_week: day, start_time: start, end_time: end });
     }
+    const flexibleWindows = value(row, ['availability_windows', 'janelas_adicionais_turno_dia_inicio_fim']);
+    if (flexibleWindows) {
+      for (const [index, entry] of flexibleWindows.split(';').map((part) => part.trim()).filter(Boolean).entries()) {
+        const [shiftInput, dayInput, startInput, endInput] = entry.split('|').map((part) => part.trim());
+        const shift = parseTeacherShift(shiftInput ?? '');
+        const day = parseDay(dayInput ?? '');
+        const start = parseTime(startInput ?? '');
+        const end = parseTime(endInput ?? '');
+        if (!shift) errors.push(`Janela adicional ${index + 1}: turno inválido.`);
+        if (!day) errors.push(`Janela adicional ${index + 1}: dia inválido.`);
+        if (!start || !end) errors.push(`Janela adicional ${index + 1}: informe horários válidos.`);
+        if (start && end && start >= end) errors.push(`Janela adicional ${index + 1}: o fim deve ser posterior ao início.`);
+        if (shift && day && start && end && start < end) availability.push({ shift, day_of_week: day, start_time: start, end_time: end });
+      }
+    }
+    const orderedAvailability = [...availability].sort((left, right) =>
+      left.day_of_week - right.day_of_week ||
+      (left.shift ?? '').localeCompare(right.shift ?? '') ||
+      left.start_time.localeCompare(right.start_time),
+    );
+    for (let index = 1; index < orderedAvailability.length; index += 1) {
+      const previous = orderedAvailability[index - 1];
+      const current = orderedAvailability[index];
+      if (
+        previous.day_of_week === current.day_of_week &&
+        previous.shift === current.shift &&
+        previous.start_time < current.end_time &&
+        current.start_time < previous.end_time
+      ) {
+        errors.push(`Disponibilidade sobreposta no dia ${current.day_of_week}, turno ${current.shift ?? 'legado sem turno'}.`);
+      }
+    }
+
+    const actuationInput = value(row, ['actuation_type', 'tipo_de_atuacao', 'atuacao']);
+    const actuationType = parseTeacherActuationType(actuationInput);
+    if (actuationInput && !actuationType) errors.push('Tipo de atuação inválido; use Regente, Especialista ou Ambos.');
+    const shiftInputs = splitList(value(row, ['authorized_shifts', 'turnos_autorizados', 'turnos']));
+    const authorizedShifts = shiftInputs.map(parseTeacherShift);
+    shiftInputs.forEach((item, index) => { if (!authorizedShifts[index]) errors.push(`Turno autorizado inválido: ${item}.`); });
+    const stageInputs = splitList(value(row, ['authorized_stages', 'etapas_autorizadas', 'etapas']));
+    const authorizedStages = stageInputs.map(parseTeacherStage);
+    stageInputs.forEach((item, index) => { if (!authorizedStages[index]) errors.push(`Etapa autorizada inválida: ${item}.`); });
+    const gradeInputs = splitList(value(row, ['authorized_grade_levels', 'series_autorizadas', 'anos_autorizados']));
+    const authorizedGrades = gradeInputs.map((item) => normalizeAcademicLevel(item));
+    gradeInputs.forEach((item, index) => { if (!authorizedGrades[index]) errors.push(`Série autorizada inválida: ${item}.`); });
+    const classInputs = splitList(value(row, ['authorized_class_ids', 'turmas_autorizadas_ids', 'turmas_autorizadas']));
+    const classIds: string[] = [];
+    for (const classInput of classInputs) {
+      const classRow = (options.classes ?? []).find((item) => item.id === classInput || normalize(item.name) === normalize(classInput));
+      if (!classRow || (options.academicYearId && classRow.academic_year_id !== options.academicYearId)) {
+        errors.push(`Turma autorizada não encontrada no ano letivo selecionado: ${classInput}.`);
+      } else {
+        classIds.push(classRow.id);
+        const stage = getTeacherStage(classRow.grade_level);
+        const grade = normalizeAcademicLevel(classRow.grade_level);
+        if (stage && !authorizedStages.includes(stage)) warnings.push(`A etapa ${stage} da turma ${classRow.name} não está em “Etapas autorizadas”.`);
+        if (grade && !authorizedGrades.includes(grade)) warnings.push(`A série ${grade} da turma ${classRow.name} não está em “Séries autorizadas”.`);
+      }
+    }
+    const parseOptionalInteger = (aliases: string[], label: string, min: number, max: number): number | null => {
+      const raw = value(row, aliases);
+      if (!raw) return null;
+      const parsed = Number(raw);
+      if (!Number.isInteger(parsed) || parsed < min || parsed > max) {
+        errors.push(`${label} deve ser um número inteiro entre ${min} e ${max}.`);
+        return null;
+      }
+      return parsed;
+    };
+    const maxWeekly = parseOptionalInteger(['max_weekly_lessons', 'maximo_semanal_aulas', 'limite_semanal'], 'Máximo semanal', 1, 60);
+    const maxDaily = parseOptionalInteger(['max_daily_lessons', 'maximo_diario_aulas', 'limite_diario'], 'Máximo diário', 1, 16);
+    const contractMinutes = parseOptionalInteger(['contractual_weekly_minutes', 'carga_contratual_semanal_minutos'], 'Carga contratual semanal', 1, 100000);
+
+    const hasProfileFields = Boolean(options.academicYearId) || Boolean(actuationInput || shiftInputs.length || stageInputs.length || gradeInputs.length || classInputs.length || maxWeekly !== null || maxDaily !== null || contractMinutes !== null);
+    const hasExplicitSchedulingFields = Boolean(actuationInput || shiftInputs.length || stageInputs.length || gradeInputs.length || classInputs.length || maxWeekly !== null || maxDaily !== null || contractMinutes !== null || availability.some((item) => item.shift));
+    if (!options.academicYearId && hasExplicitSchedulingFields) {
+      errors.push('Selecione um ano letivo para importar atuação, escopo por turno/turma, limites individuais ou disponibilidade por turno.');
+    }
+    const authorizedShiftSet = new Set(authorizedShifts.filter((item): item is string => Boolean(item)));
+    if (options.academicYearId && availability.some((item) => item.shift && !authorizedShiftSet.has(item.shift))) {
+      errors.push('Inclua em “Turnos autorizados” cada turno usado nas janelas de disponibilidade.');
+    }
+    const schedulingProfile = hasProfileFields ? {
+      actuation_type: actuationType ?? 'ESPECIALISTA' as TeacherActuationType,
+      authorized_shifts: [...new Set(authorizedShifts.filter((item): item is string => Boolean(item)))],
+      authorized_stages: [...new Set(authorizedStages.filter((item): item is TeacherStage => Boolean(item)))],
+      authorized_grade_levels: [...new Set(authorizedGrades.filter((item): item is NonNullable<typeof item> => Boolean(item)))],
+      authorized_class_ids: [...new Set(classIds)],
+      max_weekly_lessons: maxWeekly,
+      max_daily_lessons: maxDaily,
+      contractual_weekly_minutes: contractMinutes,
+      configuration_status: 'REVIEW_REQUIRED' as const,
+    } : undefined;
     const data: TeacherImportPreviewData = {
       full_name: fullName,
       email,
@@ -593,6 +716,7 @@ export function buildTeacherImportPreviews(
       subject_ids: [...new Set(subjectIds)],
       primary_subject_id: primarySubject?.id,
       availability,
+      schedulingProfile,
     };
     return { rowNumber: row.rowNumber, label: fullName || `Linha ${row.rowNumber}`, data, errors, warnings };
   });
@@ -642,6 +766,7 @@ export async function importTeachers(
   institutionId: string,
   previews: Array<ImportPreview<TeacherImportPreviewData>>,
   onProgress?: (progress: ImportProgress) => void,
+  options: { academicYearId?: string } = {},
 ): Promise<ImportResult> {
   const result: ImportResult = { succeeded: [], failed: [], emailPending: [] };
   for (let index = 0; index < previews.length; index += 1) {
@@ -654,7 +779,17 @@ export async function importTeachers(
         email: preview.data.email,
         ...(preview.data.phone ? { phone: preview.data.phone } : {}),
       });
-      if (preview.data.subject_ids.length > 0) {
+      if (options.academicYearId && preview.data.schedulingProfile) {
+        await academicAutomationService.saveTeacherSchedulingConfiguration({
+          institution_id: institutionId,
+          teacher_profile_id: teacher.profile_id,
+          academic_year_id: options.academicYearId,
+          profile: preview.data.schedulingProfile,
+          availability: preview.data.availability,
+          subject_ids: preview.data.subject_ids,
+          primary_subject_id: preview.data.primary_subject_id,
+        });
+      } else if (preview.data.subject_ids.length > 0) {
         await academicAutomationService.replaceTeacherSubjects({
           institution_id: institutionId,
           teacher_profile_id: teacher.profile_id,
@@ -662,7 +797,7 @@ export async function importTeachers(
           primary_subject_id: preview.data.primary_subject_id,
         });
       }
-      if (preview.data.availability.length > 0) {
+      if ((!options.academicYearId || !preview.data.schedulingProfile) && preview.data.availability.length > 0) {
         await academicAutomationService.replaceTeacherAvailability({
           institution_id: institutionId,
           teacher_profile_id: teacher.profile_id,
@@ -739,6 +874,7 @@ export const STUDENT_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = STUDENT_R
 export const TEACHER_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = {
   'Nome completo': 'João Silva',
   'E-mail': 'joao.silva@exemplo.com',
+  Disciplinas: 'Matemática; Ciências',
 };
 
 export async function ensureSubjectsForTeacherImport(institutionId: string): Promise<SubjectRow[]> {

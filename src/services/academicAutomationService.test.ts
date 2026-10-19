@@ -48,10 +48,35 @@ describe('suggestTeacherAvailabilityFromSchoolSlots', () => {
     ]);
 
     expect(suggestions).toEqual([
-      { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
-      { day_of_week: 1, start_time: '09:50', end_time: '10:40' },
-      { day_of_week: 2, start_time: '13:00', end_time: '13:50' },
+      { day_of_week: 1, shift: null, start_time: '07:00', end_time: '08:40' },
+      { day_of_week: 1, shift: null, start_time: '09:50', end_time: '10:40' },
+      { day_of_week: 2, shift: null, start_time: '13:00', end_time: '13:50' },
     ]);
+  });
+
+  it('merges adjacent windows only inside the same day and shift', () => {
+    const suggestions = suggestTeacherAvailabilityFromSchoolSlots([
+      { day_of_week: 1, shift: 'MATUTINO', start_time: '07:00:00', end_time: '07:50:00', active: true },
+      { day_of_week: 1, shift: 'MATUTINO', start_time: '07:50:00', end_time: '08:40:00', active: true },
+      { day_of_week: 1, shift: 'VESPERTINO', start_time: '13:00:00', end_time: '13:50:00', active: true },
+      { day_of_week: 1, shift: 'NOTURNO', start_time: '19:00:00', end_time: '19:50:00', active: true },
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '07:00:00', end_time: '07:50:00', active: true },
+    ]);
+
+    expect(suggestions).toEqual([
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '07:00', end_time: '07:50' },
+      { day_of_week: 1, shift: 'MATUTINO', start_time: '07:00', end_time: '08:40' },
+      { day_of_week: 1, shift: 'NOTURNO', start_time: '19:00', end_time: '19:50' },
+      { day_of_week: 1, shift: 'VESPERTINO', start_time: '13:00', end_time: '13:50' },
+    ]);
+  });
+
+  it('preserves unknown-shift legacy rows instead of promoting them to every shift', () => {
+    const suggestions = suggestTeacherAvailabilityFromSchoolSlots([
+      { day_of_week: 2, shift: null, start_time: '07:00:00', end_time: '12:00:00', active: true },
+    ]);
+
+    expect(suggestions).toEqual([{ day_of_week: 2, shift: null, start_time: '07:00', end_time: '12:00' }]);
   });
 });
 
@@ -64,7 +89,7 @@ describe('suggestTeacherAvailabilityFromPolicy', () => {
         maxLessonsPerDay: 2,
       }),
     ).toEqual([
-      { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
+      { day_of_week: 1, shift: 'MATUTINO', start_time: '07:00', end_time: '08:40' },
     ]);
   });
 
@@ -83,10 +108,10 @@ describe('suggestTeacherAvailabilityFromPolicy', () => {
         }],
       }),
     ).toEqual([
-      { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
-      { day_of_week: 1, start_time: '08:50', end_time: '10:30' },
-      { day_of_week: 1, start_time: '13:50', end_time: '14:40' },
-      { day_of_week: 1, start_time: '14:50', end_time: '15:40' },
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '07:00', end_time: '08:40' },
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '08:50', end_time: '10:30' },
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '13:50', end_time: '14:40' },
+      { day_of_week: 1, shift: 'INTEGRAL', start_time: '14:50', end_time: '15:40' },
     ]);
   });
 });

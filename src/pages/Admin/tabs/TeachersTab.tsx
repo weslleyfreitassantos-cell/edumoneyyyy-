@@ -26,11 +26,10 @@ import {
 import { useAuth } from '../../../contexts/AuthContext';
 
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
+import { useClasses } from '../../../hooks/useClasses';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import {
-  useAcademicPolicy,
   useAcademicShiftSettings,
-  useSchoolScheduleBreaks,
 } from '../../../hooks/useAcademicTermClosing';
 
 import {
@@ -40,13 +39,14 @@ import {
 } from '../../../hooks/useTeachers';
 import { useSubjects } from '../../../hooks/useSubjects';
 import {
+  useInstitutionTeacherAvailability,
+  useSaveTeacherSchedulingConfiguration,
   useSaveTeacherAcademicSettings,
-  useSaveTeacherAvailability,
   useSchoolTimeSlots,
+  useTeacherSchedulingProfiles,
 } from '../../../hooks/useAcademicAutomation';
 import TeacherAcademicSettings from '../../../components/academic/TeacherAcademicSettings';
 import {
-  suggestTeacherAvailabilityFromPolicy,
   suggestTeacherAvailabilityFromSchoolSlots,
 } from '../../../services/academicAutomationService';
 import TeacherSpreadsheetImportModal from '../../../components/TeacherSpreadsheetImportModal';
@@ -125,16 +125,14 @@ export default function TeachersTab() {
       yearsQuery.data?.[0],
     [yearsQuery.data],
   );
-  const policyQuery = useAcademicPolicy(
-    institutionId,
-    activeAcademicYear?.id,
-  );
   const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
-  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
 
   const teachersQuery =
     useTeachers(institutionId);
+  const classesQuery = useClasses(institutionId);
   const subjectsQuery = useSubjects(institutionId);
+  const schedulingProfilesQuery = useTeacherSchedulingProfiles(institutionId, activeAcademicYear?.id ?? '');
+  const institutionAvailabilityQuery = useInstitutionTeacherAvailability(institutionId);
 
   const createMutation =
     useCreateTeacher();
@@ -143,8 +141,7 @@ export default function TeachersTab() {
     useSetTeacherActive();
   const academicSettingsMutation =
     useSaveTeacherAcademicSettings();
-  const availabilityMutation =
-    useSaveTeacherAvailability();
+  const schedulingMutation = useSaveTeacherSchedulingConfiguration();
   const schoolTimeSlotsQuery =
     useSchoolTimeSlots(institutionId);
 
@@ -158,6 +155,10 @@ export default function TeachersTab() {
 
   const [isSpreadsheetImportOpen, setIsSpreadsheetImportOpen] =
     useState(false);
+  const [isBulkAvailabilityPreviewOpen, setIsBulkAvailabilityPreviewOpen] = useState(false);
+  const [bulkTeacherIds, setBulkTeacherIds] = useState<string[]>([]);
+  const [bulkShifts, setBulkShifts] = useState<string[]>([]);
+  const [bulkDays, setBulkDays] = useState<number[]>([]);
 
   const [formData, setFormData] =
     useState<TeacherDraft>({
@@ -171,6 +172,25 @@ export default function TeachersTab() {
       subjectIds?: string[];
       primarySubjectId?: string;
     } | null>(null);
+
+  const activeTeacherConfigurationIds = useMemo(() => {
+    const profileIds = new Set((schedulingProfilesQuery.data ?? []).map((row) => row.teacher_profile_id));
+    const availabilityIds = new Set((institutionAvailabilityQuery.data ?? []).map((row) => row.teacher_profile_id));
+    return new Set([...profileIds, ...availabilityIds]);
+  }, [institutionAvailabilityQuery.data, schedulingProfilesQuery.data]);
+  const unconfiguredActiveTeachers = useMemo(
+    () => (teachersQuery.data ?? []).filter((teacher) => teacher.active && teacher.profiles?.active !== false && !activeTeacherConfigurationIds.has(teacher.profile_id)),
+    [activeTeacherConfigurationIds, teachersQuery.data],
+  );
+  const bulkAvailabilitySuggestions = useMemo(() => {
+    const chosenShifts = new Set(bulkShifts);
+    const chosenDays = new Set(bulkDays);
+    const slots = (schoolTimeSlotsQuery.data ?? []).filter((slot) => chosenShifts.has(slot.shift) && chosenDays.has(slot.day_of_week));
+    return suggestTeacherAvailabilityFromSchoolSlots(slots);
+  }, [bulkDays, bulkShifts, schoolTimeSlotsQuery.data]);
+  const bulkMissingShiftDays = useMemo(() => bulkShifts.flatMap((shift) => bulkDays
+    .filter((day) => !(schoolTimeSlotsQuery.data ?? []).some((slot) => slot.active && slot.shift === shift && slot.day_of_week === day))
+    .map((day) => `${shift}/${day}`)), [bulkDays, bulkShifts, schoolTimeSlotsQuery.data]);
 
   const [
     modalError,
@@ -186,26 +206,6 @@ export default function TeachersTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
-
-  const availabilitySuggestions = useMemo(() => {
-    const schoolSlots = schoolTimeSlotsQuery.data ?? [];
-    if (schoolSlots.length > 0) {
-      return suggestTeacherAvailabilityFromSchoolSlots(schoolSlots);
-    }
-
-    const timetable = policyQuery.data?.timetable;
-    return suggestTeacherAvailabilityFromPolicy({
-      shifts: enabledShifts,
-      schoolDays: timetable?.schoolDays ?? [1, 2, 3, 4, 5],
-      maxLessonsPerDay: timetable?.maxLessonsPerDay ?? 8,
-      breaks: scheduleBreaksQuery.data ?? [],
-    });
-  }, [
-    enabledShifts,
-    policyQuery.data?.timetable,
-    scheduleBreaksQuery.data,
-    schoolTimeSlotsQuery.data,
-  ]);
 
   const subjectCoverage = useMemo(() => {
     const activeTeachers = (teachersQuery.data ?? []).filter(
@@ -451,39 +451,53 @@ export default function TeachersTab() {
 
   async function handleApplySchoolAvailability(): Promise<void> {
     resetMessages();
-    const activeTeachers = (teachersQuery.data ?? []).filter(
-      (teacher) => teacher.active && teacher.profiles?.active !== false,
-    );
-    const suggestions = availabilitySuggestions;
-    const sourceLabel = (schoolTimeSlotsQuery.data ?? []).length > 0
-      ? 'os horários cadastrados da escola'
-      : 'a sugestão padrão da Política acadêmica';
-
-    if (activeTeachers.length === 0) {
-      setPageError('Nenhum perfil docente ativo encontrado nesta instituição.');
+    if (!activeAcademicYear?.id) {
+      setPageError('Selecione um ano letivo antes de aplicar a disponibilidade.');
       return;
     }
-    if (suggestions.length === 0) {
-      setPageError('Configure pelo menos um turno e um dia letivo na Política acadêmica antes de aplicar a disponibilidade.');
+    const selectedTeachers = unconfiguredActiveTeachers.filter((teacher) => bulkTeacherIds.includes(teacher.profile_id));
+    if (selectedTeachers.length === 0 || bulkShifts.length === 0 || bulkDays.length === 0 || bulkAvailabilitySuggestions.length === 0) {
+      setPageError('Selecione explicitamente docentes, turnos e dias com horários escolares configurados.');
       return;
     }
-
-    const confirmed = window.confirm(
-      `Aplicar ${sourceLabel} a ${activeTeachers.length} docentes? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
-    );
-    if (!confirmed) return;
+    if (bulkMissingShiftDays.length > 0) {
+      setPageError(`Não há horários da escola para todas as combinações selecionadas (${bulkMissingShiftDays.join(', ')}). Ajuste a seleção para evitar aplicar uma disponibilidade parcial.`);
+      return;
+    }
+    if (bulkAvailabilitySuggestions.some((window) => !window.shift)) {
+      setPageError('Não foi possível distinguir os turnos nos horários selecionados. Revise a grade da escola.');
+      return;
+    }
+    if (!window.confirm(`Criar uma configuração inicial EM REVISÃO para ${selectedTeachers.length} docentes sem disponibilidade nem perfil anual? Serão usados somente ${bulkShifts.join(', ')} nos dias ${bulkDays.join(', ')}. Nenhuma configuração existente será substituída.`)) return;
 
     let updatedCount = 0;
     try {
-      for (const teacher of activeTeachers) {
-        await availabilityMutation.mutateAsync({
+      for (const teacher of selectedTeachers) {
+        await schedulingMutation.mutateAsync({
           institution_id: institutionId,
           teacher_profile_id: teacher.profile_id,
-          availability: suggestions,
+          academic_year_id: activeAcademicYear.id,
+          profile: {
+            actuation_type: 'ESPECIALISTA',
+            authorized_shifts: bulkShifts,
+            authorized_stages: [],
+            authorized_grade_levels: [],
+            authorized_class_ids: [],
+            max_weekly_lessons: null,
+            max_daily_lessons: null,
+            contractual_weekly_minutes: null,
+            configuration_status: 'REVIEW_REQUIRED',
+          },
+          availability: bulkAvailabilitySuggestions,
+          only_if_unconfigured: true,
         });
         updatedCount += 1;
       }
-      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} docentes usando ${sourceLabel}. Revise as exceções antes de publicar a grade.`);
+      setFeedbackMessage(`Configuração inicial criada para ${updatedCount} docentes, somente nos turnos e dias escolhidos. Todas permanecem em revisão até a definição do escopo de turmas.`);
+      setIsBulkAvailabilityPreviewOpen(false);
+      setBulkTeacherIds([]);
+      setBulkShifts([]);
+      setBulkDays([]);
     } catch (error) {
       setPageError(
         `A aplicação foi interrompida após ${updatedCount} docentes. ${getErrorMessage(error)}`,
@@ -523,9 +537,10 @@ export default function TeachersTab() {
       {(pageError ||
         teachersQuery.isError ||
         subjectsQuery.isError ||
-        policyQuery.isError ||
         shiftSettingsQuery.isError ||
-        scheduleBreaksQuery.isError) && (
+        schedulingProfilesQuery.isError ||
+        institutionAvailabilityQuery.isError ||
+        classesQuery.isError) && (
         <div
           role="alert"
           className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
@@ -534,9 +549,10 @@ export default function TeachersTab() {
             getErrorMessage(
               teachersQuery.error ??
                 subjectsQuery.error ??
-                policyQuery.error ??
-                shiftSettingsQuery.error ??
-                scheduleBreaksQuery.error,
+              shiftSettingsQuery.error ??
+                schedulingProfilesQuery.error ??
+                institutionAvailabilityQuery.error ??
+                classesQuery.error,
             )}
         </div>
       )}
@@ -573,26 +589,37 @@ export default function TeachersTab() {
           </div>
           <button
             type="button"
-            onClick={() => void handleApplySchoolAvailability()}
+            onClick={() => { setBulkTeacherIds([]); setBulkShifts([]); setBulkDays([]); setIsBulkAvailabilityPreviewOpen((open) => !open); }}
             disabled={
-              availabilityMutation.isPending ||
+              schedulingMutation.isPending ||
               schoolTimeSlotsQuery.isLoading ||
               schoolTimeSlotsQuery.isError ||
               teachersQuery.isLoading ||
-              policyQuery.isLoading ||
+              schedulingProfilesQuery.isLoading ||
+              institutionAvailabilityQuery.isLoading ||
+              schedulingProfilesQuery.isError ||
+              institutionAvailabilityQuery.isError ||
+              !activeAcademicYear?.id ||
               shiftSettingsQuery.isLoading ||
-              scheduleBreaksQuery.isLoading ||
-              policyQuery.isError ||
-              shiftSettingsQuery.isError ||
-              scheduleBreaksQuery.isError
+              shiftSettingsQuery.isError
             }
             className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-800"
           >
-            {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos docentes ativos'}
+            {isBulkAvailabilityPreviewOpen ? 'Fechar prévia' : 'Preparar aplicação segura'}
           </button>
         </div>
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">Aplicação em lote é limitada a docentes sem configuração anual e sem qualquer disponibilidade ativa; não substitui registros existentes.</p>
         {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-300">Não foi possível carregar os horários da escola.</p>}
-        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700 dark:text-blue-300">Nenhum horário foi cadastrado. Será usada a sugestão da Política acadêmica.</p>}
+        {isBulkAvailabilityPreviewOpen && <div className="mt-4 space-y-4 rounded-xl border border-blue-200 bg-blue-50/50 p-4">
+          <div><h4 className="font-semibold text-slate-900 dark:text-white">Prévia — somente docentes sem configuração</h4><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">O salvamento cria um perfil anual em “Revisão necessária”; não libera a geração da grade e preserva disciplinas existentes.</p></div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <fieldset className="space-y-1"><legend className="mb-1 text-sm font-medium text-slate-800 dark:text-slate-100">Docentes elegíveis ({unconfiguredActiveTeachers.length})</legend><div className="max-h-44 space-y-1 overflow-y-auto rounded-lg border bg-white p-2">{unconfiguredActiveTeachers.length === 0 ? <p className="p-2 text-sm text-slate-500">Todos já têm alguma configuração ou disponibilidade.</p> : unconfiguredActiveTeachers.map((teacher) => <label key={teacher.profile_id} className="flex items-center gap-2 rounded p-1 text-sm"><input type="checkbox" checked={bulkTeacherIds.includes(teacher.profile_id)} onChange={(event) => setBulkTeacherIds((current) => event.target.checked ? [...current, teacher.profile_id] : current.filter((id) => id !== teacher.profile_id))} className="accent-blue-600" />{getTeacherName(teacher)}</label>)}</div></fieldset>
+            <div className="space-y-3"><fieldset><legend className="mb-1 text-sm font-medium text-slate-800 dark:text-slate-100">Turnos (nenhum pré-selecionado)</legend><div className="flex flex-wrap gap-2">{enabledShifts.map((shift) => <label key={shift} className="flex items-center gap-1 rounded border bg-white px-2 py-1 text-sm"><input type="checkbox" checked={bulkShifts.includes(shift)} onChange={(event) => setBulkShifts((current) => event.target.checked ? [...current, shift] : current.filter((item) => item !== shift))} className="accent-blue-600" />{shift}</label>)}</div></fieldset><fieldset><legend className="mb-1 text-sm font-medium text-slate-800 dark:text-slate-100">Dias (nenhum pré-selecionado)</legend><div className="flex flex-wrap gap-2">{[1, 2, 3, 4, 5, 6].map((day) => <label key={day} className="flex items-center gap-1 rounded border bg-white px-2 py-1 text-sm"><input type="checkbox" checked={bulkDays.includes(day)} onChange={(event) => setBulkDays((current) => event.target.checked ? [...current, day] : current.filter((item) => item !== day))} className="accent-blue-600" />{['', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][day]}</label>)}</div></fieldset></div>
+          </div>
+          <p className="text-sm text-slate-700 dark:text-slate-200">Prévia calculada: {bulkTeacherIds.length} docente(s), {bulkAvailabilitySuggestions.length} janela(s) por pessoa, {bulkShifts.length} turno(s), {bulkDays.length} dia(s). Turmas/etapa serão revisadas individualmente antes de liberar a grade.</p>
+          {bulkMissingShiftDays.length > 0 && <p role="alert" className="text-sm text-amber-800">Sem horários escolares em: {bulkMissingShiftDays.join(', ')}. Remova esses dias/turnos ou configure os horários antes de continuar.</p>}
+          <button type="button" onClick={() => void handleApplySchoolAvailability()} disabled={schedulingMutation.isPending || bulkTeacherIds.length === 0 || bulkAvailabilitySuggestions.length === 0 || bulkShifts.length === 0 || bulkDays.length === 0 || bulkMissingShiftDays.length > 0} className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:opacity-50">{schedulingMutation.isPending ? 'Aplicando…' : 'Confirmar para a seleção acima'}</button>
+        </div>}
       </section>
 
       <ListSearch
@@ -680,6 +707,9 @@ export default function TeachersTab() {
         <TeacherSpreadsheetImportModal
           institutionId={institutionId}
           subjects={subjectsQuery.data ?? []}
+          academicYearId={activeAcademicYear?.id}
+          classes={classesQuery.data ?? []}
+          enabledShifts={enabledShifts}
           onClose={() => setIsSpreadsheetImportOpen(false)}
           onImported={(result) => {
             void teachersQuery.refetch();
@@ -858,8 +888,11 @@ export default function TeachersTab() {
       {settingsTeacher && (
         <TeacherAcademicSettings
           institutionId={institutionId}
+          academicYearId={activeAcademicYear?.id ?? ''}
           teacherProfileId={settingsTeacher.profileId}
           teacherName={settingsTeacher.name}
+          enabledShifts={enabledShifts}
+          classes={classesQuery.data ?? []}
           initialSubjectIds={settingsTeacher.subjectIds}
           initialPrimarySubjectId={settingsTeacher.primarySubjectId}
           onClose={() => setSettingsTeacher(null)}

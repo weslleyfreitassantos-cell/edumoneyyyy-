@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import SpreadsheetImportModal from './SpreadsheetImportModal';
 import type { SubjectRow } from '../services/subjectService';
+import type { ClassRow } from '../services/classService';
 import {
   buildTeacherImportPreviews,
   importTeachers,
@@ -22,6 +23,9 @@ import {
 interface TeacherSpreadsheetImportModalProps {
   institutionId: string;
   subjects: SubjectRow[];
+  academicYearId?: string;
+  classes: ClassRow[];
+  enabledShifts: string[];
   onClose: () => void;
   onImported?: (result: ImportResult) => void;
 }
@@ -42,7 +46,7 @@ function PreviewTable({ previews }: { previews: Array<ImportPreview<TeacherImpor
   );
 }
 
-export default function TeacherSpreadsheetImportModal({ institutionId, subjects, onClose, onImported }: TeacherSpreadsheetImportModalProps) {
+export default function TeacherSpreadsheetImportModal({ institutionId, subjects, academicYearId, classes, enabledShifts, onClose, onImported }: TeacherSpreadsheetImportModalProps) {
   const [fileName, setFileName] = useState('');
   const [previews, setPreviews] = useState<Array<ImportPreview<TeacherImportPreviewData>>>([]);
   const [unknownHeaders, setUnknownHeaders] = useState<string[]>([]);
@@ -62,7 +66,7 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
     setResult(null);
     try {
       const parsed = await readSpreadsheetFile(file);
-      const built = buildTeacherImportPreviews(parsed, subjects);
+      const built = buildTeacherImportPreviews(parsed, subjects, { academicYearId, classes });
       setPreviews(built.previews);
       setUnknownHeaders(built.unknownHeaders);
     } catch (error) {
@@ -78,7 +82,7 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
     setIsImporting(true);
     setResult(null);
     try {
-      const imported = await importTeachers(institutionId, validPreviews, setProgress);
+      const imported = await importTeachers(institutionId, validPreviews, setProgress, { academicYearId });
       setResult(imported);
       onImported?.(imported);
     } finally {
@@ -92,7 +96,7 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
       title="Importar professores"
       description="Cadastre professores em lote e já vincule disciplinas e disponibilidade semanal para a geração da grade."
       requiredFields="Nome completo e e-mail. Disciplinas, telefone e disponibilidade são opcionais."
-      supportedFields={<><p><strong>Cadastro:</strong> nome completo, e-mail e telefone.</p><p className="mt-1"><strong>Acadêmico:</strong> disciplinas por nome, código ou ID e disciplina principal.</p><p className="mt-1"><strong>Disponibilidade:</strong> até 10 janelas com dia, início e fim. Dias aceitos: Segunda a Sábado ou 1 a 6.</p><p className="mt-1">A importação usa o mesmo convite de acesso e as mesmas tabelas de disciplinas/disponibilidade do cadastro manual.</p></>}
+      supportedFields={<><p><strong>Cadastro:</strong> nome completo, e-mail e telefone. Disciplinas são incluídas também no modelo mínimo.</p><p className="mt-1"><strong>Disponibilidade atual:</strong> até 10 janelas legadas; sem turno, ficam em revisão e não são interpretadas como todos os turnos.</p><p className="mt-1"><strong>Disponibilidade expandida:</strong> use “Janelas adicionais (Turno|Dia|Início|Fim)” com itens separados por ponto e vírgula, por exemplo <code>MATUTINO|Segunda|07:00|08:00;VESPERTINO|Segunda|13:00|14:00</code>, sem limite de 10.</p><p className="mt-1"><strong>Escopo anual opcional:</strong> atuação, etapas, turnos, séries, turmas (ID ou nome) e limites individuais. Toda configuração importada permanece em revisão até validação no cadastro docente.</p><p className="mt-1">Ano letivo: {academicYearId ? 'selecionado' : 'não selecionado'}. Turnos ativos: {enabledShifts.length ? enabledShifts.join(', ') : 'nenhum'}.</p></>}
       fileName={fileName}
       isParsing={isParsing}
       isImporting={isImporting}

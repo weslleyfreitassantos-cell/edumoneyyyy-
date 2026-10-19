@@ -3,8 +3,10 @@ import type {
   GeneratorCurriculumItem,
   GeneratorOffering,
   GeneratorTeacherSubject,
+  GeneratorTeacherSchedulingProfile,
 } from './index';
 import { normalizeAcademicShift } from '../academicShifts';
+import { isTeacherAuthorizedForOffering } from '../teacherScheduling';
 
 export { normalizeAcademicShift } from '../academicShifts';
 
@@ -24,6 +26,10 @@ interface AutomaticAssignmentInput {
   curriculumItems: GeneratorCurriculumItem[];
   subjectOfferings: GeneratorOffering[];
   teacherSubjects: GeneratorTeacherSubject[];
+  teacherSchedulingProfiles?: GeneratorTeacherSchedulingProfile[];
+  subjectLabels?: Record<string, string>;
+  requireTeacherSchedulingProfiles?: boolean;
+  maxTeacherLessonsPerWeek?: number;
   termIds: string[];
 }
 
@@ -43,8 +49,6 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
     ['09:40', '10:30'],
     ['10:50', '11:40'],
     ['11:40', '12:30'],
-    ['13:00', '13:50'],
-    ['13:50', '14:40'],
   ],
   VESPERTINO: [
     ['13:00', '13:50'],
@@ -57,11 +61,11 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
     ['19:40', '20:30'],
   ],
   NOTURNO: [
-    ['18:30', '19:20'],
-    ['19:20', '20:10'],
-    ['20:20', '21:10'],
-    ['21:10', '22:00'],
-    ['22:10', '23:00'],
+    ['18:50', '19:40'],
+    ['19:40', '20:30'],
+    ['20:40', '21:30'],
+    ['21:30', '22:20'],
+    ['22:30', '23:20'],
   ],
   INTEGRAL: [
     ['07:00', '07:50'],
@@ -126,10 +130,49 @@ export function planAutomaticAssignments(input: AutomaticAssignmentInput): Autom
         .filter((skill) => skill.subjectId === curriculum.subjectId)
         .map((skill) => skill.teacherProfileId),
     )];
+    const schedulingProfiles = input.teacherSchedulingProfiles ?? [];
+    const skillIdsByTeacher = new Map<string, Set<string>>();
+    for (const skill of activeSkills) {
+      const ids = skillIdsByTeacher.get(skill.teacherProfileId) ?? new Set<string>();
+      ids.add(skill.subjectId);
+      skillIdsByTeacher.set(skill.teacherProfileId, ids);
+    }
+    const classRecord = activeClasses.get(curriculum.classId);
+    const candidateIds = input.requireTeacherSchedulingProfiles
+      ? schedulingProfiles.map((profile) => profile.teacherProfileId)
+      : qualifiedTeacherIds;
+    const eligibleTeacherIds = candidateIds.filter((teacherProfileId) => {
+      const profile = schedulingProfiles.find((item) => item.teacherProfileId === teacherProfileId);
+      if (input.requireTeacherSchedulingProfiles && !profile) return false;
+      if (profile) {
+        const allowed = isTeacherAuthorizedForOffering({
+          profile,
+          classRecord: {
+            id: classRecord?.id ?? '',
+            institutionId: classRecord?.institutionId ?? '',
+            academicYearId: classRecord?.academicYearId,
+            gradeLevel: classRecord?.gradeLevel,
+            shift: classRecord?.shift,
+          },
+          subjectId: curriculum.subjectId,
+          subjectName: input.subjectLabels?.[curriculum.subjectId],
+          authorizedSubjectIds: skillIdsByTeacher.get(teacherProfileId) ?? new Set<string>(),
+        });
+        if (!allowed) return false;
+        const weeklyLimit = Math.min(
+          input.maxTeacherLessonsPerWeek ?? Number.MAX_SAFE_INTEGER,
+          profile.maxWeeklyLessons ?? input.maxTeacherLessonsPerWeek ?? Number.MAX_SAFE_INTEGER,
+        );
+        if (countTeacherWeeklyLoad(teacherProfileId, input, assignments) + curriculum.weeklyLessons > weeklyLimit) return false;
+        return true;
+      }
+      return !input.requireTeacherSchedulingProfiles &&
+        (qualifiedTeacherIds.length === 0 || qualifiedTeacherIds.includes(teacherProfileId));
+    });
     const existingTeacherId = offerings.find((offering) =>
-      qualifiedTeacherIds.length === 0 || qualifiedTeacherIds.includes(offering.teacherProfileId),
+      eligibleTeacherIds.includes(offering.teacherProfileId),
     )?.teacherProfileId;
-    const teacherProfileId = existingTeacherId ?? qualifiedTeacherIds.sort((left, right) =>
+    const teacherProfileId = existingTeacherId ?? eligibleTeacherIds.sort((left, right) =>
       countTeacherWeeklyLoad(left, input, assignments) -
       countTeacherWeeklyLoad(right, input, assignments) ||
       left.localeCompare(right),
