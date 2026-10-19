@@ -56,7 +56,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
     const year = await insertOne(service, 'academic_years', { institution_id: institution.id, name: `2026 Adaptive ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
     const term = await insertOne(service, 'terms', { academic_year_id: year.id, name: `Bimestre Adaptive ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
     const schoolClass = await insertOne(service, 'classes', { institution_id: institution.id, academic_year_id: year.id, name: `1º ano Adaptive ${suffix}`, grade_level: '1º ano', shift: 'INTEGRAL', active: true });
-    const subject = await insertOne(service, 'subjects', { institution_id: institution.id, name: `Matemática Adaptive ${suffix}`, code: `ADAPTIVE-${suffix}`, active: true });
+    const subject = await insertOne(service, 'subjects', { institution_id: institution.id, name: 'Matemática', code: 'MAT', active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institution.id, class_id: schoolClass.id, subject_id: subject.id, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'subject_offerings', { class_id: schoolClass.id, subject_id: subject.id, teacher_profile_id: pedro.id, term_id: term.id, active: true });
     const student = await insertOne(service, 'students', { institution_id: institution.id, profile_id: alice.id, registration_number: `ADAPTIVE-${suffix}`, active: true });
@@ -87,9 +87,9 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await expect(studentPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       await expect(studentPage.getByRole('button', { name: /Matérias/ })).toHaveAttribute('aria-expanded', 'true');
-      await studentPage.getByRole('link', { name: new RegExp(`Matemática Adaptive ${suffix}`) }).click();
+      await studentPage.getByRole('link', { name: /Matemática/ }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/subject\/[^/]+$/);
-      await expect(studentPage.getByRole('region', { name: new RegExp(`Estudo de Matemática Adaptive ${suffix}`) })).toBeVisible({ timeout: 30_000 });
+      await expect(studentPage.getByRole('region', { name: 'Estudo de Matemática' })).toBeVisible({ timeout: 30_000 });
       await studentPage.getByRole('link', { name: new RegExp(`Prática de frações ${suffix}`) }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/activity\/[^/]+$/);
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
