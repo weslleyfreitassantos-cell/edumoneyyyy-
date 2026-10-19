@@ -721,7 +721,7 @@ export default function Sidebar({
     ),
   );
   const brandName =
-    branding.displayName?.trim() || 'EduManager Pro';
+    branding.displayName?.trim() || 'Tec Escola';
   const brandLogoUrl =
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl

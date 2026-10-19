@@ -87,7 +87,7 @@ export default function ForgotPassword() {
   const brandingQuery = useResolvedBranding();
   const branding = brandingQuery.data ?? FALLBACK_BRANDING;
   const displayName =
-    brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
+    brandingQuery.data?.displayName ?? branding.displayName ?? 'Tec Escola';
 
   useEffect(
     () => applyDocumentBranding(branding),

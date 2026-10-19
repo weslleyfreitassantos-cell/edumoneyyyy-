@@ -18,7 +18,7 @@ afterEach(() => {
 });
 
 describe('BrandingLoadingGate', () => {
-  it('mantém as rotas montadas sob o carregamento do branding', () => {
+  it('aguarda a identidade inicial antes de montar as rotas', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: true,
       isError: false,
@@ -31,7 +31,7 @@ describe('BrandingLoadingGate', () => {
     );
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
-    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByText('Conteúdo da escola')).toBeNull();
   });
 
   it('mostra as rotas quando o branding já está pronto', () => {
@@ -48,7 +48,7 @@ describe('BrandingLoadingGate', () => {
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
   });
-  it('mantém a bolinha durante qualquer revalidação do branding', () => {
+  it('mantém as rotas visíveis durante uma revalidação em segundo plano', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: false,
       isFetching: true,
@@ -63,11 +63,11 @@ describe('BrandingLoadingGate', () => {
       </BrandingLoadingGate>,
     );
 
-    expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByRole('status', { name: /identidade visual/i })).toBeNull();
   });
 
-  it('mostra a ação de recuperação quando a consulta falha', () => {
+  it('mantém as rotas durante uma falha de revalidação com branding anterior', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: false,
       isError: true,
@@ -80,7 +80,26 @@ describe('BrandingLoadingGate', () => {
       </BrandingLoadingGate>,
     );
 
+    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+
+  it('mostra ação de recuperação quando a primeira consulta falha', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: false,
+      isError: true,
+      data: undefined,
+      refetch: vi.fn(),
+    } as never);
+
+    render(
+      <BrandingLoadingGate>
+        <div>Conteúdo da escola</div>
+      </BrandingLoadingGate>,
+    );
+
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();
     expect(screen.getByRole('alert')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /tentar novamente/i })).toBeTruthy();
   });
 });

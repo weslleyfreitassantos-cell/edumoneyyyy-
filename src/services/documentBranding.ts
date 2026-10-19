@@ -5,7 +5,9 @@ import {
   sanitizeBrandColor,
 } from './brandingValidation';
 
-export const fallbackDocumentTitle = 'EduManager Pro';
+export const fallbackDocumentTitle = 'Tec Escola';
+export const defaultFaviconHref =
+  '/icons/tecescola-favicon.png?v=tec-favicon-20261015';
 
 function getOrCreateFaviconLink(): HTMLLinkElement {
   const existing = document.querySelector<HTMLLinkElement>(
@@ -70,10 +72,8 @@ export function applyDocumentBranding(
 
   if (branding.faviconUrl) {
     favicon.href = branding.faviconUrl;
-  } else if (previousFaviconHref) {
-    favicon.href = previousFaviconHref;
   } else {
-    favicon.removeAttribute('href');
+    favicon.href = defaultFaviconHref;
   }
 
   return () => {
