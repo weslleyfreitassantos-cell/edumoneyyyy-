@@ -111,6 +111,7 @@ export const STUDENT_REQUIRED_IMPORT_HEADERS = [
 export const TEACHER_REQUIRED_IMPORT_HEADERS = [
   'Nome completo',
   'E-mail',
+  'Disciplinas',
 ] as const;
 
 const studentDocumentFields: Array<{ type: string; key: string }> = [
@@ -739,6 +740,7 @@ export const STUDENT_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = STUDENT_R
 export const TEACHER_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = {
   'Nome completo': 'João Silva',
   'E-mail': 'joao.silva@exemplo.com',
+  'Disciplinas': 'Matemática; Física',
 };
 
 export async function ensureSubjectsForTeacherImport(institutionId: string): Promise<SubjectRow[]> {

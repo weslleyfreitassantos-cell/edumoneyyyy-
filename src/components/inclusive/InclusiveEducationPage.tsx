@@ -21,7 +21,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { pedagogicalMonitoringService, type PedagogicalStudentSummary } from '../../services/pedagogicalMonitoringService';
-import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveAeeSessions, listInclusivePeiPlans, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusiveAeeSession, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusiveAeeSession, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
+import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveAeeSessions, listInclusivePeiPlans, listInclusiveProgressStudents, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusiveAeeSession, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusiveAeeSession, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
 import { inclusiveActivities, externalResources, type InclusiveActivity } from './inclusiveEducationCatalog';
 import { InclusiveIllustration, type InclusiveVisualKey } from './InclusiveIllustration';
 import { InclusivePrintableMaterial, printableMaterials } from './InclusivePrintableMaterial';
@@ -505,7 +505,8 @@ export default function InclusiveEducationPage() {
 
     let cancelled = false;
     setStudentsLoading(true);
-    void listInclusiveStudents(currentInstitutionId)
+    const loadStudents = current.id === 'progress' ? listInclusiveProgressStudents : listInclusiveStudents;
+    void loadStudents(currentInstitutionId)
       .then((nextStudents) => {
         if (!cancelled) setStudents(nextStudents);
       })
