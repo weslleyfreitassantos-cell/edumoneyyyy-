@@ -30,12 +30,16 @@ interface ProtectedRouteProps {
   children: ReactNode;
   allowedRoles?: DatabaseRole[];
   allowedPlatformRoles?: PlatformRole[];
+  deniedRoles?: DatabaseRole[];
+  deniedPlatformRoles?: PlatformRole[];
 }
 
 export function ProtectedRoute({
   children,
   allowedRoles,
   allowedPlatformRoles,
+  deniedRoles,
+  deniedPlatformRoles,
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
   const institutionContext =
@@ -75,6 +79,19 @@ export function ProtectedRoute({
   const effectiveDatabaseRole =
     institutionContext?.currentRole ??
     profile.role;
+
+  const hasDeniedRole = Boolean(
+    deniedRoles?.some(
+      (role) => role === profile.role || role === effectiveDatabaseRole,
+    ),
+  );
+  const hasDeniedPlatformRole = Boolean(
+    deniedPlatformRoles?.includes(profile.platform_role),
+  );
+
+  if (hasDeniedRole || hasDeniedPlatformRole) {
+    return <Navigate to={getProfileHome(profile)} replace />;
+  }
 
   const hasAllowedRole =
     !allowedRoles ||

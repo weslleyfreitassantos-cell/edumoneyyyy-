@@ -63,6 +63,8 @@ function createAuthState(
 function renderProtectedRoute(
     allowedRoles?: DatabaseRole[],
     allowedPlatformRoles?: PlatformRole[],
+    deniedRoles?: DatabaseRole[],
+    deniedPlatformRoles?: PlatformRole[],
 ) {
     render(
         <MemoryRouter initialEntries={['/protected']}>
@@ -83,11 +85,18 @@ function renderProtectedRoute(
                 />
 
                 <Route
+                    path="/platform"
+                    element={<div>Plataforma</div>}
+                />
+
+                <Route
                     path="/protected"
                     element={
                         <ProtectedRoute
                             allowedRoles={allowedRoles}
                             allowedPlatformRoles={allowedPlatformRoles}
+                            deniedRoles={deniedRoles}
+                            deniedPlatformRoles={deniedPlatformRoles}
                         >
                             <div>Conteúdo protegido</div>
                         </ProtectedRoute>
@@ -267,5 +276,47 @@ describe('ProtectedRoute', () => {
         expect(
             screen.getByText('Painel inicial'),
         ).toBeTruthy();
+    });
+
+    it('bloqueia ADMIN mesmo quando uma rota define papéis permitidos', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: adminProfile,
+            }),
+        );
+
+        renderProtectedRoute(
+            ['DIRECTOR', 'SECRETARY', 'TEACHER'],
+            undefined,
+            ['ADMIN'],
+            ['SUPER_ADMIN'],
+        );
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('bloqueia SUPER_ADMIN mesmo quando o perfil tem papel institucional permitido', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: {
+                    ...adminProfile,
+                    role: 'DIRECTOR',
+                    platform_role: 'SUPER_ADMIN',
+                },
+            }),
+        );
+
+        renderProtectedRoute(
+            ['DIRECTOR', 'SECRETARY', 'TEACHER'],
+            undefined,
+            ['ADMIN'],
+            ['SUPER_ADMIN'],
+        );
+
+        expect(screen.getByText('Plataforma')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
     });
 });

@@ -189,6 +189,32 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
+  it('oculta Educação Inclusiva para ADMIN e SUPER_ADMIN', () => {
+    renderSidebar();
+
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      profile: {
+        ...baseProfile,
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentUser: {
+        ...baseUser,
+        role: 'super_admin',
+        subtitle: 'Super Admin',
+      },
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+  });
+
   it('renderiza rotas reais do ADMIN sem expor a visao geral escolar', () => {
     renderSidebar();
 

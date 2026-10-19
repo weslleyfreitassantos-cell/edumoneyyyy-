@@ -945,7 +945,10 @@ export default function Sidebar({
   function renderInclusiveEducationNavigation() {
     if (
       !currentInstitutionId ||
-      !['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+      profile.platform_role === 'SUPER_ADMIN' ||
+      profile.role === 'ADMIN' ||
+      currentUser.role === 'admin' ||
+      !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
     ) return null;
     const isCollapsed = !isInclusiveEducationOpen;
     const childGroupId = 'sidebar-inclusive-education';

@@ -12,7 +12,7 @@ const startMigration = readFileSync(
 const migration = readFileSync(
   new URL('./20261015000100_enem_provider_pool_random_sort_timeout_fix.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 function extractReadyPool(source: string): string {
   return source.match(
