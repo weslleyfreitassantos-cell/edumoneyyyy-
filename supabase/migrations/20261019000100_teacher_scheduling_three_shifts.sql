@@ -414,6 +414,13 @@ begin
      and scheduling.academic_year_id = version_row.academic_year_id
     where e.version_id = p_version_id and e.institution_id = p_institution_id and e.active is true
   loop
+    -- Existing institutions may still have timetable entries from before
+    -- scheduling profiles existed. Keep manual publish backward-compatible;
+    -- automatic generation independently requires a reviewed profile.
+    if item.configuration_status is null then
+      continue;
+    end if;
+
     if item.configuration_status is distinct from 'READY' then
       diagnostics := diagnostics || jsonb_build_array(jsonb_build_object(
         'code', 'TEACHER_PROFILE_REVIEW_REQUIRED',
