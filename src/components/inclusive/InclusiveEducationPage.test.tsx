@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { pedagogicalMonitoringService } from '../../services/pedagogicalMonitoringService';
 import {
   listInclusiveAeePlans,
   listInclusiveAeeSessions,
@@ -47,6 +48,7 @@ const mockedListAeeSessions = vi.mocked(listInclusiveAeeSessions);
 const mockedSavePei = vi.mocked(saveInclusivePeiPlan);
 const mockedSaveAee = vi.mocked(saveInclusiveAeePlan);
 const mockedSaveAeeSession = vi.mocked(saveInclusiveAeeSession);
+const mockedGetInstitutionMonitoring = vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring);
 
 function renderInclusivePage(path: string) {
   return render(
@@ -81,6 +83,34 @@ async function chooseAuthorizedStudent() {
 }
 
 describe('InclusiveEducationPage PEI/AEE access', () => {
+  it('uses the searchable student list to open pedagogical progress', async () => {
+    mockedListStudents.mockResolvedValue([
+      { id: 'student-1', name: 'Ana Souza' },
+      { id: 'student-2', name: 'Davi Mendes' },
+    ]);
+    mockedGetInstitutionMonitoring.mockResolvedValue({
+      students: [],
+    } as Awaited<ReturnType<typeof pedagogicalMonitoringService.getInstitutionMonitoring>>);
+
+    renderInclusivePage('/inclusive-education/progress');
+
+    const search = await screen.findByRole('textbox', {
+      name: 'Pesquisar em estudantes para consultar evolução',
+    });
+    expect(screen.queryByLabelText('Estudante para consultar evolução')).toBeNull();
+    fireEvent.change(search, { target: { value: 'Davi' } });
+
+    fireEvent.click(await screen.findByRole('option', { name: 'Davi Mendes' }));
+
+    await waitFor(() => {
+      expect(mockedGetInstitutionMonitoring).toHaveBeenCalledWith(
+        'institution-1',
+        { studentId: 'student-2' },
+      );
+    });
+    expect(await screen.findByText('Nenhum registro de evolução disponível')).toBeTruthy();
+  });
+
   it('loads an authorized student and saves a PEI draft from the interactive form', async () => {
     renderInclusivePage('/inclusive-education/pei');
 
