@@ -145,11 +145,13 @@ describe('StudyCenterPage', () => {
     fireEvent.click(toggle);
 
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('textbox', { name: 'Pesquisar matéria' })).toBeNull();
     expect(screen.queryByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeNull();
 
     fireEvent.click(toggle);
 
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('textbox', { name: 'Pesquisar matéria' })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
   });
 

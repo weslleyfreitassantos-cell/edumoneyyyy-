@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Check, Info, Loader2, Search, Trash2, X } from 'lucide-react';
+import { Check, ChevronDown, Info, Loader2, Search, Trash2, X } from 'lucide-react';
 
 import {
   useApplyCurriculumTemplate,
@@ -9,6 +9,7 @@ import {
 } from '../../hooks/useAcademicAutomation';
 import type { ClassRow } from '../../services/classService';
 import type { SubjectRow } from '../../services/subjectService';
+import { getClassDisplayName } from '../../lib/academic/classNaming';
 
 interface CurriculumTemplatePanelProps {
   institutionId: string;
@@ -43,6 +44,7 @@ export default function CurriculumTemplatePanel({
   const [selectedClassIds, setSelectedClassIds] = useState<string[]>([]);
   const [selectedSubjectIds, setSelectedSubjectIds] = useState<string[]>([]);
   const [subjectConfigs, setSubjectConfigs] = useState<Record<string, TemplateItemDraft>>({});
+  const [expandedTemplateIds, setExpandedTemplateIds] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,7 +67,9 @@ export default function CurriculumTemplatePanel({
     const query = classSearch.trim().toLocaleLowerCase('pt-BR');
     if (!query) return activeClasses;
     return activeClasses.filter((classRecord) =>
-      classRecord.name.toLocaleLowerCase('pt-BR').includes(query),
+      getClassDisplayName(classRecord.name, classRecord.shift)
+        .toLocaleLowerCase('pt-BR')
+        .includes(query),
     );
   }, [activeClasses, classSearch]);
   const templates = templatesQuery.data ?? [];
@@ -213,6 +217,14 @@ export default function CurriculumTemplatePanel({
       filteredClasses.map((classRecord) => classRecord.id),
       selectedClassIds,
       setSelectedClassIds,
+    );
+  }
+
+  function toggleTemplate(templateId: string): void {
+    setExpandedTemplateIds((current) =>
+      current.includes(templateId)
+        ? current.filter((id) => id !== templateId)
+        : [...current, templateId],
     );
   }
 
@@ -530,7 +542,7 @@ export default function CurriculumTemplatePanel({
                     }
                     className="h-4 w-4 rounded border-[#98a2b3] text-[#005bbf] focus:ring-[#005bbf]"
                   />
-                  {classRecord.name}
+                  {getClassDisplayName(classRecord.name, classRecord.shift)}
                 </label>
               ))}
               {filteredClasses.length === 0 && (
@@ -551,44 +563,88 @@ export default function CurriculumTemplatePanel({
               </div>
               <div className="mt-2 space-y-2">
                 {templates.map((template) => (
-                  <div
-                    key={template.id}
-                    className="flex items-center justify-between gap-3 rounded-lg bg-[#f8faff] px-3 py-2 text-sm"
-                  >
-                    <span className="min-w-0 truncate font-medium text-[#344054]">
-                      {template.name}
-                    </span>
-                    <div className="flex shrink-0 items-center gap-3">
+                  <div key={template.id} className="overflow-hidden rounded-lg bg-[#f8faff] text-sm">
+                    <div className="flex items-center gap-2 px-3 py-2">
                       <button
                         type="button"
-                        onClick={() => void applyTemplate(template.id)}
-                        disabled={
-                          applyMutation.isPending || selectedClassIds.length === 0
-                        }
-                        className="inline-flex items-center gap-1 font-semibold text-[#005bbf] hover:underline disabled:text-[#98a2b3] disabled:no-underline"
+                        onClick={() => toggleTemplate(template.id)}
+                        aria-expanded={expandedTemplateIds.includes(template.id)}
+                        aria-controls={`curriculum-template-classes-${template.id}`}
+                        className="flex min-w-0 flex-1 items-center gap-2 text-left text-[#344054] hover:text-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]"
                       >
-                        <Check className="h-4 w-4" aria-hidden="true" />
-                        Aplicar
+                        <ChevronDown
+                          className={`h-4 w-4 shrink-0 transition-transform ${expandedTemplateIds.includes(template.id) ? 'rotate-180' : ''}`}
+                          aria-hidden="true"
+                        />
+                        <span className="min-w-0 truncate font-medium">{template.name}</span>
+                        <span className="shrink-0 text-xs text-[#667085]">
+                          ({template.applied_class_ids.length} {template.applied_class_ids.length === 1 ? 'turma' : 'turmas'})
+                        </span>
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => void deleteTemplate(template.id, template.name)}
-                        disabled={deleteMutation.isPending}
-                        aria-label={`Excluir modelo ${template.name}`}
-                        title="Excluir modelo"
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-md text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
-                      >
-                        {deleteMutation.isPending &&
-                        deleteMutation.variables?.template_id === template.id ? (
-                          <span
-                            className="h-4 w-4 animate-spin rounded-full border-2 border-red-200 border-t-red-600"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          <Trash2 className="h-4 w-4" aria-hidden="true" />
-                        )}
-                      </button>
+                      <div className="flex shrink-0 items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => void applyTemplate(template.id)}
+                          disabled={
+                            applyMutation.isPending || selectedClassIds.length === 0
+                          }
+                          className="inline-flex items-center gap-1 font-semibold text-[#005bbf] hover:underline disabled:text-[#98a2b3] disabled:no-underline"
+                        >
+                          <Check className="h-4 w-4" aria-hidden="true" />
+                          Aplicar
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void deleteTemplate(template.id, template.name)}
+                          disabled={deleteMutation.isPending}
+                          aria-label={`Excluir modelo ${template.name}`}
+                          title="Excluir modelo"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-md text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          {deleteMutation.isPending &&
+                          deleteMutation.variables?.template_id === template.id ? (
+                            <span
+                              className="h-4 w-4 animate-spin rounded-full border-2 border-red-200 border-t-red-600"
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            <Trash2 className="h-4 w-4" aria-hidden="true" />
+                          )}
+                        </button>
+                      </div>
                     </div>
+                    {expandedTemplateIds.includes(template.id) && (
+                      <div
+                        id={`curriculum-template-classes-${template.id}`}
+                        className="border-t border-[#e2e8f0] px-3 py-2.5"
+                      >
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[#667085]">
+                          Turmas com esta matriz
+                        </p>
+                        {template.applied_class_ids.length === 0 ? (
+                          <p className="text-xs text-[#667085]">Nenhuma turma vinculada.</p>
+                        ) : (
+                          <ul className="space-y-1.5 text-xs text-[#475467]">
+                            {template.applied_class_ids.map((classId) => {
+                              const classRecord = classes.find((item) => item.id === classId);
+                              const className = classRecord
+                                ? getClassDisplayName(classRecord.name, classRecord.shift)
+                                : 'Turma não encontrada';
+                              const yearName = classRecord?.academic_year_name;
+                              return (
+                                <li key={classId} className="flex items-start gap-2">
+                                  <span className="mt-0.5 text-[#005bbf]" aria-hidden="true">•</span>
+                                  <span>
+                                    {className}
+                                    {yearName ? ` · ${yearName}` : ''}
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
                 {templatesQuery.isLoading && (

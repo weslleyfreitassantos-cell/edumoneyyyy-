@@ -203,6 +203,17 @@ describe("SimulationPage", () => {
     );
   });
 
+  it("ignores duplicate clicks while the start request is unresolved", () => {
+    state.start.mutateAsync.mockReturnValue(new Promise(() => undefined));
+    renderPage();
+
+    const button = screen.getByRole("button", { name: "Começar prática" });
+    fireEvent.click(button);
+    fireEvent.click(button);
+
+    expect(state.start.mutateAsync).toHaveBeenCalledTimes(1);
+  });
+
   it.each([10, 45])(
     "keeps the question navigator in one horizontal row with %i questions",
     async (questionCount) => {

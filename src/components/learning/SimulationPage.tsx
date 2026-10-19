@@ -363,6 +363,7 @@ export default function SimulationPage() {
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
+  const startLockRef = useRef(false);
   const saveAnswers = useSaveEnemSimulationAnswers();
   const saveNavigation = useSaveLearningSimulationNavigation();
   const submit = useSubmitEnemSimulation(
@@ -622,7 +623,9 @@ export default function SimulationPage() {
     );
 
   const begin = () => {
+    if (start.isPending || startLockRef.current) return;
     setStartError(false);
+    startLockRef.current = true;
     void start
       .mutateAsync({
         simulationId: simulation.id,
@@ -636,7 +639,10 @@ export default function SimulationPage() {
         setNavigationStatus("idle");
         setFailedStatementAssets({});
       })
-      .catch(() => setStartError(true));
+      .catch(() => setStartError(true))
+      .finally(() => {
+        startLockRef.current = false;
+      });
   };
 
   const answerQuestion = (value: string) => {

@@ -10,15 +10,7 @@ export default function BrandingLoadingGate({
 }) {
   const brandingQuery = useResolvedBranding();
 
-  if (brandingQuery.isLoading) {
-    return (
-      <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
-        <div role="status" aria-label="Carregando identidade visual">
-          <LoaderCircle className="h-7 w-7 animate-spin text-[#005bbf]" aria-hidden="true" />
-        </div>
-      </main>
-    );
-  }
+  const waitingForBranding = brandingQuery.isLoading || brandingQuery.isFetching;
 
   if (brandingQuery.isError) {
     return (
@@ -39,5 +31,16 @@ export default function BrandingLoadingGate({
     );
   }
 
-  return children;
+  return (
+    <>
+      {children}
+      {waitingForBranding && (
+        <main className="fixed inset-0 z-[9999] grid place-items-center bg-[#f3f6fb] dark:bg-slate-950">
+          <div role="status" aria-label="Carregando identidade visual">
+            <LoaderCircle className="h-7 w-7 animate-spin text-[#005bbf]" aria-hidden="true" />
+          </div>
+        </main>
+      )}
+    </>
+  );
 }

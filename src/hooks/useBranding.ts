@@ -214,6 +214,7 @@ export function useResolvedBranding(
     retry: false,
     staleTime: PUBLIC_BRANDING_STALE_TIME,
     gcTime: 1000 * 60 * 60,
+    refetchOnMount: 'always',
   });
 
   // Never paint a cached response while the current hostname is being checked.

@@ -45,7 +45,7 @@ const defaultForm: FormState = {
   academicYearId: '',
   count: '2',
   gradeLevel: '',
-  shift: '',
+  shift: 'MATUTINO',
   capacity: '30',
   templateId: '',
   assignTeachers: true,
@@ -106,6 +106,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
           Object.fromEntries(
             Object.entries(presetCounts).map(([key, value]) => [key, Number(value)]),
           ),
+          formData.shift,
         ).flatMap((definition) => definition.names);
       }
 
@@ -113,11 +114,11 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
         ? getAcademicLevelLabel(formData.gradeLevel)
         : '';
 
-      return buildClassBatchNames(baseName, count);
+      return buildClassBatchNames(baseName, count, formData.shift);
     } catch {
       return [];
     }
-  }, [count, formData.gradeLevel, mode, presetCounts]);
+  }, [count, formData.gradeLevel, formData.shift, mode, presetCounts]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]): void {
     setFormData((current) => ({ ...current, [key]: value }));
@@ -252,7 +253,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
             <div className="max-w-xs">
               <label htmlFor="class-automation-count" className="block text-sm font-medium text-gray-700">Quantidade de turmas</label>
               <input id="class-automation-count" type="number" min="1" max="26" step="1" value={formData.count} onChange={(event) => update('count', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" required />
-              <p className="mt-1 text-xs text-gray-500">As turmas serão identificadas pela série selecionada, com sufixos A, B, C quando necessário.</p>
+              <p className="mt-1 text-xs text-gray-500">As turmas serão identificadas pela série, pela letra da seção e pelo turno: M (manhã), V (tarde), I (integral) ou N (noite).</p>
             </div>
           )}
 
