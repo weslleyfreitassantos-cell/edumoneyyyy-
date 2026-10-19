@@ -56,6 +56,10 @@ import StudentSubjectPage from './StudentSubjectPage';
 
 afterEach(() => {
   cleanup();
+  state.subjects = [
+    { id: 'subject-math', name: 'Matemática' },
+    { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+  ];
   state.activities = [];
   state.adaptiveTarget = null;
   state.guidedSession = null;
@@ -67,9 +71,9 @@ afterEach(() => {
   state.startRecommendedStudy.mockReset().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' });
 });
 
-function renderPage() {
+function renderPage(initialEntry = '/student/study') {
   return render(
-    <MemoryRouter initialEntries={['/student/study']}>
+    <MemoryRouter initialEntries={[initialEntry]}>
       <Routes>
         <Route path="/student/study" element={<StudyCenterPage />} />
         <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
@@ -115,6 +119,38 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getAllByRole('link', { name: /Matemática/ }).some((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toBe(true);
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
+  });
+
+  it('exibe somente componentes padrão da BNCC nos cartões', () => {
+    state.subjects = [
+      { id: 'subject-math', name: 'Matemática' },
+      { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+      { id: 'subject-life-project', name: 'Projeto de Vida' },
+      { id: 'subject-writing', name: 'Redação' },
+      { id: 'subject-digital-culture', name: 'Cultura Digital' },
+    ];
+
+    renderPage();
+
+    const subjectRegion = screen.getByRole('region', { name: 'Matérias' });
+    const subjectLinks = Array.from(subjectRegion.querySelectorAll('a[href^="/student/study/subject/"]'));
+    expect(subjectLinks.map((link) => link.getAttribute('href')).sort()).toEqual([
+      '/student/study/subject/subject-math',
+      '/student/study/subject/subject-portuguese',
+    ]);
+    expect(screen.getByText('2 matérias disponíveis')).toBeTruthy();
+  });
+
+  it('bloqueia links antigos para matérias fora do currículo padrão', () => {
+    state.subjects = [
+      { id: 'subject-life-project', name: 'Projeto de Vida' },
+      { id: 'subject-math', name: 'Matemática' },
+    ];
+
+    renderPage('/student/study/subject/subject-life-project');
+
+    expect(screen.getByText('Esta matéria não está disponível para você.')).toBeTruthy();
+    expect(screen.queryByRole('region', { name: 'Estudo de Projeto de Vida' })).toBeNull();
   });
 
   it('inicia a preparação para o ENEM expandida e permite recolher e reabrir', () => {

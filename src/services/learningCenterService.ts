@@ -13,6 +13,7 @@ export const SUPPORTED_ENEM_CONTENT_REVISIONS = new Set([
 export interface LearningSubject {
   id: string;
   name: string;
+  code?: string | null;
 }
 
 export interface LearningUnit {
@@ -919,7 +920,7 @@ export const learningCenterService = {
     read<LearningSubject[]>(
       supabase
         .from('subjects')
-        .select('id,name')
+        .select('id,name,code')
         .eq('institution_id', institutionId)
         .eq('active', true)
         .order('name'),
