@@ -108,7 +108,7 @@ describe('updateResolvedPublicBrandingCache', () => {
 });
 
 describe('useResolvedBranding', () => {
-  it('revalida a identidade e não expõe branding em cache durante a busca', async () => {
+  it('reutiliza o branding do mesmo host sem forçar nova busca a cada montagem', async () => {
     const host = 'escola.example.com';
     const readyBranding: PublicBranding = {
       ...staleBranding,
@@ -137,9 +137,8 @@ describe('useResolvedBranding', () => {
       { wrapper },
     );
 
-    expect(second.result.current.data).toBeUndefined();
-    expect(resolveSpy).toHaveBeenCalledTimes(2);
-    await waitFor(() => expect(second.result.current.data).toEqual(readyBranding));
+    expect(second.result.current.data).toEqual(readyBranding);
+    expect(resolveSpy).toHaveBeenCalledTimes(1);
 
     first.unmount();
     second.unmount();
