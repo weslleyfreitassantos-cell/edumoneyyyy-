@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import { cleanup, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { useResolvedBranding } from '../../hooks/useBranding';
@@ -12,23 +13,41 @@ vi.mock('../../hooks/useBranding', () => ({
 
 const mockedUseResolvedBranding = vi.mocked(useResolvedBranding);
 
+function renderGate(initialEntry: string) {
+  return render(
+    <MemoryRouter initialEntries={[initialEntry]}>
+      <BrandingLoadingGate>
+        <div>Conteúdo da escola</div>
+      </BrandingLoadingGate>
+    </MemoryRouter>,
+  );
+}
+
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
 
 describe('BrandingLoadingGate', () => {
-  it('aguarda a identidade inicial antes de montar as rotas', () => {
+  it('mantém as rotas utilizáveis enquanto a identidade inicial carrega', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: true,
       isError: false,
     } as never);
 
-    render(
-      <BrandingLoadingGate>
-        <div>Conteúdo da escola</div>
-      </BrandingLoadingGate>,
-    );
+    renderGate('/login');
+
+    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByRole('status', { name: /identidade visual/i })).toBeNull();
+  });
+
+  it('continua aguardando identidade nas rotas internas', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: true,
+      isError: false,
+    } as never);
+
+    renderGate('/dashboard');
 
     expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
     expect(screen.queryByText('Conteúdo da escola')).toBeNull();
@@ -40,11 +59,7 @@ describe('BrandingLoadingGate', () => {
       isError: false,
     } as never);
 
-    render(
-      <BrandingLoadingGate>
-        <div>Conteúdo da escola</div>
-      </BrandingLoadingGate>,
-    );
+    renderGate('/dashboard');
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
   });
@@ -57,11 +72,7 @@ describe('BrandingLoadingGate', () => {
       data: { scope: 'INSTITUTION' },
     } as never);
 
-    render(
-      <BrandingLoadingGate>
-        <div>Conteúdo da escola</div>
-      </BrandingLoadingGate>,
-    );
+    renderGate('/dashboard');
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
     expect(screen.queryByRole('status', { name: /identidade visual/i })).toBeNull();
@@ -74,17 +85,13 @@ describe('BrandingLoadingGate', () => {
       data: { scope: 'GLOBAL' },
     } as never);
 
-    render(
-      <BrandingLoadingGate>
-        <div>Conteúdo da escola</div>
-      </BrandingLoadingGate>,
-    );
+    renderGate('/login');
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
     expect(screen.queryByRole('alert')).toBeNull();
   });
 
-  it('mostra ação de recuperação quando a primeira consulta falha', () => {
+  it('mantém as rotas utilizáveis quando a primeira consulta falha', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: false,
       isError: true,
@@ -92,14 +99,9 @@ describe('BrandingLoadingGate', () => {
       refetch: vi.fn(),
     } as never);
 
-    render(
-      <BrandingLoadingGate>
-        <div>Conteúdo da escola</div>
-      </BrandingLoadingGate>,
-    );
+    renderGate('/login');
 
-    expect(screen.queryByText('Conteúdo da escola')).toBeNull();
-    expect(screen.getByRole('alert')).toBeTruthy();
-    expect(screen.getByRole('button', { name: /tentar novamente/i })).toBeTruthy();
+    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByRole('alert')).toBeNull();
   });
 });

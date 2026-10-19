@@ -9,6 +9,20 @@ export const fallbackDocumentTitle = 'Tec Escola';
 export const defaultFaviconHref =
   '/icons/tecescola-favicon.png?v=tec-favicon-20261015';
 
+export function applyDocumentTitle(
+  branding: PublicBranding,
+  titleFallback = fallbackDocumentTitle,
+): void {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  document.title =
+    branding.documentTitle?.trim() ||
+    branding.displayName?.trim() ||
+    titleFallback;
+}
+
 function getOrCreateFaviconLink(): HTMLLinkElement {
   const existing = document.querySelector<HTMLLinkElement>(
     'link[rel="icon"]',
@@ -57,8 +71,7 @@ export function applyDocumentBranding(
     DEFAULT_BRAND_SECONDARY_COLOR,
   );
 
-  document.title =
-    branding.displayName?.trim() || titleFallback;
+  applyDocumentTitle(branding, titleFallback);
   document.documentElement.style.setProperty(
     '--brand-primary',
     primaryColor,

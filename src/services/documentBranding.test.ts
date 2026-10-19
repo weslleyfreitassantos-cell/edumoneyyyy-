@@ -8,6 +8,7 @@ import {
 } from 'vitest';
 
 import {
+  applyDocumentTitle,
   applyDocumentBranding,
   defaultFaviconHref,
 } from './documentBranding';
@@ -62,6 +63,35 @@ describe('applyDocumentBranding', () => {
       )?.href,
     ).toContain('/favicon-old.png');
   });
+
+  it('prioriza o nome da instituição no título da aba sem alterar o nome de exibição', () => {
+    applyDocumentBranding({
+      scope: 'INSTITUTION',
+      documentTitle: 'Colégio Helita Vieira',
+      displayName: 'Portal Acadêmico',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    });
+
+    expect(document.title).toBe('Colégio Helita Vieira');
+  });
+
+  it('permite atualizar o título da instituição antes de carregar imagens de marca', () => {
+    applyDocumentTitle({
+      scope: 'INSTITUTION',
+      documentTitle: 'Colégio Helita Vieira',
+      displayName: 'Portal Acadêmico',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    });
+
+    expect(document.title).toBe('Colégio Helita Vieira');
+  });
+
   it('usa Tec Escola quando a identidade ainda nao tem nome', () => {
     applyDocumentBranding({
       scope: 'FALLBACK',
