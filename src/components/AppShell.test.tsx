@@ -240,6 +240,24 @@ describe('getRouteVisualContext', () => {
       title: '',
     });
     expect(
+      getRouteVisualContext(
+        '/inclusive-education/aee-paee',
+        'director',
+      ),
+    ).toEqual({
+      section: 'Educação Inclusiva',
+      title: 'AEE / PAEE',
+    });
+    expect(
+      getRouteVisualContext(
+        '/inclusive-education/materials/rotina-visual',
+        'director',
+      ),
+    ).toEqual({
+      section: 'Educação Inclusiva',
+      title: 'Materiais para Download',
+    });
+    expect(
       getRouteVisualContext('/dashboard', 'parent'),
     ).toEqual({
       section: 'Família',
@@ -624,6 +642,36 @@ describe('AppShell', () => {
     expect(backLink.getAttribute('href')).toBe(
       '/platform',
     );
+  });
+
+  it('preserva o nome da instituição no Header em rotas de Educação Inclusiva', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        currentInstitution: firstInstitution.institution,
+        currentInstitutionId: firstInstitution.institution.id,
+      },
+    });
+
+    renderShell('/inclusive-education/aee-paee');
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Escola do Saber',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getAllByText('Educação Inclusiva').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.queryByRole('heading', {
+        name: 'Dashboard',
+      }),
+    ).toBeNull();
   });
 
   it('oculta seletor para ADMIN institucional', () => {
