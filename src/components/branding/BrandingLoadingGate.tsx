@@ -22,7 +22,7 @@ export default function BrandingLoadingGate({
       location.pathname.startsWith(`${route}/`),
   );
 
-  if (brandingQuery.isLoading && !brandingQuery.data && !isPublicAuthRoute) {
+  if (brandingQuery.isInitialBrandingLoading && !isPublicAuthRoute) {
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <div role="status" aria-label="Carregando identidade visual">

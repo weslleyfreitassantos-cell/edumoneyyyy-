@@ -37,6 +37,7 @@ const brandingMock = vi.hoisted(() => ({
     secondaryColor: string;
   },
   isLoading: false,
+  isInitialBrandingLoading: false,
 }));
 
 vi.mock('../contexts/AuthContext', () => ({
@@ -51,6 +52,7 @@ vi.mock('../hooks/useBranding', () => ({
   useResolvedBranding: () => ({
     data: brandingMock.data,
     isLoading: brandingMock.isLoading,
+    isInitialBrandingLoading: brandingMock.isInitialBrandingLoading,
   }),
 }));
 
@@ -89,6 +91,7 @@ describe('Login', () => {
     authMock.signOut.mockResolvedValue(undefined);
     brandingMock.data = null;
     brandingMock.isLoading = false;
+    brandingMock.isInitialBrandingLoading = false;
   });
 
   afterEach(() => {
@@ -182,6 +185,7 @@ describe('Login', () => {
 
   it('oculta o login inteiro e mostra a bolinha durante o carregamento inicial do branding', () => {
     brandingMock.isLoading = true;
+    brandingMock.isInitialBrandingLoading = true;
 
     renderLogin();
 
@@ -190,6 +194,27 @@ describe('Login', () => {
     ).toBeTruthy();
     expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
     expect(screen.queryByRole('button', { name: /Entrar no sistema/i })).toBeNull();
+  });
+
+  it('mantem o login oculto enquanto os assets do cache ainda estao carregando', () => {
+    brandingMock.data = {
+      scope: 'INSTITUTION',
+      displayName: 'Colégio Azul',
+      logoUrl: 'https://cdn.example.com/logo.png',
+      faviconUrl: null,
+      loginBackgroundUrl: 'https://cdn.example.com/background.png',
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    };
+    brandingMock.isInitialBrandingLoading = true;
+
+    renderLogin();
+
+    expect(
+      screen.getByRole('status', { name: /carregando identidade visual/i }),
+    ).toBeTruthy();
+    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
+    expect(screen.queryByRole('img', { name: /Logo de Colégio Azul/i })).toBeNull();
   });
 
   it('continua permitindo login se a consulta inicial de branding falhar', () => {
