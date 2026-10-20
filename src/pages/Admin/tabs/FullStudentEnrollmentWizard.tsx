@@ -32,6 +32,7 @@ import {
   createStudentDocumentSignedUrl,
   STUDENT_DOCUMENT_ACCEPT,
 } from '../../../services/studentDocumentService';
+import { registerStudentForInclusiveEducation } from '../../../services/inclusiveEducationService';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface FullStudentEnrollmentWizardProps {
@@ -240,6 +241,9 @@ export default function FullStudentEnrollmentWizard({
   const [createdStudentId, setCreatedStudentId] = useState<string>();
   const [editEnrollmentId, setEditEnrollmentId] = useState<string | null>(null);
   const [loadedEditStudentId, setLoadedEditStudentId] = useState<string | null>(null);
+  const [registerInInclusiveEducation, setRegisterInInclusiveEducation] = useState(false);
+  const [inclusiveEducationRegistered, setInclusiveEducationRegistered] = useState(false);
+  const [isRegisteringInclusiveEducation, setIsRegisteringInclusiveEducation] = useState(false);
   const [isCheckingDuplicates, setIsCheckingDuplicates] = useState(false);
   const createMutation = useCreateFullStudentEnrollment();
   const updateMutation = useUpdateFullStudentEnrollment();
@@ -281,6 +285,9 @@ export default function FullStudentEnrollmentWizard({
     }
 
     setDraft(editorQuery.data.draft);
+    setRegisterInInclusiveEducation(false);
+    setInclusiveEducationRegistered(false);
+    setIsRegisteringInclusiveEducation(false);
     setEditEnrollmentId(editorQuery.data.enrollmentId);
     setLoadedEditStudentId(studentId);
     setError(null);
@@ -456,6 +463,7 @@ export default function FullStudentEnrollmentWizard({
           enrollmentId: editEnrollmentId,
           draft,
         });
+        if (registerInInclusiveEducation && !(await registerStudentInInclusiveEducation(studentId))) return;
         onCompleted();
       } catch (submitError) {
         setError(getUserFacingErrorMessage(submitError, 'Não foi possível atualizar o cadastro completo do aluno.'));
@@ -470,11 +478,12 @@ export default function FullStudentEnrollmentWizard({
       }
 
       try {
-        await createMutation.mutateAsync({
+        const result = await createMutation.mutateAsync({
           institutionId,
           draft,
           existingStudentId: studentId,
         });
+        if (registerInInclusiveEducation && !(await registerStudentInInclusiveEducation(result.student_id))) return;
         onCompleted();
       } catch (submitError) {
         setError(getUserFacingErrorMessage(submitError, 'Não foi possível concluir a matrícula.'));
@@ -483,11 +492,15 @@ export default function FullStudentEnrollmentWizard({
     }
 
     try {
-      await createMutation.mutateAsync({
+      const result = await createMutation.mutateAsync({
         institutionId,
         draft,
         existingStudentId: createdStudentId,
       });
+      if (registerInInclusiveEducation && !(await registerStudentInInclusiveEducation(result.student_id))) {
+        setCreatedStudentId(result.student_id);
+        return;
+      }
       onCompleted();
     } catch (submitError) {
       if (submitError instanceof FullStudentEnrollmentError) {
@@ -514,6 +527,39 @@ export default function FullStudentEnrollmentWizard({
       } else {
         setError(getUserFacingErrorMessage(submitError, 'Não foi possível concluir a matrícula.'));
       }
+    }
+  }
+
+  async function registerStudentInInclusiveEducation(targetStudentId: string): Promise<boolean> {
+    if (inclusiveEducationRegistered) return true;
+    try {
+      await registerStudentForInclusiveEducation(institutionId, targetStudentId);
+      setInclusiveEducationRegistered(true);
+      return true;
+    } catch {
+      setStep(4);
+      setError('O cadastro foi salvo, mas a inclusão na Educação Inclusiva não foi confirmada. Confira a matrícula ativa do ano letivo atual e tente novamente.');
+      return false;
+    }
+  }
+
+  async function handleInclusiveEducationRegistration() {
+    const existingStudentId = studentId ?? createdStudentId;
+    if (!existingStudentId) {
+      setRegisterInInclusiveEducation((current) => !current);
+      return;
+    }
+
+    setIsRegisteringInclusiveEducation(true);
+    setError(null);
+    try {
+      await registerStudentForInclusiveEducation(institutionId, existingStudentId);
+      setRegisterInInclusiveEducation(true);
+      setInclusiveEducationRegistered(true);
+    } catch {
+      setError('Não foi possível cadastrar na Educação Inclusiva. Confira se o aluno tem matrícula ativa no ano letivo atual e tente novamente.');
+    } finally {
+      setIsRegisteringInclusiveEducation(false);
     }
   }
 
@@ -589,7 +635,49 @@ export default function FullStudentEnrollmentWizard({
   function renderHealth() {
     const health = draft.health;
     const update = (field: keyof typeof health, value: string | boolean) => setDraft((current) => ({ ...current, health: { ...current.health, [field]: value } }));
-    return <div className="space-y-4"><div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200">Dados de saude sao sensiveis e ficam restritos a ADMIN, DIRECTOR e SECRETARY.</div><div className="grid gap-4 md:grid-cols-2"><Field label="Alergias"><textarea className={inputClass} value={health.allergies} onChange={(event) => update('allergies', event.target.value)} /></Field><Field label="Condicoes de saude"><textarea className={inputClass} value={health.health_conditions} onChange={(event) => update('health_conditions', event.target.value)} /></Field><Field label="Medicacao de emergencia"><textarea className={inputClass} value={health.emergency_medication} onChange={(event) => update('emergency_medication', event.target.value)} /></Field><Field label="Deficiencia ou necessidade"><textarea className={inputClass} value={health.disability} onChange={(event) => update('disability', event.target.value)} /></Field><Field label="Cuidados na escola"><textarea className={inputClass} value={health.school_care_notes} onChange={(event) => update('school_care_notes', event.target.value)} /></Field></div><div className="flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-200"><label className="flex items-center gap-2"><input type="checkbox" checked={health.autism} onChange={(event) => update('autism', event.target.checked)} /> TEA</label><label className="flex items-center gap-2"><input type="checkbox" checked={health.giftedness} onChange={(event) => update('giftedness', event.target.checked)} /> Altas habilidades</label><label className="flex items-center gap-2"><input type="checkbox" checked={health.needs_special_education} onChange={(event) => update('needs_special_education', event.target.checked)} /> Atendimento educacional especializado</label></div></div>;
+    return (
+      <div className="space-y-4">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200">
+          Dados de saúde são sensíveis e ficam restritos a ADMIN, DIRECTOR e SECRETARY.
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Field label="Alergias"><textarea className={inputClass} value={health.allergies} onChange={(event) => update('allergies', event.target.value)} /></Field>
+          <Field label="Condições de saúde"><textarea className={inputClass} value={health.health_conditions} onChange={(event) => update('health_conditions', event.target.value)} /></Field>
+          <Field label="Medicação de emergência"><textarea className={inputClass} value={health.emergency_medication} onChange={(event) => update('emergency_medication', event.target.value)} /></Field>
+          <Field label="Deficiência ou necessidade"><textarea className={inputClass} value={health.disability} onChange={(event) => update('disability', event.target.value)} /></Field>
+          <Field label="Cuidados na escola"><textarea className={inputClass} value={health.school_care_notes} onChange={(event) => update('school_care_notes', event.target.value)} /></Field>
+        </div>
+        <div className="flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-200">
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.autism} onChange={(event) => update('autism', event.target.checked)} /> TEA</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.giftedness} onChange={(event) => update('giftedness', event.target.checked)} /> Altas habilidades</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.needs_special_education} onChange={(event) => update('needs_special_education', event.target.checked)} /> Atendimento educacional especializado</label>
+        </div>
+        <section className="rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+          <h3 className="font-semibold text-slate-900 dark:text-white">Educação Inclusiva</h3>
+          <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
+            Esta decisão pedagógica é separada dos dados de saúde. Ao concluir e salvar o cadastro, o aluno será incluído no PEI e ficará disponível também em Evolução Pedagógica.
+          </p>
+          <button
+            type="button"
+            aria-pressed={registerInInclusiveEducation}
+            onClick={() => void handleInclusiveEducationRegistration()}
+            disabled={isRegisteringInclusiveEducation || inclusiveEducationRegistered}
+            className={`mt-3 rounded-lg px-4 py-2 text-sm font-semibold disabled:cursor-default ${registerInInclusiveEducation ? 'bg-emerald-700 text-white disabled:bg-emerald-700' : 'border border-blue-700 bg-white text-blue-800 hover:bg-blue-100 disabled:opacity-70 dark:border-blue-400 dark:bg-slate-900 dark:text-blue-200'}`}
+          >
+            {isRegisteringInclusiveEducation
+              ? 'Cadastrando...'
+              : inclusiveEducationRegistered
+                ? 'Aluno incluído no PEI'
+                : registerInInclusiveEducation
+                  ? 'Inclusão será concluída ao salvar o cadastro'
+                  : 'Cadastrar aluno na Educação Inclusiva'}
+          </button>
+          {inclusiveEducationRegistered
+            ? <p role="status" className="mt-2 text-xs text-emerald-800 dark:text-emerald-200">O aluno já está no PEI e ficará disponível em Evolução Pedagógica.</p>
+            : registerInInclusiveEducation && <p role="status" className="mt-2 text-xs text-emerald-800 dark:text-emerald-200">A inclusão será concluída ao salvar o cadastro completo.</p>}
+        </section>
+      </div>
+    );
   }
 
   function renderDocuments() {

@@ -24,6 +24,7 @@ const mocks = vi.hoisted(() => ({
   update: vi.fn(),
   editorData: null as unknown,
   findDuplicates: vi.fn(),
+  registerInclusive: vi.fn(),
   useExisting: vi.fn(),
 }));
 
@@ -74,6 +75,10 @@ vi.mock('../../../services/fullStudentEnrollmentService', async () => {
     findDuplicateStudentCandidates: mocks.findDuplicates,
   };
 });
+
+vi.mock('../../../services/inclusiveEducationService', () => ({
+  registerStudentForInclusiveEducation: mocks.registerInclusive,
+}));
 
 const years = [
   {
@@ -163,6 +168,8 @@ describe('FullStudentEnrollmentWizard', () => {
     mocks.update.mockReset();
     mocks.editorData = null;
     mocks.findDuplicates.mockReset();
+    mocks.registerInclusive.mockReset();
+    mocks.registerInclusive.mockResolvedValue({ registered: true, created: true, plan_id: 'pei-1' });
     mocks.useExisting.mockReset();
     mocks.findDuplicates.mockResolvedValue([]);
   });
@@ -229,7 +236,13 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.change(screen.getByLabelText('Parentesco *'), {
       target: { value: 'Mãe' },
     });
-    for (let index = 2; index < 7; index += 1) {
+    for (let index = 2; index < 4; index += 1) {
+      fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+      await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+    }
+
+    fireEvent.click(screen.getByRole('button', { name: 'Cadastrar aluno na Educação Inclusiva' }));
+    for (let index = 4; index < 7; index += 1) {
       fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
       await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
     }
@@ -237,6 +250,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
     await waitFor(() => expect(mocks.create).toHaveBeenCalledTimes(1));
     expect(mocks.create.mock.calls[0][0].institutionId).toBe('institution-1');
+    await waitFor(() => expect(mocks.registerInclusive).toHaveBeenCalledWith('institution-1', 'student-1'));
   });
 
   it('mostra a causa da falha e reutiliza os registros preservados ao tentar novamente', async () => {
@@ -379,13 +393,20 @@ describe('FullStudentEnrollmentWizard', () => {
       target: { value: 'Aluno Social' },
     });
 
-    for (let index = 0; index < 7; index += 1) {
+    for (let index = 0; index < 4; index += 1) {
+      fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+      await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+    }
+
+    fireEvent.click(screen.getByRole('button', { name: 'Cadastrar aluno na Educação Inclusiva' }));
+    for (let index = 4; index < 7; index += 1) {
       fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
       await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
     }
 
     fireEvent.click(screen.getByRole('button', { name: 'Salvar alterações' }));
     await waitFor(() => expect(mocks.update).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mocks.registerInclusive).toHaveBeenCalledWith('institution-1', 'student-1'));
     expect(mocks.update.mock.calls[0][0]).toMatchObject({
       institutionId: 'institution-1',
       studentId: 'student-1',
