@@ -180,18 +180,25 @@ describe('Login', () => {
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
-  it('mantem o fundo neutro enquanto a identidade atual ainda esta sendo carregada', () => {
+  it('oculta o login inteiro e mostra a bolinha durante o carregamento inicial do branding', () => {
     brandingMock.isLoading = true;
 
-    const { container } = renderLogin();
-    const loginShell = container.firstElementChild;
+    renderLogin();
 
-    expect(loginShell?.getAttribute('style')).toContain(
-      'background-image: none',
-    );
-    expect(loginShell?.getAttribute('style')).not.toContain(
-      '/media/ff2-optimized.webp',
-    );
+    expect(
+      screen.getByRole('status', { name: /carregando identidade visual/i }),
+    ).toBeTruthy();
+    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
+    expect(screen.queryByRole('button', { name: /Entrar no sistema/i })).toBeNull();
+  });
+
+  it('continua permitindo login se a consulta inicial de branding falhar', () => {
+    brandingMock.isLoading = false;
+
+    renderLogin();
+
+    expect(screen.getByLabelText(/E-mail institucional/i)).toBeTruthy();
+    expect(screen.queryByRole('status', { name: /carregando identidade visual/i })).toBeNull();
   });
 
   it('atualiza favicon, titulo e cores dinamicamente', () => {

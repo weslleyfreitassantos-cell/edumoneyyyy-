@@ -150,6 +150,22 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     </div>
   );
 
+  if (brandingQuery.isLoading && !brandingQuery.data) {
+    return (
+      <main
+        className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"
+        aria-busy="true"
+      >
+        <div role="status" aria-label="Carregando identidade visual">
+          <Loader2
+            className="h-8 w-8 animate-spin text-[#005bbf]"
+            aria-hidden="true"
+          />
+        </div>
+      </main>
+    );
+  }
+
   return (
     <AuthShell
       heroVariant="default"
