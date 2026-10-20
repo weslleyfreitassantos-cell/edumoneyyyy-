@@ -96,13 +96,14 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
   }, [profile, navigate, showSubdomainMismatch]);
 
   useEffect(() => {
-    if (!brandingQuery.data && brandingQuery.isLoading) {
+    if (brandingQuery.isInitialBrandingLoading) {
       return;
     }
 
     return applyDocumentBranding(branding);
   }, [
     brandingQuery.data,
+    brandingQuery.isInitialBrandingLoading,
     brandingQuery.isLoading,
     branding.documentTitle,
     branding.displayName,
@@ -150,7 +151,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     </div>
   );
 
-  if (brandingQuery.isLoading && !brandingQuery.data) {
+  if (brandingQuery.isInitialBrandingLoading) {
     return (
       <main
         className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"

@@ -32,6 +32,7 @@ describe('BrandingLoadingGate', () => {
   it('mantém as rotas utilizáveis enquanto a identidade inicial carrega', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: true,
+      isInitialBrandingLoading: true,
       isError: false,
     } as never);
 
@@ -44,6 +45,7 @@ describe('BrandingLoadingGate', () => {
   it('continua aguardando identidade nas rotas internas', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: true,
+      isInitialBrandingLoading: true,
       isError: false,
     } as never);
 
@@ -56,6 +58,7 @@ describe('BrandingLoadingGate', () => {
   it('mostra as rotas quando o branding já está pronto', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: false,
+      isInitialBrandingLoading: false,
       isError: false,
     } as never);
 

@@ -212,14 +212,33 @@ describe('useResolvedBranding', () => {
 
     expect(result.current.data).toEqual(staleBranding);
     expect(result.current.isLoading).toBe(false);
+    expect(result.current.isInitialBrandingLoading).toBe(true);
+    expect(resolveSpy).not.toHaveBeenCalled();
+
+    await waitFor(() => expect(images).toHaveLength(3));
+    expect(new Set(images.map((image) => image.src))).toEqual(
+      new Set([
+        staleBranding.logoUrl,
+        staleBranding.faviconUrl,
+        staleBranding.loginBackgroundUrl,
+      ]),
+    );
+
+    await act(async () => {
+      images.forEach((image) => {
+        image.complete = true;
+        image.onload?.(new Event('load'));
+      });
+    });
+    await waitFor(() => expect(resolveSpy).toHaveBeenCalledWith(host));
 
     await act(async () => {
       resolveBranding(currentBranding);
       await response;
     });
-    await waitFor(() => expect(images).toHaveLength(3));
+    await waitFor(() => expect(images).toHaveLength(6));
     expect(document.title).toBe('Colégio atual');
-    expect(new Set(images.map((image) => image.src))).toEqual(
+    expect(new Set(images.slice(3).map((image) => image.src))).toEqual(
       new Set([
         currentBranding.logoUrl,
         currentBranding.faviconUrl,
@@ -229,13 +248,14 @@ describe('useResolvedBranding', () => {
     expect(result.current.data).toEqual(staleBranding);
 
     await act(async () => {
-      images.forEach((image) => {
+      images.slice(3).forEach((image) => {
         image.complete = true;
         image.onload?.(new Event('load'));
       });
     });
 
     await waitFor(() => expect(result.current.data).toEqual(currentBranding));
+    expect(result.current.isInitialBrandingLoading).toBe(false);
     expect(resolveSpy).toHaveBeenCalledWith(host);
     expect(
       JSON.parse(
@@ -247,6 +267,120 @@ describe('useResolvedBranding', () => {
     });
 
     unmount();
+    queryClient.clear();
+  });
+
+  it('descarta branding generico antigo no subdominio de uma escola', async () => {
+    const host = 'colegio-exemplo.grupotec.dev.br';
+    const cacheKey = `tecescola:public-branding:${host}`;
+    localStorage.setItem(
+      cacheKey,
+      JSON.stringify({
+        version: 1,
+        cachedAt: Date.now(),
+        branding: {
+          ...staleBranding,
+          scope: 'FALLBACK',
+          displayName: 'Tec Escola',
+          logoUrl: null,
+          faviconUrl: null,
+          loginBackgroundUrl: null,
+        },
+      }),
+    );
+    const institutionBranding: PublicBranding = {
+      ...staleBranding,
+      displayName: 'Colégio Exemplo',
+      logoUrl: null,
+      faviconUrl: null,
+      loginBackgroundUrl: null,
+    };
+    const resolveSpy = vi
+      .spyOn(brandingService, 'resolveForHostname')
+      .mockResolvedValue(institutionBranding);
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+
+    const { result, unmount } = renderHook(
+      () => useResolvedBranding(host),
+      { wrapper },
+    );
+
+    expect(result.current.data).toBeUndefined();
+    expect(localStorage.getItem(cacheKey)).toBeNull();
+    await waitFor(() => expect(result.current.data).toEqual(institutionBranding));
+    expect(resolveSpy).toHaveBeenCalledWith(host);
+    expect(
+      JSON.parse(localStorage.getItem(cacheKey) ?? 'null').branding.scope,
+    ).toBe('INSTITUTION');
+
+    unmount();
+    queryClient.clear();
+  });
+
+  it('nao confunde o cache inicial do primeiro leitor com assets prontos no segundo', async () => {
+    const host = window.location.hostname;
+    localStorage.setItem(
+      `tecescola:public-branding:${host}`,
+      JSON.stringify({
+        version: 1,
+        cachedAt: Date.now(),
+        branding: staleBranding,
+      }),
+    );
+    const images: Array<{
+      onload: ((event: Event) => void) | null;
+      complete: boolean;
+      naturalWidth: number;
+      naturalHeight: number;
+      src: string;
+      decode: ReturnType<typeof vi.fn>;
+    }> = [];
+    class ControlledImage {
+      onload: ((event: Event) => void) | null = null;
+      onerror: ((event: Event) => void) | null = null;
+      complete = false;
+      naturalWidth = 100;
+      naturalHeight = 100;
+      src = '';
+      decode = vi.fn().mockResolvedValue(undefined);
+
+      constructor() {
+        images.push(this);
+      }
+    }
+    vi.stubGlobal('Image', ControlledImage);
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+
+    const first = renderHook(() => useResolvedBranding(host), { wrapper });
+    const second = renderHook(() => useResolvedBranding(host), { wrapper });
+
+    expect(first.result.current.isInitialBrandingLoading).toBe(true);
+    expect(second.result.current.isInitialBrandingLoading).toBe(true);
+    await waitFor(() => expect(images).toHaveLength(3));
+
+    await act(async () => {
+      images.forEach((image) => {
+        image.complete = true;
+        image.onload?.(new Event('load'));
+      });
+    });
+
+    await waitFor(() => {
+      expect(first.result.current.isInitialBrandingLoading).toBe(false);
+      expect(second.result.current.isInitialBrandingLoading).toBe(false);
+    });
+    expect(images).toHaveLength(3);
+
+    first.unmount();
+    second.unmount();
     queryClient.clear();
   });
 
@@ -263,6 +397,13 @@ describe('useResolvedBranding', () => {
     const resolveSpy = vi
       .spyOn(brandingService, 'resolveForHostname')
       .mockRejectedValue(new Error('network unavailable'));
+    class CachedImage {
+      complete = true;
+      naturalWidth = 100;
+      naturalHeight = 100;
+      src = '';
+    }
+    vi.stubGlobal('Image', CachedImage);
     const queryClient = new QueryClient({
       defaultOptions: { queries: { retry: false } },
     });
