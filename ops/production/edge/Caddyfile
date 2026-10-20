@@ -1,0 +1,100 @@
+{
+    email suporte@grupotec.dev.br
+}
+
+api-qr.grupotec.dev.br {
+    reverse_proxy 127.0.0.1:18000
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
+
+api-cupons.grupotec.dev.br {
+    reverse_proxy 127.0.0.1:18001
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
+
+monitoramento.grupotec.dev.br {
+    reverse_proxy 127.0.0.1:19090
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
+
+api-edu-vps.grupotec.dev.br {
+    log {
+        output stdout
+        format json
+    }
+
+    # Public school-branding assets are versioned by cacheNonce when changed.
+    # Cache only this public bucket; Auth, REST, Storage writes, and RPCs remain no-store.
+    @institutionBrandingAssets path /storage/v1/object/public/institution-branding/*
+    handle @institutionBrandingAssets {
+        header {
+            -Server
+            -Pragma
+            -Expires
+            >Cache-Control "public, max-age=2592000"
+        }
+        reverse_proxy 127.0.0.1:18002
+    }
+
+    handle {
+        header {
+            -Server
+            Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+            Pragma "no-cache"
+            Expires "0"
+        }
+        reverse_proxy 127.0.0.1:18002
+    }
+}
+
+opinaai.grupotec.dev.br {
+    reverse_proxy 127.0.0.1:4010
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
+
+tecescola.grupotec.dev.br {
+    log {
+        output stdout
+        format json
+    }
+    root * /srv/grupotec/web/edumoney/current
+    try_files {path} /index.html
+    encode gzip
+    file_server
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
+
+tecplayer.grupotec.dev.br {
+    reverse_proxy 127.0.0.1:4310
+    header {
+        -Server
+        Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Pragma "no-cache"
+        Expires "0"
+    }
+}
