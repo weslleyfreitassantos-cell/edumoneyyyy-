@@ -328,7 +328,7 @@ describe('useResolvedBranding', () => {
     expect(result.loginBackgroundUrl).toBe(staleBranding.loginBackgroundUrl);
   });
 
-  it('ignora favicon retangular para preservar o icone estatico quadrado', async () => {
+  it('preserva o favicon institucional quando a imagem e retangular', async () => {
     class DimensionedImage {
       onload: ((event: Event) => void) | null = null;
       onerror: ((event: Event) => void) | null = null;
@@ -353,7 +353,7 @@ describe('useResolvedBranding', () => {
     const result = await preloadPublicBrandingAssets(staleBranding);
 
     expect(result.logoUrl).toBe(staleBranding.logoUrl);
-    expect(result.faviconUrl).toBeNull();
+    expect(result.faviconUrl).toBe(staleBranding.faviconUrl);
     expect(result.loginBackgroundUrl).toBe(staleBranding.loginBackgroundUrl);
   });
 });
