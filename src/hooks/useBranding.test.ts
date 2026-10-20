@@ -102,7 +102,11 @@ describe('updateResolvedPublicBrandingCache', () => {
     );
 
     expect(queryClient.getQueryData(['public-branding', 'escola.example.com'])).toEqual(readyBranding);
-    expect(localStorage.getItem('tecescola:public-branding:escola.example.com')).toBeNull();
+    expect(
+      JSON.parse(
+        localStorage.getItem('tecescola:public-branding:escola.example.com') ?? 'null',
+      ),
+    ).toMatchObject({ version: 1, branding: readyBranding });
     queryClient.clear();
   });
 });
@@ -145,13 +149,13 @@ describe('useResolvedBranding', () => {
     queryClient.clear();
   });
 
-  it('ignora branding persistido antigo e só publica a resposta após pre-carregar os assets', async () => {
+  it('restaura o branding do mesmo host e só publica a resposta após pre-carregar os assets', async () => {
     const host = window.location.hostname;
     localStorage.setItem(
       `tecescola:public-branding:${host}`,
       JSON.stringify({
-        version: 2,
-        cachedAt: Date.now(),
+        version: 1,
+        cachedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1,
         branding: staleBranding,
       }),
     );
@@ -199,11 +203,6 @@ describe('useResolvedBranding', () => {
     const queryClient = new QueryClient({
       defaultOptions: { queries: { retry: false } },
     });
-    queryClient.setQueryData(
-      brandingKeys.public(host),
-      staleBranding,
-      { updatedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1 },
-    );
     const wrapper = ({ children }: PropsWithChildren) =>
       createElement(QueryClientProvider, { client: queryClient }, children);
     const { result, unmount } = renderHook(
@@ -238,6 +237,14 @@ describe('useResolvedBranding', () => {
 
     await waitFor(() => expect(result.current.data).toEqual(currentBranding));
     expect(resolveSpy).toHaveBeenCalledWith(host);
+    expect(
+      JSON.parse(
+        localStorage.getItem(`tecescola:public-branding:${host}`) ?? 'null',
+      ),
+    ).toMatchObject({
+      version: 1,
+      branding: currentBranding,
+    });
 
     unmount();
     queryClient.clear();
@@ -245,17 +252,20 @@ describe('useResolvedBranding', () => {
 
   it('mantem o ultimo branding quando a revalidacao da aba falha', async () => {
     const host = 'escola.example.com';
+    localStorage.setItem(
+      `tecescola:public-branding:${host}`,
+      JSON.stringify({
+        version: 1,
+        cachedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1,
+        branding: staleBranding,
+      }),
+    );
     const resolveSpy = vi
       .spyOn(brandingService, 'resolveForHostname')
       .mockRejectedValue(new Error('network unavailable'));
     const queryClient = new QueryClient({
       defaultOptions: { queries: { retry: false } },
     });
-    queryClient.setQueryData(
-      brandingKeys.public(host),
-      staleBranding,
-      { updatedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1 },
-    );
     const wrapper = ({ children }: PropsWithChildren) =>
       createElement(QueryClientProvider, { client: queryClient }, children);
 
