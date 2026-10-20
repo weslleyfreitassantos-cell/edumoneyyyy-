@@ -39,6 +39,7 @@ import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader'
 import LoadingIndicator from './components/LoadingIndicator';
 import InitialLoadingGate from './components/InitialLoadingGate';
 import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
+import AppVersionRefreshGuard from './components/AppVersionRefreshGuard';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -948,6 +949,7 @@ function App() {
       <QueryClientProvider
         client={queryClient}
       >
+        <AppVersionRefreshGuard />
         <RouterProvider router={appRouter} />
       </QueryClientProvider>
     </AppErrorBoundary>

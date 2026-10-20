@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   type QueryClient,
   useMutation,
@@ -20,7 +20,12 @@ import {
   applyDocumentBranding,
   applyDocumentTitle,
 } from '../services/documentBranding';
-import { normalizeHostnameValue } from '../services/brandingValidation';
+import {
+  DEFAULT_BRAND_PRIMARY_COLOR,
+  DEFAULT_BRAND_SECONDARY_COLOR,
+  normalizeHostnameValue,
+  sanitizeBrandColor,
+} from '../services/brandingValidation';
 
 function getWindowHostname(): string {
   if (typeof window === 'undefined') {
@@ -31,10 +36,140 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
+const publicBrandingCacheVersion = 1;
 export const PUBLIC_BRANDING_STALE_TIME = 60_000;
 
 function getPublicBrandingCacheKey(hostname: string): string {
   return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
+}
+
+interface PersistedPublicBranding {
+  cachedAt: number;
+  branding: PublicBranding;
+}
+
+function normalizeCachedAssetUrl(value: unknown): string | null {
+  if (typeof value !== 'string' || !value.trim()) {
+    return null;
+  }
+
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:'
+      ? url.toString()
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function readPersistedPublicBranding(
+  hostname: string,
+): PersistedPublicBranding | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const raw = window.localStorage.getItem(
+      getPublicBrandingCacheKey(hostname),
+    );
+    if (!raw) {
+      return null;
+    }
+
+    const value: unknown = JSON.parse(raw);
+    if (!value || typeof value !== 'object') {
+      return null;
+    }
+
+    const record = value as Record<string, unknown>;
+    const cachedAt = record.cachedAt;
+    const rawBranding = record.branding;
+    if (
+      record.version !== publicBrandingCacheVersion ||
+      typeof cachedAt !== 'number' ||
+      !Number.isFinite(cachedAt) ||
+      cachedAt <= 0 ||
+      cachedAt > Date.now() + 60_000 ||
+      !rawBranding ||
+      typeof rawBranding !== 'object'
+    ) {
+      return null;
+    }
+
+    const candidate = rawBranding as Record<string, unknown>;
+    const validScopes: PublicBranding['scope'][] = [
+      'GLOBAL',
+      'ACCOUNT',
+      'INSTITUTION',
+      'FALLBACK',
+    ];
+    if (
+      typeof candidate.scope !== 'string' ||
+      !validScopes.includes(candidate.scope as PublicBranding['scope'])
+    ) {
+      return null;
+    }
+
+    const cachedBranding: PublicBranding = {
+      scope: candidate.scope as PublicBranding['scope'],
+      displayName:
+        typeof candidate.displayName === 'string'
+          ? candidate.displayName
+          : null,
+      ...(typeof candidate.documentTitle === 'string'
+        ? { documentTitle: candidate.documentTitle }
+        : {}),
+      logoUrl: normalizeCachedAssetUrl(candidate.logoUrl),
+      faviconUrl: normalizeCachedAssetUrl(candidate.faviconUrl),
+      loginBackgroundUrl: normalizeCachedAssetUrl(
+        candidate.loginBackgroundUrl,
+      ),
+      primaryColor: sanitizeBrandColor(
+        typeof candidate.primaryColor === 'string'
+          ? candidate.primaryColor
+          : null,
+        DEFAULT_BRAND_PRIMARY_COLOR,
+      ),
+      secondaryColor: sanitizeBrandColor(
+        typeof candidate.secondaryColor === 'string'
+          ? candidate.secondaryColor
+          : null,
+        DEFAULT_BRAND_SECONDARY_COLOR,
+      ),
+    };
+
+    return {
+      cachedAt,
+      branding: normalizePublicBrandingAssetUrls(cachedBranding),
+    };
+  } catch {
+    // Storage can be disabled, full, or contain data from an older build.
+    return null;
+  }
+}
+
+function persistPublicBranding(
+  hostname: string,
+  branding: PublicBranding,
+): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(
+      getPublicBrandingCacheKey(hostname),
+      JSON.stringify({
+        version: publicBrandingCacheVersion,
+        cachedAt: Date.now(),
+        branding: normalizePublicBrandingAssetUrls(branding),
+      }),
+    );
+  } catch {
+    // Branding remains available through React Query when storage is unavailable.
+  }
 }
 
 const brandingAssetLoadTimeoutMs = 10000;
@@ -222,6 +357,7 @@ export async function updateResolvedPublicBrandingCache(
   const normalizedHostname = normalizeHostnameValue(hostname || 'unknown');
 
   const readyBranding = await preloadPublicBrandingAssets(branding);
+  persistPublicBranding(normalizedHostname, readyBranding);
   queryClient.setQueryData(
     brandingKeys.public(normalizedHostname),
     readyBranding,
@@ -240,12 +376,16 @@ export function useResolvedBranding(
   );
   const queryClient = useQueryClient();
   const publicQueryKey = brandingKeys.public(normalizedHostname);
+  const persistedBranding = useMemo(
+    () => readPersistedPublicBranding(normalizedHostname),
+    [normalizedHostname],
+  );
   const query = useQuery<PublicBranding>({
     queryKey: publicQueryKey,
     queryFn: async () => {
       const previousBranding = queryClient.getQueryData<PublicBranding>(
         publicQueryKey,
-      );
+      ) ?? persistedBranding?.branding;
       const branding = await brandingService.resolveForHostname(
         normalizedHostname,
       );
@@ -258,8 +398,15 @@ export function useResolvedBranding(
         // index.html title in the browser tab while the page is resolving.
         applyDocumentTitle(branding);
       }
-      return preloadPublicBrandingAssets(branding, previousBranding);
+      const readyBranding = await preloadPublicBrandingAssets(
+        branding,
+        previousBranding,
+      );
+      persistPublicBranding(normalizedHostname, readyBranding);
+      return readyBranding;
     },
+    initialData: persistedBranding?.branding,
+    initialDataUpdatedAt: persistedBranding?.cachedAt,
     retry: 1,
     retryDelay: 500,
     staleTime: PUBLIC_BRANDING_STALE_TIME,
