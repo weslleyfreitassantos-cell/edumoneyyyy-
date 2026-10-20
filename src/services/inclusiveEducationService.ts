@@ -81,12 +81,14 @@ function assertPersisted(result: { data: PersistedRow; error: unknown }, entity:
 async function resolveCurrentEnrollment(institutionId: string, studentId: string): Promise<{ academic_year_id: string; class_id: string } | null> {
   const { data, error } = await supabase
     .from('enrollments')
-    .select('academic_year_id,class_id,classes!inner(institution_id,active)')
+    .select('academic_year_id,class_id,classes!inner(institution_id,active),academic_years!inner(institution_id,active)')
     .eq('student_id', studentId)
     .eq('active', true)
     .eq('status', 'active')
     .eq('classes.institution_id', institutionId)
     .eq('classes.active', true)
+    .eq('academic_years.institution_id', institutionId)
+    .eq('academic_years.active', true)
     .order('enrolled_at', { ascending: false })
     .limit(1)
     .maybeSingle();
@@ -120,6 +122,94 @@ export async function saveInclusivePeiPlan(institutionId: string, profileId: str
     ? await supabase.from('inclusive_pei_plans').update(payload).eq('id', id).eq('institution_id', institutionId).select('id').maybeSingle()
     : await supabase.from('inclusive_pei_plans').insert({ ...payload, created_by: profileId }).select('id').single();
   assertPersisted(result, 'PEI');
+}
+
+export async function registerStudentForInclusiveEducation(institutionId: string, studentId: string): Promise<void> {
+  const enrollment = await resolveCurrentEnrollment(institutionId, studentId);
+  if (!enrollment) {
+    throw new Error('O aluno precisa ter uma matrícula ativa para entrar na Educação Inclusiva.');
+  }
+
+  const { data: activeYear, error: activeYearError } = await supabase
+    .from('academic_years')
+    .select('id')
+    .eq('id', enrollment.academic_year_id)
+    .eq('institution_id', institutionId)
+    .eq('active', true)
+    .maybeSingle();
+  if (activeYearError) throw activeYearError;
+  if (!activeYear) {
+    throw new Error('A matrícula do aluno não pertence ao ano letivo ativo da instituição.');
+  }
+
+  const { data: authData, error: authError } = await supabase.auth.getUser();
+  if (authError) throw authError;
+  const profileId = authData.user?.id;
+  if (!profileId) throw new Error('Sua sessão expirou. Entre novamente para continuar.');
+
+  async function findPlan() {
+    const { data, error } = await supabase
+      .from('inclusive_pei_plans')
+      .select('id,status')
+      .eq('institution_id', institutionId)
+      .eq('student_id', studentId)
+      .eq('academic_year_id', enrollment.academic_year_id)
+      .order('updated_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    return data as { id: string; status: string } | null;
+  }
+
+  async function reopenArchivedPlan(planId: string) {
+    const result = await supabase
+      .from('inclusive_pei_plans')
+      .update({
+        status: 'DRAFT',
+        class_id: enrollment.class_id,
+        updated_by: profileId,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', planId)
+      .eq('institution_id', institutionId)
+      .select('id')
+      .maybeSingle();
+    assertPersisted(result, 'PEI');
+  }
+
+  const existingPlan = await findPlan();
+  if (existingPlan?.id) {
+    if (existingPlan.status === 'ARCHIVED') await reopenArchivedPlan(existingPlan.id);
+    return;
+  }
+
+  try {
+    await saveInclusivePeiPlan(institutionId, profileId, {
+      student_id: studentId,
+      academic_year_id: enrollment.academic_year_id,
+      class_id: enrollment.class_id,
+      status: 'DRAFT',
+      review_due_on: null,
+      strengths: '',
+      interests: '',
+      learning_barriers: '',
+      participation_barriers: '',
+      pedagogical_objectives: '',
+      teaching_strategies: '',
+      accessibility_resources: '',
+      planned_activities: '',
+      monitoring_criteria: '',
+      pedagogical_evaluation: '',
+    });
+  } catch (error) {
+    const concurrentPlan = await findPlan();
+    if (concurrentPlan?.status === 'ARCHIVED') {
+      await reopenArchivedPlan(concurrentPlan.id);
+      return;
+    }
+    if (concurrentPlan?.id) return;
+    throw error;
+  }
 }
 
 export async function listInclusiveStudents(institutionId: string): Promise<Array<{ id: string; name: string }>> {

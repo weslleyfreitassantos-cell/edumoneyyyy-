@@ -32,6 +32,7 @@ import {
   createStudentDocumentSignedUrl,
   STUDENT_DOCUMENT_ACCEPT,
 } from '../../../services/studentDocumentService';
+import { registerStudentForInclusiveEducation } from '../../../services/inclusiveEducationService';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface FullStudentEnrollmentWizardProps {
@@ -239,6 +240,7 @@ export default function FullStudentEnrollmentWizard({
   >([]);
   const [createdStudentId, setCreatedStudentId] = useState<string>();
   const [editEnrollmentId, setEditEnrollmentId] = useState<string | null>(null);
+  const [registerForInclusiveEducation, setRegisterForInclusiveEducation] = useState(false);
   const [loadedEditStudentId, setLoadedEditStudentId] = useState<string | null>(null);
   const [isCheckingDuplicates, setIsCheckingDuplicates] = useState(false);
   const createMutation = useCreateFullStudentEnrollment();
@@ -388,12 +390,26 @@ export default function FullStudentEnrollmentWizard({
       if (draft.guardians.length > 0 && !draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsável principal.';
     }
     if (step === 6) {
+      if (registerForInclusiveEducation && (!draft.academic_year_id || !draft.class_id)) {
+        return 'Selecione o ano letivo e a turma ativa para cadastrar o aluno na Educação Inclusiva.';
+      }
       if (!isExistingStudentMode || editEnrollmentId || mode === 'enroll') {
         if (!draft.academic_year_id) return 'Selecione o ano letivo.';
         if (!draft.class_id) return 'Selecione a turma.';
       }
     }
     return null;
+  }
+
+  async function registerSavedStudentForInclusiveEducation(savedStudentId: string): Promise<boolean> {
+    if (!registerForInclusiveEducation) return true;
+    try {
+      await registerStudentForInclusiveEducation(institutionId, savedStudentId);
+      return true;
+    } catch (registrationError) {
+      setError(`Os dados do aluno foram salvos, mas a inclusão na Educação Inclusiva não foi concluída. Salve novamente para tentar de novo. ${getUserFacingErrorMessage(registrationError, 'Verifique a matrícula ativa e as permissões da sua conta.')}`);
+      return false;
+    }
   }
 
   async function next() {
@@ -456,6 +472,7 @@ export default function FullStudentEnrollmentWizard({
           enrollmentId: editEnrollmentId,
           draft,
         });
+        if (!(await registerSavedStudentForInclusiveEducation(studentId))) return;
         onCompleted();
       } catch (submitError) {
         setError(getUserFacingErrorMessage(submitError, 'Não foi possível atualizar o cadastro completo do aluno.'));
@@ -483,11 +500,32 @@ export default function FullStudentEnrollmentWizard({
     }
 
     try {
-      await createMutation.mutateAsync({
-        institutionId,
-        draft,
-        existingStudentId: createdStudentId,
-      });
+      let savedStudentId = createdStudentId;
+      if (createdStudentId && editEnrollmentId) {
+        await updateMutation.mutateAsync({
+          institutionId,
+          studentId: createdStudentId,
+          enrollmentId: editEnrollmentId,
+          draft,
+        });
+      } else {
+        const saved = await createMutation.mutateAsync({
+          institutionId,
+          draft,
+          existingStudentId: createdStudentId,
+        });
+        savedStudentId = saved.student_id;
+        setCreatedStudentId(saved.student_id);
+        setEditEnrollmentId(saved.enrollment_id);
+        setDraft((current) => ({
+          ...current,
+          guardians: current.guardians.map((guardian, index) => ({
+            ...guardian,
+            profile_id: guardian.profile_id || saved.guardian_profile_ids[index] || '',
+          })),
+        }));
+      }
+      if (!savedStudentId || !(await registerSavedStudentForInclusiveEducation(savedStudentId))) return;
       onCompleted();
     } catch (submitError) {
       if (submitError instanceof FullStudentEnrollmentError) {
@@ -589,7 +627,41 @@ export default function FullStudentEnrollmentWizard({
   function renderHealth() {
     const health = draft.health;
     const update = (field: keyof typeof health, value: string | boolean) => setDraft((current) => ({ ...current, health: { ...current.health, [field]: value } }));
-    return <div className="space-y-4"><div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200">Dados de saude sao sensiveis e ficam restritos a ADMIN, DIRECTOR e SECRETARY.</div><div className="grid gap-4 md:grid-cols-2"><Field label="Alergias"><textarea className={inputClass} value={health.allergies} onChange={(event) => update('allergies', event.target.value)} /></Field><Field label="Condicoes de saude"><textarea className={inputClass} value={health.health_conditions} onChange={(event) => update('health_conditions', event.target.value)} /></Field><Field label="Medicacao de emergencia"><textarea className={inputClass} value={health.emergency_medication} onChange={(event) => update('emergency_medication', event.target.value)} /></Field><Field label="Deficiencia ou necessidade"><textarea className={inputClass} value={health.disability} onChange={(event) => update('disability', event.target.value)} /></Field><Field label="Cuidados na escola"><textarea className={inputClass} value={health.school_care_notes} onChange={(event) => update('school_care_notes', event.target.value)} /></Field></div><div className="flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-200"><label className="flex items-center gap-2"><input type="checkbox" checked={health.autism} onChange={(event) => update('autism', event.target.checked)} /> TEA</label><label className="flex items-center gap-2"><input type="checkbox" checked={health.giftedness} onChange={(event) => update('giftedness', event.target.checked)} /> Altas habilidades</label><label className="flex items-center gap-2"><input type="checkbox" checked={health.needs_special_education} onChange={(event) => update('needs_special_education', event.target.checked)} /> Atendimento educacional especializado</label></div></div>;
+    return (
+      <div className="space-y-4">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200">
+          Dados de saúde são sensíveis e ficam restritos a ADMIN, DIRECTOR e SECRETARY.
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Field label="Alergias"><textarea className={inputClass} value={health.allergies} onChange={(event) => update('allergies', event.target.value)} /></Field>
+          <Field label="Condições de saúde"><textarea className={inputClass} value={health.health_conditions} onChange={(event) => update('health_conditions', event.target.value)} /></Field>
+          <Field label="Medicação de emergência"><textarea className={inputClass} value={health.emergency_medication} onChange={(event) => update('emergency_medication', event.target.value)} /></Field>
+          <Field label="Deficiência ou necessidade"><textarea className={inputClass} value={health.disability} onChange={(event) => update('disability', event.target.value)} /></Field>
+          <Field label="Cuidados na escola"><textarea className={inputClass} value={health.school_care_notes} onChange={(event) => update('school_care_notes', event.target.value)} /></Field>
+        </div>
+        <div className="flex flex-wrap gap-4 text-sm text-slate-700 dark:text-slate-200">
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.autism} onChange={(event) => update('autism', event.target.checked)} /> TEA</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.giftedness} onChange={(event) => update('giftedness', event.target.checked)} /> Altas habilidades</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={health.needs_special_education} onChange={(event) => update('needs_special_education', event.target.checked)} /> Atendimento educacional especializado</label>
+        </div>
+        {mode !== 'enroll' && (
+          <section className="rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900/70 dark:bg-blue-950/30" aria-label="Educação Inclusiva">
+            <h3 className="font-semibold text-blue-950 dark:text-blue-100">Educação Inclusiva</h3>
+            <p className="mt-1 text-sm leading-5 text-blue-900 dark:text-blue-200">
+              O cadastro cria ou reabre um rascunho de PEI do ano letivo ativo. O aluno aparecerá na lista do PEI e em Evolução Pedagógica. Nenhum dado de saúde é copiado para o plano.
+            </p>
+            <button
+              type="button"
+              aria-pressed={registerForInclusiveEducation}
+              onClick={() => setRegisterForInclusiveEducation((current) => !current)}
+              className="mt-3 inline-flex min-h-10 items-center rounded-lg border border-blue-700 bg-white px-4 py-2 text-sm font-semibold text-blue-800 transition hover:bg-blue-100 disabled:cursor-default disabled:border-emerald-700 disabled:bg-emerald-50 disabled:text-emerald-800 dark:border-blue-400 dark:bg-slate-900 dark:text-blue-200 dark:hover:bg-blue-950 dark:disabled:border-emerald-500 dark:disabled:bg-emerald-950/40 dark:disabled:text-emerald-200"
+            >
+              {registerForInclusiveEducation ? 'Cancelar solicitação de inclusão' : 'Cadastrar aluno na Educação Inclusiva'}
+            </button>
+          </section>
+        )}
+      </div>
+    );
   }
 
   function renderDocuments() {
