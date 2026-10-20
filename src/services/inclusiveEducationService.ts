@@ -84,7 +84,7 @@ async function resolveCurrentEnrollment(institutionId: string, studentId: string
     .select('academic_year_id,class_id,classes!inner(institution_id,active)')
     .eq('student_id', studentId)
     .eq('active', true)
-    .eq('status', 'active')
+    .in('status', ['active', 'ACTIVE'])
     .eq('classes.institution_id', institutionId)
     .eq('classes.active', true)
     .order('enrolled_at', { ascending: false })
@@ -133,6 +133,23 @@ export async function listInclusiveStudents(institutionId: string): Promise<Arra
   return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
 }
 
+export async function registerStudentForInclusiveEducation(
+  institutionId: string,
+  studentId: string,
+): Promise<{ registered: true; created: boolean; plan_id: string }> {
+  const { data, error } = await supabase.rpc('register_student_for_inclusive_education', {
+    p_institution_id: institutionId,
+    p_student_id: studentId,
+  });
+  if (error) throw error;
+
+  const result = data as { registered?: boolean; created?: boolean; plan_id?: string } | null;
+  if (result?.registered !== true || typeof result.plan_id !== 'string') {
+    throw new Error('INCLUSIVE_STUDENT_REGISTRATION_NOT_CONFIRMED');
+  }
+  return { registered: true, created: result.created === true, plan_id: result.plan_id };
+}
+
 export async function listInclusiveProgressStudents(institutionId: string): Promise<Array<{ id: string; name: string }>> {
   const { data: yearData, error: yearError } = await supabase
     .from('academic_years')
@@ -153,7 +170,7 @@ export async function listInclusiveProgressStudents(institutionId: string): Prom
       .eq('classes.institution_id', institutionId)
       .eq('classes.active', true)
       .eq('active', true)
-      .eq('status', 'active')
+      .in('status', ['active', 'ACTIVE'])
       .in('academic_year_id', currentAcademicYearIds),
     supabase
       .from('inclusive_pei_plans')
