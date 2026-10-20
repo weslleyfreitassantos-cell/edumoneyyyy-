@@ -39,10 +39,7 @@ function getPublicBrandingCacheKey(hostname: string): string {
 
 const brandingAssetLoadTimeoutMs = 10000;
 
-function preloadImage(
-  url: string,
-  requireSquare = false,
-): Promise<boolean> {
+function preloadImage(url: string): Promise<boolean> {
   if (typeof Image === 'undefined') {
     return Promise.resolve(true);
   }
@@ -50,9 +47,7 @@ function preloadImage(
   return new Promise((resolve) => {
     const image = new Image();
     const hasUsableDimensions = () =>
-      image.naturalWidth > 0 &&
-      image.naturalHeight > 0 &&
-      (!requireSquare || image.naturalWidth === image.naturalHeight);
+      image.naturalWidth > 0 && image.naturalHeight > 0;
     let settled = false;
     let timeoutId: number | undefined;
 
@@ -101,13 +96,13 @@ export async function preloadPublicBrandingAssets(
 ): Promise<PublicBranding> {
   const normalizedBranding = normalizePublicBrandingAssetUrls(branding);
   const assets = [
-    ['logo', normalizedBranding.logoUrl, false],
-    ['favicon', normalizedBranding.faviconUrl, true],
-    ['loginBackground', normalizedBranding.loginBackgroundUrl, false],
+    ['logo', normalizedBranding.logoUrl],
+    ['favicon', normalizedBranding.faviconUrl],
+    ['loginBackground', normalizedBranding.loginBackgroundUrl],
   ] as const;
   const loaded = new Map<string, boolean>();
   await Promise.all(
-    assets.flatMap(([kind, url, requireSquare]) => {
+    assets.flatMap(([kind, url]) => {
       const normalizedUrl = url?.trim();
 
       if (!normalizedUrl) {
@@ -115,7 +110,7 @@ export async function preloadPublicBrandingAssets(
       }
 
       return [
-        preloadImage(normalizedUrl, requireSquare).then((isLoaded) => {
+        preloadImage(normalizedUrl).then((isLoaded) => {
           loaded.set(`${kind}:${normalizedUrl}`, isLoaded);
         }),
       ];
