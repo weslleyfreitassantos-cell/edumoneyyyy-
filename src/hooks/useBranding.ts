@@ -317,6 +317,66 @@ export async function preloadPublicBrandingAssets(
   };
 }
 
+const preparedBrandingAssetsByClient = new WeakMap<QueryClient, Set<string>>();
+const inFlightBrandingAssetPreloadsByClient = new WeakMap<
+  QueryClient,
+  Map<string, Promise<PublicBranding>>
+>();
+
+function getBrandingAssetCacheKey(
+  hostname: string,
+  branding: PublicBranding,
+): string {
+  return JSON.stringify([
+    normalizeHostnameValue(hostname || 'unknown'),
+    branding.logoUrl ?? null,
+    branding.faviconUrl ?? null,
+    branding.loginBackgroundUrl ?? null,
+  ]);
+}
+
+function areBrandingAssetsPrepared(
+  queryClient: QueryClient,
+  cacheKey: string,
+): boolean {
+  return preparedBrandingAssetsByClient.get(queryClient)?.has(cacheKey) ?? false;
+}
+
+function markBrandingAssetsPrepared(
+  queryClient: QueryClient,
+  cacheKey: string,
+): void {
+  let prepared = preparedBrandingAssetsByClient.get(queryClient);
+  if (!prepared) {
+    prepared = new Set<string>();
+    preparedBrandingAssetsByClient.set(queryClient, prepared);
+  }
+  prepared.add(cacheKey);
+}
+
+function preloadPersistedBrandingAssets(
+  queryClient: QueryClient,
+  cacheKey: string,
+  branding: PublicBranding,
+): Promise<PublicBranding> {
+  let inFlight = inFlightBrandingAssetPreloadsByClient.get(queryClient);
+  if (!inFlight) {
+    inFlight = new Map<string, Promise<PublicBranding>>();
+    inFlightBrandingAssetPreloadsByClient.set(queryClient, inFlight);
+  }
+
+  const currentPreload = inFlight.get(cacheKey);
+  if (currentPreload) {
+    return currentPreload;
+  }
+
+  const preload = preloadPublicBrandingAssets(branding).finally(() => {
+    inFlight?.delete(cacheKey);
+  });
+  inFlight.set(cacheKey, preload);
+  return preload;
+}
+
 export const brandingKeys = {
   publicRoot: ['public-branding'] as const,
   public: (hostname: string) =>
@@ -390,6 +450,12 @@ export async function updateResolvedPublicBrandingCache(
     brandingKeys.public(normalizedHostname),
     readyBranding,
   );
+  if (hasBrandingAssets(readyBranding)) {
+    markBrandingAssetsPrepared(
+      queryClient,
+      getBrandingAssetCacheKey(normalizedHostname, readyBranding),
+    );
+  }
 
   if (getWindowHostname() === normalizedHostname) {
     applyDocumentBranding(readyBranding);
@@ -411,23 +477,35 @@ export function useResolvedBranding(
     () => readPersistedPublicBranding(normalizedHostname),
     [normalizedHostname],
   );
+  const persistedBrandingAssetsKey = persistedBranding
+    ? getBrandingAssetCacheKey(
+        normalizedHostname,
+        persistedBranding.branding,
+      )
+    : null;
   const [persistedAssetsReady, setPersistedAssetsReady] = useState(() =>
     !persistedBranding ||
     !hasBrandingAssets(persistedBranding.branding) ||
-    queryClient.getQueryData<PublicBranding>(publicQueryKey) !== undefined,
+    (persistedBrandingAssetsKey !== null &&
+      areBrandingAssetsPrepared(queryClient, persistedBrandingAssetsKey)),
   );
 
   useEffect(() => {
     if (
       persistedAssetsReady ||
       !persistedBranding ||
-      !hasBrandingAssets(persistedBranding.branding)
+      !hasBrandingAssets(persistedBranding.branding) ||
+      !persistedBrandingAssetsKey
     ) {
       return;
     }
 
     let active = true;
-    void preloadPublicBrandingAssets(persistedBranding.branding)
+    void preloadPersistedBrandingAssets(
+      queryClient,
+      persistedBrandingAssetsKey,
+      persistedBranding.branding,
+    )
       .then((readyBranding) => {
         if (!active) {
           return;
@@ -437,6 +515,10 @@ export function useResolvedBranding(
           publicQueryKey,
           readyBranding,
           { updatedAt: persistedBranding.cachedAt },
+        );
+        markBrandingAssetsPrepared(
+          queryClient,
+          persistedBrandingAssetsKey,
         );
         setPersistedAssetsReady(true);
       })
@@ -452,6 +534,7 @@ export function useResolvedBranding(
   }, [
     persistedAssetsReady,
     persistedBranding,
+    persistedBrandingAssetsKey,
     publicQueryKey,
     queryClient,
   ]);
@@ -498,6 +581,23 @@ export function useResolvedBranding(
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
   });
+
+  useEffect(() => {
+    if (!persistedAssetsReady || !query.data || !hasBrandingAssets(query.data)) {
+      return;
+    }
+
+    markBrandingAssetsPrepared(
+      queryClient,
+      getBrandingAssetCacheKey(normalizedHostname, query.data),
+    );
+  }, [
+    normalizedHostname,
+    persistedAssetsReady,
+    query.data,
+    query.dataUpdatedAt,
+    queryClient,
+  ]);
 
   useEffect(() => {
     const reapplyCurrentBranding = () => {

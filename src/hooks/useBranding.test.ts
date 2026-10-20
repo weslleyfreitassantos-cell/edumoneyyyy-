@@ -321,6 +321,69 @@ describe('useResolvedBranding', () => {
     queryClient.clear();
   });
 
+  it('nao confunde o cache inicial do primeiro leitor com assets prontos no segundo', async () => {
+    const host = window.location.hostname;
+    localStorage.setItem(
+      `tecescola:public-branding:${host}`,
+      JSON.stringify({
+        version: 1,
+        cachedAt: Date.now(),
+        branding: staleBranding,
+      }),
+    );
+    const images: Array<{
+      onload: ((event: Event) => void) | null;
+      complete: boolean;
+      naturalWidth: number;
+      naturalHeight: number;
+      src: string;
+      decode: ReturnType<typeof vi.fn>;
+    }> = [];
+    class ControlledImage {
+      onload: ((event: Event) => void) | null = null;
+      onerror: ((event: Event) => void) | null = null;
+      complete = false;
+      naturalWidth = 100;
+      naturalHeight = 100;
+      src = '';
+      decode = vi.fn().mockResolvedValue(undefined);
+
+      constructor() {
+        images.push(this);
+      }
+    }
+    vi.stubGlobal('Image', ControlledImage);
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+
+    const first = renderHook(() => useResolvedBranding(host), { wrapper });
+    const second = renderHook(() => useResolvedBranding(host), { wrapper });
+
+    expect(first.result.current.isInitialBrandingLoading).toBe(true);
+    expect(second.result.current.isInitialBrandingLoading).toBe(true);
+    await waitFor(() => expect(images).toHaveLength(3));
+
+    await act(async () => {
+      images.forEach((image) => {
+        image.complete = true;
+        image.onload?.(new Event('load'));
+      });
+    });
+
+    await waitFor(() => {
+      expect(first.result.current.isInitialBrandingLoading).toBe(false);
+      expect(second.result.current.isInitialBrandingLoading).toBe(false);
+    });
+    expect(images).toHaveLength(3);
+
+    first.unmount();
+    second.unmount();
+    queryClient.clear();
+  });
+
   it('mantem o ultimo branding quando a revalidacao da aba falha', async () => {
     const host = 'escola.example.com';
     localStorage.setItem(
