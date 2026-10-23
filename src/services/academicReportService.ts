@@ -153,6 +153,13 @@ export interface ClassVacanciesReportRow {
   occupancyPercentage: number | null;
 }
 
+export interface SecretariatOperationsSummary {
+  studentsWithoutClass: number;
+  pendingDocuments: number;
+  classesWithVacancies: number;
+  availableSeats: number;
+}
+
 interface PendingDocumentSourceRow {
   id: string;
   student_id: string;
@@ -525,6 +532,71 @@ export const academicReportService = {
       enrollmentService.list(institutionId),
     ]);
     return buildClassVacanciesReportRows(classes, enrollments, academicYearId);
+  },
+
+  async getSecretariatOperationsSummary(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<SecretariatOperationsSummary> {
+    const [students, enrollments, classes] = await Promise.all([
+      studentService.list(institutionId),
+      enrollmentService.list(institutionId),
+      classService.list(institutionId),
+    ]);
+
+    const activeYearEnrollments = enrollments.filter((enrollment) =>
+      enrollment.academic_year_id === academicYearId
+      && enrollment.active
+      && enrollment.status === 'ACTIVE'
+      && enrollment.student_active
+      && enrollment.class_active,
+    );
+    const studentIds = [...new Set(activeYearEnrollments.map((enrollment) => enrollment.student_id))];
+    const documents: PendingDocumentSourceRow[] = [];
+
+    for (let start = 0; start < studentIds.length; start += 100) {
+      const studentIdChunk = studentIds.slice(start, start + 100);
+      for (let offset = 0; ; offset += 500) {
+        const { data, error } = await supabase
+          .from('student_documents')
+          .select('id,student_id,document_type,status,updated_at')
+          .eq('institution_id', institutionId)
+          .in('status', PENDING_DOCUMENT_REPORT_STATUSES)
+          .in('student_id', studentIdChunk)
+          .order('updated_at', { ascending: false })
+          .range(offset, offset + 499);
+        if (error) throw error;
+        const page = (data ?? []) as PendingDocumentSourceRow[];
+        documents.push(...page);
+        if (page.length < 500) break;
+      }
+    }
+
+    const pendingDocuments = buildPendingDocumentReportRows(
+      activeYearEnrollments,
+      documents,
+      { academicYearId },
+    );
+    const studentsWithoutClass = buildStudentsWithoutClassReportRows(
+      students,
+      enrollments,
+      academicYearId,
+    );
+    const classesWithVacancies = buildClassVacanciesReportRows(
+      classes,
+      enrollments,
+      academicYearId,
+    ).filter((classRow) => classRow.availableSeats !== null && classRow.availableSeats > 0);
+
+    return {
+      studentsWithoutClass: studentsWithoutClass.length,
+      pendingDocuments: pendingDocuments.length,
+      classesWithVacancies: classesWithVacancies.length,
+      availableSeats: classesWithVacancies.reduce(
+        (total, classRow) => total + (classRow.availableSeats ?? 0),
+        0,
+      ),
+    };
   },
 
   async getAcademicResultsReport(

@@ -198,6 +198,58 @@ describe('academicReportService', () => {
     expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
   });
 
+  it('resume pendências reais da secretaria sem contar documentos ausentes como pendentes', async () => {
+    vi.mocked(studentService.list).mockResolvedValue([
+      student,
+      { ...student, id: 'student-without-class', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+    ] as never);
+    vi.mocked(classService.list).mockResolvedValue([
+      schoolClass,
+      { ...schoolClass, id: 'class-with-vacancies', name: '2º B', capacity: 20, active_enrollments_count: 0 },
+    ] as never);
+    supabaseMocks.range.mockResolvedValue({
+      data: [{
+        id: 'document-1',
+        student_id: 'student-1',
+        document_type: 'Histórico escolar',
+        status: 'UNDER_REVIEW',
+        updated_at: '2026-02-10T12:00:00Z',
+      }],
+      error: null,
+    });
+
+    const summary = await academicReportService.getSecretariatOperationsSummary(institutionId, 'year-1');
+
+    expect(summary).toEqual({
+      studentsWithoutClass: 1,
+      pendingDocuments: 1,
+      classesWithVacancies: 2,
+      availableSeats: 49,
+    });
+    expect(studentService.list).toHaveBeenCalledWith(institutionId);
+    expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
+    expect(classService.list).toHaveBeenCalledWith(institutionId);
+    expect(supabaseMocks.from).toHaveBeenCalledWith('student_documents');
+    expect(supabaseMocks.eq).toHaveBeenCalledWith('institution_id', institutionId);
+    expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
+  });
+
+  it('não consulta documentos se não houver matrícula ativa no ano', async () => {
+    vi.mocked(enrollmentService.list).mockResolvedValue([
+      { ...enrollment, academic_year_id: 'year-2' },
+    ] as never);
+
+    const summary = await academicReportService.getSecretariatOperationsSummary(institutionId, 'year-1');
+
+    expect(summary).toEqual({
+      studentsWithoutClass: 1,
+      pendingDocuments: 0,
+      classesWithVacancies: 1,
+      availableSeats: 30,
+    });
+    expect(supabaseMocks.from).not.toHaveBeenCalled();
+  });
+
   it('preserva snapshot oficial de recuperação no relatório de resultados', async () => {
     vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue(monitoring as never);
     vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{ institutionId, studentId: 'student-1', subjects: [reportSubject], closedCount: 1, openCount: 0 }] as never);
