@@ -173,6 +173,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       password: director.password,
     });
     expect(secondDeviceSignIn.error).toBeNull();
+    console.info('[draft-ci] second device authenticated');
     const sensitiveMarker = `health-marker-${suffix}`;
     const payload = {
       identity: {
@@ -233,6 +234,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       document_type: 'TRANSCRIPT_PREVIEW',
       actor_profile_id: director.id,
     });
+    console.info('[draft-ci] document issuance audit verified');
     const deniedIssuance = await teacher.client.rpc('record_academic_document_issuance', {
       p_institution_id: institutionA,
       p_student_id: studentId,
@@ -241,6 +243,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       p_academic_year_id: academicYearId,
     });
     expect(deniedIssuance.error).toBeTruthy();
+    console.info('[draft-ci] unauthorized document issuance denied');
 
     const invalidPayload = structuredClone(payload) as typeof payload & { health: Record<string, unknown> };
     invalidPayload.health.unexpected_extra = 'rejected';
@@ -252,6 +255,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       p_current_step: 3,
     });
     expect(invalidDraft.error).toBeTruthy();
+    console.info('[draft-ci] invalid draft payload rejected');
 
     const created = await director.client.rpc('save_student_enrollment_draft', {
       p_institution_id: institutionA,
@@ -264,6 +268,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     const draftId = required(created.data?.draft_id, 'created draft id') as string;
     const firstVersion = Number(created.data?.version);
     expect(firstVersion).toBe(1);
+    console.info('[draft-ci] draft created');
 
     const resumed = await secretary.client.rpc('get_student_enrollment_draft', {
       p_institution_id: institutionA,
@@ -275,6 +280,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       current_step: 3,
       payload: { health: { allergies: sensitiveMarker } },
     });
+    console.info('[draft-ci] draft resumed by secretary');
 
     const listed = await secretary.client.rpc('list_student_enrollment_drafts', {
       p_institution_id: institutionA,
@@ -284,6 +290,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       expect.objectContaining({ draft_id: draftId, current_step: 3 }),
     ]));
     expect(JSON.stringify(listed.data)).not.toContain(sensitiveMarker);
+    console.info('[draft-ci] draft list redacts sensitive fields');
 
     for (const deniedActor of [teacher, student, guardian, foreignDirector]) {
       const denied = await deniedActor.client.rpc('get_student_enrollment_draft', {
@@ -293,9 +300,11 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       expect(denied.error).toBeTruthy();
       expect(denied.error?.message).not.toContain(sensitiveMarker);
     }
+    console.info('[draft-ci] unauthorized role and institution checks passed');
 
     const directRead = await student.client.from('student_enrollment_drafts').select('id');
     expect(directRead.error).toBeTruthy();
+    console.info('[draft-ci] direct table access denied');
 
     const concurrentPayloadA = structuredClone(payload);
     concurrentPayloadA.identity.full_name = `Edit A ${suffix}`;
@@ -319,6 +328,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     ]);
     expect(concurrentSaves.filter((result) => !result.error)).toHaveLength(1);
     expect(concurrentSaves.filter((result) => result.error)).toHaveLength(1);
+    console.info('[draft-ci] concurrent version conflict enforced');
 
     const versionConflict = await director.client.rpc('save_student_enrollment_draft', {
       p_institution_id: institutionA,
@@ -329,6 +339,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     });
     expect(versionConflict.error).toBeTruthy();
     expect(versionConflict.error?.message).not.toContain(sensitiveMarker);
+    console.info('[draft-ci] stale version rejected');
 
     const current = await director.client.rpc('get_student_enrollment_draft', {
       p_institution_id: institutionA,
@@ -342,6 +353,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       p_expected_version: Number(current.data?.version),
     });
     expect(discarded.error).toBeNull();
+    console.info('[draft-ci] authorized discard completed');
 
     const noDrafts = await director.client.rpc('list_student_enrollment_drafts', {
       p_institution_id: institutionA,
@@ -350,6 +362,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     expect(noDrafts.data).not.toEqual(expect.arrayContaining([
       expect.objectContaining({ draft_id: draftId }),
     ]));
+    console.info('[draft-ci] discarded draft hidden from listing');
 
     const studentCount = await service
       .from('students')
@@ -357,6 +370,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       .eq('institution_id', institutionA);
     expect(studentCount.error).toBeNull();
     expect(studentCount.count).toBe(1);
+    console.info('[draft-ci] draft did not create a student or enrollment');
   }, 60000);
 
   it('creates enrollment only on final confirmation and returns the same result on retries', async () => {
