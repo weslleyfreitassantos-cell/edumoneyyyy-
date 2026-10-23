@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const migration = readFileSync(
-  new URL('./20261023000100_guided_study_demo_preview_state.sql', import.meta.url),
+  new URL('./20261023000200_guided_study_demo_preview_state.sql', import.meta.url),
   'utf8',
 );
 
