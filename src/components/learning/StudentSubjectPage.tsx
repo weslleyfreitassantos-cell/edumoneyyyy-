@@ -63,6 +63,7 @@ export default function StudentSubjectPage() {
     AMBIGUOUS_ENROLLMENT: 'Há mais de uma matrícula ativa. Peça à escola para confirmar sua turma atual.',
     GRADE_NOT_SUPPORTED: 'Ainda não há conteúdo demonstrativo disponível para sua série nesta matéria.',
     NO_BNCC_MAPPING: 'Esta matéria ainda não possui vínculo curricular autorizado para o estudo guiado.',
+    DEMO_PREVIEW_UNAVAILABLE: 'O estudo guiado está em revisão e ainda não foi liberado para esta instituição. As atividades da escola continuam disponíveis.',
     NO_ELIGIBLE_CONTENT: 'Ainda não há uma etapa completa disponível para esta matéria.',
     CONTENT_EXHAUSTED: 'Você concluiu as etapas disponíveis nesta prévia demonstrativa.',
     NEEDS_TEACHER_SUPPORT: 'Esta etapa precisa de acompanhamento do professor antes de continuar.',
