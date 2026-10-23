@@ -4,10 +4,16 @@ const standardBnccSubjectsByCode = new Map<string, string>([
   ['ART', 'Arte'],
   ['BIO', 'Biologia'],
   ['BIOLOGY', 'Biologia'],
+  ['CIENCIAS', 'Ciências'],
+  ['SCIENCE', 'Ciências'],
+  ['SCI', 'Ciências'],
   ['EDF', 'Educação Física'],
   ['PHYSICAL_EDUCATION', 'Educação Física'],
   ['FIL', 'Filosofia'],
   ['PHILOSOPHY', 'Filosofia'],
+  ['ENSINO_RELIGIOSO', 'Ensino Religioso'],
+  ['RELIGIOUS_EDUCATION', 'Ensino Religioso'],
+  ['ER', 'Ensino Religioso'],
   ['FIS', 'Física'],
   ['PHYSICS', 'Física'],
   ['GEO', 'Geografia'],
@@ -31,9 +37,12 @@ const standardBnccSubjectsByName = new Map<string, string>([
   ['arte', 'Arte'],
   ['artes', 'Arte'],
   ['biologia', 'Biologia'],
+  ['ciencias', 'Ciências'],
+  ['ciencias naturais', 'Ciências'],
   ['educacao fisica', 'Educação Física'],
   ['ed fisica', 'Educação Física'],
   ['filosofia', 'Filosofia'],
+  ['ensino religioso', 'Ensino Religioso'],
   ['fisica', 'Física'],
   ['geografia', 'Geografia'],
   ['historia', 'História'],
@@ -79,4 +88,22 @@ export function mergeStudentSubjectsWithGuidedJourneys(
     subjectsById.set(journey.subject_id, { id: journey.subject_id, name: canonicalName });
   }
   return [...subjectsById.values()].sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'));
+}
+
+export function getSubjectJourneyAvailabilityLabel(journeys: readonly GuidedDisciplineJourneyV9[]): string {
+  const reviewedAndAvailable = journeys.filter((journey) =>
+    journey.availability_status === 'AVAILABLE'
+      && journey.mapping_status === 'MAPPED'
+      && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED',
+  ).length;
+
+  if (reviewedAndAvailable > 0) {
+    return `${reviewedAndAvailable} ${reviewedAndAvailable === 1 ? 'jornada disponível' : 'jornadas disponíveis'}`;
+  }
+
+  if (journeys.length > 0) {
+    return `${journeys.length} ${journeys.length === 1 ? 'jornada em revisão pedagógica' : 'jornadas em revisão pedagógica'}`;
+  }
+
+  return 'Abrir matéria';
 }
