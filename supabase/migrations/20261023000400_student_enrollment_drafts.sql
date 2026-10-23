@@ -78,7 +78,7 @@ begin
   then
     return false;
   end if;
-  if p_payload->'identity' - array[
+  if (p_payload->'identity') - array[
       'full_name', 'email', 'birth_date', 'cpf', 'social_name', 'rg',
       'rg_issuing_authority', 'rg_state', 'birth_certificate', 'nationality',
       'birthplace', 'birth_state', 'sex', 'phone'
@@ -101,7 +101,7 @@ begin
     or length(p_payload->'identity'->>'email') > 254
     or length(p_payload->'identity'->>'cpf') > 32
     or length(p_payload->'identity'->>'phone') > 40
-    or p_payload->'address' - array[
+    or (p_payload->'address') - array[
       'postal_code', 'street', 'number', 'complement', 'neighborhood', 'city', 'state', 'rural_zone'
     ]::text[] <> '{}'::jsonb
     or jsonb_typeof(p_payload->'address'->'postal_code') is distinct from 'string'
@@ -114,7 +114,7 @@ begin
     or jsonb_typeof(p_payload->'address'->'rural_zone') is distinct from 'boolean'
     or length(p_payload->'address'->>'street') > 180
     or length(p_payload->'address'->>'complement') > 180
-    or p_payload->'previous_schooling' - array[
+    or (p_payload->'previous_schooling') - array[
       'origin_school', 'origin_network', 'city', 'state', 'last_grade', 'origin_year',
       'status', 'observations', 'history_delivered', 'transfer_declaration'
     ]::text[] <> '{}'::jsonb
@@ -129,7 +129,7 @@ begin
     or jsonb_typeof(p_payload->'previous_schooling'->'history_delivered') is distinct from 'boolean'
     or jsonb_typeof(p_payload->'previous_schooling'->'transfer_declaration') is distinct from 'boolean'
     or length(p_payload->'previous_schooling'->>'observations') > 2000
-    or p_payload->'health' - array[
+    or (p_payload->'health') - array[
       'allergies', 'health_conditions', 'emergency_medication', 'disability',
       'autism', 'giftedness', 'needs_special_education', 'school_care_notes'
     ]::text[] <> '{}'::jsonb
@@ -213,10 +213,6 @@ as $$
 declare
   v_id uuid;
   v_version bigint;
-  v_error_state text;
-  v_error_message text;
-  v_error_context text;
-  v_safe_context text;
 begin
   if auth.uid() is null or not private.has_institution_role(
     p_institution_id,
@@ -263,19 +259,6 @@ begin
   end if;
 
   return jsonb_build_object('draft_id', v_id, 'version', v_version);
-exception when others then
-  get stacked diagnostics
-    v_error_state = returned_sqlstate,
-    v_error_message = message_text,
-    v_error_context = pg_exception_context;
-  select string_agg(context_line, E'\n')
-    into v_safe_context
-    from unnest(string_to_array(v_error_context, E'\n')) as frame(context_line)
-   where context_line ~ '^PL/pgSQL function .* line [0-9]+ at [[:alpha:] ]+$';
-  raise exception using
-    errcode = v_error_state,
-    message = v_error_message,
-    detail = left(coalesce(v_safe_context, 'no PL/pgSQL frame'), 1000);
 end;
 $$;
 
