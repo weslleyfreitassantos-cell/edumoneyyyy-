@@ -14,6 +14,8 @@ const state = vi.hoisted(() => ({
       { id: 'plan-item-1', position: 1, title: 'Ler um texto curto', description: 'Identifique as pistas no texto.', estimated_minutes: 10, status: 'COMPLETED' },
     ],
   } as null | { estimated_minutes: number; learning_daily_plan_items: Array<{ id: string; position: number; title: string; description: string | null; estimated_minutes: number; status: string }> },
+  errorNotes: [] as Array<{ id: string; canonical_skill_id: string | null; error_count: number; last_missed_at: string }>,
+  errorNotesError: false,
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1' } }) }));
@@ -23,6 +25,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useGuidedDisciplineJourneysV9: () => ({ data: state.journeys, isLoading: false, isError: false }),
   useLearningGamification: () => ({ data: state.gamification }),
   useLearningDailyPlan: () => ({ data: state.dailyPlan, isError: false }),
+  useLearningErrorNotebook: () => ({ data: state.errorNotes, isLoading: false, isError: state.errorNotesError }),
   useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startJourney }),
 }));
 
@@ -38,10 +41,11 @@ function renderPage() {
   return render(<MemoryRouter initialEntries={['/student/study/english']}><Routes>
     <Route path="/student/study/english" element={<EnglishLearningPage />} />
     <Route path="/student/study/guided" element={<p>Jornada guiada aberta</p>} />
+    <Route path="/student/study/error/:errorId" element={<p>Revisão do caderno aberta</p>} />
   </Routes></MemoryRouter>);
 }
 
-afterEach(() => { cleanup(); state.journeys = []; state.gamification = { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' }; state.dailyPlan = { estimated_minutes: 18, learning_daily_plan_items: [{ id: 'plan-item-2', position: 2, title: 'Revisar vocabulário', description: null, estimated_minutes: 8, status: 'PENDING' }, { id: 'plan-item-1', position: 1, title: 'Ler um texto curto', description: 'Identifique as pistas no texto.', estimated_minutes: 10, status: 'COMPLETED' }] }; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
+afterEach(() => { cleanup(); state.journeys = []; state.errorNotes = []; state.errorNotesError = false; state.gamification = { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' }; state.dailyPlan = { estimated_minutes: 18, learning_daily_plan_items: [{ id: 'plan-item-2', position: 2, title: 'Revisar vocabulário', description: null, estimated_minutes: 8, status: 'PENDING' }, { id: 'plan-item-1', position: 1, title: 'Ler um texto curto', description: 'Identifique as pistas no texto.', estimated_minutes: 10, status: 'COMPLETED' }] }; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
 
 describe('EnglishLearningPage', () => {
   it('não libera conteúdo em prévia ou pendente de revisão', () => {
@@ -78,5 +82,31 @@ describe('EnglishLearningPage', () => {
     renderPage();
     expect(screen.getByRole('heading', { name: 'Trilhas ainda não disponíveis' })).toBeTruthy();
     expect(screen.getByText(/Quando houver uma trilha aprovada e publicada/)).toBeTruthy();
+  });
+
+  it('mostra revisões do Caderno de Erros apenas para habilidades das trilhas de inglês', async () => {
+    state.journeys = [makeJourney()];
+    state.errorNotes = [
+      { id: 'english-error-1', canonical_skill_id: 'skill-english-1', error_count: 2, last_missed_at: '2026-10-22T12:00:00Z' },
+      { id: 'math-error-1', canonical_skill_id: 'skill-math-1', error_count: 4, last_missed_at: '2026-10-22T13:00:00Z' },
+      { id: 'unmapped-error', canonical_skill_id: null, error_count: 1, last_missed_at: '2026-10-22T14:00:00Z' },
+    ];
+    renderPage();
+
+    expect(screen.getByRole('heading', { name: 'Questões de inglês para reforçar' })).toBeTruthy();
+    expect(screen.getAllByText('Find clues in a short text')).toHaveLength(2);
+    expect(screen.queryByText('skill-math-1')).toBeNull();
+    expect(screen.getByRole('link', { name: 'Tentar novamente' }).getAttribute('href')).toBe('/student/study/error/english-error-1');
+    fireEvent.click(screen.getByRole('link', { name: 'Tentar novamente' }));
+    await waitFor(() => expect(screen.getByText('Revisão do caderno aberta')).toBeTruthy());
+  });
+
+  it('não afirma que as revisões estão vazias quando o Caderno de Erros falha', () => {
+    state.journeys = [makeJourney()];
+    state.errorNotesError = true;
+    renderPage();
+
+    expect(screen.getByText('Não foi possível consultar as revisões agora. Seu progresso continua salvo.')).toBeTruthy();
+    expect(screen.queryByText('Nenhuma questão de inglês aguardando reforço no Caderno de Erros.')).toBeNull();
   });
 });
