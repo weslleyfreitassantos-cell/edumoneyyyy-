@@ -491,6 +491,12 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       birth_date: '2018-03-04',
       active: true,
     })).id;
+    const studentsBeforeDraft = await service.from('students')
+      .select('id', { count: 'exact', head: true })
+      .eq('institution_id', institutionA)
+      .eq('full_name', fullName);
+    expect(studentsBeforeDraft.error).toBeNull();
+    expect(studentsBeforeDraft.count).toBe(1);
     const authUsersBefore = await service.auth.admin.listUsers({ page: 1, perPage: 1000 });
     expect(authUsersBefore.error).toBeNull();
     const payload = {
@@ -553,7 +559,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       .eq('institution_id', institutionA)
       .eq('full_name', fullName);
     expect(beforeFinalize.error).toBeNull();
-    expect(beforeFinalize.count).toBe(0);
+    expect(beforeFinalize.count).toBe(studentsBeforeDraft.count);
 
     const claim = await director.client.rpc('claim_student_enrollment_draft_finalization', {
       p_institution_id: institutionA,
