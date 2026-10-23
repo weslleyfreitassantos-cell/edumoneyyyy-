@@ -341,12 +341,15 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     expect(versionConflict.error?.message).not.toContain(sensitiveMarker);
     console.info('[draft-ci] stale version rejected');
 
+    console.info('[draft-ci] reading current draft version');
     const current = await director.client.rpc('get_student_enrollment_draft', {
       p_institution_id: institutionA,
       p_draft_id: draftId,
     });
+    console.info('[draft-ci] current draft read completed');
     expect(current.error).toBeNull();
     expect(Number(current.data?.version)).toBe(firstVersion + 1);
+    console.info('[draft-ci] discarding draft as secretary');
     const discarded = await secretary.client.rpc('discard_student_enrollment_draft', {
       p_institution_id: institutionA,
       p_draft_id: draftId,
