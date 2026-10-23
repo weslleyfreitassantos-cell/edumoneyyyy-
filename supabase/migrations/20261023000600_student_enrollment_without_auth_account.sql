@@ -218,6 +218,7 @@ create table public.student_enrollment_duplicate_approvals (
 
 alter table public.student_enrollment_duplicate_approvals enable row level security;
 revoke all on public.student_enrollment_duplicate_approvals from public, anon, authenticated;
+grant select, delete on public.student_enrollment_duplicate_approvals to service_role;
 
 create or replace function private.student_identity_fingerprint(
   p_full_name text,
