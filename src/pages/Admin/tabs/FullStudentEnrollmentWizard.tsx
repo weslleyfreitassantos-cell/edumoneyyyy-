@@ -90,9 +90,24 @@ const guardianRelationshipOptions = [
 function emptyDocuments(): StudentDocumentDraft[] {
   return documentTypes.map((documentType) => ({
     document_type: documentType,
-    status: 'PENDING',
+    status: 'NOT_REQUESTED',
     notes: '',
   }));
+}
+
+const documentStatusLabels: Record<StudentDocumentDraft['status'], string> = {
+  NOT_REQUESTED: 'Não solicitado',
+  PENDING: 'Pendente',
+  REQUESTED: 'Solicitado',
+  DELIVERED: 'Recebido',
+  UNDER_REVIEW: 'Em conferência',
+  VALIDATED: 'Validado',
+  REJECTED: 'Rejeitado',
+  DISPENSED: 'Dispensado',
+};
+
+function documentNeedsFollowUp(status: StudentDocumentDraft['status']): boolean {
+  return !['NOT_REQUESTED', 'VALIDATED', 'DISPENSED'].includes(status);
 }
 
 function createEmptyGuardian(): GuardianDraft {
@@ -395,6 +410,16 @@ export default function FullStudentEnrollmentWizard({
       }
       if (draft.guardians.length > 0 && !draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsável principal.';
     }
+    if (step === 5) {
+      const missingJustification = draft.documents.find(
+        (document) =>
+          ['REJECTED', 'DISPENSED'].includes(document.status) &&
+          !document.notes.trim(),
+      );
+      if (missingJustification) {
+        return `Informe uma justificativa para o documento “${missingJustification.document_type}”.`;
+      }
+    }
     if (step === 6) {
       if (!isExistingStudentMode || editEnrollmentId || mode === 'enroll') {
         if (!draft.academic_year_id) return 'Selecione o ano letivo.';
@@ -694,7 +719,83 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderDocuments() {
-    return <div className="space-y-3"><p className="text-sm text-slate-600 dark:text-slate-400">Anexe os documentos nesta etapa. Os arquivos ficam armazenados de forma privada e vinculados ao cadastro do aluno.</p><p className="text-xs text-slate-500 dark:text-slate-400">Formatos aceitos: PDF, DOC, DOCX, JPG, PNG e WEBP. Limite de 10 MB por arquivo.</p>{draft.documents.map((document, index) => <div key={document.document_type} className="rounded-lg border border-slate-200 p-3 dark:border-slate-700"><div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_180px_minmax(0,1.4fr)]"><span className="self-center text-sm font-medium text-slate-700 dark:text-slate-200">{document.document_type}</span><select aria-label={`Status de ${document.document_type}`} className={inputClass} value={document.status} onChange={(event) => updateDocument(index, { status: event.target.value as StudentDocumentDraft['status'] })}><option value="PENDING">Pendente</option><option value="DELIVERED">Entregue</option><option value="VALIDATED">Validado</option><option value="DISPENSED">Dispensado</option></select><input type="text" className={inputClass} placeholder="Observação" value={document.notes} onChange={(event) => updateDocument(index, { notes: event.target.value })} /></div><div className="mt-2 flex flex-wrap items-center gap-2"><label className="inline-flex cursor-pointer items-center rounded-lg border border-blue-600 px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-950/30"><span>Selecionar arquivo</span><input type="file" accept={STUDENT_DOCUMENT_ACCEPT} className="sr-only" onChange={(event) => updateDocument(index, { file: event.target.files?.[0] ?? null })} /></label>{document.file && <span className="text-xs text-slate-600 dark:text-slate-300">Novo arquivo: {document.file.name}</span>}{document.file_path && !document.file && <><span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">Arquivo armazenado</span><button type="button" className="text-xs font-semibold text-blue-700 underline dark:text-blue-300" onClick={() => void openStoredDocument(document.file_path as string)}>Abrir arquivo</button></>}</div></div>)}</div>;
+    const events = editorQuery.data?.documentStatusHistory ?? [];
+    return (
+      <div className="space-y-3">
+        <p className="text-sm text-slate-600 dark:text-slate-400">
+          Os documentos são conferidos conforme a regra da instituição. Não solicitado não bloqueia a matrícula; rejeição e dispensa exigem justificativa.
+        </p>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          Formatos aceitos: PDF, DOC, DOCX, JPG, PNG e WEBP. Limite de 10 MB por arquivo. Os arquivos ficam privados e vinculados ao cadastro do aluno.
+        </p>
+        {draft.documents.map((document, index) => (
+          <div key={document.document_type} className="rounded-lg border border-slate-200 p-3 dark:border-slate-700">
+            <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_180px_minmax(0,1.4fr)]">
+              <span className="self-center text-sm font-medium text-slate-700 dark:text-slate-200">{document.document_type}</span>
+              <select
+                aria-label={`Status de ${document.document_type}`}
+                className={inputClass}
+                value={document.status}
+                onChange={(event) => updateDocument(index, { status: event.target.value as StudentDocumentDraft['status'] })}
+              >
+                {Object.entries(documentStatusLabels).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
+              </select>
+              <input
+                type="text"
+                className={inputClass}
+                aria-label={`Observação de ${document.document_type}`}
+                placeholder={['REJECTED', 'DISPENSED'].includes(document.status) ? 'Justificativa obrigatória' : 'Observação opcional'}
+                value={document.notes}
+                onChange={(event) => updateDocument(index, { notes: event.target.value })}
+              />
+            </div>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <label className="inline-flex cursor-pointer items-center rounded-lg border border-blue-600 px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-950/30">
+                <span>Selecionar arquivo</span>
+                <input
+                  type="file"
+                  accept={STUDENT_DOCUMENT_ACCEPT}
+                  className="sr-only"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0] ?? null;
+                    updateDocument(index, {
+                      file,
+                      ...(file ? { status: 'DELIVERED' } : {}),
+                    });
+                  }}
+                />
+              </label>
+              {document.file && <span className="text-xs text-slate-600 dark:text-slate-300">Novo arquivo: {document.file.name}</span>}
+              {document.file_path && !document.file && <>
+                <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">Arquivo armazenado</span>
+                <button type="button" className="text-xs font-semibold text-blue-700 underline dark:text-blue-300" onClick={() => void openStoredDocument(document.file_path as string)}>Abrir arquivo</button>
+              </>}
+            </div>
+          </div>
+        ))}
+        {isExistingStudentMode && events.length > 0 && (
+          <section aria-label="Histórico de conferência documental" className="rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900/50">
+            <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Histórico de conferência</h3>
+            <ol className="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300">
+              {events.slice(0, 10).map((event, index) => {
+                const actor = usersQuery.data?.find((user) => user.profile_id === event.actor_profile_id);
+                const changedAt = new Date(event.changed_at).toLocaleString('pt-BR');
+                const transition = event.from_status
+                  ? `${documentStatusLabels[event.from_status]} → ${documentStatusLabels[event.to_status]}`
+                  : documentStatusLabels[event.to_status];
+                return (
+                  <li key={`${event.document_type}-${event.changed_at}-${index}`}>
+                    {event.document_type}: {transition} · {changedAt} · {actor?.profile?.full_name ?? 'equipe autorizada'}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        )}
+      </div>
+    );
   }
 
   function renderEnrollment() {
@@ -816,7 +917,8 @@ export default function FullStudentEnrollmentWizard({
     const confirmationMessage = mode === 'enroll'
       ? 'Ao confirmar, os dados complementares e a nova matrícula serão persistidos para o aluno existente. Nenhum acesso será criado nem alterado.'
       : 'Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.';
-    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos pendentes</strong><p>{draft.documents.filter((document) => document.status === 'PENDING').length}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">{confirmationMessage}</div></div>;
+    const pendingDocuments = draft.documents.filter((document) => documentNeedsFollowUp(document.status)).length;
+    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos aguardando providência</strong><p>{pendingDocuments}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">{confirmationMessage}</div></div>;
   }
 
   function renderStep() {

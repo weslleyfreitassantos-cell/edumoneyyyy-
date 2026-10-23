@@ -158,6 +158,32 @@ async function advanceToReview() {
   }
 }
 
+async function advanceToDocuments() {
+  fireEvent.change(screen.getByLabelText('Nome completo *'), {
+    target: { value: 'Aluno Novo' },
+  });
+  fireEvent.change(screen.getByLabelText('E-mail *'), {
+    target: { value: 'novo@example.com' },
+  });
+  fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
+    target: { value: '2016-01-01' },
+  });
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+  fireEvent.change(screen.getByLabelText('Responsável'), {
+    target: { value: 'guardian-profile' },
+  });
+  fireEvent.change(screen.getByLabelText('Parentesco *'), {
+    target: { value: 'Mãe' },
+  });
+  for (let index = 2; index < 5; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+}
+
 describe('FullStudentEnrollmentWizard', () => {
   afterEach(() => {
     cleanup();
@@ -204,6 +230,23 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Usar este cadastro' }));
     expect(mocks.useExisting).toHaveBeenCalledWith('student-1');
     expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it('deixa documentos não solicitados por padrão e exige justificativa para rejeição/dispensa', async () => {
+    renderWizard();
+    await advanceToDocuments();
+
+    const status = screen.getByLabelText('Status de Certidao de nascimento') as HTMLSelectElement;
+    expect(status.value).toBe('NOT_REQUESTED');
+    fireEvent.change(status, { target: { value: 'REJECTED' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    expect(await screen.findByText('Informe uma justificativa para o documento “Certidao de nascimento”.')).toBeTruthy();
+
+    fireEvent.change(screen.getByLabelText('Observação de Certidao de nascimento'), {
+      target: { value: 'Documento ilegível; solicitar nova cópia.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    expect(await screen.findByText('Etapa 7 de 8')).toBeTruthy();
   });
 
   it('percorre as oito etapas e confirma a matricula', async () => {

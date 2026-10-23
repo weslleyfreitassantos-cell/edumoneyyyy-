@@ -67,10 +67,22 @@ export interface HealthInformationDraft {
 }
 
 export type StudentDocumentStatus =
+  | 'NOT_REQUESTED'
   | 'PENDING'
+  | 'REQUESTED'
   | 'DELIVERED'
+  | 'UNDER_REVIEW'
   | 'VALIDATED'
+  | 'REJECTED'
   | 'DISPENSED';
+
+export interface StudentDocumentStatusEvent {
+  document_type: string;
+  from_status: StudentDocumentStatus | null;
+  to_status: StudentDocumentStatus;
+  actor_profile_id: string | null;
+  changed_at: string;
+}
 
 export interface StudentDocumentDraft {
   document_type: string;
@@ -117,6 +129,7 @@ export interface StudentEditorData {
   studentId: string;
   enrollmentId: string | null;
   draft: FullStudentEnrollmentDraft;
+  documentStatusHistory: StudentDocumentStatusEvent[];
 }
 
 const editorDocumentTypes = [
@@ -183,7 +196,7 @@ function emptyEditorDocuments(
     const row = byType.get(documentType);
     return {
       document_type: documentType,
-      status: row?.status ?? 'PENDING',
+      status: row?.status ?? 'NOT_REQUESTED',
       notes: row?.notes ?? '',
       file_path: row?.file_path ?? null,
     };
@@ -194,7 +207,7 @@ export async function getFullStudentEditorData(
   institutionId: string,
   studentId: string,
 ): Promise<StudentEditorData> {
-  const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, guardiansResult, enrollmentResult] = await Promise.all([
+  const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, documentHistoryResult, guardiansResult, enrollmentResult] = await Promise.all([
     supabase
       .from('students')
       .select('id, profile_id, birth_date, cpf, profiles:profile_id(full_name, email, phone)')
@@ -232,6 +245,13 @@ export async function getFullStudentEditorData(
       .eq('institution_id', institutionId)
       .order('document_type'),
     supabase
+      .from('student_document_status_history')
+      .select('document_type, from_status, to_status, actor_profile_id, changed_at')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .order('changed_at', { ascending: false })
+      .limit(50),
+    supabase
       .from('guardianships')
       .select('guardian_profile_id, relationship, is_primary, active, profiles:guardian_profile_id(full_name, email, phone)')
       .eq('student_id', studentId)
@@ -254,6 +274,7 @@ export async function getFullStudentEditorData(
     previousResult,
     healthResult,
     documentsResult,
+    documentHistoryResult,
     guardiansResult,
     enrollmentResult,
   ];
@@ -288,10 +309,12 @@ export async function getFullStudentEditorData(
     file_path: string | null;
     notes: string | null;
   }>;
+  const documentStatusHistory = (documentHistoryResult.data ?? []) as unknown as StudentDocumentStatusEvent[];
 
   return {
     studentId: student.id,
     enrollmentId: enrollment?.id ?? null,
+    documentStatusHistory,
     draft: {
       identity: {
         full_name: profile?.full_name ?? '',
