@@ -213,6 +213,10 @@ as $$
 declare
   v_id uuid;
   v_version bigint;
+  v_error_state text;
+  v_error_message text;
+  v_error_context text;
+  v_safe_context text;
 begin
   if auth.uid() is null or not private.has_institution_role(
     p_institution_id,
@@ -259,6 +263,19 @@ begin
   end if;
 
   return jsonb_build_object('draft_id', v_id, 'version', v_version);
+exception when others then
+  get stacked diagnostics
+    v_error_state = returned_sqlstate,
+    v_error_message = message_text,
+    v_error_context = pg_exception_context;
+  select string_agg(context_line, E'\n')
+    into v_safe_context
+    from unnest(string_to_array(v_error_context, E'\n')) as frame(context_line)
+   where context_line ~ '^PL/pgSQL function .* line [0-9]+ at [[:alpha:] ]+$';
+  raise exception using
+    errcode = v_error_state,
+    message = v_error_message,
+    detail = left(coalesce(v_safe_context, 'no PL/pgSQL frame'), 1000);
 end;
 $$;
 
