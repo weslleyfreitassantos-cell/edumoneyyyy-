@@ -25,6 +25,51 @@ import {
 
 type StockAction = 'RECEIPT' | 'ISSUE' | 'RETURN' | 'ADJUSTMENT' | 'TRANSFER';
 
+const requestStatusLabels: Record<string, { label: string; description: string; className: string }> = {
+  PENDING: {
+    label: 'Aguardando aprovação',
+    description: 'A secretaria ainda precisa analisar esta solicitação.',
+    className: 'border-amber-200 bg-amber-50 text-amber-900',
+  },
+  APPROVED: {
+    label: 'Aprovada · aguardando entrega',
+    description: 'A solicitação foi aprovada e a entrega ainda não começou.',
+    className: 'border-blue-200 bg-blue-50 text-blue-900',
+  },
+  REJECTED: {
+    label: 'Recusada',
+    description: 'A secretaria não aprovou esta solicitação.',
+    className: 'border-red-200 bg-red-50 text-red-900',
+  },
+  PARTIALLY_FULFILLED: {
+    label: 'Entrega parcial',
+    description: 'Parte da quantidade solicitada já foi entregue.',
+    className: 'border-violet-200 bg-violet-50 text-violet-900',
+  },
+  FULFILLED: {
+    label: 'Entregue',
+    description: 'Toda a quantidade solicitada foi entregue.',
+    className: 'border-emerald-200 bg-emerald-50 text-emerald-900',
+  },
+  CANCELLED: {
+    label: 'Cancelada',
+    description: 'Esta solicitação foi cancelada.',
+    className: 'border-slate-200 bg-slate-100 text-slate-700',
+  },
+};
+
+function getRequestStatus(status: string) {
+  return requestStatusLabels[status] ?? {
+    label: status.replaceAll('_', ' '),
+    description: 'Consulte a secretaria se precisar de mais informações.',
+    className: 'border-slate-200 bg-slate-100 text-slate-700',
+  };
+}
+
+function formatRequestQuantity(quantity: number): string {
+  return new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 3 }).format(quantity);
+}
+
 function idempotencyKey(): string {
   return globalThis.crypto.randomUUID();
 }
@@ -531,10 +576,16 @@ export default function InventoryPage() {
 
       <section className="rounded-2xl border border-[#d8deea] bg-white p-5 shadow-sm sm:p-6">
         <h2 className="mb-4 text-lg font-extrabold text-slate-900">{canManage ? 'Solicitações da instituição' : 'Minhas solicitações'}</h2>
-        {requests.length === 0 ? <p className="rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600">Nenhuma solicitação encontrada.</p> : <ul className="space-y-3">{requests.map((request) => <li key={request.request_item_id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-4"><div><p className="font-bold text-slate-900">{request.item_name} · {request.requested_quantity} {request.unit}</p><p className="text-sm text-slate-600">{canManage ? `Solicitante ${request.requester_id.slice(0, 8)} · ` : ''}{request.status.replaceAll('_', ' ')} · entregue {request.fulfilled_quantity} de {request.requested_quantity}</p>{request.note ? <p className="mt-1 text-sm text-slate-500">{request.note}</p> : null}</div>
+        {requests.length === 0 ? <p className="rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-600">Nenhuma solicitação encontrada.</p> : <ul className="space-y-3">{requests.map((request) => {
+          const status = getRequestStatus(request.status);
+          const requested = Number(request.requested_quantity) || 0;
+          const fulfilled = Number(request.fulfilled_quantity) || 0;
+          const progress = requested > 0 ? Math.min(100, Math.max(0, (fulfilled / requested) * 100)) : 0;
+          return <li key={request.request_item_id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-4"><div className="min-w-64 flex-1"><p className="font-bold text-slate-900">{request.item_name} · {formatRequestQuantity(request.requested_quantity)} {request.unit}</p><span className={`mt-2 inline-flex rounded-full border px-2.5 py-1 text-xs font-bold ${status.className}`}>{status.label}</span><p className="mt-2 text-sm text-slate-600">{status.description}</p><p className="mt-1 text-sm font-semibold text-slate-700">Entregue: {formatRequestQuantity(request.fulfilled_quantity)} de {formatRequestQuantity(request.requested_quantity)}</p><div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label={`Progresso da entrega de ${request.item_name}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)} aria-valuetext={`${formatRequestQuantity(request.fulfilled_quantity)} de ${formatRequestQuantity(request.requested_quantity)} ${request.unit} entregues`}><div className="h-full rounded-full bg-[#075fbd] transition-[width]" style={{ width: `${progress}%` }} /></div>{canManage ? <p className="mt-2 text-xs text-slate-500">Solicitante {request.requester_id.slice(0, 8)}</p> : null}{request.note ? <p className="mt-1 text-sm text-slate-500">Observação: {request.note}</p> : null}</div>
           {canManage && request.status === 'PENDING' ? <div className="flex gap-2"><button type="button" disabled={saving} onClick={() => void decide(request, 'APPROVED')} className="inline-flex h-10 items-center gap-1 rounded-lg bg-emerald-700 px-3 text-sm font-bold text-white disabled:opacity-60"><Check className="h-4 w-4" aria-hidden="true" />Aprovar</button><button type="button" disabled={saving} onClick={() => void decide(request, 'REJECTED')} className="inline-flex h-10 items-center gap-1 rounded-lg border border-red-300 px-3 text-sm font-bold text-red-800 disabled:opacity-60"><X className="h-4 w-4" aria-hidden="true" />Recusar</button></div> : null}
           {canManage && ['APPROVED', 'PARTIALLY_FULFILLED'].includes(request.status) ? <form className="flex flex-wrap items-end gap-2" onSubmit={(event) => { event.preventDefault(); void fulfill(request, event.currentTarget); }}><label className="text-xs font-semibold text-slate-600">Retirar de<select name="location_id" defaultValue={openCountLocationIds.has(request.location_id) ? locations.find((location) => !openCountLocationIds.has(location.id))?.id ?? '' : request.location_id} required className="mt-1 block h-10 min-w-36 rounded-lg border border-slate-300 px-2 text-sm"><option value="" disabled>Selecione</option>{locations.map((location) => <option key={location.id} value={location.id} disabled={openCountLocationIds.has(location.id)}>{location.name}{openCountLocationIds.has(location.id) ? ' · contagem aberta' : ''}</option>)}</select></label><label className="text-xs font-semibold text-slate-600">Entregar<input name="quantity" type="number" min="0.001" max={request.requested_quantity - request.fulfilled_quantity} step="0.001" defaultValue={request.requested_quantity - request.fulfilled_quantity} required className="mt-1 block h-10 w-28 rounded-lg border border-slate-300 px-2 text-sm" /></label><button disabled={saving} className="h-10 rounded-lg bg-[#075fbd] px-3 text-sm font-bold text-white disabled:opacity-60">Registrar entrega</button></form> : null}
-          {isTeacher && request.status === 'PENDING' && request.requester_id === profile?.id ? <button type="button" disabled={saving} onClick={() => void cancelRequest(request)} className="h-10 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 disabled:opacity-60">Cancelar solicitação</button> : null}</li>)}</ul>}
+          {isTeacher && request.status === 'PENDING' && request.requester_id === profile?.id ? <button type="button" disabled={saving} onClick={() => void cancelRequest(request)} className="h-10 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 disabled:opacity-60">Cancelar solicitação</button> : null}</li>;
+        })}</ul>}
       </section>
 
       {canManage ? <section className="rounded-2xl border border-[#d8deea] bg-white p-5 shadow-sm sm:p-6"><div className="mb-4 flex flex-wrap items-end justify-between gap-3"><div><h2 className="text-lg font-extrabold text-slate-900">Movimentações recentes</h2><p className="text-sm text-slate-600">Exporte o histórico completo de um período; a tabela abaixo mostra as últimas 100 movimentações.</p></div><form onSubmit={(event) => { event.preventDefault(); void downloadMovementReport(); }} className="flex flex-wrap items-end gap-2"><label className="text-xs font-semibold text-slate-600">De<input type="date" value={reportStartDate} max={reportEndDate} onChange={(event) => setReportStartDate(event.target.value)} required className="mt-1 block h-10 rounded-lg border border-slate-300 px-2 text-sm" /></label><label className="text-xs font-semibold text-slate-600">Até<input type="date" value={reportEndDate} min={reportStartDate} onChange={(event) => setReportEndDate(event.target.value)} required className="mt-1 block h-10 rounded-lg border border-slate-300 px-2 text-sm" /></label><button disabled={reporting || !reportStartDate || !reportEndDate} className="h-10 rounded-lg border border-[#075fbd] px-3 text-sm font-bold text-[#075fbd] disabled:opacity-50"><Download className="mr-1 inline h-4 w-4" aria-hidden="true" />{reporting ? 'Gerando...' : 'Exportar período'}</button></form></div>{movements.length === 0 ? <p className="text-sm text-slate-600">Nenhuma movimentação registrada.</p> : <div className="overflow-x-auto"><table className="w-full min-w-[720px] text-left text-sm"><thead><tr className="border-b text-xs uppercase tracking-wide text-slate-500"><th className="py-2 pr-3">Data</th><th className="py-2 pr-3">Material</th><th className="py-2 pr-3">Operação</th><th className="py-2 pr-3">Variação</th><th className="py-2 pr-3">Saldo</th><th className="py-2">Responsável (ID)</th></tr></thead><tbody>{movements.map((movement) => <tr key={movement.id} className="border-b last:border-0"><td className="py-3 pr-3">{new Date(movement.created_at).toLocaleString('pt-BR')}</td><td className="py-3 pr-3">{movement.item_name}</td><td className="py-3 pr-3">{movement.movement_type} · {movement.location_name}</td><td className="py-3 pr-3">{movement.quantity_delta > 0 ? '+' : ''}{movement.quantity_delta}</td><td className="py-3 pr-3">{movement.balance_after}</td><td className="py-3" title={movement.performed_by}>{movement.performed_by.slice(0, 8)}</td></tr>)}</tbody></table></div>}</section> : null}

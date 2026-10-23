@@ -81,6 +81,8 @@ describe('InventoryPage', () => {
     expect(screen.queryByRole('button', { name: /Saída/ })).toBeNull();
     expect(screen.queryByRole('heading', { name: 'Cadastrar material' })).toBeNull();
     expect(screen.getByRole('button', { name: /Cancelar solicitação/ })).toBeTruthy();
+    expect(screen.getByText('Aguardando aprovação')).toBeTruthy();
+    expect(screen.getByText('Entregue: 0 de 2')).toBeTruthy();
 
     fireEvent.change(screen.getByLabelText('Quantidade solicitada'), { target: { value: '2' } });
     fireEvent.click(screen.getByRole('button', { name: /Solicitar/ }));
@@ -91,6 +93,24 @@ describe('InventoryPage', () => {
     await waitFor(() => expect(service.cancelRequest).toHaveBeenCalledWith(expect.objectContaining({
       institutionId: 'institution-1', requestId: 'request-1',
     })));
+  });
+
+  it('mostra ao professor o estado e o progresso de uma entrega parcial sem controles de estoque', async () => {
+    service.list.mockResolvedValueOnce({
+      items: [item],
+      requests: [{ ...request, status: 'PARTIALLY_FULFILLED', fulfilled_quantity: 1 }],
+      movements: [],
+      locations: [{ id: 'location-1', name: 'Almoxarifado' }],
+      countSessions: [],
+    });
+
+    render(<InventoryPage />);
+
+    expect(await screen.findByText('Entrega parcial')).toBeTruthy();
+    expect(screen.getByText('Parte da quantidade solicitada já foi entregue.')).toBeTruthy();
+    expect(screen.getByText('Entregue: 1 de 2')).toBeTruthy();
+    expect(screen.getByRole('progressbar', { name: 'Progresso da entrega de Papel A4' }).getAttribute('aria-valuenow')).toBe('50');
+    expect(screen.queryByRole('button', { name: 'Registrar entrega' })).toBeNull();
   });
 
   it('libera cadastro, transferências e gestão de materiais somente para direção/secretaria', async () => {
