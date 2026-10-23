@@ -62,6 +62,7 @@ import GuidedJourneyPage from './GuidedJourneyPage';
 
 afterEach(() => {
   cleanup();
+  window.sessionStorage.clear();
   vi.clearAllMocks();
 });
 
@@ -87,6 +88,39 @@ describe('GuidedJourneyPage', () => {
       answers: [{ question_bank_id: 'question-1', answer: '7' }],
       idempotencyKey: 'guided-v2:step-1',
     });
+  });
+
+  it('shows one question at a time and submits saved answers together', () => {
+    const originalQuestions = state.step.data.questions;
+    state.step.data.questions = [
+      { id: 'question-1', statement: 'Primeira questão?', options: ['4', '7'], difficulty: 'EASY', position: 0 },
+      { id: 'question-2', statement: 'Segunda questão?', options: ['8', '9'], difficulty: 'MEDIUM', position: 1 },
+    ];
+
+    renderPage();
+
+    expect(screen.getByText('Primeira questão?')).toBeTruthy();
+    expect(screen.queryByText('Segunda questão?')).toBeNull();
+    fireEvent.click(screen.getByLabelText('7'));
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima questão' }));
+
+    expect(screen.queryByText('Primeira questão?')).toBeNull();
+    expect(screen.getByText('Segunda questão?')).toBeTruthy();
+    fireEvent.click(screen.getByLabelText('9'));
+    fireEvent.click(screen.getByRole('button', { name: 'Questão anterior' }));
+    expect(screen.getByLabelText('7')).toHaveProperty('checked', true);
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima questão' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+
+    expect(state.submit.mutateAsync).toHaveBeenCalledWith({
+      stepId: 'step-1',
+      answers: [
+        { question_bank_id: 'question-1', answer: '7' },
+        { question_bank_id: 'question-2', answer: '9' },
+      ],
+      idempotencyKey: 'guided-v2:step-1',
+    });
+    state.step.data.questions = originalQuestions;
   });
 
   it('keeps the correction visible when the completed session is invalidated', async () => {
