@@ -95,6 +95,49 @@ describe('InventoryPage', () => {
     })));
   });
 
+  it('filtra materiais por categoria sem alterar os dados do catálogo', async () => {
+    const artMaterial = { ...item, id: 'item-2', category_id: 'category-2', name: 'Tinta guache', category: 'Artes' };
+    service.list.mockResolvedValueOnce({
+      items: [item, artMaterial], requests: [], movements: [],
+      locations: [{ id: 'location-1', name: 'Almoxarifado' }], countSessions: [],
+    });
+    render(<InventoryPage />);
+
+    expect(await screen.findByText('Papel A4')).toBeTruthy();
+    expect(screen.getByText('Tinta guache')).toBeTruthy();
+    fireEvent.change(screen.getByLabelText('Filtrar por categoria'), { target: { value: 'Artes' } });
+
+    expect(screen.getByText('Tinta guache')).toBeTruthy();
+    expect(screen.queryByText('Papel A4')).toBeNull();
+  });
+
+  it('pagina o catálogo e mantém o controle de navegação acessível', async () => {
+    const catalogItems = Array.from({ length: 12 }, (_, index) => ({
+      ...item,
+      id: `item-${index + 1}`,
+      name: `Material ${index + 1}`,
+    }));
+    service.list.mockResolvedValueOnce({
+      items: catalogItems, requests: [], movements: [],
+      locations: [{ id: 'location-1', name: 'Almoxarifado' }], countSessions: [],
+    });
+    render(<InventoryPage />);
+
+    expect(await screen.findByText('Material 1')).toBeTruthy();
+    expect(screen.getByText('Material 10')).toBeTruthy();
+    expect(screen.queryByText('Material 11')).toBeNull();
+    expect(screen.getByText('Mostrando 1–10 de 12 materiais')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima página' }));
+    expect(screen.getByText('Material 11')).toBeTruthy();
+    expect(screen.getByText('Material 12')).toBeTruthy();
+    expect(screen.queryByText('Material 1')).toBeNull();
+    expect(screen.getByText('Mostrando 11–12 de 12 materiais')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Página anterior' }));
+    expect(screen.getByText('Material 1')).toBeTruthy();
+  });
+
   it('mostra ao professor o estado e o progresso de uma entrega parcial sem controles de estoque', async () => {
     service.list.mockResolvedValueOnce({
       items: [item],

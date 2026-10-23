@@ -24,6 +24,7 @@ import {
 } from '../../services/inventoryService';
 
 type StockAction = 'RECEIPT' | 'ISSUE' | 'RETURN' | 'ADJUSTMENT' | 'TRANSFER';
+const INVENTORY_PAGE_SIZE = 10;
 
 const requestStatusLabels: Record<string, { label: string; description: string; className: string }> = {
   PENDING: {
@@ -118,6 +119,8 @@ export default function InventoryPage() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [search, setSearch] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('ALL');
+  const [catalogPage, setCatalogPage] = useState(0);
   const [reportStartDate, setReportStartDate] = useState(() => {
     const date = new Date();
     date.setDate(date.getDate() - 30);
@@ -159,10 +162,22 @@ export default function InventoryPage() {
 
   const visibleItems = useMemo(() => {
     const needle = search.trim().toLocaleLowerCase('pt-BR');
-    return items.filter((item) => (canManage || item.active) && (!needle ||
-      [item.name, item.category, item.sku ?? '', item.default_location]
+    return items.filter((item) => (canManage || item.active)
+      && (categoryFilter === 'ALL' || item.category === categoryFilter)
+      && (!needle || [item.name, item.category, item.sku ?? '', item.default_location]
         .some((value) => value.toLocaleLowerCase('pt-BR').includes(needle))));
-  }, [canManage, items, search]);
+  }, [canManage, categoryFilter, items, search]);
+  const catalogCategories = useMemo(() => [...new Set<string>(items
+    .filter((item) => canManage || item.active)
+    .map((item) => item.category.trim())
+    .filter((category) => category.length > 0))].sort((left, right) => left.localeCompare(right, 'pt-BR')),
+  [canManage, items]);
+  const catalogPageCount = Math.ceil(visibleItems.length / INVENTORY_PAGE_SIZE);
+  const currentCatalogPage = Math.min(catalogPage, Math.max(0, catalogPageCount - 1));
+  const pagedItems = visibleItems.slice(
+    currentCatalogPage * INVENTORY_PAGE_SIZE,
+    (currentCatalogPage + 1) * INVENTORY_PAGE_SIZE,
+  );
   const lowStockCount = items.filter((item) => item.active && item.stock <= item.minimum_quantity).length;
   const pendingRequestCount = requests.filter((request) => request.status === 'PENDING').length;
   const openCountLocationIds = new Set(countSessions
@@ -545,11 +560,11 @@ export default function InventoryPage() {
       <section className="rounded-2xl border border-[#d8deea] bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div><h2 className="text-lg font-extrabold text-slate-900">Catálogo de materiais</h2><p className="text-sm text-slate-600">{items.filter((item) => item.active).length} material(is) ativo(s). O saldo é atualizado somente por operações auditadas.</p></div>
-            <div className="flex w-full flex-wrap gap-2 sm:w-auto"><label className="relative block min-w-60 flex-1 sm:max-w-sm"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><span className="sr-only">Pesquisar materiais</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Pesquisar material, categoria ou código" className="min-h-11 w-full rounded-lg border border-slate-300 pl-9 pr-3" /></label><button type="button" onClick={downloadReport} disabled={items.length === 0} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"><Download className="h-4 w-4" aria-hidden="true" />Exportar CSV</button></div>
+            <div className="flex w-full flex-wrap gap-2 sm:w-auto"><label className="relative block min-w-60 flex-1 sm:max-w-sm"><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><span className="sr-only">Pesquisar materiais</span><input value={search} onChange={(event) => { setSearch(event.target.value); setCatalogPage(0); }} placeholder="Pesquisar material, categoria ou código" className="min-h-11 w-full rounded-lg border border-slate-300 pl-9 pr-3" /></label><label className="text-sm font-semibold text-slate-700"><span className="sr-only">Filtrar por categoria</span><select aria-label="Filtrar por categoria" value={categoryFilter} onChange={(event) => { setCategoryFilter(event.target.value); setCatalogPage(0); }} className="min-h-11 min-w-44 rounded-lg border border-slate-300 bg-white px-3"><option value="ALL">Todas as categorias</option>{catalogCategories.map((category) => <option key={category} value={category}>{category}</option>)}</select></label><button type="button" onClick={downloadReport} disabled={items.length === 0} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"><Download className="h-4 w-4" aria-hidden="true" />Exportar CSV</button></div>
         </div>
         {loading ? <p role="status" className="py-8 text-center text-sm text-slate-600">Carregando catálogo...</p> : visibleItems.length === 0 ? <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-sm text-slate-600">{items.length ? 'Nenhum material corresponde à pesquisa.' : 'Ainda não há materiais cadastrados nesta instituição.'}</p> : (
           <ul className="space-y-3">
-            {visibleItems.map((item) => (
+            {pagedItems.map((item) => (
               <li key={item.id} className="rounded-xl border border-slate-200 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div><h3 className="font-bold text-slate-900">{item.name} {!item.active ? <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">Inativo</span> : null}</h3><p className="mt-1 text-sm text-slate-600">{item.category} · {item.unit}{item.sku ? ` · ${item.sku}` : ''} · local padrão: {item.default_location}</p>{item.supplier ? <p className="text-xs text-slate-500">Fornecedor: {item.supplier}{item.supplier_contact ? ` · ${item.supplier_contact}` : ''}</p> : null}</div>
@@ -572,6 +587,10 @@ export default function InventoryPage() {
             ))}
           </ul>
         )}
+        {!loading && visibleItems.length > 0 && catalogPageCount > 1 ? <nav aria-label="Paginação do catálogo" className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4">
+          <p aria-live="polite" className="text-sm text-slate-600">Mostrando {currentCatalogPage * INVENTORY_PAGE_SIZE + 1}–{Math.min((currentCatalogPage + 1) * INVENTORY_PAGE_SIZE, visibleItems.length)} de {visibleItems.length} materiais</p>
+          <div className="flex items-center gap-2"><button type="button" aria-label="Página anterior" onClick={() => setCatalogPage((page) => Math.max(0, page - 1))} disabled={currentCatalogPage === 0} className="min-h-10 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 disabled:opacity-50">Anterior</button><span className="min-w-24 text-center text-sm text-slate-600">Página {currentCatalogPage + 1} de {catalogPageCount}</span><button type="button" aria-label="Próxima página" onClick={() => setCatalogPage((page) => Math.min(catalogPageCount - 1, page + 1))} disabled={currentCatalogPage >= catalogPageCount - 1} className="min-h-10 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 disabled:opacity-50">Próxima</button></div>
+        </nav> : null}
       </section>
 
       <section className="rounded-2xl border border-[#d8deea] bg-white p-5 shadow-sm sm:p-6">
