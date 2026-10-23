@@ -6,6 +6,7 @@ import {
   type AttendanceSummary,
 } from './attendanceService';
 import { enrollmentService, type EnrollmentRow } from './enrollmentService';
+import { classService, type ClassRow } from './classService';
 import {
   pedagogicalMonitoringService,
   type PedagogicalMonitoringSubject,
@@ -24,7 +25,8 @@ export type AcademicReportType =
   | 'STUDENTS_WITHOUT_CLASS'
   | 'RESULTS'
   | 'ATTENDANCE'
-  | 'DOCUMENTS_PENDING';
+  | 'DOCUMENTS_PENDING'
+  | 'VACANCIES_BY_CLASS';
 
 export interface AcademicReportOption {
   id: string;
@@ -119,6 +121,17 @@ export interface StudentsWithoutClassReportRow {
   registrationNumber: string;
 }
 
+export interface ClassVacanciesReportRow {
+  id: string;
+  className: string;
+  gradeLevel: string | null;
+  shift: string | null;
+  enrolledCount: number;
+  capacity: number | null;
+  availableSeats: number | null;
+  occupancyPercentage: number | null;
+}
+
 interface PendingDocumentSourceRow {
   id: string;
   student_id: string;
@@ -191,6 +204,48 @@ export function buildStudentsWithoutClassReportRows(
       registrationNumber: student.registration_number,
     }))
     .sort((left, right) => left.studentName.localeCompare(right.studentName, 'pt-BR'));
+}
+
+export function buildClassVacanciesReportRows(
+  classes: readonly ClassRow[],
+  enrollments: readonly EnrollmentRow[],
+  academicYearId: string,
+): ClassVacanciesReportRow[] {
+  const activeEnrollmentCounts = new Map<string, number>();
+  for (const enrollment of enrollments) {
+    if (
+      enrollment.academic_year_id !== academicYearId
+      || !enrollment.active
+      || enrollment.status !== 'ACTIVE'
+      || !enrollment.student_active
+      || !enrollment.class_active
+    ) continue;
+    activeEnrollmentCounts.set(
+      enrollment.class_id,
+      (activeEnrollmentCounts.get(enrollment.class_id) ?? 0) + 1,
+    );
+  }
+
+  return classes
+    .filter((classRecord) => classRecord.academic_year_id === academicYearId && classRecord.active)
+    .map((classRecord) => {
+      const enrolledCount = activeEnrollmentCounts.get(classRecord.id) ?? 0;
+      const capacity = classRecord.capacity > 0 ? classRecord.capacity : null;
+      return {
+        id: classRecord.id,
+        className: classRecord.name,
+        gradeLevel: classRecord.grade_level,
+        shift: classRecord.shift,
+        enrolledCount,
+        capacity,
+        availableSeats: capacity === null ? null : Math.max(capacity - enrolledCount, 0),
+        occupancyPercentage: capacity === null ? null : Math.round((enrolledCount / capacity) * 100),
+      };
+    })
+    .sort((left, right) =>
+      (left.shift ?? '').localeCompare(right.shift ?? '', 'pt-BR')
+      || (left.gradeLevel ?? '').localeCompare(right.gradeLevel ?? '', 'pt-BR')
+      || left.className.localeCompare(right.className, 'pt-BR'));
 }
 
 function toOptions(values: Map<string, AcademicReportOption>): AcademicReportOption[] {
@@ -436,6 +491,17 @@ export const academicReportService = {
       enrollmentService.list(institutionId),
     ]);
     return buildStudentsWithoutClassReportRows(students, enrollments, academicYearId);
+  },
+
+  async getClassVacanciesReport(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<ClassVacanciesReportRow[]> {
+    const [classes, enrollments] = await Promise.all([
+      classService.list(institutionId),
+      enrollmentService.list(institutionId),
+    ]);
+    return buildClassVacanciesReportRows(classes, enrollments, academicYearId);
   },
 
   async getAcademicResultsReport(
