@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { useGuidedDisciplineJourneysV9, useLearningGamification, useLearningStudent, useStartGuidedDisciplineJourneyV9 } from '../../hooks/useLearningCenter';
+import { useGuidedDisciplineJourneysV9, useLearningDailyPlan, useLearningGamification, useLearningStudent, useStartGuidedDisciplineJourneyV9 } from '../../hooks/useLearningCenter';
 import type { GuidedDisciplineJourneyV9 } from '../../services/learningCenterService';
 
 function normalize(value: string | null | undefined): string {
@@ -36,7 +36,16 @@ export default function EnglishLearningPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const gamification = useLearningGamification(currentInstitutionId ?? undefined, student.data?.id);
+  const dailyPlan = useLearningDailyPlan(currentInstitutionId ?? undefined, student.data?.id);
   const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const dailyPlanItems = useMemo(
+    () => [...(dailyPlan.data?.learning_daily_plan_items ?? [])].sort((left, right) => left.position - right.position),
+    [dailyPlan.data?.learning_daily_plan_items],
+  );
+  const completedDailyPlanItems = dailyPlanItems.filter((item) => item.status === 'COMPLETED').length;
+  const dailyPlanProgress = dailyPlanItems.length > 0
+    ? Math.round((completedDailyPlanItems / dailyPlanItems.length) * 100)
+    : 0;
   const englishJourneys = useMemo(
     () => (journeys.data ?? []).filter(isEnglishJourney).sort((left, right) => left.unit_title.localeCompare(right.unit_title, 'pt-BR') || left.title.localeCompare(right.title, 'pt-BR')),
     [journeys.data],
@@ -95,6 +104,54 @@ export default function EnglishLearningPage() {
             <p className="mt-1 text-xs text-sky-800 dark:text-sky-200">Meta configurada no seu perfil de estudos</p>
           </article>
         </section>
+      ) : null}
+
+      {dailyPlan.data ? (
+        <section aria-labelledby="english-daily-plan-title" className="rounded-2xl border border-sky-200 bg-white p-5 shadow-sm dark:border-sky-900/60 dark:bg-slate-900 sm:p-6">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Seu estudo de hoje</p>
+              <h2 id="english-daily-plan-title" className="mt-1 text-xl font-bold text-slate-900 dark:text-white">Plano diário</h2>
+            </div>
+            <p className="rounded-full bg-sky-50 px-3 py-1 text-sm font-bold text-sky-900 dark:bg-sky-950/50 dark:text-sky-100">
+              {completedDailyPlanItems} de {dailyPlanItems.length} {dailyPlanItems.length === 1 ? 'etapa concluída' : 'etapas concluídas'}
+            </p>
+          </div>
+          <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" role="progressbar" aria-label={`Plano de hoje: ${completedDailyPlanItems} de ${dailyPlanItems.length} etapas concluídas`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={dailyPlanProgress}>
+            <div className="h-full rounded-full bg-sky-600 transition-[width]" style={{ width: `${dailyPlanProgress}%` }} />
+          </div>
+          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+            {dailyPlan.data.estimated_minutes} min estimados. A duração organiza o plano e não representa tempo cronometrado.
+          </p>
+          {dailyPlanItems.length > 0 ? (
+            <ol className="mt-4 grid gap-2 sm:grid-cols-2">
+              {dailyPlanItems.map((item) => {
+                const statusLabel = item.status === 'COMPLETED'
+                  ? 'Concluída'
+                  : item.status === 'IN_PROGRESS'
+                    ? 'Em andamento'
+                    : item.status === 'SKIPPED'
+                      ? 'Adiada'
+                      : 'Pendente';
+                return (
+                  <li key={item.id} className="flex items-start justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-slate-700">
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.title}</p>
+                      {item.description ? <p className="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-300">{item.description}</p> : null}
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Estimativa: {item.estimated_minutes} min</p>
+                    </div>
+                    <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${item.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200'}`}>
+                      {statusLabel}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+          ) : <p className="mt-4 rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhuma etapa foi planejada para hoje.</p>}
+          <Link to="/student/study" className="mt-4 inline-flex min-h-10 items-center text-sm font-bold text-[#005bbf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">Abrir Central de Estudos</Link>
+        </section>
+      ) : dailyPlan.isError ? (
+        <p role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-100">Não foi possível consultar o plano diário agora. Suas trilhas de inglês continuam disponíveis.</p>
       ) : null}
 
       {!journeys.isLoading && !journeys.isError && englishJourneys.length > 0 ? (

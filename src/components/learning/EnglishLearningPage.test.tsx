@@ -7,6 +7,13 @@ const state = vi.hoisted(() => ({
   journeys: [] as Array<Record<string, unknown> & { journey_id: string; canonical_subject_code: string; subject_code: string; subject_name: string; unit_title: string; title: string; execution_skill_id: string; question_count: number; availability_status: string; pedagogical_review_status: string; active_session_id: string | null; active_session_status: 'ACTIVE' | 'PAUSED' | null }>,
   startJourney: vi.fn().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }),
   gamification: { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' } as null | { xp: number; current_streak: number; longest_streak: number; daily_goal_minutes: number; last_qualified_activity_date: string | null },
+  dailyPlan: {
+    estimated_minutes: 18,
+    learning_daily_plan_items: [
+      { id: 'plan-item-2', position: 2, title: 'Revisar vocabulário', description: null, estimated_minutes: 8, status: 'PENDING' },
+      { id: 'plan-item-1', position: 1, title: 'Ler um texto curto', description: 'Identifique as pistas no texto.', estimated_minutes: 10, status: 'COMPLETED' },
+    ],
+  } as null | { estimated_minutes: number; learning_daily_plan_items: Array<{ id: string; position: number; title: string; description: string | null; estimated_minutes: number; status: string }> },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1' } }) }));
@@ -15,6 +22,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
   useGuidedDisciplineJourneysV9: () => ({ data: state.journeys, isLoading: false, isError: false }),
   useLearningGamification: () => ({ data: state.gamification }),
+  useLearningDailyPlan: () => ({ data: state.dailyPlan, isError: false }),
   useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startJourney }),
 }));
 
@@ -33,7 +41,7 @@ function renderPage() {
   </Routes></MemoryRouter>);
 }
 
-afterEach(() => { cleanup(); state.journeys = []; state.gamification = { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' }; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
+afterEach(() => { cleanup(); state.journeys = []; state.gamification = { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' }; state.dailyPlan = { estimated_minutes: 18, learning_daily_plan_items: [{ id: 'plan-item-2', position: 2, title: 'Revisar vocabulário', description: null, estimated_minutes: 8, status: 'PENDING' }, { id: 'plan-item-1', position: 1, title: 'Ler um texto curto', description: 'Identifique as pistas no texto.', estimated_minutes: 10, status: 'COMPLETED' }] }; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
 
 describe('EnglishLearningPage', () => {
   it('não libera conteúdo em prévia ou pendente de revisão', () => {
@@ -49,6 +57,10 @@ describe('EnglishLearningPage', () => {
     renderPage();
     expect(screen.getByRole('region', { name: 'Seu progresso geral de aprendizagem' })).toBeTruthy();
     expect(screen.getByText('120 XP')).toBeTruthy();
+    expect(screen.getByRole('progressbar', { name: 'Plano de hoje: 1 de 2 etapas concluídas' }).getAttribute('aria-valuenow')).toBe('50');
+    expect(screen.getByText('1 de 2 etapas concluídas')).toBeTruthy();
+    expect(screen.getByText('18 min estimados. A duração organiza o plano e não representa tempo cronometrado.')).toBeTruthy();
+    expect(screen.getAllByRole('listitem').map((item) => item.textContent?.includes('Ler um texto curto'))).toEqual([true, false]);
     expect(screen.getByRole('progressbar', { name: 'Domínio atual: 38%' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Começar trilha' }));
     await waitFor(() => expect(screen.getByText('Jornada guiada aberta')).toBeTruthy());
