@@ -188,4 +188,185 @@ runtimeDescribe('inventory physical count runtime contract', () => {
     expect(resumedMovement.error).toBeNull();
   }, 120_000);
 
+  it('runs the teacher request lifecycle with partial concurrent fulfillment and an auditable balance', async () => {
+    const [director, secretary, teacher, foreignDirector] = actors;
+    const created = await director.client.rpc('inventory_create_item', {
+      p_institution_id: institutionId,
+      p_name: `Caderno workflow ${suffix}`,
+      p_category: `Papelaria workflow ${suffix}`,
+      p_unit: 'unidade',
+      p_location: `Almoxarifado workflow ${suffix}`,
+      p_supplier: null,
+      p_supplier_contact: null,
+      p_sku: null,
+      p_description: 'Material de prova do fluxo completo',
+      p_minimum_quantity: 2,
+      p_initial_quantity: 0,
+      p_idempotency_key: `workflow-item-${suffix}`,
+    });
+    expect(created.error).toBeNull();
+    const itemId = required(created.data, 'workflow inventory item id');
+    const location = await director.client.from('inventory_locations').select('id')
+      .eq('institution_id', institutionId).eq('name', `Almoxarifado workflow ${suffix}`).single();
+    expect(location.error).toBeNull();
+    const locationId = required(location.data?.id, 'workflow inventory location id');
+
+    const receiptKey = `workflow-receipt-${suffix}`;
+    const receipt = await secretary.client.rpc('inventory_record_movement', {
+      p_institution_id: institutionId,
+      p_item_id: itemId,
+      p_location_id: locationId,
+      p_movement_type: 'RECEIPT',
+      p_quantity: 5,
+      p_note: 'Entrada conferida pela secretaria',
+      p_idempotency_key: receiptKey,
+    });
+    expect(receipt.error).toBeNull();
+    const receiptReplay = await secretary.client.rpc('inventory_record_movement', {
+      p_institution_id: institutionId,
+      p_item_id: itemId,
+      p_location_id: locationId,
+      p_movement_type: 'RECEIPT',
+      p_quantity: 5,
+      p_note: 'Entrada conferida pela secretaria',
+      p_idempotency_key: receiptKey,
+    });
+    expect(receiptReplay.error).toBeNull();
+    expect(receiptReplay.data).toBe(receipt.data);
+
+    const requestKey = `workflow-request-${suffix}`;
+    const requestArgs = {
+      p_institution_id: institutionId,
+      p_item_id: itemId,
+      p_quantity: 4,
+      p_note: 'Materiais para a turma',
+      p_idempotency_key: requestKey,
+    };
+    const requested = await teacher.client.rpc('inventory_create_request', requestArgs);
+    expect(requested.error).toBeNull();
+    const requestId = required(requested.data, 'teacher inventory request id');
+    const requestReplay = await teacher.client.rpc('inventory_create_request', requestArgs);
+    expect(requestReplay.error).toBeNull();
+    expect(requestReplay.data).toBe(requestId);
+
+    const requestItem = await teacher.client.from('inventory_request_items').select('id, requested_quantity')
+      .eq('institution_id', institutionId).eq('request_id', requestId).single();
+    expect(requestItem.error).toBeNull();
+    expect(Number(requestItem.data?.requested_quantity)).toBe(4);
+    const requestItemId = required(requestItem.data?.id, 'teacher-visible request item id');
+
+    const teacherDecision = await teacher.client.rpc('inventory_decide_request', {
+      p_institution_id: institutionId,
+      p_request_id: requestId,
+      p_decision: 'APPROVED',
+      p_idempotency_key: `teacher-decision-${suffix}`,
+    });
+    expect(teacherDecision.error?.code).toBe('42501');
+    const foreignRequests = await foreignDirector.client.from('inventory_requests').select('id')
+      .eq('institution_id', institutionId);
+    expect(foreignRequests.error).toBeNull();
+    expect(foreignRequests.data).toEqual([]);
+
+    const approved = await secretary.client.rpc('inventory_decide_request', {
+      p_institution_id: institutionId,
+      p_request_id: requestId,
+      p_decision: 'APPROVED',
+      p_idempotency_key: `workflow-approve-${suffix}`,
+    });
+    expect(approved.error).toBeNull();
+    expect(approved.data).toBe('APPROVED');
+
+    const unauthorizedFulfillment = await teacher.client.rpc('inventory_fulfill_request', {
+      p_institution_id: institutionId,
+      p_request_id: requestId,
+      p_request_item_id: requestItemId,
+      p_location_id: locationId,
+      p_quantity: 1,
+      p_idempotency_key: `teacher-fulfill-${suffix}`,
+    });
+    expect(unauthorizedFulfillment.error?.code).toBe('42501');
+
+    const concurrentFulfillments = await Promise.all([
+      secretary.client.rpc('inventory_fulfill_request', {
+        p_institution_id: institutionId,
+        p_request_id: requestId,
+        p_request_item_id: requestItemId,
+        p_location_id: locationId,
+        p_quantity: 3,
+        p_idempotency_key: `workflow-concurrent-a-${suffix}`,
+      }),
+      secretary.client.rpc('inventory_fulfill_request', {
+        p_institution_id: institutionId,
+        p_request_id: requestId,
+        p_request_item_id: requestItemId,
+        p_location_id: locationId,
+        p_quantity: 3,
+        p_idempotency_key: `workflow-concurrent-b-${suffix}`,
+      }),
+    ]);
+    const successfulFulfillments = concurrentFulfillments.filter((result) => !result.error);
+    const rejectedFulfillments = concurrentFulfillments.filter((result) => result.error);
+    expect(successfulFulfillments).toHaveLength(1);
+    expect(successfulFulfillments[0]?.data).toBe('PARTIALLY_FULFILLED');
+    expect(rejectedFulfillments).toHaveLength(1);
+    expect(rejectedFulfillments[0]?.error?.code).toBe('22023');
+    expect(rejectedFulfillments[0]?.error?.message).toContain('INVENTORY_FULFILLMENT_EXCEEDS_REMAINING');
+
+    const fulfilledRequest = await teacher.client.from('inventory_requests').select('status')
+      .eq('institution_id', institutionId).eq('id', requestId).single();
+    expect(fulfilledRequest.error).toBeNull();
+    expect(fulfilledRequest.data?.status).toBe('PARTIALLY_FULFILLED');
+    const partialRequestItem = await teacher.client.from('inventory_request_items')
+      .select('fulfilled_quantity').eq('institution_id', institutionId).eq('id', requestItemId).single();
+    expect(Number(partialRequestItem.data?.fulfilled_quantity)).toBe(3);
+
+    const finalFulfillmentKey = `workflow-fulfill-final-${suffix}`;
+    const finalized = await secretary.client.rpc('inventory_fulfill_request', {
+      p_institution_id: institutionId,
+      p_request_id: requestId,
+      p_request_item_id: requestItemId,
+      p_location_id: locationId,
+      p_quantity: 1,
+      p_idempotency_key: finalFulfillmentKey,
+    });
+    expect(finalized.error).toBeNull();
+    expect(finalized.data).toBe('FULFILLED');
+    const finalizedReplay = await secretary.client.rpc('inventory_fulfill_request', {
+      p_institution_id: institutionId,
+      p_request_id: requestId,
+      p_request_item_id: requestItemId,
+      p_location_id: locationId,
+      p_quantity: 1,
+      p_idempotency_key: finalFulfillmentKey,
+    });
+    expect(finalizedReplay.error).toBeNull();
+    expect(finalizedReplay.data).toBe('FULFILLED');
+
+    const finalRequestItem = await teacher.client.from('inventory_request_items')
+      .select('fulfilled_quantity').eq('institution_id', institutionId).eq('id', requestItemId).single();
+    expect(Number(finalRequestItem.data?.fulfilled_quantity)).toBe(4);
+    const finalRequest = await teacher.client.from('inventory_requests').select('status')
+      .eq('institution_id', institutionId).eq('id', requestId).single();
+    expect(finalRequest.data?.status).toBe('FULFILLED');
+
+    const balance = await secretary.client.from('inventory_balances').select('quantity')
+      .eq('institution_id', institutionId).eq('item_id', itemId).eq('location_id', locationId).single();
+    expect(Number(balance.data?.quantity)).toBe(1);
+    const teacherMovements = await teacher.client.from('inventory_movements')
+      .select('movement_type, quantity_delta').eq('institution_id', institutionId).eq('item_id', itemId);
+    expect(teacherMovements.error).toBeNull();
+    expect(teacherMovements.data).toHaveLength(0);
+    const managerMovements = await director.client.from('inventory_movements')
+      .select('movement_type, quantity_delta, balance_after').eq('institution_id', institutionId).eq('item_id', itemId);
+    expect(managerMovements.error).toBeNull();
+    expect(managerMovements.data).toHaveLength(3);
+    expect(managerMovements.data?.reduce((sum, movement) => sum + Number(movement.quantity_delta), 0)).toBe(1);
+    const requestAudit = await director.client.from('inventory_audit_events').select('action')
+      .eq('institution_id', institutionId).eq('entity_id', requestId);
+    expect(requestAudit.error).toBeNull();
+    expect(requestAudit.data?.map((event) => event.action).sort()).toEqual([
+      'REQUEST_CREATED', 'REQUEST_DECIDED', 'REQUEST_FULFILLED', 'REQUEST_FULFILLED',
+    ]);
+  }, 120_000);
+
 });
