@@ -20,8 +20,8 @@ describe('student enrollment drafts migration', () => {
     expect(migration).toContain('private.valid_student_enrollment_draft_payload(p_payload)');
     expect(migration).toContain('file_path|filepath|signed_url|signedurl|storage_url|storageurl');
     expect(migration).toContain("jsonb_typeof(p_payload->'health') is distinct from 'object'");
-    expect(migration).toContain("p_payload->'health' - array[");
-    expect(migration).toContain("p_payload->'identity' - array[");
+    expect(migration).toContain("(p_payload->'health') - array[");
+    expect(migration).toContain("(p_payload->'identity') - array[");
     expect(migration).toContain("length(p_payload->'health'->>'allergies') > 2000");
   });
 
