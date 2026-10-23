@@ -79,8 +79,12 @@ const emptyDraft: ActivityDraft = {
 
 function studentName(attempt: {
   students?: {
+    full_name: string | null;
+    registration_number: string;
     profiles?: { full_name: string } | { full_name: string }[] | null;
   } | {
+    full_name: string | null;
+    registration_number: string;
     profiles?: { full_name: string } | { full_name: string }[] | null;
   }[] | null;
 }) {
@@ -90,7 +94,7 @@ function studentName(attempt: {
   const profile = Array.isArray(student?.profiles)
     ? student.profiles[0]
     : student?.profiles;
-  return profile?.full_name ?? 'Aluno';
+  return profile?.full_name ?? student?.full_name ?? student?.registration_number ?? 'Aluno';
 }
 
 function formatMisconceptions(summary: Record<string, number>): string {

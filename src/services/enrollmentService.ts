@@ -20,6 +20,7 @@ interface StudentRelation {
   id: string;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
   active: boolean | null;
   profiles:
     | ProfileRelation
@@ -171,6 +172,7 @@ const enrollmentSelect = `
     id,
     institution_id,
     registration_number,
+    full_name,
     active,
     profiles:profile_id (
       full_name,
@@ -339,7 +341,7 @@ function normalizeEnrollment(
     updated_at:
       row.updated_at ?? undefined,
     student_name:
-      profile?.full_name ??
+      profile?.full_name || student.full_name ||
       student.registration_number,
     student_registration_number:
       student.registration_number,

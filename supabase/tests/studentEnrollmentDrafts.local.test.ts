@@ -36,6 +36,9 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
   let academicYearId: string;
   let classId: string;
   let finalizedDraftId: string | null = null;
+  let noEmailDraftId: string | null = null;
+  let noEmailStudentId: string | null = null;
+  let noEmailDuplicateStudentId: string | null = null;
   const actors: Actor[] = [];
 
   async function createActor(
@@ -135,6 +138,26 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     if (finalizedDraftId && institutionA) {
       await service.from('student_enrollment_drafts').delete()
         .eq('institution_id', institutionA).eq('id', finalizedDraftId);
+    }
+    if (noEmailDraftId && institutionA) {
+      await service.from('student_enrollment_duplicate_approvals').delete()
+        .eq('institution_id', institutionA).eq('draft_id', noEmailDraftId);
+      await service.from('student_enrollment_drafts').delete()
+        .eq('institution_id', institutionA).eq('id', noEmailDraftId);
+    }
+    if (noEmailDuplicateStudentId) {
+      await service.from('students').delete().eq('id', noEmailDuplicateStudentId);
+    }
+    if (noEmailStudentId) {
+      await service.from('academic_document_issuances').delete().eq('student_id', noEmailStudentId);
+      await service.from('student_documents').delete().eq('student_id', noEmailStudentId);
+      await service.from('student_registration_details').delete().eq('student_id', noEmailStudentId);
+      await service.from('student_addresses').delete().eq('student_id', noEmailStudentId);
+      await service.from('student_previous_schooling').delete().eq('student_id', noEmailStudentId);
+      await service.from('student_health_information').delete().eq('student_id', noEmailStudentId);
+      await service.from('guardianships').delete().eq('student_id', noEmailStudentId);
+      await service.from('enrollments').delete().eq('student_id', noEmailStudentId);
+      await service.from('students').delete().eq('id', noEmailStudentId);
     }
     if (studentId) {
       await service.from('academic_document_issuances').delete().eq('student_id', studentId);
@@ -357,7 +380,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       .eq('institution_id', institutionA);
     expect(studentCount.error).toBeNull();
     expect(studentCount.count).toBe(1);
-  });
+  }, 60000);
 
   it('creates enrollment only on final confirmation and returns the same result on retries', async () => {
     const director = actors.find((actor) => actor.email.endsWith('director-a@local.test'))!;
@@ -456,4 +479,156 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     expect(enrollmentCount.error).toBeNull();
     expect(enrollmentCount.count).toBe(1);
   });
+
+  it('finalizes an accountless student without creating an Auth user or profile', async () => {
+    const director = actors.find((actor) => actor.email.endsWith('director-a@local.test'))!;
+    const fullName = `No email student ${suffix}`;
+    noEmailDuplicateStudentId = (await insertOne(service, 'students', {
+      profile_id: null,
+      institution_id: institutionA,
+      registration_number: '',
+      full_name: fullName,
+      birth_date: '2018-03-04',
+      active: true,
+    })).id;
+    const authUsersBefore = await service.auth.admin.listUsers({ page: 1, perPage: 1000 });
+    expect(authUsersBefore.error).toBeNull();
+    const payload = {
+      identity: {
+        full_name: fullName,
+        email: '',
+        birth_date: '2018-03-04',
+        cpf: '',
+        social_name: '',
+        rg: '',
+        rg_issuing_authority: '',
+        rg_state: '',
+        birth_certificate: '',
+        nationality: 'Brasileira',
+        birthplace: '',
+        birth_state: '',
+        sex: '',
+        phone: '71999990000',
+      },
+      address: {
+        postal_code: '', street: '', number: '', complement: '',
+        neighborhood: '', city: '', state: '', rural_zone: false,
+      },
+      guardians: [{
+        mode: 'existing',
+        profile_id: guardianProfileId,
+        full_name: 'Responsável de teste',
+        email: 'guardian@example.test',
+        phone: '',
+        relationship: 'Mãe',
+        is_primary: true,
+      }],
+      previous_schooling: {
+        origin_school: '', origin_network: '', city: '', state: '', last_grade: '',
+        origin_year: '', status: '', observations: '', history_delivered: false,
+        transfer_declaration: false,
+      },
+      health: {
+        allergies: '', health_conditions: '', emergency_medication: '', disability: '',
+        autism: false, giftedness: false, needs_special_education: false,
+        school_care_notes: '',
+      },
+      documents: [],
+      academic_year_id: academicYearId,
+      class_id: classId,
+      enrolled_at: '2026-01-01',
+    };
+    const saved = await director.client.rpc('save_student_enrollment_draft', {
+      p_institution_id: institutionA,
+      p_draft_id: null,
+      p_expected_version: null,
+      p_payload: payload,
+      p_current_step: 7,
+    });
+    expect(saved.error).toBeNull();
+    noEmailDraftId = required(saved.data?.draft_id, 'no-email draft id') as string;
+
+    const beforeFinalize = await service.from('students')
+      .select('id', { count: 'exact', head: true })
+      .eq('institution_id', institutionA)
+      .eq('full_name', fullName);
+    expect(beforeFinalize.error).toBeNull();
+    expect(beforeFinalize.count).toBe(0);
+
+    const claim = await director.client.rpc('claim_student_enrollment_draft_finalization', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+      p_expected_version: Number(saved.data?.version),
+    });
+    expect(claim.error).toBeNull();
+    const progress = await director.client.rpc('record_student_enrollment_draft_progress', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+      p_student_id: null,
+      p_guardian_profile_ids: { '0': guardianProfileId },
+    });
+    expect(progress.error).toBeNull();
+
+    const duplicateBlocked = await director.client.rpc('finalize_student_enrollment_draft', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+    });
+    expect(duplicateBlocked.error?.message).toContain('STUDENT_DUPLICATE_REVIEW_REQUIRED');
+
+    const approval = await director.client.rpc('approve_student_enrollment_duplicate_review', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+      p_candidate_student_ids: [noEmailDuplicateStudentId],
+    });
+    expect(approval.error).toBeNull();
+    expect(approval.data).toBe(true);
+
+    const first = await director.client.rpc('finalize_student_enrollment_draft', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+    });
+    expect(first.error).toBeNull();
+    noEmailStudentId = first.data?.student_id;
+    expect(typeof noEmailStudentId).toBe('string');
+    const retry = await director.client.rpc('finalize_student_enrollment_draft', {
+      p_institution_id: institutionA,
+      p_draft_id: noEmailDraftId,
+    });
+    expect(retry.error).toBeNull();
+    expect(retry.data).toEqual(first.data);
+
+    const studentRow = await service.from('students')
+      .select('id,profile_id,full_name,phone,registration_number')
+      .eq('id', noEmailStudentId)
+      .single();
+    expect(studentRow.error).toBeNull();
+    expect(studentRow.data).toMatchObject({
+      profile_id: null,
+      full_name: fullName,
+      phone: '71999990000',
+    });
+    expect(studentRow.data?.registration_number).toMatch(/^2026\d{4}$/);
+    const authUsersAfter = await service.auth.admin.listUsers({ page: 1, perPage: 1000 });
+    expect(authUsersAfter.error).toBeNull();
+    expect(authUsersAfter.data.users).toHaveLength(authUsersBefore.data.users.length);
+    const profile = await service.from('profiles').select('id').eq('id', noEmailStudentId).maybeSingle();
+    expect(profile.error).toBeNull();
+    expect(profile.data).toBeNull();
+    const enrollment = await service.from('enrollments')
+      .select('id', { count: 'exact', head: true })
+      .eq('student_id', noEmailStudentId)
+      .eq('academic_year_id', academicYearId);
+    expect(enrollment.error).toBeNull();
+    expect(enrollment.count).toBe(1);
+    const approvalAudit = await service.from('student_enrollment_duplicate_approvals')
+      .select('approved_by,candidate_student_ids,used_at')
+      .eq('draft_id', noEmailDraftId)
+      .single();
+    expect(approvalAudit.error).toBeNull();
+    expect(approvalAudit.data).toMatchObject({
+      approved_by: director.id,
+      candidate_student_ids: [noEmailDuplicateStudentId],
+    });
+    expect(approvalAudit.data?.used_at).toEqual(expect.any(String));
+  }, 30000);
 });

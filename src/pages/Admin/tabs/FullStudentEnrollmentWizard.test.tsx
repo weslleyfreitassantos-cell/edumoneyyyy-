@@ -148,7 +148,7 @@ async function advanceToReview() {
   fireEvent.change(screen.getByLabelText('Nome completo *'), {
     target: { value: 'Aluno Novo' },
   });
-  fireEvent.change(screen.getByLabelText('E-mail *'), {
+  fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
     target: { value: 'novo@example.com' },
   });
   fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -184,7 +184,7 @@ async function advanceToDocuments() {
   fireEvent.change(screen.getByLabelText('Nome completo *'), {
     target: { value: 'Aluno Novo' },
   });
-  fireEvent.change(screen.getByLabelText('E-mail *'), {
+  fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
     target: { value: 'novo@example.com' },
   });
   fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -244,7 +244,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.change(screen.getByLabelText('Nome completo *'), {
       target: { value: 'Aluno Novo' },
     });
-    fireEvent.change(screen.getByLabelText('E-mail *'), {
+    fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
       target: { value: 'novo@example.com' },
     });
     fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -257,6 +257,23 @@ describe('FullStudentEnrollmentWizard', () => {
     });
     fireEvent.click(screen.getByRole('button', { name: 'Usar este cadastro' }));
     expect(mocks.useExisting).toHaveBeenCalledWith('student-1');
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it('permite iniciar matrícula de aluno sem e-mail ou conta de acesso', async () => {
+    mocks.findDuplicates.mockResolvedValue([]);
+    renderWizard();
+
+    fireEvent.change(screen.getByLabelText('Nome completo *'), {
+      target: { value: 'Aluno sem conta' },
+    });
+    fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
+      target: { value: '2016-01-01' },
+    });
+    expect(screen.getByLabelText(/^E-mail do aluno \(opcional\)/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+
+    await waitFor(() => expect(screen.getByText('Etapa 2 de 8')).toBeTruthy());
     expect(mocks.create).not.toHaveBeenCalled();
   });
 
@@ -348,7 +365,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.change(screen.getByLabelText('Nome completo *'), {
       target: { value: 'Aluno Novo' },
     });
-    fireEvent.change(screen.getByLabelText('E-mail *'), {
+    fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
       target: { value: 'novo@example.com' },
     });
     fireEvent.change(screen.getByLabelText('Data de nascimento *'), {

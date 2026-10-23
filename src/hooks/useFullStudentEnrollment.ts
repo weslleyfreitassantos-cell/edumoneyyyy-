@@ -110,18 +110,22 @@ export function useCreateFullStudentEnrollment() {
       existingStudentId,
       draftId,
       draftVersion,
+      duplicateApprovalCandidateIds,
     }: {
       institutionId: string;
       draft: FullStudentEnrollmentDraft;
       existingStudentId?: string;
       draftId?: string;
       draftVersion?: number;
+      duplicateApprovalCandidateIds?: string[];
     }) =>
       createFullStudentEnrollment(
         institutionId,
         draft,
         existingStudentId,
-        draftId && draftVersion ? { draftId, draftVersion } : {},
+        draftId && draftVersion
+          ? { draftId, draftVersion, duplicateApprovalCandidateIds }
+          : {},
       ),
 
     onSuccess: async (_result, variables) => {

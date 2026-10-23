@@ -312,6 +312,7 @@ export default function FullStudentEnrollmentWizard({
   const lastPersistedFingerprintRef = useRef<string | null>(null);
   const savePromiseRef = useRef<Promise<StudentEnrollmentDraftSaveResult> | null>(null);
   const duplicateApprovalFingerprintRef = useRef<string | null>(null);
+  const duplicateApprovalCandidateIdsRef = useRef<string[]>([]);
   const createMutation = useCreateFullStudentEnrollment();
   const updateMutation = useUpdateFullStudentEnrollment();
   const draftsQuery = useStudentEnrollmentDrafts(institutionId);
@@ -477,6 +478,7 @@ export default function FullStudentEnrollmentWizard({
       };
       lastPersistedFingerprintRef.current = restoredFingerprint;
       duplicateApprovalFingerprintRef.current = null;
+      duplicateApprovalCandidateIdsRef.current = [];
       setDraftId(savedDraft.draft_id);
       setDraftVersion(savedDraft.version);
       setDraftStatus(savedDraft.status);
@@ -521,6 +523,7 @@ export default function FullStudentEnrollmentWizard({
       persistentDraftRef.current = { id: null, version: null, status: 'OPEN' };
       lastPersistedFingerprintRef.current = null;
       duplicateApprovalFingerprintRef.current = null;
+      duplicateApprovalCandidateIdsRef.current = [];
       setDraftId(null);
       setDraftVersion(null);
       setDraftStatus('OPEN');
@@ -576,6 +579,8 @@ export default function FullStudentEnrollmentWizard({
     field: keyof FullStudentEnrollmentDraft['identity'],
     value: string,
   ) {
+    duplicateApprovalFingerprintRef.current = null;
+    duplicateApprovalCandidateIdsRef.current = [];
     setDraft((current) => ({
       ...current,
       identity: { ...current.identity, [field]: value },
@@ -655,8 +660,12 @@ export default function FullStudentEnrollmentWizard({
   function validateStep(): string | null {
     if (step === 0) {
       if (draft.identity.full_name.trim().length < 3) return 'Informe o nome completo do aluno.';
-      if (mode !== 'enroll' && !/^\S+@\S+\.\S+$/.test(draft.identity.email.trim())) return 'Informe um e-mail valido para o aluno.';
-      if (mode === 'enroll' && draft.identity.email.trim() && !/^\S+@\S+\.\S+$/.test(draft.identity.email.trim())) return 'Informe um e-mail válido ou deixe o campo vazio.';
+      const email = draft.identity.email.trim();
+      const studentHasNoAccount = isEditMode && editorQuery.data?.studentProfileId === null;
+      const emailCanBeEmpty = mode === 'enroll' || (mode === 'create' && !isEditMode) || studentHasNoAccount;
+      if (!emailCanBeEmpty && !email) return 'Informe um e-mail válido para o aluno.';
+      if (email && !/^\S+@\S+\.\S+$/.test(email)) return 'Informe um e-mail válido ou deixe o campo vazio.';
+      if (studentHasNoAccount && email) return 'Este aluno não possui conta de acesso. Mantenha o e-mail vazio para preservar esse cadastro.';
       if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.identity.birth_date)) return 'Informe a data de nascimento do aluno.';
     }
     if (step === 2) {
@@ -709,11 +718,13 @@ export default function FullStudentEnrollmentWizard({
         );
         if (candidates.length > 0) {
           duplicateApprovalFingerprintRef.current = null;
+          duplicateApprovalCandidateIdsRef.current = [];
           setDuplicates(candidates);
           setError('Encontramos possíveis cadastros existentes. Revise antes de continuar.');
           return;
         }
         duplicateApprovalFingerprintRef.current = identityFingerprint;
+        duplicateApprovalCandidateIdsRef.current = [];
       } catch (duplicateError) {
         setError(getUserFacingErrorMessage(duplicateError, 'Não foi possível verificar duplicidade.'));
         return;
@@ -733,6 +744,7 @@ export default function FullStudentEnrollmentWizard({
       draft.identity.birth_date,
       draft.identity.cpf.replace(/\D/g, ''),
     ]);
+    duplicateApprovalCandidateIdsRef.current = duplicates.map((candidate) => candidate.id);
     setDuplicates([]);
     setError(null);
     setStep(1);
@@ -805,12 +817,14 @@ export default function FullStudentEnrollmentWizard({
             (candidate) => candidate.id !== createdStudentId,
           );
           if (actionableCandidates.length > 0) {
+            duplicateApprovalCandidateIdsRef.current = [];
             setDuplicates(actionableCandidates);
             setStep(0);
             setError('Encontramos possíveis cadastros existentes. Revise antes de confirmar a matrícula.');
             return;
           }
           duplicateApprovalFingerprintRef.current = latestIdentityFingerprint;
+          duplicateApprovalCandidateIdsRef.current = [];
         } catch {
           setStep(0);
           setError('Não foi possível revalidar possíveis duplicidades. A matrícula não foi confirmada.');
@@ -831,6 +845,7 @@ export default function FullStudentEnrollmentWizard({
         existingStudentId: createdStudentId,
         draftId: savedDraft.draft_id,
         draftVersion: savedDraft.version,
+        duplicateApprovalCandidateIds: duplicateApprovalCandidateIdsRef.current,
       });
       if (registerInInclusiveEducation && !(await registerStudentInInclusiveEducation(result.student_id))) {
         setCreatedStudentId(result.student_id);
@@ -839,6 +854,41 @@ export default function FullStudentEnrollmentWizard({
       onCompleted();
     } catch (submitError) {
       if (submitError instanceof FullStudentEnrollmentError) {
+        if (submitError.message.includes('STUDENT_DUPLICATE_REVIEW_REQUIRED') ||
+          submitError.message.includes('STUDENT_DUPLICATE_REVIEW_STALE')) {
+          duplicateApprovalFingerprintRef.current = null;
+          duplicateApprovalCandidateIdsRef.current = [];
+          try {
+            const candidates = await findDuplicateStudentCandidates(
+              institutionId,
+              draft.identity,
+            );
+            const actionableCandidates = candidates.filter(
+              (candidate) => candidate.id !== submitError.studentId,
+            );
+            setDuplicates(actionableCandidates);
+            setStep(0);
+            setError(actionableCandidates.length > 0
+              ? 'A lista de possíveis duplicidades mudou. Revise os cadastros antes de confirmar.'
+              : 'A validação de duplicidade mudou durante a confirmação. Revise os dados e tente novamente.');
+          } catch {
+            setError('Não foi possível atualizar a verificação de duplicidade. A matrícula não foi confirmada.');
+          }
+          if (submitError.studentId) setCreatedStudentId(submitError.studentId);
+          setDraft((current) => ({
+            ...current,
+            guardians: current.guardians.map((guardian, index) => ({
+              ...guardian,
+              profile_id: guardian.profile_id || submitError.guardianProfileIds[index] || '',
+            })),
+          }));
+          if (submitError.studentId || Object.keys(submitError.guardianProfileIds).length > 0) {
+            setError((currentError) => currentError
+              ? `${currentError} Os registros já criados foram preservados e serão reutilizados na nova tentativa.`
+              : 'Os registros já criados foram preservados e serão reutilizados na nova tentativa.');
+          }
+          return;
+        }
         if (submitError.studentId) setCreatedStudentId(submitError.studentId);
         setDraft((current) => ({
           ...current,
@@ -899,20 +949,28 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderIdentity() {
-    const studentEmailOptional = mode === 'enroll';
+    const studentHasNoAccount = isEditMode && editorQuery.data?.studentProfileId === null;
+    const studentEmailOptional = mode === 'enroll' || (mode === 'create' && !isEditMode) || studentHasNoAccount;
+    const studentEmailReadOnly = mode === 'enroll' || studentHasNoAccount;
+    const emailHint = studentHasNoAccount
+      ? 'Este aluno foi cadastrado sem conta de acesso; o e-mail permanece vazio.'
+      : mode === 'create'
+        ? 'Deixe vazio para cadastrar o aluno sem criar conta, perfil de acesso ou e-mail fictício.'
+        : 'A matrícula de um aluno já cadastrado não cria nem altera o acesso ao sistema.';
     return (
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Nome completo *"><input className={inputClass} value={draft.identity.full_name} onChange={(event) => updateIdentity('full_name', event.target.value)} /></Field>
         <Field
           label={studentEmailOptional ? 'E-mail do aluno (opcional)' : 'E-mail *'}
-          hint={studentEmailOptional ? 'A matrícula de um aluno já cadastrado não cria nem altera o acesso ao sistema.' : undefined}
+          hint={studentEmailOptional ? emailHint : undefined}
         >
           <input
             type="email"
             className={inputClass}
             value={draft.identity.email}
             onChange={(event) => updateIdentity('email', event.target.value)}
-            readOnly={studentEmailOptional}
+            readOnly={studentEmailReadOnly}
+            placeholder={studentHasNoAccount ? 'Sem conta de acesso' : undefined}
           />
         </Field>
         <Field label="Data de nascimento *"><input type="date" className={inputClass} value={draft.identity.birth_date} onChange={(event) => updateIdentity('birth_date', event.target.value)} /></Field>
@@ -1225,9 +1283,11 @@ export default function FullStudentEnrollmentWizard({
     const classRecord = classes.find((item) => item.id === draft.class_id);
     const confirmationMessage = mode === 'enroll'
       ? 'Ao confirmar, os dados complementares e a nova matrícula serão persistidos para o aluno existente. Nenhum acesso será criado nem alterado.'
-      : 'Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.';
+      : !draft.identity.email.trim()
+        ? 'Ao confirmar, o cadastro e a matrícula serão persistidos sem criar e-mail fictício, conta de autenticação ou perfil de acesso para o aluno.'
+        : 'Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.';
     const pendingDocuments = draft.documents.filter((document) => documentNeedsFollowUp(document.status)).length;
-    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos aguardando providência</strong><p>{pendingDocuments}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">{confirmationMessage}</div></div>;
+    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email || 'Sem conta de acesso por e-mail'}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos aguardando providência</strong><p>{pendingDocuments}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">{confirmationMessage}</div></div>;
   }
 
   function renderStep() {

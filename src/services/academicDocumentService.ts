@@ -92,9 +92,11 @@ interface Relation<T> {
 
 interface StudentDetailRow {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
+  phone: string | null;
   birth_date: string | null;
   cpf: string | null;
   active: boolean | null;
@@ -226,7 +228,7 @@ export const academicDocumentService = {
     const [studentResult, detailsResult, addressResult, guardiansResult, enrollmentsResult] = await Promise.all([
       supabase
         .from('students')
-        .select('id, profile_id, institution_id, registration_number, birth_date, cpf, active, profiles:profile_id(full_name, email, phone)')
+        .select('id, profile_id, institution_id, registration_number, full_name, phone, birth_date, cpf, active, profiles:profile_id(full_name, email, phone)')
         .eq('id', studentId)
         .eq('institution_id', institutionId)
         .maybeSingle(),
@@ -317,9 +319,9 @@ export const academicDocumentService = {
     return {
       id: student.id,
       institutionId: student.institution_id,
-      name: profile?.full_name ?? student.registration_number,
+      name: profile?.full_name || student.full_name || student.registration_number,
       email: profile?.email ?? '',
-      phone: profile?.phone ?? null,
+      phone: profile?.phone ?? student.phone ?? null,
       registrationNumber: student.registration_number,
       birthDate: student.birth_date ?? null,
       cpf: student.cpf ?? null,

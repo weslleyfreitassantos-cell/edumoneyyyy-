@@ -125,10 +125,12 @@ export interface FullStudentEnrollmentOptions {
   continueOnEmailFailure?: boolean;
   draftId?: string;
   draftVersion?: number;
+  duplicateApprovalCandidateIds?: string[];
 }
 
 export interface StudentEditorData {
   studentId: string;
+  studentProfileId: string | null;
   enrollmentId: string | null;
   draft: FullStudentEnrollmentDraft;
   documentStatusHistory: StudentDocumentStatusEvent[];
@@ -352,6 +354,22 @@ async function recordEnrollmentDraftProgress(
   if (error) throw error;
 }
 
+async function approveEnrollmentDraftDuplicateReview(
+  institutionId: string,
+  draftId: string,
+  candidateStudentIds: string[],
+): Promise<void> {
+  const { error } = await supabase.rpc(
+    'approve_student_enrollment_duplicate_review',
+    {
+      p_institution_id: institutionId,
+      p_draft_id: draftId,
+      p_candidate_student_ids: candidateStudentIds,
+    },
+  );
+  if (error) throw error;
+}
+
 async function releaseEnrollmentDraftFinalization(
   institutionId: string,
   draftId: string,
@@ -440,7 +458,7 @@ export async function getFullStudentEditorData(
   const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, documentHistoryResult, guardiansResult, enrollmentResult] = await Promise.all([
     supabase
       .from('students')
-      .select('id, profile_id, birth_date, cpf, profiles:profile_id(full_name, email, phone)')
+      .select('id, profile_id, full_name, phone, birth_date, cpf, profiles:profile_id(full_name, email, phone)')
       .eq('id', studentId)
       .eq('institution_id', institutionId)
       .maybeSingle(),
@@ -513,6 +531,9 @@ export async function getFullStudentEditorData(
 
   const student = studentResult.data as unknown as {
     id: string;
+    profile_id: string | null;
+    full_name: string | null;
+    phone: string | null;
     birth_date: string | null;
     cpf: string | null;
     profiles: { full_name: string; email: string; phone: string | null } | { full_name: string; email: string; phone: string | null }[] | null;
@@ -543,11 +564,12 @@ export async function getFullStudentEditorData(
 
   return {
     studentId: student.id,
+    studentProfileId: student.profile_id,
     enrollmentId: enrollment?.id ?? null,
     documentStatusHistory,
     draft: {
       identity: {
-        full_name: profile?.full_name ?? '',
+        full_name: profile?.full_name || student.full_name || '',
         email: profile?.email ?? '',
         birth_date: dateValue(student.birth_date),
         cpf: student.cpf ?? '',
@@ -560,7 +582,7 @@ export async function getFullStudentEditorData(
         birthplace: textValue(details?.birthplace),
         birth_state: textValue(details?.birth_state),
         sex: textValue(details?.sex),
-        phone: profile?.phone ?? '',
+        phone: profile?.phone ?? student.phone ?? '',
       },
       address: {
         postal_code: textValue(address?.postal_code),
@@ -625,6 +647,7 @@ export async function findDuplicateStudentCandidates(
       birth_date,
       cpf,
       registration_number,
+      full_name,
       profiles:profile_id (full_name, email)
     `)
     .eq('institution_id', institutionId)
@@ -636,9 +659,10 @@ export async function findDuplicateStudentCandidates(
 
   const rows = (data ?? []) as unknown as Array<{
     id: string;
-    birth_date: string;
+    birth_date: string | null;
     cpf: string | null;
     registration_number: string;
+    full_name: string | null;
     profiles:
       | { full_name: string; email: string }
       | { full_name: string; email: string }[]
@@ -656,7 +680,7 @@ export async function findDuplicateStudentCandidates(
       const sameCpf = Boolean(normalizedCpf) &&
         row.cpf?.replace(/\D/g, '') === normalizedCpf;
       const sameNameAndBirth =
-        normalize(profile?.full_name ?? '') === normalizedName &&
+        normalize(profile?.full_name ?? row.full_name ?? '') === normalizedName &&
         row.birth_date === input.birth_date;
       return sameCpf || sameNameAndBirth;
     })
@@ -666,9 +690,9 @@ export async function findDuplicateStudentCandidates(
         : row.profiles;
       return {
         id: row.id,
-        full_name: profile?.full_name ?? 'Aluno sem nome',
+        full_name: profile?.full_name ?? row.full_name ?? 'Aluno sem nome',
         email: profile?.email ?? '',
-        birth_date: row.birth_date,
+        birth_date: row.birth_date ?? '',
         cpf: row.cpf,
         registration_number: row.registration_number,
       };
@@ -678,7 +702,7 @@ export async function findDuplicateStudentCandidates(
 function toRpcPayload(
   institutionId: string,
   draft: FullStudentEnrollmentDraft,
-  studentId: string,
+  studentId: string | null,
   enrollmentId?: string | null,
 ): Record<string, unknown> {
   return {
@@ -764,6 +788,13 @@ export async function createFullStudentEnrollment(
       }
       claimedDraft = true;
       studentId = studentId ?? claim.created_student_id ?? undefined;
+      if (options.duplicateApprovalCandidateIds?.length) {
+        await approveEnrollmentDraftDuplicateReview(
+          institutionId,
+          options.draftId,
+          options.duplicateApprovalCandidateIds,
+        );
+      }
       for (const [index, profileId] of Object.entries(claim.created_guardian_profile_ids ?? {})) {
         if (/^\d+$/.test(index) && typeof profileId === 'string') {
           guardianProfileIds[Number(index)] = profileId;
@@ -771,7 +802,7 @@ export async function createFullStudentEnrollment(
       }
     }
 
-    if (!studentId) {
+    if (!studentId && draft.identity.email.trim()) {
       const student = await schoolUserInviteService.invite({
         institutionId,
         role: 'STUDENT',
@@ -803,6 +834,10 @@ export async function createFullStudentEnrollment(
       }
     }
 
+    if (!studentId && !options.draftId) {
+      throw new Error('O cadastro sem acesso por e-mail precisa ser salvo como rascunho antes da confirmação.');
+    }
+
     for (const [index, guardian] of draft.guardians.entries()) {
       if (guardian.profile_id) {
         guardianProfileIds[index] = guardian.profile_id;
@@ -828,7 +863,7 @@ export async function createFullStudentEnrollment(
         email: guardian.email,
         phone: clean(guardian.phone),
         guardian: {
-          studentId,
+          ...(studentId ? { studentId } : { deferStudentLink: true }),
           relationship: guardian.relationship,
         },
         ...(options.continueOnEmailFailure ? { continueOnEmailFailure: true } : {}),
@@ -914,14 +949,36 @@ export async function updateFullStudentEnrollment(
   enrollmentId: string | null,
   draft: FullStudentEnrollmentDraft,
 ): Promise<void> {
-  await schoolUserManagementService.manage({
-    action: 'update_student_identity',
-    institutionId,
-    studentId,
-    fullName: draft.identity.full_name,
-    email: draft.identity.email,
-    phone: draft.identity.phone || null,
-  });
+  const { data: studentIdentity, error: studentIdentityError } = await supabase
+    .from('students')
+    .select('profile_id')
+    .eq('id', studentId)
+    .eq('institution_id', institutionId)
+    .maybeSingle();
+  if (studentIdentityError) throw studentIdentityError;
+  if (!studentIdentity) throw new Error('Aluno não encontrado nesta instituição.');
+
+  if (studentIdentity.profile_id) {
+    await schoolUserManagementService.manage({
+      action: 'update_student_identity',
+      institutionId,
+      studentId,
+      fullName: draft.identity.full_name,
+      email: draft.identity.email,
+      phone: draft.identity.phone || null,
+    });
+  } else {
+    if (draft.identity.email.trim()) {
+      throw new Error('Este aluno não possui conta de acesso. Para manter o cadastro sem conta, deixe o e-mail vazio.');
+    }
+    const { error } = await supabase.rpc('update_student_without_auth_identity', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+      p_full_name: draft.identity.full_name,
+      p_phone: draft.identity.phone || null,
+    });
+    if (error) throw error;
+  }
 
   const guardianProfileIds: Record<number, string> = {};
   for (const [index, guardian] of draft.guardians.entries()) {

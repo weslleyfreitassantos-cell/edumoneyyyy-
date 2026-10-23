@@ -844,8 +844,12 @@ export interface LearningAttemptSummary {
     teacher_id: string;
   }[] | null;
   students?: {
+    full_name: string | null;
+    registration_number: string;
     profiles?: { full_name: string } | { full_name: string }[] | null;
   } | {
+    full_name: string | null;
+    registration_number: string;
     profiles?: { full_name: string } | { full_name: string }[] | null;
   }[] | null;
 }
@@ -1774,7 +1778,7 @@ export const learningCenterService = {
     read<LearningAttemptSummary[]>(
       supabase
         .from('learning_attempts')
-        .select('id,activity_id,student_id,score,total_points,completed_at,learning_activities!inner(title,skill_id,teacher_id),students(profiles:profile_id(full_name))')
+        .select('id,activity_id,student_id,score,total_points,completed_at,learning_activities!inner(title,skill_id,teacher_id),students(full_name,registration_number,profiles:profile_id(full_name))')
         .eq('institution_id', institutionId)
         .eq('learning_activities.teacher_id', teacherId)
         .order('completed_at', { ascending: false })
