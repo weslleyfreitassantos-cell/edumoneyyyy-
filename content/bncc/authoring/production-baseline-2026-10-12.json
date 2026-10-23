@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "tec-escola.bncc.production-readonly-baseline.v1",
+  "asOf": "2026-10-12T21:37:24Z",
+  "method": "Read-only SQL through the configured tecescola-vps SSH alias and the local PostgreSQL socket in supabase-edumoney-db. No rows with student or institution identifiers were selected.",
+  "migrationLedger": {
+    "latestVersion": "20261012000400"
+  },
+  "activeCounts": {
+    "curriculumCatalogs": 2,
+    "curriculumSkills": 154,
+    "skillLessons": 104,
+    "tecEscolaQuestionBank": 1447,
+    "questionSets": 420,
+    "disciplineJourneys": 48
+  },
+  "curriculumAlignmentStatusCounts": {
+    "CANDIDATE": 152,
+    "MAPPED": 2
+  },
+  "journeyOfficialSkillLinkStatusCounts": {
+    "MAPPING_PENDING": 3
+  },
+  "journeyPublication": {
+    "demoPreview": 48,
+    "staging": 0,
+    "published": 0,
+    "pedagogicalReviewPending": 48,
+    "mappingPending": 48
+  },
+  "journeyStageGradeCounts": {
+    "ENSINO_MEDIO:1": 48
+  },
+  "v9AuthoredQuestionSources": {
+    "TECESCOLA_V9_AUTHORED_V1": 872,
+    "v9QuestionExpansion": 152,
+    "v9.3JourneyExpansion": 480,
+    "v9.4FourthJourneyExpansion": 240
+  },
+  "v9ActiveQuestionSetLinks": {
+    "distinctQuestionsLinked": 872,
+    "bySource": {
+      "v9QuestionExpansion": 152,
+      "v9.3JourneyExpansion": 480,
+      "v9.4FourthJourneyExpansion": 240
+    },
+    "interpretation": "Linked to active question sets; this is not a claim of general student availability or pedagogical approval."
+  },
+  "scope": {
+    "operation": "READ_ONLY",
+    "studentHistoryModified": false,
+    "productionWrites": false,
+    "otherServicesTouched": false
+  }
+}
