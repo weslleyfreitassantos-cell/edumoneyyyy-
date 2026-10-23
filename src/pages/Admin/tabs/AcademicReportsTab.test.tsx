@@ -15,6 +15,7 @@ vi.mock('../../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: 
 vi.mock('../../../hooks/useAcademicReports', () => ({ useAcademicReportOptions: vi.fn() }));
 vi.mock('../../../services/academicReportService', () => ({
   academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn(), getPendingDocumentsReport: vi.fn(), getStudentsWithoutClassReport: vi.fn(), getClassVacanciesReport: vi.fn() },
+  getPendingDocumentStatusLabel: (status: string) => status === 'REQUESTED' ? 'Solicitado' : 'Pendente',
   getPreferredAcademicReportSelection: vi.fn((years) => years[0]?.terms[0] ? { academicYearId: years[0].id, termId: years[0].terms[0].id } : null),
 }));
 
@@ -73,6 +74,7 @@ describe('AcademicReportsTab', () => {
       registrationNumber: '20260001',
       className: '2º A',
       documentType: 'Certidão de nascimento',
+      status: 'REQUESTED',
       updatedAt: '2026-02-10T12:00:00Z',
     }]);
     render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
@@ -89,7 +91,7 @@ describe('AcademicReportsTab', () => {
       academicYearId: 'year-1',
       classId: undefined,
     });
-    expect(screen.getByText('Pendente')).toBeTruthy();
+    expect(screen.getByText('Solicitado')).toBeTruthy();
   });
 
   it('gera o relatório de estudantes sem enturmação apenas com o ano letivo', async () => {

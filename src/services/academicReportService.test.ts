@@ -8,7 +8,7 @@ import { pedagogicalMonitoringService } from './pedagogicalMonitoringService';
 import { reportCardService } from './reportCardService';
 import { studentService } from './studentService';
 import { termClosingService } from './termClosingService';
-import { academicReportService, buildClassVacanciesReportRows, buildPendingDocumentReportRows, buildStudentsWithoutClassReportRows } from './academicReportService';
+import { academicReportService, buildClassVacanciesReportRows, buildPendingDocumentReportRows, buildStudentsWithoutClassReportRows, PENDING_DOCUMENT_REPORT_STATUSES } from './academicReportService';
 
 const supabaseMocks = vi.hoisted(() => ({
   from: vi.fn(),
@@ -84,8 +84,8 @@ describe('academicReportService', () => {
       { ...enrollment, id: 'other-year', student_id: 'student-other-year', academic_year_id: 'year-2' },
       { ...enrollment, id: 'transferred', student_id: 'student-transferred', status: 'TRANSFERRED', active: false },
     ] as never, [
-      { id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', updated_at: '2026-02-10T12:00:00Z' },
-      { id: 'doc-inactive', student_id: 'student-inactive', document_type: 'Histórico', updated_at: null },
+      { id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', status: 'PENDING', updated_at: '2026-02-10T12:00:00Z' },
+      { id: 'doc-inactive', student_id: 'student-inactive', document_type: 'Histórico', status: 'REQUESTED', updated_at: null },
     ], { academicYearId: 'year-1' });
 
     expect(rows).toEqual([expect.objectContaining({
@@ -99,14 +99,27 @@ describe('academicReportService', () => {
     expect(buildPendingDocumentReportRows([
       enrollment,
       { ...enrollment, id: 'enrollment-2', class_id: 'class-2', class_name: '2º B' },
-    ] as never, [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão', updated_at: null }], {
+    ] as never, [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão', status: 'PENDING', updated_at: null }], {
       academicYearId: 'year-1', classId: 'class-2',
     })[0]?.className).toBe('2º B');
   });
 
-  it('consulta somente documentos explicitamente pendentes da instituição e alunos ativos', async () => {
+  it('preserva os estados documentais que ainda exigem providência', () => {
+    const statuses = [...PENDING_DOCUMENT_REPORT_STATUSES];
+    const rows = buildPendingDocumentReportRows([enrollment] as never, statuses.map((status) => ({
+      id: `doc-${status}`,
+      student_id: 'student-1',
+      document_type: 'Documento escolar',
+      status,
+      updated_at: null,
+    })), { academicYearId: 'year-1' });
+
+    expect(rows.map((row) => row.status)).toEqual(statuses);
+  });
+
+  it('consulta documentos que exigem providência da instituição e alunos ativos', async () => {
     supabaseMocks.range.mockResolvedValue({
-      data: [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', updated_at: null }],
+      data: [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', status: 'REQUESTED', updated_at: null }],
       error: null,
     });
 
@@ -115,7 +128,7 @@ describe('academicReportService', () => {
     expect(rows).toHaveLength(1);
     expect(supabaseMocks.from).toHaveBeenCalledWith('student_documents');
     expect(supabaseMocks.eq).toHaveBeenCalledWith('institution_id', institutionId);
-    expect(supabaseMocks.eq).toHaveBeenCalledWith('status', 'PENDING');
+    expect(supabaseMocks.in).toHaveBeenCalledWith('status', PENDING_DOCUMENT_REPORT_STATUSES);
     expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
     expect(supabaseMocks.range).toHaveBeenCalledWith(0, 499);
   });

@@ -112,7 +112,28 @@ export interface PendingDocumentReportRow {
   registrationNumber: string;
   className: string;
   documentType: string;
+  status: PendingDocumentStatus;
   updatedAt: string | null;
+}
+
+export type PendingDocumentStatus = 'PENDING' | 'REQUESTED' | 'DELIVERED' | 'UNDER_REVIEW' | 'REJECTED';
+
+export const PENDING_DOCUMENT_REPORT_STATUSES: readonly PendingDocumentStatus[] = [
+  'PENDING',
+  'REQUESTED',
+  'DELIVERED',
+  'UNDER_REVIEW',
+  'REJECTED',
+];
+
+export function getPendingDocumentStatusLabel(status: PendingDocumentStatus): string {
+  switch (status) {
+    case 'PENDING': return 'Pendente';
+    case 'REQUESTED': return 'Solicitado';
+    case 'DELIVERED': return 'Recebido';
+    case 'UNDER_REVIEW': return 'Em conferência';
+    case 'REJECTED': return 'Devolvido para ajuste';
+  }
 }
 
 export interface StudentsWithoutClassReportRow {
@@ -136,6 +157,7 @@ interface PendingDocumentSourceRow {
   id: string;
   student_id: string;
   document_type: string;
+  status: PendingDocumentStatus;
   updated_at: string | null;
 }
 
@@ -172,6 +194,7 @@ export function buildPendingDocumentReportRows(
       registrationNumber: representative.student_registration_number,
       className: classNames.join(', '),
       documentType: document.document_type,
+      status: document.status,
       updatedAt: document.updated_at,
     }];
   }).sort((left, right) =>
@@ -466,9 +489,9 @@ export const academicReportService = {
       for (let offset = 0; ; offset += 500) {
         const { data, error } = await supabase
           .from('student_documents')
-          .select('id,student_id,document_type,updated_at')
+          .select('id,student_id,document_type,status,updated_at')
           .eq('institution_id', institutionId)
-          .eq('status', 'PENDING')
+          .in('status', PENDING_DOCUMENT_REPORT_STATUSES)
           .in('student_id', studentIdChunk)
           .order('updated_at', { ascending: false })
           .range(offset, offset + 499);
