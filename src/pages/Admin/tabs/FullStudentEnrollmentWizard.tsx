@@ -381,7 +381,8 @@ export default function FullStudentEnrollmentWizard({
   function validateStep(): string | null {
     if (step === 0) {
       if (draft.identity.full_name.trim().length < 3) return 'Informe o nome completo do aluno.';
-      if (!/^\S+@\S+\.\S+$/.test(draft.identity.email.trim())) return 'Informe um e-mail valido para o aluno.';
+      if (mode !== 'enroll' && !/^\S+@\S+\.\S+$/.test(draft.identity.email.trim())) return 'Informe um e-mail valido para o aluno.';
+      if (mode === 'enroll' && draft.identity.email.trim() && !/^\S+@\S+\.\S+$/.test(draft.identity.email.trim())) return 'Informe um e-mail válido ou deixe o campo vazio.';
       if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.identity.birth_date)) return 'Informe a data de nascimento do aluno.';
     }
     if (step === 2) {
@@ -564,10 +565,22 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderIdentity() {
+    const studentEmailOptional = mode === 'enroll';
     return (
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Nome completo *"><input className={inputClass} value={draft.identity.full_name} onChange={(event) => updateIdentity('full_name', event.target.value)} /></Field>
-        <Field label="E-mail *"><input type="email" className={inputClass} value={draft.identity.email} onChange={(event) => updateIdentity('email', event.target.value)} /></Field>
+        <Field
+          label={studentEmailOptional ? 'E-mail do aluno (opcional)' : 'E-mail *'}
+          hint={studentEmailOptional ? 'A matrícula de um aluno já cadastrado não cria nem altera o acesso ao sistema.' : undefined}
+        >
+          <input
+            type="email"
+            className={inputClass}
+            value={draft.identity.email}
+            onChange={(event) => updateIdentity('email', event.target.value)}
+            readOnly={studentEmailOptional}
+          />
+        </Field>
         <Field label="Data de nascimento *"><input type="date" className={inputClass} value={draft.identity.birth_date} onChange={(event) => updateIdentity('birth_date', event.target.value)} /></Field>
         <Field label="CPF"><input className={inputClass} value={draft.identity.cpf} onChange={(event) => updateIdentity('cpf', event.target.value)} /></Field>
         <Field label="Nome social"><input className={inputClass} value={draft.identity.social_name} onChange={(event) => updateIdentity('social_name', event.target.value)} /></Field>
@@ -800,7 +813,10 @@ export default function FullStudentEnrollmentWizard({
     const primary = draft.guardians.find((guardian) => guardian.is_primary);
     const year = years.find((item) => item.id === draft.academic_year_id);
     const classRecord = classes.find((item) => item.id === draft.class_id);
-    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos pendentes</strong><p>{draft.documents.filter((document) => document.status === 'PENDING').length}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.</div></div>;
+    const confirmationMessage = mode === 'enroll'
+      ? 'Ao confirmar, os dados complementares e a nova matrícula serão persistidos para o aluno existente. Nenhum acesso será criado nem alterado.'
+      : 'Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.';
+    return <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos pendentes</strong><p>{draft.documents.filter((document) => document.status === 'PENDING').length}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-blue-900 dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-200">{confirmationMessage}</div></div>;
   }
 
   function renderStep() {

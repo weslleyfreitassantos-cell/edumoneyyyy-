@@ -301,6 +301,73 @@ describe('FullStudentEnrollmentWizard', () => {
     expect(screen.queryByText(/registros já criados foram preservados/)).toBeNull();
   });
 
+  it('permite matricular aluno existente sem e-mail e não cria nem altera seu acesso', async () => {
+    mocks.editorData = {
+      studentId: 'student-existing',
+      enrollmentId: null,
+      draft: {
+        identity: {
+          full_name: 'Aluno sem e-mail',
+          email: '',
+          birth_date: '2016-01-01',
+          cpf: '',
+          social_name: '',
+          rg: '',
+          rg_issuing_authority: '',
+          rg_state: '',
+          birth_certificate: '',
+          nationality: 'Brasileira',
+          birthplace: '',
+          birth_state: '',
+          sex: '',
+          phone: '',
+        },
+        address: { postal_code: '', street: '', number: '', complement: '', neighborhood: '', city: '', state: '', rural_zone: false },
+        guardians: [{ mode: 'existing', profile_id: 'guardian-profile', full_name: 'Maria Silva', email: 'maria@example.com', phone: '', relationship: 'Mãe', is_primary: true }],
+        previous_schooling: { origin_school: '', origin_network: '', city: '', state: '', last_grade: '', origin_year: '', status: '', observations: '', history_delivered: false, transfer_declaration: false },
+        health: { allergies: '', health_conditions: '', emergency_medication: '', disability: '', autism: false, giftedness: false, needs_special_education: false, school_care_notes: '' },
+        documents: [],
+        academic_year_id: 'year-1',
+        class_id: 'class-1',
+        enrolled_at: '2026-01-01',
+      },
+    };
+    mocks.create.mockResolvedValue({
+      student_id: 'student-existing',
+      enrollment_id: 'enrollment-new',
+      guardian_profile_ids: ['guardian-profile'],
+      documents_pending: 0,
+      email_pending: false,
+    });
+
+    render(
+      <FullStudentEnrollmentWizard
+        institutionId="institution-1"
+        years={years}
+        classes={classes}
+        mode="enroll"
+        studentId="student-existing"
+        onClose={vi.fn()}
+        onCompleted={vi.fn()}
+      />,
+    );
+
+    expect(await screen.findByDisplayValue('Aluno sem e-mail')).toBeTruthy();
+    expect(screen.getByLabelText(/^E-mail do aluno \(opcional\)/)).toBeTruthy();
+    for (let index = 0; index < 7; index += 1) {
+      fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+      await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+    }
+
+    expect(screen.getByText(/Nenhum acesso será criado nem alterado/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
+    await waitFor(() => expect(mocks.create).toHaveBeenCalledWith(expect.objectContaining({
+      institutionId: 'institution-1',
+      existingStudentId: 'student-existing',
+      draft: expect.objectContaining({ identity: expect.objectContaining({ email: '' }) }),
+    })));
+  });
+
   it('carrega e salva todos os dados no modo de edicao', async () => {
     mocks.editorData = {
       studentId: 'student-1',
