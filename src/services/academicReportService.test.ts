@@ -7,7 +7,7 @@ import { pedagogicalMonitoringService } from './pedagogicalMonitoringService';
 import { reportCardService } from './reportCardService';
 import { studentService } from './studentService';
 import { termClosingService } from './termClosingService';
-import { academicReportService, buildPendingDocumentReportRows } from './academicReportService';
+import { academicReportService, buildPendingDocumentReportRows, buildStudentsWithoutClassReportRows } from './academicReportService';
 
 const supabaseMocks = vi.hoisted(() => ({
   from: vi.fn(),
@@ -114,6 +114,40 @@ describe('academicReportService', () => {
     expect(supabaseMocks.eq).toHaveBeenCalledWith('status', 'PENDING');
     expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
     expect(supabaseMocks.range).toHaveBeenCalledWith(0, 499);
+  });
+
+  it('lista estudantes ativos sem vínculo válido com turma no ano escolhido', () => {
+    const students = [
+      student,
+      { ...student, id: 'student-unassigned', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+      { ...student, id: 'student-inactive', active: false, registration_number: '20260003' },
+      { ...student, id: 'student-other-year', registration_number: '20260004', profiles: { ...student.profiles, full_name: 'Bruno Lima' } },
+      { ...student, id: 'student-inactive-class', registration_number: '20260005', profiles: { ...student.profiles, full_name: 'Carla Souza' } },
+    ];
+    const enrollments = [
+      enrollment,
+      { ...enrollment, id: 'other-year', student_id: 'student-other-year', academic_year_id: 'year-2' },
+      { ...enrollment, id: 'inactive-class', student_id: 'student-inactive-class', class_active: false },
+    ];
+
+    expect(buildStudentsWithoutClassReportRows(students as never, enrollments as never, 'year-1')).toEqual([
+      { id: 'student-unassigned', studentName: 'Aline Costa', registrationNumber: '20260002' },
+      { id: 'student-other-year', studentName: 'Bruno Lima', registrationNumber: '20260004' },
+      { id: 'student-inactive-class', studentName: 'Carla Souza', registrationNumber: '20260005' },
+    ]);
+  });
+
+  it('scopes the unassigned-students report to the selected institution and school year', async () => {
+    vi.mocked(studentService.list).mockResolvedValue([
+      student,
+      { ...student, id: 'student-unassigned', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+    ] as never);
+
+    const rows = await academicReportService.getStudentsWithoutClassReport(institutionId, 'year-1');
+
+    expect(rows).toEqual([{ id: 'student-unassigned', studentName: 'Aline Costa', registrationNumber: '20260002' }]);
+    expect(studentService.list).toHaveBeenCalledWith(institutionId);
+    expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
   });
 
   it('preserva snapshot oficial de recuperação no relatório de resultados', async () => {

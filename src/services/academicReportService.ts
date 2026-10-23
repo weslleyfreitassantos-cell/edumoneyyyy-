@@ -21,6 +21,7 @@ import { supabase } from '../lib/supabaseClient';
 
 export type AcademicReportType =
   | 'ENROLLMENTS'
+  | 'STUDENTS_WITHOUT_CLASS'
   | 'RESULTS'
   | 'ATTENDANCE'
   | 'DOCUMENTS_PENDING';
@@ -112,6 +113,12 @@ export interface PendingDocumentReportRow {
   updatedAt: string | null;
 }
 
+export interface StudentsWithoutClassReportRow {
+  id: string;
+  studentName: string;
+  registrationNumber: string;
+}
+
 interface PendingDocumentSourceRow {
   id: string;
   student_id: string;
@@ -157,6 +164,33 @@ export function buildPendingDocumentReportRows(
   }).sort((left, right) =>
     left.studentName.localeCompare(right.studentName, 'pt-BR')
     || left.documentType.localeCompare(right.documentType, 'pt-BR'));
+}
+
+export function buildStudentsWithoutClassReportRows(
+  students: readonly StudentRow[],
+  enrollments: readonly EnrollmentRow[],
+  academicYearId: string,
+): StudentsWithoutClassReportRow[] {
+  const assignedStudentIds = new Set(
+    enrollments
+      .filter((enrollment) =>
+        enrollment.academic_year_id === academicYearId
+        && enrollment.active
+        && enrollment.status === 'ACTIVE'
+        && enrollment.student_active
+        && enrollment.class_active,
+      )
+      .map((enrollment) => enrollment.student_id),
+  );
+
+  return students
+    .filter((student) => student.active && !assignedStudentIds.has(student.id))
+    .map((student) => ({
+      id: student.id,
+      studentName: student.profiles?.full_name || student.registration_number,
+      registrationNumber: student.registration_number,
+    }))
+    .sort((left, right) => left.studentName.localeCompare(right.studentName, 'pt-BR'));
 }
 
 function toOptions(values: Map<string, AcademicReportOption>): AcademicReportOption[] {
@@ -391,6 +425,17 @@ export const academicReportService = {
     }
 
     return buildPendingDocumentReportRows(activeYearEnrollments, documents, filters);
+  },
+
+  async getStudentsWithoutClassReport(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<StudentsWithoutClassReportRow[]> {
+    const [students, enrollments] = await Promise.all([
+      studentService.list(institutionId),
+      enrollmentService.list(institutionId),
+    ]);
+    return buildStudentsWithoutClassReportRows(students, enrollments, academicYearId);
   },
 
   async getAcademicResultsReport(

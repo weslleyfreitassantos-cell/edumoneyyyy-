@@ -14,7 +14,7 @@ vi.mock('../../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: vi.fn() }));
 vi.mock('../../../hooks/useAcademicReports', () => ({ useAcademicReportOptions: vi.fn() }));
 vi.mock('../../../services/academicReportService', () => ({
-  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn(), getPendingDocumentsReport: vi.fn() },
+  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn(), getPendingDocumentsReport: vi.fn(), getStudentsWithoutClassReport: vi.fn() },
   getPreferredAcademicReportSelection: vi.fn((years) => years[0]?.terms[0] ? { academicYearId: years[0].id, termId: years[0].terms[0].id } : null),
 }));
 
@@ -90,5 +90,23 @@ describe('AcademicReportsTab', () => {
       classId: undefined,
     });
     expect(screen.getByText('Pendente')).toBeTruthy();
+  });
+
+  it('gera o relatório de estudantes sem enturmação apenas com o ano letivo', async () => {
+    vi.mocked(academicReportService.getStudentsWithoutClassReport).mockResolvedValue([{
+      id: 'student-unassigned',
+      studentName: 'Aline Costa',
+      registrationNumber: '20260002',
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'STUDENTS_WITHOUT_CLASS' } });
+    expect(screen.queryByLabelText('Turma (opcional)')).toBeNull();
+    expect(screen.getByText(/estudantes ativos sem matrícula ativa vinculada a uma turma ativa/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+
+    await waitFor(() => expect(screen.getByText('Aline Costa')).toBeTruthy());
+    expect(screen.getByText('Sem enturmação ativa')).toBeTruthy();
+    expect(academicReportService.getStudentsWithoutClassReport).toHaveBeenCalledWith('institution-1', 'year-1');
   });
 });
