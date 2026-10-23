@@ -16,6 +16,7 @@ export interface InventoryItem {
   unit: string;
   default_location: string;
   supplier: string | null;
+  supplier_contact: string | null;
   stock: number;
   location_balances: Array<{ location_id: string; location_name: string; quantity: number }>;
 }
@@ -75,7 +76,7 @@ export const inventoryService = {
           .eq('institution_id', institutionId).eq('active', true).order('name'),
         supabase.from('inventory_locations').select('id, name')
           .eq('institution_id', institutionId).eq('active', true).order('name'),
-        supabase.from('inventory_suppliers').select('id, name')
+        supabase.from('inventory_suppliers').select('id, name, contact')
           .eq('institution_id', institutionId).eq('active', true).order('name'),
         supabase.from('inventory_balances').select('item_id, location_id, quantity')
           .eq('institution_id', institutionId),
@@ -94,6 +95,7 @@ export const inventoryService = {
     const units = new Map((unitsResult.data ?? []).map((row) => [row.id, row.name]));
     const locations = new Map((locationsResult.data ?? []).map((row) => [row.id, row.name]));
     const suppliers = new Map((suppliersResult.data ?? []).map((row) => [row.id, row.name]));
+    const supplierContacts = new Map((suppliersResult.data ?? []).map((row) => [row.id, row.contact]));
     const stockByItem = new Map<string, number>();
     const balancesByItem = new Map<string, Array<{ location_id: string; location_name: string; quantity: number }>>();
     for (const balance of balancesResult.data ?? []) {
@@ -125,6 +127,7 @@ export const inventoryService = {
       unit: units.get(String(row.unit_id)) ?? 'unidade',
       default_location: locations.get(String(row.default_location_id)) ?? 'Local não informado',
       supplier: row.supplier_id ? suppliers.get(String(row.supplier_id)) ?? null : null,
+      supplier_contact: row.supplier_id ? supplierContacts.get(String(row.supplier_id)) ?? null : null,
       stock: stockByItem.get(String(row.id)) ?? 0,
       location_balances: balancesByItem.get(String(row.id)) ?? [],
     }));

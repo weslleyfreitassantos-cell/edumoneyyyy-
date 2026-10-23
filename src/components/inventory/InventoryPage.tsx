@@ -96,14 +96,14 @@ export default function InventoryPage() {
 
   function downloadReport() {
     const rows = [
-      ['Material', 'Categoria', 'Código', 'Unidade', 'Local', 'Quantidade', 'Estoque mínimo', 'Status'],
+      ['Material', 'Categoria', 'Código', 'Unidade', 'Fornecedor', 'Contato do fornecedor', 'Local', 'Quantidade', 'Estoque mínimo', 'Status'],
       ...items.flatMap((item) => {
         const balances = item.location_balances.length
           ? item.location_balances
           : [{ location_id: item.default_location_id, location_name: item.default_location, quantity: 0 }];
         return balances.map((balance) => [
-          item.name, item.category, item.sku ?? '', item.unit, balance.location_name,
-          balance.quantity, item.minimum_quantity, item.active ? 'Ativo' : 'Inativo',
+          item.name, item.category, item.sku ?? '', item.unit, item.supplier ?? '', item.supplier_contact ?? '',
+          balance.location_name, balance.quantity, item.minimum_quantity, item.active ? 'Ativo' : 'Inativo',
         ]);
       }),
     ];
@@ -329,7 +329,7 @@ export default function InventoryPage() {
             {visibleItems.map((item) => (
               <li key={item.id} className="rounded-xl border border-slate-200 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div><h3 className="font-bold text-slate-900">{item.name} {!item.active ? <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">Inativo</span> : null}</h3><p className="mt-1 text-sm text-slate-600">{item.category} · {item.unit}{item.sku ? ` · ${item.sku}` : ''} · local padrão: {item.default_location}</p>{item.supplier ? <p className="text-xs text-slate-500">Fornecedor: {item.supplier}</p> : null}</div>
+                  <div><h3 className="font-bold text-slate-900">{item.name} {!item.active ? <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">Inativo</span> : null}</h3><p className="mt-1 text-sm text-slate-600">{item.category} · {item.unit}{item.sku ? ` · ${item.sku}` : ''} · local padrão: {item.default_location}</p>{item.supplier ? <p className="text-xs text-slate-500">Fornecedor: {item.supplier}{item.supplier_contact ? ` · ${item.supplier_contact}` : ''}</p> : null}</div>
                   <div className="text-right"><p className={`text-lg font-extrabold ${item.stock <= item.minimum_quantity ? 'text-amber-700' : 'text-slate-900'}`}>{item.stock} <span className="text-sm font-semibold">{item.unit}</span></p><p className="text-xs text-slate-500">mínimo: {item.minimum_quantity}</p></div>
                 </div>
                 {item.location_balances.length ? <div className="mt-3 flex flex-wrap gap-2" aria-label={`Saldos por local de ${item.name}`}>{item.location_balances.map((balance) => <span key={balance.location_id} className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700"><MapPin className="h-3 w-3" aria-hidden="true" />{balance.location_name}: {balance.quantity} {item.unit}</span>)}</div> : null}

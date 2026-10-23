@@ -34,7 +34,7 @@ const item = {
   unit_id: 'unit-1', default_location_id: 'location-1', supplier_id: null,
   name: 'Papel A4', sku: null, description: null, minimum_quantity: 2,
   active: true, category: 'Papelaria', unit: 'resma',
-  default_location: 'Almoxarifado', supplier: null, stock: 5,
+  default_location: 'Almoxarifado', supplier: null, supplier_contact: null, stock: 5,
   location_balances: [{ location_id: 'location-1', location_name: 'Almoxarifado', quantity: 5 }],
 };
 const request = {
