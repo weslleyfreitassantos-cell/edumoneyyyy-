@@ -44,6 +44,8 @@ export interface InventoryRequest {
 
 export interface InventoryMovement {
   id: string;
+  item_id: string;
+  location_id: string;
   item_name: string;
   location_name: string;
   movement_type: string;
@@ -52,6 +54,26 @@ export interface InventoryMovement {
   note: string | null;
   created_at: string;
   performed_by: string;
+}
+
+export interface InventoryCountLine {
+  id: string;
+  item_id: string;
+  item_name: string;
+  unit: string;
+  expected_quantity: number;
+  counted_quantity: number | null;
+}
+
+export interface InventoryCountSession {
+  id: string;
+  location_id: string;
+  location_name: string;
+  status: 'OPEN' | 'FINALIZING' | 'FINALIZED' | 'CANCELLED';
+  note: string | null;
+  created_at: string;
+  finalized_at: string | null;
+  lines: InventoryCountLine[];
 }
 
 function throwIfError(error: { message: string } | null): void {
@@ -64,12 +86,11 @@ export const inventoryService = {
     requests: InventoryRequest[];
     movements: InventoryMovement[];
     locations: InventoryLocation[];
+    countSessions: InventoryCountSession[];
   }> {
-    const [itemsResult, categoriesResult, unitsResult, locationsResult,
-      suppliersResult, balancesResult, requestsResult, movementsResult] =
+    const [categoriesResult, unitsResult, locationsResult,
+      suppliersResult, requestsResult, movementsResult, countSessionsResult] =
       await Promise.all([
-        supabase.from('inventory_items').select('*')
-          .eq('institution_id', institutionId).order('name'),
         supabase.from('inventory_categories').select('id, name')
           .eq('institution_id', institutionId).eq('active', true).order('name'),
         supabase.from('inventory_units').select('id, name')
@@ -78,19 +99,48 @@ export const inventoryService = {
           .eq('institution_id', institutionId).eq('active', true).order('name'),
         supabase.from('inventory_suppliers').select('id, name, contact')
           .eq('institution_id', institutionId).eq('active', true).order('name'),
-        supabase.from('inventory_balances').select('item_id, location_id, quantity')
-          .eq('institution_id', institutionId),
         supabase.from('inventory_requests').select('*')
           .eq('institution_id', institutionId).order('created_at', { ascending: false }).limit(200),
         supabase.from('inventory_movements').select('*')
           .eq('institution_id', institutionId).order('created_at', { ascending: false }).limit(100),
+        supabase.from('inventory_count_sessions').select('id, institution_id, location_id, status, note, created_at, finalized_at')
+          .eq('institution_id', institutionId).order('created_at', { ascending: false }).limit(50),
       ]);
-    for (const result of [itemsResult, categoriesResult, unitsResult,
-      locationsResult, suppliersResult, balancesResult, requestsResult, movementsResult]) {
+    for (const result of [categoriesResult, unitsResult,
+      locationsResult, suppliersResult, requestsResult, movementsResult,
+      countSessionsResult]) {
       throwIfError(result.error);
     }
+    const items: Array<Record<string, unknown>> = [];
+    for (let offset = 0; ; offset += 1000) {
+      const result = await supabase.from('inventory_items').select('*')
+        .eq('institution_id', institutionId).order('name').range(offset, offset + 999);
+      throwIfError(result.error);
+      const page = (result.data ?? []) as Array<Record<string, unknown>>;
+      items.push(...page);
+      if (page.length < 1000) break;
+    }
+    const balances: Array<Record<string, unknown>> = [];
+    for (let offset = 0; ; offset += 1000) {
+      const result = await supabase.from('inventory_balances').select('item_id, location_id, quantity')
+        .eq('institution_id', institutionId).order('item_id').order('location_id')
+        .range(offset, offset + 999);
+      throwIfError(result.error);
+      const page = (result.data ?? []) as Array<Record<string, unknown>>;
+      balances.push(...page);
+      if (page.length < 1000) break;
+    }
+    const openCountSessions: Array<Record<string, unknown>> = [];
+    for (let offset = 0; ; offset += 1000) {
+      const result = await supabase.from('inventory_count_sessions').select('id, institution_id, location_id, status, note, created_at, finalized_at')
+        .eq('institution_id', institutionId).eq('status', 'OPEN')
+        .order('created_at', { ascending: false }).range(offset, offset + 999);
+      throwIfError(result.error);
+      const page = (result.data ?? []) as Array<Record<string, unknown>>;
+      openCountSessions.push(...page);
+      if (page.length < 1000) break;
+    }
 
-    const items = (itemsResult.data ?? []) as Array<Record<string, unknown>>;
     const categories = new Map((categoriesResult.data ?? []).map((row) => [row.id, row.name]));
     const units = new Map((unitsResult.data ?? []).map((row) => [row.id, row.name]));
     const locations = new Map((locationsResult.data ?? []).map((row) => [row.id, row.name]));
@@ -98,7 +148,7 @@ export const inventoryService = {
     const supplierContacts = new Map((suppliersResult.data ?? []).map((row) => [row.id, row.contact]));
     const stockByItem = new Map<string, number>();
     const balancesByItem = new Map<string, Array<{ location_id: string; location_name: string; quantity: number }>>();
-    for (const balance of balancesResult.data ?? []) {
+    for (const balance of balances) {
       const itemId = String(balance.item_id);
       const locationId = String(balance.location_id);
       const quantity = Number(balance.quantity);
@@ -162,6 +212,8 @@ export const inventoryService = {
     const movementRows = (movementsResult.data ?? []) as Array<Record<string, unknown>>;
     const movements: InventoryMovement[] = movementRows.map((row) => ({
       id: String(row.id),
+      item_id: String(row.item_id),
+      location_id: String(row.location_id),
       item_name: itemMap.get(String(row.item_id))?.name ?? 'Item arquivado',
       location_name: locations.get(String(row.location_id)) ?? 'Local',
       movement_type: String(row.movement_type),
@@ -175,7 +227,52 @@ export const inventoryService = {
       id: String(row.id),
       name: String(row.name),
     }));
-    return { items: itemRows, requests, movements, locations: locationRows };
+    const sessionMap = new Map<string, Record<string, unknown>>();
+    for (const row of [...(countSessionsResult.data ?? []), ...openCountSessions] as Array<Record<string, unknown>>) {
+      sessionMap.set(String(row.id), row);
+    }
+    const countSessionRows = [...sessionMap.values()];
+    const openCountSessionIds = openCountSessions.map((row) => String(row.id));
+    const countLines: Array<Record<string, unknown>> = [];
+    for (let index = 0; index < openCountSessionIds.length; index += 200) {
+      const sessionIds = openCountSessionIds.slice(index, index + 200);
+      for (let offset = 0; ; offset += 1000) {
+        const result = await supabase.from('inventory_count_lines').select('id, session_id, item_id, expected_quantity, counted_quantity')
+          .eq('institution_id', institutionId).in('session_id', sessionIds)
+          .order('item_id').range(offset, offset + 999);
+        throwIfError(result.error);
+        const page = (result.data ?? []) as Array<Record<string, unknown>>;
+        countLines.push(...page);
+        if (page.length < 1000) break;
+      }
+    }
+    const countLinesBySession = new Map<string, InventoryCountLine[]>();
+    for (const line of countLines) {
+      const item = itemMap.get(String(line.item_id));
+      if (!item) continue;
+      const sessionId = String(line.session_id);
+      const sessionLines = countLinesBySession.get(sessionId) ?? [];
+      sessionLines.push({
+        id: String(line.id),
+        item_id: item.id,
+        item_name: item.name,
+        unit: item.unit,
+        expected_quantity: Number(line.expected_quantity),
+        counted_quantity: line.counted_quantity === null ? null : Number(line.counted_quantity),
+      });
+      countLinesBySession.set(sessionId, sessionLines);
+    }
+    const countSessions: InventoryCountSession[] = countSessionRows.map((row) => ({
+      id: String(row.id),
+      location_id: String(row.location_id),
+      location_name: locations.get(String(row.location_id)) ?? 'Local',
+      status: String(row.status) as InventoryCountSession['status'],
+      note: row.note ? String(row.note) : null,
+      created_at: String(row.created_at),
+      finalized_at: row.finalized_at ? String(row.finalized_at) : null,
+      lines: countLinesBySession.get(String(row.id)) ?? [],
+    }));
+    return { items: itemRows, requests, movements, locations: locationRows, countSessions };
   },
 
   async createItem(input: {
@@ -328,5 +425,120 @@ export const inventoryService = {
       p_idempotency_key: input.idempotencyKey,
     });
     throwIfError(error);
+  },
+
+  async startCount(input: {
+    institutionId: string;
+    locationId: string;
+    note: string;
+    idempotencyKey: string;
+  }): Promise<void> {
+    const { error } = await supabase.rpc('inventory_start_count', {
+      p_institution_id: input.institutionId,
+      p_location_id: input.locationId,
+      p_note: input.note || null,
+      p_idempotency_key: input.idempotencyKey,
+    });
+    throwIfError(error);
+  },
+
+  async saveCount(input: {
+    sessionId: string;
+    lines: Array<{ lineId: string; countedQuantity: number }>;
+    idempotencyKey: string;
+  }): Promise<void> {
+    const { error } = await supabase.rpc('inventory_save_count', {
+      p_session_id: input.sessionId,
+      p_lines: input.lines.map((line) => ({
+        line_id: line.lineId,
+        counted_quantity: line.countedQuantity,
+      })),
+      p_idempotency_key: input.idempotencyKey,
+    });
+    throwIfError(error);
+  },
+
+  async finalizeCount(input: { sessionId: string; idempotencyKey: string }): Promise<void> {
+    const { error } = await supabase.rpc('inventory_finalize_count', {
+      p_session_id: input.sessionId,
+      p_idempotency_key: input.idempotencyKey,
+    });
+    throwIfError(error);
+  },
+
+  async cancelCount(input: { sessionId: string; idempotencyKey: string }): Promise<void> {
+    const { error } = await supabase.rpc('inventory_cancel_count', {
+      p_session_id: input.sessionId,
+      p_idempotency_key: input.idempotencyKey,
+    });
+    throwIfError(error);
+  },
+
+  async listMovementReport(input: {
+    institutionId: string;
+    startDate: string;
+    endDate: string;
+  }): Promise<InventoryMovement[]> {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(input.startDate)
+      || !/^\d{4}-\d{2}-\d{2}$/.test(input.endDate)
+      || input.startDate > input.endDate) {
+      throw new Error('Informe um período válido para o relatório.');
+    }
+    const startDay = new Date(`${input.startDate}T00:00:00.000Z`);
+    const endDay = new Date(`${input.endDate}T00:00:00.000Z`);
+    if (!Number.isFinite(startDay.getTime()) || !Number.isFinite(endDay.getTime())
+      || startDay.toISOString().slice(0, 10) !== input.startDate
+      || endDay.toISOString().slice(0, 10) !== input.endDate) {
+      throw new Error('Informe um período válido para o relatório.');
+    }
+    const startAt = new Date(`${input.startDate}T00:00:00-03:00`);
+    const endExclusive = new Date(`${input.endDate}T00:00:00-03:00`);
+    endExclusive.setUTCDate(endExclusive.getUTCDate() + 1);
+    const pageSize = 1000;
+    const rows: Array<Record<string, unknown>> = [];
+    for (let offset = 0; ; offset += pageSize) {
+      const result = await supabase.from('inventory_movements').select('id, item_id, location_id, movement_type, quantity_delta, balance_after, note, created_at, performed_by')
+        .eq('institution_id', input.institutionId)
+        .gte('created_at', startAt.toISOString())
+        .lt('created_at', endExclusive.toISOString())
+        .order('created_at', { ascending: false })
+        .range(offset, offset + pageSize - 1);
+      throwIfError(result.error);
+      const page = (result.data ?? []) as Array<Record<string, unknown>>;
+      rows.push(...page);
+      if (page.length < pageSize) break;
+      if (rows.length >= 10_000) {
+        throw new Error('O relatório atingiu o limite de 10.000 movimentações. Reduza o intervalo.');
+      }
+    }
+    const uniqueIds = (key: 'item_id' | 'location_id') =>
+      [...new Set(rows.map((row) => String(row[key])))];
+    const fetchNames = async (table: 'inventory_items' | 'inventory_locations', ids: string[]) => {
+      const entries: Array<[string, string]> = [];
+      for (let index = 0; index < ids.length; index += 200) {
+        const result = await supabase.from(table).select('id, name')
+          .eq('institution_id', input.institutionId).in('id', ids.slice(index, index + 200));
+        throwIfError(result.error);
+        entries.push(...(result.data ?? []).map((row): [string, string] => [String(row.id), String(row.name)]));
+      }
+      return new Map(entries);
+    };
+    const [items, locations] = await Promise.all([
+      fetchNames('inventory_items', uniqueIds('item_id')),
+      fetchNames('inventory_locations', uniqueIds('location_id')),
+    ]);
+    return rows.map((row) => ({
+      id: String(row.id),
+      item_id: String(row.item_id),
+      location_id: String(row.location_id),
+      item_name: items.get(String(row.item_id)) ?? 'Item arquivado',
+      location_name: locations.get(String(row.location_id)) ?? 'Local arquivado',
+      movement_type: String(row.movement_type),
+      quantity_delta: Number(row.quantity_delta),
+      balance_after: Number(row.balance_after),
+      note: row.note ? String(row.note) : null,
+      created_at: String(row.created_at),
+      performed_by: String(row.performed_by),
+    }));
   },
 };

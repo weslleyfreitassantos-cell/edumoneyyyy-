@@ -13,6 +13,11 @@ const service = vi.hoisted(() => ({
   decideRequest: vi.fn(),
   cancelRequest: vi.fn(),
   fulfillRequest: vi.fn(),
+  startCount: vi.fn(),
+  saveCount: vi.fn(),
+  finalizeCount: vi.fn(),
+  cancelCount: vi.fn(),
+  listMovementReport: vi.fn(),
 }));
 
 vi.mock('../../contexts/InstitutionContext', () => ({
@@ -49,6 +54,7 @@ beforeEach(() => {
   service.list.mockResolvedValue({
     items: [item], requests: [request], movements: [],
     locations: [{ id: 'location-1', name: 'Almoxarifado' }, { id: 'location-2', name: 'Sala de Artes' }],
+    countSessions: [],
   });
   service.createItem.mockResolvedValue(undefined);
   service.moveStock.mockResolvedValue(undefined);
@@ -58,6 +64,11 @@ beforeEach(() => {
   service.decideRequest.mockResolvedValue(undefined);
   service.cancelRequest.mockResolvedValue(undefined);
   service.fulfillRequest.mockResolvedValue(undefined);
+  service.startCount.mockResolvedValue(undefined);
+  service.saveCount.mockResolvedValue(undefined);
+  service.finalizeCount.mockResolvedValue(undefined);
+  service.cancelCount.mockResolvedValue(undefined);
+  service.listMovementReport.mockResolvedValue([]);
 });
 afterEach(() => cleanup());
 
@@ -101,5 +112,54 @@ describe('InventoryPage', () => {
       institutionId: 'institution-1', itemId: 'item-1',
       sourceLocationId: 'location-1', destinationLocationId: 'location-2', quantity: 2,
     })));
+  });
+
+  it('permite à direção abrir, salvar e reconciliar uma contagem física auditável', async () => {
+    state.role = 'DIRECTOR';
+    const openSession = {
+      id: 'count-1', location_id: 'location-1', location_name: 'Almoxarifado',
+      status: 'OPEN' as const, note: 'Conferência mensal', created_at: '2026-10-23T12:00:00Z',
+      finalized_at: null,
+      lines: [{
+        id: 'count-line-1', item_id: 'item-1', item_name: 'Papel A4', unit: 'resma',
+        expected_quantity: 5, counted_quantity: null,
+      }],
+    };
+    const countedSession = {
+      ...openSession,
+      lines: [{ ...openSession.lines[0], counted_quantity: 4 }],
+    };
+    service.list.mockResolvedValueOnce({
+      items: [item], requests: [], movements: [],
+      locations: [{ id: 'location-1', name: 'Almoxarifado' }, { id: 'location-2', name: 'Sala de Artes' }],
+      countSessions: [openSession],
+    }).mockResolvedValue({
+      items: [item], requests: [], movements: [],
+      locations: [{ id: 'location-1', name: 'Almoxarifado' }, { id: 'location-2', name: 'Sala de Artes' }],
+      countSessions: [countedSession],
+    });
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    render(<InventoryPage />);
+
+    expect(await screen.findByText('Almoxarifado', { selector: 'h3' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Inventário físico' })).toBeTruthy();
+    fireEvent.change(screen.getByLabelText('Contagem física de Papel A4'), { target: { value: '4' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar contagens' }));
+    await waitFor(() => expect(service.saveCount).toHaveBeenCalledWith(expect.objectContaining({
+      sessionId: 'count-1', lines: [{ lineId: 'count-line-1', countedQuantity: 4 }],
+    })));
+    const finalizeButton = await screen.findByRole('button', { name: 'Reconciliar e finalizar' });
+    expect(finalizeButton.hasAttribute('disabled')).toBe(false);
+    fireEvent.click(finalizeButton);
+    await waitFor(() => expect(service.finalizeCount).toHaveBeenCalledWith(expect.objectContaining({
+      sessionId: 'count-1',
+    })));
+  });
+
+  it('não mostra contagens físicas para professores', async () => {
+    render(<InventoryPage />);
+    await screen.findByText('Papel A4');
+    expect(screen.queryByRole('heading', { name: 'Inventário físico' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Abrir contagem' })).toBeNull();
   });
 });

@@ -331,6 +331,11 @@ begin
     returning id into v_supplier_id;
   end if;
 
+  -- Stock operations and physical counts always lock the location before balances.
+  perform 1 from public.inventory_locations location
+   where location.institution_id = p_institution_id and location.id = v_location_id
+   for update;
+
   insert into public.inventory_items(
     institution_id, category_id, unit_id, default_location_id, supplier_id,
     name, sku, description, minimum_quantity, idempotency_key, created_by
@@ -419,6 +424,13 @@ begin
     where location.id = p_location_id and location.institution_id = p_institution_id and location.active)
   then raise exception using errcode = '22023', message = 'INVENTORY_ITEM_OR_LOCATION_NOT_FOUND'; end if;
 
+  perform 1 from public.inventory_locations location
+   where location.id = p_location_id and location.institution_id = p_institution_id
+     and location.active for update;
+  if not found then
+    raise exception using errcode = '22023', message = 'INVENTORY_ITEM_OR_LOCATION_NOT_FOUND';
+  end if;
+
   insert into public.inventory_balances(institution_id, item_id, location_id, quantity)
   values (p_institution_id, p_item_id, p_location_id, 0)
   on conflict (institution_id, item_id, location_id) do nothing;
@@ -471,6 +483,7 @@ declare
   v_source_quantity numeric(14,3);
   v_destination_quantity numeric(14,3);
   v_transfer_out_id uuid;
+  v_locked_location_count integer;
 begin
   if v_actor is null or not private.has_exact_institution_role(
     p_institution_id, array['DIRECTOR', 'SECRETARY']::public.user_role[]
@@ -491,6 +504,17 @@ begin
     or not exists (select 1 from public.inventory_locations location
     where location.id = p_destination_location_id and location.institution_id = p_institution_id and location.active)
   then raise exception using errcode = '22023', message = 'INVENTORY_ITEM_OR_LOCATION_NOT_FOUND'; end if;
+
+  -- Keep the same location -> balance lock order used by count sessions and
+  -- movement RPCs, with deterministic ordering for opposite-direction transfers.
+  perform location.id from public.inventory_locations location
+   where location.institution_id = p_institution_id and location.active
+     and location.id in (p_source_location_id, p_destination_location_id)
+   order by location.id for update;
+  get diagnostics v_locked_location_count = row_count;
+  if v_locked_location_count <> 2 then
+    raise exception using errcode = '22023', message = 'INVENTORY_ITEM_OR_LOCATION_NOT_FOUND';
+  end if;
 
   -- Insert and lock both balance rows in a stable order to avoid deadlocks
   -- when transfers are initiated in opposite directions concurrently.
@@ -813,6 +837,12 @@ begin
   if v_item_id is null or not exists (select 1 from public.inventory_locations location
     where location.id = p_location_id and location.institution_id = p_institution_id and location.active)
   then raise exception using errcode = '22023', message = 'INVENTORY_REQUEST_ITEM_NOT_FOUND'; end if;
+  perform 1 from public.inventory_locations location
+   where location.id = p_location_id and location.institution_id = p_institution_id
+     and location.active for update;
+  if not found then
+    raise exception using errcode = '22023', message = 'INVENTORY_REQUEST_ITEM_NOT_FOUND';
+  end if;
   v_remaining := v_requested - v_fulfilled;
   if p_quantity > v_remaining then
     raise exception using errcode = '22023', message = 'INVENTORY_FULFILLMENT_EXCEEDS_REMAINING';
