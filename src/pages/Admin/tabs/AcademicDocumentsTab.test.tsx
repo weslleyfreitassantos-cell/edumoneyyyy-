@@ -7,19 +7,29 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import {
+  useAcademicDocumentExpectedSubjectTerms,
+  useAcademicDocumentIssuances,
+  useAcademicDocumentReportCard,
   useAcademicDocumentStudent,
   useAcademicDocumentStudents,
 } from '../../../hooks/useAcademicDocuments';
 import { formatLocalIssueDate } from '../../../components/documents/AcademicDocumentPreview';
 import type { AcademicDocumentStudent } from '../../../services/academicDocumentService';
+import { academicDocumentIssuanceService } from '../../../services/academicDocumentIssuanceService';
 
 import AcademicDocumentsTab from './AcademicDocumentsTab';
 
 vi.mock('../../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: vi.fn() }));
 vi.mock('../../../hooks/useAcademicDocuments', () => ({
+  useAcademicDocumentExpectedSubjectTerms: vi.fn(),
+  useAcademicDocumentIssuances: vi.fn(),
+  useAcademicDocumentReportCard: vi.fn(),
   useAcademicDocumentStudent: vi.fn(),
   useAcademicDocumentStudents: vi.fn(),
+}));
+vi.mock('../../../services/academicDocumentIssuanceService', () => ({
+  academicDocumentIssuanceService: { record: vi.fn() },
 }));
 
 const student: AcademicDocumentStudent = {
@@ -91,6 +101,55 @@ function mockState(selected: AcademicDocumentStudent | null = student) {
     isError: false,
     error: null,
   } as never));
+  vi.mocked(useAcademicDocumentExpectedSubjectTerms).mockReturnValue({
+    data: [{ subjectOfferingId: 'offering-1', termId: 'term-1', subjectName: 'Português', termName: '1º bimestre' }],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useAcademicDocumentReportCard).mockReturnValue({
+    data: {
+      institutionId: 'institution-1',
+      studentId: 'student-1',
+      subjects: [{
+        key: 'offering-1:term-1',
+        institutionId: 'institution-1',
+        academicYearId: 'year-1',
+        academicYearName: '2026',
+        termId: 'term-1',
+        termName: '1º bimestre',
+        subjectOfferingId: 'offering-1',
+        subjectName: 'Português',
+        subjectCode: 'LP',
+        className: '1º A',
+        teacherName: 'Docente',
+        teacherEmail: '',
+        gradePercentage: 85,
+        recoveryPercentage: null,
+        finalGradePercentage: 85,
+        originalResultStatus: 'APPROVED',
+        compositionRule: null,
+        attendancePercentage: 96,
+        resultStatus: 'APPROVED',
+        finalizedAt: '2026-05-01T10:00:00Z',
+        isClosed: true,
+        assessments: [],
+      }],
+      closedCount: 1,
+      openCount: 0,
+    },
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useAcademicDocumentIssuances).mockReturnValue({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+    refetch: vi.fn().mockResolvedValue({}),
+  } as never);
+  vi.mocked(academicDocumentIssuanceService.record).mockResolvedValue('issuance-1');
 }
 
 beforeEach(() => {
@@ -103,7 +162,7 @@ afterEach(() => {
 });
 
 describe('AcademicDocumentsTab', () => {
-  it('seleciona aluno, mostra declaração e encaminha para impressão', () => {
+  it('seleciona aluno, mostra declaração e encaminha para impressão', async () => {
     const print = vi.spyOn(window, 'print').mockImplementation(() => undefined);
     const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
     mockState(currentStudent);
@@ -117,7 +176,12 @@ describe('AcademicDocumentsTab', () => {
     expect(screen.getByText('Data da matrícula')).toBeTruthy();
     expect(screen.getByTestId('academic-document-preview').classList.contains('academic-document-printable')).toBe(true);
     fireEvent.click(screen.getByRole('button', { name: /Imprimir documento/ }));
-    expect(print).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(print).toHaveBeenCalledTimes(1));
+    expect(academicDocumentIssuanceService.record).toHaveBeenCalledWith(expect.objectContaining({
+      documentType: 'ENROLLMENT_DECLARATION',
+      studentId: 'student-1',
+      enrollmentId: 'enrollment-1',
+    }));
 
     print.mockRestore();
   });
@@ -165,5 +229,39 @@ describe('AcademicDocumentsTab', () => {
     await waitFor(() => {
       expect(screen.getByText('Selecione um aluno para visualizar um documento.')).toBeTruthy();
     });
+  });
+
+  it('bloqueia declaração de frequência incompleta e não registra emissão', () => {
+    const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
+    mockState(currentStudent);
+    vi.mocked(useAcademicDocumentReportCard).mockReturnValue({
+      data: { institutionId: 'institution-1', studentId: 'student-1', subjects: [], closedCount: 0, openCount: 0 },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    const print = vi.spyOn(window, 'print').mockImplementation(() => undefined);
+    render(<MemoryRouter><AcademicDocumentsTab /></MemoryRouter>);
+    fireEvent.click(screen.getByRole('button', { name: /Ana Silva/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Declaração de frequência/ }));
+
+    expect(screen.getByText(/declaração de frequência está bloqueada/i)).toBeTruthy();
+    expect((screen.getByRole('button', { name: /Imprimir documento/ }) as HTMLButtonElement).disabled).toBe(true);
+    expect(academicDocumentIssuanceService.record).not.toHaveBeenCalled();
+    expect(print).not.toHaveBeenCalled();
+    print.mockRestore();
+  });
+
+  it('gera prévia de histórico marcada como não oficial usando resultados reais do boletim', () => {
+    const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
+    mockState(currentStudent);
+    render(<MemoryRouter><AcademicDocumentsTab /></MemoryRouter>);
+    fireEvent.click(screen.getByRole('button', { name: /Ana Silva/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Prévia de histórico/ }));
+
+    expect(screen.getByRole('heading', { name: 'Prévia de histórico escolar' })).toBeTruthy();
+    expect(screen.getByText(/Prévia não oficial/)).toBeTruthy();
+    expect(screen.getByText('85%')).toBeTruthy();
+    expect(screen.getByText('96%')).toBeTruthy();
   });
 });

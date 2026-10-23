@@ -67,10 +67,22 @@ export interface HealthInformationDraft {
 }
 
 export type StudentDocumentStatus =
+  | 'NOT_REQUESTED'
   | 'PENDING'
+  | 'REQUESTED'
   | 'DELIVERED'
+  | 'UNDER_REVIEW'
   | 'VALIDATED'
+  | 'REJECTED'
   | 'DISPENSED';
+
+export interface StudentDocumentStatusEvent {
+  document_type: string;
+  from_status: StudentDocumentStatus | null;
+  to_status: StudentDocumentStatus;
+  actor_profile_id: string | null;
+  changed_at: string;
+}
 
 export interface StudentDocumentDraft {
   document_type: string;
@@ -111,12 +123,243 @@ export interface FullEnrollmentResult {
 
 export interface FullStudentEnrollmentOptions {
   continueOnEmailFailure?: boolean;
+  draftId?: string;
+  draftVersion?: number;
 }
 
 export interface StudentEditorData {
   studentId: string;
   enrollmentId: string | null;
   draft: FullStudentEnrollmentDraft;
+  documentStatusHistory: StudentDocumentStatusEvent[];
+}
+
+export interface StudentEnrollmentDraftSummary {
+  draft_id: string;
+  student_name: string;
+  current_step: number;
+  version: number;
+  status: 'OPEN' | 'FINALIZING';
+  updated_at: string;
+}
+
+export interface StudentEnrollmentDraftRecord {
+  draft_id: string;
+  institution_id: string;
+  payload: FullStudentEnrollmentDraft;
+  current_step: number;
+  version: number;
+  status: 'OPEN' | 'FINALIZING';
+  created_student_id: string | null;
+  created_guardian_profile_ids: Record<string, string>;
+}
+
+export interface StudentEnrollmentDraftSaveResult {
+  draft_id: string;
+  version: number;
+}
+
+function serializeEnrollmentDraft(
+  draft: FullStudentEnrollmentDraft,
+): FullStudentEnrollmentDraft {
+  return {
+    identity: { ...draft.identity },
+    address: { ...draft.address },
+    guardians: draft.guardians.map((guardian) => ({ ...guardian })),
+    previous_schooling: { ...draft.previous_schooling },
+    health: { ...draft.health },
+    documents: draft.documents.map(({ document_type, status, notes, file }) => ({
+      document_type,
+      // A selected File is intentionally not stored in a resumable draft.
+      // It must be re-selected after resume before the document can be delivered.
+      status: file ? 'PENDING' : status,
+      notes,
+    })),
+    academic_year_id: draft.academic_year_id,
+    class_id: draft.class_id,
+    enrolled_at: draft.enrolled_at,
+  };
+}
+
+function rpcRecord(value: unknown): Record<string, unknown> | null {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : null;
+}
+
+function versionValue(value: unknown): number {
+  const version = typeof value === 'number' ? value : Number(value);
+  if (!Number.isSafeInteger(version) || version < 1) {
+    throw new Error('ENROLLMENT_DRAFT_INVALID_RESPONSE');
+  }
+  return version;
+}
+
+export async function listStudentEnrollmentDrafts(
+  institutionId: string,
+): Promise<StudentEnrollmentDraftSummary[]> {
+  const { data, error } = await supabase.rpc(
+    'list_student_enrollment_drafts',
+    { p_institution_id: institutionId },
+  );
+  if (error) throw error;
+  return (Array.isArray(data) ? data : []).filter((row): row is StudentEnrollmentDraftSummary => {
+    const record = rpcRecord(row);
+    return Boolean(
+      record && typeof record.draft_id === 'string' &&
+      typeof record.student_name === 'string' &&
+      typeof record.updated_at === 'string',
+    );
+  }).map((row) => ({
+    ...row,
+    current_step: Number(row.current_step),
+    version: versionValue(row.version),
+  }));
+}
+
+export async function getStudentEnrollmentDraft(
+  institutionId: string,
+  draftId: string,
+): Promise<StudentEnrollmentDraftRecord> {
+  const { data, error } = await supabase.rpc(
+    'get_student_enrollment_draft',
+    { p_institution_id: institutionId, p_draft_id: draftId },
+  );
+  if (error) throw error;
+  const record = rpcRecord(data);
+  if (
+    !record || record.draft_id !== draftId ||
+    record.institution_id !== institutionId ||
+    !rpcRecord(record.payload)
+  ) {
+    throw new Error('ENROLLMENT_DRAFT_INVALID_RESPONSE');
+  }
+  const payload = record.payload as FullStudentEnrollmentDraft;
+  return {
+    draft_id: draftId,
+    institution_id: institutionId,
+    payload: {
+      ...payload,
+      documents: (payload.documents ?? []).map((document) => ({
+        document_type: document.document_type,
+        status: document.status,
+        notes: document.notes ?? '',
+      })),
+    },
+    current_step: Number(record.current_step),
+    version: versionValue(record.version),
+    status: record.status === 'FINALIZING' ? 'FINALIZING' : 'OPEN',
+    created_student_id: typeof record.created_student_id === 'string'
+      ? record.created_student_id
+      : null,
+    created_guardian_profile_ids: rpcRecord(record.created_guardian_profile_ids) as Record<string, string> ?? {},
+  };
+}
+
+export async function saveStudentEnrollmentDraft(
+  institutionId: string,
+  draftId: string | null,
+  expectedVersion: number | null,
+  draft: FullStudentEnrollmentDraft,
+  currentStep: number,
+): Promise<StudentEnrollmentDraftSaveResult> {
+  const { data, error } = await supabase.rpc(
+    'save_student_enrollment_draft',
+    {
+      p_institution_id: institutionId,
+      p_draft_id: draftId,
+      p_expected_version: expectedVersion,
+      p_payload: serializeEnrollmentDraft(draft),
+      p_current_step: currentStep,
+    },
+  );
+  if (error) throw error;
+  const record = rpcRecord(data);
+  if (typeof record?.draft_id !== 'string') {
+    throw new Error('ENROLLMENT_DRAFT_INVALID_RESPONSE');
+  }
+  return { draft_id: record.draft_id, version: versionValue(record.version) };
+}
+
+export async function discardStudentEnrollmentDraft(
+  institutionId: string,
+  draftId: string,
+  expectedVersion: number,
+): Promise<void> {
+  const { error } = await supabase.rpc(
+    'discard_student_enrollment_draft',
+    {
+      p_institution_id: institutionId,
+      p_draft_id: draftId,
+      p_expected_version: expectedVersion,
+    },
+  );
+  if (error) throw error;
+}
+
+interface EnrollmentDraftClaim {
+  state: 'CLAIMED' | 'IN_PROGRESS' | 'COMPLETED';
+  created_student_id?: string | null;
+  created_guardian_profile_ids?: Record<string, string>;
+  result?: unknown;
+}
+
+async function claimEnrollmentDraftFinalization(
+  institutionId: string,
+  draftId: string,
+  expectedVersion: number,
+): Promise<EnrollmentDraftClaim> {
+  const { data, error } = await supabase.rpc(
+    'claim_student_enrollment_draft_finalization',
+    {
+      p_institution_id: institutionId,
+      p_draft_id: draftId,
+      p_expected_version: expectedVersion,
+    },
+  );
+  if (error) throw error;
+  const record = rpcRecord(data);
+  if (!record || !['CLAIMED', 'IN_PROGRESS', 'COMPLETED'].includes(String(record.state))) {
+    throw new Error('ENROLLMENT_DRAFT_INVALID_RESPONSE');
+  }
+  return {
+    state: record.state as EnrollmentDraftClaim['state'],
+    created_student_id: typeof record.created_student_id === 'string'
+      ? record.created_student_id
+      : null,
+    created_guardian_profile_ids: rpcRecord(record.created_guardian_profile_ids) as Record<string, string> ?? {},
+    result: record.result,
+  };
+}
+
+async function recordEnrollmentDraftProgress(
+  institutionId: string,
+  draftId: string,
+  studentId: string | null,
+  guardianProfileIds: Record<number, string>,
+): Promise<void> {
+  const { error } = await supabase.rpc(
+    'record_student_enrollment_draft_progress',
+    {
+      p_institution_id: institutionId,
+      p_draft_id: draftId,
+      p_student_id: studentId,
+      p_guardian_profile_ids: Object.fromEntries(
+        Object.entries(guardianProfileIds).map(([index, profileId]) => [String(index), profileId]),
+      ),
+    },
+  );
+  if (error) throw error;
+}
+
+async function releaseEnrollmentDraftFinalization(
+  institutionId: string,
+  draftId: string,
+): Promise<void> {
+  await supabase.rpc('release_student_enrollment_draft_finalization', {
+    p_institution_id: institutionId,
+    p_draft_id: draftId,
+  });
 }
 
 const editorDocumentTypes = [
@@ -183,7 +426,7 @@ function emptyEditorDocuments(
     const row = byType.get(documentType);
     return {
       document_type: documentType,
-      status: row?.status ?? 'PENDING',
+      status: row?.status ?? 'NOT_REQUESTED',
       notes: row?.notes ?? '',
       file_path: row?.file_path ?? null,
     };
@@ -194,7 +437,7 @@ export async function getFullStudentEditorData(
   institutionId: string,
   studentId: string,
 ): Promise<StudentEditorData> {
-  const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, guardiansResult, enrollmentResult] = await Promise.all([
+  const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, documentHistoryResult, guardiansResult, enrollmentResult] = await Promise.all([
     supabase
       .from('students')
       .select('id, profile_id, birth_date, cpf, profiles:profile_id(full_name, email, phone)')
@@ -232,6 +475,13 @@ export async function getFullStudentEditorData(
       .eq('institution_id', institutionId)
       .order('document_type'),
     supabase
+      .from('student_document_status_history')
+      .select('document_type, from_status, to_status, actor_profile_id, changed_at')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .order('changed_at', { ascending: false })
+      .limit(50),
+    supabase
       .from('guardianships')
       .select('guardian_profile_id, relationship, is_primary, active, profiles:guardian_profile_id(full_name, email, phone)')
       .eq('student_id', studentId)
@@ -254,6 +504,7 @@ export async function getFullStudentEditorData(
     previousResult,
     healthResult,
     documentsResult,
+    documentHistoryResult,
     guardiansResult,
     enrollmentResult,
   ];
@@ -288,10 +539,12 @@ export async function getFullStudentEditorData(
     file_path: string | null;
     notes: string | null;
   }>;
+  const documentStatusHistory = (documentHistoryResult.data ?? []) as unknown as StudentDocumentStatusEvent[];
 
   return {
     studentId: student.id,
     enrollmentId: enrollment?.id ?? null,
+    documentStatusHistory,
     draft: {
       identity: {
         full_name: profile?.full_name ?? '',
@@ -444,7 +697,7 @@ function toRpcPayload(
     health: draft.health,
     documents: draft.documents.map((document) => ({
       document_type: document.document_type,
-      status: document.status,
+      status: document.file ? 'PENDING' : document.status,
       file_path: document.file_path ?? null,
       notes: document.notes,
     })),
@@ -453,6 +706,25 @@ function toRpcPayload(
       relationship: guardian.relationship.trim(),
       is_primary: guardian.is_primary,
     })),
+  };
+}
+
+function parseFullEnrollmentResult(value: unknown): FullEnrollmentResult {
+  const result = rpcRecord(value);
+  if (
+    !result || typeof result.student_id !== 'string' ||
+    typeof result.enrollment_id !== 'string'
+  ) {
+    throw new Error('A matrícula não foi confirmada.');
+  }
+  return {
+    student_id: result.student_id,
+    enrollment_id: result.enrollment_id,
+    guardian_profile_ids: Array.isArray(result.guardian_profile_ids)
+      ? result.guardian_profile_ids.filter((id): id is string => typeof id === 'string')
+      : [],
+    documents_pending: Number(result.documents_pending ?? 0),
+    email_pending: result.email_pending === true,
   };
 }
 
@@ -465,8 +737,40 @@ export async function createFullStudentEnrollment(
   let studentId = existingStudentId;
   const guardianProfileIds: Record<number, string> = {};
   let emailPending = false;
+  let claimedDraft = false;
 
   try {
+    if (options.draftId) {
+      if (!options.draftVersion) {
+        throw new Error('ENROLLMENT_DRAFT_VERSION_CONFLICT');
+      }
+      const claim = await claimEnrollmentDraftFinalization(
+        institutionId,
+        options.draftId,
+        options.draftVersion,
+      );
+      if (claim.state === 'IN_PROGRESS') {
+        throw new Error('A confirmação desta matrícula já está em andamento. Aguarde um instante e tente novamente.');
+      }
+      if (claim.state === 'COMPLETED') {
+        const completed = parseFullEnrollmentResult(claim.result);
+        await uploadStudentDocumentFiles(
+          institutionId,
+          completed.student_id,
+          draft.documents,
+          { skipAlreadyUploaded: true },
+        );
+        return completed;
+      }
+      claimedDraft = true;
+      studentId = studentId ?? claim.created_student_id ?? undefined;
+      for (const [index, profileId] of Object.entries(claim.created_guardian_profile_ids ?? {})) {
+        if (/^\d+$/.test(index) && typeof profileId === 'string') {
+          guardianProfileIds[Number(index)] = profileId;
+        }
+      }
+    }
+
     if (!studentId) {
       const student = await schoolUserInviteService.invite({
         institutionId,
@@ -489,11 +793,31 @@ export async function createFullStudentEnrollment(
 
       studentId = student.student.id;
       emailPending ||= student.emailPending === true || student.invitationSent === false;
+      if (options.draftId) {
+        await recordEnrollmentDraftProgress(
+          institutionId,
+          options.draftId,
+          studentId,
+          guardianProfileIds,
+        );
+      }
     }
 
     for (const [index, guardian] of draft.guardians.entries()) {
       if (guardian.profile_id) {
         guardianProfileIds[index] = guardian.profile_id;
+        if (options.draftId) {
+          await recordEnrollmentDraftProgress(
+            institutionId,
+            options.draftId,
+            studentId,
+            guardianProfileIds,
+          );
+        }
+        continue;
+      }
+
+      if (guardianProfileIds[index]) {
         continue;
       }
 
@@ -511,6 +835,14 @@ export async function createFullStudentEnrollment(
       });
       guardianProfileIds[index] = createdGuardian.profileId;
       emailPending ||= createdGuardian.emailPending === true || createdGuardian.invitationSent === false;
+      if (options.draftId) {
+        await recordEnrollmentDraftProgress(
+          institutionId,
+          options.draftId,
+          studentId,
+          guardianProfileIds,
+        );
+      }
     }
 
     const payload = toRpcPayload(
@@ -525,10 +857,15 @@ export async function createFullStudentEnrollment(
       studentId,
     );
 
-    const { data, error } = await supabase.rpc(
-      'create_full_student_enrollment_bundle',
-      { p_payload: payload },
-    );
+    const { data, error } = options.draftId
+      ? await supabase.rpc('finalize_student_enrollment_draft', {
+        p_institution_id: institutionId,
+        p_draft_id: options.draftId,
+      })
+      : await supabase.rpc(
+        'create_full_student_enrollment_bundle',
+        { p_payload: payload },
+      );
 
     if (error) {
       throw error;
@@ -538,28 +875,27 @@ export async function createFullStudentEnrollment(
       throw new Error('A matricula nao retornou um resultado valido.');
     }
 
-    const result = data as Partial<FullEnrollmentResult>;
-    if (
-      typeof result.student_id !== 'string' ||
-      typeof result.enrollment_id !== 'string'
-    ) {
-      throw new Error('A matricula nao foi confirmada.');
-    }
+    const result = parseFullEnrollmentResult(data);
 
     await uploadStudentDocumentFiles(institutionId, result.student_id, draft.documents);
 
     return {
       student_id: result.student_id,
       enrollment_id: result.enrollment_id,
-      guardian_profile_ids: Array.isArray(result.guardian_profile_ids)
-        ? result.guardian_profile_ids.filter(
-          (id): id is string => typeof id === 'string',
-        )
+      guardian_profile_ids: result.guardian_profile_ids.length > 0
+        ? result.guardian_profile_ids
         : Object.values(guardianProfileIds),
-      documents_pending: Number(result.documents_pending ?? 0),
-      email_pending: emailPending,
+      documents_pending: result.documents_pending,
+      email_pending: emailPending || result.email_pending,
     };
   } catch (error) {
+    if (claimedDraft && options.draftId) {
+      try {
+        await releaseEnrollmentDraftFinalization(institutionId, options.draftId);
+      } catch {
+        // Keep the original failure; the draft lease expires for safe recovery.
+      }
+    }
     throw new FullStudentEnrollmentError(
       error instanceof Error
         ? error.message
