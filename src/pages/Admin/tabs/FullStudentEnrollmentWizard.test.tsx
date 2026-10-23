@@ -21,6 +21,17 @@ import { FullStudentEnrollmentError } from '../../../services/fullStudentEnrollm
 
 const mocks = vi.hoisted(() => ({
   create: vi.fn(),
+  saveDraft: vi.fn(),
+  discardDraft: vi.fn(),
+  getDraft: vi.fn(),
+  savedDrafts: [] as Array<{
+    draft_id: string;
+    student_name: string;
+    current_step: number;
+    version: number;
+    status: 'OPEN' | 'FINALIZING';
+    updated_at: string;
+  }>,
   update: vi.fn(),
   editorData: null as unknown,
   findDuplicates: vi.fn(),
@@ -50,6 +61,16 @@ vi.mock('../../../hooks/useSchoolUsers', () => ({
 }));
 
 vi.mock('../../../hooks/useFullStudentEnrollment', () => ({
+  useStudentEnrollmentDrafts: () => ({
+    data: mocks.savedDrafts,
+    isError: false,
+  }),
+  useSaveStudentEnrollmentDraft: () => ({
+    mutateAsync: mocks.saveDraft,
+  }),
+  useDiscardStudentEnrollmentDraft: () => ({
+    mutateAsync: mocks.discardDraft,
+  }),
   useCreateFullStudentEnrollment: () => ({
     mutateAsync: mocks.create,
     isPending: false,
@@ -73,6 +94,7 @@ vi.mock('../../../services/fullStudentEnrollmentService', async () => {
   return {
     ...actual,
     findDuplicateStudentCandidates: mocks.findDuplicates,
+    getStudentEnrollmentDraft: mocks.getDraft,
   };
 });
 
@@ -126,7 +148,7 @@ async function advanceToReview() {
   fireEvent.change(screen.getByLabelText('Nome completo *'), {
     target: { value: 'Aluno Novo' },
   });
-  fireEvent.change(screen.getByLabelText('E-mail *'), {
+  fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
     target: { value: 'novo@example.com' },
   });
   fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -158,6 +180,32 @@ async function advanceToReview() {
   }
 }
 
+async function advanceToDocuments() {
+  fireEvent.change(screen.getByLabelText('Nome completo *'), {
+    target: { value: 'Aluno Novo' },
+  });
+  fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
+    target: { value: 'novo@example.com' },
+  });
+  fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
+    target: { value: '2016-01-01' },
+  });
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+  fireEvent.change(screen.getByLabelText('Responsável'), {
+    target: { value: 'guardian-profile' },
+  });
+  fireEvent.change(screen.getByLabelText('Parentesco *'), {
+    target: { value: 'Mãe' },
+  });
+  for (let index = 2; index < 5; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+}
+
 describe('FullStudentEnrollmentWizard', () => {
   afterEach(() => {
     cleanup();
@@ -165,6 +213,12 @@ describe('FullStudentEnrollmentWizard', () => {
 
   beforeEach(() => {
     mocks.create.mockReset();
+    mocks.saveDraft.mockReset();
+    mocks.saveDraft.mockResolvedValue({ draft_id: 'draft-1', version: 1 });
+    mocks.discardDraft.mockReset();
+    mocks.discardDraft.mockResolvedValue(undefined);
+    mocks.getDraft.mockReset();
+    mocks.savedDrafts = [];
     mocks.update.mockReset();
     mocks.editorData = null;
     mocks.findDuplicates.mockReset();
@@ -190,7 +244,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.change(screen.getByLabelText('Nome completo *'), {
       target: { value: 'Aluno Novo' },
     });
-    fireEvent.change(screen.getByLabelText('E-mail *'), {
+    fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
       target: { value: 'novo@example.com' },
     });
     fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -206,6 +260,98 @@ describe('FullStudentEnrollmentWizard', () => {
     expect(mocks.create).not.toHaveBeenCalled();
   });
 
+  it('permite iniciar matrícula de aluno sem e-mail ou conta de acesso', async () => {
+    mocks.findDuplicates.mockResolvedValue([]);
+    renderWizard();
+
+    fireEvent.change(screen.getByLabelText('Nome completo *'), {
+      target: { value: 'Aluno sem conta' },
+    });
+    fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
+      target: { value: '2016-01-01' },
+    });
+    expect(screen.getByLabelText(/^E-mail do aluno \(opcional\)/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+
+    await waitFor(() => expect(screen.getByText('Etapa 2 de 8')).toBeTruthy());
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it('salva automaticamente no servidor sem criar aluno antes da confirmação', async () => {
+    renderWizard();
+    fireEvent.change(screen.getByLabelText('Nome completo *'), {
+      target: { value: 'Rascunho sem cadastro' },
+    });
+
+    await waitFor(() => expect(mocks.saveDraft).toHaveBeenCalledWith(expect.objectContaining({
+      institutionId: 'institution-1',
+      draft: expect.objectContaining({
+        identity: expect.objectContaining({ full_name: 'Rascunho sem cadastro' }),
+      }),
+      currentStep: 0,
+    })), { timeout: 2500 });
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it('retoma rascunho autorizado na etapa salva e revalida duplicidades', async () => {
+    mocks.savedDrafts = [{
+      draft_id: 'draft-resume',
+      student_name: 'Rascunho Alice',
+      current_step: 2,
+      version: 4,
+      status: 'OPEN',
+      updated_at: '2026-10-23T12:00:00Z',
+    }];
+    mocks.getDraft.mockResolvedValue({
+      draft_id: 'draft-resume',
+      institution_id: 'institution-1',
+      version: 4,
+      current_step: 2,
+      status: 'OPEN',
+      created_student_id: null,
+      created_guardian_profile_ids: {},
+      payload: {
+        identity: {
+          full_name: 'Rascunho Alice', email: 'alice@example.com', birth_date: '2016-02-03',
+          cpf: '', social_name: '', rg: '', rg_issuing_authority: '', rg_state: '',
+          birth_certificate: '', nationality: 'Brasileira', birthplace: '', birth_state: '', sex: '', phone: '',
+        },
+        address: { postal_code: '', street: '', number: '', complement: '', neighborhood: '', city: '', state: '', rural_zone: false },
+        guardians: [{ mode: 'existing', profile_id: 'guardian-profile', full_name: 'Maria Silva', email: 'maria@example.com', phone: '', relationship: 'Mãe', is_primary: true }],
+        previous_schooling: { origin_school: '', origin_network: '', city: '', state: '', last_grade: '', origin_year: '', status: '', observations: '', history_delivered: false, transfer_declaration: false },
+        health: { allergies: '', health_conditions: '', emergency_medication: '', disability: '', autism: false, giftedness: false, needs_special_education: false, school_care_notes: '' },
+        documents: [{ document_type: 'RG', status: 'PENDING', notes: '' }],
+        academic_year_id: 'year-1', class_id: 'class-1', enrolled_at: '2026-10-23',
+      },
+    });
+    mocks.findDuplicates.mockResolvedValue([]);
+    renderWizard();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Retomar' }));
+    await waitFor(() => expect(mocks.getDraft).toHaveBeenCalledWith('institution-1', 'draft-resume'));
+    expect((screen.getByLabelText('Responsável') as HTMLSelectElement).value).toBe('guardian-profile');
+    expect(screen.getByText('Etapa 3 de 8')).toBeTruthy();
+    expect(mocks.findDuplicates).toHaveBeenCalled();
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it('deixa documentos não solicitados por padrão e exige justificativa para rejeição/dispensa', async () => {
+    renderWizard();
+    await advanceToDocuments();
+
+    const status = screen.getByLabelText('Status de Certidao de nascimento') as HTMLSelectElement;
+    expect(status.value).toBe('NOT_REQUESTED');
+    fireEvent.change(status, { target: { value: 'REJECTED' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    expect(await screen.findByText('Informe uma justificativa para o documento “Certidao de nascimento”.')).toBeTruthy();
+
+    fireEvent.change(screen.getByLabelText('Observação de Certidao de nascimento'), {
+      target: { value: 'Documento ilegível; solicitar nova cópia.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    expect(await screen.findByText('Etapa 7 de 8')).toBeTruthy();
+  });
+
   it('percorre as oito etapas e confirma a matricula', async () => {
     mocks.findDuplicates.mockResolvedValue([]);
     mocks.create.mockResolvedValue({
@@ -219,7 +365,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.change(screen.getByLabelText('Nome completo *'), {
       target: { value: 'Aluno Novo' },
     });
-    fireEvent.change(screen.getByLabelText('E-mail *'), {
+    fireEvent.change(screen.getByLabelText(/^E-mail do aluno \(opcional\)/), {
       target: { value: 'novo@example.com' },
     });
     fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
@@ -299,6 +445,73 @@ describe('FullStudentEnrollmentWizard', () => {
 
     expect(await screen.findByText('Ja existe um usuario cadastrado com este e-mail.')).toBeTruthy();
     expect(screen.queryByText(/registros já criados foram preservados/)).toBeNull();
+  });
+
+  it('permite matricular aluno existente sem e-mail e não cria nem altera seu acesso', async () => {
+    mocks.editorData = {
+      studentId: 'student-existing',
+      enrollmentId: null,
+      draft: {
+        identity: {
+          full_name: 'Aluno sem e-mail',
+          email: '',
+          birth_date: '2016-01-01',
+          cpf: '',
+          social_name: '',
+          rg: '',
+          rg_issuing_authority: '',
+          rg_state: '',
+          birth_certificate: '',
+          nationality: 'Brasileira',
+          birthplace: '',
+          birth_state: '',
+          sex: '',
+          phone: '',
+        },
+        address: { postal_code: '', street: '', number: '', complement: '', neighborhood: '', city: '', state: '', rural_zone: false },
+        guardians: [{ mode: 'existing', profile_id: 'guardian-profile', full_name: 'Maria Silva', email: 'maria@example.com', phone: '', relationship: 'Mãe', is_primary: true }],
+        previous_schooling: { origin_school: '', origin_network: '', city: '', state: '', last_grade: '', origin_year: '', status: '', observations: '', history_delivered: false, transfer_declaration: false },
+        health: { allergies: '', health_conditions: '', emergency_medication: '', disability: '', autism: false, giftedness: false, needs_special_education: false, school_care_notes: '' },
+        documents: [],
+        academic_year_id: 'year-1',
+        class_id: 'class-1',
+        enrolled_at: '2026-01-01',
+      },
+    };
+    mocks.create.mockResolvedValue({
+      student_id: 'student-existing',
+      enrollment_id: 'enrollment-new',
+      guardian_profile_ids: ['guardian-profile'],
+      documents_pending: 0,
+      email_pending: false,
+    });
+
+    render(
+      <FullStudentEnrollmentWizard
+        institutionId="institution-1"
+        years={years}
+        classes={classes}
+        mode="enroll"
+        studentId="student-existing"
+        onClose={vi.fn()}
+        onCompleted={vi.fn()}
+      />,
+    );
+
+    expect(await screen.findByDisplayValue('Aluno sem e-mail')).toBeTruthy();
+    expect(screen.getByLabelText(/^E-mail do aluno \(opcional\)/)).toBeTruthy();
+    for (let index = 0; index < 7; index += 1) {
+      fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+      await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+    }
+
+    expect(screen.getByText(/Nenhum acesso será criado nem alterado/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
+    await waitFor(() => expect(mocks.create).toHaveBeenCalledWith(expect.objectContaining({
+      institutionId: 'institution-1',
+      existingStudentId: 'student-existing',
+      draft: expect.objectContaining({ identity: expect.objectContaining({ email: '' }) }),
+    })));
   });
 
   it('carrega e salva todos os dados no modo de edicao', async () => {

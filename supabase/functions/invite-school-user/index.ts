@@ -88,7 +88,8 @@ const studentPayloadSchema = z
 
 const guardianPayloadSchema = z
   .object({
-    studentId: z.guid("Aluno invalido"),
+    studentId: z.guid("Aluno invalido").optional(),
+    deferStudentLink: z.boolean().optional(),
     relationship: z.string().trim().min(2, "Relacionamento obrigatorio").max(40, "Relacionamento muito longo"),
   })
   .strict();
@@ -124,6 +125,17 @@ const requestSchema = z
         path: ["guardian", "studentId"],
         message: "Responsavel exige aluno vinculado",
       });
+    }
+    if (value.role === "GUARDIAN" && value.guardian) {
+      const deferred = value.guardian.deferStudentLink === true;
+      const hasStudentId = Boolean(value.guardian.studentId);
+      if (deferred === hasStudentId) {
+        context.addIssue({
+          code: "custom",
+          path: ["guardian", "studentId"],
+          message: "Informe um aluno ou solicite vínculo após a matrícula.",
+        });
+      }
     }
     if (value.role !== "STUDENT" && value.student) {
       context.addIssue({
@@ -480,6 +492,7 @@ async function getOrCreateGuardianship(
   rollback: RollbackState,
 ): Promise<{ id: string }> {
   const guardian = input.guardian!;
+  if (!guardian.studentId) throw new Error("Vinculo de aluno necessario para criar responsabilidade.");
   const { data: links, error: lookupError } = await supabaseAdmin
     .from("guardianships")
     .select("id, active")
@@ -822,11 +835,20 @@ export default {
         };
       }
 
-      if (input.role === "GUARDIAN") {
+      if (input.role === "GUARDIAN" && input.guardian!.deferStudentLink !== true) {
+        const guardianStudentId = input.guardian!.studentId;
+        if (!guardianStudentId) {
+          throw new InviteError({
+            status: 400,
+            code: "INVALID_GUARDIAN_LINK",
+            message: "Informe um aluno para vincular o responsavel.",
+            fieldErrors: { guardianStudentId: "Selecione um aluno." },
+          });
+        }
         const { data: linkedStudent, error: linkedStudentError } = await ctx.supabaseAdmin
           .from("students")
           .select("id, institution_id, active")
-          .eq("id", input.guardian!.studentId)
+          .eq("id", guardianStudentId)
           .maybeSingle();
 
         if (linkedStudentError) throw linkedStudentError;

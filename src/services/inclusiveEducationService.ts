@@ -23,7 +23,7 @@ export type InclusivePeiPlan = {
   monitoring_criteria: string;
   pedagogical_evaluation: string;
   updated_at: string;
-  student?: { profile?: { full_name?: string | null } | null } | null;
+  student?: { full_name?: string | null; profile?: { full_name?: string | null } | null } | null;
 };
 
 export type InclusivePeiInput = Pick<InclusivePeiPlan, 'student_id' | 'academic_year_id' | 'class_id' | 'status' | 'review_due_on' | 'strengths' | 'interests' | 'learning_barriers' | 'participation_barriers' | 'pedagogical_objectives' | 'teaching_strategies' | 'accessibility_resources' | 'planned_activities' | 'monitoring_criteria' | 'pedagogical_evaluation'>;
@@ -42,7 +42,7 @@ export type InclusiveAeePlan = {
   pedagogical_observations: string;
   review_due_on: string | null;
   updated_at: string;
-  student?: { profile?: { full_name?: string | null } | null } | null;
+  student?: { full_name?: string | null; profile?: { full_name?: string | null } | null } | null;
 };
 
 export type InclusiveAeeInput = Pick<InclusiveAeePlan, 'student_id' | 'pei_plan_id' | 'academic_year_id' | 'class_id' | 'responsible_profile_id' | 'status' | 'objectives' | 'resources_used' | 'pedagogical_observations' | 'review_due_on'>;
@@ -97,7 +97,7 @@ async function resolveCurrentEnrollment(institutionId: string, studentId: string
 export async function listInclusivePeiPlans(institutionId: string): Promise<InclusivePeiPlan[]> {
   const { data, error } = await supabase
     .from('inclusive_pei_plans')
-    .select('id,institution_id,student_id,academic_year_id,class_id,status,review_due_on,strengths,interests,learning_barriers,participation_barriers,pedagogical_objectives,teaching_strategies,accessibility_resources,planned_activities,monitoring_criteria,pedagogical_evaluation,updated_at,student:students(profile:profiles(full_name))')
+    .select('id,institution_id,student_id,academic_year_id,class_id,status,review_due_on,strengths,interests,learning_barriers,participation_barriers,pedagogical_objectives,teaching_strategies,accessibility_resources,planned_activities,monitoring_criteria,pedagogical_evaluation,updated_at,student:students(full_name,profile:profiles(full_name))')
     .eq('institution_id', institutionId)
     .order('updated_at', { ascending: false });
   if (error) throw error;
@@ -125,12 +125,12 @@ export async function saveInclusivePeiPlan(institutionId: string, profileId: str
 export async function listInclusiveStudents(institutionId: string): Promise<Array<{ id: string; name: string }>> {
   const { data, error } = await supabase
     .from('students')
-    .select('id,profile:profiles(full_name)')
+    .select('id,full_name,profile:profiles(full_name)')
     .eq('institution_id', institutionId)
     .eq('active', true)
     .order('created_at', { ascending: false });
   if (error) throw error;
-  return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
+  return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name || row.full_name || 'Estudante sem nome' }));
 }
 
 export async function registerStudentForInclusiveEducation(
@@ -211,19 +211,19 @@ export async function listInclusiveProgressStudents(institutionId: string): Prom
 
   const { data, error } = await supabase
     .from('students')
-    .select('id,profile:profiles(full_name)')
+    .select('id,full_name,profile:profiles(full_name)')
     .eq('institution_id', institutionId)
     .eq('active', true)
     .in('id', progressStudentIds)
     .order('created_at', { ascending: false });
   if (error) throw error;
-  return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
+  return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name || row.full_name || 'Estudante sem nome' }));
 }
 
 export async function listInclusiveAeePlans(institutionId: string): Promise<InclusiveAeePlan[]> {
   const { data, error } = await supabase
     .from('inclusive_aee_plans')
-    .select('id,institution_id,student_id,pei_plan_id,academic_year_id,class_id,responsible_profile_id,status,review_due_on,objectives,resources_used,pedagogical_observations,updated_at,student:students(profile:profiles(full_name))')
+    .select('id,institution_id,student_id,pei_plan_id,academic_year_id,class_id,responsible_profile_id,status,review_due_on,objectives,resources_used,pedagogical_observations,updated_at,student:students(full_name,profile:profiles(full_name))')
     .eq('institution_id', institutionId)
     .order('updated_at', { ascending: false });
   if (error) throw error;

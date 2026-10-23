@@ -128,9 +128,10 @@ interface OfferingRow {
 
 interface StudentRelation {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
   active: boolean | null;
   profiles: ProfileRelation | ProfileRelation[] | null;
 }
@@ -230,7 +231,7 @@ export interface TermClosure {
 
 export interface TermClosureStudent {
   id: string;
-  profileId: string;
+  profileId: string | null;
   fullName: string;
   email: string;
   registrationNumber: string;
@@ -1054,11 +1055,10 @@ async function loadInstitutionEnrollments(
   const { data: students, error: studentError } = await supabase
     .from('students')
     .select(
-      'id, profile_id, registration_number, active, profiles!inner(id, full_name, active)',
+      'id, profile_id, registration_number, full_name, active, profiles(id, full_name, active)',
     )
     .eq('institution_id', offering.institutionId)
     .eq('active', true)
-    .eq('profiles.active', true)
     .in('id', studentIds);
 
   if (studentError) {
@@ -1071,8 +1071,9 @@ async function loadInstitutionEnrollments(
   const studentById = new Map(
     ((students ?? []) as {
       id: string;
-      profile_id: string;
+      profile_id: string | null;
       registration_number: string;
+      full_name: string | null;
       profiles:
         | StudentProfileRelation
         | StudentProfileRelation[]
@@ -1086,14 +1087,14 @@ async function loadInstitutionEnrollments(
       ? normalizeRelation(student.profiles)
       : null;
 
-    if (!student || !profile) {
+    if (!student || (student.profile_id !== null && profile?.active !== true)) {
       return [];
     }
 
     return [{
       id: student.id,
       profileId: student.profile_id,
-      fullName: profile.full_name,
+      fullName: profile?.full_name || student.full_name || student.registration_number,
       email: '',
       registrationNumber: student.registration_number,
       enrollmentId: enrollment.id,

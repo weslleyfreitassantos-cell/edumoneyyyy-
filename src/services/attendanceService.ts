@@ -129,9 +129,10 @@ interface ProfileRelation {
 
 interface StudentRelation {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
   active: boolean | null;
   profiles: ProfileRelation | ProfileRelation[] | null;
 }
@@ -314,7 +315,7 @@ export function attendanceSlotKey(
 
 export interface AttendanceStudent {
   id: string;
-  profileId: string;
+  profileId: string | null;
   fullName: string;
   email: string;
   registrationNumber: string;
@@ -928,15 +929,15 @@ function normalizeStudent(
 ): AttendanceStudent | null {
   const profile = normalizeRelation(student.profiles);
 
-  if (!profile || !isActive(student.active)) {
+  if (!isActive(student.active)) {
     return null;
   }
 
   return {
     id: student.id,
     profileId: student.profile_id,
-    fullName: profile.full_name,
-    email: profile.email,
+    fullName: profile?.full_name || student.full_name || student.registration_number,
+    email: profile?.email ?? '',
     registrationNumber: student.registration_number,
     enrollmentId,
   };
@@ -1606,6 +1607,7 @@ async function getRecordsForSession(
         profile_id,
         institution_id,
         registration_number,
+        full_name,
         active,
         profiles:profile_id (
           full_name,
@@ -1691,7 +1693,7 @@ function normalizeStudentAttendanceRecord(
     sessionId: row.attendance_session_id,
     subjectOfferingId: session.subjectOfferingId,
     studentId: row.student_id,
-    studentName: profile?.full_name ?? null,
+    studentName: profile?.full_name || student?.full_name || student?.registration_number || null,
     registrationNumber:
       student?.registration_number ?? null,
     status: normalizeAttendanceStatus(row.status),
@@ -2272,6 +2274,7 @@ const ATTENDANCE_SUMMARY_STUDENT_FIELDS = `
   profile_id,
   institution_id,
   registration_number,
+    full_name,
   active,
   profiles:profile_id (
     full_name,

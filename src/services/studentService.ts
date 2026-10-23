@@ -21,10 +21,11 @@ export interface StudentListProfileSummary {
 
 export interface StudentListRow {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
   active: boolean;
+  full_name?: string | null;
   profiles: StudentListProfileSummary | null;
 }
 
@@ -35,11 +36,13 @@ export interface StudentPage {
 
 export interface StudentRow {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
   birth_date: string;
   cpf: string | null;
+  full_name?: string | null;
+  phone?: string | null;
   active: boolean;
   created_at?: string;
   profiles: StudentProfileSummary | null;
@@ -47,9 +50,11 @@ export interface StudentRow {
 
 interface StudentQueryRow {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
+  phone: string | null;
   birth_date: string;
   cpf: string | null;
   active: boolean;
@@ -62,11 +67,11 @@ interface StudentQueryRow {
 
 interface StudentListRpcRow {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
   active: boolean;
-  full_name: string;
+  full_name: string | null;
   email: string;
   total_count: number | null;
 }
@@ -81,12 +86,16 @@ export interface CreatedStudent {
 
 function normalizeStudentProfile(
   relation: StudentQueryRow['profiles'],
+  fallbackName?: string | null,
+  fallbackEmail = '',
 ): StudentProfileSummary | null {
   if (Array.isArray(relation)) {
-    return relation[0] ?? null;
+    relation = relation[0] ?? null;
   }
 
-  return relation;
+  return relation ?? (fallbackName
+    ? { full_name: fallbackName, email: fallbackEmail, avatar_url: null }
+    : null);
 }
 
 export const studentService = {
@@ -100,6 +109,8 @@ export const studentService = {
         profile_id,
         institution_id,
         registration_number,
+        full_name,
+        phone,
         birth_date,
         cpf,
         active,
@@ -128,14 +139,14 @@ export const studentService = {
       institution_id: row.institution_id,
       registration_number:
         row.registration_number,
+      full_name: row.full_name,
+      phone: row.phone,
       birth_date: row.birth_date,
       cpf: row.cpf ?? null,
       active: row.active,
       created_at:
         row.created_at ?? undefined,
-      profiles: normalizeStudentProfile(
-        row.profiles,
-      ),
+      profiles: normalizeStudentProfile(row.profiles, row.full_name ?? row.registration_number),
     }));
   },
 
@@ -173,7 +184,7 @@ export const studentService = {
         registration_number: row.registration_number,
         active: row.active,
         profiles: {
-          full_name: row.full_name,
+          full_name: row.full_name ?? row.registration_number,
           email: row.email,
         },
       })),
@@ -192,6 +203,8 @@ export const studentService = {
         profile_id,
         institution_id,
         registration_number,
+        full_name,
+        phone,
         birth_date,
         cpf,
         active,
@@ -222,9 +235,11 @@ export const studentService = {
       registration_number: row.registration_number,
       birth_date: row.birth_date,
       cpf: row.cpf ?? null,
+      full_name: row.full_name,
+      phone: row.phone,
       active: row.active,
       created_at: row.created_at ?? undefined,
-      profiles: normalizeStudentProfile(row.profiles),
+      profiles: normalizeStudentProfile(row.profiles, row.full_name ?? row.registration_number),
     };
   },
 

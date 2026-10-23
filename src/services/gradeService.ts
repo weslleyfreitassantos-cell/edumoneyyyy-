@@ -139,9 +139,10 @@ interface ProfileRelation {
 
 interface StudentRelation {
   id: string;
-  profile_id: string;
+  profile_id: string | null;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
   active: boolean | null;
   profiles: ProfileRelation | ProfileRelation[] | null;
 }
@@ -219,7 +220,7 @@ export interface AssessmentRecord {
 
 export interface GradeStudent {
   id: string;
-  profileId: string;
+  profileId: string | null;
   fullName: string;
   email: string;
   registrationNumber: string;
@@ -789,15 +790,15 @@ function normalizeStudent(
 ): GradeStudent | null {
   const profile = normalizeRelation(row.profiles);
 
-  if (!profile || !isActive(row.active)) {
+  if (!isActive(row.active)) {
     return null;
   }
 
   return {
     id: row.id,
     profileId: row.profile_id,
-    fullName: profile.full_name,
-    email: profile.email,
+    fullName: profile?.full_name || row.full_name || row.registration_number,
+    email: profile?.email ?? '',
     registrationNumber: row.registration_number,
     enrollmentId,
   };
@@ -1040,6 +1041,7 @@ async function getGradesForAssessment(
         profile_id,
         institution_id,
         registration_number,
+        full_name,
         active,
         profiles:profile_id (
           full_name,
@@ -1436,6 +1438,7 @@ const GRADE_SUMMARY_STUDENT_FIELDS = `
   profile_id,
   institution_id,
   registration_number,
+  full_name,
   active,
   profiles:profile_id (
     full_name,

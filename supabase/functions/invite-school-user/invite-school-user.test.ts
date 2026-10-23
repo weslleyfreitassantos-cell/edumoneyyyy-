@@ -73,6 +73,13 @@ describe('invite-school-user', () => {
     expect(source).toContain('role: input.role');
   });
 
+  it('defers guardian linking only when the enrollment flow explicitly requests it', () => {
+    expect(source).toContain('deferStudentLink: z.boolean().optional()');
+    expect(source).toContain('if (deferred === hasStudentId)');
+    expect(source).toContain('input.guardian!.deferStudentLink !== true');
+    expect(source).toContain('if (!guardian.studentId) throw new Error');
+  });
+
   it('rejects an email already registered instead of reusing the user', () => {
     expect(source).toContain('listUsers');
     expect(source).toContain('if (existingAuthUser || existingProfile)');

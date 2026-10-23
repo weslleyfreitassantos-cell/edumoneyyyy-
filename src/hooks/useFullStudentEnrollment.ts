@@ -13,7 +13,10 @@ import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   createFullStudentEnrollment,
+  discardStudentEnrollmentDraft,
   getFullStudentEditorData,
+  listStudentEnrollmentDrafts,
+  saveStudentEnrollmentDraft,
   updateFullStudentEnrollment,
   type FullStudentEnrollmentDraft,
 } from '../services/fullStudentEnrollmentService';
@@ -23,6 +26,61 @@ export const fullStudentEditorKeys = {
   detail: (institutionId: string, studentId: string) =>
     [...fullStudentEditorKeys.all, institutionId, studentId] as const,
 };
+
+export const studentEnrollmentDraftKeys = {
+  all: ['student-enrollment-drafts'] as const,
+  list: (institutionId: string) =>
+    [...studentEnrollmentDraftKeys.all, institutionId] as const,
+};
+
+export function useStudentEnrollmentDrafts(institutionId: string) {
+  return useQuery({
+    queryKey: studentEnrollmentDraftKeys.list(institutionId),
+    queryFn: () => listStudentEnrollmentDrafts(institutionId),
+    enabled: Boolean(institutionId),
+    staleTime: 10_000,
+  });
+}
+
+export function useSaveStudentEnrollmentDraft() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (variables: {
+      institutionId: string;
+      draftId: string | null;
+      expectedVersion: number | null;
+      draft: FullStudentEnrollmentDraft;
+      currentStep: number;
+    }) => saveStudentEnrollmentDraft(
+      variables.institutionId,
+      variables.draftId,
+      variables.expectedVersion,
+      variables.draft,
+      variables.currentStep,
+    ),
+    onSuccess: (_result, variables) => queryClient.invalidateQueries({
+      queryKey: studentEnrollmentDraftKeys.list(variables.institutionId),
+    }),
+  });
+}
+
+export function useDiscardStudentEnrollmentDraft() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (variables: {
+      institutionId: string;
+      draftId: string;
+      expectedVersion: number;
+    }) => discardStudentEnrollmentDraft(
+      variables.institutionId,
+      variables.draftId,
+      variables.expectedVersion,
+    ),
+    onSuccess: (_result, variables) => queryClient.invalidateQueries({
+      queryKey: studentEnrollmentDraftKeys.list(variables.institutionId),
+    }),
+  });
+}
 
 export function useStudentEditorData(
   institutionId: string,
@@ -50,15 +108,24 @@ export function useCreateFullStudentEnrollment() {
       institutionId,
       draft,
       existingStudentId,
+      draftId,
+      draftVersion,
+      duplicateApprovalCandidateIds,
     }: {
       institutionId: string;
       draft: FullStudentEnrollmentDraft;
       existingStudentId?: string;
+      draftId?: string;
+      draftVersion?: number;
+      duplicateApprovalCandidateIds?: string[];
     }) =>
       createFullStudentEnrollment(
         institutionId,
         draft,
         existingStudentId,
+        draftId && draftVersion
+          ? { draftId, draftVersion, duplicateApprovalCandidateIds }
+          : {},
       ),
 
     onSuccess: async (_result, variables) => {
@@ -78,6 +145,9 @@ export function useCreateFullStudentEnrollment() {
         }),
         queryClient.invalidateQueries({
           queryKey: adminOverviewKeys.detail(variables.institutionId),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: studentEnrollmentDraftKeys.list(variables.institutionId),
         }),
       ]);
     },

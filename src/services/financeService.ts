@@ -9,7 +9,7 @@ export interface InvoiceRow {
   amount_due: number;
   amount_paid: number;
   status: InvoiceStatus;
-  student?: { profiles?: { full_name: string } | null } | null;
+  student?: { full_name: string | null; registration_number: string; profiles?: { full_name: string } | null } | null;
   responsible?: { full_name: string } | null;
 }
 
@@ -32,7 +32,7 @@ const today = () => new Date().toISOString().slice(0, 10);
 
 export const financeService = {
   async listInvoices(institutionId: string): Promise<InvoiceRow[]> {
-    const { data, error } = await supabase.from('invoices').select('id, reference, due_date, amount_due, amount_paid, status, student:student_id(profiles:profile_id(full_name)), responsible:financial_responsible_profile_id(full_name)').eq('institution_id', institutionId).order('due_date', { ascending: true });
+    const { data, error } = await supabase.from('invoices').select('id, reference, due_date, amount_due, amount_paid, status, student:student_id(full_name,registration_number,profiles:profile_id(full_name)), responsible:financial_responsible_profile_id(full_name)').eq('institution_id', institutionId).order('due_date', { ascending: true });
     if (error) throw error;
     return (data ?? []) as unknown as InvoiceRow[];
   },

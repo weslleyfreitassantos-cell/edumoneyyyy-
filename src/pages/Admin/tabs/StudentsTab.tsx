@@ -310,14 +310,14 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       label: 'Nome',
       render: (_value, row) =>
         row.profiles?.full_name ??
-        'Perfil indisponível',
+        row.registration_number,
     },
     {
       id: 'student-email',
       key: 'profile_id',
       label: 'E-mail',
       render: (_value, row) =>
-        row.profiles?.email ?? '—',
+        row.profiles?.email || 'Sem acesso por e-mail',
     },
     {
       id: 'student-enrollment',
@@ -402,7 +402,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       : 'desativar';
 
     const confirmed = window.confirm(
-      `Deseja ${action} o perfil de ${getStudentName(student)}?`,
+      `Deseja ${action} o cadastro de ${getStudentName(student)}?`,
     );
 
     if (!confirmed) {
@@ -421,8 +421,8 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
 
       setFeedbackMessage(
         nextActive
-          ? 'Perfil de estudante reativado com sucesso.'
-          : 'Perfil de estudante desativado com sucesso.',
+          ? 'Cadastro de estudante reativado com sucesso.'
+          : 'Cadastro de estudante desativado com sucesso.',
       );
     } catch (error) {
       setPageError(

@@ -21,6 +21,7 @@ interface StudentRelation {
   id: string;
   institution_id: string;
   registration_number: string;
+  full_name: string | null;
   active: boolean | null;
   profiles:
     | StudentProfileRelation
@@ -125,7 +126,7 @@ function normalizeGuardianRows(
       id: row.id,
       student_id: row.student_id,
       student_name:
-        studentProfile?.full_name ??
+        studentProfile?.full_name || student.full_name ||
         student.registration_number,
       registration_number:
         student.registration_number,
@@ -179,6 +180,7 @@ export const guardianService = {
           id,
           institution_id,
           registration_number,
+          full_name,
           active,
           profiles:profile_id (
             full_name,

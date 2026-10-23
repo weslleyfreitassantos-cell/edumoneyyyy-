@@ -147,7 +147,8 @@ export interface UnifiedUserInvitePayload {
     cpf?: string;
   };
   guardian?: {
-    studentId: string;
+    studentId?: string;
+    deferStudentLink?: boolean;
     relationship: string;
   };
 }
