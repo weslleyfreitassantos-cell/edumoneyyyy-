@@ -145,6 +145,9 @@ jobs:
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
 
+      - name: Teste dinâmico isolado dos rascunhos de matrícula
+        run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
+
       - name: Lint das migrations
         run: npx supabase db lint --local --fail-on error
 

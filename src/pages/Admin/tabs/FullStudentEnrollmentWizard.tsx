@@ -1,6 +1,8 @@
 import {
+  useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
@@ -8,6 +10,9 @@ import {
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import {
   useCreateFullStudentEnrollment,
+  useDiscardStudentEnrollmentDraft,
+  useSaveStudentEnrollmentDraft,
+  useStudentEnrollmentDrafts,
   useStudentEditorData,
   useUpdateFullStudentEnrollment,
 } from '../../../hooks/useFullStudentEnrollment';
@@ -24,8 +29,10 @@ import {
 import {
   findDuplicateStudentCandidates,
   FullStudentEnrollmentError,
+  getStudentEnrollmentDraft,
   type FullStudentEnrollmentDraft,
   type GuardianDraft,
+  type StudentEnrollmentDraftSaveResult,
   type StudentDocumentDraft,
 } from '../../../services/fullStudentEnrollmentService';
 import {
@@ -183,6 +190,37 @@ function createDraft(
   };
 }
 
+function hasMeaningfulEnrollmentDraft(draft: FullStudentEnrollmentDraft): boolean {
+  const hasText = (value: string) => Boolean(value.trim());
+  return Boolean(
+    hasText(draft.identity.full_name) || hasText(draft.identity.email) ||
+    hasText(draft.identity.birth_date) || hasText(draft.identity.cpf) ||
+    hasText(draft.address.street) || hasText(draft.address.city) ||
+    draft.guardians.some((guardian) => guardian.profile_id || hasText(guardian.full_name) || hasText(guardian.email)) ||
+    hasText(draft.previous_schooling.origin_school) ||
+    hasText(draft.health.allergies) || hasText(draft.health.health_conditions) ||
+    hasText(draft.health.emergency_medication) || hasText(draft.health.disability) ||
+    hasText(draft.health.school_care_notes) || draft.health.autism ||
+    draft.health.giftedness || draft.health.needs_special_education ||
+    draft.documents.some((document) => document.status !== 'NOT_REQUESTED' || hasText(document.notes))
+  );
+}
+
+function enrollmentDraftFingerprint(
+  draft: FullStudentEnrollmentDraft,
+  currentStep: number,
+): string {
+  const safeDraft = {
+    ...draft,
+    documents: draft.documents.map(({ document_type, status, notes }) => ({
+      document_type,
+      status,
+      notes,
+    })),
+  };
+  return JSON.stringify({ draft: safeDraft, currentStep });
+}
+
 function Field({
   label,
   children,
@@ -260,13 +298,102 @@ export default function FullStudentEnrollmentWizard({
   const [inclusiveEducationRegistered, setInclusiveEducationRegistered] = useState(false);
   const [isRegisteringInclusiveEducation, setIsRegisteringInclusiveEducation] = useState(false);
   const [isCheckingDuplicates, setIsCheckingDuplicates] = useState(false);
+  const [draftId, setDraftId] = useState<string | null>(null);
+  const [draftVersion, setDraftVersion] = useState<number | null>(null);
+  const [draftStatus, setDraftStatus] = useState<'OPEN' | 'FINALIZING'>('OPEN');
+  const [draftSaveState, setDraftSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [isLoadingSavedDraft, setIsLoadingSavedDraft] = useState(false);
+  const [isDiscardingDraft, setIsDiscardingDraft] = useState(false);
+  const persistentDraftRef = useRef<{
+    id: string | null;
+    version: number | null;
+    status: 'OPEN' | 'FINALIZING';
+  }>({ id: null, version: null, status: 'OPEN' });
+  const lastPersistedFingerprintRef = useRef<string | null>(null);
+  const savePromiseRef = useRef<Promise<StudentEnrollmentDraftSaveResult> | null>(null);
+  const duplicateApprovalFingerprintRef = useRef<string | null>(null);
   const createMutation = useCreateFullStudentEnrollment();
   const updateMutation = useUpdateFullStudentEnrollment();
+  const draftsQuery = useStudentEnrollmentDrafts(institutionId);
+  const saveDraftMutation = useSaveStudentEnrollmentDraft();
+  const discardDraftMutation = useDiscardStudentEnrollmentDraft();
   const editorQuery = useStudentEditorData(
     institutionId,
     isExistingStudentMode ? studentId ?? null : null,
   );
   const usersQuery = useSchoolUsers(institutionId, true);
+  const saveDraft = saveDraftMutation.mutateAsync;
+
+  const persistEnrollmentDraft = useCallback(async (
+    snapshot: FullStudentEnrollmentDraft,
+    snapshotStep: number,
+  ): Promise<StudentEnrollmentDraftSaveResult | null> => {
+    if (mode !== 'create' || !hasMeaningfulEnrollmentDraft(snapshot)) return null;
+    if (persistentDraftRef.current.status === 'FINALIZING') {
+      if (!persistentDraftRef.current.id || !persistentDraftRef.current.version) {
+        throw new Error('ENROLLMENT_DRAFT_VERSION_CONFLICT');
+      }
+      return {
+        draft_id: persistentDraftRef.current.id,
+        version: persistentDraftRef.current.version,
+      };
+    }
+
+    const fingerprint = enrollmentDraftFingerprint(snapshot, snapshotStep);
+    if (
+      persistentDraftRef.current.id &&
+      lastPersistedFingerprintRef.current === fingerprint &&
+      persistentDraftRef.current.version
+    ) {
+      return {
+        draft_id: persistentDraftRef.current.id,
+        version: persistentDraftRef.current.version,
+      };
+    }
+
+    if (savePromiseRef.current) {
+      await savePromiseRef.current;
+      if (
+        persistentDraftRef.current.id &&
+        lastPersistedFingerprintRef.current === fingerprint &&
+        persistentDraftRef.current.version
+      ) {
+        return {
+          draft_id: persistentDraftRef.current.id,
+          version: persistentDraftRef.current.version,
+        };
+      }
+    }
+
+    setDraftSaveState('saving');
+    const request = saveDraft({
+      institutionId,
+      draftId: persistentDraftRef.current.id,
+      expectedVersion: persistentDraftRef.current.version,
+      draft: snapshot,
+      currentStep: snapshotStep,
+    });
+    savePromiseRef.current = request;
+    try {
+      const saved = await request;
+      persistentDraftRef.current = {
+        id: saved.draft_id,
+        version: saved.version,
+        status: 'OPEN',
+      };
+      lastPersistedFingerprintRef.current = fingerprint;
+      setDraftId(saved.draft_id);
+      setDraftVersion(saved.version);
+      setDraftStatus('OPEN');
+      setDraftSaveState('saved');
+      return saved;
+    } catch (saveError) {
+      setDraftSaveState('error');
+      throw saveError;
+    } finally {
+      if (savePromiseRef.current === request) savePromiseRef.current = null;
+    }
+  }, [institutionId, mode, saveDraft]);
 
   const guardians = useMemo(
     () =>
@@ -278,6 +405,21 @@ export default function FullStudentEnrollmentWizard({
       ),
     [usersQuery.data],
   );
+
+  useEffect(() => {
+    if (
+      mode !== 'create' || draftStatus === 'FINALIZING' ||
+      !hasMeaningfulEnrollmentDraft(draft)
+    ) return;
+    const fingerprint = enrollmentDraftFingerprint(draft, step);
+    if (fingerprint === lastPersistedFingerprintRef.current) return;
+    const timer = window.setTimeout(() => {
+      void persistEnrollmentDraft(draft, step).catch(() => {
+        setDraftSaveState('error');
+      });
+    }, 650);
+    return () => window.clearTimeout(timer);
+  }, [draft, draftStatus, mode, persistEnrollmentDraft, step]);
 
   useEffect(() => {
     if (!isExistingStudentMode && !draft.academic_year_id && firstYear) {
@@ -312,6 +454,123 @@ export default function FullStudentEnrollmentWizard({
     loadedEditStudentId,
     studentId,
   ]);
+
+  async function resumeSavedDraft(targetDraftId: string) {
+    setError(null);
+    setIsLoadingSavedDraft(true);
+    try {
+      if (
+        hasMeaningfulEnrollmentDraft(draft) &&
+        persistentDraftRef.current.id !== targetDraftId
+      ) {
+        await persistEnrollmentDraft(draft, step);
+      }
+      const savedDraft = await getStudentEnrollmentDraft(institutionId, targetDraftId);
+      const restoredFingerprint = enrollmentDraftFingerprint(
+        savedDraft.payload,
+        savedDraft.current_step,
+      );
+      persistentDraftRef.current = {
+        id: savedDraft.draft_id,
+        version: savedDraft.version,
+        status: savedDraft.status,
+      };
+      lastPersistedFingerprintRef.current = restoredFingerprint;
+      duplicateApprovalFingerprintRef.current = null;
+      setDraftId(savedDraft.draft_id);
+      setDraftVersion(savedDraft.version);
+      setDraftStatus(savedDraft.status);
+      setDraftSaveState('saved');
+      setDraft(savedDraft.payload);
+      setStep(Math.min(Math.max(savedDraft.current_step, 0), steps.length - 1));
+
+      if (savedDraft.created_student_id) {
+        setCreatedStudentId(savedDraft.created_student_id);
+      }
+      const candidates = await findDuplicateStudentCandidates(
+        institutionId,
+        savedDraft.payload.identity,
+      );
+      const newCandidates = candidates.filter(
+        (candidate) => candidate.id !== savedDraft.created_student_id,
+      );
+      setDuplicates(newCandidates);
+      if (newCandidates.length > 0) {
+        setStep(0);
+        setError('Encontramos possíveis cadastros existentes. Revise antes de continuar este rascunho.');
+      }
+    } catch {
+      setError('Não foi possível reabrir ou validar o rascunho. Tente novamente; os dados salvos não foram apagados.');
+    } finally {
+      setIsLoadingSavedDraft(false);
+    }
+  }
+
+  async function discardCurrentDraft() {
+    const saved = persistentDraftRef.current;
+    if (!saved.id || !saved.version || saved.status !== 'OPEN') return;
+    if (!window.confirm('Descartar este rascunho? Ele será marcado como descartado e não criará nenhum cadastro.')) return;
+    setIsDiscardingDraft(true);
+    setError(null);
+    try {
+      await discardDraftMutation.mutateAsync({
+        institutionId,
+        draftId: saved.id,
+        expectedVersion: saved.version,
+      });
+      persistentDraftRef.current = { id: null, version: null, status: 'OPEN' };
+      lastPersistedFingerprintRef.current = null;
+      duplicateApprovalFingerprintRef.current = null;
+      setDraftId(null);
+      setDraftVersion(null);
+      setDraftStatus('OPEN');
+      setDraftSaveState('idle');
+      setDraft(createDraft(firstYear, firstClassId));
+      setStep(0);
+      setDuplicates([]);
+    } catch {
+      setError('Não foi possível descartar o rascunho. Atualize a lista e tente novamente.');
+    } finally {
+      setIsDiscardingDraft(false);
+    }
+  }
+
+  async function discardListedDraft(
+    savedDraft: { draft_id: string; student_name: string; version: number },
+  ) {
+    if (!window.confirm(`Descartar o rascunho de “${savedDraft.student_name}”? Nenhum cadastro será criado.`)) return;
+    try {
+      await discardDraftMutation.mutateAsync({
+        institutionId,
+        draftId: savedDraft.draft_id,
+        expectedVersion: savedDraft.version,
+      });
+      if (savedDraft.draft_id === persistentDraftRef.current.id) {
+        persistentDraftRef.current = { id: null, version: null, status: 'OPEN' };
+        lastPersistedFingerprintRef.current = null;
+        setDraftId(null);
+        setDraftVersion(null);
+        setDraftStatus('OPEN');
+        setDraftSaveState('idle');
+        setDraft(createDraft(firstYear, firstClassId));
+        setStep(0);
+      }
+    } catch {
+      setError('Não foi possível descartar o rascunho. Atualize a lista e tente novamente.');
+    }
+  }
+
+  async function closeWizard() {
+    if (mode === 'create' && hasMeaningfulEnrollmentDraft(draft)) {
+      try {
+        await persistEnrollmentDraft(draft, step);
+      } catch {
+        setError('O rascunho não foi salvo. Mantenha esta janela aberta e tente novamente antes de sair.');
+        return;
+      }
+    }
+    onClose();
+  }
 
   function updateIdentity(
     field: keyof FullStudentEnrollmentDraft['identity'],
@@ -439,15 +698,22 @@ export default function FullStudentEnrollmentWizard({
     if (step === 0 && !isExistingStudentMode) {
       setIsCheckingDuplicates(true);
       try {
+        const identityFingerprint = JSON.stringify([
+          draft.identity.full_name.trim().toLocaleLowerCase('pt-BR'),
+          draft.identity.birth_date,
+          draft.identity.cpf.replace(/\D/g, ''),
+        ]);
         const candidates = await findDuplicateStudentCandidates(
           institutionId,
           draft.identity,
         );
         if (candidates.length > 0) {
+          duplicateApprovalFingerprintRef.current = null;
           setDuplicates(candidates);
           setError('Encontramos possíveis cadastros existentes. Revise antes de continuar.');
           return;
         }
+        duplicateApprovalFingerprintRef.current = identityFingerprint;
       } catch (duplicateError) {
         setError(getUserFacingErrorMessage(duplicateError, 'Não foi possível verificar duplicidade.'));
         return;
@@ -462,6 +728,11 @@ export default function FullStudentEnrollmentWizard({
     if (!window.confirm('O cadastro pode ser do mesmo aluno. Deseja continuar criando um novo cadastro?')) {
       return;
     }
+    duplicateApprovalFingerprintRef.current = JSON.stringify([
+      draft.identity.full_name.trim().toLocaleLowerCase('pt-BR'),
+      draft.identity.birth_date,
+      draft.identity.cpf.replace(/\D/g, ''),
+    ]);
     setDuplicates([]);
     setError(null);
     setStep(1);
@@ -518,10 +789,48 @@ export default function FullStudentEnrollmentWizard({
     }
 
     try {
+      const latestIdentityFingerprint = JSON.stringify([
+        draft.identity.full_name.trim().toLocaleLowerCase('pt-BR'),
+        draft.identity.birth_date,
+        draft.identity.cpf.replace(/\D/g, ''),
+      ]);
+      if (duplicateApprovalFingerprintRef.current !== latestIdentityFingerprint) {
+        setIsCheckingDuplicates(true);
+        try {
+          const candidates = await findDuplicateStudentCandidates(
+            institutionId,
+            draft.identity,
+          );
+          const actionableCandidates = candidates.filter(
+            (candidate) => candidate.id !== createdStudentId,
+          );
+          if (actionableCandidates.length > 0) {
+            setDuplicates(actionableCandidates);
+            setStep(0);
+            setError('Encontramos possíveis cadastros existentes. Revise antes de confirmar a matrícula.');
+            return;
+          }
+          duplicateApprovalFingerprintRef.current = latestIdentityFingerprint;
+        } catch {
+          setStep(0);
+          setError('Não foi possível revalidar possíveis duplicidades. A matrícula não foi confirmada.');
+          return;
+        } finally {
+          setIsCheckingDuplicates(false);
+        }
+      }
+
+      const savedDraft = await persistEnrollmentDraft(draft, step);
+      if (!savedDraft) {
+        setError('Não foi possível salvar o rascunho seguro antes da confirmação.');
+        return;
+      }
       const result = await createMutation.mutateAsync({
         institutionId,
         draft,
         existingStudentId: createdStudentId,
+        draftId: savedDraft.draft_id,
+        draftVersion: savedDraft.version,
       });
       if (registerInInclusiveEducation && !(await registerStudentInInclusiveEducation(result.student_id))) {
         setCreatedStudentId(result.student_id);
@@ -956,9 +1265,57 @@ export default function FullStudentEnrollmentWizard({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label={isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Matrícula completa de aluno'}>
       <div className="flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl dark:border dark:border-slate-700 dark:bg-slate-900">
-        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">{isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Novo aluno'}</p><h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{mode === 'enroll' ? 'Concluir matrícula' : isEditMode ? 'Editar cadastro completo' : 'Matrícula completa'}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{mode === 'enroll' ? 'Revise os dados e escolha a turma para concluir a matrícula deste aluno.' : isEditMode ? 'Atualize todos os dados cadastrais, escolares e da matrícula.' : 'Cadastro detalhado com vínculos, documentos e revisão antes de confirmar.'}</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800" onClick={onClose} aria-label="Fechar">X</button></div>
+        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">{isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Novo aluno'}</p><h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{mode === 'enroll' ? 'Concluir matrícula' : isEditMode ? 'Editar cadastro completo' : 'Matrícula completa'}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{mode === 'enroll' ? 'Revise os dados e escolha a turma para concluir a matrícula deste aluno.' : isEditMode ? 'Atualize todos os dados cadastrais, escolares e da matrícula.' : 'Cadastro detalhado com vínculos, documentos e revisão antes de confirmar.'}</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800" onClick={() => void closeWizard()} aria-label="Fechar">X</button></div>
+        {mode === 'create' ? (
+          <div className="space-y-3 border-b border-slate-200 px-5 py-3 text-sm dark:border-slate-700">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p aria-live="polite" role="status" className="text-slate-600 dark:text-slate-300">
+                {draftStatus === 'FINALIZING'
+                  ? 'Uma confirmação anterior está em andamento; os dados permanecem protegidos.'
+                  : draftSaveState === 'saving'
+                    ? 'Salvando rascunho seguro…'
+                    : draftSaveState === 'saved'
+                      ? 'Rascunho salvo com segurança nesta escola.'
+                      : draftSaveState === 'error'
+                        ? 'Falha ao salvar o rascunho. Não feche esta janela até a recuperação.'
+                        : 'O rascunho será salvo automaticamente ao preencher os dados.'}
+              </p>
+              {draftId && draftStatus === 'OPEN' ? (
+                <button type="button" className="text-xs font-semibold text-red-700 underline disabled:opacity-60 dark:text-red-300" onClick={() => void discardCurrentDraft()} disabled={isDiscardingDraft}>
+                  {isDiscardingDraft ? 'Descartando…' : 'Descartar rascunho atual'}
+                </button>
+              ) : null}
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Rascunhos ficam no banco da escola e só podem ser retomados por equipe autorizada. Arquivos e links temporários não são salvos.
+            </p>
+            {(draftsQuery.data?.length ?? 0) > 0 ? (
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-800/60">
+                <p className="mb-2 font-semibold text-slate-800 dark:text-slate-100">Rascunhos para continuar</p>
+                <div className="space-y-2">
+                  {draftsQuery.data?.filter((savedDraft) => savedDraft.draft_id !== draftId).map((savedDraft) => (
+                    <div key={savedDraft.draft_id} className="flex flex-wrap items-center justify-between gap-2 rounded-md bg-white px-3 py-2 dark:bg-slate-900">
+                      <span>{savedDraft.student_name} · etapa {savedDraft.current_step + 1} de 8 · {new Date(savedDraft.updated_at).toLocaleString()}</span>
+                      <div className="flex gap-3">
+                        <button type="button" className="font-semibold text-blue-700 underline disabled:opacity-60 dark:text-blue-300" onClick={() => void resumeSavedDraft(savedDraft.draft_id)} disabled={isLoadingSavedDraft || isDiscardingDraft}>
+                          {isLoadingSavedDraft ? 'Abrindo…' : 'Retomar'}
+                        </button>
+                        {savedDraft.status === 'OPEN' ? (
+                          <button type="button" className="font-semibold text-red-700 underline dark:text-red-300" onClick={() => void discardListedDraft(savedDraft)}>
+                            Descartar
+                          </button>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+            {draftsQuery.isError ? <p className="text-xs text-amber-700 dark:text-amber-300">Não foi possível carregar a lista de rascunhos salvos.</p> : null}
+          </div>
+        ) : null}
         <div className="overflow-y-auto px-5 py-4 dark:bg-slate-900"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-200"><strong>Possíveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3 dark:border-amber-800 dark:bg-slate-900/70"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matrícula {candidate.registration_number} - {candidate.birth_date}</p>{onUseExistingStudent ? <button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700 dark:border-blue-500 dark:text-blue-300" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button> : null}</div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4 dark:border-slate-700"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500 dark:text-slate-400">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending || updateMutation.isPending}>{createMutation.isPending || updateMutation.isPending ? 'Salvando...' : mode === 'enroll' ? 'Confirmar matrícula' : isEditMode ? 'Salvar alterações' : 'Confirmar matrícula'}</button>}</div></div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4 dark:border-slate-700"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800" onClick={step === 0 ? () => void closeWizard() : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500 dark:text-slate-400">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates || isLoadingSavedDraft}>{isCheckingDuplicates ? 'Verificando...' : isLoadingSavedDraft ? 'Abrindo rascunho…' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending || updateMutation.isPending || isCheckingDuplicates || isLoadingSavedDraft || draftSaveState === 'saving'}>{createMutation.isPending || updateMutation.isPending ? 'Salvando...' : isCheckingDuplicates || draftSaveState === 'saving' ? 'Validando e salvando…' : mode === 'enroll' ? 'Confirmar matrícula' : isEditMode ? 'Salvar alterações' : 'Confirmar matrícula'}</button>}</div></div>
       </div>
     </div>
   );
