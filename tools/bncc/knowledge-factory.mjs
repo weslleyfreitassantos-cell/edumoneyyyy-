@@ -488,7 +488,7 @@ export function buildKnowledgeFactory(inputs) {
         updatedAt: inputs.historicalProgress.updatedAt,
         officialNodesAtSnapshot: inputs.historicalProgress.officialCatalog.uniqueCodes,
         declaredCanonicalGapsAtSnapshot: inputs.historicalProgress.mapping.canonicalGaps,
-        note: 'Histórico versionado; não usado como fonte atual quando diverge dos registros e do snapshot de produção abaixo.',
+        note: 'Histórico versionado; não usado como fonte atual quando diverge dos registros ou do snapshot histórico abaixo.',
       },
       v9StructuredAssets: {
         journeyAssets: inputs.v9Journeys.length,
@@ -497,7 +497,12 @@ export function buildKnowledgeFactory(inputs) {
         questionExpansionQuestions: inputs.v9Questions.length,
         mappingReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
       },
-      productionReadOnly: inputs.productionBaseline,
+      historicalProductionSnapshot: {
+        ...inputs.productionBaseline,
+        evidenceStatus: 'HISTORICAL_ONLY',
+        currentProductionState: 'NOT_ASSERTED',
+        note: 'Fotografia read-only capturada em 2026-10-12; não comprova o estado atual da VPS nem substitui a reconciliação operacional da Fase 0.',
+      },
     },
     officialNodes: officialInventory,
     internalSkillGaps: skillInventory,

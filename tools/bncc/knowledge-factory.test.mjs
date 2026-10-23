@@ -24,10 +24,15 @@ describe('BNCC knowledge factory', () => {
     expect(report.officialNodes.filter((item) => item.mappingStatus !== 'MAPPED').every((item) => item.verifiedCanonicalSkillCodes.length === 0)).toBe(true);
   });
 
-  it('includes the read-only production reconciliation and preserves the review gate', () => {
+  it('labels the production snapshot as historical and preserves the review gate', () => {
     const report = buildKnowledgeFactory(inputs);
-    const production = report.baseline.productionReadOnly;
+    const production = report.baseline.historicalProductionSnapshot;
 
+    expect(production).toMatchObject({
+      asOf: '2026-10-12T21:37:24Z',
+      evidenceStatus: 'HISTORICAL_ONLY',
+      currentProductionState: 'NOT_ASSERTED',
+    });
     expect(production.migrationLedger.latestVersion).toBe('20261012000400');
     expect(production.activeCounts.disciplineJourneys).toBe(48);
     expect(production.activeCounts.tecEscolaQuestionBank).toBe(1447);

@@ -6,8 +6,8 @@
     "official": "997ed5fb8817c57a8ff3fd0fc862993867539b9e0736a5d0ad43a1379a20cef6",
     "officialManifest": "8aff9758fbe893b5076895e377dfe1d145ae3d3a4f9270c5ccd56272baf303ea",
     "regulatoryContext": "8baebdedaf4f38b4a7a54f0f18ef6b120432690aaf6a6ee435e314e46b707f31",
-    "v1": "3e271391198784e76cba40e34c8805aa8f3e299bb05293f786b95dd9b8cffb8d",
-    "v3": "255f9109a7e61b41840599edda426fb6482207be3beacd54a2b5f47038a5c212",
+    "v1": "d89075bf0093974f33220e62685efa24b582eaee766a1e199e60aaa1fb868eee",
+    "v3": "cc1cc070df3eca9bf8db4e36fe806c05d2348a985deb0acfeb751687064d6e57",
     "v3Units": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1",
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
@@ -15039,5 +15039,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "878a91a58487687b93cdb6c46291900d483d501812b3e3d00a63acc5cfbe61f1"
+  "inventoryHash": "23630081dc4e3cb96095cb61087006772636761eea01da464f947d3e44f95448"
 }

@@ -170,7 +170,7 @@
       "updatedAt": "2026-10-04T00:00:00.000Z",
       "officialNodesAtSnapshot": 1723,
       "declaredCanonicalGapsAtSnapshot": 1496,
-      "note": "Histórico versionado; não usado como fonte atual quando diverge dos registros e do snapshot de produção abaixo."
+      "note": "Histórico versionado; não usado como fonte atual quando diverge dos registros ou do snapshot histórico abaixo."
     },
     "v9StructuredAssets": {
       "journeyAssets": 36,
@@ -179,7 +179,7 @@
       "questionExpansionQuestions": 152,
       "mappingReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
-    "productionReadOnly": {
+    "historicalProductionSnapshot": {
       "schemaVersion": "tec-escola.bncc.production-readonly-baseline.v1",
       "asOf": "2026-10-12T21:37:24Z",
       "method": "Read-only SQL through the configured tecescola-vps SSH alias and the local PostgreSQL socket in supabase-edumoney-db. No rows with student or institution identifiers were selected.",
@@ -231,7 +231,10 @@
         "studentHistoryModified": false,
         "productionWrites": false,
         "otherServicesTouched": false
-      }
+      },
+      "evidenceStatus": "HISTORICAL_ONLY",
+      "currentProductionState": "NOT_ASSERTED",
+      "note": "Fotografia read-only capturada em 2026-10-12; não comprova o estado atual da VPS nem substitui a reconciliação operacional da Fase 0."
     }
   },
   "officialNodes": [
@@ -27995,5 +27998,5 @@
     "newContentAvailableToStudents": false,
     "publicationBlocker": "Human pedagogical review and explicit scoped publication are pending."
   },
-  "inventoryHash": "ff4d7a433cbd7881d1b2aba0411bf430123a894656c31137d707a198e0acd2a8"
+  "inventoryHash": "c8545427ede0391d5d4ea968f0a4e9433d5a875deed90819dcdf0ef72013c73b"
 }
