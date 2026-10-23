@@ -4,11 +4,11 @@ import { describe, expect, it } from 'vitest';
 const migration = readFileSync(
   new URL('./20261023000400_student_enrollment_drafts.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 const accountlessMigration = readFileSync(
   new URL('./20261023000600_student_enrollment_without_auth_account.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 describe('student enrollment drafts migration', () => {
   it('keeps drafts institution-scoped and limits access to authenticated school managers', () => {
