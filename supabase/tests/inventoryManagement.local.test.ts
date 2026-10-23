@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 type Db = SupabaseClient<any, any, any>;
 type Role = 'DIRECTOR' | 'SECRETARY' | 'TEACHER';
@@ -8,7 +8,20 @@ type Actor = { id: string; client: Db };
 const url = process.env.MULTI_TENANT_SUPABASE_URL;
 const anonKey = process.env.MULTI_TENANT_SUPABASE_ANON_KEY;
 const serviceRoleKey = process.env.MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY;
-const runtimeDescribe = url && anonKey && serviceRoleKey ? describe : describe.skip;
+const hasRuntimeCredentials = Boolean(url && anonKey && serviceRoleKey);
+const localHosts = new Set(['127.0.0.1', 'localhost', '::1']);
+const isLocalSupabase = (() => {
+  if (!url) return false;
+  try {
+    return localHosts.has(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+})();
+if (hasRuntimeCredentials && !isLocalSupabase) {
+  throw new Error('Inventory runtime tests are restricted to a loopback Supabase instance.');
+}
+const runtimeDescribe = hasRuntimeCredentials && isLocalSupabase ? describe : describe.skip;
 
 function required<T>(value: T | null | undefined, label: string): T {
   if (value === null || value === undefined) throw new Error(`Missing ${label}`);
@@ -33,11 +46,6 @@ async function createActor(service: Db, institutionId: string, role: Role, label
   const session = await client.auth.signInWithPassword({ email, password });
   if (session.error || !session.data.session) throw new Error(`${role} sign in failed: ${session.error?.message ?? 'no session'}`);
   return { id: user.id, client };
-}
-
-async function expectDeleted(db: Db, table: string, institutionId: string): Promise<void> {
-  const { error } = await db.from(table).delete().eq('institution_id', institutionId);
-  if (error) throw new Error(`cleanup ${table}: ${error.message}`);
 }
 
 runtimeDescribe('inventory physical count runtime contract', () => {
@@ -75,7 +83,7 @@ runtimeDescribe('inventory physical count runtime contract', () => {
     });
     expect(created.error).toBeNull();
     const itemId = required(created.data, 'inventory item id');
-    const location = await service.from('inventory_locations').select('id')
+    const location = await director.client.from('inventory_locations').select('id')
       .eq('institution_id', institutionId).eq('name', `Almoxarifado ${suffix}`).single();
     expect(location.error).toBeNull();
     const locationId = required(location.data?.id, 'inventory location id');
@@ -147,10 +155,10 @@ runtimeDescribe('inventory physical count runtime contract', () => {
     expect(replay.error).toBeNull();
     expect(replay.data).toBe(sessionId);
 
-    const balance = await service.from('inventory_balances').select('quantity')
+    const balance = await director.client.from('inventory_balances').select('quantity')
       .eq('institution_id', institutionId).eq('item_id', itemId).eq('location_id', locationId).single();
     expect(Number(balance.data?.quantity)).toBe(4);
-    const adjustments = await service.from('inventory_movements').select('id, quantity_delta')
+    const adjustments = await director.client.from('inventory_movements').select('id, quantity_delta')
       .eq('institution_id', institutionId).eq('inventory_count_session_id', sessionId);
     expect(adjustments.error).toBeNull();
     expect(adjustments.data).toHaveLength(1);
@@ -180,21 +188,4 @@ runtimeDescribe('inventory physical count runtime contract', () => {
     expect(resumedMovement.error).toBeNull();
   }, 120_000);
 
-  afterAll(async () => {
-    if (!service) return;
-    for (const id of [institutionId, foreignInstitutionId].filter(Boolean)) {
-      for (const table of [
-        'inventory_movements', 'inventory_count_lines', 'inventory_count_sessions',
-        'inventory_audit_events', 'inventory_request_items', 'inventory_requests',
-        'inventory_balances', 'inventory_items', 'inventory_suppliers',
-        'inventory_categories', 'inventory_units', 'inventory_locations',
-      ]) await expectDeleted(service, table, id);
-      await service.from('memberships').delete().eq('institution_id', id);
-      await service.from('institutions').delete().eq('id', id);
-    }
-    for (const actor of actors) {
-      await service.from('profiles').delete().eq('id', actor.id);
-      await service.auth.admin.deleteUser(actor.id);
-    }
-  }, 120_000);
 });
