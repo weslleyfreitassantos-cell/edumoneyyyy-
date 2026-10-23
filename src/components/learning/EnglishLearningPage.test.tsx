@@ -6,6 +6,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 const state = vi.hoisted(() => ({
   journeys: [] as Array<Record<string, unknown> & { journey_id: string; canonical_subject_code: string; subject_code: string; subject_name: string; unit_title: string; title: string; execution_skill_id: string; question_count: number; availability_status: string; pedagogical_review_status: string; active_session_id: string | null; active_session_status: 'ACTIVE' | 'PAUSED' | null }>,
   startJourney: vi.fn().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }),
+  gamification: { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' } as null | { xp: number; current_streak: number; longest_streak: number; daily_goal_minutes: number; last_qualified_activity_date: string | null },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1' } }) }));
@@ -13,6 +14,7 @@ vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ c
 vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1' }, isLoading: false, isError: false }),
   useGuidedDisciplineJourneysV9: () => ({ data: state.journeys, isLoading: false, isError: false }),
+  useLearningGamification: () => ({ data: state.gamification }),
   useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startJourney }),
 }));
 
@@ -31,7 +33,7 @@ function renderPage() {
   </Routes></MemoryRouter>);
 }
 
-afterEach(() => { cleanup(); state.journeys = []; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
+afterEach(() => { cleanup(); state.journeys = []; state.gamification = { xp: 120, current_streak: 3, longest_streak: 7, daily_goal_minutes: 15, last_qualified_activity_date: '2026-10-22' }; state.startJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-1' }); });
 
 describe('EnglishLearningPage', () => {
   it('não libera conteúdo em prévia ou pendente de revisão', () => {
@@ -43,11 +45,21 @@ describe('EnglishLearningPage', () => {
   });
 
   it('inicia pela RPC V9 apenas uma trilha aprovada e disponível', async () => {
-    state.journeys = [makeJourney({ availability_status: 'AVAILABLE', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED' })];
+    state.journeys = [makeJourney({ availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED', progress: 38 })];
     renderPage();
+    expect(screen.getByRole('region', { name: 'Seu progresso geral de aprendizagem' })).toBeTruthy();
+    expect(screen.getByText('120 XP')).toBeTruthy();
+    expect(screen.getByRole('progressbar', { name: 'Domínio atual: 38%' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Começar trilha' }));
     await waitFor(() => expect(screen.getByText('Jornada guiada aberta')).toBeTruthy());
     expect(state.startJourney).toHaveBeenCalledWith('journey-english-1');
+  });
+
+  it('não inicia uma trilha com mapeamento curricular ainda pendente', () => {
+    state.journeys = [makeJourney({ availability_status: 'AVAILABLE', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED' })];
+    renderPage();
+    expect(screen.getByRole('button', { name: 'Indisponível durante a revisão' }).hasAttribute('disabled')).toBe(true);
+    expect(state.startJourney).not.toHaveBeenCalled();
   });
 
   it('informa indisponibilidade quando a matrícula não recebe jornadas em inglês', () => {

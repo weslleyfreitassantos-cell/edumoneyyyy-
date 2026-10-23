@@ -1,10 +1,10 @@
-import { ArrowLeft, BookOpen, CheckCircle2, Clock3, Play, Volume2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle2, Clock3, Flame, Play, Sparkles, Target, Volume2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { useGuidedDisciplineJourneysV9, useLearningStudent, useStartGuidedDisciplineJourneyV9 } from '../../hooks/useLearningCenter';
+import { useGuidedDisciplineJourneysV9, useLearningGamification, useLearningStudent, useStartGuidedDisciplineJourneyV9 } from '../../hooks/useLearningCenter';
 import type { GuidedDisciplineJourneyV9 } from '../../services/learningCenterService';
 
 function normalize(value: string | null | undefined): string {
@@ -18,6 +18,7 @@ function isEnglishJourney(journey: GuidedDisciplineJourneyV9): boolean {
 
 function isReviewedAndAvailable(journey: GuidedDisciplineJourneyV9): boolean {
   return journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED'
+    && journey.mapping_status === 'MAPPED'
     && journey.availability_status === 'AVAILABLE'
     && journey.question_count > 0;
 }
@@ -34,6 +35,7 @@ export default function EnglishLearningPage() {
   const [startError, setStartError] = useState(false);
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
+  const gamification = useLearningGamification(currentInstitutionId ?? undefined, student.data?.id);
   const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const englishJourneys = useMemo(
     () => (journeys.data ?? []).filter(isEnglishJourney).sort((left, right) => left.unit_title.localeCompare(right.unit_title, 'pt-BR') || left.title.localeCompare(right.title, 'pt-BR')),
@@ -75,6 +77,26 @@ export default function EnglishLearningPage() {
       {student.isError || journeys.isError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-5 text-sm text-rose-900 dark:border-rose-900/60 dark:bg-rose-950/30 dark:text-rose-100">Não foi possível consultar as trilhas agora. Seu progresso permanece protegido; tente novamente mais tarde.</p> : null}
       {!student.isLoading && !student.data ? <p role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-100">Não encontramos uma matrícula ativa para carregar as trilhas desta instituição.</p> : null}
 
+      {gamification.data ? (
+        <section aria-label="Seu progresso geral de aprendizagem" className="grid gap-3 sm:grid-cols-3">
+          <article className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/30">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-amber-900 dark:text-amber-100"><Sparkles className="h-4 w-4" aria-hidden="true" /> Experiência</p>
+            <p className="mt-2 text-2xl font-extrabold text-amber-950 dark:text-white">{gamification.data.xp} XP</p>
+            <p className="mt-1 text-xs text-amber-800 dark:text-amber-200">Acumulado em todas as matérias</p>
+          </article>
+          <article className="rounded-xl border border-rose-200 bg-rose-50 p-4 dark:border-rose-900/60 dark:bg-rose-950/30">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rose-900 dark:text-rose-100"><Flame className="h-4 w-4" aria-hidden="true" /> Sequência</p>
+            <p className="mt-2 text-2xl font-extrabold text-rose-950 dark:text-white">{gamification.data.current_streak} {gamification.data.current_streak === 1 ? 'dia' : 'dias'}</p>
+            <p className="mt-1 text-xs text-rose-800 dark:text-rose-200">Maior sequência: {gamification.data.longest_streak} {gamification.data.longest_streak === 1 ? 'dia' : 'dias'}</p>
+          </article>
+          <article className="rounded-xl border border-sky-200 bg-sky-50 p-4 dark:border-sky-900/60 dark:bg-sky-950/30">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-sky-900 dark:text-sky-100"><Target className="h-4 w-4" aria-hidden="true" /> Meta diária</p>
+            <p className="mt-2 text-2xl font-extrabold text-sky-950 dark:text-white">{gamification.data.daily_goal_minutes} min</p>
+            <p className="mt-1 text-xs text-sky-800 dark:text-sky-200">Meta configurada no seu perfil de estudos</p>
+          </article>
+        </section>
+      ) : null}
+
       {!journeys.isLoading && !journeys.isError && englishJourneys.length > 0 ? (
         <section aria-labelledby="english-units-title" className="space-y-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
@@ -102,6 +124,14 @@ export default function EnglishLearningPage() {
                     <span className="inline-flex items-center gap-1.5"><BookOpen className="h-4 w-4" aria-hidden="true" />{journey.question_count} questões no percurso</span>
                     {journey.active_session_status ? <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4" aria-hidden="true" />Sessão {journey.active_session_status === 'PAUSED' ? 'pausada' : 'ativa'}</span> : null}
                   </div>
+                  {ready ? <div className="mt-4">
+                    <div className="flex items-center justify-between gap-3 text-xs font-semibold text-slate-600 dark:text-slate-300">
+                      <span>Domínio atual</span><span>{Math.round(Math.max(0, Math.min(100, journey.progress)))}%</span>
+                    </div>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" role="progressbar" aria-label={`Domínio atual: ${Math.round(Math.max(0, Math.min(100, journey.progress)))}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(Math.max(0, Math.min(100, journey.progress)))}>
+                      <div className="h-full rounded-full bg-sky-600 transition-[width]" style={{ width: `${Math.round(Math.max(0, Math.min(100, journey.progress)))}%` }} />
+                    </div>
+                  </div> : null}
                   {!ready ? <p className="mt-4 text-sm leading-6 text-amber-800 dark:text-amber-200">Este conteúdo está em revisão pedagógica ou ainda não foi publicado. Ele não está liberado para estudo nem gera progresso.</p> : null}
                   <div className="mt-auto pt-5">
                     {ready ? <button type="button" disabled={isStarting} onClick={() => void openJourney(journey)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 disabled:cursor-wait disabled:opacity-60"><Play className="h-4 w-4" aria-hidden="true" />{isStarting ? 'Abrindo trilha…' : hasActiveSession ? 'Continuar trilha' : 'Começar trilha'}</button> : <button type="button" disabled className="min-h-11 cursor-not-allowed rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-500 dark:border-slate-700 dark:text-slate-400">Indisponível durante a revisão</button>}
