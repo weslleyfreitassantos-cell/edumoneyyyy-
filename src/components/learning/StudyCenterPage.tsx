@@ -4,6 +4,7 @@ import {
   Calculator,
   ChevronDown,
   ChevronRight,
+  Church,
   Dna,
   Download,
   Dumbbell,
@@ -11,6 +12,7 @@ import {
   Globe2,
   Languages,
   Landmark,
+  Microscope,
   Palette,
   PencilLine,
   PlayCircle,
@@ -22,7 +24,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
+import { getSubjectJourneyAvailabilityLabel, mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useGuidedLearningSessionV2,
   useGuidedDisciplineJourneysV9,
@@ -34,7 +36,9 @@ import {
 const subjectIcons: Record<string, LucideIcon> = {
   arte: Palette,
   biologia: Dna,
+  ciencias: Microscope,
   'educacao fisica': Dumbbell,
+  'ensino religioso': Church,
   filosofia: BookOpen,
   fisica: Atom,
   geografia: Globe2,
@@ -269,7 +273,7 @@ export default function StudyCenterPage() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const journeyCount = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id).length;
+              const subjectJourneys = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id);
               return (
                 <Link
                   key={subject.id}
@@ -277,7 +281,7 @@ export default function StudyCenterPage() {
                   className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{journeyCount ? `${journeyCount} ${journeyCount === 1 ? 'jornada guiada' : 'jornadas guiadas'} · prévia` : 'Abrir matéria'}</span></span>
+                  <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{getSubjectJourneyAvailabilityLabel(subjectJourneys)}</span></span>
                   <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
                 </Link>
               );

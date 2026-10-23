@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { mergeStudentSubjectsWithGuidedJourneys } from './learningCenterSubjectDiscovery';
+import { getSubjectJourneyAvailabilityLabel, mergeStudentSubjectsWithGuidedJourneys } from './learningCenterSubjectDiscovery';
 import type { GuidedDisciplineJourneyV9 } from '../services/learningCenterService';
 
 function journey(subjectId: string, subjectName: string, canonicalSubjectCode = subjectId): GuidedDisciplineJourneyV9 {
@@ -54,6 +54,31 @@ describe('student subject discovery', () => {
       [{ id: 'portuguese', name: 'Componente de linguagem', code: 'PORT' }],
       [],
     )).toEqual([{ id: 'portuguese', name: 'Língua Portuguesa', code: 'PORT' }]);
+  });
+
+  it('recognizes BNCC Science and Religious Education only when offered by the institution', () => {
+    expect(mergeStudentSubjectsWithGuidedJourneys([
+      { id: 'science', name: 'Ciências Naturais', code: 'SCI' },
+      { id: 'religion', name: 'ER', code: 'ER' },
+      { id: 'digital-culture', name: 'Cultura Digital' },
+    ], [])).toEqual([
+      { id: 'science', name: 'Ciências', code: 'SCI' },
+      { id: 'religion', name: 'Ensino Religioso', code: 'ER' },
+    ]);
+  });
+
+  it('describes guided content by its real editorial availability', () => {
+    const preview = journey('preview', 'math', 'Matemática');
+    expect(getSubjectJourneyAvailabilityLabel([preview])).toBe('1 jornada em revisão pedagógica');
+
+    const reviewed = {
+      ...preview,
+      availability_status: 'AVAILABLE',
+      mapping_status: 'MAPPED',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
+    };
+    expect(getSubjectJourneyAvailabilityLabel([reviewed])).toBe('1 jornada disponível');
+    expect(getSubjectJourneyAvailabilityLabel([])).toBe('Abrir matéria');
   });
 
   it('shows only the twelve standard high-school BNCC components, including recognized codes and aliases', () => {
