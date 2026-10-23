@@ -969,7 +969,7 @@ export const learningCenterService = {
         .select('class_id')
         .eq('student_id', student.id)
         .eq('active', true)
-        .eq('status', 'ACTIVE')
+        .ilike('status', 'active')
         .in('academic_year_id', activeAcademicYearIds),
       'class_id',
     );

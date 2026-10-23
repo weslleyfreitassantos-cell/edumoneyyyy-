@@ -32,7 +32,7 @@ describe('learningCenterService student subject offerings', () => {
           return builder;
         };
       }
-      for (const method of ['eq', 'in']) {
+      for (const method of ['eq', 'ilike', 'in']) {
         builder[method] = (...args: unknown[]) => {
           record.filters.push([method, ...args]);
           return builder;
@@ -53,7 +53,7 @@ describe('learningCenterService student subject offerings', () => {
     expect(academicYearQuery?.filters).toContainEqual(['eq', 'active', true]);
 
     const enrollmentQuery = supabaseState.queries.find((query) => query.table === 'enrollments');
-    expect(enrollmentQuery?.filters).toContainEqual(['eq', 'status', 'ACTIVE']);
+    expect(enrollmentQuery?.filters).toContainEqual(['ilike', 'status', 'active']);
     expect(enrollmentQuery?.filters).toContainEqual(['in', 'academic_year_id', ['year-current']]);
   });
 
