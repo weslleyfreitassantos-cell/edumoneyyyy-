@@ -182,6 +182,7 @@ export const inventoryService = {
     unit: string;
     location: string;
     supplier: string;
+    supplierContact: string;
     sku: string;
     description: string;
     minimumQuantity: number;
@@ -195,6 +196,7 @@ export const inventoryService = {
       p_unit: input.unit,
       p_location: input.location,
       p_supplier: input.supplier || null,
+      p_supplier_contact: input.supplierContact || null,
       p_sku: input.sku || null,
       p_description: input.description || null,
       p_minimum_quantity: input.minimumQuantity,

@@ -56,7 +56,7 @@ export default function InventoryPage() {
   const [search, setSearch] = useState('');
   const [newItem, setNewItem] = useState({
     name: '', category: '', unit: 'unidade', location: 'Almoxarifado',
-    supplier: '', sku: '', description: '', minimumQuantity: '0', initialQuantity: '0',
+    supplier: '', supplierContact: '', sku: '', description: '', minimumQuantity: '0', initialQuantity: '0',
   });
 
   const load = useCallback(async () => {
@@ -142,12 +142,13 @@ export default function InventoryPage() {
         name: newItem.name.trim(), category: newItem.category.trim(),
         unit: newItem.unit.trim(), location: newItem.location.trim(),
         supplier: newItem.supplier.trim(), sku: newItem.sku.trim(),
+        supplierContact: newItem.supplierContact.trim(),
         description: newItem.description.trim(),
         minimumQuantity: Number(newItem.minimumQuantity),
         initialQuantity: Number(newItem.initialQuantity),
         idempotencyKey: idempotencyKey(),
       });
-      setNewItem({ name: '', category: '', unit: 'unidade', location: 'Almoxarifado', supplier: '', sku: '', description: '', minimumQuantity: '0', initialQuantity: '0' });
+      setNewItem({ name: '', category: '', unit: 'unidade', location: 'Almoxarifado', supplier: '', supplierContact: '', sku: '', description: '', minimumQuantity: '0', initialQuantity: '0' });
     }, 'Material cadastrado.');
   }
 
@@ -308,6 +309,7 @@ export default function InventoryPage() {
             <label className="text-sm font-semibold text-slate-700">Unidade<input required value={newItem.unit} onChange={(event) => setNewItem({ ...newItem, unit: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" placeholder="unidade, caixa, pacote..." /></label>
             <label className="text-sm font-semibold text-slate-700">Local inicial<input required minLength={2} value={newItem.location} onChange={(event) => setNewItem({ ...newItem, location: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>
             <label className="text-sm font-semibold text-slate-700">Fornecedor (opcional)<input value={newItem.supplier} onChange={(event) => setNewItem({ ...newItem, supplier: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>
+            <label className="text-sm font-semibold text-slate-700">Contato do fornecedor (opcional)<input value={newItem.supplierContact} onChange={(event) => setNewItem({ ...newItem, supplierContact: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>
             <label className="text-sm font-semibold text-slate-700">Código / SKU (opcional)<input value={newItem.sku} onChange={(event) => setNewItem({ ...newItem, sku: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>
             <label className="text-sm font-semibold text-slate-700">Estoque mínimo<input type="number" min="0" step="0.001" value={newItem.minimumQuantity} onChange={(event) => setNewItem({ ...newItem, minimumQuantity: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>
             <label className="text-sm font-semibold text-slate-700">Saldo inicial<input type="number" min="0" step="0.001" value={newItem.initialQuantity} onChange={(event) => setNewItem({ ...newItem, initialQuantity: event.target.value })} className="mt-1 block min-h-11 w-full rounded-lg border border-slate-300 px-3 font-normal" /></label>

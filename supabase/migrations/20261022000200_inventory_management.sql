@@ -274,6 +274,7 @@ create or replace function public.inventory_create_item(
   p_unit text,
   p_location text,
   p_supplier text,
+  p_supplier_contact text,
   p_sku text,
   p_description text,
   p_minimum_quantity numeric,
@@ -319,9 +320,14 @@ begin
   on conflict (institution_id, normalized_name) do update set active = true
   returning id into v_location_id;
   if nullif(btrim(coalesce(p_supplier, '')), '') is not null then
-    insert into public.inventory_suppliers(institution_id, name, normalized_name, created_by)
-    values (p_institution_id, btrim(p_supplier), lower(btrim(p_supplier)), v_actor)
-    on conflict (institution_id, normalized_name) do update set active = true
+    insert into public.inventory_suppliers(institution_id, name, normalized_name, contact, created_by)
+    values (
+      p_institution_id, btrim(p_supplier), lower(btrim(p_supplier)),
+      nullif(btrim(coalesce(p_supplier_contact, '')), ''), v_actor
+    )
+    on conflict (institution_id, normalized_name) do update set
+      active = true,
+      contact = coalesce(excluded.contact, inventory_suppliers.contact)
     returning id into v_supplier_id;
   end if;
 
@@ -851,7 +857,7 @@ begin
 end;
 $$;
 
-revoke all on function public.inventory_create_item(uuid, text, text, text, text, text, text, text, numeric, numeric, text)
+revoke all on function public.inventory_create_item(uuid, text, text, text, text, text, text, text, text, numeric, numeric, text)
   from public, anon;
 revoke all on function public.inventory_record_movement(uuid, uuid, uuid, text, numeric, text, text)
   from public, anon;
@@ -867,7 +873,7 @@ revoke all on function public.inventory_set_item_active(uuid, uuid, boolean, tex
   from public, anon;
 revoke all on function public.inventory_fulfill_request(uuid, uuid, uuid, uuid, numeric, text)
   from public, anon;
-grant execute on function public.inventory_create_item(uuid, text, text, text, text, text, text, text, numeric, numeric, text)
+grant execute on function public.inventory_create_item(uuid, text, text, text, text, text, text, text, text, numeric, numeric, text)
   to authenticated;
 grant execute on function public.inventory_record_movement(uuid, uuid, uuid, text, numeric, text, text)
   to authenticated;
