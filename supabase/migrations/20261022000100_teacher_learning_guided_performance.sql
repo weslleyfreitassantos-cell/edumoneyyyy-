@@ -1,5 +1,7 @@
 begin;
 
+-- Forward-only migration ID assigned after checking live ledger and PR collisions.
+
 create or replace function public.list_teacher_learning_students(
   p_institution_id uuid,
   p_class_id uuid,
