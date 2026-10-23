@@ -14,7 +14,8 @@ vi.mock('../../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: vi.fn() }));
 vi.mock('../../../hooks/useAcademicReports', () => ({ useAcademicReportOptions: vi.fn() }));
 vi.mock('../../../services/academicReportService', () => ({
-  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn() },
+  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn(), getPendingDocumentsReport: vi.fn(), getStudentsWithoutClassReport: vi.fn(), getClassVacanciesReport: vi.fn() },
+  getPendingDocumentStatusLabel: (status: string) => status === 'REQUESTED' ? 'Solicitado' : 'Pendente',
   getPreferredAcademicReportSelection: vi.fn((years) => years[0]?.terms[0] ? { academicYearId: years[0].id, termId: years[0].terms[0].id } : null),
 }));
 
@@ -64,5 +65,74 @@ describe('AcademicReportsTab', () => {
     await waitFor(() => expect(screen.queryByLabelText('Período')).toBeNull());
     expect(screen.getByLabelText('Status da matrícula')).toBeTruthy();
     expect(screen.getByText('Selecione os filtros e gere um relatório.')).toBeTruthy();
+  });
+
+  it('gera o relatório de documentos pendentes por ano, sem exigir turma ou período', async () => {
+    vi.mocked(academicReportService.getPendingDocumentsReport).mockResolvedValue([{
+      id: 'document-1',
+      studentName: 'Maria Silva',
+      registrationNumber: '20260001',
+      className: '2º A',
+      documentType: 'Certidão de nascimento',
+      status: 'REQUESTED',
+      updatedAt: '2026-02-10T12:00:00Z',
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'DOCUMENTS_PENDING' } });
+    expect(screen.queryByLabelText('Período')).toBeNull();
+    expect(screen.getByLabelText('Turma (opcional)')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Gerar relatório' })).toHaveProperty('disabled', false);
+    expect(screen.getByText(/A ausência de um cadastro não é tratada como obrigação documental/)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+    await waitFor(() => expect(screen.getByText('Certidão de nascimento')).toBeTruthy());
+    expect(academicReportService.getPendingDocumentsReport).toHaveBeenCalledWith('institution-1', {
+      academicYearId: 'year-1',
+      classId: undefined,
+    });
+    expect(screen.getByText('Solicitado')).toBeTruthy();
+  });
+
+  it('gera o relatório de estudantes sem enturmação apenas com o ano letivo', async () => {
+    vi.mocked(academicReportService.getStudentsWithoutClassReport).mockResolvedValue([{
+      id: 'student-unassigned',
+      studentName: 'Aline Costa',
+      registrationNumber: '20260002',
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'STUDENTS_WITHOUT_CLASS' } });
+    expect(screen.queryByLabelText('Turma (opcional)')).toBeNull();
+    expect(screen.getByText(/estudantes ativos sem matrícula ativa vinculada a uma turma ativa/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+
+    await waitFor(() => expect(screen.getByText('Aline Costa')).toBeTruthy());
+    expect(screen.getByText('Sem enturmação ativa')).toBeTruthy();
+    expect(academicReportService.getStudentsWithoutClassReport).toHaveBeenCalledWith('institution-1', 'year-1');
+  });
+
+  it('gera o relatório de vagas para todas as turmas do ano', async () => {
+    vi.mocked(academicReportService.getClassVacanciesReport).mockResolvedValue([{
+      id: 'class-1',
+      className: '2º A',
+      gradeLevel: '2º ano',
+      shift: 'Matutino',
+      enrolledCount: 24,
+      capacity: 30,
+      availableSeats: 6,
+      occupancyPercentage: 80,
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'VACANCIES_BY_CLASS' } });
+    expect(screen.queryByLabelText(/Turma/)).toBeNull();
+    expect(screen.getByText(/Capacidade zero é exibida como sem limite definido/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+
+    await waitFor(() => expect(screen.getByText('2º A')).toBeTruthy());
+    expect(screen.getByText('6')).toBeTruthy();
+    expect(screen.getByText('80%')).toBeTruthy();
+    expect(academicReportService.getClassVacanciesReport).toHaveBeenCalledWith('institution-1', 'year-1');
   });
 });
