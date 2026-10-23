@@ -42,5 +42,6 @@ describe('student enrollment without an auth account migration', () => {
     expect(migration).toContain('candidate_student_ids = excluded.candidate_student_ids');
     expect(migration).toContain('set used_at = now()');
     expect(migration).toContain('revoke all on public.student_enrollment_duplicate_approvals from public, anon, authenticated');
+    expect(migration).toContain('grant select, delete on public.student_enrollment_duplicate_approvals to service_role');
   });
 });
