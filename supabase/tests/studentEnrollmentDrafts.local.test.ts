@@ -315,7 +315,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       p_current_step: 4,
     });
     console.info(`[draft-ci] stale secretary save completed (${versionConflict.error?.code ?? 'ok'}: ${versionConflict.error?.message ?? 'none'})`);
-    expect(versionConflict.error?.code).toBe('40001');
+    expect(versionConflict.error?.code).toBe('P0001');
     expect(versionConflict.error?.message).toBe('ENROLLMENT_DRAFT_VERSION_CONFLICT');
 
     console.info('[draft-ci] reading draft after version conflict');

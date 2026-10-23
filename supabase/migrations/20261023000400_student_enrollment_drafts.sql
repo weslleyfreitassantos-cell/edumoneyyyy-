@@ -236,23 +236,29 @@ begin
       p_institution_id, auth.uid(), auth.uid(), p_payload, p_current_step
     ) returning id, version into v_id, v_version;
   else
-    update public.student_enrollment_drafts
-       set payload = p_payload,
-           current_step = p_current_step,
-           version = version + 1,
-           updated_by = auth.uid(),
-           updated_at = now()
-     where id = p_draft_id
-       and institution_id = p_institution_id
-       and status = 'OPEN'
-       and version = p_expected_version
-    returning id, version into v_id, v_version;
+    perform pg_catalog.set_config('lock_timeout', '2s', true);
+    begin
+      update public.student_enrollment_drafts
+         set payload = p_payload,
+             current_step = p_current_step,
+             version = version + 1,
+             updated_by = auth.uid(),
+             updated_at = now()
+       where id = p_draft_id
+         and institution_id = p_institution_id
+         and status = 'OPEN'
+         and version = p_expected_version
+      returning id, version into v_id, v_version;
+    exception
+      when lock_not_available then
+        raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+    end;
     if v_id is null then
       if exists (
         select 1 from public.student_enrollment_drafts
          where id = p_draft_id and institution_id = p_institution_id
       ) then
-        raise exception using errcode = '40001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+        raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
       end if;
       raise exception using errcode = 'P0002', message = 'ENROLLMENT_DRAFT_NOT_FOUND';
     end if;
@@ -366,7 +372,7 @@ begin
      and status = 'OPEN' and version = p_expected_version;
   get diagnostics v_count = row_count;
   if v_count = 0 then
-    raise exception using errcode = '40001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+    raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
   end if;
   return true;
 end;
@@ -410,7 +416,7 @@ begin
     return jsonb_build_object('state', 'IN_PROGRESS');
   end if;
   if v_draft.version <> p_expected_version then
-    raise exception using errcode = '40001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+    raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
   end if;
   update public.student_enrollment_drafts
      set status = 'FINALIZING', finalization_started_at = now(),
@@ -483,13 +489,13 @@ begin
     end if;
     v_existing_profile_id := v_draft.created_guardian_profile_ids->>v_pair.key;
     if v_existing_profile_id is not null and v_existing_profile_id <> v_pair.value then
-      raise exception using errcode = '40001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+      raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
     end if;
   end loop;
   if v_draft.created_student_id is not null and p_student_id is not null
     and v_draft.created_student_id <> p_student_id
   then
-    raise exception using errcode = '40001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
+    raise exception using errcode = 'P0001', message = 'ENROLLMENT_DRAFT_VERSION_CONFLICT';
   end if;
   update public.student_enrollment_drafts
      set created_student_id = coalesce(created_student_id, p_student_id),
