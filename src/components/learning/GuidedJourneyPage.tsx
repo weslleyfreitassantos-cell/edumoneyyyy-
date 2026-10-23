@@ -59,6 +59,7 @@ export default function GuidedJourneyPage() {
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [questionIndex, setQuestionIndex] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [lessonDone, setLessonDone] = useState(false);
   const hydratedStepId = useRef<string | null>(null);
@@ -87,10 +88,14 @@ export default function GuidedJourneyPage() {
     hydratedStepId.current = stepId;
     try {
       const stored = window.sessionStorage.getItem(draftKey(stepId));
-      setAnswers(stored ? JSON.parse(stored) as Record<string, string> : {});
+      const draft = stored ? JSON.parse(stored) as Record<string, unknown> : {};
+      setAnswers(draft.answers && typeof draft.answers === 'object'
+        ? draft.answers as Record<string, string>
+        : draft as Record<string, string>);
     } catch {
       setAnswers({});
     }
+    setQuestionIndex(0);
   }, [step.data?.id]);
 
   useEffect(() => {
@@ -98,7 +103,7 @@ export default function GuidedJourneyPage() {
     if (!stepId || hydratedStepId.current !== stepId || submitted) return;
     try {
       if (Object.keys(answers).length === 0) window.sessionStorage.removeItem(draftKey(stepId));
-      else window.sessionStorage.setItem(draftKey(stepId), JSON.stringify(answers));
+      else window.sessionStorage.setItem(draftKey(stepId), JSON.stringify({ answers }));
     } catch {
       // Draft persistence is a convenience; server progress remains authoritative.
     }
@@ -108,6 +113,7 @@ export default function GuidedJourneyPage() {
     () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
     [step.data?.questions],
   );
+  const currentQuestion = questions[questionIndex];
   const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
   const returnHref = journey?.subject_id ? `/student/study/subject/${journey.subject_id}` : '/student/study';
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
@@ -247,19 +253,20 @@ export default function GuidedJourneyPage() {
         <article className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm dark:border-amber-900/60 dark:bg-amber-950/20"><CheckCircle2 className="h-8 w-8 text-amber-600" /><h2 className="mt-3 text-xl font-bold text-amber-950 dark:text-amber-100">Retomar o objetivo original</h2><p className="mt-2 text-sm text-amber-900 dark:text-amber-200">Ainda não há evidências suficientes para comprovar o domínio de todos os pré-requisitos. Vamos continuar no objetivo original sem marcar essas habilidades como dominadas.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button>{advance.isError && <p role="alert" className="mt-3 text-sm text-red-600">{advance.error.message}</p>}</article>
       ) : (
         <section className="space-y-5">
-          {questions.map((question, index) => (
-            <fieldset key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-              <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {index + 1} de {questions.length}</legend>
-              <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{question.statement}</p>
-              <div className="mt-6 grid gap-3">
-                {question.options.map((option) => {
-                  const selected = answers[question.id] === option;
-                  return <label key={option} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={question.id} value={option} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>;
-                })}
-              </div>
-            </fieldset>
-          ))}
-          <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>
+          {currentQuestion ? <fieldset key={currentQuestion.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+            <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {questionIndex + 1} de {questions.length}</legend>
+            <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
+            <div className="mt-6 grid gap-3">
+              {currentQuestion.options.map((option) => {
+                const selected = answers[currentQuestion.id] === option;
+                return <label key={option} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={currentQuestion.id} value={option} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [currentQuestion.id]: option }))} />{option}</label>;
+              })}
+            </div>
+          </fieldset> : <p role="status" className="rounded-xl border border-dashed p-5 text-sm text-slate-600">Esta etapa ainda não tem questões disponíveis.</p>}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <button type="button" onClick={() => setQuestionIndex((current) => Math.max(0, current - 1))} disabled={questionIndex === 0} className="min-h-11 rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700 disabled:opacity-50">Questão anterior</button>
+            {questionIndex < questions.length - 1 ? <button type="button" onClick={() => setQuestionIndex((current) => current + 1)} disabled={!currentQuestion || !answers[currentQuestion.id]?.trim()} className="min-h-11 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Próxima questão</button> : <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>}
+          </div>
           {submit.isError && <p role="alert" className="text-sm text-red-600">{submit.error.message}</p>}
         </section>
       )}
