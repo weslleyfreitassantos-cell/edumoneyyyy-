@@ -173,6 +173,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       password: director.password,
     });
     expect(secondDeviceSignIn.error).toBeNull();
+    expect(secondDeviceSignIn.data.user?.id).toBe(director.id);
     console.info('[draft-ci] second device authenticated');
     const sensitiveMarker = `health-marker-${suffix}`;
     const payload = {
@@ -270,6 +271,14 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     expect(firstVersion).toBe(1);
     console.info('[draft-ci] draft created');
 
+    const secondDeviceDraft = await secondDeviceClient.rpc('get_student_enrollment_draft', {
+      p_institution_id: institutionA,
+      p_draft_id: draftId,
+    });
+    expect(secondDeviceDraft.error).toBeNull();
+    expect(secondDeviceDraft.data?.draft_id).toBe(draftId);
+    console.info('[draft-ci] second-device draft read authorized');
+
     const resumed = await secretary.client.rpc('get_student_enrollment_draft', {
       p_institution_id: institutionA,
       p_draft_id: draftId,
@@ -327,7 +336,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
         p_payload: concurrentPayloadA,
         p_current_step: 4,
       })),
-      trackConcurrentSave('second device', secondDeviceClient.rpc('save_student_enrollment_draft', {
+      trackConcurrentSave('secretary', secretary.client.rpc('save_student_enrollment_draft', {
         p_institution_id: institutionA,
         p_draft_id: draftId,
         p_expected_version: firstVersion,
