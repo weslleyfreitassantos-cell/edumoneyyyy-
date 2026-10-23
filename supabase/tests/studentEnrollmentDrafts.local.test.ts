@@ -310,21 +310,30 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
     concurrentPayloadA.identity.full_name = `Edit A ${suffix}`;
     const concurrentPayloadB = structuredClone(payload);
     concurrentPayloadB.identity.full_name = `Edit B ${suffix}`;
+    const concurrentStartedAt = Date.now();
+    const trackConcurrentSave = (
+      label: string,
+      request: ReturnType<typeof director.client.rpc>,
+    ) => request.then((result) => {
+      console.info(`[draft-ci] ${label} concurrent save completed in ${Date.now() - concurrentStartedAt}ms (${result.error?.code ?? 'ok'})`);
+      return result;
+    });
+    console.info('[draft-ci] starting concurrent saves');
     const concurrentSaves = await Promise.all([
-      director.client.rpc('save_student_enrollment_draft', {
+      trackConcurrentSave('director', director.client.rpc('save_student_enrollment_draft', {
         p_institution_id: institutionA,
         p_draft_id: draftId,
         p_expected_version: firstVersion,
         p_payload: concurrentPayloadA,
         p_current_step: 4,
-      }),
-      secondDeviceClient.rpc('save_student_enrollment_draft', {
+      })),
+      trackConcurrentSave('second device', secondDeviceClient.rpc('save_student_enrollment_draft', {
         p_institution_id: institutionA,
         p_draft_id: draftId,
         p_expected_version: firstVersion,
         p_payload: concurrentPayloadB,
         p_current_step: 4,
-      }),
+      })),
     ]);
     expect(concurrentSaves.filter((result) => !result.error)).toHaveLength(1);
     expect(concurrentSaves.filter((result) => result.error)).toHaveLength(1);
