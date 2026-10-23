@@ -49,7 +49,12 @@ set search_path = ''
 as $$
 declare
   v_issuance_id uuid;
-  v_enrollment record;
+  v_enrollment_active boolean;
+  v_enrollment_status text;
+  v_enrollment_academic_year_id uuid;
+  v_enrollment_class_id uuid;
+  v_enrollment_class_institution_id uuid;
+  v_enrollment_class_year_id uuid;
   v_year_start date;
   v_expected_count integer;
   v_complete_count integer;
@@ -81,33 +86,37 @@ begin
   end if;
 
   if p_enrollment_id is not null then
-    select enrollment.id, enrollment.student_id, enrollment.class_id,
-           enrollment.academic_year_id, enrollment.active, enrollment.status,
+    select enrollment.class_id, enrollment.academic_year_id,
+           enrollment.active, enrollment.status,
            class.institution_id as class_institution_id,
            class.academic_year_id as class_year_id
-      into v_enrollment
+      into v_enrollment_class_id, v_enrollment_academic_year_id,
+           v_enrollment_active, v_enrollment_status,
+           v_enrollment_class_institution_id, v_enrollment_class_year_id
       from public.enrollments enrollment
       join public.classes class on class.id = enrollment.class_id
      where enrollment.id = p_enrollment_id
        and enrollment.student_id = p_student_id;
     if not found
-      or v_enrollment.class_institution_id <> p_institution_id
-      or v_enrollment.class_year_id <> v_enrollment.academic_year_id
-      or (p_academic_year_id is not null and v_enrollment.academic_year_id <> p_academic_year_id)
+      or v_enrollment_class_institution_id <> p_institution_id
+      or v_enrollment_class_year_id <> v_enrollment_academic_year_id
+      or (p_academic_year_id is not null and v_enrollment_academic_year_id <> p_academic_year_id)
     then
       raise exception using errcode = '22023', message = 'ACADEMIC_DOCUMENT_INVALID';
     end if;
   end if;
 
-  if p_document_type in ('ENROLLMENT_DECLARATION', 'ATTENDANCE_DECLARATION', 'REENROLLMENT_RECEIPT')
-    and (p_enrollment_id is null or v_enrollment.active is distinct from true
-      or upper(coalesce(v_enrollment.status, '')) <> 'ACTIVE')
-  then
-    raise exception using errcode = '55000', message = 'ACADEMIC_DOCUMENT_ACTIVE_ENROLLMENT_REQUIRED';
+  if p_document_type in ('ENROLLMENT_DECLARATION', 'ATTENDANCE_DECLARATION', 'REENROLLMENT_RECEIPT') then
+    if p_enrollment_id is null
+      or v_enrollment_active is distinct from true
+      or upper(coalesce(v_enrollment_status, '')) <> 'ACTIVE'
+    then
+      raise exception using errcode = '55000', message = 'ACADEMIC_DOCUMENT_ACTIVE_ENROLLMENT_REQUIRED';
+    end if;
   end if;
 
   if p_document_type = 'ATTENDANCE_DECLARATION' then
-    if p_academic_year_id is null or p_academic_year_id <> v_enrollment.academic_year_id then
+    if p_academic_year_id is null or p_academic_year_id <> v_enrollment_academic_year_id then
       raise exception using errcode = '22023', message = 'ACADEMIC_DOCUMENT_INVALID';
     end if;
 
@@ -116,7 +125,7 @@ begin
       join public.classes class on class.id = offering.class_id
       join public.terms term on term.id = offering.term_id
      where offering.active is true
-       and offering.class_id = v_enrollment.class_id
+       and offering.class_id = v_enrollment_class_id
        and class.institution_id = p_institution_id
        and class.academic_year_id = p_academic_year_id
        and term.academic_year_id = p_academic_year_id;
@@ -126,7 +135,7 @@ begin
       join public.classes class on class.id = offering.class_id
       join public.terms term on term.id = offering.term_id
      where offering.active is true
-       and offering.class_id = v_enrollment.class_id
+       and offering.class_id = v_enrollment_class_id
        and class.institution_id = p_institution_id
        and class.academic_year_id = p_academic_year_id
        and term.academic_year_id = p_academic_year_id
@@ -147,7 +156,7 @@ begin
   elsif p_document_type = 'REENROLLMENT_RECEIPT' then
     select academic_year.start_date into v_year_start
       from public.academic_years academic_year
-     where academic_year.id = v_enrollment.academic_year_id
+     where academic_year.id = v_enrollment_academic_year_id
        and academic_year.institution_id = p_institution_id;
     if v_year_start is null or not exists (
       select 1
