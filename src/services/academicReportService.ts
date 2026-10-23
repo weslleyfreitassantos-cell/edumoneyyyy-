@@ -17,11 +17,13 @@ import {
 import { studentService, type StudentRow } from './studentService';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 import { termClosingService, type TermClosureOffering } from './termClosingService';
+import { supabase } from '../lib/supabaseClient';
 
 export type AcademicReportType =
   | 'ENROLLMENTS'
   | 'RESULTS'
-  | 'ATTENDANCE';
+  | 'ATTENDANCE'
+  | 'DOCUMENTS_PENDING';
 
 export interface AcademicReportOption {
   id: string;
@@ -99,6 +101,62 @@ export interface AttendanceReportRow {
   excusedRecords: number;
   totalRecords: number;
   attendanceRate: number | null;
+}
+
+export interface PendingDocumentReportRow {
+  id: string;
+  studentName: string;
+  registrationNumber: string;
+  className: string;
+  documentType: string;
+  updatedAt: string | null;
+}
+
+interface PendingDocumentSourceRow {
+  id: string;
+  student_id: string;
+  document_type: string;
+  updated_at: string | null;
+}
+
+export function buildPendingDocumentReportRows(
+  enrollments: readonly EnrollmentRow[],
+  documents: readonly PendingDocumentSourceRow[],
+  filters: { academicYearId: string; classId?: string },
+): PendingDocumentReportRow[] {
+  const enrollmentsByStudent = new Map<string, EnrollmentRow[]>();
+  for (const enrollment of enrollments) {
+    if (
+      enrollment.academic_year_id !== filters.academicYearId
+      || !enrollment.active
+      || enrollment.status !== 'ACTIVE'
+      || !enrollment.student_active
+      || !enrollment.class_active
+      || (filters.classId && enrollment.class_id !== filters.classId)
+    ) continue;
+
+    const rows = enrollmentsByStudent.get(enrollment.student_id) ?? [];
+    rows.push(enrollment);
+    enrollmentsByStudent.set(enrollment.student_id, rows);
+  }
+
+  return documents.flatMap((document) => {
+    const activeEnrollments = enrollmentsByStudent.get(document.student_id);
+    if (!activeEnrollments?.length) return [];
+    const representative = activeEnrollments[0];
+    if (!representative) return [];
+    const classNames = [...new Set(activeEnrollments.map((enrollment) => enrollment.class_name))];
+    return [{
+      id: document.id,
+      studentName: representative.student_name || representative.student_registration_number,
+      registrationNumber: representative.student_registration_number,
+      className: classNames.join(', '),
+      documentType: document.document_type,
+      updatedAt: document.updated_at,
+    }];
+  }).sort((left, right) =>
+    left.studentName.localeCompare(right.studentName, 'pt-BR')
+    || left.documentType.localeCompare(right.documentType, 'pt-BR'));
 }
 
 function toOptions(values: Map<string, AcademicReportOption>): AcademicReportOption[] {
@@ -295,6 +353,44 @@ export const academicReportService = {
           .toLocaleLowerCase('pt-BR')
           .includes(search);
       });
+  },
+
+  async getPendingDocumentsReport(
+    institutionId: string,
+    filters: { academicYearId: string; classId?: string },
+  ): Promise<PendingDocumentReportRow[]> {
+    const enrollments = await enrollmentService.list(institutionId);
+    const activeYearEnrollments = enrollments.filter((enrollment) =>
+      enrollment.academic_year_id === filters.academicYearId
+      && enrollment.active
+      && enrollment.status === 'ACTIVE'
+      && enrollment.student_active
+      && enrollment.class_active
+      && (!filters.classId || enrollment.class_id === filters.classId),
+    );
+    const studentIds = [...new Set(activeYearEnrollments.map((enrollment) => enrollment.student_id))];
+    if (!studentIds.length) return [];
+
+    const documents: PendingDocumentSourceRow[] = [];
+    for (let start = 0; start < studentIds.length; start += 100) {
+      const studentIdChunk = studentIds.slice(start, start + 100);
+      for (let offset = 0; ; offset += 500) {
+        const { data, error } = await supabase
+          .from('student_documents')
+          .select('id,student_id,document_type,updated_at')
+          .eq('institution_id', institutionId)
+          .eq('status', 'PENDING')
+          .in('student_id', studentIdChunk)
+          .order('updated_at', { ascending: false })
+          .range(offset, offset + 499);
+        if (error) throw error;
+        const page = (data ?? []) as PendingDocumentSourceRow[];
+        documents.push(...page);
+        if (page.length < 500) break;
+      }
+    }
+
+    return buildPendingDocumentReportRows(activeYearEnrollments, documents, filters);
   },
 
   async getAcademicResultsReport(

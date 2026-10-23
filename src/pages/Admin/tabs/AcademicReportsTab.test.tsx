@@ -14,7 +14,7 @@ vi.mock('../../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: vi.fn() }));
 vi.mock('../../../hooks/useAcademicReports', () => ({ useAcademicReportOptions: vi.fn() }));
 vi.mock('../../../services/academicReportService', () => ({
-  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn() },
+  academicReportService: { getAcademicResultsReport: vi.fn(), getEnrollmentReport: vi.fn(), getAttendanceReport: vi.fn(), getPendingDocumentsReport: vi.fn() },
   getPreferredAcademicReportSelection: vi.fn((years) => years[0]?.terms[0] ? { academicYearId: years[0].id, termId: years[0].terms[0].id } : null),
 }));
 
@@ -64,5 +64,31 @@ describe('AcademicReportsTab', () => {
     await waitFor(() => expect(screen.queryByLabelText('Período')).toBeNull());
     expect(screen.getByLabelText('Status da matrícula')).toBeTruthy();
     expect(screen.getByText('Selecione os filtros e gere um relatório.')).toBeTruthy();
+  });
+
+  it('gera o relatório de documentos pendentes por ano, sem exigir turma ou período', async () => {
+    vi.mocked(academicReportService.getPendingDocumentsReport).mockResolvedValue([{
+      id: 'document-1',
+      studentName: 'Maria Silva',
+      registrationNumber: '20260001',
+      className: '2º A',
+      documentType: 'Certidão de nascimento',
+      updatedAt: '2026-02-10T12:00:00Z',
+    }]);
+    render(<MemoryRouter><AcademicReportsTab /></MemoryRouter>);
+
+    fireEvent.change(screen.getByLabelText('Tipo de relatório'), { target: { value: 'DOCUMENTS_PENDING' } });
+    expect(screen.queryByLabelText('Período')).toBeNull();
+    expect(screen.getByLabelText('Turma (opcional)')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Gerar relatório' })).toHaveProperty('disabled', false);
+    expect(screen.getByText(/A ausência de um cadastro não é tratada como obrigação documental/)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar relatório' }));
+    await waitFor(() => expect(screen.getByText('Certidão de nascimento')).toBeTruthy());
+    expect(academicReportService.getPendingDocumentsReport).toHaveBeenCalledWith('institution-1', {
+      academicYearId: 'year-1',
+      classId: undefined,
+    });
+    expect(screen.getByText('Pendente')).toBeTruthy();
   });
 });

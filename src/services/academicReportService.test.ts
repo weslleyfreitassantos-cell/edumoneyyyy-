@@ -7,7 +7,16 @@ import { pedagogicalMonitoringService } from './pedagogicalMonitoringService';
 import { reportCardService } from './reportCardService';
 import { studentService } from './studentService';
 import { termClosingService } from './termClosingService';
-import { academicReportService } from './academicReportService';
+import { academicReportService, buildPendingDocumentReportRows } from './academicReportService';
+
+const supabaseMocks = vi.hoisted(() => ({
+  from: vi.fn(),
+  select: vi.fn(),
+  eq: vi.fn(),
+  in: vi.fn(),
+  order: vi.fn(),
+  range: vi.fn(),
+}));
 
 vi.mock('./academicPolicyService', () => ({ academicPolicyService: { listAcademicYears: vi.fn() } }));
 vi.mock('./attendanceService', () => ({
@@ -33,6 +42,7 @@ vi.mock('./pedagogicalMonitoringService', () => ({ pedagogicalMonitoringService:
 vi.mock('./reportCardService', () => ({ reportCardService: { getGuardianReportCards: vi.fn() } }));
 vi.mock('./studentService', () => ({ studentService: { list: vi.fn() } }));
 vi.mock('./termClosingService', () => ({ termClosingService: { listInstitutionOfferings: vi.fn() } }));
+vi.mock('../lib/supabaseClient', () => ({ supabase: { from: supabaseMocks.from } }));
 
 const institutionId = 'institution-1';
 const academicYear = {
@@ -48,10 +58,62 @@ const reportSubject = { key: 'offering-1:term-1', institutionId, academicYearId:
 describe('academicReportService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    supabaseMocks.from.mockReturnValue(supabaseMocks);
+    supabaseMocks.select.mockReturnValue(supabaseMocks);
+    supabaseMocks.eq.mockReturnValue(supabaseMocks);
+    supabaseMocks.in.mockReturnValue(supabaseMocks);
+    supabaseMocks.order.mockReturnValue(supabaseMocks);
+    supabaseMocks.range.mockResolvedValue({ data: [], error: null });
     vi.mocked(academicPolicyService.listAcademicYears).mockResolvedValue([academicYear] as never);
     vi.mocked(studentService.list).mockResolvedValue([student] as never);
     vi.mocked(enrollmentService.list).mockResolvedValue([enrollment] as never);
     vi.mocked(termClosingService.listInstitutionOfferings).mockResolvedValue([{ id: 'offering-1', institutionId, academicYearId: 'year-1', academicYearName: '2026', classId: 'class-1', className: '2º A', gradeLevel: '2º ano', shift: 'Matutino', subjectId: 'subject-1', subjectName: 'Matemática', subjectCode: null, workload: 50, teacherProfileId: 'teacher-1', teacherName: 'Prof. Ana', teacherEmail: 'prof@example.com', termId: 'term-1', termName: '2º Bimestre', termStartDate: '2026-04-01', termEndDate: '2026-06-30', active: true, closure: null }] as never);
+  });
+
+  it('limita documentos pendentes a alunos ativos matriculados no ano selecionado', () => {
+    const rows = buildPendingDocumentReportRows([
+      enrollment,
+      { ...enrollment, id: 'enrollment-2', class_id: 'class-2', class_name: '2º B' },
+      { ...enrollment, id: 'inactive-enrollment', student_id: 'student-inactive', active: false },
+      { ...enrollment, id: 'inactive-student', student_id: 'student-inactive-2', student_active: false },
+      { ...enrollment, id: 'inactive-class', student_id: 'student-inactive-3', class_active: false },
+      { ...enrollment, id: 'other-year', student_id: 'student-other-year', academic_year_id: 'year-2' },
+      { ...enrollment, id: 'transferred', student_id: 'student-transferred', status: 'TRANSFERRED', active: false },
+    ] as never, [
+      { id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', updated_at: '2026-02-10T12:00:00Z' },
+      { id: 'doc-inactive', student_id: 'student-inactive', document_type: 'Histórico', updated_at: null },
+    ], { academicYearId: 'year-1' });
+
+    expect(rows).toEqual([expect.objectContaining({
+      id: 'doc-1',
+      studentName: 'Maria Silva',
+      registrationNumber: '20260001',
+      className: '2º A, 2º B',
+      documentType: 'Certidão de nascimento',
+    })]);
+
+    expect(buildPendingDocumentReportRows([
+      enrollment,
+      { ...enrollment, id: 'enrollment-2', class_id: 'class-2', class_name: '2º B' },
+    ] as never, [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão', updated_at: null }], {
+      academicYearId: 'year-1', classId: 'class-2',
+    })[0]?.className).toBe('2º B');
+  });
+
+  it('consulta somente documentos explicitamente pendentes da instituição e alunos ativos', async () => {
+    supabaseMocks.range.mockResolvedValue({
+      data: [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', updated_at: null }],
+      error: null,
+    });
+
+    const rows = await academicReportService.getPendingDocumentsReport(institutionId, { academicYearId: 'year-1' });
+
+    expect(rows).toHaveLength(1);
+    expect(supabaseMocks.from).toHaveBeenCalledWith('student_documents');
+    expect(supabaseMocks.eq).toHaveBeenCalledWith('institution_id', institutionId);
+    expect(supabaseMocks.eq).toHaveBeenCalledWith('status', 'PENDING');
+    expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
+    expect(supabaseMocks.range).toHaveBeenCalledWith(0, 499);
   });
 
   it('preserva snapshot oficial de recuperação no relatório de resultados', async () => {
