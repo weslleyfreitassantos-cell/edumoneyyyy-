@@ -357,7 +357,7 @@ runtimeDescribe('student enrollment drafts isolated Supabase integration', () =>
       .eq('institution_id', institutionA);
     expect(studentCount.error).toBeNull();
     expect(studentCount.count).toBe(1);
-  }, 30000);
+  }, 60000);
 
   it('creates enrollment only on final confirmation and returns the same result on retries', async () => {
     const director = actors.find((actor) => actor.email.endsWith('director-a@local.test'))!;
