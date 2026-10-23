@@ -1,4 +1,4 @@
-import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
+import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send, Volume2 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -65,6 +65,23 @@ export default function GuidedJourneyPage() {
   const hydratedStepId = useRef<string | null>(null);
   const recoveryTargetRef = useRef<string | null>(null);
   const v9StartRef = useRef<string | null>(null);
+  const canReadEnglishAloud = journey?.canonical_subject_code === 'ENGLISH'
+    && typeof window !== 'undefined'
+    && 'speechSynthesis' in window
+    && typeof SpeechSynthesisUtterance !== 'undefined';
+
+  useEffect(() => () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+  }, []);
+
+  function readEnglishQuestionAloud() {
+    if (!canReadEnglishAloud || !currentQuestion) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(currentQuestion.statement);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  }
 
   useEffect(() => {
     if (!journeyId || !journey || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
@@ -256,6 +273,7 @@ export default function GuidedJourneyPage() {
           {currentQuestion ? <fieldset key={currentQuestion.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
             <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {questionIndex + 1} de {questions.length}</legend>
             <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
+            {canReadEnglishAloud ? <button type="button" onClick={readEnglishQuestionAloud} className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-lg border border-sky-200 px-3 py-2 text-sm font-semibold text-sky-800 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-sky-800 dark:text-sky-200 dark:hover:bg-sky-950/40"><Volume2 className="h-4 w-4" aria-hidden="true" />Ouvir enunciado em inglês</button> : null}
             <div className="mt-6 grid gap-3">
               {currentQuestion.options.map((option) => {
                 const selected = answers[currentQuestion.id] === option;

@@ -90,6 +90,7 @@ describe('StudyCenterPage', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Explorar inglês' }).getAttribute('href')).toBe('/student/study/english');
     const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
     const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
     expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
