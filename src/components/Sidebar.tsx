@@ -252,6 +252,7 @@ const baseAdminNavigationGroupByItemId: Partial<
   cameras: 'communication-resources',
   terminals: 'communication-resources',
   email: 'communication-resources',
+  inventory: 'communication-resources',
   'personalize-login': 'administration',
 };
 
@@ -262,6 +263,7 @@ const adminNavigationItemOrder: Record<
   terminals: 0,
   cameras: 1,
   email: 2,
+  inventory: 3,
   'personalize-login': 0,
 };
 
