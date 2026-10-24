@@ -87,7 +87,7 @@ async function subscribeToPsychologyMessages(
 ) {
   const received: unknown[] = [];
   const statuses: string[] = [];
-  const replicationStates: string[] = [];
+  const serverStates: string[] = [];
   let resolveSubscribed!: () => void;
   let rejectSubscribed!: (error: Error) => void;
   const subscribed = new Promise<void>((resolve, reject) => {
@@ -103,7 +103,7 @@ async function subscribeToPsychologyMessages(
       ...(filterBySession ? { filter: `session_id=eq.${sessionId}` } : {}),
     }, (payload: { new: unknown }) => received.push(payload.new))
     .on('system', {}, (payload: { extension?: string; status?: string }) => {
-      if (payload.extension === 'system') replicationStates.push(payload.status ?? 'unknown');
+      serverStates.push(`${payload.extension ?? 'unknown'}:${payload.status ?? 'unknown'}`);
     })
     .subscribe((status: string, error?: Error) => {
       statuses.push(status);
@@ -113,7 +113,7 @@ async function subscribeToPsychologyMessages(
       }
     });
   await subscribed;
-  return { channel, received, statuses, replicationStates };
+  return { channel, received, statuses, serverStates };
 }
 
 localDescribe('psychology workflows against a disposable local Supabase', () => {
@@ -496,22 +496,25 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       waitForRealtimeEvent(
         () => realtimeStudent.received[0],
         20_000,
-        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'}; replication: ${realtimeStudent.replicationStates.join(',') || 'pending'})`,
+        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'}; server: ${realtimeStudent.serverStates.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
       waitForRealtimeEvent(
         () => realtimeProfessional.received[0],
         20_000,
-        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'}; replication: ${realtimeProfessional.replicationStates.join(',') || 'pending'})`,
+        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'}; server: ${realtimeProfessional.serverStates.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
       waitForRealtimeEvent(
         () => realtimeService.received[0],
         20_000,
-        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'}; replication: ${realtimeService.replicationStates.join(',') || 'pending'})`,
+        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'}; server: ${realtimeService.serverStates.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
     ]);
     expect(deliveryResults).toEqual([null, null, null]);
     await new Promise((resolve) => setTimeout(resolve, 750));
-    expect(realtimeUnrelatedProfessional.received).toEqual([]);
+    expect(
+      realtimeUnrelatedProfessional.received,
+      `unrelated professional should receive no messages (server: ${realtimeUnrelatedProfessional.serverStates.join(',') || 'none'})`,
+    ).toEqual([]);
     await Promise.all([
       student.client.removeChannel(realtimeStudent.channel),
       psychologist.client.removeChannel(realtimeProfessional.channel),
