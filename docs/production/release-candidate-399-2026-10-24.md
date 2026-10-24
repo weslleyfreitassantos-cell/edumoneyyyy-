@@ -113,8 +113,12 @@ usar `migration repair`, SQL remoto ad hoc ou push generico.
 
 ## Estado desta campanha
 
-Na ultima consulta antes do commit da revisao, os dois checks `validate` e os
-dois checks `database` do SHA inicial estavam verdes; Supabase Preview estava
-`SKIPPED`, nao aprovado. Nao havia revisao formal. O CI do SHA corrigido ainda
-deve ser aguardado apos o push. A producao permanece sem migrations, deploy,
-smoke ou alteracoes de dados. O gate offsite `FAIL` bloqueia a publicacao.
+- No SHA `4e3d32a02cece1b1df0da29dd20b492662b79f52`, os eventos `pull_request`
+  (run `40088778033`) e `push` (run `40088775273`) concluiram com `validate`
+  e `database` em sucesso. Supabase Preview ficou `SKIPPED`, nao aprovado.
+- A revisao formal continua ausente; a PR #399 segue aberta e mergeavel. A PR
+  #396 permanece excluida e fechada sem merge.
+- Esta atualizacao documental deve ser seguida pela confirmacao dos checks no
+  HEAD final da PR antes de qualquer merge.
+- A producao permanece sem migrations, deploy, smoke ou alteracoes de dados. O
+  gate offsite `FAIL` bloqueia a publicacao.
