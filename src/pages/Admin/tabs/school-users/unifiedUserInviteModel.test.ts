@@ -26,6 +26,7 @@ describe('unified user invite model', () => {
       'Estudante',
       'Docente',
       'Responsável',
+      'Psicóloga(o)',
       'Direção',
       'Secretaria',
     ]);
@@ -54,17 +55,20 @@ describe('unified user invite model', () => {
   it('resolve alvos permitidos por papel efetivo', () => {
     expect(getAllowedInviteTargets('ADMIN')).toEqual([
       'DIRECTOR',
+      'PSYCHOLOGIST',
     ]);
     expect(getAllowedInviteTargets('DIRECTOR')).toEqual([
       'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
+      'PSYCHOLOGIST',
     ]);
     expect(getAllowedInviteTargets('SECRETARY')).toEqual([
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
+      'PSYCHOLOGIST',
     ]);
   });
 

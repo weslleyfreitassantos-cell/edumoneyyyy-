@@ -22,6 +22,7 @@ describe('school permissions', () => {
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
+      'PSYCHOLOGIST',
     ]);
     expect(CURRENT_DATABASE_ROLES).not.toContain(
       'SCHOOL_ADMIN',
@@ -86,17 +87,19 @@ describe('school permissions', () => {
   });
 
   it('limita a gestão de usuários pela hierarquia administrativa', () => {
-    expect(getManageableSchoolUserRoles('ADMIN')).toEqual(['DIRECTOR']);
+    expect(getManageableSchoolUserRoles('ADMIN')).toEqual(['DIRECTOR', 'PSYCHOLOGIST']);
     expect(getManageableSchoolUserRoles('DIRECTOR')).toEqual([
       'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
+      'PSYCHOLOGIST',
     ]);
     expect(getManageableSchoolUserRoles('SECRETARY')).toEqual([
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
+      'PSYCHOLOGIST',
     ]);
   });
 
