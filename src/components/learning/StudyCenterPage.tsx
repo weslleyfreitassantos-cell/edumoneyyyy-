@@ -147,6 +147,17 @@ export default function StudyCenterPage() {
         </div>
       </header>
 
+      <section aria-labelledby="tec-english-title" className="flex flex-col gap-4 rounded-2xl border border-sky-200 bg-gradient-to-r from-sky-50 to-indigo-50 p-5 shadow-sm dark:border-sky-900/60 dark:from-sky-950/40 dark:to-indigo-950/30 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-sky-800 dark:text-sky-200">Tec Inglês</p>
+          <h2 id="tec-english-title" className="mt-1 text-xl font-bold text-slate-900 dark:text-white">Pratique inglês no seu ritmo</h2>
+          <p className="mt-1 max-w-2xl text-sm text-slate-600 dark:text-slate-300">Trilhas curtas, com seu progresso acompanhado pela plataforma. Conteúdos ainda em revisão aparecem como indisponíveis.</p>
+        </div>
+        <Link to="/student/study/english" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#004d9f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300">
+          Explorar inglês <ChevronRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </section>
+
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
         <button
           type="button"
