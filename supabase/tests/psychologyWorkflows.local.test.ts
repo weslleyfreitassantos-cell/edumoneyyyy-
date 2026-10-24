@@ -349,7 +349,9 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     const appointmentId = (bookingAttempts.find((attempt) => !attempt.error)!.data as { appointment_id: string }).appointment_id;
 
     const safeFutureSlots = slots.filter((candidate) =>
-      candidate.starts_at !== slot!.starts_at && Date.parse(candidate.starts_at) > Date.now() + 90 * 60_000);
+      candidate.professional_profile_id === psychologist.id
+      && candidate.starts_at !== slot!.starts_at
+      && Date.parse(candidate.starts_at) > Date.now() + 90 * 60_000);
     expect(safeFutureSlots.length).toBeGreaterThanOrEqual(3);
     const cancelSlot = safeFutureSlots[0];
     const rescheduleSlot = safeFutureSlots[1];
