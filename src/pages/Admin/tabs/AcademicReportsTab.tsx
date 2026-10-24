@@ -17,23 +17,33 @@ import { buildCsv, downloadCsv, sanitizeDownloadFileName, type CsvColumn } from 
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 import {
   academicReportService,
+  getPendingDocumentStatusLabel,
   getPreferredAcademicReportSelection,
   type AcademicReportType,
   type AcademicResultsReportRow,
   type AttendanceReportRow,
+  type ClassVacanciesReportRow,
   type EnrollmentReportRow,
+  type PendingDocumentReportRow,
+  type StudentsWithoutClassReportRow,
 } from '../../../services/academicReportService';
 import { getResultStatusLabel } from '../../../components/academic/academicDisplay';
 
 type ReportState =
   | { type: 'ENROLLMENTS'; rows: EnrollmentReportRow[] }
+  | { type: 'STUDENTS_WITHOUT_CLASS'; rows: StudentsWithoutClassReportRow[] }
   | { type: 'RESULTS'; rows: AcademicResultsReportRow[] }
-  | { type: 'ATTENDANCE'; rows: AttendanceReportRow[] };
+  | { type: 'ATTENDANCE'; rows: AttendanceReportRow[] }
+  | { type: 'DOCUMENTS_PENDING'; rows: PendingDocumentReportRow[] }
+  | { type: 'VACANCIES_BY_CLASS'; rows: ClassVacanciesReportRow[] };
 
 const reportLabels: Record<AcademicReportType, string> = {
   ENROLLMENTS: 'Alunos e matrículas',
+  STUDENTS_WITHOUT_CLASS: 'Alunos sem enturmação',
   RESULTS: 'Resultados acadêmicos',
   ATTENDANCE: 'Frequência',
+  DOCUMENTS_PENDING: 'Documentos pendentes',
+  VACANCIES_BY_CLASS: 'Vagas disponíveis por turma',
 };
 
 function formatDate(value: string | null): string {
@@ -119,12 +129,15 @@ export default function AcademicReportsTab() {
   const subjectOptions = (options?.subjects ?? []).filter((option) =>
     option.academicYearId === selectedYearId && option.termId === selectedTermId,
   );
-  const selectedClassLabel = selectedLabel(classOptions, classId, 'Turma');
+  const selectedClassLabel = classId
+    ? selectedLabel(classOptions, classId, 'Turma')
+    : 'Todas as turmas';
   const selectedTermLabel = selectedYear?.terms.find((term) => term.id === selectedTermId)?.name ?? 'Período';
+  const requiresTerm = reportType === 'RESULTS' || reportType === 'ATTENDANCE';
   const canGenerate = Boolean(
     institutionQuery.data &&
     selectedYearId &&
-    (reportType === 'ENROLLMENTS' || (selectedTermId && classId)),
+    (!requiresTerm || (selectedTermId && classId)),
   );
 
   function resetReportFilters(nextType: AcademicReportType): void {
@@ -151,6 +164,24 @@ export default function AcademicReportsTab() {
           classId: classId || undefined,
           status: enrollmentStatus,
           search,
+        });
+        setReport({ type: reportType, rows });
+      } else if (reportType === 'STUDENTS_WITHOUT_CLASS') {
+        const rows = await academicReportService.getStudentsWithoutClassReport(
+          institutionQuery.data,
+          selectedYearId,
+        );
+        setReport({ type: reportType, rows });
+      } else if (reportType === 'VACANCIES_BY_CLASS') {
+        const rows = await academicReportService.getClassVacanciesReport(
+          institutionQuery.data,
+          selectedYearId,
+        );
+        setReport({ type: reportType, rows });
+      } else if (reportType === 'DOCUMENTS_PENDING') {
+        const rows = await academicReportService.getPendingDocumentsReport(institutionQuery.data, {
+          academicYearId: selectedYearId,
+          classId: classId || undefined,
         });
         setReport({ type: reportType, rows });
       } else if (reportType === 'RESULTS') {
@@ -181,9 +212,11 @@ export default function AcademicReportsTab() {
 
   function exportReport(): void {
     if (!report) return;
-    const contextName = report.type === 'ENROLLMENTS'
+    const contextName = report.type === 'ENROLLMENTS' || report.type === 'STUDENTS_WITHOUT_CLASS' || report.type === 'VACANCIES_BY_CLASS'
       ? selectedYearId
-      : `${selectedClassLabel}-${selectedTermLabel}-${selectedYearId}`;
+      : report.type === 'DOCUMENTS_PENDING'
+        ? `${selectedClassLabel}-${selectedYearId}`
+        : `${selectedClassLabel}-${selectedTermLabel}-${selectedYearId}`;
     const fileBase = sanitizeDownloadFileName(`${reportLabels[report.type]}-${contextName}`);
 
     if (report.type === 'ENROLLMENTS') {
@@ -220,6 +253,43 @@ export default function AcademicReportsTab() {
       return;
     }
 
+    if (report.type === 'DOCUMENTS_PENDING') {
+      const columns: CsvColumn<PendingDocumentReportRow>[] = [
+        { header: 'Aluno', value: (row) => row.studentName },
+        { header: 'RA', value: (row) => row.registrationNumber },
+        { header: 'Turma', value: (row) => row.className },
+        { header: 'Documento', value: (row) => row.documentType },
+        { header: 'Situação', value: (row) => getPendingDocumentStatusLabel(row.status) },
+        { header: 'Atualizado em', value: (row) => formatDate(row.updatedAt) },
+      ];
+      downloadCsv(`${fileBase}.csv`, buildCsv(columns, report.rows));
+      return;
+    }
+
+    if (report.type === 'STUDENTS_WITHOUT_CLASS') {
+      const columns: CsvColumn<StudentsWithoutClassReportRow>[] = [
+        { header: 'Aluno', value: (row) => row.studentName },
+        { header: 'RA', value: (row) => row.registrationNumber },
+        { header: 'Situação', value: () => 'Sem enturmação ativa' },
+      ];
+      downloadCsv(`${fileBase}.csv`, buildCsv(columns, report.rows));
+      return;
+    }
+
+    if (report.type === 'VACANCIES_BY_CLASS') {
+      const columns: CsvColumn<ClassVacanciesReportRow>[] = [
+        { header: 'Turma', value: (row) => row.className },
+        { header: 'Série/Nível', value: (row) => row.gradeLevel ?? '' },
+        { header: 'Turno', value: (row) => row.shift ?? '' },
+        { header: 'Matrículas ativas', value: (row) => row.enrolledCount },
+        { header: 'Capacidade', value: (row) => row.capacity ?? 'Sem limite definido' },
+        { header: 'Vagas disponíveis', value: (row) => row.availableSeats ?? 'Sem limite definido' },
+        { header: 'Ocupação', value: (row) => formatPercent(row.occupancyPercentage) },
+      ];
+      downloadCsv(`${fileBase}.csv`, buildCsv(columns, report.rows));
+      return;
+    }
+
     const columns: CsvColumn<AttendanceReportRow>[] = [
       { header: 'Aluno', value: (row) => row.studentName },
       { header: 'RA', value: (row) => row.registrationNumber },
@@ -235,6 +305,11 @@ export default function AcademicReportsTab() {
   }
 
   const reportTitle = report ? reportLabels[report.type] : null;
+  const reportContextSummary = !report || report.type === 'ENROLLMENTS' || report.type === 'STUDENTS_WITHOUT_CLASS' || report.type === 'VACANCIES_BY_CLASS'
+    ? ''
+    : report.type === 'DOCUMENTS_PENDING'
+      ? ` · ${selectedClassLabel}`
+      : ` · ${selectedTermLabel} · ${selectedClassLabel}`;
   const institutionName = institutionQuery.currentInstitution?.name ?? 'Instituição de ensino';
 
   if (institutionQuery.isLoading || optionsQuery.isLoading) {
@@ -260,8 +335,9 @@ export default function AcademicReportsTab() {
         <h1 className="text-2xl font-bold">{institutionName}</h1>
         <h2 className="mt-3 text-xl font-bold">RELATÓRIO DE {reportTitle?.toUpperCase() ?? 'DADOS ACADÊMICOS'}</h2>
         <p className="mt-2">Ano letivo: {selectedYear?.name ?? '—'}</p>
-        {reportType !== 'ENROLLMENTS' && <p>Período: {selectedTermLabel}</p>}
-        {reportType !== 'ENROLLMENTS' && <p>Turma: {selectedClassLabel}</p>}
+        {requiresTerm && <p>Período: {selectedTermLabel}</p>}
+        {reportType === 'DOCUMENTS_PENDING' && <p>Turma: {selectedClassLabel}</p>}
+        {(reportType === 'RESULTS' || reportType === 'ATTENDANCE') && <p>Turma: {selectedClassLabel}</p>}
         <p>Emitido em: {localIssueDate()}</p>
       </div>
 
@@ -277,15 +353,15 @@ export default function AcademicReportsTab() {
               {options.academicYears.map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
             </select>
           </Field>
-          {reportType !== 'ENROLLMENTS' && <Field label="Período" htmlFor="academic-report-term"><select id="academic-report-term" value={selectedTermId} onChange={(event) => { setTermId(event.target.value); setClassId(''); setSubjectId(''); setReport(null); }} className="report-select">{selectedYear?.terms.map((term) => <option key={term.id} value={term.id}>{term.name}</option>)}</select></Field>}
-          <Field label="Turma" htmlFor="academic-report-class"><select id="academic-report-class" value={classId} onChange={(event) => { setClassId(event.target.value); setReport(null); }} className="report-select"><option value="">{reportType === 'ENROLLMENTS' ? 'Todas as turmas' : 'Selecione uma turma'}</option>{classOptions.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></Field>
-          {reportType !== 'ENROLLMENTS' && <Field label="Disciplina (opcional)" htmlFor="academic-report-subject"><select id="academic-report-subject" value={subjectId} onChange={(event) => { setSubjectId(event.target.value); setReport(null); }} className="report-select"><option value="">Todas as disciplinas</option>{subjectOptions.map((option) => <option key={`${option.id}-${option.termId}`} value={option.id}>{option.label}</option>)}</select></Field>}
+          {requiresTerm && <Field label="Período" htmlFor="academic-report-term"><select id="academic-report-term" value={selectedTermId} onChange={(event) => { setTermId(event.target.value); setClassId(''); setSubjectId(''); setReport(null); }} className="report-select">{selectedYear?.terms.map((term) => <option key={term.id} value={term.id}>{term.name}</option>)}</select></Field>}
+          {reportType !== 'STUDENTS_WITHOUT_CLASS' && reportType !== 'VACANCIES_BY_CLASS' && <Field label={requiresTerm ? 'Turma' : 'Turma (opcional)'} htmlFor="academic-report-class"><select id="academic-report-class" value={classId} onChange={(event) => { setClassId(event.target.value); setReport(null); }} className="report-select"><option value="">{requiresTerm ? 'Selecione uma turma' : 'Todas as turmas'}</option>{classOptions.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></Field>}
+          {requiresTerm && <Field label="Disciplina (opcional)" htmlFor="academic-report-subject"><select id="academic-report-subject" value={subjectId} onChange={(event) => { setSubjectId(event.target.value); setReport(null); }} className="report-select"><option value="">Todas as disciplinas</option>{subjectOptions.map((option) => <option key={`${option.id}-${option.termId}`} value={option.id}>{option.label}</option>)}</select></Field>}
           {reportType === 'ENROLLMENTS' && <Field label="Status da matrícula" htmlFor="academic-report-status"><select id="academic-report-status" value={enrollmentStatus} onChange={(event) => { setEnrollmentStatus(event.target.value); setReport(null); }} className="report-select"><option value="ALL">Todos</option><option value="ACTIVE">Ativa</option><option value="TRANSFERRED">Transferida</option><option value="CANCELLED">Cancelada</option><option value="COMPLETED">Concluída</option></select></Field>}
           {reportType === 'ENROLLMENTS' && <Field label="Buscar aluno ou RA" htmlFor="academic-report-search"><div className="relative"><Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" /><input id="academic-report-search" value={search} onChange={(event) => { setSearch(event.target.value); setReport(null); }} placeholder="Nome ou RA" className="report-select pl-9" /></div></Field>}
           {reportType === 'ATTENDANCE' && <Field label="Aluno (opcional)" htmlFor="academic-report-student"><select id="academic-report-student" value={studentId} onChange={(event) => { setStudentId(event.target.value); setReport(null); }} className="report-select"><option value="">Todos os alunos</option>{options.students.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}</select></Field>}
         </div>
         <div className="mt-5 flex flex-col gap-3 border-t border-slate-200 pt-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
-          <p id="academic-reports-filters-title" className="text-sm text-slate-600 dark:text-slate-400">Escolha o contexto e gere uma visualização antes de exportar.</p>
+          <div><p id="academic-reports-filters-title" className="text-sm text-slate-600 dark:text-slate-400">Escolha o contexto e gere uma visualização antes de exportar.</p>{reportType === 'DOCUMENTS_PENDING' && <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Lista documentos cadastrados que ainda exigem providência ou conferência. A ausência de um cadastro não é tratada como obrigação documental.</p>}{reportType === 'STUDENTS_WITHOUT_CLASS' && <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Inclui estudantes ativos sem matrícula ativa vinculada a uma turma ativa no ano selecionado.</p>}{reportType === 'VACANCIES_BY_CLASS' && <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Conta apenas matrículas ativas de estudantes e turmas ativos. Capacidade zero é exibida como sem limite definido.</p>}</div>
           <button type="button" disabled={!canGenerate || isGenerating} onClick={generateReport} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-50">{isGenerating && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}Gerar relatório</button>
         </div>
       </section>
@@ -296,12 +372,15 @@ export default function AcademicReportsTab() {
 
       {report && <section className="space-y-4 rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900" aria-labelledby="academic-report-result-title">
         <div className="flex flex-col gap-3 border-b border-slate-200 p-5 dark:border-slate-700 sm:flex-row sm:items-start sm:justify-between">
-          <div><h2 id="academic-report-result-title" className="text-lg font-bold text-slate-900 dark:text-white">{reportLabels[report.type]}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{report.rows.length} {report.rows.length === 1 ? 'registro' : 'registros'} · {selectedYear?.name ?? 'Ano'}{report.type !== 'ENROLLMENTS' ? ` · ${selectedTermLabel} · ${selectedClassLabel}` : ''}</p></div>
+          <div><h2 id="academic-report-result-title" className="text-lg font-bold text-slate-900 dark:text-white">{reportLabels[report.type]}</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{report.rows.length} {report.rows.length === 1 ? 'registro' : 'registros'} · {selectedYear?.name ?? 'Ano'}{reportContextSummary}</p></div>
           <div className="print-hidden flex flex-col gap-2 sm:flex-row"><button type="button" onClick={exportReport} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-blue-950/30"><Download className="h-4 w-4" aria-hidden="true" />Exportar CSV</button><button type="button" onClick={() => window.print()} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir / Salvar como PDF</button></div>
         </div>
         {report.type === 'ENROLLMENTS' && <ReportTable<EnrollmentReportRow> rows={report.rows} emptyMessage="Nenhum registro encontrado para os filtros selecionados." columns={[{ label: 'Aluno', render: (row) => <><strong>{row.studentName}</strong><span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{row.registrationNumber}</span></> }, { label: 'Status do aluno', render: (row) => row.studentStatus }, { label: 'Ano letivo', render: (row) => row.academicYearName }, { label: 'Turma', render: (row) => row.className }, { label: 'Série/Nível', render: (row) => row.gradeLevel ?? '—' }, { label: 'Turno', render: (row) => row.shift ?? '—' }, { label: 'Matrícula', render: (row) => row.enrollmentStatusLabel }, { label: 'Data', render: (row) => formatDate(row.enrolledAt) }]} />}
+        {report.type === 'VACANCIES_BY_CLASS' && <ReportTable<ClassVacanciesReportRow> rows={report.rows} emptyMessage="Nenhuma turma ativa foi encontrada para o ano letivo selecionado." columns={[{ label: 'Turma', render: (row) => row.className }, { label: 'Série/Nível', render: (row) => row.gradeLevel ?? '—' }, { label: 'Turno', render: (row) => row.shift ?? 'Não informado' }, { label: 'Matrículas ativas', render: (row) => row.enrolledCount }, { label: 'Capacidade', render: (row) => row.capacity ?? 'Sem limite' }, { label: 'Vagas disponíveis', render: (row) => row.availableSeats ?? 'Sem limite' }, { label: 'Ocupação', render: (row) => formatPercent(row.occupancyPercentage) }]} />}
+        {report.type === 'STUDENTS_WITHOUT_CLASS' && <ReportTable<StudentsWithoutClassReportRow> rows={report.rows} emptyMessage="Todos os estudantes ativos estão vinculados a uma turma ativa neste ano letivo." columns={[{ label: 'Aluno', render: (row) => row.studentName }, { label: 'RA', render: (row) => row.registrationNumber }, { label: 'Situação', render: () => 'Sem enturmação ativa' }]} />}
         {report.type === 'RESULTS' && <ReportTable<AcademicResultsReportRow> rows={report.rows} emptyMessage="Nenhum registro encontrado para os filtros selecionados." columns={[{ label: 'Aluno', render: (row) => <><strong>{row.studentName}</strong><span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{row.registrationNumber}</span></> }, { label: 'Turma', render: (row) => row.className }, { label: 'Disciplina', render: (row) => row.subjectName }, { label: 'Professor', render: (row) => row.teacherName }, { label: 'Média original', render: (row) => formatPercent(row.gradePercentage) }, { label: 'Recuperação', render: (row) => formatPercent(row.recoveryPercentage) }, { label: 'Média final', render: (row) => formatPercent(row.finalGradePercentage) }, { label: 'Frequência', render: (row) => formatPercent(row.attendancePercentage) }, { label: 'Situação', render: (row) => getResultStatusLabel(row.resultStatus) }, { label: 'Dados', render: (row) => row.dataStatus === 'OFFICIAL' ? 'Resultado oficial' : 'Dados parciais' }]} />}
         {report.type === 'ATTENDANCE' && <ReportTable<AttendanceReportRow> rows={report.rows} emptyMessage="Nenhum registro encontrado para os filtros selecionados." columns={[{ label: 'Aluno', render: (row) => <><strong>{row.studentName}</strong><span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{row.registrationNumber}</span></> }, { label: 'Turma', render: (row) => row.className }, { label: 'Presentes', render: (row) => row.presentRecords }, { label: 'Faltas', render: (row) => row.absentRecords }, { label: 'Atrasos', render: (row) => row.lateRecords }, { label: 'Justificadas', render: (row) => row.excusedRecords }, { label: 'Registros', render: (row) => row.totalRecords }, { label: 'Frequência', render: (row) => formatPercent(row.attendanceRate) }]} />}
+        {report.type === 'DOCUMENTS_PENDING' && <ReportTable<PendingDocumentReportRow> rows={report.rows} emptyMessage="Nenhum documento que exija providência foi encontrado para os filtros selecionados." columns={[{ label: 'Aluno', render: (row) => <><strong>{row.studentName}</strong><span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{row.registrationNumber}</span></> }, { label: 'Turma', render: (row) => row.className }, { label: 'Documento', render: (row) => row.documentType }, { label: 'Situação', render: (row) => getPendingDocumentStatusLabel(row.status) }, { label: 'Atualizado em', render: (row) => formatDate(row.updatedAt) }]} />}
       </section>}
     </div>
   );

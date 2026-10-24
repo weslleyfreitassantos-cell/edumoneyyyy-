@@ -7,6 +7,7 @@ const appSource = readFileSync(resolve(process.cwd(), 'src/App.tsx'), 'utf8');
 describe('learning center and library routes', () => {
   it('keeps the student routes and their role boundaries', () => {
     expect(appSource).toContain('path="/student/study"');
+    expect(appSource).toContain('path="/student/study/english"');
     expect(appSource).toContain('path="/student/calendar"');
     expect(appSource).toContain("allowedRoles={['STUDENT']}");
     expect(appSource).toContain('path="/student/study/activity/:activityId"');
@@ -25,5 +26,11 @@ describe('learning center and library routes', () => {
     expect(appSource).toContain('path="/teacher/pedagogical-center/activities/new"');
     expect(appSource).toContain('path="/teacher/pedagogical-center/activities"');
     expect(appSource).toContain("allowedRoles={['TEACHER']}");
+  });
+
+  it('protects inventory for institution staff and excludes account/platform administrators', () => {
+    expect(appSource).toContain('path="/inventory"');
+    expect(appSource).toContain("allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}");
+    expect(appSource).toContain("import('./components/inventory/InventoryPage')");
   });
 });

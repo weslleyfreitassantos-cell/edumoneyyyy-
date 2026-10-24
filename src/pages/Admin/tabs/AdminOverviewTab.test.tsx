@@ -35,6 +35,10 @@ vi.mock('../../../components/dashboard/DirectorAcademicPanorama', () => ({
   default: () => <div data-testid="director-academic-panorama" />,
 }));
 
+vi.mock('../../../components/dashboard/SecretariatOperationsPanel', () => ({
+  default: () => <div data-testid="secretariat-operations-panel" />,
+}));
+
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
 }));
@@ -191,6 +195,27 @@ afterEach(() => {
 });
 
 describe('AdminOverviewTab', () => {
+  it('exibe o painel operacional adicional somente para a Secretaria', () => {
+    mockOverviewState({ profileRole: 'SECRETARY', currentRole: 'SECRETARY' });
+
+    const { rerender } = render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId('secretariat-operations-panel')).toBeTruthy();
+
+    mockOverviewState({ profileRole: 'DIRECTOR', currentRole: 'DIRECTOR' });
+    rerender(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByTestId('secretariat-operations-panel')).toBeNull();
+  });
+
   it('exibe a saudação e a foto do diretor na faixa de boas-vindas', () => {
     mockOverviewState({
       profileName: 'Ana Lúcia',

@@ -2,7 +2,12 @@
 
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import { render, cleanup, screen } from '@testing-library/react';
+import { updateInstitutionBranding } from '../../services/institutionService';
 import { DirectorInstitutionBrandingSection } from './DirectorInstitutionBrandingSection';
+
+vi.mock('../../services/institutionService', () => ({
+  updateInstitutionBranding: vi.fn(),
+}));
 
 vi.mock('../../contexts/InstitutionContext', () => ({
   useInstitution: () => ({
@@ -67,5 +72,24 @@ describe('DirectorInstitutionBrandingSection', () => {
     expect(
       screen.getByText(/O endereço da instituição ainda não foi configurado pelo administrador/i)
     ).toBeTruthy();
+  });
+
+  it('remove a logo sem executar uma segunda gravação genérica de identidade visual', async () => {
+    render(
+      <DirectorInstitutionBrandingSection
+        institutionId="inst-1"
+        institutionName="Escola Modelo"
+        currentSubdomain="escolamodelo"
+        currentLogoUrl="https://example.com/logo.png"
+        currentPrimaryColor="#005bbf"
+        currentSecondaryColor="#ff9900"
+      />
+    );
+
+    screen.getByRole('button', { name: /Remover logotipo/i }).click();
+
+    await vi.waitFor(() => {
+      expect(updateInstitutionBranding).not.toHaveBeenCalled();
+    });
   });
 });

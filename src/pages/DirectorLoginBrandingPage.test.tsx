@@ -464,6 +464,53 @@ describe('DirectorLoginBrandingPage', () => {
       }),
     );
   });
+
+  it('remove somente a logo do cache da instituição ativa quando a resposta omite outros assets', async () => {
+    mockDirectorContext({
+      currentInstitution: {
+        id: 'institution-2',
+        name: 'Escola Horizonte',
+        subdomain: 'escola-horizonte',
+        login_display_name: 'Portal Horizonte',
+        logo_url: 'https://cdn.example.com/horizonte-logo.png',
+        favicon_url: 'https://cdn.example.com/horizonte-favicon.png',
+        login_background_url: 'https://cdn.example.com/horizonte-background.png',
+        primary_color: '#345678',
+        secondary_color: '#fedcba',
+        active: true,
+        account_id: 'account-2',
+      },
+      currentInstitutionId: 'institution-2',
+    });
+    removeLogo.mockResolvedValueOnce({
+      id: 'institution-2',
+      name: 'Escola Horizonte',
+      logoUrl: null,
+      publicSlug: 'escola-horizonte',
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: /Remover logo/i }));
+
+    await waitFor(() => {
+      expect(removeLogo).toHaveBeenCalledWith(
+        expect.objectContaining({ institutionId: 'institution-2' }),
+      );
+    });
+
+    expect(patchCurrentInstitution).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: 'institution-2',
+        logo_url: null,
+        favicon_url: 'https://cdn.example.com/horizonte-favicon.png',
+        login_background_url: 'https://cdn.example.com/horizonte-background.png',
+        primary_color: '#345678',
+        secondary_color: '#fedcba',
+      }),
+    );
+    expect(refresh).toHaveBeenCalled();
+    expect(mockedUpdateInstitutionBranding).not.toHaveBeenCalled();
+  });
 });
 
 describe('DirectorLoginBrandingRoute', () => {

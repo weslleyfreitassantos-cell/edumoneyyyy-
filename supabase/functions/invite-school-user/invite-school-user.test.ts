@@ -66,9 +66,9 @@ describe('invite-school-user', () => {
     expect(source).toContain('secretaryMembership');
   });
 
-  it('allows an ADMIN to create a director only in the selected institution', () => {
-    expect(source).toContain('["DIRECTOR"]');
-    expect(source).toContain('["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"]');
+  it('allows an ADMIN to create a director or psychologist only in the selected institution', () => {
+    expect(source).toContain('["DIRECTOR", "PSYCHOLOGIST"]');
+    expect(source).toContain('["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"]');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
     expect(source).toContain('role: input.role');
   });

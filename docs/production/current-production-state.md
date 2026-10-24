@@ -1,6 +1,68 @@
 # Fotografia da producao self-hosted
 
-## Estado atual — 2026-09-27
+## Revalidacao factual — 2026-10-24
+
+Esta secao atualiza somente os fatos explicitamente observados em leitura
+somente leitura nesta data. A secao datada de 2026-09-27 e os checkpoints
+anteriores permanecem como historico; nao usar contagens ou status antigos como
+estado atual.
+
+```text
+VPS_SSH_READ_ONLY=PASS
+PRODUCTION_DATABASE=postgres (Supabase self-hosted)
+REMOTE_MIGRATION_LEDGER_COUNT=221
+REMOTE_MIGRATION_LEDGER_LATEST=20261019000500
+LOCAL_TIMESTAMPED_MIGRATION_FILES=244
+LOCAL_TIMESTAMPED_MIGRATION_VERSIONS_UNIQUE=244
+CURRENT_RELEASE_CANDIDATE=PR_399
+PR399_PENDING_MIGRATIONS=15
+PR399_PENDING_MIGRATIONS_APPLIED=0
+BACKUP_SERVICE_RESULT=success (oneshot, inactive after completion)
+OFFSITE_BACKUP_GATE=FAIL
+OFFSITE_BACKUP_STATE_DATE=2026-10-18
+OFFSITE_BACKUP_ARTIFACT=none
+OFFSITE_BACKUP_SHA256=none
+OFFSITE_BACKUP_BYTES=0
+WORKER_NAME=edumoneyyyy
+WORKER_ACTIVE_VERSION=d8fe9b44-d268-403c-8af1-c8a780b415b3
+WORKER_ACTIVE_PERCENTAGE=100
+WORKER_DEPLOYMENT_ID=d0bb6e84-ae36-43ea-afc5-fb21af6a32f6
+WORKER_DEPLOYMENT_TIME=2026-10-23T01:49:28.879916Z
+EDGE_FUNCTIONS_IMAGE=supabase/edge-runtime:v1.76.2
+EDGE_FUNCTIONS_SOURCE_MOUNT=/srv/grupotec/supabase-projects/edumoney/volumes/functions
+PRODUCTION_DATABASE_WRITES=NONE
+PRODUCTION_MIGRATIONS_APPLIED=NONE
+WORKER_DEPLOY=NONE
+```
+
+O ledger foi consultado em transacao read-only. As 15 migrations da PR #399
+estao ausentes do ledger; cinco tem timestamp anterior ao maior timestamp
+remoto, e por isso a compatibilidade do promotor seletivo precisou de uma
+correcao testada na branch. As 221 versoes remotas possuem cada uma exatamente
+um arquivo SQL local correspondente; nao foram feitas reparacoes do ledger.
+
+O container de Edge Functions tem bind mount para a arvore operacional acima.
+A origem atualmente montada para `invite-school-user/index.ts` tem SHA-256
+`2e7e9c04e7b9f5cf5bcbe06d35c8464a68532e0c85e302762bfd9f0042514dd8`; o arquivo
+da candidata #399 tem SHA-256
+`d3f14f9f5eeceafe0ae86d6dede8249bf99c80395ef60500cef8a044a27c6a3a` e e
+diferente. O hash da origem montada nao prova sozinho qual codigo esta carregado
+em memoria. O Compose identifica o servico `functions` e o arquivo de stack;
+nenhuma funcao ou container foi alterado ou reiniciado.
+
+O servico local de backup informou ultima execucao bem-sucedida, mas o estado
+offsite continua `FAIL`: em 2026-10-18 nao havia artefato, hash ou bytes. O
+resultado do servico local nao substitui a validacao do gate offsite. Nenhuma
+rotina, timer, arquivo de backup ou estado foi modificado nesta verificacao.
+
+O Worker permanece na versao e deployment indicados acima. Nenhum deploy foi
+feito para esta candidata, e o deployment remoto nao informa um commit que
+permita atribui-lo a um SHA Git. A lista de deployments foi consultada com
+Wrangler em modo somente leitura.
+
+---
+
+## Checkpoint historico — 2026-09-27
 
 Este checkpoint substitui os estados antigos de SSH desconhecido, Realtime 503,
 paridade remota desconhecida e restore bloqueado registrados abaixo. As secoes

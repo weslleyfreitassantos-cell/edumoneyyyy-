@@ -7,6 +7,7 @@ export const ROLE_MAP = {
     TEACHER: 'teacher',
     STUDENT: 'student',
     GUARDIAN: 'parent',
+    PSYCHOLOGIST: 'psychologist',
 } as const satisfies Record<string, UserRole>;
 
 export type DatabaseRole = keyof typeof ROLE_MAP;

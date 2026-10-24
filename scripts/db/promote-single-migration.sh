@@ -7,6 +7,13 @@ abort() {
   exit 1
 }
 
+abort_after_apply() {
+  printf 'PROMOTION_OUTCOME=UNKNOWN_DO_NOT_RETRY\n' >&2
+  printf 'PROMOTION_ABORTED=%s\n' "${1}" >&2
+  printf 'Inspect the migration ledger read-only before considering another promotion.\n' >&2
+  exit 1
+}
+
 safe_cli_failure_class() {
   local output="${1,,}"
   case "${output}" in
@@ -218,6 +225,14 @@ remote_last="$(printf '%s\n' "${remote_versions[@]}" | sort | tail -n 1)"
 [[ "${remote_last}" == "${expected_remote_last}" ]] || abort "remote last migration differs from expected"
 printf '%s\n' "${remote_versions[@]}" | grep -Fxq "${target_version}" && abort "target migration is already applied"
 
+# The isolated workdir contains every applied remote migration plus exactly one
+# requested target. Supabase skips a target older than the newest remote version
+# unless --include-all is set, so enable it only for historical gaps.
+include_all_flag=()
+if [[ "${target_version}" < "${remote_last}" ]]; then
+  include_all_flag=(--include-all)
+fi
+
 mkdir -p "${cli_workdir}/supabase/migrations"
 cp "${repo_root}/supabase/config.toml" "${cli_workdir}/supabase/config.toml"
 
@@ -241,7 +256,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
-  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --dry-run --log-level error 2>&1)"; then
+  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --dry-run --log-level error 2>&1)"; then
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
 fi
@@ -274,16 +289,42 @@ fi
 [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
   abort "production write confirmation is missing"
 
-apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --yes --log-level error 2>&1)" \
+apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
-  "select count(*) || '|' || max(version) from supabase_migrations.schema_migrations;")" \
-  || abort "post-promotion ledger inspection failed"
-expected_after_count=$(( ${#remote_versions[@]} + 1 ))
-expected_after="${expected_after_count}|${target_version}"
-[[ "${after_output}" == "${expected_after}" ]] || abort "post-promotion ledger does not match target"
+  "select version from supabase_migrations.schema_migrations order by version;")" \
+  || abort_after_apply "post-promotion ledger query failed"
+
+after_versions=()
+while IFS= read -r version; do
+  version="${version//[[:space:]]/}"
+  [[ -z "${version}" ]] && continue
+  [[ "${version}" =~ ^[0-9]{14}$ ]] || abort_after_apply "post-promotion ledger contains an invalid version"
+  after_versions+=("${version}")
+done <<< "${after_output}"
+[[ "${#after_versions[@]}" -gt 0 ]] || abort_after_apply "post-promotion ledger is empty"
+
+after_sorted_output="$(printf '%s\n' "${after_versions[@]}" | sort)"
+after_unique_output="$(printf '%s\n' "${after_versions[@]}" | sort -u)"
+mapfile -t after_sorted_versions <<< "${after_sorted_output}"
+mapfile -t after_unique_versions <<< "${after_unique_output}"
+[[ "${#after_unique_versions[@]}" -eq "${#after_versions[@]}" ]] || \
+  abort_after_apply "post-promotion ledger contains duplicate versions"
+
+expected_versions=("${remote_versions[@]}" "${target_version}")
+expected_sorted_output="$(printf '%s\n' "${expected_versions[@]}" | sort -u)"
+mapfile -t expected_sorted_versions <<< "${expected_sorted_output}"
+[[ "${#after_sorted_versions[@]}" -eq "${#expected_sorted_versions[@]}" ]] || \
+  abort_after_apply "post-promotion ledger version set has a missing or extra version"
+for ((index = 0; index < ${#expected_sorted_versions[@]}; index++)); do
+  [[ "${after_sorted_versions[index]}" == "${expected_sorted_versions[index]}" ]] || \
+    abort_after_apply "post-promotion ledger version set has a missing or extra version"
+done
+
+expected_after_count="${#expected_versions[@]}"
+remote_after_last="${after_sorted_versions[$(( ${#after_sorted_versions[@]} - 1 ))]}"
 unset database_password
 printf 'PROMOTION=APPLIED\n'
 printf 'REMOTE_AFTER_COUNT=%s\n' "${expected_after_count}"
-printf 'REMOTE_AFTER_LAST=%s\n' "${target_version}"
+printf 'REMOTE_AFTER_LAST=%s\n' "${remote_after_last}"

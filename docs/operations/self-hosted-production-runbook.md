@@ -1,20 +1,33 @@
 # Runbook de operacao self-hosted
 
-**Status:** validado contra a VPS self-hosted em 2026-09-28; checks operacionais
-e restore offsite foram executados. Entrega remota de alertas e metricas HTTP
-5xx continuam bloqueadas/indisponiveis, conforme registrado abaixo.
+**Status:** o procedimento e o restore offsite foram validados em 2026-09-28;
+essa validacao e historica. Na leitura somente leitura de 2026-10-24, o gate
+offsite estava `FAIL`, sem artefato, hash ou bytes, conforme a fotografia mais
+recente em `docs/production/current-production-state.md`. Nao tratar o resultado
+antigo de restore como aprovacao do gate atual.
 **Limite:** nao use `supabase db push` generico a partir do checkout completo,
 `migration repair`, `config push` ou SQL de escrita remota como procedimento de
 deploy.
 
 Uma migration da aplicacao pode ser promovida somente por
 `scripts/db/promote-single-migration.sh`, usando um workdir temporario montado
-a partir do ledger remoto. O guard exige commit e SHA conhecidos, backup gate
-verde, dry-run com exatamente uma migration e recusa migrations inesperadas.
-Nao use `--include-all`, nao edite o ledger manualmente e nao passe migrations
-BNCC pendentes para o workdir.
+com todos os arquivos ja registrados no ledger remoto e exatamente a versao
+solicitada. O guard exige commit e SHA conhecidos, backup gate verde, dry-run
+com exatamente uma migration e recusa migrations inesperadas. O
+[Supabase CLI](https://supabase.com/docs/reference/cli/supabase-db-push) pula
+por padrao uma migration pendente cujo timestamp seja anterior a versao
+mais recente no remoto. Para esse caso, o guard passa `--include-all` somente ao
+dry-run e a aplicacao dentro do workdir isolado, que contem apenas o historico
+remoto e o alvo explicitamente confirmado. Isso nao autoriza incluir outras
+migrations, editar o ledger manualmente, nem incluir as migrations BNCC adiadas
+`20261004000100`, `20261004000200` e `20261004000300`; todas continuam recusadas
+pelo script. Consulte o plano versionado da PR #399 antes de qualquer promocao.
 
 ## Estado operacional da VPS
+
+Os detalhes operacionais abaixo registram a configuracao observada em setembro;
+para status corrente do backup, ledger, Worker e containers, prevalece a
+revalidacao datada em `docs/production/current-production-state.md`.
 
 A producao usa backup local diario existente e um `ExecStartPost` no mesmo
 servico para enviar o arquivo validado ao Google Drive, fora do failure domain
@@ -192,9 +205,19 @@ nenhuma chave privada deve ser instalada na VPS.
   restaurar backup em nova instancia, comparar e so entao planejar cutover com
   janela/consentimento. Nunca restaurar sobre producao sem backup comprovado,
   rehearsal e aprovacao operacional explicita.
-- **Edge Functions:** codigo esta versionado em `supabase/functions`; mecanismo,
-  versao de imagem/runtime e comando de deploy/rollback da VPS nao foram
-  descobertos. Recuperar por procedimento do stack somente apos inventario.
+- **Edge Functions:** codigo esta versionado em `supabase/functions`. A leitura
+  de 2026-10-24 confirmou o container `supabase-edumoney-edge-functions`, imagem
+  `supabase/edge-runtime:v1.76.2`, o servico Compose `functions` e bind mount de
+  `/srv/grupotec/supabase-projects/edumoney/volumes/functions` para
+  `/home/deno/functions`. Para a PR #399, atualizar somente a pasta da funcao
+  aprovada nesse mount e reiniciar o servico usando
+  `docker compose -f /srv/grupotec/supabase-projects/edumoney/docker-compose.yml restart functions`.
+  Registrar e preservar antes a versao anterior do arquivo; para rollback,
+  restaurar esse arquivo e repetir o restart. O restart para carregar codigo
+  alterado esta descrito na
+  [documentacao oficial de funcoes self-hosted](https://supabase.com/docs/guides/self-hosting/self-hosted-functions).
+  Esse procedimento foi identificado por leitura do Compose e documentacao,
+  mas nao foi ensaiado nem executado nesta campanha.
 - **Auth/configuracao:** JWT secrets, API keys, SMTP e OAuth nao estao no dump.
   Guardar `.env`/Compose em backup criptografado separado; nunca regenerar JWT
   secret como rollback improvisado. Procedimento de restart depende do Compose

@@ -113,20 +113,31 @@ export function DirectorLoginBrandingPage() {
     currentInstitution?.login_background_url,
   ]);
 
-  const applyReturnedBranding = (branding: {
-    logoUrl: string | null;
-    faviconUrl: string | null;
-    loginBackgroundUrl: string | null;
-  }) => {
+  const applyReturnedBranding = (
+    branding: {
+      logoUrl: string | null;
+      faviconUrl: string | null;
+      loginBackgroundUrl: string | null;
+    },
+    changedAsset: 'logo' | 'favicon' | 'background',
+  ) => {
     if (!currentInstitution) {
       return;
     }
 
+    // Asset removal is deliberately field-scoped. Older RPC responses can omit
+    // unrelated branding columns; interpreting those omissions as null would
+    // make the UI/cache appear to delete the favicon or login background too.
+    const assetPatch =
+      changedAsset === 'logo'
+        ? { logo_url: branding.logoUrl }
+        : changedAsset === 'favicon'
+          ? { favicon_url: branding.faviconUrl }
+          : { login_background_url: branding.loginBackgroundUrl };
+
     patchCurrentInstitution({
       ...currentInstitution,
-      logo_url: branding.logoUrl,
-      favicon_url: branding.faviconUrl,
-      login_background_url: branding.loginBackgroundUrl,
+      ...assetPatch,
     });
   };
 
@@ -226,7 +237,7 @@ export function DirectorLoginBrandingPage() {
         currentPublicSlug: null,
       });
 
-      applyReturnedBranding(updatedBranding);
+      applyReturnedBranding(updatedBranding, 'logo');
       setSavedLogoUrl(null);
       setSelectedLogoFile(null);
       setLogoPreviewUrl(null);
@@ -252,7 +263,7 @@ export function DirectorLoginBrandingPage() {
         currentPublicSlug: null,
       });
 
-      applyReturnedBranding(updatedBranding);
+      applyReturnedBranding(updatedBranding, 'favicon');
       setSavedFaviconUrl(null);
       setSelectedFaviconFile(null);
       setFaviconPreviewUrl(null);
@@ -278,7 +289,7 @@ export function DirectorLoginBrandingPage() {
         currentPublicSlug: null,
       });
 
-      applyReturnedBranding(updatedBranding);
+      applyReturnedBranding(updatedBranding, 'background');
       setSavedBackgroundUrl(null);
       setSelectedBackgroundFile(null);
       setBackgroundPreviewUrl(null);
