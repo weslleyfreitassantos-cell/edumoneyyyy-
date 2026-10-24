@@ -117,6 +117,10 @@ jobs:
       - name: Iniciar Supabase descartável
         run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
 
+      - name: Provar promoção de migration histórica em Supabase descartável
+        shell: bash
+        run: bash scripts/db/promote-single-migration.postgres.test.sh
+
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
 
@@ -315,7 +319,3 @@ jobs:
           name: minimal-ui-visual-evidence-${{ github.run_id }}
           path: test-results/**/visual/*.png
           if-no-files-found: ignore
-
-      - name: Provar promoção de migration histórica em Supabase descartável
-        shell: bash
-        run: bash scripts/db/promote-single-migration.postgres.test.sh
