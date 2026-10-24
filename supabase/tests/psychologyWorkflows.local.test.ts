@@ -68,6 +68,7 @@ function localWeekday(date: string): number {
 async function waitForRealtimeEvent<T>(
   predicate: () => T | undefined,
   timeoutMs = 20_000,
+  recipient = 'authorized psychology participant',
 ): Promise<T> {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
@@ -75,11 +76,12 @@ async function waitForRealtimeEvent<T>(
     if (value !== undefined) return value;
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
-  throw new Error('Timed out waiting for authorized psychology realtime message');
+  throw new Error(`Timed out waiting for ${recipient}`);
 }
 
 async function subscribeToPsychologyMessages(client: AnyClient, topic: string, sessionId: string) {
   const received: unknown[] = [];
+  const statuses: string[] = [];
   let resolveSubscribed!: () => void;
   let rejectSubscribed!: (error: Error) => void;
   const subscribed = new Promise<void>((resolve, reject) => {
@@ -95,13 +97,14 @@ async function subscribeToPsychologyMessages(client: AnyClient, topic: string, s
       filter: `session_id=eq.${sessionId}`,
     }, (payload: { new: unknown }) => received.push(payload.new))
     .subscribe((status: string, error?: Error) => {
+      statuses.push(status);
       if (status === 'SUBSCRIBED') resolveSubscribed();
       if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
         rejectSubscribed(error ?? new Error(`Realtime subscription failed: ${status}`));
       }
     });
   await subscribed;
-  return { channel, received };
+  return { channel, received, statuses };
 }
 
 localDescribe('psychology workflows against a disposable local Supabase', () => {
@@ -464,10 +467,29 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       client_message_key: crypto.randomUUID(),
     });
     expect(sent.error).toBeNull();
-    await Promise.all([
-      waitForRealtimeEvent(() => realtimeStudent.received[0]),
-      waitForRealtimeEvent(() => realtimeProfessional.received[0]),
+    const messageId = (sent.data as { message_id: number }).message_id;
+    for (const [recipient, actor] of [
+      ['student', student],
+      ['assigned psychologist', psychologist],
+    ] as const) {
+      const visibleMessage = await actor.client.from('psychology_messages')
+        .select('id').eq('id', messageId).maybeSingle();
+      expect(visibleMessage.error, `${recipient} can read authorized chat message`).toBeNull();
+      expect(visibleMessage.data?.id, `${recipient} sees the persisted message`).toBe(messageId);
+    }
+    const deliveryResults = await Promise.all([
+      waitForRealtimeEvent(
+        () => realtimeStudent.received[0],
+        20_000,
+        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'})`,
+      ).then(() => null).catch((error: Error) => error.message),
+      waitForRealtimeEvent(
+        () => realtimeProfessional.received[0],
+        20_000,
+        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'})`,
+      ).then(() => null).catch((error: Error) => error.message),
     ]);
+    expect(deliveryResults).toEqual([null, null]);
     await new Promise((resolve) => setTimeout(resolve, 750));
     expect(realtimeUnrelatedProfessional.received).toEqual([]);
     await Promise.all([
