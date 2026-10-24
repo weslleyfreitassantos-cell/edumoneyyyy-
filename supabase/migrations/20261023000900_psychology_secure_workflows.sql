@@ -114,14 +114,14 @@ begin
             and assignment.starts_on <= current_date
             and (assignment.ends_on is null or assignment.ends_on >= current_date)
         ), '[]'::jsonb),
-        'authorization_status', authorization.status
+        'authorization_status', consent.status
       ) order by profile.full_name)
       from public.students student
       join public.profiles profile on profile.id = student.profile_id
       join public.memberships membership on membership.profile_id = profile.id
         and membership.institution_id = target_institution_id
-      left join public.psychology_authorizations authorization
-        on authorization.institution_id = target_institution_id and authorization.student_id = student.id
+      left join public.psychology_authorizations consent
+        on consent.institution_id = target_institution_id and consent.student_id = student.id
       where student.institution_id = target_institution_id
         and student.active is true and membership.active is true
         and membership.role = 'STUDENT'::public.user_role and profile.active is true
@@ -216,14 +216,14 @@ begin
     'student_id', eligible.student_id,
     'student_name', eligible.full_name,
     'is_minor', eligible.is_minor,
-    'authorization_status', coalesce(authorization.status, 'NONE'),
-    'is_signatory', authorization.signatory_profile_id = auth.uid()
+    'authorization_status', coalesce(consent.status, 'NONE'),
+    'is_signatory', consent.signatory_profile_id = auth.uid()
   ) order by eligible.full_name), '[]'::jsonb)
   into result
   from eligible_students eligible
-  left join public.psychology_authorizations authorization
-    on authorization.institution_id = target_institution_id
-    and authorization.student_id = eligible.student_id;
+  left join public.psychology_authorizations consent
+    on consent.institution_id = target_institution_id
+    and consent.student_id = eligible.student_id;
   return result;
 end;
 $$;
@@ -404,11 +404,11 @@ create or replace function public.psychology_revoke_authorization(target_student
 returns void language plpgsql security definer set search_path = '' as $$
 declare institution_key uuid;
 begin
-  update public.psychology_authorizations authorization
+  update public.psychology_authorizations consent
   set status = 'REVOKED', revoked_at = now(), updated_at = now()
-  where authorization.student_id = target_student_id and authorization.status = 'ACTIVE'
-    and (authorization.signatory_profile_id = auth.uid()
-      or exists (select 1 from public.students student where student.id = authorization.student_id
+  where consent.student_id = target_student_id and consent.status = 'ACTIVE'
+    and (consent.signatory_profile_id = auth.uid()
+      or exists (select 1 from public.students student where student.id = consent.student_id
         and student.profile_id = auth.uid() and student.birth_date <= (current_date - interval '18 years')::date))
   returning institution_id into institution_key;
   if institution_key is null then raise exception using message = 'NOT_AUTHORIZED', errcode = 'P0001'; end if;
