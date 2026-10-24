@@ -318,20 +318,4 @@ jobs:
 
       - name: Provar promoção de migration histórica em Supabase descartável
         shell: bash
-        run: |
-          set -euo pipefail
-          target_version=20261013003200
-          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
-          [[ -n "$db_container" ]] || { echo "Disposable Supabase database container not found" >&2; exit 1; }
-
-          # This metadata-only fixture runs exclusively in the disposable CI database.
-          # The migration's schema is already present; the following CLI call is dry-run.
-          changed_rows="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -Atqc \
-            "WITH deleted AS (DELETE FROM supabase_migrations.schema_migrations WHERE version = '$target_version' RETURNING 1) SELECT count(*) FROM deleted;")"
-          [[ "$changed_rows" == '1' ]] || { echo "Could not prepare the disposable historical-gap fixture" >&2; exit 1; }
-
-          dry_run_output="$(npx supabase db push --local --include-all --dry-run 2>&1)"
-          printf '%s\n' "$dry_run_output"
-          mapfile -t pending_migrations < <(printf '%s\n' "$dry_run_output" | grep -Eo '[0-9]{14}_[[:alnum:]_-]+\.sql' | sort -u)
-          [[ "${#pending_migrations[@]}" -eq 1 ]] || { echo "Expected exactly one pending SQL migration in disposable dry-run" >&2; exit 1; }
-          [[ "${pending_migrations[0]}" == "${target_version}_"* ]] || { echo "Dry-run selected an unexpected migration" >&2; exit 1; }
+        run: bash scripts/db/promote-single-migration.postgres.test.sh

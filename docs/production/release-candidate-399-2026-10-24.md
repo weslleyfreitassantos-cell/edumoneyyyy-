@@ -60,10 +60,23 @@ os arquivos ja aplicados no ledger e exatamente o arquivo alvo. A saida do
 dry-run continua exigindo exatamente uma migration, com ID igual ao alvo; o
 mesmo argumento e usado na aplicacao somente apos todos os gates existentes.
 
-CI executa uma prova isolada: remove uma linha do ledger apenas no banco
-descartavel de CI, executa `db push --local --include-all --dry-run` e confirma
-que somente `20261013003200` seria aplicado. Nenhum ledger remoto e modificado.
-O teste local do promotor tambem exige o argumento para um alvo historico.
+Depois da aplicacao, o promotor agora le todas as versoes do ledger e exige o
+conjunto exato `versoes anteriores + alvo`: versoes faltantes, extras ou
+duplicadas fazem a verificacao falhar. `REMOTE_AFTER_LAST` vem do maior valor
+real retornado pelo banco, portanto permanece no timestamp mais recente quando
+o alvo e historico. Se a consulta posterior falhar depois de o CLI retornar
+sucesso, o resultado e marcado como `UNKNOWN_DO_NOT_RETRY`; a orientacao e fazer
+somente uma leitura do ledger antes de decidir qualquer nova acao.
+
+O teste local separa os casos historico e cronologico, valida ledgers
+faltantes/extras/duplicados, e simula uma consulta pos-aplicacao indisponivel
+para impedir repeticao cega. A CI executa tambem
+`scripts/db/promote-single-migration.postgres.test.sh`: cria dois bancos
+isolados no PostgreSQL descartavel do Supabase local, aplica uma migration
+historica e outra cronologica pelo promotor real (`APPLY=1` somente nesses
+bancos de CI), e confirma tanto o efeito SQL quanto o ledger final exato e o
+maior timestamp correto. A rotina remove esses bancos ao terminar. Nenhum
+ledger remoto ou de producao e alterado.
 
 | Ordem | Versao | Migration | SHA-256 |
 |---:|---|---|---|
