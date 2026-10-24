@@ -193,6 +193,62 @@ jobs:
       - name: Testes dinâmicos de segurança e RPCs adaptativos
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/inventoryManagement.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts
 
+      - name: Diagnosticar replicação Realtime sem expor dados
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          realtime_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_realtime_/{print; exit}')"
+
+          if [[ -z "$db_container" || -z "$realtime_container" ]]; then
+            echo "realtime_diagnostics=containers_unavailable"
+            exit 0
+          fi
+
+          docker exec "$db_container" psql -U postgres -d postgres -Atqc "
+            SELECT 'realtime_publication=' || EXISTS (
+              SELECT 1 FROM pg_publication WHERE pubname = 'supabase_realtime'
+            );
+            SELECT 'psychology_messages_published=' || EXISTS (
+              SELECT 1 FROM pg_publication_tables
+              WHERE pubname = 'supabase_realtime'
+                AND schemaname = 'public'
+                AND tablename = 'psychology_messages'
+            );
+            SELECT 'realtime_logical_slots=' || count(*)
+              FROM pg_replication_slots WHERE slot_type = 'logical';
+            SELECT 'realtime_active_logical_slots=' || count(*)
+              FROM pg_replication_slots WHERE slot_type = 'logical' AND active;
+          "
+
+          docker inspect --format='realtime_container_state={{.State.Status}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}unreported{{end}}' "$realtime_container"
+          docker logs --tail 1200 "$realtime_container" 2>&1 | python3 -c '
+          import sys
+          patterns = (
+              "ReplicationPollerConnectionFailed",
+              "ReplicationPollerMaxRetriesReached",
+              "SubscriptionManagerConnectionFailed",
+              "CheckOidsError",
+              "PublicationNotFound",
+              "SubscriptionInsertFailed",
+              "SubscriptionDeletionFailed",
+          )
+          counts = {pattern: 0 for pattern in patterns}
+          error_lines = warning_lines = 0
+          for line in sys.stdin:
+              upper = line.upper()
+              error_lines += "ERROR" in upper
+              warning_lines += "WARN" in upper
+              for pattern in patterns:
+                  counts[pattern] += pattern in line
+          print(f"realtime_log_error_lines={error_lines}")
+          print(f"realtime_log_warning_lines={warning_lines}")
+          for pattern, count in counts.items():
+              if count:
+                  print(f"realtime_log_{pattern}={count}")
+          '
+
       - name: Instalar Chromium para os fluxos adaptativos
         run: npx playwright install --with-deps chromium
 
