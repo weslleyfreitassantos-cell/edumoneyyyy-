@@ -138,7 +138,11 @@ alter table public.psychology_appointments
   add constraint psychology_appointments_no_professional_overlap
   exclude using gist (
     professional_profile_id with =,
-    tstzrange(starts_at, ends_at + preparation_minutes * interval '1 minute', '[)') with &&
+    tsrange(
+      starts_at at time zone 'UTC',
+      (ends_at at time zone 'UTC') + preparation_minutes * interval '1 minute',
+      '[)'
+    ) with &&
   ) where (status = 'SCHEDULED');
 create index psychology_appointments_student_schedule_idx
   on public.psychology_appointments (institution_id, student_id, starts_at desc);
