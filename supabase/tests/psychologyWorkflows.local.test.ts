@@ -87,6 +87,7 @@ async function subscribeToPsychologyMessages(
 ) {
   const received: unknown[] = [];
   const statuses: string[] = [];
+  const replicationStates: string[] = [];
   let resolveSubscribed!: () => void;
   let rejectSubscribed!: (error: Error) => void;
   const subscribed = new Promise<void>((resolve, reject) => {
@@ -94,13 +95,16 @@ async function subscribeToPsychologyMessages(
     rejectSubscribed = reject;
   });
   const channel = client
-    .channel(topic)
+    .channel(topic, { config: { broadcast: { replication_ready: true } } })
     .on('postgres_changes', {
       event: 'INSERT',
       schema: 'public',
       table: 'psychology_messages',
       ...(filterBySession ? { filter: `session_id=eq.${sessionId}` } : {}),
     }, (payload: { new: unknown }) => received.push(payload.new))
+    .on('system', {}, (payload: { extension?: string; status?: string }) => {
+      if (payload.extension === 'system') replicationStates.push(payload.status ?? 'unknown');
+    })
     .subscribe((status: string, error?: Error) => {
       statuses.push(status);
       if (status === 'SUBSCRIBED') resolveSubscribed();
@@ -109,7 +113,7 @@ async function subscribeToPsychologyMessages(
       }
     });
   await subscribed;
-  return { channel, received, statuses };
+  return { channel, received, statuses, replicationStates };
 }
 
 localDescribe('psychology workflows against a disposable local Supabase', () => {
@@ -492,17 +496,17 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       waitForRealtimeEvent(
         () => realtimeStudent.received[0],
         20_000,
-        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'})`,
+        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'}; replication: ${realtimeStudent.replicationStates.join(',') || 'pending'})`,
       ).then(() => null).catch((error: Error) => error.message),
       waitForRealtimeEvent(
         () => realtimeProfessional.received[0],
         20_000,
-        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'})`,
+        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'}; replication: ${realtimeProfessional.replicationStates.join(',') || 'pending'})`,
       ).then(() => null).catch((error: Error) => error.message),
       waitForRealtimeEvent(
         () => realtimeService.received[0],
         20_000,
-        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'})`,
+        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'}; replication: ${realtimeService.replicationStates.join(',') || 'pending'})`,
       ).then(() => null).catch((error: Error) => error.message),
     ]);
     expect(deliveryResults).toEqual([null, null, null]);
