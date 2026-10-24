@@ -23,6 +23,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSchoolSetupReadiness } from '../../../hooks/useSchoolSetupReadiness';
 import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
 import DirectorAcademicPanorama from '../../../components/dashboard/DirectorAcademicPanorama';
+import SecretariatOperationsPanel from '../../../components/dashboard/SecretariatOperationsPanel';
 import ProfileHeroAvatar from '../../../components/ProfileHeroAvatar';
 import type { AdminModuleId } from '../adminNavigation';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
@@ -341,6 +342,17 @@ export default function AdminOverviewTab({
           />
         </div>
       </section>
+
+      {institutionQuery.currentRole === 'SECRETARY' && (
+        <SecretariatOperationsPanel
+          institutionId={institutionId}
+          academicYearId={overviewQuery.data?.currentAcademicYear?.id}
+          academicYearLoading={overviewQuery.isLoading}
+          academicYearError={overviewQuery.isError}
+          availableModuleIds={availableModuleIds}
+          onNavigateToModule={onNavigateToModule}
+        />
+      )}
 
       <section aria-labelledby="admin-overview-setup-heading" className="min-w-0">
         <button
