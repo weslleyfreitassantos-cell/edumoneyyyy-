@@ -404,11 +404,13 @@ describe('Sidebar', () => {
     const communicationGroup = screen.getByRole('button', {
       name: /comunica..o e recursos/i,
     });
+    const communicationSection = communicationGroup.closest('section');
 
     expect(communicationGroup.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('link', { name: 'TV Escola' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'E-mail' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'Câmeras ao vivo' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Almoxarifado' })).toBeNull();
     expect(labels).toContain('Visão geral');
     expect(labels).not.toContain('Administração');
 
@@ -420,6 +422,17 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('href'),
     ).toBe('/email');
     expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
+    const inventoryLinks = screen.getAllByRole('link', { name: 'Almoxarifado' });
+    expect(inventoryLinks).toHaveLength(1);
+    expect(inventoryLinks[0].getAttribute('href')).toBe('/inventory');
+
+    const communicationItems = Array.from(
+      communicationSection?.querySelectorAll('a') ?? [],
+    ).map((link) => link.textContent?.trim());
+    expect(communicationItems.indexOf('Almoxarifado')).toBeGreaterThan(
+      communicationItems.indexOf('E-mail'),
+    );
+    expect(communicationItems.at(-1)).toBe('Almoxarifado');
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
@@ -507,6 +520,28 @@ describe('Sidebar', () => {
     expect(
       screen.queryByRole('link', { name: /^Administração$/i }),
     ).toBeNull();
+  });
+
+  it('marca Almoxarifado como ativo no grupo de recursos e fecha o menu mobile ao navegar', () => {
+    const { onCloseMobile } = renderSidebar({
+      route: '/inventory',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      isMobileOpen: true,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
+
+    const inventoryLink = screen.getByRole('link', { name: 'Almoxarifado' });
+    expect(inventoryLink.getAttribute('href')).toBe('/inventory');
+    expect(inventoryLink.getAttribute('aria-current')).toBe('page');
+    fireEvent.click(inventoryLink);
+    expect(onCloseMobile).toHaveBeenCalledOnce();
   });
 
   it('mostra os modulos institucionais para SECRETARY', () => {
