@@ -135,3 +135,24 @@ usar `migration repair`, SQL remoto ad hoc ou push generico.
   HEAD final da PR antes de qualquer merge.
 - A producao permanece sem migrations, deploy, smoke ou alteracoes de dados. O
   gate offsite `FAIL` bloqueia a publicacao.
+
+## Correcao final do promotor de migrations
+
+- Commit da correcao: `e57fd91ecf09dad7d4ca0c29494ea884b0f2eeb1` na branch da
+  PR #399.
+- O teste unitario `scripts/db/promote-single-migration.test.sh` passou,
+  incluindo ledger historico, ledger cronologico, versoes ausentes/extras/
+  duplicadas e falha de leitura depois de uma aplicacao simulada. No ultimo
+  caso, o promotor retornou `UNKNOWN_DO_NOT_RETRY` e fez uma unica tentativa de
+  aplicacao.
+- CI do commit `e57fd91ecf09dad7d4ca0c29494ea884b0f2eeb1`, run
+  `40092093947`: jobs `validate` e `database` passaram.
+- A prova end-to-end usou dois bancos PostgreSQL descartaveis da stack local
+  da CI. O caso historico aplicou `20261013003200` sobre o ledger que terminava
+  em `20261019000500`; o conjunto final continha exatamente ambas as versoes e
+  `REMOTE_AFTER_LAST` continuou `20261019000500`. O caso cronologico aplicou
+  `20261022000200` sobre `20261013003200`; o conjunto final tambem foi exato e
+  `REMOTE_AFTER_LAST` avancou para `20261022000200`. Em ambos os casos, a tabela
+  de prova recebeu exatamente uma linha.
+- Nenhuma migration foi aplicada na VPS/producao, nenhum ledger de producao foi
+  consultado ou alterado, e nao houve merge nem deploy.
