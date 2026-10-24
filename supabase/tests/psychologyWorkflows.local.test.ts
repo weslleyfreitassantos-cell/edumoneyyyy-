@@ -79,7 +79,12 @@ async function waitForRealtimeEvent<T>(
   throw new Error(`Timed out waiting for ${recipient}`);
 }
 
-async function subscribeToPsychologyMessages(client: AnyClient, topic: string, sessionId: string) {
+async function subscribeToPsychologyMessages(
+  client: AnyClient,
+  topic: string,
+  sessionId: string,
+  filterBySession = true,
+) {
   const received: unknown[] = [];
   const statuses: string[] = [];
   let resolveSubscribed!: () => void;
@@ -94,7 +99,7 @@ async function subscribeToPsychologyMessages(client: AnyClient, topic: string, s
       event: 'INSERT',
       schema: 'public',
       table: 'psychology_messages',
-      filter: `session_id=eq.${sessionId}`,
+      ...(filterBySession ? { filter: `session_id=eq.${sessionId}` } : {}),
     }, (payload: { new: unknown }) => received.push(payload.new))
     .subscribe((status: string, error?: Error) => {
       statuses.push(status);
@@ -460,6 +465,7 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       service,
       `psychology-service-${suffix}`,
       sessionId,
+      false,
     );
     const realtimeUnrelatedProfessional = await subscribeToPsychologyMessages(
       otherPsychologist.client,
@@ -496,7 +502,7 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       waitForRealtimeEvent(
         () => realtimeService.received[0],
         20_000,
-        `service realtime message (subscription: ${realtimeService.statuses.join(',') || 'none'})`,
+        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
     ]);
     expect(deliveryResults).toEqual([null, null, null]);
