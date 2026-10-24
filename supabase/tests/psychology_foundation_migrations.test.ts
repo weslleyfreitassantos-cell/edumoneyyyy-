@@ -25,6 +25,11 @@ describe('psychology module migrations', () => {
     expect(foundation).toMatch(/on delete restrict/i);
   });
 
+  it('uses an immutable UTC timestamp range for the professional preparation buffer', () => {
+    expect(foundation).toMatch(/psychology_appointments_no_professional_overlap[\s\S]*?tsrange\([\s\S]*?starts_at at time zone 'UTC'[\s\S]*?ends_at at time zone 'UTC'[\s\S]*?preparation_minutes \* interval '1 minute'/i);
+    expect(foundation).not.toMatch(/tstzrange\(starts_at,\s*ends_at \+ preparation_minutes/i);
+  });
+
   it('does not let clients probe professional eligibility for an arbitrary profile', () => {
     expect(foundation).toMatch(/function private\.psychology_professional_is_eligible\(target_institution_id uuid, target_profile_id uuid\)/i);
     expect(foundation).toMatch(/revoke all on function private\.psychology_professional_is_eligible\(uuid, uuid\) from public, anon, authenticated/i);
