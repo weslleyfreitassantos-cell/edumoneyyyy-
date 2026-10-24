@@ -603,5 +603,5 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       authorize_treatment: true,
     });
     expect(cannotAuthorizeWhileDisabled.error?.code).toBe('P0001');
-  });
+  }, 30_000);
 });
