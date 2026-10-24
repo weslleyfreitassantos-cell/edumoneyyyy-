@@ -332,6 +332,6 @@ jobs:
 
           dry_run_output="$(npx supabase db push --local --include-all --dry-run 2>&1)"
           printf '%s\n' "$dry_run_output"
-          mapfile -t pending_versions < <(printf '%s\n' "$dry_run_output" | grep -Eo '[0-9]{14}' | sort -u)
-          [[ "${#pending_versions[@]}" -eq 1 ]] || { echo "Expected exactly one pending migration in disposable dry-run" >&2; exit 1; }
-          [[ "${pending_versions[0]}" == "$target_version" ]] || { echo "Dry-run selected an unexpected migration" >&2; exit 1; }
+          mapfile -t pending_migrations < <(printf '%s\n' "$dry_run_output" | grep -Eo '[0-9]{14}_[[:alnum:]_-]+\.sql' | sort -u)
+          [[ "${#pending_migrations[@]}" -eq 1 ]] || { echo "Expected exactly one pending SQL migration in disposable dry-run" >&2; exit 1; }
+          [[ "${pending_migrations[0]}" == "${target_version}_"* ]] || { echo "Dry-run selected an unexpected migration" >&2; exit 1; }
