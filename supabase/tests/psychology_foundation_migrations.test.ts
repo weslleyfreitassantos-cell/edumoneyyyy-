@@ -79,6 +79,9 @@ describe('psychology module migrations', () => {
     expect(foundation).toMatch(/create policy psychology_messages_select[\s\S]*?on public\.psychology_messages[\s\S]*?psychology_can_access_session\(session_id\)/i);
     expect(psychologyService).toMatch(/\.on\('postgres_changes',[\s\S]*?table: 'psychology_messages'[\s\S]*?filter: `session_id=eq\.\$\{sessionId\}`/i);
     expect(workflows).toMatch(/function public\.psychology_send_message\([\s\S]*?psychology_can_access_session\(target_session_id\)/i);
+    expect(workflows).toMatch(/if not exists \(select 1 from pg_publication[\s\S]*?execute 'create publication supabase_realtime'/i);
+    expect(workflows).toMatch(/execute 'alter publication supabase_realtime add table public\.psychology_messages'/i);
+    expect(workflows).toMatch(/PSYCHOLOGY_MESSAGES_REALTIME_PUBLICATION_MISSING/i);
   });
 
   it('uses valid PL/pgSQL declaration blocks in every workflow function', () => {
