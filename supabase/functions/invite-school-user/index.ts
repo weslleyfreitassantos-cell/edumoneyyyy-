@@ -16,7 +16,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN" | "PSYCHOLOGIST"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -65,6 +65,7 @@ const targetRoleSchema = z.enum([
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
+  "PSYCHOLOGIST",
 ]);
 
 const optionalCpfSchema = z.preprocess(
@@ -314,12 +315,12 @@ function toPublicError(error: unknown): InviteError {
 
 function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[] {
   if (requesterRole === "ADMIN") {
-    return ["DIRECTOR"];
+    return ["DIRECTOR", "PSYCHOLOGIST"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"];
   }
-  return ["TEACHER", "STUDENT", "GUARDIAN"];
+  return ["TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"];
 }
 
 function canRequesterInviteRole(

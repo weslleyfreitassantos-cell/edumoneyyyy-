@@ -3,10 +3,11 @@ set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
 script="$repo_root/scripts/db/promote-single-migration.sh"
-target_version=20261003001200
-expected_last=20260709000100
+target_version=20261013003200
+expected_last=20261019000500
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
-target_file="$repo_root/supabase/migrations/${target_version}_normalize_teacher_learning_roster_scope.sql"
+target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
+[[ -n "$target_file" ]]
 target_hash="$(sha256sum "$target_file" | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
@@ -21,19 +22,31 @@ eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
+after_ledger="$tmp/after-ledger"
+cli_apply_count="$tmp/cli-apply-count"
+psql_call_count="$tmp/psql-call-count"
 printf '%s\n' "$expected_last" > "$ledger"
 printf 'Would push migration %s\n' "$target_version" > "$dry_run"
+printf '%s\n' "$expected_last" "$target_version" > "$after_ledger"
+printf '0\n' > "$cli_apply_count"
+printf '0\n' > "$psql_call_count"
 
 run_guard() {
   SOURCE_ROOT="$repo_root" \
-  TARGET_VERSION="$target_version" \
+  TARGET_VERSION="${TEST_TARGET_VERSION:-$target_version}" \
   EXPECTED_REMOTE_LAST="${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}" \
   EXPECTED_SOURCE_COMMIT="$source_commit" \
-  EXPECTED_TARGET_SHA256="${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}" \
+  EXPECTED_TARGET_SHA256="${TEST_TARGET_SHA256:-${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}}" \
   PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
   TMPDIR="$tmp/guard-tmp" \
-  REMOTE_LEDGER_FILE="$ledger" \
-  DRY_RUN_OUTPUT_FILE="${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}" \
+  REMOTE_LEDGER_FILE="${TEST_REMOTE_LEDGER_FILE:-$ledger}" \
+  DRY_RUN_OUTPUT_FILE="${TEST_DRY_RUN_OUTPUT_FILE:-${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}}" \
+  EXPECT_INCLUDE_ALL="${TEST_EXPECT_INCLUDE_ALL:-1}" \
+  MOCK_AFTER_LEDGER_FILE="$after_ledger" \
+  MOCK_AFTER_LEDGER_CONTENT="${TEST_AFTER_LEDGER_CONTENT:-$expected_last
+$target_version}" \
+  MOCK_CLI_APPLY_COUNT_FILE="$cli_apply_count" \
+  MOCK_PSQL_CALL_COUNT_FILE="$psql_call_count" \
   "$script"
 }
 
@@ -94,6 +107,11 @@ if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
   printf 'no password supplied\n' >&2
   exit 47
 fi
+if [[ "${EXPECT_INCLUDE_ALL:-1}" == '1' ]]; then
+  [[ "$*" == *'--include-all'* ]] || exit 53
+else
+  [[ "$*" != *'--include-all'* ]] || exit 54
+fi
 if [[ "${MOCK_APPLY_FAILURE:-0}" == '1' && "$*" != *'--dry-run'* ]]; then
   printf 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:PRIVATE_DETAIL_MUST_NOT_LEAK\n' >&2
   exit 48
@@ -111,8 +129,11 @@ if [[ "${EXPECT_WINDOWS_WORKDIR:-0}" == '1' ]]; then
   [[ -n "$passfile" && "$(stat -c %a "$passfile")" == '600' ]] || exit 38
 fi
 if [[ "$*" == *'--dry-run'* ]]; then
-  printf 'Would push migration 20261003001200\n'
+  printf 'Would push migration %s\n' "$TARGET_VERSION"
 else
+  apply_count="$(cat "$MOCK_CLI_APPLY_COUNT_FILE")"
+  printf '%s\n' "$((apply_count + 1))" > "$MOCK_CLI_APPLY_COUNT_FILE"
+  printf '%s\n' "$MOCK_AFTER_LEDGER_CONTENT" > "$MOCK_AFTER_LEDGER_FILE"
   printf 'mock selective apply complete\n'
 fi
 MOCK
@@ -124,7 +145,14 @@ set -euo pipefail
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
-printf '2|20261003001200\n'
+[[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
+psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
+printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
+if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
+  printf 'mock post-apply query unavailable\n' >&2
+  exit 49
+fi
+cat "$MOCK_AFTER_LEDGER_FILE"
 MOCK
 chmod +x "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
@@ -156,6 +184,8 @@ applied="$(PATH="$tmp/bin:$PATH" \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   run_guard)"
 grep -q '^PROMOTION=APPLIED$' <<< "$applied"
+grep -q '^REMOTE_AFTER_COUNT=2$' <<< "$applied"
+grep -q "^REMOTE_AFTER_LAST=$expected_last$" <<< "$applied"
 if [[ "$applied" == *dummy* || "$applied" == *fixture_user* ]]; then
   echo "connection credentials leaked into apply output" >&2
   exit 1
@@ -189,6 +219,71 @@ applied_override="$(PATH="$tmp/bin:$PATH" \
   EXPECTED_CLI_EXECUTABLE="$tmp/bin/cli-override" \
   run_guard)"
 grep -q '^PROMOTION=APPLIED$' <<< "$applied_override"
+
+# A chronologically newer migration must not pass --include-all, and the
+# reported maximum must advance to the target.
+chronological_version=20261022000200
+chronological_file="$repo_root/supabase/migrations/${chronological_version}_inventory_management.sql"
+[[ -f "$chronological_file" ]]
+chronological_hash="$(sha256sum "$chronological_file" | awk '{print $1}')"
+printf 'Would push migration %s\n' "$chronological_version" > "$tmp/chronological-dry-run"
+chronological="$(PATH="$tmp/bin:$PATH" \
+  APPLY=1 \
+  BACKUP_GATE=PASS \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$chronological_version" \
+  TEST_TARGET_SHA256="$chronological_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$tmp/chronological-dry-run" \
+  TEST_AFTER_LEDGER_CONTENT="$expected_last
+$chronological_version" \
+  run_guard)"
+grep -q '^PROMOTION=APPLIED$' <<< "$chronological"
+grep -q '^REMOTE_AFTER_COUNT=2$' <<< "$chronological"
+grep -q "^REMOTE_AFTER_LAST=$chronological_version$" <<< "$chronological"
+
+# After a successful apply, a failed ledger query is ambiguous. Never invite
+# an automatic or blind retry of the migration.
+printf '0\n' > "$cli_apply_count"
+printf '0\n' > "$psql_call_count"
+if query_failure="$(PATH="$tmp/bin:$PATH" \
+  APPLY=1 \
+  BACKUP_GATE=PASS \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  MOCK_PSQL_FAILURE=1 \
+  run_guard 2>&1)"; then
+  echo "post-apply query failure unexpectedly passed" >&2
+  exit 1
+fi
+grep -q '^PROMOTION_OUTCOME=UNKNOWN_DO_NOT_RETRY$' <<< "$query_failure"
+grep -q '^PROMOTION_ABORTED=post-promotion ledger query failed$' <<< "$query_failure"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+[[ "$(cat "$psql_call_count")" == '1' ]]
+grep -Fxq "$target_version" "$after_ledger"
+
+expect_post_apply_ledger_failure() {
+  printf '0\n' > "$cli_apply_count"
+  printf '0\n' > "$psql_call_count"
+  if failure="$(PATH="$tmp/bin:$PATH" \
+    APPLY=1 \
+    BACKUP_GATE=PASS \
+    CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+    TEST_AFTER_LEDGER_CONTENT="$1" \
+    run_guard 2>&1)"; then
+    echo "invalid post-apply ledger unexpectedly passed" >&2
+    exit 1
+  fi
+  grep -q '^PROMOTION_OUTCOME=UNKNOWN_DO_NOT_RETRY$' <<< "$failure"
+  [[ "$(cat "$cli_apply_count")" == '1' ]]
+}
+
+expect_post_apply_ledger_failure "$expected_last"
+expect_post_apply_ledger_failure "$expected_last
+$target_version
+20261020000001"
+expect_post_apply_ledger_failure "$expected_last
+$target_version
+$target_version"
 
 mkdir -p "$tmp/cli-root"
 applied_windows="$(PATH="$tmp/bin:$PATH" \

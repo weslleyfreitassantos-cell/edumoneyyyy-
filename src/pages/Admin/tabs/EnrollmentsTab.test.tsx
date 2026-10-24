@@ -194,6 +194,20 @@ vi.mock('../../../hooks/useSchoolUserManagement', () => ({
 }));
 
 vi.mock('../../../hooks/useFullStudentEnrollment', () => ({
+  useStudentEnrollmentDrafts: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+  useSaveStudentEnrollmentDraft: () => ({
+    mutateAsync: vi.fn(),
+    isPending: false,
+  }),
+  useDiscardStudentEnrollmentDraft: () => ({
+    mutateAsync: vi.fn(),
+    isPending: false,
+  }),
   useCreateFullStudentEnrollment: () => ({
     mutateAsync: vi.fn(),
     isPending: false,

@@ -68,6 +68,7 @@ export async function uploadStudentDocumentFiles(
   institutionId: string,
   studentId: string,
   documents: readonly StudentDocumentFileDraft[],
+  options: { skipAlreadyUploaded?: boolean } = {},
 ): Promise<void> {
   const documentsWithFiles = documents.filter((document) => document.file);
   if (documentsWithFiles.length === 0) return;
@@ -82,6 +83,18 @@ export async function uploadStudentDocumentFiles(
       const validationError = validateDocumentFile(file);
       if (validationError) throw new Error(`${document.document_type}: ${validationError}`);
 
+      if (options.skipAlreadyUploaded) {
+        const { data: existingDocument, error: existingDocumentError } = await supabase
+          .from('student_documents')
+          .select('file_path')
+          .eq('institution_id', institutionId)
+          .eq('student_id', studentId)
+          .eq('document_type', document.document_type)
+          .maybeSingle();
+        if (existingDocumentError) throw existingDocumentError;
+        if (existingDocument?.file_path) continue;
+      }
+
       const contentType = resolveFileMimeType(file) as string;
       const path = buildStoragePath(institutionId, studentId, document.document_type, file);
       const { error: uploadError } = await storage.upload(path, file, {
@@ -94,7 +107,7 @@ export async function uploadStudentDocumentFiles(
 
       const { data: updatedRow, error: updateError } = await supabase
         .from('student_documents')
-        .update({ file_path: path, updated_at: new Date().toISOString() })
+        .update({ file_path: path, status: 'DELIVERED', updated_at: new Date().toISOString() })
         .eq('institution_id', institutionId)
         .eq('student_id', studentId)
         .eq('document_type', document.document_type)

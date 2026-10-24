@@ -1,0 +1,1004 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-english-infer-from-text",
+  "subject": "ENGLISH",
+  "domain": "LEITURA",
+  "topic": "inferencia_de_sentido_em_textos_em_ingles",
+  "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+  "contentVersion": 5,
+  "lessonVersion": 6,
+  "expectedQuestionCount": 24,
+  "expectedContextCount": 24,
+  "expectedAnswerPositionCounts": {
+    "A": 6,
+    "B": 6,
+    "C": 6,
+    "D": 6
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 7,
+    "TRANSFER": 4,
+    "LOCK_IN": 3,
+    "REVIEW": 7
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-english-english_reading-1",
+      "hint": "Combine the two purposes stated in the sentence; the main idea can include both.",
+      "errorFocus": "MAIN_IDEA_REDUCED_TO_ONE_DETAIL"
+    },
+    {
+      "questionId": "v3-english-english_reading-2",
+      "hint": "Find the exact time and day in the notice before selecting an answer.",
+      "errorFocus": "EXPLICIT_DETAIL_NOT_LOCATED"
+    },
+    {
+      "questionId": "v3-english-english_reading-4",
+      "hint": "Link the dark clouds to the decision to carry an umbrella.",
+      "errorFocus": "ACTION_NOT_LINKED_TO_WEATHER_CLUE"
+    },
+    {
+      "questionId": "v3-english-english_reading-5",
+      "hint": "Replace “they” with the group that planted the trees and test the sentence.",
+      "errorFocus": "PRONOUN_ANTECEDENT_MISSED"
+    },
+    {
+      "questionId": "v3-english-english_reading-6",
+      "hint": "Use the order word “First” to identify the earlier action.",
+      "errorFocus": "SEQUENCE_MARKER_IGNORED"
+    },
+    {
+      "questionId": "v3-english-english_reading-8",
+      "hint": "Read both sides of “but” and name the two dimensions being contrasted.",
+      "errorFocus": "CONTRAST_DIMENSIONS_MISSED"
+    },
+    {
+      "questionId": "v3-english-english_reading-9",
+      "hint": "Keep the conclusion at the level of association stated by the passage.",
+      "errorFocus": "CAUSAL_CERTAINTY_OVERSTATED"
+    },
+    {
+      "questionId": "v3-english-english_reading-10",
+      "hint": "Combine reading, note-taking and comparing sources into one concise idea.",
+      "errorFocus": "SUMMARY_TOO_NARROW_OR_BROAD"
+    },
+    {
+      "questionId": "v3-english-english_reading-12",
+      "hint": "Compare the universal claim with the absence of a source or supporting evidence.",
+      "errorFocus": "UNSUPPORTED_CLAIM_ACCEPTED"
+    },
+    {
+      "questionId": "v4-authored-english-review-01",
+      "hint": "Use “so” to connect the late bus with Maya’s next action.",
+      "errorFocus": "CAUSE_AND_RESULT_REVERSED"
+    },
+    {
+      "questionId": "v9-english-reading-11",
+      "hint": "Locate the return action and the deadline that occurs before Friday.",
+      "errorFocus": "DEADLINE_NOT_CONNECTED_TO_ACTION"
+    },
+    {
+      "questionId": "v9-english-reading-12",
+      "hint": "Connect the second delay alert with the choice to join online.",
+      "errorFocus": "MESSAGE_PURPOSE_NOT_INFERRED"
+    },
+    {
+      "questionId": "v9-english-reading-13",
+      "hint": "Use “take only what you need” and the seed table’s sharing purpose together.",
+      "errorFocus": "CONTEXTUAL_MEANING_NOT_COMBINED"
+    },
+    {
+      "questionId": "v9-english-reading-14",
+      "hint": "Compare the caption’s timing with the newer report before judging whether it is current.",
+      "errorFocus": "SOURCE_TIMING_IGNORED"
+    },
+    {
+      "questionId": "v9-english-reading-15",
+      "hint": "Apply the condition for pain lasting more than two days to the three-day case.",
+      "errorFocus": "CONDITIONAL_THRESHOLD_MISREAD"
+    },
+    {
+      "questionId": "v9-english-reading-16",
+      "hint": "Use limited places and the registration closing rule to infer the message’s purpose.",
+      "errorFocus": "TEXT_PURPOSE_NOT_LINKED_TO_DETAILS"
+    },
+    {
+      "questionId": "v9-english-reading-17",
+      "hint": "Check whether the stated rain condition is met, then follow the location instruction.",
+      "errorFocus": "CONDITION_NOT_APPLIED"
+    },
+    {
+      "questionId": "v9-english-reading-18",
+      "hint": "Combine photographs, recorded memories, speaker labels and years.",
+      "errorFocus": "PURPOSE_INFERRED_FROM_ONLY_ONE_FEATURE"
+    },
+    {
+      "questionId": "v9-english-reading-19",
+      "hint": "Keep the rules for a saved draft separate from the rules for a submitted draft.",
+      "errorFocus": "TEXT_STATES_COLLAPSED_INTO_ONE"
+    },
+    {
+      "questionId": "v9-english-reading-20",
+      "hint": "Compare the broad headline with the route and time limits in the article.",
+      "errorFocus": "CLAIM_SCOPE_NOT_CHECKED"
+    },
+    {
+      "questionId": "v9-english-reading-21",
+      "hint": "Follow the explicit return location and the instruction not to use the front desk.",
+      "errorFocus": "CONTRASTING_LOCATION_IGNORED"
+    },
+    {
+      "questionId": "v9-english-reading-22",
+      "hint": "Separate the changed clean-up time from the visit that the text says is still happening.",
+      "errorFocus": "LOCAL_CHANGE_GENERALIZED"
+    }
+  ],
+  "questions": [
+    {
+      "id": "v5-english-infer-text-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "PROTECTIVE_ACTION",
+      "statement": "Before leaving, Jo noticed dark clouds and put her notebook inside a waterproof bag. At school, the notebook was dry after a heavy shower. What is the best inference?",
+      "options": [
+        "The bag helped protect the notebook from the rain.",
+        "The notebook caused the rain.",
+        "Jo walked to school without a bag.",
+        "The clouds appeared only after the shower."
+      ],
+      "correctAnswer": "The bag helped protect the notebook from the rain.",
+      "explanation": "The dark clouds explain why Jo used the waterproof bag, and the dry notebook is consistent with that protection.",
+      "errorFocus": "Relying on an unrelated detail instead of connecting the action to the outcome.",
+      "hint": "Connect the weather clue, Jo’s action and the result; choose only what those details support.",
+      "misconceptions": {
+        "The notebook caused the rain.": [
+          "CLUE_ACTION_RESULT_NOT_CONNECTED"
+        ],
+        "Jo walked to school without a bag.": [
+          "CLUE_ACTION_RESULT_NOT_CONNECTED"
+        ],
+        "The clouds appeared only after the shower.": [
+          "CLUE_ACTION_RESULT_NOT_CONNECTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "PRONOUN_REFERENCE",
+      "statement": "The science club built a small model and placed it beside the window. By noon, the model was easier to see because sunlight reached it. What does “it” refer to in the last sentence?",
+      "options": [
+        "The science club.",
+        "The model.",
+        "The window.",
+        "The sunlight."
+      ],
+      "correctAnswer": "The model.",
+      "explanation": "The model is the object whose visibility changes. The club, window and sunlight do not fit the meaning of “easier to see”.",
+      "errorFocus": "Matching a pronoun to the nearest noun without checking meaning.",
+      "hint": "Replace “it” with each possible noun and see which one makes the sentence coherent.",
+      "misconceptions": {
+        "The science club.": [
+          "PRONOUN_REFERENCE_BY_DISTANCE_ONLY"
+        ],
+        "The window.": [
+          "PRONOUN_REFERENCE_BY_DISTANCE_ONLY"
+        ],
+        "The sunlight.": [
+          "PRONOUN_REFERENCE_BY_DISTANCE_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CAUSE_CONNECTOR",
+      "statement": "Read: “The library closed early, so the study group met online.” What does “so” signal?",
+      "options": [
+        "The online meeting caused the library to close.",
+        "The two events happened on unrelated days.",
+        "The online meeting was a consequence of the early closure.",
+        "The group preferred the library but could not find it."
+      ],
+      "correctAnswer": "The online meeting was a consequence of the early closure.",
+      "explanation": "“So” introduces the result: because the library closed early, the group met online.",
+      "errorFocus": "Reversing the cause and consequence or ignoring the connector.",
+      "hint": "Read the clause before “so” as the reason and the clause after it as the result.",
+      "misconceptions": {
+        "The online meeting caused the library to close.": [
+          "CAUSE_AND_RESULT_REVERSED"
+        ],
+        "The two events happened on unrelated days.": [
+          "CAUSE_AND_RESULT_REVERSED"
+        ],
+        "The group preferred the library but could not find it.": [
+          "CAUSE_AND_RESULT_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "LEXICAL_CONTRAST",
+      "statement": "A note says: “The first route is crowded, but the riverside path is usually quiet.” What does “crowded” most nearly mean here?",
+      "options": [
+        "Located far from the river.",
+        "Closed for repairs.",
+        "Easy to walk through alone.",
+        "Used by many people at the same time."
+      ],
+      "correctAnswer": "Used by many people at the same time.",
+      "explanation": "The contrast with a path described as quiet suggests that many people are using the first route.",
+      "errorFocus": "Guessing a word without using the contrast that follows “but”.",
+      "hint": "Use the contrast marker “but” and compare “crowded” with “quiet”.",
+      "misconceptions": {
+        "Located far from the river.": [
+          "CONTRAST_CLUE_IGNORED"
+        ],
+        "Closed for repairs.": [
+          "CONTRAST_CLUE_IGNORED"
+        ],
+        "Easy to walk through alone.": [
+          "CONTRAST_CLUE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "VOCABULARY_RESTATEMENT",
+      "statement": "The instructions call the container “reusable”: wash it after lunch and bring it again tomorrow. What does “reusable” mean?",
+      "options": [
+        "It can be used again.",
+        "It must be thrown away after lunch.",
+        "It can only hold cold food.",
+        "It belongs to another student."
+      ],
+      "correctAnswer": "It can be used again.",
+      "explanation": "“Bring it again tomorrow” restates the meaning of “reusable”. The prefix “re-” also signals doing something again.",
+      "errorFocus": "Treating an unfamiliar word as a guess instead of combining a restatement with a word-part clue.",
+      "hint": "Look at the instruction that explains what happens to the container after lunch.",
+      "misconceptions": {
+        "It must be thrown away after lunch.": [
+          "RESTATEMENT_AND_PREFIX_IGNORED"
+        ],
+        "It can only hold cold food.": [
+          "RESTATEMENT_AND_PREFIX_IGNORED"
+        ],
+        "It belongs to another student.": [
+          "RESTATEMENT_AND_PREFIX_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SEQUENCE_MARKER",
+      "statement": "The message reads: “First, scan your card. Then choose a locker. Finally, close the door.” What must happen immediately before the door is closed?",
+      "options": [
+        "The student returns the card.",
+        "The student chooses a locker.",
+        "The student closes another door.",
+        "The student scans the card after choosing a locker."
+      ],
+      "correctAnswer": "The student chooses a locker.",
+      "explanation": "“Then” marks choosing a locker after scanning; “finally” places closing the door last.",
+      "errorFocus": "Confusing the first action with the action immediately before the final step.",
+      "hint": "Follow the sequence words in order and identify the step just before “finally”.",
+      "misconceptions": {
+        "The student returns the card.": [
+          "SEQUENCE_ORDER_MISREAD"
+        ],
+        "The student closes another door.": [
+          "SEQUENCE_ORDER_MISREAD"
+        ],
+        "The student scans the card after choosing a locker.": [
+          "SEQUENCE_ORDER_MISREAD"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "CONCESSION_CONTRAST",
+      "statement": "A review says: “The guide is brief, but it explains every step with clear drawings.” What can be inferred about the guide?",
+      "options": [
+        "It has no drawings because it is brief.",
+        "It is difficult because every step is illustrated.",
+        "Its short length does not prevent it from being helpful.",
+        "The reviewer did not read it."
+      ],
+      "correctAnswer": "Its short length does not prevent it from being helpful.",
+      "explanation": "“But” sets the possible limitation (brief) against a positive feature (clear explanations), so brevity is not presented as making it unhelpful.",
+      "errorFocus": "Treating the first clause as the whole message and missing the contrast.",
+      "hint": "Read both sides of “but”; the second clause changes how the first should be understood.",
+      "misconceptions": {
+        "It has no drawings because it is brief.": [
+          "CONTRAST_SECOND_CLAUSE_IGNORED"
+        ],
+        "It is difficult because every step is illustrated.": [
+          "CONTRAST_SECOND_CLAUSE_IGNORED"
+        ],
+        "The reviewer did not read it.": [
+          "CONTRAST_SECOND_CLAUSE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "CONDITIONAL_SCOPE",
+      "statement": "A sign says: “If the main entrance is locked, use the side door. The side door opens at 8 a.m.” A student arrives at 8:15 and finds the main entrance locked. What should the student do?",
+      "options": [
+        "Wait until the next day.",
+        "Try to open the locked main entrance.",
+        "Use the side door only before 8 a.m.",
+        "Use the side door."
+      ],
+      "correctAnswer": "Use the side door.",
+      "explanation": "The condition is met: the main entrance is locked. The sign gives the side door as the alternative, and its opening time has passed.",
+      "errorFocus": "Applying a conditional instruction when its condition is false or overlooking the stated time.",
+      "hint": "Check whether the “if” condition is true, then use the instruction that follows it.",
+      "misconceptions": {
+        "Wait until the next day.": [
+          "CONDITIONAL_TRIGGER_MISSED"
+        ],
+        "Try to open the locked main entrance.": [
+          "CONDITIONAL_TRIGGER_MISSED"
+        ],
+        "Use the side door only before 8 a.m.": [
+          "CONDITIONAL_TRIGGER_MISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MODAL_STRENGTH",
+      "statement": "A museum notice says: “Visitors may borrow an audio guide at the front desk.” Which interpretation is supported?",
+      "options": [
+        "Borrowing an audio guide is allowed, but the notice does not say it is required.",
+        "Every visitor must borrow an audio guide.",
+        "Audio guides are unavailable at the front desk.",
+        "Visitors are guaranteed to understand every exhibit."
+      ],
+      "correctAnswer": "Borrowing an audio guide is allowed, but the notice does not say it is required.",
+      "explanation": "In this notice, “may” grants permission or indicates availability. It does not make borrowing compulsory or guarantee an outcome.",
+      "errorFocus": "Reading “may” as certainty or obligation rather than permission.",
+      "hint": "Ask whether the sentence allows, requires or predicts the action; the notice gives permission.",
+      "misconceptions": {
+        "Every visitor must borrow an audio guide.": [
+          "MODAL_PERMISSION_CONFUSED_WITH_REQUIREMENT"
+        ],
+        "Audio guides are unavailable at the front desk.": [
+          "MODAL_PERMISSION_CONFUSED_WITH_REQUIREMENT"
+        ],
+        "Visitors are guaranteed to understand every exhibit.": [
+          "MODAL_PERMISSION_CONFUSED_WITH_REQUIREMENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "TITLE_KEYWORD_PATTERN",
+      "statement": "A short article is titled “A Cooler Schoolyard”. Its paragraphs describe shade trees, a covered waiting area and lower afternoon temperatures. What is the article mainly about?",
+      "options": [
+        "A competition to identify the tallest student.",
+        "Ways the schoolyard is made more comfortable in hot weather.",
+        "How to measure rainfall during class.",
+        "Why the school removed every tree."
+      ],
+      "correctAnswer": "Ways the schoolyard is made more comfortable in hot weather.",
+      "explanation": "The title and repeated details about shade and temperature point to reducing heat and improving comfort.",
+      "errorFocus": "Using a single word from the title without checking the repeated ideas in the text.",
+      "hint": "Combine the title with details that appear across the paragraphs.",
+      "misconceptions": {
+        "A competition to identify the tallest student.": [
+          "TITLE_NOT_CHECKED_AGAINST_DETAILS"
+        ],
+        "How to measure rainfall during class.": [
+          "TITLE_NOT_CHECKED_AGAINST_DETAILS"
+        ],
+        "Why the school removed every tree.": [
+          "TITLE_NOT_CHECKED_AGAINST_DETAILS"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "NOTICE_IMPLIED_ACTION",
+      "statement": "Read: “The return box will be collected at 4 p.m. Items placed beside it after collection stay until the next school day.” A student arrives at 4:10 with a book to return today. What is the best action?",
+      "options": [
+        "Leave the book beside the box and assume it will be collected today.",
+        "Put the book inside the already collected box from outside.",
+        "Ask staff whether another return option is available today.",
+        "Keep the book permanently because collection has passed."
+      ],
+      "correctAnswer": "Ask staff whether another return option is available today.",
+      "explanation": "The notice says items placed beside the box after collection wait until the next school day. It does not describe another option, so the student should ask staff rather than assume.",
+      "errorFocus": "Treating an unavailable process as if the text promised it would happen.",
+      "hint": "Use the collection time and the consequence after 4 p.m.; do not invent a procedure.",
+      "misconceptions": {
+        "Leave the book beside the box and assume it will be collected today.": [
+          "UNSTATED_PROCESS_ASSUMED"
+        ],
+        "Put the book inside the already collected box from outside.": [
+          "UNSTATED_PROCESS_ASSUMED"
+        ],
+        "Keep the book permanently because collection has passed.": [
+          "UNSTATED_PROCESS_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "EMAIL_TONE_AND_PURPOSE",
+      "statement": "A message reads: “Thanks for sending the draft. Could you add the missing date before we share it with the group? The rest is ready.” What is the sender asking, and what is the tone?",
+      "options": [
+        "Rewrite the entire draft; the tone is angry.",
+        "Remove the date; the tone is uncertain about sharing.",
+        "Send the draft immediately without changes; the tone is dismissive.",
+        "Add one date; the tone is constructive and appreciative."
+      ],
+      "correctAnswer": "Add one date; the tone is constructive and appreciative.",
+      "explanation": "The request is limited to the missing date, while “thanks” and “the rest is ready” signal appreciation and confidence in the rest of the draft.",
+      "errorFocus": "Exaggerating a specific revision request or ignoring positive language around it.",
+      "hint": "Separate the requested action from the phrases that show how the sender views the work.",
+      "misconceptions": {
+        "Rewrite the entire draft; the tone is angry.": [
+          "REQUEST_SCOPE_OR_TONE_EXAGGERATED"
+        ],
+        "Remove the date; the tone is uncertain about sharing.": [
+          "REQUEST_SCOPE_OR_TONE_EXAGGERATED"
+        ],
+        "Send the draft immediately without changes; the tone is dismissive.": [
+          "REQUEST_SCOPE_OR_TONE_EXAGGERATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLAIM_LIMITED_BY_EVIDENCE",
+      "statement": "A report says: “In one class, 18 of 24 students used the new map. Several said it was easier to read. The report covers only the first week.” Which conclusion is best supported?",
+      "options": [
+        "The map was used by most students in that class during the first week, but wider effects are not established.",
+        "The map improved learning for every student in every school.",
+        "Only six students could read the map.",
+        "The report proves that the map should replace all other materials."
+      ],
+      "correctAnswer": "The map was used by most students in that class during the first week, but wider effects are not established.",
+      "explanation": "Eighteen of 24 is a majority in that one class. The limited sample, comments and one-week period do not support universal or long-term claims.",
+      "errorFocus": "Generalizing beyond the group and period actually described.",
+      "hint": "Keep the conclusion within the stated class, sample and time window.",
+      "misconceptions": {
+        "The map improved learning for every student in every school.": [
+          "EVIDENCE_SCOPE_OVERGENERALIZED"
+        ],
+        "Only six students could read the map.": [
+          "EVIDENCE_SCOPE_OVERGENERALIZED"
+        ],
+        "The report proves that the map should replace all other materials.": [
+          "EVIDENCE_SCOPE_OVERGENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "MULTI_SENTENCE_CAUSAL_CHAIN",
+      "statement": "Read: “The community garden lost its label cards during the storm. New visitors began picking unfamiliar herbs. On Saturday, volunteers added weatherproof labels with short descriptions.” Why did volunteers add descriptions?",
+      "options": [
+        "To make the herbs grow faster after the storm.",
+        "To help visitors identify the herbs and avoid picking them without knowing what they are.",
+        "To prevent visitors from entering the garden on Saturdays.",
+        "To replace every plant with a new variety."
+      ],
+      "correctAnswer": "To help visitors identify the herbs and avoid picking them without knowing what they are.",
+      "explanation": "The sequence connects missing labels with visitors picking unfamiliar herbs. Descriptions address that information problem.",
+      "errorFocus": "Choosing a cause unrelated to the problem described in the preceding sentences.",
+      "hint": "Link the intervention to the problem that appears immediately before it.",
+      "misconceptions": {
+        "To make the herbs grow faster after the storm.": [
+          "INTERVENTION_NOT_LINKED_TO_STATED_PROBLEM"
+        ],
+        "To prevent visitors from entering the garden on Saturdays.": [
+          "INTERVENTION_NOT_LINKED_TO_STATED_PROBLEM"
+        ],
+        "To replace every plant with a new variety.": [
+          "INTERVENTION_NOT_LINKED_TO_STATED_PROBLEM"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SUPPORTED_VS_POSSIBLE",
+      "statement": "A student reads: “The hall was quiet when the debate began. After the first question, several audience members raised their hands.” Which statement is supported, not merely possible?",
+      "options": [
+        "Everyone in the hall agreed with the speaker.",
+        "The debate was cancelled before it began.",
+        "Some audience members wanted to speak after the first question.",
+        "The audience had prepared every question in advance."
+      ],
+      "correctAnswer": "Some audience members wanted to speak after the first question.",
+      "explanation": "Raised hands support that some people wanted to speak. The passage gives no evidence about everyone’s opinion, cancellation or prior preparation.",
+      "errorFocus": "Choosing a plausible story that the text does not establish.",
+      "hint": "Mark the detail that directly supports the conclusion and reject claims about unseen events.",
+      "misconceptions": {
+        "Everyone in the hall agreed with the speaker.": [
+          "POSSIBLE_EVENT_TREATED_AS_PROVEN"
+        ],
+        "The debate was cancelled before it began.": [
+          "POSSIBLE_EVENT_TREATED_AS_PROVEN"
+        ],
+        "The audience had prepared every question in advance.": [
+          "POSSIBLE_EVENT_TREATED_AS_PROVEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMBIGUITY_AND_EVIDENCE_LIMIT",
+      "statement": "A message says: “The room lights were on when I arrived, but nobody answered the door.” What can the reader conclude?",
+      "options": [
+        "A person was definitely inside and chose not to answer.",
+        "The building was empty.",
+        "The message sender turned on the lights after entering.",
+        "The lights were on and nobody answered; the reason is not given."
+      ],
+      "correctAnswer": "The lights were on and nobody answered; the reason is not given.",
+      "explanation": "Only two observations are stated. They do not establish who was inside or why no one answered.",
+      "errorFocus": "Turning one of several possible explanations into a fact.",
+      "hint": "Keep the conclusion to the two observations; the cause remains unknown.",
+      "misconceptions": {
+        "A person was definitely inside and chose not to answer.": [
+          "UNSUPPORTED_CAUSE_INVENTED"
+        ],
+        "The building was empty.": [
+          "UNSUPPORTED_CAUSE_INVENTED"
+        ],
+        "The message sender turned on the lights after entering.": [
+          "UNSUPPORTED_CAUSE_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INFERENCE_NOT_LITERAL_DETAIL",
+      "statement": "Read: “The last train leaves at 9:10. Nia checked the clock at 9:05, packed her bag and started walking quickly toward the station.” Which is an inference rather than a directly stated fact?",
+      "options": [
+        "Nia was trying to reach the train before it left.",
+        "The last train leaves at 9:10.",
+        "Nia checked the clock at 9:05.",
+        "Nia packed her bag."
+      ],
+      "correctAnswer": "Nia was trying to reach the train before it left.",
+      "explanation": "The time, clock check, packing and quick walk are stated. Their connection supports the inference about her goal, but the text never says it directly.",
+      "errorFocus": "Confusing a quoted detail with a conclusion drawn by connecting details.",
+      "hint": "Separate what the passage says word for word from the goal suggested by the actions.",
+      "misconceptions": {
+        "The last train leaves at 9:10.": [
+          "LITERAL_DETAIL_CONFUSED_WITH_INFERENCE"
+        ],
+        "Nia checked the clock at 9:05.": [
+          "LITERAL_DETAIL_CONFUSED_WITH_INFERENCE"
+        ],
+        "Nia packed her bag.": [
+          "LITERAL_DETAIL_CONFUSED_WITH_INFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "CONTEXTUAL_WORD_MEANING",
+      "statement": "A student writes: “I can’t join the game yet; I’m still catching my breath after the run.” What does “catching my breath” mean here?",
+      "options": [
+        "Trying to remember the rules.",
+        "Recovering normal breathing after physical effort.",
+        "Waiting for another person to arrive.",
+        "Speaking more quietly so nobody hears."
+      ],
+      "correctAnswer": "Recovering normal breathing after physical effort.",
+      "explanation": "The run is the surrounding clue. The phrase means the student needs a moment to breathe normally again.",
+      "errorFocus": "Interpreting an expression word by word instead of using its situation.",
+      "hint": "Use the action just mentioned (the run) to interpret the expression.",
+      "misconceptions": {
+        "Trying to remember the rules.": [
+          "IDIOM_READ_LITERALLY"
+        ],
+        "Waiting for another person to arrive.": [
+          "IDIOM_READ_LITERALLY"
+        ],
+        "Speaking more quietly so nobody hears.": [
+          "IDIOM_READ_LITERALLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "ANNOUNCEMENT_CHANGED_DETAIL",
+      "statement": "An announcement says: “Because the first room is being repaired, today’s workshop begins in room 14 instead of room 8. The start time remains 2 p.m.” What changed?",
+      "options": [
+        "The time changed to 8 p.m.",
+        "The workshop was cancelled.",
+        "The room changed; the time stayed the same.",
+        "The workshop moved to another day and room."
+      ],
+      "correctAnswer": "The room changed; the time stayed the same.",
+      "explanation": "The text contrasts a new room with an unchanged time. It gives no cancellation or date change.",
+      "errorFocus": "Extending one change to details the announcement explicitly keeps the same.",
+      "hint": "Track each detail separately: room, time and date.",
+      "misconceptions": {
+        "The time changed to 8 p.m.": [
+          "CHANGE_SPREAD_TO_UNMENTIONED_DETAILS"
+        ],
+        "The workshop was cancelled.": [
+          "CHANGE_SPREAD_TO_UNMENTIONED_DETAILS"
+        ],
+        "The workshop moved to another day and room.": [
+          "CHANGE_SPREAD_TO_UNMENTIONED_DETAILS"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ADVERTISEMENT_EVIDENCE",
+      "statement": "An ad says: “Our reading lamp is the best for every student.” It lists three color choices but gives no test, comparison or user data. What is the most careful conclusion?",
+      "options": [
+        "The lamp is proven to improve every student’s grades.",
+        "The lamp is unsuitable because it has three colors.",
+        "The ad proves that all other lamps are unsafe.",
+        "The ad makes a broad claim, but the listed colors do not prove that it is best for everyone."
+      ],
+      "correctAnswer": "The ad makes a broad claim, but the listed colors do not prove that it is best for everyone.",
+      "explanation": "Color options describe the product but are not evidence for the universal “best” claim.",
+      "errorFocus": "Treating an unrelated product feature as proof of effectiveness.",
+      "hint": "Compare the evidence offered with the exact claim being made.",
+      "misconceptions": {
+        "The lamp is proven to improve every student’s grades.": [
+          "FEATURE_MISTAKEN_FOR_CLAIM_EVIDENCE"
+        ],
+        "The lamp is unsuitable because it has three colors.": [
+          "FEATURE_MISTAKEN_FOR_CLAIM_EVIDENCE"
+        ],
+        "The ad proves that all other lamps are unsafe.": [
+          "FEATURE_MISTAKEN_FOR_CLAIM_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_MESSAGES_PURPOSE",
+      "statement": "Message A: “Bring a reusable cup; water will be available.” Message B: “The event ended with 40 fewer disposable cups than last year.” Which connection is best supported?",
+      "options": [
+        "Using reusable cups may help reduce disposable-cup use, though the messages do not prove it caused the whole reduction.",
+        "The reusable cups caused every part of the reduction.",
+        "Water was unavailable at the event.",
+        "The event used 40 more disposable cups than last year."
+      ],
+      "correctAnswer": "Using reusable cups may help reduce disposable-cup use, though the messages do not prove it caused the whole reduction.",
+      "explanation": "The messages are consistent with reusable cups contributing to lower disposable use, but they do not isolate that as the only cause.",
+      "errorFocus": "Confusing a plausible contribution with proof of a sole cause.",
+      "hint": "Connect the messages cautiously and distinguish consistency from causal proof.",
+      "misconceptions": {
+        "The reusable cups caused every part of the reduction.": [
+          "CORRELATION_TREATED_AS_SOLE_CAUSE"
+        ],
+        "Water was unavailable at the event.": [
+          "CORRELATION_TREATED_AS_SOLE_CAUSE"
+        ],
+        "The event used 40 more disposable cups than last year.": [
+          "CORRELATION_TREATED_AS_SOLE_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "PRONOUN_AND_CAUSAL_LINK",
+      "statement": "Read: “Ava lent her calculator to Bea after Bea said that Bea’s own calculator had stopped working. Bea returned the borrowed calculator after class.” Whose calculator had stopped working?",
+      "options": [
+        "Ava’s calculator.",
+        "Bea’s calculator.",
+        "The teacher’s calculator.",
+        "The passage does not indicate that any calculator stopped working."
+      ],
+      "correctAnswer": "Bea’s calculator.",
+      "explanation": "The text explicitly says Bea’s own calculator had stopped working; Ava lent her calculator as a replacement.",
+      "errorFocus": "Resolving a pronoun without following the causal relation in the sentence.",
+      "hint": "Ask who needed to borrow a calculator and test each name in the sentence.",
+      "misconceptions": {
+        "Ava’s calculator.": [
+          "PRONOUN_CAUSE_LINK_IGNORED"
+        ],
+        "The teacher’s calculator.": [
+          "PRONOUN_CAUSE_LINK_IGNORED"
+        ],
+        "The passage does not indicate that any calculator stopped working.": [
+          "PRONOUN_CAUSE_LINK_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "CONDITION_NOT_CERTAINTY",
+      "statement": "A travel note says: “The ferry may be delayed if strong winds continue. Check the board before boarding.” Which action follows from the note?",
+      "options": [
+        "Assume the ferry has already been cancelled.",
+        "Ignore the board because the ferry must be on time.",
+        "Check the board because a delay is possible, not certain.",
+        "Leave before checking any update."
+      ],
+      "correctAnswer": "Check the board because a delay is possible, not certain.",
+      "explanation": "“May be delayed” signals possibility under a condition. The instruction is to check for current information.",
+      "errorFocus": "Reading a conditional possibility as a certain outcome.",
+      "hint": "Notice both “may” and “if”; then follow the explicit instruction to check.",
+      "misconceptions": {
+        "Assume the ferry has already been cancelled.": [
+          "POSSIBILITY_READ_AS_CERTAINTY"
+        ],
+        "Ignore the board because the ferry must be on time.": [
+          "POSSIBILITY_READ_AS_CERTAINTY"
+        ],
+        "Leave before checking any update.": [
+          "POSSIBILITY_READ_AS_CERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-infer-text-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SUMMARIZE",
+      "contextFamily": "MAIN_IDEA_WITHOUT_OVERREACH",
+      "statement": "A paragraph says that a neighborhood group repaired a bench, added a small shade cover and asked residents which area should be improved next. Which summary best captures the paragraph?",
+      "options": [
+        "The group rebuilt the entire neighborhood park.",
+        "Residents opposed every change to the area.",
+        "The paragraph is mainly about buying new benches.",
+        "Residents and volunteers are improving a shared space and planning another change together."
+      ],
+      "correctAnswer": "Residents and volunteers are improving a shared space and planning another change together.",
+      "explanation": "The summary combines the repair, shade and request for resident input without claiming a complete rebuild or opposition.",
+      "errorFocus": "Selecting one concrete detail as the whole idea or adding unsupported scale.",
+      "hint": "Include the repeated purpose that links the actions, but do not make it broader than the text.",
+      "misconceptions": {
+        "The group rebuilt the entire neighborhood park.": [
+          "DETAIL_SUBSTITUTED_FOR_MAIN_IDEA"
+        ],
+        "Residents opposed every change to the area.": [
+          "DETAIL_SUBSTITUTED_FOR_MAIN_IDEA"
+        ],
+        "The paragraph is mainly about buying new benches.": [
+          "DETAIL_SUBSTITUTED_FOR_MAIN_IDEA"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Inferir sentidos com pistas do texto",
+    "objective": "Construir uma interpretação que não está escrita literalmente, apontando palavras, relações entre frases e detalhes do contexto que a sustentam.",
+    "summary": "Inferir não é adivinhar: é ligar pistas do texto a uma conclusão limitada pelo que foi lido. Vocabulário, conectores, pronomes, sequência, título e finalidade ajudam a construir essa conclusão.",
+    "explanation": "## 1. Diferencie informação explícita e inferência\nUma informação explícita aparece diretamente: em “The room opens at 8 a.m.”, o horário é 8 da manhã. Uma inferência é uma conclusão construída a partir de pistas: se o texto diz “The floor is wet; Sam puts a warning sign by the door”, podemos inferir que o aviso ajuda a prevenir escorregões. O texto não precisa dizer isso palavra por palavra, mas as pistas precisam sustentar a conclusão.\n\nUse este teste: consigo apontar uma ou mais partes do texto que justificam minha resposta? Se não, talvez eu esteja imaginando uma possibilidade em vez de inferindo.\n\n## 2. Descubra palavras pelo contexto\nQuando uma palavra é desconhecida, não pare na tradução isolada. Procure pistas próximas: uma explicação ou reformulação (“The box is fragile; it can break easily”); um contraste (“The main route is crowded, but the riverside path is quiet”); um exemplo ou consequência; ou partes conhecidas da palavra, como o prefixo “re-” em “reuse”. Depois substitua a palavra pela hipótese e releia a frase. Ela deve combinar com o restante do texto.\n\n## 3. Siga as relações entre as frases\nConectores organizam o raciocínio. “Because” geralmente apresenta uma razão; “so” costuma introduzir uma consequência; “but” sinaliza contraste; “if” estabelece uma condição. Leia os dois lados do conector e confira a direção da relação.\n\nPronomes também ligam partes: em “Maya checked the map. She found the entrance”, “she” retoma Maya. Não escolha apenas o substantivo mais próximo. Substitua o pronome por cada candidato e veja qual mantém sentido e concordância.\n\nPalavras como “first”, “then” e “finally” mostram ordem. Expressões como “may”, “might” e “could” podem indicar possibilidade; não as transforme em certeza. “Must” pode expressar obrigação. O contexto define a leitura adequada.\n\n## 4. Identifique propósito, ideia principal e limites\nPara entender a ideia principal, combine o título com detalhes repetidos em diferentes frases. Para inferir a finalidade, pergunte o que o texto tenta fazer: informar, orientar, convidar, pedir uma ação ou defender uma ideia.\n\nCompare a conclusão com a evidência. Uma amostra de uma turma não prova o resultado para todas as escolas. Uma característica de um produto não comprova que ele é “o melhor”. Um evento associado a outro não prova, sozinho, que foi sua única causa. Prefira a conclusão mais específica que explica as pistas sem acrescentar fatos.\n\n## Exemplo resolvido\nLeia: “The outdoor reading circle moved under the roof because rain was expected. The books stayed in sealed boxes.”\n1. Pistas: havia previsão de chuva; o grupo mudou de lugar; os livros ficaram em caixas fechadas.\n2. Relação: “because” apresenta a razão da mudança.\n3. Inferência sustentada: o grupo procurou continuar a atividade em um local coberto e proteger os livros da chuva.\n4. Limite: não sabemos se a chuva chegou a cair, quantas pessoas participaram ou se a atividade foi cancelada depois.\n\nUma resposta forte mostra a conclusão e a pista que a sustenta. Quando duas respostas parecem possíveis, prefira a que exige menos suposições e respeita todas as condições do texto.",
+    "workedExample": "“The outdoor reading circle moved under the roof because rain was expected. The books stayed in sealed boxes.” A mudança para um local coberto e as caixas fechadas sustentam a inferência de que os participantes queriam continuar a atividade e proteger os livros. O texto não confirma que a chuva caiu.",
+    "commonMistake": "Escolher uma possibilidade plausível como se fosse fato, ignorar conectores ou pronomes, traduzir palavra por palavra sem contexto, ou ampliar a conclusão para além da amostra, do tempo ou da condição descritos.",
+    "commonErrors": [
+      "Adivinhar vocabulário sem procurar reformulação, contraste ou consequência.",
+      "Reverter causa e resultado ao ler because, so ou but.",
+      "Escolher o antecedente de um pronome pela distância, sem testar o sentido.",
+      "Transformar may ou uma condição com if em certeza.",
+      "Confundir uma informação explícita com uma inferência.",
+      "Generalizar evidência local para todas as pessoas ou situações."
+    ],
+    "tips": [
+      "Sublinhe a pista exata antes de escolher uma inferência.",
+      "Leia os dois lados de conectores e condições; desenhe uma seta de razão para resultado se ajudar.",
+      "Troque o pronome por seu possível referente e releia a frase.",
+      "Pergunte o que o texto não informa e descarte conclusões que dependem disso."
+    ],
+    "priorKnowledge": [
+      "Localizar palavras e detalhes explícitos em frases curtas em inglês.",
+      "Reconhecer conectores frequentes como because, so, but, if e then.",
+      "Ler pronomes pessoais e demonstrativos em contextos simples."
+    ],
+    "keyConcepts": [
+      "informação explícita e informação inferida",
+      "pistas lexicais, reformulação, contraste e partes de palavras",
+      "relações de causa, consequência, contraste, condição e sequência",
+      "referência pronominal verificada pelo sentido",
+      "ideia principal, finalidade e escopo da evidência",
+      "inferência sustentada versus suposição"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer pistas lexicais, referência pronominal e conectores em textos curtos.",
+        "questionIds": [
+          "v5-english-infer-text-probe-01",
+          "v5-english-infer-text-probe-02",
+          "v5-english-infer-text-probe-03"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Usar reformulação, contraste, condição, sequência e finalidade com pistas identificáveis.",
+        "questionIds": [
+          "v5-english-infer-text-practice-01",
+          "v5-english-infer-text-practice-02",
+          "v5-english-infer-text-practice-03",
+          "v5-english-infer-text-practice-04",
+          "v5-english-infer-text-practice-05",
+          "v5-english-infer-text-practice-06",
+          "v5-english-infer-text-practice-07"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar inferência em avisos, mensagens e relatos com mais de uma frase e delimitar a evidência.",
+        "questionIds": [
+          "v5-english-infer-text-transfer-01",
+          "v5-english-infer-text-transfer-02",
+          "v5-english-infer-text-transfer-03",
+          "v5-english-infer-text-transfer-04"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Justificar uma conclusão, diferenciar fato de inferência e reconhecer quando o texto é insuficiente.",
+        "questionIds": [
+          "v5-english-infer-text-lock-01",
+          "v5-english-infer-text-lock-02",
+          "v5-english-infer-text-lock-03"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Retomar vocabulário contextual, pronomes, modalidade, propósito e limites de generalização.",
+        "questionIds": [
+          "v5-english-infer-text-review-01",
+          "v5-english-infer-text-review-02",
+          "v5-english-infer-text-review-03",
+          "v5-english-infer-text-review-04",
+          "v5-english-infer-text-review-05",
+          "v5-english-infer-text-review-06",
+          "v5-english-infer-text-review-07"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "INFERENCE_NEEDS_EVIDENCE",
+        "text": "A inferência vai além da frase literal, mas cada passo precisa apontar para uma pista do texto."
+      },
+      {
+        "trigger": "CONNECTOR_DIRECTION",
+        "text": "Leia os dois lados do conector; because, so e but não estabelecem a mesma relação."
+      },
+      {
+        "trigger": "PRONOUN_REFERENCE",
+        "text": "Teste o referente substituindo o pronome e verificando concordância e sentido."
+      },
+      {
+        "trigger": "MODAL_SCOPE",
+        "text": "Possibilidade, permissão, condição e obrigação têm forças diferentes; preserve a força usada no texto."
+      },
+      {
+        "trigger": "EVIDENCE_LIMIT",
+        "text": "Mantenha a conclusão dentro do grupo, período e condições efetivamente descritos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "NO_TEXTUAL_CLUE",
+        "misconception": "CLUE_ACTION_RESULT_NOT_CONNECTED",
+        "prompt": "Copie a pista do texto e complete: “Como ___, é razoável concluir ___.” Se não houver pista, reduza a conclusão."
+      },
+      {
+        "id": "CONNECTOR_DIRECTION",
+        "misconception": "CAUSE_AND_RESULT_REVERSED",
+        "prompt": "Separe as duas orações. Identifique qual apresenta a razão e qual descreve o resultado; depois leia o conector novamente."
+      },
+      {
+        "id": "PRONOUN_CANDIDATES",
+        "misconception": "PRONOUN_REFERENCE_BY_DISTANCE_ONLY",
+        "prompt": "Teste cada substantivo como referente do pronome. Mantenha apenas aquele que concorda e faz sentido na frase."
+      },
+      {
+        "id": "OVERGENERALIZATION",
+        "misconception": "EVIDENCE_SCOPE_OVERGENERALIZED",
+        "prompt": "Marque quem foi observado e durante quanto tempo. Reescreva a conclusão para não ultrapassar esse recorte."
+      },
+      {
+        "id": "MODAL_FORCE",
+        "misconception": "POSSIBILITY_READ_AS_CERTAINTY",
+        "prompt": "Classifique a frase como possibilidade, permissão, condição ou obrigação e escolha uma resposta com a mesma força."
+      },
+      {
+        "id": "UNSUPPORTED_CAUSE",
+        "misconception": "UNSUPPORTED_CAUSE_INVENTED",
+        "prompt": "Liste apenas os fatos observados. Se mais de uma explicação cabe, o texto não permite escolher uma como certa."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 28,
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Língua Inglesa, Ensino Fundamental, habilidade EF08LI05",
+        "publisher": "Ministério da Educação, Brasil",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A descrição da habilidade EF08LI05 aborda inferir informações e relações não explícitas para construir sentidos."
+        ],
+        "use": "Referência para o objetivo de leitura. Não equivale a validação do mapeamento interno do TecEscola; esse mapeamento e a revisão pedagógica permanecem pendentes."
+      }
+    ],
+    "copyrightNote": "Os textos, exemplos, questões e feedback inéditos deste pacote foram escritos para o TecEscola. O documento curricular é referência conceitual; o mapeamento oficial e a revisão pedagógica humana não foram aprovados."
+  }
+}

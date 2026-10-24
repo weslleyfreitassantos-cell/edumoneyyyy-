@@ -8,7 +8,8 @@ export type SchoolAccessRole =
   | "SECRETARY"
   | "TEACHER"
   | "STUDENT"
-  | "GUARDIAN";
+  | "GUARDIAN"
+  | "PSYCHOLOGIST";
 
 const UPPERCASE = "ABCDEFGHJKLMNPQRSTUVWXYZ";
 const LOWERCASE = "abcdefghijkmnopqrstuvwxyz";
@@ -109,6 +110,7 @@ export function getSchoolAccessRoleLabel(role: SchoolAccessRole): string {
     TEACHER: "Professor(a)",
     STUDENT: "Aluno(a)",
     GUARDIAN: "Responsável",
+    PSYCHOLOGIST: "Psicóloga(o)",
   };
 
   return labels[role];

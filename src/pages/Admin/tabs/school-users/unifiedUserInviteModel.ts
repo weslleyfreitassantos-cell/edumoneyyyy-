@@ -7,6 +7,7 @@ export const UNIFIED_USER_INVITE_TARGETS = [
   'STUDENT',
   'TEACHER',
   'GUARDIAN',
+  'PSYCHOLOGIST',
   'DIRECTOR',
   'SECRETARY',
 ] as const;
@@ -76,6 +77,15 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'guardianship',
       'acesso e senha, quando aplicavel',
     ],
+    isPlanned: false,
+  },
+  {
+    target: 'PSYCHOLOGIST',
+    label: getRoleDisplayLabel('PSYCHOLOGIST'),
+    description: 'Perfil profissional com CRP, vínculo escolar e acesso restrito ao módulo psicológico.',
+    rolePreview: 'PSYCHOLOGIST',
+    availabilityStatuses: ['available_now'],
+    futureRecords: ['profile', 'membership', 'professional registration', 'school link'],
     isPlanned: false,
   },
   {
@@ -216,11 +226,11 @@ export function getAllowedInviteTargets(
   currentRole: string | null | undefined,
 ): UnifiedUserInviteRole[] {
   const inviteTargets = currentRole === 'ADMIN'
-    ? ['DIRECTOR']
+    ? ['DIRECTOR', 'PSYCHOLOGIST']
     : currentRole === 'DIRECTOR'
-      ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN']
+      ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
       : currentRole === 'SECRETARY'
-        ? ['TEACHER', 'STUDENT', 'GUARDIAN']
+        ? ['TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
         : [];
 
   return getManageableSchoolUserRoles(currentRole).filter(
