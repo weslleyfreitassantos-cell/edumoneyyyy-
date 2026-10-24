@@ -621,7 +621,7 @@ begin
   end if;
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(operation_key::text, 0));
   select event.* into v_event from public.psychology_appointment_events event
-    where event.operation_key = operation_key;
+    where event.operation_key = $2;
   if found then
     if v_event.appointment_id = target_appointment_id and v_event.actor_profile_id = auth.uid()
       and v_event.action = 'CANCELLED' then
@@ -675,7 +675,7 @@ begin
   end if;
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(operation_key::text, 0));
   select event.* into v_event from public.psychology_appointment_events event
-    where event.operation_key = operation_key;
+    where event.operation_key = $3;
   if found then
     if v_event.appointment_id = target_appointment_id and v_event.actor_profile_id = auth.uid()
       and v_event.action = 'RESCHEDULED' and v_event.next_starts_at = new_starts_at then
@@ -896,7 +896,7 @@ begin
   );
   select message.id, message.body into message_id, existing_body from public.psychology_messages message
   where message.session_id = target_session_id and message.sender_profile_id = auth.uid()
-    and message.client_message_key = client_message_key;
+    and message.client_message_key = $3;
   if message_id is not null then
     if existing_body is distinct from btrim(message_body) then
       raise exception using message = 'IDEMPOTENCY_KEY_REUSED', errcode = 'P0001';
