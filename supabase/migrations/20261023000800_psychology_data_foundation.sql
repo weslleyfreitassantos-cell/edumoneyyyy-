@@ -285,10 +285,10 @@ returns boolean language sql stable security definer set search_path = '' as $$
       join public.memberships professional_membership
         on professional_membership.profile_id = professional.profile_id
        and professional_membership.institution_id = assignment.institution_id
-      join public.psychology_authorizations authorization
-        on authorization.institution_id = assignment.institution_id
-       and authorization.student_id = student.id
-       and authorization.status = 'ACTIVE'
+      join public.psychology_authorizations consent
+        on consent.institution_id = assignment.institution_id
+       and consent.student_id = student.id
+       and consent.status = 'ACTIVE'
       where assignment.institution_id = target_institution_id
         and assignment.student_id = target_student_id
         and student.profile_id = auth.uid()
@@ -322,10 +322,10 @@ returns boolean language sql stable security definer set search_path = '' as $$
       join public.memberships student_membership
         on student_membership.profile_id = student.profile_id
        and student_membership.institution_id = assignment.institution_id
-      join public.psychology_authorizations authorization
-        on authorization.institution_id = assignment.institution_id
-       and authorization.student_id = student.id
-       and authorization.status = 'ACTIVE'
+      join public.psychology_authorizations consent
+        on consent.institution_id = assignment.institution_id
+       and consent.student_id = student.id
+       and consent.status = 'ACTIVE'
       join public.psychology_professionals professional
         on professional.profile_id = assignment.professional_profile_id
       join public.psychology_professional_institutions professional_link

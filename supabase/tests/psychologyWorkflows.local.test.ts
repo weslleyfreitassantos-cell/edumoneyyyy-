@@ -65,6 +65,45 @@ function localWeekday(date: string): number {
   return new Date(Date.UTC(year, month - 1, day, 15)).getUTCDay();
 }
 
+async function waitForRealtimeEvent<T>(
+  predicate: () => T | undefined,
+  timeoutMs = 5000,
+): Promise<T> {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    const value = predicate();
+    if (value !== undefined) return value;
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  throw new Error('Timed out waiting for authorized psychology realtime message');
+}
+
+async function subscribeToPsychologyMessages(client: AnyClient, topic: string, sessionId: string) {
+  const received: unknown[] = [];
+  let resolveSubscribed!: () => void;
+  let rejectSubscribed!: (error: Error) => void;
+  const subscribed = new Promise<void>((resolve, reject) => {
+    resolveSubscribed = resolve;
+    rejectSubscribed = reject;
+  });
+  const channel = client
+    .channel(topic)
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'psychology_messages',
+      filter: `session_id=eq.${sessionId}`,
+    }, (payload: { new: unknown }) => received.push(payload.new))
+    .subscribe((status: string, error?: Error) => {
+      if (status === 'SUBSCRIBED') resolveSubscribed();
+      if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+        rejectSubscribed(error ?? new Error(`Realtime subscription failed: ${status}`));
+      }
+    });
+  await subscribed;
+  return { channel, received };
+}
+
 localDescribe('psychology workflows against a disposable local Supabase', () => {
   it('enables, authorizes, books, chats, versions a note and denies unrelated access', async () => {
     const service = createClient(localUrl!, serviceRoleKey!, {
@@ -405,12 +444,34 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(started.error).toBeNull();
     expect(started.data).toMatchObject({ status: 'IN_PROGRESS' });
 
+    const realtimeStudent = await subscribeToPsychologyMessages(student.client, `psychology-student-${suffix}`, sessionId);
+    const realtimeProfessional = await subscribeToPsychologyMessages(
+      psychologist.client,
+      `psychology-professional-${suffix}`,
+      sessionId,
+    );
+    const realtimeUnrelatedProfessional = await subscribeToPsychologyMessages(
+      otherPsychologist.client,
+      `psychology-unrelated-professional-${suffix}`,
+      sessionId,
+    );
     const sent = await student.client.rpc('psychology_send_message', {
       target_session_id: sessionId,
       message_body: '<script>not html</script>',
       client_message_key: crypto.randomUUID(),
     });
     expect(sent.error).toBeNull();
+    await Promise.all([
+      waitForRealtimeEvent(() => realtimeStudent.received[0]),
+      waitForRealtimeEvent(() => realtimeProfessional.received[0]),
+    ]);
+    await new Promise((resolve) => setTimeout(resolve, 750));
+    expect(realtimeUnrelatedProfessional.received).toEqual([]);
+    await Promise.all([
+      student.client.removeChannel(realtimeStudent.channel),
+      psychologist.client.removeChannel(realtimeProfessional.channel),
+      otherPsychologist.client.removeChannel(realtimeUnrelatedProfessional.channel),
+    ]);
     const savedMessage = await student.client.from('psychology_messages')
       .select('body')
       .eq('session_id', sessionId)
