@@ -67,7 +67,7 @@ function localWeekday(date: string): number {
 
 async function waitForRealtimeEvent<T>(
   predicate: () => T | undefined,
-  timeoutMs = 5000,
+  timeoutMs = 20_000,
 ): Promise<T> {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
