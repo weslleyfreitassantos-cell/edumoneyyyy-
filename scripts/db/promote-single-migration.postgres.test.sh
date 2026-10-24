@@ -5,7 +5,7 @@ set +x
 repo_root="$(git rev-parse --show-toplevel)"
 promoter="$repo_root/scripts/db/promote-single-migration.sh"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-postgres.XXXXXX")"
-db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
@@ -17,8 +17,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
-status_output="$(npx supabase status -o env)"
-raw_db_url="$(printf '%s\n' "$status_output" | sed -n 's/^DB_URL=//p' | head -n 1 | sed -E "s/^[\\\"']//; s/[\\\"']$//")"
+raw_db_url="${PROMOTION_TEST_DB_URL:-}"
+if [[ -z "$raw_db_url" ]]; then
+  status_output="$(npx supabase status -o env)"
+  raw_db_url="$(printf '%s\n' "$status_output" | sed -n 's/^DB_URL=//p' | head -n 1 | sed -E "s/^[\\\"']//; s/[\\\"']$//")"
+fi
 [[ -n "$raw_db_url" ]] || { echo 'Supabase local DB_URL unavailable' >&2; exit 1; }
 test_db_url="$(RAW_DB_URL="$raw_db_url" python3 - <<'PY'
 import os
@@ -37,6 +40,13 @@ PY
 chronological_db_url="${test_db_url%/promoter_historical_ci}/promoter_chronological_ci"
 
 mkdir -p "$tmp/bin"
+cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
+#!/usr/bin/env bash
+set -euo pipefail
+timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" npx supabase "$@"
+MOCK
+chmod +x "$tmp/bin/supabase-with-timeout"
+
 cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -92,6 +102,7 @@ run_promotion() {
   output="$(PATH="$tmp/bin:$PATH" \
     PROMOTION_TEST_DB_CONTAINER="$db_container" \
     PROMOTION_TEST_DATABASE_NAME="$database_name" \
+    SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
     SOURCE_ROOT="$fixture" \
     TARGET_VERSION="$target_version" \
     EXPECTED_REMOTE_LAST="$base_version" \
@@ -175,6 +186,7 @@ exception_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DB_CONTAINER="$db_container" \
   PROMOTION_TEST_DATABASE_NAME="$exception_database" \
+  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
   PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
   SOURCE_ROOT="$repo_root" \
