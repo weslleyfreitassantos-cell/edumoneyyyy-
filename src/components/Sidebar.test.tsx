@@ -1007,4 +1007,37 @@ describe('sidebar navigation helpers', () => {
       expect(items.map((item) => item.id)).not.toContain('email');
     }
   });
+
+  it('libera Almoxarifado somente para perfis operacionais com vínculo institucional', () => {
+    for (const role of ['DIRECTOR', 'SECRETARY', 'TEACHER'] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role },
+        currentInstitutionRole: role,
+        currentInstitutionId: 'institution-1',
+        currentUserRole: role.toLowerCase() as User['role'],
+        pathname: '/dashboard',
+      });
+      expect(items.map((item) => item.id)).toContain('inventory');
+    }
+
+    for (const role of ['ADMIN', 'STUDENT', 'GUARDIAN'] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role },
+        currentInstitutionRole: role,
+        currentInstitutionId: 'institution-1',
+        currentUserRole: role === 'GUARDIAN' ? 'parent' : role.toLowerCase() as User['role'],
+        pathname: '/dashboard',
+      });
+      expect(items.map((item) => item.id)).not.toContain('inventory');
+    }
+
+    const withoutMembership = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionId: null,
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+    });
+    expect(withoutMembership.map((item) => item.id)).not.toContain('inventory');
+  });
 });

@@ -26,4 +26,10 @@ describe('learning center and library routes', () => {
     expect(appSource).toContain('path="/teacher/pedagogical-center/activities"');
     expect(appSource).toContain("allowedRoles={['TEACHER']}");
   });
+
+  it('protects inventory for institution staff and excludes account/platform administrators', () => {
+    expect(appSource).toContain('path="/inventory"');
+    expect(appSource).toContain("allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}");
+    expect(appSource).toContain("import('./components/inventory/InventoryPage')");
+  });
 });

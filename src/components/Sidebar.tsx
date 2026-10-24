@@ -8,6 +8,7 @@ import {
   BookMarked,
   BadgeCheck,
   BarChart3,
+  Boxes,
   BookOpenCheck,
   CalendarDays,
   CalendarClock,
@@ -424,6 +425,15 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/cameras'],
   },
   {
+    id: 'inventory',
+    label: 'Almoxarifado',
+    path: '/inventory',
+    section: 'school',
+    icon: Boxes,
+    roles: ['director', 'secretary', 'teacher'],
+    activePaths: ['/inventory'],
+  },
+  {
     id: 'terminals',
     label: 'TV Escola',
     path: '/terminais',
@@ -490,12 +500,14 @@ function preloadEmailPage(): void {
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
+  currentInstitutionId,
   currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionId?: string | null;
   currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
@@ -530,6 +542,16 @@ export function getSidebarNavigationItems({
         item.id === 'dashboard' &&
         (currentUserRole === 'director' ||
           currentUserRole === 'secretary')
+      ) {
+        return false;
+      }
+
+      if (
+        item.id === 'inventory' &&
+        (!currentInstitutionId ||
+          profile.platform_role === 'SUPER_ADMIN' ||
+          profile.role === 'ADMIN' ||
+          !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? ''))
       ) {
         return false;
       }
@@ -667,6 +689,7 @@ export default function Sidebar({
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
+    currentInstitutionId,
     currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
@@ -1097,7 +1120,9 @@ export default function Sidebar({
         >
           {groupedSections.map((section) => {
             const items = navigationItems.filter(
-              (item) => item.section === section,
+              (item) =>
+                item.section === section &&
+                !baseAdminNavigationGroupByItemId[item.id],
             );
 
             return (
