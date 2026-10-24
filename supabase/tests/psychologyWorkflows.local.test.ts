@@ -456,6 +456,11 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       `psychology-professional-${suffix}`,
       sessionId,
     );
+    const realtimeService = await subscribeToPsychologyMessages(
+      service,
+      `psychology-service-${suffix}`,
+      sessionId,
+    );
     const realtimeUnrelatedProfessional = await subscribeToPsychologyMessages(
       otherPsychologist.client,
       `psychology-unrelated-professional-${suffix}`,
@@ -488,13 +493,19 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
         20_000,
         `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
+      waitForRealtimeEvent(
+        () => realtimeService.received[0],
+        20_000,
+        `service realtime message (subscription: ${realtimeService.statuses.join(',') || 'none'})`,
+      ).then(() => null).catch((error: Error) => error.message),
     ]);
-    expect(deliveryResults).toEqual([null, null]);
+    expect(deliveryResults).toEqual([null, null, null]);
     await new Promise((resolve) => setTimeout(resolve, 750));
     expect(realtimeUnrelatedProfessional.received).toEqual([]);
     await Promise.all([
       student.client.removeChannel(realtimeStudent.channel),
       psychologist.client.removeChannel(realtimeProfessional.channel),
+      service.removeChannel(realtimeService.channel),
       otherPsychologist.client.removeChannel(realtimeUnrelatedProfessional.channel),
     ]);
     const savedMessage = await student.client.from('psychology_messages')
