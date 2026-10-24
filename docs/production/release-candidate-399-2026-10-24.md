@@ -164,26 +164,36 @@ usar `migration repair`, SQL remoto ad hoc ou push generico.
 
 ## Recuperacao do Almoxarifado em producao — 2026-10-24
 
-- A `main` confirmada para o release #399 e o SHA
-  `36979b8adc4408bf9eaccdf77f742904fba152fc`.
-- A copia Windows existente foi verificada com SHA-256
+- A `main` confirmada para o release #399 continua no SHA
+  `36979b8adc4408bf9eaccdf77f742904fba152fc`; a PR #399 ja esta mesclada.
+- A copia Windows existente foi revalidada com SHA-256
   `b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0`.
-  O restore continua `NOT_RUN`, a recuperacao integral nao foi comprovada e o
-  gate de backup offsite continua `FAIL`.
-- O promotor agora prepara uma excecao explicitamente limitada ao SHA do
-  release #399, ao hash conhecido da copia Windows e aos hashes das 15
-  migrations listadas nesta nota. A excecao exige aceite do risco de
-  recuperacao incompleta e a autorizacao existente de escrita em producao; nao
-  converte nem mascara o gate offsite.
+- O PostgreSQL do backup foi restaurado em ambiente WSL descartavel e isolado:
+  `POSTGRES_RESTORE=PASS`. O ledger de origem preservou 221 versoes, sem
+  duplicatas; o banco-base restaurado foi mantido separado da copia de teste.
+- O arquivo fisico do Storage foi extraido e verificado por copia local, mas a
+  recuperacao integral nao foi comprovada: 12.248 arquivos (352.364.428 bytes)
+  nao puderam ser reconciliados com 21.990 linhas `storage.objects` cujos
+  metadados declaram 599.629.064 bytes. Portanto
+  `STORAGE_RECOVERY=PARTIAL` e `BACKUP_RESTORE=PARTIAL`.
+- As 15 migrations autorizadas foram aplicadas individualmente apenas em uma
+  copia descartavel do banco restaurado. O ledger final contem exatamente 236
+  versoes, sem duplicatas; as 15 alvos estao presentes e
+  `20261023000600` continua ausente. As tabelas preexistentes nao tiveram
+  reducao de linhas; as tabelas/RPCs/RLS do Almoxarifado foram verificadas.
+  `RESTORED_DATABASE_MIGRATION_TEST=PASS`.
+- O gate de backup offsite continua `FAIL`: a copia local validada nao repara
+  nem atesta a rotina offsite da VPS.
+- A excecao operacional da branch exige agora o resultado verificado
+  `BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL` e
+  `BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL`, mantendo o gate offsite em `FAIL`
+  e o aceite explicito do risco incompleto. A excecao nao aprova por si so uma
+  escrita em producao.
 - A migration `20261023000600` permanece excluida. A promocao continua
   individual, seletiva, com validacao de hash, dry-run e ledger exato; qualquer
   estado incerto continua exigindo leitura antes de qualquer tentativa.
-- A prova PostgreSQL descartavel da excecao foi adicionada ao teste de CI. O
-  Docker local nao estava disponivel durante esta preparacao, portanto essa
-  prova ainda depende do job `database` do GitHub.
-- A excecao ainda nao foi aprovada pelo proprietario e nenhuma migration foi
-  aplicada na producao. Nao iniciar a primeira escrita ate o aceite explicito
-  solicitado pela campanha.
-- O ajuste de menu deve permanecer em branch e PR separados, baseados nesta
-  `main`, contendo somente o agrupamento de Almoxarifado em
-  **Comunicacao e recursos**.
+- Nenhuma migration foi aplicada em producao; nenhum dado, ledger, Worker,
+  Cloudflare ou VPS foi alterado nesta validacao local.
+- O ajuste de menu permanece em branch/PR separado e contem somente o
+  agrupamento do Almoxarifado em **Comunicacao e recursos**. A branch
+  `codex/role-menu-groups` continua excluida desta entrega.

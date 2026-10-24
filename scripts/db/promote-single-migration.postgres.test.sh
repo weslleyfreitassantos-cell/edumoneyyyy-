@@ -187,7 +187,8 @@ exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
   BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
   BACKUP_EXCEPTION_BACKUP_FILE="$exception_backup" \
-  BACKUP_EXCEPTION_RESTORE_STATUS=NOT_RUN \
+  BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL \
+  BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
   BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
   ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399 \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
@@ -196,7 +197,8 @@ exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
 printf '%s\n' "$exception_output"
 grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
-grep -q '^BACKUP_EXCEPTION_RESTORE=NOT_RUN$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
 grep -q '^PROMOTION=APPLIED$' <<< "$exception_output"
 grep -Fxq "REMOTE_AFTER_COUNT=2" <<< "$exception_output"

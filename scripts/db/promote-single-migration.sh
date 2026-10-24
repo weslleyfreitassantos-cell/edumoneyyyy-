@@ -163,8 +163,10 @@ authorize_production_write() {
         abort "backup exception does not identify the verified Windows copy"
       [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
         abort "backup exception SHA-256 does not match the verified Windows copy"
-      [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'NOT_RUN' ]] || \
-        abort "backup exception must record restore status NOT_RUN"
+      [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
+        abort "backup exception must record the verified restore status PARTIAL"
+      [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+        abort "backup exception must record the verified storage status PARTIAL"
       [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
         abort "backup exception must preserve the offsite gate as FAIL"
       [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
@@ -185,7 +187,8 @@ authorize_production_write() {
       printf 'BACKUP_EXCEPTION=USED\n'
       printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
       printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${actual_backup_sha}"
-      printf 'BACKUP_EXCEPTION_RESTORE=NOT_RUN\n'
+      printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
+      printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
       printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
       printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
       printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
