@@ -1,11 +1,17 @@
 import type {
+  AcademicDocumentEnrollment,
   AcademicDocumentStudent,
 } from '../../services/academicDocumentService';
+import type { ReportCardSubjectResult } from '../../services/reportCardService';
+import type { AttendanceDeclarationRow } from '../../services/academicDocumentPolicy';
 import type { ReactNode } from 'react';
 
 export type AcademicDocumentType =
   | 'ENROLLMENT_DECLARATION'
-  | 'REGISTRATION_SHEET';
+  | 'REGISTRATION_SHEET'
+  | 'ATTENDANCE_DECLARATION'
+  | 'REENROLLMENT_RECEIPT'
+  | 'TRANSCRIPT_PREVIEW';
 
 export function formatLocalIssueDate(date: Date): string {
   return new Intl.DateTimeFormat('pt-BR', {
@@ -60,7 +66,7 @@ function DocumentFrame({
       </header>
       {children}
       <footer className="mt-10 border-t border-slate-200 pt-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400">
-        Documento emitido em {formatLocalIssueDate(new Date())}.
+        {title.startsWith('Prévia') ? 'Prévia gerada em' : 'Documento emitido em'} {formatLocalIssueDate(new Date())}.
       </footer>
     </article>
   );
@@ -246,6 +252,141 @@ export function StudentRegistrationSheetDocument({
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">Nenhuma matrícula registrada.</p>
           )}
         </section>
+      </div>
+    </DocumentFrame>
+  );
+}
+
+export function AttendanceDeclarationDocument({
+  student,
+  institutionName,
+  logoUrl,
+  academicYearName,
+  rows,
+}: {
+  student: AcademicDocumentStudent;
+  institutionName: string;
+  logoUrl?: string | null;
+  academicYearName: string;
+  rows: readonly AttendanceDeclarationRow[];
+}) {
+  return (
+    <DocumentFrame institutionName={institutionName} logoUrl={logoUrl} title="Declaração de frequência">
+      <div className="space-y-6 pt-8 text-base leading-7">
+        <p>
+          Declaramos que <strong>{student.name}</strong>, RA <strong>{student.registrationNumber}</strong>,
+          possui registros oficiais de frequência encerrados no ano letivo de <strong>{academicYearName}</strong>,
+          conforme detalhamento abaixo.
+        </p>
+        <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+          <table className="min-w-full text-left text-sm">
+            <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              <tr><th className="px-4 py-3">Período</th><th className="px-4 py-3">Componente curricular</th><th className="px-4 py-3">Frequência registrada</th></tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+              {rows.map((row) => (
+                <tr key={`${row.subjectName}-${row.termName}`}>
+                  <td className="px-4 py-3">{row.termName}</td>
+                  <td className="px-4 py-3">{row.subjectName}</td>
+                  <td className="px-4 py-3">{row.attendancePercentage.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>Os percentuais acima correspondem aos registros acadêmicos encerrados para cada componente e período.</p>
+      </div>
+    </DocumentFrame>
+  );
+}
+
+export function ReenrollmentReceiptDocument({
+  student,
+  institutionName,
+  logoUrl,
+  currentEnrollment,
+  previousEnrollment,
+}: {
+  student: AcademicDocumentStudent;
+  institutionName: string;
+  logoUrl?: string | null;
+  currentEnrollment: AcademicDocumentEnrollment;
+  previousEnrollment: AcademicDocumentEnrollment;
+}) {
+  return (
+    <DocumentFrame institutionName={institutionName} logoUrl={logoUrl} title="Comprovante de rematrícula">
+      <div className="space-y-6 pt-8 text-base leading-7">
+        <p>
+          Registramos a matrícula de continuidade de <strong>{student.name}</strong>, RA <strong>{student.registrationNumber}</strong>,
+          após vínculo escolar persistido no ano letivo anterior.
+        </p>
+        <dl className="grid gap-5 rounded-lg border border-slate-200 p-5 sm:grid-cols-2 dark:border-slate-700">
+          <Field label="Ano anterior" value={previousEnrollment.academicYearName} />
+          <Field label="Turma anterior" value={previousEnrollment.className} />
+          <Field label="Ano da rematrícula" value={currentEnrollment.academicYearName} />
+          <Field label="Turma atual" value={currentEnrollment.className} />
+          <Field label="Data da matrícula atual" value={formatDate(currentEnrollment.enrolledAt)} />
+          <Field label="Status" value="Matrícula ativa" />
+        </dl>
+      </div>
+    </DocumentFrame>
+  );
+}
+
+export function AcademicTranscriptPreviewDocument({
+  student,
+  institutionName,
+  logoUrl,
+  academicYearName,
+  results,
+  missingCount,
+}: {
+  student: AcademicDocumentStudent;
+  institutionName: string;
+  logoUrl?: string | null;
+  academicYearName: string;
+  results: readonly ReportCardSubjectResult[];
+  missingCount: number;
+}) {
+  const sortedResults = [...results].sort((left, right) =>
+    `${left.termName}-${left.subjectName}`.localeCompare(`${right.termName}-${right.subjectName}`, 'pt-BR'),
+  );
+
+  return (
+    <DocumentFrame institutionName={institutionName} logoUrl={logoUrl} title="Prévia de histórico escolar">
+      <div className="space-y-5 pt-6">
+        <p className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-bold uppercase tracking-wide text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
+          Prévia não oficial — não substitui histórico escolar definitivo
+        </p>
+        <p className="text-sm leading-6 text-slate-700 dark:text-slate-300">
+          Estudante: <strong>{student.name}</strong> · RA <strong>{student.registrationNumber}</strong> · Ano selecionado: <strong>{academicYearName}</strong>
+        </p>
+        {missingCount > 0 || sortedResults.length === 0 ? (
+          <p className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
+            Há informações pendentes ou ausentes. A emissão de documento definitivo está bloqueada até que os períodos sejam encerrados e os dados oficiais estejam completos.
+          </p>
+        ) : null}
+        <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+          <table className="min-w-full text-left text-sm">
+            <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              <tr><th className="px-4 py-3">Período</th><th className="px-4 py-3">Componente curricular</th><th className="px-4 py-3">Resultado</th><th className="px-4 py-3">Frequência</th><th className="px-4 py-3">Situação</th></tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+              {sortedResults.map((result) => (
+                <tr key={result.key}>
+                  <td className="px-4 py-3">{result.termName}</td>
+                  <td className="px-4 py-3">{result.subjectName}</td>
+                  <td className="px-4 py-3">{result.isClosed && result.finalGradePercentage !== null ? `${result.finalGradePercentage.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}%` : 'Em aberto'}</td>
+                  <td className="px-4 py-3">{result.isClosed && result.attendancePercentage !== null ? `${result.attendancePercentage.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}%` : 'Em aberto'}</td>
+                  <td className="px-4 py-3">{result.isClosed ? result.resultStatus : 'Período não encerrado'}</td>
+                </tr>
+              ))}
+              {sortedResults.length === 0 ? (
+                <tr><td colSpan={5} className="px-4 py-6 text-center text-slate-600 dark:text-slate-400">Não há resultados acadêmicos registrados para este ano letivo.</td></tr>
+              ) : null}
+            </tbody>
+          </table>
+        </div>
       </div>
     </DocumentFrame>
   );
