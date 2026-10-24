@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 type LooseClient = {
   rpc: (name: string, args?: Record<string, unknown>) => Promise<{ data: unknown; error: { code?: string; message?: string } | null }>;
   from: (table: string) => any;
-  channel: (name: string) => any;
+  channel: (name: string, options?: { config?: { private?: boolean } }) => any;
   removeChannel: (channel: unknown) => Promise<unknown>;
 };
 
@@ -396,13 +396,10 @@ export const psychologyService = {
       resolveReady = resolve;
       rejectReady = reject;
     });
-    const channel = client.channel(`psychology-messages-${sessionId}`)
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'psychology_messages',
-        filter: `session_id=eq.${sessionId}`,
-      }, onChange)
+    const channel = client.channel(`psychology-session:${sessionId}`, {
+      config: { private: true },
+    })
+      .on('broadcast', { event: 'psychology_message' }, onChange)
       .subscribe((status: string) => {
         onStatus?.(status);
         if (status === 'SUBSCRIBED') {
