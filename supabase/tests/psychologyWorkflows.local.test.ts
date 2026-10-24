@@ -81,39 +81,34 @@ async function waitForRealtimeEvent<T>(
 
 async function subscribeToPsychologyMessages(
   client: AnyClient,
-  topic: string,
   sessionId: string,
-  filterBySession = true,
 ) {
   const received: unknown[] = [];
   const statuses: string[] = [];
-  const serverStates: string[] = [];
+  let subscriptionError = false;
   let resolveSubscribed!: () => void;
-  let rejectSubscribed!: (error: Error) => void;
-  const subscribed = new Promise<void>((resolve, reject) => {
+  const subscribed = new Promise<void>((resolve) => {
     resolveSubscribed = resolve;
-    rejectSubscribed = reject;
   });
   const channel = client
-    .channel(topic, { config: { broadcast: { replication_ready: true } } })
-    .on('postgres_changes', {
-      event: 'INSERT',
-      schema: 'public',
-      table: 'psychology_messages',
-      ...(filterBySession ? { filter: `session_id=eq.${sessionId}` } : {}),
-    }, (payload: { new: unknown }) => received.push(payload.new))
-    .on('system', {}, (payload: { extension?: string; status?: string }) => {
-      serverStates.push(`${payload.extension ?? 'unknown'}:${payload.status ?? 'unknown'}`);
+    .channel(`psychology-session:${sessionId}`, { config: { private: true } })
+    .on('broadcast', { event: 'psychology_message' }, (payload: unknown) => {
+      if (payload && typeof payload === 'object' && 'payload' in payload) {
+        received.push((payload as { payload: unknown }).payload);
+      } else {
+        received.push(payload);
+      }
     })
     .subscribe((status: string, error?: Error) => {
       statuses.push(status);
-      if (status === 'SUBSCRIBED') resolveSubscribed();
-      if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
-        rejectSubscribed(error ?? new Error(`Realtime subscription failed: ${status}`));
-      }
+      subscriptionError ||= Boolean(error);
+      if (status === 'SUBSCRIBED' || status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') resolveSubscribed();
     });
-  await subscribed;
-  return { channel, received, statuses, serverStates };
+  await Promise.race([
+    subscribed,
+    new Promise<void>((resolve) => setTimeout(resolve, 10_000)),
+  ]);
+  return { channel, received, statuses, subscriptionError };
 }
 
 localDescribe('psychology workflows against a disposable local Supabase', () => {
@@ -459,23 +454,19 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(started.error).toBeNull();
     expect(started.data).toMatchObject({ status: 'IN_PROGRESS' });
 
-    const realtimeStudent = await subscribeToPsychologyMessages(student.client, `psychology-student-${suffix}`, sessionId);
+    const realtimeStudent = await subscribeToPsychologyMessages(student.client, sessionId);
     const realtimeProfessional = await subscribeToPsychologyMessages(
       psychologist.client,
-      `psychology-professional-${suffix}`,
       sessionId,
-    );
-    const realtimeService = await subscribeToPsychologyMessages(
-      service,
-      `psychology-service-${suffix}`,
-      sessionId,
-      false,
     );
     const realtimeUnrelatedProfessional = await subscribeToPsychologyMessages(
       otherPsychologist.client,
-      `psychology-unrelated-professional-${suffix}`,
       sessionId,
     );
+    expect(realtimeStudent.statuses).toContain('SUBSCRIBED');
+    expect(realtimeProfessional.statuses).toContain('SUBSCRIBED');
+    expect(realtimeUnrelatedProfessional.statuses).toContain('CHANNEL_ERROR');
+    expect(realtimeUnrelatedProfessional.subscriptionError).toBe(true);
     const sent = await student.client.rpc('psychology_send_message', {
       target_session_id: sessionId,
       message_body: '<script>not html</script>',
@@ -496,29 +487,27 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       waitForRealtimeEvent(
         () => realtimeStudent.received[0],
         20_000,
-        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'}; server: ${realtimeStudent.serverStates.join(',') || 'none'})`,
+        `student realtime message (subscription: ${realtimeStudent.statuses.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
       waitForRealtimeEvent(
         () => realtimeProfessional.received[0],
         20_000,
-        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'}; server: ${realtimeProfessional.serverStates.join(',') || 'none'})`,
-      ).then(() => null).catch((error: Error) => error.message),
-      waitForRealtimeEvent(
-        () => realtimeService.received[0],
-        20_000,
-        `service realtime message without a row filter (subscription: ${realtimeService.statuses.join(',') || 'none'}; server: ${realtimeService.serverStates.join(',') || 'none'})`,
+        `assigned psychologist realtime message (subscription: ${realtimeProfessional.statuses.join(',') || 'none'})`,
       ).then(() => null).catch((error: Error) => error.message),
     ]);
-    expect(deliveryResults).toEqual([null, null, null]);
+    expect(deliveryResults).toEqual([null, null]);
+    expect(realtimeStudent.received[0]).toMatchObject({ message_id: messageId });
+    expect(realtimeProfessional.received[0]).toMatchObject({ message_id: messageId });
+    expect(realtimeStudent.received[0]).not.toHaveProperty('body');
+    expect(realtimeProfessional.received[0]).not.toHaveProperty('body');
     await new Promise((resolve) => setTimeout(resolve, 750));
     expect(
       realtimeUnrelatedProfessional.received,
-      `unrelated professional should receive no messages (server: ${realtimeUnrelatedProfessional.serverStates.join(',') || 'none'})`,
+      'unrelated professional should receive no messages',
     ).toEqual([]);
     await Promise.all([
       student.client.removeChannel(realtimeStudent.channel),
       psychologist.client.removeChannel(realtimeProfessional.channel),
-      service.removeChannel(realtimeService.channel),
       otherPsychologist.client.removeChannel(realtimeUnrelatedProfessional.channel),
     ]);
     const savedMessage = await student.client.from('psychology_messages')

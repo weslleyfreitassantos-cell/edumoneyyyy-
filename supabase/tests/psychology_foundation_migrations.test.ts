@@ -10,6 +10,10 @@ const workflows = readFileSync(
   resolve(process.cwd(), 'supabase/migrations/20261023000900_psychology_secure_workflows.sql'),
   'utf8',
 );
+const realtimeBroadcast = readFileSync(
+  resolve(process.cwd(), 'supabase/migrations/20261024000100_psychology_private_realtime_broadcast.sql'),
+  'utf8',
+);
 const psychologyService = readFileSync(
   resolve(process.cwd(), 'src/services/psychologyService.ts'),
   'utf8',
@@ -77,7 +81,11 @@ describe('psychology module migrations', () => {
 
   it('applies the same session authorization to message reads and Realtime notifications', () => {
     expect(foundation).toMatch(/create policy psychology_messages_select[\s\S]*?on public\.psychology_messages[\s\S]*?psychology_can_access_session\(session_id\)/i);
-    expect(psychologyService).toMatch(/\.on\('postgres_changes',[\s\S]*?table: 'psychology_messages'[\s\S]*?filter: `session_id=eq\.\$\{sessionId\}`/i);
+    expect(psychologyService).toMatch(/\.channel\(`psychology-session:\$\{sessionId\}`,[\s\S]*?private: true[\s\S]*?\.on\('broadcast', \{ event: 'psychology_message' \}/i);
+    expect(realtimeBroadcast).toMatch(/function private\.psychology_can_access_realtime_topic\(target_topic text\)[\s\S]*?psychology_can_access_session\(target_session_text::uuid\)/i);
+    expect(realtimeBroadcast).toMatch(/create policy psychology_session_broadcast_read on realtime\.messages[\s\S]*?extension = 'broadcast'[\s\S]*?psychology_can_access_realtime_topic\(topic\)/i);
+    expect(realtimeBroadcast).toMatch(/function private\.psychology_broadcast_message_id\(\)[\s\S]*?realtime\.send\([\s\S]*?'psychology_message'[\s\S]*?'psychology-session:' \|\| new\.session_id::text[\s\S]*?true/i);
+    expect(realtimeBroadcast).toMatch(/create trigger psychology_message_broadcast_after_insert[\s\S]*?after insert on public\.psychology_messages[\s\S]*?execute function private\.psychology_broadcast_message_id/i);
     expect(workflows).toMatch(/function public\.psychology_send_message\([\s\S]*?psychology_can_access_session\(target_session_id\)/i);
     expect(workflows).toMatch(/if not exists \(select 1 from pg_publication[\s\S]*?execute 'create publication supabase_realtime'/i);
     expect(workflows).toMatch(/execute 'alter publication supabase_realtime add table public\.psychology_messages'/i);
