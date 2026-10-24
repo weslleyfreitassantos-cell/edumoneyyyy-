@@ -15,6 +15,7 @@ export const CURRENT_DATABASE_ROLES = [
   'TEACHER',
   'STUDENT',
   'GUARDIAN',
+  'PSYCHOLOGIST',
 ] as const satisfies readonly DatabaseRole[];
 
 export type CurrentDatabaseRole =
@@ -132,6 +133,7 @@ export const CURRENT_ROLE_PERMISSIONS = {
   'view_linked_students',
   'view_own_finance',
   ],
+  PSYCHOLOGIST: [],
 } as const satisfies Record<
   CurrentDatabaseRole,
   readonly SystemPermission[]
@@ -165,12 +167,13 @@ const SCHOOL_USER_MANAGEMENT_TARGETS: Record<
   CurrentDatabaseRole,
   readonly CurrentDatabaseRole[]
 > = {
-  ADMIN: ['DIRECTOR'],
-  DIRECTOR: ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'],
-  SECRETARY: ['TEACHER', 'STUDENT', 'GUARDIAN'],
+  ADMIN: ['DIRECTOR', 'PSYCHOLOGIST'],
+  DIRECTOR: ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST'],
+  SECRETARY: ['TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST'],
   TEACHER: [],
   STUDENT: [],
   GUARDIAN: [],
+  PSYCHOLOGIST: [],
 };
 
 export function getManageableSchoolUserRoles(

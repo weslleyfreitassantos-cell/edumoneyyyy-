@@ -22,12 +22,15 @@ import {
   FileCheck2,
   FileUser,
   GraduationCap,
+  Heart,
   LayoutDashboard,
   ListChecks,
   LogOut,
   Mail,
   Megaphone,
+  MessageCircle,
   MonitorCog,
+  NotebookPen,
   Palette,
   School,
   ShieldCheck,
@@ -176,6 +179,23 @@ const inclusiveEducationNavigation: ReadonlyArray<{
     path: '/inclusive-education/videos',
     icon: Video,
   },
+];
+
+const psychologyNavigation: ReadonlyArray<{
+  label: string;
+  path: string;
+  icon: LucideIcon;
+  roles: readonly string[];
+}> = [
+  { label: 'Agendar consulta', path: '/psychology/agendar', icon: CalendarDays, roles: ['STUDENT'] },
+  { label: 'Meus agendamentos', path: '/psychology/agendamentos', icon: CalendarClock, roles: ['STUDENT'] },
+  { label: 'Chat', path: '/psychology/chat', icon: MessageCircle, roles: ['STUDENT'] },
+  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['STUDENT', 'GUARDIAN'] },
+  { label: 'Agenda', path: '/psychology/agenda', icon: CalendarDays, roles: ['PSYCHOLOGIST'] },
+  { label: 'Atendimentos', path: '/psychology/atendimentos', icon: Heart, roles: ['PSYCHOLOGIST'] },
+  { label: 'Anotações clínicas', path: '/psychology/anotacoes', icon: NotebookPen, roles: ['PSYCHOLOGIST'] },
+  { label: 'Disponibilidade', path: '/psychology/disponibilidade', icon: Clock3, roles: ['PSYCHOLOGIST'] },
+  { label: 'Configuração', path: '/psychology/configuracao', icon: MonitorCog, roles: ['ADMIN', 'DIRECTOR', 'SECRETARY'] },
 ];
 
 const adminModuleIcons: Record<
@@ -686,6 +706,7 @@ export default function Sidebar({
     useState<AdminNavigationGroupId | null>(null);
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
     useState(false);
+  const [isPsychologyOpen, setIsPsychologyOpen] = useState(false);
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
@@ -783,6 +804,10 @@ export default function Sidebar({
 
   function toggleInclusiveEducationNavigation(): void {
     setIsInclusiveEducationOpen((current) => !current);
+  }
+
+  function togglePsychologyNavigation(): void {
+    setIsPsychologyOpen((current) => !current);
   }
 
   function preloadNavigationItem(item: SidebarNavigationItem): void {
@@ -1019,6 +1044,37 @@ export default function Sidebar({
     );
   }
 
+  function renderPsychologyNavigation() {
+    if (!currentInstitutionId || profile.platform_role === 'SUPER_ADMIN') return null;
+    const effectiveRole = (currentInstitutionRole ?? profile.role ?? '').toUpperCase();
+    const items = psychologyNavigation.filter((item) => item.roles.includes(effectiveRole));
+    if (!items.length) return null;
+    const collapsed = !isPsychologyOpen;
+    const childGroupId = 'sidebar-psychology';
+
+    return (
+      <section className="mb-4 last:mb-0" aria-label="Apoio psicológico">
+        <button
+          type="button"
+          aria-expanded={!collapsed}
+          aria-controls={childGroupId}
+          onClick={togglePsychologyNavigation}
+          className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+        >
+          <Heart className="h-3.5 w-3.5 shrink-0 text-[#005bbf]" aria-hidden="true" />
+          <span className="min-w-0 flex-1">Apoio psicológico</span>
+          {collapsed ? <ChevronRight className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" /> : <ChevronDown className="h-4 w-4 shrink-0 text-[#7b879d]" aria-hidden="true" />}
+        </button>
+        <div id={childGroupId} hidden={collapsed} className="space-y-1.5 pl-1">
+          {items.map(({ label, path, icon: Icon }) => {
+            const active = location.pathname === path;
+            return <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}><Icon className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" /><span className="truncate">{label}</span></Link>;
+          })}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       {isMobileOpen && (
@@ -1152,6 +1208,7 @@ export default function Sidebar({
           ) : null}
 
           {renderAdminModules()}
+          {renderPsychologyNavigation()}
           {renderInclusiveEducationNavigation()}
         </nav>
 

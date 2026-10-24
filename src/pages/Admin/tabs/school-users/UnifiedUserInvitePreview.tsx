@@ -103,6 +103,8 @@ function getTargetNote(
       return 'Cria usuario, profile e membership TEACHER e envia as credenciais por e-mail. Atribuicoes academicas seguem em fluxo separado.';
     case 'GUARDIAN':
       return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
+    case 'PSYCHOLOGIST':
+      return 'Cria o acesso Psicóloga(o). O CRP e o vínculo ao módulo precisam ser cadastrados e verificados pela instituição antes de atender.';
     case 'DIRECTOR':
       return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
     case 'SECRETARY':

@@ -6,6 +6,7 @@ const roleLabels: Record<string, string> = {
   TEACHER: 'Docente',
   STUDENT: 'Estudante',
   GUARDIAN: 'Responsável',
+  PSYCHOLOGIST: 'Psicóloga(o)',
   PARENT: 'Responsável',
 };
 
