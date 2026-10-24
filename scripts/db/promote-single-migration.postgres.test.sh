@@ -43,9 +43,36 @@ mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" npx supabase "$@"
+set +e
+output_file="$(mktemp "${PROMOTION_TEST_CLI_LOG_DIR:?}/supabase-cli.XXXXXX")"
+timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
+  npx supabase --debug "$@" >"$output_file" 2>&1
+status=$?
+if [[ "$status" -eq 124 ]]; then
+  printf 'PROMOTION_TEST_CLI_TIMEOUT=YES\n' >> "$output_file"
+fi
+printf 'PROMOTION_TEST_CLI_EXIT_STATUS=%s\n' "$status" >> "$output_file"
+cat "$output_file"
+exit "$status"
 MOCK
 chmod +x "$tmp/bin/supabase-with-timeout"
+mkdir -p "$tmp/cli-logs"
+
+emit_cli_diagnostics() {
+  local log_file
+  shopt -s nullglob
+  local log_files=("$tmp"/cli-logs/supabase-cli.*)
+  shopt -u nullglob
+  ((${#log_files[@]})) || return 0
+  printf 'PROMOTION_TEST_CLI_DIAGNOSTICS_BEGIN\n' >&2
+  for log_file in "${log_files[@]}"; do
+    tail -n 50 "$log_file" |
+      sed -E \
+        -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+        -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+  done
+  printf 'PROMOTION_TEST_CLI_DIAGNOSTICS_END\n' >&2
+}
 
 cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
@@ -99,9 +126,10 @@ run_promotion() {
   target_file="$(find "$fixture/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
   target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
   source_commit="$(git -C "$fixture" rev-parse HEAD)"
-  output="$(PATH="$tmp/bin:$PATH" \
+  if ! output="$(PATH="$tmp/bin:$PATH" \
     PROMOTION_TEST_DB_CONTAINER="$db_container" \
     PROMOTION_TEST_DATABASE_NAME="$database_name" \
+    PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
     SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
     SOURCE_ROOT="$fixture" \
     TARGET_VERSION="$target_version" \
@@ -113,20 +141,43 @@ run_promotion() {
     BACKUP_GATE=PASS \
     CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
     TMPDIR="$tmp" \
-    "$promoter")"
+    "$promoter")"; then
+    printf '%s\n' "$output" >&2
+    emit_cli_diagnostics
+    printf 'PROMOTE_SINGLE_MIGRATION_CASE=%s FAIL\n' "$target_name" >&2
+    return 1
+  fi
   printf '%s\n' "$output"
-  grep -q '^PROMOTION=APPLIED$' <<< "$output"
-  grep -Fxq "REMOTE_AFTER_COUNT=2" <<< "$output"
+  grep -q '^PROMOTION=APPLIED$' <<< "$output" || {
+    printf 'Expected applied result for %s\n' "$target_name" >&2
+    return 1
+  }
+  grep -Fxq "REMOTE_AFTER_COUNT=2" <<< "$output" || {
+    printf 'Expected two ledger versions after %s\n' "$target_name" >&2
+    return 1
+  }
 
   local actual_versions actual_probe
   actual_versions="$(docker exec "$db_container" psql -U postgres -d "$database_name" \
     -X -A -t -v ON_ERROR_STOP=1 -c \
-    'select version from supabase_migrations.schema_migrations order by version;')"
+    'select version from supabase_migrations.schema_migrations order by version;')" || {
+    printf 'Could not inspect the post-promotion ledger for %s\n' "$target_name" >&2
+    return 1
+  }
   actual_probe="$(docker exec "$db_container" psql -U postgres -d "$database_name" \
     -X -A -t -v ON_ERROR_STOP=1 -c \
-    "select count(*) from public.${target_name}_probe;")"
-  [[ "$(printf '%s\n' "$actual_versions" | sort)" == "$(printf '%s\n' "$base_version" "$target_version" | sort)" ]]
-  [[ "$actual_probe" == '1' ]]
+    "select count(*) from public.${target_name}_probe;")" || {
+    printf 'Expected probe table missing after %s\n' "$target_name" >&2
+    return 1
+  }
+  [[ "$(printf '%s\n' "$actual_versions" | sort)" == "$(printf '%s\n' "$base_version" "$target_version" | sort)" ]] || {
+    printf 'Unexpected post-promotion ledger contents for %s\n' "$target_name" >&2
+    return 1
+  }
+  [[ "$actual_probe" == '1' ]] || {
+    printf 'Expected one probe row after %s\n' "$target_name" >&2
+    return 1
+  }
   printf 'PROMOTE_SINGLE_MIGRATION_CASE=%s PASS\n' "$target_name" >&2
 }
 
@@ -183,9 +234,10 @@ exception_target_file="$repo_root/supabase/migrations/${exception_version}_guide
 exception_target_hash="$(sed 's/\r$//' "$exception_target_file" | sha256sum | awk '{print $1}')"
 [[ "$exception_target_hash" == '4ed582c3b19f5da409b7e087e4bce5b8af07b7b98c5c2829fda52a3f1c414e97' ]]
 exception_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
-exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
+if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DB_CONTAINER="$db_container" \
   PROMOTION_TEST_DATABASE_NAME="$exception_database" \
+  PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
   SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
   PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
@@ -207,7 +259,12 @@ exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399 \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   TMPDIR="$tmp" \
-  "$promoter")"
+  "$promoter")"; then
+  printf '%s\n' "$exception_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=release_399_backup_exception FAIL\n' >&2
+  exit 1
+fi
 printf '%s\n' "$exception_output"
 grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
