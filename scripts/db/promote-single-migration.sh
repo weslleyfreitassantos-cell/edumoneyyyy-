@@ -346,9 +346,11 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
-  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --dry-run --log-level error 2>&1)"; then
+  printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
+  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
+  printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
 fi
 
 pending_versions=()
@@ -377,8 +379,10 @@ fi
 
 authorize_production_write
 
+printf 'PROMOTION_STAGE=APPLY_START\n' >&2
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
   "select version from supabase_migrations.schema_migrations order by version;")" \

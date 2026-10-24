@@ -85,6 +85,7 @@ SQL
 run_promotion() {
   local fixture="$1" base_version="$2" target_version="$3" target_name="$4" database_url="$5" database_name="$6"
   local target_file target_hash source_commit output
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=%s START\n' "$target_name" >&2
   target_file="$(find "$fixture/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
   target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
   source_commit="$(git -C "$fixture" rev-parse HEAD)"
@@ -115,6 +116,7 @@ run_promotion() {
     "select count(*) from public.${target_name}_probe;")"
   [[ "$(printf '%s\n' "$actual_versions" | sort)" == "$(printf '%s\n' "$base_version" "$target_version" | sort)" ]]
   [[ "$actual_probe" == '1' ]]
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=%s PASS\n' "$target_name" >&2
 }
 
 historical_fixture="$tmp/source-historical"

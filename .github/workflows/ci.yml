@@ -119,6 +119,7 @@ jobs:
 
       - name: Provar promoção de migration histórica em Supabase descartável
         shell: bash
+        timeout-minutes: 15
         run: bash scripts/db/promote-single-migration.postgres.test.sh
 
       - name: Provar baseline de produção mais a migration da PR #277
