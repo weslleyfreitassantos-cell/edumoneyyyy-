@@ -218,6 +218,14 @@ remote_last="$(printf '%s\n' "${remote_versions[@]}" | sort | tail -n 1)"
 [[ "${remote_last}" == "${expected_remote_last}" ]] || abort "remote last migration differs from expected"
 printf '%s\n' "${remote_versions[@]}" | grep -Fxq "${target_version}" && abort "target migration is already applied"
 
+# The isolated workdir contains every applied remote migration plus exactly one
+# requested target. Supabase skips a target older than the newest remote version
+# unless --include-all is set, so enable it only for historical gaps.
+include_all_flag=()
+if [[ "${target_version}" < "${remote_last}" ]]; then
+  include_all_flag=(--include-all)
+fi
+
 mkdir -p "${cli_workdir}/supabase/migrations"
 cp "${repo_root}/supabase/config.toml" "${cli_workdir}/supabase/config.toml"
 
@@ -241,7 +249,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
-  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --dry-run --log-level error 2>&1)"; then
+  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --dry-run --log-level error 2>&1)"; then
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
 fi
@@ -274,7 +282,7 @@ fi
 [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
   abort "production write confirmation is missing"
 
-apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --yes --log-level error 2>&1)" \
+apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \

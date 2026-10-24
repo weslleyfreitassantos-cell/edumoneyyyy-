@@ -3,10 +3,10 @@ set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
 script="$repo_root/scripts/db/promote-single-migration.sh"
-target_version=20261003001200
-expected_last=20260709000100
+target_version=20261013003200
+expected_last=20261019000500
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
-target_file="$repo_root/supabase/migrations/${target_version}_normalize_teacher_learning_roster_scope.sql"
+target_file="$repo_root/supabase/migrations/${target_version}_bncc_english_infer_text_question_first_v5.sql"
 target_hash="$(sha256sum "$target_file" | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
@@ -94,6 +94,7 @@ if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
   printf 'no password supplied\n' >&2
   exit 47
 fi
+[[ "$*" == *'--include-all'* ]] || exit 53
 if [[ "${MOCK_APPLY_FAILURE:-0}" == '1' && "$*" != *'--dry-run'* ]]; then
   printf 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:PRIVATE_DETAIL_MUST_NOT_LEAK\n' >&2
   exit 48
@@ -111,7 +112,7 @@ if [[ "${EXPECT_WINDOWS_WORKDIR:-0}" == '1' ]]; then
   [[ -n "$passfile" && "$(stat -c %a "$passfile")" == '600' ]] || exit 38
 fi
 if [[ "$*" == *'--dry-run'* ]]; then
-  printf 'Would push migration 20261003001200\n'
+  printf 'Would push migration %s\n' "$TARGET_VERSION"
 else
   printf 'mock selective apply complete\n'
 fi
@@ -124,7 +125,7 @@ set -euo pipefail
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
-printf '2|20261003001200\n'
+printf '2|%s\n' "$TARGET_VERSION"
 MOCK
 chmod +x "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
