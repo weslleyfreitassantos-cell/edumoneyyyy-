@@ -420,6 +420,60 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('href'),
     ).toBe('/email');
     expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: 'Almoxarifado' }).getAttribute('href'),
+    ).toBe('/inventory');
+    expect(
+      navigation.querySelectorAll('a[href="/inventory"]'),
+    ).toHaveLength(1);
+  });
+
+  it('mostra Almoxarifado no grupo de comunicação e mantém a rota ativa', () => {
+    renderSidebar({
+      route: '/inventory',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    const communicationGroup = screen.getByRole('button', {
+      name: /comunica..o e recursos/i,
+    });
+    fireEvent.click(communicationGroup);
+
+    const inventoryLink = screen.getByRole('link', {
+      name: 'Almoxarifado',
+    });
+    expect(inventoryLink.getAttribute('href')).toBe('/inventory');
+    expect(inventoryLink.getAttribute('aria-current')).toBe('page');
+    expect(
+      screen.getByRole('navigation', { name: 'Menu principal' }).querySelectorAll(
+        'a[href="/inventory"]',
+      ),
+    ).toHaveLength(1);
+  });
+
+  it('mantém Almoxarifado agrupado para PROFESSOR com vínculo institucional', () => {
+    renderSidebar({
+      route: '/dashboard',
+      profile: { ...baseProfile, role: 'TEACHER' },
+      currentUser: {
+        ...baseUser,
+        role: 'teacher',
+        subtitle: 'Professor',
+      },
+      currentInstitutionRole: 'TEACHER',
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Almoxarifado' }).getAttribute('href'),
+    ).toBe('/inventory');
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
