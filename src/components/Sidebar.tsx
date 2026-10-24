@@ -87,6 +87,13 @@ type NavigationSection =
   | 'personal'
   | 'teacher';
 
+type RoleNavigationGroupId =
+  | 'schedule'
+  | 'student-academics'
+  | 'learning-resources'
+  | 'teacher-work'
+  | 'guardian-monitoring';
+
 export interface SidebarNavigationItem {
   id: string;
   label: string;
@@ -266,6 +273,44 @@ const adminNavigationItemOrder: Record<
   inventory: 3,
   'personalize-login': 0,
 };
+
+const roleNavigationGroupByItemId: Partial<
+  Record<string, RoleNavigationGroupId>
+> = {
+  'student-timetable': 'schedule',
+  'student-calendar': 'schedule',
+  'student-subjects': 'student-academics',
+  'student-attendance': 'student-academics',
+  'student-grades': 'student-academics',
+  'student-report-card': 'student-academics',
+  'student-study': 'learning-resources',
+  'learning-materials': 'learning-resources',
+  library: 'learning-resources',
+  'teacher-pedagogical-center': 'learning-resources',
+  'teacher-attendance': 'teacher-work',
+  'teacher-grades': 'teacher-work',
+  'teacher-term-closing': 'teacher-work',
+  'teacher-class-councils': 'teacher-work',
+  'guardian-attendance': 'guardian-monitoring',
+  'guardian-grades': 'guardian-monitoring',
+  'guardian-report-card': 'guardian-monitoring',
+};
+
+const roleNavigationGroupDefinitions: ReadonlyArray<{
+  id: RoleNavigationGroupId;
+  label: string;
+  icon: LucideIcon;
+}> = [
+  { id: 'schedule', label: 'Agenda e horários', icon: CalendarClock },
+  { id: 'student-academics', label: 'Vida acadêmica', icon: School },
+  { id: 'teacher-work', label: 'Turmas e ensino', icon: ClipboardList },
+  { id: 'learning-resources', label: 'Estudos e recursos', icon: BookOpen },
+  {
+    id: 'guardian-monitoring',
+    label: 'Acompanhamento dos dependentes',
+    icon: UsersRound,
+  },
+];
 
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
   {
@@ -706,6 +751,8 @@ export default function Sidebar({
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
     useState<AdminNavigationGroupId | null>(null);
+  const [openRoleNavigationGroupId, setOpenRoleNavigationGroupId] =
+    useState<RoleNavigationGroupId | null>(null);
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
     useState(false);
   const [isPsychologyOpen, setIsPsychologyOpen] = useState(false);
@@ -754,6 +801,14 @@ export default function Sidebar({
       group.modules.length > 0 ||
       group.navigationItems.length > 0,
   );
+  const roleNavigationGroups = roleNavigationGroupDefinitions
+    .map((group) => ({
+      ...group,
+      items: navigationItems.filter(
+        (item) => roleNavigationGroupByItemId[item.id] === group.id,
+      ),
+    }))
+    .filter((group) => group.items.length > 0);
   const groupedSections = Array.from(
     new Set(
       navigationItems
@@ -761,7 +816,7 @@ export default function Sidebar({
           (item) =>
             !baseAdminNavigationGroupByItemId[
               item.id
-            ],
+            ] && !roleNavigationGroupByItemId[item.id],
         )
         .map((item) => item.section),
     ),
@@ -799,7 +854,17 @@ export default function Sidebar({
   function toggleAdminGroup(
     groupId: AdminNavigationGroupId,
   ): void {
+    setOpenRoleNavigationGroupId(null);
     setOpenAdminGroupId((current) =>
+      current === groupId ? null : groupId,
+    );
+  }
+
+  function toggleRoleNavigationGroup(
+    groupId: RoleNavigationGroupId,
+  ): void {
+    setOpenAdminGroupId(null);
+    setOpenRoleNavigationGroupId((current) =>
       current === groupId ? null : groupId,
     );
   }
@@ -1180,7 +1245,8 @@ export default function Sidebar({
             const items = navigationItems.filter(
               (item) =>
                 item.section === section &&
-                !baseAdminNavigationGroupByItemId[item.id],
+                !baseAdminNavigationGroupByItemId[item.id] &&
+                !roleNavigationGroupByItemId[item.id],
             );
 
             return (
@@ -1198,6 +1264,58 @@ export default function Sidebar({
                   {items.map(renderNavigationLink)}
                 </div>
               </div>
+            );
+          })}
+
+          {roleNavigationGroups.map((group) => {
+            const GroupIcon = group.icon;
+            const isCollapsed =
+              openRoleNavigationGroupId !== group.id;
+            const childGroupId =
+              `sidebar-role-group-${group.id}`;
+
+            return (
+              <section
+                key={group.id}
+                className="mb-4 last:mb-0"
+              >
+                <button
+                  type="button"
+                  aria-expanded={!isCollapsed}
+                  aria-controls={childGroupId}
+                  onClick={() =>
+                    toggleRoleNavigationGroup(group.id)
+                  }
+                  className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                >
+                  <GroupIcon
+                    className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                    aria-hidden="true"
+                  />
+                  <span className="min-w-0 flex-1">
+                    {group.label}
+                  </span>
+                  {isCollapsed ? (
+                    <ChevronRight
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+
+                <div
+                  id={childGroupId}
+                  hidden={isCollapsed}
+                  className="space-y-1.5 pl-1"
+                >
+                  {group.items.map(renderNavigationLink)}
+                </div>
+              </section>
             );
           })}
 
