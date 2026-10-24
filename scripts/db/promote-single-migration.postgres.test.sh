@@ -9,7 +9,7 @@ db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; ex
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
@@ -131,3 +131,85 @@ chronological_output="$(run_promotion "$chronological_fixture" 20261013003200 20
 grep -q '^REMOTE_AFTER_LAST=20261022000200$' <<< "$chronological_output"
 grep -q '^PROMOTION=APPLIED$' <<< "$chronological_output"
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CHRONOLOGICAL=PASS'
+
+# Prove the release-399 exception through the real Supabase CLI against a third,
+# disposable PostgreSQL database. CI cannot access the private Windows backup;
+# the fixture digest command therefore substitutes only that artifact's
+# already-verified SHA. The production path uses the operating system sha256sum.
+exception_version=20261023000200
+exception_base_version=20261023000100
+exception_database=promoter_backup_exception_ci
+exception_db_url="${test_db_url%/promoter_historical_ci}/${exception_database}"
+exception_backup="$tmp/verified-windows-backup-fixture.tar.gz"
+mkdir -p "$tmp/exception-bin"
+printf 'CI placeholder for the previously verified Windows backup\n' > "$exception_backup"
+cat > "$tmp/exception-bin/sha256sum" <<'MOCK'
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ "${1:-}" == "${PROMOTION_TEST_BACKUP_FILE:-}" ]]; then
+  printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+else
+  "$PROMOTION_TEST_REAL_SHA256SUM" "$@"
+fi
+MOCK
+chmod +x "$tmp/exception-bin/sha256sum"
+
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $exception_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$exception_database" -v ON_ERROR_STOP=1 \
+  -c "CREATE SCHEMA supabase_migrations;
+      CREATE TABLE supabase_migrations.schema_migrations (
+        version text PRIMARY KEY NOT NULL,
+        statements text[],
+        name text
+      );
+      INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+        VALUES ('$exception_base_version', ARRAY[]::text[], 'release-399-base');" >/dev/null
+
+exception_target_file="$repo_root/supabase/migrations/${exception_version}_guided_study_demo_preview_state.sql"
+exception_target_hash="$(sha256sum "$exception_target_file" | awk '{print $1}')"
+[[ "$exception_target_hash" == 'd0b206199f7749e214a4c2da13e113934bd3175c5ee0b5703d8380ac65655ff0' ]]
+exception_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
+  PROMOTION_TEST_DB_CONTAINER="$db_container" \
+  PROMOTION_TEST_DATABASE_NAME="$exception_database" \
+  PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
+  PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
+  SOURCE_ROOT="$repo_root" \
+  TARGET_VERSION="$exception_version" \
+  EXPECTED_REMOTE_LAST="$exception_base_version" \
+  EXPECTED_SOURCE_COMMIT="$exception_source_commit" \
+  EXPECTED_TARGET_SHA256="$exception_target_hash" \
+  PRODUCTION_DB_URL="$exception_db_url" \
+  APPLY=1 \
+  BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_SHA=36979b8adc4408bf9eaccdf77f742904fba152fc \
+  BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
+  BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$exception_backup" \
+  BACKUP_EXCEPTION_RESTORE_STATUS=NOT_RUN \
+  BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TMPDIR="$tmp" \
+  "$promoter")"
+printf '%s\n' "$exception_output"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_RESTORE=NOT_RUN$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
+grep -q '^PROMOTION=APPLIED$' <<< "$exception_output"
+grep -Fxq "REMOTE_AFTER_COUNT=2" <<< "$exception_output"
+grep -Fxq "REMOTE_AFTER_LAST=$exception_version" <<< "$exception_output"
+
+exception_versions="$(docker exec "$db_container" psql -U postgres -d "$exception_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$(printf '%s\n' "$exception_versions" | sort)" == \
+  "$(printf '%s\n' "$exception_base_version" "$exception_version" | sort)" ]]
+exception_function_count="$(docker exec "$db_container" psql -U postgres -d "$exception_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+   where n.nspname = 'public' and p.proname = 'get_recommended_guided_study_v10';")"
+[[ "$exception_function_count" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_BACKUP_EXCEPTION_399=PASS'

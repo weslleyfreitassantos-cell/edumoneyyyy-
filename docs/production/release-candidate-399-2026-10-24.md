@@ -156,3 +156,29 @@ usar `migration repair`, SQL remoto ad hoc ou push generico.
   de prova recebeu exatamente uma linha.
 - Nenhuma migration foi aplicada na VPS/producao, nenhum ledger de producao foi
   consultado ou alterado, e nao houve merge nem deploy.
+
+## Recuperacao do Almoxarifado em producao — 2026-10-24
+
+- A `main` confirmada para o release #399 e o SHA
+  `36979b8adc4408bf9eaccdf77f742904fba152fc`.
+- A copia Windows existente foi verificada com SHA-256
+  `b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0`.
+  O restore continua `NOT_RUN`, a recuperacao integral nao foi comprovada e o
+  gate de backup offsite continua `FAIL`.
+- O promotor agora prepara uma excecao explicitamente limitada ao SHA do
+  release #399, ao hash conhecido da copia Windows e aos hashes das 15
+  migrations listadas nesta nota. A excecao exige aceite do risco de
+  recuperacao incompleta e a autorizacao existente de escrita em producao; nao
+  converte nem mascara o gate offsite.
+- A migration `20261023000600` permanece excluida. A promocao continua
+  individual, seletiva, com validacao de hash, dry-run e ledger exato; qualquer
+  estado incerto continua exigindo leitura antes de qualquer tentativa.
+- A prova PostgreSQL descartavel da excecao foi adicionada ao teste de CI. O
+  Docker local nao estava disponivel durante esta preparacao, portanto essa
+  prova ainda depende do job `database` do GitHub.
+- A excecao ainda nao foi aprovada pelo proprietario e nenhuma migration foi
+  aplicada na producao. Nao iniciar a primeira escrita ate o aceite explicito
+  solicitado pela campanha.
+- O ajuste de menu deve permanecer em branch e PR separados, baseados nesta
+  `main`, contendo somente o agrupamento de Almoxarifado em
+  **Comunicacao e recursos**.
