@@ -100,7 +100,6 @@ jobs:
               raise SystemExit("Missing expected Supabase project_id")
           config = config.replace(project_id, 'project_id = "edumoneyyyy-ci"', 1)
           replacements = {
-              "[realtime]\nenabled = true": "[realtime]\nenabled = false",
               "[local_smtp]\nenabled = true": "[local_smtp]\nenabled = false",
               "[storage.vector]\nenabled = true": "[storage.vector]\nenabled = false",
               "[edge_runtime]\nenabled = true": "[edge_runtime]\nenabled = false",
@@ -116,7 +115,7 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,studio,supavisor,vector
+        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
 
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
@@ -189,7 +188,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Testes dinâmicos de segurança e RPCs adaptativos
-        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts
 
       - name: Instalar Chromium para os fluxos adaptativos
         run: npx playwright install --with-deps chromium

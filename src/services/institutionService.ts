@@ -127,6 +127,7 @@ const institutionRolePriority: Record<
   SECRETARY: 400,
   TEACHER: 300,
   GUARDIAN: 200,
+  PSYCHOLOGIST: 250,
   STUDENT: 100,
 };
 

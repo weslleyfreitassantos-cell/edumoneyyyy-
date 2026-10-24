@@ -131,6 +131,7 @@ const SimulationPage = lazy(() => import('./components/learning/SimulationPage')
 const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
 const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
 const InclusiveEducationPage = lazy(() => import('./components/inclusive/InclusiveEducationPage'));
+const PsychologyPage = lazy(() => import('./pages/Psychology/PsychologyPage'));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -375,6 +376,9 @@ function renderDashboard(
 
     case 'parent':
       return <ParentDashboard />;
+
+    case 'psychologist':
+      return <Navigate to="/psychology/agenda" replace />;
 
     default: {
       const exhaustiveRole: never =
@@ -811,6 +815,7 @@ function AppRoutes() {
         <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/psychology/*" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']}><AuthenticatedRouteContent><PsychologyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"
