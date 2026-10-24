@@ -216,6 +216,18 @@ jobs:
                 AND schemaname = 'public'
                 AND tablename = 'psychology_messages'
             );
+            SELECT 'psychology_broadcast_trigger=' || EXISTS (
+              SELECT 1 FROM pg_trigger
+              WHERE tgname = 'psychology_message_broadcast_after_insert'
+                AND tgrelid = 'public.psychology_messages'::regclass
+                AND NOT tgisinternal
+            );
+            SELECT 'psychology_broadcast_read_policy=' || EXISTS (
+              SELECT 1 FROM pg_policies
+              WHERE schemaname = 'realtime'
+                AND tablename = 'messages'
+                AND policyname = 'psychology_session_broadcast_read'
+            );
             SELECT 'realtime_logical_slots=' || count(*)
               FROM pg_replication_slots WHERE slot_type = 'logical';
             SELECT 'realtime_active_logical_slots=' || count(*)
