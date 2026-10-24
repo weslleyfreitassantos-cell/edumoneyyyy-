@@ -453,27 +453,30 @@ describe('Sidebar', () => {
     ).toHaveLength(1);
   });
 
-  it('mantém Almoxarifado agrupado para PROFESSOR com vínculo institucional', () => {
-    renderSidebar({
-      route: '/dashboard',
-      profile: { ...baseProfile, role: 'TEACHER' },
-      currentUser: {
-        ...baseUser,
-        role: 'teacher',
-        subtitle: 'Professor',
-      },
-      currentInstitutionRole: 'TEACHER',
-    });
+  it('agrupa Almoxarifado para Diretor, Secretaria e Professor autorizados', () => {
+    for (const role of ['DIRECTOR', 'SECRETARY', 'TEACHER'] as const) {
+      cleanup();
+      renderSidebar({
+        route: '/dashboard',
+        profile: { ...baseProfile, role },
+        currentUser: {
+          ...baseUser,
+          role: role.toLowerCase() as User['role'],
+          subtitle: role,
+        },
+        currentInstitutionRole: role,
+      });
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /comunica..o e recursos/i,
-      }),
-    );
+      fireEvent.click(
+        screen.getByRole('button', {
+          name: /comunica..o e recursos/i,
+        }),
+      );
 
-    expect(
-      screen.getByRole('link', { name: 'Almoxarifado' }).getAttribute('href'),
-    ).toBe('/inventory');
+      expect(
+        screen.getByRole('link', { name: 'Almoxarifado' }).getAttribute('href'),
+      ).toBe('/inventory');
+    }
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
