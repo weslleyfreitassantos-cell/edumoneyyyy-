@@ -86,7 +86,7 @@ run_promotion() {
   local fixture="$1" base_version="$2" target_version="$3" target_name="$4" database_url="$5" database_name="$6"
   local target_file target_hash source_commit output
   target_file="$(find "$fixture/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
-  target_hash="$(sha256sum "$target_file" | awk '{print $1}')"
+  target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
   source_commit="$(git -C "$fixture" rev-parse HEAD)"
   output="$(PATH="$tmp/bin:$PATH" \
     PROMOTION_TEST_DB_CONTAINER="$db_container" \
@@ -146,7 +146,7 @@ printf 'CI placeholder for the previously verified Windows backup\n' > "$excepti
 cat > "$tmp/exception-bin/sha256sum" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-if [[ "${1:-}" == "${PROMOTION_TEST_BACKUP_FILE:-}" ]]; then
+if [[ -n "${PROMOTION_TEST_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$PROMOTION_TEST_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
 else
   "$PROMOTION_TEST_REAL_SHA256SUM" "$@"
@@ -167,8 +167,8 @@ docker exec "$db_container" psql -U postgres -d "$exception_database" -v ON_ERRO
         VALUES ('$exception_base_version', ARRAY[]::text[], 'release-399-base');" >/dev/null
 
 exception_target_file="$repo_root/supabase/migrations/${exception_version}_guided_study_demo_preview_state.sql"
-exception_target_hash="$(sha256sum "$exception_target_file" | awk '{print $1}')"
-[[ "$exception_target_hash" == 'd0b206199f7749e214a4c2da13e113934bd3175c5ee0b5703d8380ac65655ff0' ]]
+exception_target_hash="$(sed 's/\r$//' "$exception_target_file" | sha256sum | awk '{print $1}')"
+[[ "$exception_target_hash" == '4ed582c3b19f5da409b7e087e4bce5b8af07b7b98c5c2829fda52a3f1c414e97' ]]
 exception_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DB_CONTAINER="$db_container" \

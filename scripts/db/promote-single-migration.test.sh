@@ -8,7 +8,7 @@ expected_last=20261019000500
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
 [[ -n "$target_file" ]]
-target_hash="$(sha256sum "$target_file" | awk '{print $1}')"
+target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
@@ -99,7 +99,7 @@ real_sha256sum="$(command -v sha256sum)"
 cat > "$tmp/bin/sha256sum" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
-if [[ "${1:-}" == "${MOCK_BACKUP_FILE:-}" ]]; then
+if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
 else
   "$REAL_SHA256SUM" "$@"
@@ -236,7 +236,7 @@ grep -q '^PROMOTION=APPLIED$' <<< "$applied_override"
 chronological_version=20261022000200
 chronological_file="$repo_root/supabase/migrations/${chronological_version}_inventory_management.sql"
 [[ -f "$chronological_file" ]]
-chronological_hash="$(sha256sum "$chronological_file" | awk '{print $1}')"
+chronological_hash="$(sed 's/\r$//' "$chronological_file" | sha256sum | awk '{print $1}')"
 printf 'Would push migration %s\n' "$chronological_version" > "$tmp/chronological-dry-run"
 chronological="$(PATH="$tmp/bin:$PATH" \
   APPLY=1 \
@@ -336,7 +336,7 @@ fi
 exception_version=20261023000200
 exception_file="$repo_root/supabase/migrations/${exception_version}_guided_study_demo_preview_state.sql"
 [[ -f "$exception_file" ]]
-exception_hash="$("$real_sha256sum" "$exception_file" | awk '{print $1}')"
+exception_hash="$(sed 's/\r$//' "$exception_file" | "$real_sha256sum" | awk '{print $1}')"
 exception_backup="$tmp/verified-windows-backup-fixture.tar.gz"
 printf 'CI placeholder for the previously verified Windows backup\n' > "$exception_backup"
 printf 'Would push migration %s\n' "$exception_version" > "$tmp/exception-dry-run"
@@ -376,7 +376,7 @@ expect_exception_rejected() {
   target_file_to_test="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f \
     -name "${target_version_to_test}_*.sql" -print -quit)"
   [[ -n "$target_file_to_test" ]]
-  target_hash_to_test="$("$real_sha256sum" "$target_file_to_test" | awk '{print $1}')"
+  target_hash_to_test="$(sed 's/\r$//' "$target_file_to_test" | "$real_sha256sum" | awk '{print $1}')"
   printf 'Would push migration %s\n' "$target_version_to_test" > "$tmp/exception-dry-run-$target_version_to_test"
   printf '0\n' > "$cli_apply_count"
   if PATH="$tmp/bin:$PATH" \

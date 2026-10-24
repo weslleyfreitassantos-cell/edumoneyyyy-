@@ -45,21 +45,21 @@ release_399_sha='36979b8adc4408bf9eaccdf77f742904fba152fc'
 release_399_backup_sha256='b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0'
 release_399_backup_windows_path='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz'
 declare -A release_399_migration_hashes=(
-  [20261013003200]=d9f2daf215b4fdf993c1d9eb57b720a1719c317876c07f7aefcb111606768fc4
-  [20261015000700]=51477488a74afb0a3dfd664734ab90294bb08250e17b6ba300c6bb6cc439dbd7
-  [20261015000800]=f6c1f1a2c91e0d4991e919ea16f6b20187adad8aa289a852106114e5abddec54
-  [20261015004100]=4222ef4effb04d496496eefaa4f5d7c81cf7b614a792d6a859ee02bc60c834cb
-  [20261016000400]=5abbf6dfde4e2b560197825dd07608689da8d7893a08b32b6f4ce2eb2f3ad846
-  [20261022000200]=7eb047b126c418985f9c0c0cdc70430a02bec732b0e14913bf2782ff90a01f8e
-  [20261023000100]=6817941efbc1136060b8417de23ed2eb4fd5bb5990bff9cbf6f76f8d42377048
-  [20261023000200]=d0b206199f7749e214a4c2da13e113934bd3175c5ee0b5703d8380ac65655ff0
-  [20261023000300]=0d0da254e14aa30149767702d060ab570a6ebb6887833fd3fcdf037dca7af1d0
-  [20261023000400]=1648fbf4ccfafff89d6a9f09af335f6c29b1dec10ad2d7678114c67e1809b30f
-  [20261023000500]=3055c379e5a69c4584129d7a99ed279d695636f303b6d7ffeba8084f5908bba5
-  [20261023000700]=1c4d461a124a434e8bad5bdf03b98676abd496190e714fe6101c34dac86a185b
-  [20261023000800]=39385c77789dc0850a9705f19056679e12ad2270119d132a8602dd201c8b1481
-  [20261023000900]=8117b14f85a6fbd2962c5e6691e2063ebbcf42b8330149cdb9bbbe9d0c946c72
-  [20261024000100]=9a7fc8b0014581918a93b130c6981ebeeb8020d093f6b8594dd7b48328610615
+  [20261013003200]=a74980197b1aabbc1f3dce88b4c2719fd3621eaa33e7c3c7e1cc36f00d541083
+  [20261015000700]=07ee09d493878cff41b2e347c8626874f2b0d4b1b6f0781a7ac4949372fab420
+  [20261015000800]=eadd8c05e8046b8498228918dea75ff4e14e9905093928fccb87c78ad7ee81fe
+  [20261015004100]=5e7d9a9eddea72ebb5cdd5a155cdf96d32f28fc4d1b1a5f4ad4e6a10d45851e3
+  [20261016000400]=274dc0acbca22eff5e63566193965d90102a8a5edf8d57b4962eab1436f3a226
+  [20261022000200]=656de511d5d302a46a3c82fcfafdc3aab538027ac85c8fc2e365e05e929d5a59
+  [20261023000100]=d51ac811cac838124531d6d0eab25d8a6aa9bf1492129c8b7138828eb00ece7e
+  [20261023000200]=4ed582c3b19f5da409b7e087e4bce5b8af07b7b98c5c2829fda52a3f1c414e97
+  [20261023000300]=051e2572e799b8ea6687e129b2b0da270d9bb7d2bbdbfad87a98238959392f71
+  [20261023000400]=7e6fa831d9ce0a713a92aec28a799268dc5ffe291b6f5e3ee7c03846aebe3c1e
+  [20261023000500]=bb2d3f4e307b7bcd1c922327044837b5e15caff50a773102ce976ce0aeace8ec
+  [20261023000700]=c4a15cc02db1eec389cadf31eafec739c01faec2887169c476c55a28c91c6f86
+  [20261023000800]=e7e803d42c14009a8c6a04ac8e514ef773928e1e6551e13534f6d1d12edf82fb
+  [20261023000900]=f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b
+  [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
 )
 
 connection_fields=()
@@ -132,6 +132,16 @@ sha256_file() {
   fi
 }
 
+sha256_migration_file() {
+  # Git's autocrlf may materialize SQL with CRLF on Windows. Hash canonical
+  # LF text so release allowlists are stable across Windows and Linux.
+  if command -v sha256sum >/dev/null 2>&1; then
+    sed 's/\r$//' "${1}" | sha256sum | awk '{print $1}'
+  else
+    sed 's/\r$//' "${1}" | shasum -a 256 | awk '{print $1}'
+  fi
+}
+
 authorize_production_write() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
   local expected_release_migration_sha=""
@@ -189,7 +199,7 @@ authorize_production_write() {
 mapfile -t target_files < <(find "${repo_root}/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print)
 [[ "${#target_files[@]}" -eq 1 ]] || abort "target migration must resolve to exactly one file"
 target_file="${target_files[0]}"
-actual_target_sha256="$(sha256_file "${target_file}")"
+actual_target_sha256="$(sha256_migration_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
 
 umask 077

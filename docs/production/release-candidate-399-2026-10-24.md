@@ -71,30 +71,35 @@ somente uma leitura do ledger antes de decidir qualquer nova acao.
 O teste local separa os casos historico e cronologico, valida ledgers
 faltantes/extras/duplicados, e simula uma consulta pos-aplicacao indisponivel
 para impedir repeticao cega. A CI executa tambem
-`scripts/db/promote-single-migration.postgres.test.sh`: cria dois bancos
-isolados no PostgreSQL descartavel do Supabase local, aplica uma migration
-historica e outra cronologica pelo promotor real (`APPLY=1` somente nesses
-bancos de CI), e confirma tanto o efeito SQL quanto o ledger final exato e o
-maior timestamp correto. A rotina remove esses bancos ao terminar. Nenhum
-ledger remoto ou de producao e alterado.
+`scripts/db/promote-single-migration.postgres.test.sh`: cria bancos isolados no
+PostgreSQL descartavel do Supabase local, aplica uma migration historica e outra
+cronologica pelo promotor real (`APPLY=1` somente nesses bancos de CI), e
+confirma o efeito SQL, o ledger final exato e o maior timestamp correto. Tambem
+aplica uma migration permitida pela excecao do release #399 em um terceiro banco
+descartavel e confirma o ledger, a funcao e o grant. A rotina remove esses bancos
+ao terminar. Nenhum ledger remoto ou de producao e alterado.
+
+Os SHA-256 abaixo usam o conteudo SQL canonico com quebras LF. O promotor
+remove somente `CR` final de linha antes de calcular o hash, evitando que
+`core.autocrlf` produza fingerprints diferentes entre Windows e Linux.
 
 | Ordem | Versao | Migration | SHA-256 |
 |---:|---|---|---|
-| 1 | `20261013003200` | `bncc_english_infer_text_question_first_v5` | `d9f2daf215b4fdf993c1d9eb57b720a1719c317876c07f7aefcb111606768fc4` |
-| 2 | `20261015000700` | `bncc_english_relate_language_culture_question_first_v5` | `51477488a74afb0a3dfd664734ab90294bb08250e17b6ba300c6bb6cc439dbd7` |
-| 3 | `20261015000800` | `bncc_english_context_vocabulary_question_first_v5` | `f6c1f1a2c91e0d4991e919ea16f6b20187adad8aa289a852106114e5abddec54` |
-| 4 | `20261015004100` | `bncc_english_infer_from_text_library_expansion_v6` | `4222ef4effb04d496496eefaa4f5d7c81cf7b614a792d6a859ee02bc60c834cb` |
-| 5 | `20261016000400` | `bncc_english_inference_library_expansion_v8` | `5abbf6dfde4e2b560197825dd07608689da8d7893a08b32b6f4ce2eb2f3ad846` |
-| 6 | `20261022000200` | `inventory_management` | `7eb047b126c418985f9c0c0cdc70430a02bec732b0e14913bf2782ff90a01f8e` |
-| 7 | `20261023000100` | `inventory_physical_count` | `6817941efbc1136060b8417de23ed2eb4fd5bb5990bff9cbf6f76f8d42377048` |
-| 8 | `20261023000200` | `guided_study_demo_preview_state` | `d0b206199f7749e214a4c2da13e113934bd3175c5ee0b5703d8380ac65655ff0` |
-| 9 | `20261023000300` | `student_document_review_history` | `0d0da254e14aa30149767702d060ab570a6ebb6887833fd3fcdf037dca7af1d0` |
-| 10 | `20261023000400` | `student_enrollment_drafts` | `1648fbf4ccfafff89d6a9f09af335f6c29b1dec10ad2d7678114c67e1809b30f` |
-| 11 | `20261023000500` | `academic_document_issuance_audit` | `3055c379e5a69c4584129d7a99ed279d695636f303b6d7ffeba8084f5908bba5` |
-| 12 | `20261023000700` | `psychologist_membership_role` | `1c4d461a124a434e8bad5bdf03b98676abd496190e714fe6101c34dac86a185b` |
-| 13 | `20261023000800` | `psychology_data_foundation` | `39385c77789dc0850a9705f19056679e12ad2270119d132a8602dd201c8b1481` |
-| 14 | `20261023000900` | `psychology_secure_workflows` | `8117b14f85a6fbd2962c5e6691e2063ebbcf42b8330149cdb9bbbe9d0c946c72` |
-| 15 | `20261024000100` | `psychology_private_realtime_broadcast` | `9a7fc8b0014581918a93b130c6981ebeeb8020d093f6b8594dd7b48328610615` |
+| 1 | `20261013003200` | `bncc_english_infer_text_question_first_v5` | `a74980197b1aabbc1f3dce88b4c2719fd3621eaa33e7c3c7e1cc36f00d541083` |
+| 2 | `20261015000700` | `bncc_english_relate_language_culture_question_first_v5` | `07ee09d493878cff41b2e347c8626874f2b0d4b1b6f0781a7ac4949372fab420` |
+| 3 | `20261015000800` | `bncc_english_context_vocabulary_question_first_v5` | `eadd8c05e8046b8498228918dea75ff4e14e9905093928fccb87c78ad7ee81fe` |
+| 4 | `20261015004100` | `bncc_english_infer_from_text_library_expansion_v6` | `5e7d9a9eddea72ebb5cdd5a155cdf96d32f28fc4d1b1a5f4ad4e6a10d45851e3` |
+| 5 | `20261016000400` | `bncc_english_inference_library_expansion_v8` | `274dc0acbca22eff5e63566193965d90102a8a5edf8d57b4962eab1436f3a226` |
+| 6 | `20261022000200` | `inventory_management` | `656de511d5d302a46a3c82fcfafdc3aab538027ac85c8fc2e365e05e929d5a59` |
+| 7 | `20261023000100` | `inventory_physical_count` | `d51ac811cac838124531d6d0eab25d8a6aa9bf1492129c8b7138828eb00ece7e` |
+| 8 | `20261023000200` | `guided_study_demo_preview_state` | `4ed582c3b19f5da409b7e087e4bce5b8af07b7b98c5c2829fda52a3f1c414e97` |
+| 9 | `20261023000300` | `student_document_review_history` | `051e2572e799b8ea6687e129b2b0da270d9bb7d2bbdbfad87a98238959392f71` |
+| 10 | `20261023000400` | `student_enrollment_drafts` | `7e6fa831d9ce0a713a92aec28a799268dc5ffe291b6f5e3ee7c03846aebe3c1e` |
+| 11 | `20261023000500` | `academic_document_issuance_audit` | `bb2d3f4e307b7bcd1c922327044837b5e15caff50a773102ce976ce0aeace8ec` |
+| 12 | `20261023000700` | `psychologist_membership_role` | `c4a15cc02db1eec389cadf31eafec739c01faec2887169c476c55a28c91c6f86` |
+| 13 | `20261023000800` | `psychology_data_foundation` | `e7e803d42c14009a8c6a04ac8e514ef773928e1e6551e13534f6d1d12edf82fb` |
+| 14 | `20261023000900` | `psychology_secure_workflows` | `f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b` |
+| 15 | `20261024000100` | `psychology_private_realtime_broadcast` | `9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c` |
 
 As cinco migrations historicas devem ser promovidas primeiro e individualmente,
 com o script seletivo e o hash acima; em seguida, promover individualmente as
