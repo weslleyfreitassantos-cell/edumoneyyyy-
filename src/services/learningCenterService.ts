@@ -952,12 +952,25 @@ export const learningCenterService = {
       institutionId,
       profileId,
     );
+    const activeAcademicYearIds = await uniqueIds(
+      supabase
+        .from('academic_years')
+        .select('id')
+        .eq('institution_id', institutionId)
+        .eq('active', true),
+      'id',
+    );
+
+    if (!activeAcademicYearIds.length) return [];
+
     const classIds = await uniqueIds(
       supabase
         .from('enrollments')
         .select('class_id')
         .eq('student_id', student.id)
-        .eq('active', true),
+        .eq('active', true)
+        .ilike('status', 'active')
+        .in('academic_year_id', activeAcademicYearIds),
       'class_id',
     );
 

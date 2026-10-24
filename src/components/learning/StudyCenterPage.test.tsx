@@ -236,9 +236,9 @@ describe('StudyCenterPage', () => {
 
     expect(screen.queryByRole('region', { name: 'Estudo guiado pela BNCC' })).toBeNull();
     expect(screen.getAllByRole('link', { name: /Matemática/ }).filter((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toHaveLength(1);
-    expect(screen.getByRole('link', { name: /Física.*1 jornada guiada.*prévia/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
+    expect(screen.getByRole('link', { name: /Física.*1 jornada em revisão pedagógica/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
 
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
     expect(screen.queryByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeNull();
     expect(screen.queryByText('Relação curricular candidata, não validada:')).toBeNull();
     expect(screen.queryByText('EM13MAT303')).toBeNull();
@@ -260,7 +260,7 @@ describe('StudyCenterPage', () => {
     };
 
     renderPage();
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
     expect(screen.getByText('1º ano do Ensino Médio')).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Equações e modelagem' })).toBeTruthy();
     expect(screen.getByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeTruthy();
@@ -285,7 +285,7 @@ describe('StudyCenterPage', () => {
     };
 
     renderPage();
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
 
     expect(screen.getAllByRole('link', { name: 'Continuar estudo' })).toHaveLength(1);
     expect(screen.getByRole('link', { name: 'Continuar estudo' }).getAttribute('href')).toContain('journey=journey-math');
@@ -317,6 +317,17 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
 
     expect(screen.getByRole('status').textContent).toContain('Ainda não há conteúdo demonstrativo disponível para sua série');
+    expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
+  });
+
+  it('apresenta a prévia indisponível sem erro técnico e sem oferecer início', () => {
+    state.guidedRecommendation = { state: 'DEMO_PREVIEW_UNAVAILABLE' };
+
+    renderPage();
+    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
+
+    expect(screen.getByRole('status').textContent).toContain('ainda não foi liberado para esta instituição');
+    expect(screen.queryByRole('alert')).toBeNull();
     expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
   });
 });
