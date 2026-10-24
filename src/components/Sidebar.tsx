@@ -87,6 +87,17 @@ type NavigationSection =
   | 'personal'
   | 'teacher';
 
+interface RoleNavigationGroupDefinition {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+  itemIds: readonly string[];
+}
+
+interface RoleNavigationGroup extends RoleNavigationGroupDefinition {
+  items: SidebarNavigationItem[];
+}
+
 export interface SidebarNavigationItem {
   id: string;
   label: string;
@@ -476,6 +487,91 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
 ];
 
+const roleNavigationGroupDefinitions: Partial<
+  Record<User['role'], readonly RoleNavigationGroupDefinition[]>
+> = {
+  student: [
+    {
+      id: 'student-routine',
+      label: 'Rotina escolar',
+      icon: LayoutDashboard,
+      itemIds: ['student-timetable', 'student-calendar'],
+    },
+    {
+      id: 'student-academics',
+      label: 'Vida acadêmica',
+      icon: ClipboardCheck,
+      itemIds: [
+        'student-subjects',
+        'student-attendance',
+        'student-grades',
+        'student-report-card',
+      ],
+    },
+    {
+      id: 'student-learning',
+      label: 'Aprendizagem',
+      icon: BookOpenCheck,
+      itemIds: ['learning-materials', 'library', 'student-study'],
+    },
+  ],
+  teacher: [
+    {
+      id: 'teacher-overview',
+      label: 'Visão geral',
+      icon: LayoutDashboard,
+      itemIds: ['student-timetable', 'teacher-pedagogical-center'],
+    },
+    {
+      id: 'teacher-routine',
+      label: 'Rotina docente',
+      icon: ClipboardList,
+      itemIds: [
+        'teacher-attendance',
+        'teacher-grades',
+        'teacher-term-closing',
+        'teacher-class-councils',
+      ],
+    },
+    {
+      id: 'teacher-resources',
+      label: 'Materiais e recursos',
+      icon: BookOpen,
+      itemIds: ['inventory', 'learning-materials', 'library'],
+    },
+  ],
+  parent: [
+    {
+      id: 'guardian-academics',
+      label: 'Acompanhamento acadêmico',
+      icon: UsersRound,
+      itemIds: [
+        'guardian-attendance',
+        'guardian-grades',
+        'guardian-report-card',
+      ],
+    },
+  ],
+};
+
+function getRoleNavigationGroups(
+  role: User['role'],
+  navigationItems: readonly SidebarNavigationItem[],
+): RoleNavigationGroup[] {
+  const itemsById = new Map(
+    navigationItems.map((item) => [item.id, item]),
+  );
+
+  return (roleNavigationGroupDefinitions[role] ?? [])
+    .map((group) => ({
+      ...group,
+      items: group.itemIds
+        .map((itemId) => itemsById.get(itemId))
+        .filter((item): item is SidebarNavigationItem => Boolean(item)),
+    }))
+    .filter((group) => group.items.length > 0);
+}
+
 function isActivePath(
   pathname: string,
   item: SidebarNavigationItem,
@@ -706,6 +802,8 @@ export default function Sidebar({
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
     useState<AdminNavigationGroupId | null>(null);
+  const [openRoleNavigationGroupId, setOpenRoleNavigationGroupId] =
+    useState<string | null>(null);
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
     useState(false);
   const [isPsychologyOpen, setIsPsychologyOpen] = useState(false);
@@ -717,6 +815,13 @@ export default function Sidebar({
     currentUserRole: currentUser.role,
     pathname: location.pathname,
   });
+  const roleNavigationGroups = getRoleNavigationGroups(
+    currentUser.role,
+    navigationItems,
+  );
+  const roleNavigationItemIds = new Set(
+    roleNavigationGroups.flatMap((group) => group.items.map((item) => item.id)),
+  );
   const adminModules = getSidebarAdminModules({
     profile,
     currentInstitutionRole,
@@ -761,7 +866,7 @@ export default function Sidebar({
           (item) =>
             !baseAdminNavigationGroupByItemId[
               item.id
-            ],
+            ] && !roleNavigationItemIds.has(item.id),
         )
         .map((item) => item.section),
     ),
@@ -800,6 +905,12 @@ export default function Sidebar({
     groupId: AdminNavigationGroupId,
   ): void {
     setOpenAdminGroupId((current) =>
+      current === groupId ? null : groupId,
+    );
+  }
+
+  function toggleRoleNavigationGroup(groupId: string): void {
+    setOpenRoleNavigationGroupId((current) =>
       current === groupId ? null : groupId,
     );
   }
@@ -875,6 +986,65 @@ export default function Sidebar({
           {item.label}
         </span>
       </Link>
+    );
+  }
+
+  function renderRoleNavigationGroups() {
+    if (roleNavigationGroups.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="mb-4 last:mb-0">
+        <div className="space-y-1.5">
+          {roleNavigationGroups.map((group: RoleNavigationGroup) => {
+            const GroupIcon = group.icon;
+            const isCollapsed =
+              openRoleNavigationGroupId !== group.id;
+            const childGroupId =
+              `sidebar-role-group-${group.id}`;
+
+            return (
+              <section key={group.id} className="mb-4 last:mb-0">
+                <button
+                  type="button"
+                  aria-expanded={!isCollapsed}
+                  aria-controls={childGroupId}
+                  onClick={() => toggleRoleNavigationGroup(group.id)}
+                  className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                >
+                  <GroupIcon
+                    className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                    aria-hidden="true"
+                  />
+                  <span className="min-w-0 flex-1">
+                    {group.label}
+                  </span>
+                  {isCollapsed ? (
+                    <ChevronRight
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+
+                <div
+                  id={childGroupId}
+                  hidden={isCollapsed}
+                  className="space-y-1.5 pl-1"
+                >
+                  {group.items.map(renderNavigationLink)}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 
@@ -1176,6 +1346,8 @@ export default function Sidebar({
           className="min-h-0 flex-1 overflow-y-auto px-3 py-5"
           aria-label="Menu principal"
         >
+          {renderRoleNavigationGroups()}
+
           {groupedSections.map((section) => {
             const items = navigationItems.filter(
               (item) =>
