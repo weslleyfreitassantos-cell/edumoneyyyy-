@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-const sql = readFileSync(resolve(process.cwd(), 'supabase/migrations/20261025000100_school_finance_v2.sql'), 'utf8');
+const sql = readFileSync(resolve(process.cwd(), 'supabase/migrations/20261025000500_school_finance_v2.sql'), 'utf8');
 
 describe('Financeiro escolar V2 migration contract', () => {
   it('stores school finance in integer cents and makes recurring writes replay-safe', () => {
