@@ -227,6 +227,7 @@ export interface GuidedDisciplineJourneyV9 {
   official_codes: string[];
   official_areas: string[];
   mapping_status: string;
+  publication_status?: string | null;
   mapping_reason: string;
   learning_role: string;
   availability_status: string;
@@ -792,6 +793,7 @@ export interface LearningProgress {
   skill_id: string;
   mastery_percent: number;
   status: 'NOT_STARTED' | 'IN_PROGRESS' | 'MASTERED';
+  last_activity_at?: string | null;
 }
 
 export interface LearningCanonicalProgress {
@@ -1214,7 +1216,7 @@ export const learningCenterService = {
     read<LearningProgress[]>(
       supabase
         .from('learning_skill_progress')
-        .select('skill_id,mastery_percent,status')
+        .select('skill_id,mastery_percent,status,last_activity_at')
         .eq('institution_id', institutionId)
       .eq('student_id', studentId),
     ),

@@ -64,6 +64,27 @@ afterEach(() => {
   cleanup();
   window.sessionStorage.clear();
   vi.clearAllMocks();
+  state.session.data = {
+    id: 'session-1', student_id: 'student-1', target_canonical_skill_id: 'skill-1',
+    original_target_canonical_skill_id: 'skill-1', current_canonical_skill_id: 'skill-1',
+    current_step_id: 'step-1', status: 'ACTIVE', planner_version: 'V2',
+    decision_reason: 'PREREQUISITE_UNKNOWN', replan_count: 0, metadata: {}, current_step: null,
+  };
+  state.session.isLoading = false;
+  state.journeys.data = [];
+  state.journeys.isLoading = false;
+  state.journeys.isError = false;
+  state.step.data = {
+    id: 'step-1', session_id: 'session-1', canonical_skill_id: 'skill-1', step_type: 'PROBE',
+    purpose: 'PROBE', status: 'ACTIVE', position: 0, lesson_id: null, lesson: null,
+    questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+  };
+  state.step.isLoading = false;
+  state.submit.data = undefined;
+  state.submit.mutateAsync.mockReset().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] });
+  state.startGuided.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' });
+  state.startJourney.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' });
+  state.resumeContent.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' });
 });
 
 function renderPage(initialEntry = '/') {
@@ -144,7 +165,7 @@ describe('GuidedJourneyPage', () => {
     state.submit.data = undefined;
   });
 
-  it('asks the server to recover a paused session without a current step', async () => {
+  it('keeps an unreviewed preview out of the student flow and does not request another step', () => {
     state.session.data = {
       id: 'session-1',
       student_id: 'student-1',
@@ -163,20 +184,27 @@ describe('GuidedJourneyPage', () => {
 
     renderPage();
 
-    await waitFor(() => expect(state.startGuided.mutateAsync).toHaveBeenCalledWith('skill-1'));
-    state.session.data = { ...state.session.data, current_step_id: 'step-1' };
-    state.step.data = {
-      id: 'step-1',
-      session_id: 'session-1',
-      canonical_skill_id: 'skill-1',
-      step_type: 'PROBE',
-      purpose: 'PROBE',
-      status: 'ACTIVE',
-      position: 0,
-      lesson_id: null,
-      lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
-    };
+    expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
+    expect(screen.queryByText('Qual é o resultado?')).toBeNull();
+    expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
+    expect(screen.queryByText(/demo_preview|demonstrativa|MAPPING_PENDING/i)).toBeNull();
+  });
+
+  it('does not start an unpublished journey from a direct link', () => {
+    state.session.data = null;
+    state.journeys.data = [{
+      journey_id: 'journey-preview', subject_id: 'subject-1', subject_name: 'Matemática',
+      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1',
+      publication_status: 'DEMO_PREVIEW', availability_status: 'DEMO_PREVIEW',
+      mapping_status: 'MAPPING_PENDING', pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    }];
+    state.step.data = null;
+
+    renderPage('/?journey=journey-preview&skill=skill-1');
+
+    expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
+    expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
+    expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
   });
 
   it('keeps a recoverable teacher-support state instead of inventing another step', () => {
@@ -213,7 +241,7 @@ describe('GuidedJourneyPage', () => {
       decision_reason: 'CONTENT_EXHAUSTED',
     };
     state.step.data = null;
-    state.journeys.data = [{ journey_id: 'journey-1', subject_id: 'subject-1', subject_name: 'Matemática', execution_skill_id: 'skill-1' }];
+    state.journeys.data = [{ journey_id: 'journey-1', subject_id: 'subject-1', subject_name: 'Matemática', canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1', publication_status: 'PUBLISHED', availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED' }];
 
     renderPage('/?journey=journey-1&skill=skill-1');
     fireEvent.click(screen.getByRole('button', { name: 'Verificar novas atividades' }));
@@ -228,7 +256,12 @@ describe('GuidedJourneyPage', () => {
       journey_id: 'journey-1',
       subject_id: 'subject-1',
       subject_name: 'Matemática',
+      canonical_subject_code: 'MATHEMATICS',
       execution_skill_id: 'skill-1',
+      publication_status: 'PUBLISHED',
+      availability_status: 'AVAILABLE',
+      mapping_status: 'MAPPED',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
     }];
 
     renderPage('/?journey=journey-1&skill=skill-1');

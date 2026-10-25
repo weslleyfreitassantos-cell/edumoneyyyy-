@@ -1,0 +1,22 @@
+[
+  {
+    "subject": "MATHEMATICS",
+    "stage": "ENSINO_FUNDAMENTAL",
+    "grade": 6,
+    "journeyCode": "CEV2_EF06MA13_PERCENTUAL_01",
+    "journeyTitle": "Percentuais sem regra de três",
+    "officialSkillCode": "EF06MA13",
+    "officialText": "Resolver e elaborar problemas que envolvam porcentagens, com base na ideia de proporcionalidade, sem fazer uso da regra de três, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 303,
+      "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+    },
+    "alignmentStatus": "SOURCE_MATCHED_CANDIDATE_PENDING_HUMAN_REVIEW",
+    "contentVersion": "central-estudos-v2-candidate-2026-10-25.1",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING"
+  }
+]

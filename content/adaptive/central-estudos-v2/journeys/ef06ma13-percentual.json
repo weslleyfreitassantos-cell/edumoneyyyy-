@@ -1,0 +1,192 @@
+{
+  "journeyCode": "CEV2_EF06MA13_PERCENTUAL_01",
+  "journeyTitle": "Percentuais sem regra de três",
+  "subject": "MATHEMATICS",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "grade": 6,
+  "officialSkillCode": "EF06MA13",
+  "skill": "MATH_PERCENT_OF_QUANTITY",
+  "version": "central-estudos-v2-candidate-2026-10-25.1",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "lesson": {
+    "title": "Descobrir o percentual antes de calcular",
+    "estimatedMinutes": 18,
+    "introduction": "Uma turma está organizando uma feira e compara preços de materiais. Uma placa informa que um kit de R$ 80 está com 25% de desconto. Antes de usar uma fórmula, pense: 25% representa quantas partes de cada cem? E qual quantidade é o todo nesta situação?",
+    "explanation": "Por cento significa por cem. A porcentagem descreve uma relação entre uma parte e um todo. Para calcular uma porcentagem de um valor, identifique primeiro a base: é sobre qual quantidade a taxa incide? Depois, escolha uma estratégia proporcional. Em 25%, podemos pensar em um quarto; em 50%, na metade; em 10%, dividir por dez. Estratégias pessoais e cálculo mental ajudam a compreender; a calculadora pode conferir o resultado. Não é necessário montar regra de três para resolver os problemas desta jornada.",
+    "workedExample": {
+      "prompt": "Um kit custa R$ 80 e recebe 25% de desconto. Qual é o desconto e qual é o preço final?",
+      "steps": [
+        "A base é R$ 80, pois o desconto incide sobre o preço do kit.",
+        "25% é um quarto. Um quarto de 80 é 80 ÷ 4 = 20.",
+        "O desconto é R$ 20. O preço final é 80 − 20 = R$ 60.",
+        "Confira: 50% de 80 seria 40; 25% deve ser a metade disso, 20."
+      ],
+      "answer": "Desconto de R$ 20; preço final de R$ 60."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Calcule 10% de R$ 90. Qual operação mental pode ajudar?",
+        "scaffold": "10% corresponde a uma décima parte."
+      },
+      {
+        "prompt": "Uma garrafa de 2 litros está com 50% do conteúdo. Quantos litros há?",
+        "scaffold": "50% corresponde à metade do todo."
+      },
+      {
+        "prompt": "Compare 20% de 150 com 10% de 150. O que muda e o que continua igual?",
+        "scaffold": "Use a mesma base e compare as taxas."
+      }
+    ],
+    "application": [
+      {
+        "context": "Educação financeira",
+        "prompt": "Uma mochila custa R$ 120. A loja oferece 15% de desconto. Registre a base, encontre o desconto e determine o preço final. Explique uma estratégia sem regra de três."
+      },
+      {
+        "context": "Leitura de informação",
+        "prompt": "Em uma pesquisa com 200 estudantes, 30% preferiram ir à feira de bicicleta. Quantos estudantes são esse grupo? Explique por que 30% não significa 30 estudantes."
+      }
+    ],
+    "review": [
+      "Porcentagem é uma relação por cem.",
+      "A base é o todo sobre o qual a taxa incide.",
+      "Use frações familiares, decomposição ou cálculo mental para encontrar a parte.",
+      "Em desconto, subtraia a parte encontrada do preço inicial.",
+      "Confira se o resultado é razoável e se responde exatamente à pergunta."
+    ],
+    "learningCheck": {
+      "passRule": "Responda corretamente a pelo menos 4 das 5 questões; erros mostram explicação e permitem nova tentativa.",
+      "questionIds": [
+        "cev2-ef06ma13-probe-01",
+        "cev2-ef06ma13-practice-02",
+        "cev2-ef06ma13-transfer-03",
+        "cev2-ef06ma13-lock-in-04",
+        "cev2-ef06ma13-review-05"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ma13-probe-01",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Uma caixa tem 40 lápis. Quantos lápis correspondem a 25% do total?",
+      "options": ["5 lápis", "10 lápis", "25 lápis", "30 lápis"],
+      "correctAnswer": "10 lápis",
+      "calculation": { "operation": "PERCENT_OF", "base": 40, "percent": 25, "expectedNumeric": 10 },
+      "explanation": "25% é um quarto; 40 ÷ 4 = 10.",
+      "misconception": "Confundir a taxa 25 com a quantidade de lápis ou calcular 25% como 25 unidades."
+    },
+    {
+      "id": "cev2-ef06ma13-practice-02",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Uma turma arrecadou R$ 90. Qual valor corresponde a 10% dessa quantia?",
+      "options": ["R$ 9", "R$ 10", "R$ 80", "R$ 90"],
+      "correctAnswer": "R$ 9",
+      "calculation": { "operation": "PERCENT_OF", "base": 90, "percent": 10, "expectedNumeric": 9 },
+      "explanation": "10% é a décima parte da base: 90 ÷ 10 = 9.",
+      "misconception": "Tratar a taxa percentual como o valor final."
+    },
+    {
+      "id": "cev2-ef06ma13-transfer-03",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma conta de R$ 150 recebeu desconto de 20%. Qual será o preço depois do desconto?",
+      "options": ["R$ 30", "R$ 120", "R$ 130", "R$ 180"],
+      "correctAnswer": "R$ 120",
+      "calculation": { "operation": "PRICE_AFTER_DISCOUNT", "base": 150, "percent": 20, "expectedNumeric": 120 },
+      "explanation": "20% de 150 é 30; subtraindo o desconto da base: 150 − 30 = 120.",
+      "misconception": "Responder com o valor do desconto em vez do preço final."
+    },
+    {
+      "id": "cev2-ef06ma13-lock-in-04",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Em uma pesquisa com 200 estudantes, 30% escolheram uma atividade. Quantos estudantes fizeram essa escolha?",
+      "options": ["30", "60", "170", "230"],
+      "correctAnswer": "60",
+      "calculation": { "operation": "PERCENT_OF", "base": 200, "percent": 30, "expectedNumeric": 60 },
+      "explanation": "10% de 200 é 20; três grupos de 10% correspondem a 30%, então 3 × 20 = 60.",
+      "misconception": "Ler 30% como 30 estudantes sem considerar o tamanho do grupo."
+    },
+    {
+      "id": "cev2-ef06ma13-review-05",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual estratégia encontra 5% de 80 sem regra de três?",
+      "options": ["Calcular 10% de 80 e dividir o resultado por 2", "Somar 5 a 80", "Dividir 80 por 5 e chamar o resultado de 5%", "Subtrair 5 de 80"],
+      "correctAnswer": "Calcular 10% de 80 e dividir o resultado por 2",
+      "calculation": { "operation": "PERCENT_OF", "base": 80, "percent": 5, "expectedNumeric": 4 },
+      "explanation": "10% de 80 é 8; metade de 8 é 4, portanto 5% de 80 é 4.",
+      "misconception": "Usar o número da taxa como se fosse uma operação direta sobre o total."
+    },
+    {
+      "id": "cev2-ef06ma13-practice-06",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Um livro custa R$ 120 e tem desconto de 15%. Qual é o valor do desconto?",
+      "options": ["R$ 15", "R$ 18", "R$ 102", "R$ 105"],
+      "correctAnswer": "R$ 18",
+      "calculation": { "operation": "PERCENT_OF", "base": 120, "percent": 15, "expectedNumeric": 18 },
+      "explanation": "10% de 120 é 12 e 5% é 6; juntos, 15% correspondem a R$ 18.",
+      "misconception": "Confundir desconto com preço final."
+    },
+    {
+      "id": "cev2-ef06ma13-transfer-07",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma escola tem 250 mudas e 40% serão plantadas no primeiro dia. Quantas mudas serão plantadas?",
+      "options": ["40", "100", "210", "290"],
+      "correctAnswer": "100",
+      "calculation": { "operation": "PERCENT_OF", "base": 250, "percent": 40, "expectedNumeric": 100 },
+      "explanation": "10% de 250 é 25; quatro grupos de 25 formam 40%, isto é, 100 mudas.",
+      "misconception": "Tomar o valor numérico 40 como a quantidade de mudas."
+    },
+    {
+      "id": "cev2-ef06ma13-lock-in-08",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma mochila de R$ 80 recebeu aumento de 10%. Qual é o novo preço?",
+      "options": ["R$ 8", "R$ 70", "R$ 88", "R$ 90"],
+      "correctAnswer": "R$ 88",
+      "calculation": { "operation": "PRICE_AFTER_INCREASE", "base": 80, "percent": 10, "expectedNumeric": 88 },
+      "explanation": "10% de 80 é R$ 8. No aumento, somamos a variação à base: 80 + 8 = 88.",
+      "misconception": "Responder apenas com o valor do aumento."
+    },
+    {
+      "id": "cev2-ef06ma13-review-09",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Em uma atividade, 50% de 46 participantes escolheram desenho. Quantos participantes escolheram desenho?",
+      "options": ["23", "46", "50", "92"],
+      "correctAnswer": "23",
+      "calculation": { "operation": "PERCENT_OF", "base": 46, "percent": 50, "expectedNumeric": 23 },
+      "explanation": "50% corresponde à metade: 46 ÷ 2 = 23.",
+      "misconception": "Confundir a porcentagem com a quantidade da parte."
+    },
+    {
+      "id": "cev2-ef06ma13-practice-10",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma campanha arrecadou R$ 200. Quanto corresponde a 15% dessa quantia?",
+      "options": ["R$ 15", "R$ 20", "R$ 30", "R$ 185"],
+      "correctAnswer": "R$ 30",
+      "calculation": { "operation": "PERCENT_OF", "base": 200, "percent": 15, "expectedNumeric": 30 },
+      "explanation": "10% de 200 é 20 e 5% é 10; portanto, 15% de 200 é 20 + 10 = R$ 30.",
+      "misconception": "Ler 15% como 15 unidades sem relacionar a taxa ao total."
+    }
+  ]
+}

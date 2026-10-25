@@ -1,0 +1,27 @@
+{
+  "docketVersion": "central-estudos-v2-review-docket-v1",
+  "candidate": "CEV2_EF06MA13_PERCENTUAL_01",
+  "contentVersion": "central-estudos-v2-candidate-2026-10-25.1",
+  "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ma13-percentual.json",
+  "contentSha256": "23c79915a6f9b3658ad98c0bfa3a9a5ccd5c7edee0371941e04555431ca32996",
+  "technicalValidation": "PASS",
+  "humanReview": {
+    "status": "PEDAGOGICAL_REVIEW_PENDING",
+    "reviewer": null,
+    "reviewedAt": null,
+    "notes": null,
+    "criteria": {
+      "officialAlignment": "PENDING",
+      "mathematicalAccuracy": "PENDING",
+      "ageAndGradeSuitability": "PENDING",
+      "clarityAndAccessibility": "PENDING",
+      "answerQuality": "PENDING",
+      "culturalAndContextualSuitability": "PENDING"
+    }
+  },
+  "publication": {
+    "status": "NOT_PUBLISHED",
+    "history": []
+  },
+  "validationIssues": []
+}
