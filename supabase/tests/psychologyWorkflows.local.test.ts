@@ -169,6 +169,13 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       birth_date: '1995-05-12',
       active: true,
     });
+    const secondStudentRow = await insertOne(service, 'students', {
+      profile_id: student.id,
+      institution_id: institution.id,
+      registration_number: `PSY-ALT-${suffix}`,
+      birth_date: '1995-05-12',
+      active: true,
+    });
     const unrelatedStudentRow = await insertOne(service, 'students', {
       profile_id: unrelatedStudent.id,
       institution_id: institution.id,
@@ -190,6 +197,29 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       birth_date: '1998-04-09',
       active: true,
     });
+    const academicYear = await insertOne(service, 'academic_years', {
+      institution_id: institution.id,
+      name: `Ano teste ${suffix}`,
+      start_date: '2026-01-01',
+      end_date: '2026-12-31',
+      active: true,
+    });
+    const classRow = await insertOne(service, 'classes', {
+      institution_id: institution.id,
+      academic_year_id: academicYear.id,
+      name: `Turma teste ${suffix}`,
+      grade_level: '7º ano',
+      active: true,
+    });
+    for (const enrolledStudent of [studentRow, secondStudentRow]) {
+      await insertOne(service, 'enrollments', {
+        student_id: enrolledStudent.id,
+        class_id: classRow.id,
+        academic_year_id: academicYear.id,
+        status: 'active',
+        active: true,
+      });
+    }
     await insertOne(service, 'guardianships', {
       student_id: minorRow.id,
       guardian_profile_id: guardian.id,
@@ -282,6 +312,73 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       make_active: true,
     });
     expect(otherProfessionalAssignment.error).toBeNull();
+
+    const groupedCandidates = await director.client.rpc('psychology_search_management_candidates', {
+      target_institution_id: institution.id,
+      search_text: `PSY-ALT-${suffix}`,
+      class_filter_id: null,
+      grade_filter: null,
+      assignment_filter: 'ALL',
+      page_number: 1,
+      page_size: 1,
+    });
+    expect(groupedCandidates.error).toBeNull();
+    const groupedPage = groupedCandidates.data as {
+      total: number;
+      page: number;
+      page_size: number;
+      total_pages: number;
+      students: Array<{ profile_id: string; registrations: Array<{ student_id: string }> }>;
+    };
+    expect(groupedPage).toMatchObject({ total: 1, page: 1, page_size: 1, total_pages: 1 });
+    expect(groupedPage.students).toHaveLength(1);
+    expect(groupedPage.students[0].profile_id).toBe(student.id);
+    expect(groupedPage.students[0].registrations.map((registration) => registration.student_id)).toEqual(
+      expect.arrayContaining([studentRow.id, secondStudentRow.id]),
+    );
+
+    const classFilteredCandidates = await director.client.rpc('psychology_search_management_candidates', {
+      target_institution_id: institution.id,
+      search_text: null,
+      class_filter_id: classRow.id,
+      grade_filter: '7º ano',
+      assignment_filter: 'ASSIGNED',
+      page_number: 1,
+      page_size: 1,
+    });
+    expect(classFilteredCandidates.error).toBeNull();
+    const classFilteredPage = classFilteredCandidates.data as {
+      total: number;
+      filters: { classes: Array<{ id: string }>; grades: string[] };
+      students: Array<{ profile_id: string; registrations: Array<{ student_id: string; assigned: boolean; enrollments: Array<{ class_id: string }> }> }>;
+    };
+    expect(classFilteredPage.total).toBe(1);
+    expect(classFilteredPage.filters.classes.map((item) => item.id)).toContain(classRow.id);
+    expect(classFilteredPage.filters.grades).toContain('7º ano');
+    expect(classFilteredPage.students[0].profile_id).toBe(student.id);
+    expect(classFilteredPage.students[0].registrations.map((registration) => registration.assigned)).toEqual(expect.arrayContaining([true, false]));
+    expect(classFilteredPage.students[0].registrations.every((registration) => registration.enrollments.some((enrollment) => enrollment.class_id === classRow.id))).toBe(true);
+
+    const unauthorizedCandidateSearch = await student.client.rpc('psychology_search_management_candidates', {
+      target_institution_id: institution.id,
+      search_text: null,
+      class_filter_id: null,
+      grade_filter: null,
+      assignment_filter: 'ALL',
+      page_number: 1,
+      page_size: 20,
+    });
+    expect(unauthorizedCandidateSearch.error?.code).toBe('P0001');
+    const crossInstitutionCandidateSearch = await director.client.rpc('psychology_search_management_candidates', {
+      target_institution_id: otherInstitution.id,
+      search_text: null,
+      class_filter_id: null,
+      grade_filter: null,
+      assignment_filter: 'ALL',
+      page_number: 1,
+      page_size: 20,
+    });
+    expect(crossInstitutionCandidateSearch.error?.code).toBe('P0001');
 
     const authorizationTargets = await student.client.rpc('psychology_list_my_authorization_targets', {
       target_institution_id: institution.id,

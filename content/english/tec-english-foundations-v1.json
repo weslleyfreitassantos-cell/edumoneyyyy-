@@ -1,0 +1,266 @@
+{
+  "course": {
+    "code": "TEC_ENGLISH_FOUNDATIONS",
+    "version": 1,
+    "title": "Inglês para começar",
+    "description": "Um caminho curto e prático para cumprimentar, falar do cotidiano e conversar em inglês.",
+    "author": "Equipe de conteúdo Tec Escola",
+    "publicationStatus": "STAGING",
+    "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "xpReward": 30
+  },
+  "units": [
+    {
+      "id": "english-v1-unit-1",
+      "order": 1,
+      "title": "Primeiras palavras",
+      "description": "Cumprimente pessoas, apresente-se e use frases educadas.",
+      "lessons": [
+        {
+          "id": "english-v1-u1-l1",
+          "order": 1,
+          "title": "Cumprimentos",
+          "description": "Aprenda a dizer olá, dar bom dia e se despedir.",
+          "sentences": [
+            { "pt": "Bom dia, turma.", "en": "Good morning, class." },
+            { "pt": "Meu nome é Ana.", "en": "My name is Ana." },
+            { "pt": "Prazer em conhecer você.", "en": "Nice to meet you." },
+            { "pt": "Até amanhã.", "en": "See you tomorrow." }
+          ],
+          "vocabulary": [
+            { "en": "Hello", "pt": "Olá" },
+            { "en": "Good morning", "pt": "Bom dia" },
+            { "en": "Goodbye", "pt": "Tchau" }
+          ],
+          "distractors": ["Good night, class.", "See you tomorrow."],
+          "fill": { "prompt": "Nice to ___ you.", "choices": ["meet", "eat", "sleep"], "answer": "meet" }
+        },
+        {
+          "id": "english-v1-u1-l2",
+          "order": 2,
+          "title": "Apresente-se",
+          "description": "Diga seu nome, de onde você é e pergunte o nome de alguém.",
+          "sentences": [
+            { "pt": "Qual é o seu nome?", "en": "What is your name?" },
+            { "pt": "Meu nome é Bruno.", "en": "My name is Bruno." },
+            { "pt": "Eu sou do Brasil.", "en": "I am from Brazil." },
+            { "pt": "Você é estudante?", "en": "Are you a student?" }
+          ],
+          "vocabulary": [
+            { "en": "My name is", "pt": "Meu nome é" },
+            { "en": "I am from", "pt": "Eu sou de" },
+            { "en": "student", "pt": "estudante" }
+          ],
+          "distractors": ["Where is your school?", "She is my teacher."],
+          "fill": { "prompt": "I am ___ Brazil.", "choices": ["from", "under", "goodbye"], "answer": "from" }
+        },
+        {
+          "id": "english-v1-u1-l3",
+          "order": 3,
+          "title": "Nomes e pessoas",
+          "description": "Fale de colegas, professores e estudantes.",
+          "sentences": [
+            { "pt": "Ela é minha amiga.", "en": "She is my friend." },
+            { "pt": "Ele é professor.", "en": "He is a teacher." },
+            { "pt": "Eu sou estudante.", "en": "I am a student." },
+            { "pt": "Eles são meus amigos.", "en": "They are my friends." }
+          ],
+          "vocabulary": [
+            { "en": "friend", "pt": "amigo ou amiga" },
+            { "en": "teacher", "pt": "professor ou professora" },
+            { "en": "student", "pt": "estudante" }
+          ],
+          "distractors": ["She is my book.", "They are at home."],
+          "fill": { "prompt": "He is a ___.", "choices": ["teacher", "tomorrow", "pencil"], "answer": "teacher" }
+        },
+        {
+          "id": "english-v1-u1-l4",
+          "order": 4,
+          "title": "Frases básicas",
+          "description": "Peça ajuda e agradeça com gentileza.",
+          "sentences": [
+            { "pt": "Por favor, abra o livro.", "en": "Please, open the book." },
+            { "pt": "Obrigado pela ajuda.", "en": "Thank you for your help." },
+            { "pt": "Com licença, onde fica a sala?", "en": "Excuse me, where is the classroom?" },
+            { "pt": "De nada.", "en": "You are welcome." }
+          ],
+          "vocabulary": [
+            { "en": "please", "pt": "por favor" },
+            { "en": "thank you", "pt": "obrigado ou obrigada" },
+            { "en": "excuse me", "pt": "com licença" }
+          ],
+          "distractors": ["I am from Brazil.", "See you tomorrow."],
+          "fill": { "prompt": "___, can you help me?", "choices": ["Please", "Goodbye", "Pencil"], "answer": "Please" }
+        }
+      ]
+    },
+    {
+      "id": "english-v1-unit-2",
+      "order": 2,
+      "title": "Meu cotidiano",
+      "description": "Fale sobre objetos, escola, família e rotina.",
+      "lessons": [
+        {
+          "id": "english-v1-u2-l1",
+          "order": 1,
+          "title": "Objetos e lugares",
+          "description": "Reconheça objetos da mochila e lugares da escola.",
+          "sentences": [
+            { "pt": "Este é o meu livro.", "en": "This is my book." },
+            { "pt": "A caneta está na mesa.", "en": "The pen is on the table." },
+            { "pt": "A sala é grande.", "en": "The classroom is big." },
+            { "pt": "Onde está o lápis?", "en": "Where is the pencil?" }
+          ],
+          "vocabulary": [
+            { "en": "book", "pt": "livro" },
+            { "en": "pencil", "pt": "lápis" },
+            { "en": "classroom", "pt": "sala de aula" }
+          ],
+          "distractors": ["My name is Ana.", "I like music."],
+          "fill": { "prompt": "This is my ___.", "choices": ["book", "brother", "morning"], "answer": "book" }
+        },
+        {
+          "id": "english-v1-u2-l2",
+          "order": 2,
+          "title": "Na escola",
+          "description": "Use palavras para falar de aulas e materiais escolares.",
+          "sentences": [
+            { "pt": "Eu vou para a escola de manhã.", "en": "I go to school in the morning." },
+            { "pt": "Nossa aula começa às oito.", "en": "Our lesson starts at eight." },
+            { "pt": "Minha mochila é azul.", "en": "My backpack is blue." },
+            { "pt": "A professora está na sala.", "en": "The teacher is in the classroom." }
+          ],
+          "vocabulary": [
+            { "en": "school", "pt": "escola" },
+            { "en": "lesson", "pt": "aula" },
+            { "en": "backpack", "pt": "mochila" }
+          ],
+          "distractors": ["My brother is tall.", "I like apples."],
+          "fill": { "prompt": "I go to ___ every day.", "choices": ["school", "family", "goodbye"], "answer": "school" }
+        },
+        {
+          "id": "english-v1-u2-l3",
+          "order": 3,
+          "title": "Família e amigos",
+          "description": "Apresente pessoas importantes para você.",
+          "sentences": [
+            { "pt": "Esta é a minha mãe.", "en": "This is my mother." },
+            { "pt": "Meu irmão gosta de futebol.", "en": "My brother likes soccer." },
+            { "pt": "Minha família é muito gentil.", "en": "My family is very kind." },
+            { "pt": "Meus amigos estudam comigo.", "en": "My friends study with me." }
+          ],
+          "vocabulary": [
+            { "en": "mother", "pt": "mãe" },
+            { "en": "brother", "pt": "irmão" },
+            { "en": "family", "pt": "família" }
+          ],
+          "distractors": ["The pencil is blue.", "Where is the classroom?"],
+          "fill": { "prompt": "My ___ is very kind.", "choices": ["family", "school", "tomorrow"], "answer": "family" }
+        },
+        {
+          "id": "english-v1-u2-l4",
+          "order": 4,
+          "title": "Minha rotina",
+          "description": "Conte ações simples do seu dia.",
+          "sentences": [
+            { "pt": "Eu acordo às sete.", "en": "I wake up at seven." },
+            { "pt": "Ela vai para a escola de ônibus.", "en": "She goes to school by bus." },
+            { "pt": "Nós fazemos a lição depois da aula.", "en": "We do homework after class." },
+            { "pt": "Ele lê antes de dormir.", "en": "He reads before bed." }
+          ],
+          "vocabulary": [
+            { "en": "wake up", "pt": "acordar" },
+            { "en": "go to school", "pt": "ir para a escola" },
+            { "en": "do homework", "pt": "fazer a lição" }
+          ],
+          "distractors": ["The classroom is big.", "Thank you for your help."],
+          "fill": { "prompt": "We ___ homework after class.", "choices": ["do", "say", "open"], "answer": "do" }
+        }
+      ]
+    },
+    {
+      "id": "english-v1-unit-3",
+      "order": 3,
+      "title": "Comunicação",
+      "description": "Faça perguntas, fale do que gosta e participe de pequenos diálogos.",
+      "lessons": [
+        {
+          "id": "english-v1-u3-l1",
+          "order": 1,
+          "title": "Perguntas simples",
+          "description": "Pergunte sobre pessoas, lugares e preferências.",
+          "sentences": [
+            { "pt": "Qual é a sua cor favorita?", "en": "What is your favorite color?" },
+            { "pt": "Onde você mora?", "en": "Where do you live?" },
+            { "pt": "Quem é o seu professor?", "en": "Who is your teacher?" },
+            { "pt": "Você gosta de música?", "en": "Do you like music?" }
+          ],
+          "vocabulary": [
+            { "en": "what", "pt": "o que ou qual" },
+            { "en": "where", "pt": "onde" },
+            { "en": "who", "pt": "quem" }
+          ],
+          "distractors": ["The book is on the table.", "My family is very kind."],
+          "fill": { "prompt": "___ is your teacher?", "choices": ["Who", "Book", "Please"], "answer": "Who" }
+        },
+        {
+          "id": "english-v1-u3-l2",
+          "order": 2,
+          "title": "Gostos e preferências",
+          "description": "Diga o que você gosta e pergunte sobre os gostos de alguém.",
+          "sentences": [
+            { "pt": "Eu gosto de música.", "en": "I like music." },
+            { "pt": "Ela adora desenhar.", "en": "She loves drawing." },
+            { "pt": "Meu esporte favorito é vôlei.", "en": "My favorite sport is volleyball." },
+            { "pt": "Nós gostamos de ler juntos.", "en": "We like reading together." }
+          ],
+          "vocabulary": [
+            { "en": "like", "pt": "gostar" },
+            { "en": "love", "pt": "adorar" },
+            { "en": "favorite", "pt": "favorito ou favorita" }
+          ],
+          "distractors": ["Where do you live?", "This is my mother."],
+          "fill": { "prompt": "I ___ music.", "choices": ["like", "where", "classroom"], "answer": "like" }
+        },
+        {
+          "id": "english-v1-u3-l3",
+          "order": 3,
+          "title": "Pequenos diálogos",
+          "description": "Use frases curtas para pedir e oferecer algo.",
+          "sentences": [
+            { "pt": "Posso usar seu lápis?", "en": "Can I use your pencil?" },
+            { "pt": "Claro, aqui está.", "en": "Sure, here you are." },
+            { "pt": "Muito obrigado.", "en": "Thank you very much." },
+            { "pt": "De nada, Ana.", "en": "You are welcome, Ana." }
+          ],
+          "vocabulary": [
+            { "en": "Can I", "pt": "Posso..." },
+            { "en": "Here you are", "pt": "Aqui está" },
+            { "en": "You are welcome", "pt": "De nada" }
+          ],
+          "distractors": ["I wake up at seven.", "My favorite sport is volleyball."],
+          "fill": { "prompt": "Sure, here you ___.", "choices": ["are", "is", "am"], "answer": "are" }
+        },
+        {
+          "id": "english-v1-u3-l4",
+          "order": 4,
+          "title": "Revisão geral",
+          "description": "Junte cumprimentos, rotina, família e perguntas em uma conversa curta.",
+          "sentences": [
+            { "pt": "Olá, meu nome é Lucas.", "en": "Hello, my name is Lucas." },
+            { "pt": "Eu vou para a escola de manhã.", "en": "I go to school in the morning." },
+            { "pt": "Minha irmã gosta de livros.", "en": "My sister likes books." },
+            { "pt": "Qual é a sua atividade favorita?", "en": "What is your favorite activity?" }
+          ],
+          "vocabulary": [
+            { "en": "sister", "pt": "irmã" },
+            { "en": "morning", "pt": "manhã" },
+            { "en": "activity", "pt": "atividade" }
+          ],
+          "distractors": ["Can I use your pencil?", "The classroom is big."],
+          "fill": { "prompt": "My ___ likes books.", "choices": ["sister", "goodbye", "where"], "answer": "sister" }
+        }
+      ]
+    }
+  ]
+}

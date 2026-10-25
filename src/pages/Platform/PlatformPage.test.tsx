@@ -58,6 +58,7 @@ const hookMock = vi.hoisted(() => ({
 
 vi.mock('react-router-dom', () => ({
   useNavigate: () => hookMock.navigate,
+  Link: ({ to, children, ...props }: any) => <a href={to} {...props}>{children}</a>,
 }));
 
 vi.mock('../../hooks/useAccounts', () => ({
@@ -736,6 +737,8 @@ describe('PlatformPage', () => {
 
   it('mostra identidade da plataforma e solicitacoes de dominio para SUPER_ADMIN', () => {
     renderPage();
+
+    expect(screen.getByRole('link', { name: 'Revisar Tec Inglês' }).getAttribute('href')).toBe('/teacher/pedagogical-center/tec-english-review');
 
     expect(
       screen.getByRole('heading', {
