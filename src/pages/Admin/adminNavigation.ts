@@ -14,6 +14,7 @@ export type AdminModuleId =
   | 'teachers'
   | 'guardians'
   | 'secretaries'
+  | 'psychologists'
   | 'directors'
   | 'announcements'
   | 'email'
@@ -141,6 +142,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'manage_school_users',
     href: moduleHref('secretaries'),
     allowedRoles: ['DIRECTOR'],
+  },
+  {
+    id: 'psychologists',
+    label: 'Psicólogos',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('psychologists'),
+    allowedRoles: ['ADMIN', 'DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'directors',

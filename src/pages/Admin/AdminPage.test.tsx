@@ -157,6 +157,10 @@ vi.mock('./tabs/SchoolUsersTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/PsychologistsTab', () => ({
+  default: () => <div data-testid="psychologists-tab">Cadastro de psicólogos</div>,
+}));
+
 vi.mock('./tabs/EnrollmentsTab', () => ({
   default: () => (
     <div data-testid="enrollments-tab">
@@ -453,12 +457,21 @@ afterEach(() => {
 });
 
 describe('AdminPage URL module resolution', () => {
+  it('abre a gestão de psicólogos para direção', () => {
+    mockAdminState({
+      profile: { ...baseProfile, role: 'DIRECTOR' },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=psychologists');
+
+    expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
+  });
+
   it('usa o primeiro modulo autorizado como fallback para ADMIN', () => {
     renderAdminPage('/admin');
 
-    expect(
-      screen.getByTestId('school-users-tab'),
-    ).toBeTruthy();
+    expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
     expect(screen.queryByTestId('overview-tab')).toBeNull();
     expect(
       screen.queryByText(/^m.dulos$/i),
@@ -541,7 +554,7 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.queryByTestId('pedagogical-monitoring-panel'),
     ).toBeNull();
-    expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+    expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
     expect(screen.queryByTestId('overview-tab')).toBeNull();
   });
 
@@ -564,7 +577,7 @@ describe('AdminPage URL module resolution', () => {
     (moduleId) => {
       renderAdminPage(`/admin?module=${moduleId}`);
 
-      expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+      expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
       expect(screen.queryByTestId('overview-tab')).toBeNull();
     },
   );
@@ -605,7 +618,7 @@ describe('AdminPage URL module resolution', () => {
   it('faz fallback seguro para diario invalido ou nao autorizado', () => {
     renderAdminPage('/admin?module=class-diary');
 
-    expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+    expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
     expect(screen.queryByTestId('overview-tab')).toBeNull();
     expect(screen.queryByTestId('attendance-panel')).toBeNull();
   });
@@ -700,9 +713,7 @@ describe('AdminPage permissions', () => {
     mockAdminState();
     renderAdminPage('/admin?module=school-users');
 
-    expect(
-      screen.getByTestId('school-users-tab'),
-    ).toBeTruthy();
+    expect(screen.getByTestId('psychologists-tab')).toBeTruthy();
     expect(screen.queryByTestId('overview-tab')).toBeNull();
   });
 

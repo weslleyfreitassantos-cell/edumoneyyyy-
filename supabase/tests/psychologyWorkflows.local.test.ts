@@ -277,6 +277,21 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(registered.error).toBeNull();
     expect(registered.data).toMatchObject({ verification_status: 'PENDING' });
 
+    const pendingProfessionalCannotCreateAvailability = await psychologist.client.rpc('psychology_set_availability_rule', {
+      target_institution_id: institution.id,
+      target_rule_id: null,
+      target_day_of_week: localWeekday(saoPauloDate(1)),
+      target_start_local: '08:00:00',
+      target_end_local: '18:00:00',
+      target_timezone: 'America/Sao_Paulo',
+      target_session_minutes: 50,
+      target_preparation_minutes: 10,
+      target_valid_from: saoPauloDate(0),
+      target_valid_until: null,
+      target_active: true,
+    });
+    expect(pendingProfessionalCannotCreateAvailability.error?.code).toBe('P0001');
+
     const verified = await director.client.rpc('psychology_verify_professional', {
       target_institution_id: institution.id,
       target_profile_id: psychologist.id,

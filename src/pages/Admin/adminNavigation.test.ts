@@ -6,6 +6,25 @@ import {
 } from './adminNavigation';
 
 describe('academic documents admin navigation', () => {
+  it('places psychologist management after secretaries in People and limits it to managers', () => {
+    const peopleModules = ADMIN_MODULES.filter((item) => item.groupId === 'people');
+    const secretaryIndex = peopleModules.findIndex((item) => item.id === 'secretaries');
+    const psychologistsIndex = peopleModules.findIndex((item) => item.id === 'psychologists');
+    const module = peopleModules[psychologistsIndex];
+
+    expect(psychologistsIndex).toBe(secretaryIndex + 1);
+    expect(module).toMatchObject({
+      label: 'Psicólogos',
+      permission: 'manage_school_users',
+      href: '/admin?module=psychologists',
+      allowedRoles: ['ADMIN', 'DIRECTOR', 'SECRETARY'],
+    });
+    expect(isAdminModuleAvailable(module, 'ADMIN')).toBe(true);
+    expect(isAdminModuleAvailable(module, 'DIRECTOR')).toBe(true);
+    expect(isAdminModuleAvailable(module, 'SECRETARY')).toBe(true);
+    expect(isAdminModuleAvailable(module, 'PSYCHOLOGIST')).toBe(false);
+  });
+
   it('registra relatórios acadêmicos somente para direção e secretaria', () => {
     const module = ADMIN_MODULES.find((item) => item.id === 'academic-reports');
 
