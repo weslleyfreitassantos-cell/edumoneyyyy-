@@ -1,0 +1,57 @@
+import { readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+
+const migration = readFileSync(
+  new URL('./20261025000800_classroom_activity_authoring_v2.sql', import.meta.url),
+  'utf8',
+);
+
+describe('classroom activity authoring v2', () => {
+  it('supports scheduled assignments and bounded retries', () => {
+    expect(migration).toContain('add column if not exists available_at timestamptz');
+    expect(migration).toContain('add column if not exists max_attempts integer');
+    expect(migration).toContain('learning_assignments_max_attempts_check');
+    expect(migration).toContain('LEARNING_ASSIGNMENT_NOT_AVAILABLE_OR_ATTEMPTS_EXHAUSTED');
+    expect(migration).toContain('assignment.available_at is null or assignment.available_at <= now()');
+    expect(migration).toContain('assignment.due_at is null or assignment.due_at >= now()');
+  });
+
+  it('keeps question-bank answer keys behind the active teacher role and review filter', () => {
+    expect(migration).toContain('LEARNING_QUESTION_BANK_TEACHER_SCOPE_DENIED');
+    expect(migration).toContain("membership.role = 'TEACHER'::public.user_role");
+    expect(migration).toContain("'approved', 'published', 'approved_for_production'");
+    expect(migration).toContain("'review_pending', 'pedagogical_review_pending', 'rejected', 'authored', 'tech_validated'");
+    expect(migration).toContain("nullif(trim(coalesce(question.metadata->>'pedagogical_review_status', '')), '') is null");
+    expect(migration).toContain("<> 'staging'");
+    expect(migration).toContain("<> 'true'");
+    expect(migration).toContain('LEARNING_QUESTION_BANK_SCOPE_OR_REVIEW_DENIED');
+    expect(migration).toContain('LEARNING_MULTIPLE_CHOICE_OPTIONS_INVALID');
+    expect(migration).toContain('LEARNING_TRUE_FALSE_ANSWER_INVALID');
+    expect(migration).toContain('LEARNING_QUESTION_POINTS_INVALID');
+    expect(migration).toContain('grant execute on function public.search_teacher_learning_question_bank_v1');
+  });
+
+  it('publishes atomically only to teacher-authorized classes', () => {
+    expect(migration).toContain('public.publish_learning_activity_to_classes_v1');
+    expect(migration).toContain('private.learning_teacher_can_assign_activity');
+    expect(migration).toContain('public.publish_learning_activity(');
+    expect(migration).toContain('cardinality(coalesce(p_class_ids');
+    expect(migration).toContain('LEARNING_ASSIGNMENT_DUPLICATE_CLASS');
+    expect(migration).toContain('public.archive_learning_activity_v1');
+  });
+
+  it('filters student access by assignment schedule and does not expose answer keys', () => {
+    const studentRpc = migration.slice(migration.indexOf('create or replace function public.list_student_learning_activities'));
+    const trigger = studentRpc.slice(studentRpc.indexOf('create or replace function private.enforce_learning_assignment_attempt_policy'));
+    expect(studentRpc.slice(0, studentRpc.indexOf('create or replace function private.enforce_learning_assignment_attempt_policy'))).toContain('assignment.available_at is null or assignment.available_at <= now()');
+    expect(studentRpc.slice(0, studentRpc.indexOf('create or replace function private.enforce_learning_assignment_attempt_policy'))).not.toContain("'correct_answer_json'");
+    expect(studentRpc.slice(0, studentRpc.indexOf('create or replace function private.enforce_learning_assignment_attempt_policy'))).not.toContain("'explanation'");
+    expect(trigger).toContain('create trigger learning_attempt_runs_assignment_policy');
+    expect(trigger).toContain('< assignment.max_attempts');
+    expect(trigger).toContain('activity.status = \'PUBLISHED\'');
+    expect(trigger).toContain('student.profile_id = auth.uid()');
+    expect(trigger).toContain('pg_advisory_xact_lock');
+    expect(trigger).toContain('new.run_number = (');
+    expect(trigger).toContain('previous.student_id = new.student_id');
+  });
+});

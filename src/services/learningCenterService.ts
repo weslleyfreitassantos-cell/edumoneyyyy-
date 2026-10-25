@@ -94,6 +94,8 @@ export interface LearningAssignment {
   id: string;
   class_id: string;
   due_at: string | null;
+  available_at?: string | null;
+  max_attempts?: number | null;
   classes?: { name: string } | { name: string }[] | null;
 }
 
@@ -345,6 +347,23 @@ export interface LearningQuestionBankItem {
   correct_answer: unknown;
   explanation: string | null;
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
+  total_count?: number;
+}
+
+export interface LearningQuestionBankSearch {
+  subjectArea?: string;
+  query?: string;
+  difficulty?: string;
+  packageType?: string;
+  sourceType?: string;
+  canonicalSkillId?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface LearningQuestionBankSearchResult {
+  items: LearningQuestionBankItem[];
+  totalCount: number;
 }
 
 export interface LearningSimulation {
@@ -854,7 +873,7 @@ export interface LearningAttemptSummary {
 }
 
 const teacherActivitySelect =
-  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_bank_id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,due_at,classes(name))';
+  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_bank_id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,available_at,due_at,max_attempts,classes(name))';
 
 async function read<T>(
   query: PromiseLike<{
@@ -1547,6 +1566,26 @@ export const learningCenterService = {
       }),
     ),
 
+  searchTeacherQuestionBank: async (
+    institutionId: string,
+    filters: LearningQuestionBankSearch = {},
+  ): Promise<LearningQuestionBankSearchResult> => {
+    const items = await read<LearningQuestionBankItem[]>(
+      supabase.rpc('search_teacher_learning_question_bank_v1', {
+        p_institution_id: institutionId,
+        p_subject_area: filters.subjectArea ?? null,
+        p_query: filters.query?.trim() || null,
+        p_difficulty: filters.difficulty && filters.difficulty !== 'ALL' ? filters.difficulty : null,
+        p_package_type: filters.packageType && filters.packageType !== 'ALL' ? filters.packageType : null,
+        p_source_type: filters.sourceType?.trim() || null,
+        p_canonical_skill_id: filters.canonicalSkillId ?? null,
+        p_page: filters.page ?? 1,
+        p_page_size: filters.pageSize ?? 25,
+      }),
+    );
+    return { items, totalCount: Number(items[0]?.total_count ?? 0) };
+  },
+
   teacherClassGaps: (institutionId: string, classId: string) =>
     read<LearningClassGap[]>(
       supabase.rpc('get_teacher_learning_class_gaps', {
@@ -1942,6 +1981,25 @@ export const learningCenterService = {
 
     return { id: assignmentId };
   },
+
+  publishActivityToClasses: async (input: {
+    activity_id: string;
+    class_ids: string[];
+    available_at?: string | null;
+    due_at?: string | null;
+    max_attempts?: number | null;
+  }) => read<Array<{ class_id: string; assignment_id: string }>>(
+    supabase.rpc('publish_learning_activity_to_classes_v1', {
+      p_activity_id: input.activity_id,
+      p_class_ids: input.class_ids,
+      p_available_at: input.available_at ?? null,
+      p_due_at: input.due_at ?? null,
+      p_max_attempts: input.max_attempts ?? null,
+    }),
+  ),
+
+  archiveActivity: (activityId: string) =>
+    read<string>(supabase.rpc('archive_learning_activity_v1', { p_activity_id: activityId })),
 
   updateActivity: async (input: {
     activity_id: string;

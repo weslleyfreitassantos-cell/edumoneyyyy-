@@ -441,6 +441,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
   { id: 'guardian-report-card', label: 'Boletim dos dependentes', path: '/guardian/report-card', section: 'personal', icon: FileCheck2, roles: ['parent'], activePaths: ['/guardian/report-card'], exactActivePath: true },
   { id: 'teacher-pedagogical-center', label: 'Desempenho', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
+  { id: 'teacher-classroom', label: 'Sala de Aula', path: '/teacher/classroom', section: 'personal', icon: BookOpenCheck, roles: ['teacher'], activePaths: ['/teacher/classroom'] },
   {
     id: 'personalize-login',
     label: 'Personalizar login',
@@ -531,7 +532,7 @@ const roleNavigationGroupDefinitions: Partial<
       id: 'teacher-resources',
       label: 'Aprendizagem e recursos',
       icon: BookOpen,
-      itemIds: ['teacher-pedagogical-center', 'learning-materials', 'library'],
+      itemIds: ['teacher-pedagogical-center', 'teacher-classroom', 'learning-materials', 'library'],
     },
     {
       id: 'teacher-communication',
