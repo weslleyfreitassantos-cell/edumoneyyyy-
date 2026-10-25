@@ -136,9 +136,13 @@ async function answerInUi(page: Page, exercise: ExerciseRow): Promise<void> {
   }
 
   await page.getByRole('button', { name: 'Conferir resposta' }).click();
-  await expect(page.getByText('Muito bem! Você acertou.')).toBeVisible();
-  if (exercise.position < 7) await page.getByRole('button', { name: 'Próximo desafio' }).click();
-  else await page.getByRole('button', { name: 'Ver resultado' }).click();
+  if (exercise.position < 7) {
+    await expect(page.getByText('Muito bem! Você acertou.')).toBeVisible();
+    await page.getByRole('button', { name: 'Próximo desafio' }).click();
+  } else {
+    await expect(page.getByText('Lição concluída')).toBeVisible();
+    await expect(page.getByText('Você concluiu os desafios desta etapa.')).toBeVisible();
+  }
 }
 
 async function login(page: Page, actor: Actor): Promise<void> {
