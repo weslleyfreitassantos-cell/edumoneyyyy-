@@ -110,16 +110,16 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   await expect(matchingStudentOption).toHaveCount(1, { timeout: 30_000 });
   await studentSelect.selectOption(fixture.studentId);
   await expect(studentSelect).toHaveValue(fixture.studentId);
-  await page.getByLabel('Responsável financeiro', { exact: true }).selectOption({ label: fixture.guardianName });
-  await page.getByLabel('Ano letivo', { exact: true }).selectOption({ label: fixture.academicYearName });
-  await page.getByLabel('Matrícula (opcional)', { exact: true }).selectOption({ label: `${fixture.className} · ${fixture.academicYearName}` });
+  await page.getByRole('combobox', { name: 'Responsável financeiro', exact: true }).selectOption({ label: fixture.guardianName });
+  await page.getByRole('combobox', { name: 'Ano letivo', exact: true }).selectOption({ label: fixture.academicYearName });
+  await page.getByRole('combobox', { name: 'Matrícula (opcional)', exact: true }).selectOption({ label: `${fixture.className} · ${fixture.academicYearName}` });
   await page.getByLabel('Mensalidade (R$)', { exact: true }).fill('120,00');
   await page.getByLabel('Número de parcelas', { exact: true }).fill('2');
   await page.getByRole('button', { name: 'Criar contrato e gerar parcelas' }).click();
   await expect(page.getByRole('status').filter({ hasText: '2 mensalidades geradas' })).toBeVisible({ timeout: 30_000 });
 
   await financeNav.getByRole('button', { name: 'Mensalidades' }).click();
-  const invoiceSort = page.getByLabel('Ordenar por');
+  const invoiceSort = page.getByRole('combobox', { name: 'Ordenar por', exact: true });
   await invoiceSort.selectOption('balance:DESC');
   await expect(invoiceSort).toHaveValue('balance:DESC');
   const invoiceRow = page.getByRole('row').filter({ hasText: fixture.studentName }).first();
@@ -137,7 +137,7 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   await financeNav.getByRole('button', { name: 'Despesas' }).click();
   const expenseName = `Energia E2E ${fixture.registrationNumber}`;
   const currentMonth = new Date().toISOString().slice(0, 7);
-  await page.getByLabel('Categoria', { exact: true }).selectOption({ label: 'Energia' });
+  await page.getByRole('combobox', { name: 'Categoria', exact: true }).selectOption({ label: 'Energia' });
   await page.getByLabel('Descrição', { exact: true }).fill(expenseName);
   await page.getByLabel('Valor (R$)', { exact: true }).fill('80,00');
   await page.getByLabel('Competência', { exact: true }).fill(currentMonth);
