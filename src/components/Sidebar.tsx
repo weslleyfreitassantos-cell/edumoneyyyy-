@@ -24,6 +24,7 @@ import {
   GraduationCap,
   Heart,
   LayoutDashboard,
+  Languages,
   ListChecks,
   LogOut,
   Mail,
@@ -46,6 +47,7 @@ import type {
 } from 'react';
 import {
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import {
@@ -434,6 +436,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'] },
+  { id: 'student-english', label: 'Tec Inglês', path: '/student/study/english', section: 'personal', icon: Languages, roles: ['student'], activePaths: ['/student/study/english'] },
   { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
   { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
   { id: 'guardian-report-card', label: 'Boletim dos dependentes', path: '/guardian/report-card', section: 'personal', icon: FileCheck2, roles: ['parent'], activePaths: ['/guardian/report-card'], exactActivePath: true },
@@ -492,16 +495,12 @@ const roleNavigationGroupDefinitions: Partial<
 > = {
   student: [
     {
-      id: 'student-routine',
-      label: 'Rotina escolar',
-      icon: LayoutDashboard,
-      itemIds: ['student-timetable', 'student-calendar'],
-    },
-    {
-      id: 'student-academics',
-      label: 'Vida acadêmica',
+      id: 'student-school-life',
+      label: 'Vida escolar',
       icon: ClipboardCheck,
       itemIds: [
+        'student-timetable',
+        'student-calendar',
         'student-subjects',
         'student-attendance',
         'student-grades',
@@ -512,21 +511,16 @@ const roleNavigationGroupDefinitions: Partial<
       id: 'student-learning',
       label: 'Aprendizagem',
       icon: BookOpenCheck,
-      itemIds: ['learning-materials', 'library', 'student-study'],
+      itemIds: ['student-study', 'student-english', 'learning-materials', 'library'],
     },
   ],
   teacher: [
-    {
-      id: 'teacher-overview',
-      label: 'Visão geral',
-      icon: LayoutDashboard,
-      itemIds: ['student-timetable', 'teacher-pedagogical-center'],
-    },
     {
       id: 'teacher-routine',
       label: 'Rotina docente',
       icon: ClipboardList,
       itemIds: [
+        'student-timetable',
         'teacher-attendance',
         'teacher-grades',
         'teacher-term-closing',
@@ -535,15 +529,21 @@ const roleNavigationGroupDefinitions: Partial<
     },
     {
       id: 'teacher-resources',
-      label: 'Materiais e recursos',
+      label: 'Aprendizagem e recursos',
       icon: BookOpen,
-      itemIds: ['inventory', 'learning-materials', 'library'],
+      itemIds: ['teacher-pedagogical-center', 'learning-materials', 'library'],
+    },
+    {
+      id: 'teacher-communication',
+      label: 'Comunicação e recursos',
+      icon: MonitorCog,
+      itemIds: ['inventory', 'email'],
     },
   ],
   parent: [
     {
-      id: 'guardian-academics',
-      label: 'Acompanhamento acadêmico',
+      id: 'guardian-school-life',
+      label: 'Acompanhamento escolar',
       icon: UsersRound,
       itemIds: [
         'guardian-attendance',
@@ -807,18 +807,19 @@ export default function Sidebar({
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
     useState(false);
   const [isPsychologyOpen, setIsPsychologyOpen] = useState(false);
-  const navigationItems = getSidebarNavigationItems({
+  const navigationItems = useMemo(() => getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
     currentInstitutionId,
     currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
-  });
-  const roleNavigationGroups = getRoleNavigationGroups(
-    currentUser.role,
-    navigationItems,
+  }), [profile, currentInstitutionRole, currentInstitutionId, currentInstitutionPlan, currentUser.role, location.pathname]);
+  const roleNavigationGroups = useMemo(
+    () => getRoleNavigationGroups(currentUser.role, navigationItems),
+    [currentUser.role, navigationItems],
   );
+  const sharesRoleNavigationState = ['student', 'teacher', 'parent'].includes(currentUser.role);
   const roleNavigationItemIds = new Set(
     roleNavigationGroups.flatMap((group) => group.items.map((item) => item.id)),
   );
@@ -843,6 +844,7 @@ export default function Sidebar({
         )?.modules ?? [],
       navigationItems: navigationItems.filter(
         (item) =>
+          !roleNavigationItemIds.has(item.id) &&
           baseAdminNavigationGroupByItemId[
             item.id
           ] === group.id,
@@ -859,18 +861,22 @@ export default function Sidebar({
       group.modules.length > 0 ||
       group.navigationItems.length > 0,
   );
-  const groupedSections = Array.from(
-    new Set(
+  const groupedSections: NavigationSection[] = Array.from(
+    new Set<NavigationSection>(
       navigationItems
         .filter(
           (item) =>
             !baseAdminNavigationGroupByItemId[
               item.id
-            ] && !roleNavigationItemIds.has(item.id),
+            ] && !roleNavigationItemIds.has(item.id)
+            && !(sharesRoleNavigationState && item.id === 'dashboard'),
         )
         .map((item) => item.section),
     ),
   );
+  const primaryDashboardItem = sharesRoleNavigationState
+    ? navigationItems.find((item) => item.id === 'dashboard')
+    : undefined;
   const brandName =
     branding.displayName?.trim() || 'Tec Escola';
   const brandLogoUrl =
@@ -901,6 +907,48 @@ export default function Sidebar({
     setBrandLogoFailed(false);
   }, [branding.logoUrl]);
 
+  useEffect(() => {
+    if (!sharesRoleNavigationState) return;
+
+    const activeRoleGroup = roleNavigationGroups.find((group) =>
+      group.items.some((item) => isActivePath(location.pathname, item)),
+    );
+    if (activeRoleGroup) {
+      setOpenRoleNavigationGroupId(activeRoleGroup.id);
+      return;
+    }
+
+    const canShowInclusiveEducation = Boolean(
+      currentInstitutionId
+      && profile.platform_role !== 'SUPER_ADMIN'
+      && profile.role !== 'ADMIN'
+      && currentUser.role !== 'admin'
+      && ['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? ''),
+    );
+    const inclusiveRouteIsActive = canShowInclusiveEducation
+      && inclusiveEducationNavigation.some((item) => location.pathname === item.path);
+    const effectiveRole = (currentInstitutionRole ?? profile.role ?? '').toUpperCase();
+    const psychologyRouteIsActive = Boolean(
+      currentInstitutionId
+      && profile.platform_role !== 'SUPER_ADMIN'
+      && psychologyNavigation.some((item) =>
+        item.roles.includes(effectiveRole) && location.pathname === item.path,
+      ),
+    );
+
+    if (inclusiveRouteIsActive) setOpenRoleNavigationGroupId('inclusive-education');
+    else if (psychologyRouteIsActive) setOpenRoleNavigationGroupId('psychology');
+  }, [
+    currentInstitutionId,
+    currentInstitutionRole,
+    currentUser.role,
+    location.pathname,
+    profile.platform_role,
+    profile.role,
+    roleNavigationGroups,
+    sharesRoleNavigationState,
+  ]);
+
   function toggleAdminGroup(
     groupId: AdminNavigationGroupId,
   ): void {
@@ -916,10 +964,18 @@ export default function Sidebar({
   }
 
   function toggleInclusiveEducationNavigation(): void {
+    if (sharesRoleNavigationState) {
+      setOpenRoleNavigationGroupId((current) => current === 'inclusive-education' ? null : 'inclusive-education');
+      return;
+    }
     setIsInclusiveEducationOpen((current) => !current);
   }
 
   function togglePsychologyNavigation(): void {
+    if (sharesRoleNavigationState) {
+      setOpenRoleNavigationGroupId((current) => current === 'psychology' ? null : 'psychology');
+      return;
+    }
     setIsPsychologyOpen((current) => !current);
   }
 
@@ -1170,7 +1226,9 @@ export default function Sidebar({
       currentUser.role === 'admin' ||
       !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
     ) return null;
-    const isCollapsed = !isInclusiveEducationOpen;
+    const isCollapsed = !(sharesRoleNavigationState
+      ? openRoleNavigationGroupId === 'inclusive-education'
+      : isInclusiveEducationOpen);
     const childGroupId = 'sidebar-inclusive-education';
 
     return (
@@ -1221,7 +1279,9 @@ export default function Sidebar({
     const effectiveRole = (currentInstitutionRole ?? profile.role ?? '').toUpperCase();
     const items = psychologyNavigation.filter((item) => item.roles.includes(effectiveRole));
     if (!items.length) return null;
-    const collapsed = !isPsychologyOpen;
+    const collapsed = !(sharesRoleNavigationState
+      ? openRoleNavigationGroupId === 'psychology'
+      : isPsychologyOpen);
     const childGroupId = 'sidebar-psychology';
 
     return (
@@ -1346,6 +1406,7 @@ export default function Sidebar({
           className="min-h-0 flex-1 overflow-y-auto px-3 py-5"
           aria-label="Menu principal"
         >
+          {primaryDashboardItem ? <div className="mb-4">{renderNavigationLink(primaryDashboardItem)}</div> : null}
           {renderRoleNavigationGroups()}
 
           {groupedSections.map((section) => {

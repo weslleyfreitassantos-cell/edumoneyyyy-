@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import {
   MemoryRouter,
@@ -752,6 +753,70 @@ describe('Sidebar', () => {
         name: /expandir sidebar/i,
       }),
     ).toBeNull();
+  });
+
+  it('mantém Dashboard separado e abre só o grupo do estudante correspondente à rota', async () => {
+    renderSidebar({
+      route: '/student/attendance',
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Aluno' },
+      currentInstitutionRole: 'STUDENT',
+    });
+
+    const dashboard = screen.getByRole('link', { name: /dashboard/i });
+    expect(dashboard.getAttribute('href')).toBe('/dashboard');
+    expect(dashboard.getAttribute('aria-current')).toBeNull();
+
+    const schoolLife = screen.getByRole('button', { name: /vida escolar/i });
+    const learning = screen.getByRole('button', { name: /aprendizagem/i });
+    await waitFor(() => expect(schoolLife.getAttribute('aria-expanded')).toBe('true'));
+    expect(learning.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /frequência/i }).getAttribute('aria-current')).toBe('page');
+
+    fireEvent.click(learning);
+    expect(learning.getAttribute('aria-expanded')).toBe('true');
+    expect(schoolLife.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /tec inglês/i }).getAttribute('href')).toBe('/student/study/english');
+  });
+
+  it('organiza a rotina docente, mantém o Almoxarifado em Comunicação e abre o grupo da rota', async () => {
+    renderSidebar({
+      route: '/dashboard/grades',
+      profile: { ...baseProfile, role: 'TEACHER' },
+      currentUser: { ...baseUser, role: 'teacher', subtitle: 'Professor' },
+      currentInstitutionRole: 'TEACHER',
+    });
+
+    const routine = screen.getByRole('button', { name: /rotina docente/i });
+    const learning = screen.getByRole('button', { name: /aprendizagem e recursos/i });
+    const communication = screen.getByRole('button', { name: /comunicação e recursos/i });
+    await waitFor(() => expect(routine.getAttribute('aria-expanded')).toBe('true'));
+    expect(screen.getByRole('link', { name: /grade de horário/i })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /avaliações e notas/i }).getAttribute('aria-current')).toBe('page');
+
+    fireEvent.click(learning);
+    expect(learning.getAttribute('aria-expanded')).toBe('true');
+    expect(routine.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /desempenho/i })).toBeTruthy();
+
+    fireEvent.click(communication);
+    expect(communication.getAttribute('aria-expanded')).toBe('true');
+    expect(learning.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /almoxarifado/i }).getAttribute('href')).toBe('/inventory');
+  });
+
+  it('mantém o acompanhamento do responsável agrupado e o Dashboard sempre acessível', async () => {
+    renderSidebar({
+      route: '/guardian/grades',
+      profile: { ...baseProfile, role: 'GUARDIAN' },
+      currentUser: { ...baseUser, role: 'parent', subtitle: 'Responsável' },
+      currentInstitutionRole: 'GUARDIAN',
+    });
+
+    expect(screen.getByRole('link', { name: /dashboard/i }).getAttribute('href')).toBe('/dashboard');
+    const group = screen.getByRole('button', { name: /acompanhamento escolar/i });
+    await waitFor(() => expect(group.getAttribute('aria-expanded')).toBe('true'));
+    expect(screen.getByRole('link', { name: /notas dos dependentes/i }).getAttribute('aria-current')).toBe('page');
   });
 
   it('chama logout real pelo rodape', () => {
