@@ -56,10 +56,12 @@ set +e
 output_file="$(mktemp "${PROMOTION_TEST_CLI_LOG_DIR:?}/supabase-cli.XXXXXX")"
 supabase_binary="${PROMOTION_TEST_SUPABASE_BIN:-}"
 if [[ -n "$supabase_binary" && -x "$supabase_binary" ]]; then
-  timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
+  timeout --kill-after="${PROMOTION_TEST_SUPABASE_KILL_AFTER_SECONDS:-5}s" \
+    "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
     "$supabase_binary" --debug "$@" >"$output_file" 2>&1
 else
-  timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
+  timeout --kill-after="${PROMOTION_TEST_SUPABASE_KILL_AFTER_SECONDS:-5}s" \
+    "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
     npx supabase --debug "$@" >"$output_file" 2>&1
 fi
 status=$?
