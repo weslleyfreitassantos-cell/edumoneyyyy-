@@ -32,7 +32,7 @@ printf '0\n' > "$cli_apply_count"
 printf '0\n' > "$psql_call_count"
 
 run_guard() {
-  SOURCE_ROOT="$repo_root" \
+  SOURCE_ROOT="${TEST_SOURCE_ROOT:-$repo_root}" \
   TARGET_VERSION="${TEST_TARGET_VERSION:-$target_version}" \
   EXPECTED_REMOTE_LAST="${TEST_EXPECTED_REMOTE_LAST:-${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}}" \
   EXPECTED_SOURCE_COMMIT="${TEST_SOURCE_COMMIT:-$source_commit}" \
@@ -105,6 +105,15 @@ else
   "$REAL_SHA256SUM" "$@"
 fi
 MOCK
+cat > "$tmp/bin/ssh" <<'MOCK'
+#!/usr/bin/env bash
+set -euo pipefail
+[[ "$*" == *'tecescola-vps'* && "$*" == *'/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'* ]] || exit 56
+printf '%s\n%s  %s\n' \
+  "${MOCK_406_BACKUP_SIZE:-372305133}" \
+  "${MOCK_406_BACKUP_SHA256:-a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841}" \
+  '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'
+MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -165,7 +174,7 @@ if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
 fi
 cat "$MOCK_AFTER_LEDGER_FILE"
 MOCK
-chmod +x "$tmp/bin/sha256sum" "$tmp/bin/npx" "$tmp/bin/psql"
+chmod +x "$tmp/bin/sha256sum" "$tmp/bin/ssh" "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -426,10 +435,10 @@ unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RES
   TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
   TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
 
-# Release #406 is bound to its PR source lineage, exact local backup and the
+# Release #406 is bound to its PR source lineage, exact VPS-local backup and the
 # exact pre-migration ledger positions. The SQL and DB clients remain mocked.
 release_406_backup_sha256=a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841
-release_406_backup_size=372305133
+release_406_backup_path=/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz
 release_406_base=20261025000500
 mapfile -t release_406_candidates < <(
   find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name '*.sql' -printf '%f\n' |
@@ -441,9 +450,19 @@ mapfile -t release_406_candidates < <(
 release_406_ledger="$tmp/release-406-ledger"
 printf '%s\n' "${release_406_candidates[@]}" "$release_406_base" | sort -u > "$release_406_ledger"
 [[ "$(wc -l < "$release_406_ledger" | tr -d '[:space:]')" == '241' ]]
-release_406_backup="$tmp/edumoney-2026-10-25T07-43-25Z.tar.gz"
-truncate -s "$release_406_backup_size" "$release_406_backup"
 release_406_dry_run="$tmp/release-406-dry-run"
+release_406_source="$tmp/release-406-source"
+mkdir -p "$release_406_source/supabase/migrations"
+printf 'project_id = "promote-406-test"\n' > "$release_406_source/supabase/config.toml"
+printf 'gitdir: %s\n' "$(git -C "$repo_root" rev-parse --absolute-git-dir)" > "$release_406_source/.git"
+while IFS= read -r version; do
+  [[ -n "$version" ]] || continue
+  printf 'select 1;\n' > "$release_406_source/supabase/migrations/${version}_test_fixture.sql"
+done < "$release_406_ledger"
+cp "$repo_root/supabase/migrations/20261025000600_central_estudos_v2_content_review.sql" \
+  "$release_406_source/supabase/migrations/"
+cp "$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql" \
+  "$release_406_source/supabase/migrations/"
 release_406_after="$tmp/release-406-after-ledger"
 release_406_version=20261025000600
 release_406_file="$repo_root/supabase/migrations/${release_406_version}_central_estudos_v2_content_review.sql"
@@ -456,16 +475,18 @@ printf '%s\n' "$release_406_version" >> "$release_406_after"
 printf '0\n' > "$cli_apply_count"
 release_406_output="$(PATH="$tmp/bin:$PATH" \
   REAL_SHA256SUM="$real_sha256sum" \
-  MOCK_BACKUP_FILE="$release_406_backup" \
-  MOCK_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SIZE=372305133 \
   APPLY=1 BACKUP_GATE=FAIL \
   BACKUP_EXCEPTION_RELEASE_ID=406 \
   BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps \
   BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
-  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup_path" \
   ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   TEST_TARGET_VERSION="$release_406_version" \
+  TEST_SOURCE_ROOT="$release_406_source" \
   TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
   TEST_TARGET_SHA256="$release_406_hash" \
   TEST_EXPECT_INCLUDE_ALL=0 \
@@ -477,6 +498,8 @@ grep -q '^BACKUP_GATE=FAIL$' <<< "$release_406_output"
 grep -q '^BACKUP_EXCEPTION=RELEASE_406_ACCEPTED$' <<< "$release_406_output"
 grep -q '^BACKUP_EXCEPTION_RELEASE_ID=406$' <<< "$release_406_output"
 grep -q "^BACKUP_EXCEPTION_SOURCE_COMMIT=$source_commit$" <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_PATH=/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz$' <<< "$release_406_output"
 grep -q "^BACKUP_EXCEPTION_BACKUP_SHA256=$release_406_backup_sha256$" <<< "$release_406_output"
 grep -q '^BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=372305133$' <<< "$release_406_output"
 grep -q '^BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL$' <<< "$release_406_output"
@@ -505,16 +528,18 @@ printf '%s\n' "$release_406_second_version" >> "$release_406_second_after"
 printf '0\n' > "$cli_apply_count"
 release_406_second_output="$(PATH="$tmp/bin:$PATH" \
   REAL_SHA256SUM="$real_sha256sum" \
-  MOCK_BACKUP_FILE="$release_406_backup" \
-  MOCK_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SIZE=372305133 \
   APPLY=1 BACKUP_GATE=FAIL \
   BACKUP_EXCEPTION_RELEASE_ID=406 \
   BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps \
   BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
-  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup_path" \
   ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   TEST_TARGET_VERSION="$release_406_second_version" \
+  TEST_SOURCE_ROOT="$release_406_source" \
   TEST_EXPECTED_REMOTE_LAST="$release_406_second_base" \
   TEST_TARGET_SHA256="$release_406_second_hash" \
   TEST_EXPECT_INCLUDE_ALL=0 \
@@ -533,16 +558,18 @@ expect_release_406_rejected() {
   printf '0\n' > "$cli_apply_count"
   if PATH="$tmp/bin:$PATH" \
     REAL_SHA256SUM="$real_sha256sum" \
-    MOCK_BACKUP_FILE="${TEST_406_BACKUP_FILE-$release_406_backup}" \
-    MOCK_BACKUP_SHA256="${TEST_406_MOCK_BACKUP_SHA256-$release_406_backup_sha256}" \
+    MOCK_406_BACKUP_SHA256="${TEST_406_SSH_SHA-$release_406_backup_sha256}" \
+    MOCK_406_BACKUP_SIZE="${TEST_406_SSH_SIZE-372305133}" \
     APPLY=1 BACKUP_GATE=FAIL \
     BACKUP_EXCEPTION_RELEASE_ID="${TEST_406_RELEASE_ID-406}" \
     BACKUP_EXCEPTION_SOURCE_COMMIT="${TEST_406_SOURCE_COMMIT-$source_commit}" \
+    BACKUP_EXCEPTION_BACKUP_HOST="${TEST_406_HOST-tecescola-vps}" \
     BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_406_BACKUP_SHA256-$release_406_backup_sha256}" \
-    BACKUP_EXCEPTION_BACKUP_FILE="${TEST_406_BACKUP_FILE-$release_406_backup}" \
+    BACKUP_EXCEPTION_BACKUP_FILE="${TEST_406_BACKUP_PATH-$release_406_backup_path}" \
     ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_406_RISK-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406}" \
     CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
     TEST_TARGET_VERSION="$release_406_version" \
+    TEST_SOURCE_ROOT="$release_406_source" \
     TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
     TEST_TARGET_SHA256="$release_406_hash" \
     TEST_EXPECT_INCLUDE_ALL=0 \
@@ -558,17 +585,18 @@ expect_release_406_rejected() {
 
 TEST_406_RELEASE_ID=405 expect_release_406_rejected
 TEST_406_SOURCE_COMMIT=0000000000000000000000000000000000000000 expect_release_406_rejected
+TEST_406_HOST=untrusted-host expect_release_406_rejected
+TEST_406_BACKUP_PATH=/tmp/other.tar.gz expect_release_406_rejected
 TEST_406_RISK= expect_release_406_rejected
 TEST_406_BACKUP_SHA256=bad expect_release_406_rejected
-small_release_406_backup="$tmp/edumoney-2026-10-25T07-43-25Z.tar.gz"
-printf 'short fixture\n' > "$small_release_406_backup"
-TEST_406_BACKUP_FILE="$small_release_406_backup" expect_release_406_rejected
+TEST_406_SSH_SHA=bad expect_release_406_rejected
+TEST_406_SSH_SIZE=1 expect_release_406_rejected
 short_release_406_ledger="$tmp/release-406-short-ledger"
 head -n 239 "$release_406_ledger" > "$short_release_406_ledger"
 printf '%s\n' "$release_406_base" >> "$short_release_406_ledger"
 TEST_406_LEDGER="$short_release_406_ledger" expect_release_406_rejected
 unset TEST_406_RELEASE_ID TEST_406_SOURCE_COMMIT TEST_406_RISK TEST_406_BACKUP_SHA256 \
-  TEST_406_MOCK_BACKUP_SHA256 TEST_406_BACKUP_FILE TEST_406_LEDGER
+  TEST_406_SSH_SHA TEST_406_SSH_SIZE TEST_406_HOST TEST_406_BACKUP_PATH TEST_406_LEDGER
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2

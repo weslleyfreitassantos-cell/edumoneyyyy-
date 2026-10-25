@@ -68,6 +68,8 @@ declare -A release_399_migration_hashes=(
 release_406_source_anchor='ead793895f325c7b15a244f927219be252958e0d'
 release_406_backup_sha256='a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841'
 release_406_backup_size_bytes='372305133'
+release_406_backup_host='tecescola-vps'
+release_406_backup_path='/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'
 release_406_backup_filename='edumoney-2026-10-25T07-43-25Z.tar.gz'
 declare -A release_406_migration_hashes=(
   [20261025000600]=afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3
@@ -167,6 +169,9 @@ authorize_production_write() {
   local expected_release_migration_sha=""
   local actual_backup_sha=""
   local actual_backup_size=""
+  local backup_evidence=""
+  local backup_reported_path=""
+  local -a backup_evidence_lines=()
 
   [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
     abort "production write confirmation is missing"
@@ -188,19 +193,28 @@ authorize_production_write() {
         [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406' ]] || \
           abort "explicit incomplete-recovery risk acceptance for release #406 is missing"
         [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_406_backup_sha256}" ]] || \
-          abort "release #406 backup SHA-256 does not match the previously validated local artifact"
-        [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
-          abort "previously validated local release #406 backup is not accessible"
-        [[ "$(basename -- "${backup_file}")" == "${release_406_backup_filename}" ]] || \
-          abort "release #406 backup filename does not identify the validated local artifact"
-        actual_backup_size="$(wc -c < "${backup_file}" | tr -d '[:space:]')" || \
-          abort "release #406 backup size could not be verified"
+          abort "release #406 backup SHA-256 does not match the previously validated VPS-local artifact"
+        [[ "${BACKUP_EXCEPTION_BACKUP_HOST:-}" == "${release_406_backup_host}" ]] || \
+          abort "release #406 backup host does not identify the validated VPS artifact"
+        [[ "${backup_file}" == "${release_406_backup_path}" && \
+          "$(basename -- "${backup_file}")" == "${release_406_backup_filename}" ]] || \
+          abort "release #406 backup path does not identify the validated VPS artifact"
+        command -v ssh >/dev/null 2>&1 || abort "ssh is required to verify the VPS-local release #406 backup"
+        backup_evidence="$(ssh -o BatchMode=yes -o ConnectTimeout=15 \
+          "${release_406_backup_host}" \
+          "stat -c '%s' -- '${release_406_backup_path}' && sha256sum -- '${release_406_backup_path}'")" || \
+          abort "previously validated VPS-local release #406 backup could not be verified over SSH"
+        mapfile -t backup_evidence_lines <<< "${backup_evidence}"
+        [[ "${#backup_evidence_lines[@]}" -eq 2 ]] || \
+          abort "release #406 backup verification returned an unexpected result"
+        actual_backup_size="${backup_evidence_lines[0]}"
+        read -r actual_backup_sha backup_reported_path <<< "${backup_evidence_lines[1]}"
+        [[ -n "${backup_reported_path}" && "${backup_reported_path}" == "${release_406_backup_path}" ]] || \
+          abort "release #406 backup verification returned a different artifact path"
         [[ "${actual_backup_size}" == "${release_406_backup_size_bytes}" ]] || \
-          abort "release #406 backup size differs from the previously validated local artifact"
-        actual_backup_sha="$(sha256_file "${backup_file}")" || \
-          abort "release #406 backup could not be hashed"
+          abort "release #406 backup size differs from the previously validated VPS-local artifact"
         [[ "${actual_backup_sha}" == "${release_406_backup_sha256}" ]] || \
-          abort "release #406 backup hash differs from the previously validated local artifact"
+          abort "release #406 backup hash differs from the previously validated VPS-local artifact"
         expected_release_migration_sha="${release_406_migration_hashes[${target_version}]:-}"
         [[ -n "${expected_release_migration_sha}" ]] || \
           abort "backup exception does not authorize a migration outside release #406"
@@ -217,6 +231,8 @@ authorize_production_write() {
         printf 'BACKUP_EXCEPTION=RELEASE_406_ACCEPTED\n'
         printf 'BACKUP_EXCEPTION_RELEASE_ID=406\n'
         printf 'BACKUP_EXCEPTION_SOURCE_COMMIT=%s\n' "${actual_source_commit}"
+        printf 'BACKUP_EXCEPTION_BACKUP_HOST=%s\n' "${release_406_backup_host}"
+        printf 'BACKUP_EXCEPTION_BACKUP_PATH=%s\n' "${release_406_backup_path}"
         printf 'BACKUP_EXCEPTION_BACKUP_SHA256=%s\n' "${actual_backup_sha}"
         printf 'BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=%s\n' "${actual_backup_size}"
         printf 'BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL\n'
