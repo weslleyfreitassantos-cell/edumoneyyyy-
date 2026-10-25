@@ -776,7 +776,8 @@ describe('Sidebar', () => {
     fireEvent.click(learning);
     expect(learning.getAttribute('aria-expanded')).toBe('true');
     expect(schoolLife.getAttribute('aria-expanded')).toBe('false');
-    expect(screen.getByRole('link', { name: /tec inglês/i }).getAttribute('href')).toBe('/student/study/english');
+    expect(screen.getByRole('link', { name: /central de estudos/i }).getAttribute('href')).toBe('/student/study');
+    expect(screen.queryByRole('link', { name: /tec inglês/i })).toBeNull();
   });
 
   it('organiza a rotina docente, mantém o Almoxarifado em Comunicação e abre o grupo da rota', async () => {

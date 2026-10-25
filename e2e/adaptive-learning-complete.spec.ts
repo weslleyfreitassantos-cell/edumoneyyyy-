@@ -200,6 +200,9 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(teacherPage);
       await login(teacherPage, teacher);
       await teacherPage.goto('/dashboard');
+      const teacherResources = teacherPage.getByRole('button', { name: 'Aprendizagem e recursos', exact: true });
+      await expect(teacherResources).toBeVisible({ timeout: 30_000 });
+      await teacherResources.click();
       await expect(teacherPage.getByRole('link', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: 'Desempenho', exact: true }).click();
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
