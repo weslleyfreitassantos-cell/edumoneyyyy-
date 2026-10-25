@@ -596,9 +596,6 @@ begin
     if jsonb_typeof(p_response -> 'pairs') is distinct from 'object' then
       raise exception 'TEC_ENGLISH_INVALID_RESPONSE' using errcode = '22023';
     end if;
-    if jsonb_object_length(p_response -> 'pairs') <> jsonb_object_length(v_exercise.answer_key -> 'pairs') then
-      raise exception 'TEC_ENGLISH_INVALID_RESPONSE' using errcode = '22023';
-    end if;
   else
     if jsonb_typeof(p_response -> 'text') is distinct from 'string'
        or length(btrim(p_response ->> 'text')) = 0
