@@ -166,12 +166,15 @@ englishDescribe('Tec Inglês interactive v1', () => {
 
     try {
       const owner = await createActor(service, 'English Test Owner', suffix, false, 'ADMIN');
+      const reviewer = await createActor(service, 'English Pedagogical Reviewer', suffix, false, 'ADMIN');
+      const reviewerProfile = await service.from('profiles').update({ platform_role: 'SUPER_ADMIN' }).eq('id', reviewer.id);
+      if (reviewerProfile.error) throw new Error(`set disposable reviewer role: ${reviewerProfile.error.message}`);
       const learner = await createActor(service, 'English Learner', suffix, true);
       const probe = await createActor(service, 'English Security Probe', suffix, true);
       const regularLearner = await createActor(service, 'English Regular Learner', suffix);
       const unlinked = await createActor(service, 'English Unlinked Learner', suffix);
       const otherTenant = await createActor(service, 'English Other Tenant Learner', suffix);
-      userIds.push(owner.id, learner.id, probe.id, regularLearner.id, unlinked.id, otherTenant.id);
+      userIds.push(owner.id, reviewer.id, learner.id, probe.id, regularLearner.id, unlinked.id, otherTenant.id);
 
       const account = await insertOne(service, 'accounts', { name: `Tec English E2E ${suffix}`, owner_profile_id: owner.id, institution_limit: 1, status: 'ACTIVE' });
       accountIds.push(account.id);
@@ -198,14 +201,80 @@ englishDescribe('Tec Inglês interactive v1', () => {
       expect(new Set(fixture.exercises.map((exercise) => exercise.exercise_type))).toEqual(new Set(['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING']));
 
       const normalMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
-      expect(normalMap.error).toBeNull();
-      expect(normalMap.data.course.code).toBe('TEC_ENGLISH_FOUNDATIONS');
-      expect(normalMap.data.units[0].lessons[0].status).toBe('REVIEW_PENDING');
-      expect(JSON.stringify(normalMap.data)).not.toContain('answer_key');
+      expect(normalMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
       const normalStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
-      expect(normalStart.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
+      expect(normalStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
       const fixtureStartDenied = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: fixture.lessonId });
-      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_CONTENT_NOT_APPROVED');
+      expect(fixtureStartDenied.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+
+      let canonicalReviewApplied = false;
+      try {
+        if (process.env.CI) {
+          const forbiddenQueue = await regularLearner.client.rpc('get_tec_english_review_queue_v1');
+          expect(forbiddenQueue.error?.message).toContain('TEC_ENGLISH_REVIEW_FORBIDDEN');
+          const queue = await reviewer.client.rpc('get_tec_english_review_queue_v1');
+          expect(queue.error).toBeNull();
+          const courseReview = (queue.data as any[]).find((item) => item.course_code === 'TEC_ENGLISH_FOUNDATIONS' && item.content_version === 1);
+          expect(courseReview).toBeTruthy();
+          const preview = await reviewer.client.rpc('get_tec_english_review_preview_v1', { p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1 });
+          expect(preview.error).toBeNull();
+          expect(preview.data.units).toHaveLength(3);
+          expect(preview.data.units[0].lessons[0].exercises[0].answer_key).toBeTruthy();
+          const approval = await reviewer.client.rpc('review_tec_english_course_v1', {
+            p_course_code: 'TEC_ENGLISH_FOUNDATIONS',
+            p_content_version: 1,
+            p_decision: 'APPROVED',
+            p_notes: 'CI descartável: verifica a fila de aprovação e o bloqueio de publicação por fingerprint.',
+            p_expected_fingerprint: preview.data.snapshot_fingerprint,
+            p_checklist: { translation: true, audio: true, instructions: true, alternatives: true, progression: true, brazilian: true, accessibility: true, references: true },
+          });
+          expect(approval.error).toBeNull();
+          canonicalReviewApplied = true;
+          expect(approval.data).toMatchObject({ decision: 'APPROVED', reviewer_name: 'English Pedagogical Reviewer' });
+
+          const targets = await reviewer.client.rpc('get_tec_english_release_targets_v1', {
+            p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_search: `Tec English Test ${suffix}`,
+          });
+          expect(targets.error).toBeNull();
+          expect(targets.data).toHaveLength(1);
+          expect(targets.data[0]).toMatchObject({ institution_id: institution.id, enabled: false });
+          const enabled = await reviewer.client.rpc('set_tec_english_institution_release_v1', {
+            p_course_code: 'TEC_ENGLISH_FOUNDATIONS', p_content_version: 1, p_institution_id: institution.id, p_enabled: true,
+          });
+          expect(enabled.error).toBeNull();
+          expect(enabled.data).toMatchObject({ enabled: true, institution_id: institution.id, actor_name: 'English Pedagogical Reviewer' });
+
+          const publishedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
+          expect(publishedMap.error).toBeNull();
+          expect(publishedMap.data.units[0].lessons[0].status).toBe('AVAILABLE');
+          const publishedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
+          expect(publishedStart.error).toBeNull();
+          expect(publishedStart.data.exercise).not.toHaveProperty('answer_key');
+
+          const originalPrompt = await service.from('tec_english_exercises').select('prompt').eq('id', 'english-v1-u1-l1-e1').single();
+          expect(originalPrompt.error).toBeNull();
+          const tamper = await service.from('tec_english_exercises').update({ prompt: `${originalPrompt.data.prompt} conteúdo alterado` }).eq('id', 'english-v1-u1-l1-e1');
+          expect(tamper.error).toBeNull();
+          const changedMap = await regularLearner.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
+          expect(changedMap.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          const changedStart = await regularLearner.client.rpc('start_tec_english_lesson_v1', { p_institution_id: institution.id, p_lesson_id: 'english-v1-u1-l1' });
+          expect(changedStart.error?.message).toContain('TEC_ENGLISH_COURSE_NOT_AVAILABLE');
+          const restorePrompt = await service.from('tec_english_exercises').update({ prompt: originalPrompt.data.prompt }).eq('id', 'english-v1-u1-l1-e1');
+          expect(restorePrompt.error).toBeNull();
+        }
+      } finally {
+        if (canonicalReviewApplied) {
+          const removeReleaseEvents = await service.from('tec_english_course_release_events').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('institution_id', institution.id);
+          const removeReleases = await service.from('tec_english_course_releases').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('institution_id', institution.id);
+          const removeReview = await service.from('tec_english_pedagogical_reviews').delete().eq('course_code', 'TEC_ENGLISH_FOUNDATIONS').eq('content_version', 1);
+          for (const result of [removeReleaseEvents, removeReleases, removeReview]) if (result.error) throw new Error(`restore disposable release/review ledger: ${result.error.message}`);
+          const resetExercises = await service.from('tec_english_exercises').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
+          const resetLessons = await service.from('tec_english_lessons').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
+          const resetUnits = await service.from('tec_english_units').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).like('id', 'english-v1-%');
+          const resetCourse = await service.from('tec_english_courses').update({ publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' }).eq('course_code', 'TEC_ENGLISH_FOUNDATIONS');
+          for (const result of [resetExercises, resetLessons, resetUnits, resetCourse]) if (result.error) throw new Error(`restore disposable course to STAGING: ${result.error.message}`);
+        }
+      }
 
       const unlinkedMap = await unlinked.client.rpc('get_tec_english_map_v1', { p_institution_id: institution.id });
       expect(unlinkedMap.error?.message).toContain('TEC_ENGLISH_STUDENT_SCOPE_DENIED');
@@ -295,7 +364,7 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await page.getByRole('button', { name: 'Próximo desafio' }).click();
 
       for (const exercise of fixture.exercises.slice(1)) await answerInUi(page, exercise);
-    await expect(page.getByText('Lição concluída', { exact: true })).toBeVisible();
+      await expect(page.getByText('Lição concluída', { exact: true })).toBeVisible();
       await expect(page.getByText('+30 XP')).toBeVisible();
       await expect(page.getByText('30 XP', { exact: true })).toBeVisible();
       await page.getByRole('button', { name: 'Voltar ao mapa' }).click();
@@ -322,6 +391,15 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
       await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
       expect(await resumedPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await resumedPage.getByRole('button', { name: 'Menu principal' }).click();
+      await resumedPage.getByRole('button', { name: 'Sair', exact: true }).click();
+      await expect(resumedPage).toHaveURL(/\/login/, { timeout: 30_000 });
+      await login(resumedPage, learner);
+      await resumedPage.goto('/student/study/english');
+      await expect(resumedPage.getByRole('heading', { name: 'Lições de inglês' })).toBeVisible({ timeout: 30_000 });
+      await resumedPage.getByRole('button', { name: 'Continuar de onde parei' }).click();
+      await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
+      await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
     } finally {
       for (const page of pages) await page.close();
       if (userIds.length) await service.from('memberships').delete().in('profile_id', userIds);
