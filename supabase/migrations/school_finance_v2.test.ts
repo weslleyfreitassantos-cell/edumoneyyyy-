@@ -24,7 +24,9 @@ describe('Financeiro escolar V2 migration contract', () => {
     expect(sql).toContain('limit v_size offset (v_page - 1) * v_size');
     expect(sql).toContain("values ('finance-documents', 'finance-documents', false, 10485760");
     expect(sql).toContain('create policy finance_documents_staff_insert on storage.objects');
-    expect(sql).toContain('private.finance_can_manage(institution.id)');
+    expect(sql).toContain('create or replace function private.finance_document_path_allowed(object_name text)');
+    expect(sql).toContain('private.finance_can_manage(v_institution_segment::uuid)');
+    expect(sql).toContain('and private.finance_document_path_allowed(name)');
     expect(sql).toContain('FINANCE_INVALID_DOCUMENT_PATH');
   });
 

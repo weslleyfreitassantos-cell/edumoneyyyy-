@@ -208,12 +208,13 @@ localDescribe('school finance V2 against disposable local Supabase', () => {
     expect(mismatch.error?.message).toContain('FINANCE_IDEMPOTENCY_MISMATCH');
     const notesMismatch = await director.client.rpc('finance_register_manual_receipt_v2', { ...firstArgs, p_notes: 'Observação diferente' });
     expect(notesMismatch.error?.message).toContain('FINANCE_IDEMPOTENCY_MISMATCH');
-    const invoice = await director.client.from('invoices').select('amount_paid, status, discount_amount')
+    const invoice = await director.client.from('invoices').select('amount_paid, status, discount_amount, scholarship_amount')
       .eq('id', firstInvoiceId).single();
     expect(invoice.error).toBeNull();
     expect(invoice.data.amount_paid).toBe(8300);
     expect(invoice.data.status).toBe('PAID');
-    expect(invoice.data.discount_amount).toBe(1700);
+    expect(invoice.data.discount_amount).toBe(700);
+    expect(invoice.data.scholarship_amount).toBe(1000);
     const overpay = await director.client.rpc('finance_register_manual_receipt_v2', {
       ...firstArgs, p_invoice_id: contract.invoice_ids[1], p_amount_cents: 8501,
       p_idempotency_key: `receipt-overpay-${suffix}`,
@@ -302,6 +303,12 @@ localDescribe('school finance V2 against disposable local Supabase', () => {
       .upload(`${institutionId}/${crypto.randomUUID()}.pdf`, new Blob(['documento fictício'], { type: 'application/pdf' }), { contentType: 'application/pdf' });
     expect(uploadError).toBeNull();
     const objectPath = required(upload?.path, 'uploaded finance document path');
+    const foreignUpload = await foreignDirector.client.storage.from('finance-documents')
+      .upload(`${institutionId}/${crypto.randomUUID()}.pdf`, new Blob(['documento de outro tenant'], { type: 'application/pdf' }), { contentType: 'application/pdf' });
+    expect(foreignUpload.error).not.toBeNull();
+    const malformedPathUpload = await director.client.storage.from('finance-documents')
+      .upload(`not-a-uuid/${crypto.randomUUID()}.pdf`, new Blob(['caminho inválido'], { type: 'application/pdf' }), { contentType: 'application/pdf' });
+    expect(malformedPathUpload.error).not.toBeNull();
     const downloaded = await director.client.storage.from('finance-documents').download(objectPath);
     expect(downloaded.error).toBeNull();
     const foreignDownload = await foreignDirector.client.storage.from('finance-documents').download(objectPath);

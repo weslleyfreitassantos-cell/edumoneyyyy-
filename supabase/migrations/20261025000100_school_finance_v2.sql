@@ -279,35 +279,51 @@ create policy finance_audit_staff_read on public.finance_audit_events
 create policy finance_reminder_draft_staff_read on public.finance_reminder_drafts
   for select to authenticated using (private.finance_can_manage(institution_id));
 
+create or replace function private.finance_document_path_allowed(object_name text)
+returns boolean
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+declare
+  v_institution_segment text;
+begin
+  if object_name is null
+    or split_part(object_name, '/', 2) = ''
+    or split_part(object_name, '/', 3) <> '' then
+    return false;
+  end if;
+
+  v_institution_segment := split_part(object_name, '/', 1);
+  if v_institution_segment !~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' then
+    return false;
+  end if;
+
+  return private.finance_can_manage(v_institution_segment::uuid);
+end;
+$$;
+
+revoke all on function private.finance_document_path_allowed(text) from public, anon;
+grant execute on function private.finance_document_path_allowed(text) to authenticated;
+
 drop policy if exists finance_documents_staff_insert on storage.objects;
 create policy finance_documents_staff_insert on storage.objects
   for insert to authenticated with check (
     bucket_id = 'finance-documents'
-    and split_part(name, '/', 2) <> ''
-    and split_part(name, '/', 3) = ''
-    and exists (select 1 from public.institutions institution
-      where institution.id::text = split_part(name, '/', 1)
-        and private.finance_can_manage(institution.id))
+    and private.finance_document_path_allowed(name)
   );
 drop policy if exists finance_documents_staff_read on storage.objects;
 create policy finance_documents_staff_read on storage.objects
   for select to authenticated using (
     bucket_id = 'finance-documents'
-    and split_part(name, '/', 2) <> ''
-    and split_part(name, '/', 3) = ''
-    and exists (select 1 from public.institutions institution
-      where institution.id::text = split_part(name, '/', 1)
-        and private.finance_can_manage(institution.id))
+    and private.finance_document_path_allowed(name)
   );
 drop policy if exists finance_documents_staff_delete on storage.objects;
 create policy finance_documents_staff_delete on storage.objects
   for delete to authenticated using (
     bucket_id = 'finance-documents'
-    and split_part(name, '/', 2) <> ''
-    and split_part(name, '/', 3) = ''
-    and exists (select 1 from public.institutions institution
-      where institution.id::text = split_part(name, '/', 1)
-        and private.finance_can_manage(institution.id))
+    and private.finance_document_path_allowed(name)
   );
 
 revoke insert, update, delete on public.financial_contracts, public.financial_contract_adjustments,
