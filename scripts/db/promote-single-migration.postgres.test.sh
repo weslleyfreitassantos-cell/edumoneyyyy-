@@ -347,7 +347,7 @@ fast_delivery_output="$(PATH="$tmp/fast-delivery-exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_BACKUP_FILE="$fast_delivery_backup" \
   PROMOTION_TEST_MIGRATION_SHA256="$fast_delivery_hash" \
   PROMOTION_TEST_MIGRATION_RAW_FILE="$(find "$fast_delivery_fixture/supabase/migrations" -maxdepth 1 -type f -name "${fast_delivery_version}_*.sql" -print -quit)" \
-  PROMOTION_TEST_MIGRATION_RAW_SHA256="$fast_delivery_approved_hash" \
+  PROMOTION_TEST_MIGRATION_RAW_SHA256="$fast_delivery_hash" \
   SOURCE_ROOT="$fast_delivery_fixture" \
   TARGET_VERSION="$fast_delivery_version" \
   EXPECTED_REMOTE_LAST="$fast_delivery_base_version" \
