@@ -336,6 +336,13 @@ function ManagementPanel({
         <h2 className="text-xl font-bold text-slate-900 dark:text-white">Configuração operacional</h2>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">A administração pode preparar os vínculos e verificar profissionais. Esta área não exibe conversas nem anotações clínicas.</p>
       </div>
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+        <div>
+          <h3 className="font-bold text-slate-900 dark:text-white">Cadastro de psicólogos</h3>
+          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Convide profissionais, revise os dados de CRP e confirme a habilitação institucional.</p>
+        </div>
+        <Link to="/admin?module=psychologists" className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Gerenciar psicólogos</Link>
+      </div>
       {!moduleEnabled ? (
         <p className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100">O módulo permanece desativado no servidor. Nenhum agendamento, chat ou registro clínico pode ser criado até a habilitação local controlada.</p>
       ) : null}

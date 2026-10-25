@@ -51,6 +51,7 @@ export interface SchoolUsersTabProps {
   fixedRole?: CurrentDatabaseRole;
   inviteTargets?: readonly UnifiedUserInviteTarget[];
   inviteHeading?: string;
+  onInviteComplete?: () => void;
 }
 
 export const schoolUserRoleLabels: Record<
@@ -778,6 +779,7 @@ export default function SchoolUsersTab({
   fixedRole,
   inviteTargets,
   inviteHeading,
+  onInviteComplete,
 }: SchoolUsersTabProps = {}) {
   const { profile } = useAuth();
 
@@ -1069,6 +1071,7 @@ export default function SchoolUsersTab({
           )}
           allowedTargets={inviteTargets}
           heading={inviteHeading}
+          onInviteComplete={onInviteComplete}
         />
       ) : null}
 

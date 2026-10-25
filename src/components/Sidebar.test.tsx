@@ -271,6 +271,9 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^secretaria$/i }),
     ).toBeTruthy();
     expect(
+      screen.getByRole('link', { name: /^psicólogos$/i }),
+    ).toBeTruthy();
+    expect(
       screen.queryByRole('link', { name: /^direção$/i }),
     ).toBeNull();
   });
@@ -288,6 +291,9 @@ describe('Sidebar', () => {
     expect(
       screen.queryByRole('link', { name: /^secretaria$/i }),
     ).toBeNull();
+    expect(
+      screen.getByRole('link', { name: /^psicólogos$/i }),
+    ).toBeTruthy();
     expect(
       screen.queryByRole('button', { name: /comunica..o e recursos/i }),
     ).toBeNull();

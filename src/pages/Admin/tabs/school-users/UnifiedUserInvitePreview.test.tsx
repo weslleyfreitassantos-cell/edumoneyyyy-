@@ -35,6 +35,7 @@ const currentDirectory = dirname(
 
 const mutateAsync = vi.fn();
 const saveAcademicMutateAsync = vi.fn();
+const registerProfessional = vi.fn();
 
 vi.mock(
   '../../../../hooks/useSchoolUserInvites',
@@ -88,6 +89,11 @@ vi.mock('../../../../hooks/useStudents', () => ({
   }),
 }));
 
+vi.mock('../../../../services/psychologyService', () => ({
+  psychologyErrorMessage: (error: unknown) => error instanceof Error ? error.message : 'Falha no cadastro profissional',
+  psychologyService: { registerProfessional: (...args: unknown[]) => registerProfessional(...args) },
+}));
+
 const defaultProps = {
   institutionId:
     '22222222-2222-4222-8222-222222222222',
@@ -104,6 +110,8 @@ afterEach(() => {
 beforeEach(() => {
   mutateAsync.mockReset();
   saveAcademicMutateAsync.mockReset();
+  registerProfessional.mockReset();
+  registerProfessional.mockResolvedValue({ profile_id: '11111111-1111-4111-8111-111111111111', verification_status: 'PENDING' });
   mutateAsync.mockResolvedValue({
     success: true,
     accessCreated: true,
@@ -237,6 +245,53 @@ describe('UnifiedUserInvitePreview', () => {
         }],
       });
     });
+  });
+
+  it('cria convite de psicóloga, registra CRP pendente e atualiza a lista sem enviar CRP no convite', async () => {
+    const onInviteComplete = vi.fn();
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['PSYCHOLOGIST']}
+        heading="Cadastro de psicólogo(a)"
+        onInviteComplete={onInviteComplete}
+      />,
+    );
+    expect(screen.getByText('Instituição do vínculo:').parentElement?.textContent).toContain('Escola Centro');
+
+    fireEvent.change(screen.getByLabelText(/Nome completo/), { target: { value: 'Dra. Psicóloga Teste' } });
+    fireEvent.change(screen.getByLabelText(/E-mail/), { target: { value: 'psicologa@escola.com' } });
+    fireEvent.change(screen.getByLabelText(/Registro CRP/), { target: { value: '03/12345' } });
+    fireEvent.change(screen.getByLabelText(/^UF$/), { target: { value: 'ba' } });
+    fireEvent.click(screen.getByRole('button', { name: /Criar e enviar acesso/ }));
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith({
+        institutionId: defaultProps.institutionId,
+        role: 'PSYCHOLOGIST',
+        fullName: 'Dra. Psicóloga Teste',
+        email: 'psicologa@escola.com',
+      });
+      expect(registerProfessional).toHaveBeenCalledWith(
+        defaultProps.institutionId,
+        '11111111-1111-4111-8111-111111111111',
+        '03/12345',
+        'BA',
+      );
+      expect(onInviteComplete).toHaveBeenCalledOnce();
+      expect(screen.getByRole('alert').textContent).toContain('pendente de verificação humana');
+    });
+  });
+
+  it('não envia convite de psicólogo com CRP ou UF inválidos', () => {
+    render(<UnifiedUserInvitePreview {...defaultProps} allowedTargets={['PSYCHOLOGIST']} />);
+    fireEvent.change(screen.getByLabelText(/Nome completo/), { target: { value: 'Psicólogo Teste' } });
+    fireEvent.change(screen.getByLabelText(/E-mail/), { target: { value: 'psicologo@escola.com' } });
+    fireEvent.change(screen.getByLabelText(/Registro CRP/), { target: { value: 'abc' } });
+    fireEvent.change(screen.getByLabelText(/^UF$/), { target: { value: 'XX' } });
+
+    expect(screen.getByRole('button', { name: /Criar e enviar acesso/ }).hasAttribute('disabled')).toBe(true);
+    expect(mutateAsync).not.toHaveBeenCalled();
   });
 
   it('trata o e-mail pendente como criação concluída e limpa o formulário', async () => {
