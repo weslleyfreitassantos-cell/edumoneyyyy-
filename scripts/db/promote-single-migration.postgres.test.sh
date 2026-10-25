@@ -45,8 +45,14 @@ cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
 set -euo pipefail
 set +e
 output_file="$(mktemp "${PROMOTION_TEST_CLI_LOG_DIR:?}/supabase-cli.XXXXXX")"
-timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
-  npx supabase --debug "$@" >"$output_file" 2>&1
+supabase_binary="${PROMOTION_TEST_SUPABASE_BIN:-}"
+if [[ -n "$supabase_binary" && -x "$supabase_binary" ]]; then
+  timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
+    "$supabase_binary" --debug "$@" >"$output_file" 2>&1
+else
+  timeout --foreground "${PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS:-180}s" \
+    npx supabase --debug "$@" >"$output_file" 2>&1
+fi
 status=$?
 if [[ "$status" -eq 124 ]]; then
   printf 'PROMOTION_TEST_CLI_TIMEOUT=YES\n' >> "$output_file"
@@ -130,6 +136,7 @@ run_promotion() {
     PROMOTION_TEST_DB_CONTAINER="$db_container" \
     PROMOTION_TEST_DATABASE_NAME="$database_name" \
     PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
+    PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
     SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
     SOURCE_ROOT="$fixture" \
     TARGET_VERSION="$target_version" \
@@ -238,6 +245,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DB_CONTAINER="$db_container" \
   PROMOTION_TEST_DATABASE_NAME="$exception_database" \
   PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
+  PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
   SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
   PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
