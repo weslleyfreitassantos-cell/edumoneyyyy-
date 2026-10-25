@@ -295,7 +295,7 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await page.getByRole('button', { name: 'Próximo desafio' }).click();
 
       for (const exercise of fixture.exercises.slice(1)) await answerInUi(page, exercise);
-      await expect(page.getByRole('heading', { name: 'Lição concluída' })).toBeVisible();
+    await expect(page.getByText('Lição concluída', { exact: true })).toBeVisible();
       await expect(page.getByText('+30 XP')).toBeVisible();
       await expect(page.getByText('30 XP', { exact: true })).toBeVisible();
       await page.getByRole('button', { name: 'Voltar ao mapa' }).click();
