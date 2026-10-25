@@ -22,7 +22,8 @@ describe('psychology management candidate search migration', () => {
     expect(migration).toContain("'profile_id', candidate.profile_id");
     expect(migration).toContain("'student_id', student.id");
     expect(migration).toContain("'registration_number', student.registration_number");
-    expect(migration).toContain("'authorization_status', authorization.status");
+    expect(migration).toContain("'authorization_status', consent.status");
+    expect(migration).not.toMatch(/\bauthorization\s*\./);
     expect(migration).toContain("'assigned_professionals'");
   });
 

@@ -290,7 +290,7 @@ begin
                  and (assignment.ends_on is null or assignment.ends_on >= current_date)
             ) active_professional
         ), '[]'::jsonb),
-        'authorization_status', authorization.status,
+        'authorization_status', consent.status,
         'enrollments', coalesce((
           select jsonb_agg(jsonb_build_object(
             'class_id', active_class.id,
@@ -319,9 +319,9 @@ begin
         ), '[]'::jsonb)
       ) order by student.registration_number, student.id), '[]'::jsonb) as registrations
         from public.students student
-        left join public.psychology_authorizations authorization
-          on authorization.institution_id = target_institution_id
-         and authorization.student_id = student.id
+        left join public.psychology_authorizations consent
+          on consent.institution_id = target_institution_id
+         and consent.student_id = student.id
        where student.profile_id = candidate.profile_id
          and student.institution_id = target_institution_id
          and student.active is true
