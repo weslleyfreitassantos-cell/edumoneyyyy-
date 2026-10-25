@@ -27,6 +27,7 @@ import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 import ProfileHeroAvatar from './ProfileHeroAvatar';
 import DashboardLoadingShell from './DashboardLoadingShell';
+import GuardianFinancePanel from './finance/GuardianFinancePanel';
 
 function getStudentDisplayName(student: GuardianStudentDashboard['student']['student']): string {
   return student.profile?.full_name?.trim() || 'Estudante sem nome informado';
@@ -357,6 +358,8 @@ export default function ParentDashboard() {
         institutionId={institutionQuery.data}
         role="guardian"
       />
+
+      <GuardianFinancePanel />
 
       {students.length === 0 ? (
         <div role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
