@@ -38,6 +38,15 @@ print(urlunsplit((parts.scheme, parts.netloc, "/promoter_historical_ci", parts.q
 PY
 )"
 chronological_db_url="${test_db_url%/promoter_historical_ci}/promoter_chronological_ci"
+promotion_test_supabase_bin="${PROMOTION_TEST_SUPABASE_BIN:-}"
+if [[ -z "${promotion_test_supabase_bin}" ]]; then
+  linux_supabase_bin="${repo_root}/node_modules/@supabase/cli-linux-x64/bin/supabase"
+  if [[ -x "${linux_supabase_bin}" ]]; then
+    promotion_test_supabase_bin="${linux_supabase_bin}"
+  else
+    promotion_test_supabase_bin="${repo_root}/node_modules/.bin/supabase"
+  fi
+fi
 
 mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
@@ -136,7 +145,7 @@ run_promotion() {
     PROMOTION_TEST_DB_CONTAINER="$db_container" \
     PROMOTION_TEST_DATABASE_NAME="$database_name" \
     PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
-    PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
+    PROMOTION_TEST_SUPABASE_BIN="$promotion_test_supabase_bin" \
     PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
     SOURCE_ROOT="$fixture" \
     TARGET_VERSION="$target_version" \
@@ -245,7 +254,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DB_CONTAINER="$db_container" \
   PROMOTION_TEST_DATABASE_NAME="$exception_database" \
   PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
-  PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
+  PROMOTION_TEST_SUPABASE_BIN="$promotion_test_supabase_bin" \
   PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
   PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
