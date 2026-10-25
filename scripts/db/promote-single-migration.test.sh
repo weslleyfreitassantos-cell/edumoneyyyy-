@@ -8,7 +8,7 @@ expected_last=20261019000500
 source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print -quit)"
 [[ -n "$target_file" ]]
-target_hash="$(sha256sum "$target_file" | awk '{print $1}')"
+target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
@@ -39,6 +39,7 @@ run_guard() {
   EXPECTED_TARGET_SHA256="${TEST_TARGET_SHA256:-${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}}" \
   PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
   TMPDIR="$tmp/guard-tmp" \
+  REAL_SHA256SUM="${real_sha256sum:-}" \
   REMOTE_LEDGER_FILE="${TEST_REMOTE_LEDGER_FILE:-$ledger}" \
   DRY_RUN_OUTPUT_FILE="${TEST_DRY_RUN_OUTPUT_FILE:-${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}}" \
   EXPECT_INCLUDE_ALL="${TEST_EXPECT_INCLUDE_ALL:-1}" \
@@ -91,9 +92,19 @@ unset PRODUCTION_DB_URL_OVERRIDE
 
 PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?passfile=/tmp/secret' expect_failure
 unset PRODUCTION_DB_URL_OVERRIDE
-SUPABASE_CLI_BINARY_OVERRIDE='/fixture/supabase.exe' expect_failure
+PROMOTE_SINGLE_MIGRATION_CLI_BINARY='/fixture/supabase.exe' expect_failure
 
 mkdir -p "$tmp/bin"
+real_sha256sum="$(command -v sha256sum)"
+cat > "$tmp/bin/sha256sum" <<'MOCK'
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
+  printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+else
+  "$REAL_SHA256SUM" "$@"
+fi
+MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -154,7 +165,7 @@ if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
 fi
 cat "$MOCK_AFTER_LEDGER_FILE"
 MOCK
-chmod +x "$tmp/bin/npx" "$tmp/bin/psql"
+chmod +x "$tmp/bin/sha256sum" "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -215,7 +226,7 @@ applied_override="$(PATH="$tmp/bin:$PATH" \
   APPLY=1 \
   BACKUP_GATE=PASS \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
-  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/cli-override" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/cli-override" \
   EXPECTED_CLI_EXECUTABLE="$tmp/bin/cli-override" \
   run_guard)"
 grep -q '^PROMOTION=APPLIED$' <<< "$applied_override"
@@ -225,7 +236,7 @@ grep -q '^PROMOTION=APPLIED$' <<< "$applied_override"
 chronological_version=20261022000200
 chronological_file="$repo_root/supabase/migrations/${chronological_version}_inventory_management.sql"
 [[ -f "$chronological_file" ]]
-chronological_hash="$(sha256sum "$chronological_file" | awk '{print $1}')"
+chronological_hash="$(sed 's/\r$//' "$chronological_file" | sha256sum | awk '{print $1}')"
 printf 'Would push migration %s\n' "$chronological_version" > "$tmp/chronological-dry-run"
 chronological="$(PATH="$tmp/bin:$PATH" \
   APPLY=1 \
@@ -292,7 +303,7 @@ applied_windows="$(PATH="$tmp/bin:$PATH" \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   EXPECT_WINDOWS_WORKDIR=1 \
   EXPECT_WSLENV_FORWARDING=1 \
-  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase.exe" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase.exe" \
   EXPECTED_CLI_EXECUTABLE="$tmp/bin/supabase.exe" \
   SUPABASE_CLI_WORKDIR_ROOT="$tmp/cli-root" \
   CLI_WORKDIR_EXPECT_ROOT="$tmp/cli-root" \
@@ -318,6 +329,102 @@ fi
   echo "temporary promotion credentials remained after a blocked apply" >&2
   exit 1
 }
+
+# Exercise the one release-scoped recovery exception. CI substitutes only the
+# digest command for its placeholder backup file; production hashes the real
+# accessible file using the system sha256sum.
+exception_version=20261023000200
+exception_file="$repo_root/supabase/migrations/${exception_version}_guided_study_demo_preview_state.sql"
+[[ -f "$exception_file" ]]
+exception_hash="$(sed 's/\r$//' "$exception_file" | "$real_sha256sum" | awk '{print $1}')"
+exception_backup="$tmp/verified-windows-backup-fixture.tar.gz"
+printf 'CI placeholder for the previously verified Windows backup\n' > "$exception_backup"
+printf 'Would push migration %s\n' "$exception_version" > "$tmp/exception-dry-run"
+printf '0\n' > "$cli_apply_count"
+printf '0\n' > "$psql_call_count"
+exception_output="$(PATH="$tmp/bin:$PATH" \
+  REAL_SHA256SUM="$real_sha256sum" \
+  MOCK_BACKUP_FILE="$exception_backup" \
+  APPLY=1 \
+  BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_SHA=36979b8adc4408bf9eaccdf77f742904fba152fc \
+  BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
+  BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$exception_backup" \
+  BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL \
+  BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$exception_version" \
+  TEST_TARGET_SHA256="$exception_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$tmp/exception-dry-run" \
+  TEST_AFTER_LEDGER_CONTENT="$expected_last
+$exception_version" \
+  run_guard)"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED$' <<< "$exception_output"
+grep -q '^PRODUCTION_WRITE_AUTHORIZATION=APPROVED$' <<< "$exception_output"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+expect_exception_rejected() {
+  local target_version_to_test="${TEST_EXCEPTION_TARGET_VERSION:-$exception_version}"
+  local target_file_to_test target_hash_to_test
+  target_file_to_test="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f \
+    -name "${target_version_to_test}_*.sql" -print -quit)"
+  [[ -n "$target_file_to_test" ]]
+  target_hash_to_test="$(sed 's/\r$//' "$target_file_to_test" | "$real_sha256sum" | awk '{print $1}')"
+  printf 'Would push migration %s\n' "$target_version_to_test" > "$tmp/exception-dry-run-$target_version_to_test"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    REAL_SHA256SUM="$real_sha256sum" \
+    MOCK_BACKUP_FILE="${TEST_MOCK_BACKUP_FILE-$exception_backup}" \
+    APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_RELEASE_SHA="${TEST_EXCEPTION_RELEASE_SHA-36979b8adc4408bf9eaccdf77f742904fba152fc}" \
+    BACKUP_EXCEPTION_WINDOWS_PATH="${TEST_EXCEPTION_WINDOWS_PATH-C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz}" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_EXCEPTION_BACKUP_SHA256-b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0}" \
+    BACKUP_EXCEPTION_BACKUP_FILE="${TEST_EXCEPTION_FILE-$exception_backup}" \
+    BACKUP_EXCEPTION_RESTORE_STATUS="${TEST_EXCEPTION_RESTORE_STATUS-PARTIAL}" \
+    BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_EXCEPTION_STORAGE_STATUS-PARTIAL}" \
+    BACKUP_EXCEPTION_OFFSITE_GATE="${TEST_EXCEPTION_OFFSITE_GATE-FAIL}" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_EXCEPTION_RISK_ACCEPTANCE-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399}" \
+    CONFIRM_PRODUCTION_WRITE="${TEST_EXCEPTION_PRODUCTION_AUTH-I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION}" \
+    TEST_TARGET_VERSION="$target_version_to_test" \
+    TEST_TARGET_SHA256="$target_hash_to_test" \
+    TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_DRY_RUN_OUTPUT_FILE_OVERRIDE= \
+    TEST_DRY_RUN_OUTPUT_FILE="$tmp/exception-dry-run-$target_version_to_test" \
+    run_guard >"$tmp/exception-rejection" 2>&1; then
+    echo "invalid release #399 backup exception unexpectedly passed" >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_EXCEPTION_RELEASE_SHA=unapproved-release expect_exception_rejected
+TEST_EXCEPTION_TARGET_VERSION=20261022000100 expect_exception_rejected
+TEST_EXCEPTION_BACKUP_SHA256=bad expect_exception_rejected
+TEST_EXCEPTION_RESTORE_STATUS=PASS expect_exception_rejected
+TEST_EXCEPTION_RESTORE_STATUS=NOT_RUN expect_exception_rejected
+TEST_EXCEPTION_STORAGE_STATUS=PASS expect_exception_rejected
+TEST_EXCEPTION_STORAGE_STATUS=NOT_RUN expect_exception_rejected
+TEST_EXCEPTION_STORAGE_STATUS=FAIL expect_exception_rejected
+TEST_EXCEPTION_OFFSITE_GATE=PASS expect_exception_rejected
+TEST_EXCEPTION_RISK_ACCEPTANCE= expect_exception_rejected
+TEST_EXCEPTION_PRODUCTION_AUTH= expect_exception_rejected
+wrong_backup="$tmp/incorrect-windows-backup-fixture.tar.gz"
+printf 'different backup bytes\n' > "$wrong_backup"
+TEST_EXCEPTION_FILE="$wrong_backup" expect_exception_rejected
+TEST_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\other.tar.gz' expect_exception_rejected
+unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RESTORE_STATUS \
+  TEST_EXCEPTION_STORAGE_STATUS \
+  TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
+  TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2

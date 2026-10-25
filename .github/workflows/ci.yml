@@ -316,6 +316,51 @@ jobs:
           path: test-results/**/visual/*.png
           if-no-files-found: ignore
 
-      - name: Provar promoção de migration histórica em Supabase descartável
+  migration-promoter-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Criar roles requeridas pela migration do release
         shell: bash
+        env:
+          POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          set -euo pipefail
+          docker exec "$POSTGRES_CONTAINER" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+            -c 'CREATE ROLE anon NOLOGIN; CREATE ROLE authenticated NOLOGIN;'
+
+      - name: Provar promoção histórica, cronológica e exceção do release #399
+        shell: bash
+        timeout-minutes: 15
+        env:
+          PROMOTION_TEST_DB_CONTAINER: ${{ job.services.postgres.id }}
+          PROMOTION_TEST_DB_URL: postgres://postgres:postgres@127.0.0.1:5432/postgres
+          PROMOTION_TEST_SUPABASE_TIMEOUT_SECONDS: '120'
         run: bash scripts/db/promote-single-migration.postgres.test.sh

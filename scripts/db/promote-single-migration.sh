@@ -39,6 +39,29 @@ expected_source_commit="${EXPECTED_SOURCE_COMMIT:?EXPECTED_SOURCE_COMMIT is requ
 expected_target_sha256="${EXPECTED_TARGET_SHA256:?EXPECTED_TARGET_SHA256 is required}"
 production_db_url="${PRODUCTION_DB_URL:?PRODUCTION_DB_URL is required}"
 
+# One release-scoped alternative recovery proof. This never changes the normal
+# offsite backup gate and cannot authorize migrations outside release #399.
+release_399_sha='36979b8adc4408bf9eaccdf77f742904fba152fc'
+release_399_backup_sha256='b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0'
+release_399_backup_windows_path='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz'
+declare -A release_399_migration_hashes=(
+  [20261013003200]=a74980197b1aabbc1f3dce88b4c2719fd3621eaa33e7c3c7e1cc36f00d541083
+  [20261015000700]=07ee09d493878cff41b2e347c8626874f2b0d4b1b6f0781a7ac4949372fab420
+  [20261015000800]=eadd8c05e8046b8498228918dea75ff4e14e9905093928fccb87c78ad7ee81fe
+  [20261015004100]=5e7d9a9eddea72ebb5cdd5a155cdf96d32f28fc4d1b1a5f4ad4e6a10d45851e3
+  [20261016000400]=274dc0acbca22eff5e63566193965d90102a8a5edf8d57b4962eab1436f3a226
+  [20261022000200]=656de511d5d302a46a3c82fcfafdc3aab538027ac85c8fc2e365e05e929d5a59
+  [20261023000100]=d51ac811cac838124531d6d0eab25d8a6aa9bf1492129c8b7138828eb00ece7e
+  [20261023000200]=4ed582c3b19f5da409b7e087e4bce5b8af07b7b98c5c2829fda52a3f1c414e97
+  [20261023000300]=051e2572e799b8ea6687e129b2b0da270d9bb7d2bbdbfad87a98238959392f71
+  [20261023000400]=7e6fa831d9ce0a713a92aec28a799268dc5ffe291b6f5e3ee7c03846aebe3c1e
+  [20261023000500]=bb2d3f4e307b7bcd1c922327044837b5e15caff50a773102ce976ce0aeace8ec
+  [20261023000700]=c4a15cc02db1eec389cadf31eafec739c01faec2887169c476c55a28c91c6f86
+  [20261023000800]=e7e803d42c14009a8c6a04ac8e514ef773928e1e6551e13534f6d1d12edf82fb
+  [20261023000900]=f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b
+  [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
+)
+
 connection_fields=()
 while IFS= read -r -d '' field; do
   connection_fields+=("${field}")
@@ -109,10 +132,77 @@ sha256_file() {
   fi
 }
 
+sha256_migration_file() {
+  # Git's autocrlf may materialize SQL with CRLF on Windows. Hash canonical
+  # LF text so release allowlists are stable across Windows and Linux.
+  if command -v sha256sum >/dev/null 2>&1; then
+    sed 's/\r$//' "${1}" | sha256sum | awk '{print $1}'
+  else
+    sed 's/\r$//' "${1}" | shasum -a 256 | awk '{print $1}'
+  fi
+}
+
+authorize_production_write() {
+  local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
+  local expected_release_migration_sha=""
+  local actual_backup_sha=""
+
+  [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
+    abort "production write confirmation is missing"
+
+  case "${BACKUP_GATE:-}" in
+    PASS)
+      printf 'BACKUP_GATE=PASS\n'
+      printf 'BACKUP_EXCEPTION=NOT_USED\n'
+      printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+      ;;
+    FAIL)
+      [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
+        abort "backup exception is restricted to the approved release #399 SHA"
+      [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
+        abort "backup exception does not identify the verified Windows copy"
+      [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
+        abort "backup exception SHA-256 does not match the verified Windows copy"
+      [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
+        abort "backup exception must record the verified restore status PARTIAL"
+      [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+        abort "backup exception must record the verified storage status PARTIAL"
+      [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
+        abort "backup exception must preserve the offsite gate as FAIL"
+      [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
+        abort "explicit incomplete-recovery risk acceptance is missing"
+      expected_release_migration_sha="${release_399_migration_hashes[${target_version}]:-}"
+      [[ -n "${expected_release_migration_sha}" ]] || \
+        abort "backup exception does not authorize a migration outside release #399"
+      [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
+        "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
+        abort "target migration is not the approved release #399 artifact"
+      [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+        abort "verified Windows backup copy is not accessible"
+      actual_backup_sha="$(sha256_file "${backup_file}")" || \
+        abort "verified Windows backup copy could not be hashed"
+      [[ "${actual_backup_sha}" == "${release_399_backup_sha256}" ]] || \
+        abort "accessible backup copy SHA-256 does not match the verified Windows copy"
+      printf 'BACKUP_GATE=FAIL\n'
+      printf 'BACKUP_EXCEPTION=USED\n'
+      printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
+      printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${actual_backup_sha}"
+      printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
+      printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+      printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
+      printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+      printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+      ;;
+    *)
+      abort "backup gate must be PASS or the release-scoped FAIL exception"
+      ;;
+  esac
+}
+
 mapfile -t target_files < <(find "${repo_root}/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print)
 [[ "${#target_files[@]}" -eq 1 ]] || abort "target migration must resolve to exactly one file"
 target_file="${target_files[0]}"
-actual_target_sha256="$(sha256_file "${target_file}")"
+actual_target_sha256="$(sha256_migration_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
 
 umask 077
@@ -135,7 +225,9 @@ pgpass_escape() {
 printf '*:*:*:%s:%s\n' "$(pgpass_escape "${database_user}")" "$(pgpass_escape "${database_password}")" > "${pgpass_file}"
 chmod 600 "${pgpass_file}"
 
-cli_binary_override="${SUPABASE_CLI_BINARY_OVERRIDE:-}"
+# Keep this project-specific: the Supabase CLI itself consumes
+# SUPABASE_CLI_BINARY_OVERRIDE to select its native executable.
+cli_binary_override="${PROMOTE_SINGLE_MIGRATION_CLI_BINARY:-}"
 cli_command=()
 if [[ -n "${cli_binary_override}" ]]; then
   if [[ "${cli_binary_override}" == */* || "${cli_binary_override}" == *.exe ]]; then
@@ -256,9 +348,11 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
-  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --dry-run --log-level error 2>&1)"; then
+  printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
+  if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
+  printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
 fi
 
 pending_versions=()
@@ -285,12 +379,12 @@ if [[ "${APPLY:-0}" != '1' ]]; then
   exit 0
 fi
 
-[[ "${BACKUP_GATE:-}" == 'PASS' ]] || abort "backup gate is not PASS"
-[[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
-  abort "production write confirmation is missing"
+authorize_production_write
 
+printf 'PROMOTION_STAGE=APPLY_START\n' >&2
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
   || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
   "select version from supabase_migrations.schema_migrations order by version;")" \
