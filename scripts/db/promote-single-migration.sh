@@ -61,6 +61,13 @@ declare -A release_399_migration_hashes=(
   [20261023000900]=f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b
   [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
 )
+declare -A fast_delivery_migration_hashes=(
+  [20261025000100]=bea4c981901f75bef1b1be9fa1306f813db4b19cb781472468f7049b58ebcb39
+  [20261025000200]=e256a57d27aaff7c0e357ddcc65a3a5b781b0ce57eb814558f1cb9835b839851
+  [20261025000300]=83f19a3fb29e1aea549b7ae0cc0246b71936d9206cfd0cd631570fae1ef6fb6f
+  [20261025000400]=30cee4e8dcaf955fc67122f4205689619494c67d656d19537077cf001b5ec11c
+  [20261025000500]=84afdcd082ad4033d8ac6c04919e8c6660e1ffe1bb3754905e04f17ee191ac91
+)
 
 connection_fields=()
 while IFS= read -r -d '' field; do
@@ -144,7 +151,8 @@ sha256_migration_file() {
 
 authorize_production_write() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
-  local expected_release_migration_sha=""
+  local exception_scope="${BACKUP_EXCEPTION_SCOPE:-RELEASE_399}"
+  local expected_exception_migration_sha=""
   local actual_backup_sha=""
 
   [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
@@ -157,26 +165,50 @@ authorize_production_write() {
       printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
       ;;
     FAIL)
-      [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
-        abort "backup exception is restricted to the approved release #399 SHA"
-      [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
-        abort "backup exception does not identify the verified Windows copy"
-      [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
-        abort "backup exception SHA-256 does not match the verified Windows copy"
-      [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
-        abort "backup exception must record the verified restore status PARTIAL"
-      [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
-        abort "backup exception must record the verified storage status PARTIAL"
-      [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
-        abort "backup exception must preserve the offsite gate as FAIL"
-      [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
-        abort "explicit incomplete-recovery risk acceptance is missing"
-      expected_release_migration_sha="${release_399_migration_hashes[${target_version}]:-}"
-      [[ -n "${expected_release_migration_sha}" ]] || \
-        abort "backup exception does not authorize a migration outside release #399"
-      [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
-        "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
-        abort "target migration is not the approved release #399 artifact"
+      case "${exception_scope}" in
+        RELEASE_399)
+          [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
+            abort "backup exception is restricted to the approved release #399 SHA"
+          [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
+            abort "backup exception does not identify the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
+            abort "backup exception SHA-256 does not match the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "backup exception must record the verified restore status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "backup exception must record the verified storage status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
+            abort "backup exception must preserve the offsite gate as FAIL"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
+            abort "explicit incomplete-recovery risk acceptance is missing"
+          expected_exception_migration_sha="${release_399_migration_hashes[${target_version}]:-}"
+          [[ -n "${expected_exception_migration_sha}" ]] || \
+            abort "backup exception does not authorize a migration outside release #399"
+          ;;
+        TECESCOLA_FAST_DELIVERY)
+          [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
+            abort "fast-delivery exception does not identify the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
+            abort "fast-delivery exception backup SHA-256 does not match the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "fast-delivery exception must record restore status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "fast-delivery exception must record storage status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
+            abort "fast-delivery exception must preserve offsite gate as FAIL"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_TECESCOLA_FAST_DELIVERY' ]] || \
+            abort "fast-delivery incomplete-recovery risk acceptance is missing"
+          expected_exception_migration_sha="${fast_delivery_migration_hashes[${target_version}]:-}"
+          [[ -n "${expected_exception_migration_sha}" ]] || \
+            abort "fast-delivery exception does not authorize this migration version"
+          ;;
+        *)
+          abort "backup exception scope is not recognized"
+          ;;
+      esac
+      [[ "${expected_target_sha256}" == "${expected_exception_migration_sha}" && \
+        "${actual_target_sha256}" == "${expected_exception_migration_sha}" ]] || \
+        abort "target migration is not the exact approved artifact for this backup exception"
       [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
         abort "verified Windows backup copy is not accessible"
       actual_backup_sha="$(sha256_file "${backup_file}")" || \
@@ -185,7 +217,13 @@ authorize_production_write() {
         abort "accessible backup copy SHA-256 does not match the verified Windows copy"
       printf 'BACKUP_GATE=FAIL\n'
       printf 'BACKUP_EXCEPTION=USED\n'
-      printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
+      printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${exception_scope}"
+      if [[ "${exception_scope}" == 'RELEASE_399' ]]; then
+        printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
+      else
+        printf 'BACKUP_EXCEPTION_MIGRATION_VERSION=%s\n' "${target_version}"
+        printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+      fi
       printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${actual_backup_sha}"
       printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
       printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'

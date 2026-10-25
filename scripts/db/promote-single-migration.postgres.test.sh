@@ -14,7 +14,7 @@ db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' |
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_fast_delivery_exception_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
@@ -235,6 +235,9 @@ cat > "$tmp/exception-bin/sha256sum" <<'MOCK'
 set -euo pipefail
 if [[ -n "${PROMOTION_TEST_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$PROMOTION_TEST_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+elif [[ "$#" == '0' && -n "${PROMOTION_TEST_MIGRATION_SHA256:-}" ]]; then
+  cat >/dev/null
+  printf '%s  -\n' "$PROMOTION_TEST_MIGRATION_SHA256"
 else
   "$PROMOTION_TEST_REAL_SHA256SUM" "$@"
 fi
@@ -314,3 +317,65 @@ exception_function_count="$(docker exec "$db_container" psql -U postgres -d "$ex
    where n.nspname = 'public' and p.proname = 'get_recommended_guided_study_v10';")"
 [[ "$exception_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_BACKUP_EXCEPTION_399=PASS'
+
+# Prove the newly approved, hash-limited fast-delivery exception can apply a
+# migration to a disposable PostgreSQL database while keeping all recovery
+# risks visible and rejecting every version outside its allowlist.
+fast_delivery_version=20261025000100
+fast_delivery_base_version=20261024000100
+fast_delivery_hash=bea4c981901f75bef1b1be9fa1306f813db4b19cb781472468f7049b58ebcb39
+fast_delivery_database=promoter_fast_delivery_exception_ci
+fast_delivery_db_url="${test_db_url%/promoter_historical_ci}/${fast_delivery_database}"
+fast_delivery_fixture="$tmp/fast-delivery-fixture"
+fast_delivery_backup="$tmp/verified-windows-backup-fast-delivery-fixture.tar.gz"
+printf 'CI placeholder for the previously verified Windows backup\n' > "$fast_delivery_backup"
+init_fixture "$fast_delivery_fixture" "$fast_delivery_base_version" "$fast_delivery_version" \
+  fast_delivery_candidate_test "$fast_delivery_database"
+fast_delivery_source_commit="$(git -C "$fast_delivery_fixture" rev-parse HEAD)"
+mkdir -p "$tmp/fast-delivery-exception-bin"
+cp "$tmp/exception-bin/sha256sum" "$tmp/fast-delivery-exception-bin/sha256sum"
+fast_delivery_output="$(PATH="$tmp/fast-delivery-exception-bin:$tmp/bin:$PATH" \
+  PROMOTION_TEST_DB_CONTAINER="$db_container" \
+  PROMOTION_TEST_DATABASE_NAME="$fast_delivery_database" \
+  PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
+  PROMOTION_TEST_SUPABASE_BIN="$promotion_test_supabase_bin" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
+  PROMOTION_TEST_REAL_SHA256SUM="$real_sha256sum" \
+  PROMOTION_TEST_BACKUP_FILE="$fast_delivery_backup" \
+  PROMOTION_TEST_MIGRATION_SHA256="$fast_delivery_hash" \
+  SOURCE_ROOT="$fast_delivery_fixture" \
+  TARGET_VERSION="$fast_delivery_version" \
+  EXPECTED_REMOTE_LAST="$fast_delivery_base_version" \
+  EXPECTED_SOURCE_COMMIT="$fast_delivery_source_commit" \
+  EXPECTED_TARGET_SHA256="$fast_delivery_hash" \
+  PRODUCTION_DB_URL="$fast_delivery_db_url" \
+  APPLY=1 BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY \
+  BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
+  BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$fast_delivery_backup" \
+  BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL \
+  BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_TECESCOLA_FAST_DELIVERY \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TMPDIR="$tmp" \
+  "$promoter")"
+printf '%s\n' "$fast_delivery_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION=USED' <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY' <<< "$fast_delivery_output"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_VERSION=$fast_delivery_version" <<< "$fast_delivery_output"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$fast_delivery_hash" <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PARTIAL' <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL' <<< "$fast_delivery_output"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$fast_delivery_output"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$fast_delivery_output"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$fast_delivery_output"
+grep -Fxq "REMOTE_AFTER_LAST=$fast_delivery_version" <<< "$fast_delivery_output"
+fast_delivery_table_count="$(docker exec "$db_container" psql -U postgres -d "$fast_delivery_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) from public.fast_delivery_candidate_test_probe where id = 1;")"
+[[ "$fast_delivery_table_count" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_FAST_DELIVERY_EXCEPTION=PASS'

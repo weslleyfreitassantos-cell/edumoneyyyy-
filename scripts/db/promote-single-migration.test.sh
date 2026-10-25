@@ -10,7 +10,19 @@ target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "
 [[ -n "$target_file" ]]
 target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
-trap 'rm -rf "$tmp"' EXIT
+fast_delivery_fixture_prefix="$repo_root/supabase/migrations/20261025000"
+fast_delivery_test_fixtures=(
+  "${fast_delivery_fixture_prefix}100_fast_delivery_authorization_test_fixture.sql"
+  "${fast_delivery_fixture_prefix}200_fast_delivery_authorization_test_fixture.sql"
+  "${fast_delivery_fixture_prefix}300_fast_delivery_authorization_test_fixture.sql"
+  "${fast_delivery_fixture_prefix}400_fast_delivery_authorization_test_fixture.sql"
+  "${fast_delivery_fixture_prefix}500_fast_delivery_authorization_test_fixture.sql"
+  "${fast_delivery_fixture_prefix}600_fast_delivery_authorization_test_fixture.sql"
+)
+for fixture in "${fast_delivery_test_fixtures[@]}"; do
+  [[ ! -e "$fixture" ]] || { echo "Test migration fixture already exists: $fixture" >&2; exit 1; }
+done
+trap 'rm -f "${fast_delivery_test_fixtures[@]}"; rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
 
 eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
@@ -101,6 +113,9 @@ cat > "$tmp/bin/sha256sum" <<'MOCK'
 set -euo pipefail
 if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+elif [[ "$#" == '0' && -n "${MOCK_MIGRATION_SHA256:-}" ]]; then
+  cat >/dev/null
+  printf '%s  -\n' "$MOCK_MIGRATION_SHA256"
 else
   "$REAL_SHA256SUM" "$@"
 fi
@@ -425,6 +440,109 @@ unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RES
   TEST_EXCEPTION_STORAGE_STATUS \
   TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
   TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
+
+# Exercise the separately approved fast-delivery scope against every exact
+# version/hash pair. The mock only supplies the already-reviewed migration
+# digest; ordinary target-hash mismatch coverage above still uses real SHA-256.
+fast_delivery_base_version=20261024000100
+fast_delivery_backup="$exception_backup"
+fast_delivery_ledger="$tmp/fast-delivery-ledger"
+printf '%s\n' "$fast_delivery_base_version" > "$fast_delivery_ledger"
+cat > "${fast_delivery_test_fixtures[0]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+cat > "${fast_delivery_test_fixtures[1]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+cat > "${fast_delivery_test_fixtures[2]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+cat > "${fast_delivery_test_fixtures[3]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+cat > "${fast_delivery_test_fixtures[4]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+cat > "${fast_delivery_test_fixtures[5]}" <<'SQL'
+select 'fast-delivery authorization fixture';
+SQL
+
+declare -A fast_delivery_approved_hashes=(
+  [20261025000100]=bea4c981901f75bef1b1be9fa1306f813db4b19cb781472468f7049b58ebcb39
+  [20261025000200]=e256a57d27aaff7c0e357ddcc65a3a5b781b0ce57eb814558f1cb9835b839851
+  [20261025000300]=83f19a3fb29e1aea549b7ae0cc0246b71936d9206cfd0cd631570fae1ef6fb6f
+  [20261025000400]=30cee4e8dcaf955fc67122f4205689619494c67d656d19537077cf001b5ec11c
+  [20261025000500]=84afdcd082ad4033d8ac6c04919e8c6660e1ffe1bb3754905e04f17ee191ac91
+)
+for fast_delivery_version in "${!fast_delivery_approved_hashes[@]}"; do
+  fast_delivery_hash="${fast_delivery_approved_hashes[$fast_delivery_version]}"
+  printf 'Would push migration %s\n' "$fast_delivery_version" > "$tmp/fast-delivery-dry-run"
+  printf '0\n' > "$cli_apply_count"
+  printf '0\n' > "$psql_call_count"
+  fast_delivery_output="$(PATH="$tmp/bin:$PATH" \
+    REAL_SHA256SUM="$real_sha256sum" \
+    MOCK_BACKUP_FILE="$fast_delivery_backup" \
+    MOCK_MIGRATION_SHA256="$fast_delivery_hash" \
+    APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY \
+    BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
+    BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
+    BACKUP_EXCEPTION_BACKUP_FILE="$fast_delivery_backup" \
+    BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL \
+    BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+    BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_TECESCOLA_FAST_DELIVERY \
+    CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$fast_delivery_base_version" \
+    TEST_REMOTE_LEDGER_FILE="$fast_delivery_ledger" \
+    TEST_TARGET_VERSION="$fast_delivery_version" \
+    TEST_TARGET_SHA256="$fast_delivery_hash" \
+    TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_DRY_RUN_OUTPUT_FILE="$tmp/fast-delivery-dry-run" \
+    TEST_AFTER_LEDGER_CONTENT="$fast_delivery_base_version
+$fast_delivery_version" \
+    run_guard)"
+  grep -q '^BACKUP_GATE=FAIL$' <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION=USED$' <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY$' <<< "$fast_delivery_output"
+  grep -q "^BACKUP_EXCEPTION_MIGRATION_VERSION=$fast_delivery_version$" <<< "$fast_delivery_output"
+  grep -q "^BACKUP_EXCEPTION_MIGRATION_SHA256=$fast_delivery_hash$" <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$fast_delivery_output"
+  grep -q '^BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED$' <<< "$fast_delivery_output"
+  [[ "$(cat "$cli_apply_count")" == '1' ]]
+done
+echo 'PROMOTE_SINGLE_MIGRATION_FAST_DELIVERY_ALLOWLIST=PASS'
+
+expect_fast_delivery_rejected() {
+  local rejected_version='20261025000600'
+  local rejected_hash="${fast_delivery_approved_hashes[20261025000100]}"
+  printf 'Would push migration %s\n' "$rejected_version" > "$tmp/fast-delivery-rejected-dry-run"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" REAL_SHA256SUM="$real_sha256sum" \
+    MOCK_BACKUP_FILE="$fast_delivery_backup" MOCK_MIGRATION_SHA256="$rejected_hash" \
+    APPLY=1 BACKUP_GATE=FAIL BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY \
+    BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
+    BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
+    BACKUP_EXCEPTION_BACKUP_FILE="$fast_delivery_backup" \
+    BACKUP_EXCEPTION_RESTORE_STATUS=PARTIAL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+    BACKUP_EXCEPTION_OFFSITE_GATE=FAIL \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_TECESCOLA_FAST_DELIVERY \
+    CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$fast_delivery_base_version" \
+    TEST_REMOTE_LEDGER_FILE="$fast_delivery_ledger" TEST_TARGET_VERSION="$rejected_version" \
+    TEST_TARGET_SHA256="$rejected_hash" TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_DRY_RUN_OUTPUT_FILE="$tmp/fast-delivery-rejected-dry-run" \
+    TEST_AFTER_LEDGER_CONTENT="$fast_delivery_base_version
+$rejected_version" run_guard >"$tmp/fast-delivery-rejection" 2>&1; then
+    echo 'fast-delivery exception unexpectedly authorized an unlisted migration' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+  grep -q 'fast-delivery exception does not authorize this migration version' "$tmp/fast-delivery-rejection"
+}
+expect_fast_delivery_rejected
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
