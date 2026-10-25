@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-do
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import PsychologyStudentRoster from './PsychologyStudentRoster';
 import {
   psychologyErrorMessage,
   psychologyService,
@@ -16,7 +17,6 @@ import {
   type PsychologyAvailabilityBlock,
   type PsychologyAvailabilityRule,
   type PsychologyAuthorizationTarget,
-  type PsychologyManagementCandidates,
   type PsychologyMessage,
   type PsychologyNote,
   type PsychologyNoteVersion,
@@ -240,13 +240,11 @@ function AuthorizationPanel({
 
 function ManagementPanel({
   institutionId,
-  candidates,
   moduleEnabled,
   onRefresh,
   onFeedback,
 }: {
   institutionId: string;
-  candidates: PsychologyManagementCandidates | null;
   moduleEnabled: boolean;
   onRefresh: () => void;
   onFeedback: (message: string) => void;
@@ -254,9 +252,13 @@ function ManagementPanel({
   const [professionalId, setProfessionalId] = useState('');
   const [crp, setCrp] = useState('');
   const [crpState, setCrpState] = useState('BA');
-  const [studentId, setStudentId] = useState('');
-  const [assignmentProfessionalId, setAssignmentProfessionalId] = useState('');
+  const [professionals, setProfessionals] = useState<Awaited<ReturnType<typeof psychologyService.listManagementCandidates>>['professionals']>([]);
+  const [rosterRefreshKey, setRosterRefreshKey] = useState(0);
   const [busy, setBusy] = useState(false);
+
+  function refreshRoster() {
+    setRosterRefreshKey((current) => current + 1);
+  }
 
   async function register(event: FormEvent) {
     event.preventDefault();
@@ -266,7 +268,7 @@ function ManagementPanel({
       await psychologyService.registerProfessional(institutionId, professionalId, crp.trim(), crpState);
       onFeedback('Dados profissionais salvos. A habilitação exige verificação humana do CRP.');
       setCrp('');
-      onRefresh();
+      refreshRoster();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
     } finally {
@@ -279,7 +281,7 @@ function ManagementPanel({
     try {
       await psychologyService.verifyProfessional(institutionId, profileId);
       onFeedback('Verificação humana registrada e vínculo profissional habilitado nesta instituição.');
-      onRefresh();
+      refreshRoster();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
     } finally {
@@ -287,14 +289,12 @@ function ManagementPanel({
     }
   }
 
-  async function assign(event: FormEvent) {
-    event.preventDefault();
-    if (!studentId || !assignmentProfessionalId) return;
+  async function assign(studentId: string, professionalIdToAssign: string) {
     setBusy(true);
     try {
-      await psychologyService.setStudentAssignment(institutionId, studentId, assignmentProfessionalId, true);
+      await psychologyService.setStudentAssignment(institutionId, studentId, professionalIdToAssign, true);
       onFeedback('Vínculo de acompanhamento registrado. O profissional verá apenas os estudantes atribuídos.');
-      onRefresh();
+      refreshRoster();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
     } finally {
@@ -302,12 +302,12 @@ function ManagementPanel({
     }
   }
 
-  async function unassign(student: PsychologyManagementCandidates['students'][number], professionalIdToRemove: string) {
+  async function unassign(studentId: string, professionalIdToRemove: string) {
     setBusy(true);
     try {
-      await psychologyService.setStudentAssignment(institutionId, student.student_id, professionalIdToRemove, false);
-      onFeedback(`Acompanhamento encerrado para ${student.full_name}.`);
-      onRefresh();
+      await psychologyService.setStudentAssignment(institutionId, studentId, professionalIdToRemove, false);
+      onFeedback('Acompanhamento encerrado para a matrícula selecionada.');
+      refreshRoster();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
     } finally {
@@ -330,7 +330,6 @@ function ManagementPanel({
     }
   }
 
-  const availableProfessionals = candidates?.professionals.filter((item) => item.registered && item.verification_status === 'VERIFIED' && item.linked) ?? [];
   return (
     <section className="space-y-6">
       <div>
@@ -353,7 +352,7 @@ function ManagementPanel({
         <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional convidada
           <select required value={professionalId} onChange={(event) => setProfessionalId(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">
             <option value="">Selecione</option>
-            {(candidates?.professionals ?? []).map((item) => <option key={item.profile_id} value={item.profile_id}>{item.full_name} · {item.email}</option>)}
+            {professionals.map((item) => <option key={item.profile_id} value={item.profile_id}>{item.full_name} · {item.email}</option>)}
           </select>
         </label>
         <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Registro CRP
@@ -366,32 +365,23 @@ function ManagementPanel({
       </form>
       <div className="space-y-3">
         <h3 className="font-bold text-slate-900 dark:text-white">Profissionais e habilitação humana</h3>
-        {(candidates?.professionals ?? []).map((item) => (
+        {professionals.map((item) => (
           <article key={item.profile_id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
             <div><p className="font-semibold text-slate-900 dark:text-white">{item.full_name}</p><p className="text-sm text-slate-600 dark:text-slate-300">{item.registered ? `CRP ${item.crp_registration}/${item.crp_state} · ${item.verification_status === 'VERIFIED' ? 'verificado' : 'pendente de verificação'}` : 'Perfil profissional ainda não cadastrado'}</p></div>
             {item.registered && item.verification_status !== 'VERIFIED' ? <button disabled={busy} onClick={() => void verify(item.profile_id)} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">Confirmo verificação humana do CRP</button> : null}
           </article>
         ))}
-        {!candidates?.professionals.length ? <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Convide primeiro uma pessoa com o perfil Psicóloga(o) pela área Usuários.</p> : null}
+        {!professionals.length ? <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Convide primeiro uma pessoa com o perfil Psicóloga(o) pela área Usuários.</p> : null}
       </div>
-      <form onSubmit={(event) => void assign(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900 md:grid-cols-[1fr_1fr_auto]">
-        <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Estudante
-          <select required value={studentId} onChange={(event) => setStudentId(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950"><option value="">Selecione</option>{(candidates?.students ?? []).map((item) => <option key={item.student_id} value={item.student_id}>{item.full_name} · {item.registration_number ?? 'sem matrícula'}</option>)}</select>
-        </label>
-        <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional habilitada
-          <select required value={assignmentProfessionalId} onChange={(event) => setAssignmentProfessionalId(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950"><option value="">Selecione</option>{availableProfessionals.map((item) => <option key={item.profile_id} value={item.profile_id}>{item.full_name}</option>)}</select>
-        </label>
-        <div className="self-end"><button disabled={busy || !availableProfessionals.length} className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50">Vincular estudante</button></div>
-      </form>
-      <div className="space-y-2">
-        <h3 className="font-bold text-slate-900 dark:text-white">Vínculos e estado da autorização</h3>
-        {(candidates?.students ?? []).map((item) => (
-          <article key={item.student_id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
-            <div><p className="font-semibold text-slate-900 dark:text-white">{item.full_name}</p><p className="text-sm text-slate-600 dark:text-slate-300">{item.assigned ? 'Possui vínculo de acompanhamento ativo' : 'Sem vínculo ativo'} · autorização: {item.authorization_status ?? 'pendente'}</p></div>
-            {item.assigned ? <select aria-label={`Encerrar vínculo de ${item.full_name}`} defaultValue="" onChange={(event) => { const targetId = event.target.value; if (targetId) void unassign(item, targetId); event.currentTarget.value = ''; }} disabled={busy} className="rounded-lg border border-slate-300 bg-white p-2 text-sm dark:border-slate-700 dark:bg-slate-950"><option value="">Encerrar vínculo…</option>{item.assigned_professionals.map((professional) => <option key={professional.profile_id} value={professional.profile_id}>{professional.full_name}</option>)}</select> : null}
-          </article>
-        ))}
-      </div>
+      <PsychologyStudentRoster
+        institutionId={institutionId}
+        professionals={professionals}
+        busy={busy}
+        refreshKey={rosterRefreshKey}
+        onProfessionalsLoaded={setProfessionals}
+        onAssign={assign}
+        onUnassign={unassign}
+      />
     </section>
   );
 }
@@ -891,7 +881,6 @@ export default function PsychologyPage() {
   const [loadedContextKey, setLoadedContextKey] = useState('');
   const [feedback, setFeedback] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
-  const [candidates, setCandidates] = useState<PsychologyManagementCandidates | null>(null);
   const [targets, setTargets] = useState<PsychologyAuthorizationTarget[]>([]);
   const [appointments, setAppointments] = useState<PsychologyAppointment[]>([]);
   const [slots, setSlots] = useState<PsychologySlot[]>([]);
@@ -910,7 +899,6 @@ export default function PsychologyPage() {
     setLoadedContextKey('');
     setModuleEnabled(false);
     setFeedback('');
-    setCandidates(null);
     setTargets([]);
     setAppointments([]);
     setSlots([]);
@@ -934,10 +922,6 @@ export default function PsychologyPage() {
         if (['STUDENT', 'GUARDIAN'].includes(role)) {
           studentTargets = await psychologyService.listMyAuthorizationTargets(institutionId);
           if (active) setTargets(studentTargets);
-        }
-        if (isManager && section === 'configuracao') {
-          const management = await psychologyService.listManagementCandidates(institutionId);
-          if (active) setCandidates(management);
         }
         if (section === 'autorizacao' && !['STUDENT', 'GUARDIAN'].includes(role)) {
           throw new Error('NOT_AUTHORIZED');
@@ -1047,7 +1031,7 @@ export default function PsychologyPage() {
           <p className="mt-2 text-xs text-amber-800 dark:text-amber-300">O cadastro de profissionais e os vínculos operacionais podem ser preparados na configuração; o conteúdo clínico continua inacessível.</p>
         </section>
       ) : null}
-      {!isPageLoading && canShowManagement && institutionId ? <ManagementPanel institutionId={institutionId} candidates={candidates} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} /> : null}
+      {!isPageLoading && canShowManagement && institutionId ? <ManagementPanel institutionId={institutionId} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} /> : null}
       {!isPageLoading && canShowAuthorization ? <AuthorizationPanel targets={targets} role={role} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} /> : null}
 
       {!isPageLoading && canShowStudentClinical && moduleEnabled && section === 'agendar' ? (
