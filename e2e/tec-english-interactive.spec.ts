@@ -391,7 +391,7 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await expect(resumedPage.getByText('Desafio 2 de 7')).toBeVisible();
       await expect(resumedPage.getByText('Monte: “Meu nome é Bruno.”')).toBeVisible();
       expect(await resumedPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-      await resumedPage.getByRole('button', { name: 'Menu principal' }).click();
+      await resumedPage.getByRole('button', { name: 'Abrir menu de navegação' }).click();
       await resumedPage.getByRole('button', { name: 'Sair', exact: true }).click();
       await expect(resumedPage).toHaveURL(/\/login/, { timeout: 30_000 });
       await login(resumedPage, learner);
