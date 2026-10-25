@@ -62,6 +62,26 @@ declare -A release_399_migration_hashes=(
   [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
 )
 
+# Release #406 has a separate, one-release recovery-risk acceptance. It is
+# bound to the exact PR source lineage, local backup artifact, two migration
+# hashes, and the expected ledger immediately before each migration.
+release_406_source_anchor='ead793895f325c7b15a244f927219be252958e0d'
+release_406_backup_sha256='a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841'
+release_406_backup_size_bytes='372305133'
+release_406_backup_filename='edumoney-2026-10-25T07-43-25Z.tar.gz'
+declare -A release_406_migration_hashes=(
+  [20261025000600]=afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3
+  [20261025000700]=7651ba9d253cb14c10882b370cdf866e87c193594c25493385cbbfe4e90d0bcc
+)
+declare -A release_406_expected_remote_last=(
+  [20261025000600]=20261025000500
+  [20261025000700]=20261025000600
+)
+declare -A release_406_expected_remote_count=(
+  [20261025000600]=241
+  [20261025000700]=242
+)
+
 connection_fields=()
 while IFS= read -r -d '' field; do
   connection_fields+=("${field}")
@@ -146,6 +166,7 @@ authorize_production_write() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
   local expected_release_migration_sha=""
   local actual_backup_sha=""
+  local actual_backup_size=""
 
   [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
     abort "production write confirmation is missing"
@@ -157,6 +178,54 @@ authorize_production_write() {
       printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
       ;;
     FAIL)
+      if [[ "${BACKUP_EXCEPTION_RELEASE_ID:-}" == '406' ]]; then
+        [[ "${BACKUP_EXCEPTION_SOURCE_COMMIT:-}" == "${actual_source_commit}" && \
+          "${BACKUP_EXCEPTION_SOURCE_COMMIT:-}" == "${expected_source_commit}" ]] || \
+          abort "release #406 exception source commit does not match the verified checkout"
+        git -C "${repo_root}" merge-base --is-ancestor \
+          "${release_406_source_anchor}" "${actual_source_commit}" 2>/dev/null || \
+          abort "release #406 exception source is outside the approved PR lineage"
+        [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406' ]] || \
+          abort "explicit incomplete-recovery risk acceptance for release #406 is missing"
+        [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_406_backup_sha256}" ]] || \
+          abort "release #406 backup SHA-256 does not match the previously validated local artifact"
+        [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+          abort "previously validated local release #406 backup is not accessible"
+        [[ "$(basename -- "${backup_file}")" == "${release_406_backup_filename}" ]] || \
+          abort "release #406 backup filename does not identify the validated local artifact"
+        actual_backup_size="$(wc -c < "${backup_file}" | tr -d '[:space:]')" || \
+          abort "release #406 backup size could not be verified"
+        [[ "${actual_backup_size}" == "${release_406_backup_size_bytes}" ]] || \
+          abort "release #406 backup size differs from the previously validated local artifact"
+        actual_backup_sha="$(sha256_file "${backup_file}")" || \
+          abort "release #406 backup could not be hashed"
+        [[ "${actual_backup_sha}" == "${release_406_backup_sha256}" ]] || \
+          abort "release #406 backup hash differs from the previously validated local artifact"
+        expected_release_migration_sha="${release_406_migration_hashes[${target_version}]:-}"
+        [[ -n "${expected_release_migration_sha}" ]] || \
+          abort "backup exception does not authorize a migration outside release #406"
+        [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
+          "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
+          abort "target migration is not the approved release #406 artifact"
+        [[ "${expected_remote_last}" == "${release_406_expected_remote_last[${target_version}]}" && \
+          "${remote_last}" == "${release_406_expected_remote_last[${target_version}]}" ]] || \
+          abort "remote ledger version is not the approved pre-migration state for release #406"
+        [[ "${#remote_versions[@]}" -eq "${release_406_expected_remote_count[${target_version}]}" ]] || \
+          abort "remote ledger count is not the approved pre-migration state for release #406"
+
+        printf 'BACKUP_GATE=FAIL\n'
+        printf 'BACKUP_EXCEPTION=RELEASE_406_ACCEPTED\n'
+        printf 'BACKUP_EXCEPTION_RELEASE_ID=406\n'
+        printf 'BACKUP_EXCEPTION_SOURCE_COMMIT=%s\n' "${actual_source_commit}"
+        printf 'BACKUP_EXCEPTION_BACKUP_SHA256=%s\n' "${actual_backup_sha}"
+        printf 'BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=%s\n' "${actual_backup_size}"
+        printf 'BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL\n'
+        printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
+        printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+        printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+        return 0
+      fi
+
       [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
         abort "backup exception is restricted to the approved release #399 SHA"
       [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \

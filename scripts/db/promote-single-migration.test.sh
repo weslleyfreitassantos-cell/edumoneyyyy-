@@ -34,8 +34,8 @@ printf '0\n' > "$psql_call_count"
 run_guard() {
   SOURCE_ROOT="$repo_root" \
   TARGET_VERSION="${TEST_TARGET_VERSION:-$target_version}" \
-  EXPECTED_REMOTE_LAST="${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}" \
-  EXPECTED_SOURCE_COMMIT="$source_commit" \
+  EXPECTED_REMOTE_LAST="${TEST_EXPECTED_REMOTE_LAST:-${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}}" \
+  EXPECTED_SOURCE_COMMIT="${TEST_SOURCE_COMMIT:-$source_commit}" \
   EXPECTED_TARGET_SHA256="${TEST_TARGET_SHA256:-${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}}" \
   PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
   TMPDIR="$tmp/guard-tmp" \
@@ -100,7 +100,7 @@ cat > "$tmp/bin/sha256sum" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
 if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
-  printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+  printf '%s  %s\n' "${MOCK_BACKUP_SHA256:-b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0}" "$1"
 else
   "$REAL_SHA256SUM" "$@"
 fi
@@ -425,6 +425,150 @@ unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RES
   TEST_EXCEPTION_STORAGE_STATUS \
   TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
   TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
+
+# Release #406 is bound to its PR source lineage, exact local backup and the
+# exact pre-migration ledger positions. The SQL and DB clients remain mocked.
+release_406_backup_sha256=a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841
+release_406_backup_size=372305133
+release_406_base=20261025000500
+mapfile -t release_406_candidates < <(
+  find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name '*.sql' -printf '%f\n' |
+    cut -c1-14 | grep -E '^[0-9]{14}$' |
+    awk -v base="$release_406_base" '$0 < base && $0 != "20261004000100" && $0 != "20261004000200" && $0 != "20261004000300"' |
+    sort -u | head -n 240
+)
+[[ "${#release_406_candidates[@]}" -eq 240 ]]
+release_406_ledger="$tmp/release-406-ledger"
+printf '%s\n' "${release_406_candidates[@]}" "$release_406_base" | sort -u > "$release_406_ledger"
+[[ "$(wc -l < "$release_406_ledger" | tr -d '[:space:]')" == '241' ]]
+release_406_backup="$tmp/edumoney-2026-10-25T07-43-25Z.tar.gz"
+truncate -s "$release_406_backup_size" "$release_406_backup"
+release_406_dry_run="$tmp/release-406-dry-run"
+release_406_after="$tmp/release-406-after-ledger"
+release_406_version=20261025000600
+release_406_file="$repo_root/supabase/migrations/${release_406_version}_central_estudos_v2_content_review.sql"
+[[ -f "$release_406_file" ]]
+release_406_hash="$(sed 's/\r$//' "$release_406_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$release_406_hash" == 'afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3' ]]
+printf 'Would push migration %s\n' "$release_406_version" > "$release_406_dry_run"
+cat "$release_406_ledger" > "$release_406_after"
+printf '%s\n' "$release_406_version" >> "$release_406_after"
+printf '0\n' > "$cli_apply_count"
+release_406_output="$(PATH="$tmp/bin:$PATH" \
+  REAL_SHA256SUM="$real_sha256sum" \
+  MOCK_BACKUP_FILE="$release_406_backup" \
+  MOCK_BACKUP_SHA256="$release_406_backup_sha256" \
+  APPLY=1 BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_ID=406 \
+  BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$release_406_version" \
+  TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
+  TEST_TARGET_SHA256="$release_406_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_dry_run" \
+  TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_after")" \
+  run_guard)"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_406_ACCEPTED$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_RELEASE_ID=406$' <<< "$release_406_output"
+grep -q "^BACKUP_EXCEPTION_SOURCE_COMMIT=$source_commit$" <<< "$release_406_output"
+grep -q "^BACKUP_EXCEPTION_BACKUP_SHA256=$release_406_backup_sha256$" <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=372305133$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED$' <<< "$release_406_output"
+grep -q '^PROMOTION=APPLIED$' <<< "$release_406_output"
+grep -q '^REMOTE_AFTER_COUNT=242$' <<< "$release_406_output"
+grep -q '^REMOTE_AFTER_LAST=20261025000600$' <<< "$release_406_output"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+# The second artifact is accepted only with 00600 already in the ledger.
+release_406_second_base=20261025000600
+release_406_second_version=20261025000700
+release_406_second_file="$repo_root/supabase/migrations/${release_406_second_version}_central_estudos_v2_runtime_publication.sql"
+[[ -f "$release_406_second_file" ]]
+release_406_second_hash="$(sed 's/\r$//' "$release_406_second_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$release_406_second_hash" == '7651ba9d253cb14c10882b370cdf866e87c193594c25493385cbbfe4e90d0bcc' ]]
+release_406_second_ledger="$tmp/release-406-second-ledger"
+cat "$release_406_ledger" > "$release_406_second_ledger"
+printf '%s\n' "$release_406_version" >> "$release_406_second_ledger"
+release_406_second_dry_run="$tmp/release-406-second-dry-run"
+release_406_second_after="$tmp/release-406-second-after-ledger"
+printf 'Would push migration %s\n' "$release_406_second_version" > "$release_406_second_dry_run"
+cat "$release_406_second_ledger" > "$release_406_second_after"
+printf '%s\n' "$release_406_second_version" >> "$release_406_second_after"
+printf '0\n' > "$cli_apply_count"
+release_406_second_output="$(PATH="$tmp/bin:$PATH" \
+  REAL_SHA256SUM="$real_sha256sum" \
+  MOCK_BACKUP_FILE="$release_406_backup" \
+  MOCK_BACKUP_SHA256="$release_406_backup_sha256" \
+  APPLY=1 BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_ID=406 \
+  BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$release_406_second_version" \
+  TEST_EXPECTED_REMOTE_LAST="$release_406_second_base" \
+  TEST_TARGET_SHA256="$release_406_second_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_second_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_second_dry_run" \
+  TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_second_after")" \
+  run_guard)"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$release_406_second_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_406_ACCEPTED$' <<< "$release_406_second_output"
+grep -q '^PROMOTION=APPLIED$' <<< "$release_406_second_output"
+grep -q '^REMOTE_AFTER_COUNT=243$' <<< "$release_406_second_output"
+grep -q '^REMOTE_AFTER_LAST=20261025000700$' <<< "$release_406_second_output"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+expect_release_406_rejected() {
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    REAL_SHA256SUM="$real_sha256sum" \
+    MOCK_BACKUP_FILE="${TEST_406_BACKUP_FILE-$release_406_backup}" \
+    MOCK_BACKUP_SHA256="${TEST_406_MOCK_BACKUP_SHA256-$release_406_backup_sha256}" \
+    APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_RELEASE_ID="${TEST_406_RELEASE_ID-406}" \
+    BACKUP_EXCEPTION_SOURCE_COMMIT="${TEST_406_SOURCE_COMMIT-$source_commit}" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_406_BACKUP_SHA256-$release_406_backup_sha256}" \
+    BACKUP_EXCEPTION_BACKUP_FILE="${TEST_406_BACKUP_FILE-$release_406_backup}" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_406_RISK-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406}" \
+    CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+    TEST_TARGET_VERSION="$release_406_version" \
+    TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
+    TEST_TARGET_SHA256="$release_406_hash" \
+    TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_REMOTE_LEDGER_FILE="${TEST_406_LEDGER-$release_406_ledger}" \
+    TEST_DRY_RUN_OUTPUT_FILE="$release_406_dry_run" \
+    TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_after")" \
+    run_guard >"$tmp/release-406-rejection" 2>&1; then
+    echo 'invalid release #406 exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_406_RELEASE_ID=405 expect_release_406_rejected
+TEST_406_SOURCE_COMMIT=0000000000000000000000000000000000000000 expect_release_406_rejected
+TEST_406_RISK= expect_release_406_rejected
+TEST_406_BACKUP_SHA256=bad expect_release_406_rejected
+small_release_406_backup="$tmp/edumoney-2026-10-25T07-43-25Z.tar.gz"
+printf 'short fixture\n' > "$small_release_406_backup"
+TEST_406_BACKUP_FILE="$small_release_406_backup" expect_release_406_rejected
+short_release_406_ledger="$tmp/release-406-short-ledger"
+head -n 239 "$release_406_ledger" > "$short_release_406_ledger"
+printf '%s\n' "$release_406_base" >> "$short_release_406_ledger"
+TEST_406_LEDGER="$short_release_406_ledger" expect_release_406_rejected
+unset TEST_406_RELEASE_ID TEST_406_SOURCE_COMMIT TEST_406_RISK TEST_406_BACKUP_SHA256 \
+  TEST_406_MOCK_BACKUP_SHA256 TEST_406_BACKUP_FILE TEST_406_LEDGER
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
