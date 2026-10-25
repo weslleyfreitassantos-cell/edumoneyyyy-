@@ -58,6 +58,10 @@ vi.mock('./UpcomingAcademicEvents', () => ({
   default: () => null,
 }));
 
+vi.mock('./finance/GuardianFinancePanel', () => ({
+  default: () => <div data-testid="guardian-finance-panel" />,
+}));
+
 const institutionId = 'institution-1';
 
 function studentDashboard(id: string, name: string) {
