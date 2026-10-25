@@ -113,6 +113,8 @@ cat > "$tmp/bin/sha256sum" <<'MOCK'
 set -euo pipefail
 if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+elif [[ "$#" == '1' && -n "${MOCK_MIGRATION_RAW_FILE:-}" && "$1" == "$MOCK_MIGRATION_RAW_FILE" ]]; then
+  printf '%s  %s\n' "$MOCK_MIGRATION_RAW_SHA256" "$1"
 elif [[ "$#" == '0' && -n "${MOCK_MIGRATION_SHA256:-}" ]]; then
   cat >/dev/null
   printf '%s  -\n' "$MOCK_MIGRATION_SHA256"
@@ -474,8 +476,17 @@ declare -A fast_delivery_approved_hashes=(
   [20261025000400]=30cee4e8dcaf955fc67122f4205689619494c67d656d19537077cf001b5ec11c
   [20261025000500]=84afdcd082ad4033d8ac6c04919e8c6660e1ffe1bb3754905e04f17ee191ac91
 )
+declare -A fast_delivery_canonical_hashes=(
+  [20261025000100]=6e3a281516461a4a1dbf88d5f1650a78dd286e60cb587062a8dd94cdd0c8ac5d
+  [20261025000200]=be1df1fa18887d5f86022093cb390f93c6ecaded5cefb601162fc2d3bd5ea765
+  [20261025000300]=f42598723f895c44a261ca750797aa3642b4ba082be3fa193da381e696172fd1
+  [20261025000400]=366790d205e49993aa8194537e1e436ef5320d956695405da197e9d6dd374d79
+  [20261025000500]=3c75cf066198c368a7639dec997e832f73b5261035580d338c2513a94ec9d6f6
+)
 for fast_delivery_version in "${!fast_delivery_approved_hashes[@]}"; do
-  fast_delivery_hash="${fast_delivery_approved_hashes[$fast_delivery_version]}"
+  fast_delivery_hash="${fast_delivery_canonical_hashes[$fast_delivery_version]}"
+  fast_delivery_windows_hash="${fast_delivery_approved_hashes[$fast_delivery_version]}"
+  fast_delivery_file="${fast_delivery_fixture_prefix}${fast_delivery_version#20261025000}_fast_delivery_authorization_test_fixture.sql"
   printf 'Would push migration %s\n' "$fast_delivery_version" > "$tmp/fast-delivery-dry-run"
   printf '0\n' > "$cli_apply_count"
   printf '0\n' > "$psql_call_count"
@@ -483,6 +494,8 @@ for fast_delivery_version in "${!fast_delivery_approved_hashes[@]}"; do
     REAL_SHA256SUM="$real_sha256sum" \
     MOCK_BACKUP_FILE="$fast_delivery_backup" \
     MOCK_MIGRATION_SHA256="$fast_delivery_hash" \
+    MOCK_MIGRATION_RAW_FILE="$fast_delivery_file" \
+    MOCK_MIGRATION_RAW_SHA256="$fast_delivery_windows_hash" \
     APPLY=1 BACKUP_GATE=FAIL \
     BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY \
     BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
@@ -507,6 +520,8 @@ $fast_delivery_version" \
   grep -q '^BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY$' <<< "$fast_delivery_output"
   grep -q "^BACKUP_EXCEPTION_MIGRATION_VERSION=$fast_delivery_version$" <<< "$fast_delivery_output"
   grep -q "^BACKUP_EXCEPTION_MIGRATION_SHA256=$fast_delivery_hash$" <<< "$fast_delivery_output"
+  grep -q "^BACKUP_EXCEPTION_MIGRATION_SHA256_WINDOWS_APPROVED=$fast_delivery_windows_hash$" <<< "$fast_delivery_output"
+  grep -q "^BACKUP_EXCEPTION_MIGRATION_SHA256_ON_DISK=$fast_delivery_windows_hash$" <<< "$fast_delivery_output"
   grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$fast_delivery_output"
   grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$fast_delivery_output"
   grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$fast_delivery_output"
@@ -517,11 +532,14 @@ echo 'PROMOTE_SINGLE_MIGRATION_FAST_DELIVERY_ALLOWLIST=PASS'
 
 expect_fast_delivery_rejected() {
   local rejected_version='20261025000600'
-  local rejected_hash="${fast_delivery_approved_hashes[20261025000100]}"
+  local rejected_hash="${fast_delivery_canonical_hashes[20261025000100]}"
+  local rejected_windows_hash="${fast_delivery_approved_hashes[20261025000100]}"
+  local rejected_file="${fast_delivery_test_fixtures[5]}"
   printf 'Would push migration %s\n' "$rejected_version" > "$tmp/fast-delivery-rejected-dry-run"
   printf '0\n' > "$cli_apply_count"
   if PATH="$tmp/bin:$PATH" REAL_SHA256SUM="$real_sha256sum" \
     MOCK_BACKUP_FILE="$fast_delivery_backup" MOCK_MIGRATION_SHA256="$rejected_hash" \
+    MOCK_MIGRATION_RAW_FILE="$rejected_file" MOCK_MIGRATION_RAW_SHA256="$rejected_windows_hash" \
     APPLY=1 BACKUP_GATE=FAIL BACKUP_EXCEPTION_SCOPE=TECESCOLA_FAST_DELIVERY \
     BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
     BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \

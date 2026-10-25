@@ -61,12 +61,19 @@ declare -A release_399_migration_hashes=(
   [20261023000900]=f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b
   [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
 )
-declare -A fast_delivery_migration_hashes=(
+declare -A fast_delivery_migration_windows_hashes=(
   [20261025000100]=bea4c981901f75bef1b1be9fa1306f813db4b19cb781472468f7049b58ebcb39
   [20261025000200]=e256a57d27aaff7c0e357ddcc65a3a5b781b0ce57eb814558f1cb9835b839851
   [20261025000300]=83f19a3fb29e1aea549b7ae0cc0246b71936d9206cfd0cd631570fae1ef6fb6f
   [20261025000400]=30cee4e8dcaf955fc67122f4205689619494c67d656d19537077cf001b5ec11c
   [20261025000500]=84afdcd082ad4033d8ac6c04919e8c6660e1ffe1bb3754905e04f17ee191ac91
+)
+declare -A fast_delivery_migration_canonical_hashes=(
+  [20261025000100]=6e3a281516461a4a1dbf88d5f1650a78dd286e60cb587062a8dd94cdd0c8ac5d
+  [20261025000200]=be1df1fa18887d5f86022093cb390f93c6ecaded5cefb601162fc2d3bd5ea765
+  [20261025000300]=f42598723f895c44a261ca750797aa3642b4ba082be3fa193da381e696172fd1
+  [20261025000400]=366790d205e49993aa8194537e1e436ef5320d956695405da197e9d6dd374d79
+  [20261025000500]=3c75cf066198c368a7639dec997e832f73b5261035580d338c2513a94ec9d6f6
 )
 
 connection_fields=()
@@ -153,6 +160,7 @@ authorize_production_write() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
   local exception_scope="${BACKUP_EXCEPTION_SCOPE:-RELEASE_399}"
   local expected_exception_migration_sha=""
+  local expected_exception_migration_windows_sha=""
   local actual_backup_sha=""
 
   [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
@@ -198,9 +206,13 @@ authorize_production_write() {
             abort "fast-delivery exception must preserve offsite gate as FAIL"
           [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_TECESCOLA_FAST_DELIVERY' ]] || \
             abort "fast-delivery incomplete-recovery risk acceptance is missing"
-          expected_exception_migration_sha="${fast_delivery_migration_hashes[${target_version}]:-}"
-          [[ -n "${expected_exception_migration_sha}" ]] || \
+          expected_exception_migration_sha="${fast_delivery_migration_canonical_hashes[${target_version}]:-}"
+          expected_exception_migration_windows_sha="${fast_delivery_migration_windows_hashes[${target_version}]:-}"
+          [[ -n "${expected_exception_migration_sha}" && -n "${expected_exception_migration_windows_sha}" ]] || \
             abort "fast-delivery exception does not authorize this migration version"
+          [[ "${actual_target_sha256_raw}" == "${expected_exception_migration_windows_sha}" || \
+            "${actual_target_sha256_raw}" == "${expected_exception_migration_sha}" ]] || \
+            abort "target migration raw bytes do not match the approved Windows or LF artifact"
           ;;
         *)
           abort "backup exception scope is not recognized"
@@ -223,6 +235,8 @@ authorize_production_write() {
       else
         printf 'BACKUP_EXCEPTION_MIGRATION_VERSION=%s\n' "${target_version}"
         printf 'BACKUP_EXCEPTION_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+        printf 'BACKUP_EXCEPTION_MIGRATION_SHA256_WINDOWS_APPROVED=%s\n' "${expected_exception_migration_windows_sha}"
+        printf 'BACKUP_EXCEPTION_MIGRATION_SHA256_ON_DISK=%s\n' "${actual_target_sha256_raw}"
       fi
       printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${actual_backup_sha}"
       printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
@@ -241,6 +255,7 @@ mapfile -t target_files < <(find "${repo_root}/supabase/migrations" -maxdepth 1 
 [[ "${#target_files[@]}" -eq 1 ]] || abort "target migration must resolve to exactly one file"
 target_file="${target_files[0]}"
 actual_target_sha256="$(sha256_migration_file "${target_file}")"
+actual_target_sha256_raw="$(sha256_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
 
 umask 077
@@ -411,6 +426,7 @@ printf 'WORKDIR_MIGRATION_COUNT=%s\n' "${workdir_migration_count}"
 printf 'DRY_RUN_PENDING_COUNT=1\n'
 printf 'DRY_RUN_PENDING_VERSION=%s\n' "${target_version}"
 printf 'TARGET_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+printf 'TARGET_MIGRATION_SHA256_RAW=%s\n' "${actual_target_sha256_raw}"
 
 if [[ "${APPLY:-0}" != '1' ]]; then
   printf 'PROMOTION=DRY_RUN_ONLY\n'
