@@ -10,6 +10,7 @@ import {
   useLearningStudent,
   useLearningUnits,
   usePublishedLearningActivities,
+  useGuidedDisciplineJourneysV9,
   useStudentLearningSubjects,
 } from '../../hooks/useLearningCenter';
 
@@ -19,6 +20,7 @@ export default function StudentSubjectPage() {
   const { currentInstitutionId } = useInstitution();
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
+  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const activities = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const progress = useLearningProgress(currentInstitutionId ?? undefined, student.data?.id);
   const displaySubjects = useMemo(
@@ -26,6 +28,22 @@ export default function StudentSubjectPage() {
     [subjects.data],
   );
   const selectedSubject = displaySubjects.find((item) => item.id === subjectId);
+  const releasedCentralStudiesLessons = (guidedJourneys.data ?? []).filter((journey) =>
+    journey.source === 'CENTRAL_STUDIES_V2'
+      && journey.subject_id === selectedSubject?.id
+      && journey.publication_status === 'PUBLISHED'
+      && journey.availability_status === 'AVAILABLE'
+      && journey.mapping_status === 'MAPPED'
+      && journey.pedagogical_review_status === 'PEDAGOGICAL_REVIEWED'
+      && journey.question_count > 0,
+  );
+  const centralStudiesLessonsByUnit = new Map<string, typeof releasedCentralStudiesLessons>();
+  for (const journey of releasedCentralStudiesLessons) {
+    const key = journey.unit_code || journey.unit_title;
+    const lessons = centralStudiesLessonsByUnit.get(key) ?? [];
+    lessons.push(journey);
+    centralStudiesLessonsByUnit.set(key, lessons);
+  }
   const units = useLearningUnits(currentInstitutionId ?? undefined, selectedSubject?.id);
   const subjectActivities = useMemo(
     () => (activities.data ?? []).filter((activity) => activity.subject_id === selectedSubject?.id),
@@ -90,6 +108,9 @@ export default function StudentSubjectPage() {
 
         {units.isLoading ? <p role="status" className="mt-5 text-sm text-slate-500">Carregando unidades...</p> : null}
         {units.isError ? <p role="alert" className="mt-5 text-sm text-red-700">Não foi possível carregar as unidades desta matéria.</p> : null}
+        {guidedJourneys.isLoading ? <p role="status" className="mt-5 text-sm text-slate-500">Verificando aulas liberadas...</p> : null}
+        {guidedJourneys.isError ? <p role="alert" className="mt-5 text-sm text-red-700">Não foi possível verificar as aulas liberadas agora.</p> : null}
+        {centralStudiesLessonsByUnit.size ? <section aria-label="Aulas liberadas pela escola" className="mt-5 space-y-4"><h2 className="text-sm font-bold text-slate-900 dark:text-white">Aulas liberadas pela escola</h2>{[...centralStudiesLessonsByUnit.values()].map((unitLessons) => <section key={unitLessons[0].unit_code || unitLessons[0].unit_title} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">{unitLessons[0].unit_title}</h3><div className="mt-3 space-y-2">{unitLessons.map((journey) => <article key={journey.journey_id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-100 p-3 dark:border-slate-700"><div><h4 className="font-semibold text-slate-900 dark:text-white">{journey.title}</h4><p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Aula e {journey.question_count} exercícios</p></div><Link to={`/student/study/guided?journey=${encodeURIComponent(journey.journey_id)}`} className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004d9f]">{journey.progress > 0 || journey.active_session_id ? 'Continuar aula' : 'Iniciar aula'}</Link></article>)}</div></section>)}</section> : null}
         {visibleUnits.length ? <div className="mt-5 space-y-4"><h2 className="text-sm font-bold text-slate-900 dark:text-white">Unidades com atividades publicadas</h2>{visibleUnits.map((unit) => <section key={unit.id} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">{unit.title}</h3>{unit.description ? <p className="mt-1 text-sm text-slate-500">{unit.description}</p> : null}<div className="mt-3 space-y-2">{(activitiesByUnit.get(unit.id) ?? []).map((activity) => <Link key={activity.id} to={`/student/study/activity/${activity.id}`} className="flex items-center justify-between gap-3 rounded-lg border p-3 text-sm transition hover:border-[#005bbf] dark:border-slate-700"><span className="font-semibold dark:text-slate-100">{activity.title}</span><span className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</span></Link>)}</div></section>)}</div> : null}
         {activitiesWithoutUnit.length ? <div className="mt-5 space-y-2"><h2 className="text-sm font-bold dark:text-white">Atividades publicadas pela escola</h2>{activitiesWithoutUnit.map((activity) => <Link key={activity.id} to={`/student/study/activity/${activity.id}`} className="flex items-center justify-between gap-3 rounded-lg border bg-white p-3 text-sm transition hover:border-[#005bbf] dark:border-slate-700 dark:bg-slate-900"><span className="font-semibold dark:text-slate-100">{activity.title}</span><span className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</span></Link>)}</div> : null}
         {!units.isLoading && !units.isError && !activities.isLoading && !activities.isError && !subjectActivities.length ? <p className="mt-5 rounded-xl border border-dashed border-blue-200 bg-white/70 p-4 text-sm text-slate-600 dark:border-blue-900 dark:bg-slate-900/50 dark:text-slate-300">Novas atividades desta matéria estão sendo preparadas.</p> : null}

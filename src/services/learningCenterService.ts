@@ -238,6 +238,7 @@ export interface GuidedDisciplineJourneyV9 {
   active_session_status: GuidedSessionV2['status'] | null;
   pedagogical_review_status: string;
   reason: string;
+  source?: 'V9' | 'CENTRAL_STUDIES_V2';
 }
 
 export interface RecommendedGuidedStudyV10 {
@@ -1320,11 +1321,26 @@ export const learningCenterService = {
       return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
     })(),
 
-  guidedDisciplineJourneysV9: (institutionId: string, studentId: string) =>
-    read<GuidedDisciplineJourneyV9[]>(supabase.rpc('list_student_guided_discipline_journeys_v9', {
+  guidedDisciplineJourneysV9: async (institutionId: string, studentId: string) => {
+    const legacyJourneys = await read<GuidedDisciplineJourneyV9[]>(supabase.rpc('list_student_guided_discipline_journeys_v9', {
       p_institution_id: institutionId,
       p_student_id: studentId,
-    })),
+    }));
+    const centralStudiesV2 = await supabase.rpc('list_student_central_studies_v2_journeys_v1', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+    });
+    if (centralStudiesV2.error && !isMissingRpcError(centralStudiesV2.error)) {
+      throw new Error(centralStudiesV2.error.message);
+    }
+    return [
+      ...legacyJourneys.map((journey) => ({ ...journey, source: 'V9' as const })),
+      ...((centralStudiesV2.data ?? []) as GuidedDisciplineJourneyV9[]).map((journey) => ({
+        ...journey,
+        source: 'CENTRAL_STUDIES_V2' as const,
+      })),
+    ];
+  },
 
   recommendedGuidedStudyV10: (institutionId: string, subjectId: string) =>
     read<RecommendedGuidedStudyV10>(supabase.rpc('get_recommended_guided_study_v10', {
@@ -1341,6 +1357,15 @@ export const learningCenterService = {
   startGuidedDisciplineJourneyV9: (input: { institutionId: string; studentId: string; journeyId: string }) =>
     read<{ session_id: string; created: boolean; current_step_id: string | null; target_canonical_skill_id: string; engine_version: 'V4' }>(
       supabase.rpc('start_guided_discipline_journey_v9', {
+        p_institution_id: input.institutionId,
+        p_student_id: input.studentId,
+        p_journey_id: input.journeyId,
+      }),
+    ),
+
+  startCentralStudiesV2Journey: (input: { institutionId: string; studentId: string; journeyId: string }) =>
+    read<{ session_id: string; created: boolean; current_step_id: string | null; target_canonical_skill_id: string; engine_version: 'V4' }>(
+      supabase.rpc('start_central_studies_v2_journey_v1', {
         p_institution_id: input.institutionId,
         p_student_id: input.studentId,
         p_journey_id: input.journeyId,

@@ -9,6 +9,8 @@ const reviewService = vi.hoisted(() => ({
   getQueue: vi.fn(),
   getPreview: vi.fn(),
   review: vi.fn(),
+  getReleaseStatus: vi.fn(),
+  getInstitutionTargets: vi.fn(),
 }));
 
 vi.mock('../../services/centralStudiesContentReviewService', () => ({
@@ -47,6 +49,13 @@ describe('CentralStudiesContentReviewPage', () => {
       ...preview, review_status: 'PEDAGOGICAL_REVIEWED', reviewer_name: 'Revisora Humana',
       reviewer_email: 'reviewer@example.test', reviewed_at: '2026-10-25T13:00:00Z', review_notes: 'Revisão concluída.',
     });
+    reviewService.getReleaseStatus.mockResolvedValue({
+      journey_code: item.journey_code, content_version: item.content_version,
+      snapshot_fingerprint: item.snapshot_fingerprint, review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+      publication_status: 'STAGING', integrated: false, mapping_status: 'PENDING',
+      integrated_at: null, enabled_institution_count: 0, release_events: [],
+    });
+    reviewService.getInstitutionTargets.mockResolvedValue([]);
     reviewService.review.mockResolvedValue({
       review_event_id: 'review-event-1', journey_code: item.journey_code, content_version: item.content_version,
       decision: 'APPROVED_FOR_INTEGRATION', publication_status: 'STAGING', reviewer_name: 'Revisora Humana',
@@ -72,7 +81,10 @@ describe('CentralStudiesContentReviewPage', () => {
       ['clarityAndAccessibility', 'Instruções são claras e acessíveis'],
       ['answerQuality', 'Alternativas, respostas e explicações são consistentes'],
       ['culturalAndContextualSuitability', 'Contextos e referências são adequados'],
+      ['reviewerCompetence', 'Confirmo que tenho competência pedagógica para esta revisão'],
+      ['curriculumMapping', 'Confirmei o vínculo com a habilidade e o currículo oficial'],
     ]) fireEvent.click(screen.getByLabelText(label));
+    fireEvent.change(screen.getByLabelText('Base da competência pedagógica'), { target: { value: 'Formação e experiência em planejamento pedagógico.' } });
     expect(approve).toHaveProperty('disabled', false);
     fireEvent.click(approve);
 

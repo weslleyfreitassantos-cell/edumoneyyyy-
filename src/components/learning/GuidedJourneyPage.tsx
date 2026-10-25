@@ -13,6 +13,7 @@ import {
   useLearningStudent,
   useSubmitGuidedStepV2,
   useStartGuidedDisciplineJourneyV9,
+  useStartCentralStudiesV2Journey,
   useResumeContentExhaustedGuidedJourneyV9,
   useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
@@ -61,7 +62,9 @@ export default function GuidedJourneyPage() {
   const blockDemoSession = demoPreview;
   const step = useGuidedLearningStepV2(blockDemoSession ? undefined : session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
-  const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV9 = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourneyV2 = useStartCentralStudiesV2Journey(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourney = journey?.source === 'CENTRAL_STUDIES_V2' ? startJourneyV2 : startJourneyV9;
   const resumeContent = useResumeContentExhaustedGuidedJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);

@@ -40,6 +40,7 @@ const state = vi.hoisted(() => ({
   submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
   startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
   startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
+  startJourneyV2: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: true, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
   resumeContent: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' }), isPending: false, isError: false, error: null },
   advance: { mutateAsync: vi.fn(), isPending: false },
 }));
@@ -53,6 +54,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useGuidedDisciplineJourneysV9: () => state.journeys,
   useStartGuidedLearningSessionV2: () => state.startGuided,
   useStartGuidedDisciplineJourneyV9: () => state.startJourney,
+  useStartCentralStudiesV2Journey: () => state.startJourneyV2,
   useResumeContentExhaustedGuidedJourneyV9: () => state.resumeContent,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
   useSubmitGuidedStepV2: () => state.submit,
@@ -84,6 +86,7 @@ afterEach(() => {
   state.submit.mutateAsync.mockReset().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] });
   state.startGuided.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' });
   state.startJourney.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' });
+  state.startJourneyV2.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', created: true, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' });
   state.resumeContent.mutateAsync.mockReset().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' });
 });
 
@@ -205,6 +208,22 @@ describe('GuidedJourneyPage', () => {
     expect(screen.getByRole('heading', { name: 'Novas atividades desta matéria estão sendo preparadas.' })).toBeTruthy();
     expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
     expect(state.startGuided.mutateAsync).not.toHaveBeenCalled();
+  });
+
+  it('starts a released Central Studies V2 journey through its V4-backed server entry point', async () => {
+    state.session.data = null;
+    state.journeys.data = [{
+      journey_id: 'central-v2-journey', source: 'CENTRAL_STUDIES_V2', subject_id: 'subject-1',
+      subject_name: 'Matemática', unit_title: 'Números', title: 'Estratégias com números naturais',
+      canonical_subject_code: 'MATHEMATICS', execution_skill_id: 'skill-1', publication_status: 'PUBLISHED',
+      availability_status: 'AVAILABLE', mapping_status: 'MAPPED', pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
+    }];
+    state.step.data = null;
+
+    renderPage('/?journey=central-v2-journey');
+
+    await waitFor(() => expect(state.startJourneyV2.mutateAsync).toHaveBeenCalledWith('central-v2-journey'));
+    expect(state.startJourney.mutateAsync).not.toHaveBeenCalled();
   });
 
   it('keeps a recoverable teacher-support state instead of inventing another step', () => {
