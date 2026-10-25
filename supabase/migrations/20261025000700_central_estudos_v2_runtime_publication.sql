@@ -121,7 +121,6 @@ as $$
        and student.profile_id = auth.uid()
       join public.enrollments enrollment
         on enrollment.student_id = student.id
-       and enrollment.institution_id = target.institution_id
        and enrollment.active
        and upper(enrollment.status::text) = 'ACTIVE'
       join public.classes class
@@ -309,7 +308,6 @@ as $$
        and student.institution_id = p_institution_id
       join public.enrollments enrollment
         on enrollment.student_id = student.id
-       and enrollment.institution_id = p_institution_id
        and enrollment.active
        and upper(enrollment.status::text) = 'ACTIVE'
       join public.classes class
@@ -434,7 +432,7 @@ as $$
      and journey.mapping_status = 'MAPPED' and journey.pedagogical_review_status = 'PEDAGOGICAL_REVIEWED'
     join public.students student on student.id = p_student_id and student.institution_id = p_institution_id
     join public.enrollments enrollment on enrollment.student_id = student.id
-     and enrollment.institution_id = p_institution_id and enrollment.active
+     and enrollment.active
      and upper(enrollment.status::text) = 'ACTIVE'
     join public.classes class on class.id = enrollment.class_id and class.institution_id = p_institution_id and class.active
     cross join lateral private.normalize_learning_grade_context(class.grade_level) normalized(value)
@@ -528,7 +526,7 @@ begin
       on subject_link.institution_id = target.institution_id and subject_link.subject_id = target.subject_id
      and subject_link.active and subject_link.subject_area = candidate_row.subject_area
     join public.students student on student.id = p_student_id and student.institution_id = target.institution_id
-    join public.enrollments enrollment on enrollment.student_id = student.id and enrollment.institution_id = target.institution_id
+    join public.enrollments enrollment on enrollment.student_id = student.id
      and enrollment.active and upper(enrollment.status::text) = 'ACTIVE'
     join public.classes class on class.id = enrollment.class_id and class.institution_id = target.institution_id and class.active
     cross join lateral private.normalize_learning_grade_context(class.grade_level) normalized(value)
