@@ -298,7 +298,7 @@ localDescribe('school finance V2 against disposable local Supabase', () => {
       p_institution_id: institutionId, p_name: `Fornecedor ${suffix}`, p_tax_id: null, p_contact: null,
     });
     expect(supplier.error).toBeNull();
-    const paymentDate = `${today}T12:00:00.000Z`;
+    const paymentDate = `${today}T00:00:00.000Z`;
     const { data: upload, error: uploadError } = await director.client.storage.from('finance-documents')
       .upload(`${institutionId}/${crypto.randomUUID()}.pdf`, new Blob(['documento fictício'], { type: 'application/pdf' }), { contentType: 'application/pdf' });
     expect(uploadError).toBeNull();
