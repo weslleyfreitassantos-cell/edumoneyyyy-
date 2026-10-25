@@ -137,7 +137,7 @@ run_promotion() {
     PROMOTION_TEST_DATABASE_NAME="$database_name" \
     PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
     PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
-    SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
+    PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
     SOURCE_ROOT="$fixture" \
     TARGET_VERSION="$target_version" \
     EXPECTED_REMOTE_LAST="$base_version" \
@@ -246,7 +246,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_DATABASE_NAME="$exception_database" \
   PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
   PROMOTION_TEST_SUPABASE_BIN="$repo_root/node_modules/.bin/supabase" \
-  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase-with-timeout" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
   PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
   SOURCE_ROOT="$repo_root" \

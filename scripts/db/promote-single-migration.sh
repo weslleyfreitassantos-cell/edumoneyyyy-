@@ -225,7 +225,9 @@ pgpass_escape() {
 printf '*:*:*:%s:%s\n' "$(pgpass_escape "${database_user}")" "$(pgpass_escape "${database_password}")" > "${pgpass_file}"
 chmod 600 "${pgpass_file}"
 
-cli_binary_override="${SUPABASE_CLI_BINARY_OVERRIDE:-}"
+# Keep this project-specific: the Supabase CLI itself consumes
+# SUPABASE_CLI_BINARY_OVERRIDE to select its native executable.
+cli_binary_override="${PROMOTE_SINGLE_MIGRATION_CLI_BINARY:-}"
 cli_command=()
 if [[ -n "${cli_binary_override}" ]]; then
   if [[ "${cli_binary_override}" == */* || "${cli_binary_override}" == *.exe ]]; then

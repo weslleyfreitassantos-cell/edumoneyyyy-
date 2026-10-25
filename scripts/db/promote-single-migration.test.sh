@@ -92,7 +92,7 @@ unset PRODUCTION_DB_URL_OVERRIDE
 
 PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?passfile=/tmp/secret' expect_failure
 unset PRODUCTION_DB_URL_OVERRIDE
-SUPABASE_CLI_BINARY_OVERRIDE='/fixture/supabase.exe' expect_failure
+PROMOTE_SINGLE_MIGRATION_CLI_BINARY='/fixture/supabase.exe' expect_failure
 
 mkdir -p "$tmp/bin"
 real_sha256sum="$(command -v sha256sum)"
@@ -226,7 +226,7 @@ applied_override="$(PATH="$tmp/bin:$PATH" \
   APPLY=1 \
   BACKUP_GATE=PASS \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
-  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/cli-override" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/cli-override" \
   EXPECTED_CLI_EXECUTABLE="$tmp/bin/cli-override" \
   run_guard)"
 grep -q '^PROMOTION=APPLIED$' <<< "$applied_override"
@@ -303,7 +303,7 @@ applied_windows="$(PATH="$tmp/bin:$PATH" \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   EXPECT_WINDOWS_WORKDIR=1 \
   EXPECT_WSLENV_FORWARDING=1 \
-  SUPABASE_CLI_BINARY_OVERRIDE="$tmp/bin/supabase.exe" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase.exe" \
   EXPECTED_CLI_EXECUTABLE="$tmp/bin/supabase.exe" \
   SUPABASE_CLI_WORKDIR_ROOT="$tmp/cli-root" \
   CLI_WORKDIR_EXPECT_ROOT="$tmp/cli-root" \
