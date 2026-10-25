@@ -5,6 +5,11 @@ set +x
 repo_root="$(git rev-parse --show-toplevel)"
 promoter="$repo_root/scripts/db/promote-single-migration.sh"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-postgres.XXXXXX")"
+real_sha256sum="$(command -v sha256sum)"
+[[ "$real_sha256sum" == /* && -f "$real_sha256sum" && -x "$real_sha256sum" ]] || {
+  echo 'Absolute executable sha256sum not found before installing test mocks' >&2
+  exit 1
+}
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
@@ -235,6 +240,10 @@ else
 fi
 MOCK
 chmod +x "$tmp/exception-bin/sha256sum"
+[[ "$real_sha256sum" != "$tmp/exception-bin/sha256sum" ]] || {
+  echo 'Resolved sha256sum unexpectedly points to the test mock' >&2
+  exit 1
+}
 
 docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c "CREATE DATABASE $exception_database;" >/dev/null
@@ -258,7 +267,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
   PROMOTION_TEST_SUPABASE_BIN="$promotion_test_supabase_bin" \
   PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
-  PROMOTION_TEST_REAL_SHA256SUM="$(command -v sha256sum)" \
+  PROMOTION_TEST_REAL_SHA256SUM="$real_sha256sum" \
   PROMOTION_TEST_BACKUP_FILE="$exception_backup" \
   SOURCE_ROOT="$repo_root" \
   TARGET_VERSION="$exception_version" \
