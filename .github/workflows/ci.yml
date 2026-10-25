@@ -86,6 +86,9 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Typecheck do Playwright Tec Inglês
+        run: npx tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --types node --skipLibCheck --esModuleInterop e2e/tec-english-interactive.spec.ts
+
       - name: Preparar stack mínimo do Supabase para CI
         shell: bash
         run: |
@@ -296,7 +299,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Playwright dos fluxos adaptativos
-        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-v2-guided.spec.ts e2e/adaptive-learning-v4-proof.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts e2e/director-mobile-branding.spec.ts --config=e2e/playwright.config.ts
+        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-v2-guided.spec.ts e2e/adaptive-learning-v4-proof.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts e2e/director-mobile-branding.spec.ts e2e/tec-english-interactive.spec.ts --config=e2e/playwright.config.ts
 
       - name: Anexar artefatos Playwright em falha
         if: failure()
