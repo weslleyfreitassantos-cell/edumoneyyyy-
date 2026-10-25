@@ -105,8 +105,8 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   const financeNav = page.getByRole('navigation', { name: 'Navegação financeira' });
   await financeNav.getByRole('button', { name: 'Contratos' }).click();
   await page.getByLabel('Buscar estudante para contrato').fill(fixture.studentName);
-  const studentSelect = page.getByLabel('Estudante', { exact: true });
-  const matchingStudentOption = page.getByRole('option', { name: fixture.studentName });
+  const studentSelect = page.getByRole('combobox', { name: 'Estudante', exact: true });
+  const matchingStudentOption = studentSelect.getByRole('option', { name: fixture.studentName });
   await expect(matchingStudentOption).toHaveCount(1, { timeout: 30_000 });
   await studentSelect.selectOption(fixture.studentId);
   await expect(studentSelect).toHaveValue(fixture.studentId);
