@@ -14,11 +14,16 @@ trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
 
 eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
+eval "$(sed -n '/^safe_cli_sqlstate()/,/^}/p' "$script")"
+eval "$(sed -n '/^safe_cli_failure_message()/,/^}/p' "$script")"
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
 [[ "$(safe_cli_failure_class 'context deadline exceeded while dialing')" == 'database_connection_timeout' ]]
 [[ "$(safe_cli_failure_class 'no pg_hba.conf entry: no encryption')" == 'database_access_policy' ]]
 [[ "$(safe_cli_failure_class 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:ART')" == 'database_migration_invariant' ]]
 [[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_migration_error' ]]
+[[ "$(safe_cli_sqlstate 'ERROR: 57014: canceling statement due to statement timeout')" == '57014' ]]
+[[ "$(safe_cli_failure_message 'ERROR: 57014: canceling statement due to statement timeout')" == 'statement_timeout_or_query_canceled' ]]
+[[ "$(safe_cli_failure_message 'ERROR: P0001: LEARNING_V10_DEMO_SCOPE_DENIED')" == 'LEARNING_V10_DEMO_SCOPE_DENIED' ]]
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
@@ -48,6 +53,7 @@ run_guard() {
 $target_version}" \
   MOCK_CLI_APPLY_COUNT_FILE="$cli_apply_count" \
   MOCK_PSQL_CALL_COUNT_FILE="$psql_call_count" \
+  PROMOTION_DIAGNOSTIC_DIR="${TEST_DIAGNOSTIC_DIR:-$tmp/diagnostics}" \
   "$script"
 }
 
@@ -133,7 +139,7 @@ else
   [[ "$*" != *'--include-all'* ]] || exit 54
 fi
 if [[ "${MOCK_APPLY_FAILURE:-0}" == '1' && "$*" != *'--dry-run'* ]]; then
-  printf 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:PRIVATE_DETAIL_MUST_NOT_LEAK\n' >&2
+  printf 'ERROR: 23514: check constraint violation for school "Aurora Integral"\nDETAIL: Failing row contains (Samuel Teste, samuel@example.invalid, 73ea3adb-31c4-4e57-8a45-078dbd0d954e); postgresql://private:db-secret@db.invalid:5432/postgres Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZWNyZXQifQ.signature.\n' >&2
   exit 48
 fi
 if [[ "${EXPECT_WSLENV_FORWARDING:-0}" == '1' ]]; then
@@ -220,15 +226,51 @@ if apply_failure="$(PATH="$tmp/bin:$PATH" \
   echo "mock CLI apply failure unexpectedly passed" >&2
   exit 1
 fi
-grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_invariant$' <<< "$apply_failure"
-if [[ "$apply_failure" == *PRIVATE_DETAIL_MUST_NOT_LEAK* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
+grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_error$' <<< "$apply_failure"
+grep -q '^PROMOTION_OUTCOME=UNKNOWN_DO_NOT_RETRY$' <<< "$apply_failure"
+grep -q '^PROMOTION_SQLSTATE=23514$' <<< "$apply_failure"
+grep -q '^PROMOTION_ERROR=check_constraint_violation$' <<< "$apply_failure"
+if [[ "$apply_failure" == *'Aurora Integral'* || "$apply_failure" == *'Samuel Teste'* || "$apply_failure" == *'samuel@example.invalid'* || "$apply_failure" == *'73ea3adb-31c4-4e57-8a45-078dbd0d954e'* || "$apply_failure" == *'db-secret'* || "$apply_failure" == *'eyJhbGciOiJIUzI1NiJ9'* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
   echo "connection credentials or migration details leaked from CLI apply failure" >&2
+  exit 1
+fi
+diagnostic_file="$(sed -n 's/^PROMOTION_DIAGNOSTIC_LOG=//p' <<< "$apply_failure" | tail -n 1)"
+[[ -f "$diagnostic_file" ]] || { echo 'sanitized diagnostic file was not created' >&2; exit 1; }
+if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* || "$(uname -s)" == CYGWIN* ]]; then
+  diagnostic_file_acl="$(icacls.exe "$(cygpath -w "$diagnostic_file")")"
+  diagnostic_dir_acl="$(icacls.exe "$(cygpath -w "$(dirname "$diagnostic_file")")")"
+  current_principal="$(whoami.exe)"
+  [[ "$diagnostic_file_acl" == *"$current_principal"* && "$diagnostic_dir_acl" == *"$current_principal"* ]] || {
+    echo 'Windows diagnostic ACL does not grant the current user access' >&2
+    exit 1
+  }
+  [[ "$(grep -Ec ':(\(F\)|\(OI\)\(CI\)\(F\))' <<< "$diagnostic_file_acl")" == '3' ]] || {
+    echo 'Windows diagnostic file ACL is not restricted to the user and system administrators' >&2
+    exit 1
+  }
+  [[ "$(grep -Ec ':(\(F\)|\(OI\)\(CI\)\(F\))' <<< "$diagnostic_dir_acl")" == '3' ]] || {
+    echo 'Windows diagnostic directory ACL is not restricted to the user and system administrators' >&2
+    exit 1
+  }
+else
+  [[ "$(stat -c %a "$diagnostic_file")" == '600' ]] || { echo 'diagnostic file permissions are not 0600' >&2; exit 1; }
+  [[ "$(stat -c %a "$(dirname "$diagnostic_file")")" == '700' ]] || { echo 'diagnostic directory permissions are not 0700' >&2; exit 1; }
+fi
+grep -Fxq 'sqlstate=23514' "$diagnostic_file" || { echo 'diagnostic did not preserve SQLSTATE' >&2; exit 1; }
+grep -Fxq 'message=check_constraint_violation' "$diagnostic_file" || { echo 'diagnostic did not preserve a safe error summary' >&2; exit 1; }
+grep -Fxq 'statement=not-preserved-by-supabase-cli-output' "$diagnostic_file" || { echo 'diagnostic did not disclose statement availability' >&2; exit 1; }
+if grep -Eq 'Aurora Integral|Samuel Teste|samuel@example.invalid|73ea3adb-31c4-4e57-8a45-078dbd0d954e|db-secret|eyJhbGciOiJIUzI1NiJ9|dummy|fixture_user' "$diagnostic_file"; then
+  echo "protected diagnostic file contains sensitive values" >&2
   exit 1
 fi
 [[ -z "$(find "$tmp/guard-tmp" -mindepth 1 -print -quit)" ]] || {
   echo "temporary promotion credentials were not cleaned up" >&2
   exit 1
 }
+if [[ "${PROMOTER_TEST_FILTER:-}" == 'diagnostics' ]]; then
+  echo 'promoter sanitized diagnostic test passed'
+  exit 0
+fi
 
 mkdir -p "$tmp/override-tmp"
 applied_override="$(PATH="$tmp/bin:$PATH" \

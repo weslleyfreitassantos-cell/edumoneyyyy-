@@ -32,6 +32,158 @@ safe_cli_failure_class() {
   esac
 }
 
+safe_cli_sqlstate() {
+  local output="${1^^}"
+  if [[ "${output}" =~ SQLSTATE[^[:alnum:]]+([0-9A-Z]{5}) ]]; then
+    printf '%s' "${BASH_REMATCH[1]}"
+  elif [[ "${output}" =~ (ERROR|FATAL|PANIC):[[:space:]]*([0-9A-Z]{5}): ]]; then
+    printf '%s' "${BASH_REMATCH[2]}"
+  else
+    printf 'UNKNOWN'
+  fi
+}
+
+safe_cli_failure_message() {
+  local output="${1^^}"
+  local sqlstate
+  sqlstate="$(safe_cli_sqlstate "${1}")"
+  case "${sqlstate}" in
+    23502) printf 'not_null_constraint_violation' ;;
+    23503) printf 'foreign_key_constraint_violation' ;;
+    23505) printf 'unique_constraint_violation' ;;
+    23514) printf 'check_constraint_violation' ;;
+    2BP01) printf 'dependent_objects_still_exist' ;;
+    40001) printf 'serialization_failure' ;;
+    40P01) printf 'deadlock_detected' ;;
+    42P01) printf 'undefined_table' ;;
+    42P07) printf 'duplicate_table' ;;
+    42701) printf 'duplicate_column' ;;
+    42703) printf 'undefined_column' ;;
+    42710) printf 'duplicate_object' ;;
+    42804) printf 'datatype_mismatch' ;;
+    42883) printf 'undefined_function' ;;
+    42501) printf 'insufficient_privilege' ;;
+    22P02) printf 'invalid_text_representation' ;;
+    57014) printf 'statement_timeout_or_query_canceled' ;;
+    P0001)
+      if [[ "${output}" =~ ERROR:[[:space:]]*P0001:[[:space:]]*([A-Z][A-Z0-9]*_[A-Z0-9_]{2,}) ]]; then
+        printf '%s' "${BASH_REMATCH[1]}"
+      else
+        printf 'user_defined_exception'
+      fi
+      ;;
+    *)
+      if [[ "${output}" =~ ERROR:[[:space:]]*([A-Z][A-Z0-9]*_[A-Z0-9_]{2,})(:[^[:space:]]+)? ]]; then
+        printf '%s' "${BASH_REMATCH[1]}"
+      else
+        safe_cli_failure_class "${1}"
+      fi
+      ;;
+  esac
+}
+
+safe_cli_failure_object() {
+  local output="${1^^}"
+  if [[ "${output}" =~ (RELATION|TABLE|CONSTRAINT|INDEX|COLUMN|FUNCTION)[[:space:]]+\"([A-Z_][A-Z0-9_.$]*)\" ]]; then
+    printf '%s:%s' "${BASH_REMATCH[1],,}" "${BASH_REMATCH[2]}"
+  else
+    printf 'unknown'
+  fi
+}
+
+secure_diagnostic_directory() {
+  local path="${1}"
+  local platform="$(uname -s)"
+  if [[ "${platform}" == MINGW* || "${platform}" == MSYS* || "${platform}" == CYGWIN* ]]; then
+    local windows_path principal
+    command -v icacls.exe >/dev/null 2>&1 || return 1
+    command -v whoami.exe >/dev/null 2>&1 || return 1
+    command -v cygpath >/dev/null 2>&1 || return 1
+    windows_path="$(cygpath -w -- "${path}")" || return 1
+    principal="$(whoami.exe)" || return 1
+    icacls.exe "${windows_path}" /inheritance:r /grant:r \
+      "${principal}:(OI)(CI)F" '*S-1-5-18:(OI)(CI)F' '*S-1-5-32-544:(OI)(CI)F' >/dev/null || return 1
+    return 0
+  fi
+
+  chmod 700 -- "${path}" || return 1
+  [[ "$(stat -c '%a' -- "${path}" 2>/dev/null)" == '700' ]]
+}
+
+secure_diagnostic_file() {
+  local path="${1}"
+  local platform="$(uname -s)"
+  if [[ "${platform}" == MINGW* || "${platform}" == MSYS* || "${platform}" == CYGWIN* ]]; then
+    local windows_path principal
+    command -v icacls.exe >/dev/null 2>&1 || return 1
+    command -v whoami.exe >/dev/null 2>&1 || return 1
+    command -v cygpath >/dev/null 2>&1 || return 1
+    windows_path="$(cygpath -w -- "${path}")" || return 1
+    principal="$(whoami.exe)" || return 1
+    icacls.exe "${windows_path}" /inheritance:r /grant:r \
+      "${principal}:F" '*S-1-5-18:F' '*S-1-5-32-544:F' >/dev/null || return 1
+    return 0
+  fi
+
+  chmod 600 -- "${path}" || return 1
+  [[ "$(stat -c '%a' -- "${path}" 2>/dev/null)" == '600' ]]
+}
+
+record_cli_failure() {
+  local phase="${1}"
+  local output="${2}"
+  local diagnostic_dir="${PROMOTION_DIAGNOSTIC_DIR:-${XDG_STATE_HOME:-${HOME:-/tmp}/.local/state}/tecescola/migration-diagnostics}"
+  local record sqlstate failure_class message object
+  sqlstate="$(safe_cli_sqlstate "${output}")"
+  failure_class="$(safe_cli_failure_class "${output}")"
+  message="$(safe_cli_failure_message "${output}")"
+  object="$(safe_cli_failure_object "${output}")"
+
+  (umask 077; mkdir -p -- "${diagnostic_dir}") || {
+    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
+    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
+    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
+    return 0
+  }
+  secure_diagnostic_directory "${diagnostic_dir}" || {
+    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
+    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
+    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
+    return 0
+  }
+  record="$(mktemp "${diagnostic_dir}/${target_version}-${phase}.XXXXXX")" || {
+    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
+    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
+    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
+    return 0
+  }
+  secure_diagnostic_file "${record}" || {
+    rm -f -- "${record}"
+    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
+    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
+    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
+    return 0
+  }
+  {
+    printf 'diagnostic_version=1\n'
+    printf 'timestamp_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    printf 'stage=%s\n' "${phase}"
+    printf 'migration=%s\n' "${target_version}"
+    printf 'source_commit=%s\n' "${expected_source_commit}"
+    printf 'sqlstate=%s\n' "${sqlstate}"
+    printf 'failure_class=%s\n' "${failure_class}"
+    printf 'message=%s\n' "${message}"
+    printf 'object=%s\n' "${object}"
+    printf 'statement=not-preserved-by-supabase-cli-output\n'
+    printf 'raw_output=discarded; only sanitized fields retained\n'
+  } > "${record}"
+
+  printf 'PROMOTION_DIAGNOSTIC_LOG=%s\n' "${record}" >&2
+  printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
+  printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
+  [[ "${object}" == 'unknown' ]] || printf 'PROMOTION_ERROR_OBJECT=%s\n' "${object}" >&2
+}
+
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
 target_version="${TARGET_VERSION:?TARGET_VERSION is required}"
 expected_remote_last="${EXPECTED_REMOTE_LAST:?EXPECTED_REMOTE_LAST is required}"
@@ -435,6 +587,7 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
 else
   printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
   if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
+    record_cli_failure dry-run "${dry_run_output}"
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
   printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
@@ -467,8 +620,10 @@ fi
 authorize_production_write
 
 printf 'PROMOTION_STAGE=APPLY_START\n' >&2
-apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
-  || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+if ! apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)"; then
+  record_cli_failure apply "${apply_output}"
+  abort_after_apply "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
+fi
 printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
