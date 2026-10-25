@@ -124,12 +124,17 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   await expect(invoiceSort).toHaveValue('balance:DESC');
   const invoiceRow = page.getByRole('row').filter({ hasText: fixture.studentName }).first();
   await expect(invoiceRow).toBeVisible({ timeout: 30_000 });
+  const invoiceReference = (await invoiceRow.locator('td').nth(2).innerText()).trim();
   await invoiceRow.getByRole('button', { name: 'Registrar recebimento' }).click();
   const receiptDialog = page.getByRole('dialog', { name: 'Registrar recebimento manual' });
   await receiptDialog.getByLabel('Valor recebido (R$)').fill('25,00');
   await receiptDialog.getByRole('button', { name: 'Registrar recebimento' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Recebimento manual registrado' })).toBeVisible({ timeout: 30_000 });
-  await expect(page.getByRole('row').filter({ hasText: fixture.studentName }).first()).toContainText('Parcial');
+  const updatedInvoiceRow = page.getByRole('row')
+    .filter({ hasText: fixture.studentName })
+    .filter({ hasText: invoiceReference })
+    .first();
+  await expect(updatedInvoiceRow).toContainText('Parcial');
 
   await financeNav.getByRole('button', { name: 'Recebimentos' }).click();
   await expect(page.getByRole('row').filter({ hasText: fixture.studentName }).first()).toContainText('R$ 25,00', { timeout: 30_000 });
