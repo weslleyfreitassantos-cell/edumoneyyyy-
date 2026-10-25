@@ -132,7 +132,7 @@ async function answerInUi(page: Page, exercise: ExerciseRow): Promise<void> {
       await page.getByRole('button', { name: 'Ouvir novamente' }).click();
       await page.getByLabel('Velocidade do áudio').selectOption('0.75');
     }
-    await page.getByLabel(label).fill(exercise.accepted_answers[0]);
+    await page.getByRole('textbox', { name: label, exact: true }).fill(exercise.accepted_answers[0]);
   }
 
   await page.getByRole('button', { name: 'Conferir resposta' }).click();
