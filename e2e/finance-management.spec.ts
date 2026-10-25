@@ -32,6 +32,7 @@ async function createUser(service: DbClient, institutionId: string, role: string
 async function createFinanceFixture(): Promise<{
   credentials: { email: string; password: string };
   studentName: string;
+  studentId: string;
   registrationNumber: string;
   guardianName: string;
   academicYearName: string;
@@ -80,7 +81,7 @@ async function createFinanceFixture(): Promise<{
     student_id: studentRow.id, class_id: schoolClass.id, academic_year_id: academicYear.id, status: 'active', active: true,
   });
 
-  return { credentials: { email: director.email, password: director.password }, studentName, registrationNumber, guardianName, academicYearName, className };
+  return { credentials: { email: director.email, password: director.password }, studentName, studentId: studentRow.id as string, registrationNumber, guardianName, academicYearName, className };
 }
 
 async function login(page: Page, credentials: { email: string; password: string }): Promise<void> {
@@ -104,8 +105,11 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   const financeNav = page.getByRole('navigation', { name: 'Navegação financeira' });
   await financeNav.getByRole('button', { name: 'Contratos' }).click();
   await page.getByLabel('Buscar estudante para contrato').fill(fixture.studentName);
-  await expect(page.getByRole('option', { name: new RegExp(fixture.studentName) })).toBeVisible({ timeout: 30_000 });
-  await page.getByLabel('Estudante', { exact: true }).selectOption({ label: `${fixture.studentName} · ${fixture.registrationNumber}` });
+  const studentSelect = page.getByLabel('Estudante', { exact: true });
+  const matchingStudentOption = studentSelect.locator('option').filter({ hasText: `${fixture.studentName} · ${fixture.registrationNumber}` });
+  await expect(matchingStudentOption).toHaveCount(1, { timeout: 30_000 });
+  await studentSelect.selectOption({ label: `${fixture.studentName} · ${fixture.registrationNumber}` });
+  await expect(studentSelect).toHaveValue(fixture.studentId);
   await page.getByLabel('Responsável financeiro', { exact: true }).selectOption({ label: fixture.guardianName });
   await page.getByLabel('Ano letivo', { exact: true }).selectOption({ label: fixture.academicYearName });
   await page.getByLabel('Matrícula (opcional)', { exact: true }).selectOption({ label: `${fixture.className} · ${fixture.academicYearName}` });
