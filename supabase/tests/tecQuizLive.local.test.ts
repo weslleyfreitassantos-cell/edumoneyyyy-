@@ -243,9 +243,6 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(firstAnswer.error).toBeNull();
     expect(repeatedAnswer.data).toMatchObject({ accepted: true, already_submitted: true });
     expect(wrongAnswer.error).toBeNull();
-    const storedAnswers = await service.from('tec_quiz_answers').select('id').eq('game_id', gameId).eq('question_index', 1);
-    expect(storedAnswers.error).toBeNull();
-    expect(storedAnswers.data).toHaveLength(2);
     const revealed = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
     expect(revealed.data.status).toBe('INTERMISSION');
     const afterReveal = await studentOne.client.rpc('tec_quiz_state_v1', { p_game_id: gameId });
@@ -253,6 +250,9 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     expect(afterReveal.data.my_answer).toMatchObject({ submitted: true, is_correct: true });
     expect(afterReveal.data.leaderboard).toHaveLength(2);
     expect(afterReveal.data.leaderboard.every((entry: { score: number | null }) => typeof entry.score === 'number')).toBe(true);
+    const revealedScores = afterReveal.data.leaderboard as Array<{ score: number; correct_count: number }>;
+    expect(revealedScores.filter((entry) => entry.score >= 500 && entry.score <= 750 && entry.correct_count === 1)).toHaveLength(1);
+    expect(revealedScores.filter((entry) => entry.score === 0 && entry.correct_count === 0)).toHaveLength(1);
 
     for (const questionIndex of [2, 3]) {
       const next = await teacher.client.rpc('tec_quiz_advance_v1', { p_game_id: gameId });
