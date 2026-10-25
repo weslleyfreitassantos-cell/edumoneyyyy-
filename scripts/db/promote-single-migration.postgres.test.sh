@@ -235,6 +235,8 @@ cat > "$tmp/exception-bin/sha256sum" <<'MOCK'
 set -euo pipefail
 if [[ -n "${PROMOTION_TEST_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$PROMOTION_TEST_BACKUP_FILE" ]]; then
   printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
+elif [[ "$#" == '1' && -n "${PROMOTION_TEST_MIGRATION_RAW_FILE:-}" && "$1" == "$PROMOTION_TEST_MIGRATION_RAW_FILE" ]]; then
+  printf '%s  %s\n' "${PROMOTION_TEST_MIGRATION_RAW_SHA256:?}" "$1"
 elif [[ "$#" == '0' && -n "${PROMOTION_TEST_MIGRATION_SHA256:-}" ]]; then
   cat >/dev/null
   printf '%s  -\n' "$PROMOTION_TEST_MIGRATION_SHA256"
@@ -344,6 +346,8 @@ fast_delivery_output="$(PATH="$tmp/fast-delivery-exception-bin:$tmp/bin:$PATH" \
   PROMOTION_TEST_REAL_SHA256SUM="$real_sha256sum" \
   PROMOTION_TEST_BACKUP_FILE="$fast_delivery_backup" \
   PROMOTION_TEST_MIGRATION_SHA256="$fast_delivery_hash" \
+  PROMOTION_TEST_MIGRATION_RAW_FILE="$(find "$fast_delivery_fixture/supabase/migrations" -maxdepth 1 -type f -name "${fast_delivery_version}_*.sql" -print -quit)" \
+  PROMOTION_TEST_MIGRATION_RAW_SHA256="$fast_delivery_approved_hash" \
   SOURCE_ROOT="$fast_delivery_fixture" \
   TARGET_VERSION="$fast_delivery_version" \
   EXPECTED_REMOTE_LAST="$fast_delivery_base_version" \
