@@ -303,12 +303,11 @@ englishDescribe('Tec Inglês interactive v1', () => {
       await expect(page.getByRole('heading', { name: /2\. Apresente-se/ })).toBeVisible();
 
       await page.getByRole('button', { name: 'Começar próxima lição' }).click();
+      await expect(page.getByText('Como dizer “Qual é o seu nome?” em inglês?')).toBeVisible();
       await page.getByRole('button', { name: 'Começar os desafios' }).click();
-      await page.getByRole('button', { name: /Good night, class\./ }).click();
+      await page.getByRole('button', { name: /What is your name\?/ }).click();
       await page.getByRole('button', { name: 'Conferir resposta' }).click();
-      await page.getByRole('button', { name: 'Tentar novamente' }).click();
-      await page.getByRole('button', { name: /Good morning, class\./ }).click();
-      await page.getByRole('button', { name: 'Conferir resposta' }).click();
+      await expect(page.getByText('Muito bem! Você acertou.')).toBeVisible();
       await page.getByRole('button', { name: 'Próximo desafio' }).click();
       await page.getByRole('button', { name: 'Sair da lição' }).click();
       await expect(page.getByRole('button', { name: 'Continuar de onde parei' })).toBeVisible();
