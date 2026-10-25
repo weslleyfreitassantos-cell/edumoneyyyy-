@@ -80,18 +80,44 @@ export interface PsychologyProfessionalCandidate {
 }
 
 export interface PsychologyStudentCandidate {
-  student_id: string;
   profile_id: string;
   full_name: string;
-  registration_number: string | null;
-  assigned: boolean;
-  assigned_professionals: Array<{ profile_id: string; full_name: string }>;
-  authorization_status: 'ACTIVE' | 'REVOKED' | null;
+  registrations: Array<{
+    student_id: string;
+    registration_number: string | null;
+    assigned: boolean;
+    assigned_professionals: Array<{ profile_id: string; full_name: string }>;
+    authorization_status: 'ACTIVE' | 'REVOKED' | null;
+    enrollments: Array<{
+      class_id: string;
+      class_name: string;
+      grade_level: string | null;
+      academic_year_id: string;
+      academic_year_name: string;
+    }>;
+  }>;
 }
 
 export interface PsychologyManagementCandidates {
   professionals: PsychologyProfessionalCandidate[];
   students: PsychologyStudentCandidate[];
+  page: number;
+  page_size: number;
+  total: number;
+  total_pages: number;
+  filters: {
+    classes: Array<{ id: string; name: string; grade_level: string | null; academic_year_name: string }>;
+    grades: string[];
+  };
+}
+
+export interface PsychologyManagementCandidateQuery {
+  search?: string;
+  classId?: string;
+  gradeLevel?: string;
+  assignmentStatus?: 'ALL' | 'ASSIGNED' | 'UNASSIGNED';
+  page?: number;
+  pageSize?: number;
 }
 
 export interface PsychologyAuthorizationTarget {
@@ -202,9 +228,15 @@ export const psychologyService = {
     });
   },
 
-  listManagementCandidates(institutionId: string) {
-    return rpc<PsychologyManagementCandidates>('psychology_list_management_candidates', {
+  listManagementCandidates(institutionId: string, query: PsychologyManagementCandidateQuery = {}) {
+    return rpc<PsychologyManagementCandidates>('psychology_search_management_candidates', {
       target_institution_id: institutionId,
+      search_text: query.search?.trim() || null,
+      class_filter_id: query.classId || null,
+      grade_filter: query.gradeLevel || null,
+      assignment_filter: query.assignmentStatus ?? 'ALL',
+      page_number: query.page ?? 1,
+      page_size: query.pageSize ?? 25,
     });
   },
 
