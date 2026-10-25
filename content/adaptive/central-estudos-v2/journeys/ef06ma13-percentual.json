@@ -6,7 +6,7 @@
   "grade": 6,
   "officialSkillCode": "EF06MA13",
   "skill": "MATH_PERCENT_OF_QUANTITY",
-  "version": "central-estudos-v2-candidate-2026-10-25.1",
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
   "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
   "publicationStatus": "STAGING",
@@ -74,9 +74,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "EASY",
       "statement": "Uma caixa tem 40 lápis. Quantos lápis correspondem a 25% do total?",
-      "options": ["5 lápis", "10 lápis", "25 lápis", "30 lápis"],
+      "options": [
+        "5 lápis",
+        "10 lápis",
+        "25 lápis",
+        "30 lápis"
+      ],
       "correctAnswer": "10 lápis",
-      "calculation": { "operation": "PERCENT_OF", "base": 40, "percent": 25, "expectedNumeric": 10 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 40,
+        "percent": 25,
+        "expectedNumeric": 10
+      },
       "explanation": "25% é um quarto; 40 ÷ 4 = 10.",
       "misconception": "Confundir a taxa 25 com a quantidade de lápis ou calcular 25% como 25 unidades."
     },
@@ -86,9 +96,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "EASY",
       "statement": "Uma turma arrecadou R$ 90. Qual valor corresponde a 10% dessa quantia?",
-      "options": ["R$ 9", "R$ 10", "R$ 80", "R$ 90"],
+      "options": [
+        "R$ 9",
+        "R$ 10",
+        "R$ 80",
+        "R$ 90"
+      ],
       "correctAnswer": "R$ 9",
-      "calculation": { "operation": "PERCENT_OF", "base": 90, "percent": 10, "expectedNumeric": 9 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 90,
+        "percent": 10,
+        "expectedNumeric": 9
+      },
       "explanation": "10% é a décima parte da base: 90 ÷ 10 = 9.",
       "misconception": "Tratar a taxa percentual como o valor final."
     },
@@ -98,9 +118,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "MEDIUM",
       "statement": "Uma conta de R$ 150 recebeu desconto de 20%. Qual será o preço depois do desconto?",
-      "options": ["R$ 30", "R$ 120", "R$ 130", "R$ 180"],
+      "options": [
+        "R$ 30",
+        "R$ 120",
+        "R$ 130",
+        "R$ 180"
+      ],
       "correctAnswer": "R$ 120",
-      "calculation": { "operation": "PRICE_AFTER_DISCOUNT", "base": 150, "percent": 20, "expectedNumeric": 120 },
+      "calculation": {
+        "operation": "PRICE_AFTER_DISCOUNT",
+        "base": 150,
+        "percent": 20,
+        "expectedNumeric": 120
+      },
       "explanation": "20% de 150 é 30; subtraindo o desconto da base: 150 − 30 = 120.",
       "misconception": "Responder com o valor do desconto em vez do preço final."
     },
@@ -110,9 +140,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "MEDIUM",
       "statement": "Em uma pesquisa com 200 estudantes, 30% escolheram uma atividade. Quantos estudantes fizeram essa escolha?",
-      "options": ["30", "60", "170", "230"],
+      "options": [
+        "30",
+        "60",
+        "170",
+        "230"
+      ],
       "correctAnswer": "60",
-      "calculation": { "operation": "PERCENT_OF", "base": 200, "percent": 30, "expectedNumeric": 60 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 200,
+        "percent": 30,
+        "expectedNumeric": 60
+      },
       "explanation": "10% de 200 é 20; três grupos de 10% correspondem a 30%, então 3 × 20 = 60.",
       "misconception": "Ler 30% como 30 estudantes sem considerar o tamanho do grupo."
     },
@@ -122,9 +162,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "EASY",
       "statement": "Qual estratégia encontra 5% de 80 sem regra de três?",
-      "options": ["Calcular 10% de 80 e dividir o resultado por 2", "Somar 5 a 80", "Dividir 80 por 5 e chamar o resultado de 5%", "Subtrair 5 de 80"],
+      "options": [
+        "Calcular 10% de 80 e dividir o resultado por 2",
+        "Somar 5 a 80",
+        "Dividir 80 por 5 e chamar o resultado de 5%",
+        "Subtrair 5 de 80"
+      ],
       "correctAnswer": "Calcular 10% de 80 e dividir o resultado por 2",
-      "calculation": { "operation": "PERCENT_OF", "base": 80, "percent": 5, "expectedNumeric": 4 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 80,
+        "percent": 5,
+        "expectedNumeric": 4
+      },
       "explanation": "10% de 80 é 8; metade de 8 é 4, portanto 5% de 80 é 4.",
       "misconception": "Usar o número da taxa como se fosse uma operação direta sobre o total."
     },
@@ -134,9 +184,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "MEDIUM",
       "statement": "Um livro custa R$ 120 e tem desconto de 15%. Qual é o valor do desconto?",
-      "options": ["R$ 15", "R$ 18", "R$ 102", "R$ 105"],
+      "options": [
+        "R$ 15",
+        "R$ 18",
+        "R$ 102",
+        "R$ 105"
+      ],
       "correctAnswer": "R$ 18",
-      "calculation": { "operation": "PERCENT_OF", "base": 120, "percent": 15, "expectedNumeric": 18 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 120,
+        "percent": 15,
+        "expectedNumeric": 18
+      },
       "explanation": "10% de 120 é 12 e 5% é 6; juntos, 15% correspondem a R$ 18.",
       "misconception": "Confundir desconto com preço final."
     },
@@ -146,9 +206,19 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "MEDIUM",
       "statement": "Uma escola tem 250 mudas e 40% serão plantadas no primeiro dia. Quantas mudas serão plantadas?",
-      "options": ["40", "100", "210", "290"],
+      "options": [
+        "40",
+        "100",
+        "210",
+        "290"
+      ],
       "correctAnswer": "100",
-      "calculation": { "operation": "PERCENT_OF", "base": 250, "percent": 40, "expectedNumeric": 100 },
+      "calculation": {
+        "operation": "PERCENT_OF",
+        "base": 250,
+        "percent": 40,
+        "expectedNumeric": 100
+      },
       "explanation": "10% de 250 é 25; quatro grupos de 25 formam 40%, isto é, 100 mudas.",
       "misconception": "Tomar o valor numérico 40 como a quantidade de mudas."
     },
@@ -158,35 +228,23 @@
       "interactionType": "SINGLE_CHOICE",
       "difficulty": "MEDIUM",
       "statement": "Uma mochila de R$ 80 recebeu aumento de 10%. Qual é o novo preço?",
-      "options": ["R$ 8", "R$ 70", "R$ 88", "R$ 90"],
+      "options": [
+        "R$ 8",
+        "R$ 70",
+        "R$ 88",
+        "R$ 90"
+      ],
       "correctAnswer": "R$ 88",
-      "calculation": { "operation": "PRICE_AFTER_INCREASE", "base": 80, "percent": 10, "expectedNumeric": 88 },
+      "calculation": {
+        "operation": "PRICE_AFTER_INCREASE",
+        "base": 80,
+        "percent": 10,
+        "expectedNumeric": 88
+      },
       "explanation": "10% de 80 é R$ 8. No aumento, somamos a variação à base: 80 + 8 = 88.",
       "misconception": "Responder apenas com o valor do aumento."
-    },
-    {
-      "id": "cev2-ef06ma13-review-09",
-      "purpose": "REVIEW",
-      "interactionType": "SINGLE_CHOICE",
-      "difficulty": "EASY",
-      "statement": "Em uma atividade, 50% de 46 participantes escolheram desenho. Quantos participantes escolheram desenho?",
-      "options": ["23", "46", "50", "92"],
-      "correctAnswer": "23",
-      "calculation": { "operation": "PERCENT_OF", "base": 46, "percent": 50, "expectedNumeric": 23 },
-      "explanation": "50% corresponde à metade: 46 ÷ 2 = 23.",
-      "misconception": "Confundir a porcentagem com a quantidade da parte."
-    },
-    {
-      "id": "cev2-ef06ma13-practice-10",
-      "purpose": "PRACTICE",
-      "interactionType": "SINGLE_CHOICE",
-      "difficulty": "MEDIUM",
-      "statement": "Uma campanha arrecadou R$ 200. Quanto corresponde a 15% dessa quantia?",
-      "options": ["R$ 15", "R$ 20", "R$ 30", "R$ 185"],
-      "correctAnswer": "R$ 30",
-      "calculation": { "operation": "PERCENT_OF", "base": 200, "percent": 15, "expectedNumeric": 30 },
-      "explanation": "10% de 200 é 20 e 5% é 10; portanto, 15% de 200 é 20 + 10 = R$ 30.",
-      "misconception": "Ler 15% como 15 unidades sem relacionar a taxa ao total."
     }
-  ]
+  ],
+  "unitCode": "MAT_NUMEROS_RACIONAIS",
+  "unitTitle": "Números racionais e proporcionalidade"
 }

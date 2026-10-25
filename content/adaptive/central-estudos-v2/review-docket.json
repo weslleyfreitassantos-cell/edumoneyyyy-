@@ -1,27 +1,275 @@
 {
-  "docketVersion": "central-estudos-v2-review-docket-v1",
-  "candidate": "CEV2_EF06MA13_PERCENTUAL_01",
-  "contentVersion": "central-estudos-v2-candidate-2026-10-25.1",
-  "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ma13-percentual.json",
-  "contentSha256": "23c79915a6f9b3658ad98c0bfa3a9a5ccd5c7edee0371941e04555431ca32996",
-  "technicalValidation": "PASS",
-  "humanReview": {
-    "status": "PEDAGOGICAL_REVIEW_PENDING",
-    "reviewer": null,
-    "reviewedAt": null,
-    "notes": null,
-    "criteria": {
-      "officialAlignment": "PENDING",
-      "mathematicalAccuracy": "PENDING",
-      "ageAndGradeSuitability": "PENDING",
-      "clarityAndAccessibility": "PENDING",
-      "answerQuality": "PENDING",
-      "culturalAndContextualSuitability": "PENDING"
+  "docketVersion": "central-estudos-v2-review-docket-v2",
+  "items": [
+    {
+      "candidate": "CEV2_EF06CI01_MISTURAS_01",
+      "title": "Misturas homogêneas e heterogêneas",
+      "subject": "SCIENCE",
+      "grade": 6,
+      "officialCode": "EF06CI01",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ci01-01.json",
+      "contentSha256": "43ff9e8b544d12edc791a0243feb3154a58320722b69b7dda44571617f611137",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06CI02_TRANSFORMACOES_01",
+      "title": "Evidências de transformações químicas",
+      "subject": "SCIENCE",
+      "grade": 6,
+      "officialCode": "EF06CI02",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ci02-01.json",
+      "contentSha256": "9a4d01c1d90930b19bfa02129a04d0cb23c2fb8cc822e61103299def4b71ceb5",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06CI03_SEPARACAO_01",
+      "title": "Escolher métodos de separação",
+      "subject": "SCIENCE",
+      "grade": 6,
+      "officialCode": "EF06CI03",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ci03-01.json",
+      "contentSha256": "522c556d8bd9be577af6a643feb788f007042c75920793cd9aec80d8844e5686",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06LP02_NOTICIA_01",
+      "title": "Notícia e outros gêneros jornalísticos",
+      "subject": "PORTUGUESE",
+      "grade": 6,
+      "officialCode": "EF06LP02",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06lp02-01.json",
+      "contentSha256": "8a28f732297eb146773df2255f8fc45cec3097efa322ed564e694f7384fe258d",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06LP03_SERIE_SINONIMICA_01",
+      "title": "Escolha de palavras e sentidos",
+      "subject": "PORTUGUESE",
+      "grade": 6,
+      "officialCode": "EF06LP03",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06lp03-01.json",
+      "contentSha256": "df240d5f6469043404813a2b90bf957afa93e826972012d32316b43eb5bdea47",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06LP05_MODOS_VERBAIS_01",
+      "title": "Modos verbais e intenção comunicativa",
+      "subject": "PORTUGUESE",
+      "grade": 6,
+      "officialCode": "EF06LP05",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06lp05-01.json",
+      "contentSha256": "92b3094aa8496ec3289713401a59ea4a6d3db95dee4a1a821ba85f6a888ce30c",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06MA03_OPERACOES_01",
+      "title": "Estratégias com números naturais",
+      "subject": "MATHEMATICS",
+      "grade": 6,
+      "officialCode": "EF06MA03",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ma03-01.json",
+      "contentSha256": "ba11f423641306dead1fcc544d2150a27df21482fa28da62b3feb48a51c98edc",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06MA07_FRACOES_01",
+      "title": "Frações: partes, comparação e equivalência",
+      "subject": "MATHEMATICS",
+      "grade": 6,
+      "officialCode": "EF06MA07",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ma07-01.json",
+      "contentSha256": "6f256ad553188da985a649f89ea62e095e674ab3eab06522cee7931ff76ba873",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
+    },
+    {
+      "candidate": "CEV2_EF06MA13_PERCENTUAL_01",
+      "title": "Percentuais sem regra de três",
+      "subject": "MATHEMATICS",
+      "grade": 6,
+      "officialCode": "EF06MA13",
+      "contentVersion": "central-estudos-v2-candidate-2026-10-25.2",
+      "sourcePath": "content/adaptive/central-estudos-v2/journeys/ef06ma13-percentual.json",
+      "contentSha256": "04574b6b35d9fc06fe2d26109a60a7ee932d5b3dd64938c71539375d7ef14432",
+      "technicalValidation": "PASS",
+      "humanReview": {
+        "status": "PEDAGOGICAL_REVIEW_PENDING",
+        "reviewer": null,
+        "reviewedAt": null,
+        "notes": null,
+        "criteria": {
+          "officialAlignment": "PENDING",
+          "pedagogicalAccuracy": "PENDING",
+          "ageAndGradeSuitability": "PENDING",
+          "clarityAndAccessibility": "PENDING",
+          "answerQuality": "PENDING",
+          "culturalAndContextualSuitability": "PENDING"
+        }
+      },
+      "publication": {
+        "status": "NOT_PUBLISHED",
+        "history": []
+      },
+      "validationIssues": []
     }
-  },
-  "publication": {
-    "status": "NOT_PUBLISHED",
-    "history": []
-  },
-  "validationIssues": []
+  ]
 }

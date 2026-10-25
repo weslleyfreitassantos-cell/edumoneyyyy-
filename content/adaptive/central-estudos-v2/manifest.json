@@ -1,12 +1,14 @@
 {
-  "packVersion": "central-estudos-v2-candidate-2026-10-25.1",
+  "packVersion": "central-estudos-v2-candidate-2026-10-25.2",
   "status": "STAGING",
   "publicationStatus": "NOT_PUBLISHED",
   "humanPedagogicalReview": "PENDING",
   "bnccAlignment": "CANDIDATE_MATCH_FROM_OFFICIAL_CATALOG; HUMAN_REVIEW_REQUIRED",
   "sourceCatalog": "content/bncc/official/catalog-2018.json",
   "subjects": [
-    "MATHEMATICS"
+    "MATHEMATICS",
+    "PORTUGUESE",
+    "SCIENCE"
   ],
   "gradeScopes": [
     {
@@ -14,5 +16,8 @@
       "grade": 6
     }
   ],
-  "policy": "Automated validation never approves, publishes, or attributes pedagogy to a human reviewer."
+  "policy": "Automated validation never approves, publishes, or attributes pedagogy to a human reviewer.",
+  "candidateCount": 9,
+  "lessonCount": 9,
+  "questionCount": 48
 }
