@@ -125,6 +125,10 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
     subjectId = (await insertOne(service, 'subjects', {
       institution_id: institutionId, name: `Quiz Subject ${suffix}`, code: `QZ-${suffix}`, active: true,
     })).id;
+    await insertOne(service, 'class_curriculum_items', {
+      institution_id: institutionId, class_id: classId, subject_id: subjectId,
+      weekly_lessons: 1, lesson_duration_minutes: 45, active: true,
+    });
     await insertOne(service, 'subject_offerings', {
       class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true,
     });
@@ -155,6 +159,7 @@ localDescribe('Tec Quiz Live V1 against disposable local Supabase', () => {
       await service.from('learning_activities').delete().eq('id', activityId);
     }
     if (classId || foreignClassId) await service.from('subject_offerings').delete().in('class_id', [classId, foreignClassId].filter(Boolean));
+    if (classId) await service.from('class_curriculum_items').delete().eq('class_id', classId);
     if (studentIds.length) await service.from('enrollments').delete().in('student_id', studentIds);
     if (studentIds.length) await service.from('students').delete().in('id', studentIds);
     if (classId || foreignClassId) await service.from('classes').delete().in('id', [classId, foreignClassId].filter(Boolean));
