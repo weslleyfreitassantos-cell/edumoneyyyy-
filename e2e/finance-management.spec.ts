@@ -106,9 +106,9 @@ test('direção cria contrato, registra recebimento parcial e exporta relatório
   await financeNav.getByRole('button', { name: 'Contratos' }).click();
   await page.getByLabel('Buscar estudante para contrato').fill(fixture.studentName);
   const studentSelect = page.getByLabel('Estudante', { exact: true });
-  const matchingStudentOption = studentSelect.locator('option').filter({ hasText: `${fixture.studentName} · ${fixture.registrationNumber}` });
+  const matchingStudentOption = page.getByRole('option', { name: fixture.studentName });
   await expect(matchingStudentOption).toHaveCount(1, { timeout: 30_000 });
-  await studentSelect.selectOption({ label: `${fixture.studentName} · ${fixture.registrationNumber}` });
+  await studentSelect.selectOption(fixture.studentId);
   await expect(studentSelect).toHaveValue(fixture.studentId);
   await page.getByLabel('Responsável financeiro', { exact: true }).selectOption({ label: fixture.guardianName });
   await page.getByLabel('Ano letivo', { exact: true }).selectOption({ label: fixture.academicYearName });
