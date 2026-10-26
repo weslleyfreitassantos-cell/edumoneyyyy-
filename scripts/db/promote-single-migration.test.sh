@@ -12,6 +12,8 @@ target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
+test_python="$(command -v python || command -v python3)"
+"$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 
 eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
@@ -41,6 +43,8 @@ run_guard() {
   TMPDIR="$tmp/guard-tmp" \
   REAL_SHA256SUM="${real_sha256sum:-}" \
   REMOTE_LEDGER_FILE="${TEST_REMOTE_LEDGER_FILE:-$ledger}" \
+  PYTHON3_BIN="${PROMOTION_TEST_PYTHON3_BIN:-python3}" \
+  BACKUP_GATE="${TEST_BACKUP_GATE:-${BACKUP_GATE:-PASS}}" \
   DRY_RUN_OUTPUT_FILE="${TEST_DRY_RUN_OUTPUT_FILE:-${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}}" \
   EXPECT_INCLUDE_ALL="${TEST_EXPECT_INCLUDE_ALL:-1}" \
   MOCK_AFTER_LEDGER_FILE="$after_ledger" \
@@ -347,6 +351,7 @@ exception_output="$(PATH="$tmp/bin:$PATH" \
   MOCK_BACKUP_FILE="$exception_backup" \
   APPLY=1 \
   BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=399 \
   BACKUP_EXCEPTION_RELEASE_SHA=36979b8adc4408bf9eaccdf77f742904fba152fc \
   BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
   BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
@@ -364,7 +369,7 @@ exception_output="$(PATH="$tmp/bin:$PATH" \
 $exception_version" \
   run_guard)"
 grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
-grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_399_ACCEPTED$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
@@ -385,6 +390,7 @@ expect_exception_rejected() {
     REAL_SHA256SUM="$real_sha256sum" \
     MOCK_BACKUP_FILE="${TEST_MOCK_BACKUP_FILE-$exception_backup}" \
     APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_PR=399 \
     BACKUP_EXCEPTION_RELEASE_SHA="${TEST_EXCEPTION_RELEASE_SHA-36979b8adc4408bf9eaccdf77f742904fba152fc}" \
     BACKUP_EXCEPTION_WINDOWS_PATH="${TEST_EXCEPTION_WINDOWS_PATH-C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz}" \
     BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_EXCEPTION_BACKUP_SHA256-b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0}" \
@@ -425,6 +431,126 @@ unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RES
   TEST_EXCEPTION_STORAGE_STATUS \
   TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
   TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
+
+# PR #409 local-only proof: validate a recent, intact disposable bundle and a
+# matching successful restore receipt during dry-run. No production write token.
+local_backup="$tmp/psychology-local-backup-fixture.tar.gz"
+local_receipt="$tmp/psychology-local-restore.receipt"
+"$test_python" - "$local_backup" "$local_receipt" <<'PY'
+import datetime, hashlib, io, sys, tarfile
+from pathlib import Path
+
+def make_tar(entries):
+    output = io.BytesIO()
+    with tarfile.open(fileobj=output, mode="w:gz") as archive:
+        for name, content in entries.items():
+            info = tarfile.TarInfo(name)
+            info.size = len(content)
+            archive.addfile(info, io.BytesIO(content))
+    return output.getvalue()
+
+now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+storage = make_tar({"bucket/sample.bin": b"sample"})
+components = {
+    "globals.sql": b"-- fixture\n",
+    "postgres.dump": b"database fixture",
+    "supabase-meta.dump": b"metadata fixture",
+    "storage.tar.gz": storage,
+    "config.tar.gz": b"encrypted config fixture",
+}
+checksums = "".join(f"{hashlib.sha256(body).hexdigest()}  {name}\n" for name, body in components.items())
+created = now.isoformat().replace("+00:00", "Z")
+bundle = make_tar({**components, "MANIFEST.txt": f"created_utc={created}\n".encode(), "SHA256SUMS": checksums.encode()})
+Path(sys.argv[1]).write_bytes(bundle)
+receipt = [
+    "format=tec-school-local-restore-proof-v1",
+    "status=PASS",
+    f"backup_sha256={hashlib.sha256(bundle).hexdigest()}",
+    f"backup_bytes={len(bundle)}",
+    f"verified_at_utc={created}",
+    "restore_mode=isolated-postgres",
+    "database_cleanup=dropped",
+]
+Path(sys.argv[2]).write_text("\n".join(receipt) + "\n", encoding="utf-8")
+PY
+
+psychology_version=20261026000100
+psychology_file="$repo_root/supabase/migrations/${psychology_version}_psychology_institution_gate.sql"
+[[ -f "$psychology_file" ]]
+psychology_hash="$(sed 's/\r$//' "$psychology_file" | "$real_sha256sum" | awk '{print $1}')"
+local_backup_sha="$("$real_sha256sum" "$local_backup" | awk '{print $1}')"
+local_ledger="$tmp/pr409-local-ledger"
+local_dry_run="$tmp/pr409-local-dry-run"
+printf '20261025000600\n' > "$local_ledger"
+printf 'Would push migration %s\n' "$psychology_version" > "$local_dry_run"
+local_output="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" \
+  TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" \
+  run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR409_LOCAL_ONLY' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_PR=409' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000100' <<< "$local_output"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY' <<< "$local_output"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output"
+! grep -q '20261025000700' <<< "$local_output"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+printf 'Would push migration %s\nWould push migration 20261025000700\n' "$psychology_version" > "$tmp/pr409-with-007"
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$tmp/pr409-with-007" run_guard >/dev/null 2>&1; then
+  echo 'precheck unexpectedly allowed the extra migration 20261025000700' >&2
+  exit 1
+fi
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=PASS \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" run_guard >/dev/null 2>&1; then
+  echo 'PR #409 exception unexpectedly accepted offsite PASS' >&2
+  exit 1
+fi
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" \
+  APPLY=1 CONFIRM_PRODUCTION_WRITE= ACCEPT_NO_OFFSITE_COPY= run_guard >/dev/null 2>&1; then
+  echo 'PR #409 local-only exception unexpectedly wrote without specific authorization' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR409_LOCAL_ONLY=PASS'
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
