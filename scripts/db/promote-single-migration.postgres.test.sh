@@ -12,14 +12,18 @@ real_sha256sum="$(command -v sha256sum)"
 }
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
+executor_admin=promoter_cli_executor_admin_ci
 
 cleanup() {
+  docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+    -c 'ALTER ROLE postgres SUPERUSER;' >/dev/null 2>&1 || true
   for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_cli_executor_007_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
   docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
-    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci;' >/dev/null 2>&1 || true
+    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci; DROP ROLE IF EXISTS promoter_cli_executor_admin_ci;' \
+    >/dev/null 2>&1 || true
   rm -rf -- "$tmp"
 }
 trap cleanup EXIT
@@ -347,11 +351,13 @@ cp "$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_pub
   "$executor_fixture/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
 
 docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE ROLE $executor_admin LOGIN SUPERUSER;" >/dev/null
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
   -c "CREATE ROLE $executor_role LOGIN NOINHERIT PASSWORD '$executor_password';" >/dev/null
-docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
   -c "GRANT postgres TO $executor_role;" >/dev/null
-docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
-  -c "CREATE DATABASE $executor_database;" >/dev/null
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $executor_database OWNER postgres;" >/dev/null
 docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR_STOP=1 \
   -c "CREATE SCHEMA supabase_migrations;
       CREATE TABLE supabase_migrations.schema_migrations (
@@ -365,6 +371,10 @@ docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR
       ALTER TABLE public.learning_central_studies_v2_candidates
         ADD CONSTRAINT learning_central_studies_v2_candidates_publication_status_check
         CHECK (publication_status IN ('STAGING', 'PUBLISHED'));" >/dev/null
+# Model the possible production arrangement where postgres owns objects but is
+# not a superuser. Keep a disposable admin only to restore CI cleanup.
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c 'ALTER ROLE postgres NOSUPERUSER;' >/dev/null
 
 run_cli_identity_query() {
   local sql="$1"
@@ -411,11 +421,25 @@ if identity["current_user"] != os.environ["EXPECTED_CURRENT_USER"]:
 PY
 }
 
-hook_identity="$(run_cli_identity_query \
-  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity")"
+report_executor_cli_failure() {
+  local command_output="$1"
+  printf 'Supabase CLI executor-context query failed; sanitized diagnostics follow:\n' >&2
+  printf '%s\n' "$command_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+}
+
+if ! hook_identity="$(run_cli_identity_query \
+  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
+  report_executor_cli_failure "$hook_identity"
+  exit 1
+fi
 assert_cli_executor_identity "$hook_identity" postgres
-reset_identity="$(run_cli_identity_query \
-  "RESET ALL; select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity")"
+if ! reset_identity="$(run_cli_identity_query \
+  "RESET ALL; select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
+  report_executor_cli_failure "$reset_identity"
+  exit 1
+fi
 assert_cli_executor_identity "$reset_identity" "$executor_role"
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_ROLE_RESET=PASS'
 
