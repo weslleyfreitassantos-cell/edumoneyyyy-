@@ -838,20 +838,70 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(cannotRemoveAvailabilityBlockWhenDisabled.error?.code).toBe('P0001');
 
-    const hiddenDirectRows = await Promise.all([
-      student.client.from('psychology_appointments').select('id').eq('id', appointmentId),
-      student.client.from('psychology_sessions').select('id').eq('id', sessionId),
-      student.client.from('psychology_messages').select('id').eq('session_id', sessionId),
-      psychologist.client.from('psychology_notes').select('id').eq('session_id', sessionId),
-      psychologist.client.from('psychology_note_versions').select('id').eq('note_id', savedNoteId),
-      psychologist.client.from('psychology_availability_rules').select('id').eq('id', rule.data),
-      psychologist.client.from('psychology_availability_exceptions').select('id').eq('id', availabilityBlockId),
-      student.client.from('psychology_assignments').select('id').eq('student_id', studentRow.id),
-      psychologist.client.from('psychology_professionals').select('profile_id').eq('profile_id', psychologist.id),
-    ]);
-    for (const result of hiddenDirectRows) {
-      expect(result.error).toBeNull();
-      expect(result.data).toEqual([]);
+    const hiddenDirectRowCases = [
+      {
+        table: 'psychology_appointments',
+        profile: 'student',
+        reason: 'the appointment access policy hides records while the institution module is disabled',
+        request: student.client.from('psychology_appointments').select('id').eq('id', appointmentId),
+      },
+      {
+        table: 'psychology_sessions',
+        profile: 'student',
+        reason: 'the session access policy hides records while the institution module is disabled',
+        request: student.client.from('psychology_sessions').select('id').eq('id', sessionId),
+      },
+      {
+        table: 'psychology_messages',
+        profile: 'student',
+        reason: 'the private session policy hides messages while the institution module is disabled',
+        request: student.client.from('psychology_messages').select('id').eq('session_id', sessionId),
+      },
+      {
+        table: 'psychology_notes',
+        profile: 'psychologist',
+        reason: 'the clinical note access policy hides notes while the institution module is disabled',
+        request: psychologist.client.from('psychology_notes').select('id').eq('session_id', sessionId),
+      },
+      {
+        table: 'psychology_note_versions',
+        profile: 'psychologist',
+        reason: 'note-version visibility follows the protected parent note policy',
+        request: psychologist.client.from('psychology_note_versions').select('id').eq('note_id', savedNoteId),
+      },
+      {
+        table: 'psychology_availability_rules',
+        profile: 'psychologist',
+        reason: 'availability is gated by the institution module state',
+        request: psychologist.client.from('psychology_availability_rules').select('id').eq('id', rule.data),
+      },
+      {
+        table: 'psychology_availability_exceptions',
+        profile: 'psychologist',
+        reason: 'availability exceptions are gated by the institution module state',
+        request: psychologist.client.from('psychology_availability_exceptions').select('id').eq('id', availabilityBlockId),
+      },
+      {
+        table: 'psychology_assignments',
+        profile: 'student',
+        reason: 'the assignment policy allows the student branch only while the module is enabled',
+        request: student.client.from('psychology_assignments').select('id').eq('student_id', studentRow.id),
+      },
+      {
+        table: 'psychology_professionals',
+        profile: 'psychologist',
+        reason: 'a professional sees their own row only while the module is enabled',
+        request: psychologist.client.from('psychology_professionals').select('profile_id').eq('profile_id', psychologist.id),
+      },
+    ] as const;
+    const hiddenDirectRows = await Promise.all(hiddenDirectRowCases.map(async (testCase) => ({
+      ...testCase,
+      result: await testCase.request,
+    })));
+    for (const { table, profile, reason, result } of hiddenDirectRows) {
+      const context = `${table} queried as ${profile}: ${reason}`;
+      expect(result.error, context).toBeNull();
+      expect(result.data, context).toEqual([]);
     }
 
     const disabledRealtime = await subscribeToPsychologyMessages(student.client, sessionId);

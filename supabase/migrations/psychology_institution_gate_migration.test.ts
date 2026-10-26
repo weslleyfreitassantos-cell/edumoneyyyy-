@@ -28,9 +28,12 @@ describe('psychology institution gate migration', () => {
   });
 
   it('gates assignments and professional availability while retaining manager configuration access', () => {
-    expect(migration).toMatch(/create policy psychology_assignments_select[\s\S]*?private\.psychology_module_is_enabled\(institution_id\)/);
+    expect(migration).toMatch(/create policy psychology_professionals_select[\s\S]*?public\.psychology_module_enabled\(link\.institution_id\)/);
+    expect(migration).toMatch(/create policy psychology_professional_institutions_select[\s\S]*?public\.psychology_module_enabled\(institution_id\)/);
+    expect(migration).toMatch(/create policy psychology_assignments_select[\s\S]*?public\.psychology_module_enabled\(institution_id\)/);
     expect(migration).toMatch(/create policy psychology_availability_rules_select[\s\S]*?public\.psychology_module_enabled\(psychology_availability_rules\.institution_id\)/);
     expect(migration).toMatch(/create policy psychology_availability_exceptions_select[\s\S]*?public\.psychology_module_enabled\(psychology_availability_exceptions\.institution_id\)/);
     expect(migration).toContain('private.psychology_is_manager(institution_id)');
+    expect(migration).not.toMatch(/create policy psychology_(?:assignments|professionals|professional_institutions)_select[\s\S]*?private\.psychology_module_is_enabled/);
   });
 });

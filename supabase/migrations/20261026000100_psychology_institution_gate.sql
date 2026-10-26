@@ -134,7 +134,7 @@ create policy psychology_professionals_select on public.psychology_professionals
     or (psychology_professionals.profile_id = (select auth.uid())
       and exists (select 1 from public.psychology_professional_institutions link
         where link.professional_profile_id = psychology_professionals.profile_id
-          and private.psychology_module_is_enabled(link.institution_id)
+          and public.psychology_module_enabled(link.institution_id)
           and private.psychology_is_professional(link.institution_id)))
   );
 
@@ -143,7 +143,7 @@ create policy psychology_professional_institutions_select on public.psychology_p
   for select to authenticated using (
     private.psychology_is_manager(institution_id)
     or (professional_profile_id = (select auth.uid())
-      and private.psychology_module_is_enabled(institution_id)
+      and public.psychology_module_enabled(institution_id)
       and private.psychology_is_professional(institution_id))
   );
 
@@ -151,7 +151,7 @@ drop policy if exists psychology_assignments_select on public.psychology_assignm
 create policy psychology_assignments_select on public.psychology_assignments
   for select to authenticated using (
     private.psychology_is_manager(institution_id)
-    or (private.psychology_module_is_enabled(institution_id)
+    or (public.psychology_module_enabled(institution_id)
       and (
         (professional_profile_id = (select auth.uid())
           and private.psychology_professional_has_student_access(institution_id, student_id))
