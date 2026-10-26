@@ -174,6 +174,7 @@ export interface UnifiedUserInviteFormValues {
   crpRegistration?: string;
   crpState?: string;
   currentRole?: string | null;
+  currentInstitutionRoles?: readonly string[];
 }
 
 export type UnifiedUserInviteField =
@@ -242,26 +243,36 @@ export function isUnifiedInviteRole(
 
 export function getAllowedInviteTargets(
   currentRole: string | null | undefined,
+  currentInstitutionRoles: readonly string[] = [],
 ): UnifiedUserInviteRole[] {
   const inviteTargets = currentRole === 'ADMIN'
-    ? ['DIRECTOR', 'PSYCHOLOGIST']
+    ? ['DIRECTOR']
     : currentRole === 'DIRECTOR'
       ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
       : currentRole === 'SECRETARY'
         ? ['TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
         : [];
 
-  return getManageableSchoolUserRoles(currentRole).filter(
+  const allowedTargets = getManageableSchoolUserRoles(currentRole).filter(
     (target): target is UnifiedUserInviteRole =>
       inviteTargets.includes(target as (typeof inviteTargets)[number]),
   );
+
+  const hasSchoolStaffRole = currentRole === 'DIRECTOR'
+    || currentRole === 'SECRETARY'
+    || currentInstitutionRoles.some((role) => role === 'DIRECTOR' || role === 'SECRETARY');
+  if (hasSchoolStaffRole && !allowedTargets.includes('PSYCHOLOGIST')) {
+    allowedTargets.push('PSYCHOLOGIST');
+  }
+  return allowedTargets;
 }
 
 export function canInviteTarget(
   currentRole: string | null | undefined,
   target: UnifiedUserInviteRole,
+  currentInstitutionRoles: readonly string[] = [],
 ): boolean {
-  return getAllowedInviteTargets(currentRole).includes(
+  return getAllowedInviteTargets(currentRole, currentInstitutionRoles).includes(
     target,
   );
 }
@@ -296,7 +307,7 @@ export function buildUnifiedUserInvitePayload(
     fieldErrors.target =
       'Este papel nao pode receber acesso.';
   } else if (
-    !canInviteTarget(input.currentRole, input.target)
+    !canInviteTarget(input.currentRole, input.target, input.currentInstitutionRoles)
   ) {
     fieldErrors.target =
       'Seu papel atual nao permite convidar este tipo de usuario.';

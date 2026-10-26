@@ -627,6 +627,7 @@ export default function AppShell({
     ...getSidebarAdminModules({
       profile,
       currentInstitutionRole: institutionContext.currentRole,
+      currentInstitutionRoles: institutionContext.currentInstitutionRoles,
       currentInstitutionPlan: institutionContext.currentInstitution?.plan,
       currentUserRole: currentRole,
       pathname: location.pathname,
@@ -709,6 +710,9 @@ export default function AppShell({
         }
         currentInstitutionRole={
           institutionContext.currentRole
+        }
+        currentInstitutionRoles={
+          institutionContext.currentInstitutionRoles
         }
         currentInstitutionPlan={
           institutionContext.currentInstitution?.plan

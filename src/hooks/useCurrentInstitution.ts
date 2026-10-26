@@ -12,6 +12,7 @@ export interface CurrentInstitutionResult {
   currentMembership: UserInstitutionMembership | null;
   currentInstitutionId: string | null;
   currentRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   isLoading: boolean;
   isError: boolean;
   error: Error | null;
@@ -49,6 +50,8 @@ export function useCurrentInstitution(
       institutionContext.currentInstitutionId,
     currentRole:
       institutionContext.currentRole,
+    currentInstitutionRoles:
+      institutionContext.currentInstitutionRoles,
     isLoading:
       hasProfile && institutionContext.isLoading,
     isError: Boolean(institutionContext.error),

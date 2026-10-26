@@ -149,7 +149,7 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('psychologists'),
-    allowedRoles: ['ADMIN', 'DIRECTOR', 'SECRETARY'],
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'directors',
@@ -343,7 +343,12 @@ export function isAdminModuleAvailable(
   currentRole: string | null | undefined,
   platformRole?: string | null | undefined,
   institutionPlan?: InstitutionPlan | null,
+  currentInstitutionRoles?: readonly string[],
 ): boolean {
+  if (module.id === 'psychologists') {
+    return currentRole === 'DIRECTOR' || currentRole === 'SECRETARY'
+      || currentInstitutionRoles?.some((role) => role === 'DIRECTOR' || role === 'SECRETARY') === true;
+  }
   if (platformRole === 'SUPER_ADMIN') return true;
   if (
     institutionPlan === 'BASIC' &&

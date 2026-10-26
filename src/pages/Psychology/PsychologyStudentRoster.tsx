@@ -10,6 +10,17 @@ import {
 
 const PAGE_SIZE = 20;
 
+function studentClassSummary(student: PsychologyStudentCandidate): string {
+  const classes = new Map<string, string>();
+  for (const registration of student.registrations) {
+    for (const enrollment of registration.enrollments) {
+      const key = `${enrollment.academic_year_id}:${enrollment.class_id}`;
+      classes.set(key, `${enrollment.class_name} · ${enrollment.grade_level ?? 'série não informada'} · ${enrollment.academic_year_name}`);
+    }
+  }
+  return classes.size ? [...classes.values()].join(' | ') : 'Sem turma vinculada';
+}
+
 function authorizationLabel(status: 'ACTIVE' | 'REVOKED' | null): string {
   if (status === 'ACTIVE') return 'Autorização ativa';
   if (status === 'REVOKED') return 'Autorização revogada';
@@ -165,13 +176,13 @@ export default function PsychologyStudentRoster({
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
             <table className="w-full min-w-[660px] border-collapse text-left text-sm">
               <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-                <tr><th scope="col" className="px-4 py-3">Estudante</th><th scope="col" className="px-4 py-3">Matrículas</th><th scope="col" className="px-4 py-3">Acompanhamento</th><th scope="col" className="px-4 py-3">Ação</th></tr>
+                <tr><th scope="col" className="px-4 py-3">Estudante</th><th scope="col" className="px-4 py-3">Turma</th><th scope="col" className="px-4 py-3">Acompanhamento</th><th scope="col" className="px-4 py-3">Ação</th></tr>
               </thead>
               <tbody className="divide-y divide-slate-200 bg-white dark:divide-slate-700 dark:bg-slate-900">
                 {result.students.map((student) => (
                   <tr key={student.profile_id}>
                     <th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-white">{student.full_name}</th>
-                    <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{student.registrations.length} {student.registrations.length === 1 ? 'matrícula' : 'matrículas'}</td>
+                    <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{studentClassSummary(student)}</td>
                     <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{student.registrations.some((registration) => registration.assigned) ? 'Com profissional vinculada' : 'Sem profissional vinculada'}</td>
                     <td className="px-4 py-3"><button type="button" aria-expanded={selectedProfileId === student.profile_id} onClick={() => setSelectedProfileId((current) => current === student.profile_id ? null : student.profile_id)} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-semibold text-blue-800 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-200 dark:hover:bg-blue-950/40">{selectedProfileId === student.profile_id ? 'Ocultar detalhes' : 'Ver / vincular'}</button></td>
                   </tr>

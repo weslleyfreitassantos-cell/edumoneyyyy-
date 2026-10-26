@@ -118,6 +118,7 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   currentInstitutionId?: string | null;
   currentInstitutionPlan?: InstitutionPlan | null;
   isDesktopHidden: boolean;
@@ -204,7 +205,7 @@ const psychologyNavigation: ReadonlyArray<{
   { label: 'Agendar consulta', path: '/psychology/agendar', icon: CalendarDays, roles: ['STUDENT'] },
   { label: 'Meus agendamentos', path: '/psychology/agendamentos', icon: CalendarClock, roles: ['STUDENT'] },
   { label: 'Chat', path: '/psychology/chat', icon: MessageCircle, roles: ['STUDENT'] },
-  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['STUDENT', 'GUARDIAN'] },
+  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['GUARDIAN'] },
   { label: 'Agenda', path: '/psychology/agenda', icon: CalendarDays, roles: ['PSYCHOLOGIST'] },
   { label: 'Atendimentos', path: '/psychology/atendimentos', icon: Heart, roles: ['PSYCHOLOGIST'] },
   { label: 'Anotações clínicas', path: '/psychology/anotacoes', icon: NotebookPen, roles: ['PSYCHOLOGIST'] },
@@ -708,12 +709,14 @@ export function getSidebarNavigationItems({
 export function getSidebarAdminModules({
   profile,
   currentInstitutionRole,
+  currentInstitutionRoles = [],
   currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
@@ -764,6 +767,7 @@ export function getSidebarAdminModules({
         effectiveRole,
         profile.platform_role,
         currentInstitutionPlan,
+        currentInstitutionRoles,
       )
     ) {
       return false;
@@ -787,6 +791,7 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
+  currentInstitutionRoles = [],
   currentInstitutionId = null,
   currentInstitutionPlan,
   isDesktopHidden,
@@ -833,6 +838,7 @@ export default function Sidebar({
   const adminModules = getSidebarAdminModules({
     profile,
     currentInstitutionRole,
+    currentInstitutionRoles,
     currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,

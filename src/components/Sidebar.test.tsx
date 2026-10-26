@@ -62,6 +62,7 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
+  currentInstitutionRoles,
   currentInstitutionId = 'institution-1',
   currentInstitutionPlan,
   isDesktopHidden = false,
@@ -72,6 +73,7 @@ function renderSidebar({
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
+  currentInstitutionRoles?: readonly string[];
   currentInstitutionId?: string | null;
   currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
@@ -91,6 +93,7 @@ function renderSidebar({
         currentInstitutionRole={
           currentInstitutionRole
         }
+        currentInstitutionRoles={currentInstitutionRoles}
         currentInstitutionId={currentInstitutionId}
         currentInstitutionPlan={
           currentInstitutionPlan
@@ -155,6 +158,25 @@ describe('Sidebar', () => {
 
     expect(screen.queryByRole('region', { name: 'Apoio psicológico' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'Agendar consulta' })).toBeNull();
+  });
+
+  it('remove Autorizações da navegação do estudante e preserva o acesso do responsável', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Estudante' },
+      currentInstitutionRole: 'STUDENT',
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+    expect(screen.queryByRole('link', { name: 'Autorizações' })).toBeNull();
+    cleanup();
+
+    renderSidebar({
+      profile: { ...baseProfile, role: 'GUARDIAN' },
+      currentUser: { ...baseUser, role: 'parent', subtitle: 'Responsável' },
+      currentInstitutionRole: 'GUARDIAN',
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+    expect(screen.getByRole('link', { name: 'Autorizações' })).toBeTruthy();
   });
 
   it('permite somente configuração à secretaria com autorização explícita enquanto desligado', () => {
@@ -341,11 +363,33 @@ describe('Sidebar', () => {
       screen.queryByRole('link', { name: /^secretaria$/i }),
     ).toBeNull();
     expect(
-      screen.getByRole('link', { name: /^psicólogos$/i }),
-    ).toBeTruthy();
+      screen.queryByRole('link', { name: /^psicólogos$/i }),
+    ).toBeNull();
     expect(
       screen.queryByRole('button', { name: /comunica..o e recursos/i }),
     ).toBeNull();
+  });
+
+  it('mostra Psicólogos para ADMIN/SUPER_ADMIN somente quando há vínculo ativo de Diretor ou Secretaria', () => {
+    renderSidebar({
+      profile: { ...baseProfile, platform_role: 'SUPER_ADMIN' },
+      currentUser: { ...baseUser, role: 'super_admin', subtitle: 'Super Admin' },
+      currentInstitutionRole: 'ADMIN',
+      currentInstitutionRoles: ['ADMIN', 'DIRECTOR'],
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: /pessoas/i }));
+    expect(screen.getByRole('link', { name: /^psicólogos$/i })).toBeTruthy();
+
+    cleanup();
+    renderSidebar({
+      profile: { ...baseProfile, platform_role: 'SUPER_ADMIN' },
+      currentUser: { ...baseUser, role: 'super_admin', subtitle: 'Super Admin' },
+      currentInstitutionRole: 'ADMIN',
+      currentInstitutionRoles: ['ADMIN'],
+    });
+    fireEvent.click(screen.getByRole('button', { name: /pessoas/i }));
+    expect(screen.queryByRole('link', { name: /^psicólogos$/i })).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
