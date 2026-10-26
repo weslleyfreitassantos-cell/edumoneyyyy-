@@ -396,7 +396,7 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       page_size: 20,
     });
     expect(unauthorizedCandidateSearch.error?.code).toBe('P0001');
-    const crossInstitutionCandidateSearch = await director.client.rpc('psychology_search_management_candidates', {
+    const crossInstitutionCandidateSearch = await secretary.client.rpc('psychology_search_management_candidates', {
       target_institution_id: otherInstitution.id,
       search_text: null,
       class_filter_id: null,
