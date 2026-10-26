@@ -66,6 +66,50 @@ afterEach(() => {
 });
 
 describe('PsychologyStudentRoster', () => {
+  it('mantém a busca estável quando o callback do painel pai muda de identidade', async () => {
+    service.listManagementCandidates.mockResolvedValue(response());
+    const assign = vi.fn().mockResolvedValue(undefined);
+    const unassign = vi.fn().mockResolvedValue(undefined);
+    const professionalsLoaded = vi.fn();
+    const props = {
+      institutionId: 'institution-1',
+      professionals: [professional],
+      busy: false,
+      refreshKey: 0,
+      onAssign: assign,
+      onUnassign: unassign,
+    };
+
+    const view = render(<PsychologyStudentRoster {...props} onProfessionalsLoaded={professionalsLoaded} />);
+    await screen.findByRole('row', { name: /Estudante de teste/ });
+    view.rerender(<PsychologyStudentRoster {...props} onProfessionalsLoaded={vi.fn()} />);
+
+    expect(service.listManagementCandidates).toHaveBeenCalledTimes(1);
+  });
+
+  it('encerra o carregamento e mostra o estado vazio quando não há resultados', async () => {
+    service.listManagementCandidates.mockResolvedValue(response(1, [], 0));
+
+    renderRoster();
+
+    expect(await screen.findByText('Nenhum estudante encontrado')).toBeTruthy();
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.queryByRole('table')).toBeNull();
+  });
+
+  it('mostra erro e permite tentar a consulta novamente', async () => {
+    service.listManagementCandidates
+      .mockRejectedValueOnce(new Error('falha de rede'))
+      .mockResolvedValueOnce(response());
+
+    renderRoster();
+
+    expect(await screen.findByRole('alert')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /tentar novamente/i }));
+    expect(await screen.findByRole('row', { name: /Estudante de teste/ })).toBeTruthy();
+    expect(service.listManagementCandidates).toHaveBeenCalledTimes(2);
+  });
+
   it('agrupa a pessoa por perfil e só mostra matrículas e autorização após seleção', async () => {
     service.listManagementCandidates.mockResolvedValue(response(1, [person('profile-1', 'Estudante de teste', [
       registration('student-1', 'MAT-001', true),
