@@ -930,7 +930,7 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(guardianTargetsAreHidden.error?.message).toContain('MODULE_DISABLED');
 
     const studentCannotReadAuthorizationWhenDisabled = await student.client.from('psychology_authorizations')
-      .select('id').eq('student_id', studentRow.id);
+      .select('student_id').eq('student_id', studentRow.id);
     expect(studentCannotReadAuthorizationWhenDisabled.error).toBeNull();
     expect(studentCannotReadAuthorizationWhenDisabled.data).toEqual([]);
     const studentCannotRevokeWhenDisabled = await student.client.rpc('psychology_revoke_authorization', {
