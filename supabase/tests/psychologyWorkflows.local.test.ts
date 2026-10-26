@@ -755,6 +755,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(appointmentsForOtherStudent.error).toBeNull();
     expect(appointmentsForOtherStudent.data).toEqual([]);
 
+    const guardianConsentForDisabledRevocation = await guardian.client.rpc('psychology_record_authorization', {
+      target_student_id: minorRow.id,
+      accept_privacy_notice: true,
+      accept_service_terms: true,
+      authorize_treatment: true,
+    });
+    expect(guardianConsentForDisabledRevocation.error).toBeNull();
+
     const disabled = await director.client.rpc('psychology_set_module_enabled', {
       target_institution_id: institution.id,
       target_enabled: false,
