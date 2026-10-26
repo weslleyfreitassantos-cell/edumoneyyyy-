@@ -62,6 +62,7 @@ fi
 executor_database=promoter_cli_executor_007_ci
 executor_role=cli_login_promoter_007_ci
 executor_password=promoter_ci_only_2026
+executor_owner_db_url="${test_db_url%/promoter_historical_ci}/${executor_database}"
 executor_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" \
   EXECUTOR_ROLE="$executor_role" EXECUTOR_PASSWORD="$executor_password" python3 - <<'PY'
 import os
@@ -375,10 +376,28 @@ docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR
 # not a superuser. Keep a disposable admin only to restore CI cleanup.
 docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
   -c 'ALTER ROLE postgres NOSUPERUSER;' >/dev/null
+if ! docker exec --env "PGPASSWORD=$executor_password" "$db_container" \
+  psql -h 127.0.0.1 -U "$executor_role" -d "$executor_database" \
+    -X -A -t -v ON_ERROR_STOP=1 -c 'select 1;' >/dev/null; then
+  echo 'Disposable cli_login role could not connect over TCP with its test password' >&2
+  exit 1
+fi
+if ! "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+  --db-url "$executor_owner_db_url" --agent yes --output-format json --log-level error \
+  'select 1 as executor_owner_connection' >/dev/null 2>&1; then
+  echo 'Supabase CLI could not connect to the disposable database as its owner login' >&2
+  exit 1
+fi
 
 run_cli_identity_query() {
   local sql="$1"
   "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+    --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
+}
+
+run_cli_identity_query_debug() {
+  local sql="$1"
+  "$promotion_test_supabase_bin" --debug --workdir "$executor_fixture" db query \
     --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
 }
 
@@ -431,7 +450,12 @@ report_executor_cli_failure() {
 
 if ! hook_identity="$(run_cli_identity_query \
   "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
-  report_executor_cli_failure "$hook_identity"
+  if ! debug_output="$(run_cli_identity_query_debug \
+    "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
+    report_executor_cli_failure "$debug_output"
+  else
+    report_executor_cli_failure "$hook_identity"
+  fi
   exit 1
 fi
 assert_cli_executor_identity "$hook_identity" postgres
