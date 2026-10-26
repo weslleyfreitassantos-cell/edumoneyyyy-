@@ -5,6 +5,7 @@ export type EnglishExerciseType = 'MULTIPLE_CHOICE' | 'WORD_ORDER' | 'TRANSLATIO
 
 export interface EnglishLessonSummary {
   id: string;
+  course_code?: string;
   position: number;
   title: string;
   status: EnglishLessonStatus;
@@ -41,6 +42,7 @@ export interface EnglishCourseMap {
   completed_lessons: number;
   total_lessons: number;
   continue_lesson_id: string | null;
+  additional_courses?: EnglishCourseMap[];
 }
 
 export interface EnglishExercise {
@@ -54,11 +56,16 @@ export interface EnglishExercise {
   left_items: string[];
   right_items: string[];
   audio_text: string | null;
+  skill_code?: string;
+  difficulty_level?: number;
+  dialogue_speaker?: string | null;
+  dialogue_context?: Array<{ speaker: string; text: string }>;
 }
 
 export interface EnglishLessonSession {
   session_id: string;
   lesson_id: string;
+  course_code?: string;
   lesson_title: string;
   lesson_intro: string;
   unit_title: string;
@@ -66,6 +73,39 @@ export interface EnglishLessonSession {
   current_position: number;
   total_exercises: number;
   exercise: EnglishExercise | null;
+}
+
+export interface EnglishMasterySkill {
+  skill_code: string;
+  label: string;
+  mastery_score: number;
+  difficulty_level: number;
+  next_review_at?: string;
+}
+
+export interface EnglishLearningHome {
+  due_reviews: number;
+  due_skills: EnglishMasterySkill[];
+  weak_skills: EnglishMasterySkill[];
+  stats: EnglishCourseMap['stats'];
+}
+
+export interface EnglishSkillReview {
+  skill_code: string;
+  label: string;
+  mastery_score: number;
+  difficulty_level: number;
+  exercise: EnglishExercise;
+}
+
+export interface EnglishSkillReviewResult {
+  is_correct: boolean;
+  feedback: string;
+  explanation: string;
+  skill_code: string;
+  mastery_score: number;
+  difficulty_level: number;
+  next_review_at: string;
 }
 
 export interface EnglishAnswerResult {
@@ -189,23 +229,52 @@ function unwrap<T>(data: T | null, error: { message: string } | null, operation:
 export const tecEnglishService = {
   async getMap(institutionId: string): Promise<EnglishCourseMap> {
     const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
-    return unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.');
+    const base = unwrap(data as EnglishCourseMap | null, error, 'Não foi possível carregar seu caminho de inglês.');
+    const primary = { ...base, units: base.units.map((unit) => ({
+      ...unit,
+      lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: base.course.code })),
+    })) };
+    let v2: EnglishCourseMap | null = null;
+    for (const courseCode of ['TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_TEST']) {
+      try {
+        const response = await supabase.rpc('get_tec_english_course_map_v2', {
+          p_institution_id: institutionId,
+          p_course_code: courseCode,
+        });
+        if (!response.error && response.data) {
+          v2 = response.data as EnglishCourseMap;
+          break;
+        }
+      } catch {
+        // V2 is optional while the backend is rolling out; keep the V1 map usable.
+      }
+    }
+    if (v2) {
+      const v2CourseCode = v2.course.code;
+      v2 = { ...v2, units: v2.units.map((unit) => ({
+        ...unit,
+        lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: v2CourseCode })),
+      })) };
+    }
+    return { ...primary, additional_courses: v2 ? [v2] : [] };
   },
 
-  async startLesson(institutionId: string, lessonId: string): Promise<EnglishLessonSession> {
-    const { data, error } = await supabase.rpc('start_tec_english_lesson_v1', {
-      p_institution_id: institutionId,
-      p_lesson_id: lessonId,
-    });
-    return unwrap(data as EnglishLessonSession | null, error, 'Não foi possível abrir esta lição.');
+  async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
+    const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
+    const { data, error } = isV2
+      ? await supabase.rpc('start_tec_english_lesson_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
+      : await supabase.rpc('start_tec_english_lesson_v1', { p_institution_id: institutionId, p_lesson_id: lessonId });
+    const session = unwrap(data as EnglishLessonSession | null, error, 'Não foi possível abrir esta lição.');
+    return { ...session, course_code: courseCode };
   },
 
-  async getSession(institutionId: string, sessionId: string): Promise<EnglishLessonSession> {
-    const { data, error } = await supabase.rpc('get_tec_english_session_v1', {
-      p_institution_id: institutionId,
-      p_session_id: sessionId,
-    });
-    return unwrap(data as EnglishLessonSession | null, error, 'Não foi possível retomar esta lição.');
+  async getSession(institutionId: string, sessionId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
+    const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
+    const { data, error } = isV2
+      ? await supabase.rpc('get_tec_english_session_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
+      : await supabase.rpc('get_tec_english_session_v1', { p_institution_id: institutionId, p_session_id: sessionId });
+    const session = unwrap(data as EnglishLessonSession | null, error, 'Não foi possível retomar esta lição.');
+    return { ...session, course_code: courseCode };
   },
 
   async submitAnswer(
@@ -214,15 +283,35 @@ export const tecEnglishService = {
     exerciseId: string,
     response: Record<string, unknown>,
     idempotencyKey: string,
+    courseCode = 'TEC_ENGLISH_FOUNDATIONS',
   ): Promise<EnglishAnswerResult> {
-    const { data, error } = await supabase.rpc('submit_tec_english_answer_v1', {
-      p_institution_id: institutionId,
-      p_session_id: sessionId,
-      p_exercise_id: exerciseId,
-      p_response: response,
-      p_idempotency_key: idempotencyKey,
-    });
+    const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
+    const { data, error } = isV2
+      ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
+      : await supabase.rpc('submit_tec_english_answer_v1', { p_institution_id: institutionId, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey });
     return unwrap(data as EnglishAnswerResult | null, error, 'Não foi possível conferir sua resposta.');
+  },
+
+  async getLearningHome(institutionId: string): Promise<EnglishLearningHome> {
+    const { data, error } = await supabase.rpc('get_tec_english_learning_home_v2', { p_institution_id: institutionId });
+    return unwrap(data as EnglishLearningHome | null, error, 'Não foi possível carregar seu resumo de aprendizagem.');
+  },
+
+  async getSkillReviewQueue(institutionId: string): Promise<EnglishMasterySkill[]> {
+    const { data, error } = await supabase.rpc('get_tec_english_skill_review_queue_v2', { p_institution_id: institutionId });
+    return unwrap(data as EnglishMasterySkill[] | null, error, 'Não foi possível carregar suas revisões.');
+  },
+
+  async startSkillReview(institutionId: string, skillCode: string): Promise<EnglishSkillReview> {
+    const { data, error } = await supabase.rpc('start_tec_english_skill_review_v2', { p_institution_id: institutionId, p_skill_code: skillCode });
+    return unwrap(data as EnglishSkillReview | null, error, 'Não foi possível iniciar esta revisão.');
+  },
+
+  async submitSkillReview(institutionId: string, skillCode: string, response: Record<string, unknown>, idempotencyKey: string): Promise<EnglishSkillReviewResult> {
+    const { data, error } = await supabase.rpc('submit_tec_english_skill_review_v2', {
+      p_institution_id: institutionId, p_skill_code: skillCode, p_response: response, p_idempotency_key: idempotencyKey,
+    });
+    return unwrap(data as EnglishSkillReviewResult | null, error, 'Não foi possível conferir esta revisão.');
   },
 
   async getReviewQueue(): Promise<EnglishReviewQueueItem[]> {

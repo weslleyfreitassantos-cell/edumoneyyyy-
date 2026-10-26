@@ -5,6 +5,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const api = vi.hoisted(() => ({
   getMap: vi.fn(),
+  getLearningHome: vi.fn(),
+  getSkillReviewQueue: vi.fn(),
+  startSkillReview: vi.fn(),
+  submitSkillReview: vi.fn(),
   startLesson: vi.fn(),
   getSession: vi.fn(),
   submitAnswer: vi.fn(),
@@ -55,6 +59,10 @@ afterEach(() => {
 
 beforeEach(() => {
   api.getMap.mockResolvedValue(makeMap());
+  api.getLearningHome.mockResolvedValue({ due_reviews: 0, due_skills: [], weak_skills: [], stats: { xp: 0, current_streak: 0, longest_streak: 0, last_study_date: null } });
+  api.getSkillReviewQueue.mockResolvedValue([]);
+  api.startSkillReview.mockResolvedValue({ skill_code: 'routine_time', label: 'Horários da rotina', mastery_score: 20, difficulty_level: 1, exercise: { id: 'review-1', position: 1, type: 'MULTIPLE_CHOICE', instruction: 'Escolha', prompt: 'What time is it?', options: ['Seven o’clock'], word_bank: [], left_items: [], right_items: [], audio_text: null } });
+  api.submitSkillReview.mockResolvedValue({ is_correct: true, feedback: 'Muito bem! Revisão concluída.', explanation: 'A resposta está correta.', skill_code: 'routine_time', mastery_score: 28, difficulty_level: 1, next_review_at: '2026-10-27T00:00:00Z' });
   api.startLesson.mockResolvedValue(makeSession());
   api.getSession.mockResolvedValue(makeSession());
   api.submitAnswer.mockResolvedValue(answerResult());
@@ -71,6 +79,44 @@ describe('EnglishLearningPage', () => {
     expect(screen.getByText(/em revisão pedagógica/i)).toBeTruthy();
     expect((screen.getByRole('button', { name: 'Aguardando revisão' }) as HTMLButtonElement).disabled).toBe(true);
     expect(screen.queryByText(/Plano diário|Química|Biologia|Caderno de Erros|V9/i)).toBeNull();
+  });
+
+  it('exibe o próximo exercício de revisão e conclui a revisão por habilidade', async () => {
+    api.getLearningHome.mockResolvedValue({
+      due_reviews: 1,
+      due_skills: [{ skill_code: 'routine_time', label: 'Horários da rotina', mastery_score: 20, difficulty_level: 1 }],
+      weak_skills: [{ skill_code: 'routine_time', label: 'Horários da rotina', mastery_score: 20, difficulty_level: 1 }],
+      stats: { xp: 0, current_streak: 0, longest_streak: 0, last_study_date: null },
+    });
+    renderPage();
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Começar revisão de Horários da rotina' }));
+    expect(await screen.findByRole('heading', { name: 'Horários da rotina' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Seven o’clock/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Conferir resposta' }));
+    expect(await screen.findByText('Muito bem! Revisão concluída.')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Concluir revisão' })).toBeTruthy();
+    expect(api.submitSkillReview).toHaveBeenCalledWith('institution-1', 'routine_time', { choice: 'Seven o’clock' }, expect.any(String));
+  });
+
+  it('encaminha as aulas da nova unidade ao serviço V2 sem mudar o contrato V1', async () => {
+    const base = makeMap();
+    const v2: EnglishCourseMap = {
+      ...makeMap(),
+      course: { code: 'TEC_ENGLISH_FOUNDATIONS_V2', title: 'Inglês em conversas do cotidiano', description: 'Rotina e conversas.', version: 2, publication_status: 'STAGING', review_status: 'PEDAGOGICAL_REVIEW_PENDING' },
+      units: [{ id: 'v2-unit', position: 4, title: 'Minha rotina', description: 'Fale sobre sua rotina.', lessons: [{ ...makeMap().units[0].lessons[0], id: 'v2-lesson', course_code: 'TEC_ENGLISH_FOUNDATIONS_V2', position: 1, title: 'Meu dia começa', status: 'AVAILABLE' }] }],
+      total_lessons: 1,
+      completed_lessons: 0,
+      continue_lesson_id: 'v2-lesson',
+    };
+    api.getMap.mockResolvedValue({ ...base, additional_courses: [v2] });
+    api.startLesson.mockResolvedValue({ ...makeSession(), lesson_id: 'v2-lesson', lesson_title: 'Meu dia começa', course_code: 'TEC_ENGLISH_FOUNDATIONS_V2' });
+    renderPage();
+
+    expect(await screen.findByRole('heading', { name: 'Inglês em conversas do cotidiano' })).toBeTruthy();
+    fireEvent.click(screen.getAllByRole('button', { name: 'Começar lição' })[1]);
+    await screen.findByRole('heading', { name: 'Meu dia começa' });
+    expect(api.startLesson).toHaveBeenCalledWith('institution-1', 'v2-lesson', 'TEC_ENGLISH_FOUNDATIONS_V2');
   });
 
   it('abre uma lição disponível e mostra os desafios originais do curso', async () => {

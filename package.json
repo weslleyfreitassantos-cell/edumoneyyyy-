@@ -46,6 +46,8 @@
     "adaptive:v9:validate": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts validate",
     "adaptive:v9:compile": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts",
     "tec-english:content:generate": "node tools/english/generate-course-content-migration.mjs",
+    "tec-english:v2:generate": "node tools/english/generate-tec-english-v2-migration.mjs",
+    "tec-english:v2:validate": "node tools/english/generate-tec-english-v2-migration.mjs --check",
     "adaptive:v94:validate": "node --experimental-strip-types tools/adaptive/generate-v9-fourth-journeys.ts validate",
     "adaptive:v94:compile": "node --experimental-strip-types tools/adaptive/generate-v9-fourth-journeys.ts compile",
     "adaptive:english:staging:validate": "node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/english-context-vocabulary.json && node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/english-infer-from-text.json && node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/english-infer-from-text-v6.json && node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/english-relate-language-culture.json && node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/v8-english-infer-from-text-expansion-v8.json",
