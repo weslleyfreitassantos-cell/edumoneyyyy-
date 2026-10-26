@@ -471,6 +471,18 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       expect(adaptiveMastery.data).toMatchObject({ difficulty_level: 2, correct_streak: 3, interval_days: 7 });
 
       const thirdV2Exercise = firstV2Lesson.exercises[2];
+      const seedRegressionMastery = await service.from('tec_english_skill_mastery_v2').upsert({
+        institution_id: institution.id,
+        student_id: studentIds.get(probe.id),
+        skill_code: thirdV2Exercise.skill_code,
+        mastery_score: 50,
+        difficulty_level: 3,
+        correct_streak: 0,
+        incorrect_streak: 0,
+        interval_days: 3,
+        next_review_at: new Date().toISOString(),
+      }, { onConflict: 'institution_id,student_id,skill_code' });
+      expect(seedRegressionMastery.error).toBeNull();
       const wrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
       expect(wrongWordOrder.error).toBeNull();
       expect(wrongWordOrder.data).toMatchObject({ is_correct: false, explanation: thirdV2Exercise.explanation });
