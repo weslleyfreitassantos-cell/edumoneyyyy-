@@ -628,7 +628,7 @@ set -e
   }
 denied_fk_count="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
   -X -A -t -v ON_ERROR_STOP=1 \
-  -c "select count(*) from pg_class where oid = to_regclass('references_denied.denied_fk_probe');")"
+  -c "select count(*) from pg_class object join pg_namespace object_schema on object_schema.oid = object.relnamespace where object_schema.nspname = 'references_denied' and object.relname = 'denied_fk_probe';")"
 [[ "$denied_fk_count" == '0' ]] || {
   echo 'Foreign-key test unexpectedly created an object without REFERENCES' >&2
   exit 1
