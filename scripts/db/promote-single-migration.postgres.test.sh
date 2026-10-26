@@ -377,7 +377,7 @@ pr411_target_sha="$(sed 's/\r$//' "$pr411_target" | sha256sum | awk '{print $1}'
 [[ "$pr411_target_sha" == 'da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa' ]]
 docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c "CREATE DATABASE $pr411_database;" >/dev/null
-docker exec "$db_container" psql -U postgres -d "$pr411_database" -v ON_ERROR_STOP=1 <<'SQL' >/dev/null
+docker exec -i "$db_container" psql -U postgres -d "$pr411_database" -v ON_ERROR_STOP=1 <<'SQL' >/dev/null
 CREATE SCHEMA auth;
 CREATE SCHEMA private;
 CREATE SCHEMA supabase_migrations;
