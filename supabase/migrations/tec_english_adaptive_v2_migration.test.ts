@@ -25,4 +25,15 @@ describe('Tec Inglês adaptive V2 qualification safeguards', () => {
   it('adds skill, difficulty and dialogue metadata to V2 snapshots only', () => {
     expect(migration).toContain("case when p_course_code = 'TEC_ENGLISH_FOUNDATIONS_V2' or p_course_code like 'TEC_ENGLISH_FOUNDATIONS_V2_TEST%'");
   });
+
+  it('chooses a not-yet-reviewed exercise before repeating one, then prefers the current difficulty', () => {
+    const reviewSelector = migration.slice(
+      migration.indexOf('create or replace function public.start_tec_english_skill_review_v2'),
+      migration.indexOf('create or replace function public.submit_tec_english_skill_review_v2'),
+    );
+    const recencyOrder = reviewSelector.indexOf(') nulls first');
+    const difficultyOrder = reviewSelector.indexOf('abs(exercise.difficulty_level - v_mastery.difficulty_level)');
+    expect(recencyOrder).toBeGreaterThan(-1);
+    expect(difficultyOrder).toBeGreaterThan(recencyOrder);
+  });
 });

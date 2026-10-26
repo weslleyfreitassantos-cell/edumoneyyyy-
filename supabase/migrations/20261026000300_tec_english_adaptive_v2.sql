@@ -548,10 +548,10 @@ begin
     where exercise.skill_code = p_skill_code
       and private.tec_english_lesson_ready(lesson.id, private.tec_english_test_mode())
       and private.tec_english_course_available(p_institution_id, unit.course_code, private.tec_english_test_mode())
-    order by abs(exercise.difficulty_level - v_mastery.difficulty_level),
-      (select max(attempt.created_at) from public.tec_english_skill_review_attempts_v2 attempt
+    order by (select max(attempt.created_at) from public.tec_english_skill_review_attempts_v2 attempt
         where attempt.institution_id = p_institution_id and attempt.student_id = v_student_id
           and attempt.exercise_id = exercise.id) nulls first,
+      abs(exercise.difficulty_level - v_mastery.difficulty_level),
       exercise.id
     limit 1;
   end if;
