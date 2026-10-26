@@ -587,16 +587,20 @@ process.stdout.write(values.join("\t"));
 }
 
 check_runtime_publication_context() {
-  local context_sql cli_context_raw psql_context_raw cli_context_line psql_context_line
+  local context_sql psql_context_sql expected_cli_current expected_cli_role_setting
+  local cli_context_raw psql_context_raw cli_context_line psql_context_line
   local cli_session cli_current cli_role cli_role_setting cli_owner cli_owner_access cli_relation_access cli_function_access
   local cli_public_create cli_private_create cli_superuser
   local safe_session safe_current safe_owner
   local -a cli_context_fields=() psql_context_fields=()
 
-  # The CLI's ApplyMigrations calls RESET ALL immediately before every file.
-  # Its connection hook may have switched privileged login users to postgres;
-  # probe the post-reset identity that will actually execute migration DDL.
-  context_sql="RESET ALL; select json_build_object(
+  # `supabase db query` executes one prepared statement, so the read-only
+  # identity probe must be a single SELECT. The migration executor calls
+  # RESET ALL before each file; PostgreSQL does not reset the active role with
+  # RESET ALL. The CLI connection hook sets SESSION ROLE postgres for
+  # supabase_admin and cli_login_* users, which the disposable executor test
+  # verifies against the actual `db push` connection.
+  context_sql="select json_build_object(
     'marker', 'PROMOTION_CONTEXT_V1',
     'session_user', session_user::text,
     'current_user', current_user::text,
@@ -652,6 +656,19 @@ check_runtime_publication_context() {
   join pg_roles r on r.rolname = current_user
   where n.nspname = 'public' and c.relname = 'learning_central_studies_v2_candidates';"
 
+  expected_cli_current="${database_user}"
+  expected_cli_role_setting='none'
+  if [[ "${database_user}" == 'supabase_admin' || "${database_user}" == cli_login_* ]]; then
+    expected_cli_current='postgres'
+    expected_cli_role_setting='postgres'
+    # Replay the CLI's documented AfterConnect role hook, then the migration
+    # executor's RESET ALL, in a direct read-only identity probe. This proves
+    # role availability and the post-reset context without changing objects.
+    psql_context_sql="SET SESSION ROLE postgres; RESET ALL; ${context_sql}"
+  else
+    psql_context_sql="RESET ALL; ${context_sql}"
+  fi
+
   if ! cli_context_raw="$(run_supabase_cli --workdir "${cli_workdir_arg}" db query \
     --db-url "${database_url}" --agent yes --output-format json --log-level error \
     "${context_sql}" 2>&1)"; then
@@ -665,7 +682,7 @@ check_runtime_publication_context() {
   fi
 
   if ! psql_context_raw="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" \
-    psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c "${context_sql}")"; then
+    psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c "${psql_context_sql}")"; then
     printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
     abort "direct PostgreSQL session precheck failed"
   fi
@@ -708,11 +725,11 @@ check_runtime_publication_context() {
     abort "Supabase CLI and direct PostgreSQL session contexts differ"
   fi
   if [[ "${cli_session}" != "${database_user}" || \
-    "${cli_current}" != "${cli_session}" || \
+    "${cli_current}" != "${expected_cli_current}" || \
     "${cli_role}" != "${cli_current}" || \
-    "${cli_role_setting}" != 'none' ]]; then
+    "${cli_role_setting}" != "${expected_cli_role_setting}" ]]; then
     printf 'CLI_PSQL_CONTEXT_MATCH=YES\nDDL_PERMISSION=FAIL\n' >&2
-    abort "database session identity differs from the explicit connection user"
+    abort "Supabase CLI effective role differs from the verified migration role"
   fi
   if [[ "${cli_owner_access}" != 'true' || \
     "${cli_relation_access}" != 'true' || \

@@ -351,16 +351,29 @@ exception_function_count="$(docker exec "$db_container" psql -U postgres -d "$ex
 [[ "$exception_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_BACKUP_EXCEPTION_399=PASS'
 
-# The real Supabase CLI temporarily switches cli_login_* connections to
-# postgres, then its migration executor runs RESET ALL before each file. Prove
-# that the same CLI and the actual 007 migration lose that role and fail at its
-# first ownership-requiring statement in a disposable PostgreSQL database.
+# Prove the actual Supabase CLI migration-executor identity in disposable
+# PostgreSQL. Its connection hook switches cli_login_* to postgres; RESET ALL
+# runs before each migration but preserves that active role. Apply the exact
+# first ALTER TABLE operations from 007 in a minimal fixture owned by postgres.
 executor_fixture="$tmp/source-cli-executor-007"
 mkdir -p "$executor_fixture/supabase/migrations"
 printf 'project_id = "migration-promoter-cli-executor-ci"\n' > "$executor_fixture/supabase/config.toml"
 printf 'select 1;\n' > "$executor_fixture/supabase/migrations/20261025000600_baseline.sql"
-cp "$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql" \
-  "$executor_fixture/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
+cat > "$executor_fixture/supabase/migrations/20261025000650_cli_executor_identity_probe.sql" <<'SQL'
+insert into public.migration_executor_probe
+  (session_user_name, current_user_name, current_role_name, role_setting, is_superuser)
+select session_user::text, current_user::text, current_role::text,
+       coalesce(nullif(current_setting('role', true), ''), 'none'), role_row.rolsuper
+  from pg_roles role_row
+ where role_row.rolname = current_user;
+SQL
+cat > "$executor_fixture/supabase/migrations/20261025000700_candidate_ownership_probe.sql" <<'SQL'
+alter table public.learning_central_studies_v2_candidates
+  drop constraint learning_central_studies_v2_candidates_publication_status_check;
+alter table public.learning_central_studies_v2_candidates
+  add constraint learning_central_studies_v2_candidates_publication_status_check
+  check (publication_status in ('STAGING', 'PUBLISHED', 'UNPUBLISHED'));
+SQL
 
 docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c "CREATE ROLE $executor_admin LOGIN SUPERUSER;" >/dev/null
@@ -379,6 +392,13 @@ docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR
       );
       INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
         VALUES ('20261025000600', ARRAY[]::text[], 'baseline');
+      CREATE TABLE public.migration_executor_probe (
+        session_user_name text NOT NULL,
+        current_user_name text NOT NULL,
+        current_role_name text NOT NULL,
+        role_setting text NOT NULL,
+        is_superuser boolean NOT NULL
+      );
       CREATE TABLE public.learning_central_studies_v2_candidates (publication_status text NOT NULL);
       ALTER TABLE public.learning_central_studies_v2_candidates
         ADD CONSTRAINT learning_central_studies_v2_candidates_publication_status_check
@@ -394,8 +414,8 @@ if ! owner_connection_output="$("$promotion_test_supabase_bin" --workdir "$execu
     -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
   exit 1
 fi
-# Model the possible production arrangement where postgres owns objects but is
-# not a superuser. Keep a disposable admin only to restore CI cleanup.
+# Model the hosted arrangement where postgres owns objects but is not a
+# superuser. Keep a disposable admin only for CI cleanup.
 docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
   -c 'ALTER ROLE postgres NOSUPERUSER;' >/dev/null
 if ! docker exec --env "PGPASSWORD=$executor_password" "$db_container" \
@@ -478,6 +498,10 @@ if identity["session_user"] != os.environ["EXPECTED_SESSION_USER"]:
     raise SystemExit("Supabase CLI session_user did not match the disposable login role")
 if identity["current_user"] != os.environ["EXPECTED_CURRENT_USER"]:
     raise SystemExit("Supabase CLI current_user did not match the expected execution role")
+if identity.get("current_role") != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI current_role did not match the expected execution role")
+if identity.get("role_setting") != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI role setting did not match the expected execution role")
 PY
 }
 
@@ -490,9 +514,9 @@ report_executor_cli_failure() {
 }
 
 if ! hook_identity="$(run_cli_identity_query \
-  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
+  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity" 2>&1)"; then
   if ! debug_output="$(run_cli_identity_query_debug \
-    "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
+    "select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity" 2>&1)"; then
     report_executor_cli_failure "$debug_output"
   else
     report_executor_cli_failure "$hook_identity"
@@ -500,26 +524,14 @@ if ! hook_identity="$(run_cli_identity_query \
   exit 1
 fi
 assert_cli_executor_identity "$hook_identity" postgres
-if ! reset_identity="$(run_cli_identity_query \
-  "RESET ALL; select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity" 2>&1)"; then
-  report_executor_cli_failure "$reset_identity"
-  exit 1
-fi
-assert_cli_executor_identity "$reset_identity" "$executor_role"
-echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_ROLE_RESET=PASS'
 
 set +e
 executor_push_output="$("$promotion_test_supabase_bin" --workdir "$executor_fixture" db push \
   --db-url "$executor_db_url" --yes --log-level error 2>&1)"
 executor_push_status=$?
 set -e
-if [[ "$executor_push_status" -eq 0 ]]; then
-  echo 'Supabase CLI unexpectedly applied migration 007 as the reset cli_login role' >&2
-  exit 1
-fi
-if [[ "$executor_push_output" != *'42501'* || \
-  "${executor_push_output,,}" != *'alter table public.learning_central_studies_v2_candidates'* ]]; then
-  printf 'Supabase CLI 007 failure did not identify SQLSTATE 42501 and the expected statement\n' >&2
+if [[ "$executor_push_status" -ne 0 ]]; then
+  printf 'Disposable Supabase CLI executor identity/DDL probe failed; sanitized diagnostics follow:\n' >&2
   printf '%s\n' "$executor_push_output" | sed -E \
     -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
     -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
@@ -528,18 +540,26 @@ fi
 executor_ledger="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
   -X -A -t -v ON_ERROR_STOP=1 -c \
   'select version from supabase_migrations.schema_migrations order by version;')"
-executor_constraint_count="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+executor_identity="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
   -X -A -t -v ON_ERROR_STOP=1 -c \
-  "select count(*) from pg_constraint constraint_row
+  "select session_user_name || '|' || current_user_name || '|' || current_role_name || '|' || role_setting || '|' || is_superuser
+     from public.migration_executor_probe;")"
+executor_constraint="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) = 1 and bool_and(pg_get_constraintdef(constraint_row.oid) like '%UNPUBLISHED%')
+     from pg_constraint constraint_row
     join pg_class relation_row on relation_row.oid = constraint_row.conrelid
     join pg_namespace namespace_row on namespace_row.oid = relation_row.relnamespace
    where namespace_row.nspname = 'public'
      and relation_row.relname = 'learning_central_studies_v2_candidates'
      and constraint_row.conname = 'learning_central_studies_v2_candidates_publication_status_check';")"
-[[ "$executor_ledger" == '20261025000600' && "$executor_constraint_count" == '1' ]] || {
-  echo 'Disposable executor failure changed the ledger or candidate constraint' >&2
+[[ "$executor_ledger" == $'20261025000600\n20261025000650\n20261025000700' && \
+  "$executor_identity" == "$executor_role|postgres|postgres|postgres|false" && \
+  "$executor_constraint" == 't' ]] || {
+  echo 'Disposable executor did not preserve the CLI role through RESET ALL and the candidate ALTER TABLE' >&2
   exit 1
 }
-echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_007=PASS'
-echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_SQLSTATE=42501'
-echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_FAILED_STATEMENT=ALTER TABLE public.learning_central_studies_v2_candidates DROP CONSTRAINT learning_central_studies_v2_candidates_publication_status_check'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_ROLE_RESET=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_CANDIDATE_DDL=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_TARGET_DDL_PROBE=PASS'
+echo 'PROMOTION_POSTGRES_PRODUCTION_42501_REPRODUCED=NO'

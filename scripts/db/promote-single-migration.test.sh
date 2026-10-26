@@ -44,9 +44,10 @@ run_guard() {
   EXPECTED_REMOTE_LAST="${TEST_EXPECTED_REMOTE_LAST:-${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}}" \
   EXPECTED_SOURCE_COMMIT="${TEST_SOURCE_COMMIT:-$source_commit}" \
   EXPECTED_TARGET_SHA256="${TEST_TARGET_SHA256:-${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}}" \
-  PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
+  PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://${TEST_DATABASE_USER:-fixture_user}:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
   TMPDIR="$tmp/guard-tmp" \
   REAL_SHA256SUM="${real_sha256sum:-}" \
+  MOCK_DB_USER="${TEST_DATABASE_USER:-fixture_user}" \
   REMOTE_LEDGER_FILE="${TEST_REMOTE_LEDGER_FILE:-$ledger}" \
   DRY_RUN_OUTPUT_FILE="${TEST_DRY_RUN_OUTPUT_FILE:-${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}}" \
   EXPECT_INCLUDE_ALL="${TEST_EXPECT_INCLUDE_ALL:-1}" \
@@ -128,21 +129,23 @@ cat > "$tmp/bin/npx" <<'MOCK'
 set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 31
 [[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
-[[ "${PGUSER:-}" == 'fixture_user' && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
+expected_db_user="${MOCK_DB_USER:-fixture_user}"
+expected_db_password='dummy!secret'
+[[ "${PGUSER:-}" == "$expected_db_user" && "${PGPASSWORD:-}" == "$expected_db_password" && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
 fi
 if [[ "$*" == *' db query '* ]]; then
   [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
     "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
-  [[ "$*" == *'RESET ALL; select json_build_object('* ]] || exit 58
+  [[ "$*" != *'RESET ALL; select json_build_object('* && "$*" == *'select json_build_object('* ]] || exit 58
   [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
   printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}}]}\n' \
-    "${MOCK_CLI_CONTEXT_SESSION_USER:-fixture_user}" \
-    "${MOCK_CLI_CONTEXT_CURRENT_USER:-fixture_user}" \
-    "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-fixture_user}}" \
+    "${MOCK_CLI_CONTEXT_SESSION_USER:-$expected_db_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
     "${MOCK_CLI_CONTEXT_ROLE_SETTING:-none}" \
-    "${MOCK_CLI_CONTEXT_OWNER:-fixture_user}" \
+    "${MOCK_CLI_CONTEXT_OWNER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_OWNER_ACCESS:-true}" \
     "${MOCK_CLI_CONTEXT_RELATION_ACCESS:-true}" \
     "${MOCK_CLI_CONTEXT_FUNCTION_ACCESS:-true}" \
@@ -192,9 +195,11 @@ cat > "$tmp/bin/psql" <<'MOCK'
 set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 41
 [[ "$*" == *'postgresql://fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
-[[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
+expected_db_user="${MOCK_DB_USER:-fixture_user}"
+expected_db_password='dummy!secret'
+[[ "${PGUSER:-}" == "$expected_db_user" && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
-grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
+grep -Fxq "*:*:*:$expected_db_user:$expected_db_password" "$PGPASSFILE" || exit 45
 [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 57
 psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
 printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
@@ -207,13 +212,17 @@ if [[ "$*" == *'select version from supabase_migrations.schema_migrations order 
   exit 0
 fi
 if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
-  [[ "$*" == *'RESET ALL; select json_build_object('* ]] || exit 58
+  if [[ "$expected_db_user" == 'supabase_admin' || "$expected_db_user" == cli_login_* ]]; then
+    [[ "$*" == *'SET SESSION ROLE postgres; RESET ALL; select json_build_object('* ]] || exit 58
+  else
+    [[ "$*" == *'RESET ALL; select json_build_object('* && "$*" != *'SET SESSION ROLE'* ]] || exit 58
+  fi
   printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}\n' \
-    "${MOCK_PSQL_CONTEXT_SESSION_USER:-fixture_user}" \
-    "${MOCK_PSQL_CONTEXT_CURRENT_USER:-fixture_user}" \
-    "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-fixture_user}}" \
+    "${MOCK_PSQL_CONTEXT_SESSION_USER:-$expected_db_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
     "${MOCK_PSQL_CONTEXT_ROLE_SETTING:-none}" \
-    "${MOCK_PSQL_CONTEXT_OWNER:-fixture_user}" \
+    "${MOCK_PSQL_CONTEXT_OWNER:-$expected_db_user}" \
     "${MOCK_PSQL_CONTEXT_OWNER_ACCESS:-true}" \
     "${MOCK_PSQL_CONTEXT_RELATION_ACCESS:-true}" \
     "${MOCK_PSQL_CONTEXT_FUNCTION_ACCESS:-true}" \
@@ -272,6 +281,30 @@ if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
   grep -q '^PROMOTION=DRY_RUN_ONLY$' <<< "$context_pass"
   [[ "$(cat "$cli_dry_run_count")" == '1' && "$(cat "$cli_apply_count")" == '0' ]]
 
+  # The Supabase CLI switches its privileged login names to postgres; RESET
+  # ALL preserves that role, and the read-only direct probe must match it.
+  printf '0\n' > "$cli_dry_run_count"
+  cli_login_context_pass="$(PATH="$tmp/bin:$PATH" \
+    TEST_DATABASE_USER=cli_login_fixture \
+    MOCK_CLI_CONTEXT_SESSION_USER=cli_login_fixture \
+    MOCK_CLI_CONTEXT_CURRENT_USER=postgres \
+    MOCK_CLI_CONTEXT_CURRENT_ROLE=postgres \
+    MOCK_CLI_CONTEXT_ROLE_SETTING=postgres \
+    MOCK_CLI_CONTEXT_OWNER=postgres \
+    MOCK_PSQL_CONTEXT_SESSION_USER=cli_login_fixture \
+    MOCK_PSQL_CONTEXT_CURRENT_USER=postgres \
+    MOCK_PSQL_CONTEXT_CURRENT_ROLE=postgres \
+    MOCK_PSQL_CONTEXT_ROLE_SETTING=postgres \
+    MOCK_PSQL_CONTEXT_OWNER=postgres \
+    DRY_RUN_OUTPUT_FILE_OVERRIDE= \
+    run_context_guard)"
+  grep -q '^DB_SESSION_USER=cli_login_fixture$' <<< "$cli_login_context_pass"
+  grep -q '^DB_CURRENT_USER=postgres$' <<< "$cli_login_context_pass"
+  grep -q '^DB_ROLE_SETTING=postgres$' <<< "$cli_login_context_pass"
+  grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$cli_login_context_pass"
+  grep -q '^PRECHECK=PASS$' <<< "$cli_login_context_pass"
+  [[ "$(cat "$cli_dry_run_count")" == '1' && "$(cat "$cli_apply_count")" == '0' ]]
+
   expect_context_rejected() {
     local expected_message="$1"
     shift
@@ -291,8 +324,10 @@ if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
 
   expect_context_rejected 'Supabase CLI and direct PostgreSQL session contexts differ' \
     MOCK_CLI_CONTEXT_CURRENT_USER=switched_role
-  expect_context_rejected 'database session identity differs from the explicit connection user' \
+  expect_context_rejected 'Supabase CLI effective role differs from the verified migration role' \
     MOCK_CLI_CONTEXT_ROLE_SETTING=switched_role MOCK_PSQL_CONTEXT_ROLE_SETTING=switched_role
+  expect_context_rejected 'Supabase CLI effective role differs from the verified migration role' \
+    MOCK_CLI_CONTEXT_CURRENT_USER=unexpected_role MOCK_PSQL_CONTEXT_CURRENT_USER=unexpected_role
   expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
     MOCK_CLI_CONTEXT_OWNER_ACCESS=false MOCK_PSQL_CONTEXT_OWNER_ACCESS=false
   expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
