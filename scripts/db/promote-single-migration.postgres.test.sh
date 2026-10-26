@@ -89,6 +89,25 @@ print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", u
 PY
 )"
 
+# `supabase db push` rebuilds the connection URL from pgconn.Config and does
+# not preserve sslmode=disable. Give the disposable service database a short-
+# lived self-signed certificate so the real CLI path can connect with TLS.
+openssl req -x509 -newkey rsa:2048 -nodes -days 1 \
+  -keyout "$tmp/promoter-postgres.key" -out "$tmp/promoter-postgres.crt" \
+  -subj '/CN=localhost' >/dev/null 2>&1
+docker cp "$tmp/promoter-postgres.key" "$db_container:/var/lib/postgresql/data/promoter-server.key" >/dev/null
+docker cp "$tmp/promoter-postgres.crt" "$db_container:/var/lib/postgresql/data/promoter-server.crt" >/dev/null
+docker exec "$db_container" sh -c \
+  'chown postgres:postgres /var/lib/postgresql/data/promoter-server.key /var/lib/postgresql/data/promoter-server.crt && chmod 600 /var/lib/postgresql/data/promoter-server.key && printf "\nssl = on\nssl_cert_file = '\''/var/lib/postgresql/data/promoter-server.crt'\''\nssl_key_file = '\''/var/lib/postgresql/data/promoter-server.key'\''\n" >> /var/lib/postgresql/data/postgresql.conf'
+docker restart "$db_container" >/dev/null
+for attempt in $(seq 1 30); do
+  if docker exec "$db_container" pg_isready -U postgres -d postgres >/dev/null 2>&1; then
+    break
+  fi
+  [[ "$attempt" -lt 30 ]] || { echo 'Disposable PostgreSQL did not restart with TLS enabled' >&2; exit 1; }
+  sleep 1
+done
+
 mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
 #!/usr/bin/env bash
