@@ -36,7 +36,7 @@ fi
 [[ -n "$raw_db_url" ]] || { echo 'Supabase local DB_URL unavailable' >&2; exit 1; }
 test_db_url="$(RAW_DB_URL="$raw_db_url" python3 - <<'PY'
 import os
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import urlsplit, urlunsplit
 
 parts = urlsplit(os.environ["RAW_DB_URL"])
 if parts.scheme not in ("postgres", "postgresql"):
@@ -45,12 +45,7 @@ if parts.hostname not in ("127.0.0.1", "localhost", "::1"):
     raise SystemExit("Refusing to run disposable migration proof against a non-loopback host")
 if not parts.username or not parts.password or not parts.port:
     raise SystemExit("Disposable PostgreSQL URL is missing connection fields")
-query = dict(parse_qsl(parts.query, keep_blank_values=True))
-# The GitHub Actions PostgreSQL service has no TLS listener. Keep the test URL
-# on the Supabase CLI's remote-connection path (so its cli_login_* role hook is
-# exercised) while explicitly disabling TLS for this disposable service only.
-query["sslmode"] = "disable"
-print(urlunsplit((parts.scheme, parts.netloc, "/promoter_historical_ci", urlencode(query), "")))
+print(urlunsplit((parts.scheme, parts.netloc, "/promoter_historical_ci", parts.query, "")))
 PY
 )"
 chronological_db_url="${test_db_url%/promoter_historical_ci}/promoter_chronological_ci"
@@ -67,11 +62,20 @@ fi
 executor_database=promoter_cli_executor_007_ci
 executor_role=cli_login_promoter_007_ci
 executor_password=promoter_ci_only_2026
-executor_owner_db_url="${test_db_url%/promoter_historical_ci}/${executor_database}"
+executor_owner_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" python3 - <<'PY'
+import os
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+parts = urlsplit(os.environ["BASE_DB_URL"])
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+query["sslmode"] = "disable"
+print(urlunsplit((parts.scheme, parts.netloc, f"/{os.environ['EXECUTOR_DATABASE']}", urlencode(query), "")))
+PY
+)"
 executor_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" \
   EXECUTOR_ROLE="$executor_role" EXECUTOR_PASSWORD="$executor_password" python3 - <<'PY'
 import os
-from urllib.parse import quote, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
 
 parts = urlsplit(os.environ["BASE_DB_URL"])
 host = f"[{parts.hostname}]" if ":" in (parts.hostname or "") else parts.hostname
@@ -79,7 +83,9 @@ netloc = (
     f"{quote(os.environ['EXECUTOR_ROLE'], safe='')}:"
     f"{quote(os.environ['EXECUTOR_PASSWORD'], safe='')}@{host}:{parts.port}"
 )
-print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", parts.query, "")))
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+query["sslmode"] = "disable"
+print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", urlencode(query), "")))
 PY
 )"
 
