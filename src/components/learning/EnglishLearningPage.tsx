@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
-import { tecEnglishService, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
+import { isMissingTecEnglishRpc, tecEnglishService, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result' | 'review';
 
@@ -51,6 +51,14 @@ export default function EnglishLearningPage() {
       if (mapResult.status === 'rejected') throw mapResult.reason;
       setCourseMap(mapResult.value);
       setLearningHome(homeResult.status === 'fulfilled' ? homeResult.value : null);
+      const warnings: string[] = [];
+      if (mapResult.value.additional_courses_error) {
+        warnings.push('Não foi possível verificar a disponibilidade do curso adaptativo. O percurso atual continua disponível.');
+      }
+      if (homeResult.status === 'rejected' && !isMissingTecEnglishRpc(homeResult.reason)) {
+        warnings.push('Não foi possível atualizar suas revisões adaptativas. Seu progresso no curso continua disponível.');
+      }
+      if (warnings.length) setPageError(warnings.join(' '));
     } catch {
       setPageError('Não foi possível carregar seu caminho de inglês agora. Tente novamente.');
     } finally {

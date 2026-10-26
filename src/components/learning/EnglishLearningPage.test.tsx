@@ -15,7 +15,10 @@ const api = vi.hoisted(() => ({
 }));
 
 vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ currentInstitutionId: 'institution-1' }) }));
-vi.mock('../../services/tecEnglishService', () => ({ tecEnglishService: api }));
+vi.mock('../../services/tecEnglishService', () => ({
+  tecEnglishService: api,
+  isMissingTecEnglishRpc: (error: unknown) => Boolean(error && typeof error === 'object' && 'code' in error && error.code === 'PGRST202'),
+}));
 
 import EnglishLearningPage from './EnglishLearningPage';
 import type { EnglishAnswerResult, EnglishCourseMap, EnglishLessonSession } from '../../services/tecEnglishService';
@@ -79,6 +82,17 @@ describe('EnglishLearningPage', () => {
     expect(screen.getByText(/em revisão pedagógica/i)).toBeTruthy();
     expect((screen.getByRole('button', { name: 'Aguardando revisão' }) as HTMLButtonElement).disabled).toBe(true);
     expect(screen.queryByText(/Plano diário|Química|Biologia|Caderno de Erros|V9/i)).toBeNull();
+  });
+
+  it('mantém o percurso V1 disponível e informa falhas inesperadas dos RPCs adaptativos', async () => {
+    api.getMap.mockResolvedValue({ ...makeMap(), additional_courses: [], additional_courses_error: true });
+    api.getLearningHome.mockRejectedValue(new Error('statement timeout'));
+    renderPage();
+
+    expect(await screen.findByRole('heading', { name: 'Lições de inglês' })).toBeTruthy();
+    expect(screen.getByText(/Não foi possível verificar a disponibilidade do curso adaptativo/)).toBeTruthy();
+    expect(screen.getByText(/Não foi possível atualizar suas revisões adaptativas/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Começar próxima lição' })).toBeTruthy();
   });
 
   it('exibe o próximo exercício de revisão e conclui a revisão por habilidade', async () => {

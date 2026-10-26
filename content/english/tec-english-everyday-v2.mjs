@@ -5,7 +5,7 @@ const choice = (skillCode, difficulty, instruction, prompt, options, answer, exp
 
 const order = (skillCode, difficulty, prompt, answer, explanation) => ({
   type: 'WORD_ORDER', skillCode, difficulty, instruction: 'Monte a frase na ordem correta.', prompt,
-  wordBank: answer.replace(/[.,!?]/g, '').split(' ').reverse().map((word, index) => index === 0 ? `${word}.` : word),
+  wordBank: answer.split(' ').reverse(),
   accepted: [answer], explanation,
 });
 
@@ -40,7 +40,7 @@ const dialogue = (skillCode, difficulty, speaker, prompt, options, answer, expla
 export const course = {
   course: {
     code: 'TEC_ENGLISH_FOUNDATIONS_V2',
-    version: 2,
+    version: 3,
     title: 'Inglês em conversas do cotidiano',
     description: 'Pratique rotinas, escola, família e lugares em diálogos curtos e situações do dia a dia.',
     author: 'Equipe de conteúdo Tec Escola',
@@ -101,7 +101,7 @@ export const course = {
         {
           id: 'english-v2-u4-l4', order: 4, title: 'Hábitos e frequência',
           description: 'Descreva hábitos simples com verbos no presente.',
-          objective: 'Usar o Simple Present introdutório com “I”, “we”, “he” e “she”.',
+          objective: 'Descrever hábitos no Simple Present e observar a concordância verbal com “he” e “she”.',
           introduction: 'No Simple Present, “he” e “she” normalmente recebem “-s” no verbo. Compare “I read” e “she reads”.',
           exercises: [
             dialogue('simple_present', 3, 'Ben', 'Does your brother walk to school?', ['Yes, he walks with a friend.', 'It is Wednesday.', 'The museum is across the street.'], 'Yes, he walks with a friend.', 'Com “he”, o verbo afirmativo “walk” recebe “-s”: “walks”.'),
@@ -145,7 +145,7 @@ export const course = {
             translation('family_vocabulary', 2, 'Meu primo mora com a família.', ['My cousin lives with his family.', 'My cousin lives with her family.'], 'O gênero de “cousin” não é indicado pela palavra em inglês; as duas formas são possíveis.'),
             listening('family_listening', 2, 'Quem mora com a pessoa?', 'My grandmother lives with us.', ['grandmother', 'my grandmother'], '“Grandmother” significa avó.'),
             matching('family_words', 2, { 'cousin': 'primo ou prima', 'grandmother': 'avó', 'brother': 'irmão' }, '“Cousin” serve para primo ou prima; o contexto informa a pessoa.'),
-            fill('family_vocabulary', 2, 'My mother’s son is my ___.', ['brother', 'classroom', 'Tuesday'], 'brother', 'O filho da sua mãe pode ser seu irmão.'),
+            fill('family_vocabulary', 2, 'My aunt’s son is my ___.', ['cousin', 'classroom', 'Tuesday'], 'cousin', 'O filho da sua tia ou do seu tio é seu primo ou sua prima.'),
             speaking('family_speaking', 2, 'Repita: “My family has dinner together.”', 'My family has dinner together.', ['My family has dinner together.'], 'O reconhecimento de voz apenas transcreve o que percebe; não mede fonética.'),
           ],
         },
@@ -167,11 +167,11 @@ export const course = {
         {
           id: 'english-v2-u5-l4', order: 4, title: 'Objetos e perguntas',
           description: 'Pergunte sobre objetos e combine respostas naturais.',
-          objective: 'Usar “this”, “that”, “where” e perguntas curtas sobre objetos e lugares.',
+          objective: 'Usar “this”, “where” e expressões de posição em perguntas curtas sobre objetos e lugares.',
           introduction: 'Perguntas simples ajudam a descobrir o que é um objeto ou onde está. Preste atenção na resposta e mantenha o diálogo.',
           exercises: [
             dialogue('object_questions', 2, 'Maya', 'What is this?', ['It is a map of the city.', 'I wake up at seven.', 'He visits on Sunday.'], 'It is a map of the city.', '“What is this?” pergunta o que é o objeto apresentado.'),
-            dialogue('object_questions', 3, 'Maya', 'Where can I find the history book?', ['It is on the shelf by the window.', 'My brother is thirteen.', 'We play soccer on Saturday.'], 'It is on the shelf by the window.', 'A resposta indica o lugar do livro.', [{ speaker: 'Maya', text: 'What is this?' }, { speaker: 'Você', text: 'It is a map of the city.' }]),
+            dialogue('object_questions', 3, 'Maya', 'Where can I find the history book?', ['It is on the shelf by the window.', 'My brother is thirteen.', 'We play soccer on Saturday.'], 'It is on the shelf by the window.', 'A resposta indica o lugar do livro.', [{ speaker: 'Maya', text: 'I need the history book for class.' }, { speaker: 'Você', text: 'Let’s look for it in the library.' }]),
             order('object_questions', 3, 'Monte: “Onde fica a entrada do museu?”', 'Where is the museum entrance?', 'Em perguntas com “where”, o lugar vem depois do verbo “is”.'),
             translation('object_questions', 2, 'A chave está sobre a mesa.', ['The key is on the table.'], '“On the table” significa sobre a mesa.'),
             listening('object_listening', 3, 'Onde está a mochila?', 'The backpack is under the chair.', ['under the chair'], '“Under the chair” significa embaixo da cadeira.'),

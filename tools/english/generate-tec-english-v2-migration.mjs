@@ -21,7 +21,7 @@ function sqlJson(value) {
 }
 
 function validate(course) {
-  if (course.course?.code !== 'TEC_ENGLISH_FOUNDATIONS_V2' || course.course.version !== 2) fail('invalid course identity/version');
+  if (course.course?.code !== 'TEC_ENGLISH_FOUNDATIONS_V2' || course.course.version !== 3) fail('invalid course identity/version');
   if (course.course.publicationStatus !== 'STAGING' || course.course.reviewStatus !== 'PEDAGOGICAL_REVIEW_PENDING') fail('V2 content must remain staged and pending human review');
   if (course.units?.length !== 2 || course.units.some((unit) => unit.lessons?.length !== 4)) fail('expected 2 units with 4 lessons each');
   const lessons = course.units.flatMap((unit) => unit.lessons);
@@ -39,15 +39,23 @@ function validate(course) {
       if (!exercise.prompt?.trim() || !exercise.instruction?.trim() || !exercise.explanation?.trim()) fail(`${lesson.id} exercise ${index + 1} has incomplete feedback`);
       if (!Number.isInteger(exercise.difficulty) || exercise.difficulty < 1 || exercise.difficulty > 5) fail(`${lesson.id} exercise ${index + 1} has invalid difficulty`);
       if (exercise.type === 'MATCHING') {
-        if (Object.keys(exercise.answerKey?.pairs ?? {}).length < 2 || !exercise.leftItems || !exercise.rightItems) fail(`${lesson.id} exercise ${index + 1} has invalid pairs`);
+        const pairs = exercise.answerKey?.pairs ?? {};
+        if (Object.keys(pairs).length < 2 || !exercise.leftItems || !exercise.rightItems) fail(`${lesson.id} exercise ${index + 1} has invalid pairs`);
+        if (Object.keys(pairs).some((left) => !exercise.leftItems.includes(left) || !exercise.rightItems.includes(pairs[left]))) fail(`${lesson.id} exercise ${index + 1} has mismatched pairs`);
       } else if (!Array.isArray(exercise.accepted) || exercise.accepted.length === 0) fail(`${lesson.id} exercise ${index + 1} has no accepted answer`);
+      if (['MULTIPLE_CHOICE', 'FILL_BLANK'].includes(exercise.type) && !exercise.accepted.some((answer) => exercise.options.includes(answer))) fail(`${lesson.id} exercise ${index + 1} has no accepted option`);
+      if (exercise.type === 'WORD_ORDER') {
+        const expectedWordBank = exercise.accepted[0].split(' ').reverse();
+        if (JSON.stringify(exercise.wordBank) !== JSON.stringify(expectedWordBank)) fail(`${lesson.id} exercise ${index + 1} word bank does not preserve answer punctuation/order`);
+      }
+      if (['LISTENING', 'SPEAKING'].includes(exercise.type) && !exercise.audioText?.trim()) fail(`${lesson.id} exercise ${index + 1} has no audio text`);
       if (exercise.dialogueSpeaker && !exercise.dialogueContext.every((turn) => turn.speaker && turn.text)) fail(`${lesson.id} exercise ${index + 1} has invalid dialogue context`);
       const id = `${lesson.id}-e${index + 1}`;
       if (exerciseIds.has(id)) fail(`duplicate exercise ID ${id}`);
       exerciseIds.add(id);
     }
   }
-  if (skillCodes.size < 8) fail(`expected at least 8 skill codes, received ${skillCodes.size}`);
+  if (skillCodes.size !== 28) fail(`expected exactly 28 skill codes, received ${skillCodes.size}`);
   return { lessons, skillCodes };
 }
 

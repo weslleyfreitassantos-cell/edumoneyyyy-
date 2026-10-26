@@ -400,12 +400,18 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       if (!wrongV2Choice) throw new Error('V2 dialogue exercise must have at least one incorrect option.');
       const wrongV2Response = { choice: wrongV2Choice };
       const wrongV2Key = crypto.randomUUID();
-      const wrongV2Attempt = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key);
+      const [wrongV2Attempt, wrongV2Replay] = await Promise.all([
+        submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key),
+        submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key),
+      ]);
       expect(wrongV2Attempt.error).toBeNull();
       expect(wrongV2Attempt.data.is_correct).toBe(false);
-      const wrongV2Replay = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, wrongV2Response, wrongV2Key);
       expect(wrongV2Replay.error).toBeNull();
       expect(wrongV2Replay.data).toEqual(wrongV2Attempt.data);
+      const concurrentReplayCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id).eq('idempotency_key', wrongV2Key);
+      expect(concurrentReplayCount.error).toBeNull();
+      expect(concurrentReplayCount.count).toBe(1);
       const v2Home = await probe.client.rpc('get_tec_english_learning_home_v2', { p_institution_id: institution.id });
       expect(v2Home.error).toBeNull();
       expect(v2Home.data.due_reviews).toBeGreaterThan(0);
@@ -442,6 +448,16 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
       const xpAfterReview = await service.from('tec_english_student_stats').select('xp').eq('student_id', studentIds.get(probe.id)).single();
       expect(xpAfterReview.data?.xp ?? 0).toBe(xpBeforeReview.data?.xp ?? 0);
 
+      const makeReviewDueAgain = await service.from('tec_english_skill_mastery_v2')
+        .update({ next_review_at: new Date(Date.now() - 60_000).toISOString() })
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', firstV2Exercise.skill_code);
+      expect(makeReviewDueAgain.error).toBeNull();
+      const nextReview = await probe.client.rpc('start_tec_english_skill_review_v2', {
+        p_institution_id: institution.id, p_skill_code: firstV2Exercise.skill_code,
+      });
+      expect(nextReview.error).toBeNull();
+      expect(nextReview.data.exercise.id).not.toBe(reviewExerciseId);
+
       const correctV2First = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, firstV2Exercise, responseFor(firstV2Exercise));
       expect(correctV2First.error).toBeNull();
       expect(correctV2First.data.is_correct).toBe(true);
@@ -453,6 +469,48 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
         .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', firstV2Exercise.skill_code).single();
       expect(adaptiveMastery.error).toBeNull();
       expect(adaptiveMastery.data).toMatchObject({ difficulty_level: 2, correct_streak: 3, interval_days: 7 });
+
+      const thirdV2Exercise = firstV2Lesson.exercises[2];
+      const wrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
+      expect(wrongWordOrder.error).toBeNull();
+      expect(wrongWordOrder.data).toMatchObject({ is_correct: false, explanation: thirdV2Exercise.explanation });
+      const secondWrongWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise, { tokens: ['wrong', 'order'] });
+      expect(secondWrongWordOrder.error).toBeNull();
+      expect(secondWrongWordOrder.data.is_correct).toBe(false);
+      const regressedMastery = await service.from('tec_english_skill_mastery_v2').select('difficulty_level,incorrect_streak,interval_days')
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
+      expect(regressedMastery.error).toBeNull();
+      expect(regressedMastery.data).toMatchObject({ difficulty_level: 2, incorrect_streak: 2, interval_days: 0 });
+      const correctedWordOrder = await submitV2Rpc(probe, institution.id, fixtureV2.courseCode, v2Session.session_id, thirdV2Exercise);
+      expect(correctedWordOrder.error).toBeNull();
+      expect(correctedWordOrder.data.is_correct).toBe(true);
+      const distinctSkillMastery = await service.from('tec_english_skill_mastery_v2').select('incorrect_streak,correct_streak')
+        .eq('institution_id', institution.id).eq('student_id', studentIds.get(probe.id)).eq('skill_code', thirdV2Exercise.skill_code).single();
+      expect(distinctSkillMastery.error).toBeNull();
+      expect(distinctSkillMastery.data).toMatchObject({ incorrect_streak: 0, correct_streak: 1 });
+
+      const attemptCountBeforeLoad = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id);
+      expect(attemptCountBeforeLoad.error).toBeNull();
+      const loadAttempts = Array.from({ length: 250 }, (_, index) => ({
+        institution_id: institution.id,
+        student_id: studentIds.get(probe.id),
+        session_id: v2Session.session_id,
+        exercise_id: firstV2Exercise.id,
+        idempotency_key: crypto.randomUUID(),
+        response: { qualification_probe: index },
+        is_correct: index % 2 === 0,
+        result_payload: { qualification_probe: true },
+      }));
+      const loadStartedAt = Date.now();
+      const loadInsert = await service.from('tec_english_answer_attempts').insert(loadAttempts);
+      const loadElapsedMs = Date.now() - loadStartedAt;
+      expect(loadInsert.error).toBeNull();
+      expect(loadElapsedMs).toBeLessThan(15_000);
+      const attemptCountAfterLoad = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('session_id', v2Session.session_id);
+      expect(attemptCountAfterLoad.error).toBeNull();
+      expect(attemptCountAfterLoad.count).toBe((attemptCountBeforeLoad.count ?? 0) + 250);
 
       const directAnswerRead = await probe.client.from('tec_english_exercises').select('answer_key').eq('id', fixture.exercises[0].id).maybeSingle();
       expect(directAnswerRead.error).not.toBeNull();

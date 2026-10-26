@@ -43,6 +43,7 @@ export interface EnglishCourseMap {
   total_lessons: number;
   continue_lesson_id: string | null;
   additional_courses?: EnglishCourseMap[];
+  additional_courses_error?: boolean;
 }
 
 export interface EnglishExercise {
@@ -226,6 +227,17 @@ function unwrap<T>(data: T | null, error: { message: string } | null, operation:
   return data;
 }
 
+export function isMissingTecEnglishRpc(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false;
+  const candidate = error as { code?: unknown; message?: unknown };
+  return candidate.code === 'PGRST202'
+    || (typeof candidate.message === 'string' && candidate.message.includes('Could not find the function'));
+}
+
+function isExpectedV2CourseUnavailable(error: { code?: string; message?: string } | null): boolean {
+  return error?.code === '42501' && error.message?.includes('TEC_ENGLISH_COURSE_NOT_AVAILABLE') === true;
+}
+
 export const tecEnglishService = {
   async getMap(institutionId: string): Promise<EnglishCourseMap> {
     const { data, error } = await supabase.rpc('get_tec_english_map_v1', { p_institution_id: institutionId });
@@ -235,18 +247,26 @@ export const tecEnglishService = {
       lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: base.course.code })),
     })) };
     let v2: EnglishCourseMap | null = null;
+    let v2LoadError = false;
     for (const courseCode of ['TEC_ENGLISH_FOUNDATIONS_V2', 'TEC_ENGLISH_FOUNDATIONS_V2_TEST']) {
       try {
         const response = await supabase.rpc('get_tec_english_course_map_v2', {
           p_institution_id: institutionId,
           p_course_code: courseCode,
         });
-        if (!response.error && response.data) {
+        if (isExpectedV2CourseUnavailable(response.error)) continue;
+        if (response.error) {
+          if (isMissingTecEnglishRpc(response.error)) continue;
+          v2LoadError = true;
+          break;
+        }
+        if (response.data) {
           v2 = response.data as EnglishCourseMap;
           break;
         }
       } catch {
-        // V2 is optional while the backend is rolling out; keep the V1 map usable.
+        v2LoadError = true;
+        break;
       }
     }
     if (v2) {
@@ -256,7 +276,7 @@ export const tecEnglishService = {
         lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: v2CourseCode })),
       })) };
     }
-    return { ...primary, additional_courses: v2 ? [v2] : [] };
+    return { ...primary, additional_courses: v2 ? [v2] : [], additional_courses_error: v2LoadError };
   },
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
