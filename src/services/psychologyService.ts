@@ -26,6 +26,7 @@ export type PsychologyErrorCode =
   | 'PROFESSIONAL_NOT_FOUND'
   | 'ASSIGNMENT_NOT_FOUND'
   | 'INVALID_DATE_RANGE'
+  | 'MODULE_DISABLED'
   | 'UNKNOWN';
 
 export class PsychologyServiceError extends Error {
@@ -55,6 +56,7 @@ const knownErrors = new Set<PsychologyErrorCode>([
   'PROFESSIONAL_NOT_FOUND',
   'ASSIGNMENT_NOT_FOUND',
   'INVALID_DATE_RANGE',
+  'MODULE_DISABLED',
 ]);
 
 function toSafeError(error: { code?: string; message?: string }): PsychologyServiceError {
@@ -211,6 +213,12 @@ export interface PsychologyMessageSubscription {
 export const psychologyService = {
   moduleEnabled(institutionId: string) {
     return rpc<boolean>('psychology_module_enabled', {
+      target_institution_id: institutionId,
+    });
+  },
+
+  canManageModule(institutionId: string) {
+    return rpc<boolean>('psychology_can_manage_module', {
       target_institution_id: institutionId,
     });
   },
@@ -514,6 +522,7 @@ export function psychologyErrorMessage(error: unknown): string {
     PROFESSIONAL_NOT_FOUND: 'O perfil profissional não está disponível nesta instituição.',
     ASSIGNMENT_NOT_FOUND: 'Esse vínculo não está ativo. Atualize a lista antes de tentar novamente.',
     INVALID_DATE_RANGE: 'O intervalo de datas não é válido.',
+    MODULE_DISABLED: 'O Apoio psicológico está desativado nesta instituição.',
     UNKNOWN: 'Não foi possível concluir a operação. Tente novamente mais tarde.',
   };
   return messages[code];
