@@ -52,7 +52,7 @@ elif grep -qx 'postgres.dump' <<< "$entries" && grep -qx 'MANIFEST.txt' <<< "$en
   [[ "$(grep -Fxc -- 'MANIFEST.txt' <<< "$entries")" == 1 && "$(grep -Fxc -- 'SHA256SUMS' <<< "$entries")" == 1 ]] || { printf 'FAIL: bundle manifest or checksums entry is missing or duplicated.\n' >&2; exit 1; }
   tar -xf "$verify_work/backup.tar" -C "$verify_work" -- postgres.dump globals.sql supabase-meta.dump storage.tar.gz config.tar.gz MANIFEST.txt SHA256SUMS
   [[ "$(wc -l < "$verify_work/SHA256SUMS" | tr -d ' ')" == 5 ]] || { printf 'FAIL: production bundle checksum list has an unexpected entry count.\n' >&2; exit 1; }
-  (cd -- "$verify_work" && sha256sum -c -s SHA256SUMS) || { printf 'FAIL: production bundle component checksum mismatch.\n' >&2; exit 1; }
+  (cd -- "$verify_work" && sha256sum --check --status SHA256SUMS) || { printf 'FAIL: production bundle component checksum mismatch.\n' >&2; exit 1; }
 else
   printf 'FAIL: archive layout is not a supported PostgreSQL backup.\n' >&2
   exit 1

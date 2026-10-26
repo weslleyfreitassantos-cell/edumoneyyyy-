@@ -485,7 +485,7 @@ cat > "$tmp/bin/git" <<'SH'
 #!/usr/bin/env bash
 if [[ "$#" -eq 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
   "$3" == 'branch' && "$4" == '--show-current' ]]; then
-  printf '%s\n' 'codex/psychology-gate-ux'
+  printf '%s\n' "${PROMOTION_TEST_BRANCH:-codex/psychology-gate-ux}"
   exit 0
 fi
 if [[ "$#" -eq 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
@@ -572,6 +572,148 @@ if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO
 fi
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR409_LOCAL_ONLY=PASS'
+
+# PR #411 has a separate local-only exception, pinned to its branch, repository,
+# parent ledger, one migration hash, fresh isolated-restore receipt and explicit
+# risk/write acknowledgements. The synthetic bundle above is test-only.
+psychology_411_version=20261026000200
+psychology_411_file="$repo_root/supabase/migrations/${psychology_411_version}_psychology_professional_school_staff_gate.sql"
+[[ -f "$psychology_411_file" ]]
+psychology_411_hash="$(sed 's/\r$//' "$psychology_411_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$psychology_411_hash" == 'da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa' ]]
+local_ledger_411="$tmp/pr411-local-ledger"
+local_dry_run_411="$tmp/pr411-local-dry-run"
+printf '20261026000100\n' > "$local_ledger_411"
+printf 'Would push migration %s\n' "$psychology_411_version" > "$local_dry_run_411"
+printf '0\n' > "$cli_apply_count"
+local_output_411="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" \
+  TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" \
+  run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION=PR411_LOCAL_ONLY' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_PR=411' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000200' <<< "$local_output_411"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$local_output_411"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_411"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261026000200' <<< "$local_output_411"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output_411"
+! grep -q '20261025000700' <<< "$local_output_411"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr411_rejected() {
+  local branch="${TEST_PR411_BRANCH-codex/psychology-school-staff-access}"
+  local pr="${TEST_PR411_PR-411}"
+  local target="${TEST_PR411_TARGET-$psychology_411_version}"
+  local expected_last_411="${TEST_PR411_REMOTE_LAST-20261026000100}"
+  local target_hash_411="${TEST_PR411_HASH-$psychology_411_hash}"
+  local offsite="${TEST_PR411_OFFSITE-FAIL}"
+  local storage="${TEST_PR411_STORAGE-PARTIAL}"
+  local risk="${TEST_PR411_RISK-I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411}"
+  local receipt="${TEST_PR411_RECEIPT-$local_receipt}"
+  local dry_run_411="$tmp/pr411-rejected-$RANDOM"
+  printf 'Would push migration %s\n' "$psychology_411_version" > "$dry_run_411"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+    PROMOTION_TEST_BRANCH="$branch" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+    TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR="$pr" \
+    BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+    BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$receipt" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+    BACKUP_EXCEPTION_OFFSITE_STATUS="$offsite" BACKUP_EXCEPTION_STORAGE_STATUS="$storage" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="$risk" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$expected_last_411" \
+    TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+    TEST_TARGET_VERSION="$target" TEST_TARGET_SHA256="$target_hash_411" \
+    TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$dry_run_411" run_guard \
+    >"$tmp/pr411-rejection" 2>&1; then
+    echo 'invalid PR #411 local-only exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR411_BRANCH=codex/another-branch expect_pr411_rejected
+TEST_PR411_PR=409 expect_pr411_rejected
+TEST_PR411_TARGET=20261025000700 expect_pr411_rejected
+TEST_PR411_REMOTE_LAST=20261025000600 expect_pr411_rejected
+TEST_PR411_HASH=bad expect_pr411_rejected
+TEST_PR411_OFFSITE=PASS expect_pr411_rejected
+TEST_PR411_STORAGE=FAIL expect_pr411_rejected
+TEST_PR411_RISK= expect_pr411_rejected
+TEST_PR411_RECEIPT="$tmp/missing-pr411-restore-proof" expect_pr411_rejected
+unset TEST_PR411_BRANCH TEST_PR411_PR TEST_PR411_TARGET TEST_PR411_REMOTE_LAST TEST_PR411_HASH \
+  TEST_PR411_OFFSITE TEST_PR411_STORAGE TEST_PR411_RISK TEST_PR411_RECEIPT
+
+printf '0\n' > "$cli_apply_count"
+applied_411="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  ACCEPT_NO_OFFSITE_COPY=I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_411 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" \
+  TEST_AFTER_LEDGER_CONTENT="20261026000100
+20261026000200" run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_411"
+grep -Fxq 'BACKUP_EXCEPTION=PR411_LOCAL_ONLY' <<< "$applied_411"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_411"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_411"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_411"
+grep -Fxq 'REMOTE_AFTER_LAST=20261026000200' <<< "$applied_411"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+printf '0\n' > "$cli_apply_count"
+if PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" run_guard \
+  >/dev/null 2>&1; then
+  echo 'PR #411 local-only exception unexpectedly wrote without the offsite-risk acknowledgement' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR411_LOCAL_ONLY=PASS'
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2

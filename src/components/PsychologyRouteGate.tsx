@@ -38,6 +38,9 @@ export function PsychologyRouteGate({ children }: PsychologyRouteGateProps) {
     role,
   );
   const section = location.pathname.split('/')[2] || 'agendar';
+  if (section === 'autorizacao' && role === 'STUDENT') {
+    return <Navigate to="/psychology/agendar" replace />;
+  }
   const isConfiguration = section === 'configuracao';
   const canConfigure = role === 'DIRECTOR' || status.canManage === true;
 

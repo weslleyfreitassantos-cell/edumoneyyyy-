@@ -68,6 +68,12 @@ psychology_409_expected_remote_last='20261025000600'
 psychology_409_offsite_status='FAIL'
 psychology_409_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
 psychology_409_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
+psychology_411_branch='codex/psychology-school-staff-access'
+psychology_411_version='20261026000200'
+psychology_411_sha256='da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa'
+psychology_411_expected_remote_last='20261026000100'
+psychology_411_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+psychology_411_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
 connection_fields=()
 while IFS= read -r -d '' field; do
@@ -241,6 +247,51 @@ validate_backup_gate() {
             abort "local recovery proof returned incomplete evidence"
           backup_exception='PR409_LOCAL_ONLY'
           ;;
+        411)
+          [[ "${target_version}" == "${psychology_411_version}" && \
+            "${expected_remote_last}" == "${psychology_411_expected_remote_last}" ]] || \
+            abort "PR #411 exception is restricted to migration 20261026000200 after 20261026000100"
+          [[ "${expected_target_sha256,,}" == "${psychology_411_sha256}" && \
+            "${actual_target_sha256,,}" == "${psychology_411_sha256}" ]] || \
+            abort "PR #411 exception target hash does not match the approved Psychology migration"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #411 source branch"
+          [[ "${current_branch}" == "${psychology_411_branch}" ]] || \
+            abort "PR #411 exception is restricted to branch ${psychology_411_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #411 repository"
+          [[ "${origin_url}" == "${psychology_411_origin_https}" || \
+            "${origin_url}" == "${psychology_411_origin_ssh}" ]] || \
+            abort "PR #411 exception is restricted to the canonical Tec Escola repository"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" == 'FAIL' ]] || \
+            abort "PR #411 local-only exception must record OFFSITE as FAIL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "PR #411 local-only exception must record Storage recovery as PARTIAL"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411' ]] || \
+            abort "explicit PR #411 local-only recovery risk acceptance is missing"
+          [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+            abort "recent local backup file is unavailable"
+          receipt_file="${BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE:-}"
+          [[ -n "${receipt_file}" && -f "${receipt_file}" ]] || \
+            abort "isolated PostgreSQL restore proof receipt is unavailable"
+          command -v "${python3_bin}" >/dev/null 2>&1 || abort "python3 is required to validate the local recovery proof"
+          proof_output="$("${python3_bin}" "${repo_root}/ops/backup/verify-local-recovery-proof.py" \
+            --backup-file "${backup_file}" \
+            --receipt-file "${receipt_file}" \
+            --expected-sha256 "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" \
+            --repo-root "${repo_root}" \
+            --bundle-verifier "${repo_root}/ops/backup/verify-edumoney-bundle-stream.py" 2>&1)" || \
+            abort "PR #411 local backup or isolated restore proof is invalid"
+          grep -Fxq 'LOCAL_RECOVERY_PROOF=PASS' <<< "${proof_output}" || \
+            abort "PR #411 local recovery proof did not report PASS"
+          backup_exception_backup_sha256="$(awk -F= '$1 == "BACKUP_SHA256" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_backup_bytes="$(awk -F= '$1 == "BACKUP_BYTES" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_restore_verified_at="$(awk -F= '$1 == "RESTORE_VERIFIED_AT_UTC" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          [[ -n "${backup_exception_backup_sha256}" && -n "${backup_exception_backup_bytes}" && \
+            -n "${backup_exception_restore_verified_at}" ]] || \
+            abort "PR #411 local recovery proof returned incomplete evidence"
+          backup_exception='PR411_LOCAL_ONLY'
+          ;;
         *)
           abort "backup gate is FAIL and no narrowly scoped exception was selected"
           ;;
@@ -258,6 +309,13 @@ authorize_production_write() {
       abort "PR #409 production write requires its specific migration authorization"
     [[ "${ACCEPT_NO_OFFSITE_COPY:-}" == 'I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_409' ]] || \
       abort "PR #409 production write requires explicit acceptance of the missing offsite copy"
+  elif [[ "${backup_exception}" == 'PR411_LOCAL_ONLY' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200' ]] || \
+      abort "PR #411 production write requires its single-migration confirmation"
+    [[ "${ACCEPT_NO_OFFSITE_COPY:-}" == 'I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_411' ]] || \
+      abort "PR #411 production write requires explicit acceptance of the missing offsite copy"
+    [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411' ]] || \
+      abort "PR #411 production write requires explicit acceptance of local-only recovery risk"
   else
     [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
       abort "production write confirmation is missing"
@@ -457,6 +515,17 @@ elif [[ "${backup_exception}" == 'RELEASE_399_ACCEPTED' ]]; then
   printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
   printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR411_LOCAL_ONLY' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=411\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${psychology_411_version}"
+  printf 'BACKUP_EXCEPTION_LOCAL_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_LOCAL_BYTES=%s\n' "${backup_exception_backup_bytes}"
+  printf 'BACKUP_EXCEPTION_RESTORE=PASS\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY_STORAGE_PARTIAL\n'
   printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
 fi
 

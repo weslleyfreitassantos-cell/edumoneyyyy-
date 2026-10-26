@@ -117,10 +117,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       auth: { autoRefreshToken: false, persistSession: false },
     });
     const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-    const [director, secretary, platformAdmin, psychologist, otherPsychologist, student, unrelatedStudent, guardian, minor, otherInstitutionStudent] = await Promise.all([
+    const [director, secretary, platformAdmin, schoolAdmin, multiRoleAdmin, inactiveDirector, foreignDirector, psychologist, otherPsychologist, student, unrelatedStudent, guardian, minor, otherInstitutionStudent] = await Promise.all([
       createActor(service, 'DIRECTOR', `${suffix}-director`),
       createActor(service, 'SECRETARY', `${suffix}-secretary`),
       createActor(service, 'ADMIN', `${suffix}-platform-admin`, 'SUPER_ADMIN'),
+      createActor(service, 'ADMIN', `${suffix}-school-admin`),
+      createActor(service, 'ADMIN', `${suffix}-multi-role-admin`),
+      createActor(service, 'DIRECTOR', `${suffix}-inactive-director`),
+      createActor(service, 'DIRECTOR', `${suffix}-foreign-director`),
       createActor(service, 'PSYCHOLOGIST', `${suffix}-psychologist`),
       createActor(service, 'PSYCHOLOGIST', `${suffix}-other-psychologist`),
       createActor(service, 'STUDENT', `${suffix}-student`),
@@ -155,10 +159,29 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
         active: true,
       });
     }
+    for (const [actor, role, active] of [
+      [schoolAdmin, 'ADMIN', true],
+      [multiRoleAdmin, 'ADMIN', true],
+      [multiRoleAdmin, 'DIRECTOR', true],
+      [inactiveDirector, 'DIRECTOR', false],
+    ] as Array<[Actor, string, boolean]>) {
+      await insertOne(service, 'memberships', {
+        profile_id: actor.id,
+        institution_id: institution.id,
+        role,
+        active,
+      });
+    }
     await insertOne(service, 'memberships', {
       profile_id: otherInstitutionStudent.id,
       institution_id: otherInstitution.id,
       role: 'STUDENT',
+      active: true,
+    });
+    await insertOne(service, 'memberships', {
+      profile_id: foreignDirector.id,
+      institution_id: otherInstitution.id,
+      role: 'DIRECTOR',
       active: true,
     });
 
@@ -280,6 +303,43 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(guardianRevocation.error).toBeNull();
 
+    const unauthorizedProfessionalManagers = await Promise.all([
+      platformAdmin.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11111',
+        target_crp_state: 'BA',
+      }),
+      schoolAdmin.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11112',
+        target_crp_state: 'BA',
+      }),
+      inactiveDirector.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11113',
+        target_crp_state: 'BA',
+      }),
+      foreignDirector.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11114',
+        target_crp_state: 'BA',
+      }),
+    ]);
+    expect(unauthorizedProfessionalManagers.map((result) => result.error?.code))
+      .toEqual(['P0001', 'P0001', 'P0001', 'P0001']);
+
+    const multiRoleRegistration = await multiRoleAdmin.client.rpc('psychology_register_professional', {
+      target_institution_id: institution.id,
+      target_profile_id: psychologist.id,
+      target_crp_registration: '03/11222',
+      target_crp_state: 'BA',
+    });
+    expect(multiRoleRegistration.error).toBeNull();
+
     const registered = await director.client.rpc('psychology_register_professional', {
       target_institution_id: institution.id,
       target_profile_id: psychologist.id,
@@ -311,14 +371,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(verified.error).toBeNull();
 
-    const otherProfessionalRegistered = await director.client.rpc('psychology_register_professional', {
+    const otherProfessionalRegistered = await secretary.client.rpc('psychology_register_professional', {
       target_institution_id: institution.id,
       target_profile_id: otherPsychologist.id,
       target_crp_registration: '03/67890',
       target_crp_state: 'BA',
     });
     expect(otherProfessionalRegistered.error).toBeNull();
-    const otherProfessionalVerified = await director.client.rpc('psychology_verify_professional', {
+    const otherProfessionalVerified = await secretary.client.rpc('psychology_verify_professional', {
       target_institution_id: institution.id,
       target_profile_id: otherPsychologist.id,
       human_crp_verified: true,

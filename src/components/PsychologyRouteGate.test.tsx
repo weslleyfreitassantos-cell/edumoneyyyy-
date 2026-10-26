@@ -22,7 +22,7 @@ function renderGate(path: string) {
   return render(
     <MemoryRouter initialEntries={[path]}>
       <Routes>
-        <Route path="/psychology/*" element={<PsychologyRouteGate><p>Conteúdo protegido</p></PsychologyRouteGate>} />
+        <Route path="/psychology/*" element={<PsychologyRouteGate><><p>Conteúdo protegido</p><LocationProbe /></></PsychologyRouteGate>} />
         <Route path="*" element={<LocationProbe />} />
       </Routes>
     </MemoryRouter>,
@@ -57,6 +57,17 @@ describe('PsychologyRouteGate', () => {
 
     renderGate('/psychology/configuracao');
 
+    expect(screen.getByText('Conteúdo protegido')).not.toBeNull();
+  });
+
+  it('redirects the student authorization route into the booking flow', () => {
+    mockAuth.mockReturnValue({ profile: { id: 'student-1', role: 'STUDENT' } } as ReturnType<typeof useAuth>);
+    mockInstitution.mockReturnValue({ currentInstitutionId: 'school-1', currentRole: 'STUDENT' } as ReturnType<typeof useInstitution>);
+    mockStatus.mockReturnValue({ state: 'enabled', canManage: false });
+
+    renderGate('/psychology/autorizacao');
+
+    expect(screen.getByTestId('current-route').textContent).toBe('/psychology/agendar');
     expect(screen.getByText('Conteúdo protegido')).not.toBeNull();
   });
 
