@@ -14,10 +14,12 @@ db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' |
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_cli_executor_007_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
+  docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci;' >/dev/null 2>&1 || true
   rm -rf -- "$tmp"
 }
 trap cleanup EXIT
@@ -52,6 +54,24 @@ if [[ -z "${promotion_test_supabase_bin}" ]]; then
     promotion_test_supabase_bin="${repo_root}/node_modules/.bin/supabase"
   fi
 fi
+
+executor_database=promoter_cli_executor_007_ci
+executor_role=cli_login_promoter_007_ci
+executor_password=promoter_ci_only_2026
+executor_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" \
+  EXECUTOR_ROLE="$executor_role" EXECUTOR_PASSWORD="$executor_password" python3 - <<'PY'
+import os
+from urllib.parse import quote, urlsplit, urlunsplit
+
+parts = urlsplit(os.environ["BASE_DB_URL"])
+host = f"[{parts.hostname}]" if ":" in (parts.hostname or "") else parts.hostname
+netloc = (
+    f"{quote(os.environ['EXECUTOR_ROLE'], safe='')}:"
+    f"{quote(os.environ['EXECUTOR_PASSWORD'], safe='')}@{host}:{parts.port}"
+)
+print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", parts.query, "")))
+PY
+)"
 
 mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
@@ -314,3 +334,123 @@ exception_function_count="$(docker exec "$db_container" psql -U postgres -d "$ex
    where n.nspname = 'public' and p.proname = 'get_recommended_guided_study_v10';")"
 [[ "$exception_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_BACKUP_EXCEPTION_399=PASS'
+
+# The real Supabase CLI temporarily switches cli_login_* connections to
+# postgres, then its migration executor runs RESET ALL before each file. Prove
+# that the same CLI and the actual 007 migration lose that role and fail at its
+# first ownership-requiring statement in a disposable PostgreSQL database.
+executor_fixture="$tmp/source-cli-executor-007"
+mkdir -p "$executor_fixture/supabase/migrations"
+printf 'project_id = "migration-promoter-cli-executor-ci"\n' > "$executor_fixture/supabase/config.toml"
+printf 'select 1;\n' > "$executor_fixture/supabase/migrations/20261025000600_baseline.sql"
+cp "$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql" \
+  "$executor_fixture/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
+
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE ROLE $executor_role LOGIN NOINHERIT PASSWORD '$executor_password';" >/dev/null
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "GRANT postgres TO $executor_role;" >/dev/null
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $executor_database;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR_STOP=1 \
+  -c "CREATE SCHEMA supabase_migrations;
+      CREATE TABLE supabase_migrations.schema_migrations (
+        version text PRIMARY KEY NOT NULL,
+        statements text[],
+        name text
+      );
+      INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+        VALUES ('20261025000600', ARRAY[]::text[], 'baseline');
+      CREATE TABLE public.learning_central_studies_v2_candidates (publication_status text NOT NULL);
+      ALTER TABLE public.learning_central_studies_v2_candidates
+        ADD CONSTRAINT learning_central_studies_v2_candidates_publication_status_check
+        CHECK (publication_status IN ('STAGING', 'PUBLISHED'));" >/dev/null
+
+run_cli_identity_query() {
+  local sql="$1"
+  "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+    --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
+}
+
+assert_cli_executor_identity() {
+  local query_output="$1" expected_current_user="$2"
+  CLI_IDENTITY_QUERY_OUTPUT="$query_output" EXPECTED_CURRENT_USER="$expected_current_user" \
+    EXPECTED_SESSION_USER="$executor_role" python3 - <<'PY'
+import json
+import os
+
+try:
+    document = json.loads(os.environ["CLI_IDENTITY_QUERY_OUTPUT"])
+except (TypeError, json.JSONDecodeError):
+    raise SystemExit("Supabase CLI identity query did not return JSON")
+matches = []
+
+def visit(value):
+    if isinstance(value, str) and value.startswith(("{", "[")):
+        try:
+            visit(json.loads(value))
+        except json.JSONDecodeError:
+            return
+    elif isinstance(value, dict):
+        if "session_user" in value and "current_user" in value:
+            matches.append(value)
+        for child in value.values():
+            visit(child)
+    elif isinstance(value, list):
+        for child in value:
+            visit(child)
+
+visit(document)
+if len(matches) != 1:
+    raise SystemExit("Supabase CLI identity query did not return exactly one identity")
+identity = matches[0]
+if identity["session_user"] != os.environ["EXPECTED_SESSION_USER"]:
+    raise SystemExit("Supabase CLI session_user did not match the disposable login role")
+if identity["current_user"] != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI current_user did not match the expected execution role")
+PY
+}
+
+hook_identity="$(run_cli_identity_query \
+  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity")"
+assert_cli_executor_identity "$hook_identity" postgres
+reset_identity="$(run_cli_identity_query \
+  "RESET ALL; select json_build_object('session_user', session_user::text, 'current_user', current_user::text) as identity")"
+assert_cli_executor_identity "$reset_identity" "$executor_role"
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_ROLE_RESET=PASS'
+
+set +e
+executor_push_output="$("$promotion_test_supabase_bin" --workdir "$executor_fixture" db push \
+  --db-url "$executor_db_url" --yes --log-level error 2>&1)"
+executor_push_status=$?
+set -e
+if [[ "$executor_push_status" -eq 0 ]]; then
+  echo 'Supabase CLI unexpectedly applied migration 007 as the reset cli_login role' >&2
+  exit 1
+fi
+if [[ "$executor_push_output" != *'42501'* || \
+  "${executor_push_output,,}" != *'alter table public.learning_central_studies_v2_candidates'* ]]; then
+  printf 'Supabase CLI 007 failure did not identify SQLSTATE 42501 and the expected statement\n' >&2
+  printf '%s\n' "$executor_push_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+  exit 1
+fi
+executor_ledger="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  'select version from supabase_migrations.schema_migrations order by version;')"
+executor_constraint_count="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) from pg_constraint constraint_row
+    join pg_class relation_row on relation_row.oid = constraint_row.conrelid
+    join pg_namespace namespace_row on namespace_row.oid = relation_row.relnamespace
+   where namespace_row.nspname = 'public'
+     and relation_row.relname = 'learning_central_studies_v2_candidates'
+     and constraint_row.conname = 'learning_central_studies_v2_candidates_publication_status_check';")"
+[[ "$executor_ledger" == '20261025000600' && "$executor_constraint_count" == '1' ]] || {
+  echo 'Disposable executor failure changed the ledger or candidate constraint' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_007=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_SQLSTATE=42501'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_FAILED_STATEMENT=ALTER TABLE public.learning_central_studies_v2_candidates DROP CONSTRAINT learning_central_studies_v2_candidates_publication_status_check'

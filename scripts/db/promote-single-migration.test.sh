@@ -135,6 +135,7 @@ fi
 if [[ "$*" == *' db query '* ]]; then
   [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
     "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
+  [[ "$*" == *'RESET ALL; select json_build_object('* ]] || exit 58
   [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
   printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}}]}\n' \
     "${MOCK_CLI_CONTEXT_SESSION_USER:-fixture_user}" \
@@ -206,6 +207,7 @@ if [[ "$*" == *'select version from supabase_migrations.schema_migrations order 
   exit 0
 fi
 if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
+  [[ "$*" == *'RESET ALL; select json_build_object('* ]] || exit 58
   printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}\n' \
     "${MOCK_PSQL_CONTEXT_SESSION_USER:-fixture_user}" \
     "${MOCK_PSQL_CONTEXT_CURRENT_USER:-fixture_user}" \

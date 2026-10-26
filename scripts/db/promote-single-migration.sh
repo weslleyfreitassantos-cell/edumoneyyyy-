@@ -593,7 +593,10 @@ check_runtime_publication_context() {
   local safe_session safe_current safe_owner
   local -a cli_context_fields=() psql_context_fields=()
 
-  context_sql="select json_build_object(
+  # The CLI's ApplyMigrations calls RESET ALL immediately before every file.
+  # Its connection hook may have switched privileged login users to postgres;
+  # probe the post-reset identity that will actually execute migration DDL.
+  context_sql="RESET ALL; select json_build_object(
     'marker', 'PROMOTION_CONTEXT_V1',
     'session_user', session_user::text,
     'current_user', current_user::text,
