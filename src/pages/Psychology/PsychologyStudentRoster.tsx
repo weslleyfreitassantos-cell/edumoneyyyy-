@@ -1,5 +1,5 @@
-import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, LoaderCircle, Search } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 import {
   psychologyService,
@@ -44,6 +44,12 @@ export default function PsychologyStudentRoster({
   const [selectedProfessionals, setSelectedProfessionals] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [requestAttempt, setRequestAttempt] = useState(0);
+  const onProfessionalsLoadedRef = useRef(onProfessionalsLoaded);
+
+  useEffect(() => {
+    onProfessionalsLoadedRef.current = onProfessionalsLoaded;
+  }, [onProfessionalsLoaded]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setDebouncedSearch(search.trim()), 250);
@@ -64,7 +70,7 @@ export default function PsychologyStudentRoster({
     }).then((next) => {
       if (!active) return;
       setResult(next);
-      onProfessionalsLoaded(next.professionals);
+      onProfessionalsLoadedRef.current(next.professionals);
     }).catch(() => {
       if (active) {
         setResult(null);
@@ -74,7 +80,7 @@ export default function PsychologyStudentRoster({
       if (active) setLoading(false);
     });
     return () => { active = false; };
-  }, [institutionId, debouncedSearch, classId, gradeLevel, assignmentStatus, page, refreshKey, onProfessionalsLoaded]);
+  }, [institutionId, debouncedSearch, classId, gradeLevel, assignmentStatus, page, refreshKey, requestAttempt]);
 
   useEffect(() => {
     if (result && page > result.total_pages) setPage(result.total_pages);
@@ -116,10 +122,10 @@ export default function PsychologyStudentRoster({
   }
 
   return (
-    <section aria-labelledby="psychology-students-title" className="space-y-4">
+    <section aria-labelledby="psychology-students-title" aria-busy={loading} className="space-y-3">
       <div>
         <h3 id="psychology-students-title" className="font-bold text-slate-900 dark:text-white">Estudantes e vínculos</h3>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Pesquise por pessoa ou matrícula. As matrículas permanecem separadas e o acompanhamento é vinculado à matrícula selecionada.</p>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Busque estudantes e matrículas para revisar os vínculos de acompanhamento.</p>
       </div>
 
       <label className="relative block">
@@ -128,7 +134,7 @@ export default function PsychologyStudentRoster({
         <input value={search} onChange={(event) => updateSearch(event.target.value)} placeholder="Pesquisar por nome ou matrícula" className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm dark:border-slate-700 dark:bg-slate-950" />
       </label>
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50/70 p-3 sm:grid-cols-3 dark:border-slate-700 dark:bg-slate-900/60">
         <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Turma
           <select value={classId} onChange={(event) => selectClass(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">
             <option value="">Todas as turmas</option>
@@ -150,9 +156,9 @@ export default function PsychologyStudentRoster({
         </label>
       </div>
 
-      {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando estudantes desta página…</p> : null}
-      {error ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-5 text-sm text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">Não foi possível carregar a lista de estudantes. Tente novamente.</p> : null}
-      {!loading && !error && (result?.students.length ?? 0) === 0 ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum estudante corresponde aos filtros.</p> : null}
+      {loading ? <p role="status" className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"><LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />Carregando estudantes desta página…</p> : null}
+      {error ? <div role="alert" className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100"><span>Não foi possível carregar os estudantes.</span><button type="button" onClick={() => setRequestAttempt((attempt) => attempt + 1)} className="min-h-9 rounded-lg border border-rose-300 px-3 py-1.5 font-semibold hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 dark:border-rose-800 dark:hover:bg-rose-950">Tentar novamente</button></div> : null}
+      {!loading && !error && (result?.students.length ?? 0) === 0 ? <div className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-6 text-center dark:border-slate-700 dark:bg-slate-900"><p className="text-sm font-semibold text-slate-700 dark:text-slate-200">Nenhum estudante encontrado</p><p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Ajuste a busca ou os filtros para tentar novamente.</p></div> : null}
 
       {!loading && !error && result && result.students.length > 0 ? (
         <>

@@ -115,33 +115,6 @@ function appointmentStatusMeta(appointment: PsychologyAppointment): { label: str
   return { label: 'Concluído', style: 'bg-violet-100 text-violet-900 dark:bg-violet-950/60 dark:text-violet-200' };
 }
 
-function SectionNav({ role, section }: { role: string; section: string }) {
-  const roleSections: Record<string, string[]> = {
-    STUDENT: ['agendar', 'agendamentos', 'chat', 'autorizacao'],
-    GUARDIAN: ['autorizacao'],
-    PSYCHOLOGIST: ['agenda', 'atendimentos', 'anotacoes', 'disponibilidade'],
-    ADMIN: ['configuracao'],
-    DIRECTOR: ['configuracao'],
-    SECRETARY: ['configuracao'],
-  };
-  const sections = roleSections[role] ?? [];
-  if (!sections.length) return null;
-  return (
-    <nav aria-label="Seções do apoio psicológico" className="mb-6 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap">
-      {sections.map((item) => (
-        <Link
-          key={item}
-          to={`/psychology/${item}`}
-          aria-current={section === item ? 'page' : undefined}
-          className={`min-h-11 shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${section === item ? 'border-blue-700 bg-blue-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-blue-500 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200'}`}
-        >
-          {sectionLabels[item]}
-        </Link>
-      ))}
-    </nav>
-  );
-}
-
 function AuthorizationPanel({
   targets,
   role,
@@ -1104,21 +1077,11 @@ export default function PsychologyPage() {
   const canShowAuthorization = authorizationPath && ['STUDENT', 'GUARDIAN'].includes(role);
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-5 px-4 py-6 sm:px-6 lg:px-8">
-      <header className="flex flex-col gap-5 rounded-2xl bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 p-5 text-white shadow-sm sm:p-6 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-100">Atendimento humano · acesso controlado</p>
-          <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Apoio psicológico</h1>
-          <p className="mt-2 max-w-3xl text-sm text-blue-50">Agendamento, conversa privada e registros restritos, separados das informações acadêmicas.</p>
-          <p className="mt-2 text-xs text-blue-100">O canal não é monitorado continuamente e não substitui atendimento de emergência.</p>
-        </div>
-        <div className="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
-          <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-semibold">{pageHeading}</span>
-          <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-semibold">{roleLabel(role)}</span>
-          <span role="status" className="rounded-full border border-emerald-200/40 bg-emerald-300/15 px-3 py-1.5 text-xs font-semibold">{moduleEnabled ? 'Módulo ativo' : section === 'configuracao' ? 'Área de configuração' : 'Verificando acesso'}</span>
-        </div>
+    <main className="mx-auto w-full max-w-7xl space-y-4 px-4 py-5 sm:px-6 lg:px-8">
+      <header className="border-b border-slate-200 pb-3 dark:border-slate-800">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{pageHeading}</h1>
+        {['STUDENT', 'GUARDIAN', 'PSYCHOLOGIST'].includes(role) ? <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">O canal não é monitorado continuamente e não substitui atendimento de emergência.</p> : null}
       </header>
-      <SectionNav role={role} section={section} />
       {feedbackBox}
       {isPageLoading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando informações do módulo…</p> : null}
       {!isPageLoading && !institutionId ? <p role="alert" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">Selecione uma instituição para continuar.</p> : null}
@@ -1170,7 +1133,7 @@ export default function PsychologyPage() {
       ) : null}
 
       {!isPageLoading && isManager && moduleEnabled && section === 'configuracao' ? (
-        <section className="space-y-4"><h2 className="text-xl font-bold">Visão operacional de agendamentos</h2><p className="text-sm text-slate-600 dark:text-slate-300">A equipe autorizada vê somente os metadados necessários à operação. Mensagens e anotações clínicas nunca são retornadas aqui.</p>{appointments.map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="manager" onOpenChat={() => setFeedback('A administração não tem acesso ao chat clínico.')} onOpenNote={() => setFeedback('A administração não tem acesso às anotações clínicas.')} onRefresh={refresh} onFeedback={setFeedback} slots={[]} />)}{!appointments.length ? <p className="text-sm text-slate-500">Nenhum agendamento no período atual.</p> : null}</section>
+        <section className="space-y-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h2 className="text-lg font-bold">Agendamentos</h2><p className="text-sm text-slate-600 dark:text-slate-300">A equipe autorizada vê apenas os dados operacionais; mensagens e anotações clínicas permanecem restritas.</p>{appointments.map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="manager" onOpenChat={() => setFeedback('A administração não tem acesso ao chat clínico.')} onOpenNote={() => setFeedback('A administração não tem acesso às anotações clínicas.')} onRefresh={refresh} onFeedback={setFeedback} slots={[]} />)}{!appointments.length ? <p className="rounded-lg border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum agendamento no período atual.</p> : null}</section>
       ) : null}
 
       {!isPageLoading && canShowProfessionalClinical && moduleEnabled && selectedAppointment && section === 'anotacoes' && !appointments.some((appointment) => appointment.appointment_id === selectedAppointment.appointment_id && appointment.professional_profile_id === profileId) ? <p role="alert" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">O atendimento selecionado não está atribuído a esta profissional.</p> : null}
