@@ -485,7 +485,8 @@ englishDescribe('Tec Inglês interactive V1/V2', () => {
         p_idempotency_key: replayKey,
       });
       expect(reusedKey.error?.message).toContain('TEC_ENGLISH_IDEMPOTENCY_KEY_REUSED');
-      const attemptCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true }).eq('student_id', studentIds.get(probe.id));
+      const attemptCount = await service.from('tec_english_answer_attempts').select('id', { count: 'exact', head: true })
+        .eq('student_id', studentIds.get(probe.id)).eq('idempotency_key', replayKey);
       expect(attemptCount.error).toBeNull();
       expect(attemptCount.count).toBe(1);
 
