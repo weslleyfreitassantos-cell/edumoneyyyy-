@@ -479,11 +479,29 @@ psychology_file="$repo_root/supabase/migrations/${psychology_version}_psychology
 [[ -f "$psychology_file" ]]
 psychology_hash="$(sed 's/\r$//' "$psychology_file" | "$real_sha256sum" | awk '{print $1}')"
 local_backup_sha="$("$real_sha256sum" "$local_backup" | awk '{print $1}')"
+real_git="$(command -v git)"
+export PROMOTION_TEST_REAL_GIT="$real_git"
+cat > "$tmp/bin/git" <<'SH'
+#!/usr/bin/env bash
+if [[ "$#" -eq 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'branch' && "$4" == '--show-current' ]]; then
+  printf '%s\n' 'codex/psychology-gate-ux'
+  exit 0
+fi
+if [[ "$#" -eq 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
+  printf '%s\n' 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+  exit 0
+fi
+exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
+SH
+chmod +x "$tmp/bin/git"
 local_ledger="$tmp/pr409-local-ledger"
 local_dry_run="$tmp/pr409-local-dry-run"
 printf '20261025000600\n' > "$local_ledger"
 printf 'Would push migration %s\n' "$psychology_version" > "$local_dry_run"
 local_output="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
   PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   TEST_BACKUP_GATE=FAIL \
   BACKUP_EXCEPTION_PR=409 \
@@ -513,7 +531,8 @@ grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output"
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 
 printf 'Would push migration %s\nWould push migration 20261025000700\n' "$psychology_version" > "$tmp/pr409-with-007"
-if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
   BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
   BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
@@ -525,7 +544,8 @@ if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   exit 1
 fi
 
-if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
   BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
   BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
@@ -537,7 +557,8 @@ if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   exit 1
 fi
 
-if PATH="$tmp/bin:$PATH" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
   TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
   BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
   BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
