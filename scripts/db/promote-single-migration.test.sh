@@ -29,11 +29,13 @@ ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
 after_ledger="$tmp/after-ledger"
 cli_apply_count="$tmp/cli-apply-count"
+cli_dry_run_count="$tmp/cli-dry-run-count"
 psql_call_count="$tmp/psql-call-count"
 printf '%s\n' "$expected_last" > "$ledger"
 printf 'Would push migration %s\n' "$target_version" > "$dry_run"
 printf '%s\n' "$expected_last" "$target_version" > "$after_ledger"
 printf '0\n' > "$cli_apply_count"
+printf '0\n' > "$cli_dry_run_count"
 printf '0\n' > "$psql_call_count"
 
 run_guard() {
@@ -52,6 +54,7 @@ run_guard() {
   MOCK_AFTER_LEDGER_CONTENT="${TEST_AFTER_LEDGER_CONTENT:-$expected_last
 $target_version}" \
   MOCK_CLI_APPLY_COUNT_FILE="$cli_apply_count" \
+  MOCK_CLI_DRY_RUN_COUNT_FILE="$cli_dry_run_count" \
   MOCK_PSQL_CALL_COUNT_FILE="$psql_call_count" \
   PROMOTION_DIAGNOSTIC_DIR="${TEST_DIAGNOSTIC_DIR:-$tmp/diagnostics}" \
   "$script"
@@ -129,6 +132,24 @@ set -euo pipefail
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
 fi
+if [[ "$*" == *' db query '* ]]; then
+  [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
+    "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
+  [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
+  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}}]}\n' \
+    "${MOCK_CLI_CONTEXT_SESSION_USER:-fixture_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_USER:-fixture_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-fixture_user}}" \
+    "${MOCK_CLI_CONTEXT_ROLE_SETTING:-none}" \
+    "${MOCK_CLI_CONTEXT_OWNER:-fixture_user}" \
+    "${MOCK_CLI_CONTEXT_OWNER_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_RELATION_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_FUNCTION_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_SCHEMA_CREATE:-true}" \
+    "${MOCK_CLI_CONTEXT_PRIVATE_CREATE:-true}" \
+    "${MOCK_CLI_CONTEXT_SUPERUSER:-false}"
+  exit 0
+fi
 if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
   printf 'no password supplied\n' >&2
   exit 47
@@ -155,6 +176,8 @@ if [[ "${EXPECT_WINDOWS_WORKDIR:-0}" == '1' ]]; then
   [[ -n "$passfile" && "$(stat -c %a "$passfile")" == '600' ]] || exit 38
 fi
 if [[ "$*" == *'--dry-run'* ]]; then
+  dry_run_count="$(cat "$MOCK_CLI_DRY_RUN_COUNT_FILE")"
+  printf '%s\n' "$((dry_run_count + 1))" > "$MOCK_CLI_DRY_RUN_COUNT_FILE"
   printf 'Would push migration %s\n' "$TARGET_VERSION"
 else
   apply_count="$(cat "$MOCK_CLI_APPLY_COUNT_FILE")"
@@ -171,14 +194,33 @@ set -euo pipefail
 [[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
 grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
-[[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
+[[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 57
 psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
 printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
-if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
-  printf 'mock post-apply query unavailable\n' >&2
-  exit 49
+if [[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]]; then
+  if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
+    printf 'mock post-apply query unavailable\n' >&2
+    exit 49
+  fi
+  cat "$MOCK_AFTER_LEDGER_FILE"
+  exit 0
 fi
-cat "$MOCK_AFTER_LEDGER_FILE"
+if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
+  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}\n' \
+    "${MOCK_PSQL_CONTEXT_SESSION_USER:-fixture_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_USER:-fixture_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-fixture_user}}" \
+    "${MOCK_PSQL_CONTEXT_ROLE_SETTING:-none}" \
+    "${MOCK_PSQL_CONTEXT_OWNER:-fixture_user}" \
+    "${MOCK_PSQL_CONTEXT_OWNER_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_RELATION_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_FUNCTION_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_SCHEMA_CREATE:-true}" \
+    "${MOCK_PSQL_CONTEXT_PRIVATE_CREATE:-true}" \
+    "${MOCK_PSQL_CONTEXT_SUPERUSER:-false}"
+  exit 0
+fi
+exit 46
 MOCK
 chmod +x "$tmp/bin/sha256sum" "$tmp/bin/ssh" "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
@@ -194,6 +236,84 @@ chmod +x "$tmp/bin/wslpath"
 cp "$tmp/bin/npx" "$tmp/bin/cli-override"
 cp "$tmp/bin/npx" "$tmp/bin/supabase.exe"
 chmod +x "$tmp/bin/cli-override" "$tmp/bin/supabase.exe"
+
+if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
+  context_target=20261025000700
+  context_base=20261025000600
+  context_file="$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
+  context_hash="$(sed 's/\r$//' "$context_file" | "$real_sha256sum" | awk '{print $1}')"
+  context_ledger="$tmp/context-ledger"
+  printf '%s\n' "$context_base" > "$context_ledger"
+
+  run_context_guard() {
+    TEST_TARGET_VERSION="$context_target" \
+    TEST_SOURCE_ROOT="$repo_root" \
+    TEST_EXPECTED_REMOTE_LAST="$context_base" \
+    TEST_TARGET_SHA256="$context_hash" \
+    TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_REMOTE_LEDGER_FILE="$context_ledger" \
+    run_guard
+  }
+
+  printf '0\n' > "$cli_dry_run_count"
+  context_pass="$(PATH="$tmp/bin:$PATH" DRY_RUN_OUTPUT_FILE_OVERRIDE= \
+    PGOPTIONS='-c role=ambient_role' PGSERVICE=ambient_service \
+    PGSERVICEFILE="$tmp/ambient-service.conf" PGHOST=ambient-host \
+    PGPORT=6543 PGDATABASE=ambient_db PGUSER=ambient_user PGPASSWORD=ambient_password \
+    run_context_guard)"
+  grep -q '^DB_SESSION_USER=fixture_user$' <<< "$context_pass"
+  grep -q '^DB_CURRENT_USER=fixture_user$' <<< "$context_pass"
+  grep -q '^DB_CANDIDATE_OWNER=fixture_user$' <<< "$context_pass"
+  grep -q '^DDL_PERMISSION=PASS$' <<< "$context_pass"
+  grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$context_pass"
+  grep -q '^PRECHECK=PASS$' <<< "$context_pass"
+  grep -q '^PROMOTION=DRY_RUN_ONLY$' <<< "$context_pass"
+  [[ "$(cat "$cli_dry_run_count")" == '1' && "$(cat "$cli_apply_count")" == '0' ]]
+
+  expect_context_rejected() {
+    local expected_message="$1"
+    shift
+    printf '0\n' > "$cli_dry_run_count"
+    if context_failure="$(
+      (
+        for assignment in "$@"; do export "$assignment"; done
+        PATH="$tmp/bin:$PATH" DRY_RUN_OUTPUT_FILE_OVERRIDE= run_context_guard
+      ) 2>&1
+    )"; then
+      echo 'invalid runtime-publication context unexpectedly passed' >&2
+      exit 1
+    fi
+    grep -q "^PROMOTION_ABORTED=${expected_message}$" <<< "$context_failure"
+    [[ "$(cat "$cli_dry_run_count")" == '0' && "$(cat "$cli_apply_count")" == '0' ]]
+  }
+
+  expect_context_rejected 'Supabase CLI and direct PostgreSQL session contexts differ' \
+    MOCK_CLI_CONTEXT_CURRENT_USER=switched_role
+  expect_context_rejected 'database session identity differs from the explicit connection user' \
+    MOCK_CLI_CONTEXT_ROLE_SETTING=switched_role MOCK_PSQL_CONTEXT_ROLE_SETTING=switched_role
+  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
+    MOCK_CLI_CONTEXT_OWNER_ACCESS=false MOCK_PSQL_CONTEXT_OWNER_ACCESS=false
+  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
+    MOCK_CLI_CONTEXT_SCHEMA_CREATE=false MOCK_PSQL_CONTEXT_SCHEMA_CREATE=false
+  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
+    MOCK_CLI_CONTEXT_RELATION_ACCESS=false MOCK_PSQL_CONTEXT_RELATION_ACCESS=false
+  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
+    MOCK_CLI_CONTEXT_FUNCTION_ACCESS=false MOCK_PSQL_CONTEXT_FUNCTION_ACCESS=false
+  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
+    MOCK_CLI_CONTEXT_PRIVATE_CREATE=false MOCK_PSQL_CONTEXT_PRIVATE_CREATE=false
+
+  if url_role_override="$(PATH="$tmp/bin:$PATH" \
+    PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require&options=-c%20role%3Dambient_role' \
+    run_guard 2>&1)"; then
+    echo 'connection URL role override unexpectedly passed validation' >&2
+    exit 1
+  fi
+  grep -q '^PROMOTION_ABORTED=production database connection could not be parsed safely$' <<< "$url_role_override"
+  [[ "$url_role_override" != *dummy* && "$url_role_override" != *fixture_user* ]]
+
+  echo 'PROMOTE_SINGLE_MIGRATION_CONTEXT_TEST=PASS'
+  exit 0
+fi
 
 dry_run_prefer="$(PATH="$tmp/bin:$PATH" \
   EXPECTED_SSLMODE=prefer \
@@ -595,6 +715,60 @@ grep -q '^PROMOTION=APPLIED$' <<< "$release_406_second_output"
 grep -q '^REMOTE_AFTER_COUNT=243$' <<< "$release_406_second_output"
 grep -q '^REMOTE_AFTER_LAST=20261025000700$' <<< "$release_406_second_output"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
+
+grep -q '^DB_SESSION_USER=fixture_user$' <<< "$release_406_second_output"
+grep -q '^DB_CURRENT_USER=fixture_user$' <<< "$release_406_second_output"
+grep -q '^DDL_PERMISSION=PASS$' <<< "$release_406_second_output"
+grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$release_406_second_output"
+grep -q '^PRECHECK=PASS$' <<< "$release_406_second_output"
+
+release_406_precheck_ledger="$tmp/release-406-precheck-ledger"
+printf '%s\n' "$release_406_second_base" > "$release_406_precheck_ledger"
+
+run_release_406_007_precheck() {
+  TEST_TARGET_VERSION="$release_406_second_version" \
+  TEST_SOURCE_ROOT="$repo_root" \
+  TEST_EXPECTED_REMOTE_LAST="$release_406_second_base" \
+  TEST_TARGET_SHA256="$release_406_second_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_precheck_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_second_dry_run" \
+  run_guard
+}
+
+# Ambient libpq settings must not affect either query path. This remains a
+# dry-run: no mock migration apply may occur.
+printf '0\n' > "$cli_apply_count"
+context_clean_output="$(PATH="$tmp/bin:$PATH" \
+  PGOPTIONS='-c role=untrusted_role' PGSERVICE=untrusted_service \
+  PGSERVICEFILE="$tmp/untrusted-service.conf" PGHOST=untrusted-host \
+  PGPORT=6543 PGDATABASE=untrusted_db PGUSER=ambient_user PGPASSWORD=ambient_password \
+  run_release_406_007_precheck)"
+grep -q '^PRECHECK=PASS$' <<< "$context_clean_output"
+grep -q '^PROMOTION=DRY_RUN_ONLY$' <<< "$context_clean_output"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+# A role switch, ownership loss, or CLI/psql context mismatch must fail before
+# the Supabase CLI can run db push.
+printf '0\n' > "$cli_apply_count"
+if context_role_mismatch="$(PATH="$tmp/bin:$PATH" \
+  MOCK_CLI_CONTEXT_CURRENT_USER=switched_role \
+  run_release_406_007_precheck 2>&1)"; then
+  echo 'role-switched CLI context unexpectedly passed the precheck' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=Supabase CLI and direct PostgreSQL session contexts differ$' <<< "$context_role_mismatch"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+printf '0\n' > "$cli_apply_count"
+if context_owner_mismatch="$(PATH="$tmp/bin:$PATH" \
+  MOCK_CLI_CONTEXT_OWNER_ACCESS=false MOCK_PSQL_CONTEXT_OWNER_ACCESS=false \
+  run_release_406_007_precheck 2>&1)"; then
+  echo 'missing relation ownership unexpectedly passed the precheck' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=database role lacks ownership or schema privileges required by migration 007$' <<< "$context_owner_mismatch"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
 
 expect_release_406_rejected() {
   printf '0\n' > "$cli_apply_count"

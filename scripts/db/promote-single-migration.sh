@@ -251,7 +251,7 @@ try {
       const values = queryValues.get(normalized) || [];
       values.push(value);
       queryValues.set(normalized, values);
-    } else if (["passfile", "sslpassword"].includes(normalized)) {
+    } else if (["passfile", "sslpassword", "options", "service", "servicefile", "role"].includes(normalized)) {
       throw new Error();
     }
   }
@@ -291,6 +291,14 @@ database_password="${connection_fields[1]}"
 database_url="${connection_fields[2]}"
 database_sslmode="${connection_fields[3]}"
 unset connection_fields field production_db_url PRODUCTION_DB_URL
+
+# This script derives its database identity from the explicit URL. Do not let
+# inherited libpq settings silently change the role, service, host, database,
+# SSL behavior, or password source used by psql or the Supabase CLI.
+while IFS= read -r pg_environment_variable; do
+  [[ "${pg_environment_variable}" == PG* ]] && unset "${pg_environment_variable}"
+done < <(compgen -e)
+unset pg_environment_variable
 
 [[ "${target_version}" =~ ^[0-9]{14}$ ]] || abort "invalid target version"
 [[ "${expected_remote_last}" =~ ^[0-9]{14}$ ]] || abort "invalid expected remote version"
@@ -491,6 +499,19 @@ fi
 cli_workdir_arg="${cli_workdir}"
 cli_wslenv="${WSLENV:-}"
 if [[ "${cli_binary_override}" == *.exe ]]; then
+  filtered_wslenv_entries=()
+  IFS=':' read -r -a wslenv_entries <<< "${cli_wslenv}"
+  for entry in "${wslenv_entries[@]}"; do
+    [[ -n "${entry}" ]] || continue
+    entry_name="${entry%%/*}"
+    if [[ "${entry_name}" == PG* && "${entry_name}" != PGUSER && \
+      "${entry_name}" != PGPASSWORD && "${entry_name}" != PGSSLMODE ]]; then
+      continue
+    fi
+    filtered_wslenv_entries+=("${entry}")
+  done
+  cli_wslenv="$(IFS=:; printf '%s' "${filtered_wslenv_entries[*]}")"
+
   if command -v wslpath >/dev/null 2>&1; then
     cli_workdir_arg="$(wslpath -w "${cli_workdir}")" || abort "Supabase CLI workdir conversion failed"
     for variable in PGUSER PGPASSWORD PGSSLMODE; do
@@ -526,6 +547,184 @@ run_supabase_cli() {
     PGUSER="${database_user}" PGPASSWORD="${database_password}" PGSSLMODE="${database_sslmode}" \
       "${cli_command[@]}" "$@"
   fi
+}
+
+parse_promotion_context() {
+  PROMOTION_CONTEXT_JSON="${1}" node -e '
+const raw = process.env.PROMOTION_CONTEXT_JSON || "";
+const first = raw.indexOf("{");
+const last = raw.lastIndexOf("}");
+if (first < 0 || last < first) process.exit(2);
+let document;
+try { document = JSON.parse(raw.slice(first, last + 1)); } catch { process.exit(2); }
+const matches = [];
+function visit(value) {
+  if (typeof value === "string" && value.startsWith("{")) {
+    try { visit(JSON.parse(value)); } catch {}
+    return;
+  }
+  if (!value || typeof value !== "object") return;
+  if (value.marker === "PROMOTION_CONTEXT_V1") matches.push(value);
+  for (const child of Object.values(value)) visit(child);
+}
+visit(document);
+if (matches.length !== 1) process.exit(3);
+const row = matches[0];
+const fields = ["session_user", "current_user", "current_role", "role_setting", "candidate_owner"];
+if (fields.some((field) => typeof row[field] !== "string")) process.exit(4);
+for (const field of ["candidate_owner_access", "relation_ddl_access", "function_ddl_access", "public_create", "private_create", "is_superuser"]) {
+  if (typeof row[field] !== "boolean") process.exit(5);
+}
+const values = [
+  row.session_user, row.current_user, row.current_role, row.role_setting,
+  row.candidate_owner, String(row.candidate_owner_access),
+  String(row.relation_ddl_access), String(row.function_ddl_access),
+  String(row.public_create), String(row.private_create), String(row.is_superuser)
+];
+if (values.some((value) => /[\t\r\n]/.test(value))) process.exit(6);
+process.stdout.write(values.join("\t"));
+'
+}
+
+check_runtime_publication_context() {
+  local context_sql cli_context_raw psql_context_raw cli_context_line psql_context_line
+  local cli_session cli_current cli_role cli_role_setting cli_owner cli_owner_access cli_relation_access cli_function_access
+  local cli_public_create cli_private_create cli_superuser
+  local safe_session safe_current safe_owner
+  local -a cli_context_fields=() psql_context_fields=()
+
+  context_sql="select json_build_object(
+    'marker', 'PROMOTION_CONTEXT_V1',
+    'session_user', session_user::text,
+    'current_user', current_user::text,
+    'current_role', current_role::text,
+    'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none'),
+    'candidate_owner', pg_get_userbyid(c.relowner)::text,
+    'candidate_owner_access', (pg_has_role(current_user, c.relowner, 'USAGE') or r.rolsuper),
+    'relation_ddl_access', not exists (
+      select 1
+        from (values
+          ('learning_central_studies_v2_candidates'),
+          ('learning_guided_session_events'),
+          ('learning_skill_lessons'),
+          ('learning_curriculum_skills'),
+          ('learning_question_bank'),
+          ('learning_question_sets'),
+          ('learning_question_set_items')
+        ) as target(relname)
+        join pg_class object on object.relname = target.relname
+        join pg_namespace object_schema on object_schema.oid = object.relnamespace
+       where object_schema.nspname = 'public'
+         and not (pg_has_role(current_user, object.relowner, 'USAGE') or r.rolsuper)
+    ),
+    'function_ddl_access', not exists (
+      select 1
+        from (values
+          ('private.prevent_central_studies_v2_source_edits()'),
+          ('private.central_studies_v2_student_can_read(text)'),
+          ('private.enforce_central_studies_v2_qualified_review()'),
+          ('private.enforce_central_studies_v2_active_release()'),
+          ('private.central_studies_v2_journey_allowed(uuid,uuid,uuid,uuid)'),
+          ('private.assert_bncc_discipline_journey_v9(uuid,uuid,uuid,uuid)'),
+          ('public.list_student_central_studies_v2_journeys_v1(uuid,uuid)'),
+          ('public.start_central_studies_v2_journey_v1(uuid,uuid,uuid)'),
+          ('public.get_central_studies_v2_release_status_v1(text,text)'),
+          ('public.get_central_studies_v2_institution_targets_v1(text,text)'),
+          ('public.integrate_central_studies_v2_candidate_v1(text,text,text)'),
+          ('public.review_central_studies_v2_candidate_v1(text,text,text,text,text,jsonb)'),
+          ('public.publish_central_studies_v2_candidate_v1(text,text,text,text)'),
+          ('public.unpublish_central_studies_v2_candidate_v1(text,text,text,text)'),
+          ('public.set_central_studies_v2_institution_enabled_v1(text,text,text,uuid,uuid,boolean,text)')
+        ) as target(signature)
+        join pg_proc existing_function
+          on existing_function.oid = to_regprocedure(target.signature)::oid
+       where not (pg_has_role(current_user, existing_function.proowner, 'USAGE') or r.rolsuper)
+    ),
+    'public_create', has_schema_privilege(current_user, 'public', 'CREATE'),
+    'private_create', has_schema_privilege(current_user, 'private', 'CREATE'),
+    'is_superuser', r.rolsuper
+  ) as context
+  from pg_class c
+  join pg_namespace n on n.oid = c.relnamespace
+  join pg_roles r on r.rolname = current_user
+  where n.nspname = 'public' and c.relname = 'learning_central_studies_v2_candidates';"
+
+  if ! cli_context_raw="$(run_supabase_cli --workdir "${cli_workdir_arg}" db query \
+    --db-url "${database_url}" --agent yes --output-format json --log-level error \
+    "${context_sql}" 2>&1)"; then
+    record_cli_failure precheck "${cli_context_raw}"
+    printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
+    abort "Supabase CLI session precheck failed"
+  fi
+  if ! cli_context_line="$(parse_promotion_context "${cli_context_raw}" 2>/dev/null)"; then
+    printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
+    abort "Supabase CLI session precheck returned an unreadable result"
+  fi
+
+  if ! psql_context_raw="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" \
+    psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c "${context_sql}")"; then
+    printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
+    abort "direct PostgreSQL session precheck failed"
+  fi
+  if ! psql_context_line="$(parse_promotion_context "${psql_context_raw}" 2>/dev/null)"; then
+    printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
+    abort "direct PostgreSQL session precheck returned an unreadable result"
+  fi
+
+  IFS=$'\t' read -r -a cli_context_fields <<< "${cli_context_line}"
+  IFS=$'\t' read -r -a psql_context_fields <<< "${psql_context_line}"
+  if [[ "${#cli_context_fields[@]}" -ne 11 || "${#psql_context_fields[@]}" -ne 11 ]]; then
+    printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
+    abort "database session precheck did not return exactly one context row"
+  fi
+
+  cli_session="${cli_context_fields[0]}"
+  cli_current="${cli_context_fields[1]}"
+  cli_role="${cli_context_fields[2]}"
+  cli_role_setting="${cli_context_fields[3]}"
+  cli_owner="${cli_context_fields[4]}"
+  cli_owner_access="${cli_context_fields[5]}"
+  cli_relation_access="${cli_context_fields[6]}"
+  cli_function_access="${cli_context_fields[7]}"
+  cli_public_create="${cli_context_fields[8]}"
+  cli_private_create="${cli_context_fields[9]}"
+  cli_superuser="${cli_context_fields[10]}"
+
+  safe_session='UNKNOWN'
+  safe_current='UNKNOWN'
+  safe_owner='UNKNOWN'
+  [[ "${cli_session}" =~ ^[A-Za-z0-9_.-]+$ ]] && safe_session="${cli_session}"
+  [[ "${cli_current}" =~ ^[A-Za-z0-9_.-]+$ ]] && safe_current="${cli_current}"
+  [[ "${cli_owner}" =~ ^[A-Za-z0-9_.-]+$ ]] && safe_owner="${cli_owner}"
+  printf 'DB_SESSION_USER=%s\n' "${safe_session}"
+  printf 'DB_CURRENT_USER=%s\n' "${safe_current}"
+  printf 'DB_CANDIDATE_OWNER=%s\n' "${safe_owner}"
+
+  if [[ "${cli_context_line}" != "${psql_context_line}" ]]; then
+    printf 'CLI_PSQL_CONTEXT_MATCH=NO\nDDL_PERMISSION=FAIL\n' >&2
+    abort "Supabase CLI and direct PostgreSQL session contexts differ"
+  fi
+  if [[ "${cli_session}" != "${database_user}" || \
+    "${cli_current}" != "${cli_session}" || \
+    "${cli_role}" != "${cli_current}" || \
+    "${cli_role_setting}" != 'none' ]]; then
+    printf 'CLI_PSQL_CONTEXT_MATCH=YES\nDDL_PERMISSION=FAIL\n' >&2
+    abort "database session identity differs from the explicit connection user"
+  fi
+  if [[ "${cli_owner_access}" != 'true' || \
+    "${cli_relation_access}" != 'true' || \
+    "${cli_function_access}" != 'true' || \
+    ( "${cli_public_create}" != 'true' && "${cli_superuser}" != 'true' ) || \
+    ( "${cli_private_create}" != 'true' && "${cli_superuser}" != 'true' ) ]]; then
+    printf 'CLI_PSQL_CONTEXT_MATCH=YES\nDDL_PERMISSION=FAIL\n' >&2
+    abort "database role lacks ownership or schema privileges required by migration 007"
+  fi
+
+  printf 'DB_CURRENT_ROLE=%s\n' "${safe_current}"
+  printf 'DB_ROLE_SETTING=%s\n' "${cli_role_setting}"
+  printf 'DDL_PERMISSION=PASS\n'
+  printf 'CLI_PSQL_CONTEXT_MATCH=YES\n'
+  printf 'PRECHECK=PASS\n'
 }
 
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
@@ -580,6 +779,10 @@ for forbidden in 20261004000100 20261004000200 20261004000300; do
     abort "deferred BNCC migration entered temporary workdir"
   fi
 done
+
+if [[ "${target_version}" == '20261025000700' ]]; then
+  check_runtime_publication_context
+fi
 
 if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
