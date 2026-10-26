@@ -24,6 +24,8 @@ cleanup() {
   docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
     -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci; DROP ROLE IF EXISTS promoter_cli_executor_admin_ci;' \
     >/dev/null 2>&1 || true
+  docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+    -c 'DROP ROLE IF EXISTS promoter_references_denied_ci;' >/dev/null 2>&1 || true
   rm -rf -- "$tmp"
 }
 trap cleanup EXIT
@@ -581,4 +583,55 @@ executor_constraint="$(docker exec "$db_container" psql -U postgres -d "$executo
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_ROLE_RESET=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_CANDIDATE_DDL=PASS'
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_TARGET_DDL_PROBE=PASS'
+
+# A REFERENCES grant is independent of schema CREATE. Verify the exact
+# effective column privilege for an owner, a non-owner with no REFERENCES,
+# and a non-owner granted REFERENCES on only one referenced column.
+references_role=promoter_references_denied_ci
+docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -v ON_ERROR_STOP=1 -c "CREATE ROLE $references_role NOLOGIN;
+    CREATE SCHEMA references_denied AUTHORIZATION $references_role;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -v ON_ERROR_STOP=1 -c "CREATE TABLE public.references_probe_denied (id integer PRIMARY KEY);
+    CREATE TABLE public.references_probe_granted (id integer PRIMARY KEY);
+    GRANT REFERENCES (id) ON public.references_probe_granted TO $references_role;" >/dev/null
+owner_references="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select has_column_privilege(current_user, 'public.references_probe_denied', 'id', 'REFERENCES');")"
+denied_references="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "SET ROLE $references_role; SELECT has_column_privilege(current_user, 'public.references_probe_denied', 'id', 'REFERENCES');" | awk '/^[tf]$/ { value = $0 } END { print value }')"
+granted_references="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "SET ROLE $references_role; SELECT has_column_privilege(current_user, 'public.references_probe_granted', 'id', 'REFERENCES');" | awk '/^[tf]$/ { value = $0 } END { print value }')"
+[[ "$owner_references" == 't' && "$denied_references" == 'f' && "$granted_references" == 't' ]] || {
+  echo 'PostgreSQL effective REFERENCES checks did not distinguish owner, denied role, and explicit grant' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_OWNER=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_DENIED=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_EXPLICIT_GRANT=PASS'
+
+docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR_STOP=1 \
+  -c 'CREATE TABLE public.references_owner_fk_probe (reference_id integer REFERENCES public.references_probe_denied(id));' >/dev/null
+set +e
+references_denied_ddl="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
+  -c "SET ROLE $references_role; CREATE TABLE references_denied.denied_fk_probe (reference_id integer REFERENCES public.references_probe_denied(id));" 2>&1)"
+references_denied_status=$?
+set -e
+[[ "$references_denied_status" -ne 0 ]] && \
+  grep -q '42501' <<< "$references_denied_ddl" && \
+  grep -q 'permission denied for table references_probe_denied' <<< "$references_denied_ddl" || {
+    echo 'PostgreSQL did not reject a foreign key without REFERENCES with SQLSTATE 42501' >&2
+    exit 1
+  }
+denied_fk_count="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from pg_class where oid = to_regclass('references_denied.denied_fk_probe');")"
+[[ "$denied_fk_count" == '0' ]] || {
+  echo 'Foreign-key test unexpectedly created an object without REFERENCES' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_FK_DENIED_42501=PASS'
 echo 'PROMOTION_POSTGRES_PRODUCTION_42501_REPRODUCED=NO'

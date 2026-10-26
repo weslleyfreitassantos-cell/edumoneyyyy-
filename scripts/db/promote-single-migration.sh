@@ -570,16 +570,19 @@ function visit(value) {
 visit(document);
 if (matches.length !== 1) process.exit(3);
 const row = matches[0];
-const fields = ["session_user", "current_user", "current_role", "role_setting", "candidate_owner"];
+const fields = ["session_user", "current_user", "current_role", "role_setting", "candidate_owner", "references_failure_kind", "references_missing_target"];
 if (fields.some((field) => typeof row[field] !== "string")) process.exit(4);
-for (const field of ["candidate_owner_access", "relation_ddl_access", "function_ddl_access", "public_create", "private_create", "is_superuser"]) {
+if (!["none", "missing_object", "missing_privilege"].includes(row.references_failure_kind)) process.exit(7);
+if (!/^(none|[A-Za-z0-9_]+\([A-Za-z0-9_]+\))$/.test(row.references_missing_target)) process.exit(8);
+for (const field of ["candidate_owner_access", "relation_ddl_access", "function_ddl_access", "public_create", "private_create", "is_superuser", "references_access"]) {
   if (typeof row[field] !== "boolean") process.exit(5);
 }
 const values = [
   row.session_user, row.current_user, row.current_role, row.role_setting,
   row.candidate_owner, String(row.candidate_owner_access),
   String(row.relation_ddl_access), String(row.function_ddl_access),
-  String(row.public_create), String(row.private_create), String(row.is_superuser)
+  String(row.public_create), String(row.private_create), String(row.is_superuser),
+  String(row.references_access), row.references_failure_kind, row.references_missing_target
 ];
 if (values.some((value) => /[\t\r\n]/.test(value))) process.exit(6);
 process.stdout.write(values.join("\t"));
@@ -591,6 +594,7 @@ check_runtime_publication_context() {
   local cli_context_raw psql_context_raw cli_context_line psql_context_line
   local cli_session cli_current cli_role cli_role_setting cli_owner cli_owner_access cli_relation_access cli_function_access
   local cli_public_create cli_private_create cli_superuser
+  local cli_references_access cli_references_failure_kind cli_references_missing_target
   local safe_session safe_current safe_owner
   local -a cli_context_fields=() psql_context_fields=()
 
@@ -600,7 +604,36 @@ check_runtime_publication_context() {
   # RESET ALL. The CLI connection hook sets SESSION ROLE postgres for
   # supabase_admin and cli_login_* users, which the disposable executor test
   # verifies against the actual `db push` connection.
-  context_sql="select json_build_object(
+  context_sql="with migration_007_fk_targets(table_name, column_name) as (
+    values
+      ('learning_central_studies_v2_candidates', 'id'),
+      ('learning_curriculum_skills', 'id'),
+      ('learning_canonical_subjects', 'id'),
+      ('learning_bncc_discipline_journeys', 'id'),
+      ('learning_skill_lessons', 'id'),
+      ('institutions', 'id'),
+      ('subjects', 'id')
+  ), migration_007_fk_access as (
+    select target.table_name, target.column_name,
+      case
+        when referenced_relation.oid is null or referenced_column.attnum is null then 'missing_object'
+        when pg_has_role(current_user, referenced_relation.relowner, 'USAGE') or migration_role.rolsuper then 'none'
+        when has_column_privilege(current_user, referenced_relation.oid, referenced_column.attname, 'REFERENCES') then 'none'
+        else 'missing_privilege'
+      end as failure_kind
+    from migration_007_fk_targets target
+    join pg_roles migration_role on migration_role.rolname = current_user
+    left join pg_namespace referenced_schema on referenced_schema.nspname = 'public'
+    left join pg_class referenced_relation
+      on referenced_relation.relnamespace = referenced_schema.oid
+     and referenced_relation.relname = target.table_name
+    left join pg_attribute referenced_column
+      on referenced_column.attrelid = referenced_relation.oid
+     and referenced_column.attname = target.column_name
+     and referenced_column.attnum > 0
+     and not referenced_column.attisdropped
+  )
+  select json_build_object(
     'marker', 'PROMOTION_CONTEXT_V1',
     'session_user', session_user::text,
     'current_user', current_user::text,
@@ -647,6 +680,17 @@ check_runtime_publication_context() {
           on existing_function.oid = to_regprocedure(target.signature)::oid
        where not (pg_has_role(current_user, existing_function.proowner, 'USAGE') or r.rolsuper)
     ),
+    'references_access', not exists (
+      select 1 from migration_007_fk_access where failure_kind <> 'none'
+    ),
+    'references_failure_kind', coalesce((
+      select failure_kind from migration_007_fk_access
+       where failure_kind <> 'none' order by table_name, column_name limit 1
+    ), 'none'),
+    'references_missing_target', coalesce((
+      select table_name || '(' || column_name || ')' from migration_007_fk_access
+       where failure_kind <> 'none' order by table_name, column_name limit 1
+    ), 'none'),
     'public_create', has_schema_privilege(current_user, 'public', 'CREATE'),
     'private_create', has_schema_privilege(current_user, 'private', 'CREATE'),
     'is_superuser', r.rolsuper
@@ -693,7 +737,7 @@ check_runtime_publication_context() {
 
   IFS=$'\t' read -r -a cli_context_fields <<< "${cli_context_line}"
   IFS=$'\t' read -r -a psql_context_fields <<< "${psql_context_line}"
-  if [[ "${#cli_context_fields[@]}" -ne 11 || "${#psql_context_fields[@]}" -ne 11 ]]; then
+  if [[ "${#cli_context_fields[@]}" -ne 14 || "${#psql_context_fields[@]}" -ne 14 ]]; then
     printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
     abort "database session precheck did not return exactly one context row"
   fi
@@ -709,6 +753,9 @@ check_runtime_publication_context() {
   cli_public_create="${cli_context_fields[8]}"
   cli_private_create="${cli_context_fields[9]}"
   cli_superuser="${cli_context_fields[10]}"
+  cli_references_access="${cli_context_fields[11]}"
+  cli_references_failure_kind="${cli_context_fields[12]}"
+  cli_references_missing_target="${cli_context_fields[13]}"
 
   safe_session='UNKNOWN'
   safe_current='UNKNOWN'
@@ -731,6 +778,17 @@ check_runtime_publication_context() {
     printf 'CLI_PSQL_CONTEXT_MATCH=YES\nDDL_PERMISSION=FAIL\n' >&2
     abort "Supabase CLI effective role differs from the verified migration role"
   fi
+  if [[ "${cli_references_access}" != 'true' || "${cli_references_failure_kind}" != 'none' ]]; then
+    local safe_references_target='UNKNOWN'
+    [[ "${cli_references_missing_target}" =~ ^[A-Za-z0-9_]+\([A-Za-z0-9_]+\)$ ]] && \
+      safe_references_target="public.${cli_references_missing_target}"
+    if [[ "${cli_references_failure_kind}" == 'missing_privilege' ]]; then
+      printf 'REFERENCES_PERMISSION=FAIL\nREFERENCES_OBJECT=%s\n' "${safe_references_target}" >&2
+      abort "database role lacks REFERENCES privilege required by migration 007"
+    fi
+    printf 'REFERENCES_PERMISSION=NOT_CHECKED\nREFERENCES_OBJECT=%s\n' "${safe_references_target}" >&2
+    abort "migration 007 REFERENCES precheck could not resolve a referenced relation or column"
+  fi
   if [[ "${cli_owner_access}" != 'true' || \
     "${cli_relation_access}" != 'true' || \
     "${cli_function_access}" != 'true' || \
@@ -742,6 +800,7 @@ check_runtime_publication_context() {
 
   printf 'DB_CURRENT_ROLE=%s\n' "${safe_current}"
   printf 'DB_ROLE_SETTING=%s\n' "${cli_role_setting}"
+  printf 'REFERENCES_PERMISSION=PASS\n'
   printf 'DDL_PERMISSION=PASS\n'
   printf 'CLI_PSQL_CONTEXT_MATCH=YES\n'
   printf 'PRECHECK=PASS\n'

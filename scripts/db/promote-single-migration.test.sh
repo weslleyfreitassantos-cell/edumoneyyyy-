@@ -138,9 +138,10 @@ fi
 if [[ "$*" == *' db query '* ]]; then
   [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
     "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
-  [[ "$*" != *'RESET ALL; select json_build_object('* && "$*" == *'select json_build_object('* ]] || exit 58
+  [[ "$*" == *'with migration_007_fk_targets(table_name'* && "$*" == *'has_column_privilege'* && \
+    "$*" == *"'REFERENCES'"* && "$*" != *'RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
   [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
-  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}}]}\n' \
+  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s"}}]}\n' \
     "${MOCK_CLI_CONTEXT_SESSION_USER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
@@ -151,7 +152,10 @@ if [[ "$*" == *' db query '* ]]; then
     "${MOCK_CLI_CONTEXT_FUNCTION_ACCESS:-true}" \
     "${MOCK_CLI_CONTEXT_SCHEMA_CREATE:-true}" \
     "${MOCK_CLI_CONTEXT_PRIVATE_CREATE:-true}" \
-    "${MOCK_CLI_CONTEXT_SUPERUSER:-false}"
+    "${MOCK_CLI_CONTEXT_SUPERUSER:-false}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET:-none}"
   exit 0
 fi
 if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
@@ -213,11 +217,11 @@ if [[ "$*" == *'select version from supabase_migrations.schema_migrations order 
 fi
 if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
   if [[ "$expected_db_user" == 'supabase_admin' || "$expected_db_user" == cli_login_* ]]; then
-    [[ "$*" == *'SET SESSION ROLE postgres; RESET ALL; select json_build_object('* ]] || exit 58
+    [[ "$*" == *'SET SESSION ROLE postgres; RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
   else
-    [[ "$*" == *'RESET ALL; select json_build_object('* && "$*" != *'SET SESSION ROLE'* ]] || exit 58
+    [[ "$*" == *'RESET ALL; with migration_007_fk_targets(table_name'* && "$*" != *'SET SESSION ROLE'* ]] || exit 58
   fi
-  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s}\n' \
+  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s"}\n' \
     "${MOCK_PSQL_CONTEXT_SESSION_USER:-$expected_db_user}" \
     "${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}" \
     "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
@@ -228,7 +232,10 @@ if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
     "${MOCK_PSQL_CONTEXT_FUNCTION_ACCESS:-true}" \
     "${MOCK_PSQL_CONTEXT_SCHEMA_CREATE:-true}" \
     "${MOCK_PSQL_CONTEXT_PRIVATE_CREATE:-true}" \
-    "${MOCK_PSQL_CONTEXT_SUPERUSER:-false}"
+    "${MOCK_PSQL_CONTEXT_SUPERUSER:-false}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET:-none}"
   exit 0
 fi
 exit 46
@@ -275,6 +282,7 @@ if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
   grep -q '^DB_SESSION_USER=fixture_user$' <<< "$context_pass"
   grep -q '^DB_CURRENT_USER=fixture_user$' <<< "$context_pass"
   grep -q '^DB_CANDIDATE_OWNER=fixture_user$' <<< "$context_pass"
+  grep -q '^REFERENCES_PERMISSION=PASS$' <<< "$context_pass"
   grep -q '^DDL_PERMISSION=PASS$' <<< "$context_pass"
   grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$context_pass"
   grep -q '^PRECHECK=PASS$' <<< "$context_pass"
@@ -338,6 +346,16 @@ if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
     MOCK_CLI_CONTEXT_FUNCTION_ACCESS=false MOCK_PSQL_CONTEXT_FUNCTION_ACCESS=false
   expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
     MOCK_CLI_CONTEXT_PRIVATE_CREATE=false MOCK_PSQL_CONTEXT_PRIVATE_CREATE=false
+  expect_context_rejected 'database role lacks REFERENCES privilege required by migration 007' \
+    MOCK_CLI_CONTEXT_REFERENCES_ACCESS=false MOCK_PSQL_CONTEXT_REFERENCES_ACCESS=false \
+    MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND=missing_privilege MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND=missing_privilege \
+    MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\) MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\)
+  grep -Fxq 'REFERENCES_PERMISSION=FAIL' <<< "$context_failure"
+  grep -Fxq 'REFERENCES_OBJECT=public.subjects(id)' <<< "$context_failure"
+  expect_context_rejected 'migration 007 REFERENCES precheck could not resolve a referenced relation or column' \
+    MOCK_CLI_CONTEXT_REFERENCES_ACCESS=false MOCK_PSQL_CONTEXT_REFERENCES_ACCESS=false \
+    MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND=missing_object MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND=missing_object \
+    MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\) MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\)
 
   if url_role_override="$(PATH="$tmp/bin:$PATH" \
     PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require&options=-c%20role%3Dambient_role' \
