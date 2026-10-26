@@ -378,6 +378,19 @@ pr411_target_sha="$(sed 's/\r$//' "$pr411_target" | sha256sum | awk '{print $1}'
 docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
   -c "CREATE DATABASE $pr411_database;" >/dev/null
 docker exec -i "$db_container" psql -U postgres -d "$pr411_database" -v ON_ERROR_STOP=1 <<'SQL' >/dev/null
+DO $roles$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+    CREATE ROLE anon NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'authenticated') THEN
+    CREATE ROLE authenticated NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'service_role') THEN
+    CREATE ROLE service_role NOLOGIN;
+  END IF;
+END
+$roles$;
 CREATE SCHEMA auth;
 CREATE SCHEMA private;
 CREATE SCHEMA supabase_migrations;
