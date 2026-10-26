@@ -81,6 +81,7 @@ import { mapDatabaseRole } from '../lib/roles';
 import type { User } from '../types';
 import { queryClient } from '../lib/queryClient';
 import { prefetchUserRoute } from '../lib/routePrefetch';
+import { usePsychologyModuleStatus } from '../hooks/usePsychologyModuleStatus';
 
 type NavigationSection =
   | 'global'
@@ -798,6 +799,12 @@ export default function Sidebar({
   mobileTitleId = 'app-sidebar-title',
 }: SidebarProps) {
   const location = useLocation();
+  const psychologyRole = (currentInstitutionRole ?? profile.role).toUpperCase();
+  const psychologyStatus = usePsychologyModuleStatus(
+    currentInstitutionId,
+    profile.id,
+    psychologyRole,
+  );
   const [brandLogoFailed, setBrandLogoFailed] =
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
@@ -1276,8 +1283,13 @@ export default function Sidebar({
 
   function renderPsychologyNavigation() {
     if (!currentInstitutionId || profile.platform_role === 'SUPER_ADMIN') return null;
-    const effectiveRole = (currentInstitutionRole ?? profile.role ?? '').toUpperCase();
-    const items = psychologyNavigation.filter((item) => item.roles.includes(effectiveRole));
+    const effectiveRole = psychologyRole;
+    const canConfigure = effectiveRole === 'DIRECTOR' || psychologyStatus.canManage === true;
+    const items = psychologyNavigation.filter((item) => {
+      if (!item.roles.includes(effectiveRole)) return false;
+      if (item.path === '/psychology/configuracao') return canConfigure;
+      return psychologyStatus.state === 'enabled';
+    });
     if (!items.length) return null;
     const collapsed = !(sharesRoleNavigationState
       ? openRoleNavigationGroupId === 'psychology'

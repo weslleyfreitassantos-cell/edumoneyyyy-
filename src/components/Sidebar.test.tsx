@@ -20,10 +20,15 @@ import {
 
 import type { Profile } from '../contexts/AuthContext';
 import type { User } from '../types';
+import { usePsychologyModuleStatus, type PsychologyModuleSnapshot } from '../hooks/usePsychologyModuleStatus';
 import Sidebar, {
   getSidebarAdminModules,
   getSidebarNavigationItems,
 } from './Sidebar';
+
+vi.mock('../hooks/usePsychologyModuleStatus', () => ({
+  usePsychologyModuleStatus: vi.fn(),
+}));
 
 const baseProfile: Profile = {
   id: 'user-1',
@@ -61,6 +66,7 @@ function renderSidebar({
   currentInstitutionPlan,
   isDesktopHidden = false,
   isMobileOpen = false,
+  psychologyStatus = { state: 'enabled', canManage: true },
 }: {
   route?: string;
   profile?: Profile;
@@ -70,7 +76,9 @@ function renderSidebar({
   currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
+  psychologyStatus?: PsychologyModuleSnapshot;
 } = {}) {
+  vi.mocked(usePsychologyModuleStatus).mockReturnValue(psychologyStatus);
   const onCloseMobile = vi.fn();
   const onLogout = vi.fn();
 
@@ -122,6 +130,47 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
+  it('mantém a configuração para a direção quando o módulo está desligado e oculta rotas clínicas', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      psychologyStatus: { state: 'disabled', canManage: true },
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+
+    expect(screen.getByRole('link', { name: 'Configuração' })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Agenda' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Disponibilidade' })).toBeNull();
+  });
+
+  it('oculta Psicologia de perfis clínicos enquanto a instituição está desligada', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Estudante' },
+      currentInstitutionRole: 'STUDENT',
+      psychologyStatus: { state: 'disabled', canManage: false },
+    });
+
+    expect(screen.queryByRole('region', { name: 'Apoio psicológico' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Agendar consulta' })).toBeNull();
+  });
+
+  it('permite somente configuração à secretaria com autorização explícita enquanto desligado', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'SECRETARY' },
+      currentUser: { ...baseUser, role: 'secretary', subtitle: 'Secretaria' },
+      currentInstitutionRole: 'SECRETARY',
+      psychologyStatus: { state: 'disabled', canManage: true },
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+
+    expect(screen.getByRole('link', { name: 'Configuração' })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Agenda' })).toBeNull();
+  });
+
   it('mostra o painel inclusivo somente com instituição e papel institucional autorizado', () => {
     renderSidebar({
       profile: directorProfile(),
