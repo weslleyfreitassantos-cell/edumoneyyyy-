@@ -100,6 +100,10 @@ cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
 query=''
+connection_url="${1:-}"
+database_name="${connection_url##*/}"
+database_name="${database_name%%\?*}"
+[[ "$database_name" =~ ^[A-Za-z0-9_]+$ ]] || exit 82
 while (($#)); do
   if [[ "$1" == '-c' ]]; then
     query="${2:-}"
@@ -109,7 +113,7 @@ while (($#)); do
 done
 [[ "$query" == 'select version from supabase_migrations.schema_migrations order by version;' ]] || exit 81
 exec docker exec "$PROMOTION_TEST_DB_CONTAINER" psql -X -A -t -v ON_ERROR_STOP=1 \
-  -U postgres -d "$PROMOTION_TEST_DATABASE_NAME" -c "$query"
+  -U postgres -d "$database_name" -c "$query"
 MOCK
 chmod +x "$tmp/bin/psql"
 
@@ -418,6 +422,9 @@ CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT NULL::u
 CREATE FUNCTION private.psychology_is_manager(uuid) RETURNS boolean
   LANGUAGE sql STABLE AS $$ SELECT false $$;
 SQL
+pr411_seed_ledger="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr411_database" \
+  -v ON_ERROR_STOP=1 -c 'select current_database() || chr(124) || max(version) from supabase_migrations.schema_migrations;')"
+[[ "$pr411_seed_ledger" == "$pr411_database|$pr411_base_version" ]]
 pr411_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
 mkdir -p "$tmp/pr411-bin"
 cat > "$tmp/pr411-bin/git" <<'MOCK'
