@@ -372,6 +372,17 @@ docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR
       ALTER TABLE public.learning_central_studies_v2_candidates
         ADD CONSTRAINT learning_central_studies_v2_candidates_publication_status_check
         CHECK (publication_status IN ('STAGING', 'PUBLISHED'));" >/dev/null
+# Prove the database URL and CLI connection while the owner login is still a
+# superuser; the later non-superuser fixture models a hosted migration owner.
+if ! owner_connection_output="$("$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+  --db-url "$executor_owner_db_url" --agent yes --output-format json --log-level error \
+  'select 1 as executor_owner_connection' 2>&1)"; then
+  printf 'Supabase CLI owner connection failed before role modeling; sanitized diagnostics follow:\n' >&2
+  printf '%s\n' "$owner_connection_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+  exit 1
+fi
 # Model the possible production arrangement where postgres owns objects but is
 # not a superuser. Keep a disposable admin only to restore CI cleanup.
 docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
@@ -382,13 +393,6 @@ if ! docker exec --env "PGPASSWORD=$executor_password" "$db_container" \
   echo 'Disposable cli_login role could not connect over TCP with its test password' >&2
   exit 1
 fi
-if ! "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
-  --db-url "$executor_owner_db_url" --agent yes --output-format json --log-level error \
-  'select 1 as executor_owner_connection' >/dev/null 2>&1; then
-  echo 'Supabase CLI could not connect to the disposable database as its owner login' >&2
-  exit 1
-fi
-
 run_cli_identity_query() {
   local sql="$1"
   "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
