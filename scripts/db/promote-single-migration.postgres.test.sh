@@ -423,10 +423,35 @@ assert_cli_executor_identity() {
 import json
 import os
 
-try:
-    document = json.loads(os.environ["CLI_IDENTITY_QUERY_OUTPUT"])
-except (TypeError, json.JSONDecodeError):
-    raise SystemExit("Supabase CLI identity query did not return JSON")
+raw_output = os.environ["CLI_IDENTITY_QUERY_OUTPUT"]
+decoder = json.JSONDecoder()
+documents = []
+cursor = 0
+while cursor < len(raw_output):
+    if raw_output[cursor] not in "[{":
+        cursor += 1
+        continue
+    try:
+        document, end = decoder.raw_decode(raw_output, cursor)
+    except json.JSONDecodeError:
+        cursor += 1
+        continue
+    documents.append(document)
+    cursor = end
+if not documents:
+    # The CLI can emit a human-readable login notice before its JSON payload.
+    # Show a short, credential-scrubbed excerpt if the expected payload is absent.
+    import re
+    safe_excerpt = re.sub(
+        r"(postgres(?:ql)?://[^:/@]+:)[^@/]+@", r"\1<redacted>@", raw_output
+    )
+    safe_excerpt = re.sub(
+        r"(password|token|secret|key)=([^\s]+)", r"\1=<redacted>", safe_excerpt, flags=re.I
+    )
+    raise SystemExit(
+        "Supabase CLI identity query did not return JSON; output="
+        + repr(safe_excerpt[:500])
+    )
 matches = []
 
 def visit(value):
@@ -444,7 +469,8 @@ def visit(value):
         for child in value:
             visit(child)
 
-visit(document)
+for document in documents:
+    visit(document)
 if len(matches) != 1:
     raise SystemExit("Supabase CLI identity query did not return exactly one identity")
 identity = matches[0]
