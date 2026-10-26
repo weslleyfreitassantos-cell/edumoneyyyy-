@@ -36,7 +36,7 @@ fi
 [[ -n "$raw_db_url" ]] || { echo 'Supabase local DB_URL unavailable' >&2; exit 1; }
 test_db_url="$(RAW_DB_URL="$raw_db_url" python3 - <<'PY'
 import os
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 parts = urlsplit(os.environ["RAW_DB_URL"])
 if parts.scheme not in ("postgres", "postgresql"):
@@ -45,7 +45,12 @@ if parts.hostname not in ("127.0.0.1", "localhost", "::1"):
     raise SystemExit("Refusing to run disposable migration proof against a non-loopback host")
 if not parts.username or not parts.password or not parts.port:
     raise SystemExit("Disposable PostgreSQL URL is missing connection fields")
-print(urlunsplit((parts.scheme, parts.netloc, "/promoter_historical_ci", parts.query, "")))
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+# The GitHub Actions PostgreSQL service has no TLS listener. Keep the test URL
+# on the Supabase CLI's remote-connection path (so its cli_login_* role hook is
+# exercised) while explicitly disabling TLS for this disposable service only.
+query["sslmode"] = "disable"
+print(urlunsplit((parts.scheme, parts.netloc, "/promoter_historical_ci", urlencode(query), "")))
 PY
 )"
 chronological_db_url="${test_db_url%/promoter_historical_ci}/promoter_chronological_ci"
