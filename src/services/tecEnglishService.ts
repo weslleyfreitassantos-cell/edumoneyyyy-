@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+export { tecLanguageLocale, tecLanguageName } from '../lib/tecLanguage';
 
 export type EnglishLessonStatus = 'AVAILABLE' | 'IN_PROGRESS' | 'COMPLETED' | 'LOCKED' | 'REVIEW_PENDING';
 export type EnglishExerciseType = 'MULTIPLE_CHOICE' | 'WORD_ORDER' | 'TRANSLATION' | 'LISTENING' | 'MATCHING' | 'FILL_BLANK' | 'SPEAKING';
@@ -122,6 +123,12 @@ export interface EnglishAnswerResult {
   next_exercise: EnglishExercise | null;
 }
 
+const TEC_IDIOMAS_V3_COURSES = [
+  'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION',
+  'TEC_SPANISH_FOUNDATIONS_V1',
+  'TEC_KOREAN_FOUNDATIONS_V1',
+] as const;
+
 export interface EnglishReviewQueueItem {
   course_code: string;
   content_version: number;
@@ -234,8 +241,23 @@ export function isMissingTecEnglishRpc(error: unknown): boolean {
     || (typeof candidate.message === 'string' && candidate.message.includes('Could not find the function'));
 }
 
-function isExpectedV2CourseUnavailable(error: { code?: string; message?: string } | null): boolean {
+function isExpectedCourseUnavailable(error: { code?: string; message?: string } | null): boolean {
   return error?.code === '42501' && error.message?.includes('TEC_ENGLISH_COURSE_NOT_AVAILABLE') === true;
+}
+
+function attachCourseCode(course: EnglishCourseMap): EnglishCourseMap {
+  const courseCode = course.course.code;
+  return {
+    ...course,
+    units: course.units.map((unit) => ({
+      ...unit,
+      lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: courseCode })),
+    })),
+  };
+}
+
+function isTecIdiomasV3Course(courseCode: string): boolean {
+  return (TEC_IDIOMAS_V3_COURSES as readonly string[]).includes(courseCode);
 }
 
 export const tecEnglishService = {
@@ -254,9 +276,9 @@ export const tecEnglishService = {
           p_institution_id: institutionId,
           p_course_code: courseCode,
         });
-        if (isExpectedV2CourseUnavailable(response.error)) continue;
+        if (isExpectedCourseUnavailable(response.error)) continue;
         if (response.error) {
-          if (isMissingTecEnglishRpc(response.error)) continue;
+          if (isMissingTecEnglishRpc(response.error)) break;
           v2LoadError = true;
           break;
         }
@@ -269,30 +291,46 @@ export const tecEnglishService = {
         break;
       }
     }
-    if (v2) {
-      const v2CourseCode = v2.course.code;
-      v2 = { ...v2, units: v2.units.map((unit) => ({
-        ...unit,
-        lessons: unit.lessons.map((lesson) => ({ ...lesson, course_code: v2CourseCode })),
-      })) };
+    const additionalCourses = v2 ? [attachCourseCode(v2)] : [];
+    for (const courseCode of TEC_IDIOMAS_V3_COURSES) {
+      try {
+        const response = await supabase.rpc('get_tec_language_course_map_v1', {
+          p_institution_id: institutionId,
+          p_course_code: courseCode,
+        });
+        if (isExpectedCourseUnavailable(response.error)) continue;
+        if (response.error) {
+          if (isMissingTecEnglishRpc(response.error)) break;
+          v2LoadError = true;
+          break;
+        }
+        if (response.data) additionalCourses.push(attachCourseCode(response.data as EnglishCourseMap));
+      } catch {
+        v2LoadError = true;
+        break;
+      }
     }
-    return { ...primary, additional_courses: v2 ? [v2] : [], additional_courses_error: v2LoadError };
+    return { ...primary, additional_courses: additionalCourses, additional_courses_error: v2LoadError };
   },
 
   async startLesson(institutionId: string, lessonId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isV2
-      ? await supabase.rpc('start_tec_english_lesson_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
-      : await supabase.rpc('start_tec_english_lesson_v1', { p_institution_id: institutionId, p_lesson_id: lessonId });
+    const { data, error } = isTecIdiomasV3Course(courseCode)
+      ? await supabase.rpc('start_tec_language_lesson_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
+      : isV2
+        ? await supabase.rpc('start_tec_english_lesson_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_lesson_id: lessonId })
+        : await supabase.rpc('start_tec_english_lesson_v1', { p_institution_id: institutionId, p_lesson_id: lessonId });
     const session = unwrap(data as EnglishLessonSession | null, error, 'Não foi possível abrir esta lição.');
     return { ...session, course_code: courseCode };
   },
 
   async getSession(institutionId: string, sessionId: string, courseCode = 'TEC_ENGLISH_FOUNDATIONS'): Promise<EnglishLessonSession> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isV2
-      ? await supabase.rpc('get_tec_english_session_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
-      : await supabase.rpc('get_tec_english_session_v1', { p_institution_id: institutionId, p_session_id: sessionId });
+    const { data, error } = isTecIdiomasV3Course(courseCode)
+      ? await supabase.rpc('get_tec_language_session_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
+      : isV2
+        ? await supabase.rpc('get_tec_english_session_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId })
+        : await supabase.rpc('get_tec_english_session_v1', { p_institution_id: institutionId, p_session_id: sessionId });
     const session = unwrap(data as EnglishLessonSession | null, error, 'Não foi possível retomar esta lição.');
     return { ...session, course_code: courseCode };
   },
@@ -306,9 +344,11 @@ export const tecEnglishService = {
     courseCode = 'TEC_ENGLISH_FOUNDATIONS',
   ): Promise<EnglishAnswerResult> {
     const isV2 = courseCode.startsWith('TEC_ENGLISH_FOUNDATIONS_V2');
-    const { data, error } = isV2
-      ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
-      : await supabase.rpc('submit_tec_english_answer_v1', { p_institution_id: institutionId, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey });
+    const { data, error } = isTecIdiomasV3Course(courseCode)
+      ? await supabase.rpc('submit_tec_language_answer_v1', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
+      : isV2
+        ? await supabase.rpc('submit_tec_english_answer_v2', { p_institution_id: institutionId, p_course_code: courseCode, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey })
+        : await supabase.rpc('submit_tec_english_answer_v1', { p_institution_id: institutionId, p_session_id: sessionId, p_exercise_id: exerciseId, p_response: response, p_idempotency_key: idempotencyKey });
     return unwrap(data as EnglishAnswerResult | null, error, 'Não foi possível conferir sua resposta.');
   },
 

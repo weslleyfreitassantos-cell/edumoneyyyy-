@@ -1,0 +1,2188 @@
+{
+  "course": {
+    "code": "TEC_KOREAN_FOUNDATIONS_V1",
+    "languageCode": "ko-KR",
+    "version": 1,
+    "title": "Coreano para começar",
+    "description": "Hangul, apresentações, refeições, deslocamentos e pedidos de ajuda em frases do cotidiano.",
+    "author": "Equipe de conteúdo Tec Escola",
+    "publicationStatus": "STAGING",
+    "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "xpReward": 30,
+    "is_test_fixture": false,
+    "xp_per_lesson": 30
+  },
+  "fingerprint": "a53a338d73895e8c025efd15ef49dfbe902d033d3dfcf7e49c851f8b62d9fdd7",
+  "questions": [
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "안녕하세요. 처음 뵙겠습니다.",
+      "options": [
+        "안녕하세요. 만나서 반가워요.",
+        "물 한 잔 주세요.",
+        "지하철역은 왼쪽에 있어요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "안녕하세요. 만나서 반가워요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "안녕하세요. 만나서 반가워요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “안녕하세요. 만나서 반가워요.”.",
+      "skill_code": "ko_v1_u1_l1_dialogue",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": "직원",
+      "dialogue_context": [
+        {
+          "speaker": "직원",
+          "text": "안녕하세요. 처음 뵙겠습니다."
+        },
+        {
+          "speaker": "Você",
+          "text": "안녕하세요. 만나서 반가워요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Olá. Muito prazer em conhecer você.”",
+      "options": [],
+      "word_bank": [
+        "만나서",
+        "반가워요.",
+        "안녕하세요."
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "안녕하세요. 만나서 반가워요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "안녕하세요. 만나서 반가워요."
+        ]
+      },
+      "explanation": "Uma forma correta é “안녕하세요. 만나서 반가워요.”. Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "skill_code": "ko_v1_u1_l1_word_order",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Obrigado por hoje. Até a próxima.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "오늘 감사합니다. 다음에 만나요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "오늘 감사합니다. 다음에 만나요."
+        ]
+      },
+      "explanation": "Resposta esperada: “오늘 감사합니다. 다음에 만나요.”. Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "skill_code": "ko_v1_u1_l1_translation",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "Qual expressão foi usada para se despedir?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "안녕히 가세요.",
+        "annyeonghi gaseyo.",
+        "Vá em paz."
+      ],
+      "answer_key": {
+        "accepted": [
+          "안녕히 가세요.",
+          "annyeonghi gaseyo.",
+          "Vá em paz."
+        ]
+      },
+      "explanation": "O áudio diz: “안녕하세요. 만나서 반가워요. 안녕히 가세요.”.",
+      "skill_code": "ko_v1_u1_l1_listening",
+      "difficulty_level": 1,
+      "audio_text": "안녕하세요. 만나서 반가워요. 안녕히 가세요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 안녕하세요 (annyeonghaseyo), 감사합니다 (gamsahamnida), 안녕히 가세요 (annyeonghi gaseyo).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "안녕하세요 (annyeonghaseyo)",
+        "감사합니다 (gamsahamnida)",
+        "안녕히 가세요 (annyeonghi gaseyo)"
+      ],
+      "right_items": [
+        "obrigado ou obrigada",
+        "vá em paz",
+        "olá"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "안녕하세요 (annyeonghaseyo)": "olá",
+          "감사합니다 (gamsahamnida)": "obrigado ou obrigada",
+          "안녕히 가세요 (annyeonghi gaseyo)": "vá em paz"
+        }
+      },
+      "explanation": "Pares corretos: 안녕하세요 (annyeonghaseyo) = olá; 감사합니다 (gamsahamnida) = obrigado ou obrigada; 안녕히 가세요 (annyeonghi gaseyo) = vá em paz.",
+      "skill_code": "ko_v1_u1_l1_matching",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "___, 만나서 반가워요.",
+      "options": [
+        "안녕하세요",
+        "감사합니다",
+        "안녕히 가세요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "안녕하세요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "안녕하세요"
+        ]
+      },
+      "explanation": "안녕하세요 (annyeonghaseyo) é uma saudação educada.",
+      "skill_code": "ko_v1_u1_l1_grammar",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l1",
+      "lesson": "Olá e despedidas",
+      "objective": "Reconhecer 안녕하세요 e 안녕히 가세요 em uma conversa curta.",
+      "exercise_id": "ko-v1-u1-l1-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “안녕하세요. 만나서 반가워요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "안녕하세요. 만나서 반가워요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "안녕하세요. 만나서 반가워요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “안녕하세요. 만나서 반가워요.”.",
+      "skill_code": "ko_v1_u1_l1_speaking",
+      "difficulty_level": 1,
+      "audio_text": "안녕하세요. 만나서 반가워요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "이 글자는 어떻게 읽어요?",
+      "options": [
+        "가라고 읽어요.",
+        "학교에 가요.",
+        "사과 주스 주세요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "가라고 읽어요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "가라고 읽어요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “가라고 읽어요.”.",
+      "skill_code": "ko_v1_u1_l2_dialogue",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": "선생님",
+      "dialogue_context": [
+        {
+          "speaker": "선생님",
+          "text": "이 글자는 어떻게 읽어요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "가라고 읽어요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Esta é uma palavra em coreano.”",
+      "options": [],
+      "word_bank": [
+        "단어예요.",
+        "이것은",
+        "한국어"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "이것은 한국어 단어예요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "이것은 한국어 단어예요."
+        ]
+      },
+      "explanation": "Uma forma correta é “이것은 한국어 단어예요.”. Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "skill_code": "ko_v1_u1_l2_word_order",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Leia a sílaba 가 e depois a sílaba 나.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "가를 읽고 나를 읽어요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "가를 읽고 나를 읽어요."
+        ]
+      },
+      "explanation": "Resposta esperada: “가를 읽고 나를 읽어요.”. Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "skill_code": "ko_v1_u1_l2_translation",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "Qual sílaba aparece primeiro no áudio?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "가.",
+        "ga.",
+        "A sílaba ga."
+      ],
+      "answer_key": {
+        "accepted": [
+          "가.",
+          "ga.",
+          "A sílaba ga."
+        ]
+      },
+      "explanation": "O áudio diz: “가, 나, 다. 세 음절을 차례로 읽어 보세요.”.",
+      "skill_code": "ko_v1_u1_l2_listening",
+      "difficulty_level": 1,
+      "audio_text": "가, 나, 다. 세 음절을 차례로 읽어 보세요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 가 (ga), 나 (na), 다 (da).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "가 (ga)",
+        "나 (na)",
+        "다 (da)"
+      ],
+      "right_items": [
+        "sílaba na",
+        "sílaba da",
+        "sílaba ga"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "가 (ga)": "sílaba ga",
+          "나 (na)": "sílaba na",
+          "다 (da)": "sílaba da"
+        }
+      },
+      "explanation": "Pares corretos: 가 (ga) = sílaba ga; 나 (na) = sílaba na; 다 (da) = sílaba da.",
+      "skill_code": "ko_v1_u1_l2_matching",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "가, ___, 다.",
+      "options": [
+        "나",
+        "물",
+        "책"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "나"
+      ],
+      "answer_key": {
+        "accepted": [
+          "나"
+        ]
+      },
+      "explanation": "A sequência apresentada é 가 (ga), 나 (na), 다 (da).",
+      "skill_code": "ko_v1_u1_l2_grammar",
+      "difficulty_level": 1,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l2",
+      "lesson": "Sílabas e palavras curtas",
+      "objective": "Ler palavras frequentes em Hangul e reconhecer sua pronúncia complementar.",
+      "exercise_id": "ko-v1-u1-l2-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “이것은 한국어 단어예요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "이것은 한국어 단어예요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "이것은 한국어 단어예요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “이것은 한국어 단어예요.”.",
+      "skill_code": "ko_v1_u1_l2_speaking",
+      "difficulty_level": 1,
+      "audio_text": "이것은 한국어 단어예요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "어디에서 왔어요?",
+      "options": [
+        "브라질에서 왔어요.",
+        "물 두 잔 주세요.",
+        "오른쪽으로 가세요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "브라질에서 왔어요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "브라질에서 왔어요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “브라질에서 왔어요.”.",
+      "skill_code": "ko_v1_u1_l3_dialogue",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": "민지",
+      "dialogue_context": [
+        {
+          "speaker": "민지",
+          "text": "어디에서 왔어요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "브라질에서 왔어요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Eu sou a Ana. Vim do Brasil.”",
+      "options": [],
+      "word_bank": [
+        "아나예요.",
+        "브라질에서",
+        "왔어요.",
+        "저는"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 아나예요. 브라질에서 왔어요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 아나예요. 브라질에서 왔어요."
+        ]
+      },
+      "explanation": "Uma forma correta é “저는 아나예요. 브라질에서 왔어요.”. Apresentar-se e informar a origem usando frases educadas.",
+      "skill_code": "ko_v1_u1_l3_word_order",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Meu nome é Pedro.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "제 이름은 페드로예요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "제 이름은 페드로예요."
+        ]
+      },
+      "explanation": "Resposta esperada: “제 이름은 페드로예요.”. Apresentar-se e informar a origem usando frases educadas.",
+      "skill_code": "ko_v1_u1_l3_translation",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "De que país a pessoa veio?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "브라질.",
+        "beurajil.",
+        "Brasil."
+      ],
+      "answer_key": {
+        "accepted": [
+          "브라질.",
+          "beurajil.",
+          "Brasil."
+        ]
+      },
+      "explanation": "O áudio diz: “저는 브라질에서 왔어요. 제 이름은 마리아예요.”.",
+      "skill_code": "ko_v1_u1_l3_listening",
+      "difficulty_level": 2,
+      "audio_text": "저는 브라질에서 왔어요. 제 이름은 마리아예요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 저는 (jeoneun), 브라질 (beurajil), 이름 (ireum).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "저는 (jeoneun)",
+        "브라질 (beurajil)",
+        "이름 (ireum)"
+      ],
+      "right_items": [
+        "Brasil",
+        "nome",
+        "eu"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "저는 (jeoneun)": "eu",
+          "브라질 (beurajil)": "Brasil",
+          "이름 (ireum)": "nome"
+        }
+      },
+      "explanation": "Pares corretos: 저는 (jeoneun) = eu; 브라질 (beurajil) = Brasil; 이름 (ireum) = nome.",
+      "skill_code": "ko_v1_u1_l3_matching",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "저는 브라질에서 ___ .",
+      "options": [
+        "왔어요",
+        "마셔요",
+        "읽어요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "왔어요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "왔어요"
+        ]
+      },
+      "explanation": "왔어요 (wasseoyo) é a forma educada de “vim”.",
+      "skill_code": "ko_v1_u1_l3_grammar",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l3",
+      "lesson": "Meu nome e meu país",
+      "objective": "Apresentar-se e informar a origem usando frases educadas.",
+      "exercise_id": "ko-v1-u1-l3-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “저는 아나예요. 브라질에서 왔어요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 아나예요. 브라질에서 왔어요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 아나예요. 브라질에서 왔어요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “저는 아나예요. 브라질에서 왔어요.”.",
+      "skill_code": "ko_v1_u1_l3_speaking",
+      "difficulty_level": 2,
+      "audio_text": "저는 아나예요. 브라질에서 왔어요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "도와드릴까요?",
+      "options": [
+        "네, 감사합니다.",
+        "지하철은 세 시예요.",
+        "김밥은 왼쪽에 있어요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "네, 감사합니다."
+      ],
+      "answer_key": {
+        "accepted": [
+          "네, 감사합니다."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “네, 감사합니다.”.",
+      "skill_code": "ko_v1_u1_l4_dialogue",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": "직원",
+      "dialogue_context": [
+        {
+          "speaker": "직원",
+          "text": "도와드릴까요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "네, 감사합니다."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Por favor, espere um momento.”",
+      "options": [],
+      "word_bank": [
+        "기다려",
+        "주세요.",
+        "잠시"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "잠시 기다려 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "잠시 기다려 주세요."
+        ]
+      },
+      "explanation": "Uma forma correta é “잠시 기다려 주세요.”. Agradecer e pedir algo usando formas comuns de cortesia.",
+      "skill_code": "ko_v1_u1_l4_word_order",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Tudo bem. Obrigado.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "괜찮아요. 감사합니다."
+      ],
+      "answer_key": {
+        "accepted": [
+          "괜찮아요. 감사합니다."
+        ]
+      },
+      "explanation": "Resposta esperada: “괜찮아요. 감사합니다.”. Agradecer e pedir algo usando formas comuns de cortesia.",
+      "skill_code": "ko_v1_u1_l4_translation",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "Qual expressão de agradecimento foi repetida?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "감사합니다.",
+        "gamsahamnida.",
+        "Obrigado(a)."
+      ],
+      "answer_key": {
+        "accepted": [
+          "감사합니다.",
+          "gamsahamnida.",
+          "Obrigado(a)."
+        ]
+      },
+      "explanation": "O áudio diz: “감사합니다. 정말 감사합니다.”.",
+      "skill_code": "ko_v1_u1_l4_listening",
+      "difficulty_level": 2,
+      "audio_text": "감사합니다. 정말 감사합니다.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 감사합니다 (gamsahamnida), 주세요 (juseyo), 괜찮아요 (gwaenchanayo).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "감사합니다 (gamsahamnida)",
+        "주세요 (juseyo)",
+        "괜찮아요 (gwaenchanayo)"
+      ],
+      "right_items": [
+        "por favor, dê-me",
+        "tudo bem",
+        "obrigado ou obrigada"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "감사합니다 (gamsahamnida)": "obrigado ou obrigada",
+          "주세요 (juseyo)": "por favor, dê-me",
+          "괜찮아요 (gwaenchanayo)": "tudo bem"
+        }
+      },
+      "explanation": "Pares corretos: 감사합니다 (gamsahamnida) = obrigado ou obrigada; 주세요 (juseyo) = por favor, dê-me; 괜찮아요 (gwaenchanayo) = tudo bem.",
+      "skill_code": "ko_v1_u1_l4_matching",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "물 좀 ___ .",
+      "options": [
+        "주세요",
+        "가세요",
+        "아파요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "주세요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "주세요"
+        ]
+      },
+      "explanation": "주세요 (juseyo) transforma o item anterior em um pedido educado.",
+      "skill_code": "ko_v1_u1_l4_grammar",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Hangul e primeiras conversas",
+      "lesson_id": "ko-v1-u1-l4",
+      "lesson": "Obrigado e por favor",
+      "objective": "Agradecer e pedir algo usando formas comuns de cortesia.",
+      "exercise_id": "ko-v1-u1-l4-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “잠시 기다려 주세요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "잠시 기다려 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "잠시 기다려 주세요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “잠시 기다려 주세요.”.",
+      "skill_code": "ko_v1_u1_l4_speaking",
+      "difficulty_level": 2,
+      "audio_text": "잠시 기다려 주세요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "무엇을 드릴까요?",
+      "options": [
+        "물 한 잔 주세요.",
+        "학교에 가요.",
+        "왼쪽으로 가세요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "물 한 잔 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "물 한 잔 주세요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “물 한 잔 주세요.”.",
+      "skill_code": "ko_v1_u2_l1_dialogue",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": "직원",
+      "dialogue_context": [
+        {
+          "speaker": "직원",
+          "text": "무엇을 드릴까요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "물 한 잔 주세요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Por favor, um copo de água.”",
+      "options": [],
+      "word_bank": [
+        "한",
+        "잔",
+        "주세요.",
+        "물"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "물 한 잔 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "물 한 잔 주세요."
+        ]
+      },
+      "explanation": "Uma forma correta é “물 한 잔 주세요.”. Pedir uma bebida e reconhecer os contadores de copos.",
+      "skill_code": "ko_v1_u2_l1_word_order",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Eu gostaria de um café, por favor.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "커피 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "커피 주세요."
+        ]
+      },
+      "explanation": "Resposta esperada: “커피 주세요.”. Pedir uma bebida e reconhecer os contadores de copos.",
+      "skill_code": "ko_v1_u2_l1_translation",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "O que o cliente pede?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "커피와 물.",
+        "keopi wa mul.",
+        "Café e água."
+      ],
+      "answer_key": {
+        "accepted": [
+          "커피와 물.",
+          "keopi wa mul.",
+          "Café e água."
+        ]
+      },
+      "explanation": "O áudio diz: “손님이 커피 한 잔과 물 한 잔을 주문해요.”.",
+      "skill_code": "ko_v1_u2_l1_listening",
+      "difficulty_level": 2,
+      "audio_text": "손님이 커피 한 잔과 물 한 잔을 주문해요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 물 (mul), 커피 (keopi), 한 잔 (han jan).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "물 (mul)",
+        "커피 (keopi)",
+        "한 잔 (han jan)"
+      ],
+      "right_items": [
+        "café",
+        "um copo ou xícara",
+        "água"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "물 (mul)": "água",
+          "커피 (keopi)": "café",
+          "한 잔 (han jan)": "um copo ou xícara"
+        }
+      },
+      "explanation": "Pares corretos: 물 (mul) = água; 커피 (keopi) = café; 한 잔 (han jan) = um copo ou xícara.",
+      "skill_code": "ko_v1_u2_l1_matching",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "물 한 잔 ___ .",
+      "options": [
+        "주세요",
+        "읽어요",
+        "아파요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "주세요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "주세요"
+        ]
+      },
+      "explanation": "주세요 (juseyo) é uma forma educada de pedir algo.",
+      "skill_code": "ko_v1_u2_l1_grammar",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l1",
+      "lesson": "No café",
+      "objective": "Pedir uma bebida e reconhecer os contadores de copos.",
+      "exercise_id": "ko-v1-u2-l1-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “물 한 잔 주세요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "물 한 잔 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "물 한 잔 주세요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “물 한 잔 주세요.”.",
+      "skill_code": "ko_v1_u2_l1_speaking",
+      "difficulty_level": 2,
+      "audio_text": "물 한 잔 주세요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "무슨 음식을 좋아해요?",
+      "options": [
+        "김밥을 좋아해요.",
+        "도서관은 오른쪽이에요.",
+        "아홉 시에 만나요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "김밥을 좋아해요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "김밥을 좋아해요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “김밥을 좋아해요.”.",
+      "skill_code": "ko_v1_u2_l2_dialogue",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": "친구",
+      "dialogue_context": [
+        {
+          "speaker": "친구",
+          "text": "무슨 음식을 좋아해요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "김밥을 좋아해요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Eu gosto de maçãs.”",
+      "options": [],
+      "word_bank": [
+        "사과를",
+        "좋아해요.",
+        "저는"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 사과를 좋아해요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 사과를 좋아해요."
+        ]
+      },
+      "explanation": "Uma forma correta é “저는 사과를 좋아해요.”. Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "skill_code": "ko_v1_u2_l2_word_order",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Eu gostaria de 김밥, por favor.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "김밥 주세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "김밥 주세요."
+        ]
+      },
+      "explanation": "Resposta esperada: “김밥 주세요.”. Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "skill_code": "ko_v1_u2_l2_translation",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "De quais dois alimentos a pessoa gosta?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "사과와 김밥.",
+        "sagwa wa gimbap.",
+        "Maçã e gimbap."
+      ],
+      "answer_key": {
+        "accepted": [
+          "사과와 김밥.",
+          "sagwa wa gimbap.",
+          "Maçã e gimbap."
+        ]
+      },
+      "explanation": "O áudio diz: “저는 사과와 김밥을 좋아해요.”.",
+      "skill_code": "ko_v1_u2_l2_listening",
+      "difficulty_level": 2,
+      "audio_text": "저는 사과와 김밥을 좋아해요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 사과 (sagwa), 김밥 (gimbap), 좋아해요 (joahaeyo).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "사과 (sagwa)",
+        "김밥 (gimbap)",
+        "좋아해요 (joahaeyo)"
+      ],
+      "right_items": [
+        "rolinho de arroz",
+        "gosto",
+        "maçã"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "사과 (sagwa)": "maçã",
+          "김밥 (gimbap)": "rolinho de arroz",
+          "좋아해요 (joahaeyo)": "gosto"
+        }
+      },
+      "explanation": "Pares corretos: 사과 (sagwa) = maçã; 김밥 (gimbap) = rolinho de arroz; 좋아해요 (joahaeyo) = gosto.",
+      "skill_code": "ko_v1_u2_l2_matching",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "저는 사과를 ___ .",
+      "options": [
+        "좋아해요",
+        "주세요",
+        "가세요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "좋아해요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "좋아해요"
+        ]
+      },
+      "explanation": "좋아해요 (joahaeyo) expressa que a pessoa gosta de algo.",
+      "skill_code": "ko_v1_u2_l2_grammar",
+      "difficulty_level": 2,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l2",
+      "lesson": "Comidas e preferências",
+      "objective": "Reconhecer alimentos e usar 좋아해요 para expressar gosto.",
+      "exercise_id": "ko-v1-u2-l2-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “저는 사과를 좋아해요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 사과를 좋아해요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 사과를 좋아해요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “저는 사과를 좋아해요.”.",
+      "skill_code": "ko_v1_u2_l2_speaking",
+      "difficulty_level": 2,
+      "audio_text": "저는 사과를 좋아해요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "지하철역이 어디예요?",
+      "options": [
+        "왼쪽으로 쭉 가세요.",
+        "김밥 한 줄 주세요.",
+        "저는 브라질에서 왔어요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "왼쪽으로 쭉 가세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "왼쪽으로 쭉 가세요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “왼쪽으로 쭉 가세요.”.",
+      "skill_code": "ko_v1_u2_l3_dialogue",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": "여행객",
+      "dialogue_context": [
+        {
+          "speaker": "여행객",
+          "text": "지하철역이 어디예요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "왼쪽으로 쭉 가세요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Onde fica a estação de metrô?”",
+      "options": [],
+      "word_bank": [
+        "어디예요?",
+        "지하철역이"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "지하철역이 어디예요?"
+      ],
+      "answer_key": {
+        "accepted": [
+          "지하철역이 어디예요?"
+        ]
+      },
+      "explanation": "Uma forma correta é “지하철역이 어디예요?”. Perguntar a localização de uma estação e entender esquerda/direita.",
+      "skill_code": "ko_v1_u2_l3_word_order",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Vire à direita, por favor.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "오른쪽으로 가세요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "오른쪽으로 가세요."
+        ]
+      },
+      "explanation": "Resposta esperada: “오른쪽으로 가세요.”. Perguntar a localização de uma estação e entender esquerda/direita.",
+      "skill_code": "ko_v1_u2_l3_translation",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "Onde fica o banco em relação à estação?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "오른쪽.",
+        "oreunjjok.",
+        "À direita."
+      ],
+      "answer_key": {
+        "accepted": [
+          "오른쪽.",
+          "oreunjjok.",
+          "À direita."
+        ]
+      },
+      "explanation": "O áudio diz: “은행은 지하철역 오른쪽에 있어요.”.",
+      "skill_code": "ko_v1_u2_l3_listening",
+      "difficulty_level": 3,
+      "audio_text": "은행은 지하철역 오른쪽에 있어요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 지하철역 (jihacheol-yeok), 왼쪽 (oenjjok), 오른쪽 (oreunjjok).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "지하철역 (jihacheol-yeok)",
+        "왼쪽 (oenjjok)",
+        "오른쪽 (oreunjjok)"
+      ],
+      "right_items": [
+        "esquerda",
+        "direita",
+        "estação de metrô"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "지하철역 (jihacheol-yeok)": "estação de metrô",
+          "왼쪽 (oenjjok)": "esquerda",
+          "오른쪽 (oreunjjok)": "direita"
+        }
+      },
+      "explanation": "Pares corretos: 지하철역 (jihacheol-yeok) = estação de metrô; 왼쪽 (oenjjok) = esquerda; 오른쪽 (oreunjjok) = direita.",
+      "skill_code": "ko_v1_u2_l3_matching",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "지하철역이 ___예요?",
+      "options": [
+        "어디",
+        "누구",
+        "무엇"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "어디"
+      ],
+      "answer_key": {
+        "accepted": [
+          "어디"
+        ]
+      },
+      "explanation": "어디예요? pergunta onde algo fica.",
+      "skill_code": "ko_v1_u2_l3_grammar",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l3",
+      "lesson": "Na estação",
+      "objective": "Perguntar a localização de uma estação e entender esquerda/direita.",
+      "exercise_id": "ko-v1-u2-l3-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “지하철역이 어디예요?”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "지하철역이 어디예요?"
+      ],
+      "answer_key": {
+        "accepted": [
+          "지하철역이 어디예요?"
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “지하철역이 어디예요?”.",
+      "skill_code": "ko_v1_u2_l3_speaking",
+      "difficulty_level": 3,
+      "audio_text": "지하철역이 어디예요?",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e1",
+      "position": 1,
+      "type": "MULTIPLE_CHOICE",
+      "instruction": "Escolha a resposta que combina com a conversa.",
+      "prompt": "몇 시에 학교에 가요?",
+      "options": [
+        "아침에 학교에 가요.",
+        "물 한 잔 주세요.",
+        "약국은 왼쪽이에요."
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "아침에 학교에 가요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "아침에 학교에 가요."
+        ]
+      },
+      "explanation": "Na conversa, a resposta adequada é: “아침에 학교에 가요.”.",
+      "skill_code": "ko_v1_u2_l4_dialogue",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": "친구",
+      "dialogue_context": [
+        {
+          "speaker": "친구",
+          "text": "몇 시에 학교에 가요?"
+        },
+        {
+          "speaker": "Você",
+          "text": "아침에 학교에 가요."
+        }
+      ],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e2",
+      "position": 2,
+      "type": "WORD_ORDER",
+      "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+      "prompt": "Monte: “Eu vou para a escola de manhã.”",
+      "options": [],
+      "word_bank": [
+        "가요.",
+        "저는",
+        "아침에",
+        "학교에"
+      ],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 아침에 학교에 가요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 아침에 학교에 가요."
+        ]
+      },
+      "explanation": "Uma forma correta é “저는 아침에 학교에 가요.”. Descrever uma rotina com tempo e ação em frases curtas.",
+      "skill_code": "ko_v1_u2_l4_word_order",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e3",
+      "position": 3,
+      "type": "TRANSLATION",
+      "instruction": "Escreva a tradução no idioma estudado.",
+      "prompt": "Eu estudo em casa à noite.",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 밤에 집에서 공부해요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 밤에 집에서 공부해요."
+        ]
+      },
+      "explanation": "Resposta esperada: “저는 밤에 집에서 공부해요.”. Descrever uma rotina com tempo e ação em frases curtas.",
+      "skill_code": "ko_v1_u2_l4_translation",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e4",
+      "position": 4,
+      "type": "LISTENING",
+      "instruction": "Ouça e responda em português.",
+      "prompt": "Quando a pessoa vai para a escola?",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "아침에.",
+        "achim-e.",
+        "De manhã."
+      ],
+      "answer_key": {
+        "accepted": [
+          "아침에.",
+          "achim-e.",
+          "De manhã."
+        ]
+      },
+      "explanation": "O áudio diz: “저는 아침에 일어나고 학교에 가요.”.",
+      "skill_code": "ko_v1_u2_l4_listening",
+      "difficulty_level": 3,
+      "audio_text": "저는 아침에 일어나고 학교에 가요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e5",
+      "position": 5,
+      "type": "MATCHING",
+      "instruction": "Associe cada expressão ao significado correto em português.",
+      "prompt": "Associe: 아침 (achim), 학교 (hakgyo), 가요 (gayo).",
+      "options": [],
+      "word_bank": [],
+      "left_items": [
+        "아침 (achim)",
+        "학교 (hakgyo)",
+        "가요 (gayo)"
+      ],
+      "right_items": [
+        "escola",
+        "vou",
+        "manhã"
+      ],
+      "accepted_answers": [],
+      "answer_key": {
+        "pairs": {
+          "아침 (achim)": "manhã",
+          "학교 (hakgyo)": "escola",
+          "가요 (gayo)": "vou"
+        }
+      },
+      "explanation": "Pares corretos: 아침 (achim) = manhã; 학교 (hakgyo) = escola; 가요 (gayo) = vou.",
+      "skill_code": "ko_v1_u2_l4_matching",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e6",
+      "position": 6,
+      "type": "FILL_BLANK",
+      "instruction": "Escolha a palavra que completa a frase.",
+      "prompt": "저는 아침에 학교에 ___ .",
+      "options": [
+        "가요",
+        "먹어요",
+        "마셔요"
+      ],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "가요"
+      ],
+      "answer_key": {
+        "accepted": [
+          "가요"
+        ]
+      },
+      "explanation": "가요 (gayo) significa vou; o verbo aparece no final da frase.",
+      "skill_code": "ko_v1_u2_l4_grammar",
+      "difficulty_level": 3,
+      "audio_text": null,
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    },
+    {
+      "course_code": "TEC_KOREAN_FOUNDATIONS_V1",
+      "language_code": "ko-KR",
+      "content_version": 1,
+      "unit": "Comida, lugares e rotina",
+      "lesson_id": "ko-v1-u2-l4",
+      "lesson": "Minha rotina",
+      "objective": "Descrever uma rotina com tempo e ação em frases curtas.",
+      "exercise_id": "ko-v1-u2-l4-e7",
+      "position": 7,
+      "type": "SPEAKING",
+      "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+      "prompt": "Pratique a frase: “저는 아침에 학교에 가요.”",
+      "options": [],
+      "word_bank": [],
+      "left_items": [],
+      "right_items": [],
+      "accepted_answers": [
+        "저는 아침에 학교에 가요."
+      ],
+      "answer_key": {
+        "accepted": [
+          "저는 아침에 학교에 가요."
+        ]
+      },
+      "explanation": "Fale a frase com calma e confira sua estrutura: “저는 아침에 학교에 가요.”.",
+      "skill_code": "ko_v1_u2_l4_speaking",
+      "difficulty_level": 3,
+      "audio_text": "저는 아침에 학교에 가요.",
+      "dialogue_speaker": null,
+      "dialogue_context": [],
+      "decision": "NOT_REVIEWED",
+      "notes": ""
+    }
+  ]
+}

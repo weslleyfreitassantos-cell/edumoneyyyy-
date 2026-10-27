@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
 import EnglishExerciseCard from './EnglishExerciseCard';
-import { isMissingTecEnglishRpc, tecEnglishService, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
+import { isMissingTecEnglishRpc, tecEnglishService, tecLanguageName, type EnglishAnswerResult, type EnglishCourseMap, type EnglishLearningHome, type EnglishLessonSession, type EnglishLessonSummary, type EnglishSkillReview, type EnglishSkillReviewResult } from '../../services/tecEnglishService';
 
 type Screen = 'map' | 'intro' | 'lesson' | 'result' | 'review';
 
@@ -79,6 +79,8 @@ export default function EnglishLearningPage() {
     ?? allLessons.find((lesson) => lesson.status === 'AVAILABLE');
   const totalLessons = courseMaps.reduce((sum, course) => sum + course.total_lessons, 0);
   const completedLessons = courseMaps.reduce((sum, course) => sum + course.completed_lessons, 0);
+  const totalXp = courseMaps.reduce((sum, course) => sum + course.stats.xp, 0);
+  const longestActiveStreak = courseMaps.reduce((longest, course) => Math.max(longest, course.stats.current_streak), 0);
   const progressPercent = totalLessons > 0
     ? Math.round((completedLessons / totalLessons) * 100)
     : 0;
@@ -234,7 +236,7 @@ export default function EnglishLearningPage() {
               {skillReviewResult.is_correct ? <p className="mt-2 text-sm">Próxima revisão: {new Date(skillReviewResult.next_review_at).toLocaleDateString('pt-BR')} · domínio {skillReviewResult.mastery_score}%</p> : null}
             </div>
           ) : (
-            <EnglishExerciseCard exercise={skillReview.exercise} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitSkillReview(response)} />
+          <EnglishExerciseCard exercise={skillReview.exercise} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitSkillReview(response)} />
           )}
           {skillReviewResult?.is_correct ? <button type="button" onClick={() => void returnToMap()} className="mt-4 min-h-12 rounded-xl bg-violet-700 px-5 py-3 font-extrabold text-white hover:bg-violet-800">Concluir revisão</button> : null}
           {skillReviewResult && !skillReviewResult.is_correct ? <button type="button" onClick={() => { setSkillReviewResult(null); setResetToken((value) => value + 1); }} className="mt-4 min-h-12 rounded-xl bg-amber-600 px-5 py-3 font-extrabold text-white hover:bg-amber-700">Tentar novamente</button> : null}
@@ -296,7 +298,7 @@ export default function EnglishLearningPage() {
               Tentar novamente
             </button>
           ) : (
-            <EnglishExerciseCard exercise={session.exercise} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitAnswer(response)} />
+            <EnglishExerciseCard exercise={session.exercise} courseCode={session.course_code} resetToken={resetToken} disabled={submitting} onSubmit={(response) => void submitAnswer(response)} />
           )}
         </section>
         {pageError ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
@@ -313,7 +315,7 @@ export default function EnglishLearningPage() {
           <h1 className="mt-2 text-3xl font-extrabold text-slate-950 dark:text-white">{session.lesson_title}</h1>
           <p className="mt-3 text-slate-700 dark:text-slate-200">Você concluiu os desafios desta etapa.</p>
           <div className="mt-7 grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl bg-white p-4 dark:bg-slate-900"><Sparkles className="mx-auto h-5 w-5 text-amber-500" aria-hidden="true" /><p className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">+{answerResult.xp_awarded} XP</p><p className="text-xs text-slate-600 dark:text-slate-300">Só no Tec Inglês</p></div>
+            <div className="rounded-2xl bg-white p-4 dark:bg-slate-900"><Sparkles className="mx-auto h-5 w-5 text-amber-500" aria-hidden="true" /><p className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">+{answerResult.xp_awarded} XP</p><p className="text-xs text-slate-600 dark:text-slate-300">Pontuação exclusiva deste curso</p></div>
             <div className="rounded-2xl bg-white p-4 dark:bg-slate-900"><BookOpen className="mx-auto h-5 w-5 text-sky-600" aria-hidden="true" /><p className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">{answerResult.total_xp} XP</p><p className="text-xs text-slate-600 dark:text-slate-300">Total neste curso</p></div>
             <div className="rounded-2xl bg-white p-4 dark:bg-slate-900"><Flame className="mx-auto h-5 w-5 text-rose-500" aria-hidden="true" /><p className="mt-2 text-2xl font-extrabold text-slate-950 dark:text-white">{answerResult.current_streak} {answerResult.current_streak === 1 ? 'dia' : 'dias'}</p><p className="text-xs text-slate-600 dark:text-slate-300">Sequência de estudo</p></div>
           </div>
@@ -332,12 +334,12 @@ export default function EnglishLearningPage() {
       </Link>
 
       <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-sky-700 via-blue-700 to-indigo-800 p-6 text-white shadow-sm sm:p-9">
-        <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Inglês · Curso 1</p>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{courseMap?.course.title ?? 'Aprenda inglês passo a passo'}</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{courseMap?.course.description ?? 'Pratique palavras, frases e conversas curtas em inglês.'}</p>
+        <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-100">Tec Idiomas · Aprendizado por idioma</p>
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{courseMap?.course.title ?? 'Aprenda idiomas passo a passo'}</h1>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 sm:text-base">{courseMap?.course.description ?? 'Pratique vocabulário, frases e conversas curtas no seu ritmo.'}</p>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Sparkles className="h-4 w-4" aria-hidden="true" /> XP de inglês</p><p className="mt-2 text-2xl font-extrabold">{courseMap?.stats.xp ?? 0} XP</p></div>
-          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Flame className="h-4 w-4" aria-hidden="true" /> Sequência</p><p className="mt-2 text-2xl font-extrabold">{courseMap?.stats.current_streak ?? 0} {(courseMap?.stats.current_streak ?? 0) === 1 ? 'dia' : 'dias'}</p></div>
+          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Sparkles className="h-4 w-4" aria-hidden="true" /> XP nos percursos</p><p className="mt-2 text-2xl font-extrabold">{totalXp} XP</p></div>
+          <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><Flame className="h-4 w-4" aria-hidden="true" /> Maior sequência</p><p className="mt-2 text-2xl font-extrabold">{longestActiveStreak} {longestActiveStreak === 1 ? 'dia' : 'dias'}</p></div>
           <div className="rounded-2xl bg-white/15 p-4 backdrop-blur-sm"><p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-blue-50"><CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Caminho</p><p className="mt-2 text-2xl font-extrabold">{completedLessons} de {totalLessons} lições</p></div>
         </div>
         <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-white/25" role="progressbar" aria-label={`Progresso do curso: ${progressPercent}%`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
@@ -366,21 +368,21 @@ export default function EnglishLearningPage() {
           O curso está em revisão pedagógica. As unidades e lições ficam visíveis; o início das atividades será liberado quando o conteúdo for aprovado e publicado.
         </p>
       ) : null}
-      {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seu progresso de inglês…</p> : null}
+      {loading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando seus percursos de idiomas…</p> : null}
       {pageError && screen === 'map' ? <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-900 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-100">{pageError}</p> : null}
 
       {!loading && courseMap ? (
         <section aria-labelledby="english-map-title" className="space-y-5">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">Seu percurso</p>
-            <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Lições de inglês</h2>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. Seu XP e sua sequência são exclusivos deste curso.</p>
+            <h2 id="english-map-title" className="mt-1 text-2xl font-extrabold text-slate-950 dark:text-white">Percursos de idiomas</h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Conclua uma etapa para abrir a próxima. O progresso e o XP permanecem separados por curso.</p>
           </div>
           {courseMaps.map((course) => (
             <div key={course.course.code} className="space-y-5">
               {course.course.code !== courseMap.course.code ? (
                 <div className="pt-3">
-                  <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">Próxima etapa</p>
+                  <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">{tecLanguageName(course.course.code).toLocaleUpperCase('pt-BR')}</p>
                   <h3 className="mt-1 text-xl font-extrabold text-slate-950 dark:text-white">{course.course.title}</h3>
                   <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{course.course.description}</p>
                 </div>

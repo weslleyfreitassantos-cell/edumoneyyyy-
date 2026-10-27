@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { Mic, Volume2, X } from 'lucide-react';
 
+import { tecLanguageLocale, tecLanguageName } from '../../lib/tecLanguage';
 import type { EnglishExercise } from '../../services/tecEnglishService';
 
 interface EnglishExerciseCardProps {
   exercise: EnglishExercise;
+  courseCode?: string;
   resetToken: number;
   disabled?: boolean;
   onSubmit: (response: Record<string, unknown>) => void;
@@ -29,7 +31,7 @@ type WindowWithSpeechRecognition = Window & {
   webkitSpeechRecognition?: SpeechRecognitionConstructor;
 };
 
-export default function EnglishExerciseCard({ exercise, resetToken, disabled = false, onSubmit }: EnglishExerciseCardProps) {
+export default function EnglishExerciseCard({ exercise, courseCode, resetToken, disabled = false, onSubmit }: EnglishExerciseCardProps) {
   const [choice, setChoice] = useState('');
   const [typedAnswer, setTypedAnswer] = useState('');
   const [selectedWords, setSelectedWords] = useState<number[]>([]);
@@ -39,6 +41,8 @@ export default function EnglishExerciseCard({ exercise, resetToken, disabled = f
   const [speechMessage, setSpeechMessage] = useState('');
   const [recognizing, setRecognizing] = useState(false);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const languageLocale = tecLanguageLocale(courseCode, exercise.skill_code);
+  const languageName = tecLanguageName(courseCode, exercise.skill_code);
 
   const speechRecognition = useMemo(() => {
     if (typeof window === 'undefined') return undefined;
@@ -89,12 +93,12 @@ export default function EnglishExerciseCard({ exercise, resetToken, disabled = f
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(exercise.audio_text);
-    utterance.lang = 'en-US';
+    utterance.lang = languageLocale;
     utterance.rate = rate;
     utterance.onerror = () => setSpeechMessage('Não foi possível reproduzir o áudio. Você ainda pode ler a frase e responder por escrito.');
     try {
       window.speechSynthesis.speak(utterance);
-      setSpeechMessage('Reproduzindo em inglês. Você pode ouvir novamente.');
+      setSpeechMessage(`Reproduzindo em ${languageName}. Você pode ouvir novamente.`);
     } catch {
       setSpeechMessage('Não foi possível reproduzir o áudio. Você ainda pode responder por escrito.');
     }
@@ -107,7 +111,7 @@ export default function EnglishExerciseCard({ exercise, resetToken, disabled = f
     }
     const recognition = new speechRecognition();
     recognitionRef.current = recognition;
-    recognition.lang = 'en-US';
+    recognition.lang = languageLocale;
     recognition.onresult = (event) => {
       const transcript = event.results[0]?.[0]?.transcript;
       if (transcript) {
@@ -250,7 +254,7 @@ export default function EnglishExerciseCard({ exercise, resetToken, disabled = f
             </div>
           ) : null}
           <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200">
-            {exercise.type === 'SPEAKING' ? 'Sua frase em inglês' : exercise.type === 'LISTENING' ? 'O que você ouviu?' : 'Sua tradução'}
+            {exercise.type === 'SPEAKING' ? `Sua frase em ${languageName}` : exercise.type === 'LISTENING' ? 'O que você ouviu?' : 'Sua tradução'}
             <input value={typedAnswer} disabled={disabled} onChange={(event) => setTypedAnswer(event.target.value)} autoComplete="off" className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 text-base font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white" />
           </label>
         </div>

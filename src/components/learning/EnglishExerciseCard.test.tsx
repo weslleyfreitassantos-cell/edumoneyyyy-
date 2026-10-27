@@ -40,4 +40,14 @@ describe('EnglishExerciseCard', () => {
 
     expect(onSubmit).toHaveBeenCalledWith({ pairs: { Hello: 'Olá', Goodbye: 'Tchau' } });
   });
+
+  it('uses the matching course language for speech practice', () => {
+    const exercise: EnglishExercise = {
+      id: 'speaking-spanish', position: 7, type: 'SPEAKING', instruction: 'Pratique a frase.', prompt: 'Pratique: Hola.',
+      options: [], word_bank: [], left_items: [], right_items: [], audio_text: 'Hola.', skill_code: 'es_v1_greetings_speaking',
+    };
+    render(<EnglishExerciseCard exercise={exercise} courseCode="TEC_SPANISH_FOUNDATIONS_V1" resetToken={0} onSubmit={vi.fn()} />);
+
+    expect(screen.getByLabelText('Sua frase em espanhol')).toBeTruthy();
+  });
 });

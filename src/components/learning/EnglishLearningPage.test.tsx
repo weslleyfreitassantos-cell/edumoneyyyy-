@@ -18,6 +18,7 @@ vi.mock('../../contexts/InstitutionContext', () => ({ useInstitution: () => ({ c
 vi.mock('../../services/tecEnglishService', () => ({
   tecEnglishService: api,
   isMissingTecEnglishRpc: (error: unknown) => Boolean(error && typeof error === 'object' && 'code' in error && error.code === 'PGRST202'),
+  tecLanguageName: (code?: string) => code?.includes('SPANISH') ? 'espanhol' : code?.includes('KOREAN') ? 'coreano' : 'inglês',
 }));
 
 import EnglishLearningPage from './EnglishLearningPage';
@@ -76,7 +77,7 @@ describe('EnglishLearningPage', () => {
     api.getMap.mockResolvedValue(makeMap('REVIEW_PENDING'));
     renderPage();
 
-    expect(await screen.findByRole('heading', { name: 'Lições de inglês' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Percursos de idiomas' })).toBeTruthy();
     expect(screen.getAllByRole('heading', { name: /Unidade [123]/ })).toHaveLength(3);
     expect(screen.getAllByText(/Lição [0-9]+/)).toHaveLength(12);
     expect(screen.getByText(/em revisão pedagógica/i)).toBeTruthy();
@@ -89,7 +90,7 @@ describe('EnglishLearningPage', () => {
     api.getLearningHome.mockRejectedValue(new Error('statement timeout'));
     renderPage();
 
-    expect(await screen.findByRole('heading', { name: 'Lições de inglês' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Percursos de idiomas' })).toBeTruthy();
     expect(screen.getByText(/Não foi possível verificar a disponibilidade do curso adaptativo/)).toBeTruthy();
     expect(screen.getByText(/Não foi possível atualizar suas revisões adaptativas/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Começar próxima lição' })).toBeTruthy();
@@ -135,7 +136,7 @@ describe('EnglishLearningPage', () => {
 
   it('abre uma lição disponível e mostra os desafios originais do curso', async () => {
     renderPage();
-    await screen.findByRole('heading', { name: 'Lições de inglês' });
+    await screen.findByRole('heading', { name: 'Percursos de idiomas' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
 
     expect(await screen.findByRole('heading', { name: 'Cumprimentos' })).toBeTruthy();
@@ -151,7 +152,7 @@ describe('EnglishLearningPage', () => {
       .mockResolvedValueOnce(answerResult({ is_correct: false, feedback: 'Quase! Revise a dica e tente novamente.' }))
       .mockResolvedValueOnce(answerResult());
     renderPage();
-    await screen.findByRole('heading', { name: 'Lições de inglês' });
+    await screen.findByRole('heading', { name: 'Percursos de idiomas' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
@@ -173,7 +174,7 @@ describe('EnglishLearningPage', () => {
     vi.stubGlobal('crypto', { randomUUID });
     api.submitAnswer.mockRejectedValueOnce(new Error('network timeout')).mockResolvedValueOnce(answerResult());
     renderPage();
-    await screen.findByRole('heading', { name: 'Lições de inglês' });
+    await screen.findByRole('heading', { name: 'Percursos de idiomas' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar próxima lição' }));
     await screen.findByRole('heading', { name: 'Cumprimentos' });
     fireEvent.click(screen.getByRole('button', { name: 'Começar os desafios' }));
@@ -193,7 +194,7 @@ describe('EnglishLearningPage', () => {
     api.getMap.mockResolvedValue(makeMap('IN_PROGRESS'));
     api.startLesson.mockResolvedValue(makeSession(2));
     renderPage();
-    expect(await screen.findByRole('heading', { name: 'Lições de inglês' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Percursos de idiomas' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Continuar de onde parei' }));
 
     expect(await screen.findByText('Desafio 2 de 7')).toBeTruthy();

@@ -1,0 +1,2083 @@
+{
+  "course": {
+    "code": "TEC_SPANISH_FOUNDATIONS_V1",
+    "languageCode": "es-ES",
+    "version": 1,
+    "title": "Espanhol para situações do cotidiano",
+    "description": "Cumprimentos, alimentação, deslocamentos e pedidos de ajuda em espanhol.",
+    "author": "Equipe de conteúdo Tec Escola",
+    "publicationStatus": "STAGING",
+    "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "xpReward": 30,
+    "is_test_fixture": false,
+    "xp_per_lesson": 30
+  },
+  "units": [
+    {
+      "id": "es-v1-unit-1",
+      "course_code": "TEC_SPANISH_FOUNDATIONS_V1",
+      "position": 1,
+      "title": "Primeiras conversas",
+      "description": "Cumprimente, apresente-se e converse em situações cotidianas.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "es-v1-u1-l1",
+          "unit_id": "es-v1-unit-1",
+          "position": 1,
+          "title": "Cumprimentos",
+          "introduction": "Objetivo: Cumprimentar, perguntar como alguém está e despedir-se.\n\n“Hola” funciona em qualquer momento. “Buenos días” é usado pela manhã e “Buenas tardes” à tarde.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "es-v1-u1-l1-e1",
+              "position": 1,
+              "skill_code": "es_v1_u1_l1_dialogue",
+              "difficulty_level": 1,
+              "options": [
+                "Estoy bien, gracias. ¿Y tú?",
+                "Quiero una mesa para dos.",
+                "La estación está a la izquierda."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Compañera",
+              "dialogue_context": [
+                {
+                  "speaker": "Compañera",
+                  "text": "Hola, ¿cómo estás hoy?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Estoy bien, gracias. ¿Y tú?"
+                }
+              ],
+              "accepted_answers": [
+                "Estoy bien, gracias. ¿Y tú?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Estoy bien, gracias. ¿Y tú?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Hola, ¿cómo estás hoy?",
+              "explanation": "Na conversa, a resposta adequada é: “Estoy bien, gracias. ¿Y tú?”."
+            },
+            {
+              "id": "es-v1-u1-l1-e2",
+              "position": 2,
+              "skill_code": "es_v1_u1_l1_word_order",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [
+                "días.",
+                "¿Cómo",
+                "estás?",
+                "Buenos"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Buenos días. ¿Cómo estás?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Buenos días. ¿Cómo estás?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Bom dia. Como você está?”",
+              "explanation": "Uma forma correta é “Buenos días. ¿Cómo estás?”. Cumprimentar, perguntar como alguém está e despedir-se."
+            },
+            {
+              "id": "es-v1-u1-l1-e3",
+              "position": 3,
+              "skill_code": "es_v1_u1_l1_translation",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Hasta mañana. Que tengas una buena tarde."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Hasta mañana. Que tengas una buena tarde."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Até amanhã, tenha uma boa tarde.",
+              "explanation": "Resposta esperada: “Hasta mañana. Que tengas una buena tarde.”. Cumprimentar, perguntar como alguém está e despedir-se."
+            },
+            {
+              "id": "es-v1-u1-l1-e4",
+              "position": 4,
+              "skill_code": "es_v1_u1_l1_listening",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Hola, buenos días. ¿Cómo estás?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Hola.",
+                "Buenos días.",
+                "Olá."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Hola.",
+                  "Buenos días.",
+                  "Olá."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Qual saudação aparece no começo do áudio?",
+              "explanation": "O áudio diz: “Hola, buenos días. ¿Cómo estás?”."
+            },
+            {
+              "id": "es-v1-u1-l1-e5",
+              "position": 5,
+              "skill_code": "es_v1_u1_l1_matching",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "hola",
+                "buenos días",
+                "hasta mañana"
+              ],
+              "right_items": [
+                "bom dia",
+                "até amanhã",
+                "olá"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "hola": "olá",
+                  "buenos días": "bom dia",
+                  "hasta mañana": "até amanhã"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: hola, buenos días, hasta mañana.",
+              "explanation": "Pares corretos: hola = olá; buenos días = bom dia; hasta mañana = até amanhã."
+            },
+            {
+              "id": "es-v1-u1-l1-e6",
+              "position": 6,
+              "skill_code": "es_v1_u1_l1_grammar",
+              "difficulty_level": 1,
+              "options": [
+                "Buenas",
+                "Buenos",
+                "Hasta"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Buenas"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Buenas"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "___ tardes. ¿Cómo estás?",
+              "explanation": "“Buenas tardes” é a saudação usada à tarde; “tardes” é feminino plural."
+            },
+            {
+              "id": "es-v1-u1-l1-e7",
+              "position": 7,
+              "skill_code": "es_v1_u1_l1_speaking",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Buenos días. ¿Cómo estás?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Buenos días. ¿Cómo estás?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Buenos días. ¿Cómo estás?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Buenos días. ¿Cómo estás?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Buenos días. ¿Cómo estás?”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u1-l2",
+          "unit_id": "es-v1-unit-1",
+          "position": 2,
+          "title": "Apresentações",
+          "introduction": "Objetivo: Apresentar-se e perguntar o nome com formas naturais em espanhol.\n\n“Me llamo…” significa “me chamo…”. Para perguntar o nome, use “¿Cómo te llamas?”.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "es-v1-u1-l2-e1",
+              "position": 1,
+              "skill_code": "es_v1_u1_l2_dialogue",
+              "difficulty_level": 1,
+              "options": [
+                "Me llamo Diego. Mucho gusto.",
+                "La sopa está caliente.",
+                "El tren sale a las nueve."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Compañero",
+              "dialogue_context": [
+                {
+                  "speaker": "Compañero",
+                  "text": "¿Cómo te llamas?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Me llamo Diego. Mucho gusto."
+                }
+              ],
+              "accepted_answers": [
+                "Me llamo Diego. Mucho gusto."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Me llamo Diego. Mucho gusto."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Cómo te llamas?",
+              "explanation": "Na conversa, a resposta adequada é: “Me llamo Diego. Mucho gusto.”."
+            },
+            {
+              "id": "es-v1-u1-l2-e2",
+              "position": 2,
+              "skill_code": "es_v1_u1_l2_word_order",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [
+                "Mucho",
+                "gusto.",
+                "Me",
+                "llamo",
+                "Camila."
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Me llamo Camila. Mucho gusto."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Me llamo Camila. Mucho gusto."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Meu nome é Camila. Muito prazer.”",
+              "explanation": "Uma forma correta é “Me llamo Camila. Mucho gusto.”. Apresentar-se e perguntar o nome com formas naturais em espanhol."
+            },
+            {
+              "id": "es-v1-u1-l2-e3",
+              "position": 3,
+              "skill_code": "es_v1_u1_l2_translation",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿Cómo te llamas?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿Cómo te llamas?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Como você se chama?",
+              "explanation": "Resposta esperada: “¿Cómo te llamas?”. Apresentar-se e perguntar o nome com formas naturais em espanhol."
+            },
+            {
+              "id": "es-v1-u1-l2-e4",
+              "position": 4,
+              "skill_code": "es_v1_u1_l2_listening",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Me llamo Elena y soy estudiante.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Se llama Elena.",
+                "Elena.",
+                "Ela se chama Elena."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Se llama Elena.",
+                  "Elena.",
+                  "Ela se chama Elena."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Como a pessoa se apresenta?",
+              "explanation": "O áudio diz: “Me llamo Elena y soy estudiante.”."
+            },
+            {
+              "id": "es-v1-u1-l2-e5",
+              "position": 5,
+              "skill_code": "es_v1_u1_l2_matching",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "me llamo",
+                "mucho gusto",
+                "estudiante"
+              ],
+              "right_items": [
+                "muito prazer",
+                "estudante",
+                "me chamo"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "me llamo": "me chamo",
+                  "mucho gusto": "muito prazer",
+                  "estudiante": "estudante"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: me llamo, mucho gusto, estudiante.",
+              "explanation": "Pares corretos: me llamo = me chamo; mucho gusto = muito prazer; estudiante = estudante."
+            },
+            {
+              "id": "es-v1-u1-l2-e6",
+              "position": 6,
+              "skill_code": "es_v1_u1_l2_grammar",
+              "difficulty_level": 1,
+              "options": [
+                "llamo",
+                "gusta",
+                "duele"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "llamo"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "llamo"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Me ___ Laura.",
+              "explanation": "“Me llamo” é a expressão usada para dizer o próprio nome."
+            },
+            {
+              "id": "es-v1-u1-l2-e7",
+              "position": 7,
+              "skill_code": "es_v1_u1_l2_speaking",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Me llamo Camila. Mucho gusto.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Me llamo Camila. Mucho gusto."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Me llamo Camila. Mucho gusto."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Me llamo Camila. Mucho gusto.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Me llamo Camila. Mucho gusto.”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u1-l3",
+          "unit_id": "es-v1-unit-1",
+          "position": 3,
+          "title": "De onde você é?",
+          "introduction": "Objetivo: Perguntar de onde alguém é e responder com país ou cidade.\n\n“¿De dónde eres?” pergunta a origem. “Soy de…” indica de onde você é.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "es-v1-u1-l3-e1",
+              "position": 1,
+              "skill_code": "es_v1_u1_l3_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Soy de Brasil y vivo en Recife.",
+                "Quisiera una tortilla, por favor.",
+                "El autobús para en la plaza."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Compañera",
+              "dialogue_context": [
+                {
+                  "speaker": "Compañera",
+                  "text": "¿De dónde eres?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Soy de Brasil y vivo en Recife."
+                }
+              ],
+              "accepted_answers": [
+                "Soy de Brasil y vivo en Recife."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Soy de Brasil y vivo en Recife."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿De dónde eres?",
+              "explanation": "Na conversa, a resposta adequada é: “Soy de Brasil y vivo en Recife.”."
+            },
+            {
+              "id": "es-v1-u1-l3-e2",
+              "position": 2,
+              "skill_code": "es_v1_u1_l3_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "pero",
+                "vivo",
+                "en",
+                "Salvador.",
+                "Soy",
+                "de",
+                "Brasil,"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Soy de Brasil, pero vivo en Salvador."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Soy de Brasil, pero vivo en Salvador."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Sou do Brasil, mas moro em Salvador.”",
+              "explanation": "Uma forma correta é “Soy de Brasil, pero vivo en Salvador.”. Perguntar de onde alguém é e responder com país ou cidade."
+            },
+            {
+              "id": "es-v1-u1-l3-e3",
+              "position": 3,
+              "skill_code": "es_v1_u1_l3_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿De dónde eres?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿De dónde eres?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "De onde você é?",
+              "explanation": "Resposta esperada: “¿De dónde eres?”. Perguntar de onde alguém é e responder com país ou cidade."
+            },
+            {
+              "id": "es-v1-u1-l3-e4",
+              "position": 4,
+              "skill_code": "es_v1_u1_l3_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "La estudiante es de Brasil y vive en Recife.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "En Recife.",
+                "Recife.",
+                "Em Recife."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "En Recife.",
+                  "Recife.",
+                  "Em Recife."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Em que cidade ela mora?",
+              "explanation": "O áudio diz: “La estudiante es de Brasil y vive en Recife.”."
+            },
+            {
+              "id": "es-v1-u1-l3-e5",
+              "position": 5,
+              "skill_code": "es_v1_u1_l3_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "de dónde",
+                "soy de",
+                "vivo en"
+              ],
+              "right_items": [
+                "sou de",
+                "moro em",
+                "de onde"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "de dónde": "de onde",
+                  "soy de": "sou de",
+                  "vivo en": "moro em"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: de dónde, soy de, vivo en.",
+              "explanation": "Pares corretos: de dónde = de onde; soy de = sou de; vivo en = moro em."
+            },
+            {
+              "id": "es-v1-u1-l3-e6",
+              "position": 6,
+              "skill_code": "es_v1_u1_l3_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "de",
+                "a",
+                "con"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "de"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "de"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Soy ___ Brasil.",
+              "explanation": "Usamos “ser de” para falar da origem."
+            },
+            {
+              "id": "es-v1-u1-l3-e7",
+              "position": 7,
+              "skill_code": "es_v1_u1_l3_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Soy de Brasil, pero vivo en Salvador.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Soy de Brasil, pero vivo en Salvador."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Soy de Brasil, pero vivo en Salvador."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Soy de Brasil, pero vivo en Salvador.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Soy de Brasil, pero vivo en Salvador.”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u1-l4",
+          "unit_id": "es-v1-unit-1",
+          "position": 4,
+          "title": "Frases de cortesia",
+          "introduction": "Objetivo: Usar “por favor”, “gracias” e “de nada” em pedidos simples.\n\n“Por favor” acompanha um pedido; “gracias” agradece e “de nada” responde ao agradecimento.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "es-v1-u1-l4-e1",
+              "position": 1,
+              "skill_code": "es_v1_u1_l4_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "No, gracias. Eso es todo.",
+                "Me llamo Diego y soy estudiante.",
+                "El cielo está nublado."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Dependienta",
+              "dialogue_context": [
+                {
+                  "speaker": "Dependienta",
+                  "text": "¿Necesitas algo más?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "No, gracias. Eso es todo."
+                }
+              ],
+              "accepted_answers": [
+                "No, gracias. Eso es todo."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "No, gracias. Eso es todo."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Necesitas algo más?",
+              "explanation": "Na conversa, a resposta adequada é: “No, gracias. Eso es todo.”."
+            },
+            {
+              "id": "es-v1-u1-l4-e2",
+              "position": 2,
+              "skill_code": "es_v1_u1_l4_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "por",
+                "favor.",
+                "Muchas",
+                "gracias.",
+                "Un",
+                "agua,"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Un agua, por favor. Muchas gracias."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Un agua, por favor. Muchas gracias."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Uma água, por favor. Muito obrigado.”",
+              "explanation": "Uma forma correta é “Un agua, por favor. Muchas gracias.”. Usar “por favor”, “gracias” e “de nada” em pedidos simples."
+            },
+            {
+              "id": "es-v1-u1-l4-e3",
+              "position": 3,
+              "skill_code": "es_v1_u1_l4_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Disculpe, ¿puede ayudarme?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Disculpe, ¿puede ayudarme?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Com licença, pode me ajudar?",
+              "explanation": "Resposta esperada: “Disculpe, ¿puede ayudarme?”. Usar “por favor”, “gracias” e “de nada” em pedidos simples."
+            },
+            {
+              "id": "es-v1-u1-l4-e4",
+              "position": 4,
+              "skill_code": "es_v1_u1_l4_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "La persona pide una botella de agua, por favor.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Una botella de agua.",
+                "Agua.",
+                "Uma garrafa de água."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Una botella de agua.",
+                  "Agua.",
+                  "Uma garrafa de água."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "O que a pessoa pediu?",
+              "explanation": "O áudio diz: “La persona pide una botella de agua, por favor.”."
+            },
+            {
+              "id": "es-v1-u1-l4-e5",
+              "position": 5,
+              "skill_code": "es_v1_u1_l4_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "por favor",
+                "gracias",
+                "de nada"
+              ],
+              "right_items": [
+                "obrigado ou obrigada",
+                "de nada",
+                "por favor"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "por favor": "por favor",
+                  "gracias": "obrigado ou obrigada",
+                  "de nada": "de nada"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: por favor, gracias, de nada.",
+              "explanation": "Pares corretos: por favor = por favor; gracias = obrigado ou obrigada; de nada = de nada."
+            },
+            {
+              "id": "es-v1-u1-l4-e6",
+              "position": 6,
+              "skill_code": "es_v1_u1_l4_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "por",
+                "de",
+                "en"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "por"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "por"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Una botella de agua, ___ favor.",
+              "explanation": "A expressão fixa de cortesia é “por favor”."
+            },
+            {
+              "id": "es-v1-u1-l4-e7",
+              "position": 7,
+              "skill_code": "es_v1_u1_l4_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Un agua, por favor. Muchas gracias.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Un agua, por favor. Muchas gracias."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Un agua, por favor. Muchas gracias."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Un agua, por favor. Muchas gracias.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Un agua, por favor. Muchas gracias.”."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-v1-unit-2",
+      "course_code": "TEC_SPANISH_FOUNDATIONS_V1",
+      "position": 2,
+      "title": "Comida, cidade e cuidado",
+      "description": "Peça refeições, compre, use transporte e peça ajuda.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "es-v1-u2-l1",
+          "unit_id": "es-v1-unit-2",
+          "position": 1,
+          "title": "No café",
+          "introduction": "Objetivo: Fazer um pedido simples em um café espanhol.\n\n“Quisiera…” é um pedido educado. Em muitos lugares da Espanha, “zumo” significa suco.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "es-v1-u2-l1-e1",
+              "position": 1,
+              "skill_code": "es_v1_u2_l1_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Un zumo de naranja y una tostada, por favor.",
+                "Un billete para Madrid, por favor.",
+                "Necesito una farmacia cerca."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Camarero",
+              "dialogue_context": [
+                {
+                  "speaker": "Camarero",
+                  "text": "¿Qué quieres tomar?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Un zumo de naranja y una tostada, por favor."
+                }
+              ],
+              "accepted_answers": [
+                "Un zumo de naranja y una tostada, por favor."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Un zumo de naranja y una tostada, por favor."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Qué quieres tomar?",
+              "explanation": "Na conversa, a resposta adequada é: “Un zumo de naranja y una tostada, por favor.”."
+            },
+            {
+              "id": "es-v1-u2-l1-e2",
+              "position": 2,
+              "skill_code": "es_v1_u2_l1_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "una",
+                "tostada.",
+                "Quisiera",
+                "un",
+                "café",
+                "con",
+                "leche",
+                "y"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Quisiera un café con leche y una tostada."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Quisiera un café con leche y una tostada."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Eu gostaria de um café com leite e uma torrada.”",
+              "explanation": "Uma forma correta é “Quisiera un café con leche y una tostada.”. Fazer um pedido simples em um café espanhol."
+            },
+            {
+              "id": "es-v1-u2-l1-e3",
+              "position": 3,
+              "skill_code": "es_v1_u2_l1_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿Me trae la cuenta, por favor?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿Me trae la cuenta, por favor?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Pode trazer a conta, por favor?",
+              "explanation": "Resposta esperada: “¿Me trae la cuenta, por favor?”. Fazer um pedido simples em um café espanhol."
+            },
+            {
+              "id": "es-v1-u2-l1-e4",
+              "position": 4,
+              "skill_code": "es_v1_u2_l1_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "El café con leche cuesta dos euros con cincuenta.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Dos euros con cincuenta.",
+                "Dos cincuenta.",
+                "Dois euros e cinquenta."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Dos euros con cincuenta.",
+                  "Dos cincuenta.",
+                  "Dois euros e cinquenta."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Quanto custa o café com leite?",
+              "explanation": "O áudio diz: “El café con leche cuesta dos euros con cincuenta.”."
+            },
+            {
+              "id": "es-v1-u2-l1-e5",
+              "position": 5,
+              "skill_code": "es_v1_u2_l1_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "café con leche",
+                "zumo",
+                "tostada"
+              ],
+              "right_items": [
+                "suco",
+                "torrada",
+                "café com leite"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "café con leche": "café com leite",
+                  "zumo": "suco",
+                  "tostada": "torrada"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: café con leche, zumo, tostada.",
+              "explanation": "Pares corretos: café con leche = café com leite; zumo = suco; tostada = torrada."
+            },
+            {
+              "id": "es-v1-u2-l1-e6",
+              "position": 6,
+              "skill_code": "es_v1_u2_l1_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "zumo",
+                "andén",
+                "dolor"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "zumo"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "zumo"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Quisiera un ___ de naranja.",
+              "explanation": "“Zumo de naranja” é suco de laranja na Espanha."
+            },
+            {
+              "id": "es-v1-u2-l1-e7",
+              "position": 7,
+              "skill_code": "es_v1_u2_l1_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Quisiera un café con leche y una tostada.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Quisiera un café con leche y una tostada."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Quisiera un café con leche y una tostada."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Quisiera un café con leche y una tostada.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Quisiera un café con leche y una tostada.”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u2-l2",
+          "unit_id": "es-v1-unit-2",
+          "position": 2,
+          "title": "Comida e preferências",
+          "introduction": "Objetivo: Expressar gostos e escolher uma refeição.\n\n“Me gusta…” significa “eu gosto”. Para plural, “me gustan” concorda com aquilo de que se gosta.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "es-v1-u2-l2-e1",
+              "position": 1,
+              "skill_code": "es_v1_u2_l2_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Sí, me gusta. ¿Tiene cebolla?",
+                "Sí, el autobús sale a las seis.",
+                "Sí, me duele la garganta."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Camarera",
+              "dialogue_context": [
+                {
+                  "speaker": "Camarera",
+                  "text": "¿Te gusta la tortilla española?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Sí, me gusta. ¿Tiene cebolla?"
+                }
+              ],
+              "accepted_answers": [
+                "Sí, me gusta. ¿Tiene cebolla?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Sí, me gusta. ¿Tiene cebolla?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Te gusta la tortilla española?",
+              "explanation": "Na conversa, a resposta adequada é: “Sí, me gusta. ¿Tiene cebolla?”."
+            },
+            {
+              "id": "es-v1-u2-l2-e2",
+              "position": 2,
+              "skill_code": "es_v1_u2_l2_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "aceitunas.",
+                "Me",
+                "gustan",
+                "las",
+                "verduras,",
+                "pero",
+                "no",
+                "me",
+                "gustan",
+                "las"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Me gustan las verduras, pero no me gustan las aceitunas."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Me gustan las verduras, pero no me gustan las aceitunas."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Gosto de verduras, mas não gosto de azeitonas.”",
+              "explanation": "Uma forma correta é “Me gustan las verduras, pero no me gustan las aceitunas.”. Expressar gostos e escolher uma refeição."
+            },
+            {
+              "id": "es-v1-u2-l2-e3",
+              "position": 3,
+              "skill_code": "es_v1_u2_l2_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Prefiero una ensalada sin cebolla."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Prefiero una ensalada sin cebolla."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Prefiro uma salada sem cebola.",
+              "explanation": "Resposta esperada: “Prefiero una ensalada sin cebolla.”. Expressar gostos e escolher uma refeição."
+            },
+            {
+              "id": "es-v1-u2-l2-e4",
+              "position": 4,
+              "skill_code": "es_v1_u2_l2_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "A la persona le gustan las manzanas, pero no las aceitunas.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "De las aceitunas.",
+                "Las aceitunas.",
+                "De azeitonas."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "De las aceitunas.",
+                  "Las aceitunas.",
+                  "De azeitonas."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Do que a pessoa não gosta?",
+              "explanation": "O áudio diz: “A la persona le gustan las manzanas, pero no las aceitunas.”."
+            },
+            {
+              "id": "es-v1-u2-l2-e5",
+              "position": 5,
+              "skill_code": "es_v1_u2_l2_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "me gusta",
+                "aceitunas",
+                "sin cebolla"
+              ],
+              "right_items": [
+                "azeitonas",
+                "sem cebola",
+                "eu gosto"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "me gusta": "eu gosto",
+                  "aceitunas": "azeitonas",
+                  "sin cebolla": "sem cebola"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: me gusta, aceitunas, sin cebolla.",
+              "explanation": "Pares corretos: me gusta = eu gosto; aceitunas = azeitonas; sin cebolla = sem cebola."
+            },
+            {
+              "id": "es-v1-u2-l2-e6",
+              "position": 6,
+              "skill_code": "es_v1_u2_l2_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "gustan",
+                "gusta",
+                "gusto"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "gustan"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "gustan"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Me ___ las verduras.",
+              "explanation": "“Verduras” está no plural; por isso usamos “me gustan”."
+            },
+            {
+              "id": "es-v1-u2-l2-e7",
+              "position": 7,
+              "skill_code": "es_v1_u2_l2_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Me gustan las verduras, pero no me gustan las aceitunas.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Me gustan las verduras, pero no me gustan las aceitunas."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Me gustan las verduras, pero no me gustan las aceitunas."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Me gustan las verduras, pero no me gustan las aceitunas.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Me gustan las verduras, pero no me gustan las aceitunas.”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u2-l3",
+          "unit_id": "es-v1-unit-2",
+          "position": 3,
+          "title": "Transporte e direções",
+          "introduction": "Objetivo: Perguntar por um lugar e compreender direções simples.\n\n“¿Dónde está…?” pergunta onde está um lugar. “Gira a la derecha” significa vire à direita.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "es-v1-u2-l3-e1",
+              "position": 1,
+              "skill_code": "es_v1_u2_l3_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "Sigue recto y gira a la izquierda.",
+                "Quisiera una mesa junto a la ventana.",
+                "Me llamo Ana y vivo en Madrid."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Turista",
+              "dialogue_context": [
+                {
+                  "speaker": "Turista",
+                  "text": "¿Dónde está la estación de metro?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Sigue recto y gira a la izquierda."
+                }
+              ],
+              "accepted_answers": [
+                "Sigue recto y gira a la izquierda."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Sigue recto y gira a la izquierda."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Dónde está la estación de metro?",
+              "explanation": "Na conversa, a resposta adequada é: “Sigue recto y gira a la izquierda.”."
+            },
+            {
+              "id": "es-v1-u2-l3-e2",
+              "position": 2,
+              "skill_code": "es_v1_u2_l3_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "de",
+                "la",
+                "plaza.",
+                "La",
+                "estación",
+                "está",
+                "cerca"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "La estación está cerca de la plaza."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "La estación está cerca de la plaza."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “A estação fica perto da praça.”",
+              "explanation": "Uma forma correta é “La estación está cerca de la plaza.”. Perguntar por um lugar e compreender direções simples."
+            },
+            {
+              "id": "es-v1-u2-l3-e3",
+              "position": 3,
+              "skill_code": "es_v1_u2_l3_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿Cómo llego al mercado?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿Cómo llego al mercado?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Como chego ao mercado?",
+              "explanation": "Resposta esperada: “¿Cómo llego al mercado?”. Perguntar por um lugar e compreender direções simples."
+            },
+            {
+              "id": "es-v1-u2-l3-e4",
+              "position": 4,
+              "skill_code": "es_v1_u2_l3_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "El autobús número seis para frente al museo.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "El número seis.",
+                "El autobús número seis.",
+                "O número seis."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "El número seis.",
+                  "El autobús número seis.",
+                  "O número seis."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Qual ônibus para em frente ao museu?",
+              "explanation": "O áudio diz: “El autobús número seis para frente al museo.”."
+            },
+            {
+              "id": "es-v1-u2-l3-e5",
+              "position": 5,
+              "skill_code": "es_v1_u2_l3_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "estación",
+                "sigue recto",
+                "a la izquierda"
+              ],
+              "right_items": [
+                "siga em frente",
+                "à esquerda",
+                "estação"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "estación": "estação",
+                  "sigue recto": "siga em frente",
+                  "a la izquierda": "à esquerda"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: estación, sigue recto, a la izquierda.",
+              "explanation": "Pares corretos: estación = estação; sigue recto = siga em frente; a la izquierda = à esquerda."
+            },
+            {
+              "id": "es-v1-u2-l3-e6",
+              "position": 6,
+              "skill_code": "es_v1_u2_l3_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "cerca",
+                "dulce",
+                "tarde"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "cerca"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "cerca"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "La farmacia está ___ de la estación.",
+              "explanation": "“Cerca de” indica que a farmácia fica próxima da estação."
+            },
+            {
+              "id": "es-v1-u2-l3-e7",
+              "position": 7,
+              "skill_code": "es_v1_u2_l3_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "La estación está cerca de la plaza.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "La estación está cerca de la plaza."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "La estación está cerca de la plaza."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “La estación está cerca de la plaza.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “La estación está cerca de la plaza.”."
+            }
+          ]
+        },
+        {
+          "id": "es-v1-u2-l4",
+          "unit_id": "es-v1-unit-2",
+          "position": 4,
+          "title": "Compras e ajuda",
+          "introduction": "Objetivo: Perguntar preço e fazer um pedido de ajuda compreensível.\n\n“¿Cuánto cuesta?” pergunta quanto custa. “Necesito ayuda” significa preciso de ajuda.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "es-v1-u2-l4-e1",
+              "position": 1,
+              "skill_code": "es_v1_u2_l4_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "Busco la talla mediana, por favor.",
+                "Busco el andén número dos.",
+                "Busco un vaso de agua sin gas."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Dependiente",
+              "dialogue_context": [
+                {
+                  "speaker": "Dependiente",
+                  "text": "¿Qué talla buscas?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Busco la talla mediana, por favor."
+                }
+              ],
+              "accepted_answers": [
+                "Busco la talla mediana, por favor."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Busco la talla mediana, por favor."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "¿Qué talla buscas?",
+              "explanation": "Na conversa, a resposta adequada é: “Busco la talla mediana, por favor.”."
+            },
+            {
+              "id": "es-v1-u2-l4-e2",
+              "position": 2,
+              "skill_code": "es_v1_u2_l4_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "cuesta",
+                "esta",
+                "camisa?",
+                "¿Cuánto"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿Cuánto cuesta esta camisa?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿Cuánto cuesta esta camisa?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Quanto custa esta camisa?”",
+              "explanation": "Uma forma correta é “¿Cuánto cuesta esta camisa?”. Perguntar preço e fazer um pedido de ajuda compreensível."
+            },
+            {
+              "id": "es-v1-u2-l4-e3",
+              "position": 3,
+              "skill_code": "es_v1_u2_l4_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Necesito ayuda para encontrar una farmacia."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Necesito ayuda para encontrar una farmacia."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Preciso de ajuda para encontrar uma farmácia.",
+              "explanation": "Resposta esperada: “Necesito ayuda para encontrar una farmacia.”. Perguntar preço e fazer um pedido de ajuda compreensível."
+            },
+            {
+              "id": "es-v1-u2-l4-e4",
+              "position": 4,
+              "skill_code": "es_v1_u2_l4_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "La camisa azul cuesta veinte euros.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Veinte euros.",
+                "20 euros.",
+                "Vinte euros."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Veinte euros.",
+                  "20 euros.",
+                  "Vinte euros."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Quanto custa a camisa azul?",
+              "explanation": "O áudio diz: “La camisa azul cuesta veinte euros.”."
+            },
+            {
+              "id": "es-v1-u2-l4-e5",
+              "position": 5,
+              "skill_code": "es_v1_u2_l4_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "cuánto cuesta",
+                "talla mediana",
+                "necesito ayuda"
+              ],
+              "right_items": [
+                "tamanho médio",
+                "preciso de ajuda",
+                "quanto custa"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "cuánto cuesta": "quanto custa",
+                  "talla mediana": "tamanho médio",
+                  "necesito ayuda": "preciso de ajuda"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: cuánto cuesta, talla mediana, necesito ayuda.",
+              "explanation": "Pares corretos: cuánto cuesta = quanto custa; talla mediana = tamanho médio; necesito ayuda = preciso de ajuda."
+            },
+            {
+              "id": "es-v1-u2-l4-e6",
+              "position": 6,
+              "skill_code": "es_v1_u2_l4_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "cuesta",
+                "cuestan",
+                "cuesto"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "cuesta"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "cuesta"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "¿Cuánto ___ esta camisa?",
+              "explanation": "“Esta camisa” está no singular, então a forma é “cuesta”."
+            },
+            {
+              "id": "es-v1-u2-l4-e7",
+              "position": 7,
+              "skill_code": "es_v1_u2_l4_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "¿Cuánto cuesta esta camisa?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "¿Cuánto cuesta esta camisa?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "¿Cuánto cuesta esta camisa?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “¿Cuánto cuesta esta camisa?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “¿Cuánto cuesta esta camisa?”."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manifest": {
+    "lesson_count": 8,
+    "exercise_count": 56,
+    "content_fingerprint": "1b313f544cdda97eaf4e148388179ae72a482a2cd77752bd5879dfcadafb0fb6"
+  }
+}

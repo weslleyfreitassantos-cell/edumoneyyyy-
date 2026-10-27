@@ -1,0 +1,4152 @@
+{
+  "course": {
+    "code": "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+    "languageCode": "en-US",
+    "version": 1,
+    "title": "Inglês em situações do dia a dia — continuação",
+    "description": "Uma continuação independente com viagens, alimentação, saúde e planos, ligada ao mesmo percurso de aprendizagem.",
+    "author": "Equipe de conteúdo Tec Escola",
+    "publicationStatus": "STAGING",
+    "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "xpReward": 30,
+    "is_test_fixture": false,
+    "xp_per_lesson": 30
+  },
+  "units": [
+    {
+      "id": "en-v2x-unit-1",
+      "course_code": "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+      "position": 1,
+      "title": "Viagens e deslocamentos",
+      "description": "Peça informações e resolva situações comuns durante uma viagem.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "en-v2x-u1-l1",
+          "unit_id": "en-v2x-unit-1",
+          "position": 1,
+          "title": "Na estação",
+          "introduction": "Objetivo: Pedir uma passagem e entender informações básicas de embarque.\n\nNa estação, escute a pergunta sobre o destino e diga se precisa de uma passagem só de ida. “Platform” é a plataforma de embarque.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "en-v2x-u1-l1-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u1_l1_dialogue",
+              "difficulty_level": 1,
+              "options": [
+                "A single ticket to Oxford, please.",
+                "My suitcase is under the bed.",
+                "The soup is too hot."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Ticket clerk",
+              "dialogue_context": [
+                {
+                  "speaker": "Ticket clerk",
+                  "text": "Would you like a single or return ticket?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "A single ticket to Oxford, please."
+                }
+              ],
+              "accepted_answers": [
+                "A single ticket to Oxford, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "A single ticket to Oxford, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Would you like a single or return ticket?",
+              "explanation": "Na conversa, a resposta adequada é: “A single ticket to Oxford, please.”."
+            },
+            {
+              "id": "en-v2x-u1-l1-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u1_l1_word_order",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [
+                "need",
+                "a",
+                "one-way",
+                "ticket",
+                "to",
+                "Oxford,",
+                "please.",
+                "I"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I need a one-way ticket to Oxford, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I need a one-way ticket to Oxford, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Eu preciso de uma passagem só de ida para Oxford, por favor.”",
+              "explanation": "Uma forma correta é “I need a one-way ticket to Oxford, please.”. Pedir uma passagem e entender informações básicas de embarque."
+            },
+            {
+              "id": "en-v2x-u1-l1-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u1_l1_translation",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "What time does the train to Oxford leave?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "What time does the train to Oxford leave?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "A que horas o trem para Oxford parte?",
+              "explanation": "Resposta esperada: “What time does the train to Oxford leave?”. Pedir uma passagem e entender informações básicas de embarque."
+            },
+            {
+              "id": "en-v2x-u1-l1-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u1_l1_listening",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The train to Oxford leaves at nine fifteen.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "At nine fifteen.",
+                "At 9:15."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "At nine fifteen.",
+                  "At 9:15."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "A que horas o trem parte?",
+              "explanation": "O áudio diz: “The train to Oxford leaves at nine fifteen.”."
+            },
+            {
+              "id": "en-v2x-u1-l1-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u1_l1_matching",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "platform",
+                "ticket",
+                "departure"
+              ],
+              "right_items": [
+                "passagem",
+                "partida",
+                "plataforma"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "platform": "plataforma",
+                  "ticket": "passagem",
+                  "departure": "partida"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: platform, ticket, departure.",
+              "explanation": "Pares corretos: platform = plataforma; ticket = passagem; departure = partida."
+            },
+            {
+              "id": "en-v2x-u1-l1-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u1_l1_grammar",
+              "difficulty_level": 1,
+              "options": [
+                "single",
+                "cloudy",
+                "spoon"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "single"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "single"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I need a ___ ticket to Oxford.",
+              "explanation": "“Single ticket” é uma passagem só de ida; “return ticket” inclui a volta."
+            },
+            {
+              "id": "en-v2x-u1-l1-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u1_l1_speaking",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I need a one-way ticket to Oxford, please.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I need a one-way ticket to Oxford, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I need a one-way ticket to Oxford, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I need a one-way ticket to Oxford, please.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I need a one-way ticket to Oxford, please.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u1-l2",
+          "unit_id": "en-v2x-unit-1",
+          "position": 2,
+          "title": "No ônibus",
+          "introduction": "Objetivo: Perguntar onde pegar um ônibus e entender o número da linha.\n\nUse “Which bus…” para perguntar qual ônibus leva a um lugar. “Stop” é o ponto de ônibus.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "en-v2x-u1-l2-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u1_l2_dialogue",
+              "difficulty_level": 1,
+              "options": [
+                "Yes, get off at the next stop.",
+                "I would like the vegetable soup.",
+                "It is raining in the morning."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Passenger",
+              "dialogue_context": [
+                {
+                  "speaker": "Passenger",
+                  "text": "Does this bus go to the museum?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, get off at the next stop."
+                }
+              ],
+              "accepted_answers": [
+                "Yes, get off at the next stop."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, get off at the next stop."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Does this bus go to the museum?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, get off at the next stop.”."
+            },
+            {
+              "id": "en-v2x-u1-l2-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u1_l2_word_order",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [
+                "centre?",
+                "Which",
+                "bus",
+                "goes",
+                "to",
+                "the",
+                "city"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Which bus goes to the city centre?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Which bus goes to the city centre?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Qual ônibus vai para o centro da cidade?”",
+              "explanation": "Uma forma correta é “Which bus goes to the city centre?”. Perguntar onde pegar um ônibus e entender o número da linha."
+            },
+            {
+              "id": "en-v2x-u1-l2-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u1_l2_translation",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Where is the bus stop?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Where is the bus stop?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Onde fica o ponto de ônibus?",
+              "explanation": "Resposta esperada: “Where is the bus stop?”. Perguntar onde pegar um ônibus e entender o número da linha."
+            },
+            {
+              "id": "en-v2x-u1-l2-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u1_l2_listening",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Take bus number twelve and get off at the library.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Bus number twelve.",
+                "Number twelve.",
+                "O ônibus número doze."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Bus number twelve.",
+                  "Number twelve.",
+                  "O ônibus número doze."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Qual ônibus a pessoa deve pegar?",
+              "explanation": "O áudio diz: “Take bus number twelve and get off at the library.”."
+            },
+            {
+              "id": "en-v2x-u1-l2-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u1_l2_matching",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "bus stop",
+                "get off",
+                "city centre"
+              ],
+              "right_items": [
+                "descer",
+                "centro da cidade",
+                "ponto de ônibus"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "bus stop": "ponto de ônibus",
+                  "get off": "descer",
+                  "city centre": "centro da cidade"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: bus stop, get off, city centre.",
+              "explanation": "Pares corretos: bus stop = ponto de ônibus; get off = descer; city centre = centro da cidade."
+            },
+            {
+              "id": "en-v2x-u1-l2-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u1_l2_grammar",
+              "difficulty_level": 1,
+              "options": [
+                "catch",
+                "wear",
+                "cook"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "catch"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "catch"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Please tell me where to ___ the bus.",
+              "explanation": "“Catch a bus” significa pegar ou embarcar em um ônibus."
+            },
+            {
+              "id": "en-v2x-u1-l2-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u1_l2_speaking",
+              "difficulty_level": 1,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Which bus goes to the city centre?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Which bus goes to the city centre?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Which bus goes to the city centre?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Which bus goes to the city centre?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Which bus goes to the city centre?”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u1-l3",
+          "unit_id": "en-v2x-unit-1",
+          "position": 3,
+          "title": "No hotel",
+          "introduction": "Objetivo: Informar uma reserva e pedir detalhes simples sobre o quarto.\n\nNo check-in, diga o nome da reserva. “Reservation” significa reserva e “key card” é o cartão-chave.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "en-v2x-u1-l3-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u1_l3_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Of course. Your room is on the third floor.",
+                "The bus stops near the station.",
+                "I need a smaller shirt."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Guest",
+              "dialogue_context": [
+                {
+                  "speaker": "Guest",
+                  "text": "Could I have the key card, please?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Of course. Your room is on the third floor."
+                }
+              ],
+              "accepted_answers": [
+                "Of course. Your room is on the third floor."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Of course. Your room is on the third floor."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Could I have the key card, please?",
+              "explanation": "Na conversa, a resposta adequada é: “Of course. Your room is on the third floor.”."
+            },
+            {
+              "id": "en-v2x-u1-l3-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u1_l3_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "have",
+                "a",
+                "reservation",
+                "under",
+                "Ana",
+                "Costa.",
+                "I"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I have a reservation under Ana Costa."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I have a reservation under Ana Costa."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Tenho uma reserva em nome de Ana Costa.”",
+              "explanation": "Uma forma correta é “I have a reservation under Ana Costa.”. Informar uma reserva e pedir detalhes simples sobre o quarto."
+            },
+            {
+              "id": "en-v2x-u1-l3-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u1_l3_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Breakfast starts at seven."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Breakfast starts at seven."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "O café da manhã começa às sete.",
+              "explanation": "Resposta esperada: “Breakfast starts at seven.”. Informar uma reserva e pedir detalhes simples sobre o quarto."
+            },
+            {
+              "id": "en-v2x-u1-l3-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u1_l3_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Breakfast is served from seven to ten in the dining room.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "From seven to ten.",
+                "Seven to ten.",
+                "Das sete às dez."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "From seven to ten.",
+                  "Seven to ten.",
+                  "Das sete às dez."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Em que horário o café da manhã é servido?",
+              "explanation": "O áudio diz: “Breakfast is served from seven to ten in the dining room.”."
+            },
+            {
+              "id": "en-v2x-u1-l3-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u1_l3_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "reservation",
+                "key card",
+                "third floor"
+              ],
+              "right_items": [
+                "cartão-chave",
+                "terceiro andar",
+                "reserva"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "reservation": "reserva",
+                  "key card": "cartão-chave",
+                  "third floor": "terceiro andar"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: reservation, key card, third floor.",
+              "explanation": "Pares corretos: reservation = reserva; key card = cartão-chave; third floor = terceiro andar."
+            },
+            {
+              "id": "en-v2x-u1-l3-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u1_l3_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "reservation",
+                "forecast",
+                "appointment"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "reservation"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "reservation"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I have a ___ under Ana Costa.",
+              "explanation": "“Reservation” é a reserva feita para o quarto ou serviço."
+            },
+            {
+              "id": "en-v2x-u1-l3-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u1_l3_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I have a reservation under Ana Costa.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I have a reservation under Ana Costa."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I have a reservation under Ana Costa."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I have a reservation under Ana Costa.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I have a reservation under Ana Costa.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u1-l4",
+          "unit_id": "en-v2x-unit-1",
+          "position": 4,
+          "title": "Comprando uma passagem",
+          "introduction": "Objetivo: Perguntar sobre disponibilidade e escolher um horário para viajar.\n\n“Available” significa disponível. Para confirmar uma escolha, diga “That time works for me.”",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "en-v2x-u1-l4-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u1_l4_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Yes, eleven thirty works for me.",
+                "I need a spoon for my soup.",
+                "She has a headache today."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Travel agent",
+              "dialogue_context": [
+                {
+                  "speaker": "Travel agent",
+                  "text": "The ten o’clock train is full. Is eleven thirty okay?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, eleven thirty works for me."
+                }
+              ],
+              "accepted_answers": [
+                "Yes, eleven thirty works for me."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, eleven thirty works for me."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "The ten o’clock train is full. Is eleven thirty okay?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, eleven thirty works for me.”."
+            },
+            {
+              "id": "en-v2x-u1-l4-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u1_l4_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "time",
+                "works",
+                "for",
+                "me.",
+                "That"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "That time works for me."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "That time works for me."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Esse horário funciona para mim.”",
+              "explanation": "Uma forma correta é “That time works for me.”. Perguntar sobre disponibilidade e escolher um horário para viajar."
+            },
+            {
+              "id": "en-v2x-u1-l4-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u1_l4_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "There are still two seats available."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "There are still two seats available."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Ainda há dois lugares disponíveis.",
+              "explanation": "Resposta esperada: “There are still two seats available.”. Perguntar sobre disponibilidade e escolher um horário para viajar."
+            },
+            {
+              "id": "en-v2x-u1-l4-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u1_l4_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "There are two seats available on the eleven thirty train.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Two seats.",
+                "Two.",
+                "Dois lugares."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Two seats.",
+                  "Two.",
+                  "Dois lugares."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Quantos lugares ainda estão disponíveis?",
+              "explanation": "O áudio diz: “There are two seats available on the eleven thirty train.”."
+            },
+            {
+              "id": "en-v2x-u1-l4-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u1_l4_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "available",
+                "seat",
+                "full"
+              ],
+              "right_items": [
+                "assento ou lugar",
+                "lotado",
+                "disponível"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "available": "disponível",
+                  "seat": "assento ou lugar",
+                  "full": "lotado"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: available, seat, full.",
+              "explanation": "Pares corretos: available = disponível; seat = assento ou lugar; full = lotado."
+            },
+            {
+              "id": "en-v2x-u1-l4-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u1_l4_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "available",
+                "thirsty",
+                "windy"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "available"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "available"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "There are two seats ___ on this train.",
+              "explanation": "“Available” informa que os lugares ainda podem ser comprados."
+            },
+            {
+              "id": "en-v2x-u1-l4-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u1_l4_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "That time works for me.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "That time works for me."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "That time works for me."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “That time works for me.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “That time works for me.”."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-v2x-unit-2",
+      "course_code": "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+      "position": 2,
+      "title": "Comida e atendimento",
+      "description": "Peça refeições, informe preferências e compre alimentos.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "en-v2x-u2-l1",
+          "unit_id": "en-v2x-unit-2",
+          "position": 1,
+          "title": "No café",
+          "introduction": "Objetivo: Pedir comida e bebida com cortesia usando “would like”.\n\n“I’d like…” é uma forma educada de pedir. “Still water” é água sem gás.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "en-v2x-u2-l1-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u2_l1_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Tea, please, and a glass of water.",
+                "A return ticket to Oxford, please.",
+                "My appointment is on Thursday."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Server",
+              "dialogue_context": [
+                {
+                  "speaker": "Server",
+                  "text": "Would you like tea or coffee?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Tea, please, and a glass of water."
+                }
+              ],
+              "accepted_answers": [
+                "Tea, please, and a glass of water."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Tea, please, and a glass of water."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Would you like tea or coffee?",
+              "explanation": "Na conversa, a resposta adequada é: “Tea, please, and a glass of water.”."
+            },
+            {
+              "id": "en-v2x-u2-l1-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u2_l1_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "like",
+                "a",
+                "sandwich",
+                "and",
+                "still",
+                "water,",
+                "please.",
+                "I",
+                "would"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I would like a sandwich and still water, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I would like a sandwich and still water, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Eu gostaria de um sanduíche e uma água sem gás, por favor.”",
+              "explanation": "Uma forma correta é “I would like a sandwich and still water, please.”. Pedir comida e bebida com cortesia usando “would like”."
+            },
+            {
+              "id": "en-v2x-u2-l1-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u2_l1_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Could I see the menu, please?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Could I see the menu, please?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Posso ver o cardápio, por favor?",
+              "explanation": "Resposta esperada: “Could I see the menu, please?”. Pedir comida e bebida com cortesia usando “would like”."
+            },
+            {
+              "id": "en-v2x-u2-l1-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u2_l1_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The customer orders a cheese sandwich and a cup of tea.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "A cheese sandwich.",
+                "A sandwich.",
+                "Um sanduíche de queijo."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "A cheese sandwich.",
+                  "A sandwich.",
+                  "Um sanduíche de queijo."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "O que a pessoa pediu para comer?",
+              "explanation": "O áudio diz: “The customer orders a cheese sandwich and a cup of tea.”."
+            },
+            {
+              "id": "en-v2x-u2-l1-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u2_l1_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "menu",
+                "still water",
+                "cup"
+              ],
+              "right_items": [
+                "água sem gás",
+                "xícara",
+                "cardápio"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "menu": "cardápio",
+                  "still water": "água sem gás",
+                  "cup": "xícara"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: menu, still water, cup.",
+              "explanation": "Pares corretos: menu = cardápio; still water = água sem gás; cup = xícara."
+            },
+            {
+              "id": "en-v2x-u2-l1-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u2_l1_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "cup",
+                "platform",
+                "bandage"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "cup"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "cup"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I would like a ___ of tea.",
+              "explanation": "“A cup of tea” significa uma xícara de chá."
+            },
+            {
+              "id": "en-v2x-u2-l1-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u2_l1_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I would like a sandwich and still water, please.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I would like a sandwich and still water, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I would like a sandwich and still water, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I would like a sandwich and still water, please.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I would like a sandwich and still water, please.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u2-l2",
+          "unit_id": "en-v2x-unit-2",
+          "position": 2,
+          "title": "No restaurante",
+          "introduction": "Objetivo: Fazer um pedido e confirmar um ingrediente de um prato.\n\nPergunte “Does this dish have…?” para conferir ingredientes. “Without” significa sem.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "en-v2x-u2-l2-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u2_l2_dialogue",
+              "difficulty_level": 2,
+              "options": [
+                "Potatoes, please, and no cheese in the salad.",
+                "A platform near the city centre.",
+                "A warm jacket for the rain."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Customer",
+              "dialogue_context": [
+                {
+                  "speaker": "Customer",
+                  "text": "Would you like rice or potatoes with the fish?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Potatoes, please, and no cheese in the salad."
+                }
+              ],
+              "accepted_answers": [
+                "Potatoes, please, and no cheese in the salad."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Potatoes, please, and no cheese in the salad."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Would you like rice or potatoes with the fish?",
+              "explanation": "Na conversa, a resposta adequada é: “Potatoes, please, and no cheese in the salad.”."
+            },
+            {
+              "id": "en-v2x-u2-l2-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u2_l2_word_order",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [
+                "would",
+                "like",
+                "the",
+                "salad",
+                "without",
+                "cheese.",
+                "I"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I would like the salad without cheese."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I would like the salad without cheese."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Eu gostaria da salada sem queijo.”",
+              "explanation": "Uma forma correta é “I would like the salad without cheese.”. Fazer um pedido e confirmar um ingrediente de um prato."
+            },
+            {
+              "id": "en-v2x-u2-l2-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u2_l2_translation",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Does this dish have peanuts?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Does this dish have peanuts?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Este prato tem amendoim?",
+              "explanation": "Resposta esperada: “Does this dish have peanuts?”. Fazer um pedido e confirmar um ingrediente de um prato."
+            },
+            {
+              "id": "en-v2x-u2-l2-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u2_l2_listening",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The vegetable soup is served with bread.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Bread.",
+                "Some bread.",
+                "Pão."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Bread.",
+                  "Some bread.",
+                  "Pão."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "O que acompanha a sopa de legumes?",
+              "explanation": "O áudio diz: “The vegetable soup is served with bread.”."
+            },
+            {
+              "id": "en-v2x-u2-l2-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u2_l2_matching",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "dish",
+                "without",
+                "peanuts"
+              ],
+              "right_items": [
+                "sem",
+                "amendoins",
+                "prato"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "dish": "prato",
+                  "without": "sem",
+                  "peanuts": "amendoins"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: dish, without, peanuts.",
+              "explanation": "Pares corretos: dish = prato; without = sem; peanuts = amendoins."
+            },
+            {
+              "id": "en-v2x-u2-l2-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u2_l2_grammar",
+              "difficulty_level": 2,
+              "options": [
+                "without",
+                "between",
+                "cloudy"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "without"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "without"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I would like the salad ___ cheese.",
+              "explanation": "“Without cheese” significa sem queijo."
+            },
+            {
+              "id": "en-v2x-u2-l2-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u2_l2_speaking",
+              "difficulty_level": 2,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I would like the salad without cheese.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I would like the salad without cheese."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I would like the salad without cheese."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I would like the salad without cheese.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I would like the salad without cheese.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u2-l3",
+          "unit_id": "en-v2x-unit-2",
+          "position": 3,
+          "title": "Preferências alimentares",
+          "introduction": "Objetivo: Expressar uma preferência alimentar e pedir uma alternativa.\n\n“I prefer…” expressa preferência. Para recusar algo com gentileza, explique o que prefere.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "en-v2x-u2-l3-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u2_l3_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "The vegetable option, please. I do not eat meat.",
+                "A single ticket, please.",
+                "The pharmacy is across the street."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Server",
+              "dialogue_context": [
+                {
+                  "speaker": "Server",
+                  "text": "Would you like chicken or the vegetable option?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "The vegetable option, please. I do not eat meat."
+                }
+              ],
+              "accepted_answers": [
+                "The vegetable option, please. I do not eat meat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "The vegetable option, please. I do not eat meat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Would you like chicken or the vegetable option?",
+              "explanation": "Na conversa, a resposta adequada é: “The vegetable option, please. I do not eat meat.”."
+            },
+            {
+              "id": "en-v2x-u2-l3-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u2_l3_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "prefer",
+                "vegetables",
+                "and",
+                "rice.",
+                "I"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I prefer vegetables and rice."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I prefer vegetables and rice."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Eu prefiro legumes e arroz.”",
+              "explanation": "Uma forma correta é “I prefer vegetables and rice.”. Expressar uma preferência alimentar e pedir uma alternativa."
+            },
+            {
+              "id": "en-v2x-u2-l3-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u2_l3_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I do not eat meat.",
+                "I don't eat meat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I do not eat meat.",
+                  "I don't eat meat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Eu não como carne.",
+              "explanation": "Resposta esperada: “I do not eat meat.”. Expressar uma preferência alimentar e pedir uma alternativa."
+            },
+            {
+              "id": "en-v2x-u2-l3-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u2_l3_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The customer prefers the vegetable option and does not eat meat.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "The vegetable option.",
+                "Vegetables.",
+                "A opção de legumes."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "The vegetable option.",
+                  "Vegetables.",
+                  "A opção de legumes."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Qual opção a pessoa escolheu?",
+              "explanation": "O áudio diz: “The customer prefers the vegetable option and does not eat meat.”."
+            },
+            {
+              "id": "en-v2x-u2-l3-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u2_l3_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "prefer",
+                "vegetable option",
+                "meat"
+              ],
+              "right_items": [
+                "opção de legumes",
+                "carne",
+                "preferir"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "prefer": "preferir",
+                  "vegetable option": "opção de legumes",
+                  "meat": "carne"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: prefer, vegetable option, meat.",
+              "explanation": "Pares corretos: prefer = preferir; vegetable option = opção de legumes; meat = carne."
+            },
+            {
+              "id": "en-v2x-u2-l3-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u2_l3_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "prefer",
+                "leaves",
+                "hurts"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "prefer"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "prefer"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I ___ the vegetable option, please.",
+              "explanation": "“Prefer” é o verbo usado para dizer que uma opção é a preferida."
+            },
+            {
+              "id": "en-v2x-u2-l3-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u2_l3_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I prefer vegetables and rice.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I prefer vegetables and rice."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I prefer vegetables and rice."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I prefer vegetables and rice.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I prefer vegetables and rice.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u2-l4",
+          "unit_id": "en-v2x-unit-2",
+          "position": 4,
+          "title": "Na feira",
+          "introduction": "Objetivo: Perguntar o preço e comprar uma quantidade de frutas.\n\nUse “How much…” para perguntar o preço. “A kilo of” indica um quilo de algo.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "en-v2x-u2-l4-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u2_l4_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "Yes, I would like a kilo of apples, please.",
+                "Yes, I need a bandage for my arm.",
+                "The bus leaves at ten."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Shopkeeper",
+              "dialogue_context": [
+                {
+                  "speaker": "Shopkeeper",
+                  "text": "Can I help you?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, I would like a kilo of apples, please."
+                }
+              ],
+              "accepted_answers": [
+                "Yes, I would like a kilo of apples, please."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, I would like a kilo of apples, please."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Can I help you?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, I would like a kilo of apples, please.”."
+            },
+            {
+              "id": "en-v2x-u2-l4-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u2_l4_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "are",
+                "these",
+                "apples?",
+                "How",
+                "much"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "How much are these apples?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "How much are these apples?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Quanto custam estas maçãs?”",
+              "explanation": "Uma forma correta é “How much are these apples?”. Perguntar o preço e comprar uma quantidade de frutas."
+            },
+            {
+              "id": "en-v2x-u2-l4-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u2_l4_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I would like half a kilo of tomatoes."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I would like half a kilo of tomatoes."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Eu gostaria de meio quilo de tomates.",
+              "explanation": "Resposta esperada: “I would like half a kilo of tomatoes.”. Perguntar o preço e comprar uma quantidade de frutas."
+            },
+            {
+              "id": "en-v2x-u2-l4-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u2_l4_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The apples cost three pounds a kilo.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Three pounds.",
+                "Three pounds a kilo.",
+                "Três libras por quilo."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Three pounds.",
+                  "Three pounds a kilo.",
+                  "Três libras por quilo."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Quanto custa um quilo de maçãs?",
+              "explanation": "O áudio diz: “The apples cost three pounds a kilo.”."
+            },
+            {
+              "id": "en-v2x-u2-l4-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u2_l4_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "a kilo",
+                "tomatoes",
+                "cost"
+              ],
+              "right_items": [
+                "tomates",
+                "custar",
+                "um quilo"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "a kilo": "um quilo",
+                  "tomatoes": "tomates",
+                  "cost": "custar"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: a kilo, tomatoes, cost.",
+              "explanation": "Pares corretos: a kilo = um quilo; tomatoes = tomates; cost = custar."
+            },
+            {
+              "id": "en-v2x-u2-l4-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u2_l4_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "are",
+                "is",
+                "does"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "are"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "are"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "How much ___ these apples?",
+              "explanation": "“Apples” está no plural, então a pergunta usa “are”."
+            },
+            {
+              "id": "en-v2x-u2-l4-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u2_l4_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "How much are these apples?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "How much are these apples?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "How much are these apples?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “How much are these apples?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “How much are these apples?”."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-v2x-unit-3",
+      "course_code": "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+      "position": 3,
+      "title": "Clima, saúde e cuidado",
+      "description": "Entenda a previsão e peça ajuda em situações comuns de saúde.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "en-v2x-u3-l1",
+          "unit_id": "en-v2x-unit-3",
+          "position": 1,
+          "title": "A previsão do tempo",
+          "introduction": "Objetivo: Entender uma previsão simples e perguntar sobre o clima.\n\n“Forecast” é previsão do tempo. As expressões “It is sunny” e “It is cloudy” descrevem o clima.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "en-v2x-u3-l1-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u3_l1_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "It will be sunny and warm.",
+                "The pharmacy closes at six.",
+                "The train leaves from platform two."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Visitor",
+              "dialogue_context": [
+                {
+                  "speaker": "Visitor",
+                  "text": "What will the weather be like tomorrow?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "It will be sunny and warm."
+                }
+              ],
+              "accepted_answers": [
+                "It will be sunny and warm."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "It will be sunny and warm."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "What will the weather be like tomorrow?",
+              "explanation": "Na conversa, a resposta adequada é: “It will be sunny and warm.”."
+            },
+            {
+              "id": "en-v2x-u3-l1-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u3_l1_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "it",
+                "going",
+                "to",
+                "rain",
+                "this",
+                "afternoon?",
+                "Is"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Is it going to rain this afternoon?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Is it going to rain this afternoon?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Vai chover esta tarde?”",
+              "explanation": "Uma forma correta é “Is it going to rain this afternoon?”. Entender uma previsão simples e perguntar sobre o clima."
+            },
+            {
+              "id": "en-v2x-u3-l1-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u3_l1_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "The forecast says it will be sunny tomorrow."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "The forecast says it will be sunny tomorrow."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "A previsão diz que amanhã fará sol.",
+              "explanation": "Resposta esperada: “The forecast says it will be sunny tomorrow.”. Entender uma previsão simples e perguntar sobre o clima."
+            },
+            {
+              "id": "en-v2x-u3-l1-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u3_l1_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The forecast says it will rain after four o’clock.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "After four o’clock.",
+                "After four.",
+                "Depois das quatro."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "After four o’clock.",
+                  "After four.",
+                  "Depois das quatro."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Depois de que horário a previsão indica chuva?",
+              "explanation": "O áudio diz: “The forecast says it will rain after four o’clock.”."
+            },
+            {
+              "id": "en-v2x-u3-l1-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u3_l1_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "forecast",
+                "sunny",
+                "cloudy"
+              ],
+              "right_items": [
+                "ensolarado",
+                "nublado",
+                "previsão"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "forecast": "previsão",
+                  "sunny": "ensolarado",
+                  "cloudy": "nublado"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: forecast, sunny, cloudy.",
+              "explanation": "Pares corretos: forecast = previsão; sunny = ensolarado; cloudy = nublado."
+            },
+            {
+              "id": "en-v2x-u3-l1-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u3_l1_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "rain",
+                "board",
+                "order"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "rain"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "rain"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "The sky is dark. It may ___ soon.",
+              "explanation": "“It may rain” significa que pode chover."
+            },
+            {
+              "id": "en-v2x-u3-l1-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u3_l1_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Is it going to rain this afternoon?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Is it going to rain this afternoon?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Is it going to rain this afternoon?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Is it going to rain this afternoon?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Is it going to rain this afternoon?”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u3-l2",
+          "unit_id": "en-v2x-unit-3",
+          "position": 2,
+          "title": "Roupas para o clima",
+          "introduction": "Objetivo: Relacionar roupas e clima usando recomendações simples.\n\n“You should…” é usado para dar uma recomendação. “Raincoat” significa capa de chuva.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "en-v2x-u3-l2-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u3_l2_dialogue",
+              "difficulty_level": 3,
+              "options": [
+                "You should wear a warm jacket.",
+                "You should order the fish.",
+                "You should take the train at nine."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Friend",
+              "dialogue_context": [
+                {
+                  "speaker": "Friend",
+                  "text": "It is windy outside. What should I wear?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "You should wear a warm jacket."
+                }
+              ],
+              "accepted_answers": [
+                "You should wear a warm jacket."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "You should wear a warm jacket."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "It is windy outside. What should I wear?",
+              "explanation": "Na conversa, a resposta adequada é: “You should wear a warm jacket.”."
+            },
+            {
+              "id": "en-v2x-u3-l2-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u3_l2_word_order",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [
+                "should",
+                "take",
+                "a",
+                "raincoat.",
+                "You"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "You should take a raincoat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "You should take a raincoat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Você deve levar uma capa de chuva.”",
+              "explanation": "Uma forma correta é “You should take a raincoat.”. Relacionar roupas e clima usando recomendações simples."
+            },
+            {
+              "id": "en-v2x-u3-l2-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u3_l2_translation",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "It is cold, so I will wear a coat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "It is cold, so I will wear a coat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Está frio; vou vestir um casaco.",
+              "explanation": "Resposta esperada: “It is cold, so I will wear a coat.”. Relacionar roupas e clima usando recomendações simples."
+            },
+            {
+              "id": "en-v2x-u3-l2-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u3_l2_listening",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "She takes an umbrella because it is raining.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Because it is raining.",
+                "It is raining.",
+                "Porque está chovendo."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Because it is raining.",
+                  "It is raining.",
+                  "Porque está chovendo."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Por que ela leva um guarda-chuva?",
+              "explanation": "O áudio diz: “She takes an umbrella because it is raining.”."
+            },
+            {
+              "id": "en-v2x-u3-l2-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u3_l2_matching",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "raincoat",
+                "umbrella",
+                "warm jacket"
+              ],
+              "right_items": [
+                "guarda-chuva",
+                "casaco quente",
+                "capa de chuva"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "raincoat": "capa de chuva",
+                  "umbrella": "guarda-chuva",
+                  "warm jacket": "casaco quente"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: raincoat, umbrella, warm jacket.",
+              "explanation": "Pares corretos: raincoat = capa de chuva; umbrella = guarda-chuva; warm jacket = casaco quente."
+            },
+            {
+              "id": "en-v2x-u3-l2-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u3_l2_grammar",
+              "difficulty_level": 3,
+              "options": [
+                "umbrella",
+                "appointment",
+                "platform"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "umbrella"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "umbrella"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "You should take an ___ because it is raining.",
+              "explanation": "“Umbrella” é guarda-chuva; a frase recomenda levá-lo quando chove."
+            },
+            {
+              "id": "en-v2x-u3-l2-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u3_l2_speaking",
+              "difficulty_level": 3,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "You should take a raincoat.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "You should take a raincoat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "You should take a raincoat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “You should take a raincoat.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “You should take a raincoat.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u3-l3",
+          "unit_id": "en-v2x-unit-3",
+          "position": 3,
+          "title": "Na farmácia",
+          "introduction": "Objetivo: Explicar um sintoma e pedir orientação básica na farmácia.\n\n“I have a…” introduz alguns sintomas. “Sore throat” significa dor de garganta.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "en-v2x-u3-l3-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u3_l3_dialogue",
+              "difficulty_level": 4,
+              "options": [
+                "I have a headache and a sore throat.",
+                "I would like a return ticket.",
+                "The soup comes with bread."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Pharmacist",
+              "dialogue_context": [
+                {
+                  "speaker": "Pharmacist",
+                  "text": "What seems to be the problem?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "I have a headache and a sore throat."
+                }
+              ],
+              "accepted_answers": [
+                "I have a headache and a sore throat."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I have a headache and a sore throat."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "What seems to be the problem?",
+              "explanation": "Na conversa, a resposta adequada é: “I have a headache and a sore throat.”."
+            },
+            {
+              "id": "en-v2x-u3-l3-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u3_l3_word_order",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [
+                "throat",
+                "since",
+                "yesterday.",
+                "I",
+                "have",
+                "had",
+                "a",
+                "sore"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I have had a sore throat since yesterday."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I have had a sore throat since yesterday."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Estou com dor de garganta desde ontem.”",
+              "explanation": "Uma forma correta é “I have had a sore throat since yesterday.”. Explicar um sintoma e pedir orientação básica na farmácia."
+            },
+            {
+              "id": "en-v2x-u3-l3-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u3_l3_translation",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Where is the nearest pharmacy?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Where is the nearest pharmacy?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Onde fica a farmácia mais próxima?",
+              "explanation": "Resposta esperada: “Where is the nearest pharmacy?”. Explicar um sintoma e pedir orientação básica na farmácia."
+            },
+            {
+              "id": "en-v2x-u3-l3-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u3_l3_listening",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The customer has a headache and asks for pain relief.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "A headache.",
+                "Headache.",
+                "Dor de cabeça."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "A headache.",
+                  "Headache.",
+                  "Dor de cabeça."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Que sintoma a pessoa menciona?",
+              "explanation": "O áudio diz: “The customer has a headache and asks for pain relief.”."
+            },
+            {
+              "id": "en-v2x-u3-l3-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u3_l3_matching",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "headache",
+                "sore throat",
+                "pain relief"
+              ],
+              "right_items": [
+                "dor de garganta",
+                "alívio da dor",
+                "dor de cabeça"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "headache": "dor de cabeça",
+                  "sore throat": "dor de garganta",
+                  "pain relief": "alívio da dor"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: headache, sore throat, pain relief.",
+              "explanation": "Pares corretos: headache = dor de cabeça; sore throat = dor de garganta; pain relief = alívio da dor."
+            },
+            {
+              "id": "en-v2x-u3-l3-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u3_l3_grammar",
+              "difficulty_level": 4,
+              "options": [
+                "sore",
+                "single",
+                "sunny"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "sore"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "sore"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I have a ___ throat.",
+              "explanation": "“Sore throat” é a expressão usada para dor de garganta."
+            },
+            {
+              "id": "en-v2x-u3-l3-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u3_l3_speaking",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I have had a sore throat since yesterday.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I have had a sore throat since yesterday."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I have had a sore throat since yesterday."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I have had a sore throat since yesterday.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I have had a sore throat since yesterday.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u3-l4",
+          "unit_id": "en-v2x-unit-3",
+          "position": 4,
+          "title": "Pedindo ajuda",
+          "introduction": "Objetivo: Pedir ajuda e informar um sintoma ou uma necessidade imediata.\n\n“Could you help me?” é um pedido educado. “I feel dizzy” significa estou me sentindo tonto ou tonta.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "en-v2x-u3-l4-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u3_l4_dialogue",
+              "difficulty_level": 4,
+              "options": [
+                "I feel dizzy. Could you help me find a seat?",
+                "I need a return ticket to Oxford.",
+                "I prefer tea without milk."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Visitor",
+              "dialogue_context": [
+                {
+                  "speaker": "Visitor",
+                  "text": "Are you all right? Do you need help?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "I feel dizzy. Could you help me find a seat?"
+                }
+              ],
+              "accepted_answers": [
+                "I feel dizzy. Could you help me find a seat?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I feel dizzy. Could you help me find a seat?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Are you all right? Do you need help?",
+              "explanation": "Na conversa, a resposta adequada é: “I feel dizzy. Could you help me find a seat?”."
+            },
+            {
+              "id": "en-v2x-u3-l4-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u3_l4_word_order",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [
+                "me,",
+                "please?",
+                "Could",
+                "you",
+                "help"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Could you help me, please?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Could you help me, please?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Você poderia me ajudar, por favor?”",
+              "explanation": "Uma forma correta é “Could you help me, please?”. Pedir ajuda e informar um sintoma ou uma necessidade imediata."
+            },
+            {
+              "id": "en-v2x-u3-l4-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u3_l4_translation",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I feel dizzy and I need to sit down."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I feel dizzy and I need to sit down."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Eu me sinto tonta e preciso me sentar.",
+              "explanation": "Resposta esperada: “I feel dizzy and I need to sit down.”. Pedir ajuda e informar um sintoma ou uma necessidade imediata."
+            },
+            {
+              "id": "en-v2x-u3-l4-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u3_l4_listening",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The person feels dizzy and asks for a place to sit.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "A seat.",
+                "A place to sit.",
+                "Um lugar para sentar."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "A seat.",
+                  "A place to sit.",
+                  "Um lugar para sentar."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "O que a pessoa precisa encontrar?",
+              "explanation": "O áudio diz: “The person feels dizzy and asks for a place to sit.”."
+            },
+            {
+              "id": "en-v2x-u3-l4-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u3_l4_matching",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "dizzy",
+                "seat",
+                "help"
+              ],
+              "right_items": [
+                "assento",
+                "ajuda",
+                "tonto ou tonta"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "dizzy": "tonto ou tonta",
+                  "seat": "assento",
+                  "help": "ajuda"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: dizzy, seat, help.",
+              "explanation": "Pares corretos: dizzy = tonto ou tonta; seat = assento; help = ajuda."
+            },
+            {
+              "id": "en-v2x-u3-l4-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u3_l4_grammar",
+              "difficulty_level": 4,
+              "options": [
+                "dizzy",
+                "available",
+                "delicious"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "dizzy"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "dizzy"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I feel ___ and need to sit down.",
+              "explanation": "“Dizzy” descreve a sensação de tontura."
+            },
+            {
+              "id": "en-v2x-u3-l4-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u3_l4_speaking",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Could you help me, please?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Could you help me, please?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Could you help me, please?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Could you help me, please?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Could you help me, please?”."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-v2x-unit-4",
+      "course_code": "TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION",
+      "position": 4,
+      "title": "Encontros e comunicação",
+      "description": "Convide pessoas, combine horários e compartilhe opiniões.",
+      "content_version": 1,
+      "author": "Equipe de conteúdo Tec Escola",
+      "publication_status": "STAGING",
+      "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+      "lessons": [
+        {
+          "id": "en-v2x-u4-l1",
+          "unit_id": "en-v2x-unit-4",
+          "position": 1,
+          "title": "Fazendo um convite",
+          "introduction": "Objetivo: Fazer um convite usando “Would you like to…?”.\n\n“Would you like to…” é uma forma cordial de convidar alguém. “Sounds good” aceita uma ideia.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 1,
+          "exercises": [
+            {
+              "id": "en-v2x-u4-l1-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u4_l1_dialogue",
+              "difficulty_level": 4,
+              "options": [
+                "Yes, that sounds great. What time shall we meet?",
+                "I have a sore throat since yesterday.",
+                "I need half a kilo of tomatoes."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Friend",
+              "dialogue_context": [
+                {
+                  "speaker": "Friend",
+                  "text": "Would you like to see the new exhibition?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, that sounds great. What time shall we meet?"
+                }
+              ],
+              "accepted_answers": [
+                "Yes, that sounds great. What time shall we meet?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, that sounds great. What time shall we meet?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Would you like to see the new exhibition?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, that sounds great. What time shall we meet?”."
+            },
+            {
+              "id": "en-v2x-u4-l1-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u4_l1_word_order",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [
+                "visit",
+                "the",
+                "museum",
+                "with",
+                "me?",
+                "Would",
+                "you",
+                "like",
+                "to"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Would you like to visit the museum with me?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Would you like to visit the museum with me?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Você gostaria de visitar o museu comigo?”",
+              "explanation": "Uma forma correta é “Would you like to visit the museum with me?”. Fazer um convite usando “Would you like to…?”."
+            },
+            {
+              "id": "en-v2x-u4-l1-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u4_l1_translation",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "How about going to the park on Saturday?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "How about going to the park on Saturday?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Que tal irmos ao parque no sábado?",
+              "explanation": "Resposta esperada: “How about going to the park on Saturday?”. Fazer um convite usando “Would you like to…?”."
+            },
+            {
+              "id": "en-v2x-u4-l1-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u4_l1_listening",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "They agree to meet at the museum entrance at two.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "At the museum entrance.",
+                "At the entrance.",
+                "Na entrada do museu."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "At the museum entrance.",
+                  "At the entrance.",
+                  "Na entrada do museu."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "Onde eles combinaram de se encontrar?",
+              "explanation": "O áudio diz: “They agree to meet at the museum entrance at two.”."
+            },
+            {
+              "id": "en-v2x-u4-l1-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u4_l1_matching",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "invitation",
+                "exhibition",
+                "entrance"
+              ],
+              "right_items": [
+                "exposição",
+                "entrada",
+                "convite"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "invitation": "convite",
+                  "exhibition": "exposição",
+                  "entrance": "entrada"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: invitation, exhibition, entrance.",
+              "explanation": "Pares corretos: invitation = convite; exhibition = exposição; entrance = entrada."
+            },
+            {
+              "id": "en-v2x-u4-l1-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u4_l1_grammar",
+              "difficulty_level": 4,
+              "options": [
+                "visit",
+                "wear",
+                "cost"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "visit"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "visit"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Would you like to ___ the museum?",
+              "explanation": "Depois de “would like to”, usamos a forma base do verbo."
+            },
+            {
+              "id": "en-v2x-u4-l1-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u4_l1_speaking",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Would you like to visit the museum with me?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Would you like to visit the museum with me?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Would you like to visit the museum with me?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Would you like to visit the museum with me?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Would you like to visit the museum with me?”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u4-l2",
+          "unit_id": "en-v2x-unit-4",
+          "position": 2,
+          "title": "Combinando horários",
+          "introduction": "Objetivo: Sugerir e confirmar um horário para uma atividade.\n\n“Are you free…?” pergunta se alguém está disponível. “At half past three” indica três e meia.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 2,
+          "exercises": [
+            {
+              "id": "en-v2x-u4-l2-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u4_l2_dialogue",
+              "difficulty_level": 4,
+              "options": [
+                "Yes, let us meet at half past three.",
+                "Yes, I would like a cup of tea.",
+                "Yes, the bus stop is across the road."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Classmate",
+              "dialogue_context": [
+                {
+                  "speaker": "Classmate",
+                  "text": "Can we meet before the library closes?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, let us meet at half past three."
+                }
+              ],
+              "accepted_answers": [
+                "Yes, let us meet at half past three."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, let us meet at half past three."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Can we meet before the library closes?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, let us meet at half past three.”."
+            },
+            {
+              "id": "en-v2x-u4-l2-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u4_l2_word_order",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [
+                "free",
+                "at",
+                "half",
+                "past",
+                "three?",
+                "Are",
+                "you"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Are you free at half past three?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Are you free at half past three?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Você está livre às três e meia?”",
+              "explanation": "Uma forma correta é “Are you free at half past three?”. Sugerir e confirmar um horário para uma atividade."
+            },
+            {
+              "id": "en-v2x-u4-l2-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u4_l2_translation",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "We can meet after class."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "We can meet after class."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Podemos nos encontrar depois da aula.",
+              "explanation": "Resposta esperada: “We can meet after class.”. Sugerir e confirmar um horário para uma atividade."
+            },
+            {
+              "id": "en-v2x-u4-l2-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u4_l2_listening",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The library closes at five, so they choose half past three.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "At half past three.",
+                "At 3:30.",
+                "Às três e meia."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "At half past three.",
+                  "At 3:30.",
+                  "Às três e meia."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "A que horas eles vão se encontrar?",
+              "explanation": "O áudio diz: “The library closes at five, so they choose half past three.”."
+            },
+            {
+              "id": "en-v2x-u4-l2-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u4_l2_matching",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "free",
+                "half past",
+                "before"
+              ],
+              "right_items": [
+                "e meia",
+                "antes",
+                "disponível ou livre"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "free": "disponível ou livre",
+                  "half past": "e meia",
+                  "before": "antes"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: free, half past, before.",
+              "explanation": "Pares corretos: free = disponível ou livre; half past = e meia; before = antes."
+            },
+            {
+              "id": "en-v2x-u4-l2-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u4_l2_grammar",
+              "difficulty_level": 4,
+              "options": [
+                "at",
+                "in",
+                "on"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "at"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "at"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "Let us meet ___ half past three.",
+              "explanation": "Usamos “at” antes de um horário específico."
+            },
+            {
+              "id": "en-v2x-u4-l2-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u4_l2_speaking",
+              "difficulty_level": 4,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "Are you free at half past three?",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Are you free at half past three?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Are you free at half past three?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “Are you free at half past three?”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “Are you free at half past three?”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u4-l3",
+          "unit_id": "en-v2x-unit-4",
+          "position": 3,
+          "title": "Compartilhando opiniões",
+          "introduction": "Objetivo: Expressar uma opinião e perguntar a opinião de outra pessoa.\n\n“I think…” introduz uma opinião. “Interesting” significa interessante.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 3,
+          "exercises": [
+            {
+              "id": "en-v2x-u4-l3-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u4_l3_dialogue",
+              "difficulty_level": 5,
+              "options": [
+                "I thought it was fascinating, especially the space room.",
+                "I need a warmer coat for the rain.",
+                "The train departs from platform nine."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Friend",
+              "dialogue_context": [
+                {
+                  "speaker": "Friend",
+                  "text": "How was the science exhibition?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "I thought it was fascinating, especially the space room."
+                }
+              ],
+              "accepted_answers": [
+                "I thought it was fascinating, especially the space room."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I thought it was fascinating, especially the space room."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "How was the science exhibition?",
+              "explanation": "Na conversa, a resposta adequada é: “I thought it was fascinating, especially the space room.”."
+            },
+            {
+              "id": "en-v2x-u4-l3-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u4_l3_word_order",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [
+                "film",
+                "was",
+                "very",
+                "interesting.",
+                "I",
+                "think",
+                "the"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I think the film was very interesting."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I think the film was very interesting."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Na minha opinião, o filme foi muito interessante.”",
+              "explanation": "Uma forma correta é “I think the film was very interesting.”. Expressar uma opinião e perguntar a opinião de outra pessoa."
+            },
+            {
+              "id": "en-v2x-u4-l3-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u4_l3_translation",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "What did you think of the book?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "What did you think of the book?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "O que você achou do livro?",
+              "explanation": "Resposta esperada: “What did you think of the book?”. Expressar uma opinião e perguntar a opinião de outra pessoa."
+            },
+            {
+              "id": "en-v2x-u4-l3-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u4_l3_listening",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The visitor liked the space room best.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "The space room.",
+                "The room about space.",
+                "Da sala espacial."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "The space room.",
+                  "The room about space.",
+                  "Da sala espacial."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "De qual sala a pessoa mais gostou?",
+              "explanation": "O áudio diz: “The visitor liked the space room best.”."
+            },
+            {
+              "id": "en-v2x-u4-l3-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u4_l3_matching",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "opinion",
+                "interesting",
+                "fascinating"
+              ],
+              "right_items": [
+                "interessante",
+                "fascinante",
+                "opinião"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "opinion": "opinião",
+                  "interesting": "interessante",
+                  "fascinating": "fascinante"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: opinion, interesting, fascinating.",
+              "explanation": "Pares corretos: opinion = opinião; interesting = interessante; fascinating = fascinante."
+            },
+            {
+              "id": "en-v2x-u4-l3-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u4_l3_grammar",
+              "difficulty_level": 5,
+              "options": [
+                "think",
+                "take",
+                "leave"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "think"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "think"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "I ___ the film was interesting.",
+              "explanation": "“I think” apresenta uma opinião ou avaliação."
+            },
+            {
+              "id": "en-v2x-u4-l3-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u4_l3_speaking",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "I think the film was very interesting.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "I think the film was very interesting."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "I think the film was very interesting."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “I think the film was very interesting.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “I think the film was very interesting.”."
+            }
+          ]
+        },
+        {
+          "id": "en-v2x-u4-l4",
+          "unit_id": "en-v2x-unit-4",
+          "position": 4,
+          "title": "Resolvendo um imprevisto",
+          "introduction": "Objetivo: Relatar um pequeno imprevisto e propor uma alternativa.\n\n“There is a problem with…” apresenta um problema. “Could we…?” propõe uma solução com cortesia.",
+          "xp_reward": 30,
+          "content_version": 1,
+          "author": "Equipe de conteúdo Tec Escola",
+          "publication_status": "STAGING",
+          "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+          "orderInUnit": 4,
+          "exercises": [
+            {
+              "id": "en-v2x-u4-l4-e1",
+              "position": 1,
+              "skill_code": "en_v2x_u4_l4_dialogue",
+              "difficulty_level": 5,
+              "options": [
+                "Yes, please. Could you tell me when the room is ready?",
+                "Yes, I prefer the vegetable option.",
+                "Yes, the weather will be sunny."
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": "Receptionist",
+              "dialogue_context": [
+                {
+                  "speaker": "Receptionist",
+                  "text": "Your room is not ready yet. Would you like to leave your bags here?"
+                },
+                {
+                  "speaker": "Você",
+                  "text": "Yes, please. Could you tell me when the room is ready?"
+                }
+              ],
+              "accepted_answers": [
+                "Yes, please. Could you tell me when the room is ready?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Yes, please. Could you tell me when the room is ready?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MULTIPLE_CHOICE",
+              "instruction": "Escolha a resposta que combina com a conversa.",
+              "prompt": "Your room is not ready yet. Would you like to leave your bags here?",
+              "explanation": "Na conversa, a resposta adequada é: “Yes, please. Could you tell me when the room is ready?”."
+            },
+            {
+              "id": "en-v2x-u4-l4-e2",
+              "position": 2,
+              "skill_code": "en_v2x_u4_l4_word_order",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [
+                "with",
+                "my",
+                "reservation.",
+                "There",
+                "is",
+                "a",
+                "problem"
+              ],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "There is a problem with my reservation."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "There is a problem with my reservation."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "WORD_ORDER",
+              "instruction": "Organize as palavras para formar a frase no idioma estudado.",
+              "prompt": "Monte: “Há um problema com a minha reserva.”",
+              "explanation": "Uma forma correta é “There is a problem with my reservation.”. Relatar um pequeno imprevisto e propor uma alternativa."
+            },
+            {
+              "id": "en-v2x-u4-l4-e3",
+              "position": 3,
+              "skill_code": "en_v2x_u4_l4_translation",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "Could we change to the next time?",
+                "Could we change to the next available time?"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "Could we change to the next time?",
+                  "Could we change to the next available time?"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "TRANSLATION",
+              "instruction": "Escreva a tradução no idioma estudado.",
+              "prompt": "Poderíamos mudar para o horário seguinte?",
+              "explanation": "Resposta esperada: “Could we change to the next time?”. Relatar um pequeno imprevisto e propor uma alternativa."
+            },
+            {
+              "id": "en-v2x-u4-l4-e4",
+              "position": 4,
+              "skill_code": "en_v2x_u4_l4_listening",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "The receptionist says the room is not ready yet.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "The room.",
+                "The guest room.",
+                "O quarto."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "The room.",
+                  "The guest room.",
+                  "O quarto."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "LISTENING",
+              "instruction": "Ouça e responda em português.",
+              "prompt": "O que ainda não está pronto?",
+              "explanation": "O áudio diz: “The receptionist says the room is not ready yet.”."
+            },
+            {
+              "id": "en-v2x-u4-l4-e5",
+              "position": 5,
+              "skill_code": "en_v2x_u4_l4_matching",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [
+                "problem",
+                "change",
+                "ready"
+              ],
+              "right_items": [
+                "mudar",
+                "pronto ou pronta",
+                "problema"
+              ],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [],
+              "answer_key": {
+                "pairs": {
+                  "problem": "problema",
+                  "change": "mudar",
+                  "ready": "pronto ou pronta"
+                }
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "MATCHING",
+              "instruction": "Associe cada expressão ao significado correto em português.",
+              "prompt": "Associe: problem, change, ready.",
+              "explanation": "Pares corretos: problem = problema; change = mudar; ready = pronto ou pronta."
+            },
+            {
+              "id": "en-v2x-u4-l4-e6",
+              "position": 6,
+              "skill_code": "en_v2x_u4_l4_grammar",
+              "difficulty_level": 5,
+              "options": [
+                "with",
+                "at",
+                "between"
+              ],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": null,
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "with"
+              ],
+              "answer_key": {
+                "accepted": [
+                  "with"
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "FILL_BLANK",
+              "instruction": "Escolha a palavra que completa a frase.",
+              "prompt": "There is a problem ___ my reservation.",
+              "explanation": "A expressão “a problem with” é seguida da coisa que apresenta o problema."
+            },
+            {
+              "id": "en-v2x-u4-l4-e7",
+              "position": 7,
+              "skill_code": "en_v2x_u4_l4_speaking",
+              "difficulty_level": 5,
+              "options": [],
+              "word_bank": [],
+              "left_items": [],
+              "right_items": [],
+              "audio_text": "There is a problem with my reservation.",
+              "dialogue_speaker": null,
+              "dialogue_context": [],
+              "accepted_answers": [
+                "There is a problem with my reservation."
+              ],
+              "answer_key": {
+                "accepted": [
+                  "There is a problem with my reservation."
+                ]
+              },
+              "author": "Equipe de conteúdo Tec Escola",
+              "content_version": 1,
+              "publication_status": "STAGING",
+              "review_status": "PEDAGOGICAL_REVIEW_PENDING",
+              "exercise_type": "SPEAKING",
+              "instruction": "Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.",
+              "prompt": "Pratique a frase: “There is a problem with my reservation.”",
+              "explanation": "Fale a frase com calma e confira sua estrutura: “There is a problem with my reservation.”."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manifest": {
+    "lesson_count": 16,
+    "exercise_count": 112,
+    "content_fingerprint": "14750d9cf79bcc690f44da931bbed3cb17c6c912d47a47e27f41aa0bae7d9e43"
+  }
+}
