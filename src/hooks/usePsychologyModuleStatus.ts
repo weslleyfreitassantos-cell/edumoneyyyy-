@@ -196,4 +196,3 @@ export function publishPsychologyModuleStatusChanged(
 export function refreshPsychologyModuleStatus(institutionId: string): void {
   refreshInstitution(institutionId);
 }
-

@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06LP03_SERIE_SINONIMICA_01",
+  "journeyTitle": "Escolha de palavras e sentidos",
+  "subject": "PORTUGUESE",
+  "grade": 6,
+  "officialSkillCode": "EF06LP03",
+  "skill": "PORTUGUESE_SYNONYMY_CONTEXT",
+  "unitCode": "LP_LEITURA",
+  "unitTitle": "Leitura, gêneros e sentidos",
+  "officialText": "Analisar diferenças de sentido entre palavras de uma série sinonímica.",
+  "lesson": {
+    "title": "Sinônimos dependem do contexto",
+    "estimatedMinutes": 18,
+    "introduction": "Em um aviso, “a entrada está liberada” pode ser adequada; em outro contexto, “a entrada está gratuita” significa algo diferente. Palavras próximas nem sempre podem ser trocadas sem mudar o sentido.",
+    "explanation": "Palavras de uma série sinonímica compartilham alguns sentidos, mas podem variar em intensidade, formalidade, avaliação e combinações comuns. “Observar” e “examinar” se aproximam, mas examinar costuma indicar atenção mais detalhada. Para escolher, releia a frase, identifique o que o autor quer dizer e teste a substituição. Se a ideia, o tom ou a precisão mudarem, as palavras não funcionam como equivalentes naquele contexto.",
+    "workedExample": {
+      "prompt": "No trecho “A pesquisadora examinou as amostras ao microscópio”, qual troca preserva melhor a ideia?",
+      "steps": [
+        "Identifique a ação: observar as amostras com atenção.",
+        "“Analisou” mantém a ideia de observação cuidadosa.",
+        "“Olhou” é possível, mas menos específico.",
+        "Confira se a frase continua adequada ao contexto científico."
+      ],
+      "answer": "“Analisou” preserva o sentido com maior precisão."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Compare “casa”, “moradia” e “lar” em frases diferentes.",
+        "scaffold": "Perceba diferenças de formalidade e de vínculo afetivo."
+      },
+      {
+        "prompt": "Substitua “disse” por “avisou” em uma frase e avalie o que muda.",
+        "scaffold": "Pergunte se a fala comunica uma informação importante a alguém."
+      },
+      {
+        "prompt": "Por que um dicionário de sinônimos oferece possibilidades, não trocas automáticas?",
+        "scaffold": "Considere regência, situação e intenção do texto."
+      }
+    ],
+    "application": [
+      {
+        "context": "Revisão de texto",
+        "prompt": "Revise a frase “O estudante viu os dados com cuidado”. Escolha um verbo mais preciso e explique a diferença."
+      },
+      {
+        "context": "Comunicação",
+        "prompt": "Em um convite formal, compare “venha”, “compareça” e “apareça”. Qual combina melhor com o tom? Justifique."
+      }
+    ],
+    "review": [
+      "Sinônimos têm sentidos próximos, não necessariamente idênticos.",
+      "Contexto, formalidade e intensidade influenciam a escolha.",
+      "Teste a substituição dentro da frase.",
+      "Observe se a precisão e o tom são preservados.",
+      "Use o dicionário como apoio e confirme pelo contexto."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06lp03-q1",
+        "cev2-ef06lp03-q2",
+        "cev2-ef06lp03-q3",
+        "cev2-ef06lp03-q4",
+        "cev2-ef06lp03-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06lp03-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Na frase “A turma observou atentamente o mapa”, qual verbo mantém melhor a ideia de olhar com atenção?",
+      "options": [
+        "Examinou",
+        "Esqueceu",
+        "Escondeu",
+        "Anunciou"
+      ],
+      "correctAnswer": "Examinou",
+      "explanation": "“Examinou” mantém a ideia de observar cuidadosamente o mapa.",
+      "misconception": "Escolher palavra que compartilha alguma situação, mas não o sentido da ação.",
+      "officialSkillCode": "EF06LP03"
+    },
+    {
+      "id": "cev2-ef06lp03-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Em “O aviso informa que a biblioteca fecha às 17h”, qual palavra pode substituir “informa” sem mudar muito o sentido?",
+      "options": [
+        "Comunica",
+        "Esconde",
+        "Apaga",
+        "Atrasa"
+      ],
+      "correctAnswer": "Comunica",
+      "explanation": "“Comunica” também indica transmitir uma informação ao leitor.",
+      "misconception": "Usar palavra com sentido oposto ou referente a outra ação.",
+      "officialSkillCode": "EF06LP03"
+    },
+    {
+      "id": "cev2-ef06lp03-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Em um convite formal, “compareça à reunião” soa mais adequado que “dê as caras”. Por quê?",
+      "options": [
+        "As expressões têm níveis de formalidade diferentes",
+        "As duas têm sempre o mesmo tom",
+        "“Compareça” não tem relação com ir a um lugar",
+        "A frase formal precisa rimar"
+      ],
+      "correctAnswer": "As expressões têm níveis de formalidade diferentes",
+      "explanation": "O contexto formal favorece uma escolha compatível com o tom esperado.",
+      "misconception": "Ignorar o efeito de registro e considerar só o sentido geral de presença.",
+      "officialSkillCode": "EF06LP03"
+    },
+    {
+      "id": "cev2-ef06lp03-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Na frase “O atleta correu rapidamente”, substituir “rapidamente” por “devagar” preserva o sentido?",
+      "options": [
+        "Não; “devagar” indica o sentido contrário",
+        "Sim; as palavras são sinônimas perfeitas",
+        "Sim; ambas indicam rapidez",
+        "Não, porque advérbios não podem ser substituídos"
+      ],
+      "correctAnswer": "Não; “devagar” indica o sentido contrário",
+      "explanation": "A substituição altera a informação sobre a velocidade da ação.",
+      "misconception": "Confundir pertencimento à mesma classe gramatical com sinonímia.",
+      "officialSkillCode": "EF06LP03"
+    },
+    {
+      "id": "cev2-ef06lp03-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual é a melhor maneira de verificar se um sinônimo funciona em uma frase?",
+      "options": [
+        "Substituir no contexto e conferir se ideia, precisão e tom permanecem",
+        "Escolher sempre a palavra mais longa",
+        "Usar a primeira opção encontrada",
+        "Trocar todas as palavras por termos formais"
+      ],
+      "correctAnswer": "Substituir no contexto e conferir se ideia, precisão e tom permanecem",
+      "explanation": "A leitura contextual revela mudanças de sentido, intensidade ou registro.",
+      "misconception": "Tratar a lista de sinônimos como equivalência automática.",
+      "officialSkillCode": "EF06LP03"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

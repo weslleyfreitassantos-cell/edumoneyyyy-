@@ -1,0 +1,664 @@
+{
+  "reportVersion": "central-estudos-v2-content-audit-v1",
+  "sourcePack": "tec-escola-core-v4",
+  "sourcePackSha256": "856be467843ffd44c4eacbf0872f6b2555d1b45866fcdab7b8d7c9874c9aa937",
+  "provenance": "Conteudo versionado do TecEscola; parte reutilizada do V3 validado e parte autorada no V4; nao e BNCC oficial.",
+  "bnccMapping": "NOT_CLAIMED_BY_SOURCE_PACK",
+  "humanPedagogicalReview": "PENDING",
+  "questionModeCoverage": "SINGLE_CHOICE_ONLY_IN_CURRENT_V4_PACK",
+  "publication": "NO_NEW_CONTENT_PUBLISHED_BY_THIS_AUDIT",
+  "totals": {
+    "skills": 65,
+    "lessons": 38,
+    "questions": 298,
+    "structuralIssues": 0,
+    "completeLessons": 0
+  },
+  "subjects": [
+    {
+      "subject": "PORTUGUESE",
+      "skillCount": 9,
+      "lessonCount": 6,
+      "questionCount": 17,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 5,
+        "PROBE": 4,
+        "REVIEW": 3,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 17
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 6,
+        "workedExample": 6,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 6
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "skillCount": 6,
+      "lessonCount": 6,
+      "questionCount": 53,
+      "questionsByPurpose": {
+        "LOCK_IN": 7,
+        "PRACTICE": 13,
+        "PROBE": 13,
+        "REVIEW": 12,
+        "TRANSFER": 8
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 53
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 6,
+        "workedExample": 6,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 6
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "SCIENCE",
+      "skillCount": 4,
+      "lessonCount": 1,
+      "questionCount": 13,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 4,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 13
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 1,
+        "workedExample": 1,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 1
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "BIOLOGY",
+      "skillCount": 4,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "PHYSICS",
+      "skillCount": 7,
+      "lessonCount": 4,
+      "questionCount": 15,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 5,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 15
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 4,
+        "workedExample": 4,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 4
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "skillCount": 4,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "HISTORY",
+      "skillCount": 7,
+      "lessonCount": 5,
+      "questionCount": 22,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 7,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 22
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 5,
+        "workedExample": 5,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 5
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "skillCount": 3,
+      "lessonCount": 1,
+      "questionCount": 13,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 4,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 13
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 1,
+        "workedExample": 1,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 1
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "skillCount": 3,
+      "lessonCount": 1,
+      "questionCount": 13,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 4,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 13
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 1,
+        "workedExample": 1,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 1
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "skillCount": 3,
+      "lessonCount": 1,
+      "questionCount": 13,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 4,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 13
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 1,
+        "workedExample": 1,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 1
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "ART",
+      "skillCount": 3,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "skillCount": 3,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "ENGLISH",
+      "skillCount": 3,
+      "lessonCount": 1,
+      "questionCount": 13,
+      "questionsByPurpose": {
+        "LOCK_IN": 2,
+        "PRACTICE": 4,
+        "PROBE": 3,
+        "REVIEW": 2,
+        "TRANSFER": 2
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 13
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 1,
+        "workedExample": 1,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 1
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "skillCount": 3,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "subject": "COMPUTING",
+      "skillCount": 3,
+      "lessonCount": 2,
+      "questionCount": 21,
+      "questionsByPurpose": {
+        "LOCK_IN": 3,
+        "PRACTICE": 6,
+        "PROBE": 5,
+        "REVIEW": 4,
+        "TRANSFER": 3
+      },
+      "questionFormats": {
+        "SINGLE_CHOICE": 21
+      },
+      "lessonStructure": {
+        "intro": 0,
+        "explanation": 2,
+        "workedExample": 2,
+        "guidedPractice": 0,
+        "application": 0,
+        "review": 0,
+        "learningCheck": 0
+      },
+      "fullLessonCompleteness": {
+        "requiredSections": [
+          "intro",
+          "explanation",
+          "workedExample",
+          "guidedPractice",
+          "application",
+          "review",
+          "learningCheck"
+        ],
+        "completeLessonCount": 0,
+        "incompleteLessonCount": 2
+      },
+      "lessonGaps": [],
+      "questionIssues": [],
+      "duplicateStems": [],
+      "technicalStatus": "STRUCTURALLY_VALID",
+      "pedagogicalReview": "PENDING_HUMAN_REVIEW"
+    }
+  ]
+}

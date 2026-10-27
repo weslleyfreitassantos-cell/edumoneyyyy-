@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06CI02_TRANSFORMACOES_01",
+  "journeyTitle": "Evidências de transformações químicas",
+  "subject": "SCIENCE",
+  "grade": 6,
+  "officialSkillCode": "EF06CI02",
+  "skill": "SCIENCE_CHEMICAL_TRANSFORMATION_EVIDENCE",
+  "unitCode": "SCI_MATERIAIS",
+  "unitTitle": "Materiais e transformações",
+  "officialText": "Identificar evidências de transformações químicas a partir do resultado de misturas de materiais que originam produtos diferentes dos que foram misturados.",
+  "lesson": {
+    "title": "Distinguir mistura de transformação química",
+    "estimatedMinutes": 19,
+    "introduction": "Misturar farinha e água muda a aparência, mas nem toda mudança visível produz novas substâncias. Em algumas combinações, aparecem gás, mudança de cor ou materiais com propriedades diferentes. O importante é reunir evidências, não adivinhar apenas pelo aspecto.",
+    "explanation": "Uma transformação química ocorre quando materiais de partida dão origem a substâncias com propriedades diferentes. Formação de gás, mudança persistente de cor, liberação ou absorção de energia e formação de sólido podem ser indícios, mas cada sinal precisa ser interpretado no contexto. Misturar sem reagir também pode mudar a aparência. Em experimentos escolares, compare o antes e o depois e siga as regras de segurança; nunca prove ou cheire diretamente materiais.",
+    "workedExample": {
+      "prompt": "Vinagre e bicarbonato são misturados e surgem bolhas. Qual evidência deve ser registrada?",
+      "steps": [
+        "Registre os materiais antes da mistura.",
+        "Observe a formação de bolhas sem aproximar o rosto.",
+        "Bolhas sugerem a produção de um gás durante a reação.",
+        "Relacione o sinal ao conjunto de mudanças, sem afirmar além do observado."
+      ],
+      "answer": "A formação de gás é evidência compatível com transformação química."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Compare gelo derretendo com massa de bolo assando.",
+        "scaffold": "Pergunte se surgem materiais com propriedades diferentes e se a mudança pode ser desfeita facilmente."
+      },
+      {
+        "prompt": "Quais observações podem ser registradas sem tocar nos materiais?",
+        "scaffold": "Cor, bolhas, temperatura medida e formação de sólido podem ser descritos."
+      },
+      {
+        "prompt": "Por que uma mudança de cor isolada não prova sempre uma reação?",
+        "scaffold": "Pense em iluminação, mistura de tintas e outras mudanças físicas."
+      }
+    ],
+    "application": [
+      {
+        "context": "Cozinha",
+        "prompt": "Ao assar uma massa, cor e textura mudam. Cite evidências e explique por que a conclusão deve considerar o conjunto da transformação."
+      },
+      {
+        "context": "Experimento seguro",
+        "prompt": "Planeje um registro de observação para vinagre e bicarbonato, indicando o que observar antes e depois e como manter segurança."
+      }
+    ],
+    "review": [
+      "Mudança de aparência, sozinha, não prova transformação química.",
+      "Compare materiais antes e produtos depois.",
+      "Gás, cor, temperatura ou sólido podem ser evidências, conforme o contexto.",
+      "Registre somente o que foi observado.",
+      "Siga instruções de segurança e não prove materiais."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06ci02-q1",
+        "cev2-ef06ci02-q2",
+        "cev2-ef06ci02-q3",
+        "cev2-ef06ci02-q4",
+        "cev2-ef06ci02-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ci02-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Ao misturar vinagre e bicarbonato, observam-se bolhas. Qual é uma interpretação cuidadosa?",
+      "options": [
+        "A formação de gás é evidência compatível com transformação química",
+        "As bolhas provam que o vinagre evaporou por completo",
+        "A mistura virou uma substância pura",
+        "Não ocorreu mudança porque os materiais continuam no copo"
+      ],
+      "correctAnswer": "A formação de gás é evidência compatível com transformação química",
+      "explanation": "As bolhas são uma evidência observável de formação de gás; a explicação considera o processo da mistura.",
+      "misconception": "Afirmar que as bolhas, sem contexto, provam qualquer conclusão específica.",
+      "officialSkillCode": "EF06CI02"
+    },
+    {
+      "id": "cev2-ef06ci02-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual situação apresenta a evidência mais clara de novos produtos após misturar materiais?",
+      "options": [
+        "Vinagre e bicarbonato liberam gás",
+        "Areia é colocada em água e se deposita",
+        "Pedras são separadas por tamanho",
+        "Água líquida é colocada em outro copo"
+      ],
+      "correctAnswer": "Vinagre e bicarbonato liberam gás",
+      "explanation": "A liberação de gás na reação entre os materiais é evidência de transformação química.",
+      "misconception": "Confundir separação física ou transferência de recipiente com formação de substância.",
+      "officialSkillCode": "EF06CI02"
+    },
+    {
+      "id": "cev2-ef06ci02-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma fruta cortada escurece depois de algum tempo. O que um registro científico deve fazer primeiro?",
+      "options": [
+        "Descrever a mudança observada e comparar condições antes de explicar",
+        "Afirmar que toda mudança de cor é uma nova substância",
+        "Misturar a fruta com qualquer produto de limpeza",
+        "Provar a fruta para identificar a reação"
+      ],
+      "correctAnswer": "Descrever a mudança observada e comparar condições antes de explicar",
+      "explanation": "Registrar a observação e as condições permite avaliar a evidência sem tirar conclusões precipitadas.",
+      "misconception": "Tratar uma evidência isolada como prova completa ou propor ação insegura.",
+      "officialSkillCode": "EF06CI02"
+    },
+    {
+      "id": "cev2-ef06ci02-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual exemplo é principalmente uma mudança física?",
+      "options": [
+        "Gelo derrete e continua sendo água",
+        "Pão assa e muda de cheiro e textura",
+        "Vinagre e bicarbonato liberam gás",
+        "Ferro enferruja ao longo do tempo"
+      ],
+      "correctAnswer": "Gelo derrete e continua sendo água",
+      "explanation": "Na fusão, muda o estado físico, mas o material continua sendo água.",
+      "misconception": "Supor que toda mudança visível é uma reação química.",
+      "officialSkillCode": "EF06CI02"
+    },
+    {
+      "id": "cev2-ef06ci02-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Durante uma observação escolar, qual atitude é segura e cientificamente útil?",
+      "options": [
+        "Registrar mudanças sem provar nem cheirar diretamente os materiais",
+        "Aproximar o rosto para sentir qualquer gás",
+        "Misturar produtos de limpeza para comparar",
+        "Descartar o registro e confiar apenas na memória"
+      ],
+      "correctAnswer": "Registrar mudanças sem provar nem cheirar diretamente os materiais",
+      "explanation": "Observação documentada e segura permite comparar o antes e o depois.",
+      "misconception": "Priorizar curiosidade sem seguir as regras de segurança.",
+      "officialSkillCode": "EF06CI02"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

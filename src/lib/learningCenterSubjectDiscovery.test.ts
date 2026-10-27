@@ -1,128 +1,106 @@
 import { describe, expect, it } from 'vitest';
 
-import { getSubjectJourneyAvailabilityLabel, mergeStudentSubjectsWithGuidedJourneys } from './learningCenterSubjectDiscovery';
-import type { GuidedDisciplineJourneyV9 } from '../services/learningCenterService';
-
-function journey(subjectId: string, subjectName: string, canonicalSubjectCode = subjectId): GuidedDisciplineJourneyV9 {
-  return {
-    journey_id: `journey-${subjectId}`,
-    journey_code: `CODE-${subjectId}`,
-    subject_id: subjectId,
-    subject_code: subjectId,
-    subject_name: subjectName,
-    canonical_subject_code: canonicalSubjectCode,
-    unit_code: 'UNIT',
-    unit_title: 'Unidade',
-    title: 'Jornada',
-    execution_skill_id: `skill-${subjectId}`,
-    official_codes: [],
-    official_areas: [],
-    mapping_status: 'MAPPING_PENDING',
-    mapping_reason: 'Pendente de validação.',
-    learning_role: 'INTRODUCTORY_CONTENT',
-    availability_status: 'DEMO_PREVIEW',
-    question_count: 8,
-    missing_purposes: [],
-    progress: 0,
-    active_session_id: null,
-    active_session_status: null,
-    pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
-    reason: 'Prévia demonstrativa.',
-  };
-}
+import {
+  getInstitutionalStudentSubjects,
+  getPublishedLearningProgress,
+  getStudentSubjectAvailabilityLabel,
+  isStudentGuidedStudyReleased,
+} from './learningCenterSubjectDiscovery';
 
 describe('student subject discovery', () => {
-  it('adds curriculum subjects without an institutional offering, without duplicating existing cards', () => {
-    const subjects = mergeStudentSubjectsWithGuidedJourneys(
-      [{ id: 'math', name: 'Matemática' }, { id: 'robotics-id', name: 'Robótica' }],
-      [journey('math', 'Matemática canônica', 'MATHEMATICS'), journey('physics-id', 'Física', 'PHYSICS')],
-    );
-
-    expect(subjects).toEqual([
-      { id: 'physics-id', name: 'Física' },
+  it('uses only subjects from the active institutional enrollment', () => {
+    expect(getInstitutionalStudentSubjects([
+      { id: 'math', name: 'Matemática' },
+      { id: 'science', name: 'Ciências Naturais', code: 'SCI' },
+    ])).toEqual([
+      { id: 'science', name: 'Ciências', code: 'SCI' },
       { id: 'math', name: 'Matemática' },
     ]);
   });
 
-  it('excludes institutional custom subjects when there is no BNCC journey', () => {
-    expect(mergeStudentSubjectsWithGuidedJourneys([{ id: 'custom', name: 'Oficina de Projetos' }], [])).toEqual([
+  it('preserves custom institutional components even when they are absent from the BNCC alias list', () => {
+    expect(getInstitutionalStudentSubjects([
+      { id: 'custom', name: 'Oficina de Projetos' },
+      { id: 'life-project', name: 'Projeto de Vida' },
+    ])).toEqual([
+      { id: 'custom', name: 'Oficina de Projetos' },
+      { id: 'life-project', name: 'Projeto de Vida' },
     ]);
   });
 
-  it('recognizes Aurora Portuguese subject code PORT and normalizes its display label', () => {
-    expect(mergeStudentSubjectsWithGuidedJourneys(
-      [{ id: 'portuguese', name: 'Componente de linguagem', code: 'PORT' }],
-      [],
-    )).toEqual([{ id: 'portuguese', name: 'Língua Portuguesa', code: 'PORT' }]);
-  });
-
-  it('recognizes BNCC Science and Religious Education only when offered by the institution', () => {
-    expect(mergeStudentSubjectsWithGuidedJourneys([
-      { id: 'science', name: 'Ciências Naturais', code: 'SCI' },
-      { id: 'religion', name: 'ER', code: 'ER' },
-      { id: 'digital-culture', name: 'Cultura Digital' },
-    ], [])).toEqual([
-      { id: 'science', name: 'Ciências', code: 'SCI' },
-      { id: 'religion', name: 'Ensino Religioso', code: 'ER' },
+  it('normalizes an institutional Portuguese subject alias without adding catalog subjects', () => {
+    expect(getInstitutionalStudentSubjects([
+      { id: 'portuguese', name: 'Componente de linguagem', code: 'PORT' },
+    ])).toEqual([
+      { id: 'portuguese', name: 'Língua Portuguesa', code: 'PORT' },
     ]);
   });
 
-  it('describes guided content by its real editorial availability', () => {
-    const preview = journey('preview', 'math', 'Matemática');
-    expect(getSubjectJourneyAvailabilityLabel([preview])).toBe('1 jornada em revisão pedagógica');
+  it('does not duplicate repeated subject offerings', () => {
+    expect(getInstitutionalStudentSubjects([
+      { id: 'math', name: 'Matemática' },
+      { id: 'math', name: 'MAT' },
+    ])).toEqual([{ id: 'math', name: 'Matemática' }]);
+  });
 
-    const reviewed = {
-      ...preview,
-      availability_status: 'AVAILABLE',
+  it('uses published institutional activities for the card summary and a natural empty state', () => {
+    expect(getStudentSubjectAvailabilityLabel(1)).toBe('1 atividade publicada');
+    expect(getStudentSubjectAvailabilityLabel(4)).toBe('4 atividades publicadas');
+    expect(getStudentSubjectAvailabilityLabel(0)).toBe('Novas atividades desta matéria estão sendo preparadas.');
+  });
+
+  it('calculates progress only for skills attached to published activities', () => {
+    expect(getPublishedLearningProgress(
+      [{ skill_id: 'published-skill' }, { skill_id: 'published-skill' }, { skill_id: null }],
+      [
+        { skill_id: 'published-skill', mastery_percent: 80, status: 'IN_PROGRESS', last_activity_at: '2026-10-24T10:00:00.000Z' },
+        { skill_id: 'unpublished-skill', mastery_percent: 100, status: 'MASTERED', last_activity_at: '2026-10-25T10:00:00.000Z' },
+      ],
+    )).toEqual({ skillCount: 1, masteredCount: 0, masteryPercent: 80, lastActivityAt: '2026-10-24T10:00:00.000Z' });
+    expect(getPublishedLearningProgress([{ skill_id: null }], [])).toBeNull();
+  });
+
+  it('does not release pending, unmapped or demonstration journeys to students', () => {
+    expect(isStudentGuidedStudyReleased({
+      state: 'ACTIVE',
+      journey_id: 'journey-pending',
+      demonstration_only: true,
+      mapping_status: 'MAPPING_PENDING',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    })).toBe(false);
+
+    expect(isStudentGuidedStudyReleased({
+      state: 'READY',
+      journey_id: 'journey-unreviewed',
+      publication_status: 'STAGING',
+      mapping_status: 'MAPPING_PENDING',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+      availability_status: 'DEMO_PREVIEW',
+    })).toBe(false);
+
+    expect(isStudentGuidedStudyReleased({
+      state: 'ACTIVE',
+      journey_id: 'journey-staging',
+      publication_status: 'STAGING',
       mapping_status: 'MAPPED',
       pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
-    };
-    expect(getSubjectJourneyAvailabilityLabel([reviewed])).toBe('1 jornada disponível');
-    expect(getSubjectJourneyAvailabilityLabel([])).toBe('Abrir matéria');
+      availability_status: 'AVAILABLE',
+    })).toBe(false);
   });
 
-  it('shows only the twelve standard high-school BNCC components, including recognized codes and aliases', () => {
-    const subjects = mergeStudentSubjectsWithGuidedJourneys(
-      [
-        { id: 'art', name: 'Artes' },
-        { id: 'biology', name: 'Biologia' },
-        { id: 'pe', name: 'Ed. Física' },
-        { id: 'philosophy', name: 'Filosofia' },
-        { id: 'physics', name: 'Física' },
-        { id: 'geography', name: 'Geografia' },
-        { id: 'history', name: 'História' },
-        { id: 'english', name: 'Inglês' },
-        { id: 'portuguese', name: 'Português' },
-        { id: 'math', name: 'Componente MAT', code: 'MAT' },
-        { id: 'chemistry', name: 'Química' },
-        { id: 'sociology', name: 'Sociologia' },
-        { id: 'research', name: 'Iniciação Científica' },
-        { id: 'life-project', name: 'Projeto de Vida' },
-        { id: 'writing', name: 'Redação' },
-        { id: 'digital-culture', name: 'Cultura Digital' },
-        { id: 'elective', name: 'Eletiva Interdisciplinar' },
-      ],
-      [
-        journey('math', 'Jornada matemática', 'MATHEMATICS'),
-        journey('journey-digital', 'Cultura Digital', 'COMPUTING'),
-      ],
-    );
+  it('requires a published, mapped and human-reviewed version before starting a V9 journey', () => {
+    expect(isStudentGuidedStudyReleased({
+      state: 'READY',
+      journey_id: 'journey-approved',
+      publication_status: 'PUBLISHED',
+      mapping_status: 'MAPPED',
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEWED',
+      availability_status: 'AVAILABLE',
+    })).toBe(true);
+  });
 
-    expect(subjects.map((subject) => subject.name)).toEqual([
-      'Arte',
-      'Biologia',
-      'Educação Física',
-      'Filosofia',
-      'Física',
-      'Geografia',
-      'História',
-      'Língua Inglesa',
-      'Língua Portuguesa',
-      'Matemática',
-      'Química',
-      'Sociologia',
-    ]);
-    expect(subjects.some((subject) => subject.id === 'math')).toBe(true);
-    expect(subjects.some((subject) => subject.id === 'journey-digital')).toBe(false);
+  it('keeps continuation available for a legacy active session without a V9 journey', () => {
+    expect(isStudentGuidedStudyReleased({ state: 'ACTIVE' })).toBe(true);
+    expect(isStudentGuidedStudyReleased({ state: 'READY' })).toBe(false);
   });
 });

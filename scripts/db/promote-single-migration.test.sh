@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+set +x
+set -E
+trap 'printf "PROMOTE_SINGLE_MIGRATION_TEST_ERROR_LINE=%s\n" "$LINENO" >&2' ERR
 
 repo_root="$(git rev-parse --show-toplevel)"
 script="$repo_root/scripts/db/promote-single-migration.sh"
@@ -114,9 +117,31 @@ cat > "$tmp/bin/npx" <<'MOCK'
 set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 31
 [[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
-[[ "${PGUSER:-}" == 'fixture_user' && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
+expected_db_user="${MOCK_DB_USER:-fixture_user}"
+[[ "${PGUSER:-}" == "$expected_db_user" && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
+fi
+if [[ "$*" == *' db query '* ]]; then
+  [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
+    "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
+  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s","session_owner_reset_access":%s}}]}\n' \
+    "${MOCK_CLI_CONTEXT_SESSION_USER:-$expected_db_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}" \
+    "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
+    "${MOCK_CLI_CONTEXT_ROLE_SETTING:-none}" \
+    "${MOCK_CLI_CONTEXT_OWNER:-$expected_db_user}" \
+    "${MOCK_CLI_CONTEXT_OWNER_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_RELATION_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_FUNCTION_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_SCHEMA_CREATE:-true}" \
+    "${MOCK_CLI_CONTEXT_PRIVATE_CREATE:-true}" \
+    "${MOCK_CLI_CONTEXT_SUPERUSER:-false}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_ACCESS:-true}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
+    "${MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET:-none}" \
+    "${MOCK_CLI_CONTEXT_SESSION_OWNER_RESET:-false}"
+  exit 0
 fi
 if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
   printf 'no password supplied\n' >&2
@@ -157,9 +182,34 @@ cat > "$tmp/bin/psql" <<'MOCK'
 set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 41
 [[ "$*" == *'postgresql://fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
-[[ "${PGUSER:-}" == 'fixture_user' && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
+expected_db_user="${MOCK_DB_USER:-fixture_user}"
+[[ "${PGUSER:-}" == "$expected_db_user" && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
-grep -Fxq '*:*:*:fixture_user:dummy!secret' "$PGPASSFILE" || exit 45
+grep -Fxq "*:*:*:$expected_db_user:dummy!secret" "$PGPASSFILE" || exit 45
+if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
+  if [[ "$expected_db_user" == 'supabase_admin' || "$expected_db_user" == cli_login_* ]]; then
+    [[ "$*" == *'SET SESSION ROLE postgres; RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
+  else
+    [[ "$*" == *'RESET ALL; with migration_007_fk_targets(table_name'* && "$*" != *'SET SESSION ROLE'* ]] || exit 58
+  fi
+  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s","session_owner_reset_access":%s}\n' \
+    "${MOCK_PSQL_CONTEXT_SESSION_USER:-$expected_db_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}" \
+    "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
+    "${MOCK_PSQL_CONTEXT_ROLE_SETTING:-none}" \
+    "${MOCK_PSQL_CONTEXT_OWNER:-$expected_db_user}" \
+    "${MOCK_PSQL_CONTEXT_OWNER_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_RELATION_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_FUNCTION_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_SCHEMA_CREATE:-true}" \
+    "${MOCK_PSQL_CONTEXT_PRIVATE_CREATE:-true}" \
+    "${MOCK_PSQL_CONTEXT_SUPERUSER:-false}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_ACCESS:-true}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
+    "${MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET:-none}" \
+    "${MOCK_PSQL_CONTEXT_SESSION_OWNER_RESET:-false}"
+  exit 0
+fi
 [[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
 psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
 printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
@@ -572,6 +622,265 @@ if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO
 fi
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR409_LOCAL_ONLY=PASS'
+
+# Release #406 is bound to its PR source lineage, exact VPS-local backup and the
+# exact pre-migration ledger positions. The SQL and DB clients remain mocked.
+# Stub SSH so this unit test validates the requested host/path and evidence
+# parsing without opening a real network connection.
+cat > "$tmp/bin/ssh" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+expected_command="stat -c '%s' -- '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz' && sha256sum -- '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'"
+[[ "$#" -eq 6 && "$1" == '-o' && "$2" == 'BatchMode=yes' && \
+  "$3" == '-o' && "$4" == 'ConnectTimeout=15' && "$5" == 'tecescola-vps' && \
+  "$6" == "$expected_command" ]] || exit 86
+printf '%s\n' "${MOCK_406_BACKUP_SIZE:?}"
+printf '%s  %s\n' "${MOCK_406_BACKUP_SHA256:?}" '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'
+SH
+chmod +x "$tmp/bin/ssh"
+release_406_backup_sha256=a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841
+release_406_backup_path=/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz
+release_406_base=20261025000500
+mapfile -t release_406_candidates < <(
+  find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name '*.sql' -printf '%f\n' |
+    cut -c1-14 | grep -E '^[0-9]{14}$' |
+    awk -v base="$release_406_base" '$0 < base && $0 != "20261004000100" && $0 != "20261004000200" && $0 != "20261004000300"' |
+    sort -u | head -n 240
+)
+[[ "${#release_406_candidates[@]}" -eq 240 ]]
+release_406_ledger="$tmp/release-406-ledger"
+printf '%s\n' "${release_406_candidates[@]}" "$release_406_base" | sort -u > "$release_406_ledger"
+[[ "$(wc -l < "$release_406_ledger" | tr -d '[:space:]')" == '241' ]]
+release_406_dry_run="$tmp/release-406-dry-run"
+release_406_source="$tmp/release-406-source"
+mkdir -p "$release_406_source/supabase/migrations"
+printf 'project_id = "promote-406-test"\n' > "$release_406_source/supabase/config.toml"
+release_406_git_dir="$(git -C "$repo_root" rev-parse --absolute-git-dir)"
+if command -v cygpath >/dev/null 2>&1; then
+  release_406_git_dir="$(cygpath -u "$release_406_git_dir")"
+elif command -v wslpath >/dev/null 2>&1; then
+  release_406_git_dir="$(wslpath -u "$release_406_git_dir")"
+fi
+printf 'gitdir: %s\n' "$release_406_git_dir" > "$release_406_source/.git"
+while IFS= read -r version; do
+  [[ -n "$version" ]] || continue
+  printf 'select 1;\n' > "$release_406_source/supabase/migrations/${version}_test_fixture.sql"
+done < "$release_406_ledger"
+cp "$repo_root/supabase/migrations/20261025000600_central_estudos_v2_content_review.sql" \
+  "$release_406_source/supabase/migrations/"
+cp "$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql" \
+  "$release_406_source/supabase/migrations/"
+release_406_after="$tmp/release-406-after-ledger"
+release_406_version=20261025000600
+release_406_file="$repo_root/supabase/migrations/${release_406_version}_central_estudos_v2_content_review.sql"
+[[ -f "$release_406_file" ]]
+release_406_hash="$(sed 's/\r$//' "$release_406_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$release_406_hash" == 'afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3' ]]
+printf 'Would push migration %s\n' "$release_406_version" > "$release_406_dry_run"
+cat "$release_406_ledger" > "$release_406_after"
+printf '%s\n' "$release_406_version" >> "$release_406_after"
+printf '0\n' > "$cli_apply_count"
+# GitHub Actions checks out pull requests detached. The promoter's production
+# branch guard is intentionally preserved; model its verified PR branch in
+# this unit test's existing git mock instead of depending on the runner branch.
+export PROMOTION_TEST_REPO_ROOT="$repo_root"
+export PROMOTION_TEST_BRANCH=feat/central-estudos-pedagogia-v2
+release_406_output="$(PATH="$tmp/bin:$PATH" \
+  REAL_SHA256SUM="$real_sha256sum" \
+  MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SIZE=372305133 \
+  APPLY=1 BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_ID=406 \
+  BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup_path" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$release_406_version" \
+  TEST_SOURCE_ROOT="$release_406_source" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_base" \
+  TEST_TARGET_SHA256="$release_406_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_dry_run" \
+  TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_after")" \
+  run_guard)"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_406_ACCEPTED$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_RELEASE_ID=406$' <<< "$release_406_output"
+grep -q "^BACKUP_EXCEPTION_SOURCE_COMMIT=$source_commit$" <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_PATH=/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz$' <<< "$release_406_output"
+grep -q "^BACKUP_EXCEPTION_BACKUP_SHA256=$release_406_backup_sha256$" <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=372305133$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$release_406_output"
+grep -q '^BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED$' <<< "$release_406_output"
+grep -q '^PROMOTION=APPLIED$' <<< "$release_406_output"
+grep -q '^REMOTE_AFTER_COUNT=242$' <<< "$release_406_output"
+grep -q '^REMOTE_AFTER_LAST=20261025000600$' <<< "$release_406_output"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+# The second artifact is accepted only with 00600 already in the ledger.
+release_406_second_base=20261025000600
+release_406_second_version=20261025000700
+release_406_second_file="$repo_root/supabase/migrations/${release_406_second_version}_central_estudos_v2_runtime_publication.sql"
+[[ -f "$release_406_second_file" ]]
+release_406_second_hash="$(sed 's/\r$//' "$release_406_second_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$release_406_second_hash" == '8695132f39c8235875f84257324dafa6d05b6c1d3697b0a471959d9d969bf2cf' ]]
+release_406_second_ledger="$tmp/release-406-second-ledger"
+cat "$release_406_ledger" > "$release_406_second_ledger"
+printf '%s\n' "$release_406_version" >> "$release_406_second_ledger"
+release_406_second_dry_run="$tmp/release-406-second-dry-run"
+release_406_second_after="$tmp/release-406-second-after-ledger"
+printf 'Would push migration %s\n' "$release_406_second_version" > "$release_406_second_dry_run"
+cat "$release_406_second_ledger" > "$release_406_second_after"
+printf '%s\n' "$release_406_second_version" >> "$release_406_second_after"
+printf '0\n' > "$cli_apply_count"
+release_406_second_output="$(PATH="$tmp/bin:$PATH" \
+  MOCK_DB_USER=supabase_admin \
+  PRODUCTION_DB_URL_OVERRIDE='postgresql://supabase_admin:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require' \
+  MOCK_CLI_CONTEXT_SESSION_USER=supabase_admin \
+  MOCK_CLI_CONTEXT_CURRENT_USER=postgres \
+  MOCK_CLI_CONTEXT_CURRENT_ROLE=postgres \
+  MOCK_CLI_CONTEXT_ROLE_SETTING=postgres \
+  MOCK_CLI_CONTEXT_OWNER=postgres \
+  MOCK_CLI_CONTEXT_RELATION_ACCESS=false \
+  MOCK_CLI_CONTEXT_SESSION_OWNER_RESET=true \
+  MOCK_PSQL_CONTEXT_SESSION_USER=supabase_admin \
+  MOCK_PSQL_CONTEXT_CURRENT_USER=postgres \
+  MOCK_PSQL_CONTEXT_CURRENT_ROLE=postgres \
+  MOCK_PSQL_CONTEXT_ROLE_SETTING=postgres \
+  MOCK_PSQL_CONTEXT_OWNER=postgres \
+  MOCK_PSQL_CONTEXT_RELATION_ACCESS=false \
+  MOCK_PSQL_CONTEXT_SESSION_OWNER_RESET=true \
+  REAL_SHA256SUM="$real_sha256sum" \
+  MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \
+  MOCK_406_BACKUP_SIZE=372305133 \
+  APPLY=1 BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_RELEASE_ID=406 \
+  BACKUP_EXCEPTION_SOURCE_COMMIT="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_HOST=tecescola-vps \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$release_406_backup_sha256" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$release_406_backup_path" \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  TEST_TARGET_VERSION="$release_406_second_version" \
+  TEST_SOURCE_ROOT="$release_406_source" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_second_base" \
+  TEST_TARGET_SHA256="$release_406_second_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_second_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_second_dry_run" \
+  TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_second_after")" \
+  run_guard)"
+grep -q '^BACKUP_GATE=FAIL$' <<< "$release_406_second_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_406_ACCEPTED$' <<< "$release_406_second_output"
+grep -q '^PROMOTION=APPLIED$' <<< "$release_406_second_output"
+grep -q '^REMOTE_AFTER_COUNT=243$' <<< "$release_406_second_output"
+grep -q '^REMOTE_AFTER_LAST=20261025000700$' <<< "$release_406_second_output"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+grep -q '^DB_SESSION_USER=supabase_admin$' <<< "$release_406_second_output"
+grep -q '^DB_CURRENT_USER=postgres$' <<< "$release_406_second_output"
+grep -q '^DDL_PERMISSION=PASS$' <<< "$release_406_second_output"
+grep -q '^DDL_EXECUTION_MODE=SESSION_OWNER_RESET$' <<< "$release_406_second_output"
+grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$release_406_second_output"
+grep -q '^PRECHECK=PASS$' <<< "$release_406_second_output"
+
+release_406_precheck_ledger="$tmp/release-406-precheck-ledger"
+printf '%s\n' "$release_406_second_base" > "$release_406_precheck_ledger"
+
+run_release_406_007_precheck() {
+  TEST_TARGET_VERSION="$release_406_second_version" \
+  TEST_SOURCE_ROOT="$repo_root" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_second_base" \
+  TEST_TARGET_SHA256="$release_406_second_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_REMOTE_LEDGER_FILE="$release_406_precheck_ledger" \
+  TEST_DRY_RUN_OUTPUT_FILE="$release_406_second_dry_run" \
+  run_guard
+}
+
+# Ambient libpq settings must not affect either query path. This remains a
+# dry-run: no mock migration apply may occur.
+printf '0\n' > "$cli_apply_count"
+context_clean_output="$(PATH="$tmp/bin:$PATH" \
+  PGOPTIONS='-c role=untrusted_role' PGSERVICE=untrusted_service \
+  PGSERVICEFILE="$tmp/untrusted-service.conf" PGHOST=untrusted-host \
+  PGPORT=6543 PGDATABASE=untrusted_db PGUSER=ambient_user PGPASSWORD=ambient_password \
+  run_release_406_007_precheck)"
+grep -q '^PRECHECK=PASS$' <<< "$context_clean_output"
+grep -q '^PROMOTION=DRY_RUN_ONLY$' <<< "$context_clean_output"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+# A role switch, ownership loss, or CLI/psql context mismatch must fail before
+# the Supabase CLI can run db push.
+printf '0\n' > "$cli_apply_count"
+if context_role_mismatch="$(PATH="$tmp/bin:$PATH" \
+  MOCK_CLI_CONTEXT_CURRENT_USER=switched_role \
+  run_release_406_007_precheck 2>&1)"; then
+  echo 'role-switched CLI context unexpectedly passed the precheck' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=Supabase CLI and direct PostgreSQL session contexts differ$' <<< "$context_role_mismatch"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+printf '0\n' > "$cli_apply_count"
+if context_owner_mismatch="$(PATH="$tmp/bin:$PATH" \
+  MOCK_CLI_CONTEXT_OWNER_ACCESS=false MOCK_PSQL_CONTEXT_OWNER_ACCESS=false \
+  run_release_406_007_precheck 2>&1)"; then
+  echo 'missing relation ownership unexpectedly passed the precheck' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=database role lacks ownership or schema privileges required by migration 007$' <<< "$context_owner_mismatch"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_release_406_rejected() {
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    REAL_SHA256SUM="$real_sha256sum" \
+    MOCK_406_BACKUP_SHA256="${TEST_406_SSH_SHA-$release_406_backup_sha256}" \
+    MOCK_406_BACKUP_SIZE="${TEST_406_SSH_SIZE-372305133}" \
+    APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_RELEASE_ID="${TEST_406_RELEASE_ID-406}" \
+    BACKUP_EXCEPTION_SOURCE_COMMIT="${TEST_406_SOURCE_COMMIT-$source_commit}" \
+    BACKUP_EXCEPTION_BACKUP_HOST="${TEST_406_HOST-tecescola-vps}" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_406_BACKUP_SHA256-$release_406_backup_sha256}" \
+    BACKUP_EXCEPTION_BACKUP_FILE="${TEST_406_BACKUP_PATH-$release_406_backup_path}" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_406_RISK-I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406}" \
+    CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+    TEST_TARGET_VERSION="$release_406_version" \
+    TEST_SOURCE_ROOT="$release_406_source" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_base" \
+    TEST_TARGET_SHA256="$release_406_hash" \
+    TEST_EXPECT_INCLUDE_ALL=0 \
+    TEST_REMOTE_LEDGER_FILE="${TEST_406_LEDGER-$release_406_ledger}" \
+    TEST_DRY_RUN_OUTPUT_FILE="$release_406_dry_run" \
+    TEST_AFTER_LEDGER_CONTENT="$(cat "$release_406_after")" \
+    run_guard >"$tmp/release-406-rejection" 2>&1; then
+    echo 'invalid release #406 exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_406_RELEASE_ID=405 expect_release_406_rejected
+TEST_406_SOURCE_COMMIT=0000000000000000000000000000000000000000 expect_release_406_rejected
+TEST_406_HOST=untrusted-host expect_release_406_rejected
+TEST_406_BACKUP_PATH=/tmp/other.tar.gz expect_release_406_rejected
+TEST_406_RISK= expect_release_406_rejected
+TEST_406_BACKUP_SHA256=bad expect_release_406_rejected
+TEST_406_SSH_SHA=bad expect_release_406_rejected
+TEST_406_SSH_SIZE=1 expect_release_406_rejected
+short_release_406_ledger="$tmp/release-406-short-ledger"
+head -n 239 "$release_406_ledger" > "$short_release_406_ledger"
+printf '%s\n' "$release_406_base" >> "$short_release_406_ledger"
+TEST_406_LEDGER="$short_release_406_ledger" expect_release_406_rejected
+unset TEST_406_RELEASE_ID TEST_406_SOURCE_COMMIT TEST_406_RISK TEST_406_BACKUP_SHA256 \
+  TEST_406_SSH_SHA TEST_406_SSH_SIZE TEST_406_HOST TEST_406_BACKUP_PATH TEST_406_LEDGER
+echo 'PROMOTE_SINGLE_MIGRATION_RELEASE_406=PASS'
 
 # PR #411 has a separate local-only exception, pinned to its branch, repository,
 # parent ledger, one migration hash, fresh isolated-restore receipt and explicit

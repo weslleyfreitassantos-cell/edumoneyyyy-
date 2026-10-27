@@ -12,12 +12,18 @@ real_sha256sum="$(command -v sha256sum)"
 }
 db_container="${PROMOTION_TEST_DB_CONTAINER:-$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')}"
 [[ -n "$db_container" ]] || { echo 'Disposable Supabase PostgreSQL container not found' >&2; exit 1; }
+executor_admin=promoter_cli_executor_admin_ci
 
 cleanup() {
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci; do
+  docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+    -c 'ALTER ROLE postgres SUPERUSER;' >/dev/null 2>&1 || true
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci promoter_cli_executor_007_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
+  docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci; DROP ROLE IF EXISTS promoter_cli_executor_admin_ci; DROP ROLE IF EXISTS promoter_references_denied_ci;' \
+    >/dev/null 2>&1 || true
   rm -rf -- "$tmp"
 }
 trap cleanup EXIT
@@ -52,6 +58,37 @@ if [[ -z "${promotion_test_supabase_bin}" ]]; then
     promotion_test_supabase_bin="${repo_root}/node_modules/.bin/supabase"
   fi
 fi
+
+executor_database=promoter_cli_executor_007_ci
+executor_role=cli_login_promoter_007_ci
+executor_password=promoter_ci_only_2026
+executor_owner_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" python3 - <<'PY'
+import os
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+parts = urlsplit(os.environ["BASE_DB_URL"])
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+query["sslmode"] = "disable"
+print(urlunsplit((parts.scheme, parts.netloc, f"/{os.environ['EXECUTOR_DATABASE']}", urlencode(query), "")))
+PY
+)"
+executor_db_url="$(BASE_DB_URL="$test_db_url" EXECUTOR_DATABASE="$executor_database" \
+  EXECUTOR_ROLE="$executor_role" EXECUTOR_PASSWORD="$executor_password" python3 - <<'PY'
+import os
+from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
+
+parts = urlsplit(os.environ["BASE_DB_URL"])
+host = f"[{parts.hostname}]" if ":" in (parts.hostname or "") else parts.hostname
+netloc = (
+    f"{quote(os.environ['EXECUTOR_ROLE'], safe='')}:"
+    f"{quote(os.environ['EXECUTOR_PASSWORD'], safe='')}@{host}:{parts.port}"
+)
+query = dict(parse_qsl(parts.query, keep_blank_values=True))
+query["sslmode"] = "disable"
+print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", urlencode(query), "")))
+PY
+)"
+
 
 mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
@@ -507,3 +544,267 @@ pr411_function_count="$(docker exec "$db_container" psql -U postgres -d "$pr411_
    where n.nspname = 'private' and p.proname = 'psychology_can_manage_professionals';")"
 [[ "$pr411_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR411_LOCAL_ONLY=PASS'
+
+# Prove the actual Supabase CLI migration-executor identity in disposable
+# PostgreSQL. Its connection hook switches cli_login_* to postgres; RESET ALL
+# runs before each migration but preserves that active role. Apply the exact
+# first ALTER TABLE operations from 007 in a minimal fixture owned by postgres.
+executor_fixture="$tmp/source-cli-executor-007"
+mkdir -p "$executor_fixture/supabase/migrations"
+printf 'project_id = "migration-promoter-cli-executor-ci"\n' > "$executor_fixture/supabase/config.toml"
+printf 'select 1;\n' > "$executor_fixture/supabase/migrations/20261025000600_baseline.sql"
+cat > "$executor_fixture/supabase/migrations/20261025000650_cli_executor_identity_probe.sql" <<'SQL'
+insert into public.migration_executor_probe
+  (session_user_name, current_user_name, current_role_name, role_setting, is_superuser)
+select session_user::text, current_user::text, current_role::text,
+       coalesce(nullif(current_setting('role', true), ''), 'none'), role_row.rolsuper
+  from pg_roles role_row
+ where role_row.rolname = current_user;
+SQL
+cat > "$executor_fixture/supabase/migrations/20261025000700_candidate_ownership_probe.sql" <<'SQL'
+alter table public.learning_central_studies_v2_candidates
+  drop constraint learning_central_studies_v2_candidates_publication_status_check;
+alter table public.learning_central_studies_v2_candidates
+  add constraint learning_central_studies_v2_candidates_publication_status_check
+  check (publication_status in ('STAGING', 'PUBLISHED', 'UNPUBLISHED'));
+SQL
+
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE ROLE $executor_admin LOGIN SUPERUSER;" >/dev/null
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE ROLE $executor_role LOGIN NOINHERIT PASSWORD '$executor_password';" >/dev/null
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c "GRANT postgres TO $executor_role;" >/dev/null
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $executor_database OWNER postgres;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR_STOP=1 \
+  -c "CREATE SCHEMA supabase_migrations;
+      CREATE TABLE supabase_migrations.schema_migrations (
+        version text PRIMARY KEY NOT NULL,
+        statements text[],
+        name text
+      );
+      INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+        VALUES ('20261025000600', ARRAY[]::text[], 'baseline');
+      CREATE TABLE public.migration_executor_probe (
+        session_user_name text NOT NULL,
+        current_user_name text NOT NULL,
+        current_role_name text NOT NULL,
+        role_setting text NOT NULL,
+        is_superuser boolean NOT NULL
+      );
+      CREATE TABLE public.learning_central_studies_v2_candidates (publication_status text NOT NULL);
+      ALTER TABLE public.learning_central_studies_v2_candidates
+        ADD CONSTRAINT learning_central_studies_v2_candidates_publication_status_check
+        CHECK (publication_status IN ('STAGING', 'PUBLISHED'));" >/dev/null
+# Prove the database URL and CLI connection while the owner login is still a
+# superuser; the later non-superuser fixture models a hosted migration owner.
+if ! owner_connection_output="$(PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+  --db-url "$executor_owner_db_url" --agent yes --output-format json --log-level error \
+  'select 1 as executor_owner_connection' 2>&1)"; then
+  printf 'Supabase CLI owner connection failed before role modeling; sanitized diagnostics follow:\n' >&2
+  printf '%s\n' "$owner_connection_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+  exit 1
+fi
+# Model the hosted arrangement where postgres owns objects but is not a
+# superuser. Keep a disposable admin only for CI cleanup.
+docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
+  -c 'ALTER ROLE postgres NOSUPERUSER;' >/dev/null
+if ! docker exec --env "PGPASSWORD=$executor_password" "$db_container" \
+  psql -h 127.0.0.1 -U "$executor_role" -d "$executor_database" \
+    -X -A -t -v ON_ERROR_STOP=1 -c 'select 1;' >/dev/null; then
+  echo 'Disposable cli_login role could not connect over TCP with its test password' >&2
+  exit 1
+fi
+run_cli_identity_query() {
+  local sql="$1"
+  PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+    --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
+}
+
+run_cli_identity_query_debug() {
+  local sql="$1"
+  PGSSLMODE=disable "$promotion_test_supabase_bin" --debug --workdir "$executor_fixture" db query \
+    --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
+}
+
+assert_cli_executor_identity() {
+  local query_output="$1" expected_current_user="$2"
+  CLI_IDENTITY_QUERY_OUTPUT="$query_output" EXPECTED_CURRENT_USER="$expected_current_user" \
+    EXPECTED_SESSION_USER="$executor_role" python3 - <<'PY'
+import json
+import os
+
+raw_output = os.environ["CLI_IDENTITY_QUERY_OUTPUT"]
+decoder = json.JSONDecoder()
+documents = []
+cursor = 0
+while cursor < len(raw_output):
+    if raw_output[cursor] not in "[{":
+        cursor += 1
+        continue
+    try:
+        document, end = decoder.raw_decode(raw_output, cursor)
+    except json.JSONDecodeError:
+        cursor += 1
+        continue
+    documents.append(document)
+    cursor = end
+if not documents:
+    # The CLI can emit a human-readable login notice before its JSON payload.
+    # Show a short, credential-scrubbed excerpt if the expected payload is absent.
+    import re
+    safe_excerpt = re.sub(
+        r"(postgres(?:ql)?://[^:/@]+:)[^@/]+@", r"\1<redacted>@", raw_output
+    )
+    safe_excerpt = re.sub(
+        r"(password|token|secret|key)=([^\s]+)", r"\1=<redacted>", safe_excerpt, flags=re.I
+    )
+    raise SystemExit(
+        "Supabase CLI identity query did not return JSON; output="
+        + repr(safe_excerpt[:500])
+    )
+matches = []
+
+def visit(value):
+    if isinstance(value, str) and value.startswith(("{", "[")):
+        try:
+            visit(json.loads(value))
+        except json.JSONDecodeError:
+            return
+    elif isinstance(value, dict):
+        if "session_user" in value and "current_user" in value:
+            matches.append(value)
+        for child in value.values():
+            visit(child)
+    elif isinstance(value, list):
+        for child in value:
+            visit(child)
+
+for document in documents:
+    visit(document)
+if len(matches) != 1:
+    raise SystemExit("Supabase CLI identity query did not return exactly one identity")
+identity = matches[0]
+if identity["session_user"] != os.environ["EXPECTED_SESSION_USER"]:
+    raise SystemExit("Supabase CLI session_user did not match the disposable login role")
+if identity["current_user"] != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI current_user did not match the expected execution role")
+if identity.get("current_role") != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI current_role did not match the expected execution role")
+if identity.get("role_setting") != os.environ["EXPECTED_CURRENT_USER"]:
+    raise SystemExit("Supabase CLI role setting did not match the expected execution role")
+PY
+}
+
+report_executor_cli_failure() {
+  local command_output="$1"
+  printf 'Supabase CLI executor-context query failed; sanitized diagnostics follow:\n' >&2
+  printf '%s\n' "$command_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+}
+
+if ! hook_identity="$(run_cli_identity_query \
+  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity" 2>&1)"; then
+  if ! debug_output="$(run_cli_identity_query_debug \
+    "select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity" 2>&1)"; then
+    report_executor_cli_failure "$debug_output"
+  else
+    report_executor_cli_failure "$hook_identity"
+  fi
+  exit 1
+fi
+assert_cli_executor_identity "$hook_identity" postgres
+
+set +e
+executor_push_output="$(PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db push \
+  --db-url "$executor_db_url" --yes --log-level error 2>&1)"
+executor_push_status=$?
+set -e
+if [[ "$executor_push_status" -ne 0 ]]; then
+  printf 'Disposable Supabase CLI executor identity/DDL probe failed; sanitized diagnostics follow:\n' >&2
+  printf '%s\n' "$executor_push_output" | sed -E \
+    -e 's#(postgres(ql)?://[^:/@]+:)[^@/]+@#\1<redacted>@#g' \
+    -e 's/(password|token|secret|key)=([^[:space:]]+)/\1=<redacted>/Ig' >&2
+  exit 1
+fi
+executor_ledger="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  'select version from supabase_migrations.schema_migrations order by version;')"
+executor_identity="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select session_user_name || '|' || current_user_name || '|' || current_role_name || '|' || role_setting || '|' || is_superuser
+     from public.migration_executor_probe;")"
+executor_constraint="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) = 1 and bool_and(pg_get_constraintdef(constraint_row.oid) like '%UNPUBLISHED%')
+     from pg_constraint constraint_row
+    join pg_class relation_row on relation_row.oid = constraint_row.conrelid
+    join pg_namespace namespace_row on namespace_row.oid = relation_row.relnamespace
+   where namespace_row.nspname = 'public'
+     and relation_row.relname = 'learning_central_studies_v2_candidates'
+     and constraint_row.conname = 'learning_central_studies_v2_candidates_publication_status_check';")"
+[[ "$executor_ledger" == $'20261025000600\n20261025000650\n20261025000700' && \
+  "$executor_identity" == "$executor_role|postgres|postgres|postgres|false" && \
+  "$executor_constraint" == 't' ]] || {
+  echo 'Disposable executor did not preserve the CLI role through RESET ALL and the candidate ALTER TABLE' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_ROLE_RESET=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_EXECUTOR_CANDIDATE_DDL=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_CLI_TARGET_DDL_PROBE=PASS'
+
+# A REFERENCES grant is independent of schema CREATE. Verify the exact
+# effective column privilege for an owner, a non-owner with no REFERENCES,
+# and a non-owner granted REFERENCES on only one referenced column.
+references_role=promoter_references_denied_ci
+docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -v ON_ERROR_STOP=1 -c "CREATE ROLE $references_role NOLOGIN;
+    CREATE SCHEMA references_denied AUTHORIZATION $references_role;" >/dev/null
+docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -v ON_ERROR_STOP=1 -c "CREATE TABLE public.references_probe_denied (id integer PRIMARY KEY);
+    CREATE TABLE public.references_probe_granted (id integer PRIMARY KEY);
+    GRANT REFERENCES (id) ON public.references_probe_granted TO $references_role;" >/dev/null
+owner_references="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select has_column_privilege(current_user, 'public.references_probe_denied', 'id', 'REFERENCES');")"
+denied_references="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "SET ROLE $references_role; SELECT has_column_privilege(current_user, 'public.references_probe_denied', 'id', 'REFERENCES');" | awk '/^[tf]$/ { value = $0 } END { print value }')"
+granted_references="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "SET ROLE $references_role; SELECT has_column_privilege(current_user, 'public.references_probe_granted', 'id', 'REFERENCES');" | awk '/^[tf]$/ { value = $0 } END { print value }')"
+[[ "$owner_references" == 't' && "$denied_references" == 'f' && "$granted_references" == 't' ]] || {
+  echo 'PostgreSQL effective REFERENCES checks did not distinguish owner, denied role, and explicit grant' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_OWNER=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_DENIED=PASS'
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_EXPLICIT_GRANT=PASS'
+
+docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR_STOP=1 \
+  -c 'CREATE TABLE public.references_owner_fk_probe (reference_id integer REFERENCES public.references_probe_denied(id));' >/dev/null
+set +e
+references_denied_ddl="$(docker exec "$db_container" psql -U "$executor_admin" -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -v VERBOSITY=verbose \
+  -c "SET ROLE $references_role; CREATE TABLE references_denied.denied_fk_probe (reference_id integer REFERENCES public.references_probe_denied(id));" 2>&1)"
+references_denied_status=$?
+set -e
+[[ "$references_denied_status" -ne 0 ]] && \
+  grep -q '42501' <<< "$references_denied_ddl" && \
+  grep -q 'permission denied for table references_probe_denied' <<< "$references_denied_ddl" || {
+    echo 'PostgreSQL did not reject a foreign key without REFERENCES with SQLSTATE 42501' >&2
+    exit 1
+  }
+denied_fk_count="$(docker exec "$db_container" psql -U postgres -d "$executor_database" \
+  -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from pg_class object join pg_namespace object_schema on object_schema.oid = object.relnamespace where object_schema.nspname = 'references_denied' and object.relname = 'denied_fk_probe';")"
+[[ "$denied_fk_count" == '0' ]] || {
+  echo 'Foreign-key test unexpectedly created an object without REFERENCES' >&2
+  exit 1
+}
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_REFERENCES_FK_DENIED_42501=PASS'
+echo 'PROMOTION_POSTGRES_PRODUCTION_42501_REPRODUCED=NO'

@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configurar Node
         uses: actions/setup-node@v4
@@ -118,7 +120,25 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+        shell: bash
+        run: |
+          set -euo pipefail
+          guarded_migration="supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
+          held_migration="$RUNNER_TEMP/$(basename "$guarded_migration").ci-hold"
+          mv "$guarded_migration" "$held_migration"
+          restore_guarded_migration() {
+            if [[ -f "$held_migration" ]]; then
+              mv "$held_migration" "$guarded_migration"
+            fi
+          }
+          trap restore_guarded_migration EXIT
+          # Supabase CLI boot applies the full migration directory as
+          # postgres/postgres. Keep 007 out only during stack boot; the focused
+          # owner proof below restores the file and applies it as the verified
+          # session supabase_admin / current postgres executor.
+          npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+          restore_guarded_migration
+          trap - EXIT
 
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
@@ -144,14 +164,72 @@ jobs:
       - name: Teste dinâmico isolado do roster da PR #277
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
+      - name: Preparar baseline isolado da migration 007
+        run: npx supabase db reset --local --version 20261025000600 --no-seed
+
+      - name: Provar ownership e aplicação seletiva da migration 007
+        timeout-minutes: 10
+        run: bash scripts/db/central-studies-v2-runtime-publication-owner.test.sh
+
       - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The 007 owner proof above models production's Supabase CLI executor:
+          # session_user=supabase_admin, current_user=postgres. A plain local
+          # `db reset` runs as postgres/postgres and correctly fails the migration
+          # guard, so rebuild through 006 then apply the remaining chain using the
+          # same authorized CLI owner context that was proven in the focused test.
+          npx supabase db reset --local --version 20261025000600 --no-seed
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          [[ -n "$db_container" ]]
+          status_output="$(npx supabase status -o env)"
+          raw_db_url="$(printf '%s\n' "$status_output" | sed -n 's/^DB_URL=//p' | head -n 1 | sed -E "s/^[\\\"']//; s/[\\\"']$//")"
+          [[ -n "$raw_db_url" ]]
+          owner_password="$(BASE_DB_URL="$raw_db_url" node - <<'NODE'
+          const url = new URL(process.env.BASE_DB_URL || '');
+          process.stdout.write(decodeURIComponent(url.password));
+          NODE
+          )"
+          [[ -n "$owner_password" ]]
+          # Preserve the Supabase stack's configured database password. The
+          # Realtime service uses the same local database credentials; replacing
+          # them with a probe-only password breaks later authenticated realtime tests.
+          docker exec -i "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+            -v "owner_password=$owner_password" >/dev/null <<'SQL'
+          ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD :'owner_password';
+          SQL
+          admin_db_url="$(BASE_DB_URL="$raw_db_url" ADMIN_PASSWORD="$owner_password" node - <<'NODE'
+          const url = new URL(process.env.BASE_DB_URL || '');
+          url.username = 'supabase_admin';
+          url.password = process.env.ADMIN_PASSWORD || '';
+          url.searchParams.set('sslmode', 'disable');
+          process.stdout.write(url.toString());
+          NODE
+          )"
+          PGSSLMODE=disable npx supabase --workdir "$GITHUB_WORKSPACE" db push \
+            --db-url "$admin_db_url" --yes --log-level error
 
       - name: Teste dinâmico isolado dos rascunhos de matrícula
         run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
 
       - name: Lint das migrations
         run: npx supabase db lint --local --fail-on error
+
+      - name: Normalizar owners da migration 007 no banco descartável para diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          [[ -n "$db_container" ]]
+          # The shadow migration executor is postgres, while the focused owner
+          # proof validates the production supabase_admin ownership. Normalize
+          # only these ephemeral comparison objects so db diff checks schema,
+          # not the expected executor-specific table owner difference.
+          docker exec "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+            -c "ALTER TABLE public.learning_central_studies_v2_runtime OWNER TO postgres;
+                ALTER TABLE public.learning_central_studies_v2_institution_targets OWNER TO postgres;
+                ALTER TABLE public.learning_central_studies_v2_release_events OWNER TO postgres;" >/dev/null
 
       - name: Confirmar ausência de drift
         shell: bash

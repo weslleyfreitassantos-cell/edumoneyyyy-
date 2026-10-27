@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06MA07_FRACOES_01",
+  "journeyTitle": "Frações: partes, comparação e equivalência",
+  "subject": "MATHEMATICS",
+  "grade": 6,
+  "officialSkillCode": "EF06MA07",
+  "skill": "MATH_FRACTION_MEANING_COMPARISON",
+  "unitCode": "MAT_NUMEROS",
+  "unitTitle": "Números e operações",
+  "officialText": "Compreender, comparar e ordenar frações associadas às ideias de partes de inteiros e resultado de divisão, identificando frações equivalentes.",
+  "lesson": {
+    "title": "Comparar frações com significado",
+    "estimatedMinutes": 20,
+    "introduction": "Duas equipes dividiram barras de cereal iguais. Uma recebeu 3/4 de uma barra e outra, 5/8. A escrita parece diferente; para decidir quem recebeu mais, primeiro precisamos comparar partes do mesmo tamanho.",
+    "explanation": "O denominador informa em quantas partes iguais o inteiro foi dividido; o numerador indica quantas dessas partes estão sendo consideradas. Frações equivalentes representam a mesma quantidade, mesmo com numeradores e denominadores diferentes. Para comparar, use uma representação, frações equivalentes ou uma referência como 1/2 e 1 inteiro. O inteiro comparado precisa ter o mesmo tamanho.",
+    "workedExample": {
+      "prompt": "Qual é maior: 3/4 ou 5/8?",
+      "steps": [
+        "Escreva 3/4 em oitavos: multiplique numerador e denominador por 2.",
+        "3/4 = 6/8.",
+        "Compare 6/8 e 5/8: os inteiros estão divididos em partes do mesmo tamanho.",
+        "Como 6/8 > 5/8, então 3/4 > 5/8."
+      ],
+      "answer": "3/4 é maior que 5/8."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Represente 2/3 e 4/6 em uma reta ou desenho.",
+        "scaffold": "Divida o mesmo inteiro em 3 ou 6 partes iguais e compare a porção."
+      },
+      {
+        "prompt": "Compare 5/6 com 1/2 sem transformar para decimal.",
+        "scaffold": "Metade de 6 partes iguais são 3 partes."
+      },
+      {
+        "prompt": "Ordene 1/4, 3/4 e 1/2.",
+        "scaffold": "Escreva todas em oitavos ou use a posição entre 0 e 1."
+      }
+    ],
+    "application": [
+      {
+        "context": "Receita",
+        "prompt": "Uma receita usa 2/3 de xícara de água; outra usa 3/4. Qual usa mais? Mostre uma comparação que mantenha o mesmo tamanho de xícara."
+      },
+      {
+        "context": "Leitura de dados",
+        "prompt": "Em uma votação, 4/8 da turma escolheu leitura e 3/6 escolheu desenho. As frações representam quantidades diferentes? Explique."
+      }
+    ],
+    "review": [
+      "Compare frações de inteiros de mesmo tamanho.",
+      "O denominador indica o tamanho das partes iguais.",
+      "Frações equivalentes nomeiam a mesma quantidade.",
+      "Use uma representação, equivalência ou referência conhecida.",
+      "Confira se a comparação responde à pergunta."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06ma07-q1",
+        "cev2-ef06ma07-q2",
+        "cev2-ef06ma07-q3",
+        "cev2-ef06ma07-q4",
+        "cev2-ef06ma07-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ma07-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Em uma figura dividida em 8 partes iguais, 3 estão pintadas. Qual fração representa a parte pintada?",
+      "options": [
+        "3/8",
+        "8/3",
+        "5/8",
+        "3/5"
+      ],
+      "correctAnswer": "3/8",
+      "explanation": "O numerador conta as partes pintadas; o denominador conta todas as partes iguais do inteiro.",
+      "misconception": "Inverter numerador e denominador ou contar somente as partes sem pintar.",
+      "officialSkillCode": "EF06MA07"
+    },
+    {
+      "id": "cev2-ef06ma07-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual fração é equivalente a 2/3?",
+      "options": [
+        "4/6",
+        "3/4",
+        "2/6",
+        "5/6"
+      ],
+      "correctAnswer": "4/6",
+      "explanation": "Multiplicar numerador e denominador de 2/3 por 2 produz 4/6 sem alterar a quantidade.",
+      "misconception": "Alterar só o numerador ou só o denominador.",
+      "officialSkillCode": "EF06MA07"
+    },
+    {
+      "id": "cev2-ef06ma07-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Lia percorreu 5/8 de uma trilha e Caio percorreu 3/4 da mesma trilha. Quem percorreu mais?",
+      "options": [
+        "Lia",
+        "Caio",
+        "Percorreram a mesma distância",
+        "Não é possível comparar, pois os denominadores diferem"
+      ],
+      "correctAnswer": "Caio",
+      "explanation": "3/4 equivale a 6/8; assim, 6/8 é maior que 5/8.",
+      "misconception": "Comparar apenas os denominadores ou os numeradores isoladamente.",
+      "officialSkillCode": "EF06MA07"
+    },
+    {
+      "id": "cev2-ef06ma07-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual explicação mostra por que 2/5 é menor que 4/5?",
+      "options": [
+        "As partes têm o mesmo tamanho e 2 partes são menos que 4",
+        "O denominador 5 é menor que 4",
+        "2/5 é maior porque 2 é par",
+        "Frações com numeradores diferentes não podem ser comparadas"
+      ],
+      "correctAnswer": "As partes têm o mesmo tamanho e 2 partes são menos que 4",
+      "explanation": "Com denominadores iguais, as partes unitárias têm o mesmo tamanho; compare quantas partes foram tomadas.",
+      "misconception": "Confundir o tamanho do denominador com a quantidade representada.",
+      "officialSkillCode": "EF06MA07"
+    },
+    {
+      "id": "cev2-ef06ma07-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Qual afirmação é verdadeira para 1/2 e 3/6?",
+      "options": [
+        "Representam a mesma quantidade",
+        "1/2 é maior porque tem denominador menor",
+        "3/6 é maior porque tem numerador maior",
+        "Só seriam iguais se os denominadores fossem iguais"
+      ],
+      "correctAnswer": "Representam a mesma quantidade",
+      "explanation": "3/6 simplifica para 1/2; as duas frações ocupam o mesmo ponto na reta numérica.",
+      "misconception": "Achar que a forma escrita determina a quantidade sem considerar equivalência.",
+      "officialSkillCode": "EF06MA07"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}

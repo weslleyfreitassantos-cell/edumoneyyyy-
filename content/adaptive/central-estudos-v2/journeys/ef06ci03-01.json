@@ -1,0 +1,167 @@
+{
+  "journeyCode": "CEV2_EF06CI03_SEPARACAO_01",
+  "journeyTitle": "Escolher métodos de separação",
+  "subject": "SCIENCE",
+  "grade": 6,
+  "officialSkillCode": "EF06CI03",
+  "skill": "SCIENCE_SEPARATION_METHODS",
+  "unitCode": "SCI_MATERIAIS",
+  "unitTitle": "Materiais e transformações",
+  "officialText": "Selecionar métodos mais adequados para a separação de diferentes sistemas heterogêneos a partir da identificação de processos de separação de materiais.",
+  "lesson": {
+    "title": "Relacionar propriedades e métodos de separação",
+    "estimatedMinutes": 20,
+    "introduction": "Uma mistura de areia e água precisa ser separada. O método escolhido depende do que sabemos dos materiais: tamanho das partículas, capacidade de dissolver, densidade e possibilidade de evaporação.",
+    "explanation": "Sistemas heterogêneos podem ser separados por métodos físicos escolhidos conforme as propriedades dos componentes. Filtração retém partículas sólidas maiores que os poros do filtro; decantação aproveita a diferença de densidade depois que as fases se separam; peneiração distingue sólidos por tamanho; evaporação pode recuperar um sólido dissolvido, embora a água não seja recolhida nesse processo simples. Um método adequado responde ao objetivo e considera segurança e impacto ambiental.",
+    "workedExample": {
+      "prompt": "Como separar areia de água em uma atividade escolar?",
+      "steps": [
+        "A areia não está dissolvida e forma partículas sólidas.",
+        "Um filtro permite a passagem da água e retém grande parte da areia.",
+        "A filtração é adequada para separar sólido não dissolvido de líquido.",
+        "Registre que a água filtrada pode ainda conter substâncias dissolvidas."
+      ],
+      "answer": "Filtração, observando que ela não remove substâncias dissolvidas."
+    },
+    "guidedPractice": [
+      {
+        "prompt": "Escolha entre peneiração, filtração e decantação para separar cada mistura.",
+        "scaffold": "Observe se são sólidos de tamanhos diferentes ou sólido e líquido."
+      },
+      {
+        "prompt": "Como recuperar sal dissolvido em água usando evaporação?",
+        "scaffold": "A água passa ao estado gasoso e o sal pode permanecer como sólido."
+      },
+      {
+        "prompt": "O que deve ser considerado ao escolher um método para grande escala?",
+        "scaffold": "Além de separar, avalie energia, resíduos, segurança e recuperação dos materiais."
+      }
+    ],
+    "application": [
+      {
+        "context": "Tratamento de água",
+        "prompt": "Explique por que uma peneira grossa não remove sal dissolvido e proponha um processo diferente para reter partículas maiores."
+      },
+      {
+        "context": "Reciclagem",
+        "prompt": "Uma mistura tem parafusos de ferro e areia. Escolha um método, justifique pela propriedade usada e indique um limite."
+      }
+    ],
+    "review": [
+      "Identifique os componentes e se há uma ou mais fases.",
+      "Relacione o método à propriedade física usada.",
+      "Filtração retém sólidos não dissolvidos; decantação separa fases após repouso.",
+      "Evaporação pode deixar o sólido dissolvido, mas não recolhe a água.",
+      "Considere finalidade, segurança e resíduos."
+    ],
+    "learningCheck": {
+      "passRule": "A revisão técnica verifica cada resposta; a revisão pedagógica humana permanece pendente.",
+      "questionIds": [
+        "cev2-ef06ci03-q1",
+        "cev2-ef06ci03-q2",
+        "cev2-ef06ci03-q3",
+        "cev2-ef06ci03-q4",
+        "cev2-ef06ci03-q5"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "cev2-ef06ci03-q1",
+      "purpose": "PROBE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Qual método separa melhor areia não dissolvida da água em uma atividade simples?",
+      "options": [
+        "Filtração",
+        "Peneiração fina do líquido sem filtro",
+        "Imantação",
+        "Congelamento"
+      ],
+      "correctAnswer": "Filtração",
+      "explanation": "O filtro retém partículas de areia e permite a passagem da água.",
+      "misconception": "Achar que a água com areia pode ser separada por magnetismo.",
+      "officialSkillCode": "EF06CI03"
+    },
+    {
+      "id": "cev2-ef06ci03-q2",
+      "purpose": "PRACTICE",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "EASY",
+      "statement": "Para separar pedrinhas de tamanhos diferentes, qual método é mais adequado?",
+      "options": [
+        "Peneiração",
+        "Evaporação",
+        "Destilação do sólido",
+        "Dissolução em óleo"
+      ],
+      "correctAnswer": "Peneiração",
+      "explanation": "A peneira separa sólidos conforme o tamanho de suas partículas.",
+      "misconception": "Escolher método de separação de sólido e líquido para dois sólidos.",
+      "officialSkillCode": "EF06CI03"
+    },
+    {
+      "id": "cev2-ef06ci03-q3",
+      "purpose": "TRANSFER",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Depois que água e óleo ficam em camadas, qual processo pode facilitar a separação?",
+      "options": [
+        "Decantação",
+        "Filtração para dissolver o óleo",
+        "Peneiração",
+        "Evaporação do óleo sem avaliar segurança"
+      ],
+      "correctAnswer": "Decantação",
+      "explanation": "As fases líquidas com densidades diferentes podem ser separadas por decantação apropriada.",
+      "misconception": "Supor que filtros comuns retêm um líquido dissolvido em outro.",
+      "officialSkillCode": "EF06CI03"
+    },
+    {
+      "id": "cev2-ef06ci03-q4",
+      "purpose": "LOCK_IN",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Uma solução de água e sal é filtrada. O que se espera?",
+      "options": [
+        "O sal dissolvido atravessa o filtro junto com a água",
+        "Todo o sal fica retido no filtro",
+        "A água vira areia",
+        "O sal se transforma em gás imediatamente"
+      ],
+      "correctAnswer": "O sal dissolvido atravessa o filtro junto com a água",
+      "explanation": "Partículas dissolvidas passam pelo filtro comum; filtração não separa uma solução desse modo.",
+      "misconception": "Confundir substância dissolvida com sólido suspenso.",
+      "officialSkillCode": "EF06CI03"
+    },
+    {
+      "id": "cev2-ef06ci03-q5",
+      "purpose": "REVIEW",
+      "interactionType": "SINGLE_CHOICE",
+      "difficulty": "MEDIUM",
+      "statement": "Para obter sal de uma solução aquosa por evaporação simples, o que fica no recipiente ao final?",
+      "options": [
+        "O sal sólido",
+        "A água líquida e todo o sal, sem mudança",
+        "Somente o filtro",
+        "Areia formada pela água"
+      ],
+      "correctAnswer": "O sal sólido",
+      "explanation": "A água evapora e o soluto não volátil pode permanecer como sólido.",
+      "misconception": "Esperar que evaporação simples recupere também a água como líquido.",
+      "officialSkillCode": "EF06CI03"
+    }
+  ],
+  "version": "central-estudos-v2-candidate-2026-10-25.2",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "contentAuthoringStatus": "TECH_VALIDATED_PENDING_REVIEW",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "catalogPath": "content/bncc/official/catalog-2018.json",
+    "repositoryExtractionStatus": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED"
+  }
+}
