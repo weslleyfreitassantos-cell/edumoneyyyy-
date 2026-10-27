@@ -80,7 +80,10 @@ export function ProtectedRoute({
   // while the membership query is still loading can send a valid user away
   // from a protected route before the active institution's roles are known.
   if (
-    institutionContext?.isLoading &&
+    institutionContext &&
+    (institutionContext.isLoading ||
+      (!institutionContext.currentInstitutionId &&
+        (institutionContext.institutions?.length ?? 0) > 0)) &&
     (allowedRoles?.length || deniedRoles?.length)
   ) {
     return (
