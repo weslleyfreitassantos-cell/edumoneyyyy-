@@ -74,7 +74,7 @@ policy_defs_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_E
       and not (tablename = 'learning_question_set_items' and policyname = 'learning_question_set_items_select')
     order by 1;")"
 
-psql_in_container -U postgres -d postgres -v ON_ERROR_STOP=1 -c \
+psql_in_container -U supabase_admin -d postgres -v ON_ERROR_STOP=1 -c \
   "ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD '$admin_password';
    ALTER TABLE public.learning_question_sets OWNER TO supabase_admin;
    ALTER TABLE public.learning_question_set_items OWNER TO supabase_admin;
