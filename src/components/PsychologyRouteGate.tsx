@@ -36,7 +36,6 @@ export function PsychologyRouteGate({ children }: PsychologyRouteGateProps) {
   const role = getPsychologyRouteRole(
     section,
     institution.currentRole,
-    profile?.role,
     institution.currentInstitutionRoles,
   );
   const status = usePsychologyModuleStatus(

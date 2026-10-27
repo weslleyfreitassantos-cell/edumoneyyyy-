@@ -211,6 +211,62 @@ describe('ProtectedRoute', () => {
         expect(screen.getByText('Conteúdo protegido')).toBeTruthy();
     });
 
+    it('não usa o papel global de psicólogo para acessar outra escola onde é professor', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'PSYCHOLOGIST' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-b',
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('nega papel global quando a escola atual não tem membership ativa', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'PSYCHOLOGIST' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-b',
+            currentRole: null,
+            currentInstitutionRoles: [],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
+    it('permite papel psicólogo adicional quando a membership ativa é da mesma escola', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: 'school-a',
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'PSYCHOLOGIST'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Conteúdo protegido')).toBeTruthy();
+    });
+
     it('preserva a negação quando qualquer membership ativa é explicitamente proibida', () => {
         mockedUseAuth.mockReturnValue(
             createAuthState({

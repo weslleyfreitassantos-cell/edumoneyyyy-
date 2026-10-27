@@ -935,7 +935,6 @@ export default function PsychologyPage() {
   const role = getPsychologyRouteRole(
     section,
     currentRole,
-    profile?.role,
     currentInstitutionRoles,
   );
   const isManager = ['ADMIN', 'DIRECTOR', 'SECRETARY'].includes(role);

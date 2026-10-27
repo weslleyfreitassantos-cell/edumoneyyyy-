@@ -13,11 +13,10 @@ const SECTION_ROLE_PREFERENCES: Record<string, readonly string[]> = {
 export function getPsychologyRouteRole(
   section: string,
   institutionRole: string | null | undefined,
-  profileRole: string | null | undefined,
   activeInstitutionRoles: readonly string[] = [],
 ): string {
   const availableRoles = new Set(
-    [institutionRole, ...activeInstitutionRoles, profileRole]
+    [institutionRole, ...activeInstitutionRoles]
       .filter((role): role is string => Boolean(role))
       .map((role) => role.toUpperCase()),
   );
@@ -30,5 +29,5 @@ export function getPsychologyRouteRole(
     if (matchingRole) return matchingRole;
   }
 
-  return institutionRole ?? profileRole ?? activeInstitutionRoles[0] ?? '';
+  return institutionRole ?? activeInstitutionRoles[0] ?? '';
 }
