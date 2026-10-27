@@ -43,6 +43,8 @@ describe('Tec Idiomas V3 content package', () => {
     expect(sql).toContain('on conflict (course_code) do nothing');
     expect(sql).toContain('tec_language_course_conflict');
     expect(sql).toContain('tec_language_content_count_mismatch');
+    expect(sql).toContain('is not distinct from row(e.lesson_id,e.position');
+    expect(sql).not.toMatch(/\)\s*=\s*row\(/);
     expect(sql).toContain("'staging'");
     expect(sql).toContain("'pedagogical_review_pending'");
     expect(sql).not.toMatch(/\b(delete\s+from|truncate\s+|drop\s+table\s+public\.)/i);
