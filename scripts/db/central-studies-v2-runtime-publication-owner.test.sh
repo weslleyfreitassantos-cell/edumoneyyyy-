@@ -20,7 +20,12 @@ process.stdout.write(url.host);
 NODE
 )" || { echo 'Refusing to run owner proof against a non-local database' >&2; exit 1; }
 
-admin_password='ci_owner_reset_probe_only_2026'
+admin_password="$(BASE_DB_URL="$raw_db_url" node - <<'NODE'
+const url = new URL(process.env.BASE_DB_URL || '');
+process.stdout.write(decodeURIComponent(url.password));
+NODE
+)"
+[[ -n "$admin_password" ]] || { echo 'Local Supabase database password unavailable' >&2; exit 1; }
 admin_db_url="$(BASE_DB_URL="$raw_db_url" ADMIN_PASSWORD="$admin_password" node - <<'NODE'
 const url = new URL(process.env.BASE_DB_URL || '');
 url.username = 'supabase_admin';
@@ -94,12 +99,14 @@ policy_defs_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_E
       and not (tablename = 'learning_question_set_items' and policyname = 'learning_question_set_items_select')
     order by 1;")"
 
-psql_in_container -U supabase_admin -d postgres -v ON_ERROR_STOP=1 -c \
-  "ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD '$admin_password';
-   ALTER TABLE public.learning_question_sets OWNER TO supabase_admin;
-   ALTER TABLE public.learning_question_set_items OWNER TO supabase_admin;
-   ALTER TABLE public.learning_guided_session_events OWNER TO supabase_admin;
-   ALTER ROLE postgres NOSUPERUSER;" >/dev/null
+docker exec -i "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+  -v "owner_password=$admin_password" >/dev/null <<'SQL'
+ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD :'owner_password';
+ALTER TABLE public.learning_question_sets OWNER TO supabase_admin;
+ALTER TABLE public.learning_question_set_items OWNER TO supabase_admin;
+ALTER TABLE public.learning_guided_session_events OWNER TO supabase_admin;
+ALTER ROLE postgres NOSUPERUSER;
+SQL
 
 # Execute the exact policy DDL that failed in production as the non-owner.
 set +e

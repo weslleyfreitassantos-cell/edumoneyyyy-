@@ -183,12 +183,22 @@ jobs:
           npx supabase db reset --local --version 20261025000600 --no-seed
           db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
           [[ -n "$db_container" ]]
-          owner_password='ci_owner_reset_probe_only_2026'
-          docker exec "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
-            -c "ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD '$owner_password';" >/dev/null
           status_output="$(npx supabase status -o env)"
           raw_db_url="$(printf '%s\n' "$status_output" | sed -n 's/^DB_URL=//p' | head -n 1 | sed -E "s/^[\\\"']//; s/[\\\"']$//")"
           [[ -n "$raw_db_url" ]]
+          owner_password="$(BASE_DB_URL="$raw_db_url" node - <<'NODE'
+          const url = new URL(process.env.BASE_DB_URL || '');
+          process.stdout.write(decodeURIComponent(url.password));
+          NODE
+          )"
+          [[ -n "$owner_password" ]]
+          # Preserve the Supabase stack's configured database password. The
+          # Realtime service uses the same local database credentials; replacing
+          # them with a probe-only password breaks later authenticated realtime tests.
+          docker exec -i "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+            -v "owner_password=$owner_password" >/dev/null <<'SQL'
+          ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD :'owner_password';
+          SQL
           admin_db_url="$(BASE_DB_URL="$raw_db_url" ADMIN_PASSWORD="$owner_password" node - <<'NODE'
           const url = new URL(process.env.BASE_DB_URL || '');
           url.username = 'supabase_admin';
