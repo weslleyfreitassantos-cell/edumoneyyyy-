@@ -144,7 +144,7 @@ if (row.session_user !== 'supabase_admin' || row.current_user !== 'postgres' ||
 }
 NODE
 
-dry_run="$(npx supabase --workdir "$repo_root" db push --db-url "$admin_db_url" --yes --dry-run --log-level error 2>&1)"
+dry_run="$(npx supabase --workdir "$repo_root" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
 pending_versions="$(DRY_RUN_OUTPUT="$dry_run" BEFORE_VERSIONS="$before_versions" node - <<'NODE'
 const text = process.env.DRY_RUN_OUTPUT || '';
 const before = new Set((process.env.BEFORE_VERSIONS || '').split(/\s+/).filter(Boolean));
