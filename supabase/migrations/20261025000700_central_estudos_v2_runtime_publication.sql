@@ -210,10 +210,14 @@ $$;
 -- exact owner/session arrangement before allowing the migration. Temporarily
 -- reset to the authenticated owner for only the trigger and policy DDL below,
 -- then restore the verified executor role before the migration continues.
+-- Supabase's local schema-diff shadow uses `postgres` directly; allow that path
+-- only when this session actually owns all three protected relations. Production
+-- does not satisfy that ownership check, so this cannot bypass the executor gate.
 do $central_studies_v2_owner_executor_guard$
 declare
   current_role_is_superuser boolean;
   session_role_is_superuser boolean;
+  current_role_owns_protected_relations boolean;
 begin
   select role_row.rolsuper into current_role_is_superuser
     from pg_catalog.pg_roles role_row
@@ -221,11 +225,26 @@ begin
   select role_row.rolsuper into session_role_is_superuser
     from pg_catalog.pg_roles role_row
    where role_row.rolname = session_user;
+  select count(relation.oid) = 3
+     and coalesce(bool_and(owner_role.rolname = current_user), false)
+    into current_role_owns_protected_relations
+    from (values
+      ('learning_question_sets'),
+      ('learning_question_set_items'),
+      ('learning_guided_session_events')
+    ) as protected(relname)
+    left join pg_catalog.pg_class relation
+      on relation.relname = protected.relname
+     and relation.relnamespace = 'public'::regnamespace
+    left join pg_catalog.pg_roles owner_role on owner_role.oid = relation.relowner;
 
   if not coalesce(current_role_is_superuser, false)
      and not (session_user = 'supabase_admin'
        and current_user = 'postgres'
-       and coalesce(session_role_is_superuser, false)) then
+       and coalesce(session_role_is_superuser, false))
+     and not (session_user = 'postgres'
+       and current_user = 'postgres'
+       and coalesce(current_role_owns_protected_relations, false)) then
     raise exception 'CENTRAL_STUDIES_V2_007_OWNER_EXECUTOR_REQUIRED'
       using errcode = '42501';
   end if;
@@ -235,13 +254,29 @@ reset role;
 do $central_studies_v2_owner_executor_check$
 declare
   current_role_is_superuser boolean;
+  current_role_owns_protected_relations boolean;
 begin
   select role_row.rolsuper into current_role_is_superuser
     from pg_catalog.pg_roles role_row
    where role_row.rolname = current_user;
+  select count(relation.oid) = 3
+     and coalesce(bool_and(owner_role.rolname = current_user), false)
+    into current_role_owns_protected_relations
+    from (values
+      ('learning_question_sets'),
+      ('learning_question_set_items'),
+      ('learning_guided_session_events')
+    ) as protected(relname)
+    left join pg_catalog.pg_class relation
+      on relation.relname = protected.relname
+     and relation.relnamespace = 'public'::regnamespace
+    left join pg_catalog.pg_roles owner_role on owner_role.oid = relation.relowner;
 
   if current_user <> 'supabase_admin'
-     and not coalesce(current_role_is_superuser, false) then
+     and not coalesce(current_role_is_superuser, false)
+     and not (session_user = 'postgres'
+       and current_user = 'postgres'
+       and coalesce(current_role_owns_protected_relations, false)) then
     raise exception 'CENTRAL_STUDIES_V2_007_OWNER_EXECUTOR_UNAVAILABLE'
       using errcode = '42501';
   end if;
