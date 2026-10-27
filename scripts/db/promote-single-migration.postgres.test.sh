@@ -599,7 +599,7 @@ docker exec "$db_container" psql -U postgres -d "$executor_database" -v ON_ERROR
         CHECK (publication_status IN ('STAGING', 'PUBLISHED'));" >/dev/null
 # Prove the database URL and CLI connection while the owner login is still a
 # superuser; the later non-superuser fixture models a hosted migration owner.
-if ! owner_connection_output="$("$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+if ! owner_connection_output="$(PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
   --db-url "$executor_owner_db_url" --agent yes --output-format json --log-level error \
   'select 1 as executor_owner_connection' 2>&1)"; then
   printf 'Supabase CLI owner connection failed before role modeling; sanitized diagnostics follow:\n' >&2
@@ -620,13 +620,13 @@ if ! docker exec --env "PGPASSWORD=$executor_password" "$db_container" \
 fi
 run_cli_identity_query() {
   local sql="$1"
-  "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
+  PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db query \
     --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
 }
 
 run_cli_identity_query_debug() {
   local sql="$1"
-  "$promotion_test_supabase_bin" --debug --workdir "$executor_fixture" db query \
+  PGSSLMODE=disable "$promotion_test_supabase_bin" --debug --workdir "$executor_fixture" db query \
     --db-url "$executor_db_url" --agent yes --output-format json --log-level error "$sql"
 }
 
@@ -720,7 +720,7 @@ fi
 assert_cli_executor_identity "$hook_identity" postgres
 
 set +e
-executor_push_output="$("$promotion_test_supabase_bin" --workdir "$executor_fixture" db push \
+executor_push_output="$(PGSSLMODE=disable "$promotion_test_supabase_bin" --workdir "$executor_fixture" db push \
   --db-url "$executor_db_url" --yes --log-level error 2>&1)"
 executor_push_status=$?
 set -e

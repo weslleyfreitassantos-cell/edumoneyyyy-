@@ -154,7 +154,33 @@ jobs:
         run: bash scripts/db/central-studies-v2-runtime-publication-owner.test.sh
 
       - name: Aplicar migrations em banco Linux
-        run: npx supabase db reset --local
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The 007 owner proof above models production's Supabase CLI executor:
+          # session_user=supabase_admin, current_user=postgres. A plain local
+          # `db reset` runs as postgres/postgres and correctly fails the migration
+          # guard, so rebuild through 006 then apply the remaining chain using the
+          # same authorized CLI owner context that was proven in the focused test.
+          npx supabase db reset --local --version 20261025000600 --no-seed
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          [[ -n "$db_container" ]]
+          owner_password='ci_owner_reset_probe_only_2026'
+          docker exec "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+            -c "ALTER ROLE supabase_admin LOGIN SUPERUSER PASSWORD '$owner_password';" >/dev/null
+          status_output="$(npx supabase status -o env)"
+          raw_db_url="$(printf '%s\n' "$status_output" | sed -n 's/^DB_URL=//p' | head -n 1 | sed -E "s/^[\\\"']//; s/[\\\"']$//")"
+          [[ -n "$raw_db_url" ]]
+          admin_db_url="$(BASE_DB_URL="$raw_db_url" ADMIN_PASSWORD="$owner_password" node - <<'NODE'
+          const url = new URL(process.env.BASE_DB_URL || '');
+          url.username = 'supabase_admin';
+          url.password = process.env.ADMIN_PASSWORD || '';
+          url.searchParams.set('sslmode', 'disable');
+          process.stdout.write(url.toString());
+          NODE
+          )"
+          PGSSLMODE=disable npx supabase --workdir "$GITHUB_WORKSPACE" db push \
+            --db-url "$admin_db_url" --yes --log-level error
 
       - name: Teste dinâmico isolado dos rascunhos de matrícula
         run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
