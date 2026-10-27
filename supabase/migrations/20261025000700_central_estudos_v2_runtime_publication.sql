@@ -308,6 +308,12 @@ using (exists (
        or set_row.teacher_profile_id = auth.uid())
 ));
 
+-- These tables are created and owned by the authenticated migration role.
+-- Document them before switching back to postgres for function ownership.
+comment on table public.learning_central_studies_v2_runtime is 'Materialized V4/V9 runtime mapping for an exact human-reviewed Central Studies V2 candidate fingerprint.';
+comment on table public.learning_central_studies_v2_institution_targets is 'Explicit per-institution subject authorization prepared before publication and active only while the candidate version is published.';
+comment on table public.learning_central_studies_v2_release_events is 'Append-only audit trail for V2 runtime integration, publication and institution enablement.';
+
 set role postgres;
 
 create or replace function private.central_studies_v2_journey_allowed(
@@ -1220,9 +1226,5 @@ grant execute on function public.get_central_studies_v2_release_status_v1(text, 
   public.set_central_studies_v2_institution_enabled_v1(text, text, text, uuid, uuid, boolean, text)
 to authenticated;
 grant execute on function public.review_central_studies_v2_candidate_v1(text, text, text, text, text, jsonb) to authenticated;
-
-comment on table public.learning_central_studies_v2_runtime is 'Materialized V4/V9 runtime mapping for an exact human-reviewed Central Studies V2 candidate fingerprint.';
-comment on table public.learning_central_studies_v2_institution_targets is 'Explicit per-institution subject authorization prepared before publication and active only while the candidate version is published.';
-comment on table public.learning_central_studies_v2_release_events is 'Append-only audit trail for V2 runtime integration, publication and institution enablement.';
 
 commit;
