@@ -206,6 +206,21 @@ jobs:
       - name: Lint das migrations
         run: npx supabase db lint --local --fail-on error
 
+      - name: Normalizar owners da migration 007 no banco descartável para diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/{print; exit}')"
+          [[ -n "$db_container" ]]
+          # The shadow migration executor is postgres, while the focused owner
+          # proof validates the production supabase_admin ownership. Normalize
+          # only these ephemeral comparison objects so db diff checks schema,
+          # not the expected executor-specific table owner difference.
+          docker exec "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
+            -c "ALTER TABLE public.learning_central_studies_v2_runtime OWNER TO postgres;
+                ALTER TABLE public.learning_central_studies_v2_institution_targets OWNER TO postgres;
+                ALTER TABLE public.learning_central_studies_v2_release_events OWNER TO postgres;" >/dev/null
+
       - name: Confirmar ausência de drift
         shell: bash
         run: |
