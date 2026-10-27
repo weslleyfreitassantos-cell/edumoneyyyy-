@@ -728,7 +728,7 @@ release_406_second_version=20261025000700
 release_406_second_file="$repo_root/supabase/migrations/${release_406_second_version}_central_estudos_v2_runtime_publication.sql"
 [[ -f "$release_406_second_file" ]]
 release_406_second_hash="$(sed 's/\r$//' "$release_406_second_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$release_406_second_hash" == 'd4cbeb0056a42c2f39cddee9b90e05954c50097a71919759f64cb54418a444f5' ]]
+[[ "$release_406_second_hash" == '8695132f39c8235875f84257324dafa6d05b6c1d3697b0a471959d9d969bf2cf' ]]
 release_406_second_ledger="$tmp/release-406-second-ledger"
 cat "$release_406_ledger" > "$release_406_second_ledger"
 printf '%s\n' "$release_406_version" >> "$release_406_second_ledger"
