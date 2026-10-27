@@ -120,7 +120,25 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+        shell: bash
+        run: |
+          set -euo pipefail
+          guarded_migration="supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
+          held_migration="$RUNNER_TEMP/$(basename "$guarded_migration").ci-hold"
+          mv "$guarded_migration" "$held_migration"
+          restore_guarded_migration() {
+            if [[ -f "$held_migration" ]]; then
+              mv "$held_migration" "$guarded_migration"
+            fi
+          }
+          trap restore_guarded_migration EXIT
+          # Supabase CLI boot applies the full migration directory as
+          # postgres/postgres. Keep 007 out only during stack boot; the focused
+          # owner proof below restores the file and applies it as the verified
+          # session supabase_admin / current postgres executor.
+          npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,studio,supavisor,vector
+          restore_guarded_migration
+          trap - EXIT
 
       - name: Provar baseline de produção mais a migration da PR #277
         run: npx supabase db reset --local --version 20261003001200 --no-seed
