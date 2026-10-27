@@ -1061,6 +1061,9 @@ export default function SchoolUsersTab({
           currentRole={
             institutionQuery.currentRole
           }
+          currentInstitutionRoles={
+            institutionQuery.currentInstitutionRoles
+          }
           profileRole={profile?.role}
           currentInstitutionName={
             institutionQuery.currentInstitution

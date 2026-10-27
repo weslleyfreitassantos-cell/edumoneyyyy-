@@ -60,6 +60,7 @@ interface InstitutionContextType {
   currentMembership: UserInstitutionMembership | null;
   currentInstitutionId: string | null;
   currentRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   resolutionState?: InstitutionResolutionState;
   isLoading: boolean;
   isSwitchingInstitution: boolean;
@@ -406,6 +407,8 @@ export function InstitutionProvider({
   }, [hostResolution.type, activeLink, resolutionState, subdomainInstitution]);
 
   const currentRole = activeLink?.effectiveRole ?? null;
+  const currentInstitutionRoles = activeLink?.activeMembershipRoles
+    ?? (activeLink?.membership?.active ? [activeLink.membership.role] : []);
 
   const selectAuthorizedInstitution = useCallback(
     async (
@@ -637,6 +640,7 @@ export function InstitutionProvider({
       currentMembership,
       currentInstitutionId,
       currentRole,
+      currentInstitutionRoles,
       resolutionState,
       isLoading:
         resolutionState === 'loading' ||
@@ -663,6 +667,7 @@ export function InstitutionProvider({
       currentInstitutionId,
       currentMembership,
       currentRole,
+      currentInstitutionRoles,
       institutions,
       institutionsQuery.error,
       institutionsQuery.isFetching,

@@ -17,12 +17,14 @@ describe('academic documents admin navigation', () => {
       label: 'Psicólogos',
       permission: 'manage_school_users',
       href: '/admin?module=psychologists',
-      allowedRoles: ['ADMIN', 'DIRECTOR', 'SECRETARY'],
+      allowedRoles: ['DIRECTOR', 'SECRETARY'],
     });
-    expect(isAdminModuleAvailable(module, 'ADMIN')).toBe(true);
+    expect(isAdminModuleAvailable(module, 'ADMIN')).toBe(false);
     expect(isAdminModuleAvailable(module, 'DIRECTOR')).toBe(true);
     expect(isAdminModuleAvailable(module, 'SECRETARY')).toBe(true);
     expect(isAdminModuleAvailable(module, 'PSYCHOLOGIST')).toBe(false);
+    expect(isAdminModuleAvailable(module, 'ADMIN', 'USER', undefined, ['DIRECTOR'])).toBe(true);
+    expect(isAdminModuleAvailable(module, 'ADMIN', 'USER', undefined, ['ADMIN'])).toBe(false);
   });
 
   it('registra relatórios acadêmicos somente para direção e secretaria', () => {
@@ -76,5 +78,12 @@ describe('academic documents admin navigation', () => {
     expect(isAdminModuleAvailable(module!, 'TEACHER')).toBe(false);
     expect(isAdminModuleAvailable(module!, 'STUDENT')).toBe(false);
     expect(isAdminModuleAvailable(module!, 'GUARDIAN')).toBe(false);
+  });
+
+  it('does not let the global SUPER_ADMIN role override a missing school staff role', () => {
+    const module = ADMIN_MODULES.find((item) => item.id === 'psychologists')!;
+
+    expect(isAdminModuleAvailable(module, 'ADMIN', 'SUPER_ADMIN')).toBe(false);
+    expect(isAdminModuleAvailable(module, 'ADMIN', 'SUPER_ADMIN', undefined, ['SECRETARY'])).toBe(true);
   });
 });
