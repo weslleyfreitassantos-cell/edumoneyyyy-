@@ -1,12 +1,15 @@
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courses as sourceCourses } from '../../content/languages/tec-idiomas-v3.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const generatedDir = path.join(root, 'content/languages/generated');
-const reportsDir = path.join(root, 'reports/tec-idiomas-v3');
+const privateRoot = process.env.TEC_IDIOMAS_V3_PRIVATE_DIR
+  ?? path.join(process.env.LOCALAPPDATA ?? tmpdir(), 'TecEscola', 'private', 'tec-idiomas-v3');
+const baselineSha = 'c99c30948104147da5a302514cae72b67758c226';
 const TYPES = ['MULTIPLE_CHOICE', 'WORD_ORDER', 'TRANSLATION', 'LISTENING', 'MATCHING', 'FILL_BLANK', 'SPEAKING'];
 const AUTHOR = 'Equipe de conteúdo Tec Escola';
 
@@ -62,13 +65,10 @@ function makeExercise(lesson, unit, course, index) {
     author: AUTHOR, content_version: course.version, publication_status: 'STAGING',
     review_status: 'PEDAGOGICAL_REVIEW_PENDING',
   };
-  const dialogue = [
-    { speaker: lesson.dialogueSpeaker, text: lesson.dialogueQuestion },
-    { speaker: 'Você', text: lesson.dialogueAnswer },
-  ];
+  const dialogue = [{ speaker: lesson.dialogueSpeaker, text: lesson.dialogueQuestion }];
   switch (index) {
     case 0:
-      return { ...common, exercise_type: 'MULTIPLE_CHOICE', instruction: 'Escolha a resposta que combina com a conversa.', prompt: lesson.dialogueQuestion, options: lesson.dialogueOptions, accepted_answers: [lesson.dialogueAnswer], answer_key: { accepted: [lesson.dialogueAnswer] }, explanation: `Na conversa, a resposta adequada é: “${lesson.dialogueAnswer}”.`, dialogue_speaker: lesson.dialogueSpeaker, dialogue_context: dialogue };
+      return { ...common, exercise_type: 'MULTIPLE_CHOICE', instruction: 'Leia a conversa e escolha a resposta adequada à situação.', prompt: lesson.dialoguePrompt, options: lesson.dialogueOptions, accepted_answers: [lesson.dialogueAnswer], answer_key: { accepted: [lesson.dialogueAnswer] }, explanation: `A resposta escolhida deve atender à situação descrita. ${lesson.objective}`, dialogue_speaker: null, dialogue_context: dialogue };
     case 1:
       return { ...common, exercise_type: 'WORD_ORDER', instruction: 'Organize as palavras para formar a frase no idioma estudado.', prompt: `Monte: “${lesson.orderPt}”`, word_bank: wordBank(lesson.orderAnswer, id), accepted_answers: [lesson.orderAnswer], answer_key: { accepted: [lesson.orderAnswer] }, explanation: `Uma forma correta é “${lesson.orderAnswer}”. ${lesson.objective}` };
     case 2:
@@ -81,8 +81,10 @@ function makeExercise(lesson, unit, course, index) {
       const right = rotate(entries.map(([, meaning]) => meaning), 1);
       return { ...common, exercise_type: 'MATCHING', instruction: 'Associe cada expressão ao significado correto em português.', prompt: `Associe: ${left.join(', ')}.`, left_items: left, right_items: right, answer_key: { pairs: lesson.pairs }, explanation: `Pares corretos: ${entries.map(([term, meaning]) => `${term} = ${meaning}`).join('; ')}.` };
     }
-    case 5:
-      return { ...common, exercise_type: 'FILL_BLANK', instruction: 'Escolha a palavra que completa a frase.', prompt: lesson.fillPrompt, options: lesson.fillOptions, accepted_answers: [lesson.fillAnswer], answer_key: { accepted: [lesson.fillAnswer] }, explanation: lesson.fillExplanation };
+    case 5: {
+      const accepted = Array.isArray(lesson.fillAnswer) ? lesson.fillAnswer : [lesson.fillAnswer];
+      return { ...common, exercise_type: 'FILL_BLANK', instruction: 'Escolha a palavra que completa a frase.', prompt: lesson.fillPrompt, options: lesson.fillOptions, accepted_answers: accepted, answer_key: { accepted }, explanation: lesson.fillExplanation };
+    }
     default:
       return { ...common, exercise_type: 'SPEAKING', instruction: 'Leia a frase em voz alta. Se o navegador não oferecer voz, digite-a para continuar.', prompt: `Pratique a frase: “${lesson.orderAnswer}”`, audio_text: lesson.orderAnswer, accepted_answers: [lesson.orderAnswer], answer_key: { accepted: [lesson.orderAnswer] }, explanation: `Fale a frase com calma e confira sua estrutura: “${lesson.orderAnswer}”.` };
   }
@@ -149,7 +151,13 @@ export function validateCourses(compiled = compileCourses()) {
           if (!/^[a-z][a-z0-9_]{2,63}$/.test(exercise.skill_code)) errors.push(`${exercise.id}: skill_code inválido ${exercise.skill_code}.`);
           if (exercise.difficulty_level < 1 || exercise.difficulty_level > 5) errors.push(`${exercise.id}: dificuldade fora de 1–5.`);
           if (exercise.exercise_type === 'MULTIPLE_CHOICE' && (!exercise.options.includes(exercise.answer_key.accepted?.[0]) || exercise.options.length < 3)) errors.push(`${exercise.id}: gabarito da conversa não está nas alternativas.`);
-          if (exercise.exercise_type === 'FILL_BLANK' && (!exercise.options.includes(exercise.answer_key.accepted?.[0]) || exercise.options.length < 3)) errors.push(`${exercise.id}: gabarito de completar não está nas alternativas.`);
+          if (exercise.exercise_type === 'MULTIPLE_CHOICE') {
+            const normalizeDialogue = (value) => String(value ?? '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+            const priorDialogue = normalizeDialogue(exercise.dialogue_context.map((turn) => turn.text).join(' '));
+            const leaksAnswer = (exercise.answer_key.accepted ?? []).some((answer) => normalizeDialogue(answer) && priorDialogue.includes(normalizeDialogue(answer)));
+            if (exercise.dialogue_context.length !== 1 || !exercise.dialogue_context[0]?.text || leaksAnswer) errors.push(`${exercise.id}: diálogo pré-resposta ausente ou revela o gabarito.`);
+          }
+          if (exercise.exercise_type === 'FILL_BLANK' && (!exercise.answer_key.accepted?.length || exercise.answer_key.accepted.some((answer) => !exercise.options.includes(answer)) || exercise.options.length < 3)) errors.push(`${exercise.id}: respostas aceitas de completar precisam estar nas alternativas.`);
           if (exercise.exercise_type === 'WORD_ORDER' && (exercise.word_bank.length < 2 || exercise.word_bank.join(' ') === exercise.answer_key.accepted?.[0])) errors.push(`${exercise.id}: banco de palavras ausente ou já ordenado.`);
           if (exercise.exercise_type === 'MATCHING' && (exercise.left_items.length < 2 || exercise.left_items.length !== exercise.right_items.length || Object.keys(exercise.answer_key.pairs ?? {}).length !== exercise.left_items.length)) errors.push(`${exercise.id}: associação incompleta.`);
           if (exercise.exercise_type === 'LISTENING' && (!exercise.audio_text || !exercise.answer_key.accepted?.length)) errors.push(`${exercise.id}: escuta sem áudio textual ou resposta.`);
@@ -244,8 +252,164 @@ export function generateInsertSql(compiled = compileCourses()) {
   return lines.join('\n');
 }
 
-function reviewQuestionRows(course) {
-  return course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => ({
+function flattenForCorrection(compiled) {
+  const lessons = [];
+  const exercises = [];
+  for (const course of compiled) for (const unit of course.units) for (const lesson of unit.lessons) {
+    lessons.push({ course_code: course.course.code, ...lesson });
+    for (const exercise of lesson.exercises) exercises.push({ course_code: course.course.code, lesson_id: lesson.id, ...exercise });
+  }
+  return { lessons, exercises };
+}
+
+function correctionSqlValue(column, value) {
+  return ['options', 'word_bank', 'left_items', 'right_items', 'accepted_answers', 'answer_key', 'dialogue_context'].includes(column)
+    ? sqlJson(value)
+    : sqlString(value);
+}
+
+function correctionRowMatches(table, idColumn, id, columns, row) {
+  const values = columns.map((column) => correctionSqlValue(column, row[column])).join(', ');
+  return `exists (select 1 from ${table} where ${idColumn} = ${sqlString(id)} and row(${columns.join(', ')}) is not distinct from row(${values}))`;
+}
+
+function correctionUpdate(table, idColumn, id, columns, before, after) {
+  const changedColumns = columns.filter((column) => stable(before[column]) !== stable(after[column]));
+  if (!changedColumns.length) return '';
+  const compareColumns = columns;
+  const beforeRow = compareColumns.map((column) => correctionSqlValue(column, before[column])).join(', ');
+  const afterRow = compareColumns.map((column) => correctionSqlValue(column, after[column])).join(', ');
+  const assignments = changedColumns.map((column) => `${column} = ${correctionSqlValue(column, after[column])}`).join(', ');
+  return [
+    `    if ${correctionRowMatches(table, idColumn, id, compareColumns, after)} then`,
+    '      null; -- already corrected; safe re-run',
+    `    elsif exists (select 1 from ${table} where ${idColumn} = ${sqlString(id)} and row(${compareColumns.join(', ')}) is not distinct from row(${beforeRow})) then`,
+    `      update ${table} set ${assignments} where ${idColumn} = ${sqlString(id)};`,
+    '      get diagnostics v_updated = row_count;',
+    "      if v_updated <> 1 then raise exception 'TEC_IDIOMAS_V3_CORRECTION_ROW_COUNT'; end if;",
+    `    else raise exception 'TEC_IDIOMAS_V3_CORRECTION_DRIFT:${id}'; end if;`,
+  ].join('\n');
+}
+
+export function generateCorrectionSql(previousCourses, currentCourses = compileCourses(), { expectedProductionFingerprints = {} } = {}) {
+  const oldRows = flattenForCorrection(previousCourses);
+  const newRows = flattenForCorrection(currentCourses);
+  const oldExercises = new Map(oldRows.exercises.map((row) => [row.id, row]));
+  const oldLessons = new Map(oldRows.lessons.map((row) => [row.id, row]));
+  const currentLessons = new Map(newRows.lessons.map((row) => [row.id, row]));
+  const currentExercises = new Map(newRows.exercises.map((row) => [row.id, row]));
+  const exerciseColumns = ['lesson_id','position','exercise_type','instruction','prompt','options','word_bank','left_items','right_items','audio_text','accepted_answers','answer_key','explanation','content_version','author','publication_status','review_status','skill_code','difficulty_level','dialogue_speaker','dialogue_context'];
+  const lessonColumns = ['unit_id','position','title','introduction','xp_reward','content_version','author','publication_status','review_status'];
+  const changedExerciseRows = [...currentExercises.values()].filter((row) => stable(oldExercises.get(row.id)) !== stable(row));
+  const changedLessonRows = [...currentLessons.values()].filter((row) => stable(oldLessons.get(row.id)) !== stable(row));
+  const expectedCodes = currentCourses.map((course) => course.course.code).sort();
+  const suppliedCodes = Object.keys(expectedProductionFingerprints).sort();
+  if (JSON.stringify(expectedCodes) !== JSON.stringify(suppliedCodes)) {
+    throw new Error(`Os fingerprints esperados devem corresponder exatamente aos cursos desta correção: ${expectedCodes.join(', ')}`);
+  }
+  for (const course of currentCourses) {
+    if (!/^[a-f0-9]{32}$/.test(expectedProductionFingerprints[course.course.code] ?? '')) {
+      throw new Error(`Falta o fingerprint de produção lido para ${course.course.code}; o SQL de correção não pode ser preparado sem esse precheck.`);
+    }
+  }
+  const changedLessonIds = [...new Set([...changedExerciseRows.map((row) => row.lesson_id), ...changedLessonRows.map((row) => row.id)])];
+  const courseRows = currentCourses.map((course) => {
+    const code = course.course.code;
+    const expectedLessons = newRows.lessons.filter((row) => row.course_code === code);
+    const expectedExercises = newRows.exercises.filter((row) => row.course_code === code);
+    const expectedUnits = course.units.map((unit) => ({ course_code: code, ...unit }));
+    const courseColumns = ['content_version','title','description','author','xp_per_lesson'];
+    const unitColumns = ['course_code','position','title','description','content_version','author','publication_status','review_status'];
+    const expectedCourse = { ...course.course, content_version: course.course.version };
+    const afterStates = [
+      correctionRowMatches('public.tec_english_courses', 'course_code', code, courseColumns, expectedCourse),
+      ...expectedUnits.map((row) => correctionRowMatches('public.tec_english_units', 'id', row.id, unitColumns, row)),
+      ...expectedLessons.map((row) => correctionRowMatches('public.tec_english_lessons', 'id', row.id, lessonColumns, row)),
+      ...expectedExercises.map((row) => correctionRowMatches('public.tec_english_exercises', 'id', row.id, exerciseColumns, row)),
+      `(select count(*) from public.tec_english_units where course_code = ${sqlString(code)}) = ${expectedUnits.length}`,
+      `(select count(*) from public.tec_english_lessons lesson join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = ${sqlString(code)}) = ${expectedLessons.length}`,
+      `(select count(*) from public.tec_english_exercises exercise join public.tec_english_lessons lesson on lesson.id = exercise.lesson_id join public.tec_english_units unit on unit.id = lesson.unit_id where unit.course_code = ${sqlString(code)}) = ${expectedExercises.length}`,
+    ];
+    const allAfter = afterStates.join(' and ');
+    const expectedFingerprint = expectedProductionFingerprints[code];
+    return `    perform 1 from public.tec_english_courses where course_code = ${sqlString(code)} and content_version = ${course.course.version} and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false for update;\n    if not found then raise exception 'TEC_IDIOMAS_V3_COURSE_STATE:${code}'; end if;\n    v_fingerprint := private.tec_english_course_fingerprint(${sqlString(code)}, ${course.course.version});\n    if v_fingerprint <> ${sqlString(expectedFingerprint)} and not (${allAfter}) then raise exception 'TEC_IDIOMAS_V3_COURSE_FINGERPRINT_DRIFT:${code}'; end if;`;
+  });
+  const reviewGuards = currentCourses.map((course) => `    if exists (select 1 from public.tec_english_pedagogical_reviews where course_code = ${sqlString(course.course.code)} and content_version = ${course.course.version}) then raise exception 'TEC_IDIOMAS_V3_REVIEW_EXISTS:${course.course.code}'; end if;\n    if exists (select 1 from public.tec_english_course_releases where course_code = ${sqlString(course.course.code)} and content_version = ${course.course.version}) then raise exception 'TEC_IDIOMAS_V3_RELEASE_EXISTS:${course.course.code}'; end if;\n    if exists (select 1 from public.tec_english_course_release_events where course_code = ${sqlString(course.course.code)} and content_version = ${course.course.version}) then raise exception 'TEC_IDIOMAS_V3_RELEASE_EVENT_EXISTS:${course.course.code}'; end if;`).join('\n');
+  const progressGuard = changedLessonIds.length ? `    if exists (select 1 from public.tec_english_lesson_sessions where lesson_id = any(array[${changedLessonIds.map(sqlString).join(', ')}]::text[])) or exists (select 1 from public.tec_english_lesson_progress where lesson_id = any(array[${changedLessonIds.map(sqlString).join(', ')}]::text[])) or exists (select 1 from public.tec_english_answer_attempts where exercise_id = any(array[${changedExerciseRows.map((row) => sqlString(row.id)).join(', ')}]::text[])) then raise exception 'TEC_IDIOMAS_V3_STUDENT_PROGRESS_EXISTS'; end if;` : '';
+  const updates = [
+    ...changedLessonRows.map((row) => correctionUpdate('public.tec_english_lessons', 'id', row.id, lessonColumns, oldLessons.get(row.id), row)),
+    ...changedExerciseRows.map((row) => correctionUpdate('public.tec_english_exercises', 'id', row.id, exerciseColumns, oldExercises.get(row.id), row)),
+  ].filter(Boolean).join('\n');
+  return [
+    '-- PRIVATE CONTENT CORRECTION. Review the exact course/version/fingerprint and student activity before any use.',
+    '-- Transaction is fail-closed and re-runnable only when rows are exactly at the before or after snapshot.',
+    'begin;',
+    'set local lock_timeout = \'5s\';',
+    'set local statement_timeout = \'30s\';',
+    'lock table public.tec_english_courses, public.tec_english_lessons, public.tec_english_exercises, public.tec_english_pedagogical_reviews, public.tec_english_course_releases, public.tec_english_course_release_events, public.tec_english_lesson_sessions, public.tec_english_lesson_progress, public.tec_english_answer_attempts in share row exclusive mode;',
+    'do $tec_idiomas_v3_correction$',
+    'declare v_updated integer; v_fingerprint text;',
+    'begin',
+    ...courseRows,
+    reviewGuards,
+    progressGuard,
+    updates || '    null;',
+    'end $tec_idiomas_v3_correction$;',
+    'commit;',
+    '',
+  ].join('\n');
+}
+
+function loadBaselineCourses() {
+  const stemByCode = new Map([
+    ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', 'tec-english-foundations-v2-expansion'],
+    ['TEC_SPANISH_FOUNDATIONS_V1', 'tec-spanish-foundations-v1'],
+    ['TEC_KOREAN_FOUNDATIONS_V1', 'tec-korean-foundations-v1'],
+  ]);
+  return [...stemByCode].map(([code, stem]) => {
+    const file = `content/languages/generated/${stem}.json`;
+    const json = execFileSync('git', ['show', `${process.env.TEC_IDIOMAS_V3_BASELINE_SHA ?? baselineSha}:${file}`], { cwd: root, encoding: 'utf8' });
+    const course = JSON.parse(json);
+    if (course.course.code !== code) throw new Error(`Baseline inesperado para ${code}`);
+    return course;
+  });
+}
+
+const specificAuditFindings = {
+  'en-v2x-u1-l1-e6': [{ severity: 'P2', issue: 'A frase aceitava passagem só de ida e de ida e volta sem uma pista que distinguisse as duas.', correction: 'Acrescentada a pista “I will only travel one way.” e alternativas contrastivas.' }],
+  'en-v2x-u1-l2-e6': [{ severity: 'P2', issue: 'Catch e board são respostas naturais para “___ the bus”; o gabarito reconhecia apenas catch.', correction: 'Ambas as respostas válidas agora são aceitas e as alternativas foram ajustadas.' }],
+  'en-v2x-u4-l4-e3': [{ severity: 'P2', issue: '“Change to the next time” não era uma formulação natural em inglês neste contexto.', correction: 'Substituída por “change/switch to the next available time”.' }],
+  'es-v1-u1-l1-e4': [{ severity: 'P2', issue: 'O áudio começava com duas saudações, tornando ambígua a pergunta sobre a saudação inicial.', correction: 'O áudio agora começa apenas com “Buenos días” e a pergunta identifica a saudação de horário.' }],
+  'es-v1-u1-l2-e6': [{ severity: 'P2', issue: '“Me ___ Laura” permitia mais de uma leitura sem contexto suficiente.', correction: 'O enunciado agora explicita que a pessoa vai informar o próprio nome.' }],
+  'es-v1-u1-l4-e2': [{ severity: 'P3', issue: '“Un agua” é possível em alguns pedidos, mas não ensinava claramente a unidade para iniciante.', correction: 'Reescrita como “Un vaso de agua, por favor.”' }],
+  'es-v1-u1-l4-e7': [{ severity: 'P3', issue: 'A prática oral herdava a formulação ambígua do pedido de água.', correction: 'A frase oral foi atualizada junto com o modelo de pedido.' }],
+  'ko-v1-u1-l1-e4': [{ severity: 'P2', issue: 'A tradução literal “vá em paz” não é uma equivalência natural de despedida em português.', correction: 'Atualizada para “tchau (dito a quem está indo embora)”.' }],
+  'ko-v1-u1-l1-e5': [{ severity: 'P2', issue: 'O par de significado repetia a tradução literal pouco natural.', correction: 'O significado correspondente foi atualizado para a despedida contextual.' }],
+  'ko-v1-u2-l2-e3': [{ severity: 'P2', issue: 'O enunciado em português misturava a palavra coreana escrita em Hangul sem transliteração.', correction: 'O prompt agora diz “um gimbap” em português; a resposta continua em Hangul.' }],
+  'ko-v1-u2-l3-e1': [{ severity: 'P2', issue: 'A pista em português descrevia seguir em frente e depois virar à esquerda, mas a resposta coreana indicava apenas deslocar-se para a esquerda.', correction: 'A resposta correta agora diz 쭉 가다가 왼쪽으로 도세요. (“Siga em frente e depois vire à esquerda”), com distratores de direção oposta ou retorno.' }],
+};
+
+function auditQuestion(row) {
+  if (row.change_status !== 'CHANGED') return {
+    exercise_id: row.exercise_id, severity: 'NONE_FOUND', status: 'TECHNICAL_REVIEW_COMPLETE_HUMAN_REVIEW_PENDING',
+    findings: [], proposed_correction: null, human_review_required: true,
+  };
+  const findings = [...(specificAuditFindings[row.exercise_id] ?? [])];
+  if (row.type === 'MULTIPLE_CHOICE') {
+    findings.unshift({ severity: 'P1', issue: 'O contexto exibido antes da resposta já continha o turno esperado e revelava o gabarito.', correction: 'Removido o turno de resposta; o contexto contém somente a fala anterior.' });
+    findings.push({ severity: 'P3', issue: 'Os distratores anteriores eram distantes da situação e não avaliavam bem a escolha de resposta.', correction: 'Alternativas substituídas por respostas próximas e plausíveis; o prompt descreve a condição que diferencia a correta.' });
+  }
+  if (row.exercise_id === 'ko-v1-u1-l1-e1') findings.push({ severity: 'P2', issue: 'A resposta anterior misturava registro formal e informal.', correction: 'A resposta foi harmonizada para a forma educada “반갑습니다”.' });
+  return {
+    exercise_id: row.exercise_id, severity: findings[0]?.severity ?? 'P3', status: 'CORRECTED_BEFORE_HUMAN_REVIEW',
+    findings, proposed_correction: row.before_after, human_review_required: true,
+  };
+}
+
+function reviewQuestionRows(course, previousCourse = null) {
+  const previousById = new Map((previousCourse ? reviewQuestionRows(previousCourse) : []).map((row) => [row.exercise_id, row]));
+  return course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => {
+    const row = {
     course_code: course.course.code, language_code: course.course.languageCode, content_version: course.course.version,
     unit: unit.title, lesson_id: lesson.id, lesson: lesson.title, objective: lesson.introduction.split('\n\n')[0].replace(/^Objetivo: /, ''),
     exercise_id: exercise.id, position: exercise.position, type: exercise.exercise_type, instruction: exercise.instruction,
@@ -253,7 +417,14 @@ function reviewQuestionRows(course) {
     right_items: exercise.right_items, accepted_answers: exercise.accepted_answers, answer_key: exercise.answer_key,
     explanation: exercise.explanation, skill_code: exercise.skill_code, difficulty_level: exercise.difficulty_level,
     audio_text: exercise.audio_text, dialogue_speaker: exercise.dialogue_speaker, dialogue_context: exercise.dialogue_context,
-  }))));
+    };
+    const contentFingerprint = sha256(stable(row));
+    const previous = previousById.get(row.exercise_id);
+    const changed = Boolean(previous && previous.content_fingerprint !== contentFingerprint);
+    const previousValues = previous ? Object.fromEntries(Object.keys(row).filter((key) => stable(row[key]) !== stable(previous[key])).map((key) => [key, previous[key]])) : null;
+    const currentValues = changed ? Object.fromEntries(Object.keys(row).filter((key) => stable(row[key]) !== stable(previous[key])).map((key) => [key, row[key]])) : null;
+    return { ...row, content_fingerprint: contentFingerprint, previous_fingerprint: previous?.content_fingerprint ?? null, change_status: changed ? 'CHANGED' : 'UNCHANGED', before_after: changed ? { before: previousValues, after: currentValues } : null };
+  })));
 }
 
 function htmlEscape(value) {
@@ -262,12 +433,19 @@ function htmlEscape(value) {
 
 function buildReviewHtml(course, rows) {
   const embedded = JSON.stringify(rows).replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026').replaceAll('</script', '<\\/script');
-  return `<!doctype html>
+  let html = `<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Revisão offline — ${htmlEscape(course.course.title)}</title>
 <style> :root{font:16px/1.5 system-ui,Segoe UI,sans-serif;color:#13253d;background:#f3f7fc}body{margin:0}header{position:sticky;top:0;background:#fff;border-bottom:1px solid #cbd7e7;padding:1rem 2vw;z-index:2}h1{font-size:1.5rem;margin:.1rem 0}.meta{color:#405b79;font-size:.9rem}.controls{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}input,select,button{font:inherit;padding:.55rem .7rem;border:1px solid #b7c7da;border-radius:.55rem;background:white}button{cursor:pointer;font-weight:700}button[data-decision="APPROVE"]{border-color:#087a49;color:#087a49}button[data-decision="REQUEST_CHANGES"]{border-color:#a75a00;color:#8a4b00}button[data-decision="REJECT"]{border-color:#a52638;color:#a52638}main{max-width:1100px;margin:auto;padding:1rem}.question{background:#fff;border:1px solid #ced9e7;border-radius:.9rem;margin:1rem 0;padding:1rem;break-inside:avoid}.question h2{font-size:1.1rem;margin:.3rem 0}.pill{display:inline-block;background:#eaf2fc;border-radius:99px;padding:.15rem .5rem;margin:.1rem;font-size:.78rem}.answer{border-left:4px solid #087a49;background:#f0faf5;padding:.6rem;margin:.6rem 0}.note{width:min(100%,700px);min-height:3.4rem;display:block;margin:.6rem 0}.hidden{display:none}.actions{display:flex;flex-wrap:wrap;gap:.4rem}.status{font-weight:800}.status[data-state="APPROVE"]{color:#087a49}.status[data-state="REQUEST_CHANGES"]{color:#8a4b00}.status[data-state="REJECT"]{color:#a52638}.small{font-size:.82rem;color:#405b79} @media print{header{position:static}.controls,.actions,.note{display:none!important}.question{box-shadow:none;page-break-inside:avoid}body{background:#fff}}</style></head><body>
 <header><h1>${htmlEscape(course.course.title)}</h1><div class="meta">${htmlEscape(course.course.code)} · versão ${course.course.version} · ${rows.length} exercícios · SHA-256 ${course.manifest.content_fingerprint}</div>
 <div class="controls"><input id="search" type="search" placeholder="Pesquisar questão, lição ou habilidade"><select id="type"><option value="">Todos os tipos</option>${TYPES.map((type) => `<option>${type}</option>`).join('')}</select><select id="decision"><option value="">Todas as decisões</option><option value="NOT_REVIEWED">Não revisada</option><option value="APPROVE">Aprovada visualmente</option><option value="REQUEST_CHANGES">Solicitar alteração</option><option value="REJECT">Rejeitada</option></select><button id="export-json">Exportar decisões JSON</button><button id="export-md">Exportar Markdown</button><button onclick="window.print()">Imprimir</button></div><p class="small">Revisão offline. Nenhuma decisão é enviada ao sistema. Todas as questões começam como NÃO REVISADA. A revisão técnica/ChatGPT não substitui a aprovação pedagógica humana.</p></header><main id="list"></main>
-<script>const rows=${embedded};const key='tec-idiomas-v3-review:${htmlEscape(course.course.code)}:${course.course.version}';let state=JSON.parse(localStorage.getItem(key)||'{}');const list=document.querySelector('#list');function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function fmt(v){return Array.isArray(v)?v.join(' · '):typeof v==='object'?JSON.stringify(v):String(v??'—')}function render(){const q=document.querySelector('#search').value.toLocaleLowerCase();const type=document.querySelector('#type').value;const decision=document.querySelector('#decision').value;list.innerHTML='';for(const r of rows){const s=state[r.exercise_id]||{decision:'NOT_REVIEWED',notes:''};const hay=[r.unit,r.lesson,r.exercise_id,r.prompt,r.instruction,r.skill_code,r.audio_text,JSON.stringify(r.dialogue_context)].join(' ').toLocaleLowerCase();if((q&&!hay.includes(q))||(type&&r.type!==type)||(decision&&s.decision!==decision))continue;const article=document.createElement('article');article.className='question';article.dataset.type=r.type;article.innerHTML='<div><span class="pill">'+esc(r.unit)+'</span><span class="pill">'+esc(r.lesson)+'</span><span class="pill">'+esc(r.type)+'</span><span class="pill">Dificuldade '+r.difficulty_level+'</span><span class="pill">'+esc(r.skill_code)+'</span></div><div class="small">ID '+esc(r.exercise_id)+' · Objetivo: '+esc(r.objective)+'</div><p><b>'+esc(r.instruction)+'</b></p><h2>'+esc(r.prompt)+'</h2><p>Alternativas/banco: '+esc(fmt(r.options.length?r.options:r.word_bank))+'</p><p>Pares: '+esc(fmt({left:r.left_items,right:r.right_items}))+'</p><p>Áudio: '+esc(r.audio_text||'—')+'</p><p>Diálogo: '+esc(fmt(r.dialogue_context))+'</p><div class="answer"><b>Gabarito:</b> '+esc(fmt(r.answer_key))+'<br><b>Respostas aceitas:</b> '+esc(fmt(r.accepted_answers))+'<br><b>Explicação:</b> '+esc(r.explanation)+'</div><p class="status" data-state="'+esc(s.decision)+'">Decisão: '+(s.decision==='NOT_REVIEWED'?'NÃO REVISADA':esc(s.decision))+'</p><textarea class="note" aria-label="Observações para '+esc(r.exercise_id)+'" placeholder="Observações da revisão">'+esc(s.notes)+'</textarea><div class="actions"><button data-decision="APPROVE">Aprovar</button><button data-decision="REQUEST_CHANGES">Solicitar correção</button><button data-decision="REJECT">Rejeitar</button></div>';article.querySelectorAll('[data-decision]').forEach(b=>b.addEventListener('click',()=>{state[r.exercise_id]={decision:b.dataset.decision,notes:article.querySelector('textarea').value};localStorage.setItem(key,JSON.stringify(state));render()}));article.querySelector('textarea').addEventListener('input',e=>{state[r.exercise_id]={...(state[r.exercise_id]||{decision:'NOT_REVIEWED'}),notes:e.target.value};localStorage.setItem(key,JSON.stringify(state))});list.append(article)}if(!list.children.length)list.textContent='Nenhum exercício corresponde aos filtros.'}function download(name,type,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}document.querySelectorAll('#search,#type,#decision').forEach(e=>e.addEventListener('input',render));document.querySelector('#export-json').onclick=()=>download('revisao-${course.course.code}-v${course.course.version}.json','application/json',JSON.stringify({course:'${course.course.code}',version:${course.course.version},fingerprint:'${course.manifest.content_fingerprint}',decisions:state},null,2));document.querySelector('#export-md').onclick=()=>download('revisao-${course.course.code}-v${course.course.version}.md','text/markdown',rows.map(r=>{const s=state[r.exercise_id]||{decision:'NOT_REVIEWED',notes:''};return '## '+r.lesson+' — '+r.exercise_id+'\n\n**Tipo:** '+r.type+' · **Habilidade:** '+r.skill_code+' · **Dificuldade:** '+r.difficulty_level+'\n\n**Questão:** '+r.prompt+'\n\n**Gabarito:** '+JSON.stringify(r.answer_key)+'\n\n**Explicação:** '+r.explanation+'\n\n**Decisão:** '+s.decision+'\n\n**Observações:** '+(s.notes||'')}).join('\n\n---\n\n'));render();</script></main></body></html>`;
+<script>const rows=${embedded};const key='tec-idiomas-v3-review:${htmlEscape(course.course.code)}:${course.course.version}';let state=JSON.parse(localStorage.getItem(key)||'{}');const list=document.querySelector('#list');function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function fmt(v){return Array.isArray(v)?v.join(' · '):typeof v==='object'?JSON.stringify(v):String(v??'—')}function render(){const q=document.querySelector('#search').value.toLocaleLowerCase();const type=document.querySelector('#type').value;const decision=document.querySelector('#decision').value;list.innerHTML='';for(const r of rows){const s=state[r.exercise_id]||{decision:'NOT_REVIEWED',notes:''};const hay=[r.unit,r.lesson,r.exercise_id,r.prompt,r.instruction,r.skill_code,r.audio_text,JSON.stringify(r.dialogue_context)].join(' ').toLocaleLowerCase();if((q&&!hay.includes(q))||(type&&r.type!==type)||(decision&&s.decision!==decision))continue;const article=document.createElement('article');article.className='question';article.dataset.type=r.type;article.innerHTML='<div><span class="pill">'+esc(r.unit)+'</span><span class="pill">'+esc(r.lesson)+'</span><span class="pill">'+esc(r.type)+'</span><span class="pill">Dificuldade '+r.difficulty_level+'</span><span class="pill">'+esc(r.skill_code)+'</span></div><div class="small">ID '+esc(r.exercise_id)+' · Objetivo: '+esc(r.objective)+'</div><p><b>'+esc(r.instruction)+'</b></p><h2>'+esc(r.prompt)+'</h2><p>Alternativas/banco: '+esc(fmt(r.options.length?r.options:r.word_bank))+'</p><p>Pares: '+esc(fmt({left:r.left_items,right:r.right_items}))+'</p><p>Áudio: '+esc(r.audio_text||'—')+'</p><p>Diálogo: '+esc(fmt(r.dialogue_context))+'</p>'+(r.change_status==='CHANGED'?'<section class="change"><b>ALTERADO · '+esc(r.exercise_id)+'</b><pre>'+esc(JSON.stringify(r.before_after,null,2))+'</pre></section>':'')+(r.audit.findings.length?'<section class="audit"><b>Achados automáticos · '+esc(r.audit.severity)+'</b>'+r.audit.findings.map(f=>'<p><b>'+esc(f.issue)+'</b><br>Proposta: '+esc(f.correction)+'</p>').join('')+'</section>':'<p class="small">Nenhum defeito concreto encontrado nesta triagem; revisão humana necessária.</p>')+'<div class="answer"><b>Gabarito:</b> '+esc(fmt(r.answer_key))+'<br><b>Respostas aceitas:</b> '+esc(fmt(r.accepted_answers))+'<br><b>Explicação:</b> '+esc(r.explanation)+'</div><p class="status" data-state="'+esc(s.decision)+'">Decisão: '+(s.decision==='NOT_REVIEWED'?'NÃO REVISADA':esc(s.decision))+'</p><textarea class="note" aria-label="Observações para '+esc(r.exercise_id)+'" placeholder="Observações da revisão">'+esc(s.notes)+'</textarea><div class="actions"><button data-decision="APPROVE">Aprovar</button><button data-decision="REQUEST_CHANGES">Solicitar correção</button><button data-decision="REJECT">Rejeitar</button></div>';article.querySelectorAll('[data-decision]').forEach(b=>b.addEventListener('click',()=>{state[r.exercise_id]={decision:b.dataset.decision,notes:article.querySelector('textarea').value};localStorage.setItem(key,JSON.stringify(state));render()}));article.querySelector('textarea').addEventListener('input',e=>{state[r.exercise_id]={...(state[r.exercise_id]||{decision:'NOT_REVIEWED'}),notes:e.target.value};localStorage.setItem(key,JSON.stringify(state))});list.append(article)}if(!list.children.length)list.textContent='Nenhum exercício corresponde aos filtros.'}function download(name,type,content){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}document.querySelectorAll('#search,#type,#decision').forEach(e=>e.addEventListener('input',render));document.querySelector('#export-json').onclick=()=>download('revisao-${course.course.code}-v${course.course.version}.json','application/json',JSON.stringify({course:'${course.course.code}',version:${course.course.version},fingerprint:'${course.manifest.content_fingerprint}',decisions:state},null,2));document.querySelector('#export-md').onclick=()=>download('revisao-${course.course.code}-v${course.course.version}.md','text/markdown',rows.map(r=>{const s=state[r.exercise_id]||{decision:'NOT_REVIEWED',notes:''};return '## '+r.lesson+' — '+r.exercise_id+'\n\n**Tipo:** '+r.type+' · **Habilidade:** '+r.skill_code+' · **Dificuldade:** '+r.difficulty_level+'\n\n**Questão:** '+r.prompt+'\n\n**Gabarito:** '+JSON.stringify(r.answer_key)+'\n\n**Explicação:** '+r.explanation+'\n\n**Decisão:** '+s.decision+'\n\n**Observações:** '+(s.notes||'')}).join('\n\n---\n\n'));render();</script></main></body></html>`;
+  const previousFingerprints = JSON.stringify(Object.fromEntries(rows.map((row) => [row.exercise_id, row.previous_fingerprint])));
+  html = html.replace("let state=JSON.parse(localStorage.getItem(key)||'{}');", "const saved=JSON.parse(localStorage.getItem(key)||'{}');const previousFingerprints=" + previousFingerprints + ";let state={};for(const row of rows){const old=saved[row.exercise_id];if(old&&((old.fingerprint===row.content_fingerprint)||(old.fingerprint===undefined&&previousFingerprints[row.exercise_id]===row.content_fingerprint)))state[row.exercise_id]={...old,fingerprint:row.content_fingerprint};else state[row.exercise_id]={decision:'NOT_REVIEWED',notes:'',fingerprint:row.content_fingerprint}}");
+  html = html.replace("state[r.exercise_id]={decision:b.dataset.decision,notes:article.querySelector('textarea').value};", "state[r.exercise_id]={decision:b.dataset.decision,notes:article.querySelector('textarea').value,fingerprint:r.content_fingerprint};");
+  html = html.replace("state[r.exercise_id]={...(state[r.exercise_id]||{decision:'NOT_REVIEWED'}),notes:e.target.value};", "state[r.exercise_id]={...(state[r.exercise_id]||{decision:'NOT_REVIEWED'}),notes:e.target.value,fingerprint:r.content_fingerprint};");
+  html = html.replace("'<p>Diálogo: '+esc(fmt(r.dialogue_context))+'</p><div class=\"answer\">", "'<p>Diálogo: '+esc(fmt(r.dialogue_context))+'</p>'+(r.change_status==='CHANGED'?'<section class=\"change\"><b>ALTERADO · '+esc(r.exercise_id)+'</b><pre>'+esc(JSON.stringify(r.before_after,null,2))+'</pre></section>':'')+'<div class=\"answer\">'");
+  html = html.replace('.answer{border-left:', '.change{border:2px solid #a75a00;background:#fff8e8;padding:.65rem;margin:.6rem 0;overflow:auto}.change pre{white-space:pre-wrap}.audit{border-left:4px solid #a75a00;background:#fff8e8;padding:.6rem;margin:.6rem 0}.answer{border-left:');
+  return html;
 }
 
 function buildReviewMarkdown(course, rows) {
@@ -275,6 +453,9 @@ function buildReviewMarkdown(course, rows) {
     `## ${row.lesson} — ${row.exercise_id}`,
     `**Unidade:** ${row.unit}`,
     `**Tipo:** ${row.type} · **Habilidade:** ${row.skill_code} · **Dificuldade:** ${row.difficulty_level}`,
+    row.change_status === 'CHANGED' ? `**ALTERADO · ANTES/DEPOIS:** ${JSON.stringify(row.before_after)}` : '**Conteúdo:** sem alteração em relação à versão anterior.',
+    `**Triagem automática:** ${row.audit.severity} · ${row.audit.status}`,
+    row.audit.findings.length ? row.audit.findings.map((finding) => `- **${finding.severity}:** ${finding.issue} Proposta: ${finding.correction}`).join('\n') : 'Nenhum defeito concreto encontrado nesta triagem; revisão pedagógica humana continua necessária.',
     `**Instrução:** ${row.instruction}`,
     `**Questão:** ${row.prompt}`,
     `**Alternativas/banco:** ${JSON.stringify(row.options.length ? row.options : row.word_bank)}`,
@@ -290,23 +471,32 @@ function buildReviewMarkdown(course, rows) {
   return `# ${course.course.title} — revisão pedagógica offline\n\nCurso: \`${course.course.code}\` · Versão: ${course.course.version} · Fingerprint SHA-256: \`${course.manifest.content_fingerprint}\` · Exercícios: ${rows.length} · Status: STAGING / PEDAGOGICAL_REVIEW_PENDING\n\nCada decisão começa como NÃO REVISADA. Este documento não registra aprovação no banco.\n\n${sections}\n`;
 }
 
-export async function generateArtifacts(compiled = compileCourses()) {
+export async function generateArtifacts(compiled = compileCourses(), { outputRoot = privateRoot, previousCourses = loadBaselineCourses(), expectedProductionFingerprints = JSON.parse(process.env.TEC_IDIOMAS_V3_EXPECTED_FINGERPRINTS ?? '{}') } = {}) {
   const errors = validateCourses(compiled);
   if (errors.length) throw new Error(`Validação de conteúdo falhou:\n${errors.join('\n')}`);
+  const generatedDir = path.join(outputRoot, 'generated');
+  const reportsDir = path.join(outputRoot, 'reports');
+  const previousByCode = new Map(previousCourses.map((item) => [item.course.code, item]));
   await mkdir(generatedDir, { recursive: true });
   await mkdir(reportsDir, { recursive: true });
+  let changedQuestions = 0;
   for (const course of compiled) {
     const stem = course.course.code.toLowerCase().replaceAll('_', '-');
-    const rows = reviewQuestionRows(course);
+    const rows = reviewQuestionRows(course, previousByCode.get(course.course.code) ?? null);
+    const audit = rows.map(auditQuestion);
+    const auditById = new Map(audit.map((item) => [item.exercise_id, item]));
+    const reviewRows = rows.map((row) => ({ ...row, audit: auditById.get(row.exercise_id) }));
+    changedQuestions += rows.filter((row) => row.change_status === 'CHANGED').length;
     await writeFile(path.join(generatedDir, `${stem}.json`), `${JSON.stringify(course, null, 2)}\n`, 'utf8');
-    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.html`), buildReviewHtml(course, rows), 'utf8');
-    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.json`), `${JSON.stringify({ course: course.course, fingerprint: course.manifest.content_fingerprint, questions: rows.map((r) => ({ ...r, decision: 'NOT_REVIEWED', notes: '' })) }, null, 2)}\n`, 'utf8');
-    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.md`), buildReviewMarkdown(course, rows), 'utf8');
+    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.html`), buildReviewHtml(course, reviewRows), 'utf8');
+    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.json`), `${JSON.stringify({ course: course.course, fingerprint: course.manifest.content_fingerprint, questions: reviewRows.map((r) => ({ ...r, decision: 'NOT_REVIEWED', notes: '' })), audit }, null, 2)}\n`, 'utf8');
+    await writeFile(path.join(reportsDir, `${stem}-v${course.course.version}.md`), buildReviewMarkdown(course, reviewRows), 'utf8');
   }
   await writeFile(path.join(generatedDir, 'tec-idiomas-v3-content.generated.sql'), generateInsertSql(compiled), 'utf8');
+  await writeFile(path.join(generatedDir, 'tec-idiomas-v3-staging-correction.sql'), generateCorrectionSql(previousCourses, compiled, { expectedProductionFingerprints }), 'utf8');
   const summary = compiled.map(({ course, manifest }) => `${course.code}: ${manifest.lesson_count} lições, ${manifest.exercise_count} exercícios, SHA-256 ${manifest.content_fingerprint}`).join('\n');
-  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3 — pacote de revisão\n\nGerado offline a partir do conteúdo canônico. Não copie os arquivos com gabarito para \`public/\` ou para o bundle da aplicação. Os relatórios HTML não acessam rede e guardam decisões somente no navegador local.\n\n${summary}\n\nTodas as questões começam em \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada.\n`, 'utf8');
-  return { courses: compiled.length, lessons: compiled.reduce((n, c) => n + c.manifest.lesson_count, 0), exercises: compiled.reduce((n, c) => n + c.manifest.exercise_count, 0), reportsDir, generatedDir };
+  await writeFile(path.join(reportsDir, 'README.md'), `# Tec Idiomas V3 — pacote privado de revisão\n\nEste pacote contém gabaritos e deve permanecer em armazenamento privado com acesso restrito a revisores autorizados. Não copiar para o repositório público, \`public/\` ou bundle da aplicação. Os HTMLs funcionam offline e preservam decisões somente quando o fingerprint individual da questão não mudou. Questões alteradas exibem comparação antes/depois.\n\n${summary}\n\nQuestões alteradas: ${changedQuestions}. Todas começam como \`NOT_REVIEWED\`; nenhuma aprovação humana foi registrada.\n`, 'utf8');
+  return { courses: compiled.length, lessons: compiled.reduce((n, c) => n + c.manifest.lesson_count, 0), exercises: compiled.reduce((n, c) => n + c.manifest.exercise_count, 0), changedQuestions, reportsDir, generatedDir };
 }
 
 async function main() {

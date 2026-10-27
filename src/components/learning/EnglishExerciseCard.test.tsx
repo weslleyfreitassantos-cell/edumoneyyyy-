@@ -8,6 +8,21 @@ import type { EnglishExercise } from '../../services/tecEnglishService';
 afterEach(cleanup);
 
 describe('EnglishExerciseCard', () => {
+  it('does not reveal the expected response in the pre-answer conversation context', () => {
+    const expected = 'A single ticket to Oxford, please.';
+    const exercise: EnglishExercise = {
+      id: 'dialogue-1', position: 1, type: 'MULTIPLE_CHOICE', instruction: 'Leia a conversa e escolha.',
+      prompt: 'Você só vai a Oxford e não voltará. Como responde?', options: [expected, 'A return ticket to Oxford, please.', 'A single ticket to Cambridge, please.'],
+      word_bank: [], left_items: [], right_items: [], audio_text: null,
+      dialogue_context: [{ speaker: 'Ticket clerk', text: 'Would you like a single or return ticket?' }],
+    };
+    render(<EnglishExerciseCard exercise={exercise} resetToken={0} onSubmit={vi.fn()} />);
+
+    const context = screen.getByRole('region', { name: 'Contexto da conversa' });
+    expect(context.textContent).not.toContain(expected);
+    expect(screen.getByRole('button', { name: `A${expected}` })).toBeTruthy();
+  });
+
   it('permite responder por texto quando o reconhecimento de voz não existe', () => {
     const onSubmit = vi.fn();
     const exercise: EnglishExercise = {

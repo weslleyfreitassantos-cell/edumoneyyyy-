@@ -1,14 +1,20 @@
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import path from 'node:path';
+import { tmpdir } from 'node:os';
 import { describe, expect, it } from 'vitest';
 
-import { compileCourses, generateInsertSql, validateCourses } from './tec-idiomas-v3.mjs';
+import { compileCourses, generateCorrectionSql, generateInsertSql, generateArtifacts, validateCourses } from './tec-idiomas-v3.mjs';
 
 const expected = new Map([
   ['TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION', [4, 16, 112, 'en_v2x_']],
   ['TEC_SPANISH_FOUNDATIONS_V1', [2, 8, 56, 'es_v1_']],
   ['TEC_KOREAN_FOUNDATIONS_V1', [2, 8, 56, 'ko_v1_']],
 ]);
+const expectedProductionFingerprints = {
+  TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION: 'a'.repeat(32),
+  TEC_SPANISH_FOUNDATIONS_V1: 'b'.repeat(32),
+  TEC_KOREAN_FOUNDATIONS_V1: 'c'.repeat(32),
+};
 
 describe('Tec Idiomas V3 content package', () => {
   const courses = compileCourses();
@@ -36,6 +42,31 @@ describe('Tec Idiomas V3 content package', () => {
     }
   });
 
+  it('never places the expected answer in the pre-response dialogue', () => {
+    const dialogues = courses.flatMap((course) => course.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises)))
+      .filter((exercise) => exercise.exercise_type === 'MULTIPLE_CHOICE');
+    expect(dialogues).toHaveLength(32);
+    for (const exercise of dialogues) {
+      const expectedAnswer = exercise.answer_key.accepted[0];
+      expect(exercise.dialogue_context).toHaveLength(1);
+      expect(JSON.stringify(exercise.dialogue_context)).not.toContain(expectedAnswer);
+      expect(exercise.dialogue_context[0].speaker).not.toBe('Você');
+    }
+  });
+
+  it('rejects a pre-response dialogue that contains the expected answer, ignoring case and whitespace', () => {
+    const leakedCourses = structuredClone(courses);
+    const exercise = leakedCourses[0].units[0].lessons[0].exercises.find((item) => item.exercise_type === 'MULTIPLE_CHOICE');
+    exercise.dialogue_context[0].text += `  ${exercise.answer_key.accepted[0].toLocaleLowerCase()} `;
+    expect(validateCourses(leakedCourses)).toContain(`${exercise.id}: diálogo pré-resposta ausente ou revela o gabarito.`);
+  });
+
+  it('supports all accepted fill-in answers and keeps them in the grading key', () => {
+    const exercise = courses[0].units[0].lessons[1].exercises.find((item) => item.exercise_type === 'FILL_BLANK');
+    expect(exercise.accepted_answers).toEqual(['catch', 'board']);
+    expect(exercise.answer_key.accepted).toEqual(['catch', 'board']);
+  });
+
   it('generates an additive, conflict-checked SQL load that leaves every course staged', () => {
     const sql = generateInsertSql(courses).toLowerCase();
     expect(sql).toContain('set local lock_timeout');
@@ -52,21 +83,53 @@ describe('Tec Idiomas V3 content package', () => {
     expect(sql).not.toContain('tec_english_course_releases');
   });
 
-  it('ships complete offline review packages with every answer and an unreviewed initial state', () => {
-    for (const item of courses) {
-      const stem = item.course.code.toLowerCase().replaceAll('_', '-');
-      const reportBase = fileURLToPath(new URL(`../../reports/tec-idiomas-v3/${stem}-v${item.course.version}`, import.meta.url));
-      const html = readFileSync(`${reportBase}.html`, 'utf8');
-      const review = JSON.parse(readFileSync(`${reportBase}.json`, 'utf8'));
-      const questionIds = item.units.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.exercises.map((exercise) => exercise.id)));
-      expect(review.questions).toHaveLength(item.manifest.exercise_count);
+  it('requires the exact preflight fingerprint set and fails closed on remote drift', () => {
+    const previous = structuredClone(courses);
+    previous[0].units[0].lessons[0].exercises[0].dialogue_context.push({ speaker: 'Você', text: 'extra' });
+    expect(() => generateCorrectionSql(previous, courses)).toThrow(/fingerprints esperados devem corresponder exatamente/);
+    const sql = generateCorrectionSql(previous, courses, { expectedProductionFingerprints });
+    expect(sql).toContain('TEC_IDIOMAS_V3_COURSE_FINGERPRINT_DRIFT');
+    expect(sql).toContain('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    expect(sql).toContain('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    expect(sql).toContain('cccccccccccccccccccccccccccccccc');
+    expect(sql).toContain('in share row exclusive mode');
+  });
+
+  it('generates private review files with per-question before/after and safe decision retention', async () => {
+    const outputRoot = await mkdtemp(path.join(tmpdir(), 'tec-idiomas-v3-'));
+    try {
+      const previous = structuredClone(courses);
+      const first = previous[0].units[0].lessons[0].exercises[0];
+      first.dialogue_context.push({ speaker: 'Você', text: first.answer_key.accepted[0] });
+      const result = await generateArtifacts(courses, { outputRoot, previousCourses: previous, expectedProductionFingerprints });
+      expect(result).toMatchObject({ courses: 3, lessons: 32, exercises: 224, changedQuestions: 1 });
+      const html = await readFile(path.join(result.reportsDir, 'tec-english-foundations-v2-expansion-v1.html'), 'utf8');
+      const review = JSON.parse(await readFile(path.join(result.reportsDir, 'tec-english-foundations-v2-expansion-v1.json'), 'utf8'));
+      expect(review.questions).toHaveLength(112);
       expect(review.questions.every((question) => question.decision === 'NOT_REVIEWED')).toBe(true);
-      expect(html).toContain(item.manifest.content_fingerprint);
+      expect(review.audit).toHaveLength(112);
+      expect(review.audit.every((finding) => finding.human_review_required)).toBe(true);
+      expect(html).toContain('ALTERADO');
+      expect(html).toContain('before_after');
+      expect(html).toContain('Achados automáticos');
+      expect(html).toContain('previousFingerprints');
+      expect(html).toContain('fingerprint:r.content_fingerprint');
       expect(html).toContain('Gabarito:');
-      expect(html).toContain('Solicitar correção');
       expect(html).not.toContain('fetch(');
       expect(html).not.toContain('supabase');
-      for (const id of questionIds) expect(html).toContain(id);
+      const sql = await readFile(path.join(result.generatedDir, 'tec-idiomas-v3-staging-correction.sql'), 'utf8');
+      expect(sql).toContain('TEC_IDIOMAS_V3_REVIEW_EXISTS');
+      expect(sql).toContain('TEC_IDIOMAS_V3_STUDENT_PROGRESS_EXISTS');
+      expect(sql).toContain('TEC_IDIOMAS_V3_CORRECTION_DRIFT');
+      expect(sql).toContain('TEC_IDIOMAS_V3_COURSE_FINGERPRINT_DRIFT');
+      expect(sql).toContain('private.tec_english_course_fingerprint');
+      expect(sql).toContain('where unit.course_code = \'TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION\') = 16');
+      expect(sql).not.toContain('20261027000100');
+      expect(sql).not.toContain('TEC_IDIOMAS_V3_COURSE_STATE:TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION\n');
+      const correctionSql = generateCorrectionSql(previous, courses, { expectedProductionFingerprints });
+      expect(correctionSql).toContain('dialogue_context');
+    } finally {
+      await rm(outputRoot, { recursive: true, force: true });
     }
   });
 });
