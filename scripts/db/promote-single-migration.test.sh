@@ -141,7 +141,7 @@ if [[ "$*" == *' db query '* ]]; then
   [[ "$*" == *'with migration_007_fk_targets(table_name'* && "$*" == *'has_column_privilege'* && \
     "$*" == *"'REFERENCES'"* && "$*" != *'RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
   [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
-  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s"}}]}\n' \
+  printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s","session_owner_reset_access":%s}}]}\n' \
     "${MOCK_CLI_CONTEXT_SESSION_USER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_CURRENT_ROLE:-${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
@@ -155,7 +155,8 @@ if [[ "$*" == *' db query '* ]]; then
     "${MOCK_CLI_CONTEXT_SUPERUSER:-false}" \
     "${MOCK_CLI_CONTEXT_REFERENCES_ACCESS:-true}" \
     "${MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
-    "${MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET:-none}"
+    "${MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET:-none}" \
+    "${MOCK_CLI_CONTEXT_SESSION_OWNER_RESET:-false}"
   exit 0
 fi
 if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
@@ -221,7 +222,7 @@ if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
   else
     [[ "$*" == *'RESET ALL; with migration_007_fk_targets(table_name'* && "$*" != *'SET SESSION ROLE'* ]] || exit 58
   fi
-  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s"}\n' \
+  printf '{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s","session_owner_reset_access":%s}\n' \
     "${MOCK_PSQL_CONTEXT_SESSION_USER:-$expected_db_user}" \
     "${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}" \
     "${MOCK_PSQL_CONTEXT_CURRENT_ROLE:-${MOCK_PSQL_CONTEXT_CURRENT_USER:-$expected_db_user}}" \
@@ -235,7 +236,8 @@ if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
     "${MOCK_PSQL_CONTEXT_SUPERUSER:-false}" \
     "${MOCK_PSQL_CONTEXT_REFERENCES_ACCESS:-true}" \
     "${MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND:-none}" \
-    "${MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET:-none}"
+    "${MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET:-none}" \
+    "${MOCK_PSQL_CONTEXT_SESSION_OWNER_RESET:-false}"
   exit 0
 fi
 exit 46
@@ -733,7 +735,7 @@ release_406_second_version=20261025000700
 release_406_second_file="$repo_root/supabase/migrations/${release_406_second_version}_central_estudos_v2_runtime_publication.sql"
 [[ -f "$release_406_second_file" ]]
 release_406_second_hash="$(sed 's/\r$//' "$release_406_second_file" | "$real_sha256sum" | awk '{print $1}')"
-[[ "$release_406_second_hash" == '7651ba9d253cb14c10882b370cdf866e87c193594c25493385cbbfe4e90d0bcc' ]]
+[[ "$release_406_second_hash" == '134074ec14478cb3ba0424e8b652e2faa008c8da8cfe458f98d85a7d21bb64ee' ]]
 release_406_second_ledger="$tmp/release-406-second-ledger"
 cat "$release_406_ledger" > "$release_406_second_ledger"
 printf '%s\n' "$release_406_version" >> "$release_406_second_ledger"
@@ -744,6 +746,21 @@ cat "$release_406_second_ledger" > "$release_406_second_after"
 printf '%s\n' "$release_406_second_version" >> "$release_406_second_after"
 printf '0\n' > "$cli_apply_count"
 release_406_second_output="$(PATH="$tmp/bin:$PATH" \
+  TEST_DATABASE_USER=supabase_admin \
+  MOCK_CLI_CONTEXT_SESSION_USER=supabase_admin \
+  MOCK_CLI_CONTEXT_CURRENT_USER=postgres \
+  MOCK_CLI_CONTEXT_CURRENT_ROLE=postgres \
+  MOCK_CLI_CONTEXT_ROLE_SETTING=postgres \
+  MOCK_CLI_CONTEXT_OWNER=postgres \
+  MOCK_CLI_CONTEXT_RELATION_ACCESS=false \
+  MOCK_CLI_CONTEXT_SESSION_OWNER_RESET=true \
+  MOCK_PSQL_CONTEXT_SESSION_USER=supabase_admin \
+  MOCK_PSQL_CONTEXT_CURRENT_USER=postgres \
+  MOCK_PSQL_CONTEXT_CURRENT_ROLE=postgres \
+  MOCK_PSQL_CONTEXT_ROLE_SETTING=postgres \
+  MOCK_PSQL_CONTEXT_OWNER=postgres \
+  MOCK_PSQL_CONTEXT_RELATION_ACCESS=false \
+  MOCK_PSQL_CONTEXT_SESSION_OWNER_RESET=true \
   REAL_SHA256SUM="$real_sha256sum" \
   MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \
   MOCK_406_BACKUP_SIZE=372305133 \
@@ -771,9 +788,10 @@ grep -q '^REMOTE_AFTER_COUNT=243$' <<< "$release_406_second_output"
 grep -q '^REMOTE_AFTER_LAST=20261025000700$' <<< "$release_406_second_output"
 [[ "$(cat "$cli_apply_count")" == '1' ]]
 
-grep -q '^DB_SESSION_USER=fixture_user$' <<< "$release_406_second_output"
-grep -q '^DB_CURRENT_USER=fixture_user$' <<< "$release_406_second_output"
+grep -q '^DB_SESSION_USER=supabase_admin$' <<< "$release_406_second_output"
+grep -q '^DB_CURRENT_USER=postgres$' <<< "$release_406_second_output"
 grep -q '^DDL_PERMISSION=PASS$' <<< "$release_406_second_output"
+grep -q '^DDL_EXECUTION_MODE=SESSION_OWNER_RESET$' <<< "$release_406_second_output"
 grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$release_406_second_output"
 grep -q '^PRECHECK=PASS$' <<< "$release_406_second_output"
 

@@ -225,7 +225,7 @@ release_406_backup_path='/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-4
 release_406_backup_filename='edumoney-2026-10-25T07-43-25Z.tar.gz'
 declare -A release_406_migration_hashes=(
   [20261025000600]=afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3
-  [20261025000700]=7651ba9d253cb14c10882b370cdf866e87c193594c25493385cbbfe4e90d0bcc
+  [20261025000700]=134074ec14478cb3ba0424e8b652e2faa008c8da8cfe458f98d85a7d21bb64ee
 )
 declare -A release_406_expected_remote_last=(
   [20261025000600]=20261025000500
@@ -574,7 +574,7 @@ const fields = ["session_user", "current_user", "current_role", "role_setting", 
 if (fields.some((field) => typeof row[field] !== "string")) process.exit(4);
 if (!["none", "missing_object", "missing_privilege"].includes(row.references_failure_kind)) process.exit(7);
 if (!/^(none|[A-Za-z0-9_]+\([A-Za-z0-9_]+\))$/.test(row.references_missing_target)) process.exit(8);
-for (const field of ["candidate_owner_access", "relation_ddl_access", "function_ddl_access", "public_create", "private_create", "is_superuser", "references_access"]) {
+for (const field of ["candidate_owner_access", "relation_ddl_access", "function_ddl_access", "public_create", "private_create", "is_superuser", "references_access", "session_owner_reset_access"]) {
   if (typeof row[field] !== "boolean") process.exit(5);
 }
 const values = [
@@ -582,7 +582,8 @@ const values = [
   row.candidate_owner, String(row.candidate_owner_access),
   String(row.relation_ddl_access), String(row.function_ddl_access),
   String(row.public_create), String(row.private_create), String(row.is_superuser),
-  String(row.references_access), row.references_failure_kind, row.references_missing_target
+  String(row.references_access), row.references_failure_kind, row.references_missing_target,
+  String(row.session_owner_reset_access)
 ];
 if (values.some((value) => /[\t\r\n]/.test(value))) process.exit(6);
 process.stdout.write(values.join("\t"));
@@ -593,7 +594,7 @@ check_runtime_publication_context() {
   local context_sql psql_context_sql expected_cli_current expected_cli_role_setting
   local cli_context_raw psql_context_raw cli_context_line psql_context_line
   local cli_session cli_current cli_role cli_role_setting cli_owner cli_owner_access cli_relation_access cli_function_access
-  local cli_public_create cli_private_create cli_superuser
+  local cli_public_create cli_private_create cli_superuser cli_session_owner_reset
   local cli_references_access cli_references_failure_kind cli_references_missing_target
   local safe_session safe_current safe_owner
   local -a cli_context_fields=() psql_context_fields=()
@@ -694,10 +695,46 @@ check_runtime_publication_context() {
     'public_create', has_schema_privilege(current_user, 'public', 'CREATE'),
     'private_create', has_schema_privilege(current_user, 'private', 'CREATE'),
     'is_superuser', r.rolsuper
+    ,'session_owner_reset_access', (
+      session_user = 'supabase_admin'
+      and current_user = 'postgres'
+      and session_role.rolsuper
+      and coalesce(nullif(current_setting('role', true), ''), 'none') = 'postgres'
+      and (
+        select count(*) = 3
+          from (values
+            ('learning_guided_session_events'),
+            ('learning_question_sets'),
+            ('learning_question_set_items')
+          ) as protected(relname)
+          join pg_class object on object.relname = protected.relname
+          join pg_namespace object_schema on object_schema.oid = object.relnamespace
+         where object_schema.nspname = 'public'
+           and pg_get_userbyid(object.relowner) = 'supabase_admin'
+      )
+      and not exists (
+        select 1
+          from (values
+            ('learning_central_studies_v2_candidates'),
+            ('learning_guided_session_events'),
+            ('learning_skill_lessons'),
+            ('learning_curriculum_skills'),
+            ('learning_question_bank'),
+            ('learning_question_sets'),
+            ('learning_question_set_items')
+          ) as target(relname)
+          join pg_class object on object.relname = target.relname
+          join pg_namespace object_schema on object_schema.oid = object.relnamespace
+         where object_schema.nspname = 'public'
+           and not (pg_has_role(current_user, object.relowner, 'USAGE') or r.rolsuper)
+           and pg_get_userbyid(object.relowner) <> 'supabase_admin'
+      )
+    )
   ) as context
   from pg_class c
   join pg_namespace n on n.oid = c.relnamespace
   join pg_roles r on r.rolname = current_user
+  join pg_roles session_role on session_role.rolname = session_user
   where n.nspname = 'public' and c.relname = 'learning_central_studies_v2_candidates';"
 
   expected_cli_current="${database_user}"
@@ -737,7 +774,7 @@ check_runtime_publication_context() {
 
   IFS=$'\t' read -r -a cli_context_fields <<< "${cli_context_line}"
   IFS=$'\t' read -r -a psql_context_fields <<< "${psql_context_line}"
-  if [[ "${#cli_context_fields[@]}" -ne 14 || "${#psql_context_fields[@]}" -ne 14 ]]; then
+  if [[ "${#cli_context_fields[@]}" -ne 15 || "${#psql_context_fields[@]}" -ne 15 ]]; then
     printf 'DB_SESSION_USER=UNKNOWN\nDB_CURRENT_USER=UNKNOWN\nDDL_PERMISSION=UNKNOWN\n' >&2
     abort "database session precheck did not return exactly one context row"
   fi
@@ -756,6 +793,7 @@ check_runtime_publication_context() {
   cli_references_access="${cli_context_fields[11]}"
   cli_references_failure_kind="${cli_context_fields[12]}"
   cli_references_missing_target="${cli_context_fields[13]}"
+  cli_session_owner_reset="${cli_context_fields[14]}"
 
   safe_session='UNKNOWN'
   safe_current='UNKNOWN'
@@ -790,7 +828,7 @@ check_runtime_publication_context() {
     abort "migration 007 REFERENCES precheck could not resolve a referenced relation or column"
   fi
   if [[ "${cli_owner_access}" != 'true' || \
-    "${cli_relation_access}" != 'true' || \
+    ( "${cli_relation_access}" != 'true' && "${cli_session_owner_reset}" != 'true' ) || \
     "${cli_function_access}" != 'true' || \
     ( "${cli_public_create}" != 'true' && "${cli_superuser}" != 'true' ) || \
     ( "${cli_private_create}" != 'true' && "${cli_superuser}" != 'true' ) ]]; then
@@ -802,6 +840,11 @@ check_runtime_publication_context() {
   printf 'DB_ROLE_SETTING=%s\n' "${cli_role_setting}"
   printf 'REFERENCES_PERMISSION=PASS\n'
   printf 'DDL_PERMISSION=PASS\n'
+  if [[ "${cli_relation_access}" == 'true' ]]; then
+    printf 'DDL_EXECUTION_MODE=CURRENT_ROLE\n'
+  else
+    printf 'DDL_EXECUTION_MODE=SESSION_OWNER_RESET\n'
+  fi
   printf 'CLI_PSQL_CONTEXT_MATCH=YES\n'
   printf 'PRECHECK=PASS\n'
 }
