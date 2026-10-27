@@ -147,6 +147,46 @@ jobs:
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
 
+      - name: Testar correção V3 idempotente no PostgreSQL descartável
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline='c99c30948104147da5a302514cae72b67758c226'
+          git fetch --no-tags --depth=1 origin "$baseline"
+          db_container="$(docker ps --format '{{.Names}}' | awk '/^supabase_db_/ { print; exit }')"
+          test -n "$db_container"
+          git show "$baseline:content/languages/generated/tec-idiomas-v3-content.generated.sql" | docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1
+          before="$(docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At <<'SQL'
+          select concat_ws('|',
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE'),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and exists (select 1 from jsonb_array_elements(e.dialogue_context) d cross join lateral jsonb_array_elements_text(e.answer_key->'accepted') a where lower(trim(d->>'text'))=lower(trim(a))))
+          );
+          SQL
+          )"
+          test "$before" = '224|32|32'
+          fingerprints_json="$(docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At -c "select json_object_agg(course_code, private.tec_english_course_fingerprint(course_code, content_version))::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version = 1 and publication_status = 'STAGING' and review_status = 'PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture = false")"
+          node -e 'const value=JSON.parse(process.argv[1]);if(!value||Object.keys(value).length!==3||Object.values(value).some(x=>!/^[a-f0-9]{32}$/.test(x)))process.exit(1)' "$fingerprints_json"
+          private_dir="$(mktemp -d)"
+          trap 'rm -rf "$private_dir"' EXIT
+          export TEC_IDIOMAS_V3_PRIVATE_DIR="$private_dir"
+          export TEC_IDIOMAS_V3_EXPECTED_FINGERPRINTS="$fingerprints_json"
+          node tools/languages/tec-idiomas-v3.mjs generate
+          correction_sql="$private_dir/generated/tec-idiomas-v3-staging-correction.sql"
+          docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$correction_sql"
+          docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 < "$correction_sql"
+          result="$(docker exec -i "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 -At <<'SQL'
+          select concat_ws('|',
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1')),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id where u.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE'),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and jsonb_array_length(e.dialogue_context)<>1),
+            (select count(*)::text from public.tec_english_exercises e join public.tec_english_lessons l on l.id=e.lesson_id join public.tec_english_units u on u.id=l.unit_id join public.tec_english_courses c on c.course_code=u.course_code and c.content_version=l.content_version where c.course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and e.exercise_type='MULTIPLE_CHOICE' and exists (select 1 from jsonb_array_elements(e.dialogue_context) d cross join lateral jsonb_array_elements_text(e.answer_key->'accepted') a where lower(trim(d->>'text'))=lower(trim(a)))),
+            (select count(*)::text from public.tec_english_courses where course_code in ('TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION','TEC_SPANISH_FOUNDATIONS_V1','TEC_KOREAN_FOUNDATIONS_V1') and content_version=1 and publication_status='STAGING' and review_status='PEDAGOGICAL_REVIEW_PENDING' and is_test_fixture=false)
+          );
+          SQL
+          )"
+          test "$result" = '224|32|0|0|3'
+
       - name: Teste dinâmico isolado dos rascunhos de matrícula
         run: npx vitest run supabase/tests/studentEnrollmentDrafts.local.test.ts
 
