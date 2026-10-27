@@ -277,7 +277,8 @@ function normalizeMembershipInstitution(
     row.role === 'SECRETARY' ||
     row.role === 'TEACHER' ||
     row.role === 'STUDENT' ||
-    row.role === 'GUARDIAN'
+    row.role === 'GUARDIAN' ||
+    row.role === 'PSYCHOLOGIST'
       ? row.role
       : null;
 
