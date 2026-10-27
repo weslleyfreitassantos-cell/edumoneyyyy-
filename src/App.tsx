@@ -129,6 +129,8 @@ const CentralStudiesContentReviewPage = lazy(() => import('./components/learning
 const TecEnglishReviewQueuePage = lazy(() => import('./components/learning/TecEnglishReviewQueuePage'));
 const TeacherSimulationWorkflowPage = lazy(() => import('./components/learning/TeacherSimulationWorkflowPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
+const TeacherClassroomPage = lazy(() => import('./components/learning/TeacherClassroomPage'));
+const TeacherActivityBuilderPage = lazy(() => import('./components/learning/TeacherActivityBuilderPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
 const LessonPage = lazy(() => import('./components/learning/LessonPage'));
 const SimulationPage = lazy(() => import('./components/learning/SimulationPage'));
@@ -819,6 +821,8 @@ function AppRoutes() {
         <Route path="/teacher/pedagogical-center/simulations" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherSimulationWorkflowPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/classroom" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherClassroomPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/classroom/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherActivityBuilderPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/students/:studentId" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherStudentDetailPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
