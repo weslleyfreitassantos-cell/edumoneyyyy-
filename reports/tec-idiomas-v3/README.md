@@ -1,9 +1,5 @@
-# Tec Idiomas V3 — pacote de revisão
+# Tec Idiomas V3 — relatórios internos
 
-Gerado offline a partir do conteúdo canônico. Não copie os arquivos com gabarito para `public/` ou para o bundle da aplicação. Os relatórios HTML não acessam rede e guardam decisões somente no navegador local.
+Os pacotes HTML, JSON e Markdown contêm respostas e são gerados somente no diretório privado local definido por `TEC_IDIOMAS_V3_PRIVATE_DIR` (por padrão, `%LOCALAPPDATA%/TecEscola/private/tec-idiomas-v3`). Eles não pertencem ao repositório nem ao bundle público.
 
-TEC_ENGLISH_FOUNDATIONS_V2_EXPANSION: 16 lições, 112 exercícios, SHA-256 14750d9cf79bcc690f44da931bbed3cb17c6c912d47a47e27f41aa0bae7d9e43
-TEC_SPANISH_FOUNDATIONS_V1: 8 lições, 56 exercícios, SHA-256 1b313f544cdda97eaf4e148388179ae72a482a2cd77752bd5879dfcadafb0fb6
-TEC_KOREAN_FOUNDATIONS_V1: 8 lições, 56 exercícios, SHA-256 a53a338d73895e8c025efd15ef49dfbe902d033d3dfcf7e49c851f8b62d9fdd7
-
-Todas as questões começam em `NOT_REVIEWED`; nenhuma aprovação humana foi registrada.
+O gerador mantém decisões locais somente quando o fingerprint individual da questão não muda. Questões alteradas são marcadas e incluem comparação antes/depois. A revisão técnica não registra aprovação pedagógica humana.
