@@ -27,12 +27,17 @@ import {
 import type { DatabaseRole } from '../lib/roles';
 import type { PlatformRole } from '../lib/roles';
 import { ProtectedRoute } from './ProtectedRoute';
+import { useOptionalInstitution } from '../contexts/InstitutionContext';
 
 vi.mock('../contexts/AuthContext', () => ({
     useAuth: vi.fn(),
 }));
+vi.mock('../contexts/InstitutionContext', () => ({
+    useOptionalInstitution: vi.fn(),
+}));
 
 const mockedUseAuth = vi.mocked(useAuth);
+const mockedUseOptionalInstitution = vi.mocked(useOptionalInstitution);
 
 const user = {
     id: 'user-1',
@@ -109,6 +114,7 @@ function renderProtectedRoute(
 
 beforeEach(() => {
     mockedUseAuth.mockReset();
+    mockedUseOptionalInstitution.mockReturnValue(null);
 });
 
 afterEach(() => {
@@ -186,6 +192,45 @@ describe('ProtectedRoute', () => {
         expect(
             screen.getByText('Conteúdo protegido'),
         ).toBeTruthy();
+    });
+
+    it('autoriza um papel institucional secundário sem elevar privilégios', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'PSYCHOLOGIST'],
+        } as never);
+
+        renderProtectedRoute(['PSYCHOLOGIST']);
+
+        expect(screen.getByText('Conteúdo protegido')).toBeTruthy();
+    });
+
+    it('preserva a negação quando qualquer membership ativa é explicitamente proibida', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentRole: 'TEACHER',
+            currentInstitutionRoles: ['TEACHER', 'ADMIN'],
+        } as never);
+
+        renderProtectedRoute(
+            ['TEACHER'],
+            undefined,
+            ['ADMIN'],
+        );
+
+        expect(screen.getByText('Painel inicial')).toBeTruthy();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
     });
 
     it('envia papéis sem permissão para acesso não autorizado', () => {

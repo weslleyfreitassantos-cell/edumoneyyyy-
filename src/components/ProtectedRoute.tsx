@@ -79,10 +79,14 @@ export function ProtectedRoute({
   const effectiveDatabaseRole =
     institutionContext?.currentRole ??
     profile.role;
+  const effectiveDatabaseRoles = new Set([
+    effectiveDatabaseRole,
+    ...(institutionContext?.currentInstitutionRoles ?? []),
+  ]);
 
   const hasDeniedRole = Boolean(
     deniedRoles?.some(
-      (role) => role === profile.role || role === effectiveDatabaseRole,
+      (role) => role === profile.role || effectiveDatabaseRoles.has(role),
     ),
   );
   const hasDeniedPlatformRole = Boolean(
@@ -95,9 +99,7 @@ export function ProtectedRoute({
 
   const hasAllowedRole =
     !allowedRoles ||
-    allowedRoles.includes(
-      effectiveDatabaseRole as DatabaseRole,
-    );
+    allowedRoles.some((role) => effectiveDatabaseRoles.has(role));
 
   const hasAllowedPlatformRole =
     !allowedPlatformRoles ||

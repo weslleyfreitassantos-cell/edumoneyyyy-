@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-do
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { getPsychologyRouteRole } from '../../lib/psychologyRouteRole';
 import {
   publishPsychologyModuleStatusChanged,
   refreshPsychologyModuleStatus,
@@ -931,7 +932,12 @@ export default function PsychologyPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const section = getSection(location.pathname);
-  const role = (currentRole ?? profile?.role ?? '').toUpperCase();
+  const role = getPsychologyRouteRole(
+    section,
+    currentRole,
+    profile?.role,
+    currentInstitutionRoles,
+  );
   const isManager = ['ADMIN', 'DIRECTOR', 'SECRETARY'].includes(role);
   const canManageProfessionals = currentRole === 'DIRECTOR' || currentRole === 'SECRETARY'
     || (currentInstitutionRoles ?? []).some((institutionRole) => institutionRole === 'DIRECTOR' || institutionRole === 'SECRETARY');
