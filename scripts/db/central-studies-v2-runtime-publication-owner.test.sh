@@ -31,6 +31,26 @@ NODE
 )"
 
 work_dir="$(mktemp -d)"
+isolated_work_dir="$work_dir/isolated-project"
+isolated_migrations_dir="$isolated_work_dir/supabase/migrations"
+mkdir -p "$isolated_migrations_dir"
+cp "$repo_root/supabase/config.toml" "$isolated_work_dir/supabase/config.toml"
+# Keep the applied history and migration 007, excluding newer migrations that
+# may be present on the reconciled PR branch but are outside this proof.
+node - "$repo_root/supabase/migrations" "$isolated_migrations_dir" <<'NODE'
+const fs = require('node:fs');
+const path = require('node:path');
+const [source, destination] = process.argv.slice(2);
+const target = '20261025000700';
+let targetCopied = false;
+for (const name of fs.readdirSync(source).sort()) {
+  const version = name.match(/^(\d{14})_/)?.[1];
+  if (!version || version > target || !name.endsWith('.sql')) continue;
+  fs.copyFileSync(path.join(source, name), path.join(destination, name));
+  if (version === target) targetCopied = true;
+}
+if (!targetCopied) throw new Error('isolated project is missing migration 007');
+NODE
 cleanup() {
   docker exec "$db_container" psql -U supabase_admin -d postgres -v ON_ERROR_STOP=1 \
     -c 'ALTER ROLE postgres SUPERUSER;' >/dev/null 2>&1 || true
@@ -144,7 +164,7 @@ if (row.session_user !== 'supabase_admin' || row.current_user !== 'postgres' ||
 }
 NODE
 
-dry_run="$(npx supabase --workdir "$repo_root" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
+dry_run="$(npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --dry-run --log-level info 2>&1)"
 pending_versions="$(DRY_RUN_OUTPUT="$dry_run" BEFORE_VERSIONS="$before_versions" node - <<'NODE'
 const text = process.env.DRY_RUN_OUTPUT || '';
 const before = new Set((process.env.BEFORE_VERSIONS || '').split(/\s+/).filter(Boolean));
@@ -159,7 +179,7 @@ NODE
 
 # Apply through Supabase CLI once; the migration resets to the authenticated
 # owner for protected DDL and returns to postgres before the CLI writes ledger.
-npx supabase --workdir "$repo_root" db push --db-url "$admin_db_url" --yes --log-level error
+npx supabase --workdir "$isolated_work_dir" db push --db-url "$admin_db_url" --yes --log-level error
 
 after_versions="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
   -c 'select version from supabase_migrations.schema_migrations order by version;')"
