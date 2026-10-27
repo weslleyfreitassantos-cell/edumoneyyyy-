@@ -148,7 +148,7 @@ dry_run="$(npx supabase --workdir "$repo_root" db push --db-url "$admin_db_url" 
 pending_versions="$(DRY_RUN_OUTPUT="$dry_run" BEFORE_VERSIONS="$before_versions" node - <<'NODE'
 const text = process.env.DRY_RUN_OUTPUT || '';
 const before = new Set((process.env.BEFORE_VERSIONS || '').split(/\s+/).filter(Boolean));
-const versions = [...new Set(text.match(/\b\d{14}\b/g) || [])].filter((version) => !before.has(version));
+const versions = [...new Set(text.match(/\d{14}/g) || [])].filter((version) => !before.has(version));
 if (versions.length !== 1 || versions[0] !== '20261025000700') {
   throw new Error(`dry-run did not select only 007; selected=${versions.join(',') || 'none'}`);
 }
