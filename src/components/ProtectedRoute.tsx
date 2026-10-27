@@ -76,6 +76,20 @@ export function ProtectedRoute({
     );
   }
 
+  // Institutional role checks must wait for membership resolution. Redirecting
+  // while the membership query is still loading can send a valid user away
+  // from a protected route before the active institution's roles are known.
+  if (
+    institutionContext?.isLoading &&
+    (allowedRoles?.length || deniedRoles?.length)
+  ) {
+    return (
+      <main className="min-h-screen grid place-items-center">
+        <LoadingIndicator label="Carregando permissões da instituição..." />
+      </main>
+    );
+  }
+
   const effectiveDatabaseRoles = new Set([
     ...(institutionContext
       ? [

@@ -249,6 +249,27 @@ describe('ProtectedRoute', () => {
         expect(screen.queryByText('Conteúdo protegido')).toBeNull();
     });
 
+    it('aguarda a resolução das memberships antes de decidir a rota institucional', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'DIRECTOR' },
+            }),
+        );
+        mockedUseOptionalInstitution.mockReturnValue({
+            currentInstitutionId: null,
+            currentRole: null,
+            currentInstitutionRoles: [],
+            isLoading: true,
+        } as never);
+
+        renderProtectedRoute(['DIRECTOR']);
+
+        expect(screen.getByText('Carregando permissões da instituição...')).toBeTruthy();
+        expect(screen.queryByText('Painel inicial')).toBeNull();
+        expect(screen.queryByText('Conteúdo protegido')).toBeNull();
+    });
+
     it('permite papel psicólogo adicional quando a membership ativa é da mesma escola', () => {
         mockedUseAuth.mockReturnValue(
             createAuthState({
