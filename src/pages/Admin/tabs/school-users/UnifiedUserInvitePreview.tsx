@@ -41,6 +41,7 @@ import {
 interface UnifiedUserInvitePreviewProps {
   institutionId: string | null;
   currentRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   profileRole: string | null | undefined;
   currentInstitutionName: string | null;
   hasActiveInstitution: boolean;
@@ -144,6 +145,7 @@ function FieldError({
 export default function UnifiedUserInvitePreview({
   institutionId,
   currentRole,
+  currentInstitutionRoles = [],
   profileRole,
   currentInstitutionName,
   hasActiveInstitution,
@@ -188,8 +190,8 @@ export default function UnifiedUserInvitePreview({
     );
 
   const roleAllowedTargets = useMemo(
-    () => getAllowedInviteTargets(currentRole),
-    [currentRole],
+    () => getAllowedInviteTargets(currentRole, currentInstitutionRoles),
+    [currentRole, currentInstitutionRoles],
   );
 
   const allowedTargets = useMemo(() => {
@@ -231,9 +233,11 @@ export default function UnifiedUserInvitePreview({
         crpRegistration: form.crpRegistration,
         crpState: form.crpState,
         currentRole,
+        currentInstitutionRoles,
       }),
     [
       currentRole,
+      currentInstitutionRoles,
       form.birthDate,
       form.cpf,
       form.email,
@@ -281,7 +285,7 @@ export default function UnifiedUserInvitePreview({
     !canManageSchoolUsers ||
     !hasActiveInstitution ||
     !targetIsSupported ||
-    !canInviteTarget(currentRole, selectedTarget) ||
+    !canInviteTarget(currentRole, selectedTarget, currentInstitutionRoles) ||
     inviteMutation.isPending ||
     teacherAcademicMutation.isPending ||
     Boolean(teacherAcademicValidationError);
@@ -338,7 +342,7 @@ export default function UnifiedUserInvitePreview({
 
     if (
       option.isPlanned ||
-      !canInviteTarget(currentRole, target)
+      !canInviteTarget(currentRole, target, currentInstitutionRoles)
     ) {
       return;
     }
@@ -611,6 +615,7 @@ export default function UnifiedUserInvitePreview({
                       !canInviteTarget(
                         currentRole,
                         option.target,
+                        currentInstitutionRoles,
                       );
 
                     return (

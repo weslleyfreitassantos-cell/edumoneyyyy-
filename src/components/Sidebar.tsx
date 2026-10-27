@@ -82,6 +82,7 @@ import { mapDatabaseRole } from '../lib/roles';
 import type { User } from '../types';
 import { queryClient } from '../lib/queryClient';
 import { prefetchUserRoute } from '../lib/routePrefetch';
+import { usePsychologyModuleStatus } from '../hooks/usePsychologyModuleStatus';
 
 type NavigationSection =
   | 'global'
@@ -118,6 +119,7 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   currentInstitutionId?: string | null;
   currentInstitutionPlan?: InstitutionPlan | null;
   isDesktopHidden: boolean;
@@ -204,7 +206,7 @@ const psychologyNavigation: ReadonlyArray<{
   { label: 'Agendar consulta', path: '/psychology/agendar', icon: CalendarDays, roles: ['STUDENT'] },
   { label: 'Meus agendamentos', path: '/psychology/agendamentos', icon: CalendarClock, roles: ['STUDENT'] },
   { label: 'Chat', path: '/psychology/chat', icon: MessageCircle, roles: ['STUDENT'] },
-  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['STUDENT', 'GUARDIAN'] },
+  { label: 'Autorizações', path: '/psychology/autorizacao', icon: ShieldCheck, roles: ['GUARDIAN'] },
   { label: 'Agenda', path: '/psychology/agenda', icon: CalendarDays, roles: ['PSYCHOLOGIST'] },
   { label: 'Atendimentos', path: '/psychology/atendimentos', icon: Heart, roles: ['PSYCHOLOGIST'] },
   { label: 'Anotações clínicas', path: '/psychology/anotacoes', icon: NotebookPen, roles: ['PSYCHOLOGIST'] },
@@ -711,12 +713,14 @@ export function getSidebarNavigationItems({
 export function getSidebarAdminModules({
   profile,
   currentInstitutionRole,
+  currentInstitutionRoles = [],
   currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
@@ -767,6 +771,7 @@ export function getSidebarAdminModules({
         effectiveRole,
         profile.platform_role,
         currentInstitutionPlan,
+        currentInstitutionRoles,
       )
     ) {
       return false;
@@ -790,6 +795,7 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
+  currentInstitutionRoles = [],
   currentInstitutionId = null,
   currentInstitutionPlan,
   isDesktopHidden,
@@ -802,6 +808,12 @@ export default function Sidebar({
   mobileTitleId = 'app-sidebar-title',
 }: SidebarProps) {
   const location = useLocation();
+  const psychologyRole = (currentInstitutionRole ?? profile.role).toUpperCase();
+  const psychologyStatus = usePsychologyModuleStatus(
+    currentInstitutionId,
+    profile.id,
+    psychologyRole,
+  );
   const [brandLogoFailed, setBrandLogoFailed] =
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
@@ -830,6 +842,7 @@ export default function Sidebar({
   const adminModules = getSidebarAdminModules({
     profile,
     currentInstitutionRole,
+    currentInstitutionRoles,
     currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
@@ -1280,8 +1293,13 @@ export default function Sidebar({
 
   function renderPsychologyNavigation() {
     if (!currentInstitutionId || profile.platform_role === 'SUPER_ADMIN') return null;
-    const effectiveRole = (currentInstitutionRole ?? profile.role ?? '').toUpperCase();
-    const items = psychologyNavigation.filter((item) => item.roles.includes(effectiveRole));
+    const effectiveRole = psychologyRole;
+    const canConfigure = effectiveRole === 'DIRECTOR' || psychologyStatus.canManage === true;
+    const items = psychologyNavigation.filter((item) => {
+      if (!item.roles.includes(effectiveRole)) return false;
+      if (item.path === '/psychology/configuracao') return canConfigure;
+      return psychologyStatus.state === 'enabled';
+    });
     if (!items.length) return null;
     const collapsed = !(sharesRoleNavigationState
       ? openRoleNavigationGroupId === 'psychology'

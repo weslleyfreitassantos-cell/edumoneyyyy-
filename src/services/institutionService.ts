@@ -46,6 +46,7 @@ export interface UserInstitution {
   account: AccountSummary | null;
   accessSource: UserInstitutionAccessSource;
   effectiveRole: CurrentDatabaseRole;
+  activeMembershipRoles?: readonly string[];
 }
 
 interface InstitutionRelation {
@@ -219,6 +220,7 @@ function addOwnedInstitutions(
       account,
       accessSource: 'account_owner',
       effectiveRole: 'ADMIN',
+      activeMembershipRoles: [],
     });
   }
 }
@@ -298,6 +300,7 @@ function normalizeMembershipInstitution(
         ? 'legacy_admin_membership'
         : 'membership',
     effectiveRole: role,
+    activeMembershipRoles: [role],
   };
 }
 
@@ -312,33 +315,46 @@ function compareInstitutions(
 }
 
 export const institutionService = {
-  async listAllActiveInstitutions(): Promise<UserInstitution[]> {
-    const { data, error } = await supabase
-      .from('institutions')
-      .select(
+  async listAllActiveInstitutions(profileId: string): Promise<UserInstitution[]> {
+    const [institutionsResult, membershipsResult] = await Promise.all([
+      supabase
+        .from('institutions')
+        .select(
         `
-        id,
-        name,
-        active,
-        account_id,
-        plan,
-        accounts:account_id (
           id,
           name,
-          status,
-          institution_limit
+          active,
+          account_id,
+          plan,
+          accounts:account_id (
+            id,
+            name,
+            status,
+            institution_limit
+          )
+        `,
         )
-      `,
-      )
-      .eq('active', true)
-      .order('name');
+        .eq('active', true)
+        .order('name'),
+      supabase
+        .from('memberships')
+        .select('institution_id, role')
+        .eq('profile_id', profileId)
+        .eq('active', true),
+    ]);
 
-    if (error) {
-      throw error;
+    if (institutionsResult.error) throw institutionsResult.error;
+    if (membershipsResult.error) throw membershipsResult.error;
+
+    const membershipRolesByInstitution = new Map<string, string[]>();
+    for (const membership of membershipsResult.data ?? []) {
+      const current = membershipRolesByInstitution.get(membership.institution_id) ?? [];
+      if (!current.includes(membership.role)) current.push(membership.role);
+      membershipRolesByInstitution.set(membership.institution_id, current);
     }
 
     return (
-      (data ?? []) as unknown as InstitutionRelation[]
+      (institutionsResult.data ?? []) as unknown as InstitutionRelation[]
     )
       .filter((inst) => {
         const account = normalizeRelation(inst.accounts);
@@ -372,6 +388,7 @@ export const institutionService = {
               : null,
           accessSource: 'membership' as const,
           effectiveRole: 'ADMIN' as CurrentDatabaseRole,
+          activeMembershipRoles: membershipRolesByInstitution.get(inst.id) ?? [],
         };
       });
   },
@@ -478,17 +495,22 @@ export const institutionService = {
       const current = institutions.get(
         item.institution.id,
       );
+      const activeMembershipRoles = [...new Set([
+        ...(current?.activeMembershipRoles ?? []),
+        ...(item.activeMembershipRoles ?? []),
+      ])];
 
       if (
         current &&
         !shouldPreferInstitutionAccess(item, current)
       ) {
+        institutions.set(item.institution.id, { ...current, activeMembershipRoles });
         continue;
       }
 
       institutions.set(
         item.institution.id,
-        item,
+        { ...item, activeMembershipRoles },
       );
     }
 

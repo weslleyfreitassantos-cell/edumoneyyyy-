@@ -204,6 +204,50 @@ begin
   return new;
 end;
 $$;
+
+-- Production's `postgres` executor does not own three protected relations;
+-- they are owned by `supabase_admin`. The selective promoter verifies this
+-- exact owner/session arrangement before allowing the migration. Temporarily
+-- reset to the authenticated owner for only the trigger and policy DDL below,
+-- then restore the verified executor role before the migration continues.
+do $central_studies_v2_owner_executor_guard$
+declare
+  current_role_is_superuser boolean;
+  session_role_is_superuser boolean;
+begin
+  select role_row.rolsuper into current_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = current_user;
+  select role_row.rolsuper into session_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = session_user;
+
+  if not coalesce(current_role_is_superuser, false)
+     and not (session_user = 'supabase_admin'
+       and current_user = 'postgres'
+       and coalesce(session_role_is_superuser, false)) then
+    raise exception 'CENTRAL_STUDIES_V2_007_OWNER_EXECUTOR_REQUIRED'
+      using errcode = '42501';
+  end if;
+end;
+$central_studies_v2_owner_executor_guard$;
+reset role;
+do $central_studies_v2_owner_executor_check$
+declare
+  current_role_is_superuser boolean;
+begin
+  select role_row.rolsuper into current_role_is_superuser
+    from pg_catalog.pg_roles role_row
+   where role_row.rolname = current_user;
+
+  if current_user <> 'supabase_admin'
+     and not coalesce(current_role_is_superuser, false) then
+    raise exception 'CENTRAL_STUDIES_V2_007_OWNER_EXECUTOR_UNAVAILABLE'
+      using errcode = '42501';
+  end if;
+end;
+$central_studies_v2_owner_executor_check$;
+
 drop trigger if exists central_studies_v2_active_step_write_guard on public.learning_guided_session_events;
 create trigger central_studies_v2_active_step_write_guard
 before insert on public.learning_guided_session_events
@@ -263,6 +307,8 @@ using (exists (
      and (set_row.scope = 'GLOBAL' or public.can_access_institution(set_row.institution_id)
        or set_row.teacher_profile_id = auth.uid())
 ));
+
+set role postgres;
 
 create or replace function private.central_studies_v2_journey_allowed(
   p_institution_id uuid, p_student_id uuid, p_journey_id uuid, p_execution_skill_id uuid default null

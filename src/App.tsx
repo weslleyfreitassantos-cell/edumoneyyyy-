@@ -41,6 +41,7 @@ import InitialLoadingGate from './components/InitialLoadingGate';
 import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
 import AppVersionRefreshGuard from './components/AppVersionRefreshGuard';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { PsychologyRouteGate } from './components/PsychologyRouteGate';
 import { Login } from './pages/Login';
 
 import {
@@ -831,7 +832,7 @@ function AppRoutes() {
         <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/inventory" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InventoryPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/psychology/*" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']}><AuthenticatedRouteContent><PsychologyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/psychology/*" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']}><AuthenticatedRouteContent><PsychologyRouteGate><PsychologyPage /></PsychologyRouteGate></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"

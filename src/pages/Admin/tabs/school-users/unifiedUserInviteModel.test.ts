@@ -55,7 +55,6 @@ describe('unified user invite model', () => {
   it('resolve alvos permitidos por papel efetivo', () => {
     expect(getAllowedInviteTargets('ADMIN')).toEqual([
       'DIRECTOR',
-      'PSYCHOLOGIST',
     ]);
     expect(getAllowedInviteTargets('DIRECTOR')).toEqual([
       'SECRETARY',
@@ -70,6 +69,18 @@ describe('unified user invite model', () => {
       'GUARDIAN',
       'PSYCHOLOGIST',
     ]);
+    expect(getAllowedInviteTargets('SUPER_ADMIN')).toEqual([]);
+  });
+
+  it('permite apenas o convite de psicólogo quando ADMIN também tem vínculo escolar autorizado', () => {
+    expect(getAllowedInviteTargets('ADMIN', ['ADMIN', 'DIRECTOR'])).toEqual([
+      'DIRECTOR',
+      'PSYCHOLOGIST',
+    ]);
+    expect(getAllowedInviteTargets('SUPER_ADMIN', ['SECRETARY'])).toEqual([
+      'PSYCHOLOGIST',
+    ]);
+    expect(getAllowedInviteTargets('ADMIN', ['ADMIN'])).toEqual(['DIRECTOR']);
   });
 
   it('retorna a descricao correta da opcao de responsavel', () => {

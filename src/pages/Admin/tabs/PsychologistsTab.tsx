@@ -35,6 +35,9 @@ export default function PsychologistsTab() {
   const { profile } = useAuth();
   const institutionQuery = useCurrentInstitution(profile?.id);
   const institutionId = institutionQuery.data ?? '';
+  const canManageProfessionals = institutionQuery.currentRole === 'DIRECTOR'
+    || institutionQuery.currentRole === 'SECRETARY'
+    || (institutionQuery.currentInstitutionRoles ?? []).some((role) => role === 'DIRECTOR' || role === 'SECRETARY');
   const [professionals, setProfessionals] = useState<PsychologyProfessionalCandidate[]>([]);
   const [drafts, setDrafts] = useState<Record<string, ProfessionalDraft>>({});
   const [search, setSearch] = useState('');
@@ -46,8 +49,9 @@ export default function PsychologistsTab() {
 
   useEffect(() => {
     let current = true;
-    if (!institutionId) {
+    if (!institutionId || !canManageProfessionals) {
       setProfessionals([]);
+      setLoading(false);
       return () => { current = false; };
     }
 
@@ -69,7 +73,7 @@ export default function PsychologistsTab() {
       });
 
     return () => { current = false; };
-  }, [institutionId, refreshKey]);
+  }, [institutionId, canManageProfessionals, refreshKey]);
 
   const filteredProfessionals = useMemo(() => {
     const query = normalizeSearch(search);
@@ -128,6 +132,12 @@ export default function PsychologistsTab() {
 
   return (
     <div className="space-y-5">
+      {!canManageProfessionals ? (
+        <p role="alert" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          Somente Diretor ou Secretaria com vínculo ativo nesta instituição pode cadastrar psicólogos e verificar o CRP.
+        </p>
+      ) : null}
+      {canManageProfessionals ? <>
       <header className="rounded-xl border border-blue-100 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
         <div className="flex items-center gap-2">
           <UserRoundCog className="h-5 w-5 text-blue-700 dark:text-blue-300" aria-hidden="true" />
@@ -222,6 +232,7 @@ export default function PsychologistsTab() {
           </div>
         ) : null}
       </section>
+      </> : null}
     </div>
   );
 }

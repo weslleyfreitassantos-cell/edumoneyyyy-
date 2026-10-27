@@ -146,6 +146,13 @@ jobs:
       - name: Teste dinâmico isolado do roster da PR #277
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
+      - name: Preparar baseline isolado da migration 007
+        run: npx supabase db reset --local --version 20261025000600 --no-seed
+
+      - name: Provar ownership e aplicação seletiva da migration 007
+        timeout-minutes: 10
+        run: bash scripts/db/central-studies-v2-runtime-publication-owner.test.sh
+
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
 

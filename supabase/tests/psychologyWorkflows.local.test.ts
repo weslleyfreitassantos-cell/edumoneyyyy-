@@ -117,10 +117,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       auth: { autoRefreshToken: false, persistSession: false },
     });
     const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-    const [director, secretary, platformAdmin, psychologist, otherPsychologist, student, unrelatedStudent, guardian, minor, otherInstitutionStudent] = await Promise.all([
+    const [director, secretary, platformAdmin, schoolAdmin, multiRoleAdmin, inactiveDirector, foreignDirector, psychologist, otherPsychologist, student, unrelatedStudent, guardian, minor, otherInstitutionStudent] = await Promise.all([
       createActor(service, 'DIRECTOR', `${suffix}-director`),
       createActor(service, 'SECRETARY', `${suffix}-secretary`),
       createActor(service, 'ADMIN', `${suffix}-platform-admin`, 'SUPER_ADMIN'),
+      createActor(service, 'ADMIN', `${suffix}-school-admin`),
+      createActor(service, 'ADMIN', `${suffix}-multi-role-admin`),
+      createActor(service, 'DIRECTOR', `${suffix}-inactive-director`),
+      createActor(service, 'DIRECTOR', `${suffix}-foreign-director`),
       createActor(service, 'PSYCHOLOGIST', `${suffix}-psychologist`),
       createActor(service, 'PSYCHOLOGIST', `${suffix}-other-psychologist`),
       createActor(service, 'STUDENT', `${suffix}-student`),
@@ -155,10 +159,29 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
         active: true,
       });
     }
+    for (const [actor, role, active] of [
+      [schoolAdmin, 'ADMIN', true],
+      [multiRoleAdmin, 'ADMIN', true],
+      [multiRoleAdmin, 'DIRECTOR', true],
+      [inactiveDirector, 'DIRECTOR', false],
+    ] as Array<[Actor, string, boolean]>) {
+      await insertOne(service, 'memberships', {
+        profile_id: actor.id,
+        institution_id: institution.id,
+        role,
+        active,
+      });
+    }
     await insertOne(service, 'memberships', {
       profile_id: otherInstitutionStudent.id,
       institution_id: otherInstitution.id,
       role: 'STUDENT',
+      active: true,
+    });
+    await insertOne(service, 'memberships', {
+      profile_id: foreignDirector.id,
+      institution_id: otherInstitution.id,
+      role: 'DIRECTOR',
       active: true,
     });
 
@@ -234,6 +257,18 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(enable.error).toBeNull();
     expect(enable.data).toBe(true);
+    await insertOne(service, 'memberships', {
+      profile_id: director.id,
+      institution_id: otherInstitution.id,
+      role: 'DIRECTOR',
+      active: true,
+    });
+    const enableOtherInstitution = await director.client.rpc('psychology_set_module_enabled', {
+      target_institution_id: otherInstitution.id,
+      target_enabled: true,
+    });
+    expect(enableOtherInstitution.error).toBeNull();
+    expect(enableOtherInstitution.data).toBe(true);
 
     const minorCannotAuthorizeSelf = await minor.client.rpc('psychology_record_authorization', {
       target_student_id: minorRow.id,
@@ -268,6 +303,43 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(guardianRevocation.error).toBeNull();
 
+    const unauthorizedProfessionalManagers = await Promise.all([
+      platformAdmin.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11111',
+        target_crp_state: 'BA',
+      }),
+      schoolAdmin.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11112',
+        target_crp_state: 'BA',
+      }),
+      inactiveDirector.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11113',
+        target_crp_state: 'BA',
+      }),
+      foreignDirector.client.rpc('psychology_register_professional', {
+        target_institution_id: institution.id,
+        target_profile_id: psychologist.id,
+        target_crp_registration: '03/11114',
+        target_crp_state: 'BA',
+      }),
+    ]);
+    expect(unauthorizedProfessionalManagers.map((result) => result.error?.code))
+      .toEqual(['P0001', 'P0001', 'P0001', 'P0001']);
+
+    const multiRoleRegistration = await multiRoleAdmin.client.rpc('psychology_register_professional', {
+      target_institution_id: institution.id,
+      target_profile_id: psychologist.id,
+      target_crp_registration: '03/11222',
+      target_crp_state: 'BA',
+    });
+    expect(multiRoleRegistration.error).toBeNull();
+
     const registered = await director.client.rpc('psychology_register_professional', {
       target_institution_id: institution.id,
       target_profile_id: psychologist.id,
@@ -299,14 +371,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     });
     expect(verified.error).toBeNull();
 
-    const otherProfessionalRegistered = await director.client.rpc('psychology_register_professional', {
+    const otherProfessionalRegistered = await secretary.client.rpc('psychology_register_professional', {
       target_institution_id: institution.id,
       target_profile_id: otherPsychologist.id,
       target_crp_registration: '03/67890',
       target_crp_state: 'BA',
     });
     expect(otherProfessionalRegistered.error).toBeNull();
-    const otherProfessionalVerified = await director.client.rpc('psychology_verify_professional', {
+    const otherProfessionalVerified = await secretary.client.rpc('psychology_verify_professional', {
       target_institution_id: institution.id,
       target_profile_id: otherPsychologist.id,
       human_crp_verified: true,
@@ -384,7 +456,7 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       page_size: 20,
     });
     expect(unauthorizedCandidateSearch.error?.code).toBe('P0001');
-    const crossInstitutionCandidateSearch = await director.client.rpc('psychology_search_management_candidates', {
+    const crossInstitutionCandidateSearch = await secretary.client.rpc('psychology_search_management_candidates', {
       target_institution_id: otherInstitution.id,
       search_text: null,
       class_filter_id: null,
@@ -719,6 +791,15 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       outcome: 'COMPLETED',
     });
     expect(closed.error).toBeNull();
+    const blockStartsAt = new Date(Date.now() + 24 * 60 * 60_000);
+    const blockEndsAt = new Date(blockStartsAt.getTime() + 60 * 60_000);
+    const availabilityBlock = await psychologist.client.rpc('psychology_add_availability_block', {
+      target_institution_id: institution.id,
+      target_starts_at: blockStartsAt.toISOString(),
+      target_ends_at: blockEndsAt.toISOString(),
+    });
+    expect(availabilityBlock.error).toBeNull();
+    const availabilityBlockId = required(availabilityBlock.data as string | null, 'availability block');
     const lateMessage = await student.client.rpc('psychology_send_message', {
       target_session_id: sessionId,
       message_body: 'depois de encerrar',
@@ -734,6 +815,14 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     expect(appointmentsForOtherStudent.error).toBeNull();
     expect(appointmentsForOtherStudent.data).toEqual([]);
 
+    const guardianConsentForDisabledRevocation = await guardian.client.rpc('psychology_record_authorization', {
+      target_student_id: minorRow.id,
+      accept_privacy_notice: true,
+      accept_service_terms: true,
+      authorize_treatment: true,
+    });
+    expect(guardianConsentForDisabledRevocation.error).toBeNull();
+
     const disabled = await director.client.rpc('psychology_set_module_enabled', {
       target_institution_id: institution.id,
       target_enabled: false,
@@ -743,6 +832,151 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
     const preserved = await service.from('psychology_appointments').select('id').eq('id', appointmentId).single();
     expect(preserved.error).toBeNull();
     expect(required(preserved.data, 'preserved appointment').id).toBe(appointmentId);
+    const preservedAuthorization = await service.from('psychology_authorizations')
+      .select('status').eq('student_id', studentRow.id).single();
+    expect(preservedAuthorization.error).toBeNull();
+    expect(required(preservedAuthorization.data, 'preserved authorization').status).toBe('ACTIVE');
+    const hiddenSlots = await student.client.rpc('psychology_list_available_slots', {
+      target_institution_id: institution.id,
+      target_student_id: studentRow.id,
+      from_date: saoPauloDate(0),
+    });
+    expect(hiddenSlots.error?.code).toBe('P0001');
+    const hiddenAppointments = await student.client.rpc('psychology_list_appointments', {
+      target_institution_id: institution.id,
+      from_at: new Date(Date.now() - 60_000).toISOString(),
+      through_at: new Date(Date.now() + 60 * 60_000).toISOString(),
+    });
+    expect(hiddenAppointments.error?.code).toBe('P0001');
+    const cannotAccessSessionWhenDisabled = await student.client.rpc('psychology_check_session_access', {
+      target_session_id: sessionId,
+    });
+    expect(cannotAccessSessionWhenDisabled.error).toBeNull();
+    expect(cannotAccessSessionWhenDisabled.data).toBe(false);
+    const cannotRestartSessionWhenDisabled = await psychologist.client.rpc('psychology_start_session', {
+      target_session_id: sessionId,
+    });
+    expect(cannotRestartSessionWhenDisabled.error?.code).toBe('P0001');
+    const cannotSendMessageWhenDisabled = await student.client.rpc('psychology_send_message', {
+      target_session_id: sessionId,
+      message_body: 'mensagem após desativação',
+      client_message_key: crypto.randomUUID(),
+    });
+    expect(cannotSendMessageWhenDisabled.error?.code).toBe('P0001');
+    const cannotSaveNoteWhenDisabled = await psychologist.client.rpc('psychology_save_note_draft', {
+      target_session_id: sessionId,
+      expected_version: 3,
+      note_content: { objective: 'alteração após desativação' },
+    });
+    expect(cannotSaveNoteWhenDisabled.error?.code).toBe('P0001');
+    const cannotFinalizeNoteWhenDisabled = await psychologist.client.rpc('psychology_finalize_note', {
+      target_session_id: sessionId,
+      expected_version: 3,
+    });
+    expect(cannotFinalizeNoteWhenDisabled.error?.code).toBe('P0001');
+    const cannotAddendumWhenDisabled = await psychologist.client.rpc('psychology_add_note_addendum', {
+      target_session_id: sessionId,
+      expected_version: 3,
+      addendum_content: { addendum: 'adendo após desativação' },
+    });
+    expect(cannotAddendumWhenDisabled.error?.code).toBe('P0001');
+    const cannotChangeAvailabilityWhenDisabled = await psychologist.client.rpc('psychology_set_availability_rule', {
+      target_institution_id: institution.id,
+      target_rule_id: required(rule.data as string | null, 'availability rule'),
+      target_day_of_week: localWeekday(ruleDate),
+      target_start_local: '08:00:00',
+      target_end_local: '18:00:00',
+      target_timezone: 'America/Sao_Paulo',
+      target_session_minutes: 50,
+      target_preparation_minutes: 10,
+      target_valid_from: fromDate,
+      target_valid_until: null,
+      target_active: false,
+    });
+    expect(cannotChangeAvailabilityWhenDisabled.error?.code).toBe('P0001');
+    const cannotAddAvailabilityBlockWhenDisabled = await psychologist.client.rpc('psychology_add_availability_block', {
+      target_institution_id: institution.id,
+      target_starts_at: blockStartsAt.toISOString(),
+      target_ends_at: blockEndsAt.toISOString(),
+    });
+    expect(cannotAddAvailabilityBlockWhenDisabled.error?.code).toBe('P0001');
+    const cannotRemoveAvailabilityBlockWhenDisabled = await psychologist.client.rpc('psychology_remove_availability_block', {
+      target_institution_id: institution.id,
+      target_block_id: availabilityBlockId,
+    });
+    expect(cannotRemoveAvailabilityBlockWhenDisabled.error?.code).toBe('P0001');
+
+    const hiddenDirectRowCases = [
+      {
+        table: 'psychology_appointments',
+        profile: 'student',
+        reason: 'the appointment access policy hides records while the institution module is disabled',
+        request: student.client.from('psychology_appointments').select('id').eq('id', appointmentId),
+      },
+      {
+        table: 'psychology_sessions',
+        profile: 'student',
+        reason: 'the session access policy hides records while the institution module is disabled',
+        request: student.client.from('psychology_sessions').select('id').eq('id', sessionId),
+      },
+      {
+        table: 'psychology_messages',
+        profile: 'student',
+        reason: 'the private session policy hides messages while the institution module is disabled',
+        request: student.client.from('psychology_messages').select('id').eq('session_id', sessionId),
+      },
+      {
+        table: 'psychology_notes',
+        profile: 'psychologist',
+        reason: 'the clinical note access policy hides notes while the institution module is disabled',
+        request: psychologist.client.from('psychology_notes').select('id').eq('session_id', sessionId),
+      },
+      {
+        table: 'psychology_note_versions',
+        profile: 'psychologist',
+        reason: 'note-version visibility follows the protected parent note policy',
+        request: psychologist.client.from('psychology_note_versions').select('id').eq('note_id', savedNoteId),
+      },
+      {
+        table: 'psychology_availability_rules',
+        profile: 'psychologist',
+        reason: 'availability is gated by the institution module state',
+        request: psychologist.client.from('psychology_availability_rules').select('id').eq('id', rule.data),
+      },
+      {
+        table: 'psychology_availability_exceptions',
+        profile: 'psychologist',
+        reason: 'availability exceptions are gated by the institution module state',
+        request: psychologist.client.from('psychology_availability_exceptions').select('id').eq('id', availabilityBlockId),
+      },
+      {
+        table: 'psychology_assignments',
+        profile: 'student',
+        reason: 'the assignment policy allows the student branch only while the module is enabled',
+        request: student.client.from('psychology_assignments').select('id').eq('student_id', studentRow.id),
+      },
+      {
+        table: 'psychology_professionals',
+        profile: 'psychologist',
+        reason: 'a professional sees their own row only while the module is enabled',
+        request: psychologist.client.from('psychology_professionals').select('profile_id').eq('profile_id', psychologist.id),
+      },
+    ] as const;
+    const hiddenDirectRows = await Promise.all(hiddenDirectRowCases.map(async (testCase) => ({
+      ...testCase,
+      result: await testCase.request,
+    })));
+    for (const { table, profile, reason, result } of hiddenDirectRows) {
+      const context = `${table} queried as ${profile}: ${reason}`;
+      expect(result.error, context).toBeNull();
+      expect(result.data, context).toEqual([]);
+    }
+
+    const disabledRealtime = await subscribeToPsychologyMessages(student.client, sessionId);
+    expect(disabledRealtime.statuses).not.toContain('SUBSCRIBED');
+    expect(disabledRealtime.statuses).toContain('CHANNEL_ERROR');
+    await student.client.removeChannel(disabledRealtime.channel);
+
     const cannotAuthorizeWhileDisabled = await student.client.rpc('psychology_record_authorization', {
       target_student_id: studentRow.id,
       accept_privacy_notice: true,
@@ -750,5 +984,52 @@ localDescribe('psychology workflows against a disposable local Supabase', () => 
       authorize_treatment: true,
     });
     expect(cannotAuthorizeWhileDisabled.error?.code).toBe('P0001');
+    expect(cannotAuthorizeWhileDisabled.error?.message).toContain('AUTHORIZATION_REQUIRED');
+
+    const studentTargetsAreHidden = await student.client.rpc('psychology_list_my_authorization_targets', {
+      target_institution_id: institution.id,
+    });
+    expect(studentTargetsAreHidden.error?.code).toBe('P0001');
+    expect(studentTargetsAreHidden.error?.message).toContain('MODULE_DISABLED');
+    const guardianTargetsAreHidden = await guardian.client.rpc('psychology_list_my_authorization_targets', {
+      target_institution_id: institution.id,
+    });
+    expect(guardianTargetsAreHidden.error?.code).toBe('P0001');
+    expect(guardianTargetsAreHidden.error?.message).toContain('MODULE_DISABLED');
+
+    const studentCannotReadAuthorizationWhenDisabled = await student.client.from('psychology_authorizations')
+      .select('student_id').eq('student_id', studentRow.id);
+    expect(studentCannotReadAuthorizationWhenDisabled.error).toBeNull();
+    expect(studentCannotReadAuthorizationWhenDisabled.data).toEqual([]);
+    const studentCannotRevokeWhenDisabled = await student.client.rpc('psychology_revoke_authorization', {
+      target_student_id: studentRow.id,
+    });
+    expect(studentCannotRevokeWhenDisabled.error?.code).toBe('P0001');
+    expect(studentCannotRevokeWhenDisabled.error?.message).toContain('MODULE_DISABLED');
+    const guardianCannotRevokeWhenDisabled = await guardian.client.rpc('psychology_revoke_authorization', {
+      target_student_id: minorRow.id,
+    });
+    expect(guardianCannotRevokeWhenDisabled.error?.code).toBe('P0001');
+    expect(guardianCannotRevokeWhenDisabled.error?.message).toContain('MODULE_DISABLED');
+
+    const managerMayStillConfigureWhenDisabled = await director.client.rpc('psychology_can_manage_module', {
+      target_institution_id: institution.id,
+    });
+    expect(managerMayStillConfigureWhenDisabled.error).toBeNull();
+    expect(managerMayStillConfigureWhenDisabled.data).toBe(true);
+    const currentInstitutionIsDisabled = await student.client.rpc('psychology_module_enabled', {
+      target_institution_id: institution.id,
+    });
+    expect(currentInstitutionIsDisabled.error).toBeNull();
+    expect(currentInstitutionIsDisabled.data).toBe(false);
+    const otherInstitutionRemainsEnabled = await otherInstitutionStudent.client.rpc('psychology_module_enabled', {
+      target_institution_id: otherInstitution.id,
+    });
+    expect(otherInstitutionRemainsEnabled.error).toBeNull();
+    expect(otherInstitutionRemainsEnabled.data).toBe(true);
+    const crossInstitutionTargets = await student.client.rpc('psychology_list_my_authorization_targets', {
+      target_institution_id: otherInstitution.id,
+    });
+    expect(crossInstitutionTargets.error?.code).toBe('P0001');
   }, 30_000);
 });
