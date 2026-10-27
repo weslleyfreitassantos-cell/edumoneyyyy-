@@ -107,11 +107,13 @@ denied_ledger_count="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_
 }
 echo 'CENTRAL_STUDIES_V2_007_NON_OWNER_POLICY_DDL_42501=PASS'
 
-# The CLI must reproduce the hosted executor identity: the authenticated owner
-# is the session user, while the ordinary migration role is current_user.
-identity_output="$(npx supabase --workdir "$repo_root" db query --db-url "$admin_db_url" \
-  --agent yes --output-format json --log-level error \
-  "select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity")"
+# Supabase's migration executor applies its after-connect role hook; `db query`
+# is a standalone prepared statement and does not run that hook. Reproduce the
+# exact executor identity in a disposable psql session, then validate the CLI
+# migration path below against the same isolated database.
+identity_output="$(psql_in_container -U supabase_admin -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "SET SESSION ROLE postgres; RESET ALL; \
+      select json_build_object('session_user', session_user::text, 'current_user', current_user::text, 'current_role', current_role::text, 'role_setting', coalesce(nullif(current_setting('role', true), ''), 'none')) as identity")"
 IDENTITY_OUTPUT="$identity_output" node - <<'NODE'
 const raw = process.env.IDENTITY_OUTPUT || '';
 const documents = [];
