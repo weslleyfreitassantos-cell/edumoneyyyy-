@@ -272,7 +272,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Testes dinâmicos de segurança e RPCs adaptativos
-        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/inventoryManagement.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts supabase/tests/financeV2.local.test.ts
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts supabase/tests/inventoryManagement.local.test.ts supabase/tests/psychologyWorkflows.local.test.ts supabase/tests/financeV2.local.test.ts supabase/tests/tecQuizLive.local.test.ts
 
       - name: Diagnosticar replicação Realtime sem expor dados
         if: always()
