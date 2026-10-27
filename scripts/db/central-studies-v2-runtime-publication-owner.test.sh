@@ -232,9 +232,15 @@ security_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|'
          and t.tgname='central_studies_v2_active_step_write_guard' and not t.tgisinternal),
      (select count(*) = 3 and bool_and(pg_get_userbyid(c.relowner)='supabase_admin')
         from pg_class c join pg_namespace n on n.oid=c.relnamespace
-       where n.nspname='public' and c.relname in ('learning_question_sets','learning_question_set_items','learning_guided_session_events'));")"
-[[ "$security_assertions" == 't|t|t|t' ]] || {
-  echo "RLS, tenant-scope policy, trigger, or owner-preservation assertion failed: $security_assertions" >&2
+       where n.nspname='public' and c.relname in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')),
+     (select count(*) = 3 and bool_and(pg_get_userbyid(c.relowner)='supabase_admin')
+        from pg_class c join pg_namespace n on n.oid=c.relnamespace
+       where n.nspname='public' and c.relname in ('learning_central_studies_v2_runtime',
+         'learning_central_studies_v2_institution_targets','learning_central_studies_v2_release_events')),
+     (select pg_get_userbyid(p.proowner)='postgres' from pg_proc p
+       where p.oid='private.central_studies_v2_journey_allowed(uuid,uuid,uuid,uuid)'::regprocedure);")"
+[[ "$security_assertions" == 't|t|t|t|t|t' ]] || {
+  echo "RLS, tenant-scope policy, trigger, or ownership assertion failed: $security_assertions" >&2
   exit 1
 }
 
