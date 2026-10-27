@@ -198,6 +198,7 @@ describe('brandingService', () => {
     );
     expect(result).toEqual({
       scope: 'INSTITUTION',
+      documentTitle: 'Escola Luz',
       displayName: 'Luz Colegio',
       logoUrl: 'https://cdn.example.com/escola-luz/logo.png',
       faviconUrl:

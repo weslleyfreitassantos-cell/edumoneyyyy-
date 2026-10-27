@@ -6,10 +6,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { pedagogicalMonitoringService } from '../../services/pedagogicalMonitoringService';
 import {
   listInclusiveAeePlans,
   listInclusiveAeeSessions,
   listInclusivePeiPlans,
+  listInclusiveProgressStudents,
   listInclusiveStudents,
   saveInclusiveAeePlan,
   saveInclusiveAeeSession,
@@ -25,6 +27,7 @@ vi.mock('../../services/inclusiveEducationService', () => ({
   listInclusiveAeePlans: vi.fn(),
   listInclusiveAeeSessions: vi.fn(),
   listInclusivePeiPlans: vi.fn(),
+  listInclusiveProgressStudents: vi.fn(),
   listInclusiveStudents: vi.fn(),
   printInclusiveDocument: vi.fn(),
   saveInclusiveAeePlan: vi.fn(),
@@ -41,12 +44,14 @@ vi.mock('../../services/pedagogicalMonitoringService', () => ({
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution = vi.mocked(useInstitution);
 const mockedListStudents = vi.mocked(listInclusiveStudents);
+const mockedListProgressStudents = vi.mocked(listInclusiveProgressStudents);
 const mockedListPei = vi.mocked(listInclusivePeiPlans);
 const mockedListAee = vi.mocked(listInclusiveAeePlans);
 const mockedListAeeSessions = vi.mocked(listInclusiveAeeSessions);
 const mockedSavePei = vi.mocked(saveInclusivePeiPlan);
 const mockedSaveAee = vi.mocked(saveInclusiveAeePlan);
 const mockedSaveAeeSession = vi.mocked(saveInclusiveAeeSession);
+const mockedGetInstitutionMonitoring = vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring);
 
 function renderInclusivePage(path: string) {
   return render(
@@ -65,6 +70,7 @@ beforeEach(() => {
     currentInstitutionId: 'institution-1',
   } as ReturnType<typeof useInstitution>);
   mockedListStudents.mockResolvedValue([{ id: 'student-1', name: 'Estudante QA' }]);
+  mockedListProgressStudents.mockResolvedValue([]);
   mockedListPei.mockResolvedValue([]);
   mockedListAee.mockResolvedValue([]);
   mockedListAeeSessions.mockResolvedValue([]);
@@ -81,6 +87,41 @@ async function chooseAuthorizedStudent() {
 }
 
 describe('InclusiveEducationPage PEI/AEE access', () => {
+  it('uses the searchable student list to open pedagogical progress', async () => {
+    mockedListStudents.mockResolvedValue([
+      { id: 'student-outside', name: 'Aluno sem vínculo inclusivo' },
+    ]);
+    mockedListProgressStudents.mockResolvedValue([
+      { id: 'student-1', name: 'Ana Souza' },
+      { id: 'student-2', name: 'Davi Mendes' },
+    ]);
+    mockedGetInstitutionMonitoring.mockResolvedValue({
+      students: [],
+    } as Awaited<ReturnType<typeof pedagogicalMonitoringService.getInstitutionMonitoring>>);
+
+    renderInclusivePage('/inclusive-education/progress');
+
+    await waitFor(() => expect(mockedListProgressStudents).toHaveBeenCalledWith('institution-1'));
+    expect(mockedListStudents).not.toHaveBeenCalled();
+    expect(screen.queryByText('Aluno sem vínculo inclusivo')).toBeNull();
+
+    const search = await screen.findByRole('textbox', {
+      name: 'Pesquisar em estudantes para consultar evolução',
+    });
+    expect(screen.queryByLabelText('Estudante para consultar evolução')).toBeNull();
+    fireEvent.change(search, { target: { value: 'Davi' } });
+
+    fireEvent.click(await screen.findByRole('option', { name: 'Davi Mendes' }));
+
+    await waitFor(() => {
+      expect(mockedGetInstitutionMonitoring).toHaveBeenCalledWith(
+        'institution-1',
+        { studentId: 'student-2' },
+      );
+    });
+    expect(await screen.findByText('Nenhum registro de evolução disponível')).toBeTruthy();
+  });
+
   it('loads an authorized student and saves a PEI draft from the interactive form', async () => {
     renderInclusivePage('/inclusive-education/pei');
 

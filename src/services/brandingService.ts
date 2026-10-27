@@ -27,6 +27,7 @@ export type AccountDomainStatus = 'PENDING' | 'ACTIVE' | 'DISABLED';
 export interface PublicBranding {
   scope: PublicBrandingScope;
   displayName: string | null;
+  documentTitle?: string | null;
   logoUrl: string | null;
   faviconUrl: string | null;
   loginBackgroundUrl?: string | null;
@@ -309,6 +310,10 @@ function normalizePublicInstitutionBrandingRow(
 ): PublicBranding {
   return normalizePublicBrandingAssetUrls({
     scope: 'INSTITUTION',
+    documentTitle:
+      typeof row.name === 'string' && row.name.trim()
+        ? row.name
+        : null,
     displayName:
       typeof row.login_display_name === 'string' &&
       row.login_display_name.trim()

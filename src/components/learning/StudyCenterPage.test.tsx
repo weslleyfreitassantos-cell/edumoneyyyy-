@@ -56,6 +56,10 @@ import StudentSubjectPage from './StudentSubjectPage';
 
 afterEach(() => {
   cleanup();
+  state.subjects = [
+    { id: 'subject-math', name: 'Matemática' },
+    { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+  ];
   state.activities = [];
   state.adaptiveTarget = null;
   state.guidedSession = null;
@@ -67,9 +71,9 @@ afterEach(() => {
   state.startRecommendedStudy.mockReset().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' });
 });
 
-function renderPage() {
+function renderPage(initialEntry = '/student/study') {
   return render(
-    <MemoryRouter initialEntries={['/student/study']}>
+    <MemoryRouter initialEntries={[initialEntry]}>
       <Routes>
         <Route path="/student/study" element={<StudyCenterPage />} />
         <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
@@ -86,6 +90,7 @@ describe('StudyCenterPage', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Explorar inglês' }).getAttribute('href')).toBe('/student/study/english');
     const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
     const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
     expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
@@ -115,6 +120,38 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getAllByRole('link', { name: /Matemática/ }).some((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toBe(true);
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
+  });
+
+  it('exibe somente componentes padrão da BNCC nos cartões', () => {
+    state.subjects = [
+      { id: 'subject-math', name: 'Matemática' },
+      { id: 'subject-portuguese', name: 'Língua Portuguesa' },
+      { id: 'subject-life-project', name: 'Projeto de Vida' },
+      { id: 'subject-writing', name: 'Redação' },
+      { id: 'subject-digital-culture', name: 'Cultura Digital' },
+    ];
+
+    renderPage();
+
+    const subjectRegion = screen.getByRole('region', { name: 'Matérias' });
+    const subjectLinks = Array.from(subjectRegion.querySelectorAll('a[href^="/student/study/subject/"]'));
+    expect(subjectLinks.map((link) => link.getAttribute('href')).sort()).toEqual([
+      '/student/study/subject/subject-math',
+      '/student/study/subject/subject-portuguese',
+    ]);
+    expect(screen.getByText('2 matérias disponíveis')).toBeTruthy();
+  });
+
+  it('bloqueia links antigos para matérias fora do currículo padrão', () => {
+    state.subjects = [
+      { id: 'subject-life-project', name: 'Projeto de Vida' },
+      { id: 'subject-math', name: 'Matemática' },
+    ];
+
+    renderPage('/student/study/subject/subject-life-project');
+
+    expect(screen.getByText('Esta matéria não está disponível para você.')).toBeTruthy();
+    expect(screen.queryByRole('region', { name: 'Estudo de Projeto de Vida' })).toBeNull();
   });
 
   it('inicia a preparação para o ENEM expandida e permite recolher e reabrir', () => {
@@ -200,9 +237,9 @@ describe('StudyCenterPage', () => {
 
     expect(screen.queryByRole('region', { name: 'Estudo guiado pela BNCC' })).toBeNull();
     expect(screen.getAllByRole('link', { name: /Matemática/ }).filter((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toHaveLength(1);
-    expect(screen.getByRole('link', { name: /Física.*1 jornada guiada.*prévia/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
+    expect(screen.getByRole('link', { name: /Física.*1 jornada em revisão pedagógica/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
 
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
     expect(screen.queryByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeNull();
     expect(screen.queryByText('Relação curricular candidata, não validada:')).toBeNull();
     expect(screen.queryByText('EM13MAT303')).toBeNull();
@@ -224,7 +261,7 @@ describe('StudyCenterPage', () => {
     };
 
     renderPage();
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
     expect(screen.getByText('1º ano do Ensino Médio')).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Equações e modelagem' })).toBeTruthy();
     expect(screen.getByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeTruthy();
@@ -249,7 +286,7 @@ describe('StudyCenterPage', () => {
     };
 
     renderPage();
-    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada em revisão/ }));
 
     expect(screen.getAllByRole('link', { name: 'Continuar estudo' })).toHaveLength(1);
     expect(screen.getByRole('link', { name: 'Continuar estudo' }).getAttribute('href')).toContain('journey=journey-math');
@@ -281,6 +318,17 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
 
     expect(screen.getByRole('status').textContent).toContain('Ainda não há conteúdo demonstrativo disponível para sua série');
+    expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
+  });
+
+  it('apresenta a prévia indisponível sem erro técnico e sem oferecer início', () => {
+    state.guidedRecommendation = { state: 'DEMO_PREVIEW_UNAVAILABLE' };
+
+    renderPage();
+    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
+
+    expect(screen.getByRole('status').textContent).toContain('ainda não foi liberado para esta instituição');
+    expect(screen.queryByRole('alert')).toBeNull();
     expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
   });
 });

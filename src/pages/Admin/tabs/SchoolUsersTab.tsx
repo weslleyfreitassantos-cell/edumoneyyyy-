@@ -51,6 +51,7 @@ export interface SchoolUsersTabProps {
   fixedRole?: CurrentDatabaseRole;
   inviteTargets?: readonly UnifiedUserInviteTarget[];
   inviteHeading?: string;
+  onInviteComplete?: () => void;
 }
 
 export const schoolUserRoleLabels: Record<
@@ -63,6 +64,7 @@ export const schoolUserRoleLabels: Record<
   TEACHER: getRoleDisplayLabel('TEACHER'),
   STUDENT: getRoleDisplayLabel('STUDENT'),
   GUARDIAN: getRoleDisplayLabel('GUARDIAN'),
+  PSYCHOLOGIST: getRoleDisplayLabel('PSYCHOLOGIST'),
 };
 
 const fixedRoleSummaryLabels: Record<
@@ -75,6 +77,7 @@ const fixedRoleSummaryLabels: Record<
   TEACHER: { total: 'Total de docentes', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
   STUDENT: { total: 'Total de estudantes', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
   GUARDIAN: { total: 'Total de responsáveis', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
+  PSYCHOLOGIST: { total: 'Total de psicólogas(os)', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
 };
 
 const filterOptions: {
@@ -97,6 +100,7 @@ const filterOptions: {
     value: 'GUARDIAN',
     label: 'Responsáveis',
   },
+  { value: 'PSYCHOLOGIST', label: 'Psicólogas(os)' },
 ];
 
 const editableRoleOptions: {
@@ -109,6 +113,7 @@ const editableRoleOptions: {
   { value: 'TEACHER', label: 'Docente' },
   { value: 'STUDENT', label: 'Estudante' },
   { value: 'GUARDIAN', label: 'Responsável' },
+  { value: 'PSYCHOLOGIST', label: 'Psicóloga(o)' },
 ];
 
 function getEditableRoleOptions(
@@ -774,6 +779,7 @@ export default function SchoolUsersTab({
   fixedRole,
   inviteTargets,
   inviteHeading,
+  onInviteComplete,
 }: SchoolUsersTabProps = {}) {
   const { profile } = useAuth();
 
@@ -1055,6 +1061,9 @@ export default function SchoolUsersTab({
           currentRole={
             institutionQuery.currentRole
           }
+          currentInstitutionRoles={
+            institutionQuery.currentInstitutionRoles
+          }
           profileRole={profile?.role}
           currentInstitutionName={
             institutionQuery.currentInstitution
@@ -1065,6 +1074,7 @@ export default function SchoolUsersTab({
           )}
           allowedTargets={inviteTargets}
           heading={inviteHeading}
+          onInviteComplete={onInviteComplete}
         />
       ) : null}
 

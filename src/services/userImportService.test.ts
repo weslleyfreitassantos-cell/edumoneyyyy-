@@ -30,6 +30,11 @@ const subjects = [
 ] as SubjectRow[];
 
 describe('userImportService', () => {
+  it('includes a discipline column and examples in the minimum teacher template', () => {
+    expect(TEACHER_REQUIRED_IMPORT_HEADERS).toEqual(['Nome completo', 'E-mail', 'Disciplinas']);
+    expect(TEACHER_REQUIRED_IMPORT_EXAMPLE.Disciplinas).toBe('Matemática; Física');
+  });
+
   it('builds the complete student draft and resolves academic links', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
@@ -50,6 +55,40 @@ describe('userImportService', () => {
     expect(preview?.data.academic_year_id).toBe('year-2027');
     expect(preview?.data.class_id).toBe('class-7a');
     expect(preview?.data.documents).toHaveLength(10);
+    expect(preview?.data.documents[0]?.status).toBe('NOT_REQUESTED');
+  });
+
+  it('imports explicit document review states and requires a reason for rejection or dispensation', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship', 'academic_year', 'ano_escolar', 'class', 'certidao_nascimento_status', 'certidao_nascimento_notes', 'rg_status'],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          full_name: 'Ana Souza', email: 'ana@example.com', birth_date: '31/08/2016',
+          guardian_1_full_name: 'Carlos Souza', guardian_1_email: 'carlos@example.com', guardian_1_relationship: 'Pai',
+          academic_year: '2027', ano_escolar: '7º ano', class: '7º A',
+          certidao_nascimento_status: 'rejeitado',
+          certidao_nascimento_notes: 'Arquivo ilegível',
+          rg_status: 'em conferência',
+        },
+      }, {
+        rowNumber: 3,
+        values: {
+          full_name: 'Bruno Souza', email: 'bruno@example.com', birth_date: '31/08/2016',
+          guardian_1_full_name: 'Carlos Souza', guardian_1_email: 'carlos@example.com', guardian_1_relationship: 'Pai',
+          academic_year: '2027', ano_escolar: '7º ano', class: '7º A',
+          rg_status: 'dispensado',
+        },
+      }],
+    }, { years: [year], classes: [schoolClass] });
+
+    expect(result.previews[0]?.data.documents[0]).toMatchObject({ status: 'REJECTED', notes: 'Arquivo ilegível' });
+    expect(result.previews[0]?.data.documents[1]?.status).toBe('UNDER_REVIEW');
+    expect(result.previews[0]?.errors).toEqual([]);
+    expect(result.previews[1]?.errors).toContain(
+      'RG - observação/justificativa é obrigatória para status Rejeitado ou Dispensado.',
+    );
   });
 
   it('reads the official spreadsheet names for birth and enrollment dates', () => {

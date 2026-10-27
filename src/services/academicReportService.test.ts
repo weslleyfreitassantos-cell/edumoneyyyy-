@@ -2,12 +2,22 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { academicPolicyService } from './academicPolicyService';
 import { attendanceService } from './attendanceService';
+import { classService } from './classService';
 import { enrollmentService } from './enrollmentService';
 import { pedagogicalMonitoringService } from './pedagogicalMonitoringService';
 import { reportCardService } from './reportCardService';
 import { studentService } from './studentService';
 import { termClosingService } from './termClosingService';
-import { academicReportService } from './academicReportService';
+import { academicReportService, buildClassVacanciesReportRows, buildPendingDocumentReportRows, buildStudentsWithoutClassReportRows, PENDING_DOCUMENT_REPORT_STATUSES } from './academicReportService';
+
+const supabaseMocks = vi.hoisted(() => ({
+  from: vi.fn(),
+  select: vi.fn(),
+  eq: vi.fn(),
+  in: vi.fn(),
+  order: vi.fn(),
+  range: vi.fn(),
+}));
 
 vi.mock('./academicPolicyService', () => ({ academicPolicyService: { listAcademicYears: vi.fn() } }));
 vi.mock('./attendanceService', () => ({
@@ -28,11 +38,13 @@ vi.mock('./attendanceService', () => ({
     };
   },
 }));
+vi.mock('./classService', () => ({ classService: { list: vi.fn() } }));
 vi.mock('./enrollmentService', () => ({ enrollmentService: { list: vi.fn() } }));
 vi.mock('./pedagogicalMonitoringService', () => ({ pedagogicalMonitoringService: { getInstitutionMonitoring: vi.fn() } }));
 vi.mock('./reportCardService', () => ({ reportCardService: { getGuardianReportCards: vi.fn() } }));
 vi.mock('./studentService', () => ({ studentService: { list: vi.fn() } }));
 vi.mock('./termClosingService', () => ({ termClosingService: { listInstitutionOfferings: vi.fn() } }));
+vi.mock('../lib/supabaseClient', () => ({ supabase: { from: supabaseMocks.from } }));
 
 const institutionId = 'institution-1';
 const academicYear = {
@@ -41,6 +53,7 @@ const academicYear = {
 };
 const student = { id: 'student-1', profile_id: 'profile-1', institution_id: institutionId, registration_number: '20260001', birth_date: '2010-01-01', cpf: null, active: true, profiles: { full_name: 'Maria Silva', email: 'maria@example.com', avatar_url: null } };
 const enrollment = { id: 'enrollment-1', student_id: 'student-1', class_id: 'class-1', academic_year_id: 'year-1', status: 'ACTIVE' as const, status_label: 'Ativa', active: true, enrolled_at: '2026-01-10', student_name: 'Maria Silva', student_registration_number: '20260001', student_active: true, class_name: '2º A', class_grade_level: '2º ano', class_shift: 'Matutino', class_capacity: 30, class_active: true, academic_year_name: '2026', active_enrollments_in_class: 1, has_capacity_available: true };
+const schoolClass = { id: 'class-1', institution_id: institutionId, academic_year_id: 'year-1', academic_year_name: '2026', name: '2º A', grade_level: '2º ano', shift: 'Matutino', capacity: 30, active: true, active_enrollments_count: 1, active_offerings_count: 1, active_curriculum_items_count: 1 };
 const monitoringSubject = { subjectOfferingId: 'offering-1', subjectId: 'subject-1', subjectName: 'Matemática', classId: 'class-1', className: '2º A', teacherProfileId: 'teacher-1', teacherName: 'Prof. Ana', gradePercentage: 74, attendancePercentage: 90, pendingItems: 0, isClosed: true, dataStatus: 'OFFICIAL' as const };
 const monitoring = { academicYear, term: academicYear.terms[0], policy: null, filters: { years: [academicYear], terms: academicYear.terms, classes: [], subjects: [], teachers: [], students: [] }, students: [{ studentId: 'student-1', fullName: 'Maria Silva', registrationNumber: '20260001', classId: 'class-1', className: '2º A', averageGrade: 74, attendancePercentage: 90, pendingItems: 0, lowPerformanceSubjects: 0, lowAttendanceSubjects: 0, dataStatus: 'OFFICIAL' as const, risk: { level: 'NORMAL' as const, reasons: [] }, subjects: [monitoringSubject] }], classes: [], subjects: [], metrics: {} };
 const reportSubject = { key: 'offering-1:term-1', institutionId, academicYearId: 'year-1', academicYearName: '2026', termId: 'term-1', termName: '2º Bimestre', subjectOfferingId: 'offering-1', subjectName: 'Matemática', subjectCode: null, className: '2º A', teacherName: 'Prof. Ana', teacherEmail: 'prof@example.com', gradePercentage: 52, recoveryPercentage: 74, finalGradePercentage: 74, originalResultStatus: 'FAILED_BY_GRADE' as const, compositionRule: null, attendancePercentage: 90, resultStatus: 'APPROVED' as const, finalizedAt: '2026-07-01T00:00:00Z', isClosed: true, assessments: [] };
@@ -48,10 +61,193 @@ const reportSubject = { key: 'offering-1:term-1', institutionId, academicYearId:
 describe('academicReportService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    supabaseMocks.from.mockReturnValue(supabaseMocks);
+    supabaseMocks.select.mockReturnValue(supabaseMocks);
+    supabaseMocks.eq.mockReturnValue(supabaseMocks);
+    supabaseMocks.in.mockReturnValue(supabaseMocks);
+    supabaseMocks.order.mockReturnValue(supabaseMocks);
+    supabaseMocks.range.mockResolvedValue({ data: [], error: null });
     vi.mocked(academicPolicyService.listAcademicYears).mockResolvedValue([academicYear] as never);
     vi.mocked(studentService.list).mockResolvedValue([student] as never);
+    vi.mocked(classService.list).mockResolvedValue([schoolClass] as never);
     vi.mocked(enrollmentService.list).mockResolvedValue([enrollment] as never);
     vi.mocked(termClosingService.listInstitutionOfferings).mockResolvedValue([{ id: 'offering-1', institutionId, academicYearId: 'year-1', academicYearName: '2026', classId: 'class-1', className: '2º A', gradeLevel: '2º ano', shift: 'Matutino', subjectId: 'subject-1', subjectName: 'Matemática', subjectCode: null, workload: 50, teacherProfileId: 'teacher-1', teacherName: 'Prof. Ana', teacherEmail: 'prof@example.com', termId: 'term-1', termName: '2º Bimestre', termStartDate: '2026-04-01', termEndDate: '2026-06-30', active: true, closure: null }] as never);
+  });
+
+  it('limita documentos pendentes a alunos ativos matriculados no ano selecionado', () => {
+    const rows = buildPendingDocumentReportRows([
+      enrollment,
+      { ...enrollment, id: 'enrollment-2', class_id: 'class-2', class_name: '2º B' },
+      { ...enrollment, id: 'inactive-enrollment', student_id: 'student-inactive', active: false },
+      { ...enrollment, id: 'inactive-student', student_id: 'student-inactive-2', student_active: false },
+      { ...enrollment, id: 'inactive-class', student_id: 'student-inactive-3', class_active: false },
+      { ...enrollment, id: 'other-year', student_id: 'student-other-year', academic_year_id: 'year-2' },
+      { ...enrollment, id: 'transferred', student_id: 'student-transferred', status: 'TRANSFERRED', active: false },
+    ] as never, [
+      { id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', status: 'PENDING', updated_at: '2026-02-10T12:00:00Z' },
+      { id: 'doc-inactive', student_id: 'student-inactive', document_type: 'Histórico', status: 'REQUESTED', updated_at: null },
+    ], { academicYearId: 'year-1' });
+
+    expect(rows).toEqual([expect.objectContaining({
+      id: 'doc-1',
+      studentName: 'Maria Silva',
+      registrationNumber: '20260001',
+      className: '2º A, 2º B',
+      documentType: 'Certidão de nascimento',
+    })]);
+
+    expect(buildPendingDocumentReportRows([
+      enrollment,
+      { ...enrollment, id: 'enrollment-2', class_id: 'class-2', class_name: '2º B' },
+    ] as never, [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão', status: 'PENDING', updated_at: null }], {
+      academicYearId: 'year-1', classId: 'class-2',
+    })[0]?.className).toBe('2º B');
+  });
+
+  it('preserva os estados documentais que ainda exigem providência', () => {
+    const statuses = [...PENDING_DOCUMENT_REPORT_STATUSES];
+    const rows = buildPendingDocumentReportRows([enrollment] as never, statuses.map((status) => ({
+      id: `doc-${status}`,
+      student_id: 'student-1',
+      document_type: 'Documento escolar',
+      status,
+      updated_at: null,
+    })), { academicYearId: 'year-1' });
+
+    expect(rows.map((row) => row.status)).toEqual(statuses);
+  });
+
+  it('consulta documentos que exigem providência da instituição e alunos ativos', async () => {
+    supabaseMocks.range.mockResolvedValue({
+      data: [{ id: 'doc-1', student_id: 'student-1', document_type: 'Certidão de nascimento', status: 'REQUESTED', updated_at: null }],
+      error: null,
+    });
+
+    const rows = await academicReportService.getPendingDocumentsReport(institutionId, { academicYearId: 'year-1' });
+
+    expect(rows).toHaveLength(1);
+    expect(supabaseMocks.from).toHaveBeenCalledWith('student_documents');
+    expect(supabaseMocks.eq).toHaveBeenCalledWith('institution_id', institutionId);
+    expect(supabaseMocks.in).toHaveBeenCalledWith('status', PENDING_DOCUMENT_REPORT_STATUSES);
+    expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
+    expect(supabaseMocks.range).toHaveBeenCalledWith(0, 499);
+  });
+
+  it('lista estudantes ativos sem vínculo válido com turma no ano escolhido', () => {
+    const students = [
+      student,
+      { ...student, id: 'student-unassigned', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+      { ...student, id: 'student-inactive', active: false, registration_number: '20260003' },
+      { ...student, id: 'student-other-year', registration_number: '20260004', profiles: { ...student.profiles, full_name: 'Bruno Lima' } },
+      { ...student, id: 'student-inactive-class', registration_number: '20260005', profiles: { ...student.profiles, full_name: 'Carla Souza' } },
+    ];
+    const enrollments = [
+      enrollment,
+      { ...enrollment, id: 'other-year', student_id: 'student-other-year', academic_year_id: 'year-2' },
+      { ...enrollment, id: 'inactive-class', student_id: 'student-inactive-class', class_active: false },
+    ];
+
+    expect(buildStudentsWithoutClassReportRows(students as never, enrollments as never, 'year-1')).toEqual([
+      { id: 'student-unassigned', studentName: 'Aline Costa', registrationNumber: '20260002' },
+      { id: 'student-other-year', studentName: 'Bruno Lima', registrationNumber: '20260004' },
+      { id: 'student-inactive-class', studentName: 'Carla Souza', registrationNumber: '20260005' },
+    ]);
+  });
+
+  it('scopes the unassigned-students report to the selected institution and school year', async () => {
+    vi.mocked(studentService.list).mockResolvedValue([
+      student,
+      { ...student, id: 'student-unassigned', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+    ] as never);
+
+    const rows = await academicReportService.getStudentsWithoutClassReport(institutionId, 'year-1');
+
+    expect(rows).toEqual([{ id: 'student-unassigned', studentName: 'Aline Costa', registrationNumber: '20260002' }]);
+    expect(studentService.list).toHaveBeenCalledWith(institutionId);
+    expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
+  });
+
+  it('calcula vagas apenas com matrículas ativas válidas e mantém turmas sem alunos', () => {
+    const classes = [
+      schoolClass,
+      { ...schoolClass, id: 'class-empty', name: '2º B', capacity: 25, active_enrollments_count: 0 },
+      { ...schoolClass, id: 'class-unlimited', name: '2º C', capacity: 0, active_enrollments_count: 0 },
+      { ...schoolClass, id: 'class-inactive', name: '2º D', active: false },
+      { ...schoolClass, id: 'class-other-year', name: '2º E', academic_year_id: 'year-2' },
+    ];
+    const enrollments = [
+      enrollment,
+      { ...enrollment, id: 'inactive-row', student_id: 'inactive-row', active: false },
+      { ...enrollment, id: 'transferred-row', student_id: 'transferred-row', status: 'TRANSFERRED', active: false },
+      { ...enrollment, id: 'inactive-student', student_id: 'inactive-student', student_active: false },
+      { ...enrollment, id: 'other-year-row', student_id: 'other-year-row', academic_year_id: 'year-2' },
+    ];
+
+    expect(buildClassVacanciesReportRows(classes as never, enrollments as never, 'year-1')).toEqual([
+      expect.objectContaining({ id: 'class-1', enrolledCount: 1, capacity: 30, availableSeats: 29, occupancyPercentage: 3 }),
+      expect.objectContaining({ id: 'class-empty', enrolledCount: 0, capacity: 25, availableSeats: 25, occupancyPercentage: 0 }),
+      expect.objectContaining({ id: 'class-unlimited', enrolledCount: 0, capacity: null, availableSeats: null, occupancyPercentage: null }),
+    ]);
+  });
+
+  it('carrega vagas com classes e matrículas da mesma instituição', async () => {
+    const rows = await academicReportService.getClassVacanciesReport(institutionId, 'year-1');
+
+    expect(rows).toEqual([expect.objectContaining({ id: 'class-1', availableSeats: 29 })]);
+    expect(classService.list).toHaveBeenCalledWith(institutionId);
+    expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
+  });
+
+  it('resume pendências reais da secretaria sem contar documentos ausentes como pendentes', async () => {
+    vi.mocked(studentService.list).mockResolvedValue([
+      student,
+      { ...student, id: 'student-without-class', registration_number: '20260002', profiles: { ...student.profiles, full_name: 'Aline Costa' } },
+    ] as never);
+    vi.mocked(classService.list).mockResolvedValue([
+      schoolClass,
+      { ...schoolClass, id: 'class-with-vacancies', name: '2º B', capacity: 20, active_enrollments_count: 0 },
+    ] as never);
+    supabaseMocks.range.mockResolvedValue({
+      data: [{
+        id: 'document-1',
+        student_id: 'student-1',
+        document_type: 'Histórico escolar',
+        status: 'UNDER_REVIEW',
+        updated_at: '2026-02-10T12:00:00Z',
+      }],
+      error: null,
+    });
+
+    const summary = await academicReportService.getSecretariatOperationsSummary(institutionId, 'year-1');
+
+    expect(summary).toEqual({
+      studentsWithoutClass: 1,
+      pendingDocuments: 1,
+      classesWithVacancies: 2,
+      availableSeats: 49,
+    });
+    expect(studentService.list).toHaveBeenCalledWith(institutionId);
+    expect(enrollmentService.list).toHaveBeenCalledWith(institutionId);
+    expect(classService.list).toHaveBeenCalledWith(institutionId);
+    expect(supabaseMocks.from).toHaveBeenCalledWith('student_documents');
+    expect(supabaseMocks.eq).toHaveBeenCalledWith('institution_id', institutionId);
+    expect(supabaseMocks.in).toHaveBeenCalledWith('student_id', ['student-1']);
+  });
+
+  it('não consulta documentos se não houver matrícula ativa no ano', async () => {
+    vi.mocked(enrollmentService.list).mockResolvedValue([
+      { ...enrollment, academic_year_id: 'year-2' },
+    ] as never);
+
+    const summary = await academicReportService.getSecretariatOperationsSummary(institutionId, 'year-1');
+
+    expect(summary).toEqual({
+      studentsWithoutClass: 1,
+      pendingDocuments: 0,
+      classesWithVacancies: 1,
+      availableSeats: 30,
+    });
+    expect(supabaseMocks.from).not.toHaveBeenCalled();
   });
 
   it('preserva snapshot oficial de recuperação no relatório de resultados', async () => {

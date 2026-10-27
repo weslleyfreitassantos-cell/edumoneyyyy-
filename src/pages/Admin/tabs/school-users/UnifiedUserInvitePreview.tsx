@@ -25,6 +25,7 @@ import {
   SchoolUserInviteServiceError,
 } from '../../../../services/schoolUserInviteService';
 import { suggestTeacherAvailabilityFromSchoolSlots } from '../../../../services/academicAutomationService';
+import { psychologyErrorMessage, psychologyService } from '../../../../services/psychologyService';
 import {
   buildUnifiedUserInvitePayload,
   canInviteTarget,
@@ -40,11 +41,13 @@ import {
 interface UnifiedUserInvitePreviewProps {
   institutionId: string | null;
   currentRole: string | null;
+  currentInstitutionRoles?: readonly string[];
   profileRole: string | null | undefined;
   currentInstitutionName: string | null;
   hasActiveInstitution: boolean;
   allowedTargets?: readonly UnifiedUserInviteTarget[];
   heading?: string;
+  onInviteComplete?: () => void;
 }
 
 interface InviteFormState {
@@ -54,6 +57,8 @@ interface InviteFormState {
   cpf: string;
   guardianStudentId: string;
   relationship: string;
+  crpRegistration: string;
+  crpState: string;
 }
 
 interface FeedbackState {
@@ -74,6 +79,8 @@ const initialFormState: InviteFormState = {
   cpf: '',
   guardianStudentId: '',
   relationship: '',
+  crpRegistration: '',
+  crpState: '',
 };
 
 const availabilityDayLabels: Record<number, string> = {
@@ -103,6 +110,8 @@ function getTargetNote(
       return 'Cria usuario, profile e membership TEACHER e envia as credenciais por e-mail. Atribuicoes academicas seguem em fluxo separado.';
     case 'GUARDIAN':
       return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
+    case 'PSYCHOLOGIST':
+      return 'Cria o acesso Psicóloga(o). O CRP e o vínculo ao módulo precisam ser cadastrados e verificados pela instituição antes de atender.';
     case 'DIRECTOR':
       return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
     case 'SECRETARY':
@@ -136,11 +145,13 @@ function FieldError({
 export default function UnifiedUserInvitePreview({
   institutionId,
   currentRole,
+  currentInstitutionRoles = [],
   profileRole,
   currentInstitutionName,
   hasActiveInstitution,
   allowedTargets: allowedTargetsProp,
   heading,
+  onInviteComplete,
 }: UnifiedUserInvitePreviewProps) {
   const [selectedTarget, setSelectedTarget] =
     useState<UnifiedUserInviteTarget>(
@@ -179,8 +190,8 @@ export default function UnifiedUserInvitePreview({
     );
 
   const roleAllowedTargets = useMemo(
-    () => getAllowedInviteTargets(currentRole),
-    [currentRole],
+    () => getAllowedInviteTargets(currentRole, currentInstitutionRoles),
+    [currentRole, currentInstitutionRoles],
   );
 
   const allowedTargets = useMemo(() => {
@@ -219,16 +230,22 @@ export default function UnifiedUserInvitePreview({
         guardianStudentId:
           form.guardianStudentId,
         relationship: form.relationship,
+        crpRegistration: form.crpRegistration,
+        crpState: form.crpState,
         currentRole,
+        currentInstitutionRoles,
       }),
     [
       currentRole,
+      currentInstitutionRoles,
       form.birthDate,
       form.cpf,
       form.email,
       form.fullName,
       form.guardianStudentId,
       form.relationship,
+      form.crpRegistration,
+      form.crpState,
       institutionId,
       selectedTarget,
     ],
@@ -268,7 +285,7 @@ export default function UnifiedUserInvitePreview({
     !canManageSchoolUsers ||
     !hasActiveInstitution ||
     !targetIsSupported ||
-    !canInviteTarget(currentRole, selectedTarget) ||
+    !canInviteTarget(currentRole, selectedTarget, currentInstitutionRoles) ||
     inviteMutation.isPending ||
     teacherAcademicMutation.isPending ||
     Boolean(teacherAcademicValidationError);
@@ -325,7 +342,7 @@ export default function UnifiedUserInvitePreview({
 
     if (
       option.isPlanned ||
-      !canInviteTarget(currentRole, target)
+      !canInviteTarget(currentRole, target, currentInstitutionRoles)
     ) {
       return;
     }
@@ -410,6 +427,27 @@ export default function UnifiedUserInvitePreview({
           validation.payload,
         );
 
+      if (selectedTarget === 'PSYCHOLOGIST') {
+        try {
+          await psychologyService.registerProfessional(
+            validation.payload.institutionId,
+            result.profileId,
+            form.crpRegistration.trim(),
+            form.crpState.trim().toUpperCase(),
+          );
+          onInviteComplete?.();
+        } catch (registrationError) {
+          onInviteComplete?.();
+          setSelectedTarget(allowedTargetsProp?.[0] ?? 'STUDENT');
+          setForm(initialFormState);
+          setFeedback({
+            type: 'warning',
+            message: `${result.message} A conta e o vínculo foram criados, mas o CRP não foi salvo (${psychologyErrorMessage(registrationError)}). Não envie outro convite; registre o CRP na tabela de habilitação profissional.`,
+          });
+          return;
+        }
+      }
+
       if (selectedTarget === 'TEACHER') {
         const emailPending = result.emailPending || !result.invitationSent;
         try {
@@ -442,7 +480,12 @@ export default function UnifiedUserInvitePreview({
       const successMessage =
         selectedTarget === 'TEACHER'
           ? `${result.message} Disciplinas e disponibilidade salvas.`
+          : selectedTarget === 'PSYCHOLOGIST'
+            ? `${result.message} CRP registrado como pendente de verificação humana; o acesso clínico permanece bloqueado até a habilitação pela instituição.`
           : result.message;
+      if (selectedTarget !== 'PSYCHOLOGIST') {
+        onInviteComplete?.();
+      }
       setSelectedTarget(
         allowedTargetsProp?.[0] ?? 'STUDENT',
       );
@@ -572,6 +615,7 @@ export default function UnifiedUserInvitePreview({
                       !canInviteTarget(
                         currentRole,
                         option.target,
+                        currentInstitutionRoles,
                       );
 
                     return (
@@ -618,6 +662,12 @@ export default function UnifiedUserInvitePreview({
                 'target',
               )}
             />
+            {selectedTarget === 'PSYCHOLOGIST' && (
+              <p className="mt-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                <span className="font-semibold">Instituição do vínculo:</span>{' '}
+                {currentInstitutionName || 'Selecione uma escola ativa'}
+              </p>
+            )}
           </div>
 
         <fieldset
@@ -930,6 +980,46 @@ export default function UnifiedUserInvitePreview({
               <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
                 O perfil de direção só pode ser convidado pela administração da conta.
               </p>
+            )}
+
+            {selectedTarget === 'PSYCHOLOGIST' && (
+              <div className="space-y-3">
+                <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+                  O CRP ficará pendente até uma pessoa autorizada confirmar a verificação. O cadastro não libera acesso clínico.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_8rem]">
+                  <div>
+                    <label htmlFor="unified-invite-crp" className="block text-sm font-medium text-[#414754]">
+                      Registro CRP
+                    </label>
+                    <input
+                      id="unified-invite-crp"
+                      type="text"
+                      value={form.crpRegistration}
+                      onChange={(event) => updateForm('crpRegistration', event.target.value)}
+                      maxLength={20}
+                      placeholder="Ex.: 03/12345"
+                      className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                    />
+                    <FieldError message={getFieldError(fieldErrors, 'crpRegistration')} />
+                  </div>
+                  <div>
+                    <label htmlFor="unified-invite-crp-state" className="block text-sm font-medium text-[#414754]">
+                      UF
+                    </label>
+                    <input
+                      id="unified-invite-crp-state"
+                      type="text"
+                      value={form.crpState}
+                      onChange={(event) => updateForm('crpState', event.target.value.toUpperCase().slice(0, 2))}
+                      maxLength={2}
+                      placeholder="BA"
+                      className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm uppercase text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                    />
+                    <FieldError message={getFieldError(fieldErrors, 'crpState')} />
+                  </div>
+                </div>
+              </div>
             )}
 
             {selectedTarget === 'GUARDIAN' && (

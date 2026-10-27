@@ -4,6 +4,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
+import { canManagePsychologistInvites } from "../_shared/psychology-invite-permissions.ts";
 import {
   buildInstitutionLoginUrl,
   generateSecurePassword,
@@ -16,7 +17,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN" | "PSYCHOLOGIST"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -65,6 +66,7 @@ const targetRoleSchema = z.enum([
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
+  "PSYCHOLOGIST",
 ]);
 
 const optionalCpfSchema = z.preprocess(
@@ -317,9 +319,9 @@ function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[]
     return ["DIRECTOR"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"];
   }
-  return ["TEACHER", "STUDENT", "GUARDIAN"];
+  return ["TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"];
 }
 
 function canRequesterInviteRole(
@@ -647,7 +649,7 @@ export default {
 
       const { data: requesterMembershipRows, error: requesterMembershipError } = await ctx.supabaseAdmin
         .from("memberships")
-        .select("id, role, active")
+        .select("id, institution_id, role, active")
         .eq("profile_id", user.id)
         .eq("institution_id", input.institutionId);
 
@@ -665,6 +667,10 @@ export default {
       );
       const secretaryMembership = activeMemberships.find(
         (membership: { role: string }) => membership.role === "SECRETARY",
+      );
+      const canManagePsychologists = canManagePsychologistInvites(
+        requesterMembershipRows ?? [],
+        input.institutionId,
       );
       const requesterRole: RequesterInviteRole | null = isSuperAdmin
         ? "ADMIN"
@@ -684,7 +690,10 @@ export default {
         });
       }
 
-      if (!canRequesterInviteRole(requesterRole, input.role)) {
+      const mayInviteTarget = input.role === "PSYCHOLOGIST"
+        ? canManagePsychologists
+        : canRequesterInviteRole(requesterRole, input.role);
+      if (!mayInviteTarget) {
         throw new InviteError({
           status: 403,
           code: "TARGET_ROLE_NOT_ALLOWED",

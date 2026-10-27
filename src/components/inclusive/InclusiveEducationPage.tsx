@@ -21,7 +21,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { pedagogicalMonitoringService, type PedagogicalStudentSummary } from '../../services/pedagogicalMonitoringService';
-import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveAeeSessions, listInclusivePeiPlans, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusiveAeeSession, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusiveAeeSession, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
+import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveAeeSessions, listInclusivePeiPlans, listInclusiveProgressStudents, listInclusiveStudents, printInclusiveDocument, saveInclusiveAeePlan, saveInclusiveAeeSession, saveInclusivePeiPlan, type InclusiveAeeInput, type InclusiveAeePlan, type InclusiveAeeSession, type InclusivePeiInput, type InclusivePeiPlan } from '../../services/inclusiveEducationService';
 import { inclusiveActivities, externalResources, type InclusiveActivity } from './inclusiveEducationCatalog';
 import { InclusiveIllustration, type InclusiveVisualKey } from './InclusiveIllustration';
 import { InclusivePrintableMaterial, printableMaterials } from './InclusivePrintableMaterial';
@@ -109,6 +109,7 @@ interface StudentSearchListProps {
   label: string;
   description: string;
   students: InclusiveStudentOption[];
+  loading?: boolean;
   search: string;
   onSearchChange: (value: string) => void;
   selectedStudentId: string;
@@ -120,6 +121,7 @@ function StudentSearchList({
   label,
   description,
   students,
+  loading = false,
   search,
   onSearchChange,
   selectedStudentId,
@@ -168,7 +170,7 @@ function StudentSearchList({
         />
       </label>
       <div className="mt-3 max-h-56 space-y-2 overflow-y-auto" role="listbox" aria-label={label}>
-        {visibleStudents.map((student) => (
+        {loading ? <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">Carregando estudantes...</p> : visibleStudents.map((student) => (
           <button
             key={student.id}
             type="button"
@@ -180,9 +182,9 @@ function StudentSearchList({
             {student.name}
           </button>
         ))}
-        {filteredStudents.length === 0 && <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">{emptyMessage}</p>}
+        {!loading && filteredStudents.length === 0 && <p className="rounded-lg border border-dashed border-slate-300 px-3 py-4 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">{emptyMessage}</p>}
       </div>
-      {filteredStudents.length > pageSize && <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
+      {!loading && filteredStudents.length > pageSize && <div className="mt-3 flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
         <span className="text-xs text-slate-500 dark:text-slate-400">Página {currentPage} de {totalPages}</span>
         <div className="flex items-center gap-1">
           <button
@@ -473,6 +475,7 @@ export default function InclusiveEducationPage() {
   const [students, setStudents] = useState<Array<{ id: string; name: string }>>([]);
   const [studentsLoading, setStudentsLoading] = useState(false);
   const [progressStudentId, setProgressStudentId] = useState('');
+  const [progressStudentSearch, setProgressStudentSearch] = useState('');
   const [progressStudent, setProgressStudent] = useState<PedagogicalStudentSummary | null>(null);
   const [progressLoading, setProgressLoading] = useState(false);
   const [aeePlans, setAeePlans] = useState<InclusiveAeePlan[]>([]);
@@ -502,7 +505,8 @@ export default function InclusiveEducationPage() {
 
     let cancelled = false;
     setStudentsLoading(true);
-    void listInclusiveStudents(currentInstitutionId)
+    const loadStudents = current.id === 'progress' ? listInclusiveProgressStudents : listInclusiveStudents;
+    void loadStudents(currentInstitutionId)
       .then((nextStudents) => {
         if (!cancelled) setStudents(nextStudents);
       })
@@ -687,7 +691,111 @@ export default function InclusiveEducationPage() {
     }
 
     if (current.id === 'progress') {
-      return <div className="space-y-6"><PageHeader title={current.label} description={current.description} icon={current.icon} /><section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><label className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Estudante<select aria-label="Estudante para consultar evolução" value={progressStudentId} onChange={(event) => setProgressStudentId(event.target.value)} disabled={studentsLoading || students.length === 0} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"><option value="">{studentsLoading ? 'Carregando estudantes...' : students.length > 0 ? 'Selecione um estudante' : 'Nenhum estudante ativo encontrado'}</option>{students.map((student) => <option key={student.id} value={student.id}>{student.name}</option>)}</select></label></section>{!progressStudentId ? <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900"><TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" /><h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Selecione um estudante</h2><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-300">A evolução acadêmica será consultada depois que você escolher um aluno.</p></section> : progressLoading ? <section className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">Carregando a evolução do estudante...</section> : !progressStudent ? <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900"><TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" /><h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Nenhum registro de evolução disponível</h2><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-300">Este estudante ainda não possui matrícula, disciplinas ou resultados acadêmicos suficientes para exibir uma evolução.</p></section> : <section className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Evolução de {progressStudent.fullName}</p><h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{progressStudent.className}</h2><p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{progressStudent.dataStatus === 'OFFICIAL' ? 'Dados oficiais do período encerrado' : 'Dados parciais do período em andamento'} · {riskLabel(progressStudent.risk.level)}</p></div><span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-slate-700 dark:text-slate-300">{progressStudent.subjects.length} disciplina(s)</span></div><div className="grid gap-3 sm:grid-cols-3"><article className="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/30"><p className="text-xs font-semibold text-blue-700 dark:text-blue-200">Média geral</p><p className="mt-1 text-2xl font-extrabold text-blue-950 dark:text-white">{evolutionPercentage(progressStudent.averageGrade)}</p></article><article className="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/30"><p className="text-xs font-semibold text-emerald-700 dark:text-emerald-200">Frequência</p><p className="mt-1 text-2xl font-extrabold text-emerald-950 dark:text-white">{evolutionPercentage(progressStudent.attendancePercentage)}</p></article><article className="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/30"><p className="text-xs font-semibold text-amber-700 dark:text-amber-200">Pendências</p><p className="mt-1 text-2xl font-extrabold text-amber-950 dark:text-white">{progressStudent.pendingItems}</p></article></div><div><h3 className="font-bold text-slate-900 dark:text-white">Acompanhamento por disciplina</h3>{progressStudent.subjects.length === 0 ? <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Ainda não há disciplinas acompanhadas para este aluno.</p> : <div className="mt-3 grid gap-3 md:grid-cols-2">{progressStudent.subjects.map((subject) => <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div className="flex items-start justify-between gap-3"><div><h4 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h4><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subject.isClosed ? 'Período encerrado' : 'Período em andamento'}</p></div><span className="text-xs font-bold text-slate-500 dark:text-slate-400">{subject.pendingItems ? `${subject.pendingItems} pendência(s)` : 'Sem pendências'}</span></div><div className="mt-4 grid grid-cols-2 gap-3 text-sm"><div><p className="text-xs text-slate-500 dark:text-slate-400">Nota</p><p className="mt-1 font-bold text-slate-900 dark:text-white">{evolutionPercentage(subject.gradePercentage)}</p></div><div><p className="text-xs text-slate-500 dark:text-slate-400">Frequência</p><p className="mt-1 font-bold text-slate-900 dark:text-white">{evolutionPercentage(subject.attendancePercentage)}</p></div></div></article>)}</div>}</div></section>}</div>;
+      const selectedProgressStudent = students.find((student) => student.id === progressStudentId);
+
+      return (
+        <div className="space-y-6">
+          <PageHeader title={current.label} description={current.description} icon={current.icon} />
+          <StudentSearchList
+            label="Estudantes para consultar evolução"
+            description="Pesquise pelo nome e selecione um aluno para consultar os indicadores pedagógicos."
+            students={students}
+            loading={studentsLoading}
+            search={progressStudentSearch}
+            onSearchChange={setProgressStudentSearch}
+            selectedStudentId={progressStudentId}
+            onSelect={setProgressStudentId}
+            emptyMessage="Nenhum estudante ativo corresponde à pesquisa."
+          />
+          {selectedProgressStudent && (
+            <p className="text-sm text-slate-600 dark:text-slate-300">
+              Estudante selecionado: <strong>{selectedProgressStudent.name}</strong>
+            </p>
+          )}
+          {!progressStudentId ? (
+            <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" />
+              <h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Selecione um estudante</h2>
+              <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+                A evolução acadêmica será consultada depois que você escolher um aluno.
+              </p>
+            </section>
+          ) : progressLoading ? (
+            <section className="rounded-2xl border border-blue-200 bg-blue-50 p-8 text-center text-sm font-semibold text-blue-900 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-100">
+              Carregando a evolução do estudante...
+            </section>
+          ) : !progressStudent ? (
+            <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <TrendingUp className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" />
+              <h2 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">Nenhum registro de evolução disponível</h2>
+              <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+                Este estudante ainda não possui matrícula, disciplinas ou resultados acadêmicos suficientes para exibir uma evolução.
+              </p>
+            </section>
+          ) : (
+            <section className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#075fc4]">Evolução de {progressStudent.fullName}</p>
+                  <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">{progressStudent.className}</h2>
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                    {progressStudent.dataStatus === 'OFFICIAL' ? 'Dados oficiais do período encerrado' : 'Dados parciais do período em andamento'} · {riskLabel(progressStudent.risk.level)}
+                  </p>
+                </div>
+                <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                  {progressStudent.subjects.length} disciplina(s)
+                </span>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                <article className="rounded-xl bg-blue-50 p-4 dark:bg-blue-950/30">
+                  <p className="text-xs font-semibold text-blue-700 dark:text-blue-200">Média geral</p>
+                  <p className="mt-1 text-2xl font-extrabold text-blue-950 dark:text-white">{evolutionPercentage(progressStudent.averageGrade)}</p>
+                </article>
+                <article className="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950/30">
+                  <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-200">Frequência</p>
+                  <p className="mt-1 text-2xl font-extrabold text-emerald-950 dark:text-white">{evolutionPercentage(progressStudent.attendancePercentage)}</p>
+                </article>
+                <article className="rounded-xl bg-amber-50 p-4 dark:bg-amber-950/30">
+                  <p className="text-xs font-semibold text-amber-700 dark:text-amber-200">Pendências</p>
+                  <p className="mt-1 text-2xl font-extrabold text-amber-950 dark:text-white">{progressStudent.pendingItems}</p>
+                </article>
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-900 dark:text-white">Acompanhamento por disciplina</h3>
+                {progressStudent.subjects.length === 0 ? (
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Ainda não há disciplinas acompanhadas para este aluno.</p>
+                ) : (
+                  <div className="mt-3 grid gap-3 md:grid-cols-2">
+                    {progressStudent.subjects.map((subject) => (
+                      <article key={subject.subjectOfferingId} className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <h4 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h4>
+                            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{subject.isClosed ? 'Período encerrado' : 'Período em andamento'}</p>
+                          </div>
+                          <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                            {subject.pendingItems ? `${subject.pendingItems} pendência(s)` : 'Sem pendências'}
+                          </span>
+                        </div>
+                        <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                          <div>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Nota</p>
+                            <p className="mt-1 font-bold text-slate-900 dark:text-white">{evolutionPercentage(subject.gradePercentage)}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Frequência</p>
+                            <p className="mt-1 font-bold text-slate-900 dark:text-white">{evolutionPercentage(subject.attendancePercentage)}</p>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+        </div>
+      );
     }
     return renderSectionPage();
   }

@@ -19,6 +19,8 @@ export interface AcademicDocumentEnrollment {
   shift: string | null;
   academicYearId: string;
   academicYearName: string;
+  academicYearStartDate?: string | null;
+  academicYearEndDate?: string | null;
   status: string;
   active: boolean;
   enrolledAt: string | null;
@@ -58,6 +60,30 @@ export interface AcademicDocumentStudent {
   guardians: AcademicDocumentGuardian[];
   enrollments: AcademicDocumentEnrollment[];
   currentEnrollment: AcademicDocumentEnrollment | null;
+}
+
+export interface AcademicDocumentExpectedSubjectTerm {
+  subjectOfferingId: string;
+  termId: string;
+  termName: string;
+  subjectName: string;
+}
+
+interface ExpectedSubjectTermRow {
+  id: string;
+  term_id: string;
+  classes:
+    | { id: string; institution_id: string; academic_year_id: string }
+    | { id: string; institution_id: string; academic_year_id: string }[]
+    | null;
+  terms:
+    | { id: string; name: string; academic_year_id: string }
+    | { id: string; name: string; academic_year_id: string }[]
+    | null;
+  subjects:
+    | { id: string; name: string }
+    | { id: string; name: string }[]
+    | null;
 }
 
 interface Relation<T> {
@@ -101,8 +127,8 @@ interface EnrollmentDetailRow {
     | { id: string; institution_id: string; name: string; grade_level: string | null; shift: string | null }[]
     | null;
   academic_years:
-    | { id: string; institution_id: string; name: string }
-    | { id: string; institution_id: string; name: string }[]
+    | { id: string; institution_id: string; name: string; start_date: string; end_date: string }
+    | { id: string; institution_id: string; name: string; start_date: string; end_date: string }[]
     | null;
 }
 
@@ -167,6 +193,8 @@ function normalizeEnrollment(
     shift: classRecord.shift ?? null,
     academicYearId: row.academic_year_id,
     academicYearName: academicYear.name,
+    academicYearStartDate: academicYear.start_date,
+    academicYearEndDate: academicYear.end_date,
     status: row.status?.trim().toUpperCase() ?? '',
     active: row.active === true,
     enrolledAt: row.enrolled_at ?? row.created_at,
@@ -222,7 +250,7 @@ export const academicDocumentService = {
         .order('created_at'),
       supabase
         .from('enrollments')
-        .select('id, student_id, class_id, academic_year_id, status, active, enrolled_at, created_at, classes:class_id(id, institution_id, name, grade_level, shift), academic_years:academic_year_id(id, institution_id, name)')
+        .select('id, student_id, class_id, academic_year_id, status, active, enrolled_at, created_at, classes:class_id(id, institution_id, name, grade_level, shift), academic_years:academic_year_id(id, institution_id, name, start_date, end_date)')
         .eq('student_id', studentId)
         .order('created_at', { ascending: false }),
     ]);
@@ -314,5 +342,72 @@ export const academicDocumentService = {
       enrollments,
       currentEnrollment: selectCurrentActiveEnrollment(enrollments),
     };
+  },
+
+  async getExpectedSubjectTerms(
+    institutionId: string,
+    studentId: string,
+    enrollment: AcademicDocumentEnrollment,
+  ): Promise<AcademicDocumentExpectedSubjectTerm[]> {
+    const enrollmentResult = await supabase
+      .from('enrollments')
+      .select('id, student_id, class_id, academic_year_id, active, status, classes:class_id(id, institution_id, academic_year_id)')
+      .eq('id', enrollment.id)
+      .eq('student_id', studentId)
+      .eq('academic_year_id', enrollment.academicYearId)
+      .maybeSingle();
+
+    if (enrollmentResult.error) throw enrollmentResult.error;
+    const persistedEnrollment = enrollmentResult.data as unknown as {
+      id: string;
+      student_id: string;
+      class_id: string;
+      academic_year_id: string;
+      active: boolean;
+      status: string;
+      classes: { id: string; institution_id: string; academic_year_id: string } | null;
+    } | null;
+
+    if (
+      !persistedEnrollment ||
+      persistedEnrollment.active !== true ||
+      persistedEnrollment.status.trim().toUpperCase() !== 'ACTIVE' ||
+      persistedEnrollment.classes?.institution_id !== institutionId ||
+      persistedEnrollment.classes.academic_year_id !== enrollment.academicYearId
+    ) {
+      throw new Error('A matrícula ativa não pôde ser confirmada. Atualize os dados antes de emitir.');
+    }
+
+    const offeringsResult = await supabase
+      .from('subject_offerings')
+      .select('id, term_id, classes:class_id!inner(id, institution_id, academic_year_id), terms:term_id!inner(id, name, academic_year_id), subjects:subject_id(id, name)')
+      .eq('active', true)
+      .eq('class_id', persistedEnrollment.class_id)
+      .eq('classes.institution_id', institutionId)
+      .eq('classes.academic_year_id', enrollment.academicYearId)
+      .eq('terms.academic_year_id', enrollment.academicYearId);
+
+    if (offeringsResult.error) throw offeringsResult.error;
+
+    return ((offeringsResult.data ?? []) as unknown as ExpectedSubjectTermRow[])
+      .map((row) => {
+        const classRecord = relationOne(row.classes);
+        const term = relationOne(row.terms);
+        const subject = relationOne(row.subjects);
+        if (
+          classRecord?.institution_id !== institutionId ||
+          classRecord.academic_year_id !== enrollment.academicYearId ||
+          term?.academic_year_id !== enrollment.academicYearId ||
+          !subject
+        ) return null;
+
+        return {
+          subjectOfferingId: row.id,
+          termId: row.term_id,
+          termName: term.name,
+          subjectName: subject.name,
+        } satisfies AcademicDocumentExpectedSubjectTerm;
+      })
+      .filter((row): row is AcademicDocumentExpectedSubjectTerm => row !== null);
   },
 };

@@ -17,6 +17,7 @@ import {
   X,
 } from 'lucide-react';
 import {
+  Link,
   useNavigate,
 } from 'react-router-dom';
 import {
@@ -1546,19 +1547,25 @@ export default function PlatformPage() {
     <div className="min-h-screen bg-[#f8f9fa] px-4 py-6 text-[#191c1d] sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6">
         <header className="flex flex-col gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck
-                className="h-6 w-6 text-[#00236f]"
-                aria-hidden="true"
-              />
-              <h1 className="text-[32px] font-bold leading-10 text-[#191c1d]">
-                Instituições
-              </h1>
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck
+                  className="h-6 w-6 text-[#00236f]"
+                  aria-hidden="true"
+                />
+                <h1 className="text-[32px] font-bold leading-10 text-[#191c1d]">
+                  Instituições
+                </h1>
+              </div>
+              <p className="mt-1 max-w-2xl text-sm leading-5 text-[#444651]">
+                Gerencie as instituições vinculadas às contas da plataforma.
+              </p>
             </div>
-            <p className="mt-1 max-w-2xl text-sm leading-5 text-[#444651]">
-              Gerencie as instituições vinculadas às contas da plataforma.
-            </p>
+            {isSuperAdmin ? <nav aria-label="Revisão pedagógica da plataforma" className="flex flex-wrap gap-2">
+              <Link to="/teacher/pedagogical-center/reviews" className="inline-flex min-h-10 items-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#00236f] hover:bg-[#eef3ff]">Revisão ENEM</Link>
+              <Link to="/teacher/pedagogical-center/tec-english-review" className="inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 text-sm font-semibold text-white hover:bg-[#004a9d]">Revisar Tec Inglês</Link>
+            </nav> : null}
           </div>
         </header>
 

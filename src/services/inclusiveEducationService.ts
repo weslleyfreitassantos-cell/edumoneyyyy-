@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { selectCurrentInclusiveProgressStudentIds } from './inclusiveEducationRoster';
 
 // The foundation migration owns the data boundary; the client never bypasses RLS.
 export const INCLUSIVE_EDUCATION_DATA_ENABLED = true;
@@ -83,7 +84,7 @@ async function resolveCurrentEnrollment(institutionId: string, studentId: string
     .select('academic_year_id,class_id,classes!inner(institution_id,active)')
     .eq('student_id', studentId)
     .eq('active', true)
-    .eq('status', 'active')
+    .in('status', ['active', 'ACTIVE'])
     .eq('classes.institution_id', institutionId)
     .eq('classes.active', true)
     .order('enrolled_at', { ascending: false })
@@ -127,6 +128,93 @@ export async function listInclusiveStudents(institutionId: string): Promise<Arra
     .select('id,profile:profiles(full_name)')
     .eq('institution_id', institutionId)
     .eq('active', true)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
+}
+
+export async function registerStudentForInclusiveEducation(
+  institutionId: string,
+  studentId: string,
+): Promise<{ registered: true; created: boolean; plan_id: string }> {
+  const { data, error } = await supabase.rpc('register_student_for_inclusive_education', {
+    p_institution_id: institutionId,
+    p_student_id: studentId,
+  });
+  if (error) throw error;
+
+  const result = data as { registered?: boolean; created?: boolean; plan_id?: string } | null;
+  if (result?.registered !== true || typeof result.plan_id !== 'string') {
+    throw new Error('INCLUSIVE_STUDENT_REGISTRATION_NOT_CONFIRMED');
+  }
+  return { registered: true, created: result.created === true, plan_id: result.plan_id };
+}
+
+export async function listInclusiveProgressStudents(institutionId: string): Promise<Array<{ id: string; name: string }>> {
+  const { data: yearData, error: yearError } = await supabase
+    .from('academic_years')
+    .select('id')
+    .eq('institution_id', institutionId)
+    .eq('active', true);
+  if (yearError) throw yearError;
+
+  const currentAcademicYearIds = (yearData ?? []).map((year) => year.id);
+  if (currentAcademicYearIds.length === 0) return [];
+
+  const [enrollmentResult, peiResult, aeeResult] = await Promise.all([
+    supabase
+      .from('enrollments')
+      .select('student_id,academic_year_id,students:student_id!inner(institution_id,active),classes:class_id!inner(institution_id,active,academic_year_id)')
+      .eq('students.institution_id', institutionId)
+      .eq('students.active', true)
+      .eq('classes.institution_id', institutionId)
+      .eq('classes.active', true)
+      .eq('active', true)
+      .in('status', ['active', 'ACTIVE'])
+      .in('academic_year_id', currentAcademicYearIds),
+    supabase
+      .from('inclusive_pei_plans')
+      .select('student_id,academic_year_id,status')
+      .eq('institution_id', institutionId)
+      .in('status', ['DRAFT', 'ACTIVE']),
+    supabase
+      .from('inclusive_aee_plans')
+      .select('student_id,academic_year_id,status')
+      .eq('institution_id', institutionId)
+      .in('status', ['DRAFT', 'ACTIVE']),
+  ]);
+  if (enrollmentResult.error) throw enrollmentResult.error;
+  if (peiResult.error) throw peiResult.error;
+  if (aeeResult.error) throw aeeResult.error;
+
+  const planRows = [...(peiResult.data ?? []), ...(aeeResult.data ?? [])];
+  const enrollmentRows = (enrollmentResult.data ?? []) as unknown as Array<{
+    student_id: string;
+    academic_year_id: string;
+    classes: { academic_year_id: string } | Array<{ academic_year_id: string }> | null;
+  }>;
+  const currentEnrollments = enrollmentRows.flatMap((enrollment) => {
+    const classRow = Array.isArray(enrollment.classes) ? enrollment.classes[0] : enrollment.classes;
+    if (!classRow || classRow.academic_year_id !== enrollment.academic_year_id) return [];
+    return [{
+      student_id: enrollment.student_id,
+      academic_year_id: enrollment.academic_year_id,
+      class_academic_year_id: classRow.academic_year_id,
+    }];
+  });
+  const progressStudentIds = selectCurrentInclusiveProgressStudentIds(
+    currentAcademicYearIds,
+    currentEnrollments,
+    planRows,
+  );
+  if (progressStudentIds.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from('students')
+    .select('id,profile:profiles(full_name)')
+    .eq('institution_id', institutionId)
+    .eq('active', true)
+    .in('id', progressStudentIds)
     .order('created_at', { ascending: false });
   if (error) throw error;
   return (data ?? []).map((row: any) => ({ id: row.id, name: row.profile?.full_name ?? 'Estudante sem nome' }));
