@@ -17,15 +17,13 @@ executor_admin=promoter_cli_executor_admin_ci
 cleanup() {
   docker exec "$db_container" psql -U "$executor_admin" -d postgres -v ON_ERROR_STOP=1 \
     -c 'ALTER ROLE postgres SUPERUSER;' >/dev/null 2>&1 || true
-  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_cli_executor_007_ci; do
+  for database in promoter_historical_ci promoter_chronological_ci promoter_backup_exception_ci promoter_pr411_local_exception_ci promoter_cli_executor_007_ci; do
     docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
       -c "DROP DATABASE IF EXISTS $database WITH (FORCE);" >/dev/null 2>&1 || true
   done
   docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
-    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci; DROP ROLE IF EXISTS promoter_cli_executor_admin_ci;' \
+    -c 'DROP ROLE IF EXISTS cli_login_promoter_007_ci; DROP ROLE IF EXISTS promoter_cli_executor_admin_ci; DROP ROLE IF EXISTS promoter_references_denied_ci;' \
     >/dev/null 2>&1 || true
-  docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
-    -c 'DROP ROLE IF EXISTS promoter_references_denied_ci;' >/dev/null 2>&1 || true
   rm -rf -- "$tmp"
 }
 trap cleanup EXIT
@@ -91,24 +89,6 @@ print(urlunsplit((parts.scheme, netloc, f"/{os.environ['EXECUTOR_DATABASE']}", u
 PY
 )"
 
-# `supabase db push` rebuilds the connection URL from pgconn.Config and does
-# not preserve sslmode=disable. Give the disposable service database a short-
-# lived self-signed certificate so the real CLI path can connect with TLS.
-openssl req -x509 -newkey rsa:2048 -nodes -days 1 \
-  -keyout "$tmp/promoter-postgres.key" -out "$tmp/promoter-postgres.crt" \
-  -subj '/CN=localhost' >/dev/null 2>&1
-docker cp "$tmp/promoter-postgres.key" "$db_container:/var/lib/postgresql/data/promoter-server.key" >/dev/null
-docker cp "$tmp/promoter-postgres.crt" "$db_container:/var/lib/postgresql/data/promoter-server.crt" >/dev/null
-docker exec "$db_container" sh -c \
-  'chown postgres:postgres /var/lib/postgresql/data/promoter-server.key /var/lib/postgresql/data/promoter-server.crt && chmod 600 /var/lib/postgresql/data/promoter-server.key && printf "\nssl = on\nssl_cert_file = '\''/var/lib/postgresql/data/promoter-server.crt'\''\nssl_key_file = '\''/var/lib/postgresql/data/promoter-server.key'\''\n" >> /var/lib/postgresql/data/postgresql.conf'
-docker restart "$db_container" >/dev/null
-for attempt in $(seq 1 30); do
-  if docker exec "$db_container" pg_isready -U postgres -d postgres >/dev/null 2>&1; then
-    break
-  fi
-  [[ "$attempt" -lt 30 ]] || { echo 'Disposable PostgreSQL did not restart with TLS enabled' >&2; exit 1; }
-  sleep 1
-done
 
 mkdir -p "$tmp/bin"
 cat > "$tmp/bin/supabase-with-timeout" <<'MOCK'
@@ -157,6 +137,10 @@ cat > "$tmp/bin/psql" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
 query=''
+connection_url="${1:-}"
+database_name="${connection_url##*/}"
+database_name="${database_name%%\?*}"
+[[ "$database_name" =~ ^[A-Za-z0-9_]+$ ]] || exit 82
 while (($#)); do
   if [[ "$1" == '-c' ]]; then
     query="${2:-}"
@@ -166,7 +150,7 @@ while (($#)); do
 done
 [[ "$query" == 'select version from supabase_migrations.schema_migrations order by version;' ]] || exit 81
 exec docker exec "$PROMOTION_TEST_DB_CONTAINER" psql -X -A -t -v ON_ERROR_STOP=1 \
-  -U postgres -d "$PROMOTION_TEST_DATABASE_NAME" -c "$query"
+  -U postgres -d "$database_name" -c "$query"
 MOCK
 chmod +x "$tmp/bin/psql"
 
@@ -334,6 +318,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
   PRODUCTION_DB_URL="$exception_db_url" \
   APPLY=1 \
   BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=399 \
   BACKUP_EXCEPTION_RELEASE_SHA=36979b8adc4408bf9eaccdf77f742904fba152fc \
   BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
   BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
@@ -352,7 +337,7 @@ if ! exception_output="$(PATH="$tmp/exception-bin:$tmp/bin:$PATH" \
 fi
 printf '%s\n' "$exception_output"
 grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
-grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_399_ACCEPTED$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
@@ -371,6 +356,194 @@ exception_function_count="$(docker exec "$db_container" psql -U postgres -d "$ex
    where n.nspname = 'public' and p.proname = 'get_recommended_guided_study_v10';")"
 [[ "$exception_function_count" == '1' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_BACKUP_EXCEPTION_399=PASS'
+
+# Exercise the PR #411 local-only exception and the actual Psychology migration
+# against a fourth disposable PostgreSQL database. The restore receipt and
+# bundle are synthetic CI fixtures; production must supply its separately
+# verified local artifact and restore proof.
+pr411_version=20261026000200
+pr411_base_version=20261026000100
+pr411_database=promoter_pr411_local_exception_ci
+pr411_db_url="${test_db_url%/promoter_historical_ci}/${pr411_database}"
+pr411_backup="$tmp/pr411-local-backup-fixture.tar.gz"
+pr411_receipt="$tmp/pr411-local-restore.receipt"
+python3 - "$pr411_backup" "$pr411_receipt" <<'PY'
+import datetime, hashlib, io, sys, tarfile
+from pathlib import Path
+
+def make_tar(entries):
+    output = io.BytesIO()
+    with tarfile.open(fileobj=output, mode="w:gz") as archive:
+        for name, content in entries.items():
+            info = tarfile.TarInfo(name)
+            info.size = len(content)
+            archive.addfile(info, io.BytesIO(content))
+    return output.getvalue()
+
+now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+storage = make_tar({"bucket/sample.bin": b"fixture"})
+components = {
+    "globals.sql": b"-- disposable CI fixture\n",
+    "postgres.dump": b"disposable PostgreSQL dump fixture",
+    "supabase-meta.dump": b"metadata fixture",
+    "storage.tar.gz": storage,
+    "config.tar.gz": b"configuration fixture",
+}
+checksums = "".join(f"{hashlib.sha256(value).hexdigest()}  {name}\n" for name, value in components.items())
+created = now.isoformat().replace("+00:00", "Z")
+bundle = make_tar({
+    **components,
+    "MANIFEST.txt": f"created_utc={created}\n".encode(),
+    "SHA256SUMS": checksums.encode(),
+})
+backup = Path(sys.argv[1])
+backup.write_bytes(bundle)
+Path(sys.argv[2]).write_text("\n".join([
+    "format=tec-school-local-restore-proof-v1",
+    "status=PASS",
+    f"backup_sha256={hashlib.sha256(bundle).hexdigest()}",
+    f"backup_bytes={len(bundle)}",
+    f"verified_at_utc={created}",
+    "restore_mode=isolated-postgres",
+    "database_cleanup=dropped",
+]) + "\n", encoding="utf-8")
+PY
+pr411_backup_sha="$(sha256sum "$pr411_backup" | awk '{print $1}')"
+pr411_target="$repo_root/supabase/migrations/${pr411_version}_psychology_professional_school_staff_gate.sql"
+pr411_target_sha="$(sed 's/\r$//' "$pr411_target" | sha256sum | awk '{print $1}')"
+[[ "$pr411_target_sha" == 'da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa' ]]
+docker exec "$db_container" psql -U postgres -d postgres -v ON_ERROR_STOP=1 \
+  -c "CREATE DATABASE $pr411_database;" >/dev/null
+docker exec -i "$db_container" psql -U postgres -d "$pr411_database" -v ON_ERROR_STOP=1 <<'SQL' >/dev/null
+DO $roles$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+    CREATE ROLE anon NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'authenticated') THEN
+    CREATE ROLE authenticated NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'service_role') THEN
+    CREATE ROLE service_role NOLOGIN;
+  END IF;
+END
+$roles$;
+CREATE SCHEMA auth;
+CREATE SCHEMA private;
+CREATE SCHEMA supabase_migrations;
+CREATE TYPE public.user_role AS ENUM ('DIRECTOR', 'SECRETARY', 'PSYCHOLOGIST');
+CREATE TABLE public.profiles (id uuid PRIMARY KEY, active boolean NOT NULL DEFAULT true);
+CREATE TABLE public.memberships (
+  profile_id uuid NOT NULL,
+  institution_id uuid NOT NULL,
+  active boolean NOT NULL DEFAULT true,
+  role public.user_role NOT NULL
+);
+CREATE TABLE public.psychology_professionals (
+  profile_id uuid PRIMARY KEY,
+  crp_registration text NOT NULL,
+  crp_state text NOT NULL,
+  verification_status text NOT NULL DEFAULT 'PENDING',
+  verified_at timestamptz,
+  verified_by uuid,
+  active boolean NOT NULL DEFAULT true,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE TABLE public.psychology_professional_institutions (
+  professional_profile_id uuid NOT NULL,
+  institution_id uuid NOT NULL,
+  active boolean NOT NULL DEFAULT false,
+  PRIMARY KEY (professional_profile_id, institution_id)
+);
+CREATE TABLE public.psychology_audit_events (
+  institution_id uuid NOT NULL,
+  actor_profile_id uuid NOT NULL,
+  action text NOT NULL,
+  subject_id uuid NOT NULL
+);
+CREATE TABLE supabase_migrations.schema_migrations (
+  version text PRIMARY KEY NOT NULL,
+  statements text[],
+  name text
+);
+INSERT INTO supabase_migrations.schema_migrations (version, statements, name)
+  VALUES ('20261026000100', ARRAY[]::text[], 'psychology-foundation');
+CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT NULL::uuid $$;
+CREATE FUNCTION private.psychology_is_manager(uuid) RETURNS boolean
+  LANGUAGE sql STABLE AS $$ SELECT false $$;
+SQL
+pr411_seed_ledger="$(docker exec "$db_container" psql -X -A -t -U postgres -d "$pr411_database" \
+  -v ON_ERROR_STOP=1 -c 'select current_database() || chr(124) || max(version) from supabase_migrations.schema_migrations;')"
+[[ "$pr411_seed_ledger" == "$pr411_database|$pr411_base_version" ]]
+pr411_source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+mkdir -p "$tmp/pr411-bin"
+cat > "$tmp/pr411-bin/git" <<'MOCK'
+#!/usr/bin/env bash
+if [[ "$#" == 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$3" == 'branch' && "$4" == '--show-current' ]]; then
+  printf '%s\n' 'codex/psychology-school-staff-access'
+  exit 0
+fi
+if [[ "$#" == 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
+  printf '%s\n' 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+  exit 0
+fi
+exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
+MOCK
+chmod +x "$tmp/pr411-bin/git"
+if ! pr411_output="$(PATH="$tmp/pr411-bin:$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$(command -v git)" \
+  PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_DB_CONTAINER="$db_container" \
+  PROMOTION_TEST_DATABASE_NAME="$pr411_database" \
+  PROMOTION_TEST_CLI_LOG_DIR="$tmp/cli-logs" \
+  PROMOTION_TEST_SUPABASE_BIN="$promotion_test_supabase_bin" \
+  PROMOTE_SINGLE_MIGRATION_CLI_BINARY="$tmp/bin/supabase-with-timeout" \
+  SOURCE_ROOT="$repo_root" TARGET_VERSION="$pr411_version" \
+  EXPECTED_REMOTE_LAST="$pr411_base_version" \
+  EXPECTED_SOURCE_COMMIT="$pr411_source_commit" \
+  EXPECTED_TARGET_SHA256="$pr411_target_sha" PRODUCTION_DB_URL="$pr411_db_url" \
+  APPLY=1 BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$pr411_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$pr411_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$pr411_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  ACCEPT_NO_OFFSITE_COPY=I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_411 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200 \
+  TMPDIR="$tmp" "$promoter")"; then
+  printf '%s\n' "$pr411_output" >&2
+  emit_cli_diagnostics
+  printf 'PROMOTE_SINGLE_MIGRATION_CASE=pr411_local_only_exception FAIL\n' >&2
+  exit 1
+fi
+printf '%s\n' "$pr411_output"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR411_LOCAL_ONLY' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_PR=411' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000200' <<< "$pr411_output"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$pr411_backup_sha" <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$pr411_output"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$pr411_output"
+grep -Fxq 'WORKDIR_MIGRATION_COUNT=2' <<< "$pr411_output"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261026000200' <<< "$pr411_output"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$pr411_output"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$pr411_output"
+grep -Fxq 'REMOTE_AFTER_LAST=20261026000200' <<< "$pr411_output"
+! grep -q '20261025000700' <<< "$pr411_output"
+pr411_versions="$(docker exec "$db_container" psql -U postgres -d "$pr411_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  'select version from supabase_migrations.schema_migrations order by version;')"
+[[ "$(printf '%s\n' "$pr411_versions" | sort)" == \
+  "$(printf '%s\n' "$pr411_base_version" "$pr411_version" | sort)" ]]
+pr411_function_count="$(docker exec "$db_container" psql -U postgres -d "$pr411_database" \
+  -X -A -t -v ON_ERROR_STOP=1 -c \
+  "select count(*) from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+   where n.nspname = 'private' and p.proname = 'psychology_can_manage_professionals';")"
+[[ "$pr411_function_count" == '1' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_POSTGRES_PR411_LOCAL_ONLY=PASS'
 
 # Prove the actual Supabase CLI migration-executor identity in disposable
 # PostgreSQL. Its connection hook switches cli_login_* to postgres; RESET ALL

@@ -30,7 +30,7 @@ export function useUserInstitutions(
 
     queryFn: () => {
       if (platformRole === 'SUPER_ADMIN') {
-        return institutionService.listAllActiveInstitutions();
+        return institutionService.listAllActiveInstitutions(profileId);
       }
 
       if (!profileId) {

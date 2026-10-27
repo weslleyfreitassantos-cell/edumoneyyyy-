@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+set +x
+set -E
+trap 'printf "PROMOTE_SINGLE_MIGRATION_TEST_ERROR_LINE=%s\n" "$LINENO" >&2' ERR
 
 repo_root="$(git rev-parse --show-toplevel)"
 script="$repo_root/scripts/db/promote-single-migration.sh"
@@ -12,52 +15,46 @@ target_hash="$(sed 's/\r$//' "$target_file" | sha256sum | awk '{print $1}')"
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote-test.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
+test_python="$(command -v python || command -v python3)"
+"$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
 
 eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
-eval "$(sed -n '/^safe_cli_sqlstate()/,/^}/p' "$script")"
-eval "$(sed -n '/^safe_cli_failure_message()/,/^}/p' "$script")"
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
 [[ "$(safe_cli_failure_class 'context deadline exceeded while dialing')" == 'database_connection_timeout' ]]
 [[ "$(safe_cli_failure_class 'no pg_hba.conf entry: no encryption')" == 'database_access_policy' ]]
 [[ "$(safe_cli_failure_class 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:ART')" == 'database_migration_invariant' ]]
 [[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_migration_error' ]]
-[[ "$(safe_cli_sqlstate 'ERROR: 57014: canceling statement due to statement timeout')" == '57014' ]]
-[[ "$(safe_cli_failure_message 'ERROR: 57014: canceling statement due to statement timeout')" == 'statement_timeout_or_query_canceled' ]]
-[[ "$(safe_cli_failure_message 'ERROR: P0001: LEARNING_V10_DEMO_SCOPE_DENIED')" == 'LEARNING_V10_DEMO_SCOPE_DENIED' ]]
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
 after_ledger="$tmp/after-ledger"
 cli_apply_count="$tmp/cli-apply-count"
-cli_dry_run_count="$tmp/cli-dry-run-count"
 psql_call_count="$tmp/psql-call-count"
 printf '%s\n' "$expected_last" > "$ledger"
 printf 'Would push migration %s\n' "$target_version" > "$dry_run"
 printf '%s\n' "$expected_last" "$target_version" > "$after_ledger"
 printf '0\n' > "$cli_apply_count"
-printf '0\n' > "$cli_dry_run_count"
 printf '0\n' > "$psql_call_count"
 
 run_guard() {
-  SOURCE_ROOT="${TEST_SOURCE_ROOT:-$repo_root}" \
+  SOURCE_ROOT="$repo_root" \
   TARGET_VERSION="${TEST_TARGET_VERSION:-$target_version}" \
-  EXPECTED_REMOTE_LAST="${TEST_EXPECTED_REMOTE_LAST:-${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}}" \
-  EXPECTED_SOURCE_COMMIT="${TEST_SOURCE_COMMIT:-$source_commit}" \
+  EXPECTED_REMOTE_LAST="${EXPECTED_REMOTE_LAST_OVERRIDE:-$expected_last}" \
+  EXPECTED_SOURCE_COMMIT="$source_commit" \
   EXPECTED_TARGET_SHA256="${TEST_TARGET_SHA256:-${EXPECTED_TARGET_SHA256_OVERRIDE:-$target_hash}}" \
-  PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://${TEST_DATABASE_USER:-fixture_user}:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
+  PRODUCTION_DB_URL="${PRODUCTION_DB_URL_OVERRIDE:-postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require}" \
   TMPDIR="$tmp/guard-tmp" \
   REAL_SHA256SUM="${real_sha256sum:-}" \
-  MOCK_DB_USER="${TEST_DATABASE_USER:-fixture_user}" \
   REMOTE_LEDGER_FILE="${TEST_REMOTE_LEDGER_FILE:-$ledger}" \
+  PYTHON3_BIN="${PROMOTION_TEST_PYTHON3_BIN:-python3}" \
+  BACKUP_GATE="${TEST_BACKUP_GATE:-${BACKUP_GATE:-PASS}}" \
   DRY_RUN_OUTPUT_FILE="${TEST_DRY_RUN_OUTPUT_FILE:-${DRY_RUN_OUTPUT_FILE_OVERRIDE-$dry_run}}" \
   EXPECT_INCLUDE_ALL="${TEST_EXPECT_INCLUDE_ALL:-1}" \
   MOCK_AFTER_LEDGER_FILE="$after_ledger" \
   MOCK_AFTER_LEDGER_CONTENT="${TEST_AFTER_LEDGER_CONTENT:-$expected_last
 $target_version}" \
   MOCK_CLI_APPLY_COUNT_FILE="$cli_apply_count" \
-  MOCK_CLI_DRY_RUN_COUNT_FILE="$cli_dry_run_count" \
   MOCK_PSQL_CALL_COUNT_FILE="$psql_call_count" \
-  PROMOTION_DIAGNOSTIC_DIR="${TEST_DIAGNOSTIC_DIR:-$tmp/diagnostics}" \
   "$script"
 }
 
@@ -110,19 +107,10 @@ cat > "$tmp/bin/sha256sum" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
 if [[ -n "${MOCK_BACKUP_FILE:-}" && "$#" == '1' && "$1" == "$MOCK_BACKUP_FILE" ]]; then
-  printf '%s  %s\n' "${MOCK_BACKUP_SHA256:-b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0}" "$1"
+  printf '%s  %s\n' 'b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0' "$1"
 else
   "$REAL_SHA256SUM" "$@"
 fi
-MOCK
-cat > "$tmp/bin/ssh" <<'MOCK'
-#!/usr/bin/env bash
-set -euo pipefail
-[[ "$*" == *'tecescola-vps'* && "$*" == *'/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'* ]] || exit 56
-printf '%s\n%s  %s\n' \
-  "${MOCK_406_BACKUP_SIZE:-372305133}" \
-  "${MOCK_406_BACKUP_SHA256:-a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841}" \
-  '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'
 MOCK
 cat > "$tmp/bin/npx" <<'MOCK'
 #!/usr/bin/env bash
@@ -130,17 +118,13 @@ set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 31
 [[ "$*" == *"${EXPECTED_SANITIZED_DB_URL:-postgresql://fixture.invalid:5432/postgres?sslmode=require}"* ]] || exit 32
 expected_db_user="${MOCK_DB_USER:-fixture_user}"
-expected_db_password='dummy!secret'
-[[ "${PGUSER:-}" == "$expected_db_user" && "${PGPASSWORD:-}" == "$expected_db_password" && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
+[[ "${PGUSER:-}" == "$expected_db_user" && "${PGPASSWORD:-}" == 'dummy!secret' && "${PGSSLMODE:-}" == "${EXPECTED_SSLMODE:-require}" ]] || exit 33
 if [[ -n "${EXPECTED_CLI_EXECUTABLE:-}" ]]; then
   [[ "$0" == "$EXPECTED_CLI_EXECUTABLE" ]] || exit 39
 fi
 if [[ "$*" == *' db query '* ]]; then
   [[ "$*" == *'--agent yes'* && "$*" == *'--output-format json'* && \
     "$*" == *'PROMOTION_CONTEXT_V1'* ]] || exit 55
-  [[ "$*" == *'with migration_007_fk_targets(table_name'* && "$*" == *'has_column_privilege'* && \
-    "$*" == *"'REFERENCES'"* && "$*" != *'RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
-  [[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 56
   printf '{"rows":[{"context":{"marker":"PROMOTION_CONTEXT_V1","session_user":"%s","current_user":"%s","current_role":"%s","role_setting":"%s","candidate_owner":"%s","candidate_owner_access":%s,"relation_ddl_access":%s,"function_ddl_access":%s,"public_create":%s,"private_create":%s,"is_superuser":%s,"references_access":%s,"references_failure_kind":"%s","references_missing_target":"%s","session_owner_reset_access":%s}}]}\n' \
     "${MOCK_CLI_CONTEXT_SESSION_USER:-$expected_db_user}" \
     "${MOCK_CLI_CONTEXT_CURRENT_USER:-$expected_db_user}" \
@@ -169,7 +153,7 @@ else
   [[ "$*" != *'--include-all'* ]] || exit 54
 fi
 if [[ "${MOCK_APPLY_FAILURE:-0}" == '1' && "$*" != *'--dry-run'* ]]; then
-  printf 'ERROR: 23514: check constraint violation for school "Aurora Integral"\nDETAIL: Failing row contains (Samuel Teste, samuel@example.invalid, 73ea3adb-31c4-4e57-8a45-078dbd0d954e); postgresql://private:db-secret@db.invalid:5432/postgres Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZWNyZXQifQ.signature.\n' >&2
+  printf 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:PRIVATE_DETAIL_MUST_NOT_LEAK\n' >&2
   exit 48
 fi
 if [[ "${EXPECT_WSLENV_FORWARDING:-0}" == '1' ]]; then
@@ -185,8 +169,6 @@ if [[ "${EXPECT_WINDOWS_WORKDIR:-0}" == '1' ]]; then
   [[ -n "$passfile" && "$(stat -c %a "$passfile")" == '600' ]] || exit 38
 fi
 if [[ "$*" == *'--dry-run'* ]]; then
-  dry_run_count="$(cat "$MOCK_CLI_DRY_RUN_COUNT_FILE")"
-  printf '%s\n' "$((dry_run_count + 1))" > "$MOCK_CLI_DRY_RUN_COUNT_FILE"
   printf 'Would push migration %s\n' "$TARGET_VERSION"
 else
   apply_count="$(cat "$MOCK_CLI_APPLY_COUNT_FILE")"
@@ -201,21 +183,9 @@ set -euo pipefail
 [[ "$*" != *dummy* && "$*" != *fixture_user* ]] || exit 41
 [[ "$*" == *'postgresql://fixture.invalid:5432/postgres?sslmode=require'* ]] || exit 42
 expected_db_user="${MOCK_DB_USER:-fixture_user}"
-expected_db_password='dummy!secret'
 [[ "${PGUSER:-}" == "$expected_db_user" && -n "${PGPASSFILE:-}" && -f "$PGPASSFILE" ]] || exit 43
 [[ "$(stat -c %a "$PGPASSFILE")" == '600' ]] || exit 44
-grep -Fxq "*:*:*:$expected_db_user:$expected_db_password" "$PGPASSFILE" || exit 45
-[[ -z "${PGOPTIONS:-}${PGSERVICE:-}${PGSERVICEFILE:-}${PGHOST:-}${PGPORT:-}${PGDATABASE:-}" ]] || exit 57
-psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
-printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
-if [[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]]; then
-  if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
-    printf 'mock post-apply query unavailable\n' >&2
-    exit 49
-  fi
-  cat "$MOCK_AFTER_LEDGER_FILE"
-  exit 0
-fi
+grep -Fxq "*:*:*:$expected_db_user:dummy!secret" "$PGPASSFILE" || exit 45
 if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
   if [[ "$expected_db_user" == 'supabase_admin' || "$expected_db_user" == cli_login_* ]]; then
     [[ "$*" == *'SET SESSION ROLE postgres; RESET ALL; with migration_007_fk_targets(table_name'* ]] || exit 58
@@ -240,9 +210,16 @@ if [[ "$*" == *'PROMOTION_CONTEXT_V1'* ]]; then
     "${MOCK_PSQL_CONTEXT_SESSION_OWNER_RESET:-false}"
   exit 0
 fi
-exit 46
+[[ "$*" == *'select version from supabase_migrations.schema_migrations order by version;'* ]] || exit 46
+psql_count="$(cat "$MOCK_PSQL_CALL_COUNT_FILE")"
+printf '%s\n' "$((psql_count + 1))" > "$MOCK_PSQL_CALL_COUNT_FILE"
+if [[ "${MOCK_PSQL_FAILURE:-0}" == '1' ]]; then
+  printf 'mock post-apply query unavailable\n' >&2
+  exit 49
+fi
+cat "$MOCK_AFTER_LEDGER_FILE"
 MOCK
-chmod +x "$tmp/bin/sha256sum" "$tmp/bin/ssh" "$tmp/bin/npx" "$tmp/bin/psql"
+chmod +x "$tmp/bin/sha256sum" "$tmp/bin/npx" "$tmp/bin/psql"
 cat > "$tmp/bin/wslpath" <<'MOCK'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -256,121 +233,6 @@ chmod +x "$tmp/bin/wslpath"
 cp "$tmp/bin/npx" "$tmp/bin/cli-override"
 cp "$tmp/bin/npx" "$tmp/bin/supabase.exe"
 chmod +x "$tmp/bin/cli-override" "$tmp/bin/supabase.exe"
-
-if [[ "${PROMOTION_TEST_CONTEXT_ONLY:-0}" == '1' ]]; then
-  context_target=20261025000700
-  context_base=20261025000600
-  context_file="$repo_root/supabase/migrations/20261025000700_central_estudos_v2_runtime_publication.sql"
-  context_hash="$(sed 's/\r$//' "$context_file" | "$real_sha256sum" | awk '{print $1}')"
-  context_ledger="$tmp/context-ledger"
-  printf '%s\n' "$context_base" > "$context_ledger"
-
-  run_context_guard() {
-    TEST_TARGET_VERSION="$context_target" \
-    TEST_SOURCE_ROOT="$repo_root" \
-    TEST_EXPECTED_REMOTE_LAST="$context_base" \
-    TEST_TARGET_SHA256="$context_hash" \
-    TEST_EXPECT_INCLUDE_ALL=0 \
-    TEST_REMOTE_LEDGER_FILE="$context_ledger" \
-    run_guard
-  }
-
-  printf '0\n' > "$cli_dry_run_count"
-  context_pass="$(PATH="$tmp/bin:$PATH" DRY_RUN_OUTPUT_FILE_OVERRIDE= \
-    PGOPTIONS='-c role=ambient_role' PGSERVICE=ambient_service \
-    PGSERVICEFILE="$tmp/ambient-service.conf" PGHOST=ambient-host \
-    PGPORT=6543 PGDATABASE=ambient_db PGUSER=ambient_user PGPASSWORD=ambient_password \
-    run_context_guard)"
-  grep -q '^DB_SESSION_USER=fixture_user$' <<< "$context_pass"
-  grep -q '^DB_CURRENT_USER=fixture_user$' <<< "$context_pass"
-  grep -q '^DB_CANDIDATE_OWNER=fixture_user$' <<< "$context_pass"
-  grep -q '^REFERENCES_PERMISSION=PASS$' <<< "$context_pass"
-  grep -q '^DDL_PERMISSION=PASS$' <<< "$context_pass"
-  grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$context_pass"
-  grep -q '^PRECHECK=PASS$' <<< "$context_pass"
-  grep -q '^PROMOTION=DRY_RUN_ONLY$' <<< "$context_pass"
-  [[ "$(cat "$cli_dry_run_count")" == '1' && "$(cat "$cli_apply_count")" == '0' ]]
-
-  # The Supabase CLI switches its privileged login names to postgres; RESET
-  # ALL preserves that role, and the read-only direct probe must match it.
-  printf '0\n' > "$cli_dry_run_count"
-  cli_login_context_pass="$(PATH="$tmp/bin:$PATH" \
-    TEST_DATABASE_USER=cli_login_fixture \
-    MOCK_CLI_CONTEXT_SESSION_USER=cli_login_fixture \
-    MOCK_CLI_CONTEXT_CURRENT_USER=postgres \
-    MOCK_CLI_CONTEXT_CURRENT_ROLE=postgres \
-    MOCK_CLI_CONTEXT_ROLE_SETTING=postgres \
-    MOCK_CLI_CONTEXT_OWNER=postgres \
-    MOCK_PSQL_CONTEXT_SESSION_USER=cli_login_fixture \
-    MOCK_PSQL_CONTEXT_CURRENT_USER=postgres \
-    MOCK_PSQL_CONTEXT_CURRENT_ROLE=postgres \
-    MOCK_PSQL_CONTEXT_ROLE_SETTING=postgres \
-    MOCK_PSQL_CONTEXT_OWNER=postgres \
-    DRY_RUN_OUTPUT_FILE_OVERRIDE= \
-    run_context_guard)"
-  grep -q '^DB_SESSION_USER=cli_login_fixture$' <<< "$cli_login_context_pass"
-  grep -q '^DB_CURRENT_USER=postgres$' <<< "$cli_login_context_pass"
-  grep -q '^DB_ROLE_SETTING=postgres$' <<< "$cli_login_context_pass"
-  grep -q '^CLI_PSQL_CONTEXT_MATCH=YES$' <<< "$cli_login_context_pass"
-  grep -q '^PRECHECK=PASS$' <<< "$cli_login_context_pass"
-  [[ "$(cat "$cli_dry_run_count")" == '1' && "$(cat "$cli_apply_count")" == '0' ]]
-
-  expect_context_rejected() {
-    local expected_message="$1"
-    shift
-    printf '0\n' > "$cli_dry_run_count"
-    if context_failure="$(
-      (
-        for assignment in "$@"; do export "$assignment"; done
-        PATH="$tmp/bin:$PATH" DRY_RUN_OUTPUT_FILE_OVERRIDE= run_context_guard
-      ) 2>&1
-    )"; then
-      echo 'invalid runtime-publication context unexpectedly passed' >&2
-      exit 1
-    fi
-    grep -q "^PROMOTION_ABORTED=${expected_message}$" <<< "$context_failure"
-    [[ "$(cat "$cli_dry_run_count")" == '0' && "$(cat "$cli_apply_count")" == '0' ]]
-  }
-
-  expect_context_rejected 'Supabase CLI and direct PostgreSQL session contexts differ' \
-    MOCK_CLI_CONTEXT_CURRENT_USER=switched_role
-  expect_context_rejected 'Supabase CLI effective role differs from the verified migration role' \
-    MOCK_CLI_CONTEXT_ROLE_SETTING=switched_role MOCK_PSQL_CONTEXT_ROLE_SETTING=switched_role
-  expect_context_rejected 'Supabase CLI effective role differs from the verified migration role' \
-    MOCK_CLI_CONTEXT_CURRENT_USER=unexpected_role MOCK_PSQL_CONTEXT_CURRENT_USER=unexpected_role
-  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
-    MOCK_CLI_CONTEXT_OWNER_ACCESS=false MOCK_PSQL_CONTEXT_OWNER_ACCESS=false
-  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
-    MOCK_CLI_CONTEXT_SCHEMA_CREATE=false MOCK_PSQL_CONTEXT_SCHEMA_CREATE=false
-  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
-    MOCK_CLI_CONTEXT_RELATION_ACCESS=false MOCK_PSQL_CONTEXT_RELATION_ACCESS=false
-  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
-    MOCK_CLI_CONTEXT_FUNCTION_ACCESS=false MOCK_PSQL_CONTEXT_FUNCTION_ACCESS=false
-  expect_context_rejected 'database role lacks ownership or schema privileges required by migration 007' \
-    MOCK_CLI_CONTEXT_PRIVATE_CREATE=false MOCK_PSQL_CONTEXT_PRIVATE_CREATE=false
-  expect_context_rejected 'database role lacks REFERENCES privilege required by migration 007' \
-    MOCK_CLI_CONTEXT_REFERENCES_ACCESS=false MOCK_PSQL_CONTEXT_REFERENCES_ACCESS=false \
-    MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND=missing_privilege MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND=missing_privilege \
-    MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\) MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\)
-  grep -Fxq 'REFERENCES_PERMISSION=FAIL' <<< "$context_failure"
-  grep -Fxq 'REFERENCES_OBJECT=public.subjects(id)' <<< "$context_failure"
-  expect_context_rejected 'migration 007 REFERENCES precheck could not resolve a referenced relation or column' \
-    MOCK_CLI_CONTEXT_REFERENCES_ACCESS=false MOCK_PSQL_CONTEXT_REFERENCES_ACCESS=false \
-    MOCK_CLI_CONTEXT_REFERENCES_FAILURE_KIND=missing_object MOCK_PSQL_CONTEXT_REFERENCES_FAILURE_KIND=missing_object \
-    MOCK_CLI_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\) MOCK_PSQL_CONTEXT_REFERENCES_MISSING_TARGET=subjects\(id\)
-
-  if url_role_override="$(PATH="$tmp/bin:$PATH" \
-    PRODUCTION_DB_URL_OVERRIDE='postgresql://fixture_user:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require&options=-c%20role%3Dambient_role' \
-    run_guard 2>&1)"; then
-    echo 'connection URL role override unexpectedly passed validation' >&2
-    exit 1
-  fi
-  grep -q '^PROMOTION_ABORTED=production database connection could not be parsed safely$' <<< "$url_role_override"
-  [[ "$url_role_override" != *dummy* && "$url_role_override" != *fixture_user* ]]
-
-  echo 'PROMOTE_SINGLE_MIGRATION_CONTEXT_TEST=PASS'
-  exit 0
-fi
 
 dry_run_prefer="$(PATH="$tmp/bin:$PATH" \
   EXPECTED_SSLMODE=prefer \
@@ -403,51 +265,15 @@ if apply_failure="$(PATH="$tmp/bin:$PATH" \
   echo "mock CLI apply failure unexpectedly passed" >&2
   exit 1
 fi
-grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_error$' <<< "$apply_failure"
-grep -q '^PROMOTION_OUTCOME=UNKNOWN_DO_NOT_RETRY$' <<< "$apply_failure"
-grep -q '^PROMOTION_SQLSTATE=23514$' <<< "$apply_failure"
-grep -q '^PROMOTION_ERROR=check_constraint_violation$' <<< "$apply_failure"
-if [[ "$apply_failure" == *'Aurora Integral'* || "$apply_failure" == *'Samuel Teste'* || "$apply_failure" == *'samuel@example.invalid'* || "$apply_failure" == *'73ea3adb-31c4-4e57-8a45-078dbd0d954e'* || "$apply_failure" == *'db-secret'* || "$apply_failure" == *'eyJhbGciOiJIUzI1NiJ9'* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
+grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_invariant$' <<< "$apply_failure"
+if [[ "$apply_failure" == *PRIVATE_DETAIL_MUST_NOT_LEAK* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
   echo "connection credentials or migration details leaked from CLI apply failure" >&2
-  exit 1
-fi
-diagnostic_file="$(sed -n 's/^PROMOTION_DIAGNOSTIC_LOG=//p' <<< "$apply_failure" | tail -n 1)"
-[[ -f "$diagnostic_file" ]] || { echo 'sanitized diagnostic file was not created' >&2; exit 1; }
-if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* || "$(uname -s)" == CYGWIN* ]]; then
-  diagnostic_file_acl="$(icacls.exe "$(cygpath -w "$diagnostic_file")")"
-  diagnostic_dir_acl="$(icacls.exe "$(cygpath -w "$(dirname "$diagnostic_file")")")"
-  current_principal="$(whoami.exe)"
-  [[ "$diagnostic_file_acl" == *"$current_principal"* && "$diagnostic_dir_acl" == *"$current_principal"* ]] || {
-    echo 'Windows diagnostic ACL does not grant the current user access' >&2
-    exit 1
-  }
-  [[ "$(grep -Ec ':(\(F\)|\(OI\)\(CI\)\(F\))' <<< "$diagnostic_file_acl")" == '3' ]] || {
-    echo 'Windows diagnostic file ACL is not restricted to the user and system administrators' >&2
-    exit 1
-  }
-  [[ "$(grep -Ec ':(\(F\)|\(OI\)\(CI\)\(F\))' <<< "$diagnostic_dir_acl")" == '3' ]] || {
-    echo 'Windows diagnostic directory ACL is not restricted to the user and system administrators' >&2
-    exit 1
-  }
-else
-  [[ "$(stat -c %a "$diagnostic_file")" == '600' ]] || { echo 'diagnostic file permissions are not 0600' >&2; exit 1; }
-  [[ "$(stat -c %a "$(dirname "$diagnostic_file")")" == '700' ]] || { echo 'diagnostic directory permissions are not 0700' >&2; exit 1; }
-fi
-grep -Fxq 'sqlstate=23514' "$diagnostic_file" || { echo 'diagnostic did not preserve SQLSTATE' >&2; exit 1; }
-grep -Fxq 'message=check_constraint_violation' "$diagnostic_file" || { echo 'diagnostic did not preserve a safe error summary' >&2; exit 1; }
-grep -Fxq 'statement=not-preserved-by-supabase-cli-output' "$diagnostic_file" || { echo 'diagnostic did not disclose statement availability' >&2; exit 1; }
-if grep -Eq 'Aurora Integral|Samuel Teste|samuel@example.invalid|73ea3adb-31c4-4e57-8a45-078dbd0d954e|db-secret|eyJhbGciOiJIUzI1NiJ9|dummy|fixture_user' "$diagnostic_file"; then
-  echo "protected diagnostic file contains sensitive values" >&2
   exit 1
 fi
 [[ -z "$(find "$tmp/guard-tmp" -mindepth 1 -print -quit)" ]] || {
   echo "temporary promotion credentials were not cleaned up" >&2
   exit 1
 }
-if [[ "${PROMOTER_TEST_FILTER:-}" == 'diagnostics' ]]; then
-  echo 'promoter sanitized diagnostic test passed'
-  exit 0
-fi
 
 mkdir -p "$tmp/override-tmp"
 applied_override="$(PATH="$tmp/bin:$PATH" \
@@ -575,6 +401,7 @@ exception_output="$(PATH="$tmp/bin:$PATH" \
   MOCK_BACKUP_FILE="$exception_backup" \
   APPLY=1 \
   BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=399 \
   BACKUP_EXCEPTION_RELEASE_SHA=36979b8adc4408bf9eaccdf77f742904fba152fc \
   BACKUP_EXCEPTION_WINDOWS_PATH='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz' \
   BACKUP_EXCEPTION_BACKUP_SHA256=b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0 \
@@ -592,7 +419,7 @@ exception_output="$(PATH="$tmp/bin:$PATH" \
 $exception_version" \
   run_guard)"
 grep -q '^BACKUP_GATE=FAIL$' <<< "$exception_output"
-grep -q '^BACKUP_EXCEPTION=USED$' <<< "$exception_output"
+grep -q '^BACKUP_EXCEPTION=RELEASE_399_ACCEPTED$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_RESTORE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_STORAGE=PARTIAL$' <<< "$exception_output"
 grep -q '^BACKUP_EXCEPTION_OFFSITE_GATE=FAIL$' <<< "$exception_output"
@@ -613,6 +440,7 @@ expect_exception_rejected() {
     REAL_SHA256SUM="$real_sha256sum" \
     MOCK_BACKUP_FILE="${TEST_MOCK_BACKUP_FILE-$exception_backup}" \
     APPLY=1 BACKUP_GATE=FAIL \
+    BACKUP_EXCEPTION_PR=399 \
     BACKUP_EXCEPTION_RELEASE_SHA="${TEST_EXCEPTION_RELEASE_SHA-36979b8adc4408bf9eaccdf77f742904fba152fc}" \
     BACKUP_EXCEPTION_WINDOWS_PATH="${TEST_EXCEPTION_WINDOWS_PATH-C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz}" \
     BACKUP_EXCEPTION_BACKUP_SHA256="${TEST_EXCEPTION_BACKUP_SHA256-b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0}" \
@@ -654,8 +482,162 @@ unset TEST_EXCEPTION_RELEASE_SHA TEST_EXCEPTION_BACKUP_SHA256 TEST_EXCEPTION_RES
   TEST_EXCEPTION_OFFSITE_GATE TEST_EXCEPTION_RISK_ACCEPTANCE TEST_EXCEPTION_PRODUCTION_AUTH \
   TEST_EXCEPTION_TARGET_VERSION TEST_EXCEPTION_FILE TEST_EXCEPTION_WINDOWS_PATH TEST_MOCK_BACKUP_FILE
 
+# PR #409 local-only proof: validate a recent, intact disposable bundle and a
+# matching successful restore receipt during dry-run. No production write token.
+local_backup="$tmp/psychology-local-backup-fixture.tar.gz"
+local_receipt="$tmp/psychology-local-restore.receipt"
+"$test_python" - "$local_backup" "$local_receipt" <<'PY'
+import datetime, hashlib, io, sys, tarfile
+from pathlib import Path
+
+def make_tar(entries):
+    output = io.BytesIO()
+    with tarfile.open(fileobj=output, mode="w:gz") as archive:
+        for name, content in entries.items():
+            info = tarfile.TarInfo(name)
+            info.size = len(content)
+            archive.addfile(info, io.BytesIO(content))
+    return output.getvalue()
+
+now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+storage = make_tar({"bucket/sample.bin": b"sample"})
+components = {
+    "globals.sql": b"-- fixture\n",
+    "postgres.dump": b"database fixture",
+    "supabase-meta.dump": b"metadata fixture",
+    "storage.tar.gz": storage,
+    "config.tar.gz": b"encrypted config fixture",
+}
+checksums = "".join(f"{hashlib.sha256(body).hexdigest()}  {name}\n" for name, body in components.items())
+created = now.isoformat().replace("+00:00", "Z")
+bundle = make_tar({**components, "MANIFEST.txt": f"created_utc={created}\n".encode(), "SHA256SUMS": checksums.encode()})
+Path(sys.argv[1]).write_bytes(bundle)
+receipt = [
+    "format=tec-school-local-restore-proof-v1",
+    "status=PASS",
+    f"backup_sha256={hashlib.sha256(bundle).hexdigest()}",
+    f"backup_bytes={len(bundle)}",
+    f"verified_at_utc={created}",
+    "restore_mode=isolated-postgres",
+    "database_cleanup=dropped",
+]
+Path(sys.argv[2]).write_text("\n".join(receipt) + "\n", encoding="utf-8")
+PY
+
+psychology_version=20261026000100
+psychology_file="$repo_root/supabase/migrations/${psychology_version}_psychology_institution_gate.sql"
+[[ -f "$psychology_file" ]]
+psychology_hash="$(sed 's/\r$//' "$psychology_file" | "$real_sha256sum" | awk '{print $1}')"
+local_backup_sha="$("$real_sha256sum" "$local_backup" | awk '{print $1}')"
+real_git="$(command -v git)"
+export PROMOTION_TEST_REAL_GIT="$real_git"
+cat > "$tmp/bin/git" <<'SH'
+#!/usr/bin/env bash
+if [[ "$#" -eq 4 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'branch' && "$4" == '--show-current' ]]; then
+  printf '%s\n' "${PROMOTION_TEST_BRANCH:-codex/psychology-gate-ux}"
+  exit 0
+fi
+if [[ "$#" -eq 5 && "$1" == '-C' && "$2" == "${PROMOTION_TEST_REPO_ROOT:-}" && \
+  "$3" == 'remote' && "$4" == 'get-url' && "$5" == 'origin' ]]; then
+  printf '%s\n' 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+  exit 0
+fi
+exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
+SH
+chmod +x "$tmp/bin/git"
+local_ledger="$tmp/pr409-local-ledger"
+local_dry_run="$tmp/pr409-local-dry-run"
+printf '20261025000600\n' > "$local_ledger"
+printf 'Would push migration %s\n' "$psychology_version" > "$local_dry_run"
+local_output="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" \
+  TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" \
+  run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION=PR409_LOCAL_ONLY' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_PR=409' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000100' <<< "$local_output"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output"
+grep -Fxq 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY' <<< "$local_output"
+grep -Fxq 'PROMOTION=DRY_RUN_ONLY' <<< "$local_output"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output"
+! grep -q '20261025000700' <<< "$local_output"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+printf 'Would push migration %s\nWould push migration 20261025000700\n' "$psychology_version" > "$tmp/pr409-with-007"
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$tmp/pr409-with-007" run_guard >/dev/null 2>&1; then
+  echo 'precheck unexpectedly allowed the extra migration 20261025000700' >&2
+  exit 1
+fi
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=PASS \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" run_guard >/dev/null 2>&1; then
+  echo 'PR #409 exception unexpectedly accepted offsite PASS' >&2
+  exit 1
+fi
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=409 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261025000600 TEST_REMOTE_LEDGER_FILE="$local_ledger" \
+  TEST_TARGET_VERSION="$psychology_version" TEST_TARGET_SHA256="$psychology_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run" \
+  APPLY=1 CONFIRM_PRODUCTION_WRITE= ACCEPT_NO_OFFSITE_COPY= run_guard >/dev/null 2>&1; then
+  echo 'PR #409 local-only exception unexpectedly wrote without specific authorization' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR409_LOCAL_ONLY=PASS'
+
 # Release #406 is bound to its PR source lineage, exact VPS-local backup and the
 # exact pre-migration ledger positions. The SQL and DB clients remain mocked.
+# Stub SSH so this unit test validates the requested host/path and evidence
+# parsing without opening a real network connection.
+cat > "$tmp/bin/ssh" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+expected_command="stat -c '%s' -- '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz' && sha256sum -- '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'"
+[[ "$#" -eq 6 && "$1" == '-o' && "$2" == 'BatchMode=yes' && \
+  "$3" == '-o' && "$4" == 'ConnectTimeout=15' && "$5" == 'tecescola-vps' && \
+  "$6" == "$expected_command" ]] || exit 86
+printf '%s\n' "${MOCK_406_BACKUP_SIZE:?}"
+printf '%s  %s\n' "${MOCK_406_BACKUP_SHA256:?}" '/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz'
+SH
+chmod +x "$tmp/bin/ssh"
 release_406_backup_sha256=a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841
 release_406_backup_path=/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-43-25Z.tar.gz
 release_406_base=20261025000500
@@ -673,7 +655,13 @@ release_406_dry_run="$tmp/release-406-dry-run"
 release_406_source="$tmp/release-406-source"
 mkdir -p "$release_406_source/supabase/migrations"
 printf 'project_id = "promote-406-test"\n' > "$release_406_source/supabase/config.toml"
-printf 'gitdir: %s\n' "$(git -C "$repo_root" rev-parse --absolute-git-dir)" > "$release_406_source/.git"
+release_406_git_dir="$(git -C "$repo_root" rev-parse --absolute-git-dir)"
+if command -v cygpath >/dev/null 2>&1; then
+  release_406_git_dir="$(cygpath -u "$release_406_git_dir")"
+elif command -v wslpath >/dev/null 2>&1; then
+  release_406_git_dir="$(wslpath -u "$release_406_git_dir")"
+fi
+printf 'gitdir: %s\n' "$release_406_git_dir" > "$release_406_source/.git"
 while IFS= read -r version; do
   [[ -n "$version" ]] || continue
   printf 'select 1;\n' > "$release_406_source/supabase/migrations/${version}_test_fixture.sql"
@@ -706,7 +694,7 @@ release_406_output="$(PATH="$tmp/bin:$PATH" \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   TEST_TARGET_VERSION="$release_406_version" \
   TEST_SOURCE_ROOT="$release_406_source" \
-  TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_base" \
   TEST_TARGET_SHA256="$release_406_hash" \
   TEST_EXPECT_INCLUDE_ALL=0 \
   TEST_REMOTE_LEDGER_FILE="$release_406_ledger" \
@@ -746,7 +734,8 @@ cat "$release_406_second_ledger" > "$release_406_second_after"
 printf '%s\n' "$release_406_second_version" >> "$release_406_second_after"
 printf '0\n' > "$cli_apply_count"
 release_406_second_output="$(PATH="$tmp/bin:$PATH" \
-  TEST_DATABASE_USER=supabase_admin \
+  MOCK_DB_USER=supabase_admin \
+  PRODUCTION_DB_URL_OVERRIDE='postgresql://supabase_admin:dummy%21secret@fixture.invalid:5432/postgres?sslmode=require' \
   MOCK_CLI_CONTEXT_SESSION_USER=supabase_admin \
   MOCK_CLI_CONTEXT_CURRENT_USER=postgres \
   MOCK_CLI_CONTEXT_CURRENT_ROLE=postgres \
@@ -774,7 +763,7 @@ release_406_second_output="$(PATH="$tmp/bin:$PATH" \
   CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
   TEST_TARGET_VERSION="$release_406_second_version" \
   TEST_SOURCE_ROOT="$release_406_source" \
-  TEST_EXPECTED_REMOTE_LAST="$release_406_second_base" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_second_base" \
   TEST_TARGET_SHA256="$release_406_second_hash" \
   TEST_EXPECT_INCLUDE_ALL=0 \
   TEST_REMOTE_LEDGER_FILE="$release_406_second_ledger" \
@@ -801,7 +790,7 @@ printf '%s\n' "$release_406_second_base" > "$release_406_precheck_ledger"
 run_release_406_007_precheck() {
   TEST_TARGET_VERSION="$release_406_second_version" \
   TEST_SOURCE_ROOT="$repo_root" \
-  TEST_EXPECTED_REMOTE_LAST="$release_406_second_base" \
+  EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_second_base" \
   TEST_TARGET_SHA256="$release_406_second_hash" \
   TEST_EXPECT_INCLUDE_ALL=0 \
   TEST_REMOTE_LEDGER_FILE="$release_406_precheck_ledger" \
@@ -859,7 +848,7 @@ expect_release_406_rejected() {
     CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
     TEST_TARGET_VERSION="$release_406_version" \
     TEST_SOURCE_ROOT="$release_406_source" \
-    TEST_EXPECTED_REMOTE_LAST="$release_406_base" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$release_406_base" \
     TEST_TARGET_SHA256="$release_406_hash" \
     TEST_EXPECT_INCLUDE_ALL=0 \
     TEST_REMOTE_LEDGER_FILE="${TEST_406_LEDGER-$release_406_ledger}" \
@@ -886,6 +875,149 @@ printf '%s\n' "$release_406_base" >> "$short_release_406_ledger"
 TEST_406_LEDGER="$short_release_406_ledger" expect_release_406_rejected
 unset TEST_406_RELEASE_ID TEST_406_SOURCE_COMMIT TEST_406_RISK TEST_406_BACKUP_SHA256 \
   TEST_406_SSH_SHA TEST_406_SSH_SIZE TEST_406_HOST TEST_406_BACKUP_PATH TEST_406_LEDGER
+echo 'PROMOTE_SINGLE_MIGRATION_RELEASE_406=PASS'
+
+# PR #411 has a separate local-only exception, pinned to its branch, repository,
+# parent ledger, one migration hash, fresh isolated-restore receipt and explicit
+# risk/write acknowledgements. The synthetic bundle above is test-only.
+psychology_411_version=20261026000200
+psychology_411_file="$repo_root/supabase/migrations/${psychology_411_version}_psychology_professional_school_staff_gate.sql"
+[[ -f "$psychology_411_file" ]]
+psychology_411_hash="$(sed 's/\r$//' "$psychology_411_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$psychology_411_hash" == 'da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa' ]]
+local_ledger_411="$tmp/pr411-local-ledger"
+local_dry_run_411="$tmp/pr411-local-dry-run"
+printf '20261026000100\n' > "$local_ledger_411"
+printf 'Would push migration %s\n' "$psychology_411_version" > "$local_dry_run_411"
+printf '0\n' > "$cli_apply_count"
+local_output_411="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL \
+  BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL \
+  BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" \
+  TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 \
+  TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" \
+  run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION=PR411_LOCAL_ONLY' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_PR=411' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261026000200' <<< "$local_output_411"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_RESTORE=PASS' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output_411"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$local_output_411"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_411"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261026000200' <<< "$local_output_411"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=PENDING' <<< "$local_output_411"
+! grep -q '20261025000700' <<< "$local_output_411"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr411_rejected() {
+  local branch="${TEST_PR411_BRANCH-codex/psychology-school-staff-access}"
+  local pr="${TEST_PR411_PR-411}"
+  local target="${TEST_PR411_TARGET-$psychology_411_version}"
+  local expected_last_411="${TEST_PR411_REMOTE_LAST-20261026000100}"
+  local target_hash_411="${TEST_PR411_HASH-$psychology_411_hash}"
+  local offsite="${TEST_PR411_OFFSITE-FAIL}"
+  local storage="${TEST_PR411_STORAGE-PARTIAL}"
+  local risk="${TEST_PR411_RISK-I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411}"
+  local receipt="${TEST_PR411_RECEIPT-$local_receipt}"
+  local dry_run_411="$tmp/pr411-rejected-$RANDOM"
+  printf 'Would push migration %s\n' "$psychology_411_version" > "$dry_run_411"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+    PROMOTION_TEST_BRANCH="$branch" PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+    TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR="$pr" \
+    BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+    BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$receipt" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+    BACKUP_EXCEPTION_OFFSITE_STATUS="$offsite" BACKUP_EXCEPTION_STORAGE_STATUS="$storage" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="$risk" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="$expected_last_411" \
+    TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+    TEST_TARGET_VERSION="$target" TEST_TARGET_SHA256="$target_hash_411" \
+    TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$dry_run_411" run_guard \
+    >"$tmp/pr411-rejection" 2>&1; then
+    echo 'invalid PR #411 local-only exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR411_BRANCH=codex/another-branch expect_pr411_rejected
+TEST_PR411_PR=409 expect_pr411_rejected
+TEST_PR411_TARGET=20261025000700 expect_pr411_rejected
+TEST_PR411_REMOTE_LAST=20261025000600 expect_pr411_rejected
+TEST_PR411_HASH=bad expect_pr411_rejected
+TEST_PR411_OFFSITE=PASS expect_pr411_rejected
+TEST_PR411_STORAGE=FAIL expect_pr411_rejected
+TEST_PR411_RISK= expect_pr411_rejected
+TEST_PR411_RECEIPT="$tmp/missing-pr411-restore-proof" expect_pr411_rejected
+unset TEST_PR411_BRANCH TEST_PR411_PR TEST_PR411_TARGET TEST_PR411_REMOTE_LAST TEST_PR411_HASH \
+  TEST_PR411_OFFSITE TEST_PR411_STORAGE TEST_PR411_RISK TEST_PR411_RECEIPT
+
+printf '0\n' > "$cli_apply_count"
+applied_411="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  ACCEPT_NO_OFFSITE_COPY=I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_411 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 \
+  TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" \
+  TEST_AFTER_LEDGER_CONTENT="20261026000100
+20261026000200" run_guard)"
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$applied_411"
+grep -Fxq 'BACKUP_EXCEPTION=PR411_LOCAL_ONLY' <<< "$applied_411"
+grep -Fxq 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED' <<< "$applied_411"
+grep -Fxq 'PROMOTION=APPLIED' <<< "$applied_411"
+grep -Fxq 'REMOTE_AFTER_COUNT=2' <<< "$applied_411"
+grep -Fxq 'REMOTE_AFTER_LAST=20261026000200' <<< "$applied_411"
+[[ "$(cat "$cli_apply_count")" == '1' ]]
+
+printf '0\n' > "$cli_apply_count"
+if PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/psychology-school-staff-access \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=411 \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411 \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000100 TEST_REMOTE_LEDGER_FILE="$local_ledger_411" \
+  TEST_TARGET_VERSION="$psychology_411_version" TEST_TARGET_SHA256="$psychology_411_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_411" run_guard \
+  >/dev/null 2>&1; then
+  echo 'PR #411 local-only exception unexpectedly wrote without the offsite-risk acknowledgement' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR411_LOCAL_ONLY=PASS'
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2

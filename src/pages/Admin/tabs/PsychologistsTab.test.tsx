@@ -47,13 +47,23 @@ afterEach(cleanup);
 beforeEach(() => {
   vi.clearAllMocks();
   useAuth.mockReturnValue({ profile: { id: 'manager-profile' } });
-  useCurrentInstitution.mockReturnValue({ data: institutionId });
+  useCurrentInstitution.mockReturnValue({ data: institutionId, currentRole: 'DIRECTOR' });
   listManagementCandidates.mockResolvedValue({ professionals: [psychologist], students: [], page: 1, page_size: 100, total: 0, total_pages: 1, filters: { classes: [], grades: [] } });
   registerProfessional.mockResolvedValue({ profile_id: psychologist.profile_id, verification_status: 'PENDING' });
   verifyProfessional.mockResolvedValue(undefined);
 });
 
 describe('PsychologistsTab', () => {
+  it.each(['ADMIN', 'SUPER_ADMIN'])('does not expose psychologist registration or CRP actions to %s without a school staff role', async (role) => {
+    useCurrentInstitution.mockReturnValue({ data: institutionId, currentRole: role });
+    render(<PsychologistsTab />);
+
+    expect((await screen.findByRole('alert')).textContent).toMatch(/somente Diretor ou Secretaria/i);
+    expect(screen.queryByRole('button', { name: /convite concluído/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /Confirmar verificação humana/i })).toBeNull();
+    expect(listManagementCandidates).not.toHaveBeenCalled();
+  });
+
   it('mostra CRP pendente e permite editar e confirmar a verificação humana', async () => {
     render(<PsychologistsTab />);
 

@@ -3,12 +3,18 @@ import {
   useMemo,
   useRef,
   useState,
+  type KeyboardEvent,
   type FormEvent,
 } from 'react';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import {
+  publishPsychologyModuleStatusChanged,
+  refreshPsychologyModuleStatus,
+  usePsychologyModuleStatus,
+} from '../../hooks/usePsychologyModuleStatus';
 import PsychologyStudentRoster from './PsychologyStudentRoster';
 import {
   psychologyErrorMessage,
@@ -101,31 +107,12 @@ function roleLabel(role: string): string {
   return 'Equipe da instituição';
 }
 
-function SectionNav({ role, section }: { role: string; section: string }) {
-  const roleSections: Record<string, string[]> = {
-    STUDENT: ['agendar', 'agendamentos', 'chat', 'autorizacao'],
-    GUARDIAN: ['autorizacao'],
-    PSYCHOLOGIST: ['agenda', 'atendimentos', 'anotacoes', 'disponibilidade'],
-    ADMIN: ['configuracao'],
-    DIRECTOR: ['configuracao'],
-    SECRETARY: ['configuracao'],
-  };
-  const sections = roleSections[role] ?? [];
-  if (!sections.length) return null;
-  return (
-    <nav aria-label="Seções do apoio psicológico" className="mb-6 flex flex-wrap gap-2">
-      {sections.map((item) => (
-        <Link
-          key={item}
-          to={`/psychology/${item}`}
-          aria-current={section === item ? 'page' : undefined}
-          className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${section === item ? 'border-blue-700 bg-blue-700 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-blue-500 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200'}`}
-        >
-          {sectionLabels[item]}
-        </Link>
-      ))}
-    </nav>
-  );
+function appointmentStatusMeta(appointment: PsychologyAppointment): { label: string; style: string } {
+  if (appointment.status === 'CANCELLED') return { label: 'Cancelado', style: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300' };
+  if (appointment.status === 'NO_SHOW') return { label: 'Ausência registrada', style: 'bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-200' };
+  if (appointment.session_status === 'IN_PROGRESS') return { label: 'Em atendimento', style: 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200' };
+  if (appointment.session_status === 'WAITING') return { label: 'Aguardando profissional', style: 'bg-blue-100 text-blue-900 dark:bg-blue-950/60 dark:text-blue-200' };
+  return { label: 'Concluído', style: 'bg-violet-100 text-violet-900 dark:bg-violet-950/60 dark:text-violet-200' };
 }
 
 function AuthorizationPanel({
@@ -134,12 +121,14 @@ function AuthorizationPanel({
   moduleEnabled,
   onRefresh,
   onFeedback,
+  embeddedForBooking = false,
 }: {
   targets: PsychologyAuthorizationTarget[];
   role: string;
   moduleEnabled: boolean;
   onRefresh: () => void;
   onFeedback: (message: string) => void;
+  embeddedForBooking?: boolean;
 }) {
   const [checks, setChecks] = useState<Record<string, [boolean, boolean, boolean]>>({});
   const [busyStudentId, setBusyStudentId] = useState<string | null>(null);
@@ -173,11 +162,8 @@ function AuthorizationPanel({
   }
 
   return (
-    <section className="space-y-4" aria-labelledby="psychology-authorization-title">
-      <div>
-        <h2 id="psychology-authorization-title" className="text-xl font-bold text-slate-900 dark:text-white">Autorizações</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">O servidor confirma o vínculo do responsável ou a identidade do estudante adulto antes de registrar a autorização.</p>
-      </div>
+    <section className="space-y-4" aria-label={embeddedForBooking ? 'Autorização para agendar' : 'Autorizações'}>
+      {!embeddedForBooking ? <p className="text-sm text-slate-600 dark:text-slate-300">A autorização permite solicitar atendimento e não concede acesso a conversas ou anotações clínicas.</p> : null}
       {targets.length === 0 ? (
         <p className="rounded-xl border border-dashed border-slate-300 p-5 text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum estudante vinculado está disponível para este perfil nesta instituição.</p>
       ) : targets.map((target) => {
@@ -225,11 +211,11 @@ function AuthorizationPanel({
                 </div> : <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">A escola ainda não habilitou o Apoio psicológico. A autorização poderá ser registrada quando o módulo estiver ativo.</p>
               ) : (
                 <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
-                  {target.is_minor ? 'A autorização deste estudante precisa ser registrada por um responsável legal com vínculo ativo no cadastro.' : 'Este estudante é adulto. A autorização deve ser registrada pelo próprio estudante.'}
+                  {target.is_minor ? 'A autorização deve ser registrada pelo responsável legal vinculado.' : 'A autorização deve ser registrada pelo próprio estudante adulto.'}
                 </p>
               )
             ) : (
-              <p className="mt-4 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200">O vínculo e o estado da autorização são verificados novamente no servidor em cada operação.</p>
+              <p className="mt-4 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200">Autorização ativa.</p>
             )}
           </article>
         );
@@ -241,11 +227,15 @@ function AuthorizationPanel({
 function ManagementPanel({
   institutionId,
   moduleEnabled,
+  moduleState,
+  canManageProfessionals,
   onRefresh,
   onFeedback,
 }: {
   institutionId: string;
   moduleEnabled: boolean;
+  moduleState: 'enabled' | 'disabled' | 'unknown';
+  canManageProfessionals: boolean;
   onRefresh: () => void;
   onFeedback: (message: string) => void;
 }) {
@@ -254,10 +244,43 @@ function ManagementPanel({
   const [crpState, setCrpState] = useState('BA');
   const [professionals, setProfessionals] = useState<Awaited<ReturnType<typeof psychologyService.listManagementCandidates>>['professionals']>([]);
   const [rosterRefreshKey, setRosterRefreshKey] = useState(0);
+  const [professionalsLoaded, setProfessionalsLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [confirmingModuleChange, setConfirmingModuleChange] = useState(false);
+  const moduleChangeCancelRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (confirmingModuleChange) moduleChangeCancelRef.current?.focus();
+  }, [confirmingModuleChange]);
+
+  function handleModuleDialogKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.key === 'Escape' && !busy) {
+      event.preventDefault();
+      setConfirmingModuleChange(false);
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const buttons = event.currentTarget.querySelectorAll<HTMLButtonElement>('button:not(:disabled)');
+    if (buttons.length !== 2) return;
+    const first = buttons[0];
+    const last = buttons[buttons.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function handleProfessionalsLoaded(items: Awaited<ReturnType<typeof psychologyService.listManagementCandidates>>['professionals']) {
+    setProfessionals(items);
+    setProfessionalsLoaded(true);
+  }
 
   function refreshRoster() {
     setRosterRefreshKey((current) => current + 1);
+    setProfessionalsLoaded(false);
   }
 
   async function register(event: FormEvent) {
@@ -319,9 +342,11 @@ function ManagementPanel({
     setBusy(true);
     try {
       await psychologyService.setModuleEnabled(institutionId, !moduleEnabled);
+      publishPsychologyModuleStatusChanged(institutionId, !moduleEnabled);
       onFeedback(moduleEnabled
-        ? 'Apoio psicológico desativado. Os registros foram preservados.'
+        ? 'Apoio psicológico desativado. Os registros foram preservados e o acesso clínico foi encerrado.'
         : 'Apoio psicológico habilitado para esta instituição.');
+      setConfirmingModuleChange(false);
       onRefresh();
     } catch (error) {
       onFeedback(psychologyErrorMessage(error));
@@ -334,28 +359,55 @@ function ManagementPanel({
     <section className="space-y-6">
       <div>
         <h2 className="text-xl font-bold text-slate-900 dark:text-white">Configuração operacional</h2>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">A administração pode preparar os vínculos e verificar profissionais. Esta área não exibe conversas nem anotações clínicas.</p>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Gerencie o funcionamento do módulo nesta instituição.</p>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+      {canManageProfessionals ? <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
         <div>
           <h3 className="font-bold text-slate-900 dark:text-white">Cadastro de psicólogos</h3>
-          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Convide profissionais, revise os dados de CRP e confirme a habilitação institucional.</p>
+          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">Cadastre o CRP e conclua a verificação humana.</p>
         </div>
         <Link to="/admin?module=psychologists" className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Gerenciar psicólogos</Link>
+      </div> : null}
+      <div className="grid gap-3 sm:grid-cols-3" aria-label="Resumo da habilitação profissional">
+        {[
+          { label: 'Profissionais vinculados', value: professionalsLoaded ? professionals.filter((item) => item.linked).length : '—', tone: 'text-blue-800 dark:text-blue-200' },
+          { label: 'CRP verificado', value: professionalsLoaded ? professionals.filter((item) => item.verification_status === 'VERIFIED').length : '—', tone: 'text-emerald-800 dark:text-emerald-200' },
+          { label: 'Revisão humana pendente', value: professionalsLoaded ? professionals.filter((item) => item.registered && item.verification_status !== 'VERIFIED').length : '—', tone: 'text-amber-800 dark:text-amber-200' },
+        ].map((metric) => (
+          <article key={metric.label} className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+            <p className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{metric.label}</p>
+            <p className={`mt-1 text-2xl font-bold ${metric.tone}`} aria-live="polite">{metric.value}</p>
+          </article>
+        ))}
       </div>
       {!moduleEnabled ? (
-        <p className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100">O módulo permanece desativado no servidor. Nenhum agendamento, chat ou registro clínico pode ser criado até a habilitação local controlada.</p>
+        <p className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100">{moduleState === 'unknown' ? 'Não foi possível confirmar o estado no servidor. O acesso clínico permanece bloqueado até a confirmação.' : 'O módulo está desativado nesta instituição. Agendamentos, chat e registros clínicos ficam indisponíveis; os dados existentes são preservados.'}</p>
       ) : null}
       <section className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
         <div>
-          <h3 className="font-bold text-slate-900 dark:text-white">Disponibilidade do módulo</h3>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{moduleEnabled ? 'Ativo nesta instituição.' : 'Desativado. Os registros existentes serão preservados.'}</p>
+          <h3 className="font-bold text-slate-900 dark:text-white">Estado do Apoio psicológico</h3>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300" aria-live="polite">{moduleState === 'unknown' ? 'Estado não confirmado pelo servidor.' : moduleEnabled ? 'Ativo nesta instituição.' : 'Desativado; os registros existentes foram preservados.'}</p>
         </div>
-        <button type="button" disabled={busy} onClick={() => void changeModuleState()} className={`rounded-lg px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50 ${moduleEnabled ? 'bg-rose-700 hover:bg-rose-800' : 'bg-emerald-700 hover:bg-emerald-800'}`}>
-          {busy ? 'Salvando…' : moduleEnabled ? 'Desativar módulo' : 'Habilitar módulo'}
+        <button type="button" disabled={busy || moduleState === 'unknown'} onClick={() => setConfirmingModuleChange(true)} className={`min-h-11 rounded-lg px-4 py-2.5 text-sm font-bold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 disabled:opacity-50 ${moduleEnabled ? 'bg-rose-700 hover:bg-rose-800' : 'bg-emerald-700 hover:bg-emerald-800'}`}>
+          {moduleEnabled ? 'Desativar módulo' : 'Habilitar módulo'}
         </button>
       </section>
-      <form onSubmit={(event) => void register(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900 md:grid-cols-[1fr_1fr_6rem_auto]">
+      {moduleState === 'unknown' ? <button type="button" onClick={() => refreshPsychologyModuleStatus(institutionId)} className="min-h-10 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">Tentar novamente</button> : null}
+      {confirmingModuleChange ? (
+        <div className="fixed inset-0 z-[100] grid place-items-center bg-slate-950/55 p-4" role="presentation">
+          <section role="dialog" aria-modal="true" aria-labelledby="psychology-module-confirm-title" onKeyDown={handleModuleDialogKeyDown} className="w-full max-w-lg space-y-4 rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+            <div>
+              <h3 id="psychology-module-confirm-title" className="text-lg font-bold text-slate-900 dark:text-white">{moduleEnabled ? 'Desativar Psicologia nesta instituição?' : 'Habilitar Psicologia nesta instituição?'}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{moduleEnabled ? 'Alunos, responsáveis, profissionais e demais perfis perderão o acesso ao módulo. Agendamentos e registros permanecem armazenados; conversas e anotações não serão exibidas.' : 'Perfis autorizados poderão acessar as funções permitidas após a validação de vínculo, autorização e habilitação profissional.'}</p>
+            </div>
+            <div className="flex flex-wrap justify-end gap-3">
+              <button ref={moduleChangeCancelRef} type="button" disabled={busy} onClick={() => setConfirmingModuleChange(false)} className="min-h-11 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">Cancelar</button>
+              <button type="button" disabled={busy} onClick={() => void changeModuleState()} className={`min-h-11 rounded-lg px-4 py-2 text-sm font-bold text-white disabled:opacity-50 ${moduleEnabled ? 'bg-rose-700 hover:bg-rose-800' : 'bg-emerald-700 hover:bg-emerald-800'}`}>{busy ? 'Salvando…' : 'Confirmar alteração'}</button>
+            </div>
+          </section>
+        </div>
+      ) : null}
+      {canManageProfessionals ? <form onSubmit={(event) => void register(event)} className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900 md:grid-cols-[1fr_1fr_6rem_auto]">
         <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Profissional convidada
           <select required value={professionalId} onChange={(event) => setProfessionalId(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">
             <option value="">Selecione</option>
@@ -369,23 +421,23 @@ function ManagementPanel({
           <input required value={crpState} onChange={(event) => setCrpState(event.target.value.toUpperCase().slice(0, 2))} maxLength={2} className="mt-1 block w-full rounded-lg border border-slate-300 p-2.5 uppercase dark:border-slate-700 dark:bg-slate-950" />
         </label>
         <div className="self-end"><button disabled={busy} className="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50">Salvar perfil</button></div>
-      </form>
+      </form> : null}
       <div className="space-y-3">
-        <h3 className="font-bold text-slate-900 dark:text-white">Profissionais e habilitação humana</h3>
+        <h3 className="font-bold text-slate-900 dark:text-white">Profissionais</h3>
         {professionals.map((item) => (
           <article key={item.profile_id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
             <div><p className="font-semibold text-slate-900 dark:text-white">{item.full_name}</p><p className="text-sm text-slate-600 dark:text-slate-300">{item.registered ? `CRP ${item.crp_registration}/${item.crp_state} · ${item.verification_status === 'VERIFIED' ? 'verificado' : 'pendente de verificação'}` : 'Perfil profissional ainda não cadastrado'}</p></div>
-            {item.registered && item.verification_status !== 'VERIFIED' ? <button disabled={busy} onClick={() => void verify(item.profile_id)} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">Confirmo verificação humana do CRP</button> : null}
+            {canManageProfessionals && item.registered && item.verification_status !== 'VERIFIED' ? <button disabled={busy} onClick={() => void verify(item.profile_id)} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-semibold text-blue-800 disabled:opacity-50 dark:border-blue-800 dark:text-blue-200">Confirmar verificação humana</button> : null}
           </article>
         ))}
-        {!professionals.length ? <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Convide primeiro uma pessoa com o perfil Psicóloga(o) pela área Usuários.</p> : null}
+        {professionalsLoaded && !professionals.length ? <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum psicólogo cadastrado nesta instituição.</p> : null}
       </div>
       <PsychologyStudentRoster
         institutionId={institutionId}
         professionals={professionals}
         busy={busy}
         refreshKey={rosterRefreshKey}
-        onProfessionalsLoaded={setProfessionals}
+        onProfessionalsLoaded={handleProfessionalsLoaded}
         onAssign={assign}
         onUnassign={unassign}
       />
@@ -459,6 +511,7 @@ function AppointmentCard({
   }
 
   const personLabel = mode === 'student' ? appointment.professional_name : appointment.student_name;
+  const statusMeta = appointmentStatusMeta(appointment);
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -468,7 +521,7 @@ function AppointmentCard({
           <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{formatDateTime(appointment.starts_at)} – {new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short', timeZone: BRAZIL_TIMEZONE }).format(new Date(appointment.ends_at))}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800 dark:bg-blue-950 dark:text-blue-200">{appointment.status === 'SCHEDULED' ? appointment.session_status === 'WAITING' ? 'Aguardando profissional' : appointment.session_status === 'IN_PROGRESS' ? 'Em atendimento' : 'Agendado' : appointment.status === 'CANCELLED' ? 'Cancelado' : appointment.status === 'NO_SHOW' ? 'Ausência registrada' : 'Concluído'}</span>
+          <span role="status" className={`rounded-full px-3 py-1 text-xs font-bold ${statusMeta.style}`}>{statusMeta.label}</span>
         </div>
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
@@ -873,17 +926,20 @@ function AvailabilityPanel({
 
 export default function PsychologyPage() {
   const { profile } = useAuth();
-  const { currentInstitution, currentInstitutionId, currentRole } = useInstitution();
+  const { currentInstitution, currentInstitutionId, currentInstitutionRoles, currentRole } = useInstitution();
   const location = useLocation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const section = getSection(location.pathname);
   const role = (currentRole ?? profile?.role ?? '').toUpperCase();
   const isManager = ['ADMIN', 'DIRECTOR', 'SECRETARY'].includes(role);
+  const canManageProfessionals = currentRole === 'DIRECTOR' || currentRole === 'SECRETARY'
+    || (currentInstitutionRoles ?? []).some((institutionRole) => institutionRole === 'DIRECTOR' || institutionRole === 'SECRETARY');
   const institutionId = currentInstitutionId;
   const profileId = profile?.id ?? '';
   const contextKey = `${profileId}:${institutionId ?? ''}:${role}`;
-  const [moduleEnabled, setModuleEnabled] = useState(false);
+  const moduleStatus = usePsychologyModuleStatus(institutionId, profileId || null, role);
+  const moduleEnabled = moduleStatus.state === 'enabled';
   const [loading, setLoading] = useState(true);
   const [loadedContextKey, setLoadedContextKey] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -904,7 +960,6 @@ export default function PsychologyPage() {
     let active = true;
     setLoading(true);
     setLoadedContextKey('');
-    setModuleEnabled(false);
     setFeedback('');
     setTargets([]);
     setAppointments([]);
@@ -920,11 +975,16 @@ export default function PsychologyPage() {
       return () => { active = false; };
     }
 
+    // A disabled or unknown module must not fetch student authorization targets,
+    // appointments, availability, or other clinical data into the page state.
+    if (moduleStatus.state !== 'enabled') {
+      setLoading(false);
+      setLoadedContextKey(contextKey);
+      return () => { active = false; };
+    }
+
     const load = async () => {
       try {
-        const enabled = await psychologyService.moduleEnabled(institutionId);
-        if (!active) return;
-        setModuleEnabled(enabled);
         let studentTargets: PsychologyAuthorizationTarget[] = [];
         if (['STUDENT', 'GUARDIAN'].includes(role)) {
           studentTargets = await psychologyService.listMyAuthorizationTargets(institutionId);
@@ -933,7 +993,7 @@ export default function PsychologyPage() {
         if (section === 'autorizacao' && !['STUDENT', 'GUARDIAN'].includes(role)) {
           throw new Error('NOT_AUTHORIZED');
         }
-        if (enabled && ['agendar', 'agendamentos', 'chat', 'agenda', 'atendimentos', 'anotacoes', 'configuracao'].includes(section)) {
+        if (['agendar', 'agendamentos', 'chat', 'agenda', 'atendimentos', 'anotacoes', 'configuracao'].includes(section)) {
           const fromAt = new Date(localDateStartIso(appointmentsFrom));
           const throughAt = new Date(localDateStartIso(addDateDays(appointmentsThrough, 1)));
           if (appointmentsFrom > appointmentsThrough
@@ -957,7 +1017,7 @@ export default function PsychologyPage() {
             }
           }
         }
-        if (enabled && role === 'PSYCHOLOGIST' && section === 'disponibilidade') {
+        if (role === 'PSYCHOLOGIST' && section === 'disponibilidade') {
           const [rules, exceptions] = await Promise.all([
             psychologyService.listAvailability(institutionId, profileId),
             psychologyService.listAvailabilityBlocks(institutionId, profileId),
@@ -975,9 +1035,9 @@ export default function PsychologyPage() {
     };
     void load();
     return () => { active = false; };
-  }, [institutionId, profileId, contextKey, role, isManager, section, reloadKey, searchParams, appointmentsFrom, appointmentsThrough]);
+  }, [institutionId, profileId, contextKey, role, isManager, section, reloadKey, searchParams, appointmentsFrom, appointmentsThrough, moduleStatus.state]);
 
-  const isPageLoading = loading || loadedContextKey !== contextKey;
+  const isPageLoading = loading || loadedContextKey !== contextKey || (moduleStatus.state === 'loading' && section !== 'configuracao');
 
   const ownTarget = targets.find((target) => target.student_id && (role !== 'STUDENT' || target.authorization_status !== 'NONE')) ?? targets[0];
   const filteredSlots = useMemo(() => slots.filter((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone) === slotDate), [slots, slotDate]);
@@ -1013,38 +1073,40 @@ export default function PsychologyPage() {
 
   const pageHeading = sectionLabels[section] ?? 'Apoio psicológico';
   const authorizationPath = section === 'autorizacao';
-  const clinicalFeatureSection = ['agendar', 'agendamentos', 'chat', 'agenda', 'atendimentos', 'anotacoes', 'disponibilidade'].includes(section);
   const canShowManagement = isManager && section === 'configuracao';
   const canShowStudentClinical = role === 'STUDENT' && ['agendar', 'agendamentos', 'chat'].includes(section);
   const canShowProfessionalClinical = role === 'PSYCHOLOGIST' && ['agenda', 'atendimentos', 'anotacoes', 'disponibilidade'].includes(section);
   const canShowAuthorization = authorizationPath && ['STUDENT', 'GUARDIAN'].includes(role);
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-5 px-4 py-6 sm:px-6 lg:px-8">
-      <header className="rounded-2xl bg-gradient-to-r from-blue-800 to-blue-600 p-6 text-white shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-100">Atendimento humano · acesso controlado</p>
-        <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Apoio psicológico</h1>
-        <p className="mt-2 max-w-3xl text-sm text-blue-50">Agendamento, conversa privada e registros restritos, separados das informações acadêmicas.</p>
-        <p className="mt-2 text-xs text-blue-100">O canal não é monitorado continuamente e não substitui atendimento de emergência.</p>
+    <main className="mx-auto w-full max-w-7xl space-y-4 px-4 py-5 sm:px-6 lg:px-8">
+      <header className="rounded-2xl bg-gradient-to-r from-blue-700 to-blue-600 px-5 py-4 text-white shadow-sm sm:px-6">
+        <h1 className="text-xl font-bold sm:text-2xl">{pageHeading}</h1>
+        {['STUDENT', 'GUARDIAN', 'PSYCHOLOGIST'].includes(role) ? <p className="mt-1 text-sm text-blue-50">Não é um serviço de emergência.</p> : null}
       </header>
-      <SectionNav role={role} section={section} />
       {feedbackBox}
       {isPageLoading ? <p role="status" className="rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">Carregando informações do módulo…</p> : null}
       {!isPageLoading && !institutionId ? <p role="alert" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">Selecione uma instituição para continuar.</p> : null}
-      {!isPageLoading && !moduleEnabled && clinicalFeatureSection ? (
-        <section className="rounded-2xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30">
-          <h2 className="font-bold text-amber-950 dark:text-amber-100">Módulo ainda não habilitado</h2>
-          <p className="mt-2 text-sm text-amber-900 dark:text-amber-200">A escola ainda não habilitou o Apoio psicológico no servidor. Esta proteção bloqueia consultas e gravações também no banco. Fale com a equipe responsável pela instituição.</p>
-          <p className="mt-2 text-xs text-amber-800 dark:text-amber-300">O cadastro de profissionais e os vínculos operacionais podem ser preparados na configuração; o conteúdo clínico continua inacessível.</p>
-        </section>
-      ) : null}
-      {!isPageLoading && canShowManagement && institutionId ? <ManagementPanel institutionId={institutionId} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} /> : null}
+      {!isPageLoading && canShowManagement && institutionId ? <ManagementPanel institutionId={institutionId} moduleEnabled={moduleEnabled} moduleState={moduleStatus.state === 'loading' ? 'unknown' : moduleStatus.state} canManageProfessionals={canManageProfessionals} onRefresh={refresh} onFeedback={setFeedback} /> : null}
       {!isPageLoading && canShowAuthorization ? <AuthorizationPanel targets={targets} role={role} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} /> : null}
 
       {!isPageLoading && canShowStudentClinical && moduleEnabled && section === 'agendar' ? (
         <section className="space-y-4">
+          <ol aria-label="Etapas do agendamento" className="grid gap-3 sm:grid-cols-3">
+            {[
+              { label: 'Autorização', complete: ownTarget?.authorization_status === 'ACTIVE', detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Confirmada' : 'Necessária' },
+              { label: 'Escolher horário', complete: ownTarget?.authorization_status === 'ACTIVE' && filteredSlots.length > 0, detail: ownTarget?.authorization_status === 'ACTIVE' ? 'Selecione uma opção' : 'Após autorizar' },
+              { label: 'Confirmar consulta', complete: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id), detail: activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? 'Consulta agendada' : 'Etapa final' },
+            ].map((step, index) => (
+              <li key={step.label} className={`flex items-center gap-3 rounded-xl border p-3 ${step.complete ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}>
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold ${step.complete ? 'bg-emerald-700 text-white' : 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-200'}`}>{step.complete ? '✓' : index + 1}</span>
+                <span className="min-w-0"><strong className="block text-sm text-slate-900 dark:text-white">{step.label}</strong><span className="text-xs text-slate-600 dark:text-slate-300">{step.detail}</span></span>
+              </li>
+            ))}
+          </ol>
           <div className="rounded-xl border border-blue-100 bg-white p-4 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"><strong>Como funciona:</strong> escolha um horário com uma profissional habilitada. A consulta é confirmada no agendamento e a conversa começa quando a profissional iniciar o atendimento.</div>
-          {ownTarget?.authorization_status !== 'ACTIVE' ? <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">Antes de agendar, é necessária autorização. Estudantes adultos podem registrá-la em <Link className="font-bold underline" to="/psychology/autorizacao">Autorizações</Link>. Para menores, o cadastro exige ação do responsável legal vinculado.</p> : null}
+          {role === 'STUDENT' && ownTarget && !ownTarget.is_minor ? <AuthorizationPanel targets={[ownTarget]} role={role} moduleEnabled={moduleEnabled} onRefresh={refresh} onFeedback={setFeedback} embeddedForBooking /> : null}
+          {ownTarget?.is_minor && ownTarget.authorization_status !== 'ACTIVE' ? <p className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">Peça ao seu responsável legal para registrar a autorização.</p> : null}
           {ownTarget?.authorization_status === 'ACTIVE' ? (
             <>
               <label className="block max-w-xs text-sm font-semibold">Escolha uma data<select value={slotDate} onChange={(event) => setSlotDate(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 dark:border-slate-700 dark:bg-slate-950">{[...new Set(slots.map((slot) => getLocalDateKey(new Date(slot.starts_at), slot.timezone)))].sort().map((date) => <option key={date} value={date}>{new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeZone: BRAZIL_TIMEZONE }).format(new Date(`${date}T12:00:00`))}</option>)}</select></label>
@@ -1056,7 +1118,7 @@ export default function PsychologyPage() {
       ) : null}
 
       {!isPageLoading && canShowStudentClinical && moduleEnabled && section === 'agendamentos' ? (
-        <section className="space-y-4"><div><h2 className="text-xl font-bold">Meus agendamentos</h2><p className="text-sm text-slate-600 dark:text-slate-300">Os horários são confirmados no servidor; cancelamento e remarcação respeitam o prazo configurado.</p></div>{activeAppointments.filter((appointment) => appointment.student_id === ownTarget?.student_id).map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="student" onOpenChat={openChat} onOpenNote={openNote} onRefresh={refresh} onFeedback={setFeedback} slots={slots} />)}{!activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-slate-600 dark:border-slate-700 dark:text-slate-300">Você ainda não tem atendimentos agendados neste período.</p> : null}</section>
+        <section className="space-y-4"><p className="text-sm text-slate-600 dark:text-slate-300">Os horários são confirmados no servidor; cancelamento e remarcação respeitam o prazo configurado.</p>{activeAppointments.filter((appointment) => appointment.student_id === ownTarget?.student_id).map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="student" onOpenChat={openChat} onOpenNote={openNote} onRefresh={refresh} onFeedback={setFeedback} slots={slots} />)}{!activeAppointments.some((appointment) => appointment.student_id === ownTarget?.student_id) ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-slate-600 dark:border-slate-700 dark:text-slate-300">Você ainda não tem atendimentos agendados neste período.</p> : null}</section>
       ) : null}
 
       {!isPageLoading && canShowStudentClinical && moduleEnabled && section === 'chat' ? (
@@ -1067,19 +1129,19 @@ export default function PsychologyPage() {
 
       {!isPageLoading && canShowProfessionalClinical && moduleEnabled && ['agenda', 'atendimentos', 'anotacoes'].includes(section) ? (
         <section className="space-y-4">
-          <div className="flex flex-wrap items-end justify-between gap-3"><div><h2 className="text-xl font-bold">{section === 'agenda' ? 'Agenda profissional' : section === 'anotacoes' ? 'Registros clínicos' : 'Atendimentos'}</h2><p className="text-sm text-slate-600 dark:text-slate-300">A lista contém somente consultas atribuídas à profissional autenticada.</p></div><div className="flex gap-2"><label className="text-xs font-semibold">De<input type="date" value={appointmentsFrom} max={appointmentsThrough} onChange={(event) => setAppointmentsFrom(event.target.value)} className="mt-1 block rounded-lg border border-slate-300 bg-white p-2 dark:border-slate-700 dark:bg-slate-950" /></label><label className="text-xs font-semibold">Até<input type="date" value={appointmentsThrough} min={appointmentsFrom} max={addDateDays(getLocalDateKey(new Date()), 89)} onChange={(event) => setAppointmentsThrough(event.target.value)} className="mt-1 block rounded-lg border border-slate-300 bg-white p-2 dark:border-slate-700 dark:bg-slate-950" /></label><button type="button" onClick={refresh} className="self-end rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700">Atualizar</button></div></div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between"><div><h2 className="text-xl font-bold">{section === 'agenda' ? 'Agenda profissional' : section === 'anotacoes' ? 'Registros clínicos' : 'Atendimentos'}</h2><p className="text-sm text-slate-600 dark:text-slate-300">A lista contém somente consultas atribuídas à profissional autenticada.</p></div><div className="grid grid-cols-2 gap-2 sm:flex"><label className="text-xs font-semibold">De<input type="date" value={appointmentsFrom} max={appointmentsThrough} onChange={(event) => setAppointmentsFrom(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2 dark:border-slate-700 dark:bg-slate-950" /></label><label className="text-xs font-semibold">Até<input type="date" value={appointmentsThrough} min={appointmentsFrom} max={addDateDays(getLocalDateKey(new Date()), 89)} onChange={(event) => setAppointmentsThrough(event.target.value)} className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2 dark:border-slate-700 dark:bg-slate-950" /></label><button type="button" onClick={refresh} className="col-span-2 self-end rounded-lg border border-slate-300 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 sm:col-span-1 dark:border-slate-700">Atualizar</button></div></div>
           {appointments.filter((appointment) => appointment.professional_profile_id === profileId && getLocalDateKey(new Date(appointment.starts_at)) >= appointmentsFrom && getLocalDateKey(new Date(appointment.starts_at)) <= appointmentsThrough).map((appointment) => <div key={appointment.appointment_id} className="space-y-3"><AppointmentCard appointment={appointment} mode="psychologist" onOpenChat={openChat} onOpenNote={openNote} onRefresh={refresh} onFeedback={setFeedback} slots={[]} />{section === 'anotacoes' || selectedAppointmentId === appointment.appointment_id ? <ClinicalNoteEditor key={appointment.session_id} appointment={appointment} /> : null}{section === 'atendimentos' && selectedAppointmentId === appointment.appointment_id ? <ChatPanel appointment={appointment} profileId={profileId} role={role} /> : null}</div>)}
           {!appointments.some((appointment) => appointment.professional_profile_id === profileId && getLocalDateKey(new Date(appointment.starts_at)) >= appointmentsFrom && getLocalDateKey(new Date(appointment.starts_at)) <= appointmentsThrough) ? <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum atendimento atribuído nesse período.</p> : null}
         </section>
       ) : null}
 
       {!isPageLoading && isManager && moduleEnabled && section === 'configuracao' ? (
-        <section className="space-y-4"><h2 className="text-xl font-bold">Visão operacional de agendamentos</h2><p className="text-sm text-slate-600 dark:text-slate-300">A equipe autorizada vê somente os metadados necessários à operação. Mensagens e anotações clínicas nunca são retornadas aqui.</p>{appointments.map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="manager" onOpenChat={() => setFeedback('A administração não tem acesso ao chat clínico.')} onOpenNote={() => setFeedback('A administração não tem acesso às anotações clínicas.')} onRefresh={refresh} onFeedback={setFeedback} slots={[]} />)}{!appointments.length ? <p className="text-sm text-slate-500">Nenhum agendamento no período atual.</p> : null}</section>
+        <section className="space-y-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h2 className="text-lg font-bold">Agendamentos</h2><p className="text-sm text-slate-600 dark:text-slate-300">A equipe autorizada vê apenas os dados operacionais; mensagens e anotações clínicas permanecem restritas.</p>{appointments.map((appointment) => <AppointmentCard key={appointment.appointment_id} appointment={appointment} mode="manager" onOpenChat={() => setFeedback('A administração não tem acesso ao chat clínico.')} onOpenNote={() => setFeedback('A administração não tem acesso às anotações clínicas.')} onRefresh={refresh} onFeedback={setFeedback} slots={[]} />)}{!appointments.length ? <p className="rounded-lg border border-dashed border-slate-300 p-4 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">Nenhum agendamento no período atual.</p> : null}</section>
       ) : null}
 
       {!isPageLoading && canShowProfessionalClinical && moduleEnabled && selectedAppointment && section === 'anotacoes' && !appointments.some((appointment) => appointment.appointment_id === selectedAppointment.appointment_id && appointment.professional_profile_id === profileId) ? <p role="alert" className="rounded-xl bg-amber-50 p-4 text-sm text-amber-900">O atendimento selecionado não está atribuído a esta profissional.</p> : null}
       {!isPageLoading && !canShowManagement && !canShowAuthorization && !canShowStudentClinical && !canShowProfessionalClinical ? <section className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900"><h2 className="font-bold">Acesso não disponível</h2><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Este perfil não tem uma seção do Apoio psicológico habilitada nesta instituição.</p></section> : null}
-      <footer className="border-t border-slate-200 pt-4 text-xs text-slate-500 dark:border-slate-800">Instituição: {currentInstitution?.name ?? '—'} · Perfil: {roleLabel(role)}. Registros clínicos não são enviados a ferramentas de análise nem ao cadastro acadêmico.</footer>
+      <footer className="border-t border-slate-200 pt-3 text-xs text-slate-500 dark:border-slate-800">{currentInstitution?.name ?? 'Instituição não selecionada'} · {roleLabel(role)}</footer>
     </main>
   );
 }

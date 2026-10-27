@@ -32,158 +32,6 @@ safe_cli_failure_class() {
   esac
 }
 
-safe_cli_sqlstate() {
-  local output="${1^^}"
-  if [[ "${output}" =~ SQLSTATE[^[:alnum:]]+([0-9A-Z]{5}) ]]; then
-    printf '%s' "${BASH_REMATCH[1]}"
-  elif [[ "${output}" =~ (ERROR|FATAL|PANIC):[[:space:]]*([0-9A-Z]{5}): ]]; then
-    printf '%s' "${BASH_REMATCH[2]}"
-  else
-    printf 'UNKNOWN'
-  fi
-}
-
-safe_cli_failure_message() {
-  local output="${1^^}"
-  local sqlstate
-  sqlstate="$(safe_cli_sqlstate "${1}")"
-  case "${sqlstate}" in
-    23502) printf 'not_null_constraint_violation' ;;
-    23503) printf 'foreign_key_constraint_violation' ;;
-    23505) printf 'unique_constraint_violation' ;;
-    23514) printf 'check_constraint_violation' ;;
-    2BP01) printf 'dependent_objects_still_exist' ;;
-    40001) printf 'serialization_failure' ;;
-    40P01) printf 'deadlock_detected' ;;
-    42P01) printf 'undefined_table' ;;
-    42P07) printf 'duplicate_table' ;;
-    42701) printf 'duplicate_column' ;;
-    42703) printf 'undefined_column' ;;
-    42710) printf 'duplicate_object' ;;
-    42804) printf 'datatype_mismatch' ;;
-    42883) printf 'undefined_function' ;;
-    42501) printf 'insufficient_privilege' ;;
-    22P02) printf 'invalid_text_representation' ;;
-    57014) printf 'statement_timeout_or_query_canceled' ;;
-    P0001)
-      if [[ "${output}" =~ ERROR:[[:space:]]*P0001:[[:space:]]*([A-Z][A-Z0-9]*_[A-Z0-9_]{2,}) ]]; then
-        printf '%s' "${BASH_REMATCH[1]}"
-      else
-        printf 'user_defined_exception'
-      fi
-      ;;
-    *)
-      if [[ "${output}" =~ ERROR:[[:space:]]*([A-Z][A-Z0-9]*_[A-Z0-9_]{2,})(:[^[:space:]]+)? ]]; then
-        printf '%s' "${BASH_REMATCH[1]}"
-      else
-        safe_cli_failure_class "${1}"
-      fi
-      ;;
-  esac
-}
-
-safe_cli_failure_object() {
-  local output="${1^^}"
-  if [[ "${output}" =~ (RELATION|TABLE|CONSTRAINT|INDEX|COLUMN|FUNCTION)[[:space:]]+\"([A-Z_][A-Z0-9_.$]*)\" ]]; then
-    printf '%s:%s' "${BASH_REMATCH[1],,}" "${BASH_REMATCH[2]}"
-  else
-    printf 'unknown'
-  fi
-}
-
-secure_diagnostic_directory() {
-  local path="${1}"
-  local platform="$(uname -s)"
-  if [[ "${platform}" == MINGW* || "${platform}" == MSYS* || "${platform}" == CYGWIN* ]]; then
-    local windows_path principal
-    command -v icacls.exe >/dev/null 2>&1 || return 1
-    command -v whoami.exe >/dev/null 2>&1 || return 1
-    command -v cygpath >/dev/null 2>&1 || return 1
-    windows_path="$(cygpath -w -- "${path}")" || return 1
-    principal="$(whoami.exe)" || return 1
-    icacls.exe "${windows_path}" /inheritance:r /grant:r \
-      "${principal}:(OI)(CI)F" '*S-1-5-18:(OI)(CI)F' '*S-1-5-32-544:(OI)(CI)F' >/dev/null || return 1
-    return 0
-  fi
-
-  chmod 700 -- "${path}" || return 1
-  [[ "$(stat -c '%a' -- "${path}" 2>/dev/null)" == '700' ]]
-}
-
-secure_diagnostic_file() {
-  local path="${1}"
-  local platform="$(uname -s)"
-  if [[ "${platform}" == MINGW* || "${platform}" == MSYS* || "${platform}" == CYGWIN* ]]; then
-    local windows_path principal
-    command -v icacls.exe >/dev/null 2>&1 || return 1
-    command -v whoami.exe >/dev/null 2>&1 || return 1
-    command -v cygpath >/dev/null 2>&1 || return 1
-    windows_path="$(cygpath -w -- "${path}")" || return 1
-    principal="$(whoami.exe)" || return 1
-    icacls.exe "${windows_path}" /inheritance:r /grant:r \
-      "${principal}:F" '*S-1-5-18:F' '*S-1-5-32-544:F' >/dev/null || return 1
-    return 0
-  fi
-
-  chmod 600 -- "${path}" || return 1
-  [[ "$(stat -c '%a' -- "${path}" 2>/dev/null)" == '600' ]]
-}
-
-record_cli_failure() {
-  local phase="${1}"
-  local output="${2}"
-  local diagnostic_dir="${PROMOTION_DIAGNOSTIC_DIR:-${XDG_STATE_HOME:-${HOME:-/tmp}/.local/state}/tecescola/migration-diagnostics}"
-  local record sqlstate failure_class message object
-  sqlstate="$(safe_cli_sqlstate "${output}")"
-  failure_class="$(safe_cli_failure_class "${output}")"
-  message="$(safe_cli_failure_message "${output}")"
-  object="$(safe_cli_failure_object "${output}")"
-
-  (umask 077; mkdir -p -- "${diagnostic_dir}") || {
-    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
-    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
-    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
-    return 0
-  }
-  secure_diagnostic_directory "${diagnostic_dir}" || {
-    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
-    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
-    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
-    return 0
-  }
-  record="$(mktemp "${diagnostic_dir}/${target_version}-${phase}.XXXXXX")" || {
-    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
-    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
-    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
-    return 0
-  }
-  secure_diagnostic_file "${record}" || {
-    rm -f -- "${record}"
-    printf 'PROMOTION_DIAGNOSTIC_LOG=unavailable\n' >&2
-    printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
-    printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
-    return 0
-  }
-  {
-    printf 'diagnostic_version=1\n'
-    printf 'timestamp_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-    printf 'stage=%s\n' "${phase}"
-    printf 'migration=%s\n' "${target_version}"
-    printf 'source_commit=%s\n' "${expected_source_commit}"
-    printf 'sqlstate=%s\n' "${sqlstate}"
-    printf 'failure_class=%s\n' "${failure_class}"
-    printf 'message=%s\n' "${message}"
-    printf 'object=%s\n' "${object}"
-    printf 'statement=not-preserved-by-supabase-cli-output\n'
-    printf 'raw_output=discarded; only sanitized fields retained\n'
-  } > "${record}"
-
-  printf 'PROMOTION_DIAGNOSTIC_LOG=%s\n' "${record}" >&2
-  printf 'PROMOTION_SQLSTATE=%s\n' "${sqlstate}" >&2
-  printf 'PROMOTION_ERROR=%s\n' "${message}" >&2
-  [[ "${object}" == 'unknown' ]] || printf 'PROMOTION_ERROR_OBJECT=%s\n' "${object}" >&2
-}
-
 repo_root="${SOURCE_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
 target_version="${TARGET_VERSION:?TARGET_VERSION is required}"
 expected_remote_last="${EXPECTED_REMOTE_LAST:?EXPECTED_REMOTE_LAST is required}"
@@ -191,8 +39,8 @@ expected_source_commit="${EXPECTED_SOURCE_COMMIT:?EXPECTED_SOURCE_COMMIT is requ
 expected_target_sha256="${EXPECTED_TARGET_SHA256:?EXPECTED_TARGET_SHA256 is required}"
 production_db_url="${PRODUCTION_DB_URL:?PRODUCTION_DB_URL is required}"
 
-# One release-scoped alternative recovery proof. This never changes the normal
-# offsite backup gate and cannot authorize migrations outside release #399.
+# Release #399's previously approved alternative recovery proof remains
+# isolated from the PR #409 local-only proof below.
 release_399_sha='36979b8adc4408bf9eaccdf77f742904fba152fc'
 release_399_backup_sha256='b8818e0b97a2152d60b1405f90d089a1ab4b43ba87d2739f234afb038b28d5c0'
 release_399_backup_windows_path='C:\Users\samue\Backups\TecEscola\edumoney-2026-10-24T07-41-52Z.tar.gz'
@@ -213,11 +61,10 @@ declare -A release_399_migration_hashes=(
   [20261023000900]=f4cf38b01c1ee74cd00d45e7eaaf55a1f5b12566c259027703a1e8bbc852fa1b
   [20261024000100]=9d0028276ad1798d64ab204810cae40cb1d862452c2ad8c89f06a5e6861fb71c
 )
-
-# Release #406 has a separate, one-release recovery-risk acceptance. It is
-# bound to the exact PR source lineage, local backup artifact, two migration
-# hashes, and the expected ledger immediately before each migration.
+# Release #406 remains independently pinned to its own source lineage, local
+# backup artifact, migration hashes, and exact pre-migration ledger states.
 release_406_source_anchor='ead793895f325c7b15a244f927219be252958e0d'
+release_406_branch='feat/central-estudos-pedagogia-v2'
 release_406_backup_sha256='a9f5a433cd10970cf0a5e5752ea5f71115d27bc91706fdae32265f2b56084841'
 release_406_backup_size_bytes='372305133'
 release_406_backup_host='tecescola-vps'
@@ -235,6 +82,19 @@ declare -A release_406_expected_remote_count=(
   [20261025000600]=241
   [20261025000700]=242
 )
+psychology_409_branch='codex/psychology-gate-ux'
+psychology_409_version='20261026000100'
+psychology_409_sha256='bf70b07ce66330b13ab35b2da5d524458fbf723258bd1cb5cb3eda847ca613ea'
+psychology_409_expected_remote_last='20261025000600'
+psychology_409_offsite_status='FAIL'
+psychology_409_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+psychology_409_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
+psychology_411_branch='codex/psychology-school-staff-access'
+psychology_411_version='20261026000200'
+psychology_411_sha256='da7db8e6ef8d635068ff34a3a1f2ccd4f0c5a4ce6b8a8d753203dc885aa075aa'
+psychology_411_expected_remote_last='20261026000100'
+psychology_411_origin_https='https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git'
+psychology_411_origin_ssh='git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git'
 
 connection_fields=()
 while IFS= read -r -d '' field; do
@@ -251,7 +111,7 @@ try {
       const values = queryValues.get(normalized) || [];
       values.push(value);
       queryValues.set(normalized, values);
-    } else if (["passfile", "sslpassword", "options", "service", "servicefile", "role"].includes(normalized)) {
+    } else if (["passfile", "sslpassword"].includes(normalized)) {
       throw new Error();
     }
   }
@@ -292,19 +152,12 @@ database_url="${connection_fields[2]}"
 database_sslmode="${connection_fields[3]}"
 unset connection_fields field production_db_url PRODUCTION_DB_URL
 
-# This script derives its database identity from the explicit URL. Do not let
-# inherited libpq settings silently change the role, service, host, database,
-# SSL behavior, or password source used by psql or the Supabase CLI.
-while IFS= read -r pg_environment_variable; do
-  [[ "${pg_environment_variable}" == PG* ]] && unset "${pg_environment_variable}"
-done < <(compgen -e)
-unset pg_environment_variable
-
 [[ "${target_version}" =~ ^[0-9]{14}$ ]] || abort "invalid target version"
 [[ "${expected_remote_last}" =~ ^[0-9]{14}$ ]] || abort "invalid expected remote version"
 
 actual_source_commit="$(git -C "${repo_root}" rev-parse HEAD 2>/dev/null)" || abort "source is not a git checkout"
 [[ "${actual_source_commit}" == "${expected_source_commit}" ]] || abort "source commit mismatch"
+python3_bin="${PYTHON3_BIN:-python3}"
 
 sha256_file() {
   if command -v sha256sum >/dev/null 2>&1; then
@@ -324,119 +177,206 @@ sha256_migration_file() {
   fi
 }
 
-authorize_production_write() {
+backup_exception='NOT_USED'
+backup_exception_backup_sha256=''
+backup_exception_backup_bytes=''
+backup_exception_restore_verified_at=''
+
+validate_backup_gate() {
   local backup_file="${BACKUP_EXCEPTION_BACKUP_FILE:-}"
   local expected_release_migration_sha=""
   local actual_backup_sha=""
-  local actual_backup_size=""
   local backup_evidence=""
   local backup_reported_path=""
+  local actual_backup_size=""
+  local current_branch=""
+  local origin_url=""
+  local receipt_file=""
+  local proof_output=""
+  local exception_selector=""
   local -a backup_evidence_lines=()
-
-  [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
-    abort "production write confirmation is missing"
 
   case "${BACKUP_GATE:-}" in
     PASS)
-      printf 'BACKUP_GATE=PASS\n'
-      printf 'BACKUP_EXCEPTION=NOT_USED\n'
-      printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+      backup_exception='NOT_USED'
       ;;
     FAIL)
-      if [[ "${BACKUP_EXCEPTION_RELEASE_ID:-}" == '406' ]]; then
-        [[ "${BACKUP_EXCEPTION_SOURCE_COMMIT:-}" == "${actual_source_commit}" && \
-          "${BACKUP_EXCEPTION_SOURCE_COMMIT:-}" == "${expected_source_commit}" ]] || \
-          abort "release #406 exception source commit does not match the verified checkout"
-        git -C "${repo_root}" merge-base --is-ancestor \
-          "${release_406_source_anchor}" "${actual_source_commit}" 2>/dev/null || \
-          abort "release #406 exception source is outside the approved PR lineage"
-        [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406' ]] || \
-          abort "explicit incomplete-recovery risk acceptance for release #406 is missing"
-        [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_406_backup_sha256}" ]] || \
-          abort "release #406 backup SHA-256 does not match the previously validated VPS-local artifact"
-        [[ "${BACKUP_EXCEPTION_BACKUP_HOST:-}" == "${release_406_backup_host}" ]] || \
-          abort "release #406 backup host does not identify the validated VPS artifact"
-        [[ "${backup_file}" == "${release_406_backup_path}" && \
-          "$(basename -- "${backup_file}")" == "${release_406_backup_filename}" ]] || \
-          abort "release #406 backup path does not identify the validated VPS artifact"
-        command -v ssh >/dev/null 2>&1 || abort "ssh is required to verify the VPS-local release #406 backup"
-        backup_evidence="$(ssh -o BatchMode=yes -o ConnectTimeout=15 \
-          "${release_406_backup_host}" \
-          "stat -c '%s' -- '${release_406_backup_path}' && sha256sum -- '${release_406_backup_path}'")" || \
-          abort "previously validated VPS-local release #406 backup could not be verified over SSH"
-        mapfile -t backup_evidence_lines <<< "${backup_evidence}"
-        [[ "${#backup_evidence_lines[@]}" -eq 2 ]] || \
-          abort "release #406 backup verification returned an unexpected result"
-        actual_backup_size="${backup_evidence_lines[0]}"
-        read -r actual_backup_sha backup_reported_path <<< "${backup_evidence_lines[1]}"
-        [[ -n "${backup_reported_path}" && "${backup_reported_path}" == "${release_406_backup_path}" ]] || \
-          abort "release #406 backup verification returned a different artifact path"
-        [[ "${actual_backup_size}" == "${release_406_backup_size_bytes}" ]] || \
-          abort "release #406 backup size differs from the previously validated VPS-local artifact"
-        [[ "${actual_backup_sha}" == "${release_406_backup_sha256}" ]] || \
-          abort "release #406 backup hash differs from the previously validated VPS-local artifact"
-        expected_release_migration_sha="${release_406_migration_hashes[${target_version}]:-}"
-        [[ -n "${expected_release_migration_sha}" ]] || \
-          abort "backup exception does not authorize a migration outside release #406"
-        [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
-          "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
-          abort "target migration is not the approved release #406 artifact"
-        [[ "${expected_remote_last}" == "${release_406_expected_remote_last[${target_version}]}" && \
-          "${remote_last}" == "${release_406_expected_remote_last[${target_version}]}" ]] || \
-          abort "remote ledger version is not the approved pre-migration state for release #406"
-        [[ "${#remote_versions[@]}" -eq "${release_406_expected_remote_count[${target_version}]}" ]] || \
-          abort "remote ledger count is not the approved pre-migration state for release #406"
-
-        printf 'BACKUP_GATE=FAIL\n'
-        printf 'BACKUP_EXCEPTION=RELEASE_406_ACCEPTED\n'
-        printf 'BACKUP_EXCEPTION_RELEASE_ID=406\n'
-        printf 'BACKUP_EXCEPTION_SOURCE_COMMIT=%s\n' "${actual_source_commit}"
-        printf 'BACKUP_EXCEPTION_BACKUP_HOST=%s\n' "${release_406_backup_host}"
-        printf 'BACKUP_EXCEPTION_BACKUP_PATH=%s\n' "${release_406_backup_path}"
-        printf 'BACKUP_EXCEPTION_BACKUP_SHA256=%s\n' "${actual_backup_sha}"
-        printf 'BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=%s\n' "${actual_backup_size}"
-        printf 'BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL\n'
-        printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
-        printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
-        printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
-        return 0
+      if [[ -n "${BACKUP_EXCEPTION_PR:-}" && -n "${BACKUP_EXCEPTION_RELEASE_ID:-}" && \
+        "${BACKUP_EXCEPTION_PR}" != "${BACKUP_EXCEPTION_RELEASE_ID}" ]]; then
+        abort "backup exception PR and release identifiers conflict"
       fi
-
-      [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
-        abort "backup exception is restricted to the approved release #399 SHA"
-      [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
-        abort "backup exception does not identify the verified Windows copy"
-      [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
-        abort "backup exception SHA-256 does not match the verified Windows copy"
-      [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
-        abort "backup exception must record the verified restore status PARTIAL"
-      [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
-        abort "backup exception must record the verified storage status PARTIAL"
-      [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
-        abort "backup exception must preserve the offsite gate as FAIL"
-      [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
-        abort "explicit incomplete-recovery risk acceptance is missing"
-      expected_release_migration_sha="${release_399_migration_hashes[${target_version}]:-}"
-      [[ -n "${expected_release_migration_sha}" ]] || \
-        abort "backup exception does not authorize a migration outside release #399"
-      [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
-        "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
-        abort "target migration is not the approved release #399 artifact"
-      [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
-        abort "verified Windows backup copy is not accessible"
-      actual_backup_sha="$(sha256_file "${backup_file}")" || \
-        abort "verified Windows backup copy could not be hashed"
-      [[ "${actual_backup_sha}" == "${release_399_backup_sha256}" ]] || \
-        abort "accessible backup copy SHA-256 does not match the verified Windows copy"
-      printf 'BACKUP_GATE=FAIL\n'
-      printf 'BACKUP_EXCEPTION=USED\n'
-      printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
-      printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${actual_backup_sha}"
-      printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
-      printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
-      printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
-      printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
-      printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+      exception_selector="${BACKUP_EXCEPTION_PR:-${BACKUP_EXCEPTION_RELEASE_ID:-}}"
+      case "${exception_selector}" in
+        399)
+          [[ "${BACKUP_EXCEPTION_RELEASE_SHA:-}" == "${release_399_sha}" ]] || \
+            abort "backup exception is restricted to the approved release #399 SHA"
+          [[ "${BACKUP_EXCEPTION_WINDOWS_PATH:-}" == "${release_399_backup_windows_path}" ]] || \
+            abort "backup exception does not identify the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_399_backup_sha256}" ]] || \
+            abort "backup exception SHA-256 does not match the verified Windows copy"
+          [[ "${BACKUP_EXCEPTION_RESTORE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "backup exception must record the verified restore status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "backup exception must record the verified storage status PARTIAL"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_GATE:-}" == 'FAIL' ]] || \
+            abort "backup exception must preserve the offsite gate as FAIL"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_399' ]] || \
+            abort "explicit incomplete-recovery risk acceptance is missing"
+          expected_release_migration_sha="${release_399_migration_hashes[${target_version}]:-}"
+          [[ -n "${expected_release_migration_sha}" ]] || \
+            abort "backup exception does not authorize a migration outside release #399"
+          [[ "${expected_target_sha256}" == "${expected_release_migration_sha}" && \
+            "${actual_target_sha256}" == "${expected_release_migration_sha}" ]] || \
+            abort "target migration is not the approved release #399 artifact"
+          [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+            abort "verified Windows backup copy is not accessible"
+          actual_backup_sha="$(sha256_file "${backup_file}")" || \
+            abort "verified Windows backup copy could not be hashed"
+          [[ "${actual_backup_sha}" == "${release_399_backup_sha256}" ]] || \
+            abort "accessible backup copy SHA-256 does not match the verified Windows copy"
+          backup_exception='RELEASE_399_ACCEPTED'
+          backup_exception_backup_sha256="${actual_backup_sha}"
+          ;;
+        406)
+          [[ "${BACKUP_EXCEPTION_RELEASE_ID:-}" == '406' ]] || \
+            abort "release #406 exception requires its exact release identifier"
+          [[ "${BACKUP_EXCEPTION_SOURCE_COMMIT:-}" == "${actual_source_commit}" && \
+            "${actual_source_commit}" == "${expected_source_commit}" ]] || \
+            abort "release #406 exception source commit does not match the verified checkout"
+          git -C "${repo_root}" merge-base --is-ancestor \
+            "${release_406_source_anchor}" "${actual_source_commit}" 2>/dev/null || \
+            abort "release #406 source is outside the approved PR lineage"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the release #406 source branch"
+          [[ "${current_branch}" == "${release_406_branch}" ]] || \
+            abort "release #406 exception is restricted to branch ${release_406_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the release #406 repository"
+          [[ "${origin_url}" == 'https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git' || \
+            "${origin_url}" == 'git@github.com:weslleyfreitassantos-cell/edumoneyyyy-.git' ]] || \
+            abort "release #406 exception is restricted to the canonical Tec Escola repository"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406' ]] || \
+            abort "explicit incomplete-recovery risk acceptance for release #406 is missing"
+          [[ "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" == "${release_406_backup_sha256}" && \
+            "${BACKUP_EXCEPTION_BACKUP_HOST:-}" == "${release_406_backup_host}" && \
+            "${backup_file}" == "${release_406_backup_path}" && \
+            "$(basename -- "${backup_file}")" == "${release_406_backup_filename}" ]] || \
+            abort "release #406 exception does not identify the validated VPS-local artifact"
+          command -v ssh >/dev/null 2>&1 || abort "ssh is required to verify the VPS-local release #406 backup"
+          backup_evidence="$(ssh -o BatchMode=yes -o ConnectTimeout=15 \
+            "${release_406_backup_host}" \
+            "stat -c '%s' -- '${release_406_backup_path}' && sha256sum -- '${release_406_backup_path}'")" || \
+            abort "previously validated VPS-local release #406 backup could not be verified over SSH"
+          mapfile -t backup_evidence_lines <<< "${backup_evidence}"
+          [[ "${#backup_evidence_lines[@]}" -eq 2 ]] || \
+            abort "release #406 backup verification returned an unexpected result"
+          actual_backup_size="${backup_evidence_lines[0]}"
+          read -r actual_backup_sha backup_reported_path <<< "${backup_evidence_lines[1]}"
+          [[ "${actual_backup_size}" == "${release_406_backup_size_bytes}" && \
+            "${backup_reported_path}" == "${release_406_backup_path}" && \
+            "${actual_backup_sha}" == "${release_406_backup_sha256}" ]] || \
+            abort "release #406 backup evidence differs from the previously validated VPS-local artifact"
+          expected_release_migration_sha="${release_406_migration_hashes[${target_version}]:-}"
+          [[ -n "${expected_release_migration_sha}" && \
+            "${expected_target_sha256,,}" == "${expected_release_migration_sha}" && \
+            "${actual_target_sha256,,}" == "${expected_release_migration_sha}" ]] || \
+            abort "target migration is not an approved release #406 artifact"
+          [[ "${expected_remote_last}" == "${release_406_expected_remote_last[${target_version}]:-}" ]] || \
+            abort "expected remote ledger version is outside the approved release #406 state"
+          backup_exception='RELEASE_406_ACCEPTED'
+          backup_exception_backup_sha256="${actual_backup_sha}"
+          backup_exception_backup_bytes="${actual_backup_size}"
+          ;;
+        409)
+          [[ "${target_version}" == "${psychology_409_version}" && \
+            "${expected_remote_last}" == "${psychology_409_expected_remote_last}" ]] || \
+            abort "PR #409 exception is restricted to migration 20261026000100 after 20261025000600"
+          [[ "${expected_target_sha256}" == "${psychology_409_sha256}" && \
+            "${actual_target_sha256}" == "${psychology_409_sha256}" ]] || \
+            abort "PR #409 exception target hash does not match the approved Psychology migration"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #409 source branch"
+          [[ "${current_branch}" == "${psychology_409_branch}" ]] || \
+            abort "PR #409 exception is restricted to branch ${psychology_409_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #409 repository"
+          [[ "${origin_url}" == "${psychology_409_origin_https}" || \
+            "${origin_url}" == "${psychology_409_origin_ssh}" ]] || \
+            abort "PR #409 exception is restricted to the canonical Tec Escola repository"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" == "${psychology_409_offsite_status}" ]] || \
+            abort "PR #409 local-only exception must record OFFSITE as FAIL"
+          [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+            abort "recent local backup file is unavailable"
+          receipt_file="${BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE:-}"
+          [[ -n "${receipt_file}" && -f "${receipt_file}" ]] || \
+            abort "isolated PostgreSQL restore proof receipt is unavailable"
+          command -v "${python3_bin}" >/dev/null 2>&1 || abort "python3 is required to validate the local recovery proof"
+          proof_output="$("${python3_bin}" "${repo_root}/ops/backup/verify-local-recovery-proof.py" \
+            --backup-file "${backup_file}" \
+            --receipt-file "${receipt_file}" \
+            --expected-sha256 "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" \
+            --repo-root "${repo_root}" \
+            --bundle-verifier "${repo_root}/ops/backup/verify-edumoney-bundle-stream.py" 2>&1)" || \
+            abort "local backup or isolated restore proof is invalid"
+          grep -Fxq 'LOCAL_RECOVERY_PROOF=PASS' <<< "${proof_output}" || \
+            abort "local recovery proof did not report PASS"
+          backup_exception_backup_sha256="$(awk -F= '$1 == "BACKUP_SHA256" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_backup_bytes="$(awk -F= '$1 == "BACKUP_BYTES" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_restore_verified_at="$(awk -F= '$1 == "RESTORE_VERIFIED_AT_UTC" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          [[ -n "${backup_exception_backup_sha256}" && -n "${backup_exception_backup_bytes}" && \
+            -n "${backup_exception_restore_verified_at}" ]] || \
+            abort "local recovery proof returned incomplete evidence"
+          backup_exception='PR409_LOCAL_ONLY'
+          ;;
+        411)
+          [[ "${target_version}" == "${psychology_411_version}" && \
+            "${expected_remote_last}" == "${psychology_411_expected_remote_last}" ]] || \
+            abort "PR #411 exception is restricted to migration 20261026000200 after 20261026000100"
+          [[ "${expected_target_sha256,,}" == "${psychology_411_sha256}" && \
+            "${actual_target_sha256,,}" == "${psychology_411_sha256}" ]] || \
+            abort "PR #411 exception target hash does not match the approved Psychology migration"
+          current_branch="$(git -C "${repo_root}" branch --show-current 2>/dev/null)" || \
+            abort "cannot verify the PR #411 source branch"
+          [[ "${current_branch}" == "${psychology_411_branch}" ]] || \
+            abort "PR #411 exception is restricted to branch ${psychology_411_branch}"
+          origin_url="$(git -C "${repo_root}" remote get-url origin 2>/dev/null)" || \
+            abort "cannot verify the PR #411 repository"
+          [[ "${origin_url}" == "${psychology_411_origin_https}" || \
+            "${origin_url}" == "${psychology_411_origin_ssh}" ]] || \
+            abort "PR #411 exception is restricted to the canonical Tec Escola repository"
+          [[ "${BACKUP_EXCEPTION_OFFSITE_STATUS:-}" == 'FAIL' ]] || \
+            abort "PR #411 local-only exception must record OFFSITE as FAIL"
+          [[ "${BACKUP_EXCEPTION_STORAGE_STATUS:-}" == 'PARTIAL' ]] || \
+            abort "PR #411 local-only exception must record Storage recovery as PARTIAL"
+          [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411' ]] || \
+            abort "explicit PR #411 local-only recovery risk acceptance is missing"
+          [[ -n "${backup_file}" && -f "${backup_file}" ]] || \
+            abort "recent local backup file is unavailable"
+          receipt_file="${BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE:-}"
+          [[ -n "${receipt_file}" && -f "${receipt_file}" ]] || \
+            abort "isolated PostgreSQL restore proof receipt is unavailable"
+          command -v "${python3_bin}" >/dev/null 2>&1 || abort "python3 is required to validate the local recovery proof"
+          proof_output="$("${python3_bin}" "${repo_root}/ops/backup/verify-local-recovery-proof.py" \
+            --backup-file "${backup_file}" \
+            --receipt-file "${receipt_file}" \
+            --expected-sha256 "${BACKUP_EXCEPTION_BACKUP_SHA256:-}" \
+            --repo-root "${repo_root}" \
+            --bundle-verifier "${repo_root}/ops/backup/verify-edumoney-bundle-stream.py" 2>&1)" || \
+            abort "PR #411 local backup or isolated restore proof is invalid"
+          grep -Fxq 'LOCAL_RECOVERY_PROOF=PASS' <<< "${proof_output}" || \
+            abort "PR #411 local recovery proof did not report PASS"
+          backup_exception_backup_sha256="$(awk -F= '$1 == "BACKUP_SHA256" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_backup_bytes="$(awk -F= '$1 == "BACKUP_BYTES" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          backup_exception_restore_verified_at="$(awk -F= '$1 == "RESTORE_VERIFIED_AT_UTC" {print substr($0, index($0, "=") + 1)}' <<< "${proof_output}")"
+          [[ -n "${backup_exception_backup_sha256}" && -n "${backup_exception_backup_bytes}" && \
+            -n "${backup_exception_restore_verified_at}" ]] || \
+            abort "PR #411 local recovery proof returned incomplete evidence"
+          backup_exception='PR411_LOCAL_ONLY'
+          ;;
+        *)
+          abort "backup gate is FAIL and no narrowly scoped exception was selected"
+          ;;
+      esac
       ;;
     *)
       abort "backup gate must be PASS or the release-scoped FAIL exception"
@@ -444,11 +384,42 @@ authorize_production_write() {
   esac
 }
 
+authorize_production_write() {
+  if [[ "${backup_exception}" == 'PR409_LOCAL_ONLY' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR409_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
+      abort "PR #409 production write requires its specific migration authorization"
+    [[ "${ACCEPT_NO_OFFSITE_COPY:-}" == 'I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_409' ]] || \
+      abort "PR #409 production write requires explicit acceptance of the missing offsite copy"
+  elif [[ "${backup_exception}" == 'PR411_LOCAL_ONLY' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_PR411_SINGLE_MIGRATION_20261026000200' ]] || \
+      abort "PR #411 production write requires its single-migration confirmation"
+    [[ "${ACCEPT_NO_OFFSITE_COPY:-}" == 'I_ACCEPT_NO_OFFSITE_COPY_FOR_PR_411' ]] || \
+      abort "PR #411 production write requires explicit acceptance of the missing offsite copy"
+    [[ "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_411' ]] || \
+      abort "PR #411 production write requires explicit acceptance of local-only recovery risk"
+  elif [[ "${backup_exception}" == 'RELEASE_406_ACCEPTED' ]]; then
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
+      abort "release #406 production write confirmation is missing"
+    [[ "${BACKUP_EXCEPTION_RELEASE_ID:-}" == '406' && \
+      "${ACCEPT_INCOMPLETE_RECOVERY_RISK:-}" == 'I_ACCEPT_INCOMPLETE_RECOVERY_RISK_FOR_RELEASE_406' ]] || \
+      abort "release #406 production write requires its specific risk acceptance"
+    [[ "${expected_remote_last}" == "${release_406_expected_remote_last[${target_version}]:-}" && \
+      "${remote_last}" == "${release_406_expected_remote_last[${target_version}]:-}" && \
+      "${#remote_versions[@]}" -eq "${release_406_expected_remote_count[${target_version}]:-0}" ]] || \
+      abort "remote ledger is not the approved pre-migration state for release #406"
+  else
+    [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
+      abort "production write confirmation is missing"
+  fi
+  printf 'PRODUCTION_WRITE_AUTHORIZATION=APPROVED\n'
+}
+
 mapfile -t target_files < <(find "${repo_root}/supabase/migrations" -maxdepth 1 -type f -name "${target_version}_*.sql" -print)
 [[ "${#target_files[@]}" -eq 1 ]] || abort "target migration must resolve to exactly one file"
 target_file="${target_files[0]}"
 actual_target_sha256="$(sha256_migration_file "${target_file}")"
 [[ "${actual_target_sha256}" == "${expected_target_sha256}" ]] || abort "target migration hash mismatch"
+validate_backup_gate
 
 umask 077
 temp_root="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-promote.XXXXXX")"
@@ -499,19 +470,6 @@ fi
 cli_workdir_arg="${cli_workdir}"
 cli_wslenv="${WSLENV:-}"
 if [[ "${cli_binary_override}" == *.exe ]]; then
-  filtered_wslenv_entries=()
-  IFS=':' read -r -a wslenv_entries <<< "${cli_wslenv}"
-  for entry in "${wslenv_entries[@]}"; do
-    [[ -n "${entry}" ]] || continue
-    entry_name="${entry%%/*}"
-    if [[ "${entry_name}" == PG* && "${entry_name}" != PGUSER && \
-      "${entry_name}" != PGPASSWORD && "${entry_name}" != PGSSLMODE ]]; then
-      continue
-    fi
-    filtered_wslenv_entries+=("${entry}")
-  done
-  cli_wslenv="$(IFS=:; printf '%s' "${filtered_wslenv_entries[*]}")"
-
   if command -v wslpath >/dev/null 2>&1; then
     cli_workdir_arg="$(wslpath -w "${cli_workdir}")" || abort "Supabase CLI workdir conversion failed"
     for variable in PGUSER PGPASSWORD PGSSLMODE; do
@@ -849,6 +807,7 @@ check_runtime_publication_context() {
   printf 'PRECHECK=PASS\n'
 }
 
+
 if [[ -n "${REMOTE_LEDGER_FILE:-}" ]]; then
   [[ -f "${REMOTE_LEDGER_FILE}" ]] || abort "remote ledger fixture is missing"
   ledger_output="$(cat "${REMOTE_LEDGER_FILE}")"
@@ -912,7 +871,6 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
 else
   printf 'PROMOTION_STAGE=DRY_RUN_START\n' >&2
   if ! dry_run_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --dry-run --log-level error 2>&1)"; then
-    record_cli_failure dry-run "${dry_run_output}"
     abort "supabase dry-run failed: $(safe_cli_failure_class "${dry_run_output}")"
   fi
   printf 'PROMOTION_STAGE=DRY_RUN_COMPLETE\n' >&2
@@ -936,19 +894,58 @@ printf 'WORKDIR_MIGRATION_COUNT=%s\n' "${workdir_migration_count}"
 printf 'DRY_RUN_PENDING_COUNT=1\n'
 printf 'DRY_RUN_PENDING_VERSION=%s\n' "${target_version}"
 printf 'TARGET_MIGRATION_SHA256=%s\n' "${actual_target_sha256}"
+printf 'BACKUP_GATE=%s\n' "${BACKUP_GATE:-UNSET}"
+printf 'BACKUP_EXCEPTION=%s\n' "${backup_exception}"
+if [[ "${backup_exception}" == 'PR409_LOCAL_ONLY' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=409\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${psychology_409_version}"
+  printf 'BACKUP_EXCEPTION_LOCAL_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_LOCAL_BYTES=%s\n' "${backup_exception_backup_bytes}"
+  printf 'BACKUP_EXCEPTION_RESTORE=PASS\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY\n'
+elif [[ "${backup_exception}" == 'RELEASE_399_ACCEPTED' ]]; then
+  printf 'BACKUP_EXCEPTION_RELEASE_SHA=%s\n' "${release_399_sha}"
+  printf 'BACKUP_EXCEPTION_WINDOWS_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_RESTORE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'PR411_LOCAL_ONLY' ]]; then
+  printf 'BACKUP_EXCEPTION_PR=411\n'
+  printf 'BACKUP_EXCEPTION_SCOPE=%s\n' "${psychology_411_version}"
+  printf 'BACKUP_EXCEPTION_LOCAL_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_LOCAL_BYTES=%s\n' "${backup_exception_backup_bytes}"
+  printf 'BACKUP_EXCEPTION_RESTORE=PASS\n'
+  printf 'BACKUP_EXCEPTION_STORAGE=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE\n'
+  printf 'BACKUP_EXCEPTION_RECOVERY_RISK=LOCAL_ONLY_NO_OFFSITE_COPY_STORAGE_PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+elif [[ "${backup_exception}" == 'RELEASE_406_ACCEPTED' ]]; then
+  printf 'BACKUP_EXCEPTION_RELEASE_ID=406\n'
+  printf 'BACKUP_EXCEPTION_SOURCE_COMMIT=%s\n' "${actual_source_commit}"
+  printf 'BACKUP_EXCEPTION_BACKUP_HOST=%s\n' "${release_406_backup_host}"
+  printf 'BACKUP_EXCEPTION_BACKUP_PATH=%s\n' "${release_406_backup_path}"
+  printf 'BACKUP_EXCEPTION_BACKUP_SHA256=%s\n' "${backup_exception_backup_sha256}"
+  printf 'BACKUP_EXCEPTION_BACKUP_SIZE_BYTES=%s\n' "${backup_exception_backup_bytes}"
+  printf 'BACKUP_EXCEPTION_STORAGE_RECOVERY=PARTIAL\n'
+  printf 'BACKUP_EXCEPTION_OFFSITE_GATE=FAIL\n'
+  printf 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED\n'
+fi
 
 if [[ "${APPLY:-0}" != '1' ]]; then
   printf 'PROMOTION=DRY_RUN_ONLY\n'
+  printf 'PRODUCTION_WRITE_AUTHORIZATION=PENDING\n'
   exit 0
 fi
 
 authorize_production_write
 
 printf 'PROMOTION_STAGE=APPLY_START\n' >&2
-if ! apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)"; then
-  record_cli_failure apply "${apply_output}"
-  abort_after_apply "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
-fi
+apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" "${include_all_flag[@]}" --yes --log-level error 2>&1)" \
+  || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
 printf 'PROMOTION_STAGE=APPLY_COMPLETE\n' >&2
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
