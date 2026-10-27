@@ -680,6 +680,11 @@ printf 'Would push migration %s\n' "$release_406_version" > "$release_406_dry_ru
 cat "$release_406_ledger" > "$release_406_after"
 printf '%s\n' "$release_406_version" >> "$release_406_after"
 printf '0\n' > "$cli_apply_count"
+# GitHub Actions checks out pull requests detached. The promoter's production
+# branch guard is intentionally preserved; model its verified PR branch in
+# this unit test's existing git mock instead of depending on the runner branch.
+export PROMOTION_TEST_REPO_ROOT="$repo_root"
+export PROMOTION_TEST_BRANCH=feat/central-estudos-pedagogia-v2
 release_406_output="$(PATH="$tmp/bin:$PATH" \
   REAL_SHA256SUM="$real_sha256sum" \
   MOCK_406_BACKUP_SHA256="$release_406_backup_sha256" \

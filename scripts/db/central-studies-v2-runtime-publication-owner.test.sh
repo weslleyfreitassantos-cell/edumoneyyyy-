@@ -58,13 +58,18 @@ policy_names_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_
   "select schemaname || '|' || tablename || '|' || policyname
      from pg_catalog.pg_policies
     where schemaname = 'public'
-      and tablename in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and tablename in ('learning_skill_lessons','learning_curriculum_skills','learning_question_bank',
+                        'learning_question_sets','learning_question_set_items','learning_guided_session_events')
     order by 1;")"
 policy_defs_before="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 -c \
   "select schemaname || '|' || tablename || '|' || policyname || '|' || cmd || '|' || permissive || '|' || roles::text || '|' || coalesce(qual, '') || '|' || coalesce(with_check, '')
      from pg_catalog.pg_policies
     where schemaname = 'public'
-      and tablename in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and tablename in ('learning_skill_lessons','learning_curriculum_skills','learning_question_bank',
+                        'learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and not (tablename = 'learning_skill_lessons' and policyname = 'learning_skill_lessons_select')
+      and not (tablename = 'learning_curriculum_skills' and policyname = 'learning_curriculum_skills_select')
+      and not (tablename = 'learning_question_bank' and policyname = 'learning_question_bank_select')
       and not (tablename = 'learning_question_sets' and policyname = 'learning_question_sets_select')
       and not (tablename = 'learning_question_set_items' and policyname = 'learning_question_set_items_select')
     order by 1;")"
@@ -92,6 +97,12 @@ policy_count_after_denial="$(psql_in_container -U supabase_admin -d postgres -X 
   -c "select count(*) from pg_catalog.pg_policies where schemaname='public' and tablename='learning_question_sets' and policyname='learning_question_sets_select';")"
 [[ "$policy_count_after_denial" == '1' ]] || {
   echo 'Denied policy DDL unexpectedly removed the existing policy' >&2
+  exit 1
+}
+denied_ledger_count="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 \
+  -c "select count(*) from supabase_migrations.schema_migrations where version='20261025000700';")"
+[[ "$denied_ledger_count" == '0' ]] || {
+  echo 'Rejected non-owner DDL unexpectedly recorded migration 007 in the ledger' >&2
   exit 1
 }
 echo 'CENTRAL_STUDIES_V2_007_NON_OWNER_POLICY_DDL_42501=PASS'
@@ -162,13 +173,18 @@ policy_names_after="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_E
   "select schemaname || '|' || tablename || '|' || policyname
      from pg_catalog.pg_policies
     where schemaname = 'public'
-      and tablename in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and tablename in ('learning_skill_lessons','learning_curriculum_skills','learning_question_bank',
+                        'learning_question_sets','learning_question_set_items','learning_guided_session_events')
     order by 1;")"
 policy_defs_after="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ERROR_STOP=1 -c \
   "select schemaname || '|' || tablename || '|' || policyname || '|' || cmd || '|' || permissive || '|' || roles::text || '|' || coalesce(qual, '') || '|' || coalesce(with_check, '')
      from pg_catalog.pg_policies
     where schemaname = 'public'
-      and tablename in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and tablename in ('learning_skill_lessons','learning_curriculum_skills','learning_question_bank',
+                        'learning_question_sets','learning_question_set_items','learning_guided_session_events')
+      and not (tablename = 'learning_skill_lessons' and policyname = 'learning_skill_lessons_select')
+      and not (tablename = 'learning_curriculum_skills' and policyname = 'learning_curriculum_skills_select')
+      and not (tablename = 'learning_question_bank' and policyname = 'learning_question_bank_select')
       and not (tablename = 'learning_question_sets' and policyname = 'learning_question_sets_select')
       and not (tablename = 'learning_question_set_items' and policyname = 'learning_question_set_items_select')
     order by 1;")"
@@ -179,9 +195,10 @@ policy_defs_after="$(psql_in_container -U postgres -d postgres -X -A -t -v ON_ER
 
 security_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|' -v ON_ERROR_STOP=1 -c \
   "select
-     (select count(*) = 3 and bool_and(relrowsecurity)
+     (select count(*) = 6 and bool_and(relrowsecurity)
         from pg_class c join pg_namespace n on n.oid=c.relnamespace
-       where n.nspname='public' and c.relname in ('learning_question_sets','learning_question_set_items','learning_guided_session_events')),
+       where n.nspname='public' and c.relname in ('learning_skill_lessons','learning_curriculum_skills','learning_question_bank',
+         'learning_question_sets','learning_question_set_items','learning_guided_session_events')),
      (select count(*) = 2 and bool_and(
           pg_get_expr(polqual, polrelid) like '%central_studies_v2_student_can_read%'
           and pg_get_expr(polqual, polrelid) like '%can_access_institution%')
@@ -199,7 +216,45 @@ security_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|'
   exit 1
 }
 
+tenant_scope_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|' -v ON_ERROR_STOP=1 -c \
+  "select
+     (select count(*) = 5 and bool_and(pg_get_expr(policy_row.polqual, policy_row.polrelid)
+          like '%central_studies_v2_student_can_read%')
+        from pg_policy policy_row
+        join pg_class relation_row on relation_row.oid = policy_row.polrelid
+        join pg_namespace schema_row on schema_row.oid = relation_row.relnamespace
+       where schema_row.nspname = 'public'
+         and (relation_row.relname, policy_row.polname) in (
+           ('learning_skill_lessons','learning_skill_lessons_select'),
+           ('learning_curriculum_skills','learning_curriculum_skills_select'),
+           ('learning_question_bank','learning_question_bank_select'),
+           ('learning_question_sets','learning_question_sets_select'),
+           ('learning_question_set_items','learning_question_set_items_select'))),
+     (select count(*) = 3 and bool_and(pg_get_expr(policy_row.polqual, policy_row.polrelid)
+          like '%can_access_institution%')
+        from pg_policy policy_row
+        join pg_class relation_row on relation_row.oid = policy_row.polrelid
+        join pg_namespace schema_row on schema_row.oid = relation_row.relnamespace
+       where schema_row.nspname = 'public'
+         and (relation_row.relname, policy_row.polname) in (
+           ('learning_question_bank','learning_question_bank_select'),
+           ('learning_question_sets','learning_question_sets_select'),
+           ('learning_question_set_items','learning_question_set_items_select'))),
+     (select pg_get_functiondef('private.central_studies_v2_student_can_read(text)'::regprocedure)
+          like '%student.institution_id = target.institution_id%'
+          and pg_get_functiondef('private.central_studies_v2_student_can_read(text)'::regprocedure)
+          like '%student.profile_id = auth.uid()%'
+          and pg_get_functiondef('private.central_studies_v2_student_can_read(text)'::regprocedure)
+          like '%upper(enrollment.status::text) = ''ACTIVE''%'
+          and pg_get_functiondef('private.central_studies_v2_student_can_read(text)'::regprocedure)
+          like '%class.institution_id = target.institution_id%')")"
+[[ "$tenant_scope_assertions" == 't|t|t' ]] || {
+  echo "Student-to-institution policy scope assertion failed: $tenant_scope_assertions" >&2
+  exit 1
+}
+
 echo 'CENTRAL_STUDIES_V2_007_POSTGRES_OWNER_RESET_EXECUTION=PASS'
 echo 'CENTRAL_STUDIES_V2_007_UNRELATED_RLS_POLICIES_PRESERVED=PASS'
 echo 'CENTRAL_STUDIES_V2_007_INSTITUTION_SCOPE_POLICY=PASS'
+echo 'CENTRAL_STUDIES_V2_007_STUDENT_INSTITUTION_BOUNDARY=PASS'
 echo 'CENTRAL_STUDIES_V2_007_SINGLE_MIGRATION_LEDGER=PASS'
