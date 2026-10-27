@@ -1,0 +1,930 @@
+{
+  "schemaVersion": "tec-escola.bncc.knowledge-factory-inventory.v2",
+  "factoryVersion": "V2",
+  "foundation": {
+    "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
+    "unitsHash": "3f33da738665c8449d77986f7b9a7533640392a2fc857b1933938b12ff2a761c",
+    "v1InventoryHash": "c8545427ede0391d5d4ea968f0a4e9433d5a875deed90819dcdf0ef72013c73b"
+  },
+  "hashes": {
+    "contentHash": "1d19e113a06876bfcbdb37635ff808dd17d8e2f2299165d0301103484cd0a529",
+    "graphExpansionHash": "06576b25fcc45c32b2540612a876f89a49652c5c978d7e96e3c997d573ed7c21",
+    "unitExpansionHash": "af4ee96324f9e7ee870727d4cc309132d103b54346e0e139fe0cd5ead5eb2975",
+    "stagingSqlHash": "7a3794ef709d62928f2a41b5d46a8919231cdb11efe9140a25bfd346613d7dd3"
+  },
+  "officialCatalog": {
+    "nodesAccounted": 1723,
+    "mappingStatuses": {
+      "CANONICAL_GAP": 1496,
+      "HUMAN_REVIEW_BLOCKED": 121,
+      "MAPPED": 2,
+      "HIERARCHY_ONLY": 104
+    },
+    "canonicalGapNodesBefore": 1496,
+    "canonicalGapNodesAfter": 1496,
+    "officialMappingGapsBefore": 1617,
+    "officialMappingGapsAfter": 1617,
+    "humanReviewBlocked": 121,
+    "hierarchyOnly": 104,
+    "officialMappingGapsResolved": 0,
+    "officialMappingsReviewed": 0,
+    "officialMappingReviewPending": 3,
+    "officialMappingsPromoted": 0,
+    "candidateEvidenceCount": 3,
+    "candidateEvidenceStatus": "MAPPING_PENDING_NOT_A_MAPPING"
+  },
+  "canonicalGraph": {
+    "internalSkillsBefore": 71,
+    "newCanonicalSkills": 3,
+    "internalSkillsAfter": 74,
+    "existingSkillsExpanded": 0,
+    "technicalGapsResolved": 0,
+    "typedRelationships": {
+      "PROGRESSION": 2,
+      "PREREQUISITE": 1,
+      "SUPPORTING": 1
+    },
+    "databasePrerequisiteEdges": 1,
+    "databaseRelationshipsOmittedAsUnsupportedTypes": 3,
+    "newPrerequisiteRelations": 1
+  },
+  "curriculum": {
+    "baselineUnits": 53,
+    "newUnits": 2,
+    "reusedExistingUnits": 1,
+    "finalUniqueUnits": 55,
+    "unitSkillMemberships": 3,
+    "inactiveGradeTargets": 5
+  },
+  "content": {
+    "subjects": [
+      "BIOLOGY",
+      "HISTORY",
+      "SCIENCE"
+    ],
+    "stages": [
+      "ENSINO_MEDIO",
+      "FUNDAMENTAL_I"
+    ],
+    "newLessons": 3,
+    "skillsWithLessons": 3,
+    "newQuestions": 36,
+    "skillsWithQuestions": 3,
+    "completeAdaptiveSequences": 3,
+    "skillsWithCompleteAdaptiveSequence": 3,
+    "purposeCountsBySkill": {
+      "SCIENCE_COMPARE_MATERIAL_CHOICES_FI": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "HISTORY_REGISTER_LOCAL_CHANGE_FI": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      }
+    }
+  },
+  "databaseCompilation": {
+    "method": "FORWARD_ONLY_DML_STAGING_SQL_NO_SCHEMA_CHANGE",
+    "idempotentBy": [
+      "catalog+skill_code",
+      "skill+lesson_version",
+      "question_source+content_id",
+      "skill+purpose+set_version",
+      "unit_id+skill_code"
+    ],
+    "studentEligibleRows": 0
+  },
+  "safety": {
+    "publicationStatus": "STAGING",
+    "mappingStatus": "MAPPING_PENDING",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "newContentPublished": false,
+    "studentAvailableContent": 0,
+    "studentHistoryModified": false,
+    "productionWrites": false,
+    "otherServicesTouched": false
+  },
+  "nextPriorityQueues": {
+    "existingSkillContentGaps": [
+      {
+        "skillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+        "title": "Explicar interacoes em ecossistemas",
+        "subjectCode": "BIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "gradeFrom": 1,
+        "gradeTo": 3,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "ECOLOGIA",
+        "parentSkillCode": "BIOLOGY_ECOLOGY",
+        "objective": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 0,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "KNOWLEDGE_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 110,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "PHYSICS_MODEL_FORCE",
+        "title": "Relacionar forca e movimento",
+        "subjectCode": "PHYSICS",
+        "stage": "ENSINO_MEDIO",
+        "gradeFrom": 1,
+        "gradeTo": 3,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "INTERACOES",
+        "parentSkillCode": "PHYSICS_ENERGY",
+        "objective": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 0,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "KNOWLEDGE_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 110,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "PORTUGUESE_CONNECT_IDEAS",
+        "title": "Interpretar conectores e relacoes de sentido",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "COESAO",
+        "parentSkillCode": "PORTUGUESE_COHESION",
+        "objective": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 0,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "KNOWLEDGE_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 110,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+        "title": "Relacionar evidencia e conclusao",
+        "subjectCode": "SCIENCE",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "EVIDENCIA",
+        "parentSkillCode": "SCIENCE_EVIDENCE",
+        "objective": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 0,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "KNOWLEDGE_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 110,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "CHEMISTRY_ACID_BASE",
+        "title": "Interpretar acidez e basicidade",
+        "subjectCode": "CHEMISTRY",
+        "stage": "ENSINO_MEDIO",
+        "gradeFrom": 1,
+        "gradeTo": 3,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "SOLUCOES",
+        "parentSkillCode": "CHEMISTRY_MATTER",
+        "objective": "Interpretar pH como medida de acidez ou basicidade em uma solucao.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 1,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 1,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "HISTORY_COMPARE_CAUSES",
+        "title": "Comparar causas e consequencias historicas",
+        "subjectCode": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "CAUSALIDADE",
+        "parentSkillCode": "HISTORY_CAUSALITY",
+        "objective": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 1,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 1,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+        "title": "Mediar dialogo sobre conviccoes",
+        "subjectCode": "RELIGIOUS_EDUCATION",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "DIALOGO",
+        "parentSkillCode": "RELIGIOUS_DIALOGUE",
+        "objective": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 1,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 1
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+        "title": "Reconhecer sinais de phishing",
+        "subjectCode": "COMPUTING",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "SEGURANCA",
+        "parentSkillCode": "COMPUTING_SAFETY",
+        "objective": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 3,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 2,
+          "LOCK_IN": 0,
+          "REVIEW": 1
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "LOCK_IN"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 73,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "MATH_RATIO_UNIT_RATE",
+        "title": "Interpretar razao e taxa unitaria",
+        "subjectCode": "MATHEMATICS",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "ADAPTIVE_READY",
+        "sourceAuthoringStatus": "AUTHORED",
+        "domain": "RAZAO",
+        "parentSkillCode": "MATHEMATICS_PROPORTIONS",
+        "objective": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+        "lessonAvailable": true,
+        "lessonObjective": "Interpretar uma razao e calcular quanto corresponde a uma unidade.",
+        "hasWorkedExample": true,
+        "hasRemediation": true,
+        "questionCount": 8,
+        "purposeCounts": {
+          "PROBE": 2,
+          "PRACTICE": 2,
+          "TRANSFER": 1,
+          "LOCK_IN": 1,
+          "REVIEW": 2
+        },
+        "missingPurposes": [],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 3,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "TECH_VALIDATED",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "QUESTION_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 20,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "SCIENCE_PLAN_INVESTIGATION",
+        "title": "Planejar uma investigacao controlada",
+        "subjectCode": "SCIENCE",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "INVESTIGACAO",
+        "parentSkillCode": "SCIENCE_INVESTIGATION",
+        "objective": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 0,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "KNOWLEDGE_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 110,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "HISTORY_ORDER_EVENTS",
+        "title": "Ordenar acontecimentos no tempo",
+        "subjectCode": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "CRONOLOGIA",
+        "parentSkillCode": "HISTORY_TIME",
+        "objective": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 1,
+        "purposeCounts": {
+          "PROBE": 1,
+          "PRACTICE": 0,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PRACTICE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      },
+      {
+        "skillCode": "PORTUGUESE_INFER_FROM_CLUES",
+        "title": "Inferir informacao a partir de pistas textuais",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gradeFrom": 6,
+        "gradeTo": 9,
+        "sourceReadiness": "GRAPH_ONLY",
+        "sourceAuthoringStatus": "SCAFFOLD",
+        "domain": "LEITURA",
+        "parentSkillCode": "PORTUGUESE_READING",
+        "objective": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+        "lessonAvailable": false,
+        "lessonObjective": null,
+        "hasWorkedExample": false,
+        "hasRemediation": false,
+        "questionCount": 1,
+        "purposeCounts": {
+          "PROBE": 0,
+          "PRACTICE": 1,
+          "TRANSFER": 0,
+          "LOCK_IN": 0,
+          "REVIEW": 0
+        },
+        "missingPurposes": [
+          "PROBE",
+          "TRANSFER",
+          "LOCK_IN",
+          "REVIEW"
+        ],
+        "prerequisites": [],
+        "unresolvedPrerequisiteCodes": [],
+        "prerequisiteUnlockCount": 0,
+        "verifiedOfficialCodes": [],
+        "mappingStatus": "NO_VERIFIED_LINK",
+        "v4CoreContentStatus": "SCAFFOLD",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "publicationStatus": "NOT_PUBLISHED_BY_FACTORY",
+        "status": "CONTENT_GAP_REVIEW_REQUIRED"
+      }
+    ],
+    "canonicalExpansionCandidates": {
+      "source": "V8 clusters + proposals; proposals are not promoted mappings",
+      "selectionPolicy": "ROUND_ROBIN_SUBJECT_AND_STAGE_WITHIN_EVIDENCE_SCORE_BANDS",
+      "totalPendingCandidates": 738,
+      "deferredForCandidateCodeCollision": 481,
+      "nextBatch": [
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS",
+          "candidateCanonicalCode": "ARTE_POSSIBILIDADES_CRIATIVAS",
+          "title": "Possibilidades Criativas",
+          "subject": "ARTE",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF15AR22"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_HEALTH_LIFESTYLE",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_HEALTH_LIFESTYLE",
+          "candidateCanonicalCode": "EDUCACAO_FISICA_UNSPECIFIED_HEALTH_LIFESTYLE",
+          "title": "Health Lifestyle",
+          "subject": "EDUCACAO_FISICA",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF67EF10"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS",
+          "candidateCanonicalCode": "ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS",
+          "title": "Acolher Semelhancas",
+          "subject": "ENSINO_RELIGIOSO",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF01ER01"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO",
+          "candidateCanonicalCode": "LINGUA_PORTUGUESA_LETRAS_ALFABETO",
+          "title": "Letras Alfabeto",
+          "subject": "LINGUA_PORTUGUESA",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF01LP04"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS",
+          "candidateCanonicalCode": "MATEMATICA_LOCALIZACAO_PESSOAS",
+          "title": "Localizacao Pessoas",
+          "subject": "MATEMATICA",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF01MA11"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS",
+          "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS",
+          "candidateCanonicalCode": "CIENCIAS_HUMANAS_AVALIAR_IMPACTOS",
+          "title": "Avaliar Impactos",
+          "subject": "CIENCIAS_HUMANAS",
+          "stage": "ENSINO_MEDIO",
+          "officialCodes": [
+            "EM13CHS302"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS",
+          "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS",
+          "candidateCanonicalCode": "COMPUTACAO_CRITICAMENTE_EXPERIENCIAS",
+          "title": "Criticamente Experiencias",
+          "subject": "COMPUTACAO",
+          "stage": "ENSINO_MEDIO",
+          "officialCodes": [
+            "EM13CO23"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LP_ANALISAR_FENOMENO_VARIACAO",
+          "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LP_ANALISAR_FENOMENO_VARIACAO",
+          "candidateCanonicalCode": "LINGUA_PORTUGUESA_FENOMENO_VARIACAO",
+          "title": "Fenomeno Variacao",
+          "subject": "LINGUA_PORTUGUESA",
+          "stage": "ENSINO_MEDIO",
+          "officialCodes": [
+            "EM13LP17"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+          "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+          "candidateCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+          "title": "Text Language",
+          "subject": "LINGUAGENS",
+          "stage": "ENSINO_MEDIO",
+          "officialCodes": [
+            "EM13LGG103",
+            "EM13LGG104",
+            "EM13LGG201",
+            "EM13LGG301",
+            "EM13LGG704"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 80
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+          "candidateCanonicalCode": "COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+          "title": "Utilizar Diferentes",
+          "subject": "COMPUTACAO",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF03CO07"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_MAT_IDENTIFICAR_SITUACOES_VIDA",
+          "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_MAT_IDENTIFICAR_SITUACOES_VIDA",
+          "candidateCanonicalCode": "MATEMATICA_SITUACOES_VIDA",
+          "title": "Situacoes Vida",
+          "subject": "MATEMATICA",
+          "stage": "ENSINO_MEDIO",
+          "officialCodes": [
+            "EM13MAT106"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        },
+        {
+          "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_CARACTERISTICAS_FISICAS",
+          "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_CARACTERISTICAS_FISICAS",
+          "candidateCanonicalCode": "CIENCIAS_CARACTERISTICAS_FISICAS",
+          "title": "Caracteristicas Fisicas",
+          "subject": "CIENCIAS",
+          "stage": "ENSINO_FUNDAMENTAL",
+          "officialCodes": [
+            "EF01CI04"
+          ],
+          "status": "NEW_SKILL_PENDING_REVIEW",
+          "mappingPromoted": false,
+          "possibleCanonicalCodeCollision": false,
+          "priorityScore": 76
+        }
+      ]
+    }
+  },
+  "inventoryHash": "6a36322833193751afc9bde3ae5d35d977989841f9a702254ec4fb78133d940b"
+}

@@ -27,8 +27,9 @@ const authMock = vi.hoisted(() => ({
 
 const brandingMock = vi.hoisted(() => ({
   data: null as null | {
-    scope: 'GLOBAL' | 'ACCOUNT' | 'FALLBACK';
+    scope: 'GLOBAL' | 'ACCOUNT' | 'INSTITUTION' | 'FALLBACK';
     displayName: string | null;
+    documentTitle?: string | null;
     logoUrl: string | null;
     faviconUrl: string | null;
     loginBackgroundUrl?: string | null;
@@ -36,6 +37,7 @@ const brandingMock = vi.hoisted(() => ({
     secondaryColor: string;
   },
   isLoading: false,
+  isInitialBrandingLoading: false,
 }));
 
 vi.mock('../contexts/AuthContext', () => ({
@@ -50,6 +52,7 @@ vi.mock('../hooks/useBranding', () => ({
   useResolvedBranding: () => ({
     data: brandingMock.data,
     isLoading: brandingMock.isLoading,
+    isInitialBrandingLoading: brandingMock.isInitialBrandingLoading,
   }),
 }));
 
@@ -88,6 +91,7 @@ describe('Login', () => {
     authMock.signOut.mockResolvedValue(undefined);
     brandingMock.data = null;
     brandingMock.isLoading = false;
+    brandingMock.isInitialBrandingLoading = false;
   });
 
   afterEach(() => {
@@ -179,18 +183,47 @@ describe('Login', () => {
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
-  it('mantem o fundo neutro enquanto a identidade atual ainda esta sendo carregada', () => {
+  it('oculta o login inteiro e mostra a bolinha durante o carregamento inicial do branding', () => {
     brandingMock.isLoading = true;
+    brandingMock.isInitialBrandingLoading = true;
 
-    const { container } = renderLogin();
-    const loginShell = container.firstElementChild;
+    renderLogin();
 
-    expect(loginShell?.getAttribute('style')).toContain(
-      'background-image: none',
-    );
-    expect(loginShell?.getAttribute('style')).not.toContain(
-      '/media/ff2-optimized.webp',
-    );
+    expect(
+      screen.getByRole('status', { name: /carregando identidade visual/i }),
+    ).toBeTruthy();
+    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
+    expect(screen.queryByRole('button', { name: /Entrar no sistema/i })).toBeNull();
+  });
+
+  it('mantem o login oculto enquanto os assets do cache ainda estao carregando', () => {
+    brandingMock.data = {
+      scope: 'INSTITUTION',
+      displayName: 'Colégio Azul',
+      logoUrl: 'https://cdn.example.com/logo.png',
+      faviconUrl: null,
+      loginBackgroundUrl: 'https://cdn.example.com/background.png',
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    };
+    brandingMock.isInitialBrandingLoading = true;
+
+    renderLogin();
+
+    expect(
+      screen.getByRole('status', { name: /carregando identidade visual/i }),
+    ).toBeTruthy();
+    expect(screen.queryByLabelText(/E-mail institucional/i)).toBeNull();
+    expect(screen.queryByRole('img', { name: /Logo de Colégio Azul/i })).toBeNull();
+  });
+
+  it('continua permitindo login se a consulta inicial de branding falhar', () => {
+    brandingMock.isLoading = false;
+
+    renderLogin();
+
+    expect(screen.getByLabelText(/E-mail institucional/i)).toBeTruthy();
+    expect(screen.queryByRole('status', { name: /carregando identidade visual/i })).toBeNull();
   });
 
   it('atualiza favicon, titulo e cores dinamicamente', () => {
@@ -216,6 +249,23 @@ describe('Login', () => {
         'link[rel="icon"]',
       )?.href,
     ).toBe('https://cdn.example.com/favicon.png');
+  });
+
+  it('usa o nome da escola do subdomínio no título da aba', () => {
+    brandingMock.data = {
+      scope: 'INSTITUTION',
+      displayName: 'Portal Acadêmico',
+      documentTitle: 'Colégio Helita Vieira',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+
+    renderLogin();
+
+    expect(document.title).toBe('Colégio Helita Vieira');
+    expect(screen.getAllByText('Portal Acadêmico').length).toBeGreaterThan(0);
   });
 
   it('renderiza o formulario centralizado sem hero', () => {
@@ -431,7 +481,7 @@ describe('Login', () => {
     expect(screen.getByRole('alert').textContent).toContain(
       'E-mail ou senha incorretos.',
     );
-    expect(screen.queryByText(/subdomínio|escola/i)).toBeNull();
+    expect(screen.queryByText(/sua conta não possui|não é o subdomínio/i)).toBeNull();
     expect(screen.getByRole('button', { name: 'Trocar de usuário' })).toBeTruthy();
     expect(authMock.navigate).not.toHaveBeenCalledWith('/dashboard');
   });

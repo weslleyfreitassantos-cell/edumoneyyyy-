@@ -7,6 +7,7 @@ export const UNIFIED_USER_INVITE_TARGETS = [
   'STUDENT',
   'TEACHER',
   'GUARDIAN',
+  'PSYCHOLOGIST',
   'DIRECTOR',
   'SECRETARY',
 ] as const;
@@ -76,6 +77,15 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'guardianship',
       'acesso e senha, quando aplicavel',
     ],
+    isPlanned: false,
+  },
+  {
+    target: 'PSYCHOLOGIST',
+    label: getRoleDisplayLabel('PSYCHOLOGIST'),
+    description: 'Perfil profissional com CRP, vínculo escolar e acesso restrito ao módulo psicológico.',
+    rolePreview: 'PSYCHOLOGIST',
+    availabilityStatuses: ['available_now'],
+    futureRecords: ['profile', 'membership', 'professional registration', 'school link'],
     isPlanned: false,
   },
   {
@@ -161,7 +171,10 @@ export interface UnifiedUserInviteFormValues {
   cpf?: string;
   guardianStudentId?: string;
   relationship?: string;
+  crpRegistration?: string;
+  crpState?: string;
   currentRole?: string | null;
+  currentInstitutionRoles?: readonly string[];
 }
 
 export type UnifiedUserInviteField =
@@ -172,7 +185,9 @@ export type UnifiedUserInviteField =
   | 'birthDate'
   | 'cpf'
   | 'guardianStudentId'
-  | 'relationship';
+  | 'relationship'
+  | 'crpRegistration'
+  | 'crpState';
 
 export type UnifiedUserInviteFieldErrors =
   Partial<Record<UnifiedUserInviteField, string>>;
@@ -191,6 +206,20 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const cpfPattern =
   /^(?:\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
+const crpRegistrationPattern = /^[0-9./-]{2,20}$/;
+const brazilianStateCodes = new Set([
+  'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS',
+  'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC',
+  'SP', 'SE', 'TO',
+]);
+
+export function isValidCrpRegistration(value: string): boolean {
+  return crpRegistrationPattern.test(value.trim());
+}
+
+export function isValidBrazilianState(value: string): boolean {
+  return brazilianStateCodes.has(value.trim().toUpperCase());
+}
 
 function normalizeName(value: string): string {
   return value.trim().replace(/\s+/g, ' ');
@@ -214,26 +243,36 @@ export function isUnifiedInviteRole(
 
 export function getAllowedInviteTargets(
   currentRole: string | null | undefined,
+  currentInstitutionRoles: readonly string[] = [],
 ): UnifiedUserInviteRole[] {
   const inviteTargets = currentRole === 'ADMIN'
     ? ['DIRECTOR']
     : currentRole === 'DIRECTOR'
-      ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN']
+      ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
       : currentRole === 'SECRETARY'
-        ? ['TEACHER', 'STUDENT', 'GUARDIAN']
+        ? ['TEACHER', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']
         : [];
 
-  return getManageableSchoolUserRoles(currentRole).filter(
+  const allowedTargets = getManageableSchoolUserRoles(currentRole).filter(
     (target): target is UnifiedUserInviteRole =>
       inviteTargets.includes(target as (typeof inviteTargets)[number]),
   );
+
+  const hasSchoolStaffRole = currentRole === 'DIRECTOR'
+    || currentRole === 'SECRETARY'
+    || currentInstitutionRoles.some((role) => role === 'DIRECTOR' || role === 'SECRETARY');
+  if (hasSchoolStaffRole && !allowedTargets.includes('PSYCHOLOGIST')) {
+    allowedTargets.push('PSYCHOLOGIST');
+  }
+  return allowedTargets;
 }
 
 export function canInviteTarget(
   currentRole: string | null | undefined,
   target: UnifiedUserInviteRole,
+  currentInstitutionRoles: readonly string[] = [],
 ): boolean {
-  return getAllowedInviteTargets(currentRole).includes(
+  return getAllowedInviteTargets(currentRole, currentInstitutionRoles).includes(
     target,
   );
 }
@@ -256,6 +295,8 @@ export function buildUnifiedUserInvitePayload(
   const birthDate = normalizeOptional(
     input.birthDate,
   );
+  const crpRegistration = normalizeOptional(input.crpRegistration);
+  const crpState = normalizeOptional(input.crpState)?.toUpperCase();
 
   if (!institutionId) {
     fieldErrors.institutionId =
@@ -266,7 +307,7 @@ export function buildUnifiedUserInvitePayload(
     fieldErrors.target =
       'Este papel nao pode receber acesso.';
   } else if (
-    !canInviteTarget(input.currentRole, input.target)
+    !canInviteTarget(input.currentRole, input.target, input.currentInstitutionRoles)
   ) {
     fieldErrors.target =
       'Seu papel atual nao permite convidar este tipo de usuario.';
@@ -303,6 +344,15 @@ export function buildUnifiedUserInvitePayload(
     if (!relationship || relationship.length < 2) {
       fieldErrors.relationship =
         'Informe o relacionamento.';
+    }
+  }
+
+  if (input.target === 'PSYCHOLOGIST') {
+    if (!crpRegistration || !isValidCrpRegistration(crpRegistration)) {
+      fieldErrors.crpRegistration = 'Informe um CRP válido.';
+    }
+    if (!crpState || !isValidBrazilianState(crpState)) {
+      fieldErrors.crpState = 'Informe uma UF brasileira válida.';
     }
   }
 

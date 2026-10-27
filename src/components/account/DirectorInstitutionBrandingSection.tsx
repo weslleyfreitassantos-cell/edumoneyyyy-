@@ -133,14 +133,6 @@ export function DirectorInstitutionBrandingSection({
         currentPublicSlug: null,
       });
 
-      await updateInstitutionBranding({
-        institutionId,
-        profileId: profile.id,
-        logo_url: null,
-        primary_color: primaryColor,
-        secondary_color: secondaryColor,
-      });
-
       setSavedLogoUrl(null);
       setSelectedFile(null);
       setPreviewUrl(null);

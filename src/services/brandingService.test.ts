@@ -198,6 +198,7 @@ describe('brandingService', () => {
     );
     expect(result).toEqual({
       scope: 'INSTITUTION',
+      documentTitle: 'Escola Luz',
       displayName: 'Luz Colegio',
       logoUrl: 'https://cdn.example.com/escola-luz/logo.png',
       faviconUrl:
@@ -321,7 +322,7 @@ describe('brandingService', () => {
     expect(supabase.storage.from).not.toHaveBeenCalled();
   });
 
-  it('retorna fallback neutro quando a RPC publica falha', async () => {
+  it('propaga a falha da RPC publica para preservar o branding anterior', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: null,
       error: new Error('rpc unavailable'),
@@ -329,11 +330,7 @@ describe('brandingService', () => {
 
     await expect(
       brandingService.resolveForHostname('desconhecido.com'),
-    ).resolves.toMatchObject({
-      scope: 'FALLBACK',
-      logoUrl: null,
-      primaryColor: '#005bbf',
-    });
+    ).rejects.toThrow('rpc unavailable');
   });
 
   it('normaliza e solicita dominio como PENDING', async () => {

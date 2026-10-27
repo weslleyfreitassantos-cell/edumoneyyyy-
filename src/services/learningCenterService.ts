@@ -13,6 +13,7 @@ export const SUPPORTED_ENEM_CONTENT_REVISIONS = new Set([
 export interface LearningSubject {
   id: string;
   name: string;
+  code?: string | null;
 }
 
 export interface LearningUnit {
@@ -678,7 +679,7 @@ export interface LearningTeacherStudent {
   class_id: string;
   class_name: string;
   open_error_count: number;
-  average_mastery: number;
+  average_mastery: number | null;
   active_session_status: GuidedSession['status'] | null;
   target_skill_title: string | null;
 }
@@ -725,6 +726,16 @@ export interface LearningTeacherStudentDetail {
     total_points: number;
     completed_at: string;
   }>;
+}
+
+export interface LearningTeacherGuidedAttempt {
+  id: string;
+  source: 'GUIDED';
+  activity_id: null;
+  activity_title: string;
+  score: number;
+  total_points: number;
+  completed_at: string;
 }
 
 export interface LearningErrorReview {
@@ -864,6 +875,26 @@ function isMissingRpcError(error: { message?: string | null; code?: string | nul
     || /could not find the function|function .* does not exist/i.test(message);
 }
 
+async function startEnemSimulationAttempt(input: {
+  institutionId: string;
+  studentId: string;
+  simulationId: string;
+  languageChoice?: 'ENGLISH' | 'SPANISH';
+}): Promise<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }> {
+  const params = {
+    p_institution_id: input.institutionId,
+    p_student_id: input.studentId,
+    p_simulation_id: input.simulationId,
+    p_language_choice: input.languageChoice ?? null,
+  };
+  try {
+    return await read(supabase.rpc('start_enem_simulation_attempt_v3', params));
+  } catch (error) {
+    if (!isMissingRpcError(error as { message?: string | null; code?: string | null })) throw error;
+    return read(supabase.rpc('start_enem_simulation_attempt_v2', params));
+  }
+}
+
 function isLegacyGuidedV4Miss(error: { message?: string | null } | null | undefined): boolean {
   return /LEARNING_GUIDED_STEP_NOT_FOUND/i.test(error?.message ?? '');
 }
@@ -899,7 +930,7 @@ export const learningCenterService = {
     read<LearningSubject[]>(
       supabase
         .from('subjects')
-        .select('id,name')
+        .select('id,name,code')
         .eq('institution_id', institutionId)
         .eq('active', true)
         .order('name'),
@@ -921,12 +952,25 @@ export const learningCenterService = {
       institutionId,
       profileId,
     );
+    const activeAcademicYearIds = await uniqueIds(
+      supabase
+        .from('academic_years')
+        .select('id')
+        .eq('institution_id', institutionId)
+        .eq('active', true),
+      'id',
+    );
+
+    if (!activeAcademicYearIds.length) return [];
+
     const classIds = await uniqueIds(
       supabase
         .from('enrollments')
         .select('class_id')
         .eq('student_id', student.id)
-        .eq('active', true),
+        .eq('active', true)
+        .ilike('status', 'active')
+        .in('academic_year_id', activeAcademicYearIds),
       'class_id',
     );
 
@@ -946,7 +990,7 @@ export const learningCenterService = {
     return read<LearningSubject[]>(
       supabase
         .from('subjects')
-        .select('id,name')
+        .select('id,name,code')
         .eq('institution_id', institutionId)
         .eq('active', true)
         .in('id', subjectIds)
@@ -1592,13 +1636,7 @@ export const learningCenterService = {
       p_simulation_id: input.simulationId,
     })),
 
-  startEnemSimulation: (input: { institutionId: string; studentId: string; simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
-    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }>(supabase.rpc('start_enem_simulation_attempt_v3', {
-      p_institution_id: input.institutionId,
-      p_student_id: input.studentId,
-      p_simulation_id: input.simulationId,
-      p_language_choice: input.languageChoice ?? null,
-    })),
+  startEnemSimulation: startEnemSimulationAttempt,
 
   getEnemSimulationAttempt: (attemptId: string) =>
     read<EnemSimulationAttempt>(supabase.rpc('get_enem_simulation_attempt_v2', {
@@ -1728,6 +1766,16 @@ export const learningCenterService = {
   teacherStudentDetail: (institutionId: string, studentId: string, classId: string, subjectId: string) =>
     read<LearningTeacherStudentDetail>(
       supabase.rpc('get_teacher_learning_student_detail', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+        p_class_id: classId,
+        p_subject_id: subjectId,
+      }),
+    ),
+
+  teacherGuidedAttempts: (institutionId: string, studentId: string, classId: string, subjectId: string) =>
+    read<LearningTeacherGuidedAttempt[]>(
+      supabase.rpc('get_teacher_guided_learning_attempts', {
         p_institution_id: institutionId,
         p_student_id: studentId,
         p_class_id: classId,

@@ -39,7 +39,9 @@ import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader'
 import LoadingIndicator from './components/LoadingIndicator';
 import InitialLoadingGate from './components/InitialLoadingGate';
 import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
+import AppVersionRefreshGuard from './components/AppVersionRefreshGuard';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { PsychologyRouteGate } from './components/PsychologyRouteGate';
 import { Login } from './pages/Login';
 
 import {
@@ -113,6 +115,7 @@ const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
+const EnglishLearningPage = lazy(() => import('./components/learning/EnglishLearningPage'));
 const StudentSubjectPage = lazy(() => import('./components/learning/StudentSubjectPage'));
 const WritingModulePage = lazy(() => import('./components/learning/WritingModulePage'));
 const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
@@ -122,6 +125,7 @@ const PedagogicalCenterMapPage = lazy(() => import('./components/learning/Pedago
 const PedagogicalCenterJourneysPage = lazy(() => import('./components/learning/PedagogicalCenterJourneysPage'));
 const PedagogicalCenterContentPage = lazy(() => import('./components/learning/PedagogicalCenterContentPage'));
 const PedagogicalReviewQueuePage = lazy(() => import('./components/learning/PedagogicalReviewQueuePage'));
+const TecEnglishReviewQueuePage = lazy(() => import('./components/learning/TecEnglishReviewQueuePage'));
 const TeacherSimulationWorkflowPage = lazy(() => import('./components/learning/TeacherSimulationWorkflowPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
@@ -129,6 +133,9 @@ const LessonPage = lazy(() => import('./components/learning/LessonPage'));
 const SimulationPage = lazy(() => import('./components/learning/SimulationPage'));
 const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
 const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
+const InclusiveEducationPage = lazy(() => import('./components/inclusive/InclusiveEducationPage'));
+const InventoryPage = lazy(() => import('./components/inventory/InventoryPage'));
+const PsychologyPage = lazy(() => import('./pages/Psychology/PsychologyPage'));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -373,6 +380,9 @@ function renderDashboard(
 
     case 'parent':
       return <ParentDashboard />;
+
+    case 'psychologist':
+      return <Navigate to="/psychology/agenda" replace />;
 
     default: {
       const exhaustiveRole: never =
@@ -789,6 +799,7 @@ function AppRoutes() {
           }
         />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/english" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/writing" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><WritingModulePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
@@ -802,10 +813,16 @@ function AppRoutes() {
         <Route path="/teacher/pedagogical-center/journeys" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterJourneysPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/content" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterContentPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/reviews" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><PedagogicalReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/tec-english-review" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><TecEnglishReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/simulations" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherSimulationWorkflowPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/students/:studentId" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherStudentDetailPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inventory" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InventoryPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/psychology/*" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']}><AuthenticatedRouteContent><PsychologyRouteGate><PsychologyPage /></PsychologyRouteGate></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"
@@ -944,6 +961,7 @@ function App() {
       <QueryClientProvider
         client={queryClient}
       >
+        <AppVersionRefreshGuard />
         <RouterProvider router={appRouter} />
       </QueryClientProvider>
     </AppErrorBoundary>

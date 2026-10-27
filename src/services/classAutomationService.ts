@@ -1,6 +1,12 @@
 import { supabase } from '../lib/supabaseClient';
 import { normalizeAcademicLevel } from '../lib/academic/academicLevels';
+import {
+  buildAvailableClassBatchNames,
+  buildClassBatchNames,
+} from '../lib/academic/classNaming';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
+
+export { buildClassBatchNames } from '../lib/academic/classNaming';
 
 export interface ClassBatchInput {
   institutionId: string;
@@ -76,6 +82,7 @@ export interface EducationPresetClassDefinition {
 
 export function buildEducationPresetClassDefinitions(
   classCounts: Record<string, number>,
+  shift?: string | null,
 ): EducationPresetClassDefinition[] {
   const definitions = EDUCATION_PRESET_GRADES.map((grade) => {
     const count = classCounts[grade.key] ?? grade.defaultClassCount;
@@ -87,7 +94,7 @@ export function buildEducationPresetClassDefinitions(
     return {
       grade,
       count,
-      names: count > 0 ? buildClassBatchNames(grade.baseName, count) : [],
+      names: count > 0 ? buildClassBatchNames(grade.baseName, count, shift) : [],
     };
   });
 
@@ -127,53 +134,12 @@ function normalizeRelation<T>(relation: T | T[] | null): T | null {
   return Array.isArray(relation) ? relation[0] ?? null : relation;
 }
 
-function normalizeName(value: string): string {
-  return value.trim().toLocaleLowerCase('pt-BR');
-}
-
-function classLetter(index: number): string {
-  let value = index + 1;
-  let result = '';
-
-  while (value > 0) {
-    const remainder = (value - 1) % 26;
-    result = String.fromCharCode(65 + remainder) + result;
-    value = Math.floor((value - 1) / 26);
-  }
-
-  return result;
-}
-
-export function buildClassBatchNames(baseName: string, count: number): string[] {
-  const normalizedBaseName = baseName.trim();
-
-  if (!normalizedBaseName) {
-    throw new Error('Informe o nome-base das turmas.');
-  }
-
-  if (!Number.isInteger(count) || count < 1 || count > 26) {
-    throw new Error('A quantidade de turmas deve estar entre 1 e 26.');
-  }
-
-  return Array.from({ length: count }, (_, index) => {
-    const letter = classLetter(index);
-
-    if (normalizedBaseName.includes('{letra}')) {
-      return normalizedBaseName.replaceAll('{letra}', letter);
-    }
-
-    return count === 1
-      ? normalizedBaseName
-      : `${normalizedBaseName} ${letter}`;
-  });
-}
-
 function validateInput(input: ClassBatchInput): void {
   if (!input.institutionId || !input.academicYearId) {
     throw new Error('Instituição e ano letivo são obrigatórios.');
   }
 
-  buildClassBatchNames(input.baseName, input.count);
+  buildClassBatchNames(input.baseName, input.count, input.shift);
 
   if (!normalizeAcademicLevel(input.gradeLevel)) {
     throw new Error('Selecione uma série ou nível padronizado.');
@@ -234,9 +200,6 @@ export const classAutomationService = {
   async createBatch(input: ClassBatchInput): Promise<ClassBatchResult> {
     validateInput(input);
 
-    const names = buildClassBatchNames(input.baseName, input.count);
-    const normalizedNames = new Set(names.map(normalizeName));
-
     const { data: academicYear, error: academicYearError } = await supabase
       .from('academic_years')
       .select('id')
@@ -253,26 +216,32 @@ export const classAutomationService = {
         input.shift,
       );
 
-    const { data: existingClasses, error: classesError } = await supabase
-      .from('classes')
-      .select('name')
-      .eq('institution_id', input.institutionId)
-      .eq('academic_year_id', input.academicYearId);
-
-    if (classesError) throw classesError;
-
-    const duplicateName = (existingClasses ?? []).find((classRecord) =>
-      normalizedNames.has(normalizeName(String(classRecord.name))),
-    );
-
-    if (duplicateName) {
-      throw new Error(`A turma ${duplicateName.name} já existe neste ano letivo.`);
-    }
-
     const normalizedGradeLevel = normalizeAcademicLevel(input.gradeLevel);
     if (!normalizedGradeLevel) {
       throw new Error('Selecione uma série ou nível padronizado.');
     }
+
+    let existingClassesQuery = supabase
+      .from('classes')
+      .select('name')
+      .eq('institution_id', input.institutionId)
+      .eq('academic_year_id', input.academicYearId)
+      .eq('grade_level', normalizedGradeLevel);
+
+    existingClassesQuery = normalizedShift
+      ? existingClassesQuery.eq('shift', normalizedShift)
+      : existingClassesQuery.is('shift', null);
+
+    const { data: existingClasses, error: classesError } = await existingClassesQuery;
+
+    if (classesError) throw classesError;
+
+    const names = buildAvailableClassBatchNames(
+      input.baseName,
+      input.count,
+      (existingClasses ?? []).map((classRecord) => String(classRecord.name)),
+      normalizedShift,
+    );
 
     let templateItems: TemplateItemRow[] = [];
 
@@ -319,7 +288,13 @@ export const classAutomationService = {
       )
       .select('id, name');
 
-    if (createError) throw createError;
+    if (createError) {
+      if (createError.code === '23505') {
+        throw new Error('Uma turma com esta série, turno e letra foi criada ao mesmo tempo. Atualize a lista e tente novamente.');
+      }
+
+      throw createError;
+    }
 
     const classRows = (createdClasses ?? []) as { id: string; name: string }[];
     const result: ClassBatchResult = {
@@ -404,7 +379,10 @@ export const classAutomationService = {
   },
 
   async createEducationPreset(input: EducationPresetInput): Promise<ClassBatchResult> {
-    const definitions = buildEducationPresetClassDefinitions(input.classCounts);
+    const definitions = buildEducationPresetClassDefinitions(
+      input.classCounts,
+      input.shift,
+    );
     const result: ClassBatchResult = {
       createdClassIds: [],
       createdClassNames: [],

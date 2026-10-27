@@ -472,4 +472,71 @@ html.dark .login-card input::placeholder {
   .report-card-printable article {
     break-inside: avoid !important;
   }
+
+  .printable-material,
+  .printable-material *,
+  .inclusive-printable,
+  .inclusive-printable * {
+    visibility: visible !important;
+    background: #fff !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+
+  .printable-material,
+  .inclusive-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 1.5rem !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .printable-material .print-hidden,
+  .inclusive-printable .print-hidden {
+    display: none !important;
+  }
+
+  .printable-material .print-section {
+    break-inside: avoid !important;
+  }
+}
+
+/* Inclusive documents opt into a scoped print target so the application shell
+   cannot hide the form before the browser builds the PDF. */
+@media print {
+  body[data-print-target="inclusive"] * {
+    visibility: hidden !important;
+  }
+
+  body[data-print-target="inclusive"] .inclusive-printable,
+  body[data-print-target="inclusive"] .inclusive-printable * {
+    visibility: visible !important;
+  }
+
+  body[data-print-target="inclusive"] .inclusive-printable {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #111827 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body[data-print-target="inclusive"] .inclusive-printable .print-hidden {
+    display: none !important;
+  }
 }

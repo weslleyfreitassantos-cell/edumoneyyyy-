@@ -95,15 +95,22 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     }
   }, [profile, navigate, showSubdomainMismatch]);
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    if (brandingQuery.isInitialBrandingLoading) {
+      return;
+    }
+
+    return applyDocumentBranding(branding);
+  }, [
+    brandingQuery.data,
+    brandingQuery.isInitialBrandingLoading,
+    brandingQuery.isLoading,
+    branding.documentTitle,
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -139,10 +146,26 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
         Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+        © 2026 {branding.displayName ?? 'Tec Escola'}. Todos os direitos reservados.
       </p>
     </div>
   );
+
+  if (brandingQuery.isInitialBrandingLoading) {
+    return (
+      <main
+        className="grid min-h-dvh w-full place-items-center bg-[#eef3fc] dark:bg-slate-950"
+        aria-busy="true"
+      >
+        <div role="status" aria-label="Carregando identidade visual">
+          <Loader2
+            className="h-8 w-8 animate-spin text-[#005bbf]"
+            aria-hidden="true"
+          />
+        </div>
+      </main>
+    );
+  }
 
   return (
     <AuthShell

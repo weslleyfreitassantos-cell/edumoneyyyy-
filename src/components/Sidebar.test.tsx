@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import {
   MemoryRouter,
@@ -19,10 +20,15 @@ import {
 
 import type { Profile } from '../contexts/AuthContext';
 import type { User } from '../types';
+import { usePsychologyModuleStatus, type PsychologyModuleSnapshot } from '../hooks/usePsychologyModuleStatus';
 import Sidebar, {
   getSidebarAdminModules,
   getSidebarNavigationItems,
 } from './Sidebar';
+
+vi.mock('../hooks/usePsychologyModuleStatus', () => ({
+  usePsychologyModuleStatus: vi.fn(),
+}));
 
 const baseProfile: Profile = {
   id: 'user-1',
@@ -56,18 +62,25 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
+  currentInstitutionRoles,
+  currentInstitutionId = 'institution-1',
   currentInstitutionPlan,
   isDesktopHidden = false,
   isMobileOpen = false,
+  psychologyStatus = { state: 'enabled', canManage: true },
 }: {
   route?: string;
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
+  currentInstitutionRoles?: readonly string[];
+  currentInstitutionId?: string | null;
   currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
+  psychologyStatus?: PsychologyModuleSnapshot;
 } = {}) {
+  vi.mocked(usePsychologyModuleStatus).mockReturnValue(psychologyStatus);
   const onCloseMobile = vi.fn();
   const onLogout = vi.fn();
 
@@ -80,6 +93,8 @@ function renderSidebar({
         currentInstitutionRole={
           currentInstitutionRole
         }
+        currentInstitutionRoles={currentInstitutionRoles}
+        currentInstitutionId={currentInstitutionId}
         currentInstitutionPlan={
           currentInstitutionPlan
         }
@@ -118,6 +133,160 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
+  it('mantém a configuração para a direção quando o módulo está desligado e oculta rotas clínicas', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      psychologyStatus: { state: 'disabled', canManage: true },
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+
+    expect(screen.getByRole('link', { name: 'Configuração' })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Agenda' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Disponibilidade' })).toBeNull();
+  });
+
+  it('oculta Psicologia de perfis clínicos enquanto a instituição está desligada', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Estudante' },
+      currentInstitutionRole: 'STUDENT',
+      psychologyStatus: { state: 'disabled', canManage: false },
+    });
+
+    expect(screen.queryByRole('region', { name: 'Apoio psicológico' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Agendar consulta' })).toBeNull();
+  });
+
+  it('remove Autorizações da navegação do estudante e preserva o acesso do responsável', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Estudante' },
+      currentInstitutionRole: 'STUDENT',
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+    expect(screen.queryByRole('link', { name: 'Autorizações' })).toBeNull();
+    cleanup();
+
+    renderSidebar({
+      profile: { ...baseProfile, role: 'GUARDIAN' },
+      currentUser: { ...baseUser, role: 'parent', subtitle: 'Responsável' },
+      currentInstitutionRole: 'GUARDIAN',
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+    expect(screen.getByRole('link', { name: 'Autorizações' })).toBeTruthy();
+  });
+
+  it('permite somente configuração à secretaria com autorização explícita enquanto desligado', () => {
+    renderSidebar({
+      profile: { ...baseProfile, role: 'SECRETARY' },
+      currentUser: { ...baseUser, role: 'secretary', subtitle: 'Secretaria' },
+      currentInstitutionRole: 'SECRETARY',
+      psychologyStatus: { state: 'disabled', canManage: true },
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Apoio psicológico' }));
+
+    expect(screen.getByRole('link', { name: 'Configuração' })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Agenda' })).toBeNull();
+  });
+
+  it('mostra o painel inclusivo somente com instituição e papel institucional autorizado', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.getByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeTruthy();
+    const inclusiveGroup = screen.getByRole('button', {
+      name: 'Educação Inclusiva',
+    });
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.getByRole('link', { name: 'Painel Inclusivo' }).getAttribute('href'),
+    ).toBe('/inclusive-education');
+    const inclusiveLinks = [
+      'Painel Inclusivo',
+      'PEI dos Alunos',
+      'AEE / PAEE',
+      'Biblioteca de Atividades',
+      'Exercícios Interativos',
+      'Materiais para Download',
+      'Evolução Pedagógica',
+      'Vídeos didáticos',
+    ].map((label) => screen.getByRole('link', { name: label }));
+    expect(
+      new Set(
+        inclusiveLinks.map((link) => link.querySelector('svg')?.outerHTML),
+      ).size,
+    ).toBe(inclusiveLinks.length);
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionId: null,
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      currentUser: { ...baseUser, role: 'student' },
+      currentInstitutionRole: 'STUDENT',
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+  });
+
+  it('oculta Educação Inclusiva para ADMIN e SUPER_ADMIN', () => {
+    renderSidebar();
+
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      profile: {
+        ...baseProfile,
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentUser: {
+        ...baseUser,
+        role: 'super_admin',
+        subtitle: 'Super Admin',
+      },
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+  });
+
   it('renderiza rotas reais do ADMIN sem expor a visao geral escolar', () => {
     renderSidebar();
 
@@ -173,6 +342,9 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^secretaria$/i }),
     ).toBeTruthy();
     expect(
+      screen.getByRole('link', { name: /^psicólogos$/i }),
+    ).toBeTruthy();
+    expect(
       screen.queryByRole('link', { name: /^direção$/i }),
     ).toBeNull();
   });
@@ -191,8 +363,33 @@ describe('Sidebar', () => {
       screen.queryByRole('link', { name: /^secretaria$/i }),
     ).toBeNull();
     expect(
+      screen.queryByRole('link', { name: /^psicólogos$/i }),
+    ).toBeNull();
+    expect(
       screen.queryByRole('button', { name: /comunica..o e recursos/i }),
     ).toBeNull();
+  });
+
+  it('mostra Psicólogos para ADMIN/SUPER_ADMIN somente quando há vínculo ativo de Diretor ou Secretaria', () => {
+    renderSidebar({
+      profile: { ...baseProfile, platform_role: 'SUPER_ADMIN' },
+      currentUser: { ...baseUser, role: 'super_admin', subtitle: 'Super Admin' },
+      currentInstitutionRole: 'ADMIN',
+      currentInstitutionRoles: ['ADMIN', 'DIRECTOR'],
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: /pessoas/i }));
+    expect(screen.getByRole('link', { name: /^psicólogos$/i })).toBeTruthy();
+
+    cleanup();
+    renderSidebar({
+      profile: { ...baseProfile, platform_role: 'SUPER_ADMIN' },
+      currentUser: { ...baseUser, role: 'super_admin', subtitle: 'Super Admin' },
+      currentInstitutionRole: 'ADMIN',
+      currentInstitutionRoles: ['ADMIN'],
+    });
+    fireEvent.click(screen.getByRole('button', { name: /pessoas/i }));
+    expect(screen.queryByRole('link', { name: /^psicólogos$/i })).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -307,11 +504,13 @@ describe('Sidebar', () => {
     const communicationGroup = screen.getByRole('button', {
       name: /comunica..o e recursos/i,
     });
+    const communicationSection = communicationGroup.closest('section');
 
     expect(communicationGroup.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('link', { name: 'TV Escola' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'E-mail' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'Câmeras ao vivo' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Almoxarifado' })).toBeNull();
     expect(labels).toContain('Visão geral');
     expect(labels).not.toContain('Administração');
 
@@ -323,6 +522,17 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('href'),
     ).toBe('/email');
     expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
+    const inventoryLinks = screen.getAllByRole('link', { name: 'Almoxarifado' });
+    expect(inventoryLinks).toHaveLength(1);
+    expect(inventoryLinks[0].getAttribute('href')).toBe('/inventory');
+
+    const communicationItems = Array.from(
+      communicationSection?.querySelectorAll('a') ?? [],
+    ).map((link) => link.textContent?.trim());
+    expect(communicationItems.indexOf('Almoxarifado')).toBeGreaterThan(
+      communicationItems.indexOf('E-mail'),
+    );
+    expect(communicationItems.at(-1)).toBe('Almoxarifado');
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
@@ -410,6 +620,28 @@ describe('Sidebar', () => {
     expect(
       screen.queryByRole('link', { name: /^Administração$/i }),
     ).toBeNull();
+  });
+
+  it('marca Almoxarifado como ativo no grupo de recursos e fecha o menu mobile ao navegar', () => {
+    const { onCloseMobile } = renderSidebar({
+      route: '/inventory',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      isMobileOpen: true,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
+
+    const inventoryLink = screen.getByRole('link', { name: 'Almoxarifado' });
+    expect(inventoryLink.getAttribute('href')).toBe('/inventory');
+    expect(inventoryLink.getAttribute('aria-current')).toBe('page');
+    fireEvent.click(inventoryLink);
+    expect(onCloseMobile).toHaveBeenCalledOnce();
   });
 
   it('mostra os modulos institucionais para SECRETARY', () => {
@@ -620,6 +852,71 @@ describe('Sidebar', () => {
         name: /expandir sidebar/i,
       }),
     ).toBeNull();
+  });
+
+  it('mantém Dashboard separado e abre só o grupo do estudante correspondente à rota', async () => {
+    renderSidebar({
+      route: '/student/attendance',
+      profile: { ...baseProfile, role: 'STUDENT' },
+      currentUser: { ...baseUser, role: 'student', subtitle: 'Aluno' },
+      currentInstitutionRole: 'STUDENT',
+    });
+
+    const dashboard = screen.getByRole('link', { name: /dashboard/i });
+    expect(dashboard.getAttribute('href')).toBe('/dashboard');
+    expect(dashboard.getAttribute('aria-current')).toBeNull();
+
+    const schoolLife = screen.getByRole('button', { name: /vida escolar/i });
+    const learning = screen.getByRole('button', { name: /aprendizagem/i });
+    await waitFor(() => expect(schoolLife.getAttribute('aria-expanded')).toBe('true'));
+    expect(learning.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /frequência/i }).getAttribute('aria-current')).toBe('page');
+
+    fireEvent.click(learning);
+    expect(learning.getAttribute('aria-expanded')).toBe('true');
+    expect(schoolLife.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /central de estudos/i }).getAttribute('href')).toBe('/student/study');
+    expect(screen.queryByRole('link', { name: /tec inglês/i })).toBeNull();
+  });
+
+  it('organiza a rotina docente, mantém o Almoxarifado em Comunicação e abre o grupo da rota', async () => {
+    renderSidebar({
+      route: '/dashboard/grades',
+      profile: { ...baseProfile, role: 'TEACHER' },
+      currentUser: { ...baseUser, role: 'teacher', subtitle: 'Professor' },
+      currentInstitutionRole: 'TEACHER',
+    });
+
+    const routine = screen.getByRole('button', { name: /rotina docente/i });
+    const learning = screen.getByRole('button', { name: /aprendizagem e recursos/i });
+    const communication = screen.getByRole('button', { name: /comunicação e recursos/i });
+    await waitFor(() => expect(routine.getAttribute('aria-expanded')).toBe('true'));
+    expect(screen.getByRole('link', { name: /grade de horário/i })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /avaliações e notas/i }).getAttribute('aria-current')).toBe('page');
+
+    fireEvent.click(learning);
+    expect(learning.getAttribute('aria-expanded')).toBe('true');
+    expect(routine.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /desempenho/i })).toBeTruthy();
+
+    fireEvent.click(communication);
+    expect(communication.getAttribute('aria-expanded')).toBe('true');
+    expect(learning.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.getByRole('link', { name: /almoxarifado/i }).getAttribute('href')).toBe('/inventory');
+  });
+
+  it('mantém o acompanhamento do responsável agrupado e o Dashboard sempre acessível', async () => {
+    renderSidebar({
+      route: '/guardian/grades',
+      profile: { ...baseProfile, role: 'GUARDIAN' },
+      currentUser: { ...baseUser, role: 'parent', subtitle: 'Responsável' },
+      currentInstitutionRole: 'GUARDIAN',
+    });
+
+    expect(screen.getByRole('link', { name: /dashboard/i }).getAttribute('href')).toBe('/dashboard');
+    const group = screen.getByRole('button', { name: /acompanhamento escolar/i });
+    await waitFor(() => expect(group.getAttribute('aria-expanded')).toBe('true'));
+    expect(screen.getByRole('link', { name: /notas dos dependentes/i }).getAttribute('aria-current')).toBe('page');
   });
 
   it('chama logout real pelo rodape', () => {
@@ -909,5 +1206,38 @@ describe('sidebar navigation helpers', () => {
       expect(items.map((item) => item.id)).not.toContain('terminals');
       expect(items.map((item) => item.id)).not.toContain('email');
     }
+  });
+
+  it('libera Almoxarifado somente para perfis operacionais com vínculo institucional', () => {
+    for (const role of ['DIRECTOR', 'SECRETARY', 'TEACHER'] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role },
+        currentInstitutionRole: role,
+        currentInstitutionId: 'institution-1',
+        currentUserRole: role.toLowerCase() as User['role'],
+        pathname: '/dashboard',
+      });
+      expect(items.map((item) => item.id)).toContain('inventory');
+    }
+
+    for (const role of ['ADMIN', 'STUDENT', 'GUARDIAN'] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role },
+        currentInstitutionRole: role,
+        currentInstitutionId: 'institution-1',
+        currentUserRole: role === 'GUARDIAN' ? 'parent' : role.toLowerCase() as User['role'],
+        pathname: '/dashboard',
+      });
+      expect(items.map((item) => item.id)).not.toContain('inventory');
+    }
+
+    const withoutMembership = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionId: null,
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+    });
+    expect(withoutMembership.map((item) => item.id)).not.toContain('inventory');
   });
 });

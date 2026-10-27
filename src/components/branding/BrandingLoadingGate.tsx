@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { LoaderCircle } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 import { useResolvedBranding } from '../../hooks/useBranding';
 
@@ -9,8 +10,19 @@ export default function BrandingLoadingGate({
   children: ReactNode;
 }) {
   const brandingQuery = useResolvedBranding();
+  const location = useLocation();
+  const isPublicAuthRoute = [
+    '/login',
+    '/forgot-password',
+    '/reset-password',
+    '/set-password',
+  ].some(
+    (route) =>
+      location.pathname === route ||
+      location.pathname.startsWith(`${route}/`),
+  );
 
-  if (brandingQuery.isLoading) {
+  if (brandingQuery.isInitialBrandingLoading && !isPublicAuthRoute) {
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <div role="status" aria-label="Carregando identidade visual">
@@ -20,7 +32,7 @@ export default function BrandingLoadingGate({
     );
   }
 
-  if (brandingQuery.isError) {
+  if (brandingQuery.isError && !brandingQuery.data && !isPublicAuthRoute) {
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] px-6 text-center dark:bg-slate-950">
         <div className="max-w-sm">

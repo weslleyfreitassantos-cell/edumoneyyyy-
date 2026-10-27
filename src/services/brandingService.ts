@@ -27,6 +27,7 @@ export type AccountDomainStatus = 'PENDING' | 'ACTIVE' | 'DISABLED';
 export interface PublicBranding {
   scope: PublicBrandingScope;
   displayName: string | null;
+  documentTitle?: string | null;
   logoUrl: string | null;
   faviconUrl: string | null;
   loginBackgroundUrl?: string | null;
@@ -309,6 +310,10 @@ function normalizePublicInstitutionBrandingRow(
 ): PublicBranding {
   return normalizePublicBrandingAssetUrls({
     scope: 'INSTITUTION',
+    documentTitle:
+      typeof row.name === 'string' && row.name.trim()
+        ? row.name
+        : null,
     displayName:
       typeof row.login_display_name === 'string' &&
       row.login_display_name.trim()
@@ -348,7 +353,7 @@ async function resolveInstitutionBranding(
   );
 
   if (error) {
-    return FALLBACK_BRANDING;
+    throw error;
   }
 
   const rows = Array.isArray(data) ? data : data ? [data] : [];
@@ -794,24 +799,20 @@ export const brandingService = {
       return resolveInstitutionBranding(resolution);
     }
 
-    try {
-      const { data, error } = await supabase.rpc(
-        'resolve_public_branding',
-        {
-          hostname: normalizedHostname,
-        },
-      );
+    const { data, error } = await supabase.rpc(
+      'resolve_public_branding',
+      {
+        hostname: normalizedHostname,
+      },
+    );
 
-      if (error) {
-        return FALLBACK_BRANDING;
-      }
-
-      const row = Array.isArray(data) ? data[0] : data;
-
-      return normalizePublicBrandingRow(row as PublicBrandingRow);
-    } catch {
-      return FALLBACK_BRANDING;
+    if (error) {
+      throw error;
     }
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    return normalizePublicBrandingRow(row as PublicBrandingRow);
   },
 
   getGlobalBranding(): Promise<BrandingRecord | null> {

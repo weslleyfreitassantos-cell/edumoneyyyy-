@@ -1,0 +1,29 @@
+import { ArrowLeft, Printer } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export type PrintableMaterial = {
+  id: string;
+  title: string;
+  category: string;
+  objective: string;
+  instructions: string;
+  sections: Array<{ title: string; items: string[] }>;
+  fields?: string[];
+};
+
+export const printableMaterials: PrintableMaterial[] = [
+  { id: 'checklist-acessibilidade', title: 'Checklist de acessibilidade', category: 'Planejamento', objective: 'Apoiar o planejamento de uma aula acessível, sem associar estratégias a um diagnóstico.', instructions: 'Use antes, durante e depois da aula. Marque apenas o que foi observado ou combinado com a equipe.', sections: [{ title: 'Antes da aula', items: ['Use linguagem direta e divida instruções longas em etapas.', 'Confira contraste, tamanho da fonte e legibilidade.', 'Separe imagens, objetos, letras ou recursos de apoio necessários.'] }, { title: 'Durante a aula', items: ['Ofereça tempo adicional quando necessário.', 'Modele a primeira resposta.', 'Aceite texto, fala, apontar, gesto ou desenho.', 'Respeite pausas e recusas sem linguagem punitiva.'] }, { title: 'Depois da aula', items: ['Registre apenas evidências observáveis.', 'Anote o apoio utilizado.', 'Combine o próximo ajuste com a equipe.'] }], fields: ['Observações', 'Próximo ajuste'] },
+  { id: 'rotina-visual', title: 'Modelo de rotina visual', category: 'Apoio ao estudante', objective: 'Organizar a chegada, a participação e a saída da escola com etapas claras.', instructions: 'Recorte os cartões, organize-os na ordem combinada e permita que o estudante acompanhe ou reorganize a sequência.', sections: [{ title: 'Cartões para recortar', items: ['Chegar à escola', 'Guardar a mochila', 'Organizar o material', 'Participar da atividade', 'Fazer uma pausa', 'Guardar os materiais', 'Sair da escola'] }], fields: ['Adaptação combinada', 'Observação do estudante'] },
+  { id: 'guia-adaptacoes', title: 'Guia de adaptações', category: 'Práticas pedagógicas', objective: 'Apoiar escolhas pedagógicas observáveis e ajustáveis durante a aula.', instructions: 'Escolha somente os apoios necessários para a atividade e revise-os com a equipe escolar.', sections: [{ title: 'Possibilidades de adaptação', items: ['Linguagem: instruções curtas, exemplos e uma etapa por vez.', 'Tempo: pausas, tempo adicional e redução de estímulos.', 'Resposta: texto, fala, apontar, gesto, desenho ou seleção.', 'Recursos visuais: sequência, símbolos, cores e modelos.', 'Materiais: tamanho, textura, contraste e organização.', 'Avaliação: demonstrar a habilidade por mais de uma modalidade.', 'Participação: oferecer escolha e respeitar recusa.', 'Registro: escrever apenas evidências observáveis e o próximo ajuste.'] }], fields: ['Apoio escolhido', 'Como será verificado'] },
+  { id: 'registro-observacao', title: 'Registro de observação', category: 'Acompanhamento', objective: 'Registrar evidências pedagógicas observáveis e próximos ajustes sem classificações clínicas.', instructions: 'Preencha após a atividade. Descreva o que aconteceu, qual apoio foi usado e qual será o próximo passo.', sections: [{ title: 'Registro pedagógico', items: ['Evidência observada', 'Apoio utilizado', 'Resposta apresentada', 'Próximo ajuste'] }], fields: ['Estudante', 'Turma', 'Data', 'Atividade', 'Evidência observada', 'Apoio utilizado', 'Resposta apresentada', 'Próximo ajuste', 'Observações da equipe'] },
+];
+
+export function InclusivePrintableMaterial({ material }: { material: PrintableMaterial }) {
+  return <main className="printable-material mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-10" aria-labelledby="printable-material-title">
+    <div className="print-hidden mb-6 flex flex-wrap gap-2"><Link to="/inclusive-education/materials" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-600 dark:text-slate-200"><ArrowLeft className="h-4 w-4" aria-hidden="true" />Voltar aos materiais</Link><button type="button" onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-lg bg-[#075fc4] px-3 py-2 text-sm font-bold text-white"><Printer className="h-4 w-4" aria-hidden="true" />Imprimir / salvar PDF</button></div>
+    <header className="border-b-2 border-cyan-500 pb-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#075fc4]">{material.category} · Educação Inclusiva</p><h1 id="printable-material-title" className="mt-2 text-3xl font-extrabold text-[#075fc4]">{material.title}</h1><p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200"><strong>Objetivo:</strong> {material.objective}</p><p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200"><strong>Como usar:</strong> {material.instructions}</p></header>
+    <div className="mt-6 space-y-5">{material.sections.map((section) => <section key={section.title} className="print-section rounded-xl border border-blue-200 p-5"><h2 className="text-lg font-bold text-[#075fc4]">{section.title}</h2><ul className="mt-3 space-y-3 text-sm leading-6 text-slate-800 dark:text-slate-100">{section.items.map((item) => <li key={item} className="flex gap-2"><span aria-hidden="true">☐</span><span>{item}</span></li>)}</ul></section>)}</div>
+    {material.fields && <section className="print-section mt-6 space-y-5"><h2 className="text-lg font-bold text-[#075fc4]">Anotações</h2>{material.fields.map((field) => <div key={field} className="print-field"><p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{field}</p><div className="mt-2 min-h-8 border-b border-slate-400" /></div>)}</section>}
+    <footer className="mt-10 border-t border-slate-300 pt-4 text-xs text-slate-500">Produzido pela Tec Escola · versão 1.0 · revisão 15/10/2026</footer>
+  </main>;
+}

@@ -40,6 +40,7 @@ import TimetableTab from './tabs/TimetableTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
 import SchoolUsersTab from './tabs/SchoolUsersTab';
+import PsychologistsTab from './tabs/PsychologistsTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
@@ -126,6 +127,7 @@ export default function AdminPage() {
           institutionQuery.currentRole,
           profile?.platform_role,
           institutionQuery.currentInstitution?.plan,
+          institutionQuery.currentInstitutionRoles,
         ),
       ),
     [
@@ -133,6 +135,7 @@ export default function AdminPage() {
       profile?.role,
       institutionQuery.currentRole,
       institutionQuery.currentInstitution?.plan,
+      institutionQuery.currentInstitutionRoles,
     ],
   );
 
@@ -410,6 +413,8 @@ export default function AdminPage() {
             inviteHeading="Cadastro de secretaria"
           />
         );
+      case 'psychologists':
+        return <PsychologistsTab />;
       case 'email':
         return <EmailTab />;
       case 'announcements':

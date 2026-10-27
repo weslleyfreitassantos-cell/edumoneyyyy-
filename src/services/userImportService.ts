@@ -111,6 +111,7 @@ export const STUDENT_REQUIRED_IMPORT_HEADERS = [
 export const TEACHER_REQUIRED_IMPORT_HEADERS = [
   'Nome completo',
   'E-mail',
+  'Disciplinas',
 ] as const;
 
 const studentDocumentFields: Array<{ type: string; key: string }> = [
@@ -301,16 +302,20 @@ function parseDay(valueToParse: string): number | null {
 function documentStatus(valueToParse: string, label: string, errors: string[]): StudentDocumentStatus {
   const input = normalize(valueToParse).replace(/ /g, '_');
   const statuses: Record<string, StudentDocumentStatus> = {
+    not_requested: 'NOT_REQUESTED', nao_solicitado: 'NOT_REQUESTED',
     pending: 'PENDING', pendente: 'PENDING',
-    delivered: 'DELIVERED', entregue: 'DELIVERED',
+    requested: 'REQUESTED', solicitado: 'REQUESTED', solicitada: 'REQUESTED',
+    delivered: 'DELIVERED', received: 'DELIVERED', entregue: 'DELIVERED', recebido: 'DELIVERED', recebida: 'DELIVERED',
+    under_review: 'UNDER_REVIEW', em_conferencia: 'UNDER_REVIEW',
     validated: 'VALIDATED', validado: 'VALIDATED', validada: 'VALIDATED',
+    rejected: 'REJECTED', rejeitado: 'REJECTED', rejeitada: 'REJECTED',
     dispensed: 'DISPENSED', dispensado: 'DISPENSED', dispensada: 'DISPENSED',
   };
-  if (!input) return 'PENDING';
+  if (!input) return 'NOT_REQUESTED';
   const status = statuses[input];
   if (status) return status;
-  errors.push(`${label} deve ser Pendente, Entregue, Validado ou Dispensado.`);
-  return 'PENDING';
+  errors.push(`${label} deve ser Não solicitado, Pendente, Solicitado, Recebido, Em conferência, Validado, Rejeitado ou Dispensado.`);
+  return 'NOT_REQUESTED';
 }
 
 function buildDocuments(row: ParsedSpreadsheetRow, errors: string[]): FullStudentEnrollmentDraft['documents'] {
@@ -326,11 +331,19 @@ function buildDocuments(row: ParsedSpreadsheetRow, errors: string[]): FullStuden
     foto_3x4: ['foto_3x4'],
     outros: ['outros'],
   };
-  return studentDocumentFields.map(({ type, key }) => ({
-    document_type: type,
-    status: documentStatus(value(row, (documentPrefixes[key] ?? [key]).flatMap((prefix) => [`${prefix}_status`])), `${type} - status`, errors),
-    notes: value(row, (documentPrefixes[key] ?? [key]).flatMap((prefix) => [`${prefix}_notes`, `${prefix}_observacoes`])),
-  }));
+  return studentDocumentFields.map(({ type, key }) => {
+    const prefixes = documentPrefixes[key] ?? [key];
+    const status = documentStatus(
+      value(row, prefixes.flatMap((prefix) => [`${prefix}_status`])),
+      `${type} - status`,
+      errors,
+    );
+    const notes = value(row, prefixes.flatMap((prefix) => [`${prefix}_notes`, `${prefix}_observacoes`]));
+    if (['REJECTED', 'DISPENSED'].includes(status) && !notes.trim()) {
+      errors.push(`${type} - observação/justificativa é obrigatória para status Rejeitado ou Dispensado.`);
+    }
+    return { document_type: type, status, notes };
+  });
 }
 
 function dateOrError(valueToParse: string, label: string, errors: string[], isRequired = false): string {
@@ -739,6 +752,7 @@ export const STUDENT_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = STUDENT_R
 export const TEACHER_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = {
   'Nome completo': 'João Silva',
   'E-mail': 'joao.silva@exemplo.com',
+  'Disciplinas': 'Matemática; Física',
 };
 
 export async function ensureSubjectsForTeacherImport(institutionId: string): Promise<SubjectRow[]> {

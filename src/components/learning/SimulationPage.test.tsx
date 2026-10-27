@@ -20,6 +20,21 @@ const state = vi.hoisted(() => ({
     total_questions: 2,
     area_breakdown: {},
   }),
+  student: {
+    data: { id: "student-1" } as { id: string } | null,
+    isLoading: false,
+    isError: false,
+    refetch: vi.fn(),
+  },
+  start: {
+    mutateAsync: vi.fn().mockResolvedValue({
+      attempt_id: "attempt-1",
+      created: true,
+      question_count: 2,
+      language_choice: null,
+    }),
+    isPending: false,
+  },
 }));
 
 const storageState = vi.hoisted(() => ({
@@ -40,7 +55,7 @@ vi.mock("../../lib/supabaseClient", () => ({
   },
 }));
 vi.mock("../../hooks/useLearningCenter", () => ({
-  useLearningStudent: () => ({ data: { id: "student-1" }, isLoading: false }),
+  useLearningStudent: () => state.student,
   useEnemSimulationTemplates: () => ({
     data: [
       {
@@ -100,15 +115,7 @@ vi.mock("../../hooks/useLearningCenter", () => ({
     data: state.attempts,
     isLoading: false,
   }),
-  useStartEnemSimulation: () => ({
-    mutateAsync: vi.fn().mockResolvedValue({
-      attempt_id: "attempt-1",
-      created: true,
-      question_count: 2,
-      language_choice: null,
-    }),
-    isPending: false,
-  }),
+  useStartEnemSimulation: () => state.start,
   useSaveEnemSimulationAnswers: () => ({
     mutateAsync: state.saveAnswers,
   }),
@@ -130,6 +137,17 @@ afterEach(() => {
   cleanup();
   state.attempts = [];
   state.attemptDetail = null;
+  state.student.data = { id: "student-1" };
+  state.student.isLoading = false;
+  state.student.isError = false;
+  state.student.refetch.mockReset();
+  state.start.mutateAsync.mockReset().mockResolvedValue({
+    attempt_id: "attempt-1",
+    created: true,
+    question_count: 2,
+    language_choice: null,
+  });
+  state.start.isPending = false;
   state.saveAnswers.mockClear();
   state.saveNavigation.mockClear();
   state.submit.mockClear();
@@ -160,6 +178,42 @@ function makeQuestions(count: number) {
 }
 
 describe("SimulationPage", () => {
+  it("does not offer a start action when the active student link cannot be verified", () => {
+    state.student.data = null;
+    state.student.isError = true;
+
+    renderPage();
+
+    expect(screen.getByRole("heading", { name: "Matrícula não localizada" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Começar prática" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Tentar novamente" }));
+    expect(state.student.refetch).toHaveBeenCalledOnce();
+  });
+
+  it("shows a recoverable message when starting a simulation times out", async () => {
+    state.start.mutateAsync.mockRejectedValueOnce(
+      new Error("canceling statement due to statement timeout"),
+    );
+
+    renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+    expect((await screen.findByRole("alert")).textContent).toContain(
+      "Não foi possível iniciar o simulado agora.",
+    );
+  });
+
+  it("ignores duplicate clicks while the start request is unresolved", () => {
+    state.start.mutateAsync.mockReturnValue(new Promise(() => undefined));
+    renderPage();
+
+    const button = screen.getByRole("button", { name: "Começar prática" });
+    fireEvent.click(button);
+    fireEvent.click(button);
+
+    expect(state.start.mutateAsync).toHaveBeenCalledTimes(1);
+  });
+
   it.each([10, 45])(
     "keeps the question navigator in one horizontal row with %i questions",
     async (questionCount) => {

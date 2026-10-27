@@ -437,6 +437,41 @@ describe('SchoolUsersTab integration', () => {
     expect(inactiveCard?.textContent).toContain('1');
   });
 
+  it('reutiliza a edição e desativação de contas no painel de psicólogos', () => {
+    mockTabState({ currentRole: 'DIRECTOR' });
+    const psychologistUser: SchoolUserRow = {
+      ...users[0],
+      id: 'psychologist-membership',
+      profile_id: 'psychologist-profile',
+      role: 'PSYCHOLOGIST',
+      profile: {
+        full_name: 'Dra. Ana Psicóloga',
+        email: 'ana.psicologa@escola.com',
+        active: true,
+      },
+    };
+    mockedUseSchoolUsers.mockReturnValue({
+      data: [psychologistUser],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolUsers>);
+
+    render(createElement(SchoolUsersTab, {
+      fixedRole: 'PSYCHOLOGIST',
+      inviteTargets: ['PSYCHOLOGIST'],
+      inviteHeading: 'Cadastro de psicólogo(a)',
+    }));
+
+    expect(screen.getByText('Total de psicólogas(os)')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Editar Dra\. Ana Psicóloga/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Excluir Dra\. Ana Psicóloga/i })).toBeTruthy();
+    expect(mockedUnifiedUserInvitePreview).toHaveBeenCalledWith(
+      expect.objectContaining({ allowedTargets: ['PSYCHOLOGIST'], heading: 'Cadastro de psicólogo(a)' }),
+      undefined,
+    );
+  });
+
   it('preserva a visão global sem fixedRole', () => {
     render(createElement(SchoolUsersTab));
 

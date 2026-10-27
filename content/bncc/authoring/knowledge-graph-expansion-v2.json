@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "tec-escola.bncc.knowledge-graph-expansion.v2",
+  "baseGraphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
+  "packVersion": "tec-escola-knowledge-expansion-v2",
+  "graphStatus": "STAGING_NOT_BNCC_PROMOTED",
+  "summary": {
+    "baseCanonicalSkills": 71,
+    "newCanonicalSkills": 3,
+    "totalCanonicalSkills": 74
+  },
+  "nodes": [
+    {
+      "code": "SCIENCE_COMPARE_MATERIAL_CHOICES_FI",
+      "class": "LEAF",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "parent": "SCIENCE_MATTER",
+      "title": "Comparar materiais e justificar escolhas de reúso",
+      "objective": "Distinguir propriedades observáveis de materiais e usar essas evidências para explicar por que um objeto serve a determinado uso ou pode ser reaproveitado com segurança.",
+      "observableCapability": "A criança compara pelo menos duas propriedades relevantes, aponta a evidência observada e escolhe um uso ou destino coerente sem presumir que todo material pode ser reciclado da mesma forma em qualquer local.",
+      "domain": "MATERIAIS",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "contentReadiness": "ADAPTIVE_READY",
+      "mappingStatus": "MAPPING_PENDING",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "sourceEvidence": {
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 335,
+        "candidateOfficialReference": "EF01CI01",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_MATTER_TRANSFORMATIONS",
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_MATTER_TRANSFORMATIONS",
+        "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+        "officialComponentCode": "CI",
+        "candidateSubjectCode": "SCIENCE",
+        "evidenceSummary": "A referência oficial trata da comparação de materiais presentes em objetos cotidianos e da reflexão sobre origem, descarte e uso consciente. Usada como contexto curricular para revisão, sem declarar equivalência.",
+        "mappingClaim": "NONE",
+        "reviewStatus": "MAPPING_PENDING"
+      },
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "code": "HISTORY_REGISTER_LOCAL_CHANGE_FI",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_SOURCES",
+      "title": "Registrar acontecimentos locais com diferentes fontes",
+      "objective": "Comparar informações de relatos, fotografias e registros datados para organizar acontecimentos locais sem tratar uma lembrança isolada como prova de todos os detalhes.",
+      "observableCapability": "A criança identifica quem produziu uma fonte, registra uma informação que ela sustenta e distingue observação documentada de lembrança ou inferência.",
+      "domain": "FONTES_E_MEMORIA",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 3,
+      "gradeTo": 3,
+      "contentReadiness": "ADAPTIVE_READY",
+      "mappingStatus": "MAPPING_PENDING",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "sourceEvidence": {
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "candidateOfficialReference": "EF03HI02",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_03_HI_SELECIONAR_HISTORY_TIME_SOURCES",
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_SELECIONAR_HISTORY_TIME_SOURCES",
+        "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+        "officialComponentCode": "HI",
+        "candidateSubjectCode": "HISTORY",
+        "evidenceSummary": "A referência oficial aborda consulta a fontes de diferentes naturezas e registro de acontecimentos ao longo do tempo no lugar onde o estudante vive. Usada como contexto para revisão, sem declarar equivalência.",
+        "mappingClaim": "NONE",
+        "reviewStatus": "MAPPING_PENDING"
+      },
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "code": "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS",
+      "class": "LEAF",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "parent": "BIOLOGY_ECOLOGY",
+      "title": "Avaliar ações de conservação da biodiversidade com evidências",
+      "objective": "Avaliar propostas de conservação da biodiversidade usando indicadores qualitativos e quantitativos, comparações consistentes e limites explícitos para conclusões sobre ações humanas e políticas ambientais.",
+      "observableCapability": "O estudante seleciona indicadores pertinentes, compara dados coletados com esforço e contexto compatíveis, distingue associação de evidência causal e qualifica uma conclusão sobre conservação com pelo menos uma limitação dos dados.",
+      "domain": "BIODIVERSIDADE_E_CONSERVACAO",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "contentReadiness": "ADAPTIVE_READY",
+      "mappingStatus": "MAPPING_PENDING",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "sourceEvidence": {
+        "sourceId": "BNCC_EM_2018",
+        "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+        "page": 119,
+        "candidateOfficialReference": "EM13CNT206",
+        "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CNT_AVALIAR_EARTH_ENVIRONMENT",
+        "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CNT_AVALIAR_EARTH_ENVIRONMENT",
+        "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+        "officialComponentCode": "CNT",
+        "candidateSubjectCode": "BIOLOGY",
+        "evidenceSummary": "A referência oficial aborda conservação da biodiversidade e avaliação de efeitos da ação humana e de políticas ambientais. A proposta V8 registra a área integrada de Ciências da Natureza; BIOLOGY é apenas um enquadramento autoral candidato e não declara equivalência nem mapeamento.",
+        "mappingClaim": "NONE",
+        "reviewStatus": "MAPPING_PENDING"
+      },
+      "bnccAlignment": "NOT_CLAIMED"
+    }
+  ],
+  "hierarchyEdges": [
+    {
+      "parent": "SCIENCE_MATTER",
+      "child": "SCIENCE_COMPARE_MATERIAL_CHOICES_FI"
+    },
+    {
+      "parent": "HISTORY_SOURCES",
+      "child": "HISTORY_REGISTER_LOCAL_CHANGE_FI"
+    },
+    {
+      "parent": "BIOLOGY_ECOLOGY",
+      "child": "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS"
+    }
+  ],
+  "semanticRelationships": [
+    {
+      "from": "SCIENCE_COMPARE_MATERIAL_CHOICES_FI",
+      "to": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "type": "PROGRESSION",
+      "rationale": "A comparação concreta de propriedades precede explicações sobre transformações da matéria; a relação indica progressão, não pré-requisito já validado."
+    },
+    {
+      "from": "HISTORY_REGISTER_LOCAL_CHANGE_FI",
+      "to": "HISTORY_INTERPRET_EVIDENCE",
+      "type": "PROGRESSION",
+      "rationale": "O registro de acontecimentos locais com fontes variadas oferece uma base para interpretações históricas posteriores; a relação descreve progressão, não equivalência."
+    },
+    {
+      "from": "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS",
+      "to": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "type": "PREREQUISITE",
+      "rationale": "Avaliar efeitos de ações de conservação requer reconhecer relações entre organismos e ambiente; o requisito permanece inativo junto com a habilidade nova."
+    },
+    {
+      "from": "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS",
+      "to": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "type": "SUPPORTING",
+      "rationale": "Dados de populações podem apoiar a avaliação de conservação, sem serem condição universal para todos os indicadores de biodiversidade."
+    }
+  ],
+  "statusContract": {
+    "mappingStatus": "MAPPING_PENDING",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationStatus": "STAGING",
+    "studentEligible": false
+  },
+  "expansionHash": "06576b25fcc45c32b2540612a876f89a49652c5c978d7e96e3c997d573ed7c21"
+}

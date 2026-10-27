@@ -6,6 +6,7 @@ import {
   type AttendanceSummary,
 } from './attendanceService';
 import { enrollmentService, type EnrollmentRow } from './enrollmentService';
+import { classService, type ClassRow } from './classService';
 import {
   pedagogicalMonitoringService,
   type PedagogicalMonitoringSubject,
@@ -17,11 +18,15 @@ import {
 import { studentService, type StudentRow } from './studentService';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 import { termClosingService, type TermClosureOffering } from './termClosingService';
+import { supabase } from '../lib/supabaseClient';
 
 export type AcademicReportType =
   | 'ENROLLMENTS'
+  | 'STUDENTS_WITHOUT_CLASS'
   | 'RESULTS'
-  | 'ATTENDANCE';
+  | 'ATTENDANCE'
+  | 'DOCUMENTS_PENDING'
+  | 'VACANCIES_BY_CLASS';
 
 export interface AcademicReportOption {
   id: string;
@@ -99,6 +104,178 @@ export interface AttendanceReportRow {
   excusedRecords: number;
   totalRecords: number;
   attendanceRate: number | null;
+}
+
+export interface PendingDocumentReportRow {
+  id: string;
+  studentName: string;
+  registrationNumber: string;
+  className: string;
+  documentType: string;
+  status: PendingDocumentStatus;
+  updatedAt: string | null;
+}
+
+export type PendingDocumentStatus = 'PENDING' | 'REQUESTED' | 'DELIVERED' | 'UNDER_REVIEW' | 'REJECTED';
+
+export const PENDING_DOCUMENT_REPORT_STATUSES: readonly PendingDocumentStatus[] = [
+  'PENDING',
+  'REQUESTED',
+  'DELIVERED',
+  'UNDER_REVIEW',
+  'REJECTED',
+];
+
+export function getPendingDocumentStatusLabel(status: PendingDocumentStatus): string {
+  switch (status) {
+    case 'PENDING': return 'Pendente';
+    case 'REQUESTED': return 'Solicitado';
+    case 'DELIVERED': return 'Recebido';
+    case 'UNDER_REVIEW': return 'Em conferência';
+    case 'REJECTED': return 'Devolvido para ajuste';
+  }
+}
+
+export interface StudentsWithoutClassReportRow {
+  id: string;
+  studentName: string;
+  registrationNumber: string;
+}
+
+export interface ClassVacanciesReportRow {
+  id: string;
+  className: string;
+  gradeLevel: string | null;
+  shift: string | null;
+  enrolledCount: number;
+  capacity: number | null;
+  availableSeats: number | null;
+  occupancyPercentage: number | null;
+}
+
+export interface SecretariatOperationsSummary {
+  studentsWithoutClass: number;
+  pendingDocuments: number;
+  classesWithVacancies: number;
+  availableSeats: number;
+}
+
+interface PendingDocumentSourceRow {
+  id: string;
+  student_id: string;
+  document_type: string;
+  status: PendingDocumentStatus;
+  updated_at: string | null;
+}
+
+export function buildPendingDocumentReportRows(
+  enrollments: readonly EnrollmentRow[],
+  documents: readonly PendingDocumentSourceRow[],
+  filters: { academicYearId: string; classId?: string },
+): PendingDocumentReportRow[] {
+  const enrollmentsByStudent = new Map<string, EnrollmentRow[]>();
+  for (const enrollment of enrollments) {
+    if (
+      enrollment.academic_year_id !== filters.academicYearId
+      || !enrollment.active
+      || enrollment.status !== 'ACTIVE'
+      || !enrollment.student_active
+      || !enrollment.class_active
+      || (filters.classId && enrollment.class_id !== filters.classId)
+    ) continue;
+
+    const rows = enrollmentsByStudent.get(enrollment.student_id) ?? [];
+    rows.push(enrollment);
+    enrollmentsByStudent.set(enrollment.student_id, rows);
+  }
+
+  return documents.flatMap((document) => {
+    const activeEnrollments = enrollmentsByStudent.get(document.student_id);
+    if (!activeEnrollments?.length) return [];
+    const representative = activeEnrollments[0];
+    if (!representative) return [];
+    const classNames = [...new Set(activeEnrollments.map((enrollment) => enrollment.class_name))];
+    return [{
+      id: document.id,
+      studentName: representative.student_name || representative.student_registration_number,
+      registrationNumber: representative.student_registration_number,
+      className: classNames.join(', '),
+      documentType: document.document_type,
+      status: document.status,
+      updatedAt: document.updated_at,
+    }];
+  }).sort((left, right) =>
+    left.studentName.localeCompare(right.studentName, 'pt-BR')
+    || left.documentType.localeCompare(right.documentType, 'pt-BR'));
+}
+
+export function buildStudentsWithoutClassReportRows(
+  students: readonly StudentRow[],
+  enrollments: readonly EnrollmentRow[],
+  academicYearId: string,
+): StudentsWithoutClassReportRow[] {
+  const assignedStudentIds = new Set(
+    enrollments
+      .filter((enrollment) =>
+        enrollment.academic_year_id === academicYearId
+        && enrollment.active
+        && enrollment.status === 'ACTIVE'
+        && enrollment.student_active
+        && enrollment.class_active,
+      )
+      .map((enrollment) => enrollment.student_id),
+  );
+
+  return students
+    .filter((student) => student.active && !assignedStudentIds.has(student.id))
+    .map((student) => ({
+      id: student.id,
+      studentName: student.profiles?.full_name || student.registration_number,
+      registrationNumber: student.registration_number,
+    }))
+    .sort((left, right) => left.studentName.localeCompare(right.studentName, 'pt-BR'));
+}
+
+export function buildClassVacanciesReportRows(
+  classes: readonly ClassRow[],
+  enrollments: readonly EnrollmentRow[],
+  academicYearId: string,
+): ClassVacanciesReportRow[] {
+  const activeEnrollmentCounts = new Map<string, number>();
+  for (const enrollment of enrollments) {
+    if (
+      enrollment.academic_year_id !== academicYearId
+      || !enrollment.active
+      || enrollment.status !== 'ACTIVE'
+      || !enrollment.student_active
+      || !enrollment.class_active
+    ) continue;
+    activeEnrollmentCounts.set(
+      enrollment.class_id,
+      (activeEnrollmentCounts.get(enrollment.class_id) ?? 0) + 1,
+    );
+  }
+
+  return classes
+    .filter((classRecord) => classRecord.academic_year_id === academicYearId && classRecord.active)
+    .map((classRecord) => {
+      const enrolledCount = activeEnrollmentCounts.get(classRecord.id) ?? 0;
+      const capacity = classRecord.capacity > 0 ? classRecord.capacity : null;
+      return {
+        id: classRecord.id,
+        className: classRecord.name,
+        gradeLevel: classRecord.grade_level,
+        shift: classRecord.shift,
+        enrolledCount,
+        capacity,
+        availableSeats: capacity === null ? null : Math.max(capacity - enrolledCount, 0),
+        occupancyPercentage: capacity === null ? null : Math.round((enrolledCount / capacity) * 100),
+      };
+    })
+    .sort((left, right) =>
+      (left.shift ?? '').localeCompare(right.shift ?? '', 'pt-BR')
+      || (left.gradeLevel ?? '').localeCompare(right.gradeLevel ?? '', 'pt-BR')
+      || left.className.localeCompare(right.className, 'pt-BR'));
 }
 
 function toOptions(values: Map<string, AcademicReportOption>): AcademicReportOption[] {
@@ -295,6 +472,131 @@ export const academicReportService = {
           .toLocaleLowerCase('pt-BR')
           .includes(search);
       });
+  },
+
+  async getPendingDocumentsReport(
+    institutionId: string,
+    filters: { academicYearId: string; classId?: string },
+  ): Promise<PendingDocumentReportRow[]> {
+    const enrollments = await enrollmentService.list(institutionId);
+    const activeYearEnrollments = enrollments.filter((enrollment) =>
+      enrollment.academic_year_id === filters.academicYearId
+      && enrollment.active
+      && enrollment.status === 'ACTIVE'
+      && enrollment.student_active
+      && enrollment.class_active
+      && (!filters.classId || enrollment.class_id === filters.classId),
+    );
+    const studentIds = [...new Set(activeYearEnrollments.map((enrollment) => enrollment.student_id))];
+    if (!studentIds.length) return [];
+
+    const documents: PendingDocumentSourceRow[] = [];
+    for (let start = 0; start < studentIds.length; start += 100) {
+      const studentIdChunk = studentIds.slice(start, start + 100);
+      for (let offset = 0; ; offset += 500) {
+        const { data, error } = await supabase
+          .from('student_documents')
+          .select('id,student_id,document_type,status,updated_at')
+          .eq('institution_id', institutionId)
+          .in('status', PENDING_DOCUMENT_REPORT_STATUSES)
+          .in('student_id', studentIdChunk)
+          .order('updated_at', { ascending: false })
+          .range(offset, offset + 499);
+        if (error) throw error;
+        const page = (data ?? []) as PendingDocumentSourceRow[];
+        documents.push(...page);
+        if (page.length < 500) break;
+      }
+    }
+
+    return buildPendingDocumentReportRows(activeYearEnrollments, documents, filters);
+  },
+
+  async getStudentsWithoutClassReport(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<StudentsWithoutClassReportRow[]> {
+    const [students, enrollments] = await Promise.all([
+      studentService.list(institutionId),
+      enrollmentService.list(institutionId),
+    ]);
+    return buildStudentsWithoutClassReportRows(students, enrollments, academicYearId);
+  },
+
+  async getClassVacanciesReport(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<ClassVacanciesReportRow[]> {
+    const [classes, enrollments] = await Promise.all([
+      classService.list(institutionId),
+      enrollmentService.list(institutionId),
+    ]);
+    return buildClassVacanciesReportRows(classes, enrollments, academicYearId);
+  },
+
+  async getSecretariatOperationsSummary(
+    institutionId: string,
+    academicYearId: string,
+  ): Promise<SecretariatOperationsSummary> {
+    const [students, enrollments, classes] = await Promise.all([
+      studentService.list(institutionId),
+      enrollmentService.list(institutionId),
+      classService.list(institutionId),
+    ]);
+
+    const activeYearEnrollments = enrollments.filter((enrollment) =>
+      enrollment.academic_year_id === academicYearId
+      && enrollment.active
+      && enrollment.status === 'ACTIVE'
+      && enrollment.student_active
+      && enrollment.class_active,
+    );
+    const studentIds = [...new Set(activeYearEnrollments.map((enrollment) => enrollment.student_id))];
+    const documents: PendingDocumentSourceRow[] = [];
+
+    for (let start = 0; start < studentIds.length; start += 100) {
+      const studentIdChunk = studentIds.slice(start, start + 100);
+      for (let offset = 0; ; offset += 500) {
+        const { data, error } = await supabase
+          .from('student_documents')
+          .select('id,student_id,document_type,status,updated_at')
+          .eq('institution_id', institutionId)
+          .in('status', PENDING_DOCUMENT_REPORT_STATUSES)
+          .in('student_id', studentIdChunk)
+          .order('updated_at', { ascending: false })
+          .range(offset, offset + 499);
+        if (error) throw error;
+        const page = (data ?? []) as PendingDocumentSourceRow[];
+        documents.push(...page);
+        if (page.length < 500) break;
+      }
+    }
+
+    const pendingDocuments = buildPendingDocumentReportRows(
+      activeYearEnrollments,
+      documents,
+      { academicYearId },
+    );
+    const studentsWithoutClass = buildStudentsWithoutClassReportRows(
+      students,
+      enrollments,
+      academicYearId,
+    );
+    const classesWithVacancies = buildClassVacanciesReportRows(
+      classes,
+      enrollments,
+      academicYearId,
+    ).filter((classRow) => classRow.availableSeats !== null && classRow.availableSeats > 0);
+
+    return {
+      studentsWithoutClass: studentsWithoutClass.length,
+      pendingDocuments: pendingDocuments.length,
+      classesWithVacancies: classesWithVacancies.length,
+      availableSeats: classesWithVacancies.reduce(
+        (total, classRow) => total + (classRow.availableSeats ?? 0),
+        0,
+      ),
+    };
   },
 
   async getAcademicResultsReport(

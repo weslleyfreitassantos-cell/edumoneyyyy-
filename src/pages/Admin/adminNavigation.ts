@@ -14,6 +14,7 @@ export type AdminModuleId =
   | 'teachers'
   | 'guardians'
   | 'secretaries'
+  | 'psychologists'
   | 'directors'
   | 'announcements'
   | 'email'
@@ -141,6 +142,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'manage_school_users',
     href: moduleHref('secretaries'),
     allowedRoles: ['DIRECTOR'],
+  },
+  {
+    id: 'psychologists',
+    label: 'Psicólogos',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('psychologists'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'directors',
@@ -334,7 +343,12 @@ export function isAdminModuleAvailable(
   currentRole: string | null | undefined,
   platformRole?: string | null | undefined,
   institutionPlan?: InstitutionPlan | null,
+  currentInstitutionRoles?: readonly string[],
 ): boolean {
+  if (module.id === 'psychologists') {
+    return currentRole === 'DIRECTOR' || currentRole === 'SECRETARY'
+      || currentInstitutionRoles?.some((role) => role === 'DIRECTOR' || role === 'SECRETARY') === true;
+  }
   if (platformRole === 'SUPER_ADMIN') return true;
   if (
     institutionPlan === 'BASIC' &&

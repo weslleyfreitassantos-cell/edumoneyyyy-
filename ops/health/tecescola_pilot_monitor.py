@@ -17,8 +17,14 @@ import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
+from contextlib import nullcontext
 from datetime import datetime, timezone
 from pathlib import Path
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - only used on the Linux host
+    fcntl = None
 
 
 APP_ORIGIN = os.environ.get("TECESCOLA_APP_ORIGIN", "https://admin.grupotec.dev.br").rstrip("/")
@@ -27,6 +33,7 @@ BACKUP_ROOT = Path(os.environ.get("LOCAL_BACKUP_ROOT", "/srv/grupotec/backups/ed
 OFFSITE_REMOTE = os.environ.get("OFFSITE_REMOTE", "gdrive-backups:tecescola-offsite").rstrip("/")
 OFFSITE_STATE = Path(os.environ.get("OFFSITE_STATE_FILE", "/var/lib/tecescola-ops/offsite-backup.state"))
 MONITOR_STATE = Path(os.environ.get("MONITOR_STATE_FILE", "/var/lib/tecescola-pilot-monitor/state.json"))
+MONITOR_LOCK = Path(os.environ.get("MONITOR_LOCK_FILE", "/var/run/tecescola-pilot-monitor.lock"))
 DB_CONTAINER = os.environ.get("EDUMONEY_DB_CONTAINER", "supabase-edumoney-db")
 CADDY_CONTAINER = os.environ.get("CADDY_CONTAINER", "grupotec-edge")
 VERIFY_SCRIPT = Path(os.environ.get(
@@ -35,6 +42,7 @@ VERIFY_SCRIPT = Path(os.environ.get(
 ))
 HTTP_CHECKS = {"frontend", "backend", "auth", "postgrest"}
 TIMEOUT_SECONDS = 8
+VERIFY_TIMEOUT_SECONDS = 90
 
 
 def http_get(url: str, headers: dict[str, str] | None = None) -> tuple[int, bytes]:
@@ -155,7 +163,7 @@ def check_local_backup(now: datetime) -> tuple[str, str]:
                 [sys.executable, str(VERIFY_SCRIPT), "--check"],
                 stdin=source,
                 capture_output=True,
-                timeout=30,
+                timeout=VERIFY_TIMEOUT_SECONDS,
                 check=False,
             )
     except Exception:
@@ -279,6 +287,20 @@ def load_state(path: Path) -> dict[str, object]:
         return {"checks": {}}
 
 
+def monitor_lock():
+    if fcntl is None:
+        return nullcontext()
+
+    MONITOR_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    handle = MONITOR_LOCK.open("w")
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        handle.close()
+        return None
+    return handle
+
+
 def run_self_test() -> None:
     state: dict[str, object] = {"checks": {}}
     sequence = ["PASS", "FAIL", "FAIL", "FAIL", "PASS"]
@@ -319,33 +341,39 @@ def main() -> None:
         run_self_test()
         return
 
-    now = datetime.now(timezone.utc)
-    state = load_state(MONITOR_STATE)
-    state["run_count"] = int(state.get("run_count", 0)) + 1
-    state["last_run_utc"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    checks = state.setdefault("checks", {})
-    failures = 0
-    for name, (status, detail) in run_checks().items():
-        print(f"CHECK name={name} status={status} detail={detail}")
-        minimum = 2 if name in HTTP_CHECKS else 1
-        state, event = advance_state(state, name, status, minimum)
-        if event:
-            severity = state["checks"][name]["alert_severity"]
-            print(f"{event} severity={severity} check={name} detail={detail}")
-        if status in {"FAIL", "CRITICAL"}:
-            failures += 1
+    lock = monitor_lock()
+    if lock is None:
+        print("MONITOR_RUN=SKIPPED reason=already_running")
+        return
 
-    MONITOR_STATE.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=MONITOR_STATE.parent, delete=False) as output:
-        json.dump(state, output, separators=(",", ":"))
-        output.write("\n")
-        temp_path = Path(output.name)
-    temp_path.chmod(0o600)
-    temp_path.replace(MONITOR_STATE)
-    MONITOR_STATE.parent.chmod(0o700)
-    print(f"MONITOR_RUN=COMPLETE checks={len(state['checks'])} failures={failures} run_count={state['run_count']}")
-    if failures:
-        raise SystemExit(1)
+    with lock:
+        now = datetime.now(timezone.utc)
+        state = load_state(MONITOR_STATE)
+        state["run_count"] = int(state.get("run_count", 0)) + 1
+        state["last_run_utc"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+        checks = state.setdefault("checks", {})
+        failures = 0
+        for name, (status, detail) in run_checks().items():
+            print(f"CHECK name={name} status={status} detail={detail}")
+            minimum = 2 if name in HTTP_CHECKS else 1
+            state, event = advance_state(state, name, status, minimum)
+            if event:
+                severity = state["checks"][name]["alert_severity"]
+                print(f"{event} severity={severity} check={name} detail={detail}")
+            if status in {"FAIL", "CRITICAL"}:
+                failures += 1
+
+        MONITOR_STATE.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=MONITOR_STATE.parent, delete=False) as output:
+            json.dump(state, output, separators=(",", ":"))
+            output.write("\n")
+            temp_path = Path(output.name)
+        temp_path.chmod(0o600)
+        temp_path.replace(MONITOR_STATE)
+        MONITOR_STATE.parent.chmod(0o700)
+        print(f"MONITOR_RUN=COMPLETE checks={len(state['checks'])} failures={failures} run_count={state['run_count']}")
+        if failures:
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":

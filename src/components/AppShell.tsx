@@ -137,6 +137,29 @@ export function getRouteVisualContext(
     };
   }
 
+  if (
+    normalizedPath === '/inclusive-education' ||
+    normalizedPath.startsWith('/inclusive-education/')
+  ) {
+    const sectionId = normalizedPath.split('/')[2];
+    const inclusiveSectionTitles: Record<string, string> = {
+      activities: 'Biblioteca de Atividades',
+      'aee-paee': 'AEE / PAEE',
+      exercises: 'Exercícios Interativos',
+      materials: 'Materiais para Download',
+      pei: 'PEI dos Alunos',
+      progress: 'Evolução Pedagógica',
+      videos: 'Vídeos didáticos',
+    };
+
+    return {
+      section: 'Educação Inclusiva',
+      title:
+        inclusiveSectionTitles[sectionId ?? ''] ??
+        'Painel Inclusivo',
+    };
+  }
+
   if (normalizedPath.startsWith('/cameras')) {
     return {
       section: 'Instituição',
@@ -318,7 +341,7 @@ export function getRouteVisualContext(
   }
 
   return {
-    section: 'EduManager Pro',
+    section: 'Tec Escola',
     title: 'Dashboard',
   };
 }
@@ -604,6 +627,7 @@ export default function AppShell({
     ...getSidebarAdminModules({
       profile,
       currentInstitutionRole: institutionContext.currentRole,
+      currentInstitutionRoles: institutionContext.currentInstitutionRoles,
       currentInstitutionPlan: institutionContext.currentInstitution?.plan,
       currentUserRole: currentRole,
       pathname: location.pathname,
@@ -618,10 +642,12 @@ export default function AppShell({
     location.pathname,
     currentRole,
   );
-  const isAdminRoute =
-    location.pathname.startsWith('/admin');
+  const isInstitutionRoute =
+    location.pathname.startsWith('/admin') ||
+    location.pathname === '/inclusive-education' ||
+    location.pathname.startsWith('/inclusive-education/');
   const pageTitle =
-    isAdminRoute && institutionContext.currentInstitution
+    isInstitutionRoute && institutionContext.currentInstitution
       ? institutionContext.currentInstitution.name
       : pageContext.title;
 
@@ -684,6 +710,9 @@ export default function AppShell({
         }
         currentInstitutionRole={
           institutionContext.currentRole
+        }
+        currentInstitutionRoles={
+          institutionContext.currentInstitutionRoles
         }
         currentInstitutionPlan={
           institutionContext.currentInstitution?.plan

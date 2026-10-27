@@ -53,6 +53,20 @@ O complemento oficial de Computação está congelado a partir do anexo oficial
 publicado pelo MEC. Um espelho de terceiro não pode ser promovido a source of
 truth.
 
+## Fábrica de conteúdo e revisão
+
+Os comandos `bncc:knowledge-factory` e `bncc:knowledge-factory:v2` a `:v4`
+geram inventários determinísticos, filas de revisão e lotes de conteúdo em
+staging. `npm run bncc:factory:check` valida o catálogo, a cobertura, as
+unidades, os pacotes e todas as versões da fábrica sem escrever no banco.
+Propostas continuam distintas de mapeamentos verificados, e conteúdo em
+`STAGING` ou com revisão pendente não é publicado por esses comandos.
+
+O arquivo `authoring/production-baseline-2026-10-12.json` é uma fotografia
+histórica de leitura. O inventário V1 o rotula como `HISTORICAL_ONLY`; ele não
+representa o estado atual da VPS nem substitui a reconciliação read-only da
+produção.
+
 Os arquivos baixados e os textos extraídos ficam em `.runtime/bncc/`, que é
 ignorado pelo Git. O catálogo versionado contém proveniência suficiente para
 reproduzir e auditar a extração sem commitar PDFs grandes.
