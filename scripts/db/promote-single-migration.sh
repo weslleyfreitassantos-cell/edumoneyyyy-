@@ -72,7 +72,7 @@ release_406_backup_path='/srv/grupotec/backups/edumoney/edumoney-2026-10-25T07-4
 release_406_backup_filename='edumoney-2026-10-25T07-43-25Z.tar.gz'
 declare -A release_406_migration_hashes=(
   [20261025000600]=afc999f01040b1d633d8fe8185ea257729a212a2833d017bb6d27a71b6b473e3
-  [20261025000700]=d4cbeb0056a42c2f39cddee9b90e05954c50097a71919759f64cb54418a444f5
+  [20261025000700]=8695132f39c8235875f84257324dafa6d05b6c1d3697b0a471959d9d969bf2cf
 )
 declare -A release_406_expected_remote_last=(
   [20261025000600]=20261025000500

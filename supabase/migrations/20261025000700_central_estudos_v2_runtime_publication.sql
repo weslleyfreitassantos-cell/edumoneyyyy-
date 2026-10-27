@@ -91,6 +91,12 @@ alter table public.learning_central_studies_v2_release_events enable row level s
 revoke all on public.learning_central_studies_v2_runtime,
   public.learning_central_studies_v2_institution_targets,
   public.learning_central_studies_v2_release_events from public, anon, authenticated;
+-- These tables are accessed through trusted backend routines and maintenance
+-- jobs. Keep the existing Supabase service_role access explicit so shadow
+-- migrations and the local database have identical ACLs.
+grant select, insert, update, delete on public.learning_central_studies_v2_runtime,
+  public.learning_central_studies_v2_institution_targets,
+  public.learning_central_studies_v2_release_events to service_role;
 
 create or replace function private.central_studies_v2_student_can_read(p_candidate_id text)
 returns boolean

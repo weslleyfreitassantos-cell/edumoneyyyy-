@@ -237,9 +237,17 @@ security_assertions="$(psql_in_container -U postgres -d postgres -X -A -t -F '|'
         from pg_class c join pg_namespace n on n.oid=c.relnamespace
        where n.nspname='public' and c.relname in ('learning_central_studies_v2_runtime',
          'learning_central_studies_v2_institution_targets','learning_central_studies_v2_release_events')),
+     (select count(*) = 3 and bool_and(
+          has_table_privilege('service_role', c.oid, 'select')
+          and has_table_privilege('service_role', c.oid, 'insert')
+          and has_table_privilege('service_role', c.oid, 'update')
+          and has_table_privilege('service_role', c.oid, 'delete'))
+        from pg_class c join pg_namespace n on n.oid=c.relnamespace
+       where n.nspname='public' and c.relname in ('learning_central_studies_v2_runtime',
+         'learning_central_studies_v2_institution_targets','learning_central_studies_v2_release_events')),
      (select pg_get_userbyid(p.proowner)='postgres' from pg_proc p
        where p.oid='private.central_studies_v2_journey_allowed(uuid,uuid,uuid,uuid)'::regprocedure);")"
-[[ "$security_assertions" == 't|t|t|t|t|t' ]] || {
+[[ "$security_assertions" == 't|t|t|t|t|t|t' ]] || {
   echo "RLS, tenant-scope policy, trigger, or ownership assertion failed: $security_assertions" >&2
   exit 1
 }
