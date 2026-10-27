@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const service = vi.hoisted(() => ({ listManagementCandidates: vi.fn() }));
@@ -37,14 +37,14 @@ function person(profileId: string, fullName: string, registrations = [registrati
   return { profile_id: profileId, full_name: fullName, registrations };
 }
 
-function registration(studentId: string, number: string, assigned = false) {
+function registration(studentId: string, number: string, assigned = false, enrollments = [{ class_id: 'class-1', class_name: 'Turma A', grade_level: '7º ano', academic_year_id: 'year-1', academic_year_name: '2026' }]) {
   return {
     student_id: studentId,
     registration_number: number,
     assigned,
     assigned_professionals: assigned ? [{ profile_id: professional.profile_id, full_name: professional.full_name }] : [],
     authorization_status: 'ACTIVE' as const,
-    enrollments: [{ class_id: 'class-1', class_name: 'Turma A', grade_level: '7º ano', academic_year_id: 'year-1', academic_year_name: '2026' }],
+    enrollments,
   };
 }
 
@@ -66,6 +66,50 @@ afterEach(() => {
 });
 
 describe('PsychologyStudentRoster', () => {
+  it('mantém a busca estável quando o callback do painel pai muda de identidade', async () => {
+    service.listManagementCandidates.mockResolvedValue(response());
+    const assign = vi.fn().mockResolvedValue(undefined);
+    const unassign = vi.fn().mockResolvedValue(undefined);
+    const professionalsLoaded = vi.fn();
+    const props = {
+      institutionId: 'institution-1',
+      professionals: [professional],
+      busy: false,
+      refreshKey: 0,
+      onAssign: assign,
+      onUnassign: unassign,
+    };
+
+    const view = render(<PsychologyStudentRoster {...props} onProfessionalsLoaded={professionalsLoaded} />);
+    await screen.findByRole('row', { name: /Estudante de teste/ });
+    view.rerender(<PsychologyStudentRoster {...props} onProfessionalsLoaded={vi.fn()} />);
+
+    expect(service.listManagementCandidates).toHaveBeenCalledTimes(1);
+  });
+
+  it('encerra o carregamento e mostra o estado vazio quando não há resultados', async () => {
+    service.listManagementCandidates.mockResolvedValue(response(1, [], 0));
+
+    renderRoster();
+
+    expect(await screen.findByText('Nenhum estudante encontrado')).toBeTruthy();
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.queryByRole('table')).toBeNull();
+  });
+
+  it('mostra erro e permite tentar a consulta novamente', async () => {
+    service.listManagementCandidates
+      .mockRejectedValueOnce(new Error('falha de rede'))
+      .mockResolvedValueOnce(response());
+
+    renderRoster();
+
+    expect(await screen.findByRole('alert')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /tentar novamente/i }));
+    expect(await screen.findByRole('row', { name: /Estudante de teste/ })).toBeTruthy();
+    expect(service.listManagementCandidates).toHaveBeenCalledTimes(2);
+  });
+
   it('agrupa a pessoa por perfil e só mostra matrículas e autorização após seleção', async () => {
     service.listManagementCandidates.mockResolvedValue(response(1, [person('profile-1', 'Estudante de teste', [
       registration('student-1', 'MAT-001', true),
@@ -75,7 +119,8 @@ describe('PsychologyStudentRoster', () => {
     renderRoster();
 
     await screen.findByRole('row', { name: /Estudante de teste/ });
-    expect(screen.getByText('2 matrículas')).toBeTruthy();
+    expect(screen.getByRole('columnheader', { name: 'Turma' })).toBeTruthy();
+    expect(screen.getByText('Turma A · 7º ano · 2026')).toBeTruthy();
     expect(screen.queryByText(/Matrículas e autorizações de Estudante de teste/)).toBeNull();
 
     fireEvent.click(screen.getByRole('button', { name: /ver \/ vincular/i }));
@@ -84,6 +129,29 @@ describe('PsychologyStudentRoster', () => {
     expect(screen.getByText('Matrícula MAT-002')).toBeTruthy();
     expect(screen.getAllByText('Autorização ativa')).toHaveLength(2);
     expect(screen.getAllByRole('button', { name: /vincular matrícula/i })).toHaveLength(2);
+  });
+
+  it('mostra múltiplas turmas ativas sem duplicar perfis de mesmo nome', async () => {
+    const aliceOne = person('profile-alice-1', 'Alice Fernanda Teixeira', [
+      registration('alice-registration-1', 'RA-A1', false, [
+        { class_id: 'class-1', class_name: 'Turma A', grade_level: '7º ano', academic_year_id: 'year-1', academic_year_name: '2026' },
+      ]),
+      registration('alice-registration-2', 'RA-A2', false, [
+        { class_id: 'class-2', class_name: 'Turma B', grade_level: '8º ano', academic_year_id: 'year-2', academic_year_name: '2027' },
+        { class_id: 'class-1', class_name: 'Turma A', grade_level: '7º ano', academic_year_id: 'year-1', academic_year_name: '2026' },
+      ]),
+    ]);
+    const aliceTwo = person('profile-alice-2', 'Alice Fernanda Teixeira', [
+      registration('alice-registration-3', 'RA-A3', false, []),
+    ]);
+    service.listManagementCandidates.mockResolvedValue(response(1, [aliceOne, aliceTwo]));
+
+    renderRoster();
+
+    const aliceRows = await screen.findAllByRole('row', { name: /Alice Fernanda Teixeira/ });
+    expect(aliceRows).toHaveLength(2);
+    expect(within(aliceRows[0]).getByText('Turma A · 7º ano · 2026 | Turma B · 8º ano · 2027')).toBeTruthy();
+    expect(within(aliceRows[1]).getByText('Sem turma vinculada')).toBeTruthy();
   });
 
   it('envia busca, filtros e página ao servidor e mantém a paginação controlada', async () => {

@@ -66,11 +66,14 @@ describe('invite-school-user', () => {
     expect(source).toContain('secretaryMembership');
   });
 
-  it('allows an ADMIN to create a director or psychologist only in the selected institution', () => {
-    expect(source).toContain('["DIRECTOR", "PSYCHOLOGIST"]');
+  it('limits psychologist invitations to active Director or Secretary membership in the selected institution', () => {
+    expect(source).toContain('["DIRECTOR"]');
     expect(source).toContain('["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN", "PSYCHOLOGIST"]');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
     expect(source).toContain('role: input.role');
+    expect(source).toContain('canManagePsychologistInvites');
+    expect(source).toContain('const mayInviteTarget = input.role === "PSYCHOLOGIST"');
+    expect(source).toContain('? canManagePsychologists');
   });
 
   it('rejects an email already registered instead of reusing the user', () => {

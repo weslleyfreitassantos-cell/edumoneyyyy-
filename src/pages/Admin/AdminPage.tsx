@@ -127,6 +127,7 @@ export default function AdminPage() {
           institutionQuery.currentRole,
           profile?.platform_role,
           institutionQuery.currentInstitution?.plan,
+          institutionQuery.currentInstitutionRoles,
         ),
       ),
     [
@@ -134,6 +135,7 @@ export default function AdminPage() {
       profile?.role,
       institutionQuery.currentRole,
       institutionQuery.currentInstitution?.plan,
+      institutionQuery.currentInstitutionRoles,
     ],
   );
 
