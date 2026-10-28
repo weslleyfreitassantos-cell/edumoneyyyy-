@@ -14,6 +14,7 @@ trap 'rm -rf "$tmp"' EXIT
 mkdir -p "$tmp/guard-tmp"
 test_python="$(command -v python || command -v python3)"
 "$test_python" "$repo_root/ops/backup/verify-local-recovery-proof.test.py"
+"$test_python" "$repo_root/ops/backup/verify-local-storage-recovery-proof.test.py"
 
 eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
@@ -496,6 +497,30 @@ fi
 exec "${PROMOTION_TEST_REAL_GIT:?}" "$@"
 SH
 chmod +x "$tmp/bin/git"
+local_storage_receipt="$tmp/local-storage-restore.receipt"
+"$test_python" - "$local_backup" "$local_storage_receipt" <<'PY'
+import datetime, hashlib, sys
+from pathlib import Path
+backup = Path(sys.argv[1])
+receipt = Path(sys.argv[2])
+now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+values = {
+    "format": "tec-school-local-storage-restore-proof-v1",
+    "status": "PASS",
+    "backup_sha256": hashlib.sha256(backup.read_bytes()).hexdigest(),
+    "backup_bytes": str(backup.stat().st_size),
+    "restore_mode": "isolated-storage-copy",
+    "storage_objects": "12249",
+    "storage_bytes": "352379320",
+    "copy_integrity": "PASS",
+    "temporary_copy_cleanup": "COMPLETED",
+    "production_storage_status": "PARTIAL",
+    "offsite_status": "FAIL",
+    "evidence_source": "synthetic-test-fixture",
+    "recorded_at_utc": now,
+}
+receipt.write_text("".join(f"{key}={value}\n" for key, value in values.items()), encoding="utf-8")
+PY
 local_ledger="$tmp/pr409-local-ledger"
 local_dry_run="$tmp/pr409-local-dry-run"
 printf '20261025000600\n' > "$local_ledger"
@@ -847,6 +872,154 @@ grep -q '^PROMOTION_ABORTED=PR #412 production write requires its separate singl
   "$tmp/pr412-write-auth-rejection"
 [[ "$(cat "$cli_apply_count")" == '0' ]]
 echo 'PROMOTE_SINGLE_MIGRATION_PR412_LOCAL_ONLY_GATES=PASS'
+
+# PR #414 authorizes only the Tec Idiomas V3 runtime migration. All proofs are
+# synthetic fixtures; the test validates guards and does not connect to production.
+tec_idiomas_414_version=20261027000100
+tec_idiomas_414_file="$repo_root/supabase/migrations/${tec_idiomas_414_version}_tec_idiomas_v3_runtime.sql"
+[[ -f "$tec_idiomas_414_file" ]]
+tec_idiomas_414_hash="$(sed 's/\r$//' "$tec_idiomas_414_file" | "$real_sha256sum" | awk '{print $1}')"
+[[ "$tec_idiomas_414_hash" == '905cd1820e0496a3eb4f618f7951f636f93ffa4292c0f3eac68b7a53ec6c9813' ]]
+local_ledger_414="$tmp/pr414-local-ledger"
+local_dry_run_414="$tmp/pr414-local-dry-run"
+printf '20261026000300\n' > "$local_ledger_414"
+printf 'Would push migration %s\n' "$tec_idiomas_414_version" > "$local_dry_run_414"
+printf '0\n' > "$cli_apply_count"
+if ! local_output_414="$(PATH="$tmp/bin:$PATH" \
+  PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-idiomas-v3 \
+  PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=414 \
+  BACKUP_EXCEPTION_SOURCE_SHA="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" \
+  BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_STORAGE_RECEIPT_FILE="$local_storage_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_414 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000300 TEST_REMOTE_LEDGER_FILE="$local_ledger_414" \
+  TEST_TARGET_VERSION="$tec_idiomas_414_version" TEST_TARGET_SHA256="$tec_idiomas_414_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_414" \
+  run_guard 2>&1)"; then
+  printf '%s\n' "$local_output_414" >&2
+  exit 1
+fi
+grep -Fxq 'BACKUP_GATE=FAIL' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION=PR414_LOCAL_ONLY' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_PR=414' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_SCOPE=20261027000100' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_PREDECESSOR=20261026000300' <<< "$local_output_414"
+grep -Fxq "BACKUP_EXCEPTION_SOURCE_SHA=$source_commit" <<< "$local_output_414"
+grep -Fxq "BACKUP_EXCEPTION_MIGRATION_SHA256=$tec_idiomas_414_hash" <<< "$local_output_414"
+grep -Fxq "BACKUP_EXCEPTION_LOCAL_SHA256=$local_backup_sha" <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_POSTGRES_RESTORE=PASS' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE_RESTORE=PASS' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_STORAGE=PARTIAL' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE=FAIL' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_OFFSITE_COPY=NONE' <<< "$local_output_414"
+grep -Fxq 'BACKUP_EXCEPTION_RISK_ACCEPTANCE=ACCEPTED' <<< "$local_output_414"
+grep -Fxq 'DRY_RUN_PENDING_COUNT=1' <<< "$local_output_414"
+grep -Fxq 'DRY_RUN_PENDING_VERSION=20261027000100' <<< "$local_output_414"
+! grep -q '20261025000700\|20261026000100' <<< "$local_output_414"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+expect_pr414_rejected() {
+  local target="${TEST_PR414_TARGET-$tec_idiomas_414_version}"
+  local parent="${TEST_PR414_PARENT-20261026000300}"
+  local branch="${TEST_PR414_BRANCH-codex/tec-idiomas-v3}"
+  local origin="${TEST_PR414_ORIGIN-https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git}"
+  local backup="${TEST_PR414_BACKUP-$local_backup}"
+  local receipt="${TEST_PR414_RECEIPT-$local_receipt}"
+  local storage_receipt="${TEST_PR414_STORAGE_RECEIPT-$local_storage_receipt}"
+  local source_sha="${TEST_PR414_SOURCE_SHA-$source_commit}"
+  local target_file target_hash dry_run="$tmp/pr414-rejected-$RANDOM"
+  target_file="$(find "$repo_root/supabase/migrations" -maxdepth 1 -type f -name "${target}_*.sql" -print -quit)"
+  [[ -n "$target_file" ]]
+  target_hash="$(sed 's/\r$//' "$target_file" | "$real_sha256sum" | awk '{print $1}')"
+  printf 'Would push migration %s\n' "$tec_idiomas_414_version" > "$dry_run"
+  printf '0\n' > "$cli_apply_count"
+  if PATH="$tmp/bin:$PATH" \
+    PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+    PROMOTION_TEST_BRANCH="$branch" PROMOTION_TEST_ORIGIN="$origin" \
+    PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+    TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=414 \
+    BACKUP_EXCEPTION_SOURCE_SHA="$source_sha" \
+    BACKUP_EXCEPTION_BACKUP_FILE="$backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$receipt" \
+    BACKUP_EXCEPTION_STORAGE_RECEIPT_FILE="$storage_receipt" \
+    BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+    BACKUP_EXCEPTION_OFFSITE_STATUS="${TEST_PR414_OFFSITE-FAIL}" \
+    BACKUP_EXCEPTION_STORAGE_STATUS="${TEST_PR414_STORAGE-PARTIAL}" \
+    ACCEPT_INCOMPLETE_RECOVERY_RISK="${TEST_PR414_RISK-ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_414}" \
+    EXPECTED_REMOTE_LAST_OVERRIDE="${TEST_PR414_PARENT-20261026000300}" \
+    TEST_REMOTE_LEDGER_FILE="$local_ledger_414" \
+    TEST_TARGET_VERSION="$target" TEST_TARGET_SHA256="${TEST_PR414_HASH-$target_hash}" \
+    TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$dry_run" run_guard \
+    >"$tmp/pr414-rejection" 2>&1; then
+    echo 'invalid PR #414 local-only exception unexpectedly passed' >&2
+    exit 1
+  fi
+  [[ "$(cat "$cli_apply_count")" == '0' ]]
+}
+
+TEST_PR414_TARGET=20261026000300 expect_pr414_rejected
+TEST_PR414_HASH=bad expect_pr414_rejected
+TEST_PR414_PARENT=20261026000200 expect_pr414_rejected
+TEST_PR414_BRANCH=codex/other expect_pr414_rejected
+TEST_PR414_ORIGIN=https://github.com/other/repo.git expect_pr414_rejected
+TEST_PR414_SOURCE_SHA=0000000000000000000000000000000000000000 expect_pr414_rejected
+TEST_PR414_BACKUP="$tmp/missing-pr414-backup" expect_pr414_rejected
+altered_backup_414="$tmp/altered-pr414-backup.tar.gz"
+cp "$local_backup" "$altered_backup_414"
+printf 'tampered' >> "$altered_backup_414"
+TEST_PR414_BACKUP="$altered_backup_414" expect_pr414_rejected
+TEST_PR414_RECEIPT="$tmp/missing-pr414-postgres-receipt" expect_pr414_rejected
+invalid_storage_receipt_414="$tmp/invalid-pr414-storage.receipt"
+printf 'status=FAIL\n' > "$invalid_storage_receipt_414"
+TEST_PR414_STORAGE_RECEIPT="$invalid_storage_receipt_414" expect_pr414_rejected
+TEST_PR414_RISK= expect_pr414_rejected
+TEST_PR414_OFFSITE=PASS expect_pr414_rejected
+TEST_PR414_STORAGE=FAIL expect_pr414_rejected
+unset TEST_PR414_TARGET TEST_PR414_HASH TEST_PR414_PARENT TEST_PR414_BRANCH TEST_PR414_ORIGIN \
+  TEST_PR414_SOURCE_SHA TEST_PR414_BACKUP TEST_PR414_RECEIPT TEST_PR414_STORAGE_RECEIPT \
+  TEST_PR414_RISK TEST_PR414_OFFSITE TEST_PR414_STORAGE
+
+printf 'Would push migration %s\nWould push migration 20261025000700\n' "$tec_idiomas_414_version" > "$tmp/pr414-multiple-migrations"
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-idiomas-v3 PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=414 BACKUP_EXCEPTION_SOURCE_SHA="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_STORAGE_RECEIPT_FILE="$local_storage_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_414 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000300 TEST_REMOTE_LEDGER_FILE="$local_ledger_414" \
+  TEST_TARGET_VERSION="$tec_idiomas_414_version" TEST_TARGET_SHA256="$tec_idiomas_414_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$tmp/pr414-multiple-migrations" run_guard \
+  >"$tmp/pr414-multiple-rejection" 2>&1; then
+  echo 'PR #414 exception unexpectedly accepted multiple pending migrations' >&2
+  exit 1
+fi
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+
+if PATH="$tmp/bin:$PATH" PROMOTION_TEST_REAL_GIT="$real_git" PROMOTION_TEST_REPO_ROOT="$repo_root" \
+  PROMOTION_TEST_BRANCH=codex/tec-idiomas-v3 PROMOTION_TEST_PYTHON3_BIN="$test_python" \
+  APPLY=1 TEST_BACKUP_GATE=FAIL BACKUP_EXCEPTION_PR=414 BACKUP_EXCEPTION_SOURCE_SHA="$source_commit" \
+  BACKUP_EXCEPTION_BACKUP_FILE="$local_backup" BACKUP_EXCEPTION_RESTORE_RECEIPT_FILE="$local_receipt" \
+  BACKUP_EXCEPTION_STORAGE_RECEIPT_FILE="$local_storage_receipt" \
+  BACKUP_EXCEPTION_BACKUP_SHA256="$local_backup_sha" \
+  BACKUP_EXCEPTION_OFFSITE_STATUS=FAIL BACKUP_EXCEPTION_STORAGE_STATUS=PARTIAL \
+  ACCEPT_INCOMPLETE_RECOVERY_RISK=ACCEPT_LOCAL_ONLY_RECOVERY_RISK_FOR_PR_414 \
+  EXPECTED_REMOTE_LAST_OVERRIDE=20261026000300 TEST_REMOTE_LEDGER_FILE="$local_ledger_414" \
+  TEST_TARGET_VERSION="$tec_idiomas_414_version" TEST_TARGET_SHA256="$tec_idiomas_414_hash" \
+  TEST_EXPECT_INCLUDE_ALL=0 TEST_DRY_RUN_OUTPUT_FILE="$local_dry_run_414" \
+  CONFIRM_PRODUCTION_WRITE= run_guard >"$tmp/pr414-write-auth-rejection" 2>&1; then
+  echo 'PR #414 exception unexpectedly proceeded without write authorization' >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=PR #414 production write requires its separate single-migration authorization$' \
+  "$tmp/pr414-write-auth-rejection"
+[[ "$(cat "$cli_apply_count")" == '0' ]]
+echo 'PROMOTE_SINGLE_MIGRATION_PR414_LOCAL_ONLY_GATES=PASS'
 
 if cli_failure="$(PATH="$tmp/bin:$PATH" MOCK_CLI_FAILURE=1 DRY_RUN_OUTPUT_FILE_OVERRIDE= run_guard 2>&1)"; then
   echo "mock CLI authentication failure unexpectedly passed" >&2
